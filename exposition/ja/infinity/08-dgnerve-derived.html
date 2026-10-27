@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dg nerve と導来 ∞ 圏</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 8 章</nav>
+<h1>第 8 章　dg nerve と導来 ∞ 圏</h1>
+<p class="meta">基準コミット <code>a9f7cea4e</code>（2026-10-23）。対象は <code>DGNerve/</code>（205 ファイル、約 2.1 万行）と <code>Derived/</code>（2,792 ファイル、約 17.8 万行）。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。dg 圏そのものの基礎は <code>SerrePositivity/DifferentialGraded/</code>（∞ 圏の外）にある。</p>
+
+<p>この章の層は、∞ 圏の一般論（第 1〜7 章）を、可換環論・K 理論で実際に使う対象（導来圏、perfect 複体、dg 代数の加群、Verdier 商、gluing）に接続する。計画上は β 系列と呼ばれている。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>状態</th></tr>
+<tr><td>β1・β2</td><td>dg nerve、D(S)・Perf(S)、\(h\,D(S)\simeq\) 導来圏</td><td>完成</td></tr>
+<tr><td>D7</td><td>D(S) の安定性、三角同値</td><td>完成</td></tr>
+<tr><td>β3</td><td>Drinfeld 商 = ∞ 圏の Verdier 商、Verdier 列</td><td>完成</td></tr>
+<tr><td>β5</td><td>非可換 dg 代数（dg 圏）の D(A)・Perf(A)、テンソル・Hom の ∞ 関手化、Morita 不変性</td><td>完成</td></tr>
+<tr><td>β4</td><td>dg gluing = 安定 ∞ 圏の lax pullback（Tamme）</td><td><b>作業中</b>（D2 レーン）</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>1. dg nerve</h2>
+<h3>定義（HA Construction 1.3.1.6）</h3>
+<p>dg 圏 \(D\) の dg nerve \(N_{dg}(D)\) の \(n\) 単体は、対象 \(x_0,\dots,x_n\) と、各部分集合 \(I=\{i_0&lt;\dots&lt;i_r\}\subset[n]\)（\(r\ge1\)）に対する次数 \(1-r\) の射 \(f_I\colon x_{i_0}\to x_{i_r}\) の族で、次を満たすものである。</p>
+\[
+\delta f_I=\sum_{j\in I,\ i_0&lt;j&lt;i_r}\varepsilon(I,j)\,\bigl(f_{I\setminus\{j\}}-f_{I_{\ge j}}\circ f_{I_{\le j}}\bigr),\qquad \varepsilon(I,j)=(-1)^{\#\{k\in I\,:\,j&lt;k\}}.
+\]
+<p>たとえば 2 単体では \(\delta f_{012}=f_{12}\circ f_{01}-f_{02}\)、つまり \(f_{012}\) は合成 \(f_{12}\circ f_{01}\) と \(f_{02}\) の間のホモトピーである。</p>
+<pre><code>def dgNerve : SSet.{max u v} where
+  obj Δ := DGNerve.Simplex A D Δ.unop.len
+  map f := ↾fun s =&gt; s.pullback f.unop.toOrderHom
+instance instQuasicategory : SSet.Quasicategory (dgNerve A D)</code></pre>
+<p>場所：DGNerve/Basic、DGNerve/Quasicategory。係数環 \(A\) は任意の可換環で、有界性・平坦性・標数の仮定はない。</p>
+
+<div class="box">
+<p class="label">符号の規約（重要）</p>
+<p>コードの微分は次数 +1（cochain）で、合成は通常順 <code>compose A g f h</code> \(=g\circ f\)、Leibniz 則は \(\delta(g\circ f)=\delta g\circ f+(-1)^{|g|}g\circ\delta f\)。HA の chain 次数を負に読み替え、HA の \(f_I\) は符号を変えずに使う。<b>Kerodon Construction 2.5.3.1 とは括弧の順序が逆</b>で、同じ Hom 複体の微分で比べると \(f_I^{\mathrm{Kerodon}}=(-1)^{|I|-2}f_I^{\mathrm{HA}}\) となる。原典の式をそのまま混在させないこと。詳細は <a href="../../../SerrePositivity/InfinityCategories/README.md">InfinityCategories/README.md</a>（実質的に dg nerve の規約文書。R25）。</p>
+</div>
+
+<h3>主な性質</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>quasicategory である（HA Prop. 1.3.1.10）</td><td><code>instQuasicategory</code></td><td>DGNerve/Quasicategory</td></tr>
+<tr><td>\(h\,N_{dg}(D)\simeq H^0(D)\)（ホモトピー圏 = 0 次コホモロジー圏）</td><td><code>DGNerve.HomotopyComparison.equivalence</code></td><td>DGNerve/HomotopyCategory</td></tr>
+<tr><td>右 pinched 写像空間は単体的 \(A\) 加群で、\(\pi_0\) が \(H^0\mathrm{Hom}\)</td><td><code>piZeroToH0</code> など</td><td>DGNerve/PinchedPiZero ほか</td></tr>
+<tr><td>dg 関手・厳密な自然変換の dg nerve への作用</td><td>（N6）</td><td>DGNerve</td></tr>
+<tr><td>前三角 dg 圏の dg nerve は安定</td><td><code>dgNerve_isStable_of_pretriangulated</code></td><td>Derived/DGPretriangulatedStability</td></tr>
+</table></div>
+<p><b>quasicategory 性の方針</b>：写像空間が単体的 \(A\) 加群であることを使い、内ホーンを「線形に」充填する。第 5 章の γ1.5 は、この dg nerve が Dold–Kan 豊穣化の coherent nerve と同値であることを示しており、二つの模型の行き来ができる。</p>
+
+<!-- ============================================================ -->
+<h2>2. 導来 ∞ 圏 D(S) と Perf(S)</h2>
+<pre><code>abbrev Semifree := DGFullSubcategory (Complex S) (complexSemifree S)
+def derivedInfinityCategory : SSet.{u + 1} := dgNerve S (Semifree S)
+abbrev perfectInfinityCategory : SSet.{u + 1} := perfectInfinitySubcomplex S</code></pre>
+<p>\(D(S)\) は、semifree 複体（K-射影的な模型）の充満 dg 部分圏の dg nerve として定義する。semifree 複体どうしの Hom 複体はすでに「正しい」ので、局所化を取る必要がない。Perf(S) はその充満部分 ∞ 圏である。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>\(h\,D(S)\simeq H^0(\mathrm{Semifree}(S))\)</td><td><code>derivedInfinityH0Equivalence</code></td><td>Derived/HomotopyCategoryComparison</td></tr>
+<tr><td>\(h\,D(S)\simeq\) Mathlib の <code>DerivedCategory (ModuleCat S)</code></td><td><code>derivedStableHomotopyEquivalence</code></td><td>Derived/StableHomotopyComparison</td></tr>
+<tr><td>D(S) は安定（任意の可換環上）</td><td><code>derivedInfinityCategory_isStable</code></td><td>Derived/Stability</td></tr>
+<tr><td>上の圏同値は三角同値（シフトと distinguished 三角形を保存・反映）</td><td><code>derivedStableHomotopyEquivalenceIsTriangulated</code> など</td><td>Derived/StableTriangulatedEquivalence</td></tr>
+<tr><td>Perf(S) についても \(h\simeq H^0\)</td><td><code>perfectInfinityH0Equivalence</code></td><td>Derived/PerfectHomotopy</td></tr>
+</table></div>
+<p>これで「∞ 圏としての D(S)」と「Mathlib の三角圏としての導来圏」が、三角構造まで含めて一致する。第 7 章の三角構造（cofiber 由来）と Mathlib の導来圏の三角構造（写像錐由来）が同じものであることが、ここで確かめられている。</p>
+
+<!-- ============================================================ -->
+<h2>3. Verdier 商（β3）</h2>
+<p>dg 圏 \(D\) と対象の集合 \(P\) について、Drinfeld の dg 商 \(D/P\)（\(P\) の対象の恒等射を null-homotopic にする）を考える。</p>
+<div class="box">
+<p><b>定理</b>（Drinfeld 2004 Thm. 3.4 の ∞ 圏版、HA §1.1.4、Kerodon §6.3）. 平坦性の条件のもとで、\(N_{dg}(D)\to N_{dg}(D/P)\) は \(P\) を零にする局所化で、安定な Verdier 列を与える。</p>
+<ul>
+  <li><code>resolvedDGQuotientFunctor_isLocalization</code>：平坦分解した後の商関手は局所化（第 4 章の <code>IsLocalization</code>）</li>
+  <li><code>resolvedDGQuotient_isStableVerdierSequence</code>：安定 Verdier 列</li>
+  <li><code>dgQuotient_isStableVerdierSequence</code>：局所 K-flat な場合は分解なしで成り立つ</li>
+</ul>
+</div>
+<p>注意：分解していない path 商がいつでも Verdier 商になるとは主張していない（計画文書の方針）。\(H^0\) の Verdier 商との一致だけでは ∞ 関手圏の普遍性にならない点も明記されている。K 理論側では、Thomason の局所化 Perf(X)/Perf<sub>Z</sub>(X) ≃ Perf(U) や fibration 定理に使われる。</p>
+
+<!-- ============================================================ -->
+<h2>4. 非可換 dg 代数の導来 ∞ 圏と Morita 不変性（β5）</h2>
+<pre><code>abbrev dgModuleDerivedInfinityCategory := dgNerve R (SemifreeDGModules R D)</code></pre>
+<p>dg 圏（とくに非可換 dg 代数）\(D\) 上の semifree dg 加群の dg nerve として \(D(A)\) を定義する（HA §7.1.2 は比較の目標であり、引用はしていない）。</p>
+<ul>
+  <li>D(A)・Perf(A) の安定性。Perf(A) は冪等完備（第 6 章の強分裂を使う）。</li>
+  <li>双加群による相対テンソル・Hom を dg 関手として作り、dg nerve に移して ∞ 関手にする。単位・合成・随伴の整合性。</li>
+  <li>Morita 不変性：Morita 同値な dg 代数の D・Perf は同値（<code>dgMoritaPerfectKernelInfinity_isQCatEquivalence</code> など、Derived/DGModule*）。</li>
+  <li>単体環は正規化によって dg 代数になり、台の弱同値は D・Perf の同値を与える。</li>
+</ul>
+<p>Land–Tamme の ⊙ 構成（K 理論側）では、環や導来環をこの形で扱う（B 案：dg による増強の経路）。</p>
+
+<!-- ============================================================ -->
+<h2>5. 作業中：dg gluing と lax pullback（β4）</h2>
+<p>二つの dg 圏 \(C,D\) と双加群 \(M\) から、貼り合わせの dg 圏（対象は \(C\) と \(D\) の対象を \(M\) を通る射でつないだ組。Hom 複体は比較差の mapping cocone）を作り、その dg nerve が安定 ∞ 圏の lax pullback（第 6 章）と同値であることを示すのが目標（Tamme 2018 §1、Kuznetsov–Lunts）。</p>
+<p>状態（D2 レーン、Derived/Gluing/、669 ファイル・約 3.5 万行）：</p>
+<ul>
+  <li>完成：gluing の dg 圏（対象、mapping cocone としての Hom 複体、微分・合成・結合律）、前三角性（<code>dgGluing_isDGPretriangulated</code>）、半直交分解（<code>dgGluingFactors_semiorthogonal</code>）、各対象の分解三角形（<code>dgGluingDecompositionTriangle</code>）</li>
+  <li>残り：dg nerve から lax pullback への比較関手と、その充満忠実性・本質的全射性</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>6. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>場所</th><th class="num">ファイル</th><th>内容</th></tr>
+<tr><td>DGNerve/</td><td class="num">205</td><td>dg nerve、quasicategory 性、\(h\simeq H^0\)、線形な写像空間</td></tr>
+<tr><td>Derived/Gluing/</td><td class="num">669</td><td>β4（作業中）</td></tr>
+<tr><td>Derived/DGModule*</td><td class="num">382</td><td>β5：dg 加群、テンソル・Hom、Morita</td></tr>
+<tr><td>Derived/DGKernel*</td><td class="num">143</td><td>β5：kernel（双加群）の作用</td></tr>
+<tr><td>Derived/DGVerdier*、DGQuotient*</td><td class="num">150</td><td>β3：Drinfeld 商と Verdier 列</td></tr>
+<tr><td>Derived/DGComma*、DGRelative*、DGClosed*、DGLast*、Roof*</td><td class="num">265</td><td>β3・β5 の補助（comma、相対版、閉射、roof による分数）</td></tr>
+<tr><td>Derived/ その他</td><td class="num">約 1,180</td><td>D(S)・Perf(S)、安定性、三角同値、局所化の判定など</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>7. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R23　Derived/ にある ∞ 圏の一般論</p>
+<p>Derived/ にも、dg と無関係な一般論が置かれている。</p>
+<ul>
+  <li>局所化の判定：<code>IsLocalization.precomposition_isFullyFaithful</code>、<code>isLocalization_of_fullyFaithful_extensions</code>、<code>isLocalization_of_rightKan_local_limits</code>、変形による判定（Derived/LocalizationPrecompositionCriterion、LocalizationRightKanCriterion、DeformationLocalization）。局所化の定義は F1B/Localization にある（第 4 章）。</li>
+  <li>極限の存在の移送：<code>hasLimit_iff_of_functorIso</code>（Derived/LimitDiagramIso）、<code>hasLimit_of_leftCofinal</code>（Derived/CofinalLimitExistence）。<b>双対の <code>hasColimit_iff_of_functorIso</code> は Stable/ColimitDiagramIso にあり</b>、一組の双対な補題が二つのディレクトリに分かれている。</li>
+</ul>
+<p>R22（Stable/ の一般論）と同じ型で、まとめて Core（極限）と F1B（局所化）に移すのが自然。</p>
+</div>
+<div class="box refactor">
+<p class="label">R24　DGNerve と Derived の循環</p>
+<p>DGNerve/SemifreeLimits が Derived/SemifreeClosure・SemifreeSubcategory を import していて、ディレクトリ単位で DGNerve ↔ Derived が循環している（第 0 章の行列）。semifree 複体についての結果は Derived 側（あるいは DifferentialGraded 側）に置くべきもの。</p>
+</div>
+<div class="box refactor">
+<p class="label">R25　README の位置と範囲</p>
+<p><code>InfinityCategories/README.md</code> は、題が「dg nerve の規約と計算」で、中身も dg nerve の符号の規約と N0〜N6 の記録である。∞ 圏の層全体の README の位置にあるのに、内容は DGNerve/ のもの。DGNerve/README.md に移し、最上位の README は第 0 章のような全体地図（層、入口ファイル、監査スクリプト）にするのがよい。一方で符号の規約そのものは非常に有用で、この章の囲みはそこから要約した。</p>
+</div>
+<div class="box refactor">
+<p class="label">R8（関連）　Derived 内の準重複</p>
+<p>重複調査では、Derived/DGCommaAug*（53 ファイル）と DGModuleAugmentation*（76 ファイル）の間に、類似度が最大 0.96 の組が 17 組あった。また、未追跡の <code>Derived/DGKernelDerivedMapInvertible.lean</code> は既存のファイルと完全に一致していた（並行セッションの作業中と見られる）。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>dg nerve は HA の定義のまま、部分集合で添字づけた射の族として実装されている。符号は Kerodon と異なるので、README の規約に従う。</li>
+  <li>D(S) は semifree 複体の dg nerve で、安定であり、ホモトピー圏は Mathlib の導来圏と三角同値。</li>
+  <li>Drinfeld 商は、平坦分解の後で ∞ 圏の Verdier 商（局所化）になり、安定 Verdier 列を与える。</li>
+  <li>非可換 dg 代数の D(A)・Perf(A)、テンソル・Hom の ∞ 関手化、Morita 不変性は完成。Land–Tamme の対象の供給源になる。</li>
+  <li>dg gluing と lax pullback の同値（β4）が作業中で、K 理論側の Tamme の定理の入力になる。</li>
+</ol>
+</main>
+</body>
+</html>

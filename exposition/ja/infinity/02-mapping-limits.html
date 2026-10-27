@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>写像空間と極限</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 2 章</nav>
+<h1>第 2 章　写像空間・充満忠実性・極限</h1>
+<p class="meta">基準コミット <code>99e51f2a9</code>（2026-10-23）。対象は <code>PinchedHom/</code> と <code>Core/</code> の後半。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>第 1 章では、写像空間を使わずに（境界充填だけで）終対象と同値を定義した。この章では写像空間を導入し、それらを写像空間で言い直す。主な結果は次の三つである。</p>
+<ol>
+  <li>写像空間は Kan 複体で、\(\pi_0\) がホモトピー圏の Hom になる。</li>
+  <li>関手が同値であることは、充満忠実かつ本質的全射であることと同値。</li>
+  <li>極限は同値で保たれ、関手 ∞ 圏の極限は各点で計算できる。</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>1. 写像空間</h2>
+
+<h3>定義</h3>
+<p>右 pinched 写像空間 \(\mathrm{Hom}^R_X(x,y)\)（Kerodon §4.6.5、HTT §1.2.2 の \(\mathrm{Hom}^R\)）の \(n\) 単体は、\(X\) の \((n+1)\) 単体 \(\sigma\) のうち、最初の \(n+1\) 頂点が張る面が \(x\) で定値になり、最後の頂点が \(y\) になるものである。</p>
+<pre><code>structure Simplex (n : ℕ) where
+  val : X _⦋n + 1⦌
+  source : X.map (front n).op val = constant x n
+  target : X.map (lastVertex n).op val = y
+
+def pinchedHom {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} where
+  obj n := PinchedHom.Simplex x y n.unop.len
+  map f := ↾fun s =&gt; s.pullback f.unop</code></pre>
+<p>面・退化写像は、順序写像 \([m]\to[n]\) を最後の頂点を固定したまま \([m+1]\to[n+1]\) に延ばして（<code>PinchedHom.extend</code>）引き戻す。定義そのものは任意の単体的集合に対して意味を持ち、quasicategory の仮定は性質を示すときにだけ使う。</p>
+
+<h3>基本的な性質</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>頂点 = \(x\) から \(y\) への辺</td><td><code>PinchedHom.vertexEquiv</code></td><td>PinchedHom/Edges</td></tr>
+<tr><td>Kan 複体である（HTT Prop. 1.2.2.3）</td><td><code>pinchedHom_kanComplex</code>（instance）</td><td>Core/MappingSpaceRightKan</td></tr>
+<tr><td>\(\pi_0\,\mathrm{Hom}^R(x,y)\cong\mathrm{Hom}_{hX}(x,y)\)</td><td><code>pinchedHomPiZeroEquiv</code></td><td>Core/MappingSpacePiZero</td></tr>
+<tr><td>slice の fiber と同型：\(\mathrm{Hom}^R(x,y)\cong X_{/y}\times_X\{x\}\)</td><td><code>pinchedHomSliceFiberIso</code></td><td>Core/PinchedSlice</td></tr>
+<tr><td>普遍性：\(A\to\mathrm{Hom}^R(x,y)\) ⇔ \(A\) を \(x\) に潰した \(A\star\Delta^0\to X\)</td><td><code>pinchedHomCurry</code>／<code>pinchedHomUncurry</code></td><td>Core/PinchedUniversal</td></tr>
+<tr><td>関手性</td><td><code>pinchedHomMap f x y</code></td><td>Core/MappingSpaceMap</td></tr>
+<tr><td>\(p\) が inner fibration ⇒ 写像空間の写像は右 fibration</td><td><code>pinchedHomMap_rightFibration</code></td><td>Core/MappingSpaceFibration</td></tr>
+<tr><td>\(p\) が trivial ⇒ 写像空間の写像も trivial</td><td><code>pinchedHomMap_trivialKanFibration</code></td><td>Core/MappingSpaceTrivialFibration</td></tr>
+</table></div>
+<p><b>Kan 性の証明の方針</b>：\(\mathrm{Hom}^R(x,y)\) の右ホーン \(\Lambda^{n+1}_i\)（\(0&lt;i\)）は、最後の頂点 \(y\) を加えると \(X\) の内ホーン \(\Lambda^{n+2}_i\) になる。したがって quasicategory 性で充填できる。右ホーンが充填できれば、ホモトピー圏が亜群になることを経由して Kan 複体であることが従う（<code>kanComplex_of_rightHornFillers</code>。第 1 章の Joyal の定理を使う）。</p>
+
+<h3>左の写像空間と両者の比較</h3>
+<p>左 pinched 写像空間 \(\mathrm{Hom}^L(x,y)\) は、反対圏の右写像空間の反対として定義している。</p>
+<pre><code>def pinchedHomLeft {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :=
+  (pinchedHom (X := X.op) (SSet.opObjEquiv.symm y) (SSet.opObjEquiv.symm x)).op</code></pre>
+<p>Kan 性と \(\pi_0\) の計算は、反対圏を通して右の場合から導かれる（Core/MappingSpaceLeft）。これは第 1 章の R5 で望ましいとした「双対で導く」形の良い例である。左右の写像空間が同値であること（<code>pinchedHomLeftRightEquivalence</code>）は、区間模型を経由して F1/MappingSpaceModelEquivalence で示されている。Core ではなく F1 にある点に注意する。</p>
+
+<!-- ============================================================ -->
+<h2>2. Kan 複体の言葉</h2>
+<p>写像空間で同値性を述べるために、Kan 複体の側にも「可縮」と「ホモトピー同値」が必要になる。どちらも Kan–Quillen のモデル構造を使わずに定義されている。</p>
+<pre><code>def IsContractibleKan (K : SSet.{u}) : Prop :=
+  ∀ (n : ℕ) (b : (boundary n : SSet.{u}) ⟶ K),
+    ∃ F : (Δ[n] : SSet.{u}) ⟶ K, (boundary n).ι ≫ F = b
+
+def IsSimplicialHomotopyEquivalence {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
+  ∃ g : Y ⟶ X, Nonempty (SSet.Homotopy (f ≫ g) (𝟙 X)) ∧
+    Nonempty (SSet.Homotopy (g ≫ f) (𝟙 Y))</code></pre>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>可縮 ⇔ \(K\to\ast\) が trivial Kan fibration</td><td><code>isContractibleKan_iff_trivialKanFibration</code></td><td>Core/ContractibleKan</td></tr>
+<tr><td>Kan 複体の間では、ホモトピー同値 ⇔ ∞ 圏の同値</td><td><code>isSimplicialHomotopyEquivalence_iff_isQCatEquivalence</code></td><td>Core/KanHomotopyEquivalence</td></tr>
+<tr><td>Kan fibration かつ同値 ⇒ trivial Kan fibration</td><td><code>trivialKanFibration_of_fibration_of_isQCatEquivalence</code></td><td>Core/KanFibrationEquivalence</td></tr>
+<tr><td>trivial Kan fibration ⇒ 同値</td><td><code>isQCatEquivalence_of_trivialKanFibration</code></td><td>Core/TrivialFibrationEquivalence</td></tr>
+</table></div>
+<div class="box">
+<p class="label">原典との違い</p>
+<p>Kerodon では Kan 複体の間の「ホモトピー同値」と「弱ホモトピー同値」を区別し、両者の一致を Kan–Quillen の理論で示す。ここでは弱ホモトピー同値（ホモトピー群の同型）を使わず、明示的なホモトピー逆だけで話を閉じている。可縮性も「\(\pi_n\) がすべて自明」ではなく境界充填で定義している。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 終対象と写像空間</h2>
+<div class="box">
+<p><b>命題</b>（HTT Prop. 1.2.12.4 の写像空間版）. quasicategory の頂点 \(x\) について次は同値。</p>
+<ol>
+  <li>\(x\) は終対象（第 1 章の境界充填の定義）。</li>
+  <li>すべての \(z\) について \(\mathrm{Hom}^R(z,x)\) は可縮。</li>
+</ol>
+</div>
+<p>Lean では <code>isTerminalVertex_iff_pinchedHom_isContractibleKan</code>（Core/TerminalMappingSpace）。証明は、§1 の同型 \(\mathrm{Hom}^R(z,x)\cong X_{/x}\times_X\{z\}\) と、第 1 章の「終対象 ⇔ \(X_{/x}\to X\) が trivial」を組み合わせる。trivial Kan fibration の fiber は可縮であり、逆に右 fibration で fiber がすべて可縮なら trivial になる。</p>
+<p>あわせて、終対象性は \(hX\) での同型で不変であることが示されている（<code>isTerminalVertex_iff_of_vertexIso</code>、Core/TerminalTransport）。極限についても同じ不変性が <code>isLimitCone_iff_of_vertexIso</code> として成り立つ。</p>
+
+<!-- ============================================================ -->
+<h2>4. 充満忠実性と同値の判定</h2>
+
+<h3>定義</h3>
+<pre><code>def IsFullyFaithful {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
+  ∀ x y : X _⦋0⦌, IsSimplicialHomotopyEquivalence (pinchedHomMap f x y)
+
+def IsEssentiallySurjective {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
+  ∀ y : Y _⦋0⦌, ∃ x : X _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)</code></pre>
+<p>充満忠実は「すべての写像空間の写像がホモトピー同値」、本質的全射は「\(hY\) のすべての対象が像と同型」である。</p>
+
+<h3>主定理</h3>
+<div class="box">
+<p><b>定理</b>（HTT §1.2.10。コードの docstring は Kerodon Thm. 4.8.4.1・Prop. 4.8.4.5 を参照）. quasicategory の間の \(f\colon X\to Y\) について、\(f\) が同値 ⇔ \(f\) が充満忠実かつ本質的全射。</p>
+</div>
+<p>Lean では <code>isQCatEquivalence_iff_fullyFaithful_essentiallySurjective</code>（Core/EquivalenceFullyFaithful）。難しいのは ⇐ で、次の三段で示す。</p>
+<ol>
+  <li><b>isofibration への置き換え</b>（Core/EquivalencePath*）。\(Y\) の可逆な辺がなす path の空間 \(\mathrm{Path}^{\simeq}(Y)\) で \(f\) を引き戻し、\(\tilde X=X\times_Y\mathrm{Path}^{\simeq}(Y)\) を作る。射影 \(\tilde X\to X\) は trivial Kan fibration で、終点の評価 \(\tilde f\colon\tilde X\to Y\)（<code>equivalencePathReplacementMap f</code>）は inner fibration になる。\(f\) が同値であることと \(\tilde f\) が同値であることは同値。</li>
+  <li><b>性質の移送</b>。\(\tilde f\) も充満忠実で、本質的全射性は頂点上の<b>全射</b>に強まる（可逆な辺を経由して像を動かせるため）。</li>
+  <li><b>trivial Kan fibration であることの証明</b>（Core/FullyFaithfulBoundary）。頂点上で全射な充満忠実 inner fibration \(p\) が \(\partial\Delta^{n+1}\hookrightarrow\Delta^{n+1}\) を持ち上げることを示す。\(p\) を \(\Delta^{n+1}\) に引き戻す（充満忠実性は引き戻しで保たれる。<code>IsFullyFaithful.pullback_snd</code>）。\(\Delta^{n+1}\) の最後の頂点は終対象で、充満忠実な inner fibration は終対象性を反映するので、引き戻した側でも最後の頂点が終対象になる。終対象の境界充填性から持ち上げが得られる。\(n=-1\)（頂点）の場合が全射性である。</li>
+</ol>
+<p>このとき trivial Kan fibration は同値なので、\(\tilde f\)、したがって \(f\) が同値になる。</p>
+
+<div class="box lean">
+<p class="label">Lean の構造：写像空間の写像を trivial fibration に上げる</p>
+<p>3 段目の「充満忠実な inner fibration は終対象性を反映する」の内部では、次の組み合わせが繰り返し使われる。</p>
+<ul>
+  <li><code>pinchedHomMap_rightFibration</code>：写像空間の写像は右 fibration、とくに Kan fibration</li>
+  <li><code>trivialKanFibration_of_fibration_of_simplicialHomotopyEquivalence</code>：Kan fibration かつホモトピー同値なら trivial</li>
+</ul>
+<p>二つを合わせると <code>IsFullyFaithful.pinchedHomMap_trivialKanFibration</code> が得られる。「ホモトピー同値」という性質を「持ち上げ性」という具体的な道具に変えることが、この層の証明の基本の型になっている。</p>
+</div>
+
+<h3>関連する結果</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>充満忠実 ⇒ \(hX\to hY\) も充満忠実</td><td><code>IsFullyFaithful.toHoFullyFaithful</code></td><td>Core/FullyFaithful</td></tr>
+<tr><td>合成、右の簡約</td><td><code>IsFullyFaithful.comp</code>、<code>isFullyFaithful_comp_iff</code></td><td>Core/EquivalenceCalculus、FullyFaithfulCalculus</td></tr>
+<tr><td>自然同型で不変</td><td><code>FunctorIso.isFullyFaithful_iff</code></td><td>Core/FullyFaithfulIso</td></tr>
+<tr><td>各点で可逆なホモトピー ⇒ <code>FunctorIso</code>（Kerodon Thm. 4.4.4.4）</td><td><code>functorIsoOfPointwiseInvertibleHomotopy</code></td><td>Core/FunctorEdgePointwise</td></tr>
+<tr><td>Kan 複体の間のホモトピー ⇒ <code>FunctorIso</code></td><td><code>functorIsoOfSimplicialHomotopy</code></td><td>Core/KanHomotopyEquivalence</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>5. 極限</h2>
+
+<h3>定義の復習と一意性</h3>
+<p>錐は \(\Delta^0\star K\to X\) で、極限錐は slice \(X_{/p}\) の終対象である（第 0 章）。第 1 章の結果から、次がそのまま従う。</p>
+<ul>
+  <li><code>isLimitCone_iff_trivialKanFibration</code>：\(c\) が極限錐 ⇔ \((X_{/p})_{/c}\to X_{/p}\) が trivial Kan fibration</li>
+  <li><code>limitConeIso</code>、<code>limitVertexIso</code>：二つの極限錐は \(h(X_{/p})\) で同型で、頂点は \(hX\) で同型</li>
+</ul>
+
+<h3>同値による保存</h3>
+<div class="box">
+<p><b>命題.</b> \(f\colon X\to Y\) が同値なら、\(c\) が極限錐であることと \(f\circ c\) が極限錐であることは同値。</p>
+</div>
+<p>Lean では <code>IsQCatEquivalence.isLimitCone_iff</code>（Core/EquivalenceAllLimits）。§4 と同じく path による置き換えを使う。同値の場合は \(\tilde X\to X\) と \(\tilde X\to Y\) がともに trivial Kan fibration になる。trivial Kan fibration \(q\) については、slice の後合成 \(X_{/p}\to Y_{/qp}\) も trivial Kan fibration（<code>trivialKanFibration_sliceOverPostcomp</code>）なので、終対象性を保存・反映する。</p>
+
+<h3>引き戻し</h3>
+<p>引き戻しの四角形は \(\Delta^1\times\Delta^1\to X\) として扱う。鍵は同型 \(\Delta^0\star\Lambda^2_2\cong\Delta^1\times\Delta^1\)（<code>cospanConeSquareIso</code>、Core/Square）で、両辺とも対角線に沿って二つの 2 単体を貼り合わせたものとして表示して比較する。これで四角形を cospan 上の錐とみなせる。</p>
+<pre><code>def IsPullbackSquare {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) : Prop</code></pre>
+<p>規約：右辺と上辺が cospan で、座標 \((0,0)\) が錐の頂点（Core/Pullback）。</p>
+
+<h3>関手 ∞ 圏の極限は各点で計算できる</h3>
+<div class="box">
+<p><b>命題</b>（HTT Prop. 5.1.2.2、Kerodon §7.1.8）. 図式 \(p\colon J\to\mathrm{Fun}(K,X)\) について：</p>
+<ol>
+  <li>各点 \(k\in K\) で評価した錐が極限錐なら、元の錐も極限錐（<code>isLimitCone_of_pointwise</code>）。</li>
+  <li>各点で極限が存在するなら、各点で極限になる錐が存在する（<code>exists_pointwiseLimitCone</code>）。したがって極限が存在する（<code>hasLimit_of_hasPointwiseLimits</code>）。</li>
+  <li>その状況では、極限錐であることと各点で極限錐であることは同値（<code>isLimitCone_iff_pointwise_of_hasPointwiseLimits</code>）。</li>
+</ol>
+</div>
+<p>2 の難しさは、各点で選んだ極限錐に自然性がないことにある。そこで「相対的な終点境界充填」を使い、選んだ錐を \(K\) の単体に沿って一つずつ自然な族へ延長していく（Core/FunctorPointwiseLimitExistence）。</p>
+
+<h3>補助模型：fat join、lax slice、錐の族</h3>
+<p>関手 ∞ 圏の極限を扱うには、slice \(X_{/p}\) のままでは \(\mathrm{Fun}(K,-)\) との相性が悪い。そこで Kerodon §4.6.2〜4.6.6 に沿って、三つの補助模型を導入し、すべて slice と同値であることを示している。</p>
+<div class="table-wrap"><table>
+<tr><th>模型</th><th>中身</th><th>slice との比較</th></tr>
+<tr><td>fat join \(A\diamond B\)</td><td>\(A\times\Delta^1\times B\) の 0 端を \(A\) に、1 端を \(B\) に潰したもの（Kerodon Notation 4.6.2.3）</td><td><code>fatJoinComparison : fatJoin A B ⟶ join A B</code>（Kerodon Thm. 4.6.2.8）</td></tr>
+<tr><td>lax slice（太い slice）</td><td>fat join から作る slice</td><td><code>isQCatEquivalence_sliceLaxMap</code>（Kerodon Prop. 4.6.4.19）</td></tr>
+<tr><td>錐の族 <code>coneFamily</code></td><td>錐を関手 ∞ 圏 \(\mathrm{Fun}(\Delta^0\star K,X)\) の fiber として見たもの</td><td><code>isQCatEquivalence_sliceConeFamilyMap</code>（Kerodon Ex. 4.6.6.8）</td></tr>
+</table></div>
+<p>錐の族の模型では、錐が関手 ∞ 圏の対象になる。そのため \(\mathrm{Fun}(K,-)\) との交換が内部 Hom の curry だけで済む。<code>isLimitCone_iff_isTerminalVertex_coneFamily</code>（Core/LimitConeFamily）が、極限性をこの模型に移す入口である。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<p>HTT は slice \(X_{/p}\) と fat slice \(X^{/p}\) の比較を Joyal のモデル構造で処理する（HTT Prop. 4.2.1.5）。ここでは Kerodon の方針に従い、標準単体の場合を明示的な変形（Core/FatJoinStd*）で示してから、pushout・余極限での閉包性で一般化している（Core/FatJoinLeftColimits、FatJoinRightColimits など）。Core/Precomposition* の判定条件 <code>IsPrecompositionEquivalence</code>（「任意の quasicategory への前合成が同値」）は、quasicategory でない補助模型の比較のために導入されている。</p>
+</div>
+
+<h3>通常の圏との整合性</h3>
+<p>Core/LimitExamples では、順序圏 \(0\to1\) の二項積が nerve の極限と一致する、という小さな例を検算している（<code>topPair_limit_agreement</code>）。一般の圏 \(C\) について \(N(C)\) の極限が \(C\) の極限と一致することは、ここではまだ示されていない（古典 nerve との比較は F1B 側、第 4 章）。</p>
+
+<!-- ============================================================ -->
+<h2>6. ファイル構成（この章の範囲）</h2>
+<div class="table-wrap"><table>
+<tr><th>節</th><th>主なファイル</th><th class="num">規模</th></tr>
+<tr><td>1</td><td>PinchedHom/*、Core/MappingSpace*、PinchedSlice、PinchedUniversal</td><td class="num">約 1,700 行</td></tr>
+<tr><td>2</td><td>ContractibleKan、SimplicialHomotopyEquivalence、Kan*Equivalence、TrivialFibrationEquivalence、VertexFiber*</td><td class="num"></td></tr>
+<tr><td>3</td><td>TerminalMappingSpace、TerminalTransport</td><td class="num"></td></tr>
+<tr><td>4</td><td>FullyFaithful*、EquivalencePath*、EquivalenceCylinder*、EquivalenceMappingCylinder*、FunctorEdgePointwise</td><td class="num"></td></tr>
+<tr><td>5</td><td>Limit*、EquivalenceLimits、EquivalenceAllLimits、Pullback*、Square、FunctorLimits、FunctorPointwise*、FunctorTerminal、FunctorRelativeTerminal</td><td class="num"></td></tr>
+<tr><td>5（補助模型）</td><td>FatJoin*（33）、LaxSlice*（7）、Precomposition*（17）、ConeFamily、SliceLaxEquivalence、SliceConeFamilyEquivalence</td><td class="num">約 5,700 行</td></tr>
+</table></div>
+<p>Core の外からの利用状況：fat join は F1（16 ファイル）、F2（9）、F1B（6）などから広く使われている。Precomposition* は F1（34）、F1B（15）、F2（14）から使われる汎用の道具である。lax slice は Core の内部でしか使われていない。</p>
+
+<!-- ============================================================ -->
+<h2>7. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R8　F1 と F1B の間でファイルが丸ごと複製されている（重要）</p>
+<p>左右の写像空間の比較を追っていたところ、<code>F1/MappingSpaceIntervalComparison.lean</code> と <code>F1B/KanSectionMappingSpaceIntervalComparison.lean</code> が、名前空間（<code>KanSection</code>）と import の違いを除いて同一であることに気づいた。全体を機械的に調べると、正規化した本文が完全に一致する組が <b>17 組</b>（重複分 1,678 行）あり、すべて F1 と F1B の組だった（F1B 側は <code>KanSection*</code> という名前）。レーンを分けたときに複製したものと思われる。改名を伴うほぼ同一のものを含めると、さらに多い可能性がある。F1B 側を消して F1 側を参照させるのが、最も安全で効果がはっきりしたリファクタである。第 3〜4 章で F1・F1B を読むときに、全体を詳しく調べる。</p>
+</div>
+<div class="box refactor">
+<p class="label">R9　写像空間の基本結果の置き場所</p>
+<p>PinchedHom/ には定義と頂点の記述しかなく、Kan 性と \(\pi_0\) は Core/MappingSpace* に、左右の比較は F1/MappingSpaceModelEquivalence にある。写像空間に関する基本的な結果は一か所（たとえば <code>MappingSpace/</code>）にまとめたい。第 0 章で見た「Core → PinchedHom」という逆向きの依存も、これで解消する。</p>
+</div>
+<div class="box refactor">
+<p class="label">R10　ホモトピー同値の三つの言い方</p>
+<p>Kan 複体の間では <code>IsSimplicialHomotopyEquivalence</code> と <code>IsQCatEquivalence</code> が同値で、一般の射には <code>IsPrecompositionEquivalence</code> がある。今のところ使い分けは妥当だが、それぞれの補題（合成、二対三、二対六）が別々に証明されている（EquivalenceCalculus、FullyFaithfulCalculus、PrecompositionEquivalence）。片方から他方へ移す補題を整え、計算規則を一方にまとめる余地がある。優先度は低い。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>写像空間は右 pinched Hom で、slice の fiber と<b>同型</b>（同値ではない）。Kan 性は右ホーンを \(X\) の内ホーンに読み替えて示す。</li>
+  <li>Kan 複体の側でもモデル構造は使わず、可縮性は境界充填、ホモトピー同値は明示的な逆で定義している。</li>
+  <li>「同値 ⇔ 充満忠実かつ本質的全射」の証明は、path による isofibration への置き換えと、「充満忠実な inner fibration は終対象性を反映する」ことに帰着する。</li>
+  <li>「ホモトピー同値な Kan fibration は trivial」を使って、写像空間についての性質を持ち上げ性に変えるのが、この層の基本の型。</li>
+  <li>関手 ∞ 圏の極限は各点で計算できる。その証明のために、fat join・lax slice・錐の族という補助模型が導入され、slice との同値が示されている。</li>
+</ol>
+</main>
+</body>
+</html>

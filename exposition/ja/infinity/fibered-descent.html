@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 7　ファイバー圏・擬関手・降下：SGA1 から ∞ へ</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 7　ファイバー圏・擬関手・降下：SGA1 から ∞ へ</nav>
+<h1>補章 7　ファイバー圏・擬関手・降下：SGA1 から ∞ へ</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="cocartesian-definition.html">補章 6</a> の続きで、cocartesian／cartesian fibration の 1 圏での起源（SGA1 Exposé VI・VIII）と、降下との結びつきを扱う。Lean の宣言名は、他の章にすでに出ているものだけを引用する。</p>
+
+<p>この章の主張は一つである：<b>∞ 圏論の fibration と降下の扱いは、SGA1 のファイバー圏と降下の理論をそのまま持ち上げたもので、変わるのは「何次の重なり（何次の整合性）まで見ればよいか」が無限になる点だけである。</b></p>
+
+<!-- ============================================================ -->
+<h2>1. 擬関手</h2>
+
+<h3>定義</h3>
+<p>圏 \(\mathcal C\) から \(\mathrm{Cat}\) への擬関手 \(F\) は次のデータと条件からなる。</p>
+<ul>
+  <li>各対象 \(X\) に圏 \(F(X)\)、各射 \(f\colon X\to Y\) に関手 \(F(f)\)。</li>
+  <li>合成可能な \(X\xrightarrow{f}Y\xrightarrow{g}Z\) ごとに可逆な自然変換 \(\mu_{g,f}\colon F(g)\circ F(f)\xRightarrow{\sim}F(g\circ f)\)、各 \(X\) に可逆な \(\eta_X\colon\mathrm{id}\xRightarrow{\sim}F(\mathrm{id}_X)\)。</li>
+  <li><b>結合性</b>：\(W\xrightarrow{f}X\xrightarrow{g}Y\xrightarrow{h}Z\) について
+  \[
+  \mu_{h,gf}\circ\bigl(F(h)\,\mu_{g,f}\bigr)\ =\ \mu_{hg,f}\circ\bigl(\mu_{h,g}\,F(f)\bigr).
+  \]</li>
+  <li><b>単位性</b>：\(\mu_{f,\mathrm{id}}\circ(F(f)\,\eta_X)=\mathrm{id}\)、\(\mu_{\mathrm{id},f}\circ(\eta_Y\,F(f))=\mathrm{id}\)。</li>
+</ul>
+<div class="table-wrap"><table>
+<tr><th>種類</th><th>\(\mu,\eta\)</th></tr>
+<tr><td>厳密な関手</td><td>恒等変換</td></tr>
+<tr><td>擬関手</td><td>可逆な自然変換</td></tr>
+<tr><td>lax 関手</td><td>可逆とは限らない自然変換</td></tr>
+</table></div>
+<p>\(\mu\) は「同型が存在する」という条件ではなく、<b>指定されたデータ</b>である。選び方が違えば一般に違う擬関手になる（<a href="coherent-nerve-diagrams.html">補章 3</a> 例 1 の loop と同じ現象、降下データの \(\varphi\) を変えると貼り合わせの結果が変わる）。</p>
+
+<h3>1 圏と ∞ 圏：どこで等式になるか</h3>
+<div class="table-wrap"><table>
+<tr><th>列の長さ</th><th>擬関手（\(\mathrm{Cat}\) 値）</th><th>∞ 版（\(\mathrm{Cat}_\infty\) 値）</th></tr>
+<tr><td>1</td><td>関手 \(F(f)\)</td><td>関手 \(F(f)\)</td></tr>
+<tr><td>2</td><td>自然同型 \(\mu_{g,f}\)（データ）</td><td>2 単体 \(F(gf)\simeq F(g)F(f)\)（データ）</td></tr>
+<tr><td>3</td><td>結合性の<b>等式</b>（条件）</td><td>正方形：二通りの同型を結ぶ高次の同型（データ）</td></tr>
+<tr><td>\(n\)</td><td>なし</td><td>\((n-1)\) 次元の立方体（データ）</td></tr>
+</table></div>
+<p>\(\mathrm{Cat}\) は 2 圏で自然変換の間には等しいかどうかしかないので、長さ 3 で等式になって止まる。\(\mathrm{Cat}_\infty\) の写像空間 \(\mathrm{Fun}(\mathcal C,\mathcal D)^{\simeq}\) は空間なので、一致もまたデータになり無限に続く。<b>擬関手は ∞ 版の整合的図式を長さ 3 で切り詰めたもの</b>である。\(\mathrm{Cat}_\infty\) の写像空間は core なので、関手 \(\mathcal C\to\mathrm{Cat}_\infty\) は lax ではなく擬関手の ∞ 版にあたる。</p>
+
+<h3>整合性の処理の三通り</h3>
+<div class="table-wrap"><table>
+<tr><th>方法</th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>① 全データを書く</td><td>\(\mu,\eta\) を与えて等式を確かめる（手で可能）</td><td>\(N(\mathcal C)\to N^{hc}(\mathrm{QCat}^\Delta)\) を書く（実際には不可能）</td></tr>
+<tr><td>② fibration として作る</td><td>Grothendieck ファイバー圏（SGA1）</td><td>cocartesian／cartesian fibration と straightening</td></tr>
+<tr><td>③ 厳密化</td><td>擬関手は厳密な関手と同値（split fibration への置き換え、Giraud・Street）</td><td>整合的図式は単体的圏への厳密な図式と同値（Vogt、HTT Prop. 4.2.4.4）</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>2. 厳密にすると何が困るか</h2>
+<ol>
+  <li><b>自然な例が厳密でない</b>：引き戻し \(f^*\) は普遍性で定義され、\((gf)^*=f^*g^*\) は同型にしかならない（\(f^*M=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}M\) はテンソル積の選び方に依存）。</li>
+  <li><b>厳密化は圏を不自然なものに取り替える</b>：\(F'(X):=\mathrm{Hom}_{\mathrm{Cart}}(\mathcal C/X,\mathcal F)\) は厳密に関手的だが（§3.4 の 2-米田、<a href="unstraightening-analogy.html">補章 2</a> §4 (B) と同じ構成）、\(\mathcal F_X\) と同値な別の巨大な圏で、後の操作で厳密性も自然さも保たれない。</li>
+  <li><b>厳密な概念は同値で不変でない</b>：降下の図式 \(\mathcal F(U)\rightrightarrows\mathcal F(U_1)\) の厳密な極限は \(\mathrm{pr}_1^*\xi=\mathrm{pr}_2^*\xi\) が等号で成り立つ \(\xi\) の圏で、選び方に依存し、貼り合わせを捉えない。正しいのは同型 \(\varphi\) をデータとして持つ擬極限。∞ でも厳密な図式で計算するならホモトピー極限（導来版）を取る必要がずっと付きまとう。</li>
+  <li><b>厳密化できない構造がある</b>：モノイダル圏の結合性は厳密化できる（Mac Lane）が、対称性はできない。\(E_\infty\) 空間を厳密に可換な位相モノイドにすると Eilenberg–MacLane 空間の積しか得られない（Dold–Thom、Moore）。</li>
+</ol>
+<p>厳密な関手は、厳密化定理があれば計算のモデルとしては使えるが、概念としては扱いにくい。</p>
+
+<!-- ============================================================ -->
+<h2>3. ファイバー圏（SGA1 Exposé VI）</h2>
+
+<h3>3.1 定義</h3>
+<p>\(p\colon\mathcal F\to\mathcal C\)（\(\mathcal C\) は典型的にはスキームの圏）。幾何では引き戻しが反変なので cartesian の側を使う。\(\varphi\colon\xi\to\eta\)（\(p(\varphi)=f\colon X\to Y\)）が <b>cartesian</b> とは、任意の \(\psi\colon\zeta\to\eta\) と \(p(\psi)=f\circ g\) を満たす \(g\) について、\(\varphi\circ\chi=\psi\)、\(p(\chi)=g\) を満たす \(\chi\) が一意に存在すること（補章 6 §1 の双対）。任意の \(\eta\in\mathcal F_Y\) と \(f\colon X\to Y\) について cartesian な \(\xi\to\eta\) が存在するとき、\(p\) を<b>ファイバー圏</b>といい、\(\xi=f^*\eta\) を引き戻しと呼ぶ。</p>
+
+<h3>3.2 擬関手との対応</h3>
+<p>cartesian 持ち上げを選ぶ（clivage）と \(f^*\) が定まるが、合成とは同型 \(c_{f,g}\colon(fg)^*\xrightarrow{\sim}g^*f^*\) でしか両立せず、これがコサイクル条件を満たす。
+\[
+\{\mathcal C \text{ 上のファイバー圏}\}\ \simeq\ \{\text{擬関手 } \mathcal C^{\mathrm{op}}\to\mathrm{Cat}\}
+\]
+逆は Grothendieck 構成。split fibration は厳密な関手に対応する。ファイバー圏を主役にするのは、引き戻しが同型を除いてしか定義されず、擬関手として書くと選択と整合性の確認が要るからで、∞ の場合と同じ理由である。</p>
+
+<h3>3.3 例</h3>
+<div class="table-wrap"><table>
+<tr><th>ファイバー圏</th><th>対象</th><th>ファイバー</th></tr>
+<tr><td>\(\mathrm{QCoh}\to\mathrm{Sch}\)</td><td>\((X,M)\)、射は \(f\) と \(f^*N\to M\)、cartesian ⇔ \(f^*N\xrightarrow{\sim}M\)</td><td>\(\mathrm{QCoh}(X)\)</td></tr>
+<tr><td>\(\mathrm{Arr}(\mathcal C)\xrightarrow{\text{終域}}\mathcal C\)</td><td>射 \(E\to X\)、cartesian 射 = 引き戻しの正方形</td><td>\(\mathcal C_{/X}\)</td></tr>
+<tr><td>エタール層、\(G\) トルソー、直線束など</td><td>—</td><td>—</td></tr>
+</table></div>
+
+<h3>3.4 2-米田</h3>
+\[
+\mathcal F_X\ \simeq\ \mathrm{Hom}_{\mathrm{Cart}/\mathcal C}\bigl(\mathcal C/X,\ \mathcal F\bigr)\qquad(\mathrm{id}_X\text{ での評価})
+\]
+<p>\(\mathcal C/X\) は表現可能関手の Grothendieck 構成で、これは fibration 版の米田 \(\mathrm{Map}_{/B}(B_{b/},E)\simeq E_b\) の 1 圏版（反変版）である。</p>
+
+<!-- ============================================================ -->
+<h2>4. 降下（SGA1 Exposé VI・VIII）</h2>
+
+<h3>4.1 降下データ</h3>
+<p>被覆 \(U\to X\)、\(U_1:=U\times_XU\)、\(U_2:=U\times_XU\times_XU\) について、降下データは \(\xi\in\mathcal F_U\)、同型 \(\varphi\colon\mathrm{pr}_1^*\xi\xrightarrow{\sim}\mathrm{pr}_2^*\xi\)、コサイクル条件 \(\mathrm{pr}_{13}^*\varphi=\mathrm{pr}_{23}^*\varphi\circ\mathrm{pr}_{12}^*\varphi\)（\(U_2\) 上）の組。\(\mathcal F_X\to\mathrm{Desc}(U/X)\) が充満忠実なら<b>降下射</b>、同値なら<b>有効降下射</b>。全ての被覆が有効降下射になるファイバー圏が<b>スタック</b>、充満忠実になるものが<b>前スタック</b>。</p>
+<p><b>基本定理</b>（SGA1 Exposé VIII）：忠実平坦かつ準コンパクトな射は \(\mathrm{QCoh}\) の有効降下射。</p>
+
+<h3>4.2 篩からの cartesian 関手</h3>
+<p>\(U\to X\) が生成する篩 \(R\subseteq\mathcal C/X\) について \(\mathrm{Desc}(U/X)\simeq\mathrm{Hom}_{\mathrm{Cart}/\mathcal C}(R,\mathcal F)\)。降下の条件は
+\[
+\mathcal F_X\simeq\mathrm{Hom}_{\mathrm{Cart}}(\mathcal C/X,\mathcal F)\ \xrightarrow{\ \text{制限}\ }\ \mathrm{Hom}_{\mathrm{Cart}}(R,\mathcal F)\ \text{ が同値（スタック）／充満忠実（前スタック）}.
+\]
+スタックとは篩の包含 \(R\hookrightarrow\mathcal C/X\) に対して局所的なファイバー圏で、<a href="presentable-route.html">補章 4</a> の「\(S\) 局所対象」と同じ形である。</p>
+
+<h3>4.3 極限としての言い換えと切り詰めの階層</h3>
+<p>降下データは余単体的図式 \(\mathcal F(U)\rightrightarrows\mathcal F(U_1)\to\mathcal F(U_2)\)（三本）の擬極限で、\(\xi\) が 0 次、\(\varphi\) が 1 次、コサイクル条件が 2 次のデータ。<a href="cocartesian-definition.html">補章 6</a> §5 の「\(\lim F\) = cocartesian 切断」の 1 圏版である。</p>
+<div class="table-wrap"><table>
+<tr><th>値</th><th>必要なデータ</th><th>使う重なり</th></tr>
+<tr><td>集合（層）</td><td>切断と二重の重なりでの一致（等化子）</td><td>\(U,U_1\)</td></tr>
+<tr><td>圏・亜群（スタック）</td><td>対象、同型、コサイクル条件</td><td>\(U,U_1,U_2\)</td></tr>
+<tr><td>∞ 圏（∞ スタック、\(D(X)\)）</td><td>全ての次数の整合性</td><td>全ての \(U_n\)（Čech 脈体全体）</td></tr>
+</table></div>
+<p>集合は 0 切り詰め、圏は 1 切り詰めの対象なので有限の段で切ってよい。補章 3 の「1 圏のナーブは 2-余骨格的」と同じ現象である。</p>
+
+<h3>4.4 Beck–Chevalley とモナド性</h3>
+<p><b>Bénabou–Roubaud の定理</b>：\(f\colon U\to X\) について \(f^*\) が右随伴 \(f_*\) を持ち基底変換（Beck–Chevalley 条件）が成り立つなら、\(\mathrm{Desc}(U/X)\simeq\) モナド \(f^*f_*\) の代数の圏。降下は \(f^*\) のモナド性（Beck）に帰着し、忠実平坦なら \(f^*\) は保存的で適切な余等化子を保つのでモナド的になる。補章 6 §5 の「随伴と Beck–Chevalley 条件は両側 fibration で扱う」がここで使われる。</p>
+
+<!-- ============================================================ -->
+<h2>5. ∞ への接続</h2>
+<p><b>三角圏では貼り合わせができない</b>：\(X=U\cup V\) で、\(U\)・\(V\) 上の複体と重なりでの擬同型を与えても、錐が関手的でないので貼り合わせが一意に決まらず、三重の重なりでのコサイクルをホモトピーで満たすための高次データも要る。</p>
+<p><b>∞ 圏では降下が成り立つ</b>：
+\[
+D(X)\ \xrightarrow{\ \sim\ }\ \lim_{[n]\in\Delta}D(U_n)\qquad\bigl(\text{Zariski なら } D(X)\simeq D(U)\times_{D(U\cap V)}D(V)\bigr)
+\]
+（たとえば \(D_{\mathrm{qc}}\) の fpqc 降下）。§4.3 の表の最後の行で、SGA1 のコサイクル条件が補章 3 の立方体の整合性の無限の列に置き換わったもの。</p>
+<div class="table-wrap"><table>
+<tr><th>SGA1</th><th>∞ 版</th></tr>
+<tr><td>ファイバー圏</td><td>cartesian fibration（\(\mathrm{Sch}^{\mathrm{op}}\to\mathrm{Cat}_\infty\) の unstraightening）</td></tr>
+<tr><td>2-米田 \(\mathcal F_X\simeq\mathrm{Hom}_{\mathrm{Cart}}(\mathcal C/X,\mathcal F)\)</td><td>fibration 版の米田</td></tr>
+<tr><td>降下データ = 篩からの cartesian 関手</td><td>cartesian 切断の ∞ 圏 = \(\mathrm{Cat}_\infty\) での極限（HTT §3.3）</td></tr>
+<tr><td>Bénabou–Roubaud + Beck</td><td>Barr–Beck–Lurie（HA §4.7）+ Beck–Chevalley</td></tr>
+<tr><td>コサイクル条件（\(U_2\) まで）</td><td>Čech 脈体全体の totalization</td></tr>
+</table></div>
+<p>∞ では、Čech 脈体だけでなく任意の超被覆に対して降下を要求するか（hypercompleteness）という新しい区別が生じる。1 圏では切り詰めのおかげで両者が一致していた。</p>
+
+<!-- ============================================================ -->
+<h2>6. 擬関手と lax 関手の使い分け</h2>
+<div class="table-wrap"><table>
+<tr><th></th><th>擬関手</th><th>lax 関手</th></tr>
+<tr><td>比較 \(F(g)F(f)\to F(gf)\)</td><td>可逆</td><td>一方向のみ</td></tr>
+<tr><td>比較の出どころ</td><td>普遍性（引き戻し、基底変換）</td><td>構造（積、単位）や随伴の向き</td></tr>
+<tr><td>典型例</td><td>\(f^*\)、係数拡大 \(-\otimes_RS\)</td><td>モナド、lax モノイダル関手</td></tr>
+<tr><td>fibration 側</td><td>(co)cartesian fibration</td><td>fibration でない一般の関手</td></tr>
+</table></div>
+
+<h3>擬関手の使い道</h3>
+<p>対象ごとに圏を割り当て射に沿って普遍的に移す場面ではほぼ全て擬関手：ファイバー圏・スタック・降下、\(X\mapsto\mathrm{QCoh}(X)\)・\(D(X)\)（\(f^*\) についても \(f_*\) についても比較は同型）、\(R\mapsto\mathrm{Mod}_R\)、\(G\mapsto\mathrm{Rep}(G)\)。</p>
+
+<h3>lax 関手の使い道</h3>
+<ul>
+  <li><b>モナド</b>：一点の 2 圏から \(\mathrm{Cat}\) への lax 関手（Bénabou）。\(F(\mathrm{id})=T\)、比較 \(\mu\colon T\circ T\Rightarrow T\)、\(\eta\colon\mathrm{id}\Rightarrow T\) は可逆でない（可逆なら \(T\simeq\mathrm{id}\)）。§4.4 のモナドはこの意味。「圏は Span の中のモナド」という見方も同じ流れ。</li>
+  <li><b>lax モノイダル関手</b>：\(B\mathcal V\to B\mathcal W\) の lax 関手。対称モノイダルな左随伴の右随伴は自動的に lax モノイダル（<a href="monoidal-prl.html">補章 5</a>）で、射影公式はその構造写像の可逆性。Mann の \(D\colon\mathrm{Corr}\to\mathrm{Pr}^L\) も lax 対称モノイダル。</li>
+  <li><b>lax 極限・余極限</b>：Grothendieck 構成 \(\int F\) は lax 余極限、fibration の全ての切断の圏は lax 極限。lax 自然変換は cocartesian 射を保つとは限らない \(B\) 上の関手に対応する（補章 2 §3）。</li>
+  <li><b>fibration でない関手</b>：一般の関手 \(E\to B\) は、\(B\) から profunctor の 2 圏への正規 lax 関手と対応する（Bénabou）。</li>
+</ul>
+<p>∞ で lax 関手・lax 自然変換を扱うには \((\infty,2)\) 圏としての \(\mathrm{Cat}_\infty\) が要る。実際には lax の情報を fibration 側（cocartesian 射を保たない関手、切断）で扱うのが普通（Gepner–Haugseng–Nikolaus「Lax colimits and free fibrations」）。</p>
+
+<!-- ============================================================ -->
+<h2>7. 具体例：群の表現</h2>
+
+<h3>7.1 擬関手としての記述（テンソル積モデル）</h3>
+<p>群準同型 \(\varphi\colon H\to G\) に対し、\(k[G]\) を左から \(k[H]\)（\(\varphi\) 経由）、右から \(k[G]\) が作用する両側加群 \({}_\varphi k[G]\) と見て \(\varphi^*V:={}_\varphi k[G]\otimes_{k[G]}V\) と定める。制限は逆向きなので、得られるのは反変の擬関手 \(\mathrm{Grp}^{\mathrm{op}}\to\mathrm{Cat}\)。</p>
+<ul>
+  <li>\(\eta\)：\(\mathrm{id}^*V=k[G]\otimes_{k[G]}V\xrightarrow{\sim}V\)。</li>
+  <li>\(\mu\)：\(K\xrightarrow{\varphi}H\xrightarrow{\psi}G\) について、\({}_\varphi k[H]\otimes_{k[H]}{}_\psi k[G]\cong{}_{\psi\varphi}k[G]\) から \(\varphi^*\psi^*V\xrightarrow{\sim}(\psi\varphi)^*V\)。</li>
+  <li>結合性・単位性の等式は、テンソル積の結合同型の整合性から従う。データだけでなく、この等式も要る。</li>
+</ul>
+<p>制限を「同じベクトル空間に \(\varphi\) 経由で作用させる」と定義すれば \((\psi\varphi)^*=\varphi^*\psi^*\) が等号で成り立ち、厳密な関手になる。厳密かどうかはモデルの選び方次第である（§2）。</p>
+
+<h3>7.2 Grothendieck 構成</h3>
+<p>全体の圏 \(\int\mathrm{Rep}\)：対象は \((G,V)\)、射 \((H,W)\to(G,V)\) は \(\varphi\colon H\to G\) と \(H\) 同変な \(f\colon W\to\varphi^*V\) の組。合成は
+\[
+U\xrightarrow{\ f\ }\varphi^*W\xrightarrow{\ \varphi^*g\ }\varphi^*\psi^*V\xrightarrow{\ \mu\ }(\psi\varphi)^*V,
+\]
+恒等射は \(\eta^{-1}\) で与える。</p>
+<div class="table-wrap"><table>
+<tr><th>擬関手の側</th><th>全体の圏の側</th></tr>
+<tr><td>\(\mu\)</td><td>射の合成の定義</td></tr>
+<tr><td>\(\eta\)</td><td>恒等射の定義</td></tr>
+<tr><td>結合性の等式</td><td>合成の結合律</td></tr>
+<tr><td>単位性の等式</td><td>恒等射の単位律</td></tr>
+</table></div>
+<p><b>擬関手の整合性条件は、全体の圏が圏であるための公理そのもの</b>である。射影 \((G,V)\mapsto G\) は cartesian fibration で、\((\varphi,f)\) が cartesian ⇔ \(f\) が同型。</p>
+
+<h3>7.3 選択なしの記述</h3>
+<p>全体の圏は \(\varphi^*\) を使わずに直接書ける。射 \((H,W)\to(G,V)\) を、\(\varphi\colon H\to G\) と \(f(h\cdot w)=\varphi(h)\cdot f(w)\) を満たす線形写像 \(f\colon W\to V\)（\(\varphi\)-同変写像）の組とし、合成は写像の合成とする。これは \(\int\mathrm{Rep}\) と同型で、テンソル積も \(\mu,\eta\) も出てこない。cartesian 射は \(f\) が全単射なもので、引き戻し \(\varphi^*V\) は cartesian 持ち上げとして普遍性で<b>後から</b>決まる。テンソル積モデルはその一つの選び方（clivage）にすぎない。</p>
+
+<h3>7.4 誘導表現と Frobenius 相互律</h3>
+<p>\((H,W)\) と \(\varphi\) の cocartesian 持ち上げは \((H,W)\to(G,k[G]\otimes_{k[H]}W)\)、すなわち誘導表現。\(p\) は両側 fibration で、cartesian 輸送が制限、cocartesian 輸送が誘導を与える。\(\varphi\) の上の射の集合をどちらの持ち上げで計算しても同じなので
+\[
+\mathrm{Hom}_G(\mathrm{Ind}_\varphi W,\ V)\ \cong\ \mathrm{Hom}_\varphi\bigl((H,W),(G,V)\bigr)\ \cong\ \mathrm{Hom}_H(W,\ \varphi^*V),
+\]
+これが Frobenius 相互律 \(\mathrm{Ind}\dashv\mathrm{Res}\)（<a href="cocartesian-definition.html">補章 6</a> §5 の「\(\Delta^1\) 上の両側 fibration が随伴」の具体例）。</p>
+
+<h3>7.5 ∞ 版：∞ 群と \(\mathrm{Fun}(BG,D(k))\)</h3>
+<p><b>∞ 群</b>は空間の ∞ 圏 \(\mathcal S\) の中の群対象（群的な \(E_1\) 空間）で、
+\[
+\mathrm{Grp}(\mathcal S)\ \simeq\ \mathcal S_*^{\ge1}\qquad G\mapsto BG,\quad X\mapsto\Omega X
+\]
+（連結な点付き空間と同値）。積の結合性はホモトピー整合的に、逆元はホモトピーを除いて成り立つ。例：離散群（\(BG=K(G,1)\)）、位相群（\(U(n)\) と \(BU(n)\)）、任意の連結点付き空間 \(X\) のループ空間 \(\Omega X\)。</p>
+
+<p><b>\(\mathrm{Fun}(BG,\mathcal C)\)</b> は「\(G\) がホモトピー整合的に作用する \(\mathcal C\) の対象」の ∞ 圏（<a href="coherent-nerve-diagrams.html">補章 3</a> 例 2 の一般化）で、\(BG\) 上の局所系とも読める。\(\mathcal C=D(k)\) なら、群環を鎖の \(E_1\) 代数 \(k[G]:=C_*(G;k)\) に置き換えて
+\[
+\mathrm{Fun}(BG,D(k))\ \simeq\ \mathrm{LMod}_{C_*(G;k)}
+\]
+（生成元 \(k[G]\) による Morita 型の同値）。離散群なら \(D(k[G])\)、つまり<b>表現の導来圏</b>である。</p>
+<div class="table-wrap"><table>
+<tr><th>\(X=BG\)</th><th>\(\Omega X\)</th><th>\(\mathrm{Fun}(X,D(k))\)</th></tr>
+<tr><td>\(BG\)（\(G\) 離散）</td><td>\(G\)</td><td>\(D(k[G])\)</td></tr>
+<tr><td>\(S^1\)</td><td>\(\mathbb Z\)</td><td>\(D(k[t^{\pm1}])\)（モノドロミー）</td></tr>
+<tr><td>\(S^2\)</td><td>\(\Omega S^2\)</td><td>\(k\langle x\rangle\)（\(|x|=1\) の自由 \(E_1\) 代数）上の加群。\(\pi_1=0\) なので 1 圏の局所系は自明だが、∞ では非自明</td></tr>
+</table></div>
+
+<p><b>何をやっていることになるか</b>：群の表現論を、射影分解を使わずに不変に行っている。導来関手は Kan 拡張・極限として自動的に出てくる。</p>
+<div class="table-wrap"><table>
+<tr><th>操作</th><th>∞ での定義</th><th>古典的な名前</th></tr>
+<tr><td>\(\varphi\colon BH\to BG\) に沿った制限</td><td>前合成 \(\varphi^*\)</td><td>制限</td></tr>
+<tr><td>左 Kan 拡張 \(\varphi_!\)</td><td>cocartesian 輸送</td><td>誘導 \(k[G]\otimes^{\mathbb L}_{k[H]}-\)</td></tr>
+<tr><td>右 Kan 拡張 \(\varphi_*\)</td><td>\(\varphi^*\) の右随伴</td><td>余誘導</td></tr>
+<tr><td>\(p\colon BG\to\ast\) に沿った \(p_!\)＝余極限</td><td>\(V_{hG}\)</td><td>群ホモロジー \(k\otimes^{\mathbb L}_{k[G]}V\)</td></tr>
+<tr><td>\(p\colon BG\to\ast\) に沿った \(p_*\)＝極限</td><td>\(V^{hG}\)</td><td>群コホモロジー \(\mathrm{RHom}_{k[G]}(k,V)\)</td></tr>
+</table></div>
+<p>群コホモロジーは「\(BG\) から点への押し出し」であり、六関手形式の \(p_*\) の最も簡単な例になっている。前合成 \(\varphi^*\) は単体的集合のレベルで厳密に関手的（§7.1 の「同じ空間に作用させる」モデルの ∞ 版）だが、\(D(k[G])\) と同一視すると擬関手的になる。fibration 側では、対象 \((X,F\colon X\to\mathcal C)\)、射 \((\varphi\colon Y\to X,\ F'\Rightarrow F\circ\varphi)\) の ∞ 圏（lax slice の一部）が \(X\mapsto\mathrm{Fun}(X,\mathcal C)\) を分類する cartesian fibration で、誘導 \(\varphi_!\) が cocartesian 輸送として出てくるのも 1 圏と同じである。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<ul>
+  <li>SGA1 Exposé VI（ファイバー圏と降下、Giraud の厳密化を含む）、Exposé VIII（忠実平坦降下）。現代的な整理は Vistoli のノート「Notes on Grothendieck topologies, fibered categories and descent theory」が読みやすい。</li>
+  <li>∞ 版の極限 = cartesian 切断は HTT §3.3、Barr–Beck–Lurie は HA §4.7。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の章のみ）</p>
+<ul>
+  <li>このページの既存の章には、擬関手・スタック・降下の記述はない。∞ 版の極限と lax 極限については、<a href="06-catinfty-ind-presentable.html">第 6 章</a> §1（\(\mathrm{Cat}_\infty\) の極限と lax pullback）がある。</li>
+  <li><a href="08-dgnerve-derived.html">第 8 章</a> §5 の dg gluing は「安定 ∞ 圏の lax pullback」（Tamme）で、§6 の lax 極限の具体例にあたる（作業中）。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>擬関手は、合成との比較の自然同型をデータとして指定し、結合性を等式で課したもの。∞ 版の整合的図式を長さ 3 で切り詰めたもので、∞ では等式が高次データになって無限に続く。</li>
+  <li>厳密な関手はモデルとしては使えるが、同値で不変でなく選択に依存し、厳密化できない構造もある。</li>
+  <li>SGA1 のファイバー圏 ⇔ 擬関手 \(\mathcal C^{\mathrm{op}}\to\mathrm{Cat}\)。ファイバーは 2-米田で \(\mathrm{Hom}_{\mathrm{Cart}}(\mathcal C/X,\mathcal F)\)、降下は篩への制限が同値という局所性の条件。</li>
+  <li>降下データは擬極限で、値の切り詰め次数に応じて必要な重なりが決まる（層は \(U_1\)、スタックは \(U_2\)、∞ スタックは Čech 脈体全体）。三角圏で貼り合わせができず ∞ 圏が要る理由がここにある。</li>
+  <li>具体例 \(G\mapsto\mathrm{Rep}(G)\)：擬関手の \(\mu,\eta\) と整合性は全体の圏の合成・恒等射・結合律そのもので、全体の圏は \(\varphi\)-同変写像として選択なしで書ける。両側 fibration で Frobenius 相互律が自動的に出る。∞ 版は \(\mathrm{Fun}(BG,D(k))\simeq\mathrm{LMod}_{C_*(G;k)}\) で、群コホモロジーは \(BG\to\ast\) の押し出し。</li>
+  <li>擬関手は普遍性から来る可逆な比較、lax 関手は構造としての一方向の比較（モナド、lax モノイダル、lax 極限）。</li>
+</ul>
+</main>
+</body>
+</html>

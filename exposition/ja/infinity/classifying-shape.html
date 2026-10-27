@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 9　分類空間 B、大域切断、シェイプ（局所体の Brauer 群まで）</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 9　分類空間 B、大域切断、シェイプ（局所体の Brauer 群まで）</nav>
+<h1>補章 9　分類空間 \(B\)、大域切断、シェイプ（局所体の Brauer 群まで）</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="rep-cft.html">補章 8</a> §4.5〜4.8（有限体の Brauer 群）で使った \(B\)・\(\Gamma\)・「次元 1」の意味を確かめ、一般の群・一般のエタール ∞ トポスに広げる。Lean の宣言名は引用しない。</p>
+
+<!-- ============================================================ -->
+<h2>1. \(B\) とは何か</h2>
+<p>\(B\) は<b>群から「その群を自己同型として持つ一点」を作る操作</b>（分類空間、デループ）。これまでの \(BG\)（群の表現）、\(B\hat{\mathbb Z}\)（有限体のエタールホモトピー型）、\(B\mathbf{Pic}\)、\(B^2\mathbb G_m\) は全て同じ構成。</p>
+
+<h3>空間の場合</h3>
+<ul>
+  <li><b>離散群</b>：\(BG\) は対象が一つで自己射の群が \(G\) の亜群。空間としては \(K(G,1)\)。連結で \(\Omega BG\simeq G\)。例：\(B\mathbb Z=S^1\)、\(B\mathbb Z/2=\mathbb{RP}^\infty\)、\(BU(1)=\mathbb{CP}^\infty\)。</li>
+  <li><b>∞ 群</b>：bar 構成 \(BG:=\operatorname{colim}_{[n]\in\Delta^{\mathrm{op}}}G^{\times n}\)。\(\{\text{}\infty\text{ 群}\}\simeq\{\text{連結な点付き空間}\}\)、\(G\mapsto BG\)、\(X\mapsto\Omega X\)。</li>
+  <li><b>繰り返し</b>：\(A\) がアーベル群（\(E_\infty\) 群）なら \(BA\) も群で、\(B^nA=K(A,n)\)、\(\Omega^nB^nA\simeq A\)。例：\(B^2\mathbb Z=B(S^1)=\mathbb{CP}^\infty\)。</li>
+</ul>
+
+<h3>\(B\) は torsor を分類する</h3>
+\[
+\mathrm{Map}(X,BG)\ \simeq\ \{X\text{ 上の }G\text{ torsor の }\infty\text{ 亜群}\}.
+\]
+<p>\(B\mathbb Z\) への写像は被覆空間、\(BU(1)\) への写像は複素直線束、\(B^2A\) への写像は \(BA\) torsor すなわち \(A\) gerbe を分類する。</p>
+
+<h3>層（∞ トポス）の場合</h3>
+<p>群の層 \(\mathcal G\) の \(B\mathcal G\) は、前層 \(U\mapsto B(\mathcal G(U))\) を<b>層化</b>したもの（∞ トポスの中では \(\Omega\) の逆として特徴づけられる、HTT Lemma 7.2.2.11）。層化が本質的で、
+\[
+\Gamma(B\mathcal G)\ =\ \{\text{底の上の }\mathcal G\text{ torsor}\}\ \neq\ B(\Gamma\mathcal G),
+\]
+差が非自明な torsor（\(H^1\) にあたるもの）。</p>
+
+<div class="table-wrap"><table>
+<tr><th>記号</th><th>群</th><th>何を分類するか／何であるか</th></tr>
+<tr><td>\(BG\)（\(\mathrm{Fun}(BG,D(k))\)）</td><td>群 \(G\)</td><td>\(BG\) からの関手 = \(G\) がホモトピー整合的に作用する対象</td></tr>
+<tr><td>\(B\hat{\mathbb Z}\)</td><td>\(\mathrm{Gal}(\overline{\mathbb F}_q/\mathbb F_q)\)</td><td>\(\mathrm{Spec}\,\mathbb F_q\) のエタールホモトピー型（副有限な円周）</td></tr>
+<tr><td>\(B\mathbb Z\)（層）</td><td>定数層 \(\mathbb Z\)</td><td>\(\mathbb Z\) torsor</td></tr>
+<tr><td>\(B\mathbf{Pic}\)（層）</td><td>\(\mathbf{Pic}=\mathrm{Aut}(\mathrm{Mod})\)</td><td>\(\mathrm{Mod}\) の捻れた形（Brauer 類）</td></tr>
+<tr><td>\(B^2\mathbb G_m\)（層）</td><td>\(\mathbb G_m\)</td><td>\(\mathbb G_m\) gerbe</td></tr>
+</table></div>
+<p><b>一般原理</b>：対象 \(X\) の捻れた形（局所的に \(X\) と同値なもの）は \(B\mathrm{Aut}(X)\) の大域切断で分類される（局所的に \(X\) と同値なものは、\(X\) との同値のなす \(\mathrm{Aut}(X)\) torsor と同じ）。\(\mathbf{Br}=\Gamma(B\mathbf{Pic})\) はその例で、Postnikov 分解 \(B^2\mathbb G_m\to B\mathbf{Pic}\to B\mathbb Z\) は \(\mathbf{Pic}\simeq\mathbb Z\times B\mathbb G_m\) に \(B\) を当てはめたもの。「\(B^2\mathbb G_m\) は 1-連結」は「\(B\) を二回取ったので \(\pi_0\) と \(\pi_1\) が消えている」という意味。</p>
+
+<!-- ============================================================ -->
+<h2>2. 大域切断とは：\(\Gamma(B\mathbb Z)\) の例</h2>
+<p>空間 \(B\mathbb Z=S^1\) はそれ自体一つの空間だが、層として扱うときは「底の各点に \(S^1\) が載った定数の族」。定数層関手 \(\pi^*\) は余極限と有限極限を保つので \(B(\underline{\mathbb Z})\simeq\underline{B\mathbb Z}=\underline{S^1}\)。</p>
+<p>大域切断は \(\Gamma(F)=\mathrm{Map}_{\mathcal X}(\ast,F)\)（\(\ast\) は終対象 = 底そのもの）。底が一点なら \(\Gamma(\underline K)=K\)、一般には底の形からの写像の空間：
+\[
+\Gamma(\underline K)\ \simeq\ \mathrm{Map}\bigl(\mathrm{Shape}(\mathrm{Spec}\,\mathbb F_q),K\bigr)=\mathrm{Map}_{\mathrm{cont}}(B\hat{\mathbb Z},K)
+\]
+（底 \(X\) 上の自明束 \(X\times K\) の切断が \(\mathrm{Map}(X,K)\) なのと同じ）。</p>
+<p>\(K=B\mathbb Z\) では \(\Gamma\) は \(\mathbb Z\) torsor（\(\mathbb Z\) が単純推移的に作用し、それと可換な \(\hat{\mathbb Z}\) の連続作用を持つ集合）の ∞ 亜群。連続準同型 \(\hat{\mathbb Z}\to\mathbb Z\) は自明なものだけなので torsor は一つで自己同型は \(\mathbb Z\)：\(\Gamma(\underline{B\mathbb Z})\simeq B\mathbb Z\simeq S^1\)。</p>
+<div class="table-wrap"><table>
+<tr><th>底</th><th>\(\mathrm{Map}(\text{底},S^1)\)</th><th>連結成分</th></tr>
+<tr><td>一点</td><td>\(S^1\)</td><td>一つ</td></tr>
+<tr><td>離散な円周 \(S^1\)</td><td>\(\mathrm{Map}(S^1,S^1)\)</td><td>回転数 \(n\in\mathbb Z\) ごとに一つ</td></tr>
+<tr><td>副有限な円周（\(\mathrm{Spec}\,\mathbb F_q\)）</td><td>\(\mathrm{Map}_{\mathrm{cont}}(B\hat{\mathbb Z},S^1)\)</td><td>一つ（連続性が回転数を殺す）</td></tr>
+</table></div>
+<p>\(B^2\mathbb G_m\)・\(B\mathbf{Pic}\) は定数層でない（Frobenius が \(\overline{\mathbb F}_q^\times\) に非自明に作用する）ので、大域切断は「底からの写像」ではなく「ねじれた写像（切断）」の空間になる。</p>
+
+<!-- ============================================================ -->
+<h2>3. 一般の群：自由ループ空間の公式</h2>
+
+<h3>定数な離散群</h3>
+<p>torsor は有限次で自明化するので連続準同型 \(\hat{\mathbb Z}\to G\) で分類され、それは<b>有限位数の元</b>を一つ選ぶことと同じ。同型は共役、自己同型は中心化群：
+\[
+\Gamma(B\underline G)\ \simeq\ \coprod_{[g]\,:\ g\text{ は有限位数}}B\,C_G(g).
+\]
+離散な円周なら \(\mathrm{Map}(S^1,BG)=LBG\simeq G^{\mathrm{ad}}_{hG}\simeq\coprod_{[g]\,:\ \text{全ての共役類}}B\,C_G(g)\) で、副有限な円周はこれを有限位数の元に制限したもの。</p>
+<div class="table-wrap"><table>
+<tr><th>\(G\)</th><th>有限位数の元の共役類</th><th>\(\Gamma(B\underline G)\)</th></tr>
+<tr><td>\(\mathbb Z\)</td><td>\(0\) のみ</td><td>\(B\mathbb Z\)（連結）</td></tr>
+<tr><td>捩れのない群</td><td>単位元のみ</td><td>\(BG\)（全ての torsor が自明）</td></tr>
+<tr><td>有限群</td><td>全ての共役類</td><td>\(LBG\)（離散な円周と同じ）</td></tr>
+</table></div>
+<p>\(G=S_n\) なら \(S_n\) torsor は \(\mathbb F_q\) 上の \(n\) 次エタール代数で、同型類は巡回型と一対一：\(\mathbb F_q\) 上の多項式は Frobenius の巡回型に応じた次数の既約因子に分解する。</p>
+
+<h3>Frobenius が非自明に作用する場合</h3>
+\[
+\Gamma(B\mathcal G)\ \simeq\ \coprod_{[h]\,:\ \varphi\text{-ねじれ共役類}}B\,C^{\varphi}_G(h),\qquad h\sim g\,h\,\varphi(g)^{-1}
+\]
+<p>（\(C^\varphi_G(h)\) はねじれた中心化群、連続性付き）。</p>
+<div class="table-wrap"><table>
+<tr><th>\(\mathcal G\)</th><th>ねじれ共役類</th><th>帰結</th></tr>
+<tr><td>連結な代数群 \(G(\overline{\mathbb F}_q)\)</td><td>一つ（Lang）</td><td>\(H^1(\mathbb F_q,G)=0\)、自己同型は \(G(\mathbb F_q)\)</td></tr>
+<tr><td>\(\mathbb G_m\)</td><td>一つ（\(x\mapsto x^{q-1}\) が全射）</td><td>Hilbert 90</td></tr>
+<tr><td>有限エタール群</td><td>有限個</td><td>例：\(\mu_n\) torsor ↔ \(\mathbb F_q^\times/(\mathbb F_q^\times)^n\)</td></tr>
+</table></div>
+
+<h3>高次の群</h3>
+<p>群的な空間 \(\mathcal G\) でも \(\Gamma(B\mathcal G)\simeq\mathcal G_{h\mathcal G}\)（\(\varphi\) でねじった共役作用による商、連続性付き）で、連結成分は \(\pi_0\mathcal G\) の \(\varphi\)-ねじれ共役類。補章 8 §4.7 の円周原理はこの \(\pi_0\)。\(\mathcal G=B\mathbb G_m\) なら \(\Gamma(B^2\mathbb G_m)\) は連結、\(\mathcal G=\mathbf{Pic}\) なら \(\pi_0=\mathbb Z\) で連続性により \(0\)、よって \(\mathrm{Br}(\mathbb F_q)=0\)。</p>
+
+<!-- ============================================================ -->
+<h2>4. 一般のエタール ∞ トポス：シェイプ</h2>
+<p>どんな ∞ トポスでも \(\Gamma\pi^*\) は pro 空間 \(\mathrm{Shape}(\mathcal X)\) で表現される（HTT §7.1.6、シェイプの定義）：
+\[
+\Gamma(\pi^*K)\ \simeq\ \mathrm{Map}\bigl(\mathrm{Shape}(\mathcal X),K\bigr),\qquad\Gamma(B\underline G)\ \simeq\ \coprod_{[\rho]}B\,C_G(\rho)\quad(\rho\colon\pi_1\mathrm{Shape}(X_{\mathrm{et}})\to G,\ X\text{ 連結}).
+\]
+§3 の公式は \(\pi_1=\hat{\mathbb Z}\) の場合。</p>
+<div class="table-wrap"><table>
+<tr><th>底 \(X\)</th><th>シェイプ（の \(\pi_1\)）</th><th>\(G\) torsor（\(G\) 有限群）</th></tr>
+<tr><td>\(\mathrm{Spec}\,\mathbb F_q\)</td><td>\(B\hat{\mathbb Z}\)</td><td>\(G\) の共役類（Frobenius の像）</td></tr>
+<tr><td>\(\mathrm{Spec}\,k\)</td><td>\(BG_k\)</td><td>連続準同型 \(G_k\to G\) の共役類</td></tr>
+<tr><td>\(\mathrm{Spec}\,\mathbb Z\)</td><td>\(\pi_1=1\)（Minkowski）</td><td>自明なもののみ、\(\Gamma(BG)\simeq BG\)</td></tr>
+<tr><td>種数 \(g\) の曲線（\(\mathbb C\) 上）</td><td>曲面群の副有限完備化</td><td>\(G\) 被覆（Riemann の存在定理）</td></tr>
+<tr><td>局所体 \(K\)</td><td>\(BG_K\)</td><td>連続準同型 \(G_K\to G\) の共役類</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th>\(G\) の種類</th><th>\(\Gamma(B\mathcal G)\) の計算</th></tr>
+<tr><td>有限群（定数）</td><td>π-有限なのでシェイプの副有限完備化（Artin–Mazur）だけを見る。\(\pi_1^{\mathrm{et}}(X)\to G\) の共役類と中心化群（SGA1 の Galois 圏）</td></tr>
+<tr><td>無限な離散群（定数）</td><td>シェイプそのものが要る。正規な \(X\) では \(\mathbb Z\) torsor は自明（局所既約性、\(\mathrm{Spec}\,\mathbb F_q\) の「連続性」の一般化）。結節点を持つ 3 次曲線では \(H^1(X,\mathbb Z)=\mathbb Z\)（Bhatt–Scholze の pro-étale 基本群が捉える）</td></tr>
+<tr><td>局所定数な群</td><td>シェイプ上の局所系（関手 \(\mathrm{Shape}(X)\to\mathcal S\)）の切断、ねじれた共役</td></tr>
+<tr><td>局所定数でない群（\(\mathbb G_m\)、代数群）</td><td>シェイプでは足りず、トポス全体が要る。曲線上の \(\pi_0\Gamma(B\mathbb G_m)=\mathrm{Pic}(X)\) は連続的なパラメータを持つ</td></tr>
+</table></div>
+<p><b>体の場合が特別な理由</b>：\(\mathrm{Spec}\,k\) のエタール層は全て Galois 加群、すなわち \(BG_k\) 上の局所系なので、\(\mathbb G_m\) も含めて全てがシェイプ上の計算に帰着する。有限体の Brauer 群が円周の計算で済んだのはこのため。</p>
+
+<!-- ============================================================ -->
+<h2>5. 補章 8 §4.8 の三つの事実の出どころ</h2>
+<div class="table-wrap"><table>
+<tr><th>主張</th><th>出どころ</th><th>性格</th></tr>
+<tr><td>\(B^2\mathbb G_m\) が 1-連結</td><td>Postnikov 分解の定義（\(F\to\tau_{\le1}F\) は 1-連結な射、\(B^nA\) は \((n-1)\)-連結として定義）</td><td>形式的</td></tr>
+<tr><td>ファイバーが \(B^2\mathbb G_m\)</td><td>\(B\mathbf{Pic}\) は局所自明性の定義により連結。体の上の可逆複体はずらし \(L[n]\) だけ（全次元）、単位の自己同型は \(\mathbb G_m\)。\(\tau_{\le1}B\mathbf{Pic}=B\mathbb Z\)</td><td>体であることを使う（一般の環では \(\pi_0\mathbf{Pic}\) に直線束が入る）</td></tr>
+<tr><td>\(\Gamma(B\mathbb Z)\) が連結</td><td>エタール被覆は有限分離拡大なので torsor は \(\mathrm{Gal}(L/k)\to\mathbb Z\) で分類、\(\mathbb Z\) は捩れなし。対象 \(B\mathbb Z\) 自体の連結性（定義から）より強い主張で、補題 D からは出ない</td><td>有限性と捩れのなさ</td></tr>
+<tr><td>π-有限係数で次元 1</td><td>(i) Galois 理論：エタール ∞ トポス ≃ \(\hat{\mathbb Z}\) の連続作用を持つ空間。(ii) π-有限な \(Y\) で \(\mathrm{Map}(B\hat{\mathbb Z},Y)\simeq\mathrm{Map}(S^1,Y)\)（Artin–Mazur、Sullivan）。(iii) 1-連結な \(Y\) で \(\mathrm{fib}(1-\varphi)\) は連結（円周は 1 次元）。\(\overline{\mathbb F}_q^\times=\operatorname{colim}\mu_n\) とコヒーレント性で有限から移る</td><td>有限体の Galois 群の構造</td></tr>
+</table></div>
+<p><b>訂正</b>：\(\mathrm{Spec}\,\mathbb F_q\) のエタール ∞ トポスは文字どおりのホモトピー次元 1 ではない（\(H^2(\hat{\mathbb Z},\mathbb Z)=\mathbb Q/\mathbb Z\neq0\) で \(\Gamma(B^2\mathbb Z)\) は連結でない）。正しくは「π-有限（捩れ）な対象とその filtered 余極限について、1-連結なら \(\Gamma\) は連結」。群論的には「\(\hat{\mathbb Z}\) は一つの元で自由に生成される副有限群で、有限群への連続準同型は元を一つ選ぶことと同じなので全ての埋め込み問題が解ける（射影的）、よって \(\mathrm{cd}(\hat{\mathbb Z})\le1\)」（Serre：射影的 ⇔ \(\mathrm{cd}\le1\)）。「生成元の行き先を自由に選べる」が「円周は一つの 1 胞体でできている」に対応する。</p>
+
+<!-- ============================================================ -->
+<h2>6. 「空間」と「大域切断が連結」の意味</h2>
+
+<h3>6.1 ここで言う空間</h3>
+<p>この会話での「空間」は ∞ 亜群（∞ 圏 \(\mathcal S\) の対象、Kan 複体で表されるもの、<a href="coherent-nerve-diagrams.html">補章 3</a> の \(\mathcal S=N^{hc}(\mathrm{Kan})\)）。点、点の間の道（可逆な射）、道の間のホモトピー、…と全ての次元のデータを持つ。位相空間は特異単体集合を通じて空間を定め、逆に空間は CW 複体として実現できるが、空間として覚えているのはホモトピー型だけ。</p>
+<div class="table-wrap"><table>
+<tr><th>種類</th><th>持っているもの</th><th>空間としては</th></tr>
+<tr><td>集合</td><td>点</td><td>0-切り詰め</td></tr>
+<tr><td>亜群</td><td>点、可逆な射</td><td>1-切り詰め</td></tr>
+<tr><td>∞ 亜群</td><td>点、道、全ての高次のホモトピー</td><td>一般の空間</td></tr>
+</table></div>
+
+<h3>6.2 大域切断はなぜ空間か</h3>
+<div class="table-wrap"><table>
+<tr><th>層の種類</th><th>大域切断 \(\Gamma(F)\)</th></tr>
+<tr><td>集合の層</td><td>集合</td></tr>
+<tr><td>亜群の層（スタック）</td><td>亜群</td></tr>
+<tr><td>空間の層（∞ トポスの対象）</td><td>空間</td></tr>
+</table></div>
+<p>∞ トポスの対象は空間の層なので、\(\Gamma(F)=\mathrm{Map}(\ast,F)\) は写像空間で空間になる。\(\Gamma(BG)\) は「\(G\) torsor と同型」の亜群（1-切り詰め）、\(\Gamma(B\mathbf{Pic})\) は「\(\mathrm{Mod}\) の捻れた形、同値、自然同型、…」の空間（体の場合は 2-切り詰め）。</p>
+
+<h3>6.3 連結 ⇔ \(\pi_0\) がちょうど一点</h3>
+<p>\(\Gamma(F)\) が連結 ⇔ \(\pi_0\Gamma(F)=\ast\)：空でなく、どの二つの大域切断も道で結べる。空集合は連結と言わない（基点付きの \(B\mathcal G\) では基点があるので自動）。ホモトピー群を使わずに言えば \(\tau_{\le0}\Gamma(F)\simeq\ast\)。\(\pi_0\Gamma(F)\) は大域的な対象の同値類の集合なので、<b>連結 = 大域的な対象が同値を除いてただ一つ</b>。</p>
+<div class="table-wrap"><table>
+<tr><th>\(F\)</th><th>\(\Gamma(F)\) の点</th><th>点を結ぶ道</th><th>連結 ⇔</th></tr>
+<tr><td>\(BG\)</td><td>\(G\) torsor</td><td>torsor の同型</td><td>全ての torsor が自明（\(H^1=0\)）</td></tr>
+<tr><td>\(B^2A\)</td><td>\(A\) gerbe</td><td>gerbe の同値</td><td>全ての gerbe が中性（\(H^2=0\)）</td></tr>
+<tr><td>\(B\mathbf{Pic}\)</td><td>\(\mathrm{Mod}\) の捻れた形</td><td>圏の同値</td><td>\(\mathrm{Br}=0\)</td></tr>
+</table></div>
+
+<h3>6.4 連結は可縮より弱い・対象の連結性との違い</h3>
+<div class="table-wrap"><table>
+<tr><th>性質</th><th>意味</th><th>例</th></tr>
+<tr><td>空でない</td><td>存在する</td><td>基点付きなら自動</td></tr>
+<tr><td>連結</td><td>同値を除いて一意</td><td>\(\mathrm{Br}(\mathbb F_q)=0\)、\(\Gamma(B\mathbb Z)\)</td></tr>
+<tr><td>\(n\)-連結</td><td>高次の自己同値まで \(n\) 次元分は一意</td><td>—</td></tr>
+<tr><td>可縮</td><td>一意で、その同値も一意（選択の空間が可縮）</td><td>Kan 拡張、cocartesian 持ち上げの選択</td></tr>
+</table></div>
+<p>\(\Gamma(B\mathbb Z)\simeq S^1\) は連結だが可縮でない（自明な torsor の自己同型 \(\mathbb Z\) が \(\pi_1\) として残る）。一般に \(\Gamma(BG)\) の基点の自己同型は \(\Gamma(G)=G(k)\)。<b>対象 \(F\) が連結</b>は局所的に全ての切断が基点と同値（\(B\mathcal G\) は常に連結：torsor は局所的に自明）、<b>\(\Gamma(F)\) が連結</b>は大域的にそうであること。このずれが「局所的に自明だが大域的に非自明な対象」で、コホモロジーが測るもの（§1 の \(\Gamma(B\mathcal G)\neq B(\Gamma\mathcal G)\)）。</p>
+
+<!-- ============================================================ -->
+<h2>7. \(\Gamma(B\mathbb Z)\) の連結性の ∞ 圏論的な証明</h2>
+<p>「\(\mathrm{Spec}\,\mathbb F_q\) のエタール ∞ トポスで \(\Gamma(B\mathbb Z)\) は連結」は正しい（\(H^1_{\mathrm{et}}(\mathbb F_q,\mathbb Z)=\mathrm{Hom}_{\mathrm{cont}}(\hat{\mathbb Z},\mathbb Z)=0\)、さらに \(\Gamma(B\mathbb Z)\simeq B\mathbb Z\)）。古典的な証明の二つの部分は次のように読み替えられる。</p>
+<div class="table-wrap"><table>
+<tr><th>古典的な言い方</th><th>∞ 圏論的な言い方</th></tr>
+<tr><td>絶対 Galois 群が副有限</td><td>シェイプが pro-π-有限空間</td></tr>
+<tr><td>副有限群から \(\mathbb Z\) への連続準同型がない</td><td>π-有限な空間から \(S^1=B\mathbb Z\) への写像は全て定数</td></tr>
+</table></div>
+
+<h3>7.1 副有限 = pro-π-有限なシェイプ</h3>
+<p>\(\mathrm{Shape}(\mathrm{Spec}\,\mathbb F_q)=\{B(\mathbb Z/n)\}_n\)（推移写像 \(\mathbb Z/nm\to\mathbb Z/n\)）は一つの空間ではなく pro 空間で、\(S^1\) の副有限完備化。pro 対象からの写像は余極限なので
+\[
+\Gamma(\underline K)\ \simeq\ \operatorname*{colim}_n\mathrm{Map}\bigl(B(\mathbb Z/n),K\bigr)
+\]
+（各有限 Galois 拡大で降下し、拡大について余極限）。<b>Galois 群の位相（連続性）は「シェイプが pro 対象であること」として表現される</b>（profinite homotopy types \(\mathrm{Pro}(\mathcal S_\pi)\)）。シェイプが本物の \(S^1\) なら \(\mathrm{Map}(S^1,S^1)\) は回転数ごとに \(\mathbb Z\) 個の成分を持ち、pro 構造がこれを殺す。</p>
+
+<h3>7.2 π-有限な空間から \(S^1\) への写像は定数</h3>
+<ul>
+  <li><b>(a) \(B\) の充満忠実性</b>：\(\mathrm{Map}_*(B(\mathbb Z/n),B\mathbb Z)\simeq\mathrm{Hom}(\mathbb Z/n,\mathbb Z)=0\)（\(\mathbb Z\) は捩れなし）。古典的証明を有限レベルに分けたもの。</li>
+  <li><b>(b) 有理化（より ∞ 圏論的）</b>：π-有限な空間は有理的に可縮（\(X\to\ast\) は有理ホモロジー同値）。ファイバー列 \(\mathbb Q/\mathbb Z\to B\mathbb Z\to B\mathbb Q\) に \(\mathrm{Map}(X,-)\)（\(X\) 連結）を当てると、\(\mathrm{Map}(X,B\mathbb Q)\simeq B\mathbb Q\) は連結、ファイバー \(\mathrm{Map}(X,\mathbb Q/\mathbb Z)=\mathbb Q/\mathbb Z\) へのループ \(\mathbb Q\) からの境界写像は全射なので \(\mathrm{Map}(X,B\mathbb Z)\) は連結。補章 8 §4.5 のステップ 4 のコホモロジーを取らない版。</li>
+</ul>
+
+<h3>7.3 一行で</h3>
+\[
+\Gamma(B\mathbb Z)\ \simeq\ \operatorname*{colim}_n\mathrm{Map}\bigl(B(\mathbb Z/n),B\mathbb Z\bigr)\ \simeq\ \operatorname*{colim}_nB\mathbb Z\ \simeq\ B\mathbb Z
+\]
+<p>一つ目はシェイプが pro-π-有限（副有限性）、二つ目は π-有限な空間が有理的に可縮（あるいは \(\mathrm{Hom}(\text{有限群},\mathbb Z)=0\)）。</p>
+<p><b>整数係数の \(H^2\) では失敗する理由</b>：\(K=B^2\mathbb Z\) では 7.2 (b) で \(\mathbb Q/\mathbb Z\) の 1 次分が \(\mathbb Z/n\) を残し、余極限で \(\mathbb Q/\mathbb Z\) が出る。これが \(H^2(\hat{\mathbb Z},\mathbb Z)=\mathbb Q/\mathbb Z\) で、§5 の「文字どおりのホモトピー次元 1 ではない」の理由。\(\mathbb Z\) 係数の \(H^1\) は \(\mathbb Q\) と同じものしか見ないので消えるが、\(H^2\) は \(\mathbb Q/\mathbb Z\) の \(H^1\) を見るので消えない。局所体の不変量写像の \(\mathbb Q/\mathbb Z\) はここから来る。</p>
+
+<!-- ============================================================ -->
+<h2>8. 局所体の Brauer 群：円周の上のファイブレーション</h2>
+<p>有限体と同じ道具（円周上の切断、Postnikov 分解、有限係数への帰着）がほぼそのまま使え、新しく加わるのは「底が円周の上のファイブレーションになっている」という構造だけ。結論 \(\mathrm{Br}(K)\cong\mathbb Q/\mathbb Z\) は、§7 の最後の「整数係数の円周上の \(H^2\) が \(\mathbb Q/\mathbb Z\)」という現象そのもの。\(K\) を局所体、\(\mathcal O\) を整数環、剰余体を \(\mathbb F_q\) とする。</p>
+
+<h3>8.0 出発点</h3>
+<p>\(\mathrm{Br}(K)=\pi_0\Gamma(\mathrm{Spec}\,K,B\mathbf{Pic})\)。Postnikov 分解 \(B^2\mathbb G_m\to B\mathbf{Pic}\to B\mathbb Z\) と \(\Gamma(B\mathbb Z)\) の連結性（\(K\) は体）から \(\mathrm{Br}(K)=\pi_0\Gamma(B^2\mathbb G_m)\)。ここまで有限体と同じ。</p>
+
+<h3>8.1 底の構造：円周の上のファイブレーション</h3>
+<p>\(K^{\mathrm{nr}}\) を最大不分岐拡大、\(I=\mathrm{Gal}(\bar K/K^{\mathrm{nr}})\) を慣性群とすると \(1\to I\to G_K\to\hat{\mathbb Z}\to1\)。シェイプで
+\[
+BI\ \longrightarrow\ BG_K\ \longrightarrow\ B\hat{\mathbb Z}\ (=\text{副有限な円周}).
+\]
+\(\mathrm{Spec}\,K\) は円周（不分岐の方向）の上にファイバー \(\mathrm{Spec}\,K^{\mathrm{nr}}\) が載ったもの。大域切断は押し出しの合成（Hochschild–Serre）で \(\Gamma(\mathrm{Spec}\,K,F)\simeq\Gamma(\text{円周},r_*F)\)。</p>
+
+<h3>8.2 ファイバー上で \(\mathbb G_m\) が潰れる</h3>
+<div class="table-wrap"><table>
+<tr><th>次数</th><th>\(r_*\mathbb G_m\) の値</th><th>理由</th></tr>
+<tr><td>0</td><td>\((K^{\mathrm{nr}})^\times\)</td><td>定義</td></tr>
+<tr><td>1</td><td>\(H^1(I,\bar K^\times)=0\)</td><td>Hilbert 90（降下）</td></tr>
+<tr><td>2</td><td>\(H^2(I,\bar K^\times)=\mathrm{Br}(K^{\mathrm{nr}})=0\)</td><td><b>算術的入力</b>：Lang の定理（\(K^{\mathrm{nr}}\) は \(C_1\)）</td></tr>
+</table></div>
+<p>よって \(r_*\mathbb G_m\simeq(K^{\mathrm{nr}})^\times\)（離散）で \(\Gamma(\mathrm{Spec}\,K,B^2\mathbb G_m)\simeq\Gamma(\text{円周},B^2(K^{\mathrm{nr}})^\times)\)。ファイバー方向の寄与が消え、円周の上の問題になる。</p>
+
+<h3>8.3 付値で分解</h3>
+<p>Frobenius 作用付きの列 \((\mathcal O^{\mathrm{nr}})^\times\to(K^{\mathrm{nr}})^\times\xrightarrow{v}\mathbb Z\)（\(\mathbb Z\) には自明に作用）に \(B^2\) を取って、円周上のファイバー列 \(B^2(\mathcal O^{\mathrm{nr}})^\times\to B^2(K^{\mathrm{nr}})^\times\to B^2\mathbb Z\)。</p>
+
+<h3>8.4 単数の部分は消える</h3>
+<p>\((\mathcal O^{\mathrm{nr}})^\times\supset U^1\supset U^2\supset\cdots\)、\((\mathcal O^{\mathrm{nr}})^\times/U^1\cong\overline{\mathbb F}_q^\times\)、\(U^i/U^{i+1}\cong\overline{\mathbb F}_q\)。</p>
+<ul>
+  <li><b>2 次以上</b>：\(\overline{\mathbb F}_q^\times\)、\(\overline{\mathbb F}_q\) は捩れなので「円周は 1 次元」で消える。</li>
+  <li><b>1 次（\(1-\varphi\) の全射性）</b>：\(\overline{\mathbb F}_q^\times\) で \(x\mapsto x^{q-1}\)（\(\mathbb G_m\) の Lang、有限体の Hilbert 90）、\(\overline{\mathbb F}_q\) で \(x\mapsto x^q-x\)（\(\mathbb G_a\) の Lang、Artin–Schreier）が全射。</li>
+  <li><b>極限</b>：完備性 \(U^1=\lim U^1/U^i\) と \(\Gamma\) の極限との交換で単数群全体に移る。</li>
+</ul>
+<p>長完全列（補章 8 §4.8 の補題 A・B と同じ形）から \(\pi_0\Gamma(\text{円周},B^2(K^{\mathrm{nr}})^\times)\xrightarrow{\sim}\pi_0\Gamma(\text{円周},B^2\mathbb Z)\)。</p>
+
+<h3>8.5 円周の上の \(B^2\mathbb Z\)：ここで \(\mathbb Q/\mathbb Z\) が出る</h3>
+<p>\(\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\) から \(B(\mathbb Q/\mathbb Z)\to B^2\mathbb Z\to B^2\mathbb Q\)。\(\Gamma(B^2\mathbb Q)\) は連結（有理係数は副有限群に見えない）。\(\Gamma(B(\mathbb Q/\mathbb Z))\) は円周上の \(\mathbb Q/\mathbb Z\) torsor の空間で、§3 の公式により連結成分はモノドロミー（Frobenius の像）すなわち \(\mathbb Q/\mathbb Z\) の有限位数の元で分類され、全ての元が有限位数なので連結成分はちょうど \(\mathbb Q/\mathbb Z\)。よって
+\[
+\mathrm{Br}(K)\ \cong\ \pi_0\Gamma(\text{円周},B^2\mathbb Z)\ \cong\ \mathbb Q/\mathbb Z.\ \ \blacksquare
+\]
+<b>意味</b>：\(\mathbb Z\) torsor のモノドロミーは有限位数の元しか取れず \(0\) しか残らなかった（§3）が、\(\mathbb Q/\mathbb Z\) では全て残る。Brauer 類は、付値で \(\mathbb Z\) に落とし \(\mathbb Q/\mathbb Z\) torsor の言葉に一段ずらして見たときの、円周を一周したときのモノドロミーで、これが不変量写像 \(\mathrm{inv}\) の正体。</p>
+
+<div class="table-wrap"><table>
+<tr><th>ステップ</th><th>内容</th><th>性格</th></tr>
+<tr><td>8.0</td><td>\(\mathrm{Br}=\pi_0\Gamma(B^2\mathbb G_m)\)</td><td>一般論（有限体と同じ）</td></tr>
+<tr><td>8.1</td><td>底は円周上のファイブレーション</td><td>Galois 理論（不分岐商が \(\hat{\mathbb Z}\)）</td></tr>
+<tr><td>8.2</td><td>ファイバーで \(\mathbb G_m\) が潰れる</td><td><b>算術</b>：Hilbert 90 と \(\mathrm{Br}(K^{\mathrm{nr}})=0\)</td></tr>
+<tr><td>8.3</td><td>付値で分解</td><td>形式的</td></tr>
+<tr><td>8.4</td><td>単数は消える</td><td><b>算術</b>：\(\mathbb G_m\)・\(\mathbb G_a\) の Lang と完備性。高次は円周の次元 1</td></tr>
+<tr><td>8.5</td><td>\(B^2\mathbb Z\) の切断が \(\mathbb Q/\mathbb Z\)</td><td>一般論（§3・§7）</td></tr>
+</table></div>
+<p>補章 8 §4.4 の局所化列による計算と同じ入力を使うが、組み立てが「\(\mathrm{Spec}\,\mathcal O\) の閉点と生成点」という水平の見方から「円周の上のファイブレーション」という垂直の見方に変わっている。</p>
+
+<h3>8.6 補足：2 次元のねじれたトーラス</h3>
+<p>\(p\) と素な部分では、慣性群の順分岐商は \(\hat{\mathbb Z}'(1)\)（もう一つの円周）で Frobenius は \(q\) 倍で作用し、順分岐部分のシェイプは \(B(\hat{\mathbb Z}'(1)\rtimes\hat{\mathbb Z})\)、すなわち円周上の円周束（\(q\) 倍写像の写像トーラス）で 2 次元。\(\mathrm{Br}(K)[n]=H^2(K,\mu_n)\) はその最上次コホモロジーで、\(\mu_n\) への Frobenius の \(q\) 倍作用が写像トーラスの向きのねじれを打ち消し \(H^2=\mathbb Z/n\)。補章 8 §4.3 の「局所体は 2 次元で Brauer 群は向き（基本類）」の具体的なトーラスとしての見方（\(p\) 部分は暴分岐が絡むので本文の付値の議論が素直）。</p>
+
+<h3>8.7 \(\mathrm{Br}(K^{\mathrm{nr}})=0\) はどこまでホモトピー的に整理できるか</h3>
+<p><b>\(\ell\neq p\) 部分（ほぼ完全にホモトピー的）</b>．Kummer 列で \(\mathrm{Br}(K^{\mathrm{nr}})[\ell^\infty]=\operatorname{colim}_kH^2(K^{\mathrm{nr}},\mu_{\ell^k})\)（有限係数）。慣性群 \(I\) は野生分岐部分 \(P\)（副 \(p\)、正規）と順分岐商 \(I/P\cong\prod_{\ell\neq p}\mathbb Z_\ell(1)\)（副巡回）からなる。\(P\) は \(\ell\) 捩れ係数から見えない（\(\ell\)-局所的に可縮）ので、\(\ell\) 捩れ係数で見たシェイプは \(B\mathbb Z_\ell(1)\)、すなわち \(\ell\) 進的な円周で、有限体と同じ議論で \(H^2(K^{\mathrm{nr}},\mu_{\ell^k})=0\)。算術的入力は「順分岐商が副巡回」（順分岐拡大は \(K^{\mathrm{nr}}(\pi^{1/e})\)、Kummer と Hensel）だけ。</p>
+<p><b>\(p\) 部分（枠組みは整理できるが核心の計算は残る）</b>．ホモトピー的に整理できるのは：(1) 有限次への帰着 \(\mathrm{Br}(K^{\mathrm{nr}})=\operatorname{colim}_LH^2(\mathrm{Gal}(L/K^{\mathrm{nr}}),L^\times)\)、(2) \(\mathrm{Gal}(L/K^{\mathrm{nr}})\) は慣性群の商で可解なので、シェイプのファイブレーション（押し出しの合成）で次数 \(p\) の巡回拡大に帰着、(3) 巡回では周期性で \(H^2=\hat H^0=K^{\mathrm{nr}\times}/N(L^\times)\)。残るのは「次数 \(p\) の巡回拡大でノルムが全射」で、単数のフィルトレーションに沿ってノルムを調べ、次数付き部分に剰余体 \(\overline{\mathbb F}_q\) の多項式写像（\(x\mapsto x^p-cx\) など）が現れ、剰余体が代数閉なので全射、最後に完備性（Serre『Local Fields』V・XII 章）。標数 \(p\) の局所体では Artin–Schreier 列と \(\mathbb G_a\) の高次コホモロジーの消滅（準連接層の降下）で \(\mathbb Z/p\) 係数の次元 \(\le1\) は形式的に出るが、Brauer 群の \(p\) 部分は \(\mu_p\) 係数（エタールでない）で別の扱いが要る。</p>
+<div class="table-wrap"><table>
+<tr><th>部分</th><th>ホモトピー的に整理できること</th><th>残る算術</th></tr>
+<tr><td>\(\ell\neq p\)</td><td>順分岐慣性は \(\ell\) 進的な円周で次元 1 の議論がそのまま使える</td><td>順分岐商が副巡回（Kummer と Hensel）</td></tr>
+<tr><td>\(p\)</td><td>有限次への帰着、可解性による巡回への帰着、周期性によるノルムの余核への書き換え</td><td>巡回 \(p\) 次拡大でノルムが全射（次数付き部分の多項式写像が代数閉な剰余体で全射）</td></tr>
+</table></div>
+
+<h3>8.8 単数の部分と極限の扱い</h3>
+<p>必要な入力は (1) 次数付き部分の同定 \((\mathcal O^{\mathrm{nr}})^\times/U^1\cong\overline{\mathbb F}_q^\times\)、\(U^i/U^{i+1}\cong\overline{\mathbb F}_q\)（体の構造の計算）、(2) 次数付き部分での \(1-\varphi\) の全射性（\(\mathbb G_m\)・\(\mathbb G_a\) の Lang）、(3) 完備性 \(U^1=\lim_iU^1/U^i\)。これがあれば有限体と同じ議論（捩れなので 2 次以上は円周の次元 1 で消え、1 次は全射性で消える）。</p>
+<p><b>極限についての注意</b>：\(\Gamma\) は右随伴なので極限とは常に交換する（余極限のときのコヒーレント性は要らない）。ただし連結な空間の極限が連結とは限らない（\(\lim^1\)）ので、各段の \(\pi_1\Gamma(B(U^1/U^i))=U^1_K/U^i_K\) の推移写像の全射性（Mittag-Leffler 条件）を確かめる。ここでは明らかに全射。</p>
+<div class="table-wrap"><table>
+<tr><th>交換</th><th>成り立つ条件</th><th>連結性が移る条件</th></tr>
+<tr><td>filtered 余極限</td><td>コヒーレント性と一様な切り詰め（§5 の話）</td><td>自動</td></tr>
+<tr><td>極限</td><td>常に成り立つ（\(\Gamma\) は極限）</td><td>Mittag-Leffler 条件（\(\pi_1\) の推移写像の全射性）</td></tr>
+</table></div>
+<p>ホモトピー的な枠組みが処理するのは、底の構造、有限係数への帰着、巡回への帰着、極限・余極限の交換。残る算術は「単数のフィルトレーションの次数付き部分で多項式写像が全射」という型の計算に集約され、単数の部分（剰余体が有限体、Lang）でも \(\mathrm{Br}(K^{\mathrm{nr}})=0\) の \(p\) 部分（剰余体が代数閉、ノルムの次数付き部分）でも同じ型が現れる。</p>
+
+<h3>8.9 Tate コホモロジーとノルムのホモトピー的な解釈</h3>
+<p><b>(a) ノルム写像は \(p_!\) から \(p_*\) への比較</b>．有限群 \(G\)、\(p\colon BG\to\ast\) について \(p_!V=V_{hG}\)、\(p_*V=V^{hG}\) で、標準的な自然変換 \(\mathrm{Nm}\colon p_!\to p_*\)（直観的には \(\sum_{g\in G}g\)）がある。構成は、対角線 \(BG\to BG\times BG\) のファイバーが有限集合 \(G\) で、有限集合の上では \(p_!=p_*\)（安定 ∞ 圏の有限直和 = 有限直積）であることによる（Hopkins–Lurie の両立性の最も簡単な場合）。\(V^{tG}=\mathrm{cofib}(\mathrm{Nm})\) は \(BG\) が「\(p_!=p_*\) となる良い空間」からどれだけずれているかを測り、\(|G|\) が可逆な係数では \(0\)：Tate コホモロジーは本質的に \(|G|\) 捩れの現象。</p>
+<p><b>(b) 誘導加群で割った圏の Hom</b>．\((-)^{tG}\) は完全で誘導加群を \(0\) に送る。\(\mathrm{Fun}(BG,D(\mathbb Z))\) を誘導加群の生成する厚い部分圏で割った Verdier 商（安定加群圏）で \(\hat H^n(G,M)=\pi_{-n}\mathrm{Map}(\mathbb Z,M)\)。よって <b>\(M^{tG}=0\) ⇔ \(M\) は安定加群圏で \(0\)（コホモロジー的に自明）</b>。</p>
+<p><b>(c) モノイダル構造と周期性</b>．\(\mathbb Z^{tG}\) は \(E_\infty\) 環、\(M^{tG}\) はその加群。巡回群では \(\mathbb Z^{tC_n}\simeq\mathbb Z/n[t^{\pm1}]\)（\(|t|=-2\)）で、\(t\) を掛けて全ての \(M^{tC_n}\) が 2 周期的。</p>
+
+<p><b>体のノルムは群のノルム写像の \(\pi_0\)</b>．巡回拡大 \(L/K\) で \(N_{L/K}(x)=\prod_\sigma\sigma(x)\) は \(G\) 加群 \(L^\times\) に対する \(\mathrm{Nm}\) の \(\pi_0\)（乗法的な \(\sum_gg\)）。よって \(\hat H^0(G,L^\times)=\pi_0((L^\times)^{tG})=K^\times/N(L^\times)\)。</p>
+<div class="table-wrap"><table>
+<tr><th>条件</th><th>Tate 構成での意味</th></tr>
+<tr><td>Hilbert 90（\(\hat H^1=0\)）</td><td>\(\pi_{-1}((L^\times)^{tG})=0\)</td></tr>
+<tr><td>ノルムが全射（\(\hat H^0=0\)）</td><td>\(\pi_0((L^\times)^{tG})=0\)</td></tr>
+<tr><td>両方（巡回）</td><td>2 周期性で \((L^\times)^{tG}\simeq0\)、\(L^\times\) は安定加群圏で \(0\)</td></tr>
+</table></div>
+<p>\(\mathrm{Br}(K^{\mathrm{nr}})=0\) の \(p\) 部分は「各巡回拡大 \(L/K^{\mathrm{nr}}\) で \(L^\times\) は安定加群圏で \(0\)」と同値。</p>
+
+<p><b>フィルトレーションの計算はスペクトル系列の微分</b>．\(L^\times\) は付値と単数 \(U^i_L\) のフィルトレーションを持ち、Tate 構成は完全なので、\(E_1\) 項が次数付き部分の Tate コホモロジーで \(\hat H^*(G,L^\times)\) に収束するスペクトル系列が得られる。次数付き部分はそれぞれ Tate 非輪状ではない（完全分岐 \(p\) 次巡回では \(G\) は剰余体に自明に作用し \(\hat H^0(C_p,\bar k)=\bar k/p\bar k=\bar k\neq0\)）。全体が消えるのは分岐の切れ目での微分が \(E_1\) 項を打ち消すからで、その微分が Serre の計算に現れる加法的多項式 \(x\mapsto x^p-c^{p-1}x\)。</p>
+<div class="table-wrap"><table>
+<tr><th>底</th><th>剰余体</th><th>微分 \(x\mapsto x^p-cx\) の余核</th><th>結果</th></tr>
+<tr><td>\(K^{\mathrm{nr}}\)</td><td>\(\overline{\mathbb F}_q\)（代数閉）</td><td>\(0\)（全射）</td><td>\(\hat H^0=0\)、\(\mathrm{Br}(L/K^{\mathrm{nr}})=0\)</td></tr>
+<tr><td>\(K\)</td><td>\(\mathbb F_q\)（有限）</td><td>\(\mathbb F_q/\wp(\mathbb F_q)\cong\mathbb Z/p\)（Artin–Schreier）</td><td>\(K^\times/N(L^\times)\cong\mathbb Z/p\)</td></tr>
+</table></div>
+<p>\(K\) の場合の \(\mathbb Z/p\) は局所類体論のノルム指数 \([K^\times:N(L^\times)]=p\) で、剰余体のコホモロジー \(H^1(\mathbb F_q,\mathbb Z/p)\)（Artin–Schreier 拡大）として現れる。剰余体が代数閉なら消え、有限体なら残る。</p>
+<div class="table-wrap"><table>
+<tr><th>古典的な対象</th><th>ホモトピー的な解釈</th></tr>
+<tr><td>Tate コホモロジー</td><td>\(p_!\to p_*\) の余ファイバー、安定加群圏での Hom、\(|G|\) 捩れの現象</td></tr>
+<tr><td>体のノルム</td><td>群のノルム写像の \(\pi_0\)</td></tr>
+<tr><td>\(K^\times/N(L^\times)\)</td><td>\(\pi_0\) of Tate 構成</td></tr>
+<tr><td>Hilbert 90 ＋ ノルム全射（巡回）</td><td>Tate 構成が \(0\)（安定加群圏で \(0\)）</td></tr>
+<tr><td>単数のフィルトレーションによる計算</td><td>スペクトル系列で、分岐の切れ目の微分が加法的多項式</td></tr>
+<tr><td>ノルム指数</td><td>剰余体の \(H^1\)（Artin–Schreier）がスペクトル系列に残ったもの</td></tr>
+</table></div>
+
+<div class="box">
+<p class="label">原典との違い・文献</p>
+<ul>
+  <li>∞ トポスの \(B\) と \(\Omega\)：HTT §7.2.2。シェイプ：HTT §7.1.6。エタールホモトピー型：Artin–Mazur。</li>
+  <li>\(\mathrm{cd}\) と射影性：Serre『Galois Cohomology』I §5。pro-étale 基本群：Bhatt–Scholze「The pro-étale topology for schemes」。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応</p>
+<ul>
+  <li>このページの既存の章には、∞ トポス・シェイプ・torsor の記述はない。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>\(B\) は群を自己同型として持つ一点を作る操作（\(\Omega\) の逆）で、\(\mathrm{Map}(X,BG)\) が \(G\) torsor を分類する。層では層化が本質で、\(\Gamma(B\mathcal G)\neq B(\Gamma\mathcal G)\) の差が非自明な torsor。</li>
+  <li>捻れた形は \(B\mathrm{Aut}\) の大域切断。\(\mathbf{Br}=\Gamma(B\mathbf{Pic})\)。</li>
+  <li>定数層の大域切断は底のシェイプからの写像。\(\mathrm{Spec}\,\mathbb F_q\) では自由ループ空間の公式 \(\coprod_{[g]}BC_G(g)\) を有限位数の元に制限し、Frobenius の作用があればねじれ共役に変えたもの。</li>
+  <li>一般のエタール ∞ トポスでも、局所定数な群ならシェイプで計算でき（有限群なら \(\pi_1^{\mathrm{et}}\)、無限群ならシェイプそのもの）、局所定数でない群（\(\mathbb G_m\) など）ではトポス全体が要る。体では全ての層が局所定数。</li>
+  <li>「次元 1」は π-有限係数についての主張で、\(\hat{\mathbb Z}\) が自由に 1 元生成されることから来る。</li>
+  <li>空間 = ∞ 亜群で、空間の層の大域切断は空間。\(\Gamma(F)\) が連結 ⇔ \(\pi_0\Gamma(F)=\ast\) ⇔ 大域的な対象が同値を除いて一つ（可縮より弱い）。</li>
+  <li>\(\Gamma(B\mathbb Z)\) の連結性：副有限性 = シェイプが pro-π-有限で \(\Gamma=\operatorname{colim}_n\mathrm{Map}(B(\mathbb Z/n),-)\)、π-有限な空間は有理的に可縮なので \(S^1\) への写像は定数。\(H^2\) では \(\mathbb Q/\mathbb Z\) が残る。</li>
+  <li>局所体：\(\mathrm{Spec}\,K\) は円周上のファイブレーション（ファイバー \(K^{\mathrm{nr}}\)）。ファイバーで \(\mathbb G_m\) は \((K^{\mathrm{nr}})^\times\) に潰れ（Hilbert 90 と \(\mathrm{Br}(K^{\mathrm{nr}})=0\)）、付値で単数（Lang と完備性で消える）と \(\mathbb Z\) に分かれ、円周上の \(B^2\mathbb Z\) の切断のモノドロミーとして \(\mathrm{Br}(K)\cong\mathbb Q/\mathbb Z\)。</li>
+  <li>Tate 構成はノルム \(p_!\to p_*\) の余ファイバー（安定加群圏での Hom）。体のノルムはその \(\pi_0\) で、ノルムの全射性は「\(L^\times\) が安定加群圏で 0」。フィルトレーションの計算はスペクトル系列の分岐の切れ目の微分（加法的多項式）で、その余核が剰余体の \(H^1\)（\(K^{\mathrm{nr}}\) では 0、\(K\) ではノルム指数 \(\mathbb Z/p\)）。</li>
+</ul>
+</main>
+</body>
+</html>

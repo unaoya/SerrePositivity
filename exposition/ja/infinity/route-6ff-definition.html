@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>六関手形式の定義への最短路</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 六関手形式の定義への最短路</nav>
+<h1>六関手形式の定義への最短路</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた読書案内で、「six functor formalism のための ∞ 圏論をミニマムで考えるなら、何をどの順に学ぶか」を Claude と対話しながら整理したもの。目標は<b>定義を正確に理解すること</b>に置く。Lean の宣言名は、他の章にすでに出ているものだけを引用する。</p>
+
+<!-- ============================================================ -->
+<h2>1. 目標から逆算する：三つのレベル</h2>
+<div class="table-wrap"><table>
+<tr><th>レベル</th><th>内容</th><th>必要な道具</th></tr>
+<tr><td>(1) 定義を述べる</td><td>lax 対称モノイダル関手 \(D\colon\mathrm{Corr}(\mathcal C,E)\to\mathrm{Cat}_\infty\) で、\(f^*\)、\(-\otimes A\)、\(f_!\) が右随伴を持つもの（Scholze のノート、Mann）</td><td>\(\mathrm{Cat}_\infty\)、対称モノイダル ∞ 圏と lax 関手、\(\mathrm{Corr}\)、随伴</td></tr>
+<tr><td>(2) 例を構成する</td><td>\(X\mapsto D_{\mathrm{et}}(X,\Lambda)\) など</td><td>presentable と随伴関手定理、\(\mathrm{Pr}^L\) の極限（降下）、安定性（局所化列）、Kan 拡張（\(f_!\) を固有射と開埋め込みから組み立てる拡張定理）</td></tr>
+<tr><td>(3) 使う・計算する</td><td>基底変換、射影公式、Verdier 双対、Künneth</td><td>Beck–Chevalley 条件、\(\mathrm{Pr}^L\) のテンソル積と双対化可能性</td></tr>
+</table></div>
+
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>何のために</th><th>このページ</th></tr>
+<tr><td>0</td><td>∞ 圏、写像空間、同値、極限・余極限、随伴</td><td>全ての言葉</td><td>第 1・2・4 章</td></tr>
+<tr><td>1</td><td>cocartesian fibration と straightening（主張だけ）</td><td>族・関手的な構成を作る道具</td><td>第 3 章、<a href="cocartesian-definition.html">補章 6</a></td></tr>
+<tr><td>2</td><td>Kan 拡張、米田、\(\mathcal P(A)\)</td><td>構成の大半を Kan 拡張で書く</td><td>第 4 章、<a href="presentable-route.html">補章 4</a></td></tr>
+<tr><td>3</td><td>presentable、随伴関手定理、\(\mathrm{Pr}^L\)（極限）</td><td>随伴の存在、降下</td><td>第 6 章、補章 4</td></tr>
+<tr><td>4</td><td>安定 ∞ 圏</td><td>局所化列、係数の線形性</td><td>第 7 章</td></tr>
+<tr><td>5</td><td>対称モノイダル、\(\mathrm{CAlg}(\mathrm{Pr}^L)\)、lax 関手</td><td>テンソル積、射影公式</td><td><a href="monoidal-prl.html">補章 5</a></td></tr>
+<tr><td>6</td><td>\(\mathrm{Corr}\) と六関手の定義、拡張定理</td><td>本体</td><td>この章 §8〜§12（拡張定理は未）</td></tr>
+</table></div>
+<p>定義の理解（1）を優先するなら、段 3・4 を後回しにしてモノイダル構造と \(\mathrm{Corr}\) を先に固めるのが最短。</p>
+
+<!-- ============================================================ -->
+<h2>2. \(\mathrm{Pr}^L\) はどこで必要か</h2>
+<p><b>定義には要らない</b>：値は \(\mathrm{Cat}_\infty\) で、右随伴の存在は性質として課す。文献によっては値を \(\mathrm{Pr}^L\) に取るが、それは右随伴の存在を自動化するため。</p>
+<div class="table-wrap"><table>
+<tr><th>場面</th><th>\(\mathrm{Pr}^L\) の役割</th></tr>
+<tr><td>定義を述べる</td><td>不要</td></tr>
+<tr><td>右随伴の存在を示す</td><td>\(D(X)\) が presentable で、\(f^*\)・\(f_!\)・\(\otimes\) が余極限を保つ（\(\mathrm{Pr}^L\) の射）ので、随伴関手定理で \(f_*\)・\(f^!\)・\(\underline{\mathrm{Hom}}\) が存在</td></tr>
+<tr><td>降下・スタックへの拡張</td><td>\(D(X):=\lim_{U\to X}D(U)\)。\(\mathrm{Pr}^L\) の極限は \(\mathrm{Cat}_\infty\) で計算でき presentable のまま（貼り合わせ後も随伴関手定理が使える）。\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\) で \(f^*\) の極限を \(f_*\) の余極限として計算できる</td></tr>
+<tr><td>係数・Künneth・射影公式</td><td>\(\mathrm{Mod}_{D(\Lambda)}(\mathrm{Pr}^L)\) による係数の線形性と変更、\(D(X\times Y)\simeq D(X)\otimes D(Y)\)（双対化可能性と降下の両立）、\(\mathrm{CAlg}(\mathrm{Pr}^L)\) なら右随伴が自動的に lax モノイダルで射影公式の比較写像が標準的に得られる</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>3. \(\mathrm{Corr}(\mathcal C,E)\) の定義</h2>
+
+<h3>3.1 入力と 1 圏的な姿</h3>
+<p>\(\mathcal C\)：引き戻し（実際には有限極限）を持つ ∞ 圏。\(E\)：同値を含み、合成と引き戻しで閉じた射のクラス（\(f_!\) を定義したい射）。対象は \(\mathcal C\) の対象、射 \(X\to Z\) は span \(X\xleftarrow{g}Y\xrightarrow{f}Z\)（\(g\) 任意、\(f\in E\)）、合成は引き戻し \(Y\times_ZW\)。</p>
+<p>\(D\) は span を \(f_!\,g^*\) に送る。\(f=\mathrm{id}\) の span から \(g^*\)、\(g=\mathrm{id}\) の span から \(f_!\)。合成が引き戻しなので、<b>\(D\) が合成を保つことがそのまま基底変換</b> \(g'^*f_!\simeq f'_!g^*\)。基底変換は定義に組み込まれている。</p>
+
+<h3>3.2 単体的集合としての定義</h3>
+\[
+\mathrm{Corr}(\mathcal C,E)_n\ \subseteq\ \mathrm{Hom}_{\mathrm{sSet}}\bigl(N(\mathrm{Tw}([n])^{\mathrm{op}}),\ \mathcal C\bigr)
+\]
+<p>添字 \((i,j)\)（\(0\le i\le j\le n\)）の \(Y_{ij}\) と、\(i\le i'\le j'\le j\) での \(Y_{ij}\to Y_{i'j'}\) からなる図式で、</p>
+<ol>
+  <li>全ての正方形が引き戻し：\(Y_{ij}\simeq Y_{ij'}\times_{Y_{i'j'}}Y_{i'j}\)。</li>
+  <li>右向きの射 \(Y_{ij}\to Y_{i'j}\)（\(i\lt i'\)）が \(E\) に入る。</li>
+</ol>
+<p>対角線 \(Y_{ii}=X_i\) が対象、\(Y_{i,i+1}\) が隣り合う span の頂点、\(Y_{ij}\) はその合成（反復した引き戻し）。\(n=2\) では菱形が引き戻しであることが「\(Y_{02}\) は二つの span の合成」という主張。\([n]\mapsto\mathrm{Tw}([n])^{\mathrm{op}}\) の関手性と条件の安定性から単体的集合になる（Barwick の effective Burnside ∞ 圏と同じ構成）。</p>
+
+<h3>3.3 準圏であることの証明の筋</h3>
+<ul>
+  <li><b>鍵</b>：条件 1 を満たす図式は spine（\(j-i\le1\) の部分、ジグザグ \(X_0\leftarrow Y_{01}\to X_1\leftarrow\cdots\to X_n\)）からの右 Kan 拡張（正方形が引き戻し ⇔ \(Y_{ij}\) が下の部分の極限）。</li>
+  <li><b>内ホーンの持ち上げ</b>：内ホーンは spine を含むので spine を取り出し、右 Kan 拡張で \(n\) 単体を作る（\(\mathcal C\) が引き戻しを持つので存在）。Kan 拡張の空間は可縮（HTT Prop. 4.3.2.15）なのでホーン上のデータと両立するように選べる。\(E\) の条件は \(E\) の閉性で保たれる。</li>
+  <li>副産物：\(n\) 単体は spine で決まる（Segal 型）。証明は Dyckerhoff–Kapranov、Haugseng、Barwick にある。</li>
+</ul>
+
+<h3>3.4 対称モノイダル構造は抽象論から出る</h3>
+<ol>
+  <li>\(\mathrm{Corr}\) は「引き戻しを持つ ∞ 圏と射のクラスの組、引き戻しと \(E\) を保つ関手」の ∞ 圏から \(\mathrm{Cat}_\infty\) への関手で、直積を保つ：\(\mathrm{Corr}(\mathcal C\times\mathcal D,E\times E')\simeq\mathrm{Corr}(\mathcal C,E)\times\mathrm{Corr}(\mathcal D,E')\)。</li>
+  <li>有限積を持つ \(\mathcal C\) は直積で可換モノイド（cartesian 構造、HA §2.4.1）。\(\times\) は引き戻しと \(E\) を保つ（\(f\times g=(f\times1)\circ(1\times g)\)、\(f\times1\) は \(f\) の引き戻し）。</li>
+  <li>積を保つ関手は可換モノイドを可換モノイドに送るので、\(\mathrm{Corr}(\mathcal C,E)\) は \(\mathrm{Cat}_\infty\) の \(E_\infty\) モノイド、すなわち対称モノイダル ∞ 圏。</li>
+</ol>
+<p><b>技術的な一段</b>：単体的集合のレベルの厳密な関手性を ∞ 関手に持ち上げる必要がある（Barwick–Glasman–Shah、Haugseng）。別法として \(\mathcal C^\times\) を使い \(\mathrm{Fin}_*\) 上で \(\mathrm{Corr}(\mathcal C,E)^\otimes\) を同じ形の単体的集合として直接書き、cocartesian fibration であることを確かめる。定義の理解ならここは受け入れてよく、形式化では \(\mathrm{Corr}\) 周りで一番手間がかかる。</p>
+<p>lax 対称モノイダル関手 \(D\colon\mathrm{Corr}\to\mathrm{Cat}_\infty^\times\) は外部テンソル積 \(\boxtimes\colon D(X)\times D(Y)\to D(X\times Y)\) を与え、対角線で引き戻して \(A\otimes B=\Delta^*(A\boxtimes B)\)。lax 性の整合性から射影公式も定義に含まれる。</p>
+<div class="table-wrap"><table>
+<tr><th>定義の部分</th><th>六関手での意味</th></tr>
+<tr><td>\(f=\mathrm{id}\) の span</td><td>\(g^*\)</td></tr>
+<tr><td>\(g=\mathrm{id}\) の span</td><td>\(f_!\)</td></tr>
+<tr><td>合成が引き戻し</td><td>基底変換</td></tr>
+<tr><td>高次の単体（格子）</td><td>基底変換の整合性</td></tr>
+<tr><td>対称モノイダル構造（直積）</td><td>外部テンソル積、\(\otimes\)</td></tr>
+<tr><td>lax 性の整合性</td><td>射影公式</td></tr>
+<tr><td>右随伴を持つという性質</td><td>\(f_*\)、\(f^!\)、\(\underline{\mathrm{Hom}}\)</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>4. 定義に必要なものの一覧</h2>
+<p><b>目標</b>：lax 対称モノイダル関手 \(D\colon\mathrm{Corr}(\mathcal C,E)^\otimes\to\mathrm{Cat}_\infty^\times\) で右随伴の条件を満たすもの。</p>
+<div class="table-wrap"><table>
+<tr><th>必要な概念</th><th>中身</th><th>その下で必要なもの</th></tr>
+<tr><td>(a) \(\mathrm{Cat}_\infty\)</td><td>\(N^{hc}(\mathrm{QCat}^\Delta)\)</td><td>単体的圏、Kan 豊穣なら準圏になる定理</td></tr>
+<tr><td>(b) \(\mathrm{Cat}_\infty\) が対称モノイダル</td><td>直積による cartesian 構造</td><td>\(\mathrm{Cat}_\infty\) が有限積を持つこと、cartesian 構造の一般的構成（HA §2.4.1）</td></tr>
+<tr><td>(c) \(\mathrm{Corr}(\mathcal C,E)\)</td><td>\(\mathrm{Tw}([n])^{\mathrm{op}}\) からの図式</td><td>引き戻し、準圏であることの証明（右 Kan 拡張と可縮性）</td></tr>
+<tr><td>(d) \(\mathrm{Corr}\) が対称モノイダル</td><td>\(\mathcal C\) の直積から誘導</td><td>\(\mathrm{Corr}\) が積を保つ関手であること、(b) と同じ cartesian 構造</td></tr>
+<tr><td>(e) lax 対称モノイダル関手</td><td>\(\mathrm{Fin}_*\) 上で <b>inert</b> な射の上の cocartesian 辺を保つ写像（全てを保てば強い対称モノイダル）</td><td>cocartesian fibration、inert な射、∞ operad の写像</td></tr>
+<tr><td>(f) 右随伴の条件</td><td>\(f^*\)、\(-\otimes A\)、\(f_!\) が右随伴を持つ</td><td>∞ 圏の随伴</td></tr>
+</table></div>
+<p><b>共通の土台</b>：準圏・写像空間・同値、極限（引き戻しと有限積）、Kan 拡張（(c)）、cocartesian fibration（(b)(d)(e)）。<b>定義の理解に限れば不要</b>：presentable、安定性、\(\mathrm{Pr}^L\)、straightening の証明（主張だけでよい）。最も重いのは (c)(d)。</p>
+
+<!-- ============================================================ -->
+<h2>5. まず \(\mathrm{Cat}_\infty\) とその対称モノイダル構造</h2>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>重い入力</th></tr>
+<tr><td>1</td><td>\(\mathfrak C[\Delta^n]\)（写像空間 \(N(P_{i,j})\)、和集合による合成）と \(\Delta\) 上の関手性、\(N^{hc}(\mathcal C)_n=\mathrm{Hom}_{\mathrm{sCat}}(\mathfrak C[\Delta^n],\mathcal C)\)（<a href="coherent-nerve-diagrams.html">補章 3</a>）</td><td>なし（組合せ論）</td></tr>
+<tr><td>2</td><td>\(\mathrm{QCat}^\Delta\)：対象は（小さい）準圏（宇宙を固定し \(\mathrm{Cat}_\infty\) は一段大きい）、\(\mathrm{Map}(\mathcal C,\mathcal D)=\mathrm{Fun}(\mathcal C,\mathcal D)^{\simeq}\)（core は全ての辺が同値な単体からなる最大の部分）</td><td>\(\mathrm{Fun}(\mathcal C,\mathcal D)\) が準圏（Joyal、内アノダインが積で閉じる）</td></tr>
+<tr><td>3</td><td>単体的圏で Hom が Kan：合成は内部 Hom の合成の制限で結合律・単位律は厳密。準圏の写像は同値を保ち、積の準圏で成分ごとの同値は同値なので core は core に移る</td><td>Joyal の定理（ホモトピー圏が亜群の準圏は Kan）</td></tr>
+<tr><td>4</td><td>Kan 豊穣ならナーブは準圏（Cordier–Porter、HTT Prop. 1.1.5.10）：内ホーンの持ち上げは立方体 \((\Delta^1)^{n-1}\) を空洞の立方体から埋める問題</td><td>空洞の立方体の包含がアノダイン</td></tr>
+<tr><td>5（次の段）</td><td>有限積：\(\mathrm{QCat}^\Delta\) で \(\mathcal C\times\mathcal D\) は厳密な積（\(\mathrm{Fun}(X,\mathcal C\times\mathcal D)^{\simeq}=\mathrm{Fun}(X,\mathcal C)^{\simeq}\times\mathrm{Fun}(X,\mathcal D)^{\simeq}\)）。ナーブでも積になる</td><td>写像空間の比較定理（\(N^{hc}(\mathcal C)\) の写像空間は \(\mathcal C(x,y)\)）</td></tr>
+</table></div>
+<p>段 5 のあと、cartesian 構造の一般的構成（HA §2.4.1）で \(\mathrm{Cat}_\infty^\times\) を得る（次に扱う）。</p>
+
+<h3>5.1 段 1 の詳細：\(\mathfrak C[\Delta^n]\) は単体的圏、\(N^{hc}\) は単体的集合</h3>
+<p><b>注意</b>：\(\mathfrak C[\Delta^n]\) は単体的集合ではなく<b>単体的圏</b>（Hom が単体的集合の圏）で、準圏でもない（準圏は単体的集合の性質）。単体的集合になっているのは各 Hom \(N(P_{i,j})\)（立方体）。関手 \([n]\mapsto\mathfrak C[\Delta^n]\) は \(\Delta\to\mathrm{sCat}\)。</p>
+
+<p><b>単体的関手</b>：\(F\colon\mathcal A\to\mathcal B\) は、対象の写像と、各 Hom の単体的集合の写像 \(F_{x,y}\colon\mathcal A(x,y)\to\mathcal B(Fx,Fy)\) の組で、合成と恒等射を保つもの。</p>
+
+<p><b>\(\Delta\) の射が誘導する単体的関手</b>：単調写像 \(\alpha\colon[m]\to[n]\)（面写像は単射、退化写像は全射）に対し、\(\mathfrak C[\alpha]\colon\mathfrak C[\Delta^m]\to\mathfrak C[\Delta^n]\) を、対象 \(i\mapsto\alpha(i)\)、Hom \(N(P_{i,j})\to N(P_{\alpha(i),\alpha(j)})\) を半順序写像 \(S\mapsto\alpha(S)\)（<b>像を取る</b>）のナーブで定める。</p>
+<ul>
+  <li>\(S\ni i,j\) なら \(\alpha(S)\ni\alpha(i),\alpha(j)\) で、単調性から \([\alpha(i),\alpha(j)]\) に入る。\(S\subseteq S'\Rightarrow\alpha(S)\subseteq\alpha(S')\)。</li>
+  <li>合成を保つ：合成は和集合で \(\alpha(S\cup T)=\alpha(S)\cup\alpha(T)\)。</li>
+  <li>関手性：\(\mathfrak C[\beta\alpha]=\mathfrak C[\beta]\mathfrak C[\alpha]\)（像の像は合成の像）。</li>
+  <li>例：面写像 \(\delta^1\colon[1]\to[2]\)（\(0\mapsto0,1\mapsto2\)）は \(\mathrm{Map}(0,1)=\{\{0,1\}\}\) を \(\{0,2\}\) に送る（\(\mathrm{Map}_{\mathfrak C[\Delta^2]}(0,2)=\Delta^1\) の「直接の射」の端点）。退化写像 \(\sigma^0\colon[1]\to[0]\) は \(\mathrm{Map}(0,1)\) を \(\mathrm{Map}(0,0)=\{\{0\}\}\)（恒等射）に送る。</li>
+</ul>
+
+<p><b>\(N^{hc}(\mathcal C)\) が単体的集合であること</b>：
+\[
+N^{hc}(\mathcal C)_n:=\mathrm{Hom}_{\mathrm{sCat}}\bigl(\mathfrak C[\Delta^n],\mathcal C\bigr),\qquad\alpha^*(F)=F\circ\mathfrak C[\alpha].
+\]
+\(\mathfrak C[-]\) の関手性から \((\beta\alpha)^*=\alpha^*\beta^*\) で、\(N^{hc}(\mathcal C)\colon\Delta^{\mathrm{op}}\to\mathrm{Set}\)。1 単体は対象 \(x_0,x_1\) と \(\mathcal C(x_0,x_1)\) の頂点で、\(d_0,d_1\) が \(x_1,x_0\) を取り出す。</p>
+
+<p><b>一般的な型（nerve と realization）</b>：関手 \(Q\colon\Delta\to\mathcal D\) からナーブ \(N_Q(d)=\mathrm{Hom}_{\mathcal D}(Q(-),d)\) が作られ、左随伴は \(Q\) を余極限で単体的集合全体に延長したもの（<a href="presentable-route.html">補章 4</a> §4 ④の realization ⊣ nerve）。</p>
+<div class="table-wrap"><table>
+<tr><th>\(Q\colon\Delta\to\mathcal D\)</th><th>ナーブ</th><th>左随伴</th></tr>
+<tr><td>\([n]\mapsto[n]\)（\(\mathrm{Cat}\)）</td><td>普通のナーブ \(N\)</td><td>ホモトピー圏 \(\tau_1\)</td></tr>
+<tr><td>\([n]\mapsto|\Delta^n|\)（\(\mathrm{Top}\)）</td><td>特異単体集合</td><td>幾何学的実現</td></tr>
+<tr><td>\([n]\mapsto\mathfrak C[\Delta^n]\)（\(\mathrm{sCat}\)）</td><td>\(N^{hc}\)</td><td>\(\mathfrak C\)</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th>対象</th><th>何であるか</th></tr>
+<tr><td>\(\mathfrak C[\Delta^n]\)</td><td>単体的圏（Hom が立方体 \(N(P_{i,j})\)）</td></tr>
+<tr><td>\([n]\mapsto\mathfrak C[\Delta^n]\)</td><td>関手 \(\Delta\to\mathrm{sCat}\)。射は像を取ることで単体的関手を誘導</td></tr>
+<tr><td>\(N^{hc}(\mathcal C)\)</td><td>単体的集合 \(\mathrm{Hom}_{\mathrm{sCat}}(\mathfrak C[\Delta^{(-)}],\mathcal C)\)</td></tr>
+<tr><td>準圏になるもの</td><td>\(N^{hc}(\mathcal C)\)（\(\mathcal C\) の Hom が Kan のとき）</td></tr>
+</table></div>
+<p>\(\mathfrak C[\Delta^n]\) の Hom（立方体）は準圏だが Kan ではない。ナーブが準圏になる条件は、相手 \(\mathcal C\) の側の Hom が Kan であること。</p>
+
+<!-- ============================================================ -->
+<h2>6. \(\mathrm{QCat}^\Delta\) の記号と core の有無</h2>
+<p>流れは「一般論として \(N^{hc}\) を定義し、それを \(\mathrm{QCat}^\Delta\) に適用して \(\mathrm{Cat}_\infty\) を定義する」。</p>
+
+<h3>6.1 上付きの \(\Delta\)</h3>
+<p>\(\Delta\) は「単体的圏として見たもの」（Hom に単体的集合の構造を入れたもの、HTT の記法）。「小さい」は対象の大きさ、\(\Delta\) は Hom の構造についての記号で独立。</p>
+<div class="table-wrap"><table>
+<tr><th>記号</th><th>何か</th><th>Hom</th></tr>
+<tr><td>\(\mathrm{QCat}\)</td><td>普通の圏</td><td>関手の集合</td></tr>
+<tr><td>\(\mathrm{QCat}^\Delta\)</td><td>単体的圏</td><td>\(\mathrm{Fun}(\mathcal C,\mathcal D)^{\simeq}\)（0 単体は関手、1 単体は自然同値、…）。0 単体だけ取ると \(\mathrm{QCat}\)</td></tr>
+</table></div>
+<p><b>普通の圏では足りない</b>：\(N(\mathrm{QCat})\) では、準圏の同値 \(F\) は \(GF\simeq\mathrm{id}\) が等号でないので可逆な辺にならず、自然変換の情報もない。\(\mathrm{QCat}^\Delta\) では自然同値が Hom の 1 単体として入り、\(N^{hc}\) で 2 単体（補章 3 の \(H_{012}\)）になって \(F\) が可逆な辺になる。同値を同値として扱うために Hom の高次構造が要る。同じ記法：\(\mathrm{Kan}\)（\(\mathcal S=N^{hc}(\mathrm{Kan})\)）、HTT の \(\mathrm{Cat}_\infty^\Delta\)（Def. 3.0.0.1）。</p>
+
+<h3>6.2 \(\mathrm{Cat}_\infty\) の射と写像空間</h3>
+<ul>
+  <li>\(\mathrm{QCat}^\Delta\) の Hom を \(\mathrm{Fun}^{\simeq}\) にするのは<b>定義</b>。</li>
+  <li>\(N^{hc}\) の<b>辺</b>は単体的関手 \(\mathfrak C[\Delta^1]\to\mathrm{QCat}^\Delta\) で、\(\mathrm{Map}(0,1)=\Delta^0\) なので、二つの準圏と \(\mathrm{Fun}^{\simeq}\) の 0 単体、すなわち<b>関手そのもの</b>（定義を計算した結果）。</li>
+  <li><b>写像空間</b> \(\mathrm{Map}_{\mathrm{Cat}_\infty}(\mathcal C,\mathcal D)\)（pinched Hom など）は単体ごとには \(\mathrm{Fun}^{\simeq}\) と一致しないが、ホモトピー同値（写像空間の比較定理、<code>coherentHomEquivalence</code>）。</li>
+  <li>低次元の確認：\(\mathrm{Map}_{\mathrm{Cat}_\infty}\) の道 \(F\to G\) は辺 \(\{1,2\}\) が恒等な 2 単体で、データは \(f_{01}=F\)、\(f_{12}=\mathrm{id}\)、\(f_{02}=G\) と \(\mathrm{Map}(0,2)\) の辺 \(G\Rightarrow F\)、つまり \(\mathrm{Fun}^{\simeq}\) の 1 単体（自然同値）。</li>
+</ul>
+
+<h3>6.3 core を取るかどうか</h3>
+<div class="table-wrap"><table>
+<tr><th></th><th>core を取る</th><th>core を取らない</th></tr>
+<tr><td>Hom</td><td>\(\mathrm{Fun}^{\simeq}\)（Kan 複体）</td><td>\(\mathrm{Fun}\)（準圏）</td></tr>
+<tr><td>関手の間の 2 射</td><td>可逆な自然変換だけ</td><td>全ての自然変換</td></tr>
+<tr><td>得られるもの</td><td>\(\mathrm{Cat}_\infty\)：\((\infty,1)\) 圏</td><td>\(\mathrm{Cat}_{(\infty,2)}\)：\((\infty,2)\) 圏</td></tr>
+<tr><td>\(N^{hc}\) が準圏か</td><td>なる</td><td>ならない（空洞の立方体の包含はアノダインだが内アノダインでなく、非可逆な辺を逆にたどれない）。scaled 単体的集合など別のモデルが要る</td></tr>
+<tr><td>1 圏での類似</td><td>\((2,1)\) 圏としての \(\mathrm{Cat}\)</td><td>2 圏としての \(\mathrm{Cat}\)</td></tr>
+</table></div>
+<p><b>失われるもの</b>：\(\mathrm{Cat}_\infty\) の中で非可逆な自然変換が高次の射として見えない。lax な構成（<a href="unstraightening-analogy.html">補章 2</a> で coslice の fiber が core になった）、lax 関手（<a href="fibered-descent.html">補章 7</a> §1：\(B\to\mathrm{Cat}_\infty\) は擬関手の ∞ 版）、随伴の単位・余単位。<b>残るもの</b>：\(\mathrm{Cat}_\infty\) はデカルト閉で \(\mathrm{Fun}(\mathcal C,\mathcal D)\) が内部 Hom として対象になるので、非可逆な自然変換はその中の射として取り出せる。随伴は \(\Delta^1\) 上の両側 fibration（対象のレベル）で表され、lax な情報は fibration 側で扱う。</p>
+<p><b>六関手形式との関係</b>：基底変換・射影公式の比較写像は可逆でなければならないので、値は core を取った \(\mathrm{Cat}_\infty\) で足りる。随伴まで一つの関手で書こうとすると \((\infty,2)\) 圏が現れる（Gaitsgory–Rozenblyum）。Mann・Scholze は右随伴の存在を性質として課して \((\infty,2)\) 圏を避ける。</p>
+
+<!-- ============================================================ -->
+<h2>7. \(\mathrm{Cat}_\infty\) の対称モノイダル構造</h2>
+<p>直積による cartesian 対称モノイダル構造を入れる。手順は (1) \(\mathrm{Cat}_\infty\) が有限積を持つことを示し、(2) 有限積を持つ任意の ∞ 圏に対する一般的な構成 \(\mathcal C\mapsto\mathcal C^\times\)（HA §2.4.1）を適用する。</p>
+
+<h3>7.1 有限積</h3>
+<p>\(\mathrm{QCat}^\Delta\) で \(\mathcal C\times\mathcal D\) は厳密な積（\(\mathrm{Fun}(X,\mathcal C\times\mathcal D)^{\simeq}=\mathrm{Fun}(X,\mathcal C)^{\simeq}\times\mathrm{Fun}(X,\mathcal D)^{\simeq}\)）、\(\Delta^0\) は厳密な終対象（\(\mathrm{Fun}(X,\Delta^0)^{\simeq}=\ast\)）。写像空間の比較定理により、Kan 豊穣な単体的圏の厳密な積・終対象は \(N^{hc}\) で ∞ 圏の積・終対象になる（写像空間が積になることが ∞ 圏の積の定義）。</p>
+
+<h3>7.2 一般的な構成 \(\mathcal C^\times\)</h3>
+<p>\(\Gamma^\times\) を、対象が組 \((\langle n\rangle,S)\)（\(S\subseteq\langle n\rangle^\circ=\{1,\dots,n\}\)）の圏とし、\(\Gamma^\times\to\mathrm{Fin}_*\) を射影とする。\(\mathcal C^\times\) の \(\langle n\rangle\) 上の対象は、関手 \(F\colon\{S\subseteq\langle n\rangle^\circ\}^{\mathrm{op}}\to\mathcal C\) で、
+\[
+F(S)\ \xrightarrow{\ \sim\ }\ \prod_{i\in S}F(\{i\})
+\]
+を満たすもの（積の図式）。直観的には「\(n\) 個の対象 \(X_1,\dots,X_n\) と、その部分積の全ての選択」で、積の選択を全部データとして持つことで選択の問題を消している。単体的集合としては、\(\Delta^k\to N(\mathrm{Fin}_*)\) と \(\Delta^k\times_{N(\mathrm{Fin}_*)}N(\Gamma^\times)\to\mathcal C\) の組で、積の条件を満たすもの。</p>
+<p><b>定理</b>（HA Prop. 2.4.1.5）：\(\mathcal C\) が有限積を持てば \(\mathcal C^\times\to N(\mathrm{Fin}_*)\) は対称モノイダル ∞ 圏で、\(\otimes=\times\)、単位は終対象。</p>
+<ul>
+  <li><b>cocartesian 持ち上げ</b>：\(\alpha\colon\langle n\rangle\to\langle m\rangle\) の上で \((X_1,\dots,X_n)\) の行き先は \(\bigl(\prod_{\alpha(i)=j}X_i\bigr)_j\)。存在は \(\mathcal C\) が有限積を持つこと（右 Kan 拡張）から、選択の空間は可縮。</li>
+  <li><b>Segal 条件</b>：積の図式の条件から \(\mathcal C^\times_{\langle n\rangle}\simeq\mathcal C^n\)。</li>
+  <li><b>一意性</b>（HA §2.4.1）：cartesian 構造（単位が終対象で、\(\otimes\) が射影とともに積を与える構造）は可縮な選択を除いて一意。</li>
+</ul>
+<p>\(\mathcal C=\mathrm{Cat}_\infty\) に適用して \(\mathrm{Cat}_\infty^\times\) を得る。</p>
+
+<h3>7.3 cartesian 構造への lax 関手：六関手の定義への接続</h3>
+<p>cartesian 構造には普遍性がある（HA Prop. 2.4.1.7）：∞ operad \(\mathcal O^\otimes\) から \(\mathcal C^\times\) への lax 関手（operad の写像）は、<b>lax cartesian 構造</b>、すなわち関手 \(\tilde F\colon\mathcal O^\otimes\to\mathcal C\) で、\(\langle n\rangle\) 上の各 \(X\simeq X_1\oplus\cdots\oplus X_n\) について inert 射 \(X\to X_i\) が \(\tilde F(X)\simeq\prod_i\tilde F(X_i)\) を与えるものと同値。</p>
+\[
+\mathrm{Fun}^{\mathrm{lax}}\bigl(\mathcal O^\otimes,\mathcal C^\times\bigr)\ \simeq\ \mathrm{Fun}^{\text{lax cart}}\bigl(\mathcal O^\otimes,\mathcal C\bigr)
+\]
+<p>六関手形式では、lax 対称モノイダル \(D\colon\mathrm{Corr}^\otimes\to\mathrm{Cat}_\infty^\times\) は、関手 \(\tilde D\colon\mathrm{Corr}^\otimes\to\mathrm{Cat}_\infty\) で \(\tilde D(X_1,\dots,X_n)\simeq\prod_iD(X_i)\) となるものと同じ。active 射 \(\langle2\rangle\to\langle1\rangle\) の上の射 \((X,Y)\to X\times Y\) は \(D(X)\times D(Y)\simeq\tilde D(X,Y)\to D(X\times Y)\)、すなわち外部テンソル積 \(\boxtimes\) を与え、これは可逆でない（lax）。\(\mathrm{Cat}_\infty^\times\) の構成を細部まで追わなくても、この普遍性で lax 関手を「積を保つ関手」として扱える。</p>
+
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>入力</th></tr>
+<tr><td>7.1</td><td>\(\mathrm{Cat}_\infty\) の有限積は \(\mathcal C\times\mathcal D\)、終対象は \(\Delta^0\)</td><td>写像空間の比較定理</td></tr>
+<tr><td>7.2</td><td>\(\mathcal C^\times\) の構成と、それが対称モノイダル</td><td>\(\Gamma^\times\)、積の図式、右 Kan 拡張の可縮性</td></tr>
+<tr><td>7.3</td><td>\(\mathcal C^\times\) への lax 関手 = lax cartesian 構造</td><td>HA Prop. 2.4.1.7</td></tr>
+</table></div>
+
+<h3>7.4 lax 関手への普遍性：何のために要るか、詳しい形</h3>
+<p><b>なぜ出てくるか</b>：\(\mathrm{Cat}_\infty^\times\) の中身（\(\langle n\rangle\) 上の対象は部分集合の半順序集合から \(\mathrm{Cat}_\infty\) への積の図式）は複雑で、六関手形式を具体的に書くたびにこの対象への写像を \(\mathrm{Fin}_*\) 上で inert の上の cocartesian 辺を保つように作るのは現実的でない。普遍性は<b>その必要がない</b>ことを言う：\(\mathrm{Cat}_\infty^\times\) への lax 関手は、\(\mathrm{Cat}_\infty\) への普通の関手で組を積に送るものと同じ。</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>必要か</th></tr>
+<tr><td>定義を述べる</td><td>不要（\(\mathrm{Cat}_\infty^\times\) があれば述べられる）</td></tr>
+<tr><td>定義が何を言っているか分かる</td><td>ほぼ必要（読み替えがないとデータの中身が見えない）</td></tr>
+<tr><td>具体例を構成する</td><td>必要（実際の構成はこの形の関手として行う）</td></tr>
+</table></div>
+<p>読み替えると六関手形式のデータは：各 \(X\) に \(D(X)\)、各 span に \(f_!g^*\)、組の間の射（\((X,Y)\to X\times Y\) など）に外部テンソル積 \(D(X)\times D(Y)\to D(X\times Y)\)、そしてこれら全ての整合性（\(\tilde D\) が関手であること）。§4 の (e) の一部にあたる。</p>
+
+<p><b>lax 関手の定義との関係</b>：lax 関手 \(F\colon\mathcal O^\otimes\to\mathcal C^\otimes\) は \(N(\mathrm{Fin}_*)\) 上の写像で inert の上の cocartesian 辺を保つもの。inert の上の cocartesian 辺は「組から成分を取り出す」射で、これを保つので組を組に送る。active の上の射は多重射 \((X_1,\dots,X_n)\to Y\) で、その像が構造写像（cocartesian とは限らないので lax）。値が \(\mathcal C^\times\) なら、active の上の射 \((Y_1,\dots,Y_n)\to Z\) はただの \(\mathcal C\) の射 \(\prod_iY_i\to Z\) なので、\(F\) は多重射を \(\prod_iF(X_i)\to F(Y)\) に送る。</p>
+
+<p><b>主張</b>（HA Prop. 2.4.1.7）：射影 \(\pi\colon\mathcal C^\times\to\mathcal C\)（\(\langle n\rangle\) 上の \(F\) を \(F(\{1,\dots,n\})\) へ）との合成が同値
+\[
+\mathrm{Fun}^{\mathrm{lax}}(\mathcal O^\otimes,\mathcal C^\times)\ \xrightarrow{\ \pi\circ-\ \sim\ }\ \mathrm{Fun}^{\text{lax cart}}(\mathcal O^\otimes,\mathcal C)
+\]
+を与える。右辺は関手 \(\tilde F\colon\mathcal O^\otimes\to\mathcal C\) で、各 \(X=(X_1,\dots,X_n)\) について inert 射 \(X\to X_i\) の像が \(\tilde F(X)\simeq\prod_i\tilde F(X_i)\) を与えるもの。<b>証明の発想</b>：\(F(X)(S):=\tilde F(X_S)\)（\(X_S\) は inert 射 \(\langle n\rangle\to S_+\) による像）と置くと、lax cartesian 条件がちょうど \(\mathcal C^\times\) の積の図式の条件。</p>
+
+<div class="table-wrap"><table>
+<tr><th>例</th><th>内容</th></tr>
+<tr><td>1 圏、値 \((\mathrm{Set},\times)\)</td><td>lax モノイダル関手（\(F(x)\times F(y)\to F(x\otimes y)\)、\(\ast\to F(1)\)）＝ 組 \((x_1,\dots,x_n)\) を \(\prod F(x_i)\) に送る関手</td></tr>
+<tr><td>可換モノイド（\(\mathcal O^\otimes=N(\mathrm{Fin}_*)\)）</td><td>\(\mathrm{CAlg}(\mathcal C^\times)\simeq\{\tilde F\colon N(\mathrm{Fin}_*)\to\mathcal C:\tilde F(\langle n\rangle)\simeq\tilde F(\langle1\rangle)^n\}\)（Segal の \(\Gamma\) 空間）。\(\mathcal C=\mathrm{Cat}_\infty\) なら補章 5 §1 の「対称モノイダル ∞ 圏 = Segal 条件を満たす \(\mathrm{Fin}_*\to\mathrm{Cat}_\infty\)」</td></tr>
+<tr><td>六関手形式</td><td>\(\tilde D\colon\mathrm{Corr}(\mathcal C,E)^\otimes\to\mathrm{Cat}_\infty\)、\(\tilde D(X_1,\dots,X_n)\simeq\prod_iD(X_i)\)。active 射 \((X,Y)\to X\times Y\) の像が \(\boxtimes\)</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th></th><th>定義どおり</th><th>普遍性で書き換えた形</th></tr>
+<tr><td>データ</td><td>\(\mathrm{Fin}_*\) 上の写像 \(\mathcal O^\otimes\to\mathcal C^\times\)</td><td>普通の関手 \(\tilde F\colon\mathcal O^\otimes\to\mathcal C\)</td></tr>
+<tr><td>条件</td><td>inert の上の cocartesian 辺を保つ</td><td>組を積に送る</td></tr>
+<tr><td>lax の構造写像</td><td>active 射の上の射の像</td><td>\(\tilde F\) を active 射に適用したもの</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>8. (c) \(\mathrm{Corr}(\mathcal C,E)\) の定義と準圏性</h2>
+
+<h3>8.0 入力</h3>
+<p>\(\mathcal C\)：引き戻しを持つ準圏。\(E\)：同値を含み、同値で閉じ（\(E\) の射と同値な射も \(E\)）、合成と引き戻しで閉じた射のクラス。</p>
+
+<h3>8.1 添字の半順序集合</h3>
+<p>\([n]\) の区間 \([i,j]\)（\(0\le i\le j\le n\)）全体を包含で順序づけたものを \(I_n\)（\(\cong\mathrm{Tw}([n])\)）とする。\(n\) 単体のデータは \(Y\colon N(I_n)^{\mathrm{op}}\to\mathcal C\)、\([i,j]\mapsto Y_{ij}\)（大きい区間から小さい区間へ射）、\(Y_{ii}=X_i\) が対象。</p>
+<ul>
+  <li><b>右から縮める</b> \(Y_{ij}\to Y_{ij'}\)（\(j'\lt j\)）：span の左の脚 \(g\)（任意）。</li>
+  <li><b>左から縮める</b> \(Y_{ij}\to Y_{i'j}\)（\(i\lt i'\)）：span の右の脚 \(f\)（\(E\) に入るべき）。</li>
+</ul>
+<p>\(n=1\) なら \(X_0\leftarrow Y_{01}\to X_1\) で、\(D\) はこれを \(f_!g^*\) に送る。</p>
+
+<h3>8.2 条件と言い換え</h3>
+<p>\(\mathrm{Corr}(\mathcal C,E)_n\) は次を満たす \(Y\) の集合。</p>
+<ul>
+  <li><b>(A)</b> \(i\le i'\le j'\le j\) について \(Y_{ij}\to Y_{i'j}\)、\(Y_{ij}\to Y_{ij'}\)、\(Y_{i'j}\to Y_{i'j'}\)、\(Y_{ij'}\to Y_{i'j'}\) の正方形が引き戻し。</li>
+  <li><b>(E)</b> 左から縮める射は \(E\) に入る。</li>
+</ul>
+<p><b>補題 1</b>：長さ \(\le1\) の区間の部分を \(\mathrm{Sp}_n\)（spine）とすると、(A) ⇔ \(Y\) は \(Y|_{\mathrm{Sp}_n}\) の右 Kan 拡張。\([i,j]\) での右 Kan 拡張の値は反復引き戻し \(Y_{i,i+1}\times_{X_{i+1}}\cdots\times_{X_{j-1}}Y_{j-1,j}\) で、(A) のもとで引き戻しの貼り合わせ（pasting law）により \(Y_{ij}\) はこれに一致する（逆も貼り合わせ）。</p>
+
+<h3>8.3 単体的集合であること</h3>
+<p>単調写像 \(\alpha\colon[m]\to[n]\) は \(I_m\to I_n\)、\([i,j]\mapsto[\alpha(i),\alpha(j)]\) を誘導し、前合成で \(\alpha^*\)。(A) の正方形は (A) の正方形か二辺が恒等の退化した正方形（自動的に引き戻し）に、(E) の射は (E) の射か恒等射（\(E\) は同値を含む）に写る。</p>
+
+<div class="table-wrap"><table>
+<tr><th>次元</th><th>データ</th></tr>
+<tr><td>0</td><td>対象 \(X\)</td></tr>
+<tr><td>1</td><td>span \(X_0\leftarrow Y_{01}\to X_1\)（右の脚が \(E\)）</td></tr>
+<tr><td>2</td><td>二つの span とその合成 \(Y_{02}\simeq Y_{01}\times_{X_1}Y_{12}\)</td></tr>
+<tr><td>3</td><td>三つの span と全ての部分合成</td></tr>
+</table></div>
+<p>ホモトピー圏では、射は span の同値類、合成は引き戻し。2 単体の存在が「二つの span の合成が \(Y_{02}\)」の証拠。</p>
+
+<h3>8.4 定理：\(\mathrm{Corr}(\mathcal C,E)\) は準圏</h3>
+<p><b>書き換え</b>：単体的集合 \(K\) について、\(K\to\mathrm{Corr}\) は、\(K\) の各単体の \(N(I_k)^{\mathrm{op}}\) を貼り合わせた \(T(K)\) から \(\mathcal C\) への写像で各単体上で (A)・(E) を満たすもの。\(T(\Delta^n)=N(I_n)^{\mathrm{op}}\)、\(T(\Lambda^n_i)\) はホーンの面たちの部分の和集合。内ホーンの持ち上げは「\(T(\Lambda^n_i)\) 上の \(Y\) を \(T(\Delta^n)\) に (A)・(E) を満たすように延ばす」問題。</p>
+
+<p><b>補題 2</b>（ここで内側性が効く）：\(0\lt i\lt n\) なら \(T(\Lambda^n_i)\) は spine を含み、その上の \(Y\) は spine からの右 Kan 拡張。\(T(\Lambda^n_i)\) に含まれる区間 \([a,b]\) について：</p>
+<ul>
+  <li><b>場合 1：\(i\notin(a,b)\)</b>。\(i\notin[a,b]\) なら \(\{a,\dots,b\}\subseteq d_i\)。\(i=a\) なら \(i\gt0\) より \(i\) より小さい頂点 \(j\) があり \(\{a,\dots,b\}\subseteq d_j\)。\(i=b\) なら \(i\lt n\) より \(i\) より大きい \(j\) で同様。いずれも本物の単体の一部なので補題 1 で spine からの右 Kan 拡張。</li>
+  <li><b>場合 2：\(a\lt i\lt b\)</b>。2 単体 \(\{a,i,b\}\) はホーンに含まれ（\(n\ge3\)）、\(Y_{ab}\simeq Y_{ai}\times_{X_i}Y_{ib}\)。\([a,i]\)・\([i,b]\) に場合 1 を使って貼り合わせる。</li>
+</ul>
+<p>（\(n=2\) では \([0,2]\) は \(T(\Lambda^2_1)\) に含まれず場合 1 で済む。）<b>外側のホーンで失敗する理由</b>：\(\Lambda^3_0\) では \(Y_{13}\) は面 \(\{0,1,3\}\) の spine として自由に与えられ、\(Y_{12}\)・\(Y_{23}\) との関係を強制する面 \(\{1,2,3\}\) がない。普通の圏のナーブで \(\Lambda^3_0\) を埋めるには射を左から打ち消す必要があるのと同じ現象。</p>
+
+<p><b>拡張</b>：</p>
+<ol>
+  <li>\(\mathcal C\) が引き戻しを持つので spine からの右 Kan 拡張は存在し、制限 \(\mathrm{Fun}^{\mathrm{RKE}}(T(\Delta^n),\mathcal C)\to\mathrm{Fun}(T(\mathrm{Sp}^n),\mathcal C)\) は自明 Kan fibration（HTT Prop. 4.3.2.15）。補題 2 より \(T(\Lambda^n_i)\) でも同じ。</li>
+  <li>2-out-of-3 で \(r\colon\mathrm{Fun}^{\mathrm{RKE}}(T(\Delta^n),\mathcal C)\to\mathrm{Fun}^{\mathrm{RKE}}(T(\Lambda^n_i),\mathcal C)\) は圏同値。包含に沿った制限で、\(\mathrm{Fun}^{\mathrm{RKE}}\) は同値で閉じた充満部分圏なので categorical fibration。よって自明 fibration。</li>
+  <li>自明 fibration は頂点の上で全射なので、与えられた \(Y\) を厳密に延ばす \(\tilde Y\) がある。</li>
+  <li>\(\tilde Y\) の左から縮める射は spine の \(E\) の射の引き戻しの合成なので \(E\) に入る。∎</li>
+</ol>
+
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>使うもの</th></tr>
+<tr><td>定義</td><td>\(Y\colon N(I_n)^{\mathrm{op}}\to\mathcal C\)、(A) と (E)</td><td>\(\mathcal C\) の引き戻し</td></tr>
+<tr><td>補題 1</td><td>(A) ⇔ spine からの右 Kan 拡張</td><td>引き戻しの貼り合わせ</td></tr>
+<tr><td>単体的集合</td><td>\(\alpha\) は区間を区間に写す</td><td>退化した正方形は引き戻し</td></tr>
+<tr><td>補題 2</td><td>内ホーン上のデータは spine からの右 Kan 拡張</td><td>\(0\lt i\lt n\)（端点の場合の面の存在）</td></tr>
+<tr><td>拡張</td><td>制限は自明 fibration なので厳密に延ばせる</td><td>Kan 拡張の可縮性、categorical fibration</td></tr>
+</table></div>
+<p>副産物：\(\mathrm{Corr}\) の単体は spine で可縮な選択を除いて決まる（合成は選び方によらず本質的に一意）。</p>
+
+<!-- ============================================================ -->
+<h2>9. (d) \(\mathrm{Corr}(\mathcal C,E)\) の対称モノイダル構造</h2>
+<p><b>目標</b>：\(N(\mathrm{Fin}_*)\) 上の cocartesian fibration \(\mathrm{Corr}(\mathcal C,E)^\otimes\)（Segal 条件付き）で、テンソル積は直積 \(X\times Y\)（span の積）、単位は終対象（\(\mathcal C\) は有限極限を持つとする）。</p>
+
+<h3>9.1 注意：§7 の cartesian 構造は使えない</h3>
+<p>\(\mathrm{Corr}\) の中での積は \(\times\) ではない。span の圏では \(X\sqcup Y\) が双積（\(\mathcal C\) が引き戻しと良く振る舞う有限余積を持つとき。例：\(X\sqcup Y\to X\) は span \(X\sqcup Y\hookleftarrow X\xrightarrow{=}X\)）。\(\times\) は非 cartesian なモノイダル構造で、例えば全ての \(X\) は \(X\times X\leftarrow X\to\ast\) を評価写像として自己双対。したがって「\(\mathrm{Corr}\) が有限積を持つから」では済まず、\(\mathcal C\) の直積構造を \(\mathrm{Corr}\) に運ぶ。</p>
+
+<h3>9.2 抽象的な構成（三段）</h3>
+<ol>
+  <li><b>組の ∞ 圏と \(\mathrm{Corr}\) の関手性</b>：組 \((\mathcal C,E)\) と、引き戻しと \(E\) を保つ関手の ∞ 圏を \(\mathcal P\) とし、\(\mathrm{Corr}(F)(Y)=F\circ Y\)（(A)・(E) は保たれる）。</li>
+  <li><b>積を保つ</b>：\(\mathrm{Corr}(\mathcal C\times\mathcal D,E\times E')=\mathrm{Corr}(\mathcal C,E)\times\mathrm{Corr}(\mathcal D,E')\) が単体的集合として厳密に成り立つ（積への図式は図式の組、積の中の引き戻しは成分ごと）。\(\mathrm{Corr}(\Delta^0,\text{全ての射})=\Delta^0\)。</li>
+  <li><b>\(\mathcal C\) は \(\mathcal P\) の可換モノイド</b>：§7 の \(\mathcal C^\times\) を straightening した \(N(\mathrm{Fin}_*)\to\mathrm{Cat}_\infty\)、\(\langle n\rangle\mapsto\mathcal C^n\) は \(\mathcal P\) に値を取る。各 \(\mathcal C^n\) は引き戻しと \(E^n\) を持ち、推移写像（射影と \(\times\) の合成）は引き戻しを保ち（極限の交換）、\(E\) を保つ（\(f\times g=(f\times1)\circ(1\times g)\)、\(f\times1\) は \(f\) の引き戻し）。</li>
+</ol>
+<p><b>結論</b>：\(N(\mathrm{Fin}_*)\to\mathcal P\xrightarrow{\mathrm{Corr}}\mathrm{Cat}_\infty\)、\(\langle n\rangle\mapsto\mathrm{Corr}(\mathcal C^n,E^n)\simeq\mathrm{Corr}(\mathcal C,E)^n\) は段 2 で Segal 条件を保ち \(\mathrm{Cat}_\infty\) の可換モノイド。unstraightening が \(\mathrm{Corr}(\mathcal C,E)^\otimes\)。</p>
+
+<h3>9.3 技術的な一段：厳密な関手から ∞ 関手へ</h3>
+<p>\(\mathrm{Corr}(F)=F\circ-\) は単体的集合の厳密な関手で、段 3 の関手は ∞ 関手なので、\(\mathrm{Corr}\) を ∞ 関手 \(\mathcal P\to\mathrm{Cat}_\infty\) にする必要がある。</p>
+<ul>
+  <li><b>局所化を経由</b>：組と関手の厳密な 1 圏を圏同値で局所化すると \(\mathcal P\)。\(\mathrm{Corr}\) が圏同値を圏同値に送ること（§8 の「単体は spine で決まる」から写像空間の比較として）を示し、局所化の普遍性で降ろす。</li>
+  <li><b>Segal 空間で定義</b>（Haugseng）：最初から完備 Segal 空間として定義すれば関手性が自然に ∞ 関手として得られる。</li>
+  <li><b>Barwick–Glasman–Shah</b>：effective Burnside ∞ 圏の一般論。</li>
+</ul>
+<p>定義の理解なら受け入れてよく、形式化では \(\mathrm{Corr}\) 周りで最も手間がかかる。</p>
+
+<h3>9.4 結果の具体的な姿</h3>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>\(\langle n\rangle\) 上の対象</td><td>組 \((X_1,\dots,X_n)\)</td></tr>
+<tr><td>\(\alpha\colon\langle n\rangle\to\langle m\rangle\) 上の射 \((X_i)\to(Z_j)\)</td><td>各 \(j\) ごとの span \(\prod_{\alpha(i)=j}X_i\leftarrow Y_j\to Z_j\)（右の脚が \(E\)）</td></tr>
+<tr><td>active 射 \(\langle2\rangle\to\langle1\rangle\) 上の cocartesian 辺</td><td>\((X,Y)\to X\times Y\)（恒等の span）</td></tr>
+<tr><td>単位</td><td>終対象 \(\ast\)</td></tr>
+</table></div>
+<p><b>六関手形式への接続</b>（§7.4）：lax 対称モノイダル \(D\) は \(\tilde D\colon\mathrm{Corr}^\otimes\to\mathrm{Cat}_\infty\)、\(\tilde D(X_1,\dots,X_n)\simeq\prod_iD(X_i)\) と同じで、cocartesian 辺 \((X,Y)\to X\times Y\) の像 \(D(X)\times D(Y)\to D(X\times Y)\) が外部テンソル積 \(\boxtimes\)（lax なので同値とは限らない）。</p>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>入力</th></tr>
+<tr><td>注意</td><td>\(\mathrm{Corr}\) の積は \(\times\) でなく §7 は直接使えない</td><td>—</td></tr>
+<tr><td>1</td><td>\(\mathrm{Corr}\colon\mathcal P\to\mathrm{Cat}_\infty\)</td><td>\(F\) が引き戻しと \(E\) を保つ</td></tr>
+<tr><td>2</td><td>積を厳密に保つ</td><td>積の中の引き戻しは成分ごと</td></tr>
+<tr><td>3</td><td>\(\mathcal C\) は \(\mathcal P\) の可換モノイド</td><td>\(\times\) が引き戻しと \(E\) を保つ</td></tr>
+<tr><td>結論</td><td>合成して \(\mathrm{Corr}(\mathcal C,E)^\otimes\)</td><td>積を保つ関手は可換モノイドを保つ</td></tr>
+<tr><td>技術</td><td>厳密な関手を ∞ 関手に</td><td>局所化、Segal 空間、BGS</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>10. (e) ∞ operad と lax 関手の正確な定義</h2>
+<p><b>なぜ要るか</b>：lax 関手の構造写像 \(F(X)\otimes F(Y)\to F(X\otimes Y)\) は可逆とは限らず、\(\mathrm{Fin}_*\) 上の写像としては一部の cocartesian 辺しか保たない。どれを保つかを指定するには「一部の射についてだけ cocartesian 持ち上げがある」ものを扱う枠組みが要る。それが ∞ operad。</p>
+
+<h3>10.1 \(\mathrm{Fin}_*\) の二種類の射</h3>
+<div class="table-wrap"><table>
+<tr><th>種類</th><th>条件</th><th>例</th><th>意味</th></tr>
+<tr><td>inert</td><td>各 \(j\neq\ast\) で \(\alpha^{-1}(j)\) がちょうど一点</td><td>射影 \(\rho^i\colon\langle n\rangle\to\langle1\rangle\)</td><td>成分を選ぶ・捨てる</td></tr>
+<tr><td>active</td><td>\(\alpha^{-1}(\ast)=\{\ast\}\)</td><td>\(\langle2\rangle\to\langle1\rangle\)（\(1,2\mapsto1\)）</td><td>成分をまとめる</td></tr>
+</table></div>
+<p>全ての射は inert と active の合成に（同型を除き一意に）分解する（要らない成分を捨ててから残りをまとめる）。</p>
+
+<h3>10.2 ∞ operad（HA Def. 2.1.1.10）</h3>
+<p>内ファイブレーション \(p\colon\mathcal O^\otimes\to N(\mathrm{Fin}_*)\) で：</p>
+<ol>
+  <li><b>inert の cocartesian 持ち上げ</b>：inert \(\alpha\colon\langle m\rangle\to\langle n\rangle\) と \(\langle m\rangle\) 上の \(X\) に \(p\)-cocartesian 辺 \(X\to\alpha_!X\) がある。</li>
+  <li><b>ファイバーの Segal 条件</b>：\(\rho^i\) に沿う輸送が \(\mathcal O^\otimes_{\langle n\rangle}\xrightarrow{\sim}(\mathcal O^\otimes_{\langle1\rangle})^n\)。</li>
+  <li><b>写像空間の Segal 条件</b>：\(\langle m\rangle\) 上の \(Y\) と成分への cocartesian 辺 \(Y\to Y_j\) について \(\mathrm{Map}^f(X,Y)\xrightarrow{\sim}\prod_j\mathrm{Map}^{\rho^j\circ f}(X,Y_j)\)（組への射は各成分への射の組）。</li>
+</ol>
+<p>台は \(\mathcal O=\mathcal O^\otimes_{\langle1\rangle}\)、\(\langle n\rangle\) 上の対象は組 \((X_1,\dots,X_n)\)、多重射の空間は \(\mathrm{Mul}_{\mathcal O}(X_1,\dots,X_n;Y):=\mathrm{Map}^{\mathrm{active}}((X_1,\dots,X_n),Y)\)。</p>
+
+<h3>10.3 対称モノイダル ∞ 圏との関係</h3>
+<p>対称モノイダル ∞ 圏 = ∞ operad で \(p\) が cocartesian fibration であるもの（補章 5 の定義と一致：cocartesian fibration なら条件 3 は条件 2 から従う）。違いは active 射の cocartesian 持ち上げの有無で、\((X,Y)\to X\otimes Y\) の存在は \(\mathrm{Mul}(X,Y;-)\) が \(X\otimes Y\) で表現されること。</p>
+
+<h3>10.4 lax 関手（HA Def. 2.1.2.7）</h3>
+<p>∞ operad の写像は \(N(\mathrm{Fin}_*)\) 上の写像 \(F\colon\mathcal O^\otimes\to\mathcal O'^\otimes\) で、<b>inert の上の cocartesian 辺を cocartesian 辺に送る</b>もの（全体を \(\mathrm{Alg}_{\mathcal O}(\mathcal O')\)）。inert の cocartesian 辺は「組から成分を取り出す」射なので、これを保つことで組を組 \((FX_1,\dots,FX_n)\) に送る（保たなければ成分が混ざりうる）。active の上の射（多重射）は多重射に送るだけで条件はない。全ての cocartesian 辺を保つものが（強い）対称モノイダル関手。</p>
+
+<h3>10.5 lax の構造写像の取り出し方</h3>
+<ol>
+  <li>active 射 \(\langle2\rangle\to\langle1\rangle\) の上の cocartesian 辺 \(c\colon(X,Y)\to X\otimes Y\) を取る。</li>
+  <li>\(F(c)\colon(FX,FY)\to F(X\otimes Y)\) は active 射の上の辺（cocartesian とは限らない）。</li>
+  <li>\(\mathcal O'^\otimes\) の cocartesian 辺 \((FX,FY)\to FX\otimes FY\) の普遍性で、\(F(c)\) は（可縮な選択を除き一意に）\(FX\otimes FY\to F(X\otimes Y)\) を経由する。これが構造写像。単位は \(\langle0\rangle\to\langle1\rangle\) の上の \(\ast\to\mathbf 1\) から \(\mathbf 1'\to F(\mathbf 1)\)。</li>
+</ol>
+<p>1 圏の lax モノイダル関手では \(\mu,\eta\) と結合性・単位性の図式を確かめたが、∞ 版ではそれらの整合性は全て「\(F\) が \(\mathrm{Fin}_*\) 上の写像である」ことに含まれる。</p>
+
+<div class="table-wrap"><table>
+<tr><th>例</th><th>内容</th></tr>
+<tr><td>\(E_\infty\) 代数</td><td>可換 operad は \(N(\mathrm{Fin}_*)\) 自身。\(\mathrm{Alg}_{N(\mathrm{Fin}_*)}(\mathcal C^\otimes)=\mathrm{CAlg}(\mathcal C)\)</td></tr>
+<tr><td>右随伴</td><td>対称モノイダルな左随伴の右随伴は自動的に lax（HA Cor. 7.3.2.7）：\(f_*A\otimes f_*B\to f_*(A\otimes B)\)</td></tr>
+<tr><td>六関手形式</td><td>\(D\colon\mathrm{Corr}(\mathcal C,E)^\otimes\to\mathrm{Cat}_\infty^\times\)。構造写像 \(D(X)\times D(Y)\to D(X\times Y)\) が \(\boxtimes\) で、同値ではない（\(D(X\times Y)\) はずっと大きい）ので strong でなく lax でなければならない</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+<tr><th>概念</th><th>定義</th><th>要点</th></tr>
+<tr><td>inert / active</td><td>\(\alpha^{-1}(j)\) が一点 / \(\alpha^{-1}(\ast)=\{\ast\}\)</td><td>成分を選ぶ / まとめる</td></tr>
+<tr><td>∞ operad</td><td>内ファイブレーション、inert の cocartesian 持ち上げ、二つの Segal 条件</td><td>多重射の空間 \(\mathrm{Mul}\)</td></tr>
+<tr><td>対称モノイダル ∞ 圏</td><td>∞ operad で cocartesian fibration</td><td>多重射が \(\otimes\) で表現される</td></tr>
+<tr><td>lax 関手</td><td>\(\mathrm{Fin}_*\) 上の写像で inert の cocartesian 辺を保つ</td><td>組を組に、多重射を多重射に</td></tr>
+<tr><td>構造写像</td><td>active の cocartesian 辺の像を普遍性で分解</td><td>\(FX\otimes FY\to F(X\otimes Y)\)</td></tr>
+</table></div>
+<p>前提：内ファイブレーション、cocartesian 辺（<a href="cocartesian-definition.html">補章 6</a>）、\(\mathrm{Fin}_*\) の組合せ論。定義を述べるだけなら straightening は不要。</p>
+
+<!-- ============================================================ -->
+<h2>11. (f) 随伴</h2>
+
+<h3>11.0 六関手形式で何が要るか</h3>
+<div class="table-wrap"><table>
+<tr><th>関手</th><th>どこから来るか</th><th>右随伴</th></tr>
+<tr><td>\(g^*\colon D(Y)\to D(X)\)</td><td>span \(Y\xleftarrow{g}X\xrightarrow{=}X\)</td><td>\(g_*\)</td></tr>
+<tr><td>\(f_!\colon D(X)\to D(Y)\)</td><td>span \(X\xleftarrow{=}X\xrightarrow{f}Y\)（\(f\in E\)）</td><td>\(f^!\)</td></tr>
+<tr><td>\(-\otimes A\colon D(X)\to D(X)\)</td><td>\(\boxtimes\) と対角線 \(\Delta^*\)</td><td>\(\underline{\mathrm{Hom}}(A,-)\)</td></tr>
+</table></div>
+<p>どれも「関手 \(F\colon\mathcal C\to\mathcal D\) が右随伴を持つ」という<b>性質</b>だけが要り、随伴を構造として扱う必要はない。</p>
+
+<h3>11.1 定義の三つの形</h3>
+<p><b>(i) 各点の普遍射（最小限）</b>：各 \(d\in\mathcal D\) に \(Gd\in\mathcal C\) と \(\varepsilon_d\colon F(Gd)\to d\) があり、全ての \(c\) で
+\[
+\mathrm{Map}_{\mathcal C}(c,Gd)\ \xrightarrow{\ F\ }\ \mathrm{Map}_{\mathcal D}(Fc,FGd)\ \xrightarrow{\ \varepsilon_d\circ-\ }\ \mathrm{Map}_{\mathcal D}(Fc,d)
+\]
+が同値。写像空間と合成だけを使い、Hom 関手・米田・straightening は不要。言い換えれば \(\mathcal C\times_{\mathcal D}\mathcal D_{/d}\) が終対象を持つこと。1 圏の普遍射による随伴の定義（Mac Lane）そのもの。</p>
+<p><b>(ii) 単位と三角恒等式</b>：自然変換 \(\eta\colon\mathrm{id}\Rightarrow GF\)、\(\varepsilon\colon FG\Rightarrow\mathrm{id}\) で \((\varepsilon F)\circ(F\eta)\simeq\mathrm{id}_F\)、\((G\varepsilon)\circ(\eta G)\simeq\mathrm{id}_G\) をホモトピーを除いて満たすもの。<b>Riehl–Verity</b>：このデータは全ての高次の整合性を持つホモトピー整合的な随伴に本質的に一意に延びるので、三角恒等式はホモトピーで成り立てば十分。</p>
+<p><b>(iii) 両側 fibration</b>（HTT Def. 5.2.2.1）：\(\Delta^1\) 上の cartesian かつ cocartesian な fibration \(\mathcal M\to\Delta^1\)、\(\mathcal M_0\simeq\mathcal C\)、\(\mathcal M_1\simeq\mathcal D\)。cocartesian 輸送が \(F\)、cartesian 輸送が \(G\) で、\(\mathrm{Map}_{\mathcal D}(Fc,d)\simeq\mathrm{Map}_{\mathcal M}(c,d)\simeq\mathrm{Map}_{\mathcal C}(c,Gd)\) が全空間の写像空間として最初から一致（<a href="cocartesian-definition.html">補章 6</a> §5）。</p>
+<div class="table-wrap"><table>
+<tr><th>定義</th><th>必要な道具</th><th>向いている用途</th></tr>
+<tr><td>(i) 各点の普遍射</td><td>写像空間だけ</td><td>「右随伴を持つ」という性質を述べる（定義に最適）</td></tr>
+<tr><td>(ii) 単位と三角恒等式</td><td>自然変換 \(\mathcal C\times\Delta^1\to\mathcal D\)</td><td>具体的な計算、2 圏的な議論</td></tr>
+<tr><td>(iii) 両側 fibration</td><td>cocartesian／cartesian fibration</td><td>随伴の族、Beck–Chevalley 条件</td></tr>
+</table></div>
+<p>三つは同値。(i) から (ii)・(iii) を作るには \(d\mapsto Gd\) を関手にまとめる必要があり、右 fibration \(\mathcal C\times_{\mathcal D}\mathcal D_{/d}\) の表現可能性から straightening（あるいは米田）で行う（HTT §5.2.2〜5.2.4）。</p>
+
+<h3>11.2 定義に必要なのは (i) だけ</h3>
+<p>課すのは右随伴を<b>持つ</b>という性質なので (i) で足り、\(G\) を関手として構成する必要はない。これは \(\mathrm{Cat}_\infty\) の辺 \(F\) についての性質で同値で不変。§6.3 で \(\mathrm{Cat}_\infty\) では単位・余単位が 2 射として見えないことを見たが、(i) は自然変換を使わないのでこの点でも問題ない。</p>
+
+<h3>11.3 定義の後で使う性質（参考）</h3>
+<ul>
+  <li>一意性：右随伴は可縮な選択を除いて一意。</li>
+  <li>合成：右随伴を持つ関手の合成は右随伴を持ち、右随伴は逆順の合成。</li>
+  <li>極限・余極限：左随伴は余極限、右随伴は極限を保つ。</li>
+  <li>mate（Beck–Chevalley 変換）：可換正方形 \(g^*f_!\simeq f'_!g'^*\) から右随伴の間の比較写像を作り、基底変換の他の形（\(f^!g_*\) など）を導く。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>12. 全体のまとめ：六関手形式の定義</h2>
+<div class="box">
+<p class="label">定義</p>
+<p>\(\mathcal C\) を有限極限を持つ ∞ 圏、\(E\) を同値を含み合成と引き戻しで閉じた射のクラスとする。<b>六関手形式</b>とは ∞ operad の写像（lax 対称モノイダル関手）
+\[
+D\colon\ \mathrm{Corr}(\mathcal C,E)^\otimes\ \longrightarrow\ \mathrm{Cat}_\infty^\times
+\]
+で、各 \(X\) と \(A\) について \(-\otimes A\) が、各 \(g\) について \(g^*\) が、各 \(f\in E\) について \(f_!\) が右随伴を持つもの。</p>
+</div>
+<div class="table-wrap"><table>
+<tr><th>部分</th><th>中身</th><th>この章の節</th></tr>
+<tr><td>\(\mathrm{Cat}_\infty\)</td><td>\(N^{hc}(\mathrm{QCat}^\Delta)\)</td><td>§5・§6</td></tr>
+<tr><td>\(\mathrm{Cat}_\infty^\times\)</td><td>有限積と cartesian 構造の一般論</td><td>§7</td></tr>
+<tr><td>\(\mathrm{Corr}(\mathcal C,E)\)</td><td>\(\mathrm{Tw}([n])^{\mathrm{op}}\) からの図式、準圏性</td><td>§8</td></tr>
+<tr><td>\(\mathrm{Corr}(\mathcal C,E)^\otimes\)</td><td>\(\mathcal C\) の直積を運ぶ</td><td>§9</td></tr>
+<tr><td>lax 対称モノイダル関手</td><td>inert の cocartesian 辺を保つ写像（§7.4 の普遍性で組を積に送る関手と同じ）</td><td>§10、§7.4</td></tr>
+<tr><td>右随伴の条件</td><td>各点の普遍射</td><td>§11</td></tr>
+</table></div>
+<p>定義の中で基底変換（\(\mathrm{Corr}\) の合成が引き戻し）と射影公式（lax 性の整合性）は自動的に組み込まれており、\(f_*\)・\(f^!\)・\(\underline{\mathrm{Hom}}\) は性質として存在が要求されるだけ。例の構成（\(\mathrm{Pr}^L\)、降下、拡張定理）は次の段階（§1 のレベル (2)）。</p>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の宣言のみ）</p>
+<ul>
+  <li>§5 の段 1・4：coherent nerve は Mathlib の <code>SimplicialNerve</code>、Kan 豊穣なら準圏であることは <code>simplicialNerve_quasicategory</code>（Coherent/Quasicategory、<a href="03-straightening.html">第 3 章</a> §2）。</li>
+  <li>段 2・3：\(\mathrm{Cat}_\infty\) は <code>CatInfinity</code>（F1/CatInfinity、F1/QCatSimplicial）。</li>
+  <li>段 5 の写像空間の比較：<code>coherentHomEquivalence</code>。</li>
+  <li>§4 (e) の cocartesian fibration：<code>CocartesianFibrationInfinity B</code>（第 3 章）。対称モノイダル構造・∞ operad・\(\mathrm{Corr}\) の記述は既存の章にはない。</li>
+</ul>
+</div>
+
+<h2>この章で押さえること</h2>
+<ul>
+  <li>六関手形式は「定義する／構成する／計算する」の三レベルで必要な道具が違う。定義だけなら presentable・安定性・\(\mathrm{Pr}^L\) は不要。</li>
+  <li>\(\mathrm{Pr}^L\) は右随伴の存在（随伴関手定理）、降下（極限が presentable のまま、\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\)）、係数・Künneth・射影公式で効く。</li>
+  <li>\(\mathrm{Corr}\) の \(n\) 単体は \(N(\mathrm{Tw}([n])^{\mathrm{op}})\to\mathcal C\) で正方形が引き戻し・右向きが \(E\) のもの。準圏性は spine からの右 Kan 拡張、対称モノイダル構造は「\(\mathrm{Corr}\) は積を保つ関手」から。基底変換と射影公式は定義に組み込まれている。</li>
+  <li>定義に必要なのは \(\mathrm{Cat}_\infty\)、\(\mathrm{Corr}\)、両者の対称モノイダル構造、lax 対称モノイダル関手（inert 上の cocartesian 辺）、随伴。</li>
+  <li>\(\mathrm{Cat}_\infty\) は \(\mathfrak C[\Delta^n]\) → \(\mathrm{QCat}^\Delta\)（Joyal の定理で Hom が Kan）→ ナーブが準圏、の順。対称モノイダル構造には写像空間の比較定理で有限積を確かめてから cartesian 構造を入れる。</li>
+  <li>\(\mathrm{Corr}\) の対称モノイダル構造は \(\mathcal C\) の直積を運んで作る（\(\mathrm{Corr}\) の中の積は \(\times\) ではない）。lax 関手は inert の cocartesian 辺を保つ \(\mathrm{Fin}_*\) 上の写像。右随伴の条件は各点の普遍射で述べれば写像空間だけで済む。</li>
+</ul>
+</main>
+</body>
+</html>

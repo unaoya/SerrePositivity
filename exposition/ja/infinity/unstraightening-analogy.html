@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 2　集合・圏からの類似で見る (un)straightening</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 2　集合・圏からの類似で見る (un)straightening</nav>
+<h1>補章 2　集合・圏からの類似で見る (un)straightening</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="unstraightening.html">補章（unstraightening）</a>と<a href="route-yoneda.html">「Yoneda への道」</a>の数学的な背景にあたる。Lean の宣言名は、それらの章にすでに出ているものだけを引用する。</p>
+
+<p>普遍左 fibration \(\mathcal S_*\to\mathcal S\) の引き戻しとして unstraightening を定義する、という考え方を、集合と通常の圏での類似と並べて整理する。扱う問いは次の四つである。</p>
+<ol>
+  <li>「点付き」を何と取れば、\(X\) 上の fiber がちょうど \(X\) になるか。なぜ \(\mathcal S\)（Kan 複体）を使うのか。</li>
+  <li>Un が関手になり、写像空間（Hom）を保つことの類似。</li>
+  <li>straightening も同じ見方で理解できるか。</li>
+  <li>Yoneda を使わずに straightening を得るにはどうするか。</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>1. 三段の並び</h2>
+
+<div class="table-wrap"><table>
+<tr><th>段</th><th>底</th><th>fiber</th><th>普遍 fibration</th><th>分類されるもの</th></tr>
+<tr><td>集合</td><td>集合</td><td>集合</td><td>\(\mathrm{Ob}(\mathrm{Set}_*)\to\mathrm{Ob}(\mathrm{Set})\)</td><td>写像 \(E\to B\)</td></tr>
+<tr><td>1 圏</td><td>圏</td><td>集合</td><td>\(\mathrm{Set}_*\to\mathrm{Set}\)</td><td>離散 opfibration</td></tr>
+<tr><td>1 圏</td><td>圏</td><td>圏</td><td>\(\mathrm{Cat}_*^{\mathrm{lax}}\to\mathrm{Cat}\)</td><td>cocartesian fibration</td></tr>
+<tr><td>∞</td><td>∞ 圏</td><td>∞ 亜群</td><td>\(\mathcal S_*\to\mathcal S\)</td><td>左 fibration</td></tr>
+<tr><td>∞</td><td>∞ 圏</td><td>∞ 圏</td><td>\(\mathrm{Cat}_{\infty,*}^{\mathrm{lax}}\to\mathrm{Cat}_\infty\)</td><td>cocartesian fibration</td></tr>
+</table></div>
+
+<p>\(\mathcal S_*\to\mathcal S\) は「\(\mathrm{Set}_*\to\mathrm{Set}\)」の ∞ 版である。∞ では「集合」の役を ∞ 亜群が担う。対象を \(\mathcal S\) に限っているのは手抜きではなく、左 fibration（離散 opfibration の ∞ 版）の分類に対応しているからである。</p>
+
+<h3>集合の場合</h3>
+<p>写像 \(f\colon E\to B\) と族 \(b\mapsto f^{-1}(b)\) が対応し、\(E\cong B\times_{\mathrm{Ob\,Set}}\mathrm{Ob}(\mathrm{Set}_*)\)。\(X\) 上の fiber は「\(X\) の点の選び方全体」なので \(X\) そのもの。圏として見ると \(\mathrm{Set}_*\to\mathrm{Set}\) は離散 opfibration で、\(F\colon B\to\mathrm{Set}\) に沿う引き戻しは要素の圏 \(\int F\) になる。
+\[
+\{\text{離散 opfibration } E\to B\}\ \simeq\ \mathrm{Fun}(B,\mathrm{Set}).
+\]</p>
+
+<!-- ============================================================ -->
+<h2>2. 「点付き」の三つの版</h2>
+
+<p>点付き圏の射 \((\mathcal C,c)\to(\mathcal D,d)\) の取り方で、\(\mathcal C\) 上の fiber が変わる。</p>
+<div class="table-wrap"><table>
+<tr><th>射の定義</th><th>\(\mathcal C\) 上の fiber</th></tr>
+<tr><td>厳密：\(F(c)=d\)</td><td>離散圏 \(\mathrm{Ob}\,\mathcal C\)</td></tr>
+<tr><td>擬（(2,1) 圏での coslice \(\mathrm{Cat}_{*/}\)）：\(F\) と同型 \(F(c)\cong d\)</td><td>\(\mathcal C^{\simeq}\)（core）</td></tr>
+<tr><td>lax：\(F\) と射 \(F(c)\to d\)</td><td>\(\mathcal C\) そのもの</td></tr>
+</table></div>
+
+<p>fiber をちょうど \(\mathcal C\) にしたければ lax 版を使う。\(\mathrm{Cat}_*^{\mathrm{lax}}\to\mathrm{Cat}\) は恒等関手の Grothendieck 構成そのもので、普遍 cocartesian fibration である。擬関手 \(F\colon B\to\mathrm{Cat}\) に沿う引き戻しは \(\int F\)。fiber は「点の選び方の圏」\(\mathrm{Fun}([0],\mathcal C)=\mathcal C\) で、集合の場合の「点を選ぶ自由度」が射を含めた形に格上げされている。</p>
+
+<p><b>∞ で \(\mathcal S\) を使う理由</b>：\(\mathcal S_*=\mathcal S_{*/}\) の射は \(f\colon X\to Y\) と \(Y\) 内の道 \(f(x)\rightsquigarrow y\) の組。\(Y\) が ∞ 亜群なので擬と lax の区別が消え、coslice を取るだけで fiber が \(\mathrm{Map}(*,X)\simeq X\) になる。\(\mathrm{Cat}_\infty\) では単なる coslice \((\mathrm{Cat}_\infty)_{*/}\) の fiber は core \(\mathcal C^{\simeq}\) にしかならず、lax 版を別に作る必要がある。</p>
+
+<h3>引き戻しの定義</h3>
+<ul>
+  <li><b>1 圏</b>：厳密な引き戻しと擬引き戻し（iso-comma）がある。(2,1) 圏としての正しい概念は後者だが、片方が isofibration（Grothendieck fibration は常にそう）なら両者は圏同値。普遍 fibration に沿う引き戻しは厳密なもので計算してよい。</li>
+  <li><b>∞</b>：正しいのはホモトピー引き戻し。準圏の模型では \(\mathcal S_*\to\mathcal S\) が左 fibration（とくに categorical fibration）なので、単体的集合の厳密な引き戻しがホモトピー引き戻しを計算する。1 圏の「isofibration なら厳密でよい」と同じ構造である。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>3. Un は関手で、Hom を保つ</h2>
+
+<p>どの段でも示したいことは次の形である。</p>
+<ol>
+  <li>\(\mathrm{Un}\colon\mathrm{Fun}(B,\mathcal V)\to(\text{fibration})_{/B}\) が関手になる。</li>
+  <li>充満忠実：\(\mathrm{Hom}(F,G)\simeq\mathrm{Hom}_{/B}(\mathrm{Un}F,\mathrm{Un}G)\)。</li>
+  <li>本質的全射で、同値になる。</li>
+</ol>
+
+<h3>射への作用は \(B\times[1]\) 上の引き戻しと輸送</h3>
+<p>変換 \(\alpha\colon F\Rightarrow G\) を \(B\times[1]\to\mathcal V\) とみなし、普遍 fibration を引き戻す。\(0\) 側・\(1\) 側の fiber が \(\mathrm{Un}F\)・\(\mathrm{Un}G\) で、\(0\to1\) 方向の輸送が \(\mathrm{Un}F\to\mathrm{Un}G\) を与える。1 圏では \(\int\alpha\colon(b,x)\mapsto(b,\alpha_b(x))\)。∞ では \(E\to B\times\Delta^1\to\Delta^1\) が左 fibration なので、輸送はホモトピーを除いて一意に定まる（離散の場合の一意な持ち上げの ∞ 版）。</p>
+
+<h3>Hom の比較はエンドになる</h3>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>Hom 側</th><th>整合性</th><th>「cocartesian 射を保つ」条件</th></tr>
+<tr><td>集合</td><td>\(\prod_b\mathrm{Hom}(X_b,Y_b)\)</td><td>なし</td><td>不要</td></tr>
+<tr><td>1 圏（離散 fiber）</td><td>\(\int_b\mathrm{Hom}(Fb,Gb)\)</td><td>自然性の等式</td><td>一意持ち上げで自動</td></tr>
+<tr><td>1 圏（圏 fiber）</td><td>擬自然変換の圏</td><td>同型と整合性</td><td>課す（lax 自然変換なら一般の \(B\) 上の関手）</td></tr>
+<tr><td>∞（左 fibration）</td><td>\(\int_b\mathrm{Map}(Fb,Gb)\)</td><td>全次元のホモトピー</td><td>自動（すべての射が cocartesian）</td></tr>
+</table></div>
+
+<p>離散 opfibration で手で確かめると、充満忠実性の中身が見える。\(B\) 上の関手 \(\Phi\colon\int F\to\int G\) は各 fiber で写像 \(\alpha_b\) を与える。射 \((b,x)\to(b',F(u)x)\) は \(u\) の上の射に移るので、行き先は一意持ち上げにより \(G(u)\alpha_b(x)\) しかない。対象の行き先と比べて \(\alpha_{b'}(F(u)x)=G(u)\alpha_b(x)\)、すなわち<b>自然性そのもの</b>が出る。どの段でも「\(B\) 上の写像 = fiber ごとの写像 + 底の射に沿う輸送との整合性」で、それがちょうどエンドを与える。</p>
+
+<p>本質的全射まで含めると、\(\mathcal S\) は左 fibration を分類する：\(\mathrm{Map}(B,\mathcal S)\simeq\mathrm{LFib}(B)^{\simeq}\)（\(B\) について自然）。1 圏の類似 \(\mathrm{Fun}(B,\mathrm{Set})^{\cong}\simeq\mathrm{DOpFib}(B)^{\cong}\) では、引き戻しが同型を除いてしか決まらないので、\(B\) についての自然性は擬自然性になる。</p>
+
+<!-- ============================================================ -->
+<h2>4. straightening</h2>
+
+<p>straightening は fibration \(p\colon E\to B\) から関手を作る。見方は二つある。</p>
+<ul>
+  <li><b>(A) 分類写像</b>：\(\chi(b)=E_b\)、\(\chi(u)=u_!\)（輸送）。難しいのは整合的な関手にまとめること。</li>
+  <li><b>(B) 表現可能関手の Un からの写像</b>：
+  \[
+  \mathrm{St}(E)(b)\ :=\ \mathrm{Hom}_{/B}\bigl(\mathrm{Un}(h^b),\,E\bigr),\qquad h^b=\mathrm{Hom}_B(b,-).
+  \]</li>
+</ul>
+
+<div class="table-wrap"><table>
+<tr><th>段</th><th>(A) の結果</th><th>(B)</th></tr>
+<tr><td>集合</td><td>そのまま関手</td><td>\(\mathrm{Un}(h^b)=\{b\}\)、\(\mathrm{Hom}_{/B}(\{b\},E)=E_b\)</td></tr>
+<tr><td>離散 opfibration</td><td>厳密な関手（\((uv)_!=u_!v_!\)）</td><td>\(\mathrm{Un}(h^b)=b/B\)、始対象 \(\mathrm{id}_b\) により \(\mathrm{Hom}_{/B}(b/B,E)\cong E_b\)</td></tr>
+<tr><td>cocartesian（1 圏）</td><td>cleavage の選択で擬関手止まり</td><td>\(b\mapsto\mathrm{Fun}^{\mathrm{cocart}}_{/B}(b/B,E)\) は厳密な関手（古典的な厳密化）</td></tr>
+<tr><td>左 fibration（∞）</td><td>整合性の選択が手に負えない</td><td>\(\mathrm{Map}_{/B}(B_{b/},E)\simeq E_b\)</td></tr>
+</table></div>
+
+<p>(B) の要点は、持ち上げを一本選ぶ代わりに「\(b\) から出るすべての射に沿う持ち上げ全体」を一度に保持すること。\(\mathrm{Un}\) は「普遍 fibration の引き戻し」、\(\mathrm{St}\) は「表現可能関手の \(\mathrm{Un}\)（\(B_{b/}\)）からの写像」で、層の茎・断面を表現可能対象からの射として取るのと同じナーヴ型の構成である。</p>
+
+<p><b>注意</b>：準圏の模型では、辺 \(u\colon b\to b'\) から \(B_{b'/}\to B_{b/}\) を作るのに合成の選択が要るので、\(b\mapsto B_{b/}\) は厳密には関手的でない。厳密にするには \(\mathfrak C[B]\) 上の関手として扱うなどの手当てが必要である。</p>
+
+<p><b>往復</b>：\(\mathrm{St}(\mathrm{Un}F)(b)=\mathrm{Map}_{/B}(\mathrm{Un}\,h^b,\mathrm{Un}F)\simeq\mathrm{Map}(h^b,F)\simeq F(b)\)（充満忠実性と関手版 Yoneda）。逆向きは、\(\mathrm{id}_b\) での評価が \(\mathrm{Un}(\mathrm{St}E)\to E\) を与え、fiber ごとの同値なので全体で同値（左 fibration の fiber ごとの判定）。</p>
+
+<!-- ============================================================ -->
+<h2>5. Yoneda を使わない道</h2>
+
+<p>∞ 圏論では関手版 Yoneda が straightening で証明されることが多いので、§4 の往復をそのまま使うと循環する。分解すると、循環するのは一部だけである。</p>
+<ul>
+  <li><b>fibration 版 Yoneda</b>：\(\mathrm{Map}_{/B}(B_{b/},E)\xrightarrow{\sim}E_b\)。\(\{\mathrm{id}_b\}\hookrightarrow B_{b/}\) が left anodyne であることだけから従い、Yoneda も straightening も要らない。</li>
+  <li><b>関手版 Yoneda</b>：\(\mathrm{Map}(h^b,F)\simeq F(b)\)。§4 の往復で使っていたのはこちらで、循環するのはここだけ。</li>
+</ul>
+<p>1 圏でも「関手版 Yoneda = fibration 版 Yoneda（始対象の議論）+ Un の充満忠実性」と分解できる。したがって Un の充満忠実性と本質的全射性を Yoneda なしで示せば、関手版 Yoneda は<b>系として</b>導ける：
+\[
+\mathrm{Map}(h^b,F)\ \overset{\text{充満忠実}}{\simeq}\ \mathrm{Map}_{/B}(B_{b/},\mathrm{Un}F)\ \overset{\text{left anodyne}}{\simeq}\ F(b).
+\]</p>
+
+<h3>方法 A：単体ごとに作って貼り合わせる</h3>
+<ul>
+  <li><b>\(\Delta^0\) 上</b>：fiber そのもの。</li>
+  <li><b>\(\Delta^1\) 上（写像柱）</b>：関手 \([1]\to\mathrm{Set}\) は写像 \(f\colon X\to Y\) で、その Grothendieck 構成は写像柱（\(X\sqcup Y\) に射 \(x\to f(x)\) を加えた圏）。∞ でも \(\Delta^1\) 上の左 fibration \(E\) と写像 \(E_0\to E_1\) が対応し、\(E\) は写像柱 \(M_f=(E_0\times\Delta^1)\sqcup_{E_0\times\{1\}}E_1\) と同値。</li>
+  <li><b>\(\Delta^n\) 上（写像単体）</b>：合成可能な列 \(X_0\to\cdots\to X_n\) の反復写像柱がモデルになる。\(\mathfrak C[\Delta^n]\to[n]\) が同値なので、ホモトピー整合的な図式と厳密な列を比較できる。</li>
+  <li><b>貼り合わせ</b>：\(B=\operatorname{colim}\Delta^n\) について、\(\mathrm{LFib}(-)\) も \(\mathrm{Fun}(-,\mathcal S)\) も余極限を極限に送る。</li>
+</ul>
+<p>1 圏では \(N(\mathrm{Set})\)・\(N(\mathrm{Cat})\) が 2-余骨格的なので \(\Delta^2\) まで（合成の両立）で足りる。∞ ではすべての \(n\) が要り、これが高次整合性の正体である。</p>
+
+<h3>方法 B：普遍 fibration を直接正当化する（univalence）</h3>
+<ol>
+  <li><b>本質的全射性</b>：極小 fibration に置き換えると各単体上で自明（\(\Delta^n\times F\)）なので、分類写像を単体ごとに帰納的に作れる。集合の「各点で fiber を選ぶ」の高次版。</li>
+  <li><b>core 上の充満忠実性（univalence）</b>：\(\mathrm{Map}_{\mathcal S}(X,Y)\simeq\mathrm{Eq}(X,Y)\)。\(\Delta^1\)（あるいは \(J\)）上の左 fibration の解析で示す。</li>
+  <li><b>同値でない射</b>：\(\mathrm{Fun}(B,\mathcal S)\) の射は \(\mathrm{Fun}(B\times\Delta^1,\mathcal S)^{\simeq}\) の対象で、(1)(2) により \(\mathrm{LFib}(B\times\Delta^1)^{\simeq}\) の対象、すなわち写像柱の議論で \(B\) 上の写像 \(E_0\to E_1\) と対応する。</li>
+</ol>
+<p><b>集合の段で見えること</b>：univalence には、分類対象を集合 \(\mathrm{Ob}(\mathrm{Set})\) ではなく亜群 \(\mathrm{Set}^{\simeq}\) に取る必要がある。集合には同型 \(X\cong Y\) を表す「道」がないからである。§1 の集合の段は実は同型を除いて分類しており、\(\mathcal S\) が Kan 複体の<b>集合</b>ではなく<b>∞ 亜群</b>として取られる理由がここにある。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<ul>
+  <li>HTT §2.2 の \(\mathrm{St}\) は \(\mathfrak C[E^{\triangleright}]\) を使う左随伴（左 Quillen 関手）として明示的に構成される。§4 (B) の式はそれと同値な関手を与える一つの見通しで、HTT の定義そのものではない。HTT の Quillen 同値の証明は、単体上への帰着と写像単体による比較という点で方法 A の構造をしている。</li>
+  <li>方法 B は Cisinski <i>Higher Categories and Homotopical Algebra</i> 第 5 章の流れ（普遍左 fibration の構成、極小 fibration、univalence、その後に Yoneda）。</li>
+  <li>Riehl–Verity（∞-cosmos）は関手版を避け、前層を最初から右 fibration として扱うので fibration 版で済む。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の宣言のみ）</p>
+<ul>
+  <li>§1・§2：Un の定義は<a href="unstraightening.html">補章</a> §2 の <code>leftUnstraightening</code>（<code>pullback pointedSpaceProjection F</code>）。fiber が \(K\) になることは同 §1 の <code>pointedSpaceFiberValueEquivalence</code>。</li>
+  <li>§3 の「\(B\times[1]\) 上の輸送」は、補章 §4 の left anodyne な包含 \(\{0\}\times X\hookrightarrow\Delta^1\times X\) に沿う持ち上げ（<code>exists_leftUnstraighteningTransformation</code>）にあたる。Hom の比較は補章 §5 の <code>leftUnstraighteningMappingSpaceMap_isQCatEquivalence</code>。</li>
+  <li>§5 の fibration 版 Yoneda は <code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>（「Yoneda への道」§7）。表現可能前層の Un が coslice になることは同 h₃ の前半。</li>
+  <li>このリポジトリの関手版 Yoneda（「Yoneda への道」）は straightening の構成（分類写像）を使い、同値定理は使わない。§5 の言葉では、関手版 Yoneda を「Un の充満忠実性（h₁）+ fibration 版（h₃）」として組んでいる。h₁ の証明は普遍的な族からの復元で、方法 A・B のどちらとも異なる。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>\(\mathcal S_*\to\mathcal S\) は \(\mathrm{Set}_*\to\mathrm{Set}\)（離散 opfibration）の ∞ 版。∞ 亜群では擬と lax の区別が消えるので、coslice だけで fiber が \(X\) になる。圏を fiber にするには lax 版が要る。</li>
+  <li>Un の射への作用は \(B\times[1]\) 上の引き戻しと輸送。充満忠実性は「\(B\) 上の写像 = fiber ごとの写像 + 輸送との整合性 = エンド」。</li>
+  <li>St は表現可能関手の Un（\(B_{b/}\)）からの写像として見通せる（準圏模型での厳密な関手性には手当てが要る）。</li>
+  <li>Yoneda のうち循環するのは関手版だけ。fibration 版は left anodyne から直接出る。Un の同値性を写像柱・写像単体（方法 A）か univalence（方法 B）で示せば、関手版 Yoneda は系になる。</li>
+</ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>γ 層：古典との橋</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 5 章</nav>
+<h1>第 5 章　γ 層：coherent nerve・Dold–Kan 比較・ホモトピー極限</h1>
+<p class="meta">基準コミット <code>56dc535b8</code>（2026-10-23）。対象は <code>Coherent/</code>、<code>DoldKanComparison/</code>、<code>HomotopyLimits/</code>。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>γ 層は、古典的な対象（単体的圏、dg 圏、モデル圏、Kan 複体の strict な図式）を ∞ 圏の言葉につなぐ橋である。方針（第 0 章）として、モデル圏を使ってよいのはこの層だけと決められている。</p>
+<div class="table-wrap"><table>
+<tr><th>項目</th><th>内容</th><th>原典</th><th>主な使用先</th></tr>
+<tr><td>γ1</td><td>局所 Kan な単体的圏の coherent nerve は quasicategory</td><td>HTT Prop. 1.1.5.10</td><td>𝒮、Cat<sub>∞</sub>、LFib（第 3 章）</td></tr>
+<tr><td>γ1.5</td><td>dg 圏の Dold–Kan 豊穣化の coherent nerve と dg nerve の同値</td><td>HA Prop. 1.3.1.17</td><td>dg の世界との接続（第 8 章）</td></tr>
+<tr><td>γ3</td><td>ホモトピー（余）極限 = ∞ （余）極限、𝒮 の極限・余極限</td><td>HTT §4.2.4</td><td>Sp（Tot、fiber 列）、前層</td></tr>
+<tr><td>γ4</td><td>simplicial Quillen 随伴 ⇒ ∞ 随伴、右 Quillen 関手は極限を保つ</td><td>HTT Prop. 5.2.4.6</td><td>E2b（\(U\colon\mathrm{CAlg}_R\to D(R)\)）、Sp</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>1. γ1：coherent nerve は quasicategory</h2>
+<div class="box">
+<p><b>定理</b>（HTT Prop. 1.1.5.10、Kerodon Thm. 2.4.5.1）. 単体的圏 \(\mathcal C\) の各 Hom が Kan 複体なら、coherent nerve \(N^{hc}(\mathcal C)\) は quasicategory。</p>
+<pre><code>instance simplicialNerve_quasicategory (C : Type u) [Category.{v} C] [SimplicialCategory C]
+    [∀ X Y : C, SSet.KanComplex (SimplicialCategory.sHom X Y)] :
+    SSet.Quasicategory (SimplicialNerve C)</code></pre>
+</div>
+<p><b>証明の方針</b>：\(N^{hc}(\mathcal C)\) の \(n\) 単体は単体的関手 \(\mathfrak C[\Delta^n]\to\mathcal C\) である。\(\mathfrak C[\Delta^n](0,n)\) は立方体 \((\Delta^1)^{n-1}\) で、内ホーン \(\Lambda^n_i\) から決まるのは、この立方体から内部と一つの面を除いた部分（空洞の立方体）だけである。空洞の立方体の包含は anodyne なので、Hom が Kan 複体であれば延長できる。その延長を使って単体的関手を復元し、各面への制限が元のホーンと一致することを確かめる。Lean では Mathlib の <code>SimplicialNerve</code> の Path による記述に合わせて、Cube、Hollow*、Horn*、Path*、Filled* の各ファイル（Coherent/、40 ファイル・約 4,500 行）でこの手順を一つずつ形式化している。</p>
+<p>この定理は γ 層の中で最も小さく、しかも第 3 章の \(\mathcal S\)、Cat<sub>∞</sub>、LFib のすべてがこれに依存している。</p>
+
+<!-- ============================================================ -->
+<h2>2. γ1.5：Dold–Kan 豊穣化と dg nerve</h2>
+<p>dg 圏 \(D\) から ∞ 圏を作る方法は二つある（HA §1.3.1）。</p>
+<ul>
+  <li><b>dg nerve</b> \(N_{dg}(D)\)：dg 圏から直接作る（第 8 章、DGNerve/）。</li>
+  <li><b>Dold–Kan 豊穣化の coherent nerve</b>：Hom 複体を \(\tau_{\ge0}\)（コードの規約では \(\tau^{\le0}\)）で切断し、Dold–Kan 対応 \(\Gamma\) で単体的加群、したがって Kan 複体にする。合成は Alexander–Whitney 写像で与える。こうして得た単体的圏の coherent nerve を取る。</li>
+</ul>
+<pre><code>def doldKanHomModule (x y : D) : SimplicialObject (ModuleCat.{u} R) :=
+  (CategoryTheory.Abelian.DoldKan.Γ : ChainComplex (ModuleCat.{u} R) ℕ ⥤ _).obj
+    (connectiveHomComplex (R := R) x y)
+def doldKanCoherentNerve : SSet.{max u v} := SimplicialNerve (ClosedCategory R D)
+def coherentComparison : doldKanCoherentNerve (R := R) (D := D) ⟶ dgNerve R D
+lemma coherentComparison_isQCatEquivalence :
+    IsQCatEquivalence (coherentComparison (R := R) (D := D))</code></pre>
+<p>場所：DoldKanComparison/ConnectiveHom、CoherentComparison、ComparisonEquivalence。<b>任意の可換環上の任意の dg 圏</b>について、比較写像が同値であることが示されている（HA Prop. 1.3.1.17）。Dold–Kan 対応は Mathlib の <code>Abelian.DoldKan.Γ</code> をそのまま使う。</p>
+<p><b>証明の方針</b>：比較写像は頂点の上で全単射なので、本質的全射性は自明である。充満忠実性は、写像空間の比較（coherent nerve 側の pinched Hom → dg nerve 側の pinched Hom）がホモトピー同値であることに帰着する。これを標準的な分解（Resolution*）を通して示し、第 2 章の判定（充満忠実かつ本質的全射）で結論する。比較写像の各単体は、降順の立方体の評価（Cube*、AW*）で具体的に作られている。</p>
+<div class="box">
+<p class="label">二つの模型を持つ理由</p>
+<p>dg nerve は D(S) などの dg の対象を扱うのに直接的で、第 8 章ではこちらを主に使う。一方、coherent nerve の側は \(\mathcal S\)、Cat<sub>∞</sub> と同じ枠組みにあり、単体的豊穣の議論（γ4 など）が使える。両者の同値によって、どちらの模型で示した性質も他方に移せる。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. γ3：𝒮 の極限・余極限</h2>
+<p>空間の ∞ 圏 \(\mathcal S\) が完備かつ余完備であることは、二つの経路で示されている。</p>
+
+<h3>(a) 一般の coherent 図式：straightening 経由（無条件）</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>任意の小さい coherent 図式 \(B\to\mathcal S\) は極限を持つ。極限は unstraightening の<b>切断の空間</b></td><td><code>hasLimit_coherentSpaceDiagram</code></td><td>F1/CoherentSpaceSmallLimits</td></tr>
+<tr><td>同じく余極限を持つ。余極限は unstraightening の<b>全空間</b>の Kan 模型</td><td><code>hasColimit_coherentSpaceDiagram</code></td><td>F2/CoherentTotalColimit</td></tr>
+<tr><td>系：前層 ∞ 圏は小さい極限・余極限を持ち、評価で保存・検出される</td><td><code>presheafInfinity_hasLimit</code>、<code>presheafInfinity_hasColimit</code></td><td>F1/PresheafAllSmallLimits、F1/PresheafPointwiseColimits</td></tr>
+</table></div>
+<p>これは「\(\lim F=\) 左 fibration \(\mathrm{Un}(F)\to B\) の切断の空間、\(\mathrm{colim}\,F=\mathrm{Un}(F)\) の全空間（を Kan 化したもの）」という Kerodon 流の記述そのものである。第 3 章の straightening が完成していることがこの経路の前提になっている。</p>
+
+<h3>(b) strict な図式：Bousfield–Kan 経由</h3>
+<p>通常の小さい圏 \(I\) 上の strict な図式 \(F\colon I\to\mathrm{Kan}\) は、coherent な図式 <code>kanDiagramCoherentNerve F : N(I) → 𝒮</code> とみなせる（F1/KanDiagramCoherentNerve）。古典的なホモトピー（余）極限（Bousfield–Kan の coend・end、重み付き切断）がその ∞ （余）極限になることを示すのが γ3 である。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>任意の小圏上の Kan 値図式：Bousfield–Kan coend は ∞ 余極限（HTT 4.2.4.1 の余極限側）</td><td><code>bousfieldKanCoherentCocone_isColimit</code>、<code>kanDiagramCoherentNerve_hasColimit</code></td><td>HomotopyLimits/BousfieldKanCoherentColimit</td></tr>
+<tr><td>極限側：離散図式（積）、塔（Tot）、cospan（引き戻し）の形で、Bousfield–Kan の極限との比較がホモトピー同値</td><td><code>bousfieldKanLimitComparison_discrete_homotopyEquivalence</code>、<code>_tower_</code>、<code>_cospan_</code></td><td>HomotopyLimits/BousfieldKan*</td></tr>
+<tr><td>有限の具体的な形：押し出し、逐次余極限、小さい余積、積、引き戻し</td><td><code>spaceHomotopyPushoutCocone_isColimitCone</code>、<code>spacePullbackCone_isLimitCone</code> など</td><td>HomotopyLimits/Space*</td></tr>
+<tr><td>極限の判定：錐の pinched Hom が可縮</td><td><code>isLimitCone_iff_conePinchedHom_isContractibleKan</code></td><td>HomotopyLimits</td></tr>
+</table></div>
+<p>(b) が必要なのは、スペクトラム（Sp レーン）での Tot、ホモトピー不動点、fiber 列のように、古典的なホモトピー極限として書かれた対象を ∞ 極限として使うためである。(a) は存在を保証するが、極限の頂点が古典的な構成と一致することまでは言わない。</p>
+
+<!-- ============================================================ -->
+<h2>4. γ4：Quillen 随伴 ⇒ ∞ 随伴</h2>
+<p>設定：simplicial モデル圏 \(\mathcal C,\mathcal D\)（SM7 を固定）と、豊穣 Hom の同型と合成の両立を明示した simplicial Quillen 随伴 \(F\dashv G\)。cofibrant かつ fibrant な対象（cf 対象）がなす単体的圏は SM7 により局所 Kan なので、γ1 によりその coherent nerve \(N^{hc}(\mathcal C^{cf})\) は quasicategory になる。</p>
+<pre><code>lemma quillenCfDerivedAdjunction_exists :
+    ∃ H : SSet.Homotopy (𝟙 (SimplicialNerve (CofibrantFibrantObjects C)))
+      (quillenCfLeftDerived R adj fibD e SC SD ≫ quillenCfRightDerived R adj SC SD cofC),
+      ∃ a : QCatAdjunction (quillenCfLeftDerived ...) (quillenCfRightDerived ...),
+        a.unitHom = SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)</code></pre>
+<p>場所：HomotopyLimits/QuillenCfDerivedAdjunction。導来関手 \(\mathbb LF\)、\(\mathbb RG\) が cf nerve の間の ∞ 随伴（第 4 章の <code>QCatAdjunction</code>）をなし、その単位は指定したホモトピーから来る。系として、右導来関手は ∞ 極限を保つ（<code>quillenCfRightDerived_hasLimit_postcomp</code>、HomotopyLimits/QuillenCfDerivedLimits。一般の「右随伴は極限を保つ」<code>hasLimit_postcomp_of_adjunction</code> の適用）。</p>
+<p><b>証明の方針</b>（HTT 5.2.4.6）：\(\Delta^1\) 上の「cf 対応圏」を作る。両端の fiber が \(\mathcal C^{cf}\) と \(\mathcal D^{cf}\) で、二つをつなぐ混合 Hom は \(\mathrm{Map}(FX,Y)\cong\mathrm{Map}(X,GY)\) である。その coherent nerve \(\to\Delta^1\) が cocartesian かつ cartesian な fibration であることを示し（HomotopyLimits/QuillenCfBifibration）、cocartesian 辺に沿った transport と cartesian 辺に沿った transport を導来関手と比較する。そのうえで、写像空間の同値から随伴を組み立てる（Quillen*、34 ファイル）。</p>
+
+<!-- ============================================================ -->
+<h2>5. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>ディレクトリ・ファイル群</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
+<tr><td>Coherent/</td><td class="num">40</td><td class="num">4,462</td><td>γ1</td></tr>
+<tr><td>DoldKanComparison/</td><td class="num">157</td><td class="num">14,242</td><td>γ1.5</td></tr>
+<tr><td>HomotopyLimits/BousfieldKan*、Weighted*、Space*、Cone*、Cocone*</td><td class="num">約 150</td><td></td><td>γ3</td></tr>
+<tr><td>HomotopyLimits/Quillen*</td><td class="num">34</td><td></td><td>γ4</td></tr>
+<tr><td>HomotopyLimits/Specified*</td><td class="num">104</td><td></td><td>指定した余錐の分岐・三角形のデータ（γ3 の余極限側の内部）</td></tr>
+<tr><td>HomotopyLimits/Local*、Sigma*、Sifted*</td><td class="num">約 90</td><td class="num">約 4,400＋</td><td>Bousfield 局所化と P<sub>Σ</sub>（本来は第 6 章の内容。R16）</td></tr>
+<tr><td>HomotopyLimits/ 全体</td><td class="num">1,127</td><td class="num">97,468</td><td></td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>6. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R16　HomotopyLimits に presentable の素材が入っている</p>
+<p>局所対象・S-同値・強飽和性（Local*、N-4 a〜e）と、P<sub>Σ</sub>・sifted 余極限（Sigma*、Sifted*、N-4 g）が HomotopyLimits/ に置かれている。担当レーン（N）の作業場所がそのままディレクトリになったためで、内容は HTT §5.5 の presentable の理論（第 6 章、F2/Presentable の範囲）に属する。γ 層（古典との橋）から切り離して、<code>Presentable/</code> または <code>Localization/</code> に移すのが自然である。</p>
+</div>
+<div class="box refactor">
+<p class="label">R17　条件付きの API が無条件の定理に追い越されている</p>
+<p>F2/SpaceLimitShapes の <code>HasSpaceLimitsOfShape K</code>（「形 \(K\) の空間値図式はすべて極限を持つ」という仮定）と、それを仮定にとる <code>presheafInfinity_hasLimit_of_spaceLimitsOfShape</code> などが残っている。しかし現在は <code>hasLimit_coherentSpaceDiagram</code> によって、任意の小さい形について無条件に成り立つ。この仮定を一般の定理から導き、条件付きの版を削除するか単なる系にするのがよい（3 ファイルが使用）。並行作業で、先に条件付きの版を作り、後から無条件の版が別の場所で完成したことの名残と思われる。</p>
+</div>
+<div class="box refactor">
+<p class="label">R18　入口と命名</p>
+<ul>
+  <li><code>HomotopyLimits.lean</code> はモジュールの docstring がなく、1,147 個の import を並べているだけである。γ3・γ4 の主定理を示す入口が監査スクリプト（5,477 個の <code>#check</code>）しかない。</li>
+  <li><code>quillenCfBottomEndpoint_wrong</code> は「ある対象が端点 0 の対象ではない」という否定の命題だが、名前からは内容が読めない（たとえば <code>not_quillenCfEndpointObjects_zero_inr</code>）。</li>
+  <li><code>kanDiagramCoherentNerve</code>（strict な図式を coherent な図式に変える γ の基本構成）が F1/ にある。</li>
+</ul>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>γ1（coherent nerve は quasicategory）は小さいが、𝒮・Cat<sub>∞</sub>・LFib のすべての土台。証明は空洞の立方体を Hom の Kan 性で埋める議論。</li>
+  <li>γ1.5：任意の可換環上の任意の dg 圏で、Dold–Kan 豊穣化の coherent nerve と dg nerve が同値。Mathlib の Dold–Kan をそのまま使う。</li>
+  <li>𝒮 は完備かつ余完備で、一般の場合は straightening 経由（極限 = 切断の空間、余極限 = 全空間）で無条件に示されている。Bousfield–Kan 経由の γ3 は、古典的なホモトピー極限が ∞ 極限と一致することを保証する役目。</li>
+  <li>γ4：simplicial Quillen 随伴の導来関手は cf nerve の間の ∞ 随伴になり、右導来関手は極限を保つ。モデル圏が現れるのはこの層だけ。</li>
+</ol>
+</main>
+</body>
+</html>

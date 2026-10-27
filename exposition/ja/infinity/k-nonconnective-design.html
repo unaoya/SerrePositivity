@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>非連結 K の設計</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 設計ノート：非連結 K</nav>
+<h1>非連結 K の設計：関手性をどこに置くか</h1>
+<p class="meta">基準コミット <code>63b823320</code>（2026-10-27）。K-7（K-B3 レーン）の c4 で見つかった問題と、10-27 11:55 の設計変更の整理。このページのパスは <code>SerrePositivity/</code> からの相対パス（∞ 圏の層と KST の両方にまたがるため）。正本は <code>formalization-plans/kst-lanes/L10-nonconnective.md</code>（K-7 計画、v6）と <code>formalization-plans/refactoring-infinity-r2.md</code>（R32・R33）。</p>
+
+<!-- ============================================================ -->
+<h2>1. 作りたいもの</h2>
+<p>BGT の非連結 K 理論。小さい安定 ∞ 圏 \(\mathcal C\) に対し、Calkin 懸垂</p>
+\[
+\Sigma\mathcal C=\mathrm{Ind}_\kappa(\mathcal C)^\kappa/\mathcal C
+\]
+<p>を使って</p>
+\[
+K^{nc}(\mathcal C)=\operatorname{colim}_r\,\Omega^rK(\Sigma^r\mathcal C)
+\]
+<p>と定める。登場する関手は、それぞれ別の ∞ 圏の上にある。</p>
+<div class="table-wrap"><table>
+<tr><th>関手</th><th>どこからどこへ</th><th>中身</th></tr>
+<tr><td>\(\Sigma\)（Calkin 懸垂）</td><td>StableInfinity → StableInfinity（または冪等完備な部分 Cat<sup>perf</sup>）</td><td>Ind、κ-compact 部分、Verdier 商</td></tr>
+<tr><td>\(K\)（連結 K）</td><td>StableInfinity → Sp</td><td>∞-S• 構成</td></tr>
+<tr><td>\(\Omega\)（ループ）</td><td>Sp → Sp</td><td>スペクトラムのループ。<b>安定 ∞ 圏ではなく値域 Sp の上の関手</b></td></tr>
+</table></div>
+
+<h3>なぜ ∞ 関手でなければならないか</h3>
+<p>K<sup>nc</sup> を局所化不変量として登録する先の型が、それを要求する。</p>
+<pre><code>structure IsRelativeLocalizingInvariant {S : SSet.{u + 1}}
+    (ν : S ⟶ StableInfinity.{u}) (E : S ⟶ Spectra.Sp.{u}) : Prop where
+  preservesZero : PreservesRelativeZeroCategories ν E
+  -- Verdier 列の四角形を E で送ると Sp の引き戻しになる</code></pre>
+<p>（KST/LocalizingInvariants/RelativeInvariant）。Verdier 列 \(\mathcal A\to\mathcal B\to\mathcal B/\mathcal A\) の四角形を送るには、\(E\) が対象だけでなく射と 2 単体にも作用する単体的集合の射 <code>S ⟶ Sp</code>、つまり ∞ 関手でなければならない。対象ごとの値がいくら正しくても、それだけでは登録できない。</p>
+
+<!-- ============================================================ -->
+<h2>2. 登場する ∞ 圏</h2>
+<div class="table-wrap"><table>
+<tr><th>記号</th><th>中身</th><th>Lean</th></tr>
+<tr><td>StableInfinity</td><td>小さい安定 ∞ 圏の ∞ 圏。Hom は完全関手の ∞ 圏の core</td><td><code>StableInfinity := SimplicialNerve StableQCat</code>（KST/LocalizingInvariants）</td></tr>
+<tr><td>Sp</td><td>スペクトラムの ∞ 圏。Kan 複体の Ω スペクトラム（BF 模型）の coherent nerve</td><td><code>Sp := SimplicialNerve OmegaSpectrum</code>（KST/Spectra/CoherentNerve）</td></tr>
+<tr><td>S</td><td><b>dg 入力の ∞ 圏</b>（K レーンの「固定 S」）。対象は dg 入力 <code>PerfDGInput</code>、Hom は厳密な dg 自然変換の空間の core</td><td><code>dgKInputInfinity</code>（= <code>perfDGInputInfinity</code>）</td></tr>
+</table></div>
+<div class="box">
+<p class="label">注意：S は Kan 複体の ∞ 圏ではない</p>
+<p>Kan 複体の ∞ 圏は 𝒮（<code>SpaceInfinity</code>、第 3 章）で、ここでの S とは別物。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 何が起きたか：dg 側だけで組む設計の破綻</h2>
+
+<h3>当初の設計</h3>
+<p>K の主経路は厳密な dg 入力に限っていた（Land–Tamme を dg で実現する B 案。経路正本 §13 の決定 16 と、K レーンの運用方針）。懸垂も dg 側で、Drinfeld 商によって作る。零にしたい対象 b ごとに縮約 \(\varepsilon_b\)（\(d\varepsilon_b=\mathrm{id}_b\)）を付け足すものである。</p>
+<p>c4 では、S の上の単体的な自己写像として懸垂の射への作用を与える入力を埋める必要があった。</p>
+<pre><code>structure DGSuspensionCoherentActionInput where
+  map : dgKInputInfinity R ⟶ dgKInputInfinity R
+  vertex : ∀ A, map.app (op ⦋0⦌) (coherentNerveVertex A) =
+      coherentNerveVertex (dgKappaSuspensionKInput R A (s A).cone)
+  data : ∀ {A B}, (A ⟶ B) → DGKappaSuspensionMapData R A B (s A).cone (s B).cone
+  edgeIso : ...   -- 辺の一致を、写像空間内の指定同型に緩めたもの</code></pre>
+<p>（InfinityCategories/Derived/DGSuspensionCoherentActionInput。厳密版は KST/NonConnective/DGSuspensionNativeActionInput）。D が D-8 e の拡張を、D-S が工程 1（閉包族の \(f_!\) の関手化と map・edgeIso）を分担していた。</p>
+
+<h3>D-S が Lean で示した三つの反例</h3>
+<div class="table-wrap"><table>
+<tr><th>反例</th><th>主張</th><th>Lean</th></tr>
+<tr><td>零入力</td><td>工程 1 を「dg 関手圏から dg 関手圏への dg 関手」として与える一般形は存在しない。dg 関手は単位を保つが、全 Hom が 0 の一対象 dg 圏では単位が 0、cell 分解の側の単位は 0 でないので、両立しない</td><td><code>no_dgCellComparisonInputFunctor</code>（InfinityCategories/Derived/ClosureFunctoriality/CellZeroObstruction、79 行）</td></tr>
+<tr><td>ε の剛性</td><td>ε を固定した関手圏で null 対象 b に評価すると、境界で結ばれる射は厳密に等しくなる。さらに H⁰ で同型な二つの関手は、各 null 対象で同じ対象を返さなければならない（\(F b=G b\) が強制される）</td><td><code>quotientEpsilonCellEvaluation_boundary</code>、<code>quotientEpsilonCell_obj_eq_of_homotopyIso</code>（…/SuspensionAction/EpsilonCellHomotopy、138 行）</td></tr>
+<tr><td>円板</td><td>一点を零複体に送る dg 射と、可縮な円板に送る dg 射は、S の写像空間の中で可逆に結ばれる。ところが懸垂のデータは null 代表を異なる cell 対象に送るので、剛性により ε core の中で比べられない。固定頂点を ε core 内で比較する工程 1 は存在しない</td><td><code>nativeDiskInputMapVertexIso</code>、<code>nativeDiskResolvedSeedImages_ne</code>（…/SuspensionAction/NativeEpsilonDiskObstruction、82 行。…/ClosureFunctoriality/NativeDiskPair）</td></tr>
+</table></div>
+
+<h3>根本原因</h3>
+<div class="box">
+<p><b>厳密な dg 関手の圏の dg nerve は、正しい（導来の）写像空間ではない。</b></p>
+<p>dg 圏の間の正しい写像空間は、準関手（右準表現可能な双加群）の空間である。厳密な dg 関手だけを見ると、ホモトピーで同一視されるべきものが別の点に分かれたり、逆に剛すぎたりする。Drinfeld 商は縮約 ε を<b>選ぶ</b>構成なので、厳密には関手的にならない。</p>
+<p>c4 が難しかったのではなく、<b>ホモトピー不変な関手性を、それを表現できない場所（S の剛な写像空間）に載せようとしていた</b>、という設計の問題である。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. 新しい設計（2026-10-27 11:55）</h2>
+<pre><code>           ν
+  S ─────────────→ StableInfinity ──Σ_∞──→ StableInfinity
+(dg 入力)               │ K_∞
+                        ↓
+                        Sp ──Ω──→ Sp</code></pre>
+<ol>
+  <li><b>関手性は ∞ 側で作る</b>：\(\Sigma_\infty\)（Calkin 懸垂）を Ind・compact・Verdier 商の普遍性から ∞ 関手として作り、\(K_\infty\)、\(K^{nc}_\infty=\operatorname{colim}_r\Omega^rK_\infty(\Sigma_\infty^r)\) も ∞ 関手にする。登録するのは \(E:=K^{nc}_\infty\circ\nu\)。合成なので自動的に <code>S ⟶ Sp</code> の射になる。</li>
+  <li><b>値は dg 側で計算する</b>：すでに無条件に作ってある dg 側の <code>dgNonconnectiveK A</code>（π の計算、余極限）が、各 A で \(K^{nc}_\infty(\nu A)\) と一致することを<b>対象ごとの比較</b>で示し、dg 側の計算を ∞ 側の値に移す。</li>
+  <li><b>関係のないレーンは継続</b>（K-S•、Sp-2、Sp-3）。c4 に関係する D・D-S・K-B3 の作業は、凍結または診断として保持（R2 計画の R32：反例と剛性定理を主経路の集約から診断用の集約へ移す。R33：凍結候補 41 本の処置）。</li>
+</ol>
+<div class="box">
+<p class="label">役割の線引き</p>
+<p>dg 側は「計算できる模型」、∞ 側は「関手性の置き場所」で、ν と対象ごとの比較がその二つをつなぐ。関手性だけは dg 側では表現できないので ∞ 側に移し、対象の供給と計算は dg 側に残す。</p>
+<p>これは <a href="route-yoneda.html">Yoneda への道</a> §7 と同じ構図である。Yoneda では、関手性（Hom 関手）を「前層を関手として扱う」側に置くために straightening を代価として払った。ここでは関手性を ∞ 側に置き、dg との橋を代価として払う。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. 形式化の状況</h2>
+
+<h3>∞ 側</h3>
+<div class="table-wrap"><table>
+<tr><th>対象</th><th>Lean</th><th>状態</th></tr>
+<tr><td>StableInfinity</td><td><code>StableInfinity</code>、冪等完備な部分 <code>perfectStableInfinity</code>（KST/SConstruction/PerfectStableInfinity）</td><td><b>完成</b></td></tr>
+<tr><td>Sp</td><td><code>Sp</code></td><td>quasicategory であることは<b>完成</b>。安定性は<b>条件付き</b>：<code>sp_isStable (hB : NativeLoopComparison)</code>（KST/Spectra/D3TailStability）。仮定 B は Sp-2 で作業中</td></tr>
+<tr><td>S</td><td><code>dgKInputInfinity</code></td><td><b>完成</b></td></tr>
+<tr><td>\(\nu\colon S\to\) StableInfinity</td><td><code>dgKInputNu</code>（KST/SConstruction/DGKFixedInterface）</td><td><b>完成</b>（∞ 関手）</td></tr>
+<tr><td>\(\Omega_\infty\colon\) Sp → Sp</td><td><code>nativeLoop</code>（KST/Spectra/SpectrumNativeLoopFunctor。loop 四角形の空間の切断を選んで作る）</td><td><b>関手は完成</b>。それが同値であること（Sp の安定性の中身）は条件付き（<code>nativeLoop_isQCatEquivalence_of_tailComparison</code>）</td></tr>
+<tr><td>\(K_\infty\colon\) StableInfinity → Sp</td><td><b>対象ごとには既にある</b>：一般の安定 ∞ 圏（<code>StableModel</code>）に対する <code>sConstruction</code>・<code>kSpace</code>・<code>kOmegaSpectrum</code>、加法性、\(\pi_1=K_0\)（KST/SConstruction）。関手性は <code>StableModel</code> の通常の圏の射について（<code>kSpectrumMap</code>）</td><td><b>∞ 関手化が未着手</b>（完全関手の空間への作用と BF 模型への置き換えの豊穣化）。K レーンの計画には「一般 StableInfinity の K 関手化を再開しない（厳密 dg 入力に限定）」とある。§9 参照</td></tr>
+<tr><td>\(\Sigma_\infty\)（Calkin 懸垂）</td><td>cone の部分 <code>dgKInputCalkinConeTarget</code> \(=(\mathrm{Ind}_\omega\nu A)^\kappa\)。商は <code>DGKInputCalkinPresentation</code>（KST/NonConnective/InfinityComparisonTarget）で<b>指定データとして受け取るだけ</b></td><td><b>未着手</b>。安定 ∞ 圏の Verdier 商を一般に作る定理は見当たらない（判定・比較の補題はある）</td></tr>
+<tr><td>\(K^{nc}_\infty\)</td><td>なし</td><td>未着手（\(\Sigma_\infty\) と \(K_\infty\) を待つ）</td></tr>
+</table></div>
+
+<h3>dg 側の対応物</h3>
+<div class="table-wrap"><table>
+<tr><th>∞ 側</th><th>dg 側の対応物</th><th>状態</th></tr>
+<tr><td>安定 ∞ 圏 \(\mathcal C\)</td><td>dg 入力 A（ν で A の perfect 加群の dg nerve に送る）</td><td>完成</td></tr>
+<tr><td>\(K_\infty\circ\nu\)</td><td><code>dgKInputK : S ⟶ Sp</code>（dg の Perf に S• 構成を行い、BF スペクトラムへの厳密な豊穣関手を coherent nerve にしたもの）</td><td><b>∞ 関手として完成</b>（S• 構成は dg 関手について厳密に関手的なので）</td></tr>
+<tr><td>\(\Sigma_\infty\circ\nu\)</td><td>\(\Sigma_{dg}A\)（<code>dgKappaSuspensionKInput</code>）とその反復 <code>dgSuspensionUnconditionalIteration</code></td><td><b>対象ごとにだけ完成</b>。射への作用は §3 の反例により不可能</td></tr>
+<tr><td>\(K^{nc}_\infty\circ\nu\)</td><td><code>dgNonconnectiveK A</code>（Sp の逐次余極限 <code>dgNonconnectiveKCocone_isColimit</code>、全整数次数の π 余極限）</td><td><b>対象ごとにだけ完成</b></td></tr>
+<tr><td>\(\Omega_\infty\)</td><td>なし（Ω は Sp の上の関手。dg 側の K<sup>nc</sup> も同じ Sp の上で Ω を使う）</td><td>—</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>6. dg と安定 ∞ 圏の関係の書き方</h2>
+
+<h3>(1) ∞ 関手 ν（完成）</h3>
+<pre><code>def dgKInputNu : dgKInputInfinity A ⟶ LocalizingInvariants.StableInfinity
+  -- = presentedPerfectDGExactInfinityFunctor A</code></pre>
+<ul>
+  <li><b>対象</b>：A を、A の perfect dg 加群の dg nerve（<code>presentedPerfectDGStableCategory A</code>）に送る。</li>
+  <li><b>射</b>：厳密な dg 関手を、誘導される完全関手に送る。</li>
+  <li><b>高次の単体</b>：厳密な dg 自然変換を、完全関手の間の自然同値に送る。</li>
+</ul>
+<p>dg の厳密な構造を、γ1（coherent nerve、<a href="05-gamma-bridges.html">第 5 章</a>）を通して ∞ 関手にしたもの。</p>
+
+<h3>(2) 構成ごとの比較</h3>
+<div class="table-wrap"><table>
+<tr><th>比較</th><th>状態</th><th>参照</th></tr>
+<tr><td>Drinfeld 商 ↦ ∞ 圏の Verdier 列（β3）</td><td>完成</td><td><a href="08-dgnerve-derived.html">第 8 章</a> §3</td></tr>
+<tr><td>Morita 同値 ↦ 同値（β5）</td><td>完成</td><td>第 8 章 §4</td></tr>
+<tr><td>dg nerve ≃ Dold–Kan 豊穣化の coherent nerve（γ1.5）、\(h\,D(S)\simeq\) 導来圏（D7）</td><td>完成</td><td>第 5 章 §2、第 8 章 §2</td></tr>
+<tr><td>\(\nu(\Sigma_{dg}A)\simeq\mathrm{Idem}((\mathrm{Ind}_\omega\nu A)^\kappa/\nu A)\)</td><td><b>型だけ</b></td><td><code>DGNonconnectiveSuspensionComparisonTarget</code></td></tr>
+<tr><td>dg 側の列と ∞ 側の列を Fun(ℕ, Sp) の中で比べる</td><td><b>型だけ</b></td><td><code>DGNonconnectiveSequenceComparisonTarget</code></td></tr>
+<tr><td><code>dgKInputK</code> ≃ \(K_\infty\circ\nu\)</td><td>未着手（\(K_\infty\) がないため）</td><td>—</td></tr>
+</table></div>
+<p>K-7 計画が挙げる残りの比較：\(D_\infty\mathrm{Mod}(A)\simeq\mathrm{Ind}_\omega(\nu A)\) とその Yoneda の整合、κ-compact 部分と核の一致、実際の Drinfeld 商と Calkin 商の一致、冪等完備化、固定した K と \(K_\infty\) の一致、反復の構造辺の coherent な比較。</p>
+
+<!-- ============================================================ -->
+<h2>7. 新しい設計で必要な作業</h2>
+<ol>
+  <li><b>\(\Sigma_\infty\)</b>（§10）</li>
+  <li><b>\(K_\infty\)</b>（§9）：対象ごとの K は既にあり、残るのは ∞ 関手化。<b>以前「再開しない」と決めた作業の再開</b>にあたる。</li>
+  <li><b>局所化不変量であることの証明</b>と、dg 側との比較（§11）</li>
+</ol>
+<p>§8 で ∞ 関手の作り方を整理したうえで、§9〜§12 を書く。コードや計画文書で確認した事実と、私の見立て（「見立て」と明記）を区別する。</p>
+
+<!-- ============================================================ -->
+<h2>8. 前提：このリポジトリでの ∞ 関手の作り方</h2>
+<div class="table-wrap"><table>
+<tr><th>方法</th><th>内容</th><th>実例</th></tr>
+<tr><td><b>(a) 厳密な豊穣関手 → coherent nerve</b></td><td>単体的圏の間の厳密な豊穣関手を作り、<code>coherentNerveMap</code>（γ1）で ∞ 関手にする</td><td>ν（<code>coherentNerveMap (presentedPerfectDGEnrichedExactFunctor A)</code>）、dg 側の K（<code>coherentNerveMap (presentedPerfectDGBFEnrichedFunctor A)</code>）</td></tr>
+<tr><td><b>(b) 選択空間が可縮 → 切断</b></td><td>「データ付きの対象」の ∞ 圏から元の ∞ 圏への射が自明 Kan fibration であることを示し、その切断を選ぶ</td><td>ホモトピー圏の上の Σ（<code>suspensionFunctor</code>、<a href="07-stable.html">第 7 章</a>）、\(\Omega_\infty\)（<code>nativeLoop</code>。<code>trivialKanFibration_exists_section</code> で切断を選ぶ）</td></tr>
+<tr><td>(c) straightening</td><td>cocartesian fibration を作って分類する</td><td>Cat<sub>∞</sub> 値の straightening は有限単体の底までしかなく（<a href="03-straightening.html">第 3 章</a> §5）、一般の底では<b>使えない</b></td></tr>
+</table></div>
+<p>StableInfinity も Sp も単体的圏の coherent nerve なので、(a) が最も素直である。ただし (a) には、Hom（完全関手の空間の core）への作用が<b>厳密に</b>合成と両立する模型が要る。</p>
+
+<!-- ============================================================ -->
+<h2>9. \(K_\infty\colon\) StableInfinity → Sp</h2>
+<div class="box">
+<p class="label">既にあるもの（2026-10-27 訂正）</p>
+<p>当初「未着手」と書いたが不正確だった。連結 K は、<b>一般の安定 ∞ 圏に対して、対象ごと・厳密な射についての関手性まで形式化済み</b>である（<a href="spectra-k-theory.html">補章 7</a> の付録）。</p>
+<ul>
+  <li>S• 構成：<code>sConstruction n C</code>（<code>arNerve n</code> からの <code>IsGapped</code> な図式、KST/SConstruction/Gapped）。一般の quasicategory で零対象を持つものの上で定義されている。</li>
+  <li>実現と K 空間：<code>kanSRealization</code>、<code>kSpace C</code>（KST/SConstruction/KSpace）。\(\pi_1=K_0\)：<code>kZeroFundamentalGroupEquiv</code>。</li>
+  <li>加法性（L1c、Quillen A 型）：<code>objectSAdditivityMap_localized_isIso</code> ほか（KST/SConstruction/ObjectAdditivity）。</li>
+  <li>Ω スペクトラム（L1e）：<code>kKanSequence</code>、<code>kOmegaSpectrum</code>。</li>
+  <li>関手性：<code>kSpectrumMap {X Y : StableModel} (f : X ⟶ Y)</code>。<code>StableModel</code>（安定な quasicategory の束）の<b>通常の圏</b>の射（単体的集合の射）について。</li>
+  <li><b>各 n の S<sub>n</sub> は StableInfinity 上の ∞ 自己関手として完成</b>（2026-10-28 追記）：
+<pre><code>def sExactInfinityEndofunctor (n : ℕ) :
+    LocalizingInvariants.StableInfinity.{u} ⟶ LocalizingInvariants.StableInfinity.{u} :=
+  coherentNerveMap (sExactCoreEnrichedEndofunctor n)</code></pre>
+  （KST/SConstruction/SExactInfinityFunctor）。完全関手の空間の core に厳密に作用する豊穣関手 <code>sExactCoreEnrichedEndofunctor n</code> を作り、方法 (a)（§8）で ∞ 関手にしている。「S• の部分は一般でも厳密に関手的」という下の見立てを、各段について裏付ける。</li>
+</ul>
+<p>したがって以下の 1 は、各 n について ∞ 関手のレベルまで済んでいる。2 は対象ごと・厳密な射については済んでいる。残るのは、次の部分を単体的豊穣と両立させて StableInfinity → Sp の ∞ 関手にまとめる部分（2〜4）である。</p>
+<ul>
+  <li>n についての単体的構造（面・退化）を、豊穣関手の族としてまとめる</li>
+  <li>core を取って実現する</li>
+  <li>S• を反復し、BF の Ω スペクトラムに置き換えて Sp 値にする</li>
+</ul>
+</div>
+<h3>作り方（方法 (a)）</h3>
+<ol>
+  <li><b>S• 構成</b>：\(S_n(\mathcal C)=\mathrm{Fun}^{\mathrm{gapped}}(\mathrm{Ar}[n],\mathcal C)\) の core。完全関手 \(f\) は後合成で作用し、関手の族（Hom の高次単体）の作用も内部 Hom の合成なので、<b>厳密に</b>合成と両立する。dg を経由する必要はない。</li>
+  <li><b>実現</b>：\(|\iota S_\bullet\mathcal C|\)。S• を反復して前スペクトラムにする。</li>
+  <li><b>Sp の模型への置き換え</b>：Sp の対象（BF の Ω スペクトラム：各段が Kan 複体、構造写像が単射、随伴が π<sub>*</sub> 同型）に、関手的かつ単体的豊穣と両立する形で置き換える。</li>
+  <li>これらを厳密な豊穣関手 StableQCat → OmegaSpectrum にまとめ、coherent nerve を取る。</li>
+</ol>
+<h3>難しいところ</h3>
+<ul>
+  <li><b>3 の置き換え</b>：K-S• の計画（<code>kst-lanes/L1-s-construction.md</code>）には、「一般の完全関手について BF 模型上で高次面を手作業で貼る整流は、検証済みの区切りで保存して中断する」「K の主経路は厳密 dg 入力に限定（ユーザー指示）」とある。dg の場合は Perf の模型自体が厳密に関手的だったので通った。<br><b>見立て</b>：1 の S• の部分は一般でも厳密に関手的なので、障害は 3 の「Kan 化と Ω スペクトラム化を単体的豊穣と厳密に両立させる」部分に集中しているはずである。止めた作業のどの段で詰まったのかを、K-S• の記録で確認する価値がある。</li>
+  <li><b>定理の再証明か移送か</b>：K<sup>nc</sup><sub>∞</sub> を局所化不変量にするには、\(K_\infty\) の加法性・fibration 定理が要る（§11）。dg 側（K-S•、K-6）では証明済み、∞ 側では未証明。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>10. \(\Sigma_\infty\colon\) StableInfinity → StableInfinity</h2>
+<h3>作り方</h3>
+<p>BGT に従うと、Calkin 懸垂は Cat<sup>perf</sup> の中の<b>余極限</b>として書ける。</p>
+\[
+\Sigma\mathcal C=\operatorname{cofib}\bigl(\mathcal C\to\mathrm{Ind}_\kappa(\mathcal C)^\kappa\bigr)\qquad(\text{Verdier 商。必要なら冪等完備化を込める})
+\]
+<ol>
+  <li><b>cone の関手</b> \(\mathcal C\mapsto\mathrm{Ind}_\kappa(\mathcal C)^\kappa\) と、Yoneda による自然変換 \(\mathcal C\to\mathrm{Ind}_\kappa(\mathcal C)^\kappa\)。</li>
+  <li><b>Verdier 商の存在</b>：考えられる道は、Ind の中で Bousfield 局所化を取り（<code>bousfieldReflection</code>・<code>bousfieldLocalizationFunctor</code>、F2/Presentable、10-26 構成）、compact 対象を取る（Thomason–Neeman 型）こと。Ind の安定性（<code>ind_isStable_unconditional</code>）と交換定理（<code>coherentFilteredLimitExchangeShape_finite</code>）は証明済み。</li>
+  <li><b>関手として束ねる</b>：方法 (b) がこのリポジトリの流儀に合う。「\(\mathcal C\) と、その Calkin 商のデータ（cone、商、Verdier 列）」をまとめた ∞ 圏から StableInfinity への射が自明 Kan fibration であることを示し、切断を選ぶ。普遍性で定まるものは選択空間が可縮なので、原理的には成り立つ。余極限を関手的に選ぶ道具 <code>coherentColimitFunctor</code>（F2/FilteredExchange/CoherentColimitFunctor）もある。</li>
+</ol>
+<h3>難しいところ</h3>
+<ul>
+  <li><b>方法 (a) は使いにくい</b>：\(\mathcal C\mapsto\mathrm{Ind}(\mathcal C)\) の共変な作用は左 Kan 拡張 \(f_!\) で、選択を伴い、合成とは同型を除いてしか両立しない（\(f_!g_!\cong(fg)_!\)）。c4 と同じ「厳密か coherent か」の問題である。ただし ∞ 側では写像空間が正しいので、§3 の円板の反例のような<b>不可能性</b>はない。問題は「不可能」から「手間がかかる」に変わる。</li>
+  <li><b>方法 (b) の「データの ∞ 圏」</b>：StableInfinity の上に Calkin データの ∞ 圏を作り、その射（完全関手に沿ったデータの写像）を正しく定め、選択空間の可縮性を示す必要がある。<b>見立て</b>：\(\Sigma_\infty\) の工数の大半はここ。</li>
+  <li><b>宇宙</b>：\(\mathrm{Ind}_\kappa(\mathcal C)\) は宇宙 \(u+1\) にある。κ-compact 部分は本質的には小さいが、StableInfinity.{u} に戻すには「本質的に小さい ∞ 圏を同値な小さい ∞ 圏に取り替える」操作を関手的に行う必要がある。unstraightening の <code>Shrink</code>（<a href="unstraightening.html">補章</a> §3）より難しい。</li>
+  <li><b>冪等完備化</b>：Verdier 商を Cat<sup>perf</sup> で取るか（Idem を含める）どうかで K の π<sub>0</sub> が変わる。dg 側の比較目標は Idem を含む形 \(\nu(\Sigma_{dg}A)\simeq\mathrm{Idem}(\cdots)\) なので、定義を揃える必要がある。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>11. 共通の難しさ：K<sup>nc</sup><sub>∞</sub> が局所化不変量であること</h2>
+<p>BGT の議論には次の二つが要る。</p>
+<ol>
+  <li>\(K(\mathrm{Ind}_\kappa(\mathcal C)^\kappa)=0\)：可算余積を使う Eilenberg の swindle。\(K_\infty\) の加法性が要る。</li>
+  <li>Verdier 列 \(\mathcal C\to\mathrm{Ind}_\kappa(\mathcal C)^\kappa\to\Sigma\mathcal C\) への fibration 定理の適用。</li>
+</ol>
+<p>どちらも \(K_\infty\) の側の定理である。dg 側で証明済みのものを使う場合の注意：</p>
+<div class="box">
+<p class="label">対象ごとの比較では足りない</p>
+<p>局所化不変量の条件は「Verdier 列の四角形を送ると引き戻しになる」という四角形についての主張である。引き戻しであることは、四角形の間の<b>自然な</b>同値でしか移らない。したがって dg 側の fibration 定理を移すには、対象ごとの比較ではなく <b>Fun(S, Sp) の中の自然同値</b> <code>dgKInputK</code> ≃ \(K_\infty\circ\nu\) が要る。設計の「対象ごとの比較で ∞ 側と一致させる」という言い方とずれている点で、注意が必要。</p>
+<p>さらに \(\Sigma_\infty\nu A\) は ν の像に入るとは限らない（Idem を除いて \(\nu(\Sigma_{dg}A)\) と一致するだけ）ので、その分の比較も要る。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>12. まとめ（見立て）</h2>
+<div class="table-wrap"><table>
+<tr><th></th><th>方法</th><th>最も重い部分</th></tr>
+<tr><td>\(K_\infty\)</td><td>(a)：S• → 実現 → Ω スペクトラム化 → coherent nerve（対象ごとの部分は既存）</td><td>完全関手の空間への作用と Ω スペクトラム化を、単体的豊穣と厳密に両立させること（以前止めた箇所）</td></tr>
+<tr><td>\(\Sigma_\infty\)</td><td>(b)：Calkin データの ∞ 圏を作り、選択空間の可縮性から切断を選ぶ</td><td>データの ∞ 圏の構成と、宇宙を戻す操作</td></tr>
+<tr><td>局所化不変量であること</td><td>∞ 側で fibration 定理と swindle を証明するか、自然同値で dg 側から移送する</td><td>対象ごとの比較ではなく、自然同値が要ること</td></tr>
+</table></div>
+<p>dg 側の c4 は<b>原理的に不可能</b>だった。∞ 側は原理的には可能だが、上の三つの重い部分がある。</p>
+
+<div class="box">
+<p class="label">確認したい点</p>
+<ul>
+  <li>\(K_\infty\) の再開が、10-27 の設計変更の中で明示的に承認されているか。</li>
+  <li>承認されている場合、以前止めた作業のどの段で何が重かったのか（K-S• の記録）。それを踏まえて ∞-S• の関手化の方針を計画に書く。</li>
+  <li>dg 側との比較を、対象ごとではなく自然同値として立てるかどうか（§11）。</li>
+</ul>
+</div>
+
+<h2>このページで押さえること</h2>
+<ol class="checks">
+  <li>K<sup>nc</sup> を局所化不変量として登録するには、対象ごとの値ではなく ∞ 関手 <code>S ⟶ Sp</code> が要る。必要なのは \(\Sigma\)（StableInfinity 上）と \(K\)（StableInfinity → Sp）で、\(\Omega\) は Sp の上の関手。</li>
+  <li>dg 側の懸垂に関手性を載せられないことは、三つの反例で Lean 上で確定している。原因は、厳密な dg 関手の圏の dg nerve が導来の写像空間ではないこと。</li>
+  <li>新しい設計では、関手性は ∞ 側（普遍性）、計算は dg 側（対象ごと）に置き、ν と対象ごとの比較でつなぐ。</li>
+  <li>完成：StableInfinity、S、Sp（安定性は条件付き）、ν、\(\Omega_\infty\)、dg 側の K（関手）と Σ・K<sup>nc</sup>（対象ごと）。対象ごとの連結 K（一般の安定 ∞ 圏、厳密な射について関手的）も既にある。未着手：∞ 側の \(\Sigma_\infty\)、\(K_\infty\) の ∞ 関手化、\(K^{nc}_\infty\) と、二つの比較。</li>
+  <li>\(K_\infty\) は厳密な豊穣関手（S• → 実現 → Ω スペクトラム化）で作るのが素直で、重いのは Ω スペクトラム化と単体的豊穣の両立。\(\Sigma_\infty\) は Calkin データの ∞ 圏の切断として作るのが流儀に合い、重いのはデータの ∞ 圏と宇宙の扱い。</li>
+  <li>dg 側の定理を ∞ 側へ移すには、対象ごとの比較ではなく Fun(S, Sp) の中の自然同値が要る。</li>
+</ol>
+</main>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fibration と straightening</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 3 章</nav>
+<h1>第 3 章　cocartesian fibration と straightening</h1>
+<p class="meta">基準コミット <code>cf0ddf537</code>（2026-10-23）。対象は <code>F1/</code> の fibration・transport・straightening の部分と <code>Core/Cocartesian*</code>。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>F1 は約 18 万行あり、この層で最大の部分である。この章では、その中心にある straightening 定理の<b>主経路</b>をたどる。</p>
+<div class="box">
+<p><b>目標</b>（Kerodon Cor. 5.6.0.6）. 小さい quasicategory \(B\) について、\(B\) 上の左 fibration の ∞ 圏と、関手 ∞ 圏 \(\mathrm{Fun}(B,\mathcal S)\) は同値。</p>
+<p><b>Cat<sub>∞</sub> 値版</b>（Kerodon Thm. 5.6.0.2）. \(B\) 上の cocartesian fibration の ∞ 圏と \(\mathrm{Fun}(B,\mathrm{Cat}_\infty)\) は同値。</p>
+</div>
+<p>状態：空間値版は<b>任意の小さい quasicategory の底で完成</b>している。Cat<sub>∞</sub> 値版は、分類写像を通常の圏の nerve の底で構成し、同値性は有限単体 \(\Delta^n\) の底でだけ示したところで止まっている（第 II 段へ送られた）。</p>
+
+<!-- ============================================================ -->
+<h2>1. cocartesian 辺と cocartesian fibration</h2>
+
+<h3>定義</h3>
+<p>\(p\colon X\to B\) の辺 \(e\) が <b>\(p\)-cocartesian</b> とは、最初の辺が \(e\) であるような外側ホーン \(\Lambda^{n+2}_0\to X\) の、\(p\) に関する持ち上げ問題がすべて解けることをいう（Kerodon Def. 5.1.1.1）。</p>
+<pre><code>def IsCocartesianEdge {X B : SSet.{u}} (p : X ⟶ B) (e : X _⦋1⦌) : Prop :=
+  ∀ (n : ℕ) (a : (horn (n + 2) 0 : SSet.{u}) ⟶ X)
+    (b : (Δ[n + 2] : SSet.{u}) ⟶ B),
+    a.app (Opposite.op ⦋1⦌) (initialHornEdge n) = e →
+    ∀ sq : CommSq a (horn (n + 2) 0).ι p b, sq.HasLift</code></pre>
+<p>\(p\) が <b>cocartesian fibration</b> とは、inner fibration であって、底の任意の辺に対し、始点を指定した cocartesian な持ち上げが存在することをいう（Kerodon Def. 5.1.4.1）。Lean では <code>cocartesianFibrations</code>（<code>MorphismProperty</code>）とそれを包む型クラス <code>CocartesianFibration</code> の二段で持つ。cartesian 側も同じ形で並んでいる（F1/CartesianFibration）。</p>
+<p>第 1 章の Joyal の定理は、「\(B=\Delta^0\) のとき、cocartesian 辺は可逆な辺に一致する」という特殊な場合だと読める。実際、証明の道具も同じで、外側ホーンを join で書き直す議論が相対版に一般化されている（Core/Cocartesian*、Core/RelativeOuterHorn）。</p>
+
+<h3>transport</h3>
+<p>cocartesian fibration では、底の辺 \(e\colon b\to b'\) に沿って fiber の間の関手 \(e_!\colon X_b\to X_{b'}\) が「ほぼ一意に」決まる。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>一点の持ち上げ（対象の移送）</td><td><code>chooseCocartesianEdgeLift</code>、<code>cocartesianTransportObject</code></td><td>F1/TransportObjects</td></tr>
+<tr><td>transport の選択空間は可縮（Kerodon Prop. 5.2.2.8）</td><td><code>transportChoiceSpace_isContractibleKan</code></td><td>F1/TransportChoices</td></tr>
+<tr><td>transport 関手を一つ選ぶ</td><td><code>cocartesianTransport p e : X_b ⟶ X_{b'}</code></td><td>F1/TransportHo</td></tr>
+<tr><td>どの選び方でもホモトピー圏上で自然同型</td><td><code>IsCocartesianTransport.toHoIso</code></td><td>同上</td></tr>
+</table></div>
+<p>「選択空間が可縮」という形で一意性を述べるのが、以後の構成の基本の型である。選び方の任意性を、可縮な Kan 複体の点を選ぶことに閉じ込めておく。</p>
+
+<!-- ============================================================ -->
+<h2>2. ∞ 圏を作る ∞ 圏：coherent nerve</h2>
+
+<p>straightening の両辺に現れる ∞ 圏（\(\mathcal S\)、Cat<sub>∞</sub>、左 fibration の ∞ 圏）は、すべて同じ方法で作られる。<b>Hom が Kan 複体であるような単体的圏を作り、その coherent nerve を取る</b>。</p>
+<div class="box">
+<p><b>定理</b>（HTT Prop. 1.1.5.10、Kerodon Thm. 2.4.5.1）. 各 Hom が Kan 複体である単体的圏 \(\mathcal C\) について、coherent nerve \(N^{hc}(\mathcal C)\) は quasicategory。</p>
+<p>Lean：<code>simplicialNerve_quasicategory</code>（instance、Coherent/Quasicategory）。coherent nerve 自体は Mathlib の <code>SimplicialNerve</code> をそのまま使っている。</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><th>∞ 圏</th><th>Lean</th><th>単体的圏の対象</th><th>Hom（Kan 複体）</th><th>場所</th></tr>
+<tr><td>\(\mathcal S\)</td><td><code>SpaceInfinity</code></td><td>小さい Kan 複体</td><td>関手単体集合</td><td>F1/CatInfinity</td></tr>
+<tr><td>Cat<sub>∞</sub></td><td><code>CatInfinity</code></td><td>小さい quasicategory（<code>QCat</code>）</td><td>関手 ∞ 圏の core</td><td>F1/CatInfinity、F1/QCatSimplicial</td></tr>
+<tr><td>\(\mathrm{LFib}(B)\)</td><td><code>LeftFibrationInfinity B</code></td><td>\(B\) 上の小さい左 fibration</td><td>相対関手空間 \(\mathrm{Fun}_{/B}(X,Y)\)</td><td>F1/LeftFibrationInfinity</td></tr>
+<tr><td>\(\mathrm{coCart}(B)\)</td><td><code>CocartesianFibrationInfinity B</code></td><td>\(B\) 上の cocartesian fibration</td><td>cocartesian 辺を保つ相対関手の空間の core</td><td>F1/CocartesianFibrationInfinity</td></tr>
+</table></div>
+<pre><code>def SpaceInfinity : SSet.{u + 1} := SimplicialNerve KanObject.{u}
+noncomputable def CatInfinity : SSet.{u + 1} := SimplicialNerve QCat.{u}
+def SpaceInfinityFunctor (C : SSet.{u + 1}) : SSet.{u + 1} := (ihom C).obj SpaceInfinity.{u}</code></pre>
+
+<div class="box lean">
+<p class="label">宇宙の扱い</p>
+<p>対象が宇宙 \(u\) の単体的集合なので、それらを集めた ∞ 圏は宇宙 \(u+1\) に入る。関手 ∞ 圏 \(\mathrm{Fun}(B,\mathcal S)\) を作るには、底 \(B\) も同じ宇宙に持ち上げる必要がある。そのため主定理には <code>(SSet.uliftFunctor.{u + 1, u}).obj B</code> が現れる。宇宙の持ち上げと、その逆向きの「反映」（F1/Universe*、26 ファイル）は、この層の目立たないが避けられない作業になっている。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 主定理（空間値）</h2>
+<pre><code>def leftStraighteningInfinityMap (B : SSet.{u}) :
+    LeftFibrationInfinity B ⟶ SpaceInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj B)
+
+lemma leftStraighteningInfinityMap_isQCatEquivalence (B : SSet.{u}) [Quasicategory B] :
+    IsQCatEquivalence (leftStraighteningInfinityMap B)</code></pre>
+<p>場所：F1/LeftStraighteningAllBases（構成）、F1/LeftStraighteningInfinityEquivalence（同値）。同値の証明には、第 2 章の判定「充満忠実かつ本質的全射」を使う。</p>
+
+<div class="box">
+<p class="label">原典との違い：写像の向き</p>
+<p>HTT は straightening \(\mathrm{St}\)（左随伴）を単体的圏の側で作り、covariant モデル構造の Quillen 同値として示す（HTT §2.2.1、Thm. 2.2.1.2）。Kerodon は unstraightening を主に扱う。ここでは「fibration → 関手」の向きの写像を<b>直接</b> ∞ 圏の射として作り、それが同値であることを示している。モデル構造は使わない。逆向き（unstraightening）は、本質的全射性の証明の中で対象ごとに現れるだけである。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. 証明の経路</h2>
+<p>二段に分かれる。まず通常の圏の nerve \(N(C)\) を底とする場合を示し、次に一般の \(B\) をそれに帰着させる。</p>
+
+<h3>第一段：底が通常の圏の nerve の場合</h3>
+<p><b>strict transport</b>。\(N(C)\) 上の左 fibration \(X\) と対象 \(c\) に対し、under 圏の nerve \(N(C_{c/})\to N(C)\) 上の \(X\) の切断の空間 \(\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)\) を考える。\(C_{c/}\) は始対象 \(\mathrm{id}_c\) を持ち、その包含 \(\{c\}\hookrightarrow N(C_{c/})\) は left anodyne なので、切断を始対象に制限する写像は trivial Kan fibration になる（<code>relativeFunctorOverPre_trivialKanFibration_of_leftAnodyne</code>、F1/RelativeSectionInitialRestriction）。よってこの空間は fiber \(X_c\) と同値である。さらに \(c\mapsto C_{c/}\) は厳密に反変なので、\(c\mapsto\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)\) は<b>厳密な</b>関手 \(C\to\mathrm{Kan}\) になる。fiber のままでは transport の選択があいまいで厳密な関手にならないが、切断の空間に置き換えることでそのあいまいさが消える。</p>
+<pre><code>def strictTransportDomains (C : Type u) [Category.{u} C] : Cᵒᵖ ⥤ Over (nerve C)
+-- under 圏の忘却を、nerve C 上の反変図式に束ねたもの
+
+lemma strictTransportDomains_realization (C : Type u) [Category.{u} C] :
+    (relativeSectionEnrichedDiagram (strictTransportDomains C)).realization
+      = leftStraighteningCoherentMap C</code></pre>
+<p>この構成は fibration \(X\) についても単体的に関手的なので、二変数の単体的関手「左 fibration の単体的圏 × \(C\) → Kan」が得られる。その coherent nerve を取って curry したものが分類写像 <code>leftStraighteningCoherentMap C</code> である（F1/StrictTransport*）。</p>
+<ul>
+  <li><b>充満忠実性</b>（<code>leftStraighteningCoherentMap_isFullyFaithful</code>）：Hom への作用を strict transport の像の Hom と比較する。単体的関手の Hom が同値なら coherent nerve の写像は充満忠実、という判定を使う（F1/StrictTransportEnrichedFunctor など）。</li>
+  <li><b>本質的全射性</b>（<code>leftStraighteningCoherentMap_isEssentiallySurjective</code>）：与えられた coherent 図式 \(F\) に対し、小さい unstraightening（全空間）\(\mathrm{Un}(F)\) を作り、その straightening が \(F\) と同型であること（余単位 <code>leftStraighteningInfinityCounit</code>）を示す。この部分は実は一般の底 \(B\) で直接示されていて（<code>leftStraighteningInfinityMap_isEssentiallySurjective</code>、F1/LeftStraighteningEssentialSurjectivity）、nerve の場合はその特殊化である。unstraightening の構成には、strict な図式なら weighted nerve（Kerodon Def. 5.3.3.1、F1/WeightedNerve）、一般の coherent 図式なら F1/Coherent* の表現の議論を使う。</li>
+</ul>
+<p>結論：<code>leftStraighteningCoherentMap_isQCatEquivalence</code>（F1/LeftStraighteningCoherentEquivalence）。</p>
+
+<h3>第二段：一般の底への帰着</h3>
+<p>任意の単体的集合 \(B\) に対し、単体の圏 \(\Delta_{/B}\)（Lean では <code>TransportSimplexCategory B</code>）と、各単体をその<b>最初の頂点</b>に送る写像</p>
+\[
+\mathrm{fv}\colon N(\Delta_{/B})\longrightarrow B
+\]
+<p>を考える。鍵になるのは次の事実である。</p>
+<div class="box">
+<p><b>命題.</b> \(\mathrm{fv}\) は、「始点を保つ辺」の集合 \(W\) に関する局所化である。すなわち \(W\) を反転する関手 \(N(\Delta_{/B})\to\mathcal E\) は、\(B\) からの関手に（同型を除いて一意に）降りる。</p>
+<p>Lean：<code>transportSimplexFirstVertexMap_isLocalization</code>（F1/TransportLocalizationAllBases）。証明は \(B\) の骨格に沿った帰納法で、境界の次元、小さい余積、骨格の pushout、可算の逐次余極限の各段で局所化が保たれることを示す（F1/TransportLocalization*）。\(B\) に quasicategory であることは仮定しない。</p>
+</div>
+<p>\(N(\Delta_{/B})\) は通常の圏の nerve なので、第一段が使える。\(B\) 上の左 fibration を \(\mathrm{fv}\) で引き戻して straightening すると、\(W\) を反転する関手 \(N(\Delta_{/B})\to\mathcal S\) が得られる。これを局所化の普遍性で \(B\) へ降ろしたもの（<code>transportUliftFunctorDescent</code>）が、一般の底の分類写像 <code>leftStraighteningInfinityMap B</code> である。</p>
+<p>本質的全射性は上で見たとおり一般の底で示されているので、残るのは充満忠実性である。同値性は次の判定に帰着する（F1/LeftStraighteningFirstVertexCriterion）。</p>
+<pre><code>lemma leftStraighteningInfinityMap_isQCatEquivalence_iff_firstVertexBaseChange (B : SSet.{u}) :
+    IsQCatEquivalence (leftStraighteningInfinityMap B) ↔
+      IsFullyFaithful (leftFibrationInfinityBaseChange (transportSimplexFirstVertexMap B))</code></pre>
+<p>つまり、「左 fibration を \(\mathrm{fv}\) で引き戻す操作が充満忠実」であればよい。これは相対関手空間への引き戻しの作用の同値性として示され（F1/LeftFibrationBaseChangeFullyFaithful）、宇宙を持ち上げた側で示したものを元の宇宙へ反映して閉じる（F1/LeftFibrationFirstVertexUlift、F1/UniverseRelativePullbackReflection）。</p>
+
+<div class="box lean">
+<p class="label">Lean の構造：主経路の入口ファイル</p>
+<ol>
+  <li>F1/CatInfinity、F1/LeftFibrationInfinity：両辺の ∞ 圏</li>
+  <li>F1/StrictTransportDomains → StrictTransportJointEvaluation：nerve 上の分類写像</li>
+  <li>F1/LeftStraighteningCoherentFullyFaithful、LeftStraighteningEssentialSurjectivity → LeftStraighteningCoherentEquivalence：nerve 上の同値</li>
+  <li>F1/TransportLocalizationAllBases → TransportUliftFunctorDescent → LeftStraighteningAllBases：一般の底の分類写像</li>
+  <li>F1/LeftStraighteningFirstVertexCriterion → LeftStraighteningInfinityEquivalence：一般の底の同値</li>
+</ol>
+<p>この 10 ファイル程度を順に読めば、主経路全体を見渡せる。残りの数千ファイルは、各段の補題の分割である。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. Cat<sub>∞</sub> 値版（途中で止まっている）</h2>
+<pre><code>def cocartesianStraighteningCoherentMap (C : Type u) [Category.{u} C] :
+    CocartesianFibrationInfinity (nerve C) ⟶
+      CatInfinityFunctor ((SSet.uliftFunctor.{u + 1, u}).obj (nerve C))
+
+lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) :
+    IsQCatEquivalence (cocartesianStraighteningCoherentMap (ULift.{u} (Fin (n + 1))))</code></pre>
+<p>分類写像は通常の圏の nerve 上で、空間値版と同じ「under 圏上の切断」の方法で作られている。ただし Hom は core を取る必要がある。同値性は底が \(\Delta^n\) の場合に、最初の辺と残りの部分への Segal 型の分解で \(n\) について帰納して示されている（F1/CocartesianFiniteSimplexEquivalence、F1/CocartesianScaffold*）。一般の通常の圏の nerve の場合、さらに一般の quasicategory の底の場合は未完成である（<a href="../../../formalization-plans/foundations-progress.md">foundations-progress</a> の F1-1 d4〜d7）。</p>
+<p>規模：F1/Cocartesian* は 598 ファイル・約 3.7 万行で、F1 の 2 割を占める。主経路（空間値版）には使われていない。</p>
+
+<!-- ============================================================ -->
+<h2>6. F1 の構成（この章の範囲）</h2>
+<div class="table-wrap"><table>
+<tr><th>ファイル群</th><th class="num">ファイル</th><th class="num">行</th><th>役割</th></tr>
+<tr><td>Cocartesian*</td><td class="num">598</td><td class="num">37,490</td><td>Cat<sub>∞</sub> 値 straightening（休止中）</td></tr>
+<tr><td>Coherent*</td><td class="num">185</td><td class="num">18,367</td><td>coherent 図式の unstraightening と表現</td></tr>
+<tr><td>Relative*</td><td class="num">178</td><td class="num">14,509</td><td>相対関手空間、相対的な持ち上げ</td></tr>
+<tr><td>Transport*</td><td class="num">135</td><td class="num">11,664</td><td>transport、first vertex の局所化</td></tr>
+<tr><td>Left*（LeftStraightening*、LeftFibration* を含む）</td><td class="num">120</td><td class="num">9,943</td><td>左 fibration と空間値の主定理</td></tr>
+<tr><td>Weighted*</td><td class="num">70</td><td class="num">6,197</td><td>weighted nerve（strict 図式の unstraightening）</td></tr>
+<tr><td>Kan*</td><td class="num">56</td><td class="num">5,009</td><td>Kan fiber の場合の補題</td></tr>
+<tr><td>Edgewise*、Scaffold*、Interval*</td><td class="num">140</td><td class="num">11,307</td><td>edgewise 細分、骨組み、区間模型</td></tr>
+<tr><td>Universe*</td><td class="num">26</td><td class="num">1,786</td><td>宇宙の持ち上げと反映</td></tr>
+<tr><td>StrictTransport*</td><td class="num">14</td><td class="num">993</td><td>nerve 上の分類写像</td></tr>
+</table></div>
+<p>Yoneda、前層、twisted arrow（F1 の残り）は第 4 章で扱う。</p>
+
+<!-- ============================================================ -->
+<h2>7. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R6（確定）　fibration の基本を一か所に</p>
+<p>cocartesian 辺の定義は F1/CartesianEdge、fibration の定義は F1/CartesianFibration、外側ホーンの相対版の補題は Core/Cocartesian*（14 ファイル）と Core/RelativeOuterHorn* に分かれている。これらは一つの層（たとえば <code>Fibrations/</code>）にまとめるのが自然である。第 1 章の R7（anodyne・fibration の定義の置き場所）と一緒に行える。</p>
+</div>
+<div class="box refactor">
+<p class="label">R11　休止中の Cat<sub>∞</sub> 値 straightening を分ける</p>
+<p>F1/Cocartesian*（3.7 万行）は主経路に使われていないが、F1 の集約ファイルからビルドされている。<code>F1/Cocartesian/</code> のようなサブディレクトリに移し、集約からも外して独立の入口にすれば、F1 の主経路が読みやすくなり、ビルドも軽くなる。休止中の L2・L6 を Auxiliary として凍結した前例と同じ扱いになる。</p>
+</div>
+<div class="box refactor">
+<p class="label">R12　F1 の平らなディレクトリ</p>
+<p>F1 は 2,314 ファイルが一つのディレクトリに並んでいる。§6 の表の役割ごとに、<code>Transport/</code>、<code>StraighteningLeft/</code>、<code>Coherent/</code>、<code>Weighted/</code> などのサブディレクトリに分けると、§4 の主経路がディレクトリ構造から読み取れるようになる。R8（F1/F1B の複製の解消）を先に行ってから取りかかるのがよい。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>cocartesian 辺は外側ホーン \(\Lambda^{n+2}_0\) の相対的な持ち上げで定義され、Joyal の定理の相対版になっている。transport の一意性は「選択空間が可縮」という形で述べる。</li>
+  <li>\(\mathcal S\)、Cat<sub>∞</sub>、\(\mathrm{LFib}(B)\) はすべて、Kan 豊穣な単体的圏の coherent nerve（Mathlib の <code>SimplicialNerve</code>）。宇宙が一つ上がる。</li>
+  <li>straightening は「fibration → 関手」の向きで直接作り、充満忠実かつ本質的全射で同値を示す。モデル構造は使わない。</li>
+  <li>通常の圏の nerve の底では、under 圏上の切断の空間で厳密な関手（strict transport）を作る。一般の底は、単体の圏からの first vertex 写像が局所化であることで帰着させる。</li>
+  <li>空間値版は完成。Cat<sub>∞</sub> 値版は有限単体の底まで（3.7 万行が休止中）。</li>
+</ol>
+</main>
+</body>
+</html>

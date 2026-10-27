@@ -1,0 +1,75 @@
+:root {
+  --bg: #fbfaf7;
+  --fg: #1f2328;
+  --muted: #5f6670;
+  --rule: #d8d4cc;
+  --accent: #2f5d8a;
+  --code-bg: #f1eee8;
+  --box-bg: #f4f1ea;
+  --warn: #9a3b1f;
+  --warn-bg: #f8e9e2;
+  --ok: #2d6a3e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17191c;
+    --fg: #e4e2dd;
+    --muted: #9aa0a8;
+    --rule: #3a3d42;
+    --accent: #8ab4dd;
+    --code-bg: #24272b;
+    --box-bg: #202326;
+    --warn: #e6977a;
+    --warn-bg: #3a2620;
+    --ok: #8fcf9f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17191c;
+  --fg: #e4e2dd;
+  --muted: #9aa0a8;
+  --rule: #3a3d42;
+  --accent: #8ab4dd;
+  --code-bg: #24272b;
+  --box-bg: #202326;
+  --warn: #e6977a;
+  --warn-bg: #3a2620;
+  --ok: #8fcf9f;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+  line-height: 1.8;
+  font-size: 16px;
+}
+main { max-width: 52rem; margin: 0 auto; padding: 2rem 16px 5rem; }
+nav.top { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; }
+a { color: var(--accent); }
+h1 { font-size: 1.7rem; line-height: 1.4; margin: 0 0 0.3rem; }
+h2 { font-size: 1.3rem; margin-top: 2.6rem; padding-bottom: 0.2rem; border-bottom: 1px solid var(--rule); }
+h3 { font-size: 1.08rem; margin-top: 1.8rem; }
+.meta { color: var(--muted); font-size: 0.88rem; }
+code, pre { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.86em; }
+code { background: var(--code-bg); padding: 0.05em 0.3em; border-radius: 3px; }
+pre { background: var(--code-bg); padding: 0.9rem 1rem; overflow-x: auto; border-radius: 4px; line-height: 1.5; }
+pre code { background: none; padding: 0; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+th, td { border-bottom: 1px solid var(--rule); padding: 0.35rem 0.6rem; text-align: left; vertical-align: top; }
+th { font-weight: 600; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.matrix td, table.matrix th { text-align: center; padding: 0.25rem 0.4rem; font-variant-numeric: tabular-nums; }
+table.matrix th.row { text-align: left; }
+table.matrix td.back { background: var(--warn-bg); color: var(--warn); font-weight: 600; }
+table.matrix td.diag { color: var(--muted); }
+.box { background: var(--box-bg); border-left: 3px solid var(--accent); padding: 0.7rem 1rem; margin: 1.2rem 0; }
+.box.lean { border-left-color: var(--ok); }
+.box.refactor { border-left-color: var(--warn); }
+.box > :first-child { margin-top: 0; }
+.box > :last-child { margin-bottom: 0; }
+.label { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; }
+ol.checks li, ul li { margin: 0.25rem 0; }

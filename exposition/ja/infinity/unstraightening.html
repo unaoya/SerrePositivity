@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>unstraightening</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章：unstraightening</nav>
+<h1>補章　unstraightening</h1>
+<p class="meta">基準コミット <code>65f9185c1</code>（2026-10-23）。第 3 章の補足で、「Yoneda への道」の段 6 を詳しくしたもの。対象は <code>F1/LeftUnstraightening*</code>、<code>F1/PointedSpace*</code>、<code>F1/SmallLeftUnstraightening*</code> など。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>unstraightening は straightening の逆向きの構成で、空間値の関手 \(F\colon B\to\mathcal S\) から、\(B\) 上の左 fibration \(\mathrm{Un}(F)\to B\) で fiber が \(F(b)\) になるものを作る。直観的には「各 \(b\) の上に空間 \(F(b)\) を置き、辺 \(b\to b'\) に沿って \(F\) の写像で貼り合わせた全空間」（Grothendieck 構成の ∞ 版）である。</p>
+
+<div class="table-wrap"><table>
+<tr><th>何ができているか</th><th>Lean</th><th>節</th></tr>
+<tr><td>定義（普遍左 fibration の引き戻し）、左 fibration 性</td><td><code>leftUnstraightening</code></td><td>§1〜2</td></tr>
+<tr><td>fiber は \(F(b)\)</td><td><code>leftUnstraighteningFiberValueEquivalence</code></td><td>§2</td></tr>
+<tr><td>底変換と<b>厳密に</b>可換</td><td><code>leftUnstraighteningBaseChangeIso</code></td><td>§2</td></tr>
+<tr><td>宇宙を戻した小さい模型</td><td><code>smallLeftUnstraightening</code></td><td>§3</td></tr>
+<tr><td>変換 \(F\Rightarrow G\) への作用、単位則・合成則（同型を除いて）</td><td><code>exists_leftUnstraighteningTransformation</code> など</td><td>§4</td></tr>
+<tr><td>写像空間の比較：\(\mathrm{Map}(F,G)\simeq\mathrm{Fun}_{/B}(\mathrm{Un}F,\mathrm{Un}G)\)</td><td><code>leftUnstraighteningMappingSpaceMap_isQCatEquivalence</code></td><td>§5</td></tr>
+<tr><td>strict な図式の weighted nerve との比較</td><td>F1/DirectKanUnstraightening ほか</td><td>§6</td></tr>
+<tr><td>straightening との往復</td><td><code>leftStraighteningInfinityCounit</code>、<code>leftStraighteningInfinityReconstruction</code></td><td>§7</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>1. 普遍左 fibration \(\mathcal S_*\to\mathcal S\)</h2>
+<p>すべての unstraightening の元になるのは、一点空間 \(\ast\in\mathcal S\) の下の coslice、つまり「点つき空間の ∞ 圏」である。</p>
+<pre><code>noncomputable def PointedSpaceInfinity : SSet.{u + 1} :=
+  sliceUnder (SSet.yonedaEquiv.symm pointSpaceVertex.{u})
+noncomputable def pointedSpaceProjection : PointedSpaceInfinity.{u} ⟶ SpaceInfinity.{u}
+instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjection.{u}</code></pre>
+<p>場所：F1/PointedSpaces（Kerodon Construction 5.5.2.1、Prop. 5.5.2.2）。\(\mathcal S_*=\mathcal S_{\ast/}\) の対象は「空間 \(K\) と点 \(\ast\to K\)」で、射影は点を忘れる写像である。<b>左 fibration であることは、第 1 章の「quasicategory の coslice 射影は左 fibration」をそのまま使うだけ</b>で、新しい議論は要らない。</p>
+
+<h3>fiber は空間そのもの</h3>
+<pre><code>noncomputable def pointedSpaceFiberValueEquivalence (s : SpaceInfinity.{u} _⦋0⦌) :
+    QCatEquivalence (vertexFiber pointedSpaceProjection s)
+      ((SSet.uliftFunctor.{u + 1, u}).obj (spaceInfinityObject s).obj)</code></pre>
+<p>\(\mathcal S\) の頂点 \(s\)（Kan 複体 \(K\) を表す）上の fiber は \(K\) と同値（F1/LeftUnstraighteningFiberValue）。証明の流れは次のとおり。</p>
+<ol>
+  <li>coslice \(\mathcal S_{\ast/}\) の \(s\) 上の fiber は、左 pinched 写像空間 \(\mathrm{Map}^L_{\mathcal S}(\ast,s)\) と同型（Core の coslice の fiber の計算、F1/PointedSpaceMappingSpaces）。</li>
+  <li>左の写像空間を右の写像空間に移す（第 2 章の <code>pinchedHomLeftRightEquivalence</code>）。</li>
+  <li>coherent nerve の写像空間は元の単体的圏の Hom と同値（<code>coherentHomEquivalence</code>）。\(\mathcal S\) の場合、それは Kan 複体の関手単体集合 \(\mathrm{Fun}(\Delta^0,K)=K\)。</li>
+</ol>
+<p>つまり「\(\mathcal S_*\to\mathcal S\) の fiber が \(K\) になる」のは、「\(\ast\) から \(K\) への写像の空間は \(K\) そのもの」ということの言い換えである。</p>
+
+<!-- ============================================================ -->
+<h2>2. 定義：引き戻し</h2>
+<pre><code>noncomputable def leftUnstraightening {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
+    SSet.{u + 1} := pullback pointedSpaceProjection F
+
+instance leftUnstraighteningProjection_leftFibration {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
+    LeftFibration (leftUnstraighteningProjection F)</code></pre>
+\[
+\begin{array}{ccc}
+\mathrm{Un}(F) & \longrightarrow & \mathcal S_*\\
+\downarrow & \lrcorner & \downarrow\\
+C & \xrightarrow{\ F\ } & \mathcal S
+\end{array}
+\]
+<p>場所：F1/LeftUnstraightening（Kerodon Example 5.6.2.9）。<b>単体的集合としての厳密な引き戻し</b>なので、次のことがほぼ定義から従う。</p>
+<ul>
+  <li><b>左 fibration</b>：左 fibration は引き戻しで保たれる。底 \(C\) が quasicategory なら全空間も quasicategory。</li>
+  <li><b>fiber</b>：\(\mathrm{Un}(F)_c\) は \(\mathcal S_*\) の \(F(c)\) 上の fiber そのものなので、§1 により \(F(c)\) と同値（<code>leftUnstraighteningFiberValueEquivalence</code>）。</li>
+  <li><b>底変換</b>：\(k\colon D\to C\) について \(\mathrm{Un}(F\circ k)\cong D\times_C\mathrm{Un}(F)\) は<b>同型</b>（同値ではない。<code>leftUnstraighteningBaseChangeIso</code>、F1/LeftUnstraighteningBaseChange、Kerodon Remark 5.6.2.5）。引き戻しの貼り合わせによる。</li>
+  <li><b>底についての関手性</b>：\(\alpha\colon C\to D\) が \(G\circ\alpha=F\) を満たせば、射 \(\mathrm{Un}(F)\to\mathrm{Un}(G)\) が決まり、恒等則・合成則が<b>厳密に</b>成り立ち、四角形は引き戻しになる（<code>leftUnstraighteningMap</code>、<code>_id</code>、<code>_comp</code>、<code>_isPullback</code>）。</li>
+</ul>
+<div class="box">
+<p class="label">この定義の利点</p>
+<p>HTT §2.2.1 では unstraightening を、単体的圏の側の straightening の右随伴（モデル圏の右 Quillen 関手）として定義する。そのため、底変換との両立はホモトピーを除いてしか成り立たない。ここでは \(\mathcal S_*\to\mathcal S\) の引き戻しで定義しているので、底変換との両立が厳密な同型になり、それ以後の議論（局所化による一般の底への降下、strict な図式との比較）で「同型を除いて」の管理が一段減る。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 宇宙と小ささ</h2>
+<p>\(\mathcal S\) は宇宙 \(u+1\) にあるので、\(\mathrm{Un}(F)\) も <code>SSet.{u+1}</code> になる。しかし \(B\) 上の左 fibration の ∞ 圏 \(\mathrm{LFib}(B)\)（第 3 章）の対象は宇宙 \(u\) の単体的集合である。そこで二段の手当てをする。</p>
+<ol>
+  <li><b>小ささ</b>：底が各次数で \(u\)-小さければ、引き戻しの単体も \(u\)-小さい（<code>pullback_simplex_small_of_fibers</code>、<code>leftUnstraightening_obj_small</code>、F1/LeftUnstraighteningSmallness）。fiber が \(u\)-小さい Kan 複体だからである。</li>
+  <li><b>縮小</b>：各次数を <code>Shrink</code> して宇宙 \(u\) に戻したものが <code>smallLeftUnstraightening F</code>（F1/SmallLeftUnstraightening）。射影・左 fibration 性・fiber は縮小の同型で移す（<code>smallLeftUnstraighteningFiberValueEquivalence</code>）。相対関手空間も厳密に同型（<code>smallLeftUnstraighteningRelativeFunctorIso</code>。Yoneda の h₂）。</li>
+</ol>
+<p>前層（\(C^{\mathrm{op}}\) 上の関手）の場合は、\(C^{\mathrm{op}}\) 上の左 unstraightening を反転して \(C\) 上の右 fibration にする（<code>smallRightUnstraightening</code>、F1/PresheafUnstraightening）。</p>
+
+<!-- ============================================================ -->
+<h2>4. 変換への作用</h2>
+<p>変換 \(H\colon F\Rightarrow G\)（\(\Delta^1\times B\to\mathcal S\) で両端が \(F\)、\(G\) のもの）から、\(B\) 上の射 \(\mathrm{Un}(F)\to\mathrm{Un}(G)\) を作る。次の持ち上げ問題を解く。</p>
+\[
+\begin{array}{ccc}
+\{0\}\times\mathrm{Un}(F) & \xrightarrow{\ \text{標準の点}\ } & \mathcal S_*\\
+\downarrow & \nearrow & \downarrow\\
+\Delta^1\times\mathrm{Un}(F) & \xrightarrow{\ H\circ(\mathrm{id}\times p)\ } & \mathcal S
+\end{array}
+\]
+<p>上の辺は引き戻しの第一射影（\(\mathrm{Un}(F)\) の各点が持っている \(F(b)\) の点）。左の包含 \(\{0\}\times X\hookrightarrow\Delta^1\times X\) は left anodyne で、右は左 fibration なので、持ち上げが存在する。持ち上げを \(\{1\}\) で評価すると \(G\circ p\) の上の点つき空間、つまり \(\mathrm{Un}(G)\) への射になる。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>持ち上げの選択空間は可縮</td><td><code>leftUnstraighteningTransformationChoiceSpace_isContractibleKan</code></td><td>F1/LeftUnstraighteningTransformation</td></tr>
+<tr><td>変換は \(B\) 上の射を与える</td><td><code>exists_leftUnstraighteningTransformation</code></td><td>同上</td></tr>
+<tr><td>恒等変換 ↦ 恒等射（相対写像空間で同型）</td><td><code>leftUnstraighteningTransformationMap_identityIso</code></td><td>F1/LeftUnstraighteningIdentity</td></tr>
+<tr><td>合成の三角形 ↦ 合成（同型）</td><td><code>leftUnstraighteningTransformationMap_compositionIso</code></td><td>F1/LeftUnstraighteningComposition</td></tr>
+</table></div>
+<p>第 3 章の cocartesian transport と同じ型の議論で、「選択空間が可縮」によって選び方の任意性を閉じ込めている。恒等則・合成則は厳密な等式ではなく、相対写像空間の中の同型として成り立つ。</p>
+
+<!-- ============================================================ -->
+<h2>5. 写像空間の比較（Yoneda の h₁）</h2>
+<div class="box">
+<p><b>定理.</b> 任意の底 \(B\) と \(F,G\colon B\to\mathcal S\) について、比較写像</p>
+\[
+M\colon\ \mathrm{Map}_{\mathrm{Fun}(B,\mathcal S)}(F,G)\longrightarrow\mathrm{Fun}_{/B}\bigl(\mathrm{Un}(F),\mathrm{Un}(G)\bigr)
+\]
+<p>は同値（<code>leftUnstraighteningMappingSpaceMap_isQCatEquivalence</code>、F1/CoherentUnstraighteningMappingEquivalence）。底や高次のパラメーターの小ささは要らない。</p>
+</div>
+
+<h3>比較写像 \(M\) の作り方</h3>
+<p>§4 の持ち上げを、変換一本ずつではなく<b>変換の空間 \(T\) 全体に対して一度に</b>行う（F1/LeftUnstraighteningFamilyLifts）。\(\{0\}\times\mathrm{Un}(F)\times T\hookrightarrow\Delta^1\times\mathrm{Un}(F)\times T\) も left anodyne なので、族ごと持ち上げられる。終点で評価して相対的に curry したものが \(M\)（F1/LeftUnstraighteningMappingSpaceMap）。</p>
+
+<h3>同値性の証明：普遍的な族から逆を作る</h3>
+<pre><code>lemma leftUnstraighteningMappingSpaceMap_isQCatEquivalence ... := by
+  let Y := relativeFunctorSpace (leftUnstraighteningProjection G) (leftUnstraighteningProjection F)
+  let T := leftUnstraighteningTransformationSpace F G
+  let M := leftUnstraighteningMappingSpaceMap F G
+  let f := relativeFunctorUncurry (𝟙 Y)                       -- Y 上の普遍的な族
+  obtain ⟨t, W, hw₀, hw₁, hwp⟩ := exists_coherentFamily_recovery F G f hf   -- 族 → 変換の族
+  ...
+  have hleft : Nonempty (FunctorIso (M ≫ t) (𝟙 T)) := UnstraighteningFamilyWitness.unique ...
+  have hright := unstraighteningFamilyComparisonIso F G t f hf W hw₀ hw₁ hwp  -- t ≫ M ≅ 𝟙 Y
+  ...
+  exact ⟨t, hleft, ⟨hright⟩⟩</code></pre>
+<ol>
+  <li><b>普遍的な族</b>：相対関手空間 \(Y\) の恒等射を uncurry すると、\(Y\) をパラメーターとする相対射の族 \(\mathrm{Un}(F)\times Y\to\mathrm{Un}(G)\) が得られる。「\(Y\) の各点が表す射そのもの」の族である。</li>
+  <li><b>族の復元</b>：この族から、\(Y\) をパラメーターとする変換の族 \(t\colon Y\to T\) を作る（<code>exists_coherentFamily_recovery</code>、F1/SmallCoherentFamilyRecovery）。方法は、族の始域と終域を写像円柱（collage）で貼り合わせた fibration を作り、<b>それを straightening の構成で分類する</b>、というもの（docstring：「指定した標準表現を両端に保つ collage を分類し curry する」）。</li>
+  <li><b>\(M\circ t\cong\mathrm{id}\)</b>：「変換の族が相対射の族を実現する」という証拠（<code>UnstraighteningFamilyWitness</code>：持ち上げの prism と、始点・終点・射影の三条件）は、同型を除いて一意である（<code>UnstraighteningFamilyWitness.unique</code>）。\(M\) の定義に使った普遍的な持ち上げも、\(t\) から作った持ち上げも、どちらも同じ族の証拠なので一致する。</li>
+  <li><b>\(t\circ M\cong\mathrm{id}\)</b>：復元した族を \(M\) で戻すと元の普遍的な族と比較できる（<code>unstraighteningFamilyComparisonIso</code>）。普遍的な族は \(Y\) の恒等射なので、これは \(t\circ M\cong\mathrm{id}_Y\) を意味する。</li>
+</ol>
+<p>Yoneda の議論と同じ「普遍元」の型の証明である。2 で straightening の<b>構成</b>（分類写像）を使っているので、この定理は straightening から独立ではないが、straightening の同値定理は使っていない。</p>
+
+<h3>可逆性の保存と反映</h3>
+<p>\(M\) が変換 \(\alpha\) に対応させる射 \(\mathrm{Un}(F)\to\mathrm{Un}(G)\) が同値であることと、\(\alpha\) が可逆であることは同値（<code>leftUnstraighteningMappingVertexMap_isQCatEquivalence_iff</code>、F1/LeftUnstraighteningReflectsEquivalences）。fiber に制限し、普遍射影の transport から各点での可逆性を回収して示す。</p>
+
+<!-- ============================================================ -->
+<h2>6. strict な図式との比較</h2>
+<p>通常の圏 \(C\) 上の strict な図式 \(F\colon C\to\mathrm{Kan}\) には、古典的な全空間 <b>weighted nerve</b> \(N_F(C)\to N(C)\) がある（Kerodon Def. 5.3.3.1、F1/WeightedNerve。単体は「底の合成可能な射の列」と「各段の標準単体からの自然変換の組」）。これと、coherent な図式とみなした <code>kanDiagramCoherentNerve F</code> の unstraightening を比較する。</p>
+<ul>
+  <li>F1/DirectKanUnstraightening：weighted nerve から、図式自身の coherent な復元への比較。edgewise 細分（F1/Edgewise*、47 ファイル）を経由する。</li>
+  <li>F1/OppositeKanUnstraightening：値を反転した coherent 図式の unstraightening との比較。</li>
+  <li>F1/LocalUnstraighteningStrictification：標準単体上の一般の coherent な図式の小さい unstraightening を、strict な図式の底変換で表す。</li>
+</ul>
+<p>これらは主に、straightening の本質的全射性（「任意の coherent 図式は何かの straightening」）の証明で、局所的に strict な模型に帰着させるために使われる。</p>
+
+<!-- ============================================================ -->
+<h2>7. straightening との関係</h2>
+<div class="table-wrap"><table>
+<tr><th>向き</th><th>内容</th><th>Lean</th></tr>
+<tr><td>\(\mathrm{St}(\mathrm{Un}F)\cong F\)</td><td>余単位の成分。本質的全射性の証明</td><td><code>leftStraighteningInfinityCounit</code>（F1/LeftStraighteningEssentialSurjectivity）</td></tr>
+<tr><td>\(\mathrm{Un}(\mathrm{St}\,p)\simeq p\)</td><td>対象ごとの再構成（前合成同値）</td><td><code>leftStraighteningInfinityReconstruction</code>（F1/LeftStraighteningInfinityReconstruction）</td></tr>
+</table></div>
+<div class="box">
+<p class="label">注意：Un は ∞ 関手としてはまとめられていない</p>
+<p>straightening は ∞ 圏の射 <code>leftStraighteningInfinityMap : LFib(B) → Fun(B, 𝒮)</code> として作られ、同値定理もこの射について述べられている（第 3 章）。一方 unstraightening は、対象への作用（§2）、変換への作用（§4、同型を除く関手性）、写像空間への作用（§5）が個別に与えられているだけで、∞ 関手 \(\mathrm{Fun}(B,\mathcal S)\to\mathrm{LFib}(B)\) としては定義されていない。F1/PresheafUnstraightening の docstring にも「前層全体の unstraightening ∞ 関手は主張しない」とある。St が同値である以上、Un はその逆として（選択を通して）得られるので、理論上の欠落ではない。ただ、Un の自然性を直接使いたい場面が出てきたら、そこで初めて必要になる。</p>
+</div>
+
+<h3>どこで使われるか</h3>
+<ul>
+  <li><b>Yoneda の補題</b>：h₁（§5）、h₂（§3）、h₄（§2 の fiber）。表現可能前層の unstraightening が slice になること（h₃）には §7 の再構成を使う。</li>
+  <li><b>\(\mathcal S\) の極限・余極限</b>（第 5 章 §3）：極限 = \(\mathrm{Un}(F)\) の切断の空間、余極限 = \(\mathrm{Un}(F)\) の全空間。</li>
+  <li><b>straightening の同値定理</b>：本質的全射性（§7 の余単位）。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>8. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>ファイル群</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
+<tr><td>F1/PointedSpace*</td><td class="num">8</td><td class="num">596</td><td>§1 普遍左 fibration、fiber、写像空間</td></tr>
+<tr><td>F1/LeftUnstraightening*（下の二つを含む）</td><td class="num">34</td><td class="num">2,963</td><td>§2・§4・§5</td></tr>
+<tr><td>　うち LeftUnstraighteningTransformation*</td><td class="num">6</td><td class="num">531</td><td>§4 変換への作用</td></tr>
+<tr><td>　うち LeftUnstraighteningMapping*</td><td class="num">9</td><td class="num">824</td><td>§5 写像空間の比較</td></tr>
+<tr><td>F1/SmallLeftUnstraightening*</td><td class="num">7</td><td class="num">688</td><td>§3 小さい模型</td></tr>
+<tr><td>F1/UnstraighteningFamily*、SmallCoherentFamilyRecovery、CoherentUnstraighteningMappingEquivalence</td><td class="num">5</td><td class="num"></td><td>§5 の同値性の証明</td></tr>
+<tr><td>F1/DirectKan*、OppositeKan*、OppositeUnstraightening*、LocalUnstraighteningStrictification</td><td class="num">8</td><td class="num"></td><td>§6 strict な図式との比較</td></tr>
+</table></div>
+<p>F1 全体（約 18 万行）から見ると、unstraightening の本体は 5,000 行程度と小さい。定義が引き戻しで済むことの効果である。</p>
+
+<h2>この補章で押さえること</h2>
+<ol class="checks">
+  <li>\(\mathrm{Un}(F)\) は普遍左 fibration \(\mathcal S_*=\mathcal S_{\ast/}\to\mathcal S\) の \(F\) に沿う厳密な引き戻し。左 fibration 性・fiber・底変換はほぼ定義から従い、底変換とは厳密な同型で両立する。</li>
+  <li>\(\mathcal S_*\to\mathcal S\) の fiber が \(K\) になるのは、「点からの写像の空間は \(K\)」の言い換え。</li>
+  <li>変換への作用は、left anodyne な包含 \(\{0\}\times X\hookrightarrow\Delta^1\times X\) に沿う持ち上げで作り、選択空間は可縮。</li>
+  <li>写像空間の比較 \(\mathrm{Map}(F,G)\simeq\mathrm{Fun}_{/B}(\mathrm{Un}F,\mathrm{Un}G)\) は、普遍的な族から逆を復元する議論で示す。復元には straightening の構成（collage の分類）を使う。</li>
+  <li>Un は ∞ 関手としてはまとめられておらず、対象・変換・写像空間への作用が個別に与えられている。</li>
+</ol>
+</main>
+</body>
+</html>

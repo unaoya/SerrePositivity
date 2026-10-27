@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 4　presentable への道：随伴関手定理・表現可能性定理・P(A) の普遍性・Gabriel–Ulmer</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 4　presentable への道：随伴関手定理・表現可能性定理・P(A) の普遍性・Gabriel–Ulmer</nav>
+<h1>補章 4　presentable への道：随伴関手定理・表現可能性定理・\(\mathcal P(A)\) の普遍性・Gabriel–Ulmer</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="06-catinfty-ind-presentable.html">第 6 章</a> §6（accessible と presentable）の数学的な背景にあたる。Lean の宣言名は、他の章にすでに出ているものだけを引用する。</p>
+
+<p>この章では、∞ 圏の基礎理論として何を押さえるべきかを地図にしたうえで、その中心にある随伴関手定理を、表現可能性定理 → \(\mathcal P(A)\) の普遍性、と順に分解する。各段で 1 圏の証明と ∞ 圏の証明を並べ、違いがどこにあるかを見る。</p>
+
+<!-- ============================================================ -->
+<h2>1. 基礎理論の地図（六関手形式を目標とする場合）</h2>
+
+<div class="table-wrap"><table>
+<tr><th>層</th><th>内容</th><th>このページの章</th></tr>
+<tr><td>1. 道具</td><td>写像空間と同値、fibration と straightening、米田、極限・余極限と cofinality、Kan 拡張、随伴</td><td>第 1〜4 章、補章 1〜3</td></tr>
+<tr><td>2. presentable</td><td>Ind とコンパクト対象、presentable の定義、随伴関手定理、\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\)、\(\mathrm{Pr}^L\) の極限とテンソル積</td><td>第 6 章、この補章</td></tr>
+<tr><td>3. 安定</td><td>安定 ∞ 圏、\(\mathrm{Sp}\) と安定化、t 構造、Verdier 商と recollement、\(D(A)\) と Morita</td><td>第 7・8 章</td></tr>
+<tr><td>4. モノイダル</td><td>対称モノイダル ∞ 圏（\(\mathrm{Fin}_*\) 上の cocartesian fibration）、\(\mathrm{CAlg}\)、\(\mathrm{Mod}_A\)、\(\mathrm{CAlg}(\mathrm{Pr}^L)\)、lax モノイダル関手</td><td>（未）</td></tr>
+<tr><td>5. 六関手</td><td>降下（極限としての層）、Beck–Chevalley 条件、対応の ∞ 圏と Mann の定式化（Scholze の講義ノート、Heyer–Mann）</td><td>（未）</td></tr>
+</table></div>
+
+<div class="table-wrap"><table>
+<tr><th>必須度</th><th>内容</th></tr>
+<tr><td>◎ 定理を使いこなす</td><td>米田、Kan 拡張、随伴、presentable と随伴関手定理、コンパクト生成、安定 ∞ 圏、\(\mathrm{Pr}^L\) の極限とテンソル積</td></tr>
+<tr><td>○ 理解しておく</td><td>straightening の主張、t 構造、対称モノイダル構造、Beck–Chevalley 条件、降下</td></tr>
+<tr><td>△ 黒箱でよい</td><td>straightening や rigidification の証明、モデル圏の技術的部分、∞ operad の一般論</td></tr>
+</table></div>
+<p>六関手の構成の大半は、「presentable な ∞ 圏の層を作り、随伴関手定理で随伴を取り、Beck–Chevalley 条件で基底変換を確かめる」という型の繰り返しである。</p>
+
+<!-- ============================================================ -->
+<h2>2. 随伴関手定理</h2>
+
+<p><b>定理</b>（HTT Cor. 5.5.2.9）．\(\mathcal C,\mathcal D\) を presentable な ∞ 圏、\(F\colon\mathcal C\to\mathcal D\) を関手とする。</p>
+<ol>
+  <li>\(F\) が右随伴を持つ ⇔ \(F\) が小さい余極限を保つ。</li>
+  <li>\(F\) が左随伴を持つ ⇔ \(F\) が小さい極限を保ち、accessible（ある \(\kappa\) について \(\kappa\)-filtered 余極限を保つ）。</li>
+</ol>
+<p>「⇒」は随伴の一般論。中身は「⇐」で、1 は次の二つの組み合わせである。</p>
+<ul>
+  <li><b>表現可能性定理</b>（HTT Prop. 5.5.2.2）：\(\mathcal C\) が presentable なら、\(H\colon\mathcal C^{\mathrm{op}}\to\mathcal S\) が表現可能 ⇔ \(H\) が小さい余極限を極限に送る。</li>
+  <li><b>各点の判定</b>：\(F\) が右随伴を持つ ⇔ 各 \(d\) について \(c\mapsto\mathrm{Map}(Fc,d)\) が表現可能。</li>
+</ul>
+<p>presentable という仮定は、1 圏の Freyd の定理の解集合条件を自動的に満たすための条件と思ってよい。安定な場合は「完全関手が右随伴を持つ ⇔ 直和（filtered 余極限）を保つ」と使いやすくなる。</p>
+
+<div class="table-wrap"><table>
+<tr><th>関手</th><th>保つもの</th><th>得られる随伴</th></tr>
+<tr><td>\(f^*\)</td><td>余極限</td><td>右随伴 \(f_*\)</td></tr>
+<tr><td>\(f_!\)</td><td>余極限</td><td>右随伴 \(f^!\)</td></tr>
+<tr><td>\(-\otimes K\)</td><td>余極限</td><td>右随伴 \(\underline{\mathrm{Hom}}(K,-)\)</td></tr>
+<tr><td>\(f^*\)（\(f\) 滑らか）</td><td>極限、accessible</td><td>左随伴 \(f_\sharp\)</td></tr>
+</table></div>
+<p>随伴関手定理が与えるのは存在だけで、基底変換や射影公式は別に確かめる。</p>
+
+<!-- ============================================================ -->
+<h2>3. \(\mathcal P(A)\) とは何か</h2>
+
+<div class="table-wrap"><table>
+<tr><th></th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>定義</td><td>\(\mathcal P(A)=\mathrm{Fun}(A^{\mathrm{op}},\mathrm{Set})\)</td><td>\(\mathcal P(A)=\mathrm{Fun}(A^{\mathrm{op}},\mathcal S)\)</td></tr>
+<tr><td>\(A\)</td><td>任意の小さい圏</td><td>任意の小さい ∞ 圏</td></tr>
+<tr><td>米田埋め込み</td><td>\(a\mapsto\mathrm{Hom}(-,a)\)、自明に作れる</td><td>\(a\mapsto\mathrm{Map}(-,a)\)、Hom 関手の構成が要る（straightening）</td></tr>
+<tr><td>米田の補題</td><td>\(\mathrm{Hom}(y(a),F)\cong F(a)\)</td><td>\(\mathrm{Map}(y(a),F)\simeq F(a)\)</td></tr>
+</table></div>
+
+<p>直観的には「\(A\) の対象の形式的な余極限を全部付け加えたもの」。余極限は各点で計算できるので、\(\mathcal P(A)\) は小さい余極限をすべて持つ。</p>
+
+<div class="table-wrap"><table>
+<tr><th>\(A\)</th><th>1 圏の \(\mathcal P(A)\)</th><th>∞ 圏の \(\mathcal P(A)\)</th></tr>
+<tr><td>一点</td><td>\(\mathrm{Set}\)</td><td>\(\mathcal S\)</td></tr>
+<tr><td>離散な \(I\)</td><td>\(\mathrm{Set}^I\)</td><td>\(\mathcal S^I\)</td></tr>
+<tr><td>\(BG\)</td><td>\(G\)-集合</td><td>ホモトピー整合的な \(G\) 作用を持つ空間（<a href="coherent-nerve-diagrams.html">補章 3</a> 例 2）</td></tr>
+<tr><td>\(\Delta\)</td><td>\(\mathrm{sSet}\)</td><td>単体的空間（Segal かつ完備なものが ∞ 圏のモデル）</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>4. \(\mathcal P(A)\) の普遍性</h2>
+
+<p><b>定理</b>（1 圏：古典、∞ 圏：HTT Thm 5.1.5.6）．\(A\) を小さい（∞）圏、\(\mathcal E\) を小さい余極限をすべて持つ（∞）圏とする。制限
+\[
+y^*\colon\ \mathrm{Fun}^L(\mathcal P(A),\mathcal E)\ \longrightarrow\ \mathrm{Fun}(A,\mathcal E)
+\]
+は（∞）圏の同値である。ここで \(\mathrm{Fun}^L\) は小さい余極限を保つ関手の充満部分圏。逆は \(y\) に沿った左 Kan 拡張で、
+\[
+(\mathrm{Lan}_y f)(F)=\operatorname*{colim}_{(a,x)\in\mathrm{el}(F)}f(a)\quad\text{（1 圏）},\qquad
+(\mathrm{Lan}_y f)(F)=\operatorname*{colim}\bigl(\mathrm{Un}(F)\to A\xrightarrow{f}\mathcal E\bigr)\quad\text{（}\infty\text{ 圏）}.
+\]</p>
+
+<div class="box">
+<p class="label">\(A\) と \(\mathcal E\) の役割</p>
+<ul>
+  <li><b>\(A\)</b>：任意の小さい（∞）圏。小ささは、\(\mathcal P(A)\) の Hom（写像空間）が小さくなること、および公式の余極限の添字 \(\mathrm{el}(F)\)・\(\mathrm{Un}(F)\) が小さくなることのために要る。</li>
+  <li><b>\(\mathcal E\)</b>：小さい余極限をすべて持つ任意の（∞）圏。大きくてよい（\(\mathrm{Set}\)、\(\mathcal S\)、\(\mathrm{sSet}\)、\(D(R)\)、\(\mathrm{Cat}_\infty\) など）。</li>
+  <li>定理は、そのような組 \((A,\mathcal E)\) ごとに成り立つ。「\(\mathcal P(A)\) は、余極限を持つどんな \(\mathcal E\) に対しても、\(A\) からの関手を余極限を保つ関手に一意に延長できる」という意味で \(A\) の自由余完備化である。</li>
+  <li>表現可能性定理（§5）では、\(A\) を \(\mathcal C\) の \(\kappa\)-コンパクト対象のなす小さい部分圏に取り、\(\mathcal E=\mathcal S^{\mathrm{op}}\)（1 圏なら \(\mathrm{Set}^{\mathrm{op}}\)）に取る。「\(H\colon\mathcal P(A)^{\mathrm{op}}\to\mathcal S\) が余極限を極限に送る」は「\(H^{\mathrm{op}}\colon\mathcal P(A)\to\mathcal S^{\mathrm{op}}\) が余極限を保つ」と同じで、\(\mathcal S\) が小さい極限を持つので \(\mathcal S^{\mathrm{op}}\) は小さい余極限を持つ。</li>
+</ul>
+</div>
+
+<h3>証明の流れ</h3>
+<div class="table-wrap"><table>
+<tr><th>ステップ</th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>① 米田</td><td>自然変換の定義から直接</td><td>関手版の米田。Hom 関手の構成に straightening</td></tr>
+<tr><td>② co-Yoneda</td><td>\(F\cong\operatorname{colim}_{\mathrm{el}(F)}y(a)\)</td><td>\(F\simeq\operatorname{colim}(\mathrm{Un}(F)\to A\xrightarrow{y}\mathcal P(A))\)（HTT Lemma 5.1.5.3）</td></tr>
+<tr><td>③ 一意性</td><td>余極限を保つ関手は②で \(A\) での値で決まる。自然変換も同様</td><td>余極限を保つ関手は制限の左 Kan 拡張。Kan 拡張の空間が可縮（HTT Prop. 4.3.2.15）</td></tr>
+<tr><td>④ 存在</td><td>公式で \(\mathrm{Lan}_y f\) を定義し、右随伴 \(R(e)=\mathrm{Hom}(f(-),e)\) を作る</td><td>同じ方針。右随伴の関手性に \(\mathcal E\) の Hom 関手が要る</td></tr>
+</table></div>
+
+<p><b>② の計算</b>．1 圏では
+\[
+\mathrm{Hom}\Bigl(\operatorname*{colim}_{\mathrm{el}(F)}y(a),G\Bigr)\cong\lim_{(a,x)\in\mathrm{el}(F)}G(a)\cong\mathrm{Nat}(F,G),
+\]
+二つ目は自然変換の定義そのもの。∞ 圏では
+\[
+\mathrm{Map}\Bigl(\operatorname*{colim}_{\mathrm{Un}(F)}y\circ p,G\Bigr)\simeq\lim_{\mathrm{Un}(F)}G\circ p\simeq\mathrm{Fun}_{/A}\bigl(\mathrm{Un}(F),\mathrm{Un}(G)\bigr)\simeq\mathrm{Map}_{\mathcal P(A)}(F,G),
+\]
+二つ目は「\(\mathcal S\) 値図式の極限は unstraightening の切断の空間」（<a href="05-gamma-bridges.html">第 5 章</a> §3）、三つ目は unstraightening の写像空間の比較（<a href="unstraightening.html">補章</a> §5）。1 圏で定義だったところが定理に置き換わる。</p>
+
+<p><b>④ の右随伴</b>．\(\mathrm{Hom}_{\mathcal E}(\Phi F,e)\cong\lim_{\mathrm{el}(F)}\mathrm{Hom}(f(a),e)\cong\mathrm{Nat}(F,R(e))\) で \(\Phi\dashv R\)。これは realization ⊣ nerve の形で、\(A=\Delta\)、\(f=|\Delta^\bullet|\) なら幾何学的実現と特異単体集合、\(f=\mathfrak C[\Delta^\bullet]\) なら \(\mathfrak C\dashv N^{hc}\)（補章 3）。</p>
+
+<!-- ============================================================ -->
+<h2>5. 表現可能性定理の証明</h2>
+
+<p>二段階で示す。段階 I は \(\mathcal C=\mathcal P(A)\) の場合、段階 II は一般の場合を局所化で帰着させる。</p>
+
+<h3>準備</h3>
+<ul>
+  <li><b>(a)</b> presentable なら、小さい \(A\)（\(\kappa\)-コンパクト対象）と反射的局所化 \(L\colon\mathcal P(A)\rightleftarrows\mathcal C\colon i\)（\(L\dashv i\)、\(i\) 充満忠実）がある。1 圏では Gabriel–Ulmer、∞ 圏では Lurie–Simpson（HTT Thm 5.5.1.1）。</li>
+  <li><b>(b)</b> §4 の普遍性。</li>
+</ul>
+
+<h3>段階 I：\(\mathcal C=\mathcal P(A)\)</h3>
+<p>\(h:=H\circ y\in\mathcal P(A)\) と置く。1 圏では
+\[
+H(F)\cong H\bigl(\operatorname{colim}y(a)\bigr)\cong\lim H(y(a))=\lim h(a)\cong\lim\mathrm{Hom}(y(a),h)\cong\mathrm{Hom}(F,h).
+\]
+整理すると、\(H\) と \(\mathrm{Hom}(-,h)\) はどちらも余極限を極限に送り、\(A\) への制限がどちらも \(h\)（後者は米田）なので、(b) の一意性で同型。<b>表現する対象は、\(H\) を生成元に制限したものそのもの</b>である。</p>
+
+<h3>段階 II：一般の \(\mathcal C\)</h3>
+<ol>
+  <li>\(H':=H\circ L^{\mathrm{op}}\) は余極限を極限に送る（\(L\) は左随伴）。段階 I より \(H'\cong\mathrm{Hom}(-,h)\)、\(h(a)=H(L\,y(a))\)。</li>
+  <li>\(h\) は局所的：単位 \(\eta_F\) について \(\mathrm{Hom}(\eta_F,h)=H(L\eta_F)\) は同型。よって \(h\cong iLh\)。</li>
+  <li>\(c\in\mathcal C\) について \(\mathrm{Hom}_{\mathcal C}(c,Lh)\cong\mathrm{Hom}(ic,h)\cong H(Lic)\cong H(c)\)。</li>
+</ol>
+<p>仮定の使われ方：「余極限を極限に送る」は生成元への帰着と \(L\) との合成で、presentable（\(A\) が小さい）は \(h\) が小さい前層として存在するために使う。</p>
+
+<h3>∞ 圏で何が変わるか</h3>
+<div class="table-wrap"><table>
+<tr><th>論点</th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>(a) 局所化として表す</td><td>Gabriel–Ulmer</td><td>Lurie–Simpson。主張は同じで証明は重い（HTT 第 5 章）</td></tr>
+<tr><td>要素の圏</td><td>\(\mathrm{el}(F)\)</td><td>\(\mathrm{Un}(F)\)</td></tr>
+<tr><td>段階 I の同型</td><td>各点の全単射 + 自然性</td><td>(b) を関手 ∞ 圏の同値として使い、制限側の同値を整合的に持ち上げる。関手版の米田が要る</td></tr>
+<tr><td>段階 II の局所性</td><td>全単射</td><td>写像空間の同値。ほぼそのまま</td></tr>
+</table></div>
+<p>表現可能性定理は「straightening → 米田 → \(\mathcal P(A)\) の普遍性」の積み重ねの上に立つ。<a href="unstraightening-analogy.html">補章 2</a> §5 の「関手版の米田を何で示すか」がここに効く。</p>
+
+<!-- ============================================================ -->
+<h2>6. Gabriel–Ulmer と Lurie–Simpson</h2>
+
+<p>§5 の準備 (a)「presentable なら前層圏の反射的局所化」は、presentable の同値な特徴づけを与える定理の一部である。証明の核は、§4 ④ の realization ⊣ nerve を \(\kappa\)-コンパクト対象に適用し、nerve が充満忠実になる（コンパクト対象が稠密である）ことを示すことにある。</p>
+
+<h3>主張</h3>
+<p><b>1 圏（Gabriel–Ulmer、Adámek–Rosický の形）</b>．局所小な \(\mathcal C\) と正則基数 \(\kappa\) について次は同値。</p>
+<ol>
+  <li>局所 \(\kappa\)-表示可能：余完備で、\(\kappa\)-コンパクト対象の小さい集合 \(G\) があり、全ての対象が \(G\) の対象の \(\kappa\)-filtered 余極限。</li>
+  <li>\(\mathcal C\simeq\mathrm{Ind}_\kappa(A)\)、\(A\) は \(\kappa\)-小さい余極限を持つ小さい圏（\(A=\mathcal C^\kappa\)）。\(\mathrm{Ind}_\kappa(A)\) は \(\kappa\)-小さい極限を保つ前層の圏と一致する。</li>
+  <li>\(\mathcal C\) はある \(\mathcal P(A)\) の反射的な充満部分圏で、\(\kappa\)-filtered 余極限で閉じている。</li>
+</ol>
+<p>（本質的に代数的な理論のモデルの圏、という特徴づけもある。）</p>
+
+<p><b>∞ 圏（Lurie–Simpson、HTT Thm 5.5.1.1）</b>．∞ 圏 \(\mathcal C\) について次は同値。</p>
+<ol>
+  <li>accessible で小さい余極限を持つ（presentable の定義）。</li>
+  <li>ある \(\kappa\) について \(\mathcal C\simeq\mathrm{Ind}_\kappa(\mathcal C^\kappa)\)、\(\mathcal C^\kappa\) は本質的に小さく \(\kappa\)-小さい余極限を持つ。</li>
+  <li>ある小さい \(A\) について、\(\mathcal C\) は \(\mathcal P(A)\) の accessible な反射的局所化。</li>
+  <li>ある小さい \(A\) と \(\mathcal P(A)\) の射の小さい集合 \(S\) について \(\mathcal C\simeq S^{-1}\mathcal P(A)\)（\(S\) 局所対象の充満部分圏）。</li>
+  <li>局所小で小さい余極限を持ち、\(\kappa\)-コンパクト対象の小さい集合が余極限で生成する。</li>
+</ol>
+
+<h3>証明の核：nerve の充満忠実性</h3>
+<p>\(A:=\mathcal C^\kappa\)、包含 \(j\colon A\hookrightarrow\mathcal C\) とし、§4 の普遍性から
+\[
+L=\mathrm{Lan}_y\,j\colon\ \mathcal P(A)\ \rightleftarrows\ \mathcal C\ \colon N,\qquad N(c)=\mathrm{Hom}_{\mathcal C}(j(-),c).
+\]
+\(N\) が充満忠実 ⇔ 余単位 \(LN(c)\to c\) が同型 ⇔
+\[
+\operatorname*{colim}_{(a\to c)\in A/c}a\ \xrightarrow{\ \sim\ }\ c\qquad\text{（稠密性）}.
+\]</p>
+
+<p><b>1 圏での証明</b>．</p>
+<ol>
+  <li>\(A/c\) は \(\kappa\)-filtered：\(\kappa\)-小さい図式 \((a_i\to c)\) について \(\operatorname{colim}a_i\in A\) が余錐を与える。</li>
+  <li>全ての対象はコンパクト対象の余極限なので、同型は \(\mathrm{Hom}(a,-)\)（\(a\in A\)）で判定できる。</li>
+  <li>\(a\) がコンパクトで \(A/c\) が filtered なので \(\mathrm{Hom}(a,\operatorname{colim}_{A/c}a')\cong\operatorname{colim}_{A/c}\mathrm{Hom}(a,a')\)。これから \(\mathrm{Hom}(a,c)\) への写像は、\((a\xrightarrow{g}c,\mathrm{id}_a)\) により全射、filtered 性により単射。</li>
+</ol>
+<p><b>像</b>：\(N\) の像は \(\kappa\)-小さい極限を保つ前層。\(\mathrm{Set}\) で \(\kappa\)-filtered 余極限と \(\kappa\)-小さい極限が可換なので、この部分圏は \(\kappa\)-filtered 余極限で閉じる。<b>逆向き</b>：反射的局所化 \(L\dashv i\)（\(i\) が \(\kappa\)-filtered 余極限を保つ）があれば、\(\mathcal C\) の余極限は \(L(\operatorname{colim})\) で得られ、\(\mathrm{Hom}(L\,y(a),c)\cong(ic)(a)\) から \(L\,y(a)\) は \(\kappa\)-コンパクトで生成元になる。</p>
+
+<h3>∞ 圏で何が変わるか</h3>
+<div class="table-wrap"><table>
+<tr><th>ステップ</th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>nerve \(N\) の構成</td><td>書くだけ</td><td>\(\mathcal C\) の Hom 関手（米田）が要る</td></tr>
+<tr><td>filtered の定義</td><td>\(\kappa\)-小さい図式に余錐がある</td><td>全ての \(\kappa\)-小さい単体的集合 \(K\) について \(K\to\mathcal F\) が \(K^{\triangleright}\) に延びる（HTT §5.3.1）</td></tr>
+<tr><td>\(A_{/c}\) が filtered</td><td>余極限が余錐</td><td>slice と join の扱いが要る</td></tr>
+<tr><td>余単位が同値</td><td>元で全射・単射</td><td>写像空間の同値。filtered ∞ 圏の弱可縮性（HTT Lemma 5.3.1.18）と cofinality</td></tr>
+<tr><td>像の特定</td><td>\(\mathrm{Set}\) で filtered 余極限と有限極限が可換</td><td>\(\mathcal S\) で \(\kappa\)-filtered 余極限と \(\kappa\)-小さい極限が可換（HTT Prop. 5.3.3.3）</td></tr>
+<tr><td>主張 4</td><td>直交部分圏定理（Freyd–Kelly）</td><td>小対象論法による局所化の存在（HTT Prop. 5.5.4.15）</td></tr>
+</table></div>
+<p>1 圏で「元を数えて全射・単射」だった部分が、∞ 圏では「ファイバーが可縮」になり、filtered ∞ 圏の弱可縮性と cofinality（Quillen の定理 A の ∞ 版）が効く。</p>
+
+<h3>全体の流れ</h3>
+\[
+\mathcal P(A)\text{ の普遍性}\ \Longrightarrow\ \text{Gabriel–Ulmer / Lurie–Simpson}\ \Longrightarrow\ \text{表現可能性定理}\ \Longrightarrow\ \text{随伴関手定理}
+\]
+<p>§5 の準備 (a) の \(L\dashv i\) は、ここで作った \(L\dashv N\) そのものである。第 6 章の \(\mathrm{Ind}_\kappa\)・\(\kappa\)-compact 対象・<code>isKappaAccessible_iff_indEquivalence</code> は、この定理の 2 の部分にあたる。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<ul>
+  <li>HTT の表現可能性定理（Prop. 5.5.2.2）は、presentable を「\(\mathcal P(A)\) の accessible な局所化」と特徴づける Thm 5.5.1.1 を経由して、上の二段階で示される。</li>
+  <li>1 圏の古典的な証明には、Freyd の解集合条件を使うものや、生成元の要素の圏が \(\kappa\)-filtered になることを使って候補 \(\operatorname{colim}_{\mathrm{el}(H|_A)}a\) を直接作るものもある。ここでは ∞ 圏と並べやすい局所化の証明を採った。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の宣言のみ）</p>
+<ul>
+  <li>\(\mathcal P(A)\) は <code>PresheafInfinity</code>（F1/PresheafInfinity）。余極限・極限の存在は <code>presheafInfinity_hasColimit</code>・<code>presheafInfinity_hasLimit</code>。</li>
+  <li>co-Yoneda（任意の前層は表現可能前層の余極限）は <code>presheafElementsColimitCocone_isColimit</code>（F2/Ind/ElementsDiagram、<a href="04-yoneda-adjunction-kan.html">第 4 章</a> §2）。</li>
+  <li>accessible は <code>IsKappaAccessible</code>、Ind による特徴づけは <code>isKappaAccessible_iff_indEquivalence</code>（第 6 章 §6）。presentable の定義、随伴関手定理、\(\mathrm{Pr}^L/\mathrm{Pr}^R\) は第 6 章の時点で作業中（P-1 b〜g）。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>随伴関手定理 = 表現可能性定理 + 各点の判定。presentable は解集合条件を自動化する仮定。</li>
+  <li>\(\mathcal P(A)\) は小さい \(A\) の自由余完備化：余極限を持つ任意の \(\mathcal E\) について \(\mathrm{Fun}^L(\mathcal P(A),\mathcal E)\simeq\mathrm{Fun}(A,\mathcal E)\)。</li>
+  <li>表現可能性定理：\(\mathcal P(A)\) では表現対象は \(H|_A\) そのもの、一般には局所化で帰着。</li>
+  <li>presentable ⇔ \(\mathcal P(A)\) の accessible な反射的局所化（Gabriel–Ulmer / Lurie–Simpson）。核は realization ⊣ nerve と、コンパクト対象の稠密性 \(\operatorname{colim}_{A/c}a\simeq c\)。</li>
+  <li>∞ 圏での違いは、要素の圏が unstraightening になること、「定義から明らか」が unstraightening の充満忠実性・Kan 拡張の可縮性・関手版の米田という定理に置き換わること。</li>
+</ul>
+</main>
+</body>
+</html>

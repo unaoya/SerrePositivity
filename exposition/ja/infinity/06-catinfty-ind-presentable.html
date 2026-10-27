@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat∞・Ind・presentable</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 6 章</nav>
+<h1>第 6 章　Cat<sub>∞</sub> の極限・filtered・Ind・compact・冪等完備化・presentable</h1>
+<p class="meta">基準コミット <code>9adda737a</code>（2026-10-23）。対象は <code>F2/</code>（最上位、Ind/、Compact/、Idempotent/、Presentable/）。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>F2 は「大きな ∞ 圏」を扱う層で、K 理論側（Cat<sup>perf</sup>、非連結 K、Tamme の lax pullback）と BS 側（animated 環）の入口になる。<b>完成した部分と作業中の部分が最も入り混じっている層</b>なので、各節の冒頭に状態を書く。</p>
+
+<div class="table-wrap"><table>
+<tr><th>節</th><th>内容</th><th>状態</th></tr>
+<tr><td>1</td><td>Cat<sub>∞</sub> の写像空間、引き戻し、lax pullback</td><td>完成</td></tr>
+<tr><td>2</td><td>filtered ∞ 圏、filtered 余極限と有限極限の交換（HTT 5.3.3.3）</td><td>定義は完成。<b>交換定理は未完成</b>（F2N-1 a7）</td></tr>
+<tr><td>3</td><td>Ind<sub>κ</sub>(C) の構成と普遍性</td><td>完成。<b>安定性は未完成</b>（a7 待ち）</td></tr>
+<tr><td>4</td><td>κ-compact 対象、compact 生成</td><td>ほぼ完成（有限余極限での閉性は a7 を仮定に取る）</td></tr>
+<tr><td>5</td><td>冪等完備化 Idem(C)</td><td>完成</td></tr>
+<tr><td>6</td><td>accessible・presentable</td><td>accessible は完成。<b>presentable 以降（随伴関手定理、Bousfield 局所化、P<sub>Σ</sub>）は作業中</b></td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>1. Cat<sub>∞</sub> の写像空間と極限</h2>
+<p>Cat<sub>∞</sub> は coherent nerve として定義されていた（第 3 章）。その写像空間は関手 ∞ 圏の core と同値である。</p>
+<pre><code>def catInfinityMappingEquivalence (X Y : QCat.{u}) :
+    QCatEquivalence ((SSet.uliftFunctor.{u + 1, u}).obj (catInfinityFunctorCore X Y))
+      (catInfinityMappingSpace X Y)</code></pre>
+<p>場所：F2/CatMappingSpace。coherent nerve の写像空間が元の単体的圏の Hom と同値であることの一般論（<code>coherentHomEquivalence</code>）の特殊化である。</p>
+
+<h3>引き戻しと lax pullback</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>Cat<sub>∞</sub> の引き戻し：cospan \(A\to C\leftarrow B\) を path で置き換えて作った錐は極限</td><td><code>catPullbackCone_isLimit</code></td><td>F2/CatPullbackCone</td></tr>
+<tr><td>lax pullback \(A\times_C\mathrm{Fun}(\Delta^1,C)\times_C B\)</td><td><code>laxPullback p q</code></td><td>F2/LaxPullback</td></tr>
+<tr><td>lax pullback は Cat<sub>∞</sub> のある極限の頂点</td><td><code>laxPullbackCone_isLimit</code></td><td>F2/LaxPullbackLimit</td></tr>
+<tr><td>安定 ∞ 圏の間の完全関手の lax pullback は安定で、両射影は完全</td><td><code>laxPullback_isStable</code>、<code>laxPullbackFst_isExactFunctor</code></td><td>F2/LaxPullbackStable</td></tr>
+</table></div>
+<p>lax pullback は Tamme の切除定理（K 理論の Land–Tamme 経路）の中心にある構成で、これが安定 ∞ 圏として完成していることが、K 側の第一の入力になっている。</p>
+
+<!-- ============================================================ -->
+<h2>2. filtered ∞ 圏と交換定理</h2>
+<pre><code>class IsKappaFiltered (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : Prop where
+  cocone_nonempty {K : SSet.{u}} (hK : IsKappaSmall κ K) (f : K ⟶ C) :
+    Nonempty (JoinCocone f)</code></pre>
+<p>κ-small な図式がすべて余錐を持つこと（HTT Def. 5.3.1.7 の形）。cofinality による特徴づけ、coslice の弱可縮性、filtered 余錐の普遍性は揃っている（F2/Filtered*）。</p>
+
+<div class="box">
+<p><b>目標</b>（HTT Prop. 5.3.3.3）. \(\mathcal S\) において、filtered 余極限は有限極限と可換。</p>
+<p><b>状態：未完成</b>。Lean では仮定の形 <code>CoherentFilteredLimitExchangeShape K</code>（「形 \(K\) の極限が filtered 余極限と交換する」）として述べられ、空の形と標準単体の形でだけ証明されている（<code>coherentFilteredLimitExchangeShape_of_empty</code>、<code>coherentFilteredLimitExchangeShape_simplex</code>）。一般の有限形への拡張（F2N-1 a7）が F1B レーンで進行中である。</p>
+</div>
+<p>この定理は、Ind の安定性（§3）、compact 対象の有限余極限での閉性（§4）、さらにその先の K 理論側の Ind<sub>κ</sub>(Perf) の扱いの前提になっている。現在のファイル数で見ると、F2 最上位の CoherentColimit* だけで 330 ファイル・約 1.9 万行あり、その大半がこの交換定理の準備である。</p>
+
+<!-- ============================================================ -->
+<h2>3. Ind<sub>κ</sub>(C)</h2>
+<h3>定義</h3>
+<pre><code>def IndInfinity (κ : Cardinal.{u}) (C : SSet.{u}) [Quasicategory C] : SSet.{u + 1} :=
+  fullSubcomplexOnVertices (PresheafInfinity C) (IsIndVertex κ C)</code></pre>
+<p>前層 ∞ 圏 \(\mathcal P(C)\) の中で、表現可能前層を含み、同型と小さい κ-filtered 余極限で閉じた最小の頂点の集合 <code>IsIndVertex</code> が張る充満部分 ∞ 圏として定義する。Yoneda 埋め込みは \(C\to\mathrm{Ind}_\kappa(C)\) に制限される（<code>indYoneda</code>）。</p>
+
+<h3>主な結果</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>Ind 対象 ⇔ 表現可能前層の単一の小さい κ-filtered 図式の余極限</td><td><code>isIndVertex_iff_singleFilteredPresentation</code></td><td>F2/Ind/SingleFilteredPresentation</td></tr>
+<tr><td>普遍性：\(\mathrm{Fun}^\kappa(\mathrm{Ind}_\kappa C,D)\simeq\mathrm{Fun}(C,D)\)（\(D\) が小さい κ-filtered 余極限を持つとき、HTT 5.3.5.10）</td><td><code>indKappaContinuousRestrictionEquivalence</code></td><td>F2/Ind/IndRestrictionEquivalence</td></tr>
+<tr><td>左 Kan 拡張は小さい κ-filtered 余極限を保つ</td><td><code>indLeftKanExtension_preservesSmallKappaFilteredColimits</code></td><td>F2/Ind</td></tr>
+<tr><td>零対象：\(C\) の零対象は Ind の零対象（安定な \(C\) に対し存在）</td><td><code>indYoneda_isZero_of_zero</code>、<code>ind_hasZeroVertex_of_stable</code></td><td>F2/Ind</td></tr>
+</table></div>
+<p>Ind(C) の<b>安定性</b>（HA 1.1.3.6）は未完成（F1-7 b）。有限の半順序集合上の図式を単一の filtered 図式で表示すること（HTT 5.3.5.15）を進めている。計画文書には「任意の有限単体集合への一般化は偽であり、半順序集合の nerve に限る（HTT Warning 5.3.5.16）」という経路の修正が記録されている。</p>
+
+<!-- ============================================================ -->
+<h2>4. κ-compact 対象</h2>
+<pre><code>def IsKappaCompact (κ : Cardinal.{u}) {C : SSet.{max u v}} [Quasicategory C]
+    (x : C _⦋0⦌) : Prop :=
+  PreservesKappaFilteredColimits.{u, v} κ (C := C) (covariantRepresentableInfinity x)</code></pre>
+<p>\(\mathrm{Map}(x,-)\) が小さい κ-filtered 余極限を保つこと。</p>
+<ul>
+  <li>表現可能前層は \(\mathcal P(C)\) の中でも Ind の中でも κ-compact（<code>indYoneda_isKappaCompact</code>、F2/Compact/IndCompact）</li>
+  <li>retract で閉じる。有限余極限で閉じることは、交換定理を仮定にとった形で証明されている（a7 待ち）</li>
+  <li><b>compact 生成</b>：\(C\) が冪等完備なら \(C\simeq\mathrm{Ind}_\kappa(C)^\kappa\)（<code>compactGenerationEquivalence</code>、F2/Ind/CompactGeneration）</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>5. 冪等完備化</h2>
+<p>冪等射は、高次の整合性まで含めて「冪等図式」（Idem の nerve からの図式、<code>CoherentIdempotent</code>）として扱う（HTT §4.4.5）。</p>
+<pre><code>def IsIdempotentComplete (X : SSet.{u}) : Prop :=
+  ∀ d : CoherentIdempotent X, Nonempty (StrongSplitting d)
+
+def IsIdempotentCompletion {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
+  IsIdempotentComplete D ∧ IsFullyFaithful f ∧
+    ∀ d : D _⦋0⦌, ∃ c : C _⦋0⦌, IsVertexRetractOf d (f.app (Opposite.op ⦋0⦌) c)</code></pre>
+<p>冪等完備化とは、冪等完備な \(D\) への充満忠実な \(f\) で、\(D\) の任意の対象が像の retract になるもの（HTT 5.1.4.2）。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>存在：前層 ∞ 圏の中の retract 閉包 \(\mathrm{Idem}(C)\)</td><td><code>idemYoneda_isIdempotentCompletion</code></td><td>F2/Idempotent</td></tr>
+<tr><td>普遍性と一意性</td><td><code>IsIdempotentCompletion.exists_extension</code>、<code>.equivalence_unique</code></td><td>F2/Idempotent</td></tr>
+<tr><td>安定 ∞ 圏の冪等完備化は安定（HA 1.1.3.7）</td><td><code>idem_isStable</code>、<code>IsIdempotentCompletion.isStable</code></td><td>F2/Idempotent</td></tr>
+<tr><td>\(\mathrm{Ind}(C)^\omega\simeq\mathrm{Idem}(C)\)</td><td>（N-5 e）</td><td>F2/Compact、F2/Idempotent</td></tr>
+</table></div>
+<p>これで Cat<sup>perf</sup>（冪等完備な小さい安定 ∞ 圏）を扱う準備が整っている。</p>
+
+<!-- ============================================================ -->
+<h2>6. accessible と presentable</h2>
+<pre><code>def IsKappaAccessible (κ : Cardinal.{u}) (C : SSet.{u + 1}) [Quasicategory C] : Prop
+  -- κ 正則、小さい κ-filtered 余極限を持ち、小さい κ-compact 生成圏を持つ
+def IsAccessible (C : SSet.{u + 1}) [Quasicategory C] : Prop</code></pre>
+<p>完成：\(\mathrm{Ind}_\kappa(A)\) の accessibility、κ-compact 対象が生成対象の retract であること、小さい Ind との同値による特徴づけ（<code>isKappaAccessible_iff_indEquivalence</code>）、濃度の変更、accessible 関手（HTT §5.4.2、F2/Presentable）。</p>
+<p>作業中（P-1 b〜g）：presentable の定義と前層・Ind の presentable 性、極限・余極限の存在、随伴関手定理、Pr<sup>L</sup>/Pr<sup>R</sup>、Bousfield 局所化の存在、P<sub>Σ</sub> の普遍性。局所対象・強飽和性と P<sub>Σ</sub> の準備は HomotopyLimits/ にある（第 5 章 R16）。</p>
+
+<!-- ============================================================ -->
+<h2>7. 依存関係のまとめ</h2>
+<pre><code>第 3 章 straightening ─┬─ 𝒮 の極限・余極限（第 5 章 §3）─ 前層の極限・余極限
+                      └─ Yoneda（第 4 章）─┬─ Ind_κ(C) ─┬─ compact 生成 ─┐
+                                           │             └─ 安定性 ◀── 交換定理（a7、未完成）
+                                           └─ Idem(C) ─ 安定性 ─────────┴─ Cat^perf（K 側）
+Cat_∞ の極限 ─ lax pullback ─ 安定性 ───────────────────────────── Tamme（K 側）</code></pre>
+<p>K 理論の第 I 段に必要なもののうち、lax pullback と冪等完備化は揃っている。残りは交換定理と、それに依存する Ind の安定性である。</p>
+
+<!-- ============================================================ -->
+<h2>8. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>場所</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
+<tr><td>F2/Ind/</td><td class="num">535</td><td class="num">31,185</td><td>Ind<sub>κ</sub>、安定性の作業中の部分を含む</td></tr>
+<tr><td>F2/Idempotent/</td><td class="num">169</td><td class="num">9,481</td><td>冪等完備化</td></tr>
+<tr><td>F2/Presentable/</td><td class="num">112</td><td class="num">7,222</td><td>accessible（presentable は作業中）</td></tr>
+<tr><td>F2/Compact/</td><td class="num">87</td><td class="num">4,871</td><td>κ-compact</td></tr>
+<tr><td>F2/ 最上位</td><td class="num">2,194</td><td class="num">125,211</td><td>Cat<sub>∞</sub>（Cat*、Lax*）、filtered（Filtered*）、交換定理の作業（Coherent* 654 ファイル、うち CoherentColimit* 330）、ほか Pointed*、Functor*、Fiberwise* など</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>9. リファクタの候補と注意点</h2>
+
+<div class="box refactor">
+<p class="label">R19　F2 最上位の分割</p>
+<p>F2 最上位の 2,194 ファイルには、完成した Cat<sub>∞</sub> の極限・lax pullback（数百ファイル）と、作業中の交換定理（Coherent* 約 650 ファイル）が同じディレクトリに並んでいる。<code>F2/CatInfinity/</code>（完成）と <code>F2/FilteredExchange/</code>（作業中）に分けるだけでも、どこまでが確定した API なのかがディレクトリから分かるようになる。</p>
+</div>
+<div class="box refactor">
+<p class="label">R20　仮定として渡している定理の一覧化</p>
+<p>交換定理が未完成なので、<code>CoherentFilteredLimitExchangeShape K</code> や <code>IndFiniteLimitExchangeInput</code> を仮定にとる定理がある。仮定は明示されているので健全だが、a7 が完成したときに外すべき箇所がまとまっていない。R17（<code>HasSpaceLimitsOfShape</code>）も同じ型で、無条件の定理が完成した後も条件付きの版が残っている。「未証明の定理を仮定として受け取る構造体・述語」を一覧にし、完成したら機械的に外せるようにしておきたい。</p>
+</div>
+<div class="box refactor">
+<p class="label">R21　docstring の書式</p>
+<p>README の規約（概要／方針／規約／使われ方）に従っている docstring の割合は、Core と F1B では 100% だが、F2 全体では約 27%、F2/Ind では 0% である。F2/Ind の docstring 1,630 個のうち 1,547 個は「元の」「実際の」「同じ」を含む一行の文で、「代用品ではなく元の対象について示した」ことを強調する作業時の言い回しになっている。HomotopyLimits（約 31%）、F1（約 49%）も同じ傾向がある。読み手にとっては、この強調よりも、命題を言葉で書き、証明の考え方を添えることのほうが役に立つ。</p>
+</div>
+<div class="box">
+<p class="label">注意：作業量の偏り</p>
+<p>交換定理（HTT 5.3.3.3）は、教科書では数ページの議論である。ここでは 2 万行を超える作業が続いていて、まだ完成していない。計画文書にも、長い比較式を一つずつ照合していく作業が記録されている。証明の経路（たとえば Kerodon の扱いや、Ind・compact 生成を経由する別証明）を見直す価値があるかもしれない。これはリファクタではなく、計画上の判断である。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>Cat<sub>∞</sub> の写像空間は関手 ∞ 圏の core で、引き戻しと lax pullback が極限として構成されている。安定 ∞ 圏の lax pullback は安定（K 側の Tamme の入力）。</li>
+  <li>Ind<sub>κ</sub>(C) は \(\mathcal P(C)\) の中の最小の閉包として定義され、単一 filtered 表示と普遍性が完成している。</li>
+  <li>冪等完備化は存在・普遍性・安定性まで完成していて、Cat<sup>perf</sup> の準備が整っている。</li>
+  <li>𝒮 での filtered 余極限と有限極限の交換（HTT 5.3.3.3）が未完成で、Ind の安定性や compact 対象の閉性はこれを仮定に取っている。</li>
+  <li>accessible は完成。presentable・随伴関手定理・Bousfield 局所化・P<sub>Σ</sub> は作業中。</li>
+</ol>
+</main>
+</body>
+</html>

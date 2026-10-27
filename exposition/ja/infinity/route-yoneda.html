@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoneda への道</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+  .stage { border: 1px solid var(--rule); border-radius: 6px; padding: 0.4rem 1rem 0.8rem; margin: 1.4rem 0; }
+  .stage h3 { margin-top: 0.6rem; }
+  .tag { display: inline-block; font-size: 0.78rem; padding: 0.05rem 0.5rem; border-radius: 3px; background: var(--code-bg); color: var(--muted); margin-left: 0.4rem; vertical-align: middle; }
+  .tag.black { background: var(--warn-bg); color: var(--warn); }
+  ol.proof li { margin: 0.5rem 0; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 読書ルート：Yoneda</nav>
+<h1>Yoneda への道</h1>
+<p class="meta">基準コミット <code>1b32cd7a8</code>（2026-10-23）。目標の定理から import の閉包と証明の本体を逆にたどって組み立てた読書ルート。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<!-- ============================================================ -->
+<h2>1. 目標</h2>
+<div class="box">
+<p><b>Yoneda の補題</b>（写像空間版）. 小さい quasicategory \(C\)、対象 \(y\)、前層 \(F\colon C^{\mathrm{op}}\to\mathcal S\) について</p>
+\[
+\mathrm{Map}_{\mathcal P(C)}(h_y,F)\;\simeq\;F(y).
+\]
+<pre><code>def yonedaPresheafEvaluationEquivalence {C : SSet.{u}} [Quasicategory C]
+    (y : C _⦋0⦌)
+    (F : (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}) :
+    QCatEquivalence
+      (pinchedHom (functorVertex (representablePresheafInfinity y)) (functorVertex F))
+      ((SSet.uliftFunctor.{u + 1, u}).obj
+        (spaceInfinityObject (F.app (Opposite.op ⦋0⦌)
+          (ULift.up (SSet.opObjEquiv.symm y)))).obj)</code></pre>
+<p>場所：F1/YonedaPresheafEvaluation（68 行）。</p>
+</div>
+<p>読み方の注意：左辺は第 2 章の右 pinched 写像空間、右辺は「空間 \(F(y)\) の台の単体的集合」を宇宙 \(u+1\) に持ち上げたもの。前層は \(C^{\mathrm{op}}\) 上の関手として、宇宙を持ち上げた底 <code>ULift C.op</code> 上で扱う（第 3 章「宇宙の扱い」）。</p>
+
+<!-- ============================================================ -->
+<h2>2. 証明の本体：四つの同値の合成</h2>
+<p>証明は短く、四つの同値を合成するだけである。</p>
+<pre><code>lemma yonedaPresheafEvaluation_isQCatEquivalence ... := by
+  have h₁ := small_leftUnstraighteningPinchedMappingSpaceMap_isQCatEquivalence
+    (representablePresheafInfinity y) F
+  have h₂ := (qCatEquivalenceOfIso
+    (smallLeftUnstraighteningRelativeFunctorIso (representablePresheafInfinity y) F).symm).isQCatEquivalence
+  have h₃ := (representableUnstraighteningEvaluation_isQCatEquivalence
+    (smallLeftUnstraighteningProjection F) y).ulift.{u, u + 1}
+  have h₄ := (smallLeftUnstraighteningLiftedFiberValueEquivalence F
+    (SSet.opObjEquiv.symm y)).isQCatEquivalence
+  exact h₁.comp (h₂.comp (h₃.comp h₄))</code></pre>
+<p>数学として書くと次のようになる。\(\mathrm{Un}(G)\to C^{\mathrm{op}}\) は前層 \(G\) の unstraightening（左 fibration）、\(\mathrm{Fun}_{/C^{\mathrm{op}}}(-,-)\) は相対関手空間である。</p>
+\[
+\mathrm{Map}(h_y,F)\;\xrightarrow[h_1]{\ \simeq\ }\;\mathrm{Fun}_{/C^{\mathrm{op}}}\bigl(\mathrm{Un}(h_y),\mathrm{Un}(F)\bigr)\;\xrightarrow[h_2]{\ \cong\ }\;(\text{小さい模型})\;\xrightarrow[h_3]{\ \simeq\ }\;\mathrm{Un}(F)_y\;\xrightarrow[h_4]{\ \simeq\ }\;F(y)
+\]
+<ol class="proof">
+  <li><b>h₁　写像空間の比較</b>：前層の間の写像空間は、unstraightening の間の相対関手空間と同値（F1/CoherentUnstraighteningMappingEquivalence、SmallCoherentMappingEquivalence）。<b>この証明全体で最も重い入力</b>。</li>
+  <li><b>h₂　宇宙の調整</b>：大きい unstraightening と小さい模型の相対関手空間は厳密に同型（F1/SmallLeftUnstraighteningMappingSpace）。数学的な内容はない。</li>
+  <li><b>h₃　表現可能前層での評価</b>：<b>任意の</b>左 fibration \(p\colon E\to C^{\mathrm{op}}\) について、\(\mathrm{Fun}_{/C^{\mathrm{op}}}(\mathrm{Un}(h_y),E)\to E_y\)（恒等点での評価）は同値（F1/RepresentableUnstraighteningEvaluation）。Yoneda の補題の数学的な核心はここにある。</li>
+  <li><b>h₄　fiber の値</b>：\(\mathrm{Un}(F)\) の \(y\) での fiber は \(F(y)\) と同値（F1/SmallLeftUnstraighteningFiber）。</li>
+</ol>
+
+<h3>h₃ の中身</h3>
+<pre><code>lemma representableUnstraighteningEvaluation_isQCatEquivalence
+    {E C : SSet.{u}} [Quasicategory C] (p : E ⟶ C.op) [LeftFibration p]
+    (y : C _⦋0⦌) : IsQCatEquivalence (representableUnstraighteningEvaluation p y) := by
+  have h₁ := relativeFunctorOverPre_isQCatEquivalence p (...)
+    (representableCosliceUnstraighteningComparison_isPrecompositionEquivalence y)
+  have := leftFibration_cosliceIdentityEvaluation_trivialKanFibration p (SSet.opObjEquiv.symm y)
+  have h₂ := isQCatEquivalence_of_trivialKanFibration (relativeFunctorEvaluate p ...)
+  exact h₁.comp (h₂.comp ...)</code></pre>
+<p>二段に分かれる。</p>
+<ol>
+  <li><b>表現可能前層の unstraightening は coslice</b>：比較写像 \(C^{\mathrm{op}}_{y/}\to\mathrm{Un}(h_y)\) は前合成同値（<code>representableCosliceUnstraighteningComparison_isPrecompositionEquivalence</code>）。前合成同値に沿った制限は、左 fibration への相対関手空間の同値を与える（<code>relativeFunctorOverPre_isQCatEquivalence</code>）。</li>
+  <li><b>coslice は恒等点を始対象に持つ</b>：\(\mathrm{Fun}_{/C^{\mathrm{op}}}(C^{\mathrm{op}}_{y/},E)\to E_y\)（恒等錐 \(\mathrm{id}_y\) での評価）は自明 Kan fibration（<code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>）。自明 Kan fibration は同値（第 2 章）。</li>
+</ol>
+<p>古典的な Yoneda の補題の証明（「\(\mathrm{id}_y\) の行き先で自然変換が決まる」）が、2 の「始対象への制限は自明 Kan fibration」にそのまま対応している。</p>
+
+<!-- ============================================================ -->
+<h2>3. 依存の全体像</h2>
+<pre><code>                         ┌──────────── 段 5：straightening の構成（黒箱にできる）
+                         │                  │
+段 1〜2（Core）──┐        │      段 7：Tw の左 fibration ─→ Hom 関手 ─→ h_y
+段 3（左 fibration、│        │                                          │
+     left anodyne）─┼─→ 段 6：unstraightening ─┬─ h₁ 写像空間の比較 ←───┤
+段 4（𝒮、前層）───┘        （普遍左 fibration      ├─ h₄ fiber の値          │
+                           の引き戻し）          └─ h₃ ← Un(h_y) ≃ coslice ←┘
+                                                         ↓
+                                                段 8：Yoneda の補題</code></pre>
+<div class="box">
+<p class="label">依存しないもの（import の閉包で確認）</p>
+<ul>
+  <li>第 3 章の straightening の<b>同値定理</b> <code>leftStraighteningInfinityMap_isQCatEquivalence</code>（およびその通常の圏の nerve 版）</li>
+  <li>Cat<sub>∞</sub> 値の straightening（F1/Cocartesian*）</li>
+  <li>F2 全体（Ind、presentable など）</li>
+</ul>
+<p>使うのは、straightening の<b>構成</b>、対象ごとの<b>再構成</b>（\(\mathrm{Un}(\mathrm{St}(p))\simeq p\)）、unstraightening の写像空間の比較である。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. 段ごとの読み方</h2>
+
+<div class="stage">
+<h3>段 1　quasicategory の基本 <span class="tag">第 1 章</span></h3>
+<p><b>押さえること</b>：join と slice・coslice（<code>sliceOver</code>、<code>sliceUnder</code>、<code>sliceOverEquiv</code>）、始対象（<code>IsInitialVertex</code>）、同値（<code>IsQCatEquivalence</code>、<code>.comp</code>）。</p>
+<p><b>この道で使う場面</b>：h₃ の coslice \(C^{\mathrm{op}}_{y/}\) と恒等錐 <code>cosliceIdentityCone</code>、最後の <code>h₁.comp (h₂.comp ...)</code>。</p>
+</div>
+
+<div class="stage">
+<h3>段 2　写像空間と自明 Kan fibration <span class="tag">第 2 章 §1〜2</span></h3>
+<p><b>押さえること</b>：<code>pinchedHom</code>（目標の左辺）、<code>isQCatEquivalence_of_trivialKanFibration</code>、Kan 複体の間のホモトピー同値。</p>
+<p><b>この道で使う場面</b>：目標の型、h₃ の 2 段目。</p>
+</div>
+
+<div class="stage">
+<h3>段 3　左 fibration と相対関手空間 <span class="tag">第 1 章 §1、第 3 章 §4、第 4 章 §5</span></h3>
+<p><b>押さえること</b></p>
+<ul>
+  <li>左 fibration の定義（<code>LeftFibration</code>）と、coslice 射影が左 fibration であること（<code>sliceUnderProjection_leftFibration</code>）</li>
+  <li>相対関手空間 <code>relativeFunctorSpace p q</code>（\(\mathrm{Fun}_{/B}\)）と、その上の前合成 <code>relativeFunctorOverPre</code></li>
+  <li>前合成同値に沿った制限は同値（<code>relativeFunctorOverPre_isQCatEquivalence</code>、F1/RelativeFunctorOverEquivalence）</li>
+  <li>left anodyne に沿った制限は自明 Kan fibration（<code>relativeFunctorOverPre_trivialKanFibration_of_leftAnodyne</code>、F1/RelativeSectionInitialRestriction）</li>
+  <li>恒等錐での評価は自明 Kan fibration（<code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>、F1/LeftFibrationInitialEvaluation）</li>
+</ul>
+<p><b>確認ポイント</b>：最後の補題は「coslice は恒等錐を始対象に持ち、始対象の包含は left anodyne」の言い換えになっていること。</p>
+</div>
+
+<div class="stage">
+<h3>段 4　𝒮、関手 ∞ 圏、前層 <span class="tag">第 3 章 §2、第 4 章 §1、第 5 章 §1</span></h3>
+<p><b>押さえること</b>：<code>SpaceInfinity</code>（Kan 複体の単体的圏の coherent nerve）、<code>spaceInfinityObject</code>（\(\mathcal S\) の頂点から Kan 複体を取り出す）、<code>PresheafInfinity</code>、宇宙の持ち上げ <code>SSet.uliftFunctor</code>。coherent nerve が quasicategory であること（γ1）は結果だけ使えばよい。</p>
+</div>
+
+<div class="stage">
+<h3>段 5　straightening の構成 <span class="tag">第 3 章 §4</span><span class="tag black">一回目は黒箱</span></h3>
+<p><b>使われ方</b>：Hom 関手（したがって \(h_y\)）は、左 fibration \(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) の分類写像として<b>定義</b>される。そのため、分類写像 <code>leftStraighteningInfinityDiagram</code>（F1/LeftStraighteningRepresentation）と、対象ごとの再構成 \(\mathrm{Un}(\mathrm{St}(p))\simeq p\)（<code>leftStraighteningInfinityReconstruction</code>、F1/LeftStraighteningInfinityReconstruction）が必要になる。</p>
+<p><b>一回目に信じておくこと</b>：</p>
+<ul>
+  <li>任意の左 fibration \(p\colon E\to B\) に分類写像 \(\mathrm{St}(p)\colon B\to\mathcal S\) が対応する。</li>
+  <li>\(\mathrm{Un}(\mathrm{St}(p))\) と \(E\) を \(B\) 上で比べる写像は前合成同値。</li>
+</ul>
+<p><b>二回目に読むもの</b>：strict transport（F1/StrictTransport*）、first vertex 写像が局所化であること（F1/TransportLocalizationAllBases）、局所化による降下（F1/TransportUliftFunctorDescent）、再構成（F1/LeftStraighteningInfinityReconstruction ← LeftStraighteningEssentialSurjectivity ← SmallUnstraighteningRepresentation ← CoherentRepresentationExtension ← …）。この再構成の鎖が、この道で最も深い部分である（§5 も参照）。</p>
+</div>
+
+<div class="stage">
+<h3>段 6　unstraightening <span class="tag">第 3 章、<a href="unstraightening.html">補章</a></span></h3>
+<p><b>定義</b>：普遍左 fibration（pointed space の射影）\(\mathcal S_*\to\mathcal S\) の \(F\) に沿う引き戻し。</p>
+<pre><code>noncomputable def leftUnstraightening {C : SSet.{u + 1}} (F : C ⟶ SpaceInfinity.{u}) :
+    SSet.{u + 1} := pullback pointedSpaceProjection F
+instance pointedSpaceProjection_leftFibration : LeftFibration pointedSpaceProjection.{u}</code></pre>
+<p>引き戻しなので左 fibration になり、fiber は \(F(c)\) そのものになる（h₄）。小さい模型 <code>smallLeftUnstraightening</code> は宇宙を \(u\) に戻すための縮小版（h₂）。</p>
+<p><b>h₁ の中身</b>（F1/LeftUnstraighteningMappingSpaceMap、CoherentUnstraighteningMappingEquivalence）：前層の間の変換（\(\mathrm{Fun}(B,\mathcal S)\) の辺）を、引き戻しの普遍性で全空間の間の写像に持ち上げる。逆向きには、全空間の相対写像の「普遍的な族」から変換を復元する。docstring には「普遍的な相対射の族を復元しその証拠を制限して両側の関手同型を得る」とある。</p>
+</div>
+
+<div class="stage">
+<h3>段 7　twisted arrow と Hom 関手 <span class="tag">第 4 章 §2</span></h3>
+<ul>
+  <li>\(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) は左 fibration（<code>twistedArrowProjection_leftFibration</code>、F1/TwistedArrowLeftFibration）。ホーンを固定領域に貼り、inner anodyne な包含で延長して示す。</li>
+  <li>その分類写像が Hom 関手 <code>twistedArrowHomInfinity</code>。第二変数を固定したものが <code>representablePresheafInfinity y</code>（\(h_y\)）。</li>
+  <li>\(h_y\) は slice の分類写像と同型（<code>representablePresheafInfinity_sliceIso</code>、F1/RepresentablePresheafSliceComparison）。これと段 5 の再構成から \(\mathrm{Un}(h_y)\simeq C_{/y}^{\mathrm{op}}=C^{\mathrm{op}}_{y/}\)（F1/RepresentableUnstraighteningComparison）。</li>
+</ul>
+</div>
+
+<div class="stage">
+<h3>段 8　Yoneda の補題 <span class="tag">§2</span></h3>
+<p>§2 の h₁〜h₄ を合成する。ここまで来れば F1/YonedaPresheafEvaluation（68 行）は全部読める。</p>
+</div>
+
+<div class="stage">
+<h3>段 9（発展）　Yoneda 埋め込みは充満忠実 <span class="tag">第 4 章 §2</span></h3>
+<p><code>yonedaInfinityMap_isFullyFaithful</code>（F1/YonedaInfinityFullyFaithful）。段 8 で \(\mathrm{Map}(h_x,h_y)\simeq h_y(x)\simeq\mathrm{Map}_C(x,y)\) という同値は得られるが、それが「Yoneda 写像そのものの Hom への作用」と一致することは別に示す必要がある。Tw の恒等点からの transport と比較して示している（F1/YonedaEvaluatedTransportEquivalence）。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. 進め方</h2>
+<ol>
+  <li><b>一回目</b>：段 1〜4 を復習し、段 5 は「信じておくこと」だけを受け入れて、段 6 → 段 7 → 段 8 と進む。§2 の四段と h₃ の二段が理解できれば、一回目は完了。</li>
+  <li><b>二回目</b>：段 5 を開く。特に再構成の鎖（F1/LeftStraighteningInfinityReconstruction から下）を読む。</li>
+  <li><b>三回目</b>：h₁（写像空間の比較）の証明と段 9 を読む。</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2>7. straightening を使わない Yoneda</h2>
+<p>Yoneda には、どの形で述べるかによって二つの段階がある。</p>
+<div class="table-wrap"><table>
+<tr><th>形</th><th>主張</th><th>straightening</th></tr>
+<tr><td><b>fibration 版</b>（Riehl–Verity、Kerodon の fibration による扱い）</td><td>左 fibration \(p\colon E\to B\) と対象 \(b\) について、\(\mathrm{Fun}_{/B}(B_{b/},E)\to E_b\)（恒等点での評価）は同値</td><td>不要</td></tr>
+<tr><td><b>関手版</b>（このページの目標）</td><td>\(\mathrm{Map}_{\mathcal P(C)}(h_y,F)\simeq F(y)\)、さらに \(C\to\mathcal P(C)\) が充満忠実</td><td>Hom 関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) を<b>作る</b>ために必要</td></tr>
+</table></div>
+<p>fibration 版では、前層を「\(C\) 上の右 fibration（\(C^{\mathrm{op}}\) 上の左 fibration）」として扱い、表現可能前層を slice \(C_{/y}\) で表す。すると、主張は h₃ の後半そのものになる。証明は「\(\{b\}\hookrightarrow B_{b/}\) は left anodyne なので、そこへの制限は自明 Kan fibration」の一行で、straightening は出てこない。</p>
+<p>Lean では <code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>（F1/LeftFibrationInitialEvaluation）がこれにあたる。import の閉包は 256 モジュールで、関手版（約 1,750）よりはるかに小さい。閉包には <code>CatInfinity</code> と <code>LeftUnstraightening</code> が含まれるが、これは R8 で特定した <code>PullbackFiber → LeftUnstraightening</code> の汚染の経路によるもので、数学的には使っていない。</p>
+
+<h3>関手版で straightening が要る理由</h3>
+<p>∞ 圏では、Hom 関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) を「各 \((x,y)\) に \(\mathrm{Map}(x,y)\) を対応させる」だけでは定義にならない。射の合成と、それに伴うすべての高次の整合性を、一つの単体的集合の射として与える必要があるからである。その作り方は主に三つある。</p>
+<ol>
+  <li><b>twisted arrow の straightening</b>（Kerodon、このリポジトリ）：\(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) が左 fibration であることは straightening なしで示せる（F1/TwistedArrowLeftFibration の閉包には straightening 系のモジュールが一つもない）。それを関手に変える一歩で straightening が要る。</li>
+  <li><b>単体的圏による rigidification</b>（HTT §5.1.3）：\(C\) を単体的圏 \(\mathfrak C[C]\) に置き換え、その Hom で strict な関手を作り、coherent nerve に戻す。\(\mathfrak C\dashv N^{hc}\) が Quillen 同値であること（Joyal のモデル構造）が必要になる。主経路ではモデル構造を使わない方針なので、採用されていない。</li>
+  <li><b>関手を作らない</b>（∞-cosmos、Riehl–Verity）：前層を最初から右 fibration として扱い、\(\mathcal P(C)\) の代わりに右 fibration の ∞ 圏を使う。Yoneda は上の fibration 版で済む。ただしその場合、「前層 = 関手」との比較（＝ straightening の同値定理）が別に必要になる。</li>
+</ol>
+<p>つまり、straightening（あるいはそれと同等の rigidification）は、「前層を関手として扱う」ことと「fibration として扱う」ことの橋の代価であって、Yoneda の数学的な核心（h₃）には要らない。</p>
+
+<div class="box">
+<p class="label">学習の順番への含意</p>
+<p>最も早く Yoneda の核心に到達するには、段 1〜3 だけで fibration 版（<code>leftFibration_cosliceIdentityEvaluation_trivialKanFibration</code>）を読めばよい。そこから関手版へ進むときに初めて、段 4〜7（𝒮、unstraightening、Tw、straightening の構成）が必要になる。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. この道で見つかったリファクタの候補</h2>
+<div class="box refactor">
+<p class="label">R58　Yoneda の閉包に入り込む応用側・無関係な層</p>
+<p class="meta">旧番号 R26。R2 計画の R26 と衝突したため 2026-10-28 に改番。実施は R2 計画の R27（HL・F1 → KST.Spectra）と R37（Stable の汎用葉を下へ）で扱う。</p>
+<p>Yoneda の補題の import の閉包は約 1,750 モジュールで、その中に KST.Spectra（8）、Stable（43）、HomotopicalAlgebra（167）が含まれる。最短の経路は次のとおり。</p>
+<ul>
+  <li>KST：YonedaPresheafEvaluation ← RepresentableUnstraighteningEvaluation ← RepresentableUnstraighteningComparison ← LeftStraighteningInfinityReconstruction ← LeftStraighteningEssentialSurjectivity ← SmallUnstraighteningRepresentation ← CoherentRepresentationExtension ← SmallFiberWitnessContractible ← … ← F1/ContractibleKanTower → <b>KST.Spectra.FibrationTowerLimitCone</b>（可縮 Kan 複体の塔の極限という一般論が KST にある）</li>
+  <li>Stable：YonedaPresheafEvaluation ← RepresentableUnstraighteningEvaluation ← F1/LeftFibrationInitialEvaluation → <b>Stable.IdentityCocone</b>（余錐の基本補題が Stable にある。R22）</li>
+</ul>
+<p>どちらも、一般論を Core（または HomotopyLimits）へ移せば閉包から外れる。R3・R22 の具体例。</p>
+</div>
+
+<h2>この道で押さえること</h2>
+<ol class="checks">
+  <li>Yoneda の補題の証明は四つの同値の合成で、数学的な核心は h₃（coslice の始対象への制限が自明 Kan fibration）。</li>
+  <li>unstraightening は普遍左 fibration \(\mathcal S_*\to\mathcal S\) の引き戻しで、fiber の計算はほぼ定義から従う。</li>
+  <li>重い入力は h₁（写像空間の比較）と、\(h_y\) を定義するための straightening の構成・再構成。straightening の同値定理そのものは使わない。</li>
+</ol>
+</main>
+</body>
+</html>

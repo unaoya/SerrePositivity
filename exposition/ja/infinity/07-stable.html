@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安定 ∞ 圏</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 7 章</nav>
+<h1>第 7 章　安定 ∞ 圏</h1>
+<p class="meta">基準コミット <code>759bad581</code>（2026-10-23）。対象は <code>Stable/</code>（709 ファイル、約 5.1 万行）。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>計画上の工程 S1〜S6（HA §1.1）はすべて完了している。安定 ∞ 圏の定義、ホモトピー圏の三角構造（Mathlib の <code>Pretriangulated</code>・<code>IsTriangulated</code> の instance）、長完全列、完全関手が揃っている。作業中なのは、スペクトラムのために必要な判定定理（HA Cor. 1.4.2.27）だけである。</p>
+
+<!-- ============================================================ -->
+<h2>1. 定義</h2>
+
+<h3>零対象と fiber/cofiber</h3>
+<div class="table-wrap"><table>
+<tr><th>概念</th><th>Lean</th><th>中身</th></tr>
+<tr><td>零対象</td><td><code>IsZeroVertex z</code>、<code>HasZeroVertex X</code></td><td>始対象かつ終対象である頂点（第 1 章の二つの境界充填条件）</td></tr>
+<tr><td>零角の四角形</td><td><code>ZeroTriangle X</code></td><td>四角形 \(\Delta^1\times\Delta^1\to X\) で、片方の角が零対象のもの</td></tr>
+<tr><td>fiber 列、cofiber 列</td><td><code>IsFiberSequence t</code>、<code>IsCofiberSequence t</code></td><td>零角の四角形が引き戻し／押し出し</td></tr>
+<tr><td>射 \(f\) の fiber、cofiber</td><td><code>FiberSquare f</code>、<code>CofiberSquare f</code></td><td>\(f\) を辺に持つ fiber 列／cofiber 列の四角形</td></tr>
+</table></div>
+
+<h3>安定性（HA Def. 1.1.1.9）</h3>
+<pre><code>class IsStable (X : SSet.{u}) [Quasicategory X] : Prop extends HasZeroVertex X where
+  fiber_exists {x y : X _⦋0⦌}
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (FiberSquare f)
+  cofiber_exists {x y : X _⦋0⦌}
+    (f : SSet.Truncated.Edge (X := (truncation 2).obj X) x y) : Nonempty (CofiberSquare f)
+  fiber_iff_cofiber (t : ZeroTriangle X) : IsFiberSequence t ↔ IsCofiberSequence t</code></pre>
+<p>零対象を持ち、すべての射が fiber と cofiber を持ち、零角の四角形について fiber 列と cofiber 列が一致すること。三条件をそのまま書いている。三角圏の構造や \(\Sigma\) の可逆性は定義に含めず、定理として導く（Stable/Definition）。</p>
+
+<h3>判定と基本性質</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>零対象・有限極限・有限余極限を持ち、引き戻し ⇔ 押し出しなら安定（HA Prop. 1.1.3.4 の十分性の向き）</td><td><code>isStable_of_finite_limits_colimits</code></td><td>Stable/Definition</td></tr>
+<tr><td>安定なら、<b>任意の</b>四角形について引き戻し ⇔ 押し出し</td><td><code>IsStable.pullback_iff_pushout_square</code></td><td>Stable/Bicartesian</td></tr>
+<tr><td>貼り合わせ：左の四角形が押し出しなら、右が押し出し ⇔ 外側が押し出し（HTT Lemma 4.4.2.1）</td><td><code>isPushoutSquare_pasting_iff</code></td><td>Stable/Pasting</td></tr>
+<tr><td>安定性の移送：trivial Kan fibration、宇宙の持ち上げ</td><td><code>isStable_of_trivialKanFibration</code>、<code>isStable_of_ulift</code></td><td>Stable/TrivialFibrationStability、Stable/UniverseStabilityDescent</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>2. ホモトピー圏の三角構造</h2>
+<p>安定 ∞ 圏 \(X\) のホモトピー圏 \(hX\) に、Mathlib の三角圏の構造が instance として入っている。</p>
+<div class="table-wrap"><table>
+<tr><th>構造</th><th>Lean</th><th>場所</th></tr>
+<tr><td>加法圏</td><td><code>preadditive_ho</code></td><td>Stable/HomotopyPreadditive</td></tr>
+<tr><td>suspension 関手 \(\Sigma\colon hX\to hX\)</td><td><code>suspensionFunctor X</code></td><td>Stable/Suspension</td></tr>
+<tr><td>\(\mathbb Z\) によるシフト</td><td><code>hasShift_ho</code></td><td>Stable/Shift</td></tr>
+<tr><td>前三角圏（distinguished = cofiber 三角形と同型なもの）</td><td><code>pretriangulated_ho</code></td><td>Stable/PretriangulatedInstance</td></tr>
+<tr><td>三角圏（八面体公理 TR4）</td><td><code>isTriangulated_ho</code></td><td>Stable/TriangulatedInstance</td></tr>
+</table></div>
+<p><b>Σ の作り方</b>：零対象の間に \(x\) を置いた四角形 \(x\to0\), \(0\to\Sigma x\) を「suspension の四角形」とする。こうした四角形の ∞ 圏から始点を取り出す評価写像は、安定性から trivial Kan fibration になる。その逆（切断）を選び、反対の角を評価したものが \(\Sigma\) である。逆の選び方の違いは可逆な 2-胞体で比較する（<code>suspensionFunctorChoiceIso</code>）。第 2 章で見た「性質を持ち上げ性に変えてから切断を選ぶ」型の構成である。</p>
+<p><b>distinguished な三角形</b>：cofiber の四角形から作った三角形 \(x\to y\to z\to\Sigma x\) と同型な三角形の全体（<code>cofiberDistinguishedTriangles</code>）。八面体公理は、二つの cofiber 四角形を貼り合わせた図式（Stable/CofiberOctahedron*）から導く。</p>
+
+<h3>長完全列</h3>
+<p>fiber 列 \(x\to y\to z\) に \(\mathrm{Hom}_{hX}(w,-)\) を適用すると、全整数次数の長完全列が得られる（<code>fiberHomSequence_exact</code>、反変版も、Stable/LongExactSequence）。接続準同型は <code>fiberHomConnecting</code> で、評価式も公開されている。</p>
+
+<!-- ============================================================ -->
+<h2>3. 完全関手</h2>
+<pre><code>class IsExactFunctor {X Y : SSet.{u}} (F : X ⟶ Y) : Prop
+  -- 零対象と cofiber 列を保つ</code></pre>
+<ul>
+  <li>安定な \(X\) からの完全関手は fiber 列も保つ（<code>IsExactFunctor.preservesFiber</code>）。逆に fiber 列を保てば完全（<code>isExactFunctor_of_preservesFiber</code>）。</li>
+  <li>一般の押し出し・引き戻しの四角形を保つ（<code>preservesPushoutSquare</code>、<code>preservesPullbackSquare</code>）。零角の長方形への貼り合わせで、零角の場合に帰着させる。</li>
+  <li>ホモトピー圏の三角関手になる（<code>exactFunctor_isTriangulated</code>。<code>CommShift ℤ</code> つき）。完全関手の間の自然変換はシフトと両立する。</li>
+</ul>
+<p>このほか、部分集合の「安定閉包」（cofiber・fiber・シフトで閉じた充満部分圏、<code>stableHoClosure</code>、Stable/StableHoClosure）とその三角圏の構造がある。Verdier 列や局所化不変量（K 理論側）で使われる。</p>
+
+<!-- ============================================================ -->
+<h2>4. 作業中：Ω による安定性の判定（D-7）</h2>
+<div class="box">
+<p><b>目標</b>（HA Cor. 1.4.2.27 (3) ⇒ (1)）. 有限極限を持つ pointed ∞ 圏で、loop 関手 \(\Omega\) が同値なら安定。</p>
+<p><b>用途</b>：スペクトラム Sp（Kan 複体の Ω スペクトラムの模型）が安定 ∞ 圏であることを示す入力（Sp-5 d3）。Sp は局所化不変量の値域になる。</p>
+<p><b>状態</b>：Σ と Ω の随伴、有限余極限の存在までは証明済み。最後の段階（IsStable の結論）として、HA Lemma 1.4.2.15・Prop. 1.4.2.13 の「切除」の議論を格子状の図式で形式化している（Stable/Excision*、116 ファイル）。</p>
+</div>
+<p>格子（<code>ExcisionSquareGrid</code>、<code>ExcisionGridExtension</code>）は、元の四角形と suspension の四角形を組み合わせた比較の格子である。各面が押し出しであることを一つずつ示し、貼り合わせによって元の四角形が引き戻しであることを回収する（計画文書の記述による）。</p>
+
+<!-- ============================================================ -->
+<h2>5. 使われ方</h2>
+<ul>
+  <li>D(S) と Perf(S) の安定性、通常の導来圏との三角同値（第 8 章、D7）</li>
+  <li>安定 ∞ 圏の lax pullback、冪等完備化の安定性（第 6 章）</li>
+  <li>Verdier 列、局所化不変量、Land–Tamme（K 理論側。<code>KST/LocalizingInvariants/</code>）</li>
+  <li>スペクトラム Sp（作業中の D-7 を通じて）</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>6. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>ファイル群</th><th class="num">ファイル</th><th>内容</th></tr>
+<tr><td>Excision*</td><td class="num">116</td><td>D-7 の切除の格子（作業中）</td></tr>
+<tr><td>Cofiber*</td><td class="num">41</td><td>cofiber 列、八面体</td></tr>
+<tr><td>Loop*、Suspension*</td><td class="num">60</td><td>Ω と Σ</td></tr>
+<tr><td>Zero*</td><td class="num">29</td><td>零対象と零角の四角形</td></tr>
+<tr><td>Pasting*、Square*</td><td class="num">43</td><td>貼り合わせ、四角形の双対</td></tr>
+<tr><td>Universe*</td><td class="num">26</td><td>宇宙の持ち上げと極限・余極限（一般論）</td></tr>
+<tr><td>Cocone*、Colimit*、Coslice*、Terminal*、Join*</td><td class="num">86</td><td>余極限の一般論（安定性と無関係なものを含む）</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>7. リファクタの候補と注意点</h2>
+
+<div class="box refactor">
+<p class="label">R22　Stable/ にある一般論を下の層へ</p>
+<p>Stable/ には、安定性と無関係な一般論がかなり含まれている。</p>
+<ul>
+  <li>余極限の定義 <code>IsColimitCone</code>（Stable/Cocone、R2）</li>
+  <li>slice と反対圏の同型 <code>sliceOverOpIso</code>（Stable/SliceOpposite、R5）</li>
+  <li>随伴のホモトピー圏への降下 <code>toHoAdjunction</code>（Stable/AdjunctionHomotopyCategory、R14）</li>
+  <li>宇宙の持ち上げと極限 <code>hasLimit_iff_ulift</code>・<code>hasColimit_iff_ulift</code>（Stable/UniverseLimits）、図式の同型と極限の存在（Stable/ColimitDiagramIso）、有限極限・余極限のクラス <code>HasFiniteLimits</code>（Stable/Definition）</li>
+</ul>
+<p>D レーンが安定性を作る途中で必要になった一般論を、自分のディレクトリに置いたものと思われる。極限・余極限の一般論は Core（第 2 章）に、随伴は F1B（第 4 章）に移すのが自然。</p>
+</div>
+<div class="box refactor">
+<p class="label">R3（再確認）　Stable から KST への依存</p>
+<p>Stable/PosetTerminalExtension が <code>KST.SConstruction.VertexPrescribedExtension</code> を、Stable/UniversalConeChoiceProjection が <code>KST.LocalizingInvariants.LimitProjectionExistence</code> を import している。基盤が応用を参照する逆向きの依存で、R8 で見た Stable ↔ KST の複製（4 組、約 470 行）と同じ根を持つ。共通部分を Stable 側（または Core）に置き、KST から参照する形に直したい。</p>
+</div>
+<div class="box">
+<p class="label">注意：HA 1.1.3.4 の逆向き</p>
+<p>「安定なら有限極限・有限余極限を持つ」（HA Prop. 1.1.3.4 の必要性の向き）は、一般の安定 ∞ 圏の instance としては見当たらない（宣言名で検索した範囲）。存在するのは、関手 ∞ 圏（<code>hasFiniteLimits_functorCategory</code>）や lax pullback の個別の場合である。計画文書の S2 にも「必要な向き」とだけ書かれている。必要な箇所ごとに個別に示しているのか、一般の定理が別の名前であるのかは、Sp や K の側で必要になったときに確認する。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>安定性は HA の三条件（零対象、fiber/cofiber の存在、零角で fiber 列 ⇔ cofiber 列）をそのまま型クラスにしたもの。三角構造は定理として導く。</li>
+  <li>\(hX\) には Mathlib の <code>Pretriangulated</code>・<code>IsTriangulated</code> の instance が入っている。Σ は四角形の空間の切断を選んで作る。</li>
+  <li>完全関手は零対象と cofiber 列を保つ関手で、一般の押し出し・引き戻しも保ち、三角関手を誘導する。</li>
+  <li>作業中なのは Ω による安定性の判定（HA 1.4.2.27）だけで、スペクトラムのために必要。</li>
+  <li>Stable/ には安定性と無関係な一般論が多く含まれ、KST への逆向きの依存もある。</li>
+</ol>
+</main>
+</body>
+</html>

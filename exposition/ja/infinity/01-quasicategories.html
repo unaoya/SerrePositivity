@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>quasicategory の基本</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 1 章</nav>
+<h1>第 1 章　quasicategory の基本</h1>
+<p class="meta">基準コミット <code>9225a04b3</code>（2026-10-23）。対象は <code>Core/</code> の前半と Mathlib の該当部分。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>この章で読むのは、以後のすべての章が前提にする五つの部品である。</p>
+<ol>
+  <li>quasicategory と各種 fibration（ほとんど Mathlib）</li>
+  <li>ホモトピー圏：二つの構成とその比較</li>
+  <li>可逆な辺と Joyal の定理（Kan 複体 ⇔ ホモトピー圏が亜群）</li>
+  <li>join と slice、slice が quasicategory になること</li>
+  <li>終対象、∞ 圏の同値</li>
+</ol>
+<p>写像空間、極限の一般論、充満忠実性は第 2 章で扱う。</p>
+
+<!-- ============================================================ -->
+<h2>1. quasicategory と fibration</h2>
+
+<h3>数学</h3>
+<p>単体的集合 \(X\) が <b>quasicategory</b> であるとは、すべての内ホーン \(\Lambda^n_i\hookrightarrow\Delta^n\)（\(0&lt;i&lt;n\)）に対して拡張を持つことをいう。射 \(p\colon X\to Y\) についても、どのホーンに対して右持ち上げ性を持つかで次のように分類する。</p>
+<div class="table-wrap"><table>
+<tr><th>名前</th><th>持ち上げるホーン \(\Lambda^n_i\)</th><th>Lean</th><th>定義の場所</th></tr>
+<tr><td>inner fibration</td><td>\(0&lt;i&lt;n\)</td><td><code>InnerFibration</code></td><td>Mathlib</td></tr>
+<tr><td>右 fibration</td><td>\(0&lt;i\le n\)</td><td><code>RightFibration</code></td><td>Core/RightFibration</td></tr>
+<tr><td>左 fibration</td><td>\(0\le i&lt;n\)</td><td><code>LeftFibration</code></td><td>Core/RightFibration</td></tr>
+<tr><td>Kan fibration、Kan 複体</td><td>すべて</td><td><code>KanComplex</code></td><td>Mathlib</td></tr>
+<tr><td>trivial Kan fibration</td><td>すべての単射（境界包含 \(\partial\Delta^n\hookrightarrow\Delta^n\) で十分）</td><td><code>TrivialKanFibration</code></td><td>Core/Terminal</td></tr>
+</table></div>
+<p>これらのホーン族が生成する「左側のクラス」（llp(rlp(·))）を、それぞれ inner／右／左 anodyne と呼ぶ。inner anodyne は Mathlib にあり（<code>innerAnodyneExtensions</code>）、右・左 anodyne はこのリポジトリで定義している（<code>Core/JoinCells</code>）。</p>
+<pre><code>inductive rightHornInclusions : MorphismProperty SSet.{u} where
+  | intro {n : ℕ} (i : Fin (n + 2)) (h0 : 0 &lt; i) : rightHornInclusions Λ[n + 1, i].ι
+
+def rightAnodyneExtensions : MorphismProperty SSet.{u} := rightHornInclusions.rlp.llp</code></pre>
+
+<div class="box lean">
+<p class="label">Lean の構造</p>
+<p>右・左 fibration は <code>MorphismProperty</code>（<code>rightFibrations</code>）とそれを包んだ型クラス（<code>RightFibration p</code>）の二段で持つ。型クラスにしてあるのは、「slice 射影は右 fibration」のような事実を <code>instance</code> にして自動で見つけさせるためである。trivial Kan fibration ⇒ 右・左 fibration ⇒ inner fibration の包含も <code>instance</code> になっている。</p>
+</div>
+
+<div class="box">
+<p class="label">原典との対応</p>
+<p>右 fibration の向き（\(0&lt;i\le n\)）は HTT §2.1.2 と Kerodon §4.2.1 に一致する。trivial Kan fibration は「すべての単射に対する右持ち上げ性」で定義し、境界包含だけで十分であることを <code>trivialKanFibration_iff_boundary</code> で示している。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. ホモトピー圏</h2>
+
+<h3>数学</h3>
+<p>quasicategory \(X\) のホモトピー圏 \(hX\) には、よく知られた構成が二つある。</p>
+<ul>
+  <li><b>(a) 道の商</b>：頂点を対象とし、辺の道で生成した自由圏を 2 単体の関係（\(d_1\sigma\sim d_0\sigma\circ d_2\sigma\)）で割る。これは nerve の左随伴 \(h\dashv N\) そのもので、任意の単体的集合に対して定義できる。</li>
+  <li><b>(b) 辺のホモトピー類</b>：射を、辺の「ホモトピー類」とする（Boardman–Vogt、HTT §1.2.3）。合成がうまく定義できるためには quasicategory であること（実際には 2 次元の内ホーン充填）が必要である。</li>
+</ul>
+<p>quasicategory では二つが一致する（HTT §1.2.3、Kerodon §1.4.5）。</p>
+
+<h3>Lean</h3>
+<div class="table-wrap"><table>
+<tr><th>構成</th><th>Lean</th><th>場所</th></tr>
+<tr><td>(a) 道の商</td><td><code>hoFunctor.obj X</code>（関手 <code>SSet ⥤ Cat</code>）</td><td>Mathlib</td></tr>
+<tr><td>(b) 辺の類</td><td><code>HomotopyCategory₂ ((truncation 2).obj X)</code></td><td>Mathlib（2 切断の quasicategory 上）</td></tr>
+<tr><td>(a) ≌ (b)</td><td><code>homotopyCategoryBridge X</code></td><td>Core/HomotopyCategoryBridge</td></tr>
+<tr><td>比較の自然性</td><td><code>bridge_naturality</code></td><td>Core/HomotopyCategoryMap</td></tr>
+<tr><td>ホモトピー \(X\times\Delta^1\to Y\) が誘導する自然変換</td><td><code>homotopyNatTrans</code></td><td>Core/HomotopyNatTrans</td></tr>
+<tr><td>\(h(N C)\simeq C\)</td><td><code>nerveHomotopyCategoryEquivalence</code></td><td>Core/Checks</td></tr>
+</table></div>
+<pre><code>noncomputable def homotopyCategoryBridge (X : SSet.{u}) [Quasicategory X] :
+    HomotopyCategory₂ ((truncation 2).obj X) ≌ hoFunctor.obj X</code></pre>
+<p><b>証明の方針</b>：(a) → (b) は自由圏の普遍性で辺を類に送る関手として作る。(b) → (a) は「左ホモトピックな辺は (a) で等しい」（<code>homotopic_path_eq</code>）を示して商から降ろす。二つの合成が恒等であることを両方向で確かめると、圏同値どころか圏同型になる（<code>edge_path_inverse</code>、<code>path_edge_inverse</code>）。</p>
+
+<div class="box lean">
+<p class="label">使い分け</p>
+<p>公開されている命題の多くは (a) の <code>hoFunctor</code> で述べる（409 ファイルが使用）。Mathlib の関手性や随伴と直接つながるからである。(b) の <code>HomotopyCategory₂</code> は「射が 1 本の辺で代表される」「合成の等式が実際の 2 単体で実現される」という具体的な議論が必要な証明の内部で使う（47 ファイル）。橋渡しは <code>homotopyCategoryBridge</code> と、次の二つの補題が担う。</p>
+<ul>
+  <li><code>homotopyCategory_homMk_surjective</code>：\(hX\) の射は 1 本の辺で表せる。</li>
+  <li><code>compStruct_nonempty_of_homMk_fac</code>：\(hX\) での合成の等式は実際の合成 2 単体で実現できる。</li>
+</ul>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 可逆な辺と Joyal の定理</h2>
+
+<h3>数学</h3>
+<p>辺 \(e\colon x\to y\) が<b>可逆</b>とは、\(hX\) で同型になることをいう。Joyal の定理（HTT Prop. 1.2.4.3、Kerodon Thm. 4.4.2.6）は、これを外側ホーンの充填で特徴づける。</p>
+<div class="box">
+<p><b>定理.</b> quasicategory \(X\) の辺 \(e\) について次は同値。</p>
+<ol>
+  <li>\(e\) は可逆。</li>
+  <li>最後の辺が \(e\) であるような任意の \(\Lambda^{n}_{n}\to X\)（\(n\ge 2\)）は \(\Delta^n\) へ拡張できる。</li>
+</ol>
+<p>最初の辺と \(\Lambda^n_0\) についても同様。<b>系</b>：quasicategory \(X\) が Kan 複体であることと、\(hX\) が亜群であることは同値（HTT Prop. 1.2.5.1）。</p>
+</div>
+
+<h3>Lean</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>可逆性（定義）</td><td><code>IsInvertibleEdge e</code>（(b) の圏での同型）</td><td>Core/InvertibleEdgeLifting</td></tr>
+<tr><td>外側ホーンの充填条件</td><td><code>HasFinalHornFillers e</code>、<code>HasInitialHornFillers e</code></td><td>同上</td></tr>
+<tr><td>(1) ⇒ (2)</td><td><code>hasFinalHornFillers_of_isInvertibleEdge</code></td><td>同上</td></tr>
+<tr><td>(2) ⇒ (1)</td><td><code>isInvertibleEdge_of_hasFinalHornFillers</code></td><td>Core/OuterHornConverse</td></tr>
+<tr><td>同値</td><td><code>isInvertibleEdge_iff_hasFinalHornFillers</code></td><td>同上</td></tr>
+<tr><td>Kan ⇒ 亜群</td><td><code>kanComplex_ho_isGroupoid</code>（instance）</td><td>同上</td></tr>
+<tr><td>亜群 ⇒ Kan</td><td><code>kanComplex_of_isGroupoid</code></td><td>Core/KanCharacterization</td></tr>
+</table></div>
+
+<h3>証明の方針（(1) ⇒ (2)）</h3>
+<p>鍵は、外側ホーンを join で書き直すことである（<code>finalHornJoinIso</code>、Core/OuterHornJoin）。</p>
+\[
+\Lambda^{n+2}_{n+2}\;\cong\;(\partial\Delta^n\star\Delta^1)\;\cup_{\partial\Delta^n\star\Lambda^1_1}\;(\Delta^n\star\Lambda^1_1)\;\subset\;\Delta^n\star\Delta^1\cong\Delta^{n+2}.
+\]
+<p>ここで \(\Lambda^1_1=\{1\}\) であり、右因子 \(\Delta^1\) が問題の最後の辺 \(e\) に対応する。join と coslice の随伴（§4）によって、この拡張問題は次の持ち上げ問題に言い換えられる。</p>
+\[
+\begin{array}{ccc}
+\{1\} & \longrightarrow & X_{\sigma/}\\
+\downarrow & & \downarrow q\\
+\Delta^1 & \longrightarrow & X_{\sigma|_{\partial\Delta^n}/}
+\end{array}
+\]
+<p>ここで \(\sigma\) は最初の \(n+1\) 頂点が張る単体である。§4 の結果から \(q\) は左 fibration で、左 fibration は「下の辺が可逆なら、終点を指定して持ち上げられる」（<code>leftFibration_liftHorn_one_last</code>）。下の辺の可逆性は、その \(X\) への像が \(e\) であることと、左 fibration \(X_{\sigma|_{\partial\Delta^n}/}\to X\) が可逆性を反映すること（<code>leftFibration_reflects_invertibleEdge</code>）から従う。Lean ではこれを <code>joinUnion_extend_of_invertible_rightEdge</code> として一般の部分複体 \(K_0\subset K\) について示し、\(K=\Delta^n\)、\(K_0=\partial\Delta^n\) に適用している。</p>
+<p>(2) ⇒ (1) では、2 次元のホーンで片側の逆を作り、3 次元のホーンで同じ辺が反対側の逆にもなることを示す。最初の辺の版は反対圏 \(X^{\mathrm{op}}\)（<code>Core/Opposite</code>）を通して双対化している。</p>
+
+<!-- ============================================================ -->
+<h2>4. join と slice</h2>
+
+<h3>join の構成</h3>
+<p>\(K\star L\) の \(n\) 単体は、「\(n+1\) 個の頂点を前後に切り、前半を \(K\) の単体、後半を \(L\) の単体とするもの」である。頂点が 0 個の部分は空単体として許す。Lean ではこれを、頂点数で添字を付けた拡張単体 <code>augObj K r</code>（\(r=0\) は一点）の直和として直接書く。</p>
+<pre><code>def Simplex (K L : SSet.{u}) (n : ℕ) : Type u :=
+  Σ ℓ : Fin (n + 2), augObj K ℓ.val × augObj L (n + 1 - ℓ.val)
+
+def join (K L : SSet.{u}) : SSet.{u} where
+  obj n := Join.Simplex K L n.unop.len
+  ...</code></pre>
+<p>面・退化写像は、順序写像に沿って切れ目の位置を引き戻すことで定義する。基本的な性質は次のとおり。</p>
+<ul>
+  <li><code>joinStdSimplexIso i j : join Δ[i] Δ[j] ≅ Δ[i + j + 1]</code></li>
+  <li><code>joinMap</code>、<code>joinInl</code>、<code>joinInr</code>：関手性と二つの包含</li>
+  <li><code>joinUnion A₀ B₀</code>：\(A_0\star B\cup A\star B_0\subset A\star B\)（pushout-join）</li>
+</ul>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<p>HTT §1.2.8 は拡張単体的集合の Day 畳み込みとして、Kerodon §4.3.3 は有限線形順序集合上の関手として join を定義する。ここではどちらも使わず、単体の型を直接書いた。Mathlib に join がないため、扱いやすい具体的な模型を選んだもので、代わりに <code>Join.lean</code>（1,051 行）は切れ目の算術でほぼ埋まっている。</p>
+</div>
+
+<h3>slice と普遍性</h3>
+<p>図式 \(p\colon K\to X\) の slice \(X_{/p}\) の \(n\) 単体は、\(K\) 上で \(p\) に一致する \(\Delta^n\star K\to X\) である。これは Lean でも同じ形で書かれている。</p>
+<pre><code>def sliceOver {K X : SSet.{u}} (p : K ⟶ X) : SSet.{u} where
+  obj n := {σ : join (stdSimplex.obj n.unop) K ⟶ X //
+    joinInr (stdSimplex.obj n.unop) K ≫ σ = p}
+  ...
+
+def sliceOverEquiv {A K X : SSet.{u}} (p : K ⟶ X) :
+    (A ⟶ sliceOver p) ≃ {F : join A K ⟶ X // joinInr A K ≫ F = p}</code></pre>
+<p><code>sliceOverEquiv</code> が「\(A\to X_{/p}\) は \(A\star K\to X\) と同じ」という随伴で、以後の持ち上げ問題の言い換えはすべてこれによる。coslice（<code>sliceUnder</code>）も同様に定義されている。</p>
+
+<h3>slice は quasicategory（Joyal の補題）</h3>
+<div class="box">
+<p><b>命題</b>（HTT Lemma 2.1.2.3、Kerodon Prop. 4.3.6.4）. \(A_0\hookrightarrow A\) が右 anodyne なら \(A_0\star B\cup A\star B_0\hookrightarrow A\star B\) は inner anodyne。左右を入れ替えた版も成り立つ。</p>
+<p><b>系.</b> \(X\) が quasicategory なら \(X_{/p}\to X\) は右 fibration で、とくに \(X_{/p}\) は quasicategory。</p>
+</div>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>生成ホーンの場合の計算</td><td><code>joinUnion_rightHorn_boundary_innerAnodyne</code></td><td>Core/JoinCells</td></tr>
+<tr><td>持ち上げ問題の移送</td><td><code>joinUnion_hasLiftingProperty_of_relativeSliceOverMap</code></td><td>Core/JoinLifting</td></tr>
+<tr><td>命題</td><td><code>joinUnion_innerAnodyne_of_rightAnodyne</code></td><td>Core/JoinAnodyne</td></tr>
+<tr><td>系</td><td><code>sliceOverProjection_rightFibration</code>、<code>sliceOver_quasicategory</code>（instance）</td><td>Core/RightFibration</td></tr>
+</table></div>
+<p><b>証明の方針</b>：生成元 \(\Lambda^p_i\hookrightarrow\Delta^p\)（\(0&lt;i\)）と \(\partial\Delta^q\hookrightarrow\Delta^q\) について、pushout-join が \(\Delta^{p+q+1}\) の内ホーンになることを、<code>joinStdSimplexIso</code> の下で頂点の集合を数えて確かめる（JoinCells）。一般の右 anodyne 射へは、llp の閉包性（pushout・合成・レトラクト）で広げる。その際、持ち上げ問題を slice への持ち上げ問題に移すのが JoinLifting の役目である。</p>
+
+<!-- ============================================================ -->
+<h2>5. 終対象</h2>
+
+<h3>定義</h3>
+<p>頂点 \(x\) が<b>終対象</b>とは、最後の頂点が \(x\) である任意の \(\partial\Delta^{n+1}\to X\)（\(n\ge 0\)）が \(\Delta^{n+1}\) へ拡張できることとする。\(n=0\) は「任意の \(y\) から \(x\) への辺がある」、\(n=1\) は「その辺がホモトピーを除いて一意」、それより高い次元はより高次の一意性を表す。</p>
+<pre><code>def IsTerminalVertex {X : SSet.{u}} (x : X _⦋0⦌) : Prop :=
+  ∀ (n : ℕ) (b : (boundary (n + 1) : SSet.{u}) ⟶ X),
+    boundaryVertex n (Fin.last (n + 1)) ≫ b = SSet.yonedaEquiv.symm x →
+      ∃ F : (Δ[n + 1] : SSet.{u}) ⟶ X, (boundary (n + 1)).ι ≫ F = b</code></pre>
+
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>\(x\) が終対象 ⇔ \(X_{/x}\to X\) が trivial Kan fibration（HTT Prop. 1.2.12.4）</td><td><code>isTerminalVertex_iff_trivialKanFibration</code></td><td>Core/Terminal</td></tr>
+<tr><td>終対象は \(hX\) で同型を除いて一意</td><td><code>terminalVertexIso</code></td><td>Core/TerminalUniqueness</td></tr>
+<tr><td>始対象とその一意性</td><td><code>IsInitialVertex</code>、<code>initialVertexIso</code></td><td>Core/Terminal、Core/InitialUniqueness</td></tr>
+</table></div>
+<p>第 0 章で見たように、極限 <code>IsLimitCone</code> は slice の終対象として定義されるので、この節の結果はそのまま極限の一意性になる。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<p>HTT Def. 1.2.12.1 は「任意の \(y\) について \(\mathrm{Map}(y,x)\) が可縮」で終対象を定義し、境界充填は特徴づけ（Prop. 1.2.12.4）として出てくる。ここでは逆に境界充填を定義に採っている。写像空間を使わずに定義でき、<code>Quasicategory</code> の仮定も要らないからである。写像空間による特徴づけは第 2 章で扱う（Core/TerminalMappingSpace）。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. ∞ 圏の同値</h2>
+
+<h3>定義</h3>
+<p>Kerodon Def. 4.5.1.10 に従い、\(F\colon X\to Y\) が<b>同値</b>であるとは、\(G\colon Y\to X\) と、\(h\,\mathrm{Fun}(X,X)\) での同型 \(GF\cong\mathrm{id}\)、\(h\,\mathrm{Fun}(Y,Y)\) での同型 \(FG\cong\mathrm{id}\) が存在することとする。</p>
+<pre><code>abbrev FunctorIso {X Y : SSet.{u}} (f g : X ⟶ Y) :=
+  (SSet.HomotopyCategory.mk (functorVertex f) : hoFunctor.obj ((ihom X).obj Y)) ≅
+    SSet.HomotopyCategory.mk (functorVertex g)
+
+structure QCatEquivalence (X Y : SSet.{u}) [Quasicategory X] [Quasicategory Y] where
+  hom : X ⟶ Y
+  inv : Y ⟶ X
+  homInvIso : FunctorIso (hom ≫ inv) (𝟙 X)
+  invHomIso : FunctorIso (inv ≫ hom) (𝟙 Y)
+
+def IsQCatEquivalence ... (f : X ⟶ Y) : Prop :=
+  ∃ g : Y ⟶ X, Nonempty (FunctorIso (f ≫ g) (𝟙 X)) ∧ Nonempty (FunctorIso (g ≫ f) (𝟙 Y))</code></pre>
+
+<div class="box">
+<p class="label">注意：<code>FunctorIso</code> は頂点ごとの同型の族ではない</p>
+<p><code>FunctorIso f g</code> は関手 ∞ 圏 \(\mathrm{Fun}(X,Y)\) のホモトピー圏での同型であり、自然変換としての一貫性を含んでいる。「各点で可逆な自然変換は可逆」（Kerodon Thm. 4.4.4.4）はこれとは別の定理で、第 2 章で扱う（Core/FunctorEdgePointwise）。<code>FunctorIso.toNatIso</code> によってホモトピー圏の自然同型に落とせるが、逆は成り立たない。</p>
+</div>
+
+<h3>基本的な性質</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>反射律・対称律・推移律</td><td><code>QCatEquivalence.refl</code>／<code>symm</code>／<code>trans</code></td><td>Core/Equivalence</td></tr>
+<tr><td>同値 ⇒ \(hX\simeq hY\)</td><td><code>QCatEquivalence.toHoEquivalence</code></td><td>同上</td></tr>
+<tr><td>自然同型で不変、二対三</td><td><code>IsQCatEquivalence.ofFunctorIso</code>、<code>.comp</code>、<code>.cancel_left</code>、<code>.cancel_right</code></td><td>Core/EquivalenceCalculus</td></tr>
+<tr><td>二対六</td><td><code>isQCatEquivalence_of_composites</code></td><td>Core/EquivalenceTwoOfSix</td></tr>
+<tr><td>前合成・後合成で \(\mathrm{Fun}\) の同値に</td><td><code>QCatEquivalence.precompose</code>／<code>postcompose</code></td><td>Core/FunctorComposition</td></tr>
+<tr><td>quasicategory 間の inner anodyne 射は同値</td><td><code>isQCatEquivalence_of_innerAnodyne</code></td><td>Core/InnerAnodyneEquivalence</td></tr>
+</table></div>
+<p><b>最後の項目の方針</b>：\(i\colon A\to B\) が inner anodyne なら、制限 \(\mathrm{Fun}(B,Y)\to\mathrm{Fun}(A,Y)\) は trivial Kan fibration になる（<code>trivialKanFibration_pre_of_innerAnodyne</code>）。\(Y=A\) とすると恒等射が持ち上がり、レトラクション \(r\) で \(ri=\mathrm{id}\) となるものが得られる。\(Y=B\) とすると、\(\mathrm{id}_B\) と \(ir\) が同じ fiber に入ることから、可縮な fiber の中で両者を結ぶ可逆辺が得られる。</p>
+
+<div class="box">
+<p class="label">方針上の要点</p>
+<p>同値の定義にも証明にも Joyal のモデル構造は使っていない。「弱同値」ではなく、明示的な逆と自然同型で議論が閉じている。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>7. Core のファイル構成（この章の範囲）</h2>
+<div class="table-wrap"><table>
+<tr><th>節</th><th>主なファイル</th></tr>
+<tr><td>1</td><td>RightFibration、JoinCells（anodyne の定義）、Terminal（trivial Kan fibration）</td></tr>
+<tr><td>2</td><td>HomotopyCategoryBridge、HomotopyCategoryMap、HomotopyNatTrans、Checks</td></tr>
+<tr><td>3</td><td>InvertibleEdge（入口）、InvertibleEdgeLifting、OuterHornJoin、OuterHornConverse、OuterHornDuality、KanCharacterization、Opposite</td></tr>
+<tr><td>4</td><td>Join、JoinCells、JoinLifting、JoinAnodyne、Slice、Coslice</td></tr>
+<tr><td>5</td><td>Terminal、TerminalUniqueness、InitialUniqueness</td></tr>
+<tr><td>6</td><td>Equivalence、EquivalenceCalculus、EquivalenceTwoOfSix、FunctorComposition、InnerAnodyneEquivalence</td></tr>
+</table></div>
+<p>Core の残り（FatJoin*、MappingSpace*、FullyFaithful*、Pullback*、Precomposition*、Prism* など）は第 2 章で扱う。Cocartesian*（14 ファイル）は F1 側からしか使われていないので、第 3 章で扱う。</p>
+
+<!-- ============================================================ -->
+<h2>8. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R5　左右の双対を二度証明している</p>
+<p>終対象と始対象の一意性（TerminalUniqueness 249 行、InitialUniqueness 230 行）、slice と coslice への持ち上げ（JoinLifting の前半と後半）、RelativeOuterHorn と RelativeOuterHornOp（各 202 行）などが、反対圏を使わずに左右それぞれ直接証明されている。<code>InitialUniqueness</code> の docstring にも「左右双対を直接構成する」とある。一方で、slice と反対圏の同型 <code>sliceOverOpIso</code> は Stable/SliceOpposite にあり、F1・F1B・Stable から使われている。この同型を Core に移し、片側を他方から導く形にすれば、Core の重複をかなり減らせる見込み。</p>
+</div>
+<div class="box refactor">
+<p class="label">R6　Core の中にある F1 の素材</p>
+<p>Core/Cocartesian*（14 ファイル）を import しているのは F1 のファイルだけである。cocartesian fibration の層（第 3 章）に移すほうが層の境界がはっきりする。第 3 章を読んでから判断する。</p>
+</div>
+<div class="box refactor">
+<p class="label">R7　anodyne・fibration の定義の置き場所</p>
+<p>右・左 anodyne の定義が JoinCells（join のホーン計算のファイル）に、trivial Kan fibration の定義が Terminal にある。§1 の表の概念は一つのファイル（たとえば <code>Core/Fibrations.lean</code>）にまとめ、そのファイルが入口になる形が読みやすい。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>ホモトピー圏は二つあり、公開する命題は <code>hoFunctor</code> で述べ、証明の内部では辺の類 <code>HomotopyCategory₂</code> を使う。両者の橋が <code>homotopyCategoryBridge</code>。</li>
+  <li>Joyal の定理の鍵は、外側ホーンを \(\partial\Delta^n\star\Delta^1\cup\Delta^n\star\{1\}\) と書き直し、slice の左 fibration での持ち上げに帰着させること。</li>
+  <li>join は単体の型を直接書いて構成しており、slice の普遍性 <code>sliceOverEquiv</code> が持ち上げ問題を言い換える基本の道具になっている。</li>
+  <li>終対象は境界充填で定義し、slice 射影が trivial Kan fibration であることと同値。極限はその上に定義される。</li>
+  <li>同値は明示的な逆と \(h\,\mathrm{Fun}\) での同型で定義しており、モデル構造は使わない。<code>FunctorIso</code> は頂点ごとの同型の族より強い。</li>
+</ol>
+</main>
+</body>
+</html>

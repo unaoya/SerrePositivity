@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 7　スペクトルと K 理論</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 7　スペクトルと K 理論</nav>
+<h1>補章 7　スペクトルと K 理論：モデル圏を使わない扱い</h1>
+<p class="meta">基準コミットなし（2026-10-27）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="07-stable.html">第 7 章</a>（安定 ∞ 圏）・<a href="08-dgnerve-derived.html">第 8 章</a>（dg nerve、Verdier 商）の数学的背景と、<a href="k-nonconnective-design.html">非連結 K の設計ノート</a>の前提にあたる。文献の番号・正確な仮定は原典で確認すること（未確認の箇所はその旨を書いた）。</p>
+
+<p>問い：スペクトルの理論は、モデル圏の構造を使わずに ∞ 圏の言葉だけで整備できるか。結論は「∞ 圏論の基礎（\(\mathcal S\)、余極限、\(\mathrm{Fun}\)、core、\(\mathrm{Pr}^L\)）を認めれば、スペクトル・smash 積・環スペクトル・局所化・t 構造・K 理論まですべてモデル圏なしで書ける」。モデル圏が残るのは (i) ∞ 圏論の基礎定理の証明の内部と、(ii) 古典的な点集合モデルとの比較だけである。</p>
+
+<!-- ============================================================ -->
+<h2>1. スペクトルの ∞ 圏</h2>
+
+<h3>定義：安定化</h3>
+\[
+\mathrm{Sp}:=\lim\bigl(\cdots\xrightarrow{\Omega}\mathcal S_*\xrightarrow{\Omega}\mathcal S_*\xrightarrow{\Omega}\mathcal S_*\bigr).
+\]
+<p>対象は \(\Omega\) スペクトル（列 \((X_n)\) と同値 \(X_n\simeq\Omega X_{n+1}\)）。古典論の「圏を作ってから弱同値で局所化する」手順が要らず、最初からホモトピー的な対象として定義される。一般の有限極限を持つ \(\mathcal C\) には \(\mathrm{Sp}(\mathcal C):=\mathrm{Exc}_*(\mathcal S^{\mathrm{fin}}_*,\mathcal C)\)（reduced excisive 関手、Goodwillie 微積分の 1 階部分、HA §1.4）。</p>
+
+<h3>普遍性</h3>
+<ul>
+  <li><b>自由安定化</b>：\(\Sigma^\infty_+\colon\mathcal S\to\mathrm{Sp}\) は 1 点から生成される余極限で閉じた自由な安定 ∞ 圏。\(\mathrm{Pr}^L\) では \(\mathrm{Sp}=\mathrm{colim}(\mathcal S_*\xrightarrow{\Sigma}\mathcal S_*\xrightarrow{\Sigma}\cdots)\)（\(\mathrm{Pr}^R\) での \(\Omega\) に沿った極限と一致）。</li>
+  <li><b>冪等代数</b>：\(\mathrm{Sp}\) は \(\mathrm{Pr}^L\) の冪等可換代数で、\(\mathrm{Pr}^L_{\mathrm{st}}\simeq\mathrm{Mod}_{\mathrm{Sp}}(\mathrm{Pr}^L)\)、\(\mathrm{Sp}\otimes\mathcal C\simeq\mathrm{Sp}(\mathcal C)\)。安定性は構造でなく性質になる。</li>
+  <li><b>smash 積</b>：単位 \(\mathbb S\)、各変数で余極限を保つ対称モノイダル構造は一意（HA §4.8.2）。symmetric/orthogonal spectra や EKMM の \(S\)-modules が解こうとした問題（結合的・可換な smash 積）は普遍性から自動的に解ける。\(E_\infty\) 環 \(=\mathrm{CAlg}(\mathrm{Sp})\)。</li>
+</ul>
+
+<h3>内在的に展開できるもの</h3>
+<p>t 構造（heart \(\simeq\mathrm{Ab}\)、Postnikov 塔）、Brown 表現定理（HA §1.4）、Bousfield 局所化、パラメータ付きスペクトル \(\mathrm{Fun}(X,\mathrm{Sp})\) と Thom スペクトル（Ando–Blumberg–Gepner–Hopkins–Rezk）、THH/TC（Nikolaus–Scholze、Tate 構成と Frobenius）、同変スペクトル（\(S^V\) の形式的逆元化、スペクトル的 Mackey 関手）、\(\mathrm{SH}(S)\)（\(\mathbb P^1\) の逆元化、Robalo）。</p>
+
+<div class="box">
+<p class="label">モデル圏がまだ関わるところ</p>
+<ul>
+  <li>∞ 圏論の基礎：HTT は擬圏を Joyal モデル構造で扱う（直線化、\(\mathcal S\) の構成、\(\mathrm{Pr}^L\) のテンソル積）。回避の試みとして Riehl–Verity の ∞-cosmos、Cisinski–Cnossen–Nguyen–Walde の合成的なアプローチがある（到達点は未確認）。</li>
+  <li>古典的な点集合モデルとの比較（Mandell–May–Schwede–Shipley）。</li>
+  <li>個別の構成：\(E_\infty\) 構造の障害理論（Goerss–Hopkins–Miller）。∞ 的な構成（Lurie, Elliptic II）もあり、文献上は混在。</li>
+</ul>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. 連結 K 理論 I：\(S_\bullet\) 構成</h2>
+<p>K 理論は関手 \(K\colon\mathrm{Cat}^{\mathrm{ex}}_\infty\to\mathrm{Sp}\)、環には \(K(R):=K(\mathrm{Perf}(R))\)。全体の流れ：</p>
+\[
+\mathcal C\ \rightsquigarrow\ S_\bullet\mathcal C\colon\Delta^{\mathrm{op}}\to\mathrm{Cat}^{\mathrm{ex}}_\infty\ \rightsquigarrow\ S_\bullet\mathcal C^{\simeq}\colon\Delta^{\mathrm{op}}\to\mathcal S\ \rightsquigarrow\ |S_\bullet\mathcal C^{\simeq}|\ \rightsquigarrow\ K(\mathcal C)=\Omega|S_\bullet\mathcal C^{\simeq}|.
+\]
+
+<h3>Step 1：\(S_n\mathcal C\) は安定 ∞ 圏</h3>
+<p>\(\mathrm{Ar}[n]=\{(i,j):0\le i\le j\le n\}=\mathrm{Fun}([1],[n])\)。\(S_n\mathcal C\subset\mathrm{Fun}(\mathrm{Ar}[n],\mathcal C)\) は次を満たす \(F\) の充満部分 ∞ 圏：</p>
+<ul>
+  <li>\(F(i,i)=0\)、</li>
+  <li>\(i\le j\le k\) で \(F(i,j)\to F(i,k)\to F(j,k)\) が cofiber 列。</li>
+</ul>
+<p>各対象が図式（∞ 関手）で、\(S_n\mathcal C\) はそれを集めた安定 ∞ 圏。\(S_0\mathcal C\simeq0\)、\(S_1\mathcal C\simeq\mathcal C\)、\(S_2\mathcal C\) は cofiber 列 \(A\to B\to B/A\) の ∞ 圏。\(S_n\mathcal C\simeq\mathrm{Fun}([n-1],\mathcal C)\) なので情報は通常のナーブと同じで、商をすべて選んでおくのは \(d_0\)（最初の対象で割る）を関手的にするため。</p>
+
+<h3>Step 2：単体的構造</h3>
+<p>\(\alpha\colon[m]\to[n]\) が \(\mathrm{Ar}[m]\to\mathrm{Ar}[n]\) を誘導し、前合成で \(S_n\mathcal C\to S_m\mathcal C\)。例：\(d_1(A\to B\to B/A)=B\)、\(d_0\) は \(B/A\)、\(d_2\) は \(A\)。概念的には ∞ 関手 \(\Delta^{\mathrm{op}}\to\mathrm{Cat}^{\mathrm{ex}}_\infty\) だが、前合成は厳密に結合的なので擬圏の模型では厳密な単体的対象になる。</p>
+
+<h3>Step 3：core</h3>
+<p>\((-)^{\simeq}\colon\mathrm{Cat}_\infty\to\mathcal S\)（包含 \(\mathcal S\subset\mathrm{Cat}_\infty\) の右随伴）を各段に施す。全体の分類空間 \(|\mathcal C|\) を使うと \(0\) が始対象なので可縮になってしまう。同型だけを道として残すことで K 理論の情報が残る。</p>
+
+<h3>Step 4：実現 ＝ \(\Delta^{\mathrm{op}}\) 上の余極限</h3>
+\[
+|X_\bullet|:=\operatorname*{colim}_{\Delta^{\mathrm{op}}}X_\bullet\quad(\mathcal S\text{ での余極限}).
+\]
+<p>古典的にはホモトピー余極限 \(\coprod_nX_n\times\Delta^n/\!\sim\)。低次元の胞体：</p>
+<ul>
+  <li>0 胞体：\(X_0=\mathrm{pt}\)。</li>
+  <li>1 胞体：\(X_1\simeq\mathcal C^{\simeq}\) の各対象 \(A\) がループ \([A]\)。同型は \(X_1\) の道なのでループがホモトピック。\(s_0\) で \([0]\) が潰れる。</li>
+  <li>2 胞体：cofiber 列ごとの三角形、辺が \([A],[B],[B/A]\)。関係 \([B]=[A]+[B/A]\)。</li>
+</ul>
+<p>よって \(\pi_1|S_\bullet\mathcal C^{\simeq}|=K_0(\mathcal C)\)、\(K(\mathcal C):=\Omega|S_\bullet\mathcal C^{\simeq}|\)。</p>
+
+<h3>スペクトル化</h3>
+<p>\(K(\mathcal C)_n:=|S^{(n)}_\bullet\mathcal C^{\simeq}|\)（\(n\) 重単体空間の実現）。加法性定理（§5）から \(K(\mathcal C)_n\simeq\Omega K(\mathcal C)_{n+1}\)（\(n\ge1\)）となり、§1 の原型的定義どおりの \(\Omega\) スペクトルが得られる。\(n\) 番目の空間は \((n-1)\) 連結なので連結スペクトル。</p>
+
+<!-- ============================================================ -->
+<h2>3. ナーブ型の構成：\(\mathfrak C[\Delta^n]\)・\(\mathrm{Ar}[n]\)・スパン</h2>
+<p>余単体的対象 \(D\colon\Delta\to\mathrm{Cat}\) から \(N_D(X)_n=\mathrm{Hom}(D[n],X)\) を作る型（Kan の nerve–realization）の例として並べられる。</p>
+<div class="table-wrap"><table>
+<tr><th>\(D[n]\)</th><th>条件</th><th>得られるもの</th></tr>
+<tr><td>\([n]\)</td><td>なし</td><td>通常のナーブ</td></tr>
+<tr><td>\(\mathfrak C[\Delta^n]\)</td><td>なし</td><td>ホモトピー整合的ナーブ（<a href="coherent-nerve-diagrams.html">補章 3</a>）</td></tr>
+<tr><td>\(\mathrm{Ar}[n]\)</td><td>対角 \(0\)、正方形が双カルテシアン</td><td>\(S_\bullet\mathcal C\)</td></tr>
+<tr><td>\(\mathrm{Tw}[n]\) 型</td><td>正方形がカルテシアン</td><td>スパン圏 \(\mathrm{Span}(\mathcal C)\)</td></tr>
+</table></div>
+<ul>
+  <li><b>\(\mathfrak C[\Delta^n]\) との関係</b>：区間 \([i,j]\) で添字付けられる点が共通。ただし \(\mathfrak C\) の区間には合成のホモトピー（立方体）、\(\mathrm{Ar}\) の区間には商 \(X_j/X_i\) が付く。直接の比較定理は（知る限り）なく、形式的類似。</li>
+  <li><b>スパンとの関係（実質的に同じもの）</b>：どちらも三角形 \(\{i\le j\}\) 上の図式で、違いは矢印の向き（\(\mathrm{Tw}\) は片方が逆向き）と条件（押し出し＋対角 0 / 引き戻し）。Quillen の Q 構成は「許容エピ ← 許容モノ」のスパン圏で \(K=\Omega BQ\mathcal E\)。Waldhausen は edgewise subdivision（\([n]\mapsto[n]^{\mathrm{op}}\star[n]\)、\(\mathrm{Ar}\) 型が \(\mathrm{Tw}\) 型になる）で \(|S_\bullet\mathcal E|\simeq BQ\mathcal E\) を示した。Barwick の ∞ 版（effective Burnside 圏、スペクトル的 Mackey 関手）。六関手形式の \(\mathrm{Corr}(\mathcal C)\)（<a href="route-6ff-definition.html">六関手形式の定義への最短路</a>）と同じ種類の対象で、違いは脚に許す射のクラスと取り出すもの。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>4. 連結 K 理論 II：群完備化</h2>
+\[
+\mathcal A\ \rightsquigarrow\ (\mathcal A^{\simeq},\oplus)\in\mathrm{CMon}(\mathcal S)\ \rightsquigarrow\ (\mathcal A^{\simeq})^{\mathrm{gp}}\in\mathrm{CMon}^{\mathrm{gp}}(\mathcal S)\ \overset{\sim}{\rightsquigarrow}\ K(\mathcal A)\in\mathrm{Sp}_{\ge0}\qquad(\mathcal A\text{ は加法的}).
+\]
+
+<h3>Step 1：\(E_\infty\) 空間</h3>
+<p>\(\mathrm{CMon}(\mathcal S)\)：∞ 関手 \(M\colon\mathrm{Fin}_*\to\mathcal S\) で Segal 写像 \(M\langle n\rangle\to M\langle1\rangle^n\) が同値なもの（<a href="monoidal-prl.html">補章 6-2</a>）。有限積を持つ ∞ 圏は積で一意に対称モノイダルになり、core は右随伴で積を保つので \(\langle n\rangle\mapsto(\mathcal A^{\simeq})^n\) が Segal 条件を満たす。例：\(\mathrm{Proj}_R^{\simeq}\simeq\coprod_{[P]}B\mathrm{Aut}(P)\)、自由加群なら \(\coprod_nBGL_n(R)\)。</p>
+
+<h3>Step 2：群完備化 ＝ bar 構成の実現のループ</h3>
+\[
+M^{\mathrm{gp}}\simeq\Omega BM,\qquad BM:=\operatorname*{colim}_{\Delta^{\mathrm{op}}}\bigl([n]\mapsto M^n\bigr).
+\]
+<p>\([n]\mapsto M^n\) は \(M\) を \(\Delta^{\mathrm{op}}\to\mathrm{Fin}_*\) に沿って引き戻したもの。胞体：点 1 つ、元ごとのループ、\((a,b)\) ごとの三角形（辺 \(a,a+b,b\)）。\(\pi_1BM=\pi_0(M)^{\mathrm{gp}}\)。群完備化定理 \(H_*(M^{\mathrm{gp}})\cong H_*(M)[\pi_0^{-1}]\)（McDuff–Segal、Quillen）から \(M^{\mathrm{gp}}\simeq K_0(R)\times BGL(R)^+\)。</p>
+
+<h3>Step 3：\(\mathrm{CMon}^{\mathrm{gp}}(\mathcal S)\simeq\mathrm{Sp}_{\ge0}\)</h3>
+<p>\(BM\) も \(E_\infty\) なので反復でき、\((M^{\mathrm{gp}},BM,B^2M,\dots)\) が \(\Omega\) スペクトル（\(S_\bullet\) の反復と並行）。逆は \(\Omega^\infty\)。認識原理（May、Segal、Boardman–Vogt）、∞ 版は Gepner–Groth–Nikolaus が \(\mathrm{Pr}^L\) の普遍性から証明。</p>
+
+<h3>\(S_\bullet\) との比較</h3>
+<p>\((a_1,\dots,a_n)\mapsto(a_1\to a_1\oplus a_2\to\cdots)\) が bar 構成 → \(S_\bullet\) の写像。各段では同値でない（フィルター付き対象の自己同型に冪単部分 \(\mathrm{Hom}(a_2,a_1)\) がある）が、分裂する場合は実現で同値（加法性定理）。分裂しない場合は一致しない：\(\mathrm{Perf}(R)\) に群完備化を使うと \([X[1]]=-[X]\) が入らない「分裂 K 理論」になる。離散環では \(K(\mathrm{Proj}_R)\simeq K(\mathrm{Perf}(R))\)（Gillet–Waldhausen 型、Thomason–Trobaugh）。</p>
+
+<!-- ============================================================ -->
+<h2>5. 加法性定理</h2>
+<p>構成は定義を書くだけで、実質的な仕事は加法性定理（\(S_\bullet\) 側）と認識原理（群完備化側）に集中する。</p>
+
+<h3>主張（同値な三つの形）</h3>
+<ul>
+  <li><b>(A) \(S_2\) 版</b>：\((s,q)\colon S_2\mathcal C\to\mathcal C\times\mathcal C\), \((A\to B\to B/A)\mapsto(A,B/A)\) が \(K(S_2\mathcal C)\simeq K(\mathcal C)\times K(\mathcal C)\) を誘導する（圏としては同値でない）。</li>
+  <li><b>(B) 関手版</b>：exact 関手の cofiber 列 \(F'\to F\to F''\) について \(K(F)\simeq K(F')+K(F'')\)。</li>
+  <li><b>(C) 分裂列版</b>：分裂 Verdier 列 \(\mathcal A\to\mathcal B\to\mathcal C\) で \(K(\mathcal B)\simeq K(\mathcal A)\times K(\mathcal C)\)（BGT の「加法的不変量」）。</li>
+</ul>
+
+<h3>(A) ⇔ (B)</h3>
+<p>(B) ⇒ (A)：\(\iota(A,Q)=(A\to A\oplus Q\to Q)\) で \((s,q)\iota=\mathrm{id}\)。恒等関手は cofiber 列 \(js\to\mathrm{id}\to kq\)（\(j(A)=(A=A\to0)\)、\(k(Q)=(0\to Q=Q)\)）に入るので、(B) から \(K(\mathrm{id})\simeq K(\iota)K(s,q)\)。(A) ⇒ (B)：\(F'\to F\to F''\) は \(\Phi\colon\mathcal C\to S_2\mathcal D\) と同じで、\(t\simeq s+q\)（\(K\) 上）を合成する。</p>
+
+<h3>使い道：\(\Omega\) スペクトルになること</h3>
+<ul>
+  <li>経路対象 \((PX)_n=X_{n+1}\) は余分な退化で可縮。各段で \(\mathcal C\to S_{n+1}\mathcal C\xrightarrow{d_0}S_n\mathcal C\)。</li>
+  <li>加法性から \(K(S_{n+1}\mathcal C)\simeq K(\mathcal C)\times K(S_n\mathcal C)\)。\(|S_\bullet(-)^{\simeq}|\) を施すと段ごとのファイバー列。</li>
+  <li>底が各段で連結なら実現はファイバー列を保つ（Bousfield–Friedlander 型、∞ トポスでは Puppe の定理）。\(S_0=0\) より連結。</li>
+  <li>結論：\(|S_\bullet\mathcal C^{\simeq}|\simeq\Omega|S_\bullet S_\bullet\mathcal C^{\simeq}|\)。局所化定理などの基本定理も同じ型。</li>
+</ul>
+
+<h3>証明そのもの</h3>
+<p>難しさ：\((A,Q)\) を固定しても拡大は \(\mathrm{Map}(Q,\Sigma A)\) で可縮でない。そのねじれが実現で効かなくなることを示す。系譜：Waldhausen（1985、Quillen の Theorem A/B 型）、McCarthy・Grayson（単体的な短縮）、∞ 版は Barwick、Blumberg–Gepner–Tabuada、Lurie の講義ノート、最近はコボルディズム圏による書き直し（Hermitian K 理論の 9 人論文）。どれも「実現とファイバーの交換」を Theorem A/B 型の判定法で制御する。</p>
+
+<!-- ============================================================ -->
+<h2>6. 非連結 K 理論</h2>
+
+<h3>なぜ必要か</h3>
+<p>Verdier 列 \(\mathcal A\to\mathcal B\to\mathcal B/\mathcal A\) に対し、Waldhausen のファイブレーション定理は \(\pi_0\) を除いてファイバー列を与える。\(K_0(\mathcal B)\to K_0(\mathcal B/\mathcal A)\) は全射とは限らない（冪等完備化、Thomason の稠密部分圏の分類）。Thomason–Trobaugh の局所化列・Zariski 降下は負の K 群まで含めて成り立つ。</p>
+
+<h3>構成：Calkin 圏</h3>
+<ul>
+  <li>スウィンドル：\(\mathcal C\subset\mathcal F=\mathrm{Ind}(\mathcal C)^{\omega_1}\)、\(T=\bigoplus_{\mathbb N}\) で \(\mathrm{id}\oplus T\simeq T\)、加法性 (B) から \(K(\mathcal F)\simeq0\)。</li>
+  <li>\(\mathrm{Calk}(\mathcal C)=\mathcal F/\mathcal C\)、\(K(\mathcal C)\simeq\Omega K(\mathrm{Calk}(\mathcal C))\)（\(\pi_0\) を除く）。</li>
+  <li>\(K^{\mathrm{nc}}(\mathcal C):=\operatorname{colim}_n\Omega^nK(\mathrm{Calk}^n(\mathcal C))\)。Verdier 商が \(\Sigma\) の役割（Karoubi、Schlichting、BGT）。リポジトリでの形は<a href="k-nonconnective-design.html">設計ノート</a>。</li>
+</ul>
+
+<h3>連結版との関係</h3>
+<ul>
+  <li>\(K\to K^{\mathrm{nc}}\) は \(\pi_{\ge1}\) で同型、\(\pi_0\) で \(K_0(\mathcal C)\hookrightarrow K_0(\mathrm{Idem}\,\mathcal C)\)。</li>
+  <li>普遍性：\(K\) は \(\mathrm{Mot}_{\mathrm{add}}\)、\(K^{\mathrm{nc}}\) は \(\mathrm{Mot}_{\mathrm{loc}}\) で単位により余表現される（BGT）。</li>
+  <li>\(K^{\mathrm{nc}}(\mathrm{Perf}\,X)=K^B(X)\)（Bass–Thomason–Trobaugh）。正則なら差はない。</li>
+  <li>関連：Weibel 予想 \(K_{-n}(X)=0\)（\(n\gt\dim X\)、Kerz–Strunk–Tamme）、Efimov の連続 K 理論。</li>
+</ul>
+
+<h3>独立に定義できるか・復元できるか</h3>
+<ul>
+  <li><b>独立性</b>：\(\mathrm{Mot}_{\mathrm{loc}}\) は K を使わずに作れるので、\(K^{\mathrm{nc}}:=\mathrm{map}(\mathcal U(\mathrm{Sp}^\omega),\mathcal U(\mathcal C))\) と定義すれば形式上は独立。ただし Calkin 構成の入力は連結 \(K\) で、余表現が Bass–Thomason–Trobaugh の K と一致することの証明にも連結 K とその基本定理（加法性、ファイブレーション定理）を使う。理論全体の土台は連結 K。</li>
+  <li><b>復元</b>：Thomason の共終性定理から
+  \[K(\mathcal C)\simeq\tau_{\ge0}K^{\mathrm{nc}}(\mathcal C)\times_{HK_0(\mathrm{Idem}\,\mathcal C)}HK_0(\mathcal C).\]
+  \(K_0\) は Grothendieck 群として初等的に定義できるので \(S_\bullet\) は不要。冪等完備なら \(K\simeq\tau_{\ge0}K^{\mathrm{nc}}\)。</li>
+</ul>
+
+<h3>原典確認：BGT の該当箇所（2026-10-27 追記）</h3>
+<p class="meta">Blumberg–Gepner–Tabuada, <i>A universal characterization of higher algebraic K-theory</i>, arXiv:1001.2282v4（2013）で確認した。番号は論文（<code>paper/paper.pdf</code>）§3.1 の引用「[5, Definition 8.1, Theorems 8.7 and 9.8, and Section 9.3]」と一致する。</p>
+
+<div class="table-wrap"><table>
+<tr><th>箇所</th><th>内容</th></tr>
+<tr><td>Def. 8.1</td><td>安定 presentable な \(D\) について、関手 \(E\colon\mathrm{Cat}^{\mathrm{ex}}_\infty\to D\) が<b>局所化不変量</b>であるとは、Morita 同値を同値に送り、filtered 余極限を保ち、完全列（Verdier 列）\(A\to B\to C\) を余ファイバー列 \(E(A)\to E(B)\to E(C)\) に送ること</td></tr>
+<tr><td>Thm. 8.7</td><td><b>普遍的な局所化不変量</b> \(\mathcal U_{\mathrm{loc}}\colon\mathrm{Cat}^{\mathrm{ex}}_\infty\to\mathcal M_{\mathrm{loc}}\)：任意の安定 presentable な \(D\) について \((\mathcal U_{\mathrm{loc}})^*\colon\mathrm{Fun}^L(\mathcal M_{\mathrm{loc}},D)\xrightarrow{\sim}\mathrm{Fun}_{\mathrm{loc}}(\mathrm{Cat}^{\mathrm{ex}}_\infty,D)\)</td></tr>
+<tr><td>§9.1（Def. 9.1〜9.6）</td><td>κ を非可算な正則基数とし、\(F_\kappa A=(\mathrm{Ind}_\omega A)^\kappa\)、\(\Sigma_\kappa A=F_\kappa A/A\)（Cat<sup>ex</sup><sub>∞</sub> の余ファイバー）。Lemma 9.4：\(K(F_\kappa A)\) は可縮（可算余積による Eilenberg の swindle）。Prop. 9.5：\(F_\kappa\)・\(\Sigma_\kappa\) は完全列を保つ。Lemma 9.7：κ-filtered 余極限を保つ。Def. 9.6：\(\mathbb K(A):=\operatorname{colim}_n\Omega^nK(\Sigma^{(n)}_\kappa A)\)</td></tr>
+<tr><td>Thm. 9.8</td><td><b>余表現可能性</b>：\(\mathrm{Map}(\mathcal U_{\mathrm{loc}}(\mathcal S^\omega_\infty),\mathcal U_{\mathrm{loc}}(A))\simeq\mathbb K(A)\)。\(\mathcal U_{\mathrm{loc}}\) は局所化不変量で、固定した対象からの Map は余ファイバー列を保つので、<b>非連結 K が局所化不変量であることがここから従う</b>（§9.3 冒頭）</td></tr>
+<tr><td>§9.3（Thm. 9.34）</td><td>DHKS 飽和で分解を持つ Waldhausen 圏の列 \(A\to B\to C\) について、安定化したホモトピー圏の列が三角圏の局所化列なら、\(\mathbb K(A)\to\mathbb K(B)\to\mathbb K(C)\) は余ファイバー列</td></tr>
+</table></div>
+
+<p><b>論文での使い方</b>：§3.1 で、Thomason–Trobaugh の perfect 複体の局所化の完全列（台付きの核 → \(\mathrm{Perf}(Y)\) → \(\mathrm{Perf}(Y\setminus Z)\)、係数つき）を非連結 K が fiber 列に送る、と言うためにまとめて引用している。使っているのは「非連結 K は局所化不変量である」という一点で、Def. 8.1 がその定義、Thm. 8.7・9.8 がその証明、§9.3 は Waldhausen 圏での言い換え。</p>
+
+<div class="box">
+<p class="label">本文との対応と注意</p>
+<ul>
+  <li>上の「構成：Calkin 圏」は BGT の \(\Sigma_\kappa\)（Def. 9.1）である（BGT 自身は Calkin とは呼ばない）。本文は \(\kappa=\omega_1\)、BGT は非可算な正則 κ 一般（Notation 8.2）。BGT の \(\Sigma_\kappa\) は Cat<sup>ex</sup><sub>∞</sub> の余ファイバーで、冪等完備化は入らない。</li>
+  <li>BGT の \(F_\kappa\) は合成 \(\mathrm{Cat}^{\mathrm{ex}}_\infty\to\mathrm{Pr}^L_{\mathrm{St},\omega}\to\mathrm{Cat}^{\mathrm{ex}(\kappa)}_\infty\to\mathrm{Cat}^{\mathrm{ex}}_\infty\)（(9.3)）として、Ind と κ-compact 部分の関手性から ∞ 関手になる。\(\mathrm{Pr}^L\) の機構を前提にしている。</li>
+  <li>非連結 K が局所化不変量であることの証明には二つの道がある。BGT は \(\mathcal M_{\mathrm{loc}}\) を作って余表現可能性（Thm. 9.8）から示す。BGT 自身が「\(F_\kappa\)・\(\Sigma_\kappa\) の性質 (i)〜(iv) は Schlichting の公理的な枠組み」と書いているとおり、Schlichting の道では swindle・完全列の保存と連結 K の fibration 定理から直接示せる。モチーフを作らずに済む後者のほうが、形式化には軽いと思われる（<a href="k-nonconnective-design.html">設計ノート</a> §11）。</li>
+</ul>
+</div>
+
+<!-- ============================================================ -->
+<h2>7. ∞ 圏的な Verdier 商</h2>
+<ul>
+  <li><b>普遍性</b>：安定な充満部分圏 \(\mathcal A\subset\mathcal C\)（通常 thick）に対し、exact 関手 \(p\colon\mathcal C\to\mathcal C/\mathcal A\) で \(\mathrm{Fun}^{\mathrm{ex}}(\mathcal C/\mathcal A,\mathcal D)\simeq\mathrm{Fun}^{\mathrm{ex}}_{\mathcal A\mapsto0}(\mathcal C,\mathcal D)\)。\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) での cofiber \(\mathcal C\sqcup_{\mathcal A}0\)。</li>
+  <li><b>構成</b>：\(W\)＝cofiber が \(\mathcal A\) に入る射。Dwyer–Kan 局所化 \(\mathcal C[W^{-1}]\) は安定で \(p\) は exact（Nikolaus–Scholze, On TC, Thm I.3.3）。写像空間 \(\mathrm{Map}_{\mathcal C/\mathcal A}(x,y)\simeq\operatorname{colim}_{y\to y',\,\mathrm{cofib}\in\mathcal A}\mathrm{Map}_{\mathcal C}(x,y')\)（分数計算の ∞ 版）。ホモトピー圏は古典的な Verdier 商。</li>
+  <li><b>presentable 版</b>：\(\mathrm{Ind}\,\mathcal C/\mathrm{Ind}\,\mathcal A\) は \(\mathcal A^\perp\) への Bousfield 局所化。\(\mathrm{Idem}(\mathcal C/\mathcal A)\simeq(\mathrm{Ind}\,\mathcal C/\mathrm{Ind}\,\mathcal A)^\omega\)（Thomason–Neeman）。冪等完備化の問題（§6 の \(K_0\) の非全射性）の出どころ。</li>
+  <li><b>Verdier 列・Karoubi 列</b>：\(\mathcal A\to\mathcal C\to\mathcal C/\mathcal A\) は fiber かつ cofiber 列。冪等完備化を許したものが Karoubi 列。\(\mathrm{Perf}_Z(X)\to\mathrm{Perf}(X)\to\mathrm{Perf}(U)\) は Karoubi 列だが一般に Verdier 列でない。</li>
+</ul>
+
+<h3>補足：Verdier 列と Karoubi 列（2026-10-28 追記）</h3>
+<p class="meta">定義の番号は 9 人論文 II（arXiv:2009.07224v5）の付録 A。付録 2 も参照。</p>
+
+<h4>前提</h4>
+<p>小さい安定 ∞ 圏と完全関手の ∞ 圏 \(\mathrm{Cat}^{\mathrm{ex}}_\infty\) で考える。冪等完備なものだけを集めたのが \(\mathrm{Cat}^{\mathrm{perf}}_\infty\)。</p>
+<ul>
+  <li><b>冪等完備</b>：冪等な射（\(e^2\simeq e\)）がすべて分裂する、つまりすべての retract（直和因子）が対象として存在すること。</li>
+  <li><b>冪等完備化</b> \(\mathcal C\mapsto\mathcal C^\natural=\mathrm{Idem}(\mathcal C)\)：retract を形式的に付け足す操作。</li>
+  <li><b>Karoubi 同値</b>：冪等完備化した後で同値になる完全関手。言い換えると、充満忠実で、値域のすべての対象が像の retract になっている関手（dense な埋め込み）。</li>
+</ul>
+
+<h4>Verdier 列</h4>
+<p><b>定義</b>（II.A.1.1）：列 \(\mathcal A\xrightarrow{i}\mathcal B\xrightarrow{p}\mathcal C\)（合成は 0）が \(\mathrm{Cat}^{\mathrm{ex}}_\infty\) で fiber 列かつ cofiber 列であること。具体的には次の二つ。</p>
+<ul>
+  <li><b>\(i\) は Verdier inclusion</b>：充満忠実で、像が retract で閉じている（thick）（A.1.9）。</li>
+  <li><b>\(p\) は Verdier projection</b>：\(\mathcal A\) による局所化で、\(\mathcal C\simeq\mathcal B/\mathcal A\)（A.1.7）。</li>
+</ul>
+<p>Verdier 商 \(\mathcal B/\mathcal A\) は「cofiber が \(\mathcal A\) に入る射」を反転する Dwyer–Kan 局所化で、普遍性 \(\mathrm{Fun}^{\mathrm{ex}}(\mathcal B/\mathcal A,\mathcal D)\simeq\mathrm{Fun}^{\mathrm{ex}}_{\mathcal A\mapsto0}(\mathcal B,\mathcal D)\) と分数表示を持つ（上の「構成」）。例：BGT の \(\mathcal A\to\mathrm{Ind}_\omega(\mathcal A)^\kappa\to\Sigma_\kappa\mathcal A\)（Def. 9.1）。</p>
+
+<h4>Karoubi 列</h4>
+<p><b>定義</b>（II.A.3.6）：三つの圏を冪等完備化したうえで、\(\mathrm{Cat}^{\mathrm{perf}}_\infty\) で fiber 列かつ cofiber 列であること。言い直すと（A.3.8 iii)）、\(\mathcal A\to\mathcal B\) が充満忠実で、誘導される \(\mathcal B/\mathcal A\to\mathcal C\) が Karoubi 同値であること。Verdier 列では \(\mathcal B/\mathcal A\simeq\mathcal C\) だったものを、retract を除いて一致すればよいと緩めた形で、Verdier 列は Karoubi 列だが逆は成り立たない。</p>
+<p><b>典型例</b>（Thomason–Trobaugh）：\(\mathrm{Perf}_Z(X)\to\mathrm{Perf}(X)\to\mathrm{Perf}(U)\)。\(\mathrm{Perf}(X)/\mathrm{Perf}_Z(X)\to\mathrm{Perf}(U)\) は充満忠実だが、\(\mathrm{Perf}(U)\) の対象は retract を除いてしか X に持ち上がらない。論文の定理 3.1 の証明（§3.1）が使うのはこの列。</p>
+
+<h4>違いが重要になる理由</h4>
+<ul>
+  <li><b>K<sub>0</sub> がずれる</b>：冪等完備化で変わる K 群は K<sub>0</sub> だけ（Lurie 281 L18 Prop. 1）。Karoubi 列が Verdier 列かどうかは K<sub>0</sub> の全射性で判定できる（9 人論文 A.3.10、背後は Thomason の分類 A.3.2）。</li>
+  <li><b>関手の分類</b>（II.2.7.1、1.6.5）：additive（分裂した Verdier 列を fiber 列に送る。例：連結 K）、Verdier-localising（Verdier 列）、Karoubi-localising（Karoubi 列。Verdier-localising かつ Karoubi 不変、と同値。例：<b>非連結 K</b>）。連結 K は Karoubi 列に対して π<sub>0</sub> で \(K_0(\mathcal C)/K_0(\mathcal C')\) だけずれる（Barwick Th. 10.11）。非連結 K は Karoubi 不変なので、Thomason–Trobaugh の列もそのまま fiber 列に送る。論文が非連結 K を必要とする理由の一つ。</li>
+  <li><b>Ind による言い換え</b>（A.3.12、Thomason–Neeman）：\(\mathcal A\to\mathcal B\to\mathcal C\) が Karoubi 列 ⇔ \(\mathrm{Ind}\,\mathcal A\to\mathrm{Ind}\,\mathcal B\to\mathrm{Ind}\,\mathcal C\) が Verdier 列。このとき後者は分裂（Bousfield 局所化）し、\(\mathrm{Idem}(\mathcal B/\mathcal A)\simeq(\mathrm{Ind}\,\mathcal B/\mathrm{Ind}\,\mathcal A)^\omega\)。</li>
+  <li><b>注意</b>（A.3.8 の警告）：冪等完備な圏の Verdier 商は冪等完備とは限らない。Cat<sup>perf</sup> で余ファイバーを取るときは商のあとでもう一度冪等完備化する（Efimov の \(\mathrm{Calk}_\kappa=(\mathrm{Ind}^\kappa/A)^{\mathrm{Kar}}\)）。BGT の \(\Sigma_\kappa\) は Cat<sup>ex</sup> の余ファイバーなので冪等完備化は付かない。</li>
+</ul>
+
+<h3>形式化の状況（2026-10-28 調査、基準コミット <code>cbb891432</code>）</h3>
+<p><b>Verdier 列の定義と例はあるが、Verdier 商を一般に作る定理はない。</b>パスは <code>SerrePositivity/</code> からの相対パス。</p>
+
+<h4>定義：二つある</h4>
+<div class="table-wrap"><table>
+<tr><th>定義</th><th>中身</th><th>場所</th></tr>
+<tr><td><code>IsVerdierSequence i q</code>（束ねた版 <code>VerdierSequence</code>）</td><td>\(i\) が充満忠実、\(q b\) が零 ⇔ \(b\) が \(i\) の本質像に入る（核の条件）、\(q\) が「cofiber が本質像に入る辺」に関する局所化（<code>IsLocalization</code>、<code>cofiberLocalizingEdges</code>）。「商の存在は主張しない」</td><td>KST/LocalizingInvariants/VerdierSequence</td></tr>
+<tr><td><code>IsStableVerdierSequence i q</code></td><td>\(i\) が完全かつ充満忠実、\(q\) が完全、\(i\circ q\) が零、任意の安定な \(Y\) について「\(i\) の像を零にする完全関手の ∞ 圏」への前合成が同値（完全関手の ∞ 圏での普遍性）。「冪等完備化を追加しない」</td><td>InfinityCategories/Derived/StableVerdierSequence</td></tr>
+</table></div>
+<ul>
+  <li>どちらも Verdier 列（Karoubi 列ではない）。核の条件から本質像は核と一致するので、thick 性は前者では自動的に従う。</li>
+  <li>局所化不変量の定義（<code>IsLocalizingInvariant</code>、<code>IsRelativeLocalizingInvariant</code>）は前者を使い、四角形として提示した <code>VerdierDiagram</code>（KST/LocalizingInvariants/VerdierDiagrams）と提示の存在 <code>VerdierSequence.presentation</code> を経由する。</li>
+  <li>非連結 K（K-7）と dg 側は後者を使う。<b>二つの定義を結ぶ補題は見当たらない</b>（宣言名で検索した範囲）。</li>
+</ul>
+
+<h4>例として示されている Verdier 列</h4>
+<ul>
+  <li>dg の Drinfeld 商（β3）：<code>resolvedDGQuotient_isStableVerdierSequence</code>、<code>dgQuotient_isStableVerdierSequence</code>（局所 K-flat の場合）。</li>
+  <li><b>dg 側の Calkin 懸垂</b>：<code>dgKappaSuspension_isStableVerdierSequence</code>（KST/NonConnective/DGKappaSuspension）。perfect 対象の安定閉包 → cone → 懸垂 が Verdier 列であること。BGT の \(\mathcal A\to F_\kappa\mathcal A\to\Sigma_\kappa\mathcal A\) の dg 版にあたる。</li>
+  <li>dg gluing の引き戻し：<code>dgGluingPullback_isStableVerdierSequence</code>。</li>
+  <li>随伴による判定：<code>isVerdierSequence_of_adjoint</code>（KST/LocalizingInvariants/AdjointVerdier）。\(q\) が余単位が可逆な右随伴 \(j\) を持てば Verdier 列（分裂する場合、Bousfield 局所化の形）。</li>
+</ul>
+
+<h4>Verdier 商を一般に作るのに必要な部品</h4>
+<div class="table-wrap"><table>
+<tr><th>部品</th><th>状態</th><th>Lean・場所</th></tr>
+<tr><td>局所化の定義（普遍性）</td><td>完成</td><td><code>IsLocalization</code>（InfinityCategories/F1B/Localization）</td></tr>
+<tr><td>小さい ∞ 圏の Dwyer–Kan 局所化の<b>存在</b></td><td><b>ない</b></td><td>存在するのは個別の例（反射的部分圏、first vertex 写像、dg 商、Bousfield 局所化）だけ</td></tr>
+<tr><td>局所化の判定法</td><td>あり</td><td>変形による判定、右 Kan 拡張による判定など（F1B に移動済み、第 4 章）</td></tr>
+<tr><td>局所化が安定・完全になること</td><td>一般形は<b>ない</b>。dg 商・dg Calkin については示されている</td><td>—</td></tr>
+<tr><td>分数計算</td><td>Verdier 列が<b>与えられたとき</b>に右分数表示を取り出す補題群はある。分数で商を<b>作る</b>方向はない</td><td>KST/LocalizingInvariants/Verdier*（<code>VerdierCosliceFractionNormalization</code>、<code>VerdierTwoArrowRoofComparison</code> ほか）</td></tr>
+<tr><td>本質像、retract 閉包（thick 閉包）</td><td>完成</td><td><code>essentialImage</code>（KST/LocalizingInvariants/VerdierSequence）、<code>retractClosure</code>（InfinityCategories/F2/Idempotent/Retracts）</td></tr>
+<tr><td>Cat<sup>ex</sup><sub>∞</sub> の中の余極限（余ファイバーとしての商）</td><td><b>ない</b>（StableInfinity の余極限の定理は見当たらない）</td><td>—</td></tr>
+<tr><td>Ind、その安定性、κ-compact 部分</td><td>完成</td><td><code>IndInfinity</code>、<code>ind_isStable_unconditional</code>、<code>IsKappaCompact</code>（F2）</td></tr>
+<tr><td>presentable、Bousfield 局所化</td><td>完成（局所化であることも示されている：<code>bousfieldLocalizationFunctor_isLocalization_generatedEdges</code>）</td><td>F2/Presentable</td></tr>
+<tr><td>冪等完備化</td><td>完成</td><td><code>Idem</code>、<code>IsIdempotentCompletion</code>（F2/Idempotent）</td></tr>
+<tr><td>Karoubi 同値・Karoubi 列（∞ 圏）</td><td><b>ない</b>（三角圏・通常の圏の側の Karoubi envelope はある）</td><td>—</td></tr>
+<tr><td>Thomason–Neeman</td><td><b>ない</b></td><td>—</td></tr>
+</table></div>
+
+<div class="box">
+<p class="label">見立て：Verdier 商を作る二つの道</p>
+<ul>
+  <li><b>(A) Dwyer–Kan 局所化と分数</b>（Nikolaus–Scholze Thm. I.3.3 の道）：小さい ∞ 圏の局所化の存在を一般に作る必要がある。モデル圏を使わない方針のもとでは重い。</li>
+  <li><b>(B) Ind と Bousfield 局所化</b>：\(\mathrm{Ind}\,\mathcal B\) の中で \(\mathrm{Ind}\,\mathcal A\) に直交する部分への Bousfield 局所化を取り、compact 対象を取る。部品（Ind、安定性、presentable、Bousfield 局所化、κ-compact、冪等完備化）は揃っている。足りないのは、安定 presentable の局所化が安定であることと、Thomason–Neeman（compact 対象がもとの商の冪等完備化になること）。この道で得られるのは Karoubi 列の側（冪等完備化込み）になる。</li>
+</ul>
+<p>非連結 K だけが目的なら、K は Karoubi 不変なので (B) で足りる。Verdier 列の版が必要な箇所は、dg 側で既に示されている例（Drinfeld 商、dg Calkin）で賄えている。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>8. DG 圏の K 理論との比較</h2>
+
+<h3>dg nerve（HA §1.3.1）</h3>
+<p>ホモロジー的次数。\(n\) 単体は対象 \(X_0,\dots,X_n\) と、\(I=\{i_-\lt i_m\lt\cdots\lt i_1\lt i_+\}\subseteq[n]\)（\(|I|\ge2\)）ごとの \(f_I\in\mathrm{Map}_{\mathcal C}(X_{i_-},X_{i_+})_m\)（\(m=|I|-2\)）で、</p>
+\[
+df_I=\sum_{j=1}^m(-1)^j\Bigl(f_{I\setminus\{i_j\}}-f_{\{i_j\lt\cdots\lt i_1\lt i_+\}}\circ f_{\{i_-\lt i_m\lt\cdots\lt i_j\}}\Bigr).
+\]
+<ul>
+  <li>\(n=2\)：\(df_{012}=f_{12}f_{01}-f_{02}\)（合成と \(f_{02}\) のホモトピー）。\(n=3\)：\(f_{0123}\) は結合法則の境界を埋める。</li>
+  <li>端点固定の \(f_I\) は \(\mathfrak C[\Delta^n]\) の立方体 \((\Delta^1)^{j-i-1}\) の胞体と一対一で、\(N_{\mathrm{dg}}(\mathcal C)_n=\mathrm{Fun}_{\mathrm{dg}}(C_*(\mathfrak C[\Delta^n]),\mathcal C)\) と見なせる（ホモトピー整合的ナーブの dg 版）。</li>
+  <li>写像空間 \(\simeq\mathrm{DK}(\tau_{\ge0}\mathrm{Map}_{\mathcal C})\)、ホモトピー圏 \(H_0(\mathcal C)\)、pretriangulated なら安定。</li>
+</ul>
+
+<h3>二つの定義</h3>
+<div class="table-wrap"><table>
+<tr><th></th><th>明示的な定義（Lurie が採用）</th><th>\(N^{hc}(\mathrm{DK}(\tau_{\ge0}\mathcal C))\)</th></tr>
+<tr><td>擬圏であること</td><td>直接計算（HA Prop. 1.3.1.10）</td><td>Kan 豊穣 ⇒ 擬圏（HTT §1.1.5）から自動</td></tr>
+<tr><td>準備</td><td>鎖複体だけ</td><td>DK を Alexander–Whitney で monoidal に</td></tr>
+<tr><td>単体</td><td>有限個の \(f_I\)</td><td>\(\mathfrak C[\Delta^n]\) からの単体的関手</td></tr>
+</table></div>
+<p>内部ホーン \(\Lambda^n_k\)（\(0\lt k\lt n\)）で欠けるのは \(f_{[n]}\) と \(f_{[n]\setminus\{k\}}\) だけ。\(k\) は内部の点なので \(df_{[n]}\) の式に \(f_{[n]\setminus\{k\}}\) が係数 \(\pm1\) で現れる。\(f_{[n]}:=0\) として解き、残りの関係は \(d^2=0\) から従う。外側のホーンでは \(f_{[n]\setminus\{0\}}\) が和に現れず解けない（擬圏だが Kan でない）。二つの定義は同型でなく圏同値（HA §1.3.1）。形式化には明示的な定義が向く。</p>
+
+<h3>可換な三角形</h3>
+\[
+K^{\mathrm{dg}}\simeq K\circ N_{\mathrm{dg}}\circ\mathrm{Perf}_{\mathrm{dg}}\colon\ \mathrm{dgCat}_k\to\mathrm{Sp}.
+\]
+<ul>
+  <li>DG → ∞：\(\mathcal A\mapsto N_{\mathrm{dg}}(\mathrm{Perf}_{\mathrm{dg}}\mathcal A)\)（\(\mathcal A\) 自体は pretriangulated とは限らない）。Cohn：\(\mathrm{dgCat}_k[\mathrm{Mor}^{-1}]\simeq\mathrm{Cat}^{\mathrm{perf}}_k\)（\(k\) 線形な冪等完備安定 ∞ 圏）。</li>
+  <li>DG 側の K：完全 dg 加群の Waldhausen 圏（Keller）。Tabuada の DG 版普遍不変量。モデル圏的。</li>
+  <li>対象ごとの比較：Toën–Vezzosi（Waldhausen K は Dwyer–Kan 局所化だけで決まる、仮定は原典確認）、Barwick・BGT。自然性まで込めた明示的な文献は未確認。</li>
+  <li>三角圏だけでは足りない：Schlichting の例（\(\mathbb Z/p^2\) と \(\mathbb F_p[\varepsilon]/\varepsilon^2\)）。</li>
+</ul>
+
+<h3>普遍性による証明</h3>
+<ol>
+  <li>定義域の同一視：Cohn の同値 \(\Phi\)。比べる相手は BGT の \(k\) 線形版 \(\mathrm{Mot}^k_{\mathrm{add}}\)。</li>
+  <li>加法的不変量の条件（\(E(0)=0\)、フィルター余極限、分裂完全列）は両側で同じ形なので \(\mathrm{Mot}^{\mathrm{dg}}_{\mathrm{add}}\simeq\mathrm{Mot}^k_{\mathrm{add}}\)、\(\mathcal U(k)\mapsto\mathcal U(\mathrm{Perf}\,k)\)。</li>
+  <li>\(\mathrm{map}(\mathcal U(\mathrm{Perf}\,k),\mathcal U(\mathcal B))\simeq K(\mathrm{Fun}^{\mathrm{ex}}_k(\mathrm{Perf}\,k,\mathcal B))=K(\mathcal B)\)。</li>
+  <li>\(K^{\mathrm{dg}}(\mathcal A)\simeq\mathrm{map}(\mathcal U(k),\mathcal U(\mathcal A))\simeq K(\mathrm{Perf}\,\mathcal A)\)。余表現関手なので自然性は米田から自動。</li>
+</ol>
+<p>限界：仕事は両側の余表現定理（加法性定理を使う）に移っただけ。Tabuada のモチーフ（モデル圏・derivator）が ∞ 圏の意味で普遍的な対象を表すことの確認が要り、明示的な文献は未確認。非連結 K・局所化不変量でも同じ論法が使える。</p>
+
+<div class="box">
+<p class="label">主な文献</p>
+<ul>
+  <li>Lurie, Higher Algebra（§1.3.1 dg nerve、§1.4 安定化、§4.8 \(\mathrm{Pr}^L\)）、HTT §1.1.5。</li>
+  <li>Blumberg–Gepner–Tabuada, A universal characterization of higher algebraic K-theory。Barwick, On the algebraic K-theory of higher categories。</li>
+  <li>Nikolaus–Scholze, On topological cyclic homology（Verdier 商は Thm I.3.3）。Gepner–Groth–Nikolaus, Universality of multiplicative infinite loop space machines。Robalo。</li>
+  <li>Waldhausen, Algebraic K-theory of spaces。Thomason–Trobaugh。Schlichting。Toën–Vezzosi, A remark on K-theory and S-categories。Cohn。Tabuada, Higher K-theory via universal invariants。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>\(\mathrm{Sp}=\lim_\Omega\mathcal S_*\) は普遍性（自由安定化、\(\mathrm{Pr}^L\) の冪等代数）で特徴づけられ、smash 積は一意。モデル圏は基礎定理の証明と古典模型との比較にしか残らない。</li>
+  <li>連結 K の二つの構成：\(S_\bullet\)（\(\mathrm{Ar}[n]\)、core、\(\Delta^{\mathrm{op}}\) 上の余極限、反復で \(\Omega\) スペクトル）と群完備化（bar 構成、\(\mathrm{CMon}^{\mathrm{gp}}\simeq\mathrm{Sp}_{\ge0}\)）。分裂する場合は一致。</li>
+  <li>\(S_\bullet\) とスパン（Q 構成）は edgewise subdivision で結ばれ、六関手形式の \(\mathrm{Corr}\) と同種。</li>
+  <li>非自明な中身は加法性定理と認識原理。加法性からスウィンドル、Calkin 圏、非連結 K が出る。</li>
+  <li>dg nerve は明示的定義で、擬圏性は内部ホーンの線形代数。DG 版 K と ∞ 版 K は Cohn の同値と普遍性で一致する。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>付録　形式化との対応</h2>
+<p class="meta">基準コミット <code>33c28d2f3</code>（2026-10-27）。本文（§1〜§8）はコードを読まずに書いた数学の章なので手を入れず、現在の形式化との対応をこの付録に分けて記録する。パスは <code>SerrePositivity/</code> からの相対パス。</p>
+
+<h3>全体の印象</h3>
+<p>本文は<b>普遍性による ∞ 圏的な扱い</b>（\(\mathrm{Sp}=\lim_\Omega\mathcal S_*\)、\(\mathrm{Pr}^L\)、モチーフ）を軸にしている。形式化は<b>具体的な模型</b>（Sp は BF の Ω スペクトラム、実現は単体的集合の実現）で作られている。「主経路でモデル圏を使わない」点は一致する。K 側が最上位 <code>Spectra/</code> から import しているのは点付き単体的集合の基礎（<code>Spectra.PointedSimplicialSet.*</code>、<code>Spectra.Pointed.*</code> など）だけで、モデル圏（<code>Spectra/ModelCategory</code>）を import しているのは引用の界面 <code>Inputs/Homotopy</code> だけである。普遍性の側（自由安定化、smash 積の一意性、モチーフ）はほぼ形式化されていない。</p>
+
+<h3>節ごとの対応</h3>
+<div class="table-wrap"><table>
+<tr><th>本文の節</th><th>形式化</th><th>差</th></tr>
+<tr><td>§1 Sp</td><td><code>Sp := SimplicialNerve OmegaSpectrum</code>（BF の Ω スペクトラム、KST/Spectra/CoherentNerve）。quasicategory であることは完成。安定性は条件付き（<code>sp_isStable (hB : NativeLoopComparison)</code>、Sp-2 で作業中）。\(\Omega_\infty\) = <code>nativeLoop</code></td><td>\(\lim_\Omega\mathcal S_*\) との比較、\(\Sigma^\infty_+\)、自由安定化・\(\mathrm{Pr}^L\) の普遍性、<b>Sp 上の smash 積（対称モノイダル構造）はない</b>（smash は点付き単体的集合の段階だけ）。t 構造・Brown 表現もない</td></tr>
+<tr><td>§2 \(S_\bullet\)</td><td><b>一般の安定 ∞ 圏で形式化済み</b>：<code>sConstruction n C</code>（<code>arNerve n</code> からの <code>IsGapped</code> な図式、KST/SConstruction/Gapped）、core と実現 <code>kanSRealization</code>、<code>kSpace C</code>（\(\Omega\lvert\cdots\rvert\)、KST/SConstruction/KSpace）、\(\pi_1=K_0\)（<code>kZeroFundamentalGroupEquiv</code>）、反復による Ω スペクトラム（<code>kKanSequence</code>、<code>kOmegaSpectrum</code>）</td><td>Step 1〜4 とスペクトラム化にそのまま対応する。実現は 𝒮 の ∞ 余極限ではなく単体的集合の実現。関手性は <code>StableModel</code>（安定な quasicategory の束）の<b>通常の圏</b>の射についてだけ（<code>kSpectrumMap</code>）で、StableInfinity 上の ∞ 関手ではない</td></tr>
+<tr><td>§3 ナーブ型・スパン・Q 構成</td><td>なし（edgewise 細分は F1 にあるが straightening 用）</td><td>Q 構成と、edgewise による \(\lvert S_\bullet\rvert\simeq BQ\) はない</td></tr>
+<tr><td>§4 群完備化</td><td>𝒮 の中の可換モノイド CMon(𝒮) や \(\mathrm{CMon}^{\mathrm{gp}}\simeq\mathrm{Sp}_{\ge0}\) は<b>ない</b>。KST/Comparison（L2）に単体的モノイドの群完備化と分類空間があるが、plus 構成に向けた古典比較で、経路正本の決定 16 により<b>凍結</b></td><td>第二の構成は形式化の対象外</td></tr>
+<tr><td>§5 加法性定理</td><td><b>一般の安定 ∞ 圏で形式化済み</b>（L1c、<code>StableModel</code> 上、Quillen A 型の証明。<code>objectSAdditivityMap_localized_isIso</code> ほか、KST/SConstruction/ObjectAdditivity）。Ω スペクトラムになることも完成（L1e）</td><td>(A) 形と「Ω スペクトラムになること」に対応する。(B)（関手版）と (C)（分裂 Verdier 列版）の形は未確認</td></tr>
+<tr><td>§6 非連結 K</td><td>dg 側で対象ごとに完成（<code>dgNonconnectiveK</code>、swindle は <code>dgKappaSwindleInfinityIso</code> ほか）。∞ 側の Calkin は未着手（<a href="k-nonconnective-design.html">設計ノート</a>）。Thomason の共終性に関わる部分は KST/Fibration（<code>verdierKZeroCofinalityObstruction_subsingleton</code> など）</td><td>本文は \(\kappa=\omega_1\)、コードは正則な \(\kappa&gt;\omega\) 一般。モチーフ \(\mathrm{Mot}_{\mathrm{add}}\)・\(\mathrm{Mot}_{\mathrm{loc}}\) による普遍性、\(K\simeq\tau_{\ge0}K^{nc}\times\cdots\) の復元公式はない</td></tr>
+<tr><td>§7 Verdier 商</td><td>一般の Dwyer–Kan 局所化による構成は<b>ない</b>。局所化の定義（F1B）、Drinfeld 商 = Verdier 商（dg、β3）、Verdier 列の定義と判定補題（KST/LocalizingInvariants）、Ind の中の Bousfield 局所化（<code>bousfieldReflection</code>、F2/Presentable）はある。Karoubi 列は dg 側（DifferentialGraded/Verdier）</td><td>Thomason–Neeman（\(\mathrm{Idem}(\mathcal C/\mathcal A)\simeq(\mathrm{Ind}\,\mathcal C/\mathrm{Ind}\,\mathcal A)^\omega\)）はない。設計ノートの \(\Sigma_\infty\) の道筋に必要な部品</td></tr>
+<tr><td>§8 dg nerve と DG の K</td><td>dg nerve と quasicategory 性（線形な充填）、二つの定義の同値（γ1.5、任意の可換環、Alexander–Whitney、<a href="05-gamma-bridges.html">第 5 章</a>）は<b>完成</b>。dg 側の K（<code>dgKInputK</code>）も完成</td><td><b>次数の規約が異なる</b>：本文は HA どおりのホモロジー次数、コードはコホモロジー次数（HA の \(f_I\) の符号はそのまま、DGNerve/README の規約）。式を突き合わせるときは読み替えが要る。Cohn の同値、Tabuada のモチーフ、普遍性による \(K^{\mathrm{dg}}\simeq K\circ N_{\mathrm{dg}}\circ\mathrm{Perf}\) の証明はない</td></tr>
+</table></div>
+
+<div class="box">
+<p class="label">この比較で分かったこと</p>
+<p>連結 K は、<b>一般の安定 ∞ 圏に対して、対象ごと・厳密な射についての関手性まで完成</b>している（\(S_\bullet\)、加法性、Ω スペクトラム、\(\pi_1=K_0\)）。欠けているのは「StableInfinity 上の <b>∞ 関手</b>にすること」だけで、設計ノートの \(K_\infty\) の記述をこれに合わせて直した。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>付録 2　後継文献の比較</h2>
+<p class="meta">2026-10-28。BGT の後継・関連文献 4 本を、原典を取得して読んだ結果の要約。定理番号は下に記した版のもの。各文献の読解は分担して行い、BGT との突き合わせと結論は原典の該当箇所を確認したうえで書いた。読めていない部分・確認できなかった点は「未確認」と書いた。</p>
+
+<h3>対象と版</h3>
+<div class="table-wrap"><table>
+<tr><th>文献</th><th>版</th><th>読んだ範囲</th></tr>
+<tr><td>Calmès–Dotto–Harpaz–Hebestreit–Land–Moi–Nardin–Nikolaus–Steimle, <i>Hermitian K-theory for stable ∞-categories</i> I・II・III（arXiv:2009.07223／07224／07225）。以下「9 人論文」</td><td>I = v3（2021-12-27）、II = v5（2025-04-11）、III = v4（2026-04-27）</td><td>関係する部分はほぼ II の付録 A と §2.7。III（Dedekind 環）はほぼ無関係</td></tr>
+<tr><td>Barwick, <i>On the algebraic K-theory of higher categories</i>（arXiv:1204.3607、J. Topol.）</td><td>v6（2015-11-06）</td><td>全体。序論の「Pr. 8.2.2」「Pr. 9.24」は本文ではそれぞれ Cor. 8.2.2、Th. 9.24。姉妹論文 <i>On exact ∞-categories and the theorem of the heart</i>（arXiv:1212.5232、Compositio 151 (2015)）は未読</td></tr>
+<tr><td>Efimov, <i>K-theory and localizing invariants of large categories</i>（arXiv:2405.12169）</td><td>v4（2026-10-05）</td><td>序論全体、§1.1〜1.4、§2.1、§2.9、§8.1〜8.3。§3、§8.5、付録 B は主張のみ。§2.10〜§7、§9、§10、付録 A の細部は未確認</td></tr>
+<tr><td>Lurie, <i>Algebraic K-Theory and Manifold Topology</i>（Harvard Math 281 講義録、2014）</td><td>people.math.harvard.edu/~lurie/281.html のミラー（math.ias.edu は取得できず）</td><td>全 38 講。K 理論の一般論は Lecture 14〜21。L22〜32 はアセンブリ写像と Whitehead 空間</td></tr>
+</table></div>
+
+<h3>9 人論文</h3>
+<ul>
+  <li><b>Verdier 列</b>（II.A.1.1）：Cat<sup>ex</sup><sub>∞</sub> で fiber 列かつ cofiber 列。inclusion ⇔ 充満忠実で像が retract で閉じる（A.1.9）、projection ⇔ 局所化 ⇔ \(D/\ker p\simeq E\)（A.1.7）、列全体の言い換えは A.1.10。分裂版は A.2.1（BGT の split-exact は本論文の right-split）。</li>
+  <li><b>Karoubi 列</b>（A.3.6）：冪等完備化 ♮ の後で fiber 列かつ cofiber 列。⇔ \(f\) が充満忠実で \(D/C\to E\) が Karoubi 同値（A.3.8 iii)）。注意として、<b>冪等完備な圏の Verdier 商は冪等完備とは限らない</b>（A.3.8 の警告）。Verdier と Karoubi の違いは \(K_0\) の全射性で判定できる（A.3.10、背後は Thomason の分類 A.3.2）。Karoubi 列 ⇔ Ind の列が Verdier 列（A.3.12、Thomason–Neeman）。</li>
+  <li><b>Verdier 商</b>（A.1.4〜A.1.8）：「C を法とする同値」での局所化として定義。存在・安定性・分数公式 \(\hom_{D/C}([x],[y])\simeq\operatorname{colim}_{[z\to y]}\hom(x,\mathrm{cof})\) は Nikolaus–Scholze, On TC, Thm. I.3.3 に任せている。商の核は像の retract 閉包（A.1.8）。</li>
+  <li><b>局所化関手</b>（II.2.7.1、1.6.4〜1.6.5、1.6.9）：additive／Verdier-localising／Karoubi-localising の三種類。値域が安定なら「列を fiber 列に送る」で十分（1.6.4）。Karoubi-localising ⇔ Verdier-localising かつ Karoubi 不変（1.6.5）。非連結 K が Karoubi-localising であることは BGT の引用のみ（1.6.9）。\(K\circ\natural\) は additive だが Verdier-localising ではない。</li>
+  <li><b>K の構成</b>：本命は Q 構成（スパン圏）で \(K\simeq\Omega\lvert\mathrm{Span}\rvert\)（2.7.2〜2.7.6）。S 構成は edgewise による \(\lvert FQ\rvert\simeq\lvert FS\rvert\) を通して \(\pi_0\) の計算に使うだけ。反復した Q からは連結 K しか出ない（3.4.9）。</li>
+  <li><b>加法性</b>：split Verdier projection が双カルテシアン fibration であること（2.6.2）から、コボルディズム圏の議論で示す（2.5.1、2.7.4）。<b>K の fibration 定理は自前では証明せず</b> [HLS23, §6] を引用。</li>
+  <li><b>非連結 K の構成は I〜III にない</b>（Karoubi-localising の理論は Paper IV（準備中）に先送り）。近いものは Tate・Latt による delooping \(K(\mathrm{Tate}\,C)\simeq\mathbb S^1\otimes K(C^\natural)\)（A.5.1〜A.5.2）で、Calkin と同じ形の別の模型。</li>
+  <li><b>背景</b>：HTT・HA・Nikolaus–Scholze が中心。モデル圏は実質使わない。</li>
+</ul>
+
+<h3>Barwick</h3>
+<ul>
+  <li><b>枠組み</b>：pair（Df. 1.11）、Waldhausen ∞ 圏（Df. 2.7）。安定 ∞ 圏はすべての射を ingressive とする pair（Ex. 2.11）。ラベル付き Waldhausen ∞ 圏（Df. 9.2）。</li>
+  <li><b>K の定義</b>：core を取る関手 ι の加法化 \(K:=D\iota\)（Df. 10.1）。具体的には \(K(C)\simeq\Omega(\iota_{N\Delta^{op}}S(C))\)（Cor. 10.6.1）で、右辺は左 fibration の全空間。S• は Waldhausen cocartesian fibration として作る（Th. 5.20、Pr. 5.15）。</li>
+  <li><b>普遍性</b>：Goodwillie 微積分の言葉で、加法的 ⇔ \(\varphi\circ S_\bullet\) が群対象 ⇔ excisive（Th. 7.4〜7.8）。\(\mathrm{End}(K)\simeq QS^0\)（Cor. 10.5.2）。要は S が懸垂と一致すること（Pr. 6.9）で、証明は ∞ 版の Quillen A。</li>
+  <li><b>基本定理</b>：加法性（Pr. 7.12）、swindle（Pr. 8.1）、近似定理（Cor. 8.2.2）、<b>fibration 定理</b>（Th. 8.9、Th. 9.24。条件 enough cofibrations は Df. 9.21）、ラベル付き K と局所化の K の比較（Cor. 10.10.2）、<b>共終性</b>（Th. 10.11：\(K(C')\to K(C)\to K_0(C)/K_0(C')\)）。古典的 Waldhausen K との一致（Cor. 10.6.2 ほか）。</li>
+  <li><b>非連結 K は扱わない</b>（p.5、p.7 に明記）。BGT との比較定理もない。</li>
+  <li><b>straightening</b>：枠組みは cocartesian fibration の言葉で書き、関手との辞書として Cat<sub>∞</sub> 値の straightening（HTT Th. 3.2.0.1）を使う（Pr. 3.16 の周辺）。ただし個々の構成では straightening を選ばずに済ませる（Constr. 4.18：「We can avoid choosing a straightening of the Waldhausen cocartesian fibration」）。</li>
+</ul>
+
+<h3>Efimov</h3>
+<ul>
+  <li><b>K<sup>nc</sup> が局所化不変量であることは証明していない</b>。BGT と Barwick から借りた前提（p.3）。Schlichting への言及もない。</li>
+  <li><b>規約</b>：Cat<sup>perf</sup> は小さく冪等完備な安定 ∞ 圏（§1.1）。短完全列は「直和因子を除いた Verdier 列」（p.11、Def. 1.9 2)、Rem. 1.10 5)）。局所化不変量は \(F(0)=0\) で fiber-cofiber 列を fiber 列に送るもの（§8.1、p.103）。</li>
+  <li><b>Calkin 圏</b>：\(\mathrm{Calk}_\kappa(A)=(\mathrm{Ind}(A)^\kappa/A)^{\mathrm{Kar}}\)（§2.9、<b>冪等完備化つき</b>）。短完全列 \(A\to\mathrm{Ind}(A)^\kappa\to\mathrm{Calk}_\kappa(A)\)（Prop. 2.59 の証明）、\(F(A)\simeq\Omega F(\mathrm{Calk}_{\omega_1}A)\)（Prop. 8.7 の証明）。「Calkin 構成は完全列を保つ」（Prop. 2.61、dualizable 版）の議論は、小さい圏の \(\Sigma_\kappa\) が Verdier 列を保つことの雛形になる。</li>
+  <li><b>主結果</b>（大きい圏、今の目標には不要）：dualizable 圏の連続 K 理論、\(-\circ\mathrm{Ind}\) による局所化不変量の同値（Thm. 0.1／8.10）、K 理論と無限積の交換（Thm. 8.28）。</li>
+</ul>
+
+<h3>Lurie 281</h3>
+<ul>
+  <li><b>S• と K</b>（L16）：P-gapped 対象 Def. 1、\(K(C)=\Omega\lvert S_\bullet C\rvert\)（Def. 9）、\(\pi_1=K_0\)（Rem. 11）。有限余極限を持つ点付き ∞ 圏で定義し、安定の場合への帰着は L17 Cor. 6。<b>∞ 関手としての構成は書かれていない</b>（Rem. 12 の一言のみ）。</li>
+  <li><b>加法性</b>（L17 Thm. 1）：\(\mathrm{Fun}(\Delta^1,C)\to C\times C\) が K の同値。証明は Quillen A を使わず、<b>Prop. 7（各点の条件から、幾何実現しても引き戻しのままであることを導く純 ∞ 圏的な命題）</b>、Exercise 8、Lemma 9 による。系として Cor. 4（関手の余ファイバー列）、Cor. 5（\(\Sigma_*=-1\)）。</li>
+  <li><b>冪等完備化</b>：L15 Rem. 8・Ex. 9。<b>冪等完備化で変わるのは K<sub>0</sub> だけ</b>（L18 Prop. 1、証明は群完備化定理 Prop. 4）。\(K_0\) の単射性と判定（L14 Prop. 19）。</li>
+  <li><b>fibration 定理</b>：Verdier 商による形はない。特殊形（単体的集合の圏での cell-like 同値と弱同値）が L30 Thm. 7、証明が L32 Prop. 1 で、Waldhausen 型の骨格（Swallowing Lemma 4、共終性 Lemma 5、\(F_q\) 構成、\(\theta_q\) と左逆 \(\rho\)）がひな形になる。</li>
+  <li>非連結 K、BGT との比較、普遍性：<b>なし</b>。背景は HTT のみ。</li>
+</ul>
+
+<h3>比較</h3>
+<div class="table-wrap"><table>
+<tr><th></th><th>BGT</th><th>9 人論文</th><th>Barwick</th><th>Efimov</th><th>Lurie 281</th></tr>
+<tr><td>非連結 K の構成</td><td><b>あり</b>（§9、\(\Sigma_\kappa\)）</td><td>なし（Tate・Latt の模型は A.5）</td><td>なし</td><td>前提（p.3）</td><td>なし</td></tr>
+<tr><td>局所化不変量であることの証明</td><td>余表現可能性（Thm. 9.8）</td><td>引用</td><td>—</td><td>前提</td><td>—</td></tr>
+<tr><td>Verdier・Karoubi 列</td><td>§5</td><td><b>最も詳しい</b>（II.A.1〜A.3）</td><td>—</td><td>規約（p.11）</td><td>なし</td></tr>
+<tr><td>fibration 定理</td><td>§9.3（Waldhausen 版）</td><td>[HLS23] を引用</td><td><b>一般形</b>（Th. 8.9・9.24）</td><td>—</td><td>特殊形のひな形（L32）</td></tr>
+<tr><td>加法性</td><td>§7</td><td>コボルディズム圏</td><td>Quillen A 型（Pr. 6.9）</td><td>—</td><td><b>純 ∞ 圏的</b>（L17 Prop. 7）</td></tr>
+<tr><td>K を ∞ 関手にする方法</td><td>モチーフ、Pr<sup>L</sup></td><td>Q 構成</td><td>cocartesian・左 fibration</td><td>—</td><td>書かれていない</td></tr>
+<tr><td>冪等完備化</td><td>\(\Sigma_\kappa\) には付けない</td><td>警告と \(K_0\) による判定（A.3.8・A.3.10）</td><td>共終性（Th. 10.11）</td><td>Calk に付ける</td><td>変わるのは \(K_0\) だけ（L18）</td></tr>
+</table></div>
+
+<h3>このプロジェクトにとっての結論</h3>
+<ol>
+  <li><b>非連結 K を構成し、局所化不変量であることを示している文献は、事実上 BGT だけ</b>。9 人論文も Efimov もこの点は BGT を引用するか前提にしている。Schlichting の道（swindle と fibration 定理による直接の証明）を形式化するには、\(\Sigma_\kappa\) と swindle（BGT §9.1）、fibration 定理（Barwick Th. 9.24 か Lurie L32 のひな形）、冪等完備化と Verdier・Karoubi の扱い（9 人論文 II.A.3）を組み合わせる。これをまとめて書いた文献は見つからなかった。</li>
+  <li><b>fibration 定理の残りの一手 \(K(C,w_A)\simeq K(C/A)\)</b>（ラベル付きの K と Verdier 商の K の比較）は、どの文献にも直接は書かれていない。Barwick は Quillen A 型の判定（Cor. 10.10.2）を与えるが、Verdier 商についての検証はしていない。自分で示す必要がある。</li>
+  <li><b>加法性の部品</b>：Lurie L17 Prop. 7 は純 ∞ 圏的で再利用しやすく、fibration 定理の実現の段にも使える。リポジトリの加法性（L1c、Quillen A 型）は完成しているので、使い道は fibration 定理の側。</li>
+  <li><b>冪等完備化の扱いを揃える判断が要る</b>：BGT の \(\Sigma_\kappa\) は冪等完備化なし、Efimov の Calk はあり、dg 側の比較目標（<a href="k-nonconnective-design.html">設計ノート</a>）は Idem 込み。9 人論文 A.3.8・A.3.10 と Lurie L18 Prop. 1 を踏まえて決める。</li>
+  <li><b>K の ∞ 関手化の第三の道</b>（Barwick を参考にした見立て）：関手を直接作る代わりに、StableInfinity 上の<b>左 fibration</b> として K 空間を作り、straightening で関手に変える。このリポジトリには<b>空間値の straightening が任意の小さい quasicategory の底で完成</b>している（<a href="03-straightening.html">第 3 章</a>）ので、少なくとも \(\Omega^\infty K\colon\mathrm{StableInfinity}\to\mathcal S\) はこの道で作れる見込みがあり、未完成の Cat<sub>∞</sub> 値の straightening は要らない。ただし StableInfinity は宇宙 \(u+1\) にあるので宇宙の扱いは要確認で、Sp 値にするには各段をこの方法で作ってΩ スペクトラムにまとめる工夫が別に必要。設計ノートの方法 (a)・(b) とは別の道で、以前止めた BF 模型の豊穣化を避けられる可能性がある。</li>
+</ol>
+</main>
+</body>
+</html>

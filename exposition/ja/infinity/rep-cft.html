@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 8　応用：表現論と局所類体論を ∞ 圏の枠組みで整理する（Clausen と基本類を含む）</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 8　応用：表現論と局所類体論を ∞ 圏の枠組みで整理する（Clausen と基本類を含む）</nav>
+<h1>補章 8　応用：表現論と局所類体論を ∞ 圏の枠組みで整理する（Clausen と基本類を含む）</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="fibered-descent.html">補章 7</a> §7（群の表現と \(\mathrm{Fun}(BG,D(k))\)）の続き。Lean の宣言名は引用しない。</p>
+
+<p>表現論の導来関手・導来圏は ∞ 圏の枠組みで整理できる：導来圏 \(D(k[G])\)（三角圏）は安定 ∞ 圏 \(\mathrm{Fun}(BG,D(k))\) のホモトピー圏で、分解で作っていた導来関手は Kan 拡張・極限として最初から定義される（群コホモロジー \(=p_*\)、群ホモロジー \(=p_!\)、誘導・余誘導 \(=\varphi_!,\varphi_*\)）。この章では、それが具体的に何に効くかを表現論で見たうえで、局所類体論（Tate の定理による証明）を同じ枠組みで組み直し、一般論で消える部分と残る部分を切り分ける。</p>
+
+<!-- ============================================================ -->
+<h2>1. 表現論での使われ方</h2>
+
+<h3>1.1 古典的な定理が関手性と基底変換の系になる</h3>
+<div class="table-wrap"><table>
+<tr><th>古典的な定理</th><th>∞ 圏の枠組みでの正体</th></tr>
+<tr><td>Frobenius 相互律</td><td>\(\varphi_!\dashv\varphi^*\)（両側 fibration、補章 7 §7.4）</td></tr>
+<tr><td>Shapiro の補題 \(H^*(G,\mathrm{CoInd}\,V)\cong H^*(H,V)\)</td><td>押し出しの合成 \(p_{G*}\circ\varphi_*\simeq p_{H*}\)</td></tr>
+<tr><td>Hochschild–Serre</td><td>\(BG\to B(G/N)\to\ast\) に沿った押し出しの分解</td></tr>
+<tr><td>Mackey 公式</td><td>分類空間のホモトピー引き戻しに対する基底変換</td></tr>
+</table></div>
+
+<p><b>Mackey 公式</b>：部分群 \(H,K\subseteq G\) について
+\[
+BH\times_{BG}BK\ \simeq\ \coprod_{KgH}B\bigl(K\cap gHg^{-1}\bigr)
+\]
+（両側剰余類はホモトピー引き戻しの連結成分）。基底変換 \(\psi^*\varphi_!\simeq\varphi'_!\psi'^*\) を当てはめて
+\[
+\mathrm{Res}^G_K\,\mathrm{Ind}^G_H\,V\ \simeq\ \bigoplus_{KgH}\mathrm{Ind}^K_{K\cap gHg^{-1}}\bigl({}^g V\bigr)\big|_{K\cap gHg^{-1}}.
+\]
+手を動かす最初の練習として最適。</p>
+
+<p><b>Hochschild–Serre</b>：\(q\colon BG\to B(G/N)\) に沿った \(q_*V=V^{hN}\) は、\(G/N\) の作用込みで \(\mathrm{Fun}(B(G/N),D(k))\) の対象。1 圏では「\(N\) 不変部分の複体への \(G/N\) のホモトピー整合的作用」を素直に言えずスペクトル系列として述べるしかなかったが、∞ では \(p_{G*}\simeq p_{G/N*}\circ q_*\) という合成として述べられ、スペクトル系列は付属物になる。</p>
+
+<h3>1.2 三角圏では扱いにくく、∞ 圏で本質的に楽になる問題</h3>
+<ul>
+  <li><b>同変導来圏（Bernstein–Lunts）</b>：\(D_G(X):=D([X/G])\simeq\lim(D(X)\rightrightarrows D(G\times X)\cdots)\) と作用の Čech 脈体に沿った降下で直接定義できる。Bernstein–Lunts の困難は「三角圏では降下ができない」こと（補章 7 §5）。</li>
+  <li><b>モジュラー表現論と Tate コホモロジー</b>：ノルム写像 \(V_{hG}\to V^{hG}\) の余ファイバー \(V^{tG}\) は ∞ では関手として定義できる（Nikolaus–Scholze）。安定加群圏 \(\mathrm{StMod}(kG)\) と台の理論（\(\mathrm{Spc}\simeq\mathrm{Proj}\,H^*(G,k)\)、Benson–Carlson–Rickard、Balmer、Benson–Iyengar–Krause）は局所化とテンソル積の同時処理を要し、∞（あるいは dg）の枠組みがほぼ前提。</li>
+  <li><b>ブロックの導来同値（Broué 予想）</b>：Rickard の導来 Morita 理論の両側傾斜複体のテンソル積を関手的に扱うには強化された導来圏が要る。対称群の場合の Chuang–Rouquier もこの流れ。</li>
+</ul>
+
+<h3>1.3 幾何学的・数論的表現論</h3>
+<ul>
+  <li><b>Hecke 圏</b>：\(D(B\backslash G/B)\) の畳み込みは、スタック上の引き戻して押し出す操作で、六関手形式の典型的な使い方。幾何学的 Satake（\(\mathrm{Perv}(\mathrm{Gr})\simeq\mathrm{Rep}(G^\vee)\)）とその導来版も。</li>
+  <li><b>\(p\) 進群の滑らかな表現</b>：Fargues–Scholze では滑らかな表現の導来圏が分類スタック \([\ast/G(\mathbb Q_p)]\) 上の層として \(D(\mathrm{Bun}_G)\) に現れる（\(\mathrm{Fun}(BG,D(k))\) に群の位相を加えたもの）。Heyer–Mann「6-functor formalisms and smooth representations」は滑らかな表現論を \(D(\ast/G)\) の六関手形式として整理し、Bernstein–Zelevinsky・Schneider–Stuhler の双対性を Verdier 双対性として導く。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>2. 局所類体論の再構成</h2>
+<p>Tate の定理による証明（Serre『Local Fields』、Cassels–Fröhlich の Tate の章）を ∞ の言葉で組み直す。消えるのは群コホモロジーの道具立てで、数論的入力（Hilbert 90 と不変量写像）と群論的判定法（中山）は残る。</p>
+
+<h3>2.0 設定</h3>
+<p>\(L/K\) を局所体の有限 Galois 拡大、\(G=\mathrm{Gal}(L/K)\)、\(L^\times\)（次数 0）を \(\mathrm{Fun}(BG,D(\mathbb Z))\) の対象と見る。無限次拡大へは最後に極限で移る（あるいは condensed／連続版）。次数の約束は \(H^n=\pi_{-n}\)。</p>
+
+<h3>2.1 道具立て：Tate 構成</h3>
+\[
+V^{tG}\ :=\ \mathrm{cofib}\bigl(\mathrm{Nm}\colon V_{hG}\to V^{hG}\bigr),\qquad\hat H^n(G,V)=\pi_{-n}\bigl(V^{tG}\bigr),
+\]
+<p>\(V_{hG}=p_!V\)、\(V^{hG}=p_*V\)、ノルムは有限群での比較写像 \(p_!\to p_*\)。</p>
+<div class="table-wrap"><table>
+<tr><th>古典論の道具</th><th>∞ での扱い</th></tr>
+<tr><td>Tate コホモロジーの定義</td><td>\(V^{tG}\) の定義そのもの</td></tr>
+<tr><td>長完全列、次元シフト</td><td>cofiber 列と懸垂</td></tr>
+<tr><td>カップ積とその整合性</td><td>\((-)^{tG}\) は lax 対称モノイダル（Nikolaus–Scholze）。\(\mathbb Z^{tG}\) は \(E_\infty\) 環、\(V^{tG}\) はその加群</td></tr>
+<tr><td>制限・余制限・インフレーション</td><td>\(\varphi^*\)、\(\varphi_!\simeq\varphi_*\)（有限被覆での両立性）、押し出しの関手性</td></tr>
+<tr><td>余制限∘制限 = 指数倍</td><td>\(\varphi_*\varphi^*\) の自然変換の合成</td></tr>
+<tr><td>Shapiro、Hochschild–Serre</td><td>押し出しの合成（§1.1）</td></tr>
+<tr><td>巡回群の周期性</td><td>\(\mathbb Z^{tC_n}\simeq\mathbb Z/n[t^{\pm1}]\)（\(|t|=-2\)）</td></tr>
+<tr><td>Herbrand 商</td><td>2 周期的 \(\mathbb Z^{tC}\) 加群の乗法的 Euler 標数。cofiber 列で乗法的なのは自動</td></tr>
+</table></div>
+
+<h3>2.2 数論的入力：類構造の公理（残る）</h3>
+<p>全ての部分群 \(H\subseteq G\) について：</p>
+<ol>
+  <li><b>Hilbert 90</b>：\(\hat H^1(H,L^\times)=0\)。∞ 的には補章 7 の降下の一例：Galois 降下 \(\mathrm{Mod}_{K'}\simeq(\mathrm{Mod}_L)^{hH}\)（\(K'=L^H\)）から、階数 1 の加群の降下データが全て自明であることが従う。</li>
+  <li><b>不変量写像</b>：\(\mathrm{inv}\colon H^2(H,L^\times)\xrightarrow{\sim}\tfrac1{|H|}\mathbb Z/\mathbb Z\)、制限と両立。不分岐では付値と Frobenius で \(H^1(G,\mathbb Q/\mathbb Z)\) に帰着、一般には Brauer 群の元が不分岐拡大で分解することと位数評価（Herbrand 商）。局所体の算術でスキップできない。</li>
+</ol>
+
+<h3>2.3 基本類</h3>
+<p>\(\mathrm{inv}(u)=1/n\)（\(n=|G|\)）となる \(u\in H^2(G,L^\times)\) は、\(\mathrm{Fun}(BG,D(\mathbb Z))\) の射 \(u\colon\mathbb Z[-2]\to L^\times\)。\(C:=\mathrm{cofib}(u)\) と置く。</p>
+
+<h3>2.4 Tate の定理の ∞ 版</h3>
+<p><b>主張</b>：\(u^{tG}\colon\mathbb Z^{tG}[-2]\to(L^\times)^{tG}\) は同値で、\(\mathbb Z^{tG}\) 加群の写像（\(u\) を掛ける写像）である。</p>
+<ol>
+  <li>\(C^{tG}=0\) を示せばよい。</li>
+  <li>§2.2 の入力と \(\mathbb Z^{tH}\) の計算から、全ての \(H\) について \(C^{tH}\) のホモトピー群が連続する二次数で消える。</li>
+  <li><b>中山の判定法</b>：\(\mathrm{Fun}(BG,D(\mathbb Z))\) の対象 \(C\) について、全ての \(H\) で \(C^{tH}\) の連続する二次数が消えれば \(C^{tH}\simeq0\)。数論を含まない一般命題で、証明も §2.1 の道具で書ける：余制限∘制限が指数倍であることから Sylow に帰着、指数 \(p\) の正規部分群に沿った押し出しの分解で \(p\) 群の帰納法、基礎は \(\mathbb Z^{tC_p}\simeq\mathbb F_p[t^{\pm1}]\)。</li>
+</ol>
+
+<h3>2.5 相互写像</h3>
+\[
+\underbrace{\hat H^{-2}(G,\mathbb Z)}_{=\ \pi_2\,\mathbb Z^{tG}}\ \xrightarrow{\ \cup u\ \sim\ }\ \underbrace{\hat H^0(G,L^\times)}_{=\ \pi_0\,(L^\times)^{tG}}
+\]
+<p>左辺は \(H_1(G,\mathbb Z)=G^{\mathrm{ab}}\)（\(\pi_1(\mathbb Z_{hG})=H_1(BG;\mathbb Z)=\pi_1(BG)^{\mathrm{ab}}\)：アーベル化は \(BG\) の 1 次ホモロジー）、右辺は \(K^\times/N_{L/K}L^\times\)。よって \(G^{\mathrm{ab}}\xrightarrow{\sim}K^\times/N_{L/K}L^\times\) で、その逆が局所相互写像 \(\theta_{L/K}\)。</p>
+
+<h3>2.6 \(K^{\mathrm{ab}}\) へ</h3>
+<p>\(L\subseteq L'\) に対する両立性は、Tate 構成の \(G\) についての関手性（補章 7 の fibration、\(\varphi^*\) と \(\varphi_!\)）と不変量写像の両立から自動的に従い、極限で \(\mathrm{Gal}(K^{\mathrm{ab}}/K)\cong\lim_LK^\times/N_{L/K}L^\times=\widehat{K^\times}\)。</p>
+
+<h3>2.7 切り分け</h3>
+<div class="table-wrap"><table>
+<tr><th>部分</th><th>∞ でどうなるか</th></tr>
+<tr><td>Tate コホモロジー、次元シフト、カップ積、res／cor／inf、Shapiro、Hochschild–Serre、周期性、Herbrand 商</td><td>一般論で消える（§2.1）</td></tr>
+<tr><td>Hilbert 90</td><td>降下の一例として読める</td></tr>
+<tr><td>不変量写像（Brauer 群の計算）</td><td>残る（局所体の算術）</td></tr>
+<tr><td>中山の判定法</td><td>数論を含まない \(\mathrm{Fun}(BG,D(\mathbb Z))\) の一般命題として分離</td></tr>
+<tr><td>Tate の定理</td><td>「\(\mathbb Z^{tG}\) 加群の射 \(u\) が同値」の一行</td></tr>
+<tr><td>相互写像</td><td>\(\pi_0\) を取るだけ</td></tr>
+<tr><td>拡大の間の両立性</td><td>関手性から自動</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>3. Clausen の K 理論的アプローチ</h2>
+<p class="meta">この節は論文本体（arXiv:1703.07842、ar5iv 版）を確認して書いた。第 1 節（基本類の構成）の詳細は確認できた範囲に入っていない。</p>
+
+<h3>3.1 何をしているか</h3>
+<p>§2 では主役が \(\mathrm{Fun}(BG,D(\mathbb Z))\) と基本類 \(u\) だった。Clausen は主役を代数的 K 理論のスペクトラムに移す。主定理（Thm 0.9）は、\(\mathbb Z\) 線形な小さい安定 ∞ 圏 \(\mathcal P\) について関手的な自然変換
+\[
+\mathrm{Art}_{\mathcal P}\colon\ K(\mathrm{lc}_{\mathcal P})\ \longrightarrow\ dK^{\mathrm{Sel}}(\mathcal P)
+\]
+（\(\mathrm{PerfCat}_{\mathbb Z}^{\mathrm{op}}\to\mathrm{Sp}\) の関手の間）が標準的に存在するという主張である。</p>
+<ul>
+  <li><b>始域</b>：\(\mathrm{lc}_{\mathcal P}=\mathrm{Fun}_{\mathbb Z}(\mathcal P,D^b(\mathrm{LCA}_\aleph))\)（第二可算な局所コンパクトアーベル群の中の加群）の K 理論。</li>
+  <li><b>終域</b>：Selmer K ホモロジー。Selmer K 理論 \(K^{\mathrm{Sel}}=L_1K\times_{L_1\mathrm{TC}}\mathrm{TC}\)（\(L_1\) は彩色的局所化、「エタール降下を満たす K 理論に最も近い近似」）の双対 \(dK^{\mathrm{Sel}}\)。</li>
+</ul>
+<p>\(\mathcal P=\mathrm{Perf}(F)\)（有限体・局所体・大域体）では、標準同一視 \(G_F^{\mathrm{ab}}\cong\pi_1dK^{\mathrm{Sel}}(F)\)（Thm 2.15）を経由して \(\pi_1\mathrm{Art}\) が古典的な Artin 写像になる。</p>
+
+<h3>3.2 相互律：Eilenberg swindle</h3>
+<p>大域体で \(F^\times\) が消えること：\(\mathrm{LCA}\) の列 \(F\to\mathbb A_F\to\mathbb A_F/F\) で、離散な \(F\) は直和の swindle、コンパクトな \(\mathbb A_F/F\) は直積の swindle で K 理論的に自明なので、\(\mathbb A_F\) も自明になり \(F^\times\) の作用が消える。Tate の「Haar 測度から積公式が形式的に従う」議論の K 理論版で、Haar 測度は \(\pi_1K(\mathrm{lc}_{\mathbb Z})\simeq\mathbb R_{>0}\) として現れる。</p>
+
+<h3>3.3 §2 との比較</h3>
+<div class="table-wrap"><table>
+<tr><th>§2（Tate 構成）</th><th>Clausen</th></tr>
+<tr><td>\(\mathrm{Fun}(BG,D(\mathbb Z))\) と Tate 構成</td><td>\(K(\mathrm{lc}_{\mathcal P})\) と \(dK^{\mathrm{Sel}}\)</td></tr>
+<tr><td>基本類 \(u\) と Tate の定理</td><td>スペクトラムの自然変換 \(\mathrm{Art}\)</td></tr>
+<tr><td>相互写像は \(\pi_0\)</td><td>相互写像は \(\pi_1\)（\(K_1(F)=F^\times\)）</td></tr>
+<tr><td>拡大の間の両立性は関手性から</td><td>\(\mathrm{PerfCat}_{\mathbb Z}\) 上の自然変換なので、さらに広い関手性が自動</td></tr>
+<tr><td>相互律（大域）</td><td>Eilenberg swindle</td></tr>
+</table></div>
+
+<h3>3.4 何が残っているか（論文自身の記述）</h3>
+<ul>
+  <li>\(G_F^{\mathrm{ab}}\cong\pi_1dK^{\mathrm{Sel}}(F)\) はエタール降下のスペクトル系列と Galois コホモロジー次元の評価で示す（Thomason、Gabber–Suslin、Geisser–Hesselholt など）。</li>
+  <li>数体ではこの評価に中心的単純環の局所大域原理が要り（Remark 0.8）、古典論から完全に独立ではない。</li>
+  <li>cyclotomic trace と TC の結果、積公式に関する先行論文を使う。</li>
+  <li>局所体では \(C_F\to\pi_1K(\mathrm{lc}_F)\) は同型でない（位相を正しく扱っていないため）が、古典的 Artin 写像の復元には準同型で足りる。</li>
+  <li>先行論文由来の「基本類」が Artin 写像の系全体を決めると述べられている（構成は第 1 節で、ここでは未確認）。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>4. 基本類の存在は整理できるか</h2>
+<p>完全には消せない（基本類の存在こそが局所類体論の算術的な中身）。ただし ∞ 圏の枠組みで、(1) 圏の降下として言い換え、(2) 算術的入力を一点に絞り、(3) 向き（双対性）として理解できる。</p>
+
+<h3>4.1 Brauer 群は Mod の捻れた形</h3>
+<p>\(H^2(G,L^\times)=\mathrm{Br}(L/K)\)。∞ 圏の言葉では
+\[
+\mathrm{Br}(K)\ =\ \pi_0\bigl\{K\text{ 線形な presentable 圏で、エタール局所的に }\mathrm{Mod}_K\text{ と同値なもの}\bigr\}
+\]
+（Antieau–Gepner）。Brauer 類は \(\mathrm{Mod}_K\) の捻れた形で、<a href="fibered-descent.html">補章 7</a> の降下を圏のレベル（\(\mathrm{Pr}^L\) 値の降下）で行ったもの。\(H^1\) が対象の捻れた形（Hilbert 90）、\(H^2\) が圏の捻れた形。基本類は「\(L\) で \(\mathrm{Mod}_L\) に戻る捻れた形で不変量 \(1/n\) のもの」で、巡回代数が代表元。</p>
+
+<h3>4.2 不変量写像の分解</h3>
+\[
+\mathrm{Br}(K)\ \xleftarrow{\ (\mathrm{a})\ }\ H^2\bigl(\hat{\mathbb Z},(K^{\mathrm{nr}})^\times\bigr)\ \xrightarrow{\ (\mathrm{b})\ v\ }\ H^2(\hat{\mathbb Z},\mathbb Z)\ \xrightarrow{\ (\mathrm{c})\ \sim\ }\ H^1(\hat{\mathbb Z},\mathbb Q/\mathbb Z)\ \xrightarrow{\ \mathrm{ev}_{\mathrm{Frob}}\ }\ \mathbb Q/\mathbb Z
+\]
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>∞ での扱い</th></tr>
+<tr><td>(c)</td><td>\(\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\) と \(\mathbb Q\) のコホモロジー的自明性</td><td>自動（cofiber 列）</td></tr>
+<tr><td>(b)</td><td>付値の列 \(\mathcal O^\times\to K^{\mathrm{nr}\times}\to\mathbb Z\) と単数群のコホモロジーの消滅</td><td>フィルトレーションの極限は自動。剰余体の事実（有限体の \(H^1\) の消滅、Lang）は残る</td></tr>
+<tr><td>(a)</td><td>\(\mathrm{Br}(K^{\mathrm{nr}})=0\)（Brauer 類は不分岐拡大で分解）</td><td>残る（完備性と有限剰余体の算術の核心）</td></tr>
+<tr><td>位数</td><td>\(H^2(G,L^\times)\) が位数 \(n\) の巡回群</td><td>Herbrand 商の乗法性などは自動。コホモロジー的に自明な単数の開部分群の存在（正規底と exp／log）は残る</td></tr>
+</table></div>
+
+<h3>4.3 向きとしての基本類</h3>
+<p>Tate の局所双対性により、\(G_K\) は次元 2 の Poincaré 双対群のように振る舞い、双対化加群は \(\mu_\infty\)、トレースは \(\mathrm{inv}\colon H^2(K,\mathbb G_m)\xrightarrow{\sim}\mathbb Q/\mathbb Z\)。∞ の言葉では \(p\colon BG_K\to\ast\)（連続版）に双対化対象とトレースがあり、\(p_*\) と \(p_!\) が双対化対象のひねりで結ばれる（§2.1 のノルム写像 \(p_!\to p_*\) の大域版）。基本類の存在は「向き（基本ホモロジー類）の存在」、Tate の定理はその有限商での影にあたる。数論的位相幾何学の類推（局所体 ↔ 結び目の管状近傍の境界トーラス、次元 2）とも整合し、基本類を六関手形式の双対性の構造として理解する方向を示す。</p>
+
+<h3>4.4 導来代数幾何で Brauer 群の計算は簡単になるか</h3>
+<p>局所体の \(\mathrm{Br}(K)\cong\mathbb Q/\mathbb Z\) に限ればほとんど簡単にならない。変わるのは、計算の組み立てが見通しよくなり算術的入力が一点に絞られることと、体ではなくスキーム・スタック・環スペクトラムの Brauer 群で古典論では扱いにくかった問題が扱えるようになることである。</p>
+
+<p><b>局所体：六関手（局所化列）による組み立て</b>．\(j\colon\mathrm{Spec}\,K\hookrightarrow\mathrm{Spec}\,\mathcal O\)、\(i\colon\mathrm{Spec}\,\mathbb F_q\hookrightarrow\mathrm{Spec}\,\mathcal O\) とし、\(\mathrm{Br}(K)=H^2(\mathcal O,Rj_*\mathbb G_m)\) を分解する。</p>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th><th>性格</th></tr>
+<tr><td>①</td><td>\(0\to\mathbb G_{m,\mathcal O}\to j_*\mathbb G_{m,K}\to i_*\mathbb Z\to0\)（付値）</td><td>形式的</td></tr>
+<tr><td>②</td><td>\(R^1j_*\mathbb G_m=0\)（強 Hensel 化の商体での Hilbert 90）</td><td>降下で形式的</td></tr>
+<tr><td>③</td><td>\(R^2j_*\mathbb G_m=\mathrm{Br}(K^{\mathrm{sh}})=0\)</td><td><b>算術</b>：剰余体が代数閉な完備離散付値体は \(C_1\)（Lang）</td></tr>
+<tr><td>④</td><td>\(H^q(\mathcal O,\mathbb G_m)\cong H^q(\mathbb F_q,\mathbb G_m)\)（Hensel 剛性）</td><td>導来的には形式的</td></tr>
+<tr><td>⑤</td><td>\(H^q(\mathbb F_q,\mathbb G_m)=0\)（\(q\ge1\)）</td><td><b>算術</b>：有限体の Hilbert 90 と Wedderburn</td></tr>
+<tr><td>⑥</td><td>\(H^2(\mathbb F_q,\mathbb Z)\cong H^1(\mathbb F_q,\mathbb Q/\mathbb Z)=\mathbb Q/\mathbb Z\)</td><td>形式的と \(G_{\mathbb F_q}=\hat{\mathbb Z}\)</td></tr>
+</table></div>
+<p>局所化の cofiber 列でつなぐと \(\mathrm{Br}(K)\cong H^2(\mathbb F_q,\mathbb Z)\cong\mathbb Q/\mathbb Z\)（剰余写像）。残る入力は Lang の定理（③）と有限体の性質（⑤）で、§4.2 の表の (a) と剰余体の事実に対応する。④ は、Brauer 類を \(\mathrm{Mod}\) の捻れた形と見ると、変形が Hochschild コホモロジー（\(\mathcal O\) 上の高次コホモロジー）で制御され、アフィンでは消えるので \(\mathrm{Br}(\mathcal O)\cong\mathrm{Br}(\mathbb F_q)=0\) が無限小変形の障害の消滅という形式的議論になる。</p>
+
+<p><b>導来代数幾何が本質的に効く場面</b>．</p>
+<ul>
+  <li><b>Brauer 群とコホモロジー的 Brauer 群</b>：古典的には \(\mathrm{Br}(X)=H^2_{\mathrm{et}}(X,\mathbb G_m)_{\mathrm{tors}}\) は難問（準射影なら Gabber、de Jong）。導来 Azumaya 代数まで許すと qcqs スキームで \(H^2_{\mathrm{et}}(X,\mathbb G_m)\) 全体が実現される（Toën、Antieau–Gepner）。</li>
+  <li><b>降下スペクトル系列</b>：\(\mathrm{Br}\) は \(\mathrm{Pr}^L_X\) の可逆対象の空間の \(\pi_0\) なので、Galois／エタール降下のスペクトル系列 \(E_2^{s,t}=H^s(G,\pi_t\,\mathrm{Pic})\Rightarrow\pi_{t-s}\mathrm{Br}\) で形式的に計算できる（Gepner–Lawson、たとえば \(KO\) の Brauer 群）。</li>
+  <li><b>古典論で定義できない対象</b>：\(\mathrm{Br}(\mathbb S)=0\)（Antieau–Gepner、\(\mathrm{Br}(\mathbb Z)=0\) の本当の版）、分類スタック・商スタックの Brauer 群。</li>
+</ul>
+<div class="table-wrap"><table>
+<tr><th>対象</th><th>導来代数幾何で簡単になるか</th></tr>
+<tr><td>局所体の \(\mathrm{Br}(K)\cong\mathbb Q/\mathbb Z\)</td><td>組み立ては形式的になるが、Lang の定理と有限体の性質は残る</td></tr>
+<tr><td>スキームの \(\mathrm{Br}\) と \(H^2(\mathbb G_m)\)</td><td>本質的に簡単になる</td></tr>
+<tr><td>環スペクトラム・スタックの \(\mathrm{Br}\)</td><td>古典論で扱えなかった計算が降下スペクトル系列でできる</td></tr>
+</table></div>
+
+<h3>4.5 例：有限体の Brauer 群が自明なことの導来的な証明</h3>
+<p>古典的な証明の核である Wedderburn の小定理（有限な斜体は可換）を使わず、「\(\mathrm{Spec}\,\mathbb F_q\) のエタールホモトピー型は副有限な円周 \(B\hat{\mathbb Z}\) である」という一つの事実で示す。</p>
+
+<p><b>定義</b>．体 \(k\) について、\(\mathbf{Br}(k)\) を「\(k\) 線形な presentable 安定 ∞ 圏 \(\mathcal C\) で、ある有限 Galois 拡大 \(L/k\) について \(\mathcal C\otimes_k\mathrm{Mod}_L\simeq\mathrm{Mod}_L\) となるもの」と \(k\) 線形同値のなす ∞ 亜群とし、\(\mathrm{Br}(k):=\pi_0\mathbf{Br}(k)\)。言い換えると
+\[
+\mathbf{Br}(k)\ \simeq\ \Gamma_{\mathrm{et}}\bigl(\mathrm{Spec}\,k,\ B\mathbf{Pic}\bigr),\qquad\mathbf{Pic}(L):=\{\mathrm{Mod}_L\text{ の可逆対象}\}.
+\]
+使うのは<a href="fibered-descent.html">補章 7</a> の降下と<a href="monoidal-prl.html">補章 5</a> の \(\mathrm{Pr}^L\) だけで、Azumaya 代数も中心的単純環も出てこない。</p>
+
+<ol>
+  <li><b>\(\mathbf{Pic}\) のホモトピー層</b>：体 \(L\) 上で \(D(L)\) の可逆対象は \(L[n]\) だけ（全次元が 1）で、自己同値は \(L^\times\)。よって \(\pi_0\mathbf{Pic}=\mathbb Z\)、\(\pi_1\mathbf{Pic}=\mathbb G_m\)、\(\pi_{\ge2}=0\)。\(\mathbb G_m\) は「単位対象の自己同値」として定義から出てくる。</li>
+  <li><b>Postnikov 分解</b>：エタール層のファイバー列 \(B^2\mathbb G_m\to B\mathbf{Pic}\to B\mathbb Z\) の大域切断から
+  \[
+  H^2_{\mathrm{et}}(k,\mathbb G_m)\ \longrightarrow\ \mathrm{Br}(k)\ \longrightarrow\ H^1_{\mathrm{et}}(k,\mathbb Z)
+  \]
+  が完全。両端が消えれば \(\mathrm{Br}(k)=0\)（導来 Brauer 群は \(H^2(\mathbb G_m)\) と \(H^1(\mathbb Z)\) からなる、Toën・Antieau–Gepner の体の場合）。</li>
+  <li><b>\(\mathrm{Spec}\,\mathbb F_q\) は副有限な円周</b>：エタールホモトピー型は \(B\hat{\mathbb Z}=(S^1)^\wedge\)。離散な捩れ加群 \(M\) について
+  \[
+  R\Gamma(\hat{\mathbb Z},M)\ \simeq\ \mathrm{fib}\bigl(M\xrightarrow{\ \varphi-1\ }M\bigr)
+  \]
+  （両辺が filtered 余極限と可換なので有限な \(M\) に帰着し、有限係数では \(B\mathbb Z\to B\hat{\mathbb Z}\) がコホモロジーの同型、\(\mathbb Z\) は Serre の意味で good）。系として捩れ係数で \(H^{\ge2}(\hat{\mathbb Z},M)=0\)。</li>
+  <li><b>両端が消える</b>：\(\overline{\mathbb F}_q^\times\) は捩れ群なので \(H^2(\mathbb F_q,\mathbb G_m)=0\)。\(\mathbb Z\to\mathbb Q\to\mathbb Q/\mathbb Z\) と \(H^{\ge1}(\hat{\mathbb Z},\mathbb Q)=0\)、\(H^0(\mathbb Q)\to H^0(\mathbb Q/\mathbb Z)\) の全射性から \(H^1(\mathbb F_q,\mathbb Z)=0\)。よって \(\mathrm{Br}(\mathbb F_q)=0\)。∎</li>
+</ol>
+<p><b>副産物</b>：\(H^1(\mathbb F_q,\mathbb G_m)=\mathrm{coker}(x\mapsto x^{q-1})=0\)（可除性による有限体の Hilbert 90）、\(H^2(\hat{\mathbb Z},\mathbb Z)\cong H^1(\hat{\mathbb Z},\mathbb Q/\mathbb Z)=\mathbb Q/\mathbb Z\)（§4.4 の ⑥）。</p>
+
+<div class="table-wrap"><table>
+<tr><th></th><th>古典的な証明</th><th>導来的な証明</th></tr>
+<tr><td>\(\mathrm{Br}\) の定義</td><td>中心的単純環の Morita 同値類</td><td>\(\mathrm{Mod}\) のエタール局所的に自明な捻れた形</td></tr>
+<tr><td>\(\mathbb G_m\) の出どころ</td><td>交差積代数のコサイクル</td><td>単位対象の自己同値（\(\pi_1\mathbf{Pic}\)）</td></tr>
+<tr><td>\(\mathrm{Br}=H^2\) の証明</td><td>交差積代数と Skolem–Noether</td><td>\(B\mathbf{Pic}\) の Postnikov 分解</td></tr>
+<tr><td>消える理由</td><td>Wedderburn の小定理（類等式による計数）</td><td>\(\mathrm{Spec}\,\mathbb F_q\) が副有限な円周で 1 次元だから</td></tr>
+</table></div>
+<p>非形式的な入力は「有限体の Galois 群は Frobenius で生成される \(\hat{\mathbb Z}\)」と「\(\overline{\mathbb F}_q^\times\) は捩れで可除」という初等的事実だけ。</p>
+
+<p><b>定義の選び方</b>：局所自明性を定義に含めず「\(\mathrm{Pr}^L_k\) の可逆なコンパクト生成圏」とすると、「可逆な圏はエタール局所的に \(\mathrm{Mod}\) と同値」という局所自明性の定理が別に要る（Antieau–Gepner は変形理論で示すが、分離閉体上の自明性で Azumaya 代数の代数的議論が一部入る）。古典的定義を避けたいなら局所自明性を定義に含めるのが素直。</p>
+
+<div class="table-wrap"><table>
+<tr><th></th><th>エタールホモトピー型</th><th>次元</th><th>\(\mathrm{Br}\)</th></tr>
+<tr><td>有限体</td><td>副有限な円周</td><td>1</td><td>\(0\)（\(H^2\) がない）</td></tr>
+<tr><td>局所体</td><td>「円周上の円周束」のようなもの（数論的位相幾何学の境界トーラス）</td><td>2</td><td>\(\mathbb Q/\mathbb Z\)（最上次 \(H^2\) の基本類、§4.3）</td></tr>
+</table></div>
+
+<h3>4.6 別証明：ホモトピー群もコホモロジーも取らずに降下データを直接分類する</h3>
+<p>体の上の \(\mathbf{Pic}\) は 1-切り詰められている（\(\pi_{\ge2}=0\)）ので、捻れた形の降下データは 2 圏レベルの有限個のデータで書き切れ、ホモトピー群を経由せずに自明化を直接構成できる（<a href="fibered-descent.html">補章 7</a> §4.3 の「切り詰め次数で必要な重なりの深さが決まる」の具体例）。\(k=\mathbb F_q\)、\(\mathcal C\in\mathbf{Br}(k)\) について \(\mathcal C\simeq\mathrm{Mod}_k\) を示す。</p>
+<ol>
+  <li><b>有限次で自明化</b>：ある \(L=\mathbb F_{q^m}\) で \(\mathcal C\otimes_k\mathrm{Mod}_L\simeq\mathrm{Mod}_L\)。有限体の有限次拡大は巡回的なので \(G=\langle\varphi\rangle\cong\mathbb Z/m\)。</li>
+  <li><b>降下データの形</b>：\(\mathcal C\) は \(\mathrm{Mod}_L\) への \(G\) の半線形な作用と同じ。\(L\) 線形な自己同値の空間 \(\mathbf{Pic}(L)\simeq\mathbb Z\times BL^\times\) は 1-切り詰められているので、データは「\(\varphi\) 上の半線形自己同値 \(\sigma\)、自然同値 \(\tau\colon\sigma^m\Rightarrow\mathrm{id}\)、両立条件 \(\sigma\tau=\tau\sigma\)」で尽き、高次のデータは自動的に一意。</li>
+  <li><b>\(\sigma\) の形</b>：\(\mathrm{Mod}_L\) は \(L\) で生成されるので \(\sigma\simeq\varphi^*(-)[n]\)。</li>
+  <li><b>ずらしは消える</b>：\(\sigma^m\simeq(-)[mn]\) と \(\tau\) から \(L[mn]\simeq L\)、よって \(n=0\)、\(\sigma=\varphi^*\) と取れる。離散な円周で計算したときの \(H^1(\mathbb Z,\mathbb Z)=\mathbb Z\) の寄与が「有限次で自明化する」条件で消える（§4.5 の \(H^1(\hat{\mathbb Z},\mathbb Z)=0\) の正体）。</li>
+  <li><b>\(\tau\) はスカラー</b>：\((\varphi^*)^m=\mathrm{id}\) なので \(\tau\) は恒等関手の自己同型 \(a\in L^\times\)。両立条件は \(\varphi(a)=a\)、つまり \(a\in k^\times\)。</li>
+  <li><b>同値な降下データ</b>：\(\sigma=\varphi^*\) を保つ取り替えはスカラー \(b\in L^\times\) で、\(a\mapsto a\cdot b\,\varphi(b)\cdots\varphi^{m-1}(b)=a\cdot N_{L/k}(b)\)。降下データの同値類は \(k^\times/N_{L/k}(L^\times)\)、\(a=1\) が \(\mathrm{Mod}_k\)。</li>
+  <li><b>ノルムは全射</b>：\(L^\times\) は位数 \(q^m-1\) の巡回群で \(N(x)=x^{(q^m-1)/(q-1)}\)、像は位数 \(q-1\) の部分群 \(=k^\times\)。よって \(\mathcal C\simeq\mathrm{Mod}_k\)。∎</li>
+</ol>
+
+<div class="table-wrap"><table>
+<tr><th>使ったもの</th><th>使っていないもの</th></tr>
+<tr><td>補章 7 の降下、\(\mathrm{Mod}_L\) の自己同値は可逆対象で決まること、\(\mathbf{Pic}(L)\) の 1-切り詰め、巡回群のべき写像</td><td>ホモトピー群、コホモロジー、スペクトル系列、Wedderburn の小定理</td></tr>
+</table></div>
+<p><b>隠れているコホモロジー</b>：ステップ 5〜6 で分類した \(k^\times/N(L^\times)\) は古典的には \(H^2(G,L^\times)\cong\hat H^0(G,L^\times)\)（巡回群の周期性）。この議論はそれを定義せずデータの同値類として直接計算しており、古典的な巡回代数 \((L/k,\varphi,a)\) の圏レベルでの書き直しになっている。</p>
+<p><b>局所体への延長</b>：\(L/K\) が \(m\) 次不分岐なら、ステップ 2〜6 は同じで \(\mathrm{Br}(L/K)\cong K^\times/N_{L/K}(L^\times)\xrightarrow{v}\mathbb Z/m\)。最後の同型には「不分岐拡大では単数がノルム」（Hensel と Lang）が要る。極限で \(\mathrm{Br}(K^{\mathrm{nr}}/K)\cong\mathbb Q/\mathbb Z\)。残る算術は「全ての類が不分岐拡大で分解する」（§4.2 の (a)）だけ。</p>
+<p><b>限界</b>：ホモトピー群が避けられないのは、対象が切り詰められていないとき（環スペクトラムの \(\mathbf{Pic}\)、たとえば \(\mathbf{Pic}(\mathbb S)\)、高次 Brauer 群）や、「全ての捩れ加群で \(H^{\ge2}=0\)」のようなコホモロジー次元の一様な主張を示したいとき。∞ 圏の枠組みは「切り詰められているならデータを直接扱える」ことをはっきりさせ、有限体・局所体の Brauer 群はそれができる場合である。</p>
+
+<h3>4.7 もっと抽象的に：円周上の捻れた形は \(\pi_0\mathrm{Aut}\) しか見ない</h3>
+<p>最も抽象的な一行：<b>\(\mathrm{Spec}\,\mathbb F_q\) は 1 次元（副有限な円周）で、Brauer 類は \(\mathrm{Mod}\) の自己同型の「1 次以上の部分」にしか乗らないので、円周の上では見えない</b>。ノルムやスカラーの計算は要らない。</p>
+
+<p><b>一般原理</b>．降下を持つ ∞ 圏の対象 \(X\) と自己同型の群的空間 \(\mathrm{Aut}(X)\) について、モノドロミー \(\varphi\) の円周 \(S^1=B\mathbb Z\) 上で
+\[
+\{X\text{ の捻れた形}\}\ \simeq\ \mathrm{Map}_{\varphi}\bigl(S^1,B\mathrm{Aut}(X)\bigr)\ \simeq\ \mathrm{Aut}(X)_{h\mathrm{Aut}(X)}\quad(\varphi\text{ でねじった共役作用による商})
+\]
+（自由ループ空間の公式 \(LBG\simeq G^{\mathrm{ad}}_{hG}\) のねじれ版）。よって<b>捻れた形の同値類は \(\pi_0\mathrm{Aut}(X)\) の \(\varphi\)-ねじれ共役類と一対一で、\(\mathrm{Aut}(X)\) の連結成分の中身は寄与しない</b>。円周が 1 次元なので、写像の連結成分は \(B\mathrm{Aut}(X)\) の基本群しか見ない。\(\mathrm{Spec}\,\mathbb F_q\) は副有限な円周なので、さらに<b>連続性</b>（有限次で自明化、つまりモノドロミーの像は有限）が加わる。</p>
+
+<p><b>Brauer 群への適用</b>．\(X=\mathrm{Mod}_{\overline{\mathbb F}_q}\)、\(\mathrm{Aut}(X)=\mathbf{Pic}\simeq\mathbb Z\times B\mathbb G_m\)。</p>
+<ul>
+  <li>\(B\mathbb G_m\) の部分は連結なので捻れた形に全く寄与しない。\(\mathbb G_m\) について何も計算せず、Lang の定理も Hilbert 90 も使わない。</li>
+  <li>\(\mathbb Z\)（ずらし）には \(\varphi\) が自明に作用し、ねじれ共役類は \(\mathbb Z\) だが、連続性でモノドロミーの像は \(\mathbb Z\) の有限部分群 \(=0\)。</li>
+</ul>
+<p>よって \(\mathrm{Br}(\mathbb F_q)=0\)。∎ §4.6 のステップ 4 が「\(\mathbb Z\) の部分は連続性で消える」、ステップ 5〜7（スカラー、ノルム、全射性）が \(B\mathbb G_m\) の部分の計算で、それが「連結だから寄与しない」の一言で済む。</p>
+
+<div class="table-wrap"><table>
+<tr><th>対象 \(X\)</th><th>\(\mathrm{Aut}(X)\)</th><th>\(\pi_0\mathrm{Aut}\)</th><th>円周上の捻れた形</th></tr>
+<tr><td>\(\mathrm{Mod}\)（Brauer 群）</td><td>\(\mathbb Z\times B\mathbb G_m\)</td><td>\(\mathbb Z\)</td><td>連続性で自明。次元だけで消える</td></tr>
+<tr><td>ベクトル空間 \(k^n\)（Hilbert 90）</td><td>\(GL_n\)</td><td>\(GL_n(\overline{\mathbb F}_q)\)</td><td>ねじれ共役類が一つ。Lang の定理が要る</td></tr>
+<tr><td>連結な代数群 \(G\) の torsor</td><td>\(G\)</td><td>\(G(\overline{\mathbb F}_q)\)</td><td>Lang の定理で一つ</td></tr>
+</table></div>
+<p><b>Lang の定理</b>は \(d\varphi=0\) ⇒ Lang 写像 \(g\mapsto g^{-1}\varphi(g)\) が étale ⇒ 連結な \(G\) で全射、という幾何学的事実（Frobenius は無限小的にゼロ）。有限体上の「捻れた形が自明」は、\(\pi_0\mathrm{Aut}\) が非自明な \(H^1\) 型（Lang が要る）と、自己同型が高次にしかない \(H^2\) 型（1 次元だから自動的に消える）に分かれる。局所体のエタールホモトピー型は 2 次元なので \(\pi_1\mathrm{Aut}=\mathbb G_m\) まで見え、\(\mathrm{Br}(K)=\mathbb Q/\mathbb Z\) が生き残る。</p>
+
+<h3>4.8 Postnikov 分解の議論を抽象論で書く</h3>
+<p>「両側の条件から真ん中を出す」議論は、∞ トポスの一般論で「連結性は拡大で閉じている ＋ 大域切断は fiber 列を保つ ＋ 底の次元が高い層の大域切断を自動的に連結にする」と書ける。ホモトピー群は定義の段階でも使わない。</p>
+
+<p><b>道具</b>．∞ トポス \(\mathcal X\) で、\(n\)-切り詰めは球面の包含 \(\partial\Delta^{n+2}\to\Delta^{n+2}\) に関する局所性、\(\tau_{\le n}\) はその局所化。射が \(n\)-連結とは \((n\text{-連結},n\text{-切り詰め})\) 分解系の左クラスに属すること（HTT §5.2.8、§6.5.1）。局所化と直交性だけで述べられる。</p>
+<ul>
+  <li><b>補題 A</b>：\(\Gamma=\mathrm{Map}(\ast,-)\) は極限なので fiber 列を保つ。</li>
+  <li><b>補題 B（連結性は拡大で閉じる）</b>：空間の fiber 列 \(A\to B\to C\) で \(A,C\) が連結なら \(B\) も連結。<i>証明</i>：\(C\) が連結なので \(B\to C\) の全てのファイバーは \(A\) と同値、よって 0-連結。\(C\to\ast\) も 0-連結で、左クラスは合成で閉じるので \(B\to\ast\) は 0-連結。∎</li>
+  <li><b>補題 C（Postnikov 分解）</b>：\(F\to\tau_{\le n}F\) の塔で、各層のファイバーは \(n\)-連結かつ \((n+1)\)-切り詰め（Eilenberg–MacLane 対象）。切り詰められていれば有限段で止まる。</li>
+  <li><b>系（障害理論の抽象形）</b>：各層のファイバーの大域切断が連結なら \(\Gamma F\) も連結。</li>
+  <li><b>補題 D（ホモトピー次元、HTT Def. 7.2.1.1・Lemma 7.2.1.7）</b>：\(\mathcal X\) がホモトピー次元 \(\le d\)（全ての \(d\)-連結対象が大域切断を持つ）なら、\(k\)-連結対象（\(k\ge d\)）の大域切断は \((k-d)\)-連結。特に次元 \(\le d\) の底では \((d+1)\)-連結対象の大域切断は連結。</li>
+</ul>
+
+<p><b>\(\mathrm{Br}(\mathbb F_q)=0\) をこの言葉だけで</b>．\(\mathcal X\) を \(\mathrm{Spec}\,\mathbb F_q\) のエタール ∞ トポスとする。</p>
+<ol>
+  <li>Postnikov 分解：\(B^2\mathbb G_m\to B\mathbf{Pic}\to B\mathbb Z\)。</li>
+  <li>高い層：\(B^2\mathbb G_m\) は 1-連結で、捩れ係数について \(\mathcal X\) はホモトピー次元 1 として振る舞う（\(\overline{\mathbb F}_q^\times\) は捩れ）。補題 D で \(\Gamma(B^2\mathbb G_m)\) は連結。</li>
+  <li>低い層：\(\Gamma(B\mathbb Z)\) の連結性は次元ではなく連続性（\(\hat{\mathbb Z}\) の作用は有限商経由、\(\mathbb Z\) は有限部分群を持たない）。</li>
+  <li>補題 A・B：両端が連結なので \(\Gamma(B\mathbf{Pic})=\mathbf{Br}(\mathbb F_q)\) も連結。∎</li>
+</ol>
+<p><b>注意</b>：\(\mathbb Z\) 係数では \(\mathcal X\) は本当のホモトピー次元 1 を持たない（\(H^2(\hat{\mathbb Z},\mathbb Z)=\mathbb Q/\mathbb Z\neq0\)）。副有限な円周は「捩れについては 1 次元」で、整数係数では局所体の不変量写像に使った \(\mathbb Q/\mathbb Z\) が現れる。§4.7 の円周原理は補題 D を \(d=1\)、\(F=B\mathrm{Aut}(X)\) に当てはめたもの。ここで使った \(B\)・\(\Gamma\) の意味と、「次元 1」「1-連結」「\(\Gamma(B\mathbb Z)\) の連結性」の出どころ（および「文字どおりのホモトピー次元 1 ではない」という訂正）は<a href="classifying-shape.html">補章 9</a> を参照。</p>
+
+<div class="table-wrap"><table>
+<tr><th>議論</th><th>抽象形</th></tr>
+<tr><td>両端が消えれば真ん中が消える</td><td>補題 A ＋ 補題 B</td></tr>
+<tr><td>Postnikov 分解で層ごとに見る</td><td>補題 C（\((n\text{-連結},n\text{-切り詰め})\) 分解系）</td></tr>
+<tr><td>1 次元だから \(H^2\) がない</td><td>補題 D（ホモトピー次元）</td></tr>
+<tr><td>ずらしの部分は連続性で消える</td><td>副有限群の作用と離散的な捩れのない係数</td></tr>
+</table></div>
+<p><b>同じ型の議論</b>：Hensel 剛性（§4.4 の ④、平方零拡大の塔の各層の障害がアフィン性で消える）、変形理論一般（余接複体で制御される層）、∞ 圏での「選択空間が可縮」の議論。いずれも ∞ 圏論的代数幾何の標準的な障害理論である。</p>
+
+<div class="table-wrap"><table>
+<tr><th>問い</th><th>答え</th></tr>
+<tr><td>Clausen は §2 の続きで何をしているか</td><td>主役を K 理論スペクトラムに移し、Artin 写像を \(K(\mathrm{lc})\to dK^{\mathrm{Sel}}\) の自然変換として作る。相互律は Eilenberg swindle。入力は \(G^{\mathrm{ab}}\cong\pi_1dK^{\mathrm{Sel}}\) の側に集約</td></tr>
+<tr><td>基本類の存在は整理できるか</td><td>消せないが、圏の降下として言い換えられ、算術的入力は \(\mathrm{Br}(K^{\mathrm{nr}})=0\) と単数・剰余体の事実に絞られる。概念的には双対性の向き</td></tr>
+</table></div>
+
+<div class="box">
+<p class="label">原典との違い・文献</p>
+<ul>
+  <li>古典的な流れは Serre『Local Fields』、Cassels–Fröhlich の Tate の章。Tate 構成の ∞ 的扱いは Nikolaus–Scholze「On topological cyclic homology」。</li>
+  <li>Antieau–Gepner「Brauer groups and étale cohomology in derived algebraic geometry」（§4.1、§4.4）、Toën「Derived Azumaya algebras and generators for twisted derived categories」、Gepner–Lawson「Brauer groups and Galois cohomology of commutative ring spectra」（§4.4）。</li>
+  <li>この方向を徹底したものに Clausen「A K-theoretic approach to Artin maps」（arXiv:1703.07842）がある。相互写像を代数的 K 理論と双対性から構成し、\(K^\times\) を \(K_1\) と見るところまで一般論に押し込むので、数論的入力がさらに少ない。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応</p>
+<ul>
+  <li>このページの既存の章には、群の表現・Tate 構成・類体論の記述はない。§2.4 の中山の判定法を ∞ の言葉で完全に書き下すことは、形式化の練習問題の候補になる。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>表現論の導来関手は \(\mathrm{Fun}(BG,D(k))\) 上の Kan 拡張・極限。Frobenius・Shapiro・Hochschild–Serre・Mackey は関手性と基底変換の系（Mackey はホモトピー引き戻し \(BH\times_{BG}BK\) の計算）。</li>
+  <li>同変導来圏・Tate 構成・導来同値は三角圏では扱いにくく、∞ で本質的に楽になる。Hecke 圏や \(p\) 進群の滑らかな表現は六関手形式の具体例。</li>
+  <li>局所類体論：Tate 構成で群コホモロジーの道具立ては消え、残るのは Hilbert 90（降下）・不変量写像（算術）・中山の判定法（群論）。Tate の定理は \(u^{tG}\) が同値という一行で、相互写像は \(\pi_0\) を取るだけ。</li>
+  <li>Clausen：Artin 写像はスペクトラムの自然変換 \(K(\mathrm{lc}_{\mathcal P})\to dK^{\mathrm{Sel}}(\mathcal P)\) の \(\pi_1\)。相互律は Eilenberg swindle（Haar 測度の積公式）、入力は \(G^{\mathrm{ab}}\cong\pi_1dK^{\mathrm{Sel}}\)（エタール降下とコホモロジー次元）に集約。</li>
+  <li>基本類の存在は消せないが、Brauer 群 = \(\mathrm{Mod}_K\) の捻れた形（圏の降下）と言い換えられ、算術的入力は \(\mathrm{Br}(K^{\mathrm{nr}})=0\) と単数・剰余体の事実に絞られる。概念的には次元 2 の双対性の向き。</li>
+  <li>導来代数幾何は局所体の \(\mathrm{Br}\) の計算を、局所化列・Hensel 剛性で形式化し、入力を Lang の定理と有限体の性質に絞る。本質的に効くのはスキームの \(\mathrm{Br}=H^2(\mathbb G_m)\)、環スペクトラム・スタックの Brauer 群。</li>
+  <li>有限体の \(\mathrm{Br}=0\) は導来的には「\(B\mathbf{Pic}\) の Postnikov 分解 + \(\mathrm{Spec}\,\mathbb F_q\) は副有限な円周（1 次元）」で示せ、Wedderburn の小定理が要らない。局所体（2 次元）の \(\mathrm{Br}=\mathbb Q/\mathbb Z\) と次元の違いとして並ぶ。</li>
+  <li>別証明：体の \(\mathbf{Pic}\) は 1-切り詰めなので、降下データ \((\sigma,\tau)\) を直接分類でき、\(\mathrm{Br}(L/k)\cong k^\times/N(L^\times)\)（巡回代数の圏版）。有限体ではノルムの全射性で 0。ホモトピー群もコホモロジーも取らない。</li>
+  <li>最も抽象的には：円周上の捻れた形は \(\pi_0\mathrm{Aut}\) しか見ない（\(\mathbf{Pic}=\mathbb Z\times B\mathbb G_m\) の連結部分は寄与せず、\(\mathbb Z\) は連続性で消える）。Postnikov の議論は「連結性は拡大で閉じる（分解系）＋ \(\Gamma\) は極限 ＋ ホモトピー次元」に還元される。</li>
+</ul>
+</main>
+</body>
+</html>

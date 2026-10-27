@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 6　cocartesian fibration の定義とリフティング性質、その用途</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 6　cocartesian fibration の定義とリフティング性質、その用途</nav>
+<h1>補章 6　cocartesian fibration の定義とリフティング性質、その用途</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="03-straightening.html">第 3 章</a> §1（cocartesian 辺と cocartesian fibration）の数学的な背景にあたる。Lean の宣言名は、他の章にすでに出ているものだけを引用する。</p>
+
+<p>cocartesian fibration はリフティング性質で書けるか、という問いに答える。素朴な単体的集合の言葉では「内ホーンのリフティング性質 ＋ 特別な辺（cocartesian 辺）の存在」で、純粋なリフティング性質ではない。辺に印をつける marked 単体的集合を使うと、純粋なリフティング性質になる。</p>
+
+<!-- ============================================================ -->
+<h2>1. 1 圏：Grothendieck opfibration</h2>
+<p>関手 \(p\colon E\to B\) の射 \(f\colon e\to e'\) が <b>cocartesian</b> とは、任意の \(g\colon e\to e''\) と \(v\circ p(f)=p(g)\) を満たす任意の \(v\colon p(e')\to p(e'')\) について、
+\[
+h\circ f=g,\qquad p(h)=v
+\]
+を満たす \(h\colon e'\to e''\) が<b>一意に</b>存在すること。\(p\) が <b>opfibration</b> とは、任意の \(e\) と \(u\colon p(e)\to b\) について \(u\) の上の cocartesian 射 \(e\to e'\) が存在すること。\(f\) は「\(e\) を \(u\) に沿って押し出した普遍的な行き先」で、輸送 \(u_!(e):=e'\) が定まる。</p>
+
+<!-- ============================================================ -->
+<h2>2. ∞ 圏の定義（HTT Def. 2.4.2.1、Kerodon Def. 5.1.4.1）</h2>
+<p>\(p\colon E\to B\) を準圏の間の写像とする。</p>
+<ol>
+  <li><b>内ファイブレーション</b>：内ホーン \(\Lambda^n_i\subset\Delta^n\)（\(0\lt i\lt n\)）に関する右リフティング性質。</li>
+  <li><b>cocartesian 辺</b>：辺 \(f\colon x\to y\) が \(p\)-cocartesian とは、全ての \(n\ge2\) について、\(\Delta^{\{0,1\}}\) が \(f\) に写る \(\Lambda^n_0\to E\) と、両立する \(\Delta^n\to B\) からなる持ち上げ問題が必ず解けること（HTT Rem. 2.4.1.4、Kerodon Def. 5.1.1.1）。</li>
+  <li><b>cocartesian 持ち上げの存在</b>：任意の \(x\in E\) と \(u\colon p(x)\to b\) について、\(u\) の上の \(p\)-cocartesian 辺 \(x\to y\) が存在する。</li>
+</ol>
+<p>1〜3 を満たすとき \(p\) を cocartesian fibration という。1 はリフティング性質だが、3 は「特定の性質を持つ持ち上げの存在」なので、\(p\) 単独のリフティング性質にはなっていない。</p>
+
+<h3>外側のホーン \(\Lambda^n_0\) を使う理由</h3>
+<ul>
+  <li><b>\(n=2\)（存在）</b>：\(\Lambda^2_0\) は辺 \(0\to1\)（\(=f\)）と \(0\to2\)（\(=g\colon x\to z\)）からなり、底では 2 単体全体が与えられている。持ち上げは辺 \(1\to2\)（\(=h\colon y\to z\)）と \(h\circ f\simeq g\) を示す 2 単体を与える。1 圏の条件の存在の部分そのもの。</li>
+  <li><b>\(n\ge3\)（一意性）</b>：1 圏の一意性は、∞ 圏では「\(h\) を選ぶ空間が可縮」になる。可縮性は全ての次元の球面が埋まることなので、全ての \(n\) の持ち上げとして書かれる。</li>
+</ul>
+
+<h3>写像空間による言い換え</h3>
+<p>\(f\colon x\to y\) が cocartesian ⇔ 任意の \(z\) について次の正方形がホモトピー引き戻し。
+\[
+\begin{array}{ccc}
+\mathrm{Map}_E(y,z) & \xrightarrow{\ -\circ f\ } & \mathrm{Map}_E(x,z)\\
+\downarrow & & \downarrow\\
+\mathrm{Map}_B(py,pz) & \xrightarrow{\ -\circ p(f)\ } & \mathrm{Map}_B(px,pz)
+\end{array}
+\]
+1 圏の「\(h\) が一意に存在する」を写像空間で書いた形である。</p>
+
+<!-- ============================================================ -->
+<h2>3. marked 単体的集合での純粋なリフティング性質（HTT §3.1）</h2>
+<p>\(E^\natural\) を \(E\) の \(p\)-cocartesian 辺に印をつけたもの、\(B^\sharp\) を \(B\) の全ての辺に印をつけたものとする。</p>
+<p><b>定理</b>（HTT Prop. 3.1.1.6）．\(p\) が cocartesian fibration ⇔ \(p\colon E^\natural\to B^\sharp\) が marked left anodyne 写像に対する右リフティング性質を持つ。</p>
+<div class="table-wrap"><table>
+<tr><th>marked left anodyne の生成元</th><th>意味</th></tr>
+<tr><td>内ホーン \(\Lambda^n_i\subset\Delta^n\)（印なし）</td><td>内ファイブレーション</td></tr>
+<tr><td>\(\{0\}\subset(\Delta^1)^\sharp\)</td><td>cocartesian 持ち上げの存在</td></tr>
+<tr><td>\(\Lambda^n_0\subset\Delta^n\)（最初の辺に印）</td><td>印のついた辺は cocartesian</td></tr>
+<tr><td>\((\Lambda^2_1)^\sharp\cup(\Delta^2)^\flat\subset(\Delta^2)^\sharp\)</td><td>印のついた辺の合成にも印がつく</td></tr>
+<tr><td>\(K^\flat\subset K^\sharp\)（\(K\) は Kan 複体）</td><td>同値には印がつく</td></tr>
+</table></div>
+<p>印を「cocartesian であるという主張」として持ち歩くことで、存在条件もリフティング性質になる。特に \(\{0\}\subset(\Delta^1)^\sharp\) に対する持ち上げが「印のついた辺を持ち上げられる」という条件そのもの。</p>
+
+<!-- ============================================================ -->
+<h2>4. 他のファイブレーションとの比較</h2>
+<div class="table-wrap"><table>
+<tr><th>種類</th><th>リフティング性質</th><th>意味</th></tr>
+<tr><td>内ファイブレーション</td><td>内ホーン \(\Lambda^n_i\)（\(0\lt i\lt n\)）</td><td>ファイバーが準圏</td></tr>
+<tr><td>cocartesian fibration</td><td>内ホーン ＋ 最初の辺が cocartesian な \(\Lambda^n_0\) ＋ cocartesian 持ち上げの存在</td><td>ファイバーが ∞ 圏、輸送が関手的</td></tr>
+<tr><td>左ファイブレーション</td><td>全ての \(\Lambda^n_i\)（\(0\le i\lt n\)）</td><td>全ての辺が cocartesian、ファイバーが ∞ 亜群</td></tr>
+<tr><td>cartesian fibration</td><td>双対：\(\Lambda^n_n\)、最後の辺</td><td>輸送が反変</td></tr>
+</table></div>
+<p>左ファイブレーションでは全ての辺が cocartesian なので、どの辺が特別かを区別する必要がなく、印なしのリフティング性質だけで書ける。<a href="unstraightening-analogy.html">補章 2</a> §3 の「左 fibration では cocartesian 射を保つ条件が自動」はこのこと。圏のナーブは 2-余骨格的なので、1 圏では \(\Lambda^n_0\) の条件は \(n=2\)（存在）と \(n=3\)（一意性）で尽きる。∞ 圏では全ての \(n\) が要る。</p>
+
+<!-- ============================================================ -->
+<h2>5. 何のために必要か</h2>
+<p>一言で言えば、<b>∞ 圏に値を取る関手 \(B\to\mathrm{Cat}_\infty\) を、整合性を手で書かずに扱うための道具</b>である。</p>
+
+<h3>関手を直接書くのは難しい</h3>
+<p>関手 \(B\to\mathrm{Cat}_\infty\) を直接与えるには、各 \(b\) に ∞ 圏、各射に関手 \(u_!\)、合成のずれ \((vu)_!\simeq v_!u_!\) の自然同値、その高次の整合性（<a href="coherent-nerve-diagrams.html">補章 3</a> の立方体）を全部与える必要がある。cocartesian fibration なら、一つの ∞ 圏 \(E\) と局所的なリフティング性質を与えるだけでよく、輸送は持ち上げで定まり（選択の空間は可縮）、高次の整合性は \(E\) が準圏であることに含まれる。straightening \(\mathrm{coCart}(B)\simeq\mathrm{Fun}(B,\mathrm{Cat}_\infty)\) が両者を結ぶ。<b>関手として考え、fibration として作る</b>のが基本の使い方。1 圏でも、擬関手（indexed category）より Grothendieck fibration（fibered category）で扱うのが代数幾何の伝統である（SGA1 の降下理論）。</p>
+
+<h3>選択なしで fibration として生まれる構成</h3>
+<p>引き戻しを持つ \(\mathcal C\) について、\(\mathrm{ev}_1\colon\mathrm{Fun}(\Delta^1,\mathcal C)\to\mathcal C\) は cartesian fibration で、fiber はスライス \(\mathcal C_{/X}\)、輸送は引き戻し \(f^*\)、cartesian 辺はちょうど引き戻しの正方形。関手 \(X\mapsto\mathcal C_{/X}\) を直接書くには引き戻しを整合的に選ぶ必要があるが、fibration なら選択は要らない。</p>
+<div class="table-wrap"><table>
+<tr><th>構成</th><th>fibration</th></tr>
+<tr><td><a href="unstraightening-analogy.html">補章 2</a> の \(\mathrm{Cat}_*^{\mathrm{lax}}\to\mathrm{Cat}\)</td><td>普遍 cocartesian fibration</td></tr>
+<tr><td>対称モノイダル ∞ 圏</td><td>\(\mathcal C^\otimes\to\mathrm{Fin}_*\)（<a href="monoidal-prl.html">補章 5</a>）</td></tr>
+<tr><td>Hom 関手</td><td>\(\mathrm{Tw}(\mathcal C)\to\mathcal C^{\mathrm{op}}\times\mathcal C\)（左 fibration）</td></tr>
+<tr><td>加群の圏の族</td><td>\(\mathrm{Mod}(\mathcal C)\to\mathrm{CAlg}(\mathcal C)\)、\(R\mapsto\mathrm{Mod}_R\)</td></tr>
+</table></div>
+
+<h3>随伴</h3>
+<p>\(\Delta^1\) 上の両側 fibration（bicartesian fibration）が随伴そのもの（HTT の定義）。cocartesian 輸送が左随伴、cartesian 輸送が右随伴で、\(\mathrm{Map}(Fc,d)\simeq\mathrm{Map}(c,Gd)\) は全空間 \(E\) の写像空間として最初から一致する。\(f\) を動かしたときの \(f^*\dashv f_*\)、\(f_!\dashv f^!\) の整合性も両側 fibration で扱い、Beck–Chevalley 条件（基底変換）は「cocartesian 輸送と cartesian 輸送が可換」という条件になる。</p>
+
+<h3>∞ 圏の極限・余極限（HTT §3.3）</h3>
+<div class="table-wrap"><table>
+<tr><th>量</th><th>fibration での表示</th></tr>
+<tr><td>\(\lim F\)</td><td>cocartesian 切断の ∞ 圏</td></tr>
+<tr><td>lax 極限</td><td>全ての切断の ∞ 圏</td></tr>
+<tr><td>\(\operatorname{colim}F\)</td><td>全空間 \(E\) を cocartesian 辺で局所化したもの</td></tr>
+</table></div>
+<p>降下（被覆に沿った極限）は \(\mathrm{Cat}_\infty\) や \(\mathrm{Pr}^L\) での極限なので、ここでも fibration が使われる。<a href="05-gamma-bridges.html">第 5 章</a>の「極限 = \(\mathrm{Un}(F)\) の切断の空間」はこの \(\mathcal S\) 値版。</p>
+
+<h3>六関手形式での位置づけ</h3>
+<ul>
+  <li>\(X\mapsto D(X)\) は \(f^*\) について cartesian fibration、\(f_!\) について cocartesian fibration として扱う。</li>
+  <li>Mann の \(\mathrm{Corr}(\mathcal C)\to\mathrm{Pr}^L\) も、実際の構成では対応の ∞ 圏上の（co）cartesian fibration と straightening を経由する。</li>
+  <li>\(\mathrm{Fin}_*\) 上の cocartesian fibration と組み合わせて、モノイダルな族も同じ言葉で扱える。</li>
+</ul>
+<p>左 fibration が空間値関手の作業場だったのに対し、cocartesian fibration は ∞ 圏値関手の作業場である。第 3 章によれば、リポジトリでは空間値の straightening は完成し、\(\mathrm{Cat}_\infty\) 値は途中であり、この節はそれが完成すると何が使えるかの見取り図にもなる。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<ul>
+  <li>HTT は cocartesian 辺を Def. 2.4.1.1（写像空間・slice による定義）で導入し、外側ホーンによる特徴づけを Rem. 2.4.1.4 で与える。Kerodon（Def. 5.1.1.1）は外側ホーンで直接定義する。</li>
+  <li>marked 単体的集合による特徴づけ（§3）は HTT §3.1 の道具で、straightening の Quillen 同値を述べるためのモデル構造（cocartesian モデル構造）の基礎になる。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の宣言のみ）</p>
+<ul>
+  <li><a href="03-straightening.html">第 3 章</a> §1 によると、Lean の <code>IsCocartesianEdge</code> は Kerodon Def. 5.1.1.1 に従い、外側ホーン \(\Lambda^{n+2}_0\) の持ち上げで直接定義されている（§2 の 2 の形）。cocartesian fibration は <code>cocartesianFibrations</code>。</li>
+  <li>cocartesian 持ち上げの選択は <code>chooseCocartesianEdgeLift</code>、輸送の選択空間が可縮であることは <code>transportChoiceSpace_isContractibleKan</code>。§2 の「一意性 = 選択の空間が可縮」の Lean での形である。</li>
+  <li>第 3 章の記述には marked 単体的集合は出てこない。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>cocartesian fibration = 内ファイブレーション ＋ cocartesian 持ち上げの存在。cocartesian 辺は「最初の辺がその辺である \(\Lambda^n_0\)（\(n\ge2\)）の持ち上げが全て解ける」辺。</li>
+  <li>\(n=2\) が 1 圏の存在、\(n\ge3\) が一意性（選択の空間の可縮性）に対応する。写像空間で書けばホモトピー引き戻しの条件。</li>
+  <li>素朴には純粋なリフティング性質ではないが、marked 単体的集合 \(E^\natural\to B^\sharp\) では marked left anodyne 写像に対するリフティング性質になる。</li>
+  <li>用途：∞ 圏値関手を整合性なしで扱う、選択を避ける（引き戻し \(\mathrm{ev}_1\colon\mathrm{Fun}(\Delta^1,\mathcal C)\to\mathcal C\)）、随伴（\(\Delta^1\) 上の両側 fibration）、∞ 圏の極限・余極限（切断と局所化）、モノイダル構造（\(\mathrm{Fin}_*\)）。</li>
+  <li>左ファイブレーションは全ての辺が cocartesian な場合で、印なしで全ての \(\Lambda^n_i\)（\(0\le i\lt n\)）のリフティング性質で書ける。</li>
+</ul>
+</main>
+</body>
+</html>

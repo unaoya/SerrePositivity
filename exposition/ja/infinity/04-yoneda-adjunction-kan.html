@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoneda・随伴・Kan 拡張</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
+<h1>第 4 章　Yoneda・随伴・局所化・cofinality・Kan 拡張</h1>
+<p class="meta">基準コミット <code>5af94602c</code>（2026-10-23）。対象は <code>F1/</code> の前層・Yoneda・twisted arrow と <code>F1B/</code>。パスは <code>SerrePositivity/InfinityCategories/</code> からの相対パス。</p>
+
+<p>この章の内容は二つの系統に分かれる。</p>
+<ul>
+  <li><b>F1 側</b>（straightening を使う）：前層 ∞ 圏と Yoneda 埋め込み。Hom 関手は twisted arrow の straightening として作る。</li>
+  <li><b>F1B 側</b>（straightening を使わない）：随伴、局所化と反射的部分圏、cofinality、Kan 拡張、通常の圏論との比較。</li>
+</ul>
+<p>F1B は「推移的にも straightening に依存しない」という規則のもとで書かれている。その副作用が R8 の複製である（<a href="r8-duplication.html">記録</a>）。</p>
+
+<!-- ============================================================ -->
+<h2>1. 前層 ∞ 圏</h2>
+<pre><code>def PresheafInfinity (C : SSet.{u}) : SSet.{u + 1}
+-- = Fun((ULift C)ᵒᵖ, 𝒮)、内部 Hom で定義
+instance presheafInfinity_quasicategory (C : SSet.{u}) : Quasicategory (PresheafInfinity C)</code></pre>
+<p>\(\mathcal S\) が quasicategory なので、底 \(C\) に充填条件がなくても \(\mathcal P(C)\) は quasicategory になる。基本的な操作は、制限 \(f^*\)（<code>presheafInfinityRestriction</code>。合成を逆順の合成に<b>厳密に</b>写す）、評価（<code>presheafInfinityEvaluation</code>）、定値前層（<code>constantPresheafInfinity</code>）である（F1/PresheafInfinity）。</p>
+<p>前層 ∞ 圏は小さい極限・余極限を無条件に持ち、それらは評価で保存・検出される（<code>presheafInfinity_hasLimit</code>、<code>presheafInfinity_hasColimit</code>）。証明は、第 2 章の「関手 ∞ 圏の極限は各点で計算できる」と、\(\mathcal S\) の極限・余極限（straightening 経由。第 5 章 §3）を組み合わせたもの。</p>
+
+<!-- ============================================================ -->
+<h2>2. Hom 関手と Yoneda 埋め込み</h2>
+
+<h3>構成</h3>
+<p>Kerodon 第 8 章と同じく、Hom 関手は twisted arrow ∞ 圏から作る。\(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) は左 fibration で、その fiber は写像空間 \(\mathrm{Map}_C(x,y)\) である。これを第 3 章の straightening で分類すると、関手</p>
+\[
+\mathrm{Hom}\colon C^{\mathrm{op}}\times C\longrightarrow\mathcal S
+\]
+<p>が得られる。第二変数で curry すると Yoneda 写像 \(C\to\mathcal P(C)\) になる。</p>
+<pre><code>def twistedArrowHomInfinity (C : SSet.{u}) [Quasicategory C] :
+    (SSet.uliftFunctor.{u + 1, u}).obj (C.op ⊗ C) ⟶ SpaceInfinity.{u}
+def yonedaInfinityMap (C : SSet.{u}) [Quasicategory C] :
+    (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ PresheafInfinity C
+def representablePresheafInfinity {C : SSet.{u}} [Quasicategory C] (c : C _⦋0⦌) :
+    (SSet.uliftFunctor.{u + 1, u}).obj C.op ⟶ SpaceInfinity.{u}</code></pre>
+<p>場所：F1/YonedaInfinityConstruction。twisted arrow の性質（fiber の計算、表現可能な場合の比較）は F1/TwistedArrow*（27 ファイル）にある。</p>
+
+<h3>主な結果</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>Yoneda の補題（写像空間版）：\(\mathrm{Map}_{\mathcal P(C)}(h_y,F)\simeq F(y)\)</td><td><code>yonedaPresheafEvaluationEquivalence</code></td><td>F1/YonedaPresheafEvaluation</td></tr>
+<tr><td>Yoneda 埋め込みは充満忠実</td><td><code>yonedaInfinityMap_isFullyFaithful</code></td><td>F1/YonedaInfinityFullyFaithful</td></tr>
+<tr><td>極限は表現可能前層で検出される</td><td><code>isLimitCone_iff_representablePresheafInfinity</code></td><td>F1/RepresentablePresheafLimitDetection</td></tr>
+<tr><td>任意の前層は表現可能前層の余極限（密度）</td><td><code>presheafElementsColimitCocone_isColimit</code></td><td>F2/Ind/ElementsDiagram</td></tr>
+</table></div>
+<p><b>充満忠実性の方針</b>：Yoneda の補題から \(\mathrm{Map}(h_x,h_y)\simeq h_y(x)=\mathrm{Map}_C(x,y)\) という同値が得られる。ただし、それだけでは「Yoneda 写像<b>そのもの</b>の Hom への作用」が同値であることにはならない。docstring もこの区別を強調している（「独立な写像空間同値の存在ではなく、元の yonedaInfinityMap の Hom 作用を証明する」）。そこで、Yoneda 写像の区間模型での Hom 作用を恒等点で評価したものが、Tw の恒等点からの transport と一致することを示し（F1/YonedaEvaluatedTransportEquivalence）、そちらの同値性から結論している。</p>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<p>HTT §5.1.3 は Yoneda 埋め込みを単体的圏の側で作り、モデル構造を通して ∞ 圏の関手にする。ここでは Kerodon §8.2〜8.3 と同様に、twisted arrow と straightening で ∞ 関手として直接作っている。ただし Yoneda が使うのは、straightening の分類写像の構成（F1/LeftStraighteningAllBases）、対象ごとの表現、unstraightening の写像空間比較であって、第 3 章の同値定理 <code>leftStraighteningInfinityMap_isQCatEquivalence</code> そのものには依存していない（import の閉包で確認）。</p>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. 随伴</h2>
+
+<h3>定義</h3>
+<p>随伴は Kerodon Def. 6.2.1.1 と Remark 6.2.1.4 に従い、<b>ホモトピー 2-圏での随伴</b>として定義する。すなわち、単位・余単位が \(h\,\mathrm{Fun}\) の射で、三角恒等式が \(h\,\mathrm{Fun}\) で成り立つものである。Mathlib の quasicategory の strict bicategory（<code>SSet.QCat.strictBicategory</code>）の <code>Bicategory.Adjunction</code> をそのまま使っている。</p>
+<pre><code>abbrev QCatAdjunction {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
+    (F : X ⟶ Y) (G : Y ⟶ X) := Bicategory.Adjunction (qcatMap F) (qcatMap G)</code></pre>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>随伴 ⇒ 写像空間のホモトピー同値 \(\mathrm{Map}_Y(Fx,y)\simeq\mathrm{Map}_X(x,Gy)\)</td><td><code>pinchedMap_isSimplicialHomotopyEquivalence</code></td><td>F1B/AdjunctionPinchedSpaces（区間模型版は AdjunctionMappingSpaces）</td></tr>
+<tr><td>随伴 ⇒ ホモトピー圏の随伴</td><td><code>QCatAdjunction.toHoAdjunction</code></td><td>Stable/AdjunctionHomotopyCategory（R14）</td></tr>
+<tr><td>通常の随伴 ⇔ nerve の随伴</td><td><code>kanNonempty_adjunction_iff_nerveAdjunction</code></td><td>F1B/KanNerveAdjunctionReflection</td></tr>
+</table></div>
+<p>ホモトピー 2-圏での定義は扱いやすい一方で、「関手 ∞ 圏の中の随伴」や「随伴の空間」のような高次の情報は含まない。必要になるのは写像空間の同値までであり、それは上の表のように定理として得られる。</p>
+
+<!-- ============================================================ -->
+<h2>4. 局所化と反射的部分圏</h2>
+
+<h3>局所化</h3>
+<pre><code>def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop :=
+  ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E],
+    IsQCatEquivalence (localizationPrecomposition F W hF E)</code></pre>
+<p>\(F\) が \(W\) を反転し、任意の quasicategory \(E\) について、前合成 \(\mathrm{Fun}(D,E)\to\mathrm{Fun}_W(X,E)\)（\(W\) を反転する関手の充満部分 ∞ 圏）が同値であること（Kerodon Prop. 6.3.1.13(2) の普遍性）。この定義は第 3 章の一般の底への帰着（first vertex 写像が局所化）で決定的に使われている。</p>
+
+<h3>反射的部分圏</h3>
+<pre><code>structure ReflectiveSubcategory (X : SSet.{u}) [Quasicategory X] (P : X _⦋0⦌ → Prop) where
+  reflector : X ⟶ (fullSubcomplexOnVertices X P : SSet.{u})
+  adjunction : QCatAdjunction reflector (fullSubcomplexOnVertices X P).ι</code></pre>
+<p>頂点の条件 \(P\) が張る充満部分 ∞ 圏への、包含の左随伴を指定したもの。ここから次が導かれる（F1B/Reflective*）。</p>
+<ul>
+  <li>余単位は可逆で、\(L\circ L\simeq L\)（<code>counitIso</code>、<code>idempotentIso</code>）</li>
+  <li>局所対象（単位が可逆な対象）は本質的像と一致する（<code>isLocal_iff_essentialImage</code>）</li>
+  <li>反射は、自身が反転する辺についての局所化（<code>ReflectiveSubcategory.isLocalization</code>）</li>
+</ul>
+<p>一般の局所化の<b>存在</b>（Bousfield 局所化）は含まれていない。これは presentable の理論（第 6 章、P レーン）の範囲である。</p>
+
+<!-- ============================================================ -->
+<h2>5. cofinality</h2>
+<pre><code>def IsLeftCofinal {A B : SSet.{u}} (i : A ⟶ B) : Prop :=
+  ∀ (E : SSet.{u}) (p : E ⟶ B) [LeftFibration p],
+    IsSimplicialHomotopyEquivalence (cofinalFunctorPre p (𝟙 B) i)</code></pre>
+<p>任意の左 fibration \(E\to B\) について、切断の空間の制限 \(\mathrm{Fun}_{/B}(B,E)\to\mathrm{Fun}_{/B}(A,E)\) がホモトピー同値であること（Kerodon Def. 7.2.1.1）。極限を計算する向きが left、余極限の向きが right である。</p>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>left anodyne ⇒ left cofinal（right も同様）</td><td><code>isRightCofinal_of_rightAnodyne</code> など</td><td>F1B/Cofinal*</td></tr>
+<tr><td>cofinal ⇔ 「anodyne の後に trivial Kan fibration」と分解できる</td><td><code>isLeftCofinal_iff_exists_anodyne_trivialKan_factorization</code></td><td>F1B/CofinalFactorizationCriterion</td></tr>
+<tr><td>trivial Kan fibration ⇔ 左 fibration かつ left cofinal</td><td><code>trivialKanFibration_iff_leftFibration_and_isLeftCofinal</code></td><td>同上</td></tr>
+<tr><td>反対圏による left/right の入れ替え</td><td><code>isLeftCofinal_iff_isRightCofinal_op</code></td><td>F1B/CofinalOpposite</td></tr>
+<tr><td>Quillen の定理 A 型の判定：slice が弱可縮なら、単射に沿う slice の制限は trivial</td><td><code>sliceOverRestrict_trivialKanFibration_of_weaklyContractible_slices</code></td><td>F1B/InitialQuillenRecovery</td></tr>
+<tr><td>例：始対象への制限は極限を変えない</td><td><code>initialCofinality_via_quillenA</code></td><td>同上</td></tr>
+</table></div>
+<p>cofinal な射に沿う slice の制限が trivial Kan fibration になる（<code>sliceOverRestrict_trivialKanFibration_of_isLeftCofinal</code>）ので、極限は cofinal な部分図式で計算できる。</p>
+
+<!-- ============================================================ -->
+<h2>6. Kan 拡張</h2>
+
+<h3>定義：各点の条件</h3>
+<p>\(\delta\colon K\to C\)、\(F_0\colon K\to D\) と、\(F\colon C\to D\) および変換 \(\beta\colon F_0\Rightarrow F\delta\) について、\(F\) が左 Kan 拡張であるとは、各 \(c\in C\) で、局所図式</p>
+\[
+K\times_C C_{/c}\longrightarrow K\xrightarrow{F_0}D
+\]
+<p>の上の誘導された余錐（頂点 \(F(c)\)）が余極限であることをいう（Kerodon Variant 7.3.1.5）。</p>
+<pre><code>def IsLeftKanExtension {K C D : SSet.{u}} (δ : K ⟶ C) (F₀ : K ⟶ D) (F : C ⟶ D)
+    (β : SSet.Homotopy F₀ (δ ≫ F)) : Prop :=
+  ∀ c : C _⦋0⦌, ∃ t : LeftKanCoconeTransport δ F₀ F β c, IsColimitCone t.cocone</code></pre>
+<p>変換 \(\beta\) は単体的ホモトピー（\(K\times\Delta^1\to D\)）として厳密に持つ。\(h\,\mathrm{Fun}\) の射として持つ版が <code>IsLeftKanExtensionHom</code> である（F1B/KanExtensionHom）。</p>
+
+<h3>主な結果</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>Lean</th><th>場所</th></tr>
+<tr><td>存在 ⇔ 各点の局所図式が余極限を持つ</td><td><code>exists_kanLeftExtension_iff_local_colimits</code></td><td>F1B/KanLeftCommaCoconeColimit</td></tr>
+<tr><td>一意性：二つの左 Kan 拡張は \(\beta\) と両立する <code>FunctorIso</code> で結ばれる</td><td><code>kanLeftKanExtensionIso</code></td><td>F1B/KanLeftHomUniversal</td></tr>
+<tr><td>充満忠実な \(\delta\) に沿う場合、単位は可逆（拡張は本当に「拡張」）</td><td><code>kanLeftKanExtension_unit_isIso</code></td><td>F1B/KanLeftUnitInvertible</td></tr>
+<tr><td>各点の条件 ⇔ Hom の普遍性（\(\mathrm{Fun}(C,D)\) での左随伴的な性質）</td><td><code>exists_kanLeftExtension_with_homUniversal_of_local_colimits</code> など</td><td>F1B/KanLeftHomUniversal</td></tr>
+<tr><td>nerve の場合：通常の pointwise 左 Kan 拡張と一致</td><td><code>kanNerve_isLeftKanExtensionHom_iff_pointwise</code></td><td>F1B/KanNerveLeftPointwise</td></tr>
+</table></div>
+<p>右 Kan 拡張も双対的に揃っている（局所図式は \(K\times_C C_{c/}\)、条件は極限）。</p>
+
+<h3>証明の方針（存在）</h3>
+<p>各点で余極限を選ぶだけでは、それらを一つの関手 \(F\) に束ねられない。そこで「相対 join」による表示を使う。拡張の問題を \(C\) の単体に沿った相対的な延長の問題に書き直し（<code>LeftKanRelativeJoinRealization</code>）、各単体で局所余極限の普遍性から延長を作る。そのうえで厳密化（<code>Strictification</code>）して、元の \(\beta\) を保ったまま関手に組み立てる（F1B/KanGlobal*、KanRelative*）。第 2 章の「関手 ∞ 圏の極限の各点計算」と同じ型の議論で、各点の選択を骨格に沿って自然な族へ延ばしていく。</p>
+
+<!-- ============================================================ -->
+<h2>7. 通常の圏論との整合（B5）</h2>
+<p>F1B では、∞ 圏の概念を通常の圏の nerve に制限すると Mathlib の概念に一致することを確かめている（F1B/KanNerve*、71 ファイル）。</p>
+<ul>
+  <li>随伴：<code>kanNonempty_adjunction_iff_nerveAdjunction</code></li>
+  <li>左右の Kan 拡張（pointwise）：<code>kanNerve_isLeftKanExtensionHom_iff_pointwise</code>、<code>kanNerve_isRightKanExtensionHom_iff_pointwise</code></li>
+  <li>局所的な Kan 錐の双方向の移送：<code>kanNerveLeftCoconeTransport_cocone</code>、<code>kanNerveRightConeTransport_cone</code></li>
+</ul>
+<p>定義が意図どおりであることを確かめる検算の役目を果たしている。第 2 章で見たとおり、一般の極限についての同種の比較は、Core にはまだ小さな例しかない。</p>
+
+<!-- ============================================================ -->
+<h2>8. ファイル構成</h2>
+<div class="table-wrap"><table>
+<tr><th>ファイル群</th><th class="num">ファイル</th><th class="num">行</th><th>内容</th></tr>
+<tr><td>F1/Presheaf*、Yoneda*、Representable*</td><td class="num">22</td><td class="num">1,448</td><td>前層、Yoneda、表現可能前層による検出</td></tr>
+<tr><td>F1/TwistedArrow*</td><td class="num">27</td><td class="num">2,360</td><td>twisted arrow と Hom 関手</td></tr>
+<tr><td>F1B/Adjunction*、Pinched*</td><td class="num">14</td><td class="num">1,593</td><td>随伴と写像空間</td></tr>
+<tr><td>F1B/Localization、Reflective*</td><td class="num">6</td><td class="num">584</td><td>局所化、反射的部分圏</td></tr>
+<tr><td>F1B/Cofinal*、Initial*</td><td class="num">29</td><td class="num">2,464</td><td>cofinality、Quillen A</td></tr>
+<tr><td>F1B/Unit*</td><td class="num">46</td><td class="num">4,869</td><td>随伴の単位と comma 圏</td></tr>
+<tr><td>F1B/Kan*（KanSection*・KanNerve* を含む）</td><td class="num">556</td><td class="num">46,941</td><td>Kan 拡張、Kan 複体の補題、古典比較、複製（R8）が混在</td></tr>
+</table></div>
+<p>本当に小さいのは「定義と主定理」の部分で、随伴・局所化・反射的部分圏・cofinality を合わせても約 5,000 行しかない。F1B の大部分は Kan 拡張の存在の組み立てである。</p>
+
+<!-- ============================================================ -->
+<h2>9. リファクタの候補</h2>
+
+<div class="box refactor">
+<p class="label">R13　接頭辞 <code>Kan</code> の二重の意味</p>
+<p>F1B では、556 ファイルの名前が <code>Kan</code> で始まる。しかしこれは「Kan 拡張」（KanLeft*、KanRight*、KanGlobal*）、「Kan 複体・Kan fibration」（KanFiber*、KanEquivalence*）、「レーン内の作業名」（KanSection*、KanScaffold*、KanCocartesian*）が混ざったものである。宣言名にも <code>kanNonempty_adjunction_iff_nerveAdjunction</code> のように、Kan 拡張と無関係なのに <code>kan</code> が付いたものがある。少なくともディレクトリは <code>KanExtension/</code>、<code>NerveComparison/</code> などに分け、宣言名の <code>kan</code> 接頭辞は意味のあるものだけに残したい。</p>
+</div>
+<div class="box refactor">
+<p class="label">R14　随伴の基本補題の置き場所</p>
+<p><code>QCatAdjunction.toHoAdjunction</code>（ホモトピー圏への随伴）が Stable/AdjunctionHomotopyCategory にある。随伴の定義（F1B/Adjunction）の直後に置くべき基本的な結果である。R2（<code>IsColimitCone</code> が Stable にある）と同じ型の問題。</p>
+</div>
+<div class="box refactor">
+<p class="label">R15　密度定理の置き場所</p>
+<p>「任意の前層は表現可能前層の余極限」（<code>presheafElementsColimitCocone_isColimit</code>）が F2/Ind/ElementsDiagram にある。Ind とは独立した前層の基本定理なので、F1 の前層・Yoneda の層に置くのが自然。</p>
+</div>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>Hom 関手は twisted arrow の straightening で作り、Yoneda はそれを curry したもの。充満忠実性は「Yoneda 写像そのものの Hom 作用」として示している。</li>
+  <li>随伴は Mathlib のホモトピー 2-圏の随伴で、写像空間の同値は定理として得る。</li>
+  <li>局所化は「前合成が反転関手の ∞ 圏への同値」という普遍性で定義し、第 3 章の first vertex の議論で使われる。反射的部分圏は局所化になる。一般の局所化の存在はまだない。</li>
+  <li>cofinality は左 fibration の切断空間で定義し、anodyne と trivial Kan fibration の分解や Quillen A 型の判定で扱う。</li>
+  <li>Kan 拡張は各点の余極限条件で定義し、存在 ⇔ 局所余極限、一意性、充満忠実な場合の単位の可逆性、nerve での古典との一致が揃っている。</li>
+</ol>
+</main>
+</body>
+</html>

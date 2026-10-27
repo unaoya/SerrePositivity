@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数論のための ∞ トポス：読書ルート</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 数論のための ∞ トポス：読書ルート</nav>
+<h1>数論のための ∞ トポス：読書ルート</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた読書案内で、Claude との議論（<a href="rep-cft.html">補章 8</a>・<a href="classifying-shape.html">補章 9</a> の Brauer 群と局所類体論）の背後にある ∞ 圏の一般論を地図にしたもの。主要な三つの文献（Hoyois、Nikolaus–Scholze、Antieau–Gepner）は論文の要旨・本文を確認して要約した。</p>
+
+<!-- ============================================================ -->
+<h2>1. 一般論の地図</h2>
+
+<h3>1.1 ∞ トポスの一般論（議論の土台）</h3>
+<div class="table-wrap"><table>
+<tr><th>話題</th><th>一般論</th><th>文献</th></tr>
+<tr><td>空間の層、大域切断</td><td>∞ トポスの定義（Giraud 公理）、\(\Gamma=\mathrm{Map}(\ast,-)\)</td><td>HTT 第 6 章</td></tr>
+<tr><td>連結性、切り詰め</td><td>\((n\text{-連結},n\text{-切り詰め})\) 分解系</td><td>HTT §5.5.6、§6.5.1</td></tr>
+<tr><td>Postnikov 分解、収束</td><td>Postnikov 塔、Postnikov 完備性・超完備性</td><td>HTT §5.5.6、§6.5.3〜6.5.4</td></tr>
+<tr><td>\(B\) と \(\Omega\)、Eilenberg–MacLane 対象</td><td>群対象と連結な点付き対象の同値</td><td>HTT §7.2.2</td></tr>
+<tr><td>底の次元</td><td>ホモトピー次元とコホモロジー次元</td><td>HTT §7.2.1〜7.2.2</td></tr>
+<tr><td>\(\Gamma\) と filtered 余極限の交換</td><td>コヒーレントな ∞ トポス</td><td>SAG 付録 A</td></tr>
+</table></div>
+
+<h3>1.2 シェイプと副有限ホモトピー型</h3>
+<div class="table-wrap"><table>
+<tr><th>話題</th><th>一般論</th><th>文献</th></tr>
+<tr><td>定数層の切断 = シェイプからの写像</td><td>シェイプ理論</td><td>HTT §7.1.6</td></tr>
+<tr><td>副有限 = pro-π-有限</td><td>副有限ホモトピー型 \(\mathrm{Pro}(\mathcal S_\pi)\)、エタールホモトピー型</td><td>SAG 付録 E、Artin–Mazur</td></tr>
+<tr><td>体のエタール ∞ トポス = \(G_k\) 空間、局所系 = シェイプからの関手</td><td>高次の Galois 理論</td><td>Hoyois（§2.1）</td></tr>
+<tr><td>階層付きの版</td><td>exodromy</td><td>Barwick–Glasman–Haine</td></tr>
+<tr><td>正規でないスキームの \(\mathbb Z\) torsor</td><td>pro-étale 基本群</td><td>Bhatt–Scholze</td></tr>
+<tr><td>連続性の正しい扱い</td><td>condensed／pyknotic</td><td>Clausen–Scholze、Barwick–Haine</td></tr>
+</table></div>
+
+<h3>1.3 降下と捻れた形</h3>
+<div class="table-wrap"><table>
+<tr><th>話題</th><th>一般論</th><th>文献</th></tr>
+<tr><td>捻れた形 = \(B\mathrm{Aut}\) の切断</td><td>対象分類子、降下</td><td>HTT §6.1.6</td></tr>
+<tr><td>加群の圏の降下</td><td>準連接層と \(\mathrm{Pr}^L\) 値の層の降下</td><td>SAG 第 6 章ほか</td></tr>
+<tr><td>Brauer 群 = \(\mathrm{Mod}\) の捻れた形</td><td>導来 Azumaya 代数、Brauer 空間</td><td>Toën、Antieau–Gepner（§2.3）</td></tr>
+<tr><td>環スペクトラムの Galois 降下</td><td>Galois 拡大、降下スペクトル系列</td><td>Rognes、Gepner–Lawson、Mathew</td></tr>
+</table></div>
+
+<h3>1.4 群作用、ノルム、Tate 構成</h3>
+<div class="table-wrap"><table>
+<tr><th>話題</th><th>一般論</th><th>文献</th></tr>
+<tr><td>\(\mathrm{Fun}(BG,\mathcal C)\)、\(p_!\)・\(p_*\)</td><td>関手圏と Kan 拡張</td><td>HTT 第 4 章</td></tr>
+<tr><td>ノルム写像 \(p_!\to p_*\)</td><td>有限亜群のノルム、両立性</td><td>HA §6.1.6、Hopkins–Lurie</td></tr>
+<tr><td>Tate 構成、lax モノイダル性、周期性</td><td>Tate 構成の一般論</td><td>Nikolaus–Scholze（§2.2）</td></tr>
+<tr><td>安定加群圏</td><td>誘導対象による Verdier 商、テンソル三角幾何</td><td>Mathew–Naumann–Noel、Balmer</td></tr>
+</table></div>
+
+<h3>1.5 安定 ∞ 圏とスペクトル系列・1.6 モノイダル構造・1.7 双対性と六関手</h3>
+<div class="table-wrap"><table>
+<tr><th>話題</th><th>一般論</th><th>文献</th></tr>
+<tr><td>フィルトレーションからスペクトル系列</td><td>フィルトレーション付き対象</td><td>HA §1.2.2</td></tr>
+<tr><td>t 構造</td><td>t 構造と安定版 Postnikov</td><td>HA §1.2.1</td></tr>
+<tr><td>極限と \(\lim^1\)</td><td>Milnor 列（Mittag-Leffler）</td><td>各種</td></tr>
+<tr><td>\(\mathbf{Pic}\) は \(E_\infty\) 群、\(\mathrm{Pr}^L\) のテンソル積</td><td>対称モノイダル ∞ 圏</td><td>HA 第 2〜4 章、§4.8</td></tr>
+<tr><td>局所体は 2 次元、基本類は向き</td><td>双対化対象、Verdier 双対性</td><td>Scholze『Six-Functor Formalisms』</td></tr>
+<tr><td>局所化列 \(j_*\)・\(i^!\)</td><td>六関手形式、純粋性</td><td>同上、Mann</td></tr>
+<tr><td>K 理論的な相互写像</td><td>局所コンパクト加群の K 理論、Selmer K ホモロジー</td><td>Clausen</td></tr>
+<tr><td>Hensel 剛性</td><td>変形理論、余接複体</td><td>HA 第 7 章、SAG</td></tr>
+</table></div>
+
+<p><b>解説ページとの関係</b>：既存の章が覆っているのは 1.4〜1.6 の一部（Kan 拡張、安定 ∞ 圏、\(\mathrm{Pr}^L\)）とその前提（準圏、straightening、米田）。1.1〜1.3 の ∞ トポスの一般論（切り詰め、Postnikov、\(B\)・\(\Omega\)、ホモトピー次元、シェイプ、降下）はまだどこにもなく、補章 8・9 の数論の議論はほぼ全てそこに依存している。</p>
+
+<!-- ============================================================ -->
+<h2>2. 主要な三文献</h2>
+
+<h3>2.1 Hoyois「Higher Galois theory」（arXiv:1506.07155）</h3>
+<p>Grothendieck トポスの Galois 理論を ∞ トポスに一般化する。局所定数層を、Galois torsor から作る基本 pro 亜群の表現として記述する。</p>
+<ul>
+  <li><b>シェイプ</b>：\(\Pi_\infty\mathcal X\in\mathrm{Pro}(\mathcal S)\) は torsor の忘却関手を余表現する pro 空間（torsor をコードする）。</li>
+  <li><b>Galois torsor</b>：主作用が充満忠実な torsor。体 \(k\) では有限 Galois 拡大。</li>
+  <li><b>Thm 3.13</b>：局所 \(n\)-連結な ∞ トポスで、\(\mathrm{Fun}(\Pi_\infty\mathcal X,\mathcal S_{\le n})\to\mathcal X_{\le n}\) は充満忠実で、像は局所定数な \(n\)-切り詰め層。</li>
+  <li><b>Cor 3.20</b>（\(n\)-Galois ∞ トポスの特徴づけ）：局所的に連結で局所定数な対象で生成される ∞ トポスは、pro 亜群の分類 ∞ トポスと同値。</li>
+  <li><b>Thm 4.3</b>：<b>任意の</b> ∞ トポスで、有限局所定数層 ≃ \(\mathrm{Fun}(\Pi_\infty\mathcal X,\mathcal S^{\mathrm{fc}})\)（π-有限空間への関手）。局所連結性は不要。</li>
+  <li><b>Cor 5.6</b>：局所連結なスキームで、Friedlander のエタール位相型は超完備なエタール ∞ トポスのシェイプのモデル。</li>
+</ul>
+<p><b>議論との関係</b>：補章 9 の「体のエタール ∞ トポス ≃ \(G_k\) 空間」「局所定数層の切断はシェイプで計算できる」（§4）、「π-有限係数は副有限完備化しか見ない」（§7）の一般的な根拠。Thm 4.3 は、有限係数への帰着が底によらず使えることを保証する。</p>
+
+<h3>2.2 Nikolaus–Scholze「On topological cyclic homology」（Acta Math. 221, arXiv:1707.01799）</h3>
+<p>位相的巡回ホモロジー（TC）を、同変ホモトピー論の点集合的なモデルを使わず、ホモトピー不変な概念だけで再構成する。</p>
+<ul>
+  <li><b>Tate 構成</b>：\(X^{tC_p}=\mathrm{cofib}(X_{hC_p}\to X^{hC_p})\)（ノルム写像の余ファイバー）をホモトピー不変に扱う。補章 8 §2.1 の Tate 構成の標準的な参照。</li>
+  <li><b>円分スペクトラム</b>：\(S^1\) 作用を持つスペクトラム \(X\) と、各素数 \(p\) についての \(S^1\) 同変写像 \(\varphi_p\colon X\to X^{tC_p}\) の組として定義し直し、下に有界なら従来の定義と一致することを示す。TC の新しい簡単な公式が得られる。</li>
+  <li><b>Tate 対角線と Frobenius</b>：\(\varphi_p\) を THH に作るために、Tate 対角線 \(X\to(X^{\otimes p})^{tC_p}\) と可換環スペクトラムの Frobenius 準同型を導入し、Tate 対角線についての Segal 予想の版を示し、Frobenius を冪作用素と結びつける。</li>
+</ul>
+<p><b>議論との関係</b>：Tate 構成のホモトピー的な扱い（§8.9 のノルムの余ファイバーとしての解釈）の基礎。構造的な類似として、TC は「\(\mathrm{can}-\varphi\) のファイバー」の形をしており、\(\Gamma(\mathrm{Spec}\,\mathbb F_q,-)=\mathrm{fib}(1-\varphi)\)（Frobenius のホモトピー固定点）と同じ型である。Tate 対角線は「\(x\mapsto x^p\)」のホモトピー的な化身。</p>
+
+<h3>2.3 Antieau–Gepner「Brauer groups and étale cohomology in derived algebraic geometry」（Geom. Topol. 18, arXiv:1210.0290）</h3>
+<p>導来代数幾何での Azumaya 代数と Brauer 群の基礎。</p>
+<ul>
+  <li><b>Brauer 空間</b>（§1.2）：\(E_k\) 環 \(R\)（\(3\le k\le\infty\)）に対し \(\mathbf{Br}(R)=\mathbf{Pic}(\mathrm{Cat}_{R,\omega})\)（コンパクト生成な \(R\) 線形圏のピカール空間）。層版では \(\mathbf{Br}\) は \(\mathbf{Pic}\) 層のデループ。</li>
+  <li><b>Azumaya 代数</b>（Def 3.13、Thm 3.15）：コンパクト生成元で \(A\otimes_RA^{\mathrm{op}}\simeq\mathrm{End}_R(A)\)。\(\mathrm{Cat}_{R,\omega}\) の可逆対象は \(\mathrm{Mod}_A\)（\(A\) は Azumaya）と同値。</li>
+  <li><b>エタール局所自明性</b>（Thm 5.11）：連結な \(E_1\) 環上の Azumaya 代数は、忠実平坦エタール拡大で Morita 自明になる。</li>
+  <li><b>降下スペクトル系列</b>：\(E_2^{p,q}=H^p(X,\pi_q\mathbf{Br})\Rightarrow\pi_{q-p}\mathbf{Br}(X)\)。\(\mathbf{Br}\) のホモトピー層は \(\pi_0=0\)、\(\pi_1=\mathbb Z\)、\(\pi_2=\mathcal O^\times\)、\(k\ge3\) では \(\mathcal O\) の高次ホモトピーのずらし（離散な環では消える）。連結な \(R\) では \(\pi_0\mathbf{Br}(R)\) は \(H^1_{\mathrm{et}}(\mathbb Z)\) と \(H^2_{\mathrm{et}}(\mathbb G_m)\) から計算される。</li>
+  <li><b>Thm 7.2</b>：準コンパクト準分離な導来スキームで \(\mathrm{Br}=\mathrm{Br}'\)。</li>
+  <li><b>Cor 7.17</b>：\(\mathrm{Br}(\mathbb S)=0\)（Baker–Richter 予想）。帰結として、\(\mathcal C\otimes\mathcal D\simeq\mathrm{Mod}_{\mathbb S}\) なら \(\mathcal C\simeq\mathrm{Mod}_{\mathbb S}\) など。</li>
+</ul>
+<p><b>議論との関係</b>：補章 8 §4.5 の定義（\(\mathbf{Br}=\Gamma(B\mathbf{Pic})\)）、Postnikov 分解 \(B^2\mathbb G_m\to B\mathbf{Pic}\to B\mathbb Z\)（ホモトピー層 \(\mathbb Z\)・\(\mathbb G_m\)）、局所自明性の定理（§4.5 の「定義の選び方」）の出典。§4.8 の議論は、この降下スペクトル系列の 2 段分を連結性の言葉で書いたもの。</p>
+
+<!-- ============================================================ -->
+<h2>3. 読む順序</h2>
+<ol>
+  <li>HTT 第 6 章（∞ トポスの定義、分解系、Postnikov）と §7.2（ホモトピー次元、\(B\)・\(\Omega\)）。</li>
+  <li>HTT §7.1.6（シェイプ）と Hoyois「Higher Galois theory」（体のエタール ∞ トポスと副有限群、局所系）。</li>
+  <li>Nikolaus–Scholze の Tate 構成の部分。</li>
+  <li>Antieau–Gepner（Brauer 空間、降下スペクトル系列）。</li>
+  <li>必要に応じて SAG 付録 A・E（コヒーレント性、副有限ホモトピー型）。</li>
+</ol>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応</p>
+<ul>
+  <li>このページの既存の章には ∞ トポス・シェイプ・降下・Tate 構成の記述はない。この読書ルートの 1.1〜1.3 は、形式化の次の候補領域でもある。</li>
+</ul>
+</div>
+</main>
+</body>
+</html>

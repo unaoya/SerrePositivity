@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>∞ 圏基盤の解説</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>∞ 圏基盤の解説</h1>
+<p class="meta">自分用の読解ノート。<code>SerrePositivity/InfinityCategories/</code> の形式化を、数学・Lean の構造・リファクタ候補の三つの面から読む。</p>
+
+<h2>目標：∞ 圏の解説動画</h2>
+<p>このノートは、∞ 圏の解説動画シリーズを作るための土台として使う。</p>
+<ul>
+  <li><b>題材</b>：六関手形式の、幾何ではなく<b>抽象的な ∞ 圏論の部分</b>（\(\mathrm{Cat}_\infty\) と \(\mathcal S\)、fibration と straightening、対応の ∞ 圏 \(\mathrm{Corr}\)、対称モノイダル構造と \(\mathrm{Pr}^L\)、随伴など）。</li>
+  <li><b>二本柱</b>：(1) その部分を数学として理解すること、(2) その形式化（Lean）を行うこと。動画では両方を扱う。</li>
+  <li><b>扱わないもの</b>：スキームやエタール位相などの幾何的な入力。</li>
+</ul>
+<p>主な素材は読書ルートの「六関手形式の定義への最短路」と「fibration の分類定理への道」。</p>
+
+<h2>章</h2>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>内容</th><th>対象</th><th>状態</th></tr>
+<tr><td><a href="00-map.html">0</a></td><td>全体地図：符号化、ディレクトリと層、依存関係、リファクタ候補</td><td>全体</td><td>草稿</td></tr>
+<tr><td><a href="01-quasicategories.html">1</a></td><td>quasicategory、ホモトピー圏、Joyal の定理、join・slice、終対象、同値</td><td>Core</td><td>草稿</td></tr>
+<tr><td><a href="02-mapping-limits.html">2</a></td><td>写像空間、Kan 複体の言葉、充満忠実と同値、極限（各点計算、補助模型）</td><td>Core、PinchedHom</td><td>草稿</td></tr>
+<tr><td><a href="03-straightening.html">3</a></td><td>cocartesian fibration、transport、coherent nerve、straightening（空間値は完成、Cat<sub>∞</sub> 値は途中）</td><td>F1、Core/Cocartesian*</td><td>草稿</td></tr>
+<tr><td><a href="unstraightening.html">3 補</a></td><td>unstraightening：普遍左 fibration の引き戻し、fiber、底変換、変換・写像空間への作用、straightening との往復</td><td>F1</td><td>草稿</td></tr>
+<tr><td><a href="unstraightening-analogy.html">3 補 2</a></td><td>集合・圏からの類似：「点付き」の三つの版、Un の Hom への作用（エンド）、straightening の二つの見方、Yoneda を使わない道（写像柱・univalence）</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="coherent-nerve-diagrams.html">3 補 3</a></td><td>ホモトピー整合的ナーブ：\(\mathfrak C[\Delta^n]\) と定義、\(\mathcal S\)・Cat<sub>∞</sub>、普遍性（W 構成・局所化）、ホモトピー整合的図式と具体例（loop、\(\mathbb Z/2\) 作用、Toda 括弧）</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="cocartesian-definition.html">3 補 4</a></td><td>cocartesian fibration の定義：1 圏の opfibration、外側ホーン \(\Lambda^n_0\) による cocartesian 辺、写像空間による言い換え、marked 単体的集合でのリフティング性質、他のファイブレーションとの比較、何のために必要か</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="fibered-descent.html">3 補 5</a></td><td>ファイバー圏・擬関手・降下：擬関手の定義と ∞ 版との比較、厳密化の問題、SGA1 のファイバー圏と 2-米田、降下データと切り詰めの階層、Beck–Chevalley、∞ での降下、擬関手と lax 関手の使い分け、具体例（群の表現、∞ 群と \(\mathrm{Fun}(BG,D(k))\)）</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="rep-cft.html">3 補 6</a></td><td>応用：表現論（Frobenius・Shapiro・Hochschild–Serre・Mackey、同変導来圏、Tate 構成、Hecke 圏、\(p\) 進群）と局所類体論（Tate 構成による再構成、相互写像、Clausen の K 理論的アプローチ、基本類の存在、導来代数幾何と Brauer 群、有限体の Brauer 群の導来的証明と降下データによる別証明、円周原理と Postnikov 議論の抽象化）</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="classifying-shape.html">3 補 7</a></td><td>分類空間 \(B\)、大域切断、シェイプ：\(B\) と torsor、\(\Gamma(B\mathbb Z)\)、一般の群（自由ループ空間の公式、ねじれ共役）、一般のエタール ∞ トポス（シェイプ）、補章 8 §4.8 の事実の出どころ、空間と大域切断の連結性、\(\Gamma(B\mathbb Z)\) の連結性の ∞ 圏論的証明、局所体の Brauer 群（円周上のファイブレーション）、Tate コホモロジーとノルムのホモトピー的解釈</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="04-yoneda-adjunction-kan.html">4</a></td><td>前層と Yoneda、随伴、局所化・反射的部分圏、cofinality、Kan 拡張、古典との整合</td><td>F1、F1B</td><td>草稿</td></tr>
+<tr><td><a href="05-gamma-bridges.html">5</a></td><td>γ 層：coherent nerve、Dold–Kan 比較、𝒮 の極限・余極限とホモトピー極限、Quillen 随伴</td><td>Coherent、DoldKanComparison、HomotopyLimits</td><td>草稿</td></tr>
+<tr><td><a href="06-catinfty-ind-presentable.html">6</a></td><td>Cat<sub>∞</sub> の極限と lax pullback、filtered と交換定理（未完）、Ind、compact、冪等完備化、accessible・presentable</td><td>F2</td><td>草稿</td></tr>
+<tr><td><a href="presentable-route.html">6 補</a></td><td>presentable への道：基礎理論の地図、随伴関手定理、\(\mathcal P(A)\) とその普遍性、表現可能性定理の証明、Gabriel–Ulmer と Lurie–Simpson（1 圏と ∞ 圏の比較）</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="monoidal-prl.html">6 補 2</a></td><td>対称モノイダル構造と \(\mathrm{Pr}^L\)：\(\mathrm{Fin}_*\) による定義、∞ operad、テンソル積の普遍性と構成、\(\mathrm{CAlg}(\mathrm{Pr}^L)\) と加群、六関手での使われ方</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="07-stable.html">7</a></td><td>安定 ∞ 圏：定義、三角構造、長完全列、完全関手、Ω による判定（作業中）</td><td>Stable</td><td>草稿</td></tr>
+<tr><td><a href="spectra-k-theory.html">7 補</a></td><td>スペクトルと K 理論（モデル圏を使わない扱い）：\(\mathrm{Sp}\) の定義と普遍性、\(S_\bullet\) 構成と実現、ナーブ型の構成（\(\mathfrak C[\Delta^n]\)・\(\mathrm{Ar}[n]\)・スパンと Q 構成）、群完備化、加法性定理、非連結 K と Calkin 圏、∞ 圏的 Verdier 商、dg nerve と DG 版 K との比較</td><td>数学のみ</td><td>草稿</td></tr>
+<tr><td><a href="08-dgnerve-derived.html">8</a></td><td>dg nerve、D(S)・Perf(S) と三角同値、Verdier 商、非可換 D(A) と Morita、dg gluing（作業中）</td><td>DGNerve、Derived</td><td>草稿</td></tr>
+</table></div>
+
+
+<h2>読書ルート</h2>
+<ul>
+  <li><a href="route-yoneda.html">Yoneda への道</a>：Yoneda の補題の証明（四つの同値の合成）を、必要な準備から順にたどる。straightening を使わない fibration 版も</li>
+  <li><a href="route-arith.html">数論のための ∞ トポス</a>：補章 8・9 の Brauer 群と局所類体論の背後にある一般論の地図（∞ トポス、シェイプ、降下、Tate 構成、モノイダル、双対性）と、Hoyois・Nikolaus–Scholze・Antieau–Gepner の要約、読む順序</li>
+  <li><a href="route-6ff-definition.html">六関手形式の定義への最短路</a>：定義を理解するために最小限必要なもの（三つのレベル、\(\mathrm{Pr}^L\) の要不要、\(\mathrm{Corr}\) の定義と準圏性・対称モノイダル構造、必要な概念の一覧、\(\mathrm{Cat}_\infty\) を作る順序、\(\mathfrak C[\Delta^n]\) と \(N^{hc}\) の詳細、core の有無、\(\mathrm{Cat}_\infty\) の対称モノイダル構造、\(\mathrm{Corr}\) の準圏性の証明と対称モノイダル構造、∞ operad と lax 関手、随伴、定義のまとめ）</li>
+  <li><a href="route-classification.html">fibration の分類定理への道</a>：\(\mathcal S\) は左 fibration を、\(\mathrm{Cat}_\infty\) は cocartesian fibration を分類する、という主張をゼロから証明まで理解するための最短経路（fibration の意義、目標と段階）</li>
+</ul>
+
+<h2>設計ノート</h2>
+<ul>
+  <li><a href="k-nonconnective-design.html">非連結 K の設計：関手性をどこに置くか</a>：K-7 c4 の反例、10-27 の設計変更、∞ 側と dg 側の関手の形式化状況と対応</li>
+</ul>
+
+<h2>リファクタ記録</h2>
+<ul>
+  <li><a href="r8-duplication.html">R8　重複コードの調査</a>：F1/F1B の KanSection 系の複製、その根本原因と解消の計画</li>
+</ul>
+
+<h2>各章の書き方</h2>
+<ul>
+  <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
+  <li>数学の定義・定理を述べ、対応する Lean の宣言名とファイルを添える。証明は方針と鍵になる補題、そして Lean での組み立て方まで追う。</li>
+  <li>Kerodon・HTT・HA との違い（定義の選び方、規約、符号）は独立した囲みにする。</li>
+  <li>リファクタ候補は赤い囲みにし、番号（R1、R2、…）を全章で通す。</li>
+  <li>末尾に「この章で押さえること」を置く。</li>
+</ul>
+</main>
+</body>
+</html>

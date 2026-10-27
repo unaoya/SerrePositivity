@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 5　対称モノイダル構造と PrL</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 5　対称モノイダル構造と Pr<sup>L</sup></nav>
+<h1>補章 5　対称モノイダル構造と \(\mathrm{Pr}^L\)</h1>
+<p class="meta">基準コミットなし（2026-10-23）。コードを読まずに書いた数学の章で、Claude との議論を整理したもの。<a href="presentable-route.html">補章 4</a> の続きで、基礎理論の地図の第 2 層（presentable）と第 4 層（モノイダル）の接点にあたる。Lean の宣言名は、他の章にすでに出ているものだけを引用する。</p>
+
+<p>\(\mathrm{Pr}^L\)（presentable な ∞ 圏と余極限を保つ関手の ∞ 圏）は対称モノイダル ∞ 圏になり（HA §4.8.1）、六関手形式の \(D(X)\) はその中の可換代数対象として扱われる。この章では、対称モノイダル ∞ 圏の定義、\(\mathrm{Pr}^L\) のテンソル積の普遍性と構成、その上の代数と加群、六関手形式での使われ方を順に見る。</p>
+
+<!-- ============================================================ -->
+<h2>1. 対称モノイダル ∞ 圏の定義</h2>
+
+<p>1 圏の対称モノイダル圏は、\(\otimes\)・単位・結合子・単位子・対称子と、有限個の整合性図式（五角形・六角形、Mac Lane）で定義される。∞ 圏では図式が「ホモトピーで埋まる」になり、そのホモトピーにも整合性が要って条件が無限に続くので、手では書けない。</p>
+
+<p><b>定義</b>（HA Def. 2.0.0.7）．\(\mathrm{Fin}_*\) を有限点付き集合 \(\langle n\rangle=\{\ast,1,\dots,n\}\) と点付き写像の圏とする。対称モノイダル ∞ 圏とは、cocartesian fibration \(p\colon\mathcal C^\otimes\to N(\mathrm{Fin}_*)\) で Segal 条件
+\[
+\mathcal C^\otimes_{\langle n\rangle}\ \xrightarrow{\ \sim\ }\ (\mathcal C^\otimes_{\langle1\rangle})^n
+\]
+（inert 写像 \(\rho^i\colon\langle n\rangle\to\langle1\rangle\) に沿う輸送）を満たすもの。\(\mathcal C:=\mathcal C^\otimes_{\langle1\rangle}\) が台。</p>
+
+<div class="table-wrap"><table>
+<tr><th>データ</th><th>\(\mathrm{Fin}_*\) での表れ</th></tr>
+<tr><td>\(n\) 個の対象の組</td><td>\(\langle n\rangle\) 上の fiber</td></tr>
+<tr><td>テンソル積 \(\otimes\)</td><td>\(\langle2\rangle\to\langle1\rangle\)（\(1,2\mapsto1\)）に沿う輸送</td></tr>
+<tr><td>単位</td><td>\(\langle0\rangle\to\langle1\rangle\) に沿う輸送</td></tr>
+<tr><td>結合律・可換律と全ての高次整合性</td><td>\(\mathrm{Fin}_*\) の写像の合成と、輸送の関手性</td></tr>
+</table></div>
+
+<p>straightening すると、対称モノイダル ∞ 圏は Segal 条件を満たす関手 \(\mathrm{Fin}_*\to\mathrm{Cat}_\infty\)、すなわち \(\mathrm{Cat}_\infty\) の中の \(E_\infty\) モノイドである。Segal の \(\Gamma\) 空間と同じ発想で、整合性の問題を \(\mathrm{Fin}_*\) からの関手的な輸送に押し付けている（<a href="unstraightening-analogy.html">補章 2</a> の cocartesian fibration と \(\mathrm{Cat}_\infty\) 値関手の対応）。</p>
+
+<h3>∞ operad と表現可能性</h3>
+<p>cocartesian 持ち上げを inert 写像についてだけ要求したものが ∞ operad で、多重射の空間 \(\mathrm{Mul}(X_1,\dots,X_n;Y)\) を持つ。対称モノイダルとは、多重射が表現可能であること：
+\[
+\mathrm{Mul}(X_1,\dots,X_n;\ Y)\ \simeq\ \mathrm{Map}(X_1\otimes\cdots\otimes X_n,\ Y).
+\]</p>
+
+<!-- ============================================================ -->
+<h2>2. \(\mathrm{Pr}^L\) のテンソル積</h2>
+
+<p>\(\mathrm{Pr}^L\) の多重射を
+\[
+\mathrm{Mul}(\mathcal C_1,\dots,\mathcal C_n;\ \mathcal D)\ :=\ \mathrm{Fun}^{L,\dots,L}(\mathcal C_1\times\cdots\times\mathcal C_n,\ \mathcal D)
+\]
+（各変数ごとに余極限を保つ関手）と定めると、\(\mathrm{Cat}_\infty\) の直積構造の部分 operad として \(\mathrm{Pr}^L\) の ∞ operad が得られる。対称モノイダルであることは、次を満たす \(\mathcal C\otimes\mathcal D\) の存在である。
+\[
+\mathrm{Fun}^L(\mathcal C\otimes\mathcal D,\ \mathcal E)\ \simeq\ \mathrm{Fun}^{L,L}(\mathcal C\times\mathcal D,\ \mathcal E).
+\]
+ベクトル空間のテンソル積が双線形写像を表現するのと同じ形で、「線形」が「余極限を保つ」に置き換わる。0 項では \(\mathrm{Fun}^L(\mathcal S,\mathcal E)\simeq\mathcal E\) なので単位は \(\mathcal S\)。</p>
+
+<h3>構成</h3>
+<ol>
+  <li><b>前層圏どうし</b>：§4 の普遍性（補章 4）を各変数と \(A\times B\) に使って
+  \[
+  \mathrm{Fun}^{L,L}(\mathcal P(A)\times\mathcal P(B),\mathcal E)\simeq\mathrm{Fun}(A\times B,\mathcal E)\simeq\mathrm{Fun}^L(\mathcal P(A\times B),\mathcal E),
+  \]
+  よって \(\mathcal P(A)\otimes\mathcal P(B)\simeq\mathcal P(A\times B)\)。</li>
+  <li><b>局所化</b>：Lurie–Simpson（補章 4 §6）で \(\mathcal C\simeq S^{-1}\mathcal P(A)\)、\(\mathcal D\simeq T^{-1}\mathcal P(B)\) と書くと
+  \[
+  \mathcal C\otimes\mathcal D\ \simeq\ (S\boxtimes B\ \cup\ A\boxtimes T)^{-1}\,\mathcal P(A\times B).
+  \]
+  各変数ごとに余極限を保ち \(S\)、\(T\) を可逆にする関手は、\(s\boxtimes y(b)\) と \(y(a)\boxtimes t\) を可逆にする \(\mathcal P(A\times B)\) からの余極限保存関手と同じだから。テンソル積は局所化の直積をさらに局所化したもの。</li>
+  <li><b>別の公式</b>：\(\mathcal C\otimes\mathcal D\simeq\mathrm{Fun}^R(\mathcal C^{\mathrm{op}},\mathcal D)\)（HA Prop. 4.8.1.17）。\(\mathcal C=\mathcal P(A)\) なら \(\mathrm{Fun}(A^{\mathrm{op}},\mathcal D)\)（\(\mathcal D\) 値の前層）。</li>
+</ol>
+
+<h3>例</h3>
+<div class="table-wrap"><table>
+<tr><th>テンソル積</th><th>結果</th></tr>
+<tr><td>\(\mathcal P(A)\otimes\mathcal P(B)\)</td><td>\(\mathcal P(A\times B)\)</td></tr>
+<tr><td>\(\mathrm{Sp}\otimes\mathcal C\)</td><td>\(\mathrm{Sp}(\mathcal C)\)（安定化）</td></tr>
+<tr><td>\(\mathrm{Mod}_R\otimes\mathrm{Mod}_S\)</td><td>\(\mathrm{Mod}_{R\otimes S}\)</td></tr>
+<tr><td>\(\mathrm{QCoh}(X)\otimes\mathrm{QCoh}(Y)\)</td><td>\(\mathrm{QCoh}(X\times Y)\)（perfect stack など適切な条件下、Ben-Zvi–Francis–Nadler）</td></tr>
+</table></div>
+
+<h3>基本的な性質</h3>
+<div class="table-wrap"><table>
+<tr><th>性質</th><th>内容</th></tr>
+<tr><td>単位</td><td>\(\mathcal S\)</td></tr>
+<tr><td>閉構造</td><td>内部 Hom は \(\mathrm{Fun}^L(\mathcal C,\mathcal D)\)</td></tr>
+<tr><td>余極限</td><td>\(\mathcal C\otimes-\) は \(\mathrm{Pr}^L\) の余極限を保つ（閉構造から）</td></tr>
+<tr><td>極限</td><td>一般には保たない。\(\mathcal C\) が双対化可能（たとえばコンパクト生成）なら保つ</td></tr>
+<tr><td>双対</td><td>コンパクト生成な \(\mathcal C\) の双対は \(\mathrm{Ind}((\mathcal C^\omega)^{\mathrm{op}})\)</td></tr>
+</table></div>
+<p>\(\mathrm{Pr}^L\) の極限は \(\mathrm{Cat}_\infty\) で計算でき、降下は極限で書かれる。そのため「貼り合わせた圏のテンソル積は、テンソル積の貼り合わせか」（Künneth 型の問題）は極限保存の問題になり、双対化可能性で解決される。</p>
+
+<!-- ============================================================ -->
+<h2>3. 代数と加群</h2>
+
+<p>対称モノイダル ∞ 圏 \(\mathcal V\) の中で、可換代数 \(\mathrm{CAlg}(\mathcal V)\) と加群 \(\mathrm{Mod}_R(\mathcal V)\) が定義される（operad の写像、あるいは \(\mathrm{Fin}_*\) 上の切断として）。</p>
+<div class="table-wrap"><table>
+<tr><th>対象</th><th>意味</th></tr>
+<tr><td>\(\mathrm{CAlg}(\mathrm{Pr}^L)\)</td><td>presentably 対称モノイダル ∞ 圏（\(\otimes\) が各変数ごとに余極限を保つ）。\(D(X)\)、\(\mathrm{Sp}\)、\(\mathrm{Mod}_R\) など。内部 Hom は随伴関手定理で自動的に存在</td></tr>
+<tr><td>\(\mathrm{CAlg}(\mathrm{Pr}^L)\) の射</td><td>対称モノイダルな左随伴（\(f^*\)）</td></tr>
+<tr><td>\(\mathrm{Mod}_{\mathrm{Sp}}(\mathrm{Pr}^L)\)</td><td>presentable 安定 ∞ 圏 \(\mathrm{Pr}^L_{\mathrm{st}}\)</td></tr>
+<tr><td>\(\mathrm{Mod}_{D(\Lambda)}(\mathrm{Pr}^L)\)</td><td>\(\Lambda\) 線形な presentable 安定 ∞ 圏。係数の変更もテンソル積で扱える</td></tr>
+</table></div>
+<ul>
+  <li><b>冪等代数</b>：\(\mathrm{Sp}\otimes\mathrm{Sp}\simeq\mathrm{Sp}\) なので、\(\mathrm{Sp}\) 上の加群構造は高々一通りで、持つかどうかは性質になる。「安定性は構造ではなく性質」の正確な形。</li>
+  <li><b>随伴とモノイダル性</b>：対称モノイダルな左随伴 \(f^*\) の右随伴 \(f_*\) は自動的に lax 対称モノイダル（\(f_*A\otimes f_*B\to f_*(A\otimes B)\)）。射影公式は、ある自然な構造射が同値であるという条件として述べられる。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>4. 六関手形式での使われ方</h2>
+<ul>
+  <li>\(X\mapsto D(X)\) は \(\mathrm{CAlg}(\mathrm{Pr}^L)\) に値を取る関手で、\(f^*\) は対称モノイダル。</li>
+  <li>Mann の定式化では、六関手形式は lax 対称モノイダル関手 \(D\colon\mathrm{Corr}(\mathcal C)\to\mathrm{Pr}^L\) として定義される。射影公式 \(f_!(A\otimes f^*B)\simeq f_!A\otimes B\) は「\(f_!\) が \(D(Y)\) 加群の射である」という形でモノイダル性に組み込まれる。</li>
+  <li>コンパクト生成なら双対化可能で \(\mathcal C\otimes-\) が極限を保つので、降下と Künneth が両立する。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>5. 1 圏との比較</h2>
+<div class="table-wrap"><table>
+<tr><th></th><th>1 圏</th><th>∞ 圏</th></tr>
+<tr><td>対称モノイダル構造の定義</td><td>データ + 有限個の整合性図式（Mac Lane）</td><td>\(\mathrm{Fin}_*\) 上の cocartesian fibration + Segal 条件</td></tr>
+<tr><td>整合性の扱い</td><td>五角形・六角形を確かめる</td><td>\(\mathrm{Fin}_*\) の関手性に押し付ける（straightening）</td></tr>
+<tr><td>\(\mathrm{Pr}^L\) のテンソル積</td><td>局所表示可能圏の 2 圏で同様に存在</td><td>同様だが、\(D(R)\) を三角圏ではなく正しく扱える</td></tr>
+<tr><td>存在の証明</td><td>表現可能性</td><td>表現可能性 + Lurie–Simpson による局所化の記述</td></tr>
+</table></div>
+
+<div class="box">
+<p class="label">原典との違い</p>
+<ul>
+  <li>HA §4.8.1 は、\(K\)-余極限を持つ ∞ 圏の ∞ 圏 \(\mathrm{Cat}_\infty(K)\) に、\(K\)-余極限を各変数ごとに保つ関手を多重射とする対称モノイダル構造を入れ、\(\mathrm{Pr}^L\) をその部分として扱う。§2 の「局所化の直積を局所化する」構成は、presentable の場合の見通しとして書いたもの。</li>
+  <li>対称モノイダル ∞ 圏の定義は HA Def. 2.0.0.7。Segal の \(\Gamma\) 空間との類似は HA 第 2 章の導入にもある。</li>
+</ul>
+</div>
+
+<div class="box lean">
+<p class="label">このリポジトリとの対応（既出の宣言のみ）</p>
+<ul>
+  <li>このページの既存の章には、対称モノイダル構造・∞ operad・\(\mathrm{CAlg}\) の記述はない。§1 の定義に使う cocartesian fibration は<a href="03-straightening.html">第 3 章</a>の <code>CocartesianFibrationInfinity B</code>（F1/CocartesianFibrationInfinity）、\(\mathrm{Cat}_\infty\) は <code>CatInfinity</code>。</li>
+  <li>\(\mathrm{Pr}^L/\mathrm{Pr}^R\) は<a href="06-catinfty-ind-presentable.html">第 6 章</a>の時点で作業中（P-1 b〜g）。</li>
+</ul>
+</div>
+
+<h2>この補章で押さえること</h2>
+<ul>
+  <li>対称モノイダル ∞ 圏は \(\mathrm{Fin}_*\) 上の cocartesian fibration（Segal 条件付き）。straightening すれば \(\mathrm{Cat}_\infty\) の \(E_\infty\) モノイドで、整合性は \(\mathrm{Fin}_*\) の関手性が担う。</li>
+  <li>\(\mathrm{Pr}^L\) のテンソル積は「各変数ごとに余極限を保つ関手」を表現する対象。単位は \(\mathcal S\)、閉構造は \(\mathrm{Fun}^L\)。</li>
+  <li>構成：\(\mathcal P(A)\otimes\mathcal P(B)\simeq\mathcal P(A\times B)\) と、局所化の直積の局所化。</li>
+  <li>\(\mathrm{CAlg}(\mathrm{Pr}^L)\) が \(D(X)\) の住処。\(\mathrm{Sp}\) は冪等代数で \(\mathrm{Pr}^L_{\mathrm{st}}=\mathrm{Mod}_{\mathrm{Sp}}(\mathrm{Pr}^L)\)。右随伴は lax モノイダルで、射影公式はその構造射の可逆性。</li>
+</ul>
+</main>
+</body>
+</html>

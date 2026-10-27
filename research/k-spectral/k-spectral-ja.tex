@@ -1,0 +1,230 @@
+% lualatex でコンパイルする（latexmk -lualatex）
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\theoremstyle{plain}
+\newtheorem{question}{問い}
+\theoremstyle{definition}
+\newtheorem{definition}{定義}
+\theoremstyle{remark}
+\newtheorem*{remark}{注意}
+
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Sph}{\mathbb{S}}
+\newcommand{\Perf}{\operatorname{Perf}}
+\newcommand{\THH}{\operatorname{THH}}
+\newcommand{\TC}{\operatorname{TC}}
+\newcommand{\TP}{\operatorname{TP}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\fib}{\operatorname{fib}}
+\newcommand{\Lotimes}{\otimes^{\mathbf{L}}}
+
+\sloppy
+\title{K 理論をスペクトルのまま扱う整理と、$\TC$・perfectoid 側との接続\\[2pt]\large 定理3.1を K$_0$ に落とさずに使うと何が見えるか（検討ノート、草稿）}
+\author{梅崎直也}
+\date{2026年10月14日}
+\begin{document}
+\maketitle
+
+\section*{このノートの問い}
+
+実装の現在状態と引用境界の正本は README と解説（\texttt{exposition/ja/exposition-ja.tex}）の付録 A、K 理論の形式化の計画は \texttt{formalization-plans/k-theory.md} である。このノートは研究課題の検討であり、形式化の到達点を示す資料ではない。記憶に基づく主張や推測には「未確認」「推測」と書く。原論文の §3〜§5 のどこで K$_0$ に落としているか、perfectoid 化をどう使っているかは、まだ原文と照合していない。
+
+原論文の議論は、大まかには次の形をしている。
+\begin{enumerate}[label=(\arabic*)]
+  \item 支持つき有理 K 理論の降下（定理3.1）をスペクトルの水準で示す。
+  \item それを K$_0$ に落とし、整数倍 $n$ を払って K$_0$ の降下にする。
+  \item K$_0$ の類を長さ（正規化長さを含む）で評価し、正値性を得る。
+\end{enumerate}
+(2) で K 理論の情報の大部分を捨てている。
+\begin{question}[根本的な問い]
+K 理論をスペクトルのまま保って議論を進めると、議論がより整理されるか。捨てている情報（高次 K 群、ねじれ、作用素）から、正値性の精密化や別の帰結が得られるか。
+\end{question}
+\begin{question}[接続の問い]
+K 理論の降下（Goodwillie、Land--Tamme）と、正値性の証明で使う perfectoid 化・正規化長さ（CLMST、Bhatt--Scholze）は、どちらも perfectoid 環への降下と関係しうる。BMS の $\THH$ による構成と、その後の $\TC$ による p 進環の K 理論の計算を通して、二つの側を同じ場所で比較できないか。
+\end{question}
+
+\section{前提：K$_0$ の主張にもスペクトルは必要}
+
+最後に $\pi_0$ しか見ないとしても、途中の降下では高次と負の次数の K 群が $\pi_0$ に寄与する。降下のスペクトル系列
+\[
+  E_2^{s,t} = H^s(\text{被覆}, \pi_t K) \Longrightarrow \pi_{t-s}(\text{極限})
+\]
+で、$\pi_0$ には $H^s(-, \pi_s K)$（$s \ge 0$）が全て効く。有理化した有限群のホモトピー固定点では $s>0$ の項が消える（$H^s(G, M\otimes\Q)=0$）が、Čech 降下と cdh 降下では消えない。したがって K$_0$ の降下は K$_0$ の世界だけでは証明できず、スペクトルの水準は手段として必須である。以下の問いは「その手段を、最後まで捨てずに使えないか」という問いである。
+
+\section{K 理論をスペクトルのまま扱う整理}
+
+\subsection{交点重複度をスペクトルの対合の $\pi_0$ として書く}
+
+\begin{itemize}
+  \item 有限長加群の G 理論は Quillen の dévissage により剰余体の K 理論と一致する：$G^{\mathrm{fl}}(A) \simeq K(k)$。$\pi_0$ では長さ写像 $K_0 \to \Z$。
+  \item 支持つき perfect 複体のテンソル積はスペクトルの対合 $K^{V(I)}(A) \wedge K^{V(J)}(A) \to K^{\m}(A)$ を与える。
+\end{itemize}
+合成
+\[
+  K^{V(I)}(A) \wedge K^{V(J)}(A) \longrightarrow K^{\m}(A) \longrightarrow G^{\mathrm{fl}}(A) \simeq K(k)
+\]
+は $\pi_0$ で $\chi(M \Lotimes N)$ を計算する。
+\begin{question}
+定理3.1の降下と、この対合・dévissage との両立を、スペクトルの水準の一つの図式として述べられるか。そうすれば、K$_0$ に落としてから個別に比較している部分（§4 の \texttt{TriangulatedK0}、離散係数の \texttt{K0Supported} との比較など）が整理されるか。
+\end{question}
+
+\subsection{正規化長さを K 理論で受ける}
+
+正規化長さは実数値で、$K(k)$ の $\pi_0 = \Z$ では受けられない。
+\begin{itemize}
+  \item （未確認）perfectoid 付値環 $\mathcal{O}_C$ 上の有限表示ねじれ加群の K$_0$ は値群に一致する。有限表示ねじれ加群は $\mathcal{O}_C/a_i$ の直和で、$\sum v(a_i)$ が不変量になるため。
+  \item そうであれば、「$\lambda$ で 0 になる（あるいは almost zero な）加群を潰したねじれ加群の圏」の K 理論が、$\pi_0$ で実数値の長さを持つスペクトルとして使える可能性がある。
+\end{itemize}
+\begin{question}
+$\lambda$ 付きのホモロジー代数（\texttt{research/lambda-homological}）の連続な長さを、ある圏の K 理論スペクトルの $\pi_0$ として実現できるか。その場合、perfectoid 側の正規化長さと有限段の長さの比較を、K 理論スペクトルの写像（転送や基底変更）として書けるか。
+\end{question}
+
+\section{捨てている情報から得られるかもしれないもの}
+
+\subsection{Adams 作用素とウェイト分解（既存の理論とつながる）}
+Serre の予想まわりの古典的な結果（Gillet--Soulé による消滅予想の証明、Roberts の仕事）は、支持つき K$_0 \otimes \Q$ を Adams 作用素の固有空間に分解し、$\chi(M \Lotimes N)$ のどのウェイトの成分が効くかを見る議論である（細部は未確認）。Adams 作用素（$\lambda$ 構造）は K 理論スペクトル全体の構造から来る。
+\begin{itemize}
+  \item K 理論をスペクトルとして持っておけば、これらと同じ基盤で扱える。
+  \item 外部引用5（Chern／Adams による消滅、\texttt{formalization-plans/archive/intersection-inputs-4-5.md}）を将来引用でなく証明に置き換えるなら、自然な方向である。
+\end{itemize}
+
+\subsection{整数 $n$ の定量化（推測）}
+K$_0$ の主張は「ある正の整数 $n$ で $n\cdot y = \mathrm{baseChange}(x)$」という存在の主張で、$n$ の大きさについては何も言わない。有理化で捨てているのはねじれで、$n$ はそれを消す倍数である。
+\begin{question}
+整数係数のまま降下のスペクトル系列を追えば、$n$ を $|G|$ や次元で抑えられるか。たとえば「$n$ は $|G|$ の冪（指数は次元に依存）で取れる」という形の定量版はあるか。
+\end{question}
+群コホモロジーは $|G|$ で消え、効く $s$ の範囲は次元で抑えられる。ただし cdh 降下と有限全射の降下にも整数係数で効くねじれがあるので、確かめていない推測である。
+
+\subsection{高次 K 群での降下（推測）}
+定理3.1は全次数で成り立つので $K_n^J(H)_\Q \cong (K_n^J(H\Lotimes_A T)_\Q)^G$ も得られる。支持つき高次 K 群は、有理的には Adams 固有空間を通して支持つきのモチーフ的コホモロジー（高次 Chow 群）と関係する（Soulé、Gillet--Soulé）。
+\begin{question}
+交点重複度の「高次版」と呼べる不変量に意味があるか。あるなら、その正値性や消滅を考える土台になるか。
+\end{question}
+
+\section{$\TC$・BMS と perfectoid 側との接続}
+
+\subsection{背景}
+\begin{itemize}
+  \item $\THH(R) = R \otimes_{R \wedge_{\Sph} R} R$。円周作用から $\TC^-$、$\TP$、$\TC$ を作る。Bökstedt 周期性 $\pi_*\THH(\mathbb{F}_p) = \mathbb{F}_p[u]$。perfectoid $R$ で $\pi_0\TC^-(R;\Z_p) \cong \pi_0\TP(R;\Z_p) \cong A_{\inf}(R)$。
+  \item BMS2：quasisyntomic 降下（quasiregular semiperfectoid 環への帰着）でモチーフ的フィルトレーションを入れ、$\mathrm{gr}^n\TP \simeq \widehat{\Delta}\{n\}[2n]$、$\mathrm{gr}^n\TC \simeq \Z_p(n)[2n]$。
+  \item その後、コホモロジーの側は Bhatt--Scholze のプリズム的コホモロジー（$\THH$ を経由しない）、prismatization（Drinfeld、Bhatt--Lurie）へ整理された。K 理論の側では $\THH$・$\TC$ が中心的な道具であり続けている（Clausen--Mathew--Morrow、Antieau--Mathew--Morrow--Nikolaus、Nikolaus--Scholze、Elmanto--Morrow など）。
+  \item Dundas--Goodwillie--McCarthy：冪零拡大に関する相対 K 理論は相対 $\TC$ に一致する。計画の M7 で使う Goodwillie の定理（有理的に相対 K と相対 $\HC^-$ が一致）はその有理版にあたる。
+\end{itemize}
+
+\subsection{二つの側が同じ場所を通っていること}
+\begin{itemize}
+  \item \textbf{K 理論の側}：計画の $E(U) = \fib(K(U)_\Q \to K(U[1/p])_\Q)$ は、p 進環の「$p$ に支持を持つ部分の有理 K 理論」である。AMMN の Beilinson ファイバー四角形は、この種の対象を $\TC$ と $\HC^-$ で記述する（細部は未確認）。$\TC$ は quasisyntomic 降下で perfectoid 環に帰着させて計算され、そこでプリズム的コホモロジーが現れる。
+  \item \textbf{長さの側}：CLMST の正規化長さは perfectoid 化（Bhatt--Scholze）の上で測られる。
+\end{itemize}
+現在の論文では、前者は Goodwillie・Land--Tamme という有理的で抽象的な道具で、後者は perfectoid 化で処理されており、二つの議論は別々である。
+\begin{question}
+$\TC$ を通して、K 理論の降下と正規化長さを同じ perfectoid 環の上で比較し、議論を一本化できるか。
+\end{question}
+
+\subsection{障害}
+定理3.1は有理化した主張であり、有理化すると $\TC$ の情報の多くは $\HC^-$ に潰れる。$\TC$ とプリズムの理論が本領を発揮するのは p 進・整数係数である。この接続を活かすには、§4.2 の $n$ の定量化のような整数係数・p 進での精密化と組み合わせる必要があると考えられる。
+
+\section{原論文 §3〜§5 の K 理論の使い方（2026年10月18日の検討）}
+
+この節では、節番号・定理番号は特に断らない限り原論文のものを指す。原論文（\texttt{paper/paper.pdf}）の §1.2・§3・§4・§5 を読み、上の問いの前提を確かめた。Kerz--Strunk--Tamme（arXiv:1611.08466）を読んだ際の整理と合わせて記録する。学習記録は MathWithAI の \texttt{kst-blowup-descent/session1-log.md}。「推測」「未確認」と書いたものは原典で確かめていない。
+
+\subsection{K 理論が使われる二か所}
+\begin{itemize}
+  \item \textbf{第一の比較（補題3.5、補題5.2）}：定理3.1を $H=A$、$J=\m_A$ で使う。底は正則な $A_D\subset D$、上は Galois 閉包 $D'$。比べる類は $E'$ の自由分解を $D'$ に延ばした有限 perfect 複体 $P$ の類 $[P]\in K_0^{\m}(D')$。
+  \item \textbf{第二の比較（定理4.7、(5.18)）}：定理3.1を補題4.6の係数 $H$ で使う。底は $A_E\subset E'$。比べる類は漸近圏 $\mathcal P^J_{E'}\simeq\Perf(H\Lotimes_{A_E}E')$ の対象。
+\end{itemize}
+どちらも双線形形式 $\chi_R(-,-)$ を展開するのではなく、片方を固定した類に二つの準同型 $K_0^{\m}\to\mathbb R$（通常の長さによる $\chi^{\mathrm{ord}}$ と、正規化長さによる $\chi^{C}$）を当て、底から引き戻した類の上で両者が一致すること（補題3.4・3.5、命題4.5）を、定理3.1で $G$ 不変類（ノルム和）に移している。$\lambda$ は Galois 不変でなく（注意3.6）、個々の類では一致しない。
+
+\subsection{perfectoid 代数は K の類か}
+\begin{itemize}
+  \item 第一の比較では $C_D$ は類ではなく、評価 $\chi^{C_D}$ を定めるテスト対象である。補題3.5が $C$ について使うのは (3.9) だけで、$C_D$ の Noether 性は関係しない。
+  \item 第二の比較で初めて $C_D$（正確には $U=C_D/I_\sigma C_D$）を類にする。$U$ は有限生成でないので、有限長 $B$ 加群 $M_n$ で近似し（補題5.4）、極小分解を次数 $l$ で打ち切って $E'$ に底変換した列を漸近圏の対象にする（補題5.5）。打ち切りの誤差と支持の条件は、階数 $o(s_n)$ の商で初めて処理される。
+  \item $C_E$ は最後まで評価の側にとどまり、類にならない。
+\end{itemize}
+したがって、K 理論を取る場所（降下の場）の幾何は一貫して Noether（$A$ 上有限型）であり、非 Noether 性は\textbf{係数 $H$ の側}（非可換・非有限・非有界・connective）に集約されている。perfectoid 化は K の降下に入らない。
+
+\subsection{定理3.1の証明の構造}
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{既存の入力：cdh 降下。} $I=\fib(K_\Q\to\operatorname{HN}(-\otimes\Q/\Q))$ は truncating（Goodwillie）。$\operatorname{HN}$ の項が打ち消し合って $E(U)\simeq\fib(I(U)\to I(U[1/p]))$ も truncating（(3.4)）。Land--Tamme の Thm A.2・B.3 で係数つき cdh 降下。truncating なので係数については $\pi_0(H\Lotimes_A B)=\pi_0(H)\otimes_A\pi_0(B)$ しか効かない。
+  \item \textbf{有限忠実平坦な被覆の降下（補題3.2）。} 有理 transfer で $a^{-1}\mathrm{trf}$ がレトラクトを与える。整数係数では成り立たない。
+  \item \textbf{$\tau$ 降下（補題3.3）。} $\tau$ は cdh 被覆と有限忠実平坦な被覆で生成される位相（ほぼ h 位相）。生成する族で層なら $\tau$ 層（形式的、hyperdescent 不要）。有限全射が $\tau$ 被覆であることは平坦化ブローアップと次元の帰納法（幾何的）。
+  \item \textbf{$hG$ との同一視（§3.3）。} 両辺が $\tau$ 層なので切断をもつ場合に帰着。切断の $G$ 平行移動が一致する軌跡（＝幾何的な分岐の場所）の上で抽象ブローアップ四角形を使い、cdh 降下をもう一度使う。有理係数なので自明作用の $hG$ は普通の不変部分。
+\end{enumerate}
+注意：$\operatorname{Spec}T\to\operatorname{Spec}A$ は一般に cdh 被覆ではない（cdh・Nisnevich 被覆は completely decomposed で、次数 $>1$ の Galois 被覆は満たさない）。定理3.1は cdh 降下そのものではなく、cdh 降下と有限平坦降下から組み立てた h 型の降下である。不変量の水準の降下なので、圏の水準の Galois 降下 $\Perf(A)\simeq\Perf(T)^{hG}$（エタールの場合）とは別物。
+
+\subsection{分岐の扱い}
+平坦性も tame 分岐も仮定しない。分岐は二か所で別の仕組みで吸収される。
+\begin{itemize}
+  \item \textbf{K 側}：有理化（$|G|$ と階数が可逆）と、cdh 降下（非平坦性と分岐の軌跡を一次元下に押し込む）。§5.1 の推移性の証明はノルムと冪等元によるもので、不変部分と底変換の可換性（野生分岐で崩れうる）を使わない。
+  \item \textbf{長さ側}：判別式型の $g\in A$ で $A[1/g]\to D[1/g]$ は有限エタール。混標数では正次数 Koszul ホモロジーが almost イデアル $(g)_{\mathrm{perfd}}$ で消され（CLMST Cor.~4.0.4）正規化長さ0（Prop.~4.0.10）。標数 $p$ では trace の分母 $g$（(2.7)）の誤差が $O(q^{-1})$。分岐は「$\lambda$ で見えない」。\texttt{research/lambda-etale} の $\lambda$ 版 purity と同じ場所（推測：これが $\lambda$-エタールの最初の例になりうる）。
+\end{itemize}
+Galois 降下が要る理由は perfectoid 化そのものより「$D$ が正則でない」ことにある：通常の長さと $\lambda$ の一致が保証されるのは正則な底から引き戻した類だけ。正標数（$C_D=D_{\mathrm{perf}}$）でも同じ構造。
+
+\subsection{定理3.1の新しさ（推測）}
+\begin{itemize}
+  \item $H=A$ の場合は既知の理論から出そうである（推測）。$E$ は cdh 局所なので $L_{\mathrm{cdh}}K\simeq\mathrm{KH}$（KST Thm.~6.3）から $E(U)\simeq\fib(\mathrm{KH}(U)_\Q\to\mathrm{KH}(U[1/p])_\Q)$ となるはず。有理 KH は Beilinson モチーフ $\mathrm{KGL}_\Q$ で表現され h 降下を満たす（Cisinski--Déglise、未確認）。補題3.3は「h 位相は cdh と有限平坦で生成される」の類。
+  \item 原論文が挙げる新しい点は「任意の connective な結合的係数での有限全射降下」（§1.2 末）。係数 $H$ はモチーフの六関手の枠に載らないので、既知の議論は直接は使えず、Land--Tamme の係数つき cdh 降下が要る。論文全体の新しさは §4〜5（階数商の圏での支持つき Euler 評価、商の後でのみ支持をもつ冪等元の直和因子の扱い）。
+\end{itemize}
+
+\subsection{TC・シントミックとの接続の問いの修正}
+本ノート §4 の「接続の問い」は、次のように精密化できる。
+\begin{itemize}
+  \item 有理化と $E$ を取る操作で $\TC$・$\operatorname{HN}$（de Rham・シントミック側）は打ち消し合う（(3.4)）。$E$ は cdh 局所な部分だけで、定理3.1にシントミックコホモロジーは現れない。
+  \item 整数・$p$ 進係数に精密化すると（本ノート §3.2 の $n$ の定量化）この打ち消しは起きず、Bouis（arXiv:2412.06635、2507.16501）の混標数モチーフ的コホモロジーで $\Z/p^k(i)^{\mathrm{mot}}\simeq\Z/p^k(i)^{\mathrm{syn}}$（次数 $\le i$）としてシントミックが本質的に現れる。BMS の quasisyntomic 降下を通して、K の降下の側にも perfectoid（非 Noether）が入ってくる。
+  \item Adams 分解（本ノート §3.1）については、Bouis の定理 C（有理 AHSS の退化）が qcqs スキーム一般で与える。支持つき版で交点重複度をウェイトごとに見る枠組みになるかは推測。
+\end{itemize}
+
+\subsection{形式化の経路への含意}
+\texttt{formalization-plans/k-theory-kst-route.md} で確定した KST 経路（KST Thm A 係数つき ＋ $-\otimes\Q$ の完全性 ＋ 離散環の冪零不変性）について：
+\begin{itemize}
+  \item KST が Noether 性を使うのは補題4.9・4.10（Koszul の pro 消滅）と命題5.2（Artin--Rees）。第1段 b（$H=B_A=\prod_n M_{s_n}(A)$、離散・$A$ 平坦）は平坦性で移せる。
+  \item 第2段（補題4.6の一般の connective な $H$）では単体的環の pro 切除（KST Thm.~4.11）に $\pi_*(B\Lotimes_A H)$ 全体の Koszul の pro 消滅が要り、次数ごとの平坦性で足りるか未確認。原論文の truncating 経路は $\pi_0$ しか見ないのでこの問題は起きない。
+  \item 将来 K の降下を非 Noether（perfectoid）側で言う必要が出たら、Land--Tamme Thm.~E（truncating 不変量は qcqs で cdh 降下）か Kelly--Saito--Tamme（arXiv:2407.04378、qcqs 導来スキームの pro-cdh 降下）が候補。KST 経路はそのままでは使えない。
+\end{itemize}
+
+\section{確認すべきこと}
+\begin{enumerate}
+  \item 原論文で K$_0$ に落としている箇所と、正規化長さに移る箇所の正確な位置（§3〜§5）。→ 本ノート §5 で確認済み（補題3.5・定理4.7、2026-10-18）。
+  \item perfectoid 付値環・perfectoid 環の有限表示ねじれ加群（とその almost 版）の K$_0$。
+  \item Gillet--Soulé、Roberts の Adams 作用素による議論の正確な形と、外部引用5との関係。
+  \item AMMN の Beilinson ファイバー四角形の正確な主張と、$E$ との関係。
+  \item 原論文が §3 で使っている K 理論の結果の範囲（Goodwillie、Land--Tamme 以外に p 進の結果を使っているか）。→ 確認済み：Goodwillie、Land--Tamme（A.2・B.3・Lemma 3.12・B.2）、Thomason--Trobaugh、BGT のみ。p 進の結果は使っていない（2026-10-18）。
+  \item $H=A$ の場合の定理3.1が Cisinski--Déglise（有理 KH の h 降下）から従うか。$E\simeq\fib(\mathrm{KH}_\Q\to\mathrm{KH}[1/p]_\Q)$ の確認。
+  \item KST 経路の第2段で、一般の connective な $H$ に対し Thm.~4.11 の係数版が通るか。
+\end{enumerate}
+
+\section*{関連する文書}
+\begin{itemize}
+  \item \texttt{formalization-plans/k-theory.md}（K 理論・スペクトル・dg 理論の形式化計画）
+  \item \texttt{research/lambda-homological}（$\lambda$ 付きのホモロジー代数）、\texttt{research/lambda-etale}
+  \item MathWithAI の \texttt{symmetric-spectra-k-theory}（対称スペクトル・dg 圏・K 理論の学習記録）、\texttt{perfectoid-signature}（CLMST の精読記録）
+\end{itemize}
+
+\section*{参考文献（版・番号は未確認のものを含む）}
+\begin{itemize}
+  \item Bhatt--Morrow--Scholze, \emph{Integral $p$-adic Hodge theory}; \emph{Topological Hochschild homology and integral $p$-adic Hodge theory}.
+  \item Bhatt--Scholze, \emph{Prisms and prismatic cohomology}.
+  \item Antieau--Mathew--Morrow--Nikolaus, \emph{On the Beilinson fiber square}.
+  \item Clausen--Mathew--Morrow, \emph{K-theory and topological cyclic homology of henselian pairs}.
+  \item Dundas--Goodwillie--McCarthy, \emph{The local structure of algebraic K-theory}.
+  \item Nikolaus--Scholze, \emph{On topological cyclic homology}.
+  \item Gillet--Soulé, \emph{Intersection theory using Adams operations}; Roberts, \emph{Multiplicities and Chern classes in local algebra}.
+  \item Land--Tamme, \emph{On the K-theory of pullbacks}.
+  \item Cai--Lee--Ma--Schwede--Tucker, arXiv:2209.04046.
+  \item Kerz--Strunk--Tamme, \emph{Algebraic K-theory and descent for blow-ups}, Invent.\ Math.\ 211 (2018), arXiv:1611.08466.
+  \item Kelly--Saito--Tamme, \emph{On pro-cdh descent on derived schemes}, arXiv:2407.04378.
+  \item Elmanto--Morrow, \emph{Motivic cohomology of equicharacteristic schemes}, arXiv:2309.08463.
+  \item Bouis, \emph{Motivic cohomology of mixed characteristic schemes}, arXiv:2412.06635; \emph{Weibel vanishing and the projective bundle formula for mixed characteristic motivic cohomology}, arXiv:2507.16501.
+  \item Cisinski--Déglise, \emph{Triangulated categories of mixed motives}（Beilinson モチーフの h 降下。該当箇所未確認）。
+\end{itemize}
+
+\end{document}

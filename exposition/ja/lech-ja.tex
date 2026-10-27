@@ -67,7 +67,7 @@
 
 \paragraph{表記と、この文書の位置付け}
 \begin{itemize}
-  \item 命題・式の番号は論文のものをそのまま使う。
+  \item 命題・式の番号は論文のものをそのまま使う。節の構成は内容の整理のために論文と一部変えた（主定理に使わない Dutta 重複度の部分を \S\ref{sec:dutta} に分けた）。
   \item 証明は論文の議論に沿って再構成したもので、形式化はまだしていない。
   論文を読んで確かめた範囲と、概略にとどめた範囲は、その場で明記する。
   \item 論文が引用している外部の結果は、引用として述べ、証明しない。一覧は\ref{app:status} にある。
@@ -125,7 +125,7 @@ $(R,\m)\to(S,\n)$ を $0$ でない Noether 局所環の平坦な局所準同型
   完備、源が整域、同じ次元、目標の剰余体が代数閉の場合に帰着し、Cohen 分解で $R\to T\twoheadrightarrow S = T/J$（$e(T) = e(R)$）と、
   $T$ 上の短い自由複体 $F = P\otimes_TK(x;T)$ を作る（命題 4.3）。
   \item \textbf{標数 $p$（\S\ref{sec:charp}）。} Frobenius で $F$ の成分を深くし、定理 2.1 と Hilbert--Kunz 重複度で比べる（定理 5.2）。
-  同じ議論で、標数 $p$ の完備局所整域上の短い複体の Dutta 重複度 $\ge e(R)$ が出る（系 5.4）。
+  同じ道具で、標数 $p$ の完備局所整域上の短い複体の Dutta 重複度 $\ge e(R)$ も出る（系 5.4、\S\ref{sec:dutta}。主定理の証明には使わない）。
   \item \textbf{混標数（\S\ref{sec:mixed}）。} パラメータの冪根と Heitmann の Briançon--Skoda で成分を深くし、
   素フィルトレーションによる上界と合わせる（定理 6.3）。
   \item \textbf{剰余標数 $0$（\S\ref{sec:charzero}）。} 反例を有限個の多項式方程式に符号化し、Artin 近似と特殊化で標数 $p$ の反例に移す（定理 7.4）。
@@ -440,18 +440,7 @@ $K(z;D)$ は $0,\dots,h$ 次の有限自由加群からなり、ホモロジー�
 \end{equation}
 冪 $z^a$ についても同じ。最後に Koszul Euler 標数の公式 $\sum_i(-1)^i\ell_DH_i(z^q;D) = e((z^q),D) = q^he((z),D)$ を $q^h$ で割り、高次の極限を使えば $\eHK((z),D) = e((z),D)$。(3.5) とパラメータの重複度の冪の規則と合わせて、標数 $p$ の定理 3.1 が出る。
 
-\begin{stmt}{補題 3.4}
-上の標数 $p$ の設定で、$M$ を有限長 $D$ 加群とする。右辺の極限が存在すれば
-\[
-  \lambda_\infty(C\otimes_DM) = \lim_{q = p^n\to\infty}q^{-h}\ell_D\bigl(\Phi^n_D(M)\bigr).
-\]
-ここで $\Phi^n_D(M) = D\otimes_{D,\varphi^n}M$ は $n$ 回の Frobenius に沿った係数拡大。
-\end{stmt}
-\begin{proof}[証明の概略]
-$M\ne0$ とし、$J = \mathrm{Ann}_DM$（$\dd$-準素）、$b$ を $M$ の生成元の数とする。$M_q = B_q\otimes_DM$、$N_q = \im(M_q\to C\otimes_DM)$ とおくと、(3.3) と同様に $\lambda_\infty(M_q) = q^{-h}\ell_D(\Phi^n_D(M))$。補題 3.3 から $g^{1/q}$ 倍は $C\to B_q$ を定め、核 $K_q = \ker(M_q\to N_q)$ は $g^{1/q}$ で消える。(3.4) と同じ計算で
-$\lambda_\infty(K_q)\le b\,\lambda_\infty(B_q/(J,g^{1/q})B_q) = bq^{-h}\ell_D(D/(J^{[q]},g)) = O(q^{-1})$。
-$N_q$ は $C\otimes_DM$ に増大し、$J$ で消えるので、加法性と補題 3.2 から極限をとって主張が出る。
-\end{proof}
+論文の \S3.2 の最後にある補題 3.4（有限長加群についての同様の比較）は、Dutta 重複度の系 5.4 のためだけのものなので、\S\ref{sec:dutta} に移した。
 
 \subsection{混標数}
 $D$ が標数 $0$ とする。$p$ をパラメータ系 $p,t_2,\dots,t_h$ に延ばし、Cohen 構造定理で剰余体が同じ加群有限な包含 $A = W(k)[[t_2,\dots,t_h]]\subseteq D$ をとる（分数体が標数 $0$ なので生成的に分離的）。$A_\infty$ を上の塔の $p$ 進完備化とし
@@ -571,47 +560,6 @@ $q^h$ で割って $q\to\infty$ として $\eHK(HD,D)\ge e(D)$。
 \]
 $T$ の被約性は仮定していない。補題 5.1 の仮定を確かめる：$T$ は標数 $p$ の完備局所環、剰余体は代数閉で完全、$J$ は perfect。$J$ 上極小で $\dim T/Q = d$ の $Q$ について命題 4.3 で $T_Q$ は完全交叉。$x$ は $S = T/J$ のパラメータ系でそのイデアルは $\n$ の reduction。よって
 $e(S) = e((x),S) = \eHK(H,T)\ge e(T) = e(R)$。
-\end{proof}
-
-\subsection{短い複体の Dutta 重複度}
-次の系では $H_0$ が巡回的とは限らないので、Hilbert--Kunz の商の公式の代わりに補題 3.4 を使う。Iyengar--Ma--Walker の用語に従う。
-
-\begin{dstmt}{定義 5.3}
-$(R,\m)$ を標数 $p>0$、次元 $d$ の Noether 局所環とする。$R$ 上の\textbf{短い複体}とは、有限自由加群の複体 $F = (0\to F_d\to\dots\to F_0\to0)$ で、ホモロジーが有限長で $H_0(F)\ne0$ のもの。有限長のホモロジーをもつ有界複体 $G$ について $\chi^R(G) = \sum_i(-1)^i\ell_RH_i(G)$ とおく。$G$ が有限自由なら $\Phi^n_RG$ を $n$ 回の Frobenius による係数拡大とし、\textbf{Dutta 重複度}を $\chi^R_\infty(G) = \lim_{n\to\infty}p^{-nd}\chi^R(\Phi^n_RG)$ とする。
-\end{dstmt}
-極限は存在する（IMW \S4.17）。完備な標数 $p$ の局所環上の短い複体について、Roberts の Frobenius ホモロジー定理（Ma の Thm.~2.4）は $i>0$ で $p^{-nd}\ell_RH_i(\Phi^n_RF)\to0$ を与えるので
-\begin{equation}\tag{5.1}
-  \chi^R_\infty(F) = \lim_{n\to\infty}p^{-nd}\ell_RH_0(\Phi^n_RF).
-\end{equation}
-これは $H_0$ が巡回的でない短い複体にも成り立つ。Iyengar--Ma--Walker は次の系の下界を全ての完備局所環上の短い複体について予想した（IMW Conj.~8.1）。その全体は Lech の予想を導く（IMW Prop.~8.3）。
-
-\begin{stmt}{系 5.4（正標数の整域上の Dutta 重複度）}
-$(R,\m)$ を標数 $p>0$ の完備 Noether 局所整域、$F$ を $R$ 上の短い複体とする。このとき $\chi^R_\infty(F)\ge e(R)$。
-\end{stmt}
-\begin{proof}
-$d = \dim R$。$d = 0$ なら $R$ は体で $\chi^R_\infty(F) = \rank F_0\ge1 = e(R)$。$d>0$ とする。可縮な自由直和因子を分離すれば、ホモロジーも Dutta 重複度も変えずに $F$ を極小にできる。$b_i = \rank F_i$、特に $b_0\ge1$。
-
-\textbf{剰余体が代数閉の場合。} $\m$ の極小 reduction $I = (z_1,\dots,z_d)$ をとると、定理 5.2 の証明と同様に固定した $c\ge0$ で $\m^q\subseteq I^{q-c}$（$q\ge c$）。定理 3.1 の標数 $p$ の代数 $C = R_\perf$ と正規化長さ $\lambda$ を使う。$R$ 上の任意の短い複体 $G$ について、右完全性から $C\otimes_RH_0(G) = H_0(C\otimes_RG)$、$\Phi^n_R(H_0(G)) = H_0(\Phi^n_RG)$ なので、補題 3.4 と (5.1) から
-$\lambda H_0(C\otimes_RG) = \chi^R_\infty(G)$。
-$q = p^n$ とする。$\Phi^n_RF$ の微分の成分は $\m^{[q]}\subseteq\m^q\subseteq I^{q-c}$ に入る。Frobenius は $F$ が可縮な局所化での可縮化ホモトピーを保つので $\Phi^n_RF$ のホモロジーも有限長で、極小で $H_0\ne0$ なので短い複体である。$C$ への係数拡大も同じホモトピーを保ち、$I$ は $\m$-準素なので拡大した複体は $V(IC)$ の外で局所的に可縮。Dutta の極限の添字を $n$ ずらして
-$\lambda H_0(C\otimes_R\Phi^n_RF) = \chi^R_\infty(\Phi^n_RF) = q^d\chi^R_\infty(F)$。
-さらに $F$ は $R$ の分数体上で完全になるので $\sum_i(-1)^ib_i = 0$。$C\otimes_R\Phi^n_RF$ にパラメータイデアル $IC$、$s = q-c$、$\mu = e(I,R) = e(R)$ で定理 2.1 を当てると、$q>c$ で
-\[
-  q^d\chi^R_\infty(F)\ge e(R)(q-c)^d\Bigl(b_0-\frac{A_d}{q-c}\sum_{i=0}^db_i\Bigr).
-\]
-$q^d$ で割れば右辺は $b_0e(R)$ に近づき、$b_0\ge1$ から主張が出る。
-
-\textbf{一般の剰余体。} 補題 4.1 で $\n = \m S$、剰余体が代数閉、$\dim S = d$、$e(S) = e(R)$ の完備平坦局所拡大 $R\to S$ をとり、$G = S\otimes_RF$ とおく。これも極小な短い複体で、Frobenius の係数拡大はこの底変換と可換、有限長加群の長さは保たれるので $\chi^S_\infty(G) = \chi^R_\infty(F)$（IMW \S4.17 にもある）。$S$ は整域とは限らないので、前の場合を直接当てずに素フィルトレーションで成分に移る。
-
-$S$ 加群 $S$ の有限な素フィルトレーション（因子 $D_j = S/P_j$、$h_j = \dim D_j$）をとる。有界な自由複体 $\Phi^n_SG$ の Euler 標数の加法性から $\chi^S(\Phi^n_SG) = \sum_j\chi^S(D_j\otimes_S\Phi^n_SG)$。右辺の複体は、$\n$ の外の可縮化ホモトピーがテンソル後も残るので、ホモロジーは有限長。\textbf{Hochster--Huneke の Frobenius ホモロジー評価}（BHM Thm.~5.2 の形）から定数 $C_j$ があって
-$\ell_SH_i(D_j\otimes_S\Phi^n_SG)\le C_jp^{n\min\{h_j,d-i\}}$（$0\le i\le d$）。
-実際その複体は長さ $d$ でホモロジーは有限長、係数加群 $D_j$ の次元は $h_j$ である。$h_j<d$ なら、この因子のホモロジーの長さは全て $O(p^{nh_j})$ で、$p^{nd}$ で割った寄与は $0$ に近づく。
-
-$h_j = d$ なら $D_j$ は剰余体が同じ代数閉体の完備局所整域で、$D_j\otimes_SG$ は $D_j$ 上の短い複体である（局所化した可縮化ホモトピーが残るのでホモロジーは極大イデアルに台をもち、行列は極小のままで $b_0\ge1$ なので $H_0\ne0$）。微分の行列を見れば $D_j\otimes_S\Phi^n_SG\cong\Phi^n_{D_j}(D_j\otimes_SG)$ で、ホモロジーの長さは $S$ 上と $D_j$ 上で一致する。極限をとり、既に示した整域の場合をこれらの因子に当て、素フィルトレーションに沿った最高次元の Hilbert--Samuel 重複度の加法性を使えば
-\[
-  \chi^R_\infty(F) = \chi^S_\infty(G) = \sum_{h_j = d}\chi^{D_j}_\infty(D_j\otimes_SG)\ge\sum_{h_j = d}e(D_j) = e(S) = e(R).
-\qedhere
-\]
 \end{proof}
 
 %======================================================================
@@ -806,6 +754,72 @@ $B = (L[t]_{(t)})^h$（完備化は $L[[t]]$）とおく。\textbf{Artin 近似}
 \S\ref{sec:reduction} の帰着で、源が整域、目標の剰余体が代数閉の、完備で等しい次元の平坦な局所写像に帰着する（次元 $0$ は直ちに出る）。源が正標数なら定理 5.2、混標数なら定理 6.3、剰余標数 $0$ なら定理 7.4。これで全ての場合が尽きる。各帰着は源の重複度を保ち、目標の重複度を保つか減らすか、加法性で不等式を組み直すだけなので、もとの写像について不等式が成り立つ。
 \end{proof}
 %======================================================================
+\section{副産物：短い複体の Dutta 重複度}\label{sec:dutta}
+
+この節は、論文の \S3.2 の最後の補題 3.4 と \S5.1（定義 5.3、系 5.4）をまとめたものである。
+系 5.4 は Iyengar--Ma--Walker の予想の一部を与える独立した結果で、\textbf{主定理（定理 1.1）の証明には使わない}。
+補題 3.4 も系 5.4 のためだけに置かれている。この節だけで使う外部の結果は、Hochster--Huneke の Frobenius ホモロジー評価（BHM Thm.~5.2 の形）と、Dutta 重複度の極限の存在と底変換不変性（IMW \S4.17）である。
+
+\subsection{有限長加群の正規化長さ}
+系 5.4 では $H_0$ が巡回的とは限らないので、定理 3.1 (3) の Hilbert--Kunz の商の公式の代わりに、次の有限長加群についての比較を使う。
+
+\begin{stmt}{補題 3.4}
+\S\ref{sec:length} の標数 $p$ の設定（$A = k[[t]]\subseteq D$、$C = D_\perf$、$B_q$、補題 3.3 の $g$）で、$M$ を有限長 $D$ 加群とする。右辺の極限が存在すれば
+\[
+  \lambda_\infty(C\otimes_DM) = \lim_{q = p^n\to\infty}q^{-h}\ell_D\bigl(\Phi^n_D(M)\bigr).
+\]
+ここで $\Phi^n_D(M) = D\otimes_{D,\varphi^n}M$ は $n$ 回の Frobenius に沿った係数拡大。
+\end{stmt}
+\begin{proof}[証明の概略]
+$M\ne0$ とし、$J = \mathrm{Ann}_DM$（$\dd$-準素）、$b$ を $M$ の生成元の数とする。$M_q = B_q\otimes_DM$、$N_q = \im(M_q\to C\otimes_DM)$ とおくと、(3.3) と同様に $\lambda_\infty(M_q) = q^{-h}\ell_D(\Phi^n_D(M))$。補題 3.3 から $g^{1/q}$ 倍は $C\to B_q$ を定め、核 $K_q = \ker(M_q\to N_q)$ は $g^{1/q}$ で消える。(3.4) と同じ計算で
+$\lambda_\infty(K_q)\le b\,\lambda_\infty(B_q/(J,g^{1/q})B_q) = bq^{-h}\ell_D(D/(J^{[q]},g)) = O(q^{-1})$。
+$N_q$ は $C\otimes_DM$ に増大し、$J$ で消えるので、加法性と補題 3.2 から極限をとって主張が出る。
+\end{proof}
+
+
+\subsection{Dutta 重複度と系 5.4}
+Iyengar--Ma--Walker の用語に従う。
+
+\begin{dstmt}{定義 5.3}
+$(R,\m)$ を標数 $p>0$、次元 $d$ の Noether 局所環とする。$R$ 上の\textbf{短い複体}とは、有限自由加群の複体 $F = (0\to F_d\to\dots\to F_0\to0)$ で、ホモロジーが有限長で $H_0(F)\ne0$ のもの。有限長のホモロジーをもつ有界複体 $G$ について $\chi^R(G) = \sum_i(-1)^i\ell_RH_i(G)$ とおく。$G$ が有限自由なら $\Phi^n_RG$ を $n$ 回の Frobenius による係数拡大とし、\textbf{Dutta 重複度}を $\chi^R_\infty(G) = \lim_{n\to\infty}p^{-nd}\chi^R(\Phi^n_RG)$ とする。
+\end{dstmt}
+極限は存在する（IMW \S4.17）。完備な標数 $p$ の局所環上の短い複体について、Roberts の Frobenius ホモロジー定理（Ma の Thm.~2.4）は $i>0$ で $p^{-nd}\ell_RH_i(\Phi^n_RF)\to0$ を与えるので
+\begin{equation}\tag{5.1}
+  \chi^R_\infty(F) = \lim_{n\to\infty}p^{-nd}\ell_RH_0(\Phi^n_RF).
+\end{equation}
+これは $H_0$ が巡回的でない短い複体にも成り立つ。Iyengar--Ma--Walker は次の系の下界を全ての完備局所環上の短い複体について予想した（IMW Conj.~8.1）。その全体は Lech の予想を導く（IMW Prop.~8.3）。
+
+\begin{stmt}{系 5.4（正標数の整域上の Dutta 重複度）}
+$(R,\m)$ を標数 $p>0$ の完備 Noether 局所整域、$F$ を $R$ 上の短い複体とする。このとき $\chi^R_\infty(F)\ge e(R)$。
+\end{stmt}
+\begin{proof}
+$d = \dim R$。$d = 0$ なら $R$ は体で $\chi^R_\infty(F) = \rank F_0\ge1 = e(R)$。$d>0$ とする。可縮な自由直和因子を分離すれば、ホモロジーも Dutta 重複度も変えずに $F$ を極小にできる。$b_i = \rank F_i$、特に $b_0\ge1$。
+
+\textbf{剰余体が代数閉の場合。} $\m$ の極小 reduction $I = (z_1,\dots,z_d)$ をとると、定理 5.2 の証明と同様に固定した $c\ge0$ で $\m^q\subseteq I^{q-c}$（$q\ge c$）。定理 3.1 の標数 $p$ の代数 $C = R_\perf$ と正規化長さ $\lambda$ を使う。$R$ 上の任意の短い複体 $G$ について、右完全性から $C\otimes_RH_0(G) = H_0(C\otimes_RG)$、$\Phi^n_R(H_0(G)) = H_0(\Phi^n_RG)$ なので、補題 3.4 と (5.1) から
+$\lambda H_0(C\otimes_RG) = \chi^R_\infty(G)$。
+$q = p^n$ とする。$\Phi^n_RF$ の微分の成分は $\m^{[q]}\subseteq\m^q\subseteq I^{q-c}$ に入る。Frobenius は $F$ が可縮な局所化での可縮化ホモトピーを保つので $\Phi^n_RF$ のホモロジーも有限長で、極小で $H_0\ne0$ なので短い複体である。$C$ への係数拡大も同じホモトピーを保ち、$I$ は $\m$-準素なので拡大した複体は $V(IC)$ の外で局所的に可縮。Dutta の極限の添字を $n$ ずらして
+$\lambda H_0(C\otimes_R\Phi^n_RF) = \chi^R_\infty(\Phi^n_RF) = q^d\chi^R_\infty(F)$。
+さらに $F$ は $R$ の分数体上で完全になるので $\sum_i(-1)^ib_i = 0$。$C\otimes_R\Phi^n_RF$ にパラメータイデアル $IC$、$s = q-c$、$\mu = e(I,R) = e(R)$ で定理 2.1 を当てると、$q>c$ で
+\[
+  q^d\chi^R_\infty(F)\ge e(R)(q-c)^d\Bigl(b_0-\frac{A_d}{q-c}\sum_{i=0}^db_i\Bigr).
+\]
+$q^d$ で割れば右辺は $b_0e(R)$ に近づき、$b_0\ge1$ から主張が出る。
+
+\textbf{一般の剰余体。} 補題 4.1 で $\n = \m S$、剰余体が代数閉、$\dim S = d$、$e(S) = e(R)$ の完備平坦局所拡大 $R\to S$ をとり、$G = S\otimes_RF$ とおく。これも極小な短い複体で、Frobenius の係数拡大はこの底変換と可換、有限長加群の長さは保たれるので $\chi^S_\infty(G) = \chi^R_\infty(F)$（IMW \S4.17 にもある）。$S$ は整域とは限らないので、前の場合を直接当てずに素フィルトレーションで成分に移る。
+
+$S$ 加群 $S$ の有限な素フィルトレーション（因子 $D_j = S/P_j$、$h_j = \dim D_j$）をとる。有界な自由複体 $\Phi^n_SG$ の Euler 標数の加法性から $\chi^S(\Phi^n_SG) = \sum_j\chi^S(D_j\otimes_S\Phi^n_SG)$。右辺の複体は、$\n$ の外の可縮化ホモトピーがテンソル後も残るので、ホモロジーは有限長。\textbf{Hochster--Huneke の Frobenius ホモロジー評価}（BHM Thm.~5.2 の形）から定数 $C_j$ があって
+$\ell_SH_i(D_j\otimes_S\Phi^n_SG)\le C_jp^{n\min\{h_j,d-i\}}$（$0\le i\le d$）。
+実際その複体は長さ $d$ でホモロジーは有限長、係数加群 $D_j$ の次元は $h_j$ である。$h_j<d$ なら、この因子のホモロジーの長さは全て $O(p^{nh_j})$ で、$p^{nd}$ で割った寄与は $0$ に近づく。
+
+$h_j = d$ なら $D_j$ は剰余体が同じ代数閉体の完備局所整域で、$D_j\otimes_SG$ は $D_j$ 上の短い複体である（局所化した可縮化ホモトピーが残るのでホモロジーは極大イデアルに台をもち、行列は極小のままで $b_0\ge1$ なので $H_0\ne0$）。微分の行列を見れば $D_j\otimes_S\Phi^n_SG\cong\Phi^n_{D_j}(D_j\otimes_SG)$ で、ホモロジーの長さは $S$ 上と $D_j$ 上で一致する。極限をとり、既に示した整域の場合をこれらの因子に当て、素フィルトレーションに沿った最高次元の Hilbert--Samuel 重複度の加法性を使えば
+\[
+  \chi^R_\infty(F) = \chi^S_\infty(G) = \sum_{h_j = d}\chi^{D_j}_\infty(D_j\otimes_SG)\ge\sum_{h_j = d}e(D_j) = e(S) = e(R).
+\qedhere
+\]
+\end{proof}
+
+
+%======================================================================
 \section{Serre の論文との関係}\label{sec:serre}
 
 \paragraph{枠組みの対応}
@@ -960,7 +974,7 @@ Cohen 分解 & Avramov--Foxby--Herzog、Ma Thm.~3.1 & 命題 4.3 \\
 短い複体による構成の前身 & IMW Prop.~8.3 & 命題 4.3 \\
 Hilbert--Kunz の等式 & Ma Lemma 4.2、\S2.3 & 補題 5.1 \\
 Hilbert--Kunz の結合公式 & Huneke Thm.~3.14 & 定理 5.2 \\
-短い複体の用語、Dutta 重複度の極限の存在、底変換不変性 & IMW \S\S2.5--2.6、\S4.17 & \S5.1 \\
+短い複体の用語、Dutta 重複度の極限の存在、底変換不変性 & IMW \S\S2.5--2.6、\S4.17 & \S\ref{sec:dutta} \\
 Hochster--Huneke の Frobenius ホモロジー評価 & BHM Thm.~5.2 & 系 5.4 \\
 Heitmann の整拡大版 Briançon--Skoda & Heitmann、Heitmann--Ma Prop.~2.8 & 定理 6.3 \\
 excellence（正規化の有限性）、catenary 性 & 標準 & 定理 6.3、補題 6.2 \\
