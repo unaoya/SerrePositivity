@@ -63,6 +63,9 @@ public import SerrePositivity.KST.Spectra.D3FiberPathIsoComparison
 public import SerrePositivity.KST.Spectra.D3PathCorrectedComponentValue
 public import SerrePositivity.KST.Spectra.D3PointedKanSectionTargetValue
 public import SerrePositivity.KST.Spectra.D3SectionUnitFaceComparison
+public import SerrePositivity.KST.Spectra.D3UnitLoopSourceNaturality
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointTargetAgreement
+public import SerrePositivity.KST.Spectra.D3RetainedDoubleEndpointComparison
 
 /-!
 概要：Sp-2 の d3 専用集約。
