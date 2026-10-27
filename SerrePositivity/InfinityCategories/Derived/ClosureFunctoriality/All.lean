@@ -17,4 +17,6 @@ public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Ch
 
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroObstruction
 
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroNativeSeparation
+
 /-! D-S 独自集約：基底非依存の実閉包関手化。 -/

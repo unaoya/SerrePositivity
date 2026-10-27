@@ -9,6 +9,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellDegreeSplitting,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellUnitNonzero,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroObstruction,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroNativeSeparation,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ChoiceInvariant,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellGenerators,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ContractionComparison,
@@ -27,6 +28,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.SphereClosure,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Perfect,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ImageLaws,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientNative,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeTarget,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.UnconditionalData,
@@ -91,3 +94,12 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.no_dgCellComparisonInputFunctor
 #check SerrePositivity.InfinityCategories.no_dgZeroInputFamily
 #check SerrePositivity.InfinityCategories.no_dgSphereClosureResolvedInputFunctor
+
+#check SerrePositivity.InfinityCategories.dgCellZeroNativeHom
+#check SerrePositivity.InfinityCategories.dgCellZeroNativeHom_vertex
+
+#check SerrePositivity.InfinityCategories.quotientNativeInputMap
+#check SerrePositivity.InfinityCategories.quotientNativeInputMap_vertex
+#check SerrePositivity.InfinityCategories.quotientEpsilonNativeForget
+#check SerrePositivity.InfinityCategories.dgSuspensionResolvedEpsilonCore
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeMap_vertex

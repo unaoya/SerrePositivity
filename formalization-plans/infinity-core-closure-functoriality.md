@@ -151,9 +151,45 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
   終域を固定 ε 整合 Hom へ制限しても、忘却と評価で同じ矛盾が出る。
 - 従って、全入力の `resolvedInputFunctor : DGFunctor ...` という供給型は不可。
   native Kan core 間の全単体 SSet 射や、元の最終 map の非存在は未証明。
-  工程 1 を native SSet 射として直接供給する型への変更をユーザーに照会中。
+  工程 1 を native SSet 射として直接供給する型への変更をユーザーが採用。
   候補は入力 native core → ε 整合関手圏の dg nerve の core。
-  対象作用・固定模型・最終 map と edgeIso の目標は維持する。候補の存在は未供給。
+  対象作用・固定模型・最終 map と edgeIso の目標・新仮定なしを維持する。
+  候補の一般の存在は未供給。dg 反例は R 候補として独自集約・独自監査に留め、
+  主経路の集約には登録しない。
+- `CellZeroNativeSeparation`：`dgCellZeroNativeHom`、`_vertex`。
+  零入力では同じ comparisonFunctor の頂点を持つ全単体 SSet 射が存在する。
+  上記 dg 反例と native SSet の問題を区別する診断であり、任意入力の完成ではない。
+
+### D の工程 2 の消費型（native core）
+
+D の公開 `6b698006a`・`960649fc1` を採用。
+D の `quotientInputFunctor` に `dgNerve.map` と `quasicategoryCoreMap` を適用する。
+`coherentNerveMap` は工程 3 の全 Hom の単位・合成を確認した後で使用する。
+必要な native 射は次の形（C、D、S、T は固定）：
+
+```lean
+(quasicategoryCore (dgNerve R (NullPreservingFunctorsε R C D S T)) : SSet) ⟶
+  dgFunctorNativeMappingSpace R
+    (DGQuotient.QuotientObject C S) (DGQuotient.QuotientObject D T)
+```
+
+その値は `quasicategoryCoreMap (dgNerve.map (quotientInputFunctor R C D S T))`。
+対象 F の頂点は、同じ `quotientDGFunctor R C D F.val S T F.property` の頂点へ送る。
+D の ε Hom は元の dg 部分複体の定義のままでよい。D-S は入力 native core から
+この ε core への全単体射を構成する。頂点別の ε 整合だけで全単体の着地を推論しない。
+D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
+(nullPreservingFunctorsεForget R C D S T))`。固定頂点の照合と全単体の着地の確認に使う。
+
+- 実装 `SuspensionAction/QuotientNative`：`quotientNativeInputMap`、
+  `_vertex`、`quotientEpsilonNativeForget`、`_vertex`。D の現行型だけで構成済み。
+- 実装 `SuspensionAction/NativeTarget`：`dgSuspensionResolvedEpsilonCore`、
+  `dgSuspensionResolvedEpsilonObject`、`dgSuspensionResolvedEpsilonVertex`、
+  `dgSuspensionQuotientNativeMap`、`_vertex`。切替後の段提供者の正本 data に一致。
+- 主経路集約 `SuspensionAction/NativeAll` は反例・診断を import しない。
+  独自全体集約 `All` と独自監査には R 候補も保持する。
+- 未構成の工程 1 は `dgFunctorNativeMappingSpace R A B` から
+  `dgSuspensionResolvedEpsilonCore R κ hκ A B` への全単体射。
+  頂点は `dgSuspensionResolvedEpsilonVertex R κ hκ A B (ULift.up F)` に厳密一致させる。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
@@ -177,6 +213,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 30 葉・346 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。
