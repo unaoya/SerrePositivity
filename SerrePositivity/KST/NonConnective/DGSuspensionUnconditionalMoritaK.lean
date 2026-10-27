@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalMorita
-public import SerrePositivity.KST.NonConnective.DGKappaPerfectMapMorita
+public import SerrePositivity.KST.NonConnective.DGKInputDerivedMorita
 public import SerrePositivity.KST.NonConnective.DGKappaRawSuspensionCompletion
 
 /-!
@@ -36,6 +36,13 @@ theorem dgKappaUnconditionalSuspensionPerfectExtension_isEquivalence_of_morita :
     dgKappaSuspension_isDGPretriangulated R B (dgKappaConeInput_unconditional' R B κ hκ)
   exact dgKappaPerfectExtension_isEquivalence_of_native R _ _ _
     (dgKappaUnconditionalSuspensionInputMap_isQCatEquivalence_of_morita R κ hκ f)
+
+/-- 同じ実懸垂入力射は全主導来 Morita 同値も保つ。 -/
+theorem dgKappaUnconditionalSuspensionDerivedExtension_isEquivalence_of_morita :
+    (dgDerivedExtension R _ _ (dgKappaSphereClosureSuspensionInputMap R A B
+      (perfDGInputHomEquiv R A B f) κ hκ).down).IsEquivalence := by
+  let := dgKappaUnconditionalSuspensionPerfectExtension_isEquivalence_of_morita R κ hκ f
+  exact dgKInputDerivedExtension_isEquivalence_of_perfect R _ _ _
 
 /-- 同じ元の実懸垂入力射の固定 K 射は全整数 π 同型。 -/
 theorem dgKappaUnconditionalSuspensionKMap_piIsomorphism_of_morita :

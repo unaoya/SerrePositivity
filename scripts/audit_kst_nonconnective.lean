@@ -13,6 +13,9 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration,
+    `SerrePositivity.KST.NonConnective.DGKInputDerivedMorita,
+    `SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalIterationMorita,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectYonedaNaturality,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectMapEquivalence,
     `SerrePositivity.KST.NonConnective.DGKappaPerfectMapMorita,
@@ -302,6 +305,14 @@ run_cmd do
   logInfo m!"K-7: {count} declarations in {modules.size} modules audited; standard axioms only."
 
 #check SerrePositivity.KST.NonConnective.dgKappaPerfectYonedaNaturality
+#check SerrePositivity.KST.NonConnective.dgKInputDerivedCompactGeneration
+#check SerrePositivity.KST.NonConnective.dgKInputDerivedExtension_isEquivalence_of_perfect
+#check SerrePositivity.KST.NonConnective.dgKInputDerivedExtension_isEquivalence_of_native
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalIterationMap_derived_isEquivalence
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalIterationMap_perfect_isEquivalence
+#check SerrePositivity.KST.NonConnective.dgSuspensionUnconditionalIterationKMap_piIsomorphism
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKMap_piIsomorphism_of_initial_morita
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKMap_isInvertible_of_initial_morita
 #check SerrePositivity.KST.NonConnective.dgKappaPerfectMap_isQCatEquivalence
 #check SerrePositivity.KST.NonConnective.dgKappaPerfectExtension_isEquivalence_of_native
 #check SerrePositivity.KST.NonConnective.dgKappaUnconditionalSuspensionKMap_piIsomorphism_of_morita

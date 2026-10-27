@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGNonconnectiveK
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMorita
+public import SerrePositivity.KST.NonConnective.DGSuspensionUnconditionalIterationMorita
 
 /-!
 概要：各実懸垂段の元の Morita 射と可換な実逐次比較を、同じ非連結 K へ送る。
@@ -68,5 +69,37 @@ theorem dgNonconnectiveKMap_isInvertible_of_stagewise_morita :
     IsInvertibleEdge (coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgNonconnectiveKMap_piIsomorphism_of_stagewise_morita R κ hκ A B η f hf h)
+
+omit hf h in
+/-- 初期 Morita 射から全段保存を放電し、元の実逐次比較の π 同型を得る。
+実逐次比較と元の loop 座標の可換性は到着する c4 の作用から供給する。 -/
+theorem dgNonconnectiveKMap_piIsomorphism_of_initial_morita
+    (f₀ : A ⟶ B) [(quasiEquivalencePerfectExtension R A B f₀.down).IsEquivalence]
+    (hη : ∀ (n : ℕ) (j : ℤ)
+      (x : OmegaSpectrum.homotopyGroup (dgNonconnectiveKStage R κ hκ A n) j),
+      dgNonconnectiveKStage_piEquiv R κ hκ B n j
+          (OmegaSpectrum.homotopyMap (η.app ⟨n⟩) j x) =
+        OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R
+          (dgSuspensionUnconditionalIterationMap R κ hκ f₀ n)) (j + n)
+          (dgNonconnectiveKStage_piEquiv R κ hκ A n j x)) :
+    OmegaSpectrum.PiIsomorphism (dgNonconnectiveKMap R κ hκ A B η) :=
+  dgNonconnectiveKMap_piIsomorphism_of_stagewise_morita R κ hκ A B η
+    (dgSuspensionUnconditionalIterationMap R κ hκ f₀)
+    (dgSuspensionUnconditionalIterationMap_perfect_isEquivalence R κ hκ f₀) hη
+
+omit hf h in
+/-- 同じ実逐次比較の辺は、初期 Morita 射と実 loop 座標可換性から可逆。 -/
+theorem dgNonconnectiveKMap_isInvertible_of_initial_morita
+    (f₀ : A ⟶ B) [(quasiEquivalencePerfectExtension R A B f₀.down).IsEquivalence]
+    (hη : ∀ (n : ℕ) (j : ℤ)
+      (x : OmegaSpectrum.homotopyGroup (dgNonconnectiveKStage R κ hκ A n) j),
+      dgNonconnectiveKStage_piEquiv R κ hκ B n j
+          (OmegaSpectrum.homotopyMap (η.app ⟨n⟩) j x) =
+        OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R
+          (dgSuspensionUnconditionalIterationMap R κ hκ f₀ n)) (j + n)
+          (dgNonconnectiveKStage_piEquiv R κ hκ A n j x)) :
+    IsInvertibleEdge (coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
+  OmegaSpectrum.isInvertible_of_piIsomorphism _
+    (dgNonconnectiveKMap_piIsomorphism_of_initial_morita R κ hκ A B η f₀ hη)
 
 end SerrePositivity.KST.NonConnective

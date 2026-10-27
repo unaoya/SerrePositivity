@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedEvaluationMorita
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectKernelMoritaInfinity
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
+public import SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration
 
 /-!
 概要：同じ実評価 Morita 核の主作用を、元の実 ∞-Perf の同値へ接続する。
@@ -20,28 +20,6 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R]
 
-private def evaluationCompactFamily (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
-    (x : SmallPerfectDGModuleOver R C Set.univ) : DerivedModuleCategory R C :=
-  (perfectModuleInclusion R C Set.univ).obj ((smallPerfectDGModuleToPerfect R C Set.univ).obj
-    ((toHomotopy R (SmallPerfectDGModuleOver R C Set.univ)).obj (ForgetEnrichment.of (Complex R) x)))
-
-private theorem evaluationCompactGeneration (C : Type (max (u + 1) v))
-    [DGCategory R C] [Small.{u} C] :
-    Morita.CriterionDerivedCompactGeneration R C (evaluationCompactFamily R C) where
-  compact x := (moduleCompact_iff_perfect R C _).mpr
-    ((smallPerfectDGModuleToPerfect R C Set.univ).obj
-      ((toHomotopy R (SmallPerfectDGModuleOver R C Set.univ)).obj
-        (ForgetEnrichment.of (Complex R) x))).property
-  localizing Q htri hiso hcop hgen X := by
-    letI := htri
-    letI := hiso
-    have hperf : ∀ Y : DerivedModuleCategory R C, modulePerfect R C Y → Q Y := by
-      intro Y hY
-      obtain ⟨c, ⟨e⟩⟩ := Functor.EssSurj.mem_essImage (smallPerfectDGModuleToPerfect R C Set.univ)
-        (⟨Y, hY⟩ : PerfectModuleCategoryOver R C Set.univ)
-      exact Q.prop_of_iso ((perfectModuleInclusion R C Set.univ).mapIso e)
-        (hgen (ForgetEnrichment.to (Complex R) c.as))
-    exact moduleLocalizing_all R C Q hcop hperf X
 
 variable (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ) (P : DGKappaPerfectInput R D I)
@@ -56,9 +34,9 @@ theorem dgKappaResolvedEvaluationClassical_isEquivalence :
     ⟨dgKappaResolvedEvaluationKernel_columnsPerfect R D I P,
       dgKappaResolvedEvaluationKernel_fullHomQuasiIso R D I,
       dgKappaResolvedEvaluationKernel_columnsThickGenerate R D I P⟩
-    (evaluationCompactFamily R (dgKappaResolvedKernelKInput R D I))
-    (evaluationCompactGeneration R (dgKappaResolvedKernelKInput R D I))
-    (evaluationCompactFamily R D) (evaluationCompactGeneration R D)
+    (dgKInputDerivedCompactFamily R (dgKappaResolvedKernelKInput R D I))
+    (dgKInputDerivedCompactGeneration R (dgKappaResolvedKernelKInput R D I))
+    (dgKInputDerivedCompactFamily R D) (dgKInputDerivedCompactGeneration R D)
 
 /-- I・P に条件付きで、同じ実評価核の元の実 ∞-Perf 作用。 -/
 def dgKappaResolvedPerfectInfinity :
