@@ -6,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonPathPrefix,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeIntervalIso,
@@ -184,3 +185,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.no_nativeDisk_fixedData_action_of_no_comparison
 #check SerrePositivity.InfinityCategories.dgQuotientDegreeDesc
 #check SerrePositivity.InfinityCategories.epsilonTensorLeftRetraction_apply
+
+#check SerrePositivity.InfinityCategories.epsilon_word_left
+#check SerrePositivity.InfinityCategories.epsilonLeftComposition_retraction
+#check SerrePositivity.InfinityCategories.epsilonLeftComposition_injective
+#check SerrePositivity.InfinityCategories.epsilonCellLeftComposition_injective

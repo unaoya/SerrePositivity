@@ -283,17 +283,17 @@ quasi-functor／bimodule または cofibrant 入力関手圏では、商への�
 単位・合成・高次整合を新規に供給する必要がある。cofibrant 置換だけで十分とは未証明。
 `NativeIntervalIso` は現行 native Hom に特殊化しており、新 Hom 比較の版が必要。
 元の固定模型へ戻る全 Hom 比較がなければ、模型変更を元の目標の達成とは数えない。
-工程 1 の他の構成は停止。正本の map・edgeIso は依然未供給。
+採用方針 (1)：現行固定商内で比較型の有無を調べる。模型変更には着手しない。
+`EpsilonPathPrefix`：全商 Hom の ε 左合成に次数別左逆があり、cell 特殊化も無仮定で単射。
+右 ε との交換式からの制限と、固定出力二辺の K／loop・ν 適用後の比較は未供給。
 
 ## 検証
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
-両独自集約のビルド成功。監査は 50 葉・711 宣言で成功。主経路 `NativeAll` は変更なし。
+両独自集約のビルド成功。監査は 51 葉・744 宣言で成功。主経路 `NativeAll` は変更なし。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
-`sorryAx` は不許可。共有監査の編集は行わない。
-
-検証コマンド：
+`sorryAx` は不許可。共有監査は編集しない。検証コマンド：
 ```sh
 lake build SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All SerrePositivity.InfinityCategories.Derived.SuspensionAction.All
 lake env lean scripts/audit_derived_closure_functoriality.lean

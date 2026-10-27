@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonPathPrefix
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeIntervalIso
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair
