@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.NonConnective.InfinityComparisonTarget
 public import SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoInvertibility
 public import SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageMorita
 public import SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageBFMorita

@@ -13,6 +13,8 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.FixedInput,
+    `SerrePositivity.KST.NonConnective.InfinityComparisonTarget,
     `SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoInvertibility,
     `SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageMorita,
     `SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageBFMorita,
@@ -312,6 +314,10 @@ run_cmd do
   logInfo m!"K-7: {count} declarations in {modules.size} modules audited; standard axioms only."
 
 #check SerrePositivity.KST.NonConnective.dgKappaPerfectYonedaNaturality
+#check SerrePositivity.KST.NonConnective.dgNonconnectiveKFixedInputDiagram
+#check SerrePositivity.KST.NonConnective.DGKInputCalkinPresentation
+#check SerrePositivity.KST.NonConnective.DGNonconnectiveSuspensionComparisonTarget
+#check SerrePositivity.KST.NonConnective.DGNonconnectiveSequenceComparisonTarget
 #check SerrePositivity.KST.NonConnective.suspensionFunctorIso_isInvertible_iff
 #check SerrePositivity.KST.NonConnective.suspensionEdgeIso_isInvertible_iff
 #check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageFamily_morita_isInvertible
