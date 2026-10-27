@@ -266,33 +266,33 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 比較付き頂点でも不可能。主経路未登録。最終 map 自体の不存在は未主張。
 残る map は ε core を経由しない経路が必要。Fun∞ 側の商作用から固定出力 native Hom への橋は未供給。
 
-頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
-cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
+頂点は `dgKappaSuspensionKInput R A (s A).cone`。cone の全 Hom 作用で最終作用を代用しない。
 
 最新判定：`NativeActionNonemptinessBoundary` を独自集約・監査に登録。
 `DGSuspensionCoherentActionInput.data` は固定 sphere data との一致を要求しない。
-`nativeDiskCommonDataComparison`：両入力辺に同じ許容 data を選ぶと最終 native 自己同型がある。
-`not_nativeDisk_all_admissible_data_separated`：全許容 data の組を比較不能とする主張は偽。
+`nativeDiskCommonDataComparison`／`not_nativeDisk_all_admissible_data_separated`：同じ許容 data に自己同型。
 `no_nativeDisk_fixedData_action_of_no_comparison`：最終比較型の空性が得られた場合の条件付き否定。
 その前提 `¬ Nonempty (nativeDiskSuspensionComparisonType R κ hκ)` は未供給。
 ε core での非存在を最終商関手圏での非存在へ移す推論は未供給。bare 採用境界の空性は未証明。
 既存 `nativeDiskSuspensionComparisonOfAction` は端点固定 edgeIso を既に考慮する。
 
-模型変更時の流用範囲：D-3・perfect 保存・strict data は実関手として保持できる。
-quasi-functor／bimodule または cofibrant 入力関手圏では、商への局所化、全 Hom の比較、
-単位・合成・高次整合を新規に供給する必要がある。cofibrant 置換だけで十分とは未証明。
-`NativeIntervalIso` は現行 native Hom に特殊化しており、新 Hom 比較の版が必要。
-元の固定模型へ戻る全 Hom 比較がなければ、模型変更を元の目標の達成とは数えない。
-採用方針 (1)：現行固定商内で比較型の有無を調べる。模型変更には着手しない。
-`EpsilonPathPrefix`：全商 Hom の ε 左合成に次数別左逆があり、cell 特殊化も無仮定で単射。
-右 ε との交換式からの制限と、固定出力二辺の K／loop・ν 適用後の比較は未供給。
+StableInfinity 案の評価（設計検討のみ。quasi-functor／bimodule の実装は開始しない）：
+BGT Def.9.1 の cone は Fκ(C)=(Indω C)^κ。Indκ(C)^κ へ置き換えない。Cat^perf を標的とするなら Σκ(C)=Idem(Fκ(C)/C)。既存 Verdier 列には完備化がない。
+連結 K の ΩK(ΣC)≃K(C) は一般には不可。連結被覆の比較と非連結化を区別する。局所化不変性は Verdier 普遍性だけでなく、完全列保存・filtered colimit 保存の証明が要る。
+HTT 5.2.2.5 は既存 Cartesian 族の遷移が左随伴を持つ場合の共変化に使う。入力ごとの随伴の選択だけで全高次整合を得たとは数えない。κ-compact 保存も別照合。
+剛性は ε core のもの。ν による quotient 出力二辺の比較の非存在を意味しない。数学的経路：cone の比較を quotient 普遍性の全完全関手圏の充満忠実性で降下する。
+ただし固定 Q(data f) をその降下に同定する可換三角形は Lean で未供給。K／loop 後は K∞∘ν との比較も必要。ν のみから固定 dgKInputK の比較を結論しない。
+D-3・perfect 保存・strict data は対象別 cone／商と評価比較に流用できる。native cone 比較は quotient 前で流用。ε 消費射を StableInfinity の全 Hom 作用と扱わない。
+対象別に必要：ν(Σdg A)≃Σ∞(ν A)、さらに反復 Sp 図式全体の同値（構造辺との可換性を含む）。段ごとのスペクトル同値だけでは旧 dgNonconnectiveK の余極限比較に足りない。
+新登録関手の対象値の照合には A ごとの図式同値でよい。旧射作用の照合には A での自然性も要る。W1 の 2-cell を個別に選ぶだけで全単体関手と数えない。全高次整合を供給する。
+現行比較型・bare 採用境界の空性・固定出力の K／ν 比較は依然未決。
+`EpsilonPathPrefix` の全商 Hom 左逆・単射性は診断用成果として保持。
 
 ## 検証
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両独自集約のビルド成功。監査は 51 葉・744 宣言で成功。主経路 `NativeAll` は変更なし。
-独自監査は全新規葉の全宣言を走査し、許可公理を
-`propext`、`Classical.choice`、`Quot.sound` のみに限定する。
+独自監査は全宣言を走査し、許可公理を `propext`・`Classical.choice`・`Quot.sound` に限定。
 `sorryAx` は不許可。共有監査は編集しない。検証コマンド：
 ```sh
 lake build SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All SerrePositivity.InfinityCategories.Derived.SuspensionAction.All
