@@ -70,3 +70,14 @@
 - 個別右面・外周の既存認証だけでは、共通長方形への制限と全長方形比較を代替できない。
 - 工程(1)と骨格の集約・監査は完了。工程(2)・最終 s5 は外部供給を必要とし、所有範囲で先行できる残工程なし。
 - 目標は未達。供給待ち（blocked）とし、実構成の公開名が届いたら同じ代入口から再開する。チャットにも供給依頼を報告。
+
+## 非連結 K 設計案への Sp-3 見積り（2026-10-27、実装着手なし）
+- s3 の優先順位・blocked は維持。本節は ∞ Verdier 商 API 拡張の見積りのみ。
+- 現状修正：IsVerdierSequence.universal は同宇宙の任意 quasicategory E に対する localizationPrecomposition の IsQCatEquivalence を既に返す。関手圏上の普遍性は存在レベルだけではない。
+- exists_verdierQuotientCone* は与えられた商の有限錐回収であり、一般商の存在定理ではない。IsVerdierSequence は商の存在を主張しない。
+- 流用：IsLocalization.precomposition_isFullyFaithful／exists_extension、inverts_iff_kills_inclusion、FunctorIso と内部 Hom、既存の宇宙移送。
+- 暫定工数（1人、実装・局所検証込み、供給待ち除外）：核を保つ一つの射の延長と指定全比較 1〜3人日、完全関手圏への普遍性の制限と自然変換 3〜5人日、全高次整合を持つ商族の ∞ 関手と独立監査 5〜10人日。合計9〜18人日を計画枠とする。
+- 前提：対象ごとの商・安定性が供給済みで、入力族の正しい写像空間モデルを使えること。Indκ・compact 保存・一般商の存在・冪等完備化の関手性・Cat∞ 値 straightening 全体・K の局所化定理はこの枠に含めない。
+- 最大リスク：点ごとの Classical.choose を並べても全高次整合は出ない。既存 straightening の基底・値の適用範囲は個別確認を要する。
+- 接続：s3 の固定 ν・PerfectVerdierSequence・指定全図式比較・始域屋根は継続利用でき、strict dg 懸垂自己作用は追加しない。
+- チャットでも上記の現状修正・粗見積り・除外範囲を報告する。
