@@ -282,3 +282,16 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7851 jobs）。新規3葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：555 modules／6010 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉3本・集約・監査・本計画のみを変更。本計画の既存270行を保持し、移管済み行と既存読み取り専用領域への編集なし。
+
+## 2026-10-27：既存段 FunctorIso の指定値で右射影の構造正方形を回収
+- `d3OrderedCylinderMap_family`／`d3GradedPrecomp_family`／`d3GradedPostcomp_family`：元の円柱の順序・Hom を保ち、厳密変換の前後合成の実現が同じ指定区間族の前後合成に全単体で一致。
+- `d3GradedHom_precomp_heq`／`_postcomp_heq`／`d3GradedIso_precomp_postcomp_hom_heq`：同じ族を curry して指定辺の類を追跡し、元の関手同型の前後合成の順射を同じ厳密変換の実現として回収。等式だけの端点正規化も指定値を保持。
+- `commonStageLoopFunctorIso`／`d3StageStructureFunctorIso` の端点正規化を明示。元の厳密変換からの指定同型を保持し、前後合成後の順射まで照合可能にした。
+- `commonStageLoopFunctorIso_hom_heq`／`_postcomp_hom_heq`／`commonRefinedStageStructureIso_hom_heq`／`commonOriginalLoopStructureIso_hom_heq`：既存の段右射影・元の構造同型の同じ前後合成を、前工程の厳密変換の実現値として回収。
+- `commonProjectionStructureIso_square`：四辺の端点表示だけを正規化し、元の既存段 FunctorIso そのものによる全関手空間の構造正方形を、`commonProjectionStructureHom_square` から認証。
+- **残る B**：この指定右射影の構造正方形と、保持した模型間比較の始点成分を接続し、refined／実始点比較を BF 全体の FunctorIso へ組む。段の同型や今回の構造正方形だけから BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
+
+### 既存段同型の指定値・全関手構造正方形の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（7854 jobs）。所有変更葉に新しい警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：558 modules／6056 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉3本・所有 D3 葉2本の端点表示整理・集約・監査・本計画のみを変更。本計画の既存284行を保持し、移管済み行と既存読み取り専用領域への編集なし。

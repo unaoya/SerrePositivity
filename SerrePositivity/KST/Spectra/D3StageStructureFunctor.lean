@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonStageStructure
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 
 /-!
 概要：元の構造随伴射を成分とする、BF 段評価と次段 loop 評価の全関手同型。
@@ -66,13 +67,14 @@ lemma d3StageStructureGraded_component (n : ℕ) (X : OmegaSpectrum.{u}) :
 /-- 同じ元の Ω 条件により、構造随伴射を成分とする全関手同型を得る。 -/
 def d3StageStructureFunctorIso (n : ℕ) :
     FunctorIso (coherentNerveMap (d3StageKanEnriched.{u} n))
-      (coherentNerveMap (d3StageKanEnriched (n + 1)) ≫ pointedKanLoopInfinity) := by
-  have e := StrictEnrichedTransformation.functorIso _ _ (d3StageStructureGraded.{u} n)
+      (coherentNerveMap (d3StageKanEnriched (n + 1)) ≫ pointedKanLoopInfinity) :=
+  F2.functorIsoOfEq (StrictEnrichedTransformation.functorIso _ _ (d3StageStructureGraded.{u} n)
     (fun X ↦ by
       rw [d3StageStructureGraded_component]
       exact pointedKanObject_edge_isInvertible_of_piIsomorphism _
-        (KanSequence.adjointLoopTailUnit_levelwise X.toKanSequence_omega n))
-  rw [d3StageLoopKanEnriched, coherentNerveMap_comp] at e
-  exact e
+        (KanSequence.adjointLoopTailUnit_levelwise X.toKanSequence_omega n))) rfl
+    (by
+      rw [d3StageLoopKanEnriched, coherentNerveMap_comp]
+      rfl)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

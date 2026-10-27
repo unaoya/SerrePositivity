@@ -85,7 +85,10 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3StageLoopImageComparison,
     `SerrePositivity.KST.Spectra.D3GradedTransformationAlgebra,
     `SerrePositivity.KST.Spectra.D3GradedCompositionNerve,
-    `SerrePositivity.KST.Spectra.D3ProjectionStructureGraded]
+    `SerrePositivity.KST.Spectra.D3ProjectionStructureGraded,
+    `SerrePositivity.KST.Spectra.D3GradedWhiskeringNerve,
+    `SerrePositivity.KST.Spectra.D3GradedWhiskeringHom,
+    `SerrePositivity.KST.Spectra.D3ProjectionStructureIso]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

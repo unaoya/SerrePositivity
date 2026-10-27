@@ -3,6 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.D3CommonStageProjection
 public import SerrePositivity.KST.Spectra.D3CommonLoopDiagramResolution
 public import SerrePositivity.KST.SConstruction.PointedKanLoopInfinity
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 
 /-!
 概要：共通 BF 右射影の各段の標的を、元の点つき Kan loop ∞ 関手に照合する。
@@ -62,12 +63,13 @@ def commonStageLoopFunctorIso (n : ℕ) :
     FunctorIso (coherentNerveMap commonRefinedEnriched ≫
       coherentNerveMap (d3StageKanEnriched n))
       ((commonOriginalInfinityMap ≫ coherentNerveMap (d3StageKanEnriched (n + 1))) ≫
-        pointedKanLoopInfinity) := by
-  have e := commonStageProjectionFunctorIso.{u} n
-  rw [commonRefinedStageKanEnriched, coherentNerveMap_comp,
-    commonTargetStageKanEnriched_eq_loop, coherentNerveMap_comp,
-    coherentNerveMap_comp] at e
-  exact e
+        pointedKanLoopInfinity) :=
+  F2.functorIsoOfEq (commonStageProjectionFunctorIso n)
+    (by rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
+    (by
+      rw [commonTargetStageKanEnriched_eq_loop, coherentNerveMap_comp,
+        coherentNerveMap_comp]
+      rfl)
 
 /-- 同じ全実 loop 図式を記憶する基底上でも、元の右射影の段比較を保持する。
 記憶した図式始点との比較は、この段比較とは別に証明する。 -/
