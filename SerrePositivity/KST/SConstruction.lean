@@ -3070,4 +3070,18 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationHomNa
 
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationSquare
 
+public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyIdentityInput
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInput
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInputRecovery
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationSquareHomotopy
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingCone
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeBoundary
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeComparison
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeComposite
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeCompositeNative
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeNative
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeSign
+public import SerrePositivity.KST.SConstruction.DGNegativeNaturalPostcomposition
+
 /-! # ∞-S• 構成と連結 K 理論 -/
