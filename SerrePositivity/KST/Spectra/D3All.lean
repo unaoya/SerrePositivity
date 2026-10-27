@@ -21,6 +21,11 @@ public import SerrePositivity.KST.Spectra.D3StageLoopedUnitTriangle
 public import SerrePositivity.KST.Spectra.D3StageStructureCoherenceCriterion
 public import SerrePositivity.KST.Spectra.D3StageCoherencePastingCounterexample
 public import SerrePositivity.KST.Spectra.D3StageStructureDefect
+public import SerrePositivity.KST.Spectra.D3LoopDiagramTranspose
+public import SerrePositivity.KST.Spectra.D3LoopDiagramReflection
+public import SerrePositivity.KST.Spectra.D3NativeLoopReflection
+public import SerrePositivity.KST.Spectra.D3LoopReflectionImage
+public import SerrePositivity.KST.Spectra.D3ComparisonOutput
 
 /-!
 概要：Sp-2 の d3 専用集約。

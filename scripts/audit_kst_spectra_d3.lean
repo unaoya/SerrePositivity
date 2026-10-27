@@ -96,7 +96,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3StageLoopedUnitTriangle,
     `SerrePositivity.KST.Spectra.D3StageStructureCoherenceCriterion,
     `SerrePositivity.KST.Spectra.D3StageCoherencePastingCounterexample,
-    `SerrePositivity.KST.Spectra.D3StageStructureDefect]
+    `SerrePositivity.KST.Spectra.D3StageStructureDefect,
+    `SerrePositivity.KST.Spectra.D3LoopDiagramTranspose,
+    `SerrePositivity.KST.Spectra.D3LoopDiagramReflection,
+    `SerrePositivity.KST.Spectra.D3NativeLoopReflection,
+    `SerrePositivity.KST.Spectra.D3LoopReflectionImage,
+    `SerrePositivity.KST.Spectra.D3ComparisonOutput]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
