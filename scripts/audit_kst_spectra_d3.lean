@@ -131,7 +131,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3LoopedSectionComparisonCorners,
     `SerrePositivity.KST.Spectra.D3LoopedSectionUnitPasting,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointUnitPasting,
-    `SerrePositivity.KST.Spectra.D3CanonicalImageDoubleEndpointComparison]
+    `SerrePositivity.KST.Spectra.D3CanonicalImageDoubleEndpointComparison,
+    `SerrePositivity.KST.Spectra.D3ParameterSquareComparison,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointUnitDiagramComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

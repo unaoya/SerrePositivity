@@ -185,16 +185,13 @@
 - **元の構造射・実段間全図式比較の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7772 jobs）。新規4葉に警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：541 modules／5861 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉4本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：指定射影値を保持する実図式比較の構造自然性
 - 段始点比較の内部の標準図式族・実 fiber 比較を `commonChosenStageCanonicalFamily`／`commonChosenStageCanonicalDiagramIso` として公開。既存の始点比較と構造同型の端点正規化を明示し、同じ指定比較を選び直さず照合可能にした。
-- `commonChosenStageStructureDiagramIso_projection`／`commonChosenStageCanonicalDiagramIso_target`：同じ構造同型の周囲の四角形への射影は元の指定構造同型、同じ fiber 比較の終点射影は元の厳密等式の同型を回収。
-- `commonChosenStageSourceLoopIso_diagram_triangle`／`commonChosenStageRefinedSourceIso_canonical_triangle`：既存の始点 loop 比較と refined／実始点比較を、同じ全図式始点比較・元の右射影の段同型へ指定値を保持して接続する三角形を実証。
-- `d3FunctorPostcomposition_evaluate`／`d3FunctorIsoMapPost_evaluate_precomp`：全図式への同型の作用を頂点で評価すると、同じ元の同型への前合成を回収。全単体の厳密交換とホモトピー圏の関手性から指定値を同定。
-- `commonChosenStageStructureDiagramIso_corner`／`_source`／`_target`：実全図式の構造同型を四角で評価し、実始点関手・厳密 nativeTail 終点関手に前合成した同じ BF 構造同型そのものとして回収。
+- `commonChosenStageStructureDiagramIso_projection`／`commonChosenStageCanonicalDiagramIso_target`：同じ構造同型の周囲の四角形への射影は元の指定構造同型、同じ fiber 比較の終点射影は元の厳密等式の同型を回収。 `commonChosenStageSourceLoopIso_diagram_triangle`／`commonChosenStageRefinedSourceIso_canonical_triangle`：既存の始点 loop 比較と refined／実始点比較を、同じ全図式始点比較・元の右射影の段同型へ指定値を保持して接続する三角形を実証。
+- `d3FunctorPostcomposition_evaluate`／`d3FunctorIsoMapPost_evaluate_precomp`：全図式への同型の作用を頂点で評価すると、同じ元の同型への前合成を回収。全単体の厳密交換とホモトピー圏の関手性から指定値を同定。 `commonChosenStageStructureDiagramIso_corner`／`_source`／`_target`：実全図式の構造同型を四角で評価し、実始点関手・厳密 nativeTail 終点関手に前合成した同じ BF 構造同型そのものとして回収。
 - `d3LoopCanonicalDiagramIso_naturality`：元の実 fiber 内比較と、指定終点同型の充満忠実な逆像は、同じ指定全図式同型に厳密に自然。射影後の同型の指定値の回収から、全図式の正方形を反映して証明。 `commonChosenStageCanonicalStructure_naturality`／`_source`：上記へ既存の BF 構造全図式同型を代入。同じ実段比較・指定構造同型・指定終点の持ち上げが全図式および始点評価で同じ構造正方形を満たす。
 - **残る B**：次段 loop 像の図式からの比較と、次段図式比較を通常 loop で写した同じ値との整合を、元の右射影の構造正方形も保持して実証する。その整合から BF 全体の FunctorIso を構成する。今回の全図式正方形だけで BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
 - **指定射影値・標準比較の構造自然性の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7842 jobs）。所有変更葉に新しい警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：546 modules／5902 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉5本・所有 D3 葉2本の端点表示整理・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：次段比較の loop 像と次段像の比較を全図式で接続
-- `commonChosenStageLoopedCanonicalSquareFamily`／`_SquareIso`：元の次段の指定図式比較へ同じ通常 loop を後合成し、実次段像との同じ全四角形比較を保持。 `commonChosenStageLoopedCanonicalSquareFamily_isLoop`／`_Family`／`_DiagramIso`：この同じ像の loop 性を元の実次段像との比較から認証し、実 loop 全図式へ因子化。通常 loop が任意の図式を保存するという新仮定は置かない。 `commonChosenStageLoopedCanonicalFamily_corner`／`commonChosenStageLoopImageFamily_corner`：二つの全族の各角は元の同じ角へ通常 loop を施した作用に厳密一致。 `commonChosenStageLoopedCanonicalDiagramIso_projection`／`_corner`／`_target`：充満忠実な逆像の指定値を回収し、各角で元の次段比較の同じ後合成、終点で元の厳密等式の同型を回収。
-- `commonChosenStageLoopImageComparison`／`_target`：二つの標準模型を、元の厳密終点を共有する同じ実 fiber 内で比較し、同じ指定等式同型の射影を保持。 `commonChosenStageLoopImageComparison_triangle`：実次段像からの標準比較は、元の次段比較の loop 像と、保持した標準模型間比較の合成に全図式で一致。終点射影の充満忠実性から反映して証明。 `commonChosenStageLoopImageComparison_structure`／`_source`：元の BF 構造の自然性を、この同じ三角形へ接続。全図式と始点評価で同じ比較因子を保持。
+- `commonChosenStageLoopedCanonicalSquareFamily`／`_SquareIso`：元の次段の指定図式比較へ同じ通常 loop を後合成し、実次段像との同じ全四角形比較を保持。 `commonChosenStageLoopedCanonicalSquareFamily_isLoop`／`_Family`／`_DiagramIso`：この同じ像の loop 性を元の実次段像との比較から認証し、実 loop 全図式へ因子化。通常 loop が任意の図式を保存するという新仮定は置かない。 `commonChosenStageLoopedCanonicalFamily_corner`／`commonChosenStageLoopImageFamily_corner`：二つの全族の各角は元の同じ角へ通常 loop を施した作用に厳密一致。 `commonChosenStageLoopedCanonicalDiagramIso_projection`／`_corner`／`_target`：充満忠実な逆像の指定値を回収し、各角で元の次段比較の同じ後合成、終点で元の厳密等式の同型を回収。 `commonChosenStageLoopImageComparison`／`_target`：二つの標準模型を、元の厳密終点を共有する同じ実 fiber 内で比較し、同じ指定等式同型の射影を保持。 `commonChosenStageLoopImageComparison_triangle`：実次段像からの標準比較は、元の次段比較の loop 像と、保持した標準模型間比較の合成に全図式で一致。終点射影の充満忠実性から反映して証明。 `commonChosenStageLoopImageComparison_structure`／`_source`：元の BF 構造の自然性を、この同じ三角形へ接続。全図式と始点評価で同じ比較因子を保持。
 - **残る B**：保持した標準模型間比較の始点成分を、元の右射影の構造正方形と接続し、refined／実始点比較を BF 全体の FunctorIso へ組む。比較因子を恒等と見なしたり、今回の全図式三角形だけから BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
 - **次段 loop 像・標準模型間比較の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7845 jobs）。新規3葉に警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：549 modules／5936 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉3本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：指定右射影の構造正方形を全 Hom・全関手空間で認証
@@ -235,18 +232,15 @@
 - **残る B**：転置済み比較と元の looped unit・canonical image unit の整合は未証明。保持した模型補正と反転との一致、および BF 比較の全 Hom・全単体整合を引き続き実証する。今回の全図式候補を B の実値とは扱わない。
 - 保存検証：D3All ビルド合格（7875 jobs）、新規葉に警告なし。専用監査合格：574 modules／6212 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有4ファイルのみ変更。過去検証見出し7行を本文へ併記し本計画300行、移管済み行・凍結転記節を保持。
 ## 2026-10-27：実反転を奇数段に保持する段比較と構造条件の接続
-- `commonChosenStageLoopReflectedSourceIso`／`_eq`：転置済み全図式比較の始点を元の端点へ正規化し、元の反転の逆と保持した模型比較の合成を指定値として回収。 `commonChosenStageRefinedSource_reflected_structure_iff`：転置模型の単位三角形と、同じ既存段比較に実次段像の反転を保持した構造正方形が同値。全図式反転の自然性と二回合成の恒等を既証貼合せへ実適用。
-- `commonChosenStageAlternatingSourceIso`／`commonChosenStageAlternatingLoopSourceIso`：偶数段は同じ既存段比較、奇数段は同じ実反転を合成した全関手同型を構成。`_eq` は実際の次段比較の通常 loop 像を同じ実像上で回収。 `commonChosenStageAlternatingSource_structure_iff`：構成した段比較と同じ次段比較の loop 像の構造可換性は、各段で転置模型の同じ単位三角形と同値。三角形そのもの、および BF 全体への全 Hom・全単体整合は未証明。判定定理を B の実値や新しい最終仮定として扱わない。
+- `commonChosenStageLoopReflectedSourceIso`／`_eq`：転置済み全図式比較の始点を元の端点へ正規化し、元の反転の逆と保持した模型比較の合成を指定値として回収。 `commonChosenStageRefinedSource_reflected_structure_iff`：転置模型の単位三角形と、同じ既存段比較に実次段像の反転を保持した構造正方形が同値。全図式反転の自然性と二回合成の恒等を既証貼合せへ実適用。 `commonChosenStageAlternatingSourceIso`／`commonChosenStageAlternatingLoopSourceIso`：偶数段は同じ既存段比較、奇数段は同じ実反転を合成した全関手同型を構成。`_eq` は実際の次段比較の通常 loop 像を同じ実像上で回収。 `commonChosenStageAlternatingSource_structure_iff`：構成した段比較と同じ次段比較の loop 像の構造可換性は、各段で転置模型の同じ単位三角形と同値。三角形そのもの、および BF 全体への全 Hom・全単体整合は未証明。判定定理を B の実値や新しい最終仮定として扱わない。
 - 保存検証：D3All ビルド合格（7877 jobs）、新規二葉に警告なし。専用監査合格：576 modules／6232 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。過去検証見出し7行を本文へ併記し本計画300行、移管済み行・凍結転記節を保持。
 ## 2026-10-27：二つの実端点四角形を全 Hom 上の四次元図式へ束ねる
-- `d3TensorParameter`／`d3TensorParameterDiagram`：二つの実逆向き図式の制限射を同じ積順序上でテンソルし、元の全 Kan Hom と同時評価。`d3PointedKanParameterDiagram_reindex` は任意の単調な制限で指定全 Hom を厳密回収。
-- `d3DoubleEndpointSquare`／`d3PointedKanBiParameterSquare_corner`：元の二つの端点四角形を全単体の実四次元図式族にし、16 個の角の全関手作用を同じテンソルパラメータの内部 Hom 作用として厳密回収。
+- `d3TensorParameter`／`d3TensorParameterDiagram`：二つの実逆向き図式の制限射を同じ積順序上でテンソルし、元の全 Kan Hom と同時評価。`d3PointedKanParameterDiagram_reindex` は任意の単調な制限で指定全 Hom を厳密回収。 `d3DoubleEndpointSquare`／`d3PointedKanBiParameterSquare_corner`：元の二つの端点四角形を全単体の実四次元図式族にし、16 個の角の全関手作用を同じテンソルパラメータの内部 Hom 作用として厳密回収。
 - `d3PointedKanBiParameterSquare_left`／`_right`：一方の四角形を任意の角に固定した各二次元面は、元の実パラメータ図式の制限族に全 Hom・全単体で厳密一致。`d3DoubleEndpointTargetIso`／`LeftLoopIso`／`RightLoopIso` は外側の三角を元の恒等作用・通常 loop 作用へ全関手比較。
 - **残る B**：二方向の基礎図式と外側境界までを構成。内側の極限認証・二方向 loop 表示と既存模型比較の全図式照合、および転置模型の単位三角形は未証明。四次元図式や外側境界の比較だけから単位整合・BF 全体比較を結論しない。円交換因子の直接比較・禁止枝の接続なし。
 - 保存検証：D3All ビルド合格（7881 jobs）、新規四葉に警告なし。専用監査合格：580 modules／6284 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有7ファイルのみ変更。過去検証4組を併記し空行3行を整理して本計画300行、移管済み行・凍結転記節を保持。
 ## 2026-10-27：二方向の実面の極限・零角と実 loop 全図式族
-- `d3ParameterSquare_isPullback`：同じ実パラメータ pushout と端点射の単射性から、反変写像空間の極限保存・全 Hom 錐・元の二三角形を通じ、同じ coherent 四角形の ∞ pullback 性を認証する。
-- `d3DoubleEndpointSquare_left_isPullback`／`_right_isPullback`：元の端点 pushout の左右テンソル保存と実単射を代入し、二つの四角形方向の各4面を実認証。一般 pushout や fibration 性を未供給入力に残さない。
+- `d3ParameterSquare_isPullback`：同じ実パラメータ pushout と端点射の単射性から、反変写像空間の極限保存・全 Hom 錐・元の二三角形を通じ、同じ coherent 四角形の ∞ pullback 性を認証する。 `d3DoubleEndpointSquare_left_isPullback`／`_right_isPullback`：元の端点 pushout の左右テンソル保存と実単射を代入し、二つの四角形方向の各4面を実認証。一般 pushout や fibration 性を未供給入力に残さない。
 - `d3PointedKanTensorPoint_isZero`／`TensorPath_isZero`／`PointTensor_isZero`／`PathTensor_isZero`：通常閉圏の対象同型と既証の point・based path 零性から、同じ実テンソルパラメータの零角を認証。対象同型から全関手自然性は推論せず、円交換因子の直接比較も行わない。
 - `d3DoubleEndpointLeftLoopFamily`／`d3DoubleEndpointRightLoopFamily`：同じ四次元全図式の各面を全 Hom・全単体の作用を変更せず loopDiagrams へ因子化。各 `_ι`／`_corner` は元の実面全体と元の各角の全関手作用を厳密回収。
 - **残る B と申告**：既存の looped canonical／canonical image への指定単位を保つ全図式比較、保持した模型補正と必要な補正の一致、BF 比較の全 Hom・全単体整合が未完。残工数は粗く18〜40時間（模型照合3〜7、補正一致6〜12、BF 整合8〜18、接続監査1〜3）。経路不成立のリスクは中〜高。代替は実比較射・実 loop 図式・厳密終点を同時保持する共通解像の相対 Hom RLP から直接 B を組む経路（追加12〜24時間）。ユーザーへチャットで申告済み。
@@ -298,3 +292,9 @@
 - `commonChosenStageCanonicalImageFamily_section`／`commonChosenStageCanonicalImageDoubleEndpointIso`：保持済み canonical image 段模型が同じ厳密切断の通常 loop 前合成への元の終点入力に厳密一致し、looped canonical 側と同じ入力・同じ実面へ接続する全図式比較を構成。
 - **残る B**：両側の実模型接続の指定終点を照合して保持済み模型比較の同じ値を回収し、始点で保持した模型補正と必要な補正との一致を証明する。BF 全体の全 Hom・全単体整合と B の実値も未完。現経路を維持し、指定された報告・経路変更・R 窓運用を継続。
 - 保存検証：D3All ビルド合格（7911 jobs）、新規二葉に警告なし。専用監査合格：601 modules／6562 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
+## 2026-10-27：左右の指定単位を全実 loop 図式上で比較
+- `d3ParameterSquareIso`／`_corner`：元のパラメータ自然同型を全入力 Hom に自然な四角形比較へ送り、全四隅で元の同じ成分制限作用を回収。全単体の作用を保持し、角ごとの選択で代用しない。
+- `d3EndpointRightUnitDiagramIso`／`LeftUnitDiagramIso`：元の端点実 loop 全図式を、他方のパラメータが単位である同じ実面へ比較。各 `_projection`／`_corner` は周囲の全四角形と全四隅で元の右・左単位子そのものの制限作用を回収。
+- **指定値の追加確認点**：保持した切断補正は `PathCorrectedFunctorSquare.componentIso` を使用。指定 path の辺を直接回収する API は `exactComponentIso_postcomp` であり、両者の同一性または元の componentIso の同じ path 値の回収を証明せず置換しない。現経路の終点照合でこの証拠を追跡する。
+- **残る B**：元の切断補正の指定終点値と左右単位図式を照合し、既存模型比較の同じ値、保持した模型補正と必要な補正との一致を回収する。BF 全体の全 Hom・全単体整合と B の実値も未完。現経路を維持し、指定された報告・経路変更・R 窓運用を継続。
+- 保存検証：D3All ビルド合格（7913 jobs）、新規二葉に警告なし。専用監査合格：603 modules／6587 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
