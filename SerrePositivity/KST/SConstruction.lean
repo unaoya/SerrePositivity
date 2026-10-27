@@ -3226,4 +3226,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightNuBoundar
 
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullDiagonalBoundary
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisLaxValue
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisLaxCone
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightLaxBoundary
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightZeroWitness
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightSquareComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
