@@ -29,6 +29,8 @@ public import SerrePositivity.KST.Spectra.D3ComparisonOutput
 public import SerrePositivity.KST.Spectra.D3ReflectionSourceImage
 public import SerrePositivity.KST.Spectra.D3StageReflectionStructure
 public import SerrePositivity.KST.Spectra.D3StageLoopReflectedComparison
+public import SerrePositivity.KST.Spectra.D3StageReflectedStructureCriterion
+public import SerrePositivity.KST.Spectra.D3StageAlternatingComparison
 
 /-!
 概要：Sp-2 の d3 専用集約。
