@@ -3267,4 +3267,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisCofiberFami
 
 public import SerrePositivity.KST.SConstruction.DGNativeIntervalAugmentation
 
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeStrictEdgeComparison
+
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeFullBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
