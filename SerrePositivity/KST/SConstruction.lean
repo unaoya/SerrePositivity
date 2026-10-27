@@ -3201,4 +3201,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfect
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealizedBoundary
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationPerfectInclusion
 
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationPerfectBoundary
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationNuBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
