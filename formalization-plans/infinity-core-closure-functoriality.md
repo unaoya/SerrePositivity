@@ -281,17 +281,17 @@ BGT Def.9.1 の cone は Fκ(C)=(Indω C)^κ。Indκ(C)^κ へ置き換えない
 連結 K の ΩK(ΣC)≃K(C) は一般には不可。連結被覆の比較と非連結化を区別する。局所化不変性は Verdier 普遍性だけでなく、完全列保存・filtered colimit 保存の証明が要る。
 HTT 5.2.2.5 は既存 Cartesian 族の遷移が左随伴を持つ場合の共変化に使う。入力ごとの随伴の選択だけで全高次整合を得たとは数えない。κ-compact 保存も別照合。
 剛性は ε core のもの。ν による quotient 出力二辺の比較の非存在を意味しない。数学的経路：cone の比較を quotient 普遍性の全完全関手圏の充満忠実性で降下する。
-ただし固定 Q(data f) をその降下に同定する可換三角形は Lean で未供給。K／loop 後は K∞∘ν との比較も必要。ν のみから固定 dgKInputK の比較を結論しない。
+`StableQuotientTriangle`：`dgSuspensionQuotientTriangle` は既存正本の三角形を保持。`dgSuspensionQuotientUniversalDescent` は完全商普遍性から独立に構成し、`dgSuspensionQuotientUniversalDescentComparison` で固定 Q(data) と同定。独自集約・監査のみ登録。
 D-3・perfect 保存・strict data は対象別 cone／商と評価比較に流用できる。native cone 比較は quotient 前で流用。ε 消費射を StableInfinity の全 Hom 作用と扱わない。
 対象別に必要：ν(Σdg A)≃Σ∞(ν A)、さらに反復 Sp 図式全体の同値（構造辺との可換性を含む）。段ごとのスペクトル同値だけでは旧 dgNonconnectiveK の余極限比較に足りない。
 新登録関手の対象値の照合には A ごとの図式同値でよい。旧射作用の照合には A での自然性も要る。W1 の 2-cell を個別に選ぶだけで全単体関手と数えない。全高次整合を供給する。
-現行比較型・bare 採用境界の空性・固定出力の K／ν 比較は依然未決。
+残るのは新 Σ∞(ν f) と上記降下の模型比較、ν と固定 K の照合・全高次整合。現行 strict native 比較型と bare 採用境界の空性は未決。
 `EpsilonPathPrefix` の全商 Hom 左逆・単射性は診断用成果として保持。
 
 ## 検証
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
-両独自集約のビルド成功。監査は 51 葉・744 宣言で成功。主経路 `NativeAll` は変更なし。
+両独自集約のビルド成功。監査は 52 葉・758 宣言で成功。主経路 `NativeAll` は変更なし。
 独自監査は全宣言を走査し、許可公理を `propext`・`Classical.choice`・`Quot.sound` に限定。
 `sorryAx` は不許可。共有監査は編集しない。検証コマンド：
 ```sh

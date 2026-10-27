@@ -6,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.StableQuotientTriangle,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonPathPrefix,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction,
@@ -190,3 +191,11 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.epsilonLeftComposition_retraction
 #check SerrePositivity.InfinityCategories.epsilonLeftComposition_injective
 #check SerrePositivity.InfinityCategories.epsilonCellLeftComposition_injective
+
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientTriangle
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientDescentComparison
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientConeComparison
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientDescent_exists
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientUniversalDescent
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientUniversalDescent_triangle
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientUniversalDescentComparison
