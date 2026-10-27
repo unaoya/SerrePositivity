@@ -38,6 +38,30 @@ def dgOdotTailCatPerfConnection (v : DGOdotMilnorActualRectangleInput R d h) :
   quotient_eq := rfl
   actual := v
 
+/-- 概要：三認証を個別の明示引数として受ける e② の接続口。
+方針：確認済みの各フィールドの型を変えず、同じ実長方形入力へ一回束ねる。
+規約：いずれの認証の存在も主張しない。使われ方：③ の認証を段階的に型照合する。 -/
+def dgOdotTailCatPerfConnectionOfCertificates
+    (diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R)
+    (rightBoundary : VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
+      (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R))
+    (rightComparison : VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
+      (verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary)
+    (outerBoundary : VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R))
+    (outerComparison : VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary)
+    (boundary : VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R)
+      (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram)
+    (comparison : VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
+      (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary)
+    (kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare diagram 2) 0 0 =
+      coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :
+    DGOdotTailCatPerfConnection R d h :=
+  dgOdotTailCatPerfConnection R d h
+    ⟨diagram, rightBoundary, rightComparison, outerBoundary, outerComparison,
+      boundary, comparison, kernel_vertex⟩
+
 namespace DGOdotTailCatPerfConnection
 variable {R d h} (c : DGOdotTailCatPerfConnection R d h)
 

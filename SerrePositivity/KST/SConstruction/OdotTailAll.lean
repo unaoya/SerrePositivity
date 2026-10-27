@@ -2,6 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotTailLaxComparison
 public import SerrePositivity.KST.SConstruction.DGOdotTailKernelLowerTriangle
 public import SerrePositivity.KST.SConstruction.DGOdotTailCatPerfConnection
+public import SerrePositivity.KST.SConstruction.DGOdotTailKernelLiftTriangle
 
 /-!
 概要：K-S2 の d②・e②・厚核下二単体系の独自集約。

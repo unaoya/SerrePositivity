@@ -64,13 +64,39 @@ import Lean
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorSuppliedOriginalLaxConeComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorSuppliedOriginalLaxConeComparison
 
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftComposite
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftComposite
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftCompStruct
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftCompStruct
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle_edges
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftPerfectTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftPerfectTriangle
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftPerfectTriangle_inclusion
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftPerfectTriangle_inclusion
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle_nu_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTriangle_nu_edges
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTailCatPerfConnectionOfCertificates
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailCatPerfConnectionOfCertificates
+
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTransportedCompStruct
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftTransportedCompStruct
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport_faces
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport_faces
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
     `SerrePositivity.KST.SConstruction.DGOdotTailLaxComparison,
     `SerrePositivity.KST.SConstruction.DGOdotTailKernelLowerTriangle,
-    `SerrePositivity.KST.SConstruction.DGOdotTailCatPerfConnection]
+    `SerrePositivity.KST.SConstruction.DGOdotTailCatPerfConnection,
+    `SerrePositivity.KST.SConstruction.DGOdotTailKernelLiftTriangle]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
