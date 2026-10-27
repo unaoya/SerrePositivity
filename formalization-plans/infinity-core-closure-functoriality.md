@@ -285,13 +285,13 @@ HTT 5.2.2.5 は既存 Cartesian 族の遷移が左随伴を持つ場合の共変
 D-3・perfect 保存・strict data は対象別 cone／商と評価比較に流用できる。native cone 比較は quotient 前で流用。ε 消費射を StableInfinity の全 Hom 作用と扱わない。
 対象別に必要：ν(Σdg A)≃Σ∞(ν A)、さらに反復 Sp 図式全体の同値（構造辺との可換性を含む）。段ごとのスペクトル同値だけでは旧 dgNonconnectiveK の余極限比較に足りない。
 新登録関手の対象値の照合には A ごとの図式同値でよい。旧射作用の照合には A での自然性も要る。W1 の 2-cell を個別に選ぶだけで全単体関手と数えない。全高次整合を供給する。
-残るのは新 Σ∞(ν f) と上記降下の模型比較、ν と固定 K の照合・全高次整合。現行 strict native 比較型と bare 採用境界の空性は未決。
-`EpsilonPathPrefix` の全商 Hom 左逆・単射性は診断用成果として保持。
+`StableQuotientModelComparison`：宇宙持ち上げ後の全前合成の充満忠実性・固定三角形と、`dgSuspensionQuotientModelComparison`／`dgSuspensionQuotientConeModelComparison` を構成。cone 比較・射影三角形・cone 射の自然性・新商の降下三角形から固定商射の比較を回収。新 Σ∞・これらの供給・ν と固定 K の照合・全高次整合は未証明。固定 native 比較型／bare 境界の空性も未決。
+R2-B は `b53587371` で完了・R2 正本へ反映済み。R 窓まで ε 経由の凍結候補に触れない（CoherentStage* は凍結不可）。工数目安：cone／包含比較が揃えば固定模型比較 1〜3 日、K／反復図式は数日、入力全体の高次整合は族構成に依存し 1〜2 週間。
 
 ## 検証
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
-両独自集約のビルド成功。監査は 52 葉・758 宣言で成功。主経路 `NativeAll` は変更なし。
+両独自集約のビルド成功。監査は 53 葉・770 宣言で成功。主経路 `NativeAll` は変更なし。
 独自監査は全宣言を走査し、許可公理を `propext`・`Classical.choice`・`Quot.sound` に限定。
 `sorryAx` は不許可。共有監査は編集しない。検証コマンド：
 ```sh

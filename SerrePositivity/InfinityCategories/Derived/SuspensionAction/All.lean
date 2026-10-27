@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.StableQuotientModelComparison
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.StableQuotientTriangle
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionRequirement

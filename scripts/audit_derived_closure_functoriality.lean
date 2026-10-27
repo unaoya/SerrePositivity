@@ -6,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.StableQuotientModelComparison,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.StableQuotientTriangle,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonPathPrefix,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary,
@@ -77,6 +78,10 @@ run_cmd do
   logInfo m!"D-S closure audit passed: {total} declarations in {modules.size} modules."
 
 #check SerrePositivity.InfinityCategories.dgModuleExtensionClosureFamilyImage
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientLiftedPrecomposition_isFullyFaithful
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientLiftedTriangle
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientModelComparison
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientConeModelComparison
 #check SerrePositivity.InfinityCategories.dgModuleExtensionClosureStrictImage
 #check SerrePositivity.InfinityCategories.dgModuleExtensionClosureFunctor
 #check SerrePositivity.InfinityCategories.dgKappaSphereFreeExtensionIso
