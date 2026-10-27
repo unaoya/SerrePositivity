@@ -1,21 +1,28 @@
 # K-7 レーン：非連結 K（dg 形、BGT §9）
 
-> **v6（2026-10-27、固定入力公開／∞ 側延長を分離）**：K-7 は **K-B3 レーン**が引き継ぐ。本ファイルが K-7 の正本。所有は `KST/NonConnective/`・同名集約・専用監査・本計画。K-6 は K-B（L3）、Fibration・SConstruction・Spectra・InfinityCategories は読み取り専用。I・P・Z は D／D-S 正本を消費する。第 I 段の固定入力成果と、延長分の ∞ 側関手性・f 登録を分ける。c4 アダプタ・CoherentActionInput 系は凍結。供給はすべてユーザー経由。
+## R 窓前の停止時記録（2026-10-28）
 
-> **v2 の位置づけ（2026-10-23 新設）**：foundations.md §6 の K-7。K-S• の連結 K（厳密 dg 入力、K-3・K-4）、Sp の値域界面と相対版局所化不変量（K-5）、
-> D の β3（Drinfeld 商）・β5（D(A)・Perf(A)）、K-F の K-6（fibration 定理）、F1 の Ind と F2N-5 を読み取り専用で使い、非連結 K を dg 入力で構成する。
-> 当初は厳密 dg 入力限定。2026-10-27 の設計変更で、関手性・登録を StableInfinity 側で構成し対象別に比較する延長分を分離した。
+- 現在地コミット：実装・公開パッケージ `688a49e63`、R2-C 調査 `adac7a29c`。本追記は停止引き継ぎだけで、固定入力の数学的成果を追加しない。
+- 公開モジュール：`SerrePositivity.KST.NonConnective.FixedInput`／`InfinityComparisonTarget`（集約 NonConnective に登録済み）。以下の宣言の namespace は SerrePositivity.KST.NonConnective。
+- 段提供：`dgKappaUnconditionalStageProvider`、`dgKappaUnconditionalStageProvider_cone_newInput`・`_perfect_newInput`（prime I/P への rfl）、`dgSuspensionUnconditionalIteration`。
+- 実列・対象値：`dgNonconnectiveKSuspensionK`、`dgNonconnectiveKStructureEdge`、`dgNonconnectiveKDiagram`、`dgNonconnectiveKFixedInputDiagram`、`dgNonconnectiveK`。
+- 余極限・π：`dgNonconnectiveKCocone`・`_isColimit`、`dgNonconnectiveKPiCoconeIsColimit`、`dgNonconnectiveKInjection`、`dgNonconnectiveKStage_piEquiv`。
+- 連結比較・零：`dgNonconnectiveKConnectiveComparison`・`_nonnegative`、`dgNonconnectiveKInjection_tail_bijective`、`dgNonconnectiveK_tailPiEquiv`、`dgNonconnectiveK_vertex_isZero_of_zero`。
+- 対象別 d4：`dgSuspensionUnconditionalIndEquivalence`・`dgSuspensionUnconditionalIndPIso`・`dgSuspensionUnconditionalCompactEquivalence`・`dgSuspensionUnconditionalIndCompactInclusionIso`、`dgKappaConeCompactEquivalence`。選択・商・共終性比較の範囲は下記公開済み節と FixedInput の import 葉を参照。
+- 実反復 Morita／BF：`dgSuspensionUnconditionalIterationMap_derived_isEquivalence`・`_perfect_isEquivalence`・`dgSuspensionUnconditionalIterationKMap_piIsomorphism`、`sequentialFilteredCanonicalExchangeMap_isInvertible`。指定元射・図式の仮定は各型のまま保持。
+- 比較目標のみ：`dgKInputCalkinConeTarget`、`DGKInputCalkinPresentation`、`DGNonconnectiveSuspensionComparisonTarget`、`DGNonconnectiveSequenceComparisonTarget`。最後は Fun(ℕ,Sp) 内の構造辺込みの FunctorIso。商・比較・∞ 関手の存在は主張しない。
+- 残り d3：Sp-2 の **B の後**、ユーザー経由の供給合図と正本名・型を確認して Sp 安定性への接続を再開する。作業ツリー上に見える未中継の葉を供給済みとは扱わない。
+- 残り d4〜f：**∞ 側再設計の後**、大きい Ind／κ-compact・商／冪等完備化・K／構造辺込み逐次図式比較 → 非連結化後の Verdier／Morita／filtered 保存 → 固定 ν への局所化登録。現 d4 の対象別部分と全工程の完成を区別する。
+- 再開入口：本節 → FixedInput → InfinityComparisonTarget → 下記延長分・R2-C。R 窓の移動が入った場合は最新の所在／import／監査台帳を先に照合し、供給された ∞ 側図式を同じ比較目標型へ接続する。c4・CoherentActionInput 系は凍結のまま。
+- 停止確認：2026-10-28、所有集約 16,648 ジョブ成功、専用監査 266 モジュール／2,950 宣言成功（標準三公理のみ、ModelCategory 型検査・D 正本型の重複禁止を含む）。所有内の未コミット Lean・未追跡ファイルはなし。R 窓前に新しい実装へ着手しない。
 
-## 引き継ぎ（2026-10-26、K-B3 再開）
+> **v7（2026-10-28、R 窓前停止）**：K-7 は **K-B3 レーン**が引き継ぐ。本ファイルが K-7 の正本。所有は `KST/NonConnective/`・同名集約・専用監査・本計画。K-6 は K-B（L3）、Fibration・SConstruction・Spectra・InfinityCategories は読み取り専用。I・P・Z は D／D-S 正本を消費する。第 I 段の固定入力成果と、延長分の ∞ 側関手性・f 登録を分ける。c4 アダプタ・CoherentActionInput 系は凍結。供給はすべてユーザー経由。
 
-### 引継元と到着入力（旧経路の記録）
-- 旧 K-B の最終実装：`71a031889`。D-8 の同じ実 I・P・Z の反復で、全四角形同型と標準単体商比較から各段の一回の S• fibration を導き、元の固定 K・SOA K と同じ候補の非負次数 π 比較へ接続した。両比較と共終性は条件付き。
-- `DGSuspensionSuppliedBFTailComparison.lean` は未追跡ではなく `f5759f875` で保存済み。実逐次比較に対する元の全整数末尾表示の自然性・逆座標式を公開。`28032a24b` は十分後の段の π 単射・全射・完全性と移動後非負範囲から同じ候補への判定を保存した。
-- D-8 の実 I・P・Z は `12d3aa16e` で消費済み。`DGSuspensionNativeActionInput` の全四角形族・Morita 比較・P 包含の全 native Hom 自然性は未供給。D の DGSuspensionNativeSquareModel は cb125356d で型のみ公開。b21e4906c の parameterExtension_postcomposition・_heq を同じ零角の選択収縮へ消費。本体と実評価 Morita・P 包含の全 native Hom 自然性は未供給で、K-7 c4 は明示入力を保持する。採用境界は到着 D 51b5cc8da の B1 正本型へ更新し、型の複製を除いた所有側アダプタを接続した。無条件の作用・四角形供給は依然未供給。
-- 残りの順序：K-6 の canonical c4・実共終性を代入済みの同じ実 BF 列で c5 を消費 → K-7 c4 の全入力作用・c5 の実自然性と d3・d4 の照合 → e の非連結化後の Verdier fiber・Morita・filtered 余極限 → f の固定 dg 相対局所化登録。固定 S・ν・K と採用済み入力境界は維持。
-- 他レーンへの未送付の供給依頼・設計提案：なし。F1 外延性・Sp 有限線型図式比較は既依頼。K-S• 共終性は到着済み。新しい仕様変更は求めていない。
-- 旧 K-B 停止時の未追跡ファイル：なし。当時の全 Lean 作業は保存済み。NonConnective 集約 15,793 ジョブ、専用監査 191 モジュール・2,140 宣言（標準三公理のみ）成功。
-- 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
+## 旧経路の引き継ぎ（2026-10-26、以後は冒頭の停止時記録を優先）
+
+- 旧 K-B の最終実装 `71a031889`、実 BF 末尾比較 `f5759f875`、末尾判定 `28032a24b`、D-8 I・P・Z の消費 `12d3aa16e`。旧停止時は未追跡なし、集約 15,793 ジョブ・監査 191 モジュール／2,140 宣言で成功。
+- D b21e4906c の後合成延長と 51b5cc8da の B1 正本型を消費済み。全入力作用・四角形の無条件存在は未供給。旧 strict dg 経路を再開せず、c4 アダプタは凍結する。
+- 共終性 `Cofinality.kSpectrumMap_cofinality`（7397052d8）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費済み。旧明示引数入口は互換用に保持し、新入口 DGSuspensionThomasonSequence では実共終性を代入する。
 
 ### 第 I 段：無条件に公開済みの固定入力成果
 - 公開入口 `NonConnective/FixedInput.lean`。ここで「無条件」は c4 の全入力作用・hc5・Sp 安定性の未供給証拠を追加仮定にしないこと。固定 R、正則 κ>ω、A を保持する。Morita 射、選択比較、BF 図式には各定理に記載した元の仮定がある。
@@ -32,7 +39,7 @@
 - Verdier fiber・最終 Morita 不変性・通常 filtered 保存・IsRelativeLocalizingInvariant 登録は延長分。K-6 は無条件版を消費済み。Sp 安定性／s3 と ∞ 側の全関手構成・完全列保存も必要で、型の公開だけでは完成印を動かさない。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,648 ジョブで成功。専用監査は 266 モジュール・2,950 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 2026-10-28 停止時の所有集約ビルドは 16,648 ジョブで成功。専用監査は 266 モジュール・2,950 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - f の零保存準備：DGKInputPerfectZero／DerivedZero は固定 ν の零性を同じ実 Perf・主 Perf・主導来圏へ移し、逆向きも回収。DGKappaSuspensionZero は cone の全対象が元の perfect 集合に属することから、実商の指定 ε による全加群の acyclic 性と同じ懸垂の固定 ν 零性を証明。DGNonconnectiveKZero は全反復・元の loop 座標・実逐次整数 π 余極限を通して同じ K^{nc} 頂点の零性を証明する。同じ対象値を持つ全入力関手の preservesZero 欄はこれで埋まるが、実関手の構成・Verdier 保存・f 登録は未完。
 - 到着 K-B bcba4d552：Relative.k6Fibration・k6SuspensionStructureMap_nonnegative を消費。DGNonconnectiveKConnectiveComparison は hrow を除き、同じ実構造辺の厳密等号・隣接安定化・連結比較・全整数末尾表示を無条件化。K-6 c4 と K-7 c4 の全入力作用を区別する。
@@ -84,24 +91,11 @@
 
 - e の実懸垂 Morita：DGKappaConePerfectRepleteness は同じ実 cone の頂点同型による perfect 性の不変性を保持。DGKappaSuspensionProjectionNaturality は元の増大と厳密商射影の四角形から全関手比較を反映し、同じ実懸垂入力射の完全性も供給。DGKappaSuspensionInverseDescent／MoritaEquivalence は cone 同値の逆の perfect 零化を証明して元の商へ下降し、両逆二胞体を商普遍性で反映する。DGSuspensionUnconditionalMorita は新提供者の D-S 実入力射自身を順射とする一回の実懸垂同値を供給。DGKappaPerfectYonedaNaturality／PerfectMapEquivalence は同じ任意宇宙の元の Yoneda 四角形と完備化一意性で実 Perf 延長の同値性を証明。PerfectMapMorita は h/H⁰ 自然性と元の主導来比較を通し、DGSuspensionUnconditionalMoritaK は同じ元の厳密懸垂入力射の固定 K 射の全整数 π 同型・Sp 辺の可逆性を供給。同じ厳密射の全反復 Morita 保存は IterationMorita へ接続済み。全反復構造辺の自然性と実 K^{nc} 関手の Morita 保存は別工程。
 
-### 残り（依存順）
-0. 2026-10-27 更新：prime cone・P への切替済み。以後の正本は上記「第 I 段延長分」。下記は旧工程との対応表であり、c4 アダプタは凍結。B′型変更は実装しない。
-1. 工程 c：構成した反復の対象別供給を、懸垂の全入力射に対する作用・整合性へ接続する。証明済みの同じ cone の連結 K の消滅を保持して、K^{nc}(A) := colim_n Ω^n K(Σ^n Perf A) の構造射を作る（BGT Lem. 9.4・Def. 9.6、見積り未確定）。
-2. 連結 K との比較と負次数の記述（BGT §9、Schlichting 2006、見積り未確定）。
-3. 非連結化後の K^{nc} が Verdier 列を Sp fiber 列へ送ること、Morita 不変性、filtered 余極限との可換（K-6 と β3、BGT Thm. 9.8、Schlichting 2006 §7 Lem. 6、見積り未確定）。
-4. 非連結化後の K^{nc} の Sp 相対版 `IsRelativeLocalizingInvariant` への登録（固定 dgKInputInfinity・dgKInputNu、元の dgKInputK は連結比較の始点のまま、K-5、見積り未確定）。
-5. Ind の無条件安定性・compact 生成界面は接続済み。同じ非可算 κ の実 dg cone・I・P と元の全 native 作用を照合する（BGT §9.1、見積り未確定）。I・P・実零所属 Z は D 正本の同じ代表系から実供給して接続済み。全入力自然性は未完。
+### 旧工程との対応（再開の依存順は冒頭を優先）
 
-### 主要宣言
-- `sequentialCandidateColimitCocone`、`sequentialCandidateColimitCocone_isColimit`、`sequentialCandidateColimitCocone_vertex`、`sequentialCandidatePiCoconeIsColimit`、`sequentialCandidateColimitHomotopyIso_ι`。
-- `DGKappaConeInput`、`DGKappaPerfectInput`、`dgKappaConeDerivedComparison_isFullyFaithful`。
-- `dgCountableSumFunctor`、`dgCountableSumHom_injection`、`dgCountableSumObj_projective`、`dgSumFamilyFunctor`。
-- `dgKappaConeCountableSum`、`dgKappaSwindleSource`、`dgKappaSwindleStrictHom`、`dgKappaSwindleStrictInv`、`dgKappaSwindleComponentIso`、`dgKappaSwindleInfinityIso`、`dgKappaConeCountableSum_isExactFunctor`。
-- `DGKappaSuspension`、`dgKappaSuspensionProjection`、`dgKappaSuspensionInfinity_isStable`、`dgKappaSuspension_isStableVerdierSequence`、`dgKappaSuspensionKInput`、`dgKappaSuspension_kills_perfect`。
-- `DGSuspensionStageProvider`、`dgSuspensionIteration`、`dgSuspensionIterationStage`、`dgKappaSwindleClosedFunctorIso`、`dgKappaSwindleNativeInputEdge`、`dgKappaSwindleFixedK_pi`。
-- `boundaryKanAdditivityMap_piIsomorphism`、`boundaryKanAdditivityGroup_injective`、`singleBoundary_constantZero`、`singleBoundaryMiddle_additivity`、`nonnegativeBoundaryEquiv_naturality`、`connectedKMiddle_additivity`。
-- `dgKappaSplitHead`、`dgKappaSplitTail`、`dgKappaSplitHeadProjection`、`dgKappaSplitTailProjection`、`dgKappaSplit_decomposition`、`DGKappaZeroInput`、`dgKappaZeroFunctor_isZero`。
-- `dgKappaZeroPerfAction_isZeroVertex`、`dgKappaFullPerfFamilyMap_vertex`、`dgKappaPerfClosedHomotopy`、`dgKappaSplitPerfFamilySquare`、`dgKappaZeroPerfAction_values`、`dgKappaZeroPerfFunctorVertex_isZero`、`dgKappaFullPerfZeroVertex_isZero`。
+- c5 の固定入力構成・非負連結比較・整数末尾表示は公開済み。d3 は Sp-2 の B の後、d4 の未完比較・e の保存・f の登録は ∞ 側再設計の後。B′型変更は実装しない。
+- 旧主要界面：sequentialCandidateColimitCocone／_isColimit／_vertex、sequentialCandidatePiCoconeIsColimit、DGKappaConeInput・DGKappaPerfectInput・DGKappaZeroInput、DGKappaSuspension とその射影・安定 Verdier 列。
+- swindle・零角・加法性：dgKappaSwindleInfinityIso・dgKappaSwindleFixedK_pi、dgKappaSplit_decomposition、dgKappaZeroPerfAction_isZeroVertex、DGSuspensionStageInput／DGSuspensionStageProvider。元の実射・固定 S・ν・連結 K を維持する。
 
 ### 依存と提供
 - 読み取り専用：`KST/SConstruction/`（K-3・K-4、固定界面 ν・K）、`KST/LocalizingInvariants/`（K-5 相対版、K-8）、`KST/Spectra/`、`KST/Fibration/`（K-6）、`InfinityCategories/Derived/`（β3・β5）、`F2/Ind/`。
