@@ -186,3 +186,9 @@
 - `DGSuspensionFixedUnitComparison`／`DGSuspensionFixedCompositionComparison` の型を先行公開。右辺はそれぞれ実懸垂の恒等射／固定入力射二本の合成。入力射自体の厳密等号からの OfEq アダプタも提供。無条件の比較実体はまだ供給しない。
 - D-S へユーザー経由で型を報告済み。cone の全 Hom 自然な実比較と、固定 cell 分解・商の関手圏での比較を区別して構成を進める。
 - 型の先行検証：SuspensionFixedCoherenceTypes build12988 jobs、Derived 集約14950 jobs、専用監査87宣言／10モジュール成功。許容三公理のみ。固定比較の無条件存在とは扱わない。
+- `dgSuspensionFixedUnitInputEqOfConeEq`／`dgSuspensionFixedCompositionInputEqOfConeEq` は、固定 cone 作用の厳密等号を明示入力として、正本 resolved・商の入力射の厳密等号へ移す。固定代表選択がこれらの仮定を満たすとは主張しない。
+- `dgSuspensionConeRepresentativeIso` は固定代表化と実加群延長の、同じ実 dg 関手 end 内の全 Hom 自然な閉同型。共役の比較を対象評価だけの自然同型へ落とさず構成した。
+- `dgSuspensionUnitConeEvaluationIso` と `dgSuspensionCompositionConeEvaluationIso` は、固定恒等 data／固定合成 data を、それぞれ恒等作用／固定 data 二本の合成と実加群評価後に全 Hom 自然に比較する。加群延長の単位・合成比較と dg 前後合成を用い、対象・Hom・代表選択を変更しない。
+- 残る供給境界：これらの全 Hom 比較を固定 cell 分解・固定 ε 商へ持ち上げ、上記の固定端点 intervalMappingSpace の VertexIso を作ること。評価後の閉同型を最終入力射間の比較とは扱わない。D-S の native 持ち上げとの接続に必要であり、チャットでも型と不足を明示報告する。
+- D-S の追加必要条件（9716f3325）も確認。固定 ε core 内の可逆比較は各 null 対象上の実 cell 像の等号を要求する。したがって本件の評価後の同型を、そのまま ε core の path とみなさない。最終 intervalMappingSpace 比較の不存在を意味するとは主張しない。
+- 六新葉を集約・専用監査・全体監査へ登録。Derived 集約14956 jobs、専用監査144宣言／16モジュール、全体監査26233宣言／2986モジュール成功、許容三公理のみ、終端0。import 閉包9170モジュール、循環・外部未コミット依存なし。最終固定辺の VertexIso の存在はこの検証に含めない。

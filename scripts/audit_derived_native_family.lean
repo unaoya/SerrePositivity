@@ -1,4 +1,10 @@
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeRepresentativeComparison
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionModuleCompositionIso
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionUnitConeComparison
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionCompositionConeComparison
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
@@ -14,6 +20,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeRepresentativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionModuleCompositionIso,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionUnitConeComparison,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionCompositionConeComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureQuotientEdge,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
@@ -62,3 +74,9 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.DGSuspensionFixedUnitComparison
 #check SerrePositivity.InfinityCategories.DGSuspensionFixedCompositionComparison
+
+#check SerrePositivity.InfinityCategories.dgSuspensionFixedUnitInputEqOfConeEq
+#check SerrePositivity.InfinityCategories.dgSuspensionFixedCompositionInputEqOfConeEq
+#check SerrePositivity.InfinityCategories.dgSuspensionConeRepresentativeIso
+#check SerrePositivity.InfinityCategories.dgSuspensionUnitConeEvaluationIso
+#check SerrePositivity.InfinityCategories.dgSuspensionCompositionConeEvaluationIso
