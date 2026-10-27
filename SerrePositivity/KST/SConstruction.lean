@@ -3163,4 +3163,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotati
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealized
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationRealized
 
+public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingInclusion
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationExtendedNative
+
 /-! # ∞-S• 構成と連結 K 理論 -/
