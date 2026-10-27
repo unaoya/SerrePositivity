@@ -145,7 +145,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3CanonicalImageUnitPasting,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointSourcePasting,
     `SerrePositivity.KST.Spectra.D3UniversalLoopModelCorrection,
-    `SerrePositivity.KST.Spectra.D3UniversalLoopModelStages]
+    `SerrePositivity.KST.Spectra.D3UniversalLoopModelStages,
+    `SerrePositivity.KST.Spectra.D3IteratedLoopDiagramReflection,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointIteratedLoops,
+    `SerrePositivity.KST.Spectra.D3IteratedLoopDiagramProjection,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointOrderComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
