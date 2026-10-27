@@ -3206,4 +3206,6 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRota
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelTargetContraction
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullDomain
+
 /-! # ∞-S• 構成と連結 K 理論 -/
