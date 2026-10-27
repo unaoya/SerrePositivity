@@ -3192,4 +3192,8 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotati
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRealizedBoundary
 public import SerrePositivity.KST.SConstruction.DGPerfectTriangleLift
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectVertices
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectDiagram
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectRealization
+
 /-! # ∞-S• 構成と連結 K 理論 -/
