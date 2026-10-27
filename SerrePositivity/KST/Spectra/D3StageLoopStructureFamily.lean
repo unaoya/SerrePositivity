@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3StageStructureFunctor
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!
@@ -31,13 +32,14 @@ def commonChosenStageLoopImageSquareFamily (n : ℕ) :
 /-- 元の BF 構造射は、同じ実全四角形族の段と次段 loop 像の全図式同型。 -/
 def commonChosenStageStructureSquareIso (n : ℕ) :
     FunctorIso (commonChosenStageSquareFamily.{u} n)
-      (commonChosenStageLoopImageSquareFamily n) := by
-  have e := (d3StageStructureFunctorIso.{u} n).map_post
-    ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])
-  have h := e.precomp
-    (commonChosenLoopDiagramFamily ≫ (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι)
-  simpa only [commonChosenStageSquareFamily, commonChosenStageLoopImageSquareFamily,
-    Functor.map_comp, Category.assoc] using h
+      (commonChosenStageLoopImageSquareFamily n) :=
+  F2.functorIsoOfEq
+    (((d3StageStructureFunctorIso.{u} n).map_post
+      ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).precomp
+        (commonChosenLoopDiagramFamily ≫ (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι))
+    (by simp only [commonChosenStageSquareFamily, Category.assoc])
+    (by simp only [commonChosenStageSquareFamily, commonChosenStageLoopImageSquareFamily,
+      Functor.map_comp, Category.assoc])
 
 /-- この同じ次段 loop 像の全族も、元の段との全図式同型から loop 性を保つ。 -/
 lemma commonChosenStageLoopImageSquareFamily_isLoop (n : ℕ)
@@ -60,17 +62,21 @@ lemma commonChosenStageLoopImageFamily_ι (n : ℕ) :
         commonChosenStageLoopImageSquareFamily n := fullSubcomplexLift_ι _ _ _
 
 
+/-- 元の段 loop 図式の周囲の四角形も、同じ元の全族そのもの。 -/
+lemma commonChosenStageLoopDiagramFamily_ι (n : ℕ) :
+    commonChosenStageLoopDiagramFamily.{u} n ≫
+      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι =
+        commonChosenStageSquareFamily n := fullSubcomplexLift_ι _ _ _
+
 /-- 同じ全四角形の構造同型を、両零角・普遍性を持つ全 loop 図式の同型へ戻す。 -/
 def commonChosenStageStructureDiagramIso (n : ℕ) :
     FunctorIso (commonChosenStageLoopDiagramFamily.{u} n)
-      (commonChosenStageLoopImageFamily n) := by
-  apply (isFullyFaithful_fullSubcomplexOnVertices_ι
+      (commonChosenStageLoopImageFamily n) :=
+  (isFullyFaithful_fullSubcomplexOnVertices_ι
     ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity)
       IsLoopDiagramVertex).preimageFunctorIso
-  rw [commonChosenStageLoopImageFamily_ι]
-  change FunctorIso ((fullSubcomplexLift IsLoopDiagramVertex (commonChosenStageSquareFamily n)
-    (commonChosenStageSquareFamily_isLoop n)) ≫ _) _
-  rw [fullSubcomplexLift_ι]
-  exact commonChosenStageStructureSquareIso n
+    (F2.functorIsoOfEq (commonChosenStageStructureSquareIso n)
+      (commonChosenStageLoopDiagramFamily_ι n).symm
+      (commonChosenStageLoopImageFamily_ι n).symm)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

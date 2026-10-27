@@ -74,7 +74,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3StageStructure,
     `SerrePositivity.KST.Spectra.D3CommonStageStructure,
     `SerrePositivity.KST.Spectra.D3StageStructureFunctor,
-    `SerrePositivity.KST.Spectra.D3StageLoopStructureFamily]
+    `SerrePositivity.KST.Spectra.D3StageLoopStructureFamily,
+    `SerrePositivity.KST.Spectra.D3StageDiagramProjection,
+    `SerrePositivity.KST.Spectra.D3FunctorIsoEvaluation,
+    `SerrePositivity.KST.Spectra.D3StageDiagramCorners,
+    `SerrePositivity.KST.Spectra.D3LoopCanonicalNaturality,
+    `SerrePositivity.KST.Spectra.D3CommonStageCanonicalCoherence]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

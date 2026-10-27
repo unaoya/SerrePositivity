@@ -236,3 +236,20 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7772 jobs）。新規4葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：541 modules／5861 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉4本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
+
+
+## 2026-10-27：指定射影値を保持する実図式比較の構造自然性
+- 段始点比較の内部の標準図式族・実 fiber 比較を `commonChosenStageCanonicalFamily`／`commonChosenStageCanonicalDiagramIso` として公開。既存の始点比較と構造同型の端点正規化を明示し、同じ指定比較を選び直さず照合可能にした。
+- `commonChosenStageStructureDiagramIso_projection`／`commonChosenStageCanonicalDiagramIso_target`：同じ構造同型の周囲の四角形への射影は元の指定構造同型、同じ fiber 比較の終点射影は元の厳密等式の同型を回収。
+- `commonChosenStageSourceLoopIso_diagram_triangle`／`commonChosenStageRefinedSourceIso_canonical_triangle`：既存の始点 loop 比較と refined／実始点比較を、同じ全図式始点比較・元の右射影の段同型へ指定値を保持して接続する三角形を実証。
+- `d3FunctorPostcomposition_evaluate`／`d3FunctorIsoMapPost_evaluate_precomp`：全図式への同型の作用を頂点で評価すると、同じ元の同型への前合成を回収。全単体の厳密交換とホモトピー圏の関手性から指定値を同定。
+- `commonChosenStageStructureDiagramIso_corner`／`_source`／`_target`：実全図式の構造同型を四角で評価し、実始点関手・厳密 nativeTail 終点関手に前合成した同じ BF 構造同型そのものとして回収。
+- `d3LoopCanonicalDiagramIso_naturality`：元の実 fiber 内比較と、指定終点同型の充満忠実な逆像は、同じ指定全図式同型に厳密に自然。射影後の同型の指定値の回収から、全図式の正方形を反映して証明。
+- `commonChosenStageCanonicalStructure_naturality`／`_source`：上記へ既存の BF 構造全図式同型を代入。同じ実段比較・指定構造同型・指定終点の持ち上げが全図式および始点評価で同じ構造正方形を満たす。
+- **残る B**：次段 loop 像の図式からの比較と、次段図式比較を通常 loop で写した同じ値との整合を、元の右射影の構造正方形も保持して実証する。その整合から BF 全体の FunctorIso を構成する。今回の全図式正方形だけで BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
+
+
+### 指定射影値・標準比較の構造自然性の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（7842 jobs）。所有変更葉に新しい警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：546 modules／5902 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉5本・所有 D3 葉2本の端点表示整理・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
