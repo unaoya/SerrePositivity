@@ -281,3 +281,20 @@
 ### 到着した共終性・相対比較の消費（K-B3）
 - `dgKappaFirstRowRelativeComparison` は K-B 正本 `ofFirstRowSimplices` で同じ実商の相対比較を構成する。元の全 S• 引き戻しと反復の入口もこの比較を消費する。
 - `dgSuspensionThomasonCandidateMap_piIsomorphism_of_completion`・`_isInvertible_of_completion` は同じ実 BF 候補間で共終性を消費する。十分後の j+n>0 のみを使い、零次全射性や一般の負群消滅は主張しない。
+
+### R2-C 読み取り調査（2026-10-27、公開パッケージ化の後）
+- 作業ツリーの直接 import を再集計（未追跡を含む）。実移動・Lean・監査コード変更はしない。以下は R 窓の候補で、公開名・型・元の射影式を維持する。数は推移閉包と区別する。
+- 層案：汎用空間比較 → Spectra 基本／相対 BF → StableModel・局所化定義 → SConstruction 本体 → Fibration → 共終性証明 → 固定入力 NonConnective → dg 接続／局所化登録。LocalizingInvariants と Spectra の現ディレクトリを各一層とは見なさず、基盤と応用を分ける。∞ 側との境界は R2-A/B と照合。
+- LocalizingInvariants 逆辺：→Fibration 22、→SConstruction 8、→NonConnective 1（元 23 葉）。汎用分数・群oid完備化・相対単体を基盤へ、StableFunctorMaps／StableCospanPullbacks の元関手圏道具を安定基盤へ、DGFixedNullSquare・RelativePerfectVerdierPresentation・DGKappaRelativeRoofTransport 等は接続層へ。
+- Spectra 逆辺：→SConstruction 4、→NonConnective 4、→LocalizingInvariants 3（元 9 葉）。PointedKanLoopInfinity／EnrichedEquivalences は点付き基盤へ。S3KappaConnection・S3MilnorConnection・S3ActualFaces は dg 接続へ。相対 BF の 4 辺は次の R30 で処置。
+- 追加の上流逆辺：Fibration→NonConnective 2、SConstruction→NonConnective 1、SConstruction→Fibration 8。DGKappaSuppliedBFOneStage／FixedStructure・NativeSquareComparison と DGKappaNativeBFStages は K-6 の dg 接続に整理。Cofinality の Thomason 等は SConstruction 本体より後の共終性層へ。
+- KST→EInfinity は 29 辺＝LI 26＋SConstruction 2＋Fibration 1、22 利用元・21 標的。うち DGAlgebra* 18 葉の 25 辺と汎用 4 辺を分ける。AnodyneWeakDetection と DoubleSimplicialWeak は低層へ抽出（後者は EInfinity 内の前提 4 葉込み）。FrameHom 一般部は HomotopicalAlgebra、複体・AW・dg 代数部は HA/DG 正本へ、実適用は接続層へ。
+- EInfinity の 21 標的を単に移すのは不可：その EInfinity 内推移前提は 2,475 葉。DGAlgebra.ModelCategory は AWPath→Operad.IntervalEvaluationFibration、HomInfinityComparison は FrameLocalizationInput→ModelBifibrantLocalization→BarrattEccles の経路を持つ。一般定理と具体例の import を分割し、難しい 2 入口は R2-B と別候補化（調査目安 2–4 日、全閉包移動は R 窓に入れない）。
+- KST→Comparison は全体 60 辺。指定 45＝SConstruction 24＋Fibration 19＋Spectra 2（ProExcision 15 は別）。45 のうち 41 辺・25 標的は空間比較基盤へ（Comparison 内前提 218 葉、元 35 葉）。残る BasedPathEndpoint 2・PointedUnitEvaluation 1・LocalizedHomotopyComparison 1 は Spectra の点付き／π 接続へ。25 標的だけを移して旧 Comparison を参照し続けない。
+- R29：WeakStringPostCartesian／PostRealizationPullback を kernelClosedPredicate q の全旗比較で導き直す案。ClosedFlagPostCartesian を含む入口 3 葉の直接利用元の和集合は 4 本。全旗・再添字・元の後合成との指定比較が先に必要で、q を定義上零に置換しない。一般 r は closedKernelMultiPostcomp_homotopyPullback を使う。目安 2–4 日、旧名の型・元の自然性四角形を検証。
+- R30：RawSpectrumRelativeCorner 4 葉と SequentialRelativeHomFibration の前提中の汎用 NonConnective 19 葉を Spectra/Sequential 相当へ抽出する案（この 23 葉外の直接利用元 17 本）。既存二変数版は標的の自明 RLP、前合成版は一般 Kan 標的なので即特殊化は不可。二変数 Kan 版を加えるか共通充填核のみ統合。目安 2–3 日、全境界・段射・旧型を検証。
+- KanPullbackAll：現 All→All+KanPullbackCofinality の分離を維持し、Input が ClosedKernelExInfinityVanishing を import する逆依存を除く。一般 Prop を空間／Spectra の葉へ、実 fiber 証明も同層へ、Cofinality 側は消費アダプタだけにする。入口 4 葉の直接利用元 6 本。目安半日–1 日、All が供給集約を逆 import しないことを検証。
+- Thomason：Cofinality.Thomason を唯一の一般正本とし dgKThomasonCofinality は互換包装。DGKappaThomasonCofinality／SequentialCandidateMapThomason／DGSuspensionThomasonSequence／Comparison は実 cone・末尾への適用なので重複削除しない。5 入口の直接利用元 9 本。目安半日、正次数全単射・零次単射と元の実射を検証。
+- 集約台帳案：import だけの KST 集約は 24 本（同名ディレクトリがあるものだけなら 12 本）。全体調査の「85」とは抽出基準を R2-D で統一する。11 主集約＋残り 13 部分集約を主監査・build target・互換入口・診断に分類。FixedInput は宣言付き公開入口なのでこの 24 本に含めず NonConnective 監査で保持する。
+- 監査対応：主集約 11 は audit_localizing_invariants と audit_kst_{spectra,s_construction,fibration,nonconnective,comparison,descent,pro_excision,scheme_lemmas,derived_blowup,derived_geometry}。部分集約は d3／s3／cofinality／core_flag／fibration_relative／descent の専用監査へ。FixedPoints・Rationalization は Spectra 監査の推移被覆のみで主監査の期待モジュールへ明記する。宣言の module 所属で監査し、旧 namespace の保存だけで被覆済みとしない。
+- ゲート案：KST 関連 17 監査中 verify.sh の実行は 5、残り 12（cofinality・comparison・core_flag・derived_blowup・derived_geometry・descent・descent_main・fibration_relative・pro_excision・scheme_lemmas・spectra_d3・spectra_s3）を追加。audit_targets 自動生成は build のみで公理監査実行ではない。失敗 rc を集約して非零終了。順は低層抽出→R30／接続分離→R29／共終性→集約／監査→全体 build・全監査・sorry 閉包。全候補を 1–2 日に詰め込まず、軽量移動と証明統合を別枠にする。
