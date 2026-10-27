@@ -3149,4 +3149,9 @@ public import SerrePositivity.KST.SConstruction.DGPerfectRealizationYonedaRestri
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedComparison
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeNative
 
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeComparisonRecovery
+public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposition
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealization
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationModuleAxes
+
 /-! # ∞-S• 構成と連結 K 理論 -/

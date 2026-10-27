@@ -6,11 +6,11 @@
 
 ## 引き継ぎ（2026-10-27・D2 三入力の無条件接続）
 ### 現在地
-- **現在地**：d④② の D2 三入力は `19fab5fa8` で無条件代入。③ の元全実逆回転・connecting・指定三辺・入力を保つ cone 全比較を `41c342bc9`〜`ae187ca26`、元二単体逆 shift・指定厳密逆・元入力照合・全包含制限・負符号と生の実包含二単体を `db47d6f91`、元代表評価・cone image の全比較と包含保持を `455d05754` に保存。今回、指定四辺の可換 square を元 cone の全厳密・native 比較へ拡張し、元左右の代表評価を同じ元比較に全厳密に可換な square として保持。元実 gluing cone の realization と元実像射の cone の native 全比較を対象5861 jobsで検証。元実逆回転の小模型への特殊化、固定 ν の上下指定二単体、共通 S 長方形と三認証は未完。
+- **現在地**：d④② の D2 三入力は `19fab5fa8` で無条件代入。③ の元全実逆回転・connecting・指定三辺・入力を保つ cone 全比較を `41c342bc9`〜`ae187ca26`、元二単体逆 shift・指定厳密逆・入力照合・全包含制限・負符号・生の実包含二単体を `db47d6f91`、元代表評価と cone image の全比較を `455d05754`、元評価四角形と元実 gluing cone の全 realization 比較を `a3e2ec529` に保存。今回、元実逆回転の二実像小模型へ全評価比較を具体化し、同じ実逆回転閉射と全加群二軸（元 cone 逆 shift・指定二重 shift）を回収。対象5892 jobs成功。元始域への全比較制限、固定 ν の上下指定二単体、共通 S 長方形と三認証は未完。
 - **残りの順序**：d④② の元二脚・恒等二脚・元 corner cone は三つとも無条件供給を代入。③ の元実逆回転後の合成全比較、上下指定二単体、共通 S 長方形と三認証を続け、その後 d②、e② へ進む。個別恒等実面の認証は共通長方形上の三認証の完成とは数えない。三認証の消費側は Sp-3（10-27 の中継指示）。公開名が出たらユーザー経由で即時中継。S4 は第 II 段。
 - **未送付の依頼・提案**：なし。D2 の三入力は全て到着。`dgOdotMilnorSuppliedOriginalLaxComparison`・`dgOdotMilnorSuppliedIdentityLaxComparison`・`dgOdotMilnorSuppliedOriginalLaxConeComparison` に直接代入し、残 cone 型も `dgOdotMilnorSuppliedOriginalConeComparison` で無条件充足。元二脚の両射影、恒等対角・差、同じ corner 評価を保持する。D の二射影性は既に消費済み。
-- **作業中の所有新葉**：`DGModuleConeConnectingFamilyNaturality.lean`（未接続の直接自然性補助、対象4762 jobs成功）・`DGSmallPerfectEnvelopeComparisonRecovery.lean`（同じ元閉比較の二段充満包含後の実射回収、対象成功）・`DGIdentityInverseRotationRealization.lean`（元実逆回転の二実像小模型への具体化、対象照合中）の3葉は未登録・未コミット。今回の元四辺を保つ cone square・元制限評価・元実 gluing cone の全 realization 比較8新葉は集約・専用監査検証済み。Cofinality は読み取り専用。
-- **次の第一工程**：`dgIdentityHomGluingRealizedConeNerveComparison` を元 `dgHomGluingInverseRotationFunctor` の二実像小模型へ特殊化する。同じ元入力逆・包含・負符号・生の上二単体を、元始域への前合成と全閉射回収で接続する。指定元評価・cone image・全 square 比較は対象検証済み。続いて実 realization と固定 ν の上下二単体、共通 S 長方形の三認証、その後 d②・e② の順。三認証の公開名は直ちに Sp-3 向けにユーザーへ報告。
+- **作業中の所有新葉**：`DGModuleConeConnectingFamilyNaturality.lean`（未接続の直接自然性補助、対象成功）・`DGIdentityHomGluingShiftedLeftAxis.lean`（元始域上の全 shifted 左軸回収、対象成功）・`DGIdentityHomGluingInverseRotationRestrictedAxes.lean`（元始域上の二実像二軸の全回収、対象5895 jobs成功）・`DGModuleNaturalConePrecomp.lean`（元 cone 全族の前合成と型付き入力一致の回収、対象照合中）。4葉は未登録・未コミット。今回の元実逆回転二実像の全評価比較・全二軸回収4新葉は集約・専用監査検証済み。
+- **次の第一工程**：`dgIdentityInverseRotationRealizedConeNerveComparison` を元厳密比較の `dgIdentityHomGluingFunctor` へ前合成する。元始域上の実像二軸は未登録葉で全回収済み。同じ元実逆回転閉射の回収から全厳密入力を型付きで同定し、cone 前合成の全回収で元 `dgIdentityHomGluingInverseRotationModuleSource` へ接続する。元指定厳密逆・全比較・包含・負符号・上二単体を保持し、実 realization と固定 ν の上下二単体、共通 S 長方形の三認証、その後 d②・e② の順。三認証の公開名は直ちに Sp-3 向けにユーザーへ報告。
 - D-17 供給：`DGKPerfectCompositionGeneral` に `dgKPerfectExtensionCompositionIso` と合成同値判定を型・証明本文ごと不変に分離。旧入口は public import で公開名を保つ。新入口の閉包401モジュールは dg・ホモロジー代数・圏論基礎と入口自身のみで、InfinityCategories・Spectra・S 構成本体なし。追加の Perf dg 基礎分離は不要。K-10 d は Milnor・resolved 商の採用済み経路で再開。
 - K-10 c は完了。具体的商 End は `DGLaxQuotientEndInput.end_hom`・`dgOdotAlgebraToEnd_quasiEquivalence`、元の右脚は `dgOdotTargetCornerEndMap_right`・`dgOdotTargetMap_right`。商 End→元の終域 End の比較射の同値性は主張しない。
 - 旧未分解商の K-10 d は明示入力の下での形式的接続を保持。元の対角・gluing・同じ実商射を固定 S に置く `DGOdotVerdierInput`、元の商合成の指定関手同型を保つ D2 比較口 `DGOdotLaxVerdierInput`、S 内全長方形の `DGOdotVerdierRectangleInput` を分離する。
@@ -73,7 +73,7 @@
 - **採用済み（10-25 14:57）**：完備化付き相対提示で続行。Sp の新葉（45750260d）`RelativePerfectVerdierPresentation`・`RelativePerfectVerdierRectangle` を使い、resolved native 商＋指定冪等完備化を `dgOdotMilnorPerfectSequence` の形で保持する。完備化射 c・hc は D-21 としてユーザー経由で D に中継され、14a814a20 の一般形から特殊化済み。今後の提案・依頼もこのチャットで型と依頼先を明示し、計画への記載だけで中継済みとしない。
 - **採用済み（元始域の増大屋根、10-25 17:53）**：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を作り、元対角始域を増大屋根の終端として保持する。d④ の元始域回収は「元入力への増大屋根＋ν 像の指定同値」とする。native Verdier 列・LT 極限錐の元始域は不変。既存の strict 始域版は互換入口として保持。Sp の新葉（1d3c261b1）を `DGOdotMilnorRelativeRoofRectangleInput` へ接続し、始域屋根を構成済みとする主経路を供給。`Resolution.CellComparison` は既存の同じ正本を読み取り専用で接続。元二脚 lax 比較の供給依頼はユーザーへ明示済み。
 - D-17 分離の検証は完了。F1 復元 `b12e99858` 後の HEAD で集約を一度再ビルドし、公式監査も成功（12,218 公理出力、標準三公理のみ、ModelCategory 仮定なし）。新入口の閉包401モジュールも再確認。以前の途中状態による閉包破損は解消済み。ログ：`/tmp/kst-s-s-head-rebuild.log`・`/tmp/kst-s-s-head-audit.log`。
-- 最新の集約 15836 jobs・公式監査 14066 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 12016 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
+- 最新の集約 15840 jobs・公式監査 14078 宣言は成功。標準三公理のみ、監査型に ModelCategory 参照なし。所有の repository import 閉包 12020 モジュールは全て解決。新規 sorry・公理・検証上限／透明性オプション変更なし。他レーンは読み取り専用。実施記録はコミットメッセージ。
 - e の四完備性は D の供給済み最小入口 `DGPerfectIdempotentCompleteGeneral` を使って解消。`dgKInputPerfectNu` は固定 ν 全体を Cat^perf へ持ち上げ、包含後は全単体で元の ν と厳密に一致。resolved 経路の β3 と実完備化は充足済み。元二脚の lax 比較は供給済み。Sp-6 に渡す実 S 長方形の構成が未完。
 - 本レーン内の未解決の名前衝突なし。Core・Stable・F1 等の公開名・型は不変。固定 S の Hom は厳密 dg 自然変換 end の native core。resolved 厚核・始域比較の実零化面と同じ合成三角形を保つ源長方形は構成済み。残る LT 全長方形と全指定境界比較は未供給。Sp の新入口 `isPullback_of_perfectImageIso`・`comparison_isPullback_of_actualFaces`・`_imageIso` は、絶対提示から実 ν 二面への指定三境界付き全比較を直接受ける。別の S 内厳密代表は不要。`DGOdotMilnorActualRectangleInput` は同じ実長方形とこの三比較を直接受け、二面の値・全比較輸送・同じ屋根の始域成分を新入口へ接続済み。主経路は同じ実 S 長方形上の LT 実右面・外周の `VerdierSquareDiagramIso` と、上下二単体を保つ `VerdierRectangleDiagramIso` の三認証を要する。個別の厚核外面認証は実証済み。残る共通実長方形の実 dg 構成と D2 入力なしの実右面を、商辺だけの関手同型で代用しない。
 - SConstruction 内の明示的な `[ModelCategory SSet]` 引数は検索で見つからず。HA の具体的 instance と
@@ -100,7 +100,7 @@
 - 元の S₁・区間組み立てと全正段の前向き弱比較から実スペクトル比較を構成済み。同じ新 BF 射の Morita 不変性、同じ Perf 上の全整数群比較と新 BF の π₀=K₀ の入力自然性も証明済み。元の実 Perf 評価の自然性は整数 π 比較へ接続済み。ΣEx∞X→Ex∞ΣX の単射性・弱同値性、現行 SOA の豊穣性、Small.{u} Perf は仮定しない。
 - 元の厳密豊穣 BF・Sp 値関手は Morita・準同値辺を可逆にし、同じ Perf 上の実 SOA 比較の全整数群同型と新 BF 零次群・零空間の π₀ と三角圏 K₀ の自然比較も供給済み。元の dgK への実比較と全整数 π 同型は構成済みで、実 Perf 評価を介した同じ実比較射の整数 π 入力自然性も証明済み。全 Hom と厳密恒等・合成保存を保持し、離散 Hom への置換は使っていない。
 - その後 §6 の fibration と BGT (a)、§7 の Tamme・LT に進む。Ind・compact・安定性の F2-lite を待つ。整数 K 群の関手や π₀ 比較を Sp 値の関手性の代用にしない。
-- 現在の検証ログ：`/tmp/ks-evaluation-square-aggregate.log`、`/tmp/ks-evaluation-square-audit.log`、`/tmp/ks-evaluation-square-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
+- 現在の検証ログ：`/tmp/ks-inverse-realization-aggregate.log`、`/tmp/ks-inverse-realization-audit.log`、`/tmp/ks-inverse-realization-closure.txt`。集約・公式監査・閉包検査済み。d・e の無条件の LT・非連結 K は未完。
 
 ## 1. 目標・担当範囲
 
