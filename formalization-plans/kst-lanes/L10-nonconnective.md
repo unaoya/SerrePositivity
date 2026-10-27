@@ -18,8 +18,9 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,639 ジョブで成功。専用監査は 257 モジュール・2,893 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 今回の所有集約ビルドは 16,643 ジョブで成功。専用監査は 261 モジュール・2,907 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
+- f の零保存準備：DGKInputPerfectZero／DerivedZero は固定 ν の零性を同じ実 Perf・主 Perf・主導来圏へ移し、逆向きも回収。DGKappaSuspensionZero は cone の全対象が元の perfect 集合に属することから、実商の指定 ε による全加群の acyclic 性と同じ懸垂の固定 ν 零性を証明。DGNonconnectiveKZero は全反復・元の loop 座標・実逐次整数 π 余極限を通して同じ K^{nc} 頂点の零性を証明する。同じ対象値を持つ全入力関手の preservesZero 欄はこれで埋まるが、実関手の構成・Verdier 保存・f 登録は未完。
 - 到着 K-B bcba4d552：Relative.k6Fibration・k6SuspensionStructureMap_nonnegative を消費。DGNonconnectiveKConnectiveComparison は hrow を除き、同じ実構造辺の厳密等号・隣接安定化・連結比較・全整数末尾表示を無条件化。K-6 c4 と K-7 c4 の全入力作用を区別する。
 - d4：DGKInputCompactNativeChoiceCoherence は I-2 e の同じ無条件生成同値から任意の逆射選択を全 native Hom 族上で比較し、恒等・三選択の合成・任意族への再制限・元の ν/Yoneda 全族への指定比較の自然性を証明。非可算 κ-cone と同じ Indω の比較、全入力高次合成と構造辺 β の自然性は別工程。
 - d4 の Indω 全体への延長：DGKInputIndNativeFamily は元の全 native Hom 族を、同じ Yoneda 制限同値の実逆で filtered 余極限保存関手へ一括延長する。元の全 Yoneda 族との比較・任意全高次パラメータへの再制限等式を保持。DGKInputIndExtension は同じ制限の充満忠実性で保存延長を比較し、DGKInputIndEquivalence は指定 ν 同値を元の Indω 間の実同値へ延長する。
@@ -97,7 +98,7 @@
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- なし。共通 compact 生成、主 Perf から全主導来への接続、無条件 data の全実反復 Morita 保存の新規 3 葉と、既存評価側・固定 K 比較・非連結 K 消費入口・集約・専用監査・本計画は検証済みで所有 9 ファイルだけを限定保存。前回は 6af06a6af。所有外は対象外。
+- なし。固定 ν の零性から実主導来・元の実懸垂・全反復を通して同じ非連結 K 頂点の零性と preservesZero 消費口を証明する新規 4 葉、集約・専用監査・本計画は検証済みで所有 7 ファイルだけを限定保存。前回は 0ee8181fb。所有外は対象外。
 - 保存注記：c2a7623c1 は共有 index の並行更新により K-B の Relative/All・ConnectiveFibrationTheorem・L3・audit_kst_fibration も併収した。K-B3 はこれらの内容を編集していない。コミット本文の所有ファイル限定という記述はこの点を訂正する。履歴・他レーンの内容は保持する。
 
 ### 既知の問題
