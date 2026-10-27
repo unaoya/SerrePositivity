@@ -3196,4 +3196,9 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectV
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectDiagram
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperPerfectRealization
 
+public import SerrePositivity.KST.SConstruction.DGPerfectStrictNatTransLift
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectInclusion
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealizedBoundary
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationPerfectInclusion
+
 /-! # ∞-S• 構成と連結 K 理論 -/
