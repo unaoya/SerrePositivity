@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
 import SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
 import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
@@ -7481,6 +7482,8 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedGradedShift,
+    `SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence,
     `SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction,
     `SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,

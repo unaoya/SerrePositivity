@@ -253,3 +253,8 @@
 - ユーザー指定により一般 DGFunctor の Hom end 比較には着手しない。新葉 DifferentialGraded/Derived/ProjectiveContraction の moduleHomotopicallyProjective_contractingElement_of_acyclic は、h-projective かつ moduleAcyclic な任意の右加群について ∃ H, d H = unitElement を供給する。既存 complexAcyclic_boundary を実 Hom end に適用し、KST import を加えない。
 - Derived 集約・全体監査へ登録し、専用 audit_dg_projective_contraction で全自作宣言の公理閉包と元の公開型を検査する。固定 Γ の bimodule 射影性・関手 Hom end への移送は未供給のまま。完了後は停止準備完了に戻る。
 - 検証完了：新葉と Derived 集約の対象 build14962 jobs成功、専用監査は全1宣言について標準三公理のみ・依頼型照合成功（終端0）。新葉のローカル依存閉包58モジュール、循環なし・KST依存0。全体監査は登録のみで再実行せず。加群版の供給完了後、停止準備完了。
+
+### K-S• 第2件：native dg nerve の同値から準同値の反映
+- (b) は既存 dgStableHomotopyEquivalence_naturalityIso と h の比較同値・圏同値の相殺で H⁰ の圏同値を回収可能。(c) の既存逆向きは dgH0IsoOfVertexIso。(a) の一般形は新葉 DGPretriangulatedGradedShift に dgPretriangulated_gradedShiftWitness として供給：shifted representable のホモトピー表現可能性・全次数 Yoneda 同型から閉斉次射と片側単位の境界原始元を取る。
+- 新葉 DGNerveReflectsQuasiEquivalence に dgFunctor_onHomotopy_isEquivalence_of_nerve／dgFunctor_homQuasiIso_of_nerve／dgFunctor_quasiEquivalence_of_nerve を公開。始域だけ Small・前三角、標的の Small・前三角は不要。ユーザー指定の8h以内・KST importなしの範囲で供給へ着手した旨と既存名・見積り4–8hをチャットで報告済み。固定 Γ の自然収縮・旧D-4凍結には着手しない。
+- 検証完了：対象二葉・Derived集約14964 jobs成功。専用 audit_derived_dg_nerve_reflection は新二葉の補助宣言を含む全6宣言の公理閉包を検査し標準三公理のみ、依頼の u+1 全称型と標的 Small 不要の型も成功（終端0）。依存閉包928モジュール、循環・KST依存・他レーン未コミット依存なし。Derived集約と全体監査へ登録（全体監査は再実行せず）。準同値まで供給完了後は停止準備完了。
