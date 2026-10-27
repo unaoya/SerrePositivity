@@ -77,6 +77,8 @@ public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderComparison
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderFaces
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderModels
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderCorrection
+public import SerrePositivity.KST.Spectra.D3BoundaryComparisonResolution
+public import SerrePositivity.KST.Spectra.D3BoundaryComparisonLifting
 
 /-!
 概要：Sp-2 の d3 専用集約。
