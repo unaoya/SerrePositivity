@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonRequirement
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData

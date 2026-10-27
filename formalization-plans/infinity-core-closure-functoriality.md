@@ -243,15 +243,22 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 `quotientEpsilonCell_unit_not_boundary`：非零環かつ null 対象があるなら、
 ε 関手圏の単位は同じ ε Hom 複体内で境界にならない。標的 cell の H⁰ については未主張。
 証明は単一 ε 語の分離・tensor の二次数分離・cell 単位の係数 1 による消去。
-この条件だけで入力族の存在／不存在は結論しない。native 可逆比較への帰結を次に調べる。
+`EpsilonCellHomotopy`：次数 −1 の消滅で評価は H⁰ から厳密な閉射へ降下。
+`quotientEpsilonCell_obj_eq_of_coreVertexIso`：非零環上、ε core 内の VertexIso は
+各 null 対象で同じ実 cell 対象を要求する（同型だけでは足りない）。
+`quotientEpsilonCell_nativeMap_obj_eq`：入力の可逆比較を持つ両端について、
+ε core への全単体射と頂点の指定比較があれば、同じ像対象等号が必要。
+頂点一致を ε core 内の同型へ弱める経路にも適用。独自 All・監査のみ登録。
+`NativeEpsilonRequirement` の `dgSuspensionResolved_obj_eq_of_nativeHom` は固定 resolved 族への特殊化。
+この必要等号の成立は未証明。最終 map の不存在は未主張。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 残る工程：
 
-- cone の入力全 Hom 作用を、同じ cell 分解比較関手へ延長する。
-- 工程 1 の Hom 作用について D の ε 整合 Hom への所属を証明し、
+- cone の入力作用から、同じ cell 比較の族へ native core 間の全単体射を構成する。
+- 工程 1 の各次数の成分について D の ε 整合 Hom への所属を証明し、
   D が供給する同じ選択 ε の商作用を import・適用する。
   元 Hom の自然性だけでは ε 整合は出ない。`ParameterExtension` の必要十分条件を
   使用する。新しい商への置換や収縮の変更で条件を消さない。
@@ -267,7 +274,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 38 葉・468 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 40 葉・502 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

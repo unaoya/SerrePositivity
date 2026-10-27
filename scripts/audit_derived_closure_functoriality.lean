@@ -6,6 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonRequirement,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.TensorDegreeSeparation,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.QuotientWordSeparation,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorSeparation,
@@ -134,3 +136,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.quotientEpsilonCellParameter_component_zero
 #check SerrePositivity.InfinityCategories.quotientEpsilonCellHom_component_zero_of_degree_ne_zero
 #check SerrePositivity.InfinityCategories.quotientEpsilonCell_unit_not_boundary
+
+#check SerrePositivity.InfinityCategories.quotientEpsilonCell_obj_eq_of_coreVertexIso
+#check SerrePositivity.InfinityCategories.quotientEpsilonCell_nativeMap_obj_eq
+
+#check SerrePositivity.InfinityCategories.dgSuspensionResolved_obj_eq_of_nativeHom
