@@ -3220,4 +3220,8 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeEqu
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelActualComparisonSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualSRectangle
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullPerfectEquivalence
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorNullNativeValue
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightNuBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
