@@ -125,6 +125,25 @@ def dgIdentityHomGluingNullFactorTriangle (F : DGFunctor R P (L))
     coherentNerveCompStruct _ _
   exact t.ofEq rfl rfl (by congr 1)
 
+/-- 概要：元の二関手の厳密合成辺を対角に保つ V 因子化の上二単体。
+方針：抽象的な二関手の段階で宇宙持ち上げの合成保存を照合する。
+規約：具体的巨大模型の正規化に依存しない。使われ方：元厚核包含と実中央辺の特殊化。 -/
+def dgIdentityHomGluingNullFactorCompositeTriangle
+    (T : Type (u + 1)) [DGCategory R T] [Small.{u} T]
+    (k : DGFunctor R P T) (F : DGFunctor R T (L))
+    (hF : ∀ x, dgIdentityHomGluingNullProperty R C (F.obj (k.obj x))) :
+    SSet.Edge.CompStruct (X := dgKInputInfinity.{u, u + 1} R)
+      (coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C (k.comp F) hF))
+      (coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
+      (coherentNerveEdge
+        ((ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} k) :
+          dgKUniverseInput.{u, u + 1, u + 1} R P ⟶ dgKUniverseInput.{u, u + 1, u + 1} R T) ≫
+          (ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F) :
+            dgKUniverseInput.{u, u + 1, u + 1} R T ⟶ dgIdentityHomGluingGluingInput R C))) := by
+  have t := dgIdentityHomGluingNullFactorTriangle R C (k.comp F) hF
+  exact t.ofEq rfl rfl (by
+    congr 1 <;> apply ULift.down_injective <;> exact dgUniverseLiftFunctor_comp k F)
+
 /-- 概要：V の同じ実 cone 合成に対象別収縮を指定する。
 方針：対象条件の証拠を全対象商の延長入力に渡す。
 規約：収縮の自然性を仮定しない。使われ方：V の実零化面。 -/

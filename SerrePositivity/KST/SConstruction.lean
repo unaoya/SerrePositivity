@@ -3208,4 +3208,13 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelTargetContract
 
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullDomain
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationNullDomain
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonNullSecond
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelNullUpperTriangle
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullArrow
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeComparison
+
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeEquivalence
+
 /-! # ∞-S• 構成と連結 K 理論 -/
