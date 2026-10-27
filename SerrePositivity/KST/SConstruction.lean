@@ -3084,4 +3084,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeNat
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeSign
 public import SerrePositivity.KST.SConstruction.DGNegativeNaturalPostcomposition
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftArrow
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftComparison
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftComparisonIso
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftComparisonNative
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftNull
+public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationRecovery
+public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationStrict
+public import SerrePositivity.KST.SConstruction.DGModuleShiftComparisonNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
