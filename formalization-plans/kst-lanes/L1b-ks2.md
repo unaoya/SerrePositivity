@@ -5,8 +5,13 @@
   実構成の予定公開名は `dgOdotMilnorActualRectangle`（未定義・未着）。
   d②・e②骨格・厚核下比較を保存済み（8ff24ccc6）。
   厚核包含→実中央辺の固定 S 合成二単体と、その全 ν 像・三辺回収を追加構成。
-  独自集約13,733 jobs成功。三認証個別入力口と対角変更の三次元移送口も追加し、公理監査86宣言・4葉で成功。
-- 残り：厚核下指定二単体と共通長方形の照合 →
+  三認証個別入力口と対角変更の三次元移送口まで保存済み（6740ad102）。
+  L1 の最新記録で共有厳密合成対角の採用を確認。指定上二単体を受ける
+  実 S 比較面の組立てと上下全二単体・四辺・kernel_vertex の回収を追加構成。
+  独自集約13,734 jobs成功、公理監査95宣言・5葉成功。
+  S 上二単体と実三認証が未供給のため、残る代入・全 LT 接続は供給待ち。
+- 残り：K-S• の同じ対角を持つ S 上二単体の供給 →
+  厚核下指定二単体と共通長方形の照合 →
   三認証の実構成代入による e② の無条件化 → 公開名中継・閉鎖。
   原典：D2 G-1 f、Tamme §1、Land–Tamme §1.2 Lemma 1.11・§2。
   見積り：下段境界確定後の接続1〜3時間、三認証代入・監査0.5〜1時間（納期ではない）。
@@ -18,15 +23,17 @@
   `dgOdotTailKernelLiftTriangle`・`dgOdotTailKernelLiftPerfectTriangle`・
   `dgOdotTailKernelLiftTriangle_nu_edges`・`dgOdotTailCatPerfConnectionOfCertificates`・
   `dgOdotTailKernelLiftDiagonalTransport`・`dgOdotTailKernelLiftTransportedCompStruct`・
-  `dgOdotTailKernelLiftDiagonalTransport_faces`。
+  `dgOdotTailKernelLiftDiagonalTransport_faces`・`dgOdotTailKernelComparisonSquare`・
+  `dgOdotTailKernelComparisonSquare_lower`・`dgOdotTailKernelComparisonSquare_kernel_vertex`。
 - 依存と提供：D2 と K-S• の公開葉を読み取り専用で接続。
   所有は `DGOdotTail*.lean`、`OdotTailAll.lean`、専用監査、本計画。
   K-S• の既存葉・`SConstruction.lean`・L1・Cofinality は変更しない。
-- 未コミット：なし（今回の所有5パスのみを保存）。
-- 既知の問題：三認証の供給待ち。個別恒等面・厚核外面の認証は共通長方形の完成と数えない。
-- 次の一手：`dgOdotTailKernelLiftTriangle` を比較面の下二単体として採用するか
-  同じ合成対角を持つ上二単体との貼合せへ接続する。K-S• の別指定があれば
-  差を認証する二単体を移送口へ渡す。三認証の実構成到着後に e② を無条件化する。
+- 未コミット：なし（実比較面新葉・独自集約・監査・本計画の所有4パスのみを保存）。
+- 既知の問題：S 上二単体と三認証の実構成の供給待ち。
+  個別恒等面・厚核外面・組立て関数を共通長方形の完成と数えない。
+- 次の一手：供給された `upper : Δ[2] → dgKInputInfinity R` と
+  `δ₁ ≫ upper = δ₁ ≫ dgOdotTailKernelLiftTriangle R d` を
+  `dgOdotTailKernelComparisonSquare` に代入する。実構成到着後に e② を無条件化する。
 
 ## L1 の K-10 三段目（着手時の転記、正本は L1）
 - **K-10 d②〜d④・e② 三段目（固定）**：
@@ -60,10 +67,13 @@
    短辺は `dgOdotMilnorFlatKernelInputMap` と `dgOdotMilnorRightAxisInputMap`、
    対角は両者の厳密合成。`dgOdotTailKernelLiftCompStruct` と全二単体を構成済み。
    これは比較面の下三角形候補であり、`pastingBottomTriangle` と区別する。
-   ユーザーより、K-S• 回答前も対角＝厳密合成として構成を続ける指示あり。
+   ユーザーより対角＝厳密合成として続行指示。L1 の最新引き継ぎで K-S• の採用を確認。
    別の対角の場合は指定差二単体に沿う `CompositionDiagonalTransport` を特殊化し、
    二短辺と元面・新面・差・単位を同じ四面体で保持する。
-5. 未公開の `DGModuleConeConnectingFamilyNaturality`・`DGCellIdentityGraphYonedaNative` 等は
+5. 実 S 比較面は `square_isPushout.desc` で指定上二単体と同じ下二単体を貼る。
+   上下全二単体・元四辺・厚核始点・同じ Cat^perf 下像を厳密回収する。
+   上二単体の存在は K-S• の供給範囲として保持し、組立て関数を存在証明と数えない。
+6. 未公開の `DGModuleConeConnectingFamilyNaturality`・`DGCellIdentityGraphYonedaNative` 等は
    直接 import しない。三認証が届いたら同じ接続口へ一回代入する。
 
 ## 供給依頼（チャットでも送付済み）
@@ -78,15 +88,16 @@
   共通長方形の下段三頂点・二辺・合成辺の公開名を追加照会したが、
   回答は既存型・公開比較の再確認のみで、下段の具体的指定は未確定。
   続いて上記の具体的 S 二単体と共有合成対角の採用可否をチャットで照会済み。
-  ユーザーが中継済みと確認。回答前も厳密合成で続行し、別対角は指定差二単体で吸収する。
+  ユーザーが中継済みと確認。L1 の最新記録で共有厳密合成対角の採用を確認。
+  S 上二単体自体と全三認証は引き続き未供給。別対角は指定差二単体で吸収する。
 - K-S• の③本体や作業中ファイルは編集・直接 import しない。
 
 ## 検証・保存
 - `lake build SerrePositivity.KST.SConstruction.OdotTailAll`
 - `lake env lean scripts/audit_kst_s_construction_tail.lean`
-- 結果：独自集約13,733 jobs成功。新葉単体13,589 jobs成功。
-  最終公理監査86宣言・4葉成功、標準三公理のみ。
-- import 閉包9,926モジュール、未解決 import・未追跡上流葉・指定作業中葉の依存なし。
+- 結果：独自集約13,734 jobs成功。実比較面対象ビルド成功。
+  最終公理監査95宣言・5葉成功、標準三公理のみ。
+- import 閉包9,927モジュール、未解決 import・未追跡上流葉・指定作業中葉の依存なし。
 - 新規 sorry・公理・ModelCategory 仮定・検証上限増加なし。
 - 公理は propext・Classical.choice・Quot.sound のみ。
 - import 閉包を確認し、未公開作業葉が入る場合は公開入口の分割をユーザー経由で依頼。

@@ -89,6 +89,21 @@ import Lean
 #check @SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport_faces
 #print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelLiftDiagonalTransport_faces
 
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_upper
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_upper
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_lower
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_lower
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_lower_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_lower_edges
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_upper_edges
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_upper_edges
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_kernel_vertex
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_kernel_vertex
+#check @SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_perfect_lower
+#print axioms SerrePositivity.KST.SConstruction.dgOdotTailKernelComparisonSquare_perfect_lower
+
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
@@ -96,7 +111,8 @@ run_cmd do
     `SerrePositivity.KST.SConstruction.DGOdotTailLaxComparison,
     `SerrePositivity.KST.SConstruction.DGOdotTailKernelLowerTriangle,
     `SerrePositivity.KST.SConstruction.DGOdotTailCatPerfConnection,
-    `SerrePositivity.KST.SConstruction.DGOdotTailKernelLiftTriangle]
+    `SerrePositivity.KST.SConstruction.DGOdotTailKernelLiftTriangle,
+    `SerrePositivity.KST.SConstruction.DGOdotTailKernelComparisonSquare]
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
