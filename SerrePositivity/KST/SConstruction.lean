@@ -3239,4 +3239,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisRealization
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisCompositeNu
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterEdges
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterNuBoundary
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterKernelWitness
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterSquareComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
