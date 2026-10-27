@@ -268,3 +268,17 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7845 jobs）。新規3葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：549 modules／5936 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉3本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
+
+## 2026-10-27：指定右射影の構造正方形を全 Hom・全関手空間で認証
+- `d3GradedPrecomp`／`d3GradedPostcomp`／`d3GradedComp`：元の単位パラメータの厳密豊穣変換を、全単体の自然性を保持して前後合成・縦合成する。`d3GradedOfEq_component_heq` と各 `_component` は端点正規化・合成で元の通常成分を回収。
+- `commonStageLoopGradedProjection`／`commonRefinedStageStructureGraded`／`commonOriginalLoopStructureGraded`：同じ共通右射影、refined 構造、元の次段構造の通常 loop を、括弧と既証の豊穣関手等式だけで同じ端点へ束ねる。各 `_component` で元の指定射を回収。
+- `commonProjectionStructureGraded_square`：`commonProjection_structure` を代入し、同じ二経路の厳密豊穣変換の等式を認証。既に全 Hom 自然性を持つ変換どうしを比較しており、点別同型から新たな自然性を推論していない。
+- `d3GradedCompositionTriangleFamily`／`_first`／`_second`／`_outer`：既存三段豊穣円柱の同じ実合成三角形を作り、全対象・全高次単体で三辺を元の指定区間族として回収。
+- `d3GradedComposition_compStruct`／`d3GradedHom_comp`／`d3GradedHom_functorIso`：同じ三角形を関手空間へ curry し、厳密縦合成の実現がホモトピー圏の合成を保つこと、元の関手同型の順射を回収することを実証。
+- `commonProjectionStructureHom_square`：同じ指定右射影の構造正方形は、coherent な全関手空間の実射としても厳密に可換。
+- **残る B**：今回の指定厳密変換の実現を、既存の段 FunctorIso の前後合成と同じ値として照合し、保持した模型間比較の始点成分をこの右射影の構造正方形へ接続する。その後 BF 全体の FunctorIso を構成する。hΩ・sp_isStable は未提供。
+
+### 右射影の全 Hom 構造正方形・実合成三角形の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（7851 jobs）。新規3葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：555 modules／6010 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉3本・集約・監査・本計画のみを変更。本計画の既存270行を保持し、移管済み行と既存読み取り専用領域への編集なし。

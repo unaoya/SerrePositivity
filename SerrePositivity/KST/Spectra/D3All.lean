@@ -14,6 +14,7 @@ public import SerrePositivity.KST.Spectra.D3CommonStageSourceComparison
 public import SerrePositivity.KST.Spectra.D3StageLoopStructureFamily
 public import SerrePositivity.KST.Spectra.D3CommonStageCanonicalCoherence
 public import SerrePositivity.KST.Spectra.D3StageLoopImageComparison
+public import SerrePositivity.KST.Spectra.D3ProjectionStructureGraded
 
 /-!
 概要：Sp-2 の d3 専用集約。
