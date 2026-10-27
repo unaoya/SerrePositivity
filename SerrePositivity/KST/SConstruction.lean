@@ -3173,4 +3173,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRota
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGModuleConeConnectingFamilyNaturality
 
+public import SerrePositivity.KST.SConstruction.DGPerfectRealizationPerfect
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNativeBoundary
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectRealization
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationPerfectRealized
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationPerfectRealized
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeNativeBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
