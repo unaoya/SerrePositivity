@@ -244,3 +244,7 @@
 - 証明予定：既存 Morita.perfectDGFunctorImage_projectivePerfect で導来 perfect 性を得る。h-projective 性は有限 cell の生成操作に関する帰納で像について証明し、源 M の h-projective 性を使って導来 retract をホモトピー圏の retract に持ち上げる。T.onHomotopy で送り、moduleHomotopicallyProjective_of_homotopyRetract（または projective locus の retract 閉性）で戻す。導来 perfect 性だけから像の h-projective 性は推論しない。
 - 公開予定名 SerrePositivity.DifferentialGraded.Morita.perfectDGFunctorImage_perfectProjective。新規葉 DifferentialGraded/Morita/PerfectProjectiveImage（予定）。KST import を加えず既存 DG 正本 API を使う。dgPerfectRealization にも元の hgen をそのまま適用する方針で、T = dgModuleExtension への制限は不要案。
 - ユーザー経由で K-S• にこの型を確認中。本体・証明・集約変更は確認回答後に着手する。見積りは確認後2–4時間（実装・対象build・公理監査）。旧 D-4／最終 VertexIso の凍結は維持する。
+
+- K-S• 確認回答：元の依頼型・追加仮定なしで本体へ進むことをユーザーが承認。新葉 Morita/PerfectProjectiveImage に perfectDGFunctorImage_projective_finiteCell／projective／perfectProjective を構成。有限 cell の像の全 Hom 射影性、源の射影性で持ち上げた実ホモトピー retract、既存の導来 perfect 保存を組み合わせる。
+- 対象 build2741 jobs成功。KST import のない DG 正本葉として公開し、Derived 集約・全体監査へ登録。専用 audit_dg_perfect_projective_image は全自作宣言の公理閉包と元の全称依頼型（独立した u/v/w、追加仮定なし）を検査する。旧凍結経路は変更しない。
+- 最終検証：対象2741 jobs・Derived集約14960 jobs成功。専用監査は新葉の全3宣言について許容三公理のみ、元の全称型照合も成功、終端0。依存閉包551モジュール、循環なし・KST依存0・外部未コミット依存なし。公開型は元依頼のままで、全体監査への登録も追加した。

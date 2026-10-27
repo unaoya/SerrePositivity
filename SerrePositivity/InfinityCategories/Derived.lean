@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
 public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes

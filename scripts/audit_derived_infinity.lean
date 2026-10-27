@@ -1,3 +1,4 @@
+import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
 import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
@@ -7479,6 +7480,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative,
     `SerrePositivity.DifferentialGraded.Quotient.FunctorLaws,
