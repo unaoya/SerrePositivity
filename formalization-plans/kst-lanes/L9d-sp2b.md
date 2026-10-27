@@ -1,6 +1,28 @@
 # Sp-2b — d3c・d3d 先行構成
 
-更新：2026-10-27。Sp-2 の d3b B から分割。本文 ≤200 行。
+更新：2026-10-28。Sp-2 の d3b B から分割。本文 ≤200 行。
+
+## R 窓前の停止・再開入口
+- 現在地：`bdb5f0ebc` 系の条件付き d3c・d3d を保存・検証済み。
+  `nativeLoop_isQCatEquivalence_of_tailComparison hB` と `sp_isStable hB` を公開。
+  無条件版は未公開。先行版の検証結果は末尾の「検証」節。
+- 待っている供給：Sp-2 の B の実値（refined 関手との全 Hom 比較）と公開名。
+  `NativeLoopComparison` の出力契約は確定済みだが、型の公開を実値と扱わない。
+- 停止状態：blocked（外部入力待ち）。R 窓前の作業は K-S• の区切りまでとの
+  ユーザー指示に従い、本停止記録の保存後は作業を再開しない。
+- 再開入口：ユーザーによる実 B の中継・再開指示を受け、R 後の配置と import を確認。
+  `OmegaSpectrum.AdjointLoopRelativeBF.NativeLoopComparison` 型の実値 `hB` を、
+  `D3TailLoopEquivalence.lean` の `nativeLoop_isQCatEquivalence_of_tailComparison hB` と
+  `D3TailStability.lean` の `sp_isStable hB` へ代入する所有新葉を作る。
+  ChosenLoopSourceComparison での供給なら既存 nativeLoopComparisonOfChosenSource を使う。
+  条件付き版を保持し、無条件版の新葉を独自 `D3TailAll.lean` に接続する。
+- 集約・監査の再実行手順（現配置。R で移動された場合は移動先へ読み替え）：
+```
+lake build SerrePositivity.KST.Spectra.D3TailAll
+lake env lean scripts/audit_kst_spectra_d3tail.lean
+```
+- 監査にも無条件版の公開型検査を加え、追加仮定・公理なしを確認する。
+  所有ファイルのみ保存し、K-B3 d3 向けの公開名・検証結果をユーザーへ報告する。
 
 ## 引き継ぎ
 - 所有：新規 D3TailLoopEquivalence・D3TailStability・D3TailAll、
