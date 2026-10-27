@@ -22,6 +22,8 @@
 | --- | --- | --- |
 | [Bhatt–Scholze](bhatt-scholze.md) | BS の引用の現状、原典の依存関係、残る入力の正確な形、原典との経路の差 | B0〜B5・André・Prop 8.13 環版は完了。perfectoid 側の引用は E3 界面の存在 1 件。Thm 1.17(1)・Cor 8.12 の環版は界面から導出済み |
 | [BS のリファクタリング](bhatt-scholze-refactoring.md) | 証明済みの BS を共通 API の上に載せ替える | Q10・Q1・Q8 が次の候補（§13） |
+| [BS-0 第二段階調査](bhatt-scholze-stage2.md) | E3 の消費経路、A・B・C 案の判定と見積り（2026-10-25） | A 推奨、最初の単位は固定完全 prism 上の affine Čech 模型 |
+| [BS 作業チャットへの引き継ぎ](bhatt-scholze-handover-2026-10-25.md) | 文脈・到達点・所有範囲・規約・推奨する進め方 | BS 作業チャットの最初に読む |
 | [K理論・スペクトル](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。M4 以降の経路は下の KST 計画に移行 |
 | [K理論：KST 経路と現代的な K](k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
 | [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
@@ -30,7 +32,10 @@
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
 | [新設指示 10-23](restart-2026-10-23.md) | P・K-7 の指示文と転用の予告 | 2026-10-23 |
 | [再開指示 10-24（v3、8 レーン）](restart-2026-10-24.md) | リファクタ後の仕切り直し。Ind・P・D・D2・E2・Sp・K-S•・K-B の再開文と共通規約 | 2026-10-24 |
-| [R 計画：∞ 圏基盤のリファクタリング](refactoring-infinity.md) | 解説の候補 R1〜R25 を互換シム方式で段階実施。重複除去、層の整理、逆向き依存の解消。10-23 新設 | 2026-10-23 |
+| [∞ 圏基盤の整備計画](infinity-foundation-plan.md) | ∞ 層を KST・DG・EInfinity から自立させ、外の一般論を取り込み、Verdier 商の構成へ進む。段 A〜G、R26〜R70 の要約、決定事項 | 2026-10-28 新設・計画のみ |
+| [R 計画：∞ 圏基盤のリファクタリング（索引）](refactoring-infinity.md) | リファクタ文書の入口。§0 に R1〜R58 の索引（第 1 窓 R1〜R25 は実施済み、R2 計画 R26〜R47、Verdier 商向け R48〜R57） | 2026-10-28 索引整理 |
+| [R 第 2 窓](refactoring-infinity-r2.md)・[Verdier 商向け](refactoring-verdier.md) | R26〜R47・R59〜R67 の調査と実施順、R48〜R57 の配置換え計画。全体順序は refactoring-infinity.md §0.1 | 実施待ち・計画のみ |
+| [論文の層の切り出し](paper-layer-extraction.md) | 論文の層の一般論（Auslander–Buchsbaum、Koszul、三角圏 K₀、Cohen–Gabber、K₀・Adams など）を切り出す、または Mathlib へ | 着手しない（10-28） |
 | [D2 計画：β4 gluing](infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |
 | [再開・新設指示 10-22](restart-2026-10-22.md) | F1・N の方針変更と D2・K-F の新設の指示文 | 2026-10-22 |

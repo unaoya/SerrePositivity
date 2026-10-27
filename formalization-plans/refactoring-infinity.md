@@ -3,6 +3,36 @@
 解説 [exposition/ja/infinity/](../exposition/ja/infinity/index.html)（第 0〜8 章、R8 重複調査）が挙げた候補 R1〜R25 を、
 全レーン停止窓で実施した。R-C・R-B の再適用後、R-A 最終ラウンドも main で検証を完了した。正本はこのファイル。実施記録はコミットメッセージ。候補の番号は解説の番号をそのまま使う。
 
+## 0. リファクタ文書の索引（R1〜R74、2026-10-28 整理）
+
+∞ 圏まわりのリファクタは、このファイルを入口とする。番号は全文書で通し番号。BS 側は [bhatt-scholze-refactoring.md](bhatt-scholze-refactoring.md)（別セッション）。
+
+| 範囲 | 文書 | 状態 |
+| --- | --- | --- |
+| R1〜R25 | 本ファイル §4（段の表）・§5（旧所在→新所在の対応表）・§8（分担） | 第 1 窓で実施済み（10-23〜24）。下表の「先送り」を除く |
+| R-C の再適用 | [refactoring-infinity-r-c.md](refactoring-infinity-r-c.md) | 完了（10-24） |
+| R26〜R47 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)（候補 §3・実施順 §4）、R2-B の処置案 [refactoring-infinity-r2-b.md](refactoring-infinity-r2-b.md) | 調査済み・第 2 窓で実施待ち |
+| R48〜R57 | [refactoring-verdier.md](refactoring-verdier.md)（Verdier 商の一般構成に向けた配置換え） | 計画のみ（10-28） |
+| R59〜R67 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md) §3 末尾（入口の修正、台帳、重複、Kan・pointed 層、DK 局所化層、∞ 中核の dg 非依存化、分類し直し。10-28 の調査から） | 候補 |
+| R68〜R74 と全体の順序 | [infinity-foundation-plan.md](infinity-foundation-plan.md)（∞ 基盤の整備計画の正本。段 A〜G、決定事項、目標構成） | 計画のみ（10-28） |
+| （別計画） | [paper-layer-extraction.md](paper-layer-extraction.md)（論文の層の一般論の切り出し・Mathlib への提出） | 着手しない（10-28） |
+| R58 | 解説 [route-yoneda.html](../exposition/ja/infinity/route-yoneda.html) §6（旧番号 R26。R2 の R26 と衝突したため 10-28 に改番） | R27・R37 に統合して扱う |
+| 調査記録 | archive の `refactor-*-2026-10-23/24.*`（第 1 窓の検証・名前対応）、`r2-*-2026-10-27.*`（R2 の各調査）、[infinity-outside-survey-2026-10-28.md](archive/infinity-outside-survey-2026-10-28.md)（∞ 層の外にある一般論）、[repository-survey-2026-10-28.md](archive/repository-survey-2026-10-28.md)（SerrePositivity/ 全体の地図と問題点） | — |
+| 候補の出所 | 解説 [exposition/ja/infinity/](../exposition/ja/infinity/index.html) の赤い囲み、[r8-duplication.html](../exposition/ja/infinity/r8-duplication.html) | — |
+
+### 0.1 ∞ 基盤の整備（2026-10-28 以降の正本）
+
+段 A〜G の順序、決定事項（局所化と Verdier の所有の移管、Kan 層、改名の先送り）、目標とする構成、完了条件は
+[infinity-foundation-plan.md](infinity-foundation-plan.md) に一本化した。この節は索引だけを持つ。
+
+R1〜R25 の内訳：
+
+| 状態 | 番号 |
+| --- | --- |
+| 実施済み | R1・R2・R3・R5 前半・R6・R7・R8・R9・R11・R12・R13・R14・R15・R16・R17・R18（F1/F1B と HomotopyLimits）・R19・R22・R23・R24・R25 |
+| 継続中の保守 | R20（仮定入力の一覧、§6） |
+| 先送り（第 I 段終了時） | R4（ファイル粒度）・R5 後半（双対化）・R10（計算規則の統合）・R21（docstring、各レーンが工程完了時に行う） |
+
 ## 引き継ぎ
 
 ### 現在地
