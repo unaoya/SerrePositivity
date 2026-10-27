@@ -13,7 +13,7 @@
 - 残りの所要時間：B の実構成は Sp-2 所管で未定。代入後は集約・監査を再実行。
 - 主要宣言：nativeLoop_isQCatEquivalence_of_tailComparison、sp_isStable。
 - 未コミット：なし（所有5ファイルだけを保存。他レーンの変更は含めない）。
-- Sp-2 所有 D3ComparisonOutput の保存コミットは Sp-2 が別途担当。
+- Sp-2 所有 D3ComparisonOutput は `420ef85a2` で保存済み（現作業木で確認）。
 - 既知の問題：B の実値が未供給。条件付き先行版の型は Sp-2 と一致。
 
 ## 工程
@@ -42,6 +42,9 @@ FunctorIso (coherentNerveMap commonRefinedEnriched)
 - ユーザー経由の Sp-2 回答：受取型一致、指定図式・厳密終点の証拠は
   既存の選択族とその証明に保持。B の実値は Sp-2 が構成中。
 - 型とアダプタは Sp-2 正本を import し、Sp-2b 側で複製しない。
+- 再開時確認：Sp-2 の最新 L9b は B 本体を継続中と記録。
+  NativeLoopComparison／ChosenLoopSourceComparison の実値は現ソースに未公開。
+  工程3は外部入力待ちであり、存在を補う宣言や代替仮定を追加しない。
 
 ## 公開界面と証明経路
 - nativeLoop_isQCatEquivalence_of_tailComparison B：
