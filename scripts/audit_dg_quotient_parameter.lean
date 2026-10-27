@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
+import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
 import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
@@ -7,6 +10,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative,
+    `SerrePositivity.DifferentialGraded.Quotient.FunctorLaws,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHom,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion,

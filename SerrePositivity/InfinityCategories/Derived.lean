@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
+public import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom

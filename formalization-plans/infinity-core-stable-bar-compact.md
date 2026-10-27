@@ -151,7 +151,7 @@
 - 指定収縮は各対象の零性から選ばれている。対象ごとの零性・収縮比較から、厳密自然変換 end 内の同型や全四角形の相対 path を自動的に推論しない。指定 ε の全次数整合は実際に証明する。
 - 依存待ち：D-S 稼働中で、map・edgeIso は未供給であることを連続3ターン、実ソースと thread 状態で確認。D は外部供給待ちで blocked。D-4a の採用 action 公開後、同じ指定収縮と全四角形への比較、square_at、核角 ν 像との全単体一致を再開する。D-4b 完了とは扱わない。
 
-### D-S 工程2：固定 ε の商関手変数（供給型の可否を照会中）
+### D-S 工程2：固定 ε 整合 Hom の商関手変数
 - ユーザー割当で固定 ε の商関手圏への豊穣延長を担当。D-S 所有葉は読み取り専用。D-4b 後半は従来どおり D-S の map 待ち。
 - 依頼された一般形（null 保存関手の充満 dg 圏を源、対象は元の quotientDGFunctor）は、厳密自然同型の保存に障害。ℚ 上の一対象 C と二つの同型対象の D、S/T 全対象の例で、商関手間の次数0自然性は独立語 ε₀u と uε₁ の係数を等置し、成分が零に限られる。入力の非零自然同型と逆の合成保存に矛盾。数学的反例であり、反例全体の Lean 形式化は未了。
 - 元の変換成分を保持しないという自由も上の例では解決しない。元の型の実装を進めず、ε 整合 Hom への源の変更か反例形式化の優先かをユーザーへ照会。
@@ -161,3 +161,8 @@
 - `quotientEpsilonCompatible`・`quotientEpsilonHomLift`・`quotientEpsilonHom_factor_iff`：任意複体パラメータで、部分複体への着地と各 b・全整数次数の元の固定 ε 整合が同値。追加の延長選択は入力に残らない。
 - `quotientInputFunctor` と `quotientInputFunctor_obj` を公開。対象は元の同じ quotientDGFunctor へ厳密一致。縦の全 Hom の単位・合成保存も証明済み。ユーザーへのチャットで型と着地 API を先行報告。横の単位・合成の全単体整合は継続中。
 - ε 整合版三葉を集約・専用監査・全体監査へ登録。Derived 集約14936 jobs、専用監査171宣言／9モジュール成功、許容三公理のみ、終端0。局所 import 閉包402モジュール、循環なし、外部未コミット依存なし。横の全単体整合は次工程。
+
+- `nullPreservingFunctorsεLiftOfComponents`：元の豊穣作用と商上の全 Hom 作用の同じ成分比較から着地を束ねる。縦の則は元 Hom への mono 包含で反映し、商上の単位・合成則を追加入力に残さない。
+- `DGQuotient.quotientDGFunctor_id`／`quotientDGFunctor_comp` と `quotientDGFunctor_original`：正本商の厳密な対象関手の単位・合成、および元 Hom 回収。対象 build1951 jobs成功。
+- `quotientEpsilonNativeMap`／`quotientEpsilonNativeMap_unit`：同じ実 dg 商作用から作る全 native core 写像と、全単体の横の単位保存。対象 build5025 jobs成功。横合成は全 Hom 成分比較を構成中。
+- 上記三葉を Derived 集約・専用監査・全体監査へ登録。Derived 集約14939 jobs、専用監査194宣言／12モジュール成功、許容三公理のみ、終端0。横合成はまだ完了としない。
