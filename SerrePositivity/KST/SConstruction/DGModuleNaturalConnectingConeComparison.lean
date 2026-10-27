@@ -29,6 +29,22 @@ private lemma descRecovery {M N M' N' : ModuleCategory R D}
   cases es
   cases eq
   rfl
+/-- 概要：指定零化元と終辺の一致から同じ元 cone 射を回収する。
+方針：既存の同じ入力・終辺の回収補題を使用する。
+規約：微分証拠の移送を明示入力の等式で保持。使われ方：全 cone 比較の実成分。 -/
+lemma dgModuleConeDesc_recovery {M N M' N' : ModuleCategory R D}
+    (f : M ⟶ N) (g : M' ⟶ N') (a : M ⟶ M') (b : N ⟶ N')
+    (h : ModuleHomotopy R D (f ≫ b) (a ≫ g))
+    (s : (moduleHom R D (ForgetEnrichment.to (Complex R) M)
+      (ForgetEnrichment.to (Complex R) (moduleCone R D g))).X (-1))
+    (q : N ⟶ moduleCone R D g)
+    (ds : (moduleHom R D (ForgetEnrichment.to (Complex R) M)
+      (ForgetEnrichment.to (Complex R) (moduleCone R D g))).d (-1) 0 s =
+        (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) (f ≫ q))).val)
+    (es : s = moduleConeHomotopyInput R D f g a b h)
+    (eq : q = b ≫ moduleConeInr R D g) :
+    moduleConeDescOfBoundary R D f s q ds = moduleConeMapOfHomotopy R D f g a b h := by
+  exact descRecovery R D f g a b h s q ds es eq
 variable {P : Type w} [DGCategory R P]
   (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η

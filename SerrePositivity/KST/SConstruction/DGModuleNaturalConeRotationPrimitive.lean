@@ -43,6 +43,23 @@ private lemma compositeNaturality {R : Type u} [CommRing R]
       congrArg (fun t => n.negOnePow • compose R b' t (by omega)) ha.symm
     _ = _ := congrArg (fun t => n.negOnePow • t) h₃
 
+/-- 概要：閉零次数比較による次数 −1 族の前合成は符号付きで全自然。
+方針：元回転入力で使用した同じ結合則の補題へ渡す。
+規約：元全次数と負符号を保持。使われ方：指定入力比較を保つ cone 全比較。 -/
+lemma dgNegativeNaturalPrecomposition {R : Type u} [CommRing R]
+    {D : Type v} [DGCategory R D] {U V W U' V' W' : D}
+    (a : GradedHom R U V 0) (b : GradedHom R V W (-1))
+    (a' : GradedHom R U' V' 0) (b' : GradedHom R V' W' (-1))
+    {n : ℤ} (f : GradedHom R U U' n) (g : GradedHom R V V' n)
+    (k : GradedHom R W W' n)
+    (ha : compose R a' f (add_zero n) = compose R g a (zero_add n))
+    (hb : compose R k b (neg_add_eq_sub 1 n) =
+      n.negOnePow • compose R b' g (sub_eq_add_neg n 1).symm) :
+    compose R k (compose R b a (zero_add (-1))) (neg_add_eq_sub 1 n) =
+      n.negOnePow • compose R (compose R b' a' (zero_add (-1))) f
+        (sub_eq_add_neg n 1).symm := by
+  exact compositeNaturality a b a' b' f g k ha hb
+
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
