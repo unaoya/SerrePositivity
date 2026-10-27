@@ -12,3 +12,6 @@
 
 # Local copies of cited papers (not redistributed; see paper/SOURCE.md)
 /paper/refs/
+
+# Python caches
+__pycache__/
