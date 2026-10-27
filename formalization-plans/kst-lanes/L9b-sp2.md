@@ -253,3 +253,18 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7842 jobs）。所有変更葉に新しい警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：546 modules／5902 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉5本・所有 D3 葉2本の端点表示整理・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
+
+## 2026-10-27：次段比較の loop 像と次段像の比較を全図式で接続
+- `commonChosenStageLoopedCanonicalSquareFamily`／`_SquareIso`：元の次段の指定図式比較へ同じ通常 loop を後合成し、実次段像との同じ全四角形比較を保持。
+- `commonChosenStageLoopedCanonicalSquareFamily_isLoop`／`_Family`／`_DiagramIso`：この同じ像の loop 性を元の実次段像との比較から認証し、実 loop 全図式へ因子化。通常 loop が任意の図式を保存するという新仮定は置かない。
+- `commonChosenStageLoopedCanonicalFamily_corner`／`commonChosenStageLoopImageFamily_corner`：二つの全族の各角は元の同じ角へ通常 loop を施した作用に厳密一致。
+- `commonChosenStageLoopedCanonicalDiagramIso_projection`／`_corner`／`_target`：充満忠実な逆像の指定値を回収し、各角で元の次段比較の同じ後合成、終点で元の厳密等式の同型を回収。
+- `commonChosenStageLoopImageComparison`／`_target`：二つの標準模型を、元の厳密終点を共有する同じ実 fiber 内で比較し、同じ指定等式同型の射影を保持。
+- `commonChosenStageLoopImageComparison_triangle`：実次段像からの標準比較は、元の次段比較の loop 像と、保持した標準模型間比較の合成に全図式で一致。終点射影の充満忠実性から反映して証明。
+- `commonChosenStageLoopImageComparison_structure`／`_source`：元の BF 構造の自然性を、この同じ三角形へ接続。全図式と始点評価で同じ比較因子を保持。
+- **残る B**：保持した標準模型間比較の始点成分を、元の右射影の構造正方形と接続し、refined／実始点比較を BF 全体の FunctorIso へ組む。比較因子を恒等と見なしたり、今回の全図式三角形だけから BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
+
+### 次段 loop 像・標準模型間比較の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（7845 jobs）。新規3葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：549 modules／5936 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉3本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
