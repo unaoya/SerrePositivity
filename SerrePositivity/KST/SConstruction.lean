@@ -3189,4 +3189,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeInrTransport
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedInclusion
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperActualBoundary
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRealizedBoundary
+public import SerrePositivity.KST.SConstruction.DGPerfectTriangleLift
+
 /-! # ∞-S• 構成と連結 K 理論 -/
