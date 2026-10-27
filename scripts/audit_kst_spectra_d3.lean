@@ -70,7 +70,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3PointedKanUnitIso,
     `SerrePositivity.KST.Spectra.D3LoopDiagramTransport,
     `SerrePositivity.KST.Spectra.D3PointedKanLoopSection,
-    `SerrePositivity.KST.Spectra.D3CommonStageSourceComparison]
+    `SerrePositivity.KST.Spectra.D3CommonStageSourceComparison,
+    `SerrePositivity.KST.Spectra.D3StageStructure,
+    `SerrePositivity.KST.Spectra.D3CommonStageStructure,
+    `SerrePositivity.KST.Spectra.D3StageStructureFunctor,
+    `SerrePositivity.KST.Spectra.D3StageLoopStructureFamily]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
