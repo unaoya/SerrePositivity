@@ -6,6 +6,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.TensorDegreeSeparation,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.QuotientWordSeparation,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorSeparation,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonWordRigidity,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeSimplexLift,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonSimplexLift,
@@ -124,3 +129,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgProjectiveClosureFunctor_obj_eq_of_sourceIso
 #check SerrePositivity.InfinityCategories.dgSuspensionCone_eq_of_iso_of_nativeUnit
 #check SerrePositivity.InfinityCategories.dgSuspensionNativeHom_vertexIso
+
+#check SerrePositivity.InfinityCategories.epsilon_original_component_zero
+#check SerrePositivity.InfinityCategories.quotientEpsilonCellParameter_component_zero
+#check SerrePositivity.InfinityCategories.quotientEpsilonCellHom_component_zero_of_degree_ne_zero
+#check SerrePositivity.InfinityCategories.quotientEpsilonCell_unit_not_boundary

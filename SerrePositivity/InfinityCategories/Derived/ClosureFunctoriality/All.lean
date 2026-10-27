@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonWordRigidity
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeSimplexLift
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ModuleExtension
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Perfect

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData
 

@@ -43,6 +43,23 @@ lemma dgCellUnitCoefficient_split (x : D) :
       rw [dgCellStageZeroRetraction_split, Category.id_comp]
       exact congrArg (fun f => f.f 0) (dgCellInitialUnitProjection_split R D x)
 
+/-- cell 分解の単位の係数を、係数環の元として読む。 -/
+def dgCellUnitScalar (x : Source R D) :
+    (homObject R (Source R D) x x).X 0 →ₗ[R] R :=
+  (dgCellUnitCoefficient R D x.val ≫
+    (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat R))).hom).hom
+
+lemma dgCellUnitScalar_unit (x : Source R D) :
+    dgCellUnitScalar R D x (unitElement R x).val = 1 := by
+  let s := (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat R))).inv (1 : R)
+  have h := ConcreteCategory.congr_hom (dgCellUnitCoefficient_split R D x.val) s
+  change dgCellUnitCoefficient R D x.val ((unitElement R x).val) = s at h
+  change (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat R))).hom
+    (dgCellUnitCoefficient R D x.val ((unitElement R x).val)) = 1
+  rw [h]
+  exact ConcreteCategory.congr_hom (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat R))).inv_hom_id
+    (1 : R)
+
 /-- 分解の各対象の単位は、鎖の元として非零である。 -/
 lemma dgCellResolution_unit_ne_zero [Nontrivial R] (x : Source R D) :
     (unitElement R x).val ≠ 0 := by

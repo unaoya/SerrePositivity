@@ -231,6 +231,19 @@ D の `28e721b49` の interval 比較アダプタを確認。比較経路を使�
 `intervalMappingVertexOfEdge (dgNativeMappingVertexEdge R A B p)` と q 版の
 `VertexIso` への写像。`coherentHomIntervalComparison` を使う型をユーザー経由で報告済み。
 恒等入力の比較の照会もユーザーが D へ中継済み。
+D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEdgeEq`
+は最終辺から商作用辺への比較を消費する型で一致。比較の実例は未供給。
+
+### 固定 ε Hom の成分の必要条件
+
+`EpsilonCellRigidity` を独自 All・監査へ登録（主経路への追加なし）。
+`quotientEpsilonCellParameter_component_zero`：標的が `Source R D` の場合、
+ε 整合パラメータの各 null 対象 b での成分は、次数 q ≠ 0 または像対象が異なれば零。
+`quotientEpsilonCellHom_component_zero_of_degree_ne_zero` は正本 ε Hom への適用。
+`quotientEpsilonCell_unit_not_boundary`：非零環かつ null 対象があるなら、
+ε 関手圏の単位は同じ ε Hom 複体内で境界にならない。標的 cell の H⁰ については未主張。
+証明は単一 ε 語の分離・tensor の二次数分離・cell 単位の係数 1 による消去。
+この条件だけで入力族の存在／不存在は結論しない。native 可逆比較への帰結を次に調べる。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
@@ -254,7 +267,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 33 葉・409 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 38 葉・468 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。
