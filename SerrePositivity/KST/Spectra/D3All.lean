@@ -74,6 +74,9 @@ public import SerrePositivity.KST.Spectra.D3IteratedLoopDiagramReflection
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointIteratedLoops
 public import SerrePositivity.KST.Spectra.D3IteratedLoopDiagramProjection
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderComparison
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderFaces
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderModels
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointOrderCorrection
 
 /-!
 概要：Sp-2 の d3 専用集約。

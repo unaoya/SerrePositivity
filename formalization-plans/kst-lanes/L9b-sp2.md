@@ -275,21 +275,15 @@
 - **残る B**：元の切断補正の指定終点値と左右単位図式を合成し、保持した模型比較と必要な比較の同じ値、および commonChosenStageLoopModelCorrection と必要な補正との一致を回収する。今回の componentIso 一致を主対象の模型補正一致と数えない。BF 全体の整合と B の実値も未完。現経路を維持し、指定された報告・経路変更・R 窓運用を継続。
 - 保存検証：D3All ビルド合格（7924 jobs）、新規四葉に警告なし。専用監査合格：607 modules／6615 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有7ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
 ## 2026-10-27：元の切断補正と指定単位面模型を全図式で照合
-- `d3PointedKanEndpointTargetIso_value`／`d3PointedKanUnitSectionIso_target`：元の指定終点単位と、その厳密切断への後合成が、同じ単位内部 Hom 比較の逆の指定値を回収することを認証。既存の構成・選択は変更しない。
-- `d3DoubleEndpointLeftTargetIso_unit`：単位対象上の左単位比較は、同じ右単位子の制限に一致。元の逆パラメータ比較の逆射保存と左右単位子の一致を使用し、円交換因子は比較しない。
-- `d3PointedKanSection_rightUnit_model`：元の切断補正と右単位全図式比較の合成は、元の単位比較を切断へ後合成して指定実面模型へ送る比較そのもの。指定終点を照合し、終点評価の充満忠実性で全図式・全 Hom の一致を反映。終点輸送は一般補題に分離し、元の値を保持したままカーネルの巨大展開を解消。
+- `d3PointedKanEndpointTargetIso_value`／`d3PointedKanUnitSectionIso_target`：元の指定終点単位と、その厳密切断への後合成が、同じ単位内部 Hom 比較の逆の指定値を回収することを認証。既存の構成・選択は変更しない。 `d3DoubleEndpointLeftTargetIso_unit`：単位対象上の左単位比較は、同じ右単位子の制限に一致。元の逆パラメータ比較の逆射保存と左右単位子の一致を使用し、円交換因子は比較しない。 `d3PointedKanSection_rightUnit_model`：元の切断補正と右単位全図式比較の合成は、元の単位比較を切断へ後合成して指定実面模型へ送る比較そのもの。指定終点を照合し、終点評価の充満忠実性で全図式・全 Hom の一致を反映。終点輸送は一般補題に分離し、元の値を保持したままカーネルの巨大展開を解消。
 - **残る B**：この全図式一致の始点で指定 loop 単位の自然性を貼り、looped canonical 側と canonical image 側の実模型接続の同じ指定終点・比較値を回収して、保持した模型補正と必要な補正の一致を証明する。BF 全体の整合と B の実値も未完。現経路を維持し、指定された報告・経路変更・R 窓運用を継続。
 - 保存検証：D3All ビルド合格（7925 jobs）、新規葉に警告なし。専用監査合格：608 modules／6626 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有4ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
 ## 2026-10-27：元の単位面始点自然性から保持済み模型比較の同じ値を回収
-- `d3PointedKanUnitLoop_source_square`／`d3PointedKanUnitFace_source_triangle`：全関手空間の前後合成交換と指定単位面の全図式一致を貼り、元の単位 loop 像・実面始点比較の合成が元の端点表示・右単位図式の始点比較に厳密一致すると認証。元の単位・切断・模型を変更しない。
-- `d3DoubleEndpointLeftConnections_target_agreement`：元の端点円表示と同じ右単位子の制限値を両側で回収し、looped canonical 側と canonical image 側の同じ実右面への二接続の指定終点値が全関手空間で一致すると認証。円交換因子の直接比較なし。
-- `commonChosenStageLoopImageComparison_doubleEndpoint`：同じ終点入力に前合成し、終点評価の充満忠実性で反映することで、保持した元の段模型比較と canonical image 接続の合成が looped canonical 接続そのものに全図式で一致すると認証。比較を選び直さず、元の模型比較の同じ値を回収。
+- `d3PointedKanUnitLoop_source_square`／`d3PointedKanUnitFace_source_triangle`：全関手空間の前後合成交換と指定単位面の全図式一致を貼り、元の単位 loop 像・実面始点比較の合成が元の端点表示・右単位図式の始点比較に厳密一致すると認証。元の単位・切断・模型を変更しない。 `d3DoubleEndpointLeftConnections_target_agreement`：元の端点円表示と同じ右単位子の制限値を両側で回収し、looped canonical 側と canonical image 側の同じ実右面への二接続の指定終点値が全関手空間で一致すると認証。円交換因子の直接比較なし。 `commonChosenStageLoopImageComparison_doubleEndpoint`：同じ終点入力に前合成し、終点評価の充満忠実性で反映することで、保持した元の段模型比較と canonical image 接続の合成が looped canonical 接続そのものに全図式で一致すると認証。比較を選び直さず、元の模型比較の同じ値を回収。
 - **残る B**：実二方向模型上の始点値と保持した単位の照合から commonChosenStageLoopModelCorrection と必要な補正との一致を証明し、BF 全体の全 Hom・全単体整合を構成する。今回の全図式比較値の回収を主対象の補正一致とは数えない。補正一致・B 実値は未完。現経路のまま、証明成立または閉じないとの判断時に先にチャット報告し、経路切替はユーザー判断。R 窓開始は未通知。
 - 保存検証：D3All ビルド合格（7929 jobs）、新規三葉に警告なし。専用監査合格：611 modules／6655 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有6ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
 ## 2026-10-27：保持済みの全段補正を同じ全入力上の実二方向比較へ還元
-- `d3CanonicalImageLeftDiagramIso_unit_pasting`／`d3LoopedSectionLeftDiagramIso_unit_pasting_endpoint`：元の canonical image 単位と looped canonical 単位を、それぞれ同じ端点円表示の通常 loop 像と指定右・左実面始点比較の合成へ厳密照合。全関手空間の前後合成交換を用い、単位・切断・模型を選び直さない。
-- `d3DoubleEndpointLoopModelCorrection_value`：二つの元の実模型接続から全入力比較を構成し、その指定単位補正が、同じ実面の左右始点比較の差を元の端点円表示で移した値に厳密一致すると認証。円交換因子の直接比較なし。
-- `commonChosenStageLoopImageComparison_section`／`commonChosenStageCanonicalImageUnitIso_section`／`commonChosenStageLoopModelCorrection_section`：保持した各段の模型比較・単位・補正全体が、同じ全入力比較・単位・補正への元の厳密終点入力による前合成そのものと認証。段補正を選び直さず、元の値を一つの実二方向模型へ還元。
+- `d3CanonicalImageLeftDiagramIso_unit_pasting`／`d3LoopedSectionLeftDiagramIso_unit_pasting_endpoint`：元の canonical image 単位と looped canonical 単位を、それぞれ同じ端点円表示の通常 loop 像と指定右・左実面始点比較の合成へ厳密照合。全関手空間の前後合成交換を用い、単位・切断・模型を選び直さない。 `d3DoubleEndpointLoopModelCorrection_value`：二つの元の実模型接続から全入力比較を構成し、その指定単位補正が、同じ実面の左右始点比較の差を元の端点円表示で移した値に厳密一致すると認証。円交換因子の直接比較なし。 `commonChosenStageLoopImageComparison_section`／`commonChosenStageCanonicalImageUnitIso_section`／`commonChosenStageLoopModelCorrection_section`：保持した各段の模型比較・単位・補正全体が、同じ全入力比較・単位・補正への元の厳密終点入力による前合成そのものと認証。段補正を選び直さず、元の値を一つの実二方向模型へ還元。
 - **残る B**：この全入力上の左右実面始点比較の差と、必要な全図式反転の作用との一致を実証し、BF 全体の全 Hom・全単体整合を構成する。今回の指定値の還元を必要な補正との一致とは数えない。主対象の補正一致・B 実値は未完。現経路のまま、証明成立または閉じないとの判断時に先にチャット報告し、経路切替はユーザー判断。R 窓開始は未通知。
 - 保存検証：D3All ビルド合格（7933 jobs）、新規四葉に警告なし。専用監査合格：615 modules／6688 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有7ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
 ## 2026-10-27：同じ四次元実図式の反復 loop 認証と指定単位面を保つ全図式比較
@@ -298,3 +292,9 @@
 - `d3DoubleEndpointOrderComparison`／`_projection`：反復実図式の内側終点射影の自明 Kan 性を使い、元の左右単位面比較を指定終点に持つ同じ全四次元図式比較を構成。二つの反復図式の `_projection` は元の同じ単位面族を厳密回収し、比較の射影も元の指定値そのもの。円交換因子の直接比較なし。
 - **残る B**：この反復全図式比較の始点作用を、保持済みの左右実面始点比較の差へ戻して必要な全図式反転と照合する。主対象の補正一致・BF 全体の全 Hom・全単体整合・B 実値は未完。今回の反復図式構成と射影 RLP を BF 比較の完成とは数えない。現経路のまま、証明成立または閉じないとの判断時に先にチャット報告し、経路切替はユーザー判断。R 窓開始は未通知。
 - 保存検証：D3All ビルド合格（7937 jobs）、新規四葉に警告なし。専用監査合格：619 modules／6722 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有7ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
+## 2026-10-27：保持補正を全四次元比較の実始点作用へ回収・現経路の閉鎖判断を報告
+- `d3DoubleEndpointOrderFaceIso_target`／`_model`／`d3DoubleEndpointOrderFaceSourceIso_pasting`：全四次元比較の各外側面は、元の指定左右単位比較を終点に持ち、左指定模型と貼ると元の右指定模型を厳密回収する。同じ切断単位を貼り、元の左右始点表示まで同じ指定値の一致を認証。
+- `d3DoubleEndpointOrderRealSourceIso_pasting`／`d3DoubleEndpointLoopModelCorrection_order_value`：保持した全入力模型補正は、全四次元比較の同じ実始点作用の逆を元の同じ total 単位で移した値そのもの。各段への還元も前節の同じ証明で保持。円交換因子の直接比較・新しい最終仮定なし。
+- **閉鎖判断（チャット報告済み）**：現経路の終点 RLP・充満忠実性による比較回収だけからは、実始点作用と必要な全図式反転との一致を指定できず、主対象の補正一致は閉じないと判断。実際の補正一致が偽という主張ではない。指定単位面の全四次元比較の存在・値の回収と、始点を固定する比較証拠を区別する。経路切替は未実施、ユーザー判断待ち。
+- **残る B／再開点**：同じ total 単位を U、同じ実始点作用を O、looped 単位を u、切断 loop 像族の反転を ρ、同じ実模型接続の始点を x として、未証明の U ≪≫ O.symm = (u ≪≫ ρ) ≪≫ x を閉じる始点固定の幾何的比較証拠が必要。その後 BF 全体の全 Hom・全単体整合と NativeLoopComparison の実値を構成する。共通解像・境界付き Hom の RLP への切替はユーザー判断後。R 窓開始は未通知、検証済み区切りを保存して停止準備。
+- 保存検証：D3All ビルド合格（7940 jobs）、新規三葉に警告なし。専用監査合格：622 modules／6745 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有6ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
