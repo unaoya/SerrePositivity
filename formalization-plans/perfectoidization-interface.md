@@ -185,7 +185,7 @@ Prop 8.5 の π₀ 依存性によりこれは `(S^∧)_perfd` と同じであ�
 | perfd | Def 8.2 の関手的構成 → 底の導来加群へ忘却 → E3 の P。E2a では E∞ 代数のモデル表示比較を通して P_E を選ぶ。非完備 S は §2 の拡張 |
 | unit | Def 8.2 の E∞-S 代数構造 → 構造写像 `S → S_perfd` と自然性。E3 は底の辺と H⁰ の環準同型をともに保持。Prop 8.5 の比較はこの単位と両立 |
 | H⁰ の環構造 | E∞ 構造 → π₀ の可換環構造と射の乗法保存。E3 は `H0RingData` として明記。別証明は Prop 8.5 → `D≥0` 上の H⁰ の極限保存 → 通常の環の極限から環構造を移す。比較は各射・単位・極限の射影に自然 |
-| coconnective | Lemma 8.4 → `∀ i < 0, Hⁱ(P S)=0`。E2a は U(P_E S) に同じ条件。離散性や `H¹=0` は含まない |
+| coconnective | **2026-10-26 に削除**。Lemma 8.4 → `∀ i < 0, Hⁱ(P S)=0` はどの橋からも読まれず、`sorry` が必要より強い主張を仮定していたため、E3 と CAlg 版の両方から外した（bhatt-scholze-e3-coconnective.md） |
 | universal（離散時） | Cor 8.14 → H⁰(P S) の perfectoid 性と一意因子分解。Cor 8.14 の証明は導来 Nakayama・Lemma 7.7・Lemma 2.34 と Prop 8.13 を使う。E2a の写像空間形には離散代数間の Map^h が離散な環準同型集合である一般比較を足す |
 | limit | Prop 8.5 と §2.1 の u-small Čech・coinitiality の確認 → 制限した極限表示 → E∞ 代数の極限を底で計算する HA Cor 3.2.2.5 → E3 の `IsLimitCone`。E2a も `PerfUnder_u(S)` を使う。S 上の指定錐、単位、H⁰ の各射影の乗法整合性も保持 |
 | integral | Thm 10.11（p 完備化した整写像）→ 離散かつ perfectoid。非完備整代数への拡張は §2.2。別の検算：Thm 1.17(1) の普遍環が `PerfUnder_u S` の始対象 → 制限した極限計算 → 同じ離散対象。界面から存在入力を導く際はこの検算を証明に逆流させない |

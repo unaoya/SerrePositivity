@@ -39,3 +39,9 @@ curl -L -o lech.pdf "https://raw.githubusercontent.com/openai/math/adc7f1241b42e
   arXiv:2209.04046（形式化で参照する版は v4、2025-07-03）。https://arxiv.org/abs/2209.04046v4
   掲載誌: Invent. Math. 244 (2026), 357–454（Lech の論文の文献表による）。DOI 10.1007/s00222-025-01399-w（検索結果から。未確認）。
   手元のファイル名: `paper/refs/CLMST-2209.04046v4.pdf`
+- BS: B. Bhatt, P. Scholze, *Prisms and prismatic cohomology*.
+  形式化で参照する版は著者公開版 https://people.mpim-bonn.mpg.de/scholze/prisms.pdf （2026-10-14 取得）。
+  arXiv:1905.08229v3 とは §1・§2、§7.3 以降の §7、§8・§9 の番号がずれる
+  （例：著者版 Thm 1.17 は perfectoid 化、André の補題は Thm 7.14、Cor 8.13 は 8.14）。
+  プロジェクトが引用する 7.3・7.4・8.5・10.7・10.11 は両版で同じ番号。引用番号は常に著者版に従う。
+  手元のファイル名: `paper/refs/BS-prisms-author.pdf`

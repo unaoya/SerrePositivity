@@ -28,7 +28,7 @@ limit は Type u の perfectoid 標的への制限付き極限である。
 structure PerfectoidizationInterface (R : perfectoid 環, p) where
   perfd        : N(C_R) ⟶ CAlg_R            -- C_R：導来 p 完備 R 代数の 1 圏（通常の環）
   unit         : j ⟹ perfd                   -- 各 A に A → A_perfd、自然（単体的ホモトピー）
-  coconnective : ∀ A, H^{<0}(perfd A) = 0                               -- Lemma 8.4
+  coconnective : ∀ A, H^{<0}(perfd A) = 0                               -- Lemma 8.4（2026-10-26 に削除：どの橋も読まないため）
   universal    : ∀ A, ∀ perfectoid T, Map(perfd A, j T) ≃ Map(j A, j T)  -- Prop 8.5
   integral     : ∀ A が R 上整, perfd A は離散で perfectoid               -- Thm 1.17(1)
   excision     : ∀ (A → B, I, arc 条件), perfd の四角形は CAlg_R で引き戻し -- Cor 8.12
