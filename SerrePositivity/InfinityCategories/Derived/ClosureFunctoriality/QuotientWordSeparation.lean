@@ -37,6 +37,31 @@ lemma dgQuotientWordProjection_other (w v : Word S) (h : v ≠ w) :
   rw [Sigma.ι_desc]
   simp [h]
 
+/-- 内部 path 直和の次数別普遍性。複体射でない成分族も貼り合わせる。 -/
+def dgQuotientDegreeDesc (n : ℤ) (M : ModuleCat R)
+    (f : ∀ w : Word S, (term R D w x y).X n ⟶ M) :
+    (internalHom R D S x y).X n ⟶ M :=
+  (isColimitOfPreserves (HomologicalComplex.eval (ModuleCat R) (.up ℤ) n)
+    (colimit.isColimit (Discrete.functor (fun w : Word S => term R D w x y)))).desc
+    { pt := M
+      ι := Discrete.natTrans (fun w => f w.as) }
+
+lemma dgQuotientDegreeDesc_ι (n : ℤ) (M : ModuleCat R)
+    (f : ∀ w : Word S, (term R D w x y).X n ⟶ M) (w : Word S) :
+    (ι R D S x y w).f n ≫ dgQuotientDegreeDesc R D S x y n M f = f w :=
+  (isColimitOfPreserves (HomologicalComplex.eval (ModuleCat R) (.up ℤ) n)
+    (colimit.isColimit (Discrete.functor (fun w : Word S => term R D w x y)))).fac _
+      (Discrete.mk w)
+
+/-- 内部 path 直和の次数別射は、同じ各語上の値で決まる。 -/
+lemma dgQuotientDegreeHom_ext (n : ℤ) (M : ModuleCat R)
+    (f g : (internalHom R D S x y).X n ⟶ M)
+    (h : ∀ w : Word S, (ι R D S x y w).f n ≫ f = (ι R D S x y w).f n ≫ g) :
+    f = g :=
+  (isColimitOfPreserves (HomologicalComplex.eval (ModuleCat R) (.up ℤ) n)
+    (colimit.isColimit (Discrete.functor (fun w : Word S => term R D w x y)))).hom_ext
+      (fun w => h w.as)
+
 /-- 指定語の包含は全ての次数で単射。 -/
 lemma dgQuotientWordInclusion_injective (w : Word S) (n : ℤ) :
     Function.Injective ((ι R D S x y w).f n) := by

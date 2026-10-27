@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonDiskObstruction
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeRepresentableRequirement

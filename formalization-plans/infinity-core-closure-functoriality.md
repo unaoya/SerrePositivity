@@ -269,31 +269,31 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
-残る工程：
+最新判定：`NativeActionNonemptinessBoundary` を独自集約・監査に登録。
+`DGSuspensionCoherentActionInput.data` は固定 sphere data との一致を要求しない。
+`nativeDiskCommonDataComparison`：両入力辺に同じ許容 data を選ぶと最終 native 自己同型がある。
+`not_nativeDisk_all_admissible_data_separated`：全許容 data の組を比較不能とする主張は偽。
+`no_nativeDisk_fixedData_action_of_no_comparison`：最終比較型の空性が得られた場合の条件付き否定。
+その前提 `¬ Nonempty (nativeDiskSuspensionComparisonType R κ hκ)` は未供給。
+ε core での非存在を最終商関手圏での非存在へ移す推論は未供給。bare 採用境界の空性は未証明。
+既存 `nativeDiskSuspensionComparisonOfAction` は端点固定 edgeIso を既に考慮する。
 
-- ε core 経由の工程 1 は上記反例で否定。ε 所属を仮定して主経路へ登録しない。
-- ε core を経由せず、固定出力 native Hom への全単体作用と固定 data の比較を構成する。
-  Fun∞ 側の商の普遍性を使う場合も、同じ固定出力への全写像空間の接続が必要。
-  新しい商・模型への置換や収縮の変更を、元の目標の達成と数えない。
-- 固定 PerfDGInput の全 Hom に対する SSet 射作用を構成する。
-- 豊穣単位・合成と高次比較を証明し、coherentNerveMap を得る。
-- 頂点の厳密等号と、元の実商関手の辺との端点固定 VertexIso を照合する。
-- 正本 `DGSuspensionCoherentActionInput` を構成し、K-B3 の K-7 c4 へ公開名を報告。
-
-単独の cone 関手、通常射の恒等・合成則、対象別存在だけで
-全単体作用 map と edgeIso が供給済みになったとは数えない。
+模型変更時の流用範囲：D-3・perfect 保存・strict data は実関手として保持できる。
+quasi-functor／bimodule または cofibrant 入力関手圏では、商への局所化、全 Hom の比較、
+単位・合成・高次整合を新規に供給する必要がある。cofibrant 置換だけで十分とは未証明。
+`NativeIntervalIso` は現行 native Hom に特殊化しており、新 Hom 比較の版が必要。
+元の固定模型へ戻る全 Hom 比較がなければ、模型変更を元の目標の達成とは数えない。
+工程 1 の他の構成は停止。正本の map・edgeIso は依然未供給。
 
 ## 検証
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
-両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 48 葉・678 宣言で成功。
+両独自集約のビルド成功。監査は 50 葉・711 宣言で成功。主経路 `NativeAll` は変更なし。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。
 
 検証コマンド：
-
 ```sh
 lake build SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All SerrePositivity.InfinityCategories.Derived.SuspensionAction.All
 lake env lean scripts/audit_derived_closure_functoriality.lean

@@ -6,6 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionNonemptinessBoundary,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeIntervalIso,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionRequirement,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair,
@@ -175,3 +177,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.nativeIsoOfNativeIso
 #check SerrePositivity.InfinityCategories.nativeDiskSuspensionComparisonType
 #check SerrePositivity.InfinityCategories.nativeDiskSuspensionComparisonOfAction
+
+#check SerrePositivity.InfinityCategories.nativeDiskCommonDataComparison
+#check SerrePositivity.InfinityCategories.not_nativeDisk_all_admissible_data_separated
+#check SerrePositivity.InfinityCategories.nativeDiskActionUsesFixedData
+#check SerrePositivity.InfinityCategories.no_nativeDisk_fixedData_action_of_no_comparison
+#check SerrePositivity.InfinityCategories.dgQuotientDegreeDesc
+#check SerrePositivity.InfinityCategories.epsilonTensorLeftRetraction_apply
