@@ -18,6 +18,7 @@ D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣
 公理監査が終了コード 0 で通過。両独自集約のビルドも成功。
 固定収縮の二次補正まで追加した 21 葉・211 宣言の公理監査も終了コード 0。
 cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・233 宣言も監査通過。
+零入力による dg 供給型の反例を含む 27 葉・300 宣言も監査通過。
 
 実装済みの葉：
 
@@ -135,6 +136,24 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
 - D-S は工程 1 の native Hom 作用を続行し、その Hom が D の ε 整合条件に
   入ることも証明する。交換差の境界性だけでは所属を結論しない。
 - 工程 1 と 2 の後に、工程 3（全 map）と 4（edgeIso）を構成する。
+
+### 工程 1 の dg 供給型に対する形式化済み反例
+
+- `CellDegreeSplitting`：`dgCellStageZeroRetraction_split`。
+  各次数で最終分解から初期段への加群射の分裂を構成。鎖写像とは主張しない。
+- `CellUnitNonzero`：`dgCellResolution_unit_ne_zero`。
+  非零係数環上で、分解先の全対象の厳密単位は鎖の元として非零。
+- `CellZeroObstruction`：`no_dgCellComparisonInputFunctor`、
+  `no_dgZeroInputFamily`。一対象・全 Hom 零の dg 入力では、
+  入力関手圏の単位変換が零。dg 関手で評価した分解先の非零単位と矛盾する。
+- `SuspensionAction/ResolvedZeroObstruction`：
+  `no_dgSphereClosureResolvedInputFunctor`。D-2 の同じ新 cone へ特殊化。
+  終域を固定 ε 整合 Hom へ制限しても、忘却と評価で同じ矛盾が出る。
+- 従って、全入力の `resolvedInputFunctor : DGFunctor ...` という供給型は不可。
+  native Kan core 間の全単体 SSet 射や、元の最終 map の非存在は未証明。
+  工程 1 を native SSet 射として直接供給する型への変更をユーザーに照会中。
+  候補は入力 native core → ε 整合関手圏の dg nerve の core。
+  対象作用・固定模型・最終 map と edgeIso の目標は維持する。候補の存在は未供給。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。

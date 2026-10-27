@@ -6,6 +6,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellDegreeSplitting,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellUnitNonzero,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroObstruction,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ChoiceInvariant,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellGenerators,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ContractionComparison,
@@ -28,7 +31,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.UnconditionalData,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientParameter,
-    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientContractionComparison]
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientContractionComparison,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.ResolvedZeroObstruction]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -82,3 +86,8 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCellComparisonHom_unitGeneratorNaturality
 #check SerrePositivity.InfinityCategories.dgProjectiveClosureFamilyImage_index_eq_of_iso
 #check SerrePositivity.InfinityCategories.dgProjectiveClosureFunctor_obj_eq_of_iso
+
+#check SerrePositivity.InfinityCategories.dgCellResolution_unit_ne_zero
+#check SerrePositivity.InfinityCategories.no_dgCellComparisonInputFunctor
+#check SerrePositivity.InfinityCategories.no_dgZeroInputFamily
+#check SerrePositivity.InfinityCategories.no_dgSphereClosureResolvedInputFunctor
