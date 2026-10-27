@@ -3166,4 +3166,8 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRota
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingInclusion
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationExtendedNative
 
+public import SerrePositivity.KST.SConstruction.DGCellIdentityGraphYonedaNative
+public import SerrePositivity.KST.SConstruction.DGCellYonedaExtensionNative
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationYoneda
+
 /-! # ∞-S• 構成と連結 K 理論 -/

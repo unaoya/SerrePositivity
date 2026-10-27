@@ -35823,3 +35823,12 @@ end SerrePositivity.KST.SConstruction
 
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInverseRotationAugmentedNativeComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInverseRotationAugmentedNativeComparison
+
+#check @SerrePositivity.KST.SConstruction.dgCellIdentityGraphYonedaNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellIdentityGraphYonedaNativeComparison
+#check @SerrePositivity.KST.SConstruction.dgCellYonedaExtensionNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellYonedaExtensionNativeComparison
+#check @SerrePositivity.KST.SConstruction.dgCellYonedaProjectionNativeComparison
+#print axioms SerrePositivity.KST.SConstruction.dgCellYonedaProjectionNativeComparison
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInverseRotationYonedaComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisInverseRotationYonedaComparison
