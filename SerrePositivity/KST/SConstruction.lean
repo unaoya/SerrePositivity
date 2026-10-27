@@ -3255,4 +3255,10 @@ public import SerrePositivity.KST.SConstruction.DGFunctorTensorEvaluation
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluation
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisFullConeTriangle
 
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluationPoint
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndSquare
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndEvaluation
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeFullSquare
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisFullConeSquare
+
 /-! # ∞-S• 構成と連結 K 理論 -/
