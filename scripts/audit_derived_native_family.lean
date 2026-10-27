@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
@@ -12,6 +13,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureQuotientEdge,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
@@ -57,3 +59,6 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeEdgeIso
 #check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientComparison
 #check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientEdgeEq
+
+#check SerrePositivity.InfinityCategories.DGSuspensionFixedUnitComparison
+#check SerrePositivity.InfinityCategories.DGSuspensionFixedCompositionComparison

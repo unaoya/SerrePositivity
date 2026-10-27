@@ -180,3 +180,9 @@
 - `dgSuspensionEdgeIsoOfQuotientComparison`／`dgSuspensionEdgeIsoOfQuotientEdgeEq` は、最終 dgSuspensionMappedEdge から商作用辺への指定同型／一単体等号を受け取り、採用 edgeIso と同じ型を返す。最終 map やその辺比較の存在は未供給。D-4b 後半 square／square_at は map 待ちを維持。
 - 対象・集約 build14949 jobs、専用監査81宣言／9モジュール成功、許容三公理のみ。import 閉包9163モジュール、循環なし。D-S NativeTarget の追加もコミット済みとなった。今回消費する core／object／vertex／map／map_vertex の五宣言は HEAD と本文一致を確認。
 - 最終全体監査26170宣言／2979モジュール成功、許容三公理のみ、終端0。専用監査も終端0。コミット前の import 閉包再確認で循環・外部未コミット依存なし。準備比較は完成し、最終 map の辺比較と D-4b 後半は D-S の供給待ちを維持する。
+
+### 固定 data の恒等・合成の比較
+- 追加依頼：固定 data の恒等入力と実懸垂の恒等射、および固定合成入力と二つの実入力射の合成を、同じ端点固定 intervalMappingSpace 内で比較する。ε 圏の単位・合成則では代用しない。
+- `DGSuspensionFixedUnitComparison`／`DGSuspensionFixedCompositionComparison` の型を先行公開。右辺はそれぞれ実懸垂の恒等射／固定入力射二本の合成。入力射自体の厳密等号からの OfEq アダプタも提供。無条件の比較実体はまだ供給しない。
+- D-S へユーザー経由で型を報告済み。cone の全 Hom 自然な実比較と、固定 cell 分解・商の関手圏での比較を区別して構成を進める。
+- 型の先行検証：SuspensionFixedCoherenceTypes build12988 jobs、Derived 集約14950 jobs、専用監査87宣言／10モジュール成功。許容三公理のみ。固定比較の無条件存在とは扱わない。
