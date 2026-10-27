@@ -13,6 +13,9 @@ run_cmd do
     if env.contains duplicate then
       throwError "K-7: duplicated D coherent suspension input declaration: {duplicate}"
   let expected := #[
+    `SerrePositivity.KST.NonConnective.DGSuspensionEdgeIsoInvertibility,
+    `SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageMorita,
+    `SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageBFMorita,
     `SerrePositivity.KST.NonConnective.DGKInputPerfectZero,
     `SerrePositivity.KST.NonConnective.DGKInputDerivedZero,
     `SerrePositivity.KST.NonConnective.DGKappaSuspensionZero,
@@ -309,6 +312,12 @@ run_cmd do
   logInfo m!"K-7: {count} declarations in {modules.size} modules audited; standard axioms only."
 
 #check SerrePositivity.KST.NonConnective.dgKappaPerfectYonedaNaturality
+#check SerrePositivity.KST.NonConnective.suspensionFunctorIso_isInvertible_iff
+#check SerrePositivity.KST.NonConnective.suspensionEdgeIso_isInvertible_iff
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageFamily_morita_isInvertible
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageBFMap
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageBFMap_edge
+#check SerrePositivity.KST.NonConnective.dgSuspensionCoherentStageBFMap_piIsomorphism
 #check SerrePositivity.KST.NonConnective.dgKInputPerfect_vertex_isZero
 #check SerrePositivity.KST.NonConnective.dgKInputClassicalPerfect_isZero
 #check SerrePositivity.KST.NonConnective.dgKInputDerived_isZero

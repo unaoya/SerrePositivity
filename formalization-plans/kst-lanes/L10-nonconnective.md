@@ -18,7 +18,7 @@
 - 到着入力：`Cofinality.kSpectrumMap_cofinality`（7397052d8、指定完備化証拠のみ）と `SingleRelativeComparison.ofFirstRowSimplices`（8cd255949）を消費する。旧明示引数の入口は互換性のため保持し、新入口 `DGSuspensionThomasonSequence` では共終性を実証明で放電する。
 
 ### 現在地
-- 今回の所有集約ビルドは 16,643 ジョブで成功。専用監査は 261 モジュール・2,907 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
+- 今回の所有集約ビルドは 16,646 ジョブで成功。専用監査は 264 モジュール・2,918 宣言、標準三公理のみ、ModelCategory 型検査を含め成功。D 正本型との複製禁止も監査し、所有外は未編集。
 - c5 の対象別定義：DGNonconnectiveK で dgNonconnectiveK・各実懸垂段・元の構造辺と隣接射・実 Sp 余錐と IsColimitCone・元の全整数 π 群余極限を公開。D-8 の同じ固定 κ と実 I・P・Z を使用し、K-7 c4・K-6 d・Sp 安定性の追加仮定なし。全入力上の関手は未完成。
 - f の零保存準備：DGKInputPerfectZero／DerivedZero は固定 ν の零性を同じ実 Perf・主 Perf・主導来圏へ移し、逆向きも回収。DGKappaSuspensionZero は cone の全対象が元の perfect 集合に属することから、実商の指定 ε による全加群の acyclic 性と同じ懸垂の固定 ν 零性を証明。DGNonconnectiveKZero は全反復・元の loop 座標・実逐次整数 π 余極限を通して同じ K^{nc} 頂点の零性を証明する。同じ対象値を持つ全入力関手の preservesZero 欄はこれで埋まるが、実関手の構成・Verdier 保存・f 登録は未完。
 - 到着 K-B bcba4d552：Relative.k6Fibration・k6SuspensionStructureMap_nonnegative を消費。DGNonconnectiveKConnectiveComparison は hrow を除き、同じ実構造辺の厳密等号・隣接安定化・連結比較・全整数末尾表示を無条件化。K-6 c4 と K-7 c4 の全入力作用を区別する。
@@ -36,6 +36,7 @@
 - e：DGKappaStrictQuotientComparison は対象宇宙 u+1 で strict 商辺と固定 ν の Perf 商辺の Yoneda 自然性、元の strict 入力・ν・K への厳密下降四角形と下降 K 射の π 同型を接続。D の全作用や固定 ν の Verdier 認証は要求しない。一般 v への拡張は K-S• 正本の宇宙境界に従う。
 - e：DGNonconnectiveKMorita は元の実逐次比較と loop 座標可換性から同じ非連結 K 比較の全整数 π 同型・辺の可逆性を証明。新しい initial_morita 入口は初期の主 Perf Morita 射だけから全段保存を放電する。DGKInputDerivedCompactGeneration は既存の評価側生成証明を共通化し、DGKInputDerivedMorita は同じ主 Perf 延長同値を全主導来同値へ広げる。DGSuspensionUnconditionalIterationMorita は同じ無条件 data の実商射を反復し、全段の主導来・主 Perf 同値と固定 K 射の全整数 π 同型を供給。残る実逐次作用と座標可換性は c4 の全作用・構造辺自然性から構成する。filtered は段別保存・実 Sp filtered 余錐が未完。
 - 採用 B1 アダプタ：DGSuspensionEdgeIsoTransport・DGSuspensionCoherentActionInput・DGSuspensionCoherentStageFamily・DGSuspensionCoherentSquareFamily の 4 葉で、到着 D 51b5cc8da の正本型を直接消費する。所有側の構造・ofStrict・dgSuspensionMappedEdge は複製しない。反復の厳密 vertex、端点正規化辺と元の全単体反復像の辺成分の厳密一致、iteration_edgeIso、同じ K/loop の StageFamily_edgeIso、旧厳密段族との全射一致、hedgeIso を取る ofSquareFamily、D の square_at/suspension の直接消費を接続。hF・元の頂点・元の全四角形を保持する。正本型の無条件存在・全入力 β 自然性・最終局所化性は未供給のまま。
+- e の B1 Morita 消費：DGSuspensionEdgeIsoInvertibility は指定 FunctorIso・端点固定 interval VertexIso に沿う元の辺の可逆性輸送を証明。DGSuspensionCoherentStageMorita は新提供者の元の実 data と一致する B1 作用に対し、全反復実射との一致・同じ K/loop 入力辺と全単体段族の元の像の Morita 可逆性を供給。CoherentStageBFMorita はその元の辺成分を実逐次列の対象間の BF 射に復号し、元の辺との厳密一致・全整数 π 同型を証明。a と data 一致は消費引数であり、a の存在・構造辺 β の自然性や非連結 K 関手性は未主張。
 - e の実 filtered/逐次 BF 交換：FilteredExchangeLevelColimit は同じ filtered Kan 列の段別 BF 単射条件・通常余錐・IsColimit・元の置換射影の π 同型を任意の小 filtered 添字へ適用する。SequentialLevelColimitFunctor は既存の逐次段別 BF 余極限を元の実射で厳密関手に束ね、通常余極限関手との自然同型から余極限保存を得る。
 - SequentialFilteredExchange は filtered な実逐次 BF 図式 D に対し、行ごとの元の段別実現を先に外側 filtered BF 実現した対象から、段ごとの外側余極限を元の逐次 BF 候補へ送った対象への実 BF 交換射を構成。指定通常余錐の版と、余錐も構成済みの標準版を供給する。元の射影下の厳密可換性・全段全基点 π 同型・全整数 π 同型・同じ Sp 辺の可逆性を証明。c4・hc5・Sp 安定性を要求しない。
 - SequentialFilteredExchangeInjection は元の各行の BF 候補からの実注入を保持し、交換射の後が既存の sequentialCandidateMap と同じ hSp 射・全整数 π 作用であることを証明。同じ注入を hSp 余錐と元の候補比較余錐への射へ束ねる。一般 filtered Sp の IsColimitCone・dg filtered 図式の全作用/段別保存・最終 K^{nc} の filtered 保存は別工程で、通常 BF 余極限や hSp 余錐と同一視しない。
@@ -98,7 +99,7 @@
 - コーディネータ確認（10-24）：公開 `PresentedPerfectDGNativeLabel.lean` は読み取り専用 import が可能。`presentedPerfectDGNativeActionSimplex_label` と `presentedPerfectDGNativeAction_label_app` を利用し、全 native 分裂四角形の点ごとの評価を同じ閉ラベル作用へ照合する。供給依頼・分割は不要。禁止対象はコピーと他レーンの編集。
 
 ### 未コミット
-- なし。固定 ν の零性から実主導来・元の実懸垂・全反復を通して同じ非連結 K 頂点の零性と preservesZero 消費口を証明する新規 4 葉、集約・専用監査・本計画は検証済みで所有 7 ファイルだけを限定保存。前回は 0ee8181fb。所有外は対象外。
+- なし。B1 指定可逆比較による辺の可逆性輸送、全単体 K/loop 段族の Morita 保存、同じ元の辺の BF 復号と全整数 π 同型の新規 3 葉、集約・専用監査・本計画は検証済みで所有 6 ファイルだけを限定保存。前回は 8d42f36fd。所有外は対象外。
 - 保存注記：c2a7623c1 は共有 index の並行更新により K-B の Relative/All・ConnectiveFibrationTheorem・L3・audit_kst_fibration も併収した。K-B3 はこれらの内容を編集していない。コミット本文の所有ファイル限定という記述はこの点を訂正する。履歴・他レーンの内容は保持する。
 
 ### 既知の問題
