@@ -35675,3 +35675,39 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgIdentityHomGluingInverseRotationUpperRawTriangle
 #check @SerrePositivity.KST.SConstruction.dgIdentityHomGluingInverseRotationUpperRawComparison_inr_sign
 #print axioms SerrePositivity.KST.SConstruction.dgIdentityHomGluingInverseRotationUpperRawComparison_inr_sign
+
+-- 元小模型の Yoneda 評価と同じ実 cone image の全比較。
+#check @SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaMap
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaMap
+#check @SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaMap_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaMap_naturality
+#check @SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaStrictComparison
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaStrictComparison
+#check @SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaStrictComparison_cycle
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaStrictComparison_cycle
+#check @SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaNerveComparison
+#print axioms SerrePositivity.KST.SConstruction.dgPerfectRealizationYonedaNerveComparison
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConePostcompArrow
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConePostcompArrow
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInput
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInput
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInput_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInput_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_boundary
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_boundary
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInputIso
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageInputIso
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_arrow
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_arrow
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_isIso
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_isIso
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_cycle
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_cycle
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageNerveComparison
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImageNerveComparison
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_inr
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeImage_inr
+#check @SerrePositivity.KST.SConstruction.dgNegativeNaturalityMap
+#print axioms SerrePositivity.KST.SConstruction.dgNegativeNaturalityMap

@@ -3132,4 +3132,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationBo
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationRestriction
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperComparison
 
+public import SerrePositivity.KST.SConstruction.DGPerfectRealizationYonedaNative
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePostcompArrow
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageInput
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImage
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageComparison
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageNative
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
