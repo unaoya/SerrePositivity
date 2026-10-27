@@ -26,6 +26,8 @@ public import SerrePositivity.KST.Spectra.D3LoopDiagramReflection
 public import SerrePositivity.KST.Spectra.D3NativeLoopReflection
 public import SerrePositivity.KST.Spectra.D3LoopReflectionImage
 public import SerrePositivity.KST.Spectra.D3ComparisonOutput
+public import SerrePositivity.KST.Spectra.D3ReflectionSourceImage
+public import SerrePositivity.KST.Spectra.D3StageReflectionStructure
 
 /-!
 概要：Sp-2 の d3 専用集約。
