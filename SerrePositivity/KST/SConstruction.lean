@@ -3140,4 +3140,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageComparis
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageBoundary
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareInput
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquare
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareBoundary
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareNative
+public import SerrePositivity.KST.SConstruction.DGModuleKStrictNatTransNative
+public import SerrePositivity.KST.SConstruction.DGPerfectRealizationYonedaRestriction
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedComparison
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeNative
+
 /-! # ∞-S• 構成と連結 K 理論 -/
