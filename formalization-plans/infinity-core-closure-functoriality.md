@@ -2,6 +2,38 @@
 
 更新：2026-10-27。D と並行。担当は D-3、D-4a。
 
+## R 窓前の停止位置・再開入口
+
+現在地：`2c91afa4f4b078e8eee5670a81d45744470f4ea6`。ユーザー指定により工程 1 は停止。
+残りは R 窓後の ∞ 側パッケージへ移管。新しい Lean 作業を始めず、R2-B（`b53587371`）由来の R 窓割当を待つ。
+凍結候補（ε 経由）には触れない。CoherentStage* は凍結不可。以下の旧工程記録は経緯であり再開指示ではない。
+
+| 未証明項目 | 実作業時間の見積り | 再開条件・範囲 |
+|---|---:|---|
+| 新 Σ∞(ν f) と固定降下の模型比較 | 8〜24 時間 | Indω–導来圏・Yoneda／包含・商三角形の供給後 |
+| ν と固定 K の照合 | 16〜32 時間 | 対象値と反復列の構造射を含む図式比較。入力自然性は次項 |
+| 全高次整合 | 40〜80 時間以上 | Ind・商・K の族構成。最も不確実 |
+| 採用境界の空性 | 調査 4〜8 時間、決着は見積不能 | 未証明のまま保留。必須工程から除外 |
+
+新経路は前提の供給後に計 64〜136 時間以上。共有ビルド・供給待ちは除く。
+検証済み区切りは現在地そのもの。次の固定 A・B・f の模型比較区切りは供給後 8〜24 時間。
+再開入口（namespace `SerrePositivity.InfinityCategories`）：
+`dgSuspensionQuotientTriangle`、`dgSuspensionQuotientUniversalDescentComparison`、
+`dgSuspensionQuotientLiftedPrecomposition_isFullyFaithful`、`dgSuspensionQuotientLiftedTriangle`、
+`dgSuspensionQuotientModelComparison`、`dgSuspensionQuotientConeModelComparison`。
+必要な供給型：m=max(u+1,v)、U=uliftFunctor（各型に必要な大きい宇宙への持ち上げ）として、
+`QCatEquivalence (dgKInputIndCompletion R A) (U.obj (dgModuleDerivedInfinityCategory R A))`
+と元の perfect 包含／Yoneda との FunctorIso。これを κ-compact 部分へ制限した cone 比較 cA・cB と、
+qA・qB＝固定商射影、a・b＝新懸垂模型への比較、pA・pB＝新射影、L＝新 cone 射、G＝Σ∞(ν f) に対する：
+```lean
+FunctorIso (U.map qA ≫ a) (cA ≫ pA)
+FunctorIso (U.map qB ≫ b) (cB ≫ pB)
+FunctorIso (U.map (dgNerve.map d.cone) ≫ cB) (cA ≫ L)
+FunctorIso (pA ≫ G) (L ≫ pB)
+```
+これらの存在は未証明。上記公開入口で固定 Q(data f) の比較へ接続する。
+再検証完了：所有 57 ファイルは現在地コミットと一致。現共有依存下で両独自集約のビルド・専用監査に成功（53 葉・770 宣言、終了コード 0）。Lean／凍結候補の変更なし。
+
 ## 所有境界
 
 - `SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/` の新規葉と独自集約。
@@ -12,13 +44,7 @@
 
 ## D-3：基底非依存の f_! 関手化
 
-状態：自然比較を含めて実装・集約ビルド・独自公理監査を完了。
-D-2 の具体化を含む 13 葉・115 宣言の公理監査が終了コード 0 で通過。
-D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣言の
-公理監査が終了コード 0 で通過。両独自集約のビルドも成功。
-固定収縮の二次補正まで追加した 21 葉・211 宣言の公理監査も終了コード 0。
-cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・233 宣言も監査通過。
-零入力による dg 供給型の反例を含む 27 葉・300 宣言も監査通過。
+状態：自然比較・集約ビルド・独自公理監査を完了。最新の検証数は末尾を参照。
 
 実装済みの葉：
 
@@ -51,11 +77,9 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
 11. `SuspensionAction/ConeData`：
     `dgModuleStrictImageSuspensionMapData`、`_cone`、`_augmentation`。
     固定 cone 間の strict image を正本 `DGKappaSuspensionMapData.ofConeFunctor` へ送る。
-
 12. `Comparison`：`DGModuleStrictImage.comparison_naturality`、
     `.comparisonIso`、`.comparisonIso_hom_app`。元の実延長と代表評価の
     全 Hom 自然な同じ比較同型を、閉零自然同型へ束ねる。
-
 13. `SuspensionAction/SphereConeData`：
     `dgKappaSphereClosureSuspensionMapData`、`_cone`、`_preservesPerfect`、
     `dgKappaSphereClosureSuspensionInputMap`。D-2 のコミット済み新 cone 間の
@@ -70,20 +94,15 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
 - 共通の well-founded linear order T と Nonempty T。
 - hT：可算個の段階に共通の真の上界がある。
 - hB：各 B_i の実延長が、ある E_j と閉零射圏で同型。
-
 結論は `Set.range` の充満部分 dg 圏間の厳密 dg 関手。
 関手内部の恒等射・合成保存と、入力 F 自体に関する作用の coherence は別物。
-独立な Classical.choice の添字選択が F の恒等・合成と厳密一致するとは主張しない。
-
-前回の固定収縮補正の保存：`8bf395f1b99133cd0b1bf6ffca3635e675755b89`。
+独立な Classical.choice の選択が入力の恒等・合成と厳密一致するとは主張しない。固定収縮補正の保存：`8bf395f1b99133cd0b1bf6ffca3635e675755b89`。
 
 ## D-4a：全入力作用
 
 状態：D-2 `4cd747153` と K-B3 の切替 `354e05773` を受領。D-4a を再開。
-
 採用提供者：`KST.NonConnective.dgKappaUnconditionalStageProvider R κ hκ`。
 `dgKappaUnconditionalStageProvider_cone_newInput` によって cone は D-2 の新入力と rfl で一致。
-
 実装した追加工程：
 
 - `SuspensionAction/UnconditionalData`：`dgSuspensionUnconditionalMapData`、
@@ -97,12 +116,10 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
   `dgKappaSphereClosureExtensionInputFunctor`。
 - `ClosureFunctoriality/NativeHom`：`dgKappaSphereClosureNativeHom`、`_vertex`。
   入力関手圏の native Kan core の全単体を cone 関手圏へ送る。
-
 - `SuspensionAction/QuotientParameter`：`dgSuspensionMapContractedFunctor`、
   `dgSuspensionQuotientParameter`、`_epsilon_necessary`。
   正本 data の同じ resolved 射と選択 ε を使う、全次数変換の商への延長入口。
   同じ成分を保持する厳密延長に ε 整合が必要なことも証明する。
-
 - `ClosureFunctoriality/ContractionComparison`：
   `dgContractionCommutatorPrimitive_d`、`dgGradedContractionPrimitive_d`、
   `_d_of_closed`、`_map`。二つの固定収縮の交換差を境界で制御する。
@@ -110,10 +127,7 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
 - `SuspensionAction/QuotientContractionComparison`：
   `dgSuspensionContractionCorrection`、`_d`。正本 data の同じ ε に特殊化。
   境界であることは厳密な ε 整合の代用ではない。
-- 2026-10-27 ユーザー回答：cell comparison の native Hom 作用と固定 ε の
-  商への族作用は、K-B3・D・DifferentialGraded に既存・進行中の供給なし。
-  D-S が引き続き構成し、全単体 map は edgeIso より先に公開してよい。
-
+- 旧 cell／固定 ε の全入力経路の供給調査は完了。後述の反例により凍結。
 - `ClosureFunctoriality/CellGenerators`：`dgCellCycleSphere`、
   `_augmentation`、`_comparison`、`_comparison_element`、
   `dgCellComparisonHom_initialNaturality_mapped`。最終分解内の初期生成元の
@@ -125,17 +139,9 @@ cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・23
   選択述語の外延性によって D-3 の添字・対象選択が厳密一致する。
   Hom 作用・選択比較同型の一致や ε 整合は、ここからは結論しない。
 
-### 2026-10-27 の再分担
+### 旧 ε 経路の再分担（履歴）
 
-- 工程 2（固定 ε 商の関手変数の作用）は D に移管。D-S は実装しない。
-- D の二対象反例により、全 null 保存関手圏上の一般作用は採用しない。
-- D は ε 整合 Hom を持つ `NullPreservingFunctorsε` と商作用を供給予定。
-  ε 整合 Hom の公開名はユーザー経由の中継待ち。
-  反例は ℚ 上の一対象源と同型な二対象標的、全対象 null の形で受領。
-  元成分を変更する自由だけでも一般作用は回復しない、との数学的記録。
-- D-S は工程 1 の native Hom 作用を続行し、その Hom が D の ε 整合条件に
-  入ることも証明する。交換差の境界性だけでは所属を結論しない。
-- 工程 1 と 2 の後に、工程 3（全 map）と 4（edgeIso）を構成する。
+固定 ε 商の作用は D に移管・供給受領済み。一般作用は D の二対象反例で不採用、ε core 経由も後述の反例で閉じた。
 
 ### 工程 1 の dg 供給型に対する形式化済み反例
 
@@ -166,13 +172,11 @@ D の公開 `6b698006a`・`960649fc1` を採用。
 D の `quotientInputFunctor` に `dgNerve.map` と `quasicategoryCoreMap` を適用する。
 `coherentNerveMap` は工程 3 の全 Hom の単位・合成を確認した後で使用する。
 必要な native 射は次の形（C、D、S、T は固定）：
-
 ```lean
 (quasicategoryCore (dgNerve R (NullPreservingFunctorsε R C D S T)) : SSet) ⟶
   dgFunctorNativeMappingSpace R
     (DGQuotient.QuotientObject C S) (DGQuotient.QuotientObject D T)
 ```
-
 その値は `quasicategoryCoreMap (dgNerve.map (quotientInputFunctor R C D S T))`。
 対象 F の頂点は、同じ `quotientDGFunctor R C D F.val S T F.property` の頂点へ送る。
 D の ε Hom は元の dg 部分複体の定義のままでよい。D-S は入力 native core から
@@ -265,9 +269,7 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 `no_nativeDiskSuspensionEpsilonHom`：固定頂点を ε core 内で比較する工程 1 は存在しない。
 比較付き頂点でも不可能。主経路未登録。最終 map 自体の不存在は未主張。
 残る map は ε core を経由しない経路が必要。Fun∞ 側の商作用から固定出力 native Hom への橋は未供給。
-
 頂点は `dgKappaSuspensionKInput R A (s A).cone`。cone の全 Hom 作用で最終作用を代用しない。
-
 最新判定：`NativeActionNonemptinessBoundary` を独自集約・監査に登録。
 `DGSuspensionCoherentActionInput.data` は固定 sphere data との一致を要求しない。
 `nativeDiskCommonDataComparison`／`not_nativeDisk_all_admissible_data_separated`：同じ許容 data に自己同型。
@@ -275,7 +277,6 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 その前提 `¬ Nonempty (nativeDiskSuspensionComparisonType R κ hκ)` は未供給。
 ε core での非存在を最終商関手圏での非存在へ移す推論は未供給。bare 採用境界の空性は未証明。
 既存 `nativeDiskSuspensionComparisonOfAction` は端点固定 edgeIso を既に考慮する。
-
 StableInfinity 案の評価（設計検討のみ。quasi-functor／bimodule の実装は開始しない）：
 BGT Def.9.1 の cone は Fκ(C)=(Indω C)^κ。Indκ(C)^κ へ置き換えない。Cat^perf を標的とするなら Σκ(C)=Idem(Fκ(C)/C)。既存 Verdier 列には完備化がない。
 連結 K の ΩK(ΣC)≃K(C) は一般には不可。連結被覆の比較と非連結化を区別する。局所化不変性は Verdier 普遍性だけでなく、完全列保存・filtered colimit 保存の証明が要る。
@@ -286,7 +287,6 @@ D-3・perfect 保存・strict data は対象別 cone／商と評価比較に流�
 対象別に必要：ν(Σdg A)≃Σ∞(ν A)、さらに反復 Sp 図式全体の同値（構造辺との可換性を含む）。段ごとのスペクトル同値だけでは旧 dgNonconnectiveK の余極限比較に足りない。
 新登録関手の対象値の照合には A ごとの図式同値でよい。旧射作用の照合には A での自然性も要る。W1 の 2-cell を個別に選ぶだけで全単体関手と数えない。全高次整合を供給する。
 `StableQuotientModelComparison`：宇宙持ち上げ後の全前合成の充満忠実性・固定三角形と、`dgSuspensionQuotientModelComparison`／`dgSuspensionQuotientConeModelComparison` を構成。cone 比較・射影三角形・cone 射の自然性・新商の降下三角形から固定商射の比較を回収。新 Σ∞・これらの供給・ν と固定 K の照合・全高次整合は未証明。固定 native 比較型／bare 境界の空性も未決。
-R2-B は `b53587371` で完了・R2 正本へ反映済み。R 窓まで ε 経由の凍結候補に触れない（CoherentStage* は凍結不可）。工数目安：cone／包含比較が揃えば固定模型比較 1〜3 日、K／反復図式は数日、入力全体の高次整合は族構成に依存し 1〜2 週間。
 
 ## 検証
 
