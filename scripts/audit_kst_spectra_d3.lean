@@ -43,7 +43,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3ConeForwardTransport,
     `SerrePositivity.KST.Spectra.D3CommonLoopCone,
     `SerrePositivity.KST.Spectra.D3CommonLoopSquare,
-    `SerrePositivity.KST.Spectra.D3CommonLoopInterval]
+    `SerrePositivity.KST.Spectra.D3CommonLoopInterval,
+    `SerrePositivity.KST.Spectra.D3CommonLoopDiagramResolution,
+    `SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

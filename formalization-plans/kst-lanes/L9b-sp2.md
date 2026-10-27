@@ -1,6 +1,8 @@
-# Sp-2 — d3・s3・s5 専用計画
+# Sp-2 — d3 専用計画（s3・s5 は Sp-3 へ移管）
 
 更新：2026-10-27。正本：L9-spectra.md。開始時の採用条件を以下へ転記する。
+
+現担当：A（比較射を含む全 Hom の RLP・恒等・合成・全単体整合）→B（nativeLoop 全図式 FunctorIso）→C（d3c hΩ）→D（d3d sp_isStable）。D の公開名をユーザー経由で K-B3 d3 へ報告。D3* の WIP は保持。
 
 ## 所有・禁止事項
 - 所有：KST/Spectra/ の d3 新規葉、Spectra/D3All.lean、scripts/audit_kst_spectra_d3.lean、本計画（≤300行）。
@@ -13,9 +15,9 @@
 ### Sp-6 の三段目（第二チャット）
 - [x] s1. 固定 S・ν と商合成を照合し、源内の零化と ν 像の認証を分離する。
 - [x] s2. S 内の実零化 2-cell を構成し、指定商合成と ν 像を回収する。
-- [ ] s3. 二つの三角形を保つ具体的長方形と、K-B の DGKappaSuspensionRelativeRoofInput 用の固定 ν 上の相対 Verdier 接続を供給する。
+- s3. **Sp-3 へ移管**。移管時の記録：二つの三角形を保つ具体的長方形と、K-B の DGKappaSuspensionRelativeRoofInput 用の固定 ν 上の相対 Verdier 接続を供給する。
 - [x] s4. K-B-S c13c179e3 の実全族・厳密な底・元の Kan 単位回収・指定恒等点を適用し、元の verdierFractionMappingComparison_isFullyFaithful を追加仮定なしで公開。対象・集約・専用監査合格。
-- [ ] s5. 集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
+- s5. **Sp-3 へ移管**。移管時の記録：集約ビルド・公理監査・仮定検査を通し、公開界面と引き継ぎを保存する。
 
 ### Sp-5 d3 の三段目（I-5、10-26 再開）
 - [x] d3a. 実終対象と任意 coherent cospan の極限を有限極限生成定理へ接続する。
@@ -29,9 +31,9 @@
 - **採用済み d3b の自然性条件**：T(X) := adjointLoop (tail X.toKanSequence)、α_X := adjointLoopTailUnit。実分解 X → R(X) → T(X) の合成は各段で α_X に厳密一致する。AdjointLoopUnitRawHom が証明したのは α_X の後合成の全 Hom 比較（源の豊穣合成自然性、標的の通常射の自然性、実 π 同型）。接続済みの Compatible 系は元の射 f と置換射 g に i_X ≫ g = f ≫ i_Y を全パラメータで課す。この左因子の可換性だけから右射影 q の自然性・補助 T の全 Hom 作用・nativeLoop との比較を結論しない。FullCompatible 系は同じ全パラメータ族で左右条件を同時に保持し、元の射影の全単射 RLP・実豊穣合成・単位・元の Sp への同値・包含の全図式同型と各段の fullGradedProjection を供給する。指定 α は元の fac で回収する。nativeLoop との比較はこの成果に含めない。②は指定 loop 図式・厳密終点を保ち、点ごとの π 同型と厳密自然性から全図式 FunctorIso を組む。③は既存 nativeTailEquivalence と実 hΩ を D の一般定理へ代入する。①②を明示入力に残して完成扱いにせず、円交換因子の直接比較・evaluationPost・uncurry・d7 は再開しない。暫定見積りは①5〜8時間、②4〜7時間、③適用・集約監査1〜2時間（供給・閉包安定の待ち時間を除く、②の比較が主な不確定部分）。
 
 ## L9 転記：引き継ぎ時点
-- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。K-B-S2 bf29e6b53 の Kan 列標的の実相対分解を元の補助単位へ直接適用する（AdjointLoopRelativeBF）。Compatible 系・GradedInclusion・CoherentComparison の7葉は集約・監査へ接続済みで、元の全 Hom を回収する originalInfinityEquivalence と指定左因子を保つ inclusionFunctorIso を供給する。①の右射影 q を含む全 Hom 自然性も実構成済み。補助 loop の全パラメータ作用・制限可換性・単位の厳密自然性は AdjointLoopParameterHom。二変数 corner は許可に従い Sp の新葉で実構成し、RawSpectrumMapping.relativeCorner_rlp_monomorphisms／relativeCorner_trivialKanFibration と元の二射影・全段評価を供給する。同じ単位・右射影へ実適用した FullCompatible 系は、左右の条件を同時に保つ全 Hom の恒等・合成・結合律、元の Sp を回収する fullOriginalInfinityEquivalence、元の包含を成分とする fullInclusionFunctorIso、各段の実右射影を全 Hom 上で保つ fullGradedProjection を供給する。AdjointLoopRelativeNativeDiagram は元の native loop 図式族・厳密終点と成分候補を供給する。②の追加設計は事前採用済み、今回ユーザーへチャットで具体的仕様を再送：元の X→M_X→T_X（合成 η_X）と、厳密 tail 終点の実 loop 図式の BF 始点 L_X に X→L_X→T_X（合成 η_X）を構成する。後者の a_X の相対 cofibration と全パラメータ境界整合も証明対象。比較 c_X:L_X→M_X は a_X≫c_X=i_X、c_X≫q_X=r_X を保つ relativeCorner a_X q_X の指定境界 fiber から構成し、比較射を含む全 Hom の RLP・全単体整合を相対充填から証明する。L_X・a_X・r_X の存在や Hom 充填を明示入力に残さない。RLP・coherence を入力に残さず、nativeLoop 正本・厳密 tail 終点を保持し、円交換因子を直接比較しない。AdjointLoopRelativeDiagramResolution は図式側の基底を実装：終点評価の引き戻し fullLoopDiagramResolution、射影の実自明 Kan fibration、fullLoopDiagramResolutionEquivalence、元の指定族を厳密回収する切断、fullLoopDiagramResolutionNativeIso／SourceIso。これは比較射を追加する前の図式側の基底に限る。次は比較射を含む全 Hom の相対充填・合成整合の実証で、この射影の RLP を図式側の RLP だけから推論しない。比較射を自由な可逆辺として加えるだけでは選択空間の可縮性は保証されず、包含・右射影との境界を保つ充填が必要。現行 q の自然性だけから、任意の逆射と持ち上げを含む deloopingComparison の厳密自然性を結論しない。実 nativeLoop 比較・hΩ・sp_isStable は未提供。K-8 e の実 dg 塔・Tor 比較、s3 の三つの全図式比較は未供給、到着時は s3 最優先。
+- **再開の第一工程**：d3a の sp_hasFiniteLimits は公開済み。d3b は採用済み。K-B-S2 bf29e6b53 の Kan 列標的の実相対分解を元の補助単位へ直接適用する（AdjointLoopRelativeBF）。Compatible 系・GradedInclusion・CoherentComparison の7葉は集約・監査へ接続済みで、元の全 Hom を回収する originalInfinityEquivalence と指定左因子を保つ inclusionFunctorIso を供給する。①の右射影 q を含む全 Hom 自然性も実構成済み。補助 loop の全パラメータ作用・制限可換性・単位の厳密自然性は AdjointLoopParameterHom。二変数 corner は許可に従い Sp の新葉で実構成し、RawSpectrumMapping.relativeCorner_rlp_monomorphisms／relativeCorner_trivialKanFibration と元の二射影・全段評価を供給する。同じ単位・右射影へ実適用した FullCompatible 系は、左右の条件を同時に保つ全 Hom の恒等・合成・結合律、元の Sp を回収する fullOriginalInfinityEquivalence、元の包含を成分とする fullInclusionFunctorIso、各段の実右射影を全 Hom 上で保つ fullGradedProjection を供給する。AdjointLoopRelativeNativeDiagram は元の native loop 図式族・厳密終点と成分候補を供給する。②の追加設計は事前採用済み、今回ユーザーへチャットで具体的仕様を再送：元の X→M_X→T_X（合成 η_X）と、厳密 tail 終点の実 loop 図式の BF 始点 L_X に X→L_X→T_X（合成 η_X）を構成する。後者の a_X の相対 cofibration と全パラメータ境界整合も証明対象。比較 c_X:L_X→M_X は a_X≫c_X=i_X、c_X≫q_X=r_X を保つ relativeCorner a_X q_X の指定境界 fiber から構成し、比較射を含む全 Hom の RLP・全単体整合を相対充填から証明する。L_X・a_X・r_X の存在や Hom 充填を明示入力に残さない。RLP・coherence を入力に残さず、nativeLoop 正本・厳密 tail 終点を保持し、円交換因子を直接比較しない。AdjointLoopRelativeDiagramResolution は図式側の基底を実装：終点評価の引き戻し fullLoopDiagramResolution、射影の実自明 Kan fibration、fullLoopDiagramResolutionEquivalence、元の指定族を厳密回収する切断、fullLoopDiagramResolutionNativeIso／SourceIso。これは比較射を追加する前の図式側の基底に限る。次は比較射を含む全 Hom の相対充填・合成整合の実証で、この射影の RLP を図式側の RLP だけから推論しない。比較射を自由な可逆辺として加えるだけでは選択空間の可縮性は保証されず、包含・右射影との境界を保つ充填が必要。現行 q の自然性だけから、任意の逆射と持ち上げを含む deloopingComparison の厳密自然性を結論しない。実 nativeLoop 比較・hΩ・sp_isStable は未提供。K-8 e の実 dg 塔・Tor 比較、s3・s5 は Sp-3 へ移管。以後本計画の s3・s5 行は編集しない。
 
-### Sp-6 s3 の接続口（採用済み、具体的入力の存在は未供給）
+### Sp-6 s3 の接続口（Sp-3 へ移管・以下は移管時の記録、以後編集しない）
 - 採用済み修正：固定 ν の Perf 商辺は strict Verdier 商でなく冪等完備化までの列。K-S• 正本 PerfectVerdierSequence（実 strict 商＋完備化）を使う。Sp の RelativePerfectVerdierDiagram.ofSquare／ofStableSquare、RelativePerfectVerdierRectangle.ofActualFaces と境界付き全源比較・全 ν 像比較で、Cat^perf 不変量の同じ制限の pullback を得る。ofStrict は元の四角形・長方形と恒等完備化を保ち、完備性を追加入力にしない。D-21 は K-S• の dgOdotMilnorCompletion／_isIdempotentCompletion に特殊化済み。実二面からの comparison_isPullback_of_actualFaces と、絶対 Cat^perf 長方形への comparison_isPullback_of_actualFaces_imageIso、同じ全比較成分を使う rectangleValueIso_of_imageIso／_triangle を提供。実長方形・全比較の一体化は未供給。新たな不変量条件や一般商 API は導入しない。
 - 固定 S・ν・K を保ち、零角に A/A を使う。対象別 ε からの自然な収縮を構成せず、全対象商からの厳密延長を用いる。
 - 具体的 S 長方形 F の実際の ν 像を、右面・外周の Verdier 証拠で認証する。独立に選択した絶対 Tamme 長方形との厳密等号 image_eq に代えて、指定境界を保つ全図式 FunctorIso を接続口に追加する。既存の厳密等号版は特殊化として保持する。
@@ -46,13 +48,13 @@
 - [ ] 指定 loop 図式と厳密 tail 終点を保つ nativeLoop への全図式 FunctorIso を構成。
 - [ ] d3b③→d3c：nativeTailEquivalence と合わせて元の nativeLoop の hΩ。
 - [ ] d3d：Stable/LoopEquivalenceStability.isStable_of_loopEquivalence へ代入し sp_isStable 公開。
-- [ ] s3：K-S• d④③ の実右面・外周・上下二単体を保つ全長方形比較の三認証到着後、固定 ν の RelativePerfectVerdierDiagram／Rectangle に実代入。
-- [ ] s5：専用集約・公理監査・型の仮定検査・引き継ぎ。
+- s3：**Sp-3 へ移管**。移管時の記録：K-S• d④③ の実右面・外周・上下二単体を保つ全長方形比較の三認証到着後、固定 ν の RelativePerfectVerdierDiagram／Rectangle に実代入。
+- s5：**Sp-3 へ移管**。移管時の記録：専用集約・公理監査・型の仮定検査・引き継ぎ。
 
 ## 依存と報告
-- d3d → K-B3 d3。K-S• d④③ → s3 → K-B3 e。
+- d3d → K-B3 d3。s3・s5／K-S• d④③ → s3 → K-B3 e は **Sp-3 へ移管**。
 - 各段の公開名はユーザー経由で報告。他チャットへの送信は行わない。
-- s3 の実供給が来たら優先して接続する。
+- s3・s5 は **Sp-3 へ移管**。新規葉・S3All・audit_kst_spectra_s3・L9c-sp3.md は Sp-3 所有。以後 s3・s5 行は編集しない。
 
 ## 今回の実装境界
 - D3ComparisonResolution：具体的な相対 BF 右射影 q_X へ corner を適用し、指定二境界を持つ比較族の射影の実 RLP、全単射に沿う相対延長、比較選択 fiber の可縮性を証明する。
@@ -71,7 +73,7 @@
 - 全て点ごとの実構成。元の delooping 比較・切断・相対分解の任意の選択に全 Hom 自然性は主張しない。
 - **次工程**：実 loop 図式と a_X,r_X,c_X を保持する動く始点の共通解像を構成し、その全 Hom の射影の RLP・恒等・合成・全単体整合を実証する。固定始点の corner／前合成の RLP のみから、この豊穣解像の RLP を結論しない。
 - 実 loop 図式族と指定終点を保つ全図式 FunctorIso、hΩ、sp_isStable は依然未提供。d3b②・d3c・d3d を完了扱いにしない。
-- s3：L1 正本では K-S• d④③ の共通長方形と三認証は未完。既存の独立した全比較を三認証の完成として接続しない。
+- s3：**Sp-3 へ移管**。移管時の記録：L1 正本では K-S• d④③ の共通長方形と三認証は未完。既存の独立した全比較を三認証の完成として接続しない。
 
 ## 保存時の検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5750 jobs）。
@@ -91,7 +93,7 @@
 - [x] `exists_relative_loopComparisonBoundary`／`loopComparisonBoundaryFiber_isContractibleKan`：比較 Hom の既存部分パラメータ・n 単体の全境界・元の左右境界を同時に保持。n=1 の相対自然性比較に加え高次境界も含む。
 - **未完の接続**：実際の Hom の恒等・合成から指定境界を実構成し、実 loop 図式も保持する共通解像の全 Hom 射影 RLP と豊穣法則を実証する。上記の充填器を、共通解像の完成とは扱わない。
 - 比較 c_X の相対 BF 分解と二段の corner 充填は下記の共通 BF 解像で実装した。実 loop 図式との合成整合は同じ解像上で別途証明する必要がある。
-- s3 再確認：更新中の L1 正本でも、共通実 S 長方形・上下指定二単体・三認証は未完。D2 の三入力の供給と、共通長方形の三認証の完成を区別する。
+- s3：**Sp-3 へ移管**。移管時の再確認記録：更新中の L1 正本でも、共通実 S 長方形・上下指定二単体・三認証は未完。D2 の三入力の供給と、共通長方形の三認証の完成を区別する。
 
 ### 今回の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5756 jobs）。
@@ -116,7 +118,7 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5766 jobs）。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：509 modules／5344 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - 所有新葉・集約・計画・専用監査だけを保存。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
-- s3 は L1 正本を再確認し、共通 S 長方形と三認証が未完であることを確認。実供給が到着したら優先して接続する。
+- s3：**Sp-3 へ移管**。移管時の記録：L1 正本を再確認し、共通 S 長方形と三認証が未完であることを確認。以後の接続は Sp-3 が担当。
 
 ## 2026-10-27：共通 BF 左脚を保持する実 loop 四角形
 - `d3_rightFibration_liftEdge_source`：指定可逆辺の同じ一次単体を、指定始端から右 fibration へ持ち上げる。逆辺の終端固定持ち上げに元の逆三角形の実充填を組み合わせ、元の辺への厳密な射影を回収。
@@ -126,9 +128,24 @@
 - `commonLoopSquareInclusionIso`／`commonLoopSquareFunctorIso`：元の実 loop 四角形から共通四角形へ、さらに元の BasedLoop 四角形へ、固定 cospan を保つ全四角形の同型。
 - `commonLoopSquareInterval`／`_source`／`_target`／`_sourceEdge`／`_boundary`：同じ比較辺の実区間族、両端の全四角形、始点成分の元の共通 BF 左脚、固定 cospan 三頂点の同じ定値区間を厳密回収。
 - **未完**：上記は各 X の実図式と比較成分。CommonObject の同じ全 Hom に実 loop 図式の族を加え、その射影 RLP と恒等・合成整合を証明する工程は残る。これらの対象別 FunctorIso を nativeLoop との全関手自然同型とは数えない。hΩ・sp_isStable は未提供。
-- s3：L1 の最新現在地でも、上下指定二単体・共通 S 長方形・三認証は未完。D2 三入力の無条件供給とは区別して待機。
+- s3：**Sp-3 へ移管**。移管時の記録：L1 の最新現在地でも、上下指定二単体・共通 S 長方形・三認証は未完。D2 三入力の無条件供給とは区別して待機。
 
 ### 共通実 loop 四角形の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5774 jobs）。新規4葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：513 modules／5396 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - 所有新葉4本・専用集約・専用監査・本計画だけを変更。本計画は300行以内。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
+
+## 2026-10-27：同じ共通 BF 基底上の全実 loop 図式族
+- `commonLoopDiagramResolution`：終点評価を `commonNativeLoopEndpoint` に沿って実引き戻し。`commonLoopDiagramProjection` は同じ共通 BF 全単体を回収し、その射影の全単射 RLP・実同値・fiber 可縮性を証明。
+- `exists_relative_commonLoopDiagram`：元の BF 比較族と既存の部分 loop 図式を同時に保つ相対充填。厳密 tail 終点も回収する。ただし新部分の図式始点と refined 関手の全 Hom 一致は充填条件に含めていない。
+- `commonLoopDiagramToFull`／`_projection`／`_family`：元の full 図式基底へ同じ元の図式と BF 比較を保って接続。`commonLoopDiagramInclusionIso`／`commonLoopDiagramComparisonIso` は同じ新基底上の元の包含・比較成分の全関手同型。
+- `commonChosenLoopDiagramFamily`／`_target`／`_vertex`／`_square_vertex`：共通 BF 基底の全頂点で構成済みの同じ実四角形全体を固定し、離散全頂点の単射への終点評価の実 RLP から全図式族を構成。
+- `commonChosenLoopDiagramSection`／`_projection`／`_family`：同じ指定族の実切断。共通 BF 比較の全単体を厳密回収する。
+- `commonChosenLoopSource_refined_vertex`：記憶した図式の始点関手と元の共通 refined 関手は全頂点で厳密一致。全単体の等式・全関手同型は主張していない。
+- `commonLoopDiagramSourceNativeIso`／`commonChosenLoopSourceNativeIso`：同じ厳密終点を保つ実図式族の始点と元の nativeLoop の全関手同型。**未完 B** は、ここから共通 refined 関手へつなぐ全 Hom 整合。始点の頂点一致と図式側 RLP だけでこの比較を推論しない。
+- **A→B→C→D の残り**：実 loop 図式の始点作用と共通 BF 全 Hom の作用を、元の包含・比較・右射影を保って比較する。その全関手比較を nativeLoop へ接続し、nativeTailEquivalence から hΩ、D の一般定理から sp_isStable を実証する。hΩ・sp_isStable は未提供。
+
+### 共通全図式族の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5777 jobs）。新規2葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：515 modules／5458 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
+- D3 新葉2本・専用集約・専用監査・本計画のみを変更。既存読み取り専用領域への編集なし。
