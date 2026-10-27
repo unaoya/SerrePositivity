@@ -3093,4 +3093,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationRecover
 public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationStrict
 public import SerrePositivity.KST.SConstruction.DGModuleShiftComparisonNaturality
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotation
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationCancellation
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationIso
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationNative
+public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationNative
+public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecified
+public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecifiedComposite
+
 /-! # ∞-S• 構成と連結 K 理論 -/
