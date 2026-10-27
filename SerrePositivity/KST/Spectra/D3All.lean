@@ -7,6 +7,7 @@ public import SerrePositivity.KST.Spectra.D3ComparisonHomLifting
 public import SerrePositivity.KST.Spectra.D3CommonProjectionNaturality
 public import SerrePositivity.KST.Spectra.D3CommonLoopInterval
 public import SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection
+public import SerrePositivity.KST.Spectra.D3CommonStageLoop
 
 /-!
 概要：Sp-2 の d3 専用集約。

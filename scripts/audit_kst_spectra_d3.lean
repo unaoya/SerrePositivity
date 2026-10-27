@@ -45,7 +45,10 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3CommonLoopSquare,
     `SerrePositivity.KST.Spectra.D3CommonLoopInterval,
     `SerrePositivity.KST.Spectra.D3CommonLoopDiagramResolution,
-    `SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection]
+    `SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection,
+    `SerrePositivity.KST.Spectra.D3StageEvaluation,
+    `SerrePositivity.KST.Spectra.D3CommonStageProjection,
+    `SerrePositivity.KST.Spectra.D3CommonStageLoop]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

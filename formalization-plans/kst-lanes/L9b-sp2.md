@@ -149,3 +149,17 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5777 jobs）。新規2葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：515 modules／5458 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - D3 新葉2本・専用集約・専用監査・本計画のみを変更。既存読み取り専用領域への編集なし。
+
+## 2026-10-27：共通右射影の各段の全関手比較
+- `d3StageKanEnriched`／`d3Stage_vertex`：元の BF 全 Hom の段評価を、既存の点つき Kan 全部分圏への実豊穣関手へ束ねる。単位・合成を保持し、通常射の像は元の段射そのもの。
+- `d3Stage_post`／`d3Stage_pre`：元の BF 全 Hom の前後合成と段評価の厳密交換。一般 BF 変数上で検査し、具体的な相対置換対象の巨大展開を避ける。
+- `commonComparison_stage_whiskered`／`commonProjection_stage_whiskered`：元の比較右脚の全 Hom 正方形を段評価し、元の q の全 Hom 正方形と縦に合成。同じ commonProjection の右自然性を各段の厳密な豊穣正方形として回収。
+- `commonStageGradedProjection`／`commonStageGradedProjection_component`／`commonStageProjectionFunctorIso`：元の共通右射影の段射そのものを成分とする実自然変換と全関手同型。成分の可逆性は同じ射の全基点 π 同型から認証。
+- `d3Stage_loop_action`／`commonTargetStageKanEnriched_eq_loop`：補助標的の段作用と、元の次段評価に既存の pointedKanLoopInfinity を施した作用が全豊穣 Hom 上で一致。同じ閉合成の curry を照合し、円交換因子の直接比較は行わない。
+- `commonStageLoopFunctorIso n`／`commonLoopDiagramStageLoopIso n`：共通 refined 関手の段と、元の次段の実点つき Kan loop を全関手比較。同じ実図式基底へ前合成しても元の BF 比較を保持。
+- **残る B**：実 loop 図式の始点作用をこれらの段比較へ接続し、段をまたぐ構造との整合を同じ全 Hom 上で実証する。各段の関手同型だけから BF 全体の自然同型は結論しない。commonChosenLoopSource と commonRefinedEnriched の全関手比較・hΩ・sp_isStable は未提供。
+
+### 共通段比較の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5810 jobs）。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：518 modules／5503 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
+- 既存の点つき Kan 圏・loop 圏は読み取り専用 import で再利用。所有新葉3本・集約・監査・本計画のみを変更。既存読み取り専用葉への編集なし。
