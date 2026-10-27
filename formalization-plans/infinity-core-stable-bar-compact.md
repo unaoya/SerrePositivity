@@ -232,3 +232,8 @@
 - 流用範囲：新 I.countableClosed は同じ実加群の可算直和への閉性。dgKappaConeCountableSum と dgKappaSwindleSource は新 I にそのまま適用できる。dgKappaSphereClosureCountableSum_isExactFunctor／dgKappaSphereClosureSwindleInfinityIso は、既存の完全性／全関手比較をその新 I に特殊化して公開。対象・代表・収縮を取り直さない。
 - 流用の限界：一般 C の Fκ(C) の可算和・swindle 族、K∞ の加法性・消滅、入力 A 方向の自然性、Ind_ω への比較はここで供給しない。compact 部分への swindle の移送は得られた同値を用いる後続工程とし、B1 の完成と混同しない。
 - B1 検証：新 I 特殊化の対象 build10453 jobs、Derived 集約14959 jobs、専用監査163宣言／18モジュール、全体監査26254宣言／2988モジュール成功。許容三公理のみ、終端0。新二葉の import 閉包6656モジュール、循環・外部未コミット依存なし。対象別 B1 を供給済みとし、一般 Ind／Calkin への接続と旧 D-4 凍結は区別して維持する。
+
+### R2-B 読み取り専用調査
+- 先行B1完了後に着手。処置案・全件分類は refactoring-infinity-r2-b.md と archive/r2-b-classification-2026-10-27.json。Leanソース・集約・監査は変更せず、実施はR2-A/C/Dとの合意後の停止窓に限定する。
+- DG555の552はscripts/audit/dg.leanの直接importであり、top-level監査のみの被覆集計と区別。DGは登録488/archive67、HomotopicalAlgebra123は登録1/archive1/旧互換入口削除候補121、凍結41は診断14/archive20/主経路保持5/比較再利用2と分類。一般bar5本とB1・I/P/Zを保持する。
+- 指定209逆辺・141 import先と全678未登録葉・凍結41本を記録。R28/R31/R32/R34とaugmentation旧53組の対応表を用意し、旧4組の消滅を識別。計画だけでなくチャットでユーザーへ処置案を報告する。
