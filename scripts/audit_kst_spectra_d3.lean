@@ -12,6 +12,10 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
+  for mod in env.header.modules do
+    if (`SerrePositivity.KST.Fibration).isPrefixOf mod.module ||
+        (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod.module then
+      throwError "Sp-2 d3: downstream K dependency imported: {mod.module}"
   for mod in #[
       `SerrePositivity.KST.Spectra.PointedParametricUncurryAction,
       `SerrePositivity.KST.Spectra.PointedParametricUncurryPre,
@@ -48,7 +52,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection,
     `SerrePositivity.KST.Spectra.D3StageEvaluation,
     `SerrePositivity.KST.Spectra.D3CommonStageProjection,
-    `SerrePositivity.KST.Spectra.D3CommonStageLoop]
+    `SerrePositivity.KST.Spectra.D3CommonStageLoop,
+    `SerrePositivity.KST.Spectra.D3StagePullback,
+    `SerrePositivity.KST.Spectra.D3StageLoopCone,
+    `SerrePositivity.KST.Spectra.D3StageLoopSquare,
+    `SerrePositivity.KST.Spectra.D3StageLoopDiagramFamily]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

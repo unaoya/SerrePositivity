@@ -163,3 +163,19 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5810 jobs）。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：518 modules／5503 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - 既存の点つき Kan 圏・loop 圏は読み取り専用 import で再利用。所有新葉3本・集約・監査・本計画のみを変更。既存読み取り専用葉への編集なし。
+
+## 2026-10-27：同じ全実 loop 図式族の段評価
+- `d3StagePullbackInfinityCone_isLimit`：元の BF 引き戻し錐の全 coherent 段評価の極限性。上流の `spectrumPullbackCone_level_isLimit` と元の点つき Hom の極限保存から、同じ通常錐・同じ coherent 錐全体で実証。
+- K 側の既存 fiber 段定理は固定 K の依存を経由するため import せず、Sp の上流の実 BF 錐から接続した。K-B3 が d3d を消費する向きを保つ。専用監査で KST.Fibration／LocalizingInvariants の下流 import を拒否する。
+- `d3FiberCone_stage_isLimit`／`d3BasedLoopCone_stage_isLimit`／`commonLoopCone_stage_isLimit`：同じ cospan 上の極限錐の一意性と形状制限・後合成の厳密交換から、構成済み実 loop 錐そのものの段極限性を回収。
+- `d3StagePoint_isZero`／`d3StageBasedPath_isZero`：元の一点の豊穣 Hom の終対象性と、元の BF path から一点への同じ段射を使い、実段四角形の両零角を認証。
+- `commonLoopSquare_stage`／`_vertex`／`_right`／`_top`：同じ実共通四角形の段評価を実 LoopSquare に束ねる。始点は共通 BF 対象の同じ段、終点は元の厳密 tail の同じ段。二辺は元の path 終点射・一点からの段射そのものの一次単体。
+- `commonChosenStageLoopDiagramFamily`／`_corner`／`_source`／`_target`：元の全実図式族を同じ全単体で段評価し、全頂点の実 loop 四角形の認証から loop 図式の全部分圏へ因子化。四角の全関手・始点・厳密終点を回収。
+- `d3StageTail`／`commonChosenStageLoopDiagramFamily_target_next`：元の nativeTail の段評価と元の次段評価を全豊穣 Hom・全 coherent 単体で厳密照合。
+- `commonChosenStageEndpointLoopIso`：元の右射影の全関手比較を、同じ実段図式族の厳密終点の通常点つき loop へ接続。成分・全 Hom の作用を選び直さない。
+- **残る B**：同じ実段図式族の始点作用と、その厳密終点への pointedKanLoopInfinity の作用との全関手比較を実証し、段をまたぐ構造との整合を保って BF 全体へ接続する。各段の実 LoopSquare／全関手同型だけから BF 全体の自然同型は結論しない。hΩ・sp_isStable は未提供。
+
+### 実全段図式族の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5815 jobs）。新規4葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：522 modules／5561 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉4本・集約・監査・本計画のみを変更。既存読み取り専用領域への編集なし。
