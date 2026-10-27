@@ -3110,4 +3110,10 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNat
 public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoFamilyNaturality
 public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoNaturality
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnecting
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingRecovery
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingTriangle
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeInverse
+public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
