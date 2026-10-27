@@ -137,7 +137,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3EquivalencePathIsoValues,
     `SerrePositivity.KST.Spectra.D3FiberPathIsoComparison,
     `SerrePositivity.KST.Spectra.D3PathCorrectedComponentValue,
-    `SerrePositivity.KST.Spectra.D3PointedKanSectionTargetValue]
+    `SerrePositivity.KST.Spectra.D3PointedKanSectionTargetValue,
+    `SerrePositivity.KST.Spectra.D3SectionUnitFaceComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
