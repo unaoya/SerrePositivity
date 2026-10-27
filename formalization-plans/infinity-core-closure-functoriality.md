@@ -181,7 +181,9 @@ D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
 (nullPreservingFunctorsεForget R C D S T))`。固定頂点の照合と全単体の着地の確認に使う。
 
 - 実装 `SuspensionAction/QuotientNative`：`quotientNativeInputMap`、
-  `_vertex`、`quotientEpsilonNativeForget`、`_vertex`。D の現行型だけで構成済み。
+  `_vertex`、`quotientNativeInputForget`、`_vertex`。D の現行型だけで構成済み。
+  D の native 正本を import し、重複名を解消。`quotientNativeInputMap_unit` は
+  同じ全単体の単位保存を D の `quotientEpsilonNativeMap_unit` から得る。
 - 実装 `SuspensionAction/NativeTarget`：`dgSuspensionResolvedEpsilonCore`、
   `dgSuspensionResolvedEpsilonObject`、`dgSuspensionResolvedEpsilonVertex`、
   `dgSuspensionQuotientNativeMap`、`_vertex`。切替後の段提供者の正本 data に一致。
@@ -213,7 +215,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 30 葉・346 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 30 葉・348 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

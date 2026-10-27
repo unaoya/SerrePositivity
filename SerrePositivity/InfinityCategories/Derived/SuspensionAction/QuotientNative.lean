@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
 
 /-!
@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded KST.SConstruction
+open CategoryTheory MonoidalCategory DifferentialGraded KST.SConstruction
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (C D : Type v)
   [DGCategory R C] [Small.{u} C] [DGCategory R D] [Small.{u} D]
@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (C D : Type v)
 
 /-- D の同じ ε 整合関手圏の native core。 -/
 def quotientEpsilonNativeCore : SSet.{max u v} :=
-  (quasicategoryCore (dgNerve R (NullPreservingFunctorsε R C D S T)) : SSet)
+  quotientEpsilonNativeSpace R C D S T
 
 instance quotientEpsilonNativeCore_kan :
     SSet.KanComplex (quotientEpsilonNativeCore R C D S T) := by
@@ -38,7 +38,7 @@ def quotientNativeInputMap :
     quotientEpsilonNativeCore R C D S T ⟶
       dgFunctorNativeMappingSpace R (DGQuotient.QuotientObject C S)
         (DGQuotient.QuotientObject D T) :=
-  quasicategoryCoreMap (dgNerve.map (quotientInputFunctor R C D S T))
+  quotientEpsilonNativeMap R C D S T
 
 /-- 頂点作用は同じ正本 quotientDGFunctor と厳密に一致する。 -/
 lemma quotientNativeInputMap_vertex (F : NullPreservingFunctorsε R C D S T) :
@@ -50,17 +50,30 @@ lemma quotientNativeInputMap_vertex (F : NullPreservingFunctorsε R C D S T) :
   apply DGNerve.Simplex.vertexEquiv.injective
   rfl
 
-/-- 同じ ε core から、元の全次数関手圏の native core への忘却。 -/
-def quotientEpsilonNativeForget :
+/-- D-S の公開入口を固有名にし、D の同名の忘却公開と衝突させない。 -/
+def quotientNativeInputForget :
     quotientEpsilonNativeCore R C D S T ⟶ dgFunctorNativeMappingSpace R C D :=
   quasicategoryCoreMap (dgNerve.map (nullPreservingFunctorsεForget R C D S T))
 
-lemma quotientEpsilonNativeForget_vertex (F : NullPreservingFunctorsε R C D S T) :
-    (quotientEpsilonNativeForget R C D S T).app (Opposite.op ⦋0⦌)
+lemma quotientNativeInputForget_vertex (F : NullPreservingFunctorsε R C D S T) :
+    (quotientNativeInputForget R C D S T).app (Opposite.op ⦋0⦌)
         (quotientEpsilonNativeVertex R C D S T F) =
       dgFunctorNativeMappingVertex R C D F.val := by
   apply Subtype.ext
   apply DGNerve.Simplex.vertexEquiv.injective
   rfl
+
+omit [DGCategory R D] [Small.{u} D] in
+/-- 工程 1 の単位保存に使う、D の正本 ε core の単位。 -/
+def quotientNativeInputUnit :
+    𝟙_ SSet.{max u v} ⟶ quotientEpsilonNativeCore R C C S S :=
+  quotientEpsilonNativeUnit R C S
+
+omit [DGCategory R D] [Small.{u} D] in
+/-- native 消費射は同じ実商の単位を全単体で保つ。 -/
+lemma quotientNativeInputMap_unit :
+    quotientNativeInputUnit R C S ≫ quotientNativeInputMap R C C S S =
+      dgFunctorNativeIdentity R (DGQuotient.QuotientObject C S) :=
+  quotientEpsilonNativeMap_unit R C S
 
 end SerrePositivity.InfinityCategories

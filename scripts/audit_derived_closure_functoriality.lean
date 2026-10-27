@@ -100,6 +100,8 @@ run_cmd do
 
 #check SerrePositivity.InfinityCategories.quotientNativeInputMap
 #check SerrePositivity.InfinityCategories.quotientNativeInputMap_vertex
-#check SerrePositivity.InfinityCategories.quotientEpsilonNativeForget
+#check SerrePositivity.InfinityCategories.quotientNativeInputForget
 #check SerrePositivity.InfinityCategories.dgSuspensionResolvedEpsilonCore
 #check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeMap_vertex
+
+#check SerrePositivity.InfinityCategories.quotientNativeInputMap_unit
