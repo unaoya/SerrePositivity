@@ -1,0 +1,43 @@
+R2-B D-S 調査結果（2026-10-27、提案のみ、Lean ソース変更なし）
+
+1. 127 は Derived→SConstruction 84・LocalizingInvariants 24・NonConnective 19 の合計。
+   KST 全体にはさらに Spectra 3・Comparison 1・ProExcision 2 があり、全体は133辺。
+   指定分野の全209辺の source／target／処置案／検証ゲートを edges.tsv に記録。
+2. DifferentialGraded 555 = scripts/audit/dg.lean に既登録の検査552 + 固有未登録葉3。
+   552を主ライブラリ集約へ入れない。R2-D の audit_*.lean glob は入れ子監査を見落とす。
+   入れ子監査の import 閉包を加えると DG 1033本、shared 側で HA 47本が追加被覆される。
+   入れ子監査の実行成功は未確認。generator／compiler API と verify.sh 接続を R2-D で検証。
+3. HomotopicalAlgebra 123 = 純粋な互換入口121 + 既隔離 Rectification.Foundations 1 + WIP 1。
+   121は一 import 以外のコードが無いことをソースで検証。正本と公開宣言は削除しない。
+   15入口を参照する check scripts を正本へ直し、外部互換期間の確認後に入口だけ削除候補。
+4. 凍結41 = 診断14、archive19、第II段再利用8。証明の削除提案は0。
+   再利用8のうち CoherentStage* 5は現行 cone 入力の bar 比較に必要で、凍結候補の誤検出。
+   残る3は cone 評価の単位／合成比較2と一般の辺比較後合成1。
+5. R28: v=u の単純特殊化は不可。原版の任意 SSet.{u+1} と Universe 版 ulift C の差が残る。
+   cofinal-poset の共通帰着核を共有し、公開された2述語のラッパーを残す（1–2人日）。
+6. R31: DGBarCompactSpacePiData は唯一の一般空間入力であり複製ではない。
+   FilteredSpaceBridgeInput 全体を F2/FilteredExchange/PiCriterion へ移す候補。
+   直接利用7本（F2 3・Derived 4）と2系統の監査を検証（0.5–1人日）。
+7. R34: CochainConnectiveLift を丸ごと HA へ移すのは不可。
+   lift／lift_inclusion／lift_unique の3宣言だけを HA へ、unit/tensor の2宣言は DG に分割。
+   公開型・名前空間を保持し、7直接利用元を検証（0.5–1人日）。
+8. SC の一般 DG 基盤: 28対象が使う KST/SConstruction 内依存閉包75本を下位へ移す候補。
+   対象28本だけの移動では逆依存が残る。指定辺の53本（Derived40+DG13）に対応する。
+   残る SC 44辺は native dg nerve／一般 Derived gluing／真のKアダプタに分割して処置。
+9. Localizing24辺: 安定圏・完全関手・lax/cofiber の一般部分を Stable へ抽出。
+   DG algebra cocone 比較は Derived へ、E／K／BF に関する適用は上位に保持。R2-A/C と連携。
+10. NonConnective19辺: I/P と quotient/augmentation/swindle の幾何を Derived へ。
+    DGKappaSuspensionKMap の構造・実商射と BF CommSq を分割。旧 strict c4 は隔離する。
+11. Derived→EInfinity5辺: shuffle の有限順序・置換・符号の共通補題を下位共有層へ抽出。
+12. HA→CommutativeAlgebra63辺: 直接利用元57本を単に上へ動かすと HA 内の新逆辺が残る。
+    HA 内逆依存閉包291本（全HA545本中）は移動決定ではなく影響候補。不要import／適用層／共有補題を判定。
+    現snapshotの291本への DG 直接 import は0。R2-A で HA基盤 < CA基盤 < HA環適用 の層を確定。
+13. R32: 主経路／診断／旧経路の集約を分ける。DG enriched・ε core・最終作用必要性は別定理。
+    反例は既に独自Allにある一方、ε APIは Derived.lean に直接登録されている。主経路を要整理。
+    StableQuotientTriangle（固定Q(data)と普遍的降下の実比較）は新経路の実供給として維持。
+
+検証条件: 一括移動は全レーン停止窓のみ。scripts/move_module.py の reviewed dry run、公開名・型の保存、
+各依存バンドルと全直接利用元の build、対象別・診断・入れ子監査、最後に verify.sh と sorry 閉包。
+工数の目安（検証込み・R2-Aの層合意後）: 基盤75本の移動2–4人日、mixed SC/LI/NC分割3–6人日、
+shuffle抽出1–2人日、HAの層分け2–5人日、凍結/互換入口/監査接続1–3人日。重複する作業を含み加算値ではない。
+本調査では移動・削除・archive・集約変更を一切実施していない。全行の提案・出典SHA256はJSON/TSVを参照。
