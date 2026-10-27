@@ -19,6 +19,8 @@ public import SerrePositivity.KST.Spectra.D3ProjectionStructureIso
 public import SerrePositivity.KST.Spectra.D3CommonStageRefinedPasting
 public import SerrePositivity.KST.Spectra.D3StageLoopedUnitTriangle
 public import SerrePositivity.KST.Spectra.D3StageStructureCoherenceCriterion
+public import SerrePositivity.KST.Spectra.D3StageCoherencePastingCounterexample
+public import SerrePositivity.KST.Spectra.D3StageStructureDefect
 
 /-!
 概要：Sp-2 の d3 専用集約。

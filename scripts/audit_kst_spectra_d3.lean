@@ -94,7 +94,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3CommonStageTargetStructure,
     `SerrePositivity.KST.Spectra.D3CommonStageRefinedPasting,
     `SerrePositivity.KST.Spectra.D3StageLoopedUnitTriangle,
-    `SerrePositivity.KST.Spectra.D3StageStructureCoherenceCriterion]
+    `SerrePositivity.KST.Spectra.D3StageStructureCoherenceCriterion,
+    `SerrePositivity.KST.Spectra.D3StageCoherencePastingCounterexample,
+    `SerrePositivity.KST.Spectra.D3StageStructureDefect]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

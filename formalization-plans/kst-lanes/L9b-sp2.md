@@ -190,7 +190,6 @@
 ### 実端点パラメータ族の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5821 jobs）。新規5葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：528 modules／5732 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉5本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
-
 ## 2026-10-27：実端点 loop 全図式と共通段始点の全関手比較
 - `d3Mixed_identity`／`d3ParameterEvaluation`：混合 Hom の実恒等入力は同じ元のパラメータ制限射。通常の制限図式の恒等・合成も実証。
 - `d3PointedKanParameterSquare_vertex`：構成済み全四角形族の各実頂点は、同じ通常パラメータ図式の coherent 表示に全単体で一致。対象別の四隅一致だけで図式全体を比較しない。
@@ -206,12 +205,10 @@
 - `commonChosenStageSourceLoopIso n`：元の共通実段図式族の厳密終点を保って全図式比較し、同じ始点段作用を通常 loop 作用へ全関手比較。
 - `commonChosenStageRefinedSourceIso n`：元の共通 BF 右射影による段自然同型と上記全図式比較を合成し、refined 段作用と実 loop 図式始点段作用を全関手比較。
 - **残る B**：この段比較と、段をまたぐ元の BF 構造との整合を実証し、同じ比較を BF 全体の FunctorIso へ接続する。各段の全関手同型から BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
-
 ### 実端点 loop・共通段始点比較の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7767 jobs）。新規9葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：537 modules／5823 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉9本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
-
 ## 2026-10-27：元の BF 構造射による実 loop 全図式族の段間比較
 - `commonInclusion_stage_whiskered`：同じ共通左包含の全 Hom 正方形を元の段評価で回収。
 - `commonStructure_stage_whiskered`：共通左包含・共通右射影の実正方形を縦合成し、同じ元の構造随伴単位の全 Hom 正方形を回収。
@@ -222,7 +219,6 @@
 - `commonChosenStageLoopImageSquareFamily_isLoop`／`commonChosenStageLoopImageFamily`：この同じ次段 loop 像の実零角・引き戻し性を、元の段との全図式同型から認証し、loopDiagrams へ因子化。
 - `commonChosenStageStructureDiagramIso`：元の全部分複体包含の充満忠実性で、同じ四角形同型を実 loop 全図式の関手同型へ回収。
 - **残る B**：前段の `commonChosenStageRefinedSourceIso n` と今回の指定構造同型・厳密右射影正方形との整合を実証し、同じ比較を BF 全体の FunctorIso へ接続する。構造同型と各段比較を別々に構成できただけでは、BF 全体の自然同型とは数えない。hΩ・sp_isStable は未提供。
-
 ### 元の構造射・実段間全図式比較の保存検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7772 jobs）。新規4葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：541 modules／5861 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
@@ -287,7 +283,6 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（7863 jobs）。所有変更葉に新しい警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：562 modules／6101 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉4本・所有 D3 葉1本の端点表示整理・集約・監査・本計画のみを変更。計画は過去監査欄の所有確認4行を直前の監査行へ併記し、重複空行を整理して299行。移管済み行・移管節・既存読み取り専用領域への編集なし。
-
 ## 2026-10-27：指定段比較の構造整合に残る条件を厳密に特定
 - `commonChosenStageLoopedCanonicalUnitIso`／`commonChosenStageLoopedRefinedSourceIso`：同じ既存次段比較・標準始点表示の通常 loop 像を、実図式の同じ角へ正規化。
 - `commonChosenStageLoopedRefinedSource_triangle`：既存次段の三角形全体を loop で写し、指定右射影・始点表示を同じ値として回収。
@@ -296,3 +291,10 @@
 - 保存検証：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7865 jobs）。新規二葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：564 modules／6119 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。
 - 所有新葉二本・集約・監査・本計画のみを変更。過去節の空行を整理し298行。移管済み全行・凍結転記節を保持。
+
+## 2026-10-27：模型補正を保つ実構造不一致の回収と、貼合せのみからの推論の排除
+- `d3PastingRelations_structureCounterexample`：Bool の交換同型により、既証と同形の二つの貼合せが成立し、構造正方形と補正の恒等性は共に失敗する具体例を証明。一般の同型代数の反例であり、実 Sp の補正が非恒等という主張ではない。
+- **次の実証対象**：実 loop 図式に由来する `commonChosenStageLoopedCanonicalUnitIso n ≪≫ (commonChosenStageLoopImageComparison n).postcomp (loopDiagramEvaluation PointedKanInfinity 0 0) = commonChosenStageCanonicalImageUnitIso n`。既存の貼合せ式だけを追加変形する経路では閉じない。実図式の追加証拠か、正しい補正を保つ BF 比較の構成が必要。A/B・hΩ・sp_isStable の完了とは数えない。
+- `commonChosenStageRefinedSource_structure_defect`：実段比較の構造不一致は、同じ右射影で移した模型補正の逆を挿入した値に厳密一致。新仮定なし。補正を通常 loop 以前の段比較へ持ち上げる証拠と全段整合は未提供。
+- 保存検証：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7867 jobs）。新規二葉に警告なし。
+- 専用監査合格：566 modules／6127 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。本計画300行、移管済み全行・凍結転記節は保持。
