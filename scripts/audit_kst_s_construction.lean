@@ -36344,3 +36344,27 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndTriangle
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndConeTriangle
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndConeTriangle
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom_element
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom_element
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom_interchange
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorEvalHom_interchange
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorEvaluation
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorEvaluation
+#check @SerrePositivity.KST.SConstruction.dgFunctorTensorEvaluation_fixed
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorTensorEvaluation_fixed
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeEvaluation
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeEvaluation
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeFullFamilyMap
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeFullFamilyMap
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeFullParameterPoint
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeFullParameterPoint
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeFullParameterPoint_app
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeFullParameterPoint_app
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeEvaluation_fixed
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeEvaluation_fixed
+#check @SerrePositivity.KST.SConstruction.dgFunctorNativeFullFamilyMap_fixed
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorNativeFullFamilyMap_fixed
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisFullConeTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisFullConeTriangle

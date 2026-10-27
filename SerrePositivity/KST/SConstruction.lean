@@ -3251,4 +3251,8 @@ public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndTriangle
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisEndConeTriangle
 
+public import SerrePositivity.KST.SConstruction.DGFunctorTensorEvaluation
+public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluation
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisFullConeTriangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/
