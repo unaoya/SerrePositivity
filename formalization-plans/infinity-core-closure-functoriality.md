@@ -17,6 +17,7 @@ D-2 の具体化を含む 13 葉・115 宣言の公理監査が終了コード 0
 D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣言の
 公理監査が終了コード 0 で通過。両独自集約のビルドも成功。
 固定収縮の二次補正まで追加した 21 葉・211 宣言の公理監査も終了コード 0。
+cell 生成元の自然性と代表選択の同型不変性を含む 23 葉・233 宣言も監査通過。
 
 実装済みの葉：
 
@@ -73,6 +74,8 @@ D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣
 関手内部の恒等射・合成保存と、入力 F 自体に関する作用の coherence は別物。
 独立な Classical.choice の添字選択が F の恒等・合成と厳密一致するとは主張しない。
 
+前回の固定収縮補正の保存：`8bf395f1b99133cd0b1bf6ffca3635e675755b89`。
+
 ## D-4a：全入力作用
 
 状態：D-2 `4cd747153` と K-B3 の切替 `354e05773` を受領。D-4a を再開。
@@ -110,13 +113,37 @@ D-4a の cone 全 Hom 作用と商パラメータ入口まで、19 葉・161 宣
   商への族作用は、K-B3・D・DifferentialGraded に既存・進行中の供給なし。
   D-S が引き続き構成し、全単体 map は edgeIso より先に公開してよい。
 
+- `ClosureFunctoriality/CellGenerators`：`dgCellCycleSphere`、
+  `_augmentation`、`_comparison`、`_comparison_element`、
+  `dgCellComparisonHom_initialNaturality_mapped`。最終分解内の初期生成元の
+  比較像と、全次数 native Hom が満たす厳密な自然性を明示する。
+  `_unitGeneratorNaturality` は単位ラベルの初期生成元での必要条件。
+- `ClosureFunctoriality/ChoiceInvariant`：
+  `dgProjectiveClosureFamilyImage_index_eq_of_iso`、
+  `dgProjectiveClosureFunctor_obj_eq_of_iso`。raw 像が対象別に実同型なら、
+  選択述語の外延性によって D-3 の添字・対象選択が厳密一致する。
+  Hom 作用・選択比較同型の一致や ε 整合は、ここからは結論しない。
+
+### 2026-10-27 の再分担
+
+- 工程 2（固定 ε 商の関手変数の作用）は D に移管。D-S は実装しない。
+- D の二対象反例により、全 null 保存関手圏上の一般作用は採用しない。
+- D は ε 整合 Hom を持つ `NullPreservingFunctorsε` と商作用を供給予定。
+  ε 整合 Hom の公開名はユーザー経由の中継待ち。
+  反例は ℚ 上の一対象源と同型な二対象標的、全対象 null の形で受領。
+  元成分を変更する自由だけでも一般作用は回復しない、との数学的記録。
+- D-S は工程 1 の native Hom 作用を続行し、その Hom が D の ε 整合条件に
+  入ることも証明する。交換差の境界性だけでは所属を結論しない。
+- 工程 1 と 2 の後に、工程 3（全 map）と 4（edgeIso）を構成する。
+
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 残る工程：
 
 - cone の入力全 Hom 作用を、同じ cell 分解比較関手へ延長する。
-- 同じ選択 ε を持つ商関手の族へ延長し、収縮との整合を証明する。
+- 工程 1 の Hom 作用について D の ε 整合 Hom への所属を証明し、
+  D が供給する同じ選択 ε の商作用を import・適用する。
   元 Hom の自然性だけでは ε 整合は出ない。`ParameterExtension` の必要十分条件を
   使用する。新しい商への置換や収縮の変更で条件を消さない。
 - 固定 PerfDGInput の全 Hom に対する SSet 射作用を構成する。

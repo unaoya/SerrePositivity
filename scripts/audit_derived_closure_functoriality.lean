@@ -6,6 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ChoiceInvariant,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellGenerators,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ContractionComparison,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.StrictRange,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ExtensionRange,
@@ -73,3 +75,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgGradedContractionPrimitive_d
 #check SerrePositivity.InfinityCategories.dgGradedContractionPrimitive_map
 #check SerrePositivity.InfinityCategories.dgSuspensionContractionCorrection_d
+
+#check SerrePositivity.InfinityCategories.dgCellCycleSphere_comparison
+#check SerrePositivity.InfinityCategories.dgCellComparisonHom_initialNaturality_mapped
+
+#check SerrePositivity.InfinityCategories.dgCellComparisonHom_unitGeneratorNaturality
+#check SerrePositivity.InfinityCategories.dgProjectiveClosureFamilyImage_index_eq_of_iso
+#check SerrePositivity.InfinityCategories.dgProjectiveClosureFunctor_obj_eq_of_iso
