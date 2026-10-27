@@ -227,11 +227,12 @@ D に恒等入力の実商関手と懸垂の恒等関手の比較も照会中（
 主経路 `dgSuspensionNativeHom_vertexIso` は、工程 1 の頂点を ε core 内の
 指定 VertexIso で照合する場合、同じ商の native Hom 内へ比較を送る。
 この比較と map の辺の関係は map 構成時に D へ報告する。比較の存在は未証明。
-D の `28e721b49` の interval 比較アダプタを確認。比較経路を使う場合に必要な橋は
-`VertexIso (X := dgFunctorNativeMappingSpace R A B) p q` から
-`intervalMappingVertexOfEdge (dgNativeMappingVertexEdge R A B p)` と q 版の
-`VertexIso` への写像。`coherentHomIntervalComparison` を使う型をユーザー経由で報告済み。
-恒等入力の比較の照会もユーザーが D へ中継済み。
+`NativeIntervalIso`：`dgNativeInputMapIsoToInterval`／`dgIntervalInputMapIsoToNative` は、
+同じ通常射の native 頂点同型と端点固定 interval 同型を両方向に移す。
+`NativeActionRequirement`：最終 action の `nativeIsoOfNativeIso` は、ε を経由せず
+固定実商関手間の native 同型を回収する（辺比較は VertexIso のまま）。
+`nativeDiskSuspensionComparisonType`／`nativeDiskSuspensionComparisonOfAction`：零／disk 対で最終 map に必要な出力比較。
+この出力比較の存在・不存在は未証明。主経路への診断葉の追加なし。
 D の `b8086c72c` は恒等・合成を実加群評価後の閉同型で比較。固定 cell／ε の接続は未供給。
 D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEdgeEq`
 は最終辺から商作用辺への比較を消費する型で一致。最終辺比較の実例は未供給。
@@ -286,7 +287,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 46 葉・651 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 48 葉・678 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

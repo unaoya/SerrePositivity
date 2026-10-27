@@ -6,6 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeIntervalIso,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionRequirement,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonDiskObstruction,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.RepresentableSeed,
@@ -165,3 +167,11 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.nativeDiskResolvedSeedImages_ne
 #check SerrePositivity.InfinityCategories.no_nativeDiskSuspensionEpsilonHom
 #check SerrePositivity.InfinityCategories.dgSuspensionInputObjectIsoOfResolvedSeedEq
+
+#check SerrePositivity.InfinityCategories.dgNativeVertexIsoToInterval
+#check SerrePositivity.InfinityCategories.dgIntervalVertexIsoToNative
+#check SerrePositivity.InfinityCategories.dgNativeInputMapIsoToInterval
+#check SerrePositivity.InfinityCategories.dgIntervalInputMapIsoToNative
+#check SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.nativeIsoOfNativeIso
+#check SerrePositivity.InfinityCategories.nativeDiskSuspensionComparisonType
+#check SerrePositivity.InfinityCategories.nativeDiskSuspensionComparisonOfAction
