@@ -3180,4 +3180,9 @@ public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotati
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationPerfectRealized
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeNativeBoundary
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeInclusion
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeInputBoundary
+public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealizedConeBoundary
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperTriangleRealization
+
 /-! # ∞-S• 構成と連結 K 理論 -/
