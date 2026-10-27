@@ -93,6 +93,42 @@ lemma dgProjectiveClosureFunctor_obj_eq_of_iso
   rw [dgProjectiveClosureFamilyImage_index_eq_of_iso R D C F G hO B E hBF hBG
     M.property.choose (a M.property.choose)]
 
+/-- 実像の添字選択は、入力側で同型な二つの代表も同じ添字へ送る。 -/
+lemma dgProjectiveClosureFamilyImage_index_eq_of_sourceIso
+    (i j : (dgProjectiveClosureFamily R C (T := O) B).1)
+    (a : ((dgProjectiveClosureFamily R C (T := O) B).2 i).val ≅
+      ((dgProjectiveClosureFamily R C (T := O) B).2 j).val) :
+    (dgProjectiveClosureFamilyImage R C D F hO B E hBF).index i =
+      (dgProjectiveClosureFamilyImage R C D F hO B E hBF).index j := by
+  change (dgProjectiveClosureFamily_extension_image R C D F hO B E hBF i).choose =
+    (dgProjectiveClosureFamily_extension_image R C D F hO B E hBF j).choose
+  apply existsChoose_eq_of_predicate_iff
+  intro k
+  constructor
+  · rintro ⟨e⟩
+    exact ⟨(F.onClosed.mapIso a).symm ≪≫ e⟩
+  · rintro ⟨e⟩
+    exact ⟨F.onClosed.mapIso a ≪≫ e⟩
+
+/-- 固定閉包関手の対象選択は、入力の同型コピーを同一対象へ送る。 -/
+lemma dgProjectiveClosureFunctor_obj_eq_of_sourceIso
+    (M N : {M // dgProjectiveFamilyObjects R C
+      (dgProjectiveClosureFamily R C (T := O) B) M})
+    (a : M.val ≅ N.val) :
+    (dgProjectiveClosureFunctor R C D F B E hO hBF).obj M =
+      (dgProjectiveClosureFunctor R C D F B E hO hBF).obj N := by
+  apply Subtype.ext
+  change ((dgProjectiveClosureFamily R D (T := O) E).2
+    ((dgProjectiveClosureFamilyImage R C D F hO B E hBF).index M.property.choose)).val =
+    ((dgProjectiveClosureFamily R D (T := O) E).2
+      ((dgProjectiveClosureFamilyImage R C D F hO B E hBF).index N.property.choose)).val
+  have a' : ((dgProjectiveClosureFamily R C (T := O) B).2 M.property.choose).val ≅
+      ((dgProjectiveClosureFamily R C (T := O) B).2 N.property.choose).val :=
+    eqToIso M.property.choose_spec ≪≫ a ≪≫ (eqToIso N.property.choose_spec).symm
+  rw [dgProjectiveClosureFamilyImage_index_eq_of_sourceIso
+    (R := R) (C := C) (D := D) (F := F) (hO := hO) (B := B) (E := E) (hBF := hBF)
+    M.property.choose N.property.choose a']
+
 end Family
 
 end SerrePositivity.InfinityCategories

@@ -76,6 +76,23 @@ lemma dgSuspensionNativeHom_vertex
   rw [hH]
   exact dgSuspensionQuotientNativeMap_vertex R κ hκ A B f
 
+/-- 工程 1 の頂点を比較で照合する場合も、商への消費は同じ native 比較を保持する。 -/
+def dgSuspensionNativeHom_vertexIso
+    (H : dgFunctorNativeMappingSpace R A B ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A B)
+    (f : A ⟶ B)
+    (e : VertexIso (X := dgSuspensionResolvedEpsilonCore R κ hκ A B)
+      (H.app (Opposite.op ⦋0⦌) (dgFunctorNativeMappingVertex R A B f.down))
+      (dgSuspensionResolvedEpsilonVertex R κ hκ A B f)) :
+    VertexIso (X := dgFunctorNativeMappingSpace R
+      (dgKappaSuspensionKInput R A IA) (dgKappaSuspensionKInput R B IB))
+      ((H ≫ dgSuspensionQuotientNativeMap R κ hκ A B).app (Opposite.op ⦋0⦌)
+        (dgFunctorNativeMappingVertex R A B f.down))
+      (dgFunctorNativeMappingVertex R _ _
+        (dgSuspensionUnconditionalInputMap R κ hκ f).down) := by
+  have h := VertexIso.map e (dgSuspensionQuotientNativeMap R κ hκ A B)
+  rw [dgSuspensionQuotientNativeMap_vertex] at h
+  exact h
+
 omit B in
 /-- 同じ分解・null 集合を持つ ε core の全単体の単位。 -/
 def dgSuspensionResolvedEpsilonUnit :

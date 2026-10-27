@@ -6,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeSimplexLift,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonSimplexLift,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellDegreeSplitting,
@@ -116,3 +117,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeMap_composition
 
 #check SerrePositivity.InfinityCategories.quotientEpsilonElement_factor_iff
+
+#check SerrePositivity.InfinityCategories.dgSuspensionResolved_identity_of_nativeUnit
+#check SerrePositivity.InfinityCategories.dgSuspensionCone_obj_identity_of_nativeUnit
+
+#check SerrePositivity.InfinityCategories.dgProjectiveClosureFunctor_obj_eq_of_sourceIso
+#check SerrePositivity.InfinityCategories.dgSuspensionCone_eq_of_iso_of_nativeUnit
+#check SerrePositivity.InfinityCategories.dgSuspensionNativeHom_vertexIso

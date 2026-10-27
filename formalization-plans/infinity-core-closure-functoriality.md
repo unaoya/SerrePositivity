@@ -191,7 +191,8 @@ D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
   独自全体集約 `All` と独自監査には R 候補も保持する。
 - 未構成の工程 1 は `dgFunctorNativeMappingSpace R A B` から
   `dgSuspensionResolvedEpsilonCore R κ hκ A B` への全単体射。
-  頂点は `dgSuspensionResolvedEpsilonVertex R κ hκ A B (ULift.up F)` に厳密一致させる。
+  頂点の厳密一致を使う経路と、指定 native 比較で照合する経路を区別する。
+  最終 map の対象頂点の厳密等号は変更しない。
 
 ### native 持ち上げの組立（存在証明と区別）
 
@@ -209,6 +210,27 @@ D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
   同じ `dgSuspensionUnconditionalInputMap` の native 頂点になることを証明。
 - edgeIso の準備は D に移管（ユーザー指示）。D-S は工程 1・ε 着地・map を担当。
   map が出来たら先に公開し、上記 Hom 作用と map の辺の関係をユーザー経由で D へ報告。
+
+### 厳密豊穣経路の単位の必要条件
+
+`SuspensionAction/NativeUnitRequirement` を独自 All・監査に登録（主経路には未登録）。
+`dgSuspensionResolved_identity_of_nativeUnit`：固定 data の頂点作用と厳密な
+ε core 単位保存が揃うなら `data (𝟙 A).resolved = DGFunctor.id _` が必要。
+`dgSuspensionCone_obj_identity_of_nativeUnit`：cone の恒等入力も全代表を動かせない。
+`ChoiceInvariant` の入力二代表に関する選択不変性も証明。
+`dgSuspensionCone_eq_of_iso_of_nativeUnit`：この厳密単位経路は、元の cone 代表の
+実加群同型に関する骨格性まで要求する。代表集合の非骨格性は未証明。
+現在、この必要等号の成立は未証明。D の商の単位則だけでは導けない。
+一般の map の不存在は示していない。採用目標の edgeIso は厳密な辺等号を要求しない。
+D に恒等入力の実商関手と懸垂の恒等関手の比較も照会中（ユーザー経由）。
+主経路 `dgSuspensionNativeHom_vertexIso` は、工程 1 の頂点を ε core 内の
+指定 VertexIso で照合する場合、同じ商の native Hom 内へ比較を送る。
+この比較と map の辺の関係は map 構成時に D へ報告する。比較の存在は未証明。
+D の `28e721b49` の interval 比較アダプタを確認。比較経路を使う場合に必要な橋は
+`VertexIso (X := dgFunctorNativeMappingSpace R A B) p q` から
+`intervalMappingVertexOfEdge (dgNativeMappingVertexEdge R A B p)` と q 版の
+`VertexIso` への写像。`coherentHomIntervalComparison` を使う型をユーザー経由で報告済み。
+恒等入力の比較の照会もユーザーが D へ中継済み。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
@@ -232,7 +254,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 32 葉・387 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 33 葉・409 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

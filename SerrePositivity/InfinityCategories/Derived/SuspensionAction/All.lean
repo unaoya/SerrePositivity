@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData
 
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData
