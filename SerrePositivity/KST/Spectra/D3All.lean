@@ -66,6 +66,10 @@ public import SerrePositivity.KST.Spectra.D3SectionUnitFaceComparison
 public import SerrePositivity.KST.Spectra.D3UnitLoopSourceNaturality
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointTargetAgreement
 public import SerrePositivity.KST.Spectra.D3RetainedDoubleEndpointComparison
+public import SerrePositivity.KST.Spectra.D3CanonicalImageUnitPasting
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointSourcePasting
+public import SerrePositivity.KST.Spectra.D3UniversalLoopModelCorrection
+public import SerrePositivity.KST.Spectra.D3UniversalLoopModelStages
 
 /-!
 概要：Sp-2 の d3 専用集約。
