@@ -3217,4 +3217,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeCom
 
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullNativeEquivalence
 
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelActualComparisonSquare
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualSRectangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/
