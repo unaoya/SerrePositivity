@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientNative
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.UnconditionalData
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition
 
 /-!
 概要：工程 1 の native 供給先と、D の工程 2 による同じ懸垂への消費射を固定する。
@@ -12,7 +13,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded KST.NonConnective KST.SConstruction
+open CategoryTheory MonoidalCategory DifferentialGraded KST.NonConnective KST.SConstruction
 open DGCategoryCellResolution
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
@@ -59,5 +60,58 @@ lemma dgSuspensionQuotientNativeMap_vertex (f : A ⟶ B) :
         (dgSuspensionUnconditionalInputMap R κ hκ f).down :=
   quotientNativeInputMap_vertex R PA PB SA SB
     (dgSuspensionResolvedEpsilonObject R κ hκ A B f)
+
+/-- 工程 1 の厳密な頂点作用は、商消費後も同じ正本入力射に一致する。 -/
+lemma dgSuspensionNativeHom_vertex
+    (H : dgFunctorNativeMappingSpace R A B ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A B)
+    (f : A ⟶ B)
+    (hH : H.app (Opposite.op ⦋0⦌) (dgFunctorNativeMappingVertex R A B f.down) =
+      dgSuspensionResolvedEpsilonVertex R κ hκ A B f) :
+    (H ≫ dgSuspensionQuotientNativeMap R κ hκ A B).app (Opposite.op ⦋0⦌)
+        (dgFunctorNativeMappingVertex R A B f.down) =
+      dgFunctorNativeMappingVertex R _ _
+        (dgSuspensionUnconditionalInputMap R κ hκ f).down := by
+  change (dgSuspensionQuotientNativeMap R κ hκ A B).app _
+    (H.app _ (dgFunctorNativeMappingVertex R A B f.down)) = _
+  rw [hH]
+  exact dgSuspensionQuotientNativeMap_vertex R κ hκ A B f
+
+omit B in
+/-- 同じ分解・null 集合を持つ ε core の全単体の単位。 -/
+def dgSuspensionResolvedEpsilonUnit :
+    𝟙_ SSet.{max (u + 1) v} ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A A :=
+  quotientNativeInputUnit R PA SA
+
+omit B in
+/-- 特殊化した商作用は実懸垂の単位を全単体で保つ。 -/
+lemma dgSuspensionQuotientNativeMap_unit :
+    dgSuspensionResolvedEpsilonUnit R κ hκ A ≫
+        dgSuspensionQuotientNativeMap R κ hκ A A =
+      dgFunctorNativeIdentity R (dgKappaSuspensionKInput R A IA) :=
+  quotientNativeInputMap_unit R PA SA
+
+variable (C : PerfDGInput.{u, max (u + 1) v} R)
+local notation "IC" => dgKappaConeInput_unconditional' R C κ hκ
+local notation "CC" => DGKappaCone R C IC
+local notation "PC" => Source R CC
+local notation "SC" => resolvedDGNullObjects R CC (dgKappaConePerfectObjects R C IC)
+
+/-- 工程 1 が横合成と照合する、同じ ε core 間の全単体合成。 -/
+def dgSuspensionResolvedEpsilonComposition :
+    dgSuspensionResolvedEpsilonCore R κ hκ A B ⊗
+        dgSuspensionResolvedEpsilonCore R κ hκ B C ⟶
+      dgSuspensionResolvedEpsilonCore R κ hκ A C :=
+  quotientEpsilonNativeComposition R PA PB PC SA SB SC
+
+/-- 商への消費は、固定模型の native Hom 合成と全単体で厳密に交換する。 -/
+lemma dgSuspensionQuotientNativeMap_composition :
+    dgSuspensionResolvedEpsilonComposition R κ hκ A B C ≫
+        dgSuspensionQuotientNativeMap R κ hκ A C =
+      (dgSuspensionQuotientNativeMap R κ hκ A B ⊗ₘ
+        dgSuspensionQuotientNativeMap R κ hκ B C) ≫
+          dgFunctorNativeComposition R
+            (dgKappaSuspensionKInput R A IA) (dgKappaSuspensionKInput R B IB)
+            (dgKappaSuspensionKInput R C IC) :=
+  quotientEpsilonNativeMap_composition R PA PB PC SA SB SC
 
 end SerrePositivity.InfinityCategories

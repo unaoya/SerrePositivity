@@ -193,6 +193,23 @@ D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
   `dgSuspensionResolvedEpsilonCore R κ hκ A B` への全単体射。
   頂点は `dgSuspensionResolvedEpsilonVertex R κ hκ A B (ULift.up F)` に厳密一致させる。
 
+### native 持ち上げの組立（存在証明と区別）
+
+- `ClosureFunctoriality/NativeSimplexLift`：次数別単射な Hom に沿う
+  `dgNerveSimplexOfMappedData` と `dgNerveMapLift`。候補成分の像が既知の単体なら
+  方程式を反映し、各単体の持ち上げから面・退化の自然性を回収する。
+- `SuspensionAction/EpsilonSimplexLift`：D の ε Hom 包含に適用。
+  `quotientEpsilonNerveLift`、`quotientEpsilonCoreLift` と各 `_forget` は全単体等号。
+  `quotientEpsilonElement_factor_iff` は任意次数の成分の所属を、D の
+  disk パラメータに対する `quotientEpsilonCompatible` と同値にする。
+  前提は実際の全成分の ε 持ち上げであり、任意入力での成立は未証明。
+- D の `0263f71c9` の横合成を固定模型に特殊化：
+  `dgSuspensionResolvedEpsilonComposition`、`dgSuspensionQuotientNativeMap_composition`。
+- 接続点 `dgSuspensionNativeHom_vertex`：工程 1 の厳密頂点式から、商消費後も
+  同じ `dgSuspensionUnconditionalInputMap` の native 頂点になることを証明。
+- edgeIso の準備は D に移管（ユーザー指示）。D-S は工程 1・ε 着地・map を担当。
+  map が出来たら先に公開し、上記 Hom 作用と map の辺の関係をユーザー経由で D へ報告。
+
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
@@ -215,7 +232,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 30 葉・348 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 32 葉・387 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

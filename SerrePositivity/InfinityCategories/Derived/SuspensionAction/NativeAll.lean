@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonSimplexLift
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeHom
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeTarget
 
