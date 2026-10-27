@@ -3261,4 +3261,8 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndEvaluation
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeFullSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisFullConeSquare
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeCofiberFamily
+
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisCofiberFamily
+
 /-! # ∞-S• 構成と連結 K 理論 -/
