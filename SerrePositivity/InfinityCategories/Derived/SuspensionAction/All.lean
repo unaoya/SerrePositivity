@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeRepresentableRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonRequirement
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity

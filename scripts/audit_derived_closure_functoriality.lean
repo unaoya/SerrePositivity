@@ -6,6 +6,11 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.RepresentableSeed,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.PointFamily,
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeCoreIso,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeRepresentableRequirement,
+
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonRequirement,
     `SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.TensorDegreeSeparation,
@@ -141,3 +146,13 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.quotientEpsilonCell_nativeMap_obj_eq
 
 #check SerrePositivity.InfinityCategories.dgSuspensionResolved_obj_eq_of_nativeHom
+
+#check SerrePositivity.InfinityCategories.dgProjectiveClosureFunctor_obj_eq_of_iso_at
+#check SerrePositivity.InfinityCategories.dgSuspensionResolved_obj_eq_iff_extensionIso
+#check SerrePositivity.InfinityCategories.dgSuspensionExtensionIsoOfNativeHom
+#check SerrePositivity.InfinityCategories.dgKappaRepresentableSeedIso
+#check SerrePositivity.InfinityCategories.dgSuspensionInputObjectIsoOfNativeHom
+#check SerrePositivity.InfinityCategories.dgPointFamily
+#check SerrePositivity.InfinityCategories.dgCoreVertexIsoOfH0
+
+#check SerrePositivity.InfinityCategories.dgSuspensionCone_eq_of_iso_of_resolvedIdentity

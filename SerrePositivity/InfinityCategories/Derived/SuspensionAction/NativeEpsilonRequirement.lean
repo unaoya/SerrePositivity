@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeTarget
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ChoiceInvariant
 
 /-!
 概要：固定 resolved 族の native ε core への作用に必要な対象等号。
@@ -46,5 +47,68 @@ lemma dgSuspensionResolved_obj_eq_of_nativeHom
   quotientEpsilonCell_nativeMap_obj_eq R PA CB SA SB b H
     (dgSuspensionResolvedEpsilonObject R κ hκ A B f)
     (dgSuspensionResolvedEpsilonObject R κ hκ A B g) e hf hg
+
+/-- 同じ resolved 対象への着地は、選択前の実加群延長の同型を要求する。 -/
+def dgSuspensionExtensionIsoOfResolvedObjEq
+    (f g : A ⟶ B) (M : CA)
+    (h : (dgSuspensionUnconditionalMapData R κ hκ f).resolved.obj (⟨M⟩ : PA) =
+      (dgSuspensionUnconditionalMapData R κ hκ g).resolved.obj (⟨M⟩ : PA)) :
+    (dgModuleExtension R A B f.down).onClosed.obj M.val ≅
+      (dgModuleExtension R A B g.down).onClosed.obj M.val := by
+  let IF := dgKappaSphereClosureExtensionStrictImage R A B f.down hκ Fact.out
+  let IG := dgKappaSphereClosureExtensionStrictImage R A B g.down hκ Fact.out
+  have he : (IF.obj M).val = (IG.obj M).val :=
+    congrArg (fun x : PB => x.val.val) h
+  exact IF.iso M ≪≫ eqToIso he ≪≫ (IG.iso M).symm
+
+/-- 固定 resolved 族の対象等号は、選択前の実延長像の dg 同型と同値。 -/
+lemma dgSuspensionResolved_obj_eq_iff_extensionIso (f g : A ⟶ B) (M : CA) :
+    (dgSuspensionUnconditionalMapData R κ hκ f).resolved.obj (⟨M⟩ : PA) =
+        (dgSuspensionUnconditionalMapData R κ hκ g).resolved.obj (⟨M⟩ : PA) ↔
+      Nonempty ((dgModuleExtension R A B f.down).onClosed.obj M.val ≅
+        (dgModuleExtension R A B g.down).onClosed.obj M.val) := by
+  constructor
+  · intro h
+    exact ⟨dgSuspensionExtensionIsoOfResolvedObjEq R κ hκ A B f g M h⟩
+  · rintro ⟨a⟩
+    letI : Nonempty κ.ord.ToType :=
+      Cardinal.nonempty_ord_toType (ne_of_gt (lt_trans Cardinal.aleph0_pos hκ))
+    letI : CategoryTheory.Limits.PreservesColimitsOfSize.{u, u}
+        (dgModuleExtension R A B f.down).onClosed :=
+      (dgModuleExtensionRestrictionAdjunction R A B f.down).leftAdjoint_preservesColimits
+    letI : CategoryTheory.Limits.PreservesColimitsOfSize.{u, u}
+        (dgModuleExtension R A B g.down).onClosed :=
+      (dgModuleExtensionRestrictionAdjunction R A B g.down).leftAdjoint_preservesColimits
+    have he : (dgSuspensionUnconditionalMapData R κ hκ f).cone.obj M =
+        (dgSuspensionUnconditionalMapData R κ hκ g).cone.obj M :=
+      dgProjectiveClosureFunctor_obj_eq_of_iso_at
+        (R := R) (C := A) (D := B)
+        (F := dgModuleExtension R A B f.down) (G := dgModuleExtension R A B g.down)
+        (hO := kappaOrdinal_countable_strict_bound hκ Fact.out)
+        (B := dgKappaSphereClosureBaseFamily R A κ)
+        (E := dgKappaSphereClosureBaseFamily R B κ)
+        (hBF := fun i => ⟨dgKappaSphereFreeLabelMap R f.down i,
+          ⟨dgKappaSphereFreeExtensionIso R A B f.down i⟩⟩)
+        (hBG := fun i => ⟨dgKappaSphereFreeLabelMap R g.down i,
+          ⟨dgKappaSphereFreeExtensionIso R A B g.down i⟩⟩) M a
+    exact congrArg (fun x : CB => (⟨x⟩ : PB)) he
+
+/-- 工程 1 と頂点比較があれば、各 null 代表の選択前の延長像まで実同型になる。 -/
+def dgSuspensionExtensionIsoOfNativeHom
+    (H : dgFunctorNativeMappingSpace R A B ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A B)
+    (f g : A ⟶ B)
+    (e : VertexIso (X := dgFunctorNativeMappingSpace R A B)
+      (dgFunctorNativeMappingVertex R A B f.down)
+      (dgFunctorNativeMappingVertex R A B g.down))
+    (hf : VertexIso (X := dgSuspensionResolvedEpsilonCore R κ hκ A B)
+      (H.app (Opposite.op ⦋0⦌) (dgFunctorNativeMappingVertex R A B f.down))
+      (dgSuspensionResolvedEpsilonVertex R κ hκ A B f))
+    (hg : VertexIso (X := dgSuspensionResolvedEpsilonCore R κ hκ A B)
+      (H.app (Opposite.op ⦋0⦌) (dgFunctorNativeMappingVertex R A B g.down))
+      (dgSuspensionResolvedEpsilonVertex R κ hκ A B g)) (b : SA) :
+    (dgModuleExtension R A B f.down).onClosed.obj b.val.val.val ≅
+      (dgModuleExtension R A B g.down).onClosed.obj b.val.val.val :=
+  dgSuspensionExtensionIsoOfResolvedObjEq R κ hκ A B f g b.val.val
+    (dgSuspensionResolved_obj_eq_of_nativeHom R κ hκ A B H f g e hf hg b)
 
 end SerrePositivity.InfinityCategories

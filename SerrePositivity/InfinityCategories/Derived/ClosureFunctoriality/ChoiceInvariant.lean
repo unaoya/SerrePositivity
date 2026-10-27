@@ -76,6 +76,25 @@ lemma dgProjectiveClosureFamilyImage_index_eq_of_iso
     exact ⟨a.symm ≪≫ e⟩
   · rintro ⟨e⟩
     exact ⟨a ≪≫ e⟩
+/-- 指定対象だけの実像同型で、同じ閉包関手の対象選択が一致する。 -/
+lemma dgProjectiveClosureFunctor_obj_eq_of_iso_at
+    (M : {M // dgProjectiveFamilyObjects R C
+      (dgProjectiveClosureFamily R C (T := O) B) M})
+    (a : F.onClosed.obj M.val ≅ G.onClosed.obj M.val) :
+    (dgProjectiveClosureFunctor R C D F B E hO hBF).obj M =
+      (dgProjectiveClosureFunctor R C D G B E hO hBG).obj M := by
+  let i := M.property.choose
+  have hi : ((dgProjectiveClosureFamily R C (T := O) B).2 i).val = M.val :=
+    M.property.choose_spec
+  let a' := F.onClosed.mapIso (eqToIso hi) ≪≫ a ≪≫
+    (G.onClosed.mapIso (eqToIso hi)).symm
+  apply Subtype.ext
+  change ((dgProjectiveClosureFamily R D (T := O) E).2
+    ((dgProjectiveClosureFamilyImage R C D F hO B E hBF).index i)).val =
+    ((dgProjectiveClosureFamily R D (T := O) E).2
+      ((dgProjectiveClosureFamilyImage R C D G hO B E hBG).index i)).val
+  rw [dgProjectiveClosureFamilyImage_index_eq_of_iso R D C F G hO B E hBF hBG i a']
+
 /-- 閉包関手の対象作用も一致する。全 Hom の一致までは主張しない。 -/
 lemma dgProjectiveClosureFunctor_obj_eq_of_iso
     (a : ∀ i : (dgProjectiveClosureFamily R C (T := O) B).1,

@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.RepresentableSeed
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.PointFamily
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeCoreIso
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonWordRigidity
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeSimplexLift
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ModuleExtension

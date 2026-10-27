@@ -220,6 +220,7 @@ D 側の native 忘却は `quasicategoryCoreMap (dgNerve.map
 `ChoiceInvariant` の入力二代表に関する選択不変性も証明。
 `dgSuspensionCone_eq_of_iso_of_nativeUnit`：この厳密単位経路は、元の cone 代表の
 実加群同型に関する骨格性まで要求する。代表集合の非骨格性は未証明。
+`dgSuspensionCone_eq_of_iso_of_resolvedIdentity` は data 自体の resolved 恒等性から同じ骨格性を導く。
 現在、この必要等号の成立は未証明。D の商の単位則だけでは導けない。
 一般の map の不存在は示していない。採用目標の edgeIso は厳密な辺等号を要求しない。
 D に恒等入力の実商関手と懸垂の恒等関手の比較も照会中（ユーザー経由）。
@@ -231,8 +232,9 @@ D の `28e721b49` の interval 比較アダプタを確認。比較経路を使�
 `intervalMappingVertexOfEdge (dgNativeMappingVertexEdge R A B p)` と q 版の
 `VertexIso` への写像。`coherentHomIntervalComparison` を使う型をユーザー経由で報告済み。
 恒等入力の比較の照会もユーザーが D へ中継済み。
+D の `b8086c72c` は恒等・合成を実加群評価後の閉同型で比較。固定 cell／ε の接続は未供給。
 D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEdgeEq`
-は最終辺から商作用辺への比較を消費する型で一致。比較の実例は未供給。
+は最終辺から商作用辺への比較を消費する型で一致。最終辺比較の実例は未供給。
 
 ### 固定 ε Hom の成分の必要条件
 
@@ -250,7 +252,14 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 ε core への全単体射と頂点の指定比較があれば、同じ像対象等号が必要。
 頂点一致を ε core 内の同型へ弱める経路にも適用。独自 All・監査のみ登録。
 `NativeEpsilonRequirement` の `dgSuspensionResolved_obj_eq_of_nativeHom` は固定 resolved 族への特殊化。
-この必要等号の成立は未証明。最終 map の不存在は未主張。
+`dgSuspensionResolved_obj_eq_iff_extensionIso`：指定対象の等号は、選択前の実延長像の同型と同値。
+`RepresentableSeed`：固定 sphere-free 基底内の一セル代表と、各代表加群との実同型。
+`NativeRepresentableRequirement` の `dgSuspensionInputObjectIsoOfNativeHom`：工程 1 と ε core 内の
+頂点比較があれば、入力側の可逆比較は各元対象の実閉射同型を要求する。H⁰ 同型では足りない。
+独自 All・監査のみ登録。`PointFamily` は一対象環からの対象関手の全 Hom 作用、
+`NativeCoreIso` は H⁰ 同型を同じ core の頂点比較へ移す検証用の入口。
+次に、零複体と非零可縮 disk を持つ有限入力で上の必要条件を検査する。
+この必要条件の具体的違反、最終 map の不存在はまだ未証明。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
@@ -274,7 +283,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 40 葉・502 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 44 葉・604 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

@@ -74,6 +74,20 @@ lemma dgSuspensionCone_identity_obj_eq_of_iso (M N : CA) (a : M.val ≅ N.val) :
     (hBF := fun i => ⟨dgKappaSphereFreeLabelMap R (DGFunctor.id A) i,
       ⟨dgKappaSphereFreeExtensionIso R A A (DGFunctor.id A) i⟩⟩) M N a
 
+/-- 固定 data 自体の resolved 恒等性は、cone の各対象を動かさないことを要求する。 -/
+lemma dgSuspensionCone_obj_eq_of_resolvedIdentity
+    (h : (dgSuspensionUnconditionalMapData R κ hκ (𝟙 A)).resolved = DGFunctor.id PA)
+    (M : CA) : (dgSuspensionUnconditionalMapData R κ hκ (𝟙 A)).cone.obj M = M :=
+  congrArg (fun F => (F.obj (⟨M⟩ : PA)).val) h
+
+/-- 固定 data の resolved 恒等性そのものが、cone 代表集合の実同型に関する骨格性を要求する。 -/
+lemma dgSuspensionCone_eq_of_iso_of_resolvedIdentity
+    (h : (dgSuspensionUnconditionalMapData R κ hκ (𝟙 A)).resolved = DGFunctor.id PA)
+    (M N : CA) (a : M.val ≅ N.val) : M = N :=
+  (dgSuspensionCone_obj_eq_of_resolvedIdentity R κ hκ A h M).symm.trans
+    ((dgSuspensionCone_identity_obj_eq_of_iso R κ hκ A M N a).trans
+      (dgSuspensionCone_obj_eq_of_resolvedIdentity R κ hκ A h N))
+
 /-- 固定 data の厳密単位経路は、元の cone 代表集合の同型に関する骨格性を要求する。 -/
 lemma dgSuspensionCone_eq_of_iso_of_nativeUnit
     (H : dgFunctorNativeMappingSpace R A A ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A A)
