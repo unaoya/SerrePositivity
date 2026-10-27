@@ -31,6 +31,10 @@ public import SerrePositivity.KST.Spectra.D3StageReflectionStructure
 public import SerrePositivity.KST.Spectra.D3StageLoopReflectedComparison
 public import SerrePositivity.KST.Spectra.D3StageReflectedStructureCriterion
 public import SerrePositivity.KST.Spectra.D3StageAlternatingComparison
+public import SerrePositivity.KST.Spectra.D3TensorParameterDiagram
+public import SerrePositivity.KST.Spectra.D3BiParameterSquare
+public import SerrePositivity.KST.Spectra.D3BiParameterFaces
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointCorners
 
 /-!
 概要：Sp-2 の d3 専用集約。

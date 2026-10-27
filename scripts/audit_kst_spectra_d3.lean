@@ -106,7 +106,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3StageReflectionStructure,
     `SerrePositivity.KST.Spectra.D3StageLoopReflectedComparison,
     `SerrePositivity.KST.Spectra.D3StageReflectedStructureCriterion,
-    `SerrePositivity.KST.Spectra.D3StageAlternatingComparison]
+    `SerrePositivity.KST.Spectra.D3StageAlternatingComparison,
+    `SerrePositivity.KST.Spectra.D3TensorParameterDiagram,
+    `SerrePositivity.KST.Spectra.D3BiParameterSquare,
+    `SerrePositivity.KST.Spectra.D3BiParameterFaces,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointCorners]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
