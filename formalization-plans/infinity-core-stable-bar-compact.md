@@ -157,3 +157,7 @@
 - 元の変換成分を保持しないという自由も上の例では解決しない。元の型の実装を進めず、ε 整合 Hom への源の変更か反例形式化の優先かをユーザーへ照会。
 - `DGQuotient.parameterExtension_identity_epsilon`・`parameterExtension_composition_epsilon` は ε 整合の単位・tensor 縦合成での閉性、`parameterExtension_identity`・`parameterExtension_composition` は同じ成分の延長の厳密則。新規葉 QuotientParameterLaws、対象 build1958 jobs成功。一般形の存在主張は含まない。
 - ユーザー判断：反例定理は作らず数学的記録のみ。工程2を ε 整合 Hom の部分複体を持つ NullPreservingFunctorsε 版へ変更して続行。対象作用は同じ quotientDGFunctor に固定し、D-S が resolvedInputFunctor の着地を証明する。先行則の検証：Derived 集約14933 jobs、専用監査82宣言／6モジュール、許容三公理のみ、終端0。
+- ε 整合版の三葉 QuotientEpsilonHom／Category／Criterion が対象 build2591 jobs成功。`InfinityCategories.NullPreservingFunctorsε` は元の null 保存関手を対象とし、Hom は元の Hom end へ mono で入る pullback 部分複体。
+- `quotientEpsilonCompatible`・`quotientEpsilonHomLift`・`quotientEpsilonHom_factor_iff`：任意複体パラメータで、部分複体への着地と各 b・全整数次数の元の固定 ε 整合が同値。追加の延長選択は入力に残らない。
+- `quotientInputFunctor` と `quotientInputFunctor_obj` を公開。対象は元の同じ quotientDGFunctor へ厳密一致。縦の全 Hom の単位・合成保存も証明済み。ユーザーへのチャットで型と着地 API を先行報告。横の単位・合成の全単体整合は継続中。
+- ε 整合版三葉を集約・専用監査・全体監査へ登録。Derived 集約14936 jobs、専用監査171宣言／9モジュール成功、許容三公理のみ、終端0。局所 import 閉包402モジュール、循環なし、外部未コミット依存なし。横の全単体整合は次工程。
