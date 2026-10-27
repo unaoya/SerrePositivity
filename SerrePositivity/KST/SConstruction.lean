@@ -3232,4 +3232,11 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightLaxBounda
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightZeroWitness
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightSquareComparison
 
+public import SerrePositivity.KST.SConstruction.DGPerfectRealizationPerfectYoneda
+public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeRealizationValue
+public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealizedFactorization
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisRealizationValue
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisCompositeNu
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterEdges
+
 /-! # ∞-S• 構成と連結 K 理論 -/
