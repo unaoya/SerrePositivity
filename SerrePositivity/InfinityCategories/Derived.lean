@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
+public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore

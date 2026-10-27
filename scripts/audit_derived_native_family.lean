@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
+import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore
@@ -19,6 +21,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore,
@@ -80,3 +84,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgSuspensionConeRepresentativeIso
 #check SerrePositivity.InfinityCategories.dgSuspensionUnitConeEvaluationIso
 #check SerrePositivity.InfinityCategories.dgSuspensionCompositionConeEvaluationIso
+
+#check SerrePositivity.InfinityCategories.dgKappaConeCompactComparison_inclusion
+#check SerrePositivity.InfinityCategories.dgKappaConeCompactEquivalence_inverse_inclusion
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCompactEquivalence
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCompactEquivalence_hom
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCountableSum_isExactFunctor
+#check SerrePositivity.InfinityCategories.dgKappaSphereClosureSwindleInfinityIso

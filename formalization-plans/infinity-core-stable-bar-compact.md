@@ -223,3 +223,12 @@
 - E／主リスク：ω と κ の取り違え、raw 商と冪等完備商の混同、スペクトルの連結切断、反復列の構造射比較、宇宙、普遍性から局所化を循環的に仮定すること。現行 IsLocalizingInvariant は零保存＋全 Verdier 四角形の fiber 性であり、BGT の意味での filtered-colimit 保存も主張するなら別に証明する。
 - E／代替：既存の Pr^L と compact 生成の関手的普遍性から Fκ を直接構成できれば、一般 Cat∞ 値 straightening 全体の新規実装を先行条件にしない。W1 の Fun(ℕ,Sp) 直接構成も、正しい ∞ 写像空間で全整合を証明する限り有効。いずれも旧 dg 商関手圏への strict 持ち上げを再要求しない。
 - 参照：BGT §9.1、Def.9.1／9.6、Lemma9.4、Prop.9.5（https://msp.org/gt/2013/17-2/gt-v17-n2-p03-s.pdf）；HTT Cor.5.2.2.5（https://www.math.ias.edu/~lurie/papers/HTT.pdf）。評価はチャットでもユーザーへ渡す。今回は計画更新のみで Lean 本体を変更しない。
+
+### 先行 B1：固定 cone と実導来圏の κ-compact 部分
+- ユーザー割当：∞ 側の Ind／Calkin 界面を待たず、対象別 B1 を先行。最終 VertexIso・D-4 後半の凍結は維持する。
+- 新規葉 Compact/ConeDerivedEquivalence：任意の I : DGKappaConeInput R D κ に対し dgKappaConeCompactComparison を定義。I.kappaCompact で実導来比較を F2.Compact.kappaCompactObjects κ D(D) へ因子化し、包含後は元の dgKappaConeDerivedComparison と全単体で厳密一致（inclusion）。
+- 同 comparison の isFullyFaithful は I.derivedFullyFaithful と全部分包含の相殺、isEssentiallySurjective は I.covers と全部分包含の preimageVertexIso で証明。dgKappaConeCompactEquivalence は順方向を comparison に固定し、逆比較の inclusion も元の compact 包含との FunctorIso として回収する。
+- 新規葉 KappaPerfect/SphereClosureCompactComparison：新 dgKappaConeInput_unconditional' への特殊化 dgKappaSphereClosureCompactComparison／dgKappaSphereClosureCompactEquivalence を公開。equivalence_hom で順方向を厳密回収。対象別の QCatEquivalence であり、Ind_ω 比較・新模型の全入力作用を仮定しない。
+- 流用範囲：新 I.countableClosed は同じ実加群の可算直和への閉性。dgKappaConeCountableSum と dgKappaSwindleSource は新 I にそのまま適用できる。dgKappaSphereClosureCountableSum_isExactFunctor／dgKappaSphereClosureSwindleInfinityIso は、既存の完全性／全関手比較をその新 I に特殊化して公開。対象・代表・収縮を取り直さない。
+- 流用の限界：一般 C の Fκ(C) の可算和・swindle 族、K∞ の加法性・消滅、入力 A 方向の自然性、Ind_ω への比較はここで供給しない。compact 部分への swindle の移送は得られた同値を用いる後続工程とし、B1 の完成と混同しない。
+- B1 検証：新 I 特殊化の対象 build10453 jobs、Derived 集約14959 jobs、専用監査163宣言／18モジュール、全体監査26254宣言／2988モジュール成功。許容三公理のみ、終端0。新二葉の import 閉包6656モジュール、循環・外部未コミット依存なし。対象別 B1 を供給済みとし、一般 Ind／Calkin への接続と旧 D-4 凍結は区別して維持する。
