@@ -36306,3 +36306,7 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualOuterBoundary
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorActualOuterSquareDiagramIso
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualOuterSquareDiagramIso
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedGluingNativeArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedGluingNativeArrowComparison
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorActualMiddleNativeArrowComparison
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualMiddleNativeArrowComparison
