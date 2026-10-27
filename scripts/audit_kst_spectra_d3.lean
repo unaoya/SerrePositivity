@@ -88,7 +88,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3ProjectionStructureGraded,
     `SerrePositivity.KST.Spectra.D3GradedWhiskeringNerve,
     `SerrePositivity.KST.Spectra.D3GradedWhiskeringHom,
-    `SerrePositivity.KST.Spectra.D3ProjectionStructureIso]
+    `SerrePositivity.KST.Spectra.D3ProjectionStructureIso,
+    `SerrePositivity.KST.Spectra.D3LoopCanonicalSectionTransport,
+    `SerrePositivity.KST.Spectra.D3StageStructureTail,
+    `SerrePositivity.KST.Spectra.D3CommonStageTargetStructure,
+    `SerrePositivity.KST.Spectra.D3CommonStageRefinedPasting]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

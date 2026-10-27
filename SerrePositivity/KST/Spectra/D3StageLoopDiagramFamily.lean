@@ -127,8 +127,8 @@ def commonChosenStageEndpointLoopIso (n : ℕ) :
     FunctorIso (coherentNerveMap commonRefinedEnriched ≫
       coherentNerveMap (d3StageKanEnriched n))
       ((commonChosenStageLoopDiagramFamily.{u} n ≫
-        loopDiagramEvaluation PointedKanInfinity 1 1) ≫ pointedKanLoopInfinity) := by
-  rw [commonChosenStageLoopDiagramFamily_target_next]
-  exact commonStageLoopFunctorIso n
+        loopDiagramEvaluation PointedKanInfinity 1 1) ≫ pointedKanLoopInfinity) :=
+  F2.functorIsoOfEq (commonStageLoopFunctorIso n) rfl
+    (by rw [commonChosenStageLoopDiagramFamily_target_next])
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
