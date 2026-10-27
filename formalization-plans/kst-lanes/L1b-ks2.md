@@ -1,5 +1,34 @@
 # K-S2：K-10 d②・e②・厚核側の下指定二単体
 
+## R 窓前の停止チェックポイント（2026-10-28）
+- **現在地コミット**：K-S2 の最終 Lean 保存は `48ed0cfea`。
+  d②・e②骨格・厚核下二単体・実比較面の組立て口まで検証済み。
+  今回は本計画の更新と所有集約・専用監査の再確認のみ。新しい Lean 作業は行わない。
+- **待っている供給と到着状況**：供給対象は K-S• の S 上二単体と三認証。
+  S 上二単体は `dgOdotMilnorKernelNullUpperTriangle`、その図式と共有対角証明は
+  `dgOdotMilnorKernelNullUpperDiagram`・`dgOdotMilnorKernelNullUpperDiagram_diagonal`
+  として到着済み。K-S• は `0cf196958` で実比較面への代入も保存済み。
+  右面・外周の認証 `dgOdotMilnorActualRightSquareDiagramIso`・
+  `dgOdotMilnorActualOuterSquareDiagramIso` も公開済み。
+  残る供給は上下二単体を保つ `VerdierRectangleDiagramIso` の第三認証と、
+  `kernel_vertex` を含む `DGOdotMilnorActualRectangleInput R d h` の実構成
+  `dgOdotMilnorActualRectangle`（現時点で未定義）。入力型は変更しない。
+- **R 窓後の再開入口・代入手順**：
+  1. 読み取り専用の `DGOdotMilnorKernelActualComparisonSquare` で到着済みの
+     `upper := dgOdotMilnorKernelNullUpperDiagram R d` と
+     `diagonal := dgOdotMilnorKernelNullUpperDiagram_diagonal R d` を確認する。
+     `dgOdotTailKernelComparisonSquare R d upper diagonal` が元の組立て入口。
+     K-S• の `dgOdotMilnorKernelActualComparisonSquare R d` は既にこの代入なので再実装しない。
+  2. `_upper`・`_lower`・`_kernel_vertex` の回収を使い、共通 LT 長方形への照合を再開する。
+  3. 三認証を束ねた実構成が到着したら
+     `dgOdotTailCatPerfConnection R d h (dgOdotMilnorActualRectangle R d h)` に一回代入する。
+     e② の無条件化は R 窓後に実施し、公開名をユーザー経由で報告する。
+- **停止検証**：2026-10-28、所有集約ビルド成功（13,734 jobs）。専用監査も成功（95宣言・5葉、標準三公理のみ）。
+  ログ：`/tmp/ks2-stop-20261028-build.log`・`/tmp/ks2-stop-20261028-audit.log`。
+- **停止方針**：R 窓前は K-S• の区切りまで。本レーンは停止準備のみで、
+  第三認証の到着前後を問わず新規 Lean 実装・e② の無条件化を R 窓前には開始しない。
+  以下の 10-27 引き継ぎは旧供給待ち時点の記録。現在の到着状況と再開順は本節を優先する。
+
 ## 引き継ぎ（2026-10-27）
 - 現在地：入力型をユーザー経由で K-S• に確認済み（変更予定なし）。
   実構成の予定公開名は `dgOdotMilnorActualRectangle`（未定義・未着）。
