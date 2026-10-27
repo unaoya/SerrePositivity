@@ -258,19 +258,22 @@ D の `a71c35749` の `dgSuspensionEdgeIsoOfQuotientComparison`／`_OfQuotientEd
 頂点比較があれば、入力側の可逆比較は各元対象の実閉射同型を要求する。H⁰ 同型では足りない。
 独自 All・監査のみ登録。`PointFamily` は一対象環からの対象関手の全 Hom 作用、
 `NativeCoreIso` は H⁰ 同型を同じ core の頂点比較へ移す検証用の入口。
-次に、零複体と非零可縮 disk を持つ有限入力で上の必要条件を検査する。
-この必要条件の具体的違反、最終 map の不存在はまだ未証明。
+`NativeDiskPair`：零と非零可縮 disk の有限入力。二つの点関手は入力の native Hom 内で可逆。
+`NativeEpsilonDiskObstruction` の `nativeDiskResolvedSeedImages_ne`：指定一セル null 対象で
+同じ sphere-closure data の resolved 像が異なることを証明（(a) の具体的反例）。
+`no_nativeDiskSuspensionEpsilonHom`：固定頂点を ε core 内で比較する工程 1 は存在しない。
+比較付き頂点でも不可能。主経路未登録。最終 map 自体の不存在は未主張。
+残る map は ε core を経由しない経路が必要。Fun∞ 側の商作用から固定出力 native Hom への橋は未供給。
 
 頂点は必ず `dgKappaSuspensionKInput R A (s A).cone` とする。
 cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 残る工程：
 
-- cone の入力作用から、同じ cell 比較の族へ native core 間の全単体射を構成する。
-- 工程 1 の各次数の成分について D の ε 整合 Hom への所属を証明し、
-  D が供給する同じ選択 ε の商作用を import・適用する。
-  元 Hom の自然性だけでは ε 整合は出ない。`ParameterExtension` の必要十分条件を
-  使用する。新しい商への置換や収縮の変更で条件を消さない。
+- ε core 経由の工程 1 は上記反例で否定。ε 所属を仮定して主経路へ登録しない。
+- ε core を経由せず、固定出力 native Hom への全単体作用と固定 data の比較を構成する。
+  Fun∞ 側の商の普遍性を使う場合も、同じ固定出力への全写像空間の接続が必要。
+  新しい商・模型への置換や収縮の変更を、元の目標の達成と数えない。
 - 固定 PerfDGInput の全 Hom に対する SSet 射作用を構成する。
 - 豊穣単位・合成と高次比較を証明し、coherentNerveMap を得る。
 - 頂点の厳密等号と、元の実商関手の辺との端点固定 VertexIso を照合する。
@@ -283,7 +286,7 @@ cone の全 Hom 作用を、懸垂の全 Hom 作用と同一視しない。
 
 独自集約：`ClosureFunctoriality/All.lean`、`SuspensionAction/All.lean`。
 両集約のビルド成功、監査は終了コード 0。所有範囲のソース走査と空白検査も通過。
-native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 44 葉・604 宣言で成功。
+native 消費射追加後は主経路 `NativeAll` もビルド成功、監査は 46 葉・651 宣言で成功。
 独自監査は全新規葉の全宣言を走査し、許可公理を
 `propext`、`Classical.choice`、`Quot.sound` のみに限定する。
 `sorryAx` は不許可。共有監査の編集は行わない。

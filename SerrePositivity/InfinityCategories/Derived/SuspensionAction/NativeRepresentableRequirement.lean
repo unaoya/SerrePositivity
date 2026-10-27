@@ -67,6 +67,28 @@ def dgSuspensionRepresentableIsoOfNativeHom [Nontrivial R]
     dgModuleExtensionRepresentableIso R A B g.down x
   exact af.symm ≪≫ m ≪≫ ag
 
+/-- 一セル代表での resolved 像対象の等号から、元対象の実閉射同型を回収する。 -/
+def dgSuspensionInputObjectIsoOfResolvedSeedEq [Nontrivial R]
+    (f g : A ⟶ B) (x : A)
+    (h : (dgSuspensionUnconditionalMapData R κ hκ f).resolved.obj
+        (⟨dgSuspensionRepresentableSeed R κ hκ A x⟩ : PA) =
+      (dgSuspensionUnconditionalMapData R κ hκ g).resolved.obj
+        (⟨dgSuspensionRepresentableSeed R κ hκ A x⟩ : PA)) :
+    ForgetEnrichment.of (Complex R) (f.down.obj x) ≅
+      ForgetEnrichment.of (Complex R) (g.down.obj x) := by
+  let s := dgKappaRepresentableSeedIso R A hκ x
+  let m := dgSuspensionExtensionIsoOfResolvedObjEq R κ hκ A B f g
+    (dgSuspensionRepresentableSeed R κ hκ A x) h
+  change (dgModuleExtension R A B f.down).onClosed.obj
+      (dgKappaSphereFreeModule R A (dgKappaRepresentableSeedIndex A hκ x)) ≅
+    (dgModuleExtension R A B g.down).onClosed.obj
+      (dgKappaSphereFreeModule R A (dgKappaRepresentableSeedIndex A hκ x)) at m
+  let af := (dgModuleExtension R A B f.down).onClosed.mapIso s ≪≫
+    dgModuleExtensionRepresentableIso R A B f.down x
+  let ag := (dgModuleExtension R A B g.down).onClosed.mapIso s ≪≫
+    dgModuleExtensionRepresentableIso R A B g.down x
+  exact dgRepresentableReflectIso R B (af.symm ≪≫ m ≪≫ ag)
+
 /-- 同じ ε 着地経路は、入力の可逆比較を元の対象の厳密な閉射同型へ反映する。 -/
 def dgSuspensionInputObjectIsoOfNativeHom [Nontrivial R]
     (H : dgFunctorNativeMappingSpace R A B ⟶ dgSuspensionResolvedEpsilonCore R κ hκ A B)

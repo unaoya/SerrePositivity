@@ -6,6 +6,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair,
+    `SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonDiskObstruction,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.RepresentableSeed,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.PointFamily,
     `SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeCoreIso,
@@ -156,3 +158,10 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgCoreVertexIsoOfH0
 
 #check SerrePositivity.InfinityCategories.dgSuspensionCone_eq_of_iso_of_resolvedIdentity
+
+#check SerrePositivity.InfinityCategories.nativeDiskPointVertexIso
+#check SerrePositivity.InfinityCategories.nativeDiskPair_no_closedIso
+#check SerrePositivity.InfinityCategories.nativeDiskNullSeed
+#check SerrePositivity.InfinityCategories.nativeDiskResolvedSeedImages_ne
+#check SerrePositivity.InfinityCategories.no_nativeDiskSuspensionEpsilonHom
+#check SerrePositivity.InfinityCategories.dgSuspensionInputObjectIsoOfResolvedSeedEq

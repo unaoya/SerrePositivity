@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.RepresentableSeed
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.PointFamily
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeCoreIso
