@@ -195,3 +195,26 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5821 jobs）。新規5葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：528 modules／5732 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉5本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
+
+
+## 2026-10-27：実端点 loop 全図式と共通段始点の全関手比較
+- `d3Mixed_identity`／`d3ParameterEvaluation`：混合 Hom の実恒等入力は同じ元のパラメータ制限射。通常の制限図式の恒等・合成も実証。
+- `d3PointedKanParameterSquare_vertex`：構成済み全四角形族の各実頂点は、同じ通常パラメータ図式の coherent 表示に全単体で一致。対象別の四隅一致だけで図式全体を比較しない。
+- `d3EndpointParameterSquare_zero_corner`／`_other_zero`：同じ全族の point Hom と通常 based path Hom を実零頂点として認証。BF path の段とは区別する。
+- `d3PointedKanCofiberCone_hom_isLimit`／`_isLimit`／`d3PointedKanEndpointCone_isLimit`：元の cofiber 制限錐の点つき極限性と元の端点包含の単射性から、同じ Kan Hom 錐・同じ coherent 錐の極限性を認証。
+- `D3StrictPullbackSquare.triangle_left`／`triangle_right`／`isPullback`：同じ strict 錐を cospan ホーン・四角形へ移し、その二つの実三角形を元の fst・snd と二辺の同じ合成射列で回収。
+- `d3EndpointParameterSquare_eq_strict`／`_isPullback`／`_isLoop`：元の全族の四角形そのものを上記実錐の四角形と厳密比較し、実引き戻し性を回収。
+- `d3PointedKanEndpointLoopDiagram`／`_corner`／`_sourceIso`：構成済み全 Hom と全単体を保って loopDiagrams へ因子化。始点は元の通常 pointedKanLoopInfinity と全関手同型。終点は同じ Hom(unit, -) 作用。
+- `d3Closed_unit_action`／`d3PointedKanUnit_whiskered`／`d3PointedKanUnitFunctorIso`：同じ標準単位同型と元の内部 Hom 全作用の厳密豊穣自然性を抽象閉圏で証明し、Kan 全関手同型へ代入。円交換因子は比較していない。
+- `d3LoopDiagramEvaluation_equivalenceLifting`：両零角・引き戻し性の全図式同型不変性から、終点評価の全パラメータ同値持ち上げ性を供給。安定性・loop 切断を仮定しない。
+- `d3PointedKanLoopCorrection`／`d3PointedKanLoopSection`／`_target`／`_diagramIso`：同じ指定単位同型の path を全図式へ持ち上げ、厳密恒等終点を持つ実 loop 切断を構成。元の実端点図式との全関手同型を保持。
+- `d3PointedKanLoopSection_sourceIso`／`d3PointedKanLoopEvaluation_trivial`：同じ厳密切断の始点作用と元の通常 loop の全関手同型、同じ終点評価の全単射 RLP を実証。
+- `commonChosenStageSourceLoopIso n`：元の共通実段図式族の厳密終点を保って全図式比較し、同じ始点段作用を通常 loop 作用へ全関手比較。
+- `commonChosenStageRefinedSourceIso n`：元の共通 BF 右射影による段自然同型と上記全図式比較を合成し、refined 段作用と実 loop 図式始点段作用を全関手比較。
+- **残る B**：この段比較と、段をまたぐ元の BF 構造との整合を実証し、同じ比較を BF 全体の FunctorIso へ接続する。各段の全関手同型から BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
+
+
+### 実端点 loop・共通段始点比較の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（7767 jobs）。新規9葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：537 modules／5823 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉9本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。

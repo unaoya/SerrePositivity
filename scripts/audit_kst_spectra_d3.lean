@@ -61,7 +61,16 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3EnrichedOrderedDiagram,
     `SerrePositivity.KST.Spectra.D3PointedKanParameterDiagram,
     `SerrePositivity.KST.Spectra.D3PointedKanParameterSquare,
-    `SerrePositivity.KST.Spectra.D3EndpointParameterSquare]
+    `SerrePositivity.KST.Spectra.D3EndpointParameterSquare,
+    `SerrePositivity.KST.Spectra.D3PointedKanParameterVertex,
+    `SerrePositivity.KST.Spectra.D3PointedKanEndpointZeros,
+    `SerrePositivity.KST.Spectra.D3PointedKanCofiberCone,
+    `SerrePositivity.KST.Spectra.D3StrictPullbackSquare,
+    `SerrePositivity.KST.Spectra.D3PointedKanEndpointLoopDiagram,
+    `SerrePositivity.KST.Spectra.D3PointedKanUnitIso,
+    `SerrePositivity.KST.Spectra.D3LoopDiagramTransport,
+    `SerrePositivity.KST.Spectra.D3PointedKanLoopSection,
+    `SerrePositivity.KST.Spectra.D3CommonStageSourceComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do
