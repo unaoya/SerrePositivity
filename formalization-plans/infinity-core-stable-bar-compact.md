@@ -248,3 +248,8 @@
 - K-S• 確認回答：元の依頼型・追加仮定なしで本体へ進むことをユーザーが承認。新葉 Morita/PerfectProjectiveImage に perfectDGFunctorImage_projective_finiteCell／projective／perfectProjective を構成。有限 cell の像の全 Hom 射影性、源の射影性で持ち上げた実ホモトピー retract、既存の導来 perfect 保存を組み合わせる。
 - 対象 build2741 jobs成功。KST import のない DG 正本葉として公開し、Derived 集約・全体監査へ登録。専用 audit_dg_perfect_projective_image は全自作宣言の公理閉包と元の全称依頼型（独立した u/v/w、追加仮定なし）を検査する。旧凍結経路は変更しない。
 - 最終検証：対象2741 jobs・Derived集約14960 jobs成功。専用監査は新葉の全3宣言について許容三公理のみ、元の全称型照合も成功、終端0。依存閉包551モジュール、循環なし・KST依存0・外部未コミット依存なし。公開型は元依頼のままで、全体監査への登録も追加した。
+
+### K-S• 上指定 S 二単体：加群の明示境界のみ
+- ユーザー指定により一般 DGFunctor の Hom end 比較には着手しない。新葉 DifferentialGraded/Derived/ProjectiveContraction の moduleHomotopicallyProjective_contractingElement_of_acyclic は、h-projective かつ moduleAcyclic な任意の右加群について ∃ H, d H = unitElement を供給する。既存 complexAcyclic_boundary を実 Hom end に適用し、KST import を加えない。
+- Derived 集約・全体監査へ登録し、専用 audit_dg_projective_contraction で全自作宣言の公理閉包と元の公開型を検査する。固定 Γ の bimodule 射影性・関手 Hom end への移送は未供給のまま。完了後は停止準備完了に戻る。
+- 検証完了：新葉と Derived 集約の対象 build14962 jobs成功、専用監査は全1宣言について標準三公理のみ・依頼型照合成功（終端0）。新葉のローカル依存閉包58モジュール、循環なし・KST依存0。全体監査は登録のみで再実行せず。加群版の供給完了後、停止準備完了。
