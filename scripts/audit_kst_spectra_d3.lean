@@ -114,7 +114,8 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3ParameterPullbackCriterion,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointPullbacks,
     `SerrePositivity.KST.Spectra.D3TensorEndpointZeros,
-    `SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies]
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

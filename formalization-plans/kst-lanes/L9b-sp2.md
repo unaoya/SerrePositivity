@@ -41,8 +41,7 @@
 - K-B の DGKappaSuspensionRelativeRoofInput は現行の型で受けられる。I・P は変更せず、実核・指定収縮・Verdier 証拠・零角の Perf 値の零性の供給後に exists_dgFixedNullRelativeRoof を適用する。一般分数比較の充満忠実性は s4 で供給済み。
 
 
-## Sp-2 工程
-- [x] d3b②の対象別入力：実 loop 始点 L_X と X→L_X→T_X を構成。a_X の相対 cofibration と指定単位の厳密因子分解を証明。全 Hom の整合は下項。
+## Sp-2 工程- [x] d3b②の対象別入力：実 loop 始点 L_X と X→L_X→T_X を構成。a_X の相対 cofibration と指定単位の厳密因子分解を証明。全 Hom の整合は下項。
 - [x] relativeCorner a_X q_X の指定境界 fiber から対象別 c_X:L_X→M_X を構成し、a_X≫c_X=i_X、c_X≫q_X=r_X を保持。
 - [ ] 比較射を含む全 Hom の RLP・恒等・合成・全単体整合を実証。図式側だけの RLP で代用しない。
 - [ ] 指定 loop 図式と厳密 tail 終点を保つ nativeLoop への全図式 FunctorIso を構成。
@@ -50,12 +49,10 @@
 - d3d：**Sp-2b へ移管**。Stable/LoopEquivalenceStability.isStable_of_loopEquivalence へ代入し sp_isStable 公開。
 - s3：**Sp-3 へ移管**。移管時の記録：K-S• d④③ の実右面・外周・上下二単体を保つ全長方形比較の三認証到着後、固定 ν の RelativePerfectVerdierDiagram／Rectangle に実代入。
 - s5：**Sp-3 へ移管**。移管時の記録：専用集約・公理監査・型の仮定検査・引き継ぎ。
-
 ## 依存と報告
 - d3d → K-B3 d3。s3・s5／K-S• d④③ → s3 → K-B3 e は **Sp-3 へ移管**。
 - 各段の公開名はユーザー経由で報告。他チャットへの送信は行わない。
 - s3・s5 は **Sp-3 へ移管**。新規葉・S3All・audit_kst_spectra_s3・L9c-sp3.md は Sp-3 所有。以後 s3・s5 行は編集しない。
-
 ## 今回の実装境界
 - D3ComparisonResolution：具体的な相対 BF 右射影 q_X へ corner を適用し、指定二境界を持つ比較族の射影の実 RLP、全単射に沿う相対延長、比較選択 fiber の可縮性を証明する。
 - 固定 BF 始点上の比較族の RLP を証明した。一般補助定理の入力を最終安定性の新仮定として公開しない。
@@ -73,7 +70,6 @@
 - **次工程**：実 loop 図式と a_X,r_X,c_X を保持する動く始点の共通解像を構成し、その全 Hom の射影の RLP・恒等・合成・全単体整合を実証する。固定始点の corner／前合成の RLP のみから、この豊穣解像の RLP を結論しない。
 - 実 loop 図式族と指定終点を保つ全図式 FunctorIso、hΩ、sp_isStable は依然未提供。d3b②・d3c・d3d を完了扱いにしない。
 - s3：**Sp-3 へ移管**。移管時の記録：L1 正本では K-S• d④③ の共通長方形と三認証は未完。既存の独立した全比較を三認証の完成として接続しない。
-
 ## 保存時の検証
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5750 jobs）。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：496 modules／5114 declarations、私有宣言を含み標準三公理のみ。宣言型の ModelCategory 仮定なし。
 - 監査で PointedParametricUncurryAction／Pre、PointedUncurryActionTensor／Composition の未接続も検査。
@@ -91,7 +87,6 @@
 - **未完の接続**：実際の Hom の恒等・合成から指定境界を実構成し、実 loop 図式も保持する共通解像の全 Hom 射影 RLP と豊穣法則を実証する。上記の充填器を、共通解像の完成とは扱わない。
 - 比較 c_X の相対 BF 分解と二段の corner 充填は下記の共通 BF 解像で実装した。実 loop 図式との合成整合は同じ解像上で別途証明する必要がある。
 - s3：**Sp-3 へ移管**。移管時の再確認記録：更新中の L1 正本でも、共通実 S 長方形・上下指定二単体・三認証は未完。D2 の三入力の供給と、共通長方形の三認証の完成を区別する。
-
 - **今回の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（5756 jobs）。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：499 modules／5179 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。
 - d3b② 全体、hΩ、sp_isStable は未完のまま。対象別の全四角形比較と比較 Hom の指定境界充填を、X 全体の nativeLoop 比較と取り違えない。
 ## 2026-10-27：比較射を含む共通 BF Hom
@@ -107,7 +102,6 @@
 - 上記の全対象・専用集約・専用監査は合格。結果は下記。
 - **重要な未完**：CommonObject の Hom は包含・比較・元の q を保持する共通 BF Hom であり、実 loop 図式の族をまだ含まない。`commonComparisonFunctorIso` は nativeLoop との同型ではない。
 - **次工程**：元の実 loop 四角形を共通対象上へ、指定終点と比較成分を保って移し、同じ全 Hom と全 loop 図式の整合を実証する。元の L_X の点別図式比較や上記 Hom 射影の RLP だけから、図式を追加した射影の RLP を推論しない。hΩ・sp_isStable は未提供。
-
 - **共通 BF Hom の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（5766 jobs）。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：509 modules／5344 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。宣言型の ModelCategory 仮定なし、指定未追跡四葉は未接続。 所有新葉・集約・計画・専用監査だけを保存。既存 Spectra 葉・Spectra.lean・L9・LocalizingInvariants は編集していない。
 - s3：**Sp-3 へ移管**。移管時の記録：L1 正本を再確認し、共通 S 長方形と三認証が未完であることを確認。以後の接続は Sp-3 が担当。
 ## 2026-10-27：共通 BF 左脚を保持する実 loop 四角形
@@ -298,3 +292,9 @@
 - `d3DoubleEndpointLeftLoopFamily`／`d3DoubleEndpointRightLoopFamily`：同じ四次元全図式の各面を全 Hom・全単体の作用を変更せず loopDiagrams へ因子化。各 `_ι`／`_corner` は元の実面全体と元の各角の全関手作用を厳密回収。
 - **残る B と申告**：既存の looped canonical／canonical image への指定単位を保つ全図式比較、保持した模型補正と必要な補正の一致、BF 比較の全 Hom・全単体整合が未完。残工数は粗く18〜40時間（模型照合3〜7、補正一致6〜12、BF 整合8〜18、接続監査1〜3）。経路不成立のリスクは中〜高。代替は実比較射・実 loop 図式・厳密終点を同時保持する共通解像の相対 Hom RLP から直接 B を組む経路（追加12〜24時間）。ユーザーへチャットで申告済み。
 - 保存検証：D3All ビルド合格（7885 jobs）、新規四葉に警告なし。専用監査合格：584 modules／6345 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有7ファイルのみ変更。過去節間の空行8行を整理し本計画300行、移管済み行・凍結転記節を保持。
+
+## 2026-10-27：指定パラメータ単位を保つ二方向の全図式模型比較
+- `d3KanLoopDiagramIsoOverTarget`／`_target`：終点評価の充満忠実性で指定した終点同型を全図式へ持ち上げ、その同じ値を厳密回収。`d3KanLoopDiagramSourceIsoOverTarget` は同じ全図式比較から始点の全関手同型を得る。
+- `d3DoubleEndpointLeftModelIso`／`RightModelIso` と各 `_target`：元の二方向の実 loop 図式を、元の左右パラメータ単位子を終点成分として標準模型と比較。`LeftSourceIso`／`RightSourceIso` は同じ比較の始点。点ごとの同型から自然性を推論しない。
+- **残る B・運用**：保持した模型補正との一致、二方向全パラメータでの既存模型との照合、BF 比較の全 Hom・全単体整合は未証明。現経路を続行し、一致の証明時または閉じないと判断した時点でチャット報告。経路変更は報告後のユーザー判断を待つ。R 窓開始は未通知。開始前に閉じなければ集約・専用監査の合格点で凍結し、残項目を記録して停止準備完了を報告する。
+- 保存検証：D3All ビルド合格（7886 jobs）、新規葉に警告なし。専用監査合格：585 modules／6371 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有4ファイルのみ変更、本計画300行。B の実値は未提供。
