@@ -3245,4 +3245,10 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterSquareCom
 
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualMiddleArrow
 
+public import SerrePositivity.KST.SConstruction.DGFunctorHomElementFamily
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndNullHomotopy
+public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndTriangle
+public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisEndConeTriangle
+
 /-! # ∞-S• 構成と連結 K 理論 -/

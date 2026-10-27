@@ -36310,3 +36310,37 @@ end SerrePositivity.KST.SConstruction
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorCompletedGluingNativeArrowComparison
 #check @SerrePositivity.KST.SConstruction.dgOdotMilnorActualMiddleNativeArrowComparison
 #print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorActualMiddleNativeArrowComparison
+#check @SerrePositivity.KST.SConstruction.dgFunctorHomDiskFamily_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHomDiskFamily_naturality
+#check @SerrePositivity.KST.SConstruction.dgFunctorHomElementFromFamily
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHomElementFromFamily
+#check @SerrePositivity.KST.SConstruction.dgFunctorHomElementFromFamily_π
+#print axioms SerrePositivity.KST.SConstruction.dgFunctorHomElementFromFamily_π
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNull_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNull_naturality
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_π
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_π
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_d_π
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_d_π
+#check @SerrePositivity.KST.SConstruction.dgStrictNatTransEnd_naturality
+#print axioms SerrePositivity.KST.SConstruction.dgStrictNatTransEnd_naturality
+#check @SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement
+#print axioms SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement
+#check @SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement_π
+#print axioms SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement_π
+#check @SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement_closed
+#print axioms SerrePositivity.KST.SConstruction.dgStrictNatTransEndElement_closed
+#check @SerrePositivity.KST.SConstruction.dgStrictNatTransEndCycle
+#print axioms SerrePositivity.KST.SConstruction.dgStrictNatTransEndCycle
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_d
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndNullHomotopy_d
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndBoundary_comp
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndBoundary_comp
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndTriangleData
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndTriangleData
+#check @SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgModuleNaturalConeEndTriangle
+#check @SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndConeTriangle
+#print axioms SerrePositivity.KST.SConstruction.dgOdotMilnorRightAxisEndConeTriangle
