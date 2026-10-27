@@ -118,7 +118,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison,
     `SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily,
     `SerrePositivity.KST.Spectra.D3ParameterDiagramTransformation,
-    `SerrePositivity.KST.Spectra.D3ParameterUnitComparison]
+    `SerrePositivity.KST.Spectra.D3ParameterUnitComparison,
+    `SerrePositivity.KST.Spectra.D3ParameterComparisonStage,
+    `SerrePositivity.KST.Spectra.D3PointedKanPreIsoAlgebra,
+    `SerrePositivity.KST.Spectra.D3JointUnitStageComparison,
+    `SerrePositivity.KST.Spectra.D3JointModelStageComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

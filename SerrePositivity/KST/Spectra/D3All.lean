@@ -43,6 +43,10 @@ public import SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
 public import SerrePositivity.KST.Spectra.D3ParameterDiagramTransformation
 public import SerrePositivity.KST.Spectra.D3ParameterUnitComparison
+public import SerrePositivity.KST.Spectra.D3ParameterComparisonStage
+public import SerrePositivity.KST.Spectra.D3PointedKanPreIsoAlgebra
+public import SerrePositivity.KST.Spectra.D3JointUnitStageComparison
+public import SerrePositivity.KST.Spectra.D3JointModelStageComparison
 
 /-!
 概要：Sp-2 の d3 専用集約。

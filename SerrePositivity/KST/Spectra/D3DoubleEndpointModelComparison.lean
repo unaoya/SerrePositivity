@@ -59,16 +59,18 @@ end
 /-- 第一方向の実終点に使うのは、元の左パラメータ単位子の同じ全 Hom 同型。 -/
 def d3DoubleEndpointLeftTargetIso (k l : Fin 2) :
     FunctorIso (coherentNerveMap (d3PointedKanIhom (d3EndpointParameterObj.{u} (k, l))))
-      (d3DoubleEndpointLeftLoopFamily k l ≫ loopDiagramEvaluation PointedKanInfinity 1 1) := by
-  rw [d3DoubleEndpointLeftLoopFamily_corner]
-  exact (d3PointedKanPreFunctorIso (λ_ (d3EndpointParameterObj.{u} (k, l))).inv).symm
+      (d3DoubleEndpointLeftLoopFamily k l ≫ loopDiagramEvaluation PointedKanInfinity 1 1) :=
+  F2.functorIsoOfEq
+    (d3PointedKanPreFunctorIso (λ_ (d3EndpointParameterObj.{u} (k, l))).inv).symm
+    rfl (d3DoubleEndpointLeftLoopFamily_corner k l 1 1).symm
 
 /-- 第二方向でも、元の右パラメータ単位子の同じ指定値を終点に使う。 -/
 def d3DoubleEndpointRightTargetIso (i j : Fin 2) :
     FunctorIso (coherentNerveMap (d3PointedKanIhom (d3EndpointParameterObj.{u} (i, j))))
-      (d3DoubleEndpointRightLoopFamily i j ≫ loopDiagramEvaluation PointedKanInfinity 1 1) := by
-  rw [d3DoubleEndpointRightLoopFamily_corner]
-  exact (d3PointedKanPreFunctorIso (ρ_ (d3EndpointParameterObj.{u} (i, j))).inv).symm
+      (d3DoubleEndpointRightLoopFamily i j ≫ loopDiagramEvaluation PointedKanInfinity 1 1) :=
+  F2.functorIsoOfEq
+    (d3PointedKanPreFunctorIso (ρ_ (d3EndpointParameterObj.{u} (i, j))).inv).symm
+    rfl (d3DoubleEndpointRightLoopFamily_corner i j 1 1).symm
 
 /-- 元の第一方向の実 loop 全図式を、指定単位を終点成分とする標準模型へ接続。 -/
 def d3DoubleEndpointLeftModelIso (k l : Fin 2) :
