@@ -110,7 +110,11 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3TensorParameterDiagram,
     `SerrePositivity.KST.Spectra.D3BiParameterSquare,
     `SerrePositivity.KST.Spectra.D3BiParameterFaces,
-    `SerrePositivity.KST.Spectra.D3DoubleEndpointCorners]
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointCorners,
+    `SerrePositivity.KST.Spectra.D3ParameterPullbackCriterion,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointPullbacks,
+    `SerrePositivity.KST.Spectra.D3TensorEndpointZeros,
+    `SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

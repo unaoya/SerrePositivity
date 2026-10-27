@@ -35,6 +35,10 @@ public import SerrePositivity.KST.Spectra.D3TensorParameterDiagram
 public import SerrePositivity.KST.Spectra.D3BiParameterSquare
 public import SerrePositivity.KST.Spectra.D3BiParameterFaces
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointCorners
+public import SerrePositivity.KST.Spectra.D3ParameterPullbackCriterion
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointPullbacks
+public import SerrePositivity.KST.Spectra.D3TensorEndpointZeros
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies
 
 /-!
 概要：Sp-2 の d3 専用集約。
