@@ -199,22 +199,17 @@
 - `commonChosenStageLoopedCanonicalFamily_corner`／`commonChosenStageLoopImageFamily_corner`：二つの全族の各角は元の同じ角へ通常 loop を施した作用に厳密一致。
 - `commonChosenStageLoopedCanonicalDiagramIso_projection`／`_corner`／`_target`：充満忠実な逆像の指定値を回収し、各角で元の次段比較の同じ後合成、終点で元の厳密等式の同型を回収。
 - `commonChosenStageLoopImageComparison`／`_target`：二つの標準模型を、元の厳密終点を共有する同じ実 fiber 内で比較し、同じ指定等式同型の射影を保持。
-- `commonChosenStageLoopImageComparison_triangle`：実次段像からの標準比較は、元の次段比較の loop 像と、保持した標準模型間比較の合成に全図式で一致。終点射影の充満忠実性から反映して証明。
-- `commonChosenStageLoopImageComparison_structure`／`_source`：元の BF 構造の自然性を、この同じ三角形へ接続。全図式と始点評価で同じ比較因子を保持。
+- `commonChosenStageLoopImageComparison_triangle`：実次段像からの標準比較は、元の次段比較の loop 像と、保持した標準模型間比較の合成に全図式で一致。終点射影の充満忠実性から反映して証明。 `commonChosenStageLoopImageComparison_structure`／`_source`：元の BF 構造の自然性を、この同じ三角形へ接続。全図式と始点評価で同じ比較因子を保持。
 - **残る B**：保持した標準模型間比較の始点成分を、元の右射影の構造正方形と接続し、refined／実始点比較を BF 全体の FunctorIso へ組む。比較因子を恒等と見なしたり、今回の全図式三角形だけから BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
 - **次段 loop 像・標準模型間比較の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7845 jobs）。新規3葉に警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：549 modules／5936 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉3本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：指定右射影の構造正方形を全 Hom・全関手空間で認証
-- `d3GradedPrecomp`／`d3GradedPostcomp`／`d3GradedComp`：元の単位パラメータの厳密豊穣変換を、全単体の自然性を保持して前後合成・縦合成する。`d3GradedOfEq_component_heq` と各 `_component` は端点正規化・合成で元の通常成分を回収。
-- `commonStageLoopGradedProjection`／`commonRefinedStageStructureGraded`／`commonOriginalLoopStructureGraded`：同じ共通右射影、refined 構造、元の次段構造の通常 loop を、括弧と既証の豊穣関手等式だけで同じ端点へ束ねる。各 `_component` で元の指定射を回収。
-- `commonProjectionStructureGraded_square`：`commonProjection_structure` を代入し、同じ二経路の厳密豊穣変換の等式を認証。既に全 Hom 自然性を持つ変換どうしを比較しており、点別同型から新たな自然性を推論していない。
-- `d3GradedCompositionTriangleFamily`／`_first`／`_second`／`_outer`：既存三段豊穣円柱の同じ実合成三角形を作り、全対象・全高次単体で三辺を元の指定区間族として回収。
-- `d3GradedComposition_compStruct`／`d3GradedHom_comp`／`d3GradedHom_functorIso`：同じ三角形を関手空間へ curry し、厳密縦合成の実現がホモトピー圏の合成を保つこと、元の関手同型の順射を回収することを実証。
-- `commonProjectionStructureHom_square`：同じ指定右射影の構造正方形は、coherent な全関手空間の実射としても厳密に可換。
+- `d3GradedPrecomp`／`d3GradedPostcomp`／`d3GradedComp`：元の単位パラメータの厳密豊穣変換を、全単体の自然性を保持して前後合成・縦合成する。`d3GradedOfEq_component_heq` と各 `_component` は端点正規化・合成で元の通常成分を回収。 `commonStageLoopGradedProjection`／`commonRefinedStageStructureGraded`／`commonOriginalLoopStructureGraded`：同じ共通右射影、refined 構造、元の次段構造の通常 loop を、括弧と既証の豊穣関手等式だけで同じ端点へ束ねる。各 `_component` で元の指定射を回収。
+- `commonProjectionStructureGraded_square`：`commonProjection_structure` を代入し、同じ二経路の厳密豊穣変換の等式を認証。既に全 Hom 自然性を持つ変換どうしを比較しており、点別同型から新たな自然性を推論していない。 `d3GradedCompositionTriangleFamily`／`_first`／`_second`／`_outer`：既存三段豊穣円柱の同じ実合成三角形を作り、全対象・全高次単体で三辺を元の指定区間族として回収。
+- `d3GradedComposition_compStruct`／`d3GradedHom_comp`／`d3GradedHom_functorIso`：同じ三角形を関手空間へ curry し、厳密縦合成の実現がホモトピー圏の合成を保つこと、元の関手同型の順射を回収することを実証。 `commonProjectionStructureHom_square`：同じ指定右射影の構造正方形は、coherent な全関手空間の実射としても厳密に可換。
 - **残る B**：今回の指定厳密変換の実現を、既存の段 FunctorIso の前後合成と同じ値として照合し、保持した模型間比較の始点成分をこの右射影の構造正方形へ接続する。その後 BF 全体の FunctorIso を構成する。hΩ・sp_isStable は未提供。
 - **右射影の全 Hom 構造正方形・実合成三角形の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7851 jobs）。新規3葉に警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：555 modules／6010 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉3本・集約・監査・本計画のみを変更。本計画の既存270行を保持し、移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：既存段 FunctorIso の指定値で右射影の構造正方形を回収
-- `d3OrderedCylinderMap_family`／`d3GradedPrecomp_family`／`d3GradedPostcomp_family`：元の円柱の順序・Hom を保ち、厳密変換の前後合成の実現が同じ指定区間族の前後合成に全単体で一致。 `d3GradedHom_precomp_heq`／`_postcomp_heq`／`d3GradedIso_precomp_postcomp_hom_heq`：同じ族を curry して指定辺の類を追跡し、元の関手同型の前後合成の順射を同じ厳密変換の実現として回収。等式だけの端点正規化も指定値を保持。 `commonStageLoopFunctorIso`／`d3StageStructureFunctorIso` の端点正規化を明示。元の厳密変換からの指定同型を保持し、前後合成後の順射まで照合可能にした。
-- `commonStageLoopFunctorIso_hom_heq`／`_postcomp_hom_heq`／`commonRefinedStageStructureIso_hom_heq`／`commonOriginalLoopStructureIso_hom_heq`：既存の段右射影・元の構造同型の同じ前後合成を、前工程の厳密変換の実現値として回収。 `commonProjectionStructureIso_square`：四辺の端点表示だけを正規化し、元の既存段 FunctorIso そのものによる全関手空間の構造正方形を、`commonProjectionStructureHom_square` から認証。
+- `d3OrderedCylinderMap_family`／`d3GradedPrecomp_family`／`d3GradedPostcomp_family`：元の円柱の順序・Hom を保ち、厳密変換の前後合成の実現が同じ指定区間族の前後合成に全単体で一致。 `d3GradedHom_precomp_heq`／`_postcomp_heq`／`d3GradedIso_precomp_postcomp_hom_heq`：同じ族を curry して指定辺の類を追跡し、元の関手同型の前後合成の順射を同じ厳密変換の実現として回収。等式だけの端点正規化も指定値を保持。 `commonStageLoopFunctorIso`／`d3StageStructureFunctorIso` の端点正規化を明示。元の厳密変換からの指定同型を保持し、前後合成後の順射まで照合可能にした。 `commonStageLoopFunctorIso_hom_heq`／`_postcomp_hom_heq`／`commonRefinedStageStructureIso_hom_heq`／`commonOriginalLoopStructureIso_hom_heq`：既存の段右射影・元の構造同型の同じ前後合成を、前工程の厳密変換の実現値として回収。 `commonProjectionStructureIso_square`：四辺の端点表示だけを正規化し、元の既存段 FunctorIso そのものによる全関手空間の構造正方形を、`commonProjectionStructureHom_square` から認証。
 - **残る B**：この指定右射影の構造正方形と、保持した模型間比較の始点成分を接続し、refined／実始点比較を BF 全体の FunctorIso へ組む。段の同型や今回の構造正方形だけから BF 全体の自然同型を推論しない。hΩ・sp_isStable は未提供。
 - **既存段同型の指定値・全関手構造正方形の保存検証**：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7854 jobs）。所有変更葉に新しい警告なし。 `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：558 modules／6056 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。 所有新葉3本・所有 D3 葉2本の端点表示整理・集約・監査・本計画のみを変更。本計画の既存284行を保持し、移管済み行と既存読み取り専用領域への編集なし。
 ## 2026-10-27：同じ既存段比較・模型間比較と右射影構造を一体で貼合せ
@@ -231,8 +226,7 @@
 - `commonChosenStageRefinedSource_structure_defect`：実段比較の構造不一致は、同じ右射影で移した模型補正の逆を挿入した値に厳密一致。新仮定なし。補正を通常 loop 以前の段比較へ持ち上げる証拠と全段整合は未提供。
 - 保存検証：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7867 jobs）。新規二葉に警告なし。 専用監査合格：566 modules／6127 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。本計画300行、移管済み全行・凍結転記節は保持。
 ## 2026-10-27：実 loop 全図式の転置から nativeLoop の coherent な反転候補を構成
-- `d3LoopDiagramTranspose`／`_corner`／`_comp_self`：全四角形の転置を実 loop 全図式へ制限。零角と引き戻し性を保持し、四隅の厳密交換と二回合成の恒等を全単体で証明。 `d3LoopDiagramTransposeIso`／`_reverse`：厳密終点を固定した同じ指定比較と、その転置から戻した比較が全図式上で互いに逆。終点評価の充満忠実性で指定値を認証。 `d3LoopDiagramReflection`／`_involution`／`_naturality`：始点評価の全関手自己同型、二回合成の恒等、任意の全図式同型との自然性を証明。円因子の直接比較や安定性仮定は使わない。
-- `OmegaSpectrum.d3NativeLoopReflection`／`_involution`、`commonChosenLoopReflection_native_square`：元の実切断へ適用し、nativeLoop の全関手自己同型と共通実全図式との指定比較での交換を実構成。段ごとの自由な選択ではない。 `d3LoopImageTransposeIso_projection`／`_eq`・`commonChosenStageReflectionImageIso_eq`：元の実全図式の指定転置比較の段像は、同じ実段図式の指定転置比較そのもの。周囲の全四角形では元の指定比較の同じ後合成を回収。任意関手の極限保存を仮定しない。
+- `d3LoopDiagramTranspose`／`_corner`／`_comp_self`：全四角形の転置を実 loop 全図式へ制限。零角と引き戻し性を保持し、四隅の厳密交換と二回合成の恒等を全単体で証明。 `d3LoopDiagramTransposeIso`／`_reverse`：厳密終点を固定した同じ指定比較と、その転置から戻した比較が全図式上で互いに逆。終点評価の充満忠実性で指定値を認証。 `d3LoopDiagramReflection`／`_involution`／`_naturality`：始点評価の全関手自己同型、二回合成の恒等、任意の全図式同型との自然性を証明。円因子の直接比較や安定性仮定は使わない。 `OmegaSpectrum.d3NativeLoopReflection`／`_involution`、`commonChosenLoopReflection_native_square`：元の実切断へ適用し、nativeLoop の全関手自己同型と共通実全図式との指定比較での交換を実構成。段ごとの自由な選択ではない。 `d3LoopImageTransposeIso_projection`／`_eq`・`commonChosenStageReflectionImageIso_eq`：元の実全図式の指定転置比較の段像は、同じ実段図式の指定転置比較そのもの。周囲の全四角形では元の指定比較の同じ後合成を回収。任意関手の極限保存を仮定しない。
 - **残る B**：全体反転と段転置比較の照合は得たが、保持した `commonChosenStageLoopModelCorrection` に必要な補正との一致・全段整合は未証明。BF 全体の比較が完成したとは扱わない。d3c・d3d は Sp-2b へ移管。
 - 保存検証：`lake build SerrePositivity.KST.Spectra.D3All` 合格（7872 jobs）。新規五葉に警告なし。
 - 専用監査合格：571 modules／6176 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有8ファイルのみ変更。過去検証欄を併記して本計画300行、s3・s5 行を保持し d3c・d3d 移管を明記。
@@ -298,3 +292,9 @@
 - `commonChosenStageLoopedCanonicalFamily_section`／`commonChosenStageLoopedCanonicalDoubleEndpointIso`：保持済みの段 looped canonical 族が同じ終点入力によるこの切断像の前合成に厳密一致し、同じ二方向実面への全図式比較を構成。切断・段模型・単位を選び直さず、円交換因子を直接比較しない。
 - **残る B**：この接続を通じた既存の指定模型比較・単位の値の照合、保持した模型補正と必要な補正との一致、BF 全体の全 Hom・全単体整合は未証明。現経路を維持。一致の証明時または閉じないと判断した時点でチャット報告し、経路変更はユーザー判断。R 窓開始は未通知。
 - 保存検証：D3All ビルド合格（7898 jobs）、新規二葉に警告なし。専用監査合格：594 modules／6510 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有5ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
+## 2026-10-27：二方向全図式比較の始点・終点の指定値を全関手空間で回収
+- `d3FunctorSpaceCurryMap_post_evaluate`／`d3FunctorIso_curry_postcomp_evaluate`：全関手空間の curry 後の図式評価は、元の同じ係数への制限として指定同型の値を保持する。旧禁止枝の豊穣 uncurry 葉は使わない。
+- `d3DoubleEndpointJointLeftSourceIso_face`／`JointRightSourceIso_face`：元の厳密切断の始点表示と、共同全模型比較の角制限を同じ値で貼り合わせ、以前の同じ実面始点比較を回収。抽象制限補題の模型一致条件は既証の具体的模型一致で実消費。
+- `d3DoubleEndpointLeftLoopImageDiagramIso_corner`／`RightLoopImageDiagramIso_corner`：二方向の実 loop 全図式比較の全四隅は元の指定始点比較そのもの。各 `_projection`／`LoopImageSquareIso_corner` は周囲の全四角形でも同じ比較と指定値を保持し、全 Hom の値から認証。
+- **残る B**：この指定値の回収を元の厳密切断補正・保持済み段模型比較へ合成し、保持した模型補正と必要な補正との一致を証明する。BF 全体の全 Hom・全単体整合と B の実値も未完。現経路を維持し、指定された報告・経路変更・R 窓運用は継続。
+- 保存検証：D3All ビルド合格（7907 jobs）、新規三葉に警告なし。専用監査合格：597 modules／6523 declarations、標準三公理のみ。ModelCategory・指定未追跡四葉・下流 K 依存なし。所有6ファイルのみ変更。過去証明記録6組を併記して本計画300行、移管済み全行・凍結転記節を保持。
