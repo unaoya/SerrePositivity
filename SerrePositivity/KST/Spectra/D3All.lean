@@ -54,6 +54,8 @@ public import SerrePositivity.KST.Spectra.D3JointSourceStageComparison
 public import SerrePositivity.KST.Spectra.D3LoopImageComparisonCorners
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparisonCorners
 public import SerrePositivity.KST.Spectra.D3LoopedSectionUnitPasting
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointUnitPasting
+public import SerrePositivity.KST.Spectra.D3CanonicalImageDoubleEndpointComparison
 
 /-!
 概要：Sp-2 の d3 専用集約。
