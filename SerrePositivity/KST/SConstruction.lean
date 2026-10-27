@@ -3170,4 +3170,7 @@ public import SerrePositivity.KST.SConstruction.DGCellIdentityGraphYonedaNative
 public import SerrePositivity.KST.SConstruction.DGCellYonedaExtensionNative
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationYoneda
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
+public import SerrePositivity.KST.SConstruction.DGModuleConeConnectingFamilyNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
