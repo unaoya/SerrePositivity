@@ -237,3 +237,10 @@
 - 先行B1完了後に着手。処置案・全件分類は refactoring-infinity-r2-b.md と archive/r2-b-classification-2026-10-27.json。Leanソース・集約・監査は変更せず、実施はR2-A/C/Dとの合意後の停止窓に限定する。
 - DG555の552はscripts/audit/dg.leanの直接importであり、top-level監査のみの被覆集計と区別。DGは登録488/archive67、HomotopicalAlgebra123は登録1/archive1/旧互換入口削除候補121、凍結41は診断14/archive20/主経路保持5/比較再利用2と分類。一般bar5本とB1・I/P/Zを保持する。
 - 指定209逆辺・141 import先と全678未登録葉・凍結41本を記録。R28/R31/R32/R34とaugmentation旧53組の対応表を用意し、旧4組の消滅を識別。計画だけでなくチャットでユーザーへ処置案を報告する。
+
+### K-S• 先行依頼：perfect-projective 加群の像（型確認待ち）
+- 依頼 /tmp/ks-realization-perfect-request.lean を確認。提案は追加仮定なしの元の型：任意の T : DGFunctor R (RightModule R D) (RightModule R E) が全 representable を modulePerfectProjectiveOver R E Set.univ へ送れば、全 perfect-projective 加群を同じ性質へ送る。
+- 判断根拠：任意の加群値 dg 関手について dgModuleFunctorShiftIso／dgModuleFunctorConeIso が既存。閉射関手の加法性による有限和保存と onHomotopy の retract 保存も使える。通常の関手と異なり、今回の dg 関手にこれらの保存性を追加入力する必要はないと判断する。全 quasi-iso 保存や左随伴性も仮定しない。
+- 証明予定：既存 Morita.perfectDGFunctorImage_projectivePerfect で導来 perfect 性を得る。h-projective 性は有限 cell の生成操作に関する帰納で像について証明し、源 M の h-projective 性を使って導来 retract をホモトピー圏の retract に持ち上げる。T.onHomotopy で送り、moduleHomotopicallyProjective_of_homotopyRetract（または projective locus の retract 閉性）で戻す。導来 perfect 性だけから像の h-projective 性は推論しない。
+- 公開予定名 SerrePositivity.DifferentialGraded.Morita.perfectDGFunctorImage_perfectProjective。新規葉 DifferentialGraded/Morita/PerfectProjectiveImage（予定）。KST import を加えず既存 DG 正本 API を使う。dgPerfectRealization にも元の hgen をそのまま適用する方針で、T = dgModuleExtension への制限は不要案。
+- ユーザー経由で K-S• にこの型を確認中。本体・証明・集約変更は確認回答後に着手する。見積りは確認後2–4時間（実装・対象build・公理監査）。旧 D-4／最終 VertexIso の凍結は維持する。
