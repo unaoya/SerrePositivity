@@ -3101,4 +3101,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationNative
 public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecified
 public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecifiedComposite
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingAxes
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeAxes
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeFamilyInclusion
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingModuleConeFamily
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNative
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoFamilyNaturality
+public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoNaturality
+
 /-! # ∞-S• 構成と連結 K 理論 -/
