@@ -166,3 +166,8 @@
 - `DGQuotient.quotientDGFunctor_id`／`quotientDGFunctor_comp` と `quotientDGFunctor_original`：正本商の厳密な対象関手の単位・合成、および元 Hom 回収。対象 build1951 jobs成功。
 - `quotientEpsilonNativeMap`／`quotientEpsilonNativeMap_unit`：同じ実 dg 商作用から作る全 native core 写像と、全単体の横の単位保存。対象 build5025 jobs成功。横合成は全 Hom 成分比較を構成中。
 - 上記三葉を Derived 集約・専用監査・全体監査へ登録。Derived 集約14939 jobs、専用監査194宣言／12モジュール成功、許容三公理のみ、終端0。横合成はまだ完了としない。
+- 最新指示：D-S 工程1は dg 関手圏間の dg 関手では成立せず、native Kan core 間の全単体 SSet 射へ変更。D の消費境界も SSet とし、D-S の coherentNerveMap／native core の型指定到着後に接続型を確定する。既存 ε 整合 dg 圏と native 商作用は下位 API として保持し、D-S がその dg 圏へ着地するとは仮定しない。
+- D-S 計画の工程2消費型（native core）を確認。`quotientEpsilonNativeMap` は要求された core(dgNerve NullPreservingFunctorsε) → dgFunctorNativeMappingSpace QC QD と厳密に同じ型・同じ定義。ε Hom／quotientInputFunctor の型は変更不要。`quotientEpsilonNativeForget` と Map_vertex／Forget_vertex を追加し、元の関手・固定 ε 商関手の同じ頂点を厳密回収。
+- `quotientEpsilonHorizontalFunctor`／`quotientEpsilonHorizontalFunctor_quotient`：同じ null 保存関手の横合成を全 Hom で ε 整合圏へ持ち上げ、正本商作用と dg 関手全体で交換。対象の等号移送は Hom end の抽象的相殺補題で処理。
+- `quotientEpsilonNativeComposition`／`quotientEpsilonNativeMap_composition`：元の native tensor 比較から作る横合成について、全単体の SSet 射として comp_STU ≫ Q_SU = (Q_ST ⊗ Q_TU) ≫ comp_quotient を証明。対象 build5030 jobs成功。D-S の ε core への全単体着地、および D-4b の map／square 後半は供給済みと扱わない。
+- 最終検証：Derived 集約14943 jobs、専用監査222宣言／15モジュール、全体監査26161宣言／2976モジュール成功。許容三公理のみ、すべて終端0。新葉の局所 import 閉包1356モジュール、循環なし、外部未コミット依存なし。D-4b 後半はユーザー確認どおり D-S の map 待ちを維持。

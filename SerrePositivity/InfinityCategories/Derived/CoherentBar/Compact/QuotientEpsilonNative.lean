@@ -28,6 +28,30 @@ def quotientEpsilonNativeMap :
         (DGQuotient.QuotientObject D T) :=
   quasicategoryCoreMap (dgNerve.map (quotientInputFunctor R C D S T))
 
+/-- ε 整合 native core の元の関手圏への全単体忘却写像。 -/
+def quotientEpsilonNativeForget :
+    quotientEpsilonNativeSpace R C D S T ⟶ dgFunctorNativeMappingSpace R C D :=
+  quasicategoryCoreMap (dgNerve.map (nullPreservingFunctorsεForget R C D S T))
+
+/-- 同じ固定 ε を持つ正本商関手の頂点を厳密に回収する。 -/
+lemma quotientEpsilonNativeMap_vertex (F : NullPreservingFunctorsε R C D S T) :
+    (quotientEpsilonNativeMap R C D S T).app (op ⦋0⦌)
+      ⟨DGNerve.Simplex.vertex F, quasicategoryCore_vertex _⟩ =
+    dgFunctorNativeMappingVertex R _ _
+      (DGQuotient.quotientDGFunctor R C D F.val S T F.property) := by
+  apply Subtype.ext
+  apply DGNerve.Simplex.vertexEquiv.injective
+  rfl
+
+/-- 元の null 保存関手の同じ頂点を回収する。 -/
+lemma quotientEpsilonNativeForget_vertex (F : NullPreservingFunctorsε R C D S T) :
+    (quotientEpsilonNativeForget R C D S T).app (op ⦋0⦌)
+      ⟨DGNerve.Simplex.vertex F, quasicategoryCore_vertex _⟩ =
+    dgFunctorNativeMappingVertex R C D F.val := by
+  apply Subtype.ext
+  apply DGNerve.Simplex.vertexEquiv.injective
+  rfl
+
 omit [DGCategory R D] [Small.{u} D] in
 /-- 元の恒等関手は同じ null 集合を保存する。 -/
 def quotientEpsilonUnitObject : NullPreservingFunctorsε R C C S S :=

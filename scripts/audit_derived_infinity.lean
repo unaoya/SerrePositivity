@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
 import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
@@ -7471,6 +7472,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative,
     `SerrePositivity.DifferentialGraded.Quotient.FunctorLaws,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHorizontal,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHorizontalFunctor,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHom,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion,

@@ -106,6 +106,7 @@ instance quotientEpsilonHomι_mono (F G : NullPreservingFunctorsε R C D S T) :
   infer_instance
 
 /-- 延長の各対象成分は、元の同じ変換成分の商包含像に厳密に一致する。 -/
+@[reassoc]
 lemma quotientEpsilonHomExtension_π (F G : NullPreservingFunctorsε R C D S T) (x : C) :
     quotientEpsilonHomExtension R C D S T F G ≫ dgFunctorHomπ R _ _ _ _ ⟨x⟩ =
       quotientEpsilonHomι R C D S T F G ≫ dgFunctorHomπ R C D F.val G.val x ≫
