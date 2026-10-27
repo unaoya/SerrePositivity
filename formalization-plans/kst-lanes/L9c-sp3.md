@@ -1,6 +1,15 @@
 # Sp-3 — Sp-6 s3・s5 専用計画
 
-更新：2026-10-27。正本：L9-spectra.md。Sp-2 から s3・s5 を分割。
+更新：2026-10-28。正本：L9-spectra.md。Sp-2 から s3・s5 を分割。
+
+## R 窓前の停止・R 窓後の再開入口（2026-10-28）
+- 現在地コミット：Lean 消費側・専用集約・監査は `50009ed9e`、供給待ち記録は `807b41597`、設計見積りまでの計画保存は `0115a9e8b`。
+- 待っている供給：K-S• ③ の `dgOdotMilnorActualRectangle` の共通 S 長方形上の三認証（右面・外周の VerdierSquareDiagramIso と、上下指定二単体を保つ VerdierRectangleDiagramIso）、または `DGOdotMilnorActualRectangleInput R d h` の実構成の公開名。
+- R 窓前は新規 Lean 作業を始めない。③ の実代入は供給の到着にかかわらず R 窓後に行う。s3 無条件化・最終 s5 は未完了。
+- s3 再開入口：`Spectra/S3MilnorConnection.lean` の `SerrePositivity.KST.Spectra.S3.milnorActualInput` に実図式・指定境界・三認証・kernel_vertex を一回で代入する。既存入力型で届いたら直接消費する。
+- 続いて `S3.milnorActual_isPullback`・`S3.milnorSourceRoof`・`S3.milnorSourceValueIso` へ接続し、未供給の認証を引数に残さず結論を公開する。K-B3 への供給条件は下記の区別を保持する。
+- s5 の検証手順：`lake build SerrePositivity.KST.Spectra.S3All` → `lake env lean scripts/audit_kst_spectra_s3.lean` → 所有パスの `git diff --check`。公開名・残仮定・引き継ぎを更新し、`git commit --only <所有パス>` で保存してチャットで報告する。
+- 停止前確認：2026-10-28 に所有集約ビルド成功（13522 jobs）、専用監査成功（所有3葉24宣言・標準三公理のみ・推移的90,721定数に ModelCategory なし）。所有 Lean ソース・監査に差分なし、計画の git diff --check 成功。停止準備完了。
 
 ## 所有・共通規約
 - 所有：KST/Spectra/S3*.lean の今回の新規4葉（下記）、scripts/audit_kst_spectra_s3.lean、本計画（≤300行）。
