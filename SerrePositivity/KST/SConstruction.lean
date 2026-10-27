@@ -3124,4 +3124,12 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConnectingCon
 public import SerrePositivity.KST.SConstruction.DGStrictCompositionPostcomp
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingShiftedConnecting
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingShiftedConnectingTriangle
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationStrict
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationModuleInput
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositionBoundary
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationBoundary
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationRestriction
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperComparison
+
 /-! # ∞-S• 構成と連結 K 理論 -/
