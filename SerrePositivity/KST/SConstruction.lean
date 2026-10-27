@@ -3224,4 +3224,6 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullPerfectEq
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNullNativeValue
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightNuBoundary
 
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullDiagonalBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
