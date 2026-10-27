@@ -40,6 +40,7 @@ public import SerrePositivity.KST.Spectra.D3DoubleEndpointPullbacks
 public import SerrePositivity.KST.Spectra.D3TensorEndpointZeros
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointLoopFamilies
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointModelComparison
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
 
 /-!
 概要：Sp-2 の d3 専用集約。
