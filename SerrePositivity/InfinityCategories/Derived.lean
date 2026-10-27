@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative

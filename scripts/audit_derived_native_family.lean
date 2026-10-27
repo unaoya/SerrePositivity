@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
 import Lean
@@ -11,6 +12,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureQuotientEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
@@ -47,3 +51,9 @@ run_cmd do
 #check SerrePositivity.InfinityCategories.dgFullRestrictionNativeMap
 #check SerrePositivity.InfinityCategories.dgKappaSuspensionKernelParameter
 #check SerrePositivity.InfinityCategories.dgKappaSuspensionKernelHom
+
+#check SerrePositivity.InfinityCategories.dgNativeMappingVertexEdge
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeEdge_eq
+#check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeEdgeIso
+#check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientComparison
+#check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientEdgeEq

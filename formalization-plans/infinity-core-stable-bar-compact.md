@@ -171,3 +171,12 @@
 - `quotientEpsilonHorizontalFunctor`／`quotientEpsilonHorizontalFunctor_quotient`：同じ null 保存関手の横合成を全 Hom で ε 整合圏へ持ち上げ、正本商作用と dg 関手全体で交換。対象の等号移送は Hom end の抽象的相殺補題で処理。
 - `quotientEpsilonNativeComposition`／`quotientEpsilonNativeMap_composition`：元の native tensor 比較から作る横合成について、全単体の SSet 射として comp_STU ≫ Q_SU = (Q_ST ⊗ Q_TU) ≫ comp_quotient を証明。対象 build5030 jobs成功。D-S の ε core への全単体着地、および D-4b の map／square 後半は供給済みと扱わない。
 - 最終検証：Derived 集約14943 jobs、専用監査222宣言／15モジュール、全体監査26161宣言／2976モジュール成功。許容三公理のみ、すべて終端0。新葉の局所 import 閉包1356モジュール、循環なし、外部未コミット依存なし。D-4b 後半はユーザー確認どおり D-S の map 待ちを維持。
+
+### D-S 工程4：固定端点 edgeIso の準備
+- ユーザー割当で Compact の新規三葉 NativeMappingVertexEdge／SphereClosureQuotientEdge／SphereClosureEdgeIsoAdapter を追加。D-S の NativeTarget は読み取り専用。
+- `dgNativeMappingVertexEdge`：native Hom の零単体を、元の通常射との実同値を使って同じ二入力の標準辺へ読む。Hom 内の一単体と入力 nerve の一単体を区別する。
+- `dgSuspensionQuotientNativeEdge` は dgSuspensionQuotientNativeMap を f の正本 resolved ε 頂点で評価した零単体から読む辺。`dgSuspensionQuotientNativeEdge_eq` は切替後の同じ cone・正本 data の coherentNerveEdge と厳密一致する。
+- `dgSuspensionQuotientNativeEdgeIso` はその厳密一致から作る、固定端点 intervalMappingSpace 内の指定 VertexIso。両端の dg 入力は動かさない。型をユーザー経由で D-S へ先行報告済み。
+- `dgSuspensionEdgeIsoOfQuotientComparison`／`dgSuspensionEdgeIsoOfQuotientEdgeEq` は、最終 dgSuspensionMappedEdge から商作用辺への指定同型／一単体等号を受け取り、採用 edgeIso と同じ型を返す。最終 map やその辺比較の存在は未供給。D-4b 後半 square／square_at は map 待ちを維持。
+- 対象・集約 build14949 jobs、専用監査81宣言／9モジュール成功、許容三公理のみ。import 閉包9163モジュール、循環なし。D-S NativeTarget の追加もコミット済みとなった。今回消費する core／object／vertex／map／map_vertex の五宣言は HEAD と本文一致を確認。
+- 最終全体監査26170宣言／2979モジュール成功、許容三公理のみ、終端0。専用監査も終端0。コミット前の import 閉包再確認で循環・外部未コミット依存なし。準備比較は完成し、最終 map の辺比較と D-4b 後半は D-S の供給待ちを維持する。

@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNativeComposition
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative
@@ -7483,6 +7484,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureQuotientEdge,
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
