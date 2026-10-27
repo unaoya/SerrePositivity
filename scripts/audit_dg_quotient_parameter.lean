@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
 import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
 import Lean
 /-! 固定実商の全パラメータ延長の全新規宣言：許容三公理のみ。 -/
@@ -5,6 +6,7 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws,
     `SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition,
     `SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality,
     `SerrePositivity.DifferentialGraded.Quotient.EpsilonHomogeneousExt,
@@ -33,3 +35,6 @@ run_cmd do
 
 #check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_postcomposition
 #check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_postcomposition_heq
+
+#check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_identity
+#check SerrePositivity.DifferentialGraded.DGQuotient.parameterExtension_composition

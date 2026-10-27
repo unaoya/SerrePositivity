@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
@@ -7463,6 +7464,7 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let expected := #[
+    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosurePerfectCovers,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureComparison,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureConeInput,

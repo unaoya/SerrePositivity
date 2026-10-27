@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison

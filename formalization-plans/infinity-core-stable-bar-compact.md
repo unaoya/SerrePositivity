@@ -150,3 +150,10 @@
 - 検証：新二葉を Derived 集約・全体監査・専用監査へ登録。Derived 集約14931 jobs、専用監査70宣言／6モジュール成功、許容三公理のみ。局所 import 閉包8972モジュール、循環なし、外部未コミット依存なし。追加後の全体監査26014宣言／2966モジュール成功、許容三公理のみ、終端0（/tmp/d4b-kernel-native-full-audit.log）。445404f65でコミット済み。
 - 指定収縮は各対象の零性から選ばれている。対象ごとの零性・収縮比較から、厳密自然変換 end 内の同型や全四角形の相対 path を自動的に推論しない。指定 ε の全次数整合は実際に証明する。
 - 依存待ち：D-S 稼働中で、map・edgeIso は未供給であることを連続3ターン、実ソースと thread 状態で確認。D は外部供給待ちで blocked。D-4a の採用 action 公開後、同じ指定収縮と全四角形への比較、square_at、核角 ν 像との全単体一致を再開する。D-4b 完了とは扱わない。
+
+### D-S 工程2：固定 ε の商関手変数（供給型の可否を照会中）
+- ユーザー割当で固定 ε の商関手圏への豊穣延長を担当。D-S 所有葉は読み取り専用。D-4b 後半は従来どおり D-S の map 待ち。
+- 依頼された一般形（null 保存関手の充満 dg 圏を源、対象は元の quotientDGFunctor）は、厳密自然同型の保存に障害。ℚ 上の一対象 C と二つの同型対象の D、S/T 全対象の例で、商関手間の次数0自然性は独立語 ε₀u と uε₁ の係数を等置し、成分が零に限られる。入力の非零自然同型と逆の合成保存に矛盾。数学的反例であり、反例全体の Lean 形式化は未了。
+- 元の変換成分を保持しないという自由も上の例では解決しない。元の型の実装を進めず、ε 整合 Hom への源の変更か反例形式化の優先かをユーザーへ照会。
+- `DGQuotient.parameterExtension_identity_epsilon`・`parameterExtension_composition_epsilon` は ε 整合の単位・tensor 縦合成での閉性、`parameterExtension_identity`・`parameterExtension_composition` は同じ成分の延長の厳密則。新規葉 QuotientParameterLaws、対象 build1958 jobs成功。一般形の存在主張は含まない。
+- ユーザー判断：反例定理は作らず数学的記録のみ。工程2を ε 整合 Hom の部分複体を持つ NullPreservingFunctorsε 版へ変更して続行。対象作用は同じ quotientDGFunctor に固定し、D-S が resolvedInputFunctor の着地を証明する。先行則の検証：Derived 集約14933 jobs、専用監査82宣言／6モジュール、許容三公理のみ、終端0。
