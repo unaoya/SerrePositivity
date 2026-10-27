@@ -3185,4 +3185,8 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeI
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealizedConeBoundary
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingUpperTriangleRealization
 
+public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeInrTransport
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedInclusion
+public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperActualBoundary
+
 /-! # ∞-S• 構成と連結 K 理論 -/
