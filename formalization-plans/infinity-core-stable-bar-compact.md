@@ -204,3 +204,22 @@
 6. 得られた ε core 内の VertexIso を dgSuspensionQuotientNativeMap で写す。左端は dgSuspensionQuotientNativeMap_vertex、右端は同 Map_unit／Map_composition の全単体等号で、固定入力射の恒等／二本の合成へ厳密同定する。単位対象そのものの商則だけで固定 data の単位比較を代用しない。
 7. 商 native Hom の比較を coherentHomIntervalComparison（必要な universe 移送を含む）へ写し、同じ二頂点を持つ intervalMappingSpace 内の比較にする。dgNativeMappingVertexEdge の回収式で両端の辺を照合し、DGSuspensionFixedUnitComparison／DGSuspensionFixedCompositionComparison を返す。端点の PerfDGInput は動かさない。最終 map の辺比較は既存 dgSuspensionEdgeIsoOfQuotientComparison に接続し、square／square_at の着手は従来どおり D-S の map 到着後とする。
 - 各段で公開名・残る仮定をチャットでユーザーへ報告する。実装を再開した場合のみ対象 build・集約・専用／全体公理監査を実施し、所有パスを --only 指定してコミットする。今回の更新は計画のみで、(a) 成立や持ち上げの存在を主張しない。
+
+### ∞ 圏側で非連結 K の関手性を取る設計の D 評価（実装未着手）
+- 状態：D-S の disk 反例 f360d551b とユーザー指示に従い blocked を維持。工程2の全入力消費、固定 data の単位・合成 VertexIso、D-4 の全入力作用・square／square_at は凍結。前節の「(a) 成立後」手順も再開しない。以下は採否判断のための評価であり、∞ 側の新実装開始は意味しない。
+- A：対象を dg 模型で計算し、関手性を正しい写像空間の StableInfinity で構成する原則に賛成。既存の厳密 dg 商関手圏の nerve に戻す条件は、新しい登録界面から外す。
+- A 修正1：BGT Def.9.1 の cone は Fκ(C) := (Ind_ω C)^κ、懸垂はその Verdier 商。通常の Ind_κ(C) の κ-compact 部分と混同しない。既存 F2 の ind_stableCompactGeneration_unconditional κ C は同じ κ の Ind と compact 部分を扱うため、ω-Ind の κ-compact 部分を与える定理としてそのまま使わない。
+- A 修正2：K が連結 K なら K(C) ≃ ΩK(Σκ C) を一般のスペクトル同値として仮定しない。構造射 K(C) → ΩK(Σκ C) を作り、反復 colim により非連結化する。非連結化後の K^nc(C) ≃ ΩK^nc(Σκ C) と区別する。Verdier 商の普遍性だけでは K の局所化定理は出ず、delooping の局所化証明・Fκ/Σκ の exact 列保存等を別工程に置く。
+- A 修正3：現行 StableCategory／StableInfinity は冪等完備性をフィールドに含めない。全 StableInfinity 上で構成し Morita／冪等完備化不変性を証明するか、Cat_perf 部分と functorial Idem を用いるか、界面を統一する。Cat_perf 値の懸垂なら商の冪等完備化を明記し、raw 商と混同しない。
+- 機構：HTT Cor.5.2.2.5 は、既にある Cartesian fibration の全遷移が左随伴を持つとき coCartesian にもなるという形で適用する。対象別の随伴存在だけで基底方向の全族を完成扱いしない。Ind_ω(f) の κ-compact 保存、κ-compact 部分の本質的小ささ・宇宙、包含 Id→Fκ の全自然性を明示する。S• から K∞ を作る際はスペクトル構造射・必要な Ω スペクトル化との整合も必要。
+- B／D-8：I := dgKappaConeInput_unconditional' は projective・derivedFullyFaithful・kappaCompact・covers を全て保持する。したがって dgNerve(Cone_A) と D(A)^κ の比較同値を、compact 部分への因子化と充満忠実＋本質的全射から束ねられる。sphere-only 族の strict κ-small 直和閉性を新たに仮定する必要はない。covers は retract／telescope まで処理済みで、選択代表の strict 一致は要求しない。
+- B／残る橋：K-B3 d4 の Ind_ω(νA) ≃ D(A) が元の perfect／Yoneda 包含を照合する全写像空間の同値であることを確認し、κ-compact 性の同値不変性で上記を Fκ(νA) へ移す。単なる hD(A) の三角同値や同じ κ の Ind 比較では不足。
+- B／P・Z：P := dgKappaPerfectInput_unconditional' は isEquivalence と元の perfect 包含への全関手比較 inclusion を維持。Z := resolvedDGNullObjects の実安定閉包と dgKappaSuspension_isStableVerdierSequence を用い、νA→Fκ(νA) の包含を一致させてから Verdier 普遍性で対象ごとの商比較を得る。必要な Morita／冪等完備化は明示する。新模型を再変更する必要は現時点で見つからない。
+- B／反復：各 A の一段比較だけでは K^nc_dg(A) ≃ K^nc∞(νA) は未完成。全 n の反復、同じ境界射・swindle による delooping 構造射との比較を Fun(ℕ,Sp) 内の同値として束ねて colim を取る。A 方向の厳密 dg 関手性は要求しない。登録は型どおり ν ≫ K^nc∞ とする。
+- C／swindle：I.countableClosed、dgKappaConeCountableSum、dgKappaConeCountableSum_isExactFunctor、dgKappaSwindleInfinityIso を新 I にそのまま特殊化できる。固定 A での exact な可算和作用と id⊕T≃T は流用可能。一般の Fκ(C) の swindle は κ>ω の compact 閉性から別途構成し、加法性で K∞(Fκ C)≃0 を示す。D の固定 dg 証明だけで一般 C の全族の消滅を完成扱いしない。swindle 自体には可算和で足りる。
+- C／流用境界：I/P/Z・新 stage provider・covers・固定 A の swindle／商列を保持する。既存 Morita／P native 族は補助比較に使えるが、構成した Fκ 作用との全単体一致は新たに照合する。今回確認した F1 の left/right straightening 分類は空間値であり、Cat∞ 値の一般 (co)Cartesian 分類の代用品とは扱わない。F2 の対ごとの随伴選択も基底を動かす全族との整合確認が必要。
+- C／凍結：ε 圏／quotientInputFunctor／商の厳密単位合成則は既存の正しい下位補題として残す。固定 data への全入力持ち上げ・最終 VertexIso・D-4 の旧仕様は追わない。D-8 本体、対象ごとの I/P/Z 比較、swindle は凍結対象から除く。旧計画・未供給型を削除せず、旧経路の成果を新経路の完成と数えない。
+- D／粗見積り：必要な ∞ 側界面が揃った後の D 所有接続は、cone の compact 比較1–2日、P/Z と商比較1–2日、swindle 照合0.5–1日、反復列・構造射・colim 比較2–4日、合計およそ5–10実働日。一般 Ind／Calkin の全族・K∞・局所化定理が未供給なら別見積りで、数日–数週の追加リスク。現時点で全体完了期限は確約しない。
+- E／主リスク：ω と κ の取り違え、raw 商と冪等完備商の混同、スペクトルの連結切断、反復列の構造射比較、宇宙、普遍性から局所化を循環的に仮定すること。現行 IsLocalizingInvariant は零保存＋全 Verdier 四角形の fiber 性であり、BGT の意味での filtered-colimit 保存も主張するなら別に証明する。
+- E／代替：既存の Pr^L と compact 生成の関手的普遍性から Fκ を直接構成できれば、一般 Cat∞ 値 straightening 全体の新規実装を先行条件にしない。W1 の Fun(ℕ,Sp) 直接構成も、正しい ∞ 写像空間で全整合を証明する限り有効。いずれも旧 dg 商関手圏への strict 持ち上げを再要求しない。
+- 参照：BGT §9.1、Def.9.1／9.6、Lemma9.4、Prop.9.5（https://msp.org/gt/2013/17-2/gt-v17-n2-p03-s.pdf）；HTT Cor.5.2.2.5（https://www.math.ias.edu/~lurie/papers/HTT.pdf）。評価はチャットでもユーザーへ渡す。今回は計画更新のみで Lean 本体を変更しない。
