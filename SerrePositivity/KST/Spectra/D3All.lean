@@ -47,6 +47,8 @@ public import SerrePositivity.KST.Spectra.D3ParameterComparisonStage
 public import SerrePositivity.KST.Spectra.D3PointedKanPreIsoAlgebra
 public import SerrePositivity.KST.Spectra.D3JointUnitStageComparison
 public import SerrePositivity.KST.Spectra.D3JointModelStageComparison
+public import SerrePositivity.KST.Spectra.D3DoubleEndpointLoopImageComparison
+public import SerrePositivity.KST.Spectra.D3LoopedSectionComparison
 
 /-!
 概要：Sp-2 の d3 専用集約。
