@@ -9,6 +9,7 @@ public import SerrePositivity.KST.Spectra.D3CommonLoopInterval
 public import SerrePositivity.KST.Spectra.D3CommonLoopDiagramSection
 public import SerrePositivity.KST.Spectra.D3CommonStageLoop
 public import SerrePositivity.KST.Spectra.D3StageLoopDiagramFamily
+public import SerrePositivity.KST.Spectra.D3EndpointParameterSquare
 
 /-!
 概要：Sp-2 の d3 専用集約。

@@ -56,7 +56,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.D3StagePullback,
     `SerrePositivity.KST.Spectra.D3StageLoopCone,
     `SerrePositivity.KST.Spectra.D3StageLoopSquare,
-    `SerrePositivity.KST.Spectra.D3StageLoopDiagramFamily]
+    `SerrePositivity.KST.Spectra.D3StageLoopDiagramFamily,
+    `SerrePositivity.KST.Spectra.D3PointedKanIhom,
+    `SerrePositivity.KST.Spectra.D3EnrichedOrderedDiagram,
+    `SerrePositivity.KST.Spectra.D3PointedKanParameterDiagram,
+    `SerrePositivity.KST.Spectra.D3PointedKanParameterSquare,
+    `SerrePositivity.KST.Spectra.D3EndpointParameterSquare]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]
   for (name, info) in env.constants.toList do

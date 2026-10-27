@@ -179,3 +179,19 @@
 - `lake build SerrePositivity.KST.Spectra.D3All` 合格（5815 jobs）。新規4葉に警告なし。
 - `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：522 modules／5561 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
 - 所有新葉4本・集約・監査・本計画のみを変更。既存読み取り専用領域への編集なし。
+
+
+## 2026-10-27：点つき Kan の実端点パラメータ全図式族
+- `d3PointedKanIhom`／`d3PointedKanPre_whiskered`／`d3PointedKanPre`：元の任意パラメータの内部 Hom 作用と、その制限射の全 Hom 自然性を Kan 全部分圏へ束ねる。成分は同じ `prePointed` 射そのもの。
+- `d3PointedKanPreFunctorIso`／`d3PointedKanEndpointLoopIso`：通常円と端点円の同じ表示同型から全関手同型を構成。円交換因子の直接比較は行わない。
+- `d3PointedKanMixed_id`／`d3PointedKanPre_factorization`／`d3PointedKanMixed_comp`：同じ入力 Hom と逆向きパラメータ制限を同時に扱う混合 Hom の恒等・厳密合成則を実証。
+- `D3EnrichedOrderedDiagram.functor`／`d3PointedKanParameterDiagram`：元の順序図式と全 Kan 入力を一つの実豊穣関手へ束ねる。単位・合成は一般豊穣変数上で証明済みの法則を元の実混合作用へ代入。
+- `d3PointedKanSquarePair`／`d3PointedKanParameterSquare`／`_corner`：二つの実区間単体と同じ全 coherent 単体を pairing し、全四角形族を構成。四角の全関手は指定した同じ内部 Hom 作用に厳密一致。
+- `d3EndpointParameter`／`d3EndpointParameterSquare`：元の端点包含・cofiber 商射・一点への射を持つ実四角パラメータ関手を供給し、上記の一般図式へ代入。四つの角の全関手を実証。終点はまだ内部 Hom(unit, -) であり、恒等関手への単位同型との接続は別工程。
+- `commonChosenStageEndpointCircleIso`：元の共通 BF 右射影の段比較を、同じ実段 loop 図式終点の endpoint 円模型へ全関手比較。元の比較成分を選び直さない。
+- **残る B**：構成した実全四角形族の loop 性と終点の単位同型を認証し、同じ実段 loop 図式始点との全関手比較へ接続する。さらに段をまたぐ BF 構造の整合が必要。現在の族を loopDiagrams への因子化とは数えず、hΩ・sp_isStable は未提供。
+
+### 実端点パラメータ族の保存検証
+- `lake build SerrePositivity.KST.Spectra.D3All` 合格（5821 jobs）。新規5葉に警告なし。
+- `lake env lean scripts/audit_kst_spectra_d3.lean` 合格：528 modules／5732 declarations、私有宣言・推移的公理依存を含み標準三公理のみ。ModelCategory 仮定なし、指定未追跡四葉・下流 K 依存は未接続。
+- 所有新葉5本・集約・監査・本計画のみを変更。移管済み行と既存読み取り専用領域への編集なし。
