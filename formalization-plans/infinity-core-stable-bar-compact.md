@@ -192,3 +192,15 @@
 - 残る供給境界：これらの全 Hom 比較を固定 cell 分解・固定 ε 商へ持ち上げ、上記の固定端点 intervalMappingSpace の VertexIso を作ること。評価後の閉同型を最終入力射間の比較とは扱わない。D-S の native 持ち上げとの接続に必要であり、チャットでも型と不足を明示報告する。
 - D-S の追加必要条件（9716f3325）も確認。固定 ε core 内の可逆比較は各 null 対象上の実 cell 像の等号を要求する。したがって本件の評価後の同型を、そのまま ε core の path とみなさない。最終 intervalMappingSpace 比較の不存在を意味するとは主張しない。
 - 六新葉を集約・専用監査・全体監査へ登録。Derived 集約14956 jobs、専用監査144宣言／16モジュール、全体監査26233宣言／2986モジュール成功、許容三公理のみ、終端0。import 閉包9170モジュール、循環・外部未コミット依存なし。最終固定辺の VertexIso の存在はこの検証に含めない。
+
+### (a) 成立後の固定 cell・ε 商への持ち上げ手順（未着手）
+- 待機条件：ユーザー指示により blocked を維持し、D-S の (a)（像対象の等号）の結果を待つ。以下は条件付き計画であり、最終 VertexIso の実装にはまだ着手しない。(a) が不成立ならこの経路を進めず、結果をユーザーへ報告する。
+- 記号：P_A := DGCategoryCellResolution.Source R CA、S_A := resolvedDGNullObjects R CA (dgKappaConePerfectObjects R A IA)。CA／IA は切替済み固定 cone／入力。単位の比較対象は F := data(𝟙 A).resolved と G := id(P_A)、合成は F := data(f ≫ g).resolved と G := data(f).resolved.comp(data(g).resolved)。双方を同じ NullPreservingFunctorsε の対象として保持する。
+1. (a) の公開定理の仮定・宇宙・適用範囲を確認し、各 b : S_A で F.obj b.val = G.obj b.val を単位・合成それぞれに取得する。元の二入力 f,g の比較に対する対象等号だけでは、data(𝟙 A) 対 id や data(f ≫ g) 対合成への適用を済ませたとしない。対象等号から射作用・ε 整合性は推論しない。
+2. dgSuspensionUnitConeEvaluationIso／dgSuspensionCompositionConeEvaluationIso の成分と全 Hom 自然性を、充満な実加群評価を通して cone 自身の比較へ反映する。順逆・逆律と評価後の回収式を同じ成分で証明し、模型・代表・固定 data を変更しない。
+3. 固定 comparisonFunctor 上の比較を構成する。cone 比較と固定 augmentation の可換条件を明示し、cell 生成射・微分・合成に対する全 Hom 自然性を検査する。単位は comparisonFunctor_identity、合成は comparisonFunctor_composition で右端を上記 G に厳密同定する。cone の自然同型から固定 cell 比較の存在を自動的に推論しない。
+4. null 部分では手順1の対象等号を用い、比較の成分・逆成分・必要なホモトピーを固定 ε と整合させる相対条件を課す。恒等成分を選ぶ場合も、全 Hom 自然性・augmentation 比較と両立することを別途証明する。(a) は必要条件であり、この相対持ち上げの十分条件とは扱わない。未解決の整合条件が残れば、その型を公開してユーザー経由で D-S と照合する。
+5. 厳密な閉比較を得られる場合は、順逆の単位複体パラメータについて quotientEpsilonCompatible を証明し、quotientEpsilonHomLift で同じ Hom 部分複体に入れる。逆律は元 Hom への mono 包含で反映する。H⁰ 同型／native 比較で構成する場合は、逆律を与える負次数パラメータ・境界も同じ ε Hom 内に持ち上げ、元 Hom 内だけのホモトピーで済ませない。高次相対 simplex を用いる場合も全 face・degeneracy と端点条件を検査する。
+6. 得られた ε core 内の VertexIso を dgSuspensionQuotientNativeMap で写す。左端は dgSuspensionQuotientNativeMap_vertex、右端は同 Map_unit／Map_composition の全単体等号で、固定入力射の恒等／二本の合成へ厳密同定する。単位対象そのものの商則だけで固定 data の単位比較を代用しない。
+7. 商 native Hom の比較を coherentHomIntervalComparison（必要な universe 移送を含む）へ写し、同じ二頂点を持つ intervalMappingSpace 内の比較にする。dgNativeMappingVertexEdge の回収式で両端の辺を照合し、DGSuspensionFixedUnitComparison／DGSuspensionFixedCompositionComparison を返す。端点の PerfDGInput は動かさない。最終 map の辺比較は既存 dgSuspensionEdgeIsoOfQuotientComparison に接続し、square／square_at の着手は従来どおり D-S の map 到着後とする。
+- 各段で公開名・残る仮定をチャットでユーザーへ報告する。実装を再開した場合のみ対象 build・集約・専用／全体公理監査を実施し、所有パスを --only 指定してコミットする。今回の更新は計画のみで、(a) 成立や持ち上げの存在を主張しない。
