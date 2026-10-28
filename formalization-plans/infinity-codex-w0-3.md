@@ -1,0 +1,168 @@
+# Codex 作業指示書 IF-W0-3：対象一覧（JSON）の作成と R61b の読解
+
+作成：2026-10-29（∞ 基盤の整備、管理は Claude）。宛先：Codex。
+計画：[infinity-foundation-plan.md](infinity-foundation-plan.md) の R74（対象 JSON）、§5 の各段、§6「指示書の単位」の IF-W0-3。
+**前提**：IF-W0-1（`88c477612`）と IF-W0-2（`8ff0012d8`）は main に取り込み済み。道具の使い方は `scripts/refactor/README.md` と `scripts/refactor/targets/README.md`。
+**共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) §0。worktree は `../SerrePositivity-ifw0-3`、ブランチは `infra/if-w0-3`（main の最新から作る）。main の作業木では作業もビルドもしない。
+
+この指示書は窓ごとに **4 回止まって報告する**（§7）。各回で Claude が JSON を確認・承認してから次へ進む。
+
+## 1. 目的と成果物
+
+W1〜W2c で「どのモジュールをどこへ移すか、どう分割するか」を、確定した一覧として作る。`.lean` は変更しない（検査のためのビルドと、`validate_targets.py` が `.lake` に書く記録は除く）。
+
+| 成果物 | 内容 |
+| --- | --- |
+| `scripts/refactor/targets/w1.json`・`w2a.json`・`w2b.json`・`w2c.json` | 窓ごとの対象一覧（書式は targets/README.md） |
+| `scripts/refactor/targets/w1.md`・`w2a.md`・`w2b.md`・`w2c.md` | 各項目の根拠（どの規則で、どの計測から決めたか）、**保留の一覧**（閉包が規則に収まらず、Claude の判断が要るもの）、窓の終わりの閉包の試算 |
+| `formalization-plans/archive/if-w0-3-r61b-reading-2026-10-29.md` | R61b の読解の記録（§5） |
+| `scripts/refactor/targets_builder.py`（任意） | 閉包の計測と JSON の下書きを作る補助。作る場合は試験も付ける |
+
+## 2. 所有範囲
+
+変更・新規作成してよいもの：`scripts/refactor/targets/` の下、`scripts/refactor/targets_builder.py` とその試験、上の archive 文書。
+それ以外（`.lean` の本文、集約ファイル、監査、計画文書、`layers.json`）は変更しない。`layers.json` の変更が必要だと思ったら、変更せずに報告する。
+
+## 3. 共通の作り方
+
+### 3.1 情報源
+
+- 入口の辺と閉包：`python3 scripts/refactor/layer_check.py --report`（`.lake/verify/layers.json`）。
+- 群の定義（接頭辞の一覧と判定）：[外部調査](archive/infinity-outside-survey-2026-10-28.md) §2（L1〜L7・F1〜F3・Sp-S1〜S6・SC-C1〜C5）、[Verdier 計画](refactoring-verdier.md) §1.2、[R2-A 詳細](archive/r2-a-layers-2026-10-27.md)（R26・R27 の参照先）、計画 §4（入口の辺の表）。
+- 本文の内容（分割が要るとき）：対象ファイルを読む。宣言の一覧は `decl_snapshot.lean` で採る。
+
+### 3.2 規則
+
+1. **移し先の名前**：`SerrePositivity.InfinityCategories.<層>[.<小区分>].<元のファイル名>`。小区分は計画 §3 の木（Stable/Verdier・Stable/Exact・Stable/Infinity・Stable/Lax・Stable/Semiorthogonal・Kan/Pointed・F1B/Localization・F1B/Localization/DwyerKan・F2/Filtered・ModelBridge）。名前が衝突するときは項目を保留にして報告する。
+2. **move か split か**（モジュール単位の閉包で決める）：
+   - そのモジュールの推移閉包が、移し先の層が import してよい範囲（計画 §3 の順序と `layers.json` の禁止）に収まるなら `move`。
+   - 収まらないとき、原因が末尾の節（`variable [ModelCategory …]` 以降など）や少数の宣言に限られるなら `split`（`moved` に純粋な部分、`keep` にそれ以外。R72 は逆に、Model の節を `moved` にして ModelBridge へ出す）。
+   - どちらでもないときは JSON に入れず、`.md` の保留の一覧に「モジュール・閉包が規則を破る原因の辺・案」を書く。
+3. **閉包の試算は窓を積み重ねて行う**：w2a.json の検査は `validate_targets.py w1.json w2a.json` のように、前の窓の JSON も同時に渡す（移動後のグラフを前提にするため）。
+4. **宣言名・名前空間は変えない**。改名が必要に見えるものは保留にする。
+5. **archive の置き場**：`SerrePositivity.Archive.InfinityCategories.F2.FilteredExchange.<元のファイル名>`（ルートにも集約にも登録しない）。
+6. JSON の `note` には「規則 §3.2-2 の判定・閉包の計測値・出典の群名」を 1 行で書く。長い根拠は `.md` へ。
+7. 各窓の `.md` の末尾に、`validate_targets.py` の出力から「層の組ごとの違反の前後」「tier ごとの禁止閉包の前後」「入口の辺の前後」を写し、計画 §6 の窓の終わりの条件（W1：中核に DG・EInfinity なし／W2a：KST・モデル圏もなし／W2b：層の違反 0／W2c：増えない）に照らして、**満たすか・何が残るか**を書く。満たさない場合も JSON は作り、残る原因を保留の一覧に書く。
+
+## 4. 窓ごとの対象
+
+### 4.1 w1.json（W1：段 A・B と閉包の切断）
+
+| 候補 | 対象の決め方 | 移し先 |
+| --- | --- | --- |
+| R48 | LI の `StableCategories`・`ExactEnrichment`・`StableInfinity`・`VerdierSequence`・`VerdierDiagrams`・`AdjointVerdier`（6 本）、`AdjointLocalization`（1 本） | Stable/Verdier（前 4 本）・Stable/Infinity（`StableInfinity`・`VerdierDiagrams`）・F1B/Localization（`AdjointLocalization`）。`ExactEnrichment` は Stable/Infinity |
+| R49a | Derived の `ExactFunctorCategory`・`ExactFunctorCategoryEquivalence`・`StableVerdierSequence` | Stable/Exact（前 2 本）・Stable/Verdier |
+| R49b | Derived の `ExactFunctorDescent`・`RestrictedDeformationLocalization` と依存先 `CofiberBottomIsoTransport`・`FullSubcomplexHomotopyLift`・`HomotopyPrecompVertex`・`RestrictedDeformationHomotopy` | 閉包で決める（Stable/Exact・F1B/Localization・F1B など）。R26 の 2 本（下）を先に含める |
+| R26 | layer_check の F1 → F2 の入口の辺 28 本の参照先（r2-a の 13 本に、`F2.CatInfinity.SpecifiedHomotopyLift`・`SpecifiedFunctorEdgeLift` を加える） | 閉包で Core・F1・F1B へ。F2 に残すべき専門の内容があれば保留 |
+| R39 | Stable → Derived 10 辺・F2 → Derived 7 辺の参照先（`SliceEvaluationPinched`・`RightFibrationTerminalRepresentation`・`RoofTargetFunctor` を含む）。`Stable.lean` → `Derived.CoherentBar.Compact.All` は集約の import の修正なので JSON に入れず、`.md` に「W1 の手作業」として書く | 閉包で Core・F1・F1B・Stable へ。DG を含む参照先は split を検討 |
+| R66 | `DoldKanComparison.UniverseHomotopy`・`UniverseKan`、`DGNerve.JoinSimplexInclusions`・`JoinSimplexFaces`・`JoinVertexSurjectivity` | Simplicial。閉包に DG が残るものは split（純粋な補題を `moved`） |
+| R71 | `KST.SConstruction.EnrichedFunctorCollageNerve`・`ContractibleKanProducts`、F1 → Derived 4 辺・HL → Derived 3 辺の参照先 | 閉包で決める |
+| R53 の前提 | `F2/Idempotent/Retracts.lean`（`retractClosure`） | Core（閉包が収まらなければ split） |
+
+- R59（入口の修正）・R62（private の解除）・R63（HA/ComplexLimits 3 本を EInfinity の既存の stub と統合）は JSON の対象外。`.md` に「W1 の手作業」として、対象ファイルと手順の案を書く。
+- R61a（本文がほぼ一致する重複）は JSON の対象外。§5 の読解の記録に「削除する側・残す側・置換の対応」を書く（W1 では `move_module.py` の redirects で処理する）。
+- **ここで止めて報告する（§7-1）。**
+
+### 4.2 w2a.json（W2a：モデル圏の切り離しと取り込み）
+
+| 候補 | 対象の決め方 | 移し先 |
+| --- | --- | --- |
+| R72 (1)(2) | HA の 12 本（計画 §5 段 C の R72 の一覧）。各ファイルを読み、Model の節（`variable [ModelCategory …]` 以降、または `ModelCategory` を使う宣言）を `moved`、純粋な部分を `keep` にした split。純粋な部分が丸ごと移せるときは、さらに別項目で Simplicial・Kan へ move（同じファイルに二つの分割を作用させない規約があるので、**この窓では Model の節の切り出しだけ**とし、純粋な部分の移動は w2b 以降の保留として記録する） | ModelBridge（`SerrePositivity.InfinityCategories.ModelBridge.HA.<元の名前>`） |
+| R72 (3) | HL の Quillen 系 42 本（本文に `ModelCategory` を含む HL のファイル。IF-W0-2 の層検査で `code_contains` により判定できる） | ModelBridge（move） |
+| R64 | 出所：F1/Simplicial、F1/KanModels、F1B/KanComplex、HA/Simplicial（Rectification を import しないもの）、KST/Spectra の Sp-S1・S2・S3・S5、SConstruction の SC-C3〜C5、KST/Comparison の Ex∞ と単体的ホモトピー（C1）、`SerrePositivity/Spectra/PointedSimplicialSet`・`Pointed`。<br>**判定はモジュール単位の閉包で行う**：閉包 ⊆ Simplicial の範囲なら Simplicial、⊆ Simplicial ∪ Core ∪ Kan なら Kan（基点付きの内容は Kan/Pointed）、それ以上に出るものは保留（この指示書では宣言単位の分割はしない）。quasicategory との比較（Core/KanCharacterization など、Core にすでにあるもの）は対象外 | Simplicial・Kan・Kan/Pointed |
+| R27 | HL・F1 → KST.Spectra 27 辺の参照先 21 本。汎用の 17 本は R64 の規則で Kan へ。`Spectrum*` の 5 本は `SerrePositivity.KST.Spectra.Limits.<名前>` へ move（KST の中の移動） | Kan・KST/Spectra/Limits |
+| R56a | LI の `LocalizationResolution`・`GeneralLocalization`・`LocalizationFactorization`・`LocalizationUniqueness`・`InverseAttachment*`・`WalkingEquivalence*`・`ParametricDiagramGluing`・`CoreAnodyneLifting`（`*` は接頭辞で展開し、一覧を `.md` に書く） | F1B/Localization。w1.json を前提にした閉包で、F2・straightening が消えることを確かめる。残るなら保留 |
+| R65 | EInfinity/SimplicialLocalization・Hammock・FrameHom のモジュールのうち、閉包に DG・KST・EInfinity の operad 系（BarrattEccles・Surjection・Operad・IntervalCuts・TableReduction）・モデル圏のコードを含まないもの | 相対圏と hammock → F1B/Localization/DwyerKan、Ex∞・Thomason → Simplicial、frame・Quillen 定理 A の一般部分 → F1B または HL。`modelHammock_isLocalization` などモデル圏を仮定するものは ModelBridge |
+
+- **ここで止めて報告する（§7-2）。**
+
+### 4.3 w2b.json（W2b：FilteredExchange と層の逆辺）
+
+| 候補 | 対象の決め方 | 移し先 |
+| --- | --- | --- |
+| R73 | F2/FilteredExchange の全モジュール（PiCriterion を除く 2,096 本）を、「FilteredExchange の外から推移的に使われるか」で二分する（IF-W0-2 の層検査の方法と同じ。集約 `F2.FilteredExchange` は根に含めない）。<br>使われる 369 本：filtered の定義（`FilteredInfinity`・`IsKappaFiltered`・`FilteredEquivalence`・`FilteredCosliceCofinality`・`KappaFilteredCoslices` など）は F2/Filtered、それ以外は閉包で Core・HL・F2 へ。<br>使われない 1,727 本：archive。<br>PiCriterion 33 本：`SerrePositivity.InfinityCategories.Derived.PiCriterion.<名前>` へ move | F2/Filtered・Core・HL・F2・Archive・Derived/PiCriterion |
+| R37 | F1B → Stable 54・HL → Stable 50・F1 → Stable 23 の参照先（和集合） | 閉包で Core・Kan・F1B・Simplicial へ。Stable に残すべきもの（安定性を本質的に使うもの）は保留に書く |
+| R38 | HL → F2 84 辺・Stable → F2 42 辺の参照先 | 閉包で下の層へ。sifted・PΣ の適用は F2 に残す（保留ではなく「残す」として `.md` に書く） |
+
+- **ここで止めて報告する（§7-3）。**
+
+### 4.4 w2c.json（W2c：KST の一般部分）
+
+| 候補 | 対象の決め方 | 移し先 |
+| --- | --- | --- |
+| R51 | `KST.SConstruction.StableSpanPushout` と、その閉包にある SConstruction の 2 本 | Stable |
+| R52 | LI の `Verdier*`、KST/Fibration の `Weak*`・`Fraction*`・`FixedFraction*`、LI の `Tamme*`（接頭辞で展開し、外部調査 §2 の L3・F2・L2 の説明と照らして、分数・Ore・span に関するものだけを選ぶ。`Φ : StableInfinity ⟶ Sp` や BF を使うものは除く） | Stable/Verdier/Fractions |
+| R68 | LI の `Lax*`・`IdentityLax*`・`PullbackStableCategory`・`SemiorthogonalDecomposition`（L1、約 56 本）。Sp に値をとる系は除く | Stable/Lax・Stable/Semiorthogonal |
+| R69 | LI の L6（`Cofiber*`・`Exact*`・`Suspension*`・`FullStableClosure`・`ZeroCategory`・`FiberSquare*` など）と L7（`Arrow*`・`Adjunction*`・`Opposite*`・`Reflective*`・`Square*`・`Simplex*`・`Cocone*`・`Curry*`・`Relative*`）。BF fiber を使う約 20 本は除く | Stable・Core・F1B |
+| R70 | KST/Fibration の F3（`Straightening*`・`Scaffold*`・`Transport*`・`Strict*`・`Small*`・`Space*`・`Kan*`・`Coslice*`・`FunctorIso*`・`Pointed*`・`GroupoidCompletionKan*`・`Localized*`）と LI の `CoreFlag/` | F1・F1B |
+| R56b | LI の `GroupoidCompletion*`・`SimplexAttachment*` | F1B/Localization（w1〜w2b を前提にした閉包で決める。DG・KST.Fibration が残れば保留） |
+
+- **ここで止めて報告する（§7-4）。**
+
+## 5. R61b の読解の記録
+
+`formalization-plans/archive/if-w0-3-r61b-reading-2026-10-29.md` に、次の組について書く。
+
+| 組 | 片方 | もう片方 |
+| --- | --- | --- |
+| 1 | `InfinityCategories/F1/Universe/PinchedHom` | `F1B/Localization/UniversePinchedHom` |
+| 2 | `KST/SConstruction/RelativeInitialExtension` | `F1B/FunctorCategories/RelativeInitialExtension` |
+| 3 | `KST/SConstruction/CoreTrivialFibration` | `F2/CatInfinity/CoreTrivialFibration` |
+| 4 | `KST/SConstruction/TrivialFibrationStability` | `Stable/TrivialFibrationStability` |
+| 5 | `KST/SConstruction/PushoutTranspose` | `Stable/SquareTranspose` |
+| 6 | `KST/SConstruction/InitialBoundaryIso` | `F1B/Cofinality/InitialBoundaryIso` |
+| 7 | `KST/SConstruction/EdgeTargetColimit` | `HomotopyLimits/EdgeTargetCocone` |
+| 8 | `LI/SuspensionExactFunctor` | `Stable/Suspension` |
+| 9 | `LI/AdjunctionOfOpposite`・`OppositeAdjunction` | `Stable/AdjunctionOpposite` |
+| 10 | `EInfinity/FrameHom/LocalizationExtension.localization_extension_exists` | `F1B/Localization/UniversalConsequences.IsLocalization.exists_extension` |
+| 11 | Ex∞：`EInfinity/Hammock/ExInfinity*` | `KST/Comparison/ExInfinity*` |
+| 12 | MappingCylinder：`KST/Comparison/MappingCylinder*` | `F1B/Diagrams/MappingCylinder*`・`F1/MappingSpaces/MappingCylinder*` |
+| 13 | `KST/Spectra/CoherentTrianglePathMinimum` | `F2/FilteredExchange/CoherentTrianglePathMinimum`・HL に同名があれば |
+| 14 | `KST/Spectra/LastHornContraction` | `F1B/Fibrations/LastHornContraction` |
+| 15 | `KST/Spectra/HomotopyProduct` | `HomotopyLimits/KanPiProducts` |
+
+各組について：両方の主な宣言とその主張（数学の言葉で 1〜2 行）、本文の一致率（コメントを除いた行の一致の割合）、判定（**同一**＝片方を削除して置換できる／**特殊化**＝一方が他方から導ける。どちらをどう導くか／**比較の定理が要る**＝型や模型が違う。段 G の M10 へ）、提案する処置。
+組 1・2 は「同一」の見込みなので、置換の対応（削除する側の宣言名 → 残す側の宣言名）も書く。
+
+## 6. 受入条件
+
+1. `validate_targets.py` が、`w1.json`、`w1.json w2a.json`、`w1.json w2a.json w2b.json`、4 本すべて、の 4 通りで終了コード 0。各出力を `.lake/verify/targets-w*.json` に保存し、要点を各 `.md` に写す。
+2. 各 `.md` に、規則 §3.2-7 の閉包の前後と、窓の終わりの条件の判定が書いてある。
+3. 保留の一覧が、各 `.md` に理由つきで書いてある。
+4. §5 の記録が 15 組すべてについて書いてある。
+5. `git status` で、変更が §2 の所有範囲だけであること。`.lean` の差分がないこと。
+6. `targets_builder.py` を作った場合は、その試験が通ること。
+
+## 7. 止めて報告する点
+
+1. w1.json と w1.md を作り、`validate_targets.py w1.json` が通った後。
+2. w2a.json と w2a.md（w1 を前提）の後。
+3. w2b.json と w2b.md の後。
+4. w2c.json と w2c.md、§5 の記録、§6 の 1〜6 の後。この報告の後に Claude が承認してから §8 のコミットを行う。
+
+各報告には、項目数（move／split／archive／保留の件数）、閉包の前後の表、保留の一覧の要約、判断が要る点を書く。
+
+## 8. コミット
+
+一つのコミットにする（§7-4 の承認の後）。
+
+```bash
+set -o pipefail
+git commit --only scripts/refactor/targets formalization-plans/archive/if-w0-3-r61b-reading-2026-10-29.md \
+  scripts/refactor/targets_builder.py scripts/refactor/test_targets_builder.py \
+  -m "$(cat <<'MSG'
+docs(refactor): target lists for windows W1-W2c and the R61b reading record (IF-W0-3)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+MSG
+)"
+```
+
+（`targets_builder.py` を作らなかった場合は、その 2 パスを外す。）
+
+## 9. 禁止事項
+
+- `.lean` の本文・集約・監査・計画文書・`layers.json` の変更。
+- 閉包の規則に合わないものを、保留にせず JSON に入れること。
+- 宣言名・名前空間の変更を前提にした項目を作ること。
+- main の作業木での作業・ビルド。
