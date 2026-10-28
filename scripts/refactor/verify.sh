@@ -34,6 +34,13 @@ run_stage() {
   return $rc
 }
 integer stage_index=0
+rm -f "$OUT/runner.json" "$OUT/audit-progress.json"
+# Layer diagnostics are report-only until the coordinator enables enforcement.
+python3 scripts/refactor/layer_check.py --report > "$OUT/layers.log" 2>&1
+layer_rc=$?
+printf '%s\n' "$layer_rc" > "$OUT/layers-exit-code.txt"
+cat "$OUT/layers.log" >> "$LOG"
+print -r -- "layer report rc=$layer_rc (informational; $OUT/layers.json)" | tee -a "$LOG"
 run_stage preparation manifest-and-targets python3 - <<'PY'
 import json, os, re, time
 from pathlib import Path
@@ -70,6 +77,19 @@ try:
     # 99 is the initial manifest size, not a permanent cap on future audits.
     extra = os.environ.get('VERIFY_EXTRA_AUDITS', '').split()
     audits = list(dict.fromkeys(audits + extra))
+    prep['all_audits'] = audits[:]
+    if 'VERIFY_ONLY_AUDITS' in os.environ:
+        selected = os.environ['VERIFY_ONLY_AUDITS'].split()
+        if not selected or len(selected) != len(set(selected)):
+            prep['errors'].append('VERIFY_ONLY_AUDITS must be a nonempty unique list')
+        for path in sorted(set(selected)-set(audits)):
+            prep['errors'].append('selected audit not in manifest discovery/extras: '+path)
+        audits = sorted(set(audits)&set(selected))
+    jobs = os.environ.get('VERIFY_JOBS', '3')
+    if not jobs.isdigit() or int(jobs) < 1:
+        prep['errors'].append('VERIFY_JOBS must be a positive integer')
+    if os.environ.get('VERIFY_CACHE', '0') not in ('0','1'):
+        prep['errors'].append('VERIFY_CACHE must be 0 or 1')
     prep['executed_audit_count'] = len(audits)
     (out / 'audits.txt').write_text(''.join(p + '\n' for p in audits))
     targets = set()
@@ -102,11 +122,11 @@ if (( prep_rc == 0 )); then
       run_stage build audit-targets lake build "${targets[@]}"
     fi
   fi
-  audits=("${(@f)$(< "$OUT/audits.txt")}")
-  for audit in "${audits[@]}"; do
-    run_stage audit "$audit" lake env lean "$audit"
-  done
-  run_stage sorry scripts/refactor/audit_sorries.lean lake env lean scripts/refactor/audit_sorries.lean
+  python3 scripts/refactor/verify_runner.py
+  runner_rc=$?
+  if (( runner_rc != 0 )); then
+    run_stage preparation audit-runner-failed false
+  fi
 fi
 
 python3 - <<'PY' | tee -a "$LOG"
@@ -169,10 +189,14 @@ def signature(text):
 
 counts = {k: {'success': 0, 'failure': 0, 'known': 0} for k in ('build', 'audit', 'sorry', 'preparation')}
 records = []
+runner = json.loads((out / 'runner.json').read_text()) if (out / 'runner.json').exists() else {}
+runner_records = {(r['kind'], r['name']): r for r in runner.get('stages', [])}
 for row in (out / 'stages.tsv').read_text().splitlines():
     kind, label, rc, duration, logfile = row.split('\t')
     rc = int(rc)
     record = {'kind': kind, 'name': label, 'exit_code': rc, 'seconds': float(duration), 'log': logfile}
+    if (kind,label) in runner_records:
+        record.update({k: runner_records[(kind,label)][k] for k in ('cached','cache_key')})
     state = 'success' if rc == 0 else 'failure'
     if kind == 'audit':
         if rc:
@@ -199,19 +223,36 @@ for row in (out / 'stages.tsv').read_text().splitlines():
         failures.append(f'{kind}: {label} (exit {rc})')
     records.append(record)
 executed = {r['name'] for r in records if r['kind'] == 'audit'}
-for path in baseline.keys() - executed:
+if not prep['errors']:
+    expected = set((out / 'audits.txt').read_text().splitlines())
+    for path in sorted(expected - executed):
+        failures.append('selected audit not executed: ' + path)
+    if len([r for r in records if r['kind'] == 'audit']) != len(expected) or executed != expected:
+        failures.append('audit execution set/count mismatch')
+    if len([r for r in records if r['kind'] == 'sorry']) != 1:
+        failures.append('sorry closure stage not executed exactly once')
+excluded = set(prep.get('all_audits', [])) - set((out / 'audits.txt').read_text().splitlines())
+for path in baseline.keys() - executed - excluded:
     failures.append(f'baseline audit not executed: {path}')
 # Any explicitly set test hook is non-gate, including sorry-closure overrides.
-hooks = ('VERIFY_EXTRA_AUDITS', 'VERIFY_SKIP_BUILD', 'VERIFY_BASELINE', 'SORRY_AUDIT_ROOT', 'SORRY_AUDIT_ALLOWED')
-gate = not any(k in os.environ for k in hooks)
+hooks = ('VERIFY_EXTRA_AUDITS', 'VERIFY_SKIP_BUILD', 'VERIFY_BASELINE', 'SORRY_AUDIT_ROOT', 'SORRY_AUDIT_ALLOWED', 'VERIFY_ONLY_AUDITS')
+gate = not any(k in os.environ for k in hooks) and os.environ.get('VERIFY_CACHE','0') != '1'
 status = 'FAIL' if failures else 'PASS'
 summary_line = status + ('' if gate else ' (non-gate)') + ' ' + ' '.join(
     f'{k}(success={v["success"]},failure={v["failure"]},known={v["known"]})' for k,v in counts.items())
+try:
+    layer_rc = int((out / 'layers-exit-code.txt').read_text())
+    layer_report = {'exit_code': layer_rc, 'informational': True,
+                    'report': json.loads((out / 'layers.json').read_text()) if layer_rc == 0 else None}
+except (OSError, ValueError) as exc:
+    layer_report = {'informational': True, 'error': str(exc)}
 summary = {'status': status, 'gate': gate, 'summary': summary_line,
            'commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
            'seconds': round(time.time() - float(os.environ['VERIFY_STARTED']), 3),
            'audit_count': prep['audit_count'], 'target_count': prep.get('target_count', 0),
-           'counts': counts, 'failures': failures, 'new_audits': prep['new_audits'], 'stages': records}
+           'counts': counts, 'failures': failures, 'new_audits': prep['new_audits'], 'stages': records,
+           'layer_check': layer_report, 'runner': runner,
+           'executed_audit_count': prep.get('executed_audit_count', 0)}
 (out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
 print(f'total: {summary["seconds"]}s')
 for failure in failures:
