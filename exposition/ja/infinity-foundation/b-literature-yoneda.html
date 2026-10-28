@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文献の章立て・極限と Kan 拡張・Yoneda</title>
+<link rel="stylesheet" href="../infinity/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.tag { display: inline-block; font-size: 0.78rem; padding: 0 0.4em; border: 1px solid var(--rule); border-radius: 3px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 2</nav>
+<h1>補章 2　文献の章立て・極限と Kan 拡張・Yoneda</h1>
+<p class="meta">
+  基準コミットなし（2026-10-28）。コードを読まずに、Claude との議論を整理した章。Kerodon の節番号は 2026-10-28 時点のオンライン版による。
+  形式化の層との対応は Claude の対応づけで、計画文書にあるものではない。
+</p>
+
+<!-- ============================================================ -->
+<h2>1. Kerodon と HTT の章立て</h2>
+<h3>Kerodon</h3>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>節</th><th>対応する層</th></tr>
+<tr><td colspan="3"><b>Part 1 基礎</b></td></tr>
+<tr><td>1 ∞ 圏の言葉</td><td>1.1 単体的集合、1.2 位相空間から、1.3 圏から、1.4 ∞ 圏、1.5 ∞ 圏の関手</td><td>Simplicial・Core</td></tr>
+<tr><td>2 ∞ 圏の例</td><td>2.1 モノイダル圏、2.2 双圏、2.3 Duskin 脈体、2.4 単体的圏（coherent nerve）、2.5 dg 圏</td><td>Coherent・dg 側</td></tr>
+<tr><td>3 Kan 複体</td><td>3.1 ホモトピー論、3.2 ホモトピー群、3.3 \(\mathrm{Ex}^\infty\)、3.4 ホモトピー引き戻し・押し出し、3.5 切り詰めと Postnikov 塔、3.6 位相空間との比較</td><td>Kan</td></tr>
+<tr><td>4 ∞ 圏のホモトピー論</td><td>4.1 inner fibration、4.2 左・右 fibration、4.3 スライスと join、4.4 同型と isofibration、4.5 同値、4.6 射の空間、4.7 切り詰めた対象と高次ホモトピー圏、4.8 充満・忠実・本質的全射、4.9 大きさの条件</td><td>Core</td></tr>
+<tr><td>5 ∞ 圏の fibration</td><td>5.1 cartesian fibration、5.2 covariant transport、5.3 普通の圏上の fibration、5.4 ∞-bicategory、5.5 \(\mathcal{QC}\)、5.6 cocartesian fibration の分類</td><td>F1</td></tr>
+<tr><td colspan="3"><b>Part 2 高次圏論</b></td></tr>
+<tr><td>6 随伴関手</td><td>6.1 2 圏の中の随伴、6.2 ∞ 圏の間の随伴、6.3 局所化</td><td>F1B</td></tr>
+<tr><td>7 極限と余極限</td><td>7.1 極限と余極限、7.2 cofinality、7.3 Kan 拡張、7.4 空間の極限・余極限、7.5 ホモトピー極限・余極限、7.6 例、7.7 余極限の普遍性</td><td>F1B・HomotopyLimits</td></tr>
+<tr><td>8 Yoneda 埋め込み</td><td>8.1 twisted arrow と cospan、8.2 coupling、8.3 Yoneda 埋め込み、8.4 余完備化、8.5 retract と冪等元、8.6 共役・双対 fibration、8.7 ファイバーごとの余完備化</td><td>F1</td></tr>
+<tr><td>9 大きな ∞ 圏</td><td>9.1 filtered、9.2 finitary 関手とコンパクト対象、9.3 Ind 完備化、9.4 コンパクト生成と accessibility、9.5 presentable、9.6 分解系、9.7 ∞ 圏のテンソル積</td><td>F2</td></tr>
+<tr><td>10 完全性と animation</td><td>10.1 ∞ 圏の単体的対象、10.2 正則 ∞ 圏</td><td>—</td></tr>
+</table></div>
+<h3>HTT</h3>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>節</th><th>対応する層</th></tr>
+<tr><td>1 概観</td><td>1.1 基礎、1.2 言葉（写像空間、join・スライス、始・終対象、極限）</td><td>Core</td></tr>
+<tr><td>2 単体的集合の fibration</td><td>2.1 左 fibration（covariant モデル構造）、2.2 単体的圏と ∞ 圏（straightening の Quillen 同値、写像空間の比較）、2.3 inner fibration（極小 inner fibration）、2.4 cartesian fibration</td><td>Core・Coherent・F1</td></tr>
+<tr><td>3 ∞ 圏の ∞ 圏</td><td>3.1 marked 単体的集合、3.2 straightening と unstraightening、3.3 応用（普遍 fibration、\(\mathrm{Cat}_\infty\) の極限・余極限）</td><td>F1・F2</td></tr>
+<tr><td>4 極限と余極限</td><td>4.1 cofinality、4.2 余極限の計算技法、4.3 Kan 拡張、4.4 余極限の例</td><td>F1B・HomotopyLimits</td></tr>
+<tr><td>5 presentable と accessible</td><td>5.1 前層（Yoneda）、5.2 随伴関手、5.3 帰納極限（filtered、Ind）、5.4 accessible、5.5 presentable（随伴関手定理、局所化）</td><td>F1・F1B・F2</td></tr>
+<tr><td>6 ∞ トポス</td><td>6.1〜6.5</td><td>—</td></tr>
+<tr><td>7 位相空間での高次トポス論</td><td>7.1 パラコンパクト、7.2 次元論、7.3 固有底変換</td><td>—</td></tr>
+<tr><td>付録 A</td><td>A.1 圏論、A.2 モデル圏、A.3 単体的圏</td><td>ModelBridge</td></tr>
+</table></div>
+<ul>
+  <li><b>順序</b>：HTT は fibration と straightening（第 2・3 章）を先に置き、それを道具に極限・随伴・presentable を展開する。Kerodon は Kan 複体を独立に先に扱い、随伴・極限（第 6・7 章）を Yoneda（第 8 章）より前に置く。</li>
+  <li><b>straightening</b>：HTT はモデル構造の Quillen 同値。Kerodon は 5.4〜5.6 で ∞-bicategory と \(\mathcal{QC}\) を作り、モデル圏なしで分類定理を示す。</li>
+  <li>層の順序は、Kan と Core の順を除けば Kerodon の Part 1 → Part 2 にほぼ沿う。安定 ∞ 圏は両者に含まれず、HA 第 1 章にあたる。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>2. Kerodon 第 7 章の内容</h2>
+<div class="table-wrap"><table>
+<tr><th>節</th><th>内容</th></tr>
+<tr><td>7.1 極限と余極限</td><td>定義（スライスの終対象）と形式的性質。定数図式、極限を保つこと、相対的な始・終対象と極限、関手 ∞ 圏の中の極限、categorical pullback との関係、切断の ∞ 圏の中の余極限</td></tr>
+<tr><td>7.2 cofinality</td><td>left cofinal な写像に沿った制限は極限を変えない（7.2.2.11）。∞ 版 Quillen の定理 A（7.2.3.1）</td></tr>
+<tr><td>7.3 Kan 拡張</td><td>一般の関手・包含・fibration に沿った Kan 拡張、相対版、存在、普遍性（7.3.6）、推移性。cartesian fibration 上の極限はファイバーごとの極限の極限（7.3.4.4、7.3.8.26）</td></tr>
+<tr><td>7.4 空間の極限・余極限</td><td>次の表</td></tr>
+<tr><td>7.5 ホモトピー極限・余極限</td><td>厳密な図式の Bousfield–Kan ホモトピー極限と ∞ 極限の比較。weighted nerve と 7.4 を使う。ホモトピー極限図式と categorical な極限図式の比較</td></tr>
+<tr><td>7.6 例</td><td>積、引き戻し、イコライザー、列の極限、完備性。任意の極限は積とイコライザーから作れる（7.6.4.25、7.6.6.15）</td></tr>
+<tr><td>7.7 余極限の普遍性</td><td>cartesian 自然変換、降下図式、cartesian 閉、交わらない余積、Mather の立方体定理、空間での降下、極限と余極限の交換（7.7.7）</td></tr>
+</table></div>
+<p>7.4 は、一般の定義で定まる極限・余極限が \(\mathcal S\) と \(\mathrm{Cat}_\infty\)（Kerodon の \(\mathcal{QC}\)）では具体的に何になるかを、図式を fibration に置き換えて求める節。第 5 章の分類定理（5.6）が前提になる。</p>
+<div class="table-wrap"><table>
+<tr><th>小節</th><th>図式</th><th>具体形</th></tr>
+<tr><td>7.4.1</td><td>\(C\to\mathcal S\) の極限</td><td>分類する左 fibration の切断の空間 \(\mathrm{Fun}_{/C}(C,E)\)（7.4.1.6）</td></tr>
+<tr><td>7.4.2</td><td>—</td><td>分類を \(h\mathrm{Fun}(C,\mathcal S)\simeq h\mathrm{LFib}(C)\) に引き上げる（7.4.2.4）</td></tr>
+<tr><td>7.4.3</td><td>\(C\to\mathcal S\) の余極限</td><td>全空間を Kan 化したもの（7.4.3.1）</td></tr>
+<tr><td>7.4.4</td><td>\(C\to\mathrm{Cat}_\infty\) の極限</td><td>cocartesian な切断の ∞ 圏（7.4.4.6）</td></tr>
+<tr><td>7.4.5</td><td>\(C\to\mathrm{Cat}_\infty\) の余極限</td><td>全空間を cocartesian 辺で局所化したもの（7.4.5.13）</td></tr>
+</table></div>
+<p>1 圏では、集合値なら極限は Grothendieck 構成の切断の集合、余極限はその \(\pi_0\)。\(\mathrm{Cat}\) 値なら cocartesian な切断の圏と、cocartesian 射での局所化。\(\mathcal S\) の余極限で \(\pi_0\) の代わりに全空間そのものになるのが ∞ 版の特徴。7.4.4・7.4.5 は第 6 章 §8 で「Cat∞ 値の straightening が使われる」とした場面にあたる。7.7.7 は形式化で未完成と書かれていた filtered 余極限と有限極限の交換に関係する。</p>
+
+<!-- ============================================================ -->
+<h2>3. cofinality</h2>
+<p>\(e\colon C'\to C\) が cofinal とは、どんな \(F\colon C\to\mathcal D\) についても \(\operatorname{colim}_{C'}(F\circ e)\to\operatorname{colim}_C F\) が同値であること（極限には逆向きの coinitial、Kerodon の left cofinal を使う）。判定法は Quillen の定理 A：すべての \(c\) で \(C'\times_C C_{c/}\) が弱可縮。</p>
+<ul>
+  <li><b>余極限を簡単にする</b>：終対象 \(t\) があれば \(\operatorname{colim}_C F\simeq F(t)\)。filtered な図式は cofinal な部分で計算できる。図式の形を取り替える。</li>
+  <li><b>他の一般論の土台</b>：Kan 拡張の各点公式、極限の推移性、Ind とコンパクト対象（密度、単一の filtered 図式での表示）、局所化と余極限の整合。</li>
+  <li><b>不変性</b>：cofinal は「制限が余極限を変えない」という極限の理論の中での同値の概念。モデル圏での「ホモトピー余極限は添字の弱同値で不変」の ∞ 版。</li>
+  <li>1 圏の final functor は「\(c\downarrow e\) が空でなく連結」。∞ 版では連結が弱可縮に強まる。</li>
+  <li>単射が left anodyne ⇔ left cofinal。§6 の「始対象の包含は left anodyne」はこれから出る。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>4. Kan 拡張の位置づけ</h2>
+<h3>4.1 二つの役割</h3>
+<ul>
+  <li><b>極限の一般化</b>：各点の右 Kan 拡張は \(\mathrm{Ran}_fF(d)=\lim(d\downarrow f\to C\to\mathcal E)\)、\(d\downarrow f=C\times_D D_{d/}\)。Kerodon が 7.1 → 7.2 → 7.3 と並べるのはこのため。</li>
+  <li><b>整合的な関手を作る手段</b>：\(C_0\subseteq C\) 上の関手を左 Kan 拡張した関手の全体は \(\mathrm{Fun}(C_0,\mathcal D)\) に trivial fibration で写る（Kerodon 7.3.6）。小さな部分で値を決めれば、全体への延長が可縮な選択の空間から一意に得られる。極限を関手にする構成（trivial fibration の切断）の一般化。</li>
+</ul>
+<h3>4.2 この先の定義で使う場面</h3>
+<div class="table-wrap"><table>
+<tr><th>場面</th><th>Kan 拡張としての捉え方</th></tr>
+<tr><td>前層の普遍性</td><td>余極限を保つ \(\mathcal P(A)\to\mathcal D\) は Yoneda に沿った \(\mathrm{Lan}_yF\)</td></tr>
+<tr><td>\(\mathrm{Ind}\) の普遍性</td><td>filtered 余極限を保つ延長も同じ型</td></tr>
+<tr><td>\(F_!\)</td><td>\(\mathcal P(C)\to\mathcal P(D)\) は左 Kan 拡張</td></tr>
+<tr><td>realization ⊣ nerve</td><td>presentable の特徴づけ（Lurie–Simpson）の核心</td></tr>
+<tr><td>六関手形式の構成</td><td>\(D(X)=\lim_{\mathrm{Spec}A\to X}D(A)\) のようにアフィンから右 Kan 拡張で延ばす。Liu–Zheng・Mann の延長定理も同じ型</td></tr>
+</table></div>
+<p>関手を作る手段として、第 6 章 §8 の (a) 厳密な単体的関手、(b) straightening に加え、(c) 小さい部分で決めて Kan 拡張で延ばす、がある。六関手形式に向けては (c) が主役になる場面が多い。</p>
+<h3>4.3 「すべては Kan 拡張」</h3>
+<div class="table-wrap"><table>
+<tr><th>1 圏での主張</th><th>∞ 版</th></tr>
+<tr><td>極限は一点への Kan 拡張</td><td>成り立つ（§4.4）</td></tr>
+<tr><td>\(G\) が左随伴を持つ ⇔ \(\mathrm{Lan}_G\mathrm{id}\) が存在して \(G\) で保たれる（絶対 Kan 拡張）</td><td>成り立つ。∞-cosmos では随伴を absolute lifting として扱う</td></tr>
+<tr><td>密度 \(\mathrm{id}=\mathrm{Lan}_yy\)</td><td>成り立つ（presheafElementsColimitCocone_isColimit、F2）</td></tr>
+<tr><td>codensity モナド \(\mathrm{Ran}_GG\)</td><td>成り立つが ∞ 版のモナド論（HA 第 4 章）の上に立つ</td></tr>
+<tr><td>end・coend</td><td>twisted arrow 上の極限・余極限</td></tr>
+</table></div>
+<p>∞ では各点の Kan 拡張を定義に採るのが普通（Kerodon 7.3.1）。それが存在するとき制限の随伴になることは定理（7.3.6）。Riehl–Verity でも各点の Kan 拡張は comma で定義される。</p>
+<h3>4.4 一点への Kan 拡張</h3>
+<p>大域的には、\(\mathrm{Ran}_f\) は制限 \(f^*\colon\mathrm{Fun}(D,\mathcal E)\to\mathrm{Fun}(C,\mathcal E)\) の右随伴。\(D=\ast\) なら \(\mathrm{Fun}(\ast,\mathcal E)=\mathcal E\)、\(f^*\) は対角 \(\delta\) なので \(\mathrm{Ran}_{C\to\ast}=\lim\)。各点の形でも \(d\downarrow f=C\) なので値は \(\lim_CF\)。Kerodon・HTT は Kan 拡張を各点の形（極限を使う形）で定義するので、極限が先で Kan 拡張が後。1 圏論の流儀で Kan 拡張を先に定義すれば、極限はその特別な場合として定義できる。</p>
+
+<!-- ============================================================ -->
+<h2>5. ホモトピー極限（Kerodon 7.5）</h2>
+<ul>
+  <li>∞ 圏論の中では極限そのものが最初からホモトピー不変で、別の概念としてのホモトピー極限は要らない（∞ 極限を慣習的にホモトピー極限と呼ぶ文献はある）。</li>
+  <li>ホモトピー極限が意味を持つのは厳密な図式 \(C\to\mathrm{Kan}\)（または quasicategory の圏）の側。Bousfield–Kan などで導来関手として定まる。</li>
+  <li>7.5 は、それが \(N(C)\to\mathcal S\)（または \(\mathcal{QC}\)）と見たときの ∞ 極限と一致することを示す。後半のホモトピー極限図式と categorical な極限図式の比較は、局所化と極限の関係。</li>
+  <li>扱うのは Kan 複体と ∞ 圏の場合だけで、モデル構造も使わない。一般のモデル圏との比較は ModelBridge 層の話。形式化の HomotopyLimits 層（bousfieldKanHolim）が 7.5 に対応する。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>6. Yoneda の補題</h2>
+<h3>6.1 二つの形</h3>
+<div class="table-wrap"><table>
+<tr><th>形</th><th>主張</th><th>straightening</th></tr>
+<tr><td>fibration 版</td><td>左 fibration \(p\colon E\to B\) と対象 \(b\) について、\(\mathrm{ev}_{\mathrm{id}_b}\colon\mathrm{Fun}_{/B}(B_{b/},E)\to E_b\) は trivial Kan fibration</td><td>不要</td></tr>
+<tr><td>関手版</td><td>\(\mathrm{Map}_{\mathcal P(C)}(h_y,F)\simeq F(y)\)、\(C\to\mathcal P(C)\) は充満忠実</td><td>必要（Hom 関手を作るため）</td></tr>
+</table></div>
+
+<h3>6.2 fibration 版の意味</h3>
+<div class="table-wrap"><table>
+<tr><th>fibration の言葉</th><th>関手の言葉</th></tr>
+<tr><td>左 fibration \(E\to B\)</td><td>\(F\colon B\to\mathcal S\)、\(F(c)=E_c\)</td></tr>
+<tr><td>\(B_{b/}\to B\)（\(c\) 上のファイバーは \(\mathrm{Map}(b,c)\)）</td><td>余表現可能関手 \(h^b=\mathrm{Map}(b,-)\)</td></tr>
+<tr><td>\(\mathrm{Fun}_{/B}(B_{b/},E)\)</td><td>\(\mathrm{Nat}(h^b,F)\)</td></tr>
+<tr><td>\(E_b\)</td><td>\(F(b)\)</td></tr>
+<tr><td>\(\mathrm{id}_b\) での評価</td><td>自然変換を \(\mathrm{id}_b\) の行き先に送る</td></tr>
+</table></div>
+<p>1 圏（離散 opfibration）では、\(B\) 上の関手 \(\sigma\colon B_{b/}\to E\) は \(\sigma(gf)=g_!\sigma(f)\) を満たすので \(\sigma(f)=f_!\sigma(\mathrm{id}_b)\) で決まり、逆に任意の \(e\in E_b\) から \(\sigma_e(f)=f_!e\) で作れる。∞ 版では「決まる」が「延長の空間が可縮（trivial fibration）」になる。</p>
+
+<h3>6.3 証明の部品</h3>
+<div class="box">
+<p class="label">部品 A：\(\mathrm{id}_b\) は \(B_{b/}\) の始対象</p>
+<p>\(\partial\Delta^n\to B_{b/}\)（頂点 0 が \(\mathrm{id}_b\)）の延長は、join で翻訳すると \(\Delta^0\star\partial\Delta^n\to B\) を \(\Delta^{n+1}\) に延ばすこと。\(\Delta^0\star\partial\Delta^n\) は \(d_0\) 以外の面をすべて含むので外側の horn \(\Lambda^{n+1}_0\) の充填で、最初の辺が恒等射（同値）なので Joyal の定理で埋まる。写像空間の立方体で言えば、\(f_1=\mathrm{id}\) なので whisker を割る必要がない。</p>
+</div>
+<div class="box">
+<p class="label">部品 B：始対象の包含は left anodyne</p>
+<p>始対象 \(x\) について \(\{x\}\hookrightarrow X\) は left anodyne。一般には「単射が left anodyne ⇔ left cofinal」（Kerodon 7.2）から出る（始対象への包含はスライスがすべて可縮なので left cofinal）。\(B_{b/}\) なら、\(\{\mathrm{id}_b\}\) から先頭が \(\mathrm{id}_b\) につながる left horn の充填で単体を一つずつ付け加えて全体が得られる。</p>
+</div>
+<div class="box">
+<p class="label">部品 C：left anodyne に沿った相対関手空間の制限は trivial fibration</p>
+<p>\(i\colon K\hookrightarrow L\) が \(B\) 上の left anodyne、\(E\to B\) が左 fibration なら \(i^*\colon\mathrm{Fun}_{/B}(L,E)\to\mathrm{Fun}_{/B}(K,E)\) は trivial Kan fibration。\(\partial\Delta^n\subseteq\Delta^n\) の持ち上げは \(\partial\Delta^n\times L\cup\Delta^n\times K\hookrightarrow\Delta^n\times L\) に沿った延長と同じで、単射と left anodyne の pushout-product は left anodyne（HTT 2.1.2.7、join の補題の直積版）。</p>
+</div>
+<p><b>組み立て</b>：A で \(\mathrm{id}_b\) が始対象、B で \(\{\mathrm{id}_b\}\hookrightarrow B_{b/}\) が left anodyne、C で \(\mathrm{Fun}_{/B}(B_{b/},E)\to\mathrm{Fun}_{/B}(\{\mathrm{id}_b\},E)=E_b\) が trivial Kan fibration。straightening も \(\mathcal S\) も写像空間の関手性も使わない。Lean では leftFibration_cosliceIdentityEvaluation_trivialKanFibration（import の閉包は約 256 モジュール、関手版は約 1,750）。</p>
+<p><b>逆写像の直観</b>：切断が与える \(\sigma_e\colon B_{b/}\to E\) は \(f\colon b\to c\) を \(f_!e\) に送り、2 単体 \(b\to c\to d\) で \((gf)_!e\simeq g_!f_!e\) を与える。\(e\) から出るすべての transport を高次の整合性まで一度に選んだもので、部品 C の持ち上げがそれを引き受ける。St を「表現可能関手の Un（\(B_{b/}\)）からの写像」と見る見方はこれ。</p>
+<p><b>系（fibration レベルの Yoneda 埋め込み）</b>：\(E=B_{c/}\) とすると \(\mathrm{Fun}_{/B}(B_{b/},B_{c/})\simeq\mathrm{Map}(c,b)\)。\(b\mapsto B_{b/}\) は \(B^{\mathrm{op}}\) から左 fibration の ∞ 圏への充満忠実な対応で、第 6 章 §6.4 の \(\mathcal Z\) の構成案で使う事実そのもの。</p>
+<p><b>前層版</b>：前層 ⇔ \(C\) 上の右 fibration、\(h_y\) ⇔ \(C_{/y}\to C\)、主張は \(\mathrm{Fun}_{/C}(C_{/y},E)\to E_y\) が trivial Kan fibration。</p>
+
+<h3>6.4 関手版</h3>
+<p>Hom 関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) の作り方は三つ：twisted arrow の straightening（Kerodon 第 8 章、いまの形式化）、\(\mathfrak C[C]\) による厳密化（HTT §5.1.3、モデル構造を使うので不採用）、関手を作らない（∞-cosmos。前層 = 関手の比較が別に要る）。形式化の証明は次の合成。</p>
+<p>\[\mathrm{Map}(h_y,F)\xrightarrow[h_1]{\simeq}\mathrm{Fun}_{/C^{\mathrm{op}}}(\mathrm{Un}(h_y),\mathrm{Un}(F))\xrightarrow[h_2]{\cong}(\text{小さい模型})\xrightarrow[h_3]{\simeq}\mathrm{Un}(F)_y\xrightarrow[h_4]{\simeq}F(y)\]</p>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>内容</th></tr>
+<tr><td>\(h_1\)</td><td>前層の写像空間 ≃ unstraightening の相対関手空間（最も重い入力）</td></tr>
+<tr><td>\(h_2\)</td><td>宇宙の調整（厳密な同型）</td></tr>
+<tr><td>\(h_3\)</td><td>表現可能前層の Un はスライスで、恒等点での評価は同値（核心、中身は fibration 版）</td></tr>
+<tr><td>\(h_4\)</td><td>\(\mathrm{Un}(F)\) の \(y\) 上のファイバーは \(F(y)\)</td></tr>
+</table></div>
+<p>充満忠実性（yonedaInfinityMap_isFullyFaithful）は、同値 \(\mathrm{Map}(h_x,h_y)\simeq\mathrm{Map}(x,y)\) の存在ではなく、Yoneda 写像そのものの Hom 作用が同値であることを示す必要がある。Hom 作用を恒等点で評価したものが \(\mathrm{Tw}(C)\) の恒等点からの transport と一致することを示して結論する。straightening の同値定理そのものには依存しない。</p>
+
+
+<!-- ============================================================ -->
+<h2>7. 部品 A・B の詳しい証明</h2>
+<h3>7.1 部品 A：\(\mathrm{id}_b\) は \(B_{b/}\) の始対象</h3>
+<p>始対象 \(x\) の持ち上げ条件：すべての \(n\ge 1\) について、頂点 0 が \(x\) の \(\partial\Delta^n\to X\) は \(\Delta^n\) に延長できる。これは HTT の定義（\(X_{x/}\to X\) が trivial fibration）を join で書き直したもので、「写像空間がすべて可縮」と同値。</p>
+<ol>
+  <li><b>join で翻訳</b>：\(u\colon\partial\Delta^n\to B_{b/}\)（頂点 0 が \(\mathrm{id}_b\)）は \(\tilde u\colon\Delta^0\star\partial\Delta^n\to B\)、延長は \(\Delta^{n+1}\to B\)。</li>
+  <li><b>同定</b>：\(\Delta^{n+1}\) の頂点を 0（錐）と \(1,\dots,n+1\) とすると、面 \(S\) が \(\Delta^0\star\partial\Delta^n\) に入る ⇔ \(S\) が \(1,\dots,n+1\) のどれかを含まない ⇔ \(S\subseteq d_k\)（\(k\ge 1\)）。よって \(\Delta^0\star\partial\Delta^n=\Lambda^{n+1}_0\)（外側の horn）。</li>
+  <li><b>最初の辺</b>：頂点 0 が \(\mathrm{id}_b\) なので、horn の辺 \(0\to 1\) は \(s_0(b)\)。</li>
+  <li><b>Joyal の定理</b>（HTT 1.2.4.3）：\(m\ge 2\) で \(\Lambda^m_0\to B\) の最初の辺が同値なら延長できる。\(m=n+1\ge 2\) なので埋まる。</li>
+</ol>
+<div class="table-wrap"><table>
+<tr><th>例</th><th>内容</th></tr>
+<tr><td>\(n=1\)</td><td>頂点 \(\mathrm{id}_b\) と \(f\colon b\to c\)。\(\Lambda^2_0\)（辺 \(\mathrm{id}_b\)、\(f\)）は退化 2 単体 \(s_0(f)\) で埋まる</td></tr>
+<tr><td>\(n=2\)</td><td>頂点 \(\mathrm{id}_b,f,g\)。\(\Delta^3\) の頂点 \(b,b,c,d\)。\(d_3\)：\(\alpha\colon b\to c\) と \(f\simeq\alpha\)、\(d_2\)：\(\gamma\colon b\to d\) と \(g\simeq\gamma\)、\(d_1\)：\(\beta\colon c\to d\) と \(g\simeq\beta f\)。欠けた \(d_0\) は \(\gamma\simeq\beta\alpha\) の証拠</td></tr>
+</table></div>
+<p>一般の頂点 \(f\colon b\to c\) では最初の辺が \(f\) になるので、\(f\) が同値なら始対象。\(B_{b/}\) の始対象はちょうど \(b\) から出る同値の全体。</p>
+
+<h3>7.2 部品 B：始対象の包含は left anodyne（retract による証明）</h3>
+<ol>
+  <li><b>切断</b>：\(X_{x/}\to X\) は trivial fibration なので、\(\{x\}\hookrightarrow X\) と \(\mathrm{id}_x\) の持ち上げ問題から切断 \(s\colon X\to X_{x/}\)、\(s(x)=\mathrm{id}_x\) が得られる。</li>
+  <li><b>join へ</b>：\(s\) は \(\tilde s\colon\Delta^0\star X\to X\)（錐の頂点を \(x\) に、\(X\) 上は恒等）と同じ。</li>
+  <li><b>直積へ</b>：fat join から join へのつぶす写像 \(c\colon\Delta^1\times X\to\Delta^0\star X\)（\(\{0\}\times X\) を錐の頂点に）と合成して \(h=\tilde s\circ c\colon\Delta^1\times X\to X\)。\(h|_{\{1\}\times X}=\mathrm{id}\)、\(h|_{\{0\}\times X}\) と \(h|_{\Delta^1\times\{x\}}\) は \(x\) で定数（後者は \(s_0(x)\) の退化単体が退化単体に行くため）。定数関手 \(x\) から \(\mathrm{id}_X\) への自然変換。</li>
+  <li><b>retract</b>：\(j\colon(\{0\}\times X)\cup(\Delta^1\times\{x\})\hookrightarrow\Delta^1\times X\) は \(\{0\}\subseteq\Delta^1\)（left horn）と単射の pushout-product なので left anodyne（HTT 2.1.2.7）。\(\iota_1\colon X\to\Delta^1\times X\) と \(h\) が、\(i\colon\{x\}\hookrightarrow X\) を \(j\) の retract にする（\(h\circ\iota_1=\mathrm{id}\)、\(h\) は \(j\) の始域を \(\{x\}\) に送る）。left anodyne は retract で閉じるので \(i\) は left anodyne。</li>
+</ol>
+<p>逆に、包含が left anodyne なら \(x\) は始対象で、両者は同値。ただし逆向きは直接の議論ではなく、left anodyne ⇒ left cofinal と Quillen の定理 A を経由する（§10.5）。トポロジーで言えば、\(h\) は点への向きつきの変形レトラクト。</p>
+
+<h3>7.3 他の証明</h3>
+<div class="table-wrap"><table>
+<tr><th>方法</th><th>適用範囲</th><th>使うもの</th><th>選択</th><th>部品 A</th></tr>
+<tr><td>1. 持ち上げで切断を選ぶ（7.2）</td><td>一般の始対象</td><td>trivial fibration、fat join→join、pushout-product、retract</td><td>あり</td><td>必要</td></tr>
+<tr><td>2. 余分な退化写像</td><td>スライス \(B_{b/}\)</td><td>\(s(\sigma)=s_0\sigma\)（\(d_0s_0\sigma=\sigma\)、最初の辺は \(s_0(b)=\mathrm{id}_b\)、単体的作用素と可換）。残りは 7.2 と同じ</td><td>なし</td><td>不要（系として出る）</td></tr>
+<tr><td>3. cofinality</td><td>一般の始対象</td><td>単射が left anodyne ⇔ left cofinal（covariant 同値の理論。HTT では covariant モデル構造）</td><td>—</td><td>必要</td></tr>
+</table></div>
+<p>参考：任意の \(K\) について錐の頂点の包含 \(\{\ast\}\hookrightarrow\Delta^0\star K\) は left anodyne（骨格の帰納法。鍵は \(\Delta^0\star\partial\Delta^n=\Lambda^{n+1}_0\)）。ただし \(B_{b/}\) は一般に錐ではないので直接は使えない。fibration 版 Yoneda に要るのはスライスの場合だけなので、形式化には方法 2 が向く。</p>
+
+<h3>7.4 持ち上げ性質による証明</h3>
+<p>単射が left anodyne ⇔ すべての左 fibration に対して左持ち上げ性質を持つ（small object argument と retract。モデル圏は使わない）。したがって、左 fibration \(p\colon E\to S\)、\(e\colon\{x\}\to E\)、\(g\colon X\to S\) に対して持ち上げ \(X\to E\) を作ればよい。</p>
+<ol>
+  <li><b>底の取り替え</b>：\(E'=X\times_SE\to X\) は左 fibration。必要なのは切断 \(\tau\colon X\to E'\) で \(\tau(x)=e'\) のもの。fibration 版 Yoneda の逆写像の存在そのもの。</li>
+  <li><b>縮約</b>：7.2 の \(h\)（\(B_{b/}\) なら \(s_0\) で具体的に）。</li>
+  <li><b>引き戻して持ち上げ</b>：\(h^*E'\to\Delta^1\times X\) は左 fibration。\(A=(\{0\}\times X)\cup(\Delta^1\times\{x\})\) 上では \(h\) が \(x\) で定数なので、切断を \(e'\) で定数と定める。\(j\) は left anodyne なので \(\Delta^1\times X\) 全体に延びる。</li>
+  <li><b>制限</b>：\(\{1\}\times X\) に制限すると \(E'\to X\) の切断で、\((1,x)\in A\) なので \(\tau(x)=e'\)。</li>
+</ol>
+<p>直観：時刻 0 ではすべてが \(x\) に縮んでいるので \(e'\) を置くだけ。left fibration の持ち上げが時間の向き \(0\to 1\) に沿った輸送を保証し、時刻 1 で \(X\) 全体の切断が得られる。7.2 の retract は、この構成を「\(j\) の持ち上げを \(\iota_1\) で前合成する」と抽象化したもの。</p>
+<p><b>部品 B と C をまとめて</b>：\(\mathrm{ev}_x\colon\mathrm{Fun}_{/X}(X,E')\to E'_x\) の \(\partial\Delta^n\subseteq\Delta^n\) に対する持ち上げは \((\partial\Delta^n\times X)\cup(\Delta^n\times\{x\})\hookrightarrow\Delta^n\times X\) に沿った延長。\(\mathrm{id}_{\Delta^n}\times h\) を使い、\(\Delta^n\times A\cup\partial\Delta^n\times\Delta^1\times X\hookrightarrow\Delta^n\times\Delta^1\times X\) が left anodyne であること（pushout-product をもう一度）で持ち上げれば、left anodyne という中間命題を経由せずに fibration 版 Yoneda が直接出る。</p>
+<div class="table-wrap"><table>
+<tr><th>証明の組み立て</th><th>使うもの</th></tr>
+<tr><td>A → B（retract）→ C</td><td>Joyal の定理、切断の選択、retract での閉性、pushout-product</td></tr>
+<tr><td>B を持ち上げで示す → C</td><td>切断の選択、pushout-product、引き戻しでの閉性</td></tr>
+<tr><td>持ち上げで B と C を一度に（パラメータ付き）</td><td>縮約 \(h\)、pushout-product、引き戻しでの閉性</td></tr>
+</table></div>
+<p>\(X=B_{b/}\) なら \(h\) が \(s_0\) で書けるので、最後の方法は Joyal の定理も切断の選択も使わず、依存が最も少ない。既存コード（leftFibration_cosliceIdentityEvaluation_trivialKanFibration の周辺）がどの方法かは要確認。</p>
+
+
+<!-- ============================================================ -->
+<h2>8. 前層と、写像空間の相対関手空間としての読み替え</h2>
+<h3>8.1 前層の二つの定義</h3>
+<div class="table-wrap"><table>
+<tr><th></th><th>関手として</th><th>fibration として</th></tr>
+<tr><td>∞ 圏</td><td>\(\mathcal P(C)=\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)\)、\(\mathcal S=N^{hc}(\mathcal Kan)\)</td><td>\(\mathrm{RFib}(C)\)：小さい右 fibration \(X\to C\) を対象、\(\mathrm{Fun}_{/C}(X,Y)\)（Kan 複体）を Hom とする単体的圏の coherent nerve</td></tr>
+<tr><td>対象</td><td>\(C^{\mathrm{op}}\to\mathcal S\)。\(\mathfrak C\dashv N^{hc}\) で読むと単体的関手 \(\mathfrak C[C^{\mathrm{op}}]\to\mathcal Kan\)（ホモトピー整合的な図式）</td><td>右 fibration（\(C^{\mathrm{op}}\) 上の左 fibration）</td></tr>
+<tr><td>射</td><td>自然変換 \(\Delta^1\times C^{\mathrm{op}}\to\mathcal S\)</td><td>\(C\) 上の写像</td></tr>
+<tr><td>形式化</td><td>SpaceInfinityFunctor</td><td>LeftFibrationInfinity（\(C^{\mathrm{op}}\) 上の左 fibration として）</td></tr>
+</table></div>
+<p>\(\mathcal S\) は小さい Kan 複体の全体なので \(\mathcal P(C)\) は一つ上の宇宙に入る（形式化で \(C\) を uliftFunctor で持ち上げる理由）。straightening は \(\mathcal P(C)\simeq\mathrm{LFib}(C^{\mathrm{op}})\cong\mathrm{RFib}(C)\) を言う。1 圏では前層 \(F\colon C^{\mathrm{op}}\to\mathrm{Set}\) と要素の圏 \(\int F\to C\)（離散 fibration）が対応し、∞ 版では集合が空間に、離散 fibration が右 fibration になる。</p>
+
+<h3>8.2 主張</h3>
+<p>\[\mathrm{Map}_{\mathcal P(C)}(F,G)\;\simeq\;\mathrm{Fun}_{/C}(\mathrm{Un}\,F,\mathrm{Un}\,G)\]</p>
+<p>unstraightening が写像空間で充満忠実であることそのもので、形式化の Yoneda の証明の \(h_1\)（最も重い入力。CoherentUnstraighteningMappingEquivalence、SmallCoherentMappingEquivalence）。1 圏では \(\alpha\colon F\Rightarrow G\) から \(\int\alpha\colon(c,x)\mapsto(c,\alpha_c(x))\) が得られ、\(C\) 上にあることがちょうど自然性なので \(\mathrm{Nat}(F,G)\cong\mathrm{Fun}_{/C}(\int F,\int G)\)。∞ 版はこれを空間のホモトピー同値に格上げしたもの。</p>
+
+<h3>8.3 両辺の中身と橋渡し</h3>
+<ul>
+  <li><b>左辺</b>（\(K=C^{\mathrm{op}}\)）：写像空間の定義 (b) により \(\{F\}\times\mathrm{Fun}(\Delta^1,\mathrm{Fun}(K,\mathcal S))\times\{G\}\)。点は両端が \(F,G\) の自然変換 \(\alpha\colon\Delta^1\times K\to\mathcal S\)。</li>
+  <li><b>右辺</b>：点は \(K\) 上の写像 \(\mathrm{Un}\,F\to\mathrm{Un}\,G\)。</li>
+  <li><b>橋渡し</b>：\(\mathrm{Un}(\alpha)\) は \(\Delta^1\times K\) 上の左 fibration で両端が \(\mathrm{Un}\,F,\mathrm{Un}\,G\)。示すべきことは「\(\Delta^1\times K\) 上の左 fibration で両端が \(X_0,X_1\) のもの ↔ \(K\) 上の写像 \(X_0\to X_1\)」で、「\(\Delta^1\) 上の左 fibration は写像柱」のパラメータ付き版（旧シリーズ「Yoneda への道」段 6 の univalence）。</li>
+</ul>
+<div class="box">
+<p class="label">左 fibration から写像へ（transport）</p>
+<p>\(Y\to\Delta^1\times K\) を左 fibration（両端 \(X_0,X_1\)）とする。\(\{0\}\times X_0\to Y\) を \(\Delta^1\times X_0\to\Delta^1\times K\) の上に持ち上げる。\(\{0\}\times X_0\hookrightarrow\Delta^1\times X_0\) は left anodyne（pushout-product の特別な場合）なので持ち上げ \(H\) があり、部品 C と同じ理由で持ち上げ全体の空間は可縮。\(H|_{\{1\}\times X_0}\) が \(K\) 上の写像 \(X_0\to X_1\)。covariant transport を \(K\) 全体で一斉に行ったもの。</p>
+</div>
+<div class="box">
+<p class="label">写像から左 fibration へ（写像柱）</p>
+<p>\(\varphi\colon X_0\to X_1\) に対し \(M_\varphi=(\Delta^1\times X_0)\sqcup_{\{1\}\times X_0}X_1\to\Delta^1\times K\)。一般には左 fibration ではないので、両端を変えない相対的な left anodyne 置き換えで直す。その transport が \(\varphi\) に戻ることは持ち上げの一意性から。</p>
+</div>
+<p>空間の同値にするには、すべての次元の単体で同じ対応を作る。\(n\) 単体は \(\Delta^n\) をパラメータに持つ同じ問題になる。</p>
+
+<h3>8.4 読み替えの役割</h3>
+<div class="table-wrap"><table>
+<tr><th>場面</th><th>関手の言葉</th><th>fibration の言葉</th></tr>
+<tr><td>Yoneda</td><td>\(\mathrm{Map}(h_y,F)\)</td><td>\(\mathrm{Fun}_{/C}(C_{/y},\mathrm{Un}\,F)\)。fibration 版 Yoneda で \(F(y)\)</td></tr>
+<tr><td>極限</td><td>\(\lim F\)</td><td>切断の空間 \(\mathrm{Fun}_{/C}(C,\mathrm{Un}\,F)\)（Kerodon 7.4.1）</td></tr>
+<tr><td>大域切断</td><td>\(\mathrm{Map}(\ast,F)\)</td><td>同上（終対象の Un は \(C\) 自身）</td></tr>
+<tr><td>自然変換が同値か</td><td>各点で同値か</td><td>ファイバーごとの判定法</td></tr>
+</table></div>
+<p>関手の言葉の問いを fibration に移すと、多くは持ち上げや切断の問題になり、left anodyne・pushout-product・始対象への制限で直接扱える。その入口が \(h_1\)。前層を最初から \(\mathrm{RFib}(C)\) と定義する流儀（Cisinski の本、∞-cosmos）では \(h_1\) は定義から不要だが、前層を関手として扱う場面で straightening の同値定理が要る。どちらの流儀でもこの橋を一度は渡る。</p>
+
+
+<!-- ============================================================ -->
+<h2>9. straightening の構成と \(h_y\) の関手性</h2>
+<h3>9.1 straightening のおさらい</h3>
+<p>quasicategory \(B\) について \(\mathrm{St}\colon\mathrm{LFib}(B)\xrightarrow{\simeq}\mathrm{Fun}(B,\mathcal S)\)。ファイバー \(X_b\) が値 \(F(b)\)、transport \(f_!\) が \(F(f)\)、2 単体に沿った \((gf)_!\simeq g_!f_!\) が合成のホモトピー、\(B\) 上の写像が自然変換に対応する。関手を直接与えるには値・射の作用・高次の整合性をすべて整合的に選ぶ必要があるが、左 fibration ではそれらが持ち上げ性質（Prop）として入っていて、選択の空間は可縮。Un（普遍左 fibration の引き戻し）は易しく厳密に関手的、St（fibration から関手を作る）が難しい側。\(h_y\) を関手にするには St の構成だけでよく、同値定理は要らない。</p>
+
+<h3>9.2 なぜ素朴には関手にならないか</h3>
+<p>∞ 関手 \(C^{\mathrm{op}}\to\mathcal S\) は単体的関手 \(\mathfrak C[C^{\mathrm{op}}]\to\mathcal Kan\) と同じで、値、射の作用 \(f^*\)、合成のホモトピー、高次のホモトピーを整合的に与える必要がある。\(\mathrm{Hom}^R(x,y)\) を使うと \(f^*\) は horn の充填の選択でしか定まらず、\(f^*g^*=(gf)^*\) は厳密に成り立たない。</p>
+
+<h3>9.3 St の第一段：底が普通の圏の脈体 \(N(C)\)</h3>
+<p>値を \(X_c\) の代わりに \(\mathrm{St}(X)(c):=\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)\) とする。</p>
+<ul>
+  <li><b>厳密に関手的</b>：\(f\colon c\to c'\) に対し \(f^\sharp\colon C_{c'/}\to C_{c/}\)、\((c'\xrightarrow{u}d)\mapsto(c\xrightarrow{f}c'\xrightarrow{u}d)\) は前合成で厳密に定まり \((gf)^\sharp=f^\sharp g^\sharp\)。切断の制限も厳密に関手的で、\(X\) についても関手的。厳密な関手 \(C\to\mathcal Kan\) を \(\mathfrak C[N(C)]\to C\) と合成し、\(\mathfrak C\dashv N^{hc}\) で ∞ 関手 \(N(C)\to\mathcal S\) にする。</li>
+  <li><b>値は正しい</b>：\(\mathrm{id}_c\) は \(C_{c/}\) の始対象なので、\(\mathrm{id}_c\) での評価 \(\mathrm{St}(X)(c)\to X_c\) は trivial Kan fibration（fibration 版 Yoneda、§6）。</li>
+  <li><b>射の作用</b>：切断 \(\sigma\) を \(f^\sharp\) で制限して \(\mathrm{id}_{c'}\) で評価すると \(\sigma(f)\simeq f_!\sigma(\mathrm{id}_c)\)。transport の厳密な模型。</li>
+</ul>
+<p>ファイバーを表現可能な fibration からの切断空間に置き換えることで、値を変えずに厳密な関手性を得る。選択は一つもしない。</p>
+
+<h3>9.4 相対関手空間 \(\mathrm{Fun}_{/S}(K,X)\)</h3>
+<ul>
+  <li><b>定義</b>：\(\mathrm{Fun}_{/S}(K,X)=\mathrm{Fun}(K,X)\times_{\mathrm{Fun}(K,S)}\{K\to S\}\)。\(n\) 単体は \(S\) 上で可換な \(\Delta^n\times K\to X\)。\(\mathrm{Fun}_{/K}(K,K\times_SX)\)（切断の空間）とも同じ。</li>
+  <li><b>Kan 複体</b>（\(X\to S\) が左 fibration のとき）：(1) \(\mathrm{Fun}(K,X)\to\mathrm{Fun}(K,S)\) は左 fibration（\(\Lambda^n_i\times K\subseteq\Delta^n\times K\) は left anodyne と単射 \(\emptyset\subseteq K\) の pushout-product、HTT 2.1.2.7）。(2) 点上のファイバーは \(\Delta^0\) 上の左 fibration で、すべての辺が可逆な quasicategory なので Kan 複体（Joyal、HTT 1.2.5.1）。\(K=N(C_{c/})\) なら \(X_c\) への trivial Kan fibration からも直接わかる。</li>
+  <li><b>写像空間として</b>：\(N(C_{c/})\to N(C)\) 自身が左 fibration なので \(\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)=\mathrm{Map}_{\mathrm{LFib}(N(C))}(N(C_{c/}),X)\)。関手の言葉では Yoneda の左辺 \(\mathrm{Map}(h^c,F)\simeq F(c)\)。第一段は値 \(F(c)\) を Yoneda で同値な \(\mathrm{Map}(h^c,F)\) に置き換えて厳密な関手性を得ている。</li>
+</ul>
+
+<h3>9.5 St の第二段：一般の quasicategory の底</h3>
+<div class="table-wrap"><table>
+<tr><th>対象</th><th>定義（コード）</th></tr>
+<tr><td>単体の圏</td><td>TransportSimplexCategory B：対象は \(B\) の単体 \(\sigma\in B_n\)、射 \(\sigma\to\tau\) は \(\theta\colon[m]\to[n]\) で \(\theta^*\sigma=\tau\)（制限）。普通の \(\Delta_{/B}\) の反対（要素の圏）。この向きでのみ最初の頂点への写像が共変（普通の向きでは最後の頂点への写像が共変）</td></tr>
+<tr><td>\(\mathrm{fv}\)</td><td>transportSimplexFirstVertexMap：制限の列 \(\sigma_0\to\cdots\to\sigma_k\) の各 \(\sigma_i\) の頂点 0 を \(\sigma_0\) の中に戻した \(a_i=\theta_i(0)\) は \(a_0\le\cdots\le a_k\)（transportSimplexFirstVertexOrderHom）。\(\sigma_0\) をこの単調列で制限した \(k\) 単体を返す。\(B\) は quasicategory でなくてよい</td></tr>
+<tr><td>\(W\)</td><td>transportSimplexInitialEdges：最初の頂点を保つ制限（\(\theta(0)=0\)）。\(\mathrm{fv}\) はこれを退化辺に送る（transportSimplexFirstVertexMap_inverts）</td></tr>
+</table></div>
+<p>\(X\) を \(\mathrm{fv}\) で引き戻して第一段を適用すると \(W\) を反転する関手が得られ、局所化の普遍性で \(B\) に降りる。これが \(\mathrm{St}(X)\)。</p>
+
+<h3>9.6 局所化（先に用意するもの）</h3>
+<p>IsLocalization F W（F1B）：\(F\colon X\to D\) が \(W\) を可逆にし、すべての quasicategory \(E\) について \(F^*\colon\mathrm{Fun}(D,E)\to\mathrm{Fun}_W(X,E)\)（invertingFunctors）が ∞ 圏の同値。</p>
+
+<h3>9.7 \(\mathrm{fv}\) が局所化であることの証明</h3>
+<p>主定理 transportSimplexFirstVertexMap_isLocalization。\(P(X)\)：\(\mathrm{fv}_X\) は \(W_X\) での局所化。</p>
+<div class="table-wrap"><table>
+<tr><th>部品</th><th>内容</th><th>ファイル</th></tr>
+<tr><td>1. 標準単体</td><td>切断 \(s\colon\Delta^n\to N(\cdot)\)（各頂点 \(i\) に \(i\) を最初の頂点にもつ単体、transportStandardSection）で \(\mathrm{fv}\circ s=\mathrm{id}\)。\(s\circ\mathrm{fv}\) と恒等の間の自然変換の成分が \(W\) に入る（transportStandardSectionHomotopy）。\(s^*\mathrm{fv}^*=\mathrm{id}\)、\(\mathrm{fv}^*s^*\) は \(W\) を反転する関手には可逆な自然変換で恒等と同型（transportStandardInvertingFamilyIso）。反射的局所化の型</td><td>StandardLocalization</td></tr>
+<tr><td>2. 余積</td><td>\(\mathrm{Fun}(\coprod X_i,E)=\prod\mathrm{Fun}(X_i,E)\)、単体の圏も余積</td><td>LocalizationCoproduct</td></tr>
+<tr><td>3. 押し出し</td><td>単射に沿った押し出し。\(A\) の部分は制限で閉じているので二つの部分をまたぐ射の列がなく、脈体も押し出しを保つ。\(\mathrm{Fun}(-,E)\) は押し出しを isofibration に沿った引き戻しに送り、成分ごとの同値から全体の同値</td><td>LocalizationPushout</td></tr>
+<tr><td>4. 列の余極限</td><td>isofibration の塔の極限で、各段が同値なら極限も同値</td><td>LocalizationSequential</td></tr>
+</table></div>
+<p><b>組み立て</b>（LocalizationAllBases）：0 次元の骨格（点の余積）から始め、\(n+1\) 次元の骨格を \(\coprod\partial\Delta^{n+1}\to\coprod\Delta^{n+1}\) に沿った押し出しとして得る。境界 \(\partial\Delta^{n+1}\) は \(n\) 次元の骨格なので帰納法の仮定（境界の次元帰納）、余積に部品 2、\(\Delta^{n+1}\) に部品 1、貼り合わせに部品 3。最後に \(B=\operatorname{colim}_n\mathrm{sk}_nB\) に部品 4。モデル圏は使わない。</p>
+
+<h3>9.8 \(h_y\) の定義と、スライスとの比較</h3>
+<ul>
+  <li>\(h_y=\mathrm{Map}(-,y)\) は \(x\) について反変なので \(C^{\mathrm{op}}\to\mathcal S\)（\(C\to\mathcal S\) にしたいなら \(h^x=\mathrm{Map}(x,-)\)）。</li>
+  <li><b>定義（形式化）</b>：\(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\)（左 fibration）を straightening して Hom 関手 \(\mathrm{Map}\colon C^{\mathrm{op}}\times C\to\mathcal S\)（twistedArrowHomInfinity）を作り、curry した Yoneda 埋め込み \(C\to\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)\)（yonedaInfinityMap）の \(y\) での値を \(h_y\) とする。関手であることは 9.3〜9.7 が保証し、\(y\mapsto h_y\) も ∞ 関手として得られる。</li>
+  <li><b>スライスとの比較</b>：\(C_{/y}\to C\) は右 fibration、\(C^{\mathrm{op}}_{y/}=(C_{/y})^{\mathrm{op}}\to C^{\mathrm{op}}\) は左 fibration で、\(x\) 上のファイバーは \(\mathrm{Hom}^R(x,y)\simeq\mathrm{Map}(x,y)\)。\(h_y\) の Un がこのスライスと同値であること（比較写像 \(C^{\mathrm{op}}_{y/}\to\mathrm{Un}(h_y)\) が前合成同値、representableCosliceUnstraighteningComparison_isPrecompositionEquivalence）を示す。中身は二つ：(1) St は底変換と整合するので、curry した関手の \(y\) での値は \(\mathrm{Tw}(C)\) を \(C^{\mathrm{op}}\times\{y\}\) に引き戻した左 fibration の St。(2) \(\mathrm{Tw}(C)\times_C\{y\}\) は fat スライスで、join スライス \(C^{\mathrm{op}}_{y/}\) と同値。</li>
+</ul>
+<div class="table-wrap"><table>
+<tr><th></th><th>Hom 関手の値（定義）</th><th>スライスの St（比較）</th></tr>
+<tr><td>\(y\) についての関手性</td><td>ある（Yoneda 埋め込み）</td><td>ない（\(y\) ごと）</td></tr>
+<tr><td>fibration 側の記述</td><td>すぐにはわからない</td><td>定義から Un はスライス</td></tr>
+<tr><td>Yoneda で必要な場所</td><td>充満忠実性（Yoneda 写像そのものの Hom 作用）</td><td>値の計算 \(h_3\)（fibration 版 Yoneda を適用する）</td></tr>
+</table></div>
+<p>\(C\) が普通の圏の脈体なら、スライスの St の値は \(\mathrm{Fun}_{/N(C^{\mathrm{op}})}(N(C^{\mathrm{op}}_{x/}),C^{\mathrm{op}}_{y/})\simeq\mathrm{Map}(x,y)\) で、\(f\colon x'\to x\) の作用は厳密な前合成に沿った制限（評価すれば \(f^*\)）。\(f^*\) を一つずつ選ばないので 9.2 の問題は起きない。他の作り方として、\(\mathfrak C[C]\) の Hom を Kan 化する方法（HTT §5.1.3、比較定理が要るので不採用）、関手にせず \(C_{/y}\) のまま扱う方法（∞-cosmos、Cisinski）がある。</p>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>整合性の処理</th></tr>
+<tr><td>fibration</td><td>transport と整合性は持ち上げ性質（Prop）</td></tr>
+<tr><td>第一段</td><td>\(c\mapsto C_{c/}\) の厳密な関手性と切断の制限。値の正しさは fibration 版 Yoneda</td></tr>
+<tr><td>第二段</td><td>局所化 \(\mathrm{fv}\) の普遍性</td></tr>
+<tr><td>\(h_y\)</td><td>スライス \(C^{\mathrm{op}}_{y/}\) を入れるだけ</td></tr>
+</table></div>
+
+<h3>9.9 全体の流れ：fibration 版 Yoneda → St → Map → 関手版 Yoneda</h3>
+<ol>
+  <li><b>fibration 版 Yoneda</b>（§6、§7）：\(\mathrm{Fun}_{/B}(B_{b/},E)\to E_b\) は trivial Kan fibration。straightening も \(\mathcal S\) も使わない。</li>
+  <li><b>St の構成</b>（9.3〜9.7）：第一段で値を切断空間 \(\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)\) に置き換え、その値が正しいことに 1 を使う。第二段は局所化 \(\mathrm{fv}\)。St の同値定理は要らない。</li>
+  <li><b>Map と Yoneda 埋め込み</b>（9.8）：\(\mathrm{Tw}(C)\) の St を curry する。</li>
+  <li><b>関手版 Yoneda</b>（§6.4）：\(\mathrm{Map}(h_y,F)\xrightarrow{h_1}\mathrm{Fun}_{/C^{\mathrm{op}}}(\mathrm{Un}h_y,\mathrm{Un}F)\xrightarrow{h_2}\cdots\xrightarrow{h_3}\mathrm{Un}(F)_y\xrightarrow{h_4}F(y)\)。\(h_1\) は Un の写像空間の比較（§8）、\(h_3\) は 9.8 のスライスとの比較のうえで 1 をもう一度使う。充満忠実性は Yoneda 写像の Hom 作用を \(\mathrm{Tw}(C)\) の transport と比べて示す。</li>
+</ol>
+<p>fibration 版 Yoneda は二度使われる：St の値が正しいことを保証するため（2）と、関手版の値を計算するため（4 の \(h_3\)）。St の同値定理（充満忠実・本質的全射）そのものはこの流れに入らない。</p>
+
+
+
+<!-- ============================================================ -->
+<h2>10. fibration 版 Yoneda の証明の確認</h2>
+<h3>10.1 設定</h3>
+<ul>
+  <li>\(B\)：単体的集合（quasicategory でなくてよい）。\(p\colon E\to B\)：<b>左 fibration</b>（本質的な仮定）。</li>
+  <li>\(E_b=\{b\}\times_BE\)：厳密な引き戻し。\(p\) は isofibration なので ∞ 圏としての引き戻しでもある。</li>
+  <li>\(B_{b/}\)：join スライス（\(n\) 単体は頂点 0 が \(b\) の \(\Delta^{n+1}\to B\)、射影は \(d_0\)）。\(B_{b/}\) と \(E\) はどちらも \(B\) 上の単体的集合。</li>
+  <li>\(\mathrm{Fun}_{/B}(B_{b/},E)=\mathrm{Fun}(B_{b/},E)\times_{\mathrm{Fun}(B_{b/},B)}\{\text{射影}\}\)（厳密な引き戻し）。</li>
+  <li>評価写像：\(\mathrm{id}_b=s_0(b)\) は \(b\) の上にあるので \(i\colon\{\mathrm{id}_b\}\hookrightarrow B_{b/}\) は \(B\) 上の写像。\(\mathrm{ev}=i^*\colon\mathrm{Fun}_{/B}(B_{b/},E)\to\mathrm{Fun}_{/B}(\{\mathrm{id}_b\},E)=E_b\)。</li>
+</ul>
+
+<h3>10.2 相対関手空間の普遍性による書き直し</h3>
+<p>内部 Hom の普遍性 \(\{K\to\mathrm{Fun}(L,E)\}\cong\{K\times L\to E\}\) から、\(\mathrm{Fun}_{/B}(L,E)\) が \(\mathrm{Fun}(L,E)\to\mathrm{Fun}(L,B)\) の点 \(p_L\) 上のファイバーであることにより</p>
+<p>\[\{K\to\mathrm{Fun}_{/B}(L,E)\}\cong\{g\colon K\times L\to E\mid p\circ g=p_L\circ\mathrm{pr}_L\}\]</p>
+<p>（\(K\times L\) を \(L\) 経由で \(B\) 上にあるとみたときの \(B\) 上の写像）。\(\mathrm{ev}\) の \(\partial\Delta^n\subseteq\Delta^n\) に対する持ち上げ問題の各部分を読み替える（\(L=B_{b/}\)、\(x=\mathrm{id}_b\)）。</p>
+<div class="table-wrap"><table>
+<tr><th>持ち上げ問題</th><th>読み替え後</th></tr>
+<tr><td>上の写像 \(u\colon\partial\Delta^n\to\mathrm{Fun}_{/B}(L,E)\)</td><td>\(B\) 上の \(\tilde u\colon\partial\Delta^n\times L\to E\)</td></tr>
+<tr><td>下の写像 \(v\colon\Delta^n\to E_b\)</td><td>\(B\) 上の \(\tilde v\colon\Delta^n\times\{x\}\to E\)</td></tr>
+<tr><td>可換性</td><td>\(\tilde u,\tilde v\) が \(\partial\Delta^n\times\{x\}\) で一致</td></tr>
+<tr><td>持ち上げ \(w\)</td><td>\(\tilde u,\tilde v\) を延長する \(B\) 上の \(\tilde w\colon\Delta^n\times L\to E\)</td></tr>
+</table></div>
+<p>\(\tilde u,\tilde v\) は合併 \((\partial\Delta^n\times L)\cup(\Delta^n\times\{x\})\)（共通部分 \(\partial\Delta^n\times\{x\}\)、押し出しと同じ）からの写像に貼り合わさり、底の写像は \(\Delta^n\times L\to L\to B\)。したがって元の問題は、\(j_n\colon(\partial\Delta^n\times L)\cup(\Delta^n\times\{x\})\hookrightarrow\Delta^n\times L\) の \(p\) に対する持ち上げ問題と同じ。一般に「\(i\colon K\hookrightarrow L\) に沿った制限が trivial Kan fibration」⇔「すべての \(n\) で \(\partial\Delta^n\subseteq\Delta^n\) と \(i\) の pushout-product が \(p\) に対して左持ち上げ性質を持つ」。\(n=0\) では \(j_0=i\) で、\(E_b\) の点を通る切断の存在（逆写像）にあたる。</p>
+
+<h3>10.3 pushout-product で \(i\) に帰着</h3>
+<p>\(j_n\) は単射 \(\partial\Delta^n\subseteq\Delta^n\) と \(i\) の pushout-product。単射と left anodyne の pushout-product は left anodyne（HTT 2.1.2.7。生成元どうしの場合に角柱 \(\Delta^m\times\Delta^n\) を単体に分解する組合せ論で示される）。よって \(i\) が left anodyne なら \(j_n\) も left anodyne で、\(p\) は左 fibration なので持ち上がる。</p>
+
+<h3>10.4 \(i\) が left anodyne：縮約を式で書く</h3>
+<p>\(X=B_{b/}\)。\(\Delta^1\times X\) の \(n\) 単体 \((\alpha,\sigma)\)（\(\alpha\colon[n]\to[1]\)、\(\sigma\colon\Delta^{n+1}\to B\) で頂点 0 が \(b\)）について \(\alpha^{-1}(0)=\{0,\dots,k-1\}\) とし、</p>
+<p>\[\rho_k\colon[n+1]\to[n+1],\quad\rho_k(j)=\begin{cases}0&(j\le k)\\ j&(j>k)\end{cases},\qquad h(\alpha,\sigma)=\sigma\circ\rho_k.\]</p>
+<p>錐の頂点と最初の \(k\) 個の頂点をまとめて \(b\) につぶす操作。\(\rho_k\) は単調で 0 を 0 に送るので \(X\) の単体になり、単体的作用素とも整合する（\(\alpha\circ\theta\) の 0 の逆像が \(\theta\) で \(\alpha^{-1}(0)\) に移る）。§7.3 の方法 2（余分な退化写像 \(s_0\)）を fat join→join のつぶす写像と合成して書き下したもの。</p>
+<div class="table-wrap"><table>
+<tr><th>制限</th><th>値</th><th>理由</th></tr>
+<tr><td>\(\{1\}\times X\)（\(k=0\)）</td><td>恒等</td><td>\(\rho_0=\mathrm{id}\)</td></tr>
+<tr><td>\(\{0\}\times X\)（\(k=n+1\)）</td><td>\(\mathrm{id}_b\) で定数</td><td>\(\rho_{n+1}\) はすべてを 0 に送る</td></tr>
+<tr><td>\(\Delta^1\times\{\mathrm{id}_b\}\)</td><td>\(\mathrm{id}_b\) で定数</td><td>\(\sigma\) が \(b\) で定数なので前合成で不変</td></tr>
+</table></div>
+<p>\(j\colon(\{0\}\times X)\cup(\Delta^1\times\{\mathrm{id}_b\})\hookrightarrow\Delta^1\times X\) は \(\Lambda^1_0\subseteq\Delta^1\) と単射の pushout-product なので left anodyne。\(\iota_1\) と \(h\) で \(i\) は \(j\) の retract（\(h\circ\iota_1=\mathrm{id}\)、\(h\) は \(j\) の始域を \(\{\mathrm{id}_b\}\) に送る）なので left anodyne。</p>
+<p>\[\text{縮約 }h\text{（式）}\Rightarrow i\text{ は left anodyne}\xRightarrow{\text{pushout-product}}j_n\text{ は left anodyne}\xRightarrow{p\text{ は左 fibration}}\mathrm{ev}\text{ は trivial Kan fibration}\]</p>
+<p>使うのは相対関手空間の普遍性、pushout-product の補題、retract での閉性、\(h\) の式だけ。Joyal の定理も切断の選択も使わず、部品 A（\(\mathrm{id}_b\) が始対象）はむしろ系として出る。\(B\) は quasicategory でなくてよく、\(p\) が左 fibration であることは 10.2 の延長でだけ使う。</p>
+
+<h3>10.5 一般の始対象と left anodyne</h3>
+<p>\(X\) が quasicategory で \(x\) が始対象なら \(\{x\}\hookrightarrow X\) は left anodyne（§7.2：\(X_{x/}\to X\) の切断を選び、縮約 \(h\) を作り、retract）。</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>一般の始対象</th><th>スライス \(B_{b/}\) と \(\mathrm{id}_b\)</th></tr>
+<tr><td>縮約 \(h\)</td><td>trivial fibration の切断を選んで作る</td><td>\(\rho_k\) の式で書ける</td></tr>
+<tr><td>必要な仮定</td><td>\(X\) が quasicategory、\(x\) が始対象</td><td>なし（\(B\) は任意の単体的集合）</td></tr>
+</table></div>
+<p>逆向き（包含が left anodyne なら始対象）も成り立ち同値だが、直接の議論では示せず、left anodyne ⇒ left cofinal と Quillen の定理 A（\(\{x\}\times_XX_{/y}\simeq\mathrm{Hom}^R(x,y)\) が弱可縮）を経由する。fibration 版 Yoneda に要るのは「始対象 ⇒ left anodyne」の向きだけで、スライスの場合は式で済む。</p>
+
+<!-- ============================================================ -->
+<h2>11. 極限の同値な定義と、その使いどころ</h2>
+<h3>11.1 定義の一覧</h3>
+<p>\(C\) は quasicategory、\(p\colon K\to C\)、錐 \(\bar p\colon\Delta^0\star K\to C\)（\(\bar p|_K=p\)、錐点の値 \(X\)）。余極限は双対。</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>定義</th><th>種類</th></tr>
+<tr><td>(1)</td><td>\(\bar p\) は \(C_{/p}\) の終対象（HTT 1.2.13.4）</td><td>スライスの終対象</td></tr>
+<tr><td>(1')</td><td>fat slice \(C^{/p}\) の終対象</td><td>(1) の変種（HTT 4.2.1.5 で同値）</td></tr>
+<tr><td>(2)</td><td>制限 \(C_{/\bar p}\to C_{/p}\) は trivial Kan fibration</td><td>持ち上げ性質</td></tr>
+<tr><td>(2')</td><td>\(n\ge1\) で、\(\{n\}\star K\) 上 \(\bar p\) となる \(\partial\Delta^n\star K\to C\) は \(\Delta^n\star K\) に延びる</td><td>(2) の horn 版</td></tr>
+<tr><td>(3)</td><td>各 \(Y\) で \(\mathrm{Map}_C(Y,X)\to\mathrm{Map}(\delta Y,p)\) がホモトピー同値</td><td>写像空間（表現可能性）</td></tr>
+<tr><td>(4)</td><td>\(\bar p\) は \(K\subseteq K^{\triangleleft}\) に沿った \(p\) の右 Kan 拡張</td><td>Kan 拡張</td></tr>
+<tr><td>(5)</td><td>（すべての \(K\) 型の極限があるとき）\(\lim\) は \(\delta\colon C\to\mathrm{Fun}(K,C)\) の右随伴</td><td>随伴（(3) を \(Y\) について自然にしたもの）</td></tr>
+<tr><td>(6)</td><td>\(\lim p\) は \(K\to\Delta^0\) に沿った右 Kan 拡張</td><td>(4) の一点版</td></tr>
+</table></div>
+<p>定義でなく計算公式：\(\mathcal S\) では \(\lim F\simeq\mathrm{Fun}_{/K}(K,\mathrm{Un}\,F)\)（Kerodon 7.4.1）。単体的モデル圏のホモトピー極限との一致（HTT 4.2.4.1）はモデル圏を使うので今の方針では使わない。</p>
+
+<h3>11.2 (1)(2)(3) の正確な形</h3>
+<ul>
+  <li>\(C_{/p}\)：\(n\) 単体は \(p\) を延長する \(\Delta^n\star K\to C\)。射影 \(C_{/p}\to C\) は \(\Delta^n\) への制限。</li>
+  <li>\(\mathrm{Hom}^R_C(Y,X)=\{Y\}\times_CC_{/X}\)、錐の空間 \(\mathrm{Cone}(Y,p):=\{Y\}\times_CC_{/p}\)。</li>
+  <li>\(D\) の対象 \(x\) が終対象 ⇔ すべての \(y\) で \(\mathrm{Hom}^R_D(y,x)\) が可縮。</li>
+  <li>(3) は zigzag \(\mathrm{Hom}^R_C(Y,X)\xleftarrow{\sim}\{Y\}\times_CC_{/\bar p}\xrightarrow{r_Y}\mathrm{Cone}(Y,p)\) の \(r_Y\) がホモトピー同値、と読む。左は錐点への制限（補題 C で trivial fibration）。直観的には \(f\mapsto\bar p\circ f\) だが、合成に選択が要るので zigzag で書く。</li>
+</ul>
+
+<h3>11.3 補題</h3>
+<div class="table-wrap"><table>
+<tr><th>補題</th><th>内容</th></tr>
+<tr><td>A（join の持ち上げ）</td><td>単射 \(A\subseteq B\)、\(q\colon B\to C\)。\(i\colon L\subseteq M\) に対する \(C_{/q}\to C_{/q|_A}\) の持ち上げは \((L\star B)\cup(M\star A)\subseteq M\star B\) に沿った延長。\(i\) が right anodyne か \(A\subseteq B\) が left anodyne なら inner anodyne（HTT 2.1.2.3。生成元では join-horn の等式）</td></tr>
+<tr><td>B</td><td>右 fibration が trivial Kan fibration ⇔ ファイバーがすべて可縮（HTT 2.1.3.4）。⇐ が重い部分</td></tr>
+<tr><td>C</td><td>錐点への制限 \(C_{/\bar p}\to C_{/X}\) は trivial fibration。A により \(\Delta^0\subseteq\Delta^0\star K\) が left anodyne を言えばよく、\(\Delta^0\star\mathrm{sk}_kK\) のフィルターで各段は \(\Lambda^{k+1}_0=(\Delta^0\star\partial\Delta^k)\cup\Delta^k\subseteq\Delta^{k+1}\) に沿った押し出し</td></tr>
+</table></div>
+
+<h3>11.4 (1) ⇔ (2)</h3>
+<p>\(C_{/p}\) 上の同型 \((C_{/p})_{/\bar p}\cong C_{/\bar p}\)：左辺の \(n\) 単体は最後の頂点が \(\bar p\) の \(\Delta^{n+1}\to C_{/p}\)、すなわち \(K\) 上 \(p\)・\(\{n+1\}\star K\) 上 \(\bar p\) の \(\Delta^{n+1}\star K\to C\)。右辺の \(n\) 単体は \(\Delta^0\star K\) 上 \(\bar p\) の \(\Delta^n\star\Delta^0\star K\to C\)。結合律で一致し、射影はどちらも \(\Delta^n\star K\) への制限。\(D=C_{/p}\) の \(D_{/\bar p}\to D\) は右 fibration でファイバーが \(\mathrm{Hom}^R_D(y,\bar p)\) なので、補題 B により (1) ⇔ (2)。(2) を補題 A で読むと \((\partial\Delta^n\star\Delta^0)\cup\Delta^n=\partial\Delta^{n+1}\) から (2')。</p>
+
+<h3>11.5 (2) ⇔ (3)</h3>
+<ol>
+  <li>\(r\colon C_{/\bar p}\to C_{/p}\) は右 fibration（補題 A で \(i=\Lambda^n_j\subseteq\Delta^n\)、\(0<j\le n\)）。</li>
+  <li>\(r\) は \(C\) 上の右 fibration どうしの写像。\(r_Y\) は Kan 複体の間の右 fibration なので Kan fibration（HTT 2.1.3.3）で、\(e\in\mathrm{Cone}(Y,p)\) 上の \(r\) のファイバーと \(r_Y\) のファイバーは同じ。</li>
+  <li>(2) ⇔ \(r\) のファイバーがすべて可縮（補題 B）⇔ 各 \(r_Y\) のファイバーがすべて可縮 ⇔ 各 \(r_Y\) がホモトピー同値（Kan fibration の長完全列。ファイバーは各頂点上でとる）⇔ (3)（補題 C と 2-out-of-3）。</li>
+</ol>
+<p>重いのは補題 B の ⇐ だけで、残りは join の組合せ論と持ち上げ。</p>
+
+<h3>11.6 (3) の使いどころ</h3>
+<div class="table-wrap"><table>
+<tr><th>場面</th><th>使い方</th></tr>
+<tr><td>右随伴は極限を保つ</td><td>\(\mathrm{Map}(Y,GX)\simeq\mathrm{Map}(FY,X)\simeq\mathrm{Map}(\delta FY,p)\simeq\mathrm{Map}(\delta Y,Gp)\)</td></tr>
+<tr><td>\(\delta\dashv\lim\)</td><td>(3) を \(Y\) について自然にしたもの</td></tr>
+<tr><td>写像空間の極限公式</td><td>\(\mathrm{Map}(Y,\lim p)\simeq\lim_k\mathrm{Map}(Y,p(k))\)。降下での \(\mathrm{Map}_{D(X)}\) の計算、\(\mathrm{Map}_{\lim C_i}(x,y)\simeq\lim\mathrm{Map}_{C_i}(x_i,y_i)\)、安定圏の長完全列</td></tr>
+<tr><td>関手が極限を保つか</td><td>像の錐が (3) をみたすかを写像空間で確かめる</td></tr>
+<tr><td>点ごとの Kan 拡張</td><td>各点の条件が (3) の形</td></tr>
+</table></div>
+<p>(1)/(2) で済むもの：錐としての一意性（終対象の空間が可縮）、cofinal な前合成での不変性、関手圏の極限が各点で計算できること、Kan 拡張の存在の持ち上げへの帰着。</p>
+<div class="table-wrap"><table>
+<tr><th>(3) の段階</th><th>右辺</th><th>必要なもの</th></tr>
+<tr><td>join 版</td><td>\(\mathrm{Cone}(Y,p)\)</td><td>持ち上げだけ（11.5）</td></tr>
+<tr><td>fat 版</td><td>\(\mathrm{Map}_{\mathrm{Fun}(K,C)}(\delta Y,p)\)</td><td>join と fat slice の比較（HTT 4.2.1.5）。随伴との比較に必要</td></tr>
+<tr><td>極限公式版</td><td>\(\lim_k\mathrm{Map}(Y,p(k))\)</td><td>\(k\mapsto\mathrm{Map}(Y,p(k))\) の関手性、つまり St の後</td></tr>
+</table></div>
+<p>形式化では定義に (1) か (2) を採り、(3) の join 版をすぐ示せる特徴づけとし、fat 版と極限公式版は比較定理と St の後の定理とする。</p>
+
+<h3>11.7 Kerodon の順番（随伴 → 極限 → Yoneda）の依存関係</h3>
+<p>Kerodon は随伴（単位 \(\eta\) と、各点で \(\mathrm{Hom}(FX,Y)\to\mathrm{Hom}(X,GY)\) がホモトピー同値という条件）も極限も各点の写像空間の条件で定義するので、\(\mathrm{Map}\) の関手性も関手版 Yoneda も要らない。表現可能性は \(C_{X/}\to C\) の始対象で言い、使うのは fibration 版 Yoneda。依存は後ろ向きで、第 7 章が第 6 章を（右随伴は極限を保つ、Kan 拡張は制限の随伴）、第 8 章が第 6・7 章を（Yoneda 埋め込みが極限を保つ、前層の自由余完備性）使う。HTT は極限 → Yoneda → 随伴の順で、随伴を \(\Delta^1\) 上の双 cartesian fibration で定義し性質の証明に Yoneda を使う。形式化の流れ「fibration 版 Yoneda → St → Map → 関手版 Yoneda」とは Kerodon の順番が噛み合う。</p>
+
+<!-- ============================================================ -->
+<h2>12. 随伴の同値な定義と、その使いどころ</h2>
+<h3>12.1 定義の一覧</h3>
+<p>\(F\colon C\to D\)、\(G\colon D\to C\) は quasicategory 間の関手。</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>定義</th><th>1 圏での対応物</th></tr>
+<tr><td>(A) 単位</td><td>自然変換 \(\eta\colon\mathrm{id}_C\to GF\) で、各 \(X,Y\) について \(\mathrm{Hom}_D(FX,Y)\xrightarrow{G}\mathrm{Hom}_C(GFX,GY)\xrightarrow{\eta_X^*}\mathrm{Hom}_C(X,GY)\) がホモトピー同値（合成は Kan 複体のホモトピー圏で）</td><td>単位の普遍性</td></tr>
+<tr><td>(B) 三角等式</td><td>\(\eta\) と \(\varepsilon\colon FG\to\mathrm{id}_D\) で、\((\varepsilon F)(F\eta)\simeq\mathrm{id}_F\)、\((G\varepsilon)(\eta G)\simeq\mathrm{id}_G\)（関手圏のホモトピー圏で）</td><td>単位・余単位と三角等式</td></tr>
+<tr><td>(C) 対応</td><td>\(M\to\Delta^1\) で cartesian かつ cocartesian fibration、ファイバー \(C,D\)、付随する関手が \(F,G\)（HTT 5.2.2.1）</td><td>profunctor \(D(F-,-)\) の collage</td></tr>
+<tr><td>(D) 写像空間</td><td>\(C^{\mathrm{op}}\times D\to\mathcal S\) として \(\mathrm{Map}_D(F-,-)\simeq\mathrm{Map}_C(-,G-)\)</td><td>自然な Hom 集合の全単射</td></tr>
+<tr><td>(E) 各点の普遍射</td><td>各 \(X\) でコンマ圏 \(X\downarrow G=C_{X/}\times_CD\) が始対象 \((FX,\eta_X)\) をもつ</td><td>普遍射による左随伴の構成</td></tr>
+</table></div>
+<p>(A)〜(C) と (E) は \(\mathrm{Map}\) の関手性なしに書ける。</p>
+
+<h3>12.2 同値性の筋道</h3>
+<div class="table-wrap"><table>
+<tr><th>同値</th><th>議論</th></tr>
+<tr><td>(A) ⇔ (E)</td><td>\(X\downarrow G\to D\) は左 fibration で、\(Y\) 上のファイバーは \(\mathrm{Hom}_C(X,GY)\)。\(FX\) 上の点 \(\eta_X\) から fibration 版 Yoneda で \(D\) 上の写像 \(D_{FX/}\to X\downarrow G\)（\(\mathrm{id}_{FX}\mapsto\eta_X\)）が得られ、ファイバーごとには (A) の写像。(A) ⇔ ファイバーごとに同値 ⇔ \(D_{FX/}\to X\downarrow G\) が同値 ⇔ \((FX,\eta_X)\) が始対象。極限の (2)⇔(3) と同じ型</td></tr>
+<tr><td>(E) ⇒ 関手 \(F\)</td><td>\(G\) の cograph \(M_G\to\Delta^1\)（\(\mathrm{Hom}_M(X,Y)=\mathrm{Hom}_C(X,GY)\)）は引き戻しなので cartesian fibration。\(X\) から出る cocartesian 辺は \(X\downarrow G\) の始対象なので、(E) ⇔ \(M_G\) が cocartesian fibration でもある。\(\Delta^1\times C\to M_G\) を cocartesian 辺で持ち上げて \(F\) と \(\eta\) を得る（持ち上げの空間は trivial fibration）。底が \(\Delta^1\) なので一般の St は不要</td></tr>
+<tr><td>(A) ⇔ (C)</td><td>\(\mathrm{Hom}_M(X,Y)\simeq\mathrm{Hom}_D(FX,Y)\)（cocartesian 辺）\(\simeq\mathrm{Hom}_C(X,GY)\)（cartesian 辺）。\(\eta_X\) は \(X\) から出る cocartesian 辺を cartesian 辺で分解した \(C\) 側の成分</td></tr>
+<tr><td>(B) ⇒ (A)</td><td>\(\psi\mapsto\varepsilon_Y\circ F\psi\) がホモトピー逆。三角等式だけで確かめられる</td></tr>
+<tr><td>(A) ⇒ (B)</td><td>\(\varepsilon\) を自然変換として作る必要がある。双対の (E)（各 \(Y\) で \(F\downarrow Y\) が終対象をもつ）を (C) で関手化する。重い向き</td></tr>
+<tr><td>(D) ⇒ (A)</td><td>各点に制限する。\(\eta_X\) は \(\mathrm{id}_{FX}\) の像</td></tr>
+<tr><td>(A) ⇒ (D)</td><td>Hom 関手（Tw の St）で \(\eta\) から自然変換 \(\mathrm{Map}_D(F-,-)\to\mathrm{Map}_C(-,G-)\) を作り、各点で同値なので同値。St と関手版 Yoneda の後</td></tr>
+</table></div>
+<p>\(G\) を固定すると左随伴 \((F,\eta)\) の空間は可縮（HTT 5.2.6、Riehl–Verity）で、「左随伴をもつ」は実質的に性質。Riehl–Verity はホモトピー 2 圏の随伴 (B) が homotopy coherent な随伴に一意に延びることを示し、∞-cosmos では (B) を定義に採る。</p>
+
+<h3>12.3 自然性はどこにあるか</h3>
+<ul>
+  <li><b>(A)</b>：自然性はデータ（\(F,G\) と自然変換 \(\eta\colon\Delta^1\times C\to C\)）にすべて入っている。\(\mathrm{Hom}_D(FX,Y)\to\mathrm{Hom}_C(X,GY)\) は本来 \(\mathrm{Map}_D(F-,-)\Rightarrow\mathrm{Map}_C(-,G-)\) の成分で、「関手圏で自然変換が同値 ⇔ 各成分が同値」（Joyal の定理の関手圏版）により条件は各点で足りる。(A) はこれを先取りして、\(\mathrm{Map}\) の関手性を経由せずに書いた形。</li>
+  <li><b>注意</b>：\(\eta\) を射の族 \(\eta_X\) にしてはいけない。1 圏でも、\(F\) が先に与えられていれば普遍射の族が自然かは自動でない（\(F\) の射への作用を \(FX\) の自己同型でねじると、各 \(\eta_X\) は普遍のまま自然性が壊れる）。</li>
+  <li><b>(E)</b>：\(F\) は与えず、\(G\) だけが関手。始対象の空間が可縮であることが \(X\mapsto FX\) の関手性を強制し、整合性はすべて cocartesian 持ち上げの空間が可縮であることから出る。1 圏で普遍性により \(F\) の射への作用が一意に決まるのと同じで、「一意」が「選択の空間が可縮」に置き換わる。</li>
+  <li><b>(D)</b>：関手 \(C^{\mathrm{op}}\times D\to\mathcal S\) の同値として自然性を明示的に要求する。</li>
+</ul>
+<p>どれも整合性を条件にせず、データか普遍性に任せる作りで、極限を「スライスの終対象」と定義して錐の関手性を問わないのと同じ考え方。</p>
+
+<h3>12.4 それぞれの使い道</h3>
+<div class="table-wrap"><table>
+<tr><th>定義</th><th>役割</th><th>例</th></tr>
+<tr><td>(A)</td><td>与えた組が随伴であることを述べ、確かめる。Prop なので定義や API の中心向き</td><td>再帰的局所化（\(\mathrm{Sh}\hookrightarrow\mathrm{PSh}\) と層化）、随伴の合成、随伴同値</td></tr>
+<tr><td>(B)</td><td>2 圏的な操作で随伴を運ぶ。2 関手は三角等式を保つ</td><td>\(\mathrm{Fun}(K,-)\) による \(F_*\dashv G_*\)、\(G^{\mathrm{op}}\dashv F^{\mathrm{op}}\)、\(hF\dashv hG\)。mate 対応：Beck–Chevalley 変換 \(g^*f_*\to f'_*g'^*\)、射影公式の射、基底変換の射。左随伴の一意性。∞-cosmos の形式的圏論</td></tr>
+<tr><td>(C)</td><td>随伴を族として関手的に作る</td><td>\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\)（HTT 5.5.3.4。同じ fibration を逆側で straighten）。\(f\mapsto f^*\) から \(f\mapsto f_*\)、\(f_!\) から \(f^!\) を関手として得る（各 \(f\) で右随伴があるだけでは足りない）。(E) から \(F\) を作る構成。\(S\times\Delta^1\) 上のパラメータ付き随伴</td></tr>
+<tr><td>(D)</td><td>写像空間で計算する（St の後）</td><td>随伴は極限を保つ（極限の (3) と組み合わせる）、\(\mathrm{Map}(f_!F,G)\simeq\mathrm{Map}(F,f^!G)\) による \(R\Gamma\)・Ext の書き換え、内部 Hom の定義、Yoneda による議論</td></tr>
+<tr><td>(E)</td><td>随伴の存在を示す</td><td>随伴関手定理の出力（presentable なら、極限を保ちアクセシブルな \(G\) について \(\mathrm{Map}(X,G-)\) が corepresentable）、各点の Kan 拡張から制限の左随伴、部分的な随伴、\(f^!\) や内部 Hom の存在</td></tr>
+</table></div>
+<p>六関手の構成はほぼこの順に全部を通る：\(D^*\) が presentable なので各 \(f^*\) に右随伴がある（(E)）→ 族にまとめて \(f_*\) を作る（(C)）→ Beck–Chevalley 変換を作り同値であることを確かめる（(B)・(A)）→ コホモロジーを計算する（(D)）。Beck–Chevalley や射影公式の射は (B) の単位・余単位の貼り合わせなので、(A)⇒(B)（(C) 経由の \(\varepsilon\) の構成）は早めに用意する価値がある。</p>
+
+<!-- ============================================================ -->
+<h2>13. 基礎として残るもの（join・スライス・fibration・随伴・Yoneda・極限の先）</h2>
+<div class="table-wrap"><table>
+<tr><th>層</th><th>内容</th><th>何に要るか</th></tr>
+<tr><td>1. ∞ 圏のホモトピー論</td><td>\(\mathrm{Fun}(K,C)\) が quasicategory、カテゴリー同値、Joyal の定理、自然変換は各点で同値なら同値、充満忠実かつ本質的全射なら同値、充満部分圏、core、\(\mathcal S\) と \(\mathrm{Cat}_\infty\) の定義</td><td>他のすべての前提。随伴 (A) や各点の判定</td></tr>
+<tr><td>2. cocartesian fibration と \(\mathrm{Cat}_\infty\)</td><td>cartesian / cocartesian fibration、ファイバーごとの判定法、\(\mathrm{coCart}(B)\simeq\mathrm{Fun}(B,\mathrm{Cat}_\infty)\)、\(\mathrm{Cat}_\infty\) と \(\mathcal S\) の極限・余極限の計算</td><td>\(X\mapsto D(X)\)、\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\)、随伴の族、降下。普遍 cocartesian fibration \(\mathcal Z\) の問題はここ</td></tr>
+<tr><td>3. 局所化・Kan 拡張・cofinality</td><td>Dwyer–Kan 局所化、再帰的局所化、Quillen の定理 A、各点の Kan 拡張の存在</td><td>\(D(R)=\mathrm{Ch}(R)[\mathrm{qis}^{-1}]\)、層化、Čech 脈体、拡張定理</td></tr>
+<tr><td>4. 大きさと presentability</td><td>宇宙、\(\mathcal P(C)\) の自由余完備性と Yoneda 埋め込みが極限を保つこと、filtered 余極限、\(\kappa\)-コンパクト、\(\mathrm{Ind}\)、アクセシブル、presentable、随伴関手定理、\(\mathrm{Pr}^L\) と Lurie テンソル積</td><td>\(f_*\)・\(f^!\)・内部 Hom の存在、係数の圏の圏</td></tr>
+<tr><td>5. 安定性とモノイダル構造</td><td>零対象・fiber/cofiber・三角構造、t 構造・心臓・\(\mathrm{Sp}\)・安定化、∞-オペラド・対称モノイダル・\(\mathrm{CAlg}\)・加群、Day 畳み込み</td><td>\(D(X)\) の安定性、古典論との比較、\(\otimes\) と射影公式</td></tr>
+<tr><td>6. 層と対応の圏</td><td>∞ 圏上の位相、\(\mathrm{Sh}(C;D)\)、層化（左完全局所化）、超完備性、∞-topos の基本、\(\mathrm{Corr}(C,E)\) と (∞,2) 的構造</td><td>\(D(X_{\mathrm{et}})\)、六関手形式の定義と拡張定理（Liu–Zheng の多重単体脈体、Mann 式のオペラド）</td></tr>
+</table></div>
+<p>依存：1 → 2 → 4 → 5 → 6、1 → 3 → 4。六関手に向けての山場は 2 の \(\mathrm{Cat}_\infty\) 値 straightening（降下・随伴の族・\(\mathrm{Pr}^L\) が乗る）と、6 の \(\mathrm{Corr}\) と拡張定理（(∞,2) 的対象の模型を決める）。六関手の目的では、モデル圏の一般論、HTT 第 6 章の大部分（超完備性と降下の範囲で足りる）、Goodwillie 解析などは不要。</p>
+
+<h2>この章で押さえること</h2>
+<ol class="checks">
+  <li>Kerodon の第 7 章は極限の一般論から \(\mathcal S\)・\(\mathrm{Cat}_\infty\) の極限の具体形（7.4）、ホモトピー極限との比較（7.5）、降下（7.7）まで。7.4 は分類定理（5.6）の上に立つ。</li>
+  <li>cofinality は添字の圏を取り替えてよいかの判定で、判定法は Quillen の定理 A。Kan 拡張・Ind・局所化の土台になる。</li>
+  <li>Kan 拡張は極限の一般化で、整合的な関手を作る主要な手段。「すべては Kan 拡張」は ∞ でもほぼ成り立つが、各点の Kan 拡張を定義に採る。</li>
+  <li>∞ 圏論にホモトピー極限という別概念はなく、7.5 は厳密な図式の古典的なホモトピー極限との比較と、局所化と極限の関係。</li>
+  <li>Yoneda の核心は fibration 版「始対象への制限は trivial fibration」で、部品は Joyal の定理、始対象の包含が left anodyne、pushout-product の補題。straightening は関手版に渡る代価。</li>
+  <li>部品 A は外側の horn \(\Lambda^{n+1}_0\) を Joyal の定理で埋める。部品 B は縮約 \(h\) と pushout-product による retract（持ち上げの形でも同じ）。スライスでは \(h\) が \(s_0\) で書け、Joyal の定理も選択も要らない。</li>
+  <li>前層は \(\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)\) とも \(\mathrm{RFib}(C)\) とも定義でき、straightening が両者をつなぐ。\(\mathrm{Map}(F,G)\simeq\mathrm{Fun}_{/C}(\mathrm{Un}F,\mathrm{Un}G)\) の核心は「\(\Delta^1\) 上の左 fibration は写像柱」で、transport と写像柱が互いに逆。</li>
+  <li>St は、脈体の底では値を切断空間 \(\mathrm{Fun}_{/N(C)}(N(C_{c/}),X)\)（Yoneda の左辺）に置き換えて厳密な関手を作り、一般の底では最初の頂点への写像 \(\mathrm{fv}\) が局所化であること（標準単体は切断とホモトピー、一般には余積・押し出し・列の余極限）で降ろす。\(h_y\) は Hom 関手（\(\mathrm{Tw}(C)\) の St）の値として定義し、Un がスライスと同値であることを比較写像で示す。流れは fibration 版 Yoneda → St → Map → 関手版 Yoneda。</li>
+  <li>fibration 版 Yoneda の証明は、相対関手空間の普遍性で \(j_n=(\partial\Delta^n\subseteq\Delta^n)\square i\) の持ち上げに書き直し、pushout-product で \(i\) に帰着し、\(i\) は式 \(h(\alpha,\sigma)=\sigma\circ\rho_k\) の縮約で left anodyne。一般の始対象でも包含は left anodyne（逆は Quillen の定理 A 経由）。</li>
+  <li>極限の定義（スライスの終対象・trivial fibration・写像空間）は補題 B と join の組合せ論で同値。(3) は随伴との比較や写像空間の極限公式で主役になり、fat 版は比較定理、極限公式版は St の後。</li>
+  <li>随伴は単位の各点条件 (A)、三角等式 (B)、双 cartesian fibration (C)、写像空間 (D)、各点の普遍射 (E) で定義でき、自然性はデータか普遍性に入る。存在 (E) → 族として構成 (C) → 確認 (A) → 2 圏的操作 (B) → 計算 (D) と使い分ける。</li>
+  <li>基礎として残るのは、ホモトピー論、cocartesian fibration と \(\mathrm{Cat}_\infty\) 値 straightening、局所化・Kan 拡張・cofinality、presentability、安定性とモノイダル構造、層と \(\mathrm{Corr}\)。山場は \(\mathrm{Cat}_\infty\) 値 straightening と \(\mathrm{Corr}\) の拡張定理。</li>
+</ol>
+</main>
+</body>
+</html>

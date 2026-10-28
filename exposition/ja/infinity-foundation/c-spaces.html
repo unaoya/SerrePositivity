@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>空間の ∞ 圏 S と Hom 関手</title>
+<link rel="stylesheet" href="../infinity/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.tag { display: inline-block; font-size: 0.78rem; padding: 0 0.4em; border: 1px solid var(--rule); border-radius: 3px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 3</nav>
+<h1>補章 3　空間の ∞ 圏 S と Hom 関手：coherent nerve と twisted arrow</h1>
+<p class="meta">
+  2026-10-28。Claude との議論を整理した数学の章。形式化の対応は SerrePositivity の Lean ソース（F1/Coherent、Coherent、Core）を 2026-10-28 に読んだもの。Kerodon の節番号は同日のオンライン版による。
+  入門テキストの最初の山として、空間の ∞ 圏 \(\mathcal S=N^{hc}(\mathcal Kan)\) を定義し、その写像空間を計算するまでをまとめる。
+</p>
+
+<!-- ============================================================ -->
+<h2>1. 流れ</h2>
+<ol>
+  <li>単体的圏と \(\mathcal Kan\)（Hom が Kan 複体で、合成は厳密）。</li>
+  <li>\(\mathfrak C[\Delta^n]\)：\(n\) 単体のホモトピー整合的な形（Hom が立方体）。</li>
+  <li>\(N^{hc}(\mathcal C)_n=\mathrm{Hom}_{\mathrm{sCat}}(\mathfrak C[\Delta^n],\mathcal C)\)。</li>
+  <li>局所 Kan なら \(N^{hc}(\mathcal C)\) は quasicategory（開いた箱の充填）。</li>
+  <li>\(\mathcal S:=N^{hc}(\mathcal Kan)\)、\(\mathrm{Cat}_\infty:=N^{hc}(\mathcal{QC}at^{\simeq})\)。</li>
+  <li>写像空間の比較定理 \(\mathcal C(X,Y)\simeq\mathrm{Hom}_{N^{hc}\mathcal C}(X,Y)\)。\(\mathcal S\) では \(\mathrm{Fun}(X,Y)\simeq\mathrm{Hom}_{\mathcal S}(X,Y)\)。</li>
+</ol>
+<p>\(N^{hc}\) が作るのは quasicategory であって Kan 複体ではない。Kan 複体は \(\mathcal S\) の対象として入力の側にいて、\(N^{hc}\) は「Kan 複体を射の空間にもつ単体的圏」を ∞ 圏に翻訳する。</p>
+
+<!-- ============================================================ -->
+<h2>2. 単体的圏と \(\mathcal Kan\)</h2>
+<ul>
+  <li><b>単体的圏</b>：単体的集合で豊穣化された圏。Hom \(\mathcal C(x,y)\) は単体的集合で、合成 \(\mathcal C(y,z)\times\mathcal C(x,y)\to\mathcal C(x,z)\) は厳密に結合的・単位的。</li>
+  <li><b>\(\mathcal Kan\)</b>：対象は小さい Kan 複体（宇宙を一つ固定）、\(\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)=Y^X\)。\(Y\) が Kan なのでこれも Kan で、\(\mathcal Kan\) は局所 Kan。1 単体は \(\Delta^1\times X\to Y\)、つまり写像のホモトピー、2 単体はホモトピーの間のホモトピー。</li>
+  <li><b>厳密な合成</b>：合成は単体的集合の写像として一つに定まり、結合律は等号で成り立つ。quasicategory では合成は \(\Lambda^2_1\) の充填として「選択の空間が可縮」という形でしか定まらず、結合律もホモトピーを除いてしか成り立たない。</li>
+</ul>
+<p>単体的圏も ∞ 圏の正当な模型（Bergner）で、厳密であることは欠点ではない。違うのはデータの形式で、単体的圏では「Hom ごとの空間と厳密な合成」に分かれ、quasicategory ではすべてが一つの単体的集合にあり 2 単体は「ホモトピーを指定して可換な三角形」になる。下にある 1 圏の脈体 \(N(\mathcal Kan_0)\) をとると 2 単体は厳密に可換な三角形だけになり、ホモトピーの情報が消える。\(N^{hc}\) は Hom 空間の高次の単体を \(\mathfrak C[\Delta^n]\) の立方体を通して quasicategory の高次の単体に組み込む。</p>
+
+<!-- ============================================================ -->
+<h2>3. \(\mathfrak C[\Delta^n]\) と一般の \(\mathfrak C\)</h2>
+<h3>3.1 定義</h3>
+<p>対象は \(0,\dots,n\)。\(i\le j\) なら \(\mathrm{Hom}(i,j)=N(P_{ij})\)、\(P_{ij}\) は \(\{i,j\}\subseteq S\subseteq[i,j]\) をみたす \(S\) の包含による半順序集合。\(i>j\) なら空。合成は和集合 \((T,S)\mapsto T\cup S\)。\(N(P_{ij})\cong(\Delta^1)^{j-i-1}\) で、座標は中間の頂点 \(i<k<j\) を通るかどうか。\(\theta\colon[m]\to[n]\) には \(S\mapsto\theta(S)\) で \(\mathfrak C[\theta]\) が定まり、余単体的な単体的圏 \(\Delta\to\mathrm{sCat}\) になる。</p>
+<div class="table-wrap"><table>
+<tr><th>\(\mathrm{Hom}(0,n)\)</th><th>形</th><th>意味</th></tr>
+<tr><td>\(n=1\)</td><td>点 \(\{0,1\}\)</td><td>射 \(f\)</td></tr>
+<tr><td>\(n=2\)</td><td>辺 \(\{0,2\}\to\{0,1,2\}\)</td><td>ホモトピー \(h\Rightarrow gf\)</td></tr>
+<tr><td>\(n=3\)</td><td>正方形</td><td>2 通りのホモトピー \(k\Rightarrow f_{23}f_{12}f_{01}\) の間のホモトピー</td></tr>
+<tr><td>一般</td><td>\(n-1\) 次元立方体</td><td>高次の整合性</td></tr>
+</table></div>
+
+<h3>3.2 一般の \(K\)</h3>
+<p>\(\mathfrak C[K]=\operatorname{colim}_{\Delta^n\to K}\mathfrak C[\Delta^n]\)（sCat での余極限、米田に沿った左 Kan 拡張）。これで \(\mathfrak C\dashv N^{hc}\)。</p>
+<div class="table-wrap"><table>
+<tr><th>\(K\)</th><th>\(\mathrm{Hom}_{\mathfrak C[K]}(0,2)\)</th><th>意味</th></tr>
+<tr><td>\(\Delta^2\)</td><td>\(\Delta^1\)（\(h\to gf\)）</td><td>指定されたホモトピーで可換な三角形</td></tr>
+<tr><td>\(\Lambda^2_1\)</td><td>点（\(gf\) だけ）</td><td>自由な合成</td></tr>
+<tr><td>\(\partial\Delta^2\)</td><td>2 点 \(\{h,gf\}\)</td><td>可換性の指定なし</td></tr>
+</table></div>
+<p>一般の Hom は Dugger–Spivak の necklace（\(\Delta^{n_1}\vee\cdots\vee\Delta^{n_k}\)）による余極限で書ける。半順序集合の脈体 \(N(P)\) なら \(\mathrm{Hom}(x,y)\) は \(x\) から \(y\) への鎖の半順序集合の脈体。sCat の余極限は合成で生成し直す必要があり、一般の \(K\) の計算は大変。\(N^{hc}\) の定義には \(\mathfrak C[\Delta^n]\) で足り、4 の証明に要るのは \(\mathfrak C[\Lambda^n_i]\) だけ。</p>
+
+<!-- ============================================================ -->
+<h2>4. \(N^{hc}\) と quasicategory 性</h2>
+<h3>4.1 低次元の単体</h3>
+<ul>
+  <li>0 単体：対象。1 単体：\(\mathcal C(x,y)\) の頂点。</li>
+  <li>2 単体：\(f\colon x_0\to x_1\)、\(g\colon x_1\to x_2\)、\(h\colon x_0\to x_2\) と \(\mathcal C(x_0,x_2)\) の辺 \(h\to gf\)。\(\mathcal Kan\) ではホモトピー \(h\simeq g\circ f\)。</li>
+  <li>3 単体：四つの 2 単体と \(\mathcal C(x_0,x_3)\) の正方形（二通りの貼り合わせのホモトピーをつなぐ）。</li>
+  <li>確かめ：Hom が離散な普通の圏なら立方体からの写像は定数で、\(N^{hc}(\mathcal C)=N(\mathcal C)\)。</li>
+</ul>
+
+<h3>4.2 定理：局所 Kan なら quasicategory（HTT 1.1.5.10、Kerodon 2.4.5.1）</h3>
+<ol>
+  <li>\(0<i<n\) で \(\mathfrak C[\Lambda^n_i]\to\mathfrak C[\Delta^n]\) は \(\mathrm{Hom}(0,n)\) 以外で同型。\((j,k)\ne(0,n)\) なら \(j>0\) のとき \(d_0\) 面、\(k<n\) のとき \(d_n\) 面が \([j,k]\) を含み、どちらも \(\Lambda^n_i\) に入る（\(i\) が内部だから）。</li>
+  <li>\(\mathrm{Hom}(0,n)\) では包含は「立方体 \((\Delta^1)^{n-1}\) から内部と面 \(\{x_i=0\}\)（\(i\) を通らない部分集合の面）の内部を除いたもの」から立方体への包含。開いた箱で、\(\partial\square^{n-2}\subseteq\square^{n-2}\) と \(\{1\}\subseteq\Delta^1\) の pushout-product なので anodyne。</li>
+  <li>horn の充填は Kan 複体 \(\mathcal C(x_0,x_n)\) での一回の延長問題になり、必ず解ける。</li>
+</ol>
+<p>外側の horn では他の Hom も変わり、この議論は通らない（\(N^{hc}(\mathcal C)\) が一般に Kan 複体でないことと整合）。形式化：<code>Coherent/</code>（γ1）の最終 instance。方針は Path[n] の空洞部分への貼合せ、Kan 延長、豊穣関手の復元。</p>
+
+<h3>4.3 局所 Kan でないと失敗する例</h3>
+<p>開いた箱の包含は anodyne だが inner anodyne ではないので、Hom が quasicategory なだけでは延長できない。\(n=3\)、\(i=1\)：\(\mathrm{Hom}(0,3)\) は頂点 \(\{0,3\},\{0,1,3\},\{0,2,3\},\{0,1,2,3\}\) の正方形で、与えられるのは三辺 \(\{0,3\}\to\{0,1,3\}\)、\(\{0,1,3\}\to\{0,1,2,3\}\)、\(\{0,2,3\}\to\{0,1,2,3\}\)。三角形 \((\{0,3\},\{0,1,3\},\{0,1,2,3\})\) は合成で埋まるが、残る三角形は辺 \(\{0,2,3\}\to\{0,1,2,3\}\) と合成 \(\{0,3\}\to\{0,1,2,3\}\) から欠けた辺 \(\{0,3\}\to\{0,2,3\}\) を作る外側の horn \(\Lambda^2_2\) で、その辺が可逆でないと埋まらない。Hom が ∞ 圏の単体的圏は (∞,2) 圏で、2 射の向きを忘れられないので coherent nerve は quasicategory にならない。</p>
+
+<!-- ============================================================ -->
+<h2>5. \(\mathcal S\) と \(\mathrm{Cat}_\infty\)</h2>
+<div class="table-wrap"><table>
+<tr><th>\(\mathcal S=N^{hc}(\mathcal Kan)\) の単体</th><th>中身</th></tr>
+<tr><td>対象</td><td>小さい Kan 複体</td></tr>
+<tr><td>射</td><td>写像</td></tr>
+<tr><td>2 単体</td><td>ホモトピー \(h\simeq gf\)</td></tr>
+<tr><td>高次</td><td>ホモトピーの間のホモトピー</td></tr>
+</table></div>
+<ul>
+  <li>\(hN^{hc}(\mathcal C)\) は Hom が \(\pi_0\mathcal C(x,y)\) の圏（2 単体が \(h\Rightarrow gf\) の道なので \([h]=[gf]\)）。よって \(\mathcal S\) の同値はホモトピー同値。</li>
+  <li>\(\mathcal S\) 自身は一つ上の宇宙に入るが、局所小。形式化：<code>SpaceInfinity := SimplicialNerve KanObject</code>（F1/Categories/CatInfinity.lean）、関手 ∞ 圏 <code>SpaceInfinityFunctor C</code>。</li>
+  <li>\(\mathrm{Cat}_\infty\)：\(\mathcal{QC}at\) の Hom を core \(\mathrm{Fun}(C,D)^{\simeq}\)（Kan 複体）にして \(N^{hc}\)。core にするのは 4.2 を使うため（4.3 の理由で \(\mathrm{Fun}(C,D)\) 全体では局所 Kan でない）。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>6. \(\mathcal S\) の他の定義との比較</h2>
+<div class="table-wrap"><table>
+<tr><th>定義</th><th>特徴づけ</th><th>得意なこと</th><th>他との同値に必要な定理</th></tr>
+<tr><td>(a) \(N^{hc}(\mathcal Kan)\)</td><td>単体が具体的</td><td>単体の計算、写像空間</td><td>写像空間の比較定理（7）</td></tr>
+<tr><td>(b) 局所化 \(N(\mathcal Kan_0)[\mathrm{he}^{-1}]\)</td><td>外向きの普遍性</td><td>1 圏の関手から \(\mathcal S\) への関手を作る</td><td>\(N(\mathcal Kan_0)\to N^{hc}(\mathcal Kan)\) が he での局所化</td></tr>
+<tr><td>(c) 普遍左 fibration</td><td>\(\mathrm{Fun}(B,\mathcal S)\simeq\mathrm{LFib}(B)\)</td><td>straightening が定義から出る（HoTT の univalent universe にあたる）</td><td>存在の構成と、(a) との比較（straightening そのもの）</td></tr>
+<tr><td>(d) \(\mathrm{Cat}_\infty\) の ∞ 亜群の充満部分圏</td><td>\(\mathrm{Cat}_\infty\) が先にある</td><td>\(\mathcal S\subseteq\mathrm{Cat}_\infty\) が定義から</td><td>\(\mathrm{Cat}_\infty\) の写像空間の計算</td></tr>
+</table></div>
+<p>(b) の \(\mathcal Kan_0\) は Kan 複体と写像の普通の圏。(c) は Cisinski の本の流儀に近い。どれを定義にしても残りとの比較は重い定理で、(a)⇔(c) は straightening の同値定理そのもの、(a)⇔(b) は局所化の理論の応用。入門テキストで (a) を採る利点は \(\mathcal S\) の単体を紙の上に書けることで、代償は写像空間の比較定理を最初に払うこと。</p>
+
+<!-- ============================================================ -->
+<h2>7. 写像空間の比較定理</h2>
+<h3>7.1 主張と \(\mathrm{Hom}^L\) の具体形</h3>
+<p>\(\mathcal C\) が局所 Kan なら \(\mathcal C(x,y)\simeq\mathrm{Hom}^L_{N^{hc}\mathcal C}(x,y)\)。\(\mathrm{Hom}^L\) の \(n\) 単体は頂点 0 が \(x\)、面 \(\{1,\dots,n+1\}\) が \(y\) で退化した \((n+1)\) 単体、つまり \(\mathfrak C[\Delta^{n+1}]\to\mathcal C\) で頂点 \(1,\dots,n+1\) を \(y\) に、\(\mathrm{Hom}(j,k)\)（\(j\ge1\)）を \(\mathrm{id}_y\) に送るもの。\(\mathrm{Hom}(j,k)\) をつぶす合成の関係で立方体を割って</p>
+<p>\[J^n:=(\Delta^1)^n\big/(S\sim S\cup T),\qquad\mathrm{Hom}^L(x,y)_n=\mathrm{Hom}_{\mathrm{sSet}}(J^n,\mathcal C(x,y)).\]</p>
+<p>\(S\) の類は \(m(S)=\min(S\setminus\{0\})\) で決まり、\(J^n\) の頂点は \(n+1\) 個。\(S\subseteq S'\) なら \(m(S)\ge m(S')\) なので \(S\mapsto n+1-m(S)\) は \(J^n\) を経由し、余単体的な写像 \(r\colon J^\bullet\to\Delta^\bullet\) を与える。</p>
+<p><b>\(n=2\)</b>：正方形の頂点 \(\varnothing,\{1\},\{2\},\{1,2\}\) の \(m\) は \(3,1,2,1\)。\(\mathrm{Hom}(1,3)=\Delta^1\) との合成で辺 \(\{1\}\to\{1,2\}\) が一点につぶれ、三角形 \(\varnothing\subseteq\{2\}\subseteq\{1,2\}\) は \(\Delta^2\) のまま、三角形 \(\varnothing\subseteq\{1\}\subseteq\{1,2\}\) は一辺が退化した 2 単体になる。\(J^2=\Delta^2\cup_{\Delta^1}(\text{一辺が退化した 2 単体})\ne\Delta^2\)。\(J^n\) と \(\Delta^n\) はどちらも弱可縮だが同型ではない。</p>
+
+<h3>7.2 比較写像と素朴な方針の難点</h3>
+<p>\(\theta=r^*\colon\mathcal C(x,y)=\mathrm{Hom}(\Delta^\bullet,\mathcal C(x,y))\to\mathrm{Hom}(J^\bullet,\mathcal C(x,y))=\mathrm{Hom}^L(x,y)\) は選択を使わない明示的な単体的写像。定理は「Kan 複体 \(Z\) について \(r^*\colon\mathrm{Hom}(\Delta^\bullet,Z)\to\mathrm{Hom}(J^\bullet,Z)\) はホモトピー同値」に帰着する。各 \(r_n\) は弱ホモトピー同値で切断 \(s_n\colon k\mapsto\{0\}\cup[n+1-k,n+1]\) をもつが、\(s_n\) は \(n\) について自然でないので逆写像を単体ごとに作れない。\(r\) は単射でないので \(\theta\) は trivial fibration でもなく、持ち上げで直接は示せない。Reedy 型の議論や二重単体の対角補題でも書けるが、Kerodon と形式化は別の道をとる。</p>
+
+<!-- ============================================================ -->
+<h2>8. Kerodon 4.6.7 の証明（モデル圏なし）</h2>
+<div class="table-wrap"><table>
+<tr><th>構成</th><th>内容</th></tr>
+<tr><td>pinched 写像空間（4.6.5.1）</td><td>\(\mathrm{Hom}^L_{\mathcal C}(X,Y)=\mathcal C_{X/}\times_{\mathcal C}\{Y\}\)。fat 版 \(\mathrm{Hom}\) への包含はホモトピー同値（4.6.5.10）</td></tr>
+<tr><td>\(\mathcal E[K]\)（4.6.7.1）</td><td>対象 \(x,y\)、\(\mathrm{Hom}(x,y)=K\)。\(\mathcal E[K]\to\mathcal C\) は \(K\to\mathcal C(X,Y)\) と同じ</td></tr>
+<tr><td>\(\theta\)（4.6.7.3）</td><td>\(S\mapsto\min(S\setminus\{x\})\)。7.2 の \(r^*\) そのもの</td></tr>
+<tr><td>\(\Phi(K)=\mathrm{Hom}_{\mathrm{Path}[\Sigma K]}(x,y)\)（4.6.7.10）</td><td>\(\Sigma K\) は非約懸垂。\(\Phi(\Delta^n)=J^n\)、余単体的対象 \(Q^\bullet\)</td></tr>
+<tr><td>随伴（4.6.7.16〜21）</td><td>\(\{K\to\mathrm{Hom}^L\}\cong\{\Phi(K)\to\mathcal C(X,Y)\}\)。\(\Phi=|-|^Q\) は余極限と単射を保つ</td></tr>
+<tr><td>\(\rho_K\colon\Phi(K)\to K\)（4.6.7.22）</td><td>\(\theta\) を随伴で移したもの。\(K=\Delta^n\) なら \(r_n\)</td></tr>
+</table></div>
+<p><b>命題 4.6.7.23：\(\rho_K\) はすべての \(K\) でカテゴリー同値</b>。有限に帰着（\(\Phi\) は余極限を保ち、カテゴリー同値は filtered 余極限で閉じる、4.8.8.11）→ 骨格の帰納法（単射に沿った押し出しはカテゴリー的押し出し、4.5.5.9）→ \(\Delta^n\)：\(\Phi(\Delta^n)\cong\Delta^0\diamond\Phi(\Delta^{n-1})\)（4.6.7.29）で、\(\rho_{\Delta^n}\) は \(\mathrm{id}\diamond\rho\)（帰納法と 4.6.2.7）と blunt join と join の比較 \(c\colon\Delta^0\diamond\Delta^{n-1}\to\Delta^n\)（4.6.2.12）の合成。blunt join \(A\diamond B\) は円柱 \(A\times\Delta^1\times B\) の両端を \(A\)、\(B\) につぶしたもの。\(\Phi(\Delta^2)\cong\Delta^0\diamond\Delta^1\)（正方形の一辺をつぶしたもの）は 7.1 の \(J^2\) と一致する。</p>
+<p><b>定理 4.6.7.8 ⇒ 4.6.7.5</b>：\(\mathrm{Hom}^L\) は ∞ 圏（4.6.7.25：内部 horn を \(\Phi(i)\) に沿った延長に移す）。すべての \(K\) で \(\pi_0\mathrm{Fun}(K,-)^{\simeq}\) の全単射を示せばよく、categorical mapping cylinder（4.6.7.26）で右辺を \(\pi_0\mathrm{Fun}(\Phi(K),\mathcal C(X,Y))^{\simeq}\) と同一視すると \(\theta\) は \(\rho_K\) の前合成になり全単射。\(\mathcal C(X,Y)\) が ∞ 圏であるだけでよく、局所 Kan なら Kan 複体の間のカテゴリー同値なのでホモトピー同値（Example 4.6.7.7 が \(\mathrm{Fun}(X,Y)\simeq\mathrm{Hom}_{\mathcal S}(X,Y)\)）。素朴な方針との違いは、帰納法を余単体の次数でなく定義域 \(K\) の骨格で行い、自然な \(\rho_K\) をより強いカテゴリー同値として示すことで、\(s_n\) が自然でない問題が起きない点。</p>
+
+<!-- ============================================================ -->
+<h2>9. 形式化での証明</h2>
+<p>主定理は <code>F1/Coherent/HomEquivalence.lean</code> の <code>coherentHomComparison_isQCatEquivalence</code> と系 <code>…_isSimplicialHomotopyEquivalence</code>：局所 Kan な単体的圏の豊穣 Hom から coherent nerve の右 pinched 写像空間への比較写像は同値。カテゴリー同値は <code>Core/PrecompositionEquivalence.lean</code> の <code>IsPrecompositionEquivalence f</code>（すべての quasicategory \(Z\) で前合成 \(\mathrm{Fun}(B,Z)\to\mathrm{Fun}(A,Z)\) が同値）で、Kerodon の定義と同じ形。モデル構造は使わない。</p>
+<div class="table-wrap"><table>
+<tr><th>Kerodon</th><th>リポジトリ（F1/Coherent/）</th><th>内容</th></tr>
+<tr><td>\(\Phi(\Delta^n)\)（4.6.7.27）</td><td>ResolutionFlags（<code>CoherentResolutionFlag</code>）、ResolutionSimplex</td><td>旗：始点から始まり始点が各集合の最小元の増大列。Kerodon の順序を反転した右 pinched 版</td></tr>
+<tr><td>\(\Phi\dashv\mathrm{Sing}^Q\)（4.6.7.19〜21）</td><td>ResolutionExtension（<code>coherentResolution</code>、<code>coherentResolutionRightAdjoint</code>）</td><td>米田に沿った左 Kan 拡張と制限米田関手の随伴</td></tr>
+<tr><td>\(\rho_K\)（4.6.7.22）</td><td><code>coherentResolutionProjectionAll</code></td><td>旗の最大元の射影の全 \(K\) への拡張</td></tr>
+<tr><td>\(\mathrm{Hom}\cong\mathrm{Sing}^Q\mathcal C(X,Y)\)（4.6.7.16）</td><td>FlagIso（<code>coherentPinchedFlagIso</code>）</td><td>局所 Kan 性を仮定しない同型</td></tr>
+<tr><td>\(\theta\)</td><td><code>coherentResolutionComparison</code></td><td>\(Z\to\mathrm{Sing}^QZ\)</td></tr>
+<tr><td>4.6.7.23（標準単体）</td><td>ResolutionInterval、ResolutionHomotopy、ResolutionEquivalence</td><td>下の (i)</td></tr>
+<tr><td>4.6.7.23（一般）</td><td>ResolutionMonomorphisms、Core/CellularNaturalComparison</td><td>下の (ii)</td></tr>
+<tr><td>4.6.7.23 ⇒ 4.6.7.5</td><td>ResolutionRetraction、ResolutionCylinder、HomEquivalence</td><td>下の (iii)</td></tr>
+</table></div>
+<ul>
+  <li><b>(i) 標準単体</b>：blunt join を使わず直接縮約する。区間の切断 <code>coherentResolutionSection n</code>（7.2 の \(s_n\)）、切断則、恒等から「射影の後に切断」への変形 <code>coherentResolutionHomotopy n</code>（旗を区間の旗へ広げる）、その各頂点での可逆性から、2-out-of-6 型の <code>isPrecompositionEquivalence_of_composites</code> で射影は同値。\(s_n\) は固定した \(n\) でしか使わないので自然性は要らない。</li>
+  <li><b>(ii) 一般の \(K\)</b>：汎用補題 <code>isPrecompositionEquivalence_natComponent_of_stdSimplex</code>：単射・押し出し・\(\mathbb N\) 型余極限・wide pushout を保つ関手の間の自然変換が \(\varnothing\) とすべての \(\Delta^n\) で前合成の同値なら、すべての \(X\) で同値（境界の次数の帰納、セルの族の余積、骨格の押し出し、可算余極限）。Kerodon 4.6.2.10 と共用で、局所化の証明（LocalizationAllBases）と同じ型。</li>
+  <li><b>(iii) \(\rho\) から \(\theta\)</b>：Kerodon の写像柱の代わりに、厳密な左逆 <code>coherentResolutionComparison_exists_retraction</code>（射影の押し出しに余単位を貼り、前合成の同値で延長して単射上で厳密化）と、ホモトピーの随伴転置による後合成の本質的全射性 <code>coherentResolutionComparison_postcomp_essentiallySurjective</code> から、両合成の可逆 2-cell を作る（<code>coherentResolutionComparison_isQCatEquivalence</code>）。</li>
+</ul>
+<div class="table-wrap"><table>
+<tr><th>論点</th><th>Kerodon</th><th>形式化</th></tr>
+<tr><td>写像空間の向き</td><td>左 pinched</td><td>右 pinched（旗の順序を反転）</td></tr>
+<tr><td>標準単体</td><td>blunt join で帰納</td><td>区間の切断と変形による直接の縮約</td></tr>
+<tr><td>一般の \(K\)</td><td>骨格の帰納法</td><td>汎用のセル帰納法（他と共用）</td></tr>
+<tr><td>\(\rho\Rightarrow\theta\)</td><td>\(\mathrm{Fun}(K,-)^{\simeq}\) で試す（写像柱）</td><td>厳密な左逆と転置による右逆</td></tr>
+<tr><td>適用範囲</td><td>\(\mathcal C(X,Y)\) が ∞ 圏</td><td>\(\mathcal C(X,Y)\) が Kan 複体</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>10. 局所 Kan でない場合に止まる場所</h2>
+<div class="table-wrap"><table>
+<tr><th>段</th><th>仮定</th><th>quasicategory \(Z=\mathcal C(X,Y)\) で通るか</th></tr>
+<tr><td>\(N^{hc}(\mathcal C)\) が quasicategory（Coherent）</td><td>局所 Kan</td><td>通らない（4.3）</td></tr>
+<tr><td>\(\mathrm{Hom}\cong\mathrm{Sing}^QZ\)（FlagIso）</td><td>なし</td><td>通る</td></tr>
+<tr><td>\(\rho_K\) が前合成の同値</td><td>なし</td><td>通る</td></tr>
+<tr><td>\(\mathrm{Sing}^QZ\) が quasicategory（ResolutionRightQuasicategory）</td><td>\(Z\) が quasicategory</td><td>通る</td></tr>
+<tr><td>厳密な左逆（ResolutionRetraction）</td><td><code>[KanComplex Z]</code> と書いている</td><td>中の <code>exists_extension_of_functorIso</code> は quasicategory で済むので、おそらく通る</td></tr>
+<tr><td>後合成の本質的全射性（ResolutionCylinder）</td><td><code>[KanComplex Z]</code></td><td><b>止まる</b>：転置したホモトピー \(H\) を <code>functorIsoOfSimplicialHomotopy</code>（標的が Kan）で同型に戻しており、quasicategory では \(H\) の可逆性を別に示す必要がある</td></tr>
+<tr><td>単体的ホモトピー同値への変換</td><td>両側が Kan</td><td>結論の形の問題（∞ 圏の同値で止めればよい）</td></tr>
+</table></div>
+<p>一般化するなら、Kerodon 4.6.7.8 の方式（写像柱で「同型の転置は同型」を処理）、転置の可逆性を直接示す（円筒の比較 \(\Phi(K\times\Delta^1)\to\Phi K\times\Delta^1\) が可逆な辺を保つことを示して差し替える）、Hom を \(\mathrm{Ex}^\infty\) で Kan 化する（2 射の向きは消える）のいずれか。\(\mathcal S\) と \(\mathrm{Cat}_\infty\) はどちらも局所 Kan なので今の形で足り、Hom が ∞ 圏の場合が要るのは \(\mathrm{Cat}_\infty\) の 2 圏構造や \(\mathrm{Corr}\) の 2 射のような (∞,2) 的な場面で、そこでは写像空間の比較より先に (∞,2) の模型を選ぶ問題になる。</p>
+
+<!-- ============================================================ -->
+<!-- ============================================================ -->
+<h2>11. \(\mathrm{Map}\) を関手にする：twisted arrow の straightening</h2>
+<h3>11.1 方針</h3>
+<p>\(\mathrm{Hom}^R(x,y)\) は各点では定まるが、関手 \(C^{\mathrm{op}}\times C\to\mathcal S\) には射の作用（前合成と後合成）と高次の整合性を整合的に選ぶ必要があり、直接選ぶと horn の充填の選択が積み重なって破綻する。そこで写像空間をファイバーにもつ左 fibration を作り（transport と整合性は持ち上げ性質で、選択は可縮）、関手への翻訳を St に任せる。</p>
+<ol>
+  <li>\(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) を作る。</li>
+  <li>左 fibration であること、ファイバーが \(\mathrm{Hom}(x,y)\) と同値であることを示す。</li>
+  <li>\(\mathrm{Map}_C:=\mathrm{St}(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C)\)。</li>
+</ol>
+<p>矢の圏 \(\mathrm{Fun}(\Delta^1,C)\to C\times C\) もファイバーは \(\mathrm{Hom}(x,y)\) だが、終点の方向には後合成で共変（cocartesian）、始点の方向には前合成で向きが逆（cartesian）の両側 fibration で、左 fibration にならない。始点側を \(C^{\mathrm{op}}\) に取り替えて両方向とも共変にしたのが twisted arrow。</p>
+
+<h3>11.2 単体的集合の反対</h3>
+<p>\(\Delta\) の自己同型 \(\mathrm{rev}\)（対象は固定、\(\theta\colon[m]\to[n]\) を \(i\mapsto n-\theta(m-i)\) に）を前合成して \(X^{\mathrm{op}}=X\circ\mathrm{rev}^{\mathrm{op}}\)。\(X^{\mathrm{op}}_n=X_n\)、\(d_i^{\mathrm{op}}=d_{n-i}\)、\(s_i^{\mathrm{op}}=s_{n-i}\)。単体の集合は同じで頂点の番号を逆にしたもの。</p>
+<div class="table-wrap"><table>
+<tr><th>性質</th><th>内容</th></tr>
+<tr><td>脈体</td><td>\(N(C)^{\mathrm{op}}=N(C^{\mathrm{op}})\)</td></tr>
+<tr><td>標準単体</td><td>\((\Delta^n)^{\mathrm{op}}\cong\Delta^n\)（\(i\mapsto n-i\)、恒等写像ではない）</td></tr>
+<tr><td>join</td><td>\((A\star B)^{\mathrm{op}}\cong B^{\mathrm{op}}\star A^{\mathrm{op}}\)</td></tr>
+<tr><td>horn</td><td>\((\Lambda^n_i)^{\mathrm{op}}\cong\Lambda^n_{n-i}\)。内部 horn は内部 horn に移るので quasicategory の反対は quasicategory</td></tr>
+<tr><td>fibration</td><td>左 fibration の反対は右 fibration</td></tr>
+<tr><td>スライス</td><td>\((C_{/p})^{\mathrm{op}}\cong(C^{\mathrm{op}})_{p^{\mathrm{op}}/}\)、\(\mathrm{Hom}^L\) と \(\mathrm{Hom}^R\) が入れ替わる</td></tr>
+<tr><td>写像</td><td>\(\mathrm{Hom}(X^{\mathrm{op}},C)=\mathrm{Hom}(X,C^{\mathrm{op}})\)</td></tr>
+</table></div>
+<p>形式化：<code>C.op</code>、<code>SSet.opFunctor</code>、<code>SSet.opObjEquiv</code>。</p>
+
+<h3>11.3 \(\mathrm{Tw}(C)\) の定義</h3>
+<p>\[\mathrm{Tw}(C)_n=\mathrm{Hom}_{\mathrm{sSet}}\bigl((\Delta^n)^{\mathrm{op}}\star\Delta^n,C\bigr)\cong\mathrm{Hom}(\Delta^{2n+1},C)\]</p>
+<p>Hom は単体的集合の写像の集合で、ファイバーと比べる \(\mathrm{Hom}^L_C(x,y)\)（Kan 複体）とは別物。Segal の edgewise subdivision。頂点を \(\bar n<\cdots<\bar0<0<\cdots<n\) と並べ、\(x_i=\sigma(\bar i)\)、\(y_j=\sigma(j)\) と書く。</p>
+<ul>
+  <li>射影：左半分への制限 \((\Delta^n)^{\mathrm{op}}\to C\) は \(\mathrm{Hom}(X^{\mathrm{op}},C)=\mathrm{Hom}(X,C^{\mathrm{op}})\) により \(C^{\mathrm{op}}\) の \(n\) 単体 \(x_0\to\cdots\to x_n\)。右半分は \(C\) の単体 \(y_0\to\cdots\to y_n\)。</li>
+  <li>\(\mathrm{Tw}\) の頂点 \(i\) は辺 \(f_i=\sigma|_{\{\bar i,i\}}\colon x_i\to y_i\)。</li>
+  <li>\(d_i\) は \(\bar i\) と \(i\) を対にして同時に除き、\(s_i\) は対にして同時に繰り返す。</li>
+  <li>op を書く理由：\(\theta\) に対し \(\theta^{\mathrm{op}}\star\theta\) で関手的になり、\(\bar i\) と \(i\) が常に対になって辺 \((\bar i,i)\) が入れ子に並ぶ。\(\Delta^n\star\Delta^n\) では入れ子にならない。</li>
+</ul>
+
+<h3>11.4 \(n=0,1,2\) の計算</h3>
+<p><b>\(n=0\)</b>：\(\Delta^1\)（\(\bar0\to0\)）。頂点は \(C\) の射 \(f\colon x\to y\)（退化した \(\mathrm{id}_x\) も含む）。</p>
+<p><b>\(n=1\)</b>：\(\Delta^3\)、\(x_1\xrightarrow{u}x_0\xrightarrow{f_0}y_0\xrightarrow{v}y_1\)。</p>
+<div class="table-wrap"><table>
+<tr><th>辺</th><th>意味</th></tr>
+<tr><td>\((\bar1,\bar0)=u\)</td><td>\(C^{\mathrm{op}}\) 成分（\(C^{\mathrm{op}}\) では \(x_0\to x_1\)）</td></tr>
+<tr><td>\((0,1)=v\)</td><td>\(C\) 成分</td></tr>
+<tr><td>\((\bar0,0)=f_0\)</td><td>\(\mathrm{Tw}\) の辺の始点（\(d_1\)）</td></tr>
+<tr><td>\((\bar1,1)=f_1\)</td><td>\(\mathrm{Tw}\) の辺の終点（\(d_0\)）</td></tr>
+<tr><td>\((\bar1,0)\)、\((\bar0,1)\)</td><td>途中の合成 \(f_0u\)、\(vf_0\)</td></tr>
+</table></div>
+<p>四つの三角形と 3 単体が \(f_1\simeq v\circ f_0\circ u\) をすべての括弧の付け方で整合的に与える。\(\mathrm{Tw}\) の辺 \(f_0\to f_1\) は \(f_0\) を内側、\(f_1\) を外側に置いた入れ子の矢。\(C\) が普通の圏なら \(N(\mathrm{Tw}\,C)\) は古典的な twisted arrow 圏（射 \(f_0\to f_1\) は \(f_1=vf_0u\) をみたす \((u,v)\)）。</p>
+<p><b>\(n=2\)</b>：\(\Delta^5\)、\(x_2\to x_1\to x_0\xrightarrow{f_0}y_0\to y_1\to y_2\)。頂点は入れ子の三本の矢 \(f_0=(\bar0,0)\)、\(f_1=(\bar1,1)\)、\(f_2=(\bar2,2)\)。辺は \(d_2\)（\(\bar1\bar0\,01\)）が \(f_0\to f_1\)、\(d_0\)（\(\bar2\bar1\,12\)）が \(f_1\to f_2\)、\(d_1\)（\(\bar2\bar0\,02\)）が \(f_0\to f_2\)。5 単体全体が「\(f_0\to f_1\to f_2\) の合成が \(f_0\to f_2\)」の整合性を運ぶ。</p>
+
+<h3>11.5 左 fibration であること：持ち上げの計算</h3>
+<p>左 horn \(\Lambda^n_i\)（\(0\le i<n\)）の持ち上げで与えられるのは、\(\Lambda^n_i\) の各面 \(\tau\) ごとの \(\tau^{\mathrm{op}}\star\tau\to C\) と、底の \((\Delta^n)^{\mathrm{op}}\to C\)、\(\Delta^n\to C\)。延長の定義域は全体の join でなく対角的な和</p>
+<p>\[D=\bigcup_{\tau\subseteq\Lambda^n_i}(\tau^{\mathrm{op}}\star\tau)\cup(\Delta^n)^{\mathrm{op}}\cup\Delta^n\subseteq(\Delta^n)^{\mathrm{op}}\star\Delta^n\]</p>
+<p>で、\(D\subseteq\Delta^{2n+1}\) が inner anodyne であることを示す（Kerodon 8.1、HA 5.2.1.3）。</p>
+<ul>
+  <li><b>\(n=1\)、\(i=0\)</b>：\(D\) は三辺 \(u\)、\(f_0\)、\(v\)、つまり \(\Delta^3\) の背骨で、背骨の包含は inner anodyne。持ち上げは \(f_0\) を \((u,v)\) に沿って動かした \(v\circ f_0\circ u\) で、これが transport。</li>
+  <li><b>\(n=1\)、\(i=1\)（右 horn）</b>：\(D\) は \(u\)、\(f_1\)、\(v\)。欠けた辺 \(x_0\to y_0\) には \(u\) か \(v\) の逆が要り、一般には延長できない。\(\mathrm{Tw}(C)\) は右 fibration ではない。</li>
+  <li><b>\(n=2\)、\(i=0\)</b>：\(D\) は 3 単体 \(\bar1\bar0\,01\) と \(\bar2\bar0\,02\)、三角形 \(\bar2\bar1\bar0\) と \(012\) の和。ここから \(\Delta^5\) まで内部 horn の貼り付けで埋める。</li>
+  <li><b>一般の \(n\)</b>：形式化は組合せ論の判定法で処理する（TwistedArrow/HornLifting、SimplexPairing、PairingInner、PairingRegular）。\(D\) の外の非退化単体を余次元 1 の面と対にし（pairing）、対の面が常に内部の面で（inner）、祖先関係に無限下降がない（regular）ことを確かめて、内部 horn の貼り付けの列にする。主定理 <code>twistedArrowProjection_leftFibration</code>（TwistedArrow/LeftFibration）。</li>
+</ul>
+
+<h3>11.6 ファイバーの計算</h3>
+<p>\((x,y)\) 上のファイバーの \(n\) 単体は、左半分がすべて \(x\)、右半分がすべて \(y\) の \(\Delta^{2n+1}\to C\)（TwistedArrow/HomSpace）。</p>
+<ul>
+  <li>0 単体：射 \(f\colon x\to y\)。</li>
+  <li>1 単体：3 単体 \(x\xrightarrow{\mathrm{id}}x\to y\xrightarrow{\mathrm{id}}y\)。辺 \(f_0=(\bar0,0)\)、\(f_1=(\bar1,1)\)、\(a=(\bar1,0)\)、\(b=(\bar0,1)\)。四つの三角形は一辺が恒等射で \(f_0\sim a\)、\(f_0\sim b\)、\(a\sim f_1\)、\(b\sim f_1\)、3 単体がそれらを整合させる。\(\mathrm{Hom}^L(x,y)\) の 1 単体（三角形 \((x;y,y)\) 一つ）よりデータは多いが同値。</li>
+</ul>
+<p><b>比較写像</b>（<code>cosliceTwistedHomMap</code>）：左半分を錐点につぶす崩壊 \((\Delta^n)^{\mathrm{op}}\star\Delta^n\to\Delta^0\star\Delta^n\) の前合成で、\(n\) について自然な \(\mathrm{Hom}^L(x,y)\to\mathrm{Tw}(C)_{(x,y)}\)。\(n=1\) では三角形 \(\tau\) を退化した 3 単体に送り、\(a=f_0\)、\(b=f_1\)。素朴な逆「\(\bar0\star\Delta^n\) に制限」は、\(d_0\) が \(\bar0\) と \(0\) を同時に除くので面写像と可換にならない（\(N^{hc}\) の \(s_n\) と同じ種類の難点）。</p>
+<p><b>証明</b>（TwistedHomRows、TwistedHomDiagonal、Joins/CosliceTwistedHomEquivalence）：前に候補として挙げた二重単体の対角の方式。</p>
+<ol>
+  <li>左の大きさ \(m\) と右の大きさ \(n\) を別々に動かした二重単体集合 \(R_{m,n}=\{(\Delta^m)^{\mathrm{op}}\star\Delta^n\to C\mid\text{左は }x\text{、右は }y\text{ で一定}\}\)。</li>
+  <li>\(m\) を固定した行は、退化単体 \(\sigma\)（\(x\) の \(m\) 単体）の下のスライス \(C_{\sigma/}\) の \(y\) 上のファイバーそのもの。崩壊 \(\Delta^m\to\Delta^0\) による比較 \(\mathrm{Hom}^L(x,y)\to R_{m,\bullet}\) は同値（<code>cosliceSimplexExpansion_isQCatEquivalence</code>）。頂点への制限 \(C_{\sigma/}\to C_{x/}\) が trivial fibration で、join の持ち上げの補題で端の頂点の包含が anodyne であることに帰着する。</li>
+  <li>各行で同値なら対角でも同値（<code>localized_diagonal_map</code>）。</li>
+  <li>\(R\) の対角 \(R_{n,n}\) は \(\mathrm{Tw}(C)_{(x,y)}\)、定数の側の対角は \(\mathrm{Hom}^L(x,y)\)。</li>
+</ol>
+<p>自然性の問題は行ごとに \(m\) を固定して避け、対角補題が全体をまとめる。</p>
+
+<h3>11.7 straighten する</h3>
+<p>\[\mathrm{Map}_C:=\mathrm{St}\bigl(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\bigr)\colon C^{\mathrm{op}}\times C\to\mathcal S\]</p>
+<ul>
+  <li>値：\(\mathrm{Map}_C(x,y)\simeq\mathrm{Tw}(C)_{(x,y)}\simeq\mathrm{Hom}^L(x,y)\)（St の値はファイバーと同値。第一段は fibration 版 Yoneda、第二段は局所化）。</li>
+  <li>射の作用：\(\mathrm{Tw}(C)\) の辺に沿った transport で、\((u,v)\) に沿って \(f\mapsto v\circ f\circ u\)、選択はすべて可縮。</li>
+  <li>必要な St：底 \(C^{\mathrm{op}}\times C\) は一般の quasicategory なので、第一段だけでは足りず、\(\mathrm{fv}\) の局所化で降ろす第二段まで要る。</li>
+  <li>宇宙：\(C\) が宇宙 \(u\) で小さく、\(\mathcal S\) は \(u+1\)。底は <code>uliftFunctor</code> で持ち上げる。</li>
+  <li>形式化（Yoneda/YonedaInfinityConstruction）：<code>twistedArrowHomInfinity C := leftStraighteningInfinityDiagram (twistedArrowProjection C)</code>、curry した Yoneda 写像 <code>yonedaInfinityMap C</code>（\(C\to\mathcal P(C)\)）、\(h_c\) は <code>representablePresheafInfinity c</code>。</li>
+</ul>
+
+<h3>11.8 残りの比較</h3>
+<div class="table-wrap"><table>
+<tr><th>比較</th><th>議論</th><th>形式化</th></tr>
+<tr><td>(a) \(\mathrm{id}_x\) は \(\mathrm{Tw}_x=\{x\}\times_{C^{\mathrm{op}}}\mathrm{Tw}(C)\) の始対象</td><td>崩壊写像の全空間版 \(C_{x/}\to\mathrm{Tw}_x\) は \(C\) 上の左 fibration の間の写像で、11.6 でファイバーごとに同値なので全体で同値。\(\mathrm{id}_x\) は \(C_{x/}\) の始対象で、同値で保たれる</td><td>SourceInitial（<code>cosliceToTwistedArrowSource_isQCatEquivalence</code>、<code>twistedArrowSourceIdentity_isInitialVertex</code>）</td></tr>
+<tr><td>(b) \(\mathrm{Map}(x,y)\simeq\mathrm{Hom}^L(x,y)\)</td><td>St の値とファイバーの同値に 11.6 を合わせる</td><td>—</td></tr>
+<tr><td>(c) \(\mathrm{Un}(h_y)\simeq(C_{/y})^{\mathrm{op}}\)</td><td>\(h_y\) は \(\mathrm{Map}\) の \(C^{\mathrm{op}}\times\{y\}\) への制限で、Un は底変換と可換なので \(\mathrm{Un}(h_y)\simeq\mathrm{Tw}^y=\mathrm{Tw}(C)\times_C\{y\}\to C^{\mathrm{op}}\)。比較 \((C_{/y})^{\mathrm{op}}\to\mathrm{Tw}^y\) は右半分を錐点 \(y\) につぶす崩壊写像で、ファイバーごとに同じ主比較に戻して同値。(a) と双対</td><td>RightRepresentableTwistedArrowEquivalence</td></tr>
+<tr><td>(d) Yoneda 埋め込みの充満忠実性</td><td>\(\mathrm{Map}_{\mathcal P(C)}(h_x,h_y)\overset{h_1}{\simeq}\mathrm{Fun}_{/C^{\mathrm{op}}}(\mathrm{Un}\,h_x,\mathrm{Un}\,h_y)\overset{(c)}{\simeq}\mathrm{Fun}_{/C^{\mathrm{op}}}((C_{/x})^{\mathrm{op}},(C_{/y})^{\mathrm{op}})\simeq((C_{/y})^{\mathrm{op}})_x\simeq\mathrm{Hom}(x,y)\)（最後から二つ目は fibration 版 Yoneda、\(\mathrm{id}_x\) での評価）。加えて、合成が Yoneda 写像の写像空間への作用と一致することの照合（帳簿付けの重い部分）</td><td>YonedaInfinityFullyFaithful、YonedaRepresentableMapping</td></tr>
+<tr><td>(e) 関手版 Yoneda \(\mathrm{Map}(h_y,F)\simeq F(y)\)</td><td>\(h_1\) で \(\mathrm{Fun}_{/C^{\mathrm{op}}}((C_{/y})^{\mathrm{op}},\mathrm{Un}\,F)\) に移し、fibration 版 Yoneda で \(\mathrm{id}_y\) で評価</td><td>—</td></tr>
+</table></div>
+
+<h3>11.9 他の作り方との比較</h3>
+<div class="table-wrap"><table>
+<tr><th>方法</th><th>内容</th><th>難点</th></tr>
+<tr><td>Tw の St（採用）</td><td>11.1〜11.7</td><td>一般の底の St が要る</td></tr>
+<tr><td>\(\mathfrak C[C]\) の Hom（HTT 5.1.3）</td><td>\(\mathfrak C[C^{\mathrm{op}}\times C]\to\mathcal Kan\) を \(\mathfrak C[C]\) の Hom の Kan 化で作る</td><td>\(\mathfrak C[C](x,y)\simeq\mathrm{Hom}(x,y)\) の比較にモデル構造を使う</td></tr>
+<tr><td>矢の圏の両側 straightening</td><td>\(\mathrm{Fun}(\Delta^1,C)\to C\times C\) を両側 fibration として扱う</td><td>二変数の straightening を別に用意する</td></tr>
+<tr><td>関手にしない</td><td>前層を \(\mathrm{RFib}(C)\) とし、\(h_y\) を \(C_{/y}\) のまま扱う（Cisinski、∞-cosmos）</td><td>関手として扱う場面で St が要る</td></tr>
+</table></div>
+<p>流れ「fibration 版 Yoneda → St → Map → 関手版 Yoneda」の中で、\(\mathrm{Map}\) の構成は 11.6・11.8 で fibration 版 Yoneda を、11.7 で St を使う中間の位置にある。</p>
+<div class="table-wrap"><table>
+<tr><th>比較</th><th>鍵</th></tr>
+<tr><td>ファイバー ≃ \(\mathrm{Hom}^L\)</td><td>行ごとの同値（スライスの頂点への制限）と対角補題</td></tr>
+<tr><td>左 fibration</td><td>pairing による inner anodyne 性</td></tr>
+<tr><td>始対象・表現可能 fibration との同値</td><td>崩壊写像と左 fibration のファイバーごとの判定</td></tr>
+<tr><td>充満忠実性・関手版 Yoneda</td><td>\(h_1\)、fibration 版 Yoneda、作用の照合</td></tr>
+</table></div>
+
+<h2>この章で押さえること</h2>
+<ol>
+  <li>\(\mathcal S=N^{hc}(\mathcal Kan)\)。\(N^{hc}\) は Hom 空間の高次の単体を \(\mathfrak C[\Delta^n]\) の立方体を通して quasicategory の単体に組み込む翻訳で、局所 Kan なら quasicategory（内部 horn は開いた箱の充填）。</li>
+  <li>局所 Kan でないと外側の horn が現れ、coherent nerve は quasicategory にならない。\(\mathrm{Cat}_\infty\) で Hom を core にする理由。</li>
+  <li>写像空間の比較 \(\mathcal C(X,Y)\to\mathrm{Hom}^L\) は \(J^\bullet\to\Delta^\bullet\) の引き戻しで明示的に書けるが、切断が自然でないので素朴には示せない。</li>
+  <li>Kerodon と形式化は、自然な射影 \(\rho_K\colon\Phi(K)\to K\) をすべての \(K\) でカテゴリー同値と示し（骨格・セルの帰納法）、随伴で \(\theta\) に移す。標準単体では形式化は区間の切断と変形で直接縮約する。</li>
+  <li>\(\mathrm{Map}_C=\mathrm{St}(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C)\)。\(\mathrm{Tw}(C)_n=\mathrm{Hom}((\Delta^n)^{\mathrm{op}}\star\Delta^n,C)\) の単体は入れ子の矢で、op は \(\bar i\) と \(i\) を対にするため。左 fibration であることは対角的な和 \(D\subseteq\Delta^{2n+1}\) の inner anodyne 性（\(n=1\) では背骨）。</li>
+  <li>ファイバー ≃ \(\mathrm{Hom}^L(x,y)\) は崩壊写像が比較で、逆は単体ごとに作れないので、二重単体の行ごとの同値と対角補題で示す。残りの比較（始対象、\(\mathrm{Un}(h_y)\simeq(C_{/y})^{\mathrm{op}}\)、充満忠実性）は崩壊写像・ファイバーごとの判定・\(h_1\)・fibration 版 Yoneda で示す。</li>
+</ol>
+
+</main>
+</body>
+</html>

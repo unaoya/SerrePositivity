@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>整備後の ∞ 圏基盤</title>
+<link rel="stylesheet" href="../infinity/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.tag { display: inline-block; font-size: 0.78rem; padding: 0 0.4em; border: 1px solid var(--rule); border-radius: 3px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<h1>整備後の ∞ 圏基盤</h1>
+<p class="meta">
+  自分用の解説の新しいシリーズ（2026-10-28 開始）。
+  <a href="../../../formalization-plans/infinity-foundation-plan.md">∞ 圏基盤の整備計画</a>が目指す層の構成に沿って、∞ 圏基盤の数学と Lean の配置を説明する。
+</p>
+
+<h2>このシリーズの書き方</h2>
+<ul>
+  <li><b>整備後の構成で書く。</b>章立ては計画 §3 の層の順序（Simplicial &lt; Core &lt; Kan &lt; … &lt; Stable &lt; F2）に従う。</li>
+  <li><b>宣言ごとに、いまの所在と状態を添える。</b>
+    <ul>
+      <li>いまの所在 → 移し先、の形で書く。</li>
+      <li>状態は次の三つで示す。
+        <ul>
+          <li><span class="tag">済</span>：もう目標の場所にある。</li>
+          <li><span class="tag">移動予定</span>：計画の候補番号（R…）を付ける。</li>
+          <li><span class="tag">未着手</span>：まだない数学。段 G の M…。</li>
+        </ul>
+      </li>
+    </ul>
+    作業が進むたびに更新する。
+  </li>
+  <li>各章の冒頭に、基準コミットと計画の版を書く。</li>
+  <li>旧シリーズ <a href="../infinity/index.html">∞ 圏基盤の解説</a>（旧ディレクトリ単位、第 0〜8 章）は残す。
+    straightening・Yoneda・presentable などの詳しい説明は旧シリーズを参照する。</li>
+</ul>
+
+<h2>章</h2>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>内容</th><th>層</th><th>状態</th></tr>
+<tr><td><a href="00-map.html">0</a></td><td>全体地図：層の構成と順序の理由、各層の主な宣言と所在、中核に入れないもの、Verdier 商までの道筋</td><td>全体</td><td>草稿</td></tr>
+<tr><td><a href="01-simplicial-kan.html">1</a></td><td>単体的集合と Kan 複体：組合せ論、Kan fibration、ホモトピー群・長完全列・Whitehead、塔と lim¹、基点付き（Σ ⊣ Ω）</td><td>Simplicial・Kan</td><td>草稿</td></tr>
+<tr><td><a href="02-model-free.html">2</a></td><td>モデル圏を使わない基礎：small object argument による Kan 置換、anodyne 局所化、Kan 複体による判定、対角、ModelBridge の役割</td><td>Simplicial・Kan・ModelBridge</td><td>草稿</td></tr>
+<tr><td><a href="03-localization.html">3</a></td><td>quasicategory と局所化：Core の基本、Dwyer–Kan 局所化の存在（逆辺の貼り付けと inner anodyne 置換）、普遍性、hammock 局所化</td><td>Core・F1B/Localization</td><td>草稿</td></tr>
+<tr><td><a href="04-stable-verdier.html">4</a></td><td>安定 ∞ 圏と Verdier 列：定義、9 人論文の特徴づけ、束ねた形と束ねない形、厚い部分圏、随伴による判定</td><td>Stable・Stable/Verdier</td><td>草稿</td></tr>
+<tr><td><a href="05-verdier-quotient.html">5</a></td><td>Verdier 商への道筋：分数（Ore 条件と写像空間）、局所化の安定性、商の存在と関手性、Ind・Bousfield・Thomason–Neeman</td><td>Stable/Verdier・StablePresentable</td><td>草稿</td></tr>
+<tr><td><a href="06-straightening.html">6</a></td><td>straightening の現状と Cat∞ 値版への道：空間値の主経路、Kerodon との比較、一般の底に必要なもの、証明方法の比較、普遍 cocartesian fibration の構成案、Cat∞ 値が要る場所、presentable と \(\mathrm{Pr}^L\)</td><td>F1・F2</td><td>草稿</td></tr>
+<tr><td><a href="a-basics.html">補</a></td><td>基本事項の確認：始対象と写像空間、スライスと join の補題、4 単体と五角形、極限・随伴・随伴関手定理、基礎の枠組み（HoTT・∞-cosmos・合成的圏論）</td><td>Core ほか</td><td>草稿</td></tr>
+<tr><td><a href="b-literature-yoneda.html">補 2</a></td><td>文献の章立て・極限と Kan 拡張・Yoneda：Kerodon と HTT の章立て、Kerodon 第 7 章、cofinality、Kan 拡張の位置づけ、ホモトピー極限、fibration 版 Yoneda の詳しい証明</td><td>F1・F1B</td><td>草稿</td></tr>
+<tr><td><a href="c-spaces.html">補 3</a></td><td>空間の ∞ 圏 S：単体的圏と 𝔠[Δ^n]、coherent nerve と quasicategory 性、S と Cat∞、他の定義との比較、写像空間の比較定理（Kerodon 4.6.7 と形式化）、Hom 関手（twisted arrow の straightening、Tw の低次元の計算、持ち上げとファイバー、Yoneda の比較）</td><td>Coherent・F1/Coherent・Core</td><td>草稿</td></tr>
+</table></div>
+</main>
+</body>
+</html>

@@ -54,6 +54,8 @@
 | 10-28 | 局所化・分数・Verdier 商の API の正本を、Sp レーン（KST/LocalizingInvariants）から ∞ 層へ移す |
 | 10-28 | Kan 複体と pointed 単体的集合の層は InfinityCategories の中に作る |
 | 10-28 | F1・F1B・F2 の改名は後で行う |
+| 10-28 | 名前空間の付け替えは最後（R54）にまとめて行う |
+| 10-28 | Verdier 列は束ねた `IsVerdierSequence` を残し、束ねない形を包む定義として加える（R50） |
 | 10-28 | モデル圏はできるだけ避け、∞ 中核の下にモデル圏が入らないようにする。モデル圏 → ∞ の比較は、中核の上の橋の層（ModelBridge）に出す（R72） |
 | 10-28 | 層の名前は本書の §3 に統一する。R2 計画の旧名との対応：Foundation∞ ＝ {Core, Kan, Coherent, F1, F1B, HL}、Stable.Base ＝ Stable、Stable.F2Applications ＝ StablePresentable |
 
@@ -136,7 +138,6 @@ InfinityCategories/
 | R40a | 層検査（Python の import グラフ検査）を報告だけのモードで作る。§3 の層の表、禁止するディレクトリの組（KST・DG・EInfinity・ModelBridge・モデル圏の HA を中核から禁止）、例外の一覧を持つ。規則に「Core が import してよいのは Simplicial だけ。Kan は Core まで。Core の Kan の道具を増やさない」を含める。違反の数を記録し、§6 の段階的な強制で使う | なし | 現状の違反を全件出すこと | 8〜16h |
 | R74 | **新設**：段ごとの対象 JSON と、保存検査の道具を作る。<br>**JSON の項目**：`module`、`action`（move／split／archive）、`dest`、`keep`（split で元に残す宣言）、`moved`（split で新しいファイルへ移す宣言）、`attributes`（instance・simp などの保存すべき属性）、`note`。対象は R26（SpecifiedHomotopyLift・SpecifiedFunctorEdgeLift を含む）・R49b・R56a・R56b・R61・R64・R52・R69・R70・R72・R73。<br>**分割の手順**：move_module.py は移動（moves・redirects・symbols）だけで、ファイルの分割はできない。分割は、新しいファイルに宣言をそのまま写し、元から削り、import を張り替える小さな道具を作って行う。<br>**保存検査**：移動・分割の前後で、公開宣言ごとに (1) 名前（名前の変更は対応表で正規化して比べる）、(2) 型のハッシュ、(3) 定義の本体のハッシュ（定理以外の公開定義すべて。例：Bool の定義の値が変わったら検出できること）、(4) `#print axioms`、(5) 属性（instance・simp・reducibility など）が一致することを確かめる。<br>止めたレーンが未追跡ファイルを付け替える補助も作る | R40a | 対象 JSON から試算した移動後の層検査が通ること。故意に定義の本体を変えた試験で保存検査が失敗すること | 24〜40h |
 | R64a | Simplicial/・Kan/・Kan/Pointed/・ModelBridge/・Stable/Verdier/ などの骨組み（空の入口と監査）を新しいファイルとして作る。段 C の移し先がないという順序の穴を埋める | なし | ビルド | 1〜2h |
-| R50p | R50 の試作を、独立した新しいファイル（またはブランチ）で行う。射影・構築子・パターンマッチ・instance の推論・公開型を確かめる。`isVerdierSequence_of_adjoint` と Fibration の利用元 3 本で先に試し、その後 277 本に広げる | なし | 試作で 277 本がビルドできること | 1〜2 人日 |
 
 ### 段 A 入口と小口
 
@@ -155,7 +156,7 @@ InfinityCategories/
 | R48 | Verdier の基礎ブロック 7 本を移す。StableCategories・ExactEnrichment・StableInfinity・VerdierSequence・VerdierDiagrams・AdjointVerdier を Stable/Verdier・Stable/Infinity へ、AdjointLocalization を F1B/Localization へ。閉包は Core・Stable・F1・F1B・Coherent だけで、層を破らない（確認済み）。直接 import している 38〜43 本（数え方による）の import 行が変わる | なし | audit_localizing_invariants・audit_kst_s_construction | 2〜4h |
 | R49a | Derived の一般 3 本（ExactFunctorCategory・ExactFunctorCategoryEquivalence・StableVerdierSequence）を Stable/Exact・Stable/Verdier へ移す | なし | audit_derived_infinity・audit_infinity_stable | 1〜2h |
 | R49b | ExactFunctorDescent と RestrictedDeformationLocalization を、依存先の Derived 4 本（CofiberBottomIsoTransport・FullSubcomplexHomotopyLift・HomotopyPrecompVertex・RestrictedDeformationHomotopy。いずれも DG に依存しない）と一緒に移す。CofiberBottomIsoTransport は F2.CatInfinity.SpecifiedHomotopyLift → SpecifiedFunctorEdgeLift に依存するので、この 2 本を R26 の対象に加え、R26 の後に行う | R39・R26 | 同上 | 4〜8h |
-| R50 | 正本の定義を決める。いまの束ねた `IsVerdierSequence` は、9 人論文の Verdier 列の特徴づけ（A.1.1・A.1.5・A.1.9：充満忠実・核と像が一致・cofiber 辺での DK 局所化）にあたる。これを束ねない形（SSet とインスタンス）で新しく書いて正本にし、束ねた形はラッパー（abbrev、または旧 API を保つ構造体）にする。`IsStableVerdierSequence` は Comparison に置く。<br>注意：`essentialImage` が `ExactMap` の上で定義されているので、射影の型が変わる。影響するファイルは約 277 本（Fibration 134、LocalizingInvariants 129 ほか）。R50p の結果で形を決める | R50p | 定義上の等しさの検査、277 本のビルド | 1〜2 人日 |
+| R50 | 束ねない形を、既存の定義を包む定義として加える（10-28 決定）。<br>・束ねた `IsVerdierSequence`（9 人論文の Verdier 列の特徴づけ A.1.1・A.1.5・A.1.9 にあたる）は**そのまま残し**、約 277 本の利用元は変えない。三つの条件はどれも `i.hom`・`q.hom` しか使わないので、二つの形は包み方が違うだけで中身は同じ。<br>・Stable/Verdier/Basic に、束ねない形 `IsVerdierPair (i : X ⟶ Y) (q : Y ⟶ Z) [IsExactFunctor i] [IsExactFunctor q]`（仮の名前）を、インスタンスから StableCategory・ExactMap を組み立てて既存の定義に渡す定義として置く。同値補題 `isVerdierSequence_iff` も置く。<br>・`IsStableVerdierSequence` は Comparison に置く。新しく書くコードと M1〜M8 は束ねない形を使う | R48 | 同値補題がほぼ rfl で通ること。既存の利用元に差分がないこと | 2〜4h |
 | R53 | 厚い部分圏の一般述語 `IsThick`・`thickClosure` を新しいファイルとして作る（定義だけ）。使う `retractClosure` は F2/Idempotent/Retracts.lean:73 にあるので、先にそれを Core へ下ろす（そのまま使うと Stable → F2 の辺ができる）。dg 版 `dgThickClosureProperty`（triaRepresentable の retract 閉包）との一致は比較の証明が要るので段 G（M9）に分け、既存の定義を置き換えるのはその後にする | retractClosure の移動（W1） | — | 0.5〜1 人日 |
 
 ### 段 C 層の順序と、閉包を切る作業
@@ -178,7 +179,7 @@ InfinityCategories/
 | --- | --- | --- | --- | --- |
 | R64 | Simplicial・Kan・Kan/Pointed 層に中身を移す。ファイル単位の一括移動にはしない。<br>**規則**：宣言の内容と証明の依存で、対象 JSON（R74）に振り分ける。<br>・単体的集合だけで書ける部分は Simplicial へ。<br>・空間の理論（Core を使ってよい）は Kan へ。<br>・quasicategory との比較（`KanCharacterization` の Joyal の外 horn の充填、`KanFibrationTools`:58 の同値を使う補題、`F1/KanModels/KanAnodyneLocalization` の `IsQCatEquivalence` など）は Core に残す。<br>・豊穣の比較は Coherent・F1 に残す。<br>・閉包が Kan より上に出るものは F1・HL に置くか分割する。<br>出所：F1/Simplicial、F1/KanModels、F1B/KanComplex、HA/Simplicial の一般部分（Rectification を import しないもの）、KST/Spectra の Sp-S1・S2・S3・S5、SConstruction の SC-C3〜C5、KST/Comparison の Ex∞ と単体的ホモトピー、SerrePositivity/Spectra の PointedSimplicialSet・Pointed | R74・R64a・R27 | 層検査、保存検査 | 40〜80h |
 | R27 | HL・F1 → KST.Spectra の 27 辺を解消する。汎用の参照先は R64 の Kan 層へ移し、Spectrum* の 5 本は KST/Spectra/Limits へ移す | R40 | 中核の閉包に KST が入らないこと | 24〜48h（R64 と重なる） |
-| R65 | Dwyer–Kan 局所化（EInfinity/SimplicialLocalization・Hammock・FrameHom の一般部分）を F1B/Localization/DwyerKan と HL へ移す。<br>注意：この三つ全体（1,423 本）には、Derived への辺が約 30 本、KST への辺が約 8 本ある。移す G 部分集合を、閉包を基準に対象 JSON で選び直す | R74・R26 | 層検査 | 32〜64h（再見積り） |
+| R65 | Dwyer–Kan 局所化（EInfinity/SimplicialLocalization・Hammock・FrameHom の一般部分）を F1B/Localization/DwyerKan と HL へ移す。<br>注意：この三つ全体（1,423 本）には、Derived への辺が約 30 本、KST への辺が約 8 本ある。移す G 部分集合を、閉包を基準に対象 JSON で選び直す。相対圏の hammock 局所化そのもの（モデル圏を使わない部分）は F1B/Localization/DwyerKan へ移す。一般のモデル圏の ∞ 局所化 `modelHammock_isLocalization` とその周辺は、モデル圏を仮定するので ModelBridge へ出す（10-28 追記） | R74・R26 | 層検査 | 32〜64h（再見積り） |
 | R56a | 局所化の存在の周辺を F1B/Localization へ移す。対象は確定リスト（R74）で、少なくとも LocalizationResolution・GeneralLocalization・LocalizationFactorization・LocalizationUniqueness・InverseAttachment*・WalkingEquivalence*・ParametricDiagramGluing・CoreAnodyneLifting を含む。<br>注意：いまの閉包には F2（CoreAnodyneLifting → F2.CatInfinity.CoreIsofibration）、HL 146 本、HA/Simplicial（WalkingEquivalence → AnodyneKanReplacement）、straightening 9 本が入っており、このままでは F1B の straightening 禁止監査（scripts/audit_infinity_f1b.lean:24）に落ちる。そこで R26・R72 の後に行い、straightening を使う部分は F1 側に残す | R26・R72・R74 | audit_infinity_f1b | 8〜16h |
 | R56b | 比較・適用の部分（GroupoidCompletion*・SimplexAttachment*）は段 E で扱う。GroupoidCompletionFiniteFactorization は F2 を import し、SimplexAttachmentQuotientComparison の閉包は VerdierSequence に届く。いずれも閉包に DG と KST.Fibration を含む | R70・R66・R48 | 層検査 | 8〜16h |
 
@@ -211,9 +212,10 @@ InfinityCategories/
 | M2 | 安定 ∞ 圏 B の**安定な充満部分圏の cofiber 辺**による局所化は安定で、局所化関手は完全である（任意の局所化については言えない）。いまの分数の比較（`VerdierSpanCoherentContraction` など）は、商が安定であることと `IsVerdierSequence` を仮定している。M2 の証明に使うなら、それらの仮定を使わない部分を先に切り出す |
 | M3〜M6 | Ind_ω の余極限と presentable 性、安定な Bousfield 局所化、Thomason–Neeman（核が compact 生成されるなどの仮定を明記する）、Karoubi 列 |
 | M7 | 商の存在を二つに分ける。(a) 一般の安定な充満部分圏 A ⊂ B に対する商の存在。核は A の厚い閉包（像の retract 閉包）になる（R53 の `thickClosure` を使うので M9 の後に行う）。(b) A の像が厚いとき、核と像が一致し、`IsVerdierSequence` になる。宇宙の段に注意する（`exists_quasicategory_localization` は同じ宇宙 `SSet.{u}`、Ind_κ は一つ上の宇宙） |
-| M8 | **新設**：商の関手性。(a) 安定 ∞ 圏とその安定な部分圏の組 (B, A) と、部分圏を保つ完全関手のなす ∞ 圏の上で、(B, A) ↦ B/A が関手的であること。(b) その Calkin 懸垂への応用（非連結 K の再設計、Sp-3 の見積りで 9〜18 人日） |
+| M8 | **新設**：商の関手性。(a) 安定 ∞ 圏とその安定な部分圏の組 (B, A) と、部分圏を保つ完全関手のなす ∞ 圏の上で、(B, A) ↦ B/A が関手的であること。(b) その Calkin 懸垂への応用（非連結 K の再設計、Sp-3 の見積りで 9〜18 人日）。見通し（10-28）：存在定理の構成（J の貼り付け・Kan 置換・inner anodyne 置換）は、small object argument で関手的な分解を選べば (X, W) について厳密に関手的にできる見込みがあり、厳密な豊穣関手から coherent nerve の写像として ∞ 関手を得られる可能性がある。着手時の最初の検討事項（解説 infinity-foundation 第 5 章 §5） |
 | M9 | **新設**：一般の `thickClosure`（R53）と dg 版 `dgThickClosureProperty` の比較。証明の後に dg 版を置き換える |
 | M10 | **新設**：R61b で「比較の定理が要る」とした組の比較（例：∞ 関手としての Σ とホモトピー圏の関手 Σ） |
+| M11 | **新設（10-28）**：一般の相対圏 (C, W) について、hammock 局所化の nerve への関手 `hammockLocalizationNerveMap : nerve C.category ⟶ kanHammockNerve C` が `IsLocalization` を満たすこと。いまはモデル圏の場合（`modelHammock_isLocalization`、ModelBridge へ出す）しか証明がなく、一般には `hammockLocalizationNerveMap_inverts` だけがある。数学的には知られた定理（Hinich, "Dwyer–Kan localization revisited", 2016 など。参照は要確認）。これがあれば、局所化の写像空間を、モデル圏を使わずに中核（F1B/Localization/DwyerKan）で計算できる。Verdier 商の写像空間（分数）との比較にも使える |
 
 置き場所は Stable/Verdier と StablePresentable（R55）。M1〜M7 の詳細は [refactoring-verdier.md](refactoring-verdier.md) §5。
 2 件目の外部レビューが M2 の参照として挙げた「Drew, 定理 1.3」は、まだ確かめていない。
@@ -224,7 +226,7 @@ InfinityCategories/
 
 | 窓 | 止める範囲 | 行うこと（この順に直列。同じ集約ファイルを触る作業は並列にしない） | 工数の目安 | 終わりの条件（R40 の強制の段階） |
 | --- | --- | --- | --- | --- |
-| W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a・R50p）、R61b の読解 | 45〜90h | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている、R50p の結論が出ている |
+| W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a）、R61b の読解 | 40〜80h | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
 | W1 | 全停止 | 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
 | W2a | Sp レーン、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 | 120〜240h、4〜6 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし |
 | W2b | F2・HL・Stable の担当 | R73 → R37 → R38 | 56〜112h、2〜3 日 | 中核の層の順序の違反 0（例外一覧を除く）。**ここで中核の完了条件 1・5 がそろう** |
@@ -233,6 +235,20 @@ InfinityCategories/
 - 各窓の再開の条件は共通：verify 全緑（PASS）、その窓の終わりの条件、保存検査の一致、付け替えの補助の配布。
 - 段 F は W2c の後に領域ごとに行う。段 G は窓の外。
 - 工数は依存の順に沿って足し直した。合計は約 400〜800h（段 F・G を除く）。止める期間は合わせて 13〜19 日になるので、W2a・W2b・W2c は止める範囲を絞り、他のレーンは動かし続ける。
+
+**指示書の単位**（10-28 ユーザー指示：Codex への指示は大きなまとまりで出す）。一つの指示書の中に「止めて報告する」点を置き、判断が要るところで Claude が検収する。
+
+| 指示書 | 内容 | 窓 |
+| --- | --- | --- |
+| IF-W0-1 | R41（verify.sh を関門にする） | W0（**完了** 10-28、main `88c477612`。基準実行は全 99 監査 PASS、既知の失敗なし。通しの実行は約 69 分） |
+| IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
+| IF-W0-3 | 対象 JSON の作成（R26・R49b・R56a/b・R61・R64・R52・R69・R70・R72・R73）と R61b の読解記録 | W0 |
+| IF-W1-1 | 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
+| IF-W1-2 | 閉包の切断（R26 → R39 → R66 → R71 → R49b） | W1 |
+| IF-W2a | R72 → R64 → R27 → R56a → R65 | W2a |
+| IF-W2b | R73 → R37 → R38 | W2b |
+| IF-W2c | 段 E | W2c |
+| IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
 
 **各回の検証**（すべて通るまで次へ進まない）：
 - `scripts/refactor/verify.sh`（R41 の強化版）：全体ビルド、自動で列挙した全監査、`main_statement` の sorry 閉包。失敗が一つでもあれば非零で終了する。
@@ -273,7 +289,7 @@ InfinityCategories/
   - 関門：verify.sh が失敗しても正常終了することを確かめ、R41 を段 0 の関門に書き直した。監査は自動で列挙する（99 本）。
   - 確定リスト：段ごとの対象 JSON（R74）を新設した。R56 を R56a・R56b に、R61 を R61a・R61b に分けた。R49b には依存先の 4 本を加えた。
   - 順序：移し先の骨組み（R64a）を先に作る。R53 の前に retractClosure を Core へ下ろす。
-  - 移動以上の変更：R50 の試作（R50p）を窓の前提にした。R53 の比較と R57 の条件を段 G に分けた。
+  - 移動以上の変更：R50 の試作（R50p）を窓の前提にした（その後 10-28 に、R50 を「束ねた定義を包む定義」に変えたため、R50p は削除した）。R53 の比較と R57 の条件を段 G に分けた。
   - 数学的な仮定：M2・M5・M7 の仮定を明記した。M8（商の関手性）・M9・M10 を新設した。
   - 窓：W2 を W2a・W2b に分け、上限と再開の条件を付けた。概要で、自立させるのは中核に限ることを明記した。
   - 数値：R48・R52・R63・R66 の数値を直した。
@@ -289,11 +305,8 @@ InfinityCategories/
 
 1. **（10-28 決定済み）モデル圏**：中核の下に入れない（R72）。残る判断は、ModelBridge をどの段で作るかだけ（案：W1 で R72 と一緒に作る）。
 2. **（10-28 方針決定）FilteredExchange**：R73 の三分割で処置する。archive へ移す 1,727 本を、診断として残すか、archive へ移すか、削除するかは R60 で決める。
-3. **名前空間の付け替えの時期**。推奨は、R54 で最後にまとめて行うこと。ただし次の二つを守る。
-   - 新しく作る正本（R50 の束ねない形、R53 など）は、最初から正しい名前空間で書く。
-   - 移動のたびに、名前空間の対応表を記録しておく。
-   段ごとに付け替える案は、各回の範囲が小さいかわりに、窓ごとに全レーンの参照が変わる。比較はユーザーへの説明（10-28）のとおり。
-4. **R50 の試作の結果**次第では、束ねた形を abbrev にせず、二つの形を両方残して比較補題でつなぐ案に切り替える。
+3. **（10-28 決定済み）名前空間**：R54 で最後にまとめて付け替える。新しく作る正本は最初から正しい名前空間で書き、移動のたびに名前空間の対応表を記録する。
+4. **（10-28 決定済み）R50**：束ねた定義を残し、束ねない形はそれを包む定義と同値補題として加える。試作（旧 R50p）は不要になった。
 5. **Kan と Core の順序**：本計画は、移動だけで済む Core < Kan を採る。外部レビューが支持する Kerodon の順序（Kan < Core）に揃えるには、Kan の証明から Core への依存を外す書き換えが要る。段 G の後で改めて判断する。
 
 ## 10. 根拠となる調査
@@ -307,3 +320,4 @@ InfinityCategories/
 | [refactoring-infinity.md](refactoring-infinity.md) | 第 1 窓（R1〜R25）の記録、旧所在→新所在の対応表、索引 |
 | [infinity-foundation-plan-review-request.md](infinity-foundation-plan-review-request.md)・[同 第 2 回](infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
 | [infinity-codex-w0-1.md](infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
+| [infinity-codex-w0-2.md](infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
