@@ -1,0 +1,2 @@
+# audit_file	baseline_commit	expected_signature_json	reason_and_owner
+# 基準コミット 4ab7665b3（2026-10-28）で全 99 監査が成功したため、既知の失敗はなし

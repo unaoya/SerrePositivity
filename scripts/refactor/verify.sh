@@ -1,41 +1,224 @@
 #!/bin/zsh
-# 概要：リファクタ取り込み時の検証。監査スクリプトが import する全モジュールをビルドし、全監査と sorry 閉包監査を実行する。
-# 方針：ルートの全体ビルドだけでは F2・HomotopyLimits・KST の集約外モジュールが再ビルドされないため、監査対象を明示的にビルドする。
-# 規約：他の lake build と同時に走らせない（olean の競合を避ける）。結果は scripts/refactor/verify.log に追記。
-# 　　　実行前に、ソースの無い古い olean（移動・削除済みモジュール）を .lake/build から除く（古い宣言の二重読込を防ぐ）。
-# 使われ方：R レーンまたはコーディネータが main の取り込み前後に実行する。
+# 概要：ビルド・全監査・sorry 閉包をまとめて合否を判定する。
+# 方針：失敗を保存して集計し、既知の監査失敗だけを署名の完全一致で除外する。
+# 規約：専用 worktree で実行する。生成物は .lake/verify、ログは verify.log。
+# 使われ方：README.md の基準実行と検収に用いる。
 set -o pipefail
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/../.." || exit 1
+zmodload zsh/datetime || exit 1
+export LC_ALL=C
 LOG=scripts/refactor/verify.log
-echo "=== verify $(date '+%F %T') HEAD $(git rev-parse --short HEAD)" | tee -a $LOG
-echo "--- remove orphan oleans (modules without source)" | tee -a $LOG
-python3 - <<'PY' | tee -a $LOG
-import os
-B='.lake/build/lib/lean/SerrePositivity'; S='SerrePositivity'; n=0
-for root,_,files in os.walk(B):
-    for fn in files:
-        if fn.endswith('.olean'):
-            rel=os.path.relpath(os.path.join(root,fn),B)[:-6]
-            if not os.path.exists(os.path.join(S,rel+'.lean')):
-                base=os.path.join(root,fn[:-6])
-                for ext in ['.olean','.olean.hash','.olean.private','.olean.private.hash','.olean.server','.olean.server.hash','.ilean','.ilean.hash','.trace','.ir','.ir.hash','.ir.sig','.ir.sig.hash','.c','.c.hash']:
-                    f=base+ext
-                    if os.path.exists(f): os.remove(f)
-                n+=1
-print(f'removed orphan modules: {n}')
+OUT=.lake/verify
+mkdir -p "$OUT" || exit 1
+started=$EPOCHREALTIME
+export VERIFY_STARTED=$started
+: > "$OUT/stages.tsv" || exit 1
+print -r -- "=== verify $(date '+%F %T') HEAD $(git rev-parse HEAD)" | tee -a "$LOG"
+
+# Capture every pipeline status immediately; never let filtering hide the command status.
+run_stage() {
+  local kind=$1 label=$2
+  shift 2
+  local begin=$EPOCHREALTIME
+  local -a codes
+  local output="$OUT/${kind}-${stage_index}.log"
+  print -r -- "--- $kind $label" | tee -a "$LOG"
+  "$@" 2>&1 | tee "$output" >> "$LOG"
+  codes=("${pipestatus[@]}")
+  local rc=${codes[1]}
+  if (( codes[2] != 0 )); then rc=1; fi
+  local elapsed=$(( EPOCHREALTIME - begin ))
+  printf '%s\t%s\t%s\t%.3f\t%s\n' "$kind" "$label" "$rc" "$elapsed" "$output" >> "$OUT/stages.tsv"
+  print -r -- "$kind $label rc=$rc ${elapsed}s" | tee -a "$LOG"
+  (( stage_index += 1 ))
+  return $rc
+}
+integer stage_index=0
+run_stage preparation manifest-and-targets python3 - <<'PY'
+import json, os, re, time
+from pathlib import Path
+out = Path('.lake/verify')
+prep = {'errors': [], 'new_audits': [], 'missing_audits': [], 'audit_count': 0}
+try:
+    # Preserve the original orphan cleanup, including companion artifacts.
+    base = Path('.lake/build/lib/lean/SerrePositivity')
+    removed = 0
+    for olean in base.rglob('*.olean'):
+        rel = olean.relative_to(base).with_suffix('.lean')
+        if not (Path('SerrePositivity') / rel).exists():
+            stem = str(olean)[:-6]
+            for ext in ['.olean','.olean.hash','.olean.private','.olean.private.hash',
+                        '.olean.server','.olean.server.hash','.ilean','.ilean.hash',
+                        '.trace','.ir','.ir.hash','.ir.sig','.ir.sig.hash','.c','.c.hash']:
+                Path(stem + ext).unlink(missing_ok=True)
+            removed += 1
+    print(f'removed orphan modules: {removed}')
+    audits = sorted(str(p) for p in Path('scripts').glob('audit_*.lean'))
+    audits += sorted(str(p) for p in Path('scripts/audit').glob('*.lean'))
+    audits = sorted(audits)
+    prep['audit_count'] = len(audits)
+    manifest = [s.strip() for s in Path('scripts/refactor/audit_manifest.txt').read_text().splitlines()
+                if s.strip() and not s.startswith('#')]
+    if len(manifest) != len(set(manifest)):
+        prep['errors'].append('duplicate audit manifest entries')
+    prep['missing_audits'] = sorted(set(manifest) - set(audits))
+    prep['new_audits'] = sorted(set(audits) - set(manifest))
+    for path in prep['missing_audits']:
+        prep['errors'].append(f'manifest audit missing: {path}')
+    for path in prep['new_audits']:
+        print(f'一覧への追加が必要: {path}')
+    # 99 is the initial manifest size, not a permanent cap on future audits.
+    extra = os.environ.get('VERIFY_EXTRA_AUDITS', '').split()
+    audits = list(dict.fromkeys(audits + extra))
+    prep['executed_audit_count'] = len(audits)
+    (out / 'audits.txt').write_text(''.join(p + '\n' for p in audits))
+    targets = set()
+    for path in audits:
+        source = Path(path).read_text()
+        # Remove nested Lean comments while retaining line boundaries.
+        source = re.sub(r'/\-.*?\-/', lambda m: '\n' * m[0].count('\n'), source, flags=re.S)
+        for line in source.splitlines():
+            line = line.split('--', 1)[0]
+            match = re.match(r'^\s*(?:public\s+)?import\s+(?:all\s+)?(.*)$', line)
+            if match:
+                targets.update(t for t in match[1].split()
+                               if re.fullmatch(r'SerrePositivity(?:\.[\w\u0080-\uffff]+)*', t))
+    prep['target_count'] = len(targets)
+    (out / 'audit_targets.txt').write_text(''.join(t + '\n' for t in sorted(targets)))
+    print(f'audits: {prep["audit_count"]}; with extras: {len(audits)}; build targets: {len(targets)}')
+except Exception as exc:
+    prep['errors'].append(str(exc))
+(out / 'preparation.json').write_text(json.dumps(prep, ensure_ascii=False, indent=2) + '\n')
+for error in prep['errors']:
+    print('error: ' + error)
+raise SystemExit(bool(prep['errors']))
 PY
-echo "--- lake build SerrePositivity" | tee -a $LOG
-lake build SerrePositivity 2>&1 | grep -E 'error|✖|Build completed' | tail -20 | tee -a $LOG
-# 監査対象は実行時に監査スクリプトの import 行から集める（移動後の所在に追随する）。
-grep -hE '^import SerrePositivity' scripts/audit_*.lean | sed 's/^import //' | sort -u > scripts/refactor/audit_targets.txt
-echo "--- lake build <audit targets> ($(wc -l < scripts/refactor/audit_targets.txt | tr -d ' ') modules, derived from scripts/audit_*.lean)" | tee -a $LOG
-lake build $(tr '\n' ' ' < scripts/refactor/audit_targets.txt) 2>&1 | grep -E '^error|✖|Build completed|^- SerrePositivity' | tail -60 | tee -a $LOG
-echo "--- audits" | tee -a $LOG
-for a in audit_infinity_core audit_infinity_f1 audit_infinity_f1b audit_infinity_f1_f1b audit_infinity_f2 audit_f2_ind audit_f2_compact audit_f2_idempotent audit_infinity_presentable audit_homotopy_limits audit_infinity_stable audit_derived_infinity audit_derived_gluing audit_dg_nerve audit_coherent_nerve audit_dold_kan_comparison audit_einfinity audit_kst_fibration audit_kst_s_construction audit_localizing_invariants audit_kst_nonconnective audit_kst_spectra audit_spectra audit_refactor_infinity; do
-  s=$(date +%s); out=$(lake env lean scripts/$a.lean 2>&1); rc=$?
-  echo "$a rc=$rc $(( $(date +%s) - s ))s" | tee -a $LOG
-  [ $rc -ne 0 ] && echo "$out" | grep -m3 'error' | cut -c1-240 | tee -a $LOG
-done
-echo "--- sorry closure of main_statement" | tee -a $LOG
-lake env lean scripts/refactor/audit_sorries.lean 2>&1 | tail -5 | tee -a $LOG
-echo "=== end $(date '+%F %T')" | tee -a $LOG
+prep_rc=$?
+if (( prep_rc == 0 )); then
+  if [[ ${VERIFY_SKIP_BUILD:-0} != 1 ]]; then
+    run_stage build root lake build SerrePositivity
+    targets=("${(@f)$(< "$OUT/audit_targets.txt")}")
+    if (( ${#targets} )); then
+      run_stage build audit-targets lake build "${targets[@]}"
+    fi
+  fi
+  audits=("${(@f)$(< "$OUT/audits.txt")}")
+  for audit in "${audits[@]}"; do
+    run_stage audit "$audit" lake env lean "$audit"
+  done
+  run_stage sorry scripts/refactor/audit_sorries.lean lake env lean scripts/refactor/audit_sorries.lean
+fi
+
+python3 - <<'PY' | tee -a "$LOG"
+import json, os, re, subprocess, time
+from pathlib import Path
+out = Path('.lake/verify')
+prep = json.loads((out / 'preparation.json').read_text())
+failures = list(prep['errors'])
+baseline = {}
+baseline_path = Path(os.environ.get('VERIFY_BASELINE', 'scripts/refactor/verify_baseline.txt'))
+try:
+    for i, line in enumerate(baseline_path.read_text().splitlines(), 1):
+        if not line.strip() or line.startswith('#'):
+            continue
+        path, commit, signature, reason = line.split('\t')
+        sig = json.loads(signature)
+        if path in baseline or not re.fullmatch(r'[0-9a-f]{40}', commit) or not reason.strip():
+            raise ValueError(f'invalid/duplicate entry on line {i}')
+        if set(sig) != {'error_count', 'errors'} or sig['error_count'] != len(sig['errors']) or not sig['errors']:
+            raise ValueError(f'invalid signature on line {i}')
+        baseline[path] = sig
+except Exception as exc:
+    failures.append(f'baseline error: {exc}')
+
+ansi = re.compile(r'\x1b\[[0-9;]*[A-Za-z]')
+def normalize(s):
+    return ' '.join(ansi.sub('', s).split())
+
+def declaration(path, line):
+    """Include the source command/name; unnamed commands retain their source text."""
+    try:
+        lines = Path(path).read_text().splitlines()
+    except OSError:
+        return '<unknown>'
+    for text in reversed(lines[:line]):
+        if re.match(r'^\s*(?:#(?:print|check|eval|guard|assert)|(?:private\s+|public\s+|noncomputable\s+|unsafe\s+)*(?:theorem|lemma|def|opaque|axiom|example|instance)\b)', text):
+            return normalize(text)
+    return '<top-level>'
+
+def signature(text):
+    lines = ansi.sub('', text).splitlines()
+    errors = []
+    excerpts = []
+    for i, line in enumerate(lines):
+        m = re.match(r'^(.*?):(\d+):(\d+): error(?:\([^)]*\))?:\s*(.*)$', line)
+        if not m:
+            continue
+        path = m[1]
+        try:
+            path = str(Path(path).resolve().relative_to(Path.cwd()))
+        except ValueError:
+            pass
+        message = m[4]
+        if not message.strip() and i + 1 < len(lines):
+            message = lines[i + 1]
+        errors.append({'file': path, 'line': int(m[2]),
+                       'declaration': declaration(path, int(m[2])), 'message': normalize(message)})
+        excerpts.append(lines[i:i+3])
+    return {'error_count': len(errors), 'errors': errors}, excerpts
+
+counts = {k: {'success': 0, 'failure': 0, 'known': 0} for k in ('build', 'audit', 'sorry', 'preparation')}
+records = []
+for row in (out / 'stages.tsv').read_text().splitlines():
+    kind, label, rc, duration, logfile = row.split('\t')
+    rc = int(rc)
+    record = {'kind': kind, 'name': label, 'exit_code': rc, 'seconds': float(duration), 'log': logfile}
+    state = 'success' if rc == 0 else 'failure'
+    if kind == 'audit':
+        if rc:
+            text = Path(logfile).read_text(errors='replace')
+            sig, excerpts = signature(text)
+            record['signature'] = sig
+            record['error_first_three_lines'] = excerpts
+            # An unparsed process/tool error must never become an approved failure.
+            unparsed = [line for line in text.splitlines()
+                        if re.search(r'(^|\s)(?:error:|fatal error:)', line)
+                        and not re.match(r'^.*?:\d+:\d+: error(?:\([^)]*\))?:', line)]
+            if sig['error_count'] and not unparsed and baseline.get(label) == sig:
+                state = 'known'
+            print(f'{state.upper()}: {label} signature=' + json.dumps(sig, ensure_ascii=False, separators=(',', ':')))
+            for excerpt in excerpts:
+                print('\n'.join(excerpt))
+            if not excerpts:
+                print('\n'.join(text.splitlines()[:3]))
+        elif label in baseline:
+            print(f'一覧から外せる: {label}')
+    record['result'] = state
+    counts[kind][state] += 1
+    if state == 'failure':
+        failures.append(f'{kind}: {label} (exit {rc})')
+    records.append(record)
+executed = {r['name'] for r in records if r['kind'] == 'audit'}
+for path in baseline.keys() - executed:
+    failures.append(f'baseline audit not executed: {path}')
+# Any explicitly set test hook is non-gate, including sorry-closure overrides.
+hooks = ('VERIFY_EXTRA_AUDITS', 'VERIFY_SKIP_BUILD', 'VERIFY_BASELINE', 'SORRY_AUDIT_ROOT', 'SORRY_AUDIT_ALLOWED')
+gate = not any(k in os.environ for k in hooks)
+status = 'FAIL' if failures else 'PASS'
+summary_line = status + ('' if gate else ' (non-gate)') + ' ' + ' '.join(
+    f'{k}(success={v["success"]},failure={v["failure"]},known={v["known"]})' for k,v in counts.items())
+summary = {'status': status, 'gate': gate, 'summary': summary_line,
+           'commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+           'seconds': round(time.time() - float(os.environ['VERIFY_STARTED']), 3),
+           'audit_count': prep['audit_count'], 'target_count': prep.get('target_count', 0),
+           'counts': counts, 'failures': failures, 'new_audits': prep['new_audits'], 'stages': records}
+(out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+print(f'total: {summary["seconds"]}s')
+for failure in failures:
+    print('failure: ' + failure)
+print(summary_line)
+raise SystemExit(bool(failures))
+PY
+codes=("${pipestatus[@]}")
+(( codes[1] == 0 && codes[2] == 0 )) || exit 1
+exit 0
