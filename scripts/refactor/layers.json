@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "layers": [
+    {
+      "name": "Simplicial",
+      "rank": 0,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Simplicial"
+      ]
+    },
+    {
+      "name": "Core",
+      "rank": 1,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Core",
+        "SerrePositivity.InfinityCategories.PinchedHom"
+      ]
+    },
+    {
+      "name": "Kan",
+      "rank": 2,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Kan"
+      ]
+    },
+    {
+      "name": "Coherent",
+      "rank": 3,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Coherent"
+      ]
+    },
+    {
+      "name": "F1",
+      "rank": 4,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.F1"
+      ]
+    },
+    {
+      "name": "F1B",
+      "rank": 4,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.F1B"
+      ]
+    },
+    {
+      "name": "HomotopyLimits",
+      "rank": 4,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits"
+      ]
+    },
+    {
+      "name": "Stable",
+      "rank": 5,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Stable"
+      ]
+    },
+    {
+      "name": "F2",
+      "rank": 6,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.F2"
+      ]
+    },
+    {
+      "name": "StablePresentable",
+      "rank": 7,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.StablePresentable"
+      ]
+    },
+    {
+      "name": "ModelBridge",
+      "rank": 8,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.ModelBridge"
+      ]
+    },
+    {
+      "name": "DGNerve",
+      "rank": 9,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.DGNerve"
+      ]
+    },
+    {
+      "name": "DoldKanComparison",
+      "rank": 9,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.DoldKanComparison"
+      ]
+    },
+    {
+      "name": "Derived",
+      "rank": 10,
+      "prefixes": [
+        "SerrePositivity.InfinityCategories.Derived"
+      ]
+    }
+  ],
+  "core": [
+    "Simplicial",
+    "Core",
+    "Kan",
+    "Coherent",
+    "F1",
+    "F1B",
+    "HomotopyLimits",
+    "Stable",
+    "F2",
+    "StablePresentable"
+  ],
+  "forbidden": {
+    "W1": [
+      "SerrePositivity.DifferentialGraded",
+      "SerrePositivity.EInfinity",
+      "SerrePositivity.InfinityCategories.DGNerve",
+      "SerrePositivity.InfinityCategories.DoldKanComparison",
+      "SerrePositivity.InfinityCategories.Derived"
+    ],
+    "W2a_additions": [
+      "SerrePositivity.KST",
+      "SerrePositivity.Spectra",
+      "SerrePositivity.InfinityCategories.ModelBridge",
+      "SerrePositivity.HomotopicalAlgebra.Quillen",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex",
+      "SerrePositivity.HomotopicalAlgebra.Generated",
+      "SerrePositivity.HomotopicalAlgebra.Transfer",
+      "SerrePositivity.HomotopicalAlgebra.Monoidal",
+      "SerrePositivity.HomotopicalAlgebra.Localization",
+      "SerrePositivity.HomotopicalAlgebra.Rectification"
+    ]
+  },
+  "model_category_rule": {
+    "prefix": "SerrePositivity.HomotopicalAlgebra",
+    "code_contains": "ModelCategory",
+    "active_from": "W2a"
+  },
+  "allowed_until_move": [
+    "SerrePositivity.Spectra.PointedSimplicialSet",
+    "SerrePositivity.Spectra.Pointed"
+  ],
+  "restricted_imports": {
+    "Core": {
+      "layers": [
+        "Core",
+        "Simplicial"
+      ],
+      "external_prefixes": [
+        "Mathlib"
+      ]
+    },
+    "Kan": {
+      "layers": [
+        "Kan",
+        "Core",
+        "Simplicial"
+      ],
+      "external_prefixes": [
+        "Mathlib"
+      ]
+    }
+  },
+  "exceptions": [],
+  "prefix_matching": {
+    "rule": "m == p or m.startswith(p + \".\")",
+    "layer_precedence": "longest matching prefix",
+    "applies_to": [
+      "layers.prefixes",
+      "forbidden",
+      "allowed_until_move",
+      "restricted_imports.external_prefixes"
+    ],
+    "restricted_layers": "Layer names in restricted_imports.layers refer to the same longest-prefix classification."
+  }
+}
