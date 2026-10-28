@@ -15,3 +15,7 @@
 
 # Python caches
 __pycache__/
+
+# Refactor verification artifacts
+/scripts/refactor/audit_targets.txt
+/scripts/refactor/verify.log
