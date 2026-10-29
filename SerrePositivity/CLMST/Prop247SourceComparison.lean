@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247BaseChange
 public import SerrePositivity.HomologicalAlgebra.CompletedFlatBoundedComparison
 public import SerrePositivity.HomologicalAlgebra.AlgebraScalarExtensionModule
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteLinearEquiv
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # Prop 2.4.7：始域の完備導来底変換と通常 tensor
 

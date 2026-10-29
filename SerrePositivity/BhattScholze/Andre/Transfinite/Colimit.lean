@@ -30,7 +30,7 @@ public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatInjective
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusKernel
 
 /-!

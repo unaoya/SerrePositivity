@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Jacobson
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionRegular
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 
 /-!

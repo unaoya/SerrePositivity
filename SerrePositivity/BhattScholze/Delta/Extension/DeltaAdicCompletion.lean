@@ -6,9 +6,8 @@ public import Mathlib.RingTheory.Ideal.Operations
 public import Mathlib.RingTheory.Ideal.Maps
 public import Mathlib.RingTheory.Ideal.Quotient.PowTransition
 public import Mathlib.RingTheory.AdicCompletion.Algebra
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.AdicCompletion.RingHom
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionExt
 
 /-!
 # δ とイデアル冪の評価と、古典的 I 進完備化への延長（BS 著者版 Lemma 2.17）

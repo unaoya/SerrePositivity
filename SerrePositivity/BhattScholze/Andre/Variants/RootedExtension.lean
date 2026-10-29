@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
 public import SerrePositivity.BhattScholze.Prism.Perfection.PCompletedPerfection
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionOpenQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 
 /-!

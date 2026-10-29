@@ -7,9 +7,9 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
 public import SerrePositivity.CommutativeAlgebra.PrincipalAdicFaithfulDescent
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
-public import SerrePositivity.CommutativeAlgebra.AdicStrictQuotient
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.Regular.IsSMulRegular
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 

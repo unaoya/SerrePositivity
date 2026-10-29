@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionRegular
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClassicalComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 

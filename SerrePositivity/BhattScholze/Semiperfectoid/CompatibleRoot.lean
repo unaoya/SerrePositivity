@@ -10,7 +10,7 @@ public import SerrePositivity.CommutativeAlgebra.CompatibleRootFamilyIdeal
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
 public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-!
 # perfectoid 環の互換 p 冪根で生成されるイデアルと商

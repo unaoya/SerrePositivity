@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
-public import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsionQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 
 /-!
 # distinguished 元の正則性と商の p 冪ねじれ（BS 著者版 Lemma 2.34）

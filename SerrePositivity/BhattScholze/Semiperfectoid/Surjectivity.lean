@@ -15,7 +15,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
-public import SerrePositivity.CommutativeAlgebra.AdicRingHomRange
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
 
 /-!
