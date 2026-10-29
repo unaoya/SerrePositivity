@@ -13,7 +13,8 @@ set_option backward.defeqAttrib.useBackward true
 
 /-- Divisibility on I/I² supplies idempotence of the actual image of I modulo aⁿ,
 including n=0. No completeness, regularity, or Noetherian hypotheses are needed. -/
-lemma ideal_mod_power_idempotent_of_conormal_surjective {R : Type u} [CommRing R] (a : R) (I : Ideal R)
+lemma ideal_mod_power_idempotent_of_conormal_surjective {R : Type u} [CommRing R] (a : R)
+    (I : Ideal R)
     (h : Function.Surjective (fun x : I.Cotangent => a • x)) (n : ℕ) :
     IsIdempotentElem (I.map (Ideal.Quotient.mk (Ideal.span {a ^ n}))) := by
   have hn : Function.Surjective (fun x : I.Cotangent => a ^ n • x) := by

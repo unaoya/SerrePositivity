@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
-public import SerrePositivity.CommutativeAlgebra.AdicFiniteGeneration
+public import SerrePositivity.CommutativeAlgebra.Adic.Finite
 public import Mathlib.RingTheory.AdicCompletion.Completeness
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import Mathlib.RingTheory.AdicCompletion.Topology

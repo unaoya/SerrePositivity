@@ -14,7 +14,6 @@ import SerrePositivity.FieldTheory.PBasisCofiniteField
 import SerrePositivity.CommutativeAlgebra.FrobeniusKernelLift
 import SerrePositivity.CommutativeAlgebra.PBasisLifting
 import SerrePositivity.FieldTheory.FrobeniusPowerSubfield
-import SerrePositivity.CommutativeAlgebra.KernelPowerQuotient
 import SerrePositivity.CommutativeAlgebra.CoefficientField
 import SerrePositivity.CommutativeAlgebra.CohenGabber.CoefficientSection
 import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
@@ -50,10 +49,9 @@ import SerrePositivity.CommutativeAlgebra.ResidueFieldClosedStep
 import SerrePositivity.CommutativeAlgebra.ResidueFieldHistory
 import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralExtension
 import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralCompletion
-import SerrePositivity.CommutativeAlgebra.AdicApproximationLifting
-import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
+import SerrePositivity.CommutativeAlgebra.Adic.Finite
+import SerrePositivity.CommutativeAlgebra.Adic.Noetherian
 import SerrePositivity.CommutativeAlgebra.ReesIdealLifts
-import SerrePositivity.CommutativeAlgebra.AdicFiniteGeneration
 import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 import SerrePositivity.CommutativeAlgebra.WittCoefficientEmbedding
@@ -80,7 +78,6 @@ import Mathlib.Util.AssertNoSorry
 #print axioms SerrePositivity.exists_surjective_pi_of_finite_quotient
 #print axioms SerrePositivity.finite_of_quotient_of_isPrecomplete
 #print axioms SerrePositivity.finite_algebra_of_finite_quotient_map
-#print axioms SerrePositivity.subsingleton_of_subsingleton_quotient_of_isHausdorff
 #print axioms SerrePositivity.adicPowerSeriesEval
 #print axioms SerrePositivity.adicPowerSeriesEval_C
 #print axioms SerrePositivity.adicPowerSeriesEval_X
@@ -94,7 +91,6 @@ assert_no_sorry SerrePositivity.surjective_linearCombination_of_quotient
 assert_no_sorry SerrePositivity.exists_surjective_pi_of_finite_quotient
 assert_no_sorry SerrePositivity.finite_of_quotient_of_isPrecomplete
 assert_no_sorry SerrePositivity.finite_algebra_of_finite_quotient_map
-assert_no_sorry SerrePositivity.subsingleton_of_subsingleton_quotient_of_isHausdorff
 assert_no_sorry SerrePositivity.adicPowerSeriesEval
 assert_no_sorry SerrePositivity.adicPowerSeriesEval_C
 assert_no_sorry SerrePositivity.adicPowerSeriesEval_X
@@ -106,7 +102,6 @@ assert_no_sorry SerrePositivity.isNoetherianRing_adicCompletion
 
 -- 最弱の仮定を確認する。有限性判定はNoether性・局所性・Mの完備性を要求しない。
 #check SerrePositivity.finite_of_quotient_of_isPrecomplete
-#check SerrePositivity.subsingleton_of_subsingleton_quotient_of_isHausdorff
 #check SerrePositivity.adicPowerSeriesEval_finite
 
 -- 単生成代数の構成基盤にも未証明入力を認めない。

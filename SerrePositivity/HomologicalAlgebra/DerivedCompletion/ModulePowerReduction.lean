@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.AdicFaithfulDescent
-public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 

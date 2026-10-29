@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
+public import SerrePositivity.CommutativeAlgebra.Adic.Noetherian
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralExtension

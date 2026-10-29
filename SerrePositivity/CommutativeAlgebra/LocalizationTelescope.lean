@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
 
 /-! # 主元を反転する局所化の自由telescope

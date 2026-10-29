@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.RingTheory.AdicCompletion.Completeness
-public import SerrePositivity.CommutativeAlgebra.AdicFiniteGeneration
+public import SerrePositivity.CommutativeAlgebra.Adic.Finite
 public import Mathlib.LinearAlgebra.Isomorphisms
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.RingTheory.Ideal.Over

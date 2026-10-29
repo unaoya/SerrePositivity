@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsion
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 
 /-! # 有界冪ねじれの下での導来完備性と古典的完備性 -/

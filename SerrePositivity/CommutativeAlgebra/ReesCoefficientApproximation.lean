@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.ReesIdealLifts
-public import SerrePositivity.CommutativeAlgebra.AdicApproximationLifting
+public import SerrePositivity.CommutativeAlgebra.Adic.Finite
 
 /-! # 有限なRees生成元から次数を制御した近似へ -/
 

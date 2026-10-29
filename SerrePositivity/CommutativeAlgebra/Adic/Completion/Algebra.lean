@@ -6,7 +6,7 @@ public import Mathlib.RingTheory.AdicCompletion.Completeness
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import Mathlib.RingTheory.AdicCompletion.Topology
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
-public import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
+public import SerrePositivity.CommutativeAlgebra.Adic.Noetherian
 public import Mathlib.RingTheory.MvPowerSeries.Equiv
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 public import Mathlib.RingTheory.Regular.IsSMulRegular

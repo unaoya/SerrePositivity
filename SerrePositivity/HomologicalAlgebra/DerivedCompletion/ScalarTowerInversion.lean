@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CommutativeAlgebra.AdicRecurrenceInversion
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionHomologyDivisibility
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorOneCompleteExtension
-public import SerrePositivity.CommutativeAlgebra.ConormalIdempotentImage
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConormalIdempotentImage
 public import SerrePositivity.HomologicalAlgebra.DerivedDiscreteAlgebraMaps
 
 /-! # Complete almost extension closure from the original completed quotient product

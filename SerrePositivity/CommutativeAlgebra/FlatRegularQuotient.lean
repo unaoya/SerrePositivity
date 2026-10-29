@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.RingTheory.Regular.Flat
-public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsion
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 
 /-! # 平坦基底変更によるmod aの正則性の移送 -/
 

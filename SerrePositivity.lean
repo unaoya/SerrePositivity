@@ -45,7 +45,6 @@ public import SerrePositivity.FieldTheory.PBasisCofiniteField
 public import SerrePositivity.CommutativeAlgebra.FrobeniusKernelLift
 public import SerrePositivity.CommutativeAlgebra.PBasisLifting
 public import SerrePositivity.FieldTheory.FrobeniusPowerSubfield
-public import SerrePositivity.CommutativeAlgebra.KernelPowerQuotient
 public import SerrePositivity.CommutativeAlgebra.CoefficientField
 public import SerrePositivity.CommutativeAlgebra.CohenGabber.CoefficientSection
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
@@ -102,8 +101,8 @@ public import SerrePositivity.CommutativeAlgebra.ResidueFieldClosedStep
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldHistory
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralExtension
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralCompletion
-public import SerrePositivity.CommutativeAlgebra.AdicApproximationLifting
-public import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
+public import SerrePositivity.CommutativeAlgebra.Adic.Finite
+public import SerrePositivity.CommutativeAlgebra.Adic.Noetherian
 public import SerrePositivity.CommutativeAlgebra.WittCoefficientEmbedding
 public import SerrePositivity.CommutativeAlgebra.WittCoefficientConstruction
 public import SerrePositivity.CommutativeAlgebra.StrictPRecovery
@@ -114,7 +113,6 @@ public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import SerrePositivity.CommutativeAlgebra.WittNormalizationBase
 public import SerrePositivity.CommutativeAlgebra.WittNormalizationConstruction
 public import SerrePositivity.CommutativeAlgebra.ReesIdealLifts
-public import SerrePositivity.CommutativeAlgebra.AdicFiniteGeneration
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 
 public import SerrePositivity.Inputs.RegularParameters
@@ -223,7 +221,7 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt
 public import SerrePositivity.CommutativeAlgebra.RegularPowerDivisibility
 public import SerrePositivity.CommutativeAlgebra.RootTower.FrobeniusKernel
 public import SerrePositivity.CommutativeAlgebra.RootTower.WittPresentation
-public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 public import SerrePositivity.CommutativeAlgebra.LocalizationTelescope
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationPresentation
@@ -518,7 +516,7 @@ public import SerrePositivity.HomologicalAlgebra.PerfectQuotientTorOne
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorConormal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionHomologyDivisibility
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedQuotientTensorExtension
-public import SerrePositivity.CommutativeAlgebra.ConormalIdempotentImage
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConormalIdempotentImage
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 public import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison

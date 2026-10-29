@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicPrincipalKernel
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
 
 /-! # 第0係数の生成からFontaine核の生成元を同定する

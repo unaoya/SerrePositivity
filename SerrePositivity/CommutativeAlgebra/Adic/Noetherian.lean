@@ -4,15 +4,23 @@ public import SerrePositivity.CommutativeAlgebra.ReesCoefficientApproximation
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 
-/-! # 商のNoether性から完備環のNoether性へ
+/-! # 完備環の Noether 性の判定
 
-有限生成イデアルの随伴次数環で初期形式を有限個選び、
-係数の次数を制御した近似を完備性で持ち上げる。係数sectionは要求しない。
+概要：`R` が有限生成イデアル `I` について `I` 進完備で `R / I` が Noether なら、`R` は Noether。
+完備局所環で極大イデアルが有限生成なら Noether。Noether 環の商が Noether なら完備化も Noether。
+方針：各イデアルの随伴次数の有限生成性（Rees 加群の近似）を、次数のずれを許す近似（`Adic/Finite`）で持ち上げる。
+規約：完備性は古典的。
+使われ方：完備化の Noether 性（`Adic/Completion/Algebra`）、剰余体拡大の実現。Mathlib への提出候補（Matsumura 型の判定）。
 -/
 
-public section
-universe u
+@[expose] public noncomputable section
+
+universe u v w
+
 namespace SerrePositivity
+
+section AdicNoetherianCriterion
+
 variable (R : Type u) [CommRing R] (I : Ideal R)
 
 /-- 完備環の各イデアルは、商がNoetherで定義イデアルが有限生成なら有限生成。 -/
@@ -53,5 +61,7 @@ theorem isNoetherianRing_adicCompletion_of_noetherian_quotient
       (Ideal.quotientEquivAlgOfEq R (pow_one I))
   let : IsNoetherianRing (C ⧸ J) := isNoetherianRing_of_ringEquiv (R ⧸ I) e.symm.toRingEquiv
   exact isNoetherianRing_of_adicComplete_of_noetherian_quotient C J (hI.map _)
+
+end AdicNoetherianCriterion
 
 end SerrePositivity
