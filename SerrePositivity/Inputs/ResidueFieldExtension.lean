@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralCompletion
+public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.General
 
 /-! # 指定した剰余体を持つ完備平坦局所拡大（証明済み）
 

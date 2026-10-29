@@ -9,7 +9,7 @@ public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.WittVector.Basic
-public import SerrePositivity.CommutativeAlgebra.WittNormalizationConstruction
+public import SerrePositivity.CommutativeAlgebra.Witt.Normalization
 public import SerrePositivity.CommutativeAlgebra.CohenGabber.Normalization
 
 /-! # 証明済みのCohen–Gabberと混標数Cohen正規化

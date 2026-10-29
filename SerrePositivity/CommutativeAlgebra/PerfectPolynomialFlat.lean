@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
 public import SerrePositivity.CommutativeAlgebra.PerfectPowerReduced
-public import SerrePositivity.CommutativeAlgebra.ModuleDirectLimitFlat
+public import SerrePositivity.CommutativeAlgebra.DirectLimit
 public import Mathlib.Algebra.MvPolynomial.Nilpotent
 /-! # Flatness of free perfect polynomial algebras
 

@@ -5,7 +5,7 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRepresentatives
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
-public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
+public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
 
 /-! # 標準的な根の塔の完備化のmod p Frobenius
 

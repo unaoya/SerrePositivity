@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPSurjectivity
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPInjectivity
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
-public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
+public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
 
 /-! # 有限段のp冪根による商とmod pの具体的同型
 

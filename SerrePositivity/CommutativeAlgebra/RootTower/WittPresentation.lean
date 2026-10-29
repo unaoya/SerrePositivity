@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.RootTower.FrobeniusKernel
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
-public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
+public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
 
 /-! # Witt係数の標準表示から完備塔のperfectoid性を証明する
 

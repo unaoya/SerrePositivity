@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.CommutativeAlgebra.WittCoefficientOne
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import Mathlib.RingTheory.WittVector.Complete
 public import SerrePositivity.CommutativeAlgebra.PerfectionIdempotents
 public import Mathlib.RingTheory.Nilpotent.Basic

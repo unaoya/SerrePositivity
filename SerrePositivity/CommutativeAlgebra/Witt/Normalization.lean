@@ -1,21 +1,65 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.WittNormalizationBase
-public import SerrePositivity.CommutativeAlgebra.WittCoefficientConstruction
-public import SerrePositivity.CommutativeAlgebra.MixedCharacteristicParameters
+public import SerrePositivity.CommutativeAlgebra.PrescribedParameter
+public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
+public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
+public import SerrePositivity.CommutativeAlgebra.Witt.CohenRing
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
-public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
 
-/-! # 混標数Cohen正規化の実構成
+/-! # 混標数の Cohen 正規化
 
-実際のWitt係数写像とpを含むパラメータを冪級数評価で接続する。
-同じ評価の閉ファイバーの有限性と基底の完備性から有限性を証明する。
+## 概要
+
+剰余体 `k` が標数 `p` の完全体である、標数零の完備 Noether 局所整域 `D`（次元 `h > 0`）は、
+`W(k)[[X_1, …, X_{h-1}]]` と同型な完備正則局所整域 `A` を部分環として含み、`D` は `A` 上有限で
+剰余体は一致する。`A` の正則パラメータ系は `p` を先頭に、残りが変数 `X_i` に対応する
+（`exists_cohen_normalization_mixedCharacteristic`）。
+
+## 方針
+
+`p` を先頭に置くパラメータ系をとり（`exists_mixedCharacteristic_systemOfParameters`。標数零の整域で
+`p` は非零因子、剰余標数から極大イデアルに入る）、Witt 係数写像（`Witt/CohenRing`）と残りの
+パラメータで冪級数評価を作る。閉ファイバーの有限性と基底の完備性から有限性が従う。
+
+## 規約
+
+完全剰余体の場合に限る。一般の剰余体は Cohen 環の構成が要る。
+
+## 使われ方
+
+Cohen 正規化の入力（`Inputs/CohenNormalization`）。
 -/
 
-public section
-universe u
+@[expose] public noncomputable section
+
+universe u v
+
 namespace SerrePositivity
+
+section Parameters
+
+open IsLocalRing
+
+/-- 次元h>0の混標数局所整域では、pを先頭とするh個のパラメータが存在する。
+h=1では残りの列は空となり、(p)自体の根基が極大イデアルになる。 -/
+theorem exists_mixedCharacteristic_systemOfParameters
+    (D : Type*) [CommRing D] [IsNoetherianRing D] [IsLocalRing D] [IsDomain D]
+    [CharZero D] (p : ℕ) [hp : Fact p.Prime] [CharP (ResidueField D) p]
+    {h : ℕ} (hdim : ringKrullDim D = h) (hpos : 0 < h) :
+    ∃ z : Fin h → D, z ⟨0, hpos⟩ = (p : D) ∧
+      (∀ i, z i ∈ maximalIdeal D) ∧ IsSystemOfParameters D z := by
+  obtain ⟨r, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hpos)
+  apply exists_systemOfParameters_with_first_nonZeroDivisor D (p : D)
+  · exact mem_nonZeroDivisors_iff_ne_zero.mpr (Nat.cast_ne_zero.mpr hp.out.ne_zero)
+  · rw [← residue_eq_zero_iff]
+    simp only [map_natCast, CharP.cast_eq_zero]
+  · simpa only [Nat.cast_succ] using hdim
+
+end Parameters
+
+section Construction
+
 open IsLocalRing
 
 /-- Witt係数と指定パラメータを評価し、有限な環写像を構成する。
@@ -109,5 +153,7 @@ theorem exists_cohen_normalization_mixedCharacteristic
     wittPowerSeriesParameter_zero hpos _ p, ?_⟩
   intro i hi
   exact wittPowerSeriesParameter_nonzero _ _ i hi
+
+end Construction
 
 end SerrePositivity
