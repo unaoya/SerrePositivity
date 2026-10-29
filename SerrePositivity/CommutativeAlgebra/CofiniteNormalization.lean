@@ -6,7 +6,7 @@ public import SerrePositivity.CommutativeAlgebra.AdicCompletionChangeIdeal
 public import SerrePositivity.CommutativeAlgebra.EqualCharacteristicNormalization
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
 public import SerrePositivity.CommutativeAlgebra.CofiniteFraction
-public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 
 /-! # 固定した正規化での中間係数体上の完備微分の次元
 

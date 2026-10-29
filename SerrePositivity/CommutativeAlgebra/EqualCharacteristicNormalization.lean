@@ -2,14 +2,20 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.CoefficientField
 public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
-public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
 
-/-! # 同標数の通常の有限正規化
+/-! # 同標数の通常の有限正規化（Cohen の構造定理）
 
-係数写像とパラメータを実際の冪級数評価に接続する。
-分数体拡大の分離性は主張せず、Cohen–Gabber の係数体変更と区別する。
+概要：次元 `h` の同標数 `p` の完備 Noether 局所環 `D` について、係数体 `φ : k = D/m → D` とパラメータ系 `z_1, …, z_h`
+を取ると、評価 `k[[X_1, …, X_h]] → D`（`X_i ↦ z_i`）は単射かつ有限で、剰余体へ全射。したがって `D` は正則完備局所環
+`k[[X]]` 上有限（Cohen の構造定理の同標数の場合、`exists_cohen_normalization_equalCharacteristic`）。
+方針：係数体は p 基底の持ち上げ（`CoefficientField`）、パラメータ系は準素イデアル内の選択（`PrimaryParameterExistence`）。
+有限性は閉ファイバー `D/(z)` の有限性から（`FiniteNormalization`）、単射性は次元の一致から。
+規約：分数体の拡大の分離性は主張しない（それが Cohen–Gabber の内容）。
+使われ方：Cohen–Gabber（`CohenGabber*`）と中間係数体上の次元計算（`CofiniteNormalization`）。
+Mathlib への提出候補（mathlib-upstream）。
 -/
 
 @[expose] public section
@@ -35,7 +41,11 @@ theorem exists_finite_powerSeries_map_of_parameters
   let : IsAdicComplete J D := isAdicComplete_finite_of_le_maximalIdeal J hJm
   let : Algebra k D := φ.toAlgebra
   let : Module.Finite k (D ⧸ J) := finite_quotient_of_common_residue_primary hφ J hprimary
-  obtain ⟨F, hfinite, hC, hX⟩ := exists_finite_powerSeries_map_of_finite_quotient (k := k) z
+  have hz (i : σ) : z i ∈ J := Ideal.subset_span (Set.mem_range_self i)
+  let F := adicPowerSeriesEval (algebraMap k D) J z hz
+  have hfinite : F.Finite := adicPowerSeriesEval_finite_of_span J z hz rfl
+  have hC : ∀ a, F (MvPowerSeries.C a) = φ a := adicPowerSeriesEval_C _ J z hz
+  have hX : ∀ i, F (MvPowerSeries.X i) = z i := adicPowerSeriesEval_X _ J z hz
   have hres : Function.Surjective ((residue D).comp F) := by
     intro a
     obtain ⟨r, hr⟩ := hφ a

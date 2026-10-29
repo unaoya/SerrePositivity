@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.RingTheory.Derivation
-public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import Mathlib.LinearAlgebra.Basis.SMul
 
 /-! # 微分基底を持つパラメータの選択
@@ -32,12 +32,10 @@ theorem span_range_mul_units {S ι : Type*} [CommRing S]
 
 /-- 極大イデアル内の元を1に加えると単元となる。 -/
 theorem isUnit_one_add_of_mem_maximalIdeal {S : Type*} [CommRing S] [IsLocalRing S]
-    {f : S} (hf : f ∈ maximalIdeal S) : IsUnit (1 + f) := by
-  apply notMem_maximalIdeal.mp
-  intro h
-  have h1 : (1 : S) ∈ maximalIdeal S := by
-    simpa only [add_sub_cancel_right] using (maximalIdeal S).sub_mem h hf
-  exact (maximalIdeal.isMaximal S).ne_top (Ideal.eq_top_of_isUnit_mem _ h1 isUnit_one)
+    {f : S} (hf : f ∈ maximalIdeal S) : IsUnit (1 + f) :=
+  Ideal.isUnit_of_sub_one_mem_jacobson_bot _ (by
+    rw [add_sub_cancel_left]
+    exact maximalIdeal_le_jacobson ⊥ hf)
 
 section Derivation
 variable {R S L V : Type*} [CommRing R] [CommRing S] [IsDomain S] [IsLocalRing S]

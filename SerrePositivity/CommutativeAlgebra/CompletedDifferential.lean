@@ -11,7 +11,7 @@ public import Mathlib.LinearAlgebra.TensorProduct.Quotient
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionExt
 public import Mathlib.RingTheory.AdicCompletion.Noetherian
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
-public import SerrePositivity.CommutativeAlgebra.FiniteNormalizationTools
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
 public import Mathlib.RingTheory.Flat.Equalizer
 

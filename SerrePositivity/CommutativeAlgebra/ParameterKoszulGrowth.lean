@@ -9,7 +9,7 @@ public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
-public import SerrePositivity.CommutativeAlgebra.FiniteNormalizationTools
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PerfectNilpotentLifting
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 public import SerrePositivity.CommutativeAlgebra.RegularSequencePowers

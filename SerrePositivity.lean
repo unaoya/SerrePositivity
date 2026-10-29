@@ -70,7 +70,7 @@ public import SerrePositivity.CommutativeAlgebra.AdicModuleMaps
 public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionKernelClosure
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionFinite
-public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
+public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.CofiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Expansion
 public import SerrePositivity.CommutativeAlgebra.CofiniteFraction
@@ -88,7 +88,6 @@ public import SerrePositivity.FieldTheory.PrimeRootPowerSubfield
 public import SerrePositivity.RingTheory.Kaehler
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.FractionField
 public import SerrePositivity.LinearAlgebra.BasisSaturation
-public import SerrePositivity.CommutativeAlgebra.EqualCharacteristicFractionNormalization
 public import SerrePositivity.LinearAlgebra.BasisScalarIndependence
 public import SerrePositivity.LinearAlgebra.BasisRingEquiv
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtensionConstruction
