@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.FractionDifferential
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Differential
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionChangeIdeal
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.CommutativeAlgebra.EqualCharacteristicNormalization
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
 public import SerrePositivity.CommutativeAlgebra.CofiniteFraction

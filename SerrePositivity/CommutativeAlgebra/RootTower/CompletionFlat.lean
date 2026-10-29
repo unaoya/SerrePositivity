@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionRegular
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import Mathlib.RingTheory.Flat.Stability
 public import Mathlib.RingTheory.Regular.IsSMulRegular
 

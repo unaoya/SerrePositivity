@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionTensor
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import Mathlib.RingTheory.TensorProduct.Finite

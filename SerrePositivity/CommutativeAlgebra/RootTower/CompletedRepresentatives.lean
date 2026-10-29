@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 
 /-! # 完備塔の元の有限段での代表
 

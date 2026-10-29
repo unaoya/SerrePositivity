@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.SchemeLemmas.GeometricallyIntegralCompleteProjective
 public import SerrePositivity.KST.SchemeLemmas.ProjectiveReductionBaseChange
 public import SerrePositivity.KST.SchemeLemmas.LocalizationCompletionProjectivity
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionNoetherian
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 
 /-!

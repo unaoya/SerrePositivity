@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Basic
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.IntegralDimension
 public import Mathlib.RingTheory.Flat.EquationalCriterion
 public import Mathlib.RingTheory.Ideal.Quotient.Noetherian

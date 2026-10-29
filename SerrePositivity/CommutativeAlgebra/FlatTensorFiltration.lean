@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionExact
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Exact
 public import Mathlib.RingTheory.Flat.Basic
 public import Mathlib.Algebra.Algebra.Operations
 

@@ -1,9 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionResidue
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlatQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldGeneralExtension
 
 /-! # 任意剰余体拡大の完備Noether平坦局所実現

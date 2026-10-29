@@ -4,7 +4,7 @@ public import Mathlib.RingTheory.MvPowerSeries.Derivative
 public import Mathlib.RingTheory.MvPowerSeries.PiTopology
 public import Mathlib.Topology.Algebra.Module.Basic
 public import SerrePositivity.RingTheory.Derivation
-public import SerrePositivity.CommutativeAlgebra.AdicModuleSeparation
+public import SerrePositivity.CommutativeAlgebra.Adic.Topology
 public import Mathlib.Topology.Algebra.Group.Neighborhood
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import Mathlib.LinearAlgebra.StdBasis

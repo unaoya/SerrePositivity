@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # 次数のずれを許すadic近似から実際の像へ
 

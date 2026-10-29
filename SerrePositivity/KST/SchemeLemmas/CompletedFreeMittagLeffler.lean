@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.SchemeLemmas.CompletedFreeFiniteTensor
 public import SerrePositivity.KST.SchemeLemmas.FiniteTensorTest
 public import SerrePositivity.KST.SchemeLemmas.NoetherianScalarProduct
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 
 /-!
 概要：KST §5、Stacks 05DJ, Lemma 38.8.1 の自由加群の完備化の Mittag–Leffler 性。

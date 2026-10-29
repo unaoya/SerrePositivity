@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionOpenQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import SerrePositivity.LengthAlgebra.FinitelyGeneratedFiniteLength
 
 /-! # 完備塔上の有限生成な冪ねじれ加群の長さの有限性

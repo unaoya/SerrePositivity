@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Derivation
 public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionExt
-public import SerrePositivity.CommutativeAlgebra.AdicModuleProducts
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.LinearAlgebra.FreeModule.Finite.Basic
 public import Mathlib.RingTheory.Finiteness.Ideal

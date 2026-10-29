@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidRootTorsion
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
-public import SerrePositivity.CommutativeAlgebra.AdicKernelQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # pねじれを除く商とperfectoidイデアルの比較
 

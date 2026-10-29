@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.SchemeLemmas.CompletedFreeEmbedding
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionTensor
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import Mathlib.LinearAlgebra.TensorProduct.Basis
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 

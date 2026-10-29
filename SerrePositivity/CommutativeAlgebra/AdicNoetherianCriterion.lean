@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.ReesCoefficientApproximation
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 
 /-! # 商のNoether性から完備環のNoether性へ

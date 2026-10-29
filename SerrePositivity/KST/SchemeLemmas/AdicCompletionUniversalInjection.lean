@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.SchemeLemmas.AssociatedPrimeAdicSeparation
 public import SerrePositivity.KST.SchemeLemmas.AdicTensorRightComparison
 public import SerrePositivity.KST.SchemeLemmas.FiniteTensorTest
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFlat
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 
 /-!
 概要：KST §5、Stacks 05DL の平坦加群の場合の完備化への普遍単射性。

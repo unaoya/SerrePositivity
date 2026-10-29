@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section5.ResidueFieldReduction
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionNoetherian
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import Mathlib.RingTheory.AdicCompletion.AsTensorProduct
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionTorsionTensor
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
 
 /-! # 有限段から完備塔へ移した加群の長さ

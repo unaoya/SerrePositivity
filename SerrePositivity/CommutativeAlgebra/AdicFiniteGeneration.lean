@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import Mathlib.Algebra.Module.Torsion.Basic
 public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
 
@@ -30,7 +30,7 @@ theorem surjective_linearCombination_of_quotient {ι : Type*} [Fintype ι]
     (hx : Function.Surjective
       ((I • (⊤ : Submodule R M)).mkQ.comp (Fintype.linearCombination R x))) :
     Function.Surjective (Fintype.linearCombination R x) := by
-  let := isPrecomplete_pi I ι
+  let := isPrecomplete_pi (M := R) I ι
   exact surjective_of_mkQ_comp_surjective hx
 
 /-- 有限生成な商の生成元を持ち上げ、有限自由加群からの全射を構成する。
@@ -50,7 +50,7 @@ theorem exists_surjective_pi_of_finite_quotient
     change J.mkQ (f (b i)) = g (b i)
     rw [Module.Basis.constr_basis]
     exact hx i
-  let := isPrecomplete_pi I (Fin n)
+  let := isPrecomplete_pi (M := R) I (Fin n)
   refine ⟨n, f, surjective_of_mkQ_comp_surjective (I := I) (f := f) ?_⟩
   change Function.Surjective (J.mkQ.comp f)
   rw [hfg]

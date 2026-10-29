@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
-public import SerrePositivity.CommutativeAlgebra.AdicCompletenessSup
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import Mathlib.RingTheory.MvPowerSeries.Ideal
 public import Mathlib.RingTheory.Finiteness.Ideal
 public import Mathlib.RingTheory.AdicCompletion.Completeness

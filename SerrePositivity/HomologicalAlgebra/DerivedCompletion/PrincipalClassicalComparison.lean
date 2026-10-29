@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionAlgebraUniversal
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison

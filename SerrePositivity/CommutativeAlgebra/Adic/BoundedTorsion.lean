@@ -1,18 +1,30 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicStrictQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import Mathlib.RingTheory.Regular.IsSMulRegular
+public import SerrePositivity.CommutativeAlgebra.AdicRecurrence
 
-/-! # mod aで正則な元による商のa進完備性
+/-! # 主元進の完備性と有界ねじれ
 
-mod aの正則性からg倍写像の厳密なフィルトレーション比較を供給し、
-商の完備性とaの非零因子性を確認する。環のNoether性は要求しない。
+概要：元 `a ∈ R` について
+- `a` で割った商の上で正則な元 `x` の整除性（`x y ∈ (a^n)` から `y ∈ (a^n)`）。
+- `M` が `a` 進完備で `x` が `M/aM` 上正則なら、`M/xM` も `a` 進完備で `x` は正則。
+- 有界な `a` 冪ねじれを持つ加群では、漸化式の写像（`AdicRecurrence`）の単射性・全単射性から分離性・完備性。
+方針：`a` 進の合同を一段ずつ持ち上げる。ねじれの上界で漸化式の解を比較する。
+規約：完備性は古典的。導来完備性との比較は `Adic/BoundedTorsionQuotient`。
+使われ方：導来完備化（HomologicalAlgebra）、Bhatt–Scholze 側の distinguished な元。
 -/
 
 @[expose] public noncomputable section
-set_option backward.isDefEq.respectTransparency false
-universe u
+
+universe u v w
+
 namespace SerrePositivity
+
+section AdicRegularQuotient
+
+set_option backward.isDefEq.respectTransparency false
+
 variable (R : Type u) [CommRing R]
 
 theorem dvd_of_mul_dvd_of_regular_mod (a g : R)
@@ -87,5 +99,53 @@ theorem isAdicComplete_quotient_span_of_regular_mod (a g : R)
     rfl
   rw [← hmap]
   exact (IsAdicComplete.map_algebraMap_iff _ _).mpr inferInstance
+
+end AdicRegularQuotient
+
+section AdicBoundedTorsion
+
+variable {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
+
+/-- 有界なf冪ねじれの下では、差分作用の単射性からf進分離性が従う。 -/
+theorem isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion (f : R)
+    (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : M, f ^ n • x = 0 → f ^ N • x = 0)
+    (hinj : Function.Injective (adicRecurrenceMap (M := M) f)) :
+    IsHausdorff (Ideal.span {f}) M := by
+  classical
+  obtain ⟨N, hN⟩ := hbounded
+  constructor
+  intro x hx
+  have hdiv (n : ℕ) : ∃ y : M, f ^ n • y = x := by
+    apply (mem_principal_pow_smul_top f n x).mp
+    simpa only [sub_zero] using SModEq.sub_mem.mp (hx n)
+  choose y hy using hdiv
+  let z : ℕ → M := fun n ↦ f ^ N • y (n + N)
+  have hstep (n : ℕ) : z n = f • z (n + 1) := by
+    have herr : f ^ (n + N) • (y (n + N) - f • y (n + 1 + N)) = 0 := by
+      rw [smul_sub, ← mul_smul, ← pow_succ, hy]
+      have he : n + N + 1 = n + 1 + N := by omega
+      rw [he, hy, sub_self]
+    have h := hN (n + N) _ herr
+    dsimp only [z]
+    rw [smul_sub, smul_smul, mul_comm (f ^ N) f, ← smul_smul] at h
+    exact sub_eq_zero.mp h
+  have hz : adicRecurrenceMap f z = 0 := by
+    ext n
+    exact sub_eq_zero.mpr (hstep n)
+  have hzero : z = 0 := hinj (hz.trans (map_zero _).symm)
+  have hxz : z 0 = x := by simpa only [z, zero_add] using hy N
+  rw [hzero] at hxz
+  exact hxz.symm
+
+/-- 有界ねじれの下で、差分作用の全単射性から古典的完備性が従う。 -/
+theorem isAdicComplete_of_adicRecurrenceMap_bijective_of_bounded_torsion (f : R)
+    (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : M, f ^ n • x = 0 → f ^ N • x = 0)
+    (hbij : Function.Bijective (adicRecurrenceMap (M := M) f)) :
+    IsAdicComplete (Ideal.span {f}) M := by
+  let := isHausdorff_of_adicRecurrenceMap_injective_of_bounded_torsion f hbounded hbij.1
+  let := isPrecomplete_of_adicRecurrenceMap_surjective f hbij.2
+  exact ⟨⟩
+
+end AdicBoundedTorsion
 
 end SerrePositivity

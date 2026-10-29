@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.CoefficientField
 public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
-public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # 同標数の通常の有限正規化（Cohen の構造定理）
 

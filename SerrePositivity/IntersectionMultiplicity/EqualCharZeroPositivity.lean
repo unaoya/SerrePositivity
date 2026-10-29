@@ -4,7 +4,7 @@ public import SerrePositivity.IntersectionMultiplicity.DiagonalPositivity
 public import SerrePositivity.IntersectionMultiplicity.Devissage
 public import SerrePositivity.IntersectionMultiplicity.BaseChange
 public import SerrePositivity.CommutativeAlgebra.CharZeroCoefficientField
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionNoetherian
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import Mathlib.RingTheory.AdicCompletion.AsTensorProduct
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors

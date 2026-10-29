@@ -1,18 +1,16 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompletenessSup
-public import SerrePositivity.CommutativeAlgebra.AdicModuleMaps
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
+public import SerrePositivity.CommutativeAlgebra.Adic.Topology
 public import Mathlib.RingTheory.Kaehler.Basic
 public import Mathlib.RingTheory.AdicCompletion.Exactness
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionKernelClosure
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionFinite
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Exact
+public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.Finiteness.Finsupp
 public import Mathlib.LinearAlgebra.TensorProduct.Quotient
-public import SerrePositivity.CommutativeAlgebra.AdicCompletionExt
 public import Mathlib.RingTheory.AdicCompletion.Noetherian
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
-public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
 public import Mathlib.RingTheory.Flat.Equalizer
 
 /-! # 完備 Kähler 微分

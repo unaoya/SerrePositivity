@@ -2,7 +2,7 @@ module
 
 public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
 public import Mathlib.FieldTheory.Perfect
-public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # Witt係数の単射性と対象環のp進完備性
 

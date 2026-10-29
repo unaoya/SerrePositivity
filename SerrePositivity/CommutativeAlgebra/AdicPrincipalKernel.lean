@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicKernelQuotient
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-! # 飽和したイデアルの生成元をadic商から持ち上げる
 

@@ -3,14 +3,22 @@ module
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 
-/-! # 有界冪ねじれを持つ主イデアル商の古典的完備性
+/-! # 有界ねじれを持つ主イデアル商の完備性
 
-BS共通要求F5。共通定理は素数性・生成元の正則性・Noether性を要しない。
+概要：有界な冪ねじれを持つ完備な環を、主イデアルやその冪、自然数の像で割った商が古典的に完備であること。
+方針：導来完備化との比較（HomologicalAlgebra の `DerivedCompletion`）を経由する。
+規約：導来完備化に依存するので、循環を避けて `Adic/BoundedTorsion` とは別のファイルに置く。
+使われ方：Bhatt–Scholze 側の Witt ベクトルと perfectoid 環。
 -/
 
 @[expose] public noncomputable section
-universe u
+
+universe u v w
+
 namespace SerrePositivity
+
+section AdicBoundedTorsionQuotient
+
 open CategoryTheory
 variable (R : Type u) [CommRing R]
 
@@ -38,17 +46,6 @@ theorem isAdicComplete_principal_quotient_natCast_of_bounded_torsion (p : ℕ) (
   simpa only [map_natCast] using
     isAdicComplete_principal_quotient_of_bounded_torsion R (p : R) d hbounded
 
-/-- BS要求の正確な直接形。要求の正則性は一般定理からの適用では不要。 -/
-theorem isAdicComplete_regular_quotient_natCast_of_bounded_torsion (p : ℕ) [Fact p.Prime]
-    (d : R) [IsAdicComplete (Ideal.span {(p : R)}) R]
-    (_hp : Function.Injective (fun x : R ↦ (p : R) * x))
-    (_hd : Function.Injective (fun x : R ↦ d * x))
-    (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ x : R ⧸ Ideal.span {d},
-      (p : R ⧸ Ideal.span {d}) ^ n * x = 0 →
-      (p : R ⧸ Ideal.span {d}) ^ N * x = 0) :
-    IsAdicComplete (Ideal.span {(p : R ⧸ Ideal.span {d})}) (R ⧸ Ideal.span {d}) :=
-  isAdicComplete_principal_quotient_natCast_of_bounded_torsion R p d hbounded
-
 /-- 全ての正冪商へ、与えられた有界指数で適用できる。零冪商も含む。 -/
 theorem isAdicComplete_principal_power_quotient_natCast_of_bounded_torsion
     (p : ℕ) (d : R) (k : ℕ) [IsAdicComplete (Ideal.span {(p : R)}) R]
@@ -57,5 +54,7 @@ theorem isAdicComplete_principal_power_quotient_natCast_of_bounded_torsion
       (p : R ⧸ Ideal.span {d ^ k}) ^ N * x = 0) :
     IsAdicComplete (Ideal.span {(p : R ⧸ Ideal.span {d ^ k})}) (R ⧸ Ideal.span {d ^ k}) :=
   isAdicComplete_principal_quotient_natCast_of_bounded_torsion R p (d ^ k) hbounded
+
+end AdicBoundedTorsionQuotient
 
 end SerrePositivity

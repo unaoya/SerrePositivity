@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicCompleteness
+public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import Mathlib.RingTheory.Henselian
 public import Mathlib.RingTheory.Spectrum.Prime.Noetherian
 public import Mathlib.RingTheory.LocalRing.Quotient
