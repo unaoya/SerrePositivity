@@ -275,3 +275,18 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 3. **重い監査は直列にする**：`audit_axioms.lean` と sorry 閉包は、並列の pool に入れず、pool が終わった後に直列で実行する。
 4. 再試行は gate を変えない（gate:true のまま）。ただし再試行が 1 回でも起きた実行は、summary に件数を残す。
 5. 試験：環境の失敗を模した監査（存在しない olean を開こうとするものなど）で、再試行の分岐と記録を確かめる。
+
+### 10.10 追記（10-30、§7-1 の承認と、attribute コマンド・無名 instance の扱い）
+
+**承認**：§7-1（8e6e75d8e、全体 verify PASS・gate:true・retried 0）を確認し、w1.json（move 62・split 3・reimport 3）と w1.md の保留 13 件を W1 の対象一覧として承認する。
+
+**W2a の停止（`attribute [local instance]`・`attribute [instance]`・無名の local instance）への規則**
+
+1. **宣言の位置で対応づける**：`decl_snapshot.lean` に、各宣言のソース上の位置（`Lean.findDeclarationRanges?` による開始行・終了行）を出力させる。`lean_source.py` は、ソースのコマンドと環境の宣言名を位置で対応づける。これにより、無名の `instance : T := …` は環境が付けた名前（`inst…`）で扱える。対象 JSON の `moved`・`keep` にはその名前を書く。
+2. **`attribute [...] 名前` コマンドの扱い**（`attribute [-simp] …` の消去も同じ）：
+   - 名前が同じファイルの宣言なら、その宣言と同じ側へ行く。新しいファイルでは、その宣言の直後に置く（元の順序は保つ）。
+   - 名前が外部（他のファイル・Mathlib）で、`local`・`scoped` の属性なら、分割した両方のファイルに写す（section の有効範囲に注意し、元と同じ section の中に置く）。
+   - 名前が外部で、グローバルな属性（`attribute [instance] 外部名` など）なら、`keep` 側に残す。`moved` 側の宣言がその属性に依存している可能性があるときは、分割せずに STOP して報告する（二重登録を避けるため、両方に写さない）。
+3. **`open … in`・`set_option … in`・`variable … in` などの前置きつきコマンド**は、その本体の宣言と同じ側へ行く。
+4. 上の規則の試験を `lean_source.py`・`split_module.py` の試験に加える（無名 instance、ファイル内の名前への attribute、外部名への local attribute、外部名へのグローバル attribute が STOP になること）。
+5. これで W2a の preflight（R72 の 12 本の分割の試行）をやり直し、§4.2 を進める。
