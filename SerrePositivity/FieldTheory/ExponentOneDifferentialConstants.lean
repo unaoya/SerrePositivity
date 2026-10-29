@@ -1,18 +1,28 @@
 module
 
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
+public import SerrePositivity.FieldTheory.PBasisDifferentials
+public import SerrePositivity.FieldTheory.PBasisComplement
+public import SerrePositivity.FieldTheory.PIndependentSet
 public import Mathlib.FieldTheory.IntermediateField.Algebraic
 public import Mathlib.Data.Nat.Find
 
-/-! # 有限な指数1の体拡大の微分の定数
+/-! # 指数1の拡大の微分の定数
 
-任意の元のp乗が底体に属する有限拡大では、普遍微分が零になる元は底体の像そのもの。
-指定元を避ける最大中間体を拡大次数の最小化で選び、次数pの導分を実構成する。
-底体や終域の有限p-rankは要求しない。
+概要：指数1の拡大 `K/F`（すべての `y ^ p` が `F` に属する）では、`Ω_{K/F}` で `D x = 0 ⟺ x ∈ F`。
+二つの場合を扱う。
+- `K/F` が有限な場合：`x` を避ける最大の中間体 `E` を拡大次数の最小化で選ぶと、`x` は `E` 上で次数 p の
+  p 乗根として全体を生成するので、`primeRootDerivation` で検出できる。共有限な部分体の版が使われる。
+- `F = K^p`（`K` は有限でなくてよい）：`x` を含む p 基底を取り、その偏導分で検出する。
+規約：底体や終域の有限 p-rank は要求しない。
+使われ方：共有限な部分体上の相対微分の零判定（`kaehlerDifferential_finite_subfield_eq_zero_iff`）。
 -/
 
 @[expose] public noncomputable section
 namespace SerrePositivity
+
+section Finite
+
 variable {F K : Type*} [Field F] [Field K] [Algebra F K] [Module.Finite F K]
 
 /-- 有限体拡大で、底体の外の指定元を避ける最大中間体を選べる。 -/
@@ -75,7 +85,8 @@ theorem exists_derivation_detecting_finite_exponentOne
   have hs : Algebra.adjoin E {x} = ⊤ :=
     Algebra.adjoin_eq_top_of_intermediateField
       (fun y _ ↦ Algebra.IsAlgebraic.isAlgebraic y) htop
-  obtain ⟨δ, hδ⟩ := exists_derivation_primeRoot_of_adjoin_eq_top x a ha hxE hs
+  let δ := primeRootDerivation x a ha hxE hs
+  have hδ : δ x = 1 := primeRootDerivation_self x a ha hxE hs
   exact ⟨δ.restrictScalars F, hδ⟩
 
 /-- 指数1の有限拡大の通常微分の零判定。 -/
@@ -106,5 +117,66 @@ theorem kaehlerDifferential_finite_subfield_eq_zero_iff
     exact a.property
   · intro h
     exact ⟨⟨x, h⟩, rfl⟩
+
+end Finite
+
+section Absolute
+
+variable {K : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p]
+
+/-- p乗でない指定した元を含む、実際のp-basisが存在する。 -/
+theorem exists_pBasis_containing_of_not_mem_pPowerSubfield (x : K)
+    (hx : x ∉ pPowerSubfield K p) :
+    ∃ s : Set K, x ∈ s ∧ IsPBasis K p (Subtype.val : s → K) := by
+  have hxe : x ∉ pMonomialIntermediateField (p := p) (Subtype.val : (∅ : Set K) → K) := by
+    rw [pMonomialIntermediateField_eq_adjoin, Set.range_eq_empty, IntermediateField.adjoin_empty]
+    intro h
+    obtain ⟨c, hc⟩ := IntermediateField.mem_bot.mp h
+    exact hx (hc ▸ c.property)
+  have hs := (isPIndependentSet_empty (K := K) (p := p)).insert x hxe
+  obtain ⟨s, hsub, hb⟩ := exists_pBasis_superset _ hs
+  exact ⟨s, hsub (by simp), hb⟩
+
+/-- p乗でない元を1に送る、p乗部分体上の導分が存在する。 -/
+theorem exists_derivation_detecting_not_mem_pPowerSubfield (x : K)
+    (hx : x ∉ pPowerSubfield K p) :
+    ∃ δ : Derivation (pPowerSubfield K p) K K, δ x = 1 := by
+  obtain ⟨s, hxs, hb⟩ := exists_pBasis_containing_of_not_mem_pPowerSubfield x hx
+  exact ⟨hb.partialDerivation ⟨x, hxs⟩,
+    by simpa using hb.partialDerivation_apply ⟨x, hxs⟩ ⟨x, hxs⟩⟩
+
+/-- p乗部分体上では、通常の普遍微分が零であることとp乗であることが同値。 -/
+theorem kaehlerDifferential_over_pPowers_eq_zero_iff (x : K) :
+    KaehlerDifferential.D (pPowerSubfield K p) K x = 0 ↔ x ∈ pPowerSubfield K p := by
+  constructor
+  · intro h
+    by_contra hx
+    obtain ⟨δ, hδ⟩ := exists_derivation_detecting_not_mem_pPowerSubfield x hx
+    have he := congrArg δ.liftKaehlerDifferential h
+    rw [Derivation.liftKaehlerDifferential_comp_D, hδ, map_zero] at he
+    exact one_ne_zero he
+  · exact derivation_eq_zero_on_pPowerSubfield (KaehlerDifferential.D (pPowerSubfield K p) K) x
+
+/-- p乗でない元を検出する共有限な中間体を、実際のp-basisの補中間体として選べる。
+指定済みの部分体族からの選択は、この存在定理とは区別する。 -/
+theorem exists_finite_intermediateField_detecting_not_mem_pPowerSubfield (x : K)
+    (hx : x ∉ pPowerSubfield K p) :
+    ∃ E : IntermediateField (pPowerSubfield K p) K,
+      Module.Finite E K ∧ KaehlerDifferential.D E K x ≠ 0 := by
+  obtain ⟨s, hxs, hb⟩ := exists_pBasis_containing_of_not_mem_pPowerSubfield x hx
+  let i : s := ⟨x, hxs⟩
+  let E := pBasisComplementField (p := p) (Subtype.val : s → K) i
+  let a : E := ⟨x ^ p, E.algebraMap_mem
+    ⟨x ^ p, (mem_pPowerSubfield K p _).mpr ⟨x, rfl⟩⟩⟩
+  have hs : Algebra.adjoin E {x} = ⊤ := hb.adjoin_complement_eq_top i
+  let B := PowerBasis.ofAdjoinEqTop (isIntegral_of_prime_pow_eq x a rfl) hs
+  obtain ⟨δ, hδ, _⟩ := hb.exists_complementDerivation i
+  refine ⟨E, B.finite, ?_⟩
+  intro h
+  have he := congrArg δ.liftKaehlerDifferential h
+  rw [Derivation.liftKaehlerDifferential_comp_D, map_zero] at he
+  exact one_ne_zero (hδ.symm.trans he)
+
+end Absolute
 
 end SerrePositivity

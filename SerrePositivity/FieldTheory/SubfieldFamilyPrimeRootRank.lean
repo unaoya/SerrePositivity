@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.FieldTheory.FiniteExponentOneConstants
-public import SerrePositivity.FieldTheory.PrimeRootDifferentialKernel
+public import SerrePositivity.FieldTheory.ExponentOneDifferentialConstants
+public import SerrePositivity.FieldTheory.PrimeRootDifferentialRank
 
 /-! # 共有限な部分体族に対する次数pの階数安定
 

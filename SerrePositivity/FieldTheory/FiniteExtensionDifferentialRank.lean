@@ -2,7 +2,10 @@ module
 
 public import SerrePositivity.FieldTheory.FiniteExtensionPowerSubfieldIntersection
 public import SerrePositivity.FieldTheory.SubfieldFamilyPrimeRootRank
-public import SerrePositivity.FieldTheory.SeparableDifferentialRank
+public import Mathlib.RingTheory.Etale.Field
+public import Mathlib.RingTheory.Etale.Kaehler
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+public import Mathlib.RingTheory.TensorProduct.Finite
 
 /-! # 有限拡大での通常微分の階数安定
 
@@ -39,7 +42,9 @@ private theorem exists_rank_stable_purelyInseparable_sameUniverse
         exact isSeparable_algebraMap (F := K) c⟩
       refine ⟨Classical.arbitrary ι, ?_⟩
       intro R _ _ _ _ _ _
-      exact finrank_kaehlerDifferential_of_isSeparable R K L
+      have := Algebra.FormallyEtale.of_isSeparable K L
+      rw [← (KaehlerDifferential.tensorKaehlerEquivOfFormallyEtale R K L).finrank_eq,
+        Module.finrank_baseChange]
     obtain ⟨x, a, hxp, hx, _, hlt⟩ := exists_primeRoot_step_of_isPurelyInseparable hsurj
     let T := IntermediateField.adjoin K {x}
     let : CharP T p := (algebraMap T L).charP (algebraMap T L).injective p
@@ -127,7 +132,9 @@ theorem exists_subfieldFamily_rank_stable_of_isPurelyInseparable
   have hrT : Set.range (algebraMap R T) ⊆ G i := by
     rintro _ ⟨r, rfl⟩
     exact Subfield.mem_map.mpr ⟨algebraMap R K r, hR ⟨r, rfl⟩, rfl⟩
-  exact (hi R hrT).trans (finrank_kaehlerDifferential_of_isSeparable R K T)
+  have := Algebra.FormallyEtale.of_isSeparable K T
+  rw [hi R hrT, ← (KaehlerDifferential.tensorKaehlerEquivOfFormallyEtale R K T).finrank_eq,
+    Module.finrank_baseChange]
 
 /-- 有限拡大一般での階数安定。有限p-rankは要求しない。 -/
 theorem exists_subfieldFamily_rank_stable_of_finite
@@ -165,7 +172,9 @@ theorem exists_subfieldFamily_rank_stable_of_finite
     rintro _ ⟨r, rfl⟩
     apply (show (E i).map (algebraMap K T) ≤ G i from le_sup_left)
     exact Subfield.mem_map.mpr ⟨algebraMap R K r, hR ⟨r, rfl⟩, rfl⟩
-  exact (hi R hrT).trans (finrank_kaehlerDifferential_of_isSeparable R K T)
+  have := Algebra.FormallyEtale.of_isSeparable K T
+  rw [hi R hrT, ← (KaehlerDifferential.tensorKaehlerEquivOfFormallyEtale R K T).finrank_eq,
+    Module.finrank_baseChange]
 
 /-- 有限拡大で十分小さい指標を選ぶと、その下の任意の共有限部分体で次元が等しい。 -/
 theorem exists_subfieldFamily_rank_stable

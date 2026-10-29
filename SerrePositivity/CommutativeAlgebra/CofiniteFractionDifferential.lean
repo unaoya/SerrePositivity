@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.FieldTheory.FiniteExponentOneConstants
+public import SerrePositivity.FieldTheory.ExponentOneDifferentialConstants
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionIntersection
 
 /-! # 実際の共有限分数体族による微分の検出

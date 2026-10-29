@@ -97,8 +97,8 @@ theorem IsPBasis.exists_complementDerivation (hb : IsPBasis K p b) (i : ι) :
   have hx : b i ∉ Set.range (algebraMap E K) := by
     rintro ⟨y, hy⟩
     exact hb.notMem_complementField i (hy ▸ y.property)
-  obtain ⟨δ, hδ⟩ := exists_derivation_primeRoot_of_adjoin_eq_top
-    (b i) a rfl hx (hb.adjoin_complement_eq_top i)
+  let δ := primeRootDerivation (b i) a rfl hx (hb.adjoin_complement_eq_top i)
+  have hδ : δ (b i) = 1 := primeRootDerivation_self (b i) a rfl hx (hb.adjoin_complement_eq_top i)
   refine ⟨δ, hδ, ?_⟩
   intro j hji
   exact δ.map_algebraMap (⟨b j, mem_pBasisComplementField b hji⟩ : E)
