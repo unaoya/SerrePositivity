@@ -265,3 +265,13 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 2. **書式に action `reimport` を加える**：モジュールは移動せず、その import の一覧を `imports` に置き換える項目。`dest` は `module` と同じ、`moved`・`keep` は空。`downstream_imports` も使える。`validate_targets.py` は模擬のグラフでその import を使う。`targets/README.md` と試験を直す。
 3. `reimport` は次にも使う：R39 の `Stable.lean` から `Derived.CoherentBar.Compact.All` を外す修正、R59 のルート・`F2.lean` の入口の変更（import の追加・削除）。これで「手作業」だった項目の多くが JSON で表せ、§10.2 の規則 9 の `--remove-edges` の模擬は不要になる（作ってあれば残してよい）。
 4. 入口ファイル（`Stable.lean`・`F2.lean`・ルート）への `reimport` は、保存検査の対象にしない（宣言を持たないため）。ビルドと層検査だけで確かめる。
+
+### 10.9 追記（10-30、verify の環境の失敗への対処）
+
+93d84541e での全体 verify は、(a) `audit_f5.lean:33` の古い宣言名（main の問題。担当レーンに修正を依頼済み）と、(b) 環境の失敗 3 件（"Too many open files in system"、`failed to open file`、toolchain の olean を一時的に開けなかったもの）で FAIL になった。(b) は他のレーンのビルドと 3 並列の Lean が重なった瞬間の一時的なものなので、道具で吸収する。
+
+1. **所有範囲に `scripts/refactor/verify.sh`・`verify_runner.py` とその試験を加える。**
+2. **環境の失敗の再試行**：監査・sorry 閉包の失敗のうち、エラー文が次に当たるものを「環境の失敗」とする：`Too many open files`、`failed to open file`、`object file '…' of module … does not exist`（実行後にそのファイルが存在する場合）。環境の失敗は、並列の実行がすべて終わった後に**直列で 1 回だけ**やり直す。やり直しが通れば成功に数え、summary に `retried` として記録する。通らなければ失敗のまま。
+3. **重い監査は直列にする**：`audit_axioms.lean` と sorry 閉包は、並列の pool に入れず、pool が終わった後に直列で実行する。
+4. 再試行は gate を変えない（gate:true のまま）。ただし再試行が 1 回でも起きた実行は、summary に件数を残す。
+5. 試験：環境の失敗を模した監査（存在しない olean を開こうとするものなど）で、再試行の分岐と記録を確かめる。
