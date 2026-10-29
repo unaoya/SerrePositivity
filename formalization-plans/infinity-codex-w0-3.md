@@ -238,3 +238,23 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
    - `UniverseHomotopy` の件は、`ResolutionComparisonEquivalence`（または実際に壊れた `ComparisonEquivalence`）への直接 import の追加で解消する見込み。試行で確かめて記録する。
 2. **roof の語彙判定を直す**：10.5-1 で挙げた `Complex`・`Module` は部分一致で `FullSubcomplex`・`Subcomplex`（quasicategory の基本 API）に当たり、一般論を「dg を含む」と誤判定する。判定は**識別子の境界**で行い、次の語だけを dg の印とする：`DG` または `dg` で始まる識別子（`DGCategory`・`DGFunctor`・`dgNerve`・`dgClosedEdge` など。ただし `dg` 単独の綴りが別の語の一部になる場合は除く）、`Cochain`、`HomologicalComplex`、`ChainComplex`、`ModuleCat`、`CommRing`、`Bimodule`。`Subcomplex`・`FullSubcomplex`・`Simplex`・`Complex`（単独）は印にしない。この規則で \(C\) を取り直し、\(|C|\)・除外の一覧・漏れの辺を報告し直す。
 3. 上の二つを直したうえで、10.5 の 2〜5 を進める。
+
+### 10.7 追記（10-29、roof の判断と、外部定義の生成補題）
+
+**roof の判断（§10.5-4 への回答）**
+1. **prune 後に 3 入口が必要とする 15 本を W1 に入れる**（R39 の pull-down として）。移し先は閉包の表のとおり層ごとに決め、名前は統一して `<層>.Roof.<元の名前>`（`Core.Roof`・`F1B.Roof`・`Stable.Roof`）とする。`Stable.Verdier.Fractions` 案のものも当面は `Stable.Roof` に置く（R52 で Fractions へまとめるかは W2c で判断）。
+2. 既存の W1 の move と重なる 6 本は、既存の項目を優先し、重複した項目は作らない。
+3. 15 本に入らない C の残り（`SpanUnknownIndex`・`SpanIndexGeometry` を含む 8 本）と、`SpanSuffixIndex` の追加 split 案は、**W2c（R52）に回す**。w1.md の保留に「W2c へ」と書く。
+4. 2 本の prune（`FirstTriangleIndex`・`RoofPinchedSlicePostcomp`）と、それに伴う下流の直接 import の補充は、`imports`・`downstream_imports` フィールドで JSON に入れる。
+5. roof の 15 本を含めた状態で、手作業込みの W1 の終了条件を判定する。
+
+**外部定義の生成補題（`functorEqIso.eq_1` など）**
+6. 所有範囲に `scripts/refactor/lean_source.py` とその試験を加える。
+7. 規則：ソースにない定数は、環境の中で「その名前の最長の真の接頭辞で、宣言として存在するもの」を親とする。
+   - 親が**同じモジュール**のソースの宣言なら、その親の補助宣言として扱う（いままでどおり）。
+   - 親が**別のモジュール**（リポジトリ内の他のファイル、または Mathlib）の宣言なら、「外部定義の生成補題」（`eq_n`・`eq_def` など、使った場所で遅延生成されるもの）として扱う。分割では止めずに無視し（どちらの側でも必要なら再生成される）、保存検査では比較の対象から外して、別の一覧 `transient` に名前だけ記録する。
+   - 親が見つからないものだけを、いままでどおりエラー（STOP）にする。
+8. この規則で `FunctorIsoChainTransport` の分割の試行をやり直す。
+
+**時間について**
+9. 直列の試験が 7 時間かかっている。試行のビルドは影響するモジュールに限り（`lake build <module>`）、verify の全体実行は最後の 1 回だけにする。
