@@ -3,10 +3,19 @@ module
 public import SerrePositivity.FieldTheory.PrimeRootAdjoin
 public import Mathlib.FieldTheory.PurelyInseparable.Exponent
 
-/-! # 純非分離拡大から次数pの段階を取り出す
+/-! # 純非分離拡大の p 乗根による帰納法
 
-底体の外の元について、底体へ入る最小のFrobenius冪（Mathlib の `IsPurelyInseparable.elemExponent`）を取る。
-その一つ前の冪が非自明なp乗根となり、添加後の残りの拡大次数は厳密に減る。
+概要：標数 `p` の純非分離拡大 `L/K` について、
+- 底体の外の元があれば、底体の外の p 乗根 `y`（`y ^ p ∈ K`、`y ∉ K`）が取れる。拡大の有限性は不要。
+- 有限なら、`K(y)` 上の残りの拡大次数は厳密に減る。
+- これを繰り返して、有限な純非分離拡大の性質を p 乗根の添加一段ずつに帰着する帰納原理
+  （`induction_on_primeRoot_of_isPurelyInseparable`）。
+方針：底体の外の元 `x` について、`x ^ p ^ e` が底体に入る最小の `e`（Mathlib の
+`IsPurelyInseparable.elemExponent`）を取り、`x ^ p ^ (e - 1)` を p 乗根とする。帰納は残りの拡大次数に
+ついての強い帰納法で、一段の次数は `finrank_adjoin_of_prime_pow_eq` から p。
+規約：帰納原理の底体は `L` と同じ宇宙に置く（中間体 `K(y)` を次の底体にするため）。
+使われ方：部分体の族と `K^p` の合併の交わり（`PowerSubfieldFamilyIntersection`）、微分の次元の安定
+（`SubfieldFamilyDifferentialRank`）。
 -/
 
 @[expose] public noncomputable section

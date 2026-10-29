@@ -864,12 +864,6 @@ assert_no_sorry SerrePositivity.IsPBasis
 assert_no_sorry SerrePositivity.IsPBasis.basis
 #print axioms SerrePositivity.IsPBasis.basis_apply
 assert_no_sorry SerrePositivity.IsPBasis.basis_apply
-#print axioms SerrePositivity.IsPBasis.expansionEquiv
-assert_no_sorry SerrePositivity.IsPBasis.expansionEquiv
-#print axioms SerrePositivity.IsPBasis.expansionEquiv_symm_apply
-assert_no_sorry SerrePositivity.IsPBasis.expansionEquiv_symm_apply
-#print axioms SerrePositivity.IsPBasis.sum_expansionEquiv
-assert_no_sorry SerrePositivity.IsPBasis.sum_expansionEquiv
 #print axioms SerrePositivity.IsPBasis.linearIndependent_comp
 assert_no_sorry SerrePositivity.IsPBasis.linearIndependent_comp
 #print axioms SerrePositivity.IsPBasis.finrank_span

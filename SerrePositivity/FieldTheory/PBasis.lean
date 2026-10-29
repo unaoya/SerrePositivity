@@ -12,10 +12,10 @@ public import SerrePositivity.LinearAlgebra.BasisRingEquiv
 
 概要：正標数 `p` の体 `K` の p 乗部分体 `K^p`（Frobenius の像）と、p 基底（p 単項式が `K^p` 上の基底になる族）。
 - p 乗部分体：Frobenius との同型、体の準同型による像、体同型が誘導する同型。
-- p 基底：線形代数の基底と p 乗根の係数による展開、次数、代数としての生成、導分と環準同型の一意性、
+- p 基底：線形代数の基底、次数、代数としての生成、導分と環準同型の一意性、
   体同型による移送、空の p 基底の判定。
 方針：p 乗部分体は Mathlib の `(frobenius K p).fieldRange`、同型は `rangeRestrictFieldEquiv` で定義する。
-規約：存在定理（`PIndependentSet`）や相対版（`RelativePMonomialSpan`・`PBasisDifferentials`）は別の場所に置く。
+規約：存在定理（`PIndependentSet`）や相対版（`PMonomialSpan`・`PBasisDifferentials`）は別の場所に置く。
 使われ方：FieldTheory の p 基底の理論全体と Cohen–Gabber の正規化。Mathlib への提出候補（mathlib-upstream の G1）。
 -/
 
@@ -83,29 +83,6 @@ noncomputable def basis (hb : IsPBasis K p b) :
 
 @[simp] theorem basis_apply (hb : IsPBasis K p b) (d : PExponent p ι) :
     hb.basis d = pMonomial b d := Module.Basis.mk_apply _ _ _
-
-/-- p-basis による一意な有限台展開の係数の p 乗根を与える同値。
-線形同値ではなく、Frobenius の逆で係数を変換した同値である。 -/
-noncomputable def expansionEquiv (hb : IsPBasis K p b) : K ≃ (PExponent p ι →₀ K) :=
-  hb.basis.repr.toEquiv.trans
-    (Finsupp.mapRange.equiv (pPowerEquiv K p).symm.toEquiv (pPowerEquiv K p).symm.map_zero)
-
-/-- 展開から元を復元する実際の式。添字集合が無限でも有限和である。 -/
-theorem expansionEquiv_symm_apply (hb : IsPBasis K p b) (c : PExponent p ι →₀ K) :
-    hb.expansionEquiv.symm c = c.sum (fun d a ↦ a ^ p * pMonomial b d) := by
-  change hb.basis.repr.symm
-    (Finsupp.mapRange (pPowerEquiv K p) (map_zero _) c) = _
-  rw [Module.Basis.repr_symm_apply, Finsupp.linearCombination_apply,
-    Finsupp.sum_mapRange_index (by intro d; simp)]
-  apply Finsupp.sum_congr
-  intro d _
-  rw [hb.basis_apply]
-  change (pPowerEquiv K p (c d) : K) * pMonomial b d = _
-  rw [pPowerEquiv_apply_coe]
-
-theorem sum_expansionEquiv (hb : IsPBasis K p b) (x : K) :
-    (hb.expansionEquiv x).sum (fun d a ↦ a ^ p * pMonomial b d) = x := by
-  rw [← hb.expansionEquiv_symm_apply, Equiv.symm_apply_apply]
 
 /-- 任意の部分族の p 単項式も元の p 乗部分体上で独立。 -/
 theorem linearIndependent_comp {κ : Type*} (hb : IsPBasis K p b) (e : κ ↪ ι) :
@@ -240,8 +217,13 @@ theorem IsPBasis.ringHom_ext_of_eq_pow (hb : IsPBasis k p b)
   have hmono (d : PExponent p ι) : l₁ (pMonomial b d) = l₂ (pMonomial b d) := by
     simp only [pMonomial, Finsupp.prod, map_prod, map_pow, hbmap]
   ext x
-  rw [← hb.sum_expansionEquiv x]
-  simp only [Finsupp.sum, map_sum, map_mul, hpow, hmono]
+  rw [← hb.basis.linearCombination_repr x, Finsupp.linearCombination_apply]
+  simp only [Finsupp.sum, map_sum, hb.basis_apply, Algebra.smul_def, map_mul, hmono]
+  refine Finset.sum_congr rfl fun d _ ↦ congrArg (· * _) ?_
+  obtain ⟨y, hy⟩ := (mem_pPowerSubfield k p _).mp (hb.basis.repr x d).property
+  change l₁ (hb.basis.repr x d : k) = l₂ (hb.basis.repr x d : k)
+  rw [← hy]
+  exact hpow y
 
 /-- p-basis と、一つの Frobenius 冪の像で一致すれば、写像全体が一致する。 -/
 theorem IsPBasis.ringHom_ext_of_eq_pow_exp (hb : IsPBasis k p b)

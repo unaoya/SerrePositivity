@@ -14,6 +14,10 @@ public import Mathlib.Data.Nat.Find
 - `K/F` が有限な場合：`x` を避ける最大の中間体 `E` を拡大次数の最小化で選ぶと、`x` は `E` 上で次数 p の
   p 乗根として全体を生成するので、`primeRootDerivation` で検出できる。共有限な部分体の版が使われる。
 - `F = K^p`（`K` は有限でなくてよい）：`x` を含む p 基底を取り、その偏導分で検出する。
+  さらに `x` を一方向とする中間係数体 `K_{x}`（`pBasisCofiniteField`）上でも `D x ≠ 0` で、`K/K_{x}` は有限。
+方針：検出する導分を作れば、普遍性 `Derivation.liftKaehlerDifferential` から `D x ≠ 0`。逆向きは
+導分が p 乗で消えること。`K_{x}` 上では、`x` が `K_{x}` 上の p 乗根として全体を生成するので
+（`IsPBasis.adjoin_cofiniteField_singleton_eq_top`）、`primeRootDerivation` で検出する。
 規約：底体や終域の有限 p-rank は要求しない。
 使われ方：共有限な部分体上の相対微分の零判定（`kaehlerDifferential_finite_subfield_eq_zero_iff`）。
 -/
