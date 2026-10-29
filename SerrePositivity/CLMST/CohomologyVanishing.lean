@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Inputs.CohomologyVanishing
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-! # CLMST の固定 g の消滅からパラメータ系の消滅への接続
 

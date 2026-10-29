@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.StageBaseChange
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 public import SerrePositivity.CLMST.StageDimension
 
 /-! # CLMST の一般段の局所性

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.StageLocality
-public import SerrePositivity.CommutativeAlgebra.ParameterLastPower
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
 public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
 public import Mathlib.RingTheory.Flat.Basic
 
@@ -45,7 +45,7 @@ theorem stage_parameter_change_of_regular_D
     (stageAlgebra_algebraMap_injective A D t p n)
   have haStage : algebraMap D (StageAlgebra A D t p n) a ∈ maximalIdeal (StageAlgebra A D t p n) :=
     hm (Ideal.mem_map_of_mem (algebraMap D (StageAlgebra A D t p n)) haM)
-  exact ParameterGeneratorSequence.exists_same_span_with_regular_last y hy _ haStage
+  exact exists_same_span_with_regular_last y hy _ haStage
     (isSMulRegular_stageAlgebra_of_regular_D A D t p n a ha)
 
 /-- 零化冪として正の指数を選べば、その冪についても同じパラメータ変更を適用できる。 -/

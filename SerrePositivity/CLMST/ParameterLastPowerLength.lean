@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.CompletedParameterFiniteness
 public import SerrePositivity.LengthAlgebra.KoszulEulerZero
-public import SerrePositivity.CommutativeAlgebra.ParameterLastPower
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
 
 /-! # CLMST Claim 4.0.15：最後のパラメータの冪による長さの倍率
 

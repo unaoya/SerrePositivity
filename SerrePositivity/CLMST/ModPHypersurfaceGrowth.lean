@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.FrobeniusHypersurfaceGrowth
-public import SerrePositivity.CommutativeAlgebra.RegularLocalQuotient
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.Algebra.CharP.Quotient
 
@@ -29,7 +28,7 @@ theorem modP_regular_and_dim_of_parameters
     (hdim : ringKrullDim A = r + 2) :
     IsRegularLocalRing (A ⧸ Ideal.span {(p : A)}) ∧
       ringKrullDim (A ⧸ Ideal.span {(p : A)}) = r + 1 := by
-  have hQ := RegularLocalQuotient.isRegularLocalRing_quotient_head_and_dim t ht hdim
+  have hQ := isRegularLocalRing_quotient_head_and_dim t ht hdim
   rw [htp] at hQ
   simpa only [Nat.cast_add, Nat.cast_one] using hQ
 

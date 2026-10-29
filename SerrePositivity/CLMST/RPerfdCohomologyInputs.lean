@@ -15,7 +15,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoeffic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerHolimNaturality
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # Concrete inputs for the cohomology comparison on the selected RPerfd
 

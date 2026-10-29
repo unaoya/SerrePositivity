@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.PerfectoidIsogeny
 public import SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange
-public import SerrePositivity.CommutativeAlgebra.RegularBaseChange
+public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import Mathlib.RingTheory.TensorProduct.Finite
 

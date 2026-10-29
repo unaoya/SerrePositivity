@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.ConditionalCohomologyFromPowerTorsion
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-!
 # CompletedTower 上の指定二入力から全加群 Tor と両消滅へ
