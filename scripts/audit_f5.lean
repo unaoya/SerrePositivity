@@ -30,8 +30,7 @@ variable {A : Type u} [CommRing A] {p : ℕ} [Fact p.Prime]
 theorem f5_audit_distinguished_quotient (D : DeltaStructure p A) (hD : D.IsPerfect)
     [IsAdicComplete (Ideal.span {(p : A)}) A] {d : A} (hd : D.IsDistinguished d) :
     IsAdicComplete (Ideal.span {(p : A ⧸ Ideal.span {d})}) (A ⧸ Ideal.span {d}) := by
-  apply isAdicComplete_regular_quotient_natCast_of_bounded_torsion A p d
-    hD.p_mul_injective (hD.distinguished_mul_injective hd)
+  apply isAdicComplete_principal_quotient_natCast_of_bounded_torsion A p d
   refine ⟨1, fun n x hx ↦ ?_⟩
   simpa only [pow_one] using hD.distinguished_quotient_p_pow_torsion_killed_by_p hd n x hx
 
