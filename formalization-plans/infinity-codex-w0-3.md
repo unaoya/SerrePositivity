@@ -166,3 +166,39 @@ MSG
 - 閉包の規則に合わないものを、保留にせず JSON に入れること。
 - 宣言名・名前空間の変更を前提にした項目を作ること。
 - main の作業木での作業・ビルド。
+
+## 10. 追記（2026-10-29、§7-1 の報告への判断）
+
+§7-1 の報告（move 27・保留 22、W1 の終了条件は未達）を受けて、次を決めた。
+
+### 10.1 判断
+
+1. **R66 の移し先は Core に変える。** `DGNerve.JoinSimplexInclusions`・`JoinSimplexFaces`・`JoinVertexSurjectivity` は Core の join・pullback の補題を使うので Simplicial には収まらない（計画 §3 では「Core：join と slice」なので Core が正しい）。`DoldKanComparison.UniverseHomotopy` は、純粋な部分（`uliftHomotopy`・`ulift_homotopyEquivalence` など）を `Core.UniverseHomotopy` へ split し、残りは DoldKanComparison に残す。
+2. **R61a の組 1**：`F1/Universe/PinchedHom` を残す（宇宙の持ち上げの置き場として正しい）。ただし import は閉包の小さい `F1B/Localization/UniversePinchedHom` のもの（`Core.UniverseSSetMaps`）に揃える（import 行だけの変更）。F1B 側は削除し、名前空間の違い（`LocalizationUniverse`）は `move_module.py` の symbols で対応する。
+3. **後の窓で解消する保留は W1 から外す**：#4（`FilteredSpaceBridgeInput`）は R73 で PiCriterion が中核の外へ出れば消える（W2b）。#22（`EnrichedFunctorCollageNerve`）は、入口の `HL/QuillenCfCollage` が R72(3) の Quillen 系 42 本に含まれるなら W2a で消える（含まれるか確かめて報告）。#10 も、入口の HL 側が Quillen 系なら同様。
+4. **分割の検証を許可する**：worktree の中で一時的に `split_module.py --apply --prune-imports` を行い、縮めた import・snapshot・保存検査・影響するモジュールのビルドの結果を取ってから、**元に戻す**。この証拠をもとに JSON に split を入れてよい。IF-W0-2 の試験 C と同じ扱い（終わったら復元、コミットしない）。
+
+### 10.2 規則の追加（§3.2 に加える）
+
+8. **入口の辺の切り方は三通りを比べる。** 中核のモジュール \(u\) が禁止側のモジュール \(v\) を import する辺 \(u \to v\) について：
+   - **(a) 下ろす**：\(v\) と、\(v\) の閉包のうち移し先の層より上にあるモジュールの集合 \(S(v)\)（pull-down 集合）を一緒に下ろす。\(S(v)\) の各モジュールの閉包が DG・KST・モデル圏を含まないことが条件。\(|S(v)|\) を報告する。**\(|S(v)| > 60\) なら JSON に入れず報告だけにする。**
+   - **(b) 上げる**：\(u\) を中核より上の層（Derived など、\(u\) の利用元と同じ層）へ移す。条件は、中核の中に \(u\) の利用元（推移的）がないこと。\(u\) の利用元の一覧を報告する。
+   - **(c) 分ける**：\(u\) または \(v\) の少数の宣言だけが原因なら split（10.1-4 の証拠つき）。
+   三つの候補の大きさ（移す本数・分割する宣言数）を並べ、最も小さいものを JSON に入れる。甲乙つけがたいときは保留にして両案を書く。
+9. **手作業の影響も試算に入れる**：`targets_builder.py` に、import グラフから辺を除く模擬（`--remove-edges`。R39 の `Stable.lean` → `Derived.CoherentBar.Compact.All`、R59 の入口の変更など）と、後の窓の JSON を前提にする模擬を加え、W1 の終了条件（中核の閉包に DG・EInfinity なし）を**手作業を含めた状態で**判定する。
+10. **validate_targets.py の拡張を許可する**：項目に任意の 9 番目のフィールド `"imports"`（split 後の両ファイルの import の一覧。10.1-4 の証拠から写す）を認め、模擬のグラフでその import を使う。`targets/README.md` と試験も合わせて直す。**所有範囲に `scripts/refactor/validate_targets.py`・`split_module.py`・`targets/README.md`・対応する試験を加える。**
+
+### 10.3 保留 22 件の処置
+
+| 番号 | 処置 |
+| --- | --- |
+| 1・2・3（Join 系） | 移し先を Core にして move（10.1-1） |
+| 10（UniverseHomotopy） | 入口の HL 側が Quillen 系なら W2a へ。そうでなければ Core へ split（10.1-1、証拠つき） |
+| 4 | W2b（R73）へ |
+| 22 | 入口が Quillen 系なら W2a（R72）へ。そうでなければ規則 8 で比べる |
+| 7・8・9（roof 系、Stable → Derived） | 規則 8 の (b) を優先して調べる：`Stable.SliceEvaluationNaturality`・`LoopCospanRepresentation`・`TerminalRightFibrationComparison` の中核内の利用元を列挙し、なければ Derived へ上げる案を出す。(a) の \(S(v)\) は 1,600 本規模なので、下ろす案は採らない |
+| 5・6（F1・HL → Derived） | 規則 8 の (a)(b) を比べる |
+| 11〜21（R26 の F2 参照先） | 規則 8 の (a)(b) を比べる。(a) の pull-down 集合は F2/CatInfinity・FilteredExchange の中で閉じるはずなので、その大きさを報告する。13・21 の split 案は 10.1-4 の証拠を取ってから判断する |
+| 14・16（SpecifiedSimplexEdge・FunctorIsoWhiskerUnit が原因） | 原因のモジュール自身の閉包が Core に収まるなら、追加の move として入れてよい（規則 8 の (a) で \(|S| \le 60\)） |
+
+処置の後に `validate_targets.py` を通し直し、規則 9 の模擬で W1 の終了条件を判定して、改めて §7-1 の報告をする。
