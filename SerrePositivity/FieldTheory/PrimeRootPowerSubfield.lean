@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.FieldTheory.PAdjoin
+public import SerrePositivity.FieldTheory.PrimeRootAdjoin
+public import SerrePositivity.FieldTheory.PBasis
 public import SerrePositivity.FieldTheory.SubfieldLinearAlgebra
 public import Mathlib.RingTheory.PowerBasis
 public import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra

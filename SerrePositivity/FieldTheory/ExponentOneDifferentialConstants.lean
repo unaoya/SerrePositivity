@@ -124,19 +124,6 @@ section Absolute
 
 variable {K : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p]
 
-/-- p乗でない指定した元を含む、実際のp-basisが存在する。 -/
-theorem exists_pBasis_containing_of_not_mem_pPowerSubfield (x : K)
-    (hx : x ∉ pPowerSubfield K p) :
-    ∃ s : Set K, x ∈ s ∧ IsPBasis K p (Subtype.val : s → K) := by
-  have hxe : x ∉ pMonomialIntermediateField (p := p) (Subtype.val : (∅ : Set K) → K) := by
-    rw [pMonomialIntermediateField_eq_adjoin, Set.range_eq_empty, IntermediateField.adjoin_empty]
-    intro h
-    obtain ⟨c, hc⟩ := IntermediateField.mem_bot.mp h
-    exact hx (hc ▸ c.property)
-  have hs := (isPIndependentSet_empty (K := K) (p := p)).insert x hxe
-  obtain ⟨s, hsub, hb⟩ := exists_pBasis_superset _ hs
-  exact ⟨s, hsub (by simp), hb⟩
-
 /-- p乗でない元を1に送る、p乗部分体上の導分が存在する。 -/
 theorem exists_derivation_detecting_not_mem_pPowerSubfield (x : K)
     (hx : x ∉ pPowerSubfield K p) :

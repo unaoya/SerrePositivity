@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.FieldTheory.PBasisRingHomExt
+public import SerrePositivity.FieldTheory.PBasis
 public import SerrePositivity.CommutativeAlgebra.NilpotentFrobenius
 public import Mathlib.RingTheory.AdicCompletion.Basic
 

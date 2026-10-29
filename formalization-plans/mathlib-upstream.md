@@ -32,3 +32,9 @@
   関連：`LinearIndependent.restrict_scalars`（係数の制限）、`LinearIndependent.algebraMap_comp_iff`、`linearIndependent_algebraMap_comp_iff`（係数拡大、整域）、
   `IntermediateField.LinearDisjoint.linearIndependent_left/right`・`of_basis_left`（線形分離：小さい体上の独立性が大きい体上でも保たれる条件）、
   `LinearIndependent.map_of_isPurelyInseparable_of_isSeparable`（純非分離の塔での独立性の持ち上げ）。
+
+## 4. まとまりで提出する候補
+
+| # | 候補 | 内容 | 現状のファイル | 方針・前提 |
+| --- | --- | --- | --- | --- |
+| G1 | p 基底の理論（Teichmüller・Mac Lane。Matsumura §26、EGA 0_IV §21） | 正標数の体の p 乗部分体、p 基底と p 単項式による展開、有限 p 次数、p 独立集合と p 基底の存在・延長、p 乗根の添加と p 単項式の張る中間体（PMonomialSpan は相対版 `b_i^p ∈ F` が主で絶対版はその系）、Kähler 微分との関係（`D bᵢ` が `Ω_{K/K^p}` の基底、`D x = 0 ⟺ x ∈ K^p`）、相対 p 基底 | FieldTheory の PExponent・PBasis・PMonomialSpan・PrimeRootAdjoin・PIndependentSet・PBasisDifferentials・ExponentOneDifferentialConstants | 8fe7ce4（2026-10-28）で Mathlib になし。2026-10-29 の判断：`IsPBasis` は絶対版のまま。相対的な一般性は p 単項式の線形包と添加の同定（PMonomialSpan）と微分（PBasisDifferentials）で実現済み。`IsPBasis` 自体の相対化（`K^p ⊆ F ⊆ K`）は提出時の設計課題とする。提出は (1) 定義・基本性質・存在 (2) 中間体と次数 (3) Kähler 微分、の順に分ける。paper-layer-extraction の P7（p 基底・Cohen–Gabber・係数体）の一部 |

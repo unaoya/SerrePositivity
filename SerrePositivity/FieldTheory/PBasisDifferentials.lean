@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.PBasis
-public import SerrePositivity.FieldTheory.RelativePMonomialSpan
+public import SerrePositivity.FieldTheory.PMonomialSpan
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
 public import SerrePositivity.CommutativeAlgebra.DerivationSpan
 

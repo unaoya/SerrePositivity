@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PBasisFrobeniusLift
 public import SerrePositivity.CommutativeAlgebra.FrobeniusCoefficientLift
-public import SerrePositivity.FieldTheory.PBasisRingHomExt
+public import SerrePositivity.FieldTheory.PBasis
 public import SerrePositivity.CommutativeAlgebra.PBasisNilpotentLifting
 
 /-! # 冪零核に沿う指定 p-basis の持ち上げの存在

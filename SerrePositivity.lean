@@ -33,10 +33,10 @@ public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
 
 public import SerrePositivity.LinearAlgebra.IndependentPerturbation
 public import SerrePositivity.CommutativeAlgebra.DerivationIdealSpan
-public import SerrePositivity.FieldTheory.PMonomial
+public import SerrePositivity.FieldTheory.PExponent
 public import SerrePositivity.FieldTheory.PBasis
 public import SerrePositivity.FieldTheory.PMonomialSpan
-public import SerrePositivity.FieldTheory.PAdjoin
+public import SerrePositivity.FieldTheory.PrimeRootAdjoin
 public import SerrePositivity.FieldTheory.PIndependentSet
 public import SerrePositivity.CommutativeAlgebra.DerivationSpan
 public import SerrePositivity.FieldTheory.PBasisDifferentials
@@ -44,16 +44,12 @@ public import SerrePositivity.CommutativeAlgebra.DerivationDescent
 public import SerrePositivity.FieldTheory.AdjoinSingletonDerivation
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
 public import SerrePositivity.FieldTheory.PBasisComplement
-public import SerrePositivity.FieldTheory.RelativePMonomialSpan
-public import SerrePositivity.FieldTheory.PBasisRingHomExt
 public import SerrePositivity.CommutativeAlgebra.NilpotentFrobenius
 public import SerrePositivity.CommutativeAlgebra.PBasisNilpotentLifting
 public import SerrePositivity.FieldTheory.FrobeniusPowerSubfield
 public import SerrePositivity.FieldTheory.PBasisFrobeniusGeneration
-public import SerrePositivity.FieldTheory.PBasisTransport
 public import SerrePositivity.FieldTheory.FrobeniusLayerBasis
 public import SerrePositivity.FieldTheory.FrobeniusTowerBasis
-public import SerrePositivity.FieldTheory.PExponentRadix
 public import SerrePositivity.FieldTheory.FrobeniusMonomialBasis
 public import SerrePositivity.CommutativeAlgebra.FrobeniusMonomialCarry
 public import SerrePositivity.CommutativeAlgebra.PBasisFrobeniusLift
@@ -117,7 +113,6 @@ public import SerrePositivity.FieldTheory.PrimeRootDifferentialRank
 public import SerrePositivity.FieldTheory.ExponentOneDifferentialConstants
 public import SerrePositivity.FieldTheory.SubfieldFamilyDifferentialRank
 public import SerrePositivity.FieldTheory.SubfieldLinearAlgebra
-public import SerrePositivity.FieldTheory.PowerSubfieldMap
 public import SerrePositivity.FieldTheory.PowerSubfieldFamilyIntersection
 public import SerrePositivity.FieldTheory.PurelyInseparablePrimeStep
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionDifferentialRank
@@ -143,7 +138,6 @@ public import SerrePositivity.CommutativeAlgebra.CofiniteFractionIntersection
 public import SerrePositivity.CommutativeAlgebra.CofiniteNormalizationFraction
 public import SerrePositivity.CommutativeAlgebra.EqualCharacteristicFractionNormalization
 public import SerrePositivity.LinearAlgebra.BasisScalarIndependence
-public import SerrePositivity.FieldTheory.PMonomialPartition
 public import SerrePositivity.FieldTheory.PBasisCofiniteBasis
 public import SerrePositivity.LinearAlgebra.BasisRingEquiv
 public import SerrePositivity.CommutativeAlgebra.FrobeniusKernelLift

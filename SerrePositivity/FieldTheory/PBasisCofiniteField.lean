@@ -16,18 +16,15 @@ variable {K : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p]
 
 /-- eの外のp-basis元とp乗部分体からなる中間体。 -/
 def pBasisCofiniteField (e : Finset ι) : IntermediateField (pPowerSubfield K p) K :=
-  pMonomialIntermediateField (p := p) (fun j : {j : ι // j ∉ e} ↦ b j)
+  IntermediateField.adjoin (pPowerSubfield K p) (Set.range fun j : {j : ι // j ∉ e} ↦ b j)
 
 theorem mem_pBasisCofiniteField (e : Finset ι) {i : ι} (hi : i ∉ e) :
     b i ∈ pBasisCofiniteField (p := p) b e := by
-  rw [pBasisCofiniteField, pMonomialIntermediateField_eq_adjoin]
   exact IntermediateField.subset_adjoin _ _ ⟨⟨i, hi⟩, rfl⟩
 
 /-- 残す方向を増やすと、係数体は小さくなる。 -/
 theorem pBasisCofiniteField_antitone {e f : Finset ι} (hef : e ⊆ f) :
     pBasisCofiniteField (p := p) b f ≤ pBasisCofiniteField (p := p) b e := by
-  rw [pBasisCofiniteField, pBasisCofiniteField, pMonomialIntermediateField_eq_adjoin,
-    pMonomialIntermediateField_eq_adjoin]
   apply IntermediateField.adjoin.mono
   rintro _ ⟨j, rfl⟩
   exact ⟨⟨j, fun hj ↦ j.property (hef hj)⟩, rfl⟩

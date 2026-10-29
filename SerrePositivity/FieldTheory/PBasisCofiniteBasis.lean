@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.PBasisCofiniteField
-public import SerrePositivity.FieldTheory.PMonomialPartition
+public import SerrePositivity.FieldTheory.PExponent
 public import SerrePositivity.LinearAlgebra.BasisScalarIndependence
 public import Mathlib.Algebra.Group.Submonoid.Finsupp
 
@@ -23,13 +23,15 @@ def IsPBasis.cofiniteCoefficientBasis (hb : IsPBasis K p b) (e : Finset ι) :
   have hli : LinearIndependent (pPowerSubfield K p)
       (pMonomial (p := p) (fun i : {i : ι // i ∉ e} ↦ b i)) :=
     hb.linearIndependent_comp (Function.Embedding.subtype (· ∉ e))
-  exact Module.Basis.span hli
+  exact (Module.Basis.span hli).map (LinearEquiv.ofEq _ _
+    (adjoin_pPowerSubfield_toSubmodule_eq_span_pMonomial _).symm)
 
 @[simp] theorem IsPBasis.cofiniteCoefficientBasis_apply_coe (hb : IsPBasis K p b)
     (e : Finset ι) (d : PExponent p {i : ι // i ∉ e}) :
     (hb.cofiniteCoefficientBasis e d : K) = pMonomial (fun i : {i : ι // i ∉ e} ↦ b i) d := by
   unfold IsPBasis.cofiniteCoefficientBasis
-  exact Module.Basis.coe_span_apply _ d
+  exact Module.Basis.coe_span_apply
+    (hb.linearIndependent_comp (Function.Embedding.subtype (· ∉ e))) d
 
 /-- 残した方向の単項式は、中間係数体上でも独立。 -/
 theorem IsPBasis.linearIndependent_cofiniteMonomials (hb : IsPBasis K p b) (e : Finset ι) :

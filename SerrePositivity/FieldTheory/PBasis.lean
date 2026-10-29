@@ -1,15 +1,22 @@
 module
 
-public import SerrePositivity.FieldTheory.PMonomial
+public import SerrePositivity.FieldTheory.PExponent
 public import Mathlib.Algebra.Field.Subfield.Basic
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.LinearAlgebra.Basis.Basic
 public import Mathlib.RingTheory.Derivation.Basic
+public import Mathlib.RingTheory.AlgebraTower
+public import SerrePositivity.LinearAlgebra.BasisRingEquiv
 
-/-! # Frobenius 部分体と p-basis
+/-! # p 乗部分体と p 基底
 
-p-basis は有限台 p 単項式が p 乗部分体上の基底であるという数学的条件。
-存在や指定持ち上げの係数体はこの定義からは仮定せず、別途証明する。
+概要：正標数 `p` の体 `K` の p 乗部分体 `K^p`（Frobenius の像）と、p 基底（p 単項式が `K^p` 上の基底になる族）。
+- p 乗部分体：Frobenius との同型、体の準同型による像、体同型が誘導する同型。
+- p 基底：線形代数の基底と p 乗根の係数による展開、次数、代数としての生成、導分と環準同型の一意性、
+  体同型による移送、空の p 基底の判定。
+方針：p 乗部分体は Mathlib の `(frobenius K p).fieldRange`、同型は `rangeRestrictFieldEquiv` で定義する。
+規約：存在定理（`PIndependentSet`）や相対版（`RelativePMonomialSpan`・`PBasisDifferentials`）は別の場所に置く。
+使われ方：FieldTheory の p 基底の理論全体と Cohen–Gabber の正規化。Mathlib への提出候補（mathlib-upstream の G1）。
 -/
 
 @[expose] public section
@@ -36,6 +43,29 @@ noncomputable def pPowerEquiv : K ≃+* pPowerSubfield K p :=
 
 @[simp] theorem pPowerEquiv_apply_coe (x : K) :
     (pPowerEquiv K p x : K) = x ^ p := rfl
+
+section Map
+
+variable {K L : Type*} [Field K] [Field L] {p : ℕ} [Fact p.Prime] [CharP K p] [CharP L p]
+
+/-- 体の準同型はp乗部分体をp乗部分体へ送る。 -/
+theorem map_pPowerSubfield_le (f : K →+* L) :
+    (pPowerSubfield K p).map f ≤ pPowerSubfield L p := by
+  rintro _ ⟨c, hc, rfl⟩
+  obtain ⟨d, hd⟩ := (mem_pPowerSubfield K p c).mp hc
+  exact (mem_pPowerSubfield L p _).mpr ⟨f d, by rw [← map_pow, hd]⟩
+
+/-- 全射な体準同型ではp乗部分体の像もp乗部分体全体になる。 -/
+theorem map_pPowerSubfield_eq_of_surjective (f : K →+* L) (hf : Function.Surjective f) :
+    (pPowerSubfield K p).map f = pPowerSubfield L p := by
+  apply le_antisymm (map_pPowerSubfield_le f)
+  intro y hy
+  obtain ⟨z, hz⟩ := (mem_pPowerSubfield L p y).mp hy
+  obtain ⟨c, rfl⟩ := hf z
+  exact Subfield.mem_map.mpr ⟨c ^ p, (mem_pPowerSubfield K p _).mpr ⟨c, rfl⟩,
+    by rw [map_pow]; exact hz⟩
+
+end Map
 
 /-- p 単項式が p 乗部分体上で独立で、全体を生成する族。添字の有限性は要求しない。 -/
 def IsPBasis {ι : Type*} (b : ι → K) : Prop :=
@@ -164,5 +194,78 @@ theorem isPBasis_empty_iff {ι : Type*} [IsEmpty ι] (b : ι → K) :
 
 theorem isPBasis_empty_of_perfect [PerfectField K] {ι : Type*} [IsEmpty ι] (b : ι → K) :
     IsPBasis K p b := (isPBasis_empty_iff K p b).mpr (pPowerSubfield_eq_top_of_perfect K p)
+
+section Transport
+
+variable {k l : Type*} [Field k] [Field l] {p : ℕ} [Fact p.Prime]
+  [CharP k p] [CharP l p]
+
+/-- 体同型が誘導する p 乗部分体の同型。 -/
+noncomputable def pPowerSubfieldEquiv (e : k ≃+* l) :
+    pPowerSubfield k p ≃+* pPowerSubfield l p :=
+  (pPowerEquiv k p).symm.trans (e.trans (pPowerEquiv l p))
+
+@[simp] theorem pPowerSubfieldEquiv_apply_coe (e : k ≃+* l)
+    (c : pPowerSubfield k p) : (pPowerSubfieldEquiv e c : l) = e (c : k) := by
+  change (e ((pPowerEquiv k p).symm c)) ^ p = e (c : k)
+  rw [← map_pow]
+  congr 1
+  exact congrArg Subtype.val ((pPowerEquiv k p).apply_symm_apply c)
+
+/-- p-basis の独立性と生成性は、ともに体同型で保たれる。 -/
+theorem IsPBasis.ringEquiv {ι : Type*} {b : ι → k} (hb : IsPBasis k p b)
+    (e : k ≃+* l) : IsPBasis l p (e ∘ b) := by
+  let B := basisOfRingEquiv hb.basis (pPowerSubfieldEquiv e) e
+    (fun c ↦ (pPowerSubfieldEquiv_apply_coe e c).symm)
+  have he : ∀ d : PExponent p ι, B d = pMonomial (e ∘ b) d := by
+    intro d
+    rw [show B d = e (hb.basis d) from basisOfRingEquiv_apply _ _ _ _ d, hb.basis_apply]
+    simp only [pMonomial, map_finsuppProd, map_pow, Function.comp_apply]
+  have hfun : (B : PExponent p ι → l) = pMonomial (e ∘ b) := funext he
+  exact ⟨hfun ▸ B.linearIndependent, hfun ▸ B.span_eq⟩
+
+end Transport
+
+section RingHomExt
+
+variable {k A : Type*} [Field k] [CommRing A]
+variable {p : ℕ} [Fact p.Prime] [CharP k p]
+variable {ι : Type*} {b : ι → k}
+
+/-- p-basis と全ての p 乗で一致する環写像は一致する。 -/
+theorem IsPBasis.ringHom_ext_of_eq_pow (hb : IsPBasis k p b)
+    (l₁ l₂ : k →+* A) (hbmap : ∀ i, l₁ (b i) = l₂ (b i))
+    (hpow : ∀ x, l₁ (x ^ p) = l₂ (x ^ p)) : l₁ = l₂ := by
+  classical
+  have hmono (d : PExponent p ι) : l₁ (pMonomial b d) = l₂ (pMonomial b d) := by
+    simp only [pMonomial, Finsupp.prod, map_prod, map_pow, hbmap]
+  ext x
+  rw [← hb.sum_expansionEquiv x]
+  simp only [Finsupp.sum, map_sum, map_mul, hpow, hmono]
+
+/-- p-basis と、一つの Frobenius 冪の像で一致すれば、写像全体が一致する。 -/
+theorem IsPBasis.ringHom_ext_of_eq_pow_exp (hb : IsPBasis k p b)
+    (l₁ l₂ : k →+* A) (hbmap : ∀ i, l₁ (b i) = l₂ (b i))
+    (n : ℕ) (hpow : ∀ x, l₁ (x ^ p ^ n) = l₂ (x ^ p ^ n)) : l₁ = l₂ := by
+  induction n with
+  | zero =>
+    ext x
+    simpa using hpow x
+  | succ n ih =>
+    let m₁ := l₁.comp (iterateFrobenius k p n)
+    let m₂ := l₂.comp (iterateFrobenius k p n)
+    have hm : m₁ = m₂ := by
+      apply hb.ringHom_ext_of_eq_pow
+      · intro i
+        change l₁ ((b i) ^ p ^ n) = l₂ ((b i) ^ p ^ n)
+        simp only [map_pow, hbmap]
+      · intro x
+        change l₁ ((x ^ p) ^ p ^ n) = l₂ ((x ^ p) ^ p ^ n)
+        simpa only [← pow_mul, Nat.pow_succ, Nat.mul_comm] using hpow x
+    apply ih
+    intro x
+    exact RingHom.congr_fun hm x
+
+end RingHomExt
 
 end SerrePositivity

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.FieldTheory.PExponentRadix
+public import SerrePositivity.FieldTheory.PExponent
 public import SerrePositivity.FieldTheory.FrobeniusTowerBasis
 
 /-! # 指数 p^n 未満の単項式基底

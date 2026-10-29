@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.FieldTheory.PAdjoin
+public import SerrePositivity.FieldTheory.PrimeRootAdjoin
 public import Mathlib.FieldTheory.PurelyInseparable.Exponent
 
 /-! # 純非分離拡大から次数pの段階を取り出す

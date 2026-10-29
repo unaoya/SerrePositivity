@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
+public import SerrePositivity.FieldTheory.PMonomialSpan
 public import Mathlib.Logic.Equiv.Option
 
 /-! # p-basis の一方向を除いた中間体
@@ -16,11 +17,10 @@ variable {ι : Type*} (b : ι → K)
 
 /-- 一つの添字を除いた p-basis の元が生成する中間体。 -/
 def pBasisComplementField (i : ι) : IntermediateField (pPowerSubfield K p) K :=
-  pMonomialIntermediateField (p := p) (fun j : {j : ι // j ≠ i} ↦ b j)
+  IntermediateField.adjoin (pPowerSubfield K p) (Set.range fun j : {j : ι // j ≠ i} ↦ b j)
 
 theorem mem_pBasisComplementField {i j : ι} (hji : j ≠ i) :
     b j ∈ pBasisComplementField (p := p) b i := by
-  rw [pBasisComplementField, pMonomialIntermediateField_eq_adjoin]
   exact IntermediateField.subset_adjoin _ _ ⟨⟨j, hji⟩, rfl⟩
 
 variable {b}
@@ -29,11 +29,12 @@ variable {b}
 theorem IsPBasis.coord_eq_zero_of_mem_subfamilyField (hb : IsPBasis K p b)
     {κ : Type*} (e : κ ↪ ι) (d : PExponent p ι) (i : ι)
     (hi : i ∉ Set.range e) (hdi : d.val i ≠ 0)
-    {x : K} (hx : x ∈ pMonomialIntermediateField (p := p) (b ∘ e)) :
+    {x : K} (hx : x ∈ IntermediateField.adjoin (pPowerSubfield K p) (Set.range (b ∘ e))) :
     hb.basis.coord d x = 0 := by
   classical
   let c := hb.basis.coord d
-  have hc : pMonomialSpan (p := p) (b ∘ e) ≤ c.ker := by
+  have hc : Submodule.span (pPowerSubfield K p) (Set.range (pMonomial (p := p) (b ∘ e))) ≤
+      c.ker := by
     apply Submodule.span_le.mpr
     rintro _ ⟨a, rfl⟩
     have hne : PExponent.embDomain e a ≠ d := by
@@ -46,7 +47,7 @@ theorem IsPBasis.coord_eq_zero_of_mem_subfamilyField (hb : IsPBasis K p b)
     rw [← pMonomial_embDomain b e a, ← hb.basis_apply (PExponent.embDomain e a)]
     simp only [c, Module.Basis.coord_apply, Module.Basis.repr_self, Finsupp.single_apply]
     exact ite_eq_right hne
-  exact hc hx
+  exact hc ((mem_adjoin_pPowerSubfield_iff_mem_span_pMonomial _).mp hx)
 
 /-- 除いた元は補中間体に属さない。単項式基底の独立性から従う。 -/
 theorem IsPBasis.notMem_complementField (hb : IsPBasis K p b) (i : ι) :

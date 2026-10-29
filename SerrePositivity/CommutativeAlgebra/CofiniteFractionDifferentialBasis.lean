@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionSubfield
 public import SerrePositivity.FieldTheory.PBasisDifferentials
-public import SerrePositivity.FieldTheory.PMonomialPartition
+public import SerrePositivity.FieldTheory.PExponent
 
 /-! # 共有限分数体上の微分基底と次元
 

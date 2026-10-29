@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.FrobeniusPowerSubfield
-public import SerrePositivity.FieldTheory.PBasisTransport
+public import SerrePositivity.FieldTheory.PBasis
 public import Mathlib.RingTheory.AlgebraTower
 
 /-! # Frobenius 部分体の塔の各段階の基底

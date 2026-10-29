@@ -1,165 +1,81 @@
 module
 
 public import SerrePositivity.FieldTheory.PBasis
-public import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
+public import SerrePositivity.FieldTheory.PrimeRootAdjoin
+public import Mathlib.Algebra.Group.Submonoid.Finsupp
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra
 
-/-! # p 単項式空間と中間体
+/-! # p 単項式の線形包と添加
 
-指数の除法で積の繰り上がりを p 乗係数に移す。
-逆元の閉性は `x⁻¹ = (x^p)⁻¹ * x^(p-1)` から従い、添字の有限性は不要。
+概要：体の拡大 `K/F` と族 `b : ι → K` で、各 `b i` の p 乗が `F` に属するとする。このとき
+`F` 上の添加 `F[b] = F(b)` は、指数 `p` 未満の p 単項式の `F` 上の線形包に等しい。
+`F` が p 乗部分体 `K^p` のときは仮定が自動的に成り立ち、`K^p(b)` が p 単項式で張られる。
+方針：Mathlib の `Algebra.adjoin_eq_span` で添加を単項式の線形包として書き、各単項式を
+指数の商と余りで `(p 乗の因子) • (p 単項式)` に分ける（`finsuppMonomial_eq_pow_mul_remainder`）。
+中間体としての添加は、生成元が代数的なので部分代数としての添加と一致する。
+規約：添字の有限性も族の独立性も仮定しない。
+使われ方：p 基底の補中間体（`PBasisComplement`）、p 独立族の拡張（`PIndependentSet`）、
+p 基底の微分（`PBasisDifferentials`）。
 -/
 
 @[expose] public section
 namespace SerrePositivity
 
-namespace PExponent
+section Relative
 
-/-- 有限台指数の各成分を p で割った余り。 -/
-noncomputable def remainder {ι : Type*} (p : ℕ) [NeZero p] (d : ι →₀ ℕ) :
-    PExponent p ι :=
-  ⟨d.mapRange (fun n ↦ n % p) (Nat.zero_mod p),
-    fun _ ↦ Nat.mod_lt _ (Nat.pos_of_ne_zero (NeZero.ne p))⟩
+variable {F K ι : Type*} [Field F] [Field K] [Algebra F K] {p : ℕ} (b : ι → K)
+  (hpow : ∀ i, ∃ a : F, b i ^ p = algebraMap F K a)
 
-end PExponent
+include hpow
 
-/-- 任意の単項式を、p 乗の係数と指数 p 未満の単項式に分解する。 -/
-theorem finsuppMonomial_eq_pow_mul_remainder
-    {ι K : Type*} [CommMonoid K] (p : ℕ) [NeZero p] (b : ι → K) (d : ι →₀ ℕ) :
-    d.prod (fun i n ↦ b i ^ n) =
-      (d.prod (fun i n ↦ b i ^ (n / p))) ^ p *
-        pMonomial b (PExponent.remainder p d) := by
+/-- 各生成元の p 乗が底体にあれば、p 単項式の線形包は生成部分代数に等しい。 -/
+theorem span_pMonomial_eq_adjoin_of_pow_mem [NeZero p] :
+    Submodule.span F (Set.range (pMonomial (p := p) b)) =
+      (Algebra.adjoin F (Set.range b)).toSubmodule := by
   classical
-  rw [pMonomial, PExponent.remainder,
-    Finsupp.prod_mapRange_index (by intro i; simp)]
-  simp only [Finsupp.prod, ← Finset.prod_pow, ← Finset.prod_mul_distrib, ← pow_mul,
-    ← pow_add, Nat.div_add_mod']
-
-variable {K : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p]
-variable {ι : Type*} (b : ι → K)
-
-/-- p 乗部分体上の p 単項式の線形包。 -/
-def pMonomialSpan : Submodule (pPowerSubfield K p) K :=
-  Submodule.span (pPowerSubfield K p) (Set.range (pMonomial (p := p) b))
-
-theorem one_mem_pMonomialSpan : (1 : K) ∈ pMonomialSpan (p := p) b :=
-  Submodule.subset_span ⟨0, pMonomial_zero b⟩
-
-/-- 一般の有限台単項式も同じ空間に属する。 -/
-theorem finsuppMonomial_mem_pMonomialSpan (d : ι →₀ ℕ) :
-    d.prod (fun i n ↦ b i ^ n) ∈ pMonomialSpan (p := p) b := by
-  rw [finsuppMonomial_eq_pow_mul_remainder p b d]
-  let c : pPowerSubfield K p :=
-    ⟨(d.prod (fun i n ↦ b i ^ (n / p))) ^ p,
-      (mem_pPowerSubfield K p _).mpr ⟨_, rfl⟩⟩
-  exact (pMonomialSpan (p := p) b).smul_mem c
-    (Submodule.subset_span ⟨PExponent.remainder p d, rfl⟩)
-
-theorem pMonomial_mul_mem_span (d e : PExponent p ι) :
-    pMonomial b d * pMonomial b e ∈ pMonomialSpan (p := p) b := by
-  rw [pMonomial, pMonomial,
-    ← Finsupp.prod_add_index' (by intro i; simp) (by intro i m n; exact pow_add _ _ _)]
-  exact finsuppMonomial_mem_pMonomialSpan b (d.val + e.val)
-
-/-- p 単項式空間は積で閉じる。 -/
-theorem mul_mem_pMonomialSpan {x y : K}
-    (hx : x ∈ pMonomialSpan (p := p) b) (hy : y ∈ pMonomialSpan (p := p) b) :
-    x * y ∈ pMonomialSpan (p := p) b := by
-  induction hx using Submodule.span_induction with
-  | mem x hx =>
-    obtain ⟨d, rfl⟩ := hx
-    induction hy using Submodule.span_induction with
-    | mem y hy =>
-      obtain ⟨e, rfl⟩ := hy
-      exact pMonomial_mul_mem_span b d e
-    | zero => simp
-    | add y z _ _ hy hz => simpa [mul_add] using (pMonomialSpan b).add_mem hy hz
-    | smul c y _ hy =>
-      simpa [Algebra.smul_def, mul_left_comm] using (pMonomialSpan b).smul_mem c hy
-  | zero => simp
-  | add x z _ _ hx hz => simpa [add_mul] using (pMonomialSpan b).add_mem hx hz
-  | smul c x _ hx =>
-    simpa [Algebra.smul_def, mul_assoc] using (pMonomialSpan b).smul_mem c hx
-
-/-- 単項式空間を部分代数として実現する。 -/
-def pMonomialSubalgebra : Subalgebra (pPowerSubfield K p) K where
-  carrier := pMonomialSpan (p := p) b
-  zero_mem' := (pMonomialSpan (p := p) b).zero_mem
-  add_mem' := (pMonomialSpan (p := p) b).add_mem
-  one_mem' := one_mem_pMonomialSpan (p := p) b
-  mul_mem' := mul_mem_pMonomialSpan (p := p) b
-  algebraMap_mem' c := by
-    change (c : K) ∈ pMonomialSpan (p := p) b
-    have h := (pMonomialSpan (p := p) b).smul_mem c (one_mem_pMonomialSpan b)
-    change (c : K) * 1 ∈ _ at h
-    simpa using h
-
-/-- 任意の部分族の単項式空間は逆元で閉じる。 -/
-theorem inv_mem_pMonomialSpan {x : K} (hx : x ∈ pMonomialSpan (p := p) b) :
-    x⁻¹ ∈ pMonomialSpan (p := p) b := by
-  by_cases hx0 : x = 0
-  · simp [hx0, pMonomialSpan]
-  have hpow : x ^ (p - 1) ∈ pMonomialSpan (p := p) b :=
-    (pMonomialSubalgebra b).pow_mem hx _
-  let c : pPowerSubfield K p :=
-    ⟨(x⁻¹) ^ p, (mem_pPowerSubfield K p _).mpr ⟨x⁻¹, rfl⟩⟩
-  have h := (pMonomialSpan b).smul_mem c hpow
-  change (x⁻¹) ^ p * x ^ (p - 1) ∈ _ at h
-  have heq : (x⁻¹) ^ p * x ^ (p - 1) = x⁻¹ := by
-    rw [inv_pow, pow_sub₀ x hx0 (Fact.out : p.Prime).one_le, pow_one]
-    field_simp
-  rwa [heq] at h
-
-/-- p 単項式空間を中間体として実現する。有限性・独立性の仮定は不要。 -/
-def pMonomialIntermediateField : IntermediateField (pPowerSubfield K p) K :=
-  (pMonomialSubalgebra (p := p) b).toIntermediateField
-    (fun _ hx ↦ inv_mem_pMonomialSpan b hx)
-
-/-- 単項式空間として構成した中間体は、指定族を添加した中間体そのもの。 -/
-theorem pMonomialIntermediateField_eq_adjoin :
-    pMonomialIntermediateField (p := p) b =
-      IntermediateField.adjoin (pPowerSubfield K p) (Set.range b) := by
-  classical
-  let A := IntermediateField.adjoin (pPowerSubfield K p) (Set.range b)
   apply le_antisymm
-  · have hle : pMonomialSpan (p := p) b ≤ A.toSubalgebra.toSubmodule := by
-      apply Submodule.span_le.mpr
-      rintro _ ⟨d, rfl⟩
-      apply A.prod_mem
-      intro i _
-      exact A.toSubalgebra.pow_mem
-        (IntermediateField.subset_adjoin _ _ (Set.mem_range_self i)) (d.val i)
-    exact hle
-  · apply IntermediateField.adjoin_le_iff.mpr
-    rintro _ ⟨i, rfl⟩
-    change b i ∈ pMonomialSpan (p := p) b
-    let n : Fin p := ⟨1, (Fact.out : p.Prime).one_lt⟩
-    have heq : pMonomial b (PExponent.single i n) = b i := by simp [n]
-    rw [← heq]
-    exact Submodule.subset_span (Set.mem_range_self _)
+  · rw [Submodule.span_le]
+    rintro _ ⟨d, rfl⟩
+    exact Subalgebra.prod_mem _ fun i _ ↦
+      Subalgebra.pow_mem _ (Algebra.subset_adjoin (Set.mem_range_self i)) _
+  · rw [Algebra.adjoin_eq_span, Submodule.span_le]
+    intro x hx
+    obtain ⟨d, rfl⟩ := Submonoid.exists_finsupp_of_mem_closure_range b x hx
+    choose a ha using hpow
+    rw [finsuppMonomial_eq_pow_mul_remainder p b d]
+    have hc : (d.prod fun i n ↦ b i ^ (n / p)) ^ p =
+        algebraMap F K (d.prod fun i n ↦ a i ^ (n / p)) := by
+      simp only [Finsupp.prod, ← Finset.prod_pow, map_prod, map_pow]
+      refine Finset.prod_congr rfl fun i _ ↦ ?_
+      rw [← pow_mul, Nat.mul_comm, pow_mul, ha]
+    rw [hc, ← Algebra.smul_def]
+    exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨_, rfl⟩)
 
-/-- 有限な独立族が生成する中間体の次数を、実際の単項式空間から計算する。 -/
-theorem finrank_pMonomialIntermediateField [Fintype ι]
-    (hb : LinearIndependent (pPowerSubfield K p) (pMonomial (p := p) b)) :
-    Module.finrank (pPowerSubfield K p) (pMonomialIntermediateField (p := p) b) =
-      p ^ Fintype.card ι := by
-  change Module.finrank (pPowerSubfield K p) (pMonomialSpan (p := p) b) = _
-  exact finrank_span_pMonomial hb
+/-- 各生成元の p 乗が底体にあれば、中間体としての添加も p 単項式の線形包。 -/
+theorem adjoin_toSubmodule_eq_span_pMonomial_of_pow_mem [Fact p.Prime] :
+    (IntermediateField.adjoin F (Set.range b)).toSubalgebra.toSubmodule =
+      Submodule.span F (Set.range (pMonomial (p := p) b)) := by
+  rw [IntermediateField.adjoin_toSubalgebra_of_isAlgebraic,
+    span_pMonomial_eq_adjoin_of_pow_mem b hpow]
+  rintro _ ⟨i, rfl⟩
+  obtain ⟨a, ha⟩ := hpow i
+  exact (isIntegral_of_prime_pow_eq (b i) a ha).isAlgebraic
 
-/-- p-basis の任意の有限部分が生成する中間体の次数。 -/
-theorem IsPBasis.finrank_adjoin_comp {κ : Type*} [Fintype κ]
-    (hb : IsPBasis K p b) (e : κ ↪ ι) :
-    Module.finrank (pPowerSubfield K p)
-      (IntermediateField.adjoin (pPowerSubfield K p) (Set.range (b ∘ e))) =
-        p ^ Fintype.card κ := by
-  rw [← pMonomialIntermediateField_eq_adjoin]
-  exact finrank_pMonomialIntermediateField _ (hb.linearIndependent_comp e)
+end Relative
 
-/-- 有限族の生成する中間体は有限拡大。独立性を仮定しない。 -/
-theorem finite_pMonomialIntermediateField [Finite ι] :
-    Module.Finite (pPowerSubfield K p) (pMonomialIntermediateField (p := p) b) := by
-  classical
-  let := Fintype.ofFinite ι
-  change Module.Finite (pPowerSubfield K p) (pMonomialSpan (p := p) b)
-  exact Module.Finite.span_of_finite _ (Set.finite_range _)
+variable {K ι : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p] (b : ι → K)
+
+/-- p 乗部分体上の添加は p 単項式の線形包。 -/
+theorem adjoin_pPowerSubfield_toSubmodule_eq_span_pMonomial :
+    (IntermediateField.adjoin (pPowerSubfield K p) (Set.range b)).toSubalgebra.toSubmodule =
+      Submodule.span (pPowerSubfield K p) (Set.range (pMonomial (p := p) b)) :=
+  adjoin_toSubmodule_eq_span_pMonomial_of_pow_mem (F := pPowerSubfield K p) b fun i ↦
+    ⟨⟨b i ^ p, (mem_pPowerSubfield K p _).mpr ⟨b i, rfl⟩⟩, rfl⟩
+
+theorem mem_adjoin_pPowerSubfield_iff_mem_span_pMonomial {x : K} :
+    x ∈ IntermediateField.adjoin (pPowerSubfield K p) (Set.range b) ↔
+      x ∈ Submodule.span (pPowerSubfield K p) (Set.range (pMonomial (p := p) b)) := by
+  rw [← adjoin_pPowerSubfield_toSubmodule_eq_span_pMonomial]
+  rfl
 
 end SerrePositivity

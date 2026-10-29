@@ -1,6 +1,5 @@
 module
 
-public import SerrePositivity.FieldTheory.PowerSubfieldMap
 public import SerrePositivity.FieldTheory.SubfieldLinearAlgebra
 public import Mathlib.FieldTheory.PurelyInseparable.PerfectClosure
 public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
@@ -19,6 +18,37 @@ public import SerrePositivity.FieldTheory.PurelyInseparablePrimeStep
 
 @[expose] public noncomputable section
 namespace SerrePositivity
+
+section Map
+
+variable {K L M : Type*} [Field K] [Field L] [Field M]
+  {p : ℕ} [Fact p.Prime] [CharP K p] [CharP L p] [CharP M p]
+
+/-- 自明な拡大では、元の族の交わりを写すだけで拡大後の交わりを計算できる。 -/
+theorem iInf_subfield_sup_pPower_of_surjective {ι : Type*} [Nonempty ι]
+    [Algebra K L] (E : ι → Subfield K)
+    (hf : Function.Surjective (algebraMap K L))
+    (hpow : ∀ i, pPowerSubfield K p ≤ E i)
+    (hinf : (⨅ i, E i) = pPowerSubfield K p) :
+    (⨅ i, (E i).map (algebraMap K L) ⊔ pPowerSubfield L p) = pPowerSubfield L p := by
+  have hp := map_pPowerSubfield_eq_of_surjective (algebraMap K L) hf
+  have heq (i) : (E i).map (algebraMap K L) ⊔ pPowerSubfield L p =
+      (E i).map (algebraMap K L) := by
+    rw [← hp]
+    exact sup_eq_left.mpr ((Subfield.gc_map_comap (algebraMap K L)).monotone_l (hpow i))
+  simp_rw [heq]
+  rw [← Subfield.map_iInf, hinf, hp]
+
+omit [CharP K p] in
+/-- E↦Eの像⊔p乗部分体という拡大後の族の構成は、拡大の塔に沿って合成できる。 -/
+theorem map_subfield_sup_pPower_tower
+    [Algebra K L] [Algebra L M] [Algebra K M] [IsScalarTower K L M] (E : Subfield K) :
+    (E.map (algebraMap K L) ⊔ pPowerSubfield L p).map (algebraMap L M) ⊔
+        pPowerSubfield M p = E.map (algebraMap K M) ⊔ pPowerSubfield M p := by
+  rw [Subfield.map_sup, Subfield.map_map, ← IsScalarTower.algebraMap_eq K L M,
+    sup_assoc, sup_eq_right.mpr (map_pPowerSubfield_le (algebraMap L M))]
+
+end Map
 
 section Separable
 
