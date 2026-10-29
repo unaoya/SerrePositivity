@@ -19,7 +19,8 @@ public import SerrePositivity.FieldTheory.SubfieldFamilyDifferentialRank
 - 有限拡大 `L/K₀` について、十分大きな `f` 以降、`F_f` 上の `L` と `K₀` の微分の次元は等しい。
 方針：交わりは、共通の分母を `p` 乗に取り替えて分子を冪級数に戻し、`K_e` の交わり `K^p`（`IsPBasis.iInf_cofiniteField_eq_bot`）
 と Frobenius から各係数を `p` 乗とする。次元の安定は部分体の族の一般論（FieldTheory の `SubfieldFamilyDifferentialRank`）。
-規約：分数体の写像は `powerSeriesFractionMap`（`fractionRingMap` の延長）で与える。
+規約：分数体の写像は `powerSeriesFractionMap`（Mathlib の `IsLocalization.map`）で与え、
+代数構造は `letI` でその `toAlgebra` を置く。
 使われ方：固定した正規化での完備微分の次元計算（`CofiniteNormalization`）。
 -/
 
@@ -54,9 +55,6 @@ def IsPBasis.cofiniteFractionBasis (hb : IsPBasis K p b) (e : Finset ι) :
     letI : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
         (FractionRing (MvPowerSeries σ K)) :=
       (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
-        (FractionRing (MvPowerSeries σ K)) :=
-      powerSeriesFractionModule p (Fact.out : p.Prime).pos
     Module.Basis ((σ → Fin p) × PExponent p e)
       (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
       (FractionRing (MvPowerSeries σ K)) :=
@@ -78,16 +76,11 @@ theorem IsPBasis.finrank_cofiniteFractionField (hb : IsPBasis K p b) (e : Finset
     letI : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
         (FractionRing (MvPowerSeries σ K)) :=
       (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
-        (FractionRing (MvPowerSeries σ K)) :=
-      powerSeriesFractionModule p (Fact.out : p.Prime).pos
     Module.finrank (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
       (FractionRing (MvPowerSeries σ K)) = p ^ (Fintype.card σ + e.card) := by
   let : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
       (FractionRing (MvPowerSeries σ K)) :=
     (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b e)))
-      (FractionRing (MvPowerSeries σ K)) := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   rw [finrank_powerSeriesFractionField p (Fact.out : p.Prime).pos (hb.cofiniteMonomialBasis e)]
   rw [Nat.card_eq_fintype_card, PExponent.card, Fintype.card_coe, pow_add]
 
@@ -341,20 +334,16 @@ local notation "K₀" => FractionRing (MvPowerSeries σ K)
 /-- 既存の分数体基底を、変数と係数方向の相対p単項式で添字付ける。 -/
 def IsPBasis.cofiniteFractionMonomialBasis (hb : IsPBasis K p b) :
     letI : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
     Module.Basis (PExponent p (σ ⊕ e)) Q K₀ := by
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   exact (hb.cofiniteFractionBasis e).reindex (cofiniteFractionExponentEquiv e).symm
 
 @[simp] theorem IsPBasis.cofiniteFractionMonomialBasis_apply (hb : IsPBasis K p b)
     (d : PExponent p (σ ⊕ e)) :
     letI : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
     hb.cofiniteFractionMonomialBasis e d =
       pMonomial (cofiniteFractionGenerators (σ := σ) b e) d := by
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   rw [IsPBasis.cofiniteFractionMonomialBasis, Module.Basis.reindex_apply,
     Equiv.symm_symm, IsPBasis.cofiniteFractionBasis_apply]
   exact (pMonomial_cofiniteFractionGenerators b e d).symm
@@ -371,11 +360,9 @@ theorem cofiniteFractionGenerators_pow_mem (j : σ ⊕ e) :
 /-- T_iと残したb_jの微分からなる、同じQ_e上の通常微分の基底。 -/
 def IsPBasis.cofiniteFractionDifferentialBasis (hb : IsPBasis K p b) :
     letI : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
     letI : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
     Module.Basis (σ ⊕ e) K₀ (KaehlerDifferential Q K₀) := by
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   let : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
   exact kaehlerBasisOfPMonomialBasis (hb.cofiniteFractionMonomialBasis e)
     (hb.cofiniteFractionMonomialBasis_apply e) (cofiniteFractionGenerators_pow_mem (b := b) e)
@@ -383,12 +370,10 @@ def IsPBasis.cofiniteFractionDifferentialBasis (hb : IsPBasis K p b) :
 @[simp] theorem IsPBasis.cofiniteFractionDifferentialBasis_apply (hb : IsPBasis K p b)
     (j : σ ⊕ e) :
     letI : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
     letI : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
     hb.cofiniteFractionDifferentialBasis e j =
       KaehlerDifferential.D Q K₀ (cofiniteFractionGenerators b e j) := by
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   let : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
   exact kaehlerBasisOfPMonomialBasis_apply (hb.cofiniteFractionMonomialBasis e)
     (hb.cofiniteFractionMonomialBasis_apply e) (cofiniteFractionGenerators_pow_mem (b := b) e) j
@@ -396,11 +381,9 @@ def IsPBasis.cofiniteFractionDifferentialBasis (hb : IsPBasis K p b) :
 /-- 共有限分数体上の通常微分の次元は、変数数と残した係数方向の数の和。 -/
 theorem IsPBasis.finrank_cofiniteFractionDifferential (hb : IsPBasis K p b) :
     letI : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-    letI : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
     letI : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
     Module.finrank K₀ (KaehlerDifferential Q K₀) = Fintype.card σ + e.card := by
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   let : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
   rw [Module.finrank_eq_card_basis (hb.cofiniteFractionDifferentialBasis e)]
   simp
@@ -420,8 +403,6 @@ theorem IsPBasis.exists_cofiniteFractionField_rank_stable (hb : IsPBasis K p b) 
       letI : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
           (FractionRing (MvPowerSeries σ K)) :=
         (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-      letI : Module (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
-          (FractionRing (MvPowerSeries σ K)) := powerSeriesFractionModule p (Fact.out : p.Prime).pos
       letI : SMul (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
           (FractionRing (MvPowerSeries σ K)) :=
         (inferInstance : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
@@ -451,7 +432,6 @@ theorem IsPBasis.exists_cofiniteFractionField_rank_stable (hb : IsPBasis K p b) 
   let Q := FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f))
   let K₀ := FractionRing (MvPowerSeries σ K)
   let : Algebra Q K₀ := (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   let : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
   let : Algebra Q L := ((algebraMap K₀ L).comp
     (powerSeriesFractionMap p (Fact.out : p.Prime).pos)).toAlgebra

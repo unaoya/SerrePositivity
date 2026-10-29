@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
 public import SerrePositivity.CommutativeAlgebra.IntegralDimension
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
+public import Mathlib.RingTheory.Jacobson.Ideal
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import Mathlib.RingTheory.KrullDimension.Field
@@ -124,5 +125,35 @@ theorem map_powerSeries_variables_eq_span
   exact congrArg Set.range (funext hX)
 
 end PowerSeries
+
+section Units
+
+open IsLocalRing
+
+/-- 各生成元の単元倍は、同じイデアルを生成する。 -/
+theorem span_range_mul_units {S ι : Type*} [CommRing S]
+    (z u : ι → S) (hu : ∀ i, IsUnit (u i)) :
+    Ideal.span (Set.range (fun i ↦ z i * u i)) = Ideal.span (Set.range z) := by
+  apply le_antisymm
+  · apply Ideal.span_le.mpr
+    rintro _ ⟨i, rfl⟩
+    exact Ideal.mul_mem_right _ _ (Ideal.subset_span (Set.mem_range_self i))
+  · apply Ideal.span_le.mpr
+    rintro _ ⟨i, rfl⟩
+    obtain ⟨v, hv⟩ := hu i
+    have h := Ideal.mul_mem_right (↑v⁻¹)
+      (Ideal.span (Set.range (fun i ↦ z i * u i)))
+      (Ideal.subset_span (Set.mem_range_self i))
+    change z i ∈ Ideal.span (Set.range (fun i ↦ z i * u i))
+    simpa only [← hv, mul_assoc, Units.val_mul, Units.mul_inv, Units.val_one, mul_one] using h
+
+/-- 極大イデアル内の元を1に加えると単元となる。 -/
+theorem isUnit_one_add_of_mem_maximalIdeal {S : Type*} [CommRing S] [IsLocalRing S]
+    {f : S} (hf : f ∈ maximalIdeal S) : IsUnit (1 + f) :=
+  Ideal.isUnit_of_sub_one_mem_jacobson_bot _ (by
+    rw [add_sub_cancel_left]
+    exact maximalIdeal_le_jacobson ⊥ hf)
+
+end Units
 
 end SerrePositivity

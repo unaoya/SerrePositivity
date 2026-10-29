@@ -13,7 +13,7 @@ public import Mathlib.LinearAlgebra.Dimension.Finrank
 交わりは元の写像の像に一致する。
 方針：冪級数環の基底（`PowerSeries/Expansion`）を、代数的な整域拡大の基底を分数体へ移す一般論
 （`fractionRingBasisOfAlgebraic`）に渡す。
-規約：分数体の写像は `fractionRingMap` で作る（Mathlib の `FractionRing.liftAlgebra` への置き換えは G7 で判断）。
+規約：展開写像は標準的な代数構造ではないので、分数体の写像は Mathlib の `IsLocalization.map` で与える。
 使われ方：中間係数体に沿う分数体族（`CofiniteFraction*`）。
 -/
 
@@ -27,20 +27,18 @@ variable {E K σ α : Type*} [Field E] [Field K] [Algebra E K]
 /-- X_i↦T_i^qの単射を分数体へ延長する。 -/
 def powerSeriesFractionMap (q : ℕ) (hq : 0 < q) :
     FractionRing (MvPowerSeries σ E) →+* FractionRing (MvPowerSeries σ K) :=
-  fractionRingMap (powerSeriesExpandMap q hq)
-    (powerSeriesExpandMap_injective q hq (RingHom.injective _))
+  IsLocalization.map (M := nonZeroDivisors (MvPowerSeries σ E))
+    (T := nonZeroDivisors (MvPowerSeries σ K)) (FractionRing (MvPowerSeries σ K))
+    (powerSeriesExpandMap q hq)
+    (nonZeroDivisors_le_comap_nonZeroDivisors_of_injective _
+      (powerSeriesExpandMap_injective q hq (RingHom.injective _)))
 
 @[simp] theorem powerSeriesFractionMap_algebraMap (q : ℕ) (hq : 0 < q)
     (f : MvPowerSeries σ E) :
     powerSeriesFractionMap (K := K) q hq
       (algebraMap _ (FractionRing (MvPowerSeries σ E)) f) =
       algebraMap _ (FractionRing (MvPowerSeries σ K)) (powerSeriesExpandMap (K := K) q hq f) :=
-  fractionRingMap_algebraMap _ _ _
-
-/-- 延長した冪級数写像による分数体の係数作用。 -/
-@[instance_reducible] def powerSeriesFractionModule (q : ℕ) (hq : 0 < q) :
-    Module (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
-  @Algebra.toModule _ _ _ _ (powerSeriesFractionMap q hq).toAlgebra
+  IsLocalization.map_eq _ _
 
 section Basis
 variable [Fintype σ] [Finite α] (q : ℕ) (hq : 0 < q)
@@ -49,8 +47,6 @@ variable [Fintype σ] [Finite α] (q : ℕ) (hq : 0 < q)
 def powerSeriesFractionBasis (B : Module.Basis α E K) :
     letI : Algebra (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
       (powerSeriesFractionMap q hq).toAlgebra
-    letI : Module (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
-      powerSeriesFractionModule q hq
     Module.Basis ((σ → Fin q) × α)
       (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) := by
   let : Algebra (MvPowerSeries σ E) (MvPowerSeries σ K) :=
@@ -67,8 +63,6 @@ def powerSeriesFractionBasis (B : Module.Basis α E K) :
       (FractionRing (MvPowerSeries σ K)) := IsScalarTower.of_algebraMap_eq' rfl
   let : Algebra (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
     (powerSeriesFractionMap q hq).toAlgebra
-  let : Module (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
-    powerSeriesFractionModule q hq
   let : IsScalarTower (MvPowerSeries σ E) (FractionRing (MvPowerSeries σ E))
       (FractionRing (MvPowerSeries σ K)) :=
     IsScalarTower.of_algebraMap_eq (fun f ↦ (powerSeriesFractionMap_algebraMap q hq f).symm)
@@ -88,14 +82,10 @@ def powerSeriesFractionBasis (B : Module.Basis α E K) :
 theorem finrank_powerSeriesFractionField (B : Module.Basis α E K) :
     letI : Algebra (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
       (powerSeriesFractionMap q hq).toAlgebra
-    letI : Module (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
-      powerSeriesFractionModule q hq
     Module.finrank (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) =
       q ^ Fintype.card σ * Nat.card α := by
   let : Algebra (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
     (powerSeriesFractionMap q hq).toAlgebra
-  let : Module (FractionRing (MvPowerSeries σ E)) (FractionRing (MvPowerSeries σ K)) :=
-    powerSeriesFractionModule q hq
   classical
   let : Fintype α := Fintype.ofFinite α
   rw [Module.finrank_eq_card_basis (powerSeriesFractionBasis (σ := σ) q hq B)]
@@ -112,17 +102,20 @@ variable {E F K σ : Type*} [Field E] [Field F] [Field K]
 /-- 係数写像だけを作用させ、変数を保つ分数体の写像。 -/
 def powerSeriesCoefficientFractionMap (φ : E →+* F) :
     FractionRing (MvPowerSeries σ E) →+* FractionRing (MvPowerSeries σ F) :=
-  fractionRingMap (MvPowerSeries.map φ) (by
-    intro f g hfg
-    ext d
-    apply φ.injective
-    simpa only [MvPowerSeries.coeff_map] using congrArg (MvPowerSeries.coeff d) hfg)
+  IsLocalization.map (M := nonZeroDivisors (MvPowerSeries σ E))
+    (T := nonZeroDivisors (MvPowerSeries σ F)) (FractionRing (MvPowerSeries σ F))
+    (MvPowerSeries.map φ)
+    (nonZeroDivisors_le_comap_nonZeroDivisors_of_injective _ (by
+      intro f g hfg
+      ext d
+      apply φ.injective
+      simpa only [MvPowerSeries.coeff_map] using congrArg (MvPowerSeries.coeff d) hfg))
 
 @[simp] theorem powerSeriesCoefficientFractionMap_algebraMap (φ : E →+* F)
     (f : MvPowerSeries σ E) :
     powerSeriesCoefficientFractionMap φ (algebraMap _ (FractionRing (MvPowerSeries σ E)) f) =
       algebraMap _ (FractionRing (MvPowerSeries σ F)) (MvPowerSeries.map φ f) :=
-  fractionRingMap_algebraMap _ _ _
+  IsLocalization.map_eq _ _
 
 variable [Algebra E K] [Algebra F K]
 
@@ -170,8 +163,15 @@ theorem algebraMap_mem_powerSeriesFractionSubfield_iff_of_basis_one
   have hr : powerSeriesResidueExponent q r = 0 := by ext i; rfl
   have hB : powerSeriesExpansionBasis B q hq (r, a) = 1 := by
     rw [powerSeriesExpansionBasis_apply, ha, hr, MvPowerSeries.monomial_zero_one]
-  exact algebraMap_mem_fractionRingMap_fieldRange_iff_of_basis_one
-    (powerSeriesExpandMap_injective q hq (RingHom.injective _))
+  have hinj : Function.Injective (algebraMap (MvPowerSeries σ E) (MvPowerSeries σ K)) :=
+    powerSeriesExpandMap_injective q hq (RingHom.injective _)
+  have hφ : ∀ g : MvPowerSeries σ E, powerSeriesFractionMap (K := K) q hq
+      (algebraMap _ (FractionRing (MvPowerSeries σ E)) g) =
+      algebraMap _ (FractionRing (MvPowerSeries σ K))
+        (algebraMap (MvPowerSeries σ E) (MvPowerSeries σ K) g) :=
+    powerSeriesFractionMap_algebraMap q hq
+  exact algebraMap_mem_fieldRange_iff_of_basis_one (K := FractionRing (MvPowerSeries σ E))
+    (L := FractionRing (MvPowerSeries σ K)) hinj (powerSeriesFractionMap q hq) hφ
     (powerSeriesExpansionBasis B q hq) (r, a) hB f
 
 end Subfield

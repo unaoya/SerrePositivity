@@ -204,4 +204,19 @@ def powerSeriesCoefficientQuotientEquiv {R S : Type u} [CommRing R] [CommRing S]
 
 end CoefficientQuotient
 
+section Injective
+
+/-- 単射な冪級数評価の変数の像は非零。 -/
+theorem powerSeries_variable_image_ne_zero
+    {k D σ : Type*} [CommRing k] [Nontrivial k] [CommRing D]
+    (F : MvPowerSeries σ k →+* D) (hF : Function.Injective F) (i : σ) :
+    F (MvPowerSeries.X i) ≠ 0 := by
+  intro hz
+  have hX : (MvPowerSeries.X i : MvPowerSeries σ k) = 0 := hF (hz.trans F.map_zero.symm)
+  have h := congrArg (MvPowerSeries.coeff (Finsupp.single i 1)) hX
+  exact one_ne_zero (by
+    simpa only [MvPowerSeries.coeff_index_single_self_X, map_zero] using h)
+
+end Injective
+
 end SerrePositivity

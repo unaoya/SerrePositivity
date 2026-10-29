@@ -179,9 +179,6 @@ theorem IsPBasis.exists_cofiniteNormalization_completed_rank_stable
       letI : Algebra (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
           (FractionRing (MvPowerSeries σ K)) :=
         (powerSeriesFractionMap p (Fact.out : p.Prime).pos).toAlgebra
-      letI : Module (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
-          (FractionRing (MvPowerSeries σ K)) :=
-        powerSeriesFractionModule p (Fact.out : p.Prime).pos
       letI : SMul (FractionRing (MvPowerSeries σ (pBasisCofiniteField (p := p) b f)))
           (FractionRing (MvPowerSeries σ K)) :=
         (inferInstance : Algebra
@@ -195,10 +192,12 @@ theorem IsPBasis.exists_cofiniteNormalization_completed_rank_stable
         (FractionRing (MvPowerSeries σ K))) := by
   let K₀ := FractionRing (MvPowerSeries σ K)
   let L := FractionRing D
-  let : Algebra K₀ L := (fractionRingMap F hF).toAlgebra
-  let : Module K₀ L := fractionRingMapModule F hF
-  let : SMul K₀ L := (inferInstance : Algebra K₀ L).toSMul
-  let : Module.Finite K₀ L := fractionRingMap_finite F hF hfin
+  let : Algebra (MvPowerSeries σ K) D := F.toAlgebra
+  have : FaithfulSMul (MvPowerSeries σ K) D :=
+    (faithfulSMul_iff_algebraMap_injective _ D).mpr hF
+  let : Module.Finite (MvPowerSeries σ K) D := hfin
+  let : Algebra K₀ L := FractionRing.liftAlgebra _ L
+  let : Module.Finite K₀ L := finiteDimensional_fractionRing_of_finite (MvPowerSeries σ K) D K₀ L
   let : CharP D p := charP_of_injective_algebraMap (algebraMap K D).injective p
   let : CharP L p := charP_of_injective_algebraMap (IsFractionRing.injective D L) p
   obtain ⟨e, he⟩ := hb.exists_cofiniteFractionField_rank_stable (σ := σ) (L := L)
@@ -210,7 +209,6 @@ theorem IsPBasis.exists_cofiniteNormalization_completed_rank_stable
   let ψ : A →+* MvPowerSeries σ K := powerSeriesExpandMap p (Fact.out : p.Prime).pos
   let φ : Q →+* K₀ := powerSeriesFractionMap p (Fact.out : p.Prime).pos
   let : Algebra Q K₀ := φ.toAlgebra
-  let : Module Q K₀ := powerSeriesFractionModule p (Fact.out : p.Prime).pos
   let : SMul Q K₀ := (inferInstance : Algebra Q K₀).toSMul
   let : Algebra Q L := ((algebraMap K₀ L).comp φ).toAlgebra
   let : Module Q L := @Algebra.toModule _ _ _ _ (inferInstance : Algebra Q L)
@@ -232,9 +230,12 @@ theorem IsPBasis.exists_cofiniteNormalization_completed_rank_stable
   let : SMul A L := (inferInstance : Algebra A L).toSMul
   let : IsScalarTower A D L := IsScalarTower.of_algebraMap_eq' rfl
   let : IsScalarTower A Q L := IsScalarTower.of_algebraMap_eq (fun a ↦ by
-    change algebraMap D L (F (ψ a)) = fractionRingMap F hF
+    change algebraMap D L (F (ψ a)) = algebraMap K₀ L
       (powerSeriesFractionMap p (Fact.out : p.Prime).pos (algebraMap A Q a))
-    rw [powerSeriesFractionMap_algebraMap, fractionRingMap_algebraMap])
+    rw [powerSeriesFractionMap_algebraMap,
+      ← IsScalarTower.algebraMap_apply (MvPowerSeries σ K) K₀ L,
+      IsScalarTower.algebraMap_apply (MvPowerSeries σ K) D L]
+    rfl)
   exact (hb.finrank_cofiniteMaximalCompletedFractionDifferential
     f Q L hres z hXp hprimary).trans (he f hf)
 

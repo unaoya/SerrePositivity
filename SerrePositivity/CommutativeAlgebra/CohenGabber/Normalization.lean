@@ -1,19 +1,31 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CohenGabberDifferentialParameters
 public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
 public import SerrePositivity.CommutativeAlgebra.FractionDifferential
+public import SerrePositivity.CommutativeAlgebra.CohenGabber.Parameters
 
-/-! # Cohen–Gabberの同じ冪級数評価の分離性
+/-! # Cohen–Gabber 3：分離的な正規化（主定理）
 
-微分パラメータの生成性を、極大イデアル進の係数制限へ直接適用する。
+概要（Cohen–Gabber の定理、同標数の場合）：標数 `p` の次元 `h` の完備 Noether 局所整域 `D` に対し、
+剰余体 `k` 上の冪級数環 `A = k[[X_1, …, X_h]]` からの単射な有限準同型 `A → D` で、剰余体へ全射、
+かつ分数体の拡大 `Frac D / Frac A` が分離的なものが存在する（`exists_cohen_gabber_normalization`）。
+Kurano–Shimomoto, *An elementary proof of Cohen–Gabber theorem in the equal characteristic
+p > 0 case*, Theorem 1.1（https://arxiv.org/abs/1510.03573）。
+方針：微分パラメータ `y`（`CohenGabber/Parameters`）で正規化 `F : A → D`（`X_i ↦ y_i`）を作る。`D(y_i)` が
+生成点で完備微分 `Ω̂_{D/k}` を張るので、全射な係数制限 `Ω̂_{D/k} → Ω_{D/A}` は生成点で零。よって
+`Frac D ⊗ Ω_{D/A} = 0` で、有限拡大の分離性の判定（`FractionDifferential`）から分離的。
+規約：分数体の間の代数構造は Mathlib の `FractionRing.liftAlgebra`。主定理は `A` を抽象的な正則完備局所環とし、
+`k[[X]]` との同型と標準座標を添えて述べる。
+使われ方：論文の層の入口（`Inputs/CohenNormalization`）。Mathlib への提出の最終目標。
 -/
 
 @[expose] public noncomputable section
-universe u
 namespace SerrePositivity
+
+universe u
 open scoped TensorProduct
 open IsLocalRing
+
 
 /-- 完備微分を変数の像の微分が張れば、同じ有限冪級数評価の分数体拡大は分離的。 -/
 theorem isSeparable_powerSeries_fractionMap_of_completed_differential_span
@@ -25,8 +37,11 @@ theorem isSeparable_powerSeries_fractionMap_of_completed_differential_span
     (y : σ → D) (hX : ∀ i, F (MvPowerSeries.X i) = y i)
     (hspan : Submodule.span (FractionRing D) (Set.range (fun i ↦
       baseChangeCompletedKaehlerDerivation (k := k) (FractionRing D) (maximalIdeal D) (y i))) = ⊤) :
-    @Algebra.IsSeparable (FractionRing (MvPowerSeries σ k)) (FractionRing D)
-      inferInstance inferInstance (fractionRingMap F hF).toAlgebra := by
+    letI : Algebra (MvPowerSeries σ k) D := F.toAlgebra
+    haveI : FaithfulSMul (MvPowerSeries σ k) D :=
+      (faithfulSMul_iff_algebraMap_injective _ D).mpr hF
+    letI := FractionRing.liftAlgebra (MvPowerSeries σ k) (FractionRing D)
+    Algebra.IsSeparable (FractionRing (MvPowerSeries σ k)) (FractionRing D) := by
   let A := MvPowerSeries σ k
   let : Algebra A D := F.toAlgebra
   let : Module A D := @Algebra.toModule _ _ _ _ F.toAlgebra
@@ -51,7 +66,8 @@ theorem isSeparable_powerSeries_fractionMap_of_completed_differential_span
     intro x
     obtain ⟨v, rfl⟩ := hf x
     rw [hfzero, LinearMap.zero_apply]
-  exact (isSeparable_fractionRingMap_iff_finrank_tensorDifferential_eq_zero F hF hfin).mpr
+  have : FaithfulSMul A D := (faithfulSMul_iff_algebraMap_injective A D).mpr hF
+  exact (isSeparable_fractionRing_iff_finrank_tensorDifferential_eq_zero' A D).mpr
     (Module.finrank_zero_of_subsingleton)
 
 /-- 体の場合を含めて、係数切断と生成点の完備微分を張るパラメータを選ぶ。 -/
@@ -107,8 +123,12 @@ theorem exists_cohen_gabber_powerSeries_map
     (p : ℕ) [Fact p.Prime] [CharP D p] :
     ∃ (F : MvPowerSeries (Fin h) (ResidueField D) →+* D) (hF : Function.Injective F),
       F.Finite ∧ Function.Surjective ((residue D).comp F) ∧
-      @Algebra.IsSeparable (FractionRing (MvPowerSeries (Fin h) (ResidueField D)))
-        (FractionRing D) inferInstance inferInstance (fractionRingMap F hF).toAlgebra := by
+      letI : Algebra (MvPowerSeries (Fin h) (ResidueField D)) D := F.toAlgebra
+      haveI : FaithfulSMul (MvPowerSeries (Fin h) (ResidueField D)) D :=
+        (faithfulSMul_iff_algebraMap_injective _ D).mpr hF
+      letI := FractionRing.liftAlgebra (MvPowerSeries (Fin h) (ResidueField D)) (FractionRing D)
+      Algebra.IsSeparable (FractionRing (MvPowerSeries (Fin h) (ResidueField D)))
+        (FractionRing D) := by
   obtain ⟨ψ, y, hψ, hym, hyprim, hspan⟩ := exists_coefficient_section_differential_span D hdim p
   let : Algebra (ResidueField D) D := ψ.toAlgebra
   have hres : Function.Surjective ((residue D).comp ψ) := by
@@ -144,9 +164,8 @@ theorem exists_cohen_gabber_normalization
     infer_instance
   let : IsAdicComplete (maximalIdeal A) A := isAdicComplete_powerSeries_maximalIdeal (Fin h) k
   let : Algebra A D := F.toAlgebra
-  let : Algebra (FractionRing A) (FractionRing D) := (fractionRingMap F hF).toAlgebra
-  let : IsScalarTower A (FractionRing A) (FractionRing D) :=
-    IsScalarTower.of_algebraMap_eq (fun a ↦ (fractionRingMap_algebraMap F hF a).symm)
+  have : FaithfulSMul A D := (faithfulSMul_iff_algebraMap_injective A D).mpr hF
+  let : Algebra (FractionRing A) (FractionRing D) := FractionRing.liftAlgebra A _
   refine ⟨A, inferInstance, inferInstance, inferInstance, inferInstance, inferInstance,
     hF, hfin, hresF, ⟨inferInstance, inferInstance, hsep⟩,
     MvPowerSeries.X, RingEquiv.refl A, ?_, fun _ ↦ rfl⟩

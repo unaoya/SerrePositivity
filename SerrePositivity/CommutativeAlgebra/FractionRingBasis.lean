@@ -8,45 +8,20 @@ public import SerrePositivity.LinearAlgebra.BasisSaturation
 
 /-! # 代数的な整域拡大の基底を分数体へ移す
 
-元の基底の像の独立性はMathlibの局所化の一般論から得る。
-生成性は代数的な分母を底環へ移す一般論から得る。
-Noether性・局所性・分離性は要求しない。
+概要：整域の拡大 `A ⊆ D` の分数体 `K = Frac A`、`L = Frac D` について
+- `D/A` が代数的なら、`A` 上の `D` の基底はそのまま `K` 上の `L` の基底になり、`D` の像は `L` を `K` 上張る。
+- `D/A` が有限なら `L/K` は有限次元。
+- 基底が `1` を含めば、分数体の写像の像と `D` の交わりは `A` の像。
+方針：独立性は Mathlib の局所化の一般論（`LinearIndependent.localization`）、生成性は代数的な分母を底環へ移す
+`IsFractionRing.ideal_span_singleton_map_subset` から。
+規約：分数体の間の代数構造は、標準的な `[Algebra A D]` なら Mathlib の `FractionRing.liftAlgebra`、
+冪級数の展開のような写像なら `IsLocalization.map` で与え、この層では型クラスの引数として受け取る。
+使われ方：冪級数の有限拡大の分数体（`PowerSeries/FractionField`）、分離性の判定（`FractionDifferential`）、Cohen–Gabber。
 -/
 
 @[expose] public noncomputable section
 namespace SerrePositivity
 
-section Map
-variable {A D : Type*} [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-
-/-- 指定した単射を、そのまま分数体の写像へ延長する。 -/
-def fractionRingMap (f : A →+* D) (hf : Function.Injective f) :
-    FractionRing A →+* FractionRing D :=
-  IsFractionRing.lift (K := FractionRing A)
-    (g := (algebraMap D (FractionRing D)).comp f)
-    ((IsFractionRing.injective D (FractionRing D)).comp hf)
-
-@[simp] theorem fractionRingMap_algebraMap (f : A →+* D) (hf : Function.Injective f) (a : A) :
-    fractionRingMap f hf (algebraMap A (FractionRing A) a) =
-      algebraMap D (FractionRing D) (f a) :=
-  IsFractionRing.lift_algebraMap _ _
-
-/-- 延長した写像そのものによる分数体上の係数作用。 -/
-@[instance_reducible] def fractionRingMapModule (f : A →+* D) (hf : Function.Injective f) :
-    Module (FractionRing A) (FractionRing D) :=
-  @Algebra.toModule _ _ _ _ (fractionRingMap f hf).toAlgebra
-
-/-- 指定した環写像の合成と分数体への延長は両立する。 -/
-theorem fractionRingMap_comp {B : Type*} [CommRing B] [IsDomain B]
-    (f : D →+* B) (hf : Function.Injective f)
-    (g : A →+* D) (hg : Function.Injective g) :
-    fractionRingMap (f.comp g) (hf.comp hg) =
-      (fractionRingMap f hf).comp (fractionRingMap g hg) := by
-  apply IsFractionRing.ringHom_ext (A := A)
-  intro a
-  simp only [fractionRingMap_algebraMap, RingHom.comp_apply]
-
-end Map
 
 /-- 基底に1が含まれる環拡大では、底環の像は非零スカラーについて飽和。 -/
 theorem mem_range_algebraMap_of_smul_mem_of_basis_one
@@ -63,34 +38,35 @@ theorem mem_range_algebraMap_of_smul_mem_of_basis_one
   obtain ⟨u, hu⟩ := Submodule.mem_span_singleton.mp (by simpa using hd)
   exact ⟨u, by simpa only [hi, Algebra.smul_def, mul_one] using hu⟩
 
-/-- 基底に1を持つ整域拡大では、底環の分数体の像と元の環の交わりは底環の像。 -/
-theorem algebraMap_mem_fractionRingMap_fieldRange_iff_of_basis_one
-    {A D ι : Type*} [CommRing A] [IsDomain A] [CommRing D] [IsDomain D] [Algebra A D]
-    (hf : Function.Injective (algebraMap A D)) (B : Module.Basis ι A D)
-    (i : ι) (hi : B i = 1) (d : D) :
-    algebraMap D (FractionRing D) d ∈ (fractionRingMap (algebraMap A D) hf).fieldRange ↔
-      d ∈ Set.range (algebraMap A D) := by
+/-- 基底に `1` を持つ整域拡大 `A ⊆ D` では、分数体の写像 `φ : Frac A → Frac D`（`A` 上で両立するもの）の像と
+元の環 `D` の交わりは `A` の像。 -/
+theorem algebraMap_mem_fieldRange_iff_of_basis_one
+    {A D K L ι : Type*} [CommRing A] [IsDomain A] [CommRing D] [IsDomain D] [Algebra A D]
+    [Field K] [Field L] [Algebra A K] [IsFractionRing A K] [Algebra D L] [IsFractionRing D L]
+    (hf : Function.Injective (algebraMap A D)) (φ : K →+* L)
+    (hφ : ∀ a, φ (algebraMap A K a) = algebraMap D L (algebraMap A D a))
+    (B : Module.Basis ι A D) (i : ι) (hi : B i = 1) (d : D) :
+    algebraMap D L d ∈ φ.fieldRange ↔ d ∈ Set.range (algebraMap A D) := by
   constructor
   · rintro ⟨z, hz⟩
     obtain ⟨a, b, hb, rfl⟩ := IsFractionRing.div_surjective A z
     have hb0 : b ≠ 0 := mem_nonZeroDivisors_iff_ne_zero.mp hb
-    have hEq : algebraMap D (FractionRing D) d =
-        algebraMap D (FractionRing D) (algebraMap A D a) /
-          algebraMap D (FractionRing D) (algebraMap A D b) := by
-      simpa only [map_div₀, fractionRingMap_algebraMap] using hz.symm
-    have hb' : algebraMap D (FractionRing D) (algebraMap A D b) ≠ 0 := by
+    have hEq : algebraMap D L d =
+        algebraMap D L (algebraMap A D a) / algebraMap D L (algebraMap A D b) := by
+      simpa only [map_div₀, hφ] using hz.symm
+    have hb' : algebraMap D L (algebraMap A D b) ≠ 0 := by
       intro h
       apply hb0
       apply hf
-      apply IsFractionRing.injective D (FractionRing D)
+      apply IsFractionRing.injective D L
       simpa only [map_zero] using h
     have hmul : algebraMap A D b * d = algebraMap A D a := by
-      apply IsFractionRing.injective D (FractionRing D)
+      apply IsFractionRing.injective D L
       simpa only [map_mul, mul_comm] using (eq_div_iff hb').mp hEq
     apply mem_range_algebraMap_of_smul_mem_of_basis_one B i hi hb0
     exact ⟨a, by simpa only [Algebra.smul_def] using hmul.symm⟩
   · rintro ⟨a, rfl⟩
-    exact ⟨algebraMap A (FractionRing A) a, fractionRingMap_algebraMap _ _ _⟩
+    exact ⟨algebraMap A K a, hφ a⟩
 
 /-- 代数的な整域拡大では、元の環の像が分数体を底環の分数体上張る。 -/
 theorem span_range_fractionRing_eq_top
@@ -130,27 +106,6 @@ theorem finiteDimensional_fractionRing_of_finite
   refine ⟨1 ⊗ₜ[A] d, ?_⟩
   change algebraMap K L 1 * algebraMap D L d = _
   rw [map_one, one_mul]
-
-/-- 有限単射の同じ写像を分数体へ延長して得る有限拡大。
-自己作用と混同しないよう、加群構造を指定した写像から取る。 -/
-theorem fractionRingMap_finite {A D : Type*}
-    [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-    (f : A →+* D) (hf : Function.Injective f) (hfin : f.Finite) :
-    letI : Algebra (FractionRing A) (FractionRing D) := (fractionRingMap f hf).toAlgebra
-    letI : Module (FractionRing A) (FractionRing D) := fractionRingMapModule f hf
-    Module.Finite (FractionRing A) (FractionRing D) := by
-  let : Algebra A D := f.toAlgebra
-  let : Module A D := @Algebra.toModule _ _ _ _ f.toAlgebra
-  let : Module.Finite A D := hfin
-  let : Algebra A (FractionRing D) := ((algebraMap D (FractionRing D)).comp f).toAlgebra
-  let : SMul D (FractionRing D) := (inferInstance : Algebra D (FractionRing D)).toSMul
-  let : SMul A (FractionRing D) := (inferInstance : Algebra A (FractionRing D)).toSMul
-  let : IsScalarTower A D (FractionRing D) := IsScalarTower.of_algebraMap_eq' rfl
-  let : Algebra (FractionRing A) (FractionRing D) := (fractionRingMap f hf).toAlgebra
-  let : Module (FractionRing A) (FractionRing D) := fractionRingMapModule f hf
-  let : IsScalarTower A (FractionRing A) (FractionRing D) :=
-    IsScalarTower.of_algebraMap_eq (fun a ↦ (fractionRingMap_algebraMap f hf a).symm)
-  exact finiteDimensional_fractionRing_of_finite A D (FractionRing A) (FractionRing D)
 
 section Basis
 variable {A D K L α : Type*} [CommRing A] [instDomainA : IsDomain A]
@@ -193,17 +148,5 @@ theorem finrank_fieldRange {E L : Type*} [Field E] [Field L] (f : E →+* L) :
   let : Module E L := @Algebra.toModule _ _ _ _ f.toAlgebra
   exact (Algebra.finrank_eq_of_equiv_equiv f.rangeRestrictFieldEquiv (RingEquiv.refl L)
     (by ext x; rfl)).symm
-
-/-- 有限単射の延長の実際の像の部分体上でも、分数体は有限次元。 -/
-theorem fractionRingMap_fieldRange_finite {A D : Type*}
-    [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-    (f : A →+* D) (hf : Function.Injective f) (hfin : f.Finite) :
-    Module.Finite (fractionRingMap f hf).fieldRange (FractionRing D) := by
-  apply Module.finite_of_finrank_pos
-  rw [finrank_fieldRange]
-  let : Algebra (FractionRing A) (FractionRing D) := (fractionRingMap f hf).toAlgebra
-  let : Module (FractionRing A) (FractionRing D) := fractionRingMapModule f hf
-  let : Module.Finite (FractionRing A) (FractionRing D) := fractionRingMap_finite f hf hfin
-  exact Module.finrank_pos
 
 end SerrePositivity

@@ -5,10 +5,15 @@ public import SerrePositivity.RingTheory.Kaehler
 public import Mathlib.RingTheory.Etale.Kaehler
 public import Mathlib.RingTheory.Unramified.Field
 
-/-! # 通常の相対微分の分数体局所化と分離性
+/-! # 相対微分の分数体への局所化と分離性
 
-通常のΩを局所化する。完備微分との比較はこのモジュールに含まれない。
-有限性を確認してから次元0を零加群へ移し、Mathlibの分離性判定を使う。
+概要：整域の拡大 `A → D` の分数体 `K`、`L` について、`L ⊗_D Ω_{D/A} ≅ Ω_{L/K}`（`fractionDifferentialEquiv`）。
+`D/A` が有限なら、`L/K` が分離的であることと `L ⊗_D Ω_{D/A}` の次元が零であることは同値。
+方針：局所化は形式エタールなので Mathlib の `KaehlerDifferential.tensorKaehlerEquivOfFormallyEtale` と、
+底の形式不分岐な拡大で相対微分が変わらないこと（`RingTheory/Kaehler`）を合成する。分離性は有限体拡大の判定へ渡す。
+規約：分数体の間の代数構造は型クラスの引数で受け取る。`FractionRing A → FractionRing D` には Mathlib の
+`FractionRing.liftAlgebra` を局所インスタンスとして使う。
+使われ方：Cohen–Gabber の分離性（`CohenGabberNormalization`）、中間係数体上の完備微分の比較（`CofiniteNormalization`）。
 -/
 
 @[expose] public noncomputable section
@@ -49,36 +54,15 @@ theorem isSeparable_fractionRing_iff_finrank_tensorDifferential_eq_zero
   rw [isSeparable_iff_finrank_kaehlerDifferential_eq_zero,
     ← (fractionDifferentialEquiv A D K L).finrank_eq]
 
-/-- 指定した有限単射そのものの延長についての判定。
-環と分数体の係数作用を、いずれも同じfから取る。
-拡大作用は分離性の引数に直接渡し、次元評価の体自身の標準作用と区別する。 -/
-theorem isSeparable_fractionRingMap_iff_finrank_tensorDifferential_eq_zero
-    {A D : Type*} [CommRing A] [IsDomain A] [CommRing D] [IsDomain D]
-    (f : A →+* D) (hf : Function.Injective f) (hfin : f.Finite) :
-    letI : Module D (FractionRing D) :=
-      @Algebra.toModule _ _ _ _ (inferInstance : Algebra D (FractionRing D))
-    letI : SMul D (FractionRing D) :=
-      (inferInstance : Algebra D (FractionRing D)).toSMul
-    letI : Algebra A D := f.toAlgebra
-    letI : Module A D := @Algebra.toModule _ _ _ _ f.toAlgebra
-    @Algebra.IsSeparable (FractionRing A) (FractionRing D) inferInstance inferInstance
-      (fractionRingMap f hf).toAlgebra ↔
-      Module.finrank (FractionRing D)
-        (FractionRing D ⊗[D] KaehlerDifferential A D) = 0 := by
-  let : Module D (FractionRing D) :=
-    @Algebra.toModule _ _ _ _ (inferInstance : Algebra D (FractionRing D))
-  let : Algebra A D := f.toAlgebra
-  let : Module A D := @Algebra.toModule _ _ _ _ f.toAlgebra
-  let : Module.Finite A D := hfin
-  let : Algebra A (FractionRing D) := ((algebraMap D (FractionRing D)).comp f).toAlgebra
-  let : SMul D (FractionRing D) := (inferInstance : Algebra D (FractionRing D)).toSMul
-  let : SMul A (FractionRing D) := (inferInstance : Algebra A (FractionRing D)).toSMul
-  let : IsScalarTower A D (FractionRing D) := IsScalarTower.of_algebraMap_eq' rfl
-  let : Algebra (FractionRing A) (FractionRing D) := (fractionRingMap f hf).toAlgebra
-  let : Module (FractionRing A) (FractionRing D) := fractionRingMapModule f hf
-  let : IsScalarTower A (FractionRing A) (FractionRing D) :=
-    IsScalarTower.of_algebraMap_eq (fun a ↦ (fractionRingMap_algebraMap f hf a).symm)
-  exact isSeparable_fractionRing_iff_finrank_tensorDifferential_eq_zero
-    A D (FractionRing A) (FractionRing D)
+attribute [local instance] FractionRing.liftAlgebra in
+/-- 有限な整域拡大 `A ⊆ D` について、分数体の拡大（Mathlib の `FractionRing.liftAlgebra`）が分離的であることと、
+局所化した相対微分 `Frac D ⊗_D Ω_{D/A}` の次元が零であることは同値。 -/
+theorem isSeparable_fractionRing_iff_finrank_tensorDifferential_eq_zero'
+    (A D : Type*) [CommRing A] [IsDomain A] [CommRing D] [IsDomain D] [Algebra A D]
+    [FaithfulSMul A D] [Module.Finite A D] :
+    Algebra.IsSeparable (FractionRing A) (FractionRing D) ↔
+      Module.finrank (FractionRing D) (FractionRing D ⊗[D] KaehlerDifferential A D) = 0 :=
+  isSeparable_fractionRing_iff_finrank_tensorDifferential_eq_zero A D
+    (FractionRing A) (FractionRing D)
 
 end SerrePositivity
