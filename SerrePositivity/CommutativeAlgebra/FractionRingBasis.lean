@@ -58,8 +58,9 @@ theorem mem_range_algebraMap_of_smul_mem_of_basis_one
   have hx : a • d ∈ A ∙ B i := by
     apply Submodule.mem_span_singleton.mpr
     exact ⟨c, by simpa only [hi, Algebra.smul_def, mul_one] using hc⟩
-  obtain ⟨u, hu⟩ := Submodule.mem_span_singleton.mp
-    (basis_mem_span_singleton_of_smul_mem B i ha hx)
+  have hd := basis_mem_span_image_of_smul_mem B {i}
+    (fun _ h ↦ (mul_eq_zero.mp h).resolve_left ha) (by simpa using hx)
+  obtain ⟨u, hu⟩ := Submodule.mem_span_singleton.mp (by simpa using hd)
   exact ⟨u, by simpa only [hi, Algebra.smul_def, mul_one] using hu⟩
 
 /-- 基底に1を持つ整域拡大では、底環の分数体の像と元の環の交わりは底環の像。 -/
