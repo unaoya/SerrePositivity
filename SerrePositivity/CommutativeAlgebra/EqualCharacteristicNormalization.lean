@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PBasisCoefficientField
+public import SerrePositivity.CommutativeAlgebra.CoefficientField
 public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
 public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness

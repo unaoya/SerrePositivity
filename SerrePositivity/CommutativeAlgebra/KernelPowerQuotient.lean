@@ -28,13 +28,16 @@ theorem kernelPowerQuotientMap_surjective (f : A →+* B) (hf : Function.Surject
   obtain ⟨a, rfl⟩ := hf b
   exact ⟨Ideal.Quotient.mk _ a, rfl⟩
 
-/-- 商の写像の核はイデアルとして冪零。各元の冪零性だけではない。 -/
-theorem kernelPowerQuotientMap_nilpotent_kernel (f : A →+* B) (n : ℕ) :
-    IsNilpotent (RingHom.ker (kernelPowerQuotientMap f n)) := by
-  refine ⟨n + 1, ?_⟩
+/-- 商の写像の核の `n + 1` 乗は零。 -/
+theorem kernelPowerQuotientMap_ker_pow_eq_bot (f : A →+* B) (n : ℕ) :
+    RingHom.ker (kernelPowerQuotientMap f n) ^ (n + 1) = ⊥ := by
   rw [kernelPowerQuotientMap, Ideal.ker_quotient_lift, ← Ideal.map_pow,
     Ideal.map_quotient_self]
-  rfl
+
+/-- 商の写像の核はイデアルとして冪零。各元の冪零性だけではない。 -/
+theorem kernelPowerQuotientMap_nilpotent_kernel (f : A →+* B) (n : ℕ) :
+    IsNilpotent (RingHom.ker (kernelPowerQuotientMap f n)) :=
+  ⟨n + 1, kernelPowerQuotientMap_ker_pow_eq_bot f n⟩
 
 /-- 源と終域の標数が一致すれば、正の冪商にも同じ標数が入る。 -/
 theorem kernelPowerQuotient_charP (f : A →+* B) (p n : ℕ) [CharP A p] [CharP B p] :

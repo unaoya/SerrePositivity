@@ -5,7 +5,6 @@ public import Mathlib.RingTheory.Ideal.Maps
 public import Mathlib.RingTheory.AdicCompletion.RingHom
 public import Mathlib.Algebra.CharP.Quotient
 public import Mathlib.Algebra.CharP.Algebra
-public import SerrePositivity.CommutativeAlgebra.NilpotentFrobenius
 public import SerrePositivity.CommutativeAlgebra.FrobeniusKernelLift
 
 /-! # 完全環からの写像の冪零核を越える持ち上げ
