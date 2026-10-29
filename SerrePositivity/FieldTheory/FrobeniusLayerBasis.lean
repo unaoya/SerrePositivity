@@ -44,33 +44,29 @@ noncomputable def frobeniusLayerCoefficientEquiv (n : ℕ) :
     congrArg Subtype.val ((pPowerEquiv k p).apply_symm_apply c)
   rw [pow_succ, Nat.mul_comm (p ^ n) p, pow_mul, hc]
 
+/-- 塔の各段階で、係数の同型と元の同型は代数構造の写像と可換である。 -/
+theorem frobeniusLayer_algebraMap_compat (n : ℕ) (c : pPowerSubfield k p) :
+    frobeniusPowerEquiv k p n (algebraMap (pPowerSubfield k p) k c) =
+      algebraMap (frobeniusPowerSubfield k p (n + 1)) (frobeniusPowerSubfield k p n)
+        (frobeniusLayerCoefficientEquiv k p n c) := by
+  apply Subtype.ext
+  change (c : k) ^ p ^ n = (frobeniusLayerCoefficientEquiv k p n c : k)
+  exact (frobeniusLayerCoefficientEquiv_apply_coe k p n c).symm
+
 variable {k p} {ι : Type*} {b : ι → k}
 
-/-- 各 Frobenius 段階で、移送した単項式は独立性だけでなく全体の基底になる。 -/
-theorem IsPBasis.exists_frobeniusLayerBasis (hb : IsPBasis k p b) (n : ℕ) :
-    ∃ B : Module.Basis (PExponent p ι) (frobeniusPowerSubfield k p (n + 1))
-      (frobeniusPowerSubfield k p n),
-      ∀ d, B d = frobeniusPowerEquiv k p n (pMonomial b d) := by
-  have h : ∀ c : pPowerSubfield k p,
-      frobeniusPowerEquiv k p n (algebraMap (pPowerSubfield k p) k c) =
-        algebraMap (frobeniusPowerSubfield k p (n + 1)) (frobeniusPowerSubfield k p n)
-          (frobeniusLayerCoefficientEquiv k p n c) := by
-    intro c
-    apply Subtype.ext
-    change (c : k) ^ p ^ n = (frobeniusLayerCoefficientEquiv k p n c : k)
-    exact (frobeniusLayerCoefficientEquiv_apply_coe k p n c).symm
-  simpa using exists_basis_of_ringEquiv hb.basis (frobeniusLayerCoefficientEquiv k p n)
-    (frobeniusPowerEquiv k p n) h
-
-/-- 塔の各段階の実際の基底。添字の有限性・完全体性は不要。 -/
+/-- 塔の各段階の実際の基底。元の p-basis を、Frobenius 冪の同型で移送したもの。
+添字の有限性・完全体性は不要。 -/
 noncomputable def IsPBasis.frobeniusLayerBasis (hb : IsPBasis k p b) (n : ℕ) :
     Module.Basis (PExponent p ι) (frobeniusPowerSubfield k p (n + 1))
       (frobeniusPowerSubfield k p n) :=
-  (hb.exists_frobeniusLayerBasis n).choose
+  basisOfRingEquiv hb.basis (frobeniusLayerCoefficientEquiv k p n)
+    (frobeniusPowerEquiv k p n) (frobeniusLayer_algebraMap_compat k p n)
 
+/-- 各 Frobenius 段階で、移送した単項式は独立性だけでなく全体の基底になる。 -/
 @[simp] theorem IsPBasis.frobeniusLayerBasis_apply (hb : IsPBasis k p b) (n : ℕ)
     (d : PExponent p ι) :
-    hb.frobeniusLayerBasis n d = frobeniusPowerEquiv k p n (pMonomial b d) :=
-  (hb.exists_frobeniusLayerBasis n).choose_spec d
+    hb.frobeniusLayerBasis n d = frobeniusPowerEquiv k p n (pMonomial b d) := by
+  simp [IsPBasis.frobeniusLayerBasis, hb.basis_apply]
 
 end SerrePositivity

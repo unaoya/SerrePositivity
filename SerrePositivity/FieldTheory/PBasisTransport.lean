@@ -29,11 +29,11 @@ noncomputable def pPowerSubfieldEquiv (e : k ≃+* l) :
 /-- p-basis の独立性と生成性は、ともに体同型で保たれる。 -/
 theorem IsPBasis.ringEquiv {ι : Type*} {b : ι → k} (hb : IsPBasis k p b)
     (e : k ≃+* l) : IsPBasis l p (e ∘ b) := by
-  obtain ⟨B, hB⟩ := exists_basis_of_ringEquiv hb.basis (pPowerSubfieldEquiv e) e
+  let B := basisOfRingEquiv hb.basis (pPowerSubfieldEquiv e) e
     (fun c ↦ (pPowerSubfieldEquiv_apply_coe e c).symm)
   have he : ∀ d : PExponent p ι, B d = pMonomial (e ∘ b) d := by
     intro d
-    rw [hB, hb.basis_apply]
+    rw [show B d = e (hb.basis d) from basisOfRingEquiv_apply _ _ _ _ d, hb.basis_apply]
     simp only [pMonomial, map_finsuppProd, map_pow, Function.comp_apply]
   have hfun : (B : PExponent p ι → l) = pMonomial (e ∘ b) := funext he
   exact ⟨hfun ▸ B.linearIndependent, hfun ▸ B.span_eq⟩
