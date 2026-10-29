@@ -1,5 +1,5 @@
 -- lake build の後、lake env lean scripts/audit_f5.lean で実行する。
-import SerrePositivity.CommutativeAlgebra.AdicBoundedTorsionQuotient
+import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 import SerrePositivity.BhattScholze
 import Mathlib.Util.AssertNoSorry
 
