@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionField
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesFractionSubfield
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesCharacteristic
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.FractionField
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 
 /-! # 共通分数体内の中間係数体族の実際の像
 

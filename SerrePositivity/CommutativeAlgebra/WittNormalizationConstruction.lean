@@ -3,8 +3,9 @@ module
 public import SerrePositivity.CommutativeAlgebra.WittNormalizationBase
 public import SerrePositivity.CommutativeAlgebra.WittCoefficientConstruction
 public import SerrePositivity.CommutativeAlgebra.MixedCharacteristicParameters
-public import SerrePositivity.CommutativeAlgebra.AdicPowerSeries
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalizationTools
+public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
 
 /-! # 混標数Cohen正規化の実構成
 

@@ -1,8 +1,9 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.ParameterKoszulGrowth
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesRingHomExt
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesLocalStructure
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.VariableRegular
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.RegularParameters
 
 /-! # 対角線の環 `R[[Y]]`

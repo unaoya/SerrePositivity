@@ -1,42 +1,67 @@
 module
 
-public import Mathlib.RingTheory.MvPowerSeries.Ideal
-public import Mathlib.RingTheory.Ideal.Quotient.Operations
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
+public import Mathlib.RingTheory.DiscreteValuationRing.TFAE
+public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
 public import Mathlib.RingTheory.WittVector.Complete
+public import Mathlib.FieldTheory.Perfect
 
-/-! # 冪級数環の係数の商とWitt係数のmod p比較
+/-! # Witt 係数の冪級数環
 
-有限生成な核を持つ係数全射は、冪級数環でも全射であり、核は係数の核の拡大である。
-その実際の商同型をWittの定数係数写像へ適用する。
-根の塔や正規化長さはこの共通の係数比較には含めない。
+概要：完全正標数体 `k` の Witt ベクトル `W(k)` を係数とする有限変数の冪級数環 `W(k)[[X]]` について、
+極大イデアルは `(p) + (X)`、次元は `1 + 変数の個数`、正則局所で `(p, X)` 進完備。`p` で割ると `k[[X]]`。
+方針：`W(k)` が離散付値環で極大イデアルが `(p)` であることを、冪級数環の一般論（`PowerSeries/*`）に代入する。
+規約：剰余体 `k` は完全体。
+使われ方：混標数の Cohen 正規化（`WittNormalization*`）と根の塔の mod p 比較（`RootTower`）。
 -/
 
 @[expose] public noncomputable section
-universe u v
 namespace SerrePositivity
 
-/-- 係数全射は、冪級数環の係数ごとの写像でも全射となる。 -/
-theorem powerSeries_map_surjective {R S : Type u} [CommRing R] [CommRing S]
-    (σ : Type v) (f : R →+* S) (hf : Function.Surjective f) :
-    Function.Surjective (MvPowerSeries.map (σ := σ) f) := by
-  intro φ
-  choose a ha using fun d : σ →₀ ℕ ↦ hf (MvPowerSeries.coeff d φ)
-  refine ⟨a, ?_⟩
-  ext d
-  exact ha d
+section Structure
 
-/-- 係数写像の核が有限生成なら、係数の核の拡大で割った冪級数環は終域の冪級数環。 -/
-def powerSeriesCoefficientQuotientEquiv {R S : Type u} [CommRing R] [CommRing S]
-    (σ : Type v) (f : R →+* S) (hf : Function.Surjective f) (hker : (RingHom.ker f).FG) :
-    MvPowerSeries σ R ⧸ (RingHom.ker f).map MvPowerSeries.C ≃+* MvPowerSeries σ S :=
-  (Ideal.quotEquivOfEq (MvPowerSeries.ker_map_of_fg f hker).symm).trans
-    (RingHom.quotientKerEquivOfSurjective (powerSeries_map_surjective σ f hf))
+open IsLocalRing
 
-@[simp] theorem powerSeriesCoefficientQuotientEquiv_mk
-    {R S : Type u} [CommRing R] [CommRing S] (σ : Type v) (f : R →+* S)
-    (hf : Function.Surjective f) (hker : (RingHom.ker f).FG) (φ : MvPowerSeries σ R) :
-    powerSeriesCoefficientQuotientEquiv σ f hf hker (Ideal.Quotient.mk _ φ) =
-      MvPowerSeries.map f φ := rfl
+/-- Witt係数冪級数の極大イデアルは(p)と全変数で生成される。 -/
+theorem wittPowerSeries_maximalIdeal_eq (σ k : Type*) [Finite σ] [Field k]
+    (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k] :
+    maximalIdeal (MvPowerSeries σ (WittVector p k)) =
+      Ideal.span {(p : MvPowerSeries σ (WittVector p k))} ⊔
+        Ideal.span (Set.range (MvPowerSeries.X (σ := σ) (R := WittVector p k))) := by
+  rw [powerSeries_maximalIdeal_eq, (WittVector.irreducible p).maximalIdeal_eq,
+    Ideal.map_span]
+  simp only [Set.image_singleton, map_natCast]
+
+
+/-- 完全正標数体のWitt係数冪級数環の次元は1+変数の個数。 -/
+theorem ringKrullDim_wittPowerSeries (σ k : Type*) [Fintype σ] [Field k]
+    (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k] :
+    ringKrullDim (MvPowerSeries σ (WittVector p k)) = 1 + Fintype.card σ := by
+  rw [ringKrullDim_mvPowerSeries, IsDiscreteValuationRing.ringKrullDim_eq_one]
+
+/-- 完全正標数体のWitt係数冪級数環は正則局所環。 -/
+theorem isRegularLocalRing_wittPowerSeries (σ k : Type*) [Finite σ] [Field k]
+    (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k] :
+    IsRegularLocalRing (MvPowerSeries σ (WittVector p k)) :=
+  isRegularLocalRing_mvPowerSeries σ (WittVector p k)
+
+/-- 完全正標数体のWitt係数冪級数は(p,X)進完備。 -/
+theorem isAdicComplete_wittPowerSeries_p_sup_variables
+    (σ k : Type*) [Finite σ] [Field k] (p : ℕ) [Fact p.Prime]
+    [CharP k p] [PerfectField k] :
+    IsAdicComplete (Ideal.span {(p : MvPowerSeries σ (WittVector p k))} ⊔
+      Ideal.span (Set.range (MvPowerSeries.X (σ := σ) (R := WittVector p k))))
+      (MvPowerSeries σ (WittVector p k)) := by
+  have h := isAdicComplete_powerSeries_coefficients_sup_variables σ (WittVector p k)
+    (Ideal.span {(p : WittVector p k)})
+  simpa only [Ideal.map_span, Set.image_singleton, map_natCast] using h
+
+end Structure
+
+section ModP
+
+universe u v
 
 /-- 完全標数p係数のWitt冪級数環をpで割ると、元の係数の冪級数環となる。 -/
 def wittPowerSeriesModPEquiv (σ : Type v) (k : Type u) [CommRing k]
@@ -83,5 +108,7 @@ theorem wittPresentedModPEquiv_coordinate (A : Type (max u v)) [CommRing A] (σ 
     (ha : e a = MvPowerSeries.X i) :
     wittPresentedModPEquiv A σ k p e (Ideal.Quotient.mk _ a) = MvPowerSeries.X i := by
   rw [wittPresentedModPEquiv_mk, ha, MvPowerSeries.map_X]
+
+end ModP
 
 end SerrePositivity

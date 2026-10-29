@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesAdicTopology
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import SerrePositivity.CommutativeAlgebra.PowerSeriesContinuousDifferential
 public import SerrePositivity.CommutativeAlgebra.AdicDerivationContinuity
 

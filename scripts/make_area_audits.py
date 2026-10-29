@@ -23,7 +23,7 @@ AREAS = {
     ]),
     "adams": (["KTheory", "IntersectionMultiplicity"], []),
     "shared": (["HomologicalAlgebra", "CommutativeAlgebra", "PerfectComplex", "LengthAlgebra",
-                "Asymptotic", "LinearAlgebra", "FieldTheory", "CategoryTheory", "GroupTheory",
+                "Asymptotic", "LinearAlgebra", "RingTheory", "FieldTheory", "CategoryTheory", "GroupTheory",
                 "Paper", "Inputs"], [
         "SerrePositivity/Paper/Section4/SupportedDescent.lean",
         "SerrePositivity/Inputs/Descent.lean",

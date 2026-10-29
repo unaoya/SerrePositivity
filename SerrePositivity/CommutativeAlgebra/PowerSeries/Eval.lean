@@ -1,22 +1,29 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import SerrePositivity.CommutativeAlgebra.AdicFiniteGeneration
 public import Mathlib.RingTheory.AdicCompletion.Completeness
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import Mathlib.RingTheory.AdicCompletion.Topology
 public import Mathlib.RingTheory.MvPowerSeries.Evaluation
+public import Mathlib.RingTheory.MvPowerSeries.Trunc
+public import Mathlib.RingTheory.AdicCompletion.Basic
 
-/-! # 完備環への有限変数の冪級数評価
+/-! # 完備環への冪級数の評価と準同型の一意性
 
-係数環に離散位相、評価先に指定イデアルのadic位相を入れ、Mathlibの
-冪級数評価を適用する。位相の選択を公開APIの引数へ持ち出さず、係数・変数・
-イデアル像の計算を供給する。Noether性・局所性・係数写像の単射性は要求しない。
-係数体またはWitt係数を与えた正規化と、完備化のNoether性の証明で共有する。
+概要：`S` が `J` 進完備で `x_i ∈ J` のとき、係数写像 `f : R → S` と変数の像 `x` から評価
+`R[[X]] → S` を作る（`adicPowerSeriesEval`）。変数の像が `J` を生成し係数が `S/J` へ全射なら評価は全射、
+`S/J` が `R` 上有限なら評価は有限。逆に、`J` 進分離な環への二つの準同型は、定数と変数の上で一致すれば等しい。
+方針：評価は、係数に離散位相、`S` に `J` 進位相を入れて Mathlib の `MvPowerSeries.eval₂Hom` を使う。
+一意性は、全次数 `N` での切り捨てとの差が `(X)^N` に入ること（`mem_powerSeries_variables_pow_iff`）による。
+規約：Noether 性・局所性・係数写像の単射性は仮定しない。
+使われ方：Cohen–Gabber と Witt の正規化、完備化の Noether 性、交点数の対角線論法。
 -/
 
-public section
-
+@[expose] public noncomputable section
 namespace SerrePositivity
+
+section Eval
 
 variable {R S : Type*} [CommRing R] [CommRing S]
 variable (f : R →+* S) (J : Ideal S) [IsAdicComplete J S]
@@ -51,15 +58,6 @@ theorem adicPowerSeriesEval_map_span :
       (adicPowerSeriesEval f J x hx) = Ideal.span (Set.range x) := by
   rw [Ideal.map_span, ← Set.range_comp]
   simp only [Function.comp_def, adicPowerSeriesEval_X]
-
-/-- 指定係数を加えたイデアルの像を計算する。混標数では係数にpを指定して使う。 -/
-theorem adicPowerSeriesEval_map_span_sup (c : R) :
-    (Ideal.span {MvPowerSeries.C c} ⊔
-      Ideal.span (Set.range (MvPowerSeries.X : σ → MvPowerSeries σ R))).map
-        (adicPowerSeriesEval f J x hx) =
-      Ideal.span {f c} ⊔ Ideal.span (Set.range x) := by
-  rw [Ideal.map_sup, adicPowerSeriesEval_map_span, Ideal.map_span]
-  simp only [Set.image_singleton, adicPowerSeriesEval_C]
 
 /-- 変数の像が完備イデアルを生成し、係数がその商へ全射なら、冪級数評価は全射。
 商での全射を反映するMathlibの一般定理を用い、局所性・Noether性は使わない。 -/
@@ -104,5 +102,73 @@ theorem adicPowerSeriesEval_finite_of_span [Algebra R S]
   apply adicPowerSeriesEval_finite J x hx
     (Ideal.span (Set.range (MvPowerSeries.X : σ → MvPowerSeries σ R)))
   exact (adicPowerSeriesEval_map_span _ J x hx).trans hspan
+
+end Eval
+
+section RingHomExt
+
+universe u
+
+open MvPowerSeries
+
+
+variable {K : Type u} [CommRing K] {σ : Type*}
+
+/-- 全次数 `N` 未満の係数が消える冪級数は `(X)^N` に入る。 -/
+theorem mem_span_X_pow_of_coeff [Finite σ] (N : ℕ) (f : MvPowerSeries σ K)
+    (hf : ∀ α : σ →₀ ℕ, α.degree < N → coeff α f = 0) :
+    f ∈ Ideal.span (Set.range (X : σ → MvPowerSeries σ K)) ^ N :=
+  (mem_powerSeries_variables_pow_iff N f).mpr hf
+
+/-- **冪級数環からの環準同型の一意性**：定数と変数の上で一致し、変数の像が `J` に入り、
+`B` が `J` 進分離的なら、二つの環準同型は等しい。全次数の切り捨てとの差が `(X)^N` に入ることによる。 -/
+theorem MvPowerSeries.ringHom_ext_of_isHausdorff [Finite σ] {B : Type*} [CommRing B]
+    (J : Ideal B) [IsHausdorff J B] {φ ψ : MvPowerSeries σ K →+* B}
+    (hC : φ.comp C = ψ.comp C) (hX : ∀ i, φ (X i) = ψ (X i)) (hJ : ∀ i, φ (X i) ∈ J) :
+    φ = ψ := by
+  classical
+  let := Fintype.ofFinite σ
+  -- 多項式の上では一致する
+  have hpoly : φ.comp (MvPolynomial.coeToMvPowerSeries.ringHom (σ := σ) (R := K)) =
+      ψ.comp MvPolynomial.coeToMvPowerSeries.ringHom := by
+    apply MvPolynomial.ringHom_ext
+    · intro a
+      have := RingHom.congr_fun hC a
+      simpa using this
+    · intro i
+      simpa using hX i
+  -- 変数のイデアルの冪の像は `J` の冪に入る
+  have hmap : ∀ N, ∀ r ∈ Ideal.span (Set.range (X : σ → MvPowerSeries σ K)) ^ N,
+      φ r ∈ J ^ N ∧ ψ r ∈ J ^ N := by
+    intro N r hr
+    have hle : ∀ χ : MvPowerSeries σ K →+* B, (∀ i, χ (X i) ∈ J) →
+        (Ideal.span (Set.range (X : σ → MvPowerSeries σ K)) ^ N).map χ ≤ J ^ N := by
+      intro χ hχ
+      rw [Ideal.map_pow]
+      apply Ideal.pow_right_mono
+      rw [Ideal.map_span, Ideal.span_le]
+      rintro _ ⟨_, ⟨i, rfl⟩, rfl⟩
+      exact hχ i
+    exact ⟨hle φ hJ (Ideal.mem_map_of_mem _ hr),
+      hle ψ (fun i ↦ hX i ▸ hJ i) (Ideal.mem_map_of_mem _ hr)⟩
+  ext f
+  rw [← sub_eq_zero]
+  apply IsHausdorff.haus (inferInstance : IsHausdorff J B)
+  intro N
+  rw [SModEq.zero, smul_eq_mul, Ideal.mul_top]
+  set p : MvPolynomial σ K := MvPowerSeries.truncTotal N f
+  have hr : f - (p : MvPowerSeries σ K) ∈
+      Ideal.span (Set.range (X : σ → MvPowerSeries σ K)) ^ N := by
+    apply mem_span_X_pow_of_coeff
+    intro α hα
+    rw [map_sub, MvPolynomial.coeff_coe, MvPowerSeries.coeff_truncTotal _ hα, sub_self]
+  have hp : φ (p : MvPowerSeries σ K) = ψ p := RingHom.congr_fun hpoly p
+  have hsplit : φ f - ψ f = φ (f - p) - ψ (f - p) := by
+    rw [map_sub, map_sub, hp]
+    ring
+  rw [hsplit]
+  exact sub_mem (hmap N _ hr).1 (hmap N _ hr).2
+
+end RingHomExt
 
 end SerrePositivity

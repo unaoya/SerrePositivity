@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPFrobenius
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesResidueDecomposition
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Expansion
 
 /-! # 標準冪級数表示による有限段Frobenius射の全射性
 

@@ -1,8 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesRegular
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesLocalStructure
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import Mathlib.Data.Fintype.Card
+public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
 
 /-! # 混標数正規化に用いる具体的なWitt冪級数基底
 

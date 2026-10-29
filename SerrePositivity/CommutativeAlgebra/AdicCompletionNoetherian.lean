@@ -3,7 +3,7 @@ module
 public import Mathlib.RingTheory.AdicCompletion.Completeness
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import Mathlib.RingTheory.AdicCompletion.Topology
-public import SerrePositivity.CommutativeAlgebra.AdicPowerSeries
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.AdicNoetherianCriterion
 public import Mathlib.RingTheory.MvPowerSeries.Equiv
 

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AdicPowerSeries
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalizationTools
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesRegular
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import Mathlib.RingTheory.KrullDimension.Field
 
 /-! # 有限な閉ファイバーからの冪級数の有限正規化

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.PBasisCoefficientField
 public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
 public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesLocalStructure
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
 
 /-! # 同標数の通常の有限正規化

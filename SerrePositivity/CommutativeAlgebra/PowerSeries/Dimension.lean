@@ -1,23 +1,25 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Equiv
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesDomain
 public import Mathlib.RingTheory.PowerSeries.Ideal
 public import Mathlib.RingTheory.KrullDimension.Regular
 public import Mathlib.RingTheory.RegularLocalRing.Defs
-public import Mathlib.RingTheory.DiscreteValuationRing.TFAE
-public import Mathlib.RingTheory.WittVector.DiscreteValuationRing
-public import Mathlib.FieldTheory.Perfect
 
 /-! # 冪級数環の次元と正則局所性
 
-一変数ではXによる商を係数環に同定して次元を計算する。
-極大イデアルの生成数の上界から正則性を証明し、有限変数へ帰納する。
-係数環の整域性・完備性は一般定理に要求しない。
+概要：Noether 局所環 `R` について `dim R[[X_1, …, X_n]] = dim R + n`。`R` が正則局所なら `R[[X]]` も正則局所。
+方針：一変数では `X` が非零因子で `R[[X]]/(X) ≅ R` なので次元が一つ上がる（Mathlib の
+`ringKrullDim_quotient_span_singleton_succ_eq_ringKrullDim_of_mem_nonZeroDivisors`）。極大イデアルの生成数は
+高々一つ増える（`PowerSeries.spanFinrank_le_spanFinrank_map_constantCoeff_add_one_of_X_mem`）ので正則性が保たれる。
+有限変数へは `MvPowerSeries.finSuccEquiv` で帰納する。
+規約：係数環の整域性・完備性は仮定しない。
+使われ方：Cohen–Gabber と Witt の正規化で、`A = k[[X]]` が正則局所で次元が `h` であること。
 -/
 
-public section
+@[expose] public noncomputable section
 namespace SerrePositivity
+
 open IsLocalRing
 
 /-- 一変数冪級数の定数係数の核は(X)。 -/
@@ -109,16 +111,5 @@ theorem isRegularLocalRing_mvPowerSeries (σ R : Type*) [Finite σ] [CommRing R]
   exact IsRegularLocalRing.of_ringEquiv
     (MvPowerSeries.renameEquiv R (Fintype.equivFin σ)).symm.toRingEquiv
 
-/-- 完全正標数体のWitt係数冪級数環の次元は1+変数の個数。 -/
-theorem ringKrullDim_wittPowerSeries (σ k : Type*) [Fintype σ] [Field k]
-    (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k] :
-    ringKrullDim (MvPowerSeries σ (WittVector p k)) = 1 + Fintype.card σ := by
-  rw [ringKrullDim_mvPowerSeries, IsDiscreteValuationRing.ringKrullDim_eq_one]
-
-/-- 完全正標数体のWitt係数冪級数環は正則局所環。 -/
-theorem isRegularLocalRing_wittPowerSeries (σ k : Type*) [Finite σ] [Field k]
-    (p : ℕ) [Fact p.Prime] [CharP k p] [PerfectField k] :
-    IsRegularLocalRing (MvPowerSeries σ (WittVector p k)) :=
-  isRegularLocalRing_mvPowerSeries σ (WittVector p k)
 
 end SerrePositivity

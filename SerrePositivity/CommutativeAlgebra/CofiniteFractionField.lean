@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CofinitePowerSeriesExpansion
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesFractionField
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.FractionField
 
 /-! # 中間係数体と変数のp乗による分数体拡大の基底と次数
 

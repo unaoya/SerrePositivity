@@ -5,6 +5,7 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRepresentati
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPInjectivity
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
+public import SerrePositivity.CommutativeAlgebra.WittPowerSeries
 
 /-! # 完備塔の最初のmod p Frobenius核
 
