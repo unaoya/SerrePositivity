@@ -230,3 +230,11 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 3. **移し先**：\(C\) 全体の閉包（漏れを縮めた後）が Core・Simplicial に収まれば `Core.Roof.<名前>`、F1・F1B が要るなら `F1B.Roof.<名前>`、Stable が要るなら `Stable.Verdier.Fractions.<名前>`。塊の中で層が分かれるなら、層ごとに分ける。
 4. **判断の材料として報告する**：\(|C|\)、漏れの一覧（縮められる／使っている）、移し先の案、使っている漏れがある場合はその宣言と、それを切るための分割案。この報告の後に Claude が、塊を W1 に入れるか W2c（R52）に回すかを決める。
 5. **他の作業は止めない**：roof 系の 3 辺は「分析中の保留」として w1.json の外に置き、残り（UniverseHomotopy の move、三案の比較、改訂 JSON の検査、手作業込みの W1 判定）を進めて、改訂版 §7-1 の報告をする。報告には roof の分析を別の節として含める。
+
+### 10.6 追記（10-29、import の縮小で下流が壊れた件と roof の語彙判定）
+
+1. **下流の直接 import の補充を道具に組み込む**：`prune_imports.py` は、縮めた後に影響する下流のモジュールをビルドし、`public import` の再公開に頼っていたために壊れた下流には、**使っている分の直接 import を足して**ビルドし直す。足した import は出力の計画（`downstream_imports`：モジュール → 追加した import の一覧）に記録する。証拠の試行（10.1-4）ではこの補充も含めて行い、復元する。
+   - 対象 JSON には任意のフィールド `"downstream_imports"`（上と同じ形）を認め、`validate_targets.py` の模擬グラフでも使う。`targets/README.md` と試験を直す。
+   - `UniverseHomotopy` の件は、`ResolutionComparisonEquivalence`（または実際に壊れた `ComparisonEquivalence`）への直接 import の追加で解消する見込み。試行で確かめて記録する。
+2. **roof の語彙判定を直す**：10.5-1 で挙げた `Complex`・`Module` は部分一致で `FullSubcomplex`・`Subcomplex`（quasicategory の基本 API）に当たり、一般論を「dg を含む」と誤判定する。判定は**識別子の境界**で行い、次の語だけを dg の印とする：`DG` または `dg` で始まる識別子（`DGCategory`・`DGFunctor`・`dgNerve`・`dgClosedEdge` など。ただし `dg` 単独の綴りが別の語の一部になる場合は除く）、`Cochain`、`HomologicalComplex`、`ChainComplex`、`ModuleCat`、`CommRing`、`Bimodule`。`Subcomplex`・`FullSubcomplex`・`Simplex`・`Complex`（単独）は印にしない。この規則で \(C\) を取り直し、\(|C|\)・除外の一覧・漏れの辺を報告し直す。
+3. 上の二つを直したうえで、10.5 の 2〜5 を進める。
