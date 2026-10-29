@@ -1,7 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CoefficientEvalDerivation
-public import SerrePositivity.CommutativeAlgebra.ModuleDerivationDescent
+public import SerrePositivity.RingTheory.Derivation
 public import Mathlib.Algebra.Polynomial.Derivation
 public import Mathlib.FieldTheory.Minpoly.Field
 public import Mathlib.RingTheory.Adjoin.Polynomial.Basic

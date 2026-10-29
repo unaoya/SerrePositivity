@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.DerivationIdealPowers
+public import SerrePositivity.RingTheory.Derivation
 public import SerrePositivity.CommutativeAlgebra.AdicModuleSeparation
 public import Mathlib.Topology.Algebra.Group.Neighborhood
 

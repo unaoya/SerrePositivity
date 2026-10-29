@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionKernelClosure
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficientRestriction
 public import Mathlib.RingTheory.Flat.Equalizer
-public import SerrePositivity.CommutativeAlgebra.DerivationSpan
+public import SerrePositivity.RingTheory.Derivation
 
 /-! # 有限係数方向に沿う完備微分の核
 

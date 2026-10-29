@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.CofiniteCompletedDifferentialGeneration
 public import SerrePositivity.CommutativeAlgebra.CofiniteNormalizationDifferentialDimension
 public import SerrePositivity.CommutativeAlgebra.PBasisCoefficientPerturbation
-public import SerrePositivity.CommutativeAlgebra.DerivationIdealSpan
+public import SerrePositivity.RingTheory.Derivation
 
 /-! # 微分が独立になる有限係数摂動
 

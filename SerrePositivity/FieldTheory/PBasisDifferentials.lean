@@ -3,7 +3,7 @@ module
 public import SerrePositivity.FieldTheory.PBasis
 public import SerrePositivity.FieldTheory.PMonomialSpan
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
-public import SerrePositivity.CommutativeAlgebra.DerivationSpan
+public import SerrePositivity.RingTheory.Kaehler
 
 /-! # 相対 p 単項式基底と Kähler 微分の基底
 

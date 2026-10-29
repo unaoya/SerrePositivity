@@ -26,17 +26,4 @@ theorem powerSeries_kaehler_linearMap_ext_of_isHausdorff
   apply powerSeries_derivation_ext_of_isHausdorff
   exact hX
 
-/-- 分離な終域には、変数の微分の指定像を持つ線形写像が一意に存在する。 -/
-theorem existsUnique_powerSeries_kaehler_linearMap_of_isHausdorff (a : σ → M) :
-    ∃! f : KaehlerDifferential R (MvPowerSeries σ R) →ₗ[MvPowerSeries σ R] M,
-      ∀ i, f (KaehlerDifferential.D R _ (MvPowerSeries.X i)) = a i := by
-  obtain ⟨δ, hδ, _⟩ := existsUnique_powerSeriesDerivation_of_isHausdorff (R := R) a
-  refine ⟨δ.liftKaehlerDifferential, ?_, ?_⟩
-  · intro i
-    rw [Derivation.liftKaehlerDifferential_comp_D, hδ]
-  · intro f hf
-    apply powerSeries_kaehler_linearMap_ext_of_isHausdorff
-    intro i
-    rw [hf, Derivation.liftKaehlerDifferential_comp_D, hδ]
-
 end SerrePositivity

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.AdjoinSingletonDerivation
-public import SerrePositivity.CommutativeAlgebra.DerivationSpan
+public import SerrePositivity.RingTheory.Kaehler
 public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic

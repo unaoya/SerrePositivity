@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeriesDifferentialTransitivity
-public import SerrePositivity.CommutativeAlgebra.DerivationSpan
+public import SerrePositivity.RingTheory.Derivation
 
 /-! # 変数をp乗へ送る評価の完備微分の比較
 

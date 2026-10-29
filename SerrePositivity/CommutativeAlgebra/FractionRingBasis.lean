@@ -182,15 +182,6 @@ def fractionRingBasisOfAlgebraic (B : Module.Basis α A D) : Module.Basis α K L
     fractionRingBasisOfAlgebraic (K := K) (L := L) B i = algebraMap D L (B i) := by
   simp only [fractionRingBasisOfAlgebraic, Module.Basis.mk_apply]
 
-include instDomainA instDomainD instAlgebraic instAK instFracAK instTowerAKL in
-/-- 有限な指定基底の大きさは、分数体へ移しても変わらない。 -/
-theorem finrank_fractionRing_eq_natCard_basis [Finite α] (B : Module.Basis α A D) :
-    Module.finrank K L = Nat.card α := by
-  classical
-  let : Fintype α := Fintype.ofFinite α
-  rw [Module.finrank_eq_card_basis (fractionRingBasisOfAlgebraic (K := K) (L := L) B),
-    Nat.card_eq_fintype_card]
-
 end Basis
 
 /-- 体の写像による作用と、その実際の像の部分体による作用は同じ拡大次数を持つ。 -/

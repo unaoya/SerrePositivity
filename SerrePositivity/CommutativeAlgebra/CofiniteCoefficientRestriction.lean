@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.KaehlerRestrictionKernel
+public import SerrePositivity.RingTheory.Kaehler
 public import SerrePositivity.FieldTheory.PBasisCofiniteField
 public import SerrePositivity.FieldTheory.PBasisDifferentials
 public import Mathlib.RingTheory.AdicCompletion.Functoriality

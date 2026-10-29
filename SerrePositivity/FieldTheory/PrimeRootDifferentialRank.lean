@@ -2,7 +2,6 @@ module
 
 public import SerrePositivity.FieldTheory.AdjoinSingletonDifferential
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
-public import SerrePositivity.CommutativeAlgebra.KaehlerBaseRestriction
 
 /-! # p 乗根の添加での Kähler 微分の次元
 
@@ -68,6 +67,7 @@ theorem finrank_kaehlerDifferential_primeRoot_tower_eq_of_baseRestriction
     Module.finrank L (KaehlerDifferential F L) =
       Module.finrank K (KaehlerDifferential F K) :=
   finrank_kaehlerDifferential_primeRoot_tower_eq_of_adjoin_eq_top F x a hpow hx hs
-    (kaehlerDifferential_ne_zero_of_baseRestriction F S K a ha)
+    fun h ↦ ha (by simpa only [KaehlerDifferential.map_D, Algebra.algebraMap_self,
+      RingHom.id_apply, map_zero] using congrArg (KaehlerDifferential.map F S K K) h)
 
 end SerrePositivity

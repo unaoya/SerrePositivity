@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.DerivationIdealSpan
+public import SerrePositivity.RingTheory.Derivation
 public import SerrePositivity.CommutativeAlgebra.FinitePowerSeriesNormalization
-public import SerrePositivity.CommutativeAlgebra.DerivationSpan
 public import Mathlib.LinearAlgebra.Basis.SMul
 
 /-! # 微分基底を持つパラメータの選択
