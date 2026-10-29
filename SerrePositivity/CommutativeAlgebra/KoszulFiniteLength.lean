@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Multiplicity
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.PerfectComplex.Closure
 

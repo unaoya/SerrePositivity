@@ -3,7 +3,7 @@ public import SerrePositivity.PerfectComplex.IntegerEuler
 public import SerrePositivity.PerfectComplex.ClosedSupportCongr
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.KoszulGeneration
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # The integer Euler isomorphism at the maximal ideal -/
 @[expose] public section

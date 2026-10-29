@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CubicCyclotomicLocalFiber
-public import SerrePositivity.CommutativeAlgebra.FlatLocalDimension
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.FlatBaseChange
 public import Mathlib.RingTheory.Flat.Localization
 public import Mathlib.RingTheory.Flat.Stability
 public import Mathlib.RingTheory.Localization.Submodule

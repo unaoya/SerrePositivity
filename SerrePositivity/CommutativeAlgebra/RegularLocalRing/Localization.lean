@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.CommutativeAlgebra.RegularLocalCriterion
-public import SerrePositivity.CommutativeAlgebra.RegularPrimeDimension
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Criterion
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Dimension
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.PerfectComplex.FiniteProjectiveResolutions
 
@@ -34,23 +34,4 @@ theorem isRegularLocalRing_localizationAtPrime (p : PrimeSpectrum R) :
     IsRegularLocalRing (Localization.AtPrime p.asIdeal) :=
   isRegularLocalRing_atPrime p (Localization.AtPrime p.asIdeal)
 
-/-- A prime localization has a Koszul resolution of its residue field of length ht(p). -/
-lemma exists_localized_height_koszulResolution (p : PrimeSpectrum R) :
-    ∃ z : Fin p.asIdeal.height.toNat → Localization.AtPrime p.asIdeal,
-      Ideal.span (Set.range z) = maximalIdeal (Localization.AtPrime p.asIdeal) ∧
-      IsWeaklyRegular (Localization.AtPrime p.asIdeal) (List.ofFn z) ∧
-      Nonempty (IsResolutionOf (koszulComplex z)
-        (ModuleCat.of (Localization.AtPrime p.asIdeal)
-          ((Localization.AtPrime p.asIdeal) ⧸ maximalIdeal (Localization.AtPrime p.asIdeal)))) := by
-  let B := Localization.AtPrime p.asIdeal
-  have : IsRegularLocalRing B := isRegularLocalRing_localizationAtPrime p
-  obtain ⟨n, z, hz, hreg, hdim⟩ := exists_regular_generators_fin B
-  have hlen : n = p.asIdeal.height.toNat := by
-    rw [IsLocalization.AtPrime.ringKrullDim_eq_height p.asIdeal B,
-      ← natCast_primeHeight_toNat p] at hdim
-    exact_mod_cast hdim.symm
-  rw [← hlen]
-  refine ⟨z, hz, hreg, ?_⟩
-  rw [← hz]
-  exact ⟨isResolutionOf_koszul z (isKoszulResolution_of_isWeaklyRegular z hreg)⟩
 end SerrePositivity

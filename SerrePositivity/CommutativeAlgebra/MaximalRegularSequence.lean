@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.CommutativeAlgebra.PrimeDimensionBounds
-public import SerrePositivity.CommutativeAlgebra.RegularSequenceUnmixedness
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
 public import Mathlib.Order.SuccPred.Archimedean
 public import Mathlib.RingTheory.Flat.Localization
+public import Mathlib.RingTheory.KrullDimension.Regular
 
 /-! # Maximal regular sequences inside a prime ideal -/
 @[expose] public section
@@ -12,7 +12,7 @@ universe u
 namespace SerrePositivity
 open RingTheory.Sequence IsLocalRing
 open scoped Pointwise
-variable {R : Type u} [CommRing R] [IsRegularLocalRing R]
+variable {R : Type u} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
 
 /-- The length of a regular sequence is bounded by the finite dimension of the ring. -/
 lemma regularSequence_length_le_dimToNat (rs : List R) (h : IsRegular R rs) :

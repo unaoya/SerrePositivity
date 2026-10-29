@@ -30,7 +30,7 @@ theorem stageRootModPFrobenius_bijective_of_powerSeries
     (n : ℕ) : Function.Bijective (stageRootModPFrobenius A t p n 0 htp) := by
   let : IsDomain (TowerStage A t p n ⧸ Ideal.span {stageX A t p n 0}) :=
     stageRootQuotient_isDomain_of_parameters A p t ht hdim n
-  have hQ := RegularLocalQuotient.isRegularLocalRing_quotient_head_and_dim t ht hdim
+  have hQ := isRegularLocalRing_quotient_head_and_dim t ht hdim
   rw [htp] at hQ
   let : IsRegularLocalRing (A ⧸ Ideal.span {(p : A)}) := hQ.1
   obtain ⟨rs, hreg, hgen, _⟩ := exists_regular_generators (A ⧸ Ideal.span {(p : A)})

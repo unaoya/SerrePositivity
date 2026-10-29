@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CoefficientField
-public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
@@ -91,7 +91,7 @@ theorem exists_equalCharacteristic_finite_normalization
   have he : dimToNat (ringKrullDim D) = h := by
     rw [hdim]
     simp [dimToNat]
-  have hparams := PrimaryParameterExistence.exists_systemOfParameters_in_primary D
+  have hparams := exists_isSystemOfParameters_of_radical_eq D
     (maximalIdeal D) (maximalIdeal.isMaximal D).isPrime.radical
   rw [he] at hparams
   obtain ⟨z, hzm, hz⟩ := hparams

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.ParameterKoszulIdempotent
-public import SerrePositivity.CommutativeAlgebra.ParameterRadicalImage
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-! # Actual positive Koszul annihilation for finite-stage parameters -/
 @[expose] public noncomputable section

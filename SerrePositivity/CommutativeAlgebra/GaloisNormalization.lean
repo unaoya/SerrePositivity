@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CompleteLocalExtension
+public import SerrePositivity.CommutativeAlgebra.HenselianFinite
 public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
 public import Mathlib.RingTheory.DedekindDomain.IntegralClosure
 public import Mathlib.RingTheory.Invariant.Galois

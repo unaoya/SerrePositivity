@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityProof
 public import SerrePositivity.CommutativeAlgebra.KoszulFiniteLength
-public import SerrePositivity.CommutativeAlgebra.ParameterLastPower
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
 public import SerrePositivity.LengthAlgebra.ConeCompositionEuler
 
 /-! # 最後のパラメータだけを冪にしたときの重複度

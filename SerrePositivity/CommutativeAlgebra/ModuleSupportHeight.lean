@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RegularPrimeDimension
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Dimension
 public import SerrePositivity.CommutativeAlgebra.ModuleClosedSupport
 public import SerrePositivity.CommutativeAlgebra.SupportHeight
 

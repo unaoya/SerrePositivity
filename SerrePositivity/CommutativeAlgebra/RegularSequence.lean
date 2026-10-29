@@ -8,21 +8,54 @@ public import Mathlib.RingTheory.LocalRing.RingHom.Basic
 public import Mathlib.RingTheory.Ideal.Quotient.Noetherian
 public import Mathlib.RingTheory.Regular.Free
 public import Mathlib.Algebra.Category.ModuleCat.Basic
-/-!
-# 極大イデアルの正則生成列から得られる一般論
+public import Mathlib.RingTheory.Regular.IsSMulRegular
+public import Mathlib.RingTheory.Ideal.Quotient.Basic
+public import Mathlib.Algebra.Regular.Basic
+public import Mathlib.RingTheory.Ideal.Quotient.Defs
+public import Mathlib.RingTheory.Ideal.Span
+public import Mathlib.RingTheory.Nilpotent.Basic
 
-Noether 局所環の極大イデアルが正則列で生成されるとき、その環が整域であることと、
-有限自由加群による分解の第 `d` 核が自由になることを証明する（`d` は生成列の長さ）。
-正則局所環の次元による定義は仮定しない。
+/-! # 正則列の一般の補題
 
-整域性には Krull の共通部分定理を使う。分解の核の自由性には、正則元で割った短完全列の
-完全性と、Mathlib の `Module.free_quotSMulTop_iff_free` を使う。
+## 概要
+
+Noether 局所環 `R` の正則列について、論文と正則局所環の理論で使う基本的な事実を集める。
+- 極大イデアルを生成する弱正則列があれば `R` は整域（`isDomain_of_regular_generators`）。
+  正則局所環が整域であることの核心。`R/(x)` が整域で `x` が正則なら `R` も整域
+  （`isDomain_of_quotient_span_singleton`）。
+- 極大イデアルを生成する長さ `d` の弱正則列があれば、有限生成加群の有限自由分解の第 `d` 核は自由
+  （`free_syzygy_of_regular_generators`）。
+- 素イデアル `p` で割った商で `x` が正則であることと `x ∉ p` は同値
+  （`isSMulRegular_quotient_iff_notMem_prime`）。
+- 正則元 `r` で `R/(r)` が被約なら、`r^{kn} ∣ x^k` から `r^n ∣ x`（`regular_pow_dvd_of_pow_dvd`）。
+- 弱正則列の全項の符号を変えても弱正則（`isWeaklyRegular_map_neg`）。
+
+## 方針
+
+整域性は列の長さの帰納法で、`R/(x)` が整域であることを Krull の交叉定理
+（`exists_pow_mul_not_dvd`）で `R` へ持ち上げる。
+
+## 規約
+
+正則列は Mathlib の `RingTheory.Sequence.IsWeaklyRegular`・`IsRegular` を使う。
+
+## 使われ方
+
+正則局所環の整域性（`RegularLocalRing`）、有限自由分解（`HomologicalAlgebra/FiniteFreeResolution`）、
+深さの補題（`Depth`）、根の塔の Frobenius 核（`RootTower`）、CLMST、BhattScholze のモニック関係
+（`MonicRelationRegularSequence`）。Mathlib への提出候補（mathlib-upstream の G9）。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
+
+universe u v
 
 open IsLocalRing
+
 namespace SerrePositivity
+
+section Basic
+
 variable {R : Type*} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
 /-- Noether 局所環で、極大イデアルの元 `x` に関する非零元の位数は有限である。
 非零元を `x ^ n * b` と書き、`b` は `x` で割れないようにできる。 -/
@@ -215,4 +248,117 @@ lemma free_syzygy_of_regular_generators (rs : List R)
       let := Module.finitePresentation_of_finite R (K (n + 1))
       exact (Module.free_quotSMulTop_iff_free R (K (n + 1))
         ((maximalIdeal_le_jacobson _) hx) (hregular n)).mp hlast
+
+end Basic
+
+section PrimeQuotient
+
+variable {R : Type*} [CommRing R]
+
+/-- 素イデアルの外の元は、その素イデアルによる商に正則に作用する。 -/
+theorem isSMulRegular_quotient_of_notMem_prime (p : Ideal R) [p.IsPrime]
+    {x : R} (hx : x ∉ p) : IsSMulRegular (R ⧸ p) x := by
+  rw [isSMulRegular_quotient_iff_mem_of_smul_mem]
+  intro y hxy
+  exact (‹p.IsPrime›.mem_or_mem (show x * y ∈ p from hxy)).resolve_left hx
+
+/-- 素イデアルによる商に正則に作用する元は、ちょうどその素イデアルの外の元。 -/
+theorem isSMulRegular_quotient_iff_notMem_prime (p : Ideal R) [p.IsPrime] (x : R) :
+    IsSMulRegular (R ⧸ p) x ↔ x ∉ p := by
+  refine ⟨fun h hx ↦ ?_, isSMulRegular_quotient_of_notMem_prime p⟩
+  have hone : (1 : R) ∈ p :=
+    (isSMulRegular_quotient_iff_mem_of_smul_mem p x).mp h 1 (by simpa using hx)
+  exact ‹p.IsPrime›.ne_top (Ideal.eq_top_of_isUnit_mem p hone isUnit_one)
+
+end PrimeQuotient
+
+section PowerDivisibility
+
+variable (R : Type*) [CommRing R]
+
+/-- 被約な正則主元商では、冪の整除性から元の整除性が従う。 -/
+theorem regular_pow_dvd_of_pow_dvd (r : R)
+    (hreg : IsLeftRegular r) [IsReduced (R ⧸ Ideal.span {r})]
+    (k : ℕ) (hk : 0 < k) (n : ℕ) (x : R) (hx : r ^ (k * n) ∣ x ^ k) :
+    r ^ n ∣ x := by
+  induction n generalizing x with
+  | zero => simp
+  | succ n ih =>
+    have hdiv : r ∣ x ^ k :=
+      dvd_trans (dvd_pow_self r (by positivity : k * (n + 1) ≠ 0)) hx
+    have hz : (Ideal.Quotient.mk (Ideal.span {r}) x) ^ k = 0 := by
+      rw [← map_pow]
+      exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton.mpr hdiv)
+    have hxr : r ∣ x := Ideal.mem_span_singleton.mp
+      (Ideal.Quotient.eq_zero_iff_mem.mp (IsReduced.eq_zero _ ⟨k, hz⟩))
+    obtain ⟨y, rfl⟩ := hxr
+    have hy : r ^ (k * n) ∣ y ^ k := by
+      obtain ⟨b, hb⟩ := hx
+      refine ⟨b, ?_⟩
+      apply hreg.pow k
+      change r ^ k * y ^ k = r ^ k * (r ^ (k * n) * b)
+      rw [← mul_pow, hb, Nat.mul_add, Nat.mul_one, pow_add]
+      ring
+    obtain ⟨b, hb⟩ := ih y hy
+    refine ⟨b, ?_⟩
+    rw [hb, pow_succ']
+    ring
+
+end PowerDivisibility
+
+section MapNeg
+
+/-- 弱正則列の全項の符号を変えても弱正則。各先行生成イデアルは変わらず、
+`-1` 倍は単射だから。 -/
+theorem isWeaklyRegular_map_neg {R : Type*} [CommRing R] (l : List R)
+    (h : RingTheory.Sequence.IsWeaklyRegular R l) :
+    RingTheory.Sequence.IsWeaklyRegular R (l.map fun x => -x) := by
+  have hI (t : List R) : Ideal.ofList (t.map fun x => -x) = Ideal.ofList t := by
+    induction t with
+    | nil => rfl
+    | cons x t ih => simp only [List.map_cons, Ideal.ofList_cons, ih, Ideal.span_singleton_neg]
+  constructor
+  intro i hi
+  have hi' : i < l.length := by simpa only [List.length_map] using hi
+  have hr := h.regular_mod_prev i hi'
+  rw [← List.map_take, hI, List.getElem_map]
+  intro x y hxy
+  apply hr
+  exact neg_injective (by simpa only [neg_smul] using hxy)
+
+end MapNeg
+
+section BaseChange
+
+open scoped TensorProduct
+
+/-- D 上の非零因子は、平坦 A 代数 R による基底変更後も非零因子。
+テンソル積上では R の左作用と、`g` の R 内の標準像を用いる。 -/
+theorem isSMulRegular_tensorProduct_of_flat
+    (A R D : Type u) [CommRing A] [CommRing R] [CommRing D]
+    [Algebra A R] [Algebra A D] [Module.Flat A R]
+    (g : A) (hg : IsSMulRegular D (algebraMap A D g)) :
+    IsSMulRegular (R ⊗[A] D) (algebraMap A R g) := by
+  have hg' : IsSMulRegular D g := by
+    change Function.Injective (fun d : D ↦ g • d)
+    change Function.Injective (fun d : D ↦ algebraMap A D g * d) at hg
+    simpa only [Algebra.smul_def] using hg
+  have hbase : IsSMulRegular (R ⊗[A] D) g := hg'.lTensor R
+  change Function.Injective (fun x : R ⊗[A] D ↦ g • x) at hbase
+  change Function.Injective (fun x : R ⊗[A] D ↦ algebraMap A R g • x)
+  simpa only [IsScalarTower.algebraMap_smul] using hbase
+
+/-- 正則な `p` について、`p` の任意の冪で消える元は零。
+有界ねじれ条件では指数 `N=0` を取ることができる。 -/
+theorem exists_pow_torsion_bound_of_isSMulRegular
+    (S : Type u) [CommRing S] (p : ℕ) (hp : IsSMulRegular S (p : S)) :
+    ∃ N : ℕ, ∀ (n : ℕ) (s : S),
+      (p : S) ^ n * s = 0 → (p : S) ^ N * s = 0 := by
+  refine ⟨0, ?_⟩
+  intro n s hs
+  have hz : s = 0 := (hp.pow n).right_eq_zero_of_smul (by simpa [smul_eq_mul] using hs)
+  simp [hz]
+
+end BaseChange
+
 end SerrePositivity

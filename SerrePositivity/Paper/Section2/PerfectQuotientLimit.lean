@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.PerfectApproximationLength
 public import SerrePositivity.Paper.Section2.TowerLengthOn
-public import SerrePositivity.CommutativeAlgebra.PrimaryParameters
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityLimit
 
 /-! # Perfection の商の長さと Frobenius 極限

@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.ParameterKoszulGrowth
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.VariableRegular
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # 対角線の環 `R[[Y]]`
 

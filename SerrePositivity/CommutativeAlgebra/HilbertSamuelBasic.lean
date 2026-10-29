@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.Multiplicity
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import Mathlib.Algebra.Polynomial.Roots
 public import Mathlib.Algebra.Polynomial.Eval.Degree
 public import Mathlib.Analysis.Polynomial.Basic

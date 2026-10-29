@@ -5,7 +5,7 @@ Authors: Nailin Guan
 -/
 module
 public import SerrePositivity.HomologicalAlgebra.RegularQuotientProjectiveDimension
-public import SerrePositivity.CommutativeAlgebra.AssociatedPrimeDepth
+public import SerrePositivity.CommutativeAlgebra.Depth
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
 public import Mathlib.Algebra.Module.SpanRankOperations
 public import Mathlib.RingTheory.LocalRing.MaximalIdeal.Square

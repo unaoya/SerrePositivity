@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RegularPowerDivisibility
+public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRepresentatives
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPInjectivity

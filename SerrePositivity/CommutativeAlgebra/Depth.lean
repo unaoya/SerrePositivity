@@ -1,17 +1,38 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PrimeQuotientRegular
+public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import SerrePositivity.CommutativeAlgebra.AssociatedPrimeQuotient
 public import Mathlib.RingTheory.Depth.Basic
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
 public import Mathlib.RingTheory.Ideal.Quotient.Noetherian
+public import Mathlib.RingTheory.Regular.Category
 
-/-!
-# Depth bounded by the dimension of an associated-prime quotient
+/-! # 深さと随伴素イデアル
 
-Passing along a regular sequence sends an associated prime to a strictly larger
-associated prime of the scalar quotient. Strict inclusion lowers quotient dimension,
-which bounds both the sequence length and the depth of the module.
+## 概要
+
+Noether 局所環 `R` 上の有限生成加群 `M` について：
+- 素イデアル `p < q` なら `dim R/q + 1 ≤ dim R/p`（`ringKrullDim_quotient_succ_le_of_lt`）。
+- `M` の弱正則列の長さは、`M` の任意の随伴素イデアル `p` について `dim R/p` 以下
+  （`length_isWeaklyRegular_le_dim_associatedPrime`）。したがって `depth M ≤ dim R/p`
+  （`depth_le_dim_quotient_of_mem_associatedPrimes`、Matsumura Thm 17.2）。
+- 正則元 `x` で割ると深さは高々一つ下がり（`depth_le_depth_quotSMulTop_add_one`）、
+  弱正則列 `rs` で割ると `depth M ≤ depth M/(rs)M + |rs|`（`depth_le_depth_quotient_add_length`）。
+
+## 方針
+
+正則元で割ると、随伴素イデアルはそれを真に含む商の随伴素イデアルに移る
+（`exists_associatedPrime_quotSMulTop_gt`）ので、商の次元が一つずつ下がる。深さの不等式は
+Mathlib の短完全列の深さの補題（`ModuleCat.depth_min_snd_fst_sub_one_le_trd_right`）による。
+
+## 規約
+
+深さは Mathlib の `IsLocalRing.depth`。商の深さの補題は有限生成性・Noether 性を要求しない。
+
+## 使われ方
+
+正則局所環の非混合性（`Unmixedness`）と、正則性の判定（`RegularLocalCriterion`）。
+Mathlib への提出候補（mathlib-upstream の G9）。
 -/
 
 @[expose] public section
@@ -21,6 +42,8 @@ universe u
 namespace SerrePositivity
 
 open IsLocalRing RingTheory.Sequence
+
+section AssociatedPrime
 
 /-- Strict inclusion of prime ideals decreases quotient dimension by at least one. -/
 theorem ringKrullDim_quotient_succ_le_of_lt
@@ -80,15 +103,6 @@ theorem length_isWeaklyRegular_le_dim_associatedPrime
   intro N _ _ _ q hq x hx hreg
   exact exists_associatedPrime_quotSMulTop_gt hq hx hreg
 
-/-- A module admitting an associated prime is nonzero. -/
-theorem nontrivial_of_mem_associatedPrimes
-    {R M : Type u} [CommRing R] [AddCommGroup M] [Module R M]
-    {p : Ideal R} (hp : p ∈ associatedPrimes R M) : Nontrivial M := by
-  rcases subsingleton_or_nontrivial M with h | h
-  · let : Subsingleton M := h
-    exact False.elim (not_isAssociatedPrime_of_subsingleton hp)
-  · exact h
-
 /-- Depth is at most the dimension of any associated-prime quotient. The
 associated-prime hypothesis itself ensures that the module is nonzero. -/
 theorem depth_le_dim_quotient_of_mem_associatedPrimes
@@ -97,7 +111,10 @@ theorem depth_le_dim_quotient_of_mem_associatedPrimes
     {p : Ideal R} (hp : p ∈ associatedPrimes R M) :
     (IsLocalRing.depth M : WithBot ℕ∞) ≤ ringKrullDim (R ⧸ p) := by
   let : p.IsPrime := hp.isPrime
-  let : Nontrivial M := nontrivial_of_mem_associatedPrimes hp
+  let : Nontrivial M := by
+    rcases subsingleton_or_nontrivial M with h | h
+    · exact False.elim (not_isAssociatedPrime_of_subsingleton hp)
+    · exact h
   have hdnonbot : ringKrullDim (R ⧸ p) ≠ ⊥ := by
     intro h
     have hzero := ringKrullDim_nonneg_of_nontrivial (R := R ⧸ p)
@@ -111,5 +128,54 @@ theorem depth_le_dim_quotient_of_mem_associatedPrimes
   have hlen := length_isWeaklyRegular_le_dim_associatedPrime rs hrs.1 hmem hp
   rw [← hd] at hlen
   exact_mod_cast hlen
+
+end AssociatedPrime
+
+section Quotient
+
+open CategoryTheory
+
+variable {R : Type u} [CommRing R] [IsLocalRing R]
+
+/-- 正則元による商では深さは高々一つしか下がらない。零加群・無限深さも含む。 -/
+theorem depth_le_depth_quotSMulTop_add_one
+    (M : Type u) [AddCommGroup M] [Module R M] (x : R) (hx : IsSMulRegular M x) :
+    IsLocalRing.depth (ModuleCat.of R M) ≤
+      IsLocalRing.depth (ModuleCat.of R (QuotSMulTop x M)) + 1 := by
+  let N := ModuleCat.of R (Shrink.{u} (R ⧸ maximalIdeal R))
+  have h := ModuleCat.depth_min_snd_fst_sub_one_le_trd_right N
+    ((ModuleCat.of R M).smulShortComplex x) hx.smulShortComplex_shortExact
+  change IsLocalRing.depth (ModuleCat.of R M) ⊓
+      (IsLocalRing.depth (ModuleCat.of R M) - 1) ≤
+    IsLocalRing.depth (ModuleCat.of R (QuotSMulTop x M)) at h
+  rw [inf_of_le_right tsub_le_self] at h
+  exact tsub_le_iff_right.mp h
+
+/-- 弱正則列による商の深さと列の長さの和は、元の加群の深さ以上である。
+有限生成性・Noether 性を要求しない。 -/
+theorem depth_le_depth_quotient_add_length
+    (M : Type u) [AddCommGroup M] [Module R M]
+    (rs : List R) (hrs : IsWeaklyRegular M rs) :
+    IsLocalRing.depth (ModuleCat.of R M) ≤
+      IsLocalRing.depth (ModuleCat.of R
+        (M ⧸ (Ideal.ofList rs • ⊤ : Submodule R M))) + rs.length := by
+  induction rs generalizing M with
+  | nil =>
+      rw [Ideal.ofList_nil, Submodule.bot_smul, List.length_nil, Nat.cast_zero, add_zero]
+      exact (IsLocalRing.depth_eq_of_linearEquiv
+        (Submodule.quotEquivOfEqBot (⊥ : Submodule R M) rfl)).symm.le
+  | cons x rs ih =>
+      obtain ⟨hx, htail⟩ := (isWeaklyRegular_cons_iff M x rs).mp hrs
+      have hstep := depth_le_depth_quotSMulTop_add_one M x hx
+      have hnext : IsLocalRing.depth (ModuleCat.of R (QuotSMulTop x M)) + 1 ≤
+          (IsLocalRing.depth (ModuleCat.of R
+            (QuotSMulTop x M ⧸ (Ideal.ofList rs • ⊤ : Submodule R (QuotSMulTop x M)))) +
+            rs.length) + 1 := add_le_add (ih (QuotSMulTop x M) htail) le_rfl
+      have h := hstep.trans hnext
+      rw [← IsLocalRing.depth_eq_of_linearEquiv
+        (Submodule.quotOfListConsSMulTopEquivQuotSMulTopInner M x rs)] at h
+      simpa only [List.length_cons, Nat.cast_add, Nat.cast_one, add_assoc] using h
+
+end Quotient
 
 end SerrePositivity

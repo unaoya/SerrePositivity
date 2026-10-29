@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # 正則局所環上の有限自由分解
 

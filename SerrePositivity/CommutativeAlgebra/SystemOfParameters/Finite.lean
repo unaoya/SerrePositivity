@@ -1,21 +1,43 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Multiplicity
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
 public import SerrePositivity.CommutativeAlgebra.IntegralDimension
 public import Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Basic
 
-/-! # 有限局所拡大と商環へのパラメータの移送
+/-! # 有限な拡大によるパラメータ系の移り方
 
-局所環上の有限代数へパラメータ系を移し、商環上の有限代数の係数環を
-より小さいイデアルによる商に取り替える。正則性や長さ代数は使わない。
+## 概要
+
+局所環の有限な拡大 `A → D` で、`m_A` の像の根基は `m_D`（`radical_map_eq_maximalIdeal_of_finite`）。
+したがって、次元が等しければ `A` のパラメータ系の像は `D` のパラメータ系
+（`IsSystemOfParameters.map_finite`）。素イデアル `P` による商で、像の根基が極大イデアルなら
+パラメータ系（`isSystemOfParameters_quotient_of_radical`）。パラメータ系の像は環準同型の行き先で
+極大イデアルの元の根基に入る（`IsSystemOfParameters.map_mem_radical` など）。
+
+## 方針
+
+有限な拡大の閉ファイバー `D/m_A D` は Artin 環なので、その極大イデアルは冪零。
+
+## 規約
+
+`exists_finite_quotientAlgebra` はパラメータ系と独立な代数構造の補題で、利用者のためにここに置く。
+
+## 使われ方
+
+論文 Lemma 2.2 と §5 のパラメータの選択、CLMST の段の局所性と長さ、Cohen–Macaulay の長さ
+（`LengthAlgebra/CohenMacaulay`）、局所コホモロジーの零化（`HomologicalAlgebra`）。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
-universe u
+universe u v w
+
+open IsLocalRing PrimeSpectrum
 
 namespace SerrePositivity
+
+section Finite
 
 open IsLocalRing
 
@@ -78,5 +100,44 @@ theorem exists_finite_quotientAlgebra
   let : IsScalarTower R (R ⧸ I) T := IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
   let : Module.Finite R T := Module.Finite.trans (R ⧸ Q) T
   exact ⟨inferInstance, inferInstance, Module.Finite.of_restrictScalars_finite R _ _⟩
+
+end Finite
+
+section RadicalImage
+
+variable {D : Type u} {C : Type v} [CommRing D] [CommRing C] [IsLocalRing D]
+
+/-- A maximal-ideal element maps into the radical of every mapped parameter ideal. -/
+lemma IsSystemOfParameters.map_mem_radical {r : ℕ} {y : Fin r → D}
+    (hy : IsSystemOfParameters D y) (φ : D →+* C) {a : D}
+    (ha : a ∈ IsLocalRing.maximalIdeal D) :
+    φ a ∈ (Ideal.span (Set.range (φ ∘ y))).radical := by
+  rw [← hy.2] at ha
+  have h := Ideal.map_radical_le φ
+    (Ideal.mem_map_of_mem φ ha)
+  rw [Ideal.map_span, ← Set.range_comp] at h
+  exact h
+
+/-- The mapped coordinates of another parameter system have the required support. -/
+lemma IsSystemOfParameters.map_coordinates_mem_radical {e r : ℕ} {z : Fin e → D}
+    {y : Fin r → D} (hz : IsSystemOfParameters D z) (hy : IsSystemOfParameters D y)
+    (φ : D →+* C) (j : Fin e) :
+    φ (z j) ∈ (Ideal.span (Set.range (φ ∘ y))).radical := by
+  apply hy.map_mem_radical φ
+  rw [← hz.2]
+  exact Ideal.le_radical (Ideal.subset_span (Set.mem_range_self j))
+
+/-- Finite injective local extensions supply the support condition for any parameter system. -/
+lemma IsSystemOfParameters.finite_map_coordinates_mem_radical
+    {D E C : Type u} [CommRing D] [CommRing E] [CommRing C]
+    [IsLocalRing D] [IsLocalRing E] [Algebra D E] [Module.Finite D E]
+    (hinj : Function.Injective (algebraMap D E))
+    {e r : ℕ} {z : Fin e → D} {y : Fin r → E}
+    (hz : IsSystemOfParameters D z) (hy : IsSystemOfParameters E y)
+    (φ : E →+* C) (j : Fin e) :
+    φ (algebraMap D E (z j)) ∈ (Ideal.span (Set.range (φ ∘ y))).radical :=
+  (hz.map_finite E hinj).map_coordinates_mem_radical hy φ j
+
+end RadicalImage
 
 end SerrePositivity

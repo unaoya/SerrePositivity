@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.Regular.RegularSequence
@@ -12,19 +12,26 @@ public import SerrePositivity.CommutativeAlgebra.Koszul
 public import Mathlib.Basic.Real.Basic
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 
-/-!
-# 正則局所環への一般定理の適用
+/-! # 正則局所環の Koszul Euler 標数
 
-正則パラメータの正則性 `isWeaklyRegular_of_span_eq_maximalIdeal` のみを
-`CommutativeAlgebra/RegularParameters.lean` で証明済み定理として公開する。
+## 概要
 
-- `isDomain_of_isRegularLocalRing`：正則生成列を持つ Noether 局所環の一般論から整域性を導く。
-- `koszulEulerChar_eq_finrank`：Koszul 分解と有限自由分解の Euler–Poincaré 公式から
-  Koszul Euler 標数が階数と等しいことを導く。
+正則局所環 `A` の正則パラメータ系 `z` と有限 `A` 代数 `T` について `χ^A(z; T) = rank_A T`
+（`koszulEulerChar_eq_finrank`）。
 
-有界有限自由分解の存在 `regularResolution` も正則生成列から証明済み。
-正則パラメータの正則性も証明済みなので、このファイルの二つの結論は
-未証明入力を使わずに導かれる。
+## 方針
+
+Koszul 分解（`z` は正則列）で `χ^A(T, A/(z))` に移し、`T` の有限自由分解の Euler–Poincaré 公式と、
+`A/(z)` が剰余体で長さ 1 であることを使う。
+
+## 規約
+
+正則局所環の基本（整域性・正則系）は `RegularLocalRing/Basic`。この定理の置き場所は B 群の整理で
+`Koszul/RegularEuler` へ移す予定。
+
+## 使われ方
+
+論文 Lemma 3.5、Theorem 4.7、§5 の長さ代数の正値性、重複度の公式。
 -/
 
 @[expose] public section
@@ -35,14 +42,6 @@ open IsLocalRing
 
 namespace SerrePositivity
 
-/-- 正則局所環は整域である。極大イデアルの正則生成列を選び、
-Noether 局所環に関する一般定理 `isDomain_of_regular_generators` を適用する。
-正則パラメータの正則性も含めて証明済み。 -/
-theorem isDomain_of_isRegularLocalRing (A : Type u) [CommRing A] [IsRegularLocalRing A] :
-    IsDomain A := by
-  obtain ⟨rs, hreg, hgen, _⟩ := exists_regular_generators A
-  exact isDomain_of_regular_generators rs hreg hgen
-
 /-- **Koszul Euler 標数 = 階数**：正則局所環 `A` の正則パラメータ系 `z` と有限 `A` 代数 `T` に対し、
 `χ^A(z; T) = rank_A T`。まず Koszul 分解から `χ^A(T, A/(z))` に移し、`T` の有限自由分解の
 Euler–Poincaré 公式と、分解の階数の交代和を使う。`A/(z)` は剰余体なので長さは `1`。
@@ -51,7 +50,6 @@ theorem koszulEulerChar_eq_finrank (A T : Type u) [CommRing A] [IsRegularLocalRi
     [Algebra A T] [Module.Finite A T] {e : ℕ} (z : Fin e → A)
     (hz : Ideal.span (Set.range z) = maximalIdeal A) (he : ringKrullDim A = e) :
     koszulEulerChar A T z = Module.finrank A T := by
-  let : IsDomain A := isDomain_of_isRegularLocalRing A
   have hK := isKoszulResolution_of_isWeaklyRegular z
     (isWeaklyRegular_of_span_eq_maximalIdeal A z hz he)
   have := isSimpleModule_quotient_span_of_eq hz

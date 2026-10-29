@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.CommutativeAlgebra.Unmixedness
 public import Mathlib.RingTheory.KrullDimension.Regular
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
@@ -8,8 +9,7 @@ public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
 public import Mathlib.RingTheory.Regular.IsSMulRegular
 public import Mathlib.Data.Set.List
 
-/-!
-# 素イデアル回避によるパラメータの選択（論文 §5.2 の (5.4)）
+/-! # 素イデアル回避によるパラメータの選択（論文 §5.2 の (5.4)）
 
 ## 概要
 
@@ -21,56 +21,32 @@ public import Mathlib.Data.Set.List
 
 `x_1, …, x_i` まで選んだとき、次の二種類の素イデアルを避けて `x_{i+1} ∈ Q` をとる。
 
-1. `R/(x_1, …, x_i)` の随伴素イデアル `p`：非混合性（`Inputs/Unmixedness`）により
+1. `R/(x_1, …, x_i)` の随伴素イデアル `p`：非混合性（`Unmixedness`）により
    `dim R/p = d − i > l = dim R/Q` なので `Q ⊄ p`。避ければ `x_{i+1}` は非零因子。
 2. `P + (x_1, …, x_i)` の極小素イデアル `p`：`Q ⊆ p` なら `P + Q ⊆ p` で `p = m_R`、すると
    `R/(P + (x))` の素イデアルは `m_R` だけで次元 `0` だが、実際の次元は `h − i > 0`。
    避ければ次元がちょうど `1` 下がる（Mathlib の `supportDim_quotSMulTop_succ_eq_...`）。
 
 有限個の素イデアルに含まれない `Q` の元は素イデアル回避（`Ideal.subset_union_prime`）で存在する。
+
+## 規約
+
+非混合性の入力は `Unmixedness` の証明済みの定理で、未証明の入力は使わない。
+
+## 使われ方
+
+論文 §5 のパラメータの選択（`Paper/Section5/ParameterChoice`）。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
-universe u
+universe u v w
 
-open IsLocalRing RingTheory.Sequence PrimeSpectrum
+open IsLocalRing PrimeSpectrum RingTheory.Sequence
 
 namespace SerrePositivity
 
-/-- 局所環の商 `R/J` の次元が `0` なら `√J = m`。 -/
-lemma radical_eq_maximalIdeal_of_ringKrullDim_quotient {R : Type u} [CommRing R] [IsLocalRing R]
-    {J : Ideal R} (hJ : ringKrullDim (R ⧸ J) = 0) : J.radical = maximalIdeal R := by
-  have hJtop : J ≠ ⊤ := by
-    rintro rfl
-    have : Subsingleton (R ⧸ (⊤ : Ideal R)) := Ideal.Quotient.subsingleton_iff.mpr rfl
-    rw [ringKrullDim_eq_bot_of_subsingleton] at hJ
-    exact WithBot.bot_ne_zero hJ
-  refine le_antisymm ((Ideal.IsPrime.radical_le_iff (maximalIdeal.isMaximal R).isPrime).mpr
-    (le_maximalIdeal hJtop)) ?_
-  rw [Ideal.radical_eq_sInf]
-  refine le_sInf fun p ⟨hJp, hp⟩ ↦ ?_
-  -- `p` は `zeroLocus J` の点で、`zeroLocus J` の次元は `0`
-  rw [ringKrullDim_quotient] at hJ
-  have hmax := Order.krullDim_nonpos_iff_forall_isMax.mp hJ.le
-    ⟨⟨p, hp⟩, by simpa [mem_zeroLocus] using hJp⟩
-  have hm : (⟨⟨maximalIdeal R, inferInstance⟩, by
-      simpa [mem_zeroLocus] using le_maximalIdeal hJtop⟩ : zeroLocus (R := R) J) ≥
-      ⟨⟨p, hp⟩, by simpa [mem_zeroLocus] using hJp⟩ :=
-    show p ≤ maximalIdeal R from le_maximalIdeal hp.ne_top
-  exact hmax hm
-
-/-- `QuotSMulTop y (R/I)` の台は `R/(I + (y))` の台。 -/
-lemma supportDim_quotSMulTop_quotient {R : Type u} [CommRing R] (I : Ideal R) (y : R) :
-    Module.supportDim R (QuotSMulTop y (R ⧸ I)) =
-      ringKrullDim (R ⧸ (I ⊔ Ideal.span {y})) := by
-  rw [← Module.supportDim_quotient_eq_ringKrullDim]
-  have : Module.support R (QuotSMulTop y (R ⧸ I)) =
-      Module.support R (R ⧸ (I ⊔ Ideal.span {y})) := by
-    rw [Module.support_quotSMulTop, Module.support_eq_zeroLocus, Module.support_eq_zeroLocus,
-      Ideal.annihilator_quotient, Ideal.annihilator_quotient, ← zeroLocus_span {y},
-      zeroLocus_sup]
-  rw [Module.supportDim, Module.supportDim, this]
+section Avoidance
 
 section regular
 
@@ -202,7 +178,11 @@ theorem exists_regular_parameters_in (P Q : Ideal R) [Q.IsPrime] {h l d : ℕ}
   have hspan : Ideal.span (Set.range rs.get) = Ideal.ofList rs := by
     rw [Ideal.ofList, Set.range_list_get]
   rw [hspan]
-  apply radical_eq_maximalIdeal_of_ringKrullDim_quotient
+  refine (radical_eq_maximalIdeal_iff_ringKrullDim_quotient_le_zero ?_).mpr (le_of_eq ?_)
+  · intro htop
+    have : Subsingleton (R ⧸ (P ⊔ Ideal.ofList rs)) := Ideal.Quotient.subsingleton_iff.mpr htop
+    rw [ringKrullDim_eq_bot_of_subsingleton, WithBot.bot_add] at hdim
+    exact WithBot.bot_ne_coe hdim
   -- `D + n = n` から `D = 0`
   set D := ringKrullDim (R ⧸ (P ⊔ Ideal.ofList rs))
   have hne : D ≠ ⊥ := by
@@ -224,5 +204,7 @@ theorem exists_regular_parameters_in (P Q : Ideal R) [Q.IsPrime] {h l d : ℕ}
   rfl
 
 end regular
+
+end Avoidance
 
 end SerrePositivity

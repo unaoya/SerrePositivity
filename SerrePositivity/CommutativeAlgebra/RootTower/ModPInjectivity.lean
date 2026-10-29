@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPFrobenius
-public import SerrePositivity.CommutativeAlgebra.RegularLocalQuotient
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.RingTheory.Ideal.GoingUp
 
@@ -72,7 +71,7 @@ theorem stageRootQuotient_isDomain_of_parameters [IsLocalRing A] [IsNoetherianRi
       (FaithfulSMul.algebraMap_injective A _)).trans hdim
   have hgen := span_stageX_eq_maximalIdeal A t p htmem ht n
   let : IsRegularLocalRing (TowerStage A t p n ⧸ Ideal.span {stageX A t p n 0}) :=
-    (RegularLocalQuotient.isRegularLocalRing_quotient_head_and_dim
+    (isRegularLocalRing_quotient_head_and_dim
       (stageX A t p n) hgen hdimn).1
   obtain ⟨rs, hreg, hspan, _⟩ := exists_regular_generators
     (TowerStage A t p n ⧸ Ideal.span {stageX A t p n 0})

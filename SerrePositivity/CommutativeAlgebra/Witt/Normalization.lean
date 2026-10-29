@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PrescribedParameter
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
 public import SerrePositivity.CommutativeAlgebra.Witt.CohenRing
@@ -50,7 +50,7 @@ theorem exists_mixedCharacteristic_systemOfParameters
     ∃ z : Fin h → D, z ⟨0, hpos⟩ = (p : D) ∧
       (∀ i, z i ∈ maximalIdeal D) ∧ IsSystemOfParameters D z := by
   obtain ⟨r, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hpos)
-  apply exists_systemOfParameters_with_first_nonZeroDivisor D (p : D)
+  apply exists_isSystemOfParameters_head_eq D (p : D)
   · exact mem_nonZeroDivisors_iff_ne_zero.mpr (Nat.cast_ne_zero.mpr hp.out.ne_zero)
   · rw [← residue_eq_zero_iff]
     simp only [map_natCast, CharP.cast_eq_zero]

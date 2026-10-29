@@ -11,7 +11,7 @@ public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PerfectNilpotentLifting
-public import SerrePositivity.CommutativeAlgebra.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequencePowers
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
 public import Mathlib.RingTheory.KrullDimension.Field
@@ -141,7 +141,7 @@ lemma exists_length_quotient_X_pow_sup_le (hh : 0 < h) (c : R') (hc : c ≠ 0) :
   have hdimE : dimToNat (ringKrullDim E) ≤ h - 1 := by
     have h1 := ringKrullDim_quotient_succ_le_of_nonZeroDivisor (mem_nonZeroDivisors_of_ne_zero hc)
     rw [ringKrullDim_mvPowerSeries_field k h] at h1
-    have h2 := PrimaryParameterExistence.natCast_dimToNat E
+    have h2 := natCast_dimToNat_ringKrullDim E
     rw [← h2] at h1
     have h3 : ((dimToNat (ringKrullDim E) + 1 : ℕ) : WithBot ℕ∞) ≤ (h : WithBot ℕ∞) := by
       exact_mod_cast h1

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.Data.List.Nodup
 
 /-!
@@ -93,6 +94,7 @@ theorem monicRelation_fin_isWeaklyRegular (f : σ → Polynomial A)
     monicRelation_list_isWeaklyRegular f hf (List.ofFn s)
       (List.nodup_ofFn_ofInjective hs)
 
+
 /-- 概要：異なる有限個のモニック関係のKoszul複体は、実際の通常商の分解。
 方針：先行添字の関係商で残りのモニック関係の正則性を用いる。
 規約：係数環の非零性や多項式の正次数は不要。
@@ -104,27 +106,6 @@ theorem monicRelation_fin_isKoszulResolution (f : σ → Polynomial A)
   SerrePositivity.isKoszulResolution_of_isWeaklyRegular _
     (monicRelation_fin_isWeaklyRegular f hf s hs)
 
-
-/-- 概要：弱正則列の全項の符号を変えても弱正則。
-方針：各先行生成イデアルが変わらず、符号のスカラー作用が単射であることを使う。
-規約：任意可換環上の有限列を扱う。
-使われ方：BS Rem 7.15（著者版 p.62）の最初の δ 関係の符号を合わせる。 -/
-theorem monicRelation_neg_list_regular {R : Type w} [CommRing R] (l : List R)
-    (h : RingTheory.Sequence.IsWeaklyRegular R l) :
-    RingTheory.Sequence.IsWeaklyRegular R (l.map fun x => -x) := by
-  have hI (t : List R) : Ideal.ofList (t.map fun x => -x) = Ideal.ofList t := by
-    induction t with
-    | nil => rfl
-    | cons x t ih => simp only [List.map_cons, Ideal.ofList_cons, ih, Ideal.span_singleton_neg]
-  constructor
-  intro i hi
-  have hi' : i < l.length := by simpa only [List.length_map] using hi
-  have hr := h.regular_mod_prev i hi'
-  rw [← List.map_take, hI, List.getElem_map]
-  intro x y hxy
-  apply hr
-  exact neg_injective (by simpa only [neg_smul] using hxy)
-
 /-- 概要：負のモニック関係の異なる有限族も弱正則列。
 方針：モニック族の有限弱正則性に一括符号変更を適用する。
 規約：正次数を要求しない。
@@ -134,6 +115,6 @@ theorem monicRelation_neg_fin_isWeaklyRegular (f : σ → Polynomial A)
     RingTheory.Sequence.IsWeaklyRegular (MvPolynomial σ A)
       (List.ofFn fun i => -monicRelation (f (s i)) (s i)) := by
   simpa only [List.map_ofFn, Function.comp_def] using
-    monicRelation_neg_list_regular _ (monicRelation_fin_isWeaklyRegular f hf s hs)
+    SerrePositivity.isWeaklyRegular_map_neg _ (monicRelation_fin_isWeaklyRegular f hf s hs)
 
 end SerrePositivity.BhattScholze.Andre

@@ -15,12 +15,12 @@
 | G（G1〜G7） | 冪級数・導分・完備微分・p 基底の持ち上げ・Cohen–Gabber | 完了（bfec81e21 ほか、G7 は 612eae3e3） |
 | A（A1〜A6） | adic 完備化 | 完了（f00bad23f・9c41f5f43、abd87dba6・1ed27fe56・cdbefbde9） |
 | F（F1〜F4） | 係数体・剰余体拡大・Witt | 完了（9bce1e872・7df4d71bd、audit_f5 は 93d84541e） |
-| C1 | 正則列と深さ | 実装済み・未コミット（RegularSequence・Depth・Unmixedness・MaximalRegularSequence、候補 G9） |
-| C2 | パラメータ系 | 実装済み・未コミット（SystemOfParameters/{Basic,Existence,Generators,Finite,Avoidance}、候補 G10） |
-| C3 | 正則局所環 | 案は承認済み・実装は保留（§3） |
+| C1 | 正則列と深さ | 完了（RegularSequence・Depth・Unmixedness・MaximalRegularSequence、候補 G9） |
+| C2 | パラメータ系 | 完了（SystemOfParameters/{Basic,Existence,Generators,Finite,Avoidance}、候補 G10） |
+| C3 | 正則局所環 | 完了（RegularLocalRing/、HenselianFinite、候補 G11。RegularBaseChange の 2 補題は CLMST の証明が使うので RegularSequence へ移して保持） |
 | B1・B2・D・E・H・X | 残り | 計画（§4〜§9） |
 
-C1・C2 は作業ツリーにあり、新しいファイルと直接の利用先のビルドは通っている。全依存ビルドと監査は C3 と合わせて一回で行う。
+C1〜C3 は一回の全依存ビルド（388 モジュール）と監査を通してコミットした（2026-10-30）。
 
 ## 2. 作業の決まり
 
@@ -91,6 +91,17 @@ C1・C2 は作業ツリーにあり、新しいファイルと直接の利用先
 - 提出候補：PolynomialGrowth、`{m // m.degree = n} ≃ Sym σ n`、`MvPolynomial.homogeneousSubmodule` の基底と次元、同次部分加群・商への分解の降下、Hilbert–Serre、Samuel 関数と次元定理（Atiyah–Macdonald 11.14。`stableFiltration` に揃えてから）、正則元の逆像に対する Artin–Rees。
 - リスク：Basic と Dimension を一つにすると SystemOfParameters と循環する。Graded/Subquotient が HilbertSerre の重い import を持たないようにする。KST/SchemeLemmas/Blowup が GradedSubquotient を使う（`reesGrade` などは KST に同名の別宣言があるので名前空間を明示）。
 
+- 決定（2026-10-30、ユーザー）：(1) 後退差分を Mathlib の `fwdDiff` に置き換える（B2 の KoszulAdicEuler も合わせて書き換える）。
+  (2) `adicSubmodule` を `(I.stableFiltration ⊤).N n` に揃える移行を B1 の中で行う（B2 の Koszul 重複度の証明鎖への波及も合わせて直す）。
+  (3) `multiplicity_pow`・`directSumReesGradedEquiv` 系・`natDegree_poly_eq_of_radical_eq` は残す。
+  (4) 射影と可換の補題の一本化は、B2 の GradedKoszulHomology の 2 加群版も含めて B1 の作業で同時に行う。
+  B1 は C1〜C3 の全依存ビルドとコミットの後に着手する。
+- (2) の影響の下調べ（2026-10-30）：`adicSubmodule`（AssociatedGraded で `I ^ n • ⊤` と定義）の利用は 6 ファイル 33 箇所だけ
+  （AssociatedGraded 13、ReesModule 8、ReesKoszulEvaluation 5（B2）、GradedReesSelf 3、GradedPresentationMap 2、
+  RegularLocalRing/Graded 2（C3））。BS/CLMST の利用はない。Mathlib の `(I.stableFiltration ⊤).N n` は定義上 `I ^ n • ⊤` なので、
+  `adicSubmodule` をその abbrev として定義し直せば既存の証明（`change … I ^ (n + 1) • ⊤` など）はほぼそのまま通る見込み。
+  ReesModule は既に `stableFiltration` を使っている。そのうえで Artin–Rees などを Mathlib の `Ideal.Filtration` API に寄せる。
+
 ## 5. B2 Koszul・有限長・重複度・台の次元
 
 規模：46 ファイル、約 6700 行。BS が KoszulResolution を 5 本で import、CLMST は 6 本。
@@ -123,6 +134,15 @@ C1・C2 は作業ツリーにあり、新しいファイルと直接の利用先
 - 変えない名前：`koszulComplex`、`koszulHomologySelf`、`scalarConeFunctor`、`koszulFunctor`、`koszulComplexOn`、`IsKoszulResolution`、`isKoszulResolution_of_isWeaklyRegular`、`torAlgKoszulIso`・`torAlgKoszulEquiv`、`isFiniteLength_of_le_radical_annihilator`、`length_eq_of_common_residueField`、`length_restrictScalars_eq`、`isLocalHom_of_residue_surjective`、`ringKrullDim_eq_of_integral_of_injective`、`length_quotient_sup_span_pow_le`、`KoszulMultiplicityProof.multiplicity_eq_chiOrd_koszul`、`isFiniteLength_koszulHomology_of_isSystemOfParameters`、`HilbertSamuel.multiplicity_eq_rank_of_regular_base`、`HilbertSamuel.multiplicity_parameter_last_pow`。
 - 提出候補：Koszul 複体（Mathlib にない。外積代数による定義との設計の調整が要る）、整拡大で Krull 次元が不変（IntegralDimension、すぐ出せる）、台の補題（`support_tensorProduct`、`module_support_subset_union_of_exact` は `Module.support_of_exact` の一般化）、有限長の補題、正則列の冪、`DirectSum.IsInternal` の補題 2 つ、`maximalIdeal_pow_le_map_of_finite`。
 - リスク：FiniteLength は importer 27 本のハブなので、分割したら全 importer を一度に書き換える。MultiplicityFormulas の閉包は 106 モジュールで、CLMST/ParameterLength の閉包は 1413 モジュール。軽い利用者に MultiplicityFormulas を import させない。
+
+- 決定（2026-10-30、ユーザー）：B1 と B2 は一続きの作業にし、全依存ビルドも一回にまとめる。
+  (1) Koszul.lean と KoszulResolution.lean はパスも中身もそのままにする。B1・B2 で足す補題（冪の分解など）は KoszulResolution を
+  import する別のファイル（例 `Koszul/Powers`）に置く。`Koszul/` への移動は、後で BhattScholze 側を再ビルドする別の作業に合わせて行う。
+  （計算：B1・B2 だけで BS/CLMST の 192 モジュール（うち BS 72）が再ビルドになる。Koszul・KoszulResolution を動かすか中身を変えると、
+  BS の Delta・Andre を中心に 45 モジュール増え、BS は 72 → 117 になる。）
+  (2) `koszulEulerChar_eq_finrank` は `Koszul/RegularEuler` を新設して移す。
+  (3) 他の群へ回すファイルは、B2 の時点で場所だけ移す（統合は受け入れ先の群のときに）。
+  (4) `reesPolynomialModule` の二重の一本化は B1 と同時に行う。
 
 ## 6. E 局所化
 
@@ -233,6 +253,16 @@ C1・C2 は作業ツリーにあり、新しいファイルと直接の利用先
 - 変えない名前：RootTower の名前空間 `SerrePositivity.Section2`（CLMST で `CompletedTower` 754 箇所、`TowerStage` 181 箇所）。
 - 提出候補：LocalResidueLinearMap（剰余体でのテンソルが全単射なら全単射）、整域を仮定しない主極大イデアルの分解、`AdjoinRoot.map_mk`・`map_surjective`、FiniteSpectrumPartition・ReducedPrincipalVanishing、SubmoduleExact、RootTower/MonomialBasis、CoefficientTensorAutomorphism、ConductorQuotient。
 - リスク：RootTower/Stage・Completion・CompletionFlat は CLMST の大部分の上流にあり、触ると CLMST 全体が再ビルド。ファイル統合だけで CLMST 約 12 本の import 行が変わる。
+
+- 決定（2026-10-30、ユーザー、X の軽い小群）：
+  (1) CubicCyclotomic の局所拡大を「monic な f と剰余体での互いに素な分解 f̄ = g·h（g 既約）による局所拡大」の一般論に書き直す。
+  三次円分に固有の部分（3 が単元）だけを特殊に残す。IntersectionMultiplicity・PerfectComplex の約 30 参照への波及も合わせて直す。
+  (2) `cubicCyclotomicPolynomial` を `Polynomial.cyclotomic 3 R` の abbrev にする。
+  (3) Support の統合先は新しい `Support/Closed`（ClosedSupportGeometry の名前は残さない。InfinityCategories・KTheory の import 行を
+  書き換え、その範囲の再ビルドを伴う）。
+  (4) CommutativeAlgebra/Almost と LengthAlgebra/Almost* を一つの群として整理する（置き場所はその作業で決める）。
+  (5) BhattScholze が import する DerivedSingleTrianglePullback・MappedPrincipalQuotient・CoefficientTensorAutomorphism の移動は、
+  BhattScholze 側を再ビルドする別の作業に回す（Koszul・KoszulResolution の移動と同じ扱い）。
 
 ## 10. 順序の案
 

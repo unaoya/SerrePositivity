@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyScalarBaseChange
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyTorAnnihilator
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientIdeal
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-! # Low local cohomology annihilation at the actual maximal support -/
 @[expose] public noncomputable section

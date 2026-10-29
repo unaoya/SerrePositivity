@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
-public import SerrePositivity.CommutativeAlgebra.ParameterAvoidance
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Avoidance
 
 /-! # 本文の有限拡大上で使うパラメータの選択
 

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.SamuelGrowthComparison
-public import SerrePositivity.CommutativeAlgebra.PrimaryParameterExistence
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import SerrePositivity.CommutativeAlgebra.SamuelSurjection
-public import SerrePositivity.CommutativeAlgebra.PrimeQuotientRegular
+public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import SerrePositivity.CommutativeAlgebra.SamuelRegularGrowth
 
 /-! # The degree of the Samuel polynomial and Krull dimension
@@ -35,7 +35,7 @@ theorem natDegree_poly_le_of_generators (I : Ideal R)
 /-- Parameters chosen inside `I` bound its Samuel degree by the ring dimension. -/
 theorem natDegree_poly_le_dim (I : Ideal R) (hI : I.radical = maximalIdeal R) :
     (poly R I R).natDegree ≤ dimToNat (ringKrullDim R) := by
-  obtain ⟨z, hz, hrad⟩ := PrimaryParameterExistence.exists_parameters_in_primary R I hI
+  obtain ⟨z, hz, hrad⟩ := exists_radical_span_eq_maximalIdeal_of_radical_eq R I hI
   let J := Ideal.span (Set.range z)
   have hJI : J ≤ I := Ideal.span_le.mpr (by rintro _ ⟨i, rfl⟩; exact hz i)
   exact (natDegree_poly_antitone_of_le R J I hrad hI hJI).trans
@@ -83,7 +83,7 @@ theorem dim_le_natDegree_poly (I : Ideal R) (hI : I.radical = maximalIdeal R) :
     refine iSup_le fun c => ?_
     exact_mod_cast (primeChain_length_le_natDegree R I hI c).trans
       (natDegree_poly_primeQuotient_le R I hI c.head)
-  rw [← PrimaryParameterExistence.natCast_dimToNat R] at hdim
+  rw [← natCast_dimToNat_ringKrullDim R] at hdim
   exact_mod_cast hdim
 
 /-- **Hilbert–Samuel dimension theorem**: the Samuel degree of the ring is its Krull

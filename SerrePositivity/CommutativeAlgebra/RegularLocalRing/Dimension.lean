@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.CommutativeAlgebra.MaximalRegularSequence
+public import SerrePositivity.CommutativeAlgebra.Unmixedness
 
 /-! # The prime dimension formula for regular local rings -/
 @[expose] public section
@@ -16,11 +17,11 @@ lemma regular_primeHeight_add_quotientDimension (p : PrimeSpectrum R) :
   have : q.IsPrime := hq.isPrime
   let Q : PrimeSpectrum R := ⟨q, inferInstance⟩
   have := finiteRingKrullDim_primeQuotient Q
-  have hdim := RegularSequenceUnmixedness.dimension_eq rs hrs.toIsWeaklyRegular hq
+  have hdim := ringKrullDim_quotient_add_length_of_mem_associatedPrimes rs hrs.toIsWeaklyRegular hq
   have hdimNat : dimToNat (ringKrullDim (R ⧸ q)) + rs.length = dimToNat (ringKrullDim R) := by
     rw [← natCast_dimToNat_ringKrullDim (R ⧸ q), ← natCast_dimToNat_ringKrullDim R] at hdim
     exact_mod_cast hdim
-  have hupper := primeHeight_toNat_add_quotientDimToNat_le Q
+  have hupper := height_toNat_add_dimToNat_quotient_le Q
   have hrNat : rs.length ≤ p.asIdeal.height.toNat := by
     rw [← natCast_primeHeight_toNat p] at hr
     exact_mod_cast hr
@@ -39,7 +40,7 @@ lemma regular_primeHeight_add_quotientDimension (p : PrimeSpectrum R) :
   have hpLen : p.asIdeal.height = (rs.length : ℕ∞) := by
     rw [← natCast_primeHeight_toNat p, hpqeq, hqNat]
   rw [hpLen, hpqeq, add_comm]
-  exact RegularSequenceUnmixedness.dimension_eq rs hrs.toIsWeaklyRegular hq
+  exact ringKrullDim_quotient_add_length_of_mem_associatedPrimes rs hrs.toIsWeaklyRegular hq
 
 /-- Natural-number form of the prime dimension formula. -/
 lemma regular_primeHeight_toNat_add_quotientDimToNat (p : PrimeSpectrum R) :
@@ -65,7 +66,7 @@ omit [IsRegularLocalRing R] in
 lemma primeQuotientDimension_le_supportDim {M : Type u} [AddCommGroup M] [Module R M]
     {p : PrimeSpectrum R} (hp : p ∈ Module.support R M) :
     ringKrullDim (R ⧸ p.asIdeal) ≤ Module.supportDim R M := by
-  rw [primeQuotientDimension_eq_coheight, Order.coheight_eq_krullDim_Ici]
+  rw [ringKrullDim_quotient_eq_coheight, Order.coheight_eq_krullDim_Ici]
   exact Order.krullDim_le_of_strictMono
     (fun q : Set.Ici p => (⟨q.val, Module.mem_support_mono q.property hp⟩ : Module.support R M))
     (fun _ _ h => h)
@@ -81,7 +82,7 @@ lemma supportDim_le_of_primeQuotientDimension_le {M : Type u} [AddCommGroup M] [
     (fun i => (c i).val) (fun _ _ h => c.strictMono h)
   have hl : (c.length : WithBot ℕ∞) ≤ (Order.coheight c'.head : WithBot ℕ∞) :=
     WithBot.coe_le_coe.mpr (Order.length_le_coheight_head (p := c'))
-  exact hl.trans ((primeQuotientDimension_eq_coheight c'.head).symm.le.trans
+  exact hl.trans ((ringKrullDim_quotient_eq_coheight c'.head).symm.le.trans
     (hD c.head.val c.head.property))
 
 /-- A nonempty support contains a prime of minimum height, whose quotient realizes its dimension. -/
@@ -119,21 +120,4 @@ lemma exists_minimumHeight_support_prime (M : Type u) [AddCommGroup M] [Module R
     ← natCast_dimToNat_ringKrullDim (R ⧸ p.asIdeal)]
   exact_mod_cast hd
 
-/-- The support codimension and support dimension add to the ring dimension. -/
-lemma regular_supportCodimension_add_supportDim (M : Type u) [AddCommGroup M] [Module R M]
-    [Nontrivial M] :
-    (supportCodimension R M : WithBot ℕ∞) + Module.supportDim R M = ringKrullDim R := by
-  obtain ⟨p, _, hcod, hdim⟩ := exists_minimumHeight_support_prime (R := R) M
-  rw [hcod, hdim]
-  exact regular_primeHeight_add_quotientDimension p
-
-/-- Natural-number codimension formula for nonzero modules over regular local rings. -/
-lemma regular_supportCodimension_toNat (M : Type u) [AddCommGroup M] [Module R M]
-    [Nontrivial M] :
-    (supportCodimension R M).toNat =
-      dimToNat (ringKrullDim R) - dimToNat (Module.supportDim R M) := by
-  obtain ⟨p, _, hcod, hdim⟩ := exists_minimumHeight_support_prime (R := R) M
-  rw [hcod, hdim]
-  have h := regular_primeHeight_toNat_add_quotientDimToNat p
-  omega
 end SerrePositivity

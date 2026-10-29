@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.TorBaseChange
 public import SerrePositivity.IntersectionMultiplicity.Basic
-public import SerrePositivity.CommutativeAlgebra.FlatLocalDimension
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.FlatBaseChange
 
 /-! # 平坦局所拡大による交点重複度の保存
 

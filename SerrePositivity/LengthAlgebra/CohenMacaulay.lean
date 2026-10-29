@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.Flat
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-! # λ-CM 性と有限な正則部分環への制限
 

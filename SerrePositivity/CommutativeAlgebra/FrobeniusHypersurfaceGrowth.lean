@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.QuotientPowerLength
-public import SerrePositivity.CommutativeAlgebra.PrescribedParameter
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import Mathlib.Analysis.SpecificLimits.Basic
 
 /-! # 非零因子による商のFrobenius長さの低次元上界

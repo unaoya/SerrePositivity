@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RegularLocalization
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Localization
 public import Mathlib.RingTheory.Localization.LocalizationLocalization
 
 /-! # Comparing a prime localization of a localization with a base prime localization -/

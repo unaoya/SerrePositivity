@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.QuotientBaseChange
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import Mathlib.RingTheory.LocalRing.Length
 public import Mathlib.RingTheory.Flat.Stability
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
@@ -69,17 +70,6 @@ theorem samuelFunction_baseChange_of_map_maximalIdeal (n : ℕ) :
     (Algebra.TensorProduct.quotIdealMapEquivTensorQuot B
       ((maximalIdeal A) ^ n)).toLinearEquiv.length_eq]
   exact length_baseChange_of_map_maximalIdeal A B hm _
-
-/-- 有限次元の環では自然数化した次元から元の Krull 次元が復元できる。 -/
-theorem natCast_dimToNat_ringKrullDim (S : Type*) [CommRing S] [FiniteRingKrullDim S] :
-    (dimToNat (ringKrullDim S) : WithBot ℕ∞) = ringKrullDim S := by
-  obtain ⟨d, hd⟩ := WithBot.ne_bot_iff_exists.mp (ringKrullDim_ne_bot (R := S))
-  have hdt : d ≠ ⊤ := by
-    intro h
-    apply ringKrullDim_ne_top (R := S)
-    rw [← hd, h]
-    rfl
-  rw [← hd, dimToNat, WithBot.unbotD_coe, ← WithBot.coe_natCast, ENat.natCast_toNat hdt]
 
 include hm in
 /-- 極大イデアルを保つ Noether 平坦局所拡大は Krull 次元を保つ。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Inputs.CohenNormalization
-public import SerrePositivity.CommutativeAlgebra.FiniteParameters
-public import SerrePositivity.CommutativeAlgebra.RegularNormality
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Normality
 public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect

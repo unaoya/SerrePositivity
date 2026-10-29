@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.PerfectBaseChange
 public import SerrePositivity.CommutativeAlgebra.TraceConductor
-public import SerrePositivity.CommutativeAlgebra.RegularNormality
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Normality
 
 /-!
 # 共通分母の Frobenius 根への移行
