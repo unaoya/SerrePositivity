@@ -1,5 +1,5 @@
 -- lake build の後、lake env lean scripts/audit_f4.lean で実行する。
-import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+import SerrePositivity.CommutativeAlgebra.Witt.Lift
 import Mathlib.Util.AssertNoSorry
 
 open SerrePositivity

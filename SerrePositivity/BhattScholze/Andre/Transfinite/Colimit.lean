@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.DirectLimitFlat
+public import SerrePositivity.CommutativeAlgebra.DirectLimit
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.RingTheory.Ideal.Maps
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv

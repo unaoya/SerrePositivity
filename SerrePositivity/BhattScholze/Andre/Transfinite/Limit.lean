@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
-public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
 public import Mathlib.Algebra.Polynomial.Lifts

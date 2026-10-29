@@ -1,7 +1,7 @@
 -- lake build の後、lake env lean scripts/audit_clmst.lean で実行する。
 import SerrePositivity.CommutativeAlgebra.GenericEtale
 import SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius
-import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
+import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 import SerrePositivity.BhattScholze.Andre.AndreFlatness
 import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteGeneration
@@ -95,9 +95,7 @@ import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
 import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
-import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
-import SerrePositivity.CommutativeAlgebra.WittLiftConstruction
-import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+import SerrePositivity.CommutativeAlgebra.Witt.Lift
 import SerrePositivity.CommutativeAlgebra.PerfectionIdealCorrection
 import SerrePositivity.CommutativeAlgebra.PerfectAnnihilator
 import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel

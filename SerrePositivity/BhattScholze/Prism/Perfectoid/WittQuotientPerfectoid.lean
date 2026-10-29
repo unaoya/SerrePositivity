@@ -9,7 +9,7 @@ public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
 public import Mathlib.RingTheory.AdicCompletion.Topology
-public import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 
 /-!
 # 完備な distinguished Witt 商は perfectoid（BS 著者版 Thm 3.10 の計算）

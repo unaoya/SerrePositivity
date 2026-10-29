@@ -1,8 +1,7 @@
 module
 
 public import Mathlib.RingTheory.WittVector.Truncated
-public import SerrePositivity.CommutativeAlgebra.WittCoefficientOne
-public import SerrePositivity.CommutativeAlgebra.WittAdditionCarry
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import Mathlib.Tactic.FinCases
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionResidue
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
-public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalDP

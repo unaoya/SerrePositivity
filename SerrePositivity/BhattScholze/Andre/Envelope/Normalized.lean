@@ -6,7 +6,7 @@ public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
 public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import Mathlib.Algebra.Colimit.DirectLimit
 public import Mathlib.Algebra.Colimit.Module
-public import SerrePositivity.CommutativeAlgebra.ModuleDirectLimitFlat
+public import SerrePositivity.CommutativeAlgebra.DirectLimit
 public import Mathlib.LinearAlgebra.TensorProduct.DirectLimit
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 

@@ -6,7 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.BhattScholze.Delta.Division.Source
-public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism

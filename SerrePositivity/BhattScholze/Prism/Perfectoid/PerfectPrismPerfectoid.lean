@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
-public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
 public import Mathlib.RingTheory.PrincipalIdealDomain

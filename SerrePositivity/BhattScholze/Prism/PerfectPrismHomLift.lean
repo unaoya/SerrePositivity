@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaAdicCompletion
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientPerfectoid
-public import SerrePositivity.CommutativeAlgebra.WittLiftUniqueness
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Bounded.Tilt

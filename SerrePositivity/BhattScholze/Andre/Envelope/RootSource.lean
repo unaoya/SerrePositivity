@@ -10,7 +10,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import Mathlib.LinearAlgebra.Finsupp.VectorSpace
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
-public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete

@@ -12,7 +12,7 @@ public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import SerrePositivity.BhattScholze.Andre.Envelope.PDivision
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
-public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue

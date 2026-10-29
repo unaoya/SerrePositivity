@@ -9,7 +9,7 @@ public import Mathlib.RingTheory.AdicCompletion.Basic
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.RingTheory.Ideal.Quotient.PowTransition
 public import Mathlib.RingTheory.WittVector.Complete
-public import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectCoefficientTensor
-public import SerrePositivity.CommutativeAlgebra.StrictPRecovery
+public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 

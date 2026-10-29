@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.FamilyEvaluation
 public import SerrePositivity.HomologicalAlgebra.TorExactColimits
 public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
-public import SerrePositivity.CommutativeAlgebra.WittGhostInjective
+public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
