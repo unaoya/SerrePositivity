@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.FieldTheory.PAdjoinDerivation
 public import SerrePositivity.FieldTheory.PBasisDifferentials
-public import SerrePositivity.FieldTheory.PBasisComplement
+public import SerrePositivity.FieldTheory.PBasisCofiniteField
 public import SerrePositivity.FieldTheory.PIndependentSet
 public import Mathlib.FieldTheory.IntermediateField.Algebraic
 public import Mathlib.Data.Nat.Find
@@ -144,25 +144,31 @@ theorem kaehlerDifferential_over_pPowers_eq_zero_iff (x : K) :
     exact one_ne_zero he
   · exact derivation_eq_zero_on_pPowerSubfield (KaehlerDifferential.D (pPowerSubfield K p) K) x
 
-/-- p乗でない元を検出する共有限な中間体を、実際のp-basisの補中間体として選べる。
+/-- p乗でない元を検出する共有限な中間体を、実際のp-basisの一方向を除いた中間係数体として選べる。
 指定済みの部分体族からの選択は、この存在定理とは区別する。 -/
 theorem exists_finite_intermediateField_detecting_not_mem_pPowerSubfield (x : K)
     (hx : x ∉ pPowerSubfield K p) :
     ∃ E : IntermediateField (pPowerSubfield K p) K,
       Module.Finite E K ∧ KaehlerDifferential.D E K x ≠ 0 := by
+  classical
   obtain ⟨s, hxs, hb⟩ := exists_pBasis_containing_of_not_mem_pPowerSubfield x hx
   let i : s := ⟨x, hxs⟩
-  let E := pBasisComplementField (p := p) (Subtype.val : s → K) i
+  let E := pBasisCofiniteField (p := p) (Subtype.val : s → K) {i}
   let a : E := ⟨x ^ p, E.algebraMap_mem
     ⟨x ^ p, (mem_pPowerSubfield K p _).mpr ⟨x, rfl⟩⟩⟩
-  have hs : Algebra.adjoin E {x} = ⊤ := hb.adjoin_complement_eq_top i
-  let B := PowerBasis.ofAdjoinEqTop (isIntegral_of_prime_pow_eq x a rfl) hs
-  obtain ⟨δ, hδ, _⟩ := hb.exists_complementDerivation i
-  refine ⟨E, B.finite, ?_⟩
-  intro h
+  have hxE : x ∉ Set.range (algebraMap E K) := by
+    rintro ⟨y, hy⟩
+    apply hb.notMem_cofiniteField (Finset.mem_singleton_self i)
+    change x ∈ E
+    rw [← hy]
+    exact y.property
+  have hs : Algebra.adjoin E {x} = ⊤ := hb.adjoin_cofiniteField_singleton_eq_top i
+  let δ := primeRootDerivation x a rfl hxE hs
+  refine ⟨E, hb.finite_cofiniteField {i}, fun h ↦ ?_⟩
   have he := congrArg δ.liftKaehlerDifferential h
-  rw [Derivation.liftKaehlerDifferential_comp_D, map_zero] at he
-  exact one_ne_zero (hδ.symm.trans he)
+  rw [Derivation.liftKaehlerDifferential_comp_D, map_zero,
+    primeRootDerivation_self x a rfl hxE hs] at he
+  exact one_ne_zero he
 
 end Absolute
 

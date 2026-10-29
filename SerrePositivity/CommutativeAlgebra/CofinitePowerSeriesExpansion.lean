@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeriesExpansionBasis
-public import SerrePositivity.FieldTheory.PBasisCofiniteBasis
+public import SerrePositivity.FieldTheory.PBasisCofiniteField
 
 /-! # 中間係数体とパラメータのp乗に沿う冪級数の有限拡大
 
