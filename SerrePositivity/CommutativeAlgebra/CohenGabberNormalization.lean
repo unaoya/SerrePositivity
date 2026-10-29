@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CohenGabberDifferentialParameters
-public import SerrePositivity.CommutativeAlgebra.CompletedRelativeDifferential
+public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
 public import SerrePositivity.CommutativeAlgebra.FractionDifferential
 
 /-! # Cohen–Gabberの同じ冪級数評価の分離性

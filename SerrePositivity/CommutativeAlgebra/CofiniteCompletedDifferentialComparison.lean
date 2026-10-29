@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficientNormalization
-public import SerrePositivity.CommutativeAlgebra.PowerSeriesPowersFractionDifferential
+public import SerrePositivity.CommutativeAlgebra.FractionDifferential
+public import SerrePositivity.CommutativeAlgebra.PowerSeries.Differential
 public import SerrePositivity.CommutativeAlgebra.AdicCompletionChangeIdeal
 
 /-! # 中間係数体上の完備微分の実際の比較

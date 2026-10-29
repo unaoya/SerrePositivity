@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CompletedDifferentialGeneration
+public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
 public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficientDifferential
 public import Mathlib.RingTheory.Localization.FractionRing
 

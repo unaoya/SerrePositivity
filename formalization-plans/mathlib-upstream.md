@@ -29,6 +29,8 @@
 | U16 | `MvPowerSeries.ringHom_ext_of_isHausdorff`・`adicPowerSeriesEval`（CommutativeAlgebra/PowerSeries/Eval） | `J` 進分離な環への準同型は定数と変数で決まる。`J` 進完備な環へ `J` 内の元で評価できる | Mathlib/RingTheory/MvPowerSeries/Evaluation.lean の代数的な版 | 8fe7ce4：位相的な `eval₂_unique`・`eval₂Hom` はある。代数的な完備性だけを仮定する形はない | 検討中 |
 | U17 | `isWeaklyRegular_quotient_map_C_ofFn_X`・`isWeaklyRegular_mvPowerSeries_map_C`（CommutativeAlgebra/PowerSeries/VariableRegular） | `R[[X]]/P R[[X]]`（`P` 有限生成）で変数は弱正則列。`R` の弱正則列は定数として `R[[X]]` でも弱正則列 | Mathlib/RingTheory/Regular/ | 8fe7ce4：ない | 検討中 |
 | U18 | `powerSeriesCoefficientBasis`・`powerSeriesMonomialBasis`・`powerSeriesExpansionBasis`（CommutativeAlgebra/PowerSeries/Expansion） | `K/E` の有限基底 `B` から `K[[X]]` の `E[[X]]` 上の基底 `C (B a)`。`X ↦ X^q` で `K[[X]]` 自身の上の基底 `X^r`（`r_i < q`）。合成で `E[[X]] → K[[T]]` の基底 | Mathlib/RingTheory/MvPowerSeries/Expand.lean | 8fe7ce4：`MvPowerSeries.expand` と係数の計算はあるが、基底はない | 検討中 |
+| U19 | `powerSeries_piTopology_isAdic_variables`（PowerSeries/Basic）・`existsUnique_continuous_powerSeriesDerivation`・`continuousPowerSeriesDerivationEquiv`・`continuous_derivation_adic`（CommutativeAlgebra/PowerSeries/ContinuousDerivation） | 離散係数・有限変数で積位相は `(X)` 進位相。T2 な位相加群への連続導分は変数の像で決まり存在し、連続導分の加群は `M^σ`。任意の導分はイデアル進位相で連続 | Mathlib/RingTheory/MvPowerSeries/PiTopology.lean・Derivative.lean | 8fe7ce4（2026-10-28）：積位相と多項式の稠密性、形式偏微分はある。これらの形はない。Cohen–Gabber の証明では使わない（ユーザーの判断で保持、2026-10-29） | 検討中 |
+| U20 | `powerSeriesCompletedDifferentialEquiv`・`powerSeriesCompletedDifferentialBasis`（CommutativeAlgebra/PowerSeries/Differential） | `k[[X_1..X_n]]` の完備 Kähler 微分 `(Ω_{A/k})^∧_{(X)}` は `dX_i` を基底とする有限自由加群 | 完備 Kähler 微分の定義とともに Mathlib/RingTheory/Kaehler/ へ | 8fe7ce4：完備 Kähler 微分の概念がない。Cohen–Gabber では係数拡大版を使う | 検討中（定義の設計が前提） |
 
 ## 2. 調査中
 （なし）

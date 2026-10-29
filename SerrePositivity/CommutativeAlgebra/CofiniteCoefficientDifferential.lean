@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.FieldTheory.PBasisCofiniteField
-public import SerrePositivity.CommutativeAlgebra.PrimaryCompletedDifferential
+public import SerrePositivity.CommutativeAlgebra.CompletedDifferential
 
 /-! # 中間係数体上の完備微分の有限生成性
 
