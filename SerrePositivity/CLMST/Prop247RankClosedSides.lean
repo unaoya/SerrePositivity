@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247RankCompleteness
 public import SerrePositivity.CLMST.Prop247RankAssembly
-public import SerrePositivity.CommutativeAlgebra.DerivedCompletePrincipalIdeal
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalIdeal
 
 /-! # Prop 2.4.7：元の rank 四角形のイデアルと閉側の導来完備性
 

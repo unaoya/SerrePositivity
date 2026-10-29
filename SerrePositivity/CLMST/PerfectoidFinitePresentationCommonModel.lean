@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.FinitePresentationCommonLocalizationBounds
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
-public import SerrePositivity.CommutativeAlgebra.DerivedCompletePrincipalIdeal
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalIdeal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
 
 /-! # Derived complete common models for the actual KL comparisons

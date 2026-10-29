@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.CommutativeAlgebra.PerfectoidFontainePrincipal
-public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsion
+public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
