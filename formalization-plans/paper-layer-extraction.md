@@ -6,6 +6,7 @@ Mathlib にまだない一般論が多く含まれている。それらを再利
 着手するのは第 I 段の後、または論文の層を触る必要が生じたとき。
 規約：数学的内容・公開名・型は保存する。Mathlib へ提出するときは `SerrePositivity` 名前空間を外して改名する。
 使われ方：候補の詳細は [全体調査 §6・§7](archive/repository-survey-2026-10-28.md) を参照。本ファイルは候補と前提条件の一覧だけを持つ。
+補題単位の小さな候補（LinearAlgebra などの一般補題）は [mathlib-upstream.md](mathlib-upstream.md) に置く。
 
 ## 1. 候補（費用対効果の順）
 

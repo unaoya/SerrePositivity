@@ -37,7 +37,10 @@ theorem IsPBasis.linearIndependent_cofiniteMonomials (hb : IsPBasis K p b) (e : 
       (pMonomial (p := p) (fun i : e ↦ b i)) := by
   classical
   let B := hb.cofiniteCoefficientBasis e
-  apply linearIndependent_of_basis_smul B
+  apply linearIndependent_of_smul_of_span_eq_top B.span_eq
+  rw [← linearIndependent_equiv' (.prodComm ..)
+    (g := fun z : PExponent p e × PExponent p {i : ι // i ∉ e} ↦
+      B z.2 • pMonomial (fun i : e ↦ b i) z.1) rfl]
   have h := hb.1.comp (PExponent.combinePartition (e : Set ι))
     (PExponent.combinePartition_injective (p := p) (e : Set ι))
   have he : (fun z : PExponent p e × PExponent p {i : ι // i ∉ e} ↦
