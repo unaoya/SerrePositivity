@@ -258,3 +258,10 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 
 **時間について**
 9. 直列の試験が 7 時間かかっている。試行のビルドは影響するモジュールに限り（`lake build <module>`）、verify の全体実行は最後の 1 回だけにする。
+
+### 10.8 追記（10-29、import だけを変える項目の書式）
+
+1. §10.7-4 の訂正：`FirstTriangleIndex` は 15 本に入らないので、その prune は W1 には不要。移動も prune も W2c（R52）に回す。W1 の JSON に入れる prune は、15 本の中にあるもの（`RoofPinchedSlicePostcomp` など）だけ。
+2. **書式に action `reimport` を加える**：モジュールは移動せず、その import の一覧を `imports` に置き換える項目。`dest` は `module` と同じ、`moved`・`keep` は空。`downstream_imports` も使える。`validate_targets.py` は模擬のグラフでその import を使う。`targets/README.md` と試験を直す。
+3. `reimport` は次にも使う：R39 の `Stable.lean` から `Derived.CoherentBar.Compact.All` を外す修正、R59 のルート・`F2.lean` の入口の変更（import の追加・削除）。これで「手作業」だった項目の多くが JSON で表せ、§10.2 の規則 9 の `--remove-edges` の模擬は不要になる（作ってあれば残してよい）。
+4. 入口ファイル（`Stable.lean`・`F2.lean`・ルート）への `reimport` は、保存検査の対象にしない（宣言を持たないため）。ビルドと層検査だけで確かめる。
