@@ -14,9 +14,10 @@
 | U1 | `basis_mem_span_image_of_smul_mem`（LinearAlgebra/BasisSaturation） | 基底の部分集合の span は左非零因子による除算で飽和する。係数は非可換の半環でよく、`s ≠ univ` なら条件は必要でもある | `Module.Basis.mem_span_image_of_smul_mem`、LinearAlgebra/Basis/Basic.lean の `mem_span_image` の直後 | 8fe7ce4（2026-10-28）：なし。対になる事実 `LinearIndependent.eq_zero_of_smul_mem_span`、補部分加群 `LinearIndependent.isCompl_span_image` はある | 検討中（756143e99 で最小仮定に整理済み） |
 | U2 | `basisOfRingEquiv`・`basisOfRingEquiv_apply`（LinearAlgebra/BasisRingEquiv） | 係数と元の両立する環同型の組に沿って基底を移す | `Module.Basis.mapRingEquiv`、LinearAlgebra/Basis/Basic.lean | 10-07 版：`Basis.map` と `Basis.mapCoeffs` の合成で書ける。単独の宣言はない | 優先度低（既存 API の合成） |
 | U3 | `linearIndependent_of_smul_of_span_eq_top`・`basis_linearIndependent_smul_iff`（LinearAlgebra/BasisScalarIndependence） | `span R (range b) = ⊤` のとき、`b k • v i` の `R` 上独立から `v` の `S` 上独立。`b` が基底なら同値 | `LinearIndependent.of_smul_of_span_eq_top`・`Module.Basis.linearIndependent_smul_iff`、RingTheory/AlgebraTower.lean の `linearIndependent_smul` の直後（添字順は同補題に一致） | 8fe7ce4（2026-10-28）：順向きの `linearIndependent_smul` だけがある | 検討中（一般化と同値版を整備済み） |
+| U4 | `exists_add_notMem_of_span_eq_top`・`exists_linearIndependent_add_of_span_eq_top`（LinearAlgebra/IndependentPerturbation） | 生成集合 `W` の元か 0 を足して真部分加群を避ける（任意の環上の加群）。有限個の族は、個数が階数以下なら `W ∪ {0}` の元を足して独立にできる（除法環、無限次元・有限体を含む） | `Submodule.exists_add_notMem_of_span_eq_top`・`exists_linearIndependent_add_of_span_eq_top`、LinearAlgebra/Dimension/RankNullity.lean の `exists_linearIndependent_cons_of_lt_rank` の近く | 8fe7ce4（2026-10-28）：なし。足す元に制約のない延長 `exists_linearIndependent_cons_of_lt_rank`、存在 `exists_linearIndependent_of_le_rank`、大きな体での回避 `Submodule.exists_forall_notMem_of_forall_ne_top` はある | 検討中（一般化・改名済み） |
 
 ## 2. 調査中
-- `exists_linearIndependent_perturbation`（LinearAlgebra/IndependentPerturbation）：生成集合の元を足して独立にする。Mathlib にない（10-07 版）。
+（なし）
 
 ## 3. 候補ごとの調査メモ
 

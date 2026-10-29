@@ -835,10 +835,10 @@ variable (h p : ℕ) [Fact p.Prime] (k : Type*) [Field k] [CharP k p] [PerfectFi
 end
 
 -- Gabber の微分経路 G1。有限体・空列を除外しない一般定理。
-#print axioms SerrePositivity.exists_perturbation_notMem_submodule
-assert_no_sorry SerrePositivity.exists_perturbation_notMem_submodule
-#print axioms SerrePositivity.exists_linearIndependent_perturbation
-assert_no_sorry SerrePositivity.exists_linearIndependent_perturbation
+#print axioms SerrePositivity.exists_add_notMem_of_span_eq_top
+assert_no_sorry SerrePositivity.exists_add_notMem_of_span_eq_top
+#print axioms SerrePositivity.exists_linearIndependent_add_of_span_eq_top
+assert_no_sorry SerrePositivity.exists_linearIndependent_add_of_span_eq_top
 #print axioms SerrePositivity.span_derivation_ideal_eq_span_range
 assert_no_sorry SerrePositivity.span_derivation_ideal_eq_span_range
 #print axioms SerrePositivity.span_derivation_ideal_eq_top
@@ -2061,8 +2061,6 @@ assert_no_sorry SerrePositivity.IsPBasis.moduleFinite_baseChange_completedKaehle
 assert_no_sorry SerrePositivity.IsPBasis.span_range_baseChange_completedKaehler_cofiniteField
 
 -- Cohen–Gabber B: 独立係数方向の実際の選択と新しい切断。
-#print axioms SerrePositivity.exists_linearIndependent_derivation_perturbation_fintype
-assert_no_sorry SerrePositivity.exists_linearIndependent_derivation_perturbation_fintype
 #print axioms SerrePositivity.cofiniteCoefficientBaseChangeCompletedDerivation
 assert_no_sorry SerrePositivity.cofiniteCoefficientBaseChangeCompletedDerivation
 #print axioms SerrePositivity.cofiniteCoefficientBaseChangeCompletedDerivation_apply

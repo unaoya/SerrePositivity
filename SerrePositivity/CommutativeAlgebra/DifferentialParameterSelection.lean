@@ -54,7 +54,7 @@ theorem exists_basis_derivation_maximalIdeal
     ∃ (f : Fin h → S) (B : Module.Basis (Fin h) L V),
       (∀ i, f i ∈ maximalIdeal S) ∧ ∀ i, B i = δ (f i) := by
   obtain ⟨f, hf, hi⟩ := exists_linearIndependent_derivation_perturbation
-    δ (maximalIdeal S) hm hδ (fun _ : Fin h ↦ 0) (by rw [hdim])
+    δ (maximalIdeal S) hm hδ (fun _ : Fin h ↦ 0) (by rw [Fintype.card_fin, hdim])
   have hi' : LinearIndependent L (fun i ↦ δ (f i)) := by
     simpa only [zero_add] using hi
   let B : Module.Basis (Fin h) L V := Module.Basis.mk hi'

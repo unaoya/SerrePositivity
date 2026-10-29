@@ -73,7 +73,7 @@ theorem IsPBasis.exists_independent_coefficient_perturbation
   let : Module.Finite (FractionRing D) V :=
     hb.moduleFinite_baseChange_completedKaehler_cofiniteField e hres
   let δ := baseChangeCompletedKaehlerDerivation (k := E) (FractionRing D) (maximalIdeal D)
-  obtain ⟨μ, hμ, hi⟩ := exists_linearIndependent_derivation_perturbation_fintype
+  obtain ⟨μ, hμ, hi⟩ := exists_linearIndependent_derivation_perturbation
     δ (maximalIdeal D) hm (hb.span_range_baseChange_completedKaehler_cofiniteField e hres)
     (fun i : e ↦ δ (algebraMap K D (b i))) (by
       rw [he e (Finset.Subset.refl e), Fintype.card_coe]

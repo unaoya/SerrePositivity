@@ -4,6 +4,7 @@ public import Mathlib.RingTheory.Derivation.Basic
 public import Mathlib.RingTheory.Localization.FractionRing
 public import Mathlib.RingTheory.Ideal.Basic
 public import SerrePositivity.LinearAlgebra.IndependentPerturbation
+public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 
 /-! # 非零イデアルの微分の分数体上の生成
 
@@ -60,31 +61,9 @@ theorem span_derivation_ideal_eq_top
     Submodule.span L (δ '' (H : Set S)) = ⊤ :=
   (span_derivation_ideal_eq_span_range δ H hH).trans hδ
 
-/-- 指定ベクトルを、非零イデアル内の元の微分で摂動して独立にする。
+/-- 有限個の指定ベクトルを、非零イデアル内の元の微分で摂動して独立にする。
 係数体変更に必要な「元の選択」まで、一般線形代数と Leibniz 則から供給する。 -/
 theorem exists_linearIndependent_derivation_perturbation
-    {R S L V : Type*} [CommRing R] [CommRing S] [IsDomain S] [Field L]
-    [Algebra R S] [Algebra S L] [IsFractionRing S L]
-    [AddCommGroup V] [Module R V] [Module S V] [Module L V]
-    [IsScalarTower S L V] [FiniteDimensional L V]
-    (δ : Derivation R S V) (H : Ideal S) (hH : H ≠ ⊥)
-    (hδ : Submodule.span L (Set.range δ) = ⊤)
-    {n : ℕ} (b : Fin n → V) (hn : n ≤ Module.finrank L V) :
-    ∃ m : Fin n → S, (∀ i, m i ∈ H) ∧
-      LinearIndependent L (fun i ↦ b i + δ (m i)) := by
-  classical
-  obtain ⟨w, hw, hind⟩ := exists_linearIndependent_perturbation
-    (span_derivation_ideal_eq_top δ H hH hδ) b hn
-  have hex (i : Fin n) : ∃ m ∈ H, δ m = w i := by
-    rcases hw i with hzero | himage
-    · exact ⟨0, H.zero_mem, by simp [← hzero]⟩
-    · exact himage
-  choose m hm hdm using hex
-  refine ⟨m, hm, ?_⟩
-  simpa only [hdm] using hind
-
-/-- 有限添字の指定ベクトルを非零イデアル内の微分で独立に摂動する。 -/
-theorem exists_linearIndependent_derivation_perturbation_fintype
     {R S L V ι : Type*} [CommRing R] [CommRing S] [IsDomain S] [Field L]
     [Algebra R S] [Algebra S L] [IsFractionRing S L]
     [AddCommGroup V] [Module R V] [Module S V] [Module L V]
@@ -95,12 +74,16 @@ theorem exists_linearIndependent_derivation_perturbation_fintype
     ∃ m : ι → S, (∀ i, m i ∈ H) ∧
       LinearIndependent L (fun i ↦ b i + δ (m i)) := by
   classical
-  let e := Fintype.equivFin ι
-  obtain ⟨m, hm, hind⟩ := exists_linearIndependent_derivation_perturbation
-    δ H hH hδ (b ∘ e.symm) hn
-  refine ⟨m ∘ e, fun i ↦ hm (e i), ?_⟩
-  have hi := hind.comp e e.injective
-  change LinearIndependent L (fun i ↦ b (e.symm (e i)) + δ (m (e i))) at hi
-  simpa only [Function.comp_def, Equiv.symm_apply_apply] using hi
+  obtain ⟨w, hw, hind⟩ := exists_linearIndependent_add_of_span_eq_top
+    (span_derivation_ideal_eq_top δ H hH hδ) b (by
+      rw [Nat.card_eq_fintype_card, ← Module.finrank_eq_rank]
+      exact_mod_cast hn)
+  have hex (i : ι) : ∃ m ∈ H, δ m = w i := by
+    rcases hw i with hzero | himage
+    · exact ⟨0, H.zero_mem, by simp [← hzero]⟩
+    · exact himage
+  choose m hm hdm using hex
+  refine ⟨m, hm, ?_⟩
+  simpa only [hdm] using hind
 
 end SerrePositivity
