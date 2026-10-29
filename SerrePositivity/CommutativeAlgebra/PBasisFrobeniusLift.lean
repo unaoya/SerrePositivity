@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.FieldTheory.FrobeniusMonomialBasis
+public import SerrePositivity.FieldTheory.FrobeniusPowerSubfield
 public import SerrePositivity.CommutativeAlgebra.FrobeniusMonomialCarry
 public import Mathlib.LinearAlgebra.Basis.Bilinear
 public import Mathlib.LinearAlgebra.BilinearMap

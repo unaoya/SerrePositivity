@@ -208,6 +208,21 @@ noncomputable def radixEquiv : PExponent (p * q) ι ≃ PExponent p ι × PExpon
     · change (d.1.val i * q + d.2.val i) % q = d.2.val i
       simp [Nat.add_mod, Nat.mod_eq_of_lt (d.2.property i)]
 
+/-- 上界の等式による添字の付け替え。有限台関数そのものは変えない。 -/
+def boundEquiv {r s : ℕ} (h : r = s) : PExponent r ι ≃ PExponent s ι :=
+  Equiv.subtypeEquivProp (by rw [h])
+
+@[simp] theorem boundEquiv_val {r s : ℕ} (h : r = s) (d : PExponent r ι) :
+    (boundEquiv h d).val = d.val := rfl
+
+/-- 上界 1 の指数は零だけ。 -/
+instance : Unique (PExponent 1 ι) where
+  default := 0
+  uniq d := Subtype.ext <| Finsupp.ext fun i ↦ by
+    have := d.property i
+    change d.val i = 0
+    omega
+
 end PExponent
 
 /-- 桁の結合は単項式の積に対応する。標数の仮定は不要。 -/
