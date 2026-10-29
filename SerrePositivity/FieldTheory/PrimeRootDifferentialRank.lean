@@ -10,7 +10,7 @@ public import SerrePositivity.CommutativeAlgebra.KaehlerBaseRestriction
 `ker (L ⊗_K Ω_{K/R} → Ω_{L/R})` は `1 ⊗ D a` の張る直線であり、`D a ≠ 0` なら `dim Ω_{L/R} = dim Ω_{K/R}`。
 方針：一元生成の非分離拡大の一般論（`AdjoinSingletonDifferential`）に、最小多項式 `X ^ p - a` の関係式の微分が
 `-(1 ⊗ D a)` であることを代入する。
-使われ方：共有限な部分体族での次数 p の階数安定（`SubfieldFamilyPrimeRootRank`）。
+使われ方：共有限な部分体族での次数 p の階数安定（`SubfieldFamilyDifferentialRank`）。
 -/
 
 @[expose] public noncomputable section

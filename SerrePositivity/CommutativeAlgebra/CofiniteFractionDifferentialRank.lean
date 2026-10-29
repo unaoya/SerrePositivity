@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionDifferential
-public import SerrePositivity.FieldTheory.FiniteExtensionDifferentialRank
+public import SerrePositivity.FieldTheory.SubfieldFamilyDifferentialRank
 
 /-! # 実際の共有限分数体族に対する有限拡大一般での階数安定
 

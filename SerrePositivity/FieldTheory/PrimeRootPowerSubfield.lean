@@ -1,15 +1,103 @@
 module
 
-public import SerrePositivity.FieldTheory.SubfieldPrimeRootIntersection
+public import SerrePositivity.FieldTheory.PAdjoin
+public import SerrePositivity.FieldTheory.SubfieldLinearAlgebra
+public import Mathlib.RingTheory.PowerBasis
+public import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra
 
-/-! # 一つのp乗根を添加した体のp乗部分体
+/-! # p 乗根一つの添加と、p 乗部分体の族の交わり
 
-L=K[x]、x^p=aなら、Lのp乗部分体はK^pにaを添加した体の像。
-部分体族の交わりの計算を拡大後のp乗部分体へ接続する。
+概要：
+- 単純添加と冪の線形包：`a` が `F` 上整で最小多項式の次数が `n` 以下なら、`F(a)` は `1, a, …, a^{n-1}` の
+  `F` 上の線形包（Mathlib の `IsIntegral.mem_span_pow` の中間体版）。p 乗根（`a ^ p ∈ E`）は `n = p` の場合。
+- 交わり：交わりが `K^p` の下向き有向な部分体族 `Eᵢ` について `⋂ Eᵢ(a) = K^p(a)`。
+- p 乗部分体：`L = K(x)`、`x ^ p = a` なら `L^p` は `K^p(a)` の像で、添加の後も `⋂ (Eᵢ · L^p) = L^p`。
+方針：共通の冪 `1, a, …, a^{p-1}` で線形包を書き、`mem_all_subfield_spans_iff` で交わりを計算する。
+使われ方：有限拡大での p 乗部分体の族の交わりの帰納（`PowerSubfieldFamilyIntersection`）。
 -/
 
 @[expose] public noncomputable section
 namespace SerrePositivity
+open Polynomial
+
+section SpanPow
+
+variable {F K : Type*} [Field F] [Field K] [Algebra F K]
+
+/-- 整な元 `a` の最小多項式の次数が `n` 以下なら、`F(a)` は `1, a, …, a^{n-1}` の線形包。 -/
+theorem mem_adjoin_simple_iff_mem_span_pow {a : K} (ha : IsIntegral F a) {n : ℕ}
+    (hn : (minpoly F a).natDegree ≤ n) (z : K) :
+    z ∈ IntermediateField.adjoin F {a} ↔
+      z ∈ Submodule.span F (Set.range fun i : Fin n ↦ a ^ (i : ℕ)) := by
+  constructor
+  · intro hz
+    have hz' : z ∈ Algebra.adjoin F {a} := by
+      rw [← IntermediateField.adjoin_simple_toSubalgebra_of_isAlgebraic ha.isAlgebraic]
+      exact hz
+    rw [Algebra.adjoin_singleton_eq_range_aeval] at hz'
+    obtain ⟨f, rfl⟩ := hz'
+    refine Submodule.span_mono ?_ (ha.mem_span_pow ⟨f, rfl⟩)
+    rintro _ ⟨i, rfl⟩
+    exact ⟨⟨i, i.isLt.trans_le hn⟩, rfl⟩
+  · intro hz
+    induction hz using Submodule.span_induction with
+    | mem x hx =>
+      obtain ⟨i, rfl⟩ := hx
+      exact pow_mem (IntermediateField.mem_adjoin_simple_self F a) (i : ℕ)
+    | zero => exact (IntermediateField.adjoin F {a}).zero_mem
+    | add x y _ _ hx hy => exact (IntermediateField.adjoin F {a}).add_mem hx hy
+    | smul c x _ hx => exact (IntermediateField.adjoin F {a}).smul_mem hx
+
+/-- `a ^ p` が `E` に入れば、`E(a)` は `1, a, …, a^{p-1}` の `E` 上の線形包。 -/
+theorem mem_adjoin_simple_iff_mem_span_pow_of_pow_mem {p : ℕ} [Fact p.Prime]
+    (E : Subfield K) (a : K) (ha : a ^ p ∈ E) (z : K) :
+    z ∈ IntermediateField.adjoin E {a} ↔
+      z ∈ Submodule.span E (Set.range fun i : Fin p ↦ a ^ (i : ℕ)) := by
+  have hint := isIntegral_of_prime_pow_eq (F := E) a (⟨a ^ p, ha⟩ : E) rfl
+  refine mem_adjoin_simple_iff_mem_span_pow hint ?_ z
+  have hne : (X ^ p - C (⟨a ^ p, ha⟩ : E) : E[X]) ≠ 0 :=
+    (monic_X_pow_sub_C _ (Fact.out : p.Prime).ne_zero).ne_zero
+  calc (minpoly E a).natDegree ≤ (X ^ p - C (⟨a ^ p, ha⟩ : E)).natDegree :=
+        natDegree_le_of_dvd (minpoly.dvd E a (by simp [Subfield.algebraMap_ofSubfield])) hne
+    _ = p := natDegree_X_pow_sub_C
+
+end SpanPow
+
+section Intersection
+
+variable {K ι : Type*} [Field K] {p : ℕ} [Fact p.Prime] [CharP K p]
+
+/-- 下向き有向な部分体族への一元添加は交わりと可換。
+有限拡大性も、有限p-rankも要求しない。 -/
+theorem iInf_subfield_adjoin_primeRoot
+    (E : ι → Subfield K)
+    (hdir : Directed (· ≥ ·) E)
+    (hpow : ∀ i, pPowerSubfield K p ≤ E i)
+    (hinf : (⨅ i, E i) = pPowerSubfield K p)
+    (a : K) (ha : a ∉ pPowerSubfield K p) :
+    (⨅ i, (IntermediateField.adjoin (E i) {a}).toSubfield) =
+      (IntermediateField.adjoin (pPowerSubfield K p) {a}).toSubfield := by
+  classical
+  have hap : a ^ p ∈ pPowerSubfield K p := (mem_pPowerSubfield K p _).mpr ⟨a, rfl⟩
+  have hind : ∃ j, LinearIndependent (E j) (fun i : Fin p ↦ a ^ (i : ℕ)) := by
+    have hex : ∃ j, a ∉ E j := by
+      by_contra h
+      apply ha
+      rw [← hinf]
+      exact Subfield.mem_iInf.mpr (by simpa only [not_exists, not_not] using h)
+    obtain ⟨j, hj⟩ := hex
+    exact ⟨j, linearIndependent_pow_of_prime_pow_eq a (⟨a ^ p, hpow j hap⟩ : E j) rfl
+      (by rintro ⟨c, hc⟩; exact hj (hc ▸ c.property))⟩
+  ext z
+  simp only [Subfield.mem_iInf, IntermediateField.mem_toSubfield]
+  simp_rw [mem_adjoin_simple_iff_mem_span_pow_of_pow_mem _ a (hpow _ hap)]
+  rw [mem_all_subfield_spans_iff E hdir _ hind, hinf]
+  exact (mem_adjoin_simple_iff_mem_span_pow_of_pow_mem (pPowerSubfield K p) a hap z).symm
+
+end Intersection
+
+section PowerSubfield
+
 variable {K L ι : Type*} [Field K] [Field L] [Algebra K L]
   {p : ℕ} [Fact p.Prime] [CharP K p] [CharP L p]
 
@@ -85,7 +173,7 @@ theorem subfield_sup_pPower_primeRoot_eq_map_adjoin
 各族は底体内でaを添加してからLへ写すことで与える。 -/
 theorem iInf_subfieldFamily_primeRoot_eq_pPower
     (E : ι → Subfield K)
-    (hdir : ∀ i j, ∃ k, E k ≤ E i ∧ E k ≤ E j)
+    (hdir : Directed (· ≥ ·) E)
     (hpowE : ∀ i, pPowerSubfield K p ≤ E i)
     (hinf : (⨅ i, E i) = pPowerSubfield K p)
     (x : L) (a : K) (hpow : x ^ p = algebraMap K L a)
@@ -108,7 +196,7 @@ theorem iInf_subfieldFamily_primeRoot_eq_pPower
 /-- F_i(L^p)という拡大後の族の交わりは、非自明な次数pの添加ではL^p。 -/
 theorem iInf_subfield_sup_pPower_primeRoot
     (E : ι → Subfield K)
-    (hdir : ∀ i j, ∃ k, E k ≤ E i ∧ E k ≤ E j)
+    (hdir : Directed (· ≥ ·) E)
     (hpowE : ∀ i, pPowerSubfield K p ≤ E i)
     (hinf : (⨅ i, E i) = pPowerSubfield K p)
     (x : L) (a : K) (hpow : x ^ p = algebraMap K L a)
@@ -116,5 +204,7 @@ theorem iInf_subfield_sup_pPower_primeRoot
     (⨅ i, (E i).map (algebraMap K L) ⊔ pPowerSubfield L p) = pPowerSubfield L p := by
   simp_rw [subfield_sup_pPower_primeRoot_eq_map_adjoin _ (hpowE _) x a hpow hs]
   exact iInf_subfieldFamily_primeRoot_eq_pPower E hdir hpowE hinf x a hpow hx hs
+
+end PowerSubfield
 
 end SerrePositivity

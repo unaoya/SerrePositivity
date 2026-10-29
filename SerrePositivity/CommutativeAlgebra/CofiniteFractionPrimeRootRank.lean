@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionDifferential
-public import SerrePositivity.FieldTheory.SubfieldFamilyPrimeRootRank
+public import SerrePositivity.FieldTheory.SubfieldFamilyDifferentialRank
 
 /-! # 実際の共有限分数体族に対する次数pの階数安定
 

@@ -2,11 +2,9 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.CofiniteFractionIntersection
 public import SerrePositivity.FieldTheory.PrimeRootPowerSubfield
-public import SerrePositivity.FieldTheory.SubfieldFiniteExtension
-public import SerrePositivity.FieldTheory.SubfieldFamilyPrimeRootRank
-public import SerrePositivity.FieldTheory.SeparablePowerSubfieldIntersection
-public import SerrePositivity.FieldTheory.SubfieldFamilyTower
-public import SerrePositivity.FieldTheory.FiniteExtensionPowerSubfieldIntersection
+public import SerrePositivity.FieldTheory.SubfieldLinearAlgebra
+public import SerrePositivity.FieldTheory.SubfieldFamilyDifferentialRank
+public import SerrePositivity.FieldTheory.PowerSubfieldFamilyIntersection
 
 /-! # 分数体の拡大後の共有限部分体族
 
