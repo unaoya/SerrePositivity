@@ -202,3 +202,20 @@ MSG
 | 14・16（SpecifiedSimplexEdge・FunctorIsoWhiskerUnit が原因） | 原因のモジュール自身の閉包が Core に収まるなら、追加の move として入れてよい（規則 8 の (a) で \(|S| \le 60\)） |
 
 処置の後に `validate_targets.py` を通し直し、規則 9 の模擬で W1 の終了条件を判定して、改めて §7-1 の報告をする。
+
+### 10.4 追記（10-29、改訂版 §7-1 の途中停止への判断）
+
+1. **所有範囲の追加**：`scripts/refactor/decl_snapshot.lean`・`compare_snapshots.py`・`prune_imports.py` と、それらの試験。この指示書の作業に必要な範囲で直してよい。
+2. **空になる側の保存検査**：`decl_snapshot.lean` は、選択した宣言が 0 件でも例外にせず、空のスナップショット（`count: 0`）を書いて終了コード 0 にする。`compare_snapshots.py` は空のスナップショットを正しく比べる（消えた宣言・増えた宣言として扱う）。
+3. **全部の宣言が移るなら split ではなく move**：`UniverseHomotopy` は 2 宣言とも純粋なので、`Core.UniverseHomotopy` への **move** にする。過大な import は `imports` フィールドで縮める。
+   - `imports` フィールドは move の項目にも認める（移動後のモジュールの import の一覧）。
+   - 証拠は、worktree でその場で `prune_imports.py` を当てる（モジュール名は変えない）→ ビルド → 前後の snapshot の比較 → 復元、の手順で取る。
+4. **roof 系（Stable → Derived の 3 本）は宣言単位で分析する**。上げる案は条件を満たさない（中核の利用元 52〜55 本）ので、(c) 分ける案を調べる。
+   - `decl_snapshot.lean` に、宣言ごとに「使っている定数が属するモジュールの集合」（`uses_modules`）を出力する機能を加える。
+   - 入口側の各ファイル（`Stable.SliceEvaluationNaturality`・`LoopCospanRepresentation`・`TerminalRightFibrationComparison`）について、
+     (i) 禁止側（Derived 以上）の定数を使う宣言の集合 \(D_{\mathrm{forb}}\)、
+     (ii) 中核のモジュールから参照される宣言の集合 \(D_{\mathrm{core}}\)（中核のモジュールの本文で名前を検索する）、
+     を求める。
+   - \(D_{\mathrm{forb}} \cap D_{\mathrm{core}} = \varnothing\) なら、\(D_{\mathrm{forb}}\) を `Derived.<元の名前>Roof` などへ上げる split を JSON に入れる（証拠は 10.1-4 の手順）。
+   - 交わるなら、どの中核の利用元がどの宣言を使い、その宣言が何を経由して Derived に届くかの鎖を報告して止める。
+5. 同じ宣言単位の分析は、R26 の保留（11〜21）のうち (a)(b) がどちらも大きいものにも使ってよい。
