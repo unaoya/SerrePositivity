@@ -219,3 +219,14 @@ MSG
    - \(D_{\mathrm{forb}} \cap D_{\mathrm{core}} = \varnothing\) なら、\(D_{\mathrm{forb}}\) を `Derived.<元の名前>Roof` などへ上げる split を JSON に入れる（証拠は 10.1-4 の手順）。
    - 交わるなら、どの中核の利用元がどの宣言を使い、その宣言が何を経由して Derived に届くかの鎖を報告して止める。
 5. 同じ宣言単位の分析は、R26 の保留（11〜21）のうち (a)(b) がどちらも大きいものにも使ってよい。
+
+### 10.5 追記（10-29、roof 系の鎖への判断）
+
+宣言単位の分析で、`TerminalRightFibrationComparison`・`TerminalComparisonFiberTransfer` の中核から使われる宣言が、Derived の roof の一般論（`roofSliceEvaluationHomotopy_*`・`roofTargetSliceMap_*`）に本当に依存していることが分かった。
+roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であり（Derived の `Roof*`・`Pinched*`・`FunctorSlice*` など）、Verdier 計画 §2 でも Stable/Verdier/Fractions へ移す予定だったものである。そこで、**roof の塊ごと下ろす**方針で調べる。
+
+1. **roof の塊の確定**：3 本の参照先（`SliceEvaluationPinched`・`RightFibrationTerminalRepresentation`・`RoofTargetFunctor`）から始めて、Derived の中の推移閉包をとる。各モジュールを、本文の語彙（`DG`・`dg`・`Cochain`・`Module`・`Complex` など。IF-W0-2 の層検査の `code_contains` の方式）で「dg を含まない」か判定し、含まないものの集合を roof の塊 \(C\) とする。\(|C|\) と、含むと判定されたモジュールの一覧を報告する。**規則 8 の 60 本の上限は、この分析には適用しない**（大きさを測ることが目的）。
+2. **塊から外への漏れ**：\(C\) のモジュールが直接 import する、\(C\) の外の Derived・DG・DGNerve・DoldKanComparison・KST のモジュールを列挙する。それぞれについて、その import が本当に使われているか（`uses_modules` で、そのモジュールの定数を使う宣言があるか）を調べ、「縮められる（使っていない）」「使っている（どの宣言が）」に分ける。縮められるものは、その場で `prune_imports.py` を当てて確かめる（復元する）。
+3. **移し先**：\(C\) 全体の閉包（漏れを縮めた後）が Core・Simplicial に収まれば `Core.Roof.<名前>`、F1・F1B が要るなら `F1B.Roof.<名前>`、Stable が要るなら `Stable.Verdier.Fractions.<名前>`。塊の中で層が分かれるなら、層ごとに分ける。
+4. **判断の材料として報告する**：\(|C|\)、漏れの一覧（縮められる／使っている）、移し先の案、使っている漏れがある場合はその宣言と、それを切るための分割案。この報告の後に Claude が、塊を W1 に入れるか W2c（R52）に回すかを決める。
+5. **他の作業は止めない**：roof 系の 3 辺は「分析中の保留」として w1.json の外に置き、残り（UniverseHomotopy の move、三案の比較、改訂 JSON の検査、手作業込みの W1 判定）を進めて、改訂版 §7-1 の報告をする。報告には roof の分析を別の節として含める。
