@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.CoefficientField
-public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficientRestriction
+public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
 
 /-! # 有限個のp-basis方向を変えた係数写像
 

@@ -44,6 +44,8 @@
   `IntermediateField.LinearDisjoint.linearIndependent_left/right`・`of_basis_left`（線形分離：小さい体上の独立性が大きい体上でも保たれる条件）、
   `LinearIndependent.map_of_isPurelyInseparable_of_isSeparable`（純非分離の塔での独立性の持ち上げ）。
 
+- 2026-10-29（G5 の整理）：中間係数体による正規化の存在（`IsPBasis.exists_injective_finite_cofinite_powerSeries_map`：`D` は `X_i ↦ z_i^p` で `K_e[[X]]` 上有限、次元が合えば単射）を、未使用のため CofiniteCoefficientNormalization ごと削除した。必要なら `exists_finite_powerSeries_map_of_finite_quotient`（FinitePowerSeriesNormalization）と `IsPBasis.moduleFinite_primaryQuotient_cofiniteField`（CofiniteCoefficient）から約 20 行で組み直せる。削除前のファイルは G5 の整理のコミットの親にある。
+
 ## 4. まとまりで提出する候補
 
 | # | 候補 | 内容 | 現状のファイル | 方針・前提 |

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PBasisIndependentCoefficientPerturbation
-public import SerrePositivity.CommutativeAlgebra.FiniteCoefficientCompletedDifferential
+public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
 public import Mathlib.RingTheory.Localization.Module
 
 /-! # Cohen–Gabberの係数体変更による次元減少
@@ -40,8 +40,8 @@ theorem IsPBasis.finrank_completedKaehler_of_independent_coefficient_directions
     (maximalIdeal D) (maximalIdeal.isMaximal D).isPrime.radical
   let g : C →ₗ[D] AdicCompletion (maximalIdeal D) (KaehlerDifferential K D) :=
     (AdicCompletion.map (maximalIdeal D) (KaehlerDifferential.map E K D D)).restrictScalars D
-  have hg : Function.Surjective g := adicCompletion_map_surjective_of_surjective
-    (maximalIdeal D) _ (KaehlerDifferential.map_surjective E K D)
+  have hg : Function.Surjective g :=
+    AdicCompletion.map_surjective (maximalIdeal D) (KaehlerDifferential.map_surjective E K D)
   let f := g.baseChange (FractionRing D)
   have hf : Function.Surjective f := LinearMap.baseChange_surjective (FractionRing D) hg
   have hker : LinearMap.ker f = Submodule.span (FractionRing D) (Set.range (fun i : e ↦

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CofiniteCompletedDifferentialGeneration
-public import SerrePositivity.CommutativeAlgebra.CofiniteNormalizationDifferentialDimension
+public import SerrePositivity.CommutativeAlgebra.CofiniteCoefficient
+public import SerrePositivity.CommutativeAlgebra.CofiniteNormalization
 public import SerrePositivity.CommutativeAlgebra.PBasisCoefficientPerturbation
 public import SerrePositivity.RingTheory.Derivation
 

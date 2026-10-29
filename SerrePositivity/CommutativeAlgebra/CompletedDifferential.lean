@@ -13,6 +13,7 @@ public import Mathlib.RingTheory.AdicCompletion.Noetherian
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import SerrePositivity.CommutativeAlgebra.FiniteNormalizationTools
 public import SerrePositivity.CommutativeAlgebra.AdicCompletenessClosedQuotient
+public import Mathlib.RingTheory.Flat.Equalizer
 
 /-! # 完備 Kähler 微分
 
@@ -280,5 +281,43 @@ theorem range_completedDifferentialBaseChange_eq_ker_of_finiteType_fiber
   exact range_completedDifferentialBaseChange_eq_ker I hI k
 
 end Primary
+
+section Kernel
+
+variable {R M N : Type*} [CommRing R] [AddCommGroup M] [Module R M]
+  [AddCommGroup N] [Module R N]
+
+/-- 完備中項が有限なら、有限族で生成された核も同じ族の完備化の像で生成される。 -/
+theorem ker_adicCompletion_map_eq_span_of_ker_eq_span [IsNoetherianRing R]
+    (I : Ideal R) (hI : I ≤ Ideal.jacobson (⊥ : Ideal R))
+    [Module.Finite R (AdicCompletion I M)]
+    (g : M →ₗ[R] N) (hg : Function.Surjective g)
+    {ι : Type*} (c : ι → M) (hker : LinearMap.ker g = Submodule.span R (Set.range c)) :
+    LinearMap.ker ((AdicCompletion.map I g).restrictScalars R) =
+      Submodule.span R (Set.range (fun i ↦ AdicCompletion.of I M (c i))) := by
+  let : TopologicalSpace (AdicCompletion I M) := I.adicModuleTopology (AdicCompletion I M)
+  let P := Submodule.span R (Set.range (fun i ↦ AdicCompletion.of I M (c i)))
+  let : IsHausdorff I (AdicCompletion I M ⧸ P) := IsHausdorff.of_le_jacobson I _ hI
+  have hc := isClosed_submodule_adic_of_hausdorff_quotient I P
+  have he := closure_ker_image_eq_ker_adicCompletion_map I I.fg_of_isNoetherianRing g hg
+  rw [hker, Submodule.map_span, ← Set.range_comp] at he
+  change closure (P : Set (AdicCompletion I M)) = _ at he
+  rw [hc.closure_eq] at he
+  exact SetLike.coe_injective he.symm
+
+/-- 平坦な係数拡大で核の生成族を同じテンソルの像へ移す。 -/
+theorem ker_baseChange_eq_span_of_ker_eq_span
+    (L : Type*) [CommRing L] [Algebra R L] [Module.Flat R L]
+    (g : M →ₗ[R] N) {ι : Type*} (c : ι → M)
+    (hker : LinearMap.ker g = Submodule.span R (Set.range c)) :
+    LinearMap.ker (g.baseChange L) = Submodule.span L
+      (Set.range (fun i ↦ (1 : L) ⊗ₜ[R] c i)) := by
+  change LinearMap.ker (TensorProduct.AlgebraTensorModule.lTensor L L g) = _
+  rw [Module.Flat.ker_lTensor_eq]
+  change (LinearMap.ker g).baseChange L = _
+  rw [hker, Submodule.baseChange_span, ← Set.range_comp]
+  rfl
+
+end Kernel
 
 end SerrePositivity
