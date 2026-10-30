@@ -19,7 +19,6 @@
 | --- | --- | --- |
 | `k-theory.md`・`k-theory-generalization-inventory.md`（本文は `archive/` に移した案内） | HomotopicalAlgebra 約 600、CategoryTheory 約 20 | HomotopicalAlgebra・CategoryTheory を触る整理の窓で、docstring を `archive/` への直接参照に書き換えて案内を消す |
 | `dg-theory-u12e-general-inventory.md`・`dg-theory-m5-status.md` | DifferentialGraded 約 530 | DifferentialGraded を触る整理の窓で、同様に書き換えて本文を `archive/` へ移す |
-| `perfectoidization-interface.md`（本文は `bhatt-scholze/` に移した案内） | `BhattScholze/` の 2 本 | BS 側で docstring を書き換えた後に削除 |
 
 ## 現在地（2026-10-18）
 
