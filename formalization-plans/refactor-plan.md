@@ -192,6 +192,10 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
    **追加の移管（2026-10-30）**：CT のトップ階層のうち利用者が ∞ 側だけの 12 本（AdjunctionHomLaws・CommaIdentities・FiniteBijection・
    FiniteBijectionAction・FiniteBijectionInduction・FiniteBijectionShift・FiniteBijectionSum・FiniteBlockEquiv・FunctorTransport・
    ParametrizedAdjunctionTransport・PointwiseAdjunction・RelativeArrow）も ∞ 側へ渡した（伝達文 §7）。これで上の互いの import はすべて ∞ 側の中の依存になる。
+   **∞ 側の受け取り（2026-10-30、infinity-foundation-plan.md 8093866b5）**：伝達文 §5 ComplexLimits は R63（W1。殻を実体で置き換え監査を再生成）、
+   §6.1 GroupTheory/Coxeter は動かさず「中核より下の基盤」として layers.json に登録（Mathlib への置き換えは R78）、§6.2 Inputs/Homotopy は
+   InfinityCategories/ModelBridge/Inputs/ へ移し許可リストと check のパスを直す（W2a、削除は台帳 R60 で判断）、§7 の 12 本は R77 の統合に加える
+   （116 → 約 38 本、FunctorTransport・AdjunctionHomLaws の Mathlib への置き換えは R78）。両側の対象の間の import はなくなった。
    ArrowFactorization* の 3 本も ∞ 側（§1.2.2）。CT のトップ階層でこちらが扱うのは、論文の層が使う 67 本と、CT の中だけで使う 2 本
    （BoundedTStructureGeneration・SerreDerivedQuotient）。
 5. ~~KTheory：dévissage 一式~~ → 残して軽くする（2026-10-30）。主定理 `g0QuotientDevissageEquiv : G₀(R ⧸ J) ≃+ G₀(V(J) に台をもつ加群)`。
