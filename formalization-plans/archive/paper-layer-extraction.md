@@ -1,12 +1,14 @@
 # 論文の層の一般論の切り出し（2026-10-28 新設、計画のみ・未着手）
 
+2026-10-30：役目を終えたので archive へ移した。§1 の候補 P1〜P9 と §2 の改名は [論文の層の整理計画](../refactor-plan.md) の各章（P7 の p 基底は [mathlib-upstream.md](../mathlib-upstream.md) の G1）、§2 の Paper/ の一般補題の移動は同計画の第 9 章に取り込んだ。§2 の最後の項目（perfect 複体・K₀ の橋）は ∞ 基盤側の計画で扱う。
+
 概要：論文の層（CommutativeAlgebra・HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory・FieldTheory・IntersectionMultiplicity など）には、
 Mathlib にまだない一般論が多く含まれている。それらを再利用できるライブラリとして切り出すか、Mathlib へ提出する。
 方針：∞ 圏基盤の R レーンとは別に扱う。当面の目標は ∞ 基盤の整備なので、本計画は**着手しない**（ユーザー決定 10-28）。
 着手するのは第 I 段の後、または論文の層を触る必要が生じたとき。
 規約：数学的内容・公開名・型は保存する。Mathlib へ提出するときは `SerrePositivity` 名前空間を外して改名する。
-使われ方：候補の詳細は [全体調査 §6・§7](archive/repository-survey-2026-10-28.md) を参照。本ファイルは候補と前提条件の一覧だけを持つ。
-補題単位の小さな候補（LinearAlgebra などの一般補題）は [mathlib-upstream.md](mathlib-upstream.md) に置く。
+使われ方：候補の詳細は [全体調査 §6・§7](repository-survey-2026-10-28.md) を参照。本ファイルは候補と前提条件の一覧だけを持つ。
+補題単位の小さな候補（LinearAlgebra などの一般補題）は [mathlib-upstream.md](../mathlib-upstream.md) に置く。
 
 ## 1. 候補（費用対効果の順）
 

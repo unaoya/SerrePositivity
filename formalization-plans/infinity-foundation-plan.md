@@ -50,7 +50,7 @@
 
 | 日付 | 決定 |
 | --- | --- |
-| 10-28 | 当面の目標は ∞ 基盤の整備。論文の層の切り出しは別の計画（[paper-layer-extraction.md](paper-layer-extraction.md)）とし、着手しない |
+| 10-28 | 当面の目標は ∞ 基盤の整備。論文の層の切り出しは別の計画（[paper-layer-extraction.md](archive/paper-layer-extraction.md)、10-30 に [refactor-plan.md](refactor-plan.md) へ統合）とし、着手しない |
 | 10-28 | 局所化・分数・Verdier 商の API の正本を、Sp レーン（KST/LocalizingInvariants）から ∞ 層へ移す |
 | 10-28 | Kan 複体と pointed 単体的集合の層は InfinityCategories の中に作る |
 | 10-28 | F1・F1B・F2 の改名は後で行う |
@@ -277,7 +277,7 @@ InfinityCategories/
 ## 7. 範囲外
 
 - KST の内部だけで閉じる整理：R28・R29・R30・R44・R46・R47（R2 計画のまま）。
-- 論文の層の切り出し（[paper-layer-extraction.md](paper-layer-extraction.md)）。
+- 論文の層の整理と一般論の切り出し（[refactor-plan.md](refactor-plan.md)）。
 - BS 側（R35、別セッション）。
 - 第 II 段の perfect 複体と K₀ の橋（[全体調査](archive/repository-survey-2026-10-28.md) §7 の #4・#5）。
 
