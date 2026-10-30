@@ -55,7 +55,7 @@
   <li><b>存在</b>：E3 の integral と universal から <code>Inputs.exists_perfectoidization_of_integral</code>（任意の整代数の環としての perfectoid 化）→ 有限代数版 <code>exists_perfectoidization_of_finite</code> → CLMST の \(R_{\mathrm{perfd}}\)（<code>Section2.MixedPerfectoid</code>）。使われる \(S=R\otimes_A D\) は有限だが、\(R\) の全射商でも有限エタールでもない。</li>
   <li><b>excision</b>：E3 の excision から <code>Inputs.perfectoidization_excision_isPullback</code>（環の引き戻し）→ <code>klCanonicalExcisionSquare_of_excision</code> → CLMST Prop 2.4.7 の有限比較と rank 四角形、Cor 4.0.4。</li>
 </ol>
-<p>詳しい経路は <a href="../../../formalization-plans/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §1。同 §2 の結論として、<b>既証の部品だけでこの二つを迂回する道（案 B）は閉じない</b>。どちらも Cor 8.12／Thm 10.9 の「almost 比較」そのものを要する。</p>
+<p>詳しい経路は <a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §1。同 §2 の結論として、<b>既証の部品だけでこの二つを迂回する道（案 B）は閉じない</b>。どちらも Cor 8.12／Thm 10.9 の「almost 比較」そのものを要する。</p>
 
 <h2>3. 到達点</h2>
 <div class="table-wrap"><table>
@@ -85,7 +85,7 @@
 </table></div>
 
 <h2>5. E3 を消すための最小部分集合 A0〜A9</h2>
-<p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。合計の計画幅は約 35〜85 人週で、A0〜A3 の不確実性が最も大きい。</p>
+<p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。合計の計画幅は約 35〜85 人週で、A0〜A3 の不確実性が最も大きい。</p>
 <div class="table-wrap"><table>
 <tr><th>単位</th><th>原典</th><th>供給する欄・役割</th><th>章</th></tr>
 <tr><td>A0</td><td>§4.1、Rem 4.6、Lemma 4.8、Construction 4.17〜18、Lemma 4.20〜21</td><td>prismatic site、完全試験 prism、Čech 計算と自然性</td><td>4</td></tr>
@@ -124,7 +124,7 @@
 </div>
 <div class="box refactor">
 <p class="label">BR2　普遍性の手書き展開の重複（Q10）</p>
-<p><code>RootedKernelSurjectivity</code>・<code>RootedPresentationSurjectivity</code>・<code>RootedIdealSurjectivity</code> の三箇所が、「perfectoid 化の始域を環同型で取り替えても perfectoid 化」を毎回 20 行ほどで手書きしている。同じ主張は共通側に <code>IsPerfectoidization.precomp_ringEquiv</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/PerfectoidizationFunctor.lean">CommutativeAlgebra/PerfectoidizationFunctor.lean</a>、10-17 から存在）として既にあり、三ファイルから import 閉包で見えることも確かめた。<a href="../../../formalization-plans/bhatt-scholze-refactoring.md">リファクタ計画</a> §13 では「共通側に新設する候補」とされていたが、新設は不要で、適用だけで済む。</p>
+<p><code>RootedKernelSurjectivity</code>・<code>RootedPresentationSurjectivity</code>・<code>RootedIdealSurjectivity</code> の三箇所が、「perfectoid 化の始域を環同型で取り替えても perfectoid 化」を毎回 20 行ほどで手書きしている。同じ主張は共通側に <code>IsPerfectoidization.precomp_ringEquiv</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/PerfectoidizationFunctor.lean">CommutativeAlgebra/PerfectoidizationFunctor.lean</a>、10-17 から存在）として既にあり、三ファイルから import 閉包で見えることも確かめた。<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-refactoring.md">リファクタ計画</a> §13 では「共通側に新設する候補」とされていたが、新設は不要で、適用だけで済む。</p>
 </div>
 <div class="box refactor">
 <p class="label">BR3　リファクタ監査 838 行の失敗</p>

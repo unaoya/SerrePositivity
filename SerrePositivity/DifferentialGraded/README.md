@@ -1,7 +1,7 @@
 # M5：dg 理論の独立入口
 
 U0〜U10 実装・検証：2026-10-15。計画は
-[ dg-theory.md ](../../formalization-plans/dg-theory.md)。
+[ dg-theory.md ](../../formalization-plans/dg-theory-m5-status.md)。
 入口は [StageSeven.lean](StageSeven.lean)（U0〜U10）、[StageSix.lean](StageSix.lean)（U0〜U9）、[StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
 
 Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。

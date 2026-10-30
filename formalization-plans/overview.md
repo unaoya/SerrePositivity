@@ -25,7 +25,7 @@ perfect 複体・ランク商による実現を実装している。
 - Bhatt–Scholze Cor 8.12（perfectoid 化の切除、環としての帰結）：`BhattScholze.Inputs.perfectoidization_excision_isPullback`。
 - 保留中の K 理論の二件：`Section4.supportedRankK0_descent`、`theorem_3_1_K0`。
 
-BS の二件は [∞ 圏の計画](infinity-categories.md) の界面に保留して解消する方針（2026-10-17 決定）。
+BS の二件は [∞ 圏の計画](infinity-lanes/infinity-categories.md) の界面に保留して解消する方針（2026-10-17 決定）。
 
 `main_statement` と `core_statement` に直接の `sorry` はないが、これらの入力に依存する。
 引用1・2・3は実構成へ置換した。引用4は剰余標数零の対角線論法、引用6はパラメータ Koszul 複体の
@@ -46,8 +46,8 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 | 5（解消済み） | Roberts–Gillet–Soulé の交点重複度消滅 | 台つき巡回 Adams 二乗・三乗と重み消滅により全剰余標数で証明。公開型を保持 | [Adams の計画](archive/intersection-vanishing-adams.md)。S1–S11 と利用先の公理監査が完了 |
 | 6（主定理から除外） | Roberts の Frobenius 高次ホモロジー消滅 | パラメータ Koszul 複体の場合を初等的に証明し、主定理は依存しない | [初等版の計画](archive/frobenius-koszul-elementary.md)。一般形は [専用計画](archive/frobenius-homology.md) |
 | 7（解消済み） | 標準パラメータ根の塔の完備化が integral perfectoid | Witt係数表示から条件を供給し、有限段Frobenius核・実際のtilt・Fontaine核から証明 | `RootTower/WittPresentation`。旧Inputsは証明済みの互換入口 |
-| 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。現在は BS Thm 1.17(1) として残る | [BS](bhatt-scholze.md) |
-| 9〜11（解消済み） | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | CLMST Prop 2.4.7・Cor 4.0.4 を証明（2026-10-17）。その証明が BS Cor 8.12 を引用する | [CLMST](clmst.md)、[BS](bhatt-scholze.md) |
+| 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。現在は BS Thm 1.17(1) として残る | [BS](bhatt-scholze/bhatt-scholze.md) |
+| 9〜11（解消済み） | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | CLMST Prop 2.4.7・Cor 4.0.4 を証明（2026-10-17）。その証明が BS Cor 8.12 を引用する | [CLMST](archive/clmst.md)、[BS](bhatt-scholze/bhatt-scholze.md) |
 | 12（解消済み） | 有限生成加群で正規化長さ `λ∞ = λ*` | Noether 局所基底の有限段計算から証明済み。有限表示の場合も一致 | `FiniteGeneration.lean`。引用としては残らない |
 | 13（解消済み） | 正規化長さの短完全列での加法性 | Noether局所基底の有限段評価から一般加法性を証明 | 共通の長さ層。引用としては残らない |
 
@@ -129,9 +129,9 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - [1〜3の計画](archive/local-algebra-1-3.md)：基礎環の存在構成、共通API、最初の実装単位。
 - [4〜5の計画](archive/intersection-inputs-4-5.md)：古典的交点重複度の証明経路。
 - [6の計画](archive/frobenius-homology.md)：Frobenius ホモロジー消滅の調査と段階別計画。
-- [CLMST の計画](clmst.md)：7番以降を含む別作業の計画。詳細の更新はそちらで行う。
-- [BS の計画](bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番（現在の BS Thm 1.17(1)）を担当する。
-- [K理論の計画](k-theory.md)：定理3.1・補題4.6の基盤と降下。dg 理論は [dg-theory.md](dg-theory.md)。
+- [CLMST の計画](archive/clmst.md)：7番以降を含む別作業の計画。詳細の更新はそちらで行う。
+- [BS の計画](bhatt-scholze/bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番（現在の BS Thm 1.17(1)）を担当する。
+- [K理論の計画](k-theory.md)：定理3.1・補題4.6の基盤と降下。dg 理論は [dg-theory.md](dg-theory-m5-status.md)。
 
 完了の報告では、次を分ける。
 

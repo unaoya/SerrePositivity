@@ -11,7 +11,7 @@ Blumberg–Gepner–Tabuada（BGT）は arXiv:1001.2282。Waldhausen は LNM 112
 
 既存の計画との関係：[k-theory.md](k-theory.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
 確定し、M4 の扱いを変える。[k-theory.md](k-theory.md) §159 の「∞ 圏は導入しない」は、
-2026-10-17 の決定（[infinity-categories.md](infinity-categories.md)）で改められており、本計画はその上に書く。
+2026-10-17 の決定（[infinity-categories.md](infinity-lanes/infinity-categories.md)）で改められており、本計画はその上に書く。
 [bs-clmst-citation-elimination.md](archive/bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
 
 ---
@@ -471,7 +471,7 @@ EKMM、CMNN Prop A.13。いずれも二次文献（KST・LT・GH・CHSW・Stacks
 | 11 | D4 の D_qc(X;H)（L4a、2026-10-18 改訂） | 定義は層レベル：H_X 加群層の複体の導来圏のうち、忘却後の全コホモロジーが準連接な充満部分圏（BvdB・Neeman の設定）。有限アフィン被覆上の複体の**厳密**な降下データは採らない（複体の厳密貼り合わせは D_qc を復元しない。BvdB 3.1.3 の注意）。dg 増強は H_X 加群層の複体の dg 圏を acyclic で dg 商したもの（Drinfeld、U15 の dg 商）に取り、Perf・D_qc をその充満部分圏とする。アフィン dg 加群圏の Čech ホモトピー極限との比較は定義にせず、必要になった時点の定理とする | 既存の `Dqc`（コホモロジー条件）はそのまま。T1〜T3 は層レベルで BvdB・Neeman の証明が通る |
 
 **着手順（2026-10-18）。** 即時：L11（紙）、L2、L4、L6、L7、L8、L9。L1 は α の A3e と関手 ∞ 圏の極限の後。L3・L5・L10 は §8 の開始条件どおり。
-∞ 側のレーン（N・D・α・E2a・Π2）は [infinity-categories.md](infinity-categories.md) の管理のまま。
+∞ 側のレーン（N・D・α・E2a・Π2）は [infinity-categories.md](infinity-lanes/infinity-categories.md) の管理のまま。
 
 Sp の安定性の逆関手案は再評価済み（2026-10-21）。HA Cor. 1.4.2.27 の一般判定は妥当だが、BF の構造随伴を厳密な豊穣自然変換にする段階と有限極限の包装・判定の自前証明が未完。移送 API は StrictEnrichedTransformation.functorIso が提供済みで、N への追加要求はない。残り4工程・少なくとも複数日の暫定評価から、旧経路より短いとは判定せず切り替えない。正確な残補題・根拠・見積もりは [L9 引き継ぎ](kst-lanes/L9-spectra.md) を正本とする。
 

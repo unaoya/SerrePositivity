@@ -37,7 +37,7 @@
 | `audit_bhatt_scholze_structure.py` | BS の import の境界（CLMST を import しない等）と、BS の監査の登録 |
 | `check_adams_import_boundaries.py` | Adams 系列の import の境界 |
 | `audit_homotopical_layout.py` | 共有ホモトピー論の配置（`homotopical_generalization_manifest.json` を使う） |
-| `audit_stage4_dependencies.py` | K 理論の段階 4 の依存監査（`formalization-plans/stage4-dependency-audit.md` を生成） |
+| `audit_stage4_dependencies.py` | K 理論の段階 4 の依存監査（`formalization-plans/archive/stage4-dependency-audit.md` を生成） |
 
 ## その他の `audit_*.lean`・`check_*.lean`
 

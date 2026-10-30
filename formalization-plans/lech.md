@@ -12,7 +12,7 @@
 最終目標は、論文の定理 1.1（平坦な局所準同型 `R → S` について `e(R) ≤ e(S)`）を、
 Serre の論文と同じリポジトリで形式化することである。
 
-[CLMST の計画](clmst.md)と同じ二つの前提を置く。
+[CLMST の計画](archive/clmst.md)と同じ二つの前提を置く。
 
 1. **外部の結果は、原典の形で述べた名前付きの `sorry` 定理として引用する。**
    仮定と結論は原典のまま書き、論文で使う形への変換は証明する。
@@ -68,7 +68,7 @@ Lech に固有の Lean 宣言はまだない。Serre の形式化のうち再利
 
 | 引用 | 原典 | 使う場所 | 備考 |
 | --- | --- | --- | --- |
-| CLMST Def. 2.2.1、Prop. 2.2.3、2.2.6、Cor. 4.0.4、Prop. 4.0.10、Def. 4.0.8、Cor. 4.0.18、Prop. 4.0.14 | CLMST v4 | §3.3 | 共有（[CLMST の計画](clmst.md)）。Cor. 4.0.18 は Lech だけが使う |
+| CLMST Def. 2.2.1、Prop. 2.2.3、2.2.6、Cor. 4.0.4、Prop. 4.0.10、Def. 4.0.8、Cor. 4.0.18、Prop. 4.0.14 | CLMST v4 | §3.3 | 共有（[CLMST の計画](archive/clmst.md)）。Cor. 4.0.18 は Lech だけが使う |
 | Bhatt–Scholze の perfectoid 化 | BS §8、Thm. 10.11 | §3.3 | 共有 |
 | Roberts の Frobenius ホモロジー評価 | Roberts、Ma Thm. 2.4 | (3.7)、(5.1) | (3.7) はパラメータ Koszul 複体の場合で、初等的な証明（`ParameterKoszulGrowth`）で足りる。一般形 `Inputs.frobenius_homology_length_tendsto_zero` は系 5.4 の (5.1) だけで使う |
 | Cohen–Gabber の正規化 | Kurano–Shimomoto Thm. 1.1 | §3.2 | 共有（外部引用 2） |
@@ -159,4 +159,4 @@ Hilbert–Kunz）の順。M7 の符号化は論文が細部を簡潔に書いて
 
 - 論文：[`paper/lech.pdf`](../paper/lech.pdf)、出典は [`paper/SOURCE.md`](../paper/SOURCE.md)。
 - 解説：[`exposition/ja/lech-ja.tex`](../exposition/ja/lech-ja.tex)。
-- 共有する計画：[CLMST](clmst.md)、[全体像](overview.md)。
+- 共有する計画：[CLMST](archive/clmst.md)、[全体像](overview.md)。

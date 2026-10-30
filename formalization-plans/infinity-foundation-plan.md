@@ -318,7 +318,7 @@ InfinityCategories/
 | [refactoring-verdier.md](refactoring-verdier.md) | Verdier 列の二つの定義、R48〜R57 の詳細、M1〜M7 |
 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[archive/r2-a-layers-2026-10-27.md](archive/r2-a-layers-2026-10-27.md) | R26〜R47・R59〜R67 の詳細、層の逆辺の全件 |
 | [refactoring-infinity.md](refactoring-infinity.md) | 第 1 窓（R1〜R25）の記録、旧所在→新所在の対応表、索引 |
-| [infinity-foundation-plan-review-request.md](infinity-foundation-plan-review-request.md)・[同 第 2 回](infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
+| [infinity-foundation-plan-review-request.md](archive/infinity-foundation-plan-review-request.md)・[同 第 2 回](archive/infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
 | [infinity-codex-w0-1.md](infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
 | [infinity-codex-w0-2.md](infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
 | [infinity-codex-w0-3.md](infinity-codex-w0-3.md) | Codex 指示書 IF-W0-3（対象 JSON と R61b の読解） |

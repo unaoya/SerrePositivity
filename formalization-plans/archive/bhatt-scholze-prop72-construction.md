@@ -1,6 +1,6 @@
 # N4：著者公開版Prop 7.2の接続設計
 
-> **アーカイブ（2026-10-17）**：この計画は完了した。内容の要約先：解説の付録 A（`par:bs-thm74`）と `BhattScholze/` の各モジュールの docstring。原典の証明経路は[BS 主計画](../bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
+> **アーカイブ（2026-10-17）**：この計画は完了した。内容の要約先：解説の付録 A（`par:bs-thm74`）と `BhattScholze/` の各モジュールの docstring。原典の証明経路は[BS 主計画](../bhatt-scholze/bhatt-scholze.md)。将来は削除する予定で、以下は当時の計画と実施記録のまま。
 
 
 対象：`paper/refs/BS-prisms-author.pdf`、印刷p.55のProp 7.2、p.56のCor 7.3。

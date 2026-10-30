@@ -5,12 +5,12 @@
 
 ## 0. リファクタ文書の索引（R1〜R74、2026-10-28 整理）
 
-∞ 圏まわりのリファクタは、このファイルを入口とする。番号は全文書で通し番号。BS 側は [bhatt-scholze-refactoring.md](bhatt-scholze-refactoring.md)（別セッション）。
+∞ 圏まわりのリファクタは、このファイルを入口とする。番号は全文書で通し番号。BS 側は [bhatt-scholze-refactoring.md](bhatt-scholze/bhatt-scholze-refactoring.md)（別セッション）。
 
 | 範囲 | 文書 | 状態 |
 | --- | --- | --- |
 | R1〜R25 | 本ファイル §4（段の表）・§5（旧所在→新所在の対応表）・§8（分担） | 第 1 窓で実施済み（10-23〜24）。下表の「先送り」を除く |
-| R-C の再適用 | [refactoring-infinity-r-c.md](refactoring-infinity-r-c.md) | 完了（10-24） |
+| R-C の再適用 | [refactoring-infinity-r-c.md](archive/refactoring-infinity-r-c.md) | 完了（10-24） |
 | R26〜R47 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)（候補 §3・実施順 §4）、R2-B の処置案 [refactoring-infinity-r2-b.md](refactoring-infinity-r2-b.md) | 調査済み・第 2 窓で実施待ち |
 | R48〜R57 | [refactoring-verdier.md](refactoring-verdier.md)（Verdier 商の一般構成に向けた配置換え） | 計画のみ（10-28） |
 | R59〜R67 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md) §3 末尾（入口の修正、台帳、重複、Kan・pointed 層、DK 局所化層、∞ 中核の dg 非依存化、分類し直し。10-28 の調査から） | 候補 |
@@ -58,7 +58,7 @@ R1〜R25 の内訳：
 ### 未コミット・既知の問題
 
 - 既存未追跡 `HomotopyLimits/PresheafElementsLeftKan.lean` の機械的参照更新は [差分](archive/refactor-ra-final-untracked-references-2026-10-24.patch) に保存し、元の数学本文は R のコミットから除外。
-- 他レーンの既存未コミット文書・PDF・未追跡本文は保持した。範囲外のBS監査838行の型不一致は[BS計画](bhatt-scholze-refactoring.md)の既知問題。第II段再開時にBSが修正し、Rは当該監査を変更しない。
+- 他レーンの既存未コミット文書・PDF・未追跡本文は保持した。範囲外のBS監査838行の型不一致は[BS計画](bhatt-scholze/bhatt-scholze-refactoring.md)の既知問題。第II段再開時にBSが修正し、Rは当該監査を変更しない。
 
 ### 次の一手
 

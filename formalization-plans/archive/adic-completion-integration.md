@@ -186,7 +186,7 @@ CLMST側は`audit_clmst.lean`、可換環論側は`audit_local_algebra.lean`の�
 ## 6. 文書の役割と今回の更新範囲
 
 - この正本：共通の目標、2a〜2cの証明手順、分担、公開APIの受入条件を更新する。
-- [CLMSTの主計画](../clmst.md)と[実装境界](clmst-interfaces.md)：完備塔・isogenyへの適用、引用境界、CLMST固有の残作業を更新し、共通工程は正本へ参照する。
+- [CLMSTの主計画](clmst.md)と[実装境界](clmst-interfaces.md)：完備塔・isogenyへの適用、引用境界、CLMST固有の残作業を更新し、共通工程は正本へ参照する。
 - [可換環論1〜3の計画](local-algebra-1-3.md)：A4の証明、剰余体・局所性・Noether性、引用1の置換条件を更新し、共通の平坦性工程は正本へ参照する。
 - 旧0523経路は代替案の履歴として可換環論側に短く残す。今回の必須工程として並行実装しない。
 

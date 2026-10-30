@@ -911,7 +911,7 @@ N7f の双対は任意項目。新規公開 17 宣言の正確な型と前提は
 したがって錐・シフト・有限直和などの閉性により fiber の所属 hP を得る任意の充満部分圏へ適用できる。
 零複体の所属だけから、`isTerminalVertex_full_zero`・`isInitialVertex_full_zero` が零対象を与える。
 
-Semifree への適用前に、`formalization-plans/derived-infinity-category.md` の
+Semifree への適用前に、`formalization-plans/infinity-lanes/derived-infinity-category.md` の
 D2h 完了（§5、2026-10-18）と D2h′ 完了の記録を確認した。
 `Derived/SemifreeClosure.lean` の `complexSemifree_zero` と
 `complexSemifree_biprodFiber`（二項直和と fiber の無条件の閉性）を使用する。
