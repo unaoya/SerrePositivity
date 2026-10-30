@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.RingDerivedFiniteCover
-public import SerrePositivity.CategoryTheory.TriangleBiproduct
+public import SerrePositivity.CategoryTheory.Triangulated.Padding
 
 /-! # retractと補対象の三角形を有限射影複体上のconeで表す -/
 @[expose] public section

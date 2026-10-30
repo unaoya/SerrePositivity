@@ -5,6 +5,7 @@ public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import SerrePositivity.Paper.Section2.PerfectKoszulLimit
 public import SerrePositivity.Paper.Section2.MixedLengthAlgebra
+public import SerrePositivity.CommutativeAlgebra.RootTower.Perfectoid
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 
@@ -248,7 +249,7 @@ theorem lengthAlgebra_mixedCharacteristic (A D : Type u) [CommRing A] [IsRegular
           (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (z j))) =
           ENNReal.ofReal
             (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-  have hperf := Inputs.completedTower_isIntegralPerfectoid
+  have hperf := completedTower_isIntegralPerfectoid_of_standard_wittPresentation
     A (ResidueField D) p t hpos htp e he
   refine ⟨MixedPerfectoid A D t p hperf, inferInstance, inferInstance, inferInstance,
     inferInstance, inferInstance, inferInstance, ?_⟩

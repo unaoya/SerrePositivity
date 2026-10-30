@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.SupportedKaroubiTriangulated
 public import SerrePositivity.Asymptotic.CompletedHomologyLength
-public import SerrePositivity.CategoryTheory.ConeLengthBinomial
+public import SerrePositivity.CategoryTheory.IteratedCone
 
 /-! # 商の完備化で支持される全対象への評価
 

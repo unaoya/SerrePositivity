@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.PaperRankEvaluation
-public import SerrePositivity.CategoryTheory.ConeLengthCancellation
+public import SerrePositivity.CategoryTheory.IteratedCone
 
 /-! # 複体列の評価は支持を示すパラメータ系によらない
 

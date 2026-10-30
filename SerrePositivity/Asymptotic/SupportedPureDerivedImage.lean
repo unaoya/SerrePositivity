@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.SupportedDerivedImage
 public import SerrePositivity.Asymptotic.OrdinaryHeartResolution
-public import SerrePositivity.CategoryTheory.DerivedPure
+public import SerrePositivity.CategoryTheory.Derived
 
 /-! # 一様な単一次数の導来対象の族を支持つき自由列で表す -/
 

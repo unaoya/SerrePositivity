@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectPolynomialFlat
+public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
 public import SerrePositivity.HomologicalAlgebra.PerfectRadicalQuotientTor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationIso
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraAcyclicBaseChange

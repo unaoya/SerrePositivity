@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.Ideal.Maps
 
 /-! # Universal perfectoidization is invariant under surjections with nil kernel

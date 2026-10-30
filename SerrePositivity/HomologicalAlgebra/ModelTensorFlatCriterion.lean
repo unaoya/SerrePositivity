@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedFlatModelTensor
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatNilpotent
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 /-! # Tensor tests on a fixed model detect actual derived purity and flat H0 -/
 

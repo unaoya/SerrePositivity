@@ -1,4 +1,4 @@
-import SerrePositivity.CategoryTheory.HomologicalEuler
+import SerrePositivity.CategoryTheory.Euler
 import SerrePositivity.Asymptotic.CompletedRankEvaluation
 import Mathlib.Util.AssertNoSorry
 

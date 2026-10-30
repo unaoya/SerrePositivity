@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.SequenceHomologyLocalization
 public import SerrePositivity.Asymptotic.SupportedKaroubi
-public import SerrePositivity.CategoryTheory.KaroubiImage
+public import SerrePositivity.CategoryTheory.Karoubi.Basic
 
 /-!
 # 冪等完備化した支持つきランク商上のホモロジー評価

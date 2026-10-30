@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.PerfectConductor
+public import SerrePositivity.Paper.Section2.PerfectApproximation
 public import SerrePositivity.Paper.Section2.TowerDescent
 public import SerrePositivity.CommutativeAlgebra.Length.QuotientPower
 public import Mathlib.Analysis.SpecificLimits.Basic

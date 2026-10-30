@@ -1,10 +1,19 @@
 module
 
-public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.Paper.Section2.Corollary2_6
+public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
+public import SerrePositivity.PerfectComplex.NormalizedLength
+public import Mathlib.Algebra.CharP.Defs
+public import Mathlib.FieldTheory.Perfect
+public import Mathlib.FieldTheory.Separable
+public import Mathlib.RingTheory.AdicCompletion.Basic
+public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
+public import Mathlib.RingTheory.RegularLocalRing.Defs
+public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 
 /-!
 # Corollary 2.6：長さ代数への有限長加群の係数拡大
@@ -35,6 +44,80 @@ Theorem 2.5 の長さ代数 `(C_D, λ_D)` について、有限長 `A` 加群 `V
 @[expose] public section
 
 universe u
+
+section LengthAlgebraBaseValuesPart
+
+
+open IsLocalRing
+open scoped ENNReal TensorProduct
+
+namespace SerrePositivity
+
+section preparation
+
+variable {A D C : Type u} [CommRing A] [CommRing D] [IsLocalRing D]
+  [Algebra A D] [CommRing C] [Algebra D C] [Algebra A C] [IsScalarTower A D C]
+  {h : ℕ} {t : Fin h → A}
+
+/-- (2.4) と (2.6) を、基底 `A` のパラメータ系 `t` の冪 `t^v` について、`A → C` の像で書き直したもの：
+`λ(H_i(t^v; C)) = 0 (i > 0)` と `λ(C/(t^v)C) = v^h · rank_A D`。`t` の `D` での像がパラメータ系で
+あること（`hsop`）を使い、`algebraMap D C ∘ algebraMap A D = algebraMap A C` で書き換えるだけ。
+Corollary 2.6 と Lemma 3.5 で、`NormalizedTor.lean` の仮定 (3.9) の形にするために使う。 -/
+theorem lengthAlgebra_base_values
+    {lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C))}
+    (hzero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
+      ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0)
+    (hbase : ∀ v : ℕ, 0 < v →
+      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞))
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
+    (v : ℕ) (hv : 0 < v) :
+    (∀ i : ℕ, 0 < i →
+      lam.len (koszulHomologySelf (fun j ↦ algebraMap A C (t j ^ v)) i) = 0) ∧
+    lam.len
+      (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap A C (t j ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞) := by
+  have heq : (fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ v)) =
+      (fun j ↦ algebraMap A C (t j ^ v)) := by
+    funext j
+    simp [IsScalarTower.algebraMap_apply A D C]
+  constructor
+  · intro i hi
+    have hz := hzero (algebraMap A D ∘ t) hsop v hv i hi
+    rw [heq] at hz
+    exact hz
+  · have hq := hbase v hv
+    change lam.len (C ⧸ Ideal.span
+      (Set.range fun j ↦ algebraMap D C ((algebraMap A D ∘ t) j ^ v))) = _ at hq
+    rw [heq] at hq
+    exact hq
+
+/-- `base_values` の `v = 1` の場合：`λ(H_i(t; C)) = 0 (i > 0)` と `λ(C/tC) = rank_A D`。 -/
+theorem lengthAlgebra_base_values_one
+    {lam : NormalizedLength C ((maximalIdeal D).map (algebraMap D C))}
+    (hzero : ∀ (z : Fin h → D), IsSystemOfParameters D z → ∀ v : ℕ, 0 < v →
+      ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (fun j ↦ algebraMap D C (z j ^ v)) i) = 0)
+    (hbase : ∀ v : ℕ, 0 < v →
+      lam.len (C ⧸ Ideal.span (Set.range fun j ↦ algebraMap D C (algebraMap A D (t j) ^ v))) =
+        ((v ^ h * Module.finrank A D : ℕ) : ℝ≥0∞))
+    (hsop : IsSystemOfParameters D (algebraMap A D ∘ t)) :
+    (∀ i : ℕ, 0 < i →
+      lam.len (koszulHomologySelf (algebraMap A C ∘ t) i) = 0) ∧
+    lam.len (C ⧸ Ideal.span (Set.range (algebraMap A C ∘ t))) =
+      Module.finrank A D := by
+  have ht : (fun j ↦ algebraMap A C (t j ^ 1)) = algebraMap A C ∘ t := by
+    funext j
+    simp
+  have hv := lengthAlgebra_base_values hzero hbase hsop 1 one_pos
+  rw [ht] at hv
+  simpa only [one_pow, one_mul] using hv
+
+end preparation
+
+
+end SerrePositivity
+
+end LengthAlgebraBaseValuesPart
 
 open IsLocalRing
 open scoped ENNReal TensorProduct

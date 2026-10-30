@@ -63,7 +63,7 @@ lemma paperTwist_comp_parameters (g : G) :
     (φ.comp (MulSemiringAction.toAlgHom A R g).toRingHom) ∘ (algebraMap A R ∘ a) =
       φ ∘ algebraMap A R ∘ a :=
   congrArg (fun f : Fin e → R => φ ∘ f)
-    (algebraHom_parameters (MulSemiringAction.toAlgHom A R g) a)
+    (funext fun j ↦ (MulSemiringAction.toAlgHom A R g).commutes (a j))
 
 set_option maxHeartbeats 800000 in
 -- 群作用の定義と、支持の指定を保つ係数変更の比較に必要。

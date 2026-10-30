@@ -1,6 +1,10 @@
 module
 
-public import SerrePositivity.Inputs.CLMST
+public import SerrePositivity.Paper.Section2.MixedPerfectoid
+public import SerrePositivity.Paper.Section2.CompletedTower
+public import SerrePositivity.CLMST.NormalizedAlmostLength
+public import SerrePositivity.CLMST.CohomologyVanishing
+public import SerrePositivity.CLMST.ParameterLength
 
 /-! # CLMST の引用から混標数の長さ代数への接続
 
@@ -12,8 +16,10 @@ Proposition 4.0.10 から高次 Koszul ホモロジーの正規化長さが零�
 零次のパラメータ商には Proposition 4.0.14 を使う。
 
 両方の長さを完備化前の塔へ制限し、既存の `towerLengthOn` と同定する。
-このファイルに直接の `sorry` はない。`Inputs.CLMST` は共通層の原典入力への適用を証明した互換入口であり、
-文献の未証明入力そのものは `CLMST/Inputs/` に明示する。
+このファイルに直接の `sorry` はない。三つの結果は CLMST 層の `CLMST.exists_perfectoidIdeal_annihilates_koszul`
+（Corollary 4.0.4）、`CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates`（Proposition 4.0.10）、
+`CLMST.parameter_quotient_length`（Proposition 4.0.14）を直接使い、文献の未証明入力そのものは `CLMST/Inputs/` に明示する。
+出典：Cai–Lee–Ma–Schwede–Tucker, arXiv:2209.04046v4（https://arxiv.org/html/2209.04046v4）。
 -/
 
 public section
@@ -49,7 +55,7 @@ theorem mixedPerfectoid_length_properties
         ((MixedPerfectoid A D t p hperf) ⧸
           Ideal.span (Set.range fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j))) =
         ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
-  obtain ⟨g, hg, hann⟩ := Inputs.clmst_exists_perfectoidIdeal_annihilates_koszul
+  obtain ⟨g, hg, hann⟩ := CLMST.exists_perfectoidIdeal_annihilates_koszul
     A D hinj hres t hdimA hdimD hpos ht hsop p htp e he hperf
   constructor
   · intro z hz i hi
@@ -58,14 +64,14 @@ theorem mixedPerfectoid_length_properties
     let := Module.compHom
       (koszulHomologySelf (fun j ↦ algebraMap D (MixedPerfectoid A D t p hperf) (z j)) i)
       (algebraMap (CompletedTower A t p) (MixedPerfectoid A D t p hperf))
-    exact Inputs.clmst_length_eq_zero_of_perfectoidIdeal_annihilates
+    exact CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates
       A (ResidueField D) p t hpos htp ht hdimA e he hperf g hg _
       (isPowTorsion_completedTower_koszul A t p D hinj (MixedPerfectoid A D t p hperf) z hz i)
       (hann z hz i hi)
   · intro z hz
     rw [towerLengthOn_eq_completedTowerLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)) D hinj]
-    exact Inputs.clmst_parameter_quotient_length
+    exact CLMST.parameter_quotient_length
       A D hinj hres t hdimA hdimD hpos ht hsop p htp e he hperf z hz
 
 end SerrePositivity.Section2

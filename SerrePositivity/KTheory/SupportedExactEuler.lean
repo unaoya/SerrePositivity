@@ -1,8 +1,7 @@
 module
 public import SerrePositivity.KTheory.G0Supported
 public import SerrePositivity.CategoryTheory.AlternatingSum
-public import SerrePositivity.CategoryTheory.ExactImageSequence
-public import SerrePositivity.CategoryTheory.FiniteSupportBounds
+public import SerrePositivity.CategoryTheory.Abelian.ShortComplex
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import Mathlib.Algebra.BigOperators.Finprod

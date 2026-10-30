@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.ModuleSequence
 public import SerrePositivity.Asymptotic.LengthFamilies
-public import SerrePositivity.CategoryTheory.SerreSubcategory
+public import SerrePositivity.CategoryTheory.Abelian.SerreLength
 
 /-!
 # 長さが一様に制御された加群列のアーベル圏

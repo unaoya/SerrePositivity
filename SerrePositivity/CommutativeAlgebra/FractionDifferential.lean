@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FractionRingBasis
+public import SerrePositivity.FieldTheory.SeparableBaseChange
 public import SerrePositivity.RingTheory.Kaehler
 public import Mathlib.RingTheory.Etale.Kaehler
 public import Mathlib.RingTheory.Unramified.Field

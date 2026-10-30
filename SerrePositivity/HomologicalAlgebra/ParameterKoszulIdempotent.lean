@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.ParameterKoszulComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulRadicalSupport
-public import SerrePositivity.CommutativeAlgebra.IdempotentImageBaseChange
+public import SerrePositivity.CommutativeAlgebra.Idempotent
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientIdeal
 
 /-! # Removing annihilator powers in actual parameter Koszul homology -/

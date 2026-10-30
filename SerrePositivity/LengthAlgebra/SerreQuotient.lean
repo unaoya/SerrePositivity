@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.CategoryTheory.AdditiveLength
+public import SerrePositivity.CategoryTheory.Abelian.SerreLength
 
 /-! # 単一の長さ付き代数の評価先
 

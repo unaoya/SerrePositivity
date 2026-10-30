@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 

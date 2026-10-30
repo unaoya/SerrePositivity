@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CommutativeAlgebra.ScalarIsogenyInverse
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
 public import Mathlib.RingTheory.Ideal.Colon
 

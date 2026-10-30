@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CommutativeAlgebra.LocalizationLattice
+public import SerrePositivity.CommutativeAlgebra.Localization.Lattice
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Algebra.Module.FinitePresentation
 

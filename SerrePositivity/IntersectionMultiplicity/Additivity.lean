@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Length.Euler
 public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
-public import SerrePositivity.Inputs.IntersectionTheory
+public import SerrePositivity.IntersectionMultiplicity.Basic
+public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
 
 /-!
 # 交点重複度の左右の加法性

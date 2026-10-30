@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.SerreQuotient
-public import SerrePositivity.CategoryTheory.ExactSequenceEuler
+public import SerrePositivity.CategoryTheory.Euler
 
 /-! # 長さ付き代数における長完全列の Euler 評価
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.RankSmallHomologyCriterion
-public import SerrePositivity.CategoryTheory.FamilyTStructure
+public import SerrePositivity.CategoryTheory.TStructure.Family
 public import Mathlib.CategoryTheory.Triangulated.TStructure.TruncLEGT
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SupportedKaroubi
-public import SerrePositivity.CategoryTheory.KaroubiTriangulatedFunctor
+public import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 public import Mathlib.CategoryTheory.Triangulated.Adjunction
 
 /-! # 支持部分圏の比較と完全三角形の両立 -/

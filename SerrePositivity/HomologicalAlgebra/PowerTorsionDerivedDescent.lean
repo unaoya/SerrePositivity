@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedAcyclicHomology
 public import SerrePositivity.HomologicalAlgebra.DerivedHomologyLinear
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatTensor
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 
 /-! # Homology descent along completely faithfully flat maps for power-torsion objects -/
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectCoefficientTensor
+public import SerrePositivity.CommutativeAlgebra.PerfectRing
 /-! # Tensor automorphisms with a specified coefficient automorphism
 
 The factor maps commute with the same base map, rather than being R-linear.

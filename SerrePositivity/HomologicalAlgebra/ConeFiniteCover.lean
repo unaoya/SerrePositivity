@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PrincipalCoverNumerators
+public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 public import SerrePositivity.HomologicalAlgebra.TwoTermConeAnnihilator
 
 /-! # 有限主開被覆からの実錐の冪零化の合流 -/

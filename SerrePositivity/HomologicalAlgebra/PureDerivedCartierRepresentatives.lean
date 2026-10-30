@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierSingle
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientH0Normalization
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionEquiv
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 
 /-! # Original representative classes under the normalized Cartier H⁰ comparison -/
 @[expose] public noncomputable section

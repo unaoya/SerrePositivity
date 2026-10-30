@@ -6,7 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.SupportNullHomotopy
 public import SerrePositivity.PerfectComplex.Basic
 public import Mathlib.RingTheory.Ideal.Maps
 public import SerrePositivity.HomologicalAlgebra.Basic
-public import SerrePositivity.CommutativeAlgebra.PowTorsion
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 public import Mathlib.Data.Int.Interval
 public import Mathlib.RingTheory.Support
 

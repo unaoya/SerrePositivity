@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.UniformZeroTower
-public import SerrePositivity.CommutativeAlgebra.FlatPowerTorsion
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 
 /-! # The actual torsion error tower has uniformly zero composites -/
 

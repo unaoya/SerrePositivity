@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.Shift
-public import SerrePositivity.CategoryTheory.KaroubiFullyFaithful
-public import SerrePositivity.CategoryTheory.KaroubiTriangulatedFunctor
+public import SerrePositivity.CategoryTheory.Karoubi.Basic
+public import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 
 /-! # Perfとfinite cell部分圏のKaroubi延長の本質像 -/
 @[expose] public section

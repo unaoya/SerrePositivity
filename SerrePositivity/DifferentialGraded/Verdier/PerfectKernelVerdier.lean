@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Verdier.KernelActionTriangles
-public import SerrePositivity.CategoryTheory.VerdierLift
-public import SerrePositivity.CategoryTheory.KaroubiTriangulatedFunctor
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
+public import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 
 /-! # 指定生成集合を対応させる主導来 kernel の実際の Perf–Verdier 関手 -/
 @[expose] public section

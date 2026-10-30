@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.CubicActionProjector
-public import SerrePositivity.CommutativeAlgebra.CubicCyclotomicAlgebra
+public import SerrePositivity.CommutativeAlgebra.CubicCyclotomic.Algebra
 public import Mathlib.Tactic.Module
 
 /-! # Three orthogonal character projectors for a cubic chain action -/

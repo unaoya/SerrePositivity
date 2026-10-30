@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Expansion
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
-public import SerrePositivity.CommutativeAlgebra.FractionRingBasis
+public import SerrePositivity.FieldTheory.SeparableBaseChange
 public import Mathlib.LinearAlgebra.Dimension.Finrank
 
 /-! # 冪級数の有限拡大の分数体

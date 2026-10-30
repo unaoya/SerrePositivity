@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Verdier.ComparisonLinear
-public import SerrePositivity.CategoryTheory.ScalarSupportEquivalence
+public import SerrePositivity.CategoryTheory.ScalarSupport
 public import Mathlib.CategoryTheory.Shift.Linear
 
 /-! # 局所商比較の支持部分圏への制限と忘却正方形 -/

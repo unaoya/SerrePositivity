@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Asymptotic.SequenceKoszul
-public import SerrePositivity.CategoryTheory.ScalarZeroCone
-public import SerrePositivity.CategoryTheory.ScalarSupportLocalization
+public import SerrePositivity.CategoryTheory.IteratedCone
+public import SerrePositivity.CategoryTheory.ScalarSupport
 
 /-! # Koszul 複体列の一様な台と、商で零となるスカラー作用 -/
 

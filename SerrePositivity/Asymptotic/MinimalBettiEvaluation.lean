@@ -4,7 +4,7 @@ public import SerrePositivity.Asymptotic.MinimalTruncationComparison
 public import SerrePositivity.Asymptotic.MinimalSupport
 public import SerrePositivity.Asymptotic.KoszulHomologyLimit
 public import SerrePositivity.Asymptotic.PaperBaseChangeEvaluation
-public import SerrePositivity.CategoryTheory.ConeLengthCancellation
+public import SerrePositivity.CategoryTheory.IteratedCone
 public import SerrePositivity.CategoryTheory.AlternatingSum
 
 /-! # 極小分解の正規化極限とランク商の Betti 評価

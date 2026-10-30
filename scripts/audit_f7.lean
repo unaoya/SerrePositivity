@@ -1,5 +1,5 @@
 -- lake build の後、lake env lean scripts/audit_f7.lean で実行する。
-import SerrePositivity.CommutativeAlgebra.PerfectoidFontaineSeparation
+import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 import SerrePositivity.BhattScholze
 import Mathlib.Util.AssertNoSorry
 

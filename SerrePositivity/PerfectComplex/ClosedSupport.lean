@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.HomologicalAlgebra.ConeLES
-public import SerrePositivity.CommutativeAlgebra.ModuleSupport
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import Mathlib.Algebra.Homology.HomologySequence
 
 /-! # 閉集合で指定するホモロジーの台

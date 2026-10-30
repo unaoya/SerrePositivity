@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.CommutativeAlgebra.FiniteFreeScalarFactorization
-public import SerrePositivity.CommutativeAlgebra.IdempotentImageAnnihilator
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
+public import SerrePositivity.CommutativeAlgebra.Idempotent
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientIdeal
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraScalarComparison
 

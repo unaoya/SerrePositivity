@@ -31,26 +31,6 @@ theorem prime_eq_maximalIdeal_of_quotient_dim_zero [IsLocalRing R]
     rwa [Module.supportDim_quotient_eq_ringKrullDim])] at hp
   exact hp
 
-/-- 有限次元の整域で、商を取って次元が下がらなければイデアルは零。 -/
-theorem ideal_eq_bot_of_quotient_dim_eq [IsDomain R] [FiniteRingKrullDim R]
-    (Q : Ideal R) (hQ : ringKrullDim (R ⧸ Q) = ringKrullDim R) : Q = ⊥ := by
-  by_contra hne
-  obtain ⟨r, hr, hr0⟩ := Submodule.exists_mem_ne_zero_of_ne_bot hne
-  have hdrop := ringKrullDim_succ_le_of_surjective (Ideal.Quotient.mk Q)
-    Ideal.Quotient.mk_surjective (mem_nonZeroDivisors_iff_ne_zero.mpr hr0)
-    (Ideal.Quotient.eq_zero_iff_mem.mpr hr)
-  rw [hQ] at hdrop
-  obtain ⟨d, hd⟩ := WithBot.ne_bot_iff_exists.mp (ringKrullDim_ne_bot (R := R))
-  have hdt : d ≠ ⊤ := by
-    intro h
-    apply ringKrullDim_ne_top (R := R)
-    rw [← hd, h]
-    rfl
-  obtain ⟨n, hn⟩ := ENat.ne_top_iff_exists.mp hdt
-  rw [← hd, ← hn] at hdrop
-  have : n + 1 ≤ n := by exact_mod_cast hdrop
-  omega
-
 /-- 環自身と剰余体の交点重複度は `1`。 -/
 theorem chi_self_residueField [IsLocalRing R] : chi R R (ResidueField R) = 1 := by
   let : IsSimpleModule R (ResidueField R) :=

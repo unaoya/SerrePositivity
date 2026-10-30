@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 
 /-! # ホモロジー上で零となる自己射の錐と Euler 評価

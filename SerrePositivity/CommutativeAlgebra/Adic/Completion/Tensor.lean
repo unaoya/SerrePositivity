@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
+public import SerrePositivity.CommutativeAlgebra.Adic.FlatTensorFiltration
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.Algebra.Module.Torsion.Basic

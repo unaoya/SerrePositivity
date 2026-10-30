@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SequenceLinear
-public import SerrePositivity.CategoryTheory.ScalarSupportLocalization
+public import SerrePositivity.CategoryTheory.ScalarSupport
 
 /-!
 # 支持部分圏のランク商から全体の商への完全忠実性

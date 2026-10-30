@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.LengthSerreQuotient
-public import SerrePositivity.CategoryTheory.SerreLength
+public import SerrePositivity.CategoryTheory.Abelian.SerreLength
 
 /-!
 # 加群列の Serre 商上の忠実な長さ

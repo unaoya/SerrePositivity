@@ -3,7 +3,7 @@ public import SerrePositivity.CategoryTheory.HomotopyProperty
 
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.ScalarSupport
-public import SerrePositivity.CategoryTheory.SubcategoryLinear
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
 public import SerrePositivity.PerfectComplex.Support
 
 /-! # 有界有限射影複体の支持つきホモトピー圏

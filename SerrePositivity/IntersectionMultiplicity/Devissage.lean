@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import SerrePositivity.IntersectionMultiplicity.Equivalence
+public import SerrePositivity.IntersectionMultiplicity.AdamsVanishingAll
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
 public import Mathlib.RingTheory.Ideal.KrullsHeightTheorem
@@ -68,11 +69,11 @@ theorem chi_pos_of_prime_left
         have hn₁ : 0 ≤ chi R L₁ N := by
           rcases hd₁.eq_or_lt with hd₁ | hd₁
           · exact (ih₁ h₁ hd₁).le
-          · rw [Inputs.intersectionVanishing R L₁ N h₁ hd₁]
+          · rw [intersectionVanishing_of_adams R L₁ N h₁ hd₁]
         have hn₃ : 0 ≤ chi R L₃ N := by
           rcases hd₃.eq_or_lt with hd₃ | hd₃
           · exact (ih₃ h₃ hd₃).le
-          · rw [Inputs.intersectionVanishing R L₃ N h₃ hd₃]
+          · rw [intersectionVanishing_of_adams R L₃ N h₃ hd₃]
         rw [chi_add_left L₁ L₂ L₃ N f g hf hg he hlength]
         rw [supportDim_eq_max_of_exact f g hf hg he] at hd
         rcases le_total (Module.supportDim R L₁) (Module.supportDim R L₃) with hle | hle

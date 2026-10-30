@@ -3,7 +3,7 @@ public import SerrePositivity.KTheory.G0Localization
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
 public import SerrePositivity.PerfectComplex.FiniteProjectiveResolutions
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
-public import SerrePositivity.CategoryTheory.TriangulatedK0Shift
+public import SerrePositivity.CategoryTheory.TriangulatedK0
 
 /-! # The supported K₀ class of a module resolution -/
 @[expose] public section

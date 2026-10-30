@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
-public import SerrePositivity.CommutativeAlgebra.PerfectoidPTorsion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-! # pの正冪と単元倍によるperfectoidイデアルの比較
 
@@ -70,5 +70,30 @@ theorem perfectoidIdeal_mul_unit_eq (g a : R) (ha : IsUnit a) :
   have hs : Ideal.span {g * a} = Ideal.span {g} := Ideal.span_singleton_mul_right_unit ha g
   exact le_antisymm (perfectoidIdeal_mono R p hR hs.le)
     (perfectoidIdeal_mono R p hR hs.ge)
+
+/-- perfectoidなpねじれ商があれば、p^c g'で消える射からg'のperfectoidイデアルの像はpねじれ。
+商のperfectoid性を単にpの非零因子性から推論しない。 -/
+theorem perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid
+    (R S : Type u) [CommRing R] [CommRing S] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p)
+    (hQ : IsIntegralPerfectoid (S ⧸ pTorsionIdeal S p) p)
+    (f : R →+* S) (g' : R) (c : ℕ) (hg : (p : S) ^ c * f g' = 0)
+    (x : R) (hx : x ∈ perfectoidIdeal R p hR g') : (p : S) * f x = 0 := by
+  let : Algebra.FinitePresentation R (R ⧸ Ideal.span {g'}) :=
+    Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton g')
+  let q := Ideal.Quotient.mk (pTorsionIdeal S p)
+  have hfg : g' ∈ RingHom.ker (q.comp f) := by
+    change q (f g') = 0
+    exact Ideal.Quotient.eq_zero_iff_mem.mpr
+      (hS.p_mul_eq_zero_of_pow_mul_eq_zero S p c (f g') hg)
+  let k : R ⧸ Ideal.span {g'} →+* S ⧸ pTorsionIdeal S p :=
+    Ideal.Quotient.lift _ (q.comp f) ((Ideal.span_singleton_le_iff_mem _).mpr hfg)
+  let hu := isPerfectoidization_toQuotientPerfectoidization R (Ideal.span {g'}) p hR
+  have he := RingHom.congr_fun (IsPerfectoidization.lift_comp hu hQ k)
+    (Ideal.Quotient.mk (Ideal.span {g'}) x)
+  change toQuotientPerfectoidization R (Ideal.span {g'}) p hR
+    (Ideal.Quotient.mk (Ideal.span {g'}) x) = 0 at hx
+  rw [RingHom.comp_apply, hx, map_zero] at he
+  exact Ideal.Quotient.eq_zero_iff_mem.mp he.symm
 
 end SerrePositivity

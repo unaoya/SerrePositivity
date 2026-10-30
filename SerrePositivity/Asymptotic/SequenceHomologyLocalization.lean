@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SequenceHomology
-public import SerrePositivity.CategoryTheory.HomologicalLocalization
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
 
 /-!
 # ホモロジー評価の支持つきランク商への降下

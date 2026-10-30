@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PresentationBaseChange
+public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Defs
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.PerfectComplex.QuotientLength

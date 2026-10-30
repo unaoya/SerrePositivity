@@ -10,13 +10,28 @@ public import Mathlib.Tactic.Linarith
 public import Mathlib.Tactic.LinearCombination
 public import Mathlib.Data.Int.Interval
 
-/-! # Euler 評価に共通する交代和の添字変換
+/-! # 交代和の添字変換と有限台
 
-環や複体に依存しない、整数添字の平行移動と自然数添字への取り直し。
-有限支持でない場合も `finsum` の規約と両立する。
+## 概要
+
+ℤ で添字づけた実数列の交代和について、長完全列の項の並べ替えに伴う添字の付け替えの補題と、整数の区間の外で 0 なら台が有限であること（`finiteSupport_of_bounded_zero`）を与える。
+
+## 方針
+
+finsum の添字の平行移動と区間への制限。圏論は使わない。
+
+## 規約
+
+一般の補題（Mathlib 形式）。名前は裸の `SerrePositivity` 名前空間にあるので、名前空間の整理の段で移す。
+
+## 使われ方
+
+Euler 評価（`Euler`）、KTheory・Asymptotic の Euler 標数。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
+
+section AlternatingSumPart
 
 namespace SerrePositivity
 
@@ -170,3 +185,21 @@ lemma alternatingSum_range_exact (A B C a b d : ℕ → ℤ)
   linarith
 
 end SerrePositivity
+
+end AlternatingSumPart
+
+section FiniteSupportBoundsPart
+
+namespace SerrePositivity
+
+/-- A function zero outside an integer interval has finite support, for any zero-valued target. -/
+lemma finiteSupport_of_bounded_zero {B : Type*} [Zero B] (f : ℤ → B) (a b : ℤ)
+    (hf : ∀ q, q < a ∨ b < q → f q = 0) : Function.HasFiniteSupport f := by
+  apply (Set.finite_Icc a b).subset
+  intro q hq
+  by_contra hnot
+  exact hq (hf q (by simp only [Set.mem_Icc] at hnot; omega))
+
+end SerrePositivity
+
+end FiniteSupportBoundsPart

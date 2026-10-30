@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.CommShiftOfPrecomp
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
 
 /-! # 忠実な前合成による比較自然変換の shift 整合性の反映 -/
 @[expose] public section

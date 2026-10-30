@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.HomotopyCategory
 public import SerrePositivity.LengthAlgebra.Koszul
-public import SerrePositivity.CategoryTheory.HomologicalEuler
+public import SerrePositivity.CategoryTheory.Euler
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 

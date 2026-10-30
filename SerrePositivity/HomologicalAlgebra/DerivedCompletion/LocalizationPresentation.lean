@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.LocalizationTelescope
+public import SerrePositivity.CommutativeAlgebra.Adic.Telescope
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.Algebra.Category.ModuleCat.Ext.HasExt

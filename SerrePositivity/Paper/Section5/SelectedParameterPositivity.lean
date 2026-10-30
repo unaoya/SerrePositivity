@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section5.CoreLengthPositivity
-public import SerrePositivity.Paper.Section5.ParameterChoice
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Avoidance
 
 /-! # パラメータを内部で選ぶ核心の正値性
 

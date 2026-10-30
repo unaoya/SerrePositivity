@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.QuotientBaseChange
+public import Mathlib.LinearAlgebra.TensorProduct.Quotient
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
@@ -52,7 +52,7 @@ theorem samuelFunction_module_baseChange_of_map_maximalIdeal
       HilbertSamuel.samuelFunction A (maximalIdeal A) M n := by
   unfold HilbertSamuel.samuelFunction
   rw [← hm, ← Ideal.map_pow,
-    (quotientBaseChangeEquiv A B M ((maximalIdeal A) ^ n)).length_eq]
+    (tensorQuotMapSMulEquivTensorQuot M B ((maximalIdeal A) ^ n)).length_eq]
   exact length_baseChange_of_map_maximalIdeal A B hm _
 
 include hm in

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CategoryTheory.IteratedCone
+public import SerrePositivity.HomologicalAlgebra.NullHomotopy
 
 /-! # 任意の複体の Koszul 塔と抽象的な反復錐
 

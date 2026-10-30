@@ -1,4 +1,4 @@
-import SerrePositivity.CategoryTheory.TriangulatedK0Shift
+import SerrePositivity.CategoryTheory.TriangulatedK0
 import SerrePositivity.KTheory.ResolutionClass
 import Mathlib.Util.AssertNoSorry
 

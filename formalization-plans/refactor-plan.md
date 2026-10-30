@@ -13,6 +13,10 @@
 
 - ビルド：群ごとには新しいファイル単体と直接の利用先だけをビルドする。全依存ビルドは複数の群をまとめて一回にし、通るまでコミットしない
   （全依存の半分は BhattScholze の重いモジュール）。新しいファイルの確認は `lake build` で行う（module のファイルに `lake env lean` は使わない）。
+- 群ごとの確認ビルドの範囲（2026-10-30）：新しいファイル単体（組み立ての誤りを早く拾う）と、論文の層の直接の利用先だけ。BS/CLMST・∞ 側の
+  importer は import 行と参照の機械的な書き換えなので、区切りの最後の全依存ビルドに任せる。論文の層の確認ビルドは数群ぶんまとめて 1 回にする。
+  下の層の docstring だけの手直しは、下流の再ビルドを起こすので区切りの最後にまとめる。
+  ただし定義や宣言の中身を変える群（置き換え・改名・定義の差し替え）は、変えた名前を実際に使うファイル（BS/CLMST を含む）だけを群の中でビルドして確かめる。
 - BhattScholze/・CLMST/（別セッションの管轄）：モジュールの統合・改名に伴う import 行の書き換えと、改名・削除した宣言の参照の書き換えは
   行ってよい。証明の中身は変えない。BS/CLMST 分は独立したコミットにし、旧→新の対応表をメッセージに書く。例外として、BS の作業時間（E）には
   コーディネータが BhattScholze/ にファイルを置く・移す（IteratedTensor*、CLMST の BS 依存の基礎、CA の BS 依存のもの）。
@@ -159,8 +163,9 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | --- | --- |
 | LinearAlgebra・FieldTheory・RingTheory | 見直し完了（2026-10-29） |
 | CommutativeAlgebra の G・A・F・C1〜C3・B1・B2 | 完了（§2.1） |
-| 段階 0 の区切り 0 | 完了（65f178a5b・7820689c7。全依存ビルドと監査を通した）。追加分 8 本は未着手 |
-| CommutativeAlgebra の D・E・H・X | 計画（E は決定済み、§2.6） |
+| 段階 0 の区切り 0 | 完了（65f178a5b・7820689c7、追加分 8 本も完了） |
+| 区切り 1-1（CT トップ階層・CA の E・D・X・H の BS に依存しない部分・Inputs の包み・Paper の一般論の一部） | 完了（2026-10-30、記録は下の表と「区切り 1-1 で見送った項目」） |
+| CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -170,7 +175,26 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | --- | --- | --- | --- |
 | B1+B2（参考） | 7242dc7f7・e0308bb75 | CA で約 70 本を約 30 本に | — |
 | 区切り 0 | 65f178a5b・7820689c7 | 73 本を削除（shared の対象 1407 → 1367 モジュール） | −2434・＋295（import の展開） |
+| 区切り 1-1 | （コミット後に記入） | 203 本を削除・55 本を新設（CT 68 → 20、CA の E・D・X・H 約 120 → 約 35、Inputs 6 本を削除、shared の対象 → 1156 モジュール） | −19100・＋17583 |
 
+
+区切り 1-1 で見送った項目（2026-10-30）：
+
+- 他の区切りへ：Almost（CA/Almost と LengthAlgebra/Almost* を一つの群として 1-3）。SubmoduleExact（1-4、KTheory）。MinimalGenerators・PerfectTorIndependence/Basic（1-2、HA）。
+  Lemma3_5 の `radical_span_eq_maximalIdeal`・`isKoszulResolution_of_regular` と GaloisNormalization の private `powerSeriesMapEquiv`・`wittMapEquiv`
+  （節の変数に依存するので Paper の再編 1-4 で）。H の P1（IntegralPerfectoid・Perfectoidization*）・P8・Perfectoidization の Inputs（2a）。
+- 移し先を保留：ConductorQuotient（利用者が PerfectComplex/QuotientLength なので Paper へ移すと層が逆転する）、AlgebraMapCokernel、LocalResidueLinearMap、
+  PrincipalMaximalFactorization、FrobeniusHypersurfaceGrowth・FrobeniusKoszulLimit。
+- Mathlib への置き換えを見送ったもの：`perfectClosure_lift_of`（Mathlib に対応する補題がない）、`principalAnnihilator`（所属の補題 a·z = 0 の形を多く使う）。
+  `tiltRootEvaluation`（MonoidHom として使う）。
+- 未使用だが残したもの（BS への供給）：Fontaine 核の分離性の連鎖（`IsIntegralPerfectoid.fontaine_kernel_isHausdorff` ほか 10 宣言、Perfectoid/Fontaine）。
+  BS の `wittRegularQuotientFontaineMap_surjective`・`_bijective` の仮定 `IsHausdorff (ker θ)` を満たす唯一の証明で、audit_f7 が確認する
+  （2026-10-30 ユーザー、一度削除して戻した）。`perfection_principal_quotient_zero_branch` は削除した（audit_f6 の該当定理も）。
+- 未使用だが残したもの：Support/Closed の `supportPullback` の関手性（id・comp・mono）、PerfectRing の `radicalIdeal_idempotent_*`（提出候補）、
+  PerfectPolynomial の `perfectPolynomialHomEquiv`・`perfectPolynomial_hom_ext`、`compatibleRootsTilt_coeff`（simp 補題）。
+- 未決：E の共通モデルの重複の共通化と一様な冪の補題の一本化をどの区切りで行うか。
+- 計画からの変更：ModuleSupport も Support/Closed に入れた（ModuleClosedSupport との import の循環を避けるため）。冪ねじれ 5 本は D の既存ファイルではなく
+  新しい PowerTorsion/{Basic, Category} にまとめた。Paper の PerfectApproximation は CA/Perfection/Approximation へ、核の長さの評価だけ Paper に残した。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
@@ -214,6 +238,9 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
    Asymptotic/PaperVanishing も残る）。(i) 論文の番号付きの主張（Theorem4_7・Corollary2_6・Lemma3_4・Lemma2_4）は残し、主経路をこれらにつなぎ直して
    重複を消す（提案。区切り 1-4 の前に確認）（2026-10-30）。(b) ~~ディレクトリ名~~ → Section2〜5 は
    論文の節に合わせて残す（C の規約の例外、2026-10-30）。ファイル名は内容の名前、論文の番号は docstring に書く。
+
+9. ~~CLMST の Claim 2.4.8（§8.2.3）~~ → (a)：一般形（FiniteFreeConeIsogeny）を HA へ下ろし、論文側（Prop247/ConstantRank 付近）に Claim 2.4.8 の
+   薄い入口（一般形を論文の記号で言い直すだけ）を残す。使い手のない有限代数版 `finiteAlgebraConeIsogeny` は削除する（2026-10-30）。
 
 ## H. 最新の Mathlib で直す必要がある箇所（記録）
 
@@ -472,6 +499,7 @@ C1〜C3 は一回の全依存ビルド（388 モジュール）と監査を通�
 決定（2026-10-30）：
 
 1. `IsModuleSTorsion` は廃止して `Module.IsTorsion'` に置き換える（案 a）。KTheory 5 本・ModuleSupport・InfinityCategories の参照を書き換える。
+   ∞ 側の InfinityCategories/Derived/Localization の参照もコーディネータが書き換え、∞ 側に対応表を伝える（2026-10-30、(i)）。
 2. `awayModuleMap` は名前を残し、定義を `LocalizedModule.map (.powers g) f` の abbrev にする。
 3. EtaleAway の `[IsLocalization.Away g Rg]` 形への書き換えは E の中で今やる。ただし CLMST は `hetaleB` を型の中で使う
    （`prop247_rankSourceImage … hetaleB n` など）ので、既存の主張は変えない。一般形（任意の `IsLocalization.Away` の
@@ -497,6 +525,10 @@ C1〜C3 は一回の全依存ビルド（388 モジュール）と監査を通�
 | TensorProduct/BaseChange | FiniteProductBaseChange・TensorRingEquiv・PresentationBaseChange |
 
 - 層の順序は Adic/Reduction → HomologicalAlgebra → CompletelyFlat/{Basic,PowerTorsion} → CompletelyFlat/Criterion。Adic/Reduction と Criterion を同じファイルにすると、HomologicalAlgebra の DerivedQuotientBaseChange・RegularPrincipalTor を経て循環する。
+- 決定（2026-10-30）：(1) 統合は表のとおり。(2) `adicQuotientAlgebra` の Mathlib の instance への置き換えは区切り 2a に回さず今行う。(3) 降下定理は
+  一般イデアル版を本体にし主元版を系に。(4) Mathlib への置き換えは BS が使う名前（`quotientTensorReductionEquiv` など）も本体を差し替える（名前は残す）。
+  (5) 未使用は提出候補（`surjective_of_faithfullyFlat_adicReduction`・`isCompletelyFlat_nilpotent_iff_flat`）を残して削除。BS の証明は必要な範囲で
+  修正してよい（ユーザー許可、BS 分は独立コミットで変更箇所の一覧を付ける）。
 - 外へ回す：SeparableBaseChange → FieldTheory（FractionRingBasis と組む）。GenericEtale → エタール（E の Away と調整）。GeometricFiber・GeometricTransitivity → Galois・不変元（`Inputs/Descent` の近く）。FlatTensorFiltration → Adic/Completion。FlatRegularQuotient → 正則列。FinitePresentationTorsionCover・PresentationBaseChange → PowTorsion・LengthAlgebra 寄り。
 - 降下定理の扱い（以前の方針「PrincipalAdicFaithfulDescent は並行コピーなので除去」は実態と合わない）：使われているのは主元版（`surjective_algHom_of_principal_residue_baseChange` を BS/Semiperfectoid/Surjectivity が使用、`principalAdicQuotientAlgebra` 52 件など）で、一般イデアル版の定理は外部参照 0 件。降下定理は一般イデアル版 1 本にし、主元版を `Ideal.map_span` を介した系にする。`principalAdicReductionEquiv` は `adicReductionEquivAlgebraQuotient ≪≫ Ideal.quotientEquivAlgOfEq` として定義する。
 - Mathlib への置き換え（固定版と最新版に差なし）：`adicReductionMap` → `LinearMap.reduceModIdeal`（確度高、BS/CLMST の参照なし）。`adicQuotientAlgebra` は Mathlib の instance `Ideal.Quotient.algebraQuotientMapQuotient` と定義が同じ（BS 35 件なので deprecated な別名を経由）。`ker_pi_eval_eq_span_one_sub_single` → `RingHom.ker_evalRingHom`。`ideal_map_isIdempotent` → `IsIdempotentElem.map` と `Ideal.mapHom`。`tensorMapOfCompatibleBase` → `Algebra.TensorProduct.mapRingHom`。`quotientTensorReductionEquiv` は `quotTensorEquivQuotSMul` の `extendScalarsOfSurjective`（名前は残し本体を差し替え）。自前の `map_smul'` の証明 4 つ → `extendScalarsOfSurjective`。`baseChangeQuotEquiv` → `TensorProduct.AlgebraTensorModule.tensorQuotientEquiv` から作る（確度中）。`baseChangeIdealQuotientEquiv` はインライン化候補。
@@ -1956,6 +1988,30 @@ O(s) の列の f/s は超フィルターに沿って収束する（`normalizedLi
   MonicRelationRegularSequence など、§2.8.1）も同じ作業時間に BS 側へ移す。
 - `prop247_` の接頭辞は一般の事実にも付いている（`prop247_isIntegralPerfectoid_idempotent_quotient`・`prop247_completion_unit_surjective`・
   `prop247_awaySpectrumHomeomorph` など）。下ろすときに数学の内容の名前へ改名する。
+
+### 8.2.3 Prop 2.4.7・Claim 2.4.8・Prop 2.4.9 まわりの補足（2026-10-30 の確認）
+
+- 前提（`#print axioms`・`#print sorries` で確認済み）：`CLMST.Inputs.proposition_2_4_7`（2.4.7）と `CLMST.perfectoidIdeal_powerTorsionTorInput`
+  （2.4.9(a)、主イデアル版）の sorry の出どころは `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` だけ。`CLMST.finiteFreeConeIsogeny`
+  （Claim 2.4.8）の公理は標準の 3 つだけ。import の閉包では 2.4.9(a) は 2.4.7 から独立（Corollary404 の閉包に Prop247* は入らない）。共有するのは
+  述語 `KLFiniteComparisonExcision` と PerfectoidEtaleCommonCover。2.4.9(b)（almost 忠実性）とその系、Thm 4.0.3(b) は形式化しておらず、主経路で
+  使わないので対応不要。
+- **Prop 2.4.9(a) の主張の置き場所**：`perfectoidIdeal_powerTorsionTorInput` は CLMST/KLFiniteComparisonExcision.lean:76 にあり、§8.2.2 の表は
+  このファイル全体を BS/Perfectoidization へ送っている。ファイルを分ける：excision の証明 `klFiniteComparisonExcision_of_perfectoid` は BS へ、
+  主張 `perfectoidIdeal_powerTorsionTorInput` は論文側（§8.3 の Thm403a か 2.4.9(a) 専用のファイル）へ。主張の側は論文側の KLCohomologyFromExcision
+  ほかを使うので、BS へ移すと層が逆転する。区切り 2a の手順に入れる。
+- **同じ述語の証明が 2 つ**：`prop247_finiteComparison_excision`（CLMST/Prop247Proof.lean:42）と `klFiniteComparisonExcision_of_perfectoid`
+  （CLMST/KLFiniteComparisonExcision.lean:39）は、どちらも `KLFiniteComparisonExcision R p` を、BS Cor 8.12 の excision に導来完備性と主局所化の
+  条件を与える形で証明している。今は後者のファイルが論文側の KLCohomologyFromExcision を import しているので Prop247Proof から使えない。上の分割で
+  後者を BS へ移せば import できるので、一本化する（区切り 2a）。
+- **古い docstring**（§8.3 の統合のときに直す）：`KLFiniteComparisonExcision` の定義（CLMST/KLAicTorFromExcision.lean:39）の「Unproved excision input …
+  the pullback assertion has not」、Prop247 系（ConstantRankExcision・ExcisionLocal・CanonicalRankDescent・RankData・RankComponentExcision など）と
+  KLAicTorFromExcision・KLOriginalTorFromExcision・CanonicalExcisionTorInput・KLCohomologyFromExcision の「条件付き」「未供給入力」「明示入力のまま」、
+  CLMST/Inputs/PerfectoidIsogeny の「元の文献入力と同じ署名」、Inputs/CLMST の「文献入力は CLMST/Inputs/」。いずれも今は証明済みのものを指している。
+  2.4.7 の証明が Rem 2.4.6（Σ_r Galois 閉包）の代わりに Zariski 局所的な分解と Cor 8.12 を使っていることは、統合後のファイルの docstring に残す
+  （解説の段落 par:bs-cor812 と同じ内容）。
+- **Claim 2.4.8 の扱い**：§8.2.1 は FiniteFreeConeIsogeny を HA/TwoTermConeAnnihilator に下ろすので、論文の番号は docstring にしか残らない。
+  有限代数版 `finiteAlgebraConeIsogeny` は使い手がない。論文側に薄い入口を残し、`finiteAlgebraConeIsogeny` は削除する（G の 9 で決定）。
 
 ### 8.3 論文（B）の構成
 

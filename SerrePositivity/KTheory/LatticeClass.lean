@@ -23,7 +23,7 @@ lemma mk_iso {M N : SupportedFGModuleOn Z} (e : M.obj ≅ N.obj) : mk (P := P) M
   unfold mk
   rw [G0WithSupport.mk_iso e]
 
-lemma mk_torsion (M : SupportedFGModuleOn Z) (h : IsModuleSTorsion P M.obj) : mk (P := P) M = 0 :=
+lemma mk_torsion (M : SupportedFGModuleOn Z) (h : Module.IsTorsion' M.obj P) : mk (P := P) M = 0 :=
   (QuotientAddGroup.eq_zero_iff _).mpr (mk_mem_localizationTorsionSubgroup P Z M h)
 
 lemma mk_shortExact (E : SupportedModuleShortExact Z) :
@@ -36,7 +36,8 @@ variable {P Z} {N : Type u} [AddCommGroup N] [Module R N]
 namespace SupportedLocalizationLattice
 /-- If one lattice is contained in another, their quotient is localization torsion. -/
 lemma quotient_torsion (L U : SupportedLocalizationLattice P Z N) (h : L.carrier ≤ U.carrier) :
-    IsModuleSTorsion P (U.carrier ⧸ LinearMap.range (Submodule.inclusion h)) := by
+    Module.IsTorsion' (U.carrier ⧸ LinearMap.range (Submodule.inclusion h)) P := by
+  rw [isTorsion'_iff_forall]
   intro x
   obtain ⟨n, rfl⟩ := (LinearMap.range (Submodule.inclusion h)).mkQ_surjective x
   obtain ⟨s, hs⟩ := L.denominators n

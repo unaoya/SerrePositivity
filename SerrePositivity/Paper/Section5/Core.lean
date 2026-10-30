@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section5.GaloisNormalization
 public import SerrePositivity.Paper.Section5.NormalizationPositivity
+public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
 /-!
 # 完備・代数閉剰余体の場合の核心定理
@@ -20,18 +21,6 @@ namespace SerrePositivity.Section5
 open IsLocalRing
 
 set_option synthInstance.maxSize 2048
-
-/-- 有限次元の環の Krull 次元を自然数として取り出す。 -/
-private lemma exists_nat_ringKrullDim (S : Type*) [CommRing S] [FiniteRingKrullDim S] :
-    ∃ n : ℕ, ringKrullDim S = n := by
-  obtain ⟨d, hd⟩ := WithBot.ne_bot_iff_exists.mp (ringKrullDim_ne_bot (R := S))
-  have hdt : d ≠ ⊤ := by
-    intro h
-    apply ringKrullDim_ne_top (R := S)
-    rw [← hd, h]
-    rfl
-  obtain ⟨n, hn⟩ := ENat.ne_top_iff_exists.mp hdt
-  exact ⟨n, hd.symm.trans (congrArg (fun x : ℕ∞ ↦ (x : WithBot ℕ∞)) hn.symm)⟩
 
 /-- 正次元の素イデアル商が固有に交わる核心の場合の正値性。
 正規化基底、有限拡大、群作用の選択はすべてこの証明の内部で行う。 -/
@@ -62,8 +51,8 @@ theorem core_of_complete_algClosed
     charP_of_injective_ringHom (f := eP.toRingHom) eP.injective p
   let : CharP (ResidueField (R ⧸ Q)) p :=
     charP_of_injective_ringHom (f := eQ.toRingHom) eQ.injective p
-  obtain ⟨h, hPdim⟩ := exists_nat_ringKrullDim (R ⧸ P)
-  obtain ⟨e, hQdim⟩ := exists_nat_ringKrullDim (R ⧸ Q)
+  obtain ⟨h, hPdim⟩ := exists_nat_ringKrullDim_eq (R ⧸ P)
+  obtain ⟨e, hQdim⟩ := exists_nat_ringKrullDim_eq (R ⧸ Q)
   have hh : 0 < h := by exact_mod_cast (hPdim ▸ hP)
   have he : 0 < e := by exact_mod_cast (hQdim ▸ hQ)
   obtain ⟨A₀, D, a₀Ring, a₀Reg, a₀Complete, dRing, dDomain, dLocal, dComplete,
