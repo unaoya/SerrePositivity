@@ -44,10 +44,11 @@
 | 種類 | 本数 | 処置 |
 | --- | --- | --- |
 | `example` で API の形を確かめるもの | 363 | 残す。散らばっているもの（Endomorphism 109・Morita 97・Verdier 20・Perfect 14）を `DifferentialGraded/Checks/<単位>/` へ移す |
-| `#print axioms` だけ | 278 | **削除**（決定）。dg.lean の再生成で代替 |
-| 宣言を持つもの | 11 | 名前つきの定理（10 本の検査に 1〜3 個ずつ）と `Checks.Acceptance` の反例 11 個：定理は Derived・Tensor の本体へ移す（分割の道具で、宣言を変えずに）。反例は Checks/ に残す |
-| U12e 中断の検査入口 | 67 | `SerrePositivity/Archive/DifferentialGraded/Checks/U12e/` へ移す。名前つき定理を持つ 10 本は、先に定理を本体へ |
-| 文書化された受入の入口 | 5 | `Morita/U16Checks`・`Verdier/ChecksU17Integration`・`Checks/U12eLocal`・`Checks/StageSeven`・`StageEight` は残す（D2 で Stage の import を付け替える） |
+| `#print axioms` だけ | 275 | **削除**（決定）。dg.lean の再生成で代替 |
+| 宣言を持つもの | 1 | `Checks.Acceptance` の反例 11 個。Checks/ に残す。（名前つき定理を持つ 10 本は U12e 中断の検査で importer が 0 なので、定理を抜き出さずファイルごと Archive へ。10-30 に変更） |
+| U12e 中断の検査入口 | 68 | `SerrePositivity/Archive/DifferentialGraded/Checks/U12e/` へ移す。同じ印を持つ本番モジュール 7 本（`Derived/*Restriction*`・`Resolution/*Comparison*` 等）は本番から使われているので対象外 |
+| 文書化された受入の入口 | 5 | `Checks/U12eLocal`・`Checks/StageSeven`・`StageEight` はそのまま、`Morita/U16Checks` は `Checks/Morita/` へ、`Verdier/ChecksU17Integration` は動かさず D3 で Asymptotic へ（D2 で Stage の import を付け替える） |
+| import だけの検査の集約 | 1 | `Morita/ScalarExtensionAcceptanceChecks` は `Checks/Morita/` へ move（E と同じ扱い） |
 
 - 判定の規則：Checks/ の下、または basename が `Checks?`・`Audit`・`Acceptance` に当たるもの。中身は、コメントを除いた本文に `example` があるか、`#print axioms` 以外のコマンドがあるか、宣言があるか、docstring に `U12e-general（中断）` があるか、で分ける。
 - 前提：D0。検証：削除・移動の後に dg.lean を再生成して通る。移した定理の保存検査。工数：8〜16h。

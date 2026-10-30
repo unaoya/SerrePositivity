@@ -102,3 +102,16 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 - `scripts/audit/dg.lean` の手編集、他の area の監査の変更。
 - 他のセッションのファイルへの変更（DG の外は import 行だけ）。
 - main の作業木での作業・ビルド。
+
+## 8. 追記（2026-10-30、§3.1 の差異報告への回答）
+
+Codex の予備集計（P 275・E 362・T 候補 12・U 68・K 5・未定 1、計 650）を受けて、規則を次のとおり確定する。§3.1〜§3.2・§4 はこの追記が優先する。
+
+1. **無名の instance は T にしない。** `local instance : … := …` のような名前のない instance は検査の準備なので、T の条件は「名前つきの `theorem`・`lemma`・`def`・`structure`・名前つき `instance`」に限る。`Checks/DerivedRing` は `example` を持つので E。
+2. **import だけの集約（`Morita/ScalarExtensionAcceptanceChecks`）は E 扱いで move。** 移し先は `Checks/Morita/ScalarExtensionAcceptanceChecks.lean`（集約先の 39 本と同じ単位）。import 行は移動先に合わせて書き換える。利用者は `Morita/U16Checks` と `scripts/audit/dg.lean` だけ。
+3. **U は docstring の `U12e-general（中断）` を規則とし、68 本でよい。** 指示書の 67 は調査時の数え方の差。なお同じ印を持つ本番モジュールが 650 の外に 7 本ある（`Derived/{BimoduleEndpointRestriction, BimoduleSimultaneousRestriction, PairedRestrictionCoherence, PairedRestrictionIdentification}`・`Resolution/{CompositionChange, CompositionComparison, DiagonalComparison}`）。これらは本番の `Derived/DiagonalRestriction*` から使われているので D1 の対象ではない。一覧 JSON には含めず、報告に「対象外」として記す。
+4. **U∩T の 10 本（`Checks/DGAssociator*`・`DGLeftUnitRestriction`・`DGRestrictionModelCalculation`）は定理を抜き出さず、ファイルごと Archive へ。** 確認した：いずれも importer が 0 で、中断した単位の検査である。Archive に全文が残るので失われない。したがって **§3.2-1 の `split_module.py` による抜き出しは行わない**（extract は `Checks/Acceptance` だけで、それは Checks/ に残す＝実質 keep）。
+5. **K の扱い。** K は「削除・Archive しない」の意味で、場所は次のとおり。`Checks/U12eLocal`・`Checks/StageSeven`・`Checks/StageEight` はそのまま。`Morita/U16Checks` は `Checks/Morita/U16Checks.lean` へ move（集約 2 と同時）。**`Verdier/ChecksU17Integration` と `Verdier/ChecksOrderSquare` は動かさない**（D3 で `OrderSquare` と一緒に Asymptotic へ上げる）。この 2 本は §4-4 の例外とする。
+6. **件数の期待値は目安。** 合計 650 が合い、各種類が上の規則で説明できれば、実測値（P 275・E 363・T 1（Acceptance）・U 68・K 5）で進めてよい。一覧 JSON の `kind` は P/E/T/U/K、`action` は delete/move/keep/archive（extract は使わない）。
+
+このうえで §6-1 の報告（一覧 JSON の件数、delete・archive 対象の利用者の確認）を出す。定理の移し先の案は不要になった。
