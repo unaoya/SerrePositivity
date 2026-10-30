@@ -93,3 +93,20 @@
 - CategoryTheory のトップ階層の残り（Karoubi・三角圏・t 構造・Euler・K₀ など）は論文の層の側で整理する。それらのファイルは §1 のファイルを import
   しない見込みだが、作業の前に互いに確かめる。
 - 詳細の正本：`formalization-plans/refactor-plan.md` 第 1 章 §1.3（今後こちらでは更新しない。以後の正本はそちらの計画）。
+
+## 5. 追加の伝達：HomologicalAlgebra/ComplexLimits/ の 3 本（2026-10-30）
+
+ユーザーの決定により、次の 3 本も ∞ 基盤の側へ渡す。論文の層の側では触らない。
+
+| ファイル | 行 | import | importer |
+| --- | --- | --- | --- |
+| HomologicalAlgebra/ComplexLimits/ExtendTruncationHom | 53 | `KST.LocalizingInvariants.CochainConnectiveLift`・Mathlib `Algebra.Homology.Embedding.Extend` | 下の 2 本、`EInfinity/ComplexLimits/ExtendTruncationHom` |
+| HomologicalAlgebra/ComplexLimits/ExtendTruncationHomNaturality | 45 | 上の 1 本 | 下の 1 本、`EInfinity/ComplexLimits/ExtendTruncationHomNaturality` |
+| HomologicalAlgebra/ComplexLimits/TruncationInclusionNaturality | 61 | 上の 1 本 | `EInfinity/ComplexLimits/TruncationInclusionNaturality`、`InfinityCategories/Derived/CoherentBar/Compact/PinchedCohomologyNaturality` |
+
+- 名前空間は `SerrePositivity.EInfinity.ComplexLimits`。KST を import しているので、HomologicalAlgebra に置くと層が逆転する
+  （論文の層の HomologicalAlgebra は ∞ 基盤より下）。
+- `EInfinity/ComplexLimits/{ExtendTruncationHom, ExtendTruncationHomNaturality, TruncationInclusionNaturality}` は同名の再エクスポートの殻
+  （commit fcc305646 で作られた互換ファイル）。実体を EInfinity/ComplexLimits/ へ移して殻と置き換えるのが自然。
+- 論文の層の側（BhattScholze・CLMST・Paper ほか）は 3 本を import しない。`scripts/audit/shared.lean` が import しているので、移したら
+  `python3 scripts/make_area_audits.py` で再生成する。

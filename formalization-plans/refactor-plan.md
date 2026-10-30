@@ -2,7 +2,7 @@
 
 概要：論文の層（`SerrePositivity/` のうち BhattScholze・∞ 圏の基盤を除く部分と、CLMST）について、ファイルの統合、死んだファイル・未使用の
 宣言の削除、Mathlib への置き換え、重複の一本化、層の順序の修正、Mathlib への提出候補を一つにまとめた計画。前半（A〜H）が全体の方針と順序、
-後半（第 1〜9 章）がディレクトリごとの詳細。ディレクトリごとの調査（2026-10-29〜30、読むだけ）の結果を元にしている。
+後半（第 1〜11 章）がディレクトリごとの詳細。ディレクトリごとの調査（2026-10-29〜30、読むだけ）の結果を元にしている。
 方針：群ごとに提案 → ユーザーの承認 → 実装 → 新しいファイル単体と直接の利用先のビルド → 区切りで全依存ビルドと監査 → コミット。
 規約：Mathlib の確認は固定版（2026-10-07、`.lake/packages/mathlib`）と最新版（2026-10-28、`/tmp/mathlib-latest`）の両方で行った。
 提出候補は [mathlib-upstream.md](mathlib-upstream.md) の G 番号の表に移してから扱う。この文書だけで作業が再開できるように書く
@@ -26,6 +26,13 @@
 - 統合の手順：旧ファイルは `git show HEAD:` か作業木から読み、`section` で包んで新しいファイルに組み立てる（モジュールの docstring がない
   ファイルに注意）。旧→新の対応で import のグラフを縮約して閉路を調べてから import 行を一括で書き換える。`@[expose]` の有無は元のファイルに
   合わせる（`@[expose]` で証明が止まることがある）。
+- 順序の正本：作業の順序は E が正本。各章の「順序」の節は章の中の作業順だけを示す（E と食い違うときは E に従う）。
+- 区切り：E の段階は「区切り」の単位で進める。1 区切り＝提案・承認 → 実装 → 全依存ビルド 1 回 → 監査 → コミット。区切りを閉じる条件：
+  全依存ビルドが通る、shared の sorryAx が許可された引用経由の 59 から増えない、audit_axioms で主定理の公理が変わらない、消した・改名した
+  宣言を監査が参照していない、ファイル数と行数の前後を記録する（F）。
+- 提出候補の転記：区切りを閉じるたびに、その区切りで扱った章の「提出候補」を mathlib-upstream.md の G 番号の表へ移す。
+- ∞ 基盤との境界：区切りに入る前に、触るファイルと ∞ 基盤の側（[handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md) の対象、
+  InfinityCategories・HomotopicalAlgebra・KST・EInfinity・Spectra・DifferentialGraded）が import し合っていないかを確かめ、あれば先に伝える。
 - コミットとプッシュ：`git commit --only` か慎重な stage。広い `git add SerrePositivity` はしない。並行セッションの未追跡ファイル・exposition/
   の変更は含めない。プッシュはユーザーの判断。
 
@@ -54,7 +61,8 @@ Mathlib
 | 逆らっている依存 | 解き方 | 章 |
 | --- | --- | --- |
 | CT → HA（ScalarSupport → NullHomotopy、TruncationTriangle → StupidTruncation） | 一般の補題 2 つを CT へ。StupidTruncation は Mathlib を上げるまで保留 | §1.2.1 |
-| CT の Nerve*・Simplex/Chains ↔ HomotopicalAlgebra/Simplicial | 境界は決定待ち（∞ 基盤と合わせる） | §1.2.1 |
+| CT の Nerve*・Simplex/Chains ↔ HomotopicalAlgebra/Simplicial | ∞ 基盤の側で Nerve 9 本を HomotopicalAlgebra/Simplicial へ移す（R76） | §1.3・G の 4 |
+| HA/ComplexLimits/*（3 本）→ KST（名前空間は EInfinity） | ∞ 基盤の側へ渡した（伝達文 §5） | §3.2.1 |
 | CA → BhattScholze（PerfectoidIdeal 系・AbsolutelyIntegrallyClosedPerfectoidQuotient・MonicRelationRegularSequence ほか） | BS 側へ移す（E の作業時間） | §2.8・§8.2.2 |
 | CA/Koszul/RegularEuler → IM.ResolutionEvaluation | ResolutionEvaluation の前半（`chiLam`・`chiOrd`）を PC へ、`chi` を下ろす | §5.2 |
 | CA/KoszulMultiplicity/Formula → LA.ConeCompositionEuler（`lambdaEuler_scalarCone_pow`） | ConeCompositionEuler の λ の錐の補題を LA の核へ | §5.2 |
@@ -62,7 +70,7 @@ Mathlib
 | PC ↔ KTheory の相互依存 | PC を下に。`PerfectModuleResolution`・`mk_shift` を PC へ、IntegerEuler 系・Adams の Koszul・FiniteProjectiveResolutions を KTheory へ | §4.5.1・§6.2.5 |
 | PC/TensorTorComparison → IM.Basic | `chi`（50 行）を HA/Tor の近くへ | §5.2 |
 | BS/Almost/PerfectoidAlmost → CLMST.Almost、Paper/Section2/MixedPerfectoid → CLMST.Algebra | Almost・MixedPerfectoid を BS 側へ | §8.5 |
-| DifferentialGraded/Verdier/OrderSquare → Asymptotic（ビルドされない連鎖） | DifferentialGraded の整理で扱う | §7.1 |
+| DifferentialGraded/Verdier/OrderSquare → Asymptotic（ビルドされない連鎖） | ∞ 基盤の側（DifferentialGraded）の整理で扱う | §7.1 |
 
 ## C. 名前の規約（全章に共通）
 
@@ -103,25 +111,28 @@ Mathlib
 ## E. 段階と順序
 
 **段階 0：殻と死んだファイルの一掃**（BS の再ビルドはほぼ起きない。CLMST の分は段階 2 へ）
-再エクスポートだけのファイルと死んだファイルをまとめて削除し、利用者の import を実体へ張り替える：PC の 33 本（§4.2.1・§4.3.1・§4.4.1）、CT の 29 本
-（ただし ∞ 基盤へ渡した §1.3 の下位ディレクトリ・Nerve まわり・トップ階層の殻 7 本・Spectra の殻 4 本は除く。[handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md)。こちらで消すのは EulerTheory など）、KT の 9 本（§6.2.1・§6.3）、HA の約 10 本（§3.4.1・§3.5.1・§3.6.1 ほか）、LA の死んだ連鎖 7 本
-（§5.5）、Asymptotic の 6 本と Paper/Section4/Foundations（§7.3）、EInfinity/ComplexLimits の殻（§3.2.1）。あわせて確度高の Mathlib への置き換え。
+- 区切り 0：再エクスポートだけのファイル 49 本（機械的に検出：PC 33・KT 9・HA 3・CA 1（PerfectTorIndependence）・LA 1・CT 1（EulerTheory）・
+  Paper/Section4/Foundations）と死んだファイル 24 本（HA 7・KT 5・LA 8・Asymptotic 4）を削除し、利用者の import を殻の中身へ展開して張り替える。
+  dévissage の不要な import を外す（G の 5）、`PerfectComplex/K0.lean` の docstring（G の 6）。Asymptotic/PaperVanishing は Paper/Section4/FlatRealization が
+  使うので残した（§9.5）。∞ 基盤へ渡したもの（CT の下位ディレクトリ・Nerve・殻 11 本、HA/ComplexLimits、EInfinity の殻）は対象外。
+- 区切り 0b：確度高の Mathlib への置き換え（各章の「Mathlib との重なり」の確度高のもの、30 件程度）。中身の書き換えなので区切り 0 と分ける。
 
-**段階 1：BS に触れない統合（下の層から）**
-1. CT のトップ階層（§1.2）。D の 1（Euler・K₀ の一般 API）と 3（純な対象の同型）を含む。
-2. CA の残り：E（§2.6）・D・H・X のうち BS に依存しないもの（§2.7〜§2.9）。
-3. HA の第一層（§3.7）。
-4. LA の核・PC・IM の層の整理（§5.2・§4.5）を全依存ビルド 1 回で。続けて PC（§4）・LA と IM（§5）の統合。
-5. KTheory（§6）。
-6. Asymptotic（§7）。
-Paper に紛れている一般の補題（第 9 章）は、行き先の群（CA の残り・LA）の作業と同時に下ろす（§9.6）。
-CT の下位ディレクトリ（§1.3）と Nerve まわりは ∞ 基盤の指示書で行う（伝達済み、handover-ct-to-infinity-2026-10-30.md）。
+**段階 1：BS に触れない統合（下の層から、区切りは 4 つ）**
+- 区切り 1-1：CT のトップ階層（§1.2。Euler・K₀ の一般化と純な対象の同型は除く）と CA の残り（E §2.6、D・H・X のうち BS に依存しないもの
+  §2.7〜§2.9）、Paper の一般の補題のうち CA へ行くもの（§9.2）。
+- 区切り 1-2：HA の第一層（§3.7）。
+- 区切り 1-3：D の 1（Euler・K₀ の一般 API、§1.2）と D の 3（純な対象の同型）、LA の核・PC・IM の層の整理（§5.2・§4.5）、PC（§4）・LA と IM（§5）の
+  統合、Paper の一般の補題のうち LA へ行くもの（§9.2）。
+- 区切り 1-4：KTheory（§6）と Asymptotic（§7）、Paper の再構成（第 10 章）。
+CT の下位ディレクトリ（§1.3）・Nerve まわり・HA/ComplexLimits は ∞ 基盤の指示書で行う（伝達済み、handover-ct-to-infinity-2026-10-30.md）。
 
-**段階 2：BS の作業時間（1 回）**
-BS の作業の区切りに時間を決め、BS 側の編集を止めて次をまとめて行い、全依存ビルド 1 回でコミットする（BS/CLMST の分は独立コミット）：
-HA の第二層（DerivedCompletion の BS 向けファイル、Pair の置き換え、PD の d = 0 の整理、導来テンソルの一本化、§3.7）、CA の H 群の BS 依存部分を
-BhattScholze/ へ（§2.8）、CLMST の基礎と論文の分離（§8）、`Koszul.lean`・`KoszulResolution.lean` の `Koszul/` への移動、IteratedTensor* の
-BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST の死んだファイル。準備（スクリプト）は段階 1 の間に済ませる。
+**段階 2：BS の作業時間（2 回）**
+BS の作業の区切りに時間を決め、BS 側の編集を止めて行う。それぞれ全依存ビルド 1 回でコミットする（BS/CLMST の分は独立コミット）。準備（スクリプト）は
+段階 1 の間に済ませる。
+- 区切り 2a（BS の層の境界）：CA の H 群の BS 依存部分を BhattScholze/ へ（§2.8）、CLMST の基礎と論文の分離（§8）、`Koszul.lean`・`KoszulResolution.lean` の
+  `Koszul/` への移動、IteratedTensor* の BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST の死んだファイル。
+- 区切り 2b（HA の DerivedCompletion）：HA の第二層（DerivedCompletion の BS 向けファイル、Pair の置き換え、PD の d = 0 の整理、導来テンソルの一本化、§3.7）。
+  中身の書き換えが大きいので、先に worktree で準備し、作業時間には取り込みと全依存ビルドだけを行う。
 
 **段階 3：大きな一般化**（段階 1・2 の後に費用対効果を見て判断）
 有限位数の作用とテンソル冪（§6.5・§4.4.5、HA の CochainTensor の Mathlib 化）、Asymptotic の商の二本立ての一本化（§7.5）、PC の K₀ のモデルの
@@ -135,9 +146,18 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 
 | 範囲 | 状態 |
 | --- | --- |
+| LinearAlgebra・FieldTheory・RingTheory | 見直し完了（2026-10-29） |
 | CommutativeAlgebra の G・A・F・C1〜C3・B1・B2 | 完了（§2.1） |
+| 段階 0 の区切り 0 | 実施中（2026-10-30、全依存ビルド中） |
 | CommutativeAlgebra の D・E・H・X | 計画（E は決定済み、§2.6） |
-| HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST | 計画のみ |
+| HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
+| CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
+
+区切りごとの記録（ファイル数・行数の前後）：
+
+| 区切り | コミット | ファイル数 | 行数 |
+| --- | --- | --- | --- |
+| B1+B2（参考） | 7242dc7f7・e0308bb75 | CA で約 70 本を約 30 本に | — |
 
 ## G. 決定待ち
 
@@ -167,6 +187,11 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 6. ~~PC・KTheory~~ → (a) 係数の定義（`SupportedCoefficients` など、K₀ の基底変換）を PerfectComplex 側へ下ろす（§4.5.1）。(b) K₀ のモデルは
    引用の文言を変えないよう `K0Supported` を残し、`K0WithSupport` との比較の同型で結ぶ。一本化が課題であることは `PerfectComplex/K0.lean` の
    docstring に書いた（§4.2.3）（2026-10-30）。
+
+7. GroupTheory/Coxeter（利用者はすべて ∞ 基盤の側）と Inputs/Homotopy/（KanQuillen とその適用）を ∞ 基盤の側へ渡すか（§11.2・§11.1）。
+8. Paper（第 10 章）：(a) 主経路から外れた論文の内容（§10.2：Theorem4_7・FlatRealization・ParameterQuotientCM・Lemma3_4・Lemma2_4・Corollary2_6、
+   古い正値性の経路 AsymptoticPositivity・SecondComparisonLowerBound）を残すか、古い経路は消すか。(b) 構成の案（§10.5）、とくにディレクトリ名
+   Section2〜5 を論文の節に合わせて残すか（C の規約の例外）。
 
 ## H. 最新の Mathlib で直す必要がある箇所（記録）
 
@@ -235,6 +260,9 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 #### 1.2.2 Mathlib との重なり（確度高のもの）
 
 - `FunctorTransport.transport`・`iso`・`transport_obj`・`iso_hom_app` = `Functor.copyObj`・`isoCopyObj`（NatIso）。ファイルごと削除。
+- **ArrowFactorization* の 3 本（2026-10-30）**：利用者はすべて ∞ 基盤の側（HomotopicalAlgebra/GeneralTools・Rectification/CategoryTheory/AnchoredChain*）
+  なので ∞ 基盤の側へ渡す（ユーザーの決定。受け渡しと docstring の旧計画への参照の書き換えはユーザー側で扱う）。論文の層の側では触らない。
+  下の Mathlib の `Factorisation` への置き換えの記録は ∞ 側への申し送り。
 - ArrowFactorization・ArrowFactorizationCategory（`source_isInitial`・`target_isTerminal`）≈ `CategoryTheory.Factorisation`（`initial`・`terminal`・
   `IsInitial_initial`・`IsTerminal_terminal`）。宇宙の扱い（Mathlib は hom の宇宙が `max u v`）に注意して置き換える。
 - `triangle_isIso_of_components` = `Triangle.isIso_of_isIsos`。
@@ -288,6 +316,8 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 `P.isoModSerre.Localization` の Abelian、三角圏の K₀（`mk_shift`）、有界ホモトピー圏、`ParametrizedAdjunction.restrict`。
 
 ### 1.3 下位ディレクトリ（104 → 約 35 ファイル。利用者は ∞ 基盤の側だけ）
+
+（2026-10-30 に ∞ 基盤の側へ移管した（R75〜R78）。以下は引き渡したときの調査の記録で、正本は ∞ 基盤の計画。）
 
 #### 1.3.1 死んだファイル
 
@@ -370,10 +400,9 @@ ModuleTransport の `iso_inv`・`obj_action`、`comparison_inv_naturality`、`ma
 
 1. 死んだファイル（§1.2.4 の 8 本、§1.3.1 の 21 本）と確度高の Mathlib への置き換えを先に（BS/CLMST の波及なし。Presentation の殻はマニフェストだけ）。
 2. トップ階層の統合（§1.2.1）。BS が使う ExactDerivedTStructure の閉包は変えない。
-3. 下位ディレクトリの統合（§1.3.2）は ∞ 基盤の作業と時期を合わせる。
+3. 下位ディレクトリ（§1.3）・Nerve まわりは ∞ 基盤の側へ移管済み。
 
-決定待ち：Nerve*・Simplex/Chains と HomotopicalAlgebra/Simplicial の境界（どちらへ寄せるか）。下位ディレクトリの整理を ∞ 基盤の Codex の
-指示書に含めるか、こちらで行うか。
+決定済み（G の 4）：Nerve まわりは HomotopicalAlgebra/Simplicial へ、下位ディレクトリの整理は ∞ 基盤の指示書で行う。
 
 ## 第2章 CommutativeAlgebra
 
@@ -531,16 +560,11 @@ C1〜C3 は一回の全依存ビルド（388 モジュール）と監査を通�
   BhattScholze 側を再ビルドする別の作業に回す（Koszul・KoszulResolution の移動と同じ扱い）。
 
 
-### 2.10 順序の案
+### 2.10 章の中の作業順
 
-1. B1（BS/CLMST への影響が最小）
-2. B2 と C3 を同時に（Koszul オイラー標数の移動と RegularLocalRing の再編が絡む）。C1・C2 の全依存ビルドとコミットもここで合わせる
-3. X の軽い小群（CubicCyclotomic・Support・Almost・Conductor と GaloisNormalization の Paper 層への移動、QuotientBaseChange・AlgebraAction の削除）
-4. E
-5. D
-6. H と RootTower（BS/CLMST への影響が最大。BS セッションの区切りに合わせる）。ただし §2.8.1 の定理 1 本の移動は小さいので、早めに単独で行ってよい
-
-そのあと PerfectComplex、KTheory。群をまたぐ共通の置き換え（`stableFiltration`・`fwdDiff`・`reduceModIdeal`・`Module.IsTorsion'`・`LocalizedModule.map`・Frobenius の反復 API）は、それぞれ該当する群の中で行う。
+（全体の順序は E が正本。B1・B2・C3 は完了。）残りは区切り 1-1 の中で X の軽い小群 → E → D → H の BS に依存しない部分の順に行い、
+H の BS 依存部分と RootTower の BS 側は区切り 2a で行う。群をまたぐ共通の置き換え（`stableFiltration`・`fwdDiff`・`reduceModIdeal`・
+`Module.IsTorsion'`・`LocalizedModule.map`・Frobenius の反復 API）は、それぞれ該当する群の中で行う。
 
 ## 第3章 HomologicalAlgebra
 
@@ -588,7 +612,7 @@ C1〜C3 は一回の全依存ビルド（388 モジュール）と監査を通�
 
 - 他の群へ回す：CompatibleRoot{Family,FiniteFamily,Quotient}Tor → HA3 の Tor。ModelTensorFlatCriterion・ModelTensorHomologySurjective → HA2 の導来平坦性。
   BoundedKoszulAugmentation・BoundedTermKoszulAcyclic → HA3 の Koszul。ChainAugmentationNormalization・CochainAugmentationModels → HA2 の augmentation。
-- 層の逆転：`ComplexLimits/*`（3 本）は KST.LocalizingInvariants を import し、名前空間は `SerrePositivity.EInfinity.ComplexLimits`。
+- 層の逆転（∞ 基盤の側へ渡した、伝達文 §5）：`ComplexLimits/*`（3 本）は KST.LocalizingInvariants を import し、名前空間は `SerrePositivity.EInfinity.ComplexLimits`。
   `EInfinity/ComplexLimits/*` は再エクスポートの殻だけ。1 本にまとめて EInfinity 側へ移し、殻を消す。
 - Basic.lean が `HomotopyCategory.MappingCone` と `Noetherian` を import していて、importer 15 本に重さを渡している。Resolution.lean の
   `Mathlib.Data.Real.Basic`・`Mathlib.Tactic.Ring` も不要に見える。統合のときに import を絞る。
@@ -1731,7 +1755,7 @@ PerfectComplex との層の境界は §4.5.1 で合わせて決める
 （PerfectComplex を下の層にし、`PerfectModuleResolution`・`K0WithSupport.mk_shift` を PerfectComplex へ、PerfectComplex の IntegerEuler 系・
 Adams の Koszul・FiniteProjectiveResolutions を KTheory へ）。KTheory 単体の順序：
 
-1. 削除だけで済むもの：KT1 の再エクスポート 2 本と dévissage 一式（論文の層から外す判断が要る）、KT2 の互換 7 本と未使用ファイル 3 本、
+1. 削除だけで済むもの：KT1 の再エクスポート 2 本（dévissage は残して軽くする、G の 5）、KT2 の互換 7 本と未使用ファイル 3 本、
    KT3 の未使用ファイル 3 本と §6.3.4・§6.4.4 の未使用。BS/CLMST の再ビルドは起きない。
 2. Mathlib への置き換え：KT1 の `baseChange`・`liftBaseChange`・`exact_subtype_mkQ` など、KT2 の `aeval_apply_of_mem_apply_eq_smul`・
    `commute_pow_left_of_commute`・`cubicCoefficientRoot` の def 化、KT3 の `kernel.map`。
@@ -1775,7 +1799,7 @@ Adams の Koszul・FiniteProjectiveResolutions を KTheory へ）。KTheory 単�
 | UniformLift | SupportedDerivedImage・SupportedPureDerivedImage・SupportedUniformLift・SmallSupportedUniformLift・RankSmallHomologyCriterion・SmallRankHomologicalKernel・SupportedSequenceTStructure・SupportedRankTStructure・OrdinaryHeartResolution |
 
 - 外へ回す：KoszulBaseChange（30 行、Koszul だけを import）→ CommutativeAlgebra/Koszul。EulerLimit の `lengthHomology_zero_outside`・
-  `lambdaEuler_isBigO` → PerfectComplex/NormalizedEuler か AsymptoticLengthBounds。FamilyPostnikov・FamilyHomologyTruncation（導来圏の ℕ 族）
+  `lambdaEuler_isBigO` → Asymptotic/NormalizedLimit（D の 9：AsymptoticLengthBounds 自体も Asymptotic へ移る）。FamilyPostnikov・FamilyHomologyTruncation（導来圏の ℕ 族）
   → HomologicalAlgebra。`uniformlyPowTorsion` と Serre 類のインスタンス（ModuleSequence）は CommutativeAlgebra/PowTorsionCategory と同じ型の
   議論なので、そちらから点ごとに導く。
 - PaperQuotient の 15 本は論文 (4.2)・ひねり・K₀ の作用など論文固有の主張。Paper/Section4 へ移す案も（Paper が import し、Paper を import しないので安全）。
@@ -1846,8 +1870,7 @@ O(s) の列の f/s は超フィルターに沿って収束する（`normalizedLi
 3. 統合（§7.2）。
 4. 二本立ての一本化（§7.5、大きい）。Small 版の一本化。
 
-決定待ち：PaperQuotient（15 本）を Paper/Section4 へ移すか、Asymptotic に残すか。二本立ての一本化をどちらの商に寄せるか
-（Paper 側は論文の記述どおり、Completed 側は構成が単純）。
+決定済み（G の 3）：PaperQuotient（15 本）は Paper/Section4 へ移す。二本立ては Paper 側を正にし、Completed 側の結果は比較の同型で導く（段階 3）。
 
 ## 第8章 CLMST
 
@@ -2058,3 +2081,182 @@ Paper/Section2 の 6 本と Paper/Section5 の 6 本（計約 3600 行）。元�
    LA へ行くもの（PerfectApproximationLength・TowerApproximation）は段階 1 の 4。名前空間を `RootTower`・`Perfection` へ。
 3. Section5 の一般の補題（PrimeReduction・Core・ParameterQuotient・GaloisNormalization）は行き先の群の作業と同時。
 いずれも BS/CLMST に触れない（audit_clmst の `μT` の行だけ直す）。
+
+## 第10章 Paper の再構成
+
+`SerrePositivity/Paper/`（74 本、約 9800 行）には論文の主張とその証明だけを置き、論文の構成に沿って並べる。調査（2026-10-30、読むだけ）。
+一般の補題のうち Section2 の 6 本と Section5 の 6 本は第 9 章で扱った。この章はそれ以外と、Paper 全体の構成。
+
+### 10.1 証明の骨組み（主経路）
+
+- `Statement`（Thm 1.1 `main_statement`、Lemma 5.1 の `core_statement`）が剰余標数で分かれる。
+  - 標数 0：`Section5/CharacteristicZeroReduction` → IM/EqualCharZeroPositivity（Serre の対角の議論）。
+  - 標数 p：`Section5/CompletionReduction` → `ResidueFieldReduction`（Lemma 2.1）→ `ModuleReduction`（dévissage）→ `PrimeReduction` → `Core`
+    （Lemma 5.1）→ `GaloisNormalization`（Lemma 2.2）・`NormalizationPositivity`。
+- `NormalizationPositivity`（§5.1・§5.5 の組み立て）は `Section2/Theorem2_5`（Thm 2.5）を使う。その下に `LengthAlgebraConstruction` →
+  `MixedLengthAlgebra` → `CompletedTower`・`MixedPerfectoid`、`PerfectQuotientLimit`・`PerfectKoszulLimit` → `PerfectKoszulLength` → `TowerKoszulLength`、
+  `TowerLengthOn` → `TowerLength`・`TowerDescent`・`TowerStage`、第 9 章の Perfect*、`LengthAlgebraConsequences`（(2.5)・(2.6)）。
+- `NormalizationPositivity` → `SelectedParameterPositivity`（(5.4)、`ParameterChoice`）→ `CoreLengthPositivity` が二つに分かれる。
+  - 第一の比較：`Section5/Positivity`（§5.5）→ `Lemma5_2`（Lemma 5.2）→ `FirstComparison`・`NormApplication` → `Lemma3_5`（Lemma 3.5）・`Lemma3_5/{Normalized,Ordinary}`。
+  - 第二の比較：`TwistedLengthPositivity` → `ParameterLengthPositivity`（`Preparation`、(5.6)）→ `TowerPositivity` → `ParameterQuotient`（Lemma 5.3・5.4）・
+    `RegularLengthAlgebraPositivity` → `LengthAlgebraPositivity` → `ApproximationPositivity` → `ApproximationSecondComparison` →
+    `SecondComparison` → `Section4/SymmetricComparison` → `PaperK0Comparison`（Prop 4.5）→ `UniformRepresentative`、および `ApproximationEuler`
+    （`ApproximationBetti`・`ApproximationHomology`・`SupportedApproximation`・`MinimalApproximation`・`ApproximationLowerBound`・`FirstComparison`）。
+  - ほかに主経路：`Section4/LengthAlgebraRealization`、`Section4/LengthHypotheses`（1 補題だけ使う）、`Section4/SupportedDescent`（Lemma 4.6 と Thm 3.1 の
+    帰結。Paper の中の唯一の `sorry`）、`Section2/TowerApproximation`。
+- 引用：Inputs/Descent（Thm 3.1）は Lemma 3.5 以下で使う。BhattScholze（81 モジュール）・CLMST（123）・InfinityCategories（312）に届くのは
+  `MixedLengthAlgebra`・`MixedPerfectoid`（Thm 2.5 の混標数）経由だけで、Section4 と Section5 の他のファイルは BS に依存しない。
+
+### 10.2 主経路から外れているもの（論文の内容なので残す。G の 8 で扱いを決める）
+
+| ファイル | 中身 | 状況 |
+| --- | --- | --- |
+| Section4/Theorem4_7 | Thm 4.7 | `theorem_4_7` は未使用、`theorem_4_7_K0` は scripts だけ。主経路は SymmetricComparison・SecondComparison で同じ内容を導いている |
+| Section4/FlatRealization | λ 平坦性からの比較（変種） | 3 宣言とも未使用。段階 0 でルートから直接 import に |
+| Section5/ParameterQuotientCM | Lemma 5.3 の Cohen–Macaulay 版 | 未使用 |
+| Section5/AsymptoticPositivity・SecondComparisonLowerBound | 古い正値性の経路（Asymptotic/PaperMinimalLowerBound 経由） | Approximation* の経路に置き換えられている。別証明として残すか、消すか |
+| Lemma3_4 | Lemma 3.4 | `lemma_3_4` 未使用。Cor 2.6(1,2) の `cor_2_6_tor` と同じ議論 |
+| Section2/Lemma2_4 | Lemma 2.4 | 4 宣言とも未使用 |
+| Corollary2_6・Section2/Corollary2_6 | Cor 2.6 | 主経路は重複の `Section4.residue_length_pos_of_lengthAlgebra_values` を使う（§10.4） |
+
+死んでいる（importer はルートと scripts だけ）：上の表の Corollary2_6・Lemma3_4・Section2/Lemma2_4・Section4/FlatRealization・Section4/Theorem4_7・
+Section5/AsymptoticPositivity・ParameterQuotientCM と、Section2/MonomialBasis・Section2/Tower（再エクスポート、§10.3）。Section2/Corollary2_6 と
+Section5/SecondComparisonLowerBound は、死んでいるファイルだけが import する。
+
+### 10.3 再エクスポートと薄い包み
+
+- 再エクスポートだけ：Section2/Tower・MonomialBasis・TowerStage（CA/RootTower の再エクスポート。区切り 0 の追加分として削除、TowerStage の利用者
+  PerfectTower は CA/RootTower/Stage を直接）、Section2/MixedPerfectoid（CLMST.Algebra の再エクスポート。importer は Inputs/CLMST だけ。§8.5 で
+  MixedPerfectoid 一式を BS 側へ移すときに削除）。
+- 薄い包み：Section2/TowerLength（103 行、`NormalizedLength` を `towerLength` として再エクスポート＋C1・C2）・TowerDescent（64 行）・TowerLengthOn（54 行、
+  `towerLengthOn_len` は未使用）・CompletedTower（46 行。Inputs/CLMST が import している）→ LA/RootTowerLength へ（§9.1 の前提）。CompletedTower を
+  下ろすと Inputs → Paper の逆転も消える。
+- 1 定理だけのつなぎ：Section5/CharacteristicZeroReduction（33）・CompletionReduction（48）・ResidueFieldReduction（48）・ModuleReduction（34）。
+  Lemma 5.1 の還元として 1 本にまとめる（§10.5）。
+
+### 10.4 重複
+
+- Cor 2.6(3) が二回：`Section2.cor_2_6_residue_pos`（死んでいる）と `Section4.residue_length_pos_of_lengthAlgebra_values`（主経路）。
+  `Paper/Corollary2_6.cor_2_6_pos` は前者の包み。一本に（主経路の方を Cor 2.6 の場所に置く）。
+- Cor 2.6(1,2) の `cor_2_6_tor` と Lemma 3.4 の `lemma_3_4` は同じ議論（v = 1 の値に `normalizedLength_tor_of_isWeaklyRegular` を当てる）。
+- (2.5) の v = 1 の計算が `ParameterLengthPositivity.parameterQuotient_length_eq_multiplicity`・`LengthAlgebraConsequences`・`Section2/Corollary2_6` の 3 か所。
+- Thm 4.7 の `theorem_4_7_K0`、FlatRealization の `symmetricPaperEuler_conjSum_eq_of_flat` は、主経路の `symmetricPaperEuler_conjSum_eq`（SecondComparison）と並行。
+- 正値性の二経路（AsymptoticPositivity＋SecondComparisonLowerBound と ApproximationPositivity＋ApproximationSecondComparison）。
+- `Core` の private `exists_nat_ringKrullDim` と `PrimeReduction`（§9.2）。
+
+### 10.5 構成の案（内容の名前。論文の番号は docstring に書く）
+
+| 新しいファイル | 元のファイル |
+| --- | --- |
+| Statement | Statement（Thm 1.1） |
+| Section2/ResidueFieldExtension | Lemma2_1 |
+| Section2/NormalizationBase | Lemma2_2 |
+| Section2/TowerLength | Lemma2_4（Lemma 2.3 の主張は TowerLength・TowerDescent を LA へ移した後に） |
+| Section2/LengthAlgebra | Theorem2_5・LengthAlgebraConsequences の (2.6) の部分・LengthAlgebraConstruction の論文の部分 |
+| Section2/LengthAlgebra/EqualChar | PerfectQuotientLimit・PerfectKoszulLimit・Perfect* の論文の部分（Thm 2.5 の等標数） |
+| Section2/LengthAlgebra/MixedChar | MixedLengthAlgebra |
+| Section2/BaseChange | Corollary2_6 の 2 本を一つに（§10.4） |
+| Section3/LengthComputation | Lemma3_4 |
+| Section3/NormComparison | Lemma3_5・Lemma3_5/{Normalized,Ordinary}（一般部分を外へ） |
+| Section4/Setup・EulerComparison・Descent・AsymptoticNormComparison | PaperK0Comparison（Prop 4.5）・UniformRepresentative・SupportedDescent（Lemma 4.6、`sorry`）・SymmetricComparison＋Theorem4_7＋LengthHypotheses＋LengthAlgebraRealization の論文の部分・FlatRealization（変種）・Asymptotic の PaperQuotient（G の 3） |
+| Section5/Reduction | CompletionReduction・ResidueFieldReduction・ModuleReduction・PrimeReduction・CharacteristicZeroReduction（Lemma 5.1） |
+| Section5/Setup | Core・GaloisNormalization・NormalizationPositivity・SelectedParameterPositivity・ParameterChoice（§5.1） |
+| Section5/FirstComparison | Lemma5_2・FirstComparison（c_σ）・NormApplication |
+| Section5/ParameterQuotient | ParameterQuotient（5.3・5.4）・ParameterQuotientCM・Preparation |
+| Section5/SecondComparison | SecondComparison・ApproximationSecondComparison・ApproximationEuler・ApproximationBetti の論文の部分 |
+| Section5/Positivity | Positivity・CoreLengthPositivity・TwistedLengthPositivity・ParameterLengthPositivity・TowerPositivity・（Regular）LengthAlgebraPositivity・ApproximationPositivity |
+
+- ディレクトリ名 Section2〜Section5 は論文の節に合わせる（Paper の中に限り、論文の構成を写すための名前として残す。G の 8）。Section3/ を新設し、
+  トップ階層の Corollary2_6・Lemma3_4・Lemma3_5（と同名のディレクトリ）・Lemma5_2 を節の下へ。
+- 名前空間：`Section2`・`Section4`・`Section5` と裸の `SerrePositivity`（Corollary2_6・Lemma3_4・Lemma3_5・Lemma5_2・Positivity・FirstComparison・
+  NormApplication）が混在。`SerrePositivity.Paper` にそろえる。宣言の `paper*` 接頭辞（`paperBaseChangeBetti_*`・`ordinaryPaperEulerK0`・
+  `paperOrdinaryEulerK0_*`）、`nontrivial_of_section4_quotient`、略称 `φσ`・`Iσ`・`TD` は内容の名前に。PaperK0Comparison の「Paper」も。
+- `maxHeartbeats` の引き上げが 16 ファイル 23 か所（2,400,000 が 7 ファイル、1,800,000 が 2、1,200,000 が 1、800,000 が 13）、
+  `synthInstance.maxSize 2048` とファイル全体の `backward.isDefEq.respectTransparency false` が Section4・5 のほぼ全部。統合のときに範囲を限る。
+- LengthAlgebraConstruction のモジュールの docstring が「等標数の Thm 2.5 は Roberts の引用に依存」のまま（本体の docstring では外れている）。直す。
+
+### 10.6 共有層へ下ろす一般の補題（第 9 章の 12 本以外）
+
+| 元 | 一般の補題 | 行き先 |
+| --- | --- | --- |
+| Lemma3_5 | `radical_span_eq_maximalIdeal`、`isKoszulResolution_of_regular` | CA（SystemOfParameters・Koszul） |
+| Lemma3_5/Ordinary | `isArtinianRing_quotient_span_of_finite`（LengthAlgebraRealization も使う）、`length_homology_ne_top_of_radical`・`chiOrdHom_of_radical`・`chiOrd_baseChange_koszulComplex` | CA、PerfectComplex/OrdinaryEuler |
+| Lemma3_5/Normalized | `lemma_3_5a_lam_finite`（Koszul の有限性） | PerfectComplex/NormalizedEuler |
+| Section2/PerfectKoszulLength | 全部（Frobenius・根の段の Koszul の長さ、`perfectionApproximationBaseMap`、一様な冪ねじれ） | LA/RootTowerLength/PerfectKoszul（長さを使わない部分は CA/Perfection） |
+| Section2/PerfectKoszulLimit | 帰納極限の同値（未使用）、極限の仮定からの完全化の Koszul ホモロジーの λ の消滅 | LA/RootTowerLength |
+| Section2/PerfectQuotientLimit | Hilbert–Kunz 型の極限 λ(D_perf/H)（最後の `…_eq_multiplicity_of_higher_tendsto` だけ Thm 2.5 固有） | LA/RootTowerLength |
+| Section2/TowerKoszulLength・TowerLengthOn・CompletedTower | 全部 | LA/RootTowerLength（Restriction・Completed） |
+| Section2/LengthAlgebraConsequences | `parameter_quotient_values_pow`（任意の λ での重複度の冪の公式） | LA（か IM） |
+| Section2/LengthAlgebraConstruction | `perfectClosure_length_properties_of_higher_tendsto`・`_of_roberts`（等標数） | LA/RootTowerLength/Perfect |
+| Section4/LengthAlgebraRealization | `finite_lengthAlgebra_ideal_fg`・`finite_lengthAlgebra_support`・`koszulFinite_/quotient_length_/koszulEuler_of_lengthAlgebra_values`・`koszulEuler_eq_…` | LA（Koszul・Flat） |
+| Section4/LengthHypotheses | `algebraMap_injective_of_spectrum_surjective`、`nontrivial_of_section4_quotient`（改名） | CA、LA |
+| Section4/UniformRepresentative | `supportedRank_isIdempotentComplete_of_koszul` | Asymptotic（SupportedRankTStructure） |
+| Section5/Preparation | `exists_pow_maximalIdeal_map_le` | CA |
+| Section5/ApproximationHomology・ApproximationBetti・MinimalApproximation・SupportedApproximation・ApproximationLowerBound | 近似の極限から Betti 数・Euler 標数の評価、極小分解の切り詰め（ApproximationBetti の 2 定理は未使用） | Asymptotic（MinimalResolutionFamily ほか） |
+| Section5/FirstComparison | `firstComparison_of_complex`・`_of_resolution` | IM/ResolutionEvaluation |
+| Section5/ParameterChoice | `exists_regular_parameters_for_finite_extension` | CA/SystemOfParameters |
+| Section5/SecondComparison・ApproximationSecondComparison・LengthAlgebraPositivity | 多くは任意の λ 代数についての抽象的な議論（論文固有の部分は薄い） | Asymptotic の候補（中身を見て判断） |
+
+どれも BS・CLMST に依存しない。未使用：`ApproximationBetti` の 3 つ、`exists_supported_approximation_with_lambdaChi`、
+`perfectionKoszulHomologyDirectLimitEquiv`、`towerLengthOn_len`、`lemma_3_5b`、`lemma_2_4_*`（4）、`lemma_3_4`、`theorem_4_7`、FlatRealization の 3 定理。
+
+### 10.7 順序
+
+1. 再エクスポート Tower・MonomialBasis・TowerStage の削除は区切り 0 の追加分。MixedPerfectoid は区切り 2a。
+2. 一般の補題を下ろす（§9.2・§10.6）：CA 行きは区切り 1-1、LA・PC・IM 行きは区切り 1-3、Asymptotic 行きは区切り 1-4。
+3. Paper の再構成（§10.5）と重複の一本化（§10.4）、名前空間・名前の付け替えは区切り 1-4。BS 依存の混標数の部分（MixedLengthAlgebra ほか）の
+   import は区切り 2a の後に確定する。
+
+## 第11章 Inputs・GroupTheory
+
+調査（2026-10-30、読むだけ）。
+
+### 11.1 Inputs/ の中身
+
+`Inputs/` は引用（証明を `sorry` で置く入力）の置き場のはずだが、14 本のうち本物の引用は 2 本だけ。`scripts/make_area_audits.py` が `sorry` を許して
+いるのは Inputs/Descent・Inputs/Homotopy/KanQuillen（と Paper/Section4/SupportedDescent・BhattScholze/Inputs/PerfectoidizationInterface）。
+
+| ファイル | 中身 | 扱い |
+| --- | --- | --- |
+| Descent | `theorem_3_1_K0`（論文 Thm 3.1 の K₀ での帰結 (3.2)、Land–Tamme の cdh 降下。`sorry`）。Paper/Lemma3_5 が使う。KST のレーン（k-theory-kst-route.md の段 1a）が解消する予定 | 残す（本物の引用）。名前空間は `SerrePositivity` のまま（`Inputs` ではない）。`K0Supported` の型で書かれている（§4.2.3、G の 6） |
+| Homotopy/KanQuillen | `kanQuillen_model_exists`（Hovey Thm 3.6.5、`sorry`） | ∞ 基盤の側。主定理の閉包の外（verify で確認済み） |
+| Homotopy/ResolutionHom・SimplicialLevel | KanQuillen の適用（`sorry` なし）。scripts の check だけが import | ∞ 基盤の側 |
+| DifferentialGraded/（README だけ） | dg の引用の台帳（採用 0 件） | ∞ 基盤（dg）の側 |
+| IntersectionTheory | `regularResolution`・`intersectionVanishing` は `SerrePositivity.regularResolution`・`intersectionVanishing_of_adams` の別名（証明済み） | 削除。IM/FiniteExtension・IM/Devissage は `intersectionVanishing_of_adams` を直接使う。IM/Additivity の import を外す（Adams の一式を引き込んでいる）。FiniteExtension・EqualCharZeroPositivity の「未証明の定理」という古い docstring を直す（§5.2 の 6、§5.8） |
+| CohenNormalization | `exists_cohen_gabber_normalization`（CA/CohenGabber）・`exists_cohen_normalization_mixedCharacteristic`（CA/Witt）の包み。利用は Paper/Section2/Lemma2_2 だけ | 削除し Lemma2_2 から直接呼ぶ。文献（Kurano–Shimomoto Thm 1.1、Stacks 0323）は CA 側の docstring へ |
+| ResidueFieldExtension | `exists_complete_flat_local_extension_of_residueField`（CA/ResidueFieldExtension/General）の包み。利用は Paper/Section2/Lemma2_1 だけ | 削除し直接呼ぶ（EGA 0_I 6.8.3、Stacks 03C3 は CA 側へ） |
+| PerfectoidTower | `completedTower_isIntegralPerfectoid`（CA/RootTower の定理の包み、CLMST Example 2.4.2(1)）。利用は Paper/Section2/LengthAlgebraConstruction | 削除し直接呼ぶ |
+| CLMST | CLMST の Prop 4.0.10・Cor 4.0.4・Prop 4.0.14 の 3 つの包み。Paper/Section2/* を import していて（Inputs が Paper の上にある）、利用は Paper/Section2/MixedLengthAlgebra だけ | 削除し MixedLengthAlgebra から `CLMST.*` を直接呼ぶ（CLMST/Inputs/ の解体、§8.3 と同じ方針） |
+| Perfectoidization | BS Thm 1.17(1) の包み（`BhattScholze.exists_perfectoidization_of_finite`）。利用は CA/Perfectoidization だけ（`.choose` 4 回） | BS のセッションの管轄。CA/Perfectoidization を BS 側へ移すとき（§2.8・区切り 2a）に合わせて扱う。CA → Inputs → BS の逆転の原因 |
+| LengthAlgebra | `lengthAlgebra_base_values(_one)`（約 20 行、証明済み、引用なし）。`_one` の利用は Paper/Corollary2_6 だけ | Paper/Corollary2_6 か LengthAlgebra へ移す |
+| RegularLocalRing・RegularParameters・Unmixedness | import だけの殻（CA の RegularLocalRing/Basic・Unmixedness の再エクスポート）。importer はルートだけ | 削除（区切り 0 の追加分） |
+
+整理の後、Inputs/ に残るのは Descent（論文・KST のレーン）と Homotopy/（∞ 基盤）だけ。Homotopy/ は ∞ 基盤の Inputs へ移すのが自然。
+Mathlib にはどの主張もない（コーエンの構造定理、Kan–Quillen のモデル構造、perfectoid 化、K 理論の降下）。
+
+### 11.2 GroupTheory/
+
+| ファイル | 中身 | 利用者 | 扱い |
+| --- | --- | --- | --- |
+| ConjugateSum（59 行） | `conjSum_eq`：G の軌道和 Σ_g φ(g•y) が、f(K) 上で一致する加法写像 φ, ψ について等しい（G 不変元の正の倍が f(K) に入るとき）。`conjSum_eq_of_base_formula` | CategoryTheory/EulerComparison だけ（その先は Paper/Section4/SymmetricComparison・LA/Comparison）。論文の層 | 名前が内容と合わない（共役類ではなく軌道の和）。`orbitSum_eq_of_descent` などに改名し、EulerComparison（§1.2.1 の Euler）か Paper 側の比較のファイルへ吸収。CT → GroupTheory の逆転（B）も消える |
+| Coxeter/（TypeA 955・FirstToLast 90・PermutationInduction 28・InvolutionRelations 37） | A_n 型 Coxeter 群 ≅ Sₙ₊₁（`typeAEquivPerm`、挿入ソートの標準形）、隣接互換による置換の帰納法、`firstToLastPerm`、対合の関係式。ArxivFormalization から移植 | すべて ∞ 基盤の側（CategoryTheory/Monoidal・EInfinity/Operad・IntervalCuts・Spectra/SymmetricSequence） | ∞ 基盤の側へ渡す（refactoring-infinity-r2.md の R67 が Monoidal の利用者の再分類を計画済み） |
+
+Coxeter の Mathlib との重なり（∞ 側への申し送り）：`permutation_induction_right` は `Equiv.Perm.mclosure_swap_castSucc_succ` と
+`Submonoid.induction_of_closure_eq_top_right` から出る（確度高、TypeA の 955 行が不要になりうる）。`adjacentTransposition` は `swap i.castSucc i.succ`。
+`shiftPerm`・`firstToLastPerm` は `Equiv.Perm.decomposeFin`・`finRotate`・`Fin.cycleRange` と重なる（確度中）。A_n ≅ Sₙ₊₁ は Mathlib にない
+（`CoxeterMatrix.A`・`CoxeterSystem` はあるが対称群との同型はない。確度高）ので、使うなら提出候補。
+
+### 11.3 層の逆転（B に追加）
+
+- CA/Perfectoidization → Inputs/Perfectoidization → BhattScholze（区切り 2a で CA/Perfectoidization を BS 側へ）。
+- Inputs/CLMST → Paper/Section2/*（Inputs を消せば解消）。
+- IM/Additivity → Inputs/IntersectionTheory → IM/AdamsVanishingAll（Inputs を消せば解消）。
+- CategoryTheory/EulerComparison → GroupTheory/ConjugateSum（吸収で解消）。CategoryTheory/Monoidal → GroupTheory/Coxeter は ∞ 側の中の依存。
+
+### 11.4 順序
+
+1. 殻 3 本（RegularLocalRing・RegularParameters・Unmixedness）は区切り 0 に追加。
+2. IntersectionTheory・CohenNormalization・ResidueFieldExtension・PerfectoidTower・LengthAlgebra の包みの解体は区切り 1-1（CA・Paper の利用者の
+   書き換えだけ）。IntersectionTheory は IM の作業（区切り 1-3）と同時でもよい。
+3. Inputs/CLMST の解体は Paper の再構成（区切り 1-4）。Inputs/Perfectoidization は区切り 2a（BS のセッションと調整）。
+4. ConjugateSum は区切り 1-1（CT のトップ階層）。Coxeter と Inputs/Homotopy は ∞ 基盤へ伝える（決定待ち、G）。
