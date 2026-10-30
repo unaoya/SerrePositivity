@@ -1,9 +1,0 @@
-module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarDerivedProjectiveComparison
-
-/-! # 射影的加群上の既存導来係数拡大の計算の公理監査 -/
-public section
-open SerrePositivity.DifferentialGraded
-#print axioms scalarDerivedExtensionAugmentation_isIso_of_projective
-#print axioms scalarDerivedProjectiveComputation
-#print axioms scalarDerivedProjectiveComputation_naturality
