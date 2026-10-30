@@ -115,3 +115,15 @@ Codex の予備集計（P 275・E 362・T 候補 12・U 68・K 5・未定 1、�
 6. **件数の期待値は目安。** 合計 650 が合い、各種類が上の規則で説明できれば、実測値（P 275・E 363・T 1（Acceptance）・U 68・K 5）で進めてよい。一覧 JSON の `kind` は P/E/T/U/K、`action` は delete/move/keep/archive（extract は使わない）。
 
 このうえで §6-1 の報告（一覧 JSON の件数、delete・archive 対象の利用者の確認）を出す。定理の移し先の案は不要になった。
+
+## 9. 追記（2026-10-30、§6-1 の報告への回答）
+
+§6-1 の報告（P 272＝delete 271・keep 1、E 304＝move 38・keep 266、T 1、U 68、K 5＝move 1・keep 4、計 650。delete・archive 339 本の利用者は `dg.lean` と他の対象検査だけ）を**承認**する。§3.2（実施）と §3.3（D2）へ進んでよい。
+
+7. **監査の前にビルドする。** `lake env lean scripts/audit/dg.lean` は import 先の olean を作らない。`Module/MaurerCartanTargetHomDifferential` の olean がないのは、そのモジュールが 10-25 のチェックポイント（importer 0）で main の `.lake` で一度もビルドされていなかっただけで、main で `lake build` すると 3.8 秒で通る（確認済み）。手順は、`dg.lean` の `import` 行のモジュールを `lake build` してから `lake env lean` を実行する：
+   ```sh
+   lake build $(grep '^import ' scripts/audit/dg.lean | sed 's/^import //')
+   lake env lean scripts/audit/dg.lean
+   ```
+   D1 の後の再生成でも同じ順序で行う（削除・移動した分は import 行から消えるので、残りを再ビルドするだけ）。ビルドが失敗するモジュールがあれば、それは本物の不整合なので止めて報告する。
+8. **Archive は監査・集約に入らない。** `make_area_audits.py` は `AREAS` に列挙したディレクトリしか見ないので、`SerrePositivity/Archive/` は dg.lean に入らない。D2 の `DifferentialGraded.lean` も Archive と Checks/ を import しない。`lake build` の既定は root の閉包なので、Archive の下はビルドされない（`lake build <module>` を明示したときだけ）。
