@@ -27,7 +27,7 @@
 | `SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean` | BS | docstring の「Lemma 8.4」の記述を「使わないので要求しない」に直す |
 | `SerrePositivity/EInfinity/Perfectoidization/Interface.lean` | EInfinity（読み取り専用） | CAlg 版の欄 `coconnective` を削除 |
 | `SerrePositivity/EInfinity/Perfectoidization/DerivedCorollary.lean` | EInfinity（読み取り専用） | `coconnective := F.coconnective` の一行を削除 |
-| `formalization-plans/perfectoidization-interface.md`、`infinity-categories.md`、解説の付録 A の表 | 共有の計画・解説 | 欄の一覧から外し、変更の経緯を一行記録 |
+| `formalization-plans/bhatt-scholze/perfectoidization-interface.md`、`infinity-categories.md`、解説の付録 A の表 | 共有の計画・解説 | 欄の一覧から外し、変更の経緯を一行記録 |
 
 BS 側だけを先に変えると EInfinity の `toE3` が存在しない欄を埋めようとしてビルドが壊れるので、**一つのコミットで両側を変える**必要がある。
 EInfinity は BS 作業チャットからは編集できないので、進捗確認チャット（または E2 レーン）で一括して行ってほしい。BS 側の 2 ファイルの差分は

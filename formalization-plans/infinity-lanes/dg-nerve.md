@@ -10,7 +10,7 @@
 同型性・ホモトピー同値・擬同型性も証明済み。
 
 N7 の必須項目に残りはない。N7f の cofiber の双対は任意項目として未実装。
-別系列 γ1 は [e-infinity-algebras.md §3](../e-infinity-algebras.md#3-e2bγの工程) に従う。
+別系列 γ1 は [e-infinity-algebras.md §3](e-infinity-algebras.md#3-e2bγの工程) に従う。
 N7 では coherent nerve・モデル構造・Joyal の定理を使っていない。
 
 公開 1081 宣言の明示型と、基礎 dg 五宣言を含む 1086 件の公理監査が通過し、標準三公理のみ。

@@ -1,9 +1,9 @@
 # F2：F2-lite と presentable ∞ 圏（v2、F1b）
 
 作成日：2026-10-18。更新日：2026-10-23。
-正本は [foundations.md](../foundations.md)。本書は F2-lite と F2 後半の正本。
+正本は [foundations.md](foundations.md)。本書は F2-lite と F2 後半の正本。
 F1b の前提工程は [infinity-core-F1b.md](infinity-core-F1b.md)、
-N の γ3・γ4 は [e-infinity-algebras.md](../e-infinity-algebras.md) を参照する。
+N の γ3・γ4 は [e-infinity-algebras.md](e-infinity-algebras.md) を参照する。
 
 ## 引き継ぎ（2026-10-23）
 ### 現在地

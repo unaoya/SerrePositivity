@@ -4,15 +4,15 @@
 作成元：本計画を検討したチャット（stage 4・dg の進捗確認と並行して、2026-10-16〜18 に読み取り専用の調査を実施）。
 引き継ぎ先：BS 計画と ∞ 圏基盤を管理しているチャット。本文書はその管理下に移す。
 
-対象とする版：主論文は [`paper/paper.pdf`](../paper/SOURCE.md)（§3 定理 3.1・補題 3.2・3.3、§4 補題 4.2・4.6・定理 4.7）。
+対象とする版：主論文は [`paper/paper.pdf`](../../paper/SOURCE.md)（§3 定理 3.1・補題 3.2・3.3、§4 補題 4.2・4.6・定理 4.7）。
 Kerz–Strunk–Tamme（KST）は arXiv:1611.08466v4（Invent. Math. 211, 2018）。
 Land–Tamme（LT）は arXiv:1808.05559v3（Ann. Math. 190, 2019）。Thomason–Trobaugh（TT）は 1990 年の原論文。
 Blumberg–Gepner–Tabuada（BGT）は arXiv:1001.2282。Waldhausen は LNM 1126（1985）。
 
-既存の計画との関係：[k-theory.md](k-theory.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
-確定し、M4 の扱いを変える。[k-theory.md](k-theory.md) §159 の「∞ 圏は導入しない」は、
-2026-10-17 の決定（[infinity-categories.md](infinity-lanes/infinity-categories.md)）で改められており、本計画はその上に書く。
-[bs-clmst-citation-elimination.md](archive/bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
+既存の計画との関係：[k-theory.md](../k-theory.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
+確定し、M4 の扱いを変える。[k-theory.md](../k-theory.md) §159 の「∞ 圏は導入しない」は、
+2026-10-17 の決定（[infinity-categories.md](../infinity-lanes/infinity-categories.md)）で改められており、本計画はその上に書く。
+[bs-clmst-citation-elimination.md](../archive/bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
 
 ---
 
@@ -439,9 +439,9 @@ EKMM、CMNN Prop A.13。いずれも二次文献（KST・LT・GH・CHSW・Stacks
 
 ## 12. 変更点の明記
 
-- [k-theory.md](k-theory.md) §7 の M4（hG・Tot・有理化のモデル圏的実装）は、γ と ∞ 極限に置き換える。
-- [k-theory.md](k-theory.md) §7 の M7 は「KST Thm A（係数つき）＋ 離散冪零不変性」に置き換え、Land–Tamme の cdh 降下・⊙・Goodwillie は使わない（Goodwillie は第 2 段のみ）。
-- [k-theory.md](k-theory.md) §7 の M9（補題 4.6）は第 1 段では F5 で迂回し、第 2 段で原典どおりに戻す。
+- [k-theory.md](../k-theory.md) §7 の M4（hG・Tot・有理化のモデル圏的実装）は、γ と ∞ 極限に置き換える。
+- [k-theory.md](../k-theory.md) §7 の M7 は「KST Thm A（係数つき）＋ 離散冪零不変性」に置き換え、Land–Tamme の cdh 降下・⊙・Goodwillie は使わない（Goodwillie は第 2 段のみ）。
+- [k-theory.md](../k-theory.md) §7 の M9（補題 4.6）は第 1 段では F5 で迂回し、第 2 段で原典どおりに戻す。
 - 2026-10-16 の調査で提案した「π_* ルート（hG・Tot なし）」は、γ が整う前の予備として残す。
 - 2026-10-17 の K 理論の設計案（dg レベルの Waldhausen 圏＋Bass delooping）は、2026-10-18 に現代的な定義（D1）へ改めた。
 
@@ -453,7 +453,7 @@ EKMM、CMNN Prop A.13。いずれも二次文献（KST・LT・GH・CHSW・Stacks
 
 | # | 論点 | 決定 | 理由 |
 | --- | --- | --- | --- |
-| 1 | ∞ 基盤の範囲 | **F0〜F3 をすべて含める**（2026-10-18 改訂、[foundations.md](foundations.md) §3）。F0 = α の A1〜A5 ＋ 関手 ∞ 圏の極限（HTT 5.1.2.2）、F3 = A4（安定 ∞ 圏）、γ-B の Sp、β の D(S)。**F1**（cocartesian/cartesian fibration、straightening（Kerodon 5.6）、随伴・局所化、Kan 拡張、Yoneda・前層）は新設レーン α2、**F2**（𝒮、Ind、presentable、随伴関手定理、Bousfield 局所化、P_Σ）は α3 が担当する。原典は Kerodon に固定し、HTT・HA の番号を併記する。モデル構造は coherent nerve（γ3）にだけ使う | 将来の数論幾何の基盤として F1・F2 を整える（ユーザー決定）。K の第 1 段は F0・F3 で閉じるので、F1・F2 は並行して進められる |
+| 1 | ∞ 基盤の範囲 | **F0〜F3 をすべて含める**（2026-10-18 改訂、[foundations.md](../infinity-lanes/foundations.md) §3）。F0 = α の A1〜A5 ＋ 関手 ∞ 圏の極限（HTT 5.1.2.2）、F3 = A4（安定 ∞ 圏）、γ-B の Sp、β の D(S)。**F1**（cocartesian/cartesian fibration、straightening（Kerodon 5.6）、随伴・局所化、Kan 拡張、Yoneda・前層）は新設レーン α2、**F2**（𝒮、Ind、presentable、随伴関手定理、Bousfield 局所化、P_Σ）は α3 が担当する。原典は Kerodon に固定し、HTT・HA の番号を併記する。モデル構造は coherent nerve（γ3）にだけ使う | 将来の数論幾何の基盤として F1・F2 を整える（ユーザー決定）。K の第 1 段は F0・F3 で閉じるので、F1・F2 は並行して進められる |
 | 2 | 非連結化 | **(a) BGT §9 を定義とし、(b) dg 側 Schlichting を K0 界面に対する暫定実装とする**（2026-10-18 改訂）。第 1 段（K-1a・K-1b）は (b) で閉じてよい。F2 の完成後に (a) へ差し替え、両者の一致（§10-14）を示す。K に依存する部分は K0 に対して書く（D1 のまま） | F2 を待たずに第 1 段を進めつつ、最終的な定義は原典（BGT）に合わせる |
 | 3 | γ | **γ-B。** Sp := Kan 複体の Ω スペクトル（X_n と X_n ≅ ΩX_{n+1}）の単体的圏の coherent nerve（γ1 により quasicategory）。π_n は Mathlib の `PtSimplex`・`MulStruct` を延長して定義。fiber 列と長完全列、有理化（telescope）、Tot・hG はレベルごとの Kan 複体の構成で与え、それらが Sp の ∞ 極限であることは γ3（HTT 4.2.4.1 型）の後に系として付ける。HT-KQ は不要（主定理経路外のまま残す）。stage 4 の対称スペクトルのモデル構造は後の比較用に保持 | 第 1 段の証明は π_* の長完全列で回るので、Sp の ∞ 的性質は主定理に不要。E2b の γ3 と共有 |
 | 4 | 定理 3.1 の主張 | 第 1 段では **全次数の π_* 同型** K_n^J(H)_ℚ ≅ (K_n^J(H ⊗ T)_ℚ)^G（n ∈ ℤ）を主定理とし、Sp の同値（hG）は γ3 の後に系として付ける | §9-3 の提案どおり |
@@ -467,14 +467,14 @@ EKMM、CMNN Prop A.13。いずれも二次文献（KST・LT・GH・CHSW・Stacks
 | 13 | §5 の K/pro 本体の所有（L7 §14、2026-10-18） | L7 は K 非依存のまま、L7a・L7b と L7c の環論・古典的スキーム射を完成させる。Lemma 5.5・Claim 5.3・Prop 5.4 の K/pro の結論は合流側に置き、**K-L6 が Thm 4.11・Cor 4.12・4.13 の後に担当**する（導来 blowup の対象は K-L5、pro の再添字は L6 自身の宣言を使う）。`X̃`（導来 blowup の underlying scheme）を `affineBlowup I` で定義しない（Remark 3.3 の閉埋め込みは中心の外でのみ同型） | 結論自体が K 理論の主張であり、幾何の入力と本体を混同しない |
 | 14 | Construction A.5 の正確な形（L6c、2026-10-18） | (i) 右辺の augmentation 補正 C(φ)+C(φ′)−C(e)（§5 の記録どおり）。(ii) **仮定の明示化**：群 P, Q, H と群準同型 μ : P × Q → H、α : T → P、β : T → Q をデータとし、m 次入力は C(α) と C(e_P)、m′ 次入力は C(β) と C(e_Q) の間のホモトピーとして与える（H へ移した後だけのホモトピーは入力にしない）。φ := μ(α,1)、φ′ := μ(1,β) に対し (m+m′+1) 次で C(φ·φ′) ≃ C(φ)+C(φ′)−C(e_H)。「φ と φ′ の像が可換」だけでは成立しない（D₈ の反例を Lean で検証。中央拡大 D₁₆ → D₈ の二次 cocycle）。(iii) Lemma 4.16 では P = T_{n,m−1}(I) ⋉ M_{n+m−1,1}(I)、Q = M_{n,1}(I)、H = T_{n,m}(I) ⋉ M_{n+m,1}(I)、μ(p, v) = p·ψ(v) で、P と ψ(Q) の可換性は I の可換性を要しない | 原典は「H を可換として記号を簡単にする」際に追加の仮定を使っており、非可換係数ではこの形が必要 |
 | 15 | L8 の Čech 降下の主経路（2026-10-19） | **主経路の Tot・homotopy 極限は L9 の実構成（`CosimplicialTotalization`、`PointedHomotopyLimit`・`PointedWeightedEnd`）と整数次数の π_* で述べる。** `ModelCategory SSet` を仮定する L8 §70–99 の条件付き結果（56 ファイル）は比較用の補助として保持し、主経路の完成には数えない。主定理・最小公理の構造体に `ModelCategory SSet`・cofibrant generation・Quillen bifunctor の仮定を入れない。局所 rank・transfer の公式は各整数次数の π_n で供給し、Sp の通常の圏に ℚ 線形性を要求しない | Mathlib に Kan–Quillen モデル構造の instance はなく、決定 1・3 で HT-KQ は主経路外。条件付き結果は instance が無い限り主定理に接続できない（L8 §100 の指摘） |
-| 16 | pro 切除の経路（2026-10-19） | **KST §4 の群ホモロジー（ĜL、Suslin–Wodzicki、pro-Whitehead）を Land–Tamme の ⊙ 構成に置換する。** 実現は dg 増強流（B 案、[foundations.md](foundations.md) §1）：環・導来環は dg 代数、Mod_A は D(A) = N_dg(Semifree(A))、Verdier 商は Drinfeld 商（β3）、lax pullback は dg の gluing（β4）、∞ 側は Cat^perf・Verdier 列・半直交分解・局所化不変量（K-基盤 1）と Tamme の分裂定理・LT 主定理（K-基盤 2）。K は非連結 K を局所化不変量として（BGT (a)）定義し、暫定 (b) は使わない。L2 の plus 構成・古典比較と L6 の L6a〜g は不要となり Auxiliary として凍結する（削除しない）。公理 (3) 冪零不変性の供給（D ブロック）は再確認項目 | 基盤を主目標とする方針（foundations.md v2）。HA 流（E₁ 環スペクトルと Mod）は F4・F5 として後段に置く |
+| 16 | pro 切除の経路（2026-10-19） | **KST §4 の群ホモロジー（ĜL、Suslin–Wodzicki、pro-Whitehead）を Land–Tamme の ⊙ 構成に置換する。** 実現は dg 増強流（B 案、[foundations.md](../infinity-lanes/foundations.md) §1）：環・導来環は dg 代数、Mod_A は D(A) = N_dg(Semifree(A))、Verdier 商は Drinfeld 商（β3）、lax pullback は dg の gluing（β4）、∞ 側は Cat^perf・Verdier 列・半直交分解・局所化不変量（K-基盤 1）と Tamme の分裂定理・LT 主定理（K-基盤 2）。K は非連結 K を局所化不変量として（BGT (a)）定義し、暫定 (b) は使わない。L2 の plus 構成・古典比較と L6 の L6a〜g は不要となり Auxiliary として凍結する（削除しない）。公理 (3) 冪零不変性の供給（D ブロック）は再確認項目 | 基盤を主目標とする方針（foundations.md v2）。HA 流（E₁ 環スペクトルと Mod）は F4・F5 として後段に置く |
 | 11 | D4 の D_qc(X;H)（L4a、2026-10-18 改訂） | 定義は層レベル：H_X 加群層の複体の導来圏のうち、忘却後の全コホモロジーが準連接な充満部分圏（BvdB・Neeman の設定）。有限アフィン被覆上の複体の**厳密**な降下データは採らない（複体の厳密貼り合わせは D_qc を復元しない。BvdB 3.1.3 の注意）。dg 増強は H_X 加群層の複体の dg 圏を acyclic で dg 商したもの（Drinfeld、U15 の dg 商）に取り、Perf・D_qc をその充満部分圏とする。アフィン dg 加群圏の Čech ホモトピー極限との比較は定義にせず、必要になった時点の定理とする | 既存の `Dqc`（コホモロジー条件）はそのまま。T1〜T3 は層レベルで BvdB・Neeman の証明が通る |
 
 **着手順（2026-10-18）。** 即時：L11（紙）、L2、L4、L6、L7、L8、L9。L1 は α の A3e と関手 ∞ 圏の極限の後。L3・L5・L10 は §8 の開始条件どおり。
-∞ 側のレーン（N・D・α・E2a・Π2）は [infinity-categories.md](infinity-lanes/infinity-categories.md) の管理のまま。
+∞ 側のレーン（N・D・α・E2a・Π2）は [infinity-categories.md](../infinity-lanes/infinity-categories.md) の管理のまま。
 
-Sp の安定性の逆関手案は再評価済み（2026-10-21）。HA Cor. 1.4.2.27 の一般判定は妥当だが、BF の構造随伴を厳密な豊穣自然変換にする段階と有限極限の包装・判定の自前証明が未完。移送 API は StrictEnrichedTransformation.functorIso が提供済みで、N への追加要求はない。残り4工程・少なくとも複数日の暫定評価から、旧経路より短いとは判定せず切り替えない。正確な残補題・根拠・見積もりは [L9 引き継ぎ](kst-lanes/L9-spectra.md) を正本とする。
+Sp の安定性の逆関手案は再評価済み（2026-10-21）。HA Cor. 1.4.2.27 の一般判定は妥当だが、BF の構造随伴を厳密な豊穣自然変換にする段階と有限極限の包装・判定の自前証明が未完。移送 API は StrictEnrichedTransformation.functorIso が提供済みで、N への追加要求はない。残り4工程・少なくとも複数日の暫定評価から、旧経路より短いとは判定せず切り替えない。正確な残補題・根拠・見積もりは [L9 引き継ぎ](L9-spectra.md) を正本とする。
 
 ### K-5：K-基盤 1 の抽象部分（2026-10-20）
 
-Sp レーンが `KST/LocalizingInvariants/` で、F3 の IsStable・IsExactFunctor に基づく安定 ∞ 圏と完全関手の ∞ 圏、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• は SConstruction と具体的 K 関手の側を所有し、双方で相手の実装を変更しない。Verdier 列は充満忠実な完全包含、核と本質像の一致、および cofiber 辺を反転する商の局所化普遍性を含む。D の Drinfeld 商は後で具体例として接続する。局所化不変量の値域は L9-spectra.md の d2 界面だけを使い、Sp の IsStable は要求しない。StableInfinity、抽象 Verdier 列、零化と反転の基本補題、Sp 値不変量の定義と整数 π による同値検出は検証済み。零安定圏と任意抽象列の coherent 四角形提示、その像の実 fiber 性、実 BF fiber の全整数 π 消滅による同値検出も完成。長完全列で使う元の homotopyFiber を左下頂点、元の射を右辺として保持する Sp の実 fiber 四角形を構成し、置換単位の全 prism を保持する錐の輸送によって、その下辺の類と元の homotopyFiberInclusion の一致まで証明した。整数 π は h Sp 上の実関手 piFunctor となり、元の BF 整数 π との自然な比較 piComparison_naturality も供給する。fiber 群の積分解は BF 射の厳密切断から h Sp での切断に拡張した。同じ右辺の任意の二つの fiber 四角形の全図式同型、三対象と二辺を同時に保つ短複体同型、および元の BF 三対象への比較と両射との可換性も構成した。任意の Sp fiber 四角形の全整数次数の接続射と三箇所の完全性、任意抽象 Verdier 列の元の値の群・元の包含と商の誘導準同型への長完全列の移送まで完成した。端の値の全整数 π 消滅から元の包含または商の像の同値性も検出する。coherent な切断付き fiber 列の実 Sp 積同値も完成した。固定標的の cotensor Hom の成分に基本群演算を移し、元の BF 対象の演算を構成する。包含と切断による比較の整数 π 同型性を長完全列から証明し、第一射影を固定する自己同値の逆で補正して、元の包含・指定切断・射影との h Sp での整合性を全て保つ。同じ三対象・両辺の比較により任意の fiber 四角形と任意の抽象 Verdier 列の像へ移送した。積因子は元の fiber・底と同値な BF 表示で、その同値も明示し、積対象は実 ∞ 極限錐の頂点であることを証明する。IsLocalizingInvariant.splitEquivalence・splitLeftFactorIso・splitRightFactorIso と三つの整合式を提供し、K-5 抽象部分は完成。専用対象5687 jobs、59モジュール・719宣言の公理監査、全体19210 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査も成功。公開名・検証結果・残工程は [L9 計画の K-5 節](kst-lanes/L9-spectra.md) に記録する。
+Sp レーンが `KST/LocalizingInvariants/` で、F3 の IsStable・IsExactFunctor に基づく安定 ∞ 圏と完全関手の ∞ 圏、抽象 Verdier 列、Sp 値の局所化不変量と基本補題を担当する。K-S• は SConstruction と具体的 K 関手の側を所有し、双方で相手の実装を変更しない。Verdier 列は充満忠実な完全包含、核と本質像の一致、および cofiber 辺を反転する商の局所化普遍性を含む。D の Drinfeld 商は後で具体例として接続する。局所化不変量の値域は L9-spectra.md の d2 界面だけを使い、Sp の IsStable は要求しない。StableInfinity、抽象 Verdier 列、零化と反転の基本補題、Sp 値不変量の定義と整数 π による同値検出は検証済み。零安定圏と任意抽象列の coherent 四角形提示、その像の実 fiber 性、実 BF fiber の全整数 π 消滅による同値検出も完成。長完全列で使う元の homotopyFiber を左下頂点、元の射を右辺として保持する Sp の実 fiber 四角形を構成し、置換単位の全 prism を保持する錐の輸送によって、その下辺の類と元の homotopyFiberInclusion の一致まで証明した。整数 π は h Sp 上の実関手 piFunctor となり、元の BF 整数 π との自然な比較 piComparison_naturality も供給する。fiber 群の積分解は BF 射の厳密切断から h Sp での切断に拡張した。同じ右辺の任意の二つの fiber 四角形の全図式同型、三対象と二辺を同時に保つ短複体同型、および元の BF 三対象への比較と両射との可換性も構成した。任意の Sp fiber 四角形の全整数次数の接続射と三箇所の完全性、任意抽象 Verdier 列の元の値の群・元の包含と商の誘導準同型への長完全列の移送まで完成した。端の値の全整数 π 消滅から元の包含または商の像の同値性も検出する。coherent な切断付き fiber 列の実 Sp 積同値も完成した。固定標的の cotensor Hom の成分に基本群演算を移し、元の BF 対象の演算を構成する。包含と切断による比較の整数 π 同型性を長完全列から証明し、第一射影を固定する自己同値の逆で補正して、元の包含・指定切断・射影との h Sp での整合性を全て保つ。同じ三対象・両辺の比較により任意の fiber 四角形と任意の抽象 Verdier 列の像へ移送した。積因子は元の fiber・底と同値な BF 表示で、その同値も明示し、積対象は実 ∞ 極限錐の頂点であることを証明する。IsLocalizingInvariant.splitEquivalence・splitLeftFactorIso・splitRightFactorIso と三つの整合式を提供し、K-5 抽象部分は完成。専用対象5687 jobs、59モジュール・719宣言の公理監査、全体19210 jobs が終了コード0。標準三公理のみ、宣言型の ModelCategory 検査も成功。公開名・検証結果・残工程は [L9 計画の K-5 節](L9-spectra.md) に記録する。

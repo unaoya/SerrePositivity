@@ -8,8 +8,8 @@ quasicategory 模型を使う。∞ 圏は `X : SSet` と `[Quasicategory X]`、
 
 ディレクトリ名の F1・F1B・F2 は開発レーンに由来する。入口の import と
 監査の `#check` を目次として使う。作業状況は
-[基盤計画](../../formalization-plans/foundations.md) と
-[進捗](../../formalization-plans/foundations-progress.md) が正本。
+[基盤計画](../../formalization-plans/infinity-lanes/foundations.md) と
+[進捗](../../formalization-plans/infinity-lanes/foundations-progress.md) が正本。
 
 | 層 | 内容 | 入口 | 監査（scripts/） |
 | --- | --- | --- | --- |

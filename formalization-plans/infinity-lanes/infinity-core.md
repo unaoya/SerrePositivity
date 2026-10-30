@@ -17,7 +17,7 @@ Mathlib の `Quasicategory` をそのまま ∞ 圏の定義とし、Joyal モ�
 | A4 | 安定 ∞ 圏：零対象、fiber・cofiber、安定性、Σ・Ω、h C の三角構造、fiber 列の長完全列 | HA 1.1.1–1.1.3 |
 | A5 | 完全関手と自然変換、h での三角関手 | HA 1.1.4 |
 
-α の現担当は A6 の完了・報告まで。A4・A5 は D（α-S）が `InfinityCategories/Stable/` で担当し、α は実装しない。A6 後の工程は別途指示を待つ。基盤全体の正本は [foundations.md](../foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
+α の現担当は A6 の完了・報告まで。A4・A5 は D（α-S）が `InfinityCategories/Stable/` で担当し、α は実装しない。A6 後の工程は別途指示を待つ。基盤全体の正本は [foundations.md](foundations.md)。F1 は α2 が担当し、Core の既存の公開名・型の変更は事前に報告する。
 
 現在の主要宣言：`isQCatEquivalence_iff_fullyFaithful_essentiallySurjective`（A3 の同値判定）、`QCatEquivalence.isLimitCone_iff`（任意の極限錐の同値不変性）、`initialCofinality`（対象・Hom の二宇宙）。
 

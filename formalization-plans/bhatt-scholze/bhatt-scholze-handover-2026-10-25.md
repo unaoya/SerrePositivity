@@ -71,7 +71,7 @@ CLMST の Prop 2.4.7・Cor 4.0.4 はこれらと E3 から証明済み（10-17�
   `SerrePositivity/Inputs/Perfectoidization.lean`。
 - `SerrePositivity/EInfinity/Perfectoidization/`（E2 所有、CAlg_R 版の界面）。
 - 文書：[bhatt-scholze.md](bhatt-scholze.md)（正本。§0「二入力」は旧状態で、現在は E3 一件）、
-  [perfectoidization-interface.md](../perfectoidization-interface.md)（界面の原典照合と型）、
+  [perfectoidization-interface.md](perfectoidization-interface.md)（界面の原典照合と型）、
   [bhatt-scholze-refactoring.md](bhatt-scholze-refactoring.md)（§13 の共通抽出 Q10・Q1・Q8、既知の問題）、
   [bhatt-scholze-stage2.md](bhatt-scholze-stage2.md)（BS-0）、`archive/bhatt-scholze-*.md`（旧計画と実行記録）。
 - 解説：`exposition/ja/exposition-ja.tex` 付録 A の `par:bs-thm74`・`par:bs-andre`・`par:bs-andre-envelope`・`par:bs-lemma103`・`par:bs-cor812`。

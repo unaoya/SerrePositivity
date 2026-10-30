@@ -7,14 +7,19 @@
 
 | 場所 | 中身 |
 | --- | --- |
-| 直下 | 現役の計画（∞ 基盤の整備と Codex 指示書 IF-Wn、R 計画、論文の層の整理計画、K の KST 経路、基盤の正本と進捗表）、調査のみの計画、Lean の docstring から参照される案内と棚卸し |
-| `bhatt-scholze/` | BS の計画・調査・引き継ぎ、Codex 指示書 BS-Wn とその移動計画（JSON）・適用スクリプト |
-| `infinity-lanes/` | ∞ 系レーン（α・N・D・D2・Ind・P・F1/F2 など）の計画。いずれも完了または R 窓待ちで停止中。再開時の入口 |
-| `kst-lanes/` | KST 経路のレーン別計画（L1〜L11） |
+| 直下 | 現役の計画（∞ 基盤の整備と Codex 指示書 IF-Wn、R 計画、論文の層の整理計画）、調査のみの計画、Lean の docstring から参照される案内と棚卸し |
+| `bhatt-scholze/` | BS の計画・調査・引き継ぎ、perfectoid 化の界面（E3）の原典照合、Codex 指示書 BS-Wn とその移動計画（JSON）・適用スクリプト |
+| `infinity-lanes/` | レーン方式の調整文書（基盤の統合計画 foundations.md と進捗表）と ∞ 系レーン（α・N・D・D2・Ind・P・F1/F2・E2 など）の計画。いずれも完了または R 窓待ちで停止中。再開時の入口 |
+| `kst-lanes/` | K 理論の KST 経路の親計画（k-theory-kst-route.md）とレーン別計画（L1〜L11） |
 | `archive/` | 完了した計画、実施記録、役目を終えた指示文・依頼文 |
 
-`k-theory.md`・`k-theory-generalization-inventory.md`・`dg-theory-u12e-general-inventory.md`・`dg-theory-m5-status.md` は
-Lean の docstring から多数参照されるので、パスを変えない（前二者は本文を `archive/` に移した案内）。
+直下に残る次の文書は Lean の docstring から参照されるので、今はパスを変えない。
+
+| 文書 | 参照元 | 片づけ方 |
+| --- | --- | --- |
+| `k-theory.md`・`k-theory-generalization-inventory.md`（本文は `archive/` に移した案内） | HomotopicalAlgebra 約 600、CategoryTheory 約 20 | HomotopicalAlgebra・CategoryTheory を触る整理の窓で、docstring を `archive/` への直接参照に書き換えて案内を消す |
+| `dg-theory-u12e-general-inventory.md`・`dg-theory-m5-status.md` | DifferentialGraded 約 530 | DifferentialGraded を触る整理の窓で、同様に書き換えて本文を `archive/` へ移す |
+| `perfectoidization-interface.md`（本文は `bhatt-scholze/` に移した案内） | `BhattScholze/` の 2 本 | BS 側で docstring を書き換えた後に削除 |
 
 ## 現在地（2026-10-18）
 
@@ -22,7 +27,7 @@ Lean の docstring から多数参照されるので、パスを変えない（�
 
 | 入力 | 原典 | 担当する計画 |
 | --- | --- | --- |
-| `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` | BS Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.11–8.12・Cor 8.14・Thm 10.11 の E3 界面 | [perfectoid 化の界面](perfectoidization-interface.md)、[∞ 圏](infinity-lanes/infinity-categories.md) §0（G1 達成） |
+| `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` | BS Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.11–8.12・Cor 8.14・Thm 10.11 の E3 界面 | [perfectoid 化の界面](bhatt-scholze/perfectoidization-interface.md)、[∞ 圏](infinity-lanes/infinity-categories.md) §0（G1 達成） |
 | `Section4.supportedRankK0_descent` | 論文 補題4.6 | [K理論](k-theory.md) |
 | `theorem_3_1_K0` | 論文 定理3.1 | [K理論](k-theory.md) |
 
@@ -38,7 +43,7 @@ Lean の docstring から多数参照されるので、パスを変えない（�
 | [BS-0 第二段階調査](bhatt-scholze/bhatt-scholze-stage2.md) | E3 の消費経路、A・B・C 案の判定と見積り（2026-10-25） | A 推奨、最初の単位は固定完全 prism 上の affine Čech 模型 |
 | [BS 作業チャットへの引き継ぎ](bhatt-scholze/bhatt-scholze-handover-2026-10-25.md) | 文脈・到達点・所有範囲・規約・推奨する進め方 | BS 作業チャットの最初に読む |
 | [K理論・スペクトル](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。M4 以降の経路は下の KST 計画に移行 |
-| [K理論：KST 経路と現代的な K](k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
+| [K理論：KST 経路と現代的な K](kst-lanes/k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
 | [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
 | [P 計画：presentable ∞ 圏](infinity-lanes/infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
@@ -49,10 +54,10 @@ Lean の docstring から多数参照されるので、パスを変えない（�
 | [論文の層の切り出し](paper-layer-extraction.md) | 論文の層の一般論（Auslander–Buchsbaum、Koszul、三角圏 K₀、Cohen–Gabber、K₀・Adams など）を切り出す、または Mathlib へ | 着手しない（10-28） |
 | [D2 計画：β4 gluing](infinity-lanes/infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |
-| [進捗チェックリスト](foundations-progress.md) | foundations.md §9 の本体。レーン別の項目・小項目の完了と日時。コーディネータが進捗確認ごとに更新 | 2026-10-21 分離 |
-| [基盤の統合計画](foundations.md) | v2（2026-10-19）：基盤優先、K は Land–Tamme（dg 増強流）。∞ 圏・dg 圏・E∞ 代数・K 理論の層の構成、依存関係、現在のレーンとの対応、マイルストーン。基盤全体の正本 | 2026-10-18 採用。α2（F1、[infinity-core-F1.md](infinity-lanes/infinity-core-F1.md)）を新設、α3（F2、[infinity-core-F2.md](infinity-lanes/infinity-core-F2.md)）は α2 の straightening と γ3 の後 |
+| [進捗チェックリスト](infinity-lanes/foundations-progress.md) | foundations.md §9 の本体。レーン別の項目・小項目の完了と日時。コーディネータが進捗確認ごとに更新 | 2026-10-21 分離 |
+| [基盤の統合計画](infinity-lanes/foundations.md) | v2（2026-10-19）：基盤優先、K は Land–Tamme（dg 増強流）。∞ 圏・dg 圏・E∞ 代数・K 理論の層の構成、依存関係、現在のレーンとの対応、マイルストーン。基盤全体の正本 | 2026-10-18 採用。α2（F1、[infinity-core-F1.md](infinity-lanes/infinity-core-F1.md)）を新設、α3（F2、[infinity-core-F2.md](infinity-lanes/infinity-core-F2.md)）は α2 の straightening と γ3 の後 |
 | [∞ 圏の基盤（α〜ε・Π）](infinity-lanes/infinity-categories.md) | BS §7–§8 と K 理論を quasicategory の基盤に載せる。一旦の目標 G1：perfectoid 化の定義と Cor 8.12 の証明だけを「界面」の存在として保留し、他をすべて証明する | G1 達成（2026-10-18）。E3 の型・二入力への橋・引用の集約と旧公開型での供給は完了。界面の具体的構成と E2 は別工程 |
-| [E∞ 代数のモデル圏（レーン E2）](e-infinity-algebras.md) | Ch(R) 上の Barratt–Eccles オペラッドの代数のモデル圏（E2a）、その ∞ 圏化 γ（E2b）、BS の続きに要る Tot と単体的可換環（E2c） | 計画。E2a-0（Ch(A) の射影モデル構造）から着手可能（2026-10-18） |
+| [E∞ 代数のモデル圏（レーン E2）](infinity-lanes/e-infinity-algebras.md) | Ch(R) 上の Barratt–Eccles オペラッドの代数のモデル圏（E2a）、その ∞ 圏化 γ（E2b）、BS の続きに要る Tot と単体的可換環（E2c） | 計画。E2a-0（Ch(A) の射影モデル構造）から着手可能（2026-10-18） |
 | [dg nerve（∞ 圏基盤 N）](infinity-lanes/dg-nerve.md) | 任意の dg 圏の dg nerve を定義し、quasicategory・H⁰ との比較・pinched 写像空間・関手性を証明する。D(S) := N_dg(Semifree(S)) の前段 | N0〜N6 完了（2026-10-18、571 宣言）。続けて N7（dg の錐が ∞ 極限であること、D4 の核） |
 | [D(S)（レーン D）](infinity-lanes/derived-infinity-category.md) | semifree 複体の dg nerve として D(S) を定義し、ホモトピー圏が Mathlib の導来圏と同値であることを証明する | D2・D2f・D1 の定義完了。D2h（cone の閉性、semibasis 表現）を実装中。D1 の quasicategory と D3 は N 完了により着手可能（2026-10-18） |
 | [quasicategory の一般論（レーン α）](infinity-lanes/infinity-core.md) | h の橋、join・slice・極限、写像空間と同値、安定 ∞ 圏、完全関手 | A1・A2 完了（2026-10-18）。続けて A3（同値・Joyal の定理・写像空間） |
@@ -61,7 +66,7 @@ Lean の docstring から多数参照されるので、パスを変えない（�
 
 | 系列 | 現状の文書 | 状態 |
 | --- | --- | --- |
-| dg 理論（M5） | [M5 の完了状況](dg-theory-m5-status.md)、[U12e-general の棚卸し](dg-theory-u12e-general-inventory.md) | 2026-10-17 完了。中心作用・群作用は K 理論の M9 へ。[dg-theory.md](dg-theory-m5-status.md) は案内のみ |
+| dg 理論（M5） | [M5 の完了状況](dg-theory-m5-status.md)、[U12e-general の棚卸し](dg-theory-u12e-general-inventory.md) | 2026-10-17 完了。中心作用・群作用は K 理論の M9 へ。旧 dg-theory.md の内容は M5 の完了状況に統合 |
 | CLMST | [当時の計画と実施記録](archive/clmst.md) | 2026-10-17 完了。数学は解説と `SerrePositivity/CLMST/` の docstring |
 
 ## 調査・計画のみ
@@ -125,10 +130,3 @@ Lean の docstring へ要約済みで、各ファイルの冒頭に要約先を�
 - 新しい計画には、作成日、対象とする版、最終目標、段階ごとの成果物、引用として残す結果を記載する。
 - 状態が変わったら本文の「現在地」を書き換える（追記しない）。方針を変えたら、変更と理由を本文に明記する。
 - 実施記録を本文へ追記しない。過去の記録は `archive/` に置き、要約先がそろったら削除する。
-
-### 長い計画の分割（未実施）
-
-k-theory.md（約2.3万行）と ∞ 圏の系列は、計画と実施記録が一体になっている。
-各担当が区切りに達して追記が止まった時点で、本文（数百行）と `archive/` の記録に分ける。
-k-theory.md の §396・§397 と k-theory-generalization-inventory.md・dg-theory-u12e-general-inventory.md の
-アンカーは多数の docstring から参照されるので、パスと節番号を変えない。

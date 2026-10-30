@@ -1,14 +1,14 @@
 # ∞ 圏の基盤（α〜ε・Π）：一旦の目標と全体計画
 
 作成日：2026-10-17。状態：G1（BS 側）の計画として有効。**基盤全体の正本は 2026-10-18 から
-[foundations.md](../foundations.md)**（F1・F2 を含める決定、層の構成、レーンの対応、マイルストーン）。
+[foundations.md](foundations.md)**（F1・F2 を含める決定、層の構成、レーンの対応、マイルストーン）。
 本文書は G1 の経緯と Π の工程の記録として残す。
 
 ## 0. 一旦の目標
 
 **現在地（2026-10-18）：G1 達成。** 採用した型は
 `BhattScholze.PerfectoidizationInterface.PerfectoidizationInterfaceE3`（D(R) レベル）で、
-原典照合と公開型は [perfectoidization-interface.md](../perfectoidization-interface.md) に記録した。
+原典照合と公開型は [perfectoidization-interface.md](../bhatt-scholze/perfectoidization-interface.md) に記録した。
 Π2-8・Π3 により、perfectoid 側の唯一の文献入力は
 `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` となる。
 旧二入口は公開名・型を保った界面由来の定理となり、CLMST のファイルは変更しない。
@@ -124,7 +124,7 @@ A2 の「始対象の cofinality」は一般の cofinality 定理でなく、直
 ## 5. レーン ε：CAlg_S と忘却関手
 
 **決定（2026-10-18）：** 段階 1 として E3（界面を D(R) レベルで述べる迂回。§6 参照）を先に閉じ、
-ε の経路は E2（モデル圏、[e-infinity-algebras.md](../e-infinity-algebras.md)）を採る。
+ε の経路は E2（モデル圏、[e-infinity-algebras.md](e-infinity-algebras.md)）を採る。
 理由：(1) E3 で G1 の実利（sorry の集約、差写像の全射性）が早く得られる、(2) K 理論が γ を必ず使う、
 (3) E1 の δ（dg nerve とテンソル積の両立）は数学的に最も見通しが悪い、(4) BS の他の部分
 （§4 の RΓ、§7 の animated 代数と左 Kan 拡張、§8 の Tot）もモデル圏の計算に直接対応する。
@@ -153,8 +153,8 @@ E1 は「HA の文との一致」のためだけに後から比較（HA 4.5.4.7 
 
 ## 7. レーン γ（K 理論側と共有）
 
-γ1（coherent nerve の quasicategory 性、HTT 1.1.5.10）は 2026-10-18 に完了（[e-infinity-algebras.md](../e-infinity-algebras.md) §3・§5）。
-K 理論の計画は [k-theory-kst-route.md](../k-theory-kst-route.md) に移行し、その §13 で
+γ1（coherent nerve の quasicategory 性、HTT 1.1.5.10）は 2026-10-18 に完了（[e-infinity-algebras.md](e-infinity-algebras.md) §3・§5）。
+K 理論の計画は [k-theory-kst-route.md](../kst-lanes/k-theory-kst-route.md) に移行し、その §13 で
 γ-B（Sp := Kan 複体の Ω スペクトルの coherent nerve、HT-KQ 不要）を採った。
 γ3（homotopy 極限 = ∞ 極限、HTT 4.2.4.1 型）は E2b と K 理論の Sp の双方が使う共有項目で、
 K 理論側のレーン L9 と E2b の間で分担を決める。K 理論が ∞ 基盤に求める範囲（F0・F3、F2 は含めない）も同 §13。

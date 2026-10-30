@@ -1876,8 +1876,8 @@ A3e に実際の比較射の充満忠実性と既存の本質的全射性を渡�
 
 ## γ3：homotopy 極限・余極限と ∞ 極限・余極限
 
-担当は N。正本は `formalization-plans/e-infinity-algebras.md` §3 と
-`formalization-plans/foundations.md` §1。γ1.5 の完了後に続けて担当し、
+担当は N。正本は `formalization-plans/infinity-lanes/e-infinity-algebras.md` §3 と
+`formalization-plans/infinity-lanes/foundations.md` §1。γ1.5 の完了後に続けて担当し、
 𝒮（F2）・Sp（L9）・E2b の三者が共有する比較を作る。
 
 担当と着手順（foundations.md §1 の決定）：γ1.5 の後に N が γ3 を担当する。

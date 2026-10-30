@@ -232,4 +232,4 @@ dg-nerve.md §4 と同じ（ビルド、標準 3 公理、docstring、計画へ�
 
 ## 記録の所在
 
-実施記録・現在地の詳細・型一覧は [archive/e-infinity-algebras-log.md](archive/e-infinity-algebras-log.md) に移した（2026-10-19）。現在地は冒頭の引き継ぎ節が正本で、工程ごとの記録はコミットメッセージに置く。
+実施記録・現在地の詳細・型一覧は [archive/e-infinity-algebras-log.md](../archive/e-infinity-algebras-log.md) に移した（2026-10-19）。現在地は冒頭の引き継ぎ節が正本で、工程ごとの記録はコミットメッセージに置く。
