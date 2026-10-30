@@ -53,6 +53,14 @@ IntersectionMultiplicity/AdamsVanishing。SupportedModule の下流は 74 モジ
 - 循環の前提：ComparisonNaturality → LocalizationCoefficients（不要）と DevissageAnnihilated → K0LocalizationCoefficients（偽の依存）の
   import を先に外す。ResolutionClass → G0Localization の LocalizedResolution 経由の依存も偽物。
 
+- **CA から持ち越した移動（2026-10-30、B2 実施時）**：CA の SupportHeight・ModuleSupportHeight は B2 では動かさず、
+  `CommutativeAlgebra/` に残した。受け入れ先の G0/SemilocalSupport がまだなく、KTheory の既存ファイルへ入れると
+  CommutativeAlgebra（SemilocalSupport・ModuleSupportHeight 自身）が KTheory を import する層の逆転になるため。
+  E の SemilocalSupport も同じ理由で KT1 まで動かさない。KT1 で G0/SemilocalSupport を作るときに 3 本をまとめて移す。
+  今の import 元：`CommutativeAlgebra/SemilocalSupport`・`CommutativeAlgebra/ModuleSupportHeight`・
+  `KTheory/Adams/SupportHeight`（再エクスポート、削除予定）・`IntersectionMultiplicity/AdamsVanishing`。
+  移すときは IntersectionMultiplicity → KTheory の向きになるので、AdamsVanishing の閉包が増えないかを確かめる。
+
 ### 2.2 Mathlib との重なり（固定版と最新版で差なし）
 
 - 確度高：`g0CoefficientMap E f` は定義が `f.toIntLinearMap.baseChange E` そのもの（`_tmul`・`_comp`・`_id` は `LinearMap.baseChange_tmul`・
