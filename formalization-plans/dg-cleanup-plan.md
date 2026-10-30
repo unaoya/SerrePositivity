@@ -115,6 +115,19 @@
 - **再ビルド**：D4 の最後の段（119 本）は主定理の経路の 326 本を再ビルドする。論文の層のセッションの作業の区切りに合わせ、main に入れた直後に全体 verify を通す。
 - **窓**：DG の各指示書は、別の worktree で作業し、終わりに main を取り込んで verify（PASS・gate:true）を通してから main に入れる。∞ 側の W1 の取り込みと同じ日には取り込まない。
 
+## 5a. 再ビルドの費用と規則（2026-10-30、DG-W1 の実測から）
+
+実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、worktree で **2,576 本**（DG 977・InfinityCategories 715・EInfinity 492・KST 380）が再エラボレートされ、1 時間を超えた。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity の約 2,600 本が作り直される。
+
+規則：
+1. **土台に触る変更は一つの束にまとめ、全体の再ビルドを一回にする。** D3（SConstruction 26 本を DG/Functor・SharedFunctoriality へ）、D4 の土台 5 ディレクトリの統合、D5（docstring）は同じ指示書（DG-W4）で行い、間に全体ビルドを挟まない。
+2. **土台でないディレクトリの統合は、依存の上から下へ**（Morita・Endomorphism・Verdier・Quotient … の順に、下流の少ないものから）。各束の費用はその下流だけ。
+3. **束の途中では触ったモジュールだけを `lake build <module>` で確かめる。** ルート（`lake build SerrePositivity`）と全体 verify は指示書の最後に一回。
+4. **取り込みの後、main の `.lake/build` を温める。** worktree で全体 verify を通して main に取り込んだら、main でビルドが走っていないときに worktree の `.lake/build` を main へ rsync する（同じソースなので trace が一致する）。次の worktree はその複製から始まるので、同じ再ビルドを二度払わない。
+5. 統合後の大きなファイル（平均 1,200 行）は一行の変更でファイル全体が再エラボレートされる。D4 の対応表を確定するときに 1 ファイルの上限（800 行の案）を決める（§7）。
+
+監査（verify の 85%）の時間は別の問題：最長の監査は RSS 19 GB で、64 GB の機械では 3 並列が上限。並列数を上げるには、監査ごとの RSS を記録してメモリ予算で並べる runner の改良が要る（∞ 側の IF-W0-4 に入れる。見込み 30 分 → 15 分）。
+
 ## 6. 検証
 
 - 各指示書の終わりに `scripts/refactor/verify.sh`（全体ビルド・全監査・sorry 閉包）を通す。
@@ -127,6 +140,7 @@
 1. D3 の `strictlyPerfectComplex`・`PerfectHomotopy`（Perfect → PerfectComplex の定義の依存）を HomologicalAlgebra へ下ろすか、許容するか。D3 の報告で決める。
 2. D4 の最後の段（主定理の経路の 119 本）を入れる時期。論文の層のセッションの区切りと合わせる。
 3. DG の内部の層の順序を、最良の順序（逆向き 71 本）のまま文書化するか、Derived を分割するなどして逆向きを減らすか（証明を変えない範囲で可能かは D3・D4 の後に見る）。
+4. D4 の統合先 1 ファイルの上限（800 行の案）。126 本のままだと平均 1,200 行で、増分ビルドの粒度が粗くなる（§5a-5）。
 
 ## 8. 根拠
 
