@@ -18,7 +18,7 @@
 
 | 文書 | 中身 | 参照元と参照の形 | 片づけ方 |
 | --- | --- | --- | --- |
-| `k-theory.md`（案内。本文は `archive/k-theory-v1.md`） | K 理論 v1 計画（モデル圏の経路、10-15 まで） | HomotopicalAlgebra 598・CategoryTheory 20・Spectra 1。docstring 末尾の `[plan]: …/k-theory.md`（節の指定なし） | 情報をほとんど持たないので、リンクごと削除する |
+| `k-theory.md`（案内。本文は `archive/k-theory-v1.md`） | K 理論 v1 計画（モデル圏の経路、10-15 まで） | HomotopicalAlgebra 約 600・CategoryTheory 約 20・Spectra 1。本文の `[計画書 §396][plan]` と、docstring 末尾の `[plan]: …/k-theory.md` | `[plan]` の定義を `archive/k-theory-v1.md` の §396（「任意モデル源への一般化（中断）」）の見出しへ張り替えて案内を消す |
 | `k-theory-generalization-inventory.md`（案内。本文は `archive/` の同名ファイル） | 中断した「任意のモデル源への一般化」の 618 モジュールの棚卸し（分類 A・B・C）と配置整理の実施記録 | HomotopicalAlgebra 約 610・CategoryTheory 約 24。モジュールごとのアンカー `#m0001`〜`#m0618` と「配置実施記録を参照」 | `archive/` の本文の同じアンカーへ張り替えて案内を消す。現状は案内にアンカーがなく、該当行へ直接飛べない |
 | `dg-theory-u12e-general-inventory.md` | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
 | `dg-theory-m5-status.md` | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
