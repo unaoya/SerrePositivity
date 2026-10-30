@@ -1,7 +1,7 @@
 # 論文の層の整理計画（2026-10-30）
 
 概要：論文の層（`SerrePositivity/` のうち BhattScholze・∞ 圏の基盤を除く部分と、CLMST）について、ファイルの統合、死んだファイル・未使用の
-宣言の削除、Mathlib への置き換え、重複の一本化、層の順序の修正、Mathlib への提出候補を一つにまとめた計画。前半（A〜G）が全体の方針と順序、
+宣言の削除、Mathlib への置き換え、重複の一本化、層の順序の修正、Mathlib への提出候補を一つにまとめた計画。前半（A〜H）が全体の方針と順序、
 後半（第 1〜8 章）がディレクトリごとの詳細。ディレクトリごとの調査（2026-10-29〜30、読むだけ）の結果を元にしている。
 方針：群ごとに提案 → ユーザーの承認 → 実装 → 新しいファイル単体と直接の利用先のビルド → 区切りで全依存ビルドと監査 → コミット。
 規約：Mathlib の確認は固定版（2026-10-07、`.lake/packages/mathlib`）と最新版（2026-10-28、`/tmp/mathlib-latest`）の両方で行った。
@@ -104,7 +104,7 @@ Mathlib
 
 **段階 0：殻と死んだファイルの一掃**（BS の再ビルドはほぼ起きない。CLMST の分は段階 2 へ）
 再エクスポートだけのファイルと死んだファイルをまとめて削除し、利用者の import を実体へ張り替える：PC の 33 本（§4.2.1・§4.3.1・§4.4.1）、CT の 29 本
-（§1.2.4・§1.3.1、Spectra の殻 4 本を含む）、KT の 9 本（§6.2.1・§6.3）、HA の約 10 本（§3.4.1・§3.5.1・§3.6.1 ほか）、LA の死んだ連鎖 7 本
+（ただし ∞ 基盤へ渡した §1.3 の下位ディレクトリ・Nerve まわり・トップ階層の殻 7 本・Spectra の殻 4 本は除く。[handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md)。こちらで消すのは EulerTheory など）、KT の 9 本（§6.2.1・§6.3）、HA の約 10 本（§3.4.1・§3.5.1・§3.6.1 ほか）、LA の死んだ連鎖 7 本
 （§5.5）、Asymptotic の 6 本と Paper/Section4/Foundations（§7.3）、EInfinity/ComplexLimits の殻（§3.2.1）。あわせて確度高の Mathlib への置き換え。
 
 **段階 1：BS に触れない統合（下の層から）**
@@ -114,7 +114,7 @@ Mathlib
 4. LA の核・PC・IM の層の整理（§5.2・§4.5）を全依存ビルド 1 回で。続けて PC（§4）・LA と IM（§5）の統合。
 5. KTheory（§6）。
 6. Asymptotic（§7）。
-CT の下位ディレクトリ（§1.3）は ∞ 基盤の作業と時期を合わせる。
+CT の下位ディレクトリ（§1.3）と Nerve まわりは ∞ 基盤の指示書で行う（伝達済み、handover-ct-to-infinity-2026-10-30.md）。
 
 **段階 2：BS の作業時間（1 回）**
 BS の作業の区切りに時間を決め、BS 側の編集を止めて次をまとめて行い、全依存ビルド 1 回でコミットする（BS/CLMST の分は独立コミット）：
@@ -126,9 +126,9 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 有限位数の作用とテンソル冪（§6.5・§4.4.5、HA の CochainTensor の Mathlib 化）、Asymptotic の商の二本立ての一本化（§7.5）、PC の K₀ のモデルの
 一本化（§4.2.3）。
 
-**Mathlib を上げる時期**：固定版（`lake-manifest.json` の rev、2026-10-07）を新しい版に更新すると、StupidTruncation の置き換え（§3.2.2）などが
-できる一方、Mathlib 側の改名でプロジェクト全体（BS・CLMST を含む）の修正と全モジュールの再ビルドが要る。BS と同じワークスペースなので
-時期を合わせる必要がある。決定待ち（G）。
+**Mathlib を上げる時期**：**この整理の間は上げない**（2026-10-30 決定。BS など他の作業と干渉するため）。固定版（`lake-manifest.json` の rev、
+2026-10-07）のまま全段階を終える。ただし作業の途中で、最新版（`/tmp/mathlib-latest`）に上げると直す必要がある箇所（改名・非推奨・
+最新版にしかない置き換え先）に気づいたら、H の表に記録しておく。
 
 ## F. 状態
 
@@ -140,12 +140,29 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
 
 ## G. 決定待ち
 
-1. 段階 0（殻と死んだファイルの一掃）を、CA の残り（E・D など）より先に行うか。
-2. Mathlib を上げる時期（段階 1 の前か、段階 2 の中か、当面上げないか）。
-3. Asymptotic：PaperQuotient（15 本）を Paper/Section4 へ移すか、商の二本立てをどちらに寄せるか（§7.8）。
-4. CategoryTheory：Nerve*・Simplex/Chains と HomotopicalAlgebra/Simplicial の境界、下位ディレクトリの整理を ∞ 基盤の Codex の指示書に含めるか（§1.4）。
-5. KTheory：dévissage 一式を論文の層から外すか（§6.2.1）。
-6. PC・KTheory：IntegerEuler 系と係数の置き場所（§4.5.1）、K₀ のモデルの一本化に伴う引用の文言（§4.2.3）。
+1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
+2. ~~Mathlib を上げる時期~~ → この整理の間は上げない。最新版で直す必要がある箇所は H に記録する（2026-10-30）。
+3. ~~Asymptotic~~ → (a) PaperQuotient（15 本）は Paper/Section4 へ移す。(b) 商の二本立ては論文の記述（Paper 側：Karoubi 完備化してから
+   Verdier 商）を正にし、Completed 側の結果は比較の同型で導く（段階 3）（2026-10-30）。
+4. ~~CategoryTheory~~ → (a) Nerve*（NerveHomotopy・NerveHomotopyUniverse・NerveSimplexEndpoint・NerveSimplexStart・NerveSimplexFirstFunctor・
+   NerveVertices）と SimplexChainVertices・ElementsChainLifting・ElementsNaturalPrecomp を HomotopicalAlgebra/Simplicial の側へ移す。
+   (b) 下位ディレクトリ（§1.3）の整理は ∞ 基盤の Codex の指示書に含める（伝達文を ∞ 基盤のレーンへ渡す）。(a) の移動も ∞ 基盤側で行う
+   （利用者はすべて HomotopicalAlgebra・EInfinity・KST）（2026-10-30）。
+5. KTheory：dévissage 一式（§6.2.1）。数学的にまとまった話（G₀(R/J) ≃ G₀ の V(J) に台をもつ部分）なら残し、重さを減らす方向で検討中。
+6. ~~PC・KTheory~~ → (a) 係数の定義（`SupportedCoefficients` など、K₀ の基底変換）を PerfectComplex 側へ下ろす（§4.5.1）。(b) K₀ のモデルは
+   引用の文言を変えないよう `K0Supported` を残し、`K0WithSupport` との比較の同型で結ぶ。一本化が課題であることは `PerfectComplex/K0.lean` の
+   docstring に書いた（§4.2.3）（2026-10-30）。
+
+## H. 最新の Mathlib で直す必要がある箇所（記録）
+
+この整理は固定版の Mathlib で行う。作業中に、最新版に上げたときに直す必要がある箇所や、最新版で置き換えられる箇所に気づいたら、ここに追記する。
+群に着手するときは、触るファイルについて最新版の対応する名前を grep で確かめる。
+
+| 箇所 | 最新版での変化 | 対応 | 記録日 |
+| --- | --- | --- | --- |
+| HomologicalAlgebra/StupidTruncation（`above`・`below`・`inclusion`・`projection` ほか） | `HomologicalComplex.stupidTrunc`・`ιStupidTrunc`・`πStupidTrunc`・`isIso_ιStupidTrunc_f`・`ιStupidTruncNatTrans` が入った | 置き換えて削除（§3.2.2）。CT の TruncationTriangle の import も外れる | 2026-10-30 |
+| CommutativeAlgebra/RegularLocalRing | `IsRegularLocalRing` の定義（RegularLocalRing/Defs）が入った（整域性・商の定理はまだない） | 自前の定義との一致を確かめ、Mathlib の定義へ寄せる | 2026-10-30 |
+| CategoryTheory/LiftingProperties/Under・MorphismProperty/UnderFactorization | Mathlib の名前空間（`CategoryTheory.CommSq.HasLift.under` など）に直接置いている | 上げたときに名前の衝突がないか確かめる（§1.3.5） | 2026-10-30 |
 
 ## 第1章 CategoryTheory
 
