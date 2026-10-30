@@ -37,6 +37,12 @@ public import Mathlib.Algebra.Homology.HomotopyCofiber
 - `PerfSupp T z` は複体の型なので `Type (u + 1)` に住み、`K0Supported T z` も `Type (u + 1)`。
 - シフトは符号を与える：`[P⟦n⟧] = (-1)^n [P]`（`mk_shift`）。`Cone(P → 0) ≅ P⟦1⟧` と錐の関係式から
   `[P⟦1⟧] = [0] - [P] = -[P]` が出ることによる。
+- 課題（K₀ のモデルの一本化）：このプロジェクトには K₀ のモデルが三つある。この `K0Supported`（自由な
+  台つき完全複体）、列で台を指定した `TriangulatedK0 (SupportedPerfectHomotopy z)`、閉台の
+  `K0WithSupport Z`（`ClosedSupportK0.lean`）。一本化するなら `K0WithSupport (V(z))` に寄せるのが自然だが、
+  `K0Supported` は引用している定理 `Inputs.theorem_3_1_K0`（`Inputs/Descent.lean`）と Paper/Lemma3_5 の
+  主張に現れるので、引用の文言を変えないよう当面は残し、`K0WithSupport` との比較の同型で結ぶ。一本化は
+  引用が証明されるときに改めて行う（`formalization-plans/refactor-plan.md` §4.2.3）。
 
 ## 内容
 

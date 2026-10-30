@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.PerfectComplex.IdempotentImage
+public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
 public import SerrePositivity.PerfectComplex.DegreewiseRetract
 public import SerrePositivity.HomologicalAlgebra.CochainIdempotentHomology
 

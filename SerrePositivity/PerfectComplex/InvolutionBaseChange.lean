@@ -1,7 +1,9 @@
 module
 
-public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
-public import SerrePositivity.PerfectComplex.IdempotentImageIso
+public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentFunctor
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentIso
 public import SerrePositivity.PerfectComplex.InvolutionMaps
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 

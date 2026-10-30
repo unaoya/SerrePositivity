@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.PerfectComplex.TensorSingle
+public import SerrePositivity.PerfectComplex.TensorBaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
 public import SerrePositivity.HomologicalAlgebra.StupidTruncation
 public import SerrePositivity.HomologicalAlgebra.CochainTensorAcyclic
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulCubeDifferential
-public import SerrePositivity.KTheory.Adams.KoszulCubeBasis
+public import SerrePositivity.KTheory.Adams.KoszulCubeCoordinates
 public import SerrePositivity.PerfectComplex.CubicFourierEigen
 
 /-! # Degree minus one Fourier eigenvectors and their Koszul differentials -/

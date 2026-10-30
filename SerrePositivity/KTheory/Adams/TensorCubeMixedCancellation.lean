@@ -1,7 +1,9 @@
 module
 
-public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedQuotientAction
-public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedQuotientAction
+public import SerrePositivity.PerfectComplex.CubicActionTransport
+public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedSupport
+public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedRotation
+public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedQuotient
 public import SerrePositivity.PerfectComplex.TensorTripleCyclicSumClass
 
 /-! # Cancellation of both mixed layers of the tensor-cube filtration -/

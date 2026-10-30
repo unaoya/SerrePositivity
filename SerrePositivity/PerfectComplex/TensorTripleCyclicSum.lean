@@ -1,6 +1,9 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorTriple
+public import SerrePositivity.PerfectComplex.TensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
+public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
 public import SerrePositivity.PerfectComplex.CubicActionProjector
 
 /-! # Cyclic permutation of the three tensor rotations -/

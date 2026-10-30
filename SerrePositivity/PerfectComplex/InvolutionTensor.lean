@@ -1,7 +1,10 @@
 module
 
 public import SerrePositivity.PerfectComplex.IdempotentTensor
-public import SerrePositivity.PerfectComplex.IdempotentSum
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentDecomposition
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentSum
 public import SerrePositivity.PerfectComplex.InvolutionMaps
 public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 

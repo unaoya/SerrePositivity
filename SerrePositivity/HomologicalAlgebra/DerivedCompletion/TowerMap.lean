@@ -2,7 +2,9 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionQuasiIso
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerCoordinates
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
+public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
+public import SerrePositivity.HomologicalAlgebra.CochainConeNaturality
 
 /-! # 任意の複体塔の射によるホモトピー逆極限の写像
 

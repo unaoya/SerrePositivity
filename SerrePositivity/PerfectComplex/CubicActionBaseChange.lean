@@ -1,8 +1,10 @@
 module
 
 public import SerrePositivity.PerfectComplex.CubicActionDecomposition
-public import SerrePositivity.PerfectComplex.IdempotentImageFunctor
-public import SerrePositivity.PerfectComplex.IdempotentImageIso
+public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentFunctor
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentIso
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 
 /-! # Base change of cubic actions and their split character images -/

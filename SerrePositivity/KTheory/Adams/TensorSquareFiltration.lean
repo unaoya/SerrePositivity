@@ -1,6 +1,12 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorShortExact
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensorDegreeMaps
+public import SerrePositivity.PerfectComplex.TensorSupport
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
+public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShortExact
 public import SerrePositivity.PerfectComplex.DegreewiseRetract
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
 

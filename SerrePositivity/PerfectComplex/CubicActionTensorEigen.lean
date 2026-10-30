@@ -1,7 +1,11 @@
 module
 
 public import SerrePositivity.PerfectComplex.CubicActionTensorRows
-public import SerrePositivity.PerfectComplex.IdempotentFiniteSum
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentDecomposition
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentSum
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentFiniteSum
 
 /-! # Tensor eigenspaces as sums of three matching character tensor products -/
 

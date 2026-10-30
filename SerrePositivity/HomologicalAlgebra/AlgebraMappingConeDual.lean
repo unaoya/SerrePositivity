@@ -1,6 +1,8 @@
 module
 public import SerrePositivity.HomologicalAlgebra.AlgebraLinearYoneda
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
+public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
+public import SerrePositivity.HomologicalAlgebra.CochainConeNaturality
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
 
 /-! # Actual coefficient-algebra linear coordinates on dual mapping cones -/

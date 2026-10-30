@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.PerfectComplex.IdempotentImageQuasiIso
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import Mathlib.Algebra.Homology.QuasiIso
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
 public import SerrePositivity.HomologicalAlgebra.CochainIdempotentAcyclic
 public import SerrePositivity.HomologicalAlgebra.CochainIdempotentShortExact

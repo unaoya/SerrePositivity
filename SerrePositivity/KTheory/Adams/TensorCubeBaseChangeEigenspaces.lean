@@ -1,6 +1,11 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorTripleBaseChange
+public import SerrePositivity.PerfectComplex.TensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
+public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.PerfectComplex.TensorBaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensorTripleBaseChange
 public import SerrePositivity.PerfectComplex.CubicActionBaseChange
 public import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
 

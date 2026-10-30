@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.PerfectComplex.TensorCone
+public import SerrePositivity.PerfectComplex.TensorSupport
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
+public import SerrePositivity.HomologicalAlgebra.CochainTensorCone
 public import SerrePositivity.PerfectComplex.ConeAdditivity
 public import SerrePositivity.PerfectComplex.ClosedSupportCongr
 

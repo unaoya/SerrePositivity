@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
-public import SerrePositivity.PerfectComplex.IdempotentImageQuasiIso
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import Mathlib.Algebra.Homology.QuasiIso
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
 
 /-! # Tensor-cube character maps preserve quasi-isomorphisms -/
 

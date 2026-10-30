@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductCoordinates
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeCoordinates
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
+public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
 
 /-! # 任意複体塔のholimの二成分表示と微分 -/
 

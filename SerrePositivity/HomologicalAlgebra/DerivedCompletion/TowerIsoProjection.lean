@@ -2,7 +2,9 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerIso
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerProjection
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
+public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
+public import SerrePositivity.HomologicalAlgebra.CochainConeNaturality
 
 /-! # 複体塔の表示同型と標準射影の自然性 -/
 

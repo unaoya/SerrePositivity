@@ -1,7 +1,9 @@
 module
 public import SerrePositivity.PerfectComplex.KoszulClasses
 
-public import SerrePositivity.KTheory.Adams.KoszulTensor
+public import SerrePositivity.KTheory.Adams.KoszulNormalization
+public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
+public import SerrePositivity.PerfectComplex.KoszulTensor
 public import SerrePositivity.PerfectComplex.IdempotentImageTrivial
 
 /-! # The cyclic square preserves the class of the degree-zero unit complex -/

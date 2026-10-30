@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
-public import SerrePositivity.PerfectComplex.TensorSymmetry
+public import SerrePositivity.PerfectComplex.TensorPerfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensorSymmetry
 public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
 
 /-! # Tensor products preserve homotopies and scalar null homotopies -/

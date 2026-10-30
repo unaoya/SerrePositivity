@@ -1,7 +1,11 @@
 module
 
 public import SerrePositivity.PerfectComplex.CubicActionClass
-public import SerrePositivity.PerfectComplex.IdempotentImageShortExact
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import Mathlib.Algebra.Homology.QuasiIso
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentShortExact
 
 /-! # Additivity of weighted cubic classes on equivariant short exact sequences -/
 

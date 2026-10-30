@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.PerfectComplex.InvolutionDecomposition
-public import SerrePositivity.PerfectComplex.IdempotentImageQuasiIso
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import Mathlib.Algebra.Homology.QuasiIso
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
 
 /-! # Restriction of equivariant maps to involution eigenspaces -/
 

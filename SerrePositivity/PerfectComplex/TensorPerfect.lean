@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
-public import SerrePositivity.PerfectComplex.Tensor
+public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.HomologicalAlgebra.CochainTensor
 public import SerrePositivity.HomologicalAlgebra.CochainTensorFinite
 
 /-! # Bounded finite projective tensor complexes -/

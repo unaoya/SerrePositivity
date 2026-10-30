@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.PerfectComplex.KoszulOneModel
-public import SerrePositivity.PerfectComplex.TensorCone
+public import SerrePositivity.PerfectComplex.TensorSupport
+public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
+public import SerrePositivity.HomologicalAlgebra.CochainTensorCone
 public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
 
 /-! # Tensor factorization of a Koszul complex by its last one-element factor -/

@@ -1,7 +1,11 @@
 module
 
 public import SerrePositivity.PerfectComplex.InvolutionMaps
-public import SerrePositivity.PerfectComplex.IdempotentImageShortExact
+public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import Mathlib.Algebra.Homology.QuasiIso
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import SerrePositivity.HomologicalAlgebra.CochainIdempotentShortExact
 
 /-! # Exactness of positive and negative eigenspace sequences -/
 

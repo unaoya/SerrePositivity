@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeCoordinates
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
+public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulProduct
 
 /-! # 二座標Koszul塔の有限段の具体的な成分

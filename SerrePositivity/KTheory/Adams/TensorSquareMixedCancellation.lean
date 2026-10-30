@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KTheory.Adams.TensorSquareFiltrationImages
+public import SerrePositivity.KTheory.Adams.TensorSquareMixedSplitting
 public import SerrePositivity.PerfectComplex.InvolutionAntiEquivariance
 public import SerrePositivity.PerfectComplex.InvolutionClass
 public import SerrePositivity.PerfectComplex.BiproductPerfect
