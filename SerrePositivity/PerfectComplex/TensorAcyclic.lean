@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.TensorBaseChange
 public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
-public import SerrePositivity.HomologicalAlgebra.StupidTruncation
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import SerrePositivity.HomologicalAlgebra.CochainTensorAcyclic
 
 /-! # Tensoring acyclic complexes with bounded flat complexes -/

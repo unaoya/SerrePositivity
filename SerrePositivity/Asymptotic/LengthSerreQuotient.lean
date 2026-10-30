@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.LengthBoundedSequence
-public import SerrePositivity.CategoryTheory.AdditiveLength
+public import SerrePositivity.CategoryTheory.Abelian.SerreLength
 
 /-!
 # 正規化超極限が零の加群列による Serre 商

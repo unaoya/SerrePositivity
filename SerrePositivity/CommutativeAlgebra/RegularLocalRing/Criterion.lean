@@ -5,6 +5,7 @@ Authors: Nailin Guan
 -/
 module
 public import SerrePositivity.HomologicalAlgebra.RegularQuotientProjectiveDimension
+public import SerrePositivity.HomologicalAlgebra.AuslanderBuchsbaum
 public import SerrePositivity.CommutativeAlgebra.Depth
 public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
 public import Mathlib.Algebra.Module.SpanRankOperations

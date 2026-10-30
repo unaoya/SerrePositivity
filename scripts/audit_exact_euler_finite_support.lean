@@ -1,4 +1,4 @@
-import SerrePositivity.CategoryTheory.HomologicalEuler
+import SerrePositivity.CategoryTheory.Euler
 import SerrePositivity.LengthAlgebra.ExactSequenceEuler
 import Mathlib.Util.AssertNoSorry
 

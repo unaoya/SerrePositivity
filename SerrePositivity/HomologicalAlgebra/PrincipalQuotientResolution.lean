@@ -80,22 +80,6 @@ lemma principalQuotientResolutionAugmentation_quasiIso (a : R) (ha : IsSMulRegul
   dsimp only [principalQuotientResolutionAugmentation]
   infer_instance
 
-/-- The augmentation after the right cone inclusion is exactly the standard quotient map. -/
-lemma principalQuotientResolutionAugmentation_inr (a : R) :
-    CochainComplex.mappingCone.inr (smulId a (cochainTensorUnit (R := R))) ≫
-        principalQuotientResolutionAugmentation a =
-      (CochainComplex.singleFunctor (ModuleCat R) 0).map
-        (ModuleCat.ofHom (principalQuotientLinearMap a)) := by
-  have transport {P Q : CochainComplex (ModuleCat.{u} R) ℤ} {f g : P ⟶ Q} (h : f = g) :
-      CochainComplex.mappingCone.inr g ≫
-        eqToHom (congrArg (fun t : P ⟶ Q => CochainComplex.mappingCone t) h.symm) =
-          CochainComplex.mappingCone.inr f := by
-    subst g
-    simp
-  dsimp only [principalQuotientResolutionAugmentation]
-  rw [← Category.assoc, transport (principalQuotientCochainPresentation_f a)]
-  exact CochainComplex.mappingCone.inr_descShortComplex (principalQuotientCochainPresentation a)
-
 /-- The regular quotient has the explicit two-term bounded-above projective model. -/
 def principalQuotientDerivedModel (a : R) (ha : IsSMulRegular R a) :
     BoundedAboveDerivedModel

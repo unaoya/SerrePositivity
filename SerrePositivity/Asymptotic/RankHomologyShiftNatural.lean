@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.RankHomologyShift
 public import SerrePositivity.Asymptotic.CompletedHomology
-public import SerrePositivity.CategoryTheory.KaroubiHomological
+public import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 
 /-! # ホモロジーのシフト比較の自然性と Karoubi 包絡への延長 -/
 

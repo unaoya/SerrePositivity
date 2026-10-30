@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.TruncationTriangle
+public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.Asymptotic.PaperRankEvaluation
 
 /-! # 小さいランクの尾部を切り捨てる比較

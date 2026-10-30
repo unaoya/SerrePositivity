@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductHomotopy
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import Mathlib.Algebra.Homology.DerivedCategory.KProjective
 
 /-! # K射影的な始域から見た、導来像の直積射影による検出

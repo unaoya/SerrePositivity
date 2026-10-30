@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.DerivedCategory.ExactFunctor
 
 /-! # 導来完備性の同型・シフト・完全三角形に関する閉性

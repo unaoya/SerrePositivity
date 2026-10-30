@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
 public import SerrePositivity.PerfectComplex.NormalizedEuler
-public import SerrePositivity.HomologicalAlgebra.NullHomotopy
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import SerrePositivity.LengthAlgebra.PerfectVanishing
 public import SerrePositivity.PerfectComplex.BaseChange
 

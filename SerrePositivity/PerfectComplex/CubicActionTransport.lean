@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.PerfectComplex.CubicActionBasic
-public import SerrePositivity.CategoryTheory.CubicConjugation
+public import SerrePositivity.CategoryTheory.Triangulated.Idempotent
 
 /-! # Transport of cubic chain actions along an isomorphism -/
 @[expose] public noncomputable section

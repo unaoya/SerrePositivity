@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.HomotopyCategory
-public import SerrePositivity.CategoryTheory.FullSubcategoryTriangle
+public import SerrePositivity.CategoryTheory.HomotopyProperty
 public import SerrePositivity.CategoryTheory.IteratedCone
 
 /-! # 有限射影複体の実際の Koszul 錐の列

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 
 /-!

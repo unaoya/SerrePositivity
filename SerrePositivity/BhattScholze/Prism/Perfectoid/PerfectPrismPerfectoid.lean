@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
-public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import Mathlib.RingTheory.PrincipalIdealDomain
 public import Mathlib.RingTheory.AdicCompletion.Topology
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.KaroubiFullyFaithful
+public import SerrePositivity.CategoryTheory.Karoubi.Basic
 
 /-! # 圏同値を Karoubi 完備化へ運ぶ
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247ConstantRankExcision
 public import SerrePositivity.CLMST.Prop247RankAIC
 public import SerrePositivity.CLMST.Prop247AicRankAssembly
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
 
 /-! # Prop 2.4.7：原典の各実 rank 成分への定 rank 証明の適用
 

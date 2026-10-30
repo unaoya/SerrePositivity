@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.LinearFunctorScalarCone
-public import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion
 
 /-! # Restriction of coefficients for the actual power-Koszul completion stages -/

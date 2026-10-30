@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 public import Mathlib.CategoryTheory.Abelian.FunctorCategory
 public import Mathlib.CategoryTheory.Abelian.SerreClass.Basic
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat

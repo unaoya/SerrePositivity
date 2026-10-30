@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierQuotient
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionAlgebra
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 
 /-! # Naturality of the normalized original Cartier quotient comparison -/
 @[expose] public noncomputable section

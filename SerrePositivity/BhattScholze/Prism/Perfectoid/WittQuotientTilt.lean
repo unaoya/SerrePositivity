@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
-public import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalKernel
-public import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel
+public import SerrePositivity.CommutativeAlgebra.Perfection
 public import Mathlib.Algebra.Regular.Basic
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 

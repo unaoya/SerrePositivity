@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.ExactColimits
-public import SerrePositivity.HomologicalAlgebra.StupidTruncation
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import Mathlib.CategoryTheory.Limits.Constructions.EventuallyConstant
 
 /-! # 下からのstupid truncationの可算列と網羅的余極限 -/

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import Mathlib.RingTheory.Ideal.Height
 public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
 

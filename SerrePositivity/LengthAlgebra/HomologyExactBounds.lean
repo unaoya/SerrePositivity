@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Homology.HomologySequence
 
 /-! # 短完全列のホモロジーの長さと誤差評価

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
-public import SerrePositivity.CategoryTheory.VerdierKaroubiLinear
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierKaroubi
 
 /-! # 既存の有限 cell 本質像としての tria(D)
 

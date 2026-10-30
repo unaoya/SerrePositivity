@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionAlgebra
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 
 /-! # The original extended principal ideal quotient and the original image-generator quotient -/
 @[expose] public noncomputable section

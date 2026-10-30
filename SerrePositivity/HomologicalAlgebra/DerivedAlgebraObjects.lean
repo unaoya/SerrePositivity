@@ -32,16 +32,6 @@ def boundedAboveDerivedAlgebra (A : Type u) [CommRing A] [Algebra R A] :
     { mul_comm := boundedAboveDerivedAlgebraMul_comm A }
   exact ⟨boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R A)⟩
 
-/-- This algebra object uses precisely the previously defined product. -/
-lemma boundedAboveDerivedAlgebra_mul (A : Type u) [CommRing A] [Algebra R A] :
-    (boundedAboveDerivedAlgebra (R := R) A).mon.mul =
-      boundedAboveDerivedAlgebraMul (R := R) A := rfl
-
-/-- This algebra object uses precisely the previously defined standard unit. -/
-lemma boundedAboveDerivedAlgebra_one (A : Type u) [CommRing A] [Algebra R A] :
-    (boundedAboveDerivedAlgebra (R := R) A).mon.one =
-      boundedAboveDerivedAlgebraUnit (R := R) A := rfl
-
 /-- The actual derived tensor of two algebras, with its canonical commutative product. -/
 def boundedAboveDerivedTensorAlgebra
     (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T] :
@@ -54,13 +44,5 @@ def boundedAboveDerivedTensorAlgebra
     letI := C.mon
     letI := C.comm
     exact ⟨B.X ⊗ C.X⟩
-
-/-- Its underlying object is the existing actual derived tensor, with no replacement. -/
-lemma boundedAboveDerivedTensorAlgebra_X
-    (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T] :
-    (boundedAboveDerivedTensorAlgebra (R := R) S T).X =
-      boundedAboveDerivedTensor.obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S),
-          boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R T)) := rfl
 
 end SerrePositivity

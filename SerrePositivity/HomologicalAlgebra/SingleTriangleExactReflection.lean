@@ -41,17 +41,4 @@ theorem shortExact_of_distinguished_single_triangle
   exact ShortComplex.shortExact_of_iso
     (S.mapNatIso (DerivedCategory.singleFunctorCompHomologyFunctorIso C 0)) hshort
 
-/-- Short exactness is equivalent to the existence of the corresponding
-actual distinguished single-object triangle, with the original two maps. -/
-theorem shortExact_iff_exists_distinguished_single_triangle (S : ShortComplex C) :
-    S.ShortExact ↔ ∃ δ : (DerivedCategory.singleFunctor C 0).obj S.X₃ ⟶
-      ((DerivedCategory.singleFunctor C 0).obj S.X₁)⟦(1 : ℤ)⟧,
-      Triangle.mk ((DerivedCategory.singleFunctor C 0).map S.f)
-        ((DerivedCategory.singleFunctor C 0).map S.g) δ ∈ distTriang (DerivedCategory C) := by
-  constructor
-  · intro hS
-    exact ⟨hS.singleδ, hS.singleTriangle_distinguished⟩
-  · rintro ⟨δ, hT⟩
-    exact shortExact_of_distinguished_single_triangle S δ hT
-
 end SerrePositivity

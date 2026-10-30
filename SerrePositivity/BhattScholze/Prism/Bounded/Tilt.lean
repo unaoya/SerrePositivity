@@ -4,7 +4,7 @@ public import Mathlib.RingTheory.Teichmuller
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.Algebra.CharP.Algebra
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
-public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-!
 # 有界 prism とその商の tilt

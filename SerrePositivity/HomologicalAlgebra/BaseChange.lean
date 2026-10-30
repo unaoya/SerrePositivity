@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.CategoryTheory.Adjunction.Additive
 public import Mathlib.Algebra.Homology.Additive

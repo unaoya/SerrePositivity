@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulCone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerIsoProjection
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Maps
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulUnit
 
 /-! # 二座標Koszul完備化の標準写像と行列モデルの定数サイクル -/
@@ -152,12 +152,6 @@ theorem pairCompletionZeroEquiv_unit (f d r : R) :
       ((HomologicalComplex.singleObjXSelf _ 0 (ModuleCat.of R R)).inv r)) =
       (fun _ ↦ r, (0, 0)) :=
   Prod.ext (pairCompletionZeroEquiv_unit_fst R f d r) (pairCompletionZeroEquiv_unit_snd R f d r)
-
-/-- 元の短複体から行列モデルへの同型の中項。 -/
-theorem pairKoszulCompletionShortComplexIso_hom_τ₂ (f d : R) :
-    (pairKoszulCompletionShortComplexIso R f d).hom.τ₂ =
-      (pairKoszulCompletionIso R f d).hom.f 0 ≫
-        (pairCompletionZeroEquiv R f d).toModuleIso.hom := rfl
 
 /-- 元の標準写像を、行列モデルの短複体へ移した写像。 -/
 def pairCompletionUnitShortMap (f d : R) :

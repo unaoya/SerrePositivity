@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.SupportBasic
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.HomologicalAlgebra.FlatBaseChange
 public import Mathlib.RingTheory.Flat.Localization
-public import SerrePositivity.CommutativeAlgebra.LocalizationTorsion
+public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 
 /-! # 主開集合への局所化とコホモロジーの台
 
@@ -28,11 +28,11 @@ variable {S T : Type u} [CommRing S] [CommRing T]
 規約：冪は元に依存してよい。使われ方：一般の D_Z の台条件。 -/
 lemma module_support_principal_iff_torsion (a : S) (M : ModuleCat.{u} S) :
     Module.support S M ⊆ supportZeroLocus (Ideal.span ({a} : Set S)) ↔
-      IsModuleSTorsion (Submonoid.powers a) M := by
+      Module.IsTorsion' M (Submonoid.powers a) := by
   change Module.support S M ⊆ PrimeSpectrum.zeroLocus (Ideal.span ({a} : Set S) : Set S) ↔ _
   rw [PrimeSpectrum.zeroLocus_span]
   exact LocalizedModule.subsingleton_iff_support_subset.symm.trans
-    (IsModuleSTorsion.iff_localized_zero (P := Submonoid.powers a) (M := M)).symm
+    (isTorsion'_iff_subsingleton_localizedModule (P := Submonoid.powers a) (M := M)).symm
 
 variable [Algebra S T]
 
@@ -47,7 +47,7 @@ theorem homologySupport_iff_localization_acyclic (a : S) [IsLocalization.Away a 
   constructor
   · intro h i
     have ht := (module_support_principal_iff_torsion a (P.homology i)).1 (h i)
-    have hs := (IsModuleSTorsion.iff_tensor_zero (P := Submonoid.powers a)
+    have hs := (isTorsion'_iff_subsingleton_tensor (P := Submonoid.powers a)
       (M := P.homology i) T).1 ht
     have : Subsingleton (((complexBaseChange (algebraMap S T)).obj P).homology i) :=
       (flatBaseChangeHomologyEquiv S T P i).injective.subsingleton
@@ -58,7 +58,7 @@ theorem homologySupport_iff_localization_acyclic (a : S) [IsLocalization.Away a 
     have ht : Subsingleton (T ⊗[S] P.homology i) :=
       (flatBaseChangeHomologyEquiv S T P i).symm.injective.subsingleton
     exact (module_support_principal_iff_torsion a (P.homology i)).2
-      ((IsModuleSTorsion.iff_tensor_zero (P := Submonoid.powers a) (M := P.homology i) T).2 ht)
+      ((isTorsion'_iff_subsingleton_tensor (P := Submonoid.powers a) (M := P.homology i) T).2 ht)
 
 /-- 概要：D5c の底変更 ∞ 関手の頂点で局所化のホモロジー核を判定できる。
 方針：D5c の頂点計算式を複体の局所化判定に代入する。

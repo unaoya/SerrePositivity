@@ -13,7 +13,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0C
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence

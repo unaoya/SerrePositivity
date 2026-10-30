@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.ReesPresentation
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import Mathlib.RingTheory.MvPolynomial.Basic
 public import Mathlib.RingTheory.Polynomial.Basic
@@ -12,7 +12,7 @@ public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Graded.HilbertSer
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.AssociatedGraded
 public import SerrePositivity.HomologicalAlgebra.KoszulRestriction
-public import SerrePositivity.HomologicalAlgebra.CochainConeProduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.AdicEuler
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRingsExact
 

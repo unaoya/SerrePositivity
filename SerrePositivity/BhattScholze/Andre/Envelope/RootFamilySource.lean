@@ -11,7 +11,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 /-!
 # 有限根族の源：導来還元と完全忠実平坦性

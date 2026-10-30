@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section4.PaperK0Comparison
 public import SerrePositivity.Asymptotic.PaperBaseChangeEvaluation
-public import SerrePositivity.CategoryTheory.EulerComparison
+public import SerrePositivity.CategoryTheory.Euler
 
 /-! # 二つの長さ付き代数の対称なランク商比較
 

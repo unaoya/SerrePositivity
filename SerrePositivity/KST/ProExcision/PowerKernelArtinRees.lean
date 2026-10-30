@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.ScalarConeBiTower
-public import SerrePositivity.HomologicalAlgebra.ArtinReesHomology
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.KoszulComparison
 
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

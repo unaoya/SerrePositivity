@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.SupportedSequenceTStructure
 public import SerrePositivity.Asymptotic.SmallRankHomologicalKernel
-public import SerrePositivity.CategoryTheory.HomologicalKernelTStructure
+public import SerrePositivity.CategoryTheory.TStructure.Localization
 
 /-!
 # 支持つきランク商の有界 t 構造と冪等完備性

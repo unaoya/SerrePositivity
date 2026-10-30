@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.Prop247FiniteFreeComparison
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleAwayCover
-public import SerrePositivity.CommutativeAlgebra.DoubleLocalizationTensorComparison
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 
 /-! # Prop 2.4.7：実有限 étale 被覆上の有限自由比較

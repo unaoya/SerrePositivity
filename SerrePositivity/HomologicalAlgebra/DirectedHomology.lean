@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Colimit.Module
 public import Mathlib.CategoryTheory.Category.Preorder
 

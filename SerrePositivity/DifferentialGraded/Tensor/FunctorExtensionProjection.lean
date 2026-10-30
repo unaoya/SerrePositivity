@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Tensor.KFlat
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import SerrePositivity.DifferentialGraded.Tensor.LeftColimits
 public import SerrePositivity.DifferentialGraded.Tensor.YonedaRepresentative
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension

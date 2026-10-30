@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.RankQuotient
 public import Mathlib.CategoryTheory.Localization.Linear
-public import SerrePositivity.CategoryTheory.SubcategoryLinear
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
 
 /-!
 # 自由列とランク商のスカラー作用

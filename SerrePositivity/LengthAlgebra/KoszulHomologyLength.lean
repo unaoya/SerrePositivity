@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.KoszulTower
 public import SerrePositivity.LengthAlgebra.ConeHomologyLength
-public import SerrePositivity.CategoryTheory.ConeLengthBinomial
-public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
+public import SerrePositivity.CategoryTheory.IteratedCone
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 
 /-! # 無限分解にも適用できる Koszul ホモロジー長の二項公式

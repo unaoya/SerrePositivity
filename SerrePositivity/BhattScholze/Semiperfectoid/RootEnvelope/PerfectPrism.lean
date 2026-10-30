@@ -10,7 +10,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RawCompletion
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle

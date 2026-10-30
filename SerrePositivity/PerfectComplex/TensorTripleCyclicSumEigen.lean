@@ -3,8 +3,7 @@ module
 public import SerrePositivity.PerfectComplex.TensorTripleCyclicSumPerfect
 public import SerrePositivity.PerfectComplex.CochainCyclicThree
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentIso
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # The eigenspaces of a cyclic tensor orbit -/
 

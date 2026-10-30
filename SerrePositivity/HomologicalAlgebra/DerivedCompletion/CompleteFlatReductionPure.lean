@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTransitions
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTower
 
 /-! # Purity from a complete flat principal reduction over a bounded-torsion ring -/
 

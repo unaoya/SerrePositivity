@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulStageZero
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 

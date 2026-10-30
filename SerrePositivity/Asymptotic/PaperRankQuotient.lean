@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Asymptotic.CompletedComplexEvaluation
-public import SerrePositivity.CategoryTheory.VerdierKaroubiLinear
-public import SerrePositivity.CategoryTheory.ScalarSupportEquivalence
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierKaroubi
+public import SerrePositivity.CategoryTheory.ScalarSupport
 public import Mathlib.CategoryTheory.Shift.Linear
 
 /-! # 論文と同じ順序で構成したランク商との比較

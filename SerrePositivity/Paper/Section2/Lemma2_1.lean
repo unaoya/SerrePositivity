@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Inputs.ResidueFieldExtension
+public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.General
 public import SerrePositivity.IntersectionMultiplicity.BaseChange
 public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 public import Mathlib.RingTheory.AdicCompletion.Basic
@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.RegularLocalRing.Defs
 したがって加群の次元と有限長が保たれ、`B` が正則なら `B'` も正則、有限 `B` 加群 `M, N` の
 `Tor` の長さ（したがって交点重複度）も保たれる。
 
-環の存在は実構成を証明した `Inputs.exists_complete_flat_local_extension` を適用する。
+環の存在は実構成を証明した `exists_complete_flat_local_extension_of_residueField`（CommutativeAlgebra/ResidueFieldExtension/General）を適用する。
 商の長さ・正則性・Tor の長さの保存は、平坦局所拡大の一般論からここで証明する。
 正則性の保存は、証明済みの Hilbert–Samuel の多項式性と次元定理から従う。
 
@@ -65,7 +65,7 @@ theorem lemma_2_1 (B : Type u) [CommRing B] [IsLocalRing B] [IsNoetherianRing B]
         Module.length B (M ⊗[B] N) ≠ ⊤ → ∀ i : ℕ,
           torLength B i M N = torLength B' i (B' ⊗[B] M) (B' ⊗[B] N)) := by
   obtain ⟨B', bRing, bLocal, bNoetherian, bComplete, bAlg, bLocalHom,
-    hflat, hm, he⟩ := Inputs.exists_complete_flat_local_extension B
+    hflat, hm, he⟩ := exists_complete_flat_local_extension_of_residueField B
       (AlgebraicClosure (ResidueField B))
   let := hflat
   refine ⟨B', bRing, bLocal, bNoetherian, bComplete, bAlg, bLocalHom,

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Asymptotic.SequenceDerived
 public import SerrePositivity.Asymptotic.SequenceHomology
 public import SerrePositivity.Asymptotic.SupportedRankQuotient
-public import SerrePositivity.CategoryTheory.FamilyTriangulatedImage
+public import SerrePositivity.CategoryTheory.TStructure.Family
 
 /-!
 # 支持つき自由列から導来対象の族への像

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
-public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import Mathlib.RingTheory.Flat.Basic
 
 /-! # 有限段への生成イデアルを保つパラメータ変更の適用

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionKoszulStage
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerIso
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 

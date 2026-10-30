@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulStage
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductHomology
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalTowerPresentation
 
 /-! # 一座標Koszul塔の直積の成分計算

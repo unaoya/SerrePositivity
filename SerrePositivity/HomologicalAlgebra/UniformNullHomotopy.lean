@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.NullHomotopy
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 
 /-!
 # 共通の次数幅による零ホモトピーの冪の制御

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainLinearDual
+public import SerrePositivity.HomologicalAlgebra.LinearYoneda
 
 /-! # Homology of nonnegative restrictions, including the degree-zero boundary -/
 @[expose] public section

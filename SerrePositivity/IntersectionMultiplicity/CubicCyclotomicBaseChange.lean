@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CubicCyclotomicLocalExtension
+public import SerrePositivity.CommutativeAlgebra.CubicCyclotomic.LocalExtension
 public import SerrePositivity.IntersectionMultiplicity.BaseChange
 
 /-! # Transporting the vanishing hypotheses to the cubic cyclotomic local extension -/
@@ -32,14 +32,16 @@ lemma cubicCyclotomicLocalRing_vanishing_data (hc : IsCoprime g h)
       Module.supportDim B (B ⊗[R] M) + Module.supportDim B (B ⊗[R] N) < ringKrullDim B ∧
       chi B (B ⊗[R] M) (B ⊗[R] N) = chi R M N := by
   let B := CubicCyclotomicLocalRing g h hf
-  have hm := cubicCyclotomicLocalRing_map_maximalIdeal g h hf hc
+  have hm := residueFactorLocalRing_map_maximalIdeal _ g h
+    (cubicCyclotomicPolynomial_map_residue_eq g h hf) hc
   refine ⟨inferInstance, inferInstance, ?_, ?_,
     chi_baseChange_of_map_maximalIdeal R B hm M N⟩
   · rw [tensorLength_baseChange_of_map_maximalIdeal R B hm M N]
     exact hfin
   · rw [supportDim_baseChange_of_map_maximalIdeal R B hm M,
       supportDim_baseChange_of_map_maximalIdeal R B hm N,
-      cubicCyclotomicLocalRing_dimension g h hf hc]
+      residueFactorLocalRing_dimension _ g h
+        (cubicCyclotomicPolynomial_map_residue_eq g h hf) hc]
     exact hdim
 
 end SerrePositivity

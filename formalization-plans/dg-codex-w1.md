@@ -127,3 +127,20 @@ Codex の予備集計（P 275・E 362・T 候補 12・U 68・K 5・未定 1、�
    ```
    D1 の後の再生成でも同じ順序で行う（削除・移動した分は import 行から消えるので、残りを再ビルドするだけ）。ビルドが失敗するモジュールがあれば、それは本物の不整合なので止めて報告する。
 8. **Archive は監査・集約に入らない。** `make_area_audits.py` は `AREAS` に列挙したディレクトリしか見ないので、`SerrePositivity/Archive/` は dg.lean に入らない。D2 の `DifferentialGraded.lean` も Archive と Checks/ を import しない。`lake build` の既定は root の閉包なので、Archive の下はビルドされない（`lake build <module>` を明示したときだけ）。
+9. **ルートの全体ビルドは一回だけ。** D2 の殻の削除で DG・IC・KST・EInfinity の約 2,600 本が再エラボレートされる（実測 2,576 本、1 時間超）。これは避けられないが、**繰り返さない**：いま走っている `lake build SerrePositivity` が終わった後は、途中で触ったモジュールだけを `lake build <module>` で確かめ、ルートの再ビルドは §4 の verify.sh（内部でルートと監査対象をビルドする）に任せる。dg.lean の import 先のビルド（§9-7）は、この全体ビルドの後なら再生だけで数十秒で終わる。
+10. **verify.sh は `VERIFY_JOBS=3` のまま。** 最長の監査は RSS 19 GB なので、並列数は上げない。
+
+## 10. 追記（2026-10-31、§6-2 の報告への回答：区切り 1-2 の取り込み）
+
+§6-2 の報告（P 272・E 304・T 1・U 68・K 5、Stage 8 本と `Complexes/Monoidal` の削除、新入口 1,598 本、監査 1,910 本、verify PASS・gate:true、層検査で禁止依存の増加なし）を**承認**する。§5 のコミット（D0・D1・D2 の 3 本、`git commit --only`）を行ってよい。
+
+ただし、その verify は基点 ebe775fc6 のもので、その後 main に論文の層の**区切り 1-2**（95c0a6d25・401fbbe6d・82644fcf1：HomologicalAlgebra の第一層の統合。DG 16 本・IC 8 本・KST 6 本・EInfinity 1 本・ルートの import 行を main 側で書き換え済み）が入った。main に入れる前に、次の順で取り込んで verify をやり直す。
+
+11. **コミットの後に main を取り込む。** `git merge main`。衝突は `SerrePositivity.lean`（ルート）だけの見込み（main は HA の import 行、こちらは DG の 12 行 → 1 行）。両方を残す形で解決する（HA の行は main の版、DG の行は `public import SerrePositivity.DifferentialGraded` 1 行）。それ以外に衝突が出たら止めて報告。区切り 1-2 が触った DG の 16 本は D1 で削除・移動した検査と重ならないことを確認済み。
+12. **新しく足したファイルの import 行を [handover §9](handover-ct-to-infinity-2026-10-30.md) の表で照合する。** 対象は `DifferentialGraded.lean`（DG だけを import するので該当なし）、`Checks/` へ移した 39 本、`Archive/` の 68 本。旧名の `HomologicalAlgebra.*` を import していれば表の新名に替える（Archive も文面は直す）。D2 で向け直した `HomologicalAlgebra.CochainTensorLinear` は区切り 1-2 でも同名のまま。
+13. **`.lake/build` を main から温める。** main の `.lake` は区切り 1-2 の後に全体ビルド済み（確認済み）。HA が変わると木のほぼ全部が再ビルドになるので、自分で作り直さず、main でビルドが走っていないことを `ps` で確かめてから
+    ```sh
+    rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/
+    ```
+    で複製する。**main では 10-31 朝の時点でまだ `lake build SerrePositivity …` が走っている**（区切り 1-2 の後の温め直し。残りは CLMST・IntersectionMultiplicity など木の上端）。`ps -axo command= | grep '[l]ake build'` に main のパスのものが出なくなってから rsync する。その上で `lake build SerrePositivity`（D2 の連鎖分だけが再ビルドされる。見込み 1 時間前後）。
+14. **verify.sh を再実行**（`VERIFY_JOBS=3`、キャッシュなし）。PASS・gate:true なら **§6-3 で止めて報告**（merge の衝突の解決内容、§9 表で替えた import 行の数、rsync 後の再ビルド本数と時間、verify の summary）。main への取り込みは Claude が行う（fast-forward できる形にしておく：merge の後に追加のコミットは作らない）。

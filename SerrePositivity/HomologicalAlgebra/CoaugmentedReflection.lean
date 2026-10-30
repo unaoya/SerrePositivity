@@ -62,38 +62,4 @@ def coaugmentedHomEquiv
     (X Y : C) [IsIso (η.app Y)] (f : X ⟶ Y) :
     (coaugmentedHomEquiv L η hcomm X Y).symm f = L.map f ≫ inv (η.app Y) := rfl
 
-/-- Equality of extensions can be checked before completion. -/
-theorem coaugmentedHom_ext
-    (hcomm : ∀ X, L.map (η.app X) = η.app (L.obj X))
-    {X Y : C} [IsIso (η.app Y)] {f g : L.obj X ⟶ Y}
-    (h : η.app X ≫ f = η.app X ≫ g) : f = g :=
-  (coaugmentedHomEquiv L η hcomm X Y).injective h
-
-/-- The reflection equivalence is natural in its source. -/
-theorem coaugmentedHomEquiv_naturality_left
-    (hcomm : ∀ X, L.map (η.app X) = η.app (L.obj X))
-    {X X' Y : C} [IsIso (η.app Y)] (a : X' ⟶ X) (f : L.obj X ⟶ Y) :
-    coaugmentedHomEquiv L η hcomm X' Y (L.map a ≫ f) =
-      a ≫ coaugmentedHomEquiv L η hcomm X Y f := by
-  change η.app X' ≫ (L.map a ≫ f) = a ≫ (η.app X ≫ f)
-  rw [← Category.assoc, ← η.naturality a, Category.assoc]
-  rfl
-
-/-- The reflection equivalence is natural in fixed targets. -/
-theorem coaugmentedHomEquiv_naturality_right
-    (hcomm : ∀ X, L.map (η.app X) = η.app (L.obj X))
-    (X : C) {Y Y' : C} [IsIso (η.app Y)] [IsIso (η.app Y')]
-    (f : L.obj X ⟶ Y) (b : Y ⟶ Y') :
-    coaugmentedHomEquiv L η hcomm X Y' (f ≫ b) =
-      coaugmentedHomEquiv L η hcomm X Y f ≫ b :=
-  (Category.assoc _ _ _).symm
-
-/-- Both invertibility checks give the reflection's universal property. -/
-def coaugmentedHomEquivOfIsIso
-    (hη : ∀ X, IsIso (η.app (L.obj X)))
-    (hLη : ∀ X, IsIso (L.map (η.app X)))
-    (X Y : C) [IsIso (η.app Y)] :
-    (L.obj X ⟶ Y) ≃ (X ⟶ Y) :=
-  coaugmentedHomEquiv L η (coaugmentedUnit_comm_of_isIso L η hη hLη) X Y
-
 end SerrePositivity

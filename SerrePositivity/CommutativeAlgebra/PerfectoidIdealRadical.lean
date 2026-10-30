@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-! # Radical support and arbitrary positive powers of perfectoid ideals
 

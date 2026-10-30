@@ -5,9 +5,8 @@ public import SerrePositivity.HomologicalAlgebra.QuotientSupTorComparison
 public import SerrePositivity.HomologicalAlgebra.ModuleBaseChangeTensor
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraAcyclicBaseChange
 public import SerrePositivity.HomologicalAlgebra.LocalFlatnessCriterion
-public import SerrePositivity.CommutativeAlgebra.CompatibleRootPerfectQuotient
-public import SerrePositivity.CommutativeAlgebra.PerfectCoefficientTensor
-public import SerrePositivity.CommutativeAlgebra.PerfectPowerReduced
+public import SerrePositivity.CommutativeAlgebra.CompatibleRoot
+public import SerrePositivity.CommutativeAlgebra.PerfectRing
 public import Mathlib.Data.Finset.Lattice.Fold
 /-! # Higher Tor vanishes for finite families of compatible roots over a perfect ring
 

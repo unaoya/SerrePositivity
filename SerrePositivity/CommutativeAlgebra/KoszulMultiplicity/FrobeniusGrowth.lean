@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.KoszulTorLength
 public import SerrePositivity.HomologicalAlgebra.TorFiniteLengthBound
 public import SerrePositivity.HomologicalAlgebra.TorUniformAnnihilator
-public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Parameters
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness

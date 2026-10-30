@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedFlatModelTensor
 public import SerrePositivity.HomologicalAlgebra.ScalarExtensionTensorCancellation
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatNilpotent
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 /-! # Lift actual derived flatness across arbitrary nilpotent ideals -/
 @[expose] public noncomputable section

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.KoszulFormula
-public import SerrePositivity.CategoryTheory.EulerComparison
+public import SerrePositivity.CategoryTheory.Euler
 
 /-! # 二つの長さ付き代数による有限射影版の対称な比較
 

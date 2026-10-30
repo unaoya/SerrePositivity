@@ -118,7 +118,8 @@ def sourceImageLattice (M : SupportedFGModuleOn Z) : SupportedLocalizationLattic
 
 omit [IsNoetherianRing R] in
 lemma sourceLocalizationMap_kernel_torsion (M : SupportedFGModuleOn Z) :
-    IsModuleSTorsion P (sourceLocalizationMap (B := B) Z M).ker := by
+    Module.IsTorsion' (sourceLocalizationMap (B := B) Z M).ker P := by
+  rw [isTorsion'_iff_forall]
   intro m
   obtain ⟨r, hr, he⟩ := (IsLocalizedModule.mem_ker_iff P).mp m.property
   exact ⟨r, hr, Subtype.ext he⟩

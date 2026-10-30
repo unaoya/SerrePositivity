@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainLinearDualCone
+public import SerrePositivity.HomologicalAlgebra.LinearYoneda
 public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 

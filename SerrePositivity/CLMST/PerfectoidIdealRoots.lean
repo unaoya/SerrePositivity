@@ -3,8 +3,8 @@ module
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
-public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
-public import SerrePositivity.CommutativeAlgebra.FrobeniusRootKernels
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
+public import SerrePositivity.CommutativeAlgebra.Perfection
 public import Mathlib.RingTheory.Nilpotent.Basic
 
 /-! # 被約な目標への核と根の所属

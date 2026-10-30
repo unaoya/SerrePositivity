@@ -94,16 +94,4 @@ lemma boundedAboveDerivedTensorRightUnitor_naturality {X Y : D} (f : X ⟶ Y) :
     MonoidalCategory.rightUnitor_naturality _
   rw [hu, CategoryTheory.Functor.map_comp, Category.assoc, P.map_naturality Q f.hom]
 
-/-- Left tensoring with the standard unit is naturally the identity. -/
-def boundedAboveDerivedTensorLeftUnitorNatIso :
-    (((Functor.const D).obj boundedAboveDerivedTensorUnit).prod' (𝟭 D)) ⋙ (T) ≅ 𝟭 D :=
-  NatIso.ofComponents boundedAboveDerivedTensorLeftUnitor
-    (fun f => boundedAboveDerivedTensorLeftUnitor_naturality f)
-
-/-- Right tensoring with the standard unit is naturally the identity. -/
-def boundedAboveDerivedTensorRightUnitorNatIso :
-    ((𝟭 D).prod' ((Functor.const D).obj boundedAboveDerivedTensorUnit)) ⋙ (T) ≅ 𝟭 D :=
-  NatIso.ofComponents boundedAboveDerivedTensorRightUnitor
-    (fun f => boundedAboveDerivedTensorRightUnitor_naturality f)
-
 end SerrePositivity

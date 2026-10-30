@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange
-public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 
 /-! # 非単元のエタール開集合と正の零化指数
 

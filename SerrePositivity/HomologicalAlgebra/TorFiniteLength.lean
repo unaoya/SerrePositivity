@@ -5,7 +5,7 @@ public import Mathlib.RingTheory.Finiteness.Cardinality
 public import Mathlib.RingTheory.TensorProduct.Finite
 public import Mathlib.RingTheory.Support
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
-public import SerrePositivity.CommutativeAlgebra.PowTorsion
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
 /-!

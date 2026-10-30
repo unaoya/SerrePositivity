@@ -25,7 +25,7 @@ public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
 4. **素イデアル商**：デヴィサージュ（`chi_pos_of_prime_quotients`）と、冪級数環での
    対角線論法（`DiagonalRing.chi_pos_of_prime`）。
 
-デヴィサージュは交点重複度の消滅定理（`Inputs.intersectionVanishing`）を使う。
+デヴィサージュは交点重複度の消滅定理（`intersectionVanishing_of_adams`、証明済み）を使う。
 
 ## 使われ方
 

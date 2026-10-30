@@ -8,6 +8,7 @@ public import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
 public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
 public import Mathlib.RingTheory.Regular.IsSMulRegular
 public import Mathlib.Data.Set.List
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-! # 素イデアル回避によるパラメータの選択（論文 §5.2 の (5.4)）
 
@@ -206,5 +207,38 @@ theorem exists_regular_parameters_in (P Q : Ideal R) [Q.IsPrime] {h l d : ℕ}
 end regular
 
 end Avoidance
+
+section FiniteExtension
+
+open IsLocalRing
+
+/-- 正則局所環 R の素イデアル P・Q で P + Q の根基が極大イデアルなら、Q の中に R の正則列 x を選び、
+その像を R/P 上の有限拡大 D のパラメータ系にできる（論文 (5.4) のパラメータの選択）。 -/
+theorem exists_regular_parameters_for_finite_extension
+    {R : Type u} [CommRing R] [IsRegularLocalRing R]
+    (P Q : Ideal R) [P.IsPrime] [Q.IsPrime]
+    (D : Type u) [CommRing D] [IsLocalRing D]
+    [Algebra R D] [Algebra (R ⧸ P) D] [IsScalarTower R (R ⧸ P) D]
+    [Module.Finite (R ⧸ P) D] (hinj : Function.Injective (algebraMap (R ⧸ P) D))
+    {h e : ℕ} (hd : ringKrullDim R = (e + h : ℕ))
+    (hPdim : ringKrullDim (R ⧸ P) = h) (hQdim : ringKrullDim (R ⧸ Q) = e)
+    (hprimary : (P ⊔ Q).radical = maximalIdeal R) :
+    ∃ x : Fin h → R, (∀ i, x i ∈ Q) ∧
+      RingTheory.Sequence.IsWeaklyRegular R (List.ofFn x) ∧
+      IsSystemOfParameters D (algebraMap R D ∘ x) := by
+  let : IsLocalRing (R ⧸ P) :=
+    IsLocalRing.of_surjective' (Ideal.Quotient.mk P) Ideal.Quotient.mk_surjective
+  obtain ⟨x, hxQ, hxreg, hxrad⟩ := exists_regular_parameters_in P Q hd hPdim hQdim
+    (Nat.add_comm h e) hprimary
+  have hx := isSystemOfParameters_quotient_of_radical P x hPdim hxrad
+  have hxD := hx.map_finite D hinj
+  have hw : algebraMap (R ⧸ P) D ∘ (Ideal.Quotient.mk P ∘ x) =
+      algebraMap R D ∘ x := by
+    ext i
+    exact (IsScalarTower.algebraMap_apply R (R ⧸ P) D (x i)).symm
+  rw [hw] at hxD
+  exact ⟨x, hxQ, hxreg, hxD⟩
+
+end FiniteExtension
 
 end SerrePositivity

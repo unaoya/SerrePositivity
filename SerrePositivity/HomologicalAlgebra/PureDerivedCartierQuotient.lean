@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicFaithfulDescent
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 public import SerrePositivity.HomologicalAlgebra.DerivedH0Algebra
 
 /-! # Actual regular quotient of a pure derived algebra and its original Cartier quotient -/

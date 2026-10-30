@@ -175,3 +175,246 @@ EInfinity・KST と CategoryTheory の下位ディレクトリ）だけだった
 - `ParametrizedAdjunctionTransport`（`restrict`・`composeSecond`・`left`・`right`）は Mathlib の `ParametrizedAdjunction` の拡張で、上流にない。提出候補。
 - FiniteBijection は `Core FintypeCat.Skeleton` の薄い包み。FiniteBlockEquiv は `Fin` の同値。
 - 未使用：`FiniteBijectionInduction.addRight_faithful`（instance）。
+
+## 8. 追加の伝達：区切り 1-1 で main のモジュール名が変わった（2026-10-30）
+
+main に区切り 1-1 が入った（ca2fffe4d・25d50e9e8）。∞ 基盤・DG・KST の worktree で main を取り込むとき、次の import 行を書き換える。
+main 側の ∞・DG・KST のファイル（DG 7 本・KST 1 本・InfinityCategories/Derived/Localization）は書き換え済み。worktree で新しく足したファイルだけが対象になる。
+
+- CategoryTheory のトップ階層 68 本を 20 本にまとめた（下の表、`SerrePositivity.` は省略）。宣言名は変えていない。
+  ただし `GroupTheory.ConjugateSum` は `CategoryTheory.Euler` に入り、`conjSum_eq` → `orbitSum_eq_of_descent`、
+  `conjSum_eq_of_base_formula` → `orbitSum_eq_of_base_formula` に改名した。`triangle_isIso_of_components` は削除し、Mathlib の
+  `Triangle.isIso_of_isIsos` を使う。`smul_mul_self_id_eq_zero`・`pow_smul_id_eq_zero_of_le` は HomologicalAlgebra/NullHomotopy から
+  新しい `CategoryTheory/LinearScalar` に移した。
+- `IsModuleSTorsion` を廃止した。Mathlib の `Module.IsTorsion' M S` を使い、`IsModuleSTorsion.iff_localized_zero` →
+  `isTorsion'_iff_subsingleton_localizedModule`、`.iff_tensor_zero` → `isTorsion'_iff_subsingleton_tensor`、`.of_exact` → `isTorsion'_of_exact`、
+  要素ごとの形は `isTorsion'_iff_forall`（いずれも `CommutativeAlgebra/Localization/PowerTorsion`）。
+- CommutativeAlgebra の他の改名の全表は ca2fffe4d のコミットメッセージにある。
+
+| 旧 | 新 |
+| --- | --- |
+| `CategoryTheory.AdditiveLength` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.BoundedHomotopyGeneration` | `CategoryTheory.BoundedHomotopy` |
+| `CategoryTheory.BoundedTStructureGeneration` | `CategoryTheory.TStructure.Bounded` |
+| `CategoryTheory.BoundedTStructureIdempotent` | `CategoryTheory.TStructure.Bounded` |
+| `CategoryTheory.CommShiftOfPrecomp` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.ConeLengthBinomial` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.ConeLengthCancellation` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.CubicConjugation` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.DerivedPure` | `CategoryTheory.Derived` |
+| `CategoryTheory.EulerComparison` | `CategoryTheory.Euler` |
+| `CategoryTheory.ExactImageSequence` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.ExactRetract` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.ExactSequenceEuler` | `CategoryTheory.Euler` |
+| `CategoryTheory.FamilyTStructure` | `CategoryTheory.TStructure.Family` |
+| `CategoryTheory.FamilyTriangulatedImage` | `CategoryTheory.TStructure.Family` |
+| `CategoryTheory.FiniteSupportBounds` | `CategoryTheory.AlternatingSum` |
+| `CategoryTheory.FullSubcategoryTriangle` | `CategoryTheory.HomotopyProperty` |
+| `CategoryTheory.HomologicalConeLength` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.HomologicalEuler` | `CategoryTheory.Euler` |
+| `CategoryTheory.HomologicalKernelTStructure` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.HomologicalLocalization` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.HomotopyConeRepresentative` | `CategoryTheory.HomotopyProperty` |
+| `CategoryTheory.KaroubiExtensionOne` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiFullyFaithful` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiHomological` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiImage` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiLinear` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiPretriangulated` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiScalarSupport` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.KaroubiShift` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiTriangulated` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiTriangulatedFunctor` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.LocalizationTStructure` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.OctahedronBlockRetract` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.OctahedronEssentialImage` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.OctahedronPadding` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.ScalarSupportEquivalence` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarSupportLocalization` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarSupportRadical` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarZeroCone` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.SemilinearScalar` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.SerreDerivedQuotient` | `CategoryTheory.Derived` |
+| `CategoryTheory.SerreLength` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.SerreSubcategory` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.ShortExactCokernel` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.SubcategoryLinear` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.TExactKernelQuotient` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.TExactTruncation` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.TStructureHeart` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.TStructureRetracts` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.ThreeComponentMaps` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TriangleBiproduct` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.TriangleIdempotent` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TriangleIdempotentCompletion` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TrianglePadding` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.TriangulatedK0Shift` | `CategoryTheory.TriangulatedK0` |
+| `CategoryTheory.TruncationTriangle` | `CategoryTheory.BoundedHomotopy` |
+| `CategoryTheory.VerdierKaroubi` | `CategoryTheory.Triangulated.VerdierKaroubi` |
+| `CategoryTheory.VerdierKaroubiLinear` | `CategoryTheory.Triangulated.VerdierKaroubi` |
+| `CategoryTheory.VerdierLift` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.VerdierTStructure` | `CategoryTheory.TStructure.Localization` |
+| `GroupTheory.ConjugateSum` | `CategoryTheory.Euler` |
+
+## 9. 追加の伝達：区切り 1-2 で HomologicalAlgebra のモジュール名が変わった（2026-10-31）
+
+main に区切り 1-2 が入った（95c0a6d25・401fbbe6d）。HomologicalAlgebra の第一層（BS が直接 import しないファイル）を統合した。
+main 側の ∞・DG・KST・EInfinity のファイル（DG 9 本・InfinityCategories 7 本・KST 5 本・EInfinity 1 本）は import 行を書き換え済み。
+worktree で新しく足したファイルだけ、次の表で import 行を書き換える。宣言名は変えていない（未使用の宣言 189 は削除した。
+∞ 側で使っていたものはない）。`MonoidalUnitHomRing`・`MonoidalPointAction` は `CategoryTheory.MonoidalUnitHom` に移した。
+
+| 旧 | 新 |
+| --- | --- |
+| `HomologicalAlgebra.ArtinReesHomology` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.Basic` | `HomologicalAlgebra.Complex.Basic` |
+| `HomologicalAlgebra.BoundedAboveDerivedAdditive` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveDerivedCone` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveDerivedConeTriangle` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveDerivedModels` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveDerivedShift` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveDerivedTensor` | `HomologicalAlgebra.BoundedAbove.Tensor` |
+| `HomologicalAlgebra.BoundedAboveLeftDerived` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveProjectiveResolution` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveResolutionFunctor` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveSourceConeTriangle` | `HomologicalAlgebra.BoundedAbove.Derived` |
+| `HomologicalAlgebra.BoundedAboveTensorFunctor` | `HomologicalAlgebra.BoundedAbove.Tensor` |
+| `HomologicalAlgebra.BoundedAboveTensorModels` | `HomologicalAlgebra.BoundedAbove.Tensor` |
+| `HomologicalAlgebra.BoundedResolutionDimension` | `HomologicalAlgebra.Resolution` |
+| `HomologicalAlgebra.ChainLinearYoneda` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.ChainLinearYonedaZero` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.CochainAcyclic` | `HomologicalAlgebra.Complex.ConeLES` |
+| `HomologicalAlgebra.CochainBiproduct` | `HomologicalAlgebra.Complex.Basic` |
+| `HomologicalAlgebra.CochainConeAdditiveNaturality` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainConeArrowMap` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainConeCoordinates` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainConeNaturality` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainConeProduct` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainConeTriangle` | `HomologicalAlgebra.Complex.Cone` |
+| `HomologicalAlgebra.CochainIdempotent` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentAcyclic` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentDecomposition` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentFiniteSum` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentFunctor` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentHomology` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentIso` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentQuasiIso` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentShortExact` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentSum` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainIdempotentTrivial` | `HomologicalAlgebra.Complex.Idempotent` |
+| `HomologicalAlgebra.CochainKernelLift` | `HomologicalAlgebra.Complex.Basic` |
+| `HomologicalAlgebra.CochainLinearDual` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.CochainLinearDualCone` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.CochainTwoTermScalarMap` | `HomologicalAlgebra.Complex.Basic` |
+| `HomologicalAlgebra.ConeComparisonSquare` | `HomologicalAlgebra.ScalarConeAnnihilators` |
+| `HomologicalAlgebra.ConeFiniteCover` | `HomologicalAlgebra.ScalarConeAnnihilators` |
+| `HomologicalAlgebra.ConeLES` | `HomologicalAlgebra.Complex.ConeLES` |
+| `HomologicalAlgebra.ConeOfSurjectiveSource` | `HomologicalAlgebra.ScalarConeAnnihilators` |
+| `HomologicalAlgebra.ConeResolution` | `HomologicalAlgebra.Resolution` |
+| `HomologicalAlgebra.ControlledHorseshoe` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.ControlledResolution` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.DerivedCompletion.BoundedTermTorsionComparison` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ConstantTower` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.FiniteCoefficientCokernelHolim` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerHolim` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.KoszulPowerCokernelComparison` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.LocalizationHomCoordinates` | `HomologicalAlgebra.DerivedCompletion.Localization` |
+| `HomologicalAlgebra.DerivedCompletion.LocalizationPresentation` | `HomologicalAlgebra.DerivedCompletion.Localization` |
+| `HomologicalAlgebra.DerivedCompletion.LocalizationResolution` | `HomologicalAlgebra.DerivedCompletion.Localization` |
+| `HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison` | `HomologicalAlgebra.DerivedCompletion.Localization` |
+| `HomologicalAlgebra.DerivedCompletion.MilnorMapZero` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.MilnorNaturality` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.MilnorSequence` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerHolimNaturality` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerReduction` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTensorHolim` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTensorModel` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTensorTorZero` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraAlmost` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraTower` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTorComparison` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.ModulePowerTorsionBound` | `HomologicalAlgebra.DerivedCompletion.ModulePower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerCokernelNaturality` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerCokernelReconstruction` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerCokernelTensorModel` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerCokernelTransitions` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerImageTower` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerTorsionComplex` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerTorsionTower` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.PowerTowerLimitBound` | `HomologicalAlgebra.DerivedCompletion.PowerTower` |
+| `HomologicalAlgebra.DerivedCompletion.ProductCoordinates` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.ProductHomology` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.ProductHomotopy` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.ScalarTowerInversion` | `HomologicalAlgebra.DerivedCompletion.Localization` |
+| `HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorActions` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorMiddle` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorSequence` | `HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete` |
+| `HomologicalAlgebra.DerivedCompletion.TowerComplex` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.TowerCoordinates` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.TowerExact` | `HomologicalAlgebra.DerivedCompletion.Tower.Maps` |
+| `HomologicalAlgebra.DerivedCompletion.TowerHomology` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.TowerHomologyNaturality` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.TowerIso` | `HomologicalAlgebra.DerivedCompletion.Tower.HolimModel` |
+| `HomologicalAlgebra.DerivedCompletion.TowerIsoMapCompatibility` | `HomologicalAlgebra.DerivedCompletion.Tower.Maps` |
+| `HomologicalAlgebra.DerivedCompletion.TowerIsoProjection` | `HomologicalAlgebra.DerivedCompletion.Tower.Maps` |
+| `HomologicalAlgebra.DerivedCompletion.TowerLiftNaturality` | `HomologicalAlgebra.DerivedCompletion.Tower.Maps` |
+| `HomologicalAlgebra.DerivedCompletion.TowerMap` | `HomologicalAlgebra.DerivedCompletion.Tower.Maps` |
+| `HomologicalAlgebra.DerivedCompletion.UniformZeroTower` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.DerivedCompletion.UniformZeroTowerHomology` | `HomologicalAlgebra.DerivedCompletion.Tower.Milnor` |
+| `HomologicalAlgebra.ExactChainHomologyColimits` | `HomologicalAlgebra.ComplexColimits` |
+| `HomologicalAlgebra.ExactFunctorColimits` | `HomologicalAlgebra.ComplexColimits` |
+| `HomologicalAlgebra.ExtZeroComparison` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.FiniteFreeResolution` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.FiniteLocalizationDescent` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.FiniteParameterKoszulAnnihilator` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.FiniteResolutionTrace` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.GeneralKoszulLocalCohomology` | `HomologicalAlgebra.Ext.LocalCohomology` |
+| `HomologicalAlgebra.GeneralLocalCohomologyBaseChange` | `HomologicalAlgebra.Ext.LocalCohomology` |
+| `HomologicalAlgebra.InjectiveCoefficientDimensionShift` | `HomologicalAlgebra.Ext.LocalCohomology` |
+| `HomologicalAlgebra.InjectiveLinearYoneda` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.KoszulDualCoefficientExact` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulDualInjectiveAcyclic` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulDualTorComparison` | `HomologicalAlgebra.LocalCohomology.Actions` |
+| `HomologicalAlgebra.KoszulDualZero` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulDualZeroTorsion` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulDualZeroTransitions` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulExtComparison` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.KoszulHomologyAnnihilator` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.KoszulLocalCohomologyAction` | `HomologicalAlgebra.LocalCohomology.Actions` |
+| `HomologicalAlgebra.KoszulTransitionDepth` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.LinearFunctorColimits` | `HomologicalAlgebra.ComplexColimits` |
+| `HomologicalAlgebra.LocalCohomologyAction` | `HomologicalAlgebra.LocalCohomology.Actions` |
+| `HomologicalAlgebra.LocalCohomologyKoszulComparison` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.LocalCohomologyKoszulPowers` | `HomologicalAlgebra.LocalCohomology.KoszulComparison` |
+| `HomologicalAlgebra.LocalCohomologyScalarBaseChange` | `HomologicalAlgebra.LocalCohomology.BaseChange` |
+| `HomologicalAlgebra.LocalCohomologyTorAnnihilator` | `HomologicalAlgebra.LocalCohomology.Actions` |
+| `HomologicalAlgebra.LocalCohomologyZeroTorsion` | `HomologicalAlgebra.LocalCohomology.Actions` |
+| `HomologicalAlgebra.LocalizedRegularResolution` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.MappingConeLinearDual` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.MinimalBetti` | `HomologicalAlgebra.MinimalResolution` |
+| `HomologicalAlgebra.MinimalBoundary` | `HomologicalAlgebra.MinimalResolution` |
+| `HomologicalAlgebra.MinimalFreeResolution` | `HomologicalAlgebra.MinimalResolution` |
+| `HomologicalAlgebra.MinimalTruncation` | `HomologicalAlgebra.MinimalResolution` |
+| `HomologicalAlgebra.MonoidalPointAction` | `CategoryTheory.MonoidalUnitHom` |
+| `HomologicalAlgebra.MonoidalUnitHomRing` | `CategoryTheory.MonoidalUnitHom` |
+| `HomologicalAlgebra.NullHomotopy` | `HomologicalAlgebra.Complex.Truncation` |
+| `HomologicalAlgebra.ParameterKoszulComparison` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.ParameterKoszulIdempotent` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.ParameterLocalCohomologyAnnihilator` | `HomologicalAlgebra.LocalCohomology.BaseChange` |
+| `HomologicalAlgebra.ProjectiveExtColimitExact` | `HomologicalAlgebra.Ext.LocalCohomology` |
+| `HomologicalAlgebra.ProjectiveExtNaturality` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.ProjectiveExtSequence` | `HomologicalAlgebra.Ext.LocalCohomology` |
+| `HomologicalAlgebra.ProjectiveLinearCoyoneda` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.ProjectiveResolutionInjectiveAcyclic` | `HomologicalAlgebra.LinearYoneda` |
+| `HomologicalAlgebra.RegularLocalResolution` | `HomologicalAlgebra.Resolution.FiniteFree` |
+| `HomologicalAlgebra.ResolutionMappingCone` | `HomologicalAlgebra.Resolution` |
+| `HomologicalAlgebra.ResolutionNaturality` | `HomologicalAlgebra.Resolution` |
+| `HomologicalAlgebra.StupidTruncation` | `HomologicalAlgebra.Complex.Truncation` |
+| `HomologicalAlgebra.TorAlmostComparisonTransport` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator` | `HomologicalAlgebra.Koszul.ParameterAnnihilators` |
+| `HomologicalAlgebra.TruncationBoundary` | `HomologicalAlgebra.Complex.Truncation` |
+| `HomologicalAlgebra.TwoCohomologyAnnihilator` | `HomologicalAlgebra.ScalarConeAnnihilators` |
+| `HomologicalAlgebra.TwoTermConeAnnihilator` | `HomologicalAlgebra.ScalarConeAnnihilators` |

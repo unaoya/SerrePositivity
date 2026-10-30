@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
+public import SerrePositivity.FieldTheory.SeparableBaseChange
 public import Mathlib.RingTheory.Trace.Basic
 public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
 public import Mathlib.RingTheory.Algebraic.Integral

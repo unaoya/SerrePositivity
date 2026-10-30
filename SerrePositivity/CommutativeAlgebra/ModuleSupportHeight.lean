@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Dimension
-public import SerrePositivity.CommutativeAlgebra.ModuleClosedSupport
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import SerrePositivity.CommutativeAlgebra.SupportHeight
 
 /-! # Natural height bounds on finite module supports -/

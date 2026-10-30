@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
-public import SerrePositivity.HomologicalAlgebra.TorAlmostComparisonTransport
+public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # Actual ideal Tor inputs are invariant under either direction of almost comparison -/
 @[expose] public noncomputable section

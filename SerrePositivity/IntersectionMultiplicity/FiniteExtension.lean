@@ -4,7 +4,7 @@ public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import Mathlib.LinearAlgebra.Quotient.Defs
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.Data.ENat.BigOperators
-public import SerrePositivity.Inputs.IntersectionTheory
+public import SerrePositivity.IntersectionMultiplicity.AdamsVanishingAll
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
@@ -35,8 +35,8 @@ public import SerrePositivity.CommutativeAlgebra.SupportDimension
   （`chi_rank_factor_left/right_of_additivity_and_vanishing`、`chi_rank_factors`）と、`WithBot ℕ∞` 値の
   次元についての不等式の補題。
 - 有限直和の公式 `χ(M^n, N) = n · χ(M, N)` を加法性から帰納法で示す（`chi_pi_left/right_of_additivity`）。
-- `chi_finite_extensions`：以上を組み合わせる。加法性は証明済みの定理（分解の存在に依存）、消滅定理は名前付きの未証明定理
-  （`Inputs/IntersectionTheory.lean`）に依存する。Lemma 3.5、Galois 作用、正規化長さとは独立の議論。
+- `chi_finite_extensions`：以上を組み合わせる。加法性は正則局所環上の有限自由分解の存在、消滅は台つき巡回 Adams 作用素による
+  `intersectionVanishing_of_adams`（証明済み）を使う。Lemma 3.5、Galois 作用、正規化長さとは独立の議論。
 -/
 
 public section
@@ -252,11 +252,11 @@ theorem chi_finite_extensions
   have dimD : Module.supportDim R (R ⧸ P) = (h : WithBot ℕ∞) := by
     rw [Module.supportDim_quotient_eq_ringKrullDim, hP]
   have vanishC : chi R (T ⧸ LinearMap.range f) U = 0 :=
-    Inputs.intersectionVanishing R _ _ finCU (by
+    intersectionVanishing_of_adams R _ _ finCU (by
       rw [dimU, ← hsum]
       exact dimension_add_nat_lt hC)
   have vanishK : chi R (R ⧸ P) (U ⧸ LinearMap.range g) = 0 :=
-    Inputs.intersectionVanishing R _ _ finDK (by
+    intersectionVanishing_of_adams R _ _ finDK (by
       rw [dimD, add_comm, ← hsum, Nat.add_comm h l]
       exact dimension_add_nat_lt hK)
   have left := chi_rank_factor_left_of_additivity_and_vanishing

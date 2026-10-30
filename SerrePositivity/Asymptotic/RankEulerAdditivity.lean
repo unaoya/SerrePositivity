@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.RankEuler
 public import SerrePositivity.Asymptotic.RankHomologyShift
-public import SerrePositivity.CategoryTheory.HomologicalEuler
+public import SerrePositivity.CategoryTheory.Euler
 
 /-!
 # 支持つきランク商の Euler 評価の三角加法性

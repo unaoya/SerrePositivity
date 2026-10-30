@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentTrivial
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # Images and supported classes of trivial idempotents
 

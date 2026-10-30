@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.TensorEnlarge
 public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
-public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 
 /-! # Base change of the standard cochain tensor product -/

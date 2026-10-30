@@ -1,4 +1,4 @@
-import SerrePositivity.CategoryTheory.HomologicalEuler
+import SerrePositivity.CategoryTheory.Euler
 import SerrePositivity.KTheory.HomologyEuler
 import SerrePositivity.PerfectComplex.OrdinaryEuler
 import Mathlib.Util.AssertNoSorry

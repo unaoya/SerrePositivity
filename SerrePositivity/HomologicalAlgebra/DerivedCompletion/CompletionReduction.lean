@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarTowerInversion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReconstruction
 
 /-! # Completion preserves all power-Koszul quotients along its standard unit
@@ -48,38 +48,5 @@ def complexCompletionReductionIso (K : CochainComplex (ModuleCat.{u} R) ℤ) (n 
   have := complexCompletionUnit_koszul_quasiIso R a K n
   exact asIso (DerivedCategory.Q.map
     ((scalarConeFunctor (a ^ n)).map (complexCompletionUnit R a K)))
-
-/-- The reduction isomorphism is natural in the coefficient complex. -/
-lemma complexCompletionReductionIso_naturality
-    {K L : CochainComplex (ModuleCat.{u} R) ℤ} (f : K ⟶ L) (n : ℕ) :
-    DerivedCategory.Q.map ((scalarConeFunctor (a ^ n)).map f) ≫
-        (complexCompletionReductionIso R a L n).hom =
-      (complexCompletionReductionIso R a K n).hom ≫ DerivedCategory.Q.map
-        ((scalarConeFunctor (a ^ n)).map ((complexCompletionFunctor R a).map f)) := by
-  change DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _ =
-    DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _
-  rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
-    ← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
-    complexCompletionUnit_naturality]
-
-/-- All reduction isomorphisms respect the standard transition maps between consecutive powers. -/
-lemma complexCompletionReductionIso_transition
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℕ) :
-    (complexCompletionReductionIso R a K (n + 1)).hom ≫
-        DerivedCategory.Q.map (complexPowerKoszulTransition R a
-          ((complexCompletionFunctor R a).obj K) n) =
-      DerivedCategory.Q.map (complexPowerKoszulTransition R a K n) ≫
-        (complexCompletionReductionIso R a K n).hom := by
-  change DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _ =
-    DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _
-  rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
-    complexPowerKoszulTransition_naturality]
-
-/-- Reduction before and after completion are naturally isomorphic via the standard unit. -/
-def complexCompletionReductionNatIso (n : ℕ) :
-    scalarConeFunctor (a ^ n) ⋙ DerivedCategory.Q ≅
-      complexCompletionFunctor R a ⋙ scalarConeFunctor (a ^ n) ⋙ DerivedCategory.Q :=
-  NatIso.ofComponents (fun K => complexCompletionReductionIso R a K n)
-    (fun f => complexCompletionReductionIso_naturality R a f n)
 
 end SerrePositivity.DerivedCompletion

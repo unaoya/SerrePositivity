@@ -1,13 +1,12 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
-public import SerrePositivity.CommutativeAlgebra.PerfectoidFontainePrincipal
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import SerrePositivity.CommutativeAlgebra.Adic.Principal
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
 public import Mathlib.RingTheory.AdicCompletion.Topology
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 
@@ -483,7 +482,7 @@ theorem witt_coeff_zero_isAdicComplete (d : WittVector p k)
   let M := WittVector p k ⧸ Ideal.span {(p : WittVector p k)}
   let e : M ≃+* k := WittVector.quotientPEquiv
   let q := Ideal.Quotient.mk (Ideal.span {(p : WittVector p k)})
-  let : IsReduced k := isReduced_of_perfectRing_charP k p
+  let : IsReduced k := isReduced_of_perfectPower k p (Fact.out : p.Prime).one_lt
   let : IsReduced M := isReduced_of_injective e.toRingHom e.injective
   have hb : ∃ N : ℕ, ∀ n : ℕ, ∀ x : M, q d ^ n * x = 0 → q d ^ N * x = 0 := by
     refine ⟨1, ?_⟩

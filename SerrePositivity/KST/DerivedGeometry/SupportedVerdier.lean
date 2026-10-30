@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.DerivedSupport
 public import SerrePositivity.KST.DerivedGeometry.TriangulatedKernel
-public import SerrePositivity.CategoryTheory.VerdierLift
+public import SerrePositivity.CategoryTheory.Triangulated.VerdierLift
 
 /-!
 概要：開部分の補集合に台を持つ部分圏による実際の Verdier 商を構成する。

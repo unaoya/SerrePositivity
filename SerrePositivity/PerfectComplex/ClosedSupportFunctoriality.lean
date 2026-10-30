@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.ClosedSupportComparison
 public import SerrePositivity.PerfectComplex.BaseChange
-public import SerrePositivity.CommutativeAlgebra.ClosedSupportGeometry
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 
 /-! # 閉集合版 K₀ の台の拡大と基底変更
 

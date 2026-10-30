@@ -21,17 +21,6 @@ def boundedAboveCompletionCommMonFunctor : CommMon D ⥤ CommMon D := by
   letI := boundedAboveDerivedCompletionLaxBraided R a
   exact (boundedAboveDerivedCompletionFunctor R a).mapCommMon
 
-/-- Its underlying object is precisely the existing actual completion. -/
-theorem boundedAboveCompletionCommMonFunctor_X (A : CommMon D) :
-    ((boundedAboveCompletionCommMonFunctor R a).obj A).X =
-      (boundedAboveDerivedCompletionFunctor R a).obj A.X := rfl
-
-/-- The completed product is the canonical comparison followed by the completed original product. -/
-theorem boundedAboveCompletionCommMonFunctor_mul (A : CommMon D) :
-    ((boundedAboveCompletionCommMonFunctor R a).obj A).mon.mul =
-      boundedAboveCompletionTensorComparison R a A.X A.X ≫
-        (boundedAboveDerivedCompletionFunctor R a).map A.mon.mul := rfl
-
 /-- The completed algebra unit uses the original standard completion unit. -/
 theorem boundedAboveCompletionCommMonFunctor_one (A : CommMon D) :
     ((boundedAboveCompletionCommMonFunctor R a).obj A).mon.one =

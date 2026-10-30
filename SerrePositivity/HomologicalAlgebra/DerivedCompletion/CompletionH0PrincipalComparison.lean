@@ -119,26 +119,6 @@ def completionH0PrincipalAlgEquiv :
     exact g.commutes x
   exact AlgEquiv.ofAlgHom fB g hfg hgf
 
-/-- The comparison sends the original H⁰ unit to the original principal completion unit. -/
-lemma completionH0PrincipalAlgEquiv_unit (x : B) :
-    letI := derivedH0CommRing A
-    letI := derivedH0Algebra A
-    letI := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R a).obj A)
-    letI := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R a).obj A)
-    letI := completionH0ScalarAlgebra R a A
-    letI := principalCompletionCommRing B (algebraMap R B a)
-    letI := principalCompletionAlgebra B (algebraMap R B a)
-    completionH0PrincipalAlgEquiv R a A (J x) =
-      principalCompletionUnitRingHom B (algebraMap R B a) x := by
-  let := derivedH0CommRing A
-  let := derivedH0Algebra A
-  let := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R a).obj A)
-  let := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R a).obj A)
-  let := completionH0ScalarAlgebra R a A
-  let := principalCompletionCommRing B (algebraMap R B a)
-  let := principalCompletionAlgebra B (algebraMap R B a)
-  exact (completionH0PrincipalAlgEquiv R a A).commutes x
-
 /-- If the original H⁰ is already c-complete, actual a-completion is its pair completion. -/
 def completionH0PairAlgEquivOfCompleteFirst (c : R)
     (hc : IsModuleComplete R c B) :
@@ -164,26 +144,5 @@ def completionH0PairAlgEquivOfCompleteFirst (c : R)
   exact (completionH0PrincipalAlgEquiv R a A).trans
     (pairCompletionPrincipalAlgEquivOfCompleteFirst B (algebraMap R B c)
       (algebraMap R B a) hb).symm
-
-/-- The pair comparison retains the original completion unit on every H⁰ coefficient. -/
-lemma completionH0PairAlgEquivOfCompleteFirst_unit (c : R)
-    (hc : IsModuleComplete R c B) (x : B) :
-    letI := derivedH0CommRing A
-    letI := derivedH0Algebra A
-    letI := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R a).obj A)
-    letI := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R a).obj A)
-    letI := completionH0ScalarAlgebra R a A
-    letI := pairCompletionCommRing B (algebraMap R B c) (algebraMap R B a)
-    letI := pairCompletionAlgebra B (algebraMap R B c) (algebraMap R B a)
-    completionH0PairAlgEquivOfCompleteFirst R a A c hc (J x) =
-      pairCompletionUnitRingHom B (algebraMap R B c) (algebraMap R B a) x := by
-  let := derivedH0CommRing A
-  let := derivedH0Algebra A
-  let := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R a).obj A)
-  let := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R a).obj A)
-  let := completionH0ScalarAlgebra R a A
-  let := pairCompletionCommRing B (algebraMap R B c) (algebraMap R B a)
-  let := pairCompletionAlgebra B (algebraMap R B c) (algebraMap R B a)
-  exact (completionH0PairAlgEquivOfCompleteFirst R a A c hc).commutes x
 
 end SerrePositivity.DerivedCompletion

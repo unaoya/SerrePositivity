@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247StandardCone
 public import SerrePositivity.CLMST.Prop247Uniform
 public import SerrePositivity.CLMST.IsogenyDescent
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-! # Prop 2.4.7：指定した実 perfectoid 化から全段共通指数と降下
 

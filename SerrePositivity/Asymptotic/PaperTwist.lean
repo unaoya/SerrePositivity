@@ -1,5 +1,4 @@
 module
-public import SerrePositivity.CommutativeAlgebra.AlgebraAction
 
 public import SerrePositivity.Asymptotic.BaseChangeIdentity
 public import Mathlib.Algebra.Algebra.Hom
@@ -81,7 +80,7 @@ omit [Nontrivial T] in
 lemma paperTwist_parameters (g : G) :
     (MulSemiringAction.toAlgHom A T g).toRingHom ∘ (algebraMap A T ∘ z) =
       algebraMap A T ∘ z :=
-  algebraHom_parameters (MulSemiringAction.toAlgHom A T g) z
+  funext fun j ↦ (MulSemiringAction.toAlgHom A T g).commutes (z j)
 
 /-- 自己同型に沿った係数拡大による、論文の支持圏のひねり。 -/
 noncomputable abbrev paperTwist (g : G) :
@@ -99,7 +98,8 @@ noncomputable abbrev paperTwistK0 (g : G) :
 /-- 単位元によるひねりは K₀ 上で恒等写像。 -/
 lemma paperTwistK0_one :
     paperTwistK0 (s := s) (T := T) z (1 : G) = AddMonoidHom.id _ := by
-  have h := algebraActionRingHom_one (A := A) (T := T) (G := G)
+  have h : (MulSemiringAction.toAlgHom A T (1 : G)).toRingHom = RingHom.id T :=
+    RingHom.ext (one_smul G)
   change paperSupportedMap _ _ _ _ = _
   simp only [h]
   exact paperSupportedMap_id _
@@ -108,7 +108,10 @@ lemma paperTwistK0_one :
 lemma paperTwistK0_mul (g h : G) :
     paperTwistK0 (s := s) (T := T) z (g * h) =
       (paperTwistK0 (s := s) (T := T) z g).comp (paperTwistK0 (s := s) (T := T) z h) := by
-  have hh := algebraActionRingHom_mul (A := A) (T := T) g h
+  have hh : (MulSemiringAction.toAlgHom A T (g * h)).toRingHom =
+      (MulSemiringAction.toAlgHom A T g).toRingHom.comp
+        (MulSemiringAction.toAlgHom A T h).toRingHom :=
+    RingHom.ext (mul_smul g h)
   have hc := paperSupportedMap_comp (s := s)
     (MulSemiringAction.toAlgHom A T h).toRingHom
     (MulSemiringAction.toAlgHom A T g).toRingHom

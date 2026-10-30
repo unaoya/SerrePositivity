@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
-public import SerrePositivity.CommutativeAlgebra.QuotientScalarExtension
+public import SerrePositivity.CommutativeAlgebra.Adic.ReductionScalarExtension
 
 /-! # Derived quotient base change with ordinary residue factors -/
 @[expose] public section

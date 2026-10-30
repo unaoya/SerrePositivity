@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.TensorIsogeny
 public import SerrePositivity.CLMST.Algebra
-public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 
 /-! # 完備化した根の塔上の具体的な isogeny
 

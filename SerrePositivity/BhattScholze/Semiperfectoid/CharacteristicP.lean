@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP
-public import SerrePositivity.CommutativeAlgebra.FrobeniusRootKernels
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
+public import SerrePositivity.CommutativeAlgebra.Perfection
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.RingTheory.Ideal.Quotient.Nilpotent
 
@@ -56,7 +56,7 @@ theorem isIntegralPerfectoid_of_perfectRing_p_eq_zero [PerfectRing R p]
         refine ⟨E.symm y, ?_⟩
         apply E.injective
         simpa only [frobenius_def, ← map_pow, E.apply_symm_apply] using hy
-    let : IsReduced (ModP R p) := isReduced_of_perfectRing_charP (ModP R p) p
+    let : IsReduced (ModP R p) := isReduced_of_perfectPower (ModP R p) p (Fact.out : p.Prime).one_lt
     have hker : RingHom.ker (WittVector.fontaineTheta R p) =
         Ideal.span {(p : WittVector p (PreTilt R p))} := by
       apply le_antisymm

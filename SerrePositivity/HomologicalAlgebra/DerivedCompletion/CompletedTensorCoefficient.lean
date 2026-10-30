@@ -70,18 +70,6 @@ lemma completedTensorH0LeftAlgHom_apply (s : S) :
   letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R a S T)
   exact (completedTensorH0LeftAlgHom R a S T).toRingHom.toAlgebra
 
-/-- The target's original R action agrees with restriction of the original left-coefficient action. -/
-lemma completedTensorH0LeftScalarTower :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R a S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R a S T)
-    letI := completedTensorH0LeftAlgebra R a S T
-    IsScalarTower R S ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R a S T).X.obj) := by
-  letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R a S T)
-  letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R a S T)
-  letI := completedTensorH0LeftAlgebra R a S T
-  exact IsScalarTower.of_algHom (completedTensorH0LeftAlgHom R a S T)
-
 /-- The completed original left-coefficient endomorphism acts by multiplication
 by the original completed factor image. No flatness or regularity is needed. -/
 lemma completedTensorH0_left_coefficient_mul (s : S)

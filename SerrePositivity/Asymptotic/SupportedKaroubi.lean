@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SupportedRankQuotient
-public import SerrePositivity.CategoryTheory.KaroubiScalarSupport
+public import SerrePositivity.CategoryTheory.ScalarSupport
 
 /-!
 # 支持つきランク商の冪等完備化

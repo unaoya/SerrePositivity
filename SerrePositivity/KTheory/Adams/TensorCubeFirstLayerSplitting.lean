@@ -9,9 +9,8 @@ public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
 public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
 public import SerrePositivity.HomologicalAlgebra.CochainTensorTripleDegreeMaps
 public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentDecomposition
-public import SerrePositivity.HomologicalAlgebra.CochainKernelLift
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # The four low-degree components of the tensor-cube first layer -/
 

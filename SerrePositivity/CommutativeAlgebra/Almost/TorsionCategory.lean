@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Almost.Category
-public import SerrePositivity.CommutativeAlgebra.PowTorsionCategory
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 
 /-! # 冪ねじれ加群の almost 局所化
 

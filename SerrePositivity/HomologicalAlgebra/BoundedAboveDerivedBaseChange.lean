@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.ProjectiveBaseChange
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveLeftDerived
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedAssociator
 public import SerrePositivity.HomologicalAlgebra.TensorBaseChangeNaturality
 

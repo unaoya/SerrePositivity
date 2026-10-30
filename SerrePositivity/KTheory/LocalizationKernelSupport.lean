@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.G0Localization
-public import SerrePositivity.CommutativeAlgebra.PrincipalSupport
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 
 /-! # A localization kernel element comes from one smaller closed support -/
 @[expose] public section
@@ -31,7 +31,7 @@ lemma add {x x' : G0WithSupport Z} (hx : HasPrincipalLocalizationSupport P Z x)
   principalSupport_add (fun W => G0WithSupport W) (fun h => G0WithSupport.enlarge h)
     (fun h h' y => DFunLike.congr_fun (G0WithSupport.enlarge_comp h h') y) hx hx'
 
-lemma mk_torsion (M : SupportedFGModuleOn Z) (h : IsModuleSTorsion P M.obj) :
+lemma mk_torsion (M : SupportedFGModuleOn Z) (h : Module.IsTorsion' M.obj P) :
     HasPrincipalLocalizationSupport P Z (G0WithSupport.mk M) := by
   obtain ⟨s, hs, hM⟩ := exists_annihilator_supportedOn M h
   refine ⟨s, hs, G0WithSupport.mk ⟨M.obj, hM⟩, ?_⟩
@@ -56,7 +56,8 @@ lemma localizationTorsionSubgroup_le_principalSupport :
 lemma moduleSTorsion_of_support_principal {M : Type u} [AddCommGroup M] [Module R M]
     [Module.Finite R M] {s : R} (hs : s ∈ P)
     (h : Module.support R M ⊆ supportZeroLocus (Ideal.span ({s} : Set R))) :
-    IsModuleSTorsion P M := by
+    Module.IsTorsion' M P := by
+  rw [isTorsion'_iff_forall]
   change Module.support R M ⊆ PrimeSpectrum.zeroLocus (Ideal.span ({s} : Set R)) at h
   rw [Module.support_eq_zeroLocus, PrimeSpectrum.zeroLocus_subset_zeroLocus_iff] at h
   obtain ⟨n, hn⟩ := h (Ideal.subset_span (Set.mem_singleton s))

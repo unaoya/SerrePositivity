@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
 public import SerrePositivity.HomologicalAlgebra.TorAcyclicBaseChangeComparison
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicFaithfulDescent
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra

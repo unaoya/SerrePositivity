@@ -24,7 +24,6 @@ import Mathlib.Util.AssertNoSorry
 #print axioms SerrePositivity.lambdaHomology_koszul_null_binomial
 #print axioms SerrePositivity.ordinary_koszulEuler_eq_koszulEulerChar
 #print axioms SerrePositivity.regularResolution
-#print axioms SerrePositivity.Inputs.regularResolution
 #print axioms SerrePositivity.isWeaklyRegular_of_span_eq_maximalIdeal
 #print axioms SerrePositivity.ringKrullDim_quotient_add_length_of_mem_associatedPrimes
 #print axioms SerrePositivity.koszulEulerChar_eq_finrank
@@ -70,7 +69,6 @@ assert_no_sorry SerrePositivity.lambdaHomology_koszul_null_pow
 assert_no_sorry SerrePositivity.lambdaHomology_koszul_null_binomial
 assert_no_sorry SerrePositivity.ordinary_koszulEuler_eq_koszulEulerChar
 assert_no_sorry SerrePositivity.regularResolution
-assert_no_sorry SerrePositivity.Inputs.regularResolution
 assert_no_sorry SerrePositivity.isWeaklyRegular_of_span_eq_maximalIdeal
 assert_no_sorry SerrePositivity.ringKrullDim_quotient_add_length_of_mem_associatedPrimes
 assert_no_sorry SerrePositivity.koszulEulerChar_eq_finrank
@@ -88,18 +86,18 @@ assert_no_sorry SerrePositivity.Section4.symmetricPaperEuler_conjSum_eq
 assert_no_sorry SerrePositivity.KoszulMultiplicity.multiplicity_eq_chiOrd_koszul
 
 -- 引用1の型を保った実構成と、その剰余体還元への適用。
-#print axioms SerrePositivity.Inputs.exists_complete_flat_local_extension
-assert_no_sorry SerrePositivity.Inputs.exists_complete_flat_local_extension
+#print axioms SerrePositivity.exists_complete_flat_local_extension_of_residueField
+assert_no_sorry SerrePositivity.exists_complete_flat_local_extension_of_residueField
 #print axioms SerrePositivity.Section2.lemma_2_1
 assert_no_sorry SerrePositivity.Section2.lemma_2_1
 
 -- 引用3の既存型を保持した混標数Cohen正規化の実構成。
-#print axioms SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
-assert_no_sorry SerrePositivity.Inputs.cohen_normalization_mixedCharacteristic
+#print axioms SerrePositivity.exists_cohen_normalization_mixedCharacteristic
+assert_no_sorry SerrePositivity.exists_cohen_normalization_mixedCharacteristic
 
 -- 標準完備塔の旧Inputs入口は実際のtiltとFontaine核から証明済み。
-#print axioms SerrePositivity.Inputs.completedTower_isIntegralPerfectoid
-assert_no_sorry SerrePositivity.Inputs.completedTower_isIntegralPerfectoid
+#print axioms SerrePositivity.Section2.completedTower_isIntegralPerfectoid_of_standard_wittPresentation
+assert_no_sorry SerrePositivity.Section2.completedTower_isIntegralPerfectoid_of_standard_wittPresentation
 
 -- 剰余標数零の Serre の正値性：対角線論法の核と、その部品は標準公理のみ。
 #print axioms SerrePositivity.DiagonalRing.chi_pos_of_prime
@@ -109,15 +107,15 @@ assert_no_sorry SerrePositivity.flat_of_isWeaklyRegular
 #print axioms SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
 assert_no_sorry SerrePositivity.exists_mvPowerSeries_ringEquiv_of_charZero
 -- 交点消滅は巡回 Adams 作用素で全剰余標数にわたり証明済み。
-#print axioms SerrePositivity.Inputs.intersectionVanishing
-assert_no_sorry SerrePositivity.Inputs.intersectionVanishing
+#print axioms SerrePositivity.intersectionVanishing_of_adams
+assert_no_sorry SerrePositivity.intersectionVanishing_of_adams
 -- 一般の剰余標数零の正値性も、デヴィサージュと証明済みの消滅により標準公理のみ。
 #print axioms SerrePositivity.chi_pos_of_residueCharZero
 assert_no_sorry SerrePositivity.chi_pos_of_residueCharZero
 
 -- Cohen–Gabberの公開型を保った微分経路の実構成。
-#print axioms SerrePositivity.Inputs.cohen_gabber_normalization
-assert_no_sorry SerrePositivity.Inputs.cohen_gabber_normalization
+#print axioms SerrePositivity.exists_cohen_gabber_normalization
+assert_no_sorry SerrePositivity.exists_cohen_gabber_normalization
 #print axioms SerrePositivity.Section2.lemma_2_2
 assert_no_sorry SerrePositivity.Section2.lemma_2_2
 

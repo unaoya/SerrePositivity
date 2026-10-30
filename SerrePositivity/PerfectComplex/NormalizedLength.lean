@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
-public import SerrePositivity.CommutativeAlgebra.PowTorsion
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.Basic.ENNReal.Basic
 public import Mathlib.Basic.ENNReal.Operations

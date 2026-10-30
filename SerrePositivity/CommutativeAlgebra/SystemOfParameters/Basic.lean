@@ -239,4 +239,19 @@ lemma supportDim_quotSMulTop_quotient {R : Type u} [CommRing R] (I : Ideal R) (y
 
 end Height
 
+/-- **(5.6)**：局所準同型 `f : B → D` で `D` が Noether 局所、`m_D ⊆ √I` なら、`a ≥ 1` で
+`f(m_B^a) ⊆ I`。`m_D^n ⊆ I` となる `n`（有限生成性）をとり、`f(m_B) ⊆ m_D` を使う。 -/
+theorem exists_pow_maximalIdeal_map_le {B D : Type u} [CommRing B] [IsLocalRing B] [CommRing D]
+    [IsLocalRing D] [IsNoetherianRing D] (f : B →+* D) [IsLocalHom f] {I : Ideal D}
+    (hI : IsLocalRing.maximalIdeal D ≤ I.radical) :
+    ∃ a : ℕ, 0 < a ∧ ∀ y ∈ IsLocalRing.maximalIdeal B ^ a, f y ∈ I := by
+  obtain ⟨n, hn⟩ := Ideal.exists_pow_le_of_le_radical_of_fg hI (IsNoetherian.noetherian _)
+  have hm : (IsLocalRing.maximalIdeal B).map f ≤ IsLocalRing.maximalIdeal D :=
+    Ideal.map_le_iff_le_comap.mpr fun y hy ↦
+      (IsLocalRing.mem_maximalIdeal _).mpr fun hu ↦ hy (isUnit_of_map_unit f y hu)
+  refine ⟨n + 1, n.succ_pos, fun y hy ↦ hn ?_⟩
+  have h1 : f y ∈ ((IsLocalRing.maximalIdeal B) ^ (n + 1)).map f := Ideal.mem_map_of_mem f hy
+  rw [Ideal.map_pow] at h1
+  exact Ideal.pow_le_pow_right n.le_succ (Ideal.pow_right_mono hm _ h1)
+
 end SerrePositivity

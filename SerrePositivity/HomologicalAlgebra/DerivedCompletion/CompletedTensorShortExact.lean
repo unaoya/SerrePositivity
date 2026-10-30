@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorFixedModuleModel
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionTriangulated
 public import Mathlib.Algebra.Homology.DerivedCategory.ShortExact
 

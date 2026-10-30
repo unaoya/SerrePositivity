@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
-public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
 public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
 

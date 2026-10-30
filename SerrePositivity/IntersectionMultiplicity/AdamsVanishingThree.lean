@@ -28,7 +28,8 @@ theorem intersectionVanishing_of_cubicCyclotomic_factor
     (htwo : (2 : ResidueField R) = 0) : chi R M N = 0 := by
   let B := CubicCyclotomicLocalRing g h hf
   let : Module R B := Algebra.toModule
-  let : IsRegularLocalRing B := cubicCyclotomicLocalRing_regular g h hf hc
+  let : IsRegularLocalRing B :=
+    residueFactorLocalRing_regular _ g h (cubicCyclotomicPolynomial_map_residue_eq g h hf) hc
   let : Invertible (3 : B) := (cubicCyclotomicLocalRing_three_isUnit g h hf htwo).invertible
   obtain ⟨hM, hN, hfinB, hdimB, hchi⟩ :=
     cubicCyclotomicLocalRing_vanishing_data g h hf hc M N hfin hdim

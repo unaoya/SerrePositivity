@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ReducedFiniteFreeIsogeny
-public import SerrePositivity.HomologicalAlgebra.TwoTermConeAnnihilator
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Claim 2.4.8の一般加群版
 

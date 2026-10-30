@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
+public import SerrePositivity.FieldTheory.SeparableBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import Mathlib.RingTheory.Etale.Field
 public import Mathlib.RingTheory.Etale.Locus
 public import Mathlib.RingTheory.Ideal.GoingUp
@@ -26,27 +27,6 @@ open Algebra PrimeSpectrum
 
 variable (A D : Type u) [CommRing A] [IsDomain A] [IsNoetherianRing A]
 variable [CommRing D] [IsDomain D] [Algebra A D] [Module.Finite A D]
-
-/-- 基底環の同じ元を両側で反転した標準局所化上の代数構造。
-元の代数写像を局所化した `Localization.awayMap` から構成するので、
-局所化前後の代数写像と両立する。 -/
-@[instance_reducible]
-def awayAlgebra (g : A) :
-    Algebra (Localization.Away g) (Localization.Away (algebraMap A D g)) :=
-  (Localization.awayMap (algebraMap A D) g).toAlgebra
-
-omit [IsDomain A] [IsNoetherianRing A] [IsDomain D] [Module.Finite A D] in
-/-- 標準局所化の代数構造は、元の基底環の作用と両立する。
-局所化写像が代数写像を保つことからスカラー塔を得る。 -/
-theorem awayAlgebra_scalarTower (g : A) :
-    let _ := awayAlgebra A D g
-    IsScalarTower A (Localization.Away g) (Localization.Away (algebraMap A D g)) := by
-  let := awayAlgebra A D g
-  apply IsScalarTower.of_algebraMap_eq
-  intro a
-  change algebraMap D (Localization.Away (algebraMap A D g)) (algebraMap A D a) =
-    Localization.awayMap (algebraMap A D) g (algebraMap A (Localization.Away g) a)
-  simp [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
 
 omit [IsDomain A] [IsNoetherianRing A] [IsDomain D] in
 /-- 有限代数の両側で基底環の一元を反転すると、局所化後も有限である。

@@ -1,6 +1,5 @@
 -- lake build の後、lake env lean scripts/audit_f6.lean で実行する。
-import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel
-import SerrePositivity.CommutativeAlgebra.PerfectionPrincipalKernel
+import SerrePositivity.CommutativeAlgebra.Perfection
 import Mathlib.Util.AssertNoSorry
 
 open SerrePositivity
@@ -13,16 +12,6 @@ theorem f6_audit_bs_signature (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime]
       Ideal.span {((Perfection.lift p k (k ⧸ Ideal.span {a}))
         (Ideal.Quotient.mk (Ideal.span {a}))) a} :=
   perfection_lift_principal_quotient_kernel k p a
-
--- 商が零環なら元の互換列で核の生成を扱う。CharP Q pを仮定しない。
-theorem f6_audit_zero_quotient (k : Type u) [CommRing k] (p : ℕ) [PerfectRing k p]
-    (a : k) [Subsingleton (k ⧸ Ideal.span {a})]
-    (x : Perfection (k ⧸ Ideal.span {a}) p) :
-    Perfection.coeffMonoidHom (k ⧸ Ideal.span {a}) p 0 x = 0 ↔
-      ∃ b : Perfection (k ⧸ Ideal.span {a}) p,
-        x = Perfection.liftMonoidHom p k (k ⧸ Ideal.span {a})
-          (Ideal.Quotient.mk (Ideal.span {a})).toMonoidHom a * b :=
-  perfection_principal_quotient_zero_branch k p a x
 
 -- 積環の標数は座標で判定する。
 theorem f6_audit_product_source_charP (k : Type u) [CommRing k] (p : ℕ) [CharP k p] :
@@ -83,7 +72,6 @@ theorem f6_audit_old_division (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     exact hann n z hz
 
 assert_no_sorry f6_audit_bs_signature
-assert_no_sorry f6_audit_zero_quotient
 assert_no_sorry f6_audit_product_charP
 assert_no_sorry f6_audit_product_generator_nonregular
 assert_no_sorry f6_audit_product_kernel

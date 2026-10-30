@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CLMST.Prop247AicRankCoefficients
 public import SerrePositivity.CLMST.Prop247RankAssembly
-public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonTensorEquiv
-public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
+public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import Mathlib.RingTheory.IntegralClosure.Algebra.Basic
 
 /-! # Prop 2.4.7：元の S→∏Si の付値環条件

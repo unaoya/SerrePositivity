@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.MinimalBoundary
+public import SerrePositivity.HomologicalAlgebra.MinimalResolution
 public import SerrePositivity.Asymptotic.MinimalResolutionFamily
 public import SerrePositivity.Asymptotic.FactorizationSupport
 

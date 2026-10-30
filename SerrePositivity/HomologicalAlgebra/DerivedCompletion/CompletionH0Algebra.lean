@@ -46,18 +46,6 @@ lemma completionH0AlgebraUnit_naturality {A B : CommMon D} (f : A ⟶ B)
   rw [derivedH0AlgMap_comp_apply, derivedH0AlgMap_comp_apply,
     boundedAboveCompletionAlgebraUnit_naturality]
 
-/-- The augmented completed tensor H⁰ uses the original completed augmentation map. -/
-lemma completedTensorH0AlgebraAugmentation_apply
-    (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R a S T).X.obj) :
-    derivedH0AlgMap (boundedAboveCompletedTensorAlgebraAugmentation R a S T) x =
-      (DerivedCategory.homologyFunctor (ModuleCat R) 0).map
-        ((boundedAboveDerivedCompletionFunctor R a).map
-          (boundedAboveDerivedTensorAlgebraAugmentation (R := R) S T).hom.hom).hom x := by
-  rw [derivedH0AlgMap_apply]
-  rfl
-
 /-- The original augmentation and completion unit square commutes as actual H⁰ algebra maps. -/
 lemma completedTensorH0AlgebraAugmentation_unit
     (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.IdempotentAnnihilator
+public import SerrePositivity.CommutativeAlgebra.Idempotent
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 

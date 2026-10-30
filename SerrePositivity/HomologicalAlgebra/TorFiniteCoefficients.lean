@@ -28,24 +28,6 @@ def finiteSubmoduleColimitIso (N : ModuleCat.{u} R) :
     ⟨_, ModuleCat.directLimitIsColimit _ _⟩ ≪≫
       (Submodule.FG.directLimit R N).toModuleIso
 
-/-- The comparison carries each original submodule inclusion to its subtype map. -/
-lemma finiteSubmoduleColimitIso_ι (N : ModuleCat.{u} R)
-    (P : {P : Submodule R N // P.FG}) :
-    colimit.ι (ModuleCat.directLimitDiagram
-      (fun Q : {Q : Submodule R N // Q.FG} => ↥Q.val)
-      (fun _ _ h => Submodule.inclusion h)) P ≫
-        (finiteSubmoduleColimitIso N).hom = ModuleCat.ofHom P.val.subtype := by
-  classical
-  simp only [finiteSubmoduleColimitIso]
-  ext x
-  simp [ModuleCat.directLimitCocone, Submodule.FG.directLimit]
-  let G := fun Q : {Q : Submodule R N // Q.FG} => ↥Q.val
-  let f := fun (Q Q' : {Q : Submodule R N // Q.FG}) (h : Q ≤ Q') =>
-    Submodule.inclusion h
-  change (Module.DirectLimit.lift R _ G f (fun Q => Q.val.subtype) (fun _ _ _ _ => rfl))
-    (Module.DirectLimit.of R _ G f P x) = P.val.subtype x
-  apply Module.DirectLimit.lift_of
-
 /-- A colimit-preserving functor detects a zero natural map on its stages. -/
 lemma natTrans_colimit_app_eq_zero
     {J : Type u} [Category J] (F G : ModuleCat.{u} R ⥤ ModuleCat.{u} R)
@@ -85,20 +67,5 @@ lemma torCoefficientScalarEndomorphism_eq_zero_of_finite
   let e := finiteSubmoduleColimitIso N
   change τ.app N = 0
   rw [← cancel_epi (F.map e.hom), τ.naturality, hz, zero_comp, comp_zero]
-
-/-- The full almost-Tor input is equivalent to its finitely generated tests;
-the ideal, all positive degrees, and all coefficient scalars are retained. -/
-lemma torCoefficientScalarEndomorphism_all_iff_finite
-    (C : Type u) [CommRing C] [Algebra R C] (I : Ideal C) :
-    (∀ (N : ModuleCat.{u} R) (i : ℕ), 0 < i →
-      ∀ c ∈ I, torCoefficientScalarEndomorphism C N i c = 0) ↔
-    (∀ (N : ModuleCat.{u} R), Module.Finite R N → ∀ (i : ℕ), 0 < i →
-      ∀ c ∈ I, torCoefficientScalarEndomorphism C N i c = 0) := by
-  constructor
-  · intro h N _ i hi c hc
-    exact h N i hi c hc
-  · intro h N i hi c hc
-    exact torCoefficientScalarEndomorphism_eq_zero_of_finite C i c
-      (fun M hM => h M hM i hi c hc) N
 
 end SerrePositivity

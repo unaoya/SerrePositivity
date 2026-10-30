@@ -6,7 +6,6 @@ public import Mathlib.LinearAlgebra.Isomorphisms
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.PolynomialGrowth
 public import SerrePositivity.CategoryTheory.AlternatingSum
-public import SerrePositivity.CategoryTheory.FiniteSupportBounds
 public import Mathlib.Algebra.FiniteSupport.Basic
 public import SerrePositivity.HomologicalAlgebra.AdicFilteredComplex
 public import SerrePositivity.CommutativeAlgebra.Length.Euler

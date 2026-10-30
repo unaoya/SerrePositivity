@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
-public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Graded
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul

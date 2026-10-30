@@ -41,36 +41,4 @@ def completedAlgebraPrincipalH0AlgEquiv :
   exact (AlgEquiv.ofLinearEquiv E.symm h1
     (h.linearMap_map_mul _ hT E.symm.toLinearMap h1)).symm
 
-/-- The algebra comparison has the original G8 and principal comparison as its function. -/
-lemma completedAlgebraPrincipalH0AlgEquiv_apply
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj (completedAlgebra R a B).X.obj) :
-    letI := derivedH0CommRing (completedAlgebra R a B)
-    letI := completedAlgebraScalarAlgebra R a B
-    letI := derivedH0CommRing (completedUnitAlgebra B (algebraMap R B a))
-    letI := derivedH0Algebra (completedUnitAlgebra B (algebraMap R B a))
-    letI := principalCompletionCommRing B (algebraMap R B a)
-    letI := principalCompletionAlgebra B (algebraMap R B a)
-    completedAlgebraPrincipalH0AlgEquiv R a B x =
-      principalCompletedUnitH0AlgEquiv B (algebraMap R B a)
-        ((completedAlgebraRestrictionH0Iso R a B).hom x) := rfl
-
-/-- The ring comparison preserves the original completion map on every coefficient. -/
-lemma completedAlgebraPrincipalH0AlgEquiv_unit (b : B) :
-    let := derivedH0CommRing (completedAlgebra R a B)
-    let := derivedH0Algebra (completedAlgebra R a B)
-    let := completedAlgebraScalarAlgebra R a B
-    let := principalCompletionCommRing B (algebraMap R B a)
-    let := principalCompletionAlgebra B (algebraMap R B a)
-    completedAlgebraPrincipalH0AlgEquiv R a B (completedAlgebraUnitAlgHom R a B b) =
-      principalCompletionUnitRingHom B (algebraMap R B a) b := by
-  let := derivedH0CommRing (completedAlgebra R a B)
-  let := derivedH0Algebra (completedAlgebra R a B)
-  let := completedAlgebraScalarAlgebra R a B
-  let := derivedH0CommRing (completedUnitAlgebra B (algebraMap R B a))
-  let := derivedH0Algebra (completedUnitAlgebra B (algebraMap R B a))
-  let := principalCompletionCommRing B (algebraMap R B a)
-  let := principalCompletionAlgebra B (algebraMap R B a)
-  rw [completedAlgebraPrincipalH0AlgEquiv_apply, completedAlgebraRestrictionH0Iso_unit,
-    completedAlgebraUnitAlgHom_apply, principalCompletedUnitH0AlgEquiv_unit]
-
 end SerrePositivity.DerivedCompletion

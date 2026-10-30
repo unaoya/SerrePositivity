@@ -1,9 +1,8 @@
 module
 
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import SerrePositivity.PerfectComplex.DegreewiseRetract
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentHomology
 
 /-! # Perfectness and support of idempotent images -/
 

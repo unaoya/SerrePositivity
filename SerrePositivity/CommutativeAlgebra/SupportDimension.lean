@@ -243,4 +243,32 @@ theorem radical_sup_eq_maximalIdeal_of_tensor_finiteLength [IsLocalRing R]
 
 
 
+/-- 有限な Krull 次元は自然数である。 -/
+theorem exists_nat_ringKrullDim_eq (S : Type*) [CommRing S] [FiniteRingKrullDim S] :
+    ∃ n : ℕ, ringKrullDim S = n := by
+  obtain ⟨d, hd⟩ := WithBot.ne_bot_iff_exists.mp (ringKrullDim_ne_bot (R := S))
+  have hdt : d ≠ ⊤ := by
+    intro h
+    apply ringKrullDim_ne_top (R := S)
+    rw [← hd, h]
+    rfl
+  obtain ⟨n, hn⟩ := ENat.ne_top_iff_exists.mp hdt
+  exact ⟨n, hd.symm.trans (congrArg (fun x : ℕ∞ ↦ (x : WithBot ℕ∞)) hn.symm)⟩
+
+/-- 有限次元の整域で、商の次元が元の次元と等しいイデアルは零である。
+非零元で割ると次元が真に下がることによる。 -/
+theorem ideal_eq_bot_of_quotient_dim_eq {R : Type*} [CommRing R] [IsDomain R]
+    [FiniteRingKrullDim R] (Q : Ideal R) (hQ : ringKrullDim (R ⧸ Q) = ringKrullDim R) :
+    Q = ⊥ := by
+  by_contra hne
+  obtain ⟨r, hr, hr0⟩ := Submodule.exists_mem_ne_zero_of_ne_bot hne
+  have hdrop := ringKrullDim_succ_le_of_surjective (Ideal.Quotient.mk Q)
+    Ideal.Quotient.mk_surjective (mem_nonZeroDivisors_iff_ne_zero.mpr hr0)
+    (Ideal.Quotient.eq_zero_iff_mem.mpr hr)
+  rw [hQ] at hdrop
+  obtain ⟨n, hn⟩ := exists_nat_ringKrullDim_eq R
+  rw [hn] at hdrop
+  have : n + 1 ≤ n := by exact_mod_cast hdrop
+  omega
+
 end SerrePositivity

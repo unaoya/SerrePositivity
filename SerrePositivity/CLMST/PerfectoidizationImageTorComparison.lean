@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
-public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonBounds
+public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 
 /-! # Actual Tor comparison with the perfectoidization of a localization image
 

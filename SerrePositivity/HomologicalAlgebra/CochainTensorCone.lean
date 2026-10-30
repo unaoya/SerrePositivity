@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
-public import SerrePositivity.HomologicalAlgebra.CochainConeTriangle
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 
 /-! # Tensor products and mapping cones -/
 @[expose] public section

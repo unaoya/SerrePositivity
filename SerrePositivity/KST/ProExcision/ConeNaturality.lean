@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false
