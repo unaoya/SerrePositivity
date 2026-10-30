@@ -1,0 +1,104 @@
+# Codex 作業指示書 DG-W1：監査の再生成、検査専用モジュールの処置、入口の新設（D0〜D2）
+
+作成：2026-10-30（DG の整理、管理は Claude）。宛先：Codex（∞ 基盤の IF-Wn を実施しているセッションとは**別のセッション**）。
+計画：[dg-cleanup-plan.md](dg-cleanup-plan.md) の D0・D1・D2。調査：[archive/dg-survey-2026-10-30.md](archive/dg-survey-2026-10-30.md) §2〜§3。
+**共通の前提**：[IF-W0-1](infinity-codex-w0-1.md) の §0（使い捨ての worktree、所有範囲、`git commit --only`、失敗の扱い）に従う。
+worktree は `../SerrePositivity-dgw1`、ブランチは `infra/dg-w1`（main の最新から作る）。main の作業木では作業もビルドもしない。他のセッション（∞ 基盤、論文の層、BS）が並行して作業している。
+
+この指示書は **2 か所で止まって報告する**（§6）。
+
+## 1. 目的
+
+| 候補 | 内容 |
+| --- | --- |
+| D0 | `scripts/audit/dg.lean` を再生成して、追跡中の全 DG モジュール（10-18 以降に増えた 113 本を含む）を監査の対象にする。README を現状に直す |
+| D1 | 検査専用モジュール 650 本を処置する：`#print axioms` だけのもの 278 本は削除、`example` によるもの 363 本は `DifferentialGraded/Checks/` に集める、U12e 中断の入口 67 本は Archive へ、名前つきの定理を持つ 10 本は定理を本体へ移す |
+| D2 | 入口 `SerrePositivity/DifferentialGraded.lean` を新設し、ルートの直接 import を置き換え、Stage One〜Eight を退役する。殻 `Complexes/Monoidal` と import だけの集約 7 本を解消する |
+
+## 2. 所有範囲
+
+変更・削除・新規作成してよいもの：
+- `SerrePositivity/DifferentialGraded/` の下のすべて（ただし D1・D2 で定めた変更に限る。宣言の本文は変えない）。
+- `SerrePositivity/DifferentialGraded.lean`（新規）、`SerrePositivity/Archive/DifferentialGraded/`（新規）。
+- `SerrePositivity.lean`（ルート）の import 行（DG の 12 本 → `SerrePositivity.DifferentialGraded`）。
+- `scripts/audit/dg.lean`（`make_area_audits.py` による再生成のみ。手編集しない）。
+- DG の検査・集約を import している DG の外のファイルの **import 行だけ**（調査では `scripts/audit/dg.lean` 以外にはない見込み。あれば報告）。
+- `scripts/homotopical_generalization_manifest.json`（削除したモジュールの行を消す）。
+
+それ以外（`.lean` の宣言の本文、他の area、計画文書、`layers.json`）は変更しない。
+
+## 3. 作業
+
+### 3.0 D0
+
+1. `python3 scripts/make_area_audits.py` を実行する。`scripts/audit/dg.lean` 以外に差分が出たら、それは並行セッションの変更なので `git checkout` で戻し、報告に書く。
+2. `lake env lean scripts/audit/dg.lean` が終了コード 0 で通ることを確かめる（時間を記録）。
+3. `DifferentialGraded/README.md` を現状に直す：Morita（U16）・Verdier（U17）・Perf は完成、入口は D2 で作る `DifferentialGraded.lean`、検査は `Checks/`、U12e-general は中断中で Archive の検査がある、など。宣言名の一覧は書かない（古くなるため）。
+
+### 3.1 D1：検査専用モジュールの分類（止めて報告する点 1 の前）
+
+1. **対象の判定**：次のどちらかに当たるモジュールを「検査」とする。(a) `DifferentialGraded/Checks/` の下。(b) basename が正規表現 `Checks?|Audit|Acceptance` に当たる。期待値 650 本。
+2. **種類の判定**（コメントと文字列を除いた本文で）：
+   - **P**（print だけ）：`#print` 以外のコマンドがなく、宣言（`theorem`・`lemma`・`def`・`instance`・`example`・`structure` など）がない。期待値 278。
+   - **E**（example による検査）：`example` または `#check` を含み、名前つきの宣言がない。期待値約 363。
+   - **T**（名前つきの宣言を持つ）：`theorem`・`lemma`・`def`・`instance`・`structure` のどれかがある。期待値 11（`Checks/Acceptance` と `Checks/DG{Associator…,LeftUnit…,RestrictionModel…}` 10 本）。
+   - **U**（U12e 中断）：docstring に `U12e-general（中断）` を含む。期待値 67（P・E・T と重なってよい。U が優先）。
+   - **K**（文書化された受入の入口、残す）：`Morita/U16Checks`・`Verdier/ChecksU17Integration`・`Checks/U12eLocal`・`Checks/StageSeven`・`Checks/StageEight` の 5 本。
+3. **一覧を作る**：`scripts/refactor/targets/dg-w1-checks.json` に、モジュールごとに `{"module", "kind": "P|E|T|U|K", "action": "delete|move|archive|extract|keep", "dest"}` を書く。
+   - P → delete。E → move（`DifferentialGraded/Checks/<単位>/<basename>`。`<単位>` は元のディレクトリ名。すでに Checks/ にあるものはそのまま）。U → archive（`SerrePositivity/Archive/DifferentialGraded/Checks/U12e/<basename>`）。T → extract（定理の移し先の案を `dest` に書く。`Checks/Acceptance` の反例は Checks/ に残す）。K → keep。
+   - 利用者の確認：delete・archive の対象を import しているモジュールが、`scripts/audit/dg.lean` と他の検査以外にないことを確かめる。あれば一覧に書いて止める。
+4. **T の 10 本の定理の移し先の案**：各定理の内容（主張を 1 行）と、それを本来置くべき本番のモジュール（Derived・Tensor など）を読んで決め、報告に書く。
+5. **ここで止めて報告する（§6-1）。**
+
+### 3.2 D1：実施（承認の後）
+
+1. T の 10 本：承認された移し先へ、`scripts/refactor/split_module.py`（`--moved` に定理名、`--prune-imports`、`--module-doc`）で定理を移す。前後の保存検査（`decl_snapshot.lean`・`compare_snapshots.py`）を通す。移した後の検査ファイルは、残りの内容で P・E・U に再分類する。
+2. P：削除（`git rm`）。
+3. E：`git mv` で `Checks/<単位>/` へ。import 行を書き換える（`move_module.py` を使ってよい）。
+4. U：`git mv` で `Archive/DifferentialGraded/Checks/U12e/` へ。Archive のモジュールは、どの集約にも監査にも登録しない（ビルドしない）。
+5. `scripts/homotopical_generalization_manifest.json` から削除・移動したモジュールの行を直す。
+6. `python3 scripts/make_area_audits.py` で `scripts/audit/dg.lean` を再生成し、`lake env lean scripts/audit/dg.lean` が通ることを確かめる。
+
+### 3.3 D2：入口
+
+1. `SerrePositivity/DifferentialGraded.lean` を新設する。先頭は `module`、docstring は概要／方針／規約／使われ方（リポジトリの様式）。`public import` で、DG の検査以外・Archive 以外・Stage* 以外の全モジュールを、名前順に import する（他の area の集約と同じ形）。
+2. ルート `SerrePositivity.lean` の DG の 12 本の直接 import を、`public import SerrePositivity.DifferentialGraded` 1 行に置き換える。
+3. Stage One〜Eight を削除する。これらを import していた検査（`Checks/{Axioms, StageSeven, StageEight, FreeHomNaturality, Colimits, ModulesAcceptance}`）は `SerrePositivity.DifferentialGraded` を import するように直す。README の build コマンドも直す。
+4. 殻 `Complexes/Monoidal`（5 行）を解消する：import している DG の 6 本と DG の外の 6 本（`InfinityCategories/Derived/{DGIntegerCoefficientTensor, TensorArrowConjugation}`・`KST/LocalizingInvariants/{CochainBiprodMapComposition, CochainConnectiveLift, DGAlgebraHomology, DGEndAlgebra}`）の import を `DifferentialGraded.Complexes.HomComplex` と `HomologicalAlgebra.CochainTensorLinear` に向け直し、殻を削除する。**DG の外の 6 本は import 行だけを変える。**
+5. import だけの集約 7 本（`Derived/BimoduleLocal`・`Morita/{CriterionDerived, QuasiEquivalence, U16, U16a}`・`Resolution/General`・`Verdier/U17`）は、**この指示書では残す**（D4 の統合で統合先に置き換える）。
+6. `python3 scripts/refactor/layer_check.py --report` を実行し、ルートの閉包の本数の前後を記録する（DG の全本番モジュールがルートに入るので増える）。
+
+## 4. 受入条件
+
+1. `lake build SerrePositivity`（ルート）が成功する。`lake build SerrePositivity.DifferentialGraded` が成功する。
+2. `lake env lean scripts/audit/dg.lean` が通り、`scripts/audit/dg.lean` の import の本数が「追跡中の DG モジュール − Archive − 削除」と一致する。
+3. T の定理の移動について、保存検査が前後で一致する（削除した P・移した E・U については、宣言を持たないこと（P・E）または Archive に全文が残ること（U）を確かめる）。
+4. DG の中に、basename が `Checks?|Audit|Acceptance` に当たるモジュールが `DifferentialGraded/Checks/` の外にないこと。
+5. `scripts/refactor/verify.sh`（`VERIFY_JOBS=3`、キャッシュなし）が PASS・gate:true。
+6. `git status` で、変更が §2 の所有範囲だけであること。
+7. 件数の報告：削除 P、移動 E、archive U、定理の移動 T、残した K、Stage の削除、ルートの閉包の前後。
+
+## 5. コミット
+
+三つのコミットにする（D0、D1、D2）。それぞれ `git commit --only` で所有範囲のパスだけを指定する。メッセージの例：
+
+```
+chore(dg): regenerate the dg audit and refresh the README (DG-W1 D0)
+refactor(dg): dispose of check-only modules — delete print-only, gather example checks, archive U12e (DG-W1 D1)
+refactor(dg): add the DifferentialGraded aggregator and retire the Stage chain (DG-W1 D2)
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+```
+
+## 6. 止めて報告する点
+
+1. §3.1 の分類の後（削除・移動の前）：一覧 JSON の件数（P・E・T・U・K）、delete・archive の対象に検査以外の利用者がないことの確認、T の 10 本の定理と移し先の案。Claude が承認してから §3.2 へ。
+2. §4 の受入条件をすべて確かめた後（コミットの前）：件数の報告、verify の summary、層検査の前後。Claude が承認してから §5 のコミット。
+
+## 7. 禁止事項
+
+- 宣言の本文・名前・名前空間の変更（T の定理の移動は分割の道具で、本文を変えずに行う）。
+- 検査以外のモジュールの削除・統合（統合は D4）。
+- `scripts/audit/dg.lean` の手編集、他の area の監査の変更。
+- 他のセッションのファイルへの変更（DG の外は import 行だけ）。
+- main の作業木での作業・ビルド。

@@ -23,7 +23,7 @@
 | `dg-theory-u12e-general-inventory.md` | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
 | `dg-theory-m5-status.md` | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
 
-参照元の 1,165 本はすべて ∞ 基盤の側にあり、[∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 として、W1（全レーン停止の窓）の最初の指示書 IF-W1-1 の冒頭で書き換える（文書ごとに 1 コミット）。
+参照元の 1,165 本のうち HomotopicalAlgebra・CategoryTheory の 635 本は [∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 として、W1（全レーン停止の窓）の最初の指示書 IF-W1-1 の冒頭で書き換える。DifferentialGraded の 530 本は [DG の整理計画](dg-cleanup-plan.md) の D5 として、DG の統合（D4）と同じ窓で書き換える（10-30 決定）。いずれも文書ごとに 1 コミット。
 docstring だけの変更でも利用先の再ビルドが要るので、それまでは 4 本を動かさない。∞ 側から完了の連絡が来たら、案内 2 本を削除し、この表を片づける。
 
 ## 現在地（2026-10-18）
@@ -53,6 +53,7 @@ docstring だけの変更でも利用先の再ビルドが要るので、それ�
 | [P 計画：presentable ∞ 圏](infinity-lanes/infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
 | [∞ 圏基盤の整備計画](infinity-foundation-plan.md) | ∞ 層を KST・DG・EInfinity から自立させ、外の一般論を取り込み、Verdier 商の構成へ進む。段 A〜G、R26〜R70 の要約、決定事項 | 2026-10-28 新設・計画のみ |
+| [DG の整理計画](dg-cleanup-plan.md) | DifferentialGraded/ の検査の処置・入口の新設・層の逆転の解消・1,592 → 126 の統合（D0〜D7）。∞ 基盤とは独立に別の Codex セッションで進める。調査は [archive/dg-survey-2026-10-30.md](archive/dg-survey-2026-10-30.md)、最初の指示書は [DG-W1](dg-codex-w1.md) | 2026-10-30 新設 |
 | [R 計画：∞ 圏基盤のリファクタリング（索引）](refactoring-infinity.md) | リファクタ文書の入口。§0 に R1〜R79 の索引（第 1 窓 R1〜R25 は実施済み、R2 計画 R26〜R47、Verdier 商向け R48〜R57、整備計画 R59〜R79） | 2026-10-28 索引整理 |
 | [R 第 2 窓](refactoring-infinity-r2.md)・[Verdier 商向け](refactoring-verdier.md) | R26〜R47・R59〜R67 の調査と候補の詳細、R48〜R57 の配置換えの詳細。順序と窓は infinity-foundation-plan.md §5〜§6 が正本 | 詳細の記録 |
 | [論文の層の整理計画](refactor-plan.md) | 論文の層（CategoryTheory・CommutativeAlgebra・HomologicalAlgebra・PerfectComplex・LengthAlgebra・IntersectionMultiplicity・KTheory・Asymptotic・CLMST）の統合・削除・Mathlib への置き換え・層の順序の一本の計画。前半に方針・層の順序・共通の仕組み・段階 0〜3、後半に章ごとの詳細（以前のディレクトリごとの計画書は archive/） | 2026-10-30 一本化 |

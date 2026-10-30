@@ -153,7 +153,7 @@ InfinityCategories/
 | R61b | 内容が違う組は、読解して「特殊化」か「比較の定理が要る」かに分ける。比較の定理が要るものは段 G へ。<br>対象：CoreTrivialFibration（一致 9/38 行。∞ 側には instance と追加の宣言がある）、TrivialFibrationStability（5/70）、PushoutTranspose ↔ SquareTranspose（14/47）、SuspensionExactFunctor ↔ Stable/Suspension（2/33。前者は ∞ 関手 X ⟶ X、後者はホモトピー圏の関手 ho X ⥤ ho X で、置き換えると高次の情報が失われる）、Ex∞・MappingCylinder（モジュールとしては KST/Comparison の 1 か所）、CoherentTrianglePathMinimum（2 か所。補題名が違う） | R74 | 読解の記録 | 8〜16h |
 | R62 | `fraction_ho_localization` を**公開するだけ**にする（Stable/Verdier へ移すのは R52 の後。閉包に KST.Spectra 57 本と DG 10 本がある） | なし | 公理監査 | 1h |
 | R63 | HA/ComplexLimits の 3 本（直接 import しているのは `ExtendTruncationHom` の 1 本で、KST の CochainConnectiveLift を import している）を EInfinity/ComplexLimits へ戻す（同名の再エクスポートの殻 `fcc305646` を実体で置き換える。名前空間はすでに `EInfinity.ComplexLimits`）。CochainConnectiveLift を HA へ下ろすと HA → DG の辺ができるので、その案は採らない。R34 と統合する。`scripts/audit/shared.lean` が import しているので、移したら `python3 scripts/make_area_audits.py` で監査を再生成する（伝達文 §5） | なし | 監査の再生成、ビルド | 1〜2h |
-| R79 | **新設（10-30、論文の層のコーディネータからの依頼）**：Lean の docstring が参照している旧計画の案内 4 本の片づけ（1,165 本。追補 10-30 で CategoryTheory の ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本を加えた。importer は HA/GeneralTools・Rectification の AnchoredChain*・scripts/audit/shared.lean だけ）。<br>・`k-theory.md`：`[plan]: …/formalization-plans/k-theory.md` を `…/formalization-plans/archive/k-theory-v1.md#<§396 のアンカー>` に（618 件。アンカーは GitHub の規則で生成して確かめる）。本文中のパスの 1 件は手で直す。<br>・`k-theory-generalization-inventory.md`：`[inventory]: …` のパスを `archive/k-theory-generalization-inventory.md` に（アンカー `#mNNNN`・`layout-execution` はそのまま。618＋16 件）。<br>・`dg-theory-u12e-general-inventory.md`（DG 521 本）・`dg-theory-m5-status.md`（DG 9 本）：本文を `git mv` で archive/ へ移し、同じコミットで docstring のパスを替える。<br>規則：相対パスの深さ（`../../../` など）は保ち、`formalization-plans/<名前>.md` の部分だけを替える。宣言には触れない。文書ごとに 1 コミット（計 4 本）にし、ハッシュを論文の層のコーディネータへ知らせる。案内の削除と README の表の更新は先方が行う。ArrowFactorization* 3 本も本計画の担当（追補で移管）。<br>docstring だけでも olean が変わり依存先が再ビルドされるので、**W1 の最初**（IF-W1-1 の冒頭）に行い、W1 の最初の verify に含める | なし | 置換の件数の照合（618／618＋16／521／9）、ビルド、verify | 1〜2h＋再ビルド |
+| R79 | **新設（10-30、論文の層のコーディネータからの依頼）**：Lean の docstring が参照している旧計画の案内 4 本の片づけ（1,165 本。追補 10-30 で CategoryTheory の ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本を加えた。importer は HA/GeneralTools・Rectification の AnchoredChain*・scripts/audit/shared.lean だけ）。<br>・`k-theory.md`：`[plan]: …/formalization-plans/k-theory.md` を `…/formalization-plans/archive/k-theory-v1.md#<§396 のアンカー>` に（618 件。アンカーは GitHub の規則で生成して確かめる）。本文中のパスの 1 件は手で直す。<br>・`k-theory-generalization-inventory.md`：`[inventory]: …` のパスを `archive/k-theory-generalization-inventory.md` に（アンカー `#mNNNN`・`layout-execution` はそのまま。618＋16 件）。<br>・`dg-theory-u12e-general-inventory.md`（DG 521 本）・`dg-theory-m5-status.md`（DG 9 本）：**本計画の範囲から外し、[DG の整理計画](dg-cleanup-plan.md) の D5 で行う**（10-30 ユーザー決定。DG の統合 D4 と同じ窓で、docstring を写すときに書き換える）。<br>規則：相対パスの深さ（`../../../` など）は保ち、`formalization-plans/<名前>.md` の部分だけを替える。宣言には触れない。文書ごとに 1 コミット（本計画の分は 2 本。DG の 2 本は DG 計画）にし、ハッシュを論文の層のコーディネータへ知らせる。案内の削除と README の表の更新は先方が行う。ArrowFactorization* 3 本も本計画の担当（追補で移管）。<br>docstring だけでも olean が変わり依存先が再ビルドされるので、**W1 の最初**（IF-W1-1 の冒頭）に行い、W1 の最初の verify に含める | なし | 置換の件数の照合（618／618＋16。DG の 521／9 は DG 計画）、ビルド、verify | 1〜2h＋再ビルド |
 
 ### 段 B Verdier の土台（すぐ移せるものだけ）
 
@@ -278,7 +278,8 @@ InfinityCategories/
 
 ## 7. 範囲外
 
-- KST の内部だけで閉じる整理：R28・R29・R30・R44・R46・R47（R2 計画のまま）。
+- KST の内部だけで閉じる整理：R28・R29・R30・R46・R47（R2 計画のまま）。R44（DG → KST/SConstruction の層の逆転）は [DG の整理計画](dg-cleanup-plan.md) の D3 が担う。
+- DifferentialGraded/ の整理（検査の処置、入口、層の逆転、1,592 → 126 の統合、R79 の DG 分）：[DG の整理計画](dg-cleanup-plan.md)（10-30 新設。∞ 基盤とは独立に、別の Codex セッションで進める。干渉の取り決めは同 §5）。
 - 論文の層の整理と一般論の切り出し（[refactor-plan.md](refactor-plan.md)）。ただし CategoryTheory の下位ディレクトリ・Nerve まわり・殻は本計画の R75〜R78（10-30 の伝達）。CategoryTheory のトップ階層の残り（Karoubi・三角圏・t 構造・K₀ など）は論文の層の側。伝達文 §7 の追加で、両側の対象の間の import はなくなった（10-30 時点）。
 - BS 側（R35、別セッション）。
 - 第 II 段の perfect 複体と K₀ の橋（[全体調査](archive/repository-survey-2026-10-28.md) §7 の #4・#5）。
@@ -316,6 +317,7 @@ InfinityCategories/
   - 道具の規則：空になる側の保存検査、prune で壊れた下流への直接 import の補充、生成補題の帰属（位置 → 接頭辞 → 接尾辞 → 外部定義は transient）、attribute コマンドと無名 instance の扱い、環境の失敗の直列再試行。
   - w1.json を承認（move 62・split 3・reimport 3、保留 13。全体 verify PASS）。
   - CategoryTheory の下位ディレクトリと Nerve まわりの整理を引き継ぎ（R75〜R78）。W2a で K-S• も止める。
+- （10-30）DifferentialGraded/ の整理を独立した計画 [dg-cleanup-plan.md](dg-cleanup-plan.md) に分けた。R79 の DG 分（530 本）と R44 の DG 側はそちらへ。
 
 ## 9. 未決の点（ユーザーまたはコーディネータの判断が要る）
 
