@@ -23,8 +23,8 @@
 | `dg-theory-u12e-general-inventory.md` | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
 | `dg-theory-m5-status.md` | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
 
-いずれも、HomotopicalAlgebra・CategoryTheory・DifferentialGraded を触る整理の窓（[∞ 基盤の整備計画](infinity-foundation-plan.md)、[論文の層の整理計画](refactor-plan.md)）で、docstring の書き換えと合わせて行う。
-docstring だけの変更でも利用先の再ビルドが要るので、単独では行わない。
+参照元の 1,165 本はすべて ∞ 基盤の側にあり、[∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 として、W1（全レーン停止の窓）の最初の指示書 IF-W1-1 の冒頭で書き換える（文書ごとに 1 コミット）。
+docstring だけの変更でも利用先の再ビルドが要るので、それまでは 4 本を動かさない。∞ 側から完了の連絡が来たら、案内 2 本を削除し、この表を片づける。
 
 ## 現在地（2026-10-18）
 
