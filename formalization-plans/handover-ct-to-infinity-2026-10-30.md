@@ -110,3 +110,68 @@
   （commit fcc305646 で作られた互換ファイル）。実体を EInfinity/ComplexLimits/ へ移して殻と置き換えるのが自然。
 - 論文の層の側（BhattScholze・CLMST・Paper ほか）は 3 本を import しない。`scripts/audit/shared.lean` が import しているので、移したら
   `python3 scripts/make_area_audits.py` で再生成する。
+
+## 6. 追加の伝達：GroupTheory/Coxeter/ と Inputs/Homotopy/（2026-10-30）
+
+ユーザーの決定により、次も ∞ 基盤の側へ渡す。論文の層の側では触らない。どちらも利用者は ∞ 基盤の側だけ。
+（CategoryTheory/ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport も ∞ 基盤の側へ渡す。こちらはユーザーが直接伝える。）
+
+### 6.1 GroupTheory/Coxeter/（TypeA 955 行・FirstToLast 90・PermutationInduction 28・InvolutionRelations 37）
+
+- 中身：A_n 型 Coxeter 群 ≅ Sₙ₊₁（`typeAHom`・`typeAEquivPerm`、挿入ソートの標準形による単射性）、隣接互換による置換の帰納法
+  `permutation_induction_right`、`shiftPerm`・`firstToLastPerm`（= `(finRotate _).symm`）、対合の関係式 `involution_pair_cube`・`_square`。
+  ArxivFormalization（commit 761bc6bc…）から移植（Coxeter/README.md）。
+- 利用者：CategoryTheory/Monoidal（PermutationAction・TensorPowerBlockPermutations・TensorPowerFirstCrossingAction）、EInfinity/Operad/*・
+  EInfinity/IntervalCuts/*、Spectra/SymmetricSequence/*。Paper・CLMST・BhattScholze・LengthAlgebra・IntersectionMultiplicity は使わない。
+  refactoring-infinity-r2.md の R67 が Monoidal の利用者の再分類を計画済み。
+- Mathlib との重なり（固定版・最新版で同じ）：
+  - `permutation_induction_right` は `Equiv.Perm.mclosure_swap_castSucc_succ`（Perm/Sign.lean）と `Submonoid.induction_of_closure_eq_top_right`
+    から出る（確度高）。TypeA の 955 行が不要になりうる（`typeAEquivPerm` を使うのが PermutationAction だけなら）。
+  - `adjacentTransposition` は `swap i.castSucc i.succ`。`shiftPerm`・`firstToLastPerm` は `Equiv.Perm.decomposeFin`・`finRotate`・`Fin.cycleRange` と重なる（確度中）。
+  - A_n ≅ Sₙ₊₁ は Mathlib にない（`CoxeterMatrix.A`・`CoxeterSystem` はあるが対称群との同型はない、確度高）。残すなら提出候補。
+- ファイルの外で使われていない：`typeAHom_injective`・`typeAHom_surjective`・`typeANormalForm*`、TypeA の `bubble*`・`perm*`・`groupLift`。
+- GroupTheory/ConjugateSum は論文の層のまま（CategoryTheory/EulerComparison が使う）。こちらで改名して EulerComparison へ吸収する予定なので、
+  Coxeter/ だけが GroupTheory/ に残る。置き場所はそちらで決めてほしい。
+
+### 6.2 Inputs/Homotopy/（KanQuillen・ResolutionHom・SimplicialLevel）
+
+- KanQuillen：`kanQuillen_model_exists`（Hovey Thm 3.6.5、`sorry`。`make_area_audits.py` が許している引用）と `kanQuillenModel`・射影の補題 3 つ。
+- ResolutionHom・SimplicialLevel：KanQuillen の適用（`sorry` なし）。scripts の check（check_kan_quillen_resolution_hom・check_model_replacement・
+  check_kan_quillen_level）だけが import。`resolutionHom_source_geometricWeakEquivalence` はどこからも使われない。
+- 主定理の閉包の外（scripts/refactor/verify.log で確認済み）。KST の経路の計画では γ-B を採れば HT-KQ は不要。
+- 論文の層の Inputs/ には Descent（Thm 3.1）だけを残す。Inputs/Homotopy/ は ∞ 基盤の引用の置き場へ移すのが自然
+  （`make_area_audits.py` の許可リストの更新も一緒に）。Inputs/DifferentialGraded/（README だけ、採用 0 件）も dg の側。
+
+## 7. 追加の伝達：CategoryTheory のトップ階層のうち ∞ 基盤の側だけが使う 12 本（2026-10-30）
+
+CategoryTheory のトップ階層の残りを、import の逆向きの閉包で分類した結果、次の 12 本は利用者が ∞ 基盤の側（Spectra・HomotopicalAlgebra・
+EInfinity・KST と CategoryTheory の下位ディレクトリ）だけだった。ユーザーの決定により ∞ 基盤の側へ渡す。論文の層の側では触らない。
+（論文の層から届くように見えた経路は Inputs/Homotopy（§6 で渡したもの）経由だけ。）
+
+| ファイル | 行 | importer |
+| --- | --- | --- |
+| CategoryTheory/AdjunctionHomLaws | 147 | Monoidal/AdjunctionCompositeNaturality・Monoidal/MappingUnitLaws・Spectra/SymmetricSpectrum/MappingSpace |
+| CategoryTheory/CommaIdentities | 56 | HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/IndexReedy |
+| CategoryTheory/FiniteBijection | 113 | FiniteBijectionAction・FiniteBijectionSum・Spectra/SymmetricSequence/FiniteBijection |
+| CategoryTheory/FiniteBijectionAction | 68 | Monoidal/PowerBijectionFunctor |
+| CategoryTheory/FiniteBijectionInduction | 58 | Spectra/ModelCategory/FreeLevelCofibrations |
+| CategoryTheory/FiniteBijectionShift | 20 | FiniteBijectionInduction・Spectra/SymmetricSequence/FreeInduction |
+| CategoryTheory/FiniteBijectionSum | 47 | FiniteBijectionShift・Monoidal/PowerBijectionAppend・Spectra/SymmetricSequence/DisjointUnion |
+| CategoryTheory/FiniteBlockEquiv | 56 | FiniteBijectionSum・Monoidal/TensorPowerBlockPermutations・EInfinity/Operad/SlotPermutations |
+| CategoryTheory/FunctorTransport | 66 | Spectra/General/PointwiseTensor・Spectra/SymmetricSequence/PointwiseTensorModule・Spectra/SymmetricSpectrum/CotensorFunctor |
+| CategoryTheory/ParametrizedAdjunctionTransport | 72 | HomotopicalAlgebra/Localization/Monoidal・Spectra/General/{ParametrizedCotensor,ParametrizedMapping}・Spectra/ModelCategory/{GeneralLevelTensor,SimplicialLevelTensor} |
+| CategoryTheory/PointwiseAdjunction | 46 | HomotopicalAlgebra/Diagram/ProjectiveBifunctor |
+| CategoryTheory/RelativeArrow | 150 | HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/{BoundaryDiagram,RelativeArrow} |
+
+これで §4 で確かめた互いの import（こちら → ∞ 側 1 件、∞ 側 → こちら 5 件）はすべて ∞ 基盤の側の中の依存になる
+（FiniteBijectionInduction → Groupoid/ThinComponents、Monoidal/* → AdjunctionHomLaws・FiniteBijectionAction・FiniteBlockEquiv・FiniteBijectionSum）。
+
+調査の記録（論文の層の計画 §1.2.2・§1.2.4、そちらへの申し送り）：
+- `FunctorTransport.transport`・`iso`・`transport_obj`・`iso_hom_app` は Mathlib の `Functor.copyObj`・`isoCopyObj`（NatIso）と同じ（確度高）。ファイルごと置き換えられる。
+- AdjunctionHomLaws は `*Law : Prop` とその補題がどれも `Adjunction.homEquiv_naturality_left/right`・`Equiv.left_inv/right_inv`・`homEquiv_unit` の言い直し、
+  `comparisonHomEquiv` ≈ `a.homEquiv … |>.trans (e.homCongr …)`（確度高）。未使用：`curryEvaluationLaw`・`evaluationEqualityLaw`・`evaluation_injective`・
+  `comparisonHomEquiv_symm_apply`。
+- `RelativeArrow`（自然変換の相対 pushout・pullback の射）は Mathlib の `Functor.PushoutObjObj`・`PullbackObjObj` で書ける可能性（確度低〜中）。
+- `ParametrizedAdjunctionTransport`（`restrict`・`composeSecond`・`left`・`right`）は Mathlib の `ParametrizedAdjunction` の拡張で、上流にない。提出候補。
+- FiniteBijection は `Core FintypeCat.Skeleton` の薄い包み。FiniteBlockEquiv は `Fin` の同値。
+- 未使用：`FiniteBijectionInduction.addRight_faithful`（instance）。

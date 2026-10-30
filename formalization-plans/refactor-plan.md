@@ -20,6 +20,9 @@
   由来なら checkout で戻す。`scripts/audit_local_algebra.lean`・`audit_clmst*.lean`・`audit_f*.lean`・`audit_axioms.lean` などは宣言名を
   直接書いているので、削除・改名のたびに直す。全依存ビルドの後に shared（sorryAx は許可された引用経由の 59）・clmst・bhatt_scholze・
   audit_clmst・audit_f4・audit_f5・audit_local_algebra・audit_axioms を流す。
+- 論文の内容は残す：論文の番号付きの主張と、論文の議論の変種は、主経路で使われていなくても残す（2026-10-30 の決定。CLMST の Thm 4.0.3(a)、
+  Paper の Theorem4_7・Corollary2_6・Lemma3_4・Lemma2_4・ParameterQuotientCM・FlatRealization）。消すのは、置き換えられた古い証明の経路、
+  論文にない死んだ補助、再エクスポートの殻。
 - 宣言名：BS/CLMST が多数参照する中心の宣言（各章の「変えない名前」）は改名しない。必要なら `@[deprecated] alias` を経由する。
 - 好み：`.choose` より `def` と `@[simp]` 補題。薄い包みは利用が多いときだけ残す。名前空間はファイル名から付けない。docstring は
   概要／方針／規約／使われ方。
@@ -71,11 +74,15 @@ Mathlib
 | PC/TensorTorComparison → IM.Basic | `chi`（50 行）を HA/Tor の近くへ | §5.2 |
 | BS/Almost/PerfectoidAlmost → CLMST.Almost、Paper/Section2/MixedPerfectoid → CLMST.Algebra | Almost・MixedPerfectoid を BS 側へ | §8.5 |
 | DifferentialGraded/Verdier/OrderSquare → Asymptotic（ビルドされない連鎖） | ∞ 基盤の側（DifferentialGraded）の整理で扱う | §7.1 |
+| CA/Perfectoidization → Inputs/Perfectoidization → BhattScholze | CA/Perfectoidization を BS 側へ（区切り 2a） | §11.1・§2.8 |
+| Inputs/CLMST → Paper/Section2/*、IM/Additivity → Inputs/IntersectionTheory → IM/AdamsVanishingAll | Inputs の包みを解体 | §11.1 |
+| CT/EulerComparison → GroupTheory/ConjugateSum | 改名して EulerComparison へ吸収 | §11.2 |
 
 ## C. 名前の規約（全章に共通）
 
 - 論文の番号・出典を名前に使わない：名前空間 `Section2`（LA の RootTowerLength、CLMST の Algebra）、接頭辞 `prop247_`・`paper*`、
   ファイル名の Prop247・Cor404 など、CLMST の `Inputs/`（中身はすべて証明済み）。内容の名前を付ける。
+  例外：Paper/ のディレクトリ名 Section2〜Section5 は論文の節に合わせて残す（ファイル名は内容の名前、論文の番号は docstring に）。
 - 裸の `SerrePositivity` 名前空間や、ファイル名から付けた名前空間に一般的な名前（`section_sum0`・`familyMap`・`map`・`identity` など）を置かない。
 - `def …Law : Prop` で等式を包まない。補題の主張に直接書く。
 - `backward.isDefEq.respectTransparency false`・`backward.defeqAttrib.useBackward true` などの移行用オプションは、統合のときに外せるか試し、
@@ -114,10 +121,14 @@ Mathlib
 - 区切り 0：再エクスポートだけのファイル 49 本（機械的に検出：PC 33・KT 9・HA 3・CA 1（PerfectTorIndependence）・LA 1・CT 1（EulerTheory）・
   Paper/Section4/Foundations）と死んだファイル 24 本（HA 7・KT 5・LA 8・Asymptotic 4）を削除し、利用者の import を殻の中身へ展開して張り替える。
   dévissage の不要な import を外す（G の 5）、`PerfectComplex/K0.lean` の docstring（G の 6）。Asymptotic/PaperVanishing は Paper/Section4/FlatRealization が
-  使うので残した（§9.5）。∞ 基盤へ渡したもの（CT の下位ディレクトリ・Nerve・殻 11 本、HA/ComplexLimits、EInfinity の殻）は対象外。
-- 区切り 0b：確度高の Mathlib への置き換え（各章の「Mathlib との重なり」の確度高のもの、30 件程度）。中身の書き換えなので区切り 0 と分ける。
+  使うので残した（§9.5）。∞ 基盤へ渡したもの（CT の下位ディレクトリ・Nerve・殻 11 本・∞ 側だけが使う 12 本・ArrowFactorization*、HA/ComplexLimits、EInfinity の殻、GroupTheory/Coxeter、Inputs/Homotopy）は対象外。
+- 区切り 0 の追加分：Inputs の殻 3 本（RegularLocalRing・RegularParameters・Unmixedness、§11.1）、Paper の再エクスポート 3 本（Section2/Tower・
+  MonomialBasis・TowerStage、§10.3）、古い正値性の経路 2 本（Section5/AsymptoticPositivity・SecondComparisonLowerBound、G の 8）。
+- 確度高の Mathlib への置き換え（各章の「Mathlib との重なり」の確度高のもの、30 件程度）は独立の区切りにせず、各区切りで該当する群を統合するときに一緒に行う（2026-10-30）。
 
 **段階 1：BS に触れない統合（下の層から、区切りは 4 つ）**
+区切りの中は群ごとに「新しいファイルと直接の利用先だけのビルド」で進め、全依存ビルドは区切りの最後に 1 回だけ流す（2026-10-30）。
+見込みは区切り 1-1 が約 250 本、1-3 が約 200 本（B1+B2 の約 3 倍）。
 - 区切り 1-1：CT のトップ階層（§1.2。Euler・K₀ の一般化と純な対象の同型は除く）と CA の残り（E §2.6、D・H・X のうち BS に依存しないもの
   §2.7〜§2.9）、Paper の一般の補題のうち CA へ行くもの（§9.2）。
 - 区切り 1-2：HA の第一層（§3.7）。
@@ -177,8 +188,12 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
    （Monoidal/MappingUnitLaws・AdjunctionCompositeNaturality → AdjunctionHomLaws、Monoidal/PowerBijectionFunctor → FiniteBijectionAction、
    Monoidal/TensorPowerBlockPermutations → FiniteBlockEquiv、Monoidal/PowerBijectionAppend → FiniteBijectionSum）。こちらが AdjunctionHomLaws を
    削除する（§1.2.2、Mathlib の `Adjunction.homEquiv_naturality_*` で足りる）ときと、FiniteBijection*・FiniteBlockEquiv を統合・移動するときは、
-   ∞ 側の Monoidal/* の import を一緒に直すか、先に ∞ 側に伝える。FiniteBijection*（利用者は Spectra・Monoidal・EInfinity だけ）を ∞ 側へ
-   渡すかどうかは要相談。
+   ∞ 側の Monoidal/* の import を一緒に直すか、先に ∞ 側に伝える。
+   **追加の移管（2026-10-30）**：CT のトップ階層のうち利用者が ∞ 側だけの 12 本（AdjunctionHomLaws・CommaIdentities・FiniteBijection・
+   FiniteBijectionAction・FiniteBijectionInduction・FiniteBijectionShift・FiniteBijectionSum・FiniteBlockEquiv・FunctorTransport・
+   ParametrizedAdjunctionTransport・PointwiseAdjunction・RelativeArrow）も ∞ 側へ渡した（伝達文 §7）。これで上の互いの import はすべて ∞ 側の中の依存になる。
+   ArrowFactorization* の 3 本も ∞ 側（§1.2.2）。CT のトップ階層でこちらが扱うのは、論文の層が使う 67 本と、CT の中だけで使う 2 本
+   （BoundedTStructureGeneration・SerreDerivedQuotient）。
 5. ~~KTheory：dévissage 一式~~ → 残して軽くする（2026-10-30）。主定理 `g0QuotientDevissageEquiv : G₀(R ⧸ J) ≃+ G₀(V(J) に台をもつ加群)`。
    (1) DevissageAnnihilated の不要な import（K0LocalizationCoefficients、閉包 132 のうち 125）を外して G0Supported を直接 import する（段階 0 で先に）。
    (2) Mathlib への置き換え（`Module.isTorsionBySet_iff_subset_annihilator`・`LinearMap.annihilator_le_of_*`・`LinearMap.exact_subtype_mkQ`）、
@@ -188,10 +203,12 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
    引用の文言を変えないよう `K0Supported` を残し、`K0WithSupport` との比較の同型で結ぶ。一本化が課題であることは `PerfectComplex/K0.lean` の
    docstring に書いた（§4.2.3）（2026-10-30）。
 
-7. GroupTheory/Coxeter（利用者はすべて ∞ 基盤の側）と Inputs/Homotopy/（KanQuillen とその適用）を ∞ 基盤の側へ渡すか（§11.2・§11.1）。
-8. Paper（第 10 章）：(a) 主経路から外れた論文の内容（§10.2：Theorem4_7・FlatRealization・ParameterQuotientCM・Lemma3_4・Lemma2_4・Corollary2_6、
-   古い正値性の経路 AsymptoticPositivity・SecondComparisonLowerBound）を残すか、古い経路は消すか。(b) 構成の案（§10.5）、とくにディレクトリ名
-   Section2〜5 を論文の節に合わせて残すか（C の規約の例外）。
+7. ~~GroupTheory/Coxeter と Inputs/Homotopy/~~ → ∞ 基盤の側へ渡す（2026-10-30。伝達文 §6）。Inputs/DifferentialGraded/ も dg の側。
+8. Paper（第 10 章）：(a) 主経路から外れたもの（§10.2）→ (iii) 古い正値性の経路 AsymptoticPositivity・SecondComparisonLowerBound は削除
+   （区切り 0 の追加分。Asymptotic 側に連鎖はない）。(ii) 変種 ParameterQuotientCM・FlatRealization は残す（FlatRealization が使う
+   Asymptotic/PaperVanishing も残る）。(i) 論文の番号付きの主張（Theorem4_7・Corollary2_6・Lemma3_4・Lemma2_4）は残し、主経路をこれらにつなぎ直して
+   重複を消す（提案。区切り 1-4 の前に確認）（2026-10-30）。(b) ~~ディレクトリ名~~ → Section2〜5 は
+   論文の節に合わせて残す（C の規約の例外、2026-10-30）。ファイル名は内容の名前、論文の番号は docstring に書く。
 
 ## H. 最新の Mathlib で直す必要がある箇所（記録）
 
@@ -396,7 +413,7 @@ ModuleTransport の `iso_inv`・`obj_action`、`comparison_inv_naturality`、`ma
 5. 対称モノイダル圏のテンソル冪への `Equiv.Perm (Fin n)` の作用。
 6. `map_braiding_tensor_left`（BraidingPreservation）。
 
-### 1.4 順序と決定待ち
+### 1.4 章の中の作業順
 
 1. 死んだファイル（§1.2.4 の 8 本、§1.3.1 の 21 本）と確度高の Mathlib への置き換えを先に（BS/CLMST の波及なし。Presentation の殻はマニフェストだけ）。
 2. トップ階層の統合（§1.2.1）。BS が使う ExactDerivedTStructure の閉包は変えない。
@@ -977,7 +994,7 @@ BS の再ビルドの量で二層に分ける。
 
 第一層の中は HA1 → HA3 → HA2 → HA4 → HA5 の順（import の下から）。各群の中では死んだファイル・未使用の削除を先にし、統合はその後。
 
-### 3.8 決定待ち
+### 3.8 決定（記録）
 
 1. ~~Auslander–Buchsbaum を残すか削除するか~~ → 削除（2026-10-30）。
 2. ~~StupidTruncation の置き換え~~ → Mathlib を上げるまで保留（2026-10-30）。
@@ -1802,8 +1819,8 @@ Adams の Koszul・FiniteProjectiveResolutions を KTheory へ）。KTheory 単�
   `lambdaEuler_isBigO` → Asymptotic/NormalizedLimit（D の 9：AsymptoticLengthBounds 自体も Asymptotic へ移る）。FamilyPostnikov・FamilyHomologyTruncation（導来圏の ℕ 族）
   → HomologicalAlgebra。`uniformlyPowTorsion` と Serre 類のインスタンス（ModuleSequence）は CommutativeAlgebra/PowTorsionCategory と同じ型の
   議論なので、そちらから点ごとに導く。
-- PaperQuotient の 15 本は論文 (4.2)・ひねり・K₀ の作用など論文固有の主張。Paper/Section4 へ移す案も（Paper が import し、Paper を import しないので安全）。
-  決定待ち（§7.8）。
+- PaperQuotient の 15 本は論文 (4.2)・ひねり・K₀ の作用など論文固有の主張。Paper/Section4 へ移す（G の 3 で決定。Paper が import し、Paper を
+  import しないので安全）。
 
 ### 7.3 死んだファイル
 
@@ -1863,7 +1880,7 @@ Adams の Koszul・FiniteProjectiveResolutions を KTheory へ）。KTheory 単�
 関手圏での完全性が評価で判定できること（`moduleSequence_exact_of_eval` の一般化）、`nonneg_add_isBigO_iff`・`nonneg_add_isLittleO_iff`、
 O(s) の列の f/s は超フィルターに沿って収束する（`normalizedLimit_tendsto`）、ENNReal の `toReal` と `limUnder` の交換。
 
-### 7.8 順序と決定待ち
+### 7.8 章の中の作業順
 
 1. 死んだファイル 5 本と Paper/Section4/Foundations、未使用の削除（BS/CLMST の波及なし）。
 2. 確度高の Mathlib への置き換え、KoszulBaseChange などの外への移動。
@@ -1999,7 +2016,7 @@ StandardCone ← StandardSquare（SourceComparison・TargetComparison・TensorUn
 5. `scripts/audit_clmst*.lean`・`scripts/audit/clmst.lean`・`bhatt_scholze.lean` を直し、全依存ビルド 1 回でコミット（BS/CLMST の分は独立コミット、
    旧→新の対応表を付ける）。
 
-### 8.7 決定待ち
+### 8.7 決定（記録）
 
 1. ~~BhattScholze/ に新しいファイルを置く作業を誰が行うか~~ → コーディネータが第二層の作業時間に行う（BhattScholze/ を編集しない決まりの、この件の例外。2026-10-30）。
 2. ~~Thm 4.0.3(a) の全加群版の一群を残すか~~ → 論文の内容なので残す（2026-10-30）。B の Thm403a のファイルにまとめる。
@@ -2107,7 +2124,7 @@ Paper/Section2 の 6 本と Paper/Section5 の 6 本（計約 3600 行）。元�
 - 引用：Inputs/Descent（Thm 3.1）は Lemma 3.5 以下で使う。BhattScholze（81 モジュール）・CLMST（123）・InfinityCategories（312）に届くのは
   `MixedLengthAlgebra`・`MixedPerfectoid`（Thm 2.5 の混標数）経由だけで、Section4 と Section5 の他のファイルは BS に依存しない。
 
-### 10.2 主経路から外れているもの（論文の内容なので残す。G の 8 で扱いを決める）
+### 10.2 主経路から外れているもの（G の 8：古い経路は削除、変種と論文の主張は残す）
 
 | ファイル | 中身 | 状況 |
 | --- | --- | --- |
@@ -2166,7 +2183,7 @@ Section5/SecondComparisonLowerBound は、死んでいるファイルだけが i
 | Section5/SecondComparison | SecondComparison・ApproximationSecondComparison・ApproximationEuler・ApproximationBetti の論文の部分 |
 | Section5/Positivity | Positivity・CoreLengthPositivity・TwistedLengthPositivity・ParameterLengthPositivity・TowerPositivity・（Regular）LengthAlgebraPositivity・ApproximationPositivity |
 
-- ディレクトリ名 Section2〜Section5 は論文の節に合わせる（Paper の中に限り、論文の構成を写すための名前として残す。G の 8）。Section3/ を新設し、
+- ディレクトリ名 Section2〜Section5 は論文の節に合わせて残す（Paper の中に限り C の規約の例外、G の 8 で決定）。Section3/ を新設し、
   トップ階層の Corollary2_6・Lemma3_4・Lemma3_5（と同名のディレクトリ）・Lemma5_2 を節の下へ。
 - 名前空間：`Section2`・`Section4`・`Section5` と裸の `SerrePositivity`（Corollary2_6・Lemma3_4・Lemma3_5・Lemma5_2・Positivity・FirstComparison・
   NormApplication）が混在。`SerrePositivity.Paper` にそろえる。宣言の `paper*` 接頭辞（`paperBaseChangeBetti_*`・`ordinaryPaperEulerK0`・
@@ -2259,4 +2276,4 @@ Coxeter の Mathlib との重なり（∞ 側への申し送り）：`permutatio
 2. IntersectionTheory・CohenNormalization・ResidueFieldExtension・PerfectoidTower・LengthAlgebra の包みの解体は区切り 1-1（CA・Paper の利用者の
    書き換えだけ）。IntersectionTheory は IM の作業（区切り 1-3）と同時でもよい。
 3. Inputs/CLMST の解体は Paper の再構成（区切り 1-4）。Inputs/Perfectoidization は区切り 2a（BS のセッションと調整）。
-4. ConjugateSum は区切り 1-1（CT のトップ階層）。Coxeter と Inputs/Homotopy は ∞ 基盤へ伝える（決定待ち、G）。
+4. ConjugateSum は区切り 1-1（CT のトップ階層）。Coxeter と Inputs/Homotopy・Inputs/DifferentialGraded は ∞ 基盤へ渡した（伝達文 §6）。
