@@ -11,7 +11,7 @@
 - 全レーンを止める期間は短くする。止めずにできることは先に行い、大口は領域ごとに順番に止めて行う（§6）。
 
 規約：
-- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R74）。
+- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R78）。
 - **本書が正本**である。層の名前・段・前提・規模・工数（10-28 のレビューで再計測した値）は本書の値を使う。
   [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[refactoring-verdier.md](refactoring-verdier.md) は、各候補の詳しい記述と、調査時点の記録として残す。
 - 数値は HEAD `cbb891432`〜`bf573b627`（10-28）の時点のもの。実施の直前に計測し直す。移す対象は、ファイル名の一括指定ではなく、W0 で作る段ごとの対象 JSON（確定リスト）で決める。
@@ -57,6 +57,8 @@
 | 10-28 | 名前空間の付け替えは最後（R54）にまとめて行う |
 | 10-28 | Verdier 列は束ねた `IsVerdierSequence` を残し、束ねない形を包む定義として加える（R50） |
 | 10-28 | モデル圏はできるだけ避け、∞ 中核の下にモデル圏が入らないようにする。モデル圏 → ∞ の比較は、中核の上の橋の層（ModelBridge）に出す（R72） |
+| 10-30 | CategoryTheory の下位ディレクトリ（104 本）と Nerve まわり 9 本の整理は、本計画に含めて行う（[伝達文](handover-ct-to-infinity-2026-10-30.md)、論文の層の側では触らない）。削除は IF-W0-3 の後（IF-W0-4）、Nerve の移動と統合は W2a、Mathlib への置き換えと private 化は段 G |
+| 10-30 | W2a では SConstruction のレーン（K-S•）も止める（R64 が SConstruction の約 400 本を移し、R76 の利用者にも SConstruction があるため） |
 | 10-28 | 層の名前は本書の §3 に統一する。R2 計画の旧名との対応：Foundation∞ ＝ {Core, Kan, Coherent, F1, F1B, HL}、Stable.Base ＝ Stable、Stable.F2Applications ＝ StablePresentable |
 
 層の順序（下から上へ。各層は自分以下の層だけを import する。`{…}` の中は同じ層で、その内部では循環のない依存（DAG）であればよい）：
@@ -99,6 +101,7 @@ InfinityCategories/
   - HA の 12 本のファイルの末尾にある「Model」の節を切り離し、使っていない import を外す。純粋な部分は Simplicial・Kan へ移す。12 本を切った後の試算（第 2 回レビューで再現済み、ビルドは未検証）：F1・F2 は 0 本。Stable は Derived を経由する DG.Module.Cylinder の 1 本で、R39 の範囲。HL は Quillen 系の 42 本を ModelBridge へ出して初めて 0 本になる（出す前は HFC 28・Quillen 7・Generated 2 本が残る）。
   - Quillen 系の 42 本（`quillenCfDerivedAdjunction_exists` など、モデル圏 → ∞ の比較）は ModelBridge へ出す。中核の主な結果（Detection、Bousfield–Kan の holim = ∞ 極限、Ind・Presentable）は、これを使っていない。
   - Mathlib の SSet の Kan・anodyne の API と、HA の純粋な単体的部分（small object argument による Kan 置換、mono 分解、対角、宇宙の持ち上げ）は中核で使ってよい。
+- **CategoryTheory（1 圏論）の扱い（10-30）**：`SerrePositivity/CategoryTheory/` の一般部分（Monoidal・Enriched・Limits・Quiver・Simplex・Under）は、Mathlib や HA/Simplicial と同じく**中核より下の基盤**として import を許す（中核の閉包に 34 本入っている。直接の辺は 1 本）。`layers.json` の許可する基盤に加える。殻が再エクスポートしている HA/Rectification は禁止対象なので、殻は R75 で消す。
 - Sp（スペクトラムの ∞ 圏）は、安定性が無条件になるまで KST/Spectra に置く。
 - PiCriterion（F2/FilteredExchange/PiCriterion）とその橋 `FilteredSpaceBridgeInput` は、閉包に KST・DG を含む。そのため中核の外（Derived、または StablePresentable より上の応用層）に置く。これで R31 との食い違いを解消する。
 - **FilteredExchange の処置（R73）**：HTT 5.3.3.3（filtered 余極限と有限極限の交換）を直接示そうとした場所である。10-25 に Ind 側の厳密な経路 d′ が先に完成したため、直接経路 X は停止した。全 2,129 本を、重ならないように次の三つに分ける（第 2 回レビューで訂正：PiCriterion 33 本のうち 26 本が「使われている」側、7 本が「集約からだけ」の側に重複して数えられていた）。
@@ -148,6 +151,7 @@ InfinityCategories/
 | R61b | 内容が違う組は、読解して「特殊化」か「比較の定理が要る」かに分ける。比較の定理が要るものは段 G へ。<br>対象：CoreTrivialFibration（一致 9/38 行。∞ 側には instance と追加の宣言がある）、TrivialFibrationStability（5/70）、PushoutTranspose ↔ SquareTranspose（14/47）、SuspensionExactFunctor ↔ Stable/Suspension（2/33。前者は ∞ 関手 X ⟶ X、後者はホモトピー圏の関手 ho X ⥤ ho X で、置き換えると高次の情報が失われる）、Ex∞・MappingCylinder（モジュールとしては KST/Comparison の 1 か所）、CoherentTrianglePathMinimum（2 か所。補題名が違う） | R74 | 読解の記録 | 8〜16h |
 | R62 | `fraction_ho_localization` を**公開するだけ**にする（Stable/Verdier へ移すのは R52 の後。閉包に KST.Spectra 57 本と DG 10 本がある） | なし | 公理監査 | 1h |
 | R63 | HA/ComplexLimits の 3 本（直接 import しているのは `ExtendTruncationHom` の 1 本で、KST の CochainConnectiveLift を import している）を EInfinity/ComplexLimits へ戻す。CochainConnectiveLift を HA へ下ろすと HA → DG の辺ができるので、その案は採らない。R34 と統合する | なし | — | 1〜2h |
+| R75 | **新設（10-30、伝達文 §3.1）**：死んだファイルと殻の削除。CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本（AnchoredChain* 5・ArrowContext・LabelledChain・SimplexChainParameter）、Spectra/SymmetricSequence の殻 4 本（TensorPowers・TensorPermutations・AdjacentTranspositions・AdjacentBraid）、計 29 本。利用者は監査スクリプトだけ（`scripts/audit/shared.lean`・`audit_homotopical_foundations.lean`・`homotopical_generalization_manifest.json`）なので、それらの登録も直す。**W0 で行える**（IF-W0-4） | なし | 監査の登録の更新、verify | 2〜4h |
 
 ### 段 B Verdier の土台（すぐ移せるものだけ）
 
@@ -181,6 +185,8 @@ InfinityCategories/
 | R27 | HL・F1 → KST.Spectra の 27 辺を解消する。汎用の参照先は R64 の Kan 層へ移し、Spectrum* の 5 本は KST/Spectra/Limits へ移す | R40 | 中核の閉包に KST が入らないこと | 24〜48h（R64 と重なる） |
 | R65 | Dwyer–Kan 局所化（EInfinity/SimplicialLocalization・Hammock・FrameHom の一般部分）を F1B/Localization/DwyerKan と HL へ移す。<br>注意：この三つ全体（1,423 本）には、Derived への辺が約 30 本、KST への辺が約 8 本ある。移す G 部分集合を、閉包を基準に対象 JSON で選び直す。相対圏の hammock 局所化そのもの（モデル圏を使わない部分）は F1B/Localization/DwyerKan へ移す。一般のモデル圏の ∞ 局所化 `modelHammock_isLocalization` とその周辺は、モデル圏を仮定するので ModelBridge へ出す（10-28 追記） | R74・R26 | 層検査 | 32〜64h（再見積り） |
 | R56a | 局所化の存在の周辺を F1B/Localization へ移す。対象は確定リスト（R74）で、少なくとも LocalizationResolution・GeneralLocalization・LocalizationFactorization・LocalizationUniqueness・InverseAttachment*・WalkingEquivalence*・ParametricDiagramGluing・CoreAnodyneLifting を含む。<br>注意：いまの閉包には F2（CoreAnodyneLifting → F2.CatInfinity.CoreIsofibration）、HL 146 本、HA/Simplicial（WalkingEquivalence → AnodyneKanReplacement）、straightening 9 本が入っており、このままでは F1B の straightening 禁止監査（scripts/audit_infinity_f1b.lean:24）に落ちる。そこで R26・R72 の後に行い、straightening を使う部分は F1 側に残す | R26・R72・R74 | audit_infinity_f1b | 8〜16h |
+| R76 | **新設（10-30、伝達文 §2-1）**：CategoryTheory の Nerve まわり 9 本（NerveHomotopy・NerveHomotopyUniverse・NerveSimplexEndpoint・NerveSimplexStart・NerveSimplexFirstFunctor・NerveVertices・SimplexChainVertices・ElementsChainLifting・ElementsNaturalPrecomp）を HomotopicalAlgebra/Simplicial へ移す。CategoryTheory と HA の相互依存が消える。利用者は HA 26・EInfinity 12・KST 6（SConstruction 3・ProExcision 2・Comparison 1）・CategoryTheory 4。R64 の閉包の規則で、後に InfinityCategories/Simplicial へ移るものがあってよい | R74 | 層検査 | 4〜8h |
+| R77 | **新設（10-30、伝達文 §3.2）**：CategoryTheory の下位ディレクトリ 104 本を約 35 本に統合する（Monoidal/Mod・TensorPower・Action・Braided、Enriched/*、Adjunction/Comparison、Quiver/*、Simplex/*、Under、Limits）。宣言・名前空間・証明は変えない（BS 方式で section に包む）。統合の道具は BS の `bhatt-scholze-merge-modules.py` を `scripts/refactor/merge_modules.py` に一般化して使う（IF-W0-4 で用意し、保存検査と組み合わせる）。利用者は Spectra 89・HA 50・EInfinity 25・KST 18 本の import の書き換え | R75・道具 | 保存検査・層検査 | 16〜32h |
 | R56b | 比較・適用の部分（GroupoidCompletion*・SimplexAttachment*）は段 E で扱う。GroupoidCompletionFiniteFactorization は F2 を import し、SimplexAttachmentQuotientComparison の閉包は VerdierSequence に届く。いずれも閉包に DG と KST.Fibration を含む | R70・R66・R48 | 層検査 | 8〜16h |
 
 ### 段 E KST の一般部分の取り込み
@@ -215,6 +221,7 @@ InfinityCategories/
 | M8 | **新設**：商の関手性。(a) 安定 ∞ 圏とその安定な部分圏の組 (B, A) と、部分圏を保つ完全関手のなす ∞ 圏の上で、(B, A) ↦ B/A が関手的であること。(b) その Calkin 懸垂への応用（非連結 K の再設計、Sp-3 の見積りで 9〜18 人日）。見通し（10-28）：存在定理の構成（J の貼り付け・Kan 置換・inner anodyne 置換）は、small object argument で関手的な分解を選べば (X, W) について厳密に関手的にできる見込みがあり、厳密な豊穣関手から coherent nerve の写像として ∞ 関手を得られる可能性がある。着手時の最初の検討事項（解説 infinity-foundation 第 5 章 §5） |
 | M9 | **新設**：一般の `thickClosure`（R53）と dg 版 `dgThickClosureProperty` の比較。証明の後に dg 版を置き換える |
 | M10 | **新設**：R61b で「比較の定理が要る」とした組の比較（例：∞ 関手としての Σ とホモトピー圏の関手 Σ） |
+| R78 | **新設（10-30、伝達文 §3.3〜3.4）**：CategoryTheory の下位ディレクトリについて、Mathlib と重なる宣言の置き換え（`Paths.liftNatTrans`・`Paths.ext_functor`・`Quiv.adj.toComonad`・`MorphismProperty.naturalityProperty`・`rightAdjointUniq`・`MonoidalRightAction`・`TransportEnrichment` など）、未使用の宣言の削除、ファイルの中だけで使う約 120 の名前の private 化、ファイル名由来の名前空間の付け替え（R54 と一緒に）。証明と公開 API が変わるので窓の外。論文の層の計画と同じく、群ごとに「提案 → 承認 → 実装」で進める。Mathlib にない部分（`SimplexCategoryGenRel ≌ SimplexCategory` など）は提出候補として [mathlib-upstream.md](mathlib-upstream.md) へ |
 | M11 | **新設（10-28）**：一般の相対圏 (C, W) について、hammock 局所化の nerve への関手 `hammockLocalizationNerveMap : nerve C.category ⟶ kanHammockNerve C` が `IsLocalization` を満たすこと。いまはモデル圏の場合（`modelHammock_isLocalization`、ModelBridge へ出す）しか証明がなく、一般には `hammockLocalizationNerveMap_inverts` だけがある。数学的には知られた定理（Hinich, "Dwyer–Kan localization revisited", 2016 など。参照は要確認）。これがあれば、局所化の写像空間を、モデル圏を使わずに中核（F1B/Localization/DwyerKan）で計算できる。Verdier 商の写像空間（分数）との比較にも使える |
 
 置き場所は Stable/Verdier と StablePresentable（R55）。M1〜M7 の詳細は [refactoring-verdier.md](refactoring-verdier.md) §5。
@@ -228,7 +235,7 @@ InfinityCategories/
 | --- | --- | --- | --- | --- |
 | W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a）、R61b の読解 | 40〜80h | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
 | W1 | 全停止 | 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
-| W2a | Sp レーン、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 | 120〜240h、4〜6 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし |
+| W2a | Sp レーン、**K-S•（SConstruction）**、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 → R76 → R77 | 140〜280h、5〜7 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし。CategoryTheory と HA の相互依存なし |
 | W2b | F2・HL・Stable の担当 | R73 → R37 → R38 | 56〜112h、2〜3 日 | 中核の層の順序の違反 0（例外一覧を除く）。**ここで中核の完了条件 1・5 がそろう** |
 | W2c | LocalizingInvariants と Fibration のレーン | 段 E（R51 → R52 → R68 → R69 → R70 → R56b）、最後に R45 | 75〜150h、3〜4 日 | 違反が増えていない。移した一般部分の層検査 |
 
@@ -243,6 +250,7 @@ InfinityCategories/
 | IF-W0-1 | R41（verify.sh を関門にする） | W0（**完了** 10-28、main `88c477612`。基準実行は全 99 監査 PASS、既知の失敗なし。通しの実行は約 69 分） |
 | IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
 | IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
+| IF-W0-4 | R75（死んだファイルと殻の削除）と、R77 のための統合の道具（`merge_modules.py`、保存検査との組み合わせ、`layers.json` への CategoryTheory の基盤の登録） | W0（IF-W0-3 の後） |
 | IF-W1-1 | 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
 | IF-W1-2 | 閉包の切断（R26 → R39 → R66 → R71 → R49b） | W1 |
 | IF-W2a | R72 → R64 → R27 → R56a → R65 | W2a |
@@ -322,3 +330,4 @@ InfinityCategories/
 | [infinity-codex-w0-1.md](infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
 | [infinity-codex-w0-2.md](infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
 | [infinity-codex-w0-3.md](infinity-codex-w0-3.md) | Codex 指示書 IF-W0-3（対象 JSON と R61b の読解） |
+| [handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md) | 論文の層の側からの伝達：CategoryTheory の下位ディレクトリと Nerve まわりの調査結果（R75〜R78 の出典） |
