@@ -45,14 +45,7 @@ Lean の docstring から多数参照されるので、パスを変えない（�
 | [∞ 圏基盤の整備計画](infinity-foundation-plan.md) | ∞ 層を KST・DG・EInfinity から自立させ、外の一般論を取り込み、Verdier 商の構成へ進む。段 A〜G、R26〜R70 の要約、決定事項 | 2026-10-28 新設・計画のみ |
 | [R 計画：∞ 圏基盤のリファクタリング（索引）](refactoring-infinity.md) | リファクタ文書の入口。§0 に R1〜R58 の索引（第 1 窓 R1〜R25 は実施済み、R2 計画 R26〜R47、Verdier 商向け R48〜R57） | 2026-10-28 索引整理 |
 | [R 第 2 窓](refactoring-infinity-r2.md)・[Verdier 商向け](refactoring-verdier.md) | R26〜R47・R59〜R67 の調査と実施順、R48〜R57 の配置換え計画。全体順序は refactoring-infinity.md §0.1 | 実施待ち・計画のみ |
-| [CommutativeAlgebra の整理計画](commutative-algebra-refactor-plan.md) | 論文の層の見直しのうち CommutativeAlgebra の残りの群（C3・B1・B2・D・E・H・X）の統合・削除・Mathlib への置き換え・提出候補と順序。G・A・F・C1・C2 の状態も | 2026-10-30 新設・計画のみ |
-| [PerfectComplex の整理計画](perfect-complex-refactor-plan.md) | PerfectComplex（124 ファイル）の統合・削除・Mathlib への置き換え（CochainTensor は Mathlib のモノイダル構造の包み）・位数 n の作用への一般化・KTheory との層の境界 | 2026-10-30 新設・計画のみ |
-| [KTheory の整理計画](ktheory-refactor-plan.md) | KTheory（151 ファイル、Adams/ 111）の統合・削除・Mathlib への置き換え・二乗と三乗の並行の一般化。dévissage 一式は未使用 | 2026-10-30 新設・計画のみ |
-| [HomologicalAlgebra の整理計画](homological-algebra-refactor-plan.md) | HomologicalAlgebra（551 ファイル、DerivedCompletion/ 192）の統合・削除・Mathlib への置き換え・一本化（Pair を Principal の反復に、PD の d=0 経由の H⁰ 同型、導来テンソル 3 通り）。BS に触れない層と BS の再ビルドを伴う層の二段 | 2026-10-30 新設・計画のみ |
-| [Asymptotic の整理計画](asymptotic-refactor-plan.md) | Asymptotic（87 ファイル）の統合・死んだファイル 5 本・商の二本立て（Completed と Paper）の一本化。BS/CLMST の利用なし | 2026-10-30 新設・計画のみ |
-| [LengthAlgebra・IntersectionMultiplicity の整理計画](length-intersection-refactor-plan.md) | LA（58）と IM（21）の統合・PerfectComplex との層の入り組みの解消・死んだ連鎖（約 880 行）・Euler 標数の種類の比較の一本化 | 2026-10-30 新設・計画のみ |
-| [CategoryTheory の整理計画](category-theory-refactor-plan.md) | CategoryTheory（206 ファイル）の統合・Mathlib への置き換え・死んだ殻 29 本・層の逆転。下位ディレクトリは ∞ 基盤の作業と合わせる | 2026-10-30 新設・計画のみ |
-| [CLMST の整理計画](clmst-refactor-plan.md) | CLMST（146 ファイル）を基礎（共有層・BS へ下ろす）と論文（Prop 2.4.7 ほか）に分ける。BS 依存の基礎は BhattScholze/ へ（案 a）。第二層の作業時間に行う | 2026-10-30 新設・計画のみ |
+| [論文の層の整理計画](refactor-plan.md) | 論文の層（CategoryTheory・CommutativeAlgebra・HomologicalAlgebra・PerfectComplex・LengthAlgebra・IntersectionMultiplicity・KTheory・Asymptotic・CLMST）の統合・削除・Mathlib への置き換え・層の順序の一本の計画。前半に方針・層の順序・共通の仕組み・段階 0〜3、後半に章ごとの詳細（以前のディレクトリごとの計画書は archive/） | 2026-10-30 一本化 |
 | [論文の層の切り出し](paper-layer-extraction.md) | 論文の層の一般論（Auslander–Buchsbaum、Koszul、三角圏 K₀、Cohen–Gabber、K₀・Adams など）を切り出す、または Mathlib へ | 着手しない（10-28） |
 | [D2 計画：β4 gluing](infinity-lanes/infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |
