@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.GenericEtale
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # CLMST の基底に対する有限エタールな開集合
 

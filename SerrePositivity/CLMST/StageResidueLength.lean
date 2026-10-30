@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.StageLocality
-public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 
 /-! # 基底変更した有限段の共通剰余体と長さ

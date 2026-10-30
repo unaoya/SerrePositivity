@@ -41,7 +41,7 @@ import SerrePositivity.CLMST.StageModPImageLength
 import SerrePositivity.CLMST.StageModPLengthBound
 import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedQuotientEvaluation
-import SerrePositivity.CommutativeAlgebra.ParameterLastPowerMultiplicity
+import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
 import SerrePositivity.CLMST.PerfectoidCokernelEuler
 import SerrePositivity.CLMST.StageParameterChange

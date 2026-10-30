@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.CLMST.Inputs.ParameterLength
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Basic
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
-public import SerrePositivity.CommutativeAlgebra.MultiplicityFormulas
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 
 /-! # 一般段のパラメータ商の長さから零段と階数の公式へ
 
