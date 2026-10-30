@@ -175,3 +175,83 @@ EInfinity・KST と CategoryTheory の下位ディレクトリ）だけだった
 - `ParametrizedAdjunctionTransport`（`restrict`・`composeSecond`・`left`・`right`）は Mathlib の `ParametrizedAdjunction` の拡張で、上流にない。提出候補。
 - FiniteBijection は `Core FintypeCat.Skeleton` の薄い包み。FiniteBlockEquiv は `Fin` の同値。
 - 未使用：`FiniteBijectionInduction.addRight_faithful`（instance）。
+
+## 8. 追加の伝達：区切り 1-1 で main のモジュール名が変わった（2026-10-30）
+
+main に区切り 1-1 が入った（ca2fffe4d・25d50e9e8）。∞ 基盤・DG・KST の worktree で main を取り込むとき、次の import 行を書き換える。
+main 側の ∞・DG・KST のファイル（DG 7 本・KST 1 本・InfinityCategories/Derived/Localization）は書き換え済み。worktree で新しく足したファイルだけが対象になる。
+
+- CategoryTheory のトップ階層 68 本を 20 本にまとめた（下の表、`SerrePositivity.` は省略）。宣言名は変えていない。
+  ただし `GroupTheory.ConjugateSum` は `CategoryTheory.Euler` に入り、`conjSum_eq` → `orbitSum_eq_of_descent`、
+  `conjSum_eq_of_base_formula` → `orbitSum_eq_of_base_formula` に改名した。`triangle_isIso_of_components` は削除し、Mathlib の
+  `Triangle.isIso_of_isIsos` を使う。`smul_mul_self_id_eq_zero`・`pow_smul_id_eq_zero_of_le` は HomologicalAlgebra/NullHomotopy から
+  新しい `CategoryTheory/LinearScalar` に移した。
+- `IsModuleSTorsion` を廃止した。Mathlib の `Module.IsTorsion' M S` を使い、`IsModuleSTorsion.iff_localized_zero` →
+  `isTorsion'_iff_subsingleton_localizedModule`、`.iff_tensor_zero` → `isTorsion'_iff_subsingleton_tensor`、`.of_exact` → `isTorsion'_of_exact`、
+  要素ごとの形は `isTorsion'_iff_forall`（いずれも `CommutativeAlgebra/Localization/PowerTorsion`）。
+- CommutativeAlgebra の他の改名の全表は ca2fffe4d のコミットメッセージにある。
+
+| 旧 | 新 |
+| --- | --- |
+| `CategoryTheory.AdditiveLength` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.BoundedHomotopyGeneration` | `CategoryTheory.BoundedHomotopy` |
+| `CategoryTheory.BoundedTStructureGeneration` | `CategoryTheory.TStructure.Bounded` |
+| `CategoryTheory.BoundedTStructureIdempotent` | `CategoryTheory.TStructure.Bounded` |
+| `CategoryTheory.CommShiftOfPrecomp` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.ConeLengthBinomial` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.ConeLengthCancellation` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.CubicConjugation` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.DerivedPure` | `CategoryTheory.Derived` |
+| `CategoryTheory.EulerComparison` | `CategoryTheory.Euler` |
+| `CategoryTheory.ExactImageSequence` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.ExactRetract` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.ExactSequenceEuler` | `CategoryTheory.Euler` |
+| `CategoryTheory.FamilyTStructure` | `CategoryTheory.TStructure.Family` |
+| `CategoryTheory.FamilyTriangulatedImage` | `CategoryTheory.TStructure.Family` |
+| `CategoryTheory.FiniteSupportBounds` | `CategoryTheory.AlternatingSum` |
+| `CategoryTheory.FullSubcategoryTriangle` | `CategoryTheory.HomotopyProperty` |
+| `CategoryTheory.HomologicalConeLength` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.HomologicalEuler` | `CategoryTheory.Euler` |
+| `CategoryTheory.HomologicalKernelTStructure` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.HomologicalLocalization` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.HomotopyConeRepresentative` | `CategoryTheory.HomotopyProperty` |
+| `CategoryTheory.KaroubiExtensionOne` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiFullyFaithful` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiHomological` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiImage` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiLinear` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiPretriangulated` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiScalarSupport` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.KaroubiShift` | `CategoryTheory.Karoubi.Basic` |
+| `CategoryTheory.KaroubiTriangulated` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.KaroubiTriangulatedFunctor` | `CategoryTheory.Karoubi.Triangulated` |
+| `CategoryTheory.LocalizationTStructure` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.OctahedronBlockRetract` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.OctahedronEssentialImage` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.OctahedronPadding` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.ScalarSupportEquivalence` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarSupportLocalization` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarSupportRadical` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.ScalarZeroCone` | `CategoryTheory.IteratedCone` |
+| `CategoryTheory.SemilinearScalar` | `CategoryTheory.ScalarSupport` |
+| `CategoryTheory.SerreDerivedQuotient` | `CategoryTheory.Derived` |
+| `CategoryTheory.SerreLength` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.SerreSubcategory` | `CategoryTheory.Abelian.SerreLength` |
+| `CategoryTheory.ShortExactCokernel` | `CategoryTheory.Abelian.ShortComplex` |
+| `CategoryTheory.SubcategoryLinear` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.TExactKernelQuotient` | `CategoryTheory.TStructure.Localization` |
+| `CategoryTheory.TExactTruncation` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.TStructureHeart` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.TStructureRetracts` | `CategoryTheory.TStructure.Basic` |
+| `CategoryTheory.ThreeComponentMaps` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TriangleBiproduct` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.TriangleIdempotent` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TriangleIdempotentCompletion` | `CategoryTheory.Triangulated.Idempotent` |
+| `CategoryTheory.TrianglePadding` | `CategoryTheory.Triangulated.Padding` |
+| `CategoryTheory.TriangulatedK0Shift` | `CategoryTheory.TriangulatedK0` |
+| `CategoryTheory.TruncationTriangle` | `CategoryTheory.BoundedHomotopy` |
+| `CategoryTheory.VerdierKaroubi` | `CategoryTheory.Triangulated.VerdierKaroubi` |
+| `CategoryTheory.VerdierKaroubiLinear` | `CategoryTheory.Triangulated.VerdierKaroubi` |
+| `CategoryTheory.VerdierLift` | `CategoryTheory.Triangulated.VerdierLift` |
+| `CategoryTheory.VerdierTStructure` | `CategoryTheory.TStructure.Localization` |
+| `GroupTheory.ConjugateSum` | `CategoryTheory.Euler` |
