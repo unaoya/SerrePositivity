@@ -2,7 +2,7 @@
 
 概要：論文の層（`SerrePositivity/` のうち BhattScholze・∞ 圏の基盤を除く部分と、CLMST）について、ファイルの統合、死んだファイル・未使用の
 宣言の削除、Mathlib への置き換え、重複の一本化、層の順序の修正、Mathlib への提出候補を一つにまとめた計画。前半（A〜H）が全体の方針と順序、
-後半（第 1〜8 章）がディレクトリごとの詳細。ディレクトリごとの調査（2026-10-29〜30、読むだけ）の結果を元にしている。
+後半（第 1〜9 章）がディレクトリごとの詳細。ディレクトリごとの調査（2026-10-29〜30、読むだけ）の結果を元にしている。
 方針：群ごとに提案 → ユーザーの承認 → 実装 → 新しいファイル単体と直接の利用先のビルド → 区切りで全依存ビルドと監査 → コミット。
 規約：Mathlib の確認は固定版（2026-10-07、`.lake/packages/mathlib`）と最新版（2026-10-28、`/tmp/mathlib-latest`）の両方で行った。
 提出候補は [mathlib-upstream.md](mathlib-upstream.md) の G 番号の表に移してから扱う。この文書だけで作業が再開できるように書く
@@ -114,6 +114,7 @@ Mathlib
 4. LA の核・PC・IM の層の整理（§5.2・§4.5）を全依存ビルド 1 回で。続けて PC（§4）・LA と IM（§5）の統合。
 5. KTheory（§6）。
 6. Asymptotic（§7）。
+Paper に紛れている一般の補題（第 9 章）は、行き先の群（CA の残り・LA）の作業と同時に下ろす（§9.6）。
 CT の下位ディレクトリ（§1.3）と Nerve まわりは ∞ 基盤の指示書で行う（伝達済み、handover-ct-to-infinity-2026-10-30.md）。
 
 **段階 2：BS の作業時間（1 回）**
@@ -148,7 +149,21 @@ BhattScholze/Prism/Tensor/ への移動（§3.8）、段階 0 で残した CLMST
    NerveVertices）と SimplexChainVertices・ElementsChainLifting・ElementsNaturalPrecomp を HomotopicalAlgebra/Simplicial の側へ移す。
    (b) 下位ディレクトリ（§1.3）の整理は ∞ 基盤の Codex の指示書に含める（伝達文を ∞ 基盤のレーンへ渡す）。(a) の移動も ∞ 基盤側で行う
    （利用者はすべて HomotopicalAlgebra・EInfinity・KST）（2026-10-30）。
-5. KTheory：dévissage 一式（§6.2.1）。数学的にまとまった話（G₀(R/J) ≃ G₀ の V(J) に台をもつ部分）なら残し、重さを減らす方向で検討中。
+   **∞ 基盤側の受け取り（2026-10-30、infinity-foundation-plan.md a6e58a0a3）**：R75 死んだファイルと殻の削除 29 本（IF-W0-4）、R76 Nerve 9 本を
+   HomotopicalAlgebra/Simplicial へ（W2a）、R77 下位ディレクトリの統合 104 → 約 35 本（W2a）、R78 Mathlib への置き換え・未使用の削除・private 化・
+   名前空間（段 G）。これらのファイルは論文の層の側では触らない。CategoryTheory のトップ階層の残り（Karoubi・三角圏・t 構造・K₀ など）は
+   こちらの管轄。作業の前に互いの対象が import し合っていないかを確かめ合う。
+   **import の確認（2026-10-30）**：こちら → ∞ 側は 1 件（FiniteBijectionInduction → Groupoid/ThinComponents）。∞ 側 → こちらは 5 件
+   （Monoidal/MappingUnitLaws・AdjunctionCompositeNaturality → AdjunctionHomLaws、Monoidal/PowerBijectionFunctor → FiniteBijectionAction、
+   Monoidal/TensorPowerBlockPermutations → FiniteBlockEquiv、Monoidal/PowerBijectionAppend → FiniteBijectionSum）。こちらが AdjunctionHomLaws を
+   削除する（§1.2.2、Mathlib の `Adjunction.homEquiv_naturality_*` で足りる）ときと、FiniteBijection*・FiniteBlockEquiv を統合・移動するときは、
+   ∞ 側の Monoidal/* の import を一緒に直すか、先に ∞ 側に伝える。FiniteBijection*（利用者は Spectra・Monoidal・EInfinity だけ）を ∞ 側へ
+   渡すかどうかは要相談。
+5. ~~KTheory：dévissage 一式~~ → 残して軽くする（2026-10-30）。主定理 `g0QuotientDevissageEquiv : G₀(R ⧸ J) ≃+ G₀(V(J) に台をもつ加群)`。
+   (1) DevissageAnnihilated の不要な import（K0LocalizationCoefficients、閉包 132 のうち 125）を外して G0Supported を直接 import する（段階 0 で先に）。
+   (2) Mathlib への置き換え（`Module.isTorsionBySet_iff_subset_annihilator`・`LinearMap.annihilator_le_of_*`・`LinearMap.exact_subtype_mkQ`）、
+   (3) 7 本を `KTheory/G0/Devissage` など 2 本程度に統合、(4) `chosenDevissageFlag` の def の形の整理、論文の主経路では使わないことを
+   docstring に明記（KTheory の段階で）。
 6. ~~PC・KTheory~~ → (a) 係数の定義（`SupportedCoefficients` など、K₀ の基底変換）を PerfectComplex 側へ下ろす（§4.5.1）。(b) K₀ のモデルは
    引用の文言を変えないよう `K0Supported` を残し、`K0WithSupport` との比較の同型で結ぶ。一本化が課題であることは `PerfectComplex/K0.lean` の
    docstring に書いた（§4.2.3）（2026-10-30）。
@@ -1967,3 +1982,79 @@ StandardCone ← StandardSquare（SourceComparison・TargetComparison・TensorUn
 2. ~~Thm 4.0.3(a) の全加群版の一群を残すか~~ → 論文の内容なので残す（2026-10-30）。B の Thm403a のファイルにまとめる。
 3. ~~B のファイルの名前~~ → 論文の番号ではなく内容の名前を付ける（2026-10-30）。§8.3 の表の名前（Prop247/…・Thm403a・Cor404・Prop4010・Prop4014・Claim4015）は
    仮の呼び名で、作業時に内容の名前（例：Prop247 → `IsogenyOfPerfectoidization/…`、Prop4010 → `CyclicLengthBound` など）へ置き換える。名前の案は作業前に提示する。
+
+## 第9章 Paper に紛れている一般の補題
+
+`SerrePositivity/Paper/` には論文の主張とその直接の証明だけを置き、一般の補題は共有層へ下ろす。調査（2026-10-30、読むだけ）は
+Paper/Section2 の 6 本と Paper/Section5 の 6 本（計約 3600 行）。元の候補は旧 `paper-layer-extraction.md` §2 と
+`archive/repository-survey-2026-10-28.md` §6・§7。Asymptotic/NormalizedLimit は第 7 章（§7.2・§7.4）で扱う。
+
+### 9.1 外への影響と前提
+
+- Section2 の 6 本は BhattScholze・CLMST に推移的にも依存しない（import は CommutativeAlgebra・LinearAlgebra・HomologicalAlgebra・PerfectComplex・
+  LengthAlgebra/RootTowerLength と Paper/Section2 の互換ファイルだけ）。Section5 の Core・PrimeReduction は NormalizationPositivity 経由で BS・CLMST を
+  引く（約 1940 モジュール）が、その中の一般の補題は BS に依存しない。ParameterQuotient・ParameterQuotientCM・GaloisNormalization は BS 非依存。
+- この 12 本の宣言を BhattScholze・CLMST は使わない。`scripts/audit/shared.lean` が 12 本すべてを import し、`scripts/audit_clmst.lean` が
+  TowerApproximation を import して `SerrePositivity.Section2.μT` を `assert_no_sorry` で確かめている（改名するなら監査も直す）。
+- 前提：Section2 を動かす前に、`Paper/Section2/TowerLength.lean`（`towerLength`・`towerLengthFun_eq_fgLength`）と `Paper/Section2/TowerDescent.lean`
+  （`towerLengthFun_tensor`、64 行）を LengthAlgebra/RootTowerLength へ移す（どちらも RootTowerLength の薄い包み）。Paper/Section2 の TowerStage・Tower は
+  CA/RootTower の再エクスポート（互換ファイル）なので、利用者を張り替えて削除する。
+- 名前：Section2 の宣言はすべて `namespace SerrePositivity.Section2`（CA/RootTower・RootTowerLength も同じ）。移すときに `RootTower`（完全化の話は
+  `Perfection`）へ付け替える（C の規約、§5.3 の名前空間の統一と同時）。Section5 の一般の補題は `Section5` にある。
+
+### 9.2 ファイルごとの行き先
+
+| ファイル | 一般 | 論文 | 行き先 | BS |
+| --- | --- | --- | --- | --- |
+| Section2/PerfectApproximation（245） | 約 230 | 0 | 新 CA/Perfection/Approximation（CA/PerfectNormality の隣）。`perfectionApproximation_kernel_bound`（約 17 行、`NormalizedLength` を使う）は LA の核か PerfectComplex/QuotientLength | なし |
+| Section2/PerfectApproximationLength（504） | 約 480 | 約 20 | LA/RootTowerLength/PerfectApproximation | なし |
+| Section2/PerfectTower（290） | 約 285 | 0 | CA/RootTower/Perfect（塔から完全環への標準写像、約 180 行）・CA/RootTower/StageFrobenius（有限段から底への Frobenius、約 110 行） | なし |
+| Section2/PerfectConductor（336） | 約 290 | 約 45 | CA/RootTower/PerfectConductor（CA/TraceConductor を使う）。`exists_tower_perfection_conductor`（論文の仮定を与える部分）は Paper に残す | なし |
+| Section2/PerfectBaseChange（437） | 約 410 | 約 25 | CA/RootTower/PerfectBaseChange（CA/SeparableBaseChange・RegularLocalRing を使う） | なし |
+| Section2/TowerApproximation（1052） | 約 1010 | 約 40 | LA/RootTowerLength/BaseChangeApproximation（PerfectComplex/TensorResolutionLength を使う）。ENNReal の極限の補題 2 つは Asymptotic/NormalizedLimit か ENNReal の補題のファイル | なし（TowerLength・TowerDescent を先に移す） |
+| Section5/PrimeReduction（97） | 約 50 | 約 25 | `ideal_eq_bot_of_quotient_dim_eq` は CA（Krull 次元・SupportDimension）、`chi_self_residueField`・`chi_prime_eq_one_of_dim_zero` は IM/Basic | 一般部分はなし |
+| Section5/ParameterQuotient（310） | 約 45 | 約 265 | `length_le_tor_zero_mul`（ℓ(M) ≤ β₀(M)・ℓ(B/I)）は HA の Tor か IM/ParameterQuotient | なし |
+| Section5/ParameterQuotientCM（82） | 0 | 82 | 残す（§9.5） | なし |
+| Section5/Core（93） | 12 | 約 75 | private の `exists_nat_ringKrullDim` は PrimeReduction の `ideal_eq_bot_of_quotient_dim_eq` と同じ議論。一本にして CA へ | 一般部分はなし |
+| Section5/CoreLengthPositivity（113） | 0 | 約 110 | 残す | なし |
+| Section5/GaloisNormalization（100） | 約 16 | 約 80 | private の `powerSeriesMapEquiv`・`wittMapEquiv` を CA（PowerSeries・Witt）へ | なし |
+
+一般の部分は合計約 2800 行。主な中身：
+- **完全化の近似**（PerfectApproximation）：完全化への pⁿ 乗根の写像 `perfectionRootHom`、根の段 `perfectionRootStage`、近似 `perfectionApproximation`
+  （論文 Theorem 2.5 の `B_q`）、`perfectClosure_isDomain`・`perfectClosure_isIntegrallyClosed`・`isIntegral_perfection_of_isIntegral`。
+- **長さの極限**（PerfectApproximationLength）：`normalized_frobenius_length_tendsto_perfection_quotient`（ℓ(D/H^{[pⁿ]})/p^{nh} → λ∞(D_perf/H)、Hilbert–Kunz 型）
+  と 21 の塔の長さの補題（19 はファイルの中だけで使う）。
+- **根の塔と完全環**（PerfectTower・PerfectConductor・PerfectBaseChange）：普遍性 `towerToPerfect`、`towerEquivPerfection`（完備正則局所環で剰余体が完全なら
+  塔 ≃ 完全化）、共通の分母（conductor）、`perfectBaseChangeEquiv`（Λ ⊗_{A_n} D^{1/pⁿ} ≃ B_n）。
+- **基底変換の近似**（TowerApproximation）：S = Λ ⊗_A T の加群を段の加群で近似し、Tor の極限を取る一般の部分（論文 Lemma 5.4 の一般形）。
+
+### 9.3 Mathlib との重なり
+
+- `perfectionRootHom_injective`・`perfectClosure_lift_injective` は `IsPRadical`・`PerfectClosure.isPRadical` と `injective_comp`（FieldTheory/IsPerfectClosure）から
+  （確度高）。`prime_eq_maximalIdeal_of_quotient_dim_zero` は `Ring.KrullDimLE.eq_maximalIdeal_of_isPrime` でほぼ足りる（確度高）。
+- TowerApproximation の約 150 行（`fwdAux`〜`fwdT_smul`、`baseChangeTowerEquiv`）は `TensorProduct.AlgebraTensorModule.cancelBaseChange`・
+  `Algebra.TensorProduct.cancelBaseChange`・結合子で置き換えられる見込み。`flat_TS` はその同型を通した `Module.Flat.baseChange`（確度中）。
+- `PerfectTower` の標準写像は `PerfectRing.lift`・`PerfectClosure.lift` の塔版（Mathlib になし、確度中）。`towerEquivPerfection` は Λ の A 上の
+  `IsPerfectClosure` のインスタンスとして書ける（確度中）。
+- Mathlib にないもの：`IsDomain (PerfectClosure …)`（`instReduced` だけ）、`perfectClosure_isIntegrallyClosed`、`MvPowerSeries`・`WittVector` の `mapEquiv`、
+  ENNReal の挟み撃ち（一般形だけ）。提出候補。
+
+### 9.4 名前と未使用
+
+- TowerApproximation の一文字の略称（`TS`・`TSj`・`ιT`・`φB`・`φS`・`Fj`・`JT`・`μT`・`ψU`・`lenB`）は移すときに内容の名前にする（`μT` は audit_clmst が使う）。
+- 未使用：`perfectClosure_lift_injective`、`exists_tower_perfection_conductor_roots_of_normal_base`。
+
+### 9.5 Paper の中で主経路から外れているもの（論文の内容なので残す）
+
+- Section5/ParameterQuotientCM の `lemma_5_3_of_cm`（Lemma 5.3 の Cohen–Macaulay 版）は importer がなく未使用。
+- Paper/Section4/FlatRealization（Asymptotic/PaperVanishing を使う）は、段階 0 で削除した `Paper/Section4/Foundations`（再エクスポート）からしか
+  届かなかった。今はルートが直接 import する。
+- どちらも論文の内容なので残す（論文の内容は残すという 2026-10-30 の決定に従う）。主経路に組み込むかは別に判断する。
+
+### 9.6 順序
+
+1. TowerLength・TowerDescent を LA/RootTowerLength へ、互換ファイル TowerStage・Tower を削除（段階 1 の 4、LA の統合と同時）。
+2. Section2 の一般部分：CA へ行くもの（PerfectApproximation・PerfectTower・PerfectConductor・PerfectBaseChange）は段階 1 の 2（CA の残り）、
+   LA へ行くもの（PerfectApproximationLength・TowerApproximation）は段階 1 の 4。名前空間を `RootTower`・`Perfection` へ。
+3. Section5 の一般の補題（PrimeReduction・Core・ParameterQuotient・GaloisNormalization）は行き先の群の作業と同時。
+いずれも BS/CLMST に触れない（audit_clmst の `μT` の行だけ直す）。
