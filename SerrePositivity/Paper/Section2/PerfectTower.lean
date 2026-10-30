@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Section2.TowerStage
+public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import Mathlib.FieldTheory.PerfectClosure
 public import Mathlib.RingTheory.AdicCompletion.Functoriality
 

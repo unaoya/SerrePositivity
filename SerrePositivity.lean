@@ -103,7 +103,7 @@ public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
 public import SerrePositivity.CommutativeAlgebra.Adic.ReesLifts
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 
-public import SerrePositivity.Inputs.RegularParameters
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.LengthAlgebra.KoszulHomologyLength
 
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.AdicEuler
@@ -190,7 +190,6 @@ public import SerrePositivity.HomologicalAlgebra.AuslanderBuchsbaum
 public import SerrePositivity.HomologicalAlgebra.RegularQuotientProjectiveDimension
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Criterion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Localization
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.Unmixedness
 public import SerrePositivity.HomologicalAlgebra.KoszulTower
 public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
@@ -662,17 +661,15 @@ public import SerrePositivity.PerfectComplex.K0
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 public import SerrePositivity.PerfectComplex.KoszulGeneration
-public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.Descent
-public import SerrePositivity.Inputs.Unmixedness
 public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound
-public import SerrePositivity.Paper.Section2.MonomialBasis
-public import SerrePositivity.Paper.Section2.Tower
-public import SerrePositivity.Paper.Section2.TowerStage
+public import SerrePositivity.CommutativeAlgebra.RootTower.MonomialBasis
+public import SerrePositivity.CommutativeAlgebra.RootTower.Basic
+public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.Paper.Section2.TowerLength
 public import SerrePositivity.Paper.Section2.TowerDescent
 public import SerrePositivity.Paper.Section2.TowerApproximation
@@ -722,7 +719,13 @@ public import SerrePositivity.Paper.Section5.Positivity
 public import SerrePositivity.Paper.Section5.ParameterQuotient
 public import SerrePositivity.Paper.Section5.ParameterQuotientCM
 public import SerrePositivity.Paper.Section5.Preparation
-public import SerrePositivity.Paper.Section5.AsymptoticPositivity
+public import SerrePositivity.Paper.Section5.SupportedApproximation
+public import SerrePositivity.Paper.Section5.ApproximationEuler
+public import SerrePositivity.Paper.Section5.ApproximationSecondComparison
+public import SerrePositivity.Paper.Section5.ApproximationPositivity
+public import SerrePositivity.Paper.Section5.NormalizationPositivity
+public import SerrePositivity.Paper.Section5.SecondComparison
+public import SerrePositivity.Asymptotic.PaperTwistLowerBound
 public import SerrePositivity.CommutativeAlgebra.CharZeroCoefficientField
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.VariableRegular
 public import SerrePositivity.HomologicalAlgebra.LocalFlatnessCriterion

@@ -29,10 +29,7 @@ public import SerrePositivity.Paper.Lemma5_2
 ここではデータの存在を一括で仮定する class を置かない。`core_of_twistedEuler_pos` は
 指定した対象と各 `c_σ > 0` からの正値性であり、`core_statement`（`Paper/Statement.lean`）からそれらの対象
 （正規化基底 `A ⊆ D`、長さ代数、群 `G`、`H`）を構成する段階は別途必要である。
-`Section4.symmetricPaperEuler_conjSum_eq` は第二比較の共通部分、
-`Section5.paperEuler_pos_of_finiteApproximation` は個々の Euler 評価の正値性を供給する。
-有限近似の極小分解の切り詰め・商での支持・正の Euler 評価をもつ対象の構成は
-`Section5.exists_paperEuler_pos_of_minimalApproximation` で実装済み。
+`Section4.symmetricPaperEuler_conjSum_eq` は第二比較の共通部分を供給する。
 `Section5.paperBaseChangeBetti_eq_of_approximation_limit` は、商の各次数の評価を
 有限近似の Tor 極限と同定する。Euler 評価はその有限交代和に一致し、共通剰余体の下では
 基底環上の通常 Tor の長さから係数環上の通常 Euler 評価へも移せる。
@@ -41,7 +38,6 @@ public import SerrePositivity.Paper.Lemma5_2
 同じ有限近似から、この評価・支持・極小性・正の零次階数をもつ対象も構成できる。
 `Section5.secondComparison_of_approximation` は、同じ近似複体の支持を根基の包含で移し、
 実際の K₀ 作用について全ひねりの通常評価と第二比較を導く。
-`Section5.secondComparison_minimal_lower_bound` は共通下界を各共役と通常評価の両方へ渡す。
 `Section5.exists_secondComparison_pos_of_approximation` は、有限近似から同じ対象について
 第二比較・全共役の正値性・通常 Euler 数の正値性を同時に導く。
 係数変更後の振幅・極小性と各共役のイデアル条件は内部で確認する。
