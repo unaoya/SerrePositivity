@@ -126,6 +126,6 @@ Codex の予備集計（P 275・E 362・T 候補 12・U 68・K 5・未定 1、�
    lake env lean scripts/audit/dg.lean
    ```
    D1 の後の再生成でも同じ順序で行う（削除・移動した分は import 行から消えるので、残りを再ビルドするだけ）。ビルドが失敗するモジュールがあれば、それは本物の不整合なので止めて報告する。
+8. **Archive は監査・集約に入らない。** `make_area_audits.py` は `AREAS` に列挙したディレクトリしか見ないので、`SerrePositivity/Archive/` は dg.lean に入らない。D2 の `DifferentialGraded.lean` も Archive と Checks/ を import しない。`lake build` の既定は root の閉包なので、Archive の下はビルドされない（`lake build <module>` を明示したときだけ）。
 9. **ルートの全体ビルドは一回だけ。** D2 の殻の削除で DG・IC・KST・EInfinity の約 2,600 本が再エラボレートされる（実測 2,576 本、1 時間超）。これは避けられないが、**繰り返さない**：いま走っている `lake build SerrePositivity` が終わった後は、途中で触ったモジュールだけを `lake build <module>` で確かめ、ルートの再ビルドは §4 の verify.sh（内部でルートと監査対象をビルドする）に任せる。dg.lean の import 先のビルド（§9-7）は、この全体ビルドの後なら再生だけで数十秒で終わる。
 10. **verify.sh は `VERIFY_JOBS=3` のまま。** 最長の監査は RSS 19 GB なので、並列数は上げない。
-8. **Archive は監査・集約に入らない。** `make_area_audits.py` は `AREAS` に列挙したディレクトリしか見ないので、`SerrePositivity/Archive/` は dg.lean に入らない。D2 の `DifferentialGraded.lean` も Archive と Checks/ を import しない。`lake build` の既定は root の閉包なので、Archive の下はビルドされない（`lake build <module>` を明示したときだけ）。
