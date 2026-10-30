@@ -159,7 +159,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | --- | --- |
 | LinearAlgebra・FieldTheory・RingTheory | 見直し完了（2026-10-29） |
 | CommutativeAlgebra の G・A・F・C1〜C3・B1・B2 | 完了（§2.1） |
-| 段階 0 の区切り 0 | 実施中（2026-10-30、全依存ビルド中） |
+| 段階 0 の区切り 0 | 完了（65f178a5b・7820689c7。全依存ビルドと監査を通した）。追加分 8 本は未着手 |
 | CommutativeAlgebra の D・E・H・X | 計画（E は決定済み、§2.6） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
@@ -169,6 +169,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り | コミット | ファイル数 | 行数 |
 | --- | --- | --- | --- |
 | B1+B2（参考） | 7242dc7f7・e0308bb75 | CA で約 70 本を約 30 本に | — |
+| 区切り 0 | 65f178a5b・7820689c7 | 73 本を削除（shared の対象 1407 → 1367 モジュール） | −2434・＋295（import の展開） |
 
 ## G. 決定待ち
 
