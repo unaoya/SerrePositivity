@@ -11,7 +11,7 @@
 - 全レーンを止める期間は短くする。止めずにできることは先に行い、大口は領域ごとに順番に止めて行う（§6）。
 
 規約：
-- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R78）。
+- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R79）。
 - **本書が正本**である。層の名前・段・前提・規模・工数（10-28 のレビューで再計測した値）は本書の値を使う。
   [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[refactoring-verdier.md](refactoring-verdier.md) は、各候補の詳しい記述と、調査時点の記録として残す。
 - 数値は HEAD `cbb891432`〜`bf573b627`（10-28）の時点のもの。IF-W0-3 での再計測（10-29〜30）は各窓の `scripts/refactor/targets/w*.md` にある。実施の直前に計測し直す。移す対象は、ファイル名の一括指定ではなく、W0 で作る段ごとの対象 JSON（確定リスト）で決める。
@@ -153,6 +153,7 @@ InfinityCategories/
 | R61b | 内容が違う組は、読解して「特殊化」か「比較の定理が要る」かに分ける。比較の定理が要るものは段 G へ。<br>対象：CoreTrivialFibration（一致 9/38 行。∞ 側には instance と追加の宣言がある）、TrivialFibrationStability（5/70）、PushoutTranspose ↔ SquareTranspose（14/47）、SuspensionExactFunctor ↔ Stable/Suspension（2/33。前者は ∞ 関手 X ⟶ X、後者はホモトピー圏の関手 ho X ⥤ ho X で、置き換えると高次の情報が失われる）、Ex∞・MappingCylinder（モジュールとしては KST/Comparison の 1 か所）、CoherentTrianglePathMinimum（2 か所。補題名が違う） | R74 | 読解の記録 | 8〜16h |
 | R62 | `fraction_ho_localization` を**公開するだけ**にする（Stable/Verdier へ移すのは R52 の後。閉包に KST.Spectra 57 本と DG 10 本がある） | なし | 公理監査 | 1h |
 | R63 | HA/ComplexLimits の 3 本（直接 import しているのは `ExtendTruncationHom` の 1 本で、KST の CochainConnectiveLift を import している）を EInfinity/ComplexLimits へ戻す。CochainConnectiveLift を HA へ下ろすと HA → DG の辺ができるので、その案は採らない。R34 と統合する | なし | — | 1〜2h |
+| R79 | **新設（10-30、論文の層のコーディネータからの依頼）**：Lean の docstring が参照している旧計画の案内 4 本の片づけ（1,162 本）。<br>・`k-theory.md`：`[plan]: …/formalization-plans/k-theory.md` を `…/formalization-plans/archive/k-theory-v1.md#<§396 のアンカー>` に（618 件。アンカーは GitHub の規則で生成して確かめる）。本文中のパスの 1 件は手で直す。<br>・`k-theory-generalization-inventory.md`：`[inventory]: …` のパスを `archive/k-theory-generalization-inventory.md` に（アンカー `#mNNNN`・`layout-execution` はそのまま。618＋16 件）。<br>・`dg-theory-u12e-general-inventory.md`（DG 521 本）・`dg-theory-m5-status.md`（DG 9 本）：本文を `git mv` で archive/ へ移し、同じコミットで docstring のパスを替える。<br>規則：相対パスの深さ（`../../../` など）は保ち、`formalization-plans/<名前>.md` の部分だけを替える。宣言には触れない。文書ごとに 1 コミット（計 4 本）にし、ハッシュを論文の層のコーディネータへ知らせる。案内の削除と README の表の更新は先方が行う。CategoryTheory の ArrowFactorization* 3 本は先方の担当。<br>docstring だけでも olean が変わり依存先が再ビルドされるので、**W1 の最初**（IF-W1-1 の冒頭）に行い、W1 の最初の verify に含める | なし | 置換の件数の照合（618／618＋16／521／9）、ビルド、verify | 1〜2h＋再ビルド |
 
 ### 段 B Verdier の土台（すぐ移せるものだけ）
 
@@ -235,7 +236,7 @@ InfinityCategories/
 | 窓 | 止める範囲 | 行うこと（この順に直列。同じ集約ファイルを触る作業は並列にしない） | 工数の目安 | 終わりの条件（R40 の強制の段階） |
 | --- | --- | --- | --- | --- |
 | W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a → 対象 JSON → R75・統合の道具）、R61b の読解 | 40〜80h（実績は指示書の報告を参照。IF-W0-3 は道具の規則を足しながら進めたため数日かかった） | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
-| W1 | 全停止 | 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
+| W1 | 全停止 | R79（docstring の参照の片づけ）→ 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
 | W2a | Sp レーン、**K-S•（SConstruction）**、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 → R76 → R77 | 140〜280h、5〜7 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし。CategoryTheory と HA の相互依存なし |
 | W2b | F2・HL・Stable の担当 | R73 → R37 → R38 | 56〜112h、2〜3 日 | 中核の層の順序の違反 0（例外一覧を除く）。**ここで中核の完了条件 1・5 がそろう** |
 | W2c | LocalizingInvariants と Fibration のレーン | 段 E（R51 → R52 → R68 → R69 → R70 → R56b）、最後に R45 | 75〜150h、3〜4 日 | 違反が増えていない。移した一般部分の層検査 |
@@ -252,7 +253,7 @@ InfinityCategories/
 | IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
 | IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
 | IF-W0-4 | R75（死んだファイルと殻の削除）と、R77 のための統合の道具（`merge_modules.py`、保存検査との組み合わせ、`layers.json` への CategoryTheory の基盤の登録） | W0（IF-W0-3 の後） |
-| IF-W1-1 | 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
+| IF-W1-1 | 冒頭に R79（旧計画の案内への docstring 参照の片づけ、4 コミット）→ 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
 | IF-W1-2 | 閉包の切断（R26 → R39 → R66 → R71 → R49b） | W1 |
 | IF-W2a | R72 → R64 → R27 → R56a → R65 → R76 → R77 | W2a |
 | IF-W2b | R73 → R37 → R38 | W2b |
