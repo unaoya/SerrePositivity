@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
-public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
+public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # The original p-power-torsion Tor input from an actual finite free almost comparison -/
 @[expose] public noncomputable section

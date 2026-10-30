@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247AicRankImages
 public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
 public import SerrePositivity.CLMST.Prop247RankCone
-public import SerrePositivity.HomologicalAlgebra.ConeComparisonSquare
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：André 基底上の実 rank 係数比較の冪零化
 

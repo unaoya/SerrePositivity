@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
-public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
+public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # Gluing the original Tor annihilation input across a principal cover
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247BaseChange
 public import SerrePositivity.CLMST.Prop247Uniform
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
-public import SerrePositivity.HomologicalAlgebra.ConeFiniteCover
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：元の標準射への条件付き合流
 
