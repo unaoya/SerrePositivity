@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
 
 /-! # Milnor短完全列に沿う一様零化

@@ -57,26 +57,6 @@ def completedBaseChangePowerTorsionIso
       (isModuleComplete_of_pow_smul_zero B (φ a) _ N
         (extendScalars_pow_smul_zero φ a M N hM))).symm
 
-/-- 冪 torsion の比較は元の標準 augmentation を保つ。 -/
-theorem completedBaseChangePowerTorsionIso_unit
-    (hB : IsCompletelyFlat (Ideal.span {a}) (baseChangeScalarModule φ))
-    (M : ModuleCat.{u} R) (N : ℕ) (hM : ∀ x : M, a ^ N • x = 0) :
-    (derivedComplexCompletionUnit B (φ a)).app
-        ((boundedAboveDerivedBaseChange φ).obj (boundedAboveDerivedSingleFunctor.obj M)).obj ≫
-      (completedBaseChangePowerTorsionIso φ a hB M N hM).hom =
-        (boundedAboveDerivedBaseChangeModuleAugmentation φ).app M := by
-  let e := DerivedCategory.Minus.ι.mapIso (boundedAboveDerivedBaseChangeModuleAugmentationIso
-    φ M (scalarExtensionTorVanishing_of_power_torsion φ a hB M N hM))
-  change _ ≫ ((derivedComplexCompletionFunctor B (φ a)).map e.hom ≫ _) = e.hom
-  rw [← Category.assoc]
-  erw [← (derivedComplexCompletionUnit B (φ a)).naturality e.hom]
-  let u := derivedComplexCompletionUnitIso B (φ a)
-    ((moduleObjectFunctor B).obj ((ModuleCat.extendScalars φ).obj M))
-    (isModuleComplete_of_pow_smul_zero B (φ a) _ N
-      (extendScalars_pow_smul_zero φ a M N hM))
-  change (e.hom ≫ u.hom) ≫ u.inv = e.hom
-  simp
-
 /-- 正則加群の完備導来底変換は離散で、その H⁰ でも元の像は正則である。 -/
 theorem completedBaseChange_regular_module_pure
     (hB : IsCompletelyFlat (Ideal.span {a}) (baseChangeScalarModule φ))

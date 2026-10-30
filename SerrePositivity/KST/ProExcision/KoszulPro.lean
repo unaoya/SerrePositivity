@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.ExactSequence
-public import SerrePositivity.HomologicalAlgebra.KoszulTransitionDepth
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.KoszulComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulTensorConeComparison
 public import SerrePositivity.CommutativeAlgebra.Adic.FlatTensorFiltration
 public import Mathlib.RingTheory.TensorProduct.Finite

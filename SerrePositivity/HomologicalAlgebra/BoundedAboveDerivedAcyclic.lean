@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveSourceConeTriangle
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 
 /-! # Upper bounds and shifted Tor-acyclic modules for actual derived scalar extension -/

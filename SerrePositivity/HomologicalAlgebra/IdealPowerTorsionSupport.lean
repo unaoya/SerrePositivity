@@ -35,13 +35,6 @@ lemma primaryComponent_eq_of_radical_eq_of_fg (I J : Ideal R) (hI : I.FG) (hJ : 
   exact le_antisymm (primaryComponent_le_of_pow_le J I b hb M)
     (primaryComponent_le_of_pow_le I J a ha M)
 
-/-- In particular the equality holds for all ideals of a Noetherian base ring. -/
-lemma primaryComponent_eq_of_radical_eq [IsNoetherianRing R] (I J : Ideal R)
-    (h : I.radical = J.radical) (M : ModuleCat.{u} R) :
-    I.primaryComponent M = J.primaryComponent M :=
-  primaryComponent_eq_of_radical_eq_of_fg I J
-    (IsNoetherian.noetherian I) (IsNoetherian.noetherian J) h M
-
 /-- Radical independence is natural for all coefficient morphisms, by the identity on elements. -/
 def idealPowerTorsionRadicalNatIso (I J : Ideal R) (hI : I.FG) (hJ : J.FG)
     (h : I.radical = J.radical) : idealPowerTorsionFunctor I ≅ idealPowerTorsionFunctor J where

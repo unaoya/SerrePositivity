@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import Mathlib.RingTheory.LocalRing.Module

@@ -102,43 +102,4 @@ lemma pairCompletionZeroPrincipalAlgEquiv_unit (a r : R) :
   let := principalCompletionAlgebra R a
   exact (pairCompletionZeroPrincipalAlgEquiv R a).commutes r
 
-/-- The actual p-completed coefficient algebra is the original F3 (p,0) completion H⁰ algebra. -/
-def completedUnitH0PDEquiv (p : ℕ) :
-    letI := derivedH0CommRing (completedUnitAlgebra R (p : R))
-    letI := derivedH0Algebra (completedUnitAlgebra R (p : R))
-    letI := pdCompletionCommRing R p 0
-    letI := pdCompletionAlgebra R p 0
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (completedUnitAlgebra R (p : R)).X.obj ≃ₐ[R] PDCompletionH0 R p 0 := by
-  letI := derivedH0CommRing (completedUnitAlgebra R (p : R))
-  letI := derivedH0Algebra (completedUnitAlgebra R (p : R))
-  letI := pdCompletionCommRing R p 0
-  letI := pdCompletionAlgebra R p 0
-  letI := principalCompletionCommRing R (p : R)
-  letI := principalCompletionAlgebra R (p : R)
-  exact (principalCompletedUnitH0AlgEquiv R (p : R)).trans
-    (pairCompletionZeroPrincipalAlgEquiv R (p : R)).symm
-
-/-- The F3 comparison preserves the original actual completion unit on every coefficient. -/
-lemma completedUnitH0PDEquiv_unit (p : ℕ) (r : R) :
-    letI := derivedH0CommRing (completedUnitAlgebra R (p : R))
-    letI := derivedH0Algebra (completedUnitAlgebra R (p : R))
-    letI := pdCompletionCommRing R p 0
-    letI := pdCompletionAlgebra R p 0
-    completedUnitH0PDEquiv R p
-      (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit R (p : R)
-        (boundedAboveDerivedAlgebra (R := R) R))
-        ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).inv.app
-          (ModuleCat.of R R) r)) = pdCompletionUnit R p 0 r := by
-  let := derivedH0CommRing (completedUnitAlgebra R (p : R))
-  let := derivedH0Algebra (completedUnitAlgebra R (p : R))
-  let := pdCompletionCommRing R p 0
-  let := pdCompletionAlgebra R p 0
-  let := principalCompletionCommRing R (p : R)
-  let := principalCompletionAlgebra R (p : R)
-  change (pairCompletionZeroPrincipalAlgEquiv R (p : R)).symm
-    (principalCompletedUnitH0AlgEquiv R (p : R) _) = _
-  rw [principalCompletedUnitH0AlgEquiv_unit]
-  exact (pairCompletionZeroPrincipalAlgEquiv R (p : R)).symm.commutes r
-
 end SerrePositivity.DerivedCompletion

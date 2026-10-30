@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.Support
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeBaseChange
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.CommutativeAlgebra.Koszul

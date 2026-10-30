@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates
 public import SerrePositivity.InfinityCategories.DGNerve.ComplexTriangles
 public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # 標準 cofiber 四角形と join 余錐
 

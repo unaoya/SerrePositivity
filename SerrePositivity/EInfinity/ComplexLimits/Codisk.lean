@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ProjectiveModel
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-!
 # 各次数の線形射を受け取る実可縮 disk

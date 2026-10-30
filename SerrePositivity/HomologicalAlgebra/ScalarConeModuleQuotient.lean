@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerReduction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 public import Mathlib.Algebra.Homology.SingleHomology
 public import Mathlib.Algebra.Regular.SMul

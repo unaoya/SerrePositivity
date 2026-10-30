@@ -106,18 +106,6 @@ lemma algebraKoszulDualIntegerColimitHomology_annihilator_eq
     apply E.injective
     rw [E.map_smul, hc, E.map_zero]
 
-/-- The integer C-complex also computes the original local cohomology naturally. -/
-def algebraKoszulDualIntegerLocalCohomologyComparison [IsNoetherian R R]
-    (hres : ∀ n : ℕ, IsKoszulResolution (fun j => z j ^ n)) (i : ℕ) :
-    algebraKoszulDualIntegerColimitFunctor (C := C) z ⋙
-        homologyFunctor (ModuleCat.{u} C) (.up ℤ) (i : ℤ) ⋙
-          ModuleCat.restrictScalars (algebraMap R C) ≅
-      ModuleCat.restrictScalars (algebraMap R C) ⋙
-        localCohomology (Ideal.span (Set.range z)) i :=
-  Functor.isoWhiskerRight (algebraKoszulDualIntegerColimitHomologyNatIso (C := C) z i)
-      (ModuleCat.restrictScalars (algebraMap R C)) ≪≫
-    algebraKoszulLocalCohomologyComparison (C := C) z hres i
-
 /-- Higher Tor annihilation survives passage to the bounded integer C-complex. -/
 lemma algebraKoszulDualIntegerColimitHomology_annihilator_of_tor_annihilated
     [IsNoetherian R R]
@@ -131,50 +119,10 @@ lemma algebraKoszulDualIntegerColimitHomology_annihilator_of_tor_annihilated
   rw [algebraKoszulDualIntegerColimitHomology_annihilator_eq]
   exact algebraKoszulDualColimitHomology_annihilator_of_tor_annihilated z hres I hTor i hi
 
-/-- Applying a finite Koszul sequence to a complex preserves its upper term bound. -/
-lemma koszulComplexOn_isZero_X_above : ∀ {r : ℕ} (y : Fin r → C)
-    (K : CochainComplex (ModuleCat.{u} C) ℤ) (b : ℤ),
-    (∀ q, b < q → IsZero (K.X q)) →
-      ∀ q, b < q → IsZero ((koszulComplexOn y K).X q)
-  | 0, _, _, _, hK, q, hq => hK q hq
-  | r + 1, y, K, b, hK, q, hq => by
-    change IsZero ((CochainComplex.mappingCone
-      (smulId (y (Fin.last r)) (koszulComplexOn (Fin.init y) K))).X q)
-    rw [CochainComplex.mappingCone.isZero_X_iff]
-    exact ⟨koszulComplexOn_isZero_X_above (Fin.init y) K b hK (q + 1) (by omega),
-      koszulComplexOn_isZero_X_above (Fin.init y) K b hK q hq⟩
-
-/-- Each scalar cone lowers the lower term bound by exactly at most one degree. -/
-lemma koszulComplexOn_isZero_X_below : ∀ {r : ℕ} (y : Fin r → C)
-    (K : CochainComplex (ModuleCat.{u} C) ℤ) (a : ℤ),
-    (∀ q, q < a → IsZero (K.X q)) →
-      ∀ q, q < a - (r : ℤ) → IsZero ((koszulComplexOn y K).X q)
-  | 0, _, _, _, hK, q, hq => hK q (by simpa using hq)
-  | r + 1, y, K, a, hK, q, hq => by
-    change IsZero ((CochainComplex.mappingCone
-      (smulId (y (Fin.last r)) (koszulComplexOn (Fin.init y) K))).X q)
-    rw [CochainComplex.mappingCone.isZero_X_iff]
-    exact ⟨koszulComplexOn_isZero_X_below (Fin.init y) K a hK (q + 1) (by omega),
-      koszulComplexOn_isZero_X_below (Fin.init y) K a hK q (by omega)⟩
-
 /-- The actual iterated-cone total model of arbitrary parameter Koszul operators
 on the coefficient-algebra local-cohomology complex. No regularity of y is assumed. -/
 def parameterKoszulColimitFunctor {r : ℕ} (y : Fin r → C) :
     ModuleCat.{u} C ⥤ CochainComplex (ModuleCat.{u} C) ℤ :=
   algebraKoszulDualIntegerColimitFunctor (C := C) z ⋙ koszulFunctor y
-
-/-- Arbitrary parameter operators preserve the upper bound e. -/
-lemma parameterKoszulColimit_isZero_X_above {r : ℕ} (y : Fin r → C)
-    (M : ModuleCat.{u} C) (q : ℤ) (hq : (e : ℤ) < q) :
-    IsZero (((parameterKoszulColimitFunctor z y).obj M).X q) :=
-  koszulComplexOn_isZero_X_above y _ (e : ℤ)
-    (algebraKoszulDualIntegerColimit_isZero_X_of_gt z M) q hq
-
-/-- A length-r parameter sequence gives a finite lower bound -r. -/
-lemma parameterKoszulColimit_isZero_X_below {r : ℕ} (y : Fin r → C)
-    (M : ModuleCat.{u} C) (q : ℤ) (hq : q < -(r : ℤ)) :
-    IsZero (((parameterKoszulColimitFunctor z y).obj M).X q) :=
-  koszulComplexOn_isZero_X_below y _ 0
-    (algebraKoszulDualIntegerColimit_isZero_X_of_neg z M) q (by simpa using hq)
 
 end SerrePositivity

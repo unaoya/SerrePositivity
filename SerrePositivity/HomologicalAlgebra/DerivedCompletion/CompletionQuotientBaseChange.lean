@@ -117,33 +117,4 @@ def completionQuotientBaseChangeIso (X : D) :
   have := completionQuotientBaseChangeComparison_isIso R a b hb X
   exact asIso (completionQuotientBaseChangeComparison R a b hb X)
 
-/-- The actual quotient comparison is natural in every original derived morphism. -/
-lemma completionQuotientBaseChangeComparison_naturality {X Y : D} (f : X ⟶ Y) :
-    (derivedComplexCompletionFunctor Q ((q) a)).map
-        (((boundedAboveDerivedBaseChange (q)).map f).hom) ≫
-        completionQuotientBaseChangeComparison R a b hb Y =
-      completionQuotientBaseChangeComparison R a b hb X ≫
-        (((boundedAboveDerivedBaseChange (q)).map
-          ((boundedAboveDerivedCompletionFunctor R a).map f)).hom) := by
-  apply derivedComplexCompletionHom_ext Q ((q) a)
-    (derivedBaseChange_principal_isComplete R a b hb _
-      (derivedComplexCompletionFunctor_isComplete R a Y.obj))
-  have hr := (derivedComplexCompletionUnit Q ((q) a)).naturality
-    (((boundedAboveDerivedBaseChange (q)).map f).hom)
-  simp only [Functor.id_map] at hr
-  rw [← Category.assoc, ← hr, Category.assoc, completionQuotientBaseChangeComparison_unit,
-    ← Category.assoc, completionQuotientBaseChangeComparison_unit]
-  have hn := congrArg (fun k => ((boundedAboveDerivedBaseChange (q)).map k).hom)
-    ((boundedAboveDerivedCompletionUnit R a).naturality f)
-  simpa only [Functor.id_map, Functor.map_comp, ObjectProperty.FullSubcategory.comp_hom] using hn
-
-/-- These quotient-ring-linear comparisons form a natural isomorphism. -/
-def completionQuotientBaseChangeNatIso :
-    boundedAboveDerivedBaseChange (q) ⋙ DerivedCategory.Minus.ι ⋙
-        derivedComplexCompletionFunctor Q ((q) a) ≅
-      boundedAboveDerivedCompletionFunctor R a ⋙ boundedAboveDerivedBaseChange (q) ⋙
-        DerivedCategory.Minus.ι :=
-  NatIso.ofComponents (completionQuotientBaseChangeIso R a b hb)
-    (fun f => completionQuotientBaseChangeComparison_naturality R a b hb f)
-
 end SerrePositivity.DerivedCompletion

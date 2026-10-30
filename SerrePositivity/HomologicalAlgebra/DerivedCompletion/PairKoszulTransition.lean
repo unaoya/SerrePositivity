@@ -1,9 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulStage
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex
-public import SerrePositivity.HomologicalAlgebra.CochainConeCoordinates
-public import SerrePositivity.HomologicalAlgebra.CochainConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 
 /-! # 二座標Koszul塔の遷移の行列
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.ResolutionClass
-public import SerrePositivity.HomologicalAlgebra.ResolutionMappingCone
+public import SerrePositivity.HomologicalAlgebra.Resolution
 
 /-! # Resolution classes are additive on short exact sequences -/
 @[expose] public section

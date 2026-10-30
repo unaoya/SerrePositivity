@@ -7,7 +7,7 @@ public import Mathlib.Algebra.Homology.HomologicalComplexKernels
 public import Mathlib.Algebra.Homology.HomotopyCategory.DegreewiseSplit
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.Algebra.Homology.HomotopyCategory.SingleFunctors
-public import SerrePositivity.HomologicalAlgebra.StupidTruncation
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 
 /-! # 有界ホモトピー圏
 

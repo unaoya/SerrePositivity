@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionPure
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTowerLimitBound
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTower
 public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 
 /-! # G9: complete flat reduction implies purity and bounded power torsion -/

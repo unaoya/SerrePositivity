@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.Examples
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # 二項直和への Hom の全次数座標
 

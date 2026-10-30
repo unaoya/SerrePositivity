@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.K0
 public import Mathlib.Algebra.Homology.ShortComplex.PreservesHomology

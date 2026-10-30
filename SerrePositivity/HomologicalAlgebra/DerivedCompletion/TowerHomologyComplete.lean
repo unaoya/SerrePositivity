@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulStageComplete
 
 /-! # Koszul完備化候補のホモロジー加群の導来完備性

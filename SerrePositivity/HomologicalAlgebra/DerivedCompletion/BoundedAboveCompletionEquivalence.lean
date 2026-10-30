@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReflection
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModels
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 
 /-! # Detecting derived completion equivalences by power-Koszul reductions -/
 

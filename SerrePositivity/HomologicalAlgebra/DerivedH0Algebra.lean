@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.DerivedUnitHomologyNatural
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorLinear
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorBraided
-public import SerrePositivity.HomologicalAlgebra.MonoidalUnitHomRing
+public import SerrePositivity.CategoryTheory.MonoidalUnitHom
 public import Mathlib.Algebra.Ring.InjSurj
 public import Mathlib.Algebra.Algebra.Hom
 
@@ -187,21 +187,6 @@ theorem derivedH0AlgMap_apply {A B : CommMon D} (f : A ⟶ B)
     derivedH0AlgMap f x = (DerivedCategory.homologyFunctor (ModuleCat R) 0).map f.hom.hom.hom x :=
   derivedH0Map_apply f x
 
-/-- The actual H⁰ algebra map preserves identities. -/
-theorem derivedH0AlgMap_id (A : CommMon D) :
-    letI := derivedH0CommRing A
-    letI := derivedH0Algebra A
-    derivedH0AlgMap (𝟙 A) = AlgHom.id R
-      ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj) := by
-  let := derivedH0CommRing A
-  let := derivedH0Algebra A
-  apply AlgHom.ext
-  intro x
-  rw [derivedH0AlgMap_apply]
-  change (DerivedCategory.homologyFunctor (ModuleCat R) 0).map (𝟙 A.X.obj) x = x
-  rw [CategoryTheory.Functor.map_id]
-  rfl
-
 /-- The actual H⁰ algebra map preserves composition. -/
 theorem derivedH0AlgMap_comp {A B C : CommMon D} (f : A ⟶ B) (g : B ⟶ C) :
     letI := derivedH0CommRing A
@@ -223,22 +208,6 @@ theorem derivedH0AlgMap_comp {A B C : CommMon D} (f : A ⟶ B) (g : B ⟶ C) :
   change (DerivedCategory.homologyFunctor (ModuleCat R) 0).map
       (f.hom.hom.hom ≫ g.hom.hom.hom) x = _
   rw [CategoryTheory.Functor.map_comp]
-  rfl
-
-/-- The transferred ring has exactly the original additive group on actual H⁰. -/
-theorem derivedH0CommRing_addCommGroup (A : CommMon D) :
-    (derivedH0CommRing A).toAddCommGroup =
-      (inferInstance : AddCommGroup
-        ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj)) := rfl
-
-/-- The algebra's induced module is exactly the original module on actual H⁰. -/
-theorem derivedH0Algebra_module (A : CommMon D) :
-    letI := derivedH0CommRing A
-    let M := (inferInstance : Module R
-      ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj))
-    letI := derivedH0Algebra A
-    (Algebra.toModule : Module R
-      ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj)) = M := by
   rfl
 
 end SerrePositivity

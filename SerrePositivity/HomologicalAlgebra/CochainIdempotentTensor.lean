@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
 
 /-! # Tensor products of idempotent images -/

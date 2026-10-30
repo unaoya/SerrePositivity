@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.AlgebraLinearYonedaBaseChange
 public import SerrePositivity.HomologicalAlgebra.KoszulBaseChangeNaturality
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulColimit
-public import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.KoszulComparison
 
 /-! # Coefficient-ring change for the actual dual power-Koszul diagram -/
 @[expose] public noncomputable section

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTensorModel
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTower
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
 
 /-! # Ordinary power cokernels compute actual derived reduction in projective models -/

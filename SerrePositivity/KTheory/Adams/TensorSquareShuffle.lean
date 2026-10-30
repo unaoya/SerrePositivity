@@ -7,8 +7,7 @@ public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffleEquivarianc
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
 public import SerrePositivity.PerfectComplex.InvolutionTensor
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotent
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentIso
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # The equivariant shuffle used for multiplicativity of the cyclic square -/
 

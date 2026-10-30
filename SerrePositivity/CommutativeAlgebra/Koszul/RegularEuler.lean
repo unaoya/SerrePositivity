@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.RegularLocalResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequence

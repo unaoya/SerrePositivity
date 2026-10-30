@@ -73,28 +73,6 @@ lemma cochainSingleTensorIso_naturality_left
   simp only [Iso.app_hom, Category.assoc, Iso.inv_hom_id_app]
   erw [Category.comp_id]
 
-/-- The canonical discrete tensor comparison is natural in both modules. -/
-lemma cochainSingleTensorIso_naturality
-    {M M' N N' : ModuleCat.{u} R} (f : M ⟶ M') (g : N ⟶ N') :
-    cochainTensorMap ((CochainComplex.singleFunctor (ModuleCat R) 0).map f)
-        ((CochainComplex.singleFunctor (ModuleCat R) 0).map g) ≫
-      (cochainSingleTensorIso M' N').hom =
-    (cochainSingleTensorIso M N).hom ≫
-      (CochainComplex.singleFunctor (ModuleCat R) 0).map (f ⊗ₘ g) := by
-  have hc : cochainTensorMap ((CochainComplex.singleFunctor (ModuleCat R) 0).map f)
-      ((CochainComplex.singleFunctor (ModuleCat R) 0).map g) =
-    cochainTensorMap ((CochainComplex.singleFunctor (ModuleCat R) 0).map f)
-      (𝟙 (cochainSingleZero N)) ≫
-    cochainTensorMap (𝟙 (cochainSingleZero M'))
-      ((CochainComplex.singleFunctor (ModuleCat R) 0).map g) := by
-    rw [cochainTensorMap_comp]
-    simp only [Category.comp_id, Category.id_comp]
-  rw [hc, Category.assoc, cochainSingleTensorIso_naturality_right,
-    ← Category.assoc, cochainSingleTensorIso_naturality_left, Category.assoc,
-    ← CategoryTheory.Functor.map_comp]
-  exact congrArg ((cochainSingleTensorIso M N).hom ≫ ·)
-    (congrArg (CochainComplex.singleFunctor (ModuleCat R) 0).map (tensorHom_def f g).symm)
-
 /-- The signed cochain symmetry agrees with ordinary symmetry under the discrete comparison. -/
 lemma cochainSingleTensorIso_symmetry (M N : ModuleCat.{u} R) :
     (cochainTensorSymmetry (cochainSingleZero M) (cochainSingleZero N)).hom ≫

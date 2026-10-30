@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationPresentation
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module
 public import Mathlib.Algebra.Homology.DerivedCategory.TStructure
 

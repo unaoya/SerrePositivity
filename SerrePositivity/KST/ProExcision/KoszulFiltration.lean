@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.SpectralPro
-public import SerrePositivity.HomologicalAlgebra.StupidTruncation
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import SerrePositivity.HomologicalAlgebra.CochainTensorCone
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence

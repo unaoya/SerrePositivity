@@ -166,6 +166,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 段階 0 の区切り 0 | 完了（65f178a5b・7820689c7、追加分 8 本も完了） |
 | 区切り 1-1（CT トップ階層・CA の E・D・X・H の BS に依存しない部分・Inputs の包み・Paper の一般論の一部） | 完了（2026-10-30、記録は下の表と「区切り 1-1 で見送った項目」） |
 | CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
+| 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -176,6 +177,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | B1+B2（参考） | 7242dc7f7・e0308bb75 | CA で約 70 本を約 30 本に | — |
 | 区切り 0 | 65f178a5b・7820689c7 | 73 本を削除（shared の対象 1407 → 1367 モジュール） | −2434・＋295（import の展開） |
 | 区切り 1-1 | ca2fffe4d・25d50e9e8 | 203 本を削除・55 本を新設（CT 68 → 20、CA の E・D・X・H 約 120 → 約 35、Inputs 6 本を削除、shared の対象 → 1156 モジュール） | −19100・＋17583 |
+| 区切り 1-2 | （コミット後に記入） | 153 本を削除・24 本を新設（HA1 69 → 13、HA3 31 → 5、HA4 33 → 5、HA5 20 → 2、shared の対象 → 1058 モジュール）。未使用の宣言 189 を削除 | −16182・＋13361 |
 
 
 区切り 1-1 で見送った項目（2026-10-30）：
@@ -195,6 +197,20 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 - 未決：E の共通モデルの重複の共通化と一様な冪の補題の一本化をどの区切りで行うか。
 - 計画からの変更：ModuleSupport も Support/Closed に入れた（ModuleClosedSupport との import の循環を避けるため）。冪ねじれ 5 本は D の既存ファイルではなく
   新しい PowerTorsion/{Basic, Category} にまとめた。Paper の PerfectApproximation は CA/Perfection/Approximation へ、核の長さの評価だけ Paper に残した。
+
+区切り 1-2 で見送った項目（2026-10-31）：
+
+- BS が直接 import するので動かさなかったもの（第二層へ）：KProjectiveLift・BoundedAboveDerivedAssociator・BoundedAboveDerivedBaseChange・
+  SequentialComplexColimits・MilnorAnnihilator。ProjectiveBaseChange と SequentialChainHomologyColimits の削除も、使う側が BS の import する
+  ファイルなので第二層へ。KProjective の持ち上げ 3 本の一本化（KProjectiveLift が BS の import 先）も第二層へ。
+- import の循環を避けるため単独のまま残したもの：BoundedAboveDerivedUnit（Associator を挟む）、KoszulDualBaseChange（Ext/LocalCohomology が import する）、
+  TowerProjection（KoszulTower・TowerUnit の上にある）。TowerUnit は一般部分と Koszul 部分に分ける必要があるので未着手。
+- HA1 の Tensor/*（決定 3 により PC2 と同時、区切り 1-3）。CochainTensor* の未使用 7 件もそこで扱う。
+- HA2・HA3 の Tor 側・HA5 の BS 向けの群の統合は第二層。
+- Mathlib への置き換えを見送ったもの：`free_baseChange`・`finite_baseChange`（呼ぶ側で `extendScalars` の対象をテンソル積に直す `change` が要り、
+  1 行のインライン化にならない）。確度中の置き換え（`isZero_homology_of_isZero_X` など）は未着手。
+- 監査スクリプトが名前で参照しているため残した未使用の宣言 15 件（KoszulMilnor・ModuleTower・PairKoszulProduct など）。
+- 計画からの変更：Auslander–Buchsbaum は削除しない（§3.8 の 1 の訂正）。HA1 の MonoidalUnitHomRing・MonoidalPointAction は CategoryTheory/MonoidalUnitHom に。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
@@ -1033,7 +1049,10 @@ BS の再ビルドの量で二層に分ける。
 
 ### 3.8 決定（記録）
 
-1. ~~Auslander–Buchsbaum を残すか削除するか~~ → 削除（2026-10-30）。
+1. ~~Auslander–Buchsbaum を残すか削除するか~~ → 削除（2026-10-30）。**訂正（同日、作業時の再確認）**：`AuslanderBuchsbaum` は
+   CA/RegularLocalRing/Criterion（極大イデアルの射影次元による正則性の判定）が使い、それを RegularLocalRing/Localization が使うので削除しない。
+   RegularQuotientProjectiveDimension の `projectiveDimension_eq_quotient` も同じ経路で使う。RQPD からは AuslanderBuchsbaum の import を外し（Mathlib の import だけで足りる）、
+   Criterion が直接 import するようにした。
 2. ~~StupidTruncation の置き換え~~ → Mathlib を上げるまで保留（2026-10-30）。
 3. ~~Tensor をどちらに寄せるか~~ → 本体は `HomologicalAlgebra/CochainTensor/`（Basic・Symmetric・Shuffle・DegreeMaps・ShortExact・BaseChange・
    Cone/Shift/Single/Acyclic）。PerfectComplex には完全複体などの固有部分だけを残し、殻 21 本は PC2 で削除。`cochainTensor` は名前を残し、

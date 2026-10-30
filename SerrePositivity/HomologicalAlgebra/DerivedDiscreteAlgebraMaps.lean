@@ -111,24 +111,4 @@ lemma boundedAboveDerivedAlgebraUnit_naturality
   exact congrArg (fun h => boundedAboveDerivedTensorUnitSingleIso.hom ≫
     (DerivedCategory.singleFunctor (ModuleCat.{u} R) 0).map h) hu
 
-/-- The standard single-object H0 comparisons identify the derived unit with algebraMap. -/
-lemma boundedAboveDerivedAlgebraUnit_homology
-    (A : Type u) [CommRing A] [Algebra R A] :
-    (realizedSingleH0Iso R).inv.app (ModuleCat.of R R) ≫
-        (DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map
-          (boundedAboveDerivedAlgebraUnit A).hom ≫
-        (realizedSingleH0Iso R).hom.app (ModuleCat.of R A) =
-      ModuleCat.ofHom (Algebra.linearMap R A) := by
-  let f := ModuleCat.ofHom (Algebra.linearMap R A)
-  have hu : (boundedAboveDerivedAlgebraUnit A).hom =
-      (DerivedCategory.singleFunctor (ModuleCat.{u} R) 0).map f := by
-    change (𝟙 _) ≫ _ = _
-    exact Category.id_comp _
-  rw [hu]
-  have hn := (realizedSingleH0Iso R).hom.naturality f
-  dsimp only [Functor.comp_map, Functor.id_map] at hn
-  rw [hn]
-  simp only [← Category.assoc, Iso.inv_hom_id_app, Category.id_comp]
-  rfl
-
 end SerrePositivity

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.HomologicalAlgebra.LocalizedRegularResolution
-public import SerrePositivity.HomologicalAlgebra.BoundedResolutionDimension
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.PerfectComplex.HomotopyCategory
 
 /-! # Finite projective resolutions independently of Grothendieck groups -/

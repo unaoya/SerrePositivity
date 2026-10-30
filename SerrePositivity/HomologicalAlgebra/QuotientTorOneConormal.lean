@@ -60,17 +60,4 @@ lemma quotientTorOne_smul_surjective_iff_conormal (a : R) :
     change a • y = e x at hy
     rw [← e.symm.map_smul, hy, e.symm_apply_apply]
 
-/-- Ordinary self-Tor₁ vanishing is exactly idempotence of the actual ideal. -/
-lemma quotientTorOne_subsingleton_iff_idempotent :
-    Subsingleton (TorModule R 1 (R ⧸ I) (R ⧸ I)) ↔ IsIdempotentElem I := by
-  let e := quotientTorOneConormalEquiv R I
-  constructor
-  · intro h
-    letI := h
-    apply I.cotangent_subsingleton_iff.mp
-    exact ⟨fun x y => e.symm.injective (Subsingleton.elim _ _)⟩
-  · intro h
-    letI := I.cotangent_subsingleton_iff.mpr h
-    exact ⟨fun x y => e.injective (Subsingleton.elim _ _)⟩
-
 end SerrePositivity

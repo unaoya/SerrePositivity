@@ -84,25 +84,4 @@ theorem realizedSingleH0Iso_hom_eq_standard (M : ModuleCat.{u} R) :
 
 
 
-/-- The comparison natural isomorphisms coincide, including their inverse maps. -/
-theorem realizedSingleH0Iso_eq_standard :
-    realizedSingleH0Iso R =
-      DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0 := by
-  apply Iso.ext
-  apply NatTrans.ext
-  funext M
-  exact realizedSingleH0Iso_hom_eq_standard M
-
-/-- The H⁰ algebra comparison has exactly the existing tensor H⁰ comparison as its function. -/
-theorem derivedTensorH0AlgHom_eq_existing
-    (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveDerivedTensorAlgebra (R := R) S T).X.obj) :
-    derivedTensorH0AlgHom S T x =
-      (boundedAboveDerivedTensorModuleH0NatIso (ModuleCat.of R S)).hom.app
-        (ModuleCat.of R T) x := by
-  rw [derivedTensorH0AlgHom_apply, ← realizedSingleH0Iso_hom_eq_standard]
-  exact congrArg (fun k ↦ k.hom x)
-    (boundedAboveDerivedTensorModuleAugmentation_homology (ModuleCat.of R S) (ModuleCat.of R T))
-
 end SerrePositivity

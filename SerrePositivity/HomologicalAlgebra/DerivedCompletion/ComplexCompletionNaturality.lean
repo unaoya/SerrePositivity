@@ -61,12 +61,6 @@ theorem complexPowerKoszulProductInclusion_naturality (a : R)
   exact congrArg (fun g ↦ (Cochain.ofHom g).comp _ _)
     (complexPowerKoszulProductInclusion_naturality R a f)
 
-/-- 複体上の標準射を自然変換としてまとめる。 -/
-def complexCompletionUnitNatTrans (a : R) :
-    𝟭 (CochainComplex (ModuleCat.{u} R) ℤ) ⟶ complexCompletionFunctor R a where
-  app := complexCompletionUnit R a
-  naturality {_K _L} f := complexCompletionUnit_naturality R a f
-
 /-- 標準射の実導来像。始域はまだ複体の圏である。 -/
 def complexCompletionUnitDerivedInput (a : R) :
     DerivedCategory.Q ⟶ complexCompletionFunctor R a ⋙ DerivedCategory.Q where

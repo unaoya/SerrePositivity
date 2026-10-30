@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Koszul
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence

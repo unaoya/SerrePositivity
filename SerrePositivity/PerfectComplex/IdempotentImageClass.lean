@@ -1,10 +1,8 @@
 module
 public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
 public import Mathlib.Algebra.Homology.QuasiIso
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentQuasiIso
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentAcyclic
-public import SerrePositivity.HomologicalAlgebra.CochainIdempotentShortExact
 
 /-! # Supported K₀ classes of idempotent images -/
 @[expose] public noncomputable section

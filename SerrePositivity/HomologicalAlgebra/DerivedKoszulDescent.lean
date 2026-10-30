@@ -57,14 +57,6 @@ def boundedAboveDerivedScalarCone (a : R) :
 
 variable {R} {S : Type u} [CommRing S] (φ : R →+* S)
 
-/-- Power-Koszul homology has the Tor-acyclicity needed for actual derived base change. -/
-lemma derivedKoszul_homologyTorAcyclic (a : R)
-    (hS : IsCompletelyFlat (Ideal.span {a}) (baseChangeScalarModule φ)) (n : ℕ)
-    (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
-    homologyTorAcyclic φ ((boundedAboveDerivedScalarCone R (a ^ n)).obj X).obj :=
-  homologyTorAcyclic_of_power_torsion φ a hS n _
-    (fun i => derivedScalarCone_homology_annihilated R (a ^ n) X.obj i)
-
 /-- Actual scalar annihilation on every power-Koszul reduction descends faithfully. -/
 lemma derivedKoszulHomology_annihilated_iff (a : R)
     (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) (baseChangeScalarModule φ)) (n : ℕ)
@@ -76,20 +68,5 @@ lemma derivedKoszulHomology_annihilated_iff (a : R)
         ((derivedScalarConeFunctor R (a ^ n)).obj X.obj), r • x = 0 :=
   powerTorsionDerivedHomology_annihilated_iff φ a hS n _
     (fun j => derivedScalarCone_homology_annihilated R (a ^ n) X.obj j) r i
-
-/-- Faithful power-Koszul descent preserves a single exponent shared by all stages and degrees. -/
-lemma derivedKoszulHomology_uniform_annihilated_iff (a : R)
-    (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) (baseChangeScalarModule φ))
-    (X : DerivedCategory.Minus (ModuleCat.{u} R)) (g : R) (degrees : Set ℤ) :
-    (∃ N : ℕ, ∀ n : ℕ, ∀ i ∈ degrees,
-      ∀ x : (DerivedCategory.homologyFunctor (ModuleCat S) i).obj
-        ((boundedAboveDerivedBaseChange φ).obj
-          ((boundedAboveDerivedScalarCone R (a ^ n)).obj X)).obj, (φ g) ^ N • x = 0) ↔
-      ∃ N : ℕ, ∀ n : ℕ, ∀ i ∈ degrees,
-        ∀ x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj
-          ((derivedScalarConeFunctor R (a ^ n)).obj X.obj), g ^ N • x = 0 :=
-  powerTorsionDerivedHomology_uniform_annihilated_iff φ a hS
-    (fun n => (boundedAboveDerivedScalarCone R (a ^ n)).obj X)
-    (fun n i => derivedScalarCone_homology_annihilated R (a ^ n) X.obj i) g degrees
 
 end SerrePositivity

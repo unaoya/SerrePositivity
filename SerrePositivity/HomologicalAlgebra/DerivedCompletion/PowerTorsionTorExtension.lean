@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteIdealExtension
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorSequence
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraComplete
 public import SerrePositivity.HomologicalAlgebra.TorFiniteCoefficients
 

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerExact
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Maps
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeShortExact
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionNaturality
 public import Mathlib.Algebra.Homology.DerivedCategory.ShortExact
 

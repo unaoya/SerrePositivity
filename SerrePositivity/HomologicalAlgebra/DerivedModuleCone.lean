@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
 public import Mathlib.Algebra.Homology.SingleHomology
 public import Mathlib.Algebra.Regular.SMul

@@ -287,23 +287,6 @@ abbrev realizedDerivedTensor (M N : Type u) [AddCommGroup M] [Module R M]
     [AddCommGroup N] [Module R N] : DerivedCategory (ModuleCat.{u} R) :=
   (chainDerivedRealization R).obj (derivedTensor R M N)
 
-/-- 実現された導来テンソルのH^{-n}は既存のTor_nと同型。 -/
-def realizedDerivedTensorHomologyIso (M N : Type u) [AddCommGroup M] [Module R M]
-    [AddCommGroup N] [Module R N] (n : ℕ) :
-    (DerivedCategory.homologyFunctor (ModuleCat.{u} R) (-(n : ℤ))).obj
-      (realizedDerivedTensor R M N) ≅
-    ((Tor (ModuleCat.{u} R) n).obj (ModuleCat.of R M)).obj (ModuleCat.of R N) :=
-  (chainDerivedRealizationHomologyIso R n).app (derivedTensor R M N)
-
-/-- H⁰は通常のテンソル積である。高次Tor消滅は仮定しない。 -/
-def realizedDerivedTensorH0Iso (M N : Type u) [AddCommGroup M] [Module R M]
-    [AddCommGroup N] [Module R N] :
-    (DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).obj
-      (realizedDerivedTensor R M N) ≅ ModuleCat.of R (TensorProduct R M N) :=
-  realizedDerivedTensorHomologyIso R M N 0 ≪≫
-    (((tensoringLeft (ModuleCat.{u} R)).obj (ModuleCat.of R M)).leftDerivedZeroIsoSelf).app
-      (ModuleCat.of R N)
-
 /-- 実導来augmentationのH⁰は通常テンソルとの標準比較である。 -/
 theorem realizedDerivedTensorAugmentation_homology (M N : ModuleCat.{u} R) :
     (DerivedCategory.homologyFunctor _ 0).map
@@ -320,23 +303,5 @@ theorem realizedDerivedTensorAugmentation_homology (M N : ModuleCat.{u} R) :
   rw [Functor.map_comp, Category.assoc, hn, ← Category.assoc]
   erw [chainDerivedAugmentation_homology]
   rfl
-
-/-- 離散性は実現により保存・反映される。高次Tor消滅を隠れた仮定にしない。 -/
-theorem realizedDerivedTensor_discrete_iff (M N : Type u) [AddCommGroup M] [Module R M]
-    [AddCommGroup N] [Module R N] :
-    (∀ i : ℤ, i ≠ 0 → IsZero ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) i).obj
-      (realizedDerivedTensor R M N))) ↔ IsConcentratedInDegreeZero (derivedTensor R M N) := by
-  constructor
-  · intro h n hn
-    exact (chainDerivedRealizationHomologyIso R n).app (derivedTensor R M N) |>.isZero_iff.mp
-      (h (-(n : ℤ)) (by omega))
-  · intro h i hi
-    by_cases hpos : 0 < i
-    · exact chainDerivedRealization_homology_isZero_positive R _ i hpos
-    · obtain ⟨n, hn⟩ : ∃ n : ℕ, i = -(n : ℤ) := by
-        exact ⟨(-i).toNat, by omega⟩
-      subst i
-      exact ((chainDerivedRealizationHomologyIso R n).app (derivedTensor R M N)).isZero_iff.mpr
-        (h n (by omega))
 
 end SerrePositivity

@@ -94,36 +94,6 @@ def koszulLinearDualNatIso : ∀ {e : ℕ} (z : Fin e → R),
           (shiftFunctorAdd' (CochainComplex (ModuleCat.{u} R) ℤ)
             (-(n : ℤ)) (-1) (-((n + 1 : ℕ) : ℤ)) (by omega)).symm
 
-/-- The natural comparison uses exactly the previously constructed self-duality isomorphisms. -/
-lemma koszulLinearDualNatIso_app {e : ℕ} (z : Fin e → R) (M : ModuleCat.{u} R) :
-    (koszulLinearDualNatIso z).app M = koszulLinearDualIso z M := by
-  induction e with
-  | zero => rfl
-  | succ n ih =>
-    change scalarConeLinearDualIso (z (Fin.last n)) (koszulComplex (Fin.init z)) M ≪≫
-        (shiftFunctor _ (-1 : ℤ)).mapIso
-          ((scalarConeFunctor (z (Fin.last n))).mapIso
-              ((koszulLinearDualNatIso (Fin.init z)).app M) ≪≫
-            (scalarConeShiftIso (z (Fin.last n))
-              ((koszulModuleFunctor (Fin.init z)).obj M) (-(n : ℤ))).symm) ≪≫
-        ((shiftFunctorAdd' (CochainComplex (ModuleCat.{u} R) ℤ)
-          (-(n : ℤ)) (-1) (-((n + 1 : ℕ) : ℤ)) (by omega)).app
-            ((scalarConeFunctor (z (Fin.last n))).obj
-              ((koszulModuleFunctor (Fin.init z)).obj M))).symm = _
-    rw [ih]
-    rfl
-
-/-- Naturality for the actual self-duality isomorphisms, not just isomorphic replacement objects. -/
-lemma koszulLinearDualIso_naturality {e : ℕ} (z : Fin e → R)
-    {M N : ModuleCat.{u} R} (f : M ⟶ N) :
-    (cochainLinearDualFunctor (koszulComplex z)).map f ≫ (koszulLinearDualIso z N).hom =
-      (koszulLinearDualIso z M).hom ≫ ((koszulModuleFunctor z).map f)⟦(-(e : ℤ))⟧' := by
-  have h := (koszulLinearDualNatIso z).hom.naturality f
-  change (cochainLinearDualFunctor (koszulComplex z)).map f ≫
-      ((koszulLinearDualNatIso z).app N).hom =
-    ((koszulLinearDualNatIso z).app M).hom ≫ ((koszulModuleFunctor z).map f)⟦(-(e : ℤ))⟧' at h
-  simpa only [koszulLinearDualNatIso_app] using h
-
 /-- The degree i to degree i-e cohomology comparison is a natural isomorphism. -/
 def koszulLinearDualHomologyNatIso {e : ℕ} (z : Fin e → R) (i : ℤ) :
     cochainLinearDualFunctor (koszulComplex z) ⋙ homologyFunctor (ModuleCat R) (.up ℤ) i ≅
@@ -131,44 +101,5 @@ def koszulLinearDualHomologyNatIso {e : ℕ} (z : Fin e → R) (i : ℤ) :
   Functor.isoWhiskerRight (koszulLinearDualNatIso z) (homologyFunctor (ModuleCat R) (.up ℤ) i) ≪≫
     Functor.isoWhiskerLeft (koszulModuleFunctor z)
       (CochainComplex.ShiftSequence.shiftIso (ModuleCat R) (-(e : ℤ)) i (i - (e : ℤ)) (by omega))
-
-/-- The natural homology comparison also has the previously specified components. -/
-lemma koszulLinearDualHomologyNatIso_app {e : ℕ} (z : Fin e → R)
-    (M : ModuleCat.{u} R) (i : ℤ) :
-    (koszulLinearDualHomologyNatIso z i).app M = koszulLinearDualHomologyIso z M i := by
-  change (homologyFunctor (ModuleCat R) (.up ℤ) i).mapIso
-      ((koszulLinearDualNatIso z).app M) ≪≫
-    (CochainComplex.ShiftSequence.shiftIso (ModuleCat R) (-(e : ℤ)) i
-      (i - (e : ℤ)) (by omega)).app ((koszulModuleFunctor z).obj M) = _
-  rw [koszulLinearDualNatIso_app]
-  rfl
-
-/-- All coefficient maps commute with the actual degree-changing homology isomorphism. -/
-lemma koszulLinearDualHomologyIso_naturality {e : ℕ} (z : Fin e → R)
-    {M N : ModuleCat.{u} R} (f : M ⟶ N) (i : ℤ) :
-    homologyMap ((cochainLinearDualFunctor (koszulComplex z)).map f) i ≫
-        (koszulLinearDualHomologyIso z N i).hom =
-      (koszulLinearDualHomologyIso z M i).hom ≫
-        homologyMap ((koszulModuleFunctor z).map f) (i - (e : ℤ)) := by
-  have h := (koszulLinearDualHomologyNatIso z i).hom.naturality f
-  change homologyMap ((cochainLinearDualFunctor (koszulComplex z)).map f) i ≫
-      ((koszulLinearDualHomologyNatIso z i).app N).hom =
-    ((koszulLinearDualHomologyNatIso z i).app M).hom ≫
-      homologyMap ((koszulModuleFunctor z).map f) (i - (e : ℤ)) at h
-  simpa only [koszulLinearDualHomologyNatIso_app] using h
-
-/-- Coefficient zero maps can be transferred in either direction across Koszul self-duality. -/
-lemma koszulLinearDualHomology_map_eq_zero_iff {e : ℕ} (z : Fin e → R)
-    {M N : ModuleCat.{u} R} (f : M ⟶ N) (i : ℤ) :
-    homologyMap ((cochainLinearDualFunctor (koszulComplex z)).map f) i = 0 ↔
-      homologyMap ((koszulModuleFunctor z).map f) (i - (e : ℤ)) = 0 := by
-  have h := koszulLinearDualHomologyIso_naturality z f i
-  constructor
-  · intro hf
-    apply (cancel_epi (koszulLinearDualHomologyIso z M i).hom).mp
-    rw [← h, hf, zero_comp, comp_zero]
-  · intro hf
-    apply (cancel_mono (koszulLinearDualHomologyIso z N i).hom).mp
-    rw [h, hf, comp_zero, zero_comp]
 
 end SerrePositivity

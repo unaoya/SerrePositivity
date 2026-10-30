@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.K0

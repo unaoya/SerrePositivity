@@ -38,12 +38,6 @@ def derivedH0AlgEquivOfIsoHomology
       (DerivedCategory.homologyFunctor (ModuleCat R) 0).map f.hom.hom.hom x) at hb
   simpa only [← derivedH0AlgMap_apply] using hb
 
-lemma derivedH0AlgEquivOfIsoHomology_apply
-    {A B : CommMon (DerivedCategory.Minus (ModuleCat.{u} R))} (f : A ⟶ B)
-    (hf : IsIso ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map f.hom.hom.hom))
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj A.X.obj) :
-    derivedH0AlgEquivOfIsoHomology f hf x = derivedH0AlgMap f x := rfl
-
 namespace DerivedCompletion
 variable (R) (a : R)
 
@@ -177,26 +171,6 @@ lemma completedTensorH0PDAlgEquiv_right
   rw [boundedAboveCompletedTensorAlgebraRight, ← derivedH0AlgMap_comp_apply]
   erw [completedTensorH0PDAlgEquiv_unit R p S T]
   rw [derivedTensorH0AlgEquiv_apply, derivedTensorH0AlgHom_right]
-
-lemma completedTensorH0PDAlgEquiv_eq_ofIso_apply
-    (h : IsIso (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T).hom.hom)
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) :
-    completedTensorH0PDAlgEquiv R p S T x = completedTensorH0PDAlgEquivOfIso R p S T h x := rfl
-
-lemma completedTensorH0PDAlgEquiv_eq_ofTor_apply
-    (h : ∀ n : ℕ, 0 < n →
-      IsZero (((Tor (ModuleCat R) n).obj (ModuleCat.of R S)).obj (ModuleCat.of R T)))
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) :
-    completedTensorH0PDAlgEquiv R p S T x = completedTensorH0PDAlgEquivOfTor R p S T h x := rfl
-
-lemma completedTensorH0PDAlgEquiv_eq_ofKoszul_apply
-    (h : ∀ n : ℕ, IsIso ((derivedScalarConeFunctor R ((p : R) ^ n)).map
-      (boundedAboveDerivedTensorAlgebraAugmentation (R := R) S T).hom.hom.hom))
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) :
-    completedTensorH0PDAlgEquiv R p S T x = completedTensorH0PDAlgEquivOfKoszul R p S T h x := rfl
 
 end DerivedCompletion
 end SerrePositivity

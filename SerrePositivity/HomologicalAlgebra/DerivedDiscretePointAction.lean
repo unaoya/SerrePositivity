@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.MonoidalPointAction
+public import SerrePositivity.CategoryTheory.MonoidalUnitHom
 public import SerrePositivity.HomologicalAlgebra.DerivedSingleH0Algebra
 
 /-! # Ordinary coefficient multiplication is the actual derived algebra point action -/

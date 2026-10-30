@@ -11,23 +11,6 @@ open CategoryTheory CategoryTheory.Limits
 attribute [local instance] HasDerivedCategory.standard
 variable {R S : Type u} [CommRing R] [CommRing S]
 
-/-- The standard projection followed by a descended degree-zero map recovers that map. -/
-lemma chainHomologyZeroProjection_descOpcycles
-    (K : ChainComplex (ModuleCat.{u} R) ℕ) (M : ModuleCat.{u} R)
-    (f : K.X 0 ⟶ M) (hf : K.d 1 0 ≫ f = 0) :
-    chainHomologyZeroProjection R K ≫
-        (HomologicalComplex.single (ModuleCat.{u} R) (.down ℕ) 0).map
-          (K.isoHomologyι₀.hom ≫ HomologicalComplex.descOpcycles K f 1 (by simp) hf) =
-      HomologicalComplex.mkHomToSingle f (by
-        intro i hi
-        have hi : i = 1 := by dsimp at hi; omega
-        subst i
-        exact hf) := by
-  apply HomologicalComplex.to_single_hom_ext
-  simp only [HomologicalComplex.comp_f, chainHomologyZeroProjection,
-    HomologicalComplex.mkHomToSingle_f, HomologicalComplex.single_map_f_self,
-    Category.assoc, Iso.inv_hom_id_assoc, HomologicalComplex.p_descOpcycles_assoc]
-
 /-- The chain-level augmentation of an additive functor applied to a module resolution. -/
 def mappedProjectiveResolutionAugmentation
     (F : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive]

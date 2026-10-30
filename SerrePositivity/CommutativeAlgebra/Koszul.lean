@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.BigOperators.Finprod
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings

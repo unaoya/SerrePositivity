@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModels
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 
 /-! # Principal derived completion preserves boundedness above
 
@@ -71,11 +71,6 @@ def boundedAboveDerivedCompletionFunctor (a : R) :
   DerivedCategory.TStructure.t.minus.lift
     (DerivedCategory.Minus.ι ⋙ derivedComplexCompletionFunctor R a)
     (derivedComplexCompletionFunctor_isBoundedAbove R a)
-
-/-- This restriction computes exactly the same completion object and morphisms. -/
-def boundedAboveDerivedCompletionInclusionIso (a : R) :
-    boundedAboveDerivedCompletionFunctor R a ⋙ DerivedCategory.Minus.ι ≅
-      DerivedCategory.Minus.ι ⋙ derivedComplexCompletionFunctor R a := Iso.refl _
 
 /-- The actual standard completion unit inside the bounded-above derived category. -/
 def boundedAboveDerivedCompletionUnit (a : R) :

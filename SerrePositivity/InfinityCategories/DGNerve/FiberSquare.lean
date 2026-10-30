@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.FiberProjection
 public import SerrePositivity.InfinityCategories.DGNerve.ComplexTriangles
 public import SerrePositivity.InfinityCategories.Core.Pullback
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # 標準 fiber の四角形と join 錐
 

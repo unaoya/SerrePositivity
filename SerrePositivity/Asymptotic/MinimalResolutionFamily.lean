@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.MinimalTruncation
+public import SerrePositivity.HomologicalAlgebra.MinimalResolution
 public import SerrePositivity.Asymptotic.AssembleComplex
 public import SerrePositivity.Asymptotic.NormalizedLowerBound
 public import Mathlib.LinearAlgebra.StdBasis

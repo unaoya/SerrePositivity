@@ -174,39 +174,4 @@ lemma pureDerivedAlgebraCartierQuotientH0Iso_single_map
     principalAdicReductionAlgHom_mk] at hx
   exact hx
 
-include hS in
-/-- In particular every original unital source map retains the original unit Cartier class. -/
-lemma pureDerivedAlgebraCartierQuotientH0Iso_single_map_one
-    (B : CommMon (DerivedCategory.Minus (ModuleCat.{u} R)))
-    [B.X.obj.IsGE 0] [B.X.obj.IsLE 0]
-    (hB : IsSMulRegular ((DerivedCategory.homologyFunctor (ModuleCat R) 0).obj B.X.obj) d)
-    (f : A0 ⟶ B) :
-    letI hge : (A0).X.obj.IsGE 0 := by
-      change ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R S)).IsGE 0
-      infer_instance
-    letI hle : (A0).X.obj.IsLE 0 := by
-      change ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R S)).IsLE 0
-      infer_instance
-    letI := derivedH0CommRing A0
-    letI := derivedH0Algebra A0
-    letI := derivedH0CommRing B
-    letI := derivedH0Algebra B
-    (pureDerivedAlgebraCartierQuotientH0Iso R d hd B hB).hom
-        ((DerivedCategory.homologyFunctor (ModuleCat Q) 0).map
-          (((boundedAboveDerivedBaseChange (q)).map f.hom.hom).hom)
-          ((boundedAboveDerivedBaseChangeModuleH0Iso (q)).inv.app (ModuleCat.of R S)
-            ((1 : Q) ⊗ₜ[R, Ideal.Quotient.mk (Ideal.span {d})] (1 : S)))) = 1 := by
-  let _hge : (A0).X.obj.IsGE 0 := by
-    change ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R S)).IsGE 0
-    infer_instance
-  let _hle : (A0).X.obj.IsLE 0 := by
-    change ((DerivedCategory.singleFunctor (ModuleCat R) 0).obj (ModuleCat.of R S)).IsLE 0
-    infer_instance
-  let := derivedH0CommRing A0
-  let := derivedH0Algebra A0
-  let := derivedH0CommRing B
-  let := derivedH0Algebra B
-  simpa only [map_one] using
-    pureDerivedAlgebraCartierQuotientH0Iso_single_map R d S hd hS B hB f (1 : S)
-
 end SerrePositivity

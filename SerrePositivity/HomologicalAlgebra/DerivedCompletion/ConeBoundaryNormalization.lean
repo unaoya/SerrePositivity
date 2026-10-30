@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCocone
 
 /-! # 錐の連結射と一段シフトした錐の射影の符号

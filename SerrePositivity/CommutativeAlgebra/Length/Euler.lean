@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CategoryTheory.AlternatingSum
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Tactic.LinearCombination
 public import Mathlib.Data.ENat.BigOperators
 public import Mathlib.RingTheory.Length

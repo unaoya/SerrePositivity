@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletionEquivalence
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # Divisibility of homology detected by an actual completion equivalence
 

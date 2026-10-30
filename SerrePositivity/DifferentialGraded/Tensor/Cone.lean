@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
 public import SerrePositivity.DifferentialGraded.Tensor.Homotopy
 public import SerrePositivity.DifferentialGraded.Tensor.KFlat
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # balanced tensorによる標準cone保存と相対K-flatのcone閉性 -/
 @[expose] public section

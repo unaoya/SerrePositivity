@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 
 /-! # Principal derived completion preserves the same cohomological upper bound -/
 

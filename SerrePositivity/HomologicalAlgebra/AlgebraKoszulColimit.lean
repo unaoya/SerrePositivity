@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulDual
-public import SerrePositivity.HomologicalAlgebra.LinearFunctorColimits
-public import SerrePositivity.HomologicalAlgebra.LocalCohomologyTorAnnihilator
-public import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison
+public import SerrePositivity.HomologicalAlgebra.ComplexColimits
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.Actions
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.KoszulComparison
 public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
 public import Mathlib.CategoryTheory.Linear.FunctorCategory
 

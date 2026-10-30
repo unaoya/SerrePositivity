@@ -93,12 +93,4 @@ variable {R C : Type u} [CommRing R] [CommRing C] [Algebra R C]
   simp only [Category.assoc]
   rfl
 
-/-- Naturality packaged for the original standard and algebra-valued Tor functors. -/
-def torAlgebraComparisonNatIso (i : ℕ) :
-    (Tor (ModuleCat.{u} R) i).obj (ModuleCat.of R C) ≅
-      (ModuleCat.extendScalars (algebraMap R C)).leftDerived i ⋙
-        ModuleCat.restrictScalars (algebraMap R C) :=
-  NatIso.ofComponents (fun M => torAlgebraComparison M i)
-    (fun f => torAlgebraComparison_naturality f i)
-
 end SerrePositivity

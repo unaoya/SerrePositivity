@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Localization
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # Complexes with derived complete terms are derived complete
 
