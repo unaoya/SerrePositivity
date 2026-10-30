@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
-public import SerrePositivity.CommutativeAlgebra.ScalarIsogenyTensor
-public import SerrePositivity.CommutativeAlgebra.FiniteProductIsogeny
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.ConeComparisonSquare
 
 /-! # Prop 2.4.7：元の rank 比較から指定した元の写像の錐への合流

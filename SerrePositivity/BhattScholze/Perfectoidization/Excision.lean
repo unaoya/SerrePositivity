@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
-public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 
 /-!
 # perfectoid 化の環としての excision の帰結（BS 著者版 Cor 8.12 の環版の適用）

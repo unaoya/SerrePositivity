@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankLoci
-public import SerrePositivity.CommutativeAlgebra.DoubleLocalizationTensorComparison
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 
 /-! # Prop 2.4.7：元の主開上の rank の底変換
 

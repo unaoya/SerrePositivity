@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 
 /-! # Prop 2.4.7：証明済み André 拡大の実降下データ

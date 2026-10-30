@@ -5,7 +5,7 @@ public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 
 /-!
 # prism 係数の商に沿う導来底変換

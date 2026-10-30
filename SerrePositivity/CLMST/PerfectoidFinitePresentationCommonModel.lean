@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FinitePresentationCommonLocalizationBounds
+public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalIdeal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete

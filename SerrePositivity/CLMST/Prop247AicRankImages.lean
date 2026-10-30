@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankPrincipal
-public import SerrePositivity.CommutativeAlgebra.ReducedPrincipalVanishing
+public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
 

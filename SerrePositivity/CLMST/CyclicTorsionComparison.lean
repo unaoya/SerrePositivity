@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.CyclicFactorReduction
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
+public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateModuleVanishing
 
 /-! # pねじれ商のperfectoid性から差の長さ零への接続

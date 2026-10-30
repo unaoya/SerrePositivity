@@ -28,7 +28,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScala
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReflection
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 
 /-!
 # 完全 prism 上の δ 代数の完全化（Prop 7.11(2) の「余極限へ移る」部分）

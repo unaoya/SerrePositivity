@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.KLAicTorFromExcision
 public import SerrePositivity.CLMST.AndrePerfectoidIdealTorDescent
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
 
 /-! # The original full Tor input from excision on one actual Andre extension
 

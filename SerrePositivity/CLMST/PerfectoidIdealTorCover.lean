@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
-public import SerrePositivity.CommutativeAlgebra.PrincipalCoverNumerators
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
+public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator
 
 /-! # Gluing the original Tor annihilation input across a principal cover

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247AndreBase
 public import SerrePositivity.CLMST.Prop247RankData
 public import SerrePositivity.CLMST.Prop247CoveredDescent
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
 
 /-! # Prop 2.4.7：一般 rank の実データから元の錐への条件付き接続
 

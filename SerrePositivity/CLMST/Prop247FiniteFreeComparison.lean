@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FinitePresentationIsogenyLift
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.CLMST.FiniteFreeConeIsogeny
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Mathlib.RingTheory.TensorProduct.IsBaseChangePi

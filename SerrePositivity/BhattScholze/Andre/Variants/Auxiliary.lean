@@ -21,9 +21,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorBaseChange
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.InputCategory
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
 public import SerrePositivity.BhattScholze.Andre.Perfection.PerfectPrismMonic
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid

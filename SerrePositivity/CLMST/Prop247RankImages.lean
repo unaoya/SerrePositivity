@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankLoci
-public import SerrePositivity.CommutativeAlgebra.ReducedSectionImage
+public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-! # Prop 2.4.7：rank 別開集合の切断への元の像と閉包

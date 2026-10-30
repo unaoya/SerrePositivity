@@ -14,7 +14,7 @@ public import Mathlib.RingTheory.Polynomial.Quotient
 public import Mathlib.RingTheory.AdjoinRoot
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.Algebra.Polynomial.Expand
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.Tor
 
 /-!

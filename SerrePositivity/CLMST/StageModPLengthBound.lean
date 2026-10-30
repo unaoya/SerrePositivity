@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RootTower.ModPComparisonLength
+public import SerrePositivity.CommutativeAlgebra.RootTower.ModP
 public import SerrePositivity.CLMST.StageModPImageLength
 
 /-! # 実際の有限段商の低次元長さ上界

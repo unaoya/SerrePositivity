@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange

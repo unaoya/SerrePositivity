@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankProductAway
-public import SerrePositivity.CommutativeAlgebra.LocalizationPowerBound
-public import SerrePositivity.CommutativeAlgebra.ReducedFiniteFreeIsogeny
+public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.TwoTermConeAnnihilator
 
 /-! # Prop 2.4.7：元の R→∏Ri の実錐の冪零化

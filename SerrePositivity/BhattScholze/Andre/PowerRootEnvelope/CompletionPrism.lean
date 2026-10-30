@@ -11,9 +11,9 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionWitt
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootInput
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
-public import SerrePositivity.CommutativeAlgebra.AdicFaithfulDescentAlgebra
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 
 /-!
 # 完備化 prism と Hodge–Tate 候補の普遍性

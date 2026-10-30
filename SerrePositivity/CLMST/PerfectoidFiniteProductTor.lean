@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.CLMST.PerfectoidizationImageTorComparison
-public import SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds
+public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 
 /-! # Actual Tor inputs for the finite-product leg and its supported image
 

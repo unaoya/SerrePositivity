@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247ConstantRankExcision
 public import SerrePositivity.CLMST.Prop247RankTransport
 public import SerrePositivity.CLMST.Prop247CoveredDescent
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
 
 /-! # Prop 2.4.7：定 rank の実 André 底変換から元の錐へ
 
