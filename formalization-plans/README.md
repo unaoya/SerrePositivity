@@ -53,8 +53,8 @@ docstring だけの変更でも利用先の再ビルドが要るので、それ�
 | [P 計画：presentable ∞ 圏](infinity-lanes/infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
 | [∞ 圏基盤の整備計画](infinity-foundation-plan.md) | ∞ 層を KST・DG・EInfinity から自立させ、外の一般論を取り込み、Verdier 商の構成へ進む。段 A〜G、R26〜R70 の要約、決定事項 | 2026-10-28 新設・計画のみ |
-| [R 計画：∞ 圏基盤のリファクタリング（索引）](refactoring-infinity.md) | リファクタ文書の入口。§0 に R1〜R58 の索引（第 1 窓 R1〜R25 は実施済み、R2 計画 R26〜R47、Verdier 商向け R48〜R57） | 2026-10-28 索引整理 |
-| [R 第 2 窓](refactoring-infinity-r2.md)・[Verdier 商向け](refactoring-verdier.md) | R26〜R47・R59〜R67 の調査と実施順、R48〜R57 の配置換え計画。全体順序は refactoring-infinity.md §0.1 | 実施待ち・計画のみ |
+| [R 計画：∞ 圏基盤のリファクタリング（索引）](refactoring-infinity.md) | リファクタ文書の入口。§0 に R1〜R79 の索引（第 1 窓 R1〜R25 は実施済み、R2 計画 R26〜R47、Verdier 商向け R48〜R57、整備計画 R59〜R79） | 2026-10-28 索引整理 |
+| [R 第 2 窓](refactoring-infinity-r2.md)・[Verdier 商向け](refactoring-verdier.md) | R26〜R47・R59〜R67 の調査と候補の詳細、R48〜R57 の配置換えの詳細。順序と窓は infinity-foundation-plan.md §5〜§6 が正本 | 詳細の記録 |
 | [論文の層の整理計画](refactor-plan.md) | 論文の層（CategoryTheory・CommutativeAlgebra・HomologicalAlgebra・PerfectComplex・LengthAlgebra・IntersectionMultiplicity・KTheory・Asymptotic・CLMST）の統合・削除・Mathlib への置き換え・層の順序の一本の計画。前半に方針・層の順序・共通の仕組み・段階 0〜3、後半に章ごとの詳細（以前のディレクトリごとの計画書は archive/） | 2026-10-30 一本化 |
 | [D2 計画：β4 gluing](infinity-lanes/infinity-core-gluing.md) | dg gluing = lax pullback。10-22 新設の D2 レーン | 2026-10-22 |
 | [K-F 計画：K-6 fibration 定理](kst-lanes/L3-fibration.md) | Verdier 列に対する連結 K の fiber 列。10-22 新設の K-F レーン | 2026-10-22 |

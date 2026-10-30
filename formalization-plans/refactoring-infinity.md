@@ -3,7 +3,7 @@
 解説 [exposition/ja/infinity/](../exposition/ja/infinity/index.html)（第 0〜8 章、R8 重複調査）が挙げた候補 R1〜R25 を、
 全レーン停止窓で実施した。R-C・R-B の再適用後、R-A 最終ラウンドも main で検証を完了した。正本はこのファイル。実施記録はコミットメッセージ。候補の番号は解説の番号をそのまま使う。
 
-## 0. リファクタ文書の索引（R1〜R79、2026-10-28 整理）
+## 0. リファクタ文書の索引（R1〜R79、2026-10-28 整理、10-30 更新）
 
 ∞ 圏まわりのリファクタは、このファイルを入口とする。番号は全文書で通し番号。BS 側は [bhatt-scholze-refactoring.md](bhatt-scholze/bhatt-scholze-refactoring.md)（別セッション）。
 
@@ -11,10 +11,10 @@
 | --- | --- | --- |
 | R1〜R25 | 本ファイル §4（段の表）・§5（旧所在→新所在の対応表）・§8（分担） | 第 1 窓で実施済み（10-23〜24）。下表の「先送り」を除く |
 | R-C の再適用 | [refactoring-infinity-r-c.md](archive/refactoring-infinity-r-c.md) | 完了（10-24） |
-| R26〜R47 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)（候補 §3・実施順 §4）、R2-B の処置案 [refactoring-infinity-r2-b.md](refactoring-infinity-r2-b.md) | 調査済み・第 2 窓で実施待ち |
-| R48〜R57 | [refactoring-verdier.md](refactoring-verdier.md)（Verdier 商の一般構成に向けた配置換え） | 計画のみ（10-28） |
+| R26〜R47 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)（候補 §3）、R2-B の処置案 [refactoring-infinity-r2-b.md](refactoring-infinity-r2-b.md) | 調査済み。実施の窓は整備計画 §5〜§6（R26・R37〜R40 は W1〜W2b、R28〜R30・R44・R46・R47 は範囲外） |
+| R48〜R57 | [refactoring-verdier.md](refactoring-verdier.md)（Verdier 商の一般構成に向けた配置換え） | R48・R49a・R50・R53 は W1 の対象一覧（承認 10-30）。R56a・R52・R51・R68 は W2a〜W2c |
 | R59〜R67 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md) §3 末尾（入口の修正、台帳、重複、Kan・pointed 層、DK 局所化層、∞ 中核の dg 非依存化、分類し直し。10-28 の調査から） | 候補 |
-| R68〜R79 と全体の順序 | [infinity-foundation-plan.md](infinity-foundation-plan.md)（∞ 基盤の整備計画の正本。段 A〜G、決定事項、目標構成） | 計画のみ（10-28） |
+| R68〜R79 と全体の順序 | [infinity-foundation-plan.md](infinity-foundation-plan.md)（∞ 基盤の整備計画の正本。段 A〜G、窓 W0〜W2c、決定事項、目標構成） | W0 進行中（IF-W0-1・2 完了、IF-W0-3 で W1 の対象一覧を承認 10-30、w2a 以降は作成中） |
 | （別計画） | [refactor-plan.md](refactor-plan.md)（論文の層の整理・一般論の切り出し・Mathlib への提出。旧 paper-layer-extraction.md を統合） | 計画（10-30） |
 | R58 | 解説 [route-yoneda.html](../exposition/ja/infinity/route-yoneda.html) §6（旧番号 R26。R2 の R26 と衝突したため 10-28 に改番） | R27・R37 に統合して扱う |
 | 調査記録 | archive の `refactor-*-2026-10-23/24.*`（第 1 窓の検証・名前対応）、`r2-*-2026-10-27.*`（R2 の各調査）、[infinity-outside-survey-2026-10-28.md](archive/infinity-outside-survey-2026-10-28.md)（∞ 層の外にある一般論）、[repository-survey-2026-10-28.md](archive/repository-survey-2026-10-28.md)（SerrePositivity/ 全体の地図と問題点） | — |
