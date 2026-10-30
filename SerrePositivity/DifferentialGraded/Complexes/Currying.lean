@@ -1,7 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.HomFunctor
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
 
 /-! # 非有界 tensor と線形 Hom の転置

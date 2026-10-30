@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Unit
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
 
 /-! # 単位からの射の tensor と次数零評価 -/
 @[expose] public section

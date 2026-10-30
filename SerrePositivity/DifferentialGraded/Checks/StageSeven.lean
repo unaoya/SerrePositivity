@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.StageSeven
+public import SerrePositivity.DifferentialGraded
 
 /-! # U0–U10 の統合受入検査 -/
 @[expose] public section

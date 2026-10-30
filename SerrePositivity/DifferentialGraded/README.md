@@ -7,8 +7,8 @@ perfect 加群、dg 商、Morita 理論までを扱う。Morita（U16）、Verdi
 Perf の実装は完成している。一般の射影モデル構成を扱う U12e-general は中断中であり、
 局所条件のもとで完成した経路と区別する。
 
-DG-W1 D2 で設ける本番 API の入口は [DifferentialGraded.lean](../DifferentialGraded.lean)。
-StageOne〜StageEight の入口はこの集約に置き換える。
+本番 API の入口は [DifferentialGraded.lean](../DifferentialGraded.lean)。
+StageOne〜StageEight の入口は退役し、この集約に置き換えた。
 
 ## 方針
 
@@ -39,7 +39,7 @@ StageOne〜StageEight の入口はこの集約に置き換える。
 
 ## 使われ方
 
-D2 後の本番入口と受入検査：
+本番入口と受入検査：
 
 ```sh
 lake build SerrePositivity.DifferentialGraded
