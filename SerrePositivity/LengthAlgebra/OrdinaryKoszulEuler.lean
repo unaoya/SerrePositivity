@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.Koszul
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # 通常の Koszul Euler 数と係数制限
 

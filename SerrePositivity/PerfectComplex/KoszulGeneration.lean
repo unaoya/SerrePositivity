@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.HomologyLength
-public import SerrePositivity.CommutativeAlgebra.Truncate
+public import SerrePositivity.CommutativeAlgebra.Length.Euler
+public import SerrePositivity.PerfectComplex.Truncate
 public import SerrePositivity.PerfectComplex.K0
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import SerrePositivity.PerfectComplex.OrdinaryEuler
 

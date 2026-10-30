@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.IntersectionMultiplicity.DiagonalDimension
 public import SerrePositivity.IntersectionMultiplicity.Basic
-public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityProof
-public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityLimit
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 public import Mathlib.RingTheory.LocalRing.Quotient
 
 /-! # 冪級数環での Serre の正値性（対角線論法）
@@ -121,7 +120,7 @@ theorem chi_pos_of_prime (P Q : Ideal 𝓡) [P.IsPrime] [Q.IsPrime]
     ⟨hdimT, radical_eq_maximalIdeal_of_length_ne_top _ hzm hz0⟩
   -- 重複度は正で、Koszul Euler 数に等しい
   have hmult := HilbertSamuel.multiplicity_pos_of_isSystemOfParameters T z hsop
-  have heq := KoszulMultiplicityProof.multiplicity_eq_chiOrd_koszul z hsop
+  have heq := KoszulMultiplicity.multiplicity_eq_chiOrd_koszul z hsop
   -- `χ` を Koszul Euler 数で書く
   have hvanish : ∀ i, d < i → torLength 𝓡 i (𝓡 ⧸ P) (𝓡 ⧸ Q) = 0 := by
     intro i hi

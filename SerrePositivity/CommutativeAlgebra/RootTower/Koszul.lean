@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
-public import SerrePositivity.CommutativeAlgebra.KoszulFiniteLength
+public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
 
 /-! # 完備化した根の塔上の Koszul 冪ねじれ

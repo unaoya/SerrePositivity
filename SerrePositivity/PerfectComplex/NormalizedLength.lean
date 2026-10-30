@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.Basic.ENNReal.Basic

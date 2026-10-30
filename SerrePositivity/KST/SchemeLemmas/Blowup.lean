@@ -3,7 +3,7 @@ module
 public import Mathlib.RingTheory.ReesAlgebra
 public import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper
-public import SerrePositivity.CommutativeAlgebra.GradedSubquotient
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Graded.Subquotient
 
 /-!
 概要：KST §5 の古典的 blowup を Rees 代数の Proj から構成する。

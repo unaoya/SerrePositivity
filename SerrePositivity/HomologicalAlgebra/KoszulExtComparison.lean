@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.ProjectiveExtNaturality
 public import SerrePositivity.HomologicalAlgebra.ResolutionNaturality
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulPowers
-public import SerrePositivity.CommutativeAlgebra.RegularSequencePowers
+public import SerrePositivity.CommutativeAlgebra.Koszul.Powers
 
 /-! # Canonically augmented Koszul resolutions and natural Ext comparisons -/
 @[expose] public section

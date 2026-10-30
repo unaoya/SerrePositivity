@@ -5,7 +5,7 @@ public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.Asymptotic.MinimalBettiEvaluation
 public import SerrePositivity.Asymptotic.NormalizedLowerBound
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # 有限近似の極限を商の Betti・Euler 評価へ接続する
 

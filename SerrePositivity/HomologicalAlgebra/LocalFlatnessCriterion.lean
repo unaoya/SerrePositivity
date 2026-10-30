@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorLES
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import Mathlib.RingTheory.Filtration
 public import Mathlib.RingTheory.Flat.Tensor
 public import Mathlib.RingTheory.LocalRing.RingHom.Basic

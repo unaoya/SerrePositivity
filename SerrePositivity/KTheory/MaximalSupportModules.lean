@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.KTheory.G0Supported
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
+public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
 /-! # Finite-length modules and residue classes on maximal support -/
 

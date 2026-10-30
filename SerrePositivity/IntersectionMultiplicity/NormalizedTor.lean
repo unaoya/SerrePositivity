@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorLES
-public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 public import Mathlib.RingTheory.Regular.RegularSequence

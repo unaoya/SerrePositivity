@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.QuotientPowerLength
+public import SerrePositivity.CommutativeAlgebra.Length.QuotientPower
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Existence
 public import Mathlib.Analysis.SpecificLimits.Basic
 

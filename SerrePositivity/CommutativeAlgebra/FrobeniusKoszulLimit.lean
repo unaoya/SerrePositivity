@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.KoszulFiniteLength
+public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 public import Mathlib.Algebra.CharP.Frobenius
 public import Mathlib.Topology.Instances.ENNReal.Lemmas
 

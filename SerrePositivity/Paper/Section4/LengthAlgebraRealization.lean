@@ -3,7 +3,7 @@ module
 public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
 
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
-public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.PerfectComplex.QuotientLength
 
 /-! # 長さ代数の公式から抽象比較の仮定を確認する

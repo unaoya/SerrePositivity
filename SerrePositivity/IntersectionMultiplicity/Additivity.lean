@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.HomologyLength
-public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Euler
+public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
 public import SerrePositivity.Inputs.IntersectionTheory
 
 /-!

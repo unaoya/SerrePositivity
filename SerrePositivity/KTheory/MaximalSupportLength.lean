@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.G0Supported
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # Integer length on the Grothendieck group supported at a closed point -/
 

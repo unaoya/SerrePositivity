@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.ModPEquiv
-public import SerrePositivity.CommutativeAlgebra.QuotientImageLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # 有限段Frobenius比較による通常の長さの一致
 

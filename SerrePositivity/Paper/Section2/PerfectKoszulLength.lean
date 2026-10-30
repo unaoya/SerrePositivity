@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Paper.Section2.PerfectApproximationLength
 public import SerrePositivity.Paper.Section2.TowerKoszulLength
 public import SerrePositivity.HomologicalAlgebra.KoszulOrdinaryLength
-public import SerrePositivity.CommutativeAlgebra.KoszulFiniteLength
+public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 
 /-! # Perfection の近似環における Koszul ホモロジーの長さ

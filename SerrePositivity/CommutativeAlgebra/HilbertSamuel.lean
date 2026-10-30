@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelBasic
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelPolynomial
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelDimension
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Basic
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Polynomial
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Dimension
 
 /-!
 # Hilbert–Samuel 多項式と重複度
@@ -34,17 +34,6 @@ variable (D : Type u) [CommRing D]
 section statements
 
 variable [IsNoetherianRing D] [IsLocalRing D]
-
-/-- **Hilbert–Samuel の定理**：`I = (x₁, …, x_s)` が `m_D` 準素で `M` が有限生成なら、Samuel 関数は
-十分大きい `n` で次数 `≤ s` の多項式の値に等しい。`gr_I(M)` が `(D/I)[X₁, …, X_s]` 上有限生成な
-次数つき加群であることと、Hilbert の定理（Poincaré 級数が `p(X)/(1−X)^s`）による
-（Atiyah–Macdonald Prop. 11.4、Thm 11.1）。 -/
-theorem exists_isSamuelPoly (I : Ideal D) (hI : I.radical = maximalIdeal D)
-    {s : ℕ} (x : Fin s → D) (hx : I = Ideal.span (Set.range x))
-    (M : Type u) [AddCommGroup M] [Module D M] [Module.Finite D M] :
-    ∃ P : ℚ[X], IsSamuelPoly D I M P ∧ P.natDegree ≤ s := by
-  obtain ⟨Q, hQ⟩ := exists_rational_hilbertSeries D I M hI x hx.symm
-  exact exists_isSamuelPoly_of_hilbertSeries D I M hI s Q hQ
 
 /-- イデアル自体の冪について `e(I^v, M) = v^(dim M) e(I, M)`。
 多項式性と定義から従い、次元定理は不要。

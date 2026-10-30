@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.LengthAlgebra.Koszul
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
-public import SerrePositivity.CommutativeAlgebra.RegularSequenceLength
+public import SerrePositivity.CommutativeAlgebra.Length.QuotientPower
 
 /-! # λ-平坦性から共通 Euler 理論への入力
 

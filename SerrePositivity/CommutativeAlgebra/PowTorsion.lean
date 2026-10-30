@@ -3,6 +3,7 @@ module
 public import Mathlib.Algebra.Module.Torsion.Basic
 public import Mathlib.RingTheory.Ideal.Maps
 public import Mathlib.RingTheory.Noetherian.Nilpotent
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 
 /-!
 # イデアルの冪で消える加群

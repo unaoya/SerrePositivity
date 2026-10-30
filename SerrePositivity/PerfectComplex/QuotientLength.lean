@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CommutativeAlgebra.ConductorQuotient
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness

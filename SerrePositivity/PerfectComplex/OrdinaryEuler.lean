@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.HomologicalAlgebra.Basic
 public import SerrePositivity.PerfectComplex.NormalizedEuler
 public import SerrePositivity.PerfectComplex.K0

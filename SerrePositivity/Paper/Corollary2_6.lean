@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Inputs.LengthAlgebra
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.Paper.Section2.Corollary2_6
 

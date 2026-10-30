@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.PerfectComplex.NormalizedLength

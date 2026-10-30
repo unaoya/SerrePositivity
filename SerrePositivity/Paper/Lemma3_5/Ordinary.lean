@@ -7,8 +7,8 @@ public import SerrePositivity.LengthAlgebra.KoszulFormula
 public import SerrePositivity.LengthAlgebra.Ordinary
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.PerfectComplex.K0
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
+public import SerrePositivity.CommutativeAlgebra.Koszul.RegularEuler
 public import SerrePositivity.CommutativeAlgebra.Koszul
 
 /-!

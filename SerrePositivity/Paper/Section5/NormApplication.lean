@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Paper.Lemma3_5
 public import SerrePositivity.PerfectComplex.Support
 public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 
 /-!
 # 長さ代数への Lemma 3.5 の適用

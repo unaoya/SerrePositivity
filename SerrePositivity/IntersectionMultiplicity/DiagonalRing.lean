@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ParameterKoszulGrowth
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.FrobeniusGrowth
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.VariableRegular
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.QuotientPowerLength
+public import SerrePositivity.CommutativeAlgebra.Length.QuotientPower
 public import SerrePositivity.LengthAlgebra.GeometricDecay
 
 /-! # 正規化長さの巡回商の冪フィルトレーション評価

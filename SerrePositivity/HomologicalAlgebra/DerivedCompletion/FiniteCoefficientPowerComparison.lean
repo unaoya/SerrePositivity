@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ModulePowerTorsionBound
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorsionBound
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTermTorsionComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorUnresolvedModule

@@ -100,14 +100,14 @@ public import SerrePositivity.CommutativeAlgebra.Witt.Normalization
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.Witt.PowerSeries
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Dimension
-public import SerrePositivity.CommutativeAlgebra.ReesIdealLifts
+public import SerrePositivity.CommutativeAlgebra.Adic.ReesLifts
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Eval
 
 public import SerrePositivity.Inputs.RegularParameters
 public import SerrePositivity.HomologicalAlgebra.KoszulHomologyLength
 
-public import SerrePositivity.CommutativeAlgebra.AdicFilteredLength
-public import SerrePositivity.CommutativeAlgebra.FiniteLengthValue
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.AdicEuler
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CommutativeAlgebra.GenericEtale
 public import SerrePositivity.CommutativeAlgebra.Almost.TorsionCategory
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Torsion
@@ -167,7 +167,7 @@ public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateQuotientLe
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateVanishing
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Tensor
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedTensorEvaluation
-public import SerrePositivity.CommutativeAlgebra.ParameterLastPowerMultiplicity
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 public import SerrePositivity.CLMST.PerfectoidCokernelEuler
 public import SerrePositivity.CLMST.StageParameterChange
 public import SerrePositivity.LengthAlgebra.KoszulErrorEuler
@@ -176,13 +176,13 @@ public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
 public import SerrePositivity.CommutativeAlgebra.FlatTensorFiltration
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Basic
 public import SerrePositivity.CLMST.TensorOrder
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyAction
 public import SerrePositivity.LengthAlgebra.AlmostVanishing
 public import SerrePositivity.PerfectComplex.SupPropertyComap
 public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.Koszul.RegularEuler
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.CommutativeAlgebra.MaximalRegularSequence
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Dimension
@@ -370,7 +370,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionT
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionComplex
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerImageTower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelReconstruction
-public import SerrePositivity.CommutativeAlgebra.ModulePowerTorsionBound
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorsionBound
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTermTorsionComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulPowerCokernelComparison
@@ -526,7 +526,6 @@ public import SerrePositivity.HomologicalAlgebra.KoszulDualTorComparison
 public import SerrePositivity.HomologicalAlgebra.LocalCohomologyTorAnnihilator
 public import SerrePositivity.HomologicalAlgebra.AlgebraLinearYoneda
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulDual
-public import SerrePositivity.CommutativeAlgebra.FiniteFiltrationAnnihilator
 public import SerrePositivity.HomologicalAlgebra.LinearFunctorColimits
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulColimit
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulBounds
@@ -591,8 +590,7 @@ public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.CommutativeAlgebra.PowTorsion
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.PresentationBaseChange
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
@@ -600,8 +598,8 @@ public import SerrePositivity.CommutativeAlgebra.GeometricTransitivity
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Avoidance
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
-public import SerrePositivity.CommutativeAlgebra.HomologyLength
-public import SerrePositivity.CommutativeAlgebra.Truncate
+public import SerrePositivity.CommutativeAlgebra.Length.Euler
+public import SerrePositivity.PerfectComplex.Truncate
 public import SerrePositivity.PerfectComplex.NormalizedLength
 public import SerrePositivity.PerfectComplex.NormalizedLengthComap
 public import SerrePositivity.PerfectComplex.TensorResolutionLength
@@ -659,7 +657,7 @@ public import SerrePositivity.Inputs.RegularLocalRing
 public import SerrePositivity.Inputs.LengthAlgebra
 public import SerrePositivity.Inputs.Descent
 public import SerrePositivity.Inputs.Unmixedness
-public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
+public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
 public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound

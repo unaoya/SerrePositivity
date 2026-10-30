@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.FiniteLocalSupport
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.IntegralDimension
 public import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
 public import Mathlib.RingTheory.Jacobson.Ideal

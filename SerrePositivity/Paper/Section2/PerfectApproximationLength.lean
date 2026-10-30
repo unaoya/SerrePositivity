@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.PerfectConductor
 public import SerrePositivity.Paper.Section2.TowerDescent
-public import SerrePositivity.CommutativeAlgebra.QuotientPowerLength
+public import SerrePositivity.CommutativeAlgebra.Length.QuotientPower
 public import Mathlib.Analysis.SpecificLimits.Basic
 public import Mathlib.Topology.Instances.ENNReal.Lemmas
 public import Mathlib.Topology.Order.MonotoneConvergence

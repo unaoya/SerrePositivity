@@ -1,7 +1,8 @@
 module
 public import SerrePositivity.CommutativeAlgebra.ModuleSupport
 public import Mathlib.RingTheory.Support
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
+public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
 /-! # The closed support of a finite module -/
 @[expose] public section

@@ -5,7 +5,8 @@ public import Mathlib.LinearAlgebra.Quotient.Defs
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.Data.ENat.BigOperators
 public import SerrePositivity.Inputs.IntersectionTheory
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
+public import SerrePositivity.CommutativeAlgebra.SupportDimension
 
 /-!
 # 有限拡大による交点重複度の階数倍
@@ -243,9 +244,9 @@ theorem chi_finite_extensions
     rw [hQ] at hK
     exact dimension_lt_of_add_one_le_nat hK
   have finCU := length_tensorProduct_ne_top_of_annihilator P Q (T ⧸ LinearMap.range f) U
-    (annT.trans (annihilator_le_quotient T _)) annU hprimary
+    (annT.trans ((Submodule.mkQ _).annihilator_le_of_surjective (Submodule.mkQ_surjective _))) annU hprimary
   have finDK := length_tensorProduct_ne_top_of_annihilator P Q (R ⧸ P) (U ⧸ LinearMap.range g)
-    annD (annU.trans (annihilator_le_quotient U _)) hprimary
+    annD (annU.trans ((Submodule.mkQ _).annihilator_le_of_surjective (Submodule.mkQ_surjective _))) hprimary
   have dimU : Module.supportDim R U = (l : WithBot ℕ∞) := by
     rw [supportDim_of_quotient_rank_pos Q U hU, hQ]
   have dimD : Module.supportDim R (R ⧸ P) = (h : WithBot ℕ∞) := by

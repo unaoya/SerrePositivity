@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # 証明済みの一般論への互換入口
 

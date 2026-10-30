@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.GaloisNormalization
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Normality
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
+public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.Paper.Section2.Lemma2_2
 
 /-!

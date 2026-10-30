@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ParameterKoszulGrowth
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.FrobeniusGrowth
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.Paper.Section2.PerfectQuotientLimit
 public import SerrePositivity.Paper.Section2.PerfectKoszulLimit

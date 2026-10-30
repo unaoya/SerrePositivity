@@ -5,7 +5,7 @@ public import Mathlib.RingTheory.Ideal.KrullsHeightTheorem
 public import Mathlib.Data.Set.List
 public import Mathlib.RingTheory.KrullDimension.Regular
 public import Mathlib.RingTheory.Flat.TorsionFree
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # パラメータ系の存在
 

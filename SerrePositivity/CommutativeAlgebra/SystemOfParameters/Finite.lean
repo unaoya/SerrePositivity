@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
-public import SerrePositivity.CommutativeAlgebra.LocalAlgebra
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.CommutativeAlgebra.IntegralDimension
 public import Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Basic
 
