@@ -3,8 +3,8 @@
 作成日：2026-10-13。状態：設計段階。新しい Lean 実装はこの文書の作成には含まない。
 
 対象とする版：OpenAI, *Lech's multiplicity conjecture*（openai/math、2026-09-23、
-コミット `adc7f124`、[`paper/lech.pdf`](../paper/lech.pdf)、41 ページ）。
-論文の内容の解説は [解説](../exposition/ja/lech-ja.tex)（PDF は `exposition/ja/lech-ja.pdf`）にあり、
+コミット `adc7f124`、[`paper/lech.pdf`](../../paper/lech.pdf)、41 ページ）。
+論文の内容の解説は [解説](../../exposition/ja/lech-ja.tex)（PDF は `exposition/ja/lech-ja.pdf`）にあり、
 この文書は形式化の方針だけを扱う。番号は論文のもの。
 
 ## 1. 目的と前提
@@ -12,7 +12,7 @@
 最終目標は、論文の定理 1.1（平坦な局所準同型 `R → S` について `e(R) ≤ e(S)`）を、
 Serre の論文と同じリポジトリで形式化することである。
 
-[CLMST の計画](archive/clmst.md)と同じ二つの前提を置く。
+[CLMST の計画](../archive/clmst.md)と同じ二つの前提を置く。
 
 1. **外部の結果は、原典の形で述べた名前付きの `sorry` 定理として引用する。**
    仮定と結論は原典のまま書き、論文で使う形への変換は証明する。
@@ -68,7 +68,7 @@ Lech に固有の Lean 宣言はまだない。Serre の形式化のうち再利
 
 | 引用 | 原典 | 使う場所 | 備考 |
 | --- | --- | --- | --- |
-| CLMST Def. 2.2.1、Prop. 2.2.3、2.2.6、Cor. 4.0.4、Prop. 4.0.10、Def. 4.0.8、Cor. 4.0.18、Prop. 4.0.14 | CLMST v4 | §3.3 | 共有（[CLMST の計画](archive/clmst.md)）。Cor. 4.0.18 は Lech だけが使う |
+| CLMST Def. 2.2.1、Prop. 2.2.3、2.2.6、Cor. 4.0.4、Prop. 4.0.10、Def. 4.0.8、Cor. 4.0.18、Prop. 4.0.14 | CLMST v4 | §3.3 | 共有（[CLMST の計画](../archive/clmst.md)）。Cor. 4.0.18 は Lech だけが使う |
 | Bhatt–Scholze の perfectoid 化 | BS §8、Thm. 10.11 | §3.3 | 共有 |
 | Roberts の Frobenius ホモロジー評価 | Roberts、Ma Thm. 2.4 | (3.7)、(5.1) | (3.7) はパラメータ Koszul 複体の場合で、初等的な証明（`ParameterKoszulGrowth`）で足りる。一般形 `Inputs.frobenius_homology_length_tendsto_zero` は系 5.4 の (5.1) だけで使う |
 | Cohen–Gabber の正規化 | Kurano–Shimomoto Thm. 1.1 | §3.2 | 共有（外部引用 2） |
@@ -102,7 +102,7 @@ Lech に固有の Lean 宣言はまだない。Serre の形式化のうち再利
 各段で `lake build` と `#print axioms` を確かめる。`native_decide` は使わない。
 途中で壊れた部分的な証明を残さない。新しい恒久的な `axiom` は入れない。
 
-完了の報告では、[全体像](overview.md) §8 と同じく次を分ける：
+完了の報告では、[全体像](../overview.md) §8 と同じく次を分ける：
 (1) 原典の主張を正確に述べた、(2) 引用からの接続を証明した、(3) 引用した結果そのものを証明した、
 (4) 補助定理まで含めて未証明依存を解消した。保留の `sorry` を別の名前に移しただけでは進捗と数えない。
 
@@ -157,6 +157,6 @@ Hilbert–Kunz）の順。M7 の符号化は論文が細部を簡潔に書いて
 
 ## 11. 参照資料
 
-- 論文：[`paper/lech.pdf`](../paper/lech.pdf)、出典は [`paper/SOURCE.md`](../paper/SOURCE.md)。
-- 解説：[`exposition/ja/lech-ja.tex`](../exposition/ja/lech-ja.tex)。
-- 共有する計画：[CLMST](archive/clmst.md)、[全体像](overview.md)。
+- 論文：[`paper/lech.pdf`](../../paper/lech.pdf)、出典は [`paper/SOURCE.md`](../../paper/SOURCE.md)。
+- 解説：[`exposition/ja/lech-ja.tex`](../../exposition/ja/lech-ja.tex)。
+- 共有する計画：[CLMST](../archive/clmst.md)、[全体像](../overview.md)。

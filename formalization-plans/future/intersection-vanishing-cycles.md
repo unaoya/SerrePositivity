@@ -1,9 +1,9 @@
 # 外部引用5：交点重複度の消滅定理をサイクルで証明する計画（Chow 群の基盤）
 
 作成：2026-10-14。改訂：2026-10-14（基盤の設計と段階を具体化、原典の精読を反映）。状態：計画。実装は未着手。
-引用5を外す主経路は [Adams 作用素の計画](archive/intersection-vanishing-adams.md) に移した。
+引用5を外す主経路は [Adams 作用素の計画](../archive/intersection-vanishing-adams.md) に移した。
 この文書は、Chow 群の基盤（BlochConjecture と共有）と Roberts の経路を並行して進めるための計画である。
-対象の宣言は [Inputs/IntersectionTheory.lean](../SerrePositivity/Inputs/IntersectionTheory.lean) の
+対象の宣言は [Inputs/IntersectionTheory.lean](../../SerrePositivity/Inputs/IntersectionTheory.lean) の
 `Inputs.intersectionVanishing`（Roberts–Gillet–Soulé の消滅定理、論文 (5.1)）。
 
 ## 0. 決めたこと（2026-10-14、利用者と相談）
@@ -22,7 +22,7 @@
 
 利用先は二つ。主定理の帰着（Lemma 5.1、`IntersectionMultiplicity/Devissage`）と、
 第一比較のランクの因子（Lemma 5.2、`IntersectionMultiplicity/FiniteExtension`）。
-剰余標数零の正値性（[対角線論法](archive/serre-equal-characteristic.md)）もデヴィサージュでこれを使う。
+剰余標数零の正値性（[対角線論法](../archive/serre-equal-characteristic.md)）もデヴィサージュでこれを使う。
 
 ## 2. 証明の骨格（Roberts）
 

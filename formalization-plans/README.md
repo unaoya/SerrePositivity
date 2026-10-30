@@ -7,10 +7,11 @@
 
 | 場所 | 中身 |
 | --- | --- |
-| 直下 | 現役の計画（∞ 基盤の整備と Codex 指示書 IF-Wn、R 計画、論文の層の整理計画）、調査のみの計画、Lean の docstring から参照される案内と棚卸し |
+| 直下 | 現役の計画（∞ 基盤の整備と Codex 指示書 IF-Wn、R 計画、論文の層の整理計画、Mathlib への提出候補）、全体像、Lean の docstring から参照される案内と棚卸し |
 | `bhatt-scholze/` | BS の計画・調査・引き継ぎ、perfectoid 化の界面（E3）の原典照合、Codex 指示書 BS-Wn とその移動計画（JSON）・適用スクリプト |
 | `infinity-lanes/` | レーン方式の調整文書（基盤の統合計画 foundations.md と進捗表）と ∞ 系レーン（α・N・D・D2・Ind・P・F1/F2・E2 など）の計画。いずれも完了または R 窓待ちで停止中。再開時の入口 |
 | `kst-lanes/` | K 理論の KST 経路の親計画（k-theory-kst-route.md）とレーン別計画（L1〜L11） |
+| `future/` | 調査のみ・未着手の将来の計画（Lech、Gersten、Chow 群の経路、arxiv_formalization との共通基盤） |
 | `archive/` | 完了した計画、実施記録、役目を終えた指示文・依頼文 |
 
 直下に残る次の文書は Lean の docstring から参照されるので、今はパスを変えない。
@@ -27,8 +28,8 @@
 | 入力 | 原典 | 担当する計画 |
 | --- | --- | --- |
 | `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3` | BS Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.11–8.12・Cor 8.14・Thm 10.11 の E3 界面 | [perfectoid 化の界面](bhatt-scholze/perfectoidization-interface.md)、[∞ 圏](infinity-lanes/infinity-categories.md) §0（G1 達成） |
-| `Section4.supportedRankK0_descent` | 論文 補題4.6 | [K理論](k-theory.md) |
-| `theorem_3_1_K0` | 論文 定理3.1 | [K理論](k-theory.md) |
+| `Section4.supportedRankK0_descent` | 論文 補題4.6 | [K理論：KST 経路](kst-lanes/k-theory-kst-route.md) |
+| `theorem_3_1_K0` | 論文 定理3.1 | [K理論：KST 経路](kst-lanes/k-theory-kst-route.md) |
 
 外部引用1〜13、BS Cor 7.3・Thm 7.4・Thm 7.14・Lemma 10.3・Remark 10.7、CLMST Prop 2.4.7・Cor 4.0.4 は主定理の経路から外れた。
 外部引用の番号と全体の依存関係は [全体像](overview.md) を参照する。
@@ -73,10 +74,10 @@
 | 計画 | 目標 | 状態 |
 | --- | --- | --- |
 | [全体像](overview.md) | 外部引用の番号・役割・依存関係の一覧 | 2026-10-18 に現状へ更新 |
-| [外部引用5：Chow 群の基盤と Roberts の経路](intersection-vanishing-cycles.md) | Chow 群・局所 Chern 指標・局所 Riemann–Roch。BlochConjecture と共有 | 計画のみ。引用5は Adams の経路で解消済みで、これとは独立 |
-| [Lech の重複度予想](lech.md) | Lech の論文の定理1.1 | 設計段階 |
-| [Gersten 予想の整数係数の反例](gersten.md) | OpenAI の二本（K₃ と K₅）を K 理論の基盤の上で形式化する | 計画のみ |
-| [arxiv_formalization との共通基盤](shared-foundations-arxiv.md) | 群論・モノイダル圏論の部分の共通化の検討 | 検討課題の記録のみ |
+| [外部引用5：Chow 群の基盤と Roberts の経路](future/intersection-vanishing-cycles.md) | Chow 群・局所 Chern 指標・局所 Riemann–Roch。BlochConjecture と共有 | 計画のみ。引用5は Adams の経路で解消済みで、これとは独立 |
+| [Lech の重複度予想](future/lech.md) | Lech の論文の定理1.1 | 設計段階 |
+| [Gersten 予想の整数係数の反例](future/gersten.md) | OpenAI の二本（K₃ と K₅）を K 理論の基盤の上で形式化する | 計画のみ |
+| [arxiv_formalization との共通基盤](future/shared-foundations-arxiv.md) | 群論・モノイダル圏論の部分の共通化の検討 | 検討課題の記録のみ |
 
 ## アーカイブ（`archive/`）
 

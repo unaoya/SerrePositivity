@@ -1,6 +1,6 @@
 # 残る形式化の全体像
 
-作成日：2026-10-13。更新：2026-10-18（§2・§3を現状へ更新）。状態：現状と計画の整理。
+作成日：2026-10-13。更新：2026-10-30（§2〜§4・§8 を現状へ更新）。状態：現状と計画の整理。
 
 ## 1. この文書の範囲
 
@@ -19,13 +19,15 @@
 perfect 複体・ランク商による実現を実装している。
 利用する標準可換環論と、具体的な長さ代数から論文の主定理への接続も実装されている。
 
-主定理の未証明依存は、2026-10-18 の公理監査で **4件** である。
+主定理の未証明依存は **3件** である（[公理監査](../scripts/audit_axioms.lean)、2026-10-18 の G1 達成以降）。
 
-- Bhatt–Scholze Thm 1.17(1)（整代数の perfectoid 化の存在）：`BhattScholze.Inputs.exists_perfectoidization_of_integral`。
-- Bhatt–Scholze Cor 8.12（perfectoid 化の切除、環としての帰結）：`BhattScholze.Inputs.perfectoidization_excision_isPullback`。
-- 保留中の K 理論の二件：`Section4.supportedRankK0_descent`、`theorem_3_1_K0`。
+- Bhatt–Scholze の導来 perfectoid 化の E3 界面の存在（Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.11–8.12・Cor 8.14・Thm 10.11）：
+  `BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`（[BhattScholze/Inputs/PerfectoidizationInterface](../SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean)）。
+- 保留中の K 理論の二件：`Section4.supportedRankK0_descent`（論文 補題4.6）、`theorem_3_1_K0`（論文 定理3.1）。
 
-BS の二件は [∞ 圏の計画](infinity-lanes/infinity-categories.md) の界面に保留して解消する方針（2026-10-17 決定）。
+以前の BS の二件（Thm 1.17(1) の整代数の perfectoid 化の存在、Cor 8.12 の環としての切除）は、
+この界面から証明した定理になった（2026-10-18、[∞ 圏の計画](infinity-lanes/infinity-categories.md) の G1）。
+界面の原典照合と型は [perfectoid 化の界面](bhatt-scholze/perfectoidization-interface.md) にある。
 
 `main_statement` と `core_statement` に直接の `sorry` はないが、これらの入力に依存する。
 引用1・2・3は実構成へ置換した。引用4は剰余標数零の対角線論法、引用6はパラメータ Koszul 複体の
@@ -46,8 +48,8 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 | 5（解消済み） | Roberts–Gillet–Soulé の交点重複度消滅 | 台つき巡回 Adams 二乗・三乗と重み消滅により全剰余標数で証明。公開型を保持 | [Adams の計画](archive/intersection-vanishing-adams.md)。S1–S11 と利用先の公理監査が完了 |
 | 6（主定理から除外） | Roberts の Frobenius 高次ホモロジー消滅 | パラメータ Koszul 複体の場合を初等的に証明し、主定理は依存しない | [初等版の計画](archive/frobenius-koszul-elementary.md)。一般形は [専用計画](archive/frobenius-homology.md) |
 | 7（解消済み） | 標準パラメータ根の塔の完備化が integral perfectoid | Witt係数表示から条件を供給し、有限段Frobenius核・実際のtilt・Fontaine核から証明 | `RootTower/WittPresentation`。旧Inputsは証明済みの互換入口 |
-| 8 | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。現在は BS Thm 1.17(1) として残る | [BS](bhatt-scholze/bhatt-scholze.md) |
-| 9〜11（解消済み） | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | CLMST Prop 2.4.7・Cor 4.0.4 を証明（2026-10-17）。その証明が BS Cor 8.12 を引用する | [CLMST](archive/clmst.md)、[BS](bhatt-scholze/bhatt-scholze.md) |
+| 8（界面へ集約） | 有限代数の perfectoidization の存在 | 混標数の具体的な代数を作る。BS Thm 1.17(1) を E3 界面から証明し、引用は界面の存在 1 件に集約 | [BS](bhatt-scholze/bhatt-scholze.md)、[界面](bhatt-scholze/perfectoidization-interface.md) |
+| 9〜11（解消済み） | perfectoid ideal・Koszul ホモロジー・正規化長さの公式 | CLMST Prop 2.4.7・Cor 4.0.4 を証明（2026-10-17）。その証明が使う BS Cor 8.12 の環版は E3 界面から証明 | [CLMST](archive/clmst.md)、[BS](bhatt-scholze/bhatt-scholze.md) |
 | 12（解消済み） | 有限生成加群で正規化長さ `λ∞ = λ*` | Noether 局所基底の有限段計算から証明済み。有限表示の場合も一致 | `FiniteGeneration.lean`。引用としては残らない |
 | 13（解消済み） | 正規化長さの短完全列での加法性 | Noether局所基底の有限段評価から一般加法性を証明 | 共通の長さ層。引用としては残らない |
 
@@ -59,7 +61,7 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - 5：[IntersectionTheory](../SerrePositivity/Inputs/IntersectionTheory.lean)。
 - 6：旧 `Inputs/RobertsFrobenius.lean`（Roberts の Frobenius ホモロジー消滅の一般形）は 2026-10-17 に削除。必要なパラメータ Koszul 複体の場合は `CommutativeAlgebra/ParameterKoszulGrowth.lean` で証明済み。
 - 7：[PerfectoidTower](../SerrePositivity/Inputs/PerfectoidTower.lean)。
-- 8：[Perfectoidization](../SerrePositivity/Inputs/Perfectoidization.lean)。
+- 8：[Perfectoidization](../SerrePositivity/Inputs/Perfectoidization.lean)（互換入口）。残る引用は [BhattScholze/Inputs/PerfectoidizationInterface](../SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean)。
 - 9〜11：[CLMST](../SerrePositivity/Inputs/CLMST.lean)。
 - 12・13：[TowerLength](../SerrePositivity/Paper/Section2/TowerLength.lean)。
 
@@ -67,12 +69,15 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 
 | 保留入力 | 現在の範囲 | 専用計画 |
 | --- | --- | --- |
-| `theorem_3_1_K0` | 離散係数に対する、支持つきK₀の有理降下の帰結 | [K理論・スペクトル・dg 理論](k-theory.md) |
+| `theorem_3_1_K0` | 離散係数に対する、支持つきK₀の有理降下の帰結 | [KST 経路](kst-lanes/k-theory-kst-route.md) |
 | `Section4.supportedRankK0_descent` | 補題4.6の係数の dg 表示と一般係数版の降下を合わせた帰結 | 同上 |
 
 これらを利用する比較と主定理への接続は既に実装されているが、
 保留入力そのものの証明は残っている。
 専用計画では、単にK₀の帰結を別名で引用するのでなく、スペクトル・dg 理論の基盤から進める方針を記録している。
+経路は 2026-10-18 に KST 経路（KST Thm A＋離散冪零不変性で cdh 降下を得て定理3.1、補題4.6 は F5 で迂回、K は安定 ∞ 圏の K）に決めた。
+レーン別の計画は [kst-lanes/](kst-lanes/) にある。2026-10-28 からは、先に ∞ 圏基盤を整備する
+（[∞ 圏基盤の整備計画](infinity-foundation-plan.md)）ため、各レーンは停止している。
 
 5番にも支持つきK理論を使う証明があるが、定理3.1・補題4.6の降下を証明すれば、
 5番も自動的に証明されるわけではない。Adams 操作や、その固有値・次元との関係は別の成果物である。
@@ -88,6 +93,8 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 5. **抽象的比較の具体的適用：二つのK理論入力。** 群作用・支持・係数変更に関する降下を供給する。
 6. **古典的な交点重複度の入力：4・5。** 等標数正値性と、低次元項の消滅を供給する。
 
+現在、層 1・2・3・6 の引用は解消または主定理から除外した。残るのは層 4 の土台にある E3 界面と、層 5 の K 理論の二入力である。
+
 共通 Euler・比較理論はこれらの環の構成から独立している。
 新しい証明は、この共通理論を置き換えるのではなく、その具体的な入力を下から証明していく。
 
@@ -96,6 +103,8 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 6の個々のホモロジー消滅と、5の Euler 数の消滅も別の仕事として扱う。
 
 ## 6. 作業の性格と見通し
+
+この表は当初（2026-10-13）の見通しとして残す。1〜7・9〜13 は完了または主定理から除外した。
 
 | 範囲 | 主な数学 | 見通し |
 | --- | --- | --- |
@@ -119,7 +128,7 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - 有限近似の補題5.4を、具体的な塔から抽象的な塔と両立する長さへ述べ直すこと。
 - Koszul 重複度公式を、環自身の場合から任意の有限生成加群へ拡張すること。
 
-これらは9件の外部引用や二つのK理論入力とは別である。
+これらは外部引用や二つのK理論入力とは別である。
 特に後者は4番の証明経路の選択に関係するため、4〜5の計画で必要な範囲を検討する。
 一般加群版を既に証明済みと見なして計画を立てない。
 
@@ -129,9 +138,11 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - [1〜3の計画](archive/local-algebra-1-3.md)：基礎環の存在構成、共通API、最初の実装単位。
 - [4〜5の計画](archive/intersection-inputs-4-5.md)：古典的交点重複度の証明経路。
 - [6の計画](archive/frobenius-homology.md)：Frobenius ホモロジー消滅の調査と段階別計画。
-- [CLMST の計画](archive/clmst.md)：7番以降を含む別作業の計画。詳細の更新はそちらで行う。
-- [BS の計画](bhatt-scholze/bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番（現在の BS Thm 1.17(1)）を担当する。
-- [K理論の計画](k-theory.md)：定理3.1・補題4.6の基盤と降下。dg 理論は [dg-theory.md](dg-theory-m5-status.md)。
+- [CLMST の計画](archive/clmst.md)：9〜11番。2026-10-17 に完了。
+- [BS の計画](bhatt-scholze/bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番と E3 界面を担当する（別セッション）。
+- [perfectoid 化の界面](bhatt-scholze/perfectoidization-interface.md)：残る BS の引用（E3 界面）の原典照合と型。
+- [K理論の KST 経路](kst-lanes/k-theory-kst-route.md)：定理3.1・補題4.6の基盤と降下。旧計画は [archive/k-theory-v1.md](archive/k-theory-v1.md)、dg 理論は [M5 の完了状況](dg-theory-m5-status.md)。
+- [∞ 圏基盤の整備計画](infinity-foundation-plan.md)：K 理論の各レーンを再開する前に行う ∞ 層の整備。
 
 完了の報告では、次を分ける。
 
