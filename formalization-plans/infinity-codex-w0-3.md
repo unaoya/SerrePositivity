@@ -342,3 +342,17 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **束の構成（提案、ユーザー確認待ち）**：W1 を未適用のまま W2a と一つの束にする案（草案の前提）に加えて、**R79（HA 約 600・CT 12・ArrowFactorization 3 の docstring の書き換え）と IF-W0-4 の R75（削除 29 本）も同じ束に入れる**。HA の docstring を変えると HA の下流（ほぼ全部）が再ビルドになるので、別の窓にすると全ビルドが一回増える。束の下流は約 20,000 本、単独なら 1 本 1.0〜1.5 秒として 6〜8 時間（草案の 12.56 時間は 3 セッション同時の実測に基づく過大な見積もり）。この束を適用してから verify を通すまで、main の HA・∞・KST・EInfinity 側には他セッションの取り込みを入れない（論文の層のコーディネータに 1 日の凍結を依頼する）。
 
 **順序**：DG-W1 を main に入れる（10-31）→ ∞ 側は main を取り込み `.lake/build` を複製 → 上の 1〜4 を実装して静的検査 PASS → 束の適用 → 下流の一回ビルド（機械を独占。DG 側はその間、ビルドの要らない道具の作業 DG-W2(a)）→ 保存検査 → verify → 取り込み。DG-W2(b) の束のビルドは、その後。
+
+### 10.15 追記（10-31、§10.14 の実装の承認と、束の構成の確定）
+
+**承認**：§10.14 の実装（分割先 import の自動追加の廃止、`downstream_imports` だけの合成、中核への補充は STOP、`prune_imports.py` の補充経路への接続）、Python 試験 150 件 PASS、W1（68 項目）と W1＋W2a（1,276 項目）の静的検査 PASS、増加指標 2,410 → 0 を確認した。
+
+**束の構成（ユーザー承認済み、10-31）**：R79 ＋ R75 ＋ W1 ＋ W2a を一つの束にする。順序と機械の使い方は §10.14 のとおり（DG-W1 の取り込み → main の merge → `.lake/build` の複製 → 束の適用 → 下流の一回ビルド → 保存検査 → verify）。論文の層のコーディネータには、束の適用から verify までの約 1 日、HA・CT・HotA・∞・KST・EInfinity・ルート・それらの監査への取り込みを止めてもらう（Claude が依頼済み。開始時刻は Claude が伝える）。
+
+**DG-W1 の取り込みを待つ間にする作業（ビルドなし）**
+
+1. §10.14 の道具・試験・記録（w2a.json・w2a.md）を infra/if-w0-3 に 3 コミットでコミットする（`git commit --only`）。
+2. **R79 の準備**：[計画の R79 行](infinity-foundation-plan.md) の規則で、`k-theory.md` を参照する docstring（HA 約 600・CT 約 20・Spectra 1 の `[plan]: …/formalization-plans/k-theory.md`）を `…/formalization-plans/archive/k-theory-v1.md#<§396 の見出しのアンカー>` へ、`k-theory-generalization-inventory.md` を参照する docstring（`[inventory]: …`、618＋16 件）を `archive/k-theory-generalization-inventory.md` へ（`#mNNNN`・`layout-execution` のアンカーはそのまま）、ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本も同じ規則で、書き換える**スクリプトを作り dry-run で件数を出す**（期待：618／618＋16／3。食い違えば報告）。相対パスの深さは保ち、`formalization-plans/<名前>.md` の部分だけを替える。DG の 530 本は対象外（DG 計画 D5）。アンカーは GitHub の規則で生成し、`archive/k-theory-v1.md` に §396 の見出しがあることを確かめる。実際の書き換えは束の適用のときに行い、文書ごとに 1 コミット（計 2 本＋ArrowFactorization は HA 側のコミットに含める）。
+3. **R75 の準備**：[計画の R75 行](infinity-foundation-plan.md)（CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本など計 29 本）の削除対象を一覧にし、**importer が 0 であること**（監査・集約・README の参照も含めて）を確かめる。importer があるものは報告して外す。削除は束の適用のときに `git rm` で行う（下流がないので再ビルドは起きない）。
+4. **束の手順書**：`targets/batch-w1w2a.md` に、適用の順序（R75 の削除 → R79 の docstring → W1 の対象 → W2a の対象の順。split は `split_module.py`、move は `move_module.py`、reimport は入口の編集）、各段のコマンド、snapshot の採り方（全対象の before は適用前にまとめて採る。**この snapshot の採取だけは `lake env lean --run decl_snapshot.lean` で対象のビルドが要るので、DG-W1 の取り込み後、`.lake/build` を複製してから行う**）、下流ビルドの対象の集合、失敗時の二分の規則、止めて報告する点（適用後・下流ビルド後・verify 後の 3 か所）を書く。
+5. 上の 1〜4 が終わったら止めて報告する。main の merge・`.lake/build` の複製・snapshot・束の適用は、Claude が「DG-W1 を main に入れた」と伝えてから。
