@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonTensorEquiv
-public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
+public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import Mathlib.RingTheory.IntegralClosure.Algebra.Basic
 
 /-! # Prop 2.4.7：KL の元の有限比較の付値環条件

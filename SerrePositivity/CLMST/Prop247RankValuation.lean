@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankProductAway
-public import SerrePositivity.CommutativeAlgebra.IntegralAwayExtension
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import Mathlib.RingTheory.IntegralClosure.Algebra.Basic
 
 /-! # Prop 2.4.7：元の rank 像の有限直積への付値環写像の一意延長

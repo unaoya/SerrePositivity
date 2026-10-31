@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.BoundedPowerTorsionQuotient
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 public import SerrePositivity.HomologicalAlgebra.CompletedFlatRegularModule
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedModuleShortExact
 

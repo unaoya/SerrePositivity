@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.K0LocalizationCoefficients
+public import SerrePositivity.KTheory.G0Supported
 public import Mathlib.Algebra.Module.Torsion.Basic
 
 /-! # Classes of modules annihilated by an ideal, over the quotient ring -/

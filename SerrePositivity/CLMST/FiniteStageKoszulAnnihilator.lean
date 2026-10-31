@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.CLMST.StageLocality
-public import SerrePositivity.HomologicalAlgebra.FiniteParameterKoszulAnnihilator
+public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # Conditional positive Koszul annihilation on the actual CLMST finite stages
 

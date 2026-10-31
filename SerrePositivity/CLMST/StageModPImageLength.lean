@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RootTower.ModPFrobenius
+public import SerrePositivity.CommutativeAlgebra.RootTower.ModP
 public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
 
 /-! # 有限段の関係式のmod p像の通常長さ

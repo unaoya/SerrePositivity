@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.EqualCharZeroPositivity
+public import SerrePositivity.IntersectionMultiplicity.EqualCharZero.Positivity
 
 /-! # 剰余標数零の場合の正値性
 

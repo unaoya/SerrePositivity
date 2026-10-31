@@ -5206,7 +5206,7 @@ M5への初期依頼はdg計画のU0〜U3を完了して検証・進捗を報告
 | 担当 | 主な編集範囲 | 提供するもの |
 | --- | --- | --- |
 | このチャット | `HomotopicalAlgebra/`、任意Vの共通`CategoryTheory/Enriched/`、スペクトル一般化・SSet当てはめ、`Inputs/Homotopy/`、この計画 | G0〜G8、M3/M4、M6のスペクトル/K理論側。G1/G2/G5/G6の共有契約 |
-| M5別チャット | `DifferentialGraded/`、`Inputs/DifferentialGraded/`、`formalization-plans/dg-theory.md` | Ch(A)の具体的豊穣・閉構造、dg加群・局所化・tensor・商・Morita、M6向けPerf_dg入力 |
+| M5別チャット | `DifferentialGraded/`、`Inputs/DifferentialGraded/`、`formalization-plans/dg-theory-m5-status.md` | Ch(A)の具体的豊穣・閉構造、dg加群・局所化・tensor・商・Morita、M6向けPerf_dg入力 |
 
 `Inputs/DifferentialGraded/`のShipley候補はM5が調査・入力側を記録し、実際のスペクトル比較の
 実装はM6でこのチャットが担当する。共有一般論の型をM5側で複製しない。

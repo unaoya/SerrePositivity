@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.SingleTriangleExactReflection
-public import SerrePositivity.CommutativeAlgebra.PullbackAnnihilator
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 
 /-! # Ordinary ring pullbacks from actual distinguished single-module triangles

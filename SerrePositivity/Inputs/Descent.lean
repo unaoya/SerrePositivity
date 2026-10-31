@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
-public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.Free.K0
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.Spectrum.Prime.RingHom

@@ -1,9 +1,10 @@
 module
 
-public import SerrePositivity.Inputs.CohenNormalization
+public import SerrePositivity.CommutativeAlgebra.CohenGabber.Normalization
+public import SerrePositivity.CommutativeAlgebra.Witt.Normalization
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Normality
-public import SerrePositivity.CommutativeAlgebra.SeparableBaseChange
+public import SerrePositivity.FieldTheory.SeparableBaseChange
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable
@@ -27,9 +28,9 @@ public import Mathlib.RingTheory.WittVector.Basic
 
 となるものがある。どちらの場合も `t₁, …, t_h` は `D` のパラメータ系かつ `A` の正則パラメータ系。
 
-標数 `p` では `Inputs.cohen_gabber_normalization`、混標数では
-`Inputs.cohen_normalization_mixedCharacteristic` の証明済みの実構成を適用する。
-等標数の構成と出典は `Inputs/CohenNormalization.lean` に明記した。
+標数 `p` では `exists_cohen_gabber_normalization`（CommutativeAlgebra/CohenGabber）、混標数では
+`exists_cohen_normalization_mixedCharacteristic`（CommutativeAlgebra/Witt）の証明済みの実構成を適用する。
+出典はそれぞれのファイルに明記した。
 標数の二分、有限拡大による次元の一致と
 パラメータ系の移送、分数体の分離性から最小多項式の条件への移送をここで証明する。
 混標数の分離性は標数零から従う。正規性の導出は証明済みの正則パラメータから従う。
@@ -82,7 +83,7 @@ theorem lemma_2_2 (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
   · let := hzero
     obtain ⟨A, aRing, aDomain, aRegular, aComplete, aAlg,
       hinj, hfinite, hres, t, e, ht, hp, he⟩ :=
-      Inputs.cohen_normalization_mixedCharacteristic D hdim hpos p
+      exists_cohen_normalization_mixedCharacteristic D hdim hpos p
     let := hfinite
     let : IsIntegrallyClosed A := isIntegrallyClosed_of_isRegularLocalRing A
     let : CharZero A := (algebraMap A D).charZero
@@ -106,7 +107,7 @@ theorem lemma_2_2 (D : Type u) [CommRing D] [IsLocalRing D] [IsNoetherianRing D]
     subst q
     obtain ⟨A, aRing, aDomain, aRegular, aComplete, aAlg,
       hinj, hfinite, hres, ⟨fracAlg, fracTower, hsep⟩, t, e, ht, he⟩ :=
-      Inputs.cohen_gabber_normalization D hdim p
+      exists_cohen_gabber_normalization D hdim p
     let := hfinite
     let : IsIntegrallyClosed A := isIntegrallyClosed_of_isRegularLocalRing A
     have hA : ringKrullDim A = h :=

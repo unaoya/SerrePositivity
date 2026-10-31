@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section5.FirstComparison
 public import SerrePositivity.Paper.Section5.NormApplication
-public import SerrePositivity.IntersectionMultiplicity.FiniteExtension
+public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 public import Mathlib.Algebra.CharP.Algebra
 

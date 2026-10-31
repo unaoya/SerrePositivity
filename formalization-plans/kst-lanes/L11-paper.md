@@ -7,7 +7,7 @@
 各項目は原典の版・番号・頁、証明再構成、Lean の必要補題、未確認点を区別する。
 Lean ソースは変更しない。π_n は K-L9、H_* は K-L2、pro 形式は K-L6 の所有とする。
 
-正本：[KST 経路](../k-theory-kst-route.md)、[基盤計画](../foundations.md)。
+正本：[KST 経路](k-theory-kst-route.md)、[基盤計画](../infinity-lanes/foundations.md)。
 完成判定は検証記録と型草案の完成であり、そこに列挙する数学的補題の Lean 実装完了ではない。
 
 | 項目 | 現在の判定 | 主な未確認点／条件 |

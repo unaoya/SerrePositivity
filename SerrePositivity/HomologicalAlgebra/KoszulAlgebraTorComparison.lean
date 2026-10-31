@@ -124,47 +124,4 @@ def algebraKoszulTorComparison {n : ℕ} (z : Fin n → R) (hz : IsKoszulResolut
   simp only [Category.assoc]
   rfl
 
-/-- 係数元のTor上の零作用と、通常のC上のKoszulホモロジーの零作用は同値。 -/
-theorem algebraKoszulTorComparison_scalar_eq_zero_iff {n : ℕ}
-    (z : Fin n → R) (hz : IsKoszulResolution z) (i : ℕ) (c : C) :
-    torCoefficientScalarEndomorphism C (ModuleCat.of R (R ⧸ Ideal.span (Set.range z))) i c = 0 ↔
-      c • 𝟙 ((koszulComplex (algebraMap R C ∘ z)).homology (-(i : ℤ))) = 0 := by
-  let U := ModuleCat.restrictScalars (algebraMap R C)
-  let e := algebraKoszulTorComparison (C := C) z hz i
-  have h := algebraKoszulTorComparison_coefficient_scalar z hz i c
-  constructor
-  · intro hc
-    have hu : U.map (c • 𝟙 ((koszulComplex (algebraMap R C ∘ z)).homology (-(i : ℤ)))) = 0 := by
-      rw [← cancel_epi e.hom, comp_zero, ← h, hc, zero_comp]
-    apply U.map_injective
-    simpa only [CategoryTheory.Functor.map_zero] using hu
-  · intro hc
-    rw [← cancel_mono e.hom, zero_comp, h, hc, CategoryTheory.Functor.map_zero, comp_zero]
-
-/-- 全試験加群に対する高次TorのI零化から、通常のC上のKoszulホモロジーのI零化を得る。 -/
-theorem algebraKoszulHomology_annihilated_of_tor_annihilated {n : ℕ}
-    (z : Fin n → R) (hz : IsKoszulResolution z) (I : Ideal C)
-    (hTor : ∀ (N : ModuleCat.{u} R) (i : ℕ), 0 < i →
-      ∀ c ∈ I, torCoefficientScalarEndomorphism C N i c = 0)
-    (i : ℕ) (hi : 0 < i) :
-    I ≤ Module.annihilator C (koszulHomologySelf (algebraMap R C ∘ z) i) := by
-  intro c hc
-  rw [Module.mem_annihilator]
-  have h := (algebraKoszulTorComparison_scalar_eq_zero_iff z hz i c).mp (hTor _ i hi c hc)
-  intro x
-  exact congrArg (fun f ↦ f.hom x) h
-
-/-- 正則パラメータの任意の正の冪列について、C上の標準作用でI零化を得る。 -/
-theorem algebraKoszulHomology_powers_annihilated_of_tor_annihilated
-    [IsLocalRing R] [IsNoetherianRing R] {n : ℕ} (z : Fin n → R)
-    (hz : Ideal.span (Set.range z) = IsLocalRing.maximalIdeal R)
-    (hreg : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn z)) (I : Ideal C)
-    (hTor : ∀ (N : ModuleCat.{u} R) (i : ℕ), 0 < i →
-      ∀ c ∈ I, torCoefficientScalarEndomorphism C N i c = 0)
-    (v : ℕ) (hv : 0 < v) (i : ℕ) (hi : 0 < i) :
-    I ≤ Module.annihilator C
-      (koszulHomologySelf (fun j ↦ algebraMap R C (z j ^ v)) i) :=
-  algebraKoszulHomology_annihilated_of_tor_annihilated (fun j ↦ z j ^ v)
-    (isKoszulResolution_powers_of_isWeaklyRegular z hz hreg v hv) I hTor i hi
-
 end SerrePositivity

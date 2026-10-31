@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.RingTopTruncation
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # 有限射影singleによる上端被覆のconeを一段短くする
 

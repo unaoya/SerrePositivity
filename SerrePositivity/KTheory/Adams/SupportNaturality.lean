@@ -1,7 +1,9 @@
 module
 
-public import SerrePositivity.KTheory.Adams.KoszulTensor
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.KTheory.Adams.KoszulNormalization
+public import SerrePositivity.KTheory.Adams.TensorSquareMultiplicativity
+public import SerrePositivity.PerfectComplex.KoszulTensor
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # The cyclic Adams square commutes with enlargement of closed support -/
 

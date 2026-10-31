@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.CategoryTheory.ThreeComponentMaps
+public import SerrePositivity.CategoryTheory.Triangulated.Idempotent
 
 public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedSections
-public import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
+public import SerrePositivity.PerfectComplex.Tensor.CyclicSum
 
 /-! # Equivariance of the low mixed tensor-cube quotient -/
 

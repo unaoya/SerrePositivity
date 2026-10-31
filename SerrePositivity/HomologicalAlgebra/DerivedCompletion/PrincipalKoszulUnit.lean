@@ -102,11 +102,6 @@ theorem principalCompletionZeroEquiv_unit (f r : R) :
   Prod.ext (principalCompletionZeroEquiv_unit_fst R f r)
     (principalCompletionZeroEquiv_unit_snd R f r)
 
-/-- 短複体同型の中項は、正規化した列の組の座標写像。 -/
-theorem principalCompletionShortComplexIso_hom_τ₂ (f : R) :
-    (principalCompletionShortComplexIso R f).hom.τ₂ =
-      (principalCompletionZeroEquiv R f).toModuleIso.hom := rfl
-
 /-- 単一複体から三項モデルへの標準短複体写像。 -/
 def principalCompletionUnitShortMap (f : R) :
     (principalSingle R).sc 0 ⟶ principalTowerShortComplex R f :=

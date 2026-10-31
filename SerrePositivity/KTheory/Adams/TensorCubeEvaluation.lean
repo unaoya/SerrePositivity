@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.PerfectComplex.TensorAcyclic
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 public import SerrePositivity.KTheory.Adams.TensorCubeAdditivity
 public import SerrePositivity.KTheory.Adams.TensorCubeMaps
-public import SerrePositivity.PerfectComplex.CubicActionClassMaps
+public import SerrePositivity.PerfectComplex.Eigen.CubicClass
 
 /-! # The weighted tensor-cube evaluation on supported homotopy objects -/
 

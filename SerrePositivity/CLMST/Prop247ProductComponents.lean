@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ProductIdempotentQuotient
+public import SerrePositivity.CommutativeAlgebra.Idempotent
 public import SerrePositivity.CLMST.Prop247IdempotentQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity

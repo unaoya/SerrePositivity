@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.ZeroTruncation
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyCoefficient
 public import SerrePositivity.EInfinity.HomologyZero.TruncationRigidity
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 
 /-!
 # 零次集中 E 代数の全作用の augmentation 分解

@@ -83,10 +83,4 @@ instance derivedComplexCompletionFunctor_isTriangulated :
     (derivedComplexCompletionFunctor R a).IsTriangulated :=
   inferInstanceAs ((completeReflector R a ⋙ (completeProperty R a).ι).IsTriangulated)
 
-/-- 反映の随伴単位は、既存の実 Koszul 完備化の標準単位そのもの。 -/
-theorem completeReflectorAdjunction_unit (X : ConcreteDerivedCategory R) :
-    (completeReflectorAdjunction R a).unit.app X = (derivedComplexCompletionUnit R a).app X := by
-  change (derivedComplexCompletionUnit R a).app X ≫ 𝟙 _ = _
-  exact Category.comp_id _
-
 end SerrePositivity.DerivedCompletion

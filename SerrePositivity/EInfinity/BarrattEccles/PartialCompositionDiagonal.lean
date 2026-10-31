@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.GeneralShuffleComparison
 public import SerrePositivity.EInfinity.BarrattEccles.ComplexDiagonal
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-!
 # BE 部分合成と AW 対角の可換性

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.Semifree
 public import SerrePositivity.InfinityCategories.Derived.ConeBasis
 public import SerrePositivity.DifferentialGraded.Module.ShiftCoproduct
 public import Mathlib.CategoryTheory.Limits.Connected
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # Semifree 複体の閉性
 

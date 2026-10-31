@@ -26,12 +26,4 @@ lemma tor_eq_zero_of_power_torsion_and_quotientTorOne
   tor_eq_zero_of_power_torsion_and_complete_extensions p C B ψ I hC
     (completeIdealExtensionClosed_of_quotientTorOne_surjective (p : B) I hQ) hTor M i hi b hb
 
-include hC hTor in
-lemma tor_eq_zero_of_power_torsion_and_conormal
-    (hI : Function.Surjective (fun x : I.Cotangent => (p : B) • x))
-    (M : ModuleCat.{u} R) (i : ℕ) (hi : 0 < i) (b : B) (hb : b ∈ I) :
-    torCoefficientScalarEndomorphism C M i (ψ b) = 0 :=
-  tor_eq_zero_of_power_torsion_and_complete_extensions p C B ψ I hC
-    (completeIdealExtensionClosed_of_conormal_surjective (p : B) I hI) hTor M i hi b hb
-
 end SerrePositivity.DerivedCompletion

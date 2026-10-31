@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexProjective
 public import SerrePositivity.PerfectComplex.BiproductPerfect
-public import SerrePositivity.HomologicalAlgebra.CochainBiproduct
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Homology.HomotopyCategory.KProjective
 
 /-! # 完全複体のホモトピー代表

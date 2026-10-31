@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section5.ParameterQuotient
-public import SerrePositivity.LengthAlgebra.CohenMacaulay
+public import SerrePositivity.LengthAlgebra.Flat
 
 /-!
 # λ-CM 代数に対するパラメータ商の Tor の公式（Lemma 5.3 の λ-CM 版）

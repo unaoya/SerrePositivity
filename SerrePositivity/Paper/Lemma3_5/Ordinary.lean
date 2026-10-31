@@ -1,15 +1,15 @@
 module
 
-public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+public import SerrePositivity.LengthAlgebra.Koszul
 
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 public import SerrePositivity.LengthAlgebra.KoszulFormula
-public import SerrePositivity.LengthAlgebra.Ordinary
 public import SerrePositivity.PerfectComplex.KoszulGeneration
-public import SerrePositivity.PerfectComplex.K0
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.PerfectComplex.Free.K0
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
+public import SerrePositivity.CommutativeAlgebra.Koszul.RegularEuler
 public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 
 /-!
 # Lemma 3.5 の通常の長さの側
@@ -37,30 +37,6 @@ universe u
 open IsLocalRing
 
 namespace SerrePositivity
-
-/-- Noether 局所環 `A` 上有限な代数 `T` と、`√(z) = m_A` なる列 `z` について、`T/(z)T` は Artin 環。
-`A/(z)` は（`m_A` 準素イデアルによる商なので）Artin 環（`isArtinianRing_quotient_of_le_radical`）で、
-`T/(z)T` はその上の有限生成加群だから。`T` の局所性は要らない。 -/
-lemma isArtinianRing_quotient_span_of_finite (A T : Type u)
-    [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing T] [Algebra A T]
-    [Module.Finite A T] {e : ℕ} (z : Fin e → A)
-    (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A) :
-    IsArtinianRing (T ⧸ Ideal.span (Set.range (algebraMap A T ∘ z))) := by
-  let I := Ideal.span (Set.range z)
-  let : Field (A ⧸ maximalIdeal A) := Ideal.Quotient.field (maximalIdeal A)
-  have : IsArtinianRing (A ⧸ I) :=
-    isArtinianRing_quotient_of_le_radical (maximalIdeal A) I (by rw [hz])
-  have : Module.Finite A (T ⧸ I.map (algebraMap A T)) :=
-    Module.Finite.of_surjective (Ideal.Quotient.mkₐ A (I.map (algebraMap A T))).toLinearMap
-      Ideal.Quotient.mk_surjective
-  have : Module.Finite (A ⧸ I) (T ⧸ I.map (algebraMap A T)) :=
-    Module.Finite.of_restrictScalars_finite A _ _
-  have hI : I.map (algebraMap A T) =
-      Ideal.span (Set.range (algebraMap A T ∘ z)) := by
-    dsimp only [I]
-    rw [Ideal.map_span, Set.range_comp]
-  rw [← hI]
-  exact IsArtinianRing.of_finite (A ⧸ I) (T ⧸ I.map (algebraMap A T))
 
 variable {A T : Type u} [CommRing A] [IsLocalRing A] [IsNoetherianRing A] [CommRing T]
   [Algebra A T] [Module.Finite A T] {e : ℕ} {z : Fin e → A}

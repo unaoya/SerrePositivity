@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Tor
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import Mathlib.CategoryTheory.Adjunction.Unique
 
 /-! # 環同型による係数変更とホモロジーの長さ

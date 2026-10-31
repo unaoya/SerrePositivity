@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 

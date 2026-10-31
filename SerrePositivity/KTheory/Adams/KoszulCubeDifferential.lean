@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulCubeGenerators
-public import SerrePositivity.PerfectComplex.TensorTripleDifferential
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 
 /-! # Differentials on the eight Koszul cube generators -/
 

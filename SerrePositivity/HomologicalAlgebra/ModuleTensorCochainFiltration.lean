@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.NilpotentModuleFiltration
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 public import Mathlib.Algebra.Homology.HomologySequence
 public import Mathlib.RingTheory.Flat.CategoryTheory

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.TableReduction.CochainDegrees
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 public import Mathlib.Algebra.Category.ModuleCat.EpiMono
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.MaximalSupportModules
-public import SerrePositivity.KTheory.Adams.SemilocalSupport
+public import SerrePositivity.CommutativeAlgebra.SemilocalSupport
 
 /-! # Finite length on least-height localization -/
 

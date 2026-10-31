@@ -1,0 +1,1447 @@
+{
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleComposition1.lean": {
+  "n": 15,
+  "lines": 1327,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleComposition2.lean": {
+  "n": 17,
+  "lines": 1481,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/Perturbation.lean": {
+  "n": 16,
+  "lines": 1134,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 4,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/TensorCoproduct.lean": {
+  "n": 16,
+  "lines": 1040,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/TensorZeroCochain.lean": {
+  "n": 9,
+  "lines": 611,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/TensorShift.lean": {
+  "n": 14,
+  "lines": 760,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/TensorJoin.lean": {
+  "n": 22,
+  "lines": 977,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/MaurerCartanCurrying.lean": {
+  "n": 13,
+  "lines": 962,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 4,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/HomComplex.lean": {
+  "n": 4,
+  "lines": 254,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/HomLimits.lean": {
+  "n": 6,
+  "lines": 602,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Category/Basic.lean": {
+  "n": 16,
+  "lines": 1363,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Functor/QuasiEquivalence.lean": {
+  "n": 8,
+  "lines": 494,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Category/Tensor.lean": {
+  "n": 13,
+  "lines": 697,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Functor/Closed.lean": {
+  "n": 10,
+  "lines": 461,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Basic.lean": {
+  "n": 11,
+  "lines": 658,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Module/Basic.lean": {
+  "n": 13,
+  "lines": 1363,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Left2.lean": {
+  "n": 9,
+  "lines": 656,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Hom1.lean": {
+  "n": 18,
+  "lines": 1381,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Hom2.lean": {
+  "n": 14,
+  "lines": 1018,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Hom3.lean": {
+  "n": 16,
+  "lines": 1289,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/ConeConstruction.lean": {
+  "n": 13,
+  "lines": 1293,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Graded.lean": {
+  "n": 12,
+  "lines": 1054,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/ActionLimits.lean": {
+  "n": 3,
+  "lines": 622,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/TensorFree.lean": {
+  "n": 5,
+  "lines": 720,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Disk.lean": {
+  "n": 8,
+  "lines": 864,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/ShiftResolution.lean": {
+  "n": 22,
+  "lines": 1498,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/ConeRotation.lean": {
+  "n": 6,
+  "lines": 625,
+  "blockers": [],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/MaurerCartanTriangulated.lean": {
+  "n": 14,
+  "lines": 953,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Projective.lean": {
+  "n": 17,
+  "lines": 1224,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Parameter.lean": {
+  "n": 14,
+  "lines": 1234,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/BalancedElements.lean": {
+  "n": 20,
+  "lines": 1353,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension1.lean": {
+  "n": 15,
+  "lines": 1441,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 4,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension2.lean": {
+  "n": 9,
+  "lines": 945,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Path1.lean": {
+  "n": 13,
+  "lines": 619,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Path2.lean": {
+  "n": 19,
+  "lines": 1165,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Erasure.lean": {
+  "n": 15,
+  "lines": 719,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Scalar.lean": {
+  "n": 10,
+  "lines": 605,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Append.lean": {
+  "n": 19,
+  "lines": 932,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/Composition.lean": {
+  "n": 17,
+  "lines": 852,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison1.lean": {
+  "n": 15,
+  "lines": 1492,
+  "blockers": [
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison2.lean": {
+  "n": 4,
+  "lines": 473,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison3.lean": {
+  "n": 15,
+  "lines": 1475,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison4.lean": {
+  "n": 3,
+  "lines": 363,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison5.lean": {
+  "n": 13,
+  "lines": 1395,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Bimodule/Basic.lean": {
+  "n": 15,
+  "lines": 834,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Bimodule/Value.lean": {
+  "n": 16,
+  "lines": 1127,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/RepresentableHomology.lean": {
+  "n": 8,
+  "lines": 686,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/Compact1.lean": {
+  "n": 11,
+  "lines": 877,
+  "blockers": [
+   "set_option"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/Compact2.lean": {
+  "n": 15,
+  "lines": 1375,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/ScalarExtension.lean": {
+  "n": 11,
+  "lines": 843,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Complexes/Cone.lean": {
+  "n": 17,
+  "lines": 1312,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Presentation/Category.lean": {
+  "n": 9,
+  "lines": 421,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 2,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom1.lean": {
+  "n": 21,
+  "lines": 1328,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom2.lean": {
+  "n": 10,
+  "lines": 706,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Bimodule/Tensor.lean": {
+  "n": 10,
+  "lines": 692,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Bimodule/Right.lean": {
+  "n": 17,
+  "lines": 1354,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Enriched.lean": {
+  "n": 22,
+  "lines": 1485,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Bimodule1.lean": {
+  "n": 23,
+  "lines": 1493,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Bimodule2.lean": {
+  "n": 11,
+  "lines": 580,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Fubini.lean": {
+  "n": 8,
+  "lines": 802,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Associator1.lean": {
+  "n": 27,
+  "lines": 1489,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Associator2.lean": {
+  "n": 10,
+  "lines": 606,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Associator3.lean": {
+  "n": 19,
+  "lines": 1434,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Triple.lean": {
+  "n": 15,
+  "lines": 957,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 6,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Graded.lean": {
+  "n": 12,
+  "lines": 858,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/Compose.lean": {
+  "n": 10,
+  "lines": 763,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Basic.lean": {
+  "n": 8,
+  "lines": 621,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Functor/ModuleValued.lean": {
+  "n": 7,
+  "lines": 456,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Functor/ModuleShift.lean": {
+  "n": 5,
+  "lines": 362,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Tensor.lean": {
+  "n": 10,
+  "lines": 698,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleTensor.lean": {
+  "n": 17,
+  "lines": 1296,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Basic.lean": {
+  "n": 26,
+  "lines": 1341,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 1,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Free/Evaluation.lean": {
+  "n": 14,
+  "lines": 1103,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Boundary.lean": {
+  "n": 17,
+  "lines": 1296,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Append1.lean": {
+  "n": 15,
+  "lines": 948,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Append2.lean": {
+  "n": 14,
+  "lines": 1027,
+  "blockers": [
+   "set_option"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Length.lean": {
+  "n": 11,
+  "lines": 947,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Path.lean": {
+  "n": 20,
+  "lines": 1435,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/KFlat.lean": {
+  "n": 10,
+  "lines": 821,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle1.lean": {
+  "n": 16,
+  "lines": 1421,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle2.lean": {
+  "n": 10,
+  "lines": 1047,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/BimoduleMiddle3.lean": {
+  "n": 12,
+  "lines": 1433,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Functor.lean": {
+  "n": 12,
+  "lines": 926,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/FixedObject.lean": {
+  "n": 7,
+  "lines": 550,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 1,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Cell.lean": {
+  "n": 13,
+  "lines": 1144,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Resolution/Composition.lean": {
+  "n": 8,
+  "lines": 542,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 2,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/FreeSphere.lean": {
+  "n": 9,
+  "lines": 453,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/Kernel.lean": {
+  "n": 10,
+  "lines": 1094,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/CoherenceCompositionKernel.lean": {
+  "n": 15,
+  "lines": 1426,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/CoherenceAssociator.lean": {
+  "n": 15,
+  "lines": 1455,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/Basic.lean": {
+  "n": 13,
+  "lines": 1016,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/Ring2.lean": {
+  "n": 22,
+  "lines": 1484,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Perfect/EnhancementOperations.lean": {
+  "n": 8,
+  "lines": 732,
+  "blockers": [
+   "set_option",
+   "universe"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Verdier/Derived.lean": {
+  "n": 14,
+  "lines": 1218,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Module.lean": {
+  "n": 10,
+  "lines": 1059,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Derived1.lean": {
+  "n": 7,
+  "lines": 717,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Derived2.lean": {
+  "n": 10,
+  "lines": 743,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar1.lean": {
+  "n": 17,
+  "lines": 1323,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar2.lean": {
+  "n": 10,
+  "lines": 1020,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar3.lean": {
+  "n": 16,
+  "lines": 1231,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Shift.lean": {
+  "n": 15,
+  "lines": 1190,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Perfect.lean": {
+  "n": 17,
+  "lines": 1189,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Endomorphism/Enhancement.lean": {
+  "n": 13,
+  "lines": 945,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/Perfect.lean": {
+  "n": 13,
+  "lines": 1303,
+  "blockers": [
+   "set_option",
+   "section-kind",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 2
+ },
+ "SerrePositivity/DifferentialGraded/Morita/ScalarExtension1.lean": {
+  "n": 14,
+  "lines": 1403,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/ScalarExtension2.lean": {
+  "n": 12,
+  "lines": 1392,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedCoproducts.lean": {
+  "n": 8,
+  "lines": 729,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Module/Functor.lean": {
+  "n": 20,
+  "lines": 1216,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Bimodule/DiagonalRestriction.lean": {
+  "n": 4,
+  "lines": 402,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/LeftUnitRestriction.lean": {
+  "n": 4,
+  "lines": 405,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Tensor/ResolvedRestriction.lean": {
+  "n": 4,
+  "lines": 420,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Verdier/Scalar.lean": {
+  "n": 10,
+  "lines": 1071,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTriangulated.lean": {
+  "n": 16,
+  "lines": 1459,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 3,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/Adjunction1.lean": {
+  "n": 14,
+  "lines": 1325,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/Adjunction2.lean": {
+  "n": 7,
+  "lines": 698,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/FunctorExtensionAdjunction.lean": {
+  "n": 15,
+  "lines": 1342,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Bimodule.lean": {
+  "n": 14,
+  "lines": 1473,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/LeftUnit.lean": {
+  "n": 8,
+  "lines": 751,
+  "blockers": [
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/AssociatorLeft.lean": {
+  "n": 18,
+  "lines": 1484,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/AssociatorMiddle.lean": {
+  "n": 17,
+  "lines": 1461,
+  "blockers": [
+   "fullname",
+   "private",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 2,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Derived/Paired.lean": {
+  "n": 8,
+  "lines": 679,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Morita/QuasiEquivalenceGraph.lean": {
+  "n": 10,
+  "lines": 918,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonGraphSquare.lean": {
+  "n": 1,
+  "lines": 138,
+  "blockers": [],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Verdier/Comparison.lean": {
+  "n": 3,
+  "lines": 459,
+  "blockers": [
+   "set_option",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean": {
+  "n": 10,
+  "lines": 1002,
+  "blockers": [
+   "set_option",
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 2,
+  "nsec": 1
+ },
+ "SerrePositivity/DifferentialGraded/Verdier/Kernel.lean": {
+  "n": 11,
+  "lines": 1141,
+  "blockers": [
+   "universe",
+   "variable"
+  ],
+  "shortdup": 0,
+  "nsets": 1,
+  "nsec": 1
+ }
+}

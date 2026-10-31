@@ -83,14 +83,6 @@ def completedAlgebraRestrictionH0BLinearEquiv :
   rw [completedAlgebraUnitAlgHom_apply]
   exact completedAlgebraRestrictionH0Iso_coefficient R a B b y
 
-/-- This B-linear equivalence has exactly the same original G8 comparison function. -/
-lemma completedAlgebraRestrictionH0BLinearEquiv_apply
-    (y : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj (completedAlgebra R a B).X.obj) :
-    letI := derivedH0CommRing (completedAlgebra R a B)
-    letI := completedAlgebraScalarAlgebra R a B
-    completedAlgebraRestrictionH0BLinearEquiv R a B y =
-      (completedAlgebraRestrictionH0Iso R a B).hom y := rfl
-
 /-- Actual H⁰ is complete over the coefficient algebra with its original unit action. -/
 lemma completedAlgebraH0_isModuleComplete :
     letI := derivedH0CommRing (completedAlgebra R a B)

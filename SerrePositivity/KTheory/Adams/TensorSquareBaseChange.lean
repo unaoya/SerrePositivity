@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorSquare
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChangeSymmetry
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
 
 /-! # Compatibility of tensor base change with the signed symmetry -/
 

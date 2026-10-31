@@ -1,7 +1,13 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorShortExact
-public import SerrePositivity.PerfectComplex.DegreewiseRetract
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.DegreeMaps
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
+public import Mathlib.Algebra.Homology.ShortComplex.ShortExact
+public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.ShortExact
+public import SerrePositivity.PerfectComplex.Perfect.HomotopyCategory
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
 
 /-! # The intermediate layer of the tensor-square filtration -/

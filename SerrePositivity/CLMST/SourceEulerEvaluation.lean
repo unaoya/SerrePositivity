@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.CLMST.CompletedSourceLength
 public import SerrePositivity.CLMST.StageResidueLength
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedTensorEvaluation
-public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicityProof
-public import SerrePositivity.CommutativeAlgebra.KoszulFiniteLength
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
+public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 
 /-! # 比較元の Euler 評価の有限段での計算
 
@@ -97,6 +97,6 @@ theorem completedTensor_stage_source_euler_eq_multiplicity
         (Ideal.span (Set.range y)) (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ) := by
   let := stageAlgebra_isLocalRing A D t p htD n
   rw [completedTensor_stage_source_euler_eq_chiOrd A D t p ht hp htD hres n y hy,
-    KoszulMultiplicityProof.multiplicity_eq_chiOrd_koszul y hy]
+    KoszulMultiplicity.multiplicity_eq_chiOrd_koszul y hy]
 
 end SerrePositivity.CLMST

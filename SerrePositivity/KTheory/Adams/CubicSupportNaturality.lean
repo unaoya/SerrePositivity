@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.CyclicThree
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # The cyclic Adams cube commutes with enlargement of support -/
 

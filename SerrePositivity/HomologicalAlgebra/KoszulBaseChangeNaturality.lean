@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
 
 /-! # Base change respects the actual multiplicative Koszul maps -/

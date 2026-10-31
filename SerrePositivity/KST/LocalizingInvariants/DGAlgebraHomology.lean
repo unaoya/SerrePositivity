@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.CategoryTheory.Monoidal.Mon
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.Algebra.Category.Grp.EquivalenceGroupAddGroup

@@ -1,8 +1,13 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeFirstLayer
-public import SerrePositivity.PerfectComplex.TensorTripleDegreeMaps
-public import SerrePositivity.PerfectComplex.DegreewiseKernelLift
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.DegreeMaps
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+public import SerrePositivity.PerfectComplex.Eigen.Idempotent
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # The four low-degree components of the tensor-cube first layer -/
 

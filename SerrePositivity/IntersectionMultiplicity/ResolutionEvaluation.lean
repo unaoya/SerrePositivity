@@ -3,16 +3,16 @@ module
 public import SerrePositivity.CategoryTheory.AlternatingSum
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.HomologicalAlgebra.TorLES
-public import SerrePositivity.CommutativeAlgebra.HomologyLength
+public import SerrePositivity.CommutativeAlgebra.Length.Euler
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
-public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 public import Mathlib.Algebra.Ring.Action.Group
 public import Mathlib.CategoryTheory.Adjunction.Unique
 public import SerrePositivity.IntersectionMultiplicity.Basic
-public import SerrePositivity.CommutativeAlgebra.TorFiniteLength
-public import SerrePositivity.PerfectComplex.Support
-public import SerrePositivity.PerfectComplex.Closure
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
+public import SerrePositivity.PerfectComplex.Free.Support
+public import SerrePositivity.PerfectComplex.Free.K0
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-!
 # 分解の係数拡大と Euler 評価

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.SupportedKaroubiTriangulated
 public import SerrePositivity.Asymptotic.CompletedHomologyLength
-public import SerrePositivity.CategoryTheory.ConeLengthBinomial
+public import SerrePositivity.CategoryTheory.IteratedCone
 
 /-! # 商の完備化で支持される全対象への評価
 
@@ -53,6 +53,7 @@ lemma completedRankEuler_eq_homologicalEuler
       homologicalEuler (lengthQuotientValue lam s U hU hs)
         (completedRankHomology lam hfg z hJ hfin U hU hs 0) X := by
   unfold completedRankEuler completedSupportedEuler homologicalEuler
+  simp only [zsmul_eq_mul]
   congr 1
   funext q
   congr 1

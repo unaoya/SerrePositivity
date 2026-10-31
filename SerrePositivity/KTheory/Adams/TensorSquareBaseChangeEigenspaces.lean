@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareBaseChange
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
-public import SerrePositivity.PerfectComplex.InvolutionBaseChange
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 
 /-! # Base change of the positive and negative tensor-square complexes -/
 

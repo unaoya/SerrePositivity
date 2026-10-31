@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.CompatibleRootIdealTensor
+public import SerrePositivity.CommutativeAlgebra.CompatibleRoot
 public import SerrePositivity.HomologicalAlgebra.TorNaturality
 public import SerrePositivity.HomologicalAlgebra.DerivedTensor
 

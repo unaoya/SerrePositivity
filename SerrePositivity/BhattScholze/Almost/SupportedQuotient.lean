@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationSupportedQuotient
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatInjective
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCompatibleRoots
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness

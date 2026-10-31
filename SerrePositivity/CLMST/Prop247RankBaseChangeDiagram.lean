@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247RankTargets
 public import SerrePositivity.CLMST.Prop247RankProduct
-public import SerrePositivity.CommutativeAlgebra.FiniteProductBaseChange
+public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
 
 /-! # Prop 2.4.7：原典の rank 像から指定した各対象への実底変換図式
 

@@ -1,15 +1,14 @@
 module
 
 public import Mathlib.Algebra.Colimit.Ring
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.AdicCompletion.Algebra
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Colimit
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import Mathlib.Algebra.Polynomial.Lifts
 public import Mathlib.SetTheory.Cardinal.Regular
 

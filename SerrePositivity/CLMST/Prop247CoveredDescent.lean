@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247UniformStandard
-public import SerrePositivity.HomologicalAlgebra.ConeFiniteCover
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：底変換先の実有限被覆から元の写像への降下
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.ChainLinearYoneda
+public import SerrePositivity.HomologicalAlgebra.LinearYoneda
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 
 /-! # Linear dual cochain complexes over the actual coefficient algebra -/

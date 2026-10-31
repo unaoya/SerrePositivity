@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.MultiplicityFormulas
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
+public import SerrePositivity.LengthAlgebra.Core
 
 /-!
 # 定理2.5の標数によらない導出
@@ -29,7 +29,7 @@ theorem parameter_quotient_values_pow (D C : Type u) [CommRing D] [IsLocalRing D
         ENNReal.ofReal ((v : ℝ) ^ h *
           (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ)) := by
   intro z hz v hv
-  rw [hquot _ (hz.pow D v hv), HilbertSamuel.multiplicity_parameter_pow D z hz v hv]
+  rw [hquot _ (hz.pow D v hv), KoszulMultiplicity.multiplicity_parameter_pow D z hz v hv]
   norm_cast
 
 /-- (2.5) と正則基底の重複度の階数公式から (2.6) を得る。 -/

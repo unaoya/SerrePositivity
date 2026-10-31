@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.CategoryTheory.FiniteSupportBounds
+public import SerrePositivity.CategoryTheory.AlternatingSum
 
 public import SerrePositivity.Asymptotic.CompletedEulerAdditivity
-public import SerrePositivity.CategoryTheory.HomologicalConeLength
+public import SerrePositivity.CategoryTheory.IteratedCone
 
 /-! # 完備化後の非負ホモロジー長と零写像の錐 -/
 

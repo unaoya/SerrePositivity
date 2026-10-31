@@ -4,7 +4,7 @@ public import SerrePositivity.DifferentialGraded.Derived.GradedExtensionProjecti
 public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
 public import SerrePositivity.DifferentialGraded.Module.Biproduct
 public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # 主Homによる射影性の有限操作に対する閉性 -/
 @[expose] public section

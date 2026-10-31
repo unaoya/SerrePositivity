@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankProduct
-public import SerrePositivity.CommutativeAlgebra.FiniteSpectrumPartition
+public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 public import Mathlib.RingTheory.Localization.Algebra
 public import Mathlib.RingTheory.LocalProperties.Reduced
 public import Mathlib.RingTheory.Localization.Pi

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroTransport
 public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! ホモトピー零の実 Hom 複体と双加群の値から、全次数の acyclic 性を回収する。 -/

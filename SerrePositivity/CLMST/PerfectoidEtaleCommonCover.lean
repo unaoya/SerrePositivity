@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleAwayCover
-public import SerrePositivity.CommutativeAlgebra.DoubleLocalizationTensorComparison
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel
-public import SerrePositivity.CommutativeAlgebra.LocalizationComparisonTensorEquiv
+public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 
 /-! # Derived complete common models on the actual finite etale splitting cover
 

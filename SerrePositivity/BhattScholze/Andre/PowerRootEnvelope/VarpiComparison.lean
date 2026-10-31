@@ -6,8 +6,8 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PerfectionFaithful
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraAcyclicBaseChange
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.VarpiPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Residue
 public import Mathlib.RingTheory.TensorProduct.Quotient

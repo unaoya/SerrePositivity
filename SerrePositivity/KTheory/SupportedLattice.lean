@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.TorsionAnnihilator
-public import SerrePositivity.CommutativeAlgebra.LocalizationLattice
+public import SerrePositivity.CommutativeAlgebra.Localization.Lattice
 public import Mathlib.RingTheory.Finiteness.Ideal
 
 /-! # Finite supported lattices in localized modules -/

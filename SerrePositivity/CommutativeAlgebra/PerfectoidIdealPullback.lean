@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PullbackAnnihilator
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
 
 /-! # Original perfectoid-ideal annihilators from a ring pullback square

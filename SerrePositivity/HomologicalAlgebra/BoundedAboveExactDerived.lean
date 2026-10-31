@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveLeftDerived
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.CategoryTheory.ExactDerivedTStructure
 
 /-! # Exact functors on the standard bounded-above derived categories -/

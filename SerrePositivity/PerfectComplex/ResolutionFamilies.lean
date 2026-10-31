@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ControlledResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 public import SerrePositivity.HomologicalAlgebra.UniformNullHomotopy
 public import Mathlib.Analysis.Asymptotics.Ring
 public import Mathlib.LinearAlgebra.Dimension.Free

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductCoordinates
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 
 /-! # 二座標Koszul塔の直積の行列表示 -/
 

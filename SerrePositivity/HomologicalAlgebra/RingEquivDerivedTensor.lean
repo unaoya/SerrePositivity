@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedTensor
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Tensor
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
 public import Mathlib.CategoryTheory.Preadditive.Projective.Preserves

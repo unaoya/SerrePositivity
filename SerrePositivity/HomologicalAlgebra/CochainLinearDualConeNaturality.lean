@@ -1,6 +1,7 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainLinearDualCone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.LinearYoneda
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 
 /-! # Naturality of the signed dual cone comparison in its coefficient module -/
 @[expose] public section

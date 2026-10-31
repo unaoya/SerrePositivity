@@ -98,7 +98,7 @@ K0 界面の未供給の性質を本レーンの定理として公開しない�
 
 作成日：2026-10-18。
 チャットのレーン名：K-L2（比較定理）。
-正本は [KST 経路](../k-theory-kst-route.md) と [基盤計画](../foundations.md)。
+正本は [KST 経路](k-theory-kst-route.md) と [基盤計画](../infinity-lanes/foundations.md)。
 KST 経路の §2.5 P1、§4 D2、§5 K2、§10-5、§13 を参照する。
 決定の衝突は foundations.md と KST 経路 §13 の優先順位で読む。
 Lean の namespace は `SerrePositivity.KST.Comparison` とする。

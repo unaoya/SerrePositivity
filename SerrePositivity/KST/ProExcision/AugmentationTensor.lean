@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.Tactic.Abel
 public import Mathlib.Algebra.Homology.Additive
 

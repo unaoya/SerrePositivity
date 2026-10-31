@@ -10,7 +10,7 @@ public import Mathlib.FieldTheory.Perfect
 public import Mathlib.RingTheory.Ideal.Quotient.PowTransition
 public import Mathlib.RingTheory.WittVector.Complete
 public import SerrePositivity.CommutativeAlgebra.Witt.Lift
-public import SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 
 /-!
 # 完全 δ 環の構造（BS 著者版 §2.4：Lemma 2.28・2.32・2.33、Cor 2.31、Ex 2.6）

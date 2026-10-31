@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedBaseChange
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveExactDerived
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import Mathlib.Algebra.Category.ModuleCat.Descent
 
 /-! # Faithfully flat detection of homology maps

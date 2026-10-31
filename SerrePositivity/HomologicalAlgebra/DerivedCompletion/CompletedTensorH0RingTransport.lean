@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionFunctor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0Comparison
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairZeroCompletion
-public import SerrePositivity.CommutativeAlgebra.TensorRingEquiv
+public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
 
 /-! # Transport the actual completed tensor H⁰ as a ring via its original ordinary tensor
 

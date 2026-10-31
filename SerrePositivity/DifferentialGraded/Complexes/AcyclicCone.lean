@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 
 /-! # 既存の複体 cone による quasiIso の判定 -/
 @[expose] public section

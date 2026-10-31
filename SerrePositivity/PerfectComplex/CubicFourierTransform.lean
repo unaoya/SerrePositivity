@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.CubicActionDecomposition
+public import SerrePositivity.PerfectComplex.Eigen.Cubic
 
 /-! # The Fourier transform and its inverse on three scalar coordinates -/
 

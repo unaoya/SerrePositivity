@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CLMST.PerfectoidCokernel
-public import SerrePositivity.LengthAlgebra.KoszulCokernelBounds
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedFiniteLength
-public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
+public import SerrePositivity.LengthAlgebra.KoszulModule
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 
 /-! # 完備テンソル代数と perfectoid 化の Koszul 長さの誤差評価

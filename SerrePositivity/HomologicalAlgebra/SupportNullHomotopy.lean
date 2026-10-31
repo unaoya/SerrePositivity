@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.NullHomotopy
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import Mathlib.RingTheory.Support
 
 /-! # 幾何学的支持から有限射影複体の零ホモトピーを構成する

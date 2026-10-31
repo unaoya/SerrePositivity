@@ -137,19 +137,6 @@ lemma derivedNonpositiveHomToSingleEquiv_precomp
   simp only [derivedNonpositiveHomToSingleEquiv_apply,
     CategoryTheory.Functor.map_comp, Category.assoc]
 
-/-- The normalized comparison is natural in its discrete target. -/
-lemma derivedNonpositiveHomToSingleEquiv_postcomp
-    (X : DerivedCategory (ModuleCat.{u} R)) [X.IsLE 0] {M N : ModuleCat.{u} R}
-    (f : X ⟶ (DerivedCategory.singleFunctor (ModuleCat.{u} R) 0).obj M) (g : M ⟶ N) :
-    derivedNonpositiveHomToSingleEquiv X N (f ≫ (DerivedCategory.singleFunctor (ModuleCat.{u} R)
-      0).map g) =
-      derivedNonpositiveHomToSingleEquiv X M f ≫ g := by
-  rw [derivedNonpositiveHomToSingleEquiv_apply,
-    derivedNonpositiveHomToSingleEquiv_apply, CategoryTheory.Functor.map_comp,
-    Category.assoc]
-  exact congrArg ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map f ≫ ·)
-    ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat.{u} R) 0).hom.naturality g)
-
 /-- The canonical augmentation to the actual single object of H0. -/
 def derivedNonpositiveAugmentation (X : DerivedCategory (ModuleCat.{u} R)) [X.IsLE 0] :
     X ⟶ (DerivedCategory.singleFunctor (ModuleCat.{u} R) 0).obj ((DerivedCategory.homologyFunctor
@@ -166,18 +153,5 @@ def derivedNonpositiveAugmentation (X : DerivedCategory (ModuleCat.{u} R)) [X.Is
   rw [← derivedNonpositiveHomToSingleEquiv_apply]
   exact (derivedNonpositiveHomToSingleEquiv X ((DerivedCategory.homologyFunctor (ModuleCat.{u} R)
     0).obj X)).apply_symm_apply (𝟙 _)
-
-/-- The canonical augmentation is natural for all maps between nonpositive objects. -/
-lemma derivedNonpositiveAugmentation_naturality
-    {X Y : DerivedCategory (ModuleCat.{u} R)} [X.IsLE 0] [Y.IsLE 0] (f : X ⟶ Y) :
-    f ≫ derivedNonpositiveAugmentation Y =
-      derivedNonpositiveAugmentation X ≫ (DerivedCategory.singleFunctor (ModuleCat.{u} R) 0).map
-        ((DerivedCategory.homologyFunctor (ModuleCat.{u} R) 0).map f) := by
-  apply (derivedNonpositiveHomToSingleEquiv X ((DerivedCategory.homologyFunctor (ModuleCat.{u} R)
-    0).obj Y)).injective
-  rw [derivedNonpositiveHomToSingleEquiv_precomp,
-    derivedNonpositiveHomToSingleEquiv_postcomp]
-  simp only [derivedNonpositiveAugmentation, Equiv.apply_symm_apply,
-    Category.comp_id, Category.id_comp]
 
 end SerrePositivity

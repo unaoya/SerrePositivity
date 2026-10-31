@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.LinearAlgebra.Dimension.Localization
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Basic.Real.Basic
@@ -18,50 +18,35 @@ public import Mathlib.Algebra.Homology.SingleHomology
 public import Mathlib.CategoryTheory.Abelian.LeftDerived
 public import Mathlib.CategoryTheory.Abelian.Projective.Resolution
 public import Mathlib.CategoryTheory.Preadditive.Projective.Resolution
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
+public import Mathlib.Algebra.Category.ModuleCat.Ext.HasExt
+public import Mathlib.CategoryTheory.Abelian.Projective.Ext
+public import Mathlib.CategoryTheory.Abelian.Projective.Dimension
 
-/-!
-# ℤ 添字 cochain 複体と射影分解の行き来
+/-! # ℤ 添字の cochain 分解と射影分解
 
 ## 概要
 
-このプロジェクトでは複体を ℤ 添字の cochain 複体として扱う。一方、Mathlib の射影分解
-`ProjectiveResolution X` は ℕ 添字の chain 複体 `P_0 ← P_1 ← …` であり、左導来関手（`Tor`）の
-計算はこの形で行われる。このファイルは二つの形の間を行き来する道具を用意する。対応は
-添字 `n ↦ -n`、すなわち chain の `n` 次を cochain の `-n` 次に置く埋め込み `embUp`
-（Mathlib の `ComplexShape.embeddingUpIntLE 0`）で与える。
+このプロジェクトの ℤ 添字 cochain 複体の分解 `IsResolutionOf` と、Mathlib の ℕ 添字の射影分解 `ProjectiveResolution` を行き来する（chain の n 次を cochain の -n 次に置く）。分解の間の射から誘導される左導来関手の射の自然性、分解の写像の写像錐が余核の分解になること（`isResolutionOf_cone`、馬蹄補題の代わり）、有界な射影分解が射影次元を抑えることを示す。
 
-## 内容
+## 方針
 
-1. **制限 `toChain`**：cochain 複体 `K` の `0` 以下の次数だけを取り出して chain 複体にする。
-   `K` が `0` 以下の次数に乗っていればホモロジーは保たれる（`toChainHomologyIso`：
-   `(toChain K).homology n ≅ K.homology (-n)`）。`n ≥ 1` では Mathlib の `restrictionHomologyIso` が
-   そのまま使えるが、`n = 0` は制限の端なので別扱いになり、「`1` 次の項が零なら `0` 次の
-   ホモロジーは余サイクル `opcycles` に等しい」ことを両辺で使ってつなぐ。
-2. **`IsResolutionOf K Z`**：cochain 複体 `K` が加群 `Z` の分解であること。すなわち `0` 以下の次数に
-   乗り、各項が射影的で、`H^i(K) = 0 (i ≠ 0)`、`H^0(K) ≅ Z`。このとき `toChain K` に増大射
-   `toChain K → Z[0]`（`IsResolutionOf.π`）を付けると Mathlib の `ProjectiveResolution Z` になる
-   （`toProjectiveResolution`）。Koszul 複体を射影分解として使うとき
-   （`CommutativeAlgebra/KoszulResolution.lean`）と、持ち上げの写像錐が分解になること
-   （`ConeResolution.lean`）に使う。
-3. **延長 `extRes`**：逆向きに、Mathlib の射影分解 `P` を `embUp` に沿って cochain 複体に延長する。
-   延長した複体は `IsResolutionOf (extRes P) X` をみたす（`isResolutionOf_extRes`）。射 `f : X ⟶ Y` の
-   射影分解への持ち上げ `ProjectiveResolution.lift f P Q` も延長でき（`extLift`）、`0` 次のホモロジーで
-   `f` を誘導する（`extLift_homologyZero`）。Tor の長完全列（`TorLES.lean`）で、短完全列の射を
-   分解の間の鎖写像に持ち上げて写像錐をとるために使う。
-
-階数の計算として、整域上の有限な射影分解の階数の交代和を求める
-`resolution_alternating_finrank` も示す。正則局所環に固有の入力には依存しない。
+ホモロジーの同型は `embUp` と制限関手の比較で取り、自然性は零次ホモロジーで指定した写像から従う。
 
 ## 規約
 
-`embUp.f n = 0 - n = -n`。制限と延長は Mathlib の `HomologicalComplex.restriction`・`extend` で、
-項の同一視は `restrictionXIso`・`extendXIso`、ホモロジーの同一視は `restrictionHomologyIso`・
-`extendHomologyIso` を使う。
+`coneHomologyZeroEquiv` は ResolutionMappingCone と ConeResolution の両方にあり、後者は前者の特殊化（一本化の候補、refactor-plan §3.2.3）。
+
+## 使われ方
+
+Tor の計算と長完全列、正則局所環の有限自由分解、交点重複度。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 universe u
+
+section ResolutionPart
 
 open CategoryTheory Limits
 
@@ -468,7 +453,6 @@ lemma resolution_alternating_finrank {M : ModuleCat.{u} R}
   simpa [hr] using hs n
 end SerrePositivity
 
-@[expose] public section
 
 open CategoryTheory Limits
 
@@ -525,4 +509,329 @@ end ResolutionSyzygy
 
 end SerrePositivity
 
-end
+
+end ResolutionPart
+
+section ResolutionNaturalityPart
+
+namespace SerrePositivity
+
+open CategoryTheory Limits HomologicalComplex
+
+set_option backward.isDefEq.respectTransparency false
+
+variable {R S : Type u} [CommRing R] [CommRing S]
+
+/-- 自然数添字への制限における余サイクルの比較。 -/
+noncomputable abbrev toChainOpcyclesIso (K : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℕ) :
+    (toChain K).opcycles n ≅ K.opcycles (-(n : ℤ)) :=
+  K.restrictionOpcyclesIso embUp (i := n + 1) (j := n) (hi := by simp [ChainComplex.prev])
+    (i' := -((n + 1 : ℕ) : ℤ)) (j' := -(n : ℤ)) (hi' := by simp) (hj' := by simp)
+    (hi'' := by simp [CochainComplex.prev]; omega)
+
+@[reassoc]
+lemma toChainHomologyIso_hom_homologyι (K : CochainComplex (ModuleCat.{u} R) ℤ)
+    (hK : ∀ q : ℤ, 0 < q → IsZero (K.X q)) (n : ℕ) :
+    (toChainHomologyIso K hK n).hom ≫ K.homologyι (-(n : ℤ)) =
+      (toChain K).homologyι n ≫ (toChainOpcyclesIso K n).hom := by
+  cases n with
+  | zero =>
+    have := K.isIso_homologyι 0 1 (by simp) (d_zero_one_eq_zero K hK)
+    simp [toChainHomologyIso, toChainHomologyIsoZero, toChainOpcyclesIso]
+  | succ n =>
+    exact restrictionHomologyIso_hom_homologyι ..
+
+@[reassoc]
+lemma toChainOpcyclesIso_hom_naturality
+    {K L : CochainComplex (ModuleCat.{u} R) ℤ} (f : K ⟶ L) (n : ℕ) :
+    opcyclesMap (restrictionMap f embUp) n ≫ (toChainOpcyclesIso L n).hom =
+      (toChainOpcyclesIso K n).hom ≫ opcyclesMap f (-(n : ℤ)) := by
+  apply (cancel_epi ((toChain K).pOpcycles n)).mp
+  simp only [p_opcyclesMap_assoc, toChainOpcyclesIso,
+    pOpcycles_restrictionOpcyclesIso_hom, pOpcycles_restrictionOpcyclesIso_hom_assoc,
+    p_opcyclesMap]
+  rw [restrictionMap_f' f embUp (by simp : embUp.f n = -(n : ℤ))]
+  simp
+
+/-- ホモロジーの添字変換は、分解の射と可換である。 -/
+@[reassoc]
+lemma toChainHomologyIso_hom_naturality
+    {K L : CochainComplex (ModuleCat.{u} R) ℤ} (f : K ⟶ L)
+    (hK : ∀ q : ℤ, 0 < q → IsZero (K.X q)) (hL : ∀ q : ℤ, 0 < q → IsZero (L.X q)) (n : ℕ) :
+    homologyMap (restrictionMap f embUp) n ≫ (toChainHomologyIso L hL n).hom =
+      (toChainHomologyIso K hK n).hom ≫ homologyMap f (-(n : ℤ)) := by
+  apply (cancel_mono (L.homologyι (-(n : ℤ)))).mp
+  simp only [Category.assoc, toChainHomologyIso_hom_homologyι,
+    homologyι_naturality, homologyι_naturality_assoc,
+    toChainHomologyIso_hom_homologyι_assoc, toChainOpcyclesIso_hom_naturality]
+
+/-- 分解の零次ホモロジーでの両立から、自然数添字の増大射との両立を得る。 -/
+lemma IsResolutionOf.restrictionMap_π_f_zero
+    {K L : CochainComplex (ModuleCat.{u} R) ℤ} {X Y : ModuleCat.{u} R}
+    (hK : IsResolutionOf K X) (hL : IsResolutionOf L Y) (f : K ⟶ L) (g : X ⟶ Y)
+    (h : homologyMap f 0 ≫ hL.homologyZeroIso.hom = hK.homologyZeroIso.hom ≫ g) :
+    (restrictionMap f embUp).f 0 ≫ hL.π.f 0 = hK.π.f 0 ≫ g := by
+  have he : opcyclesMap (restrictionMap f embUp) 0 ≫ hL.opcyclesIso.hom =
+      hK.opcyclesIso.hom ≫ g := by
+    apply (cancel_epi ((toChain K).homologyι 0)).mp
+    simp only [IsResolutionOf.opcyclesIso, Iso.trans_hom, Iso.symm_hom, asIso_inv,
+      ← homologyι_naturality_assoc, Category.assoc]
+    simp only [IsIso.hom_inv_id_assoc]
+    have hn : homologyMap (restrictionMap f embUp) 0 ≫ (toChainHomologyIsoZero L hL.isZero_X).hom =
+        (toChainHomologyIsoZero K hK.isZero_X).hom ≫ homologyMap f 0 := by
+      simpa [toChainHomologyIso] using
+        toChainHomologyIso_hom_naturality f hK.isZero_X hL.isZero_X 0
+    rw [← Category.assoc, hn, Category.assoc, h]
+  rw [IsResolutionOf.π_f_zero, IsResolutionOf.π_f_zero, ← Category.assoc,
+    ← p_opcyclesMap, Category.assoc, he, Category.assoc]
+
+/-- 関手と添字制限の比較は、複体の射と可換である。 -/
+@[reassoc]
+lemma mapRestrictionIso_hom_naturality (G : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [G.Additive]
+    {K L : CochainComplex (ModuleCat.{u} R) ℤ} (f : K ⟶ L) :
+    (G.mapHomologicalComplex _).map (restrictionMap f embUp) ≫ (mapRestrictionIso G L).hom =
+      (mapRestrictionIso G K).hom ≫ restrictionMap ((G.mapHomologicalComplex _).map f) embUp := by
+  apply HomologicalComplex.Hom.ext
+  funext i
+  simp [mapRestrictionIso]
+
+/-- コチェイン分解で計算した射は、左導来関手の標準の射と一致する。 -/
+@[reassoc]
+lemma leftDerivedIsoCochain_hom_naturality
+    (G : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [G.Additive]
+    {K L : CochainComplex (ModuleCat.{u} R) ℤ} {X Y : ModuleCat.{u} R}
+    (hK : IsResolutionOf K X) (hL : IsResolutionOf L Y) (f : K ⟶ L) (g : X ⟶ Y)
+    (h : homologyMap f 0 ≫ hL.homologyZeroIso.hom = hK.homologyZeroIso.hom ≫ g) (i : ℕ) :
+    (G.leftDerived i).map g ≫ (leftDerivedIsoCochain G hL i).hom =
+      (leftDerivedIsoCochain G hK i).hom ≫
+        homologyMap ((G.mapHomologicalComplex _).map f) (-(i : ℤ)) := by
+  have hn := ProjectiveResolution.isoLeftDerivedObj_hom_naturality g
+    hK.toProjectiveResolution hL.toProjectiveResolution (restrictionMap f embUp)
+    (hK.restrictionMap_π_f_zero hL f g h) G i
+  have hr := congrArg ((homologyFunctor (ModuleCat S) (.down ℕ) i).map)
+    (mapRestrictionIso_hom_naturality G f)
+  simp only [CategoryTheory.Functor.map_comp] at hr
+  have ht := toChainHomologyIso_hom_naturality ((G.mapHomologicalComplex _).map f)
+    (fun j hj ↦ G.map_isZero (hK.isZero_X j hj))
+    (fun j hj ↦ G.map_isZero (hL.isZero_X j hj)) i
+  simp only [leftDerivedIsoCochain, Iso.trans_hom, CategoryTheory.Functor.mapIso_hom]
+  rw [← Category.assoc, hn]
+  simp only [Category.assoc]
+  rw [← Category.assoc _ _ (toChainHomologyIso _ _ i).hom]
+  erw [hr]
+  simp only [Category.assoc]
+  erw [ht]
+
+/-- 関手と添字制限の比較は、関手の間の自然変換とも可換である。 -/
+@[reassoc]
+lemma mapRestrictionIso_natTrans (F G : ModuleCat.{u} R ⥤ ModuleCat.{u} S)
+    [F.Additive] [G.Additive] (α : F ⟶ G) (K : CochainComplex (ModuleCat.{u} R) ℤ) :
+    (NatTrans.mapHomologicalComplex α _).app (toChain K) ≫ (mapRestrictionIso G K).hom =
+      (mapRestrictionIso F K).hom ≫
+        restrictionMap ((NatTrans.mapHomologicalComplex α _).app K) embUp := by
+  apply HomologicalComplex.Hom.ext
+  funext i
+  simp [mapRestrictionIso]
+  rfl
+
+/-- コチェイン分解による計算は、加法関手の間の自然変換と可換である。 -/
+@[reassoc]
+lemma leftDerivedIsoCochain_natTrans
+    (F G : ModuleCat.{u} R ⥤ ModuleCat.{u} S) [F.Additive] [G.Additive] (α : F ⟶ G)
+    {K : CochainComplex (ModuleCat.{u} R) ℤ} {X : ModuleCat.{u} R}
+    (hK : IsResolutionOf K X) (i : ℕ) :
+    (NatTrans.leftDerived α i).app X ≫ (leftDerivedIsoCochain G hK i).hom =
+      (leftDerivedIsoCochain F hK i).hom ≫
+        homologyMap ((NatTrans.mapHomologicalComplex α _).app K) (-(i : ℤ)) := by
+  have hn := hK.toProjectiveResolution.leftDerived_app_eq α i
+  have hr := congrArg ((homologyFunctor (ModuleCat S) (.down ℕ) i).map)
+    (mapRestrictionIso_natTrans F G α K)
+  simp only [CategoryTheory.Functor.map_comp] at hr
+  have ht := toChainHomologyIso_hom_naturality ((NatTrans.mapHomologicalComplex α _).app K)
+    (fun j hj ↦ F.map_isZero (hK.isZero_X j hj))
+    (fun j hj ↦ G.map_isZero (hK.isZero_X j hj)) i
+  simp only [leftDerivedIsoCochain, Iso.trans_hom, CategoryTheory.Functor.mapIso_hom]
+  rw [hn]
+  simp only [Category.assoc, Iso.inv_hom_id_assoc]
+  rw [← Category.assoc _ _ (toChainHomologyIso _ _ i).hom]
+  erw [hr]
+  simp only [Category.assoc]
+  erw [ht]
+
+end SerrePositivity
+
+end ResolutionNaturalityPart
+
+section ResolutionMappingConePart
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity
+open CategoryTheory Limits HomologicalComplex
+variable {R : Type u} [CommRing R] {M₁ M₂ M₃ : ModuleCat.{u} R}
+namespace IsResolutionOf
+variable {K L : CochainComplex (ModuleCat.{u} R) ℤ}
+variable (hK : IsResolutionOf K M₁) (hL : IsResolutionOf L M₂)
+  (f : M₁ →ₗ[R] M₂) (g : M₂ →ₗ[R] M₃) (l : K ⟶ L)
+  (hl : homologyMap l 0 = hK.homologyZeroIso.hom ≫ ModuleCat.ofHom f ≫
+    hL.homologyZeroIso.inv)
+
+/-- Zero homology of a lifted cone is the cokernel module. -/
+def coneHomologyZeroEquiv (hg : Function.Surjective g) (he : Function.Exact f g) :
+    (CochainComplex.mappingCone l).homology 0 ≃ₗ[R] M₃ := by
+  have h₂ := Cone.exact₂ l 0
+  have h₃ := Cone.exact₃ l 0 1 rfl
+  have hepi : Epi (homologyMap (CochainComplex.mappingCone.inr l) 0) :=
+    h₃.epi_f ((hK.isZero_homology 1 one_ne_zero).eq_zero_of_tgt _)
+  have hsurj := (ModuleCat.epi_iff_surjective _).mp hepi
+  have hrk : LinearMap.range (homologyMap l 0).hom =
+      LinearMap.ker (homologyMap (CochainComplex.mappingCone.inr l) 0).hom :=
+    (ShortComplex.moduleCat_exact_iff_range_eq_ker _).mp h₂
+  let e₁ := hK.homologyZeroIso.toLinearEquiv
+  let e₂ := hL.homologyZeroIso.toLinearEquiv
+  have hmap : (LinearMap.range (homologyMap l 0).hom).map e₂.toLinearMap = LinearMap.range f := by
+    rw [← LinearMap.range_comp, hl]
+    have hc : e₂.toLinearMap.comp
+        (hK.homologyZeroIso.hom ≫ ModuleCat.ofHom f ≫
+          hL.homologyZeroIso.inv).hom = f.comp e₁.toLinearMap := by
+      ext x
+      simp [e₁, e₂]
+    rw [hc, LinearMap.range_comp_of_range_eq_top _ e₁.range]
+  exact (LinearMap.quotKerEquivOfSurjective _ hsurj).symm.trans
+    ((Submodule.quotEquivOfEq _ _ hrk.symm).trans
+      ((Submodule.Quotient.equiv _ _ e₂ hmap).trans
+        ((Submodule.quotEquivOfEq _ _ (LinearMap.exact_iff.mp he).symm).trans
+          (LinearMap.quotKerEquivOfSurjective g hg))))
+
+/-- The cone of a lift of an injective map resolves its cokernel module. -/
+def mappingCone (hf : Function.Injective f) (hg : Function.Surjective g)
+    (he : Function.Exact f g) : IsResolutionOf (CochainComplex.mappingCone l) M₃ :=
+    { isZero_X := fun i hi => by
+        rw [CochainComplex.mappingCone.isZero_X_iff]
+        exact ⟨hK.isZero_X _ (by omega), hL.isZero_X _ hi⟩
+      projective := fun i => by
+        have := hK.projective (i + 1)
+        have := hL.projective i
+        exact Projective.of_iso
+          (HomologicalComplex.homotopyCofiber.XIsoBiprod l i (i + 1) rfl).symm inferInstance
+      isZero_homology := fun i hi => by
+        by_cases hi' : i = -1
+        · subst i
+          have h10 : (-1 : ℤ) + 1 = 0 := by norm_num
+          have h₃ := Cone.exact₃ l (-1) 0 h10
+          have hz := hL.isZero_homology (-1) (by norm_num)
+          have hmonoδ : Mono (Cone.δ l (-1) 0 h10) := h₃.mono_g (hz.eq_zero_of_src _)
+          have hcomp : Cone.δ l (-1) 0 h10 ≫ homologyMap l 0 = 0 :=
+            comp_eq_zero_transport (Cone.S₁ l (-1) 0 h10) _ _ _ _ _
+              (Cone.δ_square l (-1) 0 h10) (Cone.e_naturality 0 l)
+          have : Mono (homologyMap l 0) := by
+            rw [hl]
+            have : Mono (ModuleCat.ofHom f) := (ModuleCat.mono_iff_injective _).mpr hf
+            infer_instance
+          have hδ : Cone.δ l (-1) 0 h10 = 0 := zero_of_comp_mono _ hcomp
+          rw [IsZero.iff_id_eq_zero, ← cancel_mono (Cone.δ l (-1) 0 h10),
+            Category.id_comp, zero_comp, hδ]
+        · exact (Cone.exact₃ l i (i + 1) rfl).isZero_of_both_isZero
+            (hL.isZero_homology i hi) (hK.isZero_homology _ (by omega))
+      homologyZeroIso := (hK.coneHomologyZeroEquiv hL f g l hl hg he).toModuleIso }
+
+end IsResolutionOf
+end SerrePositivity
+
+end ResolutionMappingConePart
+
+section ConeResolutionPart
+
+open CategoryTheory Limits
+
+namespace SerrePositivity
+
+variable (A : Type u) [CommRing A]
+
+/-- `A` 加群 `V` の射影分解（Mathlib の `projectiveResolution` で選んだもの）を ℤ 添字 cochain 複体に
+延長したもの。`-n` 次の項が分解の `n` 番目の射影加群で、正の次数は零。 -/
+noncomputable abbrev resV (V : Type u) [AddCommGroup V] [Module A V] :
+    CochainComplex (ModuleCat.{u} A) ℤ :=
+  extRes (projectiveResolution (ModuleCat.of A V))
+
+/-- `resV V` の `0` 次ホモロジーと `V` の同型（`extResHomologyZeroIso`）。長完全列の `0` 次の部分を
+`V` の言葉に書き直すのに使う。 -/
+noncomputable abbrev resVHomologyZeroIso (V : Type u) [AddCommGroup V] [Module A V] :
+    (resV A V).homology 0 ≅ ModuleCat.of A V :=
+  extResHomologyZeroIso (projectiveResolution (ModuleCat.of A V))
+
+variable {A}
+variable {V₁ V₂ V₃ : Type u} [AddCommGroup V₁] [Module A V₁] [AddCommGroup V₂] [Module A V₂]
+  [AddCommGroup V₃] [Module A V₃]
+
+/-- 線形写像 `f : V₁ → V₂` の、分解の間の鎖写像 `f̃ : resV V₁ ⟶ resV V₂` への持ち上げ（`extLift`）。
+`0` 次のホモロジーで `f` を誘導する。この写像錐が `V₃` の分解になる。 -/
+noncomputable abbrev liftSES (f : V₁ →ₗ[A] V₂) : resV A V₁ ⟶ resV A V₂ :=
+  extLift (projectiveResolution (ModuleCat.of A V₁)) (ModuleCat.ofHom f)
+    (projectiveResolution (ModuleCat.of A V₂))
+
+/-- 持ち上げ `f̃` が `0` 次ホモロジーに誘導する射は、同一視 `resVHomologyZeroIso` のもとで `f` そのもの
+である。`extLift_homologyZero` を同型で移項した形。 -/
+lemma homologyMap_liftSES_zero (f : V₁ →ₗ[A] V₂) :
+    HomologicalComplex.homologyMap (liftSES f) 0 =
+      (resVHomologyZeroIso A V₁).hom ≫ ModuleCat.ofHom f ≫ (resVHomologyZeroIso A V₂).inv := by
+  rw [← Category.assoc, Iso.eq_comp_inv]
+  exact extLift_homologyZero _ _ _
+
+variable (f : V₁ →ₗ[A] V₂) (g : V₂ →ₗ[A] V₃)
+
+/-- 短完全列 `0 → V₁ →f V₂ →g V₃ → 0` について、`H^0(Cone f̃) ≃ V₃`。長完全列
+`H^0(resV V₁) → H^0(resV V₂) → H^0(Cone f̃) → H^1(resV V₁) = 0` から、`H^0(Cone f̃)` は `H^0(f̃)` の
+余核である。`H^0(f̃)` は同一視のもとで `f` なので余核は `V₂ / im f`、完全性 `im f = ker g` と `g` の
+全射性から `V₂ / ker g ≅ V₃`。これらの同型を順につないで構成する。 -/
+noncomputable def coneHomologyZeroEquiv (hg : Function.Surjective g) (hfg : Function.Exact f g) :
+    (Cone.cone (liftSES f)).homology 0 ≃ₗ[A] V₃ :=
+  (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₁))).coneHomologyZeroEquiv
+    (M₃ := ModuleCat.of A V₃)
+    (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₂)))
+    f g (liftSES f) (homologyMap_liftSES_zero f) hg hfg
+
+/-- **持ち上げの錐は余核の分解**：短完全列 `0 → V₁ →f V₂ →g V₃ → 0` について、`Cone f̃` は `V₃` の
+分解である。正の次数で零であることと射影性は項が直和であることから、ホモロジーの消滅は写像錐の
+長完全列から（`i = -1` では `H^0(f̃)` の単射性を使って連結射が零になる）、`H^0 ≅ V₃` は
+`coneHomologyZeroEquiv` による。 -/
+noncomputable def isResolutionOf_cone (hf : Function.Injective f) (hg : Function.Surjective g)
+    (hfg : Function.Exact f g) :
+    IsResolutionOf (Cone.cone (liftSES f)) (ModuleCat.of A V₃) :=
+  (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₁))).mappingCone
+    (isResolutionOf_extRes (projectiveResolution (ModuleCat.of A V₂)))
+    f g (liftSES f) (homologyMap_liftSES_zero f) hf hg hfg
+
+end SerrePositivity
+
+end ConeResolutionPart
+
+section BoundedResolutionDimensionPart
+
+namespace SerrePositivity
+open CategoryTheory Limits Abelian
+variable {R : Type u} [CommRing R]
+
+/-- A bounded projective resolution supplies the categorical finite-projective-dimension bound. -/
+lemma exists_projectiveDimensionLE_of_boundedResolution {M : ModuleCat.{u} R}
+    {F : CochainComplex (ModuleCat.{u} R) ℤ} (hF : IsResolutionOf F M)
+    (hb : ∃ a b : ℤ, ∀ i, (i < a ∨ b < i) → IsZero (F.X i)) :
+    ∃ n, HasProjectiveDimensionLE M n := by
+  obtain ⟨a, b, hb⟩ := hb
+  let n := (-a).toNat
+  let P := hF.toProjectiveResolution
+  refine ⟨n, HasProjectiveDimensionLT.mk ?_⟩
+  intro i hi Y e
+  have hz : IsZero (P.complex.X i) := by
+    have ht : IsZero (F.X (embUp.f i)) := hb _ (Or.inl (by
+      simp only [embUp, ComplexShape.embeddingUpIntLE_f]
+      dsimp [n] at hi
+      omega))
+    exact ht.of_iso (F.restrictionXIso embUp rfl).symm
+  obtain ⟨f, hf, he⟩ := P.extMk_surjective e (i + 1) rfl
+  have hf0 : f = 0 := hz.eq_zero_of_src f
+  rw [← he]
+  simp only [hf0, ProjectiveResolution.extMk_zero]
+
+end SerrePositivity
+
+end BoundedResolutionDimensionPart

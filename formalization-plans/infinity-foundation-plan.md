@@ -1,4 +1,4 @@
-# ∞ 圏基盤の整備計画（2026-10-28 新設、同日に内部 3 件・外部 4 件＋第 2 回外部 2 件のレビューを反映、計画のみ・コード変更なし）
+# ∞ 圏基盤の整備計画（2026-10-28 新設。10-28 に内部 3 件・外部 6 件のレビューを反映。10-29〜30 に IF-W0-3 の判断と CategoryTheory の引き継ぎを反映）
 
 概要：
 - InfinityCategories の**中核**（§2）を、KST・DifferentialGraded・EInfinity・モデル圏に依存しない自立した ∞ 圏ライブラリにする。dg 側の応用層（DGNerve・DoldKanComparison・Derived）→ KST の辺（Derived → KST 133 辺、R44 など）は範囲外（§7）。
@@ -11,10 +11,10 @@
 - 全レーンを止める期間は短くする。止めずにできることは先に行い、大口は領域ごとに順番に止めて行う（§6）。
 
 規約：
-- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R74）。
+- 用語は §2 の表に従う。候補の番号は R 計画の通し番号（R1〜R79）。
 - **本書が正本**である。層の名前・段・前提・規模・工数（10-28 のレビューで再計測した値）は本書の値を使う。
   [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[refactoring-verdier.md](refactoring-verdier.md) は、各候補の詳しい記述と、調査時点の記録として残す。
-- 数値は HEAD `cbb891432`〜`bf573b627`（10-28）の時点のもの。実施の直前に計測し直す。移す対象は、ファイル名の一括指定ではなく、W0 で作る段ごとの対象 JSON（確定リスト）で決める。
+- 数値は HEAD `cbb891432`〜`bf573b627`（10-28）の時点のもの。IF-W0-3 での再計測（10-29〜30）は各窓の `scripts/refactor/targets/w*.md` にある。実施の直前に計測し直す。移す対象は、ファイル名の一括指定ではなく、W0 で作る段ごとの対象 JSON（確定リスト）で決める。
 
 使われ方：
 - コーディネータは、本書で分担と順序を決める。
@@ -50,13 +50,15 @@
 
 | 日付 | 決定 |
 | --- | --- |
-| 10-28 | 当面の目標は ∞ 基盤の整備。論文の層の切り出しは別の計画（[paper-layer-extraction.md](paper-layer-extraction.md)）とし、着手しない |
+| 10-28 | 当面の目標は ∞ 基盤の整備。論文の層の切り出しは別の計画（[paper-layer-extraction.md](archive/paper-layer-extraction.md)、10-30 に [refactor-plan.md](refactor-plan.md) へ統合）とし、着手しない |
 | 10-28 | 局所化・分数・Verdier 商の API の正本を、Sp レーン（KST/LocalizingInvariants）から ∞ 層へ移す |
 | 10-28 | Kan 複体と pointed 単体的集合の層は InfinityCategories の中に作る |
 | 10-28 | F1・F1B・F2 の改名は後で行う |
 | 10-28 | 名前空間の付け替えは最後（R54）にまとめて行う |
 | 10-28 | Verdier 列は束ねた `IsVerdierSequence` を残し、束ねない形を包む定義として加える（R50） |
 | 10-28 | モデル圏はできるだけ避け、∞ 中核の下にモデル圏が入らないようにする。モデル圏 → ∞ の比較は、中核の上の橋の層（ModelBridge）に出す（R72） |
+| 10-30 | CategoryTheory の下位ディレクトリ（104 本）と Nerve まわり 9 本の整理は、本計画に含めて行う（[伝達文](handover-ct-to-infinity-2026-10-30.md)、論文の層の側では触らない）。削除は IF-W0-3 の後（IF-W0-4）、Nerve の移動と統合は W2a、Mathlib への置き換えと private 化は段 G |
+| 10-30 | W2a では SConstruction のレーン（K-S•）も止める（R64 が SConstruction の約 400 本を移し、R76 の利用者にも SConstruction があるため） |
 | 10-28 | 層の名前は本書の §3 に統一する。R2 計画の旧名との対応：Foundation∞ ＝ {Core, Kan, Coherent, F1, F1B, HL}、Stable.Base ＝ Stable、Stable.F2Applications ＝ StablePresentable |
 
 層の順序（下から上へ。各層は自分以下の層だけを import する。`{…}` の中は同じ層で、その内部では循環のない依存（DAG）であればよい）：
@@ -81,6 +83,7 @@ Kan/ には、Core を使ってよい「空間の理論」を置く（π_n、長
 InfinityCategories/
   Simplicial/          単体的集合の組合せ論：horn・prism・inner anodyne・anodyne・宇宙持ち上げ・Ex∞・necklace・fat realization
   Core/                quasicategory：写像空間（PinchedHom を吸収）・join と slice・極限・同値・充満忠実・左右 fibration・Joyal・Kan fibration の道具
+    Roof/              slice の中の屋根（roof）の一般論のうち Core で書ける部分（R39 で Derived から下ろす。F1B/Roof・Stable/Roof も同じ）
   Kan/                 空間の理論：π_n・長完全列・Whitehead・塔と lim¹・Kan 置換・基本亜群・ホモトピーの整合性の道具
     Pointed/           基点付き：Σ ⊣ Ω・smash・基点付き内部 Hom・道空間 fibration
   Coherent/            単体的圏と coherent nerve（coherent nerve の計算も含む）
@@ -88,7 +91,7 @@ InfinityCategories/
   F1B/                 随伴・Kan 拡張・cofinality
     Localization/      IsLocalization・局所化の存在・DwyerKan/
   HomotopyLimits/      ホモトピー極限 = ∞ 極限・Bousfield–Kan・重み付き極限
-  Stable/              Exact/・Verdier/（Basic・Bundled・Adjoint・Thick・Comparison・Fractions）・Lax/・Semiorthogonal/・Infinity/（Cat^ex_∞）
+  Stable/              Exact/・Verdier/（Basic・Bundled・Adjoint・Thick・Comparison・Fractions）・Roof/・Lax/・Semiorthogonal/・Infinity/（Cat^ex_∞）
   F2/                  Cat∞ の極限・Ind・compact・冪等完備化・presentable
   StablePresentable/   安定 presentable（新しい数学の置き場）
   ModelBridge/         モデル圏 → ∞ の比較（HL の Quillen 系 42 本など）。中核はこれを import しない
@@ -99,6 +102,7 @@ InfinityCategories/
   - HA の 12 本のファイルの末尾にある「Model」の節を切り離し、使っていない import を外す。純粋な部分は Simplicial・Kan へ移す。12 本を切った後の試算（第 2 回レビューで再現済み、ビルドは未検証）：F1・F2 は 0 本。Stable は Derived を経由する DG.Module.Cylinder の 1 本で、R39 の範囲。HL は Quillen 系の 42 本を ModelBridge へ出して初めて 0 本になる（出す前は HFC 28・Quillen 7・Generated 2 本が残る）。
   - Quillen 系の 42 本（`quillenCfDerivedAdjunction_exists` など、モデル圏 → ∞ の比較）は ModelBridge へ出す。中核の主な結果（Detection、Bousfield–Kan の holim = ∞ 極限、Ind・Presentable）は、これを使っていない。
   - Mathlib の SSet の Kan・anodyne の API と、HA の純粋な単体的部分（small object argument による Kan 置換、mono 分解、対角、宇宙の持ち上げ）は中核で使ってよい。
+- **CategoryTheory（1 圏論）の扱い（10-30）**：`SerrePositivity/CategoryTheory/` の一般部分（Monoidal・Enriched・Limits・Quiver・Simplex・Under）は、Mathlib や HA/Simplicial と同じく**中核より下の基盤**として import を許す（中核の閉包に 34 本入っている。直接の辺は 1 本）。`layers.json` の許可する基盤に加える（10-30 の追加の伝達で、トップ階層の 12 本と GroupTheory/Coxeter も同じ扱い）。殻が再エクスポートしている HA/Rectification は禁止対象なので、殻は R75 で消す。
 - Sp（スペクトラムの ∞ 圏）は、安定性が無条件になるまで KST/Spectra に置く。
 - PiCriterion（F2/FilteredExchange/PiCriterion）とその橋 `FilteredSpaceBridgeInput` は、閉包に KST・DG を含む。そのため中核の外（Derived、または StablePresentable より上の応用層）に置く。これで R31 との食い違いを解消する。
 - **FilteredExchange の処置（R73）**：HTT 5.3.3.3（filtered 余極限と有限極限の交換）を直接示そうとした場所である。10-25 に Ind 側の厳密な経路 d′ が先に完成したため、直接経路 X は停止した。全 2,129 本を、重ならないように次の三つに分ける（第 2 回レビューで訂正：PiCriterion 33 本のうち 26 本が「使われている」側、7 本が「集約からだけ」の側に重複して数えられていた）。
@@ -136,18 +140,20 @@ InfinityCategories/
 | --- | --- | --- | --- | --- |
 | R41 | verify.sh を合否の関門にする。<br>・監査を固定の一覧ではなく自動で列挙する（基準コミットで 99 本）。<br>・scripts/audit の閉包もビルドする。<br>・ビルド・全監査・sorry 監査の失敗を集め、一つでもあれば非零で終了する（いまは失敗しても最後の `echo` で正常終了する）。<br>・まず基準状態で全緑になることを確かめる | なし | 故意に失敗させた監査で非零終了すること | 4〜8h |
 | R40a | 層検査（Python の import グラフ検査）を報告だけのモードで作る。§3 の層の表、禁止するディレクトリの組（KST・DG・EInfinity・ModelBridge・モデル圏の HA を中核から禁止）、例外の一覧を持つ。規則に「Core が import してよいのは Simplicial だけ。Kan は Core まで。Core の Kan の道具を増やさない」を含める。違反の数を記録し、§6 の段階的な強制で使う | なし | 現状の違反を全件出すこと | 8〜16h |
-| R74 | **新設**：段ごとの対象 JSON と、保存検査の道具を作る。<br>**JSON の項目**：`module`、`action`（move／split／archive）、`dest`、`keep`（split で元に残す宣言）、`moved`（split で新しいファイルへ移す宣言）、`attributes`（instance・simp などの保存すべき属性）、`note`。対象は R26（SpecifiedHomotopyLift・SpecifiedFunctorEdgeLift を含む）・R49b・R56a・R56b・R61・R64・R52・R69・R70・R72・R73。<br>**分割の手順**：move_module.py は移動（moves・redirects・symbols）だけで、ファイルの分割はできない。分割は、新しいファイルに宣言をそのまま写し、元から削り、import を張り替える小さな道具を作って行う。<br>**保存検査**：移動・分割の前後で、公開宣言ごとに (1) 名前（名前の変更は対応表で正規化して比べる）、(2) 型のハッシュ、(3) 定義の本体のハッシュ（定理以外の公開定義すべて。例：Bool の定義の値が変わったら検出できること）、(4) `#print axioms`、(5) 属性（instance・simp・reducibility など）が一致することを確かめる。<br>止めたレーンが未追跡ファイルを付け替える補助も作る | R40a | 対象 JSON から試算した移動後の層検査が通ること。故意に定義の本体を変えた試験で保存検査が失敗すること | 24〜40h |
+| R74 | **新設**：段ごとの対象 JSON と、保存検査の道具を作る。<br>**JSON の項目**（書式の正本は `scripts/refactor/targets/README.md`）：`module`、`action`（move／split／archive／**reimport**＝移動せず import だけ置き換える）、`dest`、`keep`、`moved`、`attributes`、`note`、任意の `imports`（移動・分割後の import の一覧。prune の証拠から写す）と `downstream_imports`（再公開に頼っていた下流へ足す直接 import）。対象は R26（SpecifiedHomotopyLift・SpecifiedFunctorEdgeLift を含む）・R49b・R56a・R56b・R61・R64・R52・R69・R70・R72・R73。<br>**分割の手順**：move_module.py は移動（moves・redirects・symbols）だけで、ファイルの分割はできない。分割は、新しいファイルに宣言をそのまま写し、元から削り、import を張り替える小さな道具を作って行う。<br>**保存検査**：移動・分割の前後で、公開宣言ごとに (1) 名前（名前の変更は対応表で正規化して比べる）、(2) 型のハッシュ、(3) 定義の本体のハッシュ（定理以外の公開定義すべて。例：Bool の定義の値が変わったら検出できること）、(4) `#print axioms`、(5) 属性（instance・simp・reducibility など）が一致することを確かめる。<br>止めたレーンが未追跡ファイルを付け替える補助も作る | R40a | 対象 JSON から試算した移動後の層検査が通ること。故意に定義の本体を変えた試験で保存検査が失敗すること | 24〜40h |
 | R64a | Simplicial/・Kan/・Kan/Pointed/・ModelBridge/・Stable/Verdier/ などの骨組み（空の入口と監査）を新しいファイルとして作る。段 C の移し先がないという順序の穴を埋める | なし | ビルド | 1〜2h |
+| R75 | **新設（10-30、伝達文 §3.1）**：死んだファイルと殻の削除。CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本（AnchoredChain* 5・ArrowContext・LabelledChain・SimplexChainParameter）、Spectra/SymmetricSequence の殻 4 本（TensorPowers・TensorPermutations・AdjacentTranspositions・AdjacentBraid）、計 29 本。利用者は監査スクリプトだけ（`scripts/audit/shared.lean`・`audit_homotopical_foundations.lean`・`homotopical_generalization_manifest.json`）なので、それらの登録も直す。**W0 で行える**（IF-W0-4） | なし | 監査の登録の更新、verify | 2〜4h |
 
 ### 段 A 入口と小口
 
 | 番号 | 内容 | 前提 | 検証 | 工数 |
 | --- | --- | --- | --- | --- |
 | R59 | ルートと F2 の入口を正す。`F2.lean` の `#check` 1,497 行を監査ファイルへ移す。Ind・Presentable・Compact・Idempotent・HomotopyLimits をルートに登録する（Coherent と DoldKan はすでにほぼ届いているので、登録すれば足りる）。<br>注意：FilteredExchange は Ind・Presentable・HL の閉包から引き込まれるので、入口から外しても消えない。処置は R60・R31 で行う | R41 | ルート閉包の本数とビルド時間を記録する | 4〜8h |
-| R61a | 本文がほぼ一致する重複だけを除き、原本を ∞ 層側に残す。対象は PinchedHom の対（45 行中 39 行が一致）と RelativeInitialExtension（50 行中 43 行）、ほかに対象 JSON で一致率の高いもの。組ごとに残す宣言・証明・instance 属性を対象 JSON で指定する | R41・R74 | `check_duplicates.py`・保存検査 | 4〜8h |
+| R61a | 本文がほぼ一致する重複だけを除き、原本を ∞ 層側に残す。対象は PinchedHom の対（45 行中 39 行が一致）と RelativeInitialExtension（50 行中 43 行）、ほかに対象 JSON で一致率の高いもの。組ごとに残す宣言・証明・instance 属性を対象 JSON で指定する。決定（10-29）：PinchedHom は `F1/Universe/PinchedHom` を残し、import は閉包の小さい F1B 側のものに揃える。RelativeInitialExtension は F1B を残す | R41・R74 | `check_duplicates.py`・保存検査 | 4〜8h |
 | R61b | 内容が違う組は、読解して「特殊化」か「比較の定理が要る」かに分ける。比較の定理が要るものは段 G へ。<br>対象：CoreTrivialFibration（一致 9/38 行。∞ 側には instance と追加の宣言がある）、TrivialFibrationStability（5/70）、PushoutTranspose ↔ SquareTranspose（14/47）、SuspensionExactFunctor ↔ Stable/Suspension（2/33。前者は ∞ 関手 X ⟶ X、後者はホモトピー圏の関手 ho X ⥤ ho X で、置き換えると高次の情報が失われる）、Ex∞・MappingCylinder（モジュールとしては KST/Comparison の 1 か所）、CoherentTrianglePathMinimum（2 か所。補題名が違う） | R74 | 読解の記録 | 8〜16h |
 | R62 | `fraction_ho_localization` を**公開するだけ**にする（Stable/Verdier へ移すのは R52 の後。閉包に KST.Spectra 57 本と DG 10 本がある） | なし | 公理監査 | 1h |
-| R63 | HA/ComplexLimits の 3 本（直接 import しているのは `ExtendTruncationHom` の 1 本で、KST の CochainConnectiveLift を import している）を EInfinity/ComplexLimits へ戻す。CochainConnectiveLift を HA へ下ろすと HA → DG の辺ができるので、その案は採らない。R34 と統合する | なし | — | 1〜2h |
+| R63 | HA/ComplexLimits の 3 本（直接 import しているのは `ExtendTruncationHom` の 1 本で、KST の CochainConnectiveLift を import している）を EInfinity/ComplexLimits へ戻す（同名の再エクスポートの殻 `fcc305646` を実体で置き換える。名前空間はすでに `EInfinity.ComplexLimits`）。CochainConnectiveLift を HA へ下ろすと HA → DG の辺ができるので、その案は採らない。R34 と統合する。`scripts/audit/shared.lean` が import しているので、移したら `python3 scripts/make_area_audits.py` で監査を再生成する（伝達文 §5） | なし | 監査の再生成、ビルド | 1〜2h |
+| R79 | **新設（10-30、論文の層のコーディネータからの依頼）**：Lean の docstring が参照している旧計画の案内 4 本の片づけ（1,165 本。追補 10-30 で CategoryTheory の ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本を加えた。importer は HA/GeneralTools・Rectification の AnchoredChain*・scripts/audit/shared.lean だけ）。<br>・`k-theory.md`：`[plan]: …/formalization-plans/k-theory.md` を `…/formalization-plans/archive/k-theory-v1.md#<§396 のアンカー>` に（618 件。アンカーは GitHub の規則で生成して確かめる）。本文中のパスの 1 件は手で直す。<br>・`k-theory-generalization-inventory.md`：`[inventory]: …` のパスを `archive/k-theory-generalization-inventory.md` に（アンカー `#mNNNN`・`layout-execution` はそのまま。618＋16 件）。<br>・`dg-theory-u12e-general-inventory.md`（DG 521 本）・`dg-theory-m5-status.md`（DG 9 本）：**本計画の範囲から外し、[DG の整理計画](dg-cleanup-plan.md) の D5 で行う**（10-30 ユーザー決定。DG の統合 D4 と同じ窓で、docstring を写すときに書き換える）。<br>規則：相対パスの深さ（`../../../` など）は保ち、`formalization-plans/<名前>.md` の部分だけを替える。宣言には触れない。文書ごとに 1 コミット（本計画の分は 2 本。DG の 2 本は DG 計画）にし、ハッシュを論文の層のコーディネータへ知らせる。案内の削除と README の表の更新は先方が行う。ArrowFactorization* 3 本も本計画の担当（追補で移管）。<br>docstring だけでも olean が変わり依存先が再ビルドされるので、**W1 の最初**（IF-W1-1 の冒頭）に行い、W1 の最初の verify に含める | なし | 置換の件数の照合（618／618＋16。DG の 521／9 は DG 計画）、ビルド、verify | 1〜2h＋再ビルド |
 
 ### 段 B Verdier の土台（すぐ移せるものだけ）
 
@@ -164,11 +170,11 @@ InfinityCategories/
 | 番号 | 内容 | 前提 | 検証 | 工数 |
 | --- | --- | --- | --- | --- |
 | R40 | 層検査の強制を三段階で行う（§6）。W1 の終わり：中核の閉包に DG・EInfinity を禁止し、層の違反の数を増やさない。W2a の終わり：KST とモデル圏のコードも禁止。W2b の終わり：中核の層の順序の違反を 0 にする（例外一覧を除く） | R40a と各段の切断 | 各段階の条件 | 各 1〜2h |
-| R39 | Stable → Derived の 10 辺と F2 → Derived の 7 辺を解消する。§4 の重い 3 本を含む。一般の随伴・right fibration・slice を下の層へ抽出し、`Stable.lean` の逆転も直す | R40a | 中核の閉包検査 | 24〜48h |
-| R26 | F1 → F2 の 28 辺を解消する。F2.CatInfinity の Core*（CoreIsofibration など）と、R49b のための SpecifiedHomotopyLift・SpecifiedFunctorEdgeLift を Core・F1B へ下ろす。R56a・R49b の前提でもある | R40a | 同上 | 16〜28h |
-| R66 | 二つに分けて書く。<br>(a) 配置の逆転：HL → DoldKanComparison.UniverseHomotopy（2 辺）と F1 → DoldKanComparison.UniverseKan（2 辺）が使っているのは、単体的集合の一般補題（`uliftHomotopy`・`ulift_homotopyEquivalence` など）。これを Simplicial へ移し、UniverseHomotopy の過大な import を縮める。F1 → DGNerve.JoinSimplexInclusions（1 本）と HL → DGNerve の 3 辺（JoinSimplexFaces・JoinVertexSurjectivity。いずれも DG には依存しない）は、Join の一般補題を Simplicial へ抽出する。<br>(b) DG 依存の除去：UniverseHomotopy → ResolutionComparisonEquivalence → … → DGNerve.Simplex → DG の経路を (a) で切る。<br>完了条件 1 の全体には R39 も必要 | R40a | 中核の閉包に DG・EInfinity が入らないこと | 16〜32h |
+| R39 | Stable → Derived の 10 辺と F2 → Derived の 7 辺を解消する。§4 の重い 3 本を含む。一般の随伴・right fibration・slice を下の層へ抽出し、`Stable.lean` の逆転も直す（reimport）。<br>決定（10-30）：重い 3 本は Derived の roof の一般論に本当に依存している。import を縮めた後に必要な roof の 15 本（DG・KST・モデル圏の汚染 0）を `Core.Roof`・`F1B.Roof`・`Stable.Roof` へ下ろす。残りの 8 本と `SpanSuffixIndex` の分割案は W2c（R52）へ | R40a | 中核の閉包検査 | 24〜48h |
+| R26 | F1 → F2 の 28 辺を解消する。F2.CatInfinity の Core*（CoreIsofibration など）と、R49b のための SpecifiedHomotopyLift・SpecifiedFunctorEdgeLift を Core・F1B へ下ろす。R56a・R49b の前提でもある。<br>W1 の一覧（10-30）：move 12 本・split 3 本。`CoreIsofibration`・`CorePullbackIso`（CoreRightFibration・CorePullbackMap の基礎が要る）と `SpaceLimitShapes`・`FunctorPointwiseColimitCriterion`（Stable の一般部分、R37）は保留 | R40a | 同上 | 16〜28h |
+| R66 | 二つに分けて書く。<br>(a) 配置の逆転：`DoldKanComparison.UniverseKan`（閉包は Mathlib だけ）は Simplicial へ move。`DoldKanComparison.UniverseHomotopy`（2 宣言とも純粋。型 `IsSimplicialHomotopyEquivalence` は Core）は **Core** へ move し、過大な import を縮める（`imports`・`downstream_imports` で指定）。`DGNerve.JoinSimplexInclusions`・`JoinSimplexFaces`・`JoinVertexSurjectivity`（DG には依存しないが Core の join・pullback の補題を使う）は **Core** へ move（10-29 に Simplicial から変更）。<br>(b) DG 依存の除去：UniverseHomotopy → ResolutionComparisonEquivalence → … → DGNerve.Simplex → DG の経路を (a) で切る。<br>完了条件 1 の全体には R39 も必要 | R40a | 中核の閉包に DG・EInfinity が入らないこと | 16〜32h |
 | R71 | **新設**：§4 で担当がなかった辺を切る。HL/QuillenCfCollage → KST.EnrichedFunctorCollageNerve、F2/CatInfinity → KST.ContractibleKanProducts（2 辺）、F1 → Derived（4 辺）、HL → Derived（3 辺）。r2-a 調査の 170 行目に既出 | R40a | 中核の閉包検査 | 16〜32h |
-| R72 | **新設**：モデル圏を中核から切り離す。<br>(1) HA の 12 本（HA/Simplicial の Generators・FixedBoundaryExtensions・LargeParameterExtension・UniverseLiftAnodyne・BisimplicialCofibrancy、HA/Generated の Basic・FunctorClosure、HA/Transfer の FullyFaithfulLifting、HA/HomotopyFunctionComplex の BoundaryOne・DiagonalFrame・QuillenStandardFrame・StandardCosimplicial）から、末尾の Model の節と使っていない import を切り離す。<br>(2) 純粋な部分（Kan 置換、mono 分解、anodyne の端点、Kan による判定、対角、宇宙の持ち上げ、Reedy の分解系）を Simplicial・Kan へ移す。<br>(3) HL の Quillen 系 42 本と、切り離した Model の節を ModelBridge へ出す。利用者（EInfinity の約 63 本、KST.SConstruction.EnrichedFunctorCollageNerve）は ModelBridge を import する | R40a・R64a・R74 | F1・F2 のモデル圏モジュール 0、Stable は R39 の範囲の 1 本だけ、HL は Quillen 系 42 本を ModelBridge へ出した後に 0 | 16〜32h |
+| R72 | **新設**：モデル圏を中核から切り離す。<br>(1) HA の 12 本（HA/Simplicial の Generators・FixedBoundaryExtensions・LargeParameterExtension・UniverseLiftAnodyne・BisimplicialCofibrancy、HA/Generated の Basic・FunctorClosure、HA/Transfer の FullyFaithfulLifting、HA/HomotopyFunctionComplex の BoundaryOne・DiagonalFrame・QuillenStandardFrame・StandardCosimplicial）から、末尾の Model の節と使っていない import を切り離す。<br>(2) 純粋な部分（Kan 置換、mono 分解、anodyne の端点、Kan による判定、対角、宇宙の持ち上げ、Reedy の分解系）を Simplicial・Kan へ移す（同じファイルに二つの分割を作用させない規約のため、W2a では (1) の切り出しだけを行い、(2) の移動は W2b 以降）。<br>(3) HL の Quillen 系 42 本と、切り離した Model の節を ModelBridge へ出す。利用者（EInfinity の約 63 本、KST.SConstruction.EnrichedFunctorCollageNerve）は ModelBridge を import する | R40a・R64a・R74 | F1・F2 のモデル圏モジュール 0、Stable は R39 の範囲の 1 本だけ、HL は Quillen 系 42 本を ModelBridge へ出した後に 0 | 16〜32h |
 | R73 | **新設**：FilteredExchange を三つに分ける。使われている 369 本は正しい層へ（filtered の定義は F2/Filtered/）、直接経路 X の 1,727 本は archive へ、PiCriterion は中核の外へ（R31） | R40a・R74 | ルート閉包の本数、監査 audit_infinity_f2_exchange の扱い | 16〜32h |
 | R37 | 中核へ戻ってくる逆向きの辺（F1B → Stable 54、HL → Stable 50、F1 → Stable 23、計 127）の参照先を下の層へ移す。Stable < F2 としたので、F2 → Stable の 193 辺は順方向になり、対象から外れる | R40a・R64a | 層検査 | 16〜32h（再見積り） |
 | R38 | HL → F2 の 84 辺と Stable → F2 の 42 辺を解消する。一般補題は下の層へ移し、sifted・PΣ は F2 に残す | R40a・R64a | 層検査 | 24〜48h |
@@ -178,9 +184,11 @@ InfinityCategories/
 | 番号 | 内容 | 前提 | 検証 | 工数 |
 | --- | --- | --- | --- | --- |
 | R64 | Simplicial・Kan・Kan/Pointed 層に中身を移す。ファイル単位の一括移動にはしない。<br>**規則**：宣言の内容と証明の依存で、対象 JSON（R74）に振り分ける。<br>・単体的集合だけで書ける部分は Simplicial へ。<br>・空間の理論（Core を使ってよい）は Kan へ。<br>・quasicategory との比較（`KanCharacterization` の Joyal の外 horn の充填、`KanFibrationTools`:58 の同値を使う補題、`F1/KanModels/KanAnodyneLocalization` の `IsQCatEquivalence` など）は Core に残す。<br>・豊穣の比較は Coherent・F1 に残す。<br>・閉包が Kan より上に出るものは F1・HL に置くか分割する。<br>出所：F1/Simplicial、F1/KanModels、F1B/KanComplex、HA/Simplicial の一般部分（Rectification を import しないもの）、KST/Spectra の Sp-S1・S2・S3・S5、SConstruction の SC-C3〜C5、KST/Comparison の Ex∞ と単体的ホモトピー、SerrePositivity/Spectra の PointedSimplicialSet・Pointed | R74・R64a・R27 | 層検査、保存検査 | 40〜80h |
-| R27 | HL・F1 → KST.Spectra の 27 辺を解消する。汎用の参照先は R64 の Kan 層へ移し、Spectrum* の 5 本は KST/Spectra/Limits へ移す | R40 | 中核の閉包に KST が入らないこと | 24〜48h（R64 と重なる） |
+| R27 | HL・F1 → KST.Spectra の 27 辺を解消する。汎用の参照先は R64 の Kan 層へ移し、Spectrum* の 5 本は KST/Spectra/Limits へ移す | R40a | 中核の閉包に KST が入らないこと | 24〜48h（R64 と重なる） |
 | R65 | Dwyer–Kan 局所化（EInfinity/SimplicialLocalization・Hammock・FrameHom の一般部分）を F1B/Localization/DwyerKan と HL へ移す。<br>注意：この三つ全体（1,423 本）には、Derived への辺が約 30 本、KST への辺が約 8 本ある。移す G 部分集合を、閉包を基準に対象 JSON で選び直す。相対圏の hammock 局所化そのもの（モデル圏を使わない部分）は F1B/Localization/DwyerKan へ移す。一般のモデル圏の ∞ 局所化 `modelHammock_isLocalization` とその周辺は、モデル圏を仮定するので ModelBridge へ出す（10-28 追記） | R74・R26 | 層検査 | 32〜64h（再見積り） |
-| R56a | 局所化の存在の周辺を F1B/Localization へ移す。対象は確定リスト（R74）で、少なくとも LocalizationResolution・GeneralLocalization・LocalizationFactorization・LocalizationUniqueness・InverseAttachment*・WalkingEquivalence*・ParametricDiagramGluing・CoreAnodyneLifting を含む。<br>注意：いまの閉包には F2（CoreAnodyneLifting → F2.CatInfinity.CoreIsofibration）、HL 146 本、HA/Simplicial（WalkingEquivalence → AnodyneKanReplacement）、straightening 9 本が入っており、このままでは F1B の straightening 禁止監査（scripts/audit_infinity_f1b.lean:24）に落ちる。そこで R26・R72 の後に行い、straightening を使う部分は F1 側に残す | R26・R72・R74 | audit_infinity_f1b | 8〜16h |
+| R56a | 局所化の存在の周辺を F1B/Localization へ移す。対象は確定リスト（R74）で、少なくとも LocalizationResolution・GeneralLocalization・LocalizationFactorization・LocalizationUniqueness・InverseAttachment*・WalkingEquivalence*・ParametricDiagramGluing・CoreAnodyneLifting を含む。<br>注意：いまの閉包には F2（CoreAnodyneLifting → F2.CatInfinity.CoreIsofibration）、HL 146 本、HA/Simplicial（WalkingEquivalence → AnodyneKanReplacement）、straightening 9 本が入っており、このままでは F1B の straightening 禁止監査（scripts/audit_infinity_f1b.lean:24）に落ちる。そこで R26・R72 の後に行い、straightening を使う部分は F1 側に残す。注意（10-30）：R26 で `CoreIsofibration` が保留になったので、w2a.json の検査（w1 を前提）で F2 への辺が残るか確かめ、残れば CoreIsofibration の pull-down 集合を W2a に加えるか R56a を W2b へ回す | R26・R72・R74 | audit_infinity_f1b | 8〜16h |
+| R76 | **新設（10-30、伝達文 §2-1）**：CategoryTheory の Nerve まわり 9 本（NerveHomotopy・NerveHomotopyUniverse・NerveSimplexEndpoint・NerveSimplexStart・NerveSimplexFirstFunctor・NerveVertices・SimplexChainVertices・ElementsChainLifting・ElementsNaturalPrecomp）を HomotopicalAlgebra/Simplicial へ移す。CategoryTheory と HA の相互依存が消える。利用者は HA 26・EInfinity 12・KST 6（SConstruction 3・ProExcision 2・Comparison 1）・CategoryTheory 4。R64 の閉包の規則で、後に InfinityCategories/Simplicial へ移るものがあってよい | R74 | 層検査 | 4〜8h |
+| R77 | **新設（10-30、伝達文 §3.2・§7）**：CategoryTheory の下位ディレクトリ 104 本と、∞ 側だけが使うトップ階層の 12 本（AdjunctionHomLaws・CommaIdentities・FiniteBijection*4・FiniteBlockEquiv・FunctorTransport・ParametrizedAdjunctionTransport・PointwiseAdjunction・RelativeArrow）を約 38 本に統合する（Monoidal/Mod・TensorPower・Action・Braided、Enriched/*、Adjunction/Comparison（AdjunctionHomLaws・PointwiseAdjunction・ParametrizedAdjunctionTransport を含む）、Quiver/*、Simplex/*、Under、Limits（FiniteBijection*・FiniteBlockEquiv・CommaIdentities・RelativeArrow を含む）。最終的な対応は W2a の対象 JSON で確定）。宣言・名前空間・証明は変えない（BS 方式で section に包む）。統合の道具は BS の `bhatt-scholze-merge-modules.py` を `scripts/refactor/merge_modules.py` に一般化して使う（IF-W0-4 で用意し、保存検査と組み合わせる）。利用者は Spectra 89・HA 50・EInfinity 25・KST 18 本の import の書き換え | R75・道具 | 保存検査・層検査 | 16〜32h |
 | R56b | 比較・適用の部分（GroupoidCompletion*・SimplexAttachment*）は段 E で扱う。GroupoidCompletionFiniteFactorization は F2 を import し、SimplexAttachmentQuotientComparison の閉包は VerdierSequence に届く。いずれも閉包に DG と KST.Fibration を含む | R70・R66・R48 | 層検査 | 8〜16h |
 
 ### 段 E KST の一般部分の取り込み
@@ -200,7 +208,7 @@ InfinityCategories/
 | --- | --- | --- |
 | R60 | 孤立したモジュールと休止領域の台帳を作り、各行で「主経路／診断／archive／一般論を抽出」を決める。対象は FilteredExchange、F1/Cocartesian、HA/Rectification、ClosureFunctoriality、KST/Comparison・ProExcision、Spectra など。古くなった記述も直す | 8〜16h |
 | R32・R33・R36・R42・R43 | 反例と凍結候補、未登録・監査で被覆されない・転送入口のモジュールの処置 | 16〜32h |
-| R67 | 基盤の層だけが使っているもの（CategoryTheory/Monoidal など）を、基盤の層へ分類し直す | 4〜8h |
+| R67 | 基盤の層だけが使っているものの分類し直し（伝達文 §6）。<br>・GroupTheory/Coxeter（TypeA・FirstToLast・PermutationInduction・InvolutionRelations。利用者は CategoryTheory/Monoidal・EInfinity/Operad・IntervalCuts・Spectra/SymmetricSequence）：**動かさず**、CategoryTheory と同じく中核より下の基盤として `layers.json` に登録する。Mathlib の `Equiv.Perm.mclosure_swap_castSucc_succ` などへの置き換え（TypeA 955 行が不要になりうる）は R78 へ。<br>・Inputs/Homotopy（KanQuillen＝引用の sorry、ResolutionHom・SimplicialLevel）：主定理の閉包の外で、scripts の check 3 本しか import していない。`InfinityCategories/ModelBridge/Inputs/` へ移し（モデル圏の存在の引用なので ModelBridge が置き場）、`make_area_audits.py` の sorry の許可リストと check のパスを直す。削除するかどうかは R60 の台帳で決める。W2a（R72 と同じ窓） | 4〜8h |
 | R54 | 名前空間の付け替え（旧名は deprecated alias で残し、名前対応表を作る）。F1・F1B・F2 の改名もここで判断する。<br>移した宣言には KST の名前空間が残る（Fibration 747 ブロック、LocalizingInvariants 519、Spectra 333 以上）。§9-3 で、段ごとに行うか最後にまとめるかを決める | 16〜40h（再見積り） |
 
 ### 段 G 型が変わる作業・比較の証明・新しい数学（窓の外）
@@ -215,6 +223,7 @@ InfinityCategories/
 | M8 | **新設**：商の関手性。(a) 安定 ∞ 圏とその安定な部分圏の組 (B, A) と、部分圏を保つ完全関手のなす ∞ 圏の上で、(B, A) ↦ B/A が関手的であること。(b) その Calkin 懸垂への応用（非連結 K の再設計、Sp-3 の見積りで 9〜18 人日）。見通し（10-28）：存在定理の構成（J の貼り付け・Kan 置換・inner anodyne 置換）は、small object argument で関手的な分解を選べば (X, W) について厳密に関手的にできる見込みがあり、厳密な豊穣関手から coherent nerve の写像として ∞ 関手を得られる可能性がある。着手時の最初の検討事項（解説 infinity-foundation 第 5 章 §5） |
 | M9 | **新設**：一般の `thickClosure`（R53）と dg 版 `dgThickClosureProperty` の比較。証明の後に dg 版を置き換える |
 | M10 | **新設**：R61b で「比較の定理が要る」とした組の比較（例：∞ 関手としての Σ とホモトピー圏の関手 Σ） |
+| R78 | **新設（10-30、伝達文 §3.3〜3.4・§6.1・§7）**：CategoryTheory の下位ディレクトリとトップ階層の 12 本、GroupTheory/Coxeter について、Mathlib と重なる宣言の置き換え（`Functor.copyObj`・`isoCopyObj`（FunctorTransport はファイルごと）、`Adjunction.homEquiv_naturality_*`（AdjunctionHomLaws）、`Equiv.Perm.mclosure_swap_castSucc_succ`（Coxeter の帰納法）、`Paths.liftNatTrans`・`Paths.ext_functor`・`Quiv.adj.toComonad`・`MorphismProperty.naturalityProperty`・`rightAdjointUniq`・`MonoidalRightAction`・`TransportEnrichment` など）、未使用の宣言の削除、ファイルの中だけで使う約 120 の名前の private 化、ファイル名由来の名前空間の付け替え（R54 と一緒に）。証明と公開 API が変わるので窓の外。論文の層の計画と同じく、群ごとに「提案 → 承認 → 実装」で進める。Mathlib にない部分（`SimplexCategoryGenRel ≌ SimplexCategory` など）は提出候補として [mathlib-upstream.md](mathlib-upstream.md) へ |
 | M11 | **新設（10-28）**：一般の相対圏 (C, W) について、hammock 局所化の nerve への関手 `hammockLocalizationNerveMap : nerve C.category ⟶ kanHammockNerve C` が `IsLocalization` を満たすこと。いまはモデル圏の場合（`modelHammock_isLocalization`、ModelBridge へ出す）しか証明がなく、一般には `hammockLocalizationNerveMap_inverts` だけがある。数学的には知られた定理（Hinich, "Dwyer–Kan localization revisited", 2016 など。参照は要確認）。これがあれば、局所化の写像空間を、モデル圏を使わずに中核（F1B/Localization/DwyerKan）で計算できる。Verdier 商の写像空間（分数）との比較にも使える |
 
 置き場所は Stable/Verdier と StablePresentable（R55）。M1〜M7 の詳細は [refactoring-verdier.md](refactoring-verdier.md) §5。
@@ -226,9 +235,8 @@ InfinityCategories/
 
 | 窓 | 止める範囲 | 行うこと（この順に直列。同じ集約ファイルを触る作業は並列にしない） | 工数の目安 | 終わりの条件（R40 の強制の段階） |
 | --- | --- | --- | --- | --- |
-| W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a）、R61b の読解 | 40〜80h | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
-| W1 | 全停止 | 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
-| W2a | Sp レーン、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 | 120〜240h、4〜6 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし |
+| W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a → 対象 JSON → R75・統合の道具）、R61b の読解 | 40〜80h（実績は指示書の報告を参照。IF-W0-3 は道具の規則を足しながら進めたため数日かかった） | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
+| **W1＋W2a（一つの束、10-31 決定）** | 全停止（HA・∞・KST・EInfinity への他セッションの取り込みも約 1 日止める） | 一つの束で：R79（docstring の書き換え HA 約 600・CT 12・ArrowFactorization 3）＋ R75（削除 29 本）＋ W1 の対象（move 62・split 3・reimport 3）＋ W2a の対象（move 1,197・split 9・reimport 2：R72 → R64 → R27 → R56a → R65）→ 下流の一回ビルド（約 20,000 本、単独で 6〜8 時間）→ 保存検査 → verify。R76・R77・R67 は束の後、同じ窓の中で道具（DG 側の `merge_modules.py`）がそろってから | 束の適用と検証で 1〜2 日、R76・R77 で数日 | 中核の閉包に DG・EInfinity・KST・モデル圏のコードなし。層の違反の数が開始時より増えていない。CategoryTheory と HA の相互依存なし |
 | W2b | F2・HL・Stable の担当 | R73 → R37 → R38 | 56〜112h、2〜3 日 | 中核の層の順序の違反 0（例外一覧を除く）。**ここで中核の完了条件 1・5 がそろう** |
 | W2c | LocalizingInvariants と Fibration のレーン | 段 E（R51 → R52 → R68 → R69 → R70 → R56b）、最後に R45 | 75〜150h、3〜4 日 | 違反が増えていない。移した一般部分の層検査 |
 
@@ -243,9 +251,9 @@ InfinityCategories/
 | IF-W0-1 | R41（verify.sh を関門にする） | W0（**完了** 10-28、main `88c477612`。基準実行は全 99 監査 PASS、既知の失敗なし。通しの実行は約 69 分） |
 | IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
 | IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
-| IF-W1-1 | 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
-| IF-W1-2 | 閉包の切断（R26 → R39 → R66 → R71 → R49b） | W1 |
-| IF-W2a | R72 → R64 → R27 → R56a → R65 | W2a |
+| IF-W0-4 | `layers.json` への CategoryTheory の一般部分・トップ階層 12 本・GroupTheory/Coxeter の基盤としての登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB）。**R75 は W1＋W2a の束へ、`merge_modules.py`・build lock・warm-up の道具は DG の Codex（DG-W2(a)）へ移管（10-31）** | W0（IF-W0-3 の後） |
+| IF-W1W2a | 一つの束：R79（2 コミット）＋ R75 ＋ w1.json ＋ w2a.json を適用 → DG-W1 後の main を取り込み、`.lake/build` を複製 → 下流の一回ビルド → 保存検査 → verify（§10.12〜10.14 の規則）。段 A・B・閉包の切断（R26・R39・R66・R71・R49b・R50）は w1.json の中身として同じ束に含まれる | W1＋W2a |
+| IF-W2a-2 | R76 → R77 → R67（Inputs/Homotopy）。`merge_modules.py` がそろってから | W1＋W2a の後半 |
 | IF-W2b | R73 → R37 → R38 | W2b |
 | IF-W2c | 段 E | W2c |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
@@ -253,7 +261,7 @@ InfinityCategories/
 **各回の検証**（すべて通るまで次へ進まない）：
 - `scripts/refactor/verify.sh`（R41 の強化版）：全体ビルド、自動で列挙した全監査、`main_statement` の sorry 閉包。失敗が一つでもあれば非零で終了する。
 - `scripts/check_duplicates.py`。
-- R40 の層検査（Python の import グラフ検査で、ビルドは要らない）と、中核の閉包検査。
+- R40 の層検査（Python の import グラフ検査で、ビルドは要らない）と、中核の閉包検査。実施の前には対象 JSON の検査（`validate_targets.py`。前の窓の JSON を前提に渡す）。
 - 宣言ごとの保存検査（R74 の道具）：移した公開宣言について、名前（対応表で正規化）、型のハッシュ、定義の本体のハッシュ、`#print axioms`、属性が一致すること。ラッパーを作った場合（R50 など）は、定義上の等しさも検査する。
 - ビルド時間：窓の前に olean のキャッシュを保存し、回の間は閉包を限ったビルドを使う。第 1 窓の実測は、verify 1,669 秒と監査対象のビルド 3,097 秒。R59 と R41 でビルド対象が増えるので、予算を立てる。
 
@@ -268,8 +276,9 @@ InfinityCategories/
 
 ## 7. 範囲外
 
-- KST の内部だけで閉じる整理：R28・R29・R30・R44・R46・R47（R2 計画のまま）。
-- 論文の層の切り出し（[paper-layer-extraction.md](paper-layer-extraction.md)）。
+- KST の内部だけで閉じる整理：R28・R29・R30・R46・R47（R2 計画のまま）。R44（DG → KST/SConstruction の層の逆転）は [DG の整理計画](dg-cleanup-plan.md) の D3 が担う。
+- DifferentialGraded/ の整理（検査の処置、入口、層の逆転、1,592 → 126 の統合、R79 の DG 分）：[DG の整理計画](dg-cleanup-plan.md)（10-30 新設。∞ 基盤とは独立に、別の Codex セッションで進める。干渉の取り決めは同 §5）。
+- 論文の層の整理と一般論の切り出し（[refactor-plan.md](refactor-plan.md)）。ただし CategoryTheory の下位ディレクトリ・Nerve まわり・殻は本計画の R75〜R78（10-30 の伝達）。CategoryTheory のトップ階層の残り（Karoubi・三角圏・t 構造・K₀ など）は論文の層の側。伝達文 §7 の追加で、両側の対象の間の import はなくなった（10-30 時点）。
 - BS 側（R35、別セッション）。
 - 第 II 段の perfect 複体と K₀ の橋（[全体調査](archive/repository-survey-2026-10-28.md) §7 の #4・#5）。
 
@@ -300,14 +309,24 @@ InfinityCategories/
   - §4：HL → DGNerve の 3 辺を加えた。R72：12 本の所在と受入条件を直した。R73：三群を重ならない 369＋1,727＋33 本に直した。
   - M7 と M9 の順序を付けた。M8 の定義域（部分圏の組と、それを保つ完全関手）を明確にした。モデル圏の数値の定義を書いた。
   - IF-W0-1：既知の失敗を「監査ファイル＋失敗の署名」で照合するようにした。監査の一覧を追跡ファイルと比べ、本数が減ったら FAIL にした。ビルドを飛ばした実行は検収に使えないようにした。一覧は Claude の承認の後に確定させ、その後で PASS を確かめる手順にした。故意の失敗の試験を増やした。
+- （10-29〜30、IF-W0-3 の実施中の判断。詳細は [指示書 §10](infinity-codex-w0-3.md)）
+  - 入口の辺の切り方を三案（下ろす／上げる／分ける）で比べる規則、pull-down 集合の上限 60 本、手作業の辺を含めた模擬、対象 JSON の拡張（`imports`・`downstream_imports`・`reimport`）。
+  - R66 の移し先を Simplicial から Core に変更。R39 は roof の 15 本を `<層>.Roof` へ下ろす（残りは W2c）。R61a の残す側を決定。
+  - 道具の規則：空になる側の保存検査、prune で壊れた下流への直接 import の補充、生成補題の帰属（位置 → 接頭辞 → 接尾辞 → 外部定義は transient）、attribute コマンドと無名 instance の扱い、環境の失敗の直列再試行。
+  - w1.json を承認（move 62・split 3・reimport 3、保留 13。全体 verify PASS）。
+  - CategoryTheory の下位ディレクトリと Nerve まわりの整理を引き継ぎ（R75〜R78）。W2a で K-S• も止める。
+- （10-30）DifferentialGraded/ の整理を独立した計画 [dg-cleanup-plan.md](dg-cleanup-plan.md) に分けた。R79 の DG 分（530 本）と R44 の DG 側はそちらへ。
+- （10-31）再ビルドの費用の実測（土台の import 行の書き換えで約 9,000〜20,000 本、[verify-build-costs]）から、W1 と W2a を一つの束にし R79・R75 も含めて下流の全ビルドを一回にした。R72 の preflight は 8 本 PASS で止め、9 本目は束へ。分割先の import は使う利用元にだけ足す（IF-W0-3 §10.12〜10.14）。`merge_modules.py` と build lock・warm-up の道具は DG 側へ移管。
 
 ## 9. 未決の点（ユーザーまたはコーディネータの判断が要る）
 
-1. **（10-28 決定済み）モデル圏**：中核の下に入れない（R72）。残る判断は、ModelBridge をどの段で作るかだけ（案：W1 で R72 と一緒に作る）。
+1. **（10-28 決定済み）モデル圏**：中核の下に入れない（R72）。ModelBridge の骨組みは IF-W0-2 で作成済み。R72 は W2a。
 2. **（10-28 方針決定）FilteredExchange**：R73 の三分割で処置する。archive へ移す 1,727 本を、診断として残すか、archive へ移すか、削除するかは R60 で決める。
 3. **（10-28 決定済み）名前空間**：R54 で最後にまとめて付け替える。新しく作る正本は最初から正しい名前空間で書き、移動のたびに名前空間の対応表を記録する。
 4. **（10-28 決定済み）R50**：束ねた定義を残し、束ねない形はそれを包む定義と同値補題として加える。試作（旧 R50p）は不要になった。
 5. **Kan と Core の順序**：本計画は、移動だけで済む Core < Kan を採る。外部レビューが支持する Kerodon の順序（Kan < Core）に揃えるには、Kan の証明から Core への依存を外す書き換えが要る。段 G の後で改めて判断する。
+6. **（10-31 決定済み）W1 の時期と形**：W1 と W2a を一つの束にし、R79・R75 も含める。DG-W1 の取り込み（10-31）の後、∞ 側の静的検査が PASS したら束を適用し、下流の一回ビルド（6〜8 時間、機械を独占）と verify を通す。その約 1 日は論文の層のコーディネータに HA・∞・KST・EInfinity への取り込みを止めてもらう。（旧記述：対象一覧は確定した。全レーンを止める 4〜6 日の時期を、他のレーン（KST 各レーン・BS・論文の層の整理）の区切りと合わせて決める。
+7. **R26 の保留（CoreIsofibration・CorePullbackIso）**：W2a の検査で R56a に影響が出れば、pull-down 集合を加えるか R56a を W2b へ回す（R56a の行の注意）。
 
 ## 10. 根拠となる調査
 
@@ -318,7 +337,8 @@ InfinityCategories/
 | [refactoring-verdier.md](refactoring-verdier.md) | Verdier 列の二つの定義、R48〜R57 の詳細、M1〜M7 |
 | [refactoring-infinity-r2.md](refactoring-infinity-r2.md)・[archive/r2-a-layers-2026-10-27.md](archive/r2-a-layers-2026-10-27.md) | R26〜R47・R59〜R67 の詳細、層の逆辺の全件 |
 | [refactoring-infinity.md](refactoring-infinity.md) | 第 1 窓（R1〜R25）の記録、旧所在→新所在の対応表、索引 |
-| [infinity-foundation-plan-review-request.md](infinity-foundation-plan-review-request.md)・[同 第 2 回](infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
+| [infinity-foundation-plan-review-request.md](archive/infinity-foundation-plan-review-request.md)・[同 第 2 回](archive/infinity-foundation-plan-review-request-2.md) | 外部レビューへの依頼文 |
 | [infinity-codex-w0-1.md](infinity-codex-w0-1.md) | Codex 指示書 IF-W0-1（R41、共通の前提 §0） |
 | [infinity-codex-w0-2.md](infinity-codex-w0-2.md) | Codex 指示書 IF-W0-2（R40a・R74・R64a・verify.sh の短縮） |
 | [infinity-codex-w0-3.md](infinity-codex-w0-3.md) | Codex 指示書 IF-W0-3（対象 JSON と R61b の読解） |
+| [handover-ct-to-infinity-2026-10-30.md](handover-ct-to-infinity-2026-10-30.md) | 論文の層の側からの伝達：CategoryTheory の下位ディレクトリと Nerve まわりの調査結果（R75〜R78 の出典） |

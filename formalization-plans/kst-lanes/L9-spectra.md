@@ -256,7 +256,7 @@
 - 集約入口：`SerrePositivity/KST/LocalizingInvariants.lean`、監査：`scripts/audit_localizing_invariants.lean`。
 - 共有ルート・他レーン・既存 Spectra/・HomotopicalAlgebra/・InfinityCategories/ は読むだけ。
 - 既存の未コミット変更を保存し、他者の新規ファイルをコミットしない。
-- 全体の正本は [foundations.md](../foundations.md)、K の正本は [経路](../k-theory-kst-route.md) §13。
+- 全体の正本は [foundations.md](../infinity-lanes/foundations.md)、K の正本は [経路](k-theory-kst-route.md) §13。
 - H_* と pro の旧レーンは凍結。γ3・γ4 は N 所有。K の合流は K-基盤レーンが担当する。
 
 ## 実装仕様

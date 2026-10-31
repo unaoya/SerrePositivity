@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.CoefficientLinearExtension
-public import SerrePositivity.PerfectComplex.TensorBaseChange
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 /-! # Basic operations on supported K₀ with extended coefficients -/
 @[expose] public section

@@ -29,13 +29,6 @@ def mappingConeSourceCochainEquiv (K : CochainComplex (ModuleCat.{u} R) ℤ)
   map_add' x y := by simp only [Cochain.comp_add]; rfl
   map_smul' r x := by simp only [Cochain.comp_smul]; rfl
 
-/-- 二成分表示の逆写像は、写像錐からの標準cochain。 -/
-theorem mappingConeSourceCochainEquiv_symm_apply
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (m n : ℤ) (h : m + 1 = n)
-    (x : Cochain F K m × Cochain G K n) :
-    (mappingConeSourceCochainEquiv R φ K m n h).symm x =
-      CochainComplex.mappingCone.descCochain φ x.1 x.2 h := rfl
-
 /-- 二成分から組み立てたcochainの微分と、その符号付き前合成。 -/
 theorem mappingConeSourceCochainEquiv_symm_δ
     (K : CochainComplex (ModuleCat.{u} R) ℤ) (m n p : ℤ)

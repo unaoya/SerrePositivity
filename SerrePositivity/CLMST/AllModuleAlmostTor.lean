@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorExtension
-public import SerrePositivity.CommutativeAlgebra.Almost.Zero
+public import SerrePositivity.CommutativeAlgebra.Almost.Basic
 public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 

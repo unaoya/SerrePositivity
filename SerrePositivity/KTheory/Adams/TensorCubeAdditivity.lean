@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeMixedCancellation
-public import SerrePositivity.PerfectComplex.CubicActionShortExact
+public import SerrePositivity.PerfectComplex.Eigen.CubicClass
 
 /-! # Additivity of the weighted cyclic tensor-cube class -/
 

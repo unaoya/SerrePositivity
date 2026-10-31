@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionTriangulated
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveSourceConeTriangle
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedBaseChange
 
 /-! # 完備導来底変換の実完全三角形
@@ -34,18 +34,5 @@ theorem completedBaseChangeTriangle_distinguished
     completedBaseChangeTriangle φ a f g δ ∈ distTriang (ConcreteDerivedCategory B) :=
   (derivedComplexCompletionFunctor B (φ a)).map_distinguished _
     (boundedAboveLeftDerivedTriangle_distinguished (ModuleCat.extendScalars φ) f g δ hT)
-
-/-- 完備底変換の最初の二項の同型とその標準射の四角形は、三角形全体の同型を与える。 -/
-def completedBaseChangeTriangleIso
-    (hT : Triangle.mk f.hom g.hom
-      (δ.hom ≫ (DerivedCategory.Minus.ι.commShiftIso (1 : ℤ)).hom.app X) ∈
-        distTriang (ConcreteDerivedCategory R))
-    (T' : Triangle (ConcreteDerivedCategory B)) (hT' : T' ∈ distTriang _)
-    (e₁ : (completedBaseChangeTriangle φ a f g δ).obj₁ ≅ T'.obj₁)
-    (e₂ : (completedBaseChangeTriangle φ a f g δ).obj₂ ≅ T'.obj₂)
-    (hsq : (completedBaseChangeTriangle φ a f g δ).mor₁ ≫ e₂.hom = e₁.hom ≫ T'.mor₁) :
-    completedBaseChangeTriangle φ a f g δ ≅ T' :=
-  isoTriangleOfIso₁₂ _ _ (completedBaseChangeTriangle_distinguished φ a f g δ hT)
-    hT' e₁ e₂ hsq
 
 end SerrePositivity.DerivedCompletion

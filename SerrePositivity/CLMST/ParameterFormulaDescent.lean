@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.ParameterLastPowerLength
-public import SerrePositivity.CommutativeAlgebra.ParameterLastPowerMultiplicity
+public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 
 /-! # 比較元の Euler 公式から任意のパラメータ商への降下
 

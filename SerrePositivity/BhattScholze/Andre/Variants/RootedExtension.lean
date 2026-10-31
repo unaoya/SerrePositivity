@@ -17,7 +17,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.RootFamilyRaw
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra

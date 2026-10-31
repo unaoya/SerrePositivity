@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247ExcisionLocal
 public import SerrePositivity.CLMST.Prop247RankLoci
-public import SerrePositivity.HomologicalAlgebra.ConeFiniteCover
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：定 rank の実被覆からの条件付き組立て
 

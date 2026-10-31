@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorSquare
-public import SerrePositivity.PerfectComplex.InvolutionDecomposition
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 
 /-! # Positive and negative tensor-square complexes -/
 

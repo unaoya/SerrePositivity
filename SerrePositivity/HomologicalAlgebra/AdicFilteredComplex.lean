@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.ModuleSubcomplex
-public import SerrePositivity.HomologicalAlgebra.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # The shifted adic filtration of a complex
 

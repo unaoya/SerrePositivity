@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.RPerfdCohomologyInputs
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
-public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionTorBaseChange
 
 /-! # Original completed-tower Tor tests supply the A-coefficient inputs

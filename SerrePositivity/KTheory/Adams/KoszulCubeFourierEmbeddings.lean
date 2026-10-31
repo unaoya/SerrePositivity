@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.PerfectComplex.TwoTermScalarMap
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis
 public import SerrePositivity.KTheory.Adams.KoszulShiftOneModel
 public import SerrePositivity.KTheory.Adams.KoszulShiftTwoModel

@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound
+public import SerrePositivity.IntersectionMultiplicity.ParameterQuotient
 public import SerrePositivity.Paper.Section2.TowerApproximation
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
-public import SerrePositivity.HomologicalAlgebra.MinimalFreeResolution
-public import SerrePositivity.HomologicalAlgebra.FiniteFreeResolution
+public import SerrePositivity.HomologicalAlgebra.MinimalResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 
 /-!
 # パラメータ商とその有限近似（論文 §5.2–5.3、Lemma 5.3、5.4）

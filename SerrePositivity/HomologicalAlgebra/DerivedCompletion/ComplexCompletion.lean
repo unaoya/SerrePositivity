@@ -119,17 +119,6 @@ def complexCompletionUnit (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) :
     (fun n ↦ CochainComplex.mappingCone.inr (smulId (a ^ n) K))
     (complexPowerKoszulInclusion_compatible R a K)
 
-/-- 標準射は各Koszul段への包含を復元する。 -/
-theorem complexCompletionUnit_comp_projection (a : R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℕ) :
-    complexCompletionUnit R a K ≫
-      complexTowerProjection R (complexPowerKoszulStage R a K)
-        (complexPowerKoszulTransition R a K) ≫
-          Pi.π (complexPowerKoszulStage R a K) n =
-            CochainComplex.mappingCone.inr (smulId (a ^ n) K) := by
-  rw [← Category.assoc, complexCompletionUnit,
-    complexTowerCompatibleLift_comp_projection, Pi.lift_comp_π]
-
 /-- 標準射を実導来圏へ移す。 -/
 def complexCompletionUnitObject (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) :
     DerivedCategory.Q.obj K ⟶ complexCompletionObject R a K :=

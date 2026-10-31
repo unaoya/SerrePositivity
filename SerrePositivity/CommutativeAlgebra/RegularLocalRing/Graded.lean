@@ -1,14 +1,11 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.AssociatedGraded
-public import SerrePositivity.CommutativeAlgebra.ArtinReesGrowth
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.AssociatedGraded
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Dimension
 public import Mathlib.RingTheory.Regular.IsSMulRegular
-public import SerrePositivity.CommutativeAlgebra.GradedReesSelf
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelPolynomial
-public import SerrePositivity.CommutativeAlgebra.HilbertSamuelDimension
-public import SerrePositivity.CommutativeAlgebra.HomogeneousRelationGrowth
-public import SerrePositivity.CommutativeAlgebra.GradedPresentationMap
-public import SerrePositivity.CommutativeAlgebra.SamuelCumulative
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.ReesPresentation
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Polynomial
+public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Graded.PolynomialRing
 
 /-! # 随伴次数環の多項式表示と生成元の正則性
 
@@ -172,15 +169,15 @@ theorem gradedReesPresentation_injective_of_span_eq_maximalIdeal
   let F := gradedPresentationMap R I z hz
   have hdegree : ∀ n, ∀ x ∈ NS n, F x ∈ NT n :=
     gradedPresentationMap_mem_reesGrade R I z hz
-  have hker := ker_isHomogeneous_of_degree_preserving NS NT F hdegree
+  have hker := ker_isHomogeneous_of_degree NS NT F (d := 0) hdegree
   have hfinite : ∀ n, IsFiniteLength R (NS n) := by
     intro n
     apply Module.length_ne_top_iff.mp
     rw [homogeneousSubmodule_length_restrictScalars]
     exact Module.length_ne_top_iff.mpr
-      (PolynomialHilbertSeries.finiteLength_homogeneousSubmodule k (Fin (s + 1)) n)
+      (HilbertSerre.finiteLength_homogeneousSubmodule k (Fin (s + 1)) n)
   have hseries : lengthSeries NS = (PowerSeries.invOneSubPow ℚ (s + 1)).val := by
-    rw [← PolynomialHilbertSeries.lengthSeries_homogeneousSubmodule k (s + 1)]
+    rw [← HilbertSerre.lengthSeries_homogeneousSubmodule k (s + 1)]
     ext n
     simp only [lengthSeries, PowerSeries.coeff_mk]
     rw [homogeneousSubmodule_length_restrictScalars]
@@ -218,7 +215,7 @@ theorem gradedReesPresentation_injective_of_span_eq_maximalIdeal
         rw [map_mul, hfg, zero_mul]
       exact (congrArg (reesGradedSelfEquiv R I).symm hg).trans
         (reesGradedSelfEquiv R I).symm.map_zero
-    have hbound := HomogeneousRelationGrowth.natDegree_le_of_relation NS NT F
+    have hbound := HilbertSerre.natDegree_le_of_relation NS NT F
       (gradedPresentationMap_surjective R I z hz) hdegree f hd d
       (fun n x hx => by
         change x.IsHomogeneous n at hx

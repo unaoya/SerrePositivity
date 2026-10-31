@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulSquareSwap
-public import SerrePositivity.PerfectComplex.ConeArrowMap
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 
 /-! # Comparing the homogeneous and mapping-cone coordinates of a Koszul square -/
 

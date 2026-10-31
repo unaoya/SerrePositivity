@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Corollary404
 public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CLMST.EtaleLocus
-public import SerrePositivity.HomologicalAlgebra.LocalCohomologyAction
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.Actions
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import Mathlib.RingTheory.WittVector.Basic

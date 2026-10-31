@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.ThreeComponentMaps
+public import SerrePositivity.CategoryTheory.Triangulated.Idempotent
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedSections
 

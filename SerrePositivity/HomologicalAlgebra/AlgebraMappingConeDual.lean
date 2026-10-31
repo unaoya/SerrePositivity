@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.AlgebraLinearYoneda
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleConeNaturality
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
+public import SerrePositivity.HomologicalAlgebra.Complex.Cone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
 
 /-! # Actual coefficient-algebra linear coordinates on dual mapping cones -/
@@ -29,18 +30,6 @@ def algebraMappingConeTargetHomEquiv (φ : K ⟶ L) (M : ModuleCat.{u} C) (q : �
   map_add' f g := by simp [Preadditive.comp_add]
   map_smul' c f := by
     apply Prod.ext <;> apply ModuleCat.hom_ext <;> apply LinearMap.ext <;> intro x <;> rfl
-
-/-- Cone dual coordinates retain naturality for arbitrary C-linear coefficient maps. -/
-lemma algebraMappingConeTargetHomEquiv_coefficient_map (φ : K ⟶ L)
-    {M N : ModuleCat.{u} C} (q : ℤ) (f : (CochainComplex.mappingCone φ).X q ⟶
-      (ModuleCat.restrictScalars (algebraMap R C)).obj M) (g : M ⟶ N) :
-    algebraMappingConeTargetHomEquiv φ N q
-        (f ≫ (ModuleCat.restrictScalars (algebraMap R C)).map g) =
-      ((algebraMappingConeTargetHomEquiv φ M q f).1 ≫
-          (ModuleCat.restrictScalars (algebraMap R C)).map g,
-        (algebraMappingConeTargetHomEquiv φ M q f).2 ≫
-          (ModuleCat.restrictScalars (algebraMap R C)).map g) :=
-  Prod.ext (Category.assoc _ _ _).symm (Category.assoc _ _ _).symm
 
 /-- An actual cone map acts on the first dual component by precomposition with its left map. -/
 lemma algebraMappingConeTargetHomEquiv_map_fst (φ : K ⟶ L) (ψ : K' ⟶ L')

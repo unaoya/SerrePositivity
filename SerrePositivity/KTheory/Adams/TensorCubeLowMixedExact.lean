@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.ShortExactCokernel
+public import SerrePositivity.CategoryTheory.Abelian.ShortComplex
 
 public import SerrePositivity.KTheory.Adams.TensorCubeLowMixedReconstruction
 

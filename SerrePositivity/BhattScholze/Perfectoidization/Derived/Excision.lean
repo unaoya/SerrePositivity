@@ -544,7 +544,7 @@ BS Cor 8.12（著者版 p.69）の環としての帰結を、E3 界面から導�
 ## 規約
 この公開入口は以前 Cor 8.12 の文献入力であったが、現在は直接の未証明箇所を持たない。
 根拠の照合は Lemma 8.4（pp.63–64）、Prop 8.5（pp.64–65）、Cor 8.11・8.12、
-Cor 8.14（p.70）と `formalization-plans/perfectoidization-interface.md` §3・§6 に記録する。
+Cor 8.14（p.70）と `formalization-plans/bhatt-scholze/perfectoidization-interface.md` §3・§6 に記録する。
 原典：https://people.mpim-bonn.mpg.de/scholze/prisms.pdf 。
 差写像の全射性は Π2 の定理として公開し、この Inputs の公開型には追加しない。
 

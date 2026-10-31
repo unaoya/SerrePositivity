@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorSequentialColimits
-public import SerrePositivity.HomologicalAlgebra.ExactChainHomologyColimits
+public import SerrePositivity.HomologicalAlgebra.ComplexColimits
 public import Mathlib.Data.Finset.Lattice.Basic
 
 /-! # Actual Tor and TorAlg preserve exact colimits, including arbitrary finite-subset diagrams -/

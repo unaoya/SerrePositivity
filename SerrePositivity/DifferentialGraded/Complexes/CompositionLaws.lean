@@ -1,7 +1,8 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import SerrePositivity.DifferentialGraded.Complexes.Unit
 
 /-! # dg 合成の単位と結合 -/

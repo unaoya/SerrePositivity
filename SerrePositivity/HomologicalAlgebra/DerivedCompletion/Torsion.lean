@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module
-public import SerrePositivity.CommutativeAlgebra.PowTorsion
+public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 
 /-! # 一様なイデアル冪ねじれからの導来完備性
 

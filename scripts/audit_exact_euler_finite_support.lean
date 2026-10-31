@@ -1,5 +1,5 @@
-import SerrePositivity.CategoryTheory.HomologicalEuler
-import SerrePositivity.LengthAlgebra.ExactSequenceEuler
+import SerrePositivity.CategoryTheory.Euler
+import SerrePositivity.LengthAlgebra.Core
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.finiteSupport_of_bounded_zero

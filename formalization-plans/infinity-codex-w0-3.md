@@ -301,3 +301,73 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 4. 親が別のモジュールにあるものは §10.7 のとおり「外部定義の生成補題」（transient）。
 5. 1〜4 のどれでも決まらないものだけ STOP。位置も取れない証明補助の 1 件がこれに当たるなら、その名前と、どの宣言の証明の中で生成されたと推定されるかを報告する。
 6. 試験：`@[reassoc]` 付きの補題を持つ一時モジュールで、`_assoc` が親に帰属すること、分割で親と一緒に移ること、保存検査で前後が一致することを確かめる。
+
+### 10.12 追記（10-31、preflight の模擬は束で一回のビルドにする）
+
+R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-prune → 影響する下流（約 5,600 本）の全ビルド → 保存検査 → 元に戻してビルド」を回している。実測は 1 試行 3〜5 時間（`DiagonalFrame` の split-prune 17,812 秒、`Basic` 8,873 秒）で、9 試行の合計は 1 日を超える。HA/Simplicial の土台に触ると下流がほぼ全部再エラボレートされるので、この費用は試行の回数に比例する。
+
+**8 本目（`QuillenStandardFrame`）は最後（restored-build）まで終え、9 本目（`StandardCosimplicial`、移す宣言 2 個）は始めない**（10-31 ユーザー判断）。試行の繰り返し（`r72-trials-2`、pid は `trials/pid`）は、8 本目の `restored-build` が終了コード 0 で終わり state.json の 8 本目が PASS になったら止める。もし 9 本目の split-prune が始まってしまっていたら、その場で止めて `git status` に出た変更（分割元の編集と分割先の新ファイル）を `git checkout -- <file>`・削除で元に戻し、報告に書く。`StandardCosimplicial` は W2a の束の模擬に含めて確かめる。R72 の preflight の報告（8 本 PASS、1 本は束へ）を §5 の形式で出す。W2a 以降の模擬には次の規則を使う。
+
+1. **束で一回**：対象一覧の split・move を全部適用してから、下流のビルドを一回だけ行う。prune で壊れた下流への直接 import の補充（§10.6）も、その一回のビルドの失敗から一括で求める。保存検査は束の前後で全モジュール分をまとめて比べる。
+2. **失敗したら二分**：束のビルドが失敗し、原因のモジュールが失敗の出力から特定できないときだけ、束を半分に割って繰り返す。
+3. **途中の確認は直接 importer まで**：個々の split の形だけを確かめたいときは、分割した 2 本とその直接 importer だけを `lake build <module>` で見る。下流の全ビルドは束の最後の一回に限る。
+4. **他の worktree と同時に全ビルドしない**：10-31 は dgw1・ifw0-3・main の 3 つの全ビルドが同時に走り、どれも単独の 2〜3 倍遅くなった（lean プロセス 31 本・34 GB）。全ビルドの前に `ps -axo command= | grep '[l]ake build'` で他の全ビルドがないことを確かめ、あるなら終わるのを待つか、§5 の報告に「待ち」と書く。
+
+### 10.13 追記（10-31、R72 preflight の停止の承認と、DG 優先中の ∞ 側の作業）
+
+**承認**：R72 preflight の停止報告（8 本 PASS、`StandardCosimplicial` は W2a の束へ、8 本とも復元済み、385 コマンドで想定外の失敗 0、所有範囲外の差分なし）を確認した。
+
+**DG-W1 の取り込みが終わるまで、∞ 側はビルドを伴う作業をしない**（10-31 ユーザー判断：DG を優先）。その間にできることは次の二つ。
+
+1. **道具の変更をコミットする。** worktree に未コミットの道具の変更（`scripts/refactor/{compare_snapshots.py, decl_snapshot.lean, lean_source.py, prune_imports.py, split_module.py}` の 10 本の修正と、`scripts/refactor/` の試験 12 本・`targets/` の 17 本・`formalization-plans/archive/` の 1 本）がある。§10.9〜10.11 の実装分と試行の記録なので、infra/if-w0-3 に `git commit --only` でコミットする（Lean のソースは含まないのでビルド不要）。試験 `python3 -m pytest scripts/refactor` または既存の `test_*.py` を通してから。コミットは「道具」「試験」「記録（targets・report）」の 3 本に分ける。
+2. **W2a の束の計画（`targets/w2a.json`）をビルドなしで作る。** R72 の 12 本の split（preflight の plan.json を使う。`StandardCosimplicial` も含める）、W2a の move・reimport を一つの対象一覧にまとめ、`validate_targets.py` を通す。各項目の `downstream_imports` は preflight で分かった分を写し、未知のものは空にして束のビルドで補う。`w2a.md` に、束の実行手順（§10.12：全適用 → DG-W1 後の main を取り込み → `.lake/build` を main から複製 → 統合先と下流を一回ビルド → 保存検査 → verify）と、模擬に要る時間の見積もり（下流の本数 × 直近の実測）を書く。
+
+**main の merge・`.lake/build` の複製・束の実行は、Claude が「DG-W1 を main に入れた」と伝えてから。** 複製は §5a の手順（`ps` で他の `lake build` がないことを確かめ、`rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/`、終了コード 23・24 で消えたのが書き換え中の出力だけなら受け入れる）。
+
+**IF-W0-4 の内容の変更（10-31）**：`merge_modules.py` と、全ビルドの排他（`with_build_lock.sh`）・`.lake/build` の温め（`warm_build_dir.sh`）の道具は DG の Codex が DG-W2(a) で作る。IF-W0-4 に残るのは R75（削除 29 本）、`layers.json` への CategoryTheory／Coxeter の基盤登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB、未記録は 20 GB と仮定）。
+
+### 10.14 追記（10-31、W2a 草案の validator FAIL への回答：分割先の import は「使う利用元にだけ」）
+
+**承認**：道具・試験・記録の 3 コミット（3a0134b59・c6ed978e2・86fd55f38）、W1 のルート import の更新（786 → 785）、W2a 草案（move 1,197・split 9・reimport 2、R72 の 3 本は分割不要）を確認した。validator FAIL で止めた判断は正しい。
+
+**原因の確認**：`split_module.prepare` は、分割元を `public import` する利用元のすべてに分割先の import を足す。R72 の分割先は ModelBridge なので、中核の利用元（`IC.F2.Compact.WeakUniverse`・`IC.HomotopyLimits.KanTensorFrameAdjunction`）が、使ってもいない Model 側の宣言のために ModelBridge への辺を持つ。本文に移動宣言の使用はない。
+
+**方針（承認）**：分割先の import は「機械的に全利用元へ」ではなく、**使う利用元にだけ**足す。
+
+1. **既定を変える**：分割元の利用元には、分割先の import を**足さない**（`keep` 側を import し続けるだけ）。束のビルドで失敗した利用元にだけ、失敗の出力から分割先の直接 import を補う（§10.6 の `downstream_imports` の仕組みと同じ）。validate_targets の合成も同じ規則にする（自動追加を合成しない。`downstream_imports` に書かれた分だけ合成する）。
+2. **中核の利用元が失敗したら STOP**：補充先が中核（Simplicial・Core・Kan・Coherent・F1・F1B・HomotopyLimits・Stable・F2・StablePresentable）なら、その利用元は Model 側の宣言を本当に使っている。これは R72 の「Model の宣言」の分類の誤りか、その利用元自身が ModelBridge に属するべきかのどちらかなので、補充せず止めて報告する（利用元・失敗した宣言・使っている移動宣言の名前）。
+3. **中核でない利用元**（HA・EInfinity・KST・Sp）への補充はそのまま行う（層の規則に反しない）。
+4. 道具の変更（`split_module.py`・`validate_targets.py`・`targets/README.md`）と試験（中核の利用元に import が足されないこと、ビルド失敗からの補充が中核で止まること）を加え、w1.json＋w2a.json の静的検査を再実行する。禁止辺 2 本と閉包の増加が消えて PASS になるはず。それでも増える根があれば、その鎖を報告する。
+
+**束の構成（提案、ユーザー確認待ち）**：W1 を未適用のまま W2a と一つの束にする案（草案の前提）に加えて、**R79（HA 約 600・CT 12・ArrowFactorization 3 の docstring の書き換え）と IF-W0-4 の R75（削除 29 本）も同じ束に入れる**。HA の docstring を変えると HA の下流（ほぼ全部）が再ビルドになるので、別の窓にすると全ビルドが一回増える。束の下流は約 20,000 本、単独なら 1 本 1.0〜1.5 秒として 6〜8 時間（草案の 12.56 時間は 3 セッション同時の実測に基づく過大な見積もり）。この束を適用してから verify を通すまで、main の HA・∞・KST・EInfinity 側には他セッションの取り込みを入れない（論文の層のコーディネータに 1 日の凍結を依頼する）。
+
+**順序**：DG-W1 を main に入れる（10-31）→ ∞ 側は main を取り込み `.lake/build` を複製 → 上の 1〜4 を実装して静的検査 PASS → 束の適用 → 下流の一回ビルド（機械を独占。DG 側はその間、ビルドの要らない道具の作業 DG-W2(a)）→ 保存検査 → verify → 取り込み。DG-W2(b) の束のビルドは、その後。
+
+### 10.15 追記（10-31、§10.14 の実装の承認と、束の構成の確定）
+
+**承認**：§10.14 の実装（分割先 import の自動追加の廃止、`downstream_imports` だけの合成、中核への補充は STOP、`prune_imports.py` の補充経路への接続）、Python 試験 150 件 PASS、W1（68 項目）と W1＋W2a（1,276 項目）の静的検査 PASS、増加指標 2,410 → 0 を確認した。
+
+**束の構成（ユーザー承認済み、10-31）**：R79 ＋ R75 ＋ W1 ＋ W2a を一つの束にする。順序と機械の使い方は §10.14 のとおり（DG-W1 の取り込み → main の merge → `.lake/build` の複製 → 束の適用 → 下流の一回ビルド → 保存検査 → verify）。論文の層のコーディネータには、束の適用から verify までの約 1 日、HA・CT・HotA・∞・KST・EInfinity・ルート・それらの監査への取り込みを止めてもらう（Claude が依頼済み。開始時刻は Claude が伝える）。
+
+**DG-W1 の取り込みを待つ間にする作業（ビルドなし）**
+
+1. §10.14 の道具・試験・記録（w2a.json・w2a.md）を infra/if-w0-3 に 3 コミットでコミットする（`git commit --only`）。
+2. **R79 の準備**：[計画の R79 行](infinity-foundation-plan.md) の規則で、`k-theory.md` を参照する docstring（HA 約 600・CT 約 20・Spectra 1 の `[plan]: …/formalization-plans/k-theory.md`）を `…/formalization-plans/archive/k-theory-v1.md#<§396 の見出しのアンカー>` へ、`k-theory-generalization-inventory.md` を参照する docstring（`[inventory]: …`、618＋16 件）を `archive/k-theory-generalization-inventory.md` へ（`#mNNNN`・`layout-execution` のアンカーはそのまま）、ArrowFactorization・ArrowFactorizationCategory・ArrowFactorizationTransport の 3 本も同じ規則で、書き換える**スクリプトを作り dry-run で件数を出す**（期待：618／618＋16／3。食い違えば報告）。相対パスの深さは保ち、`formalization-plans/<名前>.md` の部分だけを替える。DG の 530 本は対象外（DG 計画 D5）。アンカーは GitHub の規則で生成し、`archive/k-theory-v1.md` に §396 の見出しがあることを確かめる。実際の書き換えは束の適用のときに行い、文書ごとに 1 コミット（計 2 本＋ArrowFactorization は HA 側のコミットに含める）。
+3. **R75 の準備**：[計画の R75 行](infinity-foundation-plan.md)（CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本など計 29 本）の削除対象を一覧にし、**importer が 0 であること**（監査・集約・README の参照も含めて）を確かめる。importer があるものは報告して外す。削除は束の適用のときに `git rm` で行う（下流がないので再ビルドは起きない）。
+4. **束の手順書**：`targets/batch-w1w2a.md` に、適用の順序（R75 の削除 → R79 の docstring → W1 の対象 → W2a の対象の順。split は `split_module.py`、move は `move_module.py`、reimport は入口の編集）、各段のコマンド、snapshot の採り方（全対象の before は適用前にまとめて採る。**この snapshot の採取だけは `lake env lean --run decl_snapshot.lean` で対象のビルドが要るので、DG-W1 の取り込み後、`.lake/build` を複製してから行う**）、下流ビルドの対象の集合、失敗時の二分の規則、止めて報告する点（適用後・下流ビルド後・verify 後の 3 か所）を書く。
+5. 上の 1〜4 が終わったら止めて報告する。main の merge・`.lake/build` の複製・snapshot・束の適用は、Claude が「DG-W1 を main に入れた」と伝えてから。
+
+### 10.16 追記（10-31、§10.15 の準備の承認と、R75 の参照元の処置）
+
+**承認**：3 コミット（b0491d1fa・67c6ea7cb・21258b0d9）、R79 の dry-run（618＋1／618＋16／3、635 ファイル・1,253 箇所、アンカー `396-任意モデル源への一般化中断2026-10-17` を確認）、束の手順書 `batch-w1w2a.md`（停止点 3 か所）、Python 試験 157 件 PASS を確認した。新しい準備ファイル（`rewrite_r79_docs.py`・`check_r75.py`・試験・targets の記録）はコミットしてよい。
+
+**R75：29 本すべてを削除する。** importer として数えないもの、参照元の処置は次のとおり。
+
+1. **生成された領域の監査（`scripts/audit/shared.lean` など `make_area_audits.py` の出力）は利用者ではない。** 追跡中の全モジュールを機械的に import しているだけなので、削除の後に `python3 scripts/make_area_audits.py` で再生成する（DG-W1 の D0 と同じ。他の area の差分が出たら並行セッション由来なので戻して報告）。CategoryTheory の 25 本はこれで解消。
+2. **`scripts/check_word_source_operators.lean` は削除する。** 削除する `Presentation.RetractWordPullback` の検査であり、verify の manifest にも scripts の他のファイルにも参照がない（確認済み）。削除を報告に記す。
+3. **`Spectra/SymmetricSequence/AdjacentBraid`（殻）**：利用者 `Spectra/SymmetricSequence/SpherePowers.lean` の 3 行目を `public import SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid`（殻が再エクスポートしている実体）に書き換えてから殻を削除する。SpherePowers の公開する名前は変わらない。
+4. **∞ 側の監査の禁止モジュール一覧**（`audit_homotopical_foundations.lean`・`audit_homotopical_general_tools.lean` など）に削除するモジュール名が載っていれば、その行を外す（存在しないモジュールは禁止一覧に要らない）。manifest・個別チェックの名前参照も同じ。
+5. **README の案内**（HotA の README の拡張子なしの案内 3 件、`CategoryTheory/Monoidal/README` など）は、削除したモジュールへの言及を消すか移動先に替える。短い宣言名だけの言及（`readme_name_mentions`）は移動先の同名宣言を指すので触らない。
+6. 削除は束の中で R75 の段（最初）に行い、`git rm` と 1〜5 の編集を 1 コミットにする。下流がないので再ビルドは起きない。
+
+これで束の構成は確定：R75（29 本＋検査 1 本）→ R79（2 コミット）→ W1（68）→ W2a（1,208）。DG-W1 の取り込みの通知を待つ。

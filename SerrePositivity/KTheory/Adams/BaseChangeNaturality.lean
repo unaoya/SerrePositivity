@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareBaseChangeEigenspaces
 public import SerrePositivity.KTheory.Adams.CyclicTwo
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # Naturality of the cyclic Adams square under ring change -/
 

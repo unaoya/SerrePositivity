@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixed
-public import SerrePositivity.PerfectComplex.TensorTripleCyclicSum
+public import SerrePositivity.PerfectComplex.Tensor.CyclicSum
 public import Mathlib.CategoryTheory.CommSq
 
 /-! # The three high mixed tensor-cube components and their inclusions -/

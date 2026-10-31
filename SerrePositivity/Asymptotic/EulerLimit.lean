@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.NormalizedLimit
-public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 
 /-!
 # 一様有界な複体列の Euler 和と超極限

@@ -3,8 +3,8 @@ module
 public import SerrePositivity.CLMST.StageModPLengthBound
 public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.LengthAlgebra.RootTowerLength.StageDecay
-public import SerrePositivity.LengthAlgebra.GeometricDecay
-public import SerrePositivity.LengthAlgebra.CyclicPowerReduction
+public import SerrePositivity.LengthAlgebra.QuotientBounds
+public import SerrePositivity.LengthAlgebra.Almost
 
 /-! # 巡回perfectoid商の一様な正規化上界
 

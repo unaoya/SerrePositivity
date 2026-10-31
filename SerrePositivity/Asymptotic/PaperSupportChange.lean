@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.PaperRankQuotient
-public import SerrePositivity.CategoryTheory.ScalarSupportRadical
+public import SerrePositivity.CategoryTheory.ScalarSupport
 
 /-! # 根基が同じパラメータ系への支持の変更
 

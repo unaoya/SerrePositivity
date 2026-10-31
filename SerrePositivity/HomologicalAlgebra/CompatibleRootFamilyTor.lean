@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.CompatibleRootFiniteFamilyTor
 public import SerrePositivity.HomologicalAlgebra.FiniteSupQuotientColimit
 public import SerrePositivity.HomologicalAlgebra.TorExactColimits
-public import SerrePositivity.CommutativeAlgebra.CompatibleRootFamilyIdeal
+public import SerrePositivity.CommutativeAlgebra.CompatibleRoot
 /-! # Arbitrary compatible-root family quotients are Tor-independent from perfect coefficients
 
 Finite-subset quotient maps and exact colimit preservation retain the original Tor.

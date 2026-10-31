@@ -53,34 +53,11 @@ def algebraKoszulDualColimitAugmentation :
         (algebraKoszulDualFunctor (C := C) (Fin.elim0 : Fin 0 → R)) :=
   colimit.desc _ (algebraKoszulDualAugmentationCocone (C := C) z)
 
-/-- On every actual finite stage the colimit augmentation is the standard one. -/
-lemma algebraKoszulDualColimitAugmentation_ι (n : ℕ) :
-    colimit.ι (algebraKoszulDualFunctorComplexDiagram (C := C) z) n ≫
-        algebraKoszulDualColimitAugmentation (C := C) z =
-      (functorCochainComplexFunctor (ModuleCat.{u} C) (ModuleCat.{u} C)).map
-        (algebraKoszulDualAugmentation (C := C) (fun j => z j ^ n)) :=
-  colimit.ι_desc _ n
-
 /-- The augmentation is natural in all actual C-module coefficients. -/
 def algebraKoszulDualColimitAugmentationNatTrans :
     algebraKoszulDualColimitFunctor (C := C) z ⟶
       algebraKoszulDualFunctor (C := C) (Fin.elim0 : Fin 0 → R) :=
   complexOfFunctorsToFunctorToComplex.map (algebraKoszulDualColimitAugmentation (C := C) z)
-
-/-- Pass the actual augmentation to integer cochain complexes by extension by zero. -/
-def algebraKoszulDualIntegerAugmentation :
-    algebraKoszulDualIntegerColimitFunctor (C := C) z ⟶
-      algebraKoszulDualFunctor (C := C) (Fin.elim0 : Fin 0 → R) ⋙
-        nonnegativeCochainEmbedding.extendFunctor (ModuleCat.{u} C) :=
-  Functor.whiskerRight (algebraKoszulDualColimitAugmentationNatTrans (C := C) z)
-    (nonnegativeCochainEmbedding.extendFunctor (ModuleCat.{u} C))
-
-/-- Apply arbitrary parameter Koszul operators to the canonical augmentation. -/
-def parameterKoszulColimitAugmentation {r : ℕ} (y : Fin r → C) :
-    parameterKoszulColimitFunctor z y ⟶
-      algebraKoszulDualFunctor (C := C) (Fin.elim0 : Fin 0 → R) ⋙
-        nonnegativeCochainEmbedding.extendFunctor (ModuleCat.{u} C) ⋙ koszulFunctor y :=
-  Functor.whiskerRight (algebraKoszulDualIntegerAugmentation (C := C) z) (koszulFunctor y)
 
 /-- The empty dual in degree zero is evaluation of an R-linear map at one, C-linearly. -/
 def algebraKoszulDualEmptyZeroEquiv (M : ModuleCat.{u} C) :

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Tor
-public import SerrePositivity.CommutativeAlgebra.FiniteLengthSmulSubquotient
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 /-! # 有限生成自由分解による Tor の長さの評価

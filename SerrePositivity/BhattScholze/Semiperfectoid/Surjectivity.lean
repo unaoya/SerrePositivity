@@ -1,17 +1,17 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PrincipalAdicFaithfulDescent
-public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
+public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlat
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness

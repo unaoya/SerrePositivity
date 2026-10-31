@@ -94,17 +94,4 @@ def pairCompletionPrincipalAlgEquivOfCompleteFirst :
     (principalCompletionToPair R a b) (pairCompletionToPrincipal_comp R a b hc)
     (principalCompletionToPair_comp R a b hc)
 
-/-- The comparison preserves the original pair completion unit. -/
-lemma pairCompletionPrincipalAlgEquivOfCompleteFirst_unit (r : R) :
-    letI := pairCompletionCommRing R a b
-    letI := pairCompletionAlgebra R a b
-    letI := principalCompletionCommRing R b
-    letI := principalCompletionAlgebra R b
-    pairCompletionPrincipalAlgEquivOfCompleteFirst R a b hc (pairCompletionUnitRingHom R a b r) =
-      principalCompletionUnitRingHom R b r := by
-  let := pairCompletionCommRing R a b
-  let := pairCompletionAlgebra R a b
-  let := principalCompletionCommRing R b
-  let := principalCompletionAlgebra R b
-  exact (pairCompletionPrincipalAlgEquivOfCompleteFirst R a b hc).commutes r
 end SerrePositivity.DerivedCompletion

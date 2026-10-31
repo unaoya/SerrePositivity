@@ -4,7 +4,14 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Nailin Guan
 -/
 module
-public import SerrePositivity.HomologicalAlgebra.AuslanderBuchsbaum
+
+public import Mathlib.Algebra.Algebra.Shrink
+public import Mathlib.Algebra.Category.ModuleCat.Ext.DimensionShifting
+public import Mathlib.Algebra.Category.ModuleCat.Products
+public import Mathlib.CategoryTheory.Abelian.Projective.Dimension
+public import Mathlib.RingTheory.Depth.Basic
+public import Mathlib.RingTheory.LocalRing.Module
+public import Mathlib.Tactic.ENatToNat
 public import Mathlib.RingTheory.Regular.Free
 
 /-! # Projective dimension under a common regular quotient
@@ -125,15 +132,3 @@ lemma projectiveDimension_eq_quotient [Small.{v} R] [IsLocalRing R] [IsNoetheria
     | coe n => exact aux n
 
 end SerrePositivity.RegularQuotientProjectiveDimension
-
-namespace SerrePositivity
-open CategoryTheory
-/-- Quotienting by a common regular element preserves projective dimension. -/
-theorem projectiveDimension_eq_regularQuotient {R : Type u} [CommRing R]
-    [IsLocalRing R] [IsNoetherianRing R] (M : ModuleCat.{u} R) [Module.Finite R M]
-    (x : R) (hR : IsSMulRegular R x) (hM : IsSMulRegular M x)
-    (hm : x ∈ IsLocalRing.maximalIdeal R) :
-    projectiveDimension M = projectiveDimension
-      (ModuleCat.of (R ⧸ Ideal.span {x}) (QuotSMulTop x M)) :=
-  RegularQuotientProjectiveDimension.projectiveDimension_eq_quotient R M x hR hM hm
-end SerrePositivity

@@ -4,7 +4,7 @@ public import SerrePositivity.CLMST.Prop247GeneralRank
 public import SerrePositivity.CLMST.Prop247RankProductUniversality
 public import SerrePositivity.CLMST.Prop247RankData
 public import SerrePositivity.CLMST.Prop247CoveredDescent
-public import SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange
+public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
 
 /-! # Prop 2.4.7：原典の実一般 rank 四角形からの降下
 

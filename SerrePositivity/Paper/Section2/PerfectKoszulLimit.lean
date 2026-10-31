@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.PerfectKoszulLength
-public import SerrePositivity.CommutativeAlgebra.KoszulDirectedUnion
+public import SerrePositivity.HomologicalAlgebra.KoszulDirectedUnion
 public import SerrePositivity.CommutativeAlgebra.FrobeniusKoszulLimit
 
 /-! # Perfection の Koszul ホモロジーと近似環の極限

@@ -1,16 +1,35 @@
 module
 
-public import SerrePositivity.PerfectComplex.ProjectiveBounds
-public import SerrePositivity.LengthAlgebra.SerreQuotient
+public import SerrePositivity.PerfectComplex.KoszulLength
+public import SerrePositivity.LengthAlgebra.Core
+public import SerrePositivity.PerfectComplex.Free.Euler
+public import Mathlib.RingTheory.LocalRing.ResidueField.Defs
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 
 /-! # 長さ付き代数の Koszul 有限性と Euler 特性
 
-有限性と正の homological 次数の消滅を独立な条件として扱う。
+## 概要
+
+長さ付き代数について Koszul ホモロジーの有限性と正の次数の消滅を独立な条件として定め、Koszul Euler 特性を定義する。通常の長さによる Koszul 有限性と、剰余体への全射による係数環上の通常長さと基底上の長さの同定を与える。
+
+## 方針
+
+有限性を仮定しない等式は、無限長を零へ送る数値規約を両辺で一致させて扱う。
+
+## 規約
+
+正則性・Noether 性・有限拡大・階数公式は要求しない。
+
+## 使われ方
+
+`LengthAlgebra/Perfect`・`KoszulFormula`、Paper の Lemma 3.5。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 universe u
+
+section KoszulPart
 
 namespace SerrePositivity.LengthAlgebra
 
@@ -85,3 +104,62 @@ lemma koszul_finite_of_zero_positive
     exact ENNReal.zero_ne_top
 
 end SerrePositivity.LengthAlgebra
+
+end KoszulPart
+
+section OrdinaryPart
+
+namespace SerrePositivity
+
+open CategoryTheory CategoryTheory.Limits
+open scoped ENNReal
+
+/-- パラメータ商が Artin 環なら、各冪の Koszul ホモロジーの通常の長さは有限。 -/
+lemma ordinary_koszul_pow_finite {R : Type u} [CommRing R] [IsNoetherianRing R]
+    {e : ℕ} (z : Fin e → R) [IsArtinianRing (R ⧸ Ideal.span (Set.range z))]
+    (v : ℕ) (i : ℤ) :
+    (NormalizedLength.ordinary R).len ((koszulComplex (fun j ↦ z j ^ v)).homology i) ≠ ⊤ := by
+  have : IsArtinianRing (R ⧸ Ideal.span (Set.range (fun j ↦ z j ^ v))) :=
+    isArtinianRing_quotient_of_le_radical (Ideal.span (Set.range z)) _
+      (le_radical_span_pow z Ideal.le_radical v)
+  exact ENat.toENNReal_ne_top.mpr (Module.length_ne_top_iff.mpr
+    (homology_finiteLength_of_isPerfectSupported
+      (isPerfectSupported_koszulComplex (fun j ↦ z j ^ v)) i))
+
+/-- Noether 局所環でパラメータの根基が極大イデアルを含めば、通常 Koszul 有限性を満たす。 -/
+lemma ordinary_koszul_finite_of_maximal_le_radical
+    {R : Type u} [CommRing R] [IsLocalRing R] [IsNoetherianRing R]
+    {e : ℕ} (z : Fin e → R)
+    (hz : IsLocalRing.maximalIdeal R ≤ (Ideal.span (Set.range z)).radical) :
+    LengthAlgebra.KoszulFinite (NormalizedLength.ordinary R) z := by
+  have : IsArtinianRing (R ⧸ IsLocalRing.maximalIdeal R) :=
+    inferInstanceAs (IsArtinianRing (IsLocalRing.ResidueField R))
+  have : IsArtinianRing (R ⧸ Ideal.span (Set.range z)) :=
+    isArtinianRing_quotient_of_le_radical (IsLocalRing.maximalIdeal R) _ hz
+  exact fun v _ q ↦ ordinary_koszul_pow_finite z v q
+
+end SerrePositivity
+
+end OrdinaryPart
+
+section OrdinaryKoszulEulerPart
+
+namespace SerrePositivity
+open CategoryTheory IsLocalRing
+
+/-- 剰余体が同じ局所係数環では、通常の Koszul Euler 数は基底上の評価に等しい。 -/
+lemma ordinary_koszulEuler_eq_koszulEulerChar
+    {A T : Type u} [CommRing A] [CommRing T] [IsLocalRing T] [Algebra A T]
+    {e : ℕ} (z : Fin e → A)
+    (hres : Function.Surjective ((residue T).comp (algebraMap A T))) :
+    LengthAlgebra.koszulEuler (NormalizedLength.ordinary T) (algebraMap A T ∘ z) =
+      koszulEulerChar A T z := by
+  rw [LengthAlgebra.koszulEuler, ← chiOrd_eq_lambdaEuler_ordinary]
+  unfold chiOrd koszulEulerChar
+  congr 1
+  funext q
+  rw [length_restrictScalars_eq hres]
+
+end SerrePositivity
+
+end OrdinaryKoszulEulerPart

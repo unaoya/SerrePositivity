@@ -162,7 +162,7 @@ G番号はk-theory.md §123.3と同一。共有の証明は(I)系列が所有し
 具体的M9は `Paper/Section4/` 側の新規ファイル、引用は
 `Inputs/DifferentialGraded/` に所有者・台帳IDを付ける。
 一般の圏論補題は必要なら `CategoryTheory/Enriched/`、モデル一般論は `HomotopicalAlgebra/`。
-Monoidalへの追加前に [shared-foundations-arxiv.md](../shared-foundations-arxiv.md) を読む。
+Monoidalへの追加前に [shared-foundations-arxiv.md](../future/shared-foundations-arxiv.md) を読む。
 今回の範囲では括弧規約の統一・移植・共有パッケージ化を行わない。
 
 ## 5. 段階・依存関係・受入条件

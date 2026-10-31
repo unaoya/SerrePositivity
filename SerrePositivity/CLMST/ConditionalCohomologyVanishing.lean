@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.ParameterLocalCohomologyAnnihilator
+public import SerrePositivity.HomologicalAlgebra.LocalCohomology.BaseChange
 public import SerrePositivity.CLMST.FiniteStageKoszulAnnihilator
 
 /-! # Conditional form of the two conclusions of CLMST Corollary 4.0.4

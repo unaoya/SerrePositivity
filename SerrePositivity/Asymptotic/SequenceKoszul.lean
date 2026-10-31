@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SequenceSupport
-public import SerrePositivity.CategoryTheory.FullSubcategoryTriangle
+public import SerrePositivity.CategoryTheory.HomotopyProperty
 public import SerrePositivity.CommutativeAlgebra.Koszul
 
 /-! # 自由複体列に対する具体的な Koszul 構成 -/

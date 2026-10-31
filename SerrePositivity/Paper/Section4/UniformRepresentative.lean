@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SupportedRankTStructure
-public import SerrePositivity.LengthAlgebra.Ordinary
+public import SerrePositivity.LengthAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.StupidTruncation
+public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import SerrePositivity.HomologicalAlgebra.KoszulScalarControl
 public import Mathlib.Algebra.Homology.HomologySequence
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian

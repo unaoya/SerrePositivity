@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Shift
-public import SerrePositivity.HomologicalAlgebra.CochainAcyclic
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.HomotopyCategory.KProjective
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 

@@ -5,8 +5,8 @@ public import Mathlib.Algebra.MonoidAlgebra.Module
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import SerrePositivity.BhattScholze.Delta.Free.PolynomialExpand
 public import Mathlib.FieldTheory.Finite.Basic
-public import SerrePositivity.CommutativeAlgebra.PerfectoidUntiltNaturality
-public import SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import Mathlib.RingTheory.RingHom.FaithfullyFlat
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution

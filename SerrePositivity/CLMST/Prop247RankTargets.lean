@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247RankBaseChange
 public import SerrePositivity.CLMST.Prop247QuotientPerfectoidization
-public import SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-! # Prop 2.4.7：原典の rank 像の実 perfectoid 化対象
 

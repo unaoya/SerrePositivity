@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+public import SerrePositivity.LengthAlgebra.Koszul
 
 public import SerrePositivity.Paper.Section4.SymmetricComparison
 public import SerrePositivity.Paper.Section4.LengthAlgebraRealization
@@ -8,7 +8,7 @@ public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.Asymptotic.PaperComplexBaseChange
 public import SerrePositivity.Paper.Section4.SupportedDescent
 public import SerrePositivity.Paper.Section4.LengthHypotheses
-public import SerrePositivity.CommutativeAlgebra.RegularLocalRing
+public import SerrePositivity.CommutativeAlgebra.Koszul.RegularEuler
 
 /-!
 # 定理4.7：漸近ノルム比較

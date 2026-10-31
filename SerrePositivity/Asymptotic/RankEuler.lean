@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.FiniteSupportBounds
+public import SerrePositivity.CategoryTheory.AlternatingSum
 
 public import SerrePositivity.Asymptotic.CompletedHomology
 public import SerrePositivity.Asymptotic.EulerLimit

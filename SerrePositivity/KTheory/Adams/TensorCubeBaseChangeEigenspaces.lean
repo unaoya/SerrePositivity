@@ -1,7 +1,10 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorTripleBaseChange
-public import SerrePositivity.PerfectComplex.CubicActionBaseChange
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
+public import SerrePositivity.PerfectComplex.Eigen.Cubic
 public import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
 
 /-! # Base change intertwines the cubic action and its character images -/

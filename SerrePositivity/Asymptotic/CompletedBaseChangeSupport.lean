@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.CompletedComplexEvaluation
 public import SerrePositivity.Asymptotic.SequenceBaseChangeSupport
-public import SerrePositivity.CategoryTheory.SemilinearScalar
+public import SerrePositivity.CategoryTheory.ScalarSupport
 
 /-! # 商の完備化上の係数変更と支持 -/
 

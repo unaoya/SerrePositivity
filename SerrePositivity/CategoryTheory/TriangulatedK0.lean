@@ -3,19 +3,32 @@ module
 public import Mathlib.CategoryTheory.Triangulated.Functor
 public import Mathlib.GroupTheory.FreeAbelianGroup
 public import Mathlib.GroupTheory.QuotientGroup.Defs
+public import Mathlib.Algebra.Ring.NegOnePow
 
-/-!
-# 三角圏の Grothendieck 群
+/-! # 三角圏の Grothendieck 群
 
-対象の同型と完全三角形の加法関係で自由アーベル群を割る。
-§4 の商圏に対して使う構成であり、有限自由複体を生成元とする既存の
-`K0Supported` とは区別する。評価の普遍性、三角関手の誘導写像と
-自然同型による不変性を、具体的な列の圏から独立に証明する。
+## 概要
+
+前三角圏の Grothendieck 群 `TriangulatedK0`（対象の類を完全三角形の関係で割ったもの）と、その普遍性 `lift`・`hom_ext`、整数のシフトの類 `[X⟦n⟧] = (-1)^n [X]`（`mk_shift`）を与える。
+
+## 方針
+
+自由アーベル群を完全三角形の関係の生成する部分群で割る。シフトの符号は `X → 0 → X⟦1⟧` の三角形から。
+
+## 規約
+
+Mathlib にはない（提出候補）。
+
+## 使われ方
+
+PerfectComplex の K₀、KTheory、KST、Euler 評価（`Euler`）。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 universe v u v' u' v'' u''
+
+section TriangulatedK0Part
 
 namespace SerrePositivity
 
@@ -140,3 +153,33 @@ lemma map_natIso {F' : C ⥤ D} [F'.CommShift ℤ] [F'.IsTriangulated] (e : F �
 end TriangulatedK0
 
 end SerrePositivity
+
+end TriangulatedK0Part
+
+section TriangulatedK0ShiftPart
+
+namespace SerrePositivity
+open CategoryTheory CategoryTheory.Limits
+namespace TriangulatedK0
+variable {C : Type*} [Category C] [Preadditive C] [HasZeroObject C]
+  [HasShift C ℤ] [∀ n : ℤ, (shiftFunctor C n).Additive] [Pretriangulated C]
+/-- Integer shifts multiply Grothendieck classes by the corresponding sign. -/
+lemma mk_shift (X : C) (n : ℤ) : mk (X⟦n⟧) = ((n.negOnePow : ℤˣ) : ℤ) • mk X := by
+  induction n using Int.induction_on with
+  | zero =>
+    rw [Int.negOnePow_zero, Units.val_one, one_smul]
+    exact mk_iso ((shiftFunctorZero C ℤ).app X)
+  | succ n ih =>
+    have h := mk_iso ((shiftFunctorAdd' C (n : ℤ) 1 (n + 1) rfl).app X)
+    simp only [Functor.comp_obj] at h
+    rw [h, mk_shift_one, ih, Int.negOnePow_succ, Units.val_neg, neg_smul]
+  | pred n ih =>
+    have h := mk_iso ((shiftFunctorAdd' C (-n - 1 : ℤ) 1 (-n) (by omega)).app X)
+    simp only [Functor.comp_obj] at h
+    rw [mk_shift_one, ih] at h
+    rw [← neg_neg (mk (X⟦(-n - 1 : ℤ)⟧)), ← h, Int.negOnePow_sub,
+      Int.negOnePow_one, mul_neg, mul_one, Units.val_neg, neg_smul]
+end TriangulatedK0
+end SerrePositivity
+
+end TriangulatedK0ShiftPart

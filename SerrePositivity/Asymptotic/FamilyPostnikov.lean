@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.FamilyHomologyTruncation
-public import SerrePositivity.CategoryTheory.DerivedPure
+public import SerrePositivity.CategoryTheory.Derived
 
 /-!
 # 導来対象の族に対する共通の有限 Postnikov 帰納法

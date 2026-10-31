@@ -3,8 +3,8 @@ module
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.Paper.Section2.TowerLength
-public import SerrePositivity.CommutativeAlgebra.RootTower.Restriction
-public import SerrePositivity.PerfectComplex.NormalizedLengthComap
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
+public import SerrePositivity.LengthAlgebra.Normalized
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable

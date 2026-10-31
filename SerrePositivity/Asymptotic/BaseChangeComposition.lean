@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.SupportedRankBaseChange
-public import SerrePositivity.CategoryTheory.KaroubiTriangulatedFunctor
+public import SerrePositivity.CategoryTheory.Karoubi.Triangulated
 
 /-! # 二段階の係数変更と直接の係数変更との比較 -/
 

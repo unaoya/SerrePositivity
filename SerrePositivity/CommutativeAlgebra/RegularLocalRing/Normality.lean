@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.FiniteResolutionTrace
+public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import Mathlib.RingTheory.IntegralClosure.IntegrallyClosed
 public import Mathlib.RingTheory.Flat.Localization

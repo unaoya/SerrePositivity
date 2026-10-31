@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionColimits
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTripleBaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
 public import SerrePositivity.DifferentialGraded.Complexes.Cells
 public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
 

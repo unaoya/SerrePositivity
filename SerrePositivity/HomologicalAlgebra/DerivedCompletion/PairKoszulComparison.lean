@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulTransition
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerUnit
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerIso
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 
 /-! # 二座標Koszul塔の元の表示と具体的な錐表示の比較 -/
 

@@ -382,16 +382,3 @@ theorem AuslanderBuchsbaum [IsNoetherianRing R] [IsLocalRing R] (M : ModuleCat.{
       exact h_ker
 
 end SerrePositivity.AuslanderBuchsbaumProof
-
-namespace SerrePositivity
-open CategoryTheory
-/-- Auslander–Buchsbaum for a nonzero finite module of finite projective dimension. -/
-theorem auslanderBuchsbaum {R : Type u} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
-    (M : ModuleCat.{u} R) [Nontrivial M] [Module.Finite R M]
-    (hpd : projectiveDimension M ≠ ⊤) :
-    projectiveDimension M + (IsLocalRing.depth M : WithBot ℕ∞) =
-      (IsLocalRing.depth (ModuleCat.of R R) : WithBot ℕ∞) := by
-  have h := AuslanderBuchsbaumProof.AuslanderBuchsbaum M hpd
-  rw [IsLocalRing.depth_eq_of_linearEquiv (Shrink.linearEquiv R R)] at h
-  exact h
-end SerrePositivity

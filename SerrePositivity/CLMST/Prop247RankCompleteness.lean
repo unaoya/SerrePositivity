@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247Cone
-public import SerrePositivity.CommutativeAlgebra.FiniteProductBaseChange
+public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
 
 /-! # Prop 2.4.7：実 rank 図式の離散な環の導来 p 完備性

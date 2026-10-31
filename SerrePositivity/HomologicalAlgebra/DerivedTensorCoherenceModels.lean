@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedUnit
 
 /-! # Arbitrary projective models for coherence of derived tensor -/

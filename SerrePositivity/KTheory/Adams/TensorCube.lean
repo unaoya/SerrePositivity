@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorTriple
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.KTheory.Adams.TensorSquare
 
 /-! # The signed cyclic action on tensor cubes -/

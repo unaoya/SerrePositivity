@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.CompletedSourceLength
 public import SerrePositivity.CLMST.PerfectoidCokernelEuler
-public import SerrePositivity.LengthAlgebra.KoszulEulerComparison
+public import SerrePositivity.LengthAlgebra.KoszulModule
 
 /-! # 完備テンソル代数の余核の有限性と Euler 消去
 

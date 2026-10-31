@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.PerfectoidCokernel
-public import SerrePositivity.LengthAlgebra.KoszulErrorEuler
-public import SerrePositivity.LengthAlgebra.KoszulCokernelBounds
+public import SerrePositivity.LengthAlgebra.KoszulModule
 
 /-! # perfectoid 化の余核側の Euler 評価の消去
 

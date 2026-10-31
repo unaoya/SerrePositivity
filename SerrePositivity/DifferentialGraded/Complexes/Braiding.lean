@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # 非有界 Ch(A) の Koszul braiding
 

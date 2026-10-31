@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorProjective
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Tensor
 public import Mathlib.CategoryTheory.Products.Associator
 
 /-! # Associativity of the bounded-above derived tensor product -/

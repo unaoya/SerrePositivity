@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftElements
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHexagon
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-!
 概要：第三因子の shift と三重 tensor の associator の整合性を証明する。

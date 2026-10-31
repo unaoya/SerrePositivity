@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerUnit
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerHomology
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConeBoundaryNormalization
 
 /-! # ホモトピー逆極限の標準射影と両立する持ち上げ

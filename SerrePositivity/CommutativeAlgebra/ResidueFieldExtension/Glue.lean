@@ -3,7 +3,7 @@ module
 public import Mathlib.Logic.Function.Basic
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.Diagram
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.Step
-public import SerrePositivity.CategoryTheory.WellFoundedHistory
+public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.WellFoundedHistory
 
 /-! # 剰余体拡大の図式の超限の貼り合わせ
 

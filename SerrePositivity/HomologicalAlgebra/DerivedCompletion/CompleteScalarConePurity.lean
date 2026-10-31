@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionHomologyComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DivisibleHomZero
-public import SerrePositivity.HomologicalAlgebra.ConeLES
+public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 /-! # Purity detected by a discrete Koszul reduction
 

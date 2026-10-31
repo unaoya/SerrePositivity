@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ModuleSupport
+public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import Mathlib.Algebra.Category.ModuleCat.Basic
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 public import Mathlib.RingTheory.Finiteness.Finsupp

@@ -71,8 +71,8 @@
 
 作成日：2026-10-18。
 レーン名：K-L7（スキーム論と blowup）。
-正本：`formalization-plans/k-theory-kst-route.md`。
-共通の決定：`formalization-plans/foundations.md`。
+正本：`formalization-plans/kst-lanes/k-theory-kst-route.md`。
+共通の決定：`formalization-plans/infinity-lanes/foundations.md`。
 本文は作業履歴ではなく、現在の設計と受入条件を記す。
 実施の経緯は個々のコミットメッセージに記す。
 

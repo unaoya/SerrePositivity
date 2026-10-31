@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section5.PrimeReduction
-public import SerrePositivity.IntersectionMultiplicity.Devissage
+public import SerrePositivity.IntersectionMultiplicity.Additivity
 
 /-! # 完備・代数閉剰余体の場合の有限生成加群の正値性
 

@@ -1,9 +1,10 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorDimensionShift
-public import SerrePositivity.CommutativeAlgebra.FiniteLength
+public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 public import Mathlib.RingTheory.Flat.Basic
+public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 
 /-! # 二つの環の Tor の長さの比較
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankTargets
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedFibers
+public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 
 /-! # Prop 2.4.7：André 拡大の絶対整閉性を実 rank 対象へ渡す
 

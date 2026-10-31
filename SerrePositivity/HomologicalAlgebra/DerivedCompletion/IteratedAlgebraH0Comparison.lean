@@ -50,26 +50,6 @@ def iteratedAlgebraCompletionH0PDAlgEquiv :
     exact completionH0PairAlgEquivOfCompleteFirst R d AP (p : R) hB
   exact aux (p : B) (map_natCast (algebraMap R B) p)
 
-/-- The second original completion unit is preserved, with coefficient p unchanged. -/
-lemma iteratedAlgebraCompletionH0PDAlgEquiv_unit (x : B) :
-    letI := derivedH0CommRing AP
-    letI := derivedH0Algebra AP
-    letI := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R d).obj AP)
-    letI := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R d).obj AP)
-    letI := completionH0ScalarAlgebra R d AP
-    letI := pdCompletionCommRing B p (algebraMap R B d)
-    letI := pdCompletionAlgebra B p (algebraMap R B d)
-    iteratedAlgebraCompletionH0PDAlgEquiv R p d A (J x) =
-      pdCompletionUnit B p (algebraMap R B d) x := by
-  let := derivedH0CommRing AP
-  let := derivedH0Algebra AP
-  let := derivedH0CommRing ((boundedAboveCompletionCommMonFunctor R d).obj AP)
-  let := derivedH0Algebra ((boundedAboveCompletionCommMonFunctor R d).obj AP)
-  let := completionH0ScalarAlgebra R d AP
-  let := pdCompletionCommRing B p (algebraMap R B d)
-  let := pdCompletionAlgebra B p (algebraMap R B d)
-  exact (iteratedAlgebraCompletionH0PDAlgEquiv R p d A).commutes x
-
 variable (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
 local notation "ATP" => boundedAboveCompletedTensorAlgebra R (p : R) S T
 set_option quotPrecheck false in

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedAcyclicHomology
 public import SerrePositivity.HomologicalAlgebra.DerivedHomologyLinear
-public import SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatTensor
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 
 /-! # Homology descent along completely faithfully flat maps for power-torsion objects -/
 @[expose] public section
@@ -45,41 +45,6 @@ lemma homologyTorAcyclic_of_power_torsion (a : R)
     torModule_subsingleton_of_completelyFlat_powerTorsion a (baseChangeScalarModule φ)
       hS n ((DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.obj) (hX i) k hk
   exact ModuleCat.isZero_of_subsingleton _
-
-/-- Derived scalar extension reflects zero homology maps for power-torsion cohomology. -/
-lemma powerTorsionDerivedHomology_map_eq_zero_iff (a : R)
-    (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) (baseChangeScalarModule φ)) (n : ℕ)
-    {X Y : DerivedCategory.Minus (ModuleCat.{u} R)}
-    (hX : ∀ i : ℤ, ∀ x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.obj,
-      a ^ n • x = 0)
-    (hY : ∀ i : ℤ, ∀ x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj Y.obj,
-      a ^ n • x = 0) (f : X ⟶ Y) (i : ℤ) :
-    (DerivedCategory.homologyFunctor (ModuleCat S) i).map
-        ((boundedAboveDerivedBaseChange φ).map f).hom = 0 ↔
-      (DerivedCategory.homologyFunctor (ModuleCat R) i).map f.hom = 0 :=
-  (boundedAboveDerivedHomology_map_eq_zero_iff φ
-      (homologyTorAcyclic_of_power_torsion φ a hS.1 n X hX)
-      (homologyTorAcyclic_of_power_torsion φ a hS.1 n Y hY) f i).trans
-    (completelyFaithfullyFlat_extendScalars_map_eq_zero_iff φ a hS n (hX i) (hY i) _)
-
-/-- Scalar zero maps are reflected as actual pointwise annihilation of the original homology. -/
-lemma powerTorsionDerivedHomology_scalar_eq_zero_iff (a : R)
-    (hS : IsCompletelyFaithfullyFlat (Ideal.span {a}) (baseChangeScalarModule φ)) (n : ℕ)
-    (X : DerivedCategory.Minus (ModuleCat.{u} R))
-    (hX : ∀ i : ℤ, ∀ x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.obj,
-      a ^ n • x = 0) (g : R) (N : ℕ) (i : ℤ) :
-    (DerivedCategory.homologyFunctor (ModuleCat S) i).map
-        ((boundedAboveDerivedBaseChange φ).map (g ^ N • 𝟙 X)).hom = 0 ↔
-      ∀ x : (DerivedCategory.homologyFunctor (ModuleCat R) i).obj X.obj, g ^ N • x = 0 := by
-  rw [powerTorsionDerivedHomology_map_eq_zero_iff φ a hS n hX hX]
-  change (DerivedCategory.homologyFunctor (ModuleCat R) i).map (g ^ N • 𝟙 X.obj) = 0 ↔ _
-  rw [Functor.map_smul, CategoryTheory.Functor.map_id]
-  constructor
-  · intro h x
-    exact congrArg (fun f => f.hom x) h
-  · intro h
-    ext x
-    exact h x
 
 /-- The usual scalar-extension map sends original scalar multiplication to the target scalar. -/
 lemma extendScalars_scalar_id (M : ModuleCat.{u} R) (r : R) :

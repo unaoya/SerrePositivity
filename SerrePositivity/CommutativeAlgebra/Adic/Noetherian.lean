@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ReesCoefficientApproximation
+public import SerrePositivity.CommutativeAlgebra.Adic.ReesLifts
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Basic
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 

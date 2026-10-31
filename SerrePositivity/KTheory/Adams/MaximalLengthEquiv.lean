@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.KTheory.MaximalSupportLengthEquiv
-public import SerrePositivity.KTheory.Adams.MaximalLengthEvaluation
+public import SerrePositivity.KTheory.MaximalSupportLocalLength
+public import SerrePositivity.KTheory.Adams.MaximalSupportModules
 
 /-! # Length coordinates on least-height localization -/
 

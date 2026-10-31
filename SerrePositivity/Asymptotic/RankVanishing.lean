@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Asymptotic.CompletedComplexEvaluation
 public import SerrePositivity.Asymptotic.KoszulTower
-public import SerrePositivity.PerfectComplex.KoszulAmplitude
-public import SerrePositivity.LengthAlgebra.PerfectVanishing
+public import SerrePositivity.PerfectComplex.KoszulLength
+public import SerrePositivity.LengthAlgebra.Perfect
 
 /-! # ランク商での新交叉型消滅と第零次
 

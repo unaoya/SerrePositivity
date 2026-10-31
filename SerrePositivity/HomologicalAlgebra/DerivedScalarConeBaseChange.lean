@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedCone
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.DerivedKoszulDescent
 
 /-! # 任意の導来底変換とスカラー錐の交換

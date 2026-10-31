@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.KoszulLengthBounds
+public import SerrePositivity.PerfectComplex.KoszulLength
 public import Mathlib.Analysis.Asymptotics.Ring
 public import Mathlib.Basic.ENNReal.BigOperators
 

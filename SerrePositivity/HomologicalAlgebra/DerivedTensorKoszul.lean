@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedCone
+public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorCoherenceModels
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
 public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone

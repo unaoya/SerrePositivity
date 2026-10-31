@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.LinearAlgebra.Finsupp.VectorSpace
 public import Mathlib.LinearAlgebra.Quotient.Defs
 /-!

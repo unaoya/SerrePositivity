@@ -1,9 +1,8 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.ConeResolution
+public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.HomologicalAlgebra.BaseChange
 public import SerrePositivity.HomologicalAlgebra.Tor
-public import SerrePositivity.HomologicalAlgebra.ResolutionNaturality
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.RingTheory.Flat.CategoryTheory
 public import Mathlib.Algebra.Homology.HomologySequence

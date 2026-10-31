@@ -77,7 +77,7 @@ all modules by the Milnor sequence and Prop 10.2. The idempotence of the perfect
 
 The three legacy CLMST entry points in `Inputs/CLMST.lean` are proved compatibility
 wrappers around the Paper-independent CLMST layer. Current boundaries and subsequent
-review tasks are recorded in [the CLMST plan](formalization-plans/clmst.md).
+review tasks are recorded in [the CLMST plan](formalization-plans/archive/clmst.md).
 
 The table of quotations, the status of every proposition and the module map are kept in
 appendix A of the exposition; the actual dependencies are checked by `scripts/audit_axioms.lean`.

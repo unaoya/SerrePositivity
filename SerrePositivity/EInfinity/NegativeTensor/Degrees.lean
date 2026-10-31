@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.AlexanderWhitney.TensorComponents
-public import SerrePositivity.HomologicalAlgebra.CochainTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.Algebra.Homology.Embedding.Extend
 
 /-!

@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.PerfectComplex.IdempotentDecomposition
+public import SerrePositivity.PerfectComplex.Eigen.Idempotent
+public import SerrePositivity.HomologicalAlgebra.Complex.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 
 /-! # Perfectness and closed support of binary sums -/

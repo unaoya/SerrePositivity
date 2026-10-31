@@ -103,7 +103,7 @@ K に依存する部分は S1 の界面を明示的な構造体引数として�
 | 射影束・Bass | KST Thm3.16・3.17、p.19 | TT4.1 pp.329–330、6.1 pp.351–354、6.6 p.361、7.5 pp.365–366 |
 | 押し出しと消滅 | Thomason1993 Lemme2.3 p.200；KST Lemma3.10・3.11 pp.15–16 | 射影空間の有限 Čech 計算による再証明。原典と異なる経路 |
 
-正本：[KST経路](../k-theory-kst-route.md)、[基盤](../foundations.md)、
+正本：[KST経路](k-theory-kst-route.md)、[基盤](../infinity-lanes/foundations.md)、
 [L11検証 §7・§8](L11-paper.md)。
 
 ## L5a：Perf の模型と比較

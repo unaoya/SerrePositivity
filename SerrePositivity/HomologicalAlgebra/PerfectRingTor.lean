@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectPolynomialFlat
+public import SerrePositivity.CommutativeAlgebra.PerfectPolynomial
 public import SerrePositivity.HomologicalAlgebra.PerfectRadicalQuotientTor
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationIso
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraAcyclicBaseChange
@@ -83,33 +83,6 @@ lemma perfectRing_tor_subsingleton_of_char_eq_zero
   · have := hR
     have : CharP R p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hp
     exact perfectRing_tor_subsingleton S C i hi
-
-/-- The original derived tensor is concentrated in degree zero. -/
-lemma perfectRing_derivedTensor_concentrated
-    (S : Type u) [CommRing S] [Algebra R S] [PerfectRing S p]
-    (C : Type u) [CommRing C] [Algebra R C] [PerfectRing C p] :
-    IsConcentratedInDegreeZero (derivedTensor R S C) :=
-  (isConcentratedInDegreeZero_derivedTensor_iff (R := R) S C).mpr
-    (fun i hi => perfectRing_tor_subsingleton S C i hi)
-
-/-- The original derived tensor algebra augmentation is invertible. -/
-lemma perfectRing_derivedTensorAlgebraAugmentation_isIso
-    (S : Type u) [CommRing S] [Algebra R S] [PerfectRing S p]
-    (C : Type u) [CommRing C] [Algebra R C] [PerfectRing C p] :
-    IsIso (boundedAboveDerivedTensorAlgebraAugmentation (R := R) S C).hom.hom := by
-  apply derivedTensorAlgebraAugmentation_isIso_of_tor
-  intro i hi
-  apply ModuleCat.isZero_iff_subsingleton.mpr
-  exact perfectRing_tor_subsingleton S C i hi
-
-/-- Concentration in degree zero, including zero base rings. -/
-lemma perfectRing_derivedTensor_concentrated_of_char_eq_zero
-    (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] [PerfectRing R p]
-    (hp : (p : R) = 0) (S : Type u) [CommRing S] [Algebra R S] [PerfectRing S p]
-    (C : Type u) [CommRing C] [Algebra R C] [PerfectRing C p] :
-    IsConcentratedInDegreeZero (derivedTensor R S C) :=
-  (isConcentratedInDegreeZero_derivedTensor_iff (R := R) S C).mpr
-    (fun i hi => perfectRing_tor_subsingleton_of_char_eq_zero p R hp S C i hi)
 
 /-- The original algebra augmentation is invertible, including zero base rings. -/
 lemma perfectRing_derivedTensorAlgebraAugmentation_isIso_of_char_eq_zero

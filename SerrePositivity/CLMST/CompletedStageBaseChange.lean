@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.StageTensor
-public import SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat
+public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.HomologicalAlgebra.FlatBaseChange
 public import Mathlib.RingTheory.TensorProduct.Maps
 

@@ -86,8 +86,8 @@
 
 ## 正本・目標
 
-- 正本は `formalization-plans/k-theory-kst-route.md`。
-- 基盤の決定は `formalization-plans/foundations.md` を優先する。
+- 正本は `formalization-plans/kst-lanes/k-theory-kst-route.md`。
+- 基盤の決定は `formalization-plans/infinity-lanes/foundations.md` を優先する。
 - KST は arXiv:1611.08466v4。
 - 第 1 目標は係数つき pro 切除の完全証明。
 - 最終用途は KST Thm A を介する定理 3.1 と supportedRankK0_descent。

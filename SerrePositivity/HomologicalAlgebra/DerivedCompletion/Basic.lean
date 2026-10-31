@@ -99,16 +99,6 @@ theorem isComplete_of_scalar_pow_zero (f : R) (K : ConcreteDerivedCategory R)
     simpa using h
   exact hom_eq_zero_of_scalar_zero (f ^ N) hn a
 
-/-- cochain 複体上で `f` の冪の作用が零なら、その導来像は導来 `f` 完備。
-擬同型局所化関手が零射とスカラー倍を保つことから導来圏での零化へ移す。 -/
-theorem isComplete_Q_of_scalar_pow_zero (f : R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (N : ℕ)
-    (hK : (f ^ N) • 𝟙 K = 0) :
-    IsComplete R f (DerivedCategory.Q.obj K) := by
-  apply isComplete_of_scalar_pow_zero R f _ N
-  have h := congrArg ((DerivedCategory.Q (C := ModuleCat.{u} R)).map) hK
-  simpa using h
-
 /-- `f` の冪の作用が零ホモトピックな複体の導来像は、導来 `f` 完備。
 作用が鎖写像として厳密に零であることは要求せず、導来局所化での零性を使う。 -/
 theorem isComplete_Q_of_scalar_pow_nullHomotopic (f : R)
@@ -118,15 +108,5 @@ theorem isComplete_Q_of_scalar_pow_nullHomotopic (f : R)
   apply isComplete_of_scalar_pow_zero R f _ N
   have h := DerivedCategory.Q_map_eq_of_homotopy (ModuleCat.{u} R) hK
   simpa using h
-
-/-- 各項が同じ `f` の冪で零化される複体の導来像は、導来 `f` 完備。
-項ごとの零化から鎖写像としての零性を確認して適用する。 -/
-theorem isComplete_Q_of_termwise_pow_smul_zero (f : R)
-    (K : CochainComplex (ModuleCat.{u} R) ℤ) (N : ℕ)
-    (hK : ∀ i : ℤ, ∀ m : K.X i, (f ^ N) • m = 0) :
-    IsComplete R f (DerivedCategory.Q.obj K) := by
-  apply isComplete_Q_of_scalar_pow_zero R f K N
-  ext i m
-  exact hK i m
 
 end SerrePositivity.DerivedCompletion

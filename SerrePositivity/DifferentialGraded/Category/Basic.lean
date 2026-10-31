@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import Mathlib.Algebra.Homology.BifunctorHomotopy
 public import Mathlib.CategoryTheory.Monoidal.Linear
