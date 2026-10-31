@@ -56,6 +56,7 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 
 ## 5. (a)-4 D3・D4 の計画の草案（ビルドなし）
 
+0. **（10-31 追記）対応表に載っているが追跡されていないモジュールは草案から外す。** `Morita/ScalarExtensionKernelOutputComponents.lean` は D レーン停止時の未追跡の作業途中ファイル（main の作業木にだけあり、コミットされていない）。草案から除外し、報告に「対応表 981 → 980」と書く。同様の未追跡ファイルが他にあれば同じ扱い（`--check` で元モジュールが `git ls-files` にあることを確かめる）。
 1. [dg-consolidation-2026-10-30.json](archive/dg-consolidation-2026-10-30.json) の 126 の統合先のうち、**土台でない 9 ディレクトリ**（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）に属するものを `dg-w2-merge-plan.json` に写す（連結順は対応表のまま）。土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）は DG-W3 なので入れない。統合先の名前は対応表の仮名（`…1.lean` など）のままでよい。名前の確定は (b) の前に Claude が行う。
 2. **D3 の項目**を同じ JSON に `move`／`split` として加える（計画 §3 D3 の表）：SConstruction の 26 本（群 A 17 本 → `DifferentialGraded/Functor/`、群 B 9 本 → `DifferentialGraded/SharedFunctoriality/`）、`Functor/ModuleExtensionConjugation`・`Module/ExtensionRepresentable*` → SharedFunctoriality、`IC/Derived/DGObjectImage` → `DifferentialGraded/Category/ObjectImage`、`Verdier/{OrderSquare, ChecksOrderSquare, ChecksU17Integration}` → `Asymptotic/DGVerdier/`、`Perfect` の `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` → HomologicalAlgebra（split）。`strictlyPerfectComplex`・`PerfectHomotopy` の定義の依存はそのまま残し、報告に書く（未決 §7-1）。
 3. `merge_modules.py --check --report dg-w2-merge-dryrun.md --max-lines 1500` を実行し、警告（同名 private・set_option・閉じていない section・外からの importer）と、統合先ごとの行数を報告に出す。既知の障害（`Derived/AssociatorMiddle` の `paste_associator`・`post_paste`）は土台側なので今回は出ないはず。
