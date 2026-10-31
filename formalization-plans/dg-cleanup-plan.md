@@ -117,7 +117,7 @@
 
 ## 5a. 再ビルドの費用と規則（2026-10-30、DG-W1 の実測から）
 
-実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、worktree で **2,576 本**（DG 977・InfinityCategories 715・EInfinity 492・KST 380）が再エラボレートされ、1 時間を超えた。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity の約 2,600 本が作り直される。
+実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、再ビルドは **約 9,000 本**（取り込み後の確認ビルドの実測：27,980 ジョブのうち新規ビルド 9,057・再生 1,150、他の 2 セッションのビルドと競合して 6 時間超。途中経過として数えた 2,576 本は過小だった）。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity・Paper まで、ルート閉包 23,575 本のうち約 9,000 本が作り直される。
 
 規則：
 1. **土台に触る変更は一つの束にまとめ、全体の再ビルドを一回にする。** D3（SConstruction 26 本を DG/Functor・SharedFunctoriality へ）、D4 の土台 5 ディレクトリの統合、D5（docstring）は同じ指示書（DG-W4）で行い、間に全体ビルドを挟まない。
