@@ -306,7 +306,7 @@ roof（slice の中の屋根）は dg と無関係な ∞ 圏の一般論であ�
 
 R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-prune → 影響する下流（約 5,600 本）の全ビルド → 保存検査 → 元に戻してビルド」を回している。実測は 1 試行 3〜5 時間（`DiagonalFrame` の split-prune 17,812 秒、`Basic` 8,873 秒）で、9 試行の合計は 1 日を超える。HA/Simplicial の土台に触ると下流がほぼ全部再エラボレートされるので、この費用は試行の回数に比例する。
 
-**いま走っている 2 試行（`QuillenStandardFrame`・残り 1 本）はそのまま終えてよい。** W2a 以降の模擬には次の規則を使う。
+**8 本目（`QuillenStandardFrame`）は最後（restored-build）まで終え、9 本目（`StandardCosimplicial`、移す宣言 2 個）は始めない**（10-31 ユーザー判断）。試行の繰り返し（`r72-trials-2`、pid は `trials/pid`）は、8 本目の `restored-build` が終了コード 0 で終わり state.json の 8 本目が PASS になったら止める。もし 9 本目の split-prune が始まってしまっていたら、その場で止めて `git status` に出た変更（分割元の編集と分割先の新ファイル）を `git checkout -- <file>`・削除で元に戻し、報告に書く。`StandardCosimplicial` は W2a の束の模擬に含めて確かめる。R72 の preflight の報告（8 本 PASS、1 本は束へ）を §5 の形式で出す。W2a 以降の模擬には次の規則を使う。
 
 1. **束で一回**：対象一覧の split・move を全部適用してから、下流のビルドを一回だけ行う。prune で壊れた下流への直接 import の補充（§10.6）も、その一回のビルドの失敗から一括で求める。保存検査は束の前後で全モジュール分をまとめて比べる。
 2. **失敗したら二分**：束のビルドが失敗し、原因のモジュールが失敗の出力から特定できないときだけ、束を半分に割って繰り返す。
