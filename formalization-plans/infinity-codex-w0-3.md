@@ -384,3 +384,5 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **rsync**：nohup のランナーを介さず、**前景で直接**実行する（`rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/`、ログはファイルへ）。数分で終わる。終了コード 23・24 の扱いは §10.13 のとおり。`ps` が通常権限で拒否されるなら、権限を上げた実行でよい。
 
 その後、before snapshot → R75 → R79 → W1 → W2a の適用 → **停止点 1 で報告**。
+
+**（10-31 追記）R75 の段での小さな追加**：main の 4eb1f4d6b で、止まった Sp レーンの未追跡ファイル 4 本（`KST/Spectra/PointedParametricUncurry{Action,Pre}`・`PointedUncurry{ActionTensor,Composition}`）を `SerrePositivity/Archive/WIP/` に移した。`scripts/audit_kst_spectra_s3.lean`・`audit_kst_spectra_d3tail.lean` の名前の一覧（import ではない）に残る旧名 4 本を、R75 の段で外す（1〜2 行の編集、同じコミット）。
