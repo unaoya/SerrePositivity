@@ -36,7 +36,7 @@
 | 5 | DG-W2(b) を main へ取り込み、main を温める | 数分 | #4 PASS | — |
 | 6 | 論文の層の区切り 1-4（KTheory・Asymptotic・Paper の再構成、Perfect の 3 宣言を HA へ、`Asymptotic/DGVerdier/` を含める） | 先方のビルド＋verify | #5（DGVerdier が Asymptotic に入ってから） | 先方が準備中（凍結中は main にコミットしない） |
 | 7 | DG-W3：土台 5 ディレクトリの統合＋残りの D5（Paper の経路 326 本まで再ビルド） | 約 5 時間 | #6（Paper の再構成の後） | 未作成 |
-| 8 | IF-W2a-2（R76・R77・R67）、IF-W0-4（layers.json 登録、runner のメモリ予算） | 束の後 | #3 | 未作成 |
+| 8 | IF-W0-4（基盤の層の登録、runner のメモリ予算）→ IF-W2a-2（R76・R77・R67、下流 1 回） | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | 指示書 作成済み（11-01）：[IF-W0-4](infinity-codex-w0-4.md)・[IF-W2a-2](infinity-codex-w2a-2.md) |
 | 9 | 論文の層の区切り 2a・2b（BS の区切りに合わせる） | 先方 | BS の区切り | 先方 |
 
 ## 4. いまの待ち条件（10-31 夜）
