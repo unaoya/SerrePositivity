@@ -83,7 +83,7 @@ class ImportsTests(unittest.TestCase):
     def test_archive_rejects_imports(self):
         self.entry.update(action='archive',moved=[],keep=[],imports={B:[]})
         with self.assertRaisesRegex(ValueError,'only valid'):self.check()
-    def test_consumer_addition_composes_with_another_split_body(self):
+    def test_only_explicit_consumer_addition_composes_with_another_split_body(self):
         c='SerrePositivity.DerivedInput.C';d='SerrePositivity.InfinityCategories.Core.SplitC'
         source='module\npublic import '+A+'\n@[expose] public section\ndef c : Nat := 3\ndef d : Nat := 4\n'
         path=self.root/(c.replace('.','/')+'.lean');path.write_text(source)
@@ -93,8 +93,13 @@ class ImportsTests(unittest.TestCase):
         self.imports()
         result,_,after,_,_=validate(self.root,[self.entry,other],{A:self.snapshot,c:snap},return_graph=True)
         self.assertEqual(result['status'],'PASS')
+        self.assertEqual(after[c],{A})
+        self.assertEqual(result['consumer_import_additions'],{})
+        self.entry['downstream_imports']={c:[B]}
+        result,_,after,_,_=validate(self.root,[self.entry,other],{A:self.snapshot,c:snap},return_graph=True)
+        self.assertEqual(result['status'],'PASS')
         self.assertEqual(after[c],{A,B})
-        self.assertEqual(result['consumer_import_additions'][c],[B])
+        self.assertEqual(result['downstream_imports'][c],[B])
         self.assertEqual(path.read_text(),source)
     def test_unknown_field(self):
         self.entry['improts']={}

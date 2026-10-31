@@ -72,7 +72,7 @@ class RefactorTests(unittest.TestCase):
             with self.assertRaisesRegex(Unsupported, 'indented command'):
                 parse_source(source)
 
-    def test_generated_simp_declaration_adds_consumer_import(self):
+    def test_generated_simp_declaration_does_not_add_consumer_import(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);src=root/'SerrePositivity/A.lean';src.parent.mkdir()
             text='def kept := 1\ndef moved := 2\n';src.write_text(text)
@@ -84,7 +84,7 @@ class RefactorTests(unittest.TestCase):
                  'attributes':{**attrs,'simp':n=='moved.generated'}} for n in ['kept','moved','moved.generated']]}
             plan=prepare(root,'SerrePositivity.A','SerrePositivity.B',{'moved'},snap,
                          {'SerrePositivity.A':set(),'SerrePositivity.C':{'SerrePositivity.A'}})
-            self.assertIn('import SerrePositivity.B\n',plan['changes']['SerrePositivity.C']['after'])
+            self.assertEqual(set(plan['changes']),{'SerrePositivity.A','SerrePositivity.B'})
             self.assertEqual(consumer.read_text(),'import SerrePositivity.A\nexample : True := by simp\n')
 
     def test_prepare_bidirectional_refusal_is_read_only(self):
