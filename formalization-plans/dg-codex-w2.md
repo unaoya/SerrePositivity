@@ -29,7 +29,7 @@ BS の [bhatt-scholze-merge-modules.py](bhatt-scholze/bhatt-scholze-merge-module
 2. **計画の書式を targets の配列に合わせる**：`{"module": <統合先>, "action": "merge", "sources": [<元モジュール>…（連結順）], "docstring": <概要／方針／規約／使われ方>, "private_renames": {<元>: {<旧>: <新>}}, "deletes": [], "stubs": [], "candidate": "D4", "note": ""}` の配列。`validate_targets.py` は変更しないので、書式と整合性の検査（元の二重登録、統合先の重複、連結順が import の向きに矛盾しないこと、閉じていない section、同名 private の衝突、`set_option` の値の食い違い、`public section` のない元）は **`merge_modules.py --check` が自分で行う**。
 3. **統合先の名前が元の一つと同じパス**でも扱える（上書き）。統合先が新しいパスのときは `module` 行から作る。
 4. **保存検査との結合**：`--snapshot-before <json>`・`--snapshot-after <json>` で、`decl_snapshot.lean` の出力（元モジュール群と統合先）を受け取り、`compare_snapshots.py` を呼んで**宣言名で**（モジュール名を無視して）集合・型・本体ハッシュ・公理・属性の一致を確かめる。生成補題と transient は IF-W0-3 §10.7・§10.11 の規則（compare_snapshots.py の既存の挙動）に従う。
-5. **大きさの上限**：`--max-lines N` を与えると、統合先が N 行を超える計画を警告として列挙する（分割の提案は人が行う。(b) の前にユーザーが上限を決める）。
+5. **大きさの上限**：`--max-lines N` を与えると、統合先が N 行を超える計画を警告として列挙する。上限は **1,500 行**（Mathlib の `longFile` の既定値。対応表はこの上限で切ってあるので、超えるものは出ないはず。出たら報告）。
 6. **dry-run の報告**：`--report <md>` で、統合先ごとに 元の本数・行数の合計・import の和の本数・外からの importer の本数・警告（section・private・set_option）を表に出す。
 
 試験（`test_merge_modules.py`、Lean を呼ばない部分と、呼ぶ部分を分ける）：
@@ -58,7 +58,7 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 
 1. [dg-consolidation-2026-10-30.json](archive/dg-consolidation-2026-10-30.json) の 126 の統合先のうち、**土台でない 9 ディレクトリ**（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）に属するものを `dg-w2-merge-plan.json` に写す（連結順は対応表のまま）。土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）は DG-W3 なので入れない。統合先の名前は対応表の仮名（`…1.lean` など）のままでよい。名前の確定は (b) の前に Claude が行う。
 2. **D3 の項目**を同じ JSON に `move`／`split` として加える（計画 §3 D3 の表）：SConstruction の 26 本（群 A 17 本 → `DifferentialGraded/Functor/`、群 B 9 本 → `DifferentialGraded/SharedFunctoriality/`）、`Functor/ModuleExtensionConjugation`・`Module/ExtensionRepresentable*` → SharedFunctoriality、`IC/Derived/DGObjectImage` → `DifferentialGraded/Category/ObjectImage`、`Verdier/{OrderSquare, ChecksOrderSquare, ChecksU17Integration}` → `Asymptotic/DGVerdier/`、`Perfect` の `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` → HomologicalAlgebra（split）。`strictlyPerfectComplex`・`PerfectHomotopy` の定義の依存はそのまま残し、報告に書く（未決 §7-1）。
-3. `merge_modules.py --check --report dg-w2-merge-dryrun.md --max-lines 800` を実行し、警告（同名 private・set_option・閉じていない section・外からの importer）と、統合先ごとの行数を報告に出す。既知の障害（`Derived/AssociatorMiddle` の `paste_associator`・`post_paste`）は土台側なので今回は出ないはず。
+3. `merge_modules.py --check --report dg-w2-merge-dryrun.md --max-lines 1500` を実行し、警告（同名 private・set_option・閉じていない section・外からの importer）と、統合先ごとの行数を報告に出す。既知の障害（`Derived/AssociatorMiddle` の `paste_associator`・`post_paste`）は土台側なので今回は出ないはず。
 4. 1,188 本の外からの import 辺を、書き換え範囲（IC・KST・EInfinity・Paper 等）ごとに数える。
 5. 下流の見積もり：束で変わるモジュール（統合元＋D3 の移動元・移動先＋import を書き換える利用元）の逆閉包の本数を `layer_check.py` のグラフ（または `lake` の import 情報）で数え、DG-W1 の実測（新規 10,693 本で約 6 時間、3 セッション同時）から単独なら 1 本 1.0〜1.5 秒として時間を見積もる。
 
@@ -68,12 +68,12 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 2. `merge_modules.py --check` が `dg-w2-merge-plan.json` で終了コード 0（警告は許す）。
 3. `with_build_lock.sh`・`warm_build_dir.sh` の試験 PASS。`zsh -n` 成功。
 4. `git status` が所有範囲（§1 の新しいファイルと README の追記）だけ。
-5. 報告：統合先の数・行数の分布（800 行超の数）・警告の一覧・外からの辺の内訳・下流の本数と時間の見積もり。
+5. 報告：統合先の数・行数の分布（1,500 行超があれば）・警告の一覧・外からの辺の内訳・下流の本数と時間の見積もり。
 6. コミットは「道具」「試験」「計画の草案と報告」の 3 本。`git commit --only`。
 
 ## 7. (b) 束の適用（別途「始めてよい」と伝えてから）
 
-概要だけ書く。詳細は (a) の報告と、ユーザーの判断（統合先 1 ファイルの上限、統合先の名前）を受けて追記する。
+概要だけ書く。詳細は (a) の報告と、統合先の名前の確定（Claude）を受けて追記する。1 ファイルの上限は 1,500 行で決定済み。
 
 1. `with_build_lock.sh` で鍵を取り、`warm_build_dir.sh --from ../SerrePositivity` で main から温める（Claude が main を温めておく）。
 2. D3 の move／split と D4 の merge を**全部適用**（`split_module.py`・`move_module.py`・`merge_modules.py --apply`）。D5：統合で写す docstring の `dg-theory-u12e-general-inventory.md`・`dg-theory-m5-status.md` への参照を `formalization-plans/archive/…` に書き換える（R79 の規則：相対パスの深さを保つ。本文の `git mv` は Claude が同じ日に行う）。
