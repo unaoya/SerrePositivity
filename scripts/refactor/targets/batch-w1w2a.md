@@ -46,10 +46,10 @@ git rev-parse HEAD > .lake/verify/batch-w1w2a/base.txt
 
 全ソースを復元できるよう、変更予定ファイル・未追跡の既存骨組み・削除候補をバイト単位で保存し、各ファイルの SHA-256 と git status を記録する。無関係なユーザー変更を復元で消さない。
 
-`decl_snapshot.lean` は olean を読むため、**ここだけでも通知とキャッシュ複製が必要**。コピー済みの成果物の鮮度を確認し、不足した対象だけを `lake build <module...>` で補う。snapshot 自体はビルドを自動実行しない。全適用前に対象をまとめて採取し、分割ごとの下流ビルドはしない。大きい集合は決定的な並びで最大64モジュールずつ直列採取する（並列 pool に入れない）。
+`decl_snapshot.lean` は olean を読むため、**ここだけでも通知とキャッシュ複製が必要**。コピー済みの成果物の鮮度を確認し、不足した対象だけを `lake build <module...>` で補う。snapshot 自体はビルドを自動実行しない。全適用前に対象をまとめて採取し、分割ごとの下流ビルドはしない。§10.18 以降は `snapshot_batch.py` で直列採取する。通常は最大64本、KST.SConstruction・InfinityCategories.Derived・EInfinity は最大16本。全群 `-M 40000`、メモリ上限で失敗した群だけ半分に割る。単独でも失敗すれば停止する。
 
 ```sh
-lake env lean --run scripts/refactor/decl_snapshot.lean --modules <comma-separated-before-modules> --output .lake/verify/batch-w1w2a/before-000.json
+python3 scripts/refactor/snapshot_batch.py --modules-file E/before-modules.json --name-map E/private-name-map.json --output-dir E/before-shards --huge-terms scripts/refactor/targets/huge-terms-2026-11.md
 ```
 
 全 shard の schema_version・hash_algorithm が同じこと、modules が重複しないこと、宣言の重複があれば全構造が一致することを確認し、modules/sources/declarations を統合、count を再計算して `before.json` とする。元 shard も保存する。split 用には modules と宣言を元モジュールで絞った snapshot を作り、全12件を `--snapshot MODULE=FILE` に指定して静的検査する。
@@ -156,12 +156,12 @@ lake build <Bを覆う極大入口一覧>
 ビルド後、after集合をbeforeと同じ shard 規則でまとめて採取する：
 
 ```sh
-lake env lean --run scripts/refactor/decl_snapshot.lean --modules <comma-separated-after-modules> --output .lake/verify/batch-w1w2a/after-000.json
+python3 scripts/refactor/snapshot_batch.py --modules-file E/after-modules.json --name-map E/private-name-map.json --output-dir E/after-shards
 python3 -B scripts/refactor/compare_snapshots.py .lake/verify/batch-w1w2a/before.json .lake/verify/batch-w1w2a/after.json --name-map .lake/verify/batch-w1w2a/private-name-map.json --output .lake/verify/batch-w1w2a/preservation.json
 python3 -B scripts/refactor/layer_check.py --report
 ```
 
-公開宣言名は不変。name-map が必要なのは `_private.<旧module>.` など移動に伴う生成名だけで、実際の宣言→移し先対応で作る（splitは宣言単位）。変更を隠す広い名前空間置換はしない。型・本体・公理・属性・宣言の増減を比較し、生成補題は§10.7/10.11、transientは一覧を残す。入口reimportは保存対象外だがビルドと層検査を必須とする。R79は宣言の完全保存が必要。
+§10.18 に従い、before の前に写像を確定し、両側で同じファイルを渡す。private 接頭辞除去だけで同名になる場合は空の写像を使う。公開宣言名は不変。追加の name-map が必要なのは `_private.<旧module>.` など移動に伴う生成名だけで、実際の宣言→移し先対応で作る（splitは宣言単位）。変更を隠す広い名前空間置換はしない。型・本体・公理・属性・宣言の増減を比較し、生成補題は§10.7/10.11、transientは一覧を残す。入口reimportは保存対象外だがビルドと層検査を必須とする。R79は宣言の完全保存が必要。
 
 **停止点2：下流ビルドと保存検査後、verify前。** ビルド終了コード・全ログ検索・補充一覧・保存比較・transient・実グラフの数値・各段の時間を報告し、続行指示を待つ。既存監査の失敗や規則違反を直して通さない。
 

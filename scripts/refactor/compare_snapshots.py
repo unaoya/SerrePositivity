@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""概要：公開宣言の保存を比較する。方針：名前対応後の構造を比較する。
+"""概要：公開宣言の保存を比較する。方針：名前正規化後の構造またはそのハッシュを比較する。
 規約：増減・型・本体・公理・属性をすべて判定する。使われ方：before after --name-map map.json。
 """
 import argparse
@@ -26,8 +26,20 @@ def normalize_expr(value, mapping):
     return result
 
 
-def normalized(snapshot, mapping):
-    if snapshot['schema_version'] != 1: raise ValueError('unsupported snapshot version')
+def expression_value(row, field, mapping, use_hash):
+    if not use_hash and field in row:
+        return normalize_expr(row[field], mapping)
+    if field in row and mapping and normalize_expr(row[field], mapping) != row[field]:
+        raise ValueError('legacy expression requires a fresh snapshot with the same --name-map')
+    value = row[field + '_hash']
+    if not isinstance(value, str) and not (field == 'body' and value is None):
+        raise ValueError('invalid ' + field + '_hash for ' + row['name'])
+    return value
+
+
+def normalized(snapshot, mapping, use_hash=False):
+    if snapshot['schema_version'] not in (1, 2):
+        raise ValueError('unsupported snapshot version')
     records = {}
     transient = set(transient_names(snapshot))
     source_names = {}
@@ -44,8 +56,8 @@ def normalized(snapshot, mapping):
             parent = declaration_owner(row, source_names[row['module']], by_name) or parent
         records[name] = {
             'parent': rename(parent, mapping), 'kind': row['kind'],
-            'type': normalize_expr(row['type'], mapping),
-            'body': normalize_expr(row['body'], mapping),
+            'type': expression_value(row, 'type', mapping, use_hash),
+            'body': expression_value(row, 'body', mapping, use_hash),
             'axioms': sorted(rename(n, mapping) for n in row['axioms']),
             'attributes': row['attributes']}
     # Group generated auxiliaries under their public parent. Proof-only auxiliaries
@@ -67,7 +79,18 @@ def digest(value):
 
 
 def compare(before, after, mapping=None):
-    a, b = normalized(before, mapping or {}), normalized(after, {})
+    hashed = [snap for snap in (before, after) if snap['schema_version'] == 2]
+    if hashed:
+        if len(hashed) != 2:
+            raise ValueError('full-structure and hash snapshots use different algorithms; recapture both sides')
+        rules = hashed[0]['name_map']
+        if any(snap['name_map'] != rules or snap['hash_algorithm'] != hashed[0]['hash_algorithm']
+               for snap in hashed) or (mapping is not None and mapping != rules):
+            raise ValueError('snapshot name maps or hash algorithms differ; recapture with the same settings')
+        a = normalized(before, rules, use_hash=True)
+        b = normalized(after, rules, use_hash=True)
+    else:
+        a, b = normalized(before, mapping or {}), normalized(after, {})
     changes = []
     for name in sorted(a.keys() - b.keys()): changes.append({'name': name, 'change': 'removed'})
     for name in sorted(b.keys() - a.keys()): changes.append({'name': name, 'change': 'added'})
@@ -87,8 +110,8 @@ def main():
     parser.add_argument('--name-map', type=Path); parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     try:
-        mapping = json.loads(args.name_map.read_text()) if args.name_map else {}
-        if not isinstance(mapping, dict) or not all(isinstance(k, str) and isinstance(v, str) for k,v in mapping.items()):
+        mapping = json.loads(args.name_map.read_text()) if args.name_map else None
+        if args.name_map and (not isinstance(mapping, dict) or not all(isinstance(k, str) and isinstance(v, str) for k,v in mapping.items())):
             raise ValueError('name map must be an object of old names to new names')
         result = compare(json.loads(args.before.read_text()), json.loads(args.after.read_text()), mapping)
         rendered = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
