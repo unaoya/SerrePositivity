@@ -101,7 +101,7 @@
 
 | 指示書 | 内容 | 再ビルド | 前提 |
 | --- | --- | --- | --- |
-| DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。main への取り込みは論文の層のコミットの後 |
+| DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。**main へ取り込み済み 194a65110（10-31、区切り 1-3 の後。衝突 3 件を解決し、`CochainTensorLinear` 等の旧名 import 12 本を伝達文 §10 の表で新名に）。取り込み後の全 verify は省略し（領域が重ならないため）、main の全ビルドと次の ∞ の束の verify で確認** |
 | DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
 | DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で | 1 回（Paper まで） | DG-W2。論文の層のセッションと時期を合わせる |
 | DG-G | D6・D7 | 群ごと | 窓の外 |

@@ -104,3 +104,9 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 6. 下流の見積もり（7,222 本）は (b) の直前に main 取り込み後の状態で再計算する。
 
 以上を反映した草案（`dg-w2-merge-plan.json` の更新、`dg-w2-names.md`、報告の追記）を 1 コミットにして止めて報告する（止めて報告する点 1′）。
+
+## 10. 追記（2026-10-31、命名案の承認と main の取り込み）
+
+**承認**：e94d5aa2f（OrderSquare は move のみ、split 0、PerfectComplex への 3 辺の例外一覧、`--max-lines 1700` で警告 0、仮名 30 件の本名）。`dg-w2-names.md` の案をそのまま採る（主題で言い換え、Part なし）。
+
+DG-W1 は main に入った（194a65110。区切り 1-3 の後なので、`HomologicalAlgebra.CochainTensorLinear` → `CochainTensor.Basic` など旧名の import 12 本を伝達文 §10 の表で替えた）。infra/dg-w2 に `git merge main` してよい（道具と文書だけで、Lean の衝突はないはず。あれば止めて報告）。main では Claude が全ビルドを走らせている（10-31 夕方、約 3 時間）。**(b) の合図はまだ**（∞ の束の verify の後）。それまでビルドを伴う作業はしない。
