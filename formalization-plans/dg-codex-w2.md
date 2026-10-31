@@ -89,3 +89,18 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 - 既存の道具ファイルの変更（§1。例外は (b)-5 の `layers.json`）。
 - (b) をこちらの合図なしに始めること。全ビルド（ルート・監査対象・verify）を鍵なしで走らせること。
 - main の作業木での作業・ビルド。
+
+## 9. 追記（2026-10-31、(a) の報告への回答と (b) 前の確定事項）
+
+**承認**：(a) の 3 コミット（道具 0ce48e2d1・試験 50d096cc2・草案と報告 406c19405）、試験 66 件（Lean 保存試験は別実行で成功）、`--check` 終了 0、草案（78 統合先・980 本、D3 move 33・split 2）、外部辺 1,182（統合元への辺 342）、下流 7,222 本（単独 120〜181 分）を確認した。
+
+(b) の前に次のとおり確定する。**(b) の開始は別途合図する**（∞ 側の束の verify の後）。それまでに 1〜5 を草案に反映し、6 の名前の案を出して止める（ビルドなし）。
+
+1. **`Verdier/OrderSquare` は D3 の move（→ `Asymptotic/DGVerdier/`）だけ。** 統合先 `Verdier.Comparison` の元から外す（元は `ComparisonLinear`＋`SupportSquare`）。`ChecksOrderSquare`・`ChecksU17Integration` も move のまま。
+2. **D3 の split 2 件（`PerfectComplex.ProjectiveBounds`・`PerfectComplex.BiproductPerfect` → HomologicalAlgebra）は取り下げる。** PerfectComplex は論文の層の領域で統合中なので、DG の Codex は触らない。DG → PerfectComplex の 3 辺（`finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod`・`strictlyPerfectComplex`／`PerfectHomotopy` の定義）は、(b)-5 で `layers.json` の `allowed_until_move` に例外として登録する（登録する辺の一覧を草案の報告に書く）。`cochainBiprodXIsoProd` の配置の確認も不要。
+3. **上限超過 12 件はそのまま。** 生成後の上限を 1,700 行に改める（元の本文 1,500 行＋見出しと section の包み。計画 §5a-7）。`--max-lines 1700` で警告が 0 になることを確かめる。
+4. **`set_option` の差 6 件（4 統合先）は section ごとに閉じて保つ**（計画 §3 D4 の注意どおり）。無名 section の補完 971 件はそのまま。
+5. **統合先の仮名を本名にする（案を出す）。** 規則：(i) 名前は主題を表す名詞句（`Associator`・`DerivedComparison` など対応表の語幹は使ってよい）。(ii) 番号つきの仮名（`Associator1`・`Associator3`・`DerivedComparison1`・`DerivedComparison3`・`ScalarExtension1`・`ScalarExtension2`・`Compact1`・`Compact2`・`Ring2`・`Path1`・`Path2` など）は、元モジュールの basename と module docstring の概要を見て、**その塊が何を扱うか**で言い換える（例：`Associator/Components`・`Associator/Pentagon`・`DerivedComparison/Triangles`）。どうしても主題で分けられない大きさの分割だけ `…/Part1`・`Part2` を許す。(iii) 既存のモジュールと同名にしない（統合先が元の一つと同じパスのときはそのままでよい）。(iv) 対応表と草案の `module` を書き換え、旧仮名 → 本名の対応表を `dg-w2-names.md` に出す。Claude が承認してから適用。
+6. 下流の見積もり（7,222 本）は (b) の直前に main 取り込み後の状態で再計算する。
+
+以上を反映した草案（`dg-w2-merge-plan.json` の更新、`dg-w2-names.md`、報告の追記）を 1 コミットにして止めて報告する（止めて報告する点 1′）。
