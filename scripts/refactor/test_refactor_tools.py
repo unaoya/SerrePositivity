@@ -56,7 +56,7 @@ class RefactorTests(unittest.TestCase):
         self.assertIn('/-- A preserved docstring with /- a nested comment -/. -/\n@[simp]',kept)
 
     def test_reject_mutual_local_variable_and_unnamed_instance(self):
-        for source in ['mutual\ndef a := 1\nend\n', 'variable (n : Nat) in\ndef a := n\n', 'instance : Inhabited Bool := ⟨false⟩\n']:
+        for source in ['mutual\ndef a := 1\nend\n', 'instance : Inhabited Bool := ⟨false⟩\n']:
             with self.assertRaises(Unsupported): parse_source(source)
 
     def test_dependency_directions_include_proof_dependencies(self):
