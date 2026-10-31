@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section5.ModuleReduction
 public import SerrePositivity.Paper.Section2.Lemma2_1
-public import SerrePositivity.IntersectionMultiplicity.BaseChange
+public import SerrePositivity.IntersectionMultiplicity.Basic
 
 /-! # 完備な場合の剰余体拡大による帰着
 

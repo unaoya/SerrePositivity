@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+public import SerrePositivity.LengthAlgebra.Koszul
 
 public import SerrePositivity.Paper.Section4.SymmetricComparison
 public import SerrePositivity.Paper.Section4.LengthAlgebraRealization

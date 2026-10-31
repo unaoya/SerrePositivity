@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierModelIso
 public import SerrePositivity.KTheory.Adams.KoszulShiftTwoClass
-public import SerrePositivity.PerfectComplex.CubicActionScalarClass
-public import SerrePositivity.PerfectComplex.CubicActionBiproductClass
+public import SerrePositivity.PerfectComplex.Eigen.CubicClass
 
 /-! # The weighted character class of the four-shift Koszul Fourier model -/
 

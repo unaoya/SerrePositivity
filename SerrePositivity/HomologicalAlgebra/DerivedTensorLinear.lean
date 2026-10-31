@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorMonoidal
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorCoherenceModels
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.CategoryTheory.Monoidal.Linear
 public import Mathlib.Algebra.Homology.DerivedCategory.Linear
 

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Complexes.HomFunctor
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
 public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # 非有界 tensor と線形 Hom の転置
 

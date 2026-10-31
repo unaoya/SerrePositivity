@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCochainMultiplication
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingNegativeProductLaws
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 /-!
 概要：元の実 cochain 乗法の全 tensor 結合図式。
 方針：元の Moore の結合則を純三重 tensor で回収し、正次数零化と外延性を使う。

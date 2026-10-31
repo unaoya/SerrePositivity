@@ -1,15 +1,9 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
-public import SerrePositivity.PerfectComplex.CubicActionTensor
-public import SerrePositivity.PerfectComplex.TensorHomotopy
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSixShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSixHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSixRotation
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSixShuffleEquivariance
+public import SerrePositivity.PerfectComplex.Eigen.CubicTensor
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # Separating a tensor cube into the cubes of its factors -/
 

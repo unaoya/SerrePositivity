@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.ProExcision.TruncationNaturality
 public import SerrePositivity.HomologicalAlgebra.BoundedTermKoszulAcyclic
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShortExact
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.ShortExact
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 
 @[expose] public noncomputable section

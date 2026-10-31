@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.BaseChange
-public import SerrePositivity.PerfectComplex.NormalizedLength
-public import SerrePositivity.PerfectComplex.Closure
+public import SerrePositivity.LengthAlgebra.Core
+public import SerrePositivity.PerfectComplex.Free.K0
 public import Mathlib.LinearAlgebra.TensorProduct.Prod
 public import Mathlib.LinearAlgebra.FreeModule.StrongRankCondition
 

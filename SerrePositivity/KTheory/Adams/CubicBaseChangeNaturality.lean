@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeBaseChangeEigenspaces
 public import SerrePositivity.KTheory.Adams.CyclicThree
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # Naturality of the cyclic Adams cube under root-preserving ring change -/
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.DifferentialGraded.Complexes.Composition
 public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
 public import SerrePositivity.DifferentialGraded.Complexes.Unit

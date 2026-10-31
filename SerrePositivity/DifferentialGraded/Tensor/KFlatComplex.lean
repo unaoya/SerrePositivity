@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.KFlat
-public import SerrePositivity.HomologicalAlgebra.CochainTensorAcyclic
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 
 /-! # A上のK-flat複体の単位・shift・cone・tensor閉性 -/
 @[expose] public section

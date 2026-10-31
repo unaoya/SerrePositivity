@@ -6,7 +6,7 @@ public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import Mathlib.RingTheory.MvPolynomial.Basic
 public import Mathlib.RingTheory.Polynomial.Basic
 public import SerrePositivity.HomologicalAlgebra.KoszulDirectedLimit
-public import SerrePositivity.PerfectComplex.Support
+public import SerrePositivity.PerfectComplex.Free.Support
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Graded.Subquotient
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Graded.HilbertSeries
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat

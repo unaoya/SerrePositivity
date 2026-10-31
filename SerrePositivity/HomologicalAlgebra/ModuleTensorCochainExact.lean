@@ -39,6 +39,8 @@ lemma moduleTensorCochain_map_epi (K : CochainComplex (ModuleCat.{u} R) ℤ)
   apply HomologicalComplex.epi_of_epi_f
   intro i
   change Epi ((tensorRight (K.X i)).map f)
-  infer_instance
+  -- instance の探索は重いので、全射性から直接示す。
+  rw [ModuleCat.epi_iff_surjective]
+  exact LinearMap.rTensor_surjective _ ((ModuleCat.epi_iff_surjective f).mp inferInstance)
 
 end SerrePositivity

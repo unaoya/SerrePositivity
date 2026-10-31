@@ -1,6 +1,6 @@
 import SerrePositivity.CategoryTheory.Euler
 import SerrePositivity.KTheory.HomologyEuler
-import SerrePositivity.PerfectComplex.OrdinaryEuler
+import SerrePositivity.PerfectComplex.Free.Euler
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.imageCoimageShortComplex_shortExact

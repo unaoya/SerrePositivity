@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.CochainSingleTensorComparison
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # The actual degree-zero cochain embedding as a symmetric monoidal functor -/
 @[expose] public noncomputable section

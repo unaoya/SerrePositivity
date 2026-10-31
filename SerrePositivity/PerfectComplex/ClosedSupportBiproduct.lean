@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.BiproductPerfect
-public import SerrePositivity.PerfectComplex.TensorK0
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 /-! # Concrete binary-sum and tensor formulas in closed-support K₀ -/
 

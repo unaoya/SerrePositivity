@@ -167,6 +167,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-1（CT トップ階層・CA の E・D・X・H の BS に依存しない部分・Inputs の包み・Paper の一般論の一部） | 完了（2026-10-30、記録は下の表と「区切り 1-1 で見送った項目」） |
 | CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
+| 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -178,6 +179,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 0 | 65f178a5b・7820689c7 | 73 本を削除（shared の対象 1407 → 1367 モジュール） | −2434・＋295（import の展開） |
 | 区切り 1-1 | ca2fffe4d・25d50e9e8 | 203 本を削除・55 本を新設（CT 68 → 20、CA の E・D・X・H 約 120 → 約 35、Inputs 6 本を削除、shared の対象 → 1156 モジュール） | −19100・＋17583 |
 | 区切り 1-2 | 95c0a6d25・401fbbe6d | 153 本を削除・24 本を新設（HA1 69 → 13、HA3 31 → 5、HA4 33 → 5、HA5 20 → 2、shared の対象 → 1058 モジュール）。未使用の宣言 189 を削除 | −16182・＋13361 |
+| 区切り 1-3 | （コミット後に記入） | 166 本を削除・40 本を新設（LA・IM・CA/Almost 74 → 22、PC と HA/CochainTensor 100 → 26）。未使用の宣言 62 を削除 | −19012・＋17681 |
 
 
 区切り 1-1 で見送った項目（2026-10-30）：
@@ -198,6 +200,17 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 - 計画からの変更：ModuleSupport も Support/Closed に入れた（ModuleClosedSupport との import の循環を避けるため）。冪ねじれ 5 本は D の既存ファイルではなく
   新しい PowerTorsion/{Basic, Category} にまとめた。Paper の PerfectApproximation は CA/Perfection/Approximation へ、核の長さの評価だけ Paper に残した。
 
+他のレーンからの申し送り（2026-10-31）：DG-W1 が main に入るとき、ルートの DG の import 12 行を `SerrePositivity.DifferentialGraded` 1 行に置き換え、
+DifferentialGraded/Complexes/Monoidal と Stage* を削除する。DG-W2（D3）で DifferentialGraded/Verdier/OrderSquare とその検査 2 本を
+Asymptotic/DGVerdier/ へ上げる。区切り 1-4 の Asymptotic の統合では Asymptotic/DGVerdier/ を対象から外す。ルートの `SerrePositivity.lean` は
+区切りの作業でも書き換えるので、DG の取り込みは区切りのコミットの後に合わせる。
+
+DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が PerfectComplex の `strictlyPerfectComplex`・`PerfectHomotopy`
+（Perfect/HomotopyCategory）、`strictlyPerfectComplex_biprod`（BiproductPerfect）、`finiteProjective_exists_retract`（KoszulLength）に依存している。
+前の 3 つは HomologicalAlgebra の軽いファイルへ下ろし（名前は残す）、`finiteProjective_exists_retract` は Mathlib の
+`Module.Finite.exists_comp_eq_id_of_projective` に置き換える。DG → PerfectComplex の辺が消える。HA は ∞ の束の間凍結されるので、
+凍結の明けた後、区切り 1-4 で行い、モジュールの対応表を DG 側へ伝える（それまで DG 側は例外として登録）。
+
 区切り 1-2 で見送った項目（2026-10-31）：
 
 - BS が直接 import するので動かさなかったもの（第二層へ）：KProjectiveLift・BoundedAboveDerivedAssociator・BoundedAboveDerivedBaseChange・
@@ -211,6 +224,23 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
   1 行のインライン化にならない）。確度中の置き換え（`isZero_homology_of_isZero_X` など）は未着手。
 - 監査スクリプトが名前で参照しているため残した未使用の宣言 15 件（KoszulMilnor・ModuleTower・PairKoszulProduct など）。
 - 計画からの変更：Auslander–Buchsbaum は削除しない（§3.8 の 1 の訂正）。HA1 の MonoidalUnitHomRing・MonoidalPointAction は CategoryTheory/MonoidalUnitHom に。
+
+区切り 1-3 で見送った項目・注意（2026-10-31）：
+
+- D の 1 は値域の一般化だけ行った（`homologicalEuler`・`homologicalEulerK0` と長完全列の加法性は任意の加法群に値を取る。ℝ で項を比べる 5 本に
+  `zsmul_eq_mul` を足した）。評価の定義域を `IsSerreClass` な部分圏にする一般化は区切り 1-4（G₀）へ。
+- D の 3（純な対象の同型の一本化）は区切り 2a へ（`normalizedPureHomologyIso` が BS の import する HA/DerivedPureHomology にある）。
+- Paper の一般の補題のうち LA へ行くもの（§9.2 の PerfectApproximationLength・TowerApproximation）は区切り 1-4 へ（TowerLength・TowerDescent を
+  先に移す必要があり、第 10 章の再構成と一体）。
+- §5.2 の 2（ResolutionEvaluation の前半を PC へ）・3（`chi` を HA の Tor の近くへ）・4、§5.3 の名前空間のそろえ・StageDecay の移動は未着手。
+- PC から KTheory・Asymptotic へ移すもの（IntegerEuler 系・Adams の Koszul・FiniteProjectiveResolutions・AsymptoticLengthBounds・
+  ResolutionFamilies・TensorTorComparison・TensorResolutionLength・RankOneTensorTripleExt）は区切り 1-4 へ。PC の一本化（K₀ のモデル・台の条件・
+  閉包補題）と CochainTensor の Mathlib の記法への寄せは未着手。
+- 監査が名前で参照するため残した未使用の宣言 11 件。
+- 統合で import の範囲が広がった影響：CochainTensorBounds の `Mathlib.Algebra.Homology.Embedding.CochainComplex` を CochainTensor/Basic に入れると、
+  Basic だけを使うファイルで `K.ιTruncLE` などのドット記法が Mathlib の `CochainComplex.ιTruncLE`（ℤ を取る版）に解決されるようになり、KST・∞ 側で
+  エラーになった。Bounds と Finite を CochainTensor/Bounds に分けて解消。HA/ModuleTensorCochainExact の `tensorRight` の `Epi` の探索は重くなったので
+  その補題だけ `synthInstance.maxHeartbeats 80000` にした。重い import を軽いファイルへ統合しないことを今後の統合の注意とする。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。

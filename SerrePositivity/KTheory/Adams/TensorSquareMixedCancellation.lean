@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareMixedSplitting
-public import SerrePositivity.PerfectComplex.InvolutionAntiEquivariance
-public import SerrePositivity.PerfectComplex.InvolutionClass
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 public import SerrePositivity.PerfectComplex.BiproductPerfect
 
 /-! # Cancellation of positive and negative mixed tensor components -/

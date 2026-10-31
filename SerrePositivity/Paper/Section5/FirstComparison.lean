@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.IntersectionMultiplicity.Basic
 public import Mathlib.Algebra.Ring.Action.Basic
-public import SerrePositivity.PerfectComplex.Basic
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.PerfectComplex.Free.Support
+public import SerrePositivity.PerfectComplex.Free.Euler
 public import SerrePositivity.IntersectionMultiplicity.ResolutionEvaluation
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Paper.Section5.SelectedParameterPositivity
 public import SerrePositivity.Paper.Section2.Theorem2_5
 public import SerrePositivity.CommutativeAlgebra.GeometricTransitivity
-public import SerrePositivity.LengthAlgebra.Nontrivial
+public import SerrePositivity.LengthAlgebra.QuotientBounds
 public import Mathlib.Algebra.CharP.Algebra
 public import Mathlib.RingTheory.Spectrum.Prime.Topology
 

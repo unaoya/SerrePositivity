@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 
 /-!
 # 定理2.5の標数によらない導出

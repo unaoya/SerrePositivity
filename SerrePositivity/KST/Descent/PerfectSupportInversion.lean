@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Descent.SupportAfterInversion
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-!
 # 閉台を持つ実際の有限射影複体の局所化での消滅

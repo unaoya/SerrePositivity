@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Asymptotic.NormalizedLimit
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.Algebra.Category.ModuleCat.Basic
 
 /-!

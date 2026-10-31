@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.HomologicalAlgebra.CochainTensor
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierBasis
 public import SerrePositivity.KTheory.Adams.KoszulShiftOneModel

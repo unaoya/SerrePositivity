@@ -38,6 +38,7 @@ lemma supportedRankEuler_eq_homologicalEuler
       homologicalEuler (lengthQuotientValue lam s U hU hs)
         (supportedRankHomology lam hfg z hJ hfin U hU hs 0) X := by
   unfold supportedRankEuler homologicalEuler
+  simp only [zsmul_eq_mul]
   congr 1
   funext q
   congr 1

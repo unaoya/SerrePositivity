@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Asymptotic.SmallLengthSerreQuotient
 public import SerrePositivity.Asymptotic.SequenceResolution
 public import SerrePositivity.Asymptotic.SequenceHomology
-public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 
 /-!
 # 通常の長さの heart と一様自由分解の接続

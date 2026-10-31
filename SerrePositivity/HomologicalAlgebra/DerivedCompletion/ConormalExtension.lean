@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DivisibleHomZero
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteIdealExtension
-public import SerrePositivity.CommutativeAlgebra.Almost.Zero
+public import SerrePositivity.CommutativeAlgebra.Almost.Basic
 public import Mathlib.RingTheory.Ideal.Cotangent
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 

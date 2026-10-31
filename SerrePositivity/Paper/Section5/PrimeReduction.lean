@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section5.Core
 public import SerrePositivity.CommutativeAlgebra.SupportDimension
-public import SerrePositivity.IntersectionMultiplicity.Equivalence
+public import SerrePositivity.IntersectionMultiplicity.Basic
 
 /-! # 核心定理の零次元境界
 

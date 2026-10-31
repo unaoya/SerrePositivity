@@ -1,9 +1,7 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorHomotopy
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.KTheory.Adams.TensorSquare
 
 /-! # The signed cyclic action on tensor cubes -/

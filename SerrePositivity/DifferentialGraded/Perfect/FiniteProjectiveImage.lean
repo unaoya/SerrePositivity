@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.Triangulated
-public import SerrePositivity.PerfectComplex.ProjectiveBounds
+public import SerrePositivity.PerfectComplex.KoszulLength
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 
 /-! # 有限射影加群の像のperfect性

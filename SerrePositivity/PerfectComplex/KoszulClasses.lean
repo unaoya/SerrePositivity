@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.PerfectComplex.KoszulTensor
-public import SerrePositivity.PerfectComplex.TensorEnlarge
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 /-! # Supported Koszul and unit classes independent of an Adams operation -/
 @[expose] public section

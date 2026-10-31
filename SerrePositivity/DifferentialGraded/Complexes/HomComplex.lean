@@ -1,7 +1,7 @@
 module
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplex
-public import SerrePositivity.HomologicalAlgebra.CochainTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 
 /-! # 非有界 A 複体と A 線形 Hom 複体
 

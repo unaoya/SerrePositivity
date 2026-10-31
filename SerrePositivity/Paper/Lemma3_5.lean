@@ -1,16 +1,16 @@
 module
 
-public import SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler
+public import SerrePositivity.LengthAlgebra.Koszul
 
-public import SerrePositivity.LengthAlgebra.Comparison
-public import SerrePositivity.PerfectComplex.K0Functoriality
+public import SerrePositivity.LengthAlgebra.KoszulFormula
+public import SerrePositivity.PerfectComplex.Perfect.FreeComparison
 public import SerrePositivity.Paper.Lemma3_5.Normalized
 public import SerrePositivity.Paper.Lemma3_5.Ordinary
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import SerrePositivity.Inputs.Descent
-public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.Free.K0
 public import SerrePositivity.CommutativeAlgebra.Koszul
-public import SerrePositivity.PerfectComplex.Basic
+public import SerrePositivity.PerfectComplex.Free.Support
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import Mathlib.RingTheory.RegularLocalRing.Defs

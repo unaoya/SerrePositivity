@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCube
-public import SerrePositivity.PerfectComplex.CubicActionDecomposition
+public import SerrePositivity.PerfectComplex.Eigen.Cubic
 
 /-! # The three eigenspace complexes of a signed tensor cube -/
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSymmetry
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 
 /-! # 通常順の dg 合成と豊穣順の符号比較 -/
 @[expose] public section

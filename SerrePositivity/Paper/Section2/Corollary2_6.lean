@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
-public import SerrePositivity.PerfectComplex.QuotientLength
+public import SerrePositivity.LengthAlgebra.Normalized
 public import Mathlib.Basic.ENNReal.Real
 
 /-!

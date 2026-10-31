@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorSymmetry
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBraided
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # Hexagon compatibility of the actual bounded-above derived tensor -/
 @[expose] public noncomputable section

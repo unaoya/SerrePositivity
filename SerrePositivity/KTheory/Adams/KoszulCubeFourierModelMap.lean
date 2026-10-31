@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KTheory.Adams.KoszulCubeFourierEmbeddings
 public import SerrePositivity.PerfectComplex.BiproductPerfect
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
-public import SerrePositivity.PerfectComplex.CubicActionCharacter
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
+public import SerrePositivity.PerfectComplex.Eigen.Cubic
 
 /-! # The four-shift Fourier model and its equivariant map to the Koszul cube -/
 

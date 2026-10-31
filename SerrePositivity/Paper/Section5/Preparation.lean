@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Paper.Section2.TowerApproximation
-public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor
+public import SerrePositivity.IntersectionMultiplicity.ParameterQuotient
 public import Mathlib.RingTheory.Finiteness.Ideal
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
-public import SerrePositivity.PerfectComplex.InvolutionMaps
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 
 /-! # Tensor-square eigenspaces preserve quasi-isomorphisms -/
 

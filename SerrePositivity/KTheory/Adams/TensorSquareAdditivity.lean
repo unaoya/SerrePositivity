@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareMixedCancellation
-public import SerrePositivity.PerfectComplex.InvolutionClassShortExact
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 
 /-! # Additivity of the cyclic tensor-square class -/
 

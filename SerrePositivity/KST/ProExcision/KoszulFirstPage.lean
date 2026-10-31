@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.KoszulGraded
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 
 @[expose] public noncomputable section
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeEigenspaces
-public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import SerrePositivity.PerfectComplex.Eigen.Idempotent
 public import Mathlib.Algebra.Homology.QuasiIso
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
