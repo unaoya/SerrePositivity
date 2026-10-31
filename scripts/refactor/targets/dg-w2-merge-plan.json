@@ -15,12 +15,12 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ModuleConeImage",
       "SerrePositivity.DifferentialGraded.Endomorphism.ModuleShiftImage"
     ],
-    "docstring": "# Endomorphism：Basic\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Basic\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Parameter",
@@ -41,12 +41,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.ParameterBalancedElements",
       "SerrePositivity.DifferentialGraded.Tensor.ParameterBalancedConstructor"
     ],
-    "docstring": "# Tensor：Parameter\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Parameter\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.BalancedElements",
@@ -73,15 +73,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.Swap",
       "SerrePositivity.DifferentialGraded.Tensor.SwapNaturality"
     ],
-    "docstring": "# Tensor：BalancedElements\n\n## 概要\n20 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.BalancedElements\n\n## 概要\n20 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.ScalarExtension1",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.RestrictionComparison",
@@ -100,15 +100,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModule",
       "SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionNaturality"
     ],
-    "docstring": "# Tensor：ScalarExtension1\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.ScalarExtension.CategoriesAndModules\n\n## 概要\ndg 圏・加群・全 Hom の係数変更と制限比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.ScalarExtension2",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModuleMaps",
@@ -121,15 +121,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionRing",
       "SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoendCoherence"
     ],
-    "docstring": "# Tensor：ScalarExtension2\n\n## 概要\n9 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.ScalarExtension.BalancedTensor\n\n## 概要\n係数変更随伴と balanced tensor の表示・比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.Path1",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.Path.Construction",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.Paths",
@@ -146,15 +146,15 @@
       "SerrePositivity.DifferentialGraded.Quotient.EpsilonTensor",
       "SerrePositivity.DifferentialGraded.Quotient.EpsilonHomogeneousExt"
     ],
-    "docstring": "# Quotient：Path1\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Path.Construction\n\n## 概要\n有限 path の構成・連結と ε 消去 cochainをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.Path2",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.PathGeneration",
@@ -177,12 +177,12 @@
       "SerrePositivity.DifferentialGraded.Quotient.Evaluation",
       "SerrePositivity.DifferentialGraded.Quotient.EvaluationComposition"
     ],
-    "docstring": "# Quotient：Path2\n\n## 概要\n19 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Path.Evaluation\n\n## 概要\n指定収縮による path 評価と内部微分・合成の整合性をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Quotient.Erasure",
@@ -204,12 +204,12 @@
       "SerrePositivity.DifferentialGraded.Quotient.ErasureTensorTransport",
       "SerrePositivity.DifferentialGraded.Quotient.ErasureFirstEvaluation"
     ],
-    "docstring": "# Quotient：Erasure\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Erasure\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Quotient.Scalar",
@@ -226,12 +226,12 @@
       "SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionComposition",
       "SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionErasure"
     ],
-    "docstring": "# Quotient：Scalar\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Scalar\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Quotient.Append",
@@ -257,12 +257,12 @@
       "SerrePositivity.DifferentialGraded.Quotient.AppendErasure",
       "SerrePositivity.DifferentialGraded.Quotient.AppendRightAssociativity"
     ],
-    "docstring": "# Quotient：Append\n\n## 概要\n19 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Append\n\n## 概要\n19 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Quotient.Composition",
@@ -286,15 +286,15 @@
       "SerrePositivity.DifferentialGraded.Quotient.Associativity",
       "SerrePositivity.DifferentialGraded.Quotient.Category"
     ],
-    "docstring": "# Quotient：Composition\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.Composition\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison1",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.Extension",
@@ -313,15 +313,15 @@
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLengthAction",
       "SerrePositivity.DifferentialGraded.Quotient.FunctorLaws"
     ],
-    "docstring": "# Quotient：DerivedComparison1\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparison.Filtration\n\n## 概要\n商関手の延長と path 長 filtration・次数層・作用をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison2",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.ColimitCones",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLengthModule",
@@ -329,15 +329,15 @@
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonConeDiagram",
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonConeColimit"
     ],
-    "docstring": "# Quotient：DerivedComparison2\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparison.ColimitCones\n\n## 概要\n長さ部分加群の余極限と比較 cone の図式をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison3",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCells",
@@ -356,30 +356,30 @@
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGradedModule",
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLocalHom"
     ],
-    "docstring": "# Quotient：DerivedComparison3\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparison.LocalFlatness\n\n## 概要\n局所 K-flat 条件、有限 cell・三角比較と局所 Homをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison4",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLayerModule",
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLayerTriangle",
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFreeExtension"
     ],
-    "docstring": "# Quotient：DerivedComparison4\n\n## 概要\n3 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparison.LayerTriangles\n\n## 概要\n長さ層の加群・三角形と自由加群の導来延長をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison5",
+    "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonAdjointUnit",
@@ -396,12 +396,12 @@
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonExtensionCoherence",
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCanonical"
     ],
-    "docstring": "# Quotient：DerivedComparison5\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparison.Equivalence\n\n## 概要\n生成・有限 roof からの完全忠実性、Verdier 比較同値と perfect enhancementをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Bimodule.Basic",
@@ -423,12 +423,12 @@
       "SerrePositivity.DifferentialGraded.Bimodule.Evaluation",
       "SerrePositivity.DifferentialGraded.Bimodule.Isomorphism"
     ],
-    "docstring": "# Bimodule：Basic\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Bimodule.Basic\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Bimodule.Value",
@@ -451,12 +451,12 @@
       "SerrePositivity.DifferentialGraded.Bimodule.RightRestrictionLeftEvaluation",
       "SerrePositivity.DifferentialGraded.Bimodule.ResolvedRestrictionAugmentation"
     ],
-    "docstring": "# Bimodule：Value\n\n## 概要\n16 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Bimodule.Value\n\n## 概要\n16 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology",
@@ -471,15 +471,15 @@
       "SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturalIso",
       "SerrePositivity.DifferentialGraded.Perfect.RepresentableCoproductSupport"
     ],
-    "docstring": "# Perfect：RepresentableHomology\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.RepresentableHomology\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Perfect.Compact1",
+    "module": "SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Perfect.Compact",
@@ -494,15 +494,15 @@
       "SerrePositivity.DifferentialGraded.Perfect.EssentiallySmall",
       "SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement"
     ],
-    "docstring": "# Perfect：Compact1\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.Compact.Enhancement\n\n## 概要\ncompact 性の閉性、Perf の本質的小性と小さい dg enhancementをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Perfect.Compact2",
+    "module": "SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Perfect.RingTriangleFiniteModel",
@@ -521,12 +521,12 @@
       "SerrePositivity.DifferentialGraded.Perfect.RingPerfectCoherence",
       "SerrePositivity.DifferentialGraded.Perfect.RingKaroubiFactors"
     ],
-    "docstring": "# Perfect：Compact2\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.Compact.FiniteGeneration\n\n## 概要\ncompact ⇒ Perf の有限 cell 因子分解と有限射影代表・冪等完備性をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Presentation.Category",
@@ -542,15 +542,15 @@
       "SerrePositivity.DifferentialGraded.Presentation.CategoryFromHomSurjections",
       "SerrePositivity.DifferentialGraded.Presentation.ZeroComplexCode"
     ],
-    "docstring": "# Presentation：Category\n\n## 概要\n9 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Presentation.Category\n\n## 概要\n9 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom1",
+    "module": "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWords",
@@ -575,15 +575,15 @@
       "SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCode",
       "SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedClosedFamily"
     ],
-    "docstring": "# Presentation：GeneratedHom1\n\n## 概要\n21 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Presentation.GeneratedHom.CoefficientClosure\n\n## 概要\n係数語の dg 閉包、基数評価と固定基底コードへの持ち上げをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom2",
+    "module": "SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Presentation.EnrichedLawTransport",
@@ -597,12 +597,12 @@
       "SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedSphereFamily",
       "SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedFamilyRepresentables"
     ],
-    "docstring": "# Presentation：GeneratedHom2\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Presentation.GeneratedHom.SphereLifts\n\n## 概要\n提示の非連結和と自由 sphere・行列・代表加群の同時持ち上げをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Bimodule.Tensor",
@@ -619,12 +619,12 @@
       "SerrePositivity.DifferentialGraded.Bimodule.TensorModuleFunctor",
       "SerrePositivity.DifferentialGraded.Bimodule.TensorModuleComparison"
     ],
-    "docstring": "# Bimodule：Tensor\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Bimodule.Tensor\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Bimodule.Right",
@@ -648,12 +648,12 @@
       "SerrePositivity.DifferentialGraded.Bimodule.RelativeKFlat",
       "SerrePositivity.DifferentialGraded.Bimodule.CylinderKFlat"
     ],
-    "docstring": "# Bimodule：Right\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Bimodule.Right\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Enriched",
@@ -682,15 +682,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.FreeEvaluation",
       "SerrePositivity.DifferentialGraded.Tensor.SphereFreeKFlat"
     ],
-    "docstring": "# Tensor：Enriched\n\n## 概要\n22 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Enriched\n\n## 概要\n22 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.Bimodule1",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.BimoduleActions",
@@ -717,15 +717,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleMap",
       "SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleNaturality"
     ],
-    "docstring": "# Tensor：Bimodule1\n\n## 概要\n23 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Bimodule.Actions\n\n## 概要\nbimodule tensor の両作用・射・パラメータと中間圏比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.Bimodule2",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.Cone",
@@ -740,12 +740,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.BimoduleRestrictionKFlat",
       "SerrePositivity.DifferentialGraded.Tensor.BimoduleSemifreeKFlat"
     ],
-    "docstring": "# Tensor：Bimodule2\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Bimodule.KFlatness\n\n## 概要\n相対 K-flat 性、cone・shift 閉性と擬同型保存をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Fubini",
@@ -760,15 +760,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.FubiniRightRestriction",
       "SerrePositivity.DifferentialGraded.Tensor.Fubini"
     ],
-    "docstring": "# Tensor：Fubini\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Fubini\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator1",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator.Components",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.TripleFunctors",
@@ -799,15 +799,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorTransforms",
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorIso"
     ],
-    "docstring": "# Tensor：Associator1\n\n## 概要\n27 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Associator.Components\n\n## 概要\n結合比較の三重生成元・左右作用・全 Hom 自然性と同型成分をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator2",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.ProjectiveComparison",
@@ -821,15 +821,15 @@
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorParameterValues",
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorParameters"
     ],
-    "docstring": "# Tensor：Associator2\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Associator.Pentagon\n\n## 概要\n五角 coherence と結合比較の射・パラメータ自然性、射影的 K-flat 比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator3",
+    "module": "SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Tensor.OuterUnitRestriction",
@@ -852,12 +852,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestrictionValues",
       "SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestriction"
     ],
-    "docstring": "# Tensor：Associator3\n\n## 概要\n19 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Associator.Restriction\n\n## 概要\n外側・二つの中間圏の制限と結合子の可換 squareをまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Triple",
@@ -879,12 +879,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.UnitMapNaturality",
       "SerrePositivity.DifferentialGraded.Tensor.UnitFunctors"
     ],
-    "docstring": "# Tensor：Triple\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Triple\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Graded",
@@ -903,12 +903,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.RestrictionSemifree",
       "SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonNaturality"
     ],
-    "docstring": "# Tensor：Graded\n\n## 概要\n12 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Graded\n\n## 概要\n12 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.Compose",
@@ -925,12 +925,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestriction",
       "SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestrictionNaturality"
     ],
-    "docstring": "# Tensor：Compose\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.Compose\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Basic",
@@ -945,12 +945,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.BoundarySequence",
       "SerrePositivity.DifferentialGraded.Resolution.CycleCoverComparisonLaws"
     ],
-    "docstring": "# Resolution：Basic\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Basic\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation",
@@ -971,12 +971,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.Free.Reconstruction",
       "SerrePositivity.DifferentialGraded.Resolution.Free.Universal"
     ],
-    "docstring": "# Free：Evaluation\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Free.Evaluation\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary",
@@ -1000,15 +1000,15 @@
       "SerrePositivity.DifferentialGraded.Resolution.Cells.PrimitiveAction",
       "SerrePositivity.DifferentialGraded.Resolution.Cells.BoundarySquare"
     ],
-    "docstring": "# Cells：Boundary\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cells.Boundary\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Append1",
+    "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Resolution.Cells.Differential",
@@ -1027,15 +1027,15 @@
       "SerrePositivity.DifferentialGraded.Resolution.Cells.TensorRightPathCochainExt",
       "SerrePositivity.DifferentialGraded.Resolution.Cells.TensorTwoPathCochainExt"
     ],
-    "docstring": "# Cells：Append1\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cells.Append.Recursion\n\n## 概要\ncell path の連結再帰・prefix・内部単位と cochain 外延性をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Append2",
+    "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Resolution.Cells.PrependBoundary",
@@ -1053,12 +1053,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionEvaluation",
       "SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionComparison"
     ],
-    "docstring": "# Cells：Append2\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cells.Append.BoundaryCompatibility\n\n## 概要\n連結と指定境界置換の Leibniz 則・最終微分の整合性をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Length",
@@ -1076,12 +1076,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.Cells.LengthSplit",
       "SerrePositivity.DifferentialGraded.Resolution.Cells.LengthColimit"
     ],
-    "docstring": "# Cells：Length\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cells.Length\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Cells.Path",
@@ -1108,12 +1108,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.Cells.Reconstruction",
       "SerrePositivity.DifferentialGraded.Resolution.Cells.Universal"
     ],
-    "docstring": "# Cells：Path\n\n## 概要\n20 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cells.Path\n\n## 概要\n20 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.FixedObject",
@@ -1127,12 +1127,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapExtension",
       "SerrePositivity.DifferentialGraded.Resolution.FixedObjectGenerators"
     ],
-    "docstring": "# Resolution：FixedObject\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.FixedObject\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Cell",
@@ -1152,12 +1152,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws",
       "SerrePositivity.DifferentialGraded.Resolution.CellComparisonQuasiEquivalence"
     ],
-    "docstring": "# Resolution：Cell\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Cell\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Resolution.Composition",
@@ -1172,12 +1172,12 @@
       "SerrePositivity.DifferentialGraded.Resolution.DiagonalComparison",
       "SerrePositivity.DifferentialGraded.Resolution.MiddleCompositionComparison"
     ],
-    "docstring": "# Resolution：Composition\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Resolution.Composition\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.Kernel",
@@ -1194,12 +1194,12 @@
       "SerrePositivity.DifferentialGraded.Morita.KernelComparisonNaturality",
       "SerrePositivity.DifferentialGraded.Morita.KernelComparisonComponents"
     ],
-    "docstring": "# Morita：Kernel\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.Kernel\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel",
@@ -1221,12 +1221,12 @@
       "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionDerivedNaturality",
       "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturalIso"
     ],
-    "docstring": "# Morita：CoherenceCompositionKernel\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.CoherenceCompositionKernel\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator",
@@ -1248,12 +1248,12 @@
       "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorMain",
       "SerrePositivity.DifferentialGraded.Morita.CoherenceLeftUnitMain"
     ],
-    "docstring": "# Morita：CoherenceAssociator\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.CoherenceAssociator\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Perfect.Basic",
@@ -1273,15 +1273,15 @@
       "SerrePositivity.DifferentialGraded.Perfect.RingShiftComparison",
       "SerrePositivity.DifferentialGraded.Perfect.RingHomotopyDerivedComparison"
     ],
-    "docstring": "# Perfect：Basic\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.Basic\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Perfect.Ring2",
+    "module": "SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Perfect.StrictComplexEnhancement",
@@ -1307,12 +1307,12 @@
       "SerrePositivity.DifferentialGraded.Perfect.RingRetractRangeReduction",
       "SerrePositivity.DifferentialGraded.Perfect.RingRetractSingle"
     ],
-    "docstring": "# Perfect：Ring2\n\n## 概要\n22 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.Ring.FiniteProjectiveComparison\n\n## 概要\n有界有限射影複体から主 Perf への比較と retract の次数幅帰納をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations",
@@ -1327,12 +1327,12 @@
       "SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftEvaluation",
       "SerrePositivity.DifferentialGraded.Perfect.EnhancementConeComparison"
     ],
-    "docstring": "# Perfect：EnhancementOperations\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Perfect.EnhancementOperations\n\n## 概要\n8 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Verdier.Derived",
@@ -1353,12 +1353,12 @@
       "SerrePositivity.DifferentialGraded.Verdier.GraphRestrictionShift",
       "SerrePositivity.DifferentialGraded.Verdier.GraphCompositionShift"
     ],
-    "docstring": "# Verdier：Derived\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Verdier.Derived\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Endomorphism.Module",
@@ -1375,15 +1375,15 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ModuleInsertion",
       "SerrePositivity.DifferentialGraded.Endomorphism.ModuleAdjunction"
     ],
-    "docstring": "# Endomorphism：Module\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Module\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Derived1",
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Derived.Functors",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Endomorphism.DerivedHom",
@@ -1394,15 +1394,15 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.DerivedScalarTensor",
       "SerrePositivity.DifferentialGraded.Endomorphism.DerivedLocalizingGeneration"
     ],
-    "docstring": "# Endomorphism：Derived1\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Derived.Functors\n\n## 概要\n再構成 Hom・tensor の導来化、評価と局所生成判定をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Derived2",
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Endomorphism.ActualScalarEnd",
@@ -1416,15 +1416,15 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.DerivedAdjunction",
       "SerrePositivity.DifferentialGraded.Endomorphism.DerivedGenerators"
     ],
-    "docstring": "# Endomorphism：Derived2\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Derived.Adjunction\n\n## 概要\n射影性と Hom 同値による再構成 tensor–Hom 随伴をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar1",
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Endomorphism.IsoLocus",
@@ -1445,15 +1445,15 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomHomotopyRetracts",
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomElementComponents"
     ],
-    "docstring": "# Endomorphism：Scalar1\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Scalar.HomComparison\n\n## 概要\n実際の係数拡大による全次数 Hom 比較・Yoneda・retract 自然性をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar2",
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar.PerfectStability",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomShift",
@@ -1467,15 +1467,15 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleShiftImage",
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectImage"
     ],
-    "docstring": "# Endomorphism：Scalar2\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Scalar.PerfectStability\n\n## 概要\nHom 比較の shift・cone 閉性と perfect・射影的加群の保存をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar3",
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Endomorphism.ThickHomComparison",
@@ -1495,12 +1495,12 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarEnhancementShift",
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectShiftTriangles"
     ],
-    "docstring": "# Endomorphism：Scalar3\n\n## 概要\n16 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Scalar.EnhancementComparison\n\n## 概要\nthick 閉包上の dg 像と enhancement・主 Perf の導来係数変更比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Endomorphism.Shift",
@@ -1522,12 +1522,12 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonShift",
       "SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonCone"
     ],
-    "docstring": "# Endomorphism：Shift\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Shift\n\n## 概要\n15 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Endomorphism.Perfect",
@@ -1551,12 +1551,12 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.PerfectScalarTensor",
       "SerrePositivity.DifferentialGraded.Endomorphism.CompactUnitCounit"
     ],
-    "docstring": "# Endomorphism：Perfect\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Perfect\n\n## 概要\n17 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Endomorphism.Enhancement",
@@ -1576,12 +1576,12 @@
       "SerrePositivity.DifferentialGraded.Endomorphism.ScalarReconstructionTriangles",
       "SerrePositivity.DifferentialGraded.Endomorphism.Compatibility"
     ],
-    "docstring": "# Endomorphism：Enhancement\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Endomorphism.Enhancement\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.Perfect",
@@ -1601,15 +1601,15 @@
       "SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherence",
       "SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelComposition"
     ],
-    "docstring": "# Morita：Perfect\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.Perfect\n\n## 概要\n13 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtension1",
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtension.KernelComparison",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernel",
@@ -1627,15 +1627,15 @@
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedComparison",
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality"
     ],
-    "docstring": "# Morita：ScalarExtension1\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.ScalarExtension.KernelComparison\n\n## 概要\nkernel の通常・局所化係数変更と導来作用・増大比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。 未追跡 ScalarExtensionKernelOutputComponents は §5-0 により対象外。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtension2",
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtension.PerfectSquares",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModels",
@@ -1651,12 +1651,12 @@
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionOutputEvaluation",
       "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation"
     ],
-    "docstring": "# Morita：ScalarExtension2\n\n## 概要\n12 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.ScalarExtension.PerfectSquares\n\n## 概要\n出力評価モデルによる kernel 係数変更正方形と Perf 制限をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproducts",
@@ -1670,12 +1670,12 @@
       "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomTriangles",
       "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomLocus"
     ],
-    "docstring": "# Morita：CriterionDerivedCoproducts\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.CriterionDerivedCoproducts\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。 未追跡 ScalarExtensionKernelOutputComponents は §5-0 により対象外。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction",
@@ -1686,12 +1686,12 @@
       "SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionPresentation",
       "SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionPresentation"
     ],
-    "docstring": "# Bimodule：DiagonalRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Bimodule.DiagonalRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction",
@@ -1702,12 +1702,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.RightUnitRestriction",
       "SerrePositivity.DifferentialGraded.Tensor.FunctorExtensionProjection"
     ],
-    "docstring": "# Tensor：LeftUnitRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.LeftUnitRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction",
@@ -1718,12 +1718,12 @@
       "SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionCoherence",
       "SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionIdentity"
     ],
-    "docstring": "# Tensor：ResolvedRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Tensor.ResolvedRestriction\n\n## 概要\n4 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Verdier.Scalar",
@@ -1740,12 +1740,12 @@
       "SerrePositivity.DifferentialGraded.Verdier.ScalarGraphDerivedComparison",
       "SerrePositivity.DifferentialGraded.Verdier.ScalarQuotientSourceSquare"
     ],
-    "docstring": "# Verdier：Scalar\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Verdier.Scalar\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated",
@@ -1768,15 +1768,15 @@
       "SerrePositivity.DifferentialGraded.Morita.CriterionPerfTensorHomComparison",
       "SerrePositivity.DifferentialGraded.Morita.CriterionPerfFullHomCriterion"
     ],
-    "docstring": "# Morita：CriterionPerfTriangulated\n\n## 概要\n16 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.CriterionPerfTriangulated\n\n## 概要\n16 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Morita.Adjunction1",
+    "module": "SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Morita.CriterionPerf",
@@ -1794,15 +1794,15 @@
       "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence",
       "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditions"
     ],
-    "docstring": "# Morita：Adjunction1\n\n## 概要\n14 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.Adjunction.Construction\n\n## 概要\ntelescope と局所生成による一般 kernel 右随伴の構成・Morita 判定をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
-    "module": "SerrePositivity.DifferentialGraded.Morita.Adjunction2",
+    "module": "SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Morita.AdjunctionSquare",
@@ -1813,12 +1813,12 @@
       "SerrePositivity.DifferentialGraded.Morita.Criterion",
       "SerrePositivity.DifferentialGraded.Morita.AdjunctionPerfectInverse"
     ],
-    "docstring": "# Morita：Adjunction2\n\n## 概要\n7 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.Adjunction.Coherence\n\n## 概要\n実際の右随伴の正方形・合成・係数変更と Perf 逆関手の比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph",
@@ -1835,12 +1835,12 @@
       "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceDerivedGraph",
       "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceEndomorphismComparison"
     ],
-    "docstring": "# Morita：QuasiEquivalenceGraph\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Morita.QuasiEquivalenceGraph\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraphSquare",
@@ -1848,27 +1848,26 @@
     "sources": [
       "SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraphSquare"
     ],
-    "docstring": "# Quotient：DerivedComparisonGraphSquare\n\n## 概要\n1 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Quotient.DerivedComparisonGraphSquare\n\n## 概要\n1 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Verdier.Comparison",
     "action": "merge",
     "sources": [
       "SerrePositivity.DifferentialGraded.Verdier.ComparisonLinear",
-      "SerrePositivity.DifferentialGraded.Verdier.OrderSquare",
       "SerrePositivity.DifferentialGraded.Verdier.SupportSquare"
     ],
-    "docstring": "# Verdier：Comparison\n\n## 概要\n3 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Verdier.Comparison\n\n## 概要\n2 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Verdier.Karoubi",
@@ -1885,12 +1884,12 @@
       "SerrePositivity.DifferentialGraded.Verdier.ScalarCompletionSquare",
       "SerrePositivity.DifferentialGraded.Verdier.CompletionSquareShift"
     ],
-    "docstring": "# Verdier：Karoubi\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Verdier.Karoubi\n\n## 概要\n10 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.DifferentialGraded.Verdier.Kernel",
@@ -1908,12 +1907,12 @@
       "SerrePositivity.DifferentialGraded.Verdier.DerivedKernelGraphSquare",
       "SerrePositivity.DifferentialGraded.Verdier.ConjugatedCompositionNaturality"
     ],
-    "docstring": "# Verdier：Kernel\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
+    "docstring": "# Verdier.Kernel\n\n## 概要\n11 本に分かれていた同主題の構成と比較をまとめる。\n\n## 方針\n対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。\n\n## 規約\n各元ファイルの section を分離し、variable・option の局所的な作用を保つ。\n\n## 使われ方\nDifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。",
     "private_renames": {},
     "deletes": [],
     "stubs": [],
     "candidate": "D4",
-    "note": "統合先名は対応表の仮名。確定・適用は (b) の承認後。"
+    "note": "§9-5 の命名案（dg-w2-names.md）。Claude の承認と (b) の開始合図後に適用。"
   },
   {
     "module": "SerrePositivity.KST.SConstruction.DGClosedComparisonIso",
@@ -2244,35 +2243,5 @@
     "attributes": {},
     "candidate": "D3",
     "note": "論文固有の依存を上の層へ。Verdier/U17 の該当 import も (b) で追従。"
-  },
-  {
-    "module": "SerrePositivity.PerfectComplex.ProjectiveBounds",
-    "action": "split",
-    "dest": "SerrePositivity.HomologicalAlgebra.FiniteProjectiveRetract",
-    "moved": [
-      "SerrePositivity.finiteProjective_exists_retract"
-    ],
-    "keep": [
-      "SerrePositivity.lambdaHomology_koszul_projective_ne_top",
-      "SerrePositivity.lambdaHomology_supported_projective_ne_top"
-    ],
-    "attributes": {},
-    "candidate": "D3",
-    "note": "有限射影の一般補題。型・本文・名前空間を保存。"
-  },
-  {
-    "module": "SerrePositivity.PerfectComplex.BiproductPerfect",
-    "action": "split",
-    "dest": "SerrePositivity.HomologicalAlgebra.StrictlyPerfectBiproduct",
-    "moved": [
-      "SerrePositivity.strictlyPerfectComplex_biprod"
-    ],
-    "keep": [
-      "SerrePositivity.cochainBiprodXIsoProd",
-      "SerrePositivity.HasHomologySupportOn.biprod"
-    ],
-    "attributes": {},
-    "candidate": "D3",
-    "note": "strictlyPerfectComplex・PerfectHomotopy の定義への依存は未決 §7-1 として残す。補助定義 cochainBiprodXIsoProd への依存も (b) の分割案で確認する。"
   }
 ]

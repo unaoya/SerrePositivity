@@ -1,5 +1,7 @@
 # DG-W2(a) 草案と検証記録
 
+> 現在の草案は末尾の「§9 反映報告」を参照。以下の (a) 承認時記録（980 本・split 2 件・旧仮名・1,500 行上限・下流 7,222 本）は履歴であり、§9 の決定で置き換わる。
+
 基点：`3af962416`、ブランチ：`infra/dg-w2`。DG-W1 の worktree を継続使用。
 main の新しいコミットは取り込まず、計画文書は `git show main:formalization-plans/dg-codex-w2.md` で読んだ。
 (a) の道具・試験・草案だけを作成し、(b) の移動・分割・統合は一切適用していない。
@@ -1448,3 +1450,151 @@ import のみの書換候補 516 ファイル。
 - move: `SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration` → `SerrePositivity.Asymptotic.DGVerdier.ChecksU17Integration`。論文固有の依存を上の層へ。Verdier/U17 の該当 import も (b) で追従。
 - split: `SerrePositivity.PerfectComplex.ProjectiveBounds` → `SerrePositivity.HomologicalAlgebra.FiniteProjectiveRetract`。有限射影の一般補題。型・本文・名前空間を保存。
 - split: `SerrePositivity.PerfectComplex.BiproductPerfect` → `SerrePositivity.HomologicalAlgebra.StrictlyPerfectBiproduct`。strictlyPerfectComplex・PerfectHomotopy の定義への依存は未決 §7-1 として残す。補助定義 cochainBiprodXIsoProd への依存も (b) の分割案で確認する。
+
+
+---
+
+## §9 反映報告（2026-10-31、(b) 開始前）
+
+main `6f2d47f60` の計画 §9 を `git show` で読み、承認済み (a) の HEAD `406c19405` から草案だけを更新した。main の merge、Lean ビルド、verify、キャッシュ複製、移動・統合の適用はしていない。既存の道具・Lean ソース・`layers.json` は変更していない。
+
+### 草案の確定範囲
+
+- `Verdier.Comparison` の元は `ComparisonLinear` と `SupportSquare` の 2 本。`OrderSquare` は D3 の `Asymptotic.DGVerdier.OrderSquare` への move だけにした。`ChecksOrderSquare` と `ChecksU17Integration` の move も維持。
+- `PerfectComplex.ProjectiveBounds` → `HomologicalAlgebra.FiniteProjectiveRetract`、`PerfectComplex.BiproductPerfect` → `HomologicalAlgebra.StrictlyPerfectBiproduct` の split 2 件を撤回。PerfectComplex には触れず、`cochainBiprodXIsoProd` の配置検討も撤回。
+- **78 統合先・979 本、D3 move 33 件・split 0 件**。以前の **対応表 981 → 980** は未追跡 `Morita/ScalarExtensionKernelOutputComponents.lean` の除外、今回の **980 → 979** は OrderSquare の move 専任化による。元の対応表にもこの 2 本の除外を同期した。
+- 番号付き仮名 30 件を主題別の名前へ改める案を、対応表のキーと草案の `module` に反映。番号なし 48 件は維持。全 78 件の旧名 → 案と根拠は [dg-w2-names.md](dg-w2-names.md)。**名前は Claude の承認待ちで、適用は (b) の開始合図後。**
+- 対応表の対象外 48 群、草案の残る元の依存順、D3 move 33 件の内容は不変。統合先の重複、元に含まれない既存モジュールとの衝突、move 先との衝突は 0。元 979 本は `--check` の `git ls-files` 検査を通過した。
+
+### (b)-5 で登録する DG → PerfectComplex の 3 辺
+
+現 worktree の直接 import を照合した。DG 側の名前は `SerrePositivity.DifferentialGraded.`、参照先は `SerrePositivity.PerfectComplex.` からの相対名。
+
+| 現在の DG import 元 | D4 後の import 元（命名案） | PerfectComplex の import 先 | 維持する依存 |
+| --- | --- | --- | --- |
+| `Perfect.FiniteProjectiveImage` | `Perfect.Basic` | `ProjectiveBounds` | `finiteProjective_exists_retract` |
+| `Perfect.StrictComplexOperations` | `Perfect.Ring.FiniteProjectiveComparison` | `BiproductPerfect` | `strictlyPerfectComplex_biprod` |
+| `Perfect.StrictComplexEnhancement` | `Perfect.Ring.FiniteProjectiveComparison` | `HomotopyCategory` | `strictlyPerfectComplex` / `PerfectHomotopy` の定義 |
+
+`allowed_until_move` は参照先モジュールの prefix の配列なので、(b)-5 では次の 3 エントリを追加する。PerfectComplex 全体を許可する prefix には広げない。登録は論文側の移動が済むまでの暫定扱いで、main 取り込み後に参照先が改名されていればこの一覧も照合し直す。**今回 `layers.json` への登録は未実施。**
+
+```json
+[
+  "SerrePositivity.PerfectComplex.ProjectiveBounds",
+  "SerrePositivity.PerfectComplex.BiproductPerfect",
+  "SerrePositivity.PerfectComplex.HomotopyCategory"
+]
+```
+
+### ビルドなしの検証
+
+```sh
+python3 -B scripts/refactor/merge_modules.py scripts/refactor/targets/dg-w2-merge-plan.json \
+  --area SerrePositivity.DifferentialGraded --check --max-lines 1700 \
+  --report /tmp/dgw2-section9/dryrun.md
+```
+
+終了 0：`merge_targets=78, sources=979, warnings=976, deferred=33, rewrites=516, applied=false`。
+**行数上限の警告は 0**、最大 1,605 行（上限 1,700 行）。上限変更に合わせた再分割や本文の圧縮はしていない。
+
+残る 976 件は無名 section 補完 970 件と `set_option` 差 6 件。補完規則は承認時のままで、971 → 970 は統合元から外した OrderSquare の 1 件だけによる。元ごとの section に閉じる方針を維持する。option 差 6 件（4 群）は次のとおり。
+
+| 統合先（DG 相対名・命名案） | 値が異なる option | 件数 |
+| --- | --- | ---: |
+| `Tensor.ScalarExtension.CategoriesAndModules` | `backward.isDefEq.respectTransparency`, `backward.isDefEq.respectTransparency.types` | 2 |
+| `Tensor.ScalarExtension.BalancedTensor` | `backward.isDefEq.respectTransparency` | 1 |
+| `Quotient.Scalar` | `backward.isDefEq.respectTransparency` | 1 |
+| `Resolution.Cells.Append.BoundaryCompatibility` | `backward.isDefEq.respectTransparency`, `backward.isDefEq.respectTransparency.types` | 2 |
+
+下表は今回の命名案・OrderSquare 除外後の生成サイズ。上部の (a) 承認時の詳細は履歴として残し、現在の草案にはこの表を用いる。
+
+統合先 78、元 979 本。move/split 草案 33 件は未適用。
+生成行数：最小 163、中央値 1066、平均 1052.1、最大 1605。
+
+| 統合先 | 元本数 | 元行数 | 生成行数 | import 和 | 外部 importer | 警告数 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Basic` | 11 | 658 | 728 | 15 | 25 | 9 |
+| `SerrePositivity.DifferentialGraded.Tensor.Parameter` | 14 | 1234 | 1307 | 13 | 40 | 14 |
+| `SerrePositivity.DifferentialGraded.Tensor.BalancedElements` | 20 | 1353 | 1445 | 13 | 43 | 20 |
+| `SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules` | 15 | 1441 | 1521 | 18 | 23 | 17 |
+| `SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor` | 9 | 945 | 995 | 4 | 11 | 10 |
+| `SerrePositivity.DifferentialGraded.Quotient.Path.Construction` | 13 | 619 | 690 | 13 | 24 | 13 |
+| `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation` | 19 | 1165 | 1241 | 13 | 17 | 19 |
+| `SerrePositivity.DifferentialGraded.Quotient.Erasure` | 15 | 719 | 796 | 10 | 24 | 14 |
+| `SerrePositivity.DifferentialGraded.Quotient.Scalar` | 10 | 605 | 658 | 6 | 14 | 11 |
+| `SerrePositivity.DifferentialGraded.Quotient.Append` | 19 | 932 | 1009 | 9 | 17 | 19 |
+| `SerrePositivity.DifferentialGraded.Quotient.Composition` | 17 | 852 | 927 | 12 | 17 | 17 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration` | 15 | 1492 | 1570 | 11 | 27 | 14 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.ColimitCones` | 4 | 473 | 509 | 10 | 6 | 4 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness` | 15 | 1475 | 1545 | 27 | 23 | 15 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles` | 3 | 363 | 397 | 14 | 6 | 3 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence` | 13 | 1395 | 1455 | 12 | 9 | 13 |
+| `SerrePositivity.DifferentialGraded.Bimodule.Basic` | 15 | 834 | 913 | 10 | 39 | 14 |
+| `SerrePositivity.DifferentialGraded.Bimodule.Value` | 16 | 1127 | 1206 | 11 | 47 | 16 |
+| `SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology` | 8 | 686 | 740 | 17 | 18 | 8 |
+| `SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement` | 11 | 877 | 940 | 17 | 36 | 11 |
+| `SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration` | 15 | 1375 | 1454 | 15 | 26 | 15 |
+| `SerrePositivity.DifferentialGraded.Presentation.Category` | 9 | 422 | 486 | 13 | 11 | 9 |
+| `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure` | 21 | 1328 | 1446 | 13 | 10 | 20 |
+| `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts` | 10 | 706 | 773 | 9 | 8 | 9 |
+| `SerrePositivity.DifferentialGraded.Bimodule.Tensor` | 10 | 692 | 749 | 7 | 16 | 10 |
+| `SerrePositivity.DifferentialGraded.Bimodule.Right` | 17 | 1354 | 1430 | 15 | 24 | 17 |
+| `SerrePositivity.DifferentialGraded.Tensor.Enriched` | 22 | 1485 | 1582 | 30 | 44 | 22 |
+| `SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions` | 23 | 1493 | 1581 | 11 | 56 | 23 |
+| `SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness` | 11 | 580 | 635 | 14 | 22 | 11 |
+| `SerrePositivity.DifferentialGraded.Tensor.Fubini` | 8 | 802 | 850 | 8 | 15 | 8 |
+| `SerrePositivity.DifferentialGraded.Tensor.Associator.Components` | 27 | 1489 | 1605 | 10 | 33 | 27 |
+| `SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon` | 10 | 606 | 653 | 8 | 23 | 10 |
+| `SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction` | 19 | 1434 | 1515 | 5 | 12 | 19 |
+| `SerrePositivity.DifferentialGraded.Tensor.Triple` | 15 | 957 | 1026 | 7 | 38 | 15 |
+| `SerrePositivity.DifferentialGraded.Tensor.Graded` | 12 | 858 | 922 | 16 | 36 | 12 |
+| `SerrePositivity.DifferentialGraded.Tensor.Compose` | 10 | 763 | 817 | 12 | 18 | 10 |
+| `SerrePositivity.DifferentialGraded.Resolution.Basic` | 8 | 621 | 674 | 6 | 15 | 8 |
+| `SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation` | 14 | 1103 | 1178 | 9 | 12 | 14 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary` | 17 | 1296 | 1380 | 16 | 19 | 17 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion` | 15 | 948 | 1019 | 7 | 18 | 15 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility` | 14 | 1027 | 1091 | 8 | 10 | 16 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cells.Length` | 11 | 947 | 1009 | 11 | 8 | 11 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cells.Path` | 20 | 1435 | 1523 | 13 | 10 | 20 |
+| `SerrePositivity.DifferentialGraded.Resolution.FixedObject` | 7 | 550 | 598 | 5 | 12 | 7 |
+| `SerrePositivity.DifferentialGraded.Resolution.Cell` | 13 | 1144 | 1208 | 9 | 22 | 13 |
+| `SerrePositivity.DifferentialGraded.Resolution.Composition` | 8 | 542 | 594 | 8 | 10 | 8 |
+| `SerrePositivity.DifferentialGraded.Morita.Kernel` | 10 | 1094 | 1157 | 9 | 31 | 10 |
+| `SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel` | 15 | 1426 | 1501 | 6 | 22 | 15 |
+| `SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator` | 15 | 1455 | 1530 | 4 | 14 | 15 |
+| `SerrePositivity.DifferentialGraded.Perfect.Basic` | 13 | 1016 | 1088 | 24 | 38 | 13 |
+| `SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison` | 22 | 1484 | 1584 | 20 | 14 | 22 |
+| `SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations` | 8 | 732 | 781 | 10 | 21 | 8 |
+| `SerrePositivity.DifferentialGraded.Verdier.Derived` | 14 | 1218 | 1301 | 25 | 27 | 13 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Module` | 10 | 1059 | 1116 | 11 | 13 | 10 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Derived.Functors` | 7 | 717 | 766 | 9 | 12 | 7 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction` | 10 | 743 | 801 | 8 | 14 | 10 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison` | 17 | 1323 | 1405 | 10 | 17 | 17 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Scalar.PerfectStability` | 10 | 1020 | 1072 | 10 | 6 | 10 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison` | 16 | 1231 | 1313 | 12 | 13 | 16 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Shift` | 15 | 1190 | 1265 | 13 | 21 | 15 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Perfect` | 17 | 1189 | 1269 | 11 | 14 | 17 |
+| `SerrePositivity.DifferentialGraded.Endomorphism.Enhancement` | 13 | 945 | 980 | 17 | 3 | 13 |
+| `SerrePositivity.DifferentialGraded.Morita.Perfect` | 13 | 1303 | 1373 | 16 | 28 | 12 |
+| `SerrePositivity.DifferentialGraded.Morita.ScalarExtension.KernelComparison` | 14 | 1403 | 1474 | 16 | 10 | 14 |
+| `SerrePositivity.DifferentialGraded.Morita.ScalarExtension.PerfectSquares` | 12 | 1392 | 1452 | 10 | 4 | 12 |
+| `SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproducts` | 7 | 535 | 583 | 8 | 6 | 7 |
+| `SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction` | 4 | 402 | 434 | 5 | 12 | 4 |
+| `SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction` | 4 | 405 | 435 | 11 | 6 | 4 |
+| `SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction` | 4 | 420 | 456 | 8 | 7 | 4 |
+| `SerrePositivity.DifferentialGraded.Verdier.Scalar` | 10 | 1071 | 1131 | 17 | 8 | 10 |
+| `SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated` | 16 | 1459 | 1538 | 11 | 15 | 16 |
+| `SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction` | 14 | 1325 | 1399 | 7 | 18 | 14 |
+| `SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence` | 7 | 698 | 745 | 6 | 8 | 7 |
+| `SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph` | 10 | 918 | 976 | 8 | 16 | 10 |
+| `SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraphSquare` | 1 | 138 | 163 | 3 | 3 | 1 |
+| `SerrePositivity.DifferentialGraded.Verdier.Comparison` | 2 | 290 | 318 | 4 | 6 | 2 |
+| `SerrePositivity.DifferentialGraded.Verdier.Karoubi` | 10 | 1002 | 1060 | 6 | 6 | 10 |
+| `SerrePositivity.DifferentialGraded.Verdier.Kernel` | 11 | 1141 | 1204 | 6 | 8 | 11 |
+
+
+### 下流見積もりと停止点
+
+以前の 7,222 本は split 撤回前の履歴。今回の dry-run が算出した 7,121 本（118.7–178.0 分、import 書換候補 516）は **main 未取り込みの参考値**であり、(b) の所要時間の確定値とはしない。§9-6 に従い、(b) 直前に main 取り込み後の状態で再計算する。
+
+草案・対応表・命名案・本報告の 4 ファイルだけを 1 コミットにまとめ、停止点 1′ で停止する。(b) は開始していない。
