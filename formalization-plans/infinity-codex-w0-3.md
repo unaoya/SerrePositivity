@@ -356,3 +356,18 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 3. **R75 の準備**：[計画の R75 行](infinity-foundation-plan.md)（CategoryTheory/Presentation の 15 本、Quiver/WeightedPaths・WeightedPathMaps、トップ階層の殻 8 本など計 29 本）の削除対象を一覧にし、**importer が 0 であること**（監査・集約・README の参照も含めて）を確かめる。importer があるものは報告して外す。削除は束の適用のときに `git rm` で行う（下流がないので再ビルドは起きない）。
 4. **束の手順書**：`targets/batch-w1w2a.md` に、適用の順序（R75 の削除 → R79 の docstring → W1 の対象 → W2a の対象の順。split は `split_module.py`、move は `move_module.py`、reimport は入口の編集）、各段のコマンド、snapshot の採り方（全対象の before は適用前にまとめて採る。**この snapshot の採取だけは `lake env lean --run decl_snapshot.lean` で対象のビルドが要るので、DG-W1 の取り込み後、`.lake/build` を複製してから行う**）、下流ビルドの対象の集合、失敗時の二分の規則、止めて報告する点（適用後・下流ビルド後・verify 後の 3 か所）を書く。
 5. 上の 1〜4 が終わったら止めて報告する。main の merge・`.lake/build` の複製・snapshot・束の適用は、Claude が「DG-W1 を main に入れた」と伝えてから。
+
+### 10.16 追記（10-31、§10.15 の準備の承認と、R75 の参照元の処置）
+
+**承認**：3 コミット（b0491d1fa・67c6ea7cb・21258b0d9）、R79 の dry-run（618＋1／618＋16／3、635 ファイル・1,253 箇所、アンカー `396-任意モデル源への一般化中断2026-10-17` を確認）、束の手順書 `batch-w1w2a.md`（停止点 3 か所）、Python 試験 157 件 PASS を確認した。新しい準備ファイル（`rewrite_r79_docs.py`・`check_r75.py`・試験・targets の記録）はコミットしてよい。
+
+**R75：29 本すべてを削除する。** importer として数えないもの、参照元の処置は次のとおり。
+
+1. **生成された領域の監査（`scripts/audit/shared.lean` など `make_area_audits.py` の出力）は利用者ではない。** 追跡中の全モジュールを機械的に import しているだけなので、削除の後に `python3 scripts/make_area_audits.py` で再生成する（DG-W1 の D0 と同じ。他の area の差分が出たら並行セッション由来なので戻して報告）。CategoryTheory の 25 本はこれで解消。
+2. **`scripts/check_word_source_operators.lean` は削除する。** 削除する `Presentation.RetractWordPullback` の検査であり、verify の manifest にも scripts の他のファイルにも参照がない（確認済み）。削除を報告に記す。
+3. **`Spectra/SymmetricSequence/AdjacentBraid`（殻）**：利用者 `Spectra/SymmetricSequence/SpherePowers.lean` の 3 行目を `public import SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid`（殻が再エクスポートしている実体）に書き換えてから殻を削除する。SpherePowers の公開する名前は変わらない。
+4. **∞ 側の監査の禁止モジュール一覧**（`audit_homotopical_foundations.lean`・`audit_homotopical_general_tools.lean` など）に削除するモジュール名が載っていれば、その行を外す（存在しないモジュールは禁止一覧に要らない）。manifest・個別チェックの名前参照も同じ。
+5. **README の案内**（HotA の README の拡張子なしの案内 3 件、`CategoryTheory/Monoidal/README` など）は、削除したモジュールへの言及を消すか移動先に替える。短い宣言名だけの言及（`readme_name_mentions`）は移動先の同名宣言を指すので触らない。
+6. 削除は束の中で R75 の段（最初）に行い、`git rm` と 1〜5 の編集を 1 コミットにする。下流がないので再ビルドは起きない。
+
+これで束の構成は確定：R75（29 本＋検査 1 本）→ R79（2 コミット）→ W1（68）→ W2a（1,208）。DG-W1 の取り込みの通知を待つ。
