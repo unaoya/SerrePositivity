@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 
 /-! # 単元の巡回perfectoid商の長さ
 

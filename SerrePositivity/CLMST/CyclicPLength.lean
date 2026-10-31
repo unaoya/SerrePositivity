@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.PerfectoidIdealRoots
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateVanishing
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Coordinate
 
 /-! # 命題4.0.10の p の場合の数値接続
 

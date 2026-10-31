@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CLMST.PerfectoidCokernel
-public import SerrePositivity.LengthAlgebra.KoszulCokernelBounds
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedFiniteLength
+public import SerrePositivity.LengthAlgebra.KoszulModule
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 

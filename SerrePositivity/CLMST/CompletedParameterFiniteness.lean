@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.SelectedParameterEuler
-public import SerrePositivity.LengthAlgebra.KoszulZeroMonotonicity
+public import SerrePositivity.LengthAlgebra.KoszulModule
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
 
 /-! # 全パラメータ系に対する比較先の長さの有限性
