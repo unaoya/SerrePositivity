@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.StageTwo
+public import SerrePositivity.DifferentialGraded
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U5 の非有界・非体・全次数の受入検証 -/

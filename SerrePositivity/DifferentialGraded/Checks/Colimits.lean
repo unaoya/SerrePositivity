@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.StageFour
+public import SerrePositivity.DifferentialGraded
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7c2：objectwise 余極限・全次数作用・普遍性・宇宙契約 -/

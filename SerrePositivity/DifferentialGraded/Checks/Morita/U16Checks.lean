@@ -1,0 +1,97 @@
+module
+public import SerrePositivity.DifferentialGraded.Morita.U16
+public import SerrePositivity.DifferentialGraded.Checks.Morita.ScalarExtensionAcceptanceChecks
+public import SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionCoherenceChecks
+public import SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionSquareChecks
+public import SerrePositivity.DifferentialGraded.Checks.Morita.U16aChecks
+public import SerrePositivity.DifferentialGraded.Checks.Morita.CriterionChecks
+public import SerrePositivity.DifferentialGraded.Checks.Morita.CoherencePerfectChecks
+
+/-! # 現行U16の独立合同検証入口
+
+## 概要
+一般右随伴・Morita統合・Perf作用coherenceと、別担当の現行係数変更を同時に検証する。
+
+## 方針
+各担当の保存済みChecksを同時importし、実際の公開作用・随伴の統合成分を直接監査する。
+
+## 規約と注意
+未実装の係数変更図式や中心作用を入力公理で代用しない。U16全体の受入判定とは区別する。
+
+## 使われ方
+残接続の到着後も再利用する合同ビルド入口。共有ルートはimportしない。
+-/
+@[expose] public section
+open SerrePositivity.DifferentialGraded.Morita
+
+#print axioms kernelDerivedAdjunction
+#print axioms kernelCompositionIso_associator
+#print axioms kernelCompositionIso_leftUnit
+#print axioms kernelCompositionIso_rightUnit
+#print axioms kernelMoritaHomIsoInverse
+#print axioms kernelMoritaHomIsoInverse_unit
+#print axioms kernelMoritaHomIsoInverse_counit
+#print axioms kernelMoritaAdjunctionEquivalence
+#print axioms kernelMoritaPerfInverseIso
+#print axioms kernelMoritaPerfInverseIso_counit
+#print axioms perfectKernelCompositionIso_associator
+#print axioms perfectKernelCompositionIso_leftUnit
+#print axioms perfectKernelCompositionIso_rightUnit
+
+#print axioms scalarKernelLocalizedActionIso
+#print axioms scalarKernelLocalizedDerivedSquare
+#print axioms scalarKernelLocalizedDerivedSquare_augmentation
+#print axioms scalarKernelLocalized_columnsPerfect
+#print axioms scalarKernelLocalizedPerfectSquare
+#print axioms scalarKernelLocalizedPerfectSquare_inclusion
+
+#print axioms scalarOutputModuleEvaluationAugmentation
+#print axioms scalarOutputComplexEvaluationAugmentation
+#print axioms scalarOutputModuleEvaluationAugmentation_isIso
+#print axioms scalarOutputComplexEvaluationAugmentation_isIso
+#print axioms scalarOutputEvaluationModelIso
+#print axioms scalarOutputEvaluationModelIso_augmentation
+#print axioms scalarOutputEvaluationModelIso_naturality
+#print axioms scalarOutputEvaluationModelIso_ofObjectwiseKFlat
+#print axioms scalarOutputEvaluationIso
+#print axioms scalarOutputEvaluationIso_model
+#print axioms scalarKernelOutputEvaluationIso
+#print axioms scalarKernelOutputEvaluationIso_ofKFlatModels
+
+#print axioms kernelRightAdjointSquareIso
+#print axioms kernelRightAdjointSquareIso_hom_app
+#print axioms kernelRightAdjointSquareIso_counit
+#print axioms kernelRightAdjointSquareIso_unit
+#print axioms kernelRightAdjointSquareIso_identity
+#print axioms kernelRightAdjointLocalizedBaseChangeIso
+#print axioms kernelRightAdjointLocalizedBaseChangeIso_counit
+
+#print axioms scalarOutputHomotopyDerivedIso_inv_app
+#print axioms scalarKernelOutputHomotopyComputation_hom
+#print axioms scalarKernelOutputLeft_closed
+#print axioms scalarKernelOutputModelComputation
+#print axioms scalarKernelOutputLeft_model
+#print axioms scalarKernelOutputRight_closed
+#print axioms scalarKernelOutputRight_model
+#print axioms ScalarKernelLocalizedConditions
+#print axioms scalarKernelLocalizedCompositionSquare
+#print axioms scalarKernelLocalizedCompositionSquare_diagram
+#print axioms scalarKernelLocalizedCompositionPerfectSquare
+#print axioms scalarKernelLocalizedCompositionPerfectSquare_inclusion
+
+#print axioms kernelIdentityRightAdjunction
+#print axioms kernelDerivedHomIdentityIso
+#print axioms kernelDerivedHomIdentityIso_unit
+#print axioms kernelDerivedHomIdentityIso_counit
+#print axioms kernelCompositionRightAdjunction
+#print axioms kernelCompositionRightAdjunction_unit_app
+#print axioms kernelCompositionRightAdjunction_counit_app
+#print axioms kernelDerivedHomCompositionIso
+#print axioms kernelDerivedHomCompositionIso_unit
+#print axioms kernelDerivedHomCompositionIso_counit
+
+#print axioms scalarKernelEvaluationHomotopy_closed
+#print axioms scalarKernelEvaluationClosed_fac
+#print axioms scalarKernelU12dClosed_fac
+#print axioms scalarKernelResolutionEvaluation_computation
+#print axioms scalarKernelEvaluationAugmentation_relativeKFlat

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.StageEight
+public import SerrePositivity.DifferentialGraded
 
 /-! # U0–U11統合入口の公開APIと再公理監査 -/
 @[expose] public section

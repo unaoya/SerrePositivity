@@ -1,0 +1,3902 @@
+[
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Acceptance",
+    "kind": "T",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Acceptance"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ActionEvaluation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ActionEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Acyclic",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Acyclic"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AcyclicTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AcyclicTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AppendErasure",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AppendErasure"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AppendRight",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AppendRight"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorBimodule",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorBimodule"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorElements",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorElements"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorGenerators",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorGenerators"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorMaps",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorMaps"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorParameters",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorParameters"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorRightAction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorRightAction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorTransforms",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorTransforms"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.AssociatorTransport",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.AssociatorTransport"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Axioms",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedSwap",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedSwap"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorEnriched",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorEnriched"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorEnrichedNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorEnrichedNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorFunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorFunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorLeftYoneda",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorLeftYoneda"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorMaps",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameter",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameter"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameterLeft",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameterLeft"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameterRight",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorParameterRight"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorRing",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorRing"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorYoneda",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorYoneda"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorYonedaNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BalancedTensorYonedaNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleActions",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleActions"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleCategory",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleCategory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleComposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleLeftUnit",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleLeftUnit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleOfActions",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleOfActions"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleParameterNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleParameterNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleParameters",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleParameters"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleRightElements",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleRightElements"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleRightUnit",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleRightUnit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleSemifreeKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleSemifreeKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleSemifreeResolution",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleSemifreeResolution"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorEquivalence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorEquivalence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorFunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorFunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorMaps",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorMaps"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorModule",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTensorModule"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleTranspose",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleTranspose"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurry",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurry"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurryComposition",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurryHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurryHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BimoduleUncurryRestriction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Biproduct",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Biproduct"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.BoundedAboveKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.BoundedAboveKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Braiding",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Braiding"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CellLifting",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CellLifting"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Cells",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Cells"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Closed",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Closed"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CochainInterchange",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ColimitHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ColimitHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Colimits",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Colimits"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Compact",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Compact"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactConverse",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompactConverse"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactConverseFactor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompactConverseFactor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactConverseResolutionStages",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompactConverseResolutionStages"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactConverseSequential",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactConverseTelescope",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompactConverseTelescope"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompactGenerators",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompactGenerators"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ComplexHomotopyComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ComplexHomotopyComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompositionDifferential",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompositionDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompositionPrefix",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompositionPrefix"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CompositionPrepend",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CompositionPrepend"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Cone",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Cone"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionComplexes",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionComplexes"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionDesc",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionHomotopy",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionInputs",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeCompositionTriangle",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeContractible",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeContractible"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeElementRelations",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeElementRelations"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeElements",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeElements"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeGradedSplit",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeGradedSplit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeHomotopyDesc",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeLift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeMaps",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeMaps"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeRotation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeRotationTriangle",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeRotationTriangle"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeShift",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ConeShift"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeShiftCompatibility",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeShiftSquares",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ConeShiftTriangleOrdinary",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ContractedFunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ContractedFunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.CoproductHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.CoproductHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Cylinder",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Cylinder"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorLeftRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorLeftRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorLeftRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorLeftRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorLeftRestrictionKFlat",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorLeftRestrictionKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorMiddleRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorMiddleRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorMiddleRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorMiddleRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorMiddleRestrictionKFlat",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorMiddleRestrictionKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorRightRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorRightRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorRightRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorRightRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGAssociatorSecondMiddleRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGAssociatorSecondMiddleRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleComposeHomotopy",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleComposeHomotopy"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleLeftRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleLeftRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleCompositeFamily",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleCompositeFamily"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleCompositePresentation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleCompositePresentation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleEquivalence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleEquivalence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleFullComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleFullComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleFullComposition",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleFullComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleFunctorCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleFunctorCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleIdentityFull",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleIdentityFull"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleIndependence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleIndependence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleNaturality",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleMiddleSourceIdentification",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleMiddleSourceIdentification"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleResolutionEquivalence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleResolutionEquivalence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleRightRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleRightRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleSimultaneousRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleSimultaneousRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBimoduleUncurryPresentation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBimoduleUncurryPresentation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGBoundarySequence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGBoundarySequence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCategoryInitial",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCategoryInitial"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCategoryResolution",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCategoryResolution"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellBoundaryInterchange",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellBoundaryInterchange"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellBoundaryNaturality",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellBoundaryNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellBoundaryOperator",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellBoundaryOperator"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellBoundaryRecursion",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellBoundaryRecursion"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellCategory",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellCategory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellCompositionDifferential",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellCompositionDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellDifferential",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellEvaluation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellGeneratorBoundary",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellGeneratorBoundary"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellInternalComposition",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellInternalComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellLengthFiltration",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellLengthFiltration"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellPrependDifferential",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellPrependDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGCellResolutionExistence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGCellResolutionExistence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGDerivedExtensionAdjunction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGDerivedExtensionAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGDerivedRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGDerivedRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGDerivedUnitAll",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGDerivedUnitAll"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGDiagonalRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGDiagonalRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGDiagonalRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGDiagonalRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGExtensionProjective",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGExtensionProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGFunctorAdjunction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGFunctorAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGFunctorCounit",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGFunctorCounit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGFunctorDerivedEquivalence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGFunctorDerivedEquivalence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGFunctorExtension",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGFunctorExtension"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGLeftUnitRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGLeftUnitRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGLeftUnitRestrictionCoherence",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGLeftUnitRestrictionCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGOuterUnitRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGOuterUnitRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGRepresentableExtensionUnit",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGRepresentableExtensionUnit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGResolutionComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGResolutionComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGRestrictionModelCalculation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGRestrictionModelCalculation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGRestrictionSourceNormalization",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGRestrictionSourceNormalization"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGRightKFlatIsoLiftComputation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGRightKFlatIsoLiftComputation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGRightUnitRestriction",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGRightUnitRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DGTensorRestrictionComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DGTensorRestrictionComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Derived",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Derived"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociator",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociator"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociatorIndependence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociatorIndependence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociatorResolution",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleAssociatorResolution"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleComparison",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.DerivedBimoduleComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleComposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleFullPentagon",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleFullPentagon"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagon",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagon"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagonKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagonKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagonPaths",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimodulePentagonPaths"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleTensor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleTensor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleTriangle",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleTriangle"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleUnits",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedBimoduleUnits"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedCoproductComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedCoproducts",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedCoproducts"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedEvaluationTriangles",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedEvaluationTriangles"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedGeneratorInduction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedHomOut",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedHomOut"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedHomPrecomposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedHomPrecomposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedIdempotentComplete",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedIdempotentComplete"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedRightTensor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedRightTensor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedRing",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedRing"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedScalarExtension",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedScalarExtension"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedTensorLeftNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedTensorLeftNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DerivedTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DerivedTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DiskCover",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DiskCover"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DiskCoverFiltration",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DiskCoverFiltration"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DiskFiltration",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DiskFiltration"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.DistinguishedTriangles",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.DistinguishedTriangles"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomSource",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomSource"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomTarget",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.EnrichedHomTarget"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.EnrichedTensorHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.EnrichedTensorHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Enrichment",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureAdjacent",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureAdjacent"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureCancellation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureCancellation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureFaces",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureFaces"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureFirstTail",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureFirstTail"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureInterchange",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureInterchange"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureMiddle",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureMiddle"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureOperator",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureOperator"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureRowRecursion",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureRowRecursion"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureSquare",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureSquare"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ErasureTensorRight",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ErasureTensorRight"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.EvaluationPrepend",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.EvaluationPrepend"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FiniteCell",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FiniteCell"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FiniteCellProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FiniteCellProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeAdjunction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeDGEvaluation",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.FreeDGEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeDGPaths",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.FreeDGPaths"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeDGUniversal",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.FreeDGUniversal"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeFunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeFunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeHomNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeHomNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeSphereProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeSphereProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FreeTensor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FreeTensor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Fubini",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Fubini"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FubiniColumns",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FubiniColumns"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FubiniFamilies",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FubiniFamilies"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FubiniRightFamilies",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FubiniRightFamilies"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FunctorModuleCone",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FunctorModuleCone"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.FunctorModuleConeIso",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.FunctorModuleConeIso"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.GradedCoproduct",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.GradedCoproduct"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.GradedExtensionProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.GradedExtensionProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.GradedSplitHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.GradedSplitHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomBifunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomBifunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomBifunctorChoice",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomBifunctorChoice"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomChoice",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomChoice"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomCone",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomCone"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomElements",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomElements"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomRight",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomRight"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomRightContra",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomRightContra"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomotopicallyProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomotopicallyProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomotopyConeTriangle",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomotopyCoproduct",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomotopyCoproduct"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomotopyDerivedShift",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomotopyDerivedShift"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.HomotopyEvaluationTriangles",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.HomotopyEvaluationTriangles"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.InternalComposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.InternalComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlatBimoduleLocalization",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlatBimoduleLocalization"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlatBimoduleReplacement",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlatBimoduleReplacement"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlatColimits",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlatColimits"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlatComplex",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlatComplex"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KFlatCriterion",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KFlatCriterion"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KaroubiTransport",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.KernelCells",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.KernelCells"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LeftModuleCategory",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.LeftModuleCategory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LeftModules",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.LeftModules"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LeftShiftElements",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LeftTensorColimits",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.LeftTensorColimits"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LeftTensorQuasiIso",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.LeftTensorQuasiIso"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Limits",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Limits"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.LocalizationHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ModuleHomotopy",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ModuleHomotopy"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ModuleRestriction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ModuleRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Modules",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ModulesAcceptance",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ModulesAcceptance"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ObjectwiseKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ObjectwiseKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PathEvaluation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PathEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Pentagon",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Pentagon"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectBasic",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectBasic"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectCompact",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectCompact"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancement",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancement"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementCone",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementCone"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementConeComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementConeComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementDerivedComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementDerivedComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementOperations",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementOperations"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementShift",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementShift"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementShiftEvaluation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementShiftEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectEnhancementTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectKaroubi",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectKaroubi"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectKaroubiEquivalence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectKaroubiEquivalence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectSmallness",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectSmallness"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PerfectUniversalProperty",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PerfectUniversalProperty"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PrependDifferential",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PrependDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PrependErasure",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PrependErasure"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.PrependTail",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.PrependTail"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Pretriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Pretriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProductAcyclic",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProductAcyclic"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomQuasiIso",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomQuasiIso"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomotopy",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomotopy"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomotopyLifting",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProjectiveHomotopyLifting"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectiveLocalizationHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectivePrecomposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProjectivePrecomposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ProjectiveResolutionLift",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ProjectiveResolutionLift"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientAdjointUnit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientCanonicalComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientCategory",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientCategory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientColimitQuasiIso",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientConeColimit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientConeDiagram",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientContraction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientContraction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedContraction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedExtension",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedFlatness",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedFlatness"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedLift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedRestriction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDerivedTriangulated",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientDifferential",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientDifferential"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientEvaluation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientExtension",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientExtension"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientExtensionCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFiltration",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFiltrationAction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFiltrationColimit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFiltrationZero",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFiniteRoof",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFreeExtension",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFreeGeneration",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientFullFaithful",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientGraded",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientGradedModule",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientGradedProjection",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientGradedTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientHomNormalization",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientHomPresheaf",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientIdentity",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientIdentity"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLayerGeneration",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLayerModule",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLayerTriangle",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLengthAction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLengthModule",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLocalEquivalence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLocalHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLocalObjects",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientLocalPerfect",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientModuleColimit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientPathFlatness",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientPathModule",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientPaths",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientPaths"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientRepresentableHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientRightIdentity",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientRightIdentity"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtension",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtension"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionCochain",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionErasure",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionPaths",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientScalarExtensionPaths"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientUnitCone",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientUniversal",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.QuotientUniversal"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.QuotientZeroModule",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomology",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomology"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomologyLinear",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomologyLinear"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomologyNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RepresentableHomologyNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionFunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionFunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionGradedSteps",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionGradedSteps"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionHom",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionHom"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionQuasiIso",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionQuasiIso"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ResolutionSequence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ResolutionSequence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RightParameter",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RightParameter"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingDGComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingDGComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingEnhancement",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingEnhancement"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingFiniteCell",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingFiniteCell"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingHomotopyComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingHomotopyComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingKaroubi",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingKaroubi"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingKaroubiFactors",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingKaroubiFactors"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingPerfectComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingPerfectComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingPerfectTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingPerfectTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingRetract",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingRetract"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingShiftComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingShiftComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.RingSingle",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.RingSingle"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtension",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtension"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionAdjunction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionBalanced",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionBalanced"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionCoendCoherence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionCoendCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionKFlat",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionModule",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionModule"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionRing",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionRing"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarExtensionTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ScalarRestriction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ScalarRestriction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Semifree",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Semifree"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.SemifreeKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.SemifreeKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.SemifreeProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.SemifreeProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Shift",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Shift"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ShiftCells",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ShiftCells"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ShiftCoherence",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ShiftCoherence"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ShiftHomotopy",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ShiftHomotopy"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ShiftKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.ShiftKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.ShiftedHomComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.SmallPerfectEnhancement",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.SmallPerfectEnhancement"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.SmallPerfectEnhancementTriangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.SmallPerfectEnhancementTriangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.SphereFreeKFlat",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.SphereFreeKFlat"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.StageEight",
+    "kind": "K",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.StageEight"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.StageSeven",
+    "kind": "K",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.StageSeven"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.StrictComplexDerived",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.StrictComplexDerived"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.StrictComplexEnhancement",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.StrictComplexEnhancement"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.StrictComplexProjective",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.StrictComplexProjective"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorBifunctor",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorBifunctor"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorCategory",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorCategory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorChoice",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorChoice"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorCochainFactors",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorCochainFactors"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorComposition",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorComposition"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorComputation",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorComputation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorElements",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorElements"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorGradedSplit",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorGradedSplit"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorHomAdjunction",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorHomAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorHomotopy",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorHomotopy"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorInclusions",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorInclusions"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorMixed",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TensorSource",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TensorSource"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TowerPrimitives",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.TowerPrimitives"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Triangle",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Triangle"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Triangulated",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Triangulated"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.TriangulatedHomComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.U12eGeneralInventory"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.U12eLocal",
+    "kind": "K",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.U12eLocal"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.UnitNaturality",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.UnitNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.VerdierComparison",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.VerdierComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.VerdierTria",
+    "kind": "U",
+    "action": "archive",
+    "dest": "SerrePositivity.Archive.DifferentialGraded.Checks.U12e.VerdierTria"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.YonedaRepresentative",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.YonedaRepresentative"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Checks.Zero",
+    "kind": "E",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Zero"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksActualScalarEnd",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksActualScalarEvaluation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksBasic",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksCompactGenerator",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksCompactHomDetectsIso",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksCompactUnitCounit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksCompatibility",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksConeConnectingComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksConeTriangleComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksCoproductHomComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerived",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedAdjunction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedEquivalence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedEquivalenceCompactGenerator",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedEquivalenceTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHomEquiv",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHomHomotopyComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedHomNaturality",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedLocalizingGeneration",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedProjectiveHomNaturality",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedScalarTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedShiftCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensorEvaluation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTensorTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedTriangleComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksDerivedUnitAll",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementAdjunction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementHomotopyAdjunction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementShiftTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementTensorComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEnhancementTensorTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEssentialImageRetracts",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEssentialImageShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEssentialImageTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksEvaluation",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Endomorphism.ChecksEvaluation"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksGeneratorHomIso",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksGradedSplitImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomComparisonCone",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomComparisonRetracts",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomComparisonShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomPreservesCoproducts",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomotopyAdjunction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksHomotopyShiftCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksIsoLocus",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleAdjunction",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Endomorphism.ChecksModuleAdjunction"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleComparison",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Endomorphism.ChecksModuleComparison"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleConeImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleEvaluation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleFunctorMaps",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleInsertion",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksModuleShiftImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectAdjunction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectDGComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectEquivalence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectScalarTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectShiftTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectTensor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksPerfectTensorDG",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksProjectiveCriterion",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksProjectiveHomotopyComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksProjectiveImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksQuasiFullyFaithful",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarClosedMap",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarConeTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarDerivedPerfect",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarDerivedProjectiveComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarEnhancementClosed",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarEnhancementDerivedComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarEnhancementShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarEvaluation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarEvaluationActual",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarGradedSplit",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomCone",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomElementComponents",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomElements",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomFactors",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomHomotopyRetracts",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomNaturality",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomRetracts",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomShortExact",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarHomotopyShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarModuleConeImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarModuleDGFunctor",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarModuleHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarModuleHomotopy",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarModuleShiftImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarPerfectEnhancement",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarPerfectHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarPerfectImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarPerfectShiftTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarProjectiveImage",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarReconstructionTriangles",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarRepresentable",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarShiftAddition",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarShiftCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarYonedaHom",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksScalarYonedaIso",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksShiftAddCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksShiftConeComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksShiftNaturality",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksShiftNormalization",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksShiftZeroCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksTensorProjective",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Endomorphism.ChecksThickHomComparison",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeedChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionBrownSeedChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherenceChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionCoherenceChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionDerivedChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionDerivedChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionHomChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionHomChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelCoproductsChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionKernelCoproductsChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequenceChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionKernelSequenceChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSuccessorChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionKernelSuccessorChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescopeChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionKernelTelescopeChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.AdjunctionSquareChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.AdjunctionSquareChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAssociatorChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorMainChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAssociatorMainChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModelsChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAssociatorModelsChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturalityChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAssociatorNaturalityChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPathsChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAssociatorPathsChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceAugmentationChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceAugmentationChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionCanonicalChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionCanonicalChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosedChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionClosedChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlatNaturalityChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionKFlatNaturalityChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturalityChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionNaturalityChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceIdentityChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherencePerfectChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherencePerfectChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CoherenceUnitChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceUnitChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CriterionChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditionsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproductsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalenceChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedFullyFaithfulChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedGenerationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproductsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomLocusChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomTrianglesChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.CriterionPerfChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfConditionsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfDGFunctorShiftChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfEquivalenceChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfFullHomCriterionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfGenerationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonDegreesChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonZeroChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomInductionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedActionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedHomShiftChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulatedChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.KernelChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.KernelChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctorChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.KernelDerivedFunctorChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.KernelResolutionChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.KernelResolutionChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherenceChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCompositionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectEnhancementComparisonChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectFunctorialityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectKernelColumnsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectKernelCompositionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluationNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectKernelImageChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceTrianglesChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceDerivedGraphChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceEndomorphismComparisonChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphActionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceProductsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceTrianglesChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionAcceptanceChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.ScalarExtensionAcceptanceChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelActionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedModuleChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBaseChangeNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedComparisonChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModelsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelFunctorChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedCompositionChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquareChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelMapNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModelsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectSquareChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelProductChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelTensorChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionOutputEvaluationChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfectChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfectSquaresChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorModelsChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorNaturalityChecks",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.U16Checks",
+    "kind": "K",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.U16Checks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Morita.U16aChecks",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Morita.U16aChecks"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksEnhancementIdempotents",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingDerivedFiniteCover",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingFiniteHomologyCover",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingHomologyCoverCone",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingPerfectCoherence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingPerfectEquivalence",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingPerfectRepresentatives",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingRetractFiniteRepresentative",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingRetractRangeReduction",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingRetractSingle",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingRetractTopHomology",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingRetractTriangle",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingTopTruncation",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Perfect.ChecksRingTriangleFiniteModel",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksComparisonLinear",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksCompletionSquareShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksDerivedKernelGraphSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksGraphCompositionShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksGraphPairMorita",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksGraphPairMorita"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksGraphPerfectSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksKernelComparisonNaturality",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksKernelComparisonNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksKernelCompositionDescent",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksKernelCompositionDescent"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksKernelCompositionNaturality",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksKernelCompositionNaturality"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksKernelLocalPerfectSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksOrderSquare",
+    "kind": "P",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Verdier.ChecksOrderSquare"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksPerfectKernelVerdier",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksRetractSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksScalarCompletionSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksScalarDirectCompletion",
+    "kind": "E",
+    "action": "move",
+    "dest": "SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksScalarDirectCompletion"
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksScalarExtensionSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksScalarKaroubiShift",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksScalarQuotientSourceSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksSupportSquare",
+    "kind": "P",
+    "action": "delete",
+    "dest": null
+  },
+  {
+    "module": "SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration",
+    "kind": "K",
+    "action": "keep",
+    "dest": "SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration"
+  }
+]

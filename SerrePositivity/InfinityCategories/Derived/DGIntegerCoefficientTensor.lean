@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSimplicialRingCoefficientComplex
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 /-!
 概要：同宇宙の整数係数移送と実 tensor の自然同型。
 方針：元の実写像と係数環同型、次数移送を保持して比較する。

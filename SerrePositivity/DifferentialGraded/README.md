@@ -1,150 +1,61 @@
-# M5：dg 理論の独立入口
+# DifferentialGraded：dg 理論の入口
 
-U0〜U10 実装・検証：2026-10-15。計画は
-[ dg-theory.md ](../../formalization-plans/dg-theory-m5-status.md)。
-入口は [StageSeven.lean](StageSeven.lean)（U0〜U10）、[StageSix.lean](StageSix.lean)（U0〜U9）、[StageFive.lean](StageFive.lean)（U0〜U8）、[StageFour.lean](StageFour.lean)（U0〜U7）、[StageThree.lean](StageThree.lean)（U0〜U6）、[StageTwo.lean](StageTwo.lean)（U0〜U5）、[StageOne.lean](StageOne.lean)（U0〜U3）。共有ルート import は変更しない。
+## 概要
 
-Lean `v4.35.0-rc4`、Mathlib `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
-Mathlib HEAD と lake-manifest を再照合済み。依存更新なし。
-追加宣言の namespace は `SerrePositivity.DifferentialGraded`。
+任意の可換環上の非有界複体から、dg 圏・dg 加群、導来圏、相対テンソル、
+perfect 加群、dg 商、Morita 理論までを扱う。Morita（U16）、Verdier 商の比較（U17）、
+Perf の実装は完成している。一般の射影モデル構成を扱う U12e-general は中断中であり、
+局所条件のもとで完成した経路と区別する。
 
-## 宇宙・次数・順序
+本番 API の入口は [DifferentialGraded.lean](../DifferentialGraded.lean)。
+StageOne〜StageEight の入口は退役し、この集約に置き換えた。
 
-`A : Type u`、`[CommRing A]`、`Complex A = CochainComplex (ModuleCat.{u} A) ℤ`。
-環と Hom 加群の宇宙は初期 API では同じ `u`、dg 圏の対象 `D : Type v` は独立。
-`Complex A : Type (u + 1)`、各斉次 Hom と Z⁰/H⁰ の Hom は `Type u`。
-加群対象の宇宙は `Type (max (u+1) v)`。Hom end とその豊穣圏には `[Small.{u} D]` を明示する。
-主局所化の宇宙は max (u+1) v、U10でその射集合の u-small 性を証明する。
+## 方針
 
-複体は非有界。noetherian・体・標数・有限次元・有限生成の仮定なし。
-微分はコチェイン次数 +1、contracting homotopy は −1。
-原論文のホモロジー次数 i はコチェイン次数 −i に対応する。
-
-Mathlib の豊穣合成は Hom(x,y)⊗Hom(y,z) → Hom(x,z)。
-通常順 μ(g,f)=g∘f は g⊗f の順で、`dμ(g,f)=μ(dg,f)+(-1)^q μ(g,df)`。
-`forward_eq_signed_compose` は `forward(f,g)=(-1)^(pq) compose(g,f)` を証明する。
-Ch(A) の `enrichedComposition` は既存 signed symmetry の後に通常順 `composition` を合成する。
-`enrichedComposition_component` と `enrichedComposition_apply` がこの式を直接検証する。
-
-## API と再利用
-
-| ファイル | 提供するもの |
+| ディレクトリ | 内容 |
 | --- | --- |
-| [Complexes/HomComplex.lean](Complexes/HomComplex.lean) | `linearHomComplex` 再利用、Leibniz、閉零次数と chain map、contracting homotopy |
-| [Complexes/Composition.lean](Complexes/Composition.lean) | 非有界 tensor の `tensorLift`、通常順合成の chain map、Koszul 比較 |
-| [Complexes/CompositionLaws.lean](Complexes/CompositionLaws.lean) | 豊穣順の単位・結合、成分 constructor/accessor の往復 |
-| [Complexes/Monoidal.lean](Complexes/Monoidal.lean) | Ch(A) 固有の tensor の加法性・A 線形性と成分公式 |
-| [Complexes/Unit.lean](Complexes/Unit.lean)、[UnitBoundary.lean](Complexes/UnitBoundary.lean)、[UnitTensor.lean](Complexes/UnitTensor.lean) | 単位からの射と零次数 cycle、元の複体の −1 境界との一致、tensor 評価 |
-| [Category/Basic.lean](Category/Basic.lean) | Mathlib `EnrichedCategory` の別名、`ofComponents`、Z⁰ と A 線形性 |
-| [Category/Components.lean](Category/Components.lean) | 斉次 Hom、通常順合成、Leibniz・単位・結合 |
-| [Category/Examples.lean](Category/Examples.lean) | Ch(A) と一対象 A の豊穣、既存 chain map 圏との同値、`EnrichedOrdinaryCategory` |
-| [Category/Homotopy.lean](Category/Homotopy.lean) | Mathlib `Quotient` による H⁰、境界判定、A 線形商関手 |
-| [Category/Comparison.lean](Category/Comparison.lean) | Ch(A) の H⁰ 等式と既存 chain homotopy の一致 |
-| [Functor/Basic.lean](Functor/Basic.lean)、[QuasiEquivalence.lean](Functor/QuasiEquivalence.lean) | Mathlib `EnrichedFunctor`、A 線形 H⁰ 関手、準同値と identity/comp |
+| Complexes・Category・Functor | 複体の閉対称モノイダル構造、dg 圏と dg 関手 |
+| Module・Bimodule・Tensor | dg 加群、双加群、Hom と balanced tensor、単位・結合の整合性 |
+| Derived・Resolution | 導来局所化、導来 Hom・テンソル、解像度と比較 |
+| Perfect・Endomorphism | perfect・compact 加群、小さい増強と自己準同型の表示 |
+| Quotient・Morita・Verdier | dg 商、Morita 同値、Verdier 商と三角構造の比較 |
+| Presentation | dg 圏の表示とその構成 |
+| Checks | 型照合・example・受入の検査 |
 
-| [Complexes/Braiding.lean](Complexes/Braiding.lean) | signed braiding の自然性・両hexagon、`SymmetricCategory` |
-| [Complexes/Currying.lean](Complexes/Currying.lean)、[Closed.lean](Complexes/Closed.lean)、[Enrichment.lean](Complexes/Enrichment.lean) | 全次数 tensor–Hom 随伴・三変数自然性・閉構造・自己豊穣との一致 |
-| [Module/Basic.lean](Module/Basic.lean)、[Representable.lean](Module/Representable.lean) | 豊穣右加群、opposite の符号、右代表加群 |
-| [Module/Hom.lean](Module/Hom.lean)、[Action.lean](Module/Action.lean) | 全次数自然性の Hom end、`GradedNatTrans` とのパラメータ同値、作用の成分公式 |
-| [Module/Composition.lean](Module/Composition.lean)、[Category.lean](Module/Category.lean) | Hom end の単位・合成、Mathlib 豊穣加群圏、閉零圏・評価関手 |
-| [Module/Yoneda.lean](Module/Yoneda.lean) | 全パラメータ dg Yoneda と Hom 複体の chain iso |
-| [Module/Ring.lean](Module/Ring.lean) | 一対象 A の対象復元、Hom 複体比較、通常非有界複体圏との同値 |
-| [Module/Tensor.lean](Module/Tensor.lean)、[Free.lean](Module/Free.lean)、[Underlying.lean](Module/Underlying.lean) | 自由加群の全次数作用・関手、離散対象族への忠実な忘却 |
-| [Module/ClosedMaps.lean](Module/ClosedMaps.lean)、[TensorAdjunction.lean](Module/TensorAdjunction.lean) | 全次数自然な chain map 族との同値、free/evaluation 随伴・自然性 |
-| [Module/FreeHom.lean](Module/FreeHom.lean)、[FreeHomNaturality.lean](Module/FreeHomNaturality.lean) | 全次数 Hom 複体の chain iso・K/M自然性・通常随伴との閉零比較 |
+本番の集約は検査と Archive を import しない。全宣言の公理監査は
+`scripts/make_area_audits.py` が追跡中のモジュールから生成する `scripts/audit/dg.lean` を使う。
+中断した U12e-general の検査は
+[Archive/DifferentialGraded/Checks/U12e](../Archive/DifferentialGraded/Checks/U12e/) に全文を保存し、
+監査・集約・通常のビルド対象には含めない。
 
-`PerfectComplex/Tensor.lean` と `TensorSymmetry.lean` を import して再利用する。
-既存ファイルは編集しない。通常の PerfectHomotopy は後続 D6 の比較先として維持する。
-Z⁰ は `ForgetEnrichment` の単位からの射の圏であり、`closedHomEquiv` が閉零次数の元と同一視する。
-H⁰ はその射の差が `d : Hom⁻¹ → Hom⁰` の像に入る関係の商。
-`toHomotopy_map_eq_iff_boundary` が「生成された余分な関係ではない」ことを保証する。
-一般の H⁰ を三角圏とはしない。
+## 規約
 
-## 検証と残る境界
+- 環は任意の可換環。複体は非有界で、追加の有限性・平坦性・small 性は各 API の仮定に明示する。
+- 微分はコチェイン次数 +1、ホモトピーは次数 −1。原論文のホモロジー次数 i はコチェイン次数 −i に対応する。
+- 環と Hom 加群の宇宙と、dg 圏の対象の宇宙を区別する。既存の仮定・宇宙・符号規約を維持する。
+- Mathlib の豊穣圏の構造と既存の複体・局所化・三角圏の API を再利用する。
+- U12e-general の個別の証明済み API と、一般経路全体の未受入を区別する。
+- `Verdier/ChecksU17Integration` と `Verdier/ChecksOrderSquare` は D3 の移設まで現在の場所に保持する。
+
+## 使われ方
+
+本番入口と受入検査：
 
 ```sh
-lake build SerrePositivity.DifferentialGraded.Checks.Axioms
-lake env lean SerrePositivity/DifferentialGraded/Checks/Axioms.lean
-lake build SerrePositivity.DifferentialGraded.Checks.Modules
-lake env lean SerrePositivity/DifferentialGraded/Checks/Modules.lean
+lake build SerrePositivity.DifferentialGraded
+lake build SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.DifferentialGraded.Checks.StageEight
+lake build SerrePositivity.DifferentialGraded.Checks.U12eLocal SerrePositivity.DifferentialGraded.Checks.Morita.U16Checks
+lake build SerrePositivity.DifferentialGraded.Verdier.ChecksU17Integration
 ```
 
-[Acceptance.lean](Checks/Acceptance.lean) は任意 A、次数 0/−1/1、ZMod 2、H⁰ の A 線形性を検証する。
-空圏 → 一対象 A は Hom 準同型だが本質的全射でなく、
-非零 A → 零 dg 圏は本質的全射だが Hom 準同型でない。二条件は別々に必要。
-[Axioms.lean](Checks/Axioms.lean) の主要 41 宣言はすべて
-`propext`・`Classical.choice`・`Quot.sound` のみ。新規 sorry・引用 axiom なし。
-ローカル import の推移的閉包に Spectra・Paper・Inputs は含まれない。
-
-U4 の全整数次数 tensor–Hom 随伴、三変数自然性、signed braiding の自然性・両hexagon、
-SymmetricCategory/MonoidalClosed 登録は完成した。
-`Complexes/Enrichment.lean` の `complexEnrichment_eq_closed` は、閉構造由来の
-Mathlib 自己豊穣とU1の単位・合成の一致を証明する。
-`Checks/Braiding.lean`、`Checks/Closed.lean`、`Checks/Enrichment.lean` で検証・公理監査済み。
-U5 は dg opposite、右代表加群、全次数 Hom end による主豊穣加群圏、
-`moduleHom (representable x) M ≅ M(x)`、一対象 A の普通複体との比較まで完成した。
-Mathlib の現行 `EnrichedNatTrans.out` は閉零の通常自然性なので、全次数の代用には使わない。
-[ModulesAcceptance.lean](Checks/ModulesAcceptance.lean) は正負次数・任意 A・ℤ・ZMod 2 を検証する。
-U4/U5の追加監査38宣言、合計79宣言は標準公理のみ。
-U6の free/forget、自由評価随伴、全次数 Hom 同型と自然性は完成した。
-U6の追加監査35宣言、U0〜U6合計114宣言。検証と引継ぎは計画§13。
-以下はU7以降の段階別実装記録。
-U7a1では `Module/Zero.lean` に全次数零加群・零対象・評価による零対象性の判定を追加した。
-`Complexes/Zero.lean` の零 Hom 複体とともに `Checks/Zero.lean` で検証する。
-U7a2の `Module/Biproduct.lean` は objectwise 二項直和の全次数対角作用、
-射影・包含、積と余積の普遍性、有限直和の存在と評価比較を供給する。
-受入入口は `Checks/Biproduct.lean`。shift/cone・残る極限余極限は引き続き未完。
-U7b1では `Complexes/Shift.lean` に次数 p の符号 `(-1)^(sp)` を持つ shift dg 関手、
-`Module/Shift.lean` に整数ごとの加群 shift 関手と評価自然同型を構成した。
-受入入口は `Checks/Shift.lean`。
-U7b2の `Module/ShiftCoherence.lean` は零・加法比較の全次数自然性・結合/零の整合性から
-`HasShift ℤ` を登録し、加法性と評価の `CommShift ℤ` を証明する。
-受入入口は `Checks/ShiftCoherence.lean`。cone の実装は以下の U7b3a/b を参照。
-U7b3aの `Complexes/Cone.lean`/`ConeHom.lean` と `Module/Cone.lean` は、全次数の
-符号付き対角作用を持つ cone 対象と標準包含を構成する。
-各評価は既存 Mathlib の mapping cone と同じ。受入入口は `Checks/Cone.lean`。
-U7b3bの `Module/ConeMaps.lean`/`ConeFunctor.lean` は標準connecting map、
-全次数自然なsquareのcone射、arrow圏からのcone関手、標準triangleとその評価比較を供給する。
-受入入口は `Checks/ConeMaps.lean`。次は U7c の必要な極限余極限。
-U7c1の `Module/Limits.lean` は objectwise 極限の全次数作用・射影・普遍liftを構成し、
-添字対象が u-small な全図式の極限存在と評価による保存を登録する。
-添字射の宇宙は独立。任意の大きい図式には各評価の極限存在を明示する。
-受入入口は `Checks/Limits.lean`。余極限・余積は次の U7c2。
-U7c2の `Module/Colimits.lean` は objectwise 余極限の全次数作用・包含・普遍descを構成し、
-添字対象が u-small な全図式の余極限存在と評価による保存を登録する。
-添字射の宇宙は独立。任意の大きい図式には各評価の余極限存在を明示する。
-受入入口は `Checks/Colimits.lean`。無限余積を含む U7 の受入が揃った。
-U8では `Module/Homotopy.lean` に全次数Hom endの次数−1による加群ホモトピーとK(D)、
-`QuasiIso.lean`/`HomotopyQuasiIso.lean` にobjectwise quasiIso・2-out-of-3・retract閉性・
-ホモトピー不変性・閉零/K(D)の射クラス比較を構成した。
-`ShiftHom.lean`/`ShiftHomotopy.lean` は全次数dg shiftからK(D)のHasShift/CommShiftと
-準同型のshift不変性を証明する。
-`Complexes/AcyclicCone.lean`/`Module/Acyclic.lean` は既存Mathlibの三角構造を再利用して
-標準加群coneのobjectwise acyclic性と準同型性の同値を証明する。
-受入入口は `Checks/ModuleHomotopy.lean`・`ShiftHomotopy.lean`・`Acyclic.lean`。
-U8の追加53宣言、U0〜U8累計366宣言は標準公理のみ。一般論のsorry・新規axiomなし。
-U9の `Derived/Basic.lean`/`Evaluation.lean` は指定quasiIsoの局所化と厳密な普遍性、
-関手圏の同値、評価ホモロジー・既存DerivedCategoryへの評価を公開する。
-標準の対象/射宇宙はmax (u+1) v。小さい射宇宙の存在は後続U10。
-`Module/TensorUnit.lean`/`Cylinder.lean` と `Complexes/TensorCylinder.lean` は
-単位複体のcylinderをtensorして全dg自然なホモトピーを延長する。
-`Derived/HomotopyComparison.lean` はquasiIsoを反転する任意関手が境界を同一視することを証明し、
-閉零圏/K(D)の局所化の同値と両方向の比較自然同型を構成する。
-受入入口は `Checks/Derived.lean`・`Cylinder.lean`・`DerivedComparison.lean`。
-U9の追加49宣言、U0〜U9累計415宣言は標準公理のみ。一般論のsorry・新規axiomなし。
-U10は任意加群のsemifree解像度、全次数Homによるhomotopically projective性、
-解像度による導来Hom双関手と選択独立性、実際の射集合・roof・全dg自然なホモトピー判定、
-LocallySmall.{u}、u-small余積、K(D)/D(D)の三角構造とVerdier商比較まで実装した。
-一対象Aの既存DerivedCategoryとの同値はshift・余積・distinguished三角形を保存する。
-受入入口は [Checks/StageSeven.lean](Checks/StageSeven.lean)。
-主要宣言の累計1160件の段階別監査は標準公理のみ。統合入口の11件は再監査であり重複加算しない。
+監査の import 先を先にビルドしてから、監査を実行する：
 
 ```sh
-lake build SerrePositivity.DifferentialGraded.Checks.StageSeven SerrePositivity.DifferentialGraded.StageSix SerrePositivity.Spectra.StageTwo
-lake env lean SerrePositivity/DifferentialGraded/Checks/StageSeven.lean
+lake build $(grep '^import ' scripts/audit/dg.lean | sed 's/^import //')
+lake env lean scripts/audit/dg.lean
 ```
 
-API契約と共有 G1/G2/G5/G6 への引継ぎは計画§12.8。
-射影モデル比較・相対tensor・dg商・Morita・PerfとM5全体は未完成。
-一般モデル圏・Quillen・転送・SM7 は共有系列が所有し、この入口には置かない。
-引用候補の採用状況は [Inputs の台帳](../Inputs/DifferentialGraded/README.md)。
+監査の再生成はリポジトリルートで `python3 scripts/make_area_audits.py` を実行する。
+このスクリプトは他領域の監査も生成するため、所有範囲外の差分を混入させない。
+整理の範囲と受入条件は [DG-W1](../../formalization-plans/dg-codex-w1.md)、
+中断経路の再開条件は [U12e の目録](../../formalization-plans/dg-theory-u12e-general-inventory.md) を参照する。

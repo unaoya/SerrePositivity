@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Cells
-public import SerrePositivity.DifferentialGraded.Complexes.Monoidal
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.Algebra.Homology.BifunctorHomotopy
 
 /-! # コチェインdiskの次数−1の収縮 -/

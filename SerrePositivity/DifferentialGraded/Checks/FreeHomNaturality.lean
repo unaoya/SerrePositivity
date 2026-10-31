@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.StageThree
+public import SerrePositivity.DifferentialGraded
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U6 の自由 Hom 同型の自然性・閉零随伴比較の受入検証 -/
