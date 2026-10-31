@@ -23,9 +23,9 @@
 
 | # | 完了条件 | いま |
 | --- | --- | --- |
-| 1 | `scripts/audit/dg.lean` が追跡中の全モジュールを覆う | 113 本が未監査（10-18 生成のまま） |
-| 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | 650 本（Checks/ 410＋散在 240）。print だけ 278 |
-| 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | 入口なし。ルートは DG の 12 本を直接 import。Stage 8 本 |
+| 1 | `scripts/audit/dg.lean` が追跡中の全モジュールを覆う | **達成（DG-W1、10-31 取り込み待ち）**：1,910 本を監査、18,377 宣言、sorry 依存 0 |
+| 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | **達成（DG-W1）**：削除 271・Checks/ へ 39・Archive 68・保持 272（例外：`Verdier/ChecksU17Integration`・`ChecksOrderSquare` は D3 で Asymptotic へ） |
+| 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | **達成（DG-W1）**：新入口 1,598 本、ルートは 1 行、Stage 8 本と殻 `Complexes/Monoidal` を削除。import だけの集約 7 本は D4 で解消 |
 | 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | KST 13 辺、IC/Derived 1 辺、Asymptotic 1 辺、PerfectComplex 3 辺 |
 | 5 | 検査以外のモジュールが約 126 本に統合されている | 1,592 本 |
 | 6 | docstring が旧計画の案内を参照していない | 530 本が参照 |
@@ -101,7 +101,7 @@
 
 | 指示書 | 内容 | 再ビルド | 前提 |
 | --- | --- | --- | --- |
-| DG-W1 | D0 → D1 → D2 | 1 回（約 9,000 本） | 完了（10-31 取り込み待ち） |
+| DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。main への取り込みは論文の層のコミットの後 |
 | DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
 | DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で | 1 回（Paper まで） | DG-W2。論文の層のセッションと時期を合わせる |
 | DG-G | D6・D7 | 群ごと | 窓の外 |
