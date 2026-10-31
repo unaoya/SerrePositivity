@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.RingTheory.AdicCompletion.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CLMST.PerfectoidIdealRoots
-public import SerrePositivity.LengthAlgebra.QuotientPowerBound
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedQuotientEvaluation
+public import SerrePositivity.LengthAlgebra.QuotientBounds
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 
 /-! # p冪根を加えた商から元の商へのフィルトレーション評価
 

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionCompositionMaps
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaComparison
 public import SerrePositivity.InfinityCategories.Derived.EnrichedCompositionBoundary
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 /-!
 概要：commaの全 Hom tensor から、実入力・比較対象の合成とその実比較差を構成する。
 方針：既存の eComp と二射影を使い、元の同じ dg 関手の合成保存を保持する。

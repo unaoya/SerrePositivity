@@ -2,11 +2,11 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
-public import SerrePositivity.IntersectionMultiplicity.NormalizedTor
+public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.Paper.Section2.Corollary2_6
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
 public import Mathlib.FieldTheory.Separable

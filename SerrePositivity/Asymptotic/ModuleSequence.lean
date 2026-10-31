@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Category
 public import Mathlib.CategoryTheory.Abelian.FunctorCategory
 public import Mathlib.CategoryTheory.Abelian.SerreClass.Basic

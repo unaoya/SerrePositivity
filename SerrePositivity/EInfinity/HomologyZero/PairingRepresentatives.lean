@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomologyZero.HomotopyClasses
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 
 /-!
 # 鎖写像の二入力作用を H⁰ の代表へ適用する

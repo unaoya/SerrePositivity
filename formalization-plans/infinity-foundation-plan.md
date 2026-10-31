@@ -236,8 +236,7 @@ InfinityCategories/
 | 窓 | 止める範囲 | 行うこと（この順に直列。同じ集約ファイルを触る作業は並列にしない） | 工数の目安 | 終わりの条件（R40 の強制の段階） |
 | --- | --- | --- | --- | --- |
 | W0 | 止めない（新しいファイル・scripts・別ブランチだけ） | 段 0（R41 → R40a → R74・R64a → 対象 JSON → R75・統合の道具）、R61b の読解 | 40〜80h（実績は指示書の報告を参照。IF-W0-3 は道具の規則を足しながら進めたため数日かかった） | W1 に入る条件：R41 で基準状態が PASS、既知の失敗の一覧を Claude が承認済み、対象 JSON がそろっている |
-| W1 | 全停止 | R79（docstring の参照の片づけ）→ 段 A（R59・R61a・R62・R63）と段 B（R48・R49a・retractClosure を Core へ・R53）を並列 → R26 → R39 → R66 → R71 → R49b → R50（本体） | 100〜200h、4〜6 日 | 中核の閉包に DG・EInfinity なし。層の違反の数が W1 の開始時より増えていない |
-| W2a | Sp レーン、**K-S•（SConstruction）**、HA・EInfinity・HL の担当 | R72 → R64 → R27 → R56a → R65 → R76 → R77 → R67 | 140〜280h、5〜7 日 | 上に加えて、中核の閉包に KST・モデル圏のコードなし。CategoryTheory と HA の相互依存なし |
+| **W1＋W2a（一つの束、10-31 決定）** | 全停止（HA・∞・KST・EInfinity への他セッションの取り込みも約 1 日止める） | 一つの束で：R79（docstring の書き換え HA 約 600・CT 12・ArrowFactorization 3）＋ R75（削除 29 本）＋ W1 の対象（move 62・split 3・reimport 3）＋ W2a の対象（move 1,197・split 9・reimport 2：R72 → R64 → R27 → R56a → R65）→ 下流の一回ビルド（約 20,000 本、単独で 6〜8 時間）→ 保存検査 → verify。R76・R77・R67 は束の後、同じ窓の中で道具（DG 側の `merge_modules.py`）がそろってから | 束の適用と検証で 1〜2 日、R76・R77 で数日 | 中核の閉包に DG・EInfinity・KST・モデル圏のコードなし。層の違反の数が開始時より増えていない。CategoryTheory と HA の相互依存なし |
 | W2b | F2・HL・Stable の担当 | R73 → R37 → R38 | 56〜112h、2〜3 日 | 中核の層の順序の違反 0（例外一覧を除く）。**ここで中核の完了条件 1・5 がそろう** |
 | W2c | LocalizingInvariants と Fibration のレーン | 段 E（R51 → R52 → R68 → R69 → R70 → R56b）、最後に R45 | 75〜150h、3〜4 日 | 違反が増えていない。移した一般部分の層検査 |
 
@@ -252,10 +251,9 @@ InfinityCategories/
 | IF-W0-1 | R41（verify.sh を関門にする） | W0（**完了** 10-28、main `88c477612`。基準実行は全 99 監査 PASS、既知の失敗なし。通しの実行は約 69 分） |
 | IF-W0-2 | 道具一式：R40a（層検査）、R74 の道具（分割・import の最小化・保存検査・付け替えの補助）、R64a（骨組み 12 本）、verify.sh の短縮（並列 `VERIFY_JOBS`・キャッシュ `VERIFY_CACHE`・絞り込み `VERIFY_ONLY_AUDITS`） | W0（**完了** 10-29、main `8ff0012d8`。監査の段は 3,782 秒 → 1,551 秒。FixedBoundaryExtensions 1 本の分割試験では、閉包のモデル圏モジュールは 1 本しか減らなかった。他の 11 本の経路が残るためで、R72 で 12 本すべてを切る必要があることを裏づけた） |
 | IF-W0-3 | 対象 JSON の作成（w1〜w2c、閉包の規則で move／split／archive／保留を決める）と R61b の読解記録（15 組） | W0（発行 10-29、[指示書](infinity-codex-w0-3.md)。**w1.json 承認 10-30**：move 62・split 3・reimport 3、保留 13。手作業込みの模擬で W1 の終了条件（中核の閉包に DG・EInfinity なし）を達成。全体 verify PASS（8e6e75d8e）。w2a 以降は作業中） |
-| IF-W0-4 | R75（死んだファイルと殻の削除）と、R77 のための統合の道具（`merge_modules.py`、保存検査との組み合わせ、`layers.json` への CategoryTheory の一般部分・トップ階層 12 本・GroupTheory/Coxeter の基盤としての登録） | W0（IF-W0-3 の後） |
-| IF-W1-1 | 冒頭に R79（旧計画の案内への docstring 参照の片づけ、4 コミット）→ 段 A と段 B（R59・R61a・R62・R63・R48・R49a・retractClosure・R53・R50） | W1 |
-| IF-W1-2 | 閉包の切断（R26 → R39 → R66 → R71 → R49b） | W1 |
-| IF-W2a | R72 → R64 → R27 → R56a → R65 → R76 → R77 → R67（Inputs/Homotopy） | W2a |
+| IF-W0-4 | `layers.json` への CategoryTheory の一般部分・トップ階層 12 本・GroupTheory/Coxeter の基盤としての登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB）。**R75 は W1＋W2a の束へ、`merge_modules.py`・build lock・warm-up の道具は DG の Codex（DG-W2(a)）へ移管（10-31）** | W0（IF-W0-3 の後） |
+| IF-W1W2a | 一つの束：R79（2 コミット）＋ R75 ＋ w1.json ＋ w2a.json を適用 → DG-W1 後の main を取り込み、`.lake/build` を複製 → 下流の一回ビルド → 保存検査 → verify（§10.12〜10.14 の規則）。段 A・B・閉包の切断（R26・R39・R66・R71・R49b・R50）は w1.json の中身として同じ束に含まれる | W1＋W2a |
+| IF-W2a-2 | R76 → R77 → R67（Inputs/Homotopy）。`merge_modules.py` がそろってから | W1＋W2a の後半 |
 | IF-W2b | R73 → R37 → R38 | W2b |
 | IF-W2c | 段 E | W2c |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
@@ -318,6 +316,7 @@ InfinityCategories/
   - w1.json を承認（move 62・split 3・reimport 3、保留 13。全体 verify PASS）。
   - CategoryTheory の下位ディレクトリと Nerve まわりの整理を引き継ぎ（R75〜R78）。W2a で K-S• も止める。
 - （10-30）DifferentialGraded/ の整理を独立した計画 [dg-cleanup-plan.md](dg-cleanup-plan.md) に分けた。R79 の DG 分（530 本）と R44 の DG 側はそちらへ。
+- （10-31）再ビルドの費用の実測（土台の import 行の書き換えで約 9,000〜20,000 本、[verify-build-costs]）から、W1 と W2a を一つの束にし R79・R75 も含めて下流の全ビルドを一回にした。R72 の preflight は 8 本 PASS で止め、9 本目は束へ。分割先の import は使う利用元にだけ足す（IF-W0-3 §10.12〜10.14）。`merge_modules.py` と build lock・warm-up の道具は DG 側へ移管。
 
 ## 9. 未決の点（ユーザーまたはコーディネータの判断が要る）
 
@@ -326,7 +325,7 @@ InfinityCategories/
 3. **（10-28 決定済み）名前空間**：R54 で最後にまとめて付け替える。新しく作る正本は最初から正しい名前空間で書き、移動のたびに名前空間の対応表を記録する。
 4. **（10-28 決定済み）R50**：束ねた定義を残し、束ねない形はそれを包む定義と同値補題として加える。試作（旧 R50p）は不要になった。
 5. **Kan と Core の順序**：本計画は、移動だけで済む Core < Kan を採る。外部レビューが支持する Kerodon の順序（Kan < Core）に揃えるには、Kan の証明から Core への依存を外す書き換えが要る。段 G の後で改めて判断する。
-6. **W1 に入る時期**：対象一覧は確定した。全レーンを止める 4〜6 日の時期を、他のレーン（KST 各レーン・BS・論文の層の整理）の区切りと合わせて決める。
+6. **（10-31 決定済み）W1 の時期と形**：W1 と W2a を一つの束にし、R79・R75 も含める。DG-W1 の取り込み（10-31）の後、∞ 側の静的検査が PASS したら束を適用し、下流の一回ビルド（6〜8 時間、機械を独占）と verify を通す。その約 1 日は論文の層のコーディネータに HA・∞・KST・EInfinity への取り込みを止めてもらう。（旧記述：対象一覧は確定した。全レーンを止める 4〜6 日の時期を、他のレーン（KST 各レーン・BS・論文の層の整理）の区切りと合わせて決める。
 7. **R26 の保留（CoreIsofibration・CorePullbackIso）**：W2a の検査で R56a に影響が出れば、pull-down 集合を加えるか R56a を W2b へ回す（R56a の行の注意）。
 
 ## 10. 根拠となる調査

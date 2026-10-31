@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-!
 概要：tensor–shift 同型を、再添字付けした斉次元と明示的な符号で計算する。

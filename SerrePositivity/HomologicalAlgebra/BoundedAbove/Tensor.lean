@@ -1,9 +1,10 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBoundedAbove
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.ShortExact
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Bounds
 /-! # 上に有界な導来圏のテンソル積
 
 ## 概要

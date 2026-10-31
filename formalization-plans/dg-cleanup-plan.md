@@ -23,10 +23,10 @@
 
 | # | 完了条件 | いま |
 | --- | --- | --- |
-| 1 | `scripts/audit/dg.lean` が追跡中の全モジュールを覆う | 113 本が未監査（10-18 生成のまま） |
-| 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | 650 本（Checks/ 410＋散在 240）。print だけ 278 |
-| 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | 入口なし。ルートは DG の 12 本を直接 import。Stage 8 本 |
-| 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | KST 13 辺、IC/Derived 1 辺、Asymptotic 1 辺、PerfectComplex 3 辺 |
+| 1 | `scripts/audit/dg.lean` が追跡中の全モジュールを覆う | **達成（DG-W1、10-31 取り込み待ち）**：1,910 本を監査、18,377 宣言、sorry 依存 0 |
+| 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | **達成（DG-W1）**：削除 271・Checks/ へ 39・Archive 68・保持 272（例外：`Verdier/ChecksU17Integration`・`ChecksOrderSquare` は D3 で Asymptotic へ） |
+| 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | **達成（DG-W1）**：新入口 1,598 本、ルートは 1 行、Stage 8 本と殻 `Complexes/Monoidal` を削除。import だけの集約 7 本は D4 で解消 |
+| 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | KST 13 辺、IC/Derived 1 辺、Asymptotic 1 辺は DG-W2(b) で解消。PerfectComplex 3 辺は論文の層の統合まで例外（§3 D3） |
 | 5 | 検査以外のモジュールが約 126 本に統合されている | 1,592 本 |
 | 6 | docstring が旧計画の案内を参照していない | 530 本が参照 |
 | 7 | DG の内部の層の順序が文書化され、層検査に登録されている | 逆向き 71 本（最良の順序）。強連結成分 2 |
@@ -68,7 +68,7 @@
 | DG → KST/SConstruction 13 辺 | SConstruction の 26 本（調査 §6.1。群 A 17 本 → `DifferentialGraded/Functor/`（閉共役・Hom の end・Param・Enrichment）、群 B 9 本 → `DifferentialGraded/SharedFunctoriality/`（graph 双加群・加群の延長））を DG へ移す。`Functor/ModuleExtensionConjugation`・`Module/ExtensionRepresentable*` も SharedFunctoriality へ。付け替え 154 辺（SConstruction 118・IC/Derived 22・DG 13・NonConnective 1） |
 | Presentation → IC/Derived/DGObjectImage | `DGObjectImage` を `DifferentialGraded/Category/ObjectImage` へ下ろす（利用者 8 本） |
 | Verdier/OrderSquare → Asymptotic | `OrderSquare`・`ChecksOrderSquare`・`ChecksU17Integration`（と `U17` の該当部分）を `Asymptotic/DGVerdier/` へ上げる（決定）。論文の層のセッションに知らせる |
-| Perfect → PerfectComplex 3 辺 | `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` を HomologicalAlgebra へ下ろす（分割の道具）。`strictlyPerfectComplex`・`PerfectHomotopy` の定義の依存は、`strictlyPerfectComplex` を HomologicalAlgebra へ下ろすか、許容するかを D3 の報告で決める |
+| Perfect → PerfectComplex 3 辺 | **（10-31 変更）DG 側では触らない。** `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` と `strictlyPerfectComplex`・`PerfectHomotopy` の依存先は PerfectComplex（論文の層の領域、統合中）にあるので、論文の層のコーディネータに「PerfectComplex の統合のときにこれらの一般論を HomologicalAlgebra へ置く」ことを依頼し、それまで DG → PerfectComplex の 3 辺を `layers.json` の `allowed_until_move` に例外として登録する。DG の Codex が PerfectComplex のファイルを分割することはしない（並行作業との衝突を避ける） |
 
 - 前提：D2。SConstruction の K-S• レーンは停止中。検証：層検査（`layers.json` に DG の規則を加える：DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Mathlib）、保存検査、影響する利用者のビルド。工数：16〜32h。
 
@@ -99,13 +99,14 @@
 
 ## 4. 指示書の単位と順序
 
-| 指示書 | 内容 | 前提 |
-| --- | --- | --- |
-| DG-W1 | D0 → D1 → D2 | ∞ 側の道具（層検査・分割・保存検査）は main にある |
-| DG-W2 | D3 | DG-W1。`layers.json` に DG の規則を追加 |
-| DG-W3 | D4（経路に関わらない 9 ディレクトリ）＋ D5 | DG-W2、IF-W0-4 の `merge_modules.py` |
-| DG-W4 | D4（Module・Complexes・Category・Functor・Derived） | DG-W3。論文の層のセッションと時期を合わせる |
-| DG-G | D6・D7 | 群ごと |
+| 指示書 | 内容 | 再ビルド | 前提 |
+| --- | --- | --- | --- |
+| DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。**main へ取り込み済み 194a65110（10-31、区切り 1-3 の後。衝突 3 件を解決し、`CochainTensorLinear` 等の旧名 import 12 本を伝達文 §10 の表で新名に）。取り込み後の全 verify は省略し（領域が重ならないため）、main の全ビルドと次の ∞ の束の verify で確認** |
+| DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
+| DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で | 1 回（Paper まで） | DG-W2。論文の層のセッションと時期を合わせる |
+| DG-G | D6・D7 | 群ごと | 窓の外 |
+
+（10-31 改訂）以前は D3 を単独の窓（旧 DG-W2）にしていたが、D3 の移動（SConstruction 26 本 → DG）も下流 5,000 本超の再ビルドを起こすので、統合の束に含めて再ビルドを 3 回から 2 回に減らした。束の内部の検証は統合先のビルドと保存検査だけで済み（上流しか要らない）、下流の全ビルドは束の最後に一回でよい。
 
 ## 5. ∞ 基盤の整備との干渉と取り決め
 
@@ -117,14 +118,16 @@
 
 ## 5a. 再ビルドの費用と規則（2026-10-30、DG-W1 の実測から）
 
-実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、worktree で **2,576 本**（DG 977・InfinityCategories 715・EInfinity 492・KST 380）が再エラボレートされ、1 時間を超えた。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity の約 2,600 本が作り直される。
+実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、再ビルドは **約 9,000 本**（取り込み後の確認ビルドの実測：27,980 ジョブのうち新規ビルド 9,057・再生 1,150、他の 2 セッションのビルドと競合して 6 時間超。途中経過として数えた 2,576 本は過小だった）。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity・Paper まで、ルート閉包 23,575 本のうち約 9,000 本が作り直される。
 
 規則：
-1. **土台に触る変更は一つの束にまとめ、全体の再ビルドを一回にする。** D3（SConstruction 26 本を DG/Functor・SharedFunctoriality へ）、D4 の土台 5 ディレクトリの統合、D5（docstring）は同じ指示書（DG-W4）で行い、間に全体ビルドを挟まない。
+1. **下流の再ビルドを起こす変更は束にまとめ、窓ごとに一回にする。** D3 と D4 の土台でない 9 ディレクトリと その D5 は DG-W2 の束、D4 の土台 5 ディレクトリと残りの D5 は DG-W3 の束（§4）。束の途中では統合先だけをビルドして保存検査し、下流の全ビルドは束の最後に一回。
 2. **土台でないディレクトリの統合は、依存の上から下へ**（Morita・Endomorphism・Verdier・Quotient … の順に、下流の少ないものから）。各束の費用はその下流だけ。
 3. **束の途中では触ったモジュールだけを `lake build <module>` で確かめる。** ルート（`lake build SerrePositivity`）と全体 verify は指示書の最後に一回。
 4. **取り込みの後、main の `.lake/build` を温める。** worktree で全体 verify を通して main に取り込んだら、main でビルドが走っていないときに worktree の `.lake/build` を main へ rsync する（同じソースなので trace が一致する）。次の worktree はその複製から始まるので、同じ再ビルドを二度払わない。
-5. 統合後の大きなファイル（平均 1,200 行）は一行の変更でファイル全体が再エラボレートされる。D4 の対応表を確定するときに 1 ファイルの上限（800 行の案）を決める（§7）。
+5. **全ビルドは機械で一つずつ。** 10-31 に dgw1・ifw0-3・main の全ビルドが同時に走り、load average 223（10 コア）、lean プロセス 31 本・34 GB で、どれも単独の 2〜3 倍遅くなった。全ビルドの前に `ps -axo command= | grep '[l]ake build'` で他の全ビルドがないことを確かめる。道具として `scripts/refactor/with_build_lock.sh`（`mkdir` による排他、他の全ビルドが終わるまで待つ）を IF-W0-4 または DG-W2(a) で用意する。
+6. **取り込みのたびに main の `.lake/build` を温め、他の worktree はそこから複製する。** 取り込んだ worktree から main へ rsync（終了コード 23・24 で消えたのが書き換え中の出力だけなら受け入れる）。これも `scripts/refactor/warm_build_dir.sh` として用意する。
+7. **統合先 1 ファイルの上限は、元の本文 1,500 行・生成後 1,700 行**（Mathlib の `longFile` linter の既定値 1,500 に、見出しと section の包みの分を足したもの。10-31 決定、DG-W2(a) の dry-run で生成後の最大が 1,605 行だったため）。対応表はすでに元の本文 1,500 行で切ってある（126 件、平均 991 行・中央値 1,009 行・最大 1,498 行、800 行超 83 件）。800 行にすると約 209 ファイルになり、主題でなく行数で切る番号つきファイルが増えるので採らない。増分ビルドは 1,500 行で 2〜6 分の見込み（ファイル内の並列エラボレートあり）。D6・D7 で行数が減ってから見直す。
 
 監査（verify の 85%）の時間は別の問題：最長の監査は RSS 19 GB で、64 GB の機械では 3 並列が上限。並列数を上げるには、監査ごとの RSS を記録してメモリ予算で並べる runner の改良が要る（∞ 側の IF-W0-4 に入れる。見込み 30 分 → 15 分）。
 
@@ -137,10 +140,10 @@
 
 ## 7. 未決の点
 
-1. D3 の `strictlyPerfectComplex`・`PerfectHomotopy`（Perfect → PerfectComplex の定義の依存）を HomologicalAlgebra へ下ろすか、許容するか。D3 の報告で決める。
+1. **（10-31 決定済み）** Perfect → PerfectComplex の 3 辺は、論文の層が PerfectComplex を統合するときに一般論を HomologicalAlgebra へ置くのを待つ。それまで例外登録（§3 D3）。
 2. D4 の最後の段（主定理の経路の 119 本）を入れる時期。論文の層のセッションの区切りと合わせる。
 3. DG の内部の層の順序を、最良の順序（逆向き 71 本）のまま文書化するか、Derived を分割するなどして逆向きを減らすか（証明を変えない範囲で可能かは D3・D4 の後に見る）。
-4. D4 の統合先 1 ファイルの上限（800 行の案）。126 本のままだと平均 1,200 行で、増分ビルドの粒度が粗くなる（§5a-5）。
+4. **（10-31 決定済み）** D4 の統合先 1 ファイルの上限は 1,500 行（§5a-7）。対応表の 126 件はそのまま。
 
 ## 8. 根拠
 

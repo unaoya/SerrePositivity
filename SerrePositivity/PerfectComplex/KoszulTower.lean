@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.HomotopyCategory
+public import SerrePositivity.PerfectComplex.Perfect.HomotopyCategory
 public import SerrePositivity.CategoryTheory.HomotopyProperty
 public import SerrePositivity.CategoryTheory.IteratedCone
 

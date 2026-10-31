@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.StageLocality
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic

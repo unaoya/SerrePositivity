@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.PerfectComplex.NormalizedEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 public import SerrePositivity.LengthAlgebra.KoszulFormula
 public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.PerfectComplex.KoszulGeneration
-public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.Free.K0
 
 /-! # Lemma 3.5 の正規化長さの側
 

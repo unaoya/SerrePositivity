@@ -1,8 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainTensorTruncationDesc
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Bounds
 /-!
 概要：交わらない上下界を持つ複体間の射と、下端の二変数積の零性を証明する。
 方針：各次数で始域か終域が零であることと tensor の上界を使う。

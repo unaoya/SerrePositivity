@@ -8,7 +8,7 @@ public import Mathlib.Data.ENat.BigOperators
 public import Mathlib.RingTheory.Length
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 public import Mathlib.Data.Int.Interval
-public import SerrePositivity.PerfectComplex.Basic
+public import SerrePositivity.PerfectComplex.Free.Support
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
 public import Mathlib.Algebra.Homology.QuasiIso
 public import Mathlib.Algebra.FiniteSupport.Basic

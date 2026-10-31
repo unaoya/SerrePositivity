@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.KoszulOneCoordinates
-public import SerrePositivity.PerfectComplex.Closure
-public import SerrePositivity.PerfectComplex.K0Comparison
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.PerfectComplex.Free.K0
+public import SerrePositivity.PerfectComplex.Perfect.FreeComparison
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # The one-element Koszul model and unit rescalings -/
 

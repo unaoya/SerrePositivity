@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorSingle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 public import SerrePositivity.HomologicalAlgebra.TensorBaseChangeNaturality
 public import Mathlib.Algebra.Homology.HomotopyCategory.SingleFunctors
 

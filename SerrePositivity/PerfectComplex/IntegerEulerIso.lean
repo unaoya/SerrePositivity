@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.IntegerEuler
-public import SerrePositivity.PerfectComplex.ClosedSupportCongr
-public import SerrePositivity.PerfectComplex.ClosedSupportComparison
+public import SerrePositivity.PerfectComplex.ClosedSupport.K0
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 

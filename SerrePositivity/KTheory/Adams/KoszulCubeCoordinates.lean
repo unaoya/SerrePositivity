@@ -1,11 +1,8 @@
 module
 
 public import SerrePositivity.KTheory.Adams.KoszulCubeExt
-public import SerrePositivity.PerfectComplex.TensorHomotopy
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
-public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCoordinates
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # Coordinates dual to the eight homogeneous Koszul cube generators -/
 

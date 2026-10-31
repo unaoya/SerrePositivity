@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.KoszulGraded
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 @[expose] public noncomputable section
 

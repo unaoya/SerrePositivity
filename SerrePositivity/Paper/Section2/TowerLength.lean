@@ -1,10 +1,8 @@
 module
 
-public import SerrePositivity.LengthAlgebra.RootTowerLength.Defs
-public import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteGeneration
-public import SerrePositivity.LengthAlgebra.RootTowerLength.Normalized
-public import SerrePositivity.PerfectComplex.QuotientLength
-public import SerrePositivity.PerfectComplex.SupProperty
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
+public import SerrePositivity.LengthAlgebra.Normalized
 
 /-! # 証明した塔の正規化長さの互換入口
 

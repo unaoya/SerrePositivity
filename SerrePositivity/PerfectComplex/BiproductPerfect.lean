@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import SerrePositivity.PerfectComplex.Eigen.Idempotent
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts

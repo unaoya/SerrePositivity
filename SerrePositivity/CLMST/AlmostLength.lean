@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Almost
-public import SerrePositivity.LengthAlgebra.AlmostBaseChange
+public import SerrePositivity.LengthAlgebra.Almost
 
 /-! # mod p^N の perfectoid almost 同型と長さ
 

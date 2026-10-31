@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.FreeSequenceBaseChange
 public import SerrePositivity.Asymptotic.SequenceComplex
-public import SerrePositivity.PerfectComplex.Basic
+public import SerrePositivity.PerfectComplex.Free.Support
 public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
 /-!

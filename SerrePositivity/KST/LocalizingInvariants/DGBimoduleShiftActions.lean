@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.BimoduleRestriction
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 
 /-!
 概要：実 dg 双加群の shift 上に、符号付き tensor–shift 同型を使う左右作用を定義する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CLMST.Almost
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.WittVector.Basic

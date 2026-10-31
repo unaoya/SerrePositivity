@@ -1,5 +1,5 @@
-import SerrePositivity.PerfectComplex.ClosedSupportRelations
-import SerrePositivity.PerfectComplex.K0Comparison
+import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
+import SerrePositivity.PerfectComplex.Perfect.FreeComparison
 import SerrePositivity.CategoryTheory.BoundedHomotopy
 import SerrePositivity.Asymptotic.RankQuotient
 import Mathlib.Util.AssertNoSorry

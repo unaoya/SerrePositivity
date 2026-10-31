@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.CochainTensor
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexSingle
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexCohomology
 

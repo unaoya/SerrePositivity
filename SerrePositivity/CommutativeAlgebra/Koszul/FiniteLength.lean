@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
-public import SerrePositivity.PerfectComplex.Closure
+public import SerrePositivity.PerfectComplex.Free.Euler
+public import SerrePositivity.PerfectComplex.Free.K0
 
 /-! # パラメータ系の Koszul ホモロジーの有限長性
 

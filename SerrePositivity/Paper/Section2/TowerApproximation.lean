@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Paper.Section2.TowerDescent
 public import SerrePositivity.PerfectComplex.TensorResolutionLength
-public import SerrePositivity.PerfectComplex.NormalizedLengthComap
+public import SerrePositivity.LengthAlgebra.Normalized
 public import Mathlib.RingTheory.TensorProduct.Basic
 public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Adjunction
 public import Mathlib.Algebra.Category.ModuleCat.Descent

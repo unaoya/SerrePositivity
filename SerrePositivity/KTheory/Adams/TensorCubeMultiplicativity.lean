@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeTensor
 public import SerrePositivity.KTheory.Adams.CyclicThree
-public import SerrePositivity.PerfectComplex.CubicActionTensorClass
+public import SerrePositivity.PerfectComplex.Eigen.CubicTensor
 
 /-! # Multiplicativity of weighted cyclic tensor cubes -/
 

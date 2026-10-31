@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Length.Euler
 public import SerrePositivity.PerfectComplex.Truncate
-public import SerrePositivity.PerfectComplex.K0
+public import SerrePositivity.PerfectComplex.Free.K0
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CommutativeAlgebra.KoszulResolution
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 
 /-!
 # `K₀^{m}(A)` は Koszul 複体で生成される

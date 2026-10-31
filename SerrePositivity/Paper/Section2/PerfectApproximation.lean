@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Perfection.Approximation
-public import SerrePositivity.PerfectComplex.QuotientLength
+public import SerrePositivity.LengthAlgebra.Normalized
 
 /-!
 # Perfection の部分代数の近似による核の評価

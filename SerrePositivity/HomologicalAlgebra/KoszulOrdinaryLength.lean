@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.CommutativeAlgebra.Koszul
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 
 /-! # 環同型による Koszul 複体の通常長さの不変性 -/
 

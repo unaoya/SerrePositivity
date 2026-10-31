@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionHom
 public import SerrePositivity.DifferentialGraded.Module.Basic
 public import SerrePositivity.DifferentialGraded.Module.Action
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChangeSymmetry
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
 
 /-! # dg 加群の対象の係数変更 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
 public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
-public import SerrePositivity.PerfectComplex.HomotopyCategory
+public import SerrePositivity.PerfectComplex.Perfect.HomotopyCategory
 
 /-! # 既存の有界有限射影複体の全Hom dg enhancement
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FullSemifreeHomotopy
 public import SerrePositivity.InfinityCategories.Derived.SupportClosure
-public import SerrePositivity.PerfectComplex.ClosedSupportComparison
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 public import SerrePositivity.InfinityCategories.Derived.SemifreeResolution
 
 /-! # h Perf_Z の有限射影代表による像

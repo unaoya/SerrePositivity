@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.ResidueFieldExtension.General
-public import SerrePositivity.IntersectionMultiplicity.BaseChange
+public import SerrePositivity.IntersectionMultiplicity.Basic
 public import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
 public import Mathlib.RingTheory.AdicCompletion.Basic
 public import Mathlib.RingTheory.Flat.Basic

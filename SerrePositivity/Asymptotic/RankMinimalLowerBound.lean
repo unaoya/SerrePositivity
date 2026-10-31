@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.RankVanishing
 public import SerrePositivity.Asymptotic.NormalizedLowerBound
-public import SerrePositivity.PerfectComplex.MinimalLowerBound
+public import SerrePositivity.PerfectComplex.KoszulLength
 
 /-! # ランク商の Euler 評価と極小性による下界
 

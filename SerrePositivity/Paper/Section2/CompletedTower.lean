@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.Paper.Section2.TowerLengthOn
 public import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 

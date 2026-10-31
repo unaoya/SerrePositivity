@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Paper.Lemma3_5
-public import SerrePositivity.PerfectComplex.Support
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.PerfectComplex.Free.Support
+public import SerrePositivity.LengthAlgebra.Core
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 
 /-!

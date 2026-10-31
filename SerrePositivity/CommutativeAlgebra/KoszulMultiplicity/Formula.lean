@@ -7,7 +7,7 @@ public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Parameters
 public import SerrePositivity.CommutativeAlgebra.Koszul.RegularEuler
 public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
-public import SerrePositivity.LengthAlgebra.ConeCompositionEuler
+public import SerrePositivity.LengthAlgebra.Cone
 public import Mathlib.Topology.Instances.ENNReal.Lemmas
 public import Mathlib.Topology.Algebra.Order.Field
 public import Mathlib.Algebra.BigOperators.Field

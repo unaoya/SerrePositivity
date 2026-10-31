@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Surjection.ComplexComposition
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleChainMap
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 
 /-!
 # 整数複体の射としての TR の部分合成保存

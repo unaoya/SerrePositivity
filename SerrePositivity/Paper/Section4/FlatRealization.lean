@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.LengthAlgebra.CohenMacaulay
-public import SerrePositivity.LengthAlgebra.Comparison
-public import SerrePositivity.LengthAlgebra.SerreQuotient
+public import SerrePositivity.LengthAlgebra.Flat
+public import SerrePositivity.LengthAlgebra.KoszulFormula
+public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.CategoryTheory.Localization.CalculusOfFractions.Fractions
-public import SerrePositivity.LengthAlgebra.PerfectVanishing
-public import SerrePositivity.PerfectComplex.MinimalLowerBound
+public import SerrePositivity.LengthAlgebra.Perfect
+public import SerrePositivity.PerfectComplex.KoszulLength
 public import SerrePositivity.Paper.Section4.SymmetricComparison
 public import SerrePositivity.Asymptotic.PaperMinimalLowerBound
 public import SerrePositivity.Asymptotic.PaperVanishing

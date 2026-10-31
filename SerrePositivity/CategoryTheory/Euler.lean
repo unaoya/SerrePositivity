@@ -28,7 +28,7 @@ public import Mathlib.Data.Int.Interval
 
 ## 規約
 
-値は実数。K₀ の値域を一般の `AddCommGroup` にする一般化は計画 D の 1（区切り 1-3）で行う。
+Euler 評価 `homologicalEuler`・`homologicalEulerK0` と長完全列の加法性は、値を任意の加法群 `M` に取る（符号は `zsmul`）。実数値で項を比べる側は `zsmul_eq_mul` で積の形に直す。群の軌道和の比較は実数値のまま。評価の定義域を `IsSerreClass` な部分圏上の関数にする一般化は、G₀ を扱う区切り 1-4（KTheory）で行う。
 
 ## 使われ方
 
@@ -86,7 +86,7 @@ namespace SerrePositivity
 
 open CategoryTheory CategoryTheory.Limits
 
-variable {A : Type*} [Category* A] [Abelian A] (l : A → ℝ)
+variable {A : Type*} [Category* A] [Abelian A] {M : Type*} [AddCommGroup M] (l : A → M)
   (hi : ∀ {X Y : A}, (X ≅ Y) → l X = l Y)
   (ha : ∀ {S : ShortComplex A}, S.ShortExact → l S.X₂ = l S.X₁ + l S.X₃)
 
@@ -114,9 +114,9 @@ lemma additiveLength_euler_exact_sequence
     (h₁ : ∀ i, (ShortComplex.mk (δ i) (α (i + 1)) (w₁ i)).Exact)
     (hb₂ : ∃ a b : ℤ, ∀ i, i < a ∨ b < i → IsZero (X₂ i))
     (hb₃ : ∃ a b : ℤ, ∀ i, i < a ∨ b < i → IsZero (X₃ i)) :
-    (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₂ i)) =
-      (∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₁ i)) +
-        ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l (X₃ i) := by
+    (∑ᶠ i : ℤ, (i.negOnePow : ℤ) • l (X₂ i)) =
+      (∑ᶠ i : ℤ, (i.negOnePow : ℤ) • l (X₁ i)) +
+        ∑ᶠ i : ℤ, (i.negOnePow : ℤ) • l (X₃ i) := by
   let a := fun i ↦ l (Abelian.image (α i))
   let b := fun i ↦ l (Abelian.image (β i))
   let d := fun i ↦ l (Abelian.image (δ i))
@@ -144,7 +144,7 @@ lemma additiveLength_euler_exact_sequence
     rw [add_sub_cancel_right]
     exact additiveLength_exact_images l hi ha (h₁ j)
   simp_rw [h₂, h₁, h₃]
-  simpa only [zsmul_eq_mul] using alternatingGroupFinsum_exact a b d hfa hfb hfd
+  exact alternatingGroupFinsum_exact a b d hfa hfb hfd
 
 end SerrePositivity
 
@@ -157,7 +157,7 @@ namespace SerrePositivity
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
 open scoped BigOperators
 
-variable {A : Type*} [Category* A] [Abelian A] (l : A → ℝ)
+variable {A : Type*} [Category* A] [Abelian A] {M : Type*} [AddCommGroup M] (l : A → M)
   (hi : ∀ {X Y : A}, (X ≅ Y) → l X = l Y)
   (ha : ∀ {S : ShortComplex A}, S.ShortExact → l S.X₂ = l S.X₁ + l S.X₃)
 
@@ -166,8 +166,8 @@ variable {C : Type*} [Category* C] [Preadditive C] [HasZeroObject C] [HasShift C
   (F : C ⥤ A) [F.IsHomological] [F.ShiftSequence ℤ]
 
 /-- ホモロジー関手とアーベル圏上の評価から定める Euler 和。 -/
-noncomputable def homologicalEuler (X : C) : ℝ :=
-  ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * l ((F.shift i).obj X)
+noncomputable def homologicalEuler (X : C) : M :=
+  ∑ᶠ i : ℤ, (i.negOnePow : ℤ) • l ((F.shift i).obj X)
 
 include hi in
 omit [Abelian A] [Preadditive C] [HasZeroObject C] [∀ n : ℤ, (shiftFunctor C n).Additive]
@@ -188,11 +188,11 @@ omit [Abelian A] [Preadditive C] [HasZeroObject C] [∀ n : ℤ, (shiftFunctor C
   [Pretriangulated C] [F.IsHomological] in
 /-- 有界なホモロジー評価の交代和は有限支持である。 -/
 lemma homologicalEuler_hasFiniteSupport (X : C) :
-    Function.HasFiniteSupport (fun i : ℤ ↦ ((i.negOnePow : ℤ) : ℝ) * l ((F.shift i).obj X)) := by
+    Function.HasFiniteSupport (fun i : ℤ ↦ (i.negOnePow : ℤ) • l ((F.shift i).obj X)) := by
   obtain ⟨a, b, hab⟩ := hb X
   apply finiteSupport_of_bounded_zero _ a b
   intro i hi
-  simp only [hz _ (hab i hi), mul_zero]
+  simp only [hz _ (hab i hi), smul_zero]
 
 include hi ha hz hb in
 /-- 有界なホモロジー関手の Euler 和は完全三角形で加法的である。 -/
@@ -207,7 +207,7 @@ lemma homologicalEuler_triangle (T : Triangle C) (hT : T ∈ distTriang C) :
     (fun i ↦ F.homologySequence_exact₁ T hT i (i + 1) rfl) (hb T.obj₂) (hb T.obj₃)
 
 /-- 有界なホモロジー関手の Euler 評価が与える `K₀` 上の準同型。 -/
-noncomputable def homologicalEulerK0 : TriangulatedK0 C →+ ℝ :=
+noncomputable def homologicalEulerK0 : TriangulatedK0 C →+ M :=
   TriangulatedK0.lift (homologicalEuler l F) (homologicalEuler_iso l hi F)
     (homologicalEuler_triangle l hi ha F hz hb)
 
@@ -226,7 +226,7 @@ lemma homologicalEuler_eq_length_zero (X : C)
   rw [homologicalEuler, finsum_eq_single _ (0 : ℤ)]
   · simp
   · intro q hq
-    rw [hz _ (h q hq), mul_zero]
+    rw [hz _ (h q hq), smul_zero]
 
 include hi in
 omit [Abelian A] [Preadditive C] [HasZeroObject C] [∀ n : ℤ, (shiftFunctor C n).Additive]
@@ -241,7 +241,7 @@ lemma homologicalEuler_natIso (F' : C ⥤ A) [F'.ShiftSequence ℤ]
   rw [hi ((e q).app X)]
 
 /-- 対象上の計算式による Euler 準同型の一意性。 -/
-lemma homologicalEulerK0_unique (φ : TriangulatedK0 C →+ ℝ)
+lemma homologicalEulerK0_unique (φ : TriangulatedK0 C →+ M)
     (h : ∀ X, φ (TriangulatedK0.mk X) = homologicalEuler l F X) :
     φ = homologicalEulerK0 l hi ha F hz hb := by
   apply TriangulatedK0.hom_ext

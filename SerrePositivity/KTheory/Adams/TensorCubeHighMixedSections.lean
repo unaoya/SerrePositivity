@@ -1,14 +1,11 @@
 module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedComponents
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
-public import SerrePositivity.HomologicalAlgebra.CochainTensorDegreeMaps
-public import SerrePositivity.PerfectComplex.TensorHomotopy
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTripleDegreeMaps
-public import SerrePositivity.PerfectComplex.IdempotentImagePerfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.DegreeMaps
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+public import SerrePositivity.PerfectComplex.Eigen.Idempotent
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 

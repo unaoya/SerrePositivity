@@ -2,8 +2,7 @@ module
 
 public import SerrePositivity.CLMST.CyclicLength
 public import SerrePositivity.CLMST.AlmostLength
-public import SerrePositivity.LengthAlgebra.AlmostVanishing
-public import SerrePositivity.LengthAlgebra.AlmostQuotientAction
+public import SerrePositivity.LengthAlgebra.Almost
 public import SerrePositivity.CLMST.BasicSetup
 
 /-! # CLMST の巡回評価から一般加群と almost 同型への接続

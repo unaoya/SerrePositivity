@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBaseChange
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
 
 /-! # Naturality of the total tensor base-change comparison -/
 @[expose] public section

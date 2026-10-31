@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.TensorElements
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 /-!
 概要：斉次 tensor の同じ Leibniz 則・双線形性・零・閉性を照合する。
 方針：同じ斉次 tensor の微分を端点次数0・1で評価して、実境界式へ接続する。

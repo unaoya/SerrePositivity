@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.LengthAlgebra.RootTowerLength.FiniteStage
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
 public import SerrePositivity.Paper.Section2.TowerLength
 
 /-!

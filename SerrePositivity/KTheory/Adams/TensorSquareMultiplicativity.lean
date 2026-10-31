@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorSquareShuffle
 public import SerrePositivity.KTheory.Adams.CyclicTwo
-public import SerrePositivity.PerfectComplex.InvolutionTensorClass
+public import SerrePositivity.PerfectComplex.Eigen.InvolutionTensor
 
 /-! # Multiplicativity of the cyclic Adams operation of degree two -/
 

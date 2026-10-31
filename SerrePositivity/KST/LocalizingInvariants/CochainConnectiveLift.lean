@@ -1,8 +1,8 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Bounds
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
-public import SerrePositivity.HomologicalAlgebra.CochainTensorBounds
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 
 /-!

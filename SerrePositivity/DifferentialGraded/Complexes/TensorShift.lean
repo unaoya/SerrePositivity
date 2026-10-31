@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Shift
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShift
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Cone
 
 /-! # 左tensor因子のshift比較と全斉次Hom
 

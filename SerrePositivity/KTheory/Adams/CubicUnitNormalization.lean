@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KTheory.Adams.TensorCubeUnitRotation
 public import SerrePositivity.PerfectComplex.KoszulClasses
-public import SerrePositivity.PerfectComplex.CubicActionIdentityClass
+public import SerrePositivity.PerfectComplex.Eigen.CubicClass
 public import SerrePositivity.KTheory.Adams.CyclicThree
 
 /-! # The cyclic Adams cube preserves the scalar unit class -/

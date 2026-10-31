@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound
+public import SerrePositivity.IntersectionMultiplicity.ParameterQuotient
 public import SerrePositivity.Paper.Section2.TowerApproximation
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.HomologicalAlgebra.MinimalResolution

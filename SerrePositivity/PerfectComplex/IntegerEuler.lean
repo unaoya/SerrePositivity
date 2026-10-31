@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KTheory.HomologyEulerBasic
 public import SerrePositivity.KTheory.MaximalSupportLength
-public import SerrePositivity.PerfectComplex.OrdinaryEuler
+public import SerrePositivity.PerfectComplex.Free.Euler
 
 /-! # Integer-valued Euler evaluation on complexes supported at a closed point -/
 @[expose] public section

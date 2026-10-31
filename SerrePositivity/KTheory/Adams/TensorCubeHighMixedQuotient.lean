@@ -3,7 +3,7 @@ public import SerrePositivity.CategoryTheory.Triangulated.Idempotent
 
 public import SerrePositivity.KTheory.Adams.TensorCubeHighMixedKernel
 public import SerrePositivity.CategoryTheory.Abelian.ShortComplex
-public import SerrePositivity.PerfectComplex.TensorTripleCyclicSumPerfect
+public import SerrePositivity.PerfectComplex.Tensor.CyclicSum
 
 /-! # The high mixed quotient, with support and cubic action -/
 

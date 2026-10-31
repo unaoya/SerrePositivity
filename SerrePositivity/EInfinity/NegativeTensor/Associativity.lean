@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.NegativeTensor.Naturality
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-!
 # 負次数テンソル比較と結合子

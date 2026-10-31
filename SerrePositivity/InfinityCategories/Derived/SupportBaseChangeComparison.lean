@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.SupportComparison
 public import SerrePositivity.InfinityCategories.Derived.FullSemifreeCanonical
 public import SerrePositivity.InfinityCategories.Derived.Localization
-public import SerrePositivity.PerfectComplex.ClosedSupportFunctoriality
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 
 /-! # 台つき有限射影代表と D5c の底変更の比較
 

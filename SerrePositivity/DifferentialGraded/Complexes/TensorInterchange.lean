@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 
 /-! # tensorモノイダル関手の交差符号と既存shuffleの比較 -/
 @[expose] public section

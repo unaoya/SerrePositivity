@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KTheory.G0Localization
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 public import SerrePositivity.PerfectComplex.FiniteProjectiveResolutions
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import SerrePositivity.CategoryTheory.TriangulatedK0

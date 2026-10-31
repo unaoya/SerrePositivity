@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.PerfectComplex.TensorBaseChange
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 /-! # The signed cyclic action on tensor squares -/
 @[expose] public section

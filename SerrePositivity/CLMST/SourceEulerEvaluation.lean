@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.CompletedSourceLength
 public import SerrePositivity.CLMST.StageResidueLength
-public import SerrePositivity.LengthAlgebra.RootTowerLength.CompletedTensorEvaluation
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
 

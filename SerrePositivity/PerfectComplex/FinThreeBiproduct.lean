@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.ClosedSupportBiproduct
-public import SerrePositivity.PerfectComplex.DegreewiseRetract
+public import SerrePositivity.PerfectComplex.Perfect.HomotopyCategory
 
 /-! # The finite biproduct of three complexes as a binary iterated sum -/
 

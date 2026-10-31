@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
 public import SerrePositivity.CLMST.NormalizedAlmostLength
 public import SerrePositivity.CLMST.CohomologyVanishing
-public import SerrePositivity.LengthAlgebra.KoszulRestriction
+public import SerrePositivity.LengthAlgebra.KoszulModule
 
 /-! # perfectoid 化を係数とする Koszul ホモロジーの長さ消滅
 

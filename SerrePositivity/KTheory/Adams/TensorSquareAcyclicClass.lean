@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.PerfectComplex.TensorAcyclic
+public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 
 public import SerrePositivity.KTheory.Adams.TensorSquareAdditivity
-public import SerrePositivity.PerfectComplex.InvolutionClassAcyclic
+public import SerrePositivity.PerfectComplex.Eigen.Involution
 
 /-! # Acyclic complexes have zero cyclic tensor-square class -/
 

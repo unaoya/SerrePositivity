@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.TensorSingleNaturality
-public import SerrePositivity.HomologicalAlgebra.CochainTensorTriple
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 
 /-! # Canonical tensor comparisons for actual discrete cochain complexes -/
 @[expose] public noncomputable section

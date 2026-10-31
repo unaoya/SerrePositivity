@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.KoszulRestriction
-public import SerrePositivity.PerfectComplex.SupProperty
+public import SerrePositivity.LengthAlgebra.Normalized
 
 /-! # 部分代数の増大列と Koszul ホモロジー
 

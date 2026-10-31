@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.HomologicalAlgebra.CochainTensorLinear
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 /-!
 概要：同型による実 tensor 射の共役と Leibniz 式の保存。
 方針：tensor の関手性と同型の両逆性、加法・整数倍の自然性を使う。

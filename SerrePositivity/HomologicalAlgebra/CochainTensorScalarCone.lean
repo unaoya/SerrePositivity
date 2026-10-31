@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.TensorConeNaturality
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomotopy
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
 public import SerrePositivity.CommutativeAlgebra.Koszul
 
 /-! # Tensoring the unit scalar cone with a cochain complex -/

@@ -1,12 +1,10 @@
 module
 
-public import SerrePositivity.PerfectComplex.TensorHomotopy
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffle
-public import SerrePositivity.HomologicalAlgebra.CochainTensorHomogeneous
-public import SerrePositivity.HomologicalAlgebra.CochainTensorShuffleEquivariance
+public import SerrePositivity.PerfectComplex.Tensor.Perfect
+public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.KTheory.Adams.TensorSquareEigenspaces
-public import SerrePositivity.PerfectComplex.InvolutionTensor
-public import SerrePositivity.PerfectComplex.ClosedSupportRelations
+public import SerrePositivity.PerfectComplex.Eigen.InvolutionTensor
+public import SerrePositivity.PerfectComplex.ClosedSupport.Functoriality
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 
 /-! # The equivariant shuffle used for multiplicativity of the cyclic square -/

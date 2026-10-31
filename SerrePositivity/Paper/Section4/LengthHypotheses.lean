@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.PerfectComplex.NormalizedLength
+public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.LinearAlgebra.Dimension.Finite
 public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 public import SerrePositivity.CommutativeAlgebra.Support.Closed
