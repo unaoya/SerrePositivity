@@ -99,13 +99,14 @@
 
 ## 4. 指示書の単位と順序
 
-| 指示書 | 内容 | 前提 |
-| --- | --- | --- |
-| DG-W1 | D0 → D1 → D2 | ∞ 側の道具（層検査・分割・保存検査）は main にある |
-| DG-W2 | D3 | DG-W1。`layers.json` に DG の規則を追加 |
-| DG-W3 | D4（経路に関わらない 9 ディレクトリ）＋ D5 | DG-W2、IF-W0-4 の `merge_modules.py` |
-| DG-W4 | D4（Module・Complexes・Category・Functor・Derived） | DG-W3。論文の層のセッションと時期を合わせる |
-| DG-G | D6・D7 | 群ごと |
+| 指示書 | 内容 | 再ビルド | 前提 |
+| --- | --- | --- | --- |
+| DG-W1 | D0 → D1 → D2 | 1 回（約 9,000 本） | 完了（10-31 取り込み待ち） |
+| DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
+| DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で | 1 回（Paper まで） | DG-W2。論文の層のセッションと時期を合わせる |
+| DG-G | D6・D7 | 群ごと | 窓の外 |
+
+（10-31 改訂）以前は D3 を単独の窓（旧 DG-W2）にしていたが、D3 の移動（SConstruction 26 本 → DG）も下流 5,000 本超の再ビルドを起こすので、統合の束に含めて再ビルドを 3 回から 2 回に減らした。束の内部の検証は統合先のビルドと保存検査だけで済み（上流しか要らない）、下流の全ビルドは束の最後に一回でよい。
 
 ## 5. ∞ 基盤の整備との干渉と取り決め
 
@@ -120,11 +121,13 @@
 実測：DG-W1 の D2 で殻 `Complexes/Monoidal` を消して import を書き換えた（DG の土台 6 本、IC/Derived 2 本、KST/LI 4 本）だけで、再ビルドは **約 9,000 本**（取り込み後の確認ビルドの実測：27,980 ジョブのうち新規ビルド 9,057・再生 1,150、他の 2 セッションのビルドと競合して 6 時間超。途中経過として数えた 2,576 本は過小だった）。意味が同じでも import 行が変われば olean が変わり、下流が連鎖する。DG の土台（Complexes・Category・Module・Functor）に触ると、DG 全体と IC・KST・EInfinity・Paper まで、ルート閉包 23,575 本のうち約 9,000 本が作り直される。
 
 規則：
-1. **土台に触る変更は一つの束にまとめ、全体の再ビルドを一回にする。** D3（SConstruction 26 本を DG/Functor・SharedFunctoriality へ）、D4 の土台 5 ディレクトリの統合、D5（docstring）は同じ指示書（DG-W4）で行い、間に全体ビルドを挟まない。
+1. **下流の再ビルドを起こす変更は束にまとめ、窓ごとに一回にする。** D3 と D4 の土台でない 9 ディレクトリと その D5 は DG-W2 の束、D4 の土台 5 ディレクトリと残りの D5 は DG-W3 の束（§4）。束の途中では統合先だけをビルドして保存検査し、下流の全ビルドは束の最後に一回。
 2. **土台でないディレクトリの統合は、依存の上から下へ**（Morita・Endomorphism・Verdier・Quotient … の順に、下流の少ないものから）。各束の費用はその下流だけ。
 3. **束の途中では触ったモジュールだけを `lake build <module>` で確かめる。** ルート（`lake build SerrePositivity`）と全体 verify は指示書の最後に一回。
 4. **取り込みの後、main の `.lake/build` を温める。** worktree で全体 verify を通して main に取り込んだら、main でビルドが走っていないときに worktree の `.lake/build` を main へ rsync する（同じソースなので trace が一致する）。次の worktree はその複製から始まるので、同じ再ビルドを二度払わない。
-5. 統合後の大きなファイル（平均 1,200 行）は一行の変更でファイル全体が再エラボレートされる。D4 の対応表を確定するときに 1 ファイルの上限（800 行の案）を決める（§7）。
+5. **全ビルドは機械で一つずつ。** 10-31 に dgw1・ifw0-3・main の全ビルドが同時に走り、load average 223（10 コア）、lean プロセス 31 本・34 GB で、どれも単独の 2〜3 倍遅くなった。全ビルドの前に `ps -axo command= | grep '[l]ake build'` で他の全ビルドがないことを確かめる。道具として `scripts/refactor/with_build_lock.sh`（`mkdir` による排他、他の全ビルドが終わるまで待つ）を IF-W0-4 または DG-W2(a) で用意する。
+6. **取り込みのたびに main の `.lake/build` を温め、他の worktree はそこから複製する。** 取り込んだ worktree から main へ rsync（終了コード 23・24 で消えたのが書き換え中の出力だけなら受け入れる）。これも `scripts/refactor/warm_build_dir.sh` として用意する。
+7. 統合後の大きなファイル（平均 1,200 行）は一行の変更でファイル全体が再エラボレートされる。D4 の対応表を確定するときに 1 ファイルの上限（800 行の案）を決める（§7）。
 
 監査（verify の 85%）の時間は別の問題：最長の監査は RSS 19 GB で、64 GB の機械では 3 並列が上限。並列数を上げるには、監査ごとの RSS を記録してメモリ予算で並べる runner の改良が要る（∞ 側の IF-W0-4 に入れる。見込み 30 分 → 15 分）。
 
