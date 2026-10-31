@@ -386,3 +386,19 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 その後、before snapshot → R75 → R79 → W1 → W2a の適用 → **停止点 1 で報告**。
 
 **（10-31 追記）R75 の段での小さな追加**：main の 4eb1f4d6b で、止まった Sp レーンの未追跡ファイル 4 本（`KST/Spectra/PointedParametricUncurry{Action,Pre}`・`PointedUncurry{ActionTensor,Composition}`）を `SerrePositivity/Archive/WIP/` に移した。`scripts/audit_kst_spectra_s3.lean`・`audit_kst_spectra_d3tail.lean` の名前の一覧（import ではない）に残る旧名 4 本を、R75 の段で外す（1〜2 行の編集、同じコミット）。
+
+### 10.18 追記（11-01、before snapshot の群 38 が exit 137 で落ちた件：snapshot をハッシュだけにする）
+
+**承認**：ルート import の作り直し（785 → 669）、静的検査 PASS（指標は §10.14 後と一致）、記録コミット 951df3de0、rsync（12 分、終了コード 0）、群 37 までの採取を確認した。群 38 の前で止めた判断は正しい。
+
+**原因**：`decl_snapshot.lean` は各宣言の **type と body の構造 JSON を丸ごと**出力している（`("type", ty)`・`("body", toJson body)`、「name-map 比較のため」）。群 35 の出力が 3.6 GB、37 群で 19 GB。群 38（KST.SConstruction 64 本）は証明項が巨大で、JSON 化の途中でメモリを使い切り、73 分後に SIGKILL（137）された（スワップ 12 GB も使い切っていた）。同じ方式では SConstruction・IC/Derived の群は通らない。
+
+**処置（道具の変更。∞ の Codex が行う）**：
+1. **snapshot はハッシュだけにする。** `decl_snapshot.lean` で、type・body の JSON を出力せず、`compare_snapshots.py` の `normalize_expr` と同じ正規化（`--name-map` の写像の適用と、private 名の `_private.<Module>.<n>.` 接頭辞の正規化）を **Lean 側で構造に対して行ってから**ハッシュ（既存の `hash j.compress` でよい）を取る。出力は name・parent・module・kind・type_hash・body_hash・axioms・attributes・位置・uses_modules・transient（§10.11 の帰属に要るもの）。`--name-map` は before／after の両方に同じものを渡す（before では写像の定義域が空なので恒等）。
+2. `compare_snapshots.py` は、構造が無い行では type_hash・body_hash で比べる（既存の全構造の行があれば従来どおり）。試験：小さな一時モジュールで、全構造版と新版のハッシュが一致すること、private 名の付け替えと name-map の写像で一致すること。
+3. **`env.constants.toList.mergeSort` を全環境でやらない。** 先に対象モジュールの constants に絞ってから並べる（全環境は Mathlib を含めて百万単位で、メモリと時間の無駄）。
+4. **群の大きさ**：KST.SConstruction・InfinityCategories.Derived・EInfinity の群は **16 本以下**に割る。各群は `lean -M 40000`（メモリ上限 40 GB）で走らせ、上限で止まったらさらに半分に割る（スワップで機械を止めない）。
+5. **採り直し**：群 1〜37 の全構造の出力（19 GB）はハッシュ版に変換せず、**全群をハッシュ版で採り直す**（形式を一つにする。olean は温かいので、各群は環境の読み込み＋ハッシュだけで済むはず）。採り直しが終わったら 19 GB を消す。所要時間を報告に書く。
+6. 採り直しの後、R75 → R79 → W1 → W2a の適用 → **停止点 1**。
+
+道具の変更と試験は 1 コミット（道具）＋ 1 コミット（試験）。既存の DG 側の道具（`merge_modules.py` 等、infra/dg-w2）には触れない。
