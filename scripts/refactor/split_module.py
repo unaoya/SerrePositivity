@@ -14,13 +14,13 @@ import sys
 import tempfile
 
 import layer_check as lc
-from lean_source import Unsupported, parse_source, render, dependency_directions, uses_names, add_import, read_source, write_source, owner
+from lean_source import check_attribute_dependencies, transient_names, declaration_owner, Unsupported, parse_source, render, dependency_directions, uses_names, add_import, read_source, write_source, owner
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def module_path(root, name):
-    if not isinstance(name, str) or not re.fullmatch(r"SerrePositivity(?:\.[\w']+)+", name):
+    if not isinstance(name, str) or not re.fullmatch(r"SerrePositivity(?:\.[\w']+)*", name):
         raise ValueError('invalid project module: '+str(name))
     path = root / (name.replace('.', '/')+'.lean')
     if not path.resolve().is_relative_to(root.resolve()): raise ValueError('module escapes root')
@@ -44,6 +44,8 @@ def module_doc(text, replacement=None):
         at=0
         match=re.search(r'(?m)^module[^\n]*\n',text)
         if match:at=match.end()
+        headers=list(re.finditer(r'(?m)^(?:public |private |meta )*import[^\n]*\n',lc.code_only(text)))
+        if headers:at=headers[-1].end()
         return text[:at]+'\n/-!\n'+(replacement or '分割で生成：docstring を書き直すこと')+'\n-/\n'+text[at:]
     pos=start+2;depth=1
     while pos<len(text) and depth:
@@ -62,7 +64,7 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
     original = read_source(src)
     if dst.exists() and lc.code_only(read_source(dst)).strip() not in ('', 'module'):
         raise ValueError('destination is not an empty scaffold: '+dest)
-    source = parse_source(original, str(src))
+    source = parse_source(original, str(src), snapshot=snapshot, module=module)
     moved = set(moved)
     if not moved or moved - source.declarations.keys():
         raise ValueError('empty or unknown moved declarations: '+repr(sorted(moved-source.declarations.keys())))
@@ -73,8 +75,9 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
     forward, backward = dependency_directions(source, moved, local_snapshot)
     if forward and backward:
         raise Unsupported('bidirectional dependency; split would create an import cycle: '+repr({'moved_to_keep':forward,'keep_to_moved':backward}))
+    check_attribute_dependencies(source, moved)
     kept = source.declarations.keys()-moved
-    old_text, new_text = render(source,kept), render(source,moved)
+    old_text, new_text = render(source,kept,side='keep'), render(source,moved,side='moved')
     if forward: new_text = add_import(new_text,module)
     if backward: old_text = add_import(old_text,dest)
     # Byte-for-byte checks also cover attached docstrings, attributes, and local scopes.
@@ -87,7 +90,7 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
     if graph is None:
         config=json.loads((ROOT/'scripts/refactor/layers.json').read_text())
         graph,_=lc.read_graph(root,config)
-    implicit = any(owner(r['name'], source.declarations) in moved and
+    implicit = any(declaration_owner(r, source.declarations, {x['name']:x for x in rows}) in moved and
                    (r['attributes']['simp'] or r['attributes']['instance_priority'] is not None) for r in rows)
     for consumer,deps in sorted(graph.items()):
         if consumer==module or module not in deps: continue
@@ -98,6 +101,7 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
             changes[consumer]={'before':text,'after':add_import(text,dest)}
     return {'module':module,'dest':dest,'moved':sorted(moved),'keep':sorted(kept),
             'dependencies':{'moved_to_keep':forward,'keep_to_moved':backward},
+            'transient':transient_names(local_snapshot),
             'declaration_modules':{n:dest if n in moved else module for n in source.declarations},
             'changes':changes}
 

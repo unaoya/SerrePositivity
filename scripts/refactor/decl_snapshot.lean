@@ -10,6 +10,9 @@ private のモジュール接頭辞を除き、補助宣言には親の名前を
 ## 使われ方
 lake env lean --run scripts/refactor/decl_snapshot.lean --modules A,B --output before.json
 --namespace N は選択を名前空間でも絞る。モジュール省略時は SerrePositivity を読む。
+uses_modules は型・本体（定理の証明も含む）が使う定数の定義元。空の選択も count: 0 で保存する。
+environment_parent は環境に存在する最長の真の名前接頭辞、parent_module はその定義元。
+ソースとの照合と transient の分類は Python 側で行う。parent は従来のスナップショットとの互換用。
 -/
 
 open Lean
@@ -24,6 +27,11 @@ private def parentName : Name → Name
        s.startsWith "_aux_" then parentName p else .str p s
   | .num p _ => parentName p
   | .anonymous => .anonymous
+
+private partial def environmentParent (env : Environment) (n : Name) : Option Name :=
+  let p := n.getPrefix
+  if p.isAnonymous then none
+  else if env.contains p then some p else environmentParent env p
 
 private def node (tag : String) (xs : List Json) : Json :=
   Json.arr (#[toJson tag] ++ xs.toArray)
@@ -77,8 +85,18 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name) : Co
     -- Private auxiliaries are retained and grouped with their public parent.
     -- Ordinary private declarations are not public API; their references still normalize.
     let normalized := privateToUserName name
+    let ep := environmentParent env normalized
     let parent := parentName normalized
+    let parentModule := ep.bind fun p => do
+      let i ← env.getModuleIdxFor? p
+      return env.header.modules[i.toNat]!.module.toString
     if isPrivateName name && parent == normalized then continue
+    let ranges ← findDeclarationRanges? name
+    let sourceRange := ranges.map fun r => Json.mkObj [
+      ("start_line", toJson r.range.pos.line), ("end_line", toJson r.range.endPos.line),
+      ("start_column", toJson r.range.pos.column), ("end_column", toJson r.range.endPos.column),
+      ("selection_start_line", toJson r.selectionRange.pos.line),
+      ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
     let ty := exprData info.type
     let body := if info.isTheorem then none else (info.value? (allowOpaque := true)).map exprData
@@ -96,12 +114,13 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name) : Co
       ("expose", toJson (env.hasExposedBody name))]
     rows := rows.push <| Json.mkObj [
       ("name", toJson (canonicalName name)), ("parent", toJson parent.toString),
+      ("environment_parent", toJson (ep.map canonicalName)), ("parent_module", toJson parentModule),
+      ("source_range", toJson sourceRange),
       ("module", toJson mod.toString), ("kind", toJson (declarationKind env info priority.isSome)),
       ("type", ty), ("type_hash", toJson (toString (hash ty.compress))),
       ("body", toJson body), ("body_hash", toJson (body.map (fun j => toString (hash j.compress)))),
       ("axioms", toJson axs), ("attributes", attrs), ("used_constants", toJson used),
-      ("used_modules", toJson usedModules)]
-  if rows.isEmpty then throwError "snapshot selected no declarations"
+      ("used_modules", toJson usedModules), ("uses_modules", toJson usedModules)]
   let mut sources : Array Json := #[]
   for mod in modules do
     let path := mod.toString.replace "." "/" ++ ".lean"
@@ -109,7 +128,8 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name) : Co
       sources := sources.push <| Json.mkObj [("module", toJson mod.toString), ("source", toJson (← IO.FS.readFile path))]
   return Json.mkObj [("schema_version", toJson (1 : Nat)),
     ("hash_algorithm", toJson "Lean String hash of canonical structural JSON; full structures included for name-map comparison"),
-    ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources), ("declarations", toJson rows)]
+    ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources),
+    ("count", toJson rows.size), ("declarations", toJson rows)]
 
 unsafe def main (args : List String) : IO UInt32 := do
   let mut modules : Array Name := #[]

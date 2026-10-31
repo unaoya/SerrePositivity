@@ -5,8 +5,10 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 import sys
+from lean_source import transient_names, parse_source, declaration_owner, Unsupported
 
 
 def rename(name, mapping):
@@ -27,23 +29,32 @@ def normalize_expr(value, mapping):
 def normalized(snapshot, mapping):
     if snapshot['schema_version'] != 1: raise ValueError('unsupported snapshot version')
     records = {}
+    transient = set(transient_names(snapshot))
+    source_names = {}
+    for source in snapshot.get('sources', []):
+        try: source_names[source['module']] = set(parse_source(source['source'], snapshot=snapshot, module=source['module']).declarations)
+        except Unsupported: pass
+    by_name = {r['name']: r for r in snapshot['declarations']}
     for row in snapshot['declarations']:
+        if row['name'] in transient: continue
         name = rename(row['name'], mapping)
         if name in records: raise ValueError('normalized declaration collision: ' + name)
+        parent = row['parent']
+        if row.get('module') in source_names:
+            parent = declaration_owner(row, source_names[row['module']], by_name) or parent
         records[name] = {
-            'parent': rename(row['parent'], mapping), 'kind': row['kind'],
+            'parent': rename(parent, mapping), 'kind': row['kind'],
             'type': normalize_expr(row['type'], mapping),
             'body': normalize_expr(row['body'], mapping),
             'axioms': sorted(rename(n, mapping) for n in row['axioms']),
             'attributes': row['attributes']}
-    if not records: raise ValueError('empty snapshot')
     # Group generated auxiliaries under their public parent. Proof-only auxiliaries
     # may change when a theorem proof changes; the parent's axioms are still checked.
     grouped = {}
     for name, record in records.items():
         parent = record['parent']
         if parent != name and parent in records:
-            if records[parent]['kind'] == 'theorem':
+            if records[parent]['kind'] == 'theorem' and re.search(r'\._proof_\d', name):
                 continue
             grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})[name] = record
         else:
@@ -66,7 +77,8 @@ def compare(before, after, mapping=None):
                 changes.append({'name': name, 'parent': b[name]['parent'], 'change': field,
                                 'before_sha256': digest(a[name].get(field)), 'after_sha256': digest(b[name].get(field))})
     return {'status': 'FAIL' if changes else 'PASS', 'before_count': len(a), 'after_count': len(b),
-            'parent_count': len({r['parent'] for r in b.values()}), 'changes': changes}
+            'parent_count': len({r['parent'] for r in b.values()}), 'changes': changes,
+            'transient': {'before': transient_names(before), 'after': transient_names(after)}}
 
 
 def main():

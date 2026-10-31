@@ -2,9 +2,9 @@
 
 ## 概要・方針
 
-`<name>.json` は move / split / archive の対象を確定する配列。
+`<name>.json` は move / split / archive / reimport の対象を確定する配列。
 本作業の前に `validate_targets.py` で書式、宣言の網羅、import グラフの試算を検査する。
-この段階では実際の窓の一覧を置かない。IF-W0-3 で確定する。
+IF-W0-3 で窓ごとに一覧を作り、各 wN.md に検査結果と承認待ちの状態を記録する。
 
 ## 書式と規約
 
@@ -23,8 +23,8 @@
 ]
 ```
 
-上記の 8 フィールドはすべて必須で、追加フィールドは拒否する。
-`module`・`dest` は `SerrePositivity.` で始まるモジュール名。
+上記の 8 フィールドはすべて必須。split・move・reimport に限り、任意フィールド `imports` と `downstream_imports` を認める。それ以外の追加フィールドは拒否する。
+`module`・`dest` はプロジェクトのモジュール名（`SerrePositivity` または `SerrePositivity.` で始まる名前）。
 `moved`・`keep` は完全修飾されたソース上の宣言名の配列（生成された補助宣言は親に従う）。
 `attributes` は宣言名から属性名の配列への対応表、`candidate`・`note` は文字列。
 属性表は移動時に確認する情報であり、実際の属性の一致は保存検査で確認する。
@@ -36,7 +36,7 @@
   対象一覧の外に元モジュールの import が残っていれば拒否する。
 
 元モジュール・移し先の二重登録、移し先と別の項目の元モジュールとの重複は拒否する。
-移し先は未作成か、コメントと `module` のみの空の骨組みファイルに限る。
+move / split / archive の移し先は未作成か、コメントと `module` のみの空の骨組みファイルに限る。reimport は同じ既存ファイルを使う。
 同じファイルの本文に複数の分割が作用する場合は別の窓に分ける。
 
 ## 使われ方
@@ -61,3 +61,83 @@ python3 scripts/refactor/validate_targets.py scripts/refactor/targets/<name>.jso
 受入試験は `python3 scripts/refactor/test_targets.py`。
 正しい move / split / archive の各 1 件と、未知の宣言・二重登録・archive の外部利用者・
 層違反の増加を検査する。試験用のモジュールは終了時に削除する。
+imports・downstream_imports・reimport の回帰試験は `python3 scripts/refactor/test_targets_imports.py`。
+
+## 分割後の import の証拠（IF-W0-3 §10）
+
+`imports` は元モジュール名と移し先モジュール名の **両方** をキーとする辞書で、
+値はそれぞれの分割・最小化後の完全な import 一覧（重複なし）とする。
+省略時は従来どおり元の import を保持した分割を模擬する。
+
+```json
+"imports": {
+  "SerrePositivity.X.Y": ["Mathlib.Data.Nat.Basic"],
+  "SerrePositivity.InfinityCategories.Core.Y": ["SerrePositivity.X.Y"]
+}
+```
+
+この指定は、専用 worktree で `split_module.py --apply --prune-imports` を実行し、
+前後の snapshot・保存比較・影響するモジュールのビルドが成功した記録から写す。
+試験終了後は元のソースへ復元する。証拠のログと import 一覧の対応を各窓の文書に記載する。
+`imports` 自体はビルド成功を証明するものではない。未検証の import を書いて閉包を小さく見せない。
+validator はキー、値の型、自己 import、存在しないプロジェクトモジュール、
+循環、および snapshot が要求する両側間の依存方向が保持されることを検査する。
+複数 split をまとめる場合は、各試験の import 一覧を適用した後、他の split が要求する
+利用側の public export 用 import 追加を合成する。本文の分割と import だけの追加は区別し、
+合成した追加辺を結果の `consumer_import_additions` に記録する。
+全対象の改名はこの合成の後で反映する。
+
+結果の before/after には tier ごとの `entry_edges` も含む。
+
+
+### move の imports（IF-W0-3 §10.4）
+
+move では `imports` のキーは移動先 `dest` の1件だけとし、値は縮めた import の完全な配列とする。
+その場の最小化で証拠を取り、名前変更は validator が全対象へまとめて適用する。
+`python3 -B scripts/refactor/prune_imports.py MODULE --output proof.json` は、
+元のモジュール名のまま最小化・保存比較・下流ビルドを行い、既定でソースを復元する。
+`--snapshot FILE` は現ソースと一致する既存 snapshot を使い、`--apply` は成功時だけ変更を残す。
+move の証拠には前後の保存比較・下流ビルド・復元がすべて成功した記録を用いる。
+
+### 下流の import 補充（IF-W0-3 §10.6）
+
+`downstream_imports` は「移動前の下流モジュール名 → 追加した直接 import の配列」。
+既存の import を置換せず追加し、最後に全 move の改名を反映する。
+自己参照、循環、存在しない対象・依存先、重複は拒否する。省略は空の追加と同じ。
+prune は下流ビルドの全ログを検査する。失敗時は元ソースで対象をビルド・snapshot 採取し、
+使用定数の定義元で不足した import を補う。補充後のビルドと宣言保存比較を通し、
+影響する下流全体を再ビルドする。補充で解消しない場合は失敗し復元する。
+証拠試行では補充した下流ファイルも復元する。出力の additions を計画にそのまま写し、
+手作業の実施計画にも記載する。validator の模擬成功だけでビルド証拠の代用にはしない。
+
+### reimport（IF-W0-3 §10.8）
+
+`action: "reimport"` は移動せず import の完全な一覧を置換する。
+`dest` は `module` と等しく、`moved`・`keep` は空配列。
+`imports` は必須で、キーは当該モジュールの1件だけ。`downstream_imports` も使える。
+この action では既存の同名ファイルを認めるが、他の項目との重複・自己参照・循環は拒否する。
+ルート名 `SerrePositivity` も指定できる。Stable・F2・ルートの入口ファイルは保存比較をせず、
+一時適用してビルドと層検査を確かめ、復元する。それ以外の宣言を持つファイルでは保存比較も必要。
+
+### 外部定義の生成補題（IF-W0-3 §10.7）
+
+snapshot の `environment_parent` は環境で宣言として存在する最長の真の名前接頭辞、
+`parent_module` はその定義元。ソースの明示的宣言を優先する。同じモジュールの親は補助宣言として扱う。
+別モジュールの親を持つソースにない定数は分割から除外し、比較結果の `transient.before/after`
+と分割計画の `transient` に名前を記録する。親を解決できないソース外定数は分割を STOP する。
+
+### 宣言位置・属性の帰属（IF-W0-3 §10.10–10.11）
+
+snapshot の `source_range` は属性の行を含む開始・終了行と列、および宣言名の位置を記録する。
+無名 instance は位置でコマンドと対応づけ、環境が付けた `inst…` 名を moved/keep に用いる。
+生成定数の帰属は、ソース宣言の範囲内の位置、private 接頭辞を正規化した最長の真の宣言接頭辞、
+同一モジュールの親名に続く承認済み接尾辞の順に決める。
+接尾辞は `assoc`・`apply`・`symm_apply`・`fst`・`snd`・`coe`・`hom`・`inv`・`inj`・`injEq` に限る。
+外部の親を持つものは transient とし、どの規則でも帰属しないものは STOP する。
+保存比較は属性で生成された補題も含み、証明内部の `._proof_<数字>` 補助のみ比較から除く。
+
+ファイル内の宣言への attribute は宣言の直後へ移し、外部名の local/scoped 属性は同じ section 内で両側へ写す。
+外部名のグローバル属性は keep に残し、moved の後続宣言が依存しうる場合は STOP する。
+`open … in`・`set_option … in`・`variable … in` は宣言と一体として扱う。
+`#min_imports` の候補がコンパイルしない場合は元の import に戻してから、
+ビルドと保存比較を満たす import の除去だけを採用する。結果に `min_imports_fallback` を記録する。
