@@ -1,0 +1,15 @@
+{
+  "status": "PLANNING_ONLY_RECOMPUTE_AFTER_MAIN",
+  "graph_source": ".lake/verify/ifw0-3-addendum13/baseline-graph.json",
+  "source_base": "831ad0de9",
+  "r79_files": 635,
+  "move_count": 1259,
+  "split_count": 12,
+  "known_downstream_consumers": 22,
+  "direct_move_importers": 2234,
+  "before_affected_count": 20208,
+  "after_build_count": 20220,
+  "snapshot_before_count": 2970,
+  "snapshot_after_count": 2982,
+  "policy": "IF-W0-3 §10.16"
+}
