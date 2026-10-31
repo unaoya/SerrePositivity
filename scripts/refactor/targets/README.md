@@ -82,10 +82,11 @@ imports・downstream_imports・reimport の回帰試験は `python3 scripts/refa
 `imports` 自体はビルド成功を証明するものではない。未検証の import を書いて閉包を小さく見せない。
 validator はキー、値の型、自己 import、存在しないプロジェクトモジュール、
 循環、および snapshot が要求する両側間の依存方向が保持されることを検査する。
-複数 split をまとめる場合は、各試験の import 一覧を適用した後、他の split が要求する
-利用側の public export 用 import 追加を合成する。本文の分割と import だけの追加は区別し、
-合成した追加辺を結果の `consumer_import_additions` に記録する。
-全対象の改名はこの合成の後で反映する。
+複数 split でも、利用元への分割先 import は自動追加しない（§10.14）。
+public import、simp・instance、本文中の名前だけから補充を決めず、元の import を保持する。
+各試験の `imports` を適用後、明記された `downstream_imports` だけを合成し、全 move の改名を反映する。
+互換性のため結果の `consumer_import_additions` は残すが常に空。補充は `downstream_imports` に記録する。
+古い plan.json の利用元への自動追加は適用せず、宣言リストから計画を再生成する。
 
 結果の before/after には tier ごとの `entry_edges` も含む。
 
@@ -104,11 +105,15 @@ move の証拠には前後の保存比較・下流ビルド・復元がすべて
 `downstream_imports` は「移動前の下流モジュール名 → 追加した直接 import の配列」。
 既存の import を置換せず追加し、最後に全 move の改名を反映する。
 自己参照、循環、存在しない対象・依存先、重複は拒否する。省略は空の追加と同じ。
-prune は下流ビルドの全ログを検査する。失敗時は元ソースで対象をビルド・snapshot 採取し、
-使用定数の定義元で不足した import を補う。補充後のビルドと宣言保存比較を通し、
-影響する下流全体を再ビルドする。補充で解消しない場合は失敗し復元する。
-証拠試行では補充した下流ファイルも復元する。出力の additions を計画にそのまま写し、
-手作業の実施計画にも記載する。validator の模擬成功だけでビルド証拠の代用にはしない。
+束は全 split・move を適用してから下流ビルドを一回行い、失敗した利用元だけを補充候補にする（§10.12–14）。
+既存 prune の補充処理も、全ログと元の snapshot による使用定数の定義元を調べ、
+移動した定数は分割先に対応させる。補充先が `layers.json` の `core`
+（Simplicial・Core・Kan・Coherent・F1・F1B・HomotopyLimits・Stable・F2・StablePresentable）なら、
+import を足す前に STOP。利用元、エラー行に対応する失敗宣言、使用する移動宣言を報告する。
+位置が取れない場合は推測せずエラーの行を残す。中核への補充で分類の問題を隠してはならない。
+中核でない利用元には不足分だけを補い、ビルド・保存比較・層検査を通す。
+証拠試行では補充した下流も復元し、実証された追加だけを `downstream_imports` に写す。
+既に承認された W1 の補充は validator が引き続き合成する。静的 PASS はビルド・保存の証拠ではない。
 
 ### reimport（IF-W0-3 §10.8）
 

@@ -11,7 +11,7 @@ import sys
 
 import layer_check as lc
 from lean_source import parse_source, read_source
-from split_module import ROOT, module_path, prepare, obtain_snapshot, add_import
+from split_module import ROOT, module_path, prepare, obtain_snapshot
 
 FIELDS={'module','action','dest','moved','keep','attributes','candidate','note'}
 OPTIONAL_FIELDS={'imports','downstream_imports'}
@@ -111,7 +111,6 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
     after={n:set(ds) for n,ds in graph.items()}
     changed_sources={}
     split_plans=[]
-    consumer_additions={}
     for entry in entries:
         if entry['action']!='split': continue
         module=entry['module']
@@ -119,13 +118,10 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
         if snap is None: snap=obtain_snapshot(root,module)
         plan=prepare(root,module,entry['dest'],entry['moved'],snap,graph)
         split_plans.append(plan)
-        for mod,change in plan['changes'].items():
-            if mod in (plan['module'],plan['dest']):
-                changed_sources[mod]=change['after'];after[mod]=lc.imports(change['after'])
-            else:
-                consumer_additions.setdefault(mod,set()).update(
-                    lc.imports(change['after'])-lc.imports(change['before']))
-    # Apply each trial's exact headers, then compose other splits' public export additions.
+        for mod in (plan['module'],plan['dest']):
+            text=plan['changes'][mod]['after']
+            changed_sources[mod]=text;after[mod]=lc.imports(text)
+    # Apply exact headers, then only explicit downstream_imports (§10.14).
     # Evidence is reviewed by the coordinator; this field does not itself prove
     # compilation or preservation. It must be copied from the restored split trial.
     for entry in entries:
@@ -146,12 +142,6 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
             if missing: raise ValueError('downstream_imports refer to missing project modules: '+repr(sorted(missing)))
             downstream_additions.setdefault(mod,set()).update(deps)
             after[mod] |= deps
-    for mod,deps in consumer_additions.items():
-        after[mod] |= deps
-        text=changed_sources.get(mod)
-        if text is None: text=read_source(module_path(root,mod))
-        for dep in sorted(deps): text=add_import(text,dep)
-        changed_sources[mod]=text
     if split_plans:
         nodes,index,masks=lc.closure_masks(after)
         for plan in split_plans:
@@ -193,7 +183,7 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
                      'closure':{t:after_report['tiers'][t]['forbidden_module_count'] for t in lc.TIERS},
                      'entry_edges':{t:after_report['tiers'][t]['entry_edges'] for t in lc.TIERS}},
             'split_directions':[{'module':p['module'],**p['dependencies']} for p in split_plans],
-            'consumer_import_additions':{m:sorted(ds) for m,ds in sorted(consumer_additions.items())},
+            'consumer_import_additions':{},
             'downstream_imports':{renames.get(m,m):sorted(renames.get(d,d) for d in ds) for m,ds in sorted(downstream_additions.items())}}
     if return_graph: return result,graph,after,mentions,after_mentions
     return result

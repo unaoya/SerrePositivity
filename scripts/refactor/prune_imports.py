@@ -128,9 +128,9 @@ def prune_plan(root, plan, snapshot, apply_changes=False):
                 if rc==0: break
                 failures=failed_modules(output)
                 if not failures: raise RuntimeError('non-module downstream failure; see '+str(directory))
-                for failed in failures: repair_downstream(failed)
+                for failed in failures: repair_downstream(failed,output)
                 attempt+=1
-    def repair_downstream(module):
+    def repair_downstream(module,output):
         if module in modules: raise RuntimeError('pruned module failed downstream: '+module)
         # Recover a trustworthy snapshot from original sources, including public reexports.
         changed={m:read_source(path(m)) for m in plan['changes']}
@@ -145,10 +145,12 @@ def prune_plan(root, plan, snapshot, apply_changes=False):
         finally:
             for m,text in changed.items(): write_source(path(m),text)
         baseline=json.loads(before_file.read_text())
+        from split_module import downstream_repair_snapshot
+        repair_snapshot=downstream_repair_snapshot(module,baseline,plan,snapshot,output,config)
         # Only this plan's temporary sources differ from the captured graph.
         current={m:set(ds) for m,ds in graph.items()}
         for m in plan['changes']: current[m]=lc.imports(read_source(path(m)))
-        additions=missing_direct_imports(current,module,baseline)
+        additions=missing_direct_imports(current,module,repair_snapshot)
         if not additions: raise RuntimeError('no missing constant dependency to repair: '+module)
         from split_module import add_import
         original=read_source(path(module)); updated=original
