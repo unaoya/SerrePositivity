@@ -21,7 +21,6 @@ def publicHidden : Bool := hidden
 end IFW0Snapshot.Old
 '''
 
-
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     modules = ['SerrePositivity.IFW0Snapshot', 'SerrePositivity.IFW0SnapshotMoved']
@@ -38,10 +37,12 @@ def main():
         (OUT/'commands.json').write_text(json.dumps(results, indent=2)+'\n')
         print(json.dumps(row), flush=True)
         if rc != expected: raise RuntimeError(f'{label}: unexpected exit {rc}, see {OUT/(label+".log")}')
+    mapping = OUT/'names.json'
+    mapping.write_text(json.dumps({'IFW0Snapshot.New': 'IFW0Snapshot.Old'})+'\n')
     def snapshot(label, module):
         run(label+'-build', ['lake', 'build', module])
-        run(label, ['lake', 'env', 'lean', '--run', 'scripts/refactor/decl_snapshot.lean',
-                    '--modules', module, '--output', str(OUT/(label+'.json'))])
+        run(label, ['lake', 'env', 'lean', '-M', '40000', '--run', 'scripts/refactor/decl_snapshot.lean',
+                    '--modules', module, '--name-map', str(mapping), '--output', str(OUT/(label+'.json'))])
     def compare(label, other, expected, mapping=None):
         args = [sys.executable, 'scripts/refactor/compare_snapshots.py', str(OUT/'before.json'),
                 str(OUT/(other+'.json')), '--output', str(OUT/(label+'.json'))]
@@ -52,7 +53,8 @@ def main():
         files[0].write_text(BASE)
         snapshot('before', modules[0])
         rows = {r['name']: r for r in json.loads((OUT/'before.json').read_text())['declarations']}
-        assert rows['IFW0Snapshot.Old.token']['body'] is not None
+        assert all('type' not in row and 'body' not in row for row in rows.values())
+        assert rows['IFW0Snapshot.Old.token']['body_hash'] is not None
         assert rows['IFW0Snapshot.Old.sampleInstance']['attributes']['instance_priority'] == 1200
         assert rows['IFW0Snapshot.Old.c_eq']['attributes']['simp'] is True
         files[0].write_text(BASE.replace('def b : Bool := false', 'def b : Bool := true'))
@@ -66,9 +68,23 @@ def main():
         files[0].write_text(BASE)
         files[1].write_text(BASE.replace('IFW0Snapshot.Old', 'IFW0Snapshot.New'))
         snapshot('renamed', modules[1])
-        mapping = OUT/'names.json'; mapping.write_text(json.dumps({'IFW0Snapshot.Old': 'IFW0Snapshot.New'})+'\n')
+        renamed = json.loads((OUT/'renamed.json').read_text())
+        relocated = {r['name']: r for r in renamed['declarations']}
+        assert rows['IFW0Snapshot.Old.publicHidden']['body_hash'] == relocated['IFW0Snapshot.New.publicHidden']['body_hash']
+        assert rows['IFW0Snapshot.Old.c_eq']['type_hash'] == relocated['IFW0Snapshot.New.c_eq']['type_hash']
         result = compare('compare-renamed', 'renamed', 0, mapping)
         assert result['changes'] == []
+        wrong = OUT/'wrong-map.json'
+        wrong.write_text('{}\n')
+        run('reject-incompatible-map', [sys.executable, 'scripts/refactor/compare_snapshots.py',
+            str(OUT/'before.json'), str(OUT/'renamed.json'), '--name-map', str(wrong)], 2)
+        lib = OUT/'test-lib'
+        compiled = lib/'scripts/refactor/decl_snapshot.olean'
+        compiled.parent.mkdir(parents=True, exist_ok=True)
+        run('compile-dag-tool', ['lake', 'env', 'lean', '-o', str(compiled), 'scripts/refactor/decl_snapshot.lean'])
+        search = subprocess.check_output(['lake', 'env', 'printenv', 'LEAN_PATH'], cwd=ROOT, text=True).strip()
+        run('compare-sharing', ['lake', 'env', 'env', f'LEAN_PATH={lib}:{search}', 'lean',
+                                'scripts/refactor/test_dag_hash.lean'])
         (OUT/'status.txt').write_text('PASS\n')
         print('PASS: body change, simp removal, namespace relocation, opaque value, instance priority', flush=True)
     finally:
