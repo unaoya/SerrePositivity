@@ -312,3 +312,16 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 2. **失敗したら二分**：束のビルドが失敗し、原因のモジュールが失敗の出力から特定できないときだけ、束を半分に割って繰り返す。
 3. **途中の確認は直接 importer まで**：個々の split の形だけを確かめたいときは、分割した 2 本とその直接 importer だけを `lake build <module>` で見る。下流の全ビルドは束の最後の一回に限る。
 4. **他の worktree と同時に全ビルドしない**：10-31 は dgw1・ifw0-3・main の 3 つの全ビルドが同時に走り、どれも単独の 2〜3 倍遅くなった（lean プロセス 31 本・34 GB）。全ビルドの前に `ps -axo command= | grep '[l]ake build'` で他の全ビルドがないことを確かめ、あるなら終わるのを待つか、§5 の報告に「待ち」と書く。
+
+### 10.13 追記（10-31、R72 preflight の停止の承認と、DG 優先中の ∞ 側の作業）
+
+**承認**：R72 preflight の停止報告（8 本 PASS、`StandardCosimplicial` は W2a の束へ、8 本とも復元済み、385 コマンドで想定外の失敗 0、所有範囲外の差分なし）を確認した。
+
+**DG-W1 の取り込みが終わるまで、∞ 側はビルドを伴う作業をしない**（10-31 ユーザー判断：DG を優先）。その間にできることは次の二つ。
+
+1. **道具の変更をコミットする。** worktree に未コミットの道具の変更（`scripts/refactor/{compare_snapshots.py, decl_snapshot.lean, lean_source.py, prune_imports.py, split_module.py}` の 10 本の修正と、`scripts/refactor/` の試験 12 本・`targets/` の 17 本・`formalization-plans/archive/` の 1 本）がある。§10.9〜10.11 の実装分と試行の記録なので、infra/if-w0-3 に `git commit --only` でコミットする（Lean のソースは含まないのでビルド不要）。試験 `python3 -m pytest scripts/refactor` または既存の `test_*.py` を通してから。コミットは「道具」「試験」「記録（targets・report）」の 3 本に分ける。
+2. **W2a の束の計画（`targets/w2a.json`）をビルドなしで作る。** R72 の 12 本の split（preflight の plan.json を使う。`StandardCosimplicial` も含める）、W2a の move・reimport を一つの対象一覧にまとめ、`validate_targets.py` を通す。各項目の `downstream_imports` は preflight で分かった分を写し、未知のものは空にして束のビルドで補う。`w2a.md` に、束の実行手順（§10.12：全適用 → DG-W1 後の main を取り込み → `.lake/build` を main から複製 → 統合先と下流を一回ビルド → 保存検査 → verify）と、模擬に要る時間の見積もり（下流の本数 × 直近の実測）を書く。
+
+**main の merge・`.lake/build` の複製・束の実行は、Claude が「DG-W1 を main に入れた」と伝えてから。** 複製は §5a の手順（`ps` で他の `lake build` がないことを確かめ、`rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/`、終了コード 23・24 で消えたのが書き換え中の出力だけなら受け入れる）。
+
+**IF-W0-4 の内容の変更（10-31）**：`merge_modules.py` と、全ビルドの排他（`with_build_lock.sh`）・`.lake/build` の温め（`warm_build_dir.sh`）の道具は DG の Codex が DG-W2(a) で作る。IF-W0-4 に残るのは R75（削除 29 本）、`layers.json` への CategoryTheory／Coxeter の基盤登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB、未記録は 20 GB と仮定）。
