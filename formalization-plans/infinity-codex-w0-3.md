@@ -325,3 +325,20 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **main の merge・`.lake/build` の複製・束の実行は、Claude が「DG-W1 を main に入れた」と伝えてから。** 複製は §5a の手順（`ps` で他の `lake build` がないことを確かめ、`rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/`、終了コード 23・24 で消えたのが書き換え中の出力だけなら受け入れる）。
 
 **IF-W0-4 の内容の変更（10-31）**：`merge_modules.py` と、全ビルドの排他（`with_build_lock.sh`）・`.lake/build` の温め（`warm_build_dir.sh`）の道具は DG の Codex が DG-W2(a) で作る。IF-W0-4 に残るのは R75（削除 29 本）、`layers.json` への CategoryTheory／Coxeter の基盤登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB、未記録は 20 GB と仮定）。
+
+### 10.14 追記（10-31、W2a 草案の validator FAIL への回答：分割先の import は「使う利用元にだけ」）
+
+**承認**：道具・試験・記録の 3 コミット（3a0134b59・c6ed978e2・86fd55f38）、W1 のルート import の更新（786 → 785）、W2a 草案（move 1,197・split 9・reimport 2、R72 の 3 本は分割不要）を確認した。validator FAIL で止めた判断は正しい。
+
+**原因の確認**：`split_module.prepare` は、分割元を `public import` する利用元のすべてに分割先の import を足す。R72 の分割先は ModelBridge なので、中核の利用元（`IC.F2.Compact.WeakUniverse`・`IC.HomotopyLimits.KanTensorFrameAdjunction`）が、使ってもいない Model 側の宣言のために ModelBridge への辺を持つ。本文に移動宣言の使用はない。
+
+**方針（承認）**：分割先の import は「機械的に全利用元へ」ではなく、**使う利用元にだけ**足す。
+
+1. **既定を変える**：分割元の利用元には、分割先の import を**足さない**（`keep` 側を import し続けるだけ）。束のビルドで失敗した利用元にだけ、失敗の出力から分割先の直接 import を補う（§10.6 の `downstream_imports` の仕組みと同じ）。validate_targets の合成も同じ規則にする（自動追加を合成しない。`downstream_imports` に書かれた分だけ合成する）。
+2. **中核の利用元が失敗したら STOP**：補充先が中核（Simplicial・Core・Kan・Coherent・F1・F1B・HomotopyLimits・Stable・F2・StablePresentable）なら、その利用元は Model 側の宣言を本当に使っている。これは R72 の「Model の宣言」の分類の誤りか、その利用元自身が ModelBridge に属するべきかのどちらかなので、補充せず止めて報告する（利用元・失敗した宣言・使っている移動宣言の名前）。
+3. **中核でない利用元**（HA・EInfinity・KST・Sp）への補充はそのまま行う（層の規則に反しない）。
+4. 道具の変更（`split_module.py`・`validate_targets.py`・`targets/README.md`）と試験（中核の利用元に import が足されないこと、ビルド失敗からの補充が中核で止まること）を加え、w1.json＋w2a.json の静的検査を再実行する。禁止辺 2 本と閉包の増加が消えて PASS になるはず。それでも増える根があれば、その鎖を報告する。
+
+**束の構成（提案、ユーザー確認待ち）**：W1 を未適用のまま W2a と一つの束にする案（草案の前提）に加えて、**R79（HA 約 600・CT 12・ArrowFactorization 3 の docstring の書き換え）と IF-W0-4 の R75（削除 29 本）も同じ束に入れる**。HA の docstring を変えると HA の下流（ほぼ全部）が再ビルドになるので、別の窓にすると全ビルドが一回増える。束の下流は約 20,000 本、単独なら 1 本 1.0〜1.5 秒として 6〜8 時間（草案の 12.56 時間は 3 セッション同時の実測に基づく過大な見積もり）。この束を適用してから verify を通すまで、main の HA・∞・KST・EInfinity 側には他セッションの取り込みを入れない（論文の層のコーディネータに 1 日の凍結を依頼する）。
+
+**順序**：DG-W1 を main に入れる（10-31）→ ∞ 側は main を取り込み `.lake/build` を複製 → 上の 1〜4 を実装して静的検査 PASS → 束の適用 → 下流の一回ビルド（機械を独占。DG 側はその間、ビルドの要らない道具の作業 DG-W2(a)）→ 保存検査 → verify → 取り込み。DG-W2(b) の束のビルドは、その後。
