@@ -2,6 +2,35 @@
   "schema_version": 1,
   "layers": [
     {
+      "name": "Foundation",
+      "rank": -1,
+      "prefixes": [
+        "SerrePositivity.CategoryTheory.Monoidal",
+        "SerrePositivity.CategoryTheory.Enriched",
+        "SerrePositivity.CategoryTheory.Limits",
+        "SerrePositivity.CategoryTheory.Quiver",
+        "SerrePositivity.CategoryTheory.Simplex",
+        "SerrePositivity.CategoryTheory.Under",
+        "SerrePositivity.CategoryTheory.AdjunctionHomLaws",
+        "SerrePositivity.CategoryTheory.CommaIdentities",
+        "SerrePositivity.CategoryTheory.FiniteBijection",
+        "SerrePositivity.CategoryTheory.FiniteBijectionAction",
+        "SerrePositivity.CategoryTheory.FiniteBijectionInduction",
+        "SerrePositivity.CategoryTheory.FiniteBijectionShift",
+        "SerrePositivity.CategoryTheory.FiniteBijectionSum",
+        "SerrePositivity.CategoryTheory.FiniteBlockEquiv",
+        "SerrePositivity.CategoryTheory.FunctorTransport",
+        "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport",
+        "SerrePositivity.CategoryTheory.PointwiseAdjunction",
+        "SerrePositivity.CategoryTheory.RelativeArrow",
+        "SerrePositivity.GroupTheory.Coxeter",
+        "SerrePositivity.CategoryTheory.Groupoid.ThinComponents",
+        "SerrePositivity.CategoryTheory.LiftingProperties.Under",
+        "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration",
+        "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      ]
+    },
+    {
       "name": "Simplicial",
       "rank": 0,
       "prefixes": [
@@ -147,7 +176,8 @@
     "Core": {
       "layers": [
         "Core",
-        "Simplicial"
+        "Simplicial",
+        "Foundation"
       ],
       "external_prefixes": [
         "Mathlib"
@@ -157,7 +187,16 @@
       "layers": [
         "Kan",
         "Core",
-        "Simplicial"
+        "Simplicial",
+        "Foundation"
+      ],
+      "external_prefixes": [
+        "Mathlib"
+      ]
+    },
+    "Foundation": {
+      "layers": [
+        "Foundation"
       ],
       "external_prefixes": [
         "Mathlib"
