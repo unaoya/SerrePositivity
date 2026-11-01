@@ -666,6 +666,7 @@ tensorやM9で平坦性が崩れた場合の再開に使える。
 
 @[expose] public section BoundaryInterchange
 universe u v w
+set_option maxHeartbeats 800000
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
