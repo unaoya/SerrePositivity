@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionPresentation
+public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeftRestrictionCoherence
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionCoherence
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorRightRestrictionCoherence
@@ -11,15 +11,15 @@ public import SerrePositivity.DifferentialGraded.Derived.LeftUnitOuterRestrictio
 public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionCoherence
 public import SerrePositivity.DifferentialGraded.Derived.RestrictionCoherence
 public import SerrePositivity.DifferentialGraded.Derived.RightUnitRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Resolution.BimoduleDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorDisk
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependDifferential
-public import SerrePositivity.DifferentialGraded.Resolution.Coherence
-public import SerrePositivity.DifferentialGraded.Resolution.DerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Resolution.MiddleCompositionComparison
-public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionIdentity
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonYoneda
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
+
 
 /-! # U12e-generalの再利用可能な成果の独立入口
 

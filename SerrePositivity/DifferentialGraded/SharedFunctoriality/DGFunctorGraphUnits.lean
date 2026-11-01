@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphComposition
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionIdentity
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # 元の graph 合成比較の恒等入力との両立
 概要：入力関手の等号移送を保ち、graph 合成比較と実単位同型を照合する。

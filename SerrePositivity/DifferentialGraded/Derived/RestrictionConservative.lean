@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionTriangles
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
-public import SerrePositivity.DifferentialGraded.Perfect.Generators
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-! # 本質的全射なdg関手に沿う導来制限の保守性
 

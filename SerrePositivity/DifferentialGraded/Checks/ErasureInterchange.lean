@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureInterchange
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全次数tensor交差符号とε消去の反交換の受入監査 -/

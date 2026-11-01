@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.Uncurry
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 
 /-! # 実際のuncurried dg関手と両作用の回復 -/
 @[expose] public section

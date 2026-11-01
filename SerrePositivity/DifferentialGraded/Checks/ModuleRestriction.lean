@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRestrictionKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg加群制限の全Hom自然性・分裂・余極限・相対K-flat帰着の監査

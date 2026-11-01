@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherence
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionScalarExtension
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionPerfectInverse
-public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectAssociator
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence
 
 /-! # U16：主導来kernel作用・Morita・Perfと係数変更の統合入口

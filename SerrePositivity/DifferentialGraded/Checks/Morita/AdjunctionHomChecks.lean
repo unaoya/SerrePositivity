@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionHom
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意kernelの通常Hom dg関手の全Hom・閉零評価監査

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoproductSupport
-public import SerrePositivity.DifferentialGraded.Presentation.FiniteRowCoefficientBound
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure
 /-!
 概要：全整数シフトの自由 sphere の直和間の実閉射を、κ個以下の行有限係数から回収する。
 方針：各自由 sphere の閉射の有限 support を選択し、余積の普遍性で元の全射を同定する。

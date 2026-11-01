@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelGeneratorHom
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意kernelのtelescopeと生成元Hom比較の監査

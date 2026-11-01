@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRightElements
-public import SerrePositivity.DifferentialGraded.Tensor.ElementMap
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-! # graph tensorの評価と右作用の整合性
 

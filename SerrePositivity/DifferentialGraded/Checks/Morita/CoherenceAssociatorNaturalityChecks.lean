@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorRightNaturality
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 
 /-! # 主導来kernel結合経路の自然性監査
 

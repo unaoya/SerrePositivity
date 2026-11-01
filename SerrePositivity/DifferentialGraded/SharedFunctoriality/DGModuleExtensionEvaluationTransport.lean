@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # tensor の元の評価を加群対象の評価へ移す
 概要：任意の左パラメータの値で、元の tensor 射と結合同型を回収する。

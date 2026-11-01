@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniRightAction
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 二重balanced族の左反復coend普遍性と右作用の検査 -/

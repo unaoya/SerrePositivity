@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionBalancedNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 非 flat な係数変更と相対 tensor の検査 -/

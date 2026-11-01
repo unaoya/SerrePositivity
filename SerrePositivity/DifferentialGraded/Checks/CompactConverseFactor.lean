@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseExtensions
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-! # compact 有限因子分解と Neeman 型拡大閉性の監査 -/
 @[expose] public section

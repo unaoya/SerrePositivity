@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.RightTensorLeftFunctor
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveLeftQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 
 /-! # 左準同型による導来tensor自然変換の可逆性 -/
 @[expose] public section

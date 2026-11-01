@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionPresentation
+public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 
 /-! # 直接の中間制限と既存の積dg圏表示によるbimodule制限の同定
 

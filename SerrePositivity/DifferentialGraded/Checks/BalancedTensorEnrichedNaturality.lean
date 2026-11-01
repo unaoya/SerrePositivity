@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaEnriched
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
 /-! # tensorの左右交換とYonedaの全Hom自然性の検査 -/
 @[expose] public section

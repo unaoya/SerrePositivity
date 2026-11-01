@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturality
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 /-!
 概要：代表加群からの実閉射を、対象での零 cycle と線形に同定する。
 方針：全次数 Yoneda 同型を単位複体からの射に適用する。

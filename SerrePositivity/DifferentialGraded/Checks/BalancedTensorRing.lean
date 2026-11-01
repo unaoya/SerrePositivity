@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Ring
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 一対象環のbalanced tensorと既存非有界tensorの比較検査 -/

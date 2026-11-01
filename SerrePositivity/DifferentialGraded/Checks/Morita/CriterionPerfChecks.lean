@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerf
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentity
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import Mathlib.Data.ZMod.Basic
 
 @[expose] public section

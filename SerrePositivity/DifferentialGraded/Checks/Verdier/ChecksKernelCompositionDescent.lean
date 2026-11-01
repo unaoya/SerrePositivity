@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionComparison
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
+
 
 /-! # 実際の kernel 合成比較の指定商への降下の公理監査 -/
 @[expose] public section

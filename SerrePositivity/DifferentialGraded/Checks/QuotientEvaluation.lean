@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Evaluation
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 評価の微分・最終Homのchain map・指定収縮保存の受入監査 -/

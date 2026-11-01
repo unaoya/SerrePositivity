@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionPaths
+public import SerrePositivity.DifferentialGraded.Quotient.Scalar
 public import Mathlib.Data.ZMod.Basic
 
 @[expose] public section

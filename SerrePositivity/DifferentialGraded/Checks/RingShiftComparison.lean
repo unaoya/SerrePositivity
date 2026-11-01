@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingShiftComparison
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 一対象Aの評価・主導来比較のshift coherenceの監査 -/

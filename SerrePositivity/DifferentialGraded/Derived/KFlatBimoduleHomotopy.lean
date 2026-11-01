@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.CylinderKFlat
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Derived.KFlatBimoduleLocalization
 
 /-! # K-flat部分圏の局所化で全dg自然な加群ホモトピーを同一視する

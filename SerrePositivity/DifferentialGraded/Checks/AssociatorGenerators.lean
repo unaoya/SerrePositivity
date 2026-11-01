@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorCochainExt
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleElements
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 結合比較の三重生成元と全次数作用の検査 -/

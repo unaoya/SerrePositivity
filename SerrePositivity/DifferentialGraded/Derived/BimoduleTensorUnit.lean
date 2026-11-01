@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorMaps
-public import SerrePositivity.DifferentialGraded.Tensor.UnitFunctors
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # 対角bimoduleを固定した導来合成の右単位自然同型
 

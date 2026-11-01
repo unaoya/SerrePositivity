@@ -2,8 +2,8 @@ module
 public import SerrePositivity.DifferentialGraded.Functor.Tensor
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
-public import SerrePositivity.DifferentialGraded.Tensor.ObjectwiseKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComplex
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
 /-! # 局所K-flat性を明示したtensor積dg関手の準同値保存
 

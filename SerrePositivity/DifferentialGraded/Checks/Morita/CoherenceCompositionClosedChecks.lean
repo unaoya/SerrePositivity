@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosed
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolutionModel
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 通常合成・相対K-flat入力計算と自然な解像度モデルの監査

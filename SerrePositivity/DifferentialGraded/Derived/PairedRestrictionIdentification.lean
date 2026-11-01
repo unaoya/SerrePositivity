@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionPresentation
+public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 public import SerrePositivity.DifferentialGraded.Derived.MiddleRestrictionIdentification
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleLiftIso
 

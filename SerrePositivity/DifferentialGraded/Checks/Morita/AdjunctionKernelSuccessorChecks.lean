@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSuccessor
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 実際の主導来kernel作用の初期被覆と関係除去の監査

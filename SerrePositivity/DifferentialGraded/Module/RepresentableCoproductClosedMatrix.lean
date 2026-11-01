@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport
 public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
 public import SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage
-public import SerrePositivity.DifferentialGraded.Presentation.FiniteRowCoefficientBound
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure
 /-!
 概要：代表加群の直和間の実閉射を、κ個以下の元の閉射からなる行有限行列で表示する。
 方針：各包含からの閉射を有限 support へ分解し、Yoneda の全 Hom 同型で係数を戻す。

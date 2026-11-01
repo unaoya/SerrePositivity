@@ -1,67 +1,67 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Bimodule.Action
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionElement
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionEvaluation
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Bimodule.Category
-public import SerrePositivity.DifferentialGraded.Bimodule.ClosedComponents
-public import SerrePositivity.DifferentialGraded.Bimodule.ClosedIso
-public import SerrePositivity.DifferentialGraded.Bimodule.ClosedMapFamily
-public import SerrePositivity.DifferentialGraded.Bimodule.ClosedTransforms
-public import SerrePositivity.DifferentialGraded.Bimodule.CochainComposition
-public import SerrePositivity.DifferentialGraded.Bimodule.CylinderKFlat
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Bimodule.Evaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.ExplicitRightModuleFunctor
-public import SerrePositivity.DifferentialGraded.Bimodule.Ext
-public import SerrePositivity.DifferentialGraded.Bimodule.Identity
-public import SerrePositivity.DifferentialGraded.Bimodule.IdentityTranspose
-public import SerrePositivity.DifferentialGraded.Bimodule.Isomorphism
-public import SerrePositivity.DifferentialGraded.Bimodule.LeftEvaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleLeftRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionPresentation
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionUncurry
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRightRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Bimodule.OfActions
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionPresentation
-public import SerrePositivity.DifferentialGraded.Bimodule.ParameterEvaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.ParameterFamily
-public import SerrePositivity.DifferentialGraded.Bimodule.ParameterSquare
-public import SerrePositivity.DifferentialGraded.Bimodule.QuasiIso
-public import SerrePositivity.DifferentialGraded.Bimodule.RelativeKFlat
-public import SerrePositivity.DifferentialGraded.Bimodule.ResolvedRestrictionAugmentation
-public import SerrePositivity.DifferentialGraded.Bimodule.RestrictedFree
-public import SerrePositivity.DifferentialGraded.Bimodule.RestrictedRepresentable
-public import SerrePositivity.DifferentialGraded.Bimodule.RestrictedRepresentableAction
-public import SerrePositivity.DifferentialGraded.Bimodule.RightModuleComparison
-public import SerrePositivity.DifferentialGraded.Bimodule.RightRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.RightRestrictionLeftEvaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.RightRestrictionNaturality
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeResolution
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeRetarget
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorComparison
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorFunctor
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleComparison
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleFull
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleFunctor
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleMaps
-public import SerrePositivity.DifferentialGraded.Bimodule.Transpose
-public import SerrePositivity.DifferentialGraded.Bimodule.Uncurry
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryClosedFunctor
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryComposition
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryHom
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryNaturality
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueActions
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueExt
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueIdentity
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueIsomorphism
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.DifferentialGraded.Category.Comparison
 public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
@@ -462,132 +462,132 @@ public import SerrePositivity.DifferentialGraded.Derived.TensorComputationNatura
 public import SerrePositivity.DifferentialGraded.Derived.TensorResolutionComparison
 public import SerrePositivity.DifferentialGraded.Derived.Triangulated
 public import SerrePositivity.DifferentialGraded.Derived.VerdierComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ActualScalarEnd
-public import SerrePositivity.DifferentialGraded.Endomorphism.ActualScalarEvaluation
+public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction
+
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Endomorphism.CompactGenerator
-public import SerrePositivity.DifferentialGraded.Endomorphism.CompactHomDetectsIso
-public import SerrePositivity.DifferentialGraded.Endomorphism.CompactUnitCounit
-public import SerrePositivity.DifferentialGraded.Endomorphism.Compatibility
-public import SerrePositivity.DifferentialGraded.Endomorphism.ConeConnectingComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ConeTriangleComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ConeTriangleMapIso
-public import SerrePositivity.DifferentialGraded.Endomorphism.CoproductHomComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEquivalenceCompactGenerator
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedEvaluation
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedGenerators
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHom
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHomEquiv
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHomHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedLocalizingGeneration
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedProjectiveHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedScalarTensor
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedShiftCoherence
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensor
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensorEvaluation
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensorNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTensorTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedTriangleComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.DerivedUnitAll
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementHomotopyAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementShiftTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementTensorComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.EnhancementTensorTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.EssentialImageRetracts
-public import SerrePositivity.DifferentialGraded.Endomorphism.EssentialImageShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.EssentialImageTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.Evaluation
-public import SerrePositivity.DifferentialGraded.Endomorphism.EvaluationAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.GeneratorHomIso
-public import SerrePositivity.DifferentialGraded.Endomorphism.GradedSplitImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.GradedSplitOfElements
-public import SerrePositivity.DifferentialGraded.Endomorphism.GradedSplitRelations
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomBimodule
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonCone
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonRetracts
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomMapNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomPreservesCoproducts
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomotopyAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomotopyImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomotopyShiftCoherence
-public import SerrePositivity.DifferentialGraded.Endomorphism.IsoLocus
-public import SerrePositivity.DifferentialGraded.Endomorphism.LargeHomBimodule
-public import SerrePositivity.DifferentialGraded.Endomorphism.LocalizationHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleConeImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleEvaluation
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleFunctorMaps
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleInsertion
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleShiftImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleTensorElements
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectDGComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectEquivalence
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectScalarTensor
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectShiftTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectTensor
-public import SerrePositivity.DifferentialGraded.Endomorphism.PerfectTensorDG
-public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveCriterion
-public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.QuasiFullyFaithful
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarClosedMap
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarConeTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarDerivedPerfect
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarDerivedProjectiveComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEnhancementClosed
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEnhancementDerivedComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEnhancementShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEvaluation
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarEvaluationActual
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarGradedSplit
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomCone
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomElementComponents
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomElements
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomFactors
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomHomotopyRetracts
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomRetracts
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomShortExact
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarHomotopyShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleConeImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleDGFunctor
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleHom
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleHomotopy
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarModuleShiftImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectEnhancement
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectHom
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarPerfectShiftTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarProjectiveImage
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarReconstructionTriangles
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarRepresentable
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarShiftAddition
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarShiftCoherence
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarYonedaHom
-public import SerrePositivity.DifferentialGraded.Endomorphism.ScalarYonedaIso
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftAddCoherence
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftAdditionElements
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftConeComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNaturalTransformation
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNormalization
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftZeroCoherence
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShortExactComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.TensorProjective
-public import SerrePositivity.DifferentialGraded.Endomorphism.ThickHomComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.ZeroHomComponents
+public import SerrePositivity.DifferentialGraded.Endomorphism.Perfect
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Enhancement
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Functors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.PerfectStability
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Functor.Basic
 public import SerrePositivity.DifferentialGraded.Functor.ClosedComplex
 public import SerrePositivity.DifferentialGraded.Functor.ClosedConjugationPasting
@@ -800,803 +800,803 @@ public import SerrePositivity.DifferentialGraded.Module.Yoneda
 public import SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage
 public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
 public import SerrePositivity.DifferentialGraded.Module.Zero
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownRelations
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeed
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSuccessor
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherence
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionDerived
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionHom
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionHomClosure
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionHomGeneration
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionHomTriangles
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelColimits
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelCoproducts
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelGeneratorHom
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequence
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSuccessor
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescope
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionPerfectInverse
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionScalarExtension
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionSquare
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorClosed
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorKFlat
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorMain
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModels
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPaths
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorRightNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceComposition
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosed
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionDerivedNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionFamilies
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlat
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlatNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionLocalization
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturalIso
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionValueNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionWhisker
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentity
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceLeftUnitMain
-public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectAssociator
-public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectUnit
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceProjectiveExt
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceUnitClosed
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceUnitDerived
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceUnitMain
-public import SerrePositivity.DifferentialGraded.Morita.Criterion
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerived
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditions
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
+
+
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproducts
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedFullyFaithful
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedGeneration
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproducts
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomLocus
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomTriangles
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerf
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfConditions
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfDGFunctorShift
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfFullHomCriterion
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfFullyFaithful
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneration
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneratorHomComparison
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparison
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonDegrees
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomComparisonZero
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfHomInduction
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfRelativeFullyFaithful
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedAction
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedHom
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfResolvedHomShift
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTensorHomComparison
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerived
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaAction
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaHomology
-public import SerrePositivity.DifferentialGraded.Morita.KernelAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.KernelAugmentationNaturality
-public import SerrePositivity.DifferentialGraded.Morita.KernelBasic
-public import SerrePositivity.DifferentialGraded.Morita.KernelComparisonComponents
-public import SerrePositivity.DifferentialGraded.Morita.KernelComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctor
-public import SerrePositivity.DifferentialGraded.Morita.KernelNaturality
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolution
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolutionModel
-public import SerrePositivity.DifferentialGraded.Morita.KernelTensor
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherence
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectEnhancementComparison
-public import SerrePositivity.DifferentialGraded.Morita.PerfectFunctoriality
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelColumns
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluationNaturality
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelImage
-public import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceDerivedGraph
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceEndomorphismComparison
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphAction
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphNaturality
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceProducts
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernel
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelAction
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalanced
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedModule
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBaseChangeNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedComparison
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelFunctor
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopy
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalization
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedComposition
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquare
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelMapNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectSquare
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelProduct
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelTensor
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionOutputEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfect
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfectSquares
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorNaturality
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalence
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.KernelComparison
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.PerfectSquares
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.U16
 public import SerrePositivity.DifferentialGraded.Morita.U16a
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
-public import SerrePositivity.DifferentialGraded.Perfect.Compact
-public import SerrePositivity.DifferentialGraded.Perfect.CompactComparison
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverse
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseExtensions
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseFactor
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseResolutionStages
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseSequential
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseSequentialCone
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseTelescope
-public import SerrePositivity.DifferentialGraded.Perfect.CompactRetracts
-public import SerrePositivity.DifferentialGraded.Perfect.CompactShift
-public import SerrePositivity.DifferentialGraded.Perfect.CompactTriangles
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementCone
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementConeComparison
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementDerivedComparison
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementIdempotents
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementLinear
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShift
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftComparison
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementShiftEvaluation
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementTriangulated
-public import SerrePositivity.DifferentialGraded.Perfect.EssentiallySmall
-public import SerrePositivity.DifferentialGraded.Perfect.FiniteCell
-public import SerrePositivity.DifferentialGraded.Perfect.FiniteCellProjective
-public import SerrePositivity.DifferentialGraded.Perfect.FiniteProjectiveImage
-public import SerrePositivity.DifferentialGraded.Perfect.Generators
-public import SerrePositivity.DifferentialGraded.Perfect.KaroubiCriterion
-public import SerrePositivity.DifferentialGraded.Perfect.KaroubiEquivalence
-public import SerrePositivity.DifferentialGraded.Perfect.PerfectCompact
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableCoproductSupport
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyLinear
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturalIso
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturality
-public import SerrePositivity.DifferentialGraded.Perfect.RingBounded
-public import SerrePositivity.DifferentialGraded.Perfect.RingDerivedFiniteCover
-public import SerrePositivity.DifferentialGraded.Perfect.RingEnhancement
-public import SerrePositivity.DifferentialGraded.Perfect.RingExtensions
-public import SerrePositivity.DifferentialGraded.Perfect.RingFiniteCell
-public import SerrePositivity.DifferentialGraded.Perfect.RingFiniteCellImage
-public import SerrePositivity.DifferentialGraded.Perfect.RingFiniteHomologyCover
-public import SerrePositivity.DifferentialGraded.Perfect.RingHomologyCoverCone
-public import SerrePositivity.DifferentialGraded.Perfect.RingHomotopyDerivedComparison
-public import SerrePositivity.DifferentialGraded.Perfect.RingKaroubi
-public import SerrePositivity.DifferentialGraded.Perfect.RingKaroubiFactors
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectCoherence
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectComparison
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectEquivalence
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectRepresentatives
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectTriangulated
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetract
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetractFiniteRepresentative
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetractRangeReduction
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetractSingle
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetractTopHomology
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetractTriangle
-public import SerrePositivity.DifferentialGraded.Perfect.RingShiftComparison
-public import SerrePositivity.DifferentialGraded.Perfect.RingSingle
-public import SerrePositivity.DifferentialGraded.Perfect.RingSingleShift
-public import SerrePositivity.DifferentialGraded.Perfect.RingTopTruncation
-public import SerrePositivity.DifferentialGraded.Perfect.RingTriangleFiniteModel
-public import SerrePositivity.DifferentialGraded.Perfect.Shift
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancementTriangulated
-public import SerrePositivity.DifferentialGraded.Perfect.SmallStageCover
-public import SerrePositivity.DifferentialGraded.Perfect.SmallStages
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexDerived
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexDerivedLinear
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexEnhancement
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexEnhancementLinear
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexOperations
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexProjective
-public import SerrePositivity.DifferentialGraded.Perfect.Triangulated
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryCode
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryData
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryFromHomSurjections
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindex
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexIdentity
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigma
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaComponents
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaDesc
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaInclusion
-public import SerrePositivity.DifferentialGraded.Presentation.ComplexCode
-public import SerrePositivity.DifferentialGraded.Presentation.ComplexFromSurjections
-public import SerrePositivity.DifferentialGraded.Presentation.EnrichedLawTransport
-public import SerrePositivity.DifferentialGraded.Presentation.FiniteRowCoefficientBound
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedClosedFamily
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCode
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedCoefficients
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedSphereFamily
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCategory
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedFamilyRepresentables
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCochainLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCode
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFaithful
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCodeFunctorLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComplex
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomComposition
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFreeCover
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomFunctorLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceContainment
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSourceGenerators
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSpan
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereArrowLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereExtensionComparison
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereMatrixLift
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomUnit
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWordCardinality
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomWords
-public import SerrePositivity.DifferentialGraded.Presentation.QuotientGeneratorImage
-public import SerrePositivity.DifferentialGraded.Presentation.ZeroComplexCode
-public import SerrePositivity.DifferentialGraded.Quotient.AppendErasure
-public import SerrePositivity.DifferentialGraded.Quotient.AppendErasureHead
-public import SerrePositivity.DifferentialGraded.Quotient.AppendErasureRecursion
-public import SerrePositivity.DifferentialGraded.Quotient.AppendLiftCochain
-public import SerrePositivity.DifferentialGraded.Quotient.AppendPrepend
-public import SerrePositivity.DifferentialGraded.Quotient.AppendRight
-public import SerrePositivity.DifferentialGraded.Quotient.AppendRightAssociativity
-public import SerrePositivity.DifferentialGraded.Quotient.AppendRightPrepend
-public import SerrePositivity.DifferentialGraded.Quotient.AppendRightUnit
-public import SerrePositivity.DifferentialGraded.Quotient.Associativity
-public import SerrePositivity.DifferentialGraded.Quotient.Category
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionComparison
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionDifferential
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionErasure
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionEvaluation
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionPrefix
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionPrepend
-public import SerrePositivity.DifferentialGraded.Quotient.ContractedFunctor
-public import SerrePositivity.DifferentialGraded.Quotient.ContractionAction
-public import SerrePositivity.DifferentialGraded.Quotient.ContractionCochain
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonAdjointUnit
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCanonical
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCells
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonColimitQuasiIso
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonConeColimit
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonConeDiagram
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonDerivedLift
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonEquivalence
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonExtension
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonExtensionCoherence
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiltration
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiltrationAction
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiltrationColimit
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiltrationZero
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiniteRoof
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFreeExtension
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFreeGeneration
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFullFaithful
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFunctoriality
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGenerators
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraded
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGradedModule
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGradedProjection
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGradedTensor
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraphSquare
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonHomNormalization
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonHomPresheaf
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLayerGeneration
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLayerModule
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLayerTriangle
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLengthAction
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLengthModule
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLocalHom
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLocalObjects
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonModuleColimit
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonPathFlatness
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonPathModule
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonPerfect
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonRepresentableHom
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonRestriction
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonTriangulated
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonUnitCone
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonZeroModule
-public import SerrePositivity.DifferentialGraded.Quotient.Differential
-public import SerrePositivity.DifferentialGraded.Quotient.DoubleFaceSum
-public import SerrePositivity.DifferentialGraded.Quotient.DoubleFaces
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonAppend
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonCochainExt
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonContraction
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonDifferential
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonElement
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonHomogeneousExt
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonTensor
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureAdjacentInterchange
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureCancellation
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureFaceEquations
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureFaces
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureFirstEvaluation
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureFirstTailInterchange
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureHead
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureHeadCochainNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureHeadNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureInterchange
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureMiddleInterchange
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureOperator
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureRowRecursion
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureRows
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureSquare
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureTailComposition
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureTensorRight
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureTensorTransport
-public import SerrePositivity.DifferentialGraded.Quotient.Evaluation
-public import SerrePositivity.DifferentialGraded.Quotient.EvaluationComposition
-public import SerrePositivity.DifferentialGraded.Quotient.EvaluationErasure
-public import SerrePositivity.DifferentialGraded.Quotient.EvaluationPrefix
-public import SerrePositivity.DifferentialGraded.Quotient.Extension
-public import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
-public import SerrePositivity.DifferentialGraded.Quotient.HomogeneousNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.Identity
-public import SerrePositivity.DifferentialGraded.Quotient.InternalAssociativity
-public import SerrePositivity.DifferentialGraded.Quotient.InternalComposition
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluation
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluationComposition
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluationPrefix
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluationPrepend
-public import SerrePositivity.DifferentialGraded.Quotient.InternalRightUnit
-public import SerrePositivity.DifferentialGraded.Quotient.InternalUnit
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterExtension
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
-public import SerrePositivity.DifferentialGraded.Quotient.PathCochainDesc
-public import SerrePositivity.DifferentialGraded.Quotient.PathCochainExt
-public import SerrePositivity.DifferentialGraded.Quotient.PathComposition
-public import SerrePositivity.DifferentialGraded.Quotient.PathEvaluation
-public import SerrePositivity.DifferentialGraded.Quotient.PathEvaluationAppend
-public import SerrePositivity.DifferentialGraded.Quotient.PathEvaluationDifferential
-public import SerrePositivity.DifferentialGraded.Quotient.PathEvaluationPrepend
-public import SerrePositivity.DifferentialGraded.Quotient.PathGeneration
-public import SerrePositivity.DifferentialGraded.Quotient.PathPrefix
-public import SerrePositivity.DifferentialGraded.Quotient.PathUniversal
-public import SerrePositivity.DifferentialGraded.Quotient.Paths
-public import SerrePositivity.DifferentialGraded.Quotient.PrefixErasure
-public import SerrePositivity.DifferentialGraded.Quotient.PrefixGeneration
-public import SerrePositivity.DifferentialGraded.Quotient.PrependAssociativity
-public import SerrePositivity.DifferentialGraded.Quotient.PrependDifferential
-public import SerrePositivity.DifferentialGraded.Quotient.PrependErasure
-public import SerrePositivity.DifferentialGraded.Quotient.PrependErasureNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.PrependErasureRows
-public import SerrePositivity.DifferentialGraded.Quotient.PrependFirstNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.PrependHomNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.PrependTailNaturality
-public import SerrePositivity.DifferentialGraded.Quotient.PrependUnit
-public import SerrePositivity.DifferentialGraded.Quotient.Reconstruction
-public import SerrePositivity.DifferentialGraded.Quotient.RightIdentity
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionComposition
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionEpsilon
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionErasure
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtensionPaths
-public import SerrePositivity.DifferentialGraded.Quotient.TensorPathCochainExt
-public import SerrePositivity.DifferentialGraded.Quotient.TensorRightPathCochainExt
-public import SerrePositivity.DifferentialGraded.Quotient.TensorTwoPathCochainExt
-public import SerrePositivity.DifferentialGraded.Quotient.Universal
-public import SerrePositivity.DifferentialGraded.Resolution.Basic
-public import SerrePositivity.DifferentialGraded.Resolution.Bimodule
-public import SerrePositivity.DifferentialGraded.Resolution.BimoduleDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Resolution.BoundaryCells
-public import SerrePositivity.DifferentialGraded.Resolution.BoundarySequence
-public import SerrePositivity.DifferentialGraded.Resolution.CanonicalZigzag
-public import SerrePositivity.DifferentialGraded.Resolution.CellAssociativity
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparison
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparisonQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Resolution.CellComposition
-public import SerrePositivity.DifferentialGraded.Resolution.CellSequence
-public import SerrePositivity.DifferentialGraded.Resolution.CellUnits
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendBoundaryHead
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendBoundaryRecursion
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendLiftCochain
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendPrepend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendRecursion
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendRightAssociativity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendRightPrepend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Associativity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Augmentation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryActionEvaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryCochain
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryFaces
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryHead
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryHeadInterchange
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryInterchange
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryNaturality
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryOperator
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryRowRecursion
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundarySquare
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Category
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionComparison
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionDifferential
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionEvaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionPrefix
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionPrepend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Differential
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.DoubleFaceSum
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.DoubleFaces
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Evaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.EvaluationComposition
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.EvaluationPrefix
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.EvaluationReplacement
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Extension
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorAppend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorDisk
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Identity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalAssociativity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalBoundaryHead
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalComposition
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalEvaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalEvaluationComposition
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalEvaluationPrefix
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalUnits
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthColimit
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthFiltration
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthGraded
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthSplit
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthTransition
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathAction
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathCochainDesc
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathComposition
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEquations
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEvaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEvaluationAppend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEvaluationDifferential
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEvaluationPrepend
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathGeneration
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Paths
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Prefix
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrefixBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrefixGeneration
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependBoundaryRows
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependDifferential
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrimitiveAction
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrimitiveData
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Reconstruction
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.RestrictionData
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.RightIdentity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.TensorPathCochainExt
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.TensorRightPathCochainExt
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.TensorTwoPathCochainExt
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Universal
-public import SerrePositivity.DifferentialGraded.Resolution.Coherence
-public import SerrePositivity.DifferentialGraded.Resolution.CompositionChange
-public import SerrePositivity.DifferentialGraded.Resolution.CompositionComparison
-public import SerrePositivity.DifferentialGraded.Resolution.CycleCover
-public import SerrePositivity.DifferentialGraded.Resolution.CycleCoverComparisonLaws
-public import SerrePositivity.DifferentialGraded.Resolution.CycleCoverFunctor
-public import SerrePositivity.DifferentialGraded.Resolution.DerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Resolution.DiagonalComparison
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentExt
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentLaws
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectAugmentation
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectCategory
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectGenerators
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectMap
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapAugmentation
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapExtension
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapLaws
-public import SerrePositivity.DifferentialGraded.Resolution.Free.AppendRecursion
-public import SerrePositivity.DifferentialGraded.Resolution.Free.AppendRight
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Associativity
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Category
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Composition
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Free.EvaluationComposition
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Hom
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Maps
-public import SerrePositivity.DifferentialGraded.Resolution.Free.PrefixAssociativity
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Reconstruction
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Units
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Universal
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Words
-public import SerrePositivity.DifferentialGraded.Resolution.General
-public import SerrePositivity.DifferentialGraded.Resolution.Initial
-public import SerrePositivity.DifferentialGraded.Resolution.InitialComparison
-public import SerrePositivity.DifferentialGraded.Resolution.InitialStageComparison
-public import SerrePositivity.DifferentialGraded.Resolution.MiddleCompositionComparison
-public import SerrePositivity.DifferentialGraded.Resolution.Restriction
-public import SerrePositivity.DifferentialGraded.Tensor.Actions
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorActionDegree
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorBimodule
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorCochainAction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorCochainExt
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorComponent
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorComponentCompatibility
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorComponentTransport
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorDegreeExt
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorGenerators
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorIso
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorIsoElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftAction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftActionMap
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftMaps
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMapElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMapNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestrictionComponents
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestrictionElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestrictionPaths
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestrictionValues
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorParameterExt
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorParameterValues
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorParameters
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightAction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightComponentCompatibility
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightMaps
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestrictionComponents
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestrictionElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestrictionPathElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestrictionValues
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightTransport
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightValueHomNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestrictionComponents
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestrictionElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestrictionPaths
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestrictionValues
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorTransforms
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueHom
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueHomNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValues
-public import SerrePositivity.DifferentialGraded.Tensor.Balanced
-public import SerrePositivity.DifferentialGraded.Tensor.BalancedFamilyElements
-public import SerrePositivity.DifferentialGraded.Tensor.BalancedReindex
-public import SerrePositivity.DifferentialGraded.Tensor.BalancedUnitElements
-public import SerrePositivity.DifferentialGraded.Tensor.Bimodule
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleActions
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleCylinder
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleElements
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleKFlatQuasiIso
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapComponent
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapElementValues
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapLeftAction
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMapRightAction
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleActions
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleComparison
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleMap
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameterElements
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameterLeft
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameterRight
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameterValues
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleQuasiIso
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRestrictionKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRightElements
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleSemifreeKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueElements
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueHom
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueMaps
-public import SerrePositivity.DifferentialGraded.Tensor.BoundedAbove
-public import SerrePositivity.DifferentialGraded.Tensor.ChangeLeft
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeLeftRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestrictionActions
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestrictionNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestrictionValue
-public import SerrePositivity.DifferentialGraded.Tensor.Cone
-public import SerrePositivity.DifferentialGraded.Tensor.DegreeElementsExt
-public import SerrePositivity.DifferentialGraded.Tensor.ElementMap
-public import SerrePositivity.DifferentialGraded.Tensor.Elements
-public import SerrePositivity.DifferentialGraded.Tensor.ElementsExt
-public import SerrePositivity.DifferentialGraded.Tensor.Enriched
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomAdjunction
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomElements
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomLeft
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomPoints
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomSource
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomTarget
-public import SerrePositivity.DifferentialGraded.Tensor.FreeEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.Fubini
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniColumns
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniData
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniRightAction
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniRightFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniRightRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.Functor
-public import SerrePositivity.DifferentialGraded.Tensor.FunctorExtensionProjection
-public import SerrePositivity.DifferentialGraded.Tensor.FunctorRestrictionQuasiIso
-public import SerrePositivity.DifferentialGraded.Tensor.GradedSplit
-public import SerrePositivity.DifferentialGraded.Tensor.GradedSplitElements
-public import SerrePositivity.DifferentialGraded.Tensor.GradedSplitLaws
-public import SerrePositivity.DifferentialGraded.Tensor.HomAdjunction
-public import SerrePositivity.DifferentialGraded.Tensor.HomAdjunctionFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.HomAdjunctionLaws
-public import SerrePositivity.DifferentialGraded.Tensor.HomComposition
-public import SerrePositivity.DifferentialGraded.Tensor.HomElements
-public import SerrePositivity.DifferentialGraded.Tensor.HomUnits
-public import SerrePositivity.DifferentialGraded.Tensor.Homotopy
-public import SerrePositivity.DifferentialGraded.Tensor.Interchange
-public import SerrePositivity.DifferentialGraded.Tensor.KFlat
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatColimits
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComparison
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComplex
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatCriterion
-public import SerrePositivity.DifferentialGraded.Tensor.LeftColimits
-public import SerrePositivity.DifferentialGraded.Tensor.LeftDiagonalHom
-public import SerrePositivity.DifferentialGraded.Tensor.LeftDiagonalUnit
-public import SerrePositivity.DifferentialGraded.Tensor.LeftDiagonalValues
-public import SerrePositivity.DifferentialGraded.Tensor.LeftKFlatResolution
-public import SerrePositivity.DifferentialGraded.Tensor.LeftNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnit
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestrictionAugmentation
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitSigns
-public import SerrePositivity.DifferentialGraded.Tensor.LeftYoneda
-public import SerrePositivity.DifferentialGraded.Tensor.Maps
-public import SerrePositivity.DifferentialGraded.Tensor.MiddleRestrictionValueHom
-public import SerrePositivity.DifferentialGraded.Tensor.ModuleCylinderKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.ModuleParameter
-public import SerrePositivity.DifferentialGraded.Tensor.ObjectwiseKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.OuterUnitRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterBalancedConstructor
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterBalancedElements
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterLeft
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterLeftAction
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterRight
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterRightAction
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterTensorFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.Pentagon
-public import SerrePositivity.DifferentialGraded.Tensor.PentagonLongElements
-public import SerrePositivity.DifferentialGraded.Tensor.PentagonShortElements
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveComparison
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveLeftQuasiIso
-public import SerrePositivity.DifferentialGraded.Tensor.QuadCochainExt
-public import SerrePositivity.DifferentialGraded.Tensor.QuadElements
-public import SerrePositivity.DifferentialGraded.Tensor.QuasiIsoLeft
-public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionIdentity
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictBalanced
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparison
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonYoneda
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionCylinder
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionSemifree
-public import SerrePositivity.DifferentialGraded.Tensor.RightParameter
-public import SerrePositivity.DifferentialGraded.Tensor.RightRestrictionValueHom
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnit
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativity
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnitRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.Ring
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionActions
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionAdjunction
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionBalanced
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionBalancedNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCochain
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoendCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionColimits
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionDiagrams
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionHom
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionLeftMaps
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModule
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModuleMaps
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionPresentation
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionRing
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionCategory
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionHom
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModule
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModuleMaps
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.Semifree
-public import SerrePositivity.DifferentialGraded.Tensor.Shift
-public import SerrePositivity.DifferentialGraded.Tensor.SphereFreeKFlat
-public import SerrePositivity.DifferentialGraded.Tensor.Swap
-public import SerrePositivity.DifferentialGraded.Tensor.SwapFamilies
-public import SerrePositivity.DifferentialGraded.Tensor.SwapNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.TensorModuleIso
-public import SerrePositivity.DifferentialGraded.Tensor.TensorModuleNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
-public import SerrePositivity.DifferentialGraded.Tensor.TriangleGenerators
-public import SerrePositivity.DifferentialGraded.Tensor.TripleFunctors
-public import SerrePositivity.DifferentialGraded.Tensor.TripleMapComponents
-public import SerrePositivity.DifferentialGraded.Tensor.TripleMapElements
-public import SerrePositivity.DifferentialGraded.Tensor.TripleParameterFirst
-public import SerrePositivity.DifferentialGraded.Tensor.TripleParameterRest
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
-public import SerrePositivity.DifferentialGraded.Tensor.UnitFunctors
-public import SerrePositivity.DifferentialGraded.Tensor.UnitMapNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.Yoneda
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaEnriched
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaRepresentative
-public import SerrePositivity.DifferentialGraded.Verdier.AdjunctionComparisonShift
-public import SerrePositivity.DifferentialGraded.Verdier.ComparisonLinear
-public import SerrePositivity.DifferentialGraded.Verdier.CompletionSquareShift
-public import SerrePositivity.DifferentialGraded.Verdier.ConjugatedCompositionNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedCoproductComparison
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGeneratorInduction
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGraphComposition
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedKernelGraphSquare
-public import SerrePositivity.DifferentialGraded.Verdier.FiniteCellHomotopy
-public import SerrePositivity.DifferentialGraded.Verdier.GraphCompositionShift
-public import SerrePositivity.DifferentialGraded.Verdier.GraphKernelSquare
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPerfectSquare
-public import SerrePositivity.DifferentialGraded.Verdier.GraphRestrictionShift
-public import SerrePositivity.DifferentialGraded.Verdier.HorizontalComparison
-public import SerrePositivity.DifferentialGraded.Verdier.KaroubiFunctorSquare
-public import SerrePositivity.DifferentialGraded.Verdier.KaroubiMapShift
-public import SerrePositivity.DifferentialGraded.Verdier.KaroubiSquareShift
-public import SerrePositivity.DifferentialGraded.Verdier.KaroubiTransport
-public import SerrePositivity.DifferentialGraded.Verdier.KernelActionTriangles
-public import SerrePositivity.DifferentialGraded.Verdier.KernelComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionComparison
-public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionDescent
-public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.KernelLocalPerfectSquare
-public import SerrePositivity.DifferentialGraded.Verdier.KernelQuotientNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.MoritaPairEquivalence
-public import SerrePositivity.DifferentialGraded.Verdier.NullObjects
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
-public import SerrePositivity.DifferentialGraded.Verdier.PerfectKernelVerdier
-public import SerrePositivity.DifferentialGraded.Verdier.PerfectNullComparison
-public import SerrePositivity.DifferentialGraded.Verdier.PerfectQuotientEquivalence
-public import SerrePositivity.DifferentialGraded.Verdier.ProjectiveResolutionComparison
-public import SerrePositivity.DifferentialGraded.Verdier.RetractSquare
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarCompletionSquare
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarDirectCompletion
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarExtensionSquare
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarExtensionTria
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarGraphDerivedComparison
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarGraphRestriction
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarKaroubiShift
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarQuotientSourceSquare
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarSourceVerdier
-public import SerrePositivity.DifferentialGraded.Verdier.ShiftReflection
-public import SerrePositivity.DifferentialGraded.Verdier.ShiftedHomComparison
-public import SerrePositivity.DifferentialGraded.Verdier.SupportSquare
-public import SerrePositivity.DifferentialGraded.Verdier.Tria
-public import SerrePositivity.DifferentialGraded.Verdier.TriangulatedHomComparison
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Presentation.Category
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Append
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Scalar
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Composition
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
+
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.ColimitCones
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonGraphSquare
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
+
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Resolution.General
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+
+public import SerrePositivity.DifferentialGraded.Tensor.Compose
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
+public import SerrePositivity.DifferentialGraded.Verdier.Comparison
+public import SerrePositivity.DifferentialGraded.Verdier.Karoubi
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Verdier.Scalar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public import SerrePositivity.DifferentialGraded.Verdier.U17
 
 /-!

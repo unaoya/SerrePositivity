@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeRightRestrictionNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Compose
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorFunctor
 public import SerrePositivity.DifferentialGraded.Derived.MiddleRestrictionIdentification
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleLiftIso

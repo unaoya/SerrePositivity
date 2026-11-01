@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-! # 固定した右相対K-flat因子に関する導来合成の三角coherence
 

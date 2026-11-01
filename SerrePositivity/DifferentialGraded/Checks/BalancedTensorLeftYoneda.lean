@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.LeftYoneda
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左representable tensorの評価同型と中間次数の検査 -/

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValues
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 相対tensorのFubini同型と左右の普遍性の検査 -/

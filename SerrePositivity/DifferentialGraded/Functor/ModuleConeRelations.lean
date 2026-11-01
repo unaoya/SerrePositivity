@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.ModuleCone
 public import SerrePositivity.DifferentialGraded.Module.ConeElementRelations
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryHom
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 
 /-! # 複体値dg関手で送ったconeの行列恒等式 -/
 @[expose] public section

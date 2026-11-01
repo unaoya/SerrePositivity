@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelSequence
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 
 /-! # kernel右随伴の可算近似列の監査
 

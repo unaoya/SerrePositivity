@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
-public import SerrePositivity.DifferentialGraded.Quotient.ScalarExtension
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 @[expose] public section

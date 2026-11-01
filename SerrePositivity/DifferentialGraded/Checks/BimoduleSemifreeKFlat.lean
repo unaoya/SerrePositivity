@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleSemifreeKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import Mathlib.Data.ZMod.Basic
 
 /-! # local Hom条件による右相対K-flat bimodule解像度の監査

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.RestrictionShift
 public import SerrePositivity.DifferentialGraded.Derived.Triangulated
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNaturalTransformation
+public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 
 /-! # 主K経由の制限と導来制限のshift整合的比較・三角性
 

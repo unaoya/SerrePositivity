@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniColumns
-public import SerrePositivity.DifferentialGraded.Tensor.DegreeElementsExt
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterBalancedElements
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 二重balanced族のE方向の降下と固定次数の外延性の検査 -/

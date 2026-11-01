@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # 実 graph 延長の恒等比較と全 Hom 自然性
 概要：恒等 dg 関手の実 graph 延長を元の加群へ同型で比較する。

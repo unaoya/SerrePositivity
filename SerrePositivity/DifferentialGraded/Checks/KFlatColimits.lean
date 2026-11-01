@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatColimits
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComplex
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
+
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

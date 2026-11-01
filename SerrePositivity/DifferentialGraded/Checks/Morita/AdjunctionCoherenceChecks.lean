@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionCoherence
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 一般右随伴の恒等・合成計算の監査

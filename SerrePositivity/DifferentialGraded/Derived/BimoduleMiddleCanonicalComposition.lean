@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleFunctorComposition
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeRetarget
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 
 /-! # 標準semifree解像度による導来中間比較のdg関手合成則
 

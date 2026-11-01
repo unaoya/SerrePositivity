@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorMiddleRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparison
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 
 /-! # 第一中間圏の制限後の指定モデルと結合子の整合性
 

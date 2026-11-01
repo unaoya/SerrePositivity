@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.Transpose
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # bimodule転置と全Hom持ち上げの検査 -/

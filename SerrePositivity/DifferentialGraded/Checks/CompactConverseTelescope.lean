@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseTelescope
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-! # compact telescope の有限段階因子分解の公理監査 -/
 @[expose] public section

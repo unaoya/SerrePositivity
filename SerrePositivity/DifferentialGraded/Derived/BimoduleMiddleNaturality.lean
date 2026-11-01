@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparison
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 解像度の増大squareに沿う中間圏比較の自然性
 
