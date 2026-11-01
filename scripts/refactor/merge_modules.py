@@ -179,8 +179,10 @@ def parse_part(module, text, renames=None):
         header = 'section'
         warnings.append(f'{module}: no public section; wrapped in non-public section')
     for match in re.finditer(r'(?m)^[ \t]*universes?[ \t]+([^\n]+)$', mask):
-        universes.extend(match[1].split())
-        changes.append(remove_header_command(text,mask,match.start(),match.end()))
+        # Universe declaration order determines declaration level-parameter order.
+        # Keep each source's commands verbatim inside its own section.
+        universes.append(text[match.start():match.end()])
+        changes.append((match.start(), min(len(text), match.end()+1), ''))
     body = replace_ranges(text, changes)
     # An explicit end of the original outer anonymous public section becomes our end.
     try:
@@ -204,23 +206,23 @@ def parse_part(module, text, renames=None):
     if unclosed:
         warnings.append(f'{module}: close {unclosed} anonymous section(s)')
     body = body.strip('\n') + '\n' + 'end\n'*unclosed
-    return Part(module,text,list(dict.fromkeys(imps)),list(dict.fromkeys(universes)),header,body,doc,warnings)
+    return Part(module,text,list(dict.fromkeys(imps)),universes,header,body,doc,warnings)
 
 
 def render_group(entry, parts, rename):
     dest = entry['module']
     imps = list(dict.fromkeys(rename.get(i,i) for p in parts for i in p.imports if rename.get(i,i)!=dest))
-    universes = list(dict.fromkeys(u for p in parts for u in p.universes))
     out = 'module\n\n'+''.join('public import '+i+'\n' for i in imps)
     out += '\n/-!\n'+entry['docstring'].strip()+'\n-/\n'
-    if universes: out += '\nuniverse '+' '.join(universes)+'\n'
     names = Counter(p.module.rsplit('.',1)[-1] for p in parts)
     for p in parts:
         stem = p.module.rsplit('.',1)[-1]
         if names[stem]>1: stem = p.module.replace('.','_')
         out += f'\n/-! ## {p.module.rsplit(".",1)[-1]}（旧 {module_path(p.module)}） -/\n'
         if p.doc: out += '\n'+p.doc+'\n'
-        out += f'\n{p.header} {stem}\n\n{p.body}\nend {stem}\n'
+        out += f'\n{p.header} {stem}\n'
+        if p.universes: out += '\n'.join(p.universes)+'\n'
+        out += f'\n{p.body}\nend {stem}\n'
     return out, imps
 
 
