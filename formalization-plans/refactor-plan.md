@@ -1582,7 +1582,7 @@ IntersectionMultiplicity/AdamsVanishing。SupportedModule の下流は 74 モジ
   CoefficientExtension・CoefficientExactness・CoefficientLinearExtension は Mathlib に置き換え、残り（`coefficientPairing`）を LinearAlgebra へ。
 - dévissage 一式（Devissage* 7 ファイル、654 行）：利用者がいない（`g0QuotientDevissageEquiv`・`G0` はどこからも使われない。
   Paper/Section5/ModuleReduction が使うのは別物の IntersectionMultiplicity/Devissage）。DevissageAnnihilated が不要な
-  K0LocalizationCoefficients を import しているので依存グラフの最上段に載っている。論文の層から外す（research/ に退避するか削除）。
+  K0LocalizationCoefficients を import しているので依存グラフの最上段に載っている。論文の層から外す。**決定（2026-11-01、ユーザー）**：research/ へ退避する（ビルドの対象から外し、ファイルは残す）。区切り 1-4 で行う。
 - 循環の前提：ComparisonNaturality → LocalizationCoefficients（不要）と DevissageAnnihilated → K0LocalizationCoefficients（偽の依存）の
   import を先に外す。ResolutionClass → G0Localization の LocalizedResolution 経由の依存も偽物。
 
@@ -2307,6 +2307,10 @@ Section5/SecondComparisonLowerBound は、死んでいるファイルだけが i
 - `maxHeartbeats` の引き上げが 16 ファイル 23 か所（2,400,000 が 7 ファイル、1,800,000 が 2、1,200,000 が 1、800,000 が 13）、
   `synthInstance.maxSize 2048` とファイル全体の `backward.isDefEq.respectTransparency false` が Section4・5 のほぼ全部。統合のときに範囲を限る。
 - LengthAlgebraConstruction のモジュールの docstring が「等標数の Thm 2.5 は Roberts の引用に依存」のまま（本体の docstring では外れている）。直す。
+
+- **決定（2026-11-01、ユーザー）**：(1) 名前空間の `SerrePositivity.Paper` へのそろえは区切り 1-4 では見送る（宣言名が変わると公理の監査・README の入力の表・
+  Inputs の docstring・他のレーンの文書も変わるので、別の機会にまとめて行う）。(2) Section5 の Approximation の 4 本は Paper に残す（同日調査）：ApproximationLowerBound は Paper/Section5/ParameterQuotient（Lemma 5.4 の長さの収束）、MinimalApproximation・SupportedApproximation はその上に立ち、ApproximationHomology が使う MinimalTruncationComparison は論文の TruncationComparison を使うので Paper/Section4 へ移る。Asymptotic へ移すと Asymptotic → Paper の逆転になる。`Paper/Section5/Approximation` にまとめる。ApproximationHomology の主張（Tor の極限から Betti 数の増大条件）は一般的なので、MinimalTruncationComparison の論文に固有でない部分を切り出せれば Asymptotic へ下ろす候補。
+  (3) §10.4 の重複は一本にする（主経路で使っている方を残し、論文の番号は docstring に書く）。
 
 ### 10.6 共有層へ下ろす一般の補題（第 9 章の 12 本以外）
 

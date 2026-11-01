@@ -9,8 +9,8 @@
 
 | 項目 | 内容 | 利用者（import の書き換え） |
 | --- | --- | --- |
-| R76 | CategoryTheory の Nerve まわり 9 本（NerveHomotopy・NerveHomotopyUniverse・NerveSimplexEndpoint・NerveSimplexStart・NerveSimplexFirstFunctor・NerveVertices・SimplicialChainVertices・ElementsChainLifting・ElementsNaturalPrecomp）を `HomotopicalAlgebra/Simplicial/` へ移す。CategoryTheory ↔ HotA の相互依存が消える | HotA 26・EInfinity 12・KST 6・CT 4 |
-| R77 | CategoryTheory の下位ディレクトリ 104 本（R75 の削除後は 87 本前後）と、∞ 側だけが使うトップ階層の 12 本を、伝達文 §3.2 の統合案（約 35 ファイル：Monoidal/Mod/*・TensorPower/*・Action・Braided、Enriched/*、Adjunction/Comparison、Quiver/*、Simplex/*、Under、Limits）に沿って **`merge_modules.py`（DG-W2(a)、main に取り込み済み）で統合**する。宣言・名前空間・証明は変えない | Spectra 89・HotA 50・EInfinity 25・KST 18 |
+| R76 | CategoryTheory の Nerve まわり 9 本（NerveHomotopy・NerveHomotopyUniverse・NerveSimplexEndpoint・NerveSimplexStart・NerveSimplexFirstFunctor・NerveVertices・SimplexChainVertices・ElementsChainLifting・ElementsNaturalPrecomp）を `HomotopicalAlgebra/Simplicial/` へ移す。CategoryTheory ↔ HotA の相互依存が消える | HotA 26・EInfinity 12・KST 6・CT 4 |
+| R77 | CategoryTheory の下位ディレクトリ 104 本（R75 の削除後は 87 本前後）と、∞ 側だけが使うトップ階層の 12 本を、伝達文 §3.2 の統合案（約 35 ファイル：Monoidal/Mod/*・TensorPower/*・Action・Braided、Enriched/*、Adjunction/Comparison、Quiver/*、Simplex/*、Under、Limits）に沿って **`merge_modules.py`（DG-W2(a) の道具。11-01 夜に main へ cherry-pick 済み：80a44df79・aee0d2b12）で統合**する。宣言・名前空間・証明は変えない | Spectra 89・HotA 50・EInfinity 25・KST 18 |
 | R67 | `Inputs/Homotopy/`（KanQuillen＝引用の sorry、ResolutionHom、SimplicialLevel）を `InfinityCategories/ModelBridge/Inputs/` へ移し、`make_area_audits.py` の sorry の許可リストと scripts の check 3 本の import を直す。GroupTheory/Coxeter は IF-W0-4 で登録済みなので動かさない | check 3 本 |
 
 ## 2. 手順
@@ -33,3 +33,21 @@
 - 宣言の本文・名前・名前空間の変更。R78 の置き換え。
 - 論文の層の側の CategoryTheory（Abelian・Karoubi・TStructure・Triangulated など）への変更。
 - 鍵なしの全ビルド。
+
+## 5. 追記（2026-11-01 夜、草案前の不一致への回答）
+
+1. `merge_modules.py`・`with_build_lock.sh`・`warm_build_dir.sh` と試験は DG-W2(a) の commit を main に cherry-pick した（80a44df79・aee0d2b12、新規ファイルのみ）。`infra/if-w2a-2` に main を取り込んでから使う。DG-W2(b) が後で main に merge されるとき同じ内容なので衝突しない。
+2. R76 の一覧の `SimplicialChainVertices` は書き誤りで、実在名は `SimplexChainVertices`（§1 を訂正）。
+
+このうえで §2-1 の草案を作り、停止点 1 で報告する。
+
+## 6. 追記（2026-11-02、停止点 1 の回答：循環の解消と保留 2 件）
+
+**承認**：草案（R76 move 9、R77 merge 26 群・95 本、R67 move 3、生成行数最大 926、move の validator PASS、下流 11,888 本・3.3〜5.0 時間）。
+
+1. **循環 `Mod.InternalHom ↔ Mod.Closed`**：`ModuleClosed` が `ModuleInternalHomAction` と `ModuleInternalHomFunctor` の間に挟まるので、伝達文 §3.2 の表の `Monoidal/Mod/Closed`（元 `ModuleClosed` 1 本）を**廃し、`Monoidal/Mod/InternalHom` に含める**。連結順は依存どおり `ModuleInternalHom → ModuleInternalHomAction → ModuleClosed → ModuleInternalHomFunctor`。統合先は 26 → 25 群。行数は 1,700 以下のはず（超えたら報告）。
+2. **`FunctorTransport`**：どの統合先にも入れず**単独のまま**（R78 で Mathlib の `Functor.copyObj` に置き換えて消す予定のファイル）。Foundation の登録（トップ階層 12 本）はそのまま。
+3. **新しい統合先の Foundation 登録**：`CategoryTheory.Adjunction.Comparison` など、既存の接頭辞に入らない新しい統合先は、この束の中で `layers.json` の Foundation に加える（接頭辞 `SerrePositivity.CategoryTheory.Adjunction` を追加。他に新しい接頭辞ができればそれも）。層検査で Foundation の違反が増えないことを確かめる。
+4. **`merge_modules.py --check` が循環を検出しない件**：今は道具を変えない（DG の束が同じ道具を使用中）。束の静的検査では `layer_check.py` のグラフで循環を確かめる（今回と同じ手順）。循環検出の追加は、両方の束が main に入った後の道具の回に回す。
+
+**適用の時期**：下流 11,888 本の束は、**DG-W2(b) が main に入ってから**（coordination.md #5 の後）Claude が合図する。それまでに 1〜3 を草案に反映し、`--check`・validator・循環の再確認を済ませて止める（停止点 1′、報告は短くてよい）。
