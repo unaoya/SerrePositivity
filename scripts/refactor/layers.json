@@ -11,6 +11,7 @@
         "SerrePositivity.CategoryTheory.Quiver",
         "SerrePositivity.CategoryTheory.Simplex",
         "SerrePositivity.CategoryTheory.Under",
+        "SerrePositivity.CategoryTheory.Adjunction",
         "SerrePositivity.CategoryTheory.AdjunctionHomLaws",
         "SerrePositivity.CategoryTheory.CommaIdentities",
         "SerrePositivity.CategoryTheory.FiniteBijection",
