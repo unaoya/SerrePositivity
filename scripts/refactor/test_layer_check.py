@@ -17,6 +17,54 @@ DG = 'SerrePositivity.DifferentialGraded.Test'
 
 
 class LayerTests(unittest.TestCase):
+    def test_foundation_negative_rank_and_prefix_scope(self):
+        lc.validate_config(CONFIG)
+        foundation = next(x for x in CONFIG['layers'] if x['name'] == 'Foundation')
+        self.assertEqual(foundation['rank'], -1)
+        self.assertTrue(all(x['rank'] > -1 for x in CONFIG['layers'] if x['name'] != 'Foundation'))
+        self.assertEqual(len(foundation['prefixes']), 23)
+        self.assertNotIn('Foundation', CONFIG['core'])
+        for prefix in foundation['prefixes']:
+            self.assertEqual(lc.classify(prefix, CONFIG), 'Foundation')
+            self.assertEqual(lc.classify(prefix + '.Child', CONFIG), 'Foundation')
+        for module in ['CategoryTheory.MonoidalUnitHom', 'CategoryTheory.SimplexChainVertices',
+                       'CategoryTheory.Groupoid.Other', 'CategoryTheory.LiftingProperties.Other',
+                       'CategoryTheory.MorphismProperty.Other', 'CategoryTheory.Abelian.Basic',
+                       'GroupTheory.ConjugateSum']:
+            self.assertIsNone(lc.classify('SerrePositivity.' + module, CONFIG))
+
+    def test_foundation_restricted_imports(self):
+        source = 'SerrePositivity.CategoryTheory.Monoidal.Test'
+        for target in ['Mathlib.CategoryTheory.Category.Basic',
+                       'SerrePositivity.CategoryTheory.FiniteBijectionSum',
+                       'SerrePositivity.GroupTheory.Coxeter.TypeA']:
+            self.assertEqual(lc.direct_reasons(source, target, CONFIG), [])
+        for target in ['MathlibExtra.Basic', 'Lean', 'SerrePositivity.HomotopicalAlgebra.Test',
+                       'SerrePositivity.EInfinity.Test', 'SerrePositivity.KST.Test',
+                       'SerrePositivity.CategoryTheory.Abelian.Test']:
+            self.assertIn('restricted-layer-import', lc.direct_reasons(source, target, CONFIG))
+
+    def test_foundation_to_core_violates_and_ratchets(self):
+        source = 'SerrePositivity.CategoryTheory.Monoidal.Test'
+        reasons = lc.direct_reasons(source, CORE, CONFIG)
+        self.assertEqual(set(reasons), {'upward-layer-import', 'restricted-layer-import'})
+        before = lc.analyze({source: set(), CORE: set()}, set(), CONFIG)
+        after = lc.analyze({source: {CORE}, CORE: set()}, set(), CONFIG)
+        self.assertEqual(after['direct_by_pair']['Foundation -> Core'], 1)
+        self.assertTrue(any(x['metric'] == 'report_direct/Foundation -> Core'
+                            for x in lc.ratchet_increases(after, before)))
+
+    def test_every_core_layer_can_import_foundation(self):
+        target = 'SerrePositivity.GroupTheory.Coxeter.TypeA'
+        for layer in CONFIG['layers']:
+            if layer['name'] not in CONFIG['core']:
+                continue
+            source = layer['prefixes'][0] + '.Test'
+            with self.subTest(layer=layer['name']):
+                self.assertEqual(lc.direct_reasons(source, target, CONFIG), [])
+                self.assertEqual(lc.analyze({source: {target}, target: set()}, set(), CONFIG)
+                                 ['direct_violations'], [])
+
     def test_lean_comments_strings_and_multiline_imports(self):
         source = '''module
 /- import Bad.One /- nested -/ import Bad.Two -/

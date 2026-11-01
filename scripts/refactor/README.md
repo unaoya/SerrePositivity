@@ -54,7 +54,11 @@ verify.sh では同様に non-gate となる。根が未読込なら、名前の
 外部パッケージの import は終端として扱い、リポジトリ内の全 Lean ソースの閉包を集計する。
 
 設定は `layers.json`。PinchedHom は Core に分類し、同じ層の内部 import は許す。
-Core の層外 import は Simplicial と Mathlib、Kan は Core 以下と Mathlib に制限する。
+Foundation（rank −1）は CategoryTheory の一般部分・個別指定のトップ階層12本と GroupTheory/Coxeter。
+R77の統合元である Groupoid.ThinComponents・LiftingProperties.Under・LiftingProperties.ParametrizedGeneration・
+MorphismProperty.UnderFactorization も個別のモジュール名で含む（計23接頭辞）。
+Foundation の import は Foundation と Mathlib に限る。中核の各層から Foundation への import は許す。
+Core の層外 import は Simplicial・Foundation と Mathlib、Kan は Core 以下・Foundation と Mathlib に制限する。
 禁止集合は W1 ⊆ W2a = W2b。ModelBridge も計画 §3 に従って W2a 以降は禁止する。
 モデル圏判定は指定 HA ディレクトリと、コメント・文字列を除いた本文の ModelCategory による。
 層・forbidden・allowed_until_move・restricted_imports の接頭辞は、すべて
@@ -81,6 +85,11 @@ restricted_imports の層名もこの分類結果を参照する。Spectra の�
 `direct_by_pair` は規則が重なっても各直接辺を一度だけ数える。
 
 verify.sh の準備時に report を実行し、`summary.json` の `layer_check` に結果と終了コードを含める。
+Foundation の既存違反も直接辺の層組別件数として `--ratchet` の対象になる。
+基準は Foundation 登録後の `--report --output BASELINE.json` で保存し、
+`--ratchet BASELINE.json --output CURRENT.json` で増加がないことを確認する。
+設定変更前の基準は設定ハッシュが異なるため流用しない。
+
 現段階では層の違反を verify の合否に加えない。強制への切り替えはコーディネータの判断を待つ。
 試験は `python3 scripts/refactor/test_layer_check.py`。
 
@@ -198,7 +207,9 @@ python3 scripts/refactor/rebase_helper.py --worktree /absolute/path/to/worktree 
 
 ## 監査の並列化・キャッシュ・絞り込み
 
-- `VERIFY_JOBS` は正の整数、既定 3。1 なら監査を順番に実行する。並列化だけなら gate:true。
+- `VERIFY_JOBS` は正の整数、既定6。1なら監査を順番に実行する。
+  `VERIFY_MEMORY_GB` は有限の非負数、既定45（1 GB = 1,000,000,000 bytes）。
+  0ならメモリ予算なし。並列数と予算だけの変更では gate:true。
   監査ごとのログ・終了コード・時間を保存し、監査名順に統合する。
   `summary.json` の `runner.audit_wall_seconds` が並列監査の実時間で、個別時間の合計とは異なる。
 - `VERIFY_CACHE=1` は成功結果のキャッシュを読む。この実行は gate:false。
@@ -215,8 +226,24 @@ python3 scripts/refactor/rebase_helper.py --worktree /absolute/path/to/worktree 
 - `summary.json` の各 audit/sorry 段には `cached` と `cache_key` が付く。
   `.lake/verify/audit-progress.json` には完了数を記録する。
 
+監査は未計測を先頭、計測済みは前回所要時間の長い順に並べる。未計測のRSSは20 GBとする。
+同時実行数と、実行中監査の見積RSS合計が予算内になる先頭の監査を起動する。
+先頭が収まらなければ次に収まる監査を選ぶ。単独でも予算を超える監査は、他が終了してから
+単独で実行し、`oversize_alone` を記録する（永久待ちを避ける）。これはOSのハード制限ではない。
+初回は45 GBに20 GB見積り2本が収まるため、通常監査の並列度は最大2となる。
+
+`/usr/bin/time -l -o` の出力は監査ログと別の `.time` に保存する（macOSのRSSはbytes）。
+最新の所要時間・最大RSS・採取時刻・コミットは追跡外 `.lake/verify/audit-stats.json` に保存する。
+キャッシュ命中時は過去の実測値を0秒等で上書きしない。失敗の実測も次回の見積りに使う。
+`summary.json` の各段に `max_rss_bytes`、runnerに起動順・予算待ち・最大見積RSSを記録する。
+同時RSSは0.5秒間隔の `ps` で、このrunnerのtime/Lean子プロセス群を観測する。
+`max_simultaneous_rss_bytes` はサンプル最大値であり、瞬間ピークを厳密に捕捉した値ではない。
+監査個別のtimeによる最大RSSとは区別する。測定漏れとpsエラーもrunnerに残す。
+環境失敗の直列再試行、audit_axioms・sorry閉包の直列実行は維持する。
+`VERIFY_JOBS=3 VERIFY_MEMORY_GB=0` で従来の並列上限に戻せる。
+
 窓の合否は、試験用の絞り込み・キャッシュ・ビルド省略を設定せず、
-`VERIFY_JOBS=3 zsh scripts/refactor/verify.sh` で全監査を実行して判定する。
+既定の並列数6・予算45 GB（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=45 zsh scripts/refactor/verify.sh`）で全監査を実行して判定する。
 IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順。
 `full` は一度だけ実行するためのマーカーを保存し、再実行を拒否する。
 ほかの段は監査を絞り、cache 段では監査一つの一時変更と復元も検査する。
