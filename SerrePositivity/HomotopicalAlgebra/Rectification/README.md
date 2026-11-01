@@ -1,6 +1,6 @@
 # 中断した任意モデル源の厳密化
 
-このディレクトリは、[棚卸し](../../../formalization-plans/k-theory-generalization-inventory.md#layout-execution)でBとした413本の正規配置である。任意モデル源への一般化は引き続き中断中で、厳密なRMapの完成を表さない。
+このディレクトリは、[棚卸し](../../../formalization-plans/archive/k-theory-generalization-inventory.md#layout-execution)でBとした413本の正規配置である。任意モデル源への一般化は引き続き中断中で、厳密なRMapの完成を表さない。
 
 - 一般道具だけを使う入口：`SerrePositivity.HomotopicalAlgebra.GeneralTools`。
 - 共有のモデル圏一般論を使う入口：`SerrePositivity.HomotopicalAlgebra.Foundations`。

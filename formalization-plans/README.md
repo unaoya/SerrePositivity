@@ -18,13 +18,10 @@
 
 | 文書 | 中身 | 参照元と参照の形 | 片づけ方 |
 | --- | --- | --- | --- |
-| `k-theory.md`（案内。本文は `archive/k-theory-v1.md`） | K 理論 v1 計画（モデル圏の経路、10-15 まで） | HomotopicalAlgebra 約 600・CategoryTheory 約 20・Spectra 1。本文の `[計画書 §396][plan]` と、docstring 末尾の `[plan]: …/k-theory.md` | `[plan]` の定義を `archive/k-theory-v1.md` の §396（「任意モデル源への一般化（中断）」）の見出しへ張り替えて案内を消す |
-| `k-theory-generalization-inventory.md`（案内。本文は `archive/` の同名ファイル） | 中断した「任意のモデル源への一般化」の 618 モジュールの棚卸し（分類 A・B・C）と配置整理の実施記録 | HomotopicalAlgebra 約 610・CategoryTheory 約 24。モジュールごとのアンカー `#m0001`〜`#m0618` と「配置実施記録を参照」 | `archive/` の本文の同じアンカーへ張り替えて案内を消す。現状は案内にアンカーがなく、該当行へ直接飛べない |
 | `dg-theory-u12e-general-inventory.md` | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
 | `dg-theory-m5-status.md` | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
 
-参照元の 1,165 本のうち HomotopicalAlgebra・CategoryTheory の 635 本は [∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 として、W1（全レーン停止の窓）の最初の指示書 IF-W1-1 の冒頭で書き換える。DifferentialGraded の 530 本は [DG の整理計画](dg-cleanup-plan.md) の D5 として、DG の統合（D4）と同じ窓で書き換える（10-30 決定）。いずれも文書ごとに 1 コミット。
-docstring だけの変更でも利用先の再ビルドが要るので、それまでは 4 本を動かさない。∞ 側から完了の連絡が来たら、案内 2 本を削除し、この表を片づける。
+HomotopicalAlgebra・CategoryTheory の 635 本が参照していた案内 2 本（`k-theory.md`・`k-theory-generalization-inventory.md`）は、[∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 で `archive/k-theory-v1.md`・`archive/k-theory-generalization-inventory.md` へ張り替え（c4290092a・2c8a89952、∞ の束 a12012f0e で main に入った）、2026-11-01 に案内を削除した。残る 2 本（DifferentialGraded の 530 本が参照）は [DG の整理計画](dg-cleanup-plan.md) の D5 として、DG の統合（D4）と同じ窓で書き換える（10-30 決定）。docstring だけの変更でも利用先の再ビルドが要るので、それまではこの 2 本を動かさない。
 
 ## 現在地（2026-10-18）
 
@@ -47,9 +44,9 @@ docstring だけの変更でも利用先の再ビルドが要るので、それ�
 | [BS のリファクタリング](bhatt-scholze/bhatt-scholze-refactoring.md) | 証明済みの BS を共通 API の上に載せ替える | Q10・Q1・Q8 が次の候補（§13） |
 | [BS-0 第二段階調査](bhatt-scholze/bhatt-scholze-stage2.md) | E3 の消費経路、A・B・C 案の判定と見積り（2026-10-25） | A 推奨、最初の単位は固定完全 prism 上の affine Čech 模型 |
 | [BS 作業チャットへの引き継ぎ](bhatt-scholze/bhatt-scholze-handover-2026-10-25.md) | 文脈・到達点・所有範囲・規約・推奨する進め方 | BS 作業チャットの最初に読む |
-| [K理論・スペクトル](k-theory.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。M4 以降の経路は下の KST 計画に移行 |
+| [K理論・スペクトル（v1、アーカイブ）](archive/k-theory-v1.md) | 定理3.1と補題4.6を形式化し、二つの降下入力を解消する | 段階4（左 Bousfield 局所化と安定モデル）は指定分解版で完了（§397）。M4 以降の経路は下の KST 計画に移行 |
 | [K理論：KST 経路と現代的な K](kst-lanes/k-theory-kst-route.md) | KST Thm A（係数つき）＋離散冪零不変性で cdh 降下を得て定理 3.1 を証明し、F5 で補題 4.6 を迂回する。K は安定 ∞ 圏の ∞-S• 構成（dg nerve 経由）、非連結化は dg 側 Schlichting、Sp は γ-B | 2026-10-18 採用。決定事項は §13。L11・L2・L4・L6・L7・L8・L9 を起動 |
-| [K理論：任意モデル源への一般化の棚卸し](k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
+| [K理論：任意モデル源への一般化の棚卸し（アーカイブ）](archive/k-theory-generalization-inventory.md) | 中断した一般化のモジュール索引（docstring からアンカーで参照） | 中断 |
 | [P 計画：presentable ∞ 圏](infinity-lanes/infinity-core-presentable.md) | accessible・presentable、随伴関手定理、Bousfield 局所化の存在、P_Σ の普遍性。10-23 新設 | 2026-10-23 |
 | [K-7 計画：非連結 K（dg 形）](kst-lanes/L10-nonconnective.md) | Sp の逐次余極限、dg 懸垂と Drinfeld 商、BGT §9。10-23 新設 | 2026-10-23 |
 | [∞ 圏基盤の整備計画](infinity-foundation-plan.md) | ∞ 層を KST・DG・EInfinity から自立させ、外の一般論を取り込み、Verdier 商の構成へ進む。段 A〜G、R26〜R70 の要約、決定事項 | 2026-10-28 新設・計画のみ |

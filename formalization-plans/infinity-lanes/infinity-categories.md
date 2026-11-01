@@ -43,7 +43,7 @@ H⁰ : CAlg_R → CRing_R は 0 次コホモロジーの環。各欄の文言は
 `BhattScholze.Inputs.perfectoidization_excision_isPullback`（Cor 8.12 の H⁰ 版）は、
 界面から定理として導く。後者は差写像の全射性まで出る（候補 (a′) の形）。
 主定理の公理監査では perfectoid 側の `sorry` が界面の存在一つになる。
-K 理論側（定理 3.1・補題 4.6）は別計画 [k-theory.md](../k-theory.md) で、α・β（と Sp のための γ）を共有する。
+K 理論側（定理 3.1・補題 4.6）は別計画 [k-theory-v1.md](../archive/k-theory-v1.md) で、α・β（と Sp のための γ）を共有する。
 
 **G1 に要る構成。**
 
