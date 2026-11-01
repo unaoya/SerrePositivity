@@ -1,0 +1,1485 @@
+{
+  "status": "PASS_STATIC",
+  "basis": "main ffe1125b0 §10.33",
+  "files": [
+    {
+      "file": "scripts/audit_derived_infinity.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift",
+          "to": "SerrePositivity.InfinityCategories.F1B.FullSubcomplexHomotopyLift"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy",
+          "to": "SerrePositivity.InfinityCategories.F1B.RestrictedDeformationHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization",
+          "to": "SerrePositivity.InfinityCategories.F1B.Localization.RestrictedDeformationLocalization"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex",
+          "to": "SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction",
+          "to": "SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberBottomIsoTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategory"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategoryEquivalence"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorDescent"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.StableVerdierSequence",
+          "to": "SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver",
+          "to": "SerrePositivity.InfinityCategories.F1B.HomotopyCompositionOver"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare",
+          "to": "SerrePositivity.InfinityCategories.F1B.FunctorRightConstantSquare"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare",
+          "to": "SerrePositivity.InfinityCategories.F1B.PrismFunctorSquare"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily",
+          "to": "SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.HomotopyPostcomposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceTerminal"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.HomotopyPostcompositionEvaluation"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceEvaluationComponents"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges",
+          "to": "SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofCompositionFaces"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.RoofPinchedSlicePostcomp"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ConeEdgeCompatibility",
+          "to": "SerrePositivity.InfinityCategories.Core.ConeEdgeCompatibility"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RightFibrationReflection",
+          "to": "SerrePositivity.InfinityCategories.Core.RightFibrationReflection"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport"
+        }
+      ],
+      "splits": [],
+      "direct_imports_added": [],
+      "required_modules": 2992,
+      "before_sha256": "58d3212769574fe391a2dfc0f161568c9760702d00d90f5c06a03391e3b19e14",
+      "after_sha256": "24faf77ab213f3fe955c479c030b05bc96473078de6b66ac0a2a0124f43a3e24"
+    },
+    {
+      "file": "scripts/audit_homotopical_foundations.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension",
+          "to": "SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamily",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFamily"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFiber",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFiber"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctorReindex",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctorReindex"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTwoHornLift",
+          "to": "SerrePositivity.InfinityCategories.Kan.KanTwoHornLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ParameterCube"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant",
+          "to": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ReversedSimplexParameters"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalDimension",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalDimension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSimplicialValue",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftElements",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftElements"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftIteration"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges",
+          "to": "SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.IntervalEndpoints"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ReversedDegeneracies"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiagramTensor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallActionClosure"
+        }
+      ],
+      "splits": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        }
+      ],
+      "direct_imports_added": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+      ],
+      "required_modules": 208,
+      "before_sha256": "861f89ad4d81f6318ba18b5df12b2dce65f06537d3fa2f4af05601973b72f059",
+      "after_sha256": "83202b58598c28b8f80d39c12fce487c46b513d4fb08c24f531c22e071a5e45c"
+    },
+    {
+      "file": "scripts/audit_homotopical_general_tools.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension",
+          "to": "SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamily",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFamily"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFiber",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFiber"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctorReindex",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctorReindex"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTwoHornLift",
+          "to": "SerrePositivity.InfinityCategories.Kan.KanTwoHornLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ParameterCube"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant",
+          "to": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ReversedSimplexParameters"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalDimension",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalDimension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSimplicialValue",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftElements",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftElements"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftIteration"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges",
+          "to": "SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.IntervalEndpoints"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedDegeneracies",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ReversedDegeneracies"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiagramTensor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramUniverseLift",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallActionClosure"
+        }
+      ],
+      "splits": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        }
+      ],
+      "direct_imports_added": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+      ],
+      "required_modules": 208,
+      "before_sha256": "7ea3c97715b24a2fe7e3a0d23762f44a36d439afbad0dc2f57b507e20298f04e",
+      "after_sha256": "143b453f6ac237f20b98c79787216265e23d2d8c8fc239f1e4148dbde2f65a5b"
+    },
+    {
+      "file": "scripts/audit_homotopical_rectification.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputMap",
+          "to": "SerrePositivity.InfinityCategories.Kan.CompatibleInputMap"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion",
+          "to": "SerrePositivity.InfinityCategories.Kan.CompatibleInputUnion"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ReversedSimplexParameters",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ReversedSimplexParameters"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFiber",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFiber"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteFamily",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteFamily"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCube",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.ParameterCube"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant",
+          "to": "SerrePositivity.InfinityCategories.Kan.PiZeroConstant"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramQuotient",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiagramQuotient"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension",
+          "to": "SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallActionClosure"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSimplicialValue",
+          "to": "SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalDimension",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalDimension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTwoHornLift",
+          "to": "SerrePositivity.InfinityCategories.Kan.KanTwoHornLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftElements",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftElements"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftIteration"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter",
+          "to": "SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuplesFunctor",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.VertexTuplesFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctorReindex",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctorReindex"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiberFunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberFunctor"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBook",
+          "to": "SerrePositivity.InfinityCategories.Kan.TriangleBook"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBookMaps",
+          "to": "SerrePositivity.InfinityCategories.Kan.TriangleBookMaps"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.VertexTuples"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Transfer.FullyFaithfulLifting",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.FullyFaithfulLifting"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.UniverseLift"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Generated.Basic",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+          "to": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties"
+        }
+      ],
+      "splits": [
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Generated.Basic",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
+        },
+        {
+          "from": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+          "keep": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties",
+          "moved": "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+        }
+      ],
+      "direct_imports_added": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators"
+      ],
+      "required_modules": 1014,
+      "before_sha256": "5f832145098783b22973588be14f2c1becd9d2643b1ef2b9afaa9121a414fcee",
+      "after_sha256": "d65676dd68901202d59612b4d6d03a70544b39b2360d337d9013b510e52f97c6"
+    },
+    {
+      "file": "scripts/audit_infinity_stable.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift",
+          "to": "SerrePositivity.InfinityCategories.F1B.FullSubcomplexHomotopyLift"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy",
+          "to": "SerrePositivity.InfinityCategories.F1B.RestrictedDeformationHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization",
+          "to": "SerrePositivity.InfinityCategories.F1B.Localization.RestrictedDeformationLocalization"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex",
+          "to": "SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction",
+          "to": "SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberBottomIsoTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategory"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategoryEquivalence"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent",
+          "to": "SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorDescent"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.StableVerdierSequence",
+          "to": "SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver",
+          "to": "SerrePositivity.InfinityCategories.F1B.HomotopyCompositionOver"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare",
+          "to": "SerrePositivity.InfinityCategories.F1B.FunctorRightConstantSquare"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare",
+          "to": "SerrePositivity.InfinityCategories.F1B.PrismFunctorSquare"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily",
+          "to": "SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.HomotopyPostcomposition"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceTerminal"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationHomotopy"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.HomotopyPostcompositionEvaluation"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceEvaluationComponents"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched",
+          "to": "SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization",
+          "to": "SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges",
+          "to": "SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor",
+          "to": "SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofCompositionFaces"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift",
+          "to": "SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.RoofPinchedSlicePostcomp"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport"
+        },
+        {
+          "from": "SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport",
+          "to": "SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport"
+        }
+      ],
+      "splits": [],
+      "direct_imports_added": [],
+      "required_modules": 3190,
+      "before_sha256": "f9485964516ceb53fa707b45ce35906a45270dbce200219789312550afe711ed",
+      "after_sha256": "8a408e33b5d17cf2bfee431fb78b0359884cbe2b7207e940090d1778b7773e84"
+    },
+    {
+      "file": "scripts/audit_kst_spectra.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedWhiskeredSquareComposition",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedWhiskeredSquareComposition"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.DiscreteKanHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Kan.DiscreteKanHomotopy"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationPointwiseComparison",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationPointwiseComparison"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyIsoSquareDetection",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyIsoSquareDetection"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensorCotensor",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorCotensor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeCurriedComposition",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeCurriedComposition"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TensorExchangeBraid",
+          "to": "SerrePositivity.InfinityCategories.Kan.TensorExchangeBraid"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeMappingStrength",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeMappingStrength"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ThreeEdgeTransportRelabel",
+          "to": "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransportRelabel"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ThreeEdgeTransport",
+          "to": "SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.OrdinalSimplexEdges",
+          "to": "SerrePositivity.InfinityCategories.Kan.OrdinalSimplexEdges"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FramedTetrahedronRelation",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronRelation"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FramedTetrahedronDifference",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronDifference"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ConeEdgeIntervalCells",
+          "to": "SerrePositivity.InfinityCategories.Kan.ConeEdgeIntervalCells"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareBoundaryComposition",
+          "to": "SerrePositivity.InfinityCategories.Kan.SquareBoundaryComposition"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FramedSquareRelation",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareRelation"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FramedSquareDifference",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareDifference"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomAdjointPreRestriction",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomAdjointPreRestriction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensorVertices",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorVertices"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.IntervalSquareSweeps",
+          "to": "SerrePositivity.InfinityCategories.Kan.IntervalSquareSweeps"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.IntervalSquareHomotopies",
+          "to": "SerrePositivity.InfinityCategories.Kan.IntervalSquareHomotopies"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareConstantCorners",
+          "to": "SerrePositivity.InfinityCategories.Kan.SquareConstantCorners"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.BasedIntervalSimplex",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.BasedIntervalSimplex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SimplicialDependentProduct",
+          "to": "SerrePositivity.InfinityCategories.Kan.SimplicialDependentProduct"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.DependentProductPointedSimplex",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.DependentProductPointedSimplex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.DependentProductHomotopy",
+          "to": "SerrePositivity.InfinityCategories.Kan.DependentProductHomotopy"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationTowerLimitCone",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationTowerLimitCone"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SequentialMittagLeffler",
+          "to": "SerrePositivity.InfinityCategories.Kan.SequentialMittagLeffler"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TowerAffineMaps",
+          "to": "SerrePositivity.InfinityCategories.Kan.TowerAffineMaps"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TowerLimOneMittagLeffler",
+          "to": "SerrePositivity.InfinityCategories.Kan.TowerLimOneMittagLeffler"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NullHomotopyTransport",
+          "to": "SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NullHomotopyDifference",
+          "to": "SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HornBoundaryFactor",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.HornBoundaryFactor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationRepresentativeTransport",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationRepresentativeTransport"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TowerLimOne",
+          "to": "SerrePositivity.InfinityCategories.Kan.TowerLimOne"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberTriangleReduction",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberTriangleReduction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberTriangleConnecting",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberTriangleConnecting"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeVertices",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ReverseBoundaryEdge",
+          "to": "SerrePositivity.InfinityCategories.Kan.ReverseBoundaryEdge"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberSimplexLifting",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberSimplexLifting"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalFiberLift",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalFiberLift"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalFiberNormalization",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalFiberRelation",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalFiberRelation"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalSphericalRealization",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalSphericalCochain",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalCellCharacteristic",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalCellCharacteristic"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalCochainExtension",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalCochainExtension"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalCochain",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalCochain"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryLastFace",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryLastFace"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryFilling",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryFilling"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryMap",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryMap"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyProductIndex",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyProductIndex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryReduction",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryAlternating",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryAlternating"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SphericalBoundaryRelation",
+          "to": "SerrePositivity.InfinityCategories.Kan.SphericalBoundaryRelation"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NormalizedValueCochains",
+          "to": "SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NormalizedSimplicialCochains",
+          "to": "SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NormalizedCochainComplex",
+          "to": "SerrePositivity.InfinityCategories.Kan.NormalizedCochainComplex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.NormalizedCochainCoefficientMaps",
+          "to": "SerrePositivity.InfinityCategories.Kan.NormalizedCochainCoefficientMaps"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationBoundaryOverNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationBoundaryOverNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FunctionComplexProduct",
+          "to": "SerrePositivity.InfinityCategories.Kan.FunctionComplexProduct"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalCellAttachment",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletalAttachmentPushout",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletonFiltration",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletonFiltration"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SimplicialFunctionComplex",
+          "to": "SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FunctionComplexPointedSimplex",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FunctionComplexHomotopyGroups",
+          "to": "SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.DiscreteInternalHom",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeUnit",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensorSource",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomPairExchange",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomPairExchange"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeTarget",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensor",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeRestriction",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeRestriction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberInclusionComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberInclusionComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackSwapComparison",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackSwapComparison"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ZeroMapComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.ZeroMapComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackInverseEdge",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseEdge"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackInverseComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SelfPullbackConnectingSwap",
+          "to": "SerrePositivity.InfinityCategories.Kan.SelfPullbackConnectingSwap"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationInverseEdge",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationInverseEdge"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchange",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.AcyclicFiber",
+          "to": "SerrePositivity.InfinityCategories.Kan.AcyclicFiber"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyGroups",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyGroups"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyDegreeZero",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyDegreeZero"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyInvariance",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyInvariance"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.Commutativity",
+          "to": "SerrePositivity.InfinityCategories.Kan.Commutativity"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyIndexing",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyIndexing"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyZeroRelations",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationBoundary",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationBoundary"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationSequence",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationSequence"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationExactness",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationExactness"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationMultiplication",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationMultiplication"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationTower",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationTower"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyIsomorphism",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TensorMapping",
+          "to": "SerrePositivity.InfinityCategories.Kan.TensorMapping"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedMappingLaws",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedMappingLaws"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyConstant",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyConstant"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyIso",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyIso"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ContractibleTotalSequence",
+          "to": "SerrePositivity.InfinityCategories.Kan.ContractibleTotalSequence"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.BoundaryFaces",
+          "to": "SerrePositivity.InfinityCategories.Kan.BoundaryFaces"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.GroupFiveLemma",
+          "to": "SerrePositivity.InfinityCategories.Kan.GroupFiveLemma"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopySquares",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopySquares"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationComparisonPositive",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationComparisonPositive"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationNaturalityAt",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationNaturalityAt"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberComponents",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberComponents"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FiberComponentNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.FiberComponentNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationComparisonZero",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationComparisonZero"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FibrationComparison",
+          "to": "SerrePositivity.InfinityCategories.Kan.FibrationComparison"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.GroupExactTransfer",
+          "to": "SerrePositivity.InfinityCategories.Kan.GroupExactTransfer"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FilteredKanColimit",
+          "to": "SerrePositivity.InfinityCategories.Kan.FilteredKanColimit"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.FilteredHomotopyRepresentatives",
+          "to": "SerrePositivity.InfinityCategories.Kan.FilteredHomotopyRepresentatives"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomTensorStrength",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomTensorStrength"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopyProduct",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopyProduct"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomotopySelfComposite",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomotopySelfComposite"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HornBoundaryDecomposition",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.HornBoundaryDecomposition"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HornFaceBoundary",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.HornFaceBoundary"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTriangles",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangles"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTriangleEmbedding",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleEmbedding"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTriangleCover",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleCover"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTriangleIntersection",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleIntersection"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTrianglePushout",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SquareTriangleOuterFaces",
+          "to": "SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletonFiltrationMono",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletonFiltrationMono"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.CartesianSubfunctorColimit",
+          "to": "SerrePositivity.InfinityCategories.Kan.CartesianSubfunctorColimit"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.SkeletonTransitionPullback",
+          "to": "SerrePositivity.InfinityCategories.Kan.SkeletonTransitionPullback"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.TensorExchangeCoherence",
+          "to": "SerrePositivity.InfinityCategories.Kan.TensorExchangeCoherence"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensorAction",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomTensorAdjointAction",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAdjointAction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomTensorStrengthNaturality",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomTensorStrengthNaturality"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.InternalHomExchangeComposition",
+          "to": "SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeComposition"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomTensorExchangeEvaluation",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomTensorExchangeEvaluation"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.ParameterPoint",
+          "to": "SerrePositivity.InfinityCategories.Kan.ParameterPoint"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.HomTensorStrengthPoint",
+          "to": "SerrePositivity.InfinityCategories.Kan.HomTensorStrengthPoint"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterSquares",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterUnits",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderHom",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderHom"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderCategory",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderCategory"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderFunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderFunctor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderEndpoints",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderEndpoints"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderRestriction",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderRestriction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderPoint",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPoint"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairHom",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairHom"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairFunctor",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairFunctor"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairRestriction",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairRestriction"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedOrderedCylinder",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedUnitTransformationHom",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformationHom"
+        },
+        {
+          "from": "SerrePositivity.KST.Spectra.EnrichedTransformationTriangle",
+          "to": "SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle"
+        }
+      ],
+      "splits": [],
+      "direct_imports_added": [],
+      "required_modules": 1480,
+      "before_sha256": "babffeaa69bfa918078e8407e3c5c01c6dd624b757d4a7345cc561a3a24519d4",
+      "after_sha256": "cdb8c78dd3b0a0c226e6fbabafefe1359aff3da1f19df8530bd3d5da98918796"
+    },
+    {
+      "file": "scripts/audit_localizing_invariants.lean",
+      "moves": [
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.StableCategories",
+          "to": "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.ExactEnrichment",
+          "to": "SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.StableInfinity",
+          "to": "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.VerdierSequence",
+          "to": "SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams",
+          "to": "SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.AdjointLocalization",
+          "to": "SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.AdjointVerdier",
+          "to": "SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier"
+        },
+        {
+          "from": "SerrePositivity.KST.LocalizingInvariants.ParametricDiagramGluing",
+          "to": "SerrePositivity.InfinityCategories.F1B.Localization.ParametricDiagramGluing"
+        }
+      ],
+      "splits": [],
+      "direct_imports_added": [],
+      "required_modules": 2008,
+      "before_sha256": "29a637c5e07a3c188fb1dd7a0cb55619ffb9067383cc788bf025c5ad72b8c449",
+      "after_sha256": "7ea20c67f2e95a2886d4d07f7ebca92a246831904a1055af2045c55cd016c579"
+    }
+  ],
+  "move_occurrences": 325,
+  "split_expansions": 18,
+  "audit_imports_added": 8,
+  "manifest_changed": false,
+  "verify_runner_changed": false
+}

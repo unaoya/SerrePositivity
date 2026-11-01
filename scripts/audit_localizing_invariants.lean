@@ -398,11 +398,11 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorSourceModelProjections,
     `SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovSuccessorTargetModelProjections,
 
-    `SerrePositivity.KST.LocalizingInvariants.StableCategories,
-    `SerrePositivity.KST.LocalizingInvariants.ExactEnrichment,
-    `SerrePositivity.KST.LocalizingInvariants.StableInfinity,
-    `SerrePositivity.KST.LocalizingInvariants.VerdierSequence,
-    `SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories,
+    `SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment,
+    `SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence,
+    `SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams,
     `SerrePositivity.KST.LocalizingInvariants.Invariant,
     `SerrePositivity.KST.LocalizingInvariants.ValueHomotopy,
     `SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups,
@@ -457,8 +457,8 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.SplitProductShear,
     `SerrePositivity.KST.LocalizingInvariants.FiberProductDecomposition,
     `SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition,
-    `SerrePositivity.KST.LocalizingInvariants.AdjointLocalization,
-    `SerrePositivity.KST.LocalizingInvariants.AdjointVerdier,
+    `SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier,
     `SerrePositivity.KST.LocalizingInvariants.LaxStableCategory,
     `SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition,
     `SerrePositivity.KST.LocalizingInvariants.StableValueFunctor,
@@ -552,7 +552,7 @@ run_cmd do
     `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalence,
     `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestriction,
     `SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal,
-    `SerrePositivity.KST.LocalizingInvariants.ParametricDiagramGluing,
+    `SerrePositivity.InfinityCategories.F1B.Localization.ParametricDiagramGluing,
     `SerrePositivity.KST.LocalizingInvariants.InverseAttachment,
     `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentRestriction,
     `SerrePositivity.KST.LocalizingInvariants.InverseAttachmentLifting,
@@ -2032,7 +2032,8 @@ run_cmd do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
     unless (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod ||
-        mod == `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence do continue
+        mod == `SerrePositivity.InfinityCategories.Core.LimitProjectionExistence ||
+        expected.contains mod do continue
     if info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
       throwError "K-5: ModelCategory assumption in type of {name}"
     let axioms ← collectAxioms name
