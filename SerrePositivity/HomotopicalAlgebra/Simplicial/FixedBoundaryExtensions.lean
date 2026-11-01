@@ -22,7 +22,7 @@ pullbackで写像空間を定義し、指定モデルのSM7から相対延長を
 一般入口GeneralToolsおよび共有Foundationsから利用する。
 旧パスの互換importを通して中断中の厳密化からも利用する。
 今後のS-構成・ホモトピー比較・局所化の基礎として使える。
-詳細はformalization-plans/k-theory-generalization-inventory.mdの配置実施記録を参照。
+詳細はformalization-plans/archive/k-theory-generalization-inventory.mdの配置実施記録を参照。
 -/
 
 @[expose] public section

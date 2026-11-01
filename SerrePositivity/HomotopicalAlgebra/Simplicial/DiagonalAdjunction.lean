@@ -25,7 +25,7 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はWaldhausenのS-構成の二重単体図式や分解の比較・加法性の準備に利用できる。
 [棚卸し m0380][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0380
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0380
 [plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 

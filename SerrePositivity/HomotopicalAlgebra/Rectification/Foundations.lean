@@ -448,5 +448,5 @@ Kan複体の全hornの議論を内部hornの議論と同一視しない。
 ## 使われ方
 中断した一般化の調査・再開・公理監査で任意にimportする。
 既存の個別importは旧パスの互換ファイルからも利用できる。
-詳細はformalization-plans/k-theory-generalization-inventory.mdの配置実施記録を参照。
+詳細はformalization-plans/archive/k-theory-generalization-inventory.mdの配置実施記録を参照。
 -/

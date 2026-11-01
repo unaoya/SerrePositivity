@@ -25,7 +25,7 @@ public import Mathlib.Combinatorics.Quiver.Path
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0141][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0141
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0141
 [plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
