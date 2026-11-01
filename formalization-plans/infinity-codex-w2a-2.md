@@ -40,3 +40,14 @@
 2. R76 の一覧の `SimplicialChainVertices` は書き誤りで、実在名は `SimplexChainVertices`（§1 を訂正）。
 
 このうえで §2-1 の草案を作り、停止点 1 で報告する。
+
+## 6. 追記（2026-11-02、停止点 1 の回答：循環の解消と保留 2 件）
+
+**承認**：草案（R76 move 9、R77 merge 26 群・95 本、R67 move 3、生成行数最大 926、move の validator PASS、下流 11,888 本・3.3〜5.0 時間）。
+
+1. **循環 `Mod.InternalHom ↔ Mod.Closed`**：`ModuleClosed` が `ModuleInternalHomAction` と `ModuleInternalHomFunctor` の間に挟まるので、伝達文 §3.2 の表の `Monoidal/Mod/Closed`（元 `ModuleClosed` 1 本）を**廃し、`Monoidal/Mod/InternalHom` に含める**。連結順は依存どおり `ModuleInternalHom → ModuleInternalHomAction → ModuleClosed → ModuleInternalHomFunctor`。統合先は 26 → 25 群。行数は 1,700 以下のはず（超えたら報告）。
+2. **`FunctorTransport`**：どの統合先にも入れず**単独のまま**（R78 で Mathlib の `Functor.copyObj` に置き換えて消す予定のファイル）。Foundation の登録（トップ階層 12 本）はそのまま。
+3. **新しい統合先の Foundation 登録**：`CategoryTheory.Adjunction.Comparison` など、既存の接頭辞に入らない新しい統合先は、この束の中で `layers.json` の Foundation に加える（接頭辞 `SerrePositivity.CategoryTheory.Adjunction` を追加。他に新しい接頭辞ができればそれも）。層検査で Foundation の違反が増えないことを確かめる。
+4. **`merge_modules.py --check` が循環を検出しない件**：今は道具を変えない（DG の束が同じ道具を使用中）。束の静的検査では `layer_check.py` のグラフで循環を確かめる（今回と同じ手順）。循環検出の追加は、両方の束が main に入った後の道具の回に回す。
+
+**適用の時期**：下流 11,888 本の束は、**DG-W2(b) が main に入ってから**（coordination.md #5 の後）Claude が合図する。それまでに 1〜3 を草案に反映し、`--check`・validator・循環の再確認を済ませて止める（停止点 1′、報告は短くてよい）。
