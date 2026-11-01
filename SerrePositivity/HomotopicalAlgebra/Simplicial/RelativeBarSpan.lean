@@ -24,7 +24,7 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 [棚卸し m0531][inventory]と[計画書 §396][plan]を参照。
 
 [inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0531
-[plan]: ../../../formalization-plans/k-theory.md
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）
