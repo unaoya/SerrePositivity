@@ -4,11 +4,13 @@ import Lean
 ## 概要
 指定したビルド済みモジュールの公開宣言を、型・本体・公理・属性とともに保存する。
 ## 方針
-名前正規化後の Expr の構造ハッシュを保存する。定理の証明は比較対象にしない。
+名前正規化後の Expr の DAG ハッシュを保存する。定理参照は型、生成定義参照は値を再帰的にハッシュする。
+通常の定義参照は名前で区別し、定理自身の証明は比較対象にしない。
 ## 規約
 private のモジュール接頭辞を除き、補助宣言には親の名前を付ける。
 ## 使われ方
 lake env lean --run scripts/refactor/decl_snapshot.lean --modules A,B [--name-map names.json] --output before.json
+--proof-irrelevant は既定で有効。--no-proof-irrelevant は旧方式の診断用（両側で同じ指定が必要）。
 --namespace N は選択を名前空間でも絞る。モジュール省略時は SerrePositivity を読む。
 uses_modules は型・本体（定理の証明も含む）が使う定数の定義元。空の選択も count: 0 で保存する。
 environment_parent は環境に存在する最長の真の名前接頭辞、parent_module はその定義元。
@@ -47,16 +49,17 @@ private def hashName (rules : RenameRules) (n : Name) : String := Id.run do
 private structure Digest where
   value : UInt64
   bytes : Nat
+  recursive : Bool := false
   deriving Inhabited
 
 private def scalar (j : Json) : Digest :=
   let encoded := j.compress
-  ⟨hash encoded, encoded.utf8ByteSize⟩
+  ⟨hash encoded, encoded.utf8ByteSize, false⟩
 
 private def arrayDigest (children : Array Digest) : Digest :=
   let seed := mixHash (hash "array") (hash children.size)
-  children.foldl (init := ⟨seed, 2 + (children.size - 1)⟩) fun acc c =>
-    ⟨mixHash acc.value c.value, acc.bytes + c.bytes⟩
+  children.foldl (init := ⟨seed, 2 + (children.size - 1), false⟩) fun acc c =>
+    ⟨mixHash acc.value c.value, acc.bytes + c.bytes, acc.recursive || c.recursive⟩
 
 private def tagged (tag : String) (args : Array Digest) : Digest :=
   arrayDigest (#[scalar (toJson tag)] ++ args)
@@ -65,6 +68,7 @@ private structure Memo where
   -- ExprStructEq uses full structural equality, including binder annotations.
   expressions : ExprStructMap Digest := {}
   levels : Std.HashMap Level Digest := {}
+  unfolding : Array Name := #[]
 
 private partial def levelDigest (rules : RenameRules) (l : Level) : StateM Memo Digest := do
   if let some result := (← get).levels[l]? then return result
@@ -79,9 +83,19 @@ private partial def levelDigest (rules : RenameRules) (l : Level) : StateM Memo 
   modify fun m => { m with levels := m.levels.insert l result }
   return result
 
-private partial def exprDigest (rules : RenameRules) (e : Expr) : StateM Memo Digest := do
+-- Matchers are recognized by the environment extension, not a user-name prefix.
+-- Other reserved elaborator suffixes are accepted only for definition constants.
+private def generatedDefinition (env : Environment) (n : Name) : Bool :=
+  (Meta.Match.Extension.getMatcherInfo? env n).isSome ||
+  match n with
+  | .str _ s => s == "_unsafe_rec" || s == "_sunfold" ||
+      s.startsWith "_cstage" || s.startsWith "_spec_" || s.startsWith "_elambda"
+  | _ => false
+
+private partial def exprDigest (rules : RenameRules) (env : Option Environment)
+    (proofIrrelevant : Bool) (e : Expr) : StateM Memo Digest := do
   if let some result := (← get).expressions[(e : ExprStructEq)]? then return result
-  let child := exprDigest rules
+  let child := exprDigest rules env proofIrrelevant
   let nameLeaf := fun n => scalar (toJson (hashName rules n))
   let result ← match e with
     | .bvar i => pure (tagged "bvar" #[scalar (toJson i)])
@@ -89,8 +103,33 @@ private partial def exprDigest (rules : RenameRules) (e : Expr) : StateM Memo Di
     | .mvar n => pure (tagged "mvar" #[nameLeaf n.name])
     | .sort l => do pure (tagged "sort" #[← levelDigest rules l])
     | .const n ls => do
-      let levels ← ls.mapM (levelDigest rules)
-      pure (tagged "const" #[nameLeaf n, arrayDigest levels.toArray])
+      let replacement := do
+        guard proofIrrelevant
+        let env ← env
+        let info ← env.find? n
+        match info with
+        | .thmInfo v => some ("proof", v.type.instantiateLevelParams v.levelParams ls)
+        | .defnInfo v =>
+          if generatedDefinition env n then
+            some ("generated", v.value.instantiateLevelParams v.levelParams ls)
+          else none
+        | _ => none
+      if let some (tag, value) := replacement then
+        let stack := (← get).unfolding
+        if let some idx := stack.toList.idxOf? n then
+          -- Unsafe recursive auxiliaries can refer back to themselves. A stack
+          -- distance is independent of their generated spelling. Digests with
+          -- such a back-edge are not cached outside their unfolding context.
+          let d := tagged "recursive-generated" #[scalar (toJson (stack.size - idx - 1))]
+          pure { d with recursive := true }
+        else
+          modify fun m => { m with unfolding := stack.push n }
+          let d ← child value
+          modify fun m => { m with unfolding := stack }
+          pure (tagged tag #[d])
+      else
+        let levels ← ls.mapM (levelDigest rules)
+        pure (tagged "const" #[nameLeaf n, arrayDigest levels.toArray])
     | .app f a => do pure (tagged "app" #[← child f, ← child a])
     | .lam _ t b bi => do pure (tagged "lam" #[scalar (toJson (reprStr bi)), ← child t, ← child b])
     | .forallE _ t b bi => do pure (tagged "forall" #[scalar (toJson (reprStr bi)), ← child t, ← child b])
@@ -100,12 +139,14 @@ private partial def exprDigest (rules : RenameRules) (e : Expr) : StateM Memo Di
     | .lit (.strVal v) => pure (tagged "string" #[scalar (toJson v)])
     | .mdata _ b => child b
     | .proj n i b => do pure (tagged "proj" #[nameLeaf n, scalar (toJson i), ← child b])
-  modify fun m => { m with expressions := m.expressions.insert e result }
+  unless result.recursive do
+    modify fun m => { m with expressions := m.expressions.insert e result }
   return result
 
 /-- DAG hash, distinct Expr count, and byte length of the hypothetical expanded encoding. -/
-def DeclSnapshot.fingerprint (rules : List (String × String)) (e : Expr) : UInt64 × Nat × Nat :=
-  let (d, memo) := (exprDigest rules e).run {}
+def DeclSnapshot.fingerprint (rules : List (String × String)) (e : Expr)
+    (env : Option Environment := none) (proofIrrelevant : Bool := true) : UInt64 × Nat × Nat :=
+  let (d, memo) := (exprDigest rules env proofIrrelevant e).run {}
   (d.value, memo.expressions.size, d.bytes)
 
 private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bool) : String :=
@@ -127,7 +168,7 @@ private def definingModule (env : Environment) (name : Name) : Option Name := do
   return env.header.modules[idx.toNat]!.module
 
 private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
-    (rules : RenameRules) : CoreM Json := do
+    (rules : RenameRules) (proofIrrelevant : Bool) : CoreM Json := do
   let env ← getEnv
   let simp ← Meta.getSimpTheorems
   let mut rows : Array Json := #[]
@@ -156,9 +197,10 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       ("selection_start_line", toJson r.selectionRange.pos.line),
       ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
-    let ty := DeclSnapshot.fingerprint rules info.type
+    let fingerprint := fun e => DeclSnapshot.fingerprint rules e (some env) proofIrrelevant
+    let ty := fingerprint info.type
     let body := if info.isTheorem then none else
-      (info.value? (allowOpaque := true)).map (DeclSnapshot.fingerprint rules)
+      (info.value? (allowOpaque := true)).map fingerprint
     for (field, stat) in [("type", some ty), ("body", body)] do
       if let some (_, distinct, bytes) := stat then
         if bytes > 1000000000 then
@@ -181,6 +223,9 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       ("name", toJson (canonicalName name)), ("parent", toJson parent.toString),
       ("environment_parent", toJson (ep.map canonicalName)), ("parent_module", toJson parentModule),
       ("source_range", toJson sourceRange),
+      ("reference_kind", toJson (if info.isTheorem then "proof" else
+        if generatedDefinition env name && (match info with | .defnInfo _ => true | _ => false)
+        then "generated" else "named")),
       ("module", toJson mod.toString), ("kind", toJson (declarationKind env info priority.isSome)),
       ("type_hash", toJson (toString ty.1)), ("body_hash", toJson (body.map fun x => toString x.1)),
       ("axioms", toJson axs), ("attributes", attrs), ("used_constants", toJson used),
@@ -191,7 +236,8 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
     if ← System.FilePath.pathExists path then
       sources := sources.push <| Json.mkObj [("module", toJson mod.toString), ("source", toJson (← IO.FS.readFile path))]
   return Json.mkObj [("schema_version", toJson (2 : Nat)),
-    ("hash_algorithm", toJson "normalized Expr DAG mixHash v1"),
+    ("hash_algorithm", toJson (if proofIrrelevant then "normalized Expr DAG mixHash proof-irrelevant v2" else "normalized Expr DAG mixHash v1")),
+    ("proof_irrelevant", toJson proofIrrelevant),
     ("huge_terms", toJson huge), ("name_map", Json.mkObj (rules.map fun (k, v) => (k, toJson v))),
     ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources),
     ("count", toJson rows.size), ("declarations", toJson rows)]
@@ -202,9 +248,12 @@ unsafe def main (args : List String) : IO UInt32 := do
   let mut output : Option String := none
   let mut ownerNames : Option (List String) := none
   let mut rules : RenameRules := []
+  let mut proofIrrelevant := true
   let mut rest := args
   while !rest.isEmpty do
     match rest with
+    | "--proof-irrelevant" :: tail => proofIrrelevant := true; rest := tail
+    | "--no-proof-irrelevant" :: tail => proofIrrelevant := false; rest := tail
     | "--modules" :: value :: tail => modules := (value.splitOn ",").toArray.map String.toName; rest := tail
     | "--namespace" :: value :: tail => namespacePrefix := some value.toName; rest := tail
     | "--resolve-modules" :: path :: tail =>
@@ -243,7 +292,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       return (key, toJson aliases)
     IO.FS.writeFile outputPath ((Json.mkObj owners).pretty ++ "\n")
     return 0
-  let result ← (snapshot modules namespacePrefix rules).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
+  let result ← (snapshot modules namespacePrefix rules proofIrrelevant).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
   IO.FS.writeFile outputPath (result.pretty ++ "\n")
   IO.println s!"snapshot saved: {outputPath}"
   return 0
