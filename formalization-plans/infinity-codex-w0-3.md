@@ -599,3 +599,14 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **D の未復元 4 件（`kanTensorReplacement_isCofibrant/_isFibrant/_left_isFibrant`＋C）**：scratch worktree でキャッシュに無い 165 本が再コンパイルされたのは、それらの before の成果物がキャッシュ採用（11-01）より前に作られていたからで、前提の違反ではあるが規則の違反ではない。**再コンパイルを許して復元を続ける**（数百本・数分の規模。全ビルドではないが、他の全ビルドがないことは確かめる）。復元できたら pp で比べる（定理は `pp.explicit false` の型が同じなら一致）。
 
 **その後**：全件一致なら停止せずに「downstream imports」「監査の追従」「保存比較の規則（_aux_ transient、instance の番号無視）」をコミットし、verify へ（§10.33-3）。一致しないものがあれば停止点 2″ で差分を報告。scratch は削除。
+
+### 10.36 追記（11-01、停止点 3：監査 2 本の import を直して再検証）
+
+**承認**：保存比較 PASS（16,412 件、未解決 0）、ビルド 2 段と sorry 閉包の成功、監査 98／100、3 コミット（f66a5c24e・9406000cb・02971913f）、補充 75 モジュール・83 import、直接違反 296 → 294、禁止閉包 177 → 166。
+
+**失敗した監査 2 本の処置**：どちらも、束で動かした定義に監査の `import` が届かなくなったもの。監査（`scripts/audit_*.lean`）は層のグラフの外なので、必要なモジュールを直接 import してよい。
+1. `audit_homotopy_limits.lean`：R72(3) で `InfinityCategories/ModelBridge/HL/`（HL の Quillen 42 本）へ移したモジュールを import に加える（名前一覧の追従は 9406000cb で済んでいるので import だけ）。
+2. `audit_infinity_f2.lean`：F2 の入口が `F2.CatInfinity` だけになったので、F2 の領域（FilteredExchange・Ind・Compact・Presentable など、`audit_infinity_f2_checks.lean` と同じ閉包）を直接 import する。
+3. 両方を `lake env lean` で単独に通してから、「監査の import の追従」の 1 コミット。
+
+**再検証**：全 100 本をもう一度 44 分かける代わりに、`VERIFY_CACHE=1 VERIFY_JOBS=3 zsh scripts/refactor/verify.sh` で走らせる。直前の実行で成功した 98 本は鍵（監査の本文と閉包の olean ハッシュ）が同じなのでキャッシュに当たり、直した 2 本だけが実行される。README の規約では gate:false になるが、**入力が同一であることは鍵が保証する**ので、この束ではこれを合否とする（coordination.md §5 に逸脱として記録。次の束からは IF-W0-4 の runner で短くなるので全実行に戻す）。summary で 2 本が成功し failures 0 なら **停止点 3′** で報告 → Claude が main へ取り込む。
