@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 
 /-! # 全 Hom 自然比較と共役の一致
 概要：全 Hom 自然性の四角形から、共役後の Hom 作用の等号を得る。

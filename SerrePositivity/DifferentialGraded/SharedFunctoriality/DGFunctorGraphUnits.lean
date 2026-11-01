@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphComposition
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionIdentity
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionIdentity
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
 
 /-! # 元の graph 合成比較の恒等入力との両立

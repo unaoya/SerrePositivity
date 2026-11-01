@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorParamNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamNaturality
 public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
 
 /-! # dg 関手の全次数パラメータ自然変換の縦合成

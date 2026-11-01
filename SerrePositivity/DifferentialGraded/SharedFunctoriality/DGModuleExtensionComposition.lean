@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphComposition
 public import SerrePositivity.DifferentialGraded.Tensor.AssociatorIso
 public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
 

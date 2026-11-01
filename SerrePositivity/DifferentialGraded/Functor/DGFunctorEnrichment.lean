@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorParamComposition
-public import SerrePositivity.KST.SConstruction.DGFunctorHomIdentity
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamComposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomIdentity
 
 /-! # 全次数 Hom end による厳密 dg 関手圏の豊穣構造
 概要：厳密 dg 関手を対象とし、全次数自然変換の Hom end を持つ dg 圏を構成する。

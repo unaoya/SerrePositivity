@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
 /-! # dg 関手の全 Hom 作用と閉零前後合成
 概要：dg 関手の全次数 Hom 作用が、元の閉零射による前後合成と可換である。

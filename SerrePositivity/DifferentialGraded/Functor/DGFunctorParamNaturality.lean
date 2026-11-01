@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 public import SerrePositivity.DifferentialGraded.Category.Components
 
 /-! # dg 関手のパラメータ自然性の全斉次成分

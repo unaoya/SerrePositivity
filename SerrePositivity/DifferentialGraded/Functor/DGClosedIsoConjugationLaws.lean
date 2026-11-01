@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
 /-! # 全 Hom 共役の恒等・合成・逆
 概要：閉零同型による Hom 複体の共役が、同型の合成と厳密に両立する。

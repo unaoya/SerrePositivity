@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
 
 /-! # tensor の元の評価を加群対象の評価へ移す

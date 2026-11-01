@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 
 /-! # 閉零同型による全 Hom 複体の共役
 概要：対象ごとの閉零同型で dg 関手の値を移し、全 Hom の作用を保持する。

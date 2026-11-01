@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphComposition
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
 
 /-! # graph 合成比較の左入力に関する全次数自然性
 概要：元の代表加群の合成比較は、入力 dg 関手間の全パラメータ自然変換と可換である。

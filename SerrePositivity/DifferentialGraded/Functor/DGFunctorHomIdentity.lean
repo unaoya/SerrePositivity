@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 
 /-! # dg 関手 Hom end の実閉単位
 概要：元の dg 関手の全対象の単位を、全次数自然性を保つ Hom end の単位にする。

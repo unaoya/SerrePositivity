@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 
 /-! # 全パラメータ付き自然変換の実閉零共役
 概要：dg 自然変換のパラメータと全次数を保って、両端の関手を共役する。

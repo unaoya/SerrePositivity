@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 
 /-! # dg 関手の Hom end 上の厳密な前合成作用
 概要：源への厳密 dg 関手は、元の全次数自然変換とその全パラメータへ作用する。

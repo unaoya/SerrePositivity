@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedClosedFamily
-public import SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableClosedNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableClosedNaturality
 /-!
 概要：同時に持ち上げた閉射を、実延長した代表加群間の同じ閉射へ比較する。
 方針：代表延長同型の自然性と閉射族の厳密な評価式を合成する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomCategory
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 /-!
 概要：全 Hom 像が指定係数 span に入る dg 関手を、同じ実 dg 係数閉包へ持ち上げる。
 方針：Hom 鎖写像を span へ制限し、忠実な評価で単位・合成を反映する。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputLeft
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGGraphCompositionInputLeft
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 /-!
 概要：代表加群の実延長比較の全 Hom 自然性を、同じ閉射の可換式として公開する。
 方針：既存の全次数自然性に、閉射による前合成を適用する。

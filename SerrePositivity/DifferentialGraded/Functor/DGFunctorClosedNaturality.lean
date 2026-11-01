@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-! # 全 Hom 自然性の閉零射への制限
 概要：全 Hom 複体の自然性から、元の閉零射圏の自然変換を得る。

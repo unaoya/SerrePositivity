@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionEvaluationTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionEvaluationTransport
 public import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule
 /-!
 概要：実加群延長の合成比較は、代表加群の元の Yoneda 比較と厳密に整合する。

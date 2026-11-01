@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
 public import SerrePositivity.DifferentialGraded.Bimodule.ParameterEvaluation
 

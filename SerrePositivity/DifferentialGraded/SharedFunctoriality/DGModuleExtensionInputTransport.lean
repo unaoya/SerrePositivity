@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphUnits
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphUnits
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionMaps
 
 /-! # 実延長の入力等号移送と tensor 射の評価

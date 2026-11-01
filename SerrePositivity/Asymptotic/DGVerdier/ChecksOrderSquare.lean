@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.OrderSquare
+public import SerrePositivity.Asymptotic.DGVerdier.OrderSquare
 
 /-! # U17c の実際の比較正方形の公理監査 -/
 @[expose] public section

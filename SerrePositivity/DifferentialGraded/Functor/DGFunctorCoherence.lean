@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-! # 厳密 dg 関手の結合・単位と Hom end の等号移送
 概要：元の dg 関手の結合・単位の等号と、その Hom end 上の移送を与える。

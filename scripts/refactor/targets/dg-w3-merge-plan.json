@@ -745,8 +745,7 @@
       "SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality",
       "SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison",
       "SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone",
-      "SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport",
-      "SerrePositivity.DifferentialGraded.Functor.ModuleExtensionConjugation"
+      "SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport"
     ],
     "docstring": "# Functor.ModuleValued\n\n## 概要\n7 本の同主題の構成と比較をまとめる。\n\n## 方針\n依存順に連結し、宣言と証明を保存する。\n\n## 規約\n元ごとの section で variable と option を保持する。private 名の変更は private_renames で明示する。\n\n## 使われ方\nDG の土台とその下流から import する。",
     "private_renames": {},
@@ -1010,8 +1009,6 @@
       "SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles",
       "SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport",
       "SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison",
-      "SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableComposition",
-      "SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableClosedNaturality",
       "SerrePositivity.DifferentialGraded.Module.RepresentableCoproductClosedMatrix",
       "SerrePositivity.DifferentialGraded.Module.FunctorGraphActions",
       "SerrePositivity.DifferentialGraded.Module.FunctorExtensionEvaluation",

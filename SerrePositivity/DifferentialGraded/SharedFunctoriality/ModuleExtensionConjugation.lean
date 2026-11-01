@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 /-!
 概要：元の実 dg 加群延長の合成比較を、全 Hom の共役等式として公開する。
 方針：合成比較の元の全 Hom 自然性へ、一般の閉共役判定を適用する。

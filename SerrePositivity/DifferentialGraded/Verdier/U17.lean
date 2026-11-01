@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.OrderSquare
+
 public import SerrePositivity.DifferentialGraded.Verdier.SupportSquare
 public import SerrePositivity.DifferentialGraded.Verdier.RetractSquare
 public import SerrePositivity.DifferentialGraded.Verdier.ScalarDirectCompletion

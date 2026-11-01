@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomWhiskering
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomWhiskering
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 
 /-! # dg Hom 作用と実閉零同型の共役
 概要：dg 関手の Hom 作用が、実閉零同型による全次数の共役と可換である。

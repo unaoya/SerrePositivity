@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomEnd
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomEnd
 
 /-! # dg 関手 Hom end の全次数パラメータの普遍性
 概要：Hom end への射と元の dg 関手間の GradedNatTrans を厳密に対応させる。

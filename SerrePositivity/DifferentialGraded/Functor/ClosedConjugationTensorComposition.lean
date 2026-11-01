@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 /-!
 概要：全次数の二項合成を保存する鎖写像族は、閉同型で共役した後も合成を保つ。
 方針：抽象対象の上で tensor 合成と共役の交換則を一度適用する。

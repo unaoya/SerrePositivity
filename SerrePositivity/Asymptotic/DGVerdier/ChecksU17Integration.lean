@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Verdier.U17
-public import SerrePositivity.DifferentialGraded.Verdier.ChecksOrderSquare
+public import SerrePositivity.Asymptotic.DGVerdier.ChecksOrderSquare
 public import SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksScalarDirectCompletion
 public import SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksGraphPairMorita
 public import SerrePositivity.DifferentialGraded.Checks.Verdier.ChecksKernelComparisonNaturality

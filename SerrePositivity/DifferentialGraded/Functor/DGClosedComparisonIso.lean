@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 
 /-! # 全 Hom 比較の閉零自然同型
 概要：全次数で自然な閉零同型族を、同じ成分の通常の自然同型に束ねる。
