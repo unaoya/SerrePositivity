@@ -67,6 +67,7 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
     config=config or json.loads((ROOT/'scripts/refactor/layers.json').read_text())
     snapshots=snapshots or {}
     seen,destinations=set(),set()
+    actions={}
     sources={}
     for entry in entries:
         if not isinstance(entry,dict) or not FIELDS<=set(entry) or set(entry)-(FIELDS|OPTIONAL_FIELDS):
@@ -75,7 +76,11 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
         downstream_imports(entry)
         module, dest=entry['module'],entry['dest']
         src,dst=module_path(root,module),module_path(root,dest)
-        if module in seen: raise ValueError('duplicate module: '+module)
+        # §10.30: only a split followed by a move of its keep side may share a source.
+        previous=actions.get(module,[])
+        if previous and not (previous==['split'] and entry['action']=='move'):
+            raise ValueError('duplicate module: '+module)
+        actions.setdefault(module,[]).append(entry['action'])
         if dest in destinations: raise ValueError('duplicate destination: '+dest)
         if entry['action']=='reimport':
             if module!=dest: raise ValueError('reimport requires dest equal to module')
@@ -164,6 +169,8 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
                 raise ValueError('split imports lose moved-to-keep dependency: '+module)
             if plan['dependencies']['keep_to_moved'] and not backward:
                 raise ValueError('split imports lose keep-to-moved dependency: '+module)
+    # Splits and their headers/dependencies are already composed above; moves
+    # rename the resulting keep nodes and all incoming edges, never the original body.
     renames={e['module']:e['dest'] for e in entries if e['action'] in ('move','archive')}
     after={renames.get(n,n):{renames.get(d,d) for d in deps} for n,deps in after.items()}
     if any('imports' in e or e.get('downstream_imports') for e in entries):
