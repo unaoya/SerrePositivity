@@ -497,3 +497,11 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 3. 他の層の入口（F1・F1B・HomotopyLimits・Stable・Kan など）にも同じ状況があれば同じ処置（まとめて 1 ファイル `scripts/check_infinity_pending.lean` でもよい）。
 4. 未処理の補充 2 件（EvaluationFamily の rlp 用 import、`LargeParameterRelativeChoice`）は増加 0 を確かめて補う。
 5. 再ビルドを続け、保存比較 → **停止点 2**。「downstream imports」「R72 追加分割」「入口の #check の移動」のコミットに分ける。
+
+### 10.28 追記（11-01、`#check` の移し先の名前：verify.sh は変えない）
+
+**判断**：verify.sh は束の最後の関門なので、同じ束の中で変えない。移し先のファイル名を既存の探索規則に合わせ、**`scripts/audit_infinity_f2_checks.lean`** とする（`scripts/audit_*.lean` に一致するので manifest に登録すれば走る）。中身は F2 の旧入口の `#check` 1,497 件と、必要な直接 import 769 本。先頭の docstring に「F2 の入口（`InfinityCategories/F2.lean`、import は `F2.CatInfinity` だけの清い入口）から届かない宣言の受入検査。R73（W2b）で FilteredExchange が清くなったら入口へ戻す」と書く。
+
+- 残す 0 件・移す 1,497 件は想定の範囲：W1 の reimport で F2 の入口を清くした結果、旧来の目録は閉包全体に依存していたことが見えたということ。F2 の入口は docstring と `F2.CatInfinity` の import だけでよい。
+- `audit_manifest.txt` に `scripts/audit_infinity_f2_checks.lean` を追加（意図を報告に）。この監査は F2 の閉包（769 本の直接 import）を読むので時間と RSS は `audit_infinity_f1` 級になりうる。計測は IF-W0-4 の runner に任せる。
+- その後、再ビルド → 保存比較 → **停止点 2**。
