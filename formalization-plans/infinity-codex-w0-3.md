@@ -476,3 +476,11 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 6. **停止点 2** の報告に、分割した宣言の一覧と、閉包の前後を含める。
 
 補足：`BoundaryOne` は R72 で「モデル側の塊、純粋部分の move は後の窓」と分類したモジュール。補充で BoundaryOne を要した宣言が純粋部分だけを使うなら、その宣言の側ではなく BoundaryOne の純粋部分を HotA に残す分割（R72 の未実施分の前倒し）でもよい。どちらが小さいかで選び、報告に書く。
+
+### 10.26 追記（11-01、BoundaryOne は move、EvaluationFamily・LargeParameterHomotopy は分割）
+
+**承認**：静的調査（`r72-additional-static-2026-11.md`）の結果を確認した。
+1. **`HomotopyFunctionComplex/BoundaryOne`（5 宣言すべて純粋）は、モジュールごと `HomotopicalAlgebra.Simplicial.BoundaryOne` へ move する**（分割ではなく move 1 件。接頭辞 `HomotopyFunctionComplex` が禁止なので、純粋部分でも場所を変えないと閉包から出ない）。利用者の import は書き換え、w2a.md の「分割不要」の記録は「move に変更（11-01）」と直す。
+2. **`Transfer/EvaluationFamily`** は候補どおり分割（moved 7・keep 9、分割先 `ModelBridge/HA/EvaluationFamily`）。連鎖の調査を §10.25-3 の規則で終えてから適用。
+3. **`Simplicial/LargeParameterHomotopy`** も同じ手順（モデル圏の宣言に依存する宣言を moved に）。
+4. 連鎖を含めて 10 本以下なら、§10.25-5 のとおり before snapshot → 適用 → 静的検査（177 以下）→ 再ビルド → 停止点 2。10 本を超えるか中核の使用が出たら止めて報告。
