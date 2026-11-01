@@ -411,3 +411,12 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 2. **ハッシュは DAG 上で、共有部分式を一度だけ数える。** `Expr` を構造的に下りながら、部分式ごとのハッシュを `HashMap Expr UInt64`（構造的同値で引く）に覚え、親は子のハッシュを `mixHash` で合成する。名前の正規化（private 接頭辞、name-map）は葉（`.const`）で行う。計算量は異なる部分式の数（この項なら 1,844）に比例する。before／after は同じ関数で数えるので、共有の仕方が違っても値は一致する。
 3. 試験：共有の多い項（例：`∀ x, f (f (f x)) = …` を `let` で畳んだもの）で、展開した木のハッシュと DAG のハッシュが別物でよいが、同じ項の二通りの共有表現で DAG ハッシュが一致すること。
 4. **記録**：この宣言と同種の巨大な項（木の展開が 1 GB を超えるもの）が採取中に見つかったら、モジュール名・宣言名・異なる部分式の数・展開サイズを `targets/huge-terms-2026-11.md` に列挙する。これは証明の質の問題（自動生成の証明義務が膨らんでいる）で、窓の外（段 G・K-S• レーンの再開時）に直す候補。監査（`audit_infinity_f1` 等）の RSS 19 GB もこの種の項が原因の可能性があるので、一覧は IF-W0-4 の runner の計測と突き合わせる。
+
+### 10.20 追記（11-01、Lake の成果物キャッシュを使う）
+
+ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](coordination.md)）。`~/.zshenv` に `LAKE_ARTIFACT_CACHE=true`・`LAKE_RESTORE_ARTIFACTS=true`・`LAKE_CACHE_DIR=~/.cache/lake` を設定済み。
+
+1. **これからの `lake` の実行は、この 3 変数が入った shell で行う**（新しい shell を開くか `source ~/.zshenv`。`lake env | grep LAKE_ARTIFACT_CACHE` が `true` なら OK）。採取（`lake env lean --run decl_snapshot.lean`）・束の下流ビルド・verify のすべて。
+2. 束の下流ビルド（約 20,000 本）をこの設定で走らせると、作った成果物がキャッシュに入り、**取り込み後の main は再ビルドなしで同じ成果物を使える**（rsync の温めが不要になる）。
+3. verify.sh・runner は変更不要（`lake build`・`lake env lean` を呼ぶだけ）。`LAKE_RESTORE_ARTIFACTS=true` のおかげで `.lake/build` にも olean が復元される。
+4. 試験的に確認済みの挙動：別の場所の同じソースは再コンパイルなしでビルド完了、ソースを変えると新しい版が追加され古い版も残る、既存の `.lake/build` は入らない（以後の分から）。

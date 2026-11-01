@@ -139,3 +139,10 @@ DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Math
 ### 11.5 報告
 
 11.1〜11.4 の成果物を「草案と報告」「調査」の 2 コミットにして止める。(b) の合図が来たら (b) を優先し、11.x の残りは後回しでよい。
+
+## 12. 追記（2026-11-01、Lake の成果物キャッシュ）
+
+ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](coordination.md)）。`~/.zshenv` に設定済み。(b) 以降の `lake` は、新しい shell か `source ~/.zshenv` の後に実行する（`lake env | grep LAKE_ARTIFACT_CACHE` で確認）。これにより：
+- (b) の前の「main から `.lake/build` を複製」は、main を取り込んだ後の `lake build` がキャッシュから成果物を取るので**不要になる見込み**（キャッシュに無い分だけビルドされる。最初のうちは、この設定の前に作られた成果物はキャッシュに無いので、`warm_build_dir.sh` を予備として使ってよい）。
+- (b) の下流ビルドの成果物はキャッシュに入り、取り込み後の main がそのまま使う。
+- `with_build_lock.sh`（全ビルドの排他）はそのまま使う。`warm_build_dir.sh` は予備。
