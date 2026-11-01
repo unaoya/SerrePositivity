@@ -605,7 +605,7 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 **承認**：保存比較 PASS（16,412 件、未解決 0）、ビルド 2 段と sorry 閉包の成功、監査 98／100、3 コミット（f66a5c24e・9406000cb・02971913f）、補充 75 モジュール・83 import、直接違反 296 → 294、禁止閉包 177 → 166。
 
 **失敗した監査 2 本の処置**：どちらも、束で動かした定義に監査の `import` が届かなくなったもの。監査（`scripts/audit_*.lean`）は層のグラフの外なので、必要なモジュールを直接 import してよい。
-1. `audit_homotopy_limits.lean`：R72(3) で `InfinityCategories/ModelBridge/HL/`（HL の Quillen 42 本）へ移したモジュールを import に加える（名前一覧の追従は 9406000cb で済んでいるので import だけ）。
+1. `audit_homotopy_limits.lean`：R72(3) で `InfinityCategories/ModelBridge/` 直下へ移した HL の Quillen 42 本（w2a.json の実在する移動先。**`HL/` という下位ディレクトリはない**——§10.36 の初版の書き誤り、11-01 訂正）を import に加える（名前一覧の追従は 9406000cb で済んでいるので import だけ）。
 2. `audit_infinity_f2.lean`：F2 の入口が `F2.CatInfinity` だけになったので、F2 の領域（FilteredExchange・Ind・Compact・Presentable など、`audit_infinity_f2_checks.lean` と同じ閉包）を直接 import する。
 3. 両方を `lake env lean` で単独に通してから、「監査の import の追従」の 1 コミット。
 
