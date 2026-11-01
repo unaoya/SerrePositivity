@@ -8,6 +8,39 @@ GENERATED = re.compile(r'(?:_?match_\d+|eq_\d+|_?proof_\d+(?:_\d+)*|_sunfold|_un
 PRIVATE_DECL = re.compile(r'\bprivate\s+(?:(?:noncomputable|unsafe|partial)\s+)*(?:def|theorem|lemma|abbrev|opaque|axiom|structure|class|inductive|instance)\s+([\w.\']+)')
 
 
+
+def notation_auxiliary(name, module, authored=()):
+    """Only Lean's module-qualified notation helpers are transient (§10.35)."""
+    if name in authored:
+        return False
+    encoded = re.escape(module.replace('.', '_'))
+    return any(re.fullmatch(r'_aux_' + encoded + r'___(?:macroRules|unexpand)_.+', part)
+               for part in name.split('.'))
+
+
+def match_anonymous_instances(before, after):
+    """Match source-verified anonymous instances by owner and pretty-printed type.
+
+    No numeric-name rewrite is applied to authored declarations. Ambiguous owners
+    or types must be reviewed rather than pairing instances by list order.
+    """
+    def index(rows):
+        result = {}
+        for row in rows:
+            if not row.get('anonymous_instance'):
+                raise ValueError('instance must be anonymous in source: ' + row['name'])
+            key = (row['module'], row['type_pp'].strip())
+            if not all(key) or key in result:
+                raise ValueError('empty or ambiguous anonymous instance identity: ' + repr(key))
+            result[key] = row['name']
+        return result
+    left, right = index(before), index(after)
+    if left.keys() != right.keys():
+        raise ValueError('anonymous instance owners or pretty-printed types differ')
+    return [dict(module=mod, type_pp=typ, before=left[mod, typ], after=right[mod, typ])
+            for mod, typ in sorted(left)]
+
+
 def private_collisions(resolutions, root):
     """An explicitly written declaration wins over a generated-looking spelling."""
     groups = {}
@@ -16,7 +49,8 @@ def private_collisions(resolutions, root):
             continue
         if not aliases or not all(a['raw'].startswith('_private.') and a['module'] for a in aliases):
             raise ValueError('expected private kernel constants for ' + name)
-        generated = any(GENERATED.fullmatch(part) for part in name.split('.'))
+        generated = (any(GENERATED.fullmatch(part) for part in name.split('.')) or
+                     any(notation_auxiliary(name, a['module']) for a in aliases))
         for alias in aliases:
             path = Path(root) / (alias['module'].replace('.', '/') + '.lean')
             if not path.exists():

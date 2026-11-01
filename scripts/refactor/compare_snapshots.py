@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 import sys
 from lean_source import transient_names, parse_source, declaration_owner, Unsupported
+from snapshot_identity import notation_auxiliary
 
 
 def rename(name, mapping):
@@ -16,6 +17,28 @@ def rename(name, mapping):
         if name == old or name.startswith(old + '.'):
             return mapping[old] + name[len(old):]
     return name
+
+
+
+def normalize_generated_name(name, modules):
+    """Map module spellings embedded in Lean macro/unexpander auxiliary names.
+
+    Match a complete encoded module and generated-name marker, never an ordinary
+    identifier substring. The private macro suffix embeds the same module again.
+    Hashes remain unchanged: renamed rows must still pass every field comparison.
+    """
+    match = re.search(r'(^|\.)_aux_(.*?)___(?=macroRules_|unexpand_)', name)
+    if match is None:
+        return name
+    encoded_old = match[2]
+    destinations = {old.replace('.', '_'): new.replace('.', '_')
+                    for old, new in modules.items()}
+    if encoded_old not in destinations:
+        return name
+    encoded_new = destinations[encoded_old]
+    name = name[:match.start(2)] + encoded_new + name[match.end(2):]
+    return re.sub(r'_private_' + re.escape(encoded_old) + r'_(?=\d+_)',
+                  lambda _: '_private_' + encoded_new + '_', name)
 
 
 def normalize_expr(value, mapping):
@@ -63,19 +86,23 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
                 pass
         split = module_map.get('declarations', {}).get(module, {})
         for row in rows:
-            if row['name'] in transient:
+            if row['name'] in transient or notation_auxiliary(row['name'], module, names):
+                skipped.add(row['name'])
                 continue
             parent = declaration_owner(row, names, by_name) if names else None
             parent = parent or row['parent']
             target = split.get(row['name'], split.get(parent, module_map.get('modules', {}).get(module, module)))
-            key = (rename(row['name'], mapping), target)
+            generated_modules = {**module_map.get('modules', {}), module: target}
+            def normalized_name(name):
+                return normalize_generated_name(rename(name, mapping), generated_modules)
+            key = (normalized_name(row['name']), target)
             if key in records:
                 raise ValueError('normalized declaration collision: ' + repr(key))
             records[key] = {
-                'parent': rename(parent, mapping), 'kind': row['kind'],
+                'parent': normalized_name(parent), 'kind': row['kind'],
                 'type': expression_value(row, 'type', mapping, use_hash),
                 'body': expression_value(row, 'body', mapping, use_hash),
-                'axioms': sorted(rename(n, mapping) for n in row['axioms']),
+                'axioms': sorted(normalized_name(n) for n in row['axioms']),
                 'attributes': row['attributes']}
     # Group generated auxiliaries under their public parent. Proof-only auxiliaries
     # may change when a theorem proof changes; the parent's axioms are still checked.
