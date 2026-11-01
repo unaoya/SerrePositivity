@@ -92,6 +92,10 @@
 - `Quotient/*` を `Resolution/Cells/*` の特殊化として導く（33 対＋残り 7 対。同報告に宣言名と型の対応表）。
 - 群ごとに提案 → 承認 → 実装。
 
+### D8 重いモジュールの整理（窓の外、11-01 新設）
+
+- [build-profile-2026-10-31](archive/build-profile-2026-10-31.md)：DG で重いのは `Module/ConeShiftTriangle`（460 秒、全体 1 位）・`Resolution/Cells/CompositionComparison`（89 秒）。DG 全体は 1,598 本・平均 6〜8 秒で、本数が減る D4 の統合がそのまま効く。ConeShiftTriangle は `set_option profiler true` で重い箇所（`simp`・`decide`・大きな `rfl`）を特定して直す。∞ 計画 R80 と同じ規則（計測 → 提案 → 承認 → 実装）。
+
 ### D7 Mathlib との関係（窓の外）
 
 - Complexes の薄い言い換えを Mathlib の名前に置き換える。**11-01 の全数調査**（同報告）：Complexes 117 ファイル・495 宣言のうち **115 宣言に Mathlib の置換案**。61 件は既存 API の特殊化で済み、54 件は成分評価や次数変換が要る。
