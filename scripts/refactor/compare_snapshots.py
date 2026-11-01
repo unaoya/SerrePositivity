@@ -65,6 +65,8 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
         raise ValueError('unsupported snapshot version')
     module_map = module_map or {}
     records = {}
+    reference_kinds = {}
+    proof_irrelevant = snapshot.get("proof_irrelevant", False)
     skipped = set()
     sources = {s['module']: s for s in snapshot.get('sources', [])}
     by_module = {}
@@ -98,6 +100,7 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
             key = (normalized_name(row['name']), target)
             if key in records:
                 raise ValueError('normalized declaration collision: ' + repr(key))
+            reference_kinds[key] = row.get('reference_kind', 'named')
             records[key] = {
                 'parent': normalized_name(parent), 'kind': row['kind'],
                 'type': expression_value(row, 'type', mapping, use_hash),
@@ -112,7 +115,18 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
         if parent != name and parent in records:
             if records[parent]['kind'] == 'theorem' and re.search(r'\._proof_\d', name[0]):
                 continue
-            grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})[name[0]] = record
+            if proof_irrelevant and reference_kinds[name] in ('proof', 'generated'):
+                # These helper references are already expanded by the parent's
+                # type/body fingerprints. Comparing a second inventory here
+                # would make Lean's cross-declaration sharing observable again.
+                # Keep their actual names in auxiliary_groups(), outside equality.
+                continue
+            if proof_irrelevant:
+                value = {k: v for k, v in record.items() if k != 'parent'}
+                group = grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})
+                group[digest(value)] = value  # structural set, not generated names/multiplicity
+            else:
+                grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})[name[0]] = record
         else:
             grouped.setdefault(name, dict(record))
     return grouped, sorted(skipped)
@@ -120,6 +134,40 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+
+
+
+def auxiliary_groups(snapshot, mapping=None, module_map=None):
+    """Audit trail only: references are compared in their parent's DAG hash.
+
+    Explicit source declarations are never classified from a generated-looking
+    spelling alone. Keep actual names for review, but use parent/module identity
+    as the group key, just as for declaration comparison and transient ownership.
+    """
+    mapping, module_map = mapping or {}, module_map or {}
+    sources = {s['module']: s['source'] for s in snapshot.get('sources', [])}
+    by_module = {}
+    for row in snapshot['declarations']:
+        by_module.setdefault(row.get('module', ''), []).append(row)
+    result = {}
+    for module, local in by_module.items():
+        by_name = {r['name']: r for r in local}
+        names = set()
+        if module in sources:
+            try:
+                names = set(parse_source(sources[module], snapshot={'declarations': local}, module=module).declarations)
+            except Unsupported:
+                pass
+        for row in local:
+            parent = (declaration_owner(row, names, by_name) if names else None) or row['parent']
+            if parent == row['name']:
+                continue
+            split = module_map.get('declarations', {}).get(module, {})
+            target = split.get(parent, module_map.get('modules', {}).get(module, module))
+            key = (rename(parent, mapping), target)
+            result.setdefault(key, set()).add(row['name'])
+    return [{'parent': p, 'module': m, 'names': sorted(names)}
+            for (p, m), names in sorted(result.items())]
 
 
 def compare(before, after, mapping=None, module_map=None):
@@ -146,9 +194,14 @@ def compare(before, after, mapping=None, module_map=None):
             if a[name].get(field) != b[name].get(field):
                 changes.append({**identity(name), 'parent': b[name]['parent'], 'change': field,
                                 'before_sha256': digest(a[name].get(field)), 'after_sha256': digest(b[name].get(field))})
-    return {'status': 'FAIL' if changes else 'PASS', 'before_count': len(a), 'after_count': len(b),
+    result = {'status': 'FAIL' if changes else 'PASS', 'before_count': len(a), 'after_count': len(b),
             'parent_count': len({(r['parent'], key[1]) for key, r in b.items()}), 'changes': changes,
             'transient': {'before': skipped_a, 'after': skipped_b}}
+    if before.get('proof_irrelevant') or after.get('proof_irrelevant'):
+        result['auxiliary_groups'] = {
+            'before': auxiliary_groups(before, mapping or before.get('name_map'), module_map),
+            'after': auxiliary_groups(after, after.get('name_map'))}
+    return result
 
 
 def main():
