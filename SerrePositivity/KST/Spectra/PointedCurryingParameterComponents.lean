@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomTensorVertices
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorVertices
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 
 /-!

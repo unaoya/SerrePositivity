@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationProjections
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 /-!
 概要：元の全関手の半自由出力分解から、同じ生の関手への実 augmentation を構成する。
 方針：全 augmentation ホモトピーを同じ入力切断で引き戻し、両射影を照合する。

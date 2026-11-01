@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtension
 public import SerrePositivity.KST.LocalizingInvariants.SquareArrowFamily
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation

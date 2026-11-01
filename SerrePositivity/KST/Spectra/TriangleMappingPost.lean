@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CircleSmashMappingIso
-public import SerrePositivity.KST.Spectra.SelfPullbackNaturality
+public import SerrePositivity.InfinityCategories.Kan.SelfPullbackNaturality
 
 /-!
 概要：三角形による写像空間の pullback 同型は標的の写像について自然。

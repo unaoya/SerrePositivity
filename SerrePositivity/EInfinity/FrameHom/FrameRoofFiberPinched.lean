@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofTarget
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 
 /-!
 # 元の実屋根の指定次数 fiber と同じ pinched Hom

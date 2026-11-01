@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.NerveULiftHom
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
 public import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing

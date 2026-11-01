@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraReplacement
-public import SerrePositivity.EInfinity.FrameHom.RelativeLocalization
+public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeLocalization
 
 /-!
 # Cofibrant E 代数と元の全代数の普通の局所化の比較

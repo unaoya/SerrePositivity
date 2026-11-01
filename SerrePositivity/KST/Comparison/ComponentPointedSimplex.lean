@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.ComponentKan
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 /-!
 # 境界定数単体を選ばれた成分へ持ち上げる

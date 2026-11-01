@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
-public import SerrePositivity.EInfinity.FrameHom.CoherentRightConeStrict
-public import SerrePositivity.EInfinity.FrameHom.TerminalCoconeSimplex
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentRightConeStrict
+public import SerrePositivity.InfinityCategories.HomotopyLimits.TerminalCoconeSimplex
 
 /-!
 # 元の混合 coherent 単体の零端は通常の右余錐

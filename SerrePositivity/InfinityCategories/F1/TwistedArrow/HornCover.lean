@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.HalfCompatibility
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.HornFaceCompatibility
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.WeightCover
-public import SerrePositivity.InfinityCategories.F1.Simplicial.RangeCoverGluing
+public import SerrePositivity.InfinityCategories.Kan.RangeCoverGluing
 
 /-!
 概要：twisted arrow のホーンの各面と左右の半分を、一つの被覆の図式へ束ねる。

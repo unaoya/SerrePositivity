@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeImageIsos
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeProjectionIsoTransport

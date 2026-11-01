@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
 
 /-! # 全実作用の可換性からの標準点つき厳密自然変換

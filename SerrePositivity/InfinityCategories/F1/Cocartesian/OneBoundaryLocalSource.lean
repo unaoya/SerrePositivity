@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OneBoundaryProjections
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundarySimplexOverMaps
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundarySimplexOverMaps
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.NativeRestrictionMap
 
 /-!

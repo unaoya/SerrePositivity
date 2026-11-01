@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleComposition
-public import SerrePositivity.KST.Spectra.EnrichedParameterUnits
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterUnits
 
 /-!
 概要：相対 BF 左因子と可換な全 Hom の組の単位と圏の法則。

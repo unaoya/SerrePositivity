@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
-public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinementRecovery
-public import SerrePositivity.EInfinity.Hammock.UnmarkedAttachedPrefix
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedRefinementRecovery
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedAttachedPrefix
 
 /-!
 # 元の最初の切断の三因子の文字列評価

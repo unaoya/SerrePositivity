@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentOrdinaryPrism
-public import SerrePositivity.KST.SConstruction.CoherentStringPrismChains
+public import SerrePositivity.InfinityCategories.Kan.CoherentStringPrismChains
 public import SerrePositivity.KST.SConstruction.CoherentHomotopyPrisms
 
 /-! # 元の二辺の因子分解列は square の標準二三角形

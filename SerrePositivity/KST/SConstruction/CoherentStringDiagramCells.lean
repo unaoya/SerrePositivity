@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CoherentStringPathFlags
+public import SerrePositivity.InfinityCategories.Kan.CoherentStringPathFlags
 public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
 public import SerrePositivity.InfinityCategories.Coherent.FunctorReindex
 

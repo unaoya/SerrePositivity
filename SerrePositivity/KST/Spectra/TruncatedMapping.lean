@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedMapping
-public import SerrePositivity.KST.Spectra.FibrationTower
+public import SerrePositivity.InfinityCategories.Kan.FibrationTower
 
 /-!
 概要：点つき写像空間の制限を引き戻して得る切断写像空間の塔。

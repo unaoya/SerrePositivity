@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact
-public import SerrePositivity.KST.LocalizingInvariants.AdjointVerdier
+public import SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier
 
 /-!
 概要：一般の lax pullback の商の実 quasicategory と、元の差の coherent な因子化を構成。

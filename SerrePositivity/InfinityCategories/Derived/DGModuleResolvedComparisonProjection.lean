@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionComparisonProjection
 public import SerrePositivity.InfinityCategories.Stable.FunctorIsoArrowTransport
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq

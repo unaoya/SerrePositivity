@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingVertices
 public import SerrePositivity.KST.Spectra.SuspensionComposition
-public import SerrePositivity.KST.Spectra.EnrichedMappingLaws
+public import SerrePositivity.InfinityCategories.Kan.EnrichedMappingLaws
 
 /-!
 概要：Ω スペクトルの写像空間の単体的合成。

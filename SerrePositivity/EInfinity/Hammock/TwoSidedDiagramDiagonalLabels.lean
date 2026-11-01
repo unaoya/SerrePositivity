@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramPartialRows
-public import SerrePositivity.EInfinity.Hammock.LabelledChainCoordinates
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LabelledChainCoordinates
 /-!
 # 部分対角に沿う元の両ラベルと全作用素
 

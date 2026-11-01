@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 
 /-!
 概要：積・内部 Hom の随伴で、cf 置換を含む frame Hom と豊穣 Hom を照合する。

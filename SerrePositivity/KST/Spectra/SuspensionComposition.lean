@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedEnrichment
-public import SerrePositivity.KST.Spectra.TensorMapping
+public import SerrePositivity.InfinityCategories.Kan.TensorMapping
 
 /-!
 概要：suspension の写像空間への作用の単位と合成。

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomExchangeMappingStrength
-public import SerrePositivity.KST.Spectra.InternalHomExchangeRestriction
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeMappingStrength
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeRestriction
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.KanSequenceMappingFunctor
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitConstantTriangleFiberIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoTransportCancellation
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalComparisonComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitConstantTransportPointIso
 
 /-!

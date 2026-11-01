@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeNativeProperties
 public import SerrePositivity.KST.SConstruction.DGKNativeValueComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：指定実像を保持する小 Perf 包絡の固定 ν 値を、元基底の固定 ν 値へ戻す。

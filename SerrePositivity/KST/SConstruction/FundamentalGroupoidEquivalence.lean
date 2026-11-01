@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.FundamentalGroupoidComparison
+public import SerrePositivity.InfinityCategories.Kan.FundamentalGroupoidComparison
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyExtension
 
 /-! # 元の辺と二単体の基本亜群と Kan 置換のホモトピー圏の同値

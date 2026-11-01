@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeDerivedSpan
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedSourceValues
 public import SerrePositivity.EInfinity.ComplexLimits.ProbeDerivedSourceVertex
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 
 /-!
 # 元の通常導来源の同じ端点を持つ実正規化 Hom 比較

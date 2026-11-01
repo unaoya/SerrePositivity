@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.NormalizedValueCochains
+public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
 
 /-!
 概要：元を値とする正規化微分の係数に関する自然性。

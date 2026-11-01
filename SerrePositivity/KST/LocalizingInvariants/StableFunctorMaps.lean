@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 public import SerrePositivity.KST.SConstruction.FunctorCofiberPreservation
 
 /-!

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareSideRecovery
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterZeroBoundary
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元 LT 絶対外周から実始域零化外面への指定三境界付き全図式比較を構成する。

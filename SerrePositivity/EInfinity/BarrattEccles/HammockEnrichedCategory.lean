@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitUnit
-public import SerrePositivity.EInfinity.Hammock.EnrichedCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
 
 /-!
 # 任意の可換環上の元の E 代数の hammock 豊穣圏

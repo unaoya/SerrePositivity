@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentRestrictedFiberTriangleIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PrismFiberOutputFunctor
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
 
 /-!
 概要：終点で両端を揃えた指定像と、共通 prism 関手の直接の指定像を比較する。

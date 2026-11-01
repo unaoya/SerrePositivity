@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3CommonStageStructure
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の構造随伴射を成分とする、BF 段評価と次段 loop 評価の全関手同型。

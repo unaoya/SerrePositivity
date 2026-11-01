@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneNonempty
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension
 public import Mathlib.CategoryTheory.WithTerminal.Basic
 public import Mathlib.CategoryTheory.CodiscreteCategory
 public import Mathlib.CategoryTheory.EssentiallySmall
@@ -28,8 +28,8 @@ public import Mathlib.Logic.Small.Basic
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0576][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0576
-[plan]: ../../../../formalization-plans/k-theory.md
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0576
+[plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

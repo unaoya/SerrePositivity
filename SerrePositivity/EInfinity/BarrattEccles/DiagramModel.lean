@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
 
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramAcyclicity
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy

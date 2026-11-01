@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.D3CommonStageProjection
 public import SerrePositivity.KST.Spectra.D3CommonLoopDiagramResolution
 public import SerrePositivity.KST.SConstruction.PointedKanLoopInfinity
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：共通 BF 右射影の各段の標的を、元の点つき Kan loop ∞ 関手に照合する。

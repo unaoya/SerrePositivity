@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PullbackComparison
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
 public import Mathlib.Algebra.Homology.DerivedCategory.KProjective
 

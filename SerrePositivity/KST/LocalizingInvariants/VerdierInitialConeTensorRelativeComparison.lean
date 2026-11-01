@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRefinement
 public import SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRelativeComparison
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 
 /-!
 概要：回収した二つの左錐の積の全比較を、元の貼合せ境界上で厳密に定値にする。

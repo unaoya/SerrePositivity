@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.FullInclusionLift
-public import SerrePositivity.InfinityCategories.DGNerve.JoinVertexSurjectivity
+public import SerrePositivity.InfinityCategories.Core.JoinVertexSurjectivity
 
 /-! # 頂点を覆う写像に沿う充満部分圏への充填の持ち上げ
 

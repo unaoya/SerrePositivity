@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 
 /-!
 概要：右 fibration に沿い、指定した可逆辺そのものを始端固定で持ち上げる。

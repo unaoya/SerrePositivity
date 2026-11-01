@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FreeDiscreteEnrichment
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeDiscreteEnrichment
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedUniversal
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorPartition
 
 /-!
 # 元の非指定自由部分から任意の豊穣目標への関手

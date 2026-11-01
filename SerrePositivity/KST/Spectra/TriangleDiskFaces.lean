@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.TriangleDiskBoundary
-public import SerrePositivity.KST.Spectra.SquareTriangleOuterFaces
+public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces
 
 /-!
 概要：相対三角形の外側の辺と正方形の境界の対応。

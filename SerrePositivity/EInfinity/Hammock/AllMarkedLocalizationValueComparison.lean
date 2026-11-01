@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedValueSpineDescentRecovery
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueComparison
 
 /-!
 # 元の指定因子の評価と同じ局所化評価の一致

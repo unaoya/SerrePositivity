@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteGraphColimitNaturality
 public import Mathlib.CategoryTheory.Limits.Fubini
-public import SerrePositivity.EInfinity.Hammock.ColimitGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
 
 /-!
 # 全体の元の hammock と有限包の hammock の余極限の同型

@@ -56,7 +56,7 @@ class RefactorTests(unittest.TestCase):
         self.assertIn('/-- A preserved docstring with /- a nested comment -/. -/\n@[simp]',kept)
 
     def test_reject_mutual_local_variable_and_unnamed_instance(self):
-        for source in ['mutual\ndef a := 1\nend\n', 'variable (n : Nat) in\ndef a := n\n', 'instance : Inhabited Bool := ⟨false⟩\n']:
+        for source in ['mutual\ndef a := 1\nend\n', 'instance : Inhabited Bool := ⟨false⟩\n']:
             with self.assertRaises(Unsupported): parse_source(source)
 
     def test_dependency_directions_include_proof_dependencies(self):
@@ -72,7 +72,7 @@ class RefactorTests(unittest.TestCase):
             with self.assertRaisesRegex(Unsupported, 'indented command'):
                 parse_source(source)
 
-    def test_generated_simp_declaration_adds_consumer_import(self):
+    def test_generated_simp_declaration_does_not_add_consumer_import(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);src=root/'SerrePositivity/A.lean';src.parent.mkdir()
             text='def kept := 1\ndef moved := 2\n';src.write_text(text)
@@ -84,7 +84,7 @@ class RefactorTests(unittest.TestCase):
                  'attributes':{**attrs,'simp':n=='moved.generated'}} for n in ['kept','moved','moved.generated']]}
             plan=prepare(root,'SerrePositivity.A','SerrePositivity.B',{'moved'},snap,
                          {'SerrePositivity.A':set(),'SerrePositivity.C':{'SerrePositivity.A'}})
-            self.assertIn('import SerrePositivity.B\n',plan['changes']['SerrePositivity.C']['after'])
+            self.assertEqual(set(plan['changes']),{'SerrePositivity.A','SerrePositivity.B'})
             self.assertEqual(consumer.read_text(),'import SerrePositivity.A\nexample : True := by simp\n')
 
     def test_prepare_bidirectional_refusal_is_read_only(self):
@@ -102,6 +102,11 @@ class RefactorTests(unittest.TestCase):
         out=add_import(SOURCE,'SerrePositivity.New')
         self.assertEqual(out.replace('public import SerrePositivity.New\n','',1),SOURCE)
         self.assertEqual(add_import(out,'SerrePositivity.New'),out)
+
+    def test_empty_scaffold_import_precedes_module_docstring(self):
+        source = 'module\n\n/-! Module documentation. -/\n'
+        result = add_import(source, 'SerrePositivity.Dependency')
+        self.assertEqual(result, 'module\npublic import SerrePositivity.Dependency\n\n/-! Module documentation. -/\n')
 
     def test_crlf_declarations_are_preserved(self):
         original=SOURCE.replace('\n','\r\n')

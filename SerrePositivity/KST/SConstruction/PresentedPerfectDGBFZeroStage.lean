@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedStandardLoopEvaluation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
-public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
 
 /-! # 厳密 dg 入力における元の ΩB₀ と評価
 概要：元の零次境界商の Ex∞ を B₀ とし、零段 ΩB₀ と評価 ΣΩB₀→B₀ を構成する。

@@ -1,11 +1,6 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingMonomorphisms
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexModelCategory
-public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
-public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
-public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 
 /-!
 # 標準的な単射cofibration条件のもとで二重単体的集合はReedy cofibrantである
@@ -27,8 +22,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
 [棚卸し m0351][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0351
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0351
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）
@@ -83,29 +78,5 @@ lemma latchingComparison_mono (B : SimplexCategoryᵒᵖ ⥤ SSet.{v})
     rw [he]
     infer_instance
   exact NatTrans.mono_of_mono_app _
-
-variable [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-
-include hcof in
-lemma reedyCofibrant (B : SimplexCategoryᵒᵖ ⥤ SSet.{v}) :
-    reedyLeft simplexOp (cofibrations SSet.{v}) (initial.to B) := by
-  intro j
-  apply ((cofibrations SSet.{v}).arrow_iso_iff (latchingInitialArrowIso simplexOp j B)).mp
-  rw [hcof]
-  exact latchingComparison_mono B j
-
-include hcof in
-/-- 標準的な単射cofibration条件のもとで二重単体的集合はReedy cofibrantである。
-
-モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
-latching比較の評価を、余極限を保つ評価関手の同型を介してTypeのlatching比較へ移す。
-Eilenberg–Zilberの分解から単射性を導く。
--/
-lemma isCofibrant (B : SimplexCategoryᵒᵖ ⥤ SSet.{v}) :
-    let := simplexOpModelCategory SSet.{v}
-    IsCofibrant B := by
-  let := simplexOpModelCategory SSet.{v}
-  exact ⟨reedyCofibrant hcof B⟩
 
 end SerrePositivity.BisimplicialModel

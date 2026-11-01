@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.Spectra.FibrationExactness
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：厳密な Kan 引き戻しの二つの基点付き fiber の同型。

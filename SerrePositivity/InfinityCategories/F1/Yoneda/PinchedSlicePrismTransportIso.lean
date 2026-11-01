@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization
+public import SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber
 

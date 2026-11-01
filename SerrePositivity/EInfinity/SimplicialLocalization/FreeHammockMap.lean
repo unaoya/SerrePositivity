@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjectMap
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal
-public import SerrePositivity.EInfinity.Hammock.FixedObjectHammockMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHammockMap
 
 /-!
 # 元の自由 hammock の係数写像

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
 
 /-!

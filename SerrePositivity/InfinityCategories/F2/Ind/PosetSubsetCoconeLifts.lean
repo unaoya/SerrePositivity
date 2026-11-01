@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FullPosetSubsetCoconeLift
-public import SerrePositivity.InfinityCategories.F1.Simplicial.FinitePosetLowerSet
+public import SerrePositivity.InfinityCategories.Simplicial.FinitePosetLowerSet
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetSubsetPointRemoval
-public import SerrePositivity.InfinityCategories.F1.Simplicial.OrderIsoNerve
+public import SerrePositivity.InfinityCategories.Simplicial.OrderIsoNerve
 
 /-!
 概要：元の順序部分型への形状制限で指定全余錐を厳密に持ち上げる性質を保持する。

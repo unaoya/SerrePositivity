@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingCompositionLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFunctor
-public import SerrePositivity.KST.Spectra.HomTensorExchangeEvaluation
+public import SerrePositivity.InfinityCategories.Kan.HomTensorExchangeEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionsParameters
 
 /-!

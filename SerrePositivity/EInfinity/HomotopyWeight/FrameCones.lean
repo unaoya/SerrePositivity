@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeLifting
-public import SerrePositivity.EInfinity.FrameHom.SourceInvariance
-public import SerrePositivity.EInfinity.FrameHom.PointwiseBrown
+public import SerrePositivity.InfinityCategories.ModelBridge.SourceInvariance
+public import SerrePositivity.InfinityCategories.ModelBridge.PointwiseBrown
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightFunctoriality
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution

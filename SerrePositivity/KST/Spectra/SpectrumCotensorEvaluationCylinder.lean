@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderEndpoints
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderEndpoints
 public import SerrePositivity.KST.Spectra.SpectrumCotensorUnpointedEvaluation
 public import SerrePositivity.KST.Spectra.SpectrumNativeCotensor
 

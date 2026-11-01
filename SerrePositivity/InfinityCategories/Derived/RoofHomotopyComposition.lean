@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces
+public import SerrePositivity.InfinityCategories.F1B.RoofCompositionFaces
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 /-!
 概要：任意パラメータの指定二ホモトピーを、実合成三角形ごと合成する。

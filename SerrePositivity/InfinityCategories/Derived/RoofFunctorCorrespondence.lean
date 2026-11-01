@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberBaseChange
 
 /-! # 関手による実屋根の変換と固定 Hom の自然性

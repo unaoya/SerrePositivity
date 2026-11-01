@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramMappingSpace
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison
-public import SerrePositivity.EInfinity.FrameHom.OverFunctorComparison
+public import SerrePositivity.InfinityCategories.ModelBridge.OverFunctorComparison
 
 /-!
 # 定値図式の導来写像空間と構成した frame の自然比較

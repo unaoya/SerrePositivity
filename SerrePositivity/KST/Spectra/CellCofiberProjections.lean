@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SimplexCellSphereIso
-public import SerrePositivity.KST.Spectra.SkeletalSphericalRealization
+public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
 
 /-!
 概要：セルの cofiber の比較同型と実際の商射の可換式。

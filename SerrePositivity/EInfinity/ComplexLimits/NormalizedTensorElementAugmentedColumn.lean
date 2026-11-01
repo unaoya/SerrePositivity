@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism
-public import SerrePositivity.EInfinity.FrameHom.TerminalCoconeSimplex
+public import SerrePositivity.InfinityCategories.HomotopyLimits.TerminalCoconeSimplex
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 
 /-!

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedIdentityDiagrams
-public import SerrePositivity.EInfinity.Hammock.ForwardZigzagConstantDiagram
-public import SerrePositivity.EInfinity.Hammock.ZigzagFixedAppendFunctor
-public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzagConstantDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagFixedAppendFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagColumnSplitFunctor
 
 /-!
 # 元の切断因子の関手と恒等列付き元の関手の比較

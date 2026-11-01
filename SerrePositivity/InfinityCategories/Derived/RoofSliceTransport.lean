@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport
 public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
 
 /-! # 実 over slice の固定図式輸送の台

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanLegs
-public import SerrePositivity.EInfinity.FrameHom.HomotopyComponentTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyComponentTransport
 public import SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PathTransport
-public import SerrePositivity.KST.Spectra.HomotopySquares
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：二つの正次数の類を、指定端点を持つ実際の path 上の一つの類で比較する条件。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.FrameSpanNerve
+public import SerrePositivity.InfinityCategories.ModelBridge.FrameSpanNerve
 public import SerrePositivity.EInfinity.FrameHom.FrameSpanNaturality
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 

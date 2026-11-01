@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockReducedColimit
-public import SerrePositivity.EInfinity.Hammock.LengthNaturality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthNaturality
 
 /-!
 # 任意の可換環上の元の hammock の長さ濾過

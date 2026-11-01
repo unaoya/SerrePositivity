@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphEmbedding
-public import SerrePositivity.EInfinity.Hammock.GraphEmbeddingRange
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphEmbeddingRange
 
 /-!
 # 元の E 代数の包含の充満性と全単体の像

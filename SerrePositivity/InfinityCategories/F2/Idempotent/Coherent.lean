@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Walking
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
+public import SerrePositivity.InfinityCategories.Core.Retracts
 
 /-!
 概要：coherent な冪等図式と、元の全図式を制限で回収する強い分裂。

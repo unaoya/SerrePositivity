@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.RightMixedFamily
+public import SerrePositivity.InfinityCategories.ModelBridge.RightMixedFamily
 public import SerrePositivity.EInfinity.FrameHom.SourceRoofFamily
 public import SerrePositivity.EInfinity.Hammock.WeakArrowActionEquivalences
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
-public import SerrePositivity.EInfinity.Hammock.UnmarkedFirstColumn
-public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorTarget
-public import SerrePositivity.EInfinity.Hammock.ZigzagAppendArrowProperty
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFirstColumn
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorTarget
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagAppendArrowProperty
 
 /-!
 # 元の三因子を貼った語の最初の非指定列

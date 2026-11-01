@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedCompositionNaturality
 public import SerrePositivity.KST.Spectra.PointedWeightedEndFunctor
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：BF 源の全 Hom パラメータによる、元の weighted Hom end への合成作用。

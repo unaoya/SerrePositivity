@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomTensorSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointParameterNaturality
 
 /-!

@@ -4,12 +4,15 @@ import Lean
 ## 概要
 指定したビルド済みモジュールの公開宣言を、型・本体・公理・属性とともに保存する。
 ## 方針
-表示文字列ではなく Expr の構造を直列化する。定理の証明は比較対象にしない。
+名前正規化後の Expr の構造ハッシュを保存する。定理の証明は比較対象にしない。
 ## 規約
 private のモジュール接頭辞を除き、補助宣言には親の名前を付ける。
 ## 使われ方
-lake env lean --run scripts/refactor/decl_snapshot.lean --modules A,B --output before.json
+lake env lean --run scripts/refactor/decl_snapshot.lean --modules A,B [--name-map names.json] --output before.json
 --namespace N は選択を名前空間でも絞る。モジュール省略時は SerrePositivity を読む。
+uses_modules は型・本体（定理の証明も含む）が使う定数の定義元。空の選択も count: 0 で保存する。
+environment_parent は環境に存在する最長の真の名前接頭辞、parent_module はその定義元。
+ソースとの照合と transient の分類は Python 側で行う。parent は従来のスナップショットとの互換用。
 -/
 
 open Lean
@@ -25,31 +28,85 @@ private def parentName : Name → Name
   | .num p _ => parentName p
   | .anonymous => .anonymous
 
-private def node (tag : String) (xs : List Json) : Json :=
-  Json.arr (#[toJson tag] ++ xs.toArray)
+private partial def environmentParent (env : Environment) (n : Name) : Option Name :=
+  let p := n.getPrefix
+  if p.isAnonymous then none
+  else if env.contains p then some p else environmentParent env p
 
-private partial def levelData : Level → Json
-  | .zero => node "zero" []
-  | .succ l => node "succ" [levelData l]
-  | .max a b => node "max" [levelData a, levelData b]
-  | .imax a b => node "imax" [levelData a, levelData b]
-  | .param n => node "param" [toJson (canonicalName n)]
-  | .mvar n => node "level-mvar" [toJson (canonicalName n.name)]
+private abbrev RenameRules := List (String × String)
 
-private partial def exprData : Expr → Json
-  | .bvar i => node "bvar" [toJson i]
-  | .fvar i => node "fvar" [toJson (canonicalName i.name)]
-  | .mvar i => node "mvar" [toJson (canonicalName i.name)]
-  | .sort l => node "sort" [levelData l]
-  | .const n ls => node "const" [toJson (canonicalName n), toJson (ls.map levelData)]
-  | .app f a => node "app" [exprData f, exprData a]
-  | .lam _ t b bi => node "lam" [toJson (reprStr bi), exprData t, exprData b]
-  | .forallE _ t b bi => node "forall" [toJson (reprStr bi), exprData t, exprData b]
-  | .letE _ t v b nondep => node "let" [exprData t, exprData v, exprData b, toJson nondep]
-  | .lit (.natVal n) => node "nat" [toJson n]
-  | .lit (.strVal s) => node "string" [toJson s]
-  | .mdata _ b => exprData b
-  | .proj n i b => node "proj" [toJson (canonicalName n), toJson i, exprData b]
+private def hashName (rules : RenameRules) (n : Name) : String := Id.run do
+  let name := canonicalName n
+  for (src, dst) in rules do
+    if name == src || name.startsWith (src ++ ".") then
+      return dst ++ (name.drop src.length).toString
+  return name
+
+-- The byte count describes the old compact structural JSON if expanded as a
+-- tree. It is accumulated from children and never used to allocate a buffer.
+private structure Digest where
+  value : UInt64
+  bytes : Nat
+  deriving Inhabited
+
+private def scalar (j : Json) : Digest :=
+  let encoded := j.compress
+  ⟨hash encoded, encoded.utf8ByteSize⟩
+
+private def arrayDigest (children : Array Digest) : Digest :=
+  let seed := mixHash (hash "array") (hash children.size)
+  children.foldl (init := ⟨seed, 2 + (children.size - 1)⟩) fun acc c =>
+    ⟨mixHash acc.value c.value, acc.bytes + c.bytes⟩
+
+private def tagged (tag : String) (args : Array Digest) : Digest :=
+  arrayDigest (#[scalar (toJson tag)] ++ args)
+
+private structure Memo where
+  -- ExprStructEq uses full structural equality, including binder annotations.
+  expressions : ExprStructMap Digest := {}
+  levels : Std.HashMap Level Digest := {}
+
+private partial def levelDigest (rules : RenameRules) (l : Level) : StateM Memo Digest := do
+  if let some result := (← get).levels[l]? then return result
+  let child := levelDigest rules
+  let result ← match l with
+    | .zero => pure (tagged "zero" #[])
+    | .succ a => do pure (tagged "succ" #[← child a])
+    | .max a b => do pure (tagged "max" #[← child a, ← child b])
+    | .imax a b => do pure (tagged "imax" #[← child a, ← child b])
+    | .param n => pure (tagged "param" #[scalar (toJson (hashName rules n))])
+    | .mvar n => pure (tagged "level-mvar" #[scalar (toJson (hashName rules n.name))])
+  modify fun m => { m with levels := m.levels.insert l result }
+  return result
+
+private partial def exprDigest (rules : RenameRules) (e : Expr) : StateM Memo Digest := do
+  if let some result := (← get).expressions[(e : ExprStructEq)]? then return result
+  let child := exprDigest rules
+  let nameLeaf := fun n => scalar (toJson (hashName rules n))
+  let result ← match e with
+    | .bvar i => pure (tagged "bvar" #[scalar (toJson i)])
+    | .fvar n => pure (tagged "fvar" #[nameLeaf n.name])
+    | .mvar n => pure (tagged "mvar" #[nameLeaf n.name])
+    | .sort l => do pure (tagged "sort" #[← levelDigest rules l])
+    | .const n ls => do
+      let levels ← ls.mapM (levelDigest rules)
+      pure (tagged "const" #[nameLeaf n, arrayDigest levels.toArray])
+    | .app f a => do pure (tagged "app" #[← child f, ← child a])
+    | .lam _ t b bi => do pure (tagged "lam" #[scalar (toJson (reprStr bi)), ← child t, ← child b])
+    | .forallE _ t b bi => do pure (tagged "forall" #[scalar (toJson (reprStr bi)), ← child t, ← child b])
+    | .letE _ t v b nd => do
+      pure (tagged "let" #[← child t, ← child v, ← child b, scalar (toJson nd)])
+    | .lit (.natVal n) => pure (tagged "nat" #[scalar (toJson n)])
+    | .lit (.strVal v) => pure (tagged "string" #[scalar (toJson v)])
+    | .mdata _ b => child b
+    | .proj n i b => do pure (tagged "proj" #[nameLeaf n, scalar (toJson i), ← child b])
+  modify fun m => { m with expressions := m.expressions.insert e result }
+  return result
+
+/-- DAG hash, distinct Expr count, and byte length of the hypothetical expanded encoding. -/
+def DeclSnapshot.fingerprint (rules : List (String × String)) (e : Expr) : UInt64 × Nat × Nat :=
+  let (d, memo) := (exprDigest rules e).run {}
+  (d.value, memo.expressions.size, d.bytes)
 
 private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bool) : String :=
   if inst then "instance" else
@@ -63,25 +120,51 @@ private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bo
   | .ctorInfo _ => "constructor"
   | .recInfo _ => "recursor"
 
-private def snapshot (modules : Array Name) (namespacePrefix : Option Name) : CoreM Json := do
+-- Resolve ambiguous generated names in one common import environment.
+-- Source positions identify their parent; they do not select the defining module.
+private def definingModule (env : Environment) (name : Name) : Option Name := do
+  let idx ← env.getModuleIdxFor? name
+  return env.header.modules[idx.toNat]!.module
+
+private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
+    (rules : RenameRules) : CoreM Json := do
   let env ← getEnv
   let simp ← Meta.getSimpTheorems
   let mut rows : Array Json := #[]
-  let constants := env.constants.toList.mergeSort (fun a b => a.1.toString ≤ b.1.toString)
-  for (name, info) in constants do
-    let some idx := env.getModuleIdxFor? name | continue
-    let mod := env.header.modules[idx.toNat]!.module
-    if namespacePrefix.isNone && !modules.contains mod then continue
-    if let some selectedPrefix := namespacePrefix then
-      unless selectedPrefix.isPrefixOf (privateToUserName name) do continue
+  let mut huge : Array Json := #[]
+  let selected := modules.foldl (init := ({} : NameSet)) fun acc n => acc.insert n
+  let constants := env.constants.fold (init := #[]) fun acc name info => Id.run do
+    let some mod := definingModule env name | return acc
+    let keep : Bool := match namespacePrefix with
+      | some ns => ns.isPrefixOf (privateToUserName name)
+      | none => selected.contains mod
+    return if keep then acc.push (name, info, mod) else acc
+  for (name, info, mod) in constants.qsort (fun a b => Name.quickLt a.1 b.1) do
     -- Private auxiliaries are retained and grouped with their public parent.
     -- Ordinary private declarations are not public API; their references still normalize.
     let normalized := privateToUserName name
+    let ep := environmentParent env normalized
     let parent := parentName normalized
+    let parentModule := ep.bind fun p => do
+      let i ← env.getModuleIdxFor? p
+      return env.header.modules[i.toNat]!.module.toString
     if isPrivateName name && parent == normalized then continue
+    let ranges ← findDeclarationRanges? name
+    let sourceRange := ranges.map fun r => Json.mkObj [
+      ("start_line", toJson r.range.pos.line), ("end_line", toJson r.range.endPos.line),
+      ("start_column", toJson r.range.pos.column), ("end_column", toJson r.range.endPos.column),
+      ("selection_start_line", toJson r.selectionRange.pos.line),
+      ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
-    let ty := exprData info.type
-    let body := if info.isTheorem then none else (info.value? (allowOpaque := true)).map exprData
+    let ty := DeclSnapshot.fingerprint rules info.type
+    let body := if info.isTheorem then none else
+      (info.value? (allowOpaque := true)).map (DeclSnapshot.fingerprint rules)
+    for (field, stat) in [("type", some ty), ("body", body)] do
+      if let some (_, distinct, bytes) := stat then
+        if bytes > 1000000000 then
+          huge := huge.push <| Json.mkObj [("module", toJson mod.toString),
+            ("name", toJson name.toString), ("field", toJson field),
+            ("distinct_subexpressions", toJson distinct), ("expanded_bytes", toJson bytes)]
     let axs := (← collectAxioms name).toList.map canonicalName |>.mergeSort (· ≤ ·)
     let usedConstants := info.getUsedConstantsAsSet.toList
     let used := usedConstants.map canonicalName |>.mergeSort (· ≤ ·)
@@ -96,38 +179,71 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name) : Co
       ("expose", toJson (env.hasExposedBody name))]
     rows := rows.push <| Json.mkObj [
       ("name", toJson (canonicalName name)), ("parent", toJson parent.toString),
+      ("environment_parent", toJson (ep.map canonicalName)), ("parent_module", toJson parentModule),
+      ("source_range", toJson sourceRange),
       ("module", toJson mod.toString), ("kind", toJson (declarationKind env info priority.isSome)),
-      ("type", ty), ("type_hash", toJson (toString (hash ty.compress))),
-      ("body", toJson body), ("body_hash", toJson (body.map (fun j => toString (hash j.compress)))),
+      ("type_hash", toJson (toString ty.1)), ("body_hash", toJson (body.map fun x => toString x.1)),
       ("axioms", toJson axs), ("attributes", attrs), ("used_constants", toJson used),
-      ("used_modules", toJson usedModules)]
-  if rows.isEmpty then throwError "snapshot selected no declarations"
+      ("used_modules", toJson usedModules), ("uses_modules", toJson usedModules)]
   let mut sources : Array Json := #[]
   for mod in modules do
     let path := mod.toString.replace "." "/" ++ ".lean"
     if ← System.FilePath.pathExists path then
       sources := sources.push <| Json.mkObj [("module", toJson mod.toString), ("source", toJson (← IO.FS.readFile path))]
-  return Json.mkObj [("schema_version", toJson (1 : Nat)),
-    ("hash_algorithm", toJson "Lean String hash of canonical structural JSON; full structures included for name-map comparison"),
-    ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources), ("declarations", toJson rows)]
+  return Json.mkObj [("schema_version", toJson (2 : Nat)),
+    ("hash_algorithm", toJson "normalized Expr DAG mixHash v1"),
+    ("huge_terms", toJson huge), ("name_map", Json.mkObj (rules.map fun (k, v) => (k, toJson v))),
+    ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources),
+    ("count", toJson rows.size), ("declarations", toJson rows)]
 
 unsafe def main (args : List String) : IO UInt32 := do
   let mut modules : Array Name := #[]
   let mut namespacePrefix : Option Name := none
   let mut output : Option String := none
+  let mut ownerNames : Option (List String) := none
+  let mut rules : RenameRules := []
   let mut rest := args
   while !rest.isEmpty do
     match rest with
     | "--modules" :: value :: tail => modules := (value.splitOn ",").toArray.map String.toName; rest := tail
     | "--namespace" :: value :: tail => namespacePrefix := some value.toName; rest := tail
+    | "--resolve-modules" :: path :: tail =>
+      let json ← IO.ofExcept (Json.parse (← IO.FS.readFile path))
+      ownerNames := some (← IO.ofExcept (fromJson? (α := List String) json))
+      rest := tail
+    | "--name-map" :: path :: tail =>
+      let json ← IO.ofExcept (Json.parse (← IO.FS.readFile path))
+      let obj ← IO.ofExcept json.getObj?
+      rules ← obj.toList.mapM fun (k, v) => do return (k, ← IO.ofExcept v.getStr?)
+      rules := rules.mergeSort (fun a b => a.1.length > b.1.length)
+      rest := tail
     | "--output" :: value :: tail => output := some value; rest := tail
-    | _ => throw <| IO.userError "usage: --modules A,B [--namespace N] --output file.json"
+    | _ => throw <| IO.userError "usage: --modules A,B [--namespace N] [--name-map names.json] --output file.json"
   let some outputPath := output | throw <| IO.userError "--output is required"
   if modules.isEmpty then modules := #[`SerrePositivity]
   initSearchPath (← findSysroot)
   enableInitializersExecution
   let env ← importModules (modules.map fun n => { module := n, importAll := true }) {} (loadExts := true)
-  let result ← (snapshot modules namespacePrefix).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
+  if let some names := ownerNames then
+    let wanted := Std.HashSet.ofList names
+    let byCanonical := env.constants.fold (init := ({} : Std.HashMap String (List Name))) fun acc raw _ => Id.run do
+      let key := canonicalName raw
+      if !wanted.contains key then return acc
+      return acc.insert key (raw :: acc.getD key [])
+    let owners ← names.mapM fun key => do
+      let raws := byCanonical.getD key []
+      let mods := (raws.filterMap (definingModule env)).eraseDups
+      if let some mod := definingModule env key.toName then return (key, toJson mod.toString)
+      if let [mod] := mods then return (key, toJson mod.toString)
+      unless !raws.isEmpty && raws.all isPrivateName do
+        throw (IO.userError s!"unresolved environment owner for {key}: {raws}")
+      let aliases ← raws.mapM fun raw => do
+        let some mod := definingModule env raw | throw (IO.userError s!"missing owner for {raw}")
+        return Json.mkObj [("raw", toJson raw.toString), ("module", toJson mod.toString)]
+      return (key, toJson aliases)
+    IO.FS.writeFile outputPath ((Json.mkObj owners).pretty ++ "\n")
+    return 0
+  let result ← (snapshot modules namespacePrefix rules).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
   IO.FS.writeFile outputPath (result.pretty ++ "\n")
   IO.println s!"snapshot saved: {outputPath}"
   return 0

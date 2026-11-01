@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftModel
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.DiscreteKanHomotopy
+public import SerrePositivity.InfinityCategories.Kan.DiscreteKanHomotopy
 public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.RestrictedDeformationLocalization
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization
 /-!

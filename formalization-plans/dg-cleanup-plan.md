@@ -70,7 +70,7 @@
 | Verdier/OrderSquare → Asymptotic | `OrderSquare`・`ChecksOrderSquare`・`ChecksU17Integration`（と `U17` の該当部分）を `Asymptotic/DGVerdier/` へ上げる（決定）。論文の層のセッションに知らせる |
 | Perfect → PerfectComplex 3 辺 | **（10-31 変更）DG 側では触らない。** `finiteProjective_exists_retract`・`strictlyPerfectComplex_biprod` と `strictlyPerfectComplex`・`PerfectHomotopy` の依存先は PerfectComplex（論文の層の領域、統合中）にあるので、論文の層のコーディネータに「PerfectComplex の統合のときにこれらの一般論を HomologicalAlgebra へ置く」ことを依頼し、それまで DG → PerfectComplex の 3 辺を `layers.json` の `allowed_until_move` に例外として登録する。DG の Codex が PerfectComplex のファイルを分割することはしない（並行作業との衝突を避ける） |
 
-- 前提：D2。SConstruction の K-S• レーンは停止中。検証：層検査（`layers.json` に DG の規則を加える：DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Mathlib）、保存検査、影響する利用者のビルド。工数：16〜32h。
+- 前提：D2。SConstruction の K-S• レーンは停止中。検証：層検査（`layers.json` に DG の規則を加える：DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Mathlib。**パッチ案は infra/dg-w2 の `targets/dg-layers-patch.md`。現状の違反は 18 件＝KST 13・IC/Derived 1・Asymptotic 1・PerfectComplex 3（例外で 15）で、D3 の対象と一致**）、保存検査、影響する利用者のビルド。工数：16〜32h。
 
 ### D4 統合（1,592 → 126）
 
@@ -84,17 +84,21 @@
 
 - `dg-theory-u12e-general-inventory.md`（521 本）・`dg-theory-m5-status.md`（9 本）を `git mv` で `formalization-plans/archive/` へ移し、同じコミットで docstring のパスを `formalization-plans/archive/…` に替える。相対パスの深さは保つ。
 - D4 の統合と同じ窓で行う（統合で docstring を写すときに書き換えれば、再ビルドが一回で済む）。文書ごとに 1 コミット。案内の削除と README の表の更新は論文の層のコーディネータが行うので、コミットのハッシュを知らせる。
-- 前提：D4 と同時。工数：1〜2h。
+- 前提：D4 と同時。工数：1〜2h。**11-01**：書き換えスクリプト `targets/rewrite_dg_docs.py`（infra/dg-w2）の dry-run は 521（現役 453＋Archive 68）／9 で期待どおり。適用は統合の後に統合先へ。
 
 ### D6 証明を変える統合（窓の外）
 
-- 宣言単位の同一 5 組（調査 §5）を一本化する。
-- `Quotient/*` を `Resolution/Cells/*` の特殊化として導く（33 対）。
+- 宣言単位の同一 5 組（調査 §5）を一本化する。**11-01 の再調査**（infra/dg-w2 9287ad1c5、`targets/dg-survey-d6d7-2026-11-01.md`）：5 組のうち 4 組は本文が一致。`paste_associator` は中間制限の 2 本が一致し、左制限版だけ calc を 2 段に分けている。
+- `Quotient/*` を `Resolution/Cells/*` の特殊化として導く（33 対＋残り 7 対。同報告に宣言名と型の対応表）。
 - 群ごとに提案 → 承認 → 実装。
+
+### D8 重いモジュールの整理（窓の外、11-01 新設）
+
+- [build-profile-2026-10-31](archive/build-profile-2026-10-31.md)：DG で重いのは `Module/ConeShiftTriangle`（460 秒、全体 1 位）・`Resolution/Cells/CompositionComparison`（89 秒）。DG 全体は 1,598 本・平均 6〜8 秒で、本数が減る D4 の統合がそのまま効く。ConeShiftTriangle は `set_option profiler true` で重い箇所（`simp`・`decide`・大きな `rfl`）を特定して直す。∞ 計画 R80 と同じ規則（計測 → 提案 → 承認 → 実装）。
 
 ### D7 Mathlib との関係（窓の外）
 
-- Complexes の薄い言い換え（`differential_squared` = `HomComplex.δ_δ` など、標本では 15 中 6）を Mathlib の名前に置き換える。
+- Complexes の薄い言い換えを Mathlib の名前に置き換える。**11-01 の全数調査**（同報告）：Complexes 117 ファイル・495 宣言のうち **115 宣言に Mathlib の置換案**。61 件は既存 API の特殊化で済み、54 件は成分評価や次数変換が要る。
 - 提出候補の整理：Ch(A) の Koszul 符号つき対称モノイダル閉構造、K-flat、semifree・perfect・dg 商、dg の Morita。[mathlib-upstream.md](mathlib-upstream.md) へ。
 
 ## 4. 指示書の単位と順序
@@ -103,7 +107,7 @@
 | --- | --- | --- | --- |
 | DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。**main へ取り込み済み 194a65110（10-31、区切り 1-3 の後。衝突 3 件を解決し、`CochainTensorLinear` 等の旧名 import 12 本を伝達文 §10 の表で新名に）。取り込み後の全 verify は省略し（領域が重ならないため）、main の全ビルドと次の ∞ の束の verify で確認** |
 | DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
-| DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で | 1 回（Paper まで） | DG-W2。論文の層のセッションと時期を合わせる |
+| DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で。**草案 作成済み（11-01、infra/dg-w2 4727922a9）**：48 統合先・611 元、`--check` 成功（private 衝突 0、最大 1,601 行）、番号つき 9 件の本名 承認済み、外からの直接 import 840 辺、下流の逆閉包 **16,319 本（Paper 11 本を含む）、単独 4.5〜7 時間** | 1 回（Paper まで） | DG-W2。論文の層の 1-4 の後に時期を合わせる |
 | DG-G | D6・D7 | 群ごと | 窓の外 |
 
 （10-31 改訂）以前は D3 を単独の窓（旧 DG-W2）にしていたが、D3 の移動（SConstruction 26 本 → DG）も下流 5,000 本超の再ビルドを起こすので、統合の束に含めて再ビルドを 3 回から 2 回に減らした。束の内部の検証は統合先のビルドと保存検査だけで済み（上流しか要らない）、下流の全ビルドは束の最後に一回でよい。

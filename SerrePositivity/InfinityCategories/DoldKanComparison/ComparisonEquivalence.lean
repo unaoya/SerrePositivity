@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.DoldKanComparison.ResolutionComparisonEquivalence
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 
 /-!

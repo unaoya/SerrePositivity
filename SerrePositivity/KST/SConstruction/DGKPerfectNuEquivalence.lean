@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKInputPerfectNu
 public import SerrePositivity.KST.SConstruction.PerfectStableHoArrow
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
-public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
 public import Mathlib.CategoryTheory.Enriched.Basic
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal
-public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
+public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
 /-!
 概要：StrictSegal な Kan 複体の二以上の次数のホモトピー消滅。

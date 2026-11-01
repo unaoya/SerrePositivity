@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellComposite
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 /-!
 概要：任意の二 kernel の元の実作用の合成を、指定平坦模型の通常合成の作用へ比較する。
 方針：同じ指定模型、実加群圏の比較同型と右相対 K-flat 時の実導来合成を使う。

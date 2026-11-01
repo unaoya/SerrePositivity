@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FiniteGridFunctor
-public import SerrePositivity.EInfinity.Hammock.QuiverTreeEndpointHull
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FiniteGridFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeEndpointHull
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteContractible
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorLandTamme
-public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare
 public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle

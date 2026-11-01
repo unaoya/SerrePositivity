@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
-public import SerrePositivity.EInfinity.Hammock.Unit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Unit
 
 /-!
 # 元の E 代数の hammock の空語による単位射

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnReversePointWeak
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnReverseLeftWeak
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramSimplicialWeak
-public import SerrePositivity.EInfinity.Hammock.WordSingleCons
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordSingleCons
 
 /-!
 # 元の自由対角比較の混合二方向 −+の帰納段階

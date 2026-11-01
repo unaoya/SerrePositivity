@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.FamilyHomotopyChains
-public import SerrePositivity.KST.SConstruction.KanMappingComposition
+public import SerrePositivity.InfinityCategories.Kan.KanMappingComposition
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-! # 元の全区間を記録する有限列の実合成証人

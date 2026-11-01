@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueComparison
-public import SerrePositivity.EInfinity.SimplicialLocalization.StrictLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.StrictLocalization
 
 /-!
 # 元の通常の局所化評価の相対自然性

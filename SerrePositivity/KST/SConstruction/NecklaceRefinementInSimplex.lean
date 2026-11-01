@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceBeadRefinement
-public import SerrePositivity.KST.SConstruction.NecklaceInIsoTerminal
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInIsoTerminal
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalMapping
 
 /-! # 元の refinement の標準単体内の実表示関係

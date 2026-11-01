@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WeakArrowActionHomotopies
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WeakArrowActionHomotopies
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!

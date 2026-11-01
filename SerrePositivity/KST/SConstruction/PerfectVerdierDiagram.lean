@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSequence
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 
 /-! # Cat^perf の実 coherent Verdier 四角形
 概要：実商と冪等完備化を持つ列を、同じ二辺と零角を保持する全四角形で提示する。

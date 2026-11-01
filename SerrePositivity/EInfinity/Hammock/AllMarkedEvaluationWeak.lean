@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.Hammock.FreeQuiverEvaluationWeak
 public import SerrePositivity.EInfinity.Hammock.TopEquivalenceWeak
 public import SerrePositivity.EInfinity.Hammock.HammockValueRelative
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
-public import SerrePositivity.EInfinity.SimplicialLocalization.MarkedGeneratorCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.MarkedGeneratorCategory
 
 /-!
 # 元の指定部分圏の hammock の自由 groupoid への評価の弱同値性

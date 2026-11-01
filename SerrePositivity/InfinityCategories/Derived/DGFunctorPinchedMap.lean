@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedHomChainMap
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorZeroObjects
 
 /-! # dg 関手による pinched 写像空間の射と Hom 鎖写像の照合

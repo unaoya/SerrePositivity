@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.StageAttachmentData
-public import SerrePositivity.EInfinity.Hammock.TopStageColimit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TopStageColimit
 
 /-!
 # 境界で整合するデータから元の次段階への一意な射

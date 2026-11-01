@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.ColimitIdentityPoint
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitIdentityPoint
 
 /-!
 # 元の相対関手による一列の点と単位点の保存

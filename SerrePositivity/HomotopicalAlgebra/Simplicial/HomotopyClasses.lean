@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopy
+public import SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy
 
 /-!
 # 全ての区間ホモトピー類によるテストから局所化像の可逆性を判定する
@@ -23,8 +23,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間のπ₀、局所化後の射、ホモトピー類の計算に利用できる。
 [棚卸し m0402][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0402
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0402
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

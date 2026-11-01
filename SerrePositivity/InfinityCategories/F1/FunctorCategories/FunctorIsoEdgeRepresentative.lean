@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEdgeRepresentative
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-!

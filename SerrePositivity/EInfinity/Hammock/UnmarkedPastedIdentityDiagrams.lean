@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedIdentityBlocks
-public import SerrePositivity.EInfinity.Hammock.ZigzagMovingAppendWordEndpoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagMovingAppendWordEndpoints
 
 /-!
 # 元の貼り戻しの prefix・残りと恒等列を挿入した全図式

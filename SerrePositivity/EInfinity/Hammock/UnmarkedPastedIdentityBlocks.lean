@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSelectedBlocks
-public import SerrePositivity.EInfinity.Hammock.ForwardZigzagDiagramTransport
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzagDiagramTransport
 
 /-!
 # 元の貼り戻しの内部接続列と恒等列の全図式の比較

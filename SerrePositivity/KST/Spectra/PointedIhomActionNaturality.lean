@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedIhomIntervalAction
-public import SerrePositivity.KST.Spectra.InternalHomTensorSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
 
 /-!
 概要：内部 Hom の関手作用と、元の二つの源の制限の厳密な自然性。

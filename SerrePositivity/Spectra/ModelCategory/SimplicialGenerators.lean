@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.Generators
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 

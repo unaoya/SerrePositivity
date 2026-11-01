@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationTower
+public import SerrePositivity.InfinityCategories.Kan.FibrationTower
 
 /-!
 概要：単体集合の逆向きの塔の射と相対比較の引き戻し。

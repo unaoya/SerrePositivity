@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizationNerveSource
-public import SerrePositivity.EInfinity.Hammock.LocalizationEquivalenceTransport
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LocalizationEquivalenceTransport
 
 /-!
 # 元の反転関手圏への全前合成と既存 nerve の比較

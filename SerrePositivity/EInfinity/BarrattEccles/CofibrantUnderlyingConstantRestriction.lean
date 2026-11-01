@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
-public import SerrePositivity.EInfinity.FrameHom.ConstantRestrictionArrow
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantRestrictionArrow
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying
 /-!
 概要：実 U の全源同型の定値制限を元の底の複体頂点へ比較する。

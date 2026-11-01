@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.HammockValue
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueAppend
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.ColimitPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueAppend
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitPoints
 
 /-!
 # 元の全 hammock 評価の合成則

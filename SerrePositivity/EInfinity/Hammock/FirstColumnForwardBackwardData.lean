@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.CoefficientProductRelative
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.CoefficientProductRelative
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardCatIso
-public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardData
-public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardBackwardData
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardData
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardBackwardData
 
 /-!
 # 元の混合二方向の底と両係数の相対比較

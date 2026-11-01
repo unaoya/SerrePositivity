@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.AdjointRightDerived
+public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjointRightDerived
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitAdjunctionNormalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitNaturality
 

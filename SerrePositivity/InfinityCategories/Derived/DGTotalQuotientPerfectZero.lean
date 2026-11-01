@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVerticesZero
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 /-!
 概要：任意の小さい dg 圏の全対象商の Perf は零の安定 ∞ 圏である。

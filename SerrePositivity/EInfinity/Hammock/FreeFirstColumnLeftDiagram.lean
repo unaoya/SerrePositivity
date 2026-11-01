@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryEqToHom
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagFirstBoundaryEqToHom
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnHomWeak
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexCoefficientMap
 

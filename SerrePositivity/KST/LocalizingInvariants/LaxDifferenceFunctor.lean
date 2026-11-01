@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.PullbackStableCategory
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 public import SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily
 
 /-!

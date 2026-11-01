@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableInfinity
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
 
 /-! # 冪等完備な安定 ∞ 圏の Verdier 列の実提示

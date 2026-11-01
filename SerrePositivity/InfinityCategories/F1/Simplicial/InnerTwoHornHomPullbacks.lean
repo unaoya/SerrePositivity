@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornOverPushout
+public import SerrePositivity.InfinityCategories.Kan.InnerTwoHornOverPushout
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PullbackNativeCorePushout
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramPushout
 

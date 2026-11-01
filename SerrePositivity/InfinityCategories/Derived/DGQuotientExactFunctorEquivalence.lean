@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientExactDescent
-public import SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategoryEquivalence
 /-!
 概要：Drinfeld 商の完全関手 ∞ 圏を、元の零化完全関手 ∞ 圏と同定する。
 方針：全関手圏の局所化の充満忠実性と、完全性を反映する実辺表示を使う。

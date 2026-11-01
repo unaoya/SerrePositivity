@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanBasedEdgeValue
-public import SerrePositivity.KST.Spectra.SquareTriangleOuterFaces
+public import SerrePositivity.InfinityCategories.Simplicial.SquareTriangleOuterFaces
 
 /-! # 全端点固定円柱による基点表示の不変性
 概要：元の円柱の全境界固定式から、入口と出口の辺の同じ群値を回収する。

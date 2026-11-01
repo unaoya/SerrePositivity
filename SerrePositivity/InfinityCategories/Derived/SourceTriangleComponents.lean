@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.TriangleExt
 public import SerrePositivity.InfinityCategories.DGNerve.TruncatedEdges
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 public import SerrePositivity.InfinityCategories.DGNerve.DataLowDimensionalPullback
 
 /-! # 前合成した三角形と比較三単体の成分

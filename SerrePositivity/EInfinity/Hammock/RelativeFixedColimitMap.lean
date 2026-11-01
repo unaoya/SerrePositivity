@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.RelativeFixedZigzagFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeFixedZigzagFunctor
 
 /-!
 # 固定した端点の表示を保つ hammock 余極限写像

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.EmptySimplicialDomain
+public import SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalComparison
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 

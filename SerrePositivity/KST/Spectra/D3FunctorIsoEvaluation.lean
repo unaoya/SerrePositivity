@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3StageLoopStructureFamily
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 

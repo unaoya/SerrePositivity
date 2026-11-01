@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardDiagramIso
 public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardAugmentation
-public import SerrePositivity.EInfinity.Hammock.WordDiagonalAugmentation
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordDiagonalAugmentation
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalMap
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NerveLaxComparison
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 
 /-! lax pullback 比較に用いた構造変換の各頂点辺は、同じ元の augmentation。 -/
 @[expose] public section

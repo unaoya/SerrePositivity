@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationSmallness
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningMappingSpace
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialMap
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseKan
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseKan
 
 /-!
 概要：小さい coherent な変換空間と、小さい fibration の相対写像空間への比較射。

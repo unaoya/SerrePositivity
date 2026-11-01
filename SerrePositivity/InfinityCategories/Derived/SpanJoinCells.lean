@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 public import SerrePositivity.InfinityCategories.Core.NerveCone
 
 /-! # span と標準単体の join の二セル

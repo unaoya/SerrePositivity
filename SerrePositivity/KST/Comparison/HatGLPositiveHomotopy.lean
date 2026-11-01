@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.HatGLComponentIso
 public import SerrePositivity.KST.Comparison.ComponentHomotopy
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 # ĜL の正次数の群は全行列の群で計算できる

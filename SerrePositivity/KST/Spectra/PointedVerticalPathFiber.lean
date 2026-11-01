@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedVerticalChains
-public import SerrePositivity.KST.Spectra.FibrationBoundary
+public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 
 /-!
 概要：元の射影を固定する点つき区間と有限鎖を、同じ内部 Hom の実際の fiber へ持ち上げる。

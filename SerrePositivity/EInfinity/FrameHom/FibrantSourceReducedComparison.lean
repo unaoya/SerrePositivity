@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FibrantFrameSpanNormalization
-public import SerrePositivity.EInfinity.FrameHom.NerveULiftHom
-public import SerrePositivity.EInfinity.FrameHom.ResolutionLeftRoof
-public import SerrePositivity.EInfinity.Hammock.ThreeArrowEquivalence
-public import SerrePositivity.EInfinity.Hammock.ThreeArrowReducedWeakComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
+public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionLeftRoof
+public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowEquivalence
+public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowReducedWeakComparison
 
 /-!
 概要：fibrant 標的への元の source frame 比較を同じ reduced hammock へ接続する。

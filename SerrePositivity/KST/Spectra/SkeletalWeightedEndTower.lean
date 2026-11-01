@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SkeletonFiltration
+public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
 public import SerrePositivity.KST.Spectra.PointedWeightedEndPreMap
 
 /-!

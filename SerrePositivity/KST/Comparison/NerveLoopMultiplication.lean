@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.BarEdge
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 /-!
 # 一対象圏の辺と基本群の積の向き

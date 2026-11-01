@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardDiagram
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardCatIso
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardRelativeFunctor
-public import SerrePositivity.EInfinity.Hammock.FixedObjectZigzagDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectZigzagDiagram
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonal
 
 /-!

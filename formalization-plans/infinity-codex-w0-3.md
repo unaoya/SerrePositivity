@@ -371,3 +371,242 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 6. 削除は束の中で R75 の段（最初）に行い、`git rm` と 1〜5 の編集を 1 コミットにする。下流がないので再ビルドは起きない。
 
 これで束の構成は確定：R75（29 本＋検査 1 本）→ R79（2 コミット）→ W1（68）→ W2a（1,208）。DG-W1 の取り込みの通知を待つ。
+
+### 10.17 追記（10-31 夜、暦 #2 の適用前の停止への回答：ルートの import 一覧を現 main に合わせる）
+
+**承認**：止めた判断は正しい。w1.json のルートの `reimport` 項目の `imports[SerrePositivity]`（785 件）は古い main を基準に作ったもので、区切り 1-2・1-3（HA・CA・LA・PC・IM の統合）と DG-W1（DG の 12 行 → 1 行）で 247 件が存在しなくなった。
+
+**処置（w2a.md の「W1 の計画上のルート import 修正」と同じ規則）**：
+1. ルートの置換予定 import を、**現在の main のルート import（664 件）と、承認済みの ∞ 層の入口 5 本の和集合**に作り直す。W1・W2a で移動・分割する元モジュールがルートに直接 import されていれば、その行は入口の import に置き換わる（移動先はすべて入口の閉包に入る）ので外す。他の項目（move・split・非ルートの reimport・`downstream_imports`）は変えない。
+2. 作り直した w1.json で、w1 単独と w1＋w2a の静的検査（`validate_targets.py`、保存済み snapshot）を再実行し、PASS と指標（禁止辺・閉包）が §10.14 の実装後と同じ（増加 0）であることを確かめる。件数（785 → 何件）を報告に書く。
+3. この修正は 1 コミット（記録）。
+
+**rsync**：nohup のランナーを介さず、**前景で直接**実行する（`rsync -a --delete ../SerrePositivity/.lake/build/ .lake/build/`、ログはファイルへ）。数分で終わる。終了コード 23・24 の扱いは §10.13 のとおり。`ps` が通常権限で拒否されるなら、権限を上げた実行でよい。
+
+その後、before snapshot → R75 → R79 → W1 → W2a の適用 → **停止点 1 で報告**。
+
+**（10-31 追記）R75 の段での小さな追加**：main の 4eb1f4d6b で、止まった Sp レーンの未追跡ファイル 4 本（`KST/Spectra/PointedParametricUncurry{Action,Pre}`・`PointedUncurry{ActionTensor,Composition}`）を `SerrePositivity/Archive/WIP/` に移した。`scripts/audit_kst_spectra_s3.lean`・`audit_kst_spectra_d3tail.lean` の名前の一覧（import ではない）に残る旧名 4 本を、R75 の段で外す（1〜2 行の編集、同じコミット）。
+
+### 10.18 追記（11-01、before snapshot の群 38 が exit 137 で落ちた件：snapshot をハッシュだけにする）
+
+**承認**：ルート import の作り直し（785 → 669）、静的検査 PASS（指標は §10.14 後と一致）、記録コミット 951df3de0、rsync（12 分、終了コード 0）、群 37 までの採取を確認した。群 38 の前で止めた判断は正しい。
+
+**原因**：`decl_snapshot.lean` は各宣言の **type と body の構造 JSON を丸ごと**出力している（`("type", ty)`・`("body", toJson body)`、「name-map 比較のため」）。群 35 の出力が 3.6 GB、37 群で 19 GB。群 38（KST.SConstruction 64 本）は証明項が巨大で、JSON 化の途中でメモリを使い切り、73 分後に SIGKILL（137）された（スワップ 12 GB も使い切っていた）。同じ方式では SConstruction・IC/Derived の群は通らない。
+
+**処置（道具の変更。∞ の Codex が行う）**：
+1. **snapshot はハッシュだけにする。** `decl_snapshot.lean` で、type・body の JSON を出力せず、`compare_snapshots.py` の `normalize_expr` と同じ正規化（`--name-map` の写像の適用と、private 名の `_private.<Module>.<n>.` 接頭辞の正規化）を **Lean 側で構造に対して行ってから**ハッシュ（既存の `hash j.compress` でよい）を取る。出力は name・parent・module・kind・type_hash・body_hash・axioms・attributes・位置・uses_modules・transient（§10.11 の帰属に要るもの）。`--name-map` は before／after の両方に同じものを渡す（before では写像の定義域が空なので恒等）。
+2. `compare_snapshots.py` は、構造が無い行では type_hash・body_hash で比べる（既存の全構造の行があれば従来どおり）。試験：小さな一時モジュールで、全構造版と新版のハッシュが一致すること、private 名の付け替えと name-map の写像で一致すること。
+3. **`env.constants.toList.mergeSort` を全環境でやらない。** 先に対象モジュールの constants に絞ってから並べる（全環境は Mathlib を含めて百万単位で、メモリと時間の無駄）。
+4. **群の大きさ**：KST.SConstruction・InfinityCategories.Derived・EInfinity の群は **16 本以下**に割る。各群は `lean -M 40000`（メモリ上限 40 GB）で走らせ、上限で止まったらさらに半分に割る（スワップで機械を止めない）。
+5. **採り直し**：群 1〜37 の全構造の出力（19 GB）はハッシュ版に変換せず、**全群をハッシュ版で採り直す**（形式を一つにする。olean は温かいので、各群は環境の読み込み＋ハッシュだけで済むはず）。採り直しが終わったら 19 GB を消す。所要時間を報告に書く。
+6. 採り直しの後、R75 → R79 → W1 → W2a の適用 → **停止点 1**。
+
+道具の変更と試験は 1 コミット（道具）＋ 1 コミット（試験）。既存の DG 側の道具（`merge_modules.py` 等、infra/dg-w2）には触れない。
+
+### 10.19 追記（11-01、巨大な項のハッシュ：旧ハッシュとの互換は不要、DAG で数える）
+
+`dgOdotMilnorActualOuterKernelFrameComparison._proof_17`（KST.SConstruction）の型は、異なる部分式 1,844 個だが木として展開すると 56 GB になる（`Expr` は共有のある DAG で、木に展開すると指数的に膨らむ）。
+
+1. **旧ハッシュとの互換は要らない。** §10.18-5 で全群をハッシュ版で採り直すので、群 1〜37 の旧形式の値と一致させる必要はない。56 GB のバイト列を分割して流す計算は**しない**。
+2. **ハッシュは DAG 上で、共有部分式を一度だけ数える。** `Expr` を構造的に下りながら、部分式ごとのハッシュを `HashMap Expr UInt64`（構造的同値で引く）に覚え、親は子のハッシュを `mixHash` で合成する。名前の正規化（private 接頭辞、name-map）は葉（`.const`）で行う。計算量は異なる部分式の数（この項なら 1,844）に比例する。before／after は同じ関数で数えるので、共有の仕方が違っても値は一致する。
+3. 試験：共有の多い項（例：`∀ x, f (f (f x)) = …` を `let` で畳んだもの）で、展開した木のハッシュと DAG のハッシュが別物でよいが、同じ項の二通りの共有表現で DAG ハッシュが一致すること。
+4. **記録**：この宣言と同種の巨大な項（木の展開が 1 GB を超えるもの）が採取中に見つかったら、モジュール名・宣言名・異なる部分式の数・展開サイズを `targets/huge-terms-2026-11.md` に列挙する。これは証明の質の問題（自動生成の証明義務が膨らんでいる）で、窓の外（段 G・K-S• レーンの再開時）に直す候補。監査（`audit_infinity_f1` 等）の RSS 19 GB もこの種の項が原因の可能性があるので、一覧は IF-W0-4 の runner の計測と突き合わせる。
+
+### 10.20 追記（11-01、Lake の成果物キャッシュを使う）
+
+ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](coordination.md)）。`~/.zshenv` に `LAKE_ARTIFACT_CACHE=true`・`LAKE_RESTORE_ARTIFACTS=true`・`LAKE_CACHE_DIR=~/.cache/lake` を設定済み。
+
+1. **これからの `lake` の実行は、この 3 変数が入った shell で行う**（新しい shell を開くか `source ~/.zshenv`。`lake env | grep LAKE_ARTIFACT_CACHE` が `true` なら OK）。採取（`lake env lean --run decl_snapshot.lean`）・束の下流ビルド・verify のすべて。
+2. 束の下流ビルド（約 20,000 本）をこの設定で走らせると、作った成果物がキャッシュに入り、**取り込み後の main は再ビルドなしで同じ成果物を使える**（rsync の温めが不要になる）。
+3. verify.sh・runner は変更不要（`lake build`・`lake env lean` を呼ぶだけ）。`LAKE_RESTORE_ARTIFACTS=true` のおかげで `.lake/build` にも olean が復元される。
+4. 試験的に確認済みの挙動：別の場所の同じソースは再コンパイルなしでビルド完了、ソースを変えると新しい版が追加され古い版も残る、既存の `.lake/build` は入らない（以後の分から）。
+
+### 10.21 追記（11-01、DAG 版 snapshot の完了と、同名宣言の扱い）
+
+**承認**：DAG 版 snapshot（124 群、2,967 本、34 分 21 秒、メモリ超過 0）、道具 a280a8f4e・試験 051597414（164 件＋実 Lean の保存試験、共有の仕方を変えてもハッシュ一致）、旧形式 20.3 GB の削除、巨大な項の一覧（3 モジュール 38 件、最大は `dgOdotMilnorRightAxisNuNativeRoof_comparison` の本体 2,635 部分式・76.8 GB）を確認した。一覧は R80 の材料としてコミットしてよい。
+
+**同名宣言の規則（承認）**：snapshot の行の同一性は **(宣言名, 定義元モジュール)** の組とする。before／after の照合は、move・split・merge の対応表で定義元モジュールを写してから行う。
+1. **型・本体のハッシュ・公理・属性・種類がすべて一致し、定義元モジュールだけが違う行**（34 名・transient の帰属のずれ）：環境の `getModuleIdxFor?` が返すモジュールを正とし、1 行にまとめる。帰属が群ごとに揺れたのは §10.11 の位置による帰属の副作用なので、`decl_snapshot.lean` では transient の `module` を環境の値で上書きする（道具の小さな修正。試験 1 件）。
+2. **双方のソースに定義がある同名宣言**（`Hammock.Word.eq_empty_of_length_zero`：`EInfinity/Hammock/LengthZero.lean:23` と `WordCons.lean:27`）：**2 行のまま保持**し、それぞれの定義元モジュールで照合する。これは EInfinity の重複宣言（同じ主張を 2 か所で証明している）であり、束では触らない。`targets/duplicates-2026-11.md` に記録し、段 G（R80 と同じ扱い、証明を変える整理）の候補にする。
+3. 再採取は不要（124 群の原本から統合し直す）。
+
+このうえで R75 → R79 → W1 → W2a を適用し、**停止点 1** で報告する。下流ビルドは、承認後に Lake キャッシュの 3 変数が入った shell で。
+
+### 10.22 追記（11-01、正規化で名前が衝突する private の生成定数は transient）
+
+**承認**：提案どおりでよい。接頭辞の正規化で同じ保存名になる**異なる private 定数**（12 名。例：`Hammock.Word.source.match_1.eq_1` が `ZigzagFirstBoundaryObjects` と `ZigzagFirstBoundaryMaps` の両方で生成されている）は、使う側のモジュールで必要になったときに Lean が生成する補助定数で、親の宣言が保存されていれば決まるものなので、**保存比較からは transient として除外**し、記録には各定数の実名と定義元モジュールを保持し、一覧では正規化名ごとに 1 件にまとめる。定義元を恣意的に選ばない。
+
+**ガード**：この扱いは**生成された名前**（`match_<n>`・`.eq_<n>`・`_proof_<n>`・`proof_<n>`・`_sunfold`・`_unsafe_rec`・`_cstage` などを含むもの）に限る。12 名の中に人が書いた private 宣言の衝突（二つのモジュールで同名の private を別々に定義）があれば、それは §10.21-2 と同じく**定義元ごとに別行で比較**する。該当があれば報告に書く。
+
+**承認**：巨大項の一覧と重複宣言の記録（c40aa35f4）、単体試験 165 件。道具と試験の変更をコミットしてから、R75 → R79 → W1 → W2a を適用し、**停止点 1** で報告する。
+
+### 10.23 追記（11-01、停止点 1 の承認：下流ビルドへ）
+
+**承認**：停止点 1 の報告（R75 86f760485・R79 c4290092a／2c8a89952 の適用、W1・W2a の適用、import グラフが模擬と一致、層検査が模擬と一致（W2a／W2b の禁止閉包 178 → 177 は模擬の `ModelCategory` 語の判定が置換前のテキストを見ていたためで、実測が正しい）、private の生成定数 12 件の transient 扱い（人が書いた衝突 0）、道具 62723a321・試験 7bb821c24）を確認した。
+
+1. **W1 と W2a を先にコミットする**（それぞれ 1 本、`git commit --only`）。下流ビルドで直接 import の補充が要ったら、その分は別のコミット（「downstream imports」）にする。
+2. 他の全ビルドがないことを確かめ（DG・main は止まっている。`ps -axo command= | grep '[l]ake build'`）、Lake キャッシュの 3 変数が入った shell で**下流ビルド（20,192 本）**を開始する。夜間に走らせてよい。補充先が中核なら STOP（§10.14-2）。
+3. ビルドの後に保存検査（before／after、§10.21〜10.22 の規則）→ **停止点 2** で報告（新規ビルドの本数と時間、補充した import の一覧、保存検査の結果、キャッシュに入った成果物の数の目安）。
+4. 模擬の `ModelCategory` 語の判定（置換前のテキストを見る）は道具の小さな誤りなので、停止点 2 までに直して試験を 1 件足す（急がない）。
+
+論文の層への連絡（Claude が行う）：R75 の shared 監査の再生成で、削除 25 本が外れ、ジェネレーターが拾う未掲載 35 本が加わった。bhatt_scholze・adams は復元済み。
+
+### 10.24 追記（11-01、中核への補充の STOP 条件を正す：禁止辺になるときだけ）
+
+**承認**：2 回目の下流ビルドの結果（非中核 11 本への補充と構文修正 3 本、新規 1,731 本、中核 2 本で停止）を確認した。止めたのは §10.14-2 の文言どおりで正しいが、規則の意図を狭く書いていた。
+
+**規則の訂正**：補充（失敗した利用元への直接 import の追加）で STOP するのは、**その import が禁止辺になるとき**だけ——中核のモジュールから ModelBridge・KST・DG・EInfinity・HotA への辺、または中核の層の順序を逆向きに越える辺（例：Core → F1）。**中核から、それより下の中核の層への import（F1 → Core、F2 → Core・Kan・F1 など）は層の順序に沿った通常の補充**で、移動によって切れた推移的 import を直接 import に置き換えるものなので、止めずに補う。
+
+今回の 2 件はどちらも補充先が Core なので補ってよい：
+- `F1/MappingSpaces/HomSpanSectionFiberCoherence` ← `Core.FunctorIsoTransportAlgebra`（`F2.functorIso_postcomp_heq_of_heq`。名前空間 `F2` は R54 で付け替える名残で、宣言自体は Core のもの）
+- `F2/FilteredExchange/FunctorIsoWhiskerCancellation` ← `Core.FunctorIsoChainTransport`（`functorIso_postcomp_heq_of_map_eq`）
+
+補充のたびに `layer_check.py` の直接違反と禁止閉包が増えないことを確かめる（増えたら STOP）。補充は `batch-w1w2a-downstream-imports.json` に記録し、「downstream imports」の 1 コミットにまとめる（非中核 11 本・構文修正 3 本と一緒でよい）。再ビルドを続け、次の層の失敗も同じ規則で処理して、**停止点 2** で報告する。
+
+### 10.25 追記（11-01、補充で中核の閉包にモデル圏のコードが戻った件：R72 の分割を広げる）
+
+**承認**：停止は正しい。中核 2 件・Derived 2 件・Smith 1 件の補充自体は増加 0。増加（W2a／W2b の禁止閉包 177 → 179、組数 345,310 → 351,422）は、前回の非中核 11 本への補充のうち、**中核から到達する HotA のモジュール**（`Transfer/EvaluationFamily`・`Simplicial/LargeParameterHomotopy` など）に `ModelBridge.HA.Basic`・`HomotopyFunctionComplex.BoundaryOne` を import させたことによる。つまり、これらの HotA モジュールには R72 の分類から漏れた「モデル圏の宣言を使う宣言」が残っていて、中核がそのモジュールを使っている。これは W2a の完了条件（中核の閉包にモデル圏のコードなし）そのものなので、**補充ではなく R72 の分割を広げて直す**。
+
+**手順（まず静的、ビルドなし）**
+1. 補充で ModelBridge または BoundaryOne を import させた非中核モジュールのうち、**中核から到達するもの**を列挙する（`layer_check.py` のグラフ）。
+2. その各モジュールについて、snapshot の `uses_modules`（宣言ごとの依存モジュール）と、失敗した宣言名から、**ModelBridge・BoundaryOne の宣言に依存する宣言**（と、それに依存する同じモジュール内の宣言）を `moved` とする分割計画を作る。`keep` 側が ModelBridge を import しなくて済むことを確かめる。分割先は `InfinityCategories/ModelBridge/HA/<basename>`（R72 と同じ）。
+3. 分割の連鎖：`moved` 側の宣言を使う他の非中核モジュールには ModelBridge 側の新モジュールを import させる（これらが中核から到達するなら、そのモジュールも 2 の対象に加える）。中核のモジュールが `moved` 側の宣言を使っていたら、それは中核にモデル圏の依存があることを意味するので **STOP して報告**（宣言名と使用箇所）。
+4. 分割の総数が **10 本を超える**、または 3 で中核の使用が出たら、適用せずに止めて報告する（その場合は、増加 2 件を W2a の既知の残りとして記録し、W2b で処理する案を Claude が判断する）。
+5. 10 本以下なら、§10.21〜10.22 の規則で before snapshot（分割元）を採り、分割を適用し、`validate_targets.py`／`layer_check.py` で禁止閉包が **停止点 1 の値（177）以下**に戻ることを静的に確かめてから再ビルドを続ける。分割は `w2a.json` に追記し（candidate `R72(4)`）、「R72 追加分割」の 1 コミット。
+6. **停止点 2** の報告に、分割した宣言の一覧と、閉包の前後を含める。
+
+補足：`BoundaryOne` は R72 で「モデル側の塊、純粋部分の move は後の窓」と分類したモジュール。補充で BoundaryOne を要した宣言が純粋部分だけを使うなら、その宣言の側ではなく BoundaryOne の純粋部分を HotA に残す分割（R72 の未実施分の前倒し）でもよい。どちらが小さいかで選び、報告に書く。
+
+### 10.26 追記（11-01、BoundaryOne は move、EvaluationFamily・LargeParameterHomotopy は分割）
+
+**承認**：静的調査（`r72-additional-static-2026-11.md`）の結果を確認した。
+1. **`HomotopyFunctionComplex/BoundaryOne`（5 宣言すべて純粋）は、モジュールごと `HomotopicalAlgebra.Simplicial.BoundaryOne` へ move する**（分割ではなく move 1 件。接頭辞 `HomotopyFunctionComplex` が禁止なので、純粋部分でも場所を変えないと閉包から出ない）。利用者の import は書き換え、w2a.md の「分割不要」の記録は「move に変更（11-01）」と直す。
+2. **`Transfer/EvaluationFamily`** は候補どおり分割（moved 7・keep 9、分割先 `ModelBridge/HA/EvaluationFamily`）。連鎖の調査を §10.25-3 の規則で終えてから適用。
+3. **`Simplicial/LargeParameterHomotopy`** も同じ手順（モデル圏の宣言に依存する宣言を moved に）。
+4. 連鎖を含めて 10 本以下なら、§10.25-5 のとおり before snapshot → 適用 → 静的検査（177 以下）→ 再ビルド → 停止点 2。10 本を超えるか中核の使用が出たら止めて報告。
+
+### 10.27 追記（11-01、F2 の入口の `#check`：清い閉包から届かないものは scripts の検査へ移す）
+
+**承認**：16e808ff6（BoundaryOne の move、EvaluationFamily の分割、静的検査 PASS、禁止閉包 177 → **172**）、round 3〜4 の補充 29 件（各回の増加 0）。停止は正しい。
+
+**判断**：層の入口（`InfinityCategories/F2.lean` など）の `#check` は、**その入口の清い閉包から届く宣言だけ**を列挙する。FilteredExchange のように、モジュールがまだ禁止閉包を含む（R73 は W2b）宣言の `#check` を入口に置いたままにすると、入口が禁止閉包を取り込むことになる。入口に import を足して解決する案は採らない（F2 入口の禁止閉包 0 → 141 は、まさに避けるべき変化）。
+
+**手順**
+1. F2 入口の 1,497 行の `#check` を静的に分類する：各宣言の定義元モジュール（snapshot）が入口の現在の閉包にあれば残す、なければ**移す**。失敗した 1 件だけでなく全件を一度に処理する。
+2. 移す `#check` は、新しい検査ファイル `scripts/check_infinity_f2_pending.lean` に置く（`import` は必要なモジュールを直接。`scripts/` は層のグラフの外なので禁止辺にならない）。先頭の docstring に「F2 の入口から届かない宣言の受入検査。R73（W2b）で FilteredExchange が清くなったら F2 の入口へ戻す」と書く。`scripts/refactor/audit_manifest.txt` に登録して verify で走らせる（manifest の変更は意図を報告に書く）。
+3. 他の層の入口（F1・F1B・HomotopyLimits・Stable・Kan など）にも同じ状況があれば同じ処置（まとめて 1 ファイル `scripts/check_infinity_pending.lean` でもよい）。
+4. 未処理の補充 2 件（EvaluationFamily の rlp 用 import、`LargeParameterRelativeChoice`）は増加 0 を確かめて補う。
+5. 再ビルドを続け、保存比較 → **停止点 2**。「downstream imports」「R72 追加分割」「入口の #check の移動」のコミットに分ける。
+
+### 10.28 追記（11-01、`#check` の移し先の名前：verify.sh は変えない）
+
+**判断**：verify.sh は束の最後の関門なので、同じ束の中で変えない。移し先のファイル名を既存の探索規則に合わせ、**`scripts/audit_infinity_f2_checks.lean`** とする（`scripts/audit_*.lean` に一致するので manifest に登録すれば走る）。中身は F2 の旧入口の `#check` 1,497 件と、必要な直接 import 769 本。先頭の docstring に「F2 の入口（`InfinityCategories/F2.lean`、import は `F2.CatInfinity` だけの清い入口）から届かない宣言の受入検査。R73（W2b）で FilteredExchange が清くなったら入口へ戻す」と書く。
+
+- 残す 0 件・移す 1,497 件は想定の範囲：W1 の reimport で F2 の入口を清くした結果、旧来の目録は閉包全体に依存していたことが見えたということ。F2 の入口は docstring と `F2.CatInfinity` の import だけでよい。
+- `audit_manifest.txt` に `scripts/audit_infinity_f2_checks.lean` を追加（意図を報告に）。この監査は F2 の閉包（769 本の直接 import）を読むので時間と RSS は `audit_infinity_f1` 級になりうる。計測は IF-W0-4 の runner に任せる。
+- その後、再ビルド → 保存比較 → **停止点 2**。
+
+### 10.29 追記（11-01、R72 の keep 側で禁止接頭辞の下に残るモジュール：中核から届くものは一度に move）
+
+**承認**：999d292e3（`#check` の移動、manifest 99 → 100）、round 5〜6 の補充、`Generated/Basic`（R72 の keep 側、純粋な 2 宣言）を禁止接頭辞の外へ move する提案。停止は正しい。
+
+**一般化（1 本ずつ round を回さない）**：R72 の keep 側で**禁止接頭辞**（`HomotopicalAlgebra.Generated`・`.Transfer`・`.HomotopyFunctionComplex` など `layers.json` の W2a 禁止一覧に当たるもの）の下に残っているモジュールをすべて列挙し（`Generated/Basic`・`Generated/FunctorClosure`・`Transfer/FullyFaithfulLifting`・`HomotopyFunctionComplex/{DiagonalFrame, QuillenStandardFrame, StandardCosimplicial}` など）、**中核から（直接または純粋な HotA を経由して）届くもの**を静的に判定する。届くものは、keep 側の中身が純粋であることを snapshot の `uses_modules` で確かめたうえで、`HomotopicalAlgebra/Simplicial/<内容を表す名前>`（禁止されない接頭辞）へ **move** する。利用者の import を書き換え、w2a.json に `R72(5)` として追記、「R72 keep 側の move」の 1 コミット。
+- keep 側にモデル圏の依存が残っているもの（純粋でない）は move せず、報告に書く（再分割の候補）。
+- 届かないものは動かさない（後の窓）。
+- 件数が 10 を超えたら止めて報告。
+
+その後、再ビルド（残りは小さいはず）→ 保存比較 → **停止点 2**。
+
+### 10.30 追記（11-01、R72 keep 側 7 本の一括 move と validator の拡張）
+
+**承認**：7 本（`Generated.Basic` 2・`Generated.FunctorClosure` 3・`Transfer.FullyFaithfulLifting` 1・`Transfer.EvaluationFamily` 9・`HomotopyFunctionComplex.DiagonalFrame` 6・`QuillenStandardFrame` 4・`StandardCosimplicial` 6 宣言）はすべて純粋で中核から到達。模擬で禁止閉包 172 → **166**、直接違反 296 → 294、増加 0。一括 move を承認する。
+
+**validator の拡張（承認）**：`validate_targets.py` で、同一モジュールの重複登録のうち **「split の `module` と同じモジュールを `module` とする move」の組だけ**を許す。意味は「split を適用した後の keep 側を move する」で、適用順も split → move に固定する。他の重複（move 同士、split 同士、move の後の split など）は引き続き拒否。試験を 2 件（許す組、拒否する組）。模擬の import グラフも split → move の順で合成する。
+
+- 移し先は `HomotopicalAlgebra/Simplicial/<内容を表す名前>`（調査記録の案でよい。既存の名前と衝突しないこと）。
+- 道具の変更 1 コミット、「R72 keep 側の move」1 コミット（w2a.json の `R72(5)` 追記を含む）。
+- その後 Generators の補充 → 再ビルド → 保存比較 → **停止点 2**。
+
+### 10.31 追記（11-01、停止点 2 までの判断表：承認なしで進める処置と、止める条件）
+
+§10.14〜10.30 で一つずつ決めてきた処置を一つの表にまとめる。**この表に当たる処置は承認を待たずに行い**、報告は停止点 2 でまとめる。停止点 2 の報告には、表のどの行を何件適用したかを数で書く。
+
+| 失敗の型 | 処置（承認不要） | 条件 |
+| --- | --- | --- |
+| 推移的 import が切れて識別子・インスタンスが見つからない | 失敗した利用元に直接 import を補う（§10.6・§10.14・§10.24） | 補う import が禁止辺でない（中核 → ModelBridge・KST・DG・EInfinity・HotA、中核の層の逆向き、を作らない）。補充後の `layer_check.py` で直接違反と各 tier の禁止閉包が増えない |
+| R72 の keep 側（純粋）が禁止接頭辞の下に残っている | `HomotopicalAlgebra/Simplicial/<内容を表す名前>` へ move（§10.26・10.29・10.30） | `uses_modules` で純粋であること。利用者の import を書き換える。w2a.json に `R72(5)` 追記 |
+| 非中核のモジュールにモデル圏の宣言に依存する宣言が混在 | 依存する宣言を `ModelBridge/HA/<basename>` へ split（§10.25） | 中核が moved 側を使っていない。連鎖を含めて累計 10 本まで |
+| 層の入口の `#check` が入口の閉包から届かない | `scripts/audit_<層>_checks.lean` へ移し manifest に登録（§10.27・10.28） | 入口の import は増やさない |
+| 構文の崩れ（入口の import の位置など）、道具の小さな誤り | 直して試験を 1 件足す（§10.23-4・§10.28） | 道具の変更は別コミット |
+| 同じモジュールに split と keep 側の move の両方 | validator の「split → move」の組として扱う（§10.30） | 他の重複は拒否 |
+
+**止めて報告するのはこれだけ**：
+1. 中核のモジュールがモデル圏の宣言（ModelBridge・BoundaryOne 系）を使っている。
+2. 上の処置のどれでも消えない禁止閉包の増加。
+3. 保存比較の不一致（transient・同名宣言の規則 §10.21〜10.22 を適用した後で残るもの）。
+4. 宣言の本文・型・名前を変えないと直らない。
+5. split の累計が 10 本を超える、または一つの round の新規ビルドが前の round より増える（収束していない）。
+
+各 round の記録（新規ビルド数・時間・適用した処置の件数・層検査の値）は `batch-w1w2a-downstream-imports.json` と停止記録に残し、コミットは「downstream imports」「R72 追加分割」「R72 keep 側の move」「入口の #check の移動」「道具」に分ける。
+
+**次の束への教訓**（DG-W2(b)・IF-W2a-2 の前に行う）：束の前に、snapshot の `uses_modules` から**宣言単位の到達性**を静的に検査し、(a) 推移的 import だけで届いている利用（移動で切れる候補）、(b) 禁止接頭辞の下に残る純粋なモジュール、(c) 入口の `#check` の到達性、を列挙して計画に織り込む。
+
+### 10.32 追記（11-01、§10.31 条件 5 の訂正：move・split の直後の round は基準をやり直す）
+
+**承認**：validator の拡張 9bc69dc79（170 試験 PASS）、keep 側 7 本の move 8dc0f29a0、Generators の補充、静的検査 PASS（禁止閉包 166、直接違反 294）。
+
+**条件 5 の訂正**：「round の新規ビルドが前の round より増える」は、**補充（import の追加）だけを行った round どうし**で比べる。move・split・`#check` の移動のように**モジュールの集合や名前を変えた直後の round は、その変更の下流が再ビルドされるので新規が増えるのが正常**であり、その round を新しい基準にする。round 7（7 本の move の直後、1,333 本）はこれに当たるので停止の理由にならない。
+
+そのまま続ける：未適用の補充 5 本（4 モジュール、各回の増加 0 を確認済み）を適用 → round 8 以降（補充だけの round は、直前の補充だけの round より新規が増えたら停止）→ 保存比較 → **停止点 2**。
+
+### 10.33 追記（11-01、下流ビルド PASS：条件 5 の尺度、監査の追従、停止点 2・3 の進め方）
+
+**承認**：下流ビルド PASS（round 8〜11、新規 8,601＋733＋78＋101、最終 round の失敗 0）、補充 31 件（束全体で 75 モジュール・83 import）、禁止閉包 166・直接違反 294・増加 0、対象一覧 1,285 項目 PASS。
+
+1. **条件 5 の尺度**：補充だけの round どうしで比べるのは**失敗モジュールの数**（22 → 3 → 1 → 0 のように減ること）。新規ビルドの数は、前の round で上流が失敗して試されなかった下流が通り始めると増えるので、尺度にしない。今回の 78 → 101 は停止の理由にならない。
+2. **監査 7 本に残る旧モジュール名 325 件**（`mods` の名前一覧など）は、束の対応表（move・split・merge）で**新しい名前に追従させる**。split したモジュールは keep 側と moved 側の両方を列挙する。存在しない名前が一覧に残ると監査が黙って検査を飛ばすので、放置しない。「監査の追従」の 1 コミット。
+3. **保存比較**（§10.21〜10.22 の規則）を行い、不一致が 0 なら**停止せずに**「downstream imports」「監査の追従」をコミットして **verify**（`VERIFY_JOBS=3`、Lake キャッシュ有効、他の全ビルドがないことを確認）へ進む。停止点 2 の報告は停止点 3 の報告に含める。不一致があれば停止点 2 で止める。
+4. **停止点 3** の報告：verify の summary（PASS・gate:true）、保存比較の結果（比較した宣言数、transient 数、同名宣言の扱い）、round ごとの表、補充の総数、層検査の前後（停止点 1 → 最終）、コミットの一覧。
+
+### 10.34 追記（11-01、保存比較の不一致 69 件の処理）
+
+**承認**：停止点 2 で止めた判断（保存比較 FAIL 69 件）、監査 7 本の追従（旧名 325 件、split 18 件を両側へ、import 8 件）。
+
+**A. 生成名 56 件（28 組）**：`_aux_<モジュール名>___macroRules_…`・`___unexpand_…` は Lean が `macro_rules`／`unexpander` に付ける補助名で、**モジュール名を埋め込む**。private 接頭辞と同じく、対応表（move・split・merge）でモジュール名を写してから比べる規則を `compare_snapshots.py`（または Lean 側の正規化）に加える。写した後に型・本体のハッシュが一致すれば一致、しなければ一覧に残す。試験 1 件。
+
+**B. `KST.Comparison.doubleMappingCylinder_hom_ext`**（`IC.Kan.DoubleMappingCylinderMap` から消え `…Desc` に現れた）：before／after のハッシュが一致するなら、split の `moved`／`keep` の実際の配置が計画と違っただけなので、対応表の記録を実際に合わせて一致扱い。一致しなければ D へ。
+
+**C. `KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_5`**（追加のみ）：無名 instance の自動番号。before の `instIsDGPretriangulatedDGOdotGluing_*` のうち型ハッシュが同じものがあれば番号の付け替えとして一致扱い（§10.10 の位置の規則で親を同定）。なければ D へ。
+
+**D. 残り（型 5・本体 1・補助宣言 4、`BoundaryFactorization.initial_left`・`kanTensorReplacement_isCofibrant/_isFibrant/_left_isFibrant`・`EvaluationFamily.detected_inf/generators`・`Hammock.Direction`・`FiniteSpanVertex`・`SimplexInverseMatching.{empty,point}MatchingTerminal`）**：ハッシュだけでは判断できないので、**pretty print で前後を比べる**。
+1. before の環境は、束の前のコミット（aacd82f41）の scratch worktree を作り、Lake キャッシュから復元する（`git worktree add ../SerrePositivity-ifw0-3-before aacd82f41`、該当モジュールだけ `lake build` → キャッシュに当たるので再コンパイルなし。`LAKE_RESTORE_ARTIFACTS=true` で olean が `.lake/build` に復元される）。after は現在の worktree。
+2. 各宣言について `#print` と、`set_option pp.explicit true` での `#check` を before／after で出し、テキストで比べる。
+   - **定理**：`pp.explicit false` の型が同じなら一致扱い（インスタンスや暗黙引数の経路の違い。公理も一致していること）。違えば **STOP**（差分を報告）。
+   - **定義・インスタンス・補助宣言**：型と本体の pp が同じなら一致扱い。本体が違う定義（`generators`）は、違いがインスタンス項だけか（`pp.explicit true` で見える）を書き、それ以外の違いなら **STOP**。
+   - 補助宣言（`Direction`・`FiniteSpanVertex`・`…MatchingTerminal` の auxiliaries）：どの補助（`rec`・`noConfusion`・`sizeOf`・`match_` 等）が違うかを列挙し、生成名の違いなら一致扱い。
+3. 使い終わった scratch worktree は削除する。
+
+**E. 報告**：13 件それぞれの処置を表にして**停止点 2′**で報告する。すべて一致扱いになれば、その報告のあと止まらずに「downstream imports」「監査の追従」「保存比較の規則」をコミットして verify へ（§10.33-3）。STOP が 1 件でもあれば止まる。
+
+### 10.35 追記（11-01、残り 32 件：macro／unexpander の補助宣言は transient、before の復元は再コンパイルを許す）
+
+**承認**：9 件の一致（B 2・D 7）、生成名の正規化と試験（171 件 PASS）。
+
+**A の 28 組（`_aux_…___macroRules_…`・`…___unexpand_…`）**：本体の `Name.mkStr` にもモジュール名が埋め込まれているので、ハッシュでは一致しない。これらは `macro_rules`／`unexpander` が生成する**記法のための補助宣言**で、数学的な内容を持たず、正しく生成されたことはビルドが通ったことで示される。**transient（生成宣言）として保存比較から除外**し、組数と名前を記録に残す（§10.22 の生成名のガードに `_aux_` の `___macroRules_`・`___unexpand_` を加える）。本体のリテラルまで写す正規化は作らない。
+
+**C の無名 instance `instIsDGPretriangulatedDGOdotGluing_5`**：無名 instance の自動番号は、環境に同じ基底名があると変わる（import の変化で付け替わる）。before では同じモジュールの `instIsDGPretriangulatedDGOdotGluing_<n>` のどれかが相手のはずなので、**番号を無視して (モジュール, 型の pp) で照合**する。D と同じ scratch で `#print` して比べる。
+
+**D の未復元 4 件（`kanTensorReplacement_isCofibrant/_isFibrant/_left_isFibrant`＋C）**：scratch worktree でキャッシュに無い 165 本が再コンパイルされたのは、それらの before の成果物がキャッシュ採用（11-01）より前に作られていたからで、前提の違反ではあるが規則の違反ではない。**再コンパイルを許して復元を続ける**（数百本・数分の規模。全ビルドではないが、他の全ビルドがないことは確かめる）。復元できたら pp で比べる（定理は `pp.explicit false` の型が同じなら一致）。
+
+**その後**：全件一致なら停止せずに「downstream imports」「監査の追従」「保存比較の規則（_aux_ transient、instance の番号無視）」をコミットし、verify へ（§10.33-3）。一致しないものがあれば停止点 2″ で差分を報告。scratch は削除。
+
+### 10.36 追記（11-01、停止点 3：監査 2 本の import を直して再検証）
+
+**承認**：保存比較 PASS（16,412 件、未解決 0）、ビルド 2 段と sorry 閉包の成功、監査 98／100、3 コミット（f66a5c24e・9406000cb・02971913f）、補充 75 モジュール・83 import、直接違反 296 → 294、禁止閉包 177 → 166。
+
+**失敗した監査 2 本の処置**：どちらも、束で動かした定義に監査の `import` が届かなくなったもの。監査（`scripts/audit_*.lean`）は層のグラフの外なので、必要なモジュールを直接 import してよい。
+1. `audit_homotopy_limits.lean`：R72(3) で `InfinityCategories/ModelBridge/` 直下へ移した HL の Quillen 42 本（w2a.json の実在する移動先。**`HL/` という下位ディレクトリはない**——§10.36 の初版の書き誤り、11-01 訂正）を import に加える（名前一覧の追従は 9406000cb で済んでいるので import だけ）。
+2. `audit_infinity_f2.lean`：F2 の入口が `F2.CatInfinity` だけになったので、F2 の領域（FilteredExchange・Ind・Compact・Presentable など、`audit_infinity_f2_checks.lean` と同じ閉包）を直接 import する。
+3. 両方を `lake env lean` で単独に通してから、「監査の import の追従」の 1 コミット。
+
+**再検証**：全 100 本をもう一度 44 分かける代わりに、`VERIFY_CACHE=1 VERIFY_JOBS=3 zsh scripts/refactor/verify.sh` で走らせる。直前の実行で成功した 98 本は鍵（監査の本文と閉包の olean ハッシュ）が同じなのでキャッシュに当たり、直した 2 本だけが実行される。README の規約では gate:false になるが、**入力が同一であることは鍵が保証する**ので、この束ではこれを合否とする（coordination.md §5 に逸脱として記録。次の束からは IF-W0-4 の runner で短くなるので全実行に戻す）。summary で 2 本が成功し failures 0 なら **停止点 3′** で報告 → Claude が main へ取り込む。

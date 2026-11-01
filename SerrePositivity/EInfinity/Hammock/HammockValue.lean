@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueGraph
-public import SerrePositivity.EInfinity.Hammock.ZigzagWordValue
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagWordValue
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 /-!
 概要：実 ∞ 圏同値の指定 invHomIso を保ったまま三角式付き同値を構成する。
 方針：逆方向の同値を adjointify し、逆同型と右三角式で向きを戻す。

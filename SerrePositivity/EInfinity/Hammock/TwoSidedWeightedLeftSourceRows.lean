@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.TwoSidedElementsOpposite
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedElementsOpposite
 public import SerrePositivity.EInfinity.Hammock.TwoSidedWeightedLeftMap
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionEdges
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange
 

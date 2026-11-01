@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.PunctureSimplex
-public import SerrePositivity.EInfinity.Hammock.WordMerge
-public import SerrePositivity.EInfinity.Hammock.WordSurjectionDescent
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordMerge
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordSurjectionDescent
 
 /-!
 # 元の合成と外側の削除の可換四角形からの局所合流

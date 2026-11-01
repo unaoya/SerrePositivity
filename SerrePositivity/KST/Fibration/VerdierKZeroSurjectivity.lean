@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.CategoryTheory.TriangulatedK0
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationEssentialSurjectivity
 
 /-! # Verdier 商の元の対象と完全関手による三角圏 K₀ の全射性

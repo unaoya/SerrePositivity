@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Limits.InverseSequenceRelativeLifting
-public import SerrePositivity.KST.Spectra.FibrationTowerLimitCone
+public import SerrePositivity.InfinityCategories.Kan.FibrationTowerLimitCone
 
 /-!
 概要：inner fibration の可算の塔の極限は quasicategory。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
-public import SerrePositivity.KST.Spectra.FibrationTowerLimitCone
+public import SerrePositivity.InfinityCategories.Kan.FibrationTowerLimitCone
 
 /-!
 概要：可縮 Kan 複体の fibration 塔の厳密な極限は可縮 Kan。

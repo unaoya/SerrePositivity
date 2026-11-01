@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionEdgewiseSection
-public import SerrePositivity.KST.Spectra.FramedTetrahedronDifference
+public import SerrePositivity.InfinityCategories.Kan.Pointed.FramedTetrahedronDifference
 
 /-!
 概要：companion の元の共通解像の二つの三単体の、内辺・外辺・右辺を厳密に計算する。

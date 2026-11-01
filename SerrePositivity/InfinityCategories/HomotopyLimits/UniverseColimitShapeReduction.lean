@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 

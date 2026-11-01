@@ -16,5 +16,5 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.AdjointStructureMaps
 モデル構造、導来演算、安定ホモトピー群、次数シフトは次の検討に残す。
 
 利用するAPIは `SymmetricSpectrum/README.md`、受入条件との対応は
-`formalization-plans/k-theory.md` の段階2の最終確認に記載する。
+`formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17` の段階2の最終確認に記載する。
 -/

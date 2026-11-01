@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SkeletalStandardLatching
-public import SerrePositivity.KST.Spectra.SkeletonTransitionPullback
+public import SerrePositivity.InfinityCategories.Kan.SkeletonTransitionPullback
 public import SerrePositivity.KST.Spectra.TypesColimitPullback
 
 /-!

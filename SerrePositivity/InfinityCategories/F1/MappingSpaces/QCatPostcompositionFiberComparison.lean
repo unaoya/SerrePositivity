@@ -1,5 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
+public import SerrePositivity.InfinityCategories.F1.Fibrations.PullbackTransport
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.QCatPostcompositionPullback
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso

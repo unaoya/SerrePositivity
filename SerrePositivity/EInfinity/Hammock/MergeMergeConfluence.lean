@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordMergeIndices
-public import SerrePositivity.EInfinity.Hammock.RawSurjectionComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordMergeIndices
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawSurjectionComparison
 public import SerrePositivity.EInfinity.Hammock.Reduction
 
 /-!

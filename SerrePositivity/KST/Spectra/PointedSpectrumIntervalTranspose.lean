@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingExchange
 public import SerrePositivity.KST.Spectra.PointedIhomStepInterval
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：全パラメータの実区間の転置を列の構造像と制限へ照合する。

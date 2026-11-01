@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.FiberKanSequence
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
-public import SerrePositivity.KST.Spectra.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
 public import SerrePositivity.KST.Spectra.PostMappingFibration
 public import SerrePositivity.KST.Spectra.LoopFiber
 

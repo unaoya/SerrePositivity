@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution
-public import SerrePositivity.EInfinity.SimplicialLocalization.MarkedGeneratorCategory
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartitionUniversal
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.MarkedGeneratorCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorPartitionUniversal
 
 /-!
 # 元の自由解像の全次数の指定生成矢と自由積の普遍性

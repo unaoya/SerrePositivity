@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MatrixSpace
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 /-!
 # 係数ごとの境界定数単体と関係を行列へまとめる

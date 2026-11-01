@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedActionCochains
-public import SerrePositivity.KST.Spectra.DiscreteInternalHom
-public import SerrePositivity.KST.Spectra.FunctionComplexHomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
+public import SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups
 
 /-!
 概要：点つき群作用の cochain の各次数の正次数ホモトピー群の関数群による表示。

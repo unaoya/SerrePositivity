@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
-public import SerrePositivity.EInfinity.FrameHom.CoherentRightConeFixedFront
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentRightConeFixedFront
 
 /-!
 # 元の混合 coherent 単体の一端は同じ native Hom 比較

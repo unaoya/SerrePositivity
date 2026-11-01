@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomTensorIso
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatTensorAndArrowObjects
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
-public import SerrePositivity.KST.SConstruction.ContractibleKanProducts
+public import SerrePositivity.InfinityCategories.Core.ContractibleKanProducts
 
 /-!
 概要：二つの始対象の組は直積の始対象。

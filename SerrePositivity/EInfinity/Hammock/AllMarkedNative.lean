@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.AllMarkedSimplex
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.AllMarkedSimplex
 public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
 
 /-!

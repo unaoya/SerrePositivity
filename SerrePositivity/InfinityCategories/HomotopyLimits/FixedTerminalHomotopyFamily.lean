@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeRetractCosliceFamily
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 
 /-!

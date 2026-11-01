@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceMapping
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveMappingAdjunction
-public import SerrePositivity.KST.LocalizingInvariants.AdjointVerdier
+public import SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier
 
 /-!
 概要：q が充満忠実な右随伴を持つとき、差の関手の実右随伴と商の普遍性を構成。

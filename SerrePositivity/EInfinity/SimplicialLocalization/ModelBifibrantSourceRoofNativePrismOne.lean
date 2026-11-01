@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrism
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 
 /-!
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。

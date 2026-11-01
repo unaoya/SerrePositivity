@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CofiberFiberComparisonProjection
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Derived.ComplexEdgeCalculus
 public import SerrePositivity.InfinityCategories.Derived.FullCofiberSquare
 public import SerrePositivity.InfinityCategories.Derived.StableColimits

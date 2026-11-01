@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FunctionComplexPointedSimplex
+public import SerrePositivity.InfinityCategories.Kan.Pointed.FunctionComplexPointedSimplex
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.FunctionComplexPost
 

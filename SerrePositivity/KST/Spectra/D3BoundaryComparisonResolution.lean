@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3ComparisonOutput
 public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalencePathFamilyIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の BF 比較・実 loop 図式・厳密終点と、始点間の可逆比較を同時に保持する。

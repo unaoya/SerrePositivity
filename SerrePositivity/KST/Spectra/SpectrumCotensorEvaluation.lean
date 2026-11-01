@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorPointedComparison
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedUnits
-public import SerrePositivity.KST.Spectra.HomTensorStrengthPoint
-public import SerrePositivity.KST.Spectra.InternalHomExchangeVertices
+public import SerrePositivity.InfinityCategories.Kan.HomTensorStrengthPoint
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices
 
 /-!
 概要：実際の BF cotensor の普遍評価と、それによる全 Hom 前合成を構成する。

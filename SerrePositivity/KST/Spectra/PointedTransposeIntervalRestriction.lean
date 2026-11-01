@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedBasedPathComposition
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：非定数の境界区間への厳密な制限を、転置後の区間の同じ射影へ移す。

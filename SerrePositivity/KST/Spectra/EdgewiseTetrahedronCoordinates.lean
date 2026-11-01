@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.OrdinalSimplexEdges
+public import SerrePositivity.InfinityCategories.Kan.OrdinalSimplexEdges
 public import SerrePositivity.KST.Spectra.WeightedConeTriangleEdgewise
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseWeightCoordinates
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentConstantCoconeComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalMap
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：全空間の射を、元の余極限頂点を持つ指定余錐に接続する。

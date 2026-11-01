@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordPresentationNaturality
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers
 
 /-!
 # 中断した任意モデル源への一般化：WordPresentationAction
@@ -22,8 +22,8 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0607][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0607
-[plan]: ../../../../formalization-plans/k-theory.md
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0607
+[plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

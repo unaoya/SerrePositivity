@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendKnownFaces
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 
 /-! # 後合成比較三単体の最後の辺
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedColumn
-public import SerrePositivity.EInfinity.Hammock.WordColumnSplit
-public import SerrePositivity.EInfinity.Hammock.WordCutFactorColumns
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordColumnSplit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordCutFactorColumns
 
 /-!
 # 元の三因子の語の生成位置での前後の語の回収

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientExactDescent
 public import SerrePositivity.InfinityCategories.Derived.DGStableClosureInclusion
-public import SerrePositivity.InfinityCategories.Derived.StableVerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence
 /-!
 概要：実安定閉包の包含と平坦分解後の商は安定 ∞ 圏の Verdier 列をなす。
 方針：包含の完全充満忠実性、商の零化と全完全関手圏の同値を接続する。

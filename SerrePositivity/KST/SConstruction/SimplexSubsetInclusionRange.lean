@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionOrder
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionOrder
 public import SerrePositivity.KST.SConstruction.SimplexSubsetVertexIndex
 public import SerrePositivity.KST.SConstruction.SimplexSubsetNonjointInclusion
 

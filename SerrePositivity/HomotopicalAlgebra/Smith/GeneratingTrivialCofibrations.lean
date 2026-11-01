@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Smith.SolutionSet
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 /-! # The small generating trivial cofibration class in Smith recognition
 

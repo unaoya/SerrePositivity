@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.GroupoidBasedArrow
+public import SerrePositivity.InfinityCategories.Kan.Pointed.GroupoidBasedArrow
 public import SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinders
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 

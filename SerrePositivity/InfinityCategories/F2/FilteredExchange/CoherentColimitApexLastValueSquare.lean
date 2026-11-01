@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexLastDiagonalData
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitRawPointDiagonal
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitApexRawEdgeValues
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 /-!
 概要：元の最後辺の値因子と raw 対角値の比を、同じ指定正方形で消去する。
 方針：元の raw 最後辺値とその逆を相殺し、同じ終点比較の自然性を値へ移す。

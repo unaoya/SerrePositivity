@@ -1,0 +1,630 @@
+{
+  "status": "STOP_POINT_2_PRIME",
+  "basis": "main 255651547 §10.34",
+  "rules_tests": {
+    "count": 171,
+    "status": "PASS",
+    "seconds": 4.803
+  },
+  "A": [
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termP_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termP_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-00.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQC_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQC_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-01.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQD_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQD_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-02.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQ_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQ_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-03.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termRD_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termRD_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-04.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termW_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termW_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-05.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termε_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termε_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-06.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_CategoryTheory_Functor_obj_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_CategoryTheory_Functor_obj_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-07.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_CosimplicialFrameFamily_ofResolution_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_CosimplicialFrameFamily_ofResolution_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-08.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSourceComparison_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSourceComparison_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-09.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSource_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSource_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-10.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_fibrantTarget_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_HomotopyFunctionComplex_fibrantTarget_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-11.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_Reedy_cosimplicialResolutionFamily_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_Reedy_cosimplicialResolutionFamily_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-12.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenDerivedHom___unexpand_SerrePositivity_Reedy_cosimplicialResolutionFamily_2",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenDerivedHom___unexpand_SerrePositivity_Reedy_cosimplicialResolutionFamily_2",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenDerivedHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-13.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termP_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termP_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenFrameHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenFrameHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-14.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQ_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom_0_SerrePositivity_InfinityCategories_HomotopyLimits_termQ_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenFrameHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenFrameHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-15.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom___unexpand_SerrePositivity_HomotopyFunctionComplex_CosimplicialFrameFamily_ofResolution_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom___unexpand_SerrePositivity_HomotopyFunctionComplex_CosimplicialFrameFamily_ofResolution_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenFrameHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenFrameHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-16.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_ChosenQuillenFrameHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSource_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_ChosenQuillenFrameHom___unexpand_SerrePositivity_HomotopyFunctionComplex_cofibrantSource_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.ChosenQuillenFrameHom",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenFrameHom",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-17.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termAug_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termAug_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-18.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termImg_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termImg_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-19.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termM_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termM_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-20.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termW_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison_0_SerrePositivity_InfinityCategories_HomotopyLimits_termW_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-21.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___unexpand_CategoryTheory_Functor_obj_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___unexpand_CategoryTheory_Functor_obj_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-22.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___unexpand_SerrePositivity_HomotopyFunctionComplex_FrameOverFunctor_commonObj_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___unexpand_SerrePositivity_HomotopyFunctionComplex_FrameOverFunctor_commonObj_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-23.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenDerivedHomComparison___unexpand_SerrePositivity_InfinityCategories_HomotopyLimits_quillenLeftFrameAugmentation_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenDerivedHomComparison___unexpand_SerrePositivity_InfinityCategories_HomotopyLimits_quillenLeftFrameAugmentation_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenDerivedHomComparison",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenDerivedHomComparison",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-24.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenLeftFrameAugmentation___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenLeftFrameAugmentation_0_SerrePositivity_InfinityCategories_HomotopyLimits_termAug_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenLeftFrameAugmentation___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenLeftFrameAugmentation_0_SerrePositivity_InfinityCategories_HomotopyLimits_termAug_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenLeftFrameAugmentation",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenLeftFrameAugmentation",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-25.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenLeftFrameAugmentation___macroRules__private_SerrePositivity_InfinityCategories_ModelBridge_QuillenLeftFrameAugmentation_0_SerrePositivity_InfinityCategories_HomotopyLimits_termImg_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenLeftFrameAugmentation___macroRules__private_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenLeftFrameAugmentation_0_SerrePositivity_InfinityCategories_HomotopyLimits_termImg_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenLeftFrameAugmentation",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenLeftFrameAugmentation",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-26.txt"
+    },
+    {
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_ModelBridge_QuillenLeftFrameAugmentation___unexpand_SerrePositivity_InfinityCategories_HomotopyLimits_quillenLeftFrameAugmentation_1",
+      "before_name": "SerrePositivity.InfinityCategories.HomotopyLimits._aux_SerrePositivity_InfinityCategories_HomotopyLimits_QuillenLeftFrameAugmentation___unexpand_SerrePositivity_InfinityCategories_HomotopyLimits_quillenLeftFrameAugmentation_1",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.QuillenLeftFrameAugmentation",
+      "after_module": "SerrePositivity.InfinityCategories.ModelBridge.QuillenLeftFrameAugmentation",
+      "status": "BODY_HASH_MISMATCH",
+      "pp_equal_after_declaration_name_mapping": false,
+      "diff": "macro-body-diff-27.txt"
+    }
+  ],
+  "remaining_13": [
+    {
+      "id": "B-removed",
+      "name": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "status": "PASS_HASH",
+      "detail": "before Map -> after Desc: type/body hashes, kind, axioms, attributes identical; declaration map corrected"
+    },
+    {
+      "id": "B-added",
+      "name": "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext",
+      "status": "PASS_HASH",
+      "detail": "same placement correction resolves the added row"
+    },
+    {
+      "id": "C",
+      "name": "SerrePositivity.KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_5",
+      "change": "added",
+      "before_module": "SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle",
+      "after_module": "SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle",
+      "status": "NOT_COMPARED",
+      "detail": "before target not restored when the unexpected recompilation was stopped"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.BisimplicialModel.BoundaryFactorization.initial_left",
+      "change": "type",
+      "before_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "after_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": false
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "theorem default type pp and axioms identical"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.EInfinity.Hammock.Direction",
+      "change": "auxiliaries",
+      "before_module": "SerrePositivity.EInfinity.Hammock.Word",
+      "after_module": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Word",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": true
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "default auxiliary type/body pp identical after mapping generated universe-module names and separating probe warning locations; explicit proof terms may select different Small instances",
+      "auxiliaries": [
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusion",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusion",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusion",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusion",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusionType",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusionType",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusionType",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.EInfinity.Hammock.Direction.noConfusionType",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex",
+      "change": "auxiliaries",
+      "before_module": "SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanIndex",
+      "after_module": "SerrePositivity.InfinityCategories.Simplicial.FiniteSpanIndex",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": true
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "default auxiliary type/body pp identical after mapping generated universe-module names and separating probe warning locations; explicit proof terms may select different Small instances",
+      "auxiliaries": [
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusion",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusion",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusion",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusion",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusionType",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusionType",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusionType",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.InfinityCategories.FiniteSpanVertex.noConfusionType",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": true
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits.kanTensorReplacement_isCofibrant",
+      "change": "type",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "after_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "status": "NOT_COMPARED",
+      "detail": "before target not restored when the unexpected recompilation was stopped"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits.kanTensorReplacement_isFibrant",
+      "change": "type",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "after_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "status": "NOT_COMPARED",
+      "detail": "before target not restored when the unexpected recompilation was stopped"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.InfinityCategories.HomotopyLimits.kanTensorReplacement_left_isFibrant",
+      "change": "type",
+      "before_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "after_module": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorFrameAdjunction",
+      "status": "NOT_COMPARED",
+      "detail": "before target not restored when the unexpected recompilation was stopped"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.ModelGeneration.EvaluationFamily.detected_inf",
+      "change": "type",
+      "before_module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+      "after_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": false,
+        "EXPLICIT_PRINT": false
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "theorem default type pp and axioms identical"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.ModelGeneration.EvaluationFamily.generators",
+      "change": "body",
+      "before_module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+      "after_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": true
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "definition type/body pp identical; explicit type/body pp also identical"
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.emptyMatchingTerminal",
+      "change": "auxiliaries",
+      "before_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching",
+      "after_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": true
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "default auxiliary type/body pp identical after mapping generated universe-module names and separating probe warning locations; explicit proof terms may select different Small instances",
+      "auxiliaries": [
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.emptyMatchingTerminal._proof_1",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.emptyMatchingTerminal._proof_1",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.emptyMatchingTerminal._proof_1",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.emptyMatchingTerminal._proof_1",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": false
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.pointMatchingTerminal",
+      "change": "auxiliaries",
+      "before_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching",
+      "after_module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexInverseMatching",
+      "pp": {
+        "CHECK": true,
+        "PRINT": true,
+        "EXPLICIT_CHECK": true,
+        "EXPLICIT_PRINT": true
+      },
+      "axioms_equal": true,
+      "status": "PASS_PP",
+      "detail": "default auxiliary type/body pp identical after mapping generated universe-module names and separating probe warning locations; explicit proof terms may select different Small instances",
+      "auxiliaries": [
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.pointMatchingTerminal._proof_1",
+          "mode": "CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.pointMatchingTerminal._proof_1",
+          "mode": "PRINT",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.pointMatchingTerminal._proof_1",
+          "mode": "EXPLICIT_CHECK",
+          "equal_before_hygiene_mapping": true,
+          "equal_after_hygiene_mapping": true
+        },
+        {
+          "name": "SerrePositivity.SimplicialModel.SimplexInverseMatching.pointMatchingTerminal._proof_1",
+          "mode": "EXPLICIT_PRINT",
+          "equal_before_hygiene_mapping": false,
+          "equal_after_hygiene_mapping": false
+        }
+      ]
+    }
+  ],
+  "matched_of_13": 9,
+  "uncompared_of_13": 4,
+  "machine_changes_after_AB": 39,
+  "accepted_by_pp": 7,
+  "remaining_changes": 32,
+  "restore": {
+    "status": "INTERRUPTED_UNEXPECTED_RECOMPILATION",
+    "pid": 52237,
+    "cache": {
+      "LAKE_ARTIFACT_CACHE": "true",
+      "LAKE_RESTORE_ARTIFACTS": "true",
+      "LAKE_CACHE_DIR": "/Users/sugakubunka/.cache/lake"
+    },
+    "started": "2026-11-01T18:52:17.316998+09:00",
+    "stop_request": {
+      "time": "2026-11-01T18:53:33.743077+09:00",
+      "reason": "§10.34 expects cache-only restoration, but actual project compilations occurred",
+      "pid": 52234,
+      "process": "52234 /opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python - --wait 0 -- python3 -B -u /tmp/ifw034-restore.py"
+    },
+    "new_project_builds": 165,
+    "first_builds": [
+      "✔ [1612/1669] Built SerrePositivity.EInfinity.Hammock.Word (3.7s)",
+      "✔ [1626/1672] Built SerrePositivity.HomotopicalAlgebra.Generated.Basic (3.5s)",
+      "✔ [1629/1675] Built SerrePositivity.CategoryTheory.Limits.SequentialExtension (3.6s)"
+    ],
+    "errors": []
+  },
+  "scratch_deleted": true,
+  "verify_run": false,
+  "new_commits": [],
+  "scratch_commit": "aacd82f413aee9f2c4e35bde4362a90b969e118c",
+  "cleanup_time": "2026-11-01T19:23:00.160461+09:00",
+  "active_builds_at_cleanup": [],
+  "machine_compare_seconds": 6.18,
+  "machine_changes_by_kind": {
+    "added": 1,
+    "type": 5,
+    "auxiliaries": 4,
+    "body": 29
+  },
+  "declaration_module_overrides": {
+    "SerrePositivity.KST.Comparison.DoubleMappingCylinderMap": {
+      "SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext": "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc"
+    }
+  },
+  "A_detail": "all 28 names pair after normalization; body hashes still differ. Pretty prints contain quoted private Names constructed by Name.mkStr with HomotopyLimits versus ModelBridge; no body-hash override.",
+  "temporary_probe_repairs": [
+    "removed unsupported pp.width",
+    "private auxiliaries require module + import all and environment raw names",
+    "used set_option syntax instead of unsupported CommandElabM withOptions/setNat",
+    "separated compiler warning source locations from pp text"
+  ]
+}

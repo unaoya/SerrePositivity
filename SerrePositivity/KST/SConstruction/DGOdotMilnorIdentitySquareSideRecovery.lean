@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareComparison
 public import SerrePositivity.KST.SConstruction.StableZeroSquareShortRecovery
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!
 概要：恒等実右面の同じ Cat^perf 全比較から指定元包含・商・零左辺を厳密に回収する。

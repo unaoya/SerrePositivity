@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.GroupFiveLemma
+public import SerrePositivity.InfinityCategories.Kan.GroupFiveLemma
 
 /-!
 概要：最後の項が基点付き集合でよい群の五項補題。

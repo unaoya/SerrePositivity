@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPaste
-public import SerrePositivity.EInfinity.Hammock.UnmarkedRefinedPairing
-public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPoint
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedRefinedPairing
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorPoint
 
 /-!
 # 元の一段の切断の貼り戻しによる同じ単体の回収

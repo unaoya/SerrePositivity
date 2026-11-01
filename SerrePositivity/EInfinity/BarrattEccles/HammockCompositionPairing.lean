@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphComposition
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
-public import SerrePositivity.EInfinity.Hammock.CompositionPairing
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.CompositionPairing
 
 /-!
 # 元の E 代数の全語の対に整合する合成余錐

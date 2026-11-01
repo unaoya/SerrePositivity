@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterSquareComparison
 public import SerrePositivity.KST.SConstruction.StableZeroSquareShortRecovery
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!
 概要：元実外周の同じ Cat^perf 全比較から指定包含・商・零左側面を厳密回収する。

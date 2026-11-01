@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeFinalFiberIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionCurryIsoImage
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeTriangleFinalFiberOutput
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：左右の native 最終 fiber 同型を、元の全三角形比較の単一の指定像として表示する。

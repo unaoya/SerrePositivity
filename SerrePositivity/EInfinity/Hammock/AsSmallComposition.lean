@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.AsSmallArrow
-public import SerrePositivity.EInfinity.Hammock.RelativeAppendFunctor
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.ColimitPoints
-public import SerrePositivity.EInfinity.Hammock.PointActions
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeAppendFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
 
 /-!
 概要：元の AsSmall hammock 同型は同じ全合成と全標的の後合成を保持する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint
-public import SerrePositivity.EInfinity.Hammock.PointActions
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
 
 /-!
 # 元の射による自由 hammock の後合成と両比較の自然性

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
 public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizedResolutionFunctoriality
 
 /-!

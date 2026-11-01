@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.DGModuleStability
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedLimitTransfer
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedZeroObjects
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeRawFunctorExact

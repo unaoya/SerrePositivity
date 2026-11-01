@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ObjectTriangulatedKZeroRelations
-public import SerrePositivity.KST.SConstruction.FundamentalGroupoidComparison
+public import SerrePositivity.InfinityCategories.Kan.FundamentalGroupoidComparison
 public import Mathlib.CategoryTheory.SingleObj
 public import Mathlib.CategoryTheory.Category.ULift
 

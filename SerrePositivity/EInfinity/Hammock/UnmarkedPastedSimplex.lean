@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedColumn
-public import SerrePositivity.EInfinity.Hammock.UnmarkedSingletonGenerator
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedSingletonGenerator
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPasteValue
-public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPoint
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorPoint
 
 /-!
 # 任意の三因子の元の単体による貼り戻しと同じ生成矢

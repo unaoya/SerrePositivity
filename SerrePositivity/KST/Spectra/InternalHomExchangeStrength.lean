@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomTensorAction
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAction
 public import SerrePositivity.KST.Spectra.SuspensionLoop
 
 /-!

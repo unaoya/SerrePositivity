@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.CoefficientProductRelative
-public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.CoefficientProductRelative
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.WeakTensor
 
 /-!

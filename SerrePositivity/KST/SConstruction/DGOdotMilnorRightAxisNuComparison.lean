@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNativeValue
 public import SerrePositivity.KST.SConstruction.DGKNativeNuNaturality
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeNativeProperties
 public import SerrePositivity.KST.SConstruction.PerfectLaxIdempotent
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEquivalence
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated
 

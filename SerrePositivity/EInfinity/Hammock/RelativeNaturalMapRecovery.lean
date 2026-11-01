@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RelativeNaturalGraphHomotopy
-public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWordRows
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalGraphHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalWordRows
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.PointActions
-public import SerrePositivity.EInfinity.Hammock.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
 
 /-!
 # 比較ホモトピーの両端と元の前後合成の一致

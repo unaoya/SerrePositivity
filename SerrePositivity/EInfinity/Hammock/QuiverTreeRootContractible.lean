@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.QuiverTreeRootCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeRootCategory
 public import SerrePositivity.EInfinity.Hammock.SubsingletonCategoryContractible
 
 /-!

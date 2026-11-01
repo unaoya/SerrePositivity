@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality
-public import SerrePositivity.EInfinity.FrameHom.CommaGrothendieck
-public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowPreDiagram
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowPreDiagram
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 
 /-!

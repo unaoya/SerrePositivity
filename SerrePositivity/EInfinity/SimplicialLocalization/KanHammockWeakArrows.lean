@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
 public import SerrePositivity.EInfinity.Hammock.CoherentComponents
-public import SerrePositivity.EInfinity.Hammock.WeakArrowRoundTripComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WeakArrowRoundTripComposition
 
 /-!
 # 元の指定射の Kan hammock nerve 内での反転

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneVertices
 public import SerrePositivity.InfinityCategories.Core.PrismVerticalSimplex
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary

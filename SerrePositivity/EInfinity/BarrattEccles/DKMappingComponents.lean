@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraMappingClasses
-public import SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalization
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ULiftRelativeLocalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComponents
 
 /-!

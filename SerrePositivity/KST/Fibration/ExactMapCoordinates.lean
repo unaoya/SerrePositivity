@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 /-! # 元の安定対象の等号に沿う、完全射と全自然同値の対象座標の輸送 -/
 

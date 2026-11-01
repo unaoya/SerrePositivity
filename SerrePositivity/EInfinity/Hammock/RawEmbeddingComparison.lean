@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordEmbeddingUniqueness
-public import SerrePositivity.EInfinity.Hammock.RawHammock
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordEmbeddingUniqueness
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawHammock
 public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
 
 /-!

@@ -14,13 +14,13 @@ import sys
 import tempfile
 
 import layer_check as lc
-from lean_source import Unsupported, parse_source, render, dependency_directions, uses_names, add_import, read_source, write_source, owner
+from lean_source import check_attribute_dependencies, transient_names, declaration_owner, Unsupported, parse_source, render, dependency_directions, add_import, read_source, write_source, owner
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def module_path(root, name):
-    if not isinstance(name, str) or not re.fullmatch(r"SerrePositivity(?:\.[\w']+)+", name):
+    if not isinstance(name, str) or not re.fullmatch(r"SerrePositivity(?:\.[\w']+)*", name):
         raise ValueError('invalid project module: '+str(name))
     path = root / (name.replace('.', '/')+'.lean')
     if not path.resolve().is_relative_to(root.resolve()): raise ValueError('module escapes root')
@@ -44,6 +44,8 @@ def module_doc(text, replacement=None):
         at=0
         match=re.search(r'(?m)^module[^\n]*\n',text)
         if match:at=match.end()
+        headers=list(re.finditer(r'(?m)^(?:public |private |meta )*import[^\n]*\n',lc.code_only(text)))
+        if headers:at=headers[-1].end()
         return text[:at]+'\n/-!\n'+(replacement or '分割で生成：docstring を書き直すこと')+'\n-/\n'+text[at:]
     pos=start+2;depth=1
     while pos<len(text) and depth:
@@ -62,7 +64,7 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
     original = read_source(src)
     if dst.exists() and lc.code_only(read_source(dst)).strip() not in ('', 'module'):
         raise ValueError('destination is not an empty scaffold: '+dest)
-    source = parse_source(original, str(src))
+    source = parse_source(original, str(src), snapshot=snapshot, module=module)
     moved = set(moved)
     if not moved or moved - source.declarations.keys():
         raise ValueError('empty or unknown moved declarations: '+repr(sorted(moved-source.declarations.keys())))
@@ -73,8 +75,9 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
     forward, backward = dependency_directions(source, moved, local_snapshot)
     if forward and backward:
         raise Unsupported('bidirectional dependency; split would create an import cycle: '+repr({'moved_to_keep':forward,'keep_to_moved':backward}))
+    check_attribute_dependencies(source, moved)
     kept = source.declarations.keys()-moved
-    old_text, new_text = render(source,kept), render(source,moved)
+    old_text, new_text = render(source,kept,side='keep'), render(source,moved,side='moved')
     if forward: new_text = add_import(new_text,module)
     if backward: old_text = add_import(old_text,dest)
     # Byte-for-byte checks also cover attached docstrings, attributes, and local scopes.
@@ -84,22 +87,47 @@ def prepare(root, module, dest, moved, snapshot, graph=None, doc=None):
         if fragment not in rendered: raise AssertionError('declaration changed: '+name)
     new_text=module_doc(new_text,doc)
     changes = {module:{'before':original,'after':old_text},dest:{'before':read_source(dst) if dst.exists() else None,'after':new_text}}
-    if graph is None:
-        config=json.loads((ROOT/'scripts/refactor/layers.json').read_text())
-        graph,_=lc.read_graph(root,config)
-    implicit = any(owner(r['name'], source.declarations) in moved and
-                   (r['attributes']['simp'] or r['attributes']['instance_priority'] is not None) for r in rows)
-    for consumer,deps in sorted(graph.items()):
-        if consumer==module or module not in deps: continue
-        path=root/(consumer.replace('.','/')+'.lean')
-        text=read_source(path)
-        public_export = bool(re.search(r'(?m)^\s*public\s+import\s+(?:all\s+)?'+re.escape(module)+r'(?:\s|$)',lc.code_only(text)))
-        if uses_names(text,moved) or implicit or public_export:
-            changes[consumer]={'before':text,'after':add_import(text,dest)}
+    # §10.14: consumers retain the source import. Only a failed bundle build
+    # may justify an explicit downstream_imports repair; public exports, simp,
+    # instances, and textual uses do not authorize automatic consumer edits.
     return {'module':module,'dest':dest,'moved':sorted(moved),'keep':sorted(kept),
             'dependencies':{'moved_to_keep':forward,'keep_to_moved':backward},
+            'transient':transient_names(local_snapshot),
             'declaration_modules':{n:dest if n in moved else module for n in source.declarations},
             'changes':changes}
+
+
+def downstream_repair_snapshot(module, baseline, plan, snapshot, output, config):
+    """Check a failed consumer before writing; relocate its used moved constants."""
+    rows={r['name']:r for r in snapshot['declarations']}
+    moved=set(plan.get('moved', []))
+    names=plan.get('declaration_modules', {})
+    moved_constants={n for n,r in rows.items()
+                     if declaration_owner(r, names, rows) in moved} if moved else set()
+    diagnostics=[]
+    pattern=r'(?m)^error: '+re.escape(module.replace('.', '/'))+r'\.lean:(\d+):[^\n]*'
+    for match in re.finditer(pattern,output):
+        line=int(match[1])
+        failures=[r['name'] for r in baseline['declarations']
+                  if r.get('source_range') and
+                  r['source_range']['start_line'] <= line <= r['source_range']['end_line']]
+        diagnostics.append({'line':line,'declarations':failures,'error':match[0]})
+    uses={r['name']:sorted(set(r.get('used_constants',[])) & moved_constants)
+          for r in baseline['declarations']}
+    uses={n:ds for n,ds in uses.items() if ds}
+    if lc.classify(module,config) in config['core']:
+        detail={'consumer':module,'failed_declarations':diagnostics,
+                'used_moved_declarations':uses}
+        # Never guess an unlocated declaration: retain the full diagnostic instead.
+        if not diagnostics: detail['build_output']=output
+        raise Unsupported('core downstream repair forbidden (§10.14): '+
+                          json.dumps(detail,ensure_ascii=False,sort_keys=True))
+    # A moved constant used to belong to the still-visible keep module. Module
+    # visibility alone cannot detect its relocation, so add its new owner here.
+    return {**baseline,'declarations':[
+        {**r,'used_modules':sorted(set(r['used_modules']) |
+            ({plan['dest']} if r['name'] in uses else set()))}
+        for r in baseline['declarations']]}
 
 
 def diff(plan):

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MiddleBackwardExtractPaths
-public import SerrePositivity.EInfinity.Hammock.ZigzagMovingDiagramEvaluation
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagMovingDiagramEvaluation
 
 /-!
 # 動く局所端点を持つ図式からの左右射列の抽出

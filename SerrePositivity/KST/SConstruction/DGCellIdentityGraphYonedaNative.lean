@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugment
 public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleResolvedMapInvertible
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 /-!
 概要：元 cell 増大の全 Hom 写像で元 Yoneda と恒等制限 graph を全比較する。
 方針：D 正本の対角制限射とその準同型判定を native 全関手射へ適用する。

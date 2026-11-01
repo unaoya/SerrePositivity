@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseExtensionDomain
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 
 /-!
 概要：edgewise の重みの両因子の標準単体表示と、右因子の像の面の同定。

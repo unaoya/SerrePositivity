@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedQuillenTargetInvariance
+public import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenTargetInvariance
 
 /-!
 # 同じ自由 probe の既存 Map^h への全自然比較

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDerivedForgetSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgLocalizationUniversal
-public import SerrePositivity.EInfinity.FrameHom.LocalizationExtension
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalizationExtension
 
 /-!
 # 既存 CAlg_R から既存 D(R) への忘却 ∞ 関手

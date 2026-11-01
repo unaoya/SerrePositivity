@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantFrame
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelCofibrantFrame
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKan
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal

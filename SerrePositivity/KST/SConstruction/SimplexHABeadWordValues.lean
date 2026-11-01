@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexHABeadWord
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
 
 /-! # 元の部分集合 bead 連結語の HA 成分値

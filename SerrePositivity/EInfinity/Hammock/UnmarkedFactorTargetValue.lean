@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorTarget
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorTarget
 public import SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorValue
 
 /-!

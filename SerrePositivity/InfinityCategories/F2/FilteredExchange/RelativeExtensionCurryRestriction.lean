@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorCurryHom
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
 
 /-!
 概要：始点固定の延長の指定比較を、任意の部分図式上の切断族の同型へ写す。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.ConeEdgeCompatibility
+public import SerrePositivity.InfinityCategories.Core.ConeEdgeCompatibility
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 
 /-!

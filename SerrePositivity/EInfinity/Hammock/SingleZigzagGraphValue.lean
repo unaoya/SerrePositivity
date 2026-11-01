@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ForwardZigzagDiscrete
-public import SerrePositivity.EInfinity.Hammock.BackwardZigzagNativeDiscrete
-public import SerrePositivity.EInfinity.Hammock.DiscreteNerveIso
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzagDiscrete
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.BackwardZigzagNativeDiscrete
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DiscreteNerveIso
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
 /-!

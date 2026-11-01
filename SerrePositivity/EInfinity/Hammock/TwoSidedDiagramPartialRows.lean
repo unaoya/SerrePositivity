@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramRows
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalMap
-public import SerrePositivity.EInfinity.Hammock.TripleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TripleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialColumnWeak
 
 /-!

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyNaturalityData
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyFamilyWhiskering
 public import SerrePositivity.KST.SConstruction.AssemblyCrossedFamilyBoundary
-public import SerrePositivity.KST.SConstruction.CartesianFamilyEdgeTransport
+public import SerrePositivity.InfinityCategories.Kan.CartesianFamilyEdgeTransport
 public import SerrePositivity.KST.SConstruction.FactorizationDiagramPasting
 public import SerrePositivity.KST.SConstruction.PointedNaturalityCompositionEdges
 public import SerrePositivity.KST.SConstruction.AssemblyCompositionEdgeEvaluation

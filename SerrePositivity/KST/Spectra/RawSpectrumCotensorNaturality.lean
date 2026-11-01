@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFunctor
 public import SerrePositivity.KST.Spectra.KanSequenceMappingFunctor
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
 概要：整合写像空間と内部 Hom の交換を、Kan 列の標的について自然同型へまとめる。

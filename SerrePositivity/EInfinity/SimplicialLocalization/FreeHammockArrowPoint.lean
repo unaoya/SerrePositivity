@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowAugmentation
 public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCompositionComparison
-public import SerrePositivity.EInfinity.Hammock.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
 
 /-!
 # 元の射の点を同じ自由 hammock 比較で回収する

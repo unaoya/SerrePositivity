@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.Spectra.FreePointedHomRestriction
-public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
-public import SerrePositivity.KST.Spectra.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 
 /-!
 概要：自由なパラメータからの cotensor を、点つき Hom に値を取る通常の関数複体へ表示する。

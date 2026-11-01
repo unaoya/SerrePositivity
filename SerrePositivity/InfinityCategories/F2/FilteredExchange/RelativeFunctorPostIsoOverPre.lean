@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorPostOverPre
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorPostVertexIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の相対頂点比較から得た後合成の関手同型は、元の底上の前合成に対して自然。

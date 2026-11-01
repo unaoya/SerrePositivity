@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.VerdierReadoutBoundaryDiagram
 public import SerrePositivity.KST.Fibration.VerdierReadoutPathBoundary
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalBoundaryExt
-public import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle
 
 /-!
 概要：元の二つの全長 Hom 比較を、同じ直接端・合成端境界二単体を固定して合成する。

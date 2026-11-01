@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ModuleTranslationPi
 public import SerrePositivity.InfinityCategories.Derived.ModuleNormalizedPiCriterion
-public import SerrePositivity.KST.Spectra.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
 /-!

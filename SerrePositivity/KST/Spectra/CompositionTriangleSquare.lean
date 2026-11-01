@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SquareTrianglePushout
+public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
 public import SerrePositivity.KST.Spectra.TriangleDiskFaces
 public import SerrePositivity.KST.Spectra.FibrationEdgeComposition
 

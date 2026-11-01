@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.UnmarkedGeneratorFunctor
-public import SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorColumns
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedGeneratorFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedGeneratorColumns
 public import SerrePositivity.EInfinity.Hammock.HammockValue
 
 /-!

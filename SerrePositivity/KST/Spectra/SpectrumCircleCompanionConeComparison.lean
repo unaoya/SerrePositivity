@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleCompanionBKIsLimit
 public import SerrePositivity.KST.Spectra.SpectrumNativeCircleConeSection
-public import SerrePositivity.KST.Spectra.ConeEdgeIntervalCells
+public import SerrePositivity.InfinityCategories.Kan.ConeEdgeIntervalCells
 
 /-!
 概要：元の評価錐から元の companion の極限錐への実際の辺と、その頂点の BF 自己射。

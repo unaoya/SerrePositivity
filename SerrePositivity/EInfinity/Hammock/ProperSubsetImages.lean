@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
-public import SerrePositivity.EInfinity.Hammock.WordSubsetImages
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordSubsetImages
 public import SerrePositivity.EInfinity.Hammock.WeakRange
 
 /-!

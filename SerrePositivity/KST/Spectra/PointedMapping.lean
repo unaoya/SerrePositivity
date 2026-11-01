@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationBoundary
+public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 public import SerrePositivity.Spectra.Pointed.InternalHom
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct

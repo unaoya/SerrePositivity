@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CoherentPathImageEndpoints
+public import SerrePositivity.InfinityCategories.Kan.CoherentPathImageEndpoints
 public import SerrePositivity.KST.SConstruction.CoherentStringDiagramCells
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomMono
 

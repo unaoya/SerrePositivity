@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionSourceDown
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 /-!
 概要：実分解比較を元の入力射影へ送ると、元の同じ射影の恒等射となる。
 方針：実 fiber の射影の恒等性と、同じ宇宙比較・端点輸送を使う。

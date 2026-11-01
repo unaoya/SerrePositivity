@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionCompositeCounit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 /-!
 概要：合成 ∞ 随伴の余単位を、元の全関手の前後合成で回収する。
 方針：双圏の結合子と単位子を明示し、同じ h Fun の射へ送る。

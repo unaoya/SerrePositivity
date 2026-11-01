@@ -1,6 +1,7 @@
 module
+public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
 
 /-! # Actual functorial cofibrant and fibrant replacements

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordBackwardBounds
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordBackwardBounds
 public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositionCases
 
 /-!

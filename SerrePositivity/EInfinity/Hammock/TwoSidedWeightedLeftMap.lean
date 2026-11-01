@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonSimplex
-public import SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabel
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedMixedLabel
 
 /-!
 # 右ラベル次数を固定した元の重み付き左比較

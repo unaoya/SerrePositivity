@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.QuiverTreeDeformation
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeDeformation
 public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWeakComparison
 public import SerrePositivity.EInfinity.Hammock.RelativeFunctorLaws
 

@@ -110,3 +110,47 @@ main（または指定した worktree）の `.lake/build` を複製して温め�
 **承認**：e94d5aa2f（OrderSquare は move のみ、split 0、PerfectComplex への 3 辺の例外一覧、`--max-lines 1700` で警告 0、仮名 30 件の本名）。`dg-w2-names.md` の案をそのまま採る（主題で言い換え、Part なし）。
 
 DG-W1 は main に入った（194a65110。区切り 1-3 の後なので、`HomologicalAlgebra.CochainTensorLinear` → `CochainTensor.Basic` など旧名の import 12 本を伝達文 §10 の表で替えた）。infra/dg-w2 に `git merge main` してよい（道具と文書だけで、Lean の衝突はないはず。あれば止めて報告）。main では Claude が全ビルドを走らせている（10-31 夕方、約 3 時間）。**(b) の合図はまだ**（∞ の束の verify の後）。それまでビルドを伴う作業はしない。
+
+## 11. 追記（2026-11-01、(b) の合図を待つ間の作業：DG-W3 の準備と D6・D7 の調査、ビルドなし）
+
+(b) の合図は ∞ の束の verify の後（早くて 11-01 午後）。それまでに次をビルドなしで行い、終わったら止めて報告する（止めて報告する点 1″）。所有範囲は §1 のとおり新しいファイルだけ（`targets/dg-w3-*`、`targets/dg-survey-*`）。既存の道具には触れない。
+
+### 11.1 DG-W3 の草案（土台 5 ディレクトリ）
+
+1. [対応表](archive/dg-consolidation-2026-10-30.json) の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）の **48 統合先・611 元**を `targets/dg-w3-merge-plan.json` に写す（(a) と同じ書式）。未追跡の元は除外（§5-0）。
+2. **既知の障害**（[blockers](archive/dg-consolidation-blockers-2026-10-30.json)、調査 §5）：`Derived/AssociatorMiddle` の同名 private `paste_associator`（3 本で同一）と `post_paste`。`paste_associator` は同一なので 1 本だけ残して他を `private_renames` で退避するか、共有モジュールへ 1 本にまとめる案を書く（宣言の本文は変えないので、まずは `private_renames` で衝突を避ける案を主にし、一本化は D6 の提案に回す）。`post_paste` は片方を改名。`--check` で衝突 0 になることを確かめる。
+3. `merge_modules.py --check --max-lines 1700 --report targets/dg-w3-merge-dryrun.md`。警告の一覧、外からの import 辺の内訳（土台は IC/Derived・KST・EInfinity・Paper・Asymptotic から多い）、下流の逆閉包（Paper まで）と時間の見積もり。
+4. 番号つき仮名の本名の案 `targets/dg-w3-names.md`（§9-5 の規則）。
+
+### 11.2 D5 の DG 分の準備
+
+旧案内 `dg-theory-u12e-general-inventory.md`（521 本）・`dg-theory-m5-status.md`（9 本）への docstring の参照を `formalization-plans/archive/<同名>` に替えるスクリプト（∞ 側の `scripts/refactor/rewrite_r79_docs.py`（infra/if-w0-3、main には未取り込み）と同じ規則：相対パスの深さを保ち、`formalization-plans/<名前>.md` の部分だけを替える。module docstring の外にある参照は STOP）。main に無ければ自前で `targets/rewrite_dg_docs.py` として書く。dry-run で件数（期待 521／9。統合で元ファイルが消えるので、適用は (b)・DG-W3 の統合の後、統合先に対して行う）。
+
+### 11.3 `layers.json` の DG の規則（パッチ案、適用しない）
+
+DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Mathlib。例外（`allowed_until_move`）として DG → PerfectComplex の 3 辺（§9-2 の一覧）。`targets/dg-layers-patch.md` に JSON の差分の形で書く。`layer_check.py --report` を**現状の main の状態で**走らせ（読むだけ、ビルドなし）、DG の違反の現状の数を報告に書く。
+
+### 11.4 D6・D7 の調査（提案の材料。実装しない）
+
+1. **D6**：調査 §5 の宣言単位の同一 5 組について、両者の本文の差分（`diff`）と、どちらを残しどちらを他方の別名（`abbrev` または `theorem … := …`）にするかの案。`Quotient/*`（`DGQuotient`、`Word S`）と `Resolution/Cells/*`（`DGCellAttachment.Family`）の 33 対の対応表（宣言名の組、型の違い）。
+2. **D7**：Complexes の「Mathlib の薄い言い換え」の全数。各宣言について、Mathlib の対応する名前（`HomComplex.δ_δ`・`Cochain.comp_assoc` 等）と、置き換えたときに利用者側で何が変わるか（引数の順序・暗黙引数）を表に。調査では標本 15 中 6 だったので、全体で何本かを出す。
+3. 結果は `targets/dg-survey-d6d7-2026-11-01.md` に。
+
+### 11.5 報告
+
+11.1〜11.4 の成果物を「草案と報告」「調査」の 2 コミットにして止める。(b) の合図が来たら (b) を優先し、11.x の残りは後回しでよい。
+
+## 12. 追記（2026-11-01、Lake の成果物キャッシュ）
+
+ユーザー決定（11-01）：Lake のローカル成果物キャッシュを全セッションで共有する（[coordination.md §2-3](coordination.md)）。`~/.zshenv` に設定済み。(b) 以降の `lake` は、新しい shell か `source ~/.zshenv` の後に実行する（`lake env | grep LAKE_ARTIFACT_CACHE` で確認）。これにより：
+- (b) の前の「main から `.lake/build` を複製」は、main を取り込んだ後の `lake build` がキャッシュから成果物を取るので**不要になる見込み**（キャッシュに無い分だけビルドされる。最初のうちは、この設定の前に作られた成果物はキャッシュに無いので、`warm_build_dir.sh` を予備として使ってよい）。
+- (b) の下流ビルドの成果物はキャッシュに入り、取り込み後の main がそのまま使う。
+- `with_build_lock.sh`（全ビルドの排他）はそのまま使う。`warm_build_dir.sh` は予備。
+
+## 13. 追記（2026-11-01、(b) の前の宣言単位の事前検査と、判断表）
+
+∞ の束（W1＋W2a）の教訓（[IF-W0-3 §10.31](infinity-codex-w0-3.md)）を (b) に先取りする。
+
+1. **(b) の適用の前に、宣言単位の到達性を静的に検査する**：before snapshot（DAG 版、`uses_modules` つき）を採ったら、(a) 推移的 import だけで届いている利用（統合・移動で切れる候補）、(b) 禁止される層（DG → KST・IC・Asymptotic）に残る依存、(c) `DifferentialGraded.lean` と Checks の import の到達性、を列挙して報告に書く。見つかった分は `downstream_imports` に先に書いておく。
+2. **判断表**：下流ビルドで失敗したら、§10.31 の表と同じ規則で承認を待たずに補う（直接 import の補充は層の規則に反しないときだけ。`layers.json` の DG の規則で直接違反・禁止閉包が増えないこと）。止めるのは、DG の土台でない統合先が KST・IC・Asymptotic を要する、保存比較の不一致、宣言の本文を変えないと直らない、round の新規ビルドが前の round より増える、のとき。
+3. 各 round の記録と、コミットの分け方（「統合」「D3 の move」「downstream imports」「D5 docstring」「layers.json」）は ∞ 側と同じ。

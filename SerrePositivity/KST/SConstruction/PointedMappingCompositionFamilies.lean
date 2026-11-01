@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.PointedEnrichment
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
-public import SerrePositivity.KST.Spectra.EnrichedMappingLaws
+public import SerrePositivity.InfinityCategories.Kan.EnrichedMappingLaws
 
 /-! # 点つき写像のパラメーター族の合成
 概要：点つき内部 Hom の合成を、既存の頂点表示と前後合成へ接続する。

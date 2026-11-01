@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderCone
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 public import SerrePositivity.InfinityCategories.Core.JoinEquivalenceFunctor
 
 /-!

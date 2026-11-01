@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.Transport
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
 public import SerrePositivity.InfinityCategories.F1.Coherent.SmallCoherentStraightening
-public import SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
 
 /-!
 概要：元の小さい left fibration の分類図式が辺を反転すれば、同じ辺の輸送は同値。

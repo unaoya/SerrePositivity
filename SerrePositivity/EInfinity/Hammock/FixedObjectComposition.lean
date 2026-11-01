@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FixedObjectHammockMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHammockMap
 public import SerrePositivity.EInfinity.Hammock.RelativeFixedColimitMap
 
 /-!

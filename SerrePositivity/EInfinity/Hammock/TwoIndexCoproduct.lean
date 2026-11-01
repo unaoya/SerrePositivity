@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.Word
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Word
 public import SerrePositivity.EInfinity.Hammock.WeakPushoutGluing
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 

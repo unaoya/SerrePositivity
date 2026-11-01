@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 
 public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition

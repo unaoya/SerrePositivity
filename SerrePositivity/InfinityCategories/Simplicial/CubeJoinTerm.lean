@@ -1,0 +1,65 @@
+module
+public import SerrePositivity.InfinityCategories.Simplicial.CubeVertexSupport
+
+/-! # 立方体の出力一座標の有限 max 表示
+概要：出力一座標を定数一、または入力座標の有限集合の max として表す。
+方針：零頂点で定数一を分離し、一座標頂点で有限集合を回収して表示の単射性を示す。
+規約：none は定数一、some の空集合は定数零。使われ方：cubical 射の具体的な正規形。
+-/
+@[expose] public section
+namespace SerrePositivity.KST.SConstruction
+
+/-- 出力一座標の定数一、または有限 max の表示。 -/
+abbrev CubeJoinTerm (n : ℕ) := Option (Finset (Fin n))
+
+/-- 元の立方体の頂点における有限 max 表示の値。 -/
+def cubeJoinTermEval {n : ℕ} (s : CubeJoinTerm n) (x : CubeVertex n) : Bool :=
+  match s with
+  | none => true
+  | some t => t.sup x
+
+/-- 零頂点での値は、元の表示が定数一であるかを検出する。 -/
+lemma cubeJoinTermEval_bot {n : ℕ} (s : CubeJoinTerm n) :
+    cubeJoinTermEval s ⊥ = s.isNone := by
+  cases s with
+  | none => rfl
+  | some t => exact Finset.sup_bot t
+
+/-- 有限集合における一座標頂点の max は、その座標の所属を検出する。 -/
+lemma cubeVertexAtom_sup_finset {n : ℕ} (s : Finset (Fin n)) (i : Fin n) :
+    s.sup (cubeVertexAtom n i) = decide (i ∈ s) := by
+  apply Bool.eq_iff_iff.mpr
+  change s.sup (cubeVertexAtom n i) = ⊤ ↔ decide (i ∈ s) = ⊤
+  rw [Finset.sup_eq_top_iff]
+  simp [cubeVertexAtom]
+
+/-- 出力一座標の有限 max 表示は、その元の全頂点での関数から一意に回収される。 -/
+lemma cubeJoinTermEval_injective (n : ℕ) :
+    Function.Injective (cubeJoinTermEval (n := n)) := by
+  intro s t h
+  cases s with
+  | none =>
+    cases t with
+    | none => rfl
+    | some t =>
+      have hzero : (true : Bool) = false := by
+        simpa only [cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
+          congrFun h (⊥ : CubeVertex n)
+      cases hzero
+  | some s =>
+    cases t with
+    | none =>
+      have hzero : (false : Bool) = true := by
+        simpa only [cubeJoinTermEval_bot, Option.isNone_none, Option.isNone_some] using
+          congrFun h (⊥ : CubeVertex n)
+      cases hzero
+    | some t =>
+      have hst : s = t := by
+        apply Finset.ext
+        intro i
+        have hi := congrFun h (cubeVertexAtom n i)
+        simp only [cubeJoinTermEval, cubeVertexAtom_sup_finset] at hi
+        simpa using (Iff.of_eq (congrArg (fun b : Bool => b = true) hi))
+      exact congrArg Option.some hst
+
+end SerrePositivity.KST.SConstruction

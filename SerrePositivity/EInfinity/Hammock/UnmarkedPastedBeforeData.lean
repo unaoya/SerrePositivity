@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedWordSplit
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSimplex
-public import SerrePositivity.EInfinity.Hammock.ZigzagColumnSplitArrows
-public import SerrePositivity.EInfinity.Hammock.ZigzagAppendSegments
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagColumnSplitArrows
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagAppendSegments
 
 /-!
 # 元の貼り戻しの前の全図式の元の prefix への照合

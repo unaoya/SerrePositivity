@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.SConstruction.CoherentStringPrismChains
+public import SerrePositivity.InfinityCategories.Kan.CoherentStringPrismChains
 public import SerrePositivity.KST.SConstruction.CoherentStringDiagramCells
-public import SerrePositivity.KST.SConstruction.CoherentStringPathFlags
+public import SerrePositivity.InfinityCategories.Kan.CoherentStringPathFlags
 public import SerrePositivity.KST.SConstruction.CoherentPathMappingHomotopy
 
 /-! # 上下の全精密化の Path は元の合成面を通る

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.TwoSidedBar
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBar
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
 
 /-!

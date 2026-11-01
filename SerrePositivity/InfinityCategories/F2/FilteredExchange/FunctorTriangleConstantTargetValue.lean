@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantUnstraighteningRelativeProjection
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleRelativeComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UnstraighteningTriangleVertex
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
 
 /-!

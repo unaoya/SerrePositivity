@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.GraphIntersection
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphIntersection
 public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
 
 /-!

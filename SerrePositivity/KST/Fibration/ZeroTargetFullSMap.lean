@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSKernelSimplicialIso
 public import SerrePositivity.KST.Fibration.RelativeSQuotientRealization
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 
 /-!
 概要：零圏への指定完全関手による、全 S• から core S• への実写像。

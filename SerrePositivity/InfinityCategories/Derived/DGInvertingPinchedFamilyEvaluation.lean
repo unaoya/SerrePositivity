@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingFamilyEvaluation
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy
 
 /-!
 概要：任意標的への屋根の評価を実 pinched Hom の族として表示し、その実合成を得る。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionPinchedSpaces
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionCompatibility

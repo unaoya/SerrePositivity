@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveCoordinates
 public import SerrePositivity.KST.SConstruction.Cofinality.GroupNerveHigherInput
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：元の指定射の S 余核図式は同じ余核群の bar と単体的に同型となる。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair
 

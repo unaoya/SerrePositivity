@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.SpanEndpointShape
 public import SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!

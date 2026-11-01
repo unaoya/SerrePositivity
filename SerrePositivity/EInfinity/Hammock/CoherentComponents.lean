@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!

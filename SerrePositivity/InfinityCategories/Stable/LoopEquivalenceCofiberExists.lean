@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CofiberPushoutComparison
 public import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberRotation
 public import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision
 public import SerrePositivity.InfinityCategories.Stable.SquareTranspose

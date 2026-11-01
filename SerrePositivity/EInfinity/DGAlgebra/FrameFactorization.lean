@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelCofibrantHammockWeak
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelCofibrantHammockWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
 
 /-!

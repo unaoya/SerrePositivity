@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeSequenceIndex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanCoconeColimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegs
-public import SerrePositivity.KST.Spectra.FilteredKanColimit
+public import SerrePositivity.InfinityCategories.Kan.FilteredKanColimit
 
 /-!
 概要：単射な遷移を持つ Kan 複体の可算列の実際の余極限は 𝒮 の逐次余極限となる。

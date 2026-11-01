@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 
 /-!
 概要：同じ実比較辺を元の θ と照合し、対角の可逆性から入力面の普遍性へ戻す。

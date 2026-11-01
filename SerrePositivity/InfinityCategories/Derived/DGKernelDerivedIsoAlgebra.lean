@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelTensorIsoNerveAlgebra
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 /-!
 概要：元の指定した一般 kernel の実導来比較は、恒等・通常順合成・指定逆を保つ。
 方針：通常 tensor の同じ比較と入力前合成、出力分解への同型輸送を端点ごと照合する。

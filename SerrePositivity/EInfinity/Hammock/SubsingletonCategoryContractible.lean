@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.SubsingletonCategoryRows
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SubsingletonCategoryRows
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!

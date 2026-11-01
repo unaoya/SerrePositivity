@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingAdjointCoordinates
-public import SerrePositivity.KST.Spectra.InternalHomAdjointPreRestriction
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomAdjointPreRestriction
 public import SerrePositivity.KST.Spectra.KanAdjointNaturality
 public import SerrePositivity.KST.Spectra.PostMappingLifts
 

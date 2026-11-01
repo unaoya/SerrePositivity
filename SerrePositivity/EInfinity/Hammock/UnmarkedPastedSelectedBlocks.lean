@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedBlockDiagrams
-public import SerrePositivity.EInfinity.Hammock.ZigzagMovingWordActionLaws
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagMovingWordActionLaws
 
 /-!
 # 元の貼り戻しの選択位置での前後の全図式の回収

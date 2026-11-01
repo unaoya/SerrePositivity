@@ -282,6 +282,8 @@ InfinityCategories/
 - BS 側（R35、別セッション）。
 - 第 II 段の perfect 複体と K₀ の橋（[全体調査](archive/repository-survey-2026-10-28.md) §7 の #4・#5）。
 
+- **R80（11-01 新設、窓の外・段 G）：巨大な項と重いモジュールの整理。** 計測は [build-profile-2026-10-31](archive/build-profile-2026-10-31.md)（120 秒超は 7 本、ビルド時間は本数で決まる）と、snapshot で見つかる巨大な項の一覧（`targets/huge-terms-2026-11.md`、例：`KST.SConstruction` の `dgOdotMilnorActualOuterKernelFrameComparison._proof_17`、木に展開して 56 GB）、監査ごとの RSS（IF-W0-4）。対象は KST/SConstruction・IC/Derived・EInfinity/BarrattEccles の定義で、反復する部分項を `abbrev`／補題に切り出す、定義の中の `by` の証明義務を名前つき定理にする、`@[simps]` の自動生成を抑える、など**証明と定義を変える**作業なので窓の外。群ごとに「計測 → 提案 → 承認 → 実装」。目標：モジュールの最大 60 秒、監査の最大 RSS 10 GB、snapshot の木の展開 1 GB 未満。
+
 ## 8. 10-28 のレビューで変えた点
 
 レビューは三つの観点で行った：正確さ、実行可能性と順序、読みやすさ。

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanCommonRightIso
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanRightInverseImage
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage

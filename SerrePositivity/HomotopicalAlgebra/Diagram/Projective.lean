@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLimits

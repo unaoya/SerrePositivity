@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueFlatten
-public import SerrePositivity.EInfinity.Hammock.ZigzagAppendObjects
-public import SerrePositivity.EInfinity.Hammock.ForwardZigzag
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagAppendObjects
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzag
 
 /-!
 # 元の hammock の貼り戻しによる文字列の連結

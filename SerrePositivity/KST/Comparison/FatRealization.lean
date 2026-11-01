@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.SimplicialSum
+public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSum
 public import SerrePositivity.KST.Comparison.DiagonalRowEvaluation
 public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
 

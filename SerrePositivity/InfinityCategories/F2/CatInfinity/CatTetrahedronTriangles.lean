@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronArrows
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedSimplexEdge
+public import SerrePositivity.InfinityCategories.Core.SpecifiedSimplexEdge
 
 /-!
 概要：四面の三角形の端点を六関手で同時に記述する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceQuasiIso
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationClosedEdge
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 /-!
 概要：実分解圏上の同じ augmentation を、空間値全関手の比較同型へ昇格する。
 方針：同じ実頂点辺の準同型性から像の可逆性を示し、全単体ホモトピー自身から同型を作る。

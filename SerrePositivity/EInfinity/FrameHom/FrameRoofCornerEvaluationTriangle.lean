@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluationPrism
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
-public import SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport
 
 /-!
 # 元の corner 評価の任意パラメータ上の実合成三角形

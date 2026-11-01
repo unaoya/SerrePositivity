@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativePathBoundaryLift
-public import SerrePositivity.KST.Spectra.SphericalBoundaryReduction
+public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction
 
 /-!
 概要：同じ底の単体を持つ境界定数の持ち上げと定数ホーンの持ち上げを比較する。

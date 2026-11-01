@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTracedStructureProjection
-public import SerrePositivity.KST.Spectra.ThreeEdgeTransportRelabel
+public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransportRelabel
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointTraceContraction
 
 /-!

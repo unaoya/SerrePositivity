@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
-public import SerrePositivity.EInfinity.FrameHom.FrameIndexComparison
+public import SerrePositivity.InfinityCategories.ModelBridge.FrameIndexComparison
 
 /-!
 # 元の E 代数の Map^h への共通比較の反転可能な左射

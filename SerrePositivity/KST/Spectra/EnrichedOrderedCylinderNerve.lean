@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinder
+public import SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
 public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 /-!
 概要：実恒等辺を表す pinched 頂点の定数族と、任意関手・端点輸送との両立を記録する。
 方針：辺との頂点同値、退化写像の自然性、定値関手の恒等保存を使う。

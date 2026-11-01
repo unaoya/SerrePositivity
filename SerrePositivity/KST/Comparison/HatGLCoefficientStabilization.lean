@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.HatGLShiftedStabilization
-public import SerrePositivity.KST.Spectra.HomotopyConstant
+public import SerrePositivity.InfinityCategories.Kan.HomotopyConstant
 
 /-!
 # 高次の係数表示と rank の安定化の可換性

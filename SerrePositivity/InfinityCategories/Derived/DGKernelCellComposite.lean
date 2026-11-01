@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellModelComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 /-!
 概要：任意の二 kernel の指定平坦模型を通常 tensor で合成し、右相対 K-flat 性を保つ。
 方針：同じ指定模型、実加群圏の比較同型と右相対 K-flat 時の実導来合成を使う。

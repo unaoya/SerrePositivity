@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
 
 public import SerrePositivity.EInfinity.Hammock.LengthStagePushout
 public import SerrePositivity.EInfinity.Hammock.LengthBoundaryNaturality

@@ -105,15 +105,15 @@ python3 scripts/refactor/compare_snapshots.py .lake/verify/before.json .lake/ver
 名前空間で選ぶ（モジュールを省略したときは `SerrePositivity` を読む）。
 スナップショットには公開宣言と親に属する private 補助宣言を保存する。
 通常の private 宣言自体は公開 API の一覧から除き、参照中の private 名はモジュール接頭辞を除く。
-型と定理以外の本体は Expr の構造・ハッシュを保存し、比較時は構造を直接照合する。
+型と定理以外の本体は、名前を正規化した Expr の各部分式を構造的同値で一度だけハッシュし、子の値を `mixHash` で合成する。同じ DAG ハッシュの形式同士で比較する。旧形式同士は従来どおり構造を直接照合する。
 定理の証明本体と証明専用の補助宣言は比較せず、定理の型・公理・属性は比較する。
 それ以外の補助宣言は親にまとめ、増減・変更も検査する。
 
 instance の優先度、simp、reducibility、公開された本体の有無（expose）を取得する。
 宣言の種類・型・本体・公理・属性・名前の増減に差分があれば終了コード 1、同一なら 0、入力不備は 2。
 `--output result.json` で結果を保存できる。
-改名は `--name-map map.json`（例：`{"Old.Namespace":"New.Namespace"}`）を指定する。
-完全一致またはドット区切りの最長接頭辞で、変更前の宣言名・定数参照を正規化する。
+改名があれば before と after の採取時に同じ `--name-map map.json`（例：`{"New.Namespace":"Old.Namespace"}`）を渡す。
+完全一致またはドット区切りの最長接頭辞で、宣言名・定数参照を同じ名前に正規化する。比較時には採取時の写像を照合する。
 文字列リテラルは改名しない。
 
 ### 宣言単位の分割
@@ -224,3 +224,7 @@ IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順�
 
 新しい 12 個の入口は空の骨組みで、ルートや既存集約には登録しない。
 層の配置と依存規則を守って後続の窓で実装を移す。
+
+保存検査の行は（宣言名、定義元モジュール）で照合する。移動・統合には `--module-map` の `modules`（旧→新）、分割には `declarations`（旧モジュール→宣言名→新モジュール）を使う。生成補題は親宣言の移し先を継承する。群をまたぐ生成補題の定義元は `decl_snapshot.lean --modules A,B --resolve-modules names.json --output owners.json` で共通環境から取得する。
+
+同じ保存名に異なる private 定数が対応する場合、照会結果は実名と定義元の一覧となる。§10.22 の生成名だけを transient とし、原本の行と各実名・定義元を保持する。ソースに明示した private 宣言は、生成名に似ていても定義元ごとに比較する。
