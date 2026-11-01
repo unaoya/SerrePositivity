@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.PathMaximumCylinderEndpoints
+public import SerrePositivity.InfinityCategories.HomotopyLimits.PathMaximumCylinderEndpoints
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixNaturality
 
 /-!

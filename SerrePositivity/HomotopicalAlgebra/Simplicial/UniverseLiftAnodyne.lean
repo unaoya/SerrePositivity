@@ -1,9 +1,8 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 
 /-!
 # 宇宙liftはモデル構造を仮定せずanodyne射を保つ
@@ -77,16 +76,5 @@ lemma anodyneQ_map_isIso_of_small {X Y : SSet.{v}} (f : X ⟶ Y)
     (hf : IsIso (anodyneQ.{v}.map f)) :
     IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
   map_isIso_of_anodyneQ_isIso (SSet.uliftFunctor ⋙ anodyneQ) anodyneQ_lift_inverts f hf
-
-open HomotopicalAlgebra AnodyneHomotopy in
-/-- All weak equivalences in the original small model become invertible after
-lifting. Only the original small universe has a model structure. -/
-lemma anodyneQ_map_isIso_of_weakEquivalence [ModelCategory SSet.{v}]
-    (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-    (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-    {X Y : SSet.{v}} (f : X ⟶ Y) (hf : weakEquivalences SSet.{v} f) :
-    IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
-  anodyneQ_map_isIso_of_small f
-    ((weakEquivalences_iff_anodyneQ_isIso hcof hfib f).mp hf)
 
 end SerrePositivity.SimplicialModel.UniverseLift

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LocalizationValueNaturality
-public import SerrePositivity.EInfinity.Hammock.FixedObjectWordDiagram
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectWordDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
 
 /-!
 # 固定対象の相対圏の図式の局所化 Hom への値

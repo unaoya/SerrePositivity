@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceHammockGraph
-public import SerrePositivity.EInfinity.Hammock.WordAction
-public import SerrePositivity.EInfinity.Hammock.SegmentUnits
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordAction
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SegmentUnits
 
 /-!
 # 元の E 代数の hammock graph の語の写像による遷移

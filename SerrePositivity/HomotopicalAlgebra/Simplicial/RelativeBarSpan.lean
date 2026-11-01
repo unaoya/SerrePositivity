@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftIteration
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftIteration
 
 /-!
 # 相対bar比較spanのsectionが元のaugmentationのレトラクションを与える

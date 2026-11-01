@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.SourceFrameReducedComparison
-public import SerrePositivity.EInfinity.FrameHom.ResolutionLeftRoof
+public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionLeftRoof
 
 /-!
 # 同じ元の source frame 比較の二列による回収

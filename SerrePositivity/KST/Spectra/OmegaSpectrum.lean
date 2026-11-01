@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SuspensionLoop
-public import SerrePositivity.KST.Spectra.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 
 /-!

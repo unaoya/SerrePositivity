@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedInterval
-public import SerrePositivity.KST.Spectra.FibrationSequence
+public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 
 /-!
 概要：基点から出る path の単体集合と終点評価の fiber 列。

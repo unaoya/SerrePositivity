@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexSubsetSplitBlocks
-public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionMap
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionMap
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeBeadOneFace
 
 /-! # 元の左右部分集合を連結した単体的射

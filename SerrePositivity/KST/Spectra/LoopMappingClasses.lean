@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CircleMappingComponents
-public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality
 public import Mathlib.Algebra.Group.TransferInstance
 
 /-!

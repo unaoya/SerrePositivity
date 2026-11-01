@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.MiddleBackwardIdentityInsertionComparison
-public import SerrePositivity.EInfinity.Hammock.WordInsertBetweenRange
-public import SerrePositivity.EInfinity.Hammock.WordFactorization
+public import SerrePositivity.InfinityCategories.ModelBridge.MiddleBackwardIdentityInsertionComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordInsertBetweenRange
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordFactorization
 
 /-!
 # 中央恒等列の挿入と元の eraseInclusion の照合

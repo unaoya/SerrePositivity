@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges
+public import SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges
 
 /-!
 # 写像単体的集合の指定した辺から元の全区間ホモトピーを構成する

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpacePiZero
-public import SerrePositivity.EInfinity.FrameHom.ResolutionSpanNormalization
-public import SerrePositivity.EInfinity.FrameHom.FrameSpanNerve
+public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionSpanNormalization
+public import SerrePositivity.InfinityCategories.ModelBridge.FrameSpanNerve
 
 /-!
 # 元の E 代数の Map^h の全単体から特殊な三本矢への図式

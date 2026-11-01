@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZeroNaturality
-public import SerrePositivity.EInfinity.FrameHom.LocalizationDetection
+public import SerrePositivity.InfinityCategories.ModelBridge.LocalizationDetection
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!

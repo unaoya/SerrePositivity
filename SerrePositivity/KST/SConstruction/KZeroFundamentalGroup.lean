@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KSpectrumConnectivity
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-! # 実際の零次 K 群と一重 S の基本群
 概要：元の BF K スペクトルの零次群を、一重 S の元の Kan 境界商の基本群と群同型で結ぶ。

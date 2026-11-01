@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
-public import SerrePositivity.EInfinity.Hammock.ArrowMapComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ArrowMapComposition
 
 /-!
 概要：固定 source frame の実二列 roof 比較を全標的で自然な一つの族にする。

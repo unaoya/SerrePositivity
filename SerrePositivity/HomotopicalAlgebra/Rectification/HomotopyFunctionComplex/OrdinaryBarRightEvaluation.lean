@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReference
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryResolutionBarReduction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionUnit
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarRightEvaluation

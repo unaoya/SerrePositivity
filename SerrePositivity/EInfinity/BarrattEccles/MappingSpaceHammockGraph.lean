@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceWeakThreeArrow
-public import SerrePositivity.EInfinity.Hammock.ThreeArrowEquivalence
+public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowEquivalence
 
 /-!
 # 元の Map^h と三列の hammock graph の比較

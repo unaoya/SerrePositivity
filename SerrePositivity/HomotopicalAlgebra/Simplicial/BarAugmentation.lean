@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 
 /-!
 # 図式の指定した余錐から実際のbar構成のaugmentationを構成する

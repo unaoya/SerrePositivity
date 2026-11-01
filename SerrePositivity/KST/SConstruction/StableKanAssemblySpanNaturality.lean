@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.StableKanAssemblySpan
 public import SerrePositivity.KST.SConstruction.StableOneDirectionKanComparison
-public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
 public import SerrePositivity.KST.SConstruction.SuspensionLocalizedEquivalence
 
 /-!

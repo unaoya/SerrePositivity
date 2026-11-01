@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabel
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedMixedLabel
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
 /-!

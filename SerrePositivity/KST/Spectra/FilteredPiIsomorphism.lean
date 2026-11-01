@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.FilteredPointing
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：全基点の π_* 同型は Kan 複体の filtered colimit で保たれる。

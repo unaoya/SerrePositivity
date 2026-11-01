@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.DoubleMappingCylinderMap
+public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap
 public import SerrePositivity.KST.Comparison.CylinderBoundary
 public import SerrePositivity.KST.Comparison.LocalizedPushoutCube
 public import SerrePositivity.KST.Comparison.LocalizedCoproductMaps

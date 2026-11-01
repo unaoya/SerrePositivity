@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFirstAction
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarEvaluation

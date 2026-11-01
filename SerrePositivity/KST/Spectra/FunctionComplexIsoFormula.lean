@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.DiscreteInternalHom
+public import SerrePositivity.InfinityCategories.Kan.Pointed.DiscreteInternalHom
 public import SerrePositivity.KST.Spectra.FreeActionEndNaturality
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 public import SerrePositivity.KST.Spectra.PositiveLoopNaturality
 public import SerrePositivity.KST.Spectra.SphereMappingHomotopyFormula
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 
 /-!

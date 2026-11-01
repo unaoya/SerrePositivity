@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.EnrichedDegreeSimplex
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedDegreeSimplex
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineFoldSimplex
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineFoldTarget
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedCategory

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyLimitPointMaps
 public import SerrePositivity.KST.Spectra.EdgewiseHomEndPrecomposition
-public import SerrePositivity.KST.Spectra.ParameterPoint
+public import SerrePositivity.InfinityCategories.Kan.ParameterPoint
 
 /-!
 概要：元の BF 恒等射の像の全 Hom 前合成族は、元の BF Hom–end 同値に一致。

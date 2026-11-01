@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagram
-public import SerrePositivity.EInfinity.Hammock.FixedObjectHammockAugmentation
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHammockAugmentation
 
 /-!
 # 元の自由解像の hammock 図式から元の hammock への augmentation

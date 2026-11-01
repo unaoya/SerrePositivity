@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 
 /-!

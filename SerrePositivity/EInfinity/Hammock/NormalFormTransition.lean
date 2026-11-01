@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordFactorization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordFactorization
 public import SerrePositivity.EInfinity.Hammock.NormalForm
 public import SerrePositivity.EInfinity.Hammock.RawEmbeddingComparison
 public import SerrePositivity.EInfinity.Hammock.EraseEmbedding

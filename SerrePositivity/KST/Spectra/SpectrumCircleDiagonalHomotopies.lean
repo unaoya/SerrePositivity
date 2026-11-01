@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleHomSquareBoundary
-public import SerrePositivity.KST.Spectra.IntervalSquareHomotopies
-public import SerrePositivity.KST.Spectra.SquareConstantCorners
+public import SerrePositivity.InfinityCategories.Kan.IntervalSquareHomotopies
+public import SerrePositivity.InfinityCategories.Kan.SquareConstantCorners
 
 /-!
 概要：元の生成 loop と companion の Hom 経路を、同じ対角へ両端固定で動かす。

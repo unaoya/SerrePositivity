@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFCoherentComposition
-public import SerrePositivity.KST.SConstruction.CompositionTripleTetrahedron
+public import SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron
 public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
 
 /-! # 三入力の元の三合成面を同時に保持する BF 四面体

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumParameterHomFamilies
-public import SerrePositivity.KST.Spectra.InternalHomExchangeUnit
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit
 
 /-!
 概要：厳密な cotensor 値の列射から元の全 Hom に戻す操作のパラメータ制限を計算する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexIntervalCompositionCoordinates
-public import SerrePositivity.KST.SConstruction.NecklaceSimplexVertices
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexVertices
 public import SerrePositivity.KST.SConstruction.NecklaceWedgeBeadOneFace
 
 /-! # 元の厳密区間合成と全頂点を保つ refinement

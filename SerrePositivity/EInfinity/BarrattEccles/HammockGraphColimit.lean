@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
-public import SerrePositivity.EInfinity.Hammock.ColimitGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
 
 /-!
 # 元の E 代数の全語の hammock graph の余極限

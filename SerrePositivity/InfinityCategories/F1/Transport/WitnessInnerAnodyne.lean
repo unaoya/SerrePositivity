@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Transport.WitnessRestrictionLifting
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerAnodynePullback
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 
 /-!
 概要：inner anodyne な底の制限は表現空間の trivial Kan fibration。

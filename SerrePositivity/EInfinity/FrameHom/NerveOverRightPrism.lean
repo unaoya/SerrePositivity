@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection
 public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 

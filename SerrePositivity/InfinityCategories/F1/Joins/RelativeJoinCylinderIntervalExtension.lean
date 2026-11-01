@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderExtension
-public import SerrePositivity.InfinityCategories.F1.Simplicial.StdSimplexFunctorRigidity
+public import SerrePositivity.InfinityCategories.Kan.StdSimplexFunctorRigidity
 
 /-!
 概要：区間への射影を保つ写像円柱の射を relative join 全体へ延長する。

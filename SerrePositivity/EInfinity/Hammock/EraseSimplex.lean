@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordErasure
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordErasure
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
 
 /-!

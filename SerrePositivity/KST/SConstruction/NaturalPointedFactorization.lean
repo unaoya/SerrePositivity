@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Spectra.PointedFactorization
-public import SerrePositivity.KST.Spectra.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 public import Mathlib.CategoryTheory.Comma.Arrow
 public import SerrePositivity.InfinityCategories.Core.Terminal
 

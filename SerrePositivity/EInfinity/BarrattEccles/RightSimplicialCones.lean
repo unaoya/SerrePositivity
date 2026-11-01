@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.RightSimplicialFrames
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
-public import SerrePositivity.EInfinity.FrameHom.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
 public import SerrePositivity.EInfinity.HomotopyWeight.ConeReindex
 
 /-!

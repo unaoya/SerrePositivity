@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FixedVertexChainCoordinates
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedVertexChainCoordinates
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalLabels
 /-!
 # 元の部分対角の固定頂点表示

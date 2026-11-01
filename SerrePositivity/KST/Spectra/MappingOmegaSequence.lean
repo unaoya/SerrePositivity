@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.MappingKanSequence
-public import SerrePositivity.KST.Spectra.InternalHomExchange
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 

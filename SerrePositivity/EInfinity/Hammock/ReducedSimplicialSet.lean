@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.NormalForm
-public import SerrePositivity.EInfinity.Hammock.RawSimplicialSet
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawSimplicialSet
 
 /-!
 # 元の縮約済み hammock の単体集合

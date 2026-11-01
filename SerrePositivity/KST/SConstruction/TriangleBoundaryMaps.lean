@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.BoundaryFaces
+public import SerrePositivity.InfinityCategories.Kan.BoundaryFaces
 public import SerrePositivity.KST.SConstruction.MappingSquareCornerIdentities
 
 /-! # 三つの元の辺を貼った全三角形境界

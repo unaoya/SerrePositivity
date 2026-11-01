@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexSubsetMap
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetMap
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
 
 /-! # 元の有限部分集合から作る標準単体内の bead

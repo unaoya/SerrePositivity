@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomTensorAdjointAction
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAdjointAction
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
 

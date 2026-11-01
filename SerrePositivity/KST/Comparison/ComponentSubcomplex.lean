@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.SimplexComponents
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexComponents
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-!

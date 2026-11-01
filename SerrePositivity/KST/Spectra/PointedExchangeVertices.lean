@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KST.Spectra.InternalHomExchangeVertices
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.PointedVertexComparison
 public import SerrePositivity.KST.Spectra.LoopMappingPositiveEquiv
 

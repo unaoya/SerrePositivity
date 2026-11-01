@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MonoidComponentMaps
-public import SerrePositivity.KST.Comparison.SimplexComponents
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexComponents
 
 /-!
 # 単体的モノイドの成分の実際の関手

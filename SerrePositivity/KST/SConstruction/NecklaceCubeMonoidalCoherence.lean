@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubeTensorComparison
-public import SerrePositivity.KST.SConstruction.NecklaceWedgeMonoidal
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMonoidal
 public import SerrePositivity.KST.SConstruction.ConcreteCubeMonoidal
 public import SerrePositivity.KST.SConstruction.ObjectEqualityMaps
 

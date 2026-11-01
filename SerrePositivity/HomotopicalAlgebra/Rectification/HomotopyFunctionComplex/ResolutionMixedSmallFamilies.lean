@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveSmallFamilies
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter
+public import SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionMixedSmallFamilies

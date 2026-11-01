@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverFiniteHull
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverFiniteHull
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteWeakMaps
 
 /-!

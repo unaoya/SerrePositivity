@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
-public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!
 # 中断した任意モデル源への一般化：DiagonalFrame
@@ -77,30 +76,5 @@ def augmentation {A : I ⥤ I ⥤ C} {B : I ⥤ C}
         rw [Category.assoc, (a.app j).naturality]
         rfl
       _ = _ := by rw [← Category.assoc, ho, Category.comp_id]
-
-variable [ModelCategory C]
-local instance : ModelCategory (SimplexCategory ⥤ C) := Reedy.simplexModelCategory C
-
-abbrev resolution (B : SimplexCategory ⥤ C) := Reedy.cosimplicialResolution B
-
-abbrev resolutionObj (B : SimplexCategory ⥤ C) : SimplexCategory ⥤ C :=
-  obj (resolution B).obj
-
-abbrev resolutionAugmentation (B : SimplexCategory ⥤ C) : resolutionObj B ⟶ B :=
-  augmentation (resolution B).augmentation
-
-lemma resolutionAugmentation_weakEquivalence (B : SimplexCategory ⥤ C)
-    (n : SimplexCategory) : weakEquivalences C ((resolutionAugmentation B).app n) :=
-  (resolution B).augmentation_weakEquivalence n n
-
-lemma resolutionObj_homotopicallyConstant (B : SimplexCategory ⥤ C)
-    (hB : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (B.map f))
-    {n m : SimplexCategory} (f : n ⟶ m) :
-    weakEquivalences C ((resolutionObj B).map f) := by
-  have h := (resolutionAugmentation B).naturality f
-  exact (weakEquivalences C).of_postcomp _ _
-    (resolutionAugmentation_weakEquivalence B m)
-    (h.symm ▸ (weakEquivalences C).comp_mem _ _
-      (resolutionAugmentation_weakEquivalence B n) (hB f))
 
 end SerrePositivity.HomotopyFunctionComplex.DiagonalFrame

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：元の点つき Kan 置換による零射の正次数群上の作用。

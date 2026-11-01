@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.FatRealization
-public import SerrePositivity.KST.Comparison.SimplexImageMono
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexImageMono
 
 /-!
 # fat realization の各次数の全射な標準形

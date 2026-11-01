@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWordHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalWordHomotopy
 public import SerrePositivity.EInfinity.Hammock.RelativeNaturalMapRecovery
 
 /-!

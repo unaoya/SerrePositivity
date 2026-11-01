@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.DeloopedExchangeSign
-public import SerrePositivity.KST.Spectra.InternalHomPairExchange
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomPairExchange
 public import SerrePositivity.KST.Spectra.MappingDelooping
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 

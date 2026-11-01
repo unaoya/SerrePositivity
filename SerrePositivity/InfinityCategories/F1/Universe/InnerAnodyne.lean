@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic
 

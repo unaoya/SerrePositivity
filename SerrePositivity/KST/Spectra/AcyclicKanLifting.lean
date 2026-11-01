@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.NormalizedBoundaryFilling
-public import SerrePositivity.KST.Spectra.AcyclicFiber
+public import SerrePositivity.InfinityCategories.Kan.AcyclicFiber
 
 /-!
 概要：非空な Kan 複体の全ホモトピー類の消滅から、全ての単射への終対象射の RLP を導く。

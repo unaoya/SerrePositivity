@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainTransport
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor
 
 /-!
 # 中断した任意モデル源への一般化：AnchoredChainFiniteTest

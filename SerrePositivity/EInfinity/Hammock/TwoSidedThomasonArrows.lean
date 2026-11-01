@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
-public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckHomComponents
-public import SerrePositivity.EInfinity.Hammock.TwoSidedBar
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckHomComponents
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBar
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
 
 /-!

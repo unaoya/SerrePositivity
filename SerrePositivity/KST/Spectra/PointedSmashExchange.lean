@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.HomTensorStrength
+public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
 
 /-!

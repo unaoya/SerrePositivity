@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedNativeRecovery
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedInclusion
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyCutInclusion
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPasteValue
-public import SerrePositivity.EInfinity.Hammock.ColimitPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitPoints
 
 /-!
 # 任意の元の三因子の貼り戻し後の全因子の回収

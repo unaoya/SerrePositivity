@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.EraseSimplex
-public import SerrePositivity.EInfinity.Hammock.IdentityColumnEmbedding
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.IdentityColumnEmbedding
 
 /-!
 # 元の恒等列を削除した後の他の恒等列の保存

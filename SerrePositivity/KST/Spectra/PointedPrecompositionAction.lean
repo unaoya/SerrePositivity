@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedPrecompositionInterval
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
 概要：源の実区間・実二単体を前合成へ移す単一の内部 Hom 射。

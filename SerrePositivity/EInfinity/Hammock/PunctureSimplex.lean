@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordPuncture
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordPuncture
 public import SerrePositivity.EInfinity.Hammock.EraseEmbedding
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopIntegerPower
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
 概要：loop の整数冪の射の後合成は、パラメータ付き写像空間の正次数群に整数冪で作用する。

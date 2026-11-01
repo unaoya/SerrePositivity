@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockComposition
 public import SerrePositivity.EInfinity.SimplicialLocalization.HomAugmentation
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueComparison
 public import SerrePositivity.EInfinity.Hammock.HammockValueComposition
 
 /-!

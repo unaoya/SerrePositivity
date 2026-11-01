@@ -1,0 +1,141 @@
+module
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceWedgeMaps
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic
+
+/-! # necklace の連結は実単体集合の押し出し
+概要：有限 joints の連結が、終点と始点で貼る native な wedge を回収する。
+方針：単体ごとの左右被覆で射を貼り、包含への制限で自然性を証明する。
+規約：全高次単体と元の包含を保持。使われ方：bead wedge と enriched 合成。
+-/
+@[expose] public section
+noncomputable section
+universe u
+namespace SerrePositivity.KST.SConstruction.NecklaceShape
+open CategoryTheory Limits Simplicial SSet
+
+variable (T U : NecklaceShape) {K : SSet.{u}}
+  (f : T.carrier.{u} ⟶ K) (g : U.carrier.{u} ⟶ K)
+  (h : T.pointMap T.last ≫ f = U.pointMap U.first ≫ g)
+
+include h in
+/-- 共有頂点上の可換条件は、全次数の元の定値単体上で一致する。 -/
+lemma wedge_constant_agree (n : ℕ) :
+    f.app _ (T.constantSimplex T.last n) = g.app _ (U.constantSimplex U.first n) := by
+  have e := ConcreteCategory.congr_hom (NatTrans.congr_app h _)
+    ((single 0).constantSimplex (single 0).first n)
+  change f.app _ ((T.pointMap T.last).app _ _) = g.app _ ((U.pointMap U.first).app _ _) at e
+  simpa only [pointMap_app] using e
+
+/-- 元の各単体上で、左右の指定された射を貼った写像。 -/
+def wedgeGlue (n : ℕ) (s : (T.wedge U).carrier.{u} _⦋n⦌) : K _⦋n⦌ :=
+  if ∀ i, (s.val i).val ≤ T.vertexMax then f.app _ ((T.wedgeFst U).app _ s)
+  else g.app _ ((T.wedgeSnd U).app _ s)
+
+/-- 左包含への貼り合わせの制限は、指定した元の左射。 -/
+lemma wedgeGlue_inl (n : ℕ) (s : T.carrier.{u} _⦋n⦌) :
+    T.wedgeGlue U f g n ((T.wedgeInl U).app _ s) = f.app _ s := by
+  have hs : ∀ i, (((T.wedgeInl U).app _ s).val i).val ≤ T.vertexMax := by
+    intro i
+    change (s.val i).val ≤ T.vertexMax
+    have := (s.val i).isLt
+    omega
+  rw [wedgeGlue, ite_eq_left hs]
+  have e := ConcreteCategory.congr_hom (NatTrans.congr_app (T.wedgeInl_fst U) _) s
+  exact congrArg (f.app _) e
+
+include h in
+/-- 右包含への貼り合わせの制限は、指定した元の右射。 -/
+lemma wedgeGlue_inr (n : ℕ) (s : U.carrier.{u} _⦋n⦌) :
+    T.wedgeGlue U f g n ((T.wedgeInr U).app _ s) = g.app _ s := by
+  classical
+  by_cases hs : ∀ i, (((T.wedgeInr U).app _ s).val i).val ≤ T.vertexMax
+  · rw [wedgeGlue, ite_eq_left hs]
+    have el : (T.wedgeFst U).app _ ((T.wedgeInr U).app _ s) =
+        T.constantSimplex T.last n := by
+      apply Subtype.ext
+      apply stdSimplex.ext
+      intro i
+      apply Fin.ext
+      change min (T.vertexMax + (s.val i).val) T.vertexMax = T.vertexMax
+      omega
+    have er : s = U.constantSimplex U.first n := by
+      apply Subtype.ext
+      apply stdSimplex.ext
+      intro i
+      apply Fin.ext
+      have hi := hs i
+      change T.vertexMax + (s.val i).val ≤ T.vertexMax at hi
+      change (s.val i).val = 0
+      omega
+    rw [el, er]
+    exact T.wedge_constant_agree U f g h n
+  · rw [wedgeGlue, ite_eq_right hs]
+    have e := ConcreteCategory.congr_hom (NatTrans.congr_app (T.wedgeInr_snd U) _) s
+    exact congrArg (g.app _) e
+
+include h in
+/-- 左右で一致する元の二つの単体的射を、連結全体へ降ろす。 -/
+def wedgeDesc : (T.wedge U).carrier.{u} ⟶ K where
+  app d := by
+    obtain ⟨⟨n⟩⟩ := d
+    exact ↾(T.wedgeGlue U f g n)
+  naturality {d e} a := by
+    obtain ⟨⟨n⟩⟩ := d
+    obtain ⟨⟨m⟩⟩ := e
+    apply ConcreteCategory.hom_ext
+    intro s
+    change T.wedgeGlue U f g m ((T.wedge U).carrier.map a s) =
+      K.map a (T.wedgeGlue U f g n s)
+    rcases T.wedge_simplex_cover U s with ⟨t, rfl⟩ | ⟨t, rfl⟩
+    · have e := ConcreteCategory.congr_hom ((T.wedgeInl U).naturality a) t
+      change (T.wedgeInl U).app _ (T.carrier.map a t) =
+        (T.wedge U).carrier.map a ((T.wedgeInl U).app _ t) at e
+      rw [← e, wedgeGlue_inl, wedgeGlue_inl]
+      exact ConcreteCategory.congr_hom (f.naturality a) t
+    · have e := ConcreteCategory.congr_hom ((T.wedgeInr U).naturality a) t
+      change (T.wedgeInr U).app _ (U.carrier.map a t) =
+        (T.wedge U).carrier.map a ((T.wedgeInr U).app _ t) at e
+      rw [← e, wedgeGlue_inr T U f g h, wedgeGlue_inr T U f g h]
+      exact ConcreteCategory.congr_hom (g.naturality a) t
+
+/-- 降下射は元の左射を厳密に回収する。 -/
+lemma wedgeInl_desc : T.wedgeInl U ≫ T.wedgeDesc U f g h = f := by
+  apply SSet.hom_ext
+  intro d
+  obtain ⟨⟨n⟩⟩ := d
+  apply ConcreteCategory.hom_ext
+  exact T.wedgeGlue_inl U f g n
+
+/-- 降下射は元の右射を厳密に回収する。 -/
+lemma wedgeInr_desc : T.wedgeInr U ≫ T.wedgeDesc U f g h = g := by
+  apply SSet.hom_ext
+  intro d
+  obtain ⟨⟨n⟩⟩ := d
+  apply ConcreteCategory.hom_ext
+  exact T.wedgeGlue_inr U f g h n
+
+/-- 元の終点と始点の一点での実単体集合の押し出し。 -/
+theorem wedge_isPushout : IsPushout (T.pointMap.{u} T.last) (U.pointMap U.first)
+    (T.wedgeInl U) (T.wedgeInr U) := by
+  apply IsPushout.mk' (T.wedge_seam U)
+  · intro K a b hl hr
+    exact T.wedge_hom_ext U hl hr
+  · intro K a b hab
+    exact ⟨T.wedgeDesc U a b hab, T.wedgeInl_desc U a b hab, T.wedgeInr_desc U a b hab⟩
+
+/-- 元の有限 joints 模型と、実際の一点での categorical wedge との同型。 -/
+def wedgePushoutIso : (T.wedge U).carrier.{u} ≅
+    pushout (T.pointMap T.last) (U.pointMap U.first) :=
+  (T.wedge_isPushout.{u} U).isoPushout
+
+/-- wedge 同型は元の左包含を保持する。 -/
+lemma wedgeInl_pushoutIso :
+    T.wedgeInl U ≫ (T.wedgePushoutIso.{u} U).hom = pushout.inl _ _ :=
+  (T.wedge_isPushout.{u} U).inl_isoPushout_hom
+
+/-- wedge 同型は元の右包含を保持する。 -/
+lemma wedgeInr_pushoutIso :
+    T.wedgeInr U ≫ (T.wedgePushoutIso.{u} U).hom = pushout.inr _ _ :=
+  (T.wedge_isPushout.{u} U).inr_isoPushout_hom
+
+end SerrePositivity.KST.SConstruction.NecklaceShape

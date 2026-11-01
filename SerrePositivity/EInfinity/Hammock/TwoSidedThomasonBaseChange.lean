@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonNaturality
-public import SerrePositivity.EInfinity.Hammock.TwoSidedBarBaseChange
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBarBaseChange
 
 /-!
 # 元の二方向 nerve 比較の底の関手への自然性

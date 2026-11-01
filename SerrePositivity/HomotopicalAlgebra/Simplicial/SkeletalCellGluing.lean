@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Limits.SequentialExtension
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
 public import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 
 /-!

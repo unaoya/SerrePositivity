@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CompositionReplacementTetrahedron
+public import SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron
 public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 
 /-! # 元の豊穣比較辺を面に保持する coherent 合成三角形

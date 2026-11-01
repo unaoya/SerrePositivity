@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarConstruction
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFillers
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftFillers
 
 /-!
 # 相対barへのsectionの区間が全単体作用素と整合する

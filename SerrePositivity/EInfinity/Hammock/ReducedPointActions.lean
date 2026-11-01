@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.PointActions
-public import SerrePositivity.EInfinity.Hammock.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!

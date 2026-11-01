@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.Transfunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Transfunctor
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramBar
 
 /-!

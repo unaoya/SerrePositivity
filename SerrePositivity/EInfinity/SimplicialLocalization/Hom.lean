@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
 public import SerrePositivity.EInfinity.SimplicialLocalization.ResolutionObjects
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 

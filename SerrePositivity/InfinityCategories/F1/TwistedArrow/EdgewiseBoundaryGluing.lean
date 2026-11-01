@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseBoundaryCompatibility
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightBoundaryCompatibility
-public import SerrePositivity.InfinityCategories.F1.Simplicial.RangeCoverGluing
+public import SerrePositivity.InfinityCategories.Kan.RangeCoverGluing
 
 /-!
 概要：edgewise の境界面と固定した右半分の図式の像の和上での接合。

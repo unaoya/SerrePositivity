@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.ArrowSpanComma
-public import SerrePositivity.EInfinity.FrameHom.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowSpanComma
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.FrameElementSpans
 
 /-!

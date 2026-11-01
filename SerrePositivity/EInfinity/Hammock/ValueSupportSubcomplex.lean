@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.SimplicialValueFiber
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SimplicialValueFiber
 public import SerrePositivity.EInfinity.Hammock.WeakFiniteUnion
 
 /-!

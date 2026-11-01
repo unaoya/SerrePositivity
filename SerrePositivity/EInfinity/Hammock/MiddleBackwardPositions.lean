@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.MiddleBackwardFamilyReplacementComparisons
+public import SerrePositivity.InfinityCategories.ModelBridge.MiddleBackwardFamilyReplacementComparisons
 
 /-!
 # 元の中央 backward 語の全頂点・全列の位置

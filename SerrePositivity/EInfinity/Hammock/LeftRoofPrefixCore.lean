@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ForwardRoof
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardRoof
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixCylinder
 
 /-!

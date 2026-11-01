@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceRefinementNonjoint
-public import SerrePositivity.KST.SConstruction.NecklaceNumericMap
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceNumericMap
 public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionCoordinates
 
 /-! # 元の refinement の右端からの数値座標

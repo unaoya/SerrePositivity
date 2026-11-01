@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedFiber
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.KST.Spectra.FibrationSequence
+public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 public import SerrePositivity.KST.Spectra.SpectrumFiberStage
 
 /-!

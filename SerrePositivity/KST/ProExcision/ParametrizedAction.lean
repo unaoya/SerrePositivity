@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.ProExcision.ActionTranslations
-public import SerrePositivity.KST.Comparison.SimplexContraction
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexContraction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
 @[expose] public noncomputable section

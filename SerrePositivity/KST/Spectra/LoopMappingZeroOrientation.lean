@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopZeroOrientation
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.LoopMappingPositiveEquiv
 public import SerrePositivity.KST.Spectra.LoopMappingClasses
 public import SerrePositivity.KST.Spectra.PostMappingLifts

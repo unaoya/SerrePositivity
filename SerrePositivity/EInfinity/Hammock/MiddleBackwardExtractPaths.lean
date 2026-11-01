@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MiddleBackwardPositions
-public import SerrePositivity.EInfinity.Hammock.ZigzagColumnDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagColumnDiagram
 
 /-!
 # 元の固定語の zigzag 圏から左右の forward 射列を抽出する

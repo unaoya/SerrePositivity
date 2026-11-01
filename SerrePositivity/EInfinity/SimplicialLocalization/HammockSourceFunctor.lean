@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ArrowMapComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ArrowMapComposition
 public import SerrePositivity.EInfinity.SimplicialLocalization.ComparisonEnrichment
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 

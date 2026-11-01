@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence
 

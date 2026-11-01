@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyImage
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.RightFrameFamily
+public import SerrePositivity.InfinityCategories.ModelBridge.RightFrameFamily
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
 public import SerrePositivity.EInfinity.FrameHom.SmallCosimplicialHomElements
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage

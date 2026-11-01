@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionArrowDiagram
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftTuples
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuplesFunctor
+public import SerrePositivity.InfinityCategories.Simplicial.VertexTuplesFunctor
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionArrowTuples

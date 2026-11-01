@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ProperPrecomposition
-public import SerrePositivity.EInfinity.Hammock.WordForwardImages
-public import SerrePositivity.EInfinity.Hammock.WordPaddingImages
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordForwardImages
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordPaddingImages
 
 /-!
 # 分数計算の元の比較図式と proper 性

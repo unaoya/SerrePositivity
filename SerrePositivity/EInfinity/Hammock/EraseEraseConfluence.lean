@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordEraseCompositeRange
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordEraseCompositeRange
 public import SerrePositivity.EInfinity.Hammock.RawEmbeddingComparison
 public import SerrePositivity.EInfinity.Hammock.EraseSimplexIdentityColumn
 public import SerrePositivity.EInfinity.Hammock.Reduction

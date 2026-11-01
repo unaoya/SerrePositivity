@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputMap
+public import SerrePositivity.InfinityCategories.Kan.CompatibleInputMap
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NormalizedHornTargetComparison
 
 /-!

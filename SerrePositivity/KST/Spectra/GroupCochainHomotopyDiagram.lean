@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedGroupFunctionCochains
 public import SerrePositivity.KST.Spectra.PointedHomotopyGroupDiagram
-public import SerrePositivity.KST.Spectra.FunctionComplexHomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.FunctionComplexHomotopyGroups
 
 /-!
 概要：群 cochain の正次数 π_* の余単体群の図式と非斉次関数図式への比較。

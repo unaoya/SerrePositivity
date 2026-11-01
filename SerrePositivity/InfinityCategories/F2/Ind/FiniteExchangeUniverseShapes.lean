@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.EmptySimplicialDomain
+public import SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
 public import SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso
 

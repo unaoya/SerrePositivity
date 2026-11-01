@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 public import SerrePositivity.HomotopicalAlgebra.Transfer.FullyFaithfulLifting
 public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
-public import SerrePositivity.EInfinity.FrameHom.CoherentPinchedTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPinchedTransport
 
 /-!
 概要：同じ辺集合の指定された二つの ∞ 局所化の Hom を実比較する。

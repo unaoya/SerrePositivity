@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SphericalFiberNormalization
+public import SerrePositivity.InfinityCategories.Kan.SphericalFiberNormalization
 public import SerrePositivity.KST.Spectra.SphericalPathBoundary
 
 /-!

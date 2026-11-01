@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMap
-public import SerrePositivity.KST.SConstruction.StrictSimplicialOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialOrdinaryFunctor
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor
 
 /-! # 同じ厳密 dg BF K と整数 K 群の通常の関手

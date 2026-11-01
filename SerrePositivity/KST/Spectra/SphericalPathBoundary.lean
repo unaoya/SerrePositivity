@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SphericalFiberRelation
+public import SerrePositivity.InfinityCategories.Kan.SphericalFiberRelation
 public import SerrePositivity.KST.Spectra.LoopHomotopyGroups
 
 /-!

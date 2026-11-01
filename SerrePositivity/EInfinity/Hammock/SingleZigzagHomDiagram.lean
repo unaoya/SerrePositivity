@@ -1,12 +1,12 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.SingleZigzagGraphValue
-public import SerrePositivity.EInfinity.Hammock.SingleZigzagRelativeValue
-public import SerrePositivity.EInfinity.Hammock.BackwardZigzagNativeRelative
-public import SerrePositivity.EInfinity.Hammock.FixedObjectZigzagDiagram
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeMarkedCategory
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeUnderlyingCategory
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SingleZigzagRelativeValue
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.BackwardZigzagNativeRelative
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectZigzagDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeMarkedCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeUnderlyingCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
 
 /-!
 # 元の単一列の graph から固定 Hom 図式への評価

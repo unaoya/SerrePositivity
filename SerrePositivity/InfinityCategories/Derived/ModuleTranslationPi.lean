@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ModuleTranslation
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 /-!
 概要：実加法同型による正次数 π の全基点への移送。
 方針：元の射と全基点の誘導写像を保ち、既存の実 Whitehead 逆へ接続する。

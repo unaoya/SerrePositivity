@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeNestedCosliceProjection
 public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
 
 /-!

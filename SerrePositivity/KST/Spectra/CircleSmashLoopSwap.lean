@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.TriangleMappingPost
 public import SerrePositivity.KST.Spectra.TriangleMappingComponents
-public import SerrePositivity.KST.Spectra.SelfPullbackSwapComparison
+public import SerrePositivity.InfinityCategories.Kan.SelfPullbackSwapComparison
 public import SerrePositivity.KST.Spectra.PostLoopIntegerPower
 
 /-!

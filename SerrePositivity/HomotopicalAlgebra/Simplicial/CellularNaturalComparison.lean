@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalDimension
+public import SerrePositivity.InfinityCategories.Kan.SkeletalDimension
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanPushoutCube
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanSequentialColimitComparison

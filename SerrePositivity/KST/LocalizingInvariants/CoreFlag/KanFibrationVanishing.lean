@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.FibrationExactness
+public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 
 /-!
 概要：長完全列による fiber の正次数消滅と射影の単射・全射。

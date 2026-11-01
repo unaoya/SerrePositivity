@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.ProductSimplexProjection
-public import SerrePositivity.EInfinity.FrameHom.ProductSimplexLiftedOver
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexProjection
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexLiftedOver
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.CompositionTripleRightTetrahedron
-public import SerrePositivity.KST.SConstruction.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Kan.CompositionTripleRightTetrahedron
+public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
 public import SerrePositivity.KST.SConstruction.TriangleRightCancellation
 public import SerrePositivity.KST.SConstruction.TriangleLeftCancellation
 public import SerrePositivity.KST.SConstruction.TriangleEdgeTransportFromZero

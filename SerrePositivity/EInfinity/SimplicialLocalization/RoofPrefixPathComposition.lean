@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPath
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockPrecompose
-public import SerrePositivity.EInfinity.Hammock.ArrowMapComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ArrowMapComposition
 
 /-!
 # 元の prefix path 写像の実 Kan 豊穣合成則

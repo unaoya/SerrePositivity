@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.MooreUniverse
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 
 /-! # 単体的加群の境界零単体
 

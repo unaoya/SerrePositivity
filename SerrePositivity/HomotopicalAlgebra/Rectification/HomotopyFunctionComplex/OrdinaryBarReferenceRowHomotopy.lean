@@ -4,7 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionC
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint
 public import SerrePositivity.CategoryTheory.NerveHomotopyUniverse
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveEquivalence
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarReferenceRowHomotopy

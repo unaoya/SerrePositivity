@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.SourceRoofFamily
-public import SerrePositivity.EInfinity.Hammock.LeftRoofLeftIdentity
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofLeftIdentity
 
 /-!
 概要：source augmentation で表された元の射の実二列 roof を元の hammock 射へ正規化する。

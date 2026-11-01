@@ -1,11 +1,6 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingMonomorphisms
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexModelCategory
-public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
-public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
-public import Mathlib.CategoryTheory.Limits.Preserves.Limits
 
 /-!
 # 標準的な単射cofibration条件のもとで二重単体的集合はReedy cofibrantである
@@ -83,29 +78,5 @@ lemma latchingComparison_mono (B : SimplexCategoryᵒᵖ ⥤ SSet.{v})
     rw [he]
     infer_instance
   exact NatTrans.mono_of_mono_app _
-
-variable [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-
-include hcof in
-lemma reedyCofibrant (B : SimplexCategoryᵒᵖ ⥤ SSet.{v}) :
-    reedyLeft simplexOp (cofibrations SSet.{v}) (initial.to B) := by
-  intro j
-  apply ((cofibrations SSet.{v}).arrow_iso_iff (latchingInitialArrowIso simplexOp j B)).mp
-  rw [hcof]
-  exact latchingComparison_mono B j
-
-include hcof in
-/-- 標準的な単射cofibration条件のもとで二重単体的集合はReedy cofibrantである。
-
-モデル構造と射クラスの一致を要求する入口では、その指定データを仮定する。
-latching比較の評価を、余極限を保つ評価関手の同型を介してTypeのlatching比較へ移す。
-Eilenberg–Zilberの分解から単射性を導く。
--/
-lemma isCofibrant (B : SimplexCategoryᵒᵖ ⥤ SSet.{v}) :
-    let := simplexOpModelCategory SSet.{v}
-    IsCofibrant B := by
-  let := simplexOpModelCategory SSet.{v}
-  exact ⟨reedyCofibrant hcof B⟩
 
 end SerrePositivity.BisimplicialModel

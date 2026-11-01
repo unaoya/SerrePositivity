@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.SelectedTriangle
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges
+public import SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges
 
 /-!
 # 中断した任意モデル源への一般化：LargeParameterSquare

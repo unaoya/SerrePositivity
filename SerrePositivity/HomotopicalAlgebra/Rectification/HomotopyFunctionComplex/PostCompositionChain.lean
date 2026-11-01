@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftPostComposition
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBook
+public import SerrePositivity.InfinityCategories.Kan.TriangleBook
 
 /-!
 # 中断した任意モデル源への一般化：PostCompositionChain

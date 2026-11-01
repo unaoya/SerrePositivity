@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPointAssociativity
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPointAssociativity
 
 /-!
 # 元の指定 hammock の点の合成と包含の合成保存

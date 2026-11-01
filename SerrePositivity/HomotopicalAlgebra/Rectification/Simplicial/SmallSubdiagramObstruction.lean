@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneNonempty
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CodiscreteNerveExtension
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Kan.CodiscreteNerveExtension
 public import Mathlib.CategoryTheory.WithTerminal.Basic
 public import Mathlib.CategoryTheory.CodiscreteCategory
 public import Mathlib.CategoryTheory.EssentiallySmall

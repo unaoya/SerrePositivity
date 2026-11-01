@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedParts
-public import SerrePositivity.EInfinity.Hammock.EnrichedHomTransport
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedHomTransport
 
 /-!
 # 元の二つの自由部分からの関手から生成矢の像の指定への回収

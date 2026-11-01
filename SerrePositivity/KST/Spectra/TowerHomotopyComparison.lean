@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedTowerRepresentatives
-public import SerrePositivity.KST.Spectra.FibrationTower
+public import SerrePositivity.InfinityCategories.Kan.FibrationTower
 
 /-!
 概要：Kan fibration の塔の極限のホモトピー群から段ごとの整合する類への比較。

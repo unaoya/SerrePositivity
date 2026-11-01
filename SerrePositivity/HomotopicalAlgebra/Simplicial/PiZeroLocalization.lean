@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroConstant
+public import SerrePositivity.InfinityCategories.Kan.PiZeroConstant
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
 
 /-!

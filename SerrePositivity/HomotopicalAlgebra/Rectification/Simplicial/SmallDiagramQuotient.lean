@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramQuotient
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSimplicialValue
+public import SerrePositivity.InfinityCategories.Kan.DiagramQuotient
+public import SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection
 

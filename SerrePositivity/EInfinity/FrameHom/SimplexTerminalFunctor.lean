@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.SimplexTerminalAugmentation
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplexTerminalAugmentation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 

@@ -1,7 +1,8 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Pasting
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 /-!
 # 境界を固定した延長の写像空間
@@ -124,99 +125,5 @@ structure FixedBoundaryHomotopy {V T P : SSet.{v}} (i : V ⟶ T) (b : V ⟶ P)
     T ◁ pointUnitIso.hom ≫ (ρ_ T).hom ≫ e₁
   relative : i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ≫ hom =
     V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b
-
-variable [ModelCategory SSet.{v}]
-  (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-  (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-
-include hcof hfib in
-lemma restriction_trivialFibration {V T P : SSet.{v}} (i : V ⟶ T) [Mono i]
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) :
-    trivialFibrations SSet.{v} ((MonoidalClosed.internalHom.map i.op).app P) := by
-  have : Quillen.HasQuillenPullbackHom (MonoidalClosed.internalHom (C := SSet.{v})) :=
-    simplicial_SM7 hcof hfib
-  have hi : Cofibration i := by rw [cofibration_iff, hcof]; infer_instance
-  have : Fibration p := ⟨hp.1⟩
-  have : WeakEquivalence p := ⟨hp.2⟩
-  let sq := Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom i p
-    SSet.stdSimplex.isTerminalObj₀
-  have := Quillen.HasQuillenPullbackHom.fibration i p sq hi inferInstance
-  have := Quillen.HasQuillenPullbackHom.weakEquivalence i p sq hi inferInstance
-    (Or.inr inferInstance)
-  exact ⟨mem_fibrations sq.π, mem_weakEquivalences sq.π⟩
-
-include hcof hfib in
-lemma projection_trivialFibration {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) : trivialFibrations SSet.{v} (projection i b) :=
-  (trivialFibrations SSet.{v}).of_isPullback (IsPullback.of_hasPullback _ _)
-    (restriction_trivialFibration hcof hfib i p hp)
-
-include hcof hfib in
-lemma kanComplex {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) : SSet.KanComplex (obj i b) := by
-  have : IsFibrant (obj i b) :=
-    (isFibrant_iff_of_isTerminal (projection i b) SSet.stdSimplex.isTerminalObj₀).mpr
-      ⟨(projection_trivialFibration hcof hfib i b p hp).1⟩
-  apply (SSet.modelCategoryQuillen.fibration_iff (terminal.from (obj i b))).mpr
-  rw [← hfib]
-  exact mem_fibrations _
-
-include hcof hfib in
-lemma extension {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) {K L : SSet.{v}} (j : K ⟶ L) [Mono j]
-    (a : K ⟶ obj i b) : ∃ e : L ⟶ obj i b, j ≫ e = a := by
-  have hj : cofibrations SSet.{v} j := by rw [hcof]; infer_instance
-  have : HasLiftingProperty j (projection i b) := MorphismProperty.hasLiftingProperty_of_wfs _ _
-    hj (projection_trivialFibration hcof hfib i b p hp)
-  let sq : CommSq a j (projection i b) (SSet.stdSimplex.isTerminalObj₀.from L) :=
-    ⟨SSet.stdSimplex.isTerminalObj₀.hom_ext _ _⟩
-  exact ⟨sq.lift, sq.fac_left⟩
-
-include hcof hfib in
-lemma interval {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p)
-    (s t : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ obj i b) :
-    ∃ e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ obj i b,
-      SSet.stdSimplex.map (SimplexCategory.δ (1 : Fin 2)) ≫ e = s ∧
-      SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin 2)) ≫ e = t := by
-  let a := HomotopyFunctionComplex.BoundaryOne.isColimit.desc (BinaryCofan.mk s t)
-  obtain ⟨e, he⟩ := extension hcof hfib i b p hp (SSet.boundary 1).ι a
-  refine ⟨e, ?_, ?_⟩
-  · change SSet.stdSimplex.δ (1 : Fin 2) ≫ e = s
-    rw [← SSet.boundary.ι_ι (1 : Fin 2), Category.assoc, he]
-    exact HomotopyFunctionComplex.BoundaryOne.isColimit.fac (BinaryCofan.mk s t) ⟨WalkingPair.left⟩
-  · change SSet.stdSimplex.δ (0 : Fin 2) ≫ e = t
-    rw [← SSet.boundary.ι_ι (0 : Fin 2), Category.assoc, he]
-    exact HomotopyFunctionComplex.BoundaryOne.isColimit.fac (BinaryCofan.mk s t) ⟨WalkingPair.right⟩
-
-include hcof hfib in
-/-- Any two extensions are joined by an actual simplicial homotopy relative to V. -/
-lemma relative_homotopy {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) (e₀ e₁ : T ⟶ P) (h₀ : i ≫ e₀ = b) (h₁ : i ≫ e₁ = b) :
-    ∃ H : T ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ P,
-      T ◁ SSet.stdSimplex.map (SimplexCategory.δ (1 : Fin 2)) ≫ H =
-        T ◁ pointUnitIso.hom ≫ (ρ_ T).hom ≫ e₀ ∧
-      T ◁ SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin 2)) ≫ H =
-        T ◁ pointUnitIso.hom ≫ (ρ_ T).hom ≫ e₁ ∧
-      i ▷ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ≫ H =
-        V ◁ (SSet.stdSimplex.isTerminalObj₀.from _ ≫ pointUnitIso.hom) ≫ (ρ_ V).hom ≫ b := by
-  obtain ⟨e, hs, ht⟩ := interval hcof hfib i b p hp (ofExtension i b e₀ h₀) (ofExtension i b e₁ h₁)
-  refine ⟨family i b e, ?_, ?_, family_fixed_boundary i b e⟩
-  · rw [← family_naturality, hs, family_ofExtension]
-  · rw [← family_naturality, ht, family_ofExtension]
-
-include hcof hfib in
-lemma nonempty_fixedBoundaryHomotopy {V T P : SSet.{v}} (i : V ⟶ T) [Mono i] (b : V ⟶ P)
-    (p : P ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (hp : trivialFibrations SSet.{v} p) (e₀ e₁ : T ⟶ P) (h₀ : i ≫ e₀ = b) (h₁ : i ≫ e₁ = b) :
-    Nonempty (FixedBoundaryHomotopy i b e₀ e₁) := by
-  obtain ⟨H, h₀, h₁, hb⟩ := relative_homotopy hcof hfib i b p hp e₀ e₁ h₀ h₁
-  exact ⟨⟨H, h₀, h₁, hb⟩⟩
 
 end SerrePositivity.SimplicialModel.RelativeChoiceSpace

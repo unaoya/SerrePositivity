@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.DoubleCircleRestriction
-public import SerrePositivity.KST.Spectra.InternalHomExchangeRestriction
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeRestriction
 
 /-!
 概要：二つの Kan 円からの制限は源の交換と標的の後合成に関して自然。

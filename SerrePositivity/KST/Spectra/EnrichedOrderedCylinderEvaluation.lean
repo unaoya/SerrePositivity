@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
-public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderRestriction
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderRestriction
 
 /-!
 概要：二段の円柱の比較と、評価パラメータの制限の厳密な両立。

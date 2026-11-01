@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.TerminalFiberBaseHomotopy
-public import SerrePositivity.EInfinity.FrameHom.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyNaturality
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OverCanonicalCocone
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeFamilyUnderlying

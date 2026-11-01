@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyEmbedding
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedNonemptyEmbedding
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueNonempty
-public import SerrePositivity.EInfinity.Hammock.ColimitPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitPoints
 
 /-!
 # 非空部分の余極限の元の hammock 内での像

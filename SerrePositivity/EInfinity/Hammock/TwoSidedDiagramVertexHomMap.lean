@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexProducts
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
 /-!
 # 元の比較射の固定頂点列の Hom 因子への作用
 

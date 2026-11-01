@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.NecklaceSimplexMaps
-public import SerrePositivity.KST.SConstruction.SimplexIntervalMap
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexMaps
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexIntervalMap
 public import SerrePositivity.KST.SConstruction.CubicalLambda
 public import SerrePositivity.KST.SConstruction.CubicalSerreAdjunction
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal

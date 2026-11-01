@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedPrecompositionAction
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：一つの源区間から移した前合成区間は、標的への後合成と区間全体で自然。

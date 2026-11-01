@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleDiagonalHomotopies
-public import SerrePositivity.KST.Spectra.BasedIntervalSimplex
+public import SerrePositivity.InfinityCategories.Kan.Pointed.BasedIntervalSimplex
 
 /-!
 概要：元の companion 経路と普遍評価の生成 loop は、同じ基本群の元を表す。

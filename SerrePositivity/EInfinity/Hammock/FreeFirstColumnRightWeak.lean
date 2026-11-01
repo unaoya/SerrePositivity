@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnHomWeak
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexCoefficientMap
-public import SerrePositivity.EInfinity.Hammock.DiscreteNerveIso
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DiscreteNerveIso
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation
 
 /-!

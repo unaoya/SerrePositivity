@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
-public import SerrePositivity.EInfinity.Hammock.ContravariantGrothendieckComponents
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ContravariantGrothendieckComponents
 
 /-!
 # 任意の右ラベルを固定した元の反変対角射列

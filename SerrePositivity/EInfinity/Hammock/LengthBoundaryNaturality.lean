@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LengthBoundaryLift
-public import SerrePositivity.EInfinity.Hammock.LengthNaturality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthNaturality
 
 /-!
 # 元の境界と貼り合わせ射の図式の比較への自然性

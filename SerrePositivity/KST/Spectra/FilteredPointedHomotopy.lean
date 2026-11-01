@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FilteredHomotopyRepresentatives
+public import SerrePositivity.InfinityCategories.Kan.FilteredHomotopyRepresentatives
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Connected
 public import Mathlib.CategoryTheory.Filtered.Connected

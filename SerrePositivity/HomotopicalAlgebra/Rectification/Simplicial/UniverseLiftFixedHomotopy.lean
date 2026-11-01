@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
 
 /-!

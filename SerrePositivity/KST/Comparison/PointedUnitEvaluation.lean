@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedVertexComparison
-public import SerrePositivity.KST.Spectra.HomTensorStrength
+public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 public import SerrePositivity.KST.Spectra.UnpointedPathEvaluation
 
 /-!

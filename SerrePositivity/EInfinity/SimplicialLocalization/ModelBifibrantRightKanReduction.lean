@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape
 public import SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKanCanonical
-public import SerrePositivity.EInfinity.FrameHom.HomotopyComponentTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyComponentTransport
 public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
 public import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
 public import SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents

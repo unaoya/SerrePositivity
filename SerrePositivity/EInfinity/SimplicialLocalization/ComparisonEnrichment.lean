@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit
 public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
-public import SerrePositivity.EInfinity.Hammock.EnrichedCategory
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPointAssociativity
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPointAssociativity
 
 /-!
 # 元の自由 hammock 対角と hammock の実単体的豊穣圏

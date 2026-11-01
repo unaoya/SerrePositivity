@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionGeneratorPartition
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlockCategory
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorBlockParts
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorBlockCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorBlockParts
 
 /-!
 # 元の自由解像の全次数の交互標準形

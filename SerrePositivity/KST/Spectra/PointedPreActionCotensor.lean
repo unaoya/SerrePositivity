@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedPreActionComposition
-public import SerrePositivity.KST.Spectra.InternalHomExchangeCurriedComposition
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeCurriedComposition
 
 /-!
 概要：元の前合成作用を cotensor へ移す操作と、同じ二つの内部 Hom の交換を照合する。

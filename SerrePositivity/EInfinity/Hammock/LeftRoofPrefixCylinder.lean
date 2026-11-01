@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.NerveNatTransCylinder
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveNatTransCylinder
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixEndpoints
 
 /-!

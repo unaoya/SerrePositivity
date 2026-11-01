@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewisePairingRegular
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PairingKanExtension
+public import SerrePositivity.InfinityCategories.Kan.PairingKanExtension
 public import SerrePositivity.InfinityCategories.Core.JoinCells
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveBiparameterEvaluation
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftTensor
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor
 
 /-!
 # 中断した任意モデル源への一般化：NerveSmallFamilies

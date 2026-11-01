@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NervePushoutBoundary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramTensor
+public import SerrePositivity.InfinityCategories.Kan.DiagramTensor
 
 /-!
 # 中断した任意モデル源への一般化：NerveCylinderBoundary

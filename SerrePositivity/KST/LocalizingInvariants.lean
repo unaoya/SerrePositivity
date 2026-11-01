@@ -211,7 +211,7 @@ public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceRestric
 
 public import SerrePositivity.KST.LocalizingInvariants.WalkingEquivalenceUniversal
 
-public import SerrePositivity.KST.LocalizingInvariants.ParametricDiagramGluing
+public import SerrePositivity.InfinityCategories.F1B.Localization.ParametricDiagramGluing
 
 public import SerrePositivity.KST.LocalizingInvariants.InverseAttachment
 

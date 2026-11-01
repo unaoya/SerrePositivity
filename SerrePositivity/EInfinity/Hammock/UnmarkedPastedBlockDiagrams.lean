@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedAfterData
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedJoints
-public import SerrePositivity.EInfinity.Hammock.ZigzagEndpointHExt
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagEndpointHExt
 
 /-!
 # 元の貼り戻しの前後の全図式の端点表示を含む回収

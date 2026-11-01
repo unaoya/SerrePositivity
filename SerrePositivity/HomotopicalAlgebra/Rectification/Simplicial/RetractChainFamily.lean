@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.HomotopyEndpointComparison
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.IntervalEndpoints
+public import SerrePositivity.InfinityCategories.Simplicial.IntervalEndpoints
 
 /-!
 # 中断した任意モデル源への一般化：RetractChainFamily
