@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.CategoryTheory.Monoidal.Closed.Cartesian

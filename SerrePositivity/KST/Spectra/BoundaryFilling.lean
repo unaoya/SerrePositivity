@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.BoundaryFaces
+public import SerrePositivity.InfinityCategories.Kan.BoundaryFaces
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
 public import SerrePositivity.KST.Spectra.PathSpace
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
-public import SerrePositivity.EInfinity.Hammock.EndpointColimit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EndpointColimit
 
 /-!
 # 指定部分圏の包含と元の端点等式の移送

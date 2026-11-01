@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedNormalizedFaces
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
 
 /-! # 正規化した差を零面に持つ実 pinched 境界
 

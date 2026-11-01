@@ -319,7 +319,7 @@ public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinConeIso
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinConeBoundary
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderCone
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PrismEndpointRightAnodyne
+public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderConeAnodyne
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinLastFaceFactor
 public import SerrePositivity.InfinityCategories.F1.Limits.TypesDependentColimit
@@ -365,7 +365,7 @@ public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteCocar
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteVerticalEdges
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderMono
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderExtension
-public import SerrePositivity.InfinityCategories.F1.Simplicial.StdSimplexFunctorRigidity
+public import SerrePositivity.InfinityCategories.Kan.StdSimplexFunctorRigidity
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinCylinderIntervalExtension
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinEndpointPullbacks
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinEndpointPullbacks
@@ -404,10 +404,10 @@ public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNatural
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
 public import SerrePositivity.InfinityCategories.F1.Joins.RelativeJoinExtensionEquivalence
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderIntervalEquivalence
-public import SerrePositivity.InfinityCategories.F1.Simplicial.BoundaryFactorization
+public import SerrePositivity.InfinityCategories.Kan.BoundaryFactorization
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderTargetComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderQuasicategoryComparison
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneVertices
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodynePrismExtension
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderComparison
@@ -433,13 +433,13 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseOutside
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseSimplexPairing
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewisePairingProper
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewisePairingRegular
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PairingKanExtension
+public import SerrePositivity.InfinityCategories.Kan.PairingKanExtension
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseKanExtension
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinMapRange
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseFaceImages
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseFacePullbacks
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseBoundaryCompatibility
-public import SerrePositivity.InfinityCategories.F1.Simplicial.RangeCoverGluing
+public import SerrePositivity.InfinityCategories.Kan.RangeCoverGluing
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseRightBoundaryCompatibility
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.EdgewiseBoundaryGluing
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinStandardVertexRanges
@@ -695,7 +695,7 @@ public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInitia
 public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHorn
 public import SerrePositivity.InfinityCategories.F1.Simplicial.ReplacementInnerHornPullback
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerHornPullback
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneAdjointComparison
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneAdjointComparison
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerAnodynePullback
 public import SerrePositivity.InfinityCategories.F1.Transport.WitnessInnerAnodyne
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationInnerExtension
@@ -1935,11 +1935,11 @@ public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesia
 
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HigherHornEdgeCover
+public import SerrePositivity.InfinityCategories.Kan.HigherHornEdgeCover
 
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornEdges
+public import SerrePositivity.InfinityCategories.Kan.InnerTwoHornEdges
 
 
 
@@ -1950,7 +1950,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CorePullbackRestr
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorCorePushout
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramPushoutLift
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramPushout
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornOverPushout
+public import SerrePositivity.InfinityCategories.Kan.InnerTwoHornOverPushout
 public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornHomPullbacks
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramTwoSimplexSegal
 public import SerrePositivity.InfinityCategories.F1.Simplicial.TwoSimplexSegalRestrictions
@@ -2310,7 +2310,7 @@ public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagra
 
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerTwoHornImageEdges
+public import SerrePositivity.InfinityCategories.Kan.InnerTwoHornImageEdges
 
 
 
@@ -2431,18 +2431,18 @@ public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
 
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryAttachment
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryAttachment
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryIntersection
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryIntersection
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryPushout
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryPushout
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryOver
-
-
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryOver
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.EmptySimplicialDomain
+
+
+public import SerrePositivity.InfinityCategories.Simplicial.EmptySimplicialDomain
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.EmptyRelativeFunctorHom
 
@@ -2465,7 +2465,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.OverIso
 
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornOnePointIso
+public import SerrePositivity.InfinityCategories.Simplicial.HornOnePointIso
 
 
 
@@ -2491,7 +2491,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.ContravariantComparis
 public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexNerveRestrictionOver
 
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundarySimplexOverMaps
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundarySimplexOverMaps
 
 
 
@@ -2690,17 +2690,17 @@ public import SerrePositivity.InfinityCategories.F1.Simplicial.SSetProductEvalua
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1.Universe.CoconeShapeNaturality
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetMaximalCover
+public import SerrePositivity.InfinityCategories.Kan.PosetMaximalCover
 
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationEdgeDetection
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.FinitePosetLowerSet
+public import SerrePositivity.InfinityCategories.Simplicial.FinitePosetLowerSet
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FullPosetSubsetNerveIso
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetSubsetPointRemoval
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.OrderIsoNerve
+public import SerrePositivity.InfinityCategories.Simplicial.OrderIsoNerve
 
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.ClassifierTransportInversion
 

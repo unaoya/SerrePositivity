@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjacentFacePrismFaces
-public import SerrePositivity.KST.Spectra.HomotopyInvariance
+public import SerrePositivity.InfinityCategories.Kan.HomotopyInvariance
 
 /-!
 概要：隣接二面による RelStruct から、境界を固定する実際の区間ホモトピーを構成する。

@@ -3,7 +3,7 @@ import SerrePositivity.InfinityCategories.F1
 import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaLimits
 import SerrePositivity.InfinityCategories.F1.Fibrations.TerminalRightFibrationRepresentation
 import SerrePositivity.InfinityCategories.F1.Joins.FiniteEndpoints
-import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanNerveEdges
+import SerrePositivity.InfinityCategories.Simplicial.FiniteSpanNerveEdges
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteCospanNerveEdges
 import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
 import SerrePositivity.InfinityCategories.F1.Diagrams.RelativeSectionFirstVertexLocalization

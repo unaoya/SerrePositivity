@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CompositionTripleTetrahedron
+public import SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron
 public import SerrePositivity.KST.SConstruction.AnodyneExtensionChoices
 
 /-! # 元の二つの合成面を保持する終辺消去の全外ホーン

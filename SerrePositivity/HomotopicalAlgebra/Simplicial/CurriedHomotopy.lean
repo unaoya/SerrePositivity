@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.MappingSpaceEdges
+public import SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges
 
 /-!
 # 写像単体的集合の指定した辺から元の全区間ホモトピーを構成する
@@ -23,8 +23,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
 [棚卸し m0376][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0376
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0376
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

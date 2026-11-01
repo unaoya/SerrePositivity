@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedFibrationBoundary
 public import SerrePositivity.KST.Spectra.PointedFiberComparison
-public import SerrePositivity.KST.Spectra.FibrationBoundaryOverNaturality
-public import SerrePositivity.KST.Spectra.HomotopySquares
+public import SerrePositivity.InfinityCategories.Kan.FibrationBoundaryOverNaturality
+public import SerrePositivity.InfinityCategories.Kan.HomotopySquares
 
 /-!
 概要：標準基点での点つき連結準同型の可換正方形への自然性。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionHomotopy
 
 /-!

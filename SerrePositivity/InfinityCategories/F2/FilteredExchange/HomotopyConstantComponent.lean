@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.DegenerateEdgeIso
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.PinchedHom.Paths
 

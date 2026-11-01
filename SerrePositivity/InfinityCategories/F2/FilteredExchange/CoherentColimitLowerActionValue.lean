@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitLowerAction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 
 /-!
 概要：下面作用比較の指定値を、元の fiber 族比較の一点成分へ戻す。

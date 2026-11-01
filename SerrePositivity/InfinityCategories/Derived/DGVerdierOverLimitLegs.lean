@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone
-public import SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 /-!
 概要：任意反転関手の実分母図式の任意の実極限錐は、同じ各脚が全て可逆。

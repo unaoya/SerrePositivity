@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の四つの指定関手同型の正方形を、同じ四実射の等式で輸送する。

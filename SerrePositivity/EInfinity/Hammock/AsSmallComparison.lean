@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RelativeWordAction
-public import SerrePositivity.EInfinity.Hammock.ColimitGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeWordAction
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 public import Mathlib.CategoryTheory.Category.ULift
 

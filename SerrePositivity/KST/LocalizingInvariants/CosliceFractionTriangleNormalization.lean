@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 

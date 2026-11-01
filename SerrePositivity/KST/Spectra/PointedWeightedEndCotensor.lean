@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedWeightedEnd
 public import SerrePositivity.KST.Spectra.EndInternalHom
-public import SerrePositivity.KST.Spectra.InternalHomExchangeTarget
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 
 /-!
 概要：点つき内部 Hom と自由基点を加えた重みの end の交換同型。

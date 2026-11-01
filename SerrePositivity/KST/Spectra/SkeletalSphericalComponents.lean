@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SkeletalFiberComponents
-public import SerrePositivity.KST.Spectra.SkeletalSphericalCochain
+public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
 
 /-!
 概要：骨格上の球面的係数を同じ境界定数単体で fiber の成分へ実現する。

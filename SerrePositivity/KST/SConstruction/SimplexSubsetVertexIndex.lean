@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexSubsetOrder
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetOrder
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubset
 
 /-! # 元の部分集合の頂点の局所番号と内部座標

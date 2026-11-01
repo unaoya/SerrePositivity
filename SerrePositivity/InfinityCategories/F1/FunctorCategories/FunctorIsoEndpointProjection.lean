@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：指定関手同型の端点正規化は、後合成が回収する等号の同型を保持する。

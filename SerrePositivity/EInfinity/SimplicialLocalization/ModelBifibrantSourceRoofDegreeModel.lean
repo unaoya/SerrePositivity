@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofSlices
-public import SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver
-public import SerrePositivity.EInfinity.FrameHom.UniverseNerveCostructuredPullback
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexUniverseOver
+public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseNerveCostructuredPullback
 
 /-!
 概要：元の bifibrant frame の全屋根を同じ次数・積単体・実 slice の図式で回収する。

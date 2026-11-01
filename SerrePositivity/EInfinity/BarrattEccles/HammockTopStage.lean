@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
-public import SerrePositivity.EInfinity.Hammock.TopStageColimit
-public import SerrePositivity.EInfinity.Hammock.WordImageFactorization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TopStageColimit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordImageFactorization
 
 /-!
 # 任意の可換環上の交互方向の最大語による段階の表示

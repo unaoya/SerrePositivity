@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.HornBoundaryDecomposition
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryDecomposition
 public import SerrePositivity.KST.Spectra.SphereSimplex
 
 /-!

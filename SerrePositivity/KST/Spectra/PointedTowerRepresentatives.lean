@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationRepresentativeTransport
+public import SerrePositivity.InfinityCategories.Kan.FibrationRepresentativeTransport
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
 
 /-!

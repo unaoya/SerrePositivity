@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockCompositionPairing
-public import SerrePositivity.EInfinity.Hammock.ColimitComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitComposition
 
 /-!
 # 元の E 代数の二つの hammock 余極限の積からの合成

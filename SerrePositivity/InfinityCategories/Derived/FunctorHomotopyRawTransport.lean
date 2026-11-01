@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!
 概要：円柱射の比較と前合成を、指定された全関手射へ移す。

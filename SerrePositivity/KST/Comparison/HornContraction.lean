@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.SimplexContraction
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexContraction
 public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 
 /-!

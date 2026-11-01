@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomClassificationLaws
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
+public import SerrePositivity.InfinityCategories.Core.Retracts
 
 /-!
 概要：全空間の相対 Hom 内の分裂等式を、全分類関手の retract に送る。

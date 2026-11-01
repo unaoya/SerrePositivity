@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismFullBoundary
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryPushout
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryPushout
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
 
 /-!

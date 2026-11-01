@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FixedQuillenTargetInvariance
+public import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenTargetInvariance
 
 /-!
 # 同じ正規化 probe Hom の実半自由標的置換

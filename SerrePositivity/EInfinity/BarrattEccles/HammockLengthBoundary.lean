@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
-public import SerrePositivity.EInfinity.Hammock.WordAlternating
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordAlternating
 public import SerrePositivity.EInfinity.Hammock.LengthBoundary
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofHomInclusion
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFunctor
-public import SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport
+public import SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport
 /-!
 概要：閉分母上の実係数族の任意標的での屋根像について、両射影を厳密に計算する。
 方針：閉 fiber 包含と slice の後合成の全次元の可換性を合成する。

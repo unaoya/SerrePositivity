@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
-public import SerrePositivity.EInfinity.FrameHom.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
 
 /-!
 概要：混合宇宙の通常余錐の全 join prism は、元の自然変換円柱そのものと一致する。

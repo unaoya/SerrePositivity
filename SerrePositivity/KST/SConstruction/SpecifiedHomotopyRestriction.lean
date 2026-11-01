@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.SquareFrameHomotopyPostcomp
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 
 /-!
 概要：元全ホモトピーの厳密な制限と射の類の保持から、指定全比較そのものを回収する。

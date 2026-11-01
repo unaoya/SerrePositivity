@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence

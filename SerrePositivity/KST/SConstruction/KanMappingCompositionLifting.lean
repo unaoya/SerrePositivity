@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.KanMappingComposition
+public import SerrePositivity.InfinityCategories.Kan.KanMappingComposition
 public import SerrePositivity.KST.SConstruction.KanFibrationTriangleLifting
 
 /-! # 元の両辺と全基底合成面を保つ実合成の持ち上げ

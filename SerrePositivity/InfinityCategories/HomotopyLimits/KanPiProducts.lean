@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
-public import SerrePositivity.KST.Spectra.HomotopyProduct
-public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
-public import SerrePositivity.KST.Spectra.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Kan.HomotopyProduct
+public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
 
 /-!
 概要：Kan 複体の二項積の全基点・全次数のホモトピー類を分解する。

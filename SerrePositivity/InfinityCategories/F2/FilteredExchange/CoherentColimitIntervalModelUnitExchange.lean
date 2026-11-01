@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitIntervalModelUnitComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の模型単位比較の下側因子を戻し、中央比較と上側単位との交換式を保持する。

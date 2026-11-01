@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.PosetMaximalCover
+public import SerrePositivity.InfinityCategories.Kan.PosetMaximalCover
 public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeNerve
 public import SerrePositivity.InfinityCategories.Stable.FinitePosetNerve
 

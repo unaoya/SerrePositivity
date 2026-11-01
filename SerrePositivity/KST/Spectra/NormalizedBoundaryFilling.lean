@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.BoundaryNormalization
-public import SerrePositivity.KST.Spectra.HomotopyZeroRelations
+public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
 /-!
 概要：ホーン上で定数の境界の充填を最後の面のホモトピー類へ還元する。

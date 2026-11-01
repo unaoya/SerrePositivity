@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 
 /-! 可換な実二脚の写像空間作用を、同じ端点等式による輸送を含めて照合する。 -/
 @[expose] public section

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeUnderlyingCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeUnderlyingCategory
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
 
 /-!
 # 元の自由相対解像の底の固定 Hom と augmentation

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 /-!
 概要：指定同型の恒等性を、同じ前後合成の恒等性へ移す。
 方針：抽象的な実関手空間で同型の恒等保存を先に証明する。

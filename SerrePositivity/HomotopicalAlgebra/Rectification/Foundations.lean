@@ -414,21 +414,21 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRe
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractionAction
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordSegment
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordSegmentComparison
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalHomComposition
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingRows
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalMappingWeakEquivalence
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputMap
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion
+public import SerrePositivity.InfinityCategories.Kan.CompatibleInputMap
+public import SerrePositivity.InfinityCategories.Kan.CompatibleInputUnion
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.CosimplicialDegenerateHorn
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagramQuotient
+public import SerrePositivity.InfinityCategories.Kan.DiagramQuotient
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterCategory
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterComposition
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RetractEndomorphisms
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBook
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleBookMaps
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuples
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.VertexTuplesFunctor
+public import SerrePositivity.InfinityCategories.Kan.TriangleBook
+public import SerrePositivity.InfinityCategories.Kan.TriangleBookMaps
+public import SerrePositivity.InfinityCategories.Simplicial.VertexTuples
+public import SerrePositivity.InfinityCategories.Simplicial.VertexTuplesFunctor
 
 /-!
 # 中断した任意モデル源の厳密化の任意入口
@@ -448,5 +448,5 @@ Kan複体の全hornの議論を内部hornの議論と同一視しない。
 ## 使われ方
 中断した一般化の調査・再開・公理監査で任意にimportする。
 既存の個別importは旧パスの互換ファイルからも利用できる。
-詳細はformalization-plans/k-theory-generalization-inventory.mdの配置実施記録を参照。
+詳細はformalization-plans/archive/k-theory-generalization-inventory.mdの配置実施記録を参照。
 -/

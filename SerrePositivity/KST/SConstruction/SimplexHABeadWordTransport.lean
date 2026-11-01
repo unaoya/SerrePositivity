@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexHABeadWordCells
-public import SerrePositivity.KST.SConstruction.SimplexHABeadTail
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadTail
 
 /-! # 元の bead 語の次元移送と評価
 概要：bead 語の次元移送を、元の dg Hom 成分の同じ次数移送として回収する。

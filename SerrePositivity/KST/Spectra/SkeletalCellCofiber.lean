@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SkeletalAttachmentPushout
+public import SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout
 public import SerrePositivity.KST.Spectra.PointedCofiberPushout
 public import SerrePositivity.KST.Spectra.SkeletalMappingFiber
 

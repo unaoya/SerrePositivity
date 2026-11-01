@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitLocalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomIso
-public import SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalizedAdjunction
 
 /-!
 # 定値図式と実際の極限計算関手の局所化圏上の随伴

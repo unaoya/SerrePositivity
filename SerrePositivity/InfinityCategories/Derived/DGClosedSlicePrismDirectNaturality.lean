@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismDirectNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransPinchedSlice
-public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport
 /-!
 概要：直接前合成の固定標的 slice prism と係数自然性を構成する。
 方針：直接の閉前合成鎖写像と全二相単体の係数比較を使う。

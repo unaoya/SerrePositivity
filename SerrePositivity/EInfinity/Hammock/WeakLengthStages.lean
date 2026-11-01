@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LengthZero
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthZero
 public import SerrePositivity.EInfinity.Hammock.WeakStageSuccessor
 
 /-!

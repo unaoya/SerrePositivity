@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RelativeGraphDiagram
-public import SerrePositivity.EInfinity.Hammock.ColimitGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeGraphDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!

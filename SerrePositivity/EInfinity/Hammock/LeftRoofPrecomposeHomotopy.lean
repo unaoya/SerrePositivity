@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LeftRoofPrecomposeGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofPrecomposeGraph
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleMaps
 public import SerrePositivity.KST.Spectra.SpectrumPointedEnrichment
-public import SerrePositivity.KST.Spectra.EnrichedParameterSquares
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
 
 /-!
 概要：cotensor の普遍評価と可換な射の組の合成。

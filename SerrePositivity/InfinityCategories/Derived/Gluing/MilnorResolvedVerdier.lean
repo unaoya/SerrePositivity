@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorResolvedKernel
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 /-!
 概要：元の小 Perf Milnor 対角と同じ cell 平坦商の Verdier 列を構成する。
 方針：対角の充満忠実性、厚い核の本質像、辺局所化を接続する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedParametricPostExchange
-public import SerrePositivity.KST.Spectra.InternalHomTensorCotensor
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorCotensor
 
 /-!
 概要：テンソルからの curry は、同じ標準 ihomAction による全族後合成と厳密に可換。

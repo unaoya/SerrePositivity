@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeIntervalHomUnitVertices
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeIntervalHomUnitComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の区間 Hom 比較の指定成分の値を、元の単位による前合成後の同じ値へ戻す。

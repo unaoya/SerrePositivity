@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeSourceFrame
-public import SerrePositivity.EInfinity.FrameHom.RightFrameReplacement
+public import SerrePositivity.InfinityCategories.ModelBridge.RightFrameReplacement
 
 /-!
 概要：E2 の実 dg 代数モデルから、比較用の関手的 right resolution を選ぶ。

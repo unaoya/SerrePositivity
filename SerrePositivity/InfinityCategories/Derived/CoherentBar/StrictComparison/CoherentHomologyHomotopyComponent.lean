@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1B.HomotopyEdgeNaturality
 
 /-!
 概要：coherent ホモロジー比較の各成分は、元の指定垂直辺のホモロジー射。

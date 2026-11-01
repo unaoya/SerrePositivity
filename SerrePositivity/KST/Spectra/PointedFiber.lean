@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationNaturality
+public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
-public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowCofinality
-public import SerrePositivity.EInfinity.FrameHom.ArrowSpanComma
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowSpanComma
 public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
 
 /-!

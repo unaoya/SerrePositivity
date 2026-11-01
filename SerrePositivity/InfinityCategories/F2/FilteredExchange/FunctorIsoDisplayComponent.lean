@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoComponentTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：指定関手同型の端点表示変更を、同じ一点成分で除去する。

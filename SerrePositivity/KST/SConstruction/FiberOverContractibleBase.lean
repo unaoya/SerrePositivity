@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedContractibility
 public import SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations
-public import SerrePositivity.KST.Spectra.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
 
 /-! # 可縮な底の上の Kan fiber の包含
 概要：可縮な Kan 複体を底とする Kan fibration の fiber 包含は全基点 π_* 同型。

@@ -29,11 +29,7 @@ run_cmd do
         (`SerrePositivity.KST.LocalizingInvariants).isPrefixOf mod.module then
       throwError "Sp-2b d3tail: downstream K dependency imported: {mod.module}"
   for mod in #[
-      `SerrePositivity.KST.Spectra.D3All,
-      `SerrePositivity.KST.Spectra.PointedParametricUncurryAction,
-      `SerrePositivity.KST.Spectra.PointedParametricUncurryPre,
-      `SerrePositivity.KST.Spectra.PointedUncurryActionTensor,
-      `SerrePositivity.KST.Spectra.PointedUncurryComposition] do
+      `SerrePositivity.KST.Spectra.D3All] do
     if env.header.modules.any (·.module == mod) then
       throwError "Sp-2b d3tail: separate aggregate or disconnected leaf imported: {mod}"
   let expected := #[

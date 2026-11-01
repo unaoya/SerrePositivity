@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeCoordinates
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 /-!
 概要：高次余錐族の混合単体に使う、二つの標準単体の join の左右の座標。
 方針：既存 DGNerve の左右の包含とその同型の公式を直接再利用する。

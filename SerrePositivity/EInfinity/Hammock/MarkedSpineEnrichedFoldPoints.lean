@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedFoldData
-public import SerrePositivity.EInfinity.Hammock.EnrichedDegreePointNaturality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedDegreePointNaturality
 
 /-!
 # 元の豊穣目標への因子列の評価の点ごとの回収

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CoherentArrowStrings
+public import SerrePositivity.InfinityCategories.Kan.CoherentArrowStrings
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 

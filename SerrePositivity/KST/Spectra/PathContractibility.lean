@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PathContraction
-public import SerrePositivity.KST.Spectra.HomotopyConstant
+public import SerrePositivity.InfinityCategories.Kan.HomotopyConstant
 
 /-!
 概要：基点に始まる path space のホモトピー群の自明性。

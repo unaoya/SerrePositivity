@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismZero
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismNaturality
-public import SerrePositivity.EInfinity.FrameHom.NerveCoconePrism
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveCoconePrism
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 
 /-!

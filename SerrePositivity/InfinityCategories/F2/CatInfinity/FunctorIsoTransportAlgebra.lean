@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：指定同型の合成正方形の端点の輸送。
@@ -18,18 +18,6 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.F2
 
-/-- 概要：指定同型の端点の輸送は合成の比較を保つ。
-方針：端点の等式を消去し標準同型を恒等同型に戻す。
-規約：元の指定同型の値を保持する。
-使われ方：引き戻し錐の二射影と指定 path の比較。 -/
-lemma functorIso_postcomp_heq_of_heq {X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
-    (e : FunctorIso f g) (e' : FunctorIso f' g') (hf : f = f') (hg : g = g')
-    (h : HEq e' e) {Z : SSet.{u}} (r : Y ⟶ Z) :
-    HEq (e'.postcomp r) (e.postcomp r) := by
-  subst f'
-  subst g'
-  cases eq_of_heq h
-  rfl
 /-- 概要：指定同型の端点の輸送は合成の比較を保つ。
 方針：端点の等式を消去し標準同型を恒等同型に戻す。
 規約：元の指定同型の値を保持する。

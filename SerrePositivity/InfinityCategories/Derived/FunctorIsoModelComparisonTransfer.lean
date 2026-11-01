@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 /-!
 概要：指定済みの canonical cell 模型比較を、同じ増大上の別模型の比較へ接続する。
 方針：元の出力比較の式を代入し、同じ cell 始域の指定逆で前合成する。

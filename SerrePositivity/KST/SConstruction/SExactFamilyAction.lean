@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SExactValues
-public import SerrePositivity.KST.LocalizingInvariants.ExactEnrichment
-public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
+public import SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment
+public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
 
 /-! # 全完全関手族による元の S_n の作用
 概要：完全関手空間の全単体が、元の全 gapped S_n に作用する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceIsoCubicalMapping
-public import SerrePositivity.KST.SConstruction.NecklaceVertices
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceVertices
 public import SerrePositivity.KST.SConstruction.ConcreteCubeDimensionIso
 public import Mathlib.Order.Interval.Finset.Nat
 

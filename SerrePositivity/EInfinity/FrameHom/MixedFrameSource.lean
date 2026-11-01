@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
 
 /-!
 # 混合 Hom の始域 frame に関する自然な前合成

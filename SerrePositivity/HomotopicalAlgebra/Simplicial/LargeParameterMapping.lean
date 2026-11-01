@@ -1,7 +1,8 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
 
 /-!
 # 大きいパラメータを持つ写像空間で互換な全面を充填する
@@ -23,8 +24,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
 [棚卸し m0443][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0443
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0443
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

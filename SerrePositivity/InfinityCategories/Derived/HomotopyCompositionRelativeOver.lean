@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver
+public import SerrePositivity.InfinityCategories.F1B.HomotopyCompositionOver
 
 /-! # 指定部分と底三角形を同時に保つ相対ホモトピー合成
 

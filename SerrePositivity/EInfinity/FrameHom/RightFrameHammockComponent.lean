@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
 public import SerrePositivity.InfinityCategories.F1.Universe.Kan
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelRelative
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelRelative
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 
 /-!

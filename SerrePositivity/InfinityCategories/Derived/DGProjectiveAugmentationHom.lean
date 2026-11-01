@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 /-!
 概要：元の射影的出力比較の射を、同じ augmentation の実ホモトピーの類へ同定する。
 方針：端点の型輸送を除き、同じ切断と対象宇宙の上げ下げを円柱射上で照合する。

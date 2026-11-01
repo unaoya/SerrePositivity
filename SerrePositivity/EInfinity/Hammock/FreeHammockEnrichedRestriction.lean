@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedFoldUnique
 public import SerrePositivity.EInfinity.Hammock.AllMarkedEnrichedInclusion
-public import SerrePositivity.EInfinity.Hammock.EnrichedCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
 
 /-!
 # 元の自由圏の hammock の豊穣拡張と二つの生成部分への制限

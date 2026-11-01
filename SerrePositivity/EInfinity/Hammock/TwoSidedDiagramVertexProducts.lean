@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramFixedVertexFibers
-public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTransfunctor
-public import SerrePositivity.EInfinity.Hammock.LabelledChainTransport
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedDiagramTransfunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LabelledChainTransport
 public import SerrePositivity.EInfinity.Hammock.FiniteProduct
 public import SerrePositivity.EInfinity.Hammock.IndexedSumIso
-public import SerrePositivity.EInfinity.SimplicialLocalization.FixedObjectHom
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
 /-!
 # 元の部分対角の固定頂点列ごとの有限 Hom 積
 

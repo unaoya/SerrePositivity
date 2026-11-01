@@ -24,8 +24,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
 [棚卸し m0340][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0340
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0340
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

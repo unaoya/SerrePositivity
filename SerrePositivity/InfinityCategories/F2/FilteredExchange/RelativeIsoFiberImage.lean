@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFiberRestriction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 
 /-!
 概要：任意の指定相対頂点同型の fiber 作用を実際の fiber 射の関手同型にする。

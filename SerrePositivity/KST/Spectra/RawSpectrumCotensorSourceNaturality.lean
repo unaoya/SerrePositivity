@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPreNaturality
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
-public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality
 
 /-!
 概要：元の cotensor 交換は、BF 源の射による前合成と厳密に可換。

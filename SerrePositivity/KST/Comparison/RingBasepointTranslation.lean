@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MatrixSpace
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 # 単体的環の加法による基点の平行移動

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedFoldMap
-public import SerrePositivity.EInfinity.Hammock.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
 
 /-!
 # 元の hammock の抽出の単位・合成保存と生成矢の回収

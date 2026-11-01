@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SignedAdjointParametricCoordinates
 public import SerrePositivity.KST.Spectra.PointedParametricPostExchange
-public import SerrePositivity.KST.Spectra.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 
 /-!
 概要：二つの実入力区間の全族合成に使う、二重 loop 入力と共通中間射の厳密座標。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactFamily
-public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
+public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
 
 /-! # 全高次入力を保つ厳密豊穣完全 Perf 関手
 概要：元の厳密 dg 入力圏から、安定 ∞ 圏と完全関手の単体的圏への豊穣関手を与える。

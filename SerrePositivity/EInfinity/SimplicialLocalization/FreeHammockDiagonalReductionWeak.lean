@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeWordDiagonalWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonal
 public import SerrePositivity.EInfinity.Hammock.WordDiagonalProper
-public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialColimit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialColimit
 public import SerrePositivity.EInfinity.Hammock.WeakProperColimit
 
 /-!

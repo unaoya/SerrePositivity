@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 /-! # The monoid axiom and tensor-cell acyclicity
 

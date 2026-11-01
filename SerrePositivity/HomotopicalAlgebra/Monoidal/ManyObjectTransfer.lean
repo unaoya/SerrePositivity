@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
 
-public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 
 /-! # Monoid-axiom acyclicity for many-object module transfer
 

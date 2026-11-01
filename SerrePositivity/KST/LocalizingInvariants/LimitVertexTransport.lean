@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.Limit
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 
 /-!
 概要：指定した可逆な頂点比較に沿う極限錐の輸送。

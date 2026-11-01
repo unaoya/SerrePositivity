@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 public import SerrePositivity.InfinityCategories.Derived.FunctorFamilyHomotopyUncurry
 public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyCompositionParameters
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy
 /-!
 概要：三つの全選択空間上の評価同型から、全選択を同時に動かす実族の合成関係を得る。
 方針：三同型を同じ二重パラメータ上の実ホモトピーへ戻し、実評価三角形の合成則を移す。

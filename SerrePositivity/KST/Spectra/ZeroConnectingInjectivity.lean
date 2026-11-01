@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.BoundaryFilling
-public import SerrePositivity.KST.Spectra.FibrationSequence
+public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
 
 /-!
 概要：全境界充填を持つ全空間の零次数への連結写像の単射性。

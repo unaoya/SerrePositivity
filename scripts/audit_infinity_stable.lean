@@ -293,7 +293,7 @@ import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismDirectNatura
 import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGeneral
 import SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral
 import SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison
-import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+import SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport
 import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
 import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
@@ -994,9 +994,9 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionPrecompCompo
 import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftInputComposition
 import SerrePositivity.InfinityCategories.Derived.DGModuleOutputPrecompComposition
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition
-import SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift
-import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy
-import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization
+import SerrePositivity.InfinityCategories.F1B.FullSubcomplexHomotopyLift
+import SerrePositivity.InfinityCategories.F1B.RestrictedDeformationHomotopy
+import SerrePositivity.InfinityCategories.F1B.Localization.RestrictedDeformationLocalization
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatResolutionLocalization
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatEdges
@@ -1006,7 +1006,7 @@ import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelToDerived
 import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent
 import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison
 import SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization
-import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract
 import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization
@@ -1519,7 +1519,7 @@ import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeReindex
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIndex
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeSigns
 import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData
-import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 import SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity
 import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity
 import SerrePositivity.InfinityCategories.Derived.DGModuleHomSpaceInfinity
@@ -1557,7 +1557,7 @@ import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientLocalization
 import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence
 import SerrePositivity.InfinityCategories.Derived.SourceEquivalencePrecomposition
 import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges
-import SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport
+import SerrePositivity.InfinityCategories.Stable.Exact.CofiberBottomIsoTransport
 import SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts
 import SerrePositivity.InfinityCategories.Derived.DGQuotientExactDescent
 import SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctorEquivalence
@@ -1566,10 +1566,10 @@ import SerrePositivity.InfinityCategories.Derived.DGStableClosureInclusion
 import SerrePositivity.InfinityCategories.Derived.DGStableObjectProperty
 import SerrePositivity.InfinityCategories.Derived.DGStableSubcategory
 import SerrePositivity.InfinityCategories.Derived.DGStableSubcategoryChoices
-import SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory
-import SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence
-import SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent
-import SerrePositivity.InfinityCategories.Derived.StableVerdierSequence
+import SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategory
+import SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategoryEquivalence
+import SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorDescent
+import SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence
 import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
 import SerrePositivity.InfinityCategories.Derived.CoslicePrismIso
 import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
@@ -1579,7 +1579,7 @@ import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitLegs
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCanonical
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLegs
 import SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanUnit
-import SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges
+import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
 import SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp
 import SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents
 import SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization
@@ -1644,8 +1644,8 @@ import SerrePositivity.InfinityCategories.Derived.PinchedIdentityFamily
 import SerrePositivity.InfinityCategories.Derived.RoofEndpointTransport
 import SerrePositivity.InfinityCategories.Derived.RoofHomotopyComposition
 import SerrePositivity.InfinityCategories.Derived.WeakRoofFamilySpanComparison
-import SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport
-import SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization
+import SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport
+import SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization
 import SerrePositivity.InfinityCategories.Derived.PinchedFamilyPostcomposition
 import SerrePositivity.InfinityCategories.Derived.DGEvaluationSliceRealization
 import SerrePositivity.InfinityCategories.Derived.RoofPullbackHomotopy
@@ -1656,16 +1656,16 @@ import SerrePositivity.InfinityCategories.Derived.DGClosedRoofImageProjections
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFamilyRealization
 import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentTransportEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGPresentedFamilyEvaluationIso
-import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
-import SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition
-import SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal
+import SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation
+import SerrePositivity.InfinityCategories.F1B.Roof.HomotopyPostcomposition
+import SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceTerminal
 import SerrePositivity.InfinityCategories.Derived.FunctorSliceRepresentation
-import SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy
-import SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation
+import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationHomotopy
+import SerrePositivity.InfinityCategories.Stable.Roof.HomotopyPostcompositionEvaluation
 import SerrePositivity.InfinityCategories.Derived.ConstantHomotopyComponent
 import SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges
-import SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents
-import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+import SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceEvaluationComponents
+import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 import SerrePositivity.InfinityCategories.Derived.FunctorSlicePinchedValues
 import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp
 import SerrePositivity.InfinityCategories.Derived.DGConstantFamilyInvertible
@@ -1674,22 +1674,22 @@ import SerrePositivity.InfinityCategories.Derived.DGInvertingFamilyEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGInvertingFiniteRoofComposition
 import SerrePositivity.InfinityCategories.Derived.ConstantFunctorImageInvertible
-import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
-import SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare
-import SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare
-import SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition
-import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+import SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy
+import SerrePositivity.InfinityCategories.F1B.FunctorRightConstantSquare
+import SerrePositivity.InfinityCategories.F1B.PrismFunctorSquare
+import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
+import SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition
 import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition
 import SerrePositivity.InfinityCategories.Derived.DGFiniteRoofFunctorRelations
 import SerrePositivity.InfinityCategories.Derived.RoofEvaluationComposition
-import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 import SerrePositivity.InfinityCategories.Derived.KanPrecompositionHomotopyIso
 import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentFamilyEvaluation
 import SerrePositivity.InfinityCategories.Derived.RoofLeftPrismLift
 import SerrePositivity.InfinityCategories.Derived.RoofTerminalEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofTerminalEvaluation
 import SerrePositivity.InfinityCategories.Derived.DGInvertingHomFamilyEvaluation
-import SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver
+import SerrePositivity.InfinityCategories.F1B.HomotopyCompositionOver
 import SerrePositivity.InfinityCategories.Derived.HomotopyCompositionRelativeOver
 import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionHomotopy
 import SerrePositivity.InfinityCategories.Derived.DGFiniteOreTrianglePrisms
@@ -1735,7 +1735,7 @@ import SerrePositivity.InfinityCategories.Derived.ActualRoofInvertingEvaluation
 import SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction
 import SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoof
-import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence
 import SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFunctor
 import SerrePositivity.InfinityCategories.Derived.WeakHomotopyDescent
@@ -1790,12 +1790,12 @@ import SerrePositivity.InfinityCategories.Derived.DGSkeletalComparisonGluing
 import SerrePositivity.InfinityCategories.Derived.KanHomotopyExtension
 import SerrePositivity.InfinityCategories.Derived.DGSkeletalQuotientExtension
 import SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStep
-import SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces
-import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
+import SerrePositivity.InfinityCategories.F1B.RoofCompositionFaces
+import SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle
 import SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite
 import SerrePositivity.InfinityCategories.Derived.RoofHomotopyRelativeFiller
 import SerrePositivity.InfinityCategories.Derived.DGActualRoofHomotopyFillers
-import SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift
+import SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero
 import SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberHomotopy
@@ -5820,9 +5820,9 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGUniverseLiftInputComposition,
   `SerrePositivity.InfinityCategories.Derived.DGModuleOutputPrecompComposition,
   `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComposition,
-  `SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift,
-  `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy,
-  `SerrePositivity.InfinityCategories.Derived.RestrictedDeformationLocalization,
+  `SerrePositivity.InfinityCategories.F1B.FullSubcomplexHomotopyLift,
+  `SerrePositivity.InfinityCategories.F1B.RestrictedDeformationHomotopy,
+  `SerrePositivity.InfinityCategories.F1B.Localization.RestrictedDeformationLocalization,
   `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve,
   `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatResolutionLocalization,
   `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatEdges,
@@ -5832,7 +5832,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescent,
   `SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparison,
   `SerrePositivity.InfinityCategories.F1B.Localization.DeformationLocalization,
-  `SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex,
+  `SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex,
   `SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy,
   `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionRetract,
   `SerrePositivity.InfinityCategories.Derived.DGModuleResolutionLocalization,
@@ -6363,7 +6363,7 @@ open Lean Elab Command in
 
 @[noinline] private def stableAuditExpectedChunk15 : Array Lean.Name := #[
   `SerrePositivity.InfinityCategories.Derived.DGNerveOppositeData,
-  `SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction,
+  `SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction,
   `SerrePositivity.InfinityCategories.Derived.DGMoritaAdjunctionInfinity,
   `SerrePositivity.InfinityCategories.Derived.DGSemifreeHomComplexInfinity,
   `SerrePositivity.InfinityCategories.Derived.DGModuleHomSpaceInfinity,
@@ -6401,7 +6401,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence,
   `SerrePositivity.InfinityCategories.Derived.SourceEquivalencePrecomposition,
   `SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges,
-  `SerrePositivity.InfinityCategories.Derived.CofiberBottomIsoTransport,
+  `SerrePositivity.InfinityCategories.Stable.Exact.CofiberBottomIsoTransport,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientExactDescent,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientExactFunctorEquivalence,
@@ -6410,10 +6410,10 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGStableObjectProperty,
   `SerrePositivity.InfinityCategories.Derived.DGStableSubcategory,
   `SerrePositivity.InfinityCategories.Derived.DGStableSubcategoryChoices,
-  `SerrePositivity.InfinityCategories.Derived.ExactFunctorCategory,
-  `SerrePositivity.InfinityCategories.Derived.ExactFunctorCategoryEquivalence,
-  `SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent,
-  `SerrePositivity.InfinityCategories.Derived.StableVerdierSequence,
+  `SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategory,
+  `SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorCategoryEquivalence,
+  `SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorDescent,
+  `SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence,
   `SerrePositivity.InfinityCategories.Derived.RoofPointSliceTriangleEdge,
   `SerrePositivity.InfinityCategories.Derived.DGActualRoofIdentityRefinement,
   `SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdgePostcomposition,
@@ -6441,7 +6441,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGCoherentSliceComparison,
   `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrism,
   `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionPrismProjection,
-  `SerrePositivity.InfinityCategories.Derived.HomotopyCompositionOver,
+  `SerrePositivity.InfinityCategories.F1B.HomotopyCompositionOver,
   `SerrePositivity.InfinityCategories.Derived.HomotopyCompositionRelativeOver,
   `SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionHomotopy,
   `SerrePositivity.InfinityCategories.Derived.DGFiniteOreTrianglePrisms,
@@ -6451,35 +6451,35 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.RoofTerminalEvaluation,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofTerminalEvaluation,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingHomFamilyEvaluation,
-  `SerrePositivity.InfinityCategories.Derived.FunctorRightConstantSquare,
-  `SerrePositivity.InfinityCategories.Derived.PrismFunctorSquare,
-  `SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition,
-  `SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition,
+  `SerrePositivity.InfinityCategories.F1B.FunctorRightConstantSquare,
+  `SerrePositivity.InfinityCategories.F1B.PrismFunctorSquare,
+  `SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition,
+  `SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition,
   `SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition,
   `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofFunctorRelations,
   `SerrePositivity.InfinityCategories.Derived.RoofEvaluationComposition,
-  `SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily,
+  `SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily,
   `SerrePositivity.InfinityCategories.Derived.ConstantFunctorImageInvertible,
-  `SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy,
+  `SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy,
   `SerrePositivity.InfinityCategories.Derived.DGConstantFamilyInvertible,
   `SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyEvaluation,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingFamilyEvaluation,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingFiniteRoofComposition,
   `SerrePositivity.InfinityCategories.Derived.DGFiniteRoofOrePrecomp,
-  `SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation,
-  `SerrePositivity.InfinityCategories.Derived.HomotopyPostcomposition,
-  `SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal,
+  `SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation,
+  `SerrePositivity.InfinityCategories.F1B.Roof.HomotopyPostcomposition,
+  `SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceTerminal,
   `SerrePositivity.InfinityCategories.Derived.FunctorSliceRepresentation,
-  `SerrePositivity.InfinityCategories.Derived.SliceEvaluationHomotopy,
-  `SerrePositivity.InfinityCategories.Derived.HomotopyPostcompositionEvaluation,
+  `SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationHomotopy,
+  `SerrePositivity.InfinityCategories.Stable.Roof.HomotopyPostcompositionEvaluation,
   `SerrePositivity.InfinityCategories.Derived.ConstantHomotopyComponent,
   `SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges,
-  `SerrePositivity.InfinityCategories.Derived.FunctorSliceEvaluationComponents,
-  `SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched,
+  `SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceEvaluationComponents,
+  `SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched,
   `SerrePositivity.InfinityCategories.Derived.FunctorSlicePinchedValues,
-  `SerrePositivity.InfinityCategories.Derived.PinchedSliceTransport,
-  `SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization,
+  `SerrePositivity.InfinityCategories.F1B.PinchedSliceTransport,
+  `SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization,
   `SerrePositivity.InfinityCategories.Derived.PinchedFamilyPostcomposition,
   `SerrePositivity.InfinityCategories.Derived.DGEvaluationSliceRealization,
   `SerrePositivity.InfinityCategories.Derived.RoofPullbackHomotopy,
@@ -6506,7 +6506,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanCanonical,
   `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanLegs,
   `SerrePositivity.InfinityCategories.Derived.DGVerdierRightKanUnit,
-  `SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges,
+  `SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges,
   `SerrePositivity.InfinityCategories.Derived.HomotopyComponentPrecomp,
   `SerrePositivity.InfinityCategories.Derived.RightKanTransportComponents,
   `SerrePositivity.InfinityCategories.Derived.CosliceInitialRealization,
@@ -6585,7 +6585,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.WeakRoofDescentRestriction,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingHomActionFamily,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingRoof,
-  `SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor,
+  `SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor,
   `SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence,
   `SerrePositivity.InfinityCategories.Derived.DGInvertingRoofFunctor,
   `SerrePositivity.InfinityCategories.Derived.WeakHomotopyDescent,
@@ -6642,12 +6642,12 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.KanHomotopyExtension,
   `SerrePositivity.InfinityCategories.Derived.DGSkeletalQuotientExtension,
   `SerrePositivity.InfinityCategories.Derived.DGCoefficientSkeletalStep,
-  `SerrePositivity.InfinityCategories.Derived.RoofCompositionFaces,
-  `SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle,
+  `SerrePositivity.InfinityCategories.F1B.RoofCompositionFaces,
+  `SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle,
   `SerrePositivity.InfinityCategories.Derived.RoofCompatibleTransportComposite,
   `SerrePositivity.InfinityCategories.Derived.RoofHomotopyRelativeFiller,
   `SerrePositivity.InfinityCategories.Derived.DGActualRoofHomotopyFillers,
-  `SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift,
+  `SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift,
   `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberPrism,
   `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberZero,
   `SerrePositivity.InfinityCategories.Derived.RoofRelativeFiberHomotopy,
@@ -6974,7 +6974,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGStrictMappedRoofVertexInverse,
   `SerrePositivity.InfinityCategories.Derived.RoofFiberTransport,
   `SerrePositivity.InfinityCategories.Derived.DGRoofFiberProjection,
-  `SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp,
+  `SerrePositivity.InfinityCategories.Core.Roof.RoofPinchedSlicePostcomp,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientPinchedSlice,
   `SerrePositivity.InfinityCategories.Derived.DGRoofFiberComparison,
   `SerrePositivity.InfinityCategories.Derived.RoofRightFibrationKan,
@@ -7369,7 +7369,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.PinchedBoundaryFaceCompatibility,
   `SerrePositivity.InfinityCategories.Derived.PinchedRelativeBoundaryLifting,
   `SerrePositivity.InfinityCategories.Derived.PinchedChainMapTrivialFibration,
-  `SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport,
+  `SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport,
   `SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap,
   `SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful,
   `SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve,
@@ -7958,7 +7958,7 @@ open Lean Elab Command in
   `SerrePositivity.InfinityCategories.Derived.DGWalkingHomPrismGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGClosedSlicePrismGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGPrismDirectComparison,
-  `SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport,
+  `SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport,
   `SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp,
   `SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral,
   `SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda,

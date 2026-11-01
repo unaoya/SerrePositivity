@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorBinaryCoproduct
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 public import Mathlib.AlgebraicTopology.ModelCategory.Cylinder

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopMappingClasses
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
 public import SerrePositivity.KST.Spectra.PathContractibility
 
 /-!

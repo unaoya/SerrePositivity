@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonNerveMap
-public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckCoefficientComponents
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckCoefficientComponents
 
 /-!
 # 元の二方向 nerve 比較の両係数への自然性

@@ -17,10 +17,6 @@ run_cmd do
     `SerrePositivity.KST.Spectra.S3MilnorConnection,
     `SerrePositivity.KST.Spectra.S3KappaConnection]
   for mod in #[
-      `SerrePositivity.KST.Spectra.PointedParametricUncurryAction,
-      `SerrePositivity.KST.Spectra.PointedParametricUncurryPre,
-      `SerrePositivity.KST.Spectra.PointedUncurryActionTensor,
-      `SerrePositivity.KST.Spectra.PointedUncurryComposition,
       `SerrePositivity.KST.Spectra.D3All,
       `SerrePositivity.Inputs.Homotopy.KanQuillen] do
     if env.header.modules.any (·.module == mod) then

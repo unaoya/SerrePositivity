@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.SquarePrismGluing
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 
 /-!

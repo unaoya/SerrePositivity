@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
-public import SerrePositivity.KST.Spectra.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 
 /-!
 概要：空の空間を含む Kan 射の同値性を、π₀ と全基点の正次数 π で判定する。

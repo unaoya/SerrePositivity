@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.LeftRoofRightIdentity
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofRightIdentity
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.CategoryTheory.Category.ULift

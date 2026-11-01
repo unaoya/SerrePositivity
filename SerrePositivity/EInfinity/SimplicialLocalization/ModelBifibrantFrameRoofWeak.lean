@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrame
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelRawRelative
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelBifibrantFrame
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelRawRelative
 public import SerrePositivity.EInfinity.FrameHom.FrameFunctorImage
 public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst
 

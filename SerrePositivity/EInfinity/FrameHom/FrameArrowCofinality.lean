@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.FrameArrowCategory
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FrameArrowCategory
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Terminal
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility

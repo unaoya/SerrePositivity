@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CoherentStringPrismChains
+public import SerrePositivity.InfinityCategories.Kan.CoherentStringPrismChains
 public import SerrePositivity.KST.SConstruction.CoherentArrowNativeFamilies
 
 /-! # 同じ元の prism からの共通パラメータ上の二円柱

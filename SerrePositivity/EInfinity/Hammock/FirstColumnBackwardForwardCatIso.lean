@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardForwardEquivalence
 public import Mathlib.CategoryTheory.IsoCat
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 

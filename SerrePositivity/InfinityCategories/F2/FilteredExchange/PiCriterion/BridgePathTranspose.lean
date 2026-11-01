@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.FilteredSpaceBridgeInput
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.SphereClassPath
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：D が指定する実際の辺を、指数 path 対象の固定した基点として保持する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexFaces
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexFaces
 
 /-! # cospan と標準単体の join の二つのセル
 

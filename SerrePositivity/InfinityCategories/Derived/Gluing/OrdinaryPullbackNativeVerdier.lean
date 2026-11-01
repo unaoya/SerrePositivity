@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackKernelLocalization
 public import SerrePositivity.InfinityCategories.Derived.Gluing.OrdinaryPullbackVerdierSequence
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 /-!
 概要：元の通常 pullback 包含と同じ平坦商は Sp の実 Verdier 列をなす。
 方針：既存の完全性に D-16 の厚い核反映・辺局所化を接続する。

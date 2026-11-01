@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitDerived
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomSource
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomNormalization
-public import SerrePositivity.EInfinity.FrameHom.RepresentedLocalization
+public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentedLocalization
 
 /-!
 # 元の E 代数極限の底と全複体図式の右導来極限の比較

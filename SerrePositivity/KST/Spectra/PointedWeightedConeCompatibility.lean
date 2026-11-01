@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedWeightedCone
-public import SerrePositivity.KST.Spectra.InternalHomExchangeUnit
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeUnit
 
 /-!
 概要：点つき weighted end への標準比較は係数と内部 Hom に関して自然。

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Stable.TerminalComparisonInterv
 public import SerrePositivity.InfinityCategories.Stable.SliceEvaluationNaturality
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCompositionTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
+public import SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation
 
 /-!
 概要：終対象を持つ right fibration の任意の実比較は、同じ実 fiber を表現する。

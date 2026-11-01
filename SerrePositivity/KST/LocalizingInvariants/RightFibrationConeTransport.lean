@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.SliceCornerRightFibration
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Core.EquivalenceTerminal
 
 /-!

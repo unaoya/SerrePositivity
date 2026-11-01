@@ -2,36 +2,6 @@
   "baseline": "6896e5b352c9256cc08938825a7543127ecc79c2",
   "entries": [
     {
-      "module": "SerrePositivity.CategoryTheory.AnchoredChain",
-      "class": "B",
-      "anchor": "m0001"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.AnchoredChainContraction",
-      "class": "B",
-      "anchor": "m0002"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.AnchoredChainNerve",
-      "class": "B",
-      "anchor": "m0003"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.AnchoredChainSimplicial",
-      "class": "B",
-      "anchor": "m0004"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.AnchoredChainTransport",
-      "class": "B",
-      "anchor": "m0005"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.ArrowContext",
-      "class": "B",
-      "anchor": "m0006"
-    },
-    {
       "module": "SerrePositivity.CategoryTheory.ArrowFactorizationCategory",
       "class": "A",
       "anchor": "m0007"
@@ -45,11 +15,6 @@
       "module": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp",
       "class": "A",
       "anchor": "m0009"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.LabelledChain",
-      "class": "B",
-      "anchor": "m0010"
     },
     {
       "module": "SerrePositivity.CategoryTheory.Limits.SequentialExtension",
@@ -87,81 +52,6 @@
       "anchor": "m0017"
     },
     {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation",
-      "class": "B",
-      "anchor": "m0018"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison",
-      "class": "B",
-      "anchor": "m0019"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality",
-      "class": "B",
-      "anchor": "m0020"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi",
-      "class": "B",
-      "anchor": "m0021"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordMap",
-      "class": "B",
-      "anchor": "m0022"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWords",
-      "class": "B",
-      "anchor": "m0023"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation",
-      "class": "B",
-      "anchor": "m0024"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordExt",
-      "class": "B",
-      "anchor": "m0025"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities",
-      "class": "B",
-      "anchor": "m0026"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordMap",
-      "class": "B",
-      "anchor": "m0027"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordPullback",
-      "class": "B",
-      "anchor": "m0028"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordRealization",
-      "class": "B",
-      "anchor": "m0029"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWords",
-      "class": "B",
-      "anchor": "m0030"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap",
-      "class": "B",
-      "anchor": "m0031"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization",
-      "class": "B",
-      "anchor": "m0032"
-    },
-    {
       "module": "SerrePositivity.CategoryTheory.Quiver.PathFunctorExt",
       "class": "A",
       "anchor": "m0033"
@@ -180,16 +70,6 @@
       "module": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport",
       "class": "A",
       "anchor": "m0036"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps",
-      "class": "B",
-      "anchor": "m0037"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPaths",
-      "class": "B",
-      "anchor": "m0038"
     },
     {
       "module": "SerrePositivity.CategoryTheory.Simplex.Naturality",
@@ -220,11 +100,6 @@
       "module": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces",
       "class": "A",
       "anchor": "m0044"
-    },
-    {
-      "module": "SerrePositivity.CategoryTheory.SimplexChainParameter",
-      "class": "B",
-      "anchor": "m0045"
     },
     {
       "module": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
@@ -3110,21 +2985,6 @@
   ],
   "extractions": [
     {
-      "old": "SerrePositivity.CategoryTheory.AnchoredChain",
-      "core": "SerrePositivity.CategoryTheory.ArrowFactorization",
-      "portion": "structure ArrowFactorization以降の一般的な前半"
-    },
-    {
-      "old": "SerrePositivity.CategoryTheory.LabelledChain",
-      "core": "SerrePositivity.CategoryTheory.ElementsChainLifting",
-      "portion": "全公開宣言（一般的な構成）"
-    },
-    {
-      "old": "SerrePositivity.CategoryTheory.SimplexChainParameter",
-      "core": "SerrePositivity.CategoryTheory.SimplexChainVertices",
-      "portion": "全公開宣言（一般的な構成）"
-    },
-    {
       "old": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolution",
       "core": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
       "portion": "全公開宣言（一般的な構成）"
@@ -3187,31 +3047,6 @@
   ],
   "phase": 2,
   "relocations": {
-    "SerrePositivity.CategoryTheory.AnchoredChain": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChain",
-    "SerrePositivity.CategoryTheory.AnchoredChainContraction": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainContraction",
-    "SerrePositivity.CategoryTheory.AnchoredChainNerve": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainNerve",
-    "SerrePositivity.CategoryTheory.AnchoredChainSimplicial": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainSimplicial",
-    "SerrePositivity.CategoryTheory.AnchoredChainTransport": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainTransport",
-    "SerrePositivity.CategoryTheory.ArrowContext": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.ArrowContext",
-    "SerrePositivity.CategoryTheory.LabelledChain": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.LabelledChain",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordAugmentation",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordComparison",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordFunctoriality",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordKaroubi",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWordMap": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordMap",
-    "SerrePositivity.CategoryTheory.Presentation.AmbientWords": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWords",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordAugmentation",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordExt": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordExt",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordIdentities",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordMap": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordMap",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordPullback": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordPullback",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordRealization": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordRealization",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWords": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWords",
-    "SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathParameterMap",
-    "SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathRealization",
-    "SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPathMaps",
-    "SerrePositivity.CategoryTheory.Quiver.WeightedPaths": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPaths",
-    "SerrePositivity.CategoryTheory.SimplexChainParameter": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.SimplexChainParameter",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationChoices": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationChoices",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationCoherentSquare": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationCoherentSquare",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationComparison": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison",
@@ -3632,7 +3467,6 @@
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalClosedAction",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarDiagonalEvaluation",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordResolution",
-    "SerrePositivity.CategoryTheory.Presentation.RetractWordPullback",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordActionOperators",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.OrdinaryBarWordAction",
     "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram",
@@ -3745,8 +3579,6 @@
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChainKanParameter",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PostChainReindexing",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AnchoredPostComparison",
-    "SerrePositivity.CategoryTheory.AnchoredChainSimplicial",
-    "SerrePositivity.CategoryTheory.AnchoredChainContraction",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationComparison",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPost",
     "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AllFactorizationPre",

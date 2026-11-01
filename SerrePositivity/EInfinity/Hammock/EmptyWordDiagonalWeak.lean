@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RelativeEmptyZigzagEquivalence
-public import SerrePositivity.EInfinity.Hammock.WordDiagonalAugmentation
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeEmptyZigzagEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordDiagonalAugmentation
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 

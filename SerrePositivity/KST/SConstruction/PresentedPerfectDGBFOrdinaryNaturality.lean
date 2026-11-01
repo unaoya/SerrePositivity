@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.StrictSimplicialOrdinaryMap
+public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialOrdinaryMap
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMap
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
 

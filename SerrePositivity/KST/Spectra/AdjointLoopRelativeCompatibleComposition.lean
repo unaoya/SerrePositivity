@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleMaps
 public import SerrePositivity.KST.Spectra.RawSpectrumHomPoints
 public import SerrePositivity.KST.Spectra.SpectrumPointedEnrichment
-public import SerrePositivity.KST.Spectra.EnrichedParameterSquares
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterSquares
 
 /-!
 概要：補助単位の相対 BF 左因子と可換な全 Hom の組を合成する。

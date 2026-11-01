@@ -1,8 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionInputComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationInputBaseHomotopy
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 /-!
 概要：元の出力比較を同じ実 augmentation 始点上の入力比較へ移す。
 方針：元の出力射影の下降・包含を厳密に計算し、指定値の後合成を移す。

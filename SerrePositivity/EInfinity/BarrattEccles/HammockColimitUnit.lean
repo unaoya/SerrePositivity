@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitComposition
 public import SerrePositivity.EInfinity.BarrattEccles.HammockUnit
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionUnit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionUnit
 
 /-!
 # 元の E 代数の hammock 合成の左右単位則

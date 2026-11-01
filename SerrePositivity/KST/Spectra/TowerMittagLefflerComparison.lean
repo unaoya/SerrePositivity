@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.TowerLimOneMittagLeffler
+public import SerrePositivity.InfinityCategories.Kan.TowerLimOneMittagLeffler
 public import SerrePositivity.KST.Spectra.TowerKernelNullCriterion
 
 /-!

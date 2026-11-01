@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ForwardPathZigzag
+public import SerrePositivity.InfinityCategories.ModelBridge.ForwardPathZigzag
 
 /-!
 # forward 射列からの縦射の恒等と合成

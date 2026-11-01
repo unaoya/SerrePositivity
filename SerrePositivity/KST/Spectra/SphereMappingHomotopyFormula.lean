@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SphereMappingHomotopyGroups
-public import SerrePositivity.KST.Spectra.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 
 /-!
 概要：球面の正次数群の次数移動の帰納式と loop の交換の自然性。

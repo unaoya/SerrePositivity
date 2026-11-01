@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StableLaxStructure
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StableTammeComparison
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 /-!
 概要：K-8b の実半直交分解を、元 dg gluing の共通宇宙の nerve へ戻す。
 方針：元の比較同値と実随伴を合成し、元射影を両射影の厳密な比較式で回収する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.FunctorSliceTerminal
+public import SerrePositivity.InfinityCategories.Stable.Roof.FunctorSliceTerminal
 
 /-!
 概要：Fun(K, X_/z) を、Fun(K,X) の定値関手の実 slice と底の上で同値にする。

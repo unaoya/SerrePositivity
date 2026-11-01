@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedKan
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedLinearPullback
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseKan
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseKan
 
 /-!
 # Dold–Kan Hom の小さい線形模型

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.GroupPointedFiveLemma
-public import SerrePositivity.KST.Spectra.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
 
 /-!
 概要：Kan fibration の比較で底と fiber の π_* 同型から全空間の全正次数の同型を得る。

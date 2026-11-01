@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CircleSmashMappingPullback
 public import SerrePositivity.KST.Spectra.CircleSmashSwap
-public import SerrePositivity.KST.Spectra.SelfPullbackInverseEdge
+public import SerrePositivity.InfinityCategories.Kan.SelfPullbackInverseEdge
 
 /-!
 概要：二重円の写像空間と自己 pullback の同型は変数交換と両因子の交換を結ぶ。

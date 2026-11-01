@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberComparisonProjection
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberPullback
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 
 /-! # dg 加群の標準 cofiber 四角形の引き戻し性
 

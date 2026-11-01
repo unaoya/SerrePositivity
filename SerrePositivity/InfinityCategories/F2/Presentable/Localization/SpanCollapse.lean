@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanNerveIso
+public import SerrePositivity.InfinityCategories.Simplicial.FiniteSpanNerveIso
 public import SerrePositivity.InfinityCategories.F2.Presentable.NerveFinalInitialComma
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeTargetCocone

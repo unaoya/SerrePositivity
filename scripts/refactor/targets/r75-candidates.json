@@ -1,0 +1,2993 @@
+{
+  "source_base": "21258b0d9b2fc2e948a8be5649449d6bf99cb59c",
+  "policy": "IF-W0-3 §10.16",
+  "status": "PASS",
+  "applied": false,
+  "extra_delete": [
+    "scripts/check_word_source_operators.lean"
+  ],
+  "candidates": 29,
+  "approved": 29,
+  "ready_without_edits": 3,
+  "eligible": 29,
+  "excluded": 0,
+  "rows": [
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWordAugmentation.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 345,
+          "text": "|ソース（現在の正規配置）|[AmbientWordAugmentation.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWordAugmentation.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 346,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation](../SerrePositivity/CategoryTheory/Presentation/AmbientWordAugmentation.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 243,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 222,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 222,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 62,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 90,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3197,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordAugmentation\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3213,
+          "text": "`AmbientWordAugmentation`と`WeightedPathParameterMap`は実augmentationがforgetに一致することと、"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 243,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 222,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 222,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 62,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 90,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3197,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordAugmentation\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWordComparison.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 361,
+          "text": "|ソース（現在の正規配置）|[AmbientWordComparison.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWordComparison.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 362,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison](../SerrePositivity/CategoryTheory/Presentation/AmbientWordComparison.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 244,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 223,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 223,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 49,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 95,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3198,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordComparison\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3200,
+          "text": "`AmbientWordKaroubi`と`AmbientWordComparison`はsmall頂点をword(0)の冪等元として復元し、"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 244,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 223,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 223,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 49,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 95,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3198,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordComparison\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWordFunctoriality.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 377,
+          "text": "|ソース（現在の正規配置）|[AmbientWordFunctoriality.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWordFunctoriality.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 378,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality](../SerrePositivity/CategoryTheory/Presentation/AmbientWordFunctoriality.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 21308,
+          "text": "`CategoryTheory/Presentation/AmbientWordFunctoriality`は、任意の元の圏の関手とword準同型について、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 245,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 224,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 224,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/check_word_rows_diagonal.lean",
+          "line": 56,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 100,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3199,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordFunctoriality\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3224,
+          "text": "`AmbientWordFunctoriality`は元の関手・word準同型の恒等・合成則とaugmentationの自然性を証明する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 245,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 224,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 224,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/check_word_rows_diagonal.lean",
+          "line": 56,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 100,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3199,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordFunctoriality\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordFunctoriality\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWordKaroubi.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 393,
+          "text": "|ソース（現在の正規配置）|[AmbientWordKaroubi.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWordKaroubi.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 394,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi](../SerrePositivity/CategoryTheory/Presentation/AmbientWordKaroubi.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 246,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 225,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 225,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 48,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 105,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3200,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordKaroubi\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3200,
+          "text": "`AmbientWordKaroubi`と`AmbientWordComparison`はsmall頂点をword(0)の冪等元として復元し、"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 246,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 225,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 225,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 48,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 105,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3200,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordKaroubi\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWordMap.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWordMap",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 409,
+          "text": "|ソース（現在の正規配置）|[AmbientWordMap.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWordMap.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 410,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWordMap](../SerrePositivity/CategoryTheory/Presentation/AmbientWordMap.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 247,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 226,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 226,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 50,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 110,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3201,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordMap\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3202,
+          "text": "`AmbientWordMap`は元の関手・word準同型との交換を全商射について与える。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 247,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWordMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 226,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 226,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 50,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 110,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWordMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3201,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWordMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWordMap\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/AmbientWords.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.AmbientWords",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 425,
+          "text": "|ソース（現在の正規配置）|[AmbientWords.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/AmbientWords.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 426,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.AmbientWords](../SerrePositivity/CategoryTheory/Presentation/AmbientWords.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 21156,
+          "text": "`CategoryTheory/Presentation/AmbientWords`は任意の圏Cと任意のモノイドMについて、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 248,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWords"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 227,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 227,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 47,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 115,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWords\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3202,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWords\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWords\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3199,
+          "text": "`AmbientWords`は元の射と各対象でのword作用だけで生成する商圏とその評価を構成する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 248,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.AmbientWords"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 227,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 227,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/check_ambient_word_comparison.lean",
+          "line": 47,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 115,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.AmbientWords\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3202,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.AmbientWords\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.AmbientWords\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordAugmentation.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 441,
+          "text": "|ソース（現在の正規配置）|[RetractWordAugmentation.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordAugmentation.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 442,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation](../SerrePositivity/CategoryTheory/Presentation/RetractWordAugmentation.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 20818,
+          "text": "`CategoryTheory/Presentation/RetractWordAugmentation`は、実augmentationの"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 249,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 228,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 228,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/check_word_resolution_diagram.lean",
+          "line": 52,
+          "text": "  let expected := #[`SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 120,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3203,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordAugmentation\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3133,
+          "text": "`RetractWordAugmentation`はaugmentationとambient source functorの変更則を証明する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 249,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 228,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 228,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/check_word_resolution_diagram.lean",
+          "line": 52,
+          "text": "  let expected := #[`SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 120,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3203,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordAugmentation\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordExt.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordExt",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 457,
+          "text": "|ソース（現在の正規配置）|[RetractWordExt.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordExt.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 458,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordExt](../SerrePositivity/CategoryTheory/Presentation/RetractWordExt.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 20746,
+          "text": "- `CategoryTheory/Presentation/RetractWordExt`：語圏の商からの任意の二つの実関手は、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 250,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordExt"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 229,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 229,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 83,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 125,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordExt\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3204,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordExt\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordExt\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3118,
+          "text": "`PathFunctorExt`と`RetractWordExt`は道と商の実関手の生成辺による外延性を与える。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 250,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordExt"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 229,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 229,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 83,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordExt,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 125,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordExt\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3204,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordExt\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordExt\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordIdentities.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 473,
+          "text": "|ソース（現在の正規配置）|[RetractWordIdentities.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordIdentities.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 474,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities](../SerrePositivity/CategoryTheory/Presentation/RetractWordIdentities.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 21077,
+          "text": "`CategoryTheory/Presentation/RetractWordIdentities`は語表示の定義関係から、商圏内での"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 251,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 230,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 230,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/check_diagonal_hom_augmentation.lean",
+          "line": 43,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 130,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3205,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordIdentities\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3185,
+          "text": "`RetractWordIdentities`と`OrdinaryBarDiagonalAmbientHom`は全単体作用に自然なsection・projection・"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 251,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 230,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 230,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/check_diagonal_hom_augmentation.lean",
+          "line": 43,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 130,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3205,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordIdentities\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordIdentities\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordMap.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordMap",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 489,
+          "text": "|ソース（現在の正規配置）|[RetractWordMap.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordMap.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 490,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordMap](../SerrePositivity/CategoryTheory/Presentation/RetractWordMap.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 252,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 231,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 231,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 75,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 135,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3206,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordMap\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3091,
+          "text": "`RetractWordRealization`と`RetractWordMap`は任意の圏への評価、source・語パラメータの変更と"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 252,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 231,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 231,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 75,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 135,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3206,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordMap\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordPullback.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordPullback",
+      "importers": [
+        "scripts/audit/shared.lean",
+        "scripts/check_word_source_operators.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 505,
+          "text": "|ソース（現在の正規配置）|[RetractWordPullback.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordPullback.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 506,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordPullback](../SerrePositivity/CategoryTheory/Presentation/RetractWordPullback.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 253,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 232,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 232,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 1,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 84,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 140,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3207,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordPullback\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3635,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3119,
+          "text": "`RetractWordPullback`は任意のsource functor・零付きモノイド準同型による実評価の引き戻しと"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 253,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 232,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 232,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 1,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordPullback"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "line": 84,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordPullback,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 140,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3207,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordPullback\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3635,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordPullback\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        },
+        {
+          "path": "scripts/check_word_source_operators.lean",
+          "action": "delete_check"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWordRealization.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWordRealization",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 521,
+          "text": "|ソース（現在の正規配置）|[RetractWordRealization.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWordRealization.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 522,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWordRealization](../SerrePositivity/CategoryTheory/Presentation/RetractWordRealization.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 254,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordRealization"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 233,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 233,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 74,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 145,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordRealization\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3208,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordRealization\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordRealization\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3091,
+          "text": "`RetractWordRealization`と`RetractWordMap`は任意の圏への評価、source・語パラメータの変更と"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 254,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWordRealization"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 233,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 233,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 74,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWordRealization,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 145,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWordRealization\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3208,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWordRealization\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWordRealization\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/RetractWords.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.RetractWords",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3089,
+          "text": "`CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 537,
+          "text": "|ソース（現在の正規配置）|[RetractWords.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWords.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 538,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.RetractWords](../SerrePositivity/CategoryTheory/Presentation/RetractWords.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 20598,
+          "text": "`CategoryTheory/Presentation/RetractWords`は、次の八種類の関係とその合同閉包だけで商を作る。"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 255,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWords"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 234,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 234,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 73,
+          "text": "  let expected := #[`SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 150,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWords\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3209,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWords\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWords\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3089,
+          "text": "`CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3089,
+          "text": "`CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 255,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.RetractWords"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 234,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 234,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/check_retract_word_presentation.lean",
+          "line": 73,
+          "text": "  let expected := #[`SerrePositivity.CategoryTheory.Presentation.RetractWords,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 150,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.RetractWords\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3209,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.RetractWords\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.RetractWords\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/WeightedPathParameterMap.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 553,
+          "text": "|ソース（現在の正規配置）|[WeightedPathParameterMap.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/WeightedPathParameterMap.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 554,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap](../SerrePositivity/CategoryTheory/Presentation/WeightedPathParameterMap.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 256,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 235,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 235,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 61,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 155,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3210,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathParameterMap\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3213,
+          "text": "`AmbientWordAugmentation`と`WeightedPathParameterMap`は実augmentationがforgetに一致することと、"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 256,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 235,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 235,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 61,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 155,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3210,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathParameterMap\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Presentation/WeightedPathRealization.lean",
+      "module": "SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 569,
+          "text": "|ソース（現在の正規配置）|[WeightedPathRealization.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/WeightedPathRealization.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 570,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization](../SerrePositivity/CategoryTheory/Presentation/WeightedPathRealization.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 21232,
+          "text": "`CategoryTheory/Presentation/WeightedPathRealization`は、重み付き道を"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 257,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 236,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 236,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 60,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 160,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3211,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathRealization\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3212,
+          "text": "`WeightedPathRealization`はAmbientWords(Paths G,M)の実商射と重み付き道の実同値・両逆則を証明する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 257,
+          "text": "import SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 236,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 236,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 60,
+          "text": "    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 160,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3211,
+          "text": "    \"SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Presentation.WeightedPathRealization\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Quiver/WeightedPaths.lean",
+      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPaths",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 665,
+          "text": "|ソース（現在の正規配置）|[WeightedPaths.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Quiver/WeightedPaths.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 666,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Quiver.WeightedPaths](../SerrePositivity/CategoryTheory/Quiver/WeightedPaths.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 21226,
+          "text": "`CategoryTheory/Quiver/WeightedPaths`は、グラフGの道の各頂点にモノイドMの重みを置いた"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 264,
+          "text": "import SerrePositivity.CategoryTheory.Quiver.WeightedPaths"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 238,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 238,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 58,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 190,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Quiver.WeightedPaths\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3213,
+          "text": "    \"SerrePositivity.CategoryTheory.Quiver.WeightedPaths\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPaths\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3211,
+          "text": "`WeightedPaths`と`WeightedPathMaps`は各頂点に重みを置く道の圏、任意の重み置換、forget・fillを与える。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 264,
+          "text": "import SerrePositivity.CategoryTheory.Quiver.WeightedPaths"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 238,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 238,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 58,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 190,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Quiver.WeightedPaths\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3213,
+          "text": "    \"SerrePositivity.CategoryTheory.Quiver.WeightedPaths\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPaths\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/Quiver/WeightedPathMaps.lean",
+      "module": "SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 649,
+          "text": "|ソース（現在の正規配置）|[WeightedPathMaps.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/Quiver/WeightedPathMaps.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 650,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps](../SerrePositivity/CategoryTheory/Quiver/WeightedPathMaps.lean)|"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 263,
+          "text": "import SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 237,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 237,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 59,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 185,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3212,
+          "text": "    \"SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPathMaps\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 3211,
+          "text": "`WeightedPaths`と`WeightedPathMaps`は各頂点に重みを置く道の圏、任意の重み置換、forget・fillを与える。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 263,
+          "text": "import SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 237,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 237,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/check_free_word_hom.lean",
+          "line": 59,
+          "text": "    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 185,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3212,
+          "text": "    \"SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.Quiver.WeightedPathMaps\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/AnchoredChain.lean",
+      "module": "SerrePositivity.CategoryTheory.AnchoredChain",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1596,
+          "text": "共有`CategoryTheory/AnchoredChain`は前後の射で外部端点と全体の射を固定した有限列を扱う。"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 72,
+          "text": "|ソース（現在の正規配置）|[AnchoredChain.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChain.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 73,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.AnchoredChain](../SerrePositivity/CategoryTheory/AnchoredChain.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 10065,
+          "text": "|[ArrowFactorization](../SerrePositivity/CategoryTheory/ArrowFactorization.lean)|`SerrePositivity.CategoryTheory.AnchoredChain`|structure ArrowFactorization以降の一般的な前半|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 12806,
+          "text": "新規共有`CategoryTheory/AnchoredChain`は、任意の圏Dと固定射g:Y→Vについて、内部の有限図式F、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 99,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChain"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 215,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChain,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 215,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChain,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 5,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3113,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.AnchoredChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3190,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChain\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChain\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1596,
+          "text": "共有`CategoryTheory/AnchoredChain`は前後の射で外部端点と全体の射を固定した有限列を扱う。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1596,
+          "text": "共有`CategoryTheory/AnchoredChain`は前後の射で外部端点と全体の射を固定した有限列を扱う。"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 99,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChain"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 215,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChain,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 215,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChain,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 5,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3113,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.AnchoredChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3190,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChain\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChain\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/AnchoredChainContraction.lean",
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainContraction",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 88,
+          "text": "|ソース（現在の正規配置）|[AnchoredChainContraction.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChainContraction.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 89,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.AnchoredChainContraction](../SerrePositivity/CategoryTheory/AnchoredChainContraction.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 12923,
+          "text": "新規共有`CategoryTheory/AnchoredChainContraction`は、因子分解圏の始対象(Y,id,g)から"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 100,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainContraction"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 216,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainContraction,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 216,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainContraction,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 10,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainContraction\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3191,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainContraction\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainContraction\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3749,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainContraction\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1621,
+          "text": "両端と全単体写像の自然性を証明する。`AnchoredChainContraction`は因子分解圏の始対象からの"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 100,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainContraction"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 216,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainContraction,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 216,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainContraction,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 10,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainContraction\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3191,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainContraction\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainContraction\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3749,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainContraction\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/AnchoredChainNerve.lean",
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainNerve",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 104,
+          "text": "|ソース（現在の正規配置）|[AnchoredChainNerve.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChainNerve.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 105,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.AnchoredChainNerve](../SerrePositivity/CategoryTheory/AnchoredChainNerve.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 12871,
+          "text": "新規共有`CategoryTheory/AnchoredChainNerve`は、合成列の全切断を因子分解の図式に送る"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 101,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainNerve"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 217,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainNerve,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 217,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainNerve,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 15,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainNerve\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3192,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainNerve\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainNerve\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1609,
+          "text": "それらの定値関手と恒等関手を結ぶ自然変換を与える。`AnchoredChainNerve`は図式との両逆と"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 101,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainNerve"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 217,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainNerve,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 217,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainNerve,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 15,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainNerve\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3192,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainNerve\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainNerve\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/AnchoredChainSimplicial.lean",
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainSimplicial",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 120,
+          "text": "|ソース（現在の正規配置）|[AnchoredChainSimplicial.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChainSimplicial.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 121,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.AnchoredChainSimplicial](../SerrePositivity/CategoryTheory/AnchoredChainSimplicial.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 12815,
+          "text": "新規`CategoryTheory/AnchoredChainSimplicial`はこの恒等則・合成則から、列の実際の単体集合を作る。"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 102,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainSimplicial"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 218,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainSimplicial,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 218,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainSimplicial,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 20,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3193,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainSimplicial\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3748,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1598,
+          "text": "`AnchoredChainSimplicial`は対象/Hom宇宙の最大内で列の実際の単体集合を構成する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 102,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainSimplicial"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 218,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainSimplicial,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 218,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainSimplicial,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 20,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3193,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainSimplicial\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3748,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainSimplicial\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/AnchoredChainTransport.lean",
+      "module": "SerrePositivity.CategoryTheory.AnchoredChainTransport",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 136,
+          "text": "|ソース（現在の正規配置）|[AnchoredChainTransport.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChainTransport.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 137,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.AnchoredChainTransport](../SerrePositivity/CategoryTheory/AnchoredChainTransport.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 13025,
+          "text": "新規共有`CategoryTheory/AnchoredChainTransport`は因子分解圏の任意の関手を、nerve同型を通して"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 103,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainTransport"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 219,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainTransport,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 219,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainTransport,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 25,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainTransport\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3194,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainTransport\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainTransport\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1644,
+          "text": "`AnchoredChainTransport`は全列の単体写像へ移し、単位・合成・前後交換と中間図式の保持を厳密に証明する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 103,
+          "text": "import SerrePositivity.CategoryTheory.AnchoredChainTransport"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 219,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainTransport,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 219,
+          "text": "    `SerrePositivity.CategoryTheory.AnchoredChainTransport,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 25,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.AnchoredChainTransport\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3194,
+          "text": "    \"SerrePositivity.CategoryTheory.AnchoredChainTransport\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainTransport\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/ArrowContext.lean",
+      "module": "SerrePositivity.CategoryTheory.ArrowContext",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1904,
+          "text": "`CategoryTheory/ArrowContext`はHom二変数関手の要素圏上で、中心射を変える全因子分解圏と"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 152,
+          "text": "|ソース（現在の正規配置）|[ArrowContext.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/ArrowContext.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 153,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.ArrowContext](../SerrePositivity/CategoryTheory/ArrowContext.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 14215,
+          "text": "`CategoryTheory/ArrowContext`は、Hom二変数関手Dᵒᵖ×D→Type[v]のcategory of elementsを索引とする。"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 104,
+          "text": "import SerrePositivity.CategoryTheory.ArrowContext"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 220,
+          "text": "    `SerrePositivity.CategoryTheory.ArrowContext,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 220,
+          "text": "    `SerrePositivity.CategoryTheory.ArrowContext,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 30,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.ArrowContext\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3195,
+          "text": "    \"SerrePositivity.CategoryTheory.ArrowContext\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.ArrowContext\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1904,
+          "text": "`CategoryTheory/ArrowContext`はHom二変数関手の要素圏上で、中心射を変える全因子分解圏と"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 1904,
+          "text": "`CategoryTheory/ArrowContext`はHom二変数関手の要素圏上で、中心射を変える全因子分解圏と"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 104,
+          "text": "import SerrePositivity.CategoryTheory.ArrowContext"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 220,
+          "text": "    `SerrePositivity.CategoryTheory.ArrowContext,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 220,
+          "text": "    `SerrePositivity.CategoryTheory.ArrowContext,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 30,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.ArrowContext\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3195,
+          "text": "    \"SerrePositivity.CategoryTheory.ArrowContext\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.ArrowContext\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/LabelledChain.lean",
+      "module": "SerrePositivity.CategoryTheory.LabelledChain",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 216,
+          "text": "|ソース（現在の正規配置）|[LabelledChain.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/LabelledChain.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 217,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.LabelledChain](../SerrePositivity/CategoryTheory/LabelledChain.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 10066,
+          "text": "|[ElementsChainLifting](../SerrePositivity/CategoryTheory/ElementsChainLifting.lean)|`SerrePositivity.CategoryTheory.LabelledChain`|全公開宣言（一般的な構成）|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 16845,
+          "text": "`CategoryTheory/LabelledChain`は、任意の実chainとその最初の元のラベルから、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 158,
+          "text": "import SerrePositivity.CategoryTheory.LabelledChain"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 221,
+          "text": "    `SerrePositivity.CategoryTheory.LabelledChain,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 221,
+          "text": "    `SerrePositivity.CategoryTheory.LabelledChain,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 50,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.LabelledChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3118,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.LabelledChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3196,
+          "text": "    \"SerrePositivity.CategoryTheory.LabelledChain\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.LabelledChain\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 2448,
+          "text": "`LabelledChain`・`TotalNerveBarAugmentation`は総要素圏の実chainと同じラベルを既存の対角barへ送る。"
+        },
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 2458,
+          "text": "`LabelledChain.reconstruct`は全実chainを基底chainと最初のラベルから正確に再構成する。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 158,
+          "text": "import SerrePositivity.CategoryTheory.LabelledChain"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 221,
+          "text": "    `SerrePositivity.CategoryTheory.LabelledChain,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 221,
+          "text": "    `SerrePositivity.CategoryTheory.LabelledChain,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 50,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.LabelledChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3118,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.LabelledChain\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3196,
+          "text": "    \"SerrePositivity.CategoryTheory.LabelledChain\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.LabelledChain\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/CategoryTheory/SimplexChainParameter.lean",
+      "module": "SerrePositivity.CategoryTheory.SimplexChainParameter",
+      "importers": [
+        "scripts/audit/shared.lean"
+      ],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 777,
+          "text": "|ソース（現在の正規配置）|[SimplexChainParameter.lean](../SerrePositivity/HomotopicalAlgebra/Rectification/CategoryTheory/SimplexChainParameter.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 778,
+          "text": "|旧import互換|[SerrePositivity.CategoryTheory.SimplexChainParameter](../SerrePositivity/CategoryTheory/SimplexChainParameter.lean)|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-generalization-inventory.md",
+          "line": 10067,
+          "text": "|[SimplexChainVertices](../SerrePositivity/CategoryTheory/SimplexChainVertices.lean)|`SerrePositivity.CategoryTheory.SimplexChainParameter`|全公開宣言（一般的な構成）|"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 16834,
+          "text": "`CategoryTheory/SimplexChainParameter`はΔᵒᵖ内の実chainについて、"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 282,
+          "text": "import SerrePositivity.CategoryTheory.SimplexChainParameter"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 239,
+          "text": "    `SerrePositivity.CategoryTheory.SimplexChainParameter,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 239,
+          "text": "    `SerrePositivity.CategoryTheory.SimplexChainParameter,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 225,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.SimplexChainParameter\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3123,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.SimplexChainParameter\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3214,
+          "text": "    \"SerrePositivity.CategoryTheory.SimplexChainParameter\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.SimplexChainParameter\","
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/HomotopicalAlgebra/README.md",
+          "line": 2446,
+          "text": "`SimplexChainParameter`・`SimplexNerveAugmentation`は任意Xについてnerve(X.Elements)→Xを構成し、"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 282,
+          "text": "import SerrePositivity.CategoryTheory.SimplexChainParameter"
+        },
+        {
+          "path": "scripts/audit/shared.lean",
+          "line": 1476,
+          "text": "  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.Asymptotic.AssembleComplex, `SerrePositivity.Asymptotic.BaseChangeComparison, `SerrePositivity.Asymptotic.BaseChangeComposition, `SerrePositivity.Asymptotic.BaseChangeIdentity, `SerrePositivity.Asymptotic.CompletedBaseChangeSupport, `SerrePositivity.Asymptotic.CompletedComplexEvaluation, `SerrePositivity.Asymptotic.CompletedEulerAdditivity, `SerrePositivity.Asymptotic.CompletedEulerComparison, `SerrePositivity.Asymptotic.Compl"
+        },
+        {
+          "path": "scripts/audit_homotopical_foundations.lean",
+          "line": 239,
+          "text": "    `SerrePositivity.CategoryTheory.SimplexChainParameter,"
+        },
+        {
+          "path": "scripts/audit_homotopical_general_tools.lean",
+          "line": 239,
+          "text": "    `SerrePositivity.CategoryTheory.SimplexChainParameter,"
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 225,
+          "text": "      \"module\": \"SerrePositivity.CategoryTheory.SimplexChainParameter\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3123,
+          "text": "      \"old\": \"SerrePositivity.CategoryTheory.SimplexChainParameter\","
+        },
+        {
+          "path": "scripts/homotopical_generalization_manifest.json",
+          "line": 3214,
+          "text": "    \"SerrePositivity.CategoryTheory.SimplexChainParameter\": \"SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.SimplexChainParameter\","
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "scripts/audit/shared.lean",
+          "action": "regenerate_area_audit"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/Spectra/SymmetricSequence/TensorPowers.lean",
+      "module": "SerrePositivity.Spectra.SymmetricSequence.TensorPowers",
+      "importers": [],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 1116,
+          "text": "[TensorPowers](../SerrePositivity/Spectra/SymmetricSequence/TensorPowers.lean)で、"
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/README.md",
+          "line": 7,
+          "text": "- [TensorPowers](TensorPowers.lean)：反復テンソル、射の関手性、次数の連結同型。"
+        },
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/README.md",
+          "line": 88,
+          "text": "宣言のnamespace `SerrePositivity.TensorPowers` と既存の宣言名は変更していない。"
+        }
+      ],
+      "active_references": [],
+      "ready_without_edits": true,
+      "importer_actions": [],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/Spectra/SymmetricSequence/TensorPermutations.lean",
+      "module": "SerrePositivity.Spectra.SymmetricSequence.TensorPermutations",
+      "importers": [],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 1127,
+          "text": "[TensorPermutations](../SerrePositivity/Spectra/SymmetricSequence/TensorPermutations.lean)で、"
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/README.md",
+          "line": 14,
+          "text": "- [TensorPermutations](TensorPermutations.lean)：最初の二因子の交換と自然性。"
+        }
+      ],
+      "active_references": [],
+      "ready_without_edits": true,
+      "importer_actions": [],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/Spectra/SymmetricSequence/AdjacentTranspositions.lean",
+      "module": "SerrePositivity.Spectra.SymmetricSequence.AdjacentTranspositions",
+      "importers": [],
+      "references": [
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 1166,
+          "text": "[AdjacentTranspositions](../SerrePositivity/Spectra/SymmetricSequence/AdjacentTranspositions.lean)で、"
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/README.md",
+          "line": 15,
+          "text": "- [AdjacentTranspositions](AdjacentTranspositions.lean)：全位置の隣接交換、対合性、遠隔可換性。"
+        }
+      ],
+      "active_references": [],
+      "ready_without_edits": true,
+      "importer_actions": [],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    },
+    {
+      "path": "SerrePositivity/Spectra/SymmetricSequence/AdjacentBraid.lean",
+      "module": "SerrePositivity.Spectra.SymmetricSequence.AdjacentBraid",
+      "importers": [
+        "SerrePositivity/Spectra/SymmetricSequence/SpherePowers.lean"
+      ],
+      "references": [
+        {
+          "path": "SerrePositivity/Spectra/SymmetricSequence/SpherePowers.lean",
+          "line": 3,
+          "text": "public import SerrePositivity.Spectra.SymmetricSequence.AdjacentBraid"
+        },
+        {
+          "path": "formalization-plans/archive/k-theory-v1.md",
+          "line": 1177,
+          "text": "[AdjacentBraid](../SerrePositivity/Spectra/SymmetricSequence/AdjacentBraid.lean)で、"
+        }
+      ],
+      "readme_name_mentions": [
+        {
+          "path": "SerrePositivity/CategoryTheory/Monoidal/README.md",
+          "line": 16,
+          "text": "- [AdjacentBraid](AdjacentBraid.lean)：Yang–Baxterから全位置のbraid関係への接続。"
+        }
+      ],
+      "active_references": [
+        {
+          "path": "SerrePositivity/Spectra/SymmetricSequence/SpherePowers.lean",
+          "line": 3,
+          "text": "public import SerrePositivity.Spectra.SymmetricSequence.AdjacentBraid"
+        }
+      ],
+      "ready_without_edits": false,
+      "importer_actions": [
+        {
+          "path": "SerrePositivity/Spectra/SymmetricSequence/SpherePowers.lean",
+          "action": "redirect_to_SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid"
+        }
+      ],
+      "blocking_importers": [],
+      "approved_for_bundle": true,
+      "eligible": true,
+      "reference_action": "§10.16: regenerate generated audits; remove obsolete module names from audits/manifest/checks; redirect qualified README paths; retain short declaration names"
+    }
+  ]
+}

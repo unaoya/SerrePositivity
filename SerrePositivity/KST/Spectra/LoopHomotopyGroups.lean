@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopPathFiber
-public import SerrePositivity.KST.Spectra.HomotopyIso
-public import SerrePositivity.KST.Spectra.ContractibleTotalSequence
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.ContractibleTotalSequence
 
 /-!
 概要：Kan 複体の loop の正次数のホモトピー群の次数移動。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.StableZeroSquareTriangleRecovery
-public import SerrePositivity.KST.SConstruction.SpecifiedComparisonRestrictionComposition
+public import SerrePositivity.InfinityCategories.Kan.SpecifiedComparisonRestrictionComposition
 
 /-!
 概要：元零四角形全比較の包含・商・零左側面の制限を指定同型そのものへ回収する。

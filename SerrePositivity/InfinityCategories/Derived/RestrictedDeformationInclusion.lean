@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RestrictedDeformationHomotopy
+public import SerrePositivity.InfinityCategories.F1B.RestrictedDeformationHomotopy
 /-!
 概要：頂点全部分圏上へ制限した元の変形円柱の実包含後を計算する。
 方針：同じ全円柱写像の標準持ち上げの射影式を使う。

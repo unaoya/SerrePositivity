@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：比較合成の第二因子だけへの終点等式の輸送は、元の合成の指定値を保持する。

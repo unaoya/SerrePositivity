@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RootedFiniteDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RootedFiniteDiagram
 public import SerrePositivity.EInfinity.Hammock.FiniteGridRootHull
 
 /-!

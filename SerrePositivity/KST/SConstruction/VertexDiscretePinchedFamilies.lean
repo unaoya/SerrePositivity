@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.VertexDiscreteFunctionSimplices
+public import SerrePositivity.InfinityCategories.Kan.VertexDiscreteFunctionSimplices
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 

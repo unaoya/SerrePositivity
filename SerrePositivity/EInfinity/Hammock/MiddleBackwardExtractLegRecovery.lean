@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.MiddleBackwardExtractFamily
+public import SerrePositivity.InfinityCategories.ModelBridge.MiddleBackwardExtractFamily
 
 /-!
 # 抽出した三つの脚の元の列への回収

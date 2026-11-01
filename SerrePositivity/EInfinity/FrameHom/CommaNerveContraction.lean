@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
-public import SerrePositivity.EInfinity.FrameHom.CostructuredArrowDiagram
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowDiagram
 public import SerrePositivity.CategoryTheory.ElementsChainLifting
 public import SerrePositivity.CategoryTheory.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization

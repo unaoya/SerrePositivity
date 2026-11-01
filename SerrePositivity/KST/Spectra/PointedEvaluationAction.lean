@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedIhomActionComposition
 public import SerrePositivity.KST.Spectra.PointedIhomParameterRestriction
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
 
 /-!

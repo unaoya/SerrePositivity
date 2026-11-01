@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardData
-public import SerrePositivity.EInfinity.Hammock.RelativeAppendParts
-public import SerrePositivity.EInfinity.Hammock.BackwardZigzagNativeRelative
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeAppendParts
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.BackwardZigzagNativeRelative
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTotal
 
 /-!

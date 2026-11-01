@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleFunctors
-public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderRestriction
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderRestriction
 
 /-!
 概要：相対 BF 左因子を二つの全 Hom 関手の間の厳密な豊穣自然変換へ束ねる。

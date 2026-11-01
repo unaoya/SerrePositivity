@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedDiagram
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonTransition
-public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckCoefficientComponents
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckCoefficientComponents
 
 /-!
 # 元の二方向図式から元の全圏への関手

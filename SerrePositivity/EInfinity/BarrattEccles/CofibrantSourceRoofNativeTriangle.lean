@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismZero
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismOne
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismProjection
-public import SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
 
 /-!
 # 元の native roof 全三角形と実屋根の cofinal 性

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativeTriangleContraction
-public import SerrePositivity.KST.Spectra.HomotopyInvariance
+public import SerrePositivity.InfinityCategories.Kan.HomotopyInvariance
 
 /-!
 概要：相対三角形から Kan 複体への点つき写像空間の成分は一つである。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedFamily
 public import SerrePositivity.KST.SConstruction.InverseMixedFamilyTransport
-public import SerrePositivity.KST.SConstruction.CartesianEdgeInterchange
+public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
 
 /-! # 二本の入力にまたがる逆射・延長の中間交換
 概要：最初の入力の逆射の混合族と次の入力の延長の混合族を合成する。

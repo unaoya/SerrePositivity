@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonStability
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 /-!
 概要：元 dg gluing と正本 lax pullback を、K-8 の同じ宇宙の安定圏として束ねる。
 方針：実 nerve・宇宙持ち上げ・左右射影・比較の完全性だけを束ねる。

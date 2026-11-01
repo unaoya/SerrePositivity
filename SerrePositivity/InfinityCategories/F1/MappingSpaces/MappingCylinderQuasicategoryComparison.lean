@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.BoundaryFactorization
+public import SerrePositivity.InfinityCategories.Kan.BoundaryFactorization
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderTargetComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderIntervalEquivalence
 

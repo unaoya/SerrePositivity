@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 /-!
 概要：元の出力模型比較の射が、実導来射作用の可換四角形を満たす。
 方針：型付きの交換則・元の κ・実 augmentation の三つの四角形を合成する。

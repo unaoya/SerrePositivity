@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.SkeletonDiagramSubfunctor
+public import SerrePositivity.InfinityCategories.Kan.SkeletonDiagramSubfunctor
 public import SerrePositivity.KST.Spectra.BousfieldKanWeightLatching
 
 /-!

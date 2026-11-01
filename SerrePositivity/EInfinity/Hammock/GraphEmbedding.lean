@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.WordEmbeddingObjects
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordEmbeddingObjects
 public import SerrePositivity.EInfinity.Hammock.NerveEmbedding
-public import SerrePositivity.EInfinity.Hammock.Diagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Diagram
 
 /-!
 # 単射な語の遷移による元の graph の単射性

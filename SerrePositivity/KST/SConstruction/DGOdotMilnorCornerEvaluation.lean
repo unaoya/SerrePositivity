@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOriginalLaxConeComparisonRequest
 public import SerrePositivity.KST.SConstruction.DGKNativeValueComparison
 public import SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated

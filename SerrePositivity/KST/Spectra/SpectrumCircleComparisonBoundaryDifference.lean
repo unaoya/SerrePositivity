@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonCorners
 public import SerrePositivity.KST.Spectra.SpectrumCircleComparisonRightEdges
-public import SerrePositivity.KST.Spectra.FramedSquareDifference
+public import SerrePositivity.InfinityCategories.Kan.Pointed.FramedSquareDifference
 public import SerrePositivity.KST.Spectra.FundamentalLoopHomotopyCategory
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopMappingClasses
-public import SerrePositivity.KST.Spectra.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
 public import SerrePositivity.KST.Spectra.PostLoopIntegerPower
 
 /-!

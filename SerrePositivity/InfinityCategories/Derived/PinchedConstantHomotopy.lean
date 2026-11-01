@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 /-!
 概要：実 pinched 頂点の定数族のホモトピーを、元の実辺の全区間に同定する。
 方針：区間表示の頂点公式と定数辺族の公式を使う。

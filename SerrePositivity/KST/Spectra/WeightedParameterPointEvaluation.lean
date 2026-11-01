@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionsParameters
-public import SerrePositivity.KST.Spectra.ParameterPoint
+public import SerrePositivity.InfinityCategories.Kan.ParameterPoint
 
 /-!
 概要：重み付き end の作用を切断点で固定すると、元の切断への係数の作用になる。

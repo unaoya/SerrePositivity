@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameElements
+public import SerrePositivity.InfinityCategories.ModelBridge.ModelBifibrantFrameElements
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofSource
 

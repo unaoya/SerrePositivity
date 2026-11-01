@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgUnderlyingDerivedComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantForgetSourceComparison
-public import SerrePositivity.EInfinity.FrameHom.FunctorIsoEvaluationArrow
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorIsoEvaluationArrow
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransComponentArrow
 /-!
 概要：元の全代数の忘却比較の成分を、同じ置換 augmentation の導来像へ回収する。

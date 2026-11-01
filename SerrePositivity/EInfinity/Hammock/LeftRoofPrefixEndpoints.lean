@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixHomotopy
-public import SerrePositivity.EInfinity.Hammock.LeftRoofLeftIdentity
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofLeftIdentity
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 
 /-!

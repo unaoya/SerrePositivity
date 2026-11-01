@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CircleSmashLoopSwap
-public import SerrePositivity.KST.Spectra.InternalHomTensor
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor
 public import SerrePositivity.KST.Spectra.DoubleCircleRestrictionNaturality
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConeSectionEquivalence
 
 public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 
 /-!
 概要：単体集合の宇宙の持ち上げは実際の単体的ホモトピー同値性を検出する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.FamilyCylinderEndpointAdjustment
-public import SerrePositivity.KST.SConstruction.KanMappingComposition
+public import SerrePositivity.InfinityCategories.Kan.KanMappingComposition
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 
 /-! # 元の全境界を固定した写像空間と実比較辺

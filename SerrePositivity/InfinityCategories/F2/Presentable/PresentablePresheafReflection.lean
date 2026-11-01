@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.IndPresheafReflection
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 
 /-!

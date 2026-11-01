@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
 public import SerrePositivity.EInfinity.Hammock.ReductionExistence
 public import SerrePositivity.EInfinity.Hammock.ReductionNaturality
-public import SerrePositivity.EInfinity.Hammock.RawSimplicialSet
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawSimplicialSet
 
 /-!
 # 任意の可換環上の元の未縮約 hammock の基本縮約

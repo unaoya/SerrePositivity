@@ -55,11 +55,6 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.CategoryTheory.Quiver.WeightedPaths,
-    `SerrePositivity.CategoryTheory.Quiver.WeightedPathMaps,
-    `SerrePositivity.CategoryTheory.Presentation.WeightedPathRealization,
-    `SerrePositivity.CategoryTheory.Presentation.WeightedPathParameterMap,
-    `SerrePositivity.CategoryTheory.Presentation.AmbientWordAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WeightedWordHom,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFixedRowWordHom]

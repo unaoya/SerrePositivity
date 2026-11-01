@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorSliceRepresentation
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 public import SerrePositivity.InfinityCategories.Derived.ConstantHomotopyComponent
 public import SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges
 /-!

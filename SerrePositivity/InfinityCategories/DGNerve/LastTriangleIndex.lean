@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexInclusions
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexInclusions
 
 /-! # 最後の三頂点の順序写像
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGExactValues
-public import SerrePositivity.KST.LocalizingInvariants.ExactEnrichment
+public import SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment
 
 /-! # 全 native dg 入力族の完全関手空間への持ち上げ
 概要：元の実 Perf 関手族の全単体を、完全関手の充満部分 ∞ 圏へ持ち上げる。

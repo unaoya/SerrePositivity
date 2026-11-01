@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreTrivialFibration
+public import SerrePositivity.InfinityCategories.F1.CoreTrivialFibration
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
 
 /-!

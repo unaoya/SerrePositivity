@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
 
-public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances
 
 /-! # Cofibrations and left properness detected by evaluations

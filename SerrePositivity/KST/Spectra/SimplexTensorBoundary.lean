@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.KST.Spectra.StandardSimplexLatching
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.RelativeBoundaryTensor

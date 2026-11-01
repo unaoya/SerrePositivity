@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.HomotopyProduct
+public import SerrePositivity.InfinityCategories.Kan.HomotopyProduct
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 
 /-!

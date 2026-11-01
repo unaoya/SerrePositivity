@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionDegrees
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeResolutionDegrees
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution
 
 /-!

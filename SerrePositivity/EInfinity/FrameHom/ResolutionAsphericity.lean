@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCommaContraction
-public import SerrePositivity.EInfinity.FrameHom.ResolutionSpecialSpans
+public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionSpecialSpans
 public import Mathlib.CategoryTheory.MorphismProperty.Comma
 
 /-!

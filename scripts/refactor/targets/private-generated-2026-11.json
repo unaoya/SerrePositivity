@@ -1,0 +1,170 @@
+{
+  "Quiver.Path.length.match_1.eq_1": {
+    "aliases": [
+      {
+        "module": "Mathlib.Combinatorics.Quiver.Path",
+        "raw": "_private.Mathlib.Combinatorics.Quiver.Path.0.Quiver.Path.length.match_1.eq_1"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer.0.Quiver.Path.length.match_1.eq_1"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.Quiver.Path.length.match_1.eq_1"
+      }
+    ],
+    "generated": true
+  },
+  "Quiver.Path.length.match_1.eq_2": {
+    "aliases": [
+      {
+        "module": "Mathlib.Combinatorics.Quiver.Path",
+        "raw": "_private.Mathlib.Combinatorics.Quiver.Path.0.Quiver.Path.length.match_1.eq_2"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer.0.Quiver.Path.length.match_1.eq_2"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.Quiver.Path.length.match_1.eq_2"
+      }
+    ],
+    "generated": true
+  },
+  "Quiver.Path.length.match_1.splitter": {
+    "aliases": [
+      {
+        "module": "Mathlib.Combinatorics.Quiver.Path",
+        "raw": "_private.Mathlib.Combinatorics.Quiver.Path.0.Quiver.Path.length.match_1.splitter"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarChoiceChainTransfer.0.Quiver.Path.length.match_1.splitter"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.Quiver.Path.length.match_1.splitter"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_1": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_1"
+      },
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_1"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_2": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_2"
+      },
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.eq_2"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.EInfinity.Hammock.Word.source.match_1.splitter": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryMaps.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.splitter"
+      },
+      {
+        "module": "SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects",
+        "raw": "_private.SerrePositivity.EInfinity.Hammock.ZigzagFirstBoundaryObjects.0.SerrePositivity.EInfinity.Hammock.Word.source.match_1.splitter"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_1": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_1"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_1"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_2": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_2"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.eq_2"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.splitter": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeChainTransfer.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.splitter"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily.0.SerrePositivity.SimplicialModel.RetractChainFamily.Chain.length.match_1.splitter"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_1": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_1"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_1"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_2": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_2"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.eq_2"
+      }
+    ],
+    "generated": true
+  },
+  "SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.splitter": {
+    "aliases": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeWordChainTransfer.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.splitter"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily",
+        "raw": "_private.SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.WordRetractChainFamily.0.SerrePositivity.SimplicialModel.WordRetractChainFamily.Chain.length.match_1.splitter"
+      }
+    ],
+    "generated": true
+  }
+}

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3ProjectionStructureIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
 
 /-!

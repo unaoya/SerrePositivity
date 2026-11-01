@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.AdjunctionHomTriangles
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 /-!
 概要：指定同値の全関手比較と、両向きの随伴の単位・余単位を厳密に照合する。
 方針：実 fiber の射影の恒等性と、指定二比較の前後合成を照合する。

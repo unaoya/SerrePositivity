@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedEndpoints
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
 
 /-! # 可縮 Kan 複体の指定した三辺を埋める三角形
 概要：任意の三頂点を結ぶ三本の辺を同時に保つ二単体を構成する。

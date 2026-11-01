@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSimplex
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordFixedCutLength
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorWordFixedCutLength
 
 /-!
 # 元の貼り戻しの一文字の列の全行の切断の前後の長さ

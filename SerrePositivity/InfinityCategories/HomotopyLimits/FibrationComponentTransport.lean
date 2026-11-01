@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.FibrationIntervalLifting
-public import SerrePositivity.KST.Spectra.FiberComponents
+public import SerrePositivity.InfinityCategories.Kan.FiberComponents
 
 /-!
 概要：Kan fibration の連結成分を任意の底の頂点上の fiber に移す。

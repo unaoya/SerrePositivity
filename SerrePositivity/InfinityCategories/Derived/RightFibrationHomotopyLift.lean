@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift
+public import SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-! # 右ファイブレーション上の終端指定ホモトピー

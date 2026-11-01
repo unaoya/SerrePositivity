@@ -1593,7 +1593,7 @@ preEdgeの移送と、実際の合成に対する直接のpreEdgeから三角形
 
 ## 合成列自体の面・退化と比較族の適合性（2026-10-16）
 
-共有`CategoryTheory/AnchoredChain`は前後の射で外部端点と全体の射を固定した有限列を扱う。
+共有`HomotopicalAlgebra/Rectification/CategoryTheory/AnchoredChain`は前後の射で外部端点と全体の射を固定した有限列を扱う。
 任意の単調写像で内部の図式を変更し、列の厳密な恒等・合成則と各切断の実際の因子分解の一致を証明する。
 `AnchoredChainSimplicial`は対象/Hom宇宙の最大内で列の実際の単体集合を構成する。
 `HomotopyFunctionComplex/AnchoredPostComparison`は既存三角形と共有辺付き族の再添字付けを厳密に同定し、
@@ -1901,7 +1901,7 @@ cotensorへの全facet写像を貼り合わせ、制限式と一意性を示す�
 
 ## 全中心射の索引と小さい実lift図式・固定中心への制限（2026-10-16）
 
-`CategoryTheory/ArrowContext`はHom二変数関手の要素圏上で、中心射を変える全因子分解圏と
+`HomotopicalAlgebra/Rectification/CategoryTheory/ArrowContext`はHom二変数関手の要素圏上で、中心射を変える全因子分解圏と
 全鎖パラメータを一つの厳密図式にする。
 `ResolutionArrowDiagram`は全framed源・標的resolution・基底中心射に対する自然なbasepointから、
 実際の小さいlift空間の厳密図式を構成する。任意指定した全点を保持する全中心整合系もある。
@@ -3086,7 +3086,7 @@ nativeなSSet.{v}の実写像へ降ろす。
 
 ### 生成関係による実simplicial語圏と小さい次数別評価（§365）
 
-`CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から
+`HomotopicalAlgebra/Rectification/CategoryTheory/Presentation/RetractWords`はambient/small頂点と元の射・語・切断・射影から
 八種類の明示的関係で商の圏、small full subcategory、元の圏へのaugmentationを構成する。
 `RetractWordRealization`と`RetractWordMap`は任意の圏への評価、source・語パラメータの変更と
 strictな恒等・合成則を与える。評価kernelで割るものではない。

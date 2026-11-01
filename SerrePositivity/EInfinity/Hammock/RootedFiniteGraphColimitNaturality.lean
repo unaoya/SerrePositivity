@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteGraphColimit
-public import SerrePositivity.EInfinity.Hammock.RootedFiniteBidiagram
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RootedFiniteBidiagram
 
 /-!
 # 固定語の元の余極限同型の全語での自然性

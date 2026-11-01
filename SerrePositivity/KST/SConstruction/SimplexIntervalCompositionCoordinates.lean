@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplexIntervalComposition
-public import SerrePositivity.KST.SConstruction.NecklaceSimplexMaps
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexMaps
 
 /-! # 元の区間合成の全頂点作用
 概要：元の二区間の連結から全区間への射は、共有頂点を含む元の頂点番号を保つ。

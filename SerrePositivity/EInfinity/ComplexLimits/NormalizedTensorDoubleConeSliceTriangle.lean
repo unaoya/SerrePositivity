@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDoubleConeSliceEvaluation
-public import SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
 
 /-!
 概要：元の大域 cone 族と同じ実 slice 評価族の合成は、全関手圏で恒等となる。

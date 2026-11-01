@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexSubsetInclusionOrder
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexSubsetInclusionOrder
 public import SerrePositivity.InfinityCategories.DGNerve.Index
 
 /-! # 元の任意の単調写像の像部分集合への番号因子

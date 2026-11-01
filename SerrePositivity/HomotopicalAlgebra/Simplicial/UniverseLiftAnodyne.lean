@@ -1,9 +1,8 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
-public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 
 /-!
 # 宇宙liftはモデル構造を仮定せずanodyne射を保つ
@@ -25,8 +24,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はK理論空間の充填・ホモトピー比較やπ_*計算の基礎として利用できる。
 [棚卸し m0588][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0588
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0588
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）
@@ -77,16 +76,5 @@ lemma anodyneQ_map_isIso_of_small {X Y : SSet.{v}} (f : X ⟶ Y)
     (hf : IsIso (anodyneQ.{v}.map f)) :
     IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
   map_isIso_of_anodyneQ_isIso (SSet.uliftFunctor ⋙ anodyneQ) anodyneQ_lift_inverts f hf
-
-open HomotopicalAlgebra AnodyneHomotopy in
-/-- All weak equivalences in the original small model become invertible after
-lifting. Only the original small universe has a model structure. -/
-lemma anodyneQ_map_isIso_of_weakEquivalence [ModelCategory SSet.{v}]
-    (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
-    (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
-    {X Y : SSet.{v}} (f : X ⟶ Y) (hf : weakEquivalences SSet.{v} f) :
-    IsIso (anodyneQ.{max v w}.map (SSet.uliftFunctor.{w, v}.map f)) :=
-  anodyneQ_map_isIso_of_small f
-    ((weakEquivalences_iff_anodyneQ_isIso hcof hfib f).mp hf)
 
 end SerrePositivity.SimplicialModel.UniverseLift

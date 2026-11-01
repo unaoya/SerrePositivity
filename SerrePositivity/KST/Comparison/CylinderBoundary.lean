@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.DoubleMappingCylinder
+public import SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinder
 public import SerrePositivity.KST.Comparison.IntervalBoundaryFamily
 
 /-!

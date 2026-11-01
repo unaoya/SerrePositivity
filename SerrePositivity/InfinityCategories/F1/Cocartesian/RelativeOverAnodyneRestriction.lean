@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestriction
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneReplacement
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianInnerAnodynePullback
 
 /-!

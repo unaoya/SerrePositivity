@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge
 
 /-! # 境界定数一次単体とホモトピー圏の loop 辺

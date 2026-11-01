@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.SphereClassPath
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTotalDetection
 public import SerrePositivity.KST.Spectra.FilteredLoopColimit
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-!
 概要：同じ基点の二つの正次数の類を、一つの値と同じ実際の基点 path で同時検出する。

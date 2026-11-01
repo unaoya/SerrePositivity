@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanLoopSection
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：同じ共通 BF 実 loop 図式の段始点作用と、元の共通 refined 段作用を全関手比較する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 /-!

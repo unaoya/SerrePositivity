@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTrianglePostThreeEdges
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoComponentTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の指定三角形比較を、元の二つの native 後合成の厳密な合成へ表示する。

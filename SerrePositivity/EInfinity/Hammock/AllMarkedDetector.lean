@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
-public import SerrePositivity.EInfinity.Hammock.OptionSpace
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.OptionSpace
 
 /-!
 # 元の各語から実際の指定部分圏の hammock への検出

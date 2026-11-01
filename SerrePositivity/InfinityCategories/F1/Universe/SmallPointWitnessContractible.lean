@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallPointWitnessNonempty
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.F1.Transport.WitnessTotalIso
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseKan
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseKan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 
 /-!

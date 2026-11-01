@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
 
 /-!

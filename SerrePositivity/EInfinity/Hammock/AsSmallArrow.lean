@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
-public import SerrePositivity.EInfinity.Hammock.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
 
 /-!
 概要：同じ宇宙比較は元の通常射の hammock 点を厳密に保持する。

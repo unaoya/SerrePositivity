@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
-public import SerrePositivity.EInfinity.Hammock.GraphComposition
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphComposition
 
 /-!
 # 元の E 代数の固定語の hammock graph の合成

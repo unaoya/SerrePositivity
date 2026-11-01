@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.RawHammock
-public import SerrePositivity.EInfinity.Hammock.WordMerge
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawHammock
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordMerge
 public import SerrePositivity.EInfinity.Hammock.EraseSimplex
 public import Mathlib.Logic.Relation
 

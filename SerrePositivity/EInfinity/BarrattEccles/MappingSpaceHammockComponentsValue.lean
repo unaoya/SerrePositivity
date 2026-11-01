@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLocalizationValue
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero
 
 /-!
 # 既存 Map^h の高次比較が誘導する π₀ 評価の正規化

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.PunctureSimplex
-public import SerrePositivity.EInfinity.Hammock.RawSurjectionComparison
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RawSurjectionComparison
 
 /-!
 # 合成する二列の一方が恒等列である混合縮約

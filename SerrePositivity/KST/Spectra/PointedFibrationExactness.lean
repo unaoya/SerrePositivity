@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedFibrationBoundary
-public import SerrePositivity.KST.Spectra.GroupExactTransfer
+public import SerrePositivity.InfinityCategories.Kan.GroupExactTransfer
 
 /-!
 概要：標準の点つき基点での Kan fibration の正次数の完全列。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinders
-public import SerrePositivity.KST.Spectra.SquareTrianglePushout
+public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
 
 /-! # 同じ全対角比較を共有する二三角形の全高次比較を貼る
 概要：正方形の元の両三角形の全比較を、元の両正方形を結ぶ全比較へ戻す。

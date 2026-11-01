@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
+public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.ContractibleHomotopyRetract
 

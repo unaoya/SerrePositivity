@@ -23,8 +23,8 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 今後はS-構成に現れる圏のnerve、射列、図式間の自然なホモトピーに利用できる。
 [棚卸し m0039][inventory]と[計画書 §396][plan]を参照。
 
-[inventory]: ../../../formalization-plans/k-theory-generalization-inventory.md#m0039
-[plan]: ../../../formalization-plans/k-theory.md
+[inventory]: ../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0039
+[plan]: ../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

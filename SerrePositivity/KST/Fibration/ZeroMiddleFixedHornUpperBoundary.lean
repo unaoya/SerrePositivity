@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFixedHornFamilyComparison
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornBoundaryPushout
+public import SerrePositivity.InfinityCategories.Simplicial.HornBoundaryPushout
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.RelativeHomotopyInvertible
 
 /-!

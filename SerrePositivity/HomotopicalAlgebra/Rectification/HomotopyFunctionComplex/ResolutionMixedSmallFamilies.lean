@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionMixedCoherentTriangles
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveSmallFamilies
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductParameter
+public import SerrePositivity.InfinityCategories.Kan.UniverseLiftProductParameter
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionMixedSmallFamilies
@@ -23,8 +23,8 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftProductP
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0326][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0326
-[plan]: ../../../../formalization-plans/k-theory.md
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0326
+[plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

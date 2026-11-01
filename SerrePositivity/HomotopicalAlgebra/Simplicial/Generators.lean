@@ -1,13 +1,10 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
-public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
-public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
-public import Mathlib.CategoryTheory.Monoidal.Closed.Cartesian
-public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
 
 /-! # Concrete smallness of the fixed simplicial generating maps
 
@@ -23,8 +20,8 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 open scoped Simplicial SSet.modelCategoryQuillen
 namespace SerrePositivity.SimplicialModel
 open SSet SSet.modelCategoryQuillen
-attribute [local instance] Cardinal.fact_isRegular_aleph0 Cardinal.orderBotAleph0OrdToType
-
+attribute [local instance] Cardinal.fact_isRegular_aleph0
+attribute [local instance] Cardinal.orderBotAleph0OrdToType
 lemma boundaryGenerator_domain_presentable {A B : SSet.{u}} (f : A ⟶ B) (hf : I f) :
     IsCardinalPresentable A Cardinal.aleph0.{u} := by
   rcases hf with ⟨n⟩
@@ -71,9 +68,5 @@ lemma boundaryGenerators_leftClass : I.{u}.rlp.llp = MorphismProperty.monomorphi
     exact MorphismProperty.transfiniteCompositions_le_iff.{u}.2 hp
   · rw [← SSet.rlp_monomorphisms]
     exact MorphismProperty.le_llp_rlp _
-
-/-- Every simplicial set is cofibrant for the fixed monomorphism cofibration class. -/
-lemma simplicialSet_isCofibrant (X : SSet.{u}) : IsCofibrant X := by
-  exact SSet.modelCategoryQuillen.cofibration_of_mono (initial.to X)
 
 end SerrePositivity.SimplicialModel

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.FrameHom.ULiftRelativeLocalizationValue
-public import SerrePositivity.EInfinity.Hammock.ZigzagValueNaturality
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ULiftRelativeLocalizationValue
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.DKMappingComponents
 
 /-!

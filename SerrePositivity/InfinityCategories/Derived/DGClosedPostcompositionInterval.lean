@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedFamilyComposition
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionEquivalence
 /-!
 概要：元の閉 dg 射による後合成を、標準区間模型の同じ後合成へ照合する。

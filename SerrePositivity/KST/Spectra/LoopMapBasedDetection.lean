@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.KST.Spectra.FibrationPointwiseComparison
+public import SerrePositivity.InfinityCategories.Kan.FibrationPointwiseComparison
 public import SerrePositivity.KST.Spectra.LoopHomotopyNaturality
 public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
-public import SerrePositivity.KST.Spectra.HomotopyComponents
-public import SerrePositivity.KST.Spectra.HomotopyIsoSquareDetection
+public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsoSquareDetection
 
 /-!
 概要：標的の標準基点での正次数の同型性から、loop の全基点の同型性を得る。

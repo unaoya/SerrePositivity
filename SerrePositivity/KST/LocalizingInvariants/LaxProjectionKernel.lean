@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialVertexIso
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 
 /-!
 概要：元の lax pullback の第一射影の核は、D 包含の本質像に一致する。

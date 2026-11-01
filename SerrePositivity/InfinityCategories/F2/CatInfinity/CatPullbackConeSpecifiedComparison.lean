@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLowerTriangle
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：同じ指定円柱の二つの三角形からの各脚の比較同型。

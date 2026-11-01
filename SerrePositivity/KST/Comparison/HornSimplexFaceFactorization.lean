@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.HornSubdivisionSurjective
-public import SerrePositivity.KST.Comparison.SubdivisionSimplexCover
+public import SerrePositivity.InfinityCategories.Simplicial.SubdivisionSimplexCover
 
 /-!
 # horn の単体と細分の余面による表示

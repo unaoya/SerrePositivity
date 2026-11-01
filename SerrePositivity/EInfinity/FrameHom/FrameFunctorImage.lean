@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoofPostcompose
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
-public import SerrePositivity.EInfinity.Hammock.RelativeZigzagFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeZigzagFunctor
 
 /-!
 概要：元の全 frame roof は相対関手の像の同じ全 frame roof に一致する。

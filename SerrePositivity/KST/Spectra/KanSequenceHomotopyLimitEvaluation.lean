@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.KanSequenceHomotopyLimit
 public import SerrePositivity.KST.Spectra.MappingOmegaSequence
 public import SerrePositivity.KST.Spectra.PointedWeightedConeCompatibility
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：段ごとの homotopy end の射影を、重みからの内部 Hom 列への実際の厳密な射にする。

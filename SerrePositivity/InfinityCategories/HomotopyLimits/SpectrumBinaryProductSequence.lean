@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanPiProducts
 public import SerrePositivity.KST.Spectra.KanSequence
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 /-!
 概要：実 pinched Hom 三族の合成方程式を、三つの端点の等式輸送に沿って保つ。
 方針：端点の三等式に帰納法を使い、元の同じ合成方程式へ戻す。

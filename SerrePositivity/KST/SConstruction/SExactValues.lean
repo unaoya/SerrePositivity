@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.StableModels
 public import SerrePositivity.KST.SConstruction.DGApplication
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 /-! # 実 S_n の安定値と元の完全射
 概要：元の全 gapped S_n と cofiber 型の後合成を、安定 ∞ 圏と完全関手に束ねる。

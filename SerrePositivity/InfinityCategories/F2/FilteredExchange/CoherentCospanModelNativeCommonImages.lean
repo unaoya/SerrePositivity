@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanModelLeftCorrectionImage
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeLegFinalEquality
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanModelFinalTargetMaps
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：実模型と native 切断の二脚の指定同型を、共通点で元の最終 fiber 同型へ比較する。

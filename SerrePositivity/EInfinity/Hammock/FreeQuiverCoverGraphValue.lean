@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.FreeQuiverCoverFiberGraph
-public import SerrePositivity.EInfinity.Hammock.SimplicialLabelledColimit
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverFiberGraph
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SimplicialLabelledColimit
 public import SerrePositivity.EInfinity.Hammock.HammockValue
 
 /-!

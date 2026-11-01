@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagramComparison
 public import SerrePositivity.KST.SConstruction.DGOdotVerdierRectangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：実 ν 像で認証した長方形と、K-S• の既存の厳密入力を接続する。

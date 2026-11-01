@@ -1,0 +1,1509 @@
+{
+  "status": "STOP",
+  "reason": "approved root reimport list is stale after main merge",
+  "base": "aacd82f413aee9f2c4e35bde4362a90b969e118c",
+  "missing_sources": [],
+  "missing_import_count": 247,
+  "missing_imports": [
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CategoryTheory.EulerTheory"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtale"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleAwayCover"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleCover"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedEtaleIntegralCover"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedFibers"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedHenselian"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.AdicFilteredLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.Almost.TorsionCategory"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootFamilyIdeal"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootIdeal"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootIdealFlat"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootIdealTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootPerfectQuotient"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootsPerfectoid"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompatibleRootsTilt"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatPowers"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFaithfullyFlatTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFlatCriterion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFlatEquiv"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFlatNilpotent"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.CompletelyFlatPowerTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.EtaleAwayBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.EtaleAwayTensorBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationBounds"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteCommonLocalizationModel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteFiltrationAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteFreeScalarFactorization"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FiniteLengthValue"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FinitePresentationCommonLocalizationBounds"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FlatPowerQuotientTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FlatPowerTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FlatTensorFiltration"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FractionRingBasis"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.FrobeniusRootKernels"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.HilbertSamuelEquiv"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.HomologyLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.IdempotentImageAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.IdempotentImageBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.LocalAlgebra"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.LocalizationComparisonTensorEquiv"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.LocalizationTelescope"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.ModulePowerTorsionBound"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.ParameterLastPowerMultiplicity"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectCoefficientTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectPolynomialFlat"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectPowerReduced"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectRadicalIdeal"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectTorIndependence"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectionIdempotents"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectionPrincipalKernel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectionPrincipalQuotientKernel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidCharacteristicP"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidFontaineSeparation"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusCriterion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidFrobeniusKernel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidReduced"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PerfectoidTorsionFrobenius"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PowTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PresentationBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PrincipalAdicFaithfulDescent"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionAlgebra"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PrincipalAdicReductionEquiv"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.PrincipalQuotientAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.ReesIdealLifts"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RegularLocalRing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RootTower.CompletedFrobenius"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RootTower.CompletedTilt"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RootTower.CompletionFlat"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RootTower.FrobeniusKernel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.RootTower.WittPresentation"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.ScalarIsogenyTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.TorFiniteLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.CommutativeAlgebra.Truncate"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ArtinReesHomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.Basic"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedAdditive"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedCone"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedConeTriangle"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedShift"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveSourceConeTriangle"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveTensorFunctor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.BoundedAboveTensorModels"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ChainLinearYoneda"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ChainLinearYonedaZero"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.CochainConeAdditiveNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.CochainLinearDual"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.CochainLinearDualCone"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.CochainTensorBraided"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.CochainTensorProjective"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ConeLES"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ConeResolution"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTermTorsionComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorModuleReduction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ConstantTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientCokernelHolim"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteCoefficientPowerHolim"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.FiniteTensorComplete"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.FlatResidueLimitTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulPowerCokernelComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationHomCoordinates"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationPresentation"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationResolution"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.LocalizationTowerComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorMapZero"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorSequence"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerDerivedComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerHolimNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerReduction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTensorHolim"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTensorModel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTensorTorZero"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraAlmost"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraMilnor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorAlgebraTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePowerTorComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelReconstruction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTensorModel"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerCokernelTransitions"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerImageTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionComplex"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorProduct"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTowerLimitBound"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductHomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ProductHomotopy"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarTowerInversion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorActions"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorMiddle"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TorAlgebraMilnorSequence"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplex"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerExact"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerHomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerHomologyNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerIsoMapCompatibility"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerLiftNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.UniformZeroTower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.DerivedCompletion.UniformZeroTowerHomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ExactChainHomologyColimits"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ExactFunctorColimits"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ExtZeroComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.FiniteParameterKoszulAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.GeneralKoszulLocalCohomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.GeneralLocalCohomologyBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.InjectiveCoefficientDimensionShift"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.InjectiveLinearYoneda"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualCoefficientExact"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualInjectiveAcyclic"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualTorComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualZero"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualZeroTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulDualZeroTransitions"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulExtComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulHomologyAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulHomologyLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulLocalCohomologyAction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.KoszulTransitionDepth"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LinearFunctorColimits"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyAction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyKoszulPowers"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyScalarBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyTorAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.LocalCohomologyZeroTorsion"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.MappingConeLinearDual"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.MonoidalPointAction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.MonoidalUnitHomRing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.NullHomotopy"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ParameterKoszulComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ParameterKoszulIdempotent"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ParameterLocalCohomologyAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.PerfectQuotientTorOne"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.PowerResidueDerivedHomology"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ProjectiveExtColimitExact"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ProjectiveExtNaturality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ProjectiveExtSequence"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ProjectiveLinearCoyoneda"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.ProjectiveResolutionInjectiveAcyclic"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.RegularLocalResolution"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.TorFiniteFreeComparisonAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.HomologicalAlgebra.TwoCohomologyAnnihilator"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Inputs.LengthAlgebra"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Inputs.RegularLocalRing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Inputs.RegularParameters"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Inputs.Unmixedness"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.AdamsVanishingAll"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.AdamsVanishingTwo"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.CubicCyclotomicBaseChange"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.DiagonalDimension"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.DiagonalFlat"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.DiagonalPositivity"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.DiagonalRing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.DiagonalTor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.EqualCharZeroPositivity"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.NormalizedTor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.ParameterQuotientTor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.IntersectionMultiplicity.ParameterQuotientTorBound"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.KTheory.Adams.KoszulCubeBasis"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.KTheory.Adams.KoszulSequenceNormalization"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.KTheory.Adams.SemilocalSupport"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.KTheory.Adams.TensorCubeHighMixedQuotientAction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.KTheory.Adams.TensorCubeLowMixedQuotientAction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.AlmostQuotient"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.AlmostVanishing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.CyclicPowerReduction"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.Foundations"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.GeometricDecay"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.KoszulErrorEuler"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.KoszulHomologyLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.OrdinaryKoszulEuler"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.CompletedNormalized"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.CompletedQuotientEvaluation"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.CompletedTensorEvaluation"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateQuotientLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.CoordinateVanishing"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.LengthAlgebra.RootTowerLength.Normalized"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Paper.Section2.MonomialBasis"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Paper.Section2.Tower"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Paper.Section2.TowerStage"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Paper.Section4.Foundations"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.Paper.Section5.AsymptoticPositivity"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.Basic"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.ClosedSupportComparison"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.ClosedSupportFunctoriality"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.ClosedSupportK0"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.ClosedSupportRelations"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.Closure"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.IdempotentImageFunctor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.IdempotentTensor"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.InvolutionShortExact"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.K0"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.NormalizedEuler"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.NormalizedLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.NormalizedLengthComap"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.OrdinaryEuler"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.QuotientLength"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.SupProperty"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.SupPropertyComap"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.Support"
+    },
+    {
+      "entry": "SerrePositivity",
+      "field": "imports",
+      "consumer": "SerrePositivity",
+      "dependency": "SerrePositivity.PerfectComplex.TensorBoundedAbove"
+    }
+  ],
+  "by_area": {
+    "CategoryTheory": 1,
+    "CommutativeAlgebra": 74,
+    "HomologicalAlgebra": 113,
+    "Inputs": 4,
+    "IntersectionMultiplicity": 12,
+    "KTheory": 5,
+    "LengthAlgebra": 14,
+    "Paper": 5,
+    "PerfectComplex": 19
+  },
+  "planned_root_imports": 785,
+  "current_root_imports": 664,
+  "seconds": 0.558,
+  "rsync": "launcher attempted; no runner process, evidence directory or rsync log was created; copy not started",
+  "snapshot": "not started",
+  "batch_apply": "not started",
+  "build": "not started"
+}

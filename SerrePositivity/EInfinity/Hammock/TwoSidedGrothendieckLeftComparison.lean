@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckDuality
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckDuality
 public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckRightWeak
 
 /-!

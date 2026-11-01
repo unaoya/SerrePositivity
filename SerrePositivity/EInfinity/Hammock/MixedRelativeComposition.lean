@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.MixedRelativeColimitMap
-public import SerrePositivity.EInfinity.Hammock.RelativeAppendFunctor
-public import SerrePositivity.EInfinity.Hammock.ColimitCompositionPoints
-public import SerrePositivity.EInfinity.Hammock.ColimitPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeAppendFunctor
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitPoints
 
 /-!
 # 異なる Hom の宇宙を持つ元の相対関手の合成保存

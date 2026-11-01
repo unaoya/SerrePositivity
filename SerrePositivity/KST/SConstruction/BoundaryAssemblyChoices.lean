@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
-public import SerrePositivity.KST.SConstruction.ContractibleKanProducts
+public import SerrePositivity.InfinityCategories.Core.ContractibleKanProducts
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseChoices
 public import SerrePositivity.KST.SConstruction.KanAssemblyEquivalence
 

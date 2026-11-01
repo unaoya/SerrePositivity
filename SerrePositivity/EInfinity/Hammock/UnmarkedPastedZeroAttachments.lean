@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedCutLength
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordZeroNatural
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorWordZeroNatural
 
 /-!
 # 元の貼り戻しの内部接続列全体の恒等移送としての回収

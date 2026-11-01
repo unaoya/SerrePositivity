@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalFactor
+public import SerrePositivity.InfinityCategories.Simplicial.NecklaceSimplexIntervalFactor
 public import SerrePositivity.KST.SConstruction.SimplexBeadCubicalMapping
 public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
 

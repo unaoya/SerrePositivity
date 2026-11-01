@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedBasedPathClosed
 public import SerrePositivity.KST.Spectra.PointedTransposeRestrictions
-public import SerrePositivity.KST.Spectra.InternalHomExchangeNaturality
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeNaturality
 public import SerrePositivity.KST.Spectra.LoopMappingOperations
 
 /-!

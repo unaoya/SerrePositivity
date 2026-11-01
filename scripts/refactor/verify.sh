@@ -196,7 +196,7 @@ for row in (out / 'stages.tsv').read_text().splitlines():
     rc = int(rc)
     record = {'kind': kind, 'name': label, 'exit_code': rc, 'seconds': float(duration), 'log': logfile}
     if (kind,label) in runner_records:
-        record.update({k: runner_records[(kind,label)][k] for k in ('cached','cache_key')})
+        record.update({k: runner_records[(kind,label)][k] for k in ('cached','cache_key','retried','retry_reason','attempts')})
     state = 'success' if rc == 0 else 'failure'
     if kind == 'audit':
         if rc:
@@ -237,16 +237,18 @@ for path in baseline.keys() - executed - excluded:
 # Any explicitly set test hook is non-gate, including sorry-closure overrides.
 hooks = ('VERIFY_EXTRA_AUDITS', 'VERIFY_SKIP_BUILD', 'VERIFY_BASELINE', 'SORRY_AUDIT_ROOT', 'SORRY_AUDIT_ALLOWED', 'VERIFY_ONLY_AUDITS')
 gate = not any(k in os.environ for k in hooks) and os.environ.get('VERIFY_CACHE','0') != '1'
+retried = sum(bool(r.get('retried')) for r in records)
 status = 'FAIL' if failures else 'PASS'
 summary_line = status + ('' if gate else ' (non-gate)') + ' ' + ' '.join(
     f'{k}(success={v["success"]},failure={v["failure"]},known={v["known"]})' for k,v in counts.items())
+summary_line += f' retried={retried}'
 try:
     layer_rc = int((out / 'layers-exit-code.txt').read_text())
     layer_report = {'exit_code': layer_rc, 'informational': True,
                     'report': json.loads((out / 'layers.json').read_text()) if layer_rc == 0 else None}
 except (OSError, ValueError) as exc:
     layer_report = {'informational': True, 'error': str(exc)}
-summary = {'status': status, 'gate': gate, 'summary': summary_line,
+summary = {'status': status, 'gate': gate, 'summary': summary_line, 'retried': retried,
            'commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
            'seconds': round(time.time() - float(os.environ['VERIFY_STARTED']), 3),
            'audit_count': prep['audit_count'], 'target_count': prep.get('target_count', 0),

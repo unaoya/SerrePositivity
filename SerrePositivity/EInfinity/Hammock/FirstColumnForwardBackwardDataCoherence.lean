@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardData
-public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardRightCoherence
-public import SerrePositivity.EInfinity.Hammock.RelativeFixedCoefficientCoherence
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardRightCoherence
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeFixedCoefficientCoherence
 
 /-!
 # 元の混合二方向の係数写像全体の恒等・合成

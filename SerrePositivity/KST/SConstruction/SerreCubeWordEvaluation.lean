@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.CubeWordRealization
+public import SerrePositivity.InfinityCategories.Kan.CubeWordRealization
 public import SerrePositivity.KST.SConstruction.SerreCubeCoordinateMaps
 
 /-! # 元の Serre 鎖写像による生成語の評価

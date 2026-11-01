@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDoubleConeSlicePrismProjection
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeFamily
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 
 /-!
 概要：構成した実 slice 図式の普遍評価を、元の frame 図式から同じ X への全族にする。

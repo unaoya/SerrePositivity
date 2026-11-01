@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteSpanNerveIso
-public import SerrePositivity.InfinityCategories.F1.Simplicial.OrderDualNerveIso
+public import SerrePositivity.InfinityCategories.Simplicial.FiniteSpanNerveIso
+public import SerrePositivity.InfinityCategories.Simplicial.OrderDualNerveIso
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OppositeIso
 public import SerrePositivity.InfinityCategories.Core.Opposite
 

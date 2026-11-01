@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBoundaryCoordinates
-public import SerrePositivity.KST.Spectra.EnrichedWhiskeredSquareComposition
+public import SerrePositivity.InfinityCategories.Kan.EnrichedWhiskeredSquareComposition
 
 /-!
 概要：元の相対 BF 左因子と右射影を同時に保つ全 Hom の組の合成。

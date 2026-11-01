@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueNonempty
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPathFlatten
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorWordPathFlatten
 
 /-!
 # 元の全列の順序付き文字列としての hammock の値

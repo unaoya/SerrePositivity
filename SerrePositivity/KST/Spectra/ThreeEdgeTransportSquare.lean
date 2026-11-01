@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.KST.Spectra.SquareTrianglePushout
+public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
 public import SerrePositivity.KST.Spectra.TriangleDiskFaces
 public import SerrePositivity.KST.Spectra.FibrationEdgeComposition
-public import SerrePositivity.KST.Spectra.ThreeEdgeTransport
+public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
 
 /-!
 概要：三辺輸送の二つの実三角形を同じ対角辺で貼り、四辺を保持する実正方形を作る。

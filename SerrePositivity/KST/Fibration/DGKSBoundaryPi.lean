@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGKFixedSConstruction
 public import SerrePositivity.KST.Spectra.StageComparisonNaturality
 public import SerrePositivity.KST.Spectra.PointedHomotopy
-public import SerrePositivity.KST.Spectra.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 
 /-! # 固定 dg K の非負次数を、ν(P) の一段 S• 境界商で計算する
 

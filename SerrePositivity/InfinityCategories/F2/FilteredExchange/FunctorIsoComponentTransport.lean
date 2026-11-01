@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 
 /-!
 概要：指定関手同型の等式移送は実際の各点成分の HEq を保つ。

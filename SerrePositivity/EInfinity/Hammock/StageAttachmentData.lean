@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LengthBoundaryLift
-public import SerrePositivity.EInfinity.Hammock.WordMaximal
-public import SerrePositivity.EInfinity.Hammock.WordTopStage
-public import SerrePositivity.EInfinity.Hammock.WordImageFactorization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordMaximal
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordTopStage
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordImageFactorization
 
 /-!
 # 元の境界上で整合する貼り合わせデータ

@@ -6,7 +6,7 @@ public import
 SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeExtensionFiberEndpointValue
 public import
 SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の二実延長の指定 fiber 比較は、全空間の後合成でも同じ指定値へ写る。

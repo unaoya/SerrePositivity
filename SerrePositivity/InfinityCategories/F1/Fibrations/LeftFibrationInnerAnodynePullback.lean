@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInnerHornPullback
-public import SerrePositivity.InfinityCategories.F1.Simplicial.InnerAnodyneAdjointComparison
+public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneAdjointComparison
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.SSetPullbackAdjoint
 
 /-!

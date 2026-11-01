@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleInputUnion
+public import SerrePositivity.InfinityCategories.Kan.CompatibleInputUnion
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeHornFillingOperation
 
 /-!
@@ -22,8 +22,8 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.Relati
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0372][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0372
-[plan]: ../../../../formalization-plans/k-theory.md
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0372
+[plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseInternalHom
 

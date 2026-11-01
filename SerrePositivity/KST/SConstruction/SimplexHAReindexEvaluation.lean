@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexHABeadWordReindex
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWordReindex
 public import SerrePositivity.KST.SConstruction.SimplexHABeadWordCells
 
 /-! # 元の bead 語の再添字付けと HA 評価・実鎖射

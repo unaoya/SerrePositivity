@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.Derived.ResolutionComparisonPrecompIdentity
 public import SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonNormalization
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra

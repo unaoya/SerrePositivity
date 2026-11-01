@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexVertexExtension
-public import SerrePositivity.InfinityCategories.DGNerve.JoinVertexSurjectivity
+public import SerrePositivity.InfinityCategories.Core.JoinVertexSurjectivity
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeMarkedCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeMarkedCategory
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionMarkedHomContraction
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.SimplexClosedIntervalSubsetOrder
+public import SerrePositivity.InfinityCategories.Simplicial.SimplexClosedIntervalSubsetOrder
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexSubsetAt
 public import SerrePositivity.KST.SConstruction.SimplexIntervalComposeRefinement
 

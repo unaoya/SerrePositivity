@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorValue
-public import SerrePositivity.EInfinity.Hammock.ZigzagPathIntervalValue
-public import SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWordPath
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagPathIntervalValue
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorWordPath
 
 /-!
 # 元の hammock の非空文字列と非空列の同定

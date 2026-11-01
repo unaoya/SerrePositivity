@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
 

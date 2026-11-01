@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LeftRoofPrefixCore
-public import SerrePositivity.EInfinity.Hammock.ForwardRoofPrecompose
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardRoofPrecompose
 
 /-!
 # 始点変更と元の三列円柱の全関手の一致

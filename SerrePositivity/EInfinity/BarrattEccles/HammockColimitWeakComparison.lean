@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.EInfinity.Hammock.ThreeArrowGraphWeakComparison
+public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowGraphWeakComparison
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedIdentityFunctors
-public import SerrePositivity.EInfinity.Hammock.EndpointColimitHEq
-public import SerrePositivity.EInfinity.Hammock.ColimitIdentityPoint
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EndpointColimitHEq
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitIdentityPoint
 
 /-!
 # 元の貼り戻しの二因子の ambient hammock の点の回収

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 public import SerrePositivity.KST.Spectra.PointedBasedIntervalTraces
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 
 /-!
 概要：π 同型に沿って実区間を移し、元の区間全体を写像 path 内に保持する。

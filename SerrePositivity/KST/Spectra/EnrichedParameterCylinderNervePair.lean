@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.EnrichedParameterCylinderPairFunctor
+public import SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinderPairFunctor
 public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
 
 /-!

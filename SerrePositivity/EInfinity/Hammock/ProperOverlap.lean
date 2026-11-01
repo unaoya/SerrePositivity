@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
-public import SerrePositivity.EInfinity.Hammock.WordIntersectionFactors
-public import SerrePositivity.EInfinity.Hammock.LengthStage
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordIntersectionFactors
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthStage
 
 /-!
 # proper 図式の元の二つの包含の原像の重なり

@@ -1,8 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanRectificationImages
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!

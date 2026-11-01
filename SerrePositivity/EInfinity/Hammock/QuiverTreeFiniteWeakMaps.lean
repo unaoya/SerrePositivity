@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteContractible
-public import SerrePositivity.EInfinity.Hammock.FiniteQuiverRelative
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FiniteQuiverRelative
 public import SerrePositivity.EInfinity.Hammock.ContractibleMaps
 
 /-!

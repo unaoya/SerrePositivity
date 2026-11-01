@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation
-public import SerrePositivity.EInfinity.Hammock.DirectionCategory
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DirectionCategory
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-!

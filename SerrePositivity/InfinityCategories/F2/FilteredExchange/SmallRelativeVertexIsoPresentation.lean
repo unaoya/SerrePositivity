@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallUnstraighteningRelativeVertex
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDownNaturality
 
 /-!

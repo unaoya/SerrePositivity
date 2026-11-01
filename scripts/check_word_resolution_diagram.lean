@@ -49,7 +49,7 @@ open Lean in
 set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
-  let expected := #[`SerrePositivity.CategoryTheory.Presentation.RetractWordAugmentation,
+  let expected := #[
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationCat,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAugmentation,
     `SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSection,

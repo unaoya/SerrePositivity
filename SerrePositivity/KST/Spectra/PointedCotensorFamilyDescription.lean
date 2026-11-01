@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedCotensorCoordinateFamilies
 public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
-public import SerrePositivity.KST.Spectra.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
 
 /-!
 概要：座標同型で移した通常の族を、自由基点の随伴と点つき転置で明示する。

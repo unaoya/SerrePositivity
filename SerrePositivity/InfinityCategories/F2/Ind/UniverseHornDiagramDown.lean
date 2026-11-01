@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 public import SerrePositivity.InfinityCategories.Core.CocartesianEdge
 
 /-!

@@ -4,7 +4,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 public import Mathlib.Logic.Small.Set
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure
+public import SerrePositivity.InfinityCategories.Kan.SmallActionClosure
 
 /-!
 # 中断した任意モデル源への一般化：SmallParameterClosure
@@ -25,8 +25,8 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.SmallActionClosure
 stage 4の完成部分L・E・Sからの利用はない。
 再開時は[計画書 §396][plan]と[棚卸し m0574][inventory]を参照する。
 
-[inventory]: ../../../../formalization-plans/k-theory-generalization-inventory.md#m0574
-[plan]: ../../../../formalization-plans/k-theory.md
+[inventory]: ../../../../formalization-plans/archive/k-theory-generalization-inventory.md#m0574
+[plan]: ../../../../formalization-plans/archive/k-theory-v1.md#396-任意モデル源への一般化中断2026-10-17
 -/
 
 /- 旧モジュールの技術注記（構成と注意を保存）

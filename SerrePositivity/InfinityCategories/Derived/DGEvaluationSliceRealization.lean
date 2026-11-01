@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGInvertingPinchedFamilyEvaluation
 public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyPostcomposition
-public import SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization
+public import SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization
 /-!
 概要：任意標的への dg 屋根の評価方程式を、同じ分母の全区間を持つ実 slice 比較へ戻す。
 方針：定値端点の共役を解き、実 pinched Hom 族の合成方程式を実現する。

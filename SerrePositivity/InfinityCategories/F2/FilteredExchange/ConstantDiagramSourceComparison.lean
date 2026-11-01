@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UnstraighteningSourceActualWitnessComparison
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramWitnessCurryComparison

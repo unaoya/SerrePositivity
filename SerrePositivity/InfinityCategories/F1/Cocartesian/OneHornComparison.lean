@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.StandardSimplexOriginal
-public import SerrePositivity.InfinityCategories.F1.Simplicial.HornOnePointIso
+public import SerrePositivity.InfinityCategories.Simplicial.HornOnePointIso
 
 /-!
 概要：一次元境界のホーン側の元の native Hom を、同じ分類先 Hom と比較する。

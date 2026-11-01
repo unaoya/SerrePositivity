@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalUniversalSourceEndpoint
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportFamilyComparisonComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の全初期値での実輸送比較と指定一点普遍比較を、同じ直接比較へ合成する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution
-public import SerrePositivity.EInfinity.SimplicialLocalization.StrictLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.StrictLocalization
 
 /-!
 # 自由単体的相対圏の次数ごとの厳密な局所化

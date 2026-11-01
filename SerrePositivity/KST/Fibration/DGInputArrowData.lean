@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 
 /-! # 固定 dg 入力の同じ一単体から、元の対象二つと厳密 dg 射を回収する -/
 

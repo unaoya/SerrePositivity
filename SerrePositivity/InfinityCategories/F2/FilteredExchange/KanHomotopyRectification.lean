@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSpecifiedPathLift
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyPathReplacement
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeEquivalencePathExtension
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
