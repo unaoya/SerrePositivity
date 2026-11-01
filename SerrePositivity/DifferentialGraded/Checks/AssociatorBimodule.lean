@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorBimodule
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # bimodule結合比較の両作用自然性・右加群同型の受入監査 -/

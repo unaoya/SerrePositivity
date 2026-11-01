@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionTriangles
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverse
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-! # graph導来延長のperfect・compact対象の保存
 

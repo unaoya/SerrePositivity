@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.RightTensor
-public import SerrePositivity.DifferentialGraded.Tensor.LeftNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-! # 左加群の閉零圏に関する導来tensorの関手性 -/
 @[expose] public section

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.HomAdjunctionLaws
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Data.ZMod.Basic
 
 /-! # balanced tensor–Hom随伴の受入検査 -/

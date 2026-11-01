@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Bimodule
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 多対象dg bimoduleの相対tensor合成と残る作用の検査 -/

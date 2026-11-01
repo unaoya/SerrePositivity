@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.ConjugatedCompositionNaturality
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
 
 /-! # 全 kernel 射に自然な降下合成比較の公理監査 -/
 @[expose] public section

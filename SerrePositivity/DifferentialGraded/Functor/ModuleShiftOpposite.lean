@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Complexes.ShiftRepresentation
 public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
 public import SerrePositivity.DifferentialGraded.Functor.ClosedComplex
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryHom
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 
 /-! # 反変複体値dg関手による加群shiftの比較 -/
 @[expose] public section

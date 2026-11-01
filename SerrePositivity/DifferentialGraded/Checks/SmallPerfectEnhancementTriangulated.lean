@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancementTriangulated
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

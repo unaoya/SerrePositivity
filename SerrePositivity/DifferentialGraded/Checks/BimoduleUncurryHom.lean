@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.UncurryHom
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 
 /-! # bimoduleのuncurrying Hom射・単位保存の受入 -/
 @[expose] public section

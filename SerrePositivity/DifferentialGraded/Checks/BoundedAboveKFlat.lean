@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BoundedAbove
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 上に有界flatと任意の非有界相手のK-flat検査 -/

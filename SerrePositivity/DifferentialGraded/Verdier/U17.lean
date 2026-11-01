@@ -1,14 +1,14 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Verdier.SupportSquare
-public import SerrePositivity.DifferentialGraded.Verdier.RetractSquare
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarDirectCompletion
-public import SerrePositivity.DifferentialGraded.Verdier.MoritaPairEquivalence
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedKernelGraphSquare
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
-public import SerrePositivity.DifferentialGraded.Verdier.KernelComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.KernelCompositionComparison
-public import SerrePositivity.DifferentialGraded.Verdier.ConjugatedCompositionNaturality
+public import SerrePositivity.DifferentialGraded.Verdier.Comparison
+public import SerrePositivity.DifferentialGraded.Verdier.Scalar
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
+
+
+
+
+
+
 
 /-! # 局所 dg 商の U17 比較の公開入口
 

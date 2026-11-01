@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftAction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 結合比較の斉次元と両括弧付けの左作用の検査 -/

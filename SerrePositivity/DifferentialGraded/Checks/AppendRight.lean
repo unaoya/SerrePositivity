@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.AppendRight
+public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左有限pathを固定した連結と非空語再帰の受入監査 -/

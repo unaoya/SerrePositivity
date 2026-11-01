@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherence
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主導来kernelの合成作用と既存Perfアダプタの接続検査

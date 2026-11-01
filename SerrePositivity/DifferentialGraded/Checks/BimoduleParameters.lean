@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameterValues
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意パラメータの全次数評価と相対tensor作用の受入監査 -/

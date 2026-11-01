@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionEvaluationTransport
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnitAssociativityBimodule
+public import SerrePositivity.DifferentialGraded.Tensor.Compose
 /-!
 概要：実加群延長の合成比較は、代表加群の元の Yoneda 比較と厳密に整合する。
 方針：右単位の双加群自然性と結合整合性を graph に適用し、元の代表で評価する。

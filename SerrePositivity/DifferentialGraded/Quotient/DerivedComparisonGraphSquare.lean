@@ -1,15 +1,37 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFunctoriality
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCanonical
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGraphComposition
+
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
+
+/-!
+# Quotient.DerivedComparisonGraphSquare
+
+## 概要
+1 本に分かれていた同主題の構成と比較をまとめる。
+
+## 方針
+対応表の依存順に連結し、元の宣言・証明・名前空間を保持する。
+
+## 規約
+各元ファイルの section を分離し、variable・option の局所的な作用を保つ。
+
+## 使われ方
+DifferentialGraded の入口と、この主題を使う検査・下流モジュールから import する。
+-/
+
+universe u v w
+
+/-! ## DerivedComparisonGraphSquare（旧 SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonGraphSquare.lean） -/
 
 /-! # graph 作用と、元の tria から誘導した Verdier 関手の比較正方形 -/
-@[expose] public section
+
+@[expose] public section DerivedComparisonGraphSquare
+
 noncomputable section
 set_option synthInstance.maxSize 1024
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u v w
 namespace SerrePositivity.DifferentialGraded.DGQuotient
 open CategoryTheory CategoryTheory.Functor Limits
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
@@ -136,3 +158,6 @@ def graphCanonicalVerdierSquare :
     graphLocalVerdierSquare A D E F S T hF ≪≫
       isoWhiskerRight (quotientComparisonModelsIso A D S) _
 end SerrePositivity.DifferentialGraded.DGQuotient
+end
+
+end DerivedComparisonGraphSquare

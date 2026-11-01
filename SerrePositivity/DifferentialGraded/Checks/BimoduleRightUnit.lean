@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 対角bimoduleと右単位同型の検査 -/

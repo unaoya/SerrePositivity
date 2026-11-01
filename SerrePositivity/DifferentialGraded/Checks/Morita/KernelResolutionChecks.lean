@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolution
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意通常kernelの解像度計算とgraph一致の監査

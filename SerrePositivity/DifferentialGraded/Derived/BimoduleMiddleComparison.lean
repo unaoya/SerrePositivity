@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleMap
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionResolution
 
 /-! # 中間圏の制限後に解像度を取る導来bimodule合成比較

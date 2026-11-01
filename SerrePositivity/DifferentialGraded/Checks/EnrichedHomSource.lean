@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomSource
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomTarget
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 豊穣tensor–Hom同型の右加群変数の反変自然性の検査 -/

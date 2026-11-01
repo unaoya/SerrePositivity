@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterRight
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 
 /-! # 右変数のパラメータ付き作用と主Hom写像の検査 -/
 @[expose] public section

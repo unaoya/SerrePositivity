@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueElements
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # bimodule左右評価・相対tensorの両変数map・斉次生成元の受入監査 -/

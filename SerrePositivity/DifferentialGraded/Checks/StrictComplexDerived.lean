@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexDerivedLinear
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 既存有限射影ホモトピー圏から主導来圏への線形完全忠実関手の監査 -/

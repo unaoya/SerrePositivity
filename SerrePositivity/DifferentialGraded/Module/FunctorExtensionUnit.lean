@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionInsertion
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionCounit
-public import SerrePositivity.DifferentialGraded.Tensor.BalancedUnitElements
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-! # graph延長–制限の全Hom自然な単位射
 

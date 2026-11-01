@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ContractionCochain
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定収縮データと商からの制限・ε評価の受入監査 -/

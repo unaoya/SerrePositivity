@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorMaps
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 
 /-! # 固定した右相対K-flat二因子に関する導来合成の結合比較
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureTailComposition
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureCancellation
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全微分の構成・後方消去の帰納式・有限和相殺の受入監査 -/

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctor
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主導来kernelの作用・準同型反転・任意解像度計算の監査

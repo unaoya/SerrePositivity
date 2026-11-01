@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.OfActions
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 全次数自然な作用族とbimoduleの往復検査 -/
 @[expose] public section

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomTarget
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 右Hom加群のdg関手性と終域の全Hom自然性の検査 -/

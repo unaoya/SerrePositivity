@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.PrependTailNaturality
+public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import Mathlib.Data.ZMod.Basic
 
 /-! # associatorの全次数自然性と先頭Hom合成の後方自然性の受入監査 -/

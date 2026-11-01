@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRightElements
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 合成bimoduleの右作用のKoszul符号の検査 -/

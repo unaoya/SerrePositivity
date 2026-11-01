@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Bimodule.ParameterEvaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-! # 元の dg 関手の全パラメータの graph 作用
 概要：K パラメータ付き dg 自然変換を、元の graph bimodule の変換へ送る。

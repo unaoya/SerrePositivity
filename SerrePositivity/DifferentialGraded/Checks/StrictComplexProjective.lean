@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexProjective
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 一対象Aの全Hom射影性と有限射影複体の比較の監査 -/

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingEnhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 有界有限射影複体の主Perfへのdg比較の受入検査 -/

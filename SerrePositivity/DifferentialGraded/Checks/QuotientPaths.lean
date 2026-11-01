@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.PathComposition
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 明示的dg商のpath添字・内部微分tensor項の受入監査 -/

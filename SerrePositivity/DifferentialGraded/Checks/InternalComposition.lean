@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.InternalUnit
+public import SerrePositivity.DifferentialGraded.Quotient.Scalar
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全path直和の内部合成と左単位の受入監査 -/

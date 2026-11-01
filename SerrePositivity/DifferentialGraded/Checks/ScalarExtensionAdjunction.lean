@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 非 flat な係数変更に対する dg 加群随伴の検査 -/

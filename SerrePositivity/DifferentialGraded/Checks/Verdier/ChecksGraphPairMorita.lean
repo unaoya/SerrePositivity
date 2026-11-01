@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
 
 /-! # U16b からの指定局所 Morita 比較の公理監査 -/
 @[expose] public section

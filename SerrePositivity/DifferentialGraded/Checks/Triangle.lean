@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全Hom自然な単位同型と閉零bimodule射の三角coherenceの受入監査 -/

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightAction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 両括弧付けの右B作用と符号の検査 -/

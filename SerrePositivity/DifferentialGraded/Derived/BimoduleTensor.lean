@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleBasic
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 
 /-! # 固定した右相対K-flat因子との合成の局所化への降下
 

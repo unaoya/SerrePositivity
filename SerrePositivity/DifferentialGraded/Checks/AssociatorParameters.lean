@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorParameters
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 結合比較の任意パラメータ三変数自然性の受入監査 -/

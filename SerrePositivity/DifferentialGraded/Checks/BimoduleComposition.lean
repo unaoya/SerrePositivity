@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側両作用の全Hom自然性とbimodule合成双関手の受入監査 -/

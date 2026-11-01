@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorMaps
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleKFlatQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 
 /-! # 右相対K-flat因子間の準同型による導来合成の比較
 

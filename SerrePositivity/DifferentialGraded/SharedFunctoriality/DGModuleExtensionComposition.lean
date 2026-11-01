@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphComposition
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorIso
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 実 graph 延長の合成比較
 概要：反復した実加群延長を、合成 dg 関手の実延長と同型で比較する。

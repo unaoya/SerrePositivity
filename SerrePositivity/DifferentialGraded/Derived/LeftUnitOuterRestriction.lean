@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.OuterUnitRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeftRestrictionPresentation
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionLeftUnitComputation
 

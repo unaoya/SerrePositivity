@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionExact
 public import SerrePositivity.DifferentialGraded.Derived.Ring
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComparison
-public import SerrePositivity.DifferentialGraded.Tensor.ObjectwiseKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeComplex
 
 /-! # 非 flat な係数変更と K-flat 複体

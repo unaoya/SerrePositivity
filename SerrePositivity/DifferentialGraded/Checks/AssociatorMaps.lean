@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorCochainAction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 反復相対tensorの両括弧における全次数作用写像とcochainの監査 -/

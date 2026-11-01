@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherence
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来kernel射に自然な合成比較と実際のPerf自然性の接続監査

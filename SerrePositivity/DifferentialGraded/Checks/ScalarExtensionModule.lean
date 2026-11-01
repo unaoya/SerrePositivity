@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionModuleMaps
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全次数 Hom と dg 加群の係数変更の検査 -/

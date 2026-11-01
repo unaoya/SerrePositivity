@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
 public import SerrePositivity.DifferentialGraded.Derived.Restriction
 

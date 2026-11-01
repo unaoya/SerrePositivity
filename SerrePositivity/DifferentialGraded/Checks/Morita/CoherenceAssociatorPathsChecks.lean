@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorPaths
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 公開作用の結合二経路のK-flatモデル上での一致の監査

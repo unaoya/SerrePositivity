@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.CompactHomDetectsIso
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseTelescope
+public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.DifferentialGraded.Derived.CoproductProjection
 public import Mathlib.CategoryTheory.Adjunction.Additive
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products

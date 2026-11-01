@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Bimodule.Isomorphism
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 厳密 dg 合成の graph 双加群の実比較
 概要：二つの graph の相対 tensor と、元の合成関手の graph を同型で比較する。

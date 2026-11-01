@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementConeComparison
+public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

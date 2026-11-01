@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.CompositionPrepend
+public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 先頭Hom作用と連結の有限・全path結合図式の受入監査 -/

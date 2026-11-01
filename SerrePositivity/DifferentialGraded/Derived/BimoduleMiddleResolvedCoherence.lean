@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleQuasiIso
-public import SerrePositivity.DifferentialGraded.Bimodule.ResolvedRestrictionAugmentation
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleLeftRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+
 
 /-! # 制限後モデルによるbimodule合成比較の自己・推移整合性
 

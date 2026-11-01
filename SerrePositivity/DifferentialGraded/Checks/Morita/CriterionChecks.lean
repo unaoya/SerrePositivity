@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionPerfectInverse
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
 public import SerrePositivity.DifferentialGraded.Checks.Morita.U16aChecks
 public import SerrePositivity.DifferentialGraded.Checks.Morita.CriterionPerfChecks
 public import Mathlib.Data.ZMod.Basic

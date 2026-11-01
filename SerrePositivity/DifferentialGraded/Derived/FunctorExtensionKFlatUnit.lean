@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
 public import SerrePositivity.DifferentialGraded.Derived.Evaluation
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComparison
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 
 /-! # 相対K-flat右加群上の延長単位と準同値に沿う制限の準同型反映
 

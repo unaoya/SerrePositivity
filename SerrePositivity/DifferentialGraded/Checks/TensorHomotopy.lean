@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

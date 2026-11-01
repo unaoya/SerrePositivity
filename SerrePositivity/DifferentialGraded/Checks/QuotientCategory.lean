@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Category
+public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # path商の主豊穣dg構造・結合則・通常順符号の受入監査 -/

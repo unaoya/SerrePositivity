@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterLeft
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左変数のパラメータ作用・Koszul符号・主Hom写像の検査 -/

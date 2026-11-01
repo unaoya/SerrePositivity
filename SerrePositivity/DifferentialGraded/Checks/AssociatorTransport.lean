@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightTransport
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorActionDegree
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionElement
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
+
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 値を固定した左作用と結合比較後の作用輸送の受入監査 -/
