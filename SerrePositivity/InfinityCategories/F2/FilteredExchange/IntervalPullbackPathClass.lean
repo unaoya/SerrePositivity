@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPathPrecompCylinder
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 
 /-!
 概要：同じ全 path を持つ interval 引き戻しへの二射の指定 path 同型を比較する。

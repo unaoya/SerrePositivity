@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.PinchedSliceCompositionRealization
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.PinchedSliceCompositionRealization
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
 
 /-!

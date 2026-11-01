@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 public import SerrePositivity.EInfinity.FrameHom.CoherentPinchedTransport
 
 /-!

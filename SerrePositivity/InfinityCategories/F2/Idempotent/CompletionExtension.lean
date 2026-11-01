@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafCompletionValues
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafDiagramRecovery
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の全部分圏の冪等完備化に沿って、冪等完備な標的への全関手を延長する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 
 /-!

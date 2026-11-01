@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.IndHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Presentable.AdjunctionHomPreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 
 /-!
 概要：accessible 圏の右随伴の accessibility を全 Hom 族の共通 compact 濃度で証明する。

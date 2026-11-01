@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!
 概要：指定全比較の二回の制限を元合成包含への制限へ照合する。

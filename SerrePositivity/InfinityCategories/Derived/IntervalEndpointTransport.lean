@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalComposition
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedDensityDiagramHomotopy
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndClassification
-public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexHomotopyLift
+public import SerrePositivity.InfinityCategories.F1B.FullSubcomplexHomotopyLift
 
 /-!
 概要：元の weighted 密度変換の同じ全円柱を、元の Indκ 内へ持ち上げる。

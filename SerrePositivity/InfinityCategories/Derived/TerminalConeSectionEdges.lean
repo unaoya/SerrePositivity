@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
+public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
+public import SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation
 
 /-!
 概要：終対象への全錐切断から実辺を回収し、底への像を slice 表示の値に同定する。

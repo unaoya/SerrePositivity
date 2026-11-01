@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 
 /-!
 概要：定値関手間の射の像の可逆性を、元の射の像から導く。

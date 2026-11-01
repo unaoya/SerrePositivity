@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParameterNaturality
 /-!
 概要：任意パラメータ族の合成方程式を、任意のパラメータ制限に沿って保つ。

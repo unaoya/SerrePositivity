@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositionNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元 gluing 入力同型を保つ connecting cone の native 全比較。

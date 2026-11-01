@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomTargetCommaFunctor
 public import SerrePositivity.InfinityCategories.Derived.DGCommaAugUnlifted
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 /-!
 概要：元二脚の Hom gluing の augmentation を、元の共通終域の全単体族として公開する。
 方針：元終域への comma dg 関手で既存の実 augmentation prism を引き戻す。

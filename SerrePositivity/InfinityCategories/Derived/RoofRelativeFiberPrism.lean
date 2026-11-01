@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofRightPrismLift
+public import SerrePositivity.InfinityCategories.F1B.RoofRightPrismLift
 
 /-! # 屋根比較の相対問題の同時 prism 輸送
 

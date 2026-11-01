@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.NerveCoconePrism
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 
 /-!
 # 通常の Over 図式の実 slice 評価は元の右脚の円柱

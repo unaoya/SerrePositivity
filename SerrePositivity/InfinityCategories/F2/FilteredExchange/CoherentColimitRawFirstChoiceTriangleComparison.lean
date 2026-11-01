@@ -3,7 +3,7 @@ module
 public import
   SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitRawFirstChoiceTriangleLongTransport
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitRawConstantEdgeTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoComponentNaturality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMappingLaws

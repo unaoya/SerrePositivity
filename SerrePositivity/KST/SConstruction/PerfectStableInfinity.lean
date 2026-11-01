@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.StableInfinity
+public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeUnitHom

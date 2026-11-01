@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofPointSliceEdges
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
 public import SerrePositivity.InfinityCategories.Core.PinchedSlice
 

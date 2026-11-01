@@ -5,8 +5,8 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismPr
 public import SerrePositivity.EInfinity.SimplicialLocalization.HammockInvertsEdges
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
-public import SerrePositivity.InfinityCategories.Derived.SlicePrismFamilyComposition
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
 /-! 概要：任意の同じ宇宙の相対列の roof 全族の評価三角形。
 方針：元の slice prism の両端と射影を全関手圏の合成へ移す。
 規約：元の全添字・左右脚と実 Kan hammock を保持する。

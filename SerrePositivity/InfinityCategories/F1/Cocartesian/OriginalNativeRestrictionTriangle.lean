@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.GlobalNativeRestrictionTriangle
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.LocalNativeRestrictionGlobalEndpoints
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTriangleDirectNaturality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
 
 /-!
 概要：元の全 Hom 上の既存の局所自然性自身は、端点表示だけをそろえて三角等式を満たす。

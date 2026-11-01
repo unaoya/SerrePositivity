@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentHomRetraction
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentHomSection
-public import SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.Core.Roof.RoofPinchedSlicePostcomp
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 
 /-! # Dold–Kan 比較による実 Hom の slice 表示の厳密一致
 

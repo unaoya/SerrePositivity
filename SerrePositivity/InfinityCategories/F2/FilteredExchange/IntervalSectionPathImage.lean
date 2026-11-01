@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSectionHomotopy
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCComparison
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 
 /-!
 概要：元の lax pullback の第二射影の核を、C 包含の本質像と同定する。

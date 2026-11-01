@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 /-!
 概要：固定入力の実 D(R) 値 Hom の augmentation を、空間値の全関手族へ送る。
 方針：同じ実ホモトピーを対象宇宙ごと持ち上げ、R からの写像空間関手で後合成する。

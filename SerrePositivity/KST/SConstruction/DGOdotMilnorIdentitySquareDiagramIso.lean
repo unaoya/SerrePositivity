@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentitySquareSideRecovery
 public import SerrePositivity.KST.SConstruction.StableZeroTargetHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元恒等実右面への指定三境界付き Cat^perf 全図式比較を構成する。

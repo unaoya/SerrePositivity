@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 /-!
 概要：完全充満な全前合成から、同じ指定全関手同型の等式を反映する。
 方針：全関手同型の実交換則と同じ指定値の等式を使う。

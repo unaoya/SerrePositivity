@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
 
 /-!

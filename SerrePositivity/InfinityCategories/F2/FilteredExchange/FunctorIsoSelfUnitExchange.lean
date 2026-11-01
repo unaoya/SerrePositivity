@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
 
 /-!
 概要：恒等前合成と、同じ指定単位の左右の自己作用を厳密に計算する。

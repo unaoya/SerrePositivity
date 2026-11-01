@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.JoinSummands
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantPrism
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedHomotopyLift
+public import SerrePositivity.InfinityCategories.F1B.SpecifiedHomotopyLift
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 

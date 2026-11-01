@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3StageStructureFunctor
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 
 /-!

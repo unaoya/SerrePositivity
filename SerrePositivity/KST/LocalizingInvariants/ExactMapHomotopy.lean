@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping

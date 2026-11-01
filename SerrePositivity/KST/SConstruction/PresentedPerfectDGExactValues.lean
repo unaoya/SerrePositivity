@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionExact
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInfinityStableValues
-public import SerrePositivity.KST.LocalizingInvariants.StableCategories
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 /-! # 厳密 dg 入力の実安定値と完全射
 概要：元の豊穣 Perf 関手の実値と通常の入力射を、安定 ∞ 圏と完全関手に束ねる。

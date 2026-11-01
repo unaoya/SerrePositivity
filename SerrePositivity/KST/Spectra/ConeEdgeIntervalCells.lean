@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexFaces
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexFaces
 public import SerrePositivity.InfinityCategories.Core.Limit
 
 /-!

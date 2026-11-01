@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullLowerPrismSides
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullUpperPrismSides
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 
 /-!
 概要：元上下二胞体の全関手同型から、元四辺の指定全比較をそのまま回収する。

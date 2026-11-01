@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.InnerPullback
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatHomPostcomposition
 
 /-!

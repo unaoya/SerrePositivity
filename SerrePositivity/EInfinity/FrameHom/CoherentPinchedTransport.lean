@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyHomotopy
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyHomotopy
 
 /-!
 概要：可逆な端点成分による実 pinched Hom の coherent な輸送を構成する。

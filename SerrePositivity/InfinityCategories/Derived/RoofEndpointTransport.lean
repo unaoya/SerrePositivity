@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofFunctorCorrespondence
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition
 /-!
 概要：実屋根の標的頂点の等式に沿う輸送を、両射影付きの厳密な同型として与える。
 方針：等式の帰納法を使い、slice と pullback の輸送を照合する。

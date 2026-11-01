@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationUnitTriangle
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationTotalMap
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の変換と指定単位の合成三角形の長辺を小さい全空間射の指定表現にする。

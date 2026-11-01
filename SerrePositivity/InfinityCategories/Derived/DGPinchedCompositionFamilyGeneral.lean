@@ -1,8 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.DGNerve.Functor
 public import SerrePositivity.InfinityCategories.Derived.DGPinchedCompositionFamilyPrism
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGStandardPinchedNaturality
-public import SerrePositivity.InfinityCategories.Derived.SliceOverEqualityTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.SliceOverEqualityTransport
 /-!
 概要：元の coherent 合成 prism の両入力に対する dg 関手自然性を公開する。
 方針：標準 DK 係数と coherent 比較の自然性を、固定標的の slice へ移す。

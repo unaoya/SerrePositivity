@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
 public import SerrePositivity.KST.SConstruction.PastingOuterRightComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元 cell 始域外面から厚平坦核を始域とする実核面への Cat^perf 全比較。

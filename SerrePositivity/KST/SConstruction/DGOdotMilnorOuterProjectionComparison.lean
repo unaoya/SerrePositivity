@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterValueEquivalences
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCellNuComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletedLandTamme
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元実外周の resolved 商辺を、同じ LT 外周の完備化後射影へ全比較する。

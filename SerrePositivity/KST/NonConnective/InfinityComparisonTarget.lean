@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.FixedInput
-public import SerrePositivity.InfinityCategories.Derived.StableVerdierSequence
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
 
 /-!

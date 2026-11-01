@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualOuterKernelWitness
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorActualRightSquareComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelOuterSquareDiagramIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：同じ共通実長方形の外周を元 LT 絶対外周へ全比較する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinLeftBoundaryAnodyne
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
-public import SerrePositivity.InfinityCategories.DGNerve.JoinSimplexFaces
+public import SerrePositivity.InfinityCategories.Core.JoinSimplexFaces
 
 /-!
 概要：終点を含む join の面の right anodyne 性を証明する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.ContravariantContinuity
 public import SerrePositivity.InfinityCategories.Core.Opposite
 public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
-public import SerrePositivity.InfinityCategories.Derived.FunctorIsoConstantEdges
+public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
 
 /-!
 概要：制限前層の表現対象の全 Hom は元の関手が反転する辺を反転する。

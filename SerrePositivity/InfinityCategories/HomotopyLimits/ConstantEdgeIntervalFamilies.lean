@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransport
 

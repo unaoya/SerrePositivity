@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentProjectionUnitComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：有限 coherent 積の元の反復射影変換と、その全空間作用・指定単位の比較。

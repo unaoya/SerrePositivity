@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRoofCorrespondenceMap
-public import SerrePositivity.InfinityCategories.Derived.RoofPinchedSlicePostcomp
+public import SerrePositivity.InfinityCategories.Core.Roof.RoofPinchedSlicePostcomp
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap
 
 /-! # 商による実 pinched Hom と実 target slice の可換性

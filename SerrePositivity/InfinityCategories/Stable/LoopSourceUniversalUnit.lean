@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopSectionEvaluation
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaInitialFromMapping
 /-!

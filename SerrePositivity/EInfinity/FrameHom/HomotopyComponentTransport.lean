@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1B.HomotopyEdgeNaturality
 
 /-!
 # 元のホモトピー成分の辺に沿う可逆性

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Derived.Gluing.ZeroSourceModule
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
 public import SerrePositivity.KST.SConstruction.DGStandardClosedComparisonIso
 public import SerrePositivity.KST.SConstruction.DGStandardFunctorIsoReflection
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 /-!
 概要：閉零対象による恒等 Hom gluing の実右軸上で、元 cone 関手を同じ Yoneda に全比較する。
 方針：元 cone 右包含の実同型と全 Hom 自然性を、標準 DK と native nerve の比較へ移す。

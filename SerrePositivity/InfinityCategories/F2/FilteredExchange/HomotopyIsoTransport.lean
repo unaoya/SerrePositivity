@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Retracts
+public import SerrePositivity.InfinityCategories.Core.Retracts
 
 /-!
 概要：標準左 Kan 関手の制限の retract を元の全関手圏へ戻す。

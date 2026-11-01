@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSection
 public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionCoherence
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!
 概要：元の fiber 内比較は、同じ指定切断の単位比較を前合成したもの。

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 public import SerrePositivity.InfinityCategories.Stable.Pointed
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.DGNerve.JoinVertexSurjectivity
+public import SerrePositivity.InfinityCategories.Core.JoinVertexSurjectivity
 
 /-!
 概要：頂点条件の全部分複体は始終対象性と錐の普遍性を反映する。

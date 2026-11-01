@@ -1,8 +1,9 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoChainTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseDownFunctorCancellation
 
 /-!
 概要：指定同型の二段の前合成と、標的表示の往復を指定値を保って簡約する。
@@ -17,28 +18,6 @@ noncomputable section
 universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.F2
-
-/-- 指定同型の二段の前合成は、元の合成射による前合成そのものである。 -/
-lemma functorIso_precomp_precomp {A B X Y : SSet.{u}} {f g : X ⟶ Y}
-    (e : FunctorIso f g) (p : B ⟶ X) (q : A ⟶ B) :
-    (e.precomp p).precomp q = e.precomp (q ≫ p) := by
-  have hn : (pre (q ≫ p)).app Y = (pre p).app Y ≫ (pre q).app Y := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro a
-    apply CategoryTheory.Functor.functorHom_ext
-    intro d α
-    rfl
-  have hh := congrArg (fun k => SSet.mapHomotopyCategory k) hn
-  rw [mapHomotopyCategory_comp_eq] at hh
-  simp only [functorIso_precomp_eq_mapIso]
-  exact (eq_of_heq (mapIso_heq_of_functor_eq hh e)).symm
-
-/-- 元の前合成射の等式は指定同型の前合成の値を型付きで保つ。 -/
-lemma functorIso_precomp_heq_of_map_eq {A X Y : SSet.{u}} {f g : X ⟶ Y}
-    (e : FunctorIso f g) {p q : A ⟶ X} (h : p = q) :
-    HEq (e.precomp p) (e.precomp q) := by cases h; rfl
 
 /-- 標的同型とその逆で後合成すると元の指定同型の値を回収する。 -/
 lemma functorIso_postcomp_iso_cancel {A X Y : SSet.{u}} {f g : A ⟶ X}

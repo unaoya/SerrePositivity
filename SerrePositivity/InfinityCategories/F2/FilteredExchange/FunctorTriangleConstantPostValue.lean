@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningValuePost
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleTotalComponentMap
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleTotalAction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：定値標的への元の作用の後の全三角形成分を、実射の後合成の値へ戻す。

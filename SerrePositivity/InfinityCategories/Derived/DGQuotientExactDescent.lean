@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ExactFunctorDescent
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactFunctorDescent
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientArrowLifts
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientLocalization
 /-!

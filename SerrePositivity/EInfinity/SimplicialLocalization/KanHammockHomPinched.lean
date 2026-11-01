@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
-public import SerrePositivity.InfinityCategories.Derived.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
 
 /-!
 # 元の Kan hammock Hom から同じ局所化頂点の pinched Hom への弱比較

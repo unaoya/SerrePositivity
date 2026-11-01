@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeDerivedHom
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 
 /-!
 # 実正規化 probe Hom 比較 span の左射

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ResolutionOutputPrecomposition
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 /-!
 概要：二つの指定入力分解の前合成比較を、元の同じ基底比較とその忠実な回収へ分離する。
 方針：二つの指定余単位の合成を先に固定し、標的入力分解の完全充満性で回収する。

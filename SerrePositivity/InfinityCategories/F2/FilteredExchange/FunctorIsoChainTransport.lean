@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：指定同型の三対二の合成式を五つの端点の等式で輸送する。
@@ -35,12 +35,6 @@ lemma functorIso_chain_transport {X Y : SSet.{u}}
   cases eq_of_heq hs
   cases eq_of_heq ht
   exact h
-
-/-- 概要：同じ後合成射の二表示は指定同型を型付きで保持。
-方針：射の等式を消去。規約：元の値。使われ方：切断成分の同定。 -/
-lemma functorIso_postcomp_heq_of_map_eq {X Y Z : SSet.{u}} {f g : X ⟶ Y}
-    (e : FunctorIso f g) {r r' : Y ⟶ Z} (h : r = r') :
-    HEq (e.postcomp r') (e.postcomp r) := by cases h; rfl
 
 /-- 概要：等式から来る同型を端点の等式で移すと指定された標準同型に一致。
 方針：端点を消去し proof irrelevance を使う。

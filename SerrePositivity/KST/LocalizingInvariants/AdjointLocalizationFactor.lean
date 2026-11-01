@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
+public import SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!

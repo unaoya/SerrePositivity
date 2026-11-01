@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeInclusion
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTrianglePostcomposition
 
 /-!

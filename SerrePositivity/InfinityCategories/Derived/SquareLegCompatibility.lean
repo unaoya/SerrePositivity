@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.ConeEdgeCompatibility
+public import SerrePositivity.InfinityCategories.Core.ConeEdgeCompatibility
 public import SerrePositivity.InfinityCategories.Core.Pullback
 
 /-! # 四角形の指定辺と join 錐の脚

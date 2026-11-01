@@ -1,5 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
+public import SerrePositivity.InfinityCategories.Core.InnerPullback
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.Core.RightFibrationContractible
 /-!

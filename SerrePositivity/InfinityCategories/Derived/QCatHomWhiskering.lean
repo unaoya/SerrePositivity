@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCompositionWhiskerEdges
 /-!

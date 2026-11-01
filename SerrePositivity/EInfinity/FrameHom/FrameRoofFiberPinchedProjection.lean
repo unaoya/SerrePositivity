@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinched
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyComposition
+public import SerrePositivity.InfinityCategories.F1B.PinchedFamilyComposition
 
 /-!
 # 元の屋根 fiber と pinched Hom の同型は全 slice 包含を保つ

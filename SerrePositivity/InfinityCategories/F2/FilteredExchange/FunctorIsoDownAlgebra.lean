@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorSpaceDownNaturality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoMapTransport
 
 /-!

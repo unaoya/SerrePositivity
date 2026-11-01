@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RoofRelativeCompositionTriangle
+public import SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyComposition
 
 /-! # 比較と動く境界を保つ二段階輸送の合成

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopSourcePresentation
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationTerminalRepresentation
+public import SerrePositivity.InfinityCategories.F1B.Roof.RightFibrationTerminalRepresentation
 /-!
 概要：実 loop cospan の全錐の点上 slice による表示。
 方針：元の相対境界充填と right fibration の表現を実射へ接続する。

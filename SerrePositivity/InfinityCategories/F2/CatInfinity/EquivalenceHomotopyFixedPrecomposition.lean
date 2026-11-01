@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.EquivalenceHomotopyIsoPresentation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrivialKanIsoFixedPrecomposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!
 概要：可逆ホモトピーの lift が定値になる制限での指定同型。

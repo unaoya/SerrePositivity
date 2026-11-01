@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismOne
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinchedValue
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrism
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
 
 /-!
 # 元の実 native prism の一端は同じ native pinched 族

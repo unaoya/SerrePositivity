@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
 /-!
 概要：指定同値で可換な四角形を、同じ指定逆による四角形へ移す。

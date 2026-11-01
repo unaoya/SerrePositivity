@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumCirclePointLoopComparison
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 
 /-!
 概要：円評価錐の極限性を、その実際の錐の射から得た BF 比較辺の可逆性で検出する。

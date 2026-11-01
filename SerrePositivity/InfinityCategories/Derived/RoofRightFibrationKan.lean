@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Core.KanCharacterization
 public import SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp
 

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.SliceEvaluationPinched
-public import SerrePositivity.InfinityCategories.Derived.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
 
 /-!
 概要：実 slice の普遍評価は、固定点の輸送を含む同じ後合成に厳密に自然。

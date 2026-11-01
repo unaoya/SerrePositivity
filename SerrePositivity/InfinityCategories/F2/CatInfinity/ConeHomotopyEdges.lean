@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeNaturality
+public import SerrePositivity.InfinityCategories.F1B.HomotopyEdgeNaturality
 
 /-!
 概要：錐全体の比較ホモトピーの頂点・図式の辺と各脚の自然性。

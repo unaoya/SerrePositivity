@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierOriginalCompositeNativeEdge
-public import SerrePositivity.InfinityCategories.Derived.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 

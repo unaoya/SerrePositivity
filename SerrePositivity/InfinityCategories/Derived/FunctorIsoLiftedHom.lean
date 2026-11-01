@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomSquareTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
 /-!
 概要：元の指定同型の包含後の異種等式を、同じ前後合成射の異種等式へ移す。
 方針：一般の全関手圏で同じ射の等式を証明し、指定値を保つ。

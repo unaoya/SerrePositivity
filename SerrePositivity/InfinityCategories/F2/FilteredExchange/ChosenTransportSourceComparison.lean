@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportSourceIdentity
 public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilySourceComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.VertexIsoLeftIdentityFactor
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyConstantComponent
 

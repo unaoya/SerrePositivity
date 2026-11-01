@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange
 
 
 

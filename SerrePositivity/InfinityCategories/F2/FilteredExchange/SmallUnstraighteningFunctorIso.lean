@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFunctorIso
 public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!
 概要：元の全空間射の指定同型を縮小した全空間射の同型へ移す。

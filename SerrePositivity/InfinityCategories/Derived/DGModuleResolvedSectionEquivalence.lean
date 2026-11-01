@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedSectionIso
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 /-!
 概要：元の実入力切断と入力射影を、指定の両向き写像を持つ ∞ 圏同値へ包装する。
 方針：厳密切断の全関手同値と、普遍余単位からの随伴を合成する。

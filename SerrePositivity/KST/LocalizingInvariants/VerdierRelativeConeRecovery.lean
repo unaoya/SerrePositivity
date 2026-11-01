@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRelativeComparison
-public import SerrePositivity.InfinityCategories.Derived.HomotopyPrecompVertex
+public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 
 /-!
 概要：有限図式上の商錐を、パラメータ全体と元の境界を保持して回収する条件を表す。

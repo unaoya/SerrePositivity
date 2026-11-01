@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
 public import SerrePositivity.KST.SConstruction.DGCellPerfectExtensionNativeFamily
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
 public import SerrePositivity.InfinityCategories.Derived.DGCellResolvedGraphProjective

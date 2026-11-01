@@ -3,7 +3,7 @@ public import SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
 
 /-!

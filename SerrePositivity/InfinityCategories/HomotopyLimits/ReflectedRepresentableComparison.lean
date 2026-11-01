@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedHomHoli
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanSingleFibrationComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TowerComparison
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 public import Mathlib.CategoryTheory.Adjunction.Limits
 
 /-!

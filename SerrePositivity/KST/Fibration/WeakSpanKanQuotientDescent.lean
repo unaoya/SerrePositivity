@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.KST.Fibration.WeakSpanKanSpaceInversion
 public import SerrePositivity.KST.Fibration.SpaceDiagramLocalizationDescent
 

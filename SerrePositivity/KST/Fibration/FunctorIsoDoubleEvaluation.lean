@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FunctorIsoValueCurry
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
 
 /-! # 指定された同じ同型の二段階評価を、一つの評価写像による像として保持する -/
 

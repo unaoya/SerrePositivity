@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointRawFaceIsoNaturality
 

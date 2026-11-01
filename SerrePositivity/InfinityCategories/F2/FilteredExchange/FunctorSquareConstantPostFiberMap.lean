@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantUnstraighteningFiberMapPost
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorSquareTotalComponentMap
 public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTriangleTotalAction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の二面比較の定値後合成の像を、同じ全空間二面比較の実後合成へ戻す。

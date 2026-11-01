@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelComparisonHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 /-!
 概要：元の半自由制限比較を、通常 K-flat 作用と同じ出力分解の端点へ揃える。
 方針：通常作用の実包含式と元の出力分解を保って端点だけを輸送する。

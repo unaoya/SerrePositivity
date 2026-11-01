@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationUnlifted
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetQuasiIsoInversion
-public import SerrePositivity.InfinityCategories.DoldKanComparison.UniverseHomotopy
+public import SerrePositivity.InfinityCategories.Core.UniverseHomotopy
 /-!
 概要：実 augmentation の全単体族を射影的試験加群からの空間値 Hom の全関手同型へ送る。
 方針：同じ閉辺・coslice 輸送と実入力切断の厳密等式を使う。

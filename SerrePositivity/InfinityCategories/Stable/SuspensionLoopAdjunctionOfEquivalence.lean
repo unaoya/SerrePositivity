@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SuspensionLoopInverseOfEquivalence
-public import SerrePositivity.InfinityCategories.Derived.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 /-!
 概要：実 suspension と元の loop 関手の自己同値および三角式付き随伴。
 方針：全関手として構成した両逆性を同値の随伴化へ送る。

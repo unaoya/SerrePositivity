@@ -546,7 +546,7 @@ public import SerrePositivity.KST.SConstruction.OneDirectionInverseMixedWhiskeri
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseCompositionTriangle
 
 public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
-public import SerrePositivity.KST.SConstruction.ContractibleKanProducts
+public import SerrePositivity.InfinityCategories.Core.ContractibleKanProducts
 public import SerrePositivity.KST.SConstruction.BoundaryAssemblyChoices
 public import SerrePositivity.KST.SConstruction.PointedMappingTransportUnits
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedFamily

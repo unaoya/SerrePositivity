@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorOuterValueEquivalences
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSourceSquare
 public import SerrePositivity.KST.SConstruction.DGKNativeNuNaturality

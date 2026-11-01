@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreTrivialFibration
+public import SerrePositivity.InfinityCategories.F1.CoreTrivialFibration
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.InvertibleTargetLiftingIso
 
 /-!

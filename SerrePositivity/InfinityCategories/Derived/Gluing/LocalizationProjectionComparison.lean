@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.FunctorIsoEquivalenceReflection
 /-!
 概要：同じ局所化に沿って反転し、指定切断上で恒等となる関手を元射影へ全比較する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableInfinity
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
 public import SerrePositivity.InfinityCategories.Derived.FullSubcomplexEdgeLift
 
 /-! # Cat^perf の同じ完全関手の実辺

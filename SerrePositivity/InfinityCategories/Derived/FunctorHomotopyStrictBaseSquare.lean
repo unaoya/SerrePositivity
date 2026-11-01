@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：基底上で恒等となる入力比較と全単体ホモトピーの交換則を簡約する。
