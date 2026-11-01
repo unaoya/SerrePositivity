@@ -516,3 +516,13 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 - 件数が 10 を超えたら止めて報告。
 
 その後、再ビルド（残りは小さいはず）→ 保存比較 → **停止点 2**。
+
+### 10.30 追記（11-01、R72 keep 側 7 本の一括 move と validator の拡張）
+
+**承認**：7 本（`Generated.Basic` 2・`Generated.FunctorClosure` 3・`Transfer.FullyFaithfulLifting` 1・`Transfer.EvaluationFamily` 9・`HomotopyFunctionComplex.DiagonalFrame` 6・`QuillenStandardFrame` 4・`StandardCosimplicial` 6 宣言）はすべて純粋で中核から到達。模擬で禁止閉包 172 → **166**、直接違反 296 → 294、増加 0。一括 move を承認する。
+
+**validator の拡張（承認）**：`validate_targets.py` で、同一モジュールの重複登録のうち **「split の `module` と同じモジュールを `module` とする move」の組だけ**を許す。意味は「split を適用した後の keep 側を move する」で、適用順も split → move に固定する。他の重複（move 同士、split 同士、move の後の split など）は引き続き拒否。試験を 2 件（許す組、拒否する組）。模擬の import グラフも split → move の順で合成する。
+
+- 移し先は `HomotopicalAlgebra/Simplicial/<内容を表す名前>`（調査記録の案でよい。既存の名前と衝突しないこと）。
+- 道具の変更 1 コミット、「R72 keep 側の move」1 コミット（w2a.json の `R72(5)` 追記を含む）。
+- その後 Generators の補充 → 再ビルド → 保存比較 → **停止点 2**。
