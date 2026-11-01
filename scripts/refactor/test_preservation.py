@@ -46,7 +46,10 @@ def main():
     def compare(label, other, expected, mapping=None):
         args = [sys.executable, 'scripts/refactor/compare_snapshots.py', str(OUT/'before.json'),
                 str(OUT/(other+'.json')), '--output', str(OUT/(label+'.json'))]
-        if mapping: args += ['--name-map', str(mapping)]
+        if mapping:
+            locations = OUT/'locations.json'
+            locations.write_text(json.dumps({'modules':{modules[0]:modules[1]}}))
+            args += ['--name-map', str(mapping), '--module-map', str(locations)]
         run(label, args, expected)
         return json.loads((OUT/(label+'.json')).read_text())
     try:

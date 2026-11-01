@@ -68,7 +68,7 @@ def integration():
                 '--output', str(out/(label+'.json'))], expected)
             result = json.loads((out/(label+'.json')).read_text())
             assert result['changes'] == ([] if change is None else
-                [{'name': 'IFW03Snapshot.proof', 'change': change}])
+                [{'name': 'IFW03Snapshot.proof', 'module': module, 'change': change}])
         (out/'status.txt').write_text('PASS\n')
         print('PASS: empty Lean module, proof dependencies, empty/added/removed CLI comparisons')
     finally:

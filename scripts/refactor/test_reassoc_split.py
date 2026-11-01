@@ -48,7 +48,7 @@ def main():
         plan=prepare(ROOT,A,B,{NAME},before,{A:set()});(out/'plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2))
         apply(ROOT,plan);run('split-build',['lake','build',A,B]);after=snap('after',[A,B])
         rows={r['name']:r for r in after['declarations']};assert rows[NAME]['module']==rows[NAME+'_assoc']['module']==B
-        result=compare(before,after);(out/'comparison.json').write_text(json.dumps(result,ensure_ascii=False,indent=2));assert result['status']=='PASS',result
+        result=compare(before,after,module_map={'declarations':{A:plan['declaration_modules']}});(out/'comparison.json').write_text(json.dumps(result,ensure_ascii=False,indent=2));assert result['status']=='PASS',result
         state['status']='PASS'
     except BaseException as e:state['status']='FAIL';state['error']=str(e);raise
     finally:
