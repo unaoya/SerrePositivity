@@ -10,7 +10,8 @@ import re
 import sys
 
 import layer_check as lc
-from lean_source import parse_source, read_source
+from lean_source import parse_source, read_source, add_import
+from prune_imports import replace_imports
 from split_module import ROOT, module_path, prepare, obtain_snapshot
 
 FIELDS={'module','action','dest','moved','keep','attributes','candidate','note'}
@@ -133,6 +134,12 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
                 mod=entry['module']
             missing={d for d in deps if lc.under(d,'SerrePositivity') and d not in after}
             if missing: raise ValueError('imports refer to missing project modules: '+repr(sorted(missing)))
+            text=changed_sources.get(mod)
+            if text is None: text=read_source(module_path(root,mod))
+            if lc.imports(text): text=replace_imports(text,deps)
+            else:
+                for dep in sorted(deps): text=add_import(text,dep)
+            changed_sources[mod]=text
             after[mod]=deps
     downstream_additions={}
     for entry in entries:
@@ -142,6 +149,10 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
             if missing: raise ValueError('downstream_imports refer to missing project modules: '+repr(sorted(missing)))
             downstream_additions.setdefault(mod,set()).update(deps)
             after[mod] |= deps
+            text=changed_sources.get(mod)
+            if text is None: text=read_source(module_path(root,mod))
+            for dep in sorted(deps): text=add_import(text,dep)
+            changed_sources[mod]=text
     if split_plans:
         nodes,index,masks=lc.closure_masks(after)
         for plan in split_plans:
@@ -163,6 +174,15 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
         for module in sorted(changed):
             if any(masks[d] & (1<<index[module]) for d in after[module]):
                 raise ValueError('imports create an import cycle: '+module)
+    from importlib.util import spec_from_file_location, module_from_spec
+    spec=spec_from_file_location('target_moves',ROOT/'scripts/move_module.py')
+    moves_tool=module_from_spec(spec);spec.loader.exec_module(moves_tool)
+    for mod in graph.keys() | changed_sources.keys():
+        if not lc.under(renames.get(mod,mod),config['model_category_rule']['prefix']): continue
+        if mod in changed_sources or graph[mod] & renames.keys():
+            text=changed_sources.get(mod)
+            if text is None: text=read_source(module_path(root,mod))
+            changed_sources[mod]=moves_tool.rewrite(text,renames,{})
     after_mentions=simulated_model_mentions(root,mentions,renames,changed_sources,config)
     before_report=lc.analyze(graph,mentions,config)
     after_report=lc.analyze(after,after_mentions,config)
