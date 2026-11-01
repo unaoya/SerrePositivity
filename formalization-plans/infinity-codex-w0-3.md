@@ -462,3 +462,17 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 - `F2/FilteredExchange/FunctorIsoWhiskerCancellation` ← `Core.FunctorIsoChainTransport`（`functorIso_postcomp_heq_of_map_eq`）
 
 補充のたびに `layer_check.py` の直接違反と禁止閉包が増えないことを確かめる（増えたら STOP）。補充は `batch-w1w2a-downstream-imports.json` に記録し、「downstream imports」の 1 コミットにまとめる（非中核 11 本・構文修正 3 本と一緒でよい）。再ビルドを続け、次の層の失敗も同じ規則で処理して、**停止点 2** で報告する。
+
+### 10.25 追記（11-01、補充で中核の閉包にモデル圏のコードが戻った件：R72 の分割を広げる）
+
+**承認**：停止は正しい。中核 2 件・Derived 2 件・Smith 1 件の補充自体は増加 0。増加（W2a／W2b の禁止閉包 177 → 179、組数 345,310 → 351,422）は、前回の非中核 11 本への補充のうち、**中核から到達する HotA のモジュール**（`Transfer/EvaluationFamily`・`Simplicial/LargeParameterHomotopy` など）に `ModelBridge.HA.Basic`・`HomotopyFunctionComplex.BoundaryOne` を import させたことによる。つまり、これらの HotA モジュールには R72 の分類から漏れた「モデル圏の宣言を使う宣言」が残っていて、中核がそのモジュールを使っている。これは W2a の完了条件（中核の閉包にモデル圏のコードなし）そのものなので、**補充ではなく R72 の分割を広げて直す**。
+
+**手順（まず静的、ビルドなし）**
+1. 補充で ModelBridge または BoundaryOne を import させた非中核モジュールのうち、**中核から到達するもの**を列挙する（`layer_check.py` のグラフ）。
+2. その各モジュールについて、snapshot の `uses_modules`（宣言ごとの依存モジュール）と、失敗した宣言名から、**ModelBridge・BoundaryOne の宣言に依存する宣言**（と、それに依存する同じモジュール内の宣言）を `moved` とする分割計画を作る。`keep` 側が ModelBridge を import しなくて済むことを確かめる。分割先は `InfinityCategories/ModelBridge/HA/<basename>`（R72 と同じ）。
+3. 分割の連鎖：`moved` 側の宣言を使う他の非中核モジュールには ModelBridge 側の新モジュールを import させる（これらが中核から到達するなら、そのモジュールも 2 の対象に加える）。中核のモジュールが `moved` 側の宣言を使っていたら、それは中核にモデル圏の依存があることを意味するので **STOP して報告**（宣言名と使用箇所）。
+4. 分割の総数が **10 本を超える**、または 3 で中核の使用が出たら、適用せずに止めて報告する（その場合は、増加 2 件を W2a の既知の残りとして記録し、W2b で処理する案を Claude が判断する）。
+5. 10 本以下なら、§10.21〜10.22 の規則で before snapshot（分割元）を採り、分割を適用し、`validate_targets.py`／`layer_check.py` で禁止閉包が **停止点 1 の値（177）以下**に戻ることを静的に確かめてから再ビルドを続ける。分割は `w2a.json` に追記し（candidate `R72(4)`）、「R72 追加分割」の 1 コミット。
+6. **停止点 2** の報告に、分割した宣言の一覧と、閉包の前後を含める。
+
+補足：`BoundaryOne` は R72 で「モデル側の塊、純粋部分の move は後の窓」と分類したモジュール。補充で BoundaryOne を要した宣言が純粋部分だけを使うなら、その宣言の側ではなく BoundaryOne の純粋部分を HotA に残す分割（R72 の未実施分の前倒し）でもよい。どちらが小さいかで選び、報告に書く。
