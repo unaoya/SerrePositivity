@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance
 
 /-!

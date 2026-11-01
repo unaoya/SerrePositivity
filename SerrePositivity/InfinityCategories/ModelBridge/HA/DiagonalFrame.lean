@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram
 
 /-!
 分割で生成：docstring を書き直すこと

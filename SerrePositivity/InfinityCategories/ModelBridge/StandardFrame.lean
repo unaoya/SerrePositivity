@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 

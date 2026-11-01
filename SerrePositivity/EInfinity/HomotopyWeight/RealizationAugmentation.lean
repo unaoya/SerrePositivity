@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.ConstantComparison
 public import SerrePositivity.EInfinity.FrameHom.RealizationHomNaturality
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 
 /-!
 # 実現の一点比較と元の frame augmentation の照合

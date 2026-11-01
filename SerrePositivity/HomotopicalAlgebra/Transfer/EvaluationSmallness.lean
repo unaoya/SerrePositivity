@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 public import Mathlib.CategoryTheory.Presentable.Adjunction
 
 /-! # Small-object arguments for free images of an evaluation family

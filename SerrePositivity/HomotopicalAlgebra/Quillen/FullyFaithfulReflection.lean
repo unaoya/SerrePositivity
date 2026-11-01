@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Transfer.FullyFaithfulLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FullyFaithfulLifting
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Brown
 
 /-! # Weak-equivalence reflection without an adjoint

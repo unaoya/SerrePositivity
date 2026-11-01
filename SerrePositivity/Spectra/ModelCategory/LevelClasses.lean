@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.Evaluation
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
 
 /-! # Level morphism classes and free-level generators

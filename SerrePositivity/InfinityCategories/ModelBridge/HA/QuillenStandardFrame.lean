@@ -2,8 +2,8 @@ module
 
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexWeakEquivalence
 
 /-!

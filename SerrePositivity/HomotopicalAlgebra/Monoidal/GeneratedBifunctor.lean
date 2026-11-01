@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 /-! # Quillen bifunctors checked on generating maps
 

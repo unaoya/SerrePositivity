@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRepresentables
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 
 /-!
 # 対角の右随伴を標準単体の内部Homで表す随伴を構成する

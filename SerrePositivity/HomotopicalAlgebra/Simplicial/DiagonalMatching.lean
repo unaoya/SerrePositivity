@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 
 /-!

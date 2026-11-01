@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightedLimit
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 
 /-! # An actual cosimplicial frame over the specified homotopy colimit
 

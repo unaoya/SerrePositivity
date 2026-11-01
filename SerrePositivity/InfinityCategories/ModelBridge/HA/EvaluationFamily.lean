@@ -2,7 +2,7 @@ module
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
-public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition
 public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
 

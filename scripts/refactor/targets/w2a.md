@@ -2174,3 +2174,8 @@ EvaluationFamilyはmoved 7・keep 9、移し先はIC.ModelBridge.HA.EvaluationFa
 BoundaryOneは純粋な5宣言全体をHA.Simplicial.BoundaryOneへmove。宣言名は保持する。
 LargeParameterHomotopyは移動後の純粋なBoundaryOne.isColimitとLargeParameterExtensionのkeep側だけを使い、moved 0。空splitは作らない。
 追加前snapshotは2モジュール、追加利用元の元snapshotは10モジュールで成功。追加2件のvalidatorはPASS、禁止閉包はW1=1・W2a/W2b=172（179から減少）、増加0。ビルド・保存検査は実施後に追記。
+
+## 11-01 §10.30：R72(5) keep側7本のmove
+
+Generated.Basic、Generated.FunctorClosure、Transfer.FullyFaithfulLifting、Transfer.EvaluationFamily、HomotopyFunctionComplex.DiagonalFrame、QuillenStandardFrame、StandardCosimplicialの純粋なkeep側31宣言を、[調査記録](r72-keep-moves-2026-11.md)のSimplicial以下へmoveした。splitと同一moduleのmoveは必ずsplitの後に適用する。
+W2aは1,217項目（move1,205・split10・reimport2）、W1と合わせて1,285項目。validatorはPASS、禁止閉包W1=1・W2a/W2b=166、増加0。宣言名・本文は変更せず、利用者のimportを更新した。ビルド・全束の保存比較は停止点2で報告する。

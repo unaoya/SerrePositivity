@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.DualResolutionTargets
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ReplacementMappingDescent
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalQuillen
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanReplacement
 

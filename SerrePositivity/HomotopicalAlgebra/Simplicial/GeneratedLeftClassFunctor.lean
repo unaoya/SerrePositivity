@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Generated.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 /-!
 # 余極限を保つ関手が生成射上で左クラスを保てば生成された左クラス全体を保つ

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCylinder
 
 /-! # The actual standard interval under a left Quillen functor is a good cylinder

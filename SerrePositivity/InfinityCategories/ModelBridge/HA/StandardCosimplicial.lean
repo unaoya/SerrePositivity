@@ -2,7 +2,7 @@ module
 
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorBoundary
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 
 /-!

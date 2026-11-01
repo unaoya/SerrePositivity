@@ -14767,5 +14767,75 @@
     "attributes": {},
     "candidate": "R72(4)",
     "note": "§10.26: 純粋な5宣言を宣言名を変えず move。"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.Generated.Basic",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.Transfer.FullyFaithfulLifting",
+    "action": "move",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.FullyFaithfulLifting",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(5)",
+    "note": "§10.29: pure R72 keep side reachable from core; move after the existing R72 split"
   }
 ]
