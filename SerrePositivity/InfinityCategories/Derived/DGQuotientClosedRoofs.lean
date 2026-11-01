@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedMaps
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFiniteRoof
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
 
 /-! # 有限 cell roof の二射を元の dg 圏へ戻す
 

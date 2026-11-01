@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGRepresentableFiniteCellThick
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-! # 指定代表一つの導来生成からホモトピー thick 生成へ
 概要：同じ代表一つが Perf を生成すれば、射影的 perfect 加群はその thick 閉包に入る。

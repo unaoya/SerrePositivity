@@ -1,4 +1,4 @@
-import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
+import SerrePositivity.DifferentialGraded.Morita.Perfect
 import Lean
 
 /-! 全公開補題と補助宣言を標準三公理で監査し、K-S• の元の全称型を照合する。 -/

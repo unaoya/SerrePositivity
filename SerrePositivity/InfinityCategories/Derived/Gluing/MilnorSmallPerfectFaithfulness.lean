@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorAlgebraDiagonalHom
 public import SerrePositivity.KST.SConstruction.DGOdotVerdierInput
 public import SerrePositivity.KST.SConstruction.PerfectDGFullyFaithful
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorQuasiIsoFullyFaithful
 /-!
 概要：Milnor 比較から元小 Perf 対角と固定 ν の充満忠実性へ進む生成入力を分離する。

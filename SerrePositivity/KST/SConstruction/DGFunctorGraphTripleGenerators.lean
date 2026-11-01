@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphActionAssociativity
 public import SerrePositivity.KST.SConstruction.DGGraphGeneratorPasting
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 元の三重 graph 比較を coend 包含上で計算する
 概要：元の三重 graph 比較の二経路を、graph の左作用に帰着する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionComposition
 
 /-! # 元の実 Perf 延長比較の閉零自然性

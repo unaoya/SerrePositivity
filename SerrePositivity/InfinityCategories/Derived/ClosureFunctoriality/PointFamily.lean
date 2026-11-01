@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFreeExtension
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-!
 概要：一対象環からの指定対象関手の族に、元の全 Hom 作用を与える。

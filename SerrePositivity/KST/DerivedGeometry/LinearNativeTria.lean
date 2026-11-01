@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearNativeComparison
 public import SerrePositivity.KST.DerivedGeometry.LinearYonedaTriangulated
-public import SerrePositivity.DifferentialGraded.Verdier.Tria
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-!
 概要：元の Mathlib ホモトピー圏と代表加群の前三角化を三角同値で比較する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotTargetRepresentation
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 
 /-! # 元の終域へ評価した商 cone と右代表加群の作用
 概要：元の小終域の実加群作用を同じ tensor 評価で元の終域へ戻し、元の閉同型を保つ。

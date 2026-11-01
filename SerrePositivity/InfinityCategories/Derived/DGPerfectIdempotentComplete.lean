@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquiv
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectInfinity
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementIdempotents
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessUniverse
 public import Mathlib.CategoryTheory.Idempotents.Basic

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.NullObjects
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-! # tria の生成性・Verdier 核・後続比較の型と公理監査
 

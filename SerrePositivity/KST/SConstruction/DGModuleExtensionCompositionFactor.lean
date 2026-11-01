@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 public import SerrePositivity.KST.SConstruction.BimoduleFirstParameterConjugation
 
 /-! # 元の実加群延長の合成比較の同じ二段分解

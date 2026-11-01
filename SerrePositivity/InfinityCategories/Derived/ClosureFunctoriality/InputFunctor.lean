@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.InputParameter
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-!
 概要：入力 dg 関手の全 Hom 作用を、新閉包の dg 関手圏への dg 関手として束ねる。

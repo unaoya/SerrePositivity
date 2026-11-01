@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedPerfectComparison
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerf
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 
 /-!
 概要：D-9 の同じ実小核から、元の D 加群への実評価双加群を作る。

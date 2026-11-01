@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedBlowup.ExteriorBaseChangeDGFunctor
 public import SerrePositivity.KST.DerivedBlowup.ExteriorDGFunctor
 public import SerrePositivity.KST.DerivedBlowup.ExteriorSequence
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionCategory
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 
 /-!
 概要：KST Def3.1 の標準添加を既存の dg 関手の合成として構成する。

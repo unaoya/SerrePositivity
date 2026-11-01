@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftModuleHomComparison
 public import SerrePositivity.KST.SConstruction.DGFunctorWhiskering
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
 
 /-! # 元の入力 Hom から graph の左加群 Hom への作用
 概要：dg Yoneda と値の評価で後合成し、既存の左加群 Hom へ作用を移す。

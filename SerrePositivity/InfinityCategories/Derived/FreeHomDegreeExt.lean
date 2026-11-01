@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Hom
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 
 /-! # 自由 dg Hom の各次数の生成元による外延性
 

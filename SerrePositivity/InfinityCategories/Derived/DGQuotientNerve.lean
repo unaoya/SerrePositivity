@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ContractingElementNerve
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
-public import SerrePositivity.DifferentialGraded.Quotient.Universal
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 
 /-! # 明示的 dg 商の nerve と指定対象の収縮
 

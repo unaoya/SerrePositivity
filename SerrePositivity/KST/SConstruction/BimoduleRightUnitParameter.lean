@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftTensorYonedaParameter
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 
 /-! # 実双加群の右単位比較の任意パラメータ自然性
 概要：対角双加群との右単位比較は、任意複体 K の双加群変換にも自然である。

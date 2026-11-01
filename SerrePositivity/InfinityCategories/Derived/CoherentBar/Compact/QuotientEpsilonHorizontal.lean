@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
-public import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.DifferentialGraded.Functor.Tensor
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-!
 概要：固定 ε 整合関手圏の横合成を、同じ正本商関手の横合成から構成する。

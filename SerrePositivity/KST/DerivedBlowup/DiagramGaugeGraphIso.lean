@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeRegularIso
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraVertex
 public import SerrePositivity.DifferentialGraded.Module.FunctorGraphActions
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueIsomorphism
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-!
 概要：KST §3.1 の包含の Hom gauge を局所遷移の graph bimodule の自己同型にする。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionCategory
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 
 /-!
 概要：KST §3.1 の局所係数単元による複体自己同型を共通基底環へ制限する。

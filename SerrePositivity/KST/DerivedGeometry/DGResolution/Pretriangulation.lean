@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.Surjectivity
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Verdier.Tria
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-!
 # 準同値による前三角化の比較

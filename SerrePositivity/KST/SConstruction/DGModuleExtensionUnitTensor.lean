@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionIdentity
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionIdentity
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # 実恒等延長の全 Hom 自然な tensor 単位同型
 概要：元の恒等延長の単位比較を、全加群を左パラメータとする双加群同型へ束ねる。

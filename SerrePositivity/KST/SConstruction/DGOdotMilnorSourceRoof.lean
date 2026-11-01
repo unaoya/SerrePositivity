@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorFlatKernelNullSquare
 public import SerrePositivity.KST.SConstruction.DGKUniverseMorita
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：元対角始域の cell 分解から同じ thick 平坦核への厳密比較を構成する。

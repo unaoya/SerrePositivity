@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 
 /-! # 元の実延長比較の閉零自然性
 概要：合成比較の全 Hom 自然性を、元の加群射の可換四角形へ制限する。

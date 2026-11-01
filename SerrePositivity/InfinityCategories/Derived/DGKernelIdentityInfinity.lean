@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 /-!
 概要：同じ対角双加群の実導来作用を、元の導来 ∞ 圏の恒等関手へ比較する。

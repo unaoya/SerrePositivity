@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotTargetConeRepresentationNaturality
 public import SerrePositivity.KST.SConstruction.DGOdotTargetAlgebra
 public import SerrePositivity.KST.SConstruction.DGOdotAlgebraRealization
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 
 /-! # 元の ⊙ 比較代数射と評価した商 cone の表現照合
 概要：元の比較代数射の実 Yoneda 作用を、同じ商 cone 評価と全 Hom 自然に比較する。

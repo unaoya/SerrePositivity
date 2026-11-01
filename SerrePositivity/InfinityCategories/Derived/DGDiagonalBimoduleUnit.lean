@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnit
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+
 public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
-public import SerrePositivity.DifferentialGraded.Tensor.OuterUnitRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 /-!
 概要：対角双加群の二つの単位子を同じ閉零同型として同定する。
 方針：全次数の実 tensor 成分の左右作用と Koszul 符号を比較する。

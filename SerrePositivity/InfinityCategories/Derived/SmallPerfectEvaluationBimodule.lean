@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerf
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 
 /-!
 概要：小さい完全 dg 加群圏の実評価双加群。

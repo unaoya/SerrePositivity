@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
 概要：実 Perf 値 dg 関手を、同じ Hom 鎖写像を持つ実加群値関手として読む。

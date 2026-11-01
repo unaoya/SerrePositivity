@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleIso
-public import SerrePositivity.DifferentialGraded.Tensor.UnitMapNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 /-!
 概要：元の導来 kernel の raw factor と augmentation の任意射自然性を照合する。
 方針：同じ比較と実射作用を保ち、全前合成・同じ指定切断上の四角形を使う。

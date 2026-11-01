@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Paths
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.TensorDegreeSeparation
 
 /-!

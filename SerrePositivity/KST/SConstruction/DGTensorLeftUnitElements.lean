@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.KST.SConstruction.DGComplexIsoEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.DegreeElementsExt
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleRightElements
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorElements
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 
 /-! # 実 tensor 左単位と結合の三重生成元計算
 概要：左単位とその逆を、元の単位を挿入する生成元で計算する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryInterchange
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
 
 /-! # cell pathの先頭作用と境界挿入の反交換の公理監査
 

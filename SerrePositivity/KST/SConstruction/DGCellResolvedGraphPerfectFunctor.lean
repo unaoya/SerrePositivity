@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfect
 public import SerrePositivity.KST.SConstruction.DGBimodulePerfectFunctor
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-!
 概要：同じ graph 解像度と実比較を各右制限の射影性だけから実 Perf dg 関手へ接続する。

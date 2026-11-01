@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
-public import SerrePositivity.DifferentialGraded.Tensor.Pentagon
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 /-!
 概要：同じ双加群 triangle と pentagon を、実 h Fun の射の等式へ送る。
 方針：元の指定値と全 Hom 自然性を保持する実関手を使う。

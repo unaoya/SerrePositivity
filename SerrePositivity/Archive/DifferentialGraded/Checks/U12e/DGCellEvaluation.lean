@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Augmentation
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全Hom評価・cell付加へのdg関手延長・次段のcell充填の監査

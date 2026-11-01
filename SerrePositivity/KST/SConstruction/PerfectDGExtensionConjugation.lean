@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionComposition
 
 /-! # 元の実 Perf 合成比較による Hom 共役

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGraphComposition
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-!
 概要：D の元の graph 制限の合成同型を全 Hom に自然な厳密 dg 比較へ上げる。

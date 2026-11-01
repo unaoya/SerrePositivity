@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrependDifferential
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 元のHomの追加微分後の作用と符号付きLeibniz則の監査

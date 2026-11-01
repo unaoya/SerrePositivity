@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGExtensionRepresentableClosed
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonAdjointUnit
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
 
 /-! # 代表加群の制限比較の元の閉射に対する自然性
 

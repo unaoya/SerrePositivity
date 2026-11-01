@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 public import SerrePositivity.DifferentialGraded.Category.Examples
 
 /-! # 恒等 dg 関手を選ぶ一対象 A からの実 dg 関手

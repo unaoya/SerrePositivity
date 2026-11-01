@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputPerfectZero
-public import SerrePositivity.DifferentialGraded.Endomorphism.IsoLocus
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
 public import SerrePositivity.DifferentialGraded.Derived.AcyclicZero
 
 /-!

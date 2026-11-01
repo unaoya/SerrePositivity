@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CanonicalZigzag
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 反復列・最終解像度・任意解像度との準同値比較の監査

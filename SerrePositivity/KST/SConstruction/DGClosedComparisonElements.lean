@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGClosedWhiskerComponents
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 
 /-! # 全 Hom 自然な閉比較の整数次数ごとの合成式
 概要：元の閉比較の全 Hom 自然性を、各斉次元の前後合成の等号へ移す。

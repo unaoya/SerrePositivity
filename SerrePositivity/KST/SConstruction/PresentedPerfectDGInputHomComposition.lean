@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHom
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHom
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
 /-! # ラベル付き作用の元の入力 Hom の合成保存
 概要：元の入力 Hom の全次数合成は、各ラベルの同じ Hom 合成へ送られる。

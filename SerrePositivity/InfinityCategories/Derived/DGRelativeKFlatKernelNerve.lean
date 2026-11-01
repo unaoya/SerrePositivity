@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatModuleNerve
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolutionModel
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 /-!
 概要：右相対 K-flat kernel の通常 tensor を、K-flat 頂点全部分 ∞ 圏上の実関手にする。
 方針：元の dg tensor の nerve と実包含の合成を、K-flat 対象の保存条件で持ち上げる。

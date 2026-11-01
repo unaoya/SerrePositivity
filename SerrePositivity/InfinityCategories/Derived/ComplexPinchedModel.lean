@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexUnitHomIso
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapComposition
 
 /-! # 任意複体の単位 Hom による実 pinched 模型

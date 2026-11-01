@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence
 public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
 public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
-public import SerrePositivity.DifferentialGraded.Tensor.Semifree
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 /-!
 概要：任意の小さい dg 圏上の半自由加群の実 dg nerve と分解を定義する。
 方針：全次数 Hom end と実半自由 filtration をそのまま使う。

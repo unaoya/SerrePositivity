@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedConeNative
 public import SerrePositivity.KST.SConstruction.DGHomGluingInverseRotation
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeComparisonRecovery
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposition
 
 /-!

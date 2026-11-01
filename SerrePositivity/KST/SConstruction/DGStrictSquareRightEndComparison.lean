@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGStrictSquareQuotientEnd
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisEnd
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFactorization
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-! # 元の右 End 射の実 Perf 比較と指定商への因子分解
 概要：元の右対象 End から指定商 End を通る射を、元の商への右軸射と照合する。

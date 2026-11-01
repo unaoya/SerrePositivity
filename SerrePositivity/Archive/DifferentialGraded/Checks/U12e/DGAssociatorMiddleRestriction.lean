@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionResolved
 public import Mathlib.Data.ZMod.Basic
 

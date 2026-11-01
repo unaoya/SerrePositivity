@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapExtension
-public import SerrePositivity.DifferentialGraded.Resolution.InitialStageComparison
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cell延長の一意性と解像度比較の入口の検証

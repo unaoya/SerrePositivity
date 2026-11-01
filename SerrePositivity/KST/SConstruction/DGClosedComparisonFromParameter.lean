@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-! # 単位パラメータの全次数自然性からの閉比較の回収
 概要：元の単位パラメータ自然変換から、同じ閉射族の全 Hom 可換式を回収する。

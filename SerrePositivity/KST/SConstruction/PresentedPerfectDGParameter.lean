@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionParameter
-public import SerrePositivity.KST.SConstruction.DGParameterConjugation
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGParameterConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAction
 
 /-! # ラベル付き Perf の全パラメータ作用

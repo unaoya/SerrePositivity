@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModules
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonHomIso
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomComparisonShift
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! native 代表加群と、同じ kernel 対象への制限 Hom 加群の実同型。 -/
 @[expose] public section

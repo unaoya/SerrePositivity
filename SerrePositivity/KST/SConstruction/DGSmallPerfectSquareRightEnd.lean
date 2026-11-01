@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectSquareQuotientEnd
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeYoneda
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisEnd
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-! # 元の右対象 End から実 Perf 比較の対角商 End への射
 概要：元の右 dg 対象の全 End を、同じ実代表・右軸・対角商の指定 End へ送る。

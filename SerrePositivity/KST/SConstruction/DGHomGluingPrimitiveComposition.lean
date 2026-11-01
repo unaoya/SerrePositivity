@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingPrimitiveCommaComposition
 public import SerrePositivity.KST.SConstruction.DGHomGluingYonedaActions
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionEvaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 元の gluing 第三成分の全次数合成
 概要：元の gluing の実合成の第三成分を、同じ双加群の二作用に戻す。

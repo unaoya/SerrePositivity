@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorTrivialFibration
 

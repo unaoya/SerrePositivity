@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 
 /-! # パラメータ複体の射による全次数自然変換の引き戻し
 概要：K′→K に沿ってパラメータを引き戻し、元の成分と全 Hom 自然性を保持する。

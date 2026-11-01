@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGRightTensorComposition
 public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPairCoherence
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-! # 元の Λ 関手族の実 Perf 右作用の合成
 概要：同じ Λ からのラベル族・前入力族・後入力族の作用を、元の入力横合成と比較する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CompositionComparison
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomMapNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! 閉射による実 Hom の後合成。二射影と全次数の第三 cochain を保持する。 -/
 @[expose] public section

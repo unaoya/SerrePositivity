@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Reconstruction
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 
 /-! # 自由 dg 関手の評価と後合成
 

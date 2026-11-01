@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionClassical
 public import SerrePositivity.InfinityCategories.Derived.DGModuleMoritaInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
-public import SerrePositivity.DifferentialGraded.Morita.KernelResolution
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 /-!
 概要：元の出力分解による一般 kernel 作用を、既存の主導来 tensor 関手と自然同型で比較する。
 方針：標準入力分解を射影的入力へ制限し、実 augmentation の自然同型と接続する。

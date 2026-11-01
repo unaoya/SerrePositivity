@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
 public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
 

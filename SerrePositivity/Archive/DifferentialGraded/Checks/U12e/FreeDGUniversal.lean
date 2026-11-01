@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Universal
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 自由dg圏の結合則・K-flat Hom・厳密普遍性の監査

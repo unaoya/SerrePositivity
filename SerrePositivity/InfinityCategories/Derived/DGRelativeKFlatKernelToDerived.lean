@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatEdges
 public import SerrePositivity.InfinityCategories.Derived.DGClosedEdgePostcomposition
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor
-public import SerrePositivity.DifferentialGraded.Morita.KernelAugmentation
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 /-!
 概要：K-flat 入力の通常 tensor の出力を指定半自由分解へ送り、元の導来 kernel と比較する。
 方針：両 K-flat 端点間の準同型保存と、同じ生の関手の因数分解同型を使う。

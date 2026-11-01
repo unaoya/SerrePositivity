@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryOperator
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cellのpath・境界作用素・Koszul符号の監査

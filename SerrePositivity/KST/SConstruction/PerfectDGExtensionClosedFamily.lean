@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHom
 public import SerrePositivity.KST.SConstruction.DGExtensionParameterPullback
 public import SerrePositivity.KST.SConstruction.DGParameterUniversal
 public import SerrePositivity.KST.SConstruction.DGClosedComparisonFromParameter
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
 
 /-! # 指定した全 Hom 自然同型族の実一回 Perf 延長
 概要：元の入力同型を実入力 Hom へ入れ、同じ一回 Perf 延長の各実対象に作用させる。

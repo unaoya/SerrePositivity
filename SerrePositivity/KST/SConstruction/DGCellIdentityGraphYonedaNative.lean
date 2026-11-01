@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeAugmentation
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleResolvedMapInvertible
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport

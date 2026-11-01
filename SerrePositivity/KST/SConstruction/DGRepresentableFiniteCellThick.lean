@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ThickHomComparison
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
 
 /-! # 指定代表加群の有限 cell とホモトピー thick 閉包
 概要：指定代表加群一つからの有限 cell を、同じ代表のホモトピー thick 閉包へ送る。

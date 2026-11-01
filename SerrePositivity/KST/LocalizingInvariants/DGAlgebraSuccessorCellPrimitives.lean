@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellAlgebraLift
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Universal
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
 
 /-!
 概要：全射準同型を通る段階代数射から、次段の全 cell の実原始元を構成する。

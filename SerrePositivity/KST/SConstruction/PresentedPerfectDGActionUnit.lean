@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGHomTransport
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionRightUnit
 
 /-! # ラベル付き Perf の dg 作用の厳密な単位法則

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity
-public import SerrePositivity.DifferentialGraded.Morita.Criterion
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
 /-!
 概要：一般双加群の明示 Morita 三条件と両側 compact 生成から、同じ実 ∞ 関手の同値を得る。
 方針：元の実主導来比較自然同型と compact 性の輸送を使う。

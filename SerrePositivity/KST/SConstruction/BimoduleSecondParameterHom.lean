@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.RightTensorParameterFactorization
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 第二 tensor 因子の任意パラメータ作用と元の dg 後合成
 概要：双加群の第二因子の変換は、同じ実 tensor dg 関手の全 Hom 作用と一致する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.StagePresentation
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Universal
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 
 /-!
 # 初期段階の閉じた自由生成元による表示

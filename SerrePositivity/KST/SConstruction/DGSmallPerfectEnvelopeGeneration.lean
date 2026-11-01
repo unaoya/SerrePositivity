@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeEquivalence
 public import SerrePositivity.KST.SConstruction.DGGeneratorImagePerfect
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 
 /-! # 元の小代表の生成条件を実延長像を含む小模型へ送る
 概要：元の小代表系の指定生成条件を、同じ実対象を含む拡張模型へ移す。

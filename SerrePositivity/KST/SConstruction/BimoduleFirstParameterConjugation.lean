@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.BimoduleFirstParameterSquare
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 
 /-! # 実 tensor と任意パラメータの比較共役
 概要：元の閉零比較同型を実 tensor へ送り、全パラメータ作用の共役後の一致を得る。

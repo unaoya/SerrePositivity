@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGKernelIdentityNerveHo
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveWhisker
 public import SerrePositivity.InfinityCategories.Derived.DGKernelBimoduleIsoNerveHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTwoThreeTransport
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 /-!
 概要：元の通常 kernel 合成比較の右単位三角式を証明する。
 方針：元の指定値と端点等式を保つ。

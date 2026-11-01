@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputDerivedZero
 public import SerrePositivity.KST.NonConnective.DGKappaSuspension
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonRestriction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-!
 概要：固定 ν が零なら、同じ実 cone の全対象は perfect で、元の実懸垂の固定 ν も零。

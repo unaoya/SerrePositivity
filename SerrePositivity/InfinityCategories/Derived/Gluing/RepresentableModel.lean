@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomCalculus
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaProjections
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
 
 /-!

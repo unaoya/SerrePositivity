@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Resolution.CellSequence
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 # 半自由な生成元添加のフィルトレーションと K-flat 性

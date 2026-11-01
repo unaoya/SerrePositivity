@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftTensorParameterPullback
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # bimodule の第一 tensor 変数のパラメータ引き戻し
 概要：任意のパラメータ射と、元の bimodule tensor 作用が可換である。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelColumnHom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ActionYoneda
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomMapNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! 試験 gluing 対象の augmentation を通常 kernel tensor へ持ち上げた全 Hom 作用。 -/
 @[expose] public section

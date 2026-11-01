@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomInfinity
-public import SerrePositivity.DifferentialGraded.Morita.KernelTensor
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 /-!
 概要：任意の双加群による tensor 作用を、実半自由模型間の ∞ 関手にする。
 方針：半自由入力への実 dg 制限と全単体上の実出力分解を使う。

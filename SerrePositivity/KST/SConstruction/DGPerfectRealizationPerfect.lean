@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
-public import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingInclusion
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-!
 概要：指定 perfect 値の実 tensor 評価を同じ実加群像のまま strict Perf に制限する。

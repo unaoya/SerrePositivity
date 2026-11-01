@@ -3,8 +3,8 @@ public import SerrePositivity.KST.SConstruction.DGKNativeValueComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaNerveIso
 public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
 
 /-!

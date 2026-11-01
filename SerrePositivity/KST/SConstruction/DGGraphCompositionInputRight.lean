@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputLeft
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGGraphCompositionInputLeft
 public import SerrePositivity.KST.SConstruction.BimoduleRightUnitParameter
 
 /-! # graph 合成比較の右入力に関する全次数自然性

@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryCode
+public import SerrePositivity.DifferentialGraded.Presentation.Category
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveFamily
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionProjective
 public import SerrePositivity.DifferentialGraded.Category.Induced
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 /-!
 概要：小さい出発圏の提示・射影的 seed・延長関手をラベルに保持する模型を構成する。
 方針：提示コードを Type u に固定し、評価後も出発圏と seed を選び直さない。

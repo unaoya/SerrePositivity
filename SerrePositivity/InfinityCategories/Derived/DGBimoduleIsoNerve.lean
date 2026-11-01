@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso
-public import SerrePositivity.DifferentialGraded.Bimodule.Evaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 /-!
 概要：全 Hom 自然な双加群の実同型を、同じ dg 関手の nerve 上の全関手同型へ送る。
 方針：閉零成分と全 Hom 鎖写像の可換性から、同じ厳密 dg 自然変換を作る。

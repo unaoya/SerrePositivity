@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomAugmentedSphereFamily
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomSphereMatrixLift
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
+
 public import SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix
 /-!
 概要：κ未満自由直和間の任意閉射を、元の出発関手を含む共通コードの seed 閉射へ精密化する。

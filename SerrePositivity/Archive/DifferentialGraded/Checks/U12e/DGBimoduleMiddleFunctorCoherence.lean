@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleCanonicalComposition
-public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestrictionIdentity
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定モデルと標準解像度による中間比較の恒等・dg関手合成則の検査

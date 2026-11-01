@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputNaturality
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameterComposition
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 
 /-! # graph 合成比較と元の全パラメータ横合成
 概要：二つの入力自然変換の実 tensor 作用は、元の graph 比較による共役後に横合成を回収する。

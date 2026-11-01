@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 
 /-! # 元のパラメータ作用の比較共役の逆向き
 概要：全 Hom の比較共役の等号を、同じ実同型の逆による共役へ移す。

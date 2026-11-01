@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomWhiskering
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
-public import SerrePositivity.KST.SConstruction.DGFunctorHomUniversal
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomWhiskering
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
 
 /-! # 全パラメータ自然変換の閉零射と同型に関する自然性
 概要：任意 K の dg 自然変換は、元の閉零射と実同型を横切る全 Hom の式を満たす。

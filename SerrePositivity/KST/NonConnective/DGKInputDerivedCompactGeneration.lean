@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
 概要：同じ実 dg 入力の主導来圏を、小 Perf 代表の実像で compact 生成する。

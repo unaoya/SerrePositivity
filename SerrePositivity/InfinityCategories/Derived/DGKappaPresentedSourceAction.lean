@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceModel
 public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 /-!
 概要：小さい出発提示を保持する模型に実 dg 延長の作用を与える。
 方針：出発圏・seed を固定して関手ラベルだけを後合成し、元の実合成比較で共役する。

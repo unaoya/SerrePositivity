@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Initial
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 初期dg圏増大の宇宙・K-flat性・全cycle持ち上げの監査

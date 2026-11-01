@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
 概要：正則非可算 κ の小さい射影的代表族を、実際の加群演算で閉じる。

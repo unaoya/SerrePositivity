@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotRightAlgebraComparison
 public import SerrePositivity.KST.SConstruction.DGOdotPerfectComparison
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionFactorization
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
 
 /-! # 元の右代数射から同じ実商への厳密因子分解と Perf 比較
 概要：右代数から ⊙ を経由する射を、元の右 End 射と商包含の合成へ照合する。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCompositionIso
 public import SerrePositivity.DifferentialGraded.Functor.InducedClosedTransport
 public import SerrePositivity.DifferentialGraded.Functor.ClosedConjugationPasting
-public import SerrePositivity.DifferentialGraded.Functor.ModuleExtensionConjugation
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.ModuleExtensionConjugation
 /-!
 概要：小さい出発提示模型の作用が、全 Hom を含めて入力の合成を厳密に保つことを示す。
 方針：元の三重比較と全 Hom 自然性を、任意ラベル族の一般の共役貼り合わせへ渡す。

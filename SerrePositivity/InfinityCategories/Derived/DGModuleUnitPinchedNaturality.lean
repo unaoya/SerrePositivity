@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingSpaceInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPostcomposition
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturality
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 /-!
 概要：R の代表加群からの全 pinched Hom と評価複体との比較は、実閉後合成と可換。
 方針：全 Hom の Yoneda 自然性と単位 Hom の自然性を実 pinched 鎖写像の合成則で結ぶ。

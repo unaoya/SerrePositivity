@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.KST.SConstruction.CubicalLambdaPointPair
 public import SerrePositivity.KST.SConstruction.DGNerveTensorSimplex
 

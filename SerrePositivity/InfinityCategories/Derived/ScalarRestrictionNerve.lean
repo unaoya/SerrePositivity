@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionHom
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
 
 /-! # 係数制限と dg nerve

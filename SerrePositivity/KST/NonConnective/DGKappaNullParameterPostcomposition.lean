@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveSquare
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterPostcomposition
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 
 /-!
 概要：同じ実零角の選択収縮に、D の全パラメータ後合成延長を代入する。

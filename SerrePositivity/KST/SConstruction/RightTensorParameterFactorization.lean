@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGParameterPullback
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterRight
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
 
 /-! # 元の右 tensor Hom 写像を通る任意パラメータの因子化

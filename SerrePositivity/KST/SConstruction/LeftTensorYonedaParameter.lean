@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftTensorParameterFactorization
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaEnriched
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
 /-! # 左 tensor の Yoneda 評価の任意パラメータ自然性
 概要：代表右加群との tensor の Yoneda 評価は、任意複体 K の左加群変換と可換。

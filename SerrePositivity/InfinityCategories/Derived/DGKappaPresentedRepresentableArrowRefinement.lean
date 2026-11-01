@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement
-public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHomClosedFamilyRepresentables
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
 public import SerrePositivity.DifferentialGraded.Functor.HomIso
 /-!
 概要：元の dg 圏の閉射族による代表加群間の閉射を、実 seed 間の共通提示で精密化する。

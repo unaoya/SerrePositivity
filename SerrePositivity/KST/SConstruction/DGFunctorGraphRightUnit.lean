@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphUnits
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphUnits
 public import SerrePositivity.KST.SConstruction.DGDiagonalUnitAgreement
 
 /-! # 元の graph 比較の右恒等入力
