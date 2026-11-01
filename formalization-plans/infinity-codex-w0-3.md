@@ -450,3 +450,15 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 4. 模擬の `ModelCategory` 語の判定（置換前のテキストを見る）は道具の小さな誤りなので、停止点 2 までに直して試験を 1 件足す（急がない）。
 
 論文の層への連絡（Claude が行う）：R75 の shared 監査の再生成で、削除 25 本が外れ、ジェネレーターが拾う未掲載 35 本が加わった。bhatt_scholze・adams は復元済み。
+
+### 10.24 追記（11-01、中核への補充の STOP 条件を正す：禁止辺になるときだけ）
+
+**承認**：2 回目の下流ビルドの結果（非中核 11 本への補充と構文修正 3 本、新規 1,731 本、中核 2 本で停止）を確認した。止めたのは §10.14-2 の文言どおりで正しいが、規則の意図を狭く書いていた。
+
+**規則の訂正**：補充（失敗した利用元への直接 import の追加）で STOP するのは、**その import が禁止辺になるとき**だけ——中核のモジュールから ModelBridge・KST・DG・EInfinity・HotA への辺、または中核の層の順序を逆向きに越える辺（例：Core → F1）。**中核から、それより下の中核の層への import（F1 → Core、F2 → Core・Kan・F1 など）は層の順序に沿った通常の補充**で、移動によって切れた推移的 import を直接 import に置き換えるものなので、止めずに補う。
+
+今回の 2 件はどちらも補充先が Core なので補ってよい：
+- `F1/MappingSpaces/HomSpanSectionFiberCoherence` ← `Core.FunctorIsoTransportAlgebra`（`F2.functorIso_postcomp_heq_of_heq`。名前空間 `F2` は R54 で付け替える名残で、宣言自体は Core のもの）
+- `F2/FilteredExchange/FunctorIsoWhiskerCancellation` ← `Core.FunctorIsoChainTransport`（`functorIso_postcomp_heq_of_map_eq`）
+
+補充のたびに `layer_check.py` の直接違反と禁止閉包が増えないことを確かめる（増えたら STOP）。補充は `batch-w1w2a-downstream-imports.json` に記録し、「downstream imports」の 1 コミットにまとめる（非中核 11 本・構文修正 3 本と一緒でよい）。再ビルドを続け、次の層の失敗も同じ規則で処理して、**停止点 2** で報告する。
