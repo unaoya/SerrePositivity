@@ -85,9 +85,15 @@ try:
         for path in sorted(set(selected)-set(audits)):
             prep['errors'].append('selected audit not in manifest discovery/extras: '+path)
         audits = sorted(set(audits)&set(selected))
-    jobs = os.environ.get('VERIFY_JOBS', '3')
+    jobs = os.environ.get('VERIFY_JOBS', '6')
     if not jobs.isdigit() or int(jobs) < 1:
         prep['errors'].append('VERIFY_JOBS must be a positive integer')
+    import math
+    try:
+        memory = float(os.environ.get('VERIFY_MEMORY_GB', '45'))
+        if not math.isfinite(memory) or memory < 0: raise ValueError()
+    except ValueError:
+        prep['errors'].append('VERIFY_MEMORY_GB must be finite and nonnegative')
     if os.environ.get('VERIFY_CACHE', '0') not in ('0','1'):
         prep['errors'].append('VERIFY_CACHE must be 0 or 1')
     prep['executed_audit_count'] = len(audits)
@@ -196,7 +202,7 @@ for row in (out / 'stages.tsv').read_text().splitlines():
     rc = int(rc)
     record = {'kind': kind, 'name': label, 'exit_code': rc, 'seconds': float(duration), 'log': logfile}
     if (kind,label) in runner_records:
-        record.update({k: runner_records[(kind,label)][k] for k in ('cached','cache_key','retried','retry_reason','attempts')})
+        record.update({k: runner_records[(kind,label)][k] for k in ('cached','cache_key','retried','retry_reason','attempts','max_rss_bytes','measured_at','time_log')})
     state = 'success' if rc == 0 else 'failure'
     if kind == 'audit':
         if rc:
