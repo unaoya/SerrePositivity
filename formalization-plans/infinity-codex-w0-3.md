@@ -567,3 +567,23 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 2. **監査 7 本に残る旧モジュール名 325 件**（`mods` の名前一覧など）は、束の対応表（move・split・merge）で**新しい名前に追従させる**。split したモジュールは keep 側と moved 側の両方を列挙する。存在しない名前が一覧に残ると監査が黙って検査を飛ばすので、放置しない。「監査の追従」の 1 コミット。
 3. **保存比較**（§10.21〜10.22 の規則）を行い、不一致が 0 なら**停止せずに**「downstream imports」「監査の追従」をコミットして **verify**（`VERIFY_JOBS=3`、Lake キャッシュ有効、他の全ビルドがないことを確認）へ進む。停止点 2 の報告は停止点 3 の報告に含める。不一致があれば停止点 2 で止める。
 4. **停止点 3** の報告：verify の summary（PASS・gate:true）、保存比較の結果（比較した宣言数、transient 数、同名宣言の扱い）、round ごとの表、補充の総数、層検査の前後（停止点 1 → 最終）、コミットの一覧。
+
+### 10.34 追記（11-01、保存比較の不一致 69 件の処理）
+
+**承認**：停止点 2 で止めた判断（保存比較 FAIL 69 件）、監査 7 本の追従（旧名 325 件、split 18 件を両側へ、import 8 件）。
+
+**A. 生成名 56 件（28 組）**：`_aux_<モジュール名>___macroRules_…`・`___unexpand_…` は Lean が `macro_rules`／`unexpander` に付ける補助名で、**モジュール名を埋め込む**。private 接頭辞と同じく、対応表（move・split・merge）でモジュール名を写してから比べる規則を `compare_snapshots.py`（または Lean 側の正規化）に加える。写した後に型・本体のハッシュが一致すれば一致、しなければ一覧に残す。試験 1 件。
+
+**B. `KST.Comparison.doubleMappingCylinder_hom_ext`**（`IC.Kan.DoubleMappingCylinderMap` から消え `…Desc` に現れた）：before／after のハッシュが一致するなら、split の `moved`／`keep` の実際の配置が計画と違っただけなので、対応表の記録を実際に合わせて一致扱い。一致しなければ D へ。
+
+**C. `KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_5`**（追加のみ）：無名 instance の自動番号。before の `instIsDGPretriangulatedDGOdotGluing_*` のうち型ハッシュが同じものがあれば番号の付け替えとして一致扱い（§10.10 の位置の規則で親を同定）。なければ D へ。
+
+**D. 残り（型 5・本体 1・補助宣言 4、`BoundaryFactorization.initial_left`・`kanTensorReplacement_isCofibrant/_isFibrant/_left_isFibrant`・`EvaluationFamily.detected_inf/generators`・`Hammock.Direction`・`FiniteSpanVertex`・`SimplexInverseMatching.{empty,point}MatchingTerminal`）**：ハッシュだけでは判断できないので、**pretty print で前後を比べる**。
+1. before の環境は、束の前のコミット（aacd82f41）の scratch worktree を作り、Lake キャッシュから復元する（`git worktree add ../SerrePositivity-ifw0-3-before aacd82f41`、該当モジュールだけ `lake build` → キャッシュに当たるので再コンパイルなし。`LAKE_RESTORE_ARTIFACTS=true` で olean が `.lake/build` に復元される）。after は現在の worktree。
+2. 各宣言について `#print` と、`set_option pp.explicit true` での `#check` を before／after で出し、テキストで比べる。
+   - **定理**：`pp.explicit false` の型が同じなら一致扱い（インスタンスや暗黙引数の経路の違い。公理も一致していること）。違えば **STOP**（差分を報告）。
+   - **定義・インスタンス・補助宣言**：型と本体の pp が同じなら一致扱い。本体が違う定義（`generators`）は、違いがインスタンス項だけか（`pp.explicit true` で見える）を書き、それ以外の違いなら **STOP**。
+   - 補助宣言（`Direction`・`FiniteSpanVertex`・`…MatchingTerminal` の auxiliaries）：どの補助（`rec`・`noConfusion`・`sizeOf`・`match_` 等）が違うかを列挙し、生成名の違いなら一致扱い。
+3. 使い終わった scratch worktree は削除する。
+
+**E. 報告**：13 件それぞれの処置を表にして**停止点 2′**で報告する。すべて一致扱いになれば、その報告のあと止まらずに「downstream imports」「監査の追従」「保存比較の規則」をコミットして verify へ（§10.33-3）。STOP が 1 件でもあれば止まる。
