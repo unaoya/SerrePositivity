@@ -44,7 +44,7 @@ cell付加の最終Hom合成：Identity。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section Identity
@@ -101,7 +101,7 @@ cell付加の最終Hom合成：RightIdentity。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightIdentity
@@ -151,7 +151,7 @@ end RightIdentity
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section InternalAssociativity
@@ -207,7 +207,7 @@ cell付加の最終Hom合成：Associativity。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section Associativity
@@ -259,7 +259,7 @@ cell生成元の境界式・増大・K-flat filtrationは後続で扱う。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section Category
@@ -338,7 +338,7 @@ path長上限による内部Homと指定境界置換の制限。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthBoundary
@@ -449,7 +449,7 @@ path長上限で切った最終Hom複体とその包含。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthFiltration
@@ -538,7 +538,7 @@ path長filtrationの遷移射と最終Homへの包含。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthTransition
@@ -628,7 +628,7 @@ end LengthTransition
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthGraded
@@ -745,7 +745,7 @@ path長filtrationの次数ごとの分裂と有限段階のK-flat性。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthSplit
@@ -894,7 +894,7 @@ path長filtrationの網羅性と最終HomのK-flat性。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LengthColimit

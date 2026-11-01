@@ -50,7 +50,7 @@ DifferentialGraded の入口と、この主題を使う検査・下流モジュ�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section Paths
@@ -154,7 +154,7 @@ end Paths
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PathEquations
@@ -193,7 +193,7 @@ end PathEquations
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PathComposition
@@ -247,7 +247,7 @@ cell pathの先頭Hom作用の結合・単位・全次数自然性。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PathAction
@@ -320,7 +320,7 @@ end PathAction
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section GeneratorAppend
@@ -380,7 +380,7 @@ end GeneratorAppend
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryCochain
@@ -473,7 +473,7 @@ end BoundaryCochain
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryFaces
@@ -543,7 +543,7 @@ end BoundaryFaces
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryOperator
@@ -661,7 +661,7 @@ end BoundaryOperator
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryInterchange
@@ -710,7 +710,7 @@ end BoundaryInterchange
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryHead
@@ -819,7 +819,7 @@ end BoundaryHead
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryNaturality
@@ -924,7 +924,7 @@ end BoundaryNaturality
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundaryHeadInterchange
@@ -983,7 +983,7 @@ end BoundaryHeadInterchange
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section DoubleFaces
@@ -1085,7 +1085,7 @@ end DoubleFaces
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section DoubleFaceSum
@@ -1157,7 +1157,7 @@ cell付加の関手延長に指定する原始元とその評価cochain。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PrimitiveData
@@ -1249,7 +1249,7 @@ end PrimitiveData
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PrimitiveAction
@@ -1326,7 +1326,7 @@ end PrimitiveAction
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。任意可換環上のK-flat dg圏分解の構成部品。Hom非平坦のMorita・
 tensorやM9で平坦性が崩れた場合の再開に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BoundarySquare

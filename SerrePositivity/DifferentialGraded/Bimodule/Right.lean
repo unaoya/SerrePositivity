@@ -48,7 +48,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/TensorModuleFull.lean。局所導来合成の計算部品、一般Morita・
 相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section UncurryNaturality
@@ -121,7 +121,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/RightModuleComparison.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section TensorModuleFull
@@ -235,7 +235,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section UncurryClosedFunctor
@@ -373,7 +373,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/RightRestriction.lean、Bimodule/
 SemifreeResolution.lean。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightModuleComparison
@@ -452,7 +452,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/CylinderKFlat.lean、Bimodule/
 RestrictedRepresentableAction.lean、Tensor/BimoduleRestrictionKFlat.lean。局所導来合成の計算部品、一般Morita・
 相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightRestriction
@@ -526,7 +526,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightRestrictionNaturality
@@ -578,7 +578,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleSemifreeComparison.lean、Tensor/
 BimoduleRestrictionKFlat.lean。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section SemifreeResolution
@@ -657,7 +657,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section SemifreeRetarget
@@ -702,7 +702,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section MiddleRestrictionUncurry
@@ -786,7 +786,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PairedRestriction
@@ -887,7 +887,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PairedRestrictionCoherence
@@ -1043,7 +1043,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section ExplicitRightModuleFunctor
@@ -1111,7 +1111,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/RestrictedRepresentable.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RestrictedRepresentableAction
@@ -1191,7 +1191,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/RestrictedFree.lean。局所導来合成の計算部品、一般Morita・
 相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RestrictedRepresentable
@@ -1278,7 +1278,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Tensor/BimoduleSemifreeKFlat.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RestrictedFree
@@ -1327,7 +1327,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/CylinderKFlat.lean、Tensor/
 BimoduleQuasiIso.lean、Tensor/BimoduleRestrictionKFlat.lean。局所導来合成の計算部品、一般Morita・相対tensor・
 Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RelativeKFlat
@@ -1407,7 +1407,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/KFlatBimoduleHomotopy.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section CylinderKFlat

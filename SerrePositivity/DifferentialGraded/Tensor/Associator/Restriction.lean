@@ -37,7 +37,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section OuterUnitRestriction
@@ -137,7 +137,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightRestrictionValueHom
@@ -213,7 +213,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section MiddleRestrictionValueHom
@@ -291,7 +291,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorLeftRestriction
@@ -385,7 +385,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorRightRestrictionElements
@@ -455,7 +455,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorRightRestrictionPathElements
@@ -547,7 +547,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorRightRestrictionComponents
@@ -619,7 +619,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorRightRestrictionValues
@@ -697,7 +697,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorRightRestriction
@@ -768,7 +768,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestrictionElements
@@ -848,7 +848,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestrictionPaths
@@ -942,7 +942,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestrictionComponents
@@ -1013,7 +1013,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestrictionValues
@@ -1094,7 +1094,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestriction
@@ -1161,7 +1161,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionElements
@@ -1256,7 +1256,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionPaths
@@ -1329,7 +1329,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionComponents
@@ -1402,7 +1402,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionValues
@@ -1480,7 +1480,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。局所導来合成の計算部品、一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestriction
