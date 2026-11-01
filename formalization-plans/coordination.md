@@ -39,12 +39,12 @@
 | 5 | DG-W2(b) を main へ取り込み、main を温める | 数分 | #4 PASS | — |
 | 6 | 論文の層の区切り 1-4（KTheory・Asymptotic・Paper の再構成、Perfect の 3 宣言を HA へ、`Asymptotic/DGVerdier/` を含める） | 先方のビルド＋verify | #5（DGVerdier が Asymptotic に入ってから） | 先方が準備中（凍結中は main にコミットしない） |
 | 7 | DG-W3：土台 5 ディレクトリの統合＋残りの D5（Paper の経路 326 本まで再ビルド） | 約 5 時間 | #6（Paper の再構成の後） | 未作成 |
-| 8 | IF-W0-4（基盤の層の登録、runner のメモリ予算）→ IF-W2a-2（R76・R77・R67、下流 1 回） | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | 指示書 作成済み（11-01）：[IF-W0-4](infinity-codex-w0-4.md)・[IF-W2a-2](infinity-codex-w2a-2.md) |
+| 8 | IF-W0-4（基盤の層の登録、runner のメモリ予算）→ IF-W2a-2（R76・R77・R67、下流 1 回） | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | **IF-W0-4 完了・取り込み済み**（11-01 夜、bddb9b570：Foundation 103 本・違反 0、runner のメモリ予算。初回は全件未計測で 2 並列・監査 44 分、次回から実測値で並列化）。IF-W2a-2 は草案（停止点 1）を先に、束のビルドは DG-W2(b) の後 |
 | 9 | 論文の層の区切り 2a・2b（BS の区切りに合わせる） | 先方 | BS の区切り | 先方 |
 
 ## 4. いまの待ち条件（10-31 夜）
 
-- ∞ Codex：束は main に取り込み済み。次は IF-W0-4（ほぼビルドなし。DG-W2(b) と並行してよい）。
+- ∞ Codex：IF-W0-4 完了（main に取り込み済み）。次は IF-W2a-2 の草案（`targets/w2a-2.json`、`--check`、dry-run、ビルドなし → 停止点 1）。束の適用と下流ビルドは DG-W2(b) の取り込み（#5）の後に合図。
 - DG Codex：11-01 夜に「(b) を始めてよい」を合図。main を取り込み → §13 の宣言単位の事前検査 → 束の適用 → 下流ビルド → verify。
 - 論文の層：凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
