@@ -168,3 +168,12 @@ DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Math
 4. 内部ビルドを再開（111 本）→ 外からの import と監査の一覧の付け替え → 下流ビルド（判断表＋この行）→ `layers.json` → verify → 停止点 2。
 
 **次の束への教訓**（DG-W3・IF-W2a-2）：統合先の import の和で閉包が広がることが、利用者の名前解決を変えうる。`merge_modules.py --check` に「統合先の閉包に新しく入る宣言の短い名前が、利用者の同じ名前空間の中で無修飾で使われている名前と衝突するか」の静的検査を加えるかは、DG-W3 の前に Claude が判断する（今は手で直す）。
+
+## 15. 追記（2026-11-02、保存比較 2,585 件：道具の規則待ち。heartbeat の 1 行は承認）
+
+**承認**：3a08fb3c7（`op` の修飾、保存比較 6 宣言一致）、内部ビルド 111 本 PASS、`Resolution/Cells/Boundary.lean` の `BoundaryInterchange` section に `set_option maxHeartbeats 800000` を 1 行加えたこと（宣言・証明は変えていない。統合で環境が広がって型クラス探索が重くなったもの。D8 の候補として記録）。この 1 行は「heartbeat」の 1 コミットにする。
+
+**保存比較の 2,585 件は、比較の規則の不足**（統合で Lean が `_proof_*`・`match_*` をファイル内で共有し名前が変わる、Prop のインスタンスの選択が変わる）であり、宣言の意味は変わっていない。規則の追加（証明無関係なハッシュ）は ∞ の Codex が `decl_snapshot.lean` に実装する（[IF-W0-3 §10.37](infinity-codex-w0-3.md)）。DG 側は：
+1. その間に、束の前のコミット（887896bba）の scratch worktree `../SerrePositivity-dgw1-before` を作り、Lake キャッシュから復元しておく（事前ビルドはキャッシュで行ったので再コンパイルは少ないはず。多ければ許す。他の全ビルドと重ねない）。
+2. 道具が main に入ったら取り込み、before（scratch）と after（現在）の snapshot を新しい規則で採り直して比較する。残った不一致は §10.34 の方式（pp 比較）で個別に見る。一致しなければ STOP。
+3. その後 外からの import と監査の一覧の付け替え → 下流ビルド → `layers.json` → verify → 停止点 2。
