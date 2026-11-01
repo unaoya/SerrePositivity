@@ -44,7 +44,7 @@ DからEの右加群導来圏への作用を表すkernelを、右E・左Dの導�
 
 ## 使われ方
 U16aの作用・随伴・合成と、U16bのgraph比較から利用する。
-受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
+受入範囲は`formalization-plans/archive/dg-theory-m5-status.md`を参照。
 -/
 
 @[expose] public section KernelBasic
@@ -613,7 +613,7 @@ kernel自体の準同型局所化への降下と一般右随伴は、このフ�
 
 ## 使われ方
 U16aのkernelDerivedTensorFunctorの構成と、U16bのgraph作用比較の計算に使う。
-受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
+受入範囲は`formalization-plans/archive/dg-theory-m5-status.md`を参照。
 -/
 
 @[expose] public section KernelResolution
@@ -730,7 +730,7 @@ end KernelResolution
 
 ## 使われ方
 U16aの主導来kernel上の関手族を構成するための通常・H⁰の自然性。
-受入範囲は`formalization-plans/dg-theory-m5-status.md`を参照。
+受入範囲は`formalization-plans/archive/dg-theory-m5-status.md`を参照。
 -/
 
 @[expose] public section KernelNaturality
@@ -905,7 +905,7 @@ end KernelNaturality
 
 ## 使われ方
 U16aの主導来作用とU16b/dのgraph・Perf比較の共通入口。
-受入範囲は`formalization-plans/dg-theory-m5-status.md`のU16の行に従う。
+受入範囲は`formalization-plans/archive/dg-theory-m5-status.md`のU16の行に従う。
 -/
 
 @[expose] public section KernelDerivedFunctor

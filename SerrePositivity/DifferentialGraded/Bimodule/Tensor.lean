@@ -514,7 +514,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/TensorModuleFunctor.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section TensorModuleMaps
@@ -613,7 +613,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/TensorModuleComparison.lean。局所導来合成の計算部品、
 一般Morita・相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section TensorModuleFunctor
@@ -702,7 +702,7 @@ balanced tensor・全Hom自然性・作用の既存計算と普遍性を使い�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/TensorModuleFull.lean。局所導来合成の計算部品、一般Morita・
 相対tensor・Hochschild型構成での作用と符号の比較に使える。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section TensorModuleComparison
