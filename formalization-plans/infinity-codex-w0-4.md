@@ -51,3 +51,12 @@
 
 - Lean のソースの変更。DG 側の道具の変更。
 - 全ビルド（ルート・監査対象）。§4-7 の verify も `VERIFY_CACHE=1` で、他の全ビルドがないことを確かめてから。
+
+## 7. 追記（2026-11-02、§3 の承認と Foundation の範囲の補正、§4-7 の実行の仕方）
+
+**承認**：Foundation（rank −1、19 接頭辞・99 本）、試験 177 件 PASS、ratchet 基準の保存。
+
+1. **Foundation の範囲を補正する**：違反 1 辺 `CategoryTheory.FiniteBijectionInduction → CategoryTheory.Groupoid.ThinComponents` は、`Groupoid/ThinComponents` が伝達文 §3.2 の統合案で `Limits` に入る一般部分だから。**R77 の統合案（伝達文 §3.2 の表）の元になるモジュールはすべて Foundation** とする：`CategoryTheory.Groupoid.ThinComponents`、`CategoryTheory.LiftingProperties.Under`・`.ParametrizedGeneration`、`CategoryTheory.MorphismProperty.UnderFactorization`（表に出てくる分。`Abelian`・`Karoubi`・`TStructure`・`Triangulated` と、表にないトップ階層は入れない）。接頭辞ではなくモジュール名で個別に書く。補正後に違反 0 になることを確かめ、ratchet の基準を取り直す。Nerve 系の相互依存（R76）は IF-W2a-2 で解消するので今は範囲外のまま。
+2. **§4-7 の実行**：`VERIFY_CACHE=1` でもビルド 2 段（ルート・監査対象）は走るが、Lake キャッシュがあるので**再生と復元だけで数分**で終わる見込み。これは §6 の「全ビルド」の禁止（何時間もかかる再コンパイル）に当たらない。100 本を超えるモジュールの再コンパイルが始まったら止めて報告する。
+3. 道具（`verify_runner.py`・`verify.sh`）を変えると監査キャッシュの鍵が変わって全監査が未命中になる——それでよい。むしろ**新しい runner の実測**になるので、`VERIFY_CACHE` なしで `VERIFY_JOBS=6 VERIFY_MEMORY_GB=45 zsh scripts/refactor/verify.sh`（gate:true）を一度走らせ、全 100 本の RSS と時間を `audit-stats.json` に記録する。これが 2 回目の停止点の報告になる（実時間、並べ方、待ちの発生、最大同時 RSS）。
+4. **機械の規則**：この verify は DG-W2(b) の下流ビルドや verify と**重ねない**。`ps -axo command= | grep '[l]ake build'` と `with_build_lock.sh` の鍵を確かめ、DG が走っていれば終わるまで待つ（DG の下流ビルドは 2〜3 時間、verify は 1 時間）。
