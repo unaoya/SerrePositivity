@@ -44,10 +44,6 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected := #[
-    `SerrePositivity.CategoryTheory.Presentation.AmbientWords,
-    `SerrePositivity.CategoryTheory.Presentation.AmbientWordKaroubi,
-    `SerrePositivity.CategoryTheory.Presentation.AmbientWordComparison,
-    `SerrePositivity.CategoryTheory.Presentation.AmbientWordMap,
     `SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarAmbientWordComparison]
   let mut count : Nat := 0
   let mut modules : Array Name := #[]

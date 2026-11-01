@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Spectra.SymmetricSequence.AdjacentBraid
+public import SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid
 public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 
 /-!
