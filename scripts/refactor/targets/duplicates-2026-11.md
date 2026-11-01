@@ -8,3 +8,5 @@
 | `WordCons` | [WordCons.lean:27](../../../SerrePositivity/EInfinity/Hammock/WordCons.lean#L27) | 語を分解し、長さを代入して向きの関数の等式を示す |
 
 型・公理・属性・種類は一致し、証明が使う定数と定義位置は異なる。整理は証明を変更する段 G で R80 とともに検討する。
+
+§10.22 で照合した private の衝突は12名、すべて生成定数で、Lean の実名と定義元は27組あった。これらは保存比較で transient とする。[正規化名ごとの全実名・定義元](private-generated-2026-11.json)

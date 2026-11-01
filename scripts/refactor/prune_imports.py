@@ -188,7 +188,7 @@ def prune_plan(root, plan, snapshot, apply_changes=False):
                 target=directory/(str(len(records))+'-snapshot.json')
                 run(label+'-snapshot',['lake','env','lean','--run','scripts/refactor/decl_snapshot.lean',
                     '--modules',m,'--output',str(target)])
-                result=compare(baseline,json.loads(target.read_text()))
+                result=compare(baseline,json.loads(target.read_text()),module_map={'modules':{plan['module']:m}})
                 report['preservation_checks'].append({'module':m,'label':label,'result':result,
                                                       'snapshot':str(target)})
                 save()

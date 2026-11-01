@@ -37,48 +37,65 @@ def expression_value(row, field, mapping, use_hash):
     return value
 
 
-def normalized(snapshot, mapping, use_hash=False):
+def normalized(snapshot, mapping, use_hash=False, module_map=None):
     if snapshot['schema_version'] not in (1, 2):
         raise ValueError('unsupported snapshot version')
+    module_map = module_map or {}
     records = {}
-    transient = set(transient_names(snapshot))
-    source_names = {}
-    for source in snapshot.get('sources', []):
-        try: source_names[source['module']] = set(parse_source(source['source'], snapshot=snapshot, module=source['module']).declarations)
-        except Unsupported: pass
-    by_name = {r['name']: r for r in snapshot['declarations']}
+    skipped = set()
+    sources = {s['module']: s for s in snapshot.get('sources', [])}
+    by_module = {}
     for row in snapshot['declarations']:
-        if row['name'] in transient: continue
-        name = rename(row['name'], mapping)
-        if name in records: raise ValueError('normalized declaration collision: ' + name)
-        parent = row['parent']
-        if row.get('module') in source_names:
-            parent = declaration_owner(row, source_names[row['module']], by_name) or parent
-        records[name] = {
-            'parent': rename(parent, mapping), 'kind': row['kind'],
-            'type': expression_value(row, 'type', mapping, use_hash),
-            'body': expression_value(row, 'body', mapping, use_hash),
-            'axioms': sorted(rename(n, mapping) for n in row['axioms']),
-            'attributes': row['attributes']}
+        by_module.setdefault(row.get('module', ''), []).append(row)
+    overrides = snapshot.get('transient_rows')
+    known = {(r['name'], r['module']) for r in overrides or []}
+    for module, rows in by_module.items():
+        local = {'sources': [sources[module]] if module in sources else [], 'declarations': rows}
+        transient = ({r['name'] for r in rows if (r['name'], module) in known}
+                     if overrides is not None else set(transient_names(local)))
+        skipped.update(transient)
+        by_name = {r['name']: r for r in rows}
+        names = set()
+        if module in sources:
+            try:
+                names = set(parse_source(sources[module]['source'], snapshot=local, module=module).declarations)
+            except Unsupported:
+                pass
+        split = module_map.get('declarations', {}).get(module, {})
+        for row in rows:
+            if row['name'] in transient:
+                continue
+            parent = declaration_owner(row, names, by_name) if names else None
+            parent = parent or row['parent']
+            target = split.get(row['name'], split.get(parent, module_map.get('modules', {}).get(module, module)))
+            key = (rename(row['name'], mapping), target)
+            if key in records:
+                raise ValueError('normalized declaration collision: ' + repr(key))
+            records[key] = {
+                'parent': rename(parent, mapping), 'kind': row['kind'],
+                'type': expression_value(row, 'type', mapping, use_hash),
+                'body': expression_value(row, 'body', mapping, use_hash),
+                'axioms': sorted(rename(n, mapping) for n in row['axioms']),
+                'attributes': row['attributes']}
     # Group generated auxiliaries under their public parent. Proof-only auxiliaries
     # may change when a theorem proof changes; the parent's axioms are still checked.
     grouped = {}
     for name, record in records.items():
-        parent = record['parent']
+        parent = (record['parent'], name[1])
         if parent != name and parent in records:
-            if records[parent]['kind'] == 'theorem' and re.search(r'\._proof_\d', name):
+            if records[parent]['kind'] == 'theorem' and re.search(r'\._proof_\d', name[0]):
                 continue
-            grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})[name] = record
+            grouped.setdefault(parent, dict(records[parent])).setdefault('auxiliaries', {})[name[0]] = record
         else:
             grouped.setdefault(name, dict(record))
-    return grouped
+    return grouped, sorted(skipped)
 
 
 def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
 
 
-def compare(before, after, mapping=None):
+def compare(before, after, mapping=None, module_map=None):
     hashed = [snap for snap in (before, after) if snap['schema_version'] == 2]
     if hashed:
         if len(hashed) != 2:
@@ -87,33 +104,38 @@ def compare(before, after, mapping=None):
         if any(snap['name_map'] != rules or snap['hash_algorithm'] != hashed[0]['hash_algorithm']
                for snap in hashed) or (mapping is not None and mapping != rules):
             raise ValueError('snapshot name maps or hash algorithms differ; recapture with the same settings')
-        a = normalized(before, rules, use_hash=True)
-        b = normalized(after, rules, use_hash=True)
+        a, skipped_a = normalized(before, rules, use_hash=True, module_map=module_map)
+        b, skipped_b = normalized(after, rules, use_hash=True)
     else:
-        a, b = normalized(before, mapping or {}), normalized(after, {})
+        a, skipped_a = normalized(before, mapping or {}, module_map=module_map)
+        b, skipped_b = normalized(after, {})
+    def identity(key):
+        return {'name': key[0], **({'module': key[1]} if key[1] else {})}
     changes = []
-    for name in sorted(a.keys() - b.keys()): changes.append({'name': name, 'change': 'removed'})
-    for name in sorted(b.keys() - a.keys()): changes.append({'name': name, 'change': 'added'})
+    for name in sorted(a.keys() - b.keys()): changes.append({**identity(name), 'change': 'removed'})
+    for name in sorted(b.keys() - a.keys()): changes.append({**identity(name), 'change': 'added'})
     for name in sorted(a.keys() & b.keys()):
         for field in sorted(a[name].keys() | b[name].keys()):
             if a[name].get(field) != b[name].get(field):
-                changes.append({'name': name, 'parent': b[name]['parent'], 'change': field,
+                changes.append({**identity(name), 'parent': b[name]['parent'], 'change': field,
                                 'before_sha256': digest(a[name].get(field)), 'after_sha256': digest(b[name].get(field))})
     return {'status': 'FAIL' if changes else 'PASS', 'before_count': len(a), 'after_count': len(b),
-            'parent_count': len({r['parent'] for r in b.values()}), 'changes': changes,
-            'transient': {'before': transient_names(before), 'after': transient_names(after)}}
+            'parent_count': len({(r['parent'], key[1]) for key, r in b.items()}), 'changes': changes,
+            'transient': {'before': skipped_a, 'after': skipped_b}}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('before', type=Path); parser.add_argument('after', type=Path)
     parser.add_argument('--name-map', type=Path); parser.add_argument('--output', type=Path)
+    parser.add_argument('--module-map', type=Path, help='before to after: modules and per-module declarations')
     args = parser.parse_args()
     try:
         mapping = json.loads(args.name_map.read_text()) if args.name_map else None
         if args.name_map and (not isinstance(mapping, dict) or not all(isinstance(k, str) and isinstance(v, str) for k,v in mapping.items())):
             raise ValueError('name map must be an object of old names to new names')
-        result = compare(json.loads(args.before.read_text()), json.loads(args.after.read_text()), mapping)
+        result = compare(json.loads(args.before.read_text()), json.loads(args.after.read_text()), mapping,
+                         json.loads(args.module_map.read_text()) if args.module_map else None)
         rendered = json.dumps(result, ensure_ascii=False, indent=2) + '\n'
         print(rendered, end='')
         if args.output: args.output.write_text(rendered)

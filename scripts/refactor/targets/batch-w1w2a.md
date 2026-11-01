@@ -52,7 +52,7 @@ git rev-parse HEAD > .lake/verify/batch-w1w2a/base.txt
 python3 scripts/refactor/snapshot_batch.py --modules-file E/before-modules.json --name-map E/private-name-map.json --output-dir E/before-shards --huge-terms scripts/refactor/targets/huge-terms-2026-11.md
 ```
 
-全 shard の schema_version・hash_algorithm が同じこと、modules が重複しないこと、宣言の重複があれば全構造が一致することを確認し、modules/sources/declarations を統合、count を再計算して `before.json` とする。元 shard も保存する。split 用には modules と宣言を元モジュールで絞った snapshot を作り、全12件を `--snapshot MODULE=FILE` に指定して静的検査する。
+全 shard の schema_version・hash_algorithm が同じこと、modules が重複しないこと、§10.21 の行の同一性（宣言名・定義元モジュール）で比較し、承認された生成補題は共通環境の定義元へ統合し、双方のソースにある同名宣言は別行に保持して、modules/sources/declarations を統合、count を再計算して `before.json` とする。元 shard も保存する。split 用には modules と宣言を元モジュールで絞った snapshot を作り、全12件を `--snapshot MODULE=FILE` に指定して静的検査する。
 
 ```sh
 python3 -B scripts/refactor/validate_targets.py scripts/refactor/targets/w1.json scripts/refactor/targets/w2a.json --snapshot <MODULE=FILE> ... --output .lake/verify/batch-w1w2a/targets-before.json
@@ -157,7 +157,7 @@ lake build <Bを覆う極大入口一覧>
 
 ```sh
 python3 scripts/refactor/snapshot_batch.py --modules-file E/after-modules.json --name-map E/private-name-map.json --output-dir E/after-shards
-python3 -B scripts/refactor/compare_snapshots.py .lake/verify/batch-w1w2a/before.json .lake/verify/batch-w1w2a/after.json --name-map .lake/verify/batch-w1w2a/private-name-map.json --output .lake/verify/batch-w1w2a/preservation.json
+python3 -B scripts/refactor/compare_snapshots.py .lake/verify/batch-w1w2a/before.json .lake/verify/batch-w1w2a/after.json --name-map .lake/verify/batch-w1w2a/private-name-map.json --module-map .lake/verify/batch-w1w2a/declaration-module-map.json --output .lake/verify/batch-w1w2a/preservation.json
 python3 -B scripts/refactor/layer_check.py --report
 ```
 

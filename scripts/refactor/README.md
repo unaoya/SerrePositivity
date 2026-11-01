@@ -224,3 +224,7 @@ IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順�
 
 新しい 12 個の入口は空の骨組みで、ルートや既存集約には登録しない。
 層の配置と依存規則を守って後続の窓で実装を移す。
+
+保存検査の行は（宣言名、定義元モジュール）で照合する。移動・統合には `--module-map` の `modules`（旧→新）、分割には `declarations`（旧モジュール→宣言名→新モジュール）を使う。生成補題は親宣言の移し先を継承する。群をまたぐ生成補題の定義元は `decl_snapshot.lean --modules A,B --resolve-modules names.json --output owners.json` で共通環境から取得する。
+
+同じ保存名に異なる private 定数が対応する場合、照会結果は実名と定義元の一覧となる。§10.22 の生成名だけを transient とし、原本の行と各実名・定義元を保持する。ソースに明示した private 宣言は、生成名に似ていても定義元ごとに比較する。

@@ -120,6 +120,12 @@ private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bo
   | .ctorInfo _ => "constructor"
   | .recInfo _ => "recursor"
 
+-- Resolve ambiguous generated names in one common import environment.
+-- Source positions identify their parent; they do not select the defining module.
+private def definingModule (env : Environment) (name : Name) : Option Name := do
+  let idx ← env.getModuleIdxFor? name
+  return env.header.modules[idx.toNat]!.module
+
 private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
     (rules : RenameRules) : CoreM Json := do
   let env ← getEnv
@@ -128,8 +134,7 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
   let mut huge : Array Json := #[]
   let selected := modules.foldl (init := ({} : NameSet)) fun acc n => acc.insert n
   let constants := env.constants.fold (init := #[]) fun acc name info => Id.run do
-    let some idx := env.getModuleIdxFor? name | return acc
-    let mod := env.header.modules[idx.toNat]!.module
+    let some mod := definingModule env name | return acc
     let keep : Bool := match namespacePrefix with
       | some ns => ns.isPrefixOf (privateToUserName name)
       | none => selected.contains mod
@@ -195,12 +200,17 @@ unsafe def main (args : List String) : IO UInt32 := do
   let mut modules : Array Name := #[]
   let mut namespacePrefix : Option Name := none
   let mut output : Option String := none
+  let mut ownerNames : Option (List String) := none
   let mut rules : RenameRules := []
   let mut rest := args
   while !rest.isEmpty do
     match rest with
     | "--modules" :: value :: tail => modules := (value.splitOn ",").toArray.map String.toName; rest := tail
     | "--namespace" :: value :: tail => namespacePrefix := some value.toName; rest := tail
+    | "--resolve-modules" :: path :: tail =>
+      let json ← IO.ofExcept (Json.parse (← IO.FS.readFile path))
+      ownerNames := some (← IO.ofExcept (fromJson? (α := List String) json))
+      rest := tail
     | "--name-map" :: path :: tail =>
       let json ← IO.ofExcept (Json.parse (← IO.FS.readFile path))
       let obj ← IO.ofExcept json.getObj?
@@ -214,6 +224,25 @@ unsafe def main (args : List String) : IO UInt32 := do
   initSearchPath (← findSysroot)
   enableInitializersExecution
   let env ← importModules (modules.map fun n => { module := n, importAll := true }) {} (loadExts := true)
+  if let some names := ownerNames then
+    let wanted := Std.HashSet.ofList names
+    let byCanonical := env.constants.fold (init := ({} : Std.HashMap String (List Name))) fun acc raw _ => Id.run do
+      let key := canonicalName raw
+      if !wanted.contains key then return acc
+      return acc.insert key (raw :: acc.getD key [])
+    let owners ← names.mapM fun key => do
+      let raws := byCanonical.getD key []
+      let mods := (raws.filterMap (definingModule env)).eraseDups
+      if let some mod := definingModule env key.toName then return (key, toJson mod.toString)
+      if let [mod] := mods then return (key, toJson mod.toString)
+      unless !raws.isEmpty && raws.all isPrivateName do
+        throw (IO.userError s!"unresolved environment owner for {key}: {raws}")
+      let aliases ← raws.mapM fun raw => do
+        let some mod := definingModule env raw | throw (IO.userError s!"missing owner for {raw}")
+        return Json.mkObj [("raw", toJson raw.toString), ("module", toJson mod.toString)]
+      return (key, toJson aliases)
+    IO.FS.writeFile outputPath ((Json.mkObj owners).pretty ++ "\n")
+    return 0
   let result ← (snapshot modules namespacePrefix rules).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
   IO.FS.writeFile outputPath (result.pretty ++ "\n")
   IO.println s!"snapshot saved: {outputPath}"
