@@ -46,7 +46,7 @@
 
 - ∞ Codex：束は main に取り込み済み。次は IF-W0-4（ほぼビルドなし。DG-W2(b) と並行してよい）。
 - DG Codex：11-01 夜に「(b) を始めてよい」を合図。main を取り込み → §13 の宣言単位の事前検査 → 束の適用 → 下流ビルド → verify。
-- 論文の層：**凍結解除（11-01 夜）**。R79 のコミット c4290092a（plan）・2c8a89952（inventory）。案内 2 本（`k-theory.md`・`k-theory-generalization-inventory.md`）の削除と README の表の更新を依頼。1-4 の取り込みは DG-W2(b)（#4・#5）の後。main でのビルドは DG-W2(b) の下流ビルドと重ねない。
+- 論文の層：凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
 - （11-01 実施）`~/.zshenv` に Lake キャッシュの 3 変数を設定（ユーザー）。使い終わった worktree `ifw0-1`・`ifw0-2` を削除（ブランチ `infra/if-w0-1`・`if-w0-2` は残してある。パッチは main に取り込み済み）。空き 344 → 447 GB。
 - （10-31 決定）調整役の交代は今はしない。#5（DG-W2(b) の取り込み）の後に §6 の目安で再判断。

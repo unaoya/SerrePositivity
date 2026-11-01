@@ -1,6 +1,6 @@
 """Check that L/E/S use only the pre-generalization proof closure.
 
-The baseline is the commit completing S3 in k-theory.md §223. The report
+The baseline is the commit completing S3 in archive/k-theory-v1.md §223. The report
 records direct imports and mapping-space references for every root, and
 checks every transitive project dependency against that immutable tree.
 This source audit complements the Lean kernel axiom audit.

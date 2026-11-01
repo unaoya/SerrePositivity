@@ -9,8 +9,8 @@ Kerz–Strunk–Tamme（KST）は arXiv:1611.08466v4（Invent. Math. 211, 2018�
 Land–Tamme（LT）は arXiv:1808.05559v3（Ann. Math. 190, 2019）。Thomason–Trobaugh（TT）は 1990 年の原論文。
 Blumberg–Gepner–Tabuada（BGT）は arXiv:1001.2282。Waldhausen は LNM 1126（1985）。
 
-既存の計画との関係：[k-theory.md](../k-theory.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
-確定し、M4 の扱いを変える。[k-theory.md](../k-theory.md) §159 の「∞ 圏は導入しない」は、
+既存の計画との関係：[k-theory-v1.md](../archive/k-theory-v1.md) の M3〜M10 の目標は維持する。本計画はその M6〜M10 の経路を
+確定し、M4 の扱いを変える。[k-theory-v1.md](../archive/k-theory-v1.md) §159 の「∞ 圏は導入しない」は、
 2026-10-17 の決定（[infinity-categories.md](../infinity-lanes/infinity-categories.md)）で改められており、本計画はその上に書く。
 [bs-clmst-citation-elimination.md](../archive/bs-clmst-citation-elimination.md) は未採用であり、本計画はそれに依存しない。
 
@@ -439,9 +439,9 @@ EKMM、CMNN Prop A.13。いずれも二次文献（KST・LT・GH・CHSW・Stacks
 
 ## 12. 変更点の明記
 
-- [k-theory.md](../k-theory.md) §7 の M4（hG・Tot・有理化のモデル圏的実装）は、γ と ∞ 極限に置き換える。
-- [k-theory.md](../k-theory.md) §7 の M7 は「KST Thm A（係数つき）＋ 離散冪零不変性」に置き換え、Land–Tamme の cdh 降下・⊙・Goodwillie は使わない（Goodwillie は第 2 段のみ）。
-- [k-theory.md](../k-theory.md) §7 の M9（補題 4.6）は第 1 段では F5 で迂回し、第 2 段で原典どおりに戻す。
+- [k-theory-v1.md](../archive/k-theory-v1.md) §7 の M4（hG・Tot・有理化のモデル圏的実装）は、γ と ∞ 極限に置き換える。
+- [k-theory-v1.md](../archive/k-theory-v1.md) §7 の M7 は「KST Thm A（係数つき）＋ 離散冪零不変性」に置き換え、Land–Tamme の cdh 降下・⊙・Goodwillie は使わない（Goodwillie は第 2 段のみ）。
+- [k-theory-v1.md](../archive/k-theory-v1.md) §7 の M9（補題 4.6）は第 1 段では F5 で迂回し、第 2 段で原典どおりに戻す。
 - 2026-10-16 の調査で提案した「π_* ルート（hG・Tot なし）」は、γ が整う前の予備として残す。
 - 2026-10-17 の K 理論の設計案（dg レベルの Waldhausen 圏＋Bass delooping）は、2026-10-18 に現代的な定義（D1）へ改めた。
 

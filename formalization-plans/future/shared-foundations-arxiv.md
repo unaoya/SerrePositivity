@@ -23,7 +23,7 @@
 | `KnotTheory/Monoidal/Power.lean`：`tensorPower X (n+1) = tensorPower X n ⊗ X` | [Monoidal/TensorPowers.lean](../../SerrePositivity/CategoryTheory/Monoidal/TensorPowers.lean)：`power X (n+1) = X ⊗ power X n` | 括弧の向きが逆（右因子を足すか、左因子を足すか） |
 | `KnotTheory/Braid/CategoricalAction.lean`：braided 圏で、隣接 braiding・遠隔可換性・Yang–Baxter から組み紐群作用 `BraidGroup n →* Aut (tensorPower X n)` | [Monoidal/AdjacentTranspositions.lean](../../SerrePositivity/CategoryTheory/Monoidal/AdjacentTranspositions.lean)、[AdjacentBraid.lean](../../SerrePositivity/CategoryTheory/Monoidal/AdjacentBraid.lean)、[PermutationAction.lean](../../SerrePositivity/CategoryTheory/Monoidal/PermutationAction.lean)：対称モノイダル圏で、隣接交換の対合性・遠隔可換性・braid 関係から対称群作用 | 証明の骨格は同じ。数学的には、組み紐群作用が対称群を経由するという関係 |
 
-`formalization-plans/k-theory.md` §26 の再利用調査は TypeA と FreeRibbon を扱い、
+`formalization-plans/archive/k-theory-v1.md` §26 の再利用調査は TypeA と FreeRibbon を扱い、
 上の二つには言及していない。FreeRibbon は rigid・ribbon 構造を要求するため取り込んでいない。
 
 ### 対応物のない部分

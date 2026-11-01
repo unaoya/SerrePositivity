@@ -202,8 +202,14 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 
 他のレーンからの申し送り（2026-10-31）：DG-W1 が main に入るとき、ルートの DG の import 12 行を `SerrePositivity.DifferentialGraded` 1 行に置き換え、
 DifferentialGraded/Complexes/Monoidal と Stage* を削除する。DG-W2（D3）で DifferentialGraded/Verdier/OrderSquare とその検査 2 本を
-Asymptotic/DGVerdier/ へ上げる。区切り 1-4 の Asymptotic の統合では Asymptotic/DGVerdier/ を対象から外す。ルートの `SerrePositivity.lean` は
+Asymptotic/DGVerdier/ へ上げる。区切り 1-4 の Asymptotic の統合には Asymptotic/DGVerdier/ も含める（2026-10-31 DG 側の希望）。ただし DifferentialGraded に依存するので、論文の層の Asymptotic のファイルには混ぜず、別の小群として整理する。ルートの `SerrePositivity.lean` は
 区切りの作業でも書き換えるので、DG の取り込みは区切りのコミットの後に合わせる。
+
+∞ の束（W1+W2a、R79 を含む）との調整（2026-10-31）：DG-W1 は区切り 1-3 の後に main へ入った（194a65110）。束の適用から verify が通るまで
+（10-31 21:30 開始、11-01 の昼ごろまでの見込み。この間は main でのビルドも控える）、HomologicalAlgebra・CategoryTheory・HomotopicalAlgebra・InfinityCategories・KST・EInfinity・
+ルート・それらの監査に触れる取り込みを止める。CommutativeAlgebra・Paper・Asymptotic・BS 側は構わない。束が終わったらハッシュが届くので、
+順序は 束 → DG-W2(b)（Asymptotic/DGVerdier/ の新設を含む、約 4 時間）→ 区切り 1-4 の取り込み。束の後に formalization-plans/k-theory.md と formalization-plans/k-theory-generalization-inventory.md を削除し、formalization-plans/README.md の「案内」の表の
+HA と CT の 2 行を更新する（DG の 2 行は DG 計画の D5 で）。main のビルドは他のレーンと並行させない。
 
 DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が PerfectComplex の `strictlyPerfectComplex`・`PerfectHomotopy`
 （Perfect/HomotopyCategory）、`strictlyPerfectComplex_biprod`（BiproductPerfect）、`finiteProjective_exists_retract`（KoszulLength）に依存している。

@@ -2,7 +2,7 @@
 
 固定環境：Lean `v4.35.0-rc4`、Mathlib
 `e6bbacd0e1b7307ff6e17da09cd2455f60804fa6`。
-設計は `formalization-plans/k-theory.md` §123・§124。
+設計は `formalization-plans/archive/k-theory-v1.md` §123・§124。
 
 ## 一般入口と中断した厳密化の分離（2026-10-17）
 
