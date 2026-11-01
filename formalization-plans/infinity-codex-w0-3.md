@@ -505,3 +505,14 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 - 残す 0 件・移す 1,497 件は想定の範囲：W1 の reimport で F2 の入口を清くした結果、旧来の目録は閉包全体に依存していたことが見えたということ。F2 の入口は docstring と `F2.CatInfinity` の import だけでよい。
 - `audit_manifest.txt` に `scripts/audit_infinity_f2_checks.lean` を追加（意図を報告に）。この監査は F2 の閉包（769 本の直接 import）を読むので時間と RSS は `audit_infinity_f1` 級になりうる。計測は IF-W0-4 の runner に任せる。
 - その後、再ビルド → 保存比較 → **停止点 2**。
+
+### 10.29 追記（11-01、R72 の keep 側で禁止接頭辞の下に残るモジュール：中核から届くものは一度に move）
+
+**承認**：999d292e3（`#check` の移動、manifest 99 → 100）、round 5〜6 の補充、`Generated/Basic`（R72 の keep 側、純粋な 2 宣言）を禁止接頭辞の外へ move する提案。停止は正しい。
+
+**一般化（1 本ずつ round を回さない）**：R72 の keep 側で**禁止接頭辞**（`HomotopicalAlgebra.Generated`・`.Transfer`・`.HomotopyFunctionComplex` など `layers.json` の W2a 禁止一覧に当たるもの）の下に残っているモジュールをすべて列挙し（`Generated/Basic`・`Generated/FunctorClosure`・`Transfer/FullyFaithfulLifting`・`HomotopyFunctionComplex/{DiagonalFrame, QuillenStandardFrame, StandardCosimplicial}` など）、**中核から（直接または純粋な HotA を経由して）届くもの**を静的に判定する。届くものは、keep 側の中身が純粋であることを snapshot の `uses_modules` で確かめたうえで、`HomotopicalAlgebra/Simplicial/<内容を表す名前>`（禁止されない接頭辞）へ **move** する。利用者の import を書き換え、w2a.json に `R72(5)` として追記、「R72 keep 側の move」の 1 コミット。
+- keep 側にモデル圏の依存が残っているもの（純粋でない）は move せず、報告に書く（再分割の候補）。
+- 届かないものは動かさない（後の窓）。
+- 件数が 10 を超えたら止めて報告。
+
+その後、再ビルド（残りは小さいはず）→ 保存比較 → **停止点 2**。
