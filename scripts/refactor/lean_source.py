@@ -347,7 +347,7 @@ def add_import(text, module):
     if module in imports(text): return text
     # Insert immediately after the module header, preserving every existing byte.
     mask = code_only(text)
-    match = re.search(r'(?m)^module\s*\n', mask)
+    match = re.search(r'(?m)^[ \t]*module[ \t]*\r?\n', mask)
     position = match.end() if match else 0
     command = ('public import ' if match else 'import ') + module + ('\r\n' if '\r\n' in text else '\n')
     return text[:position]+command+text[position:]

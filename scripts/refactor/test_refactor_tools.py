@@ -103,6 +103,11 @@ class RefactorTests(unittest.TestCase):
         self.assertEqual(out.replace('public import SerrePositivity.New\n','',1),SOURCE)
         self.assertEqual(add_import(out,'SerrePositivity.New'),out)
 
+    def test_empty_scaffold_import_precedes_module_docstring(self):
+        source = 'module\n\n/-! Module documentation. -/\n'
+        result = add_import(source, 'SerrePositivity.Dependency')
+        self.assertEqual(result, 'module\npublic import SerrePositivity.Dependency\n\n/-! Module documentation. -/\n')
+
     def test_crlf_declarations_are_preserved(self):
         original=SOURCE.replace('\n','\r\n')
         parsed=parse_source(original)
