@@ -146,3 +146,11 @@ DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Math
 - (b) の前の「main から `.lake/build` を複製」は、main を取り込んだ後の `lake build` がキャッシュから成果物を取るので**不要になる見込み**（キャッシュに無い分だけビルドされる。最初のうちは、この設定の前に作られた成果物はキャッシュに無いので、`warm_build_dir.sh` を予備として使ってよい）。
 - (b) の下流ビルドの成果物はキャッシュに入り、取り込み後の main がそのまま使う。
 - `with_build_lock.sh`（全ビルドの排他）はそのまま使う。`warm_build_dir.sh` は予備。
+
+## 13. 追記（2026-11-01、(b) の前の宣言単位の事前検査と、判断表）
+
+∞ の束（W1＋W2a）の教訓（[IF-W0-3 §10.31](infinity-codex-w0-3.md)）を (b) に先取りする。
+
+1. **(b) の適用の前に、宣言単位の到達性を静的に検査する**：before snapshot（DAG 版、`uses_modules` つき）を採ったら、(a) 推移的 import だけで届いている利用（統合・移動で切れる候補）、(b) 禁止される層（DG → KST・IC・Asymptotic）に残る依存、(c) `DifferentialGraded.lean` と Checks の import の到達性、を列挙して報告に書く。見つかった分は `downstream_imports` に先に書いておく。
+2. **判断表**：下流ビルドで失敗したら、§10.31 の表と同じ規則で承認を待たずに補う（直接 import の補充は層の規則に反しないときだけ。`layers.json` の DG の規則で直接違反・禁止閉包が増えないこと）。止めるのは、DG の土台でない統合先が KST・IC・Asymptotic を要する、保存比較の不一致、宣言の本文を変えないと直らない、round の新規ビルドが前の round より増える、のとき。
+3. 各 round の記録と、コミットの分け方（「統合」「D3 の move」「downstream imports」「D5 docstring」「layers.json」）は ∞ 側と同じ。
