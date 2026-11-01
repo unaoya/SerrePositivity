@@ -484,3 +484,16 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 2. **`Transfer/EvaluationFamily`** は候補どおり分割（moved 7・keep 9、分割先 `ModelBridge/HA/EvaluationFamily`）。連鎖の調査を §10.25-3 の規則で終えてから適用。
 3. **`Simplicial/LargeParameterHomotopy`** も同じ手順（モデル圏の宣言に依存する宣言を moved に）。
 4. 連鎖を含めて 10 本以下なら、§10.25-5 のとおり before snapshot → 適用 → 静的検査（177 以下）→ 再ビルド → 停止点 2。10 本を超えるか中核の使用が出たら止めて報告。
+
+### 10.27 追記（11-01、F2 の入口の `#check`：清い閉包から届かないものは scripts の検査へ移す）
+
+**承認**：16e808ff6（BoundaryOne の move、EvaluationFamily の分割、静的検査 PASS、禁止閉包 177 → **172**）、round 3〜4 の補充 29 件（各回の増加 0）。停止は正しい。
+
+**判断**：層の入口（`InfinityCategories/F2.lean` など）の `#check` は、**その入口の清い閉包から届く宣言だけ**を列挙する。FilteredExchange のように、モジュールがまだ禁止閉包を含む（R73 は W2b）宣言の `#check` を入口に置いたままにすると、入口が禁止閉包を取り込むことになる。入口に import を足して解決する案は採らない（F2 入口の禁止閉包 0 → 141 は、まさに避けるべき変化）。
+
+**手順**
+1. F2 入口の 1,497 行の `#check` を静的に分類する：各宣言の定義元モジュール（snapshot）が入口の現在の閉包にあれば残す、なければ**移す**。失敗した 1 件だけでなく全件を一度に処理する。
+2. 移す `#check` は、新しい検査ファイル `scripts/check_infinity_f2_pending.lean` に置く（`import` は必要なモジュールを直接。`scripts/` は層のグラフの外なので禁止辺にならない）。先頭の docstring に「F2 の入口から届かない宣言の受入検査。R73（W2b）で FilteredExchange が清くなったら F2 の入口へ戻す」と書く。`scripts/refactor/audit_manifest.txt` に登録して verify で走らせる（manifest の変更は意図を報告に書く）。
+3. 他の層の入口（F1・F1B・HomotopyLimits・Stable・Kan など）にも同じ状況があれば同じ処置（まとめて 1 ファイル `scripts/check_infinity_pending.lean` でもよい）。
+4. 未処理の補充 2 件（EvaluationFamily の rlp 用 import、`LargeParameterRelativeChoice`）は増加 0 を確かめて補う。
+5. 再ビルドを続け、保存比較 → **停止点 2**。「downstream imports」「R72 追加分割」「入口の #check の移動」のコミットに分ける。
