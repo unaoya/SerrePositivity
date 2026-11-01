@@ -76,7 +76,7 @@ w1.json と合わせて 1,276 項目。split 12 件＝W1 の 3 件＋W2a の 9 �
 | HA.Generated.Basic | 5 | 2 | 個別 preflight PASS・復元済み。束の保存は未検証 |
 | HA.Generated.FunctorClosure | 0 | 3 | 分割不要：純粋部分の move は後の窓 |
 | HA.Transfer.FullyFaithfulLifting | 0 | 1 | 分割不要：純粋部分の move は後の窓 |
-| HA.HomotopyFunctionComplex.BoundaryOne | 0 | 5 | 分割不要：純粋部分の move は後の窓 |
+| HA.HomotopyFunctionComplex.BoundaryOne | 0 | 5 | move に変更（11-01）：HA.Simplicial.BoundaryOne、§10.26 |
 | HA.HomotopyFunctionComplex.DiagonalFrame | 6 | 6 | 個別 preflight PASS・復元済み。束の保存は未検証 |
 | HA.HomotopyFunctionComplex.QuillenStandardFrame | 2 | 4 | 個別 preflight PASS・復元済み。束の保存は未検証 |
 | HA.HomotopyFunctionComplex.StandardCosimplicial | 2 | 6 | 静的 plan のみ。束で初検証 |
@@ -2165,3 +2165,12 @@ R56a 展開：`KST.LocalizingInvariants.CoreAnodyneLifting`, `KST.LocalizingInva
 ## 待機事項
 
 DG-W1 取り込みの通知と、R79・R75 を同じ束に含める案の確認を待つ。今回の w2a.json を実行済み・検収済みとして扱わない。IF-W0-4 では merge_modules.py・build lock・warm-up は DG 側の担当とし、∞ 側の残りは R75、CategoryTheory/Coxeter の基盤登録、監査 RSS を使うメモリ予算つき並列化である。
+
+## 11-01 §10.26：R72(4) の追加
+
+追加は1 split＋1 move。W2a全体は1,210項目（move 1,198・split 10・reimport 2）。
+EvaluationFamilyはmoved 7・keep 9、移し先はIC.ModelBridge.HA.EvaluationFamily。
+移動宣言を使う4利用元（HA.Diagram.Projective、HA.Monoidal.ManyObjectTransfer、EInfinity.BarrattEccles.CarrierDiagramModel、同DiagramModel）は中核の閉包外で、補充を明記。連鎖の追加split・中核によるmovedの使用は0。
+BoundaryOneは純粋な5宣言全体をHA.Simplicial.BoundaryOneへmove。宣言名は保持する。
+LargeParameterHomotopyは移動後の純粋なBoundaryOne.isColimitとLargeParameterExtensionのkeep側だけを使い、moved 0。空splitは作らない。
+追加前snapshotは2モジュール、追加利用元の元snapshotは10モジュールで成功。追加2件のvalidatorはPASS、禁止閉包はW1=1・W2a/W2b=172（179から減少）、増加0。ビルド・保存検査は実施後に追記。

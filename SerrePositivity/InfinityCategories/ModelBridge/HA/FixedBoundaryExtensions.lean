@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
 

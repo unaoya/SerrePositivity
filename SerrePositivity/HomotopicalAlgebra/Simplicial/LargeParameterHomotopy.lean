@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy

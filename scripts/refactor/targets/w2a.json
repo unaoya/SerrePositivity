@@ -14699,5 +14699,73 @@
         "SerrePositivity.InfinityCategories.ModelBridge"
       ]
     }
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily",
+    "action": "split",
+    "moved": [
+      "SerrePositivity.ModelGeneration.EvaluationFamily.evaluation_isRightQuillen",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.free_isLeftQuillen",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.functorialFactorizations",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.modelCategory",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.modelCategory_fibrations",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.modelCategory_generated",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.modelCategory_weakEquivalences"
+    ],
+    "keep": [
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detected",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detectedFibrations",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detectedWeakEquivalences",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detected_inf",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detected_retracts",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.detected_twoOutOfThree",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.generatedCofibrations",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.generators",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.generators_rlp"
+    ],
+    "attributes": {},
+    "candidate": "R72(4)",
+    "note": "§10.26: moved 7 / keep 9。モデル宣言の利用元4本はいずれも中核の閉包外。",
+    "imports": {
+      "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": [
+        "Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations",
+        "Mathlib.CategoryTheory.LiftingProperties.Adjunction",
+        "Mathlib.CategoryTheory.MorphismProperty.Composition",
+        "Mathlib.CategoryTheory.MorphismProperty.Retract"
+      ],
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily": [
+        "Mathlib.CategoryTheory.LiftingProperties.Adjunction",
+        "SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.CellMap",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.Recognition",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.HomotopicalAlgebra.Diagram.Projective": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+      ],
+      "SerrePositivity.HomotopicalAlgebra.Monoidal.ManyObjectTransfer": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+      ],
+      "SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramModel": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+      ],
+      "SerrePositivity.EInfinity.BarrattEccles.DiagramModel": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R72(4)",
+    "note": "§10.26: 純粋な5宣言を宣言名を変えず move。"
   }
 ]
