@@ -53,6 +53,8 @@
 
 ## 5. 逸脱の記録
 
+- 11-01：∞ の束の停止点 3 で、監査 2 本（`audit_homotopy_limits`・`audit_infinity_f2`）の import が束で動かした定義に届かず FAIL（他の 98 本は成功）。import を直した後の再検証は `VERIFY_CACHE=1`（gate:false）で、成功済みの 98 本はキャッシュの鍵（本文と閉包の olean ハッシュ）が同一なので当たり、2 本だけ実行する。この束ではこれを合否とする（IF-W0-3 §10.36）。
+
 - 10-31：main の温め（#1）の後、`scripts/audit/dg.lean` は走らせていない（Checks/ の 300 本がルートの閉包外で未ビルドのため。verify の監査対象ビルドで作られる）。∞ の束の verify で確認する。
 
 - 10-31：DG-W1 の取り込み（194a65110）は、区切り 1-3 の後の merge で、merge 後の状態に全 verify を行っていない（領域が重ならず、重なりはルートの import 行だけ）。main の全ビルド（#1）と ∞ の束の verify（#2）で確認する。
