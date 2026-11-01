@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
 
 public import SerrePositivity.EInfinity.FrameHom.MixedFrame
 public import SerrePositivity.InfinityCategories.ModelBridge.TargetInvariance

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition

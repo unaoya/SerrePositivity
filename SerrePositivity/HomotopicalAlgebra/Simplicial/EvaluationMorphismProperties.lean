@@ -1,4 +1,6 @@
 module
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.Limits.Cones
 public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
 public import Mathlib.CategoryTheory.LiftingProperties.Adjunction
 public import Mathlib.CategoryTheory.MorphismProperty.Composition

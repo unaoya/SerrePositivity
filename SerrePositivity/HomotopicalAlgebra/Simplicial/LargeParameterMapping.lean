@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
 public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing

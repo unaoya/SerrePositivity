@@ -1,4 +1,6 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension
 

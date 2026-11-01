@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
 public import Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction

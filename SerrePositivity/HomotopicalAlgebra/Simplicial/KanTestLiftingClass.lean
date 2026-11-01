@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRestrictionLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanRelativeLifting

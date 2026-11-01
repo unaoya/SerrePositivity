@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties
 public import Mathlib.AlgebraicTopology.ModelCategory.Instances

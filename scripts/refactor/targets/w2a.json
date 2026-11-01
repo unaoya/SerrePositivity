@@ -23,6 +23,7 @@
         "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic",
         "Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms",
         "Mathlib.AlgebraicTopology.SimplicialSet.Presentable",
+        "SerrePositivity.HomotopicalAlgebra.Generated.Basic",
         "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
       ],
       "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators": [
@@ -159,7 +160,8 @@
       ],
       "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension": [
         "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
-        "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension"
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
       ]
     },
     "downstream_imports": {}
@@ -364,7 +366,8 @@
         "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation",
         "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame",
         "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial",
-        "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexWeakEquivalence"
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexWeakEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
       ]
     },
     "downstream_imports": {}
@@ -14731,7 +14734,9 @@
       "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": [
         "Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations",
         "Mathlib.CategoryTheory.LiftingProperties.Adjunction",
+        "Mathlib.CategoryTheory.Limits.Cones",
         "Mathlib.CategoryTheory.MorphismProperty.Composition",
+        "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
         "Mathlib.CategoryTheory.MorphismProperty.Retract"
       ],
       "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily": [

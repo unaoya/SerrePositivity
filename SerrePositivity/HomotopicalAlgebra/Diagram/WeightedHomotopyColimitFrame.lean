@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame
 
 public import SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightedLimit

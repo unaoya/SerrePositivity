@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRepresentables
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom

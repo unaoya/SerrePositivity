@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedDiagonalRows
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedBiresolutionComparison

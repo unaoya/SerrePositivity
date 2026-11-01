@@ -12,8 +12,7 @@ the actual collapse to the zero-simplex followed by the terminal-unit iso.
 @[expose] public section
 universe w v u
 noncomputable section
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.Reedy
+open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 
 namespace SerrePositivity.HomotopyFunctionComplex.QuillenStandardFrame
 

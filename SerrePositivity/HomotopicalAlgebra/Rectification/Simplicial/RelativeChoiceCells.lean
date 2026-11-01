@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace

@@ -30,7 +30,7 @@ pullbackで写像空間を定義し、指定モデルのSM7から相対延長を
 universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
+open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open CategoryTheory.MonoidalClosed
 
 namespace SerrePositivity.SimplicialModel.RelativeChoiceSpace

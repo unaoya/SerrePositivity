@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftHomotopyClasses
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyClasses

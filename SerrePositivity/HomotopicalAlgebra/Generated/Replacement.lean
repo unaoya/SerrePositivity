@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant

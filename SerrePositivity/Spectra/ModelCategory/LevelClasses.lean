@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass

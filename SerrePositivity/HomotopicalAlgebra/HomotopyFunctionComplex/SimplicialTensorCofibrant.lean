@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction

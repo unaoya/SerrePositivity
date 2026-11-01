@@ -1,0 +1,3663 @@
+{
+  "downstream_imports": {
+    "SerrePositivity.EInfinity.ProjectiveModel": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Generated.Replacement": [
+      "Mathlib.AlgebraicTopology.ModelCategory.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorCofibrant": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting": [
+      "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy": [
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Smith.Recognition": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Transfer.Right": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.Spectra.ModelCategory.LevelClasses": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFiberCoherence": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBaseSquare": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonProjection": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "Mathlib.CategoryTheory.Adjunction.Limits",
+      "Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory"
+    ],
+    "SerrePositivity.KST.Spectra.SimplexTensorBoundary": [
+      "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+    ],
+    "SerrePositivity.EInfinity.Hammock.StagePushoutNaturality": [
+      "Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties": [
+      "Mathlib.CategoryTheory.Limits.Cones",
+      "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.StandardFrame": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom": [
+      "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOneCotensor": [
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping": [
+      "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": [
+      "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection": [
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Localization.LocalFibrantApproximation": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPrecompValue": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportDiagonalComparisonPresentation": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoTriplePostTransport": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoInverseRatioExchange": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostcompReduction": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostPairTransport": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeRightImageProjection": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeStrictNaturality": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeLegFinalImages": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeRightImageProjection": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeftImagePath": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness": [
+      "Mathlib.CategoryTheory.SmallObject.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper": [
+      "SerrePositivity.HomotopicalAlgebra.Transfer.CellMap"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators": [
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass": [
+      "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy": [
+      "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+    ],
+    "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+    ],
+    "SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramSourceComparison": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalPointPrismDiagonal": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyCounitNaturality": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyRightUnit": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyTransportActionFactor": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.LiftedIntervalCospanPathImage": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanLeftInverseImage": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalSectionPathImage": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+    ],
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitTrianglePostValue": [
+      "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceBoundary": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveParameterExtension": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftRelative": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+    ],
+    "SerrePositivity.Spectra.ModelCategory.SimplicialGenerators": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence": [
+      "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionComparison": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarMappingComparison": [
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+    ]
+  },
+  "syntax_repairs": {
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom": "remove now-unused Homotopicalgebra from open; remove now-unused open SerrePositivity.Reedy",
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions": "remove now-unused Homotopicalgebra from open",
+    "SerrePositivity.InfinityCategories.ModelBridge": "place the approved import header before the module docstring"
+  },
+  "source_hashes": {
+    "SerrePositivity.EInfinity.ProjectiveModel": {
+      "before": "675990be1890b67cf18227e999d0445fb713df044fe53f0dc1c9f2976cb8c5b7",
+      "after": "b29e27c94b9d44de9654e7b580e02a571bebda08bae3c5770d7f6b0ddbd7ceb9"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Generated.Replacement": {
+      "before": "5f380f7069f6ae833597ce281e0d9ac0d8b762e7a9186f4c5e3734adea62261c",
+      "after": "598e343b9b9629d066793c6266ffadac51ef3d0de5b86ef4a7fc4d60f253d485"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom": {
+      "before": "36120f637b2822a5496e32ea0b6bbe876f514c0baabcc85ff08a3bbfa2a436b3",
+      "after": "d9bba699c675934c43185f979b4eb37286f033035ce8ffb205b392da8b18a6b1"
+    },
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorCofibrant": {
+      "before": "319852586f730426b7b5f6ff63f6ab37ac851f13e93179b7a5e3cfd133bbf437",
+      "after": "ca110560cd8f54cce9b1c4ab06a61da4252275e1d29d395b28ea481755d7ff3b"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor": {
+      "before": "7d034ed008c3a2fba2dae65b61a0491ae3bf92ef7f1e186c7903b0c9b221c6f4",
+      "after": "20a048ef8cd29ecb6dc9b1e63a90f6c5e26758e68560d399595944b1d52f5a07"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting": {
+      "before": "b5dce87cf83e3b0e6ce773ee807704a0ca9de4509d4075f664496c91f4c60d8e",
+      "after": "2c6fe7c142c487ed2daf145cb42a3cc4d4ca33e64cc557f915354600acaf6d8f"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations": {
+      "before": "03b842271dbfe511ae88a1536cf5466e1a5deb8fb64c5a7282fb42f9fd48ba47",
+      "after": "cbfa47a0000f0b4ba45678a90c8a647b5cdc604a6a02dcf74eae0f080700bef9"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions": {
+      "before": "1c6f55854f1f4ff917be636c1f7bd427ca53b7f880b8fcea731f863aa33849ab",
+      "after": "b07319d60e423616ab9fc16e3ffb97791f73713509146b503bb6ee32e586aafa"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy": {
+      "before": "7ee1344c4ecba3a665b842690e680de56c7ad93842a513ea7b410fd558c279e5",
+      "after": "e60e4e1cce970a2c51beba2d9dcf5ca8ab3e39cd650532203bd5128d83f33f2c"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Smith.Recognition": {
+      "before": "2375d570666415c55cb6fd9dc4b4080939e05dfb1ede106eef09f9c2ffa69722",
+      "after": "325b79e4a36712a982f970ca8bda614624117e9f05f09691f755b04783e4839b"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties": {
+      "before": "7a12ea99c7115fe329d3bb214963b12f617803abeb0b2ef4003fb3f9b93a452d",
+      "after": "b651db35219368a778dde831c795175621e01d80c9602b49f0a32f983b627508"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Transfer.Right": {
+      "before": "352044d8cc480dc1469cdd0fd041da9990ceb64691611c914444dbb814c2bb6a",
+      "after": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def"
+    },
+    "SerrePositivity.Spectra.ModelCategory.LevelClasses": {
+      "before": "35be89e75a6013f8d1fb7a4a50b605bff12dbaa8b8f6cd448023f80c414e4354",
+      "after": "df43f492d723531fe122b8f2d41009b9a44e2a0a47cb62d42487f801f5095429"
+    },
+    "SerrePositivity.InfinityCategories.ModelBridge": {
+      "before": "a7bba9949774eeb57acabea9d7e9c29fd19164b4e9c71dd83d98206c07e0f74b",
+      "after": "c850530110c2d861df3258d79b9b3567a286c36c133c031648d564e8fb16140c"
+    },
+    "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFiberCoherence": {
+      "before": "f64a1567f3265c4cbeaf8f124379001ffb53d443b771862b7de99230a12c79de",
+      "after": "f8eeb49535c46ed697a82292f078457ddffd2f15bb3b2072f11ca9767c70a7a7"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation": {
+      "before": "d0c9931257bbeeb6ce8c6be7453d1d85dd52f298c3caa1f08cc2a3173bab4d29",
+      "after": "cb1fa340b10f4719afb17836394ffd0e33ef53b2fa015fc156bd370c03849e02"
+    },
+    "SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBaseSquare": {
+      "before": "3f82b75a85654cabec0f11d196c0c2d2f75486de15392ce0602ab0abf5626143",
+      "after": "17a1ba1848ffb487755b485985f80e970515a369d548c2a1788236a188adc5f3"
+    },
+    "SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonProjection": {
+      "before": "c5dbdc22f7550f79032c5ca3ee4e9747ff7cedfc7744841cb5c29ce1badaeb0c",
+      "after": "cbb5442775c42bd084fc7f56d788f39feadaa0e3d524f6ee9c23535a663e7545"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations": {
+      "before": "ddc9077496506768f253d4f9efea61ab76717de9b29bac059388c6759f01e226",
+      "after": "ed9893726b632cb2b1431e6c0322c64a19958c183a830312cbbe61c7a14fcaf4"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization": {
+      "before": "882cdad541ffe9a8d86cb235ade9551e6a56790a0eced429aa9f5286b52bd418",
+      "after": "9ed7e8651b46bcc61c5dc98ab113f40e37797437ac23ac37d04a234172faf2ae"
+    },
+    "SerrePositivity.KST.Spectra.SimplexTensorBoundary": {
+      "before": "55b620145cf49211a3928e63ef1ce8891e6f2951d15c26a2cfc97545a64fda1e",
+      "after": "25d73211539eaa0cce4ed5a99bdaaaf6ca85db4381e74e79ce9113f922e8dc67"
+    },
+    "SerrePositivity.EInfinity.Hammock.StagePushoutNaturality": {
+      "before": "4fa84952e990d12bd912efad2b404e1266f456c996e531faad3a3e4d0d546d4b",
+      "after": "0d9b1041726aa1ae21c4a8b8f1124770570effa203516d7e512ae3385019815f"
+    },
+    "SerrePositivity.InfinityCategories.ModelBridge.StandardFrame": {
+      "before": "a5069c5b5240bbbecc165aed68bc300b52988116db92bb0f58cd54f36521329f",
+      "after": "cb29e9f99271e00f48744316cf828c690d40f873f22a957cdff1fe65e6025e3b"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom": {
+      "before": "f4a8f46ca4686a62d310735d84d9318d07017d8867f490687c8db0dfe597ed02",
+      "after": "ba54c473764f0e4924395103e65d2e3b34bd31f8f15a2ced95d54d35ef9b04df"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOneCotensor": {
+      "before": "7c24a561241bf5266c10fa4921adf4996e387db508517c5ea8f8aea3cd0008eb",
+      "after": "90e6ef95ef8311e316cb079cb522025312d1d695916d5144cee76c04153852a5"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping": {
+      "before": "a15aefabce675d4542dea33adf6366f4509e0422f552d0c94f3f120df0dabe80",
+      "after": "8c93f0d8858eaf74961d946422566f36c2b0386ab6c641c4d8f2f6fadb0cdfc7"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": {
+      "before": "4d181b9dd4b65f897c33f7d4baf05bae9a47ea526508e2cd630fd7865af8d197",
+      "after": "91a986f103062ce4742e8ff49cde8429c856ff5498454781ce92d9bdd83b3d2f"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection": {
+      "before": "6e522039cdaa70d96de612aa5fd4dac474f044a33393a64159b3a60cfa8fd4e0",
+      "after": "230d92ebdb52dae657a6cf406516b46002acb97b7584102a6cc975c8ab634bcb"
+    },
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder": {
+      "before": "eb2e2b5ee029d2c3dde99d8295564988cb6534b1c887e3e8ad07159014cb2d18",
+      "after": "57e8fff6323b467ab8994079ede9bc6750e6b1d3414562202222cf3ad43cf37b"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Localization.LocalFibrantApproximation": {
+      "before": "81836ee9752c6c248b16c1048451b829b0ffc69dfe6349d7a971e47e68b93c81",
+      "after": "2b82103f86046d63b99d7f0e3fdef1d0590c1e75e86b73f12d8840d17f2bf72b"
+    },
+    "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame": {
+      "before": "38f311ce72bf2b8cb3aceb2db7eb5e56d8455a3cd3d2b40b2cae32440491ab3a",
+      "after": "400ef2f889bcdc5417e28af2f275211432c6cd3c72d2d76d1fe90d55f7f7df9a"
+    },
+    "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension": {
+      "before": "97d37f7b573ef3639ee019e23aedea02186b6502e222c3e055e424b85aa45e2d",
+      "after": "11c960253e3774104d7c8b8a92a52c738f3f3db831c74a8c4cfd127db36b7a4f"
+    },
+    "SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare": {
+      "before": "bdd7d237c5539e4bf8c0131a473a0efe3f910a1185256d87c5ee09b5b9d68bee",
+      "after": "e5ca33b9b7b035ade3097a67b8327a297b752e99c6641860cc8788f3955eb013"
+    },
+    "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection": {
+      "before": "2b4d7a8e978240bd8fd9b7cfd581e460b2c755d3618f6280f25e90a30d67d6f1",
+      "after": "aff7271d0be6d30095f23eb75f9354cd1f4aca44cc69475488f3e4f04ef95b44"
+    },
+    "SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition": {
+      "before": "73937afd337b075b22cf339e521e3db70d6319e1b7f47da034b293e624d9b499",
+      "after": "210e8e5cc0c2987ce382b12135059b8db785aef62f44f285dfdb0ebafc4a8c50"
+    },
+    "SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition": {
+      "before": "a0d38b7650cecbce6f44fa4328b6a95bada9e8ae43664ea9e185bb877bcd8f29",
+      "after": "d269710ec93a5ed5d4d2b759fb9f4c5291ab2fd7dac0747503a9fb325d9d1f76"
+    },
+    "SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource": {
+      "before": "b6f61dd9cd00562ba6fc6b6d912df603d7330aa274c3981275a0bbb6eb436371",
+      "after": "40f0a79818acb8d51d2def41f0c1fd7508b5846863269a70ea816d8c9f27ae8b"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPrecompValue": {
+      "before": "2df41ecb11a92e6d646b714963944b536e46ccebdea546739227a52c98f19adf",
+      "after": "3f7e0dccf8231baa847398b1b950f0304e85a0f11ae8cde3d94ce1469e5bf75d"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportDiagonalComparisonPresentation": {
+      "before": "93b90945cff9d768df27110856dcb613934d829518461d7dcd3ec5975f192062",
+      "after": "a8ff082df0f792e0e87bdc3e0288ff278226764cfbd2c5530f6a49988f60a6cb"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoTriplePostTransport": {
+      "before": "94340b13e41d8d6e8e523e62df51c791dfc05013e9f68178ee47645852a3bf76",
+      "after": "7080e16632356bec61d9b5eb66e721c826a162d2fbd4032bb29f916ad7991ed0"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoInverseRatioExchange": {
+      "before": "a6b26b32c25e38cbd66b0e9f3ed8aa3fb4e3c296ed981bd01662bef2d65f1c5e",
+      "after": "64fd2deadd18dce0d93a153658062551797838a23b2d9fef418de4b44355b517"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostcompReduction": {
+      "before": "6ad5931d0313682f471a12ec163b10e210f15ac61c4c69a6ca5e565b4f56572f",
+      "after": "5e4156a5372bb4cda234c3b91801f0d2b71353a0b8a85b11eb2d00cf5a581aa0"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostPairTransport": {
+      "before": "4204b4018ac59c28676bbd7b7ddb9bc420c9186b46851f7f00f12cc604422aaf",
+      "after": "74915826928947523a976c81fa6b4d921c91d6d4907964d9b41c64e6bdd7a2d6"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeRightImageProjection": {
+      "before": "d56c114694c414d77160041e63e6b665d2f66549f9e4ad58720da59755dd1515",
+      "after": "f3dcf33572270b36badd4e48628869d8a797e03edb2a4bd9cf19f5af759ed96d"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeStrictNaturality": {
+      "before": "124dac0e8ecc475fb9129d5e33ea4d8b612d441ce9112178c317a0b2571ed566",
+      "after": "650a66756326e31c6ae3485b61fb3761aafb870a556ea5f4fe54dc5be74fa733"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeLegFinalImages": {
+      "before": "e2cb7b416216000b758f6a9fd42511400d5dece5a2667b8a69244b94b2961a2b",
+      "after": "6316f09ac8043db0972c59d050eebb5772a2b1da34435cc062e130917fc94e95"
+    },
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeRightImageProjection": {
+      "before": "60fa79ad029b6e41dda198be2f794d4d45e9a214f627726164ddff4ddc1b7d4d",
+      "after": "277ab91c6da6850a10a524293a2cce66e304ce771ceef16f54d314ae46d6ac3d"
+    },
+    "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeftImagePath": {
+      "before": "a6cdcd599359e06782ec67a5f5fd420f300a0ad2fed6c66b776568961166a2fb",
+      "after": "6b491a0a9ab0f75946b8e8538e1f075f1baf1e359b43dbbd58c1ee0ff8e485e8"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness": {
+      "before": "6692057c234670761fc94175855a8add2477e6b410b9581f332736dd1e0c3f20",
+      "after": "0fcc8bcf683d92595c2f8bd834edfa322759f5a19f8a2146becf4df690f8be59"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper": {
+      "before": "0c7898ee88d907a206ddad380fb8dd1020dc03c810732f8bbdce26a87c30d093",
+      "after": "7d7cdc842daa379443fbfe2f0b89afaaceb13d16e964e7f37bf3a1de8b5f8720"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators": {
+      "before": "add72939b42272d02d5a2db4c9312d74c6e52eb2f8b3f8606afb24b0094a5a61",
+      "after": "a75e35f4938d7e8b9dcce130a2fea71f88b28e02ee2cd2075d4d60ff8d680772"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility": {
+      "before": "359f6e072f6213a7a47a8baa99f7ae5d5bac2cde41938d6e11dad42505232802",
+      "after": "43732e4379dba78607534ea626c87bd3dd89941b58bab88c16cef13e3370313a"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass": {
+      "before": "c96c8e9d0f54a392c0868bf5fcd2df324ea7a3e4d180dcabacfeb2475ac83e08",
+      "after": "6741d058557ed0c94e3c8a9f89816d67b9eec53bcb40e9a11f58d9d8f0f8cced"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy": {
+      "before": "1d71b52faaf07f38a8bb63d8d5282d8f433e26e98c4f7233d26d5293fa677ea4",
+      "after": "0cb410e3e98f4dadb2bf90c6e1f9fa44c138ec7e2edd93bf6b32e78e8c3b23f3"
+    },
+    "SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison": {
+      "before": "d70c35a8f3bd12b4377513f90d0e4748349841b0d44e83738d6a88d6d3d7ee0c",
+      "after": "56630107295fb620725870d2d02f46d80282cc556bd146db7cf2d10c926e14a4"
+    },
+    "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero": {
+      "before": "602a906ac61c68d36700642f7819e9b2f75d9a9e3a1b0b7081e58148f5e09a96",
+      "after": "84696b1fba99865361d27914c65dc9408f836b1d2406be0448dbcf61747fffab"
+    },
+    "SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality": {
+      "before": "d1ac84c200bc8b623c18c26d5491499a75b7d12a1c8609e1e878fca02485379f",
+      "after": "62a0174a7470a74f2d9a5a5fedea6f3c08d40fac77d7b386f3c199b6ced82cab"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramSourceComparison": {
+      "before": "cdf5448b9e71fafd287e5decf91a498c226906e37e820e512dbefc0065d1ac4e",
+      "after": "d16bcc1d5f19657ffccabf8e662e742dd1cc5caf9771689358ff5fb4e672e808"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalPointPrismDiagonal": {
+      "before": "e5ab4f3a5d112890a70bca43ce9c3d170eeb3763ca7d806c52119762b1266dbc",
+      "after": "a415564607db1fe72e3213e1c271e894c5ae9f7b69cb1202012e63294c5a2722"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyCounitNaturality": {
+      "before": "2dddc249d690300dfeff1c5371aaa4cc1e3af9f033dbc065d6a72c68fb7bd967",
+      "after": "3a93819bebadda9a580b9c56c36d3b07b4583942be8e9cd88d4b4c38d5dc10e1"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyRightUnit": {
+      "before": "1eb5b73fe3dcd6cb30292890d4fa7e89a256bea20796bbe6c77735c100e18eb9",
+      "after": "b8eef58de0f67abcf748899104de6896d8d96aff689ee41fefa26e4eeb03da6d"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyTransportActionFactor": {
+      "before": "17074a7a8a4153a67bf6f90cb14c944d0369f00c9dd9f3c747f9c15e35790596",
+      "after": "529b1bb48099752a683b6ee997ee1d586eb6a7202c84577a4624995a3ee8f517"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.LiftedIntervalCospanPathImage": {
+      "before": "d50e4ea43767be4954a8d5f3fc8d043b25290d0567608a05c73c24d7c6a941d8",
+      "after": "086496232df434f0c37d99db957f6f3df1664f39b711c800b45eea1ceb786e98"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage": {
+      "before": "373930b99bf62ae3f7f6fb52f0831196b5f3e9a26a34cd3a23e8bc88fbd8c0b1",
+      "after": "ba57843a660008006637fa69d2385077cb5582be6b27c60b9ee0980250eff990"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanLeftInverseImage": {
+      "before": "fffb82172ca6a1b439608fb9b9c81dd1a61b73b31fa26e9081fdde0328194633",
+      "after": "3fcbc5881e37b8081ce346d0c68128ddc4c749b3fc5d3d76f5516497e52f2c0e"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalSectionPathImage": {
+      "before": "e167aee0bce5b81fb3d8ee793f7d3265866effaacd1e53cefa321ba6f0159a96",
+      "after": "d577b8a20cca6fbfcc1a9d77b43e016d1d3d42720a79db24667217a61d529982"
+    },
+    "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitTrianglePostValue": {
+      "before": "a81c975a5dcec060905b0cc83aea078d00920212a511ba6051fdfb601424f52e",
+      "after": "ce3c7bd81d3b2223c169f68b64631b16a13aae4341592b5dc184e0428ed41fb3"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame": {
+      "before": "5e00a53bf6ee10647cc79f148b70c63f9aa5a2469c6f87e4f4c272277c5d9970",
+      "after": "74f24d6ea5c2595c24e8e9665857bd532c05479f7abf6f445c20296d87b41c55"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceBoundary": {
+      "before": "14abd946fe9c82c79b43e50ab035d2c55ad830aa3660dd0f4ccc87bd0f51b469",
+      "after": "646caf57741c9fb0afe363bbb89dbe1193fbff40477b9a0ec6f1534fb412ef87"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells": {
+      "before": "ef8afb254fed7c9fa6a82bd309f14e394fc857502d17fe46a3cb5677dc59584a",
+      "after": "85bca91d6bb6a1245304a1336464dc1e547d6aa11626a68fb15c0b3e5fdef605"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveParameterExtension": {
+      "before": "49380bc4b1935a5585c7d4a5da9676fb30d7934883173dc0ee4ce29c13d31736",
+      "after": "6add740296d5b744a2b3582b387a17bd9e3b8c6fbd7cfe05b5a7731d95e973a1"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftRelative": {
+      "before": "d95ffe55b46c275709b6a1b43506a9d5bbf2fa7bc47ff55581e1cf80dc4f463a",
+      "after": "a9c9fae3f0642527a850444be7078470b5e340d18dc1d5966e34340748bf9213"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension": {
+      "before": "24c9ecb578cf5cde6595f08698d4d54022adb086b1bc7ab351db01f64d8e8c1d",
+      "after": "1578b719ae8805d1c9c370aaefa01eb5bec552e1a6b1f1f257e67523ac27ab1a"
+    },
+    "SerrePositivity.Spectra.ModelCategory.SimplicialGenerators": {
+      "before": "eb7fcb998474e57ed2fcd85fdeca8f807c9ab42921205818d7af7637894f4255",
+      "after": "ce1599c82157b07c9031d9c29e7a0b4ece3aff99824ab3235b3c11f3328b5995"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence": {
+      "before": "cb72d5ab96b81851383625cc303e812bc0e2a3d956eafe4c1fca31897eab9d73",
+      "after": "92ea747f73e08d66dd67c38b074f970b7c550202b0904d13be641d82bb2503c1"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison": {
+      "before": "ae5e02669445761267733d419accb1ac7ca10fd94ff0a26add9aa3cacac6a25b",
+      "after": "65985d11df595f2af2948d8a490f9dc4d4a4fe7fac612d2568d4d1d055413088"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionComparison": {
+      "before": "7093f4bcfa52483381b67456fa92d177d3b785e502b6bc4ea33842faafd51bdf",
+      "after": "157e2133ea13b2e8b5f7750aedf228cbf8bd212028e73ca74580043cc8fce8d8"
+    },
+    "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarMappingComparison": {
+      "before": "c5d587b74247c09c5d5e04967454406948a442be1d5afcb855bc7a600d9a40ba",
+      "after": "629791c52694df7e36be6098001ef3fe2b3c088e943295ca3b16c18fc2933917"
+    }
+  },
+  "layer_checks": [
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFiberCoherence",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBaseSquare",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComparisonProjection",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Smith.AccessibleModelFactorizations",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 179,
+          "W2b": 179
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "import": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.SimplexTensorBoundary",
+      "import": "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.EInfinity.Hammock.StagePushoutNaturality",
+      "import": "Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting",
+      "import": "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+      "import": "Mathlib.CategoryTheory.Limits.Cones",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.StandardFrame",
+      "import": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom",
+      "import": "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOneCotensor",
+      "import": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping",
+      "import": "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice",
+      "import": "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection",
+      "import": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Localization.LocalFibrantApproximation",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPrecompValue",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportDiagonalComparisonPresentation",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoTriplePostTransport",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoInverseRatioExchange",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostcompReduction",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostPairTransport",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeRightImageProjection",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeStrictNaturality",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeStrictNaturality",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeLegFinalImages",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeRightImageProjection",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeftImagePath",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+      "import": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice",
+      "import": "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness",
+      "import": "Mathlib.CategoryTheory.SmallObject.Basic",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper",
+      "import": "SerrePositivity.HomotopicalAlgebra.Transfer.CellMap",
+      "increases": [],
+      "before": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      },
+      "after": {
+        "direct": 296,
+        "tiers": {
+          "W1": 1,
+          "W2a": 172,
+          "W2b": 172
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+      "import": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "import": "Mathlib.CategoryTheory.Adjunction.Limits",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "import": "Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass",
+      "import": "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy",
+      "import": "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison",
+      "import": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero",
+      "import": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramSourceComparison",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalPointPrismDiagonal",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyCounitNaturality",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyRightUnit",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyTransportActionFactor",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.LiftedIntervalCospanPathImage",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanLeftInverseImage",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalSectionPathImage",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitTrianglePostValue",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceBoundary",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice",
+      "import": "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveParameterExtension",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftRelative",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialGenerators",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence",
+      "import": "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage",
+      "import": "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionComparison",
+      "import": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarMappingComparison",
+      "import": "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne",
+      "increases": [],
+      "before": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      },
+      "after": {
+        "direct": 294,
+        "tiers": {
+          "W1": 1,
+          "W2a": 166,
+          "W2b": 166
+        }
+      }
+    }
+  ],
+  "incorporated_into_r72": {
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": {
+      "old_repair_imports": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+      ],
+      "new_split": "SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily"
+    }
+  },
+  "resolved_stop_condition": {
+    "status": "STOP_FORBIDDEN_CLOSURE_INCREASE",
+    "basis": "IF-W0-3 §10.24, main 62cd488f3",
+    "before_stop1": {
+      "direct": 296,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 1,
+          "affected_core_module_count": 11,
+          "closure_pair_count": 11,
+          "direct_violation_count": 3
+        },
+        "W2a": {
+          "forbidden_module_count": 177,
+          "affected_core_module_count": 3404,
+          "closure_pair_count": 345310,
+          "direct_violation_count": 30
+        },
+        "W2b": {
+          "forbidden_module_count": 177,
+          "affected_core_module_count": 3404,
+          "closure_pair_count": 345310,
+          "direct_violation_count": 296
+        }
+      }
+    },
+    "current": {
+      "direct": 296,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 1,
+          "affected_core_module_count": 11,
+          "closure_pair_count": 11,
+          "direct_violation_count": 3
+        },
+        "W2a": {
+          "forbidden_module_count": 179,
+          "affected_core_module_count": 3404,
+          "closure_pair_count": 351422,
+          "direct_violation_count": 30
+        },
+        "W2b": {
+          "forbidden_module_count": 179,
+          "affected_core_module_count": 3404,
+          "closure_pair_count": 351422,
+          "direct_violation_count": 296
+        }
+      }
+    },
+    "new_forbidden_modules": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne",
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+    ],
+    "core_paths": {
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne": [
+        "SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyClasses",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHomotopyExtension",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyFaces",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne"
+      ],
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanMonoArrowFactorization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.MonoLocalizedFactorization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily",
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+      ]
+    },
+    "increased_metric_count": 6608,
+    "build_started": false,
+    "preservation_completed": false,
+    "commit_created": false,
+    "resolution": "§10.26: EvaluationFamily split and BoundaryOne move; static closure 172"
+  },
+  "resolved_f2_stop_by_10_27": {
+    "reason": "F2 entry #checks need forbidden closure increase",
+    "evidence": ".lake/verify/batch-w1w2a/stop2/stop-f2-entry-26.json",
+    "proposed_edge": {
+      "from": "SerrePositivity.InfinityCategories.F2",
+      "to": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitFirstTotalRelation",
+      "applied": false,
+      "direct_reasons": []
+    },
+    "root_forbidden_closure": {
+      "W1": {
+        "before": 0,
+        "after_if_added": 0
+      },
+      "W2a": {
+        "before": 0,
+        "after_if_added": 141
+      },
+      "W2b": {
+        "before": 0,
+        "after_if_added": 141
+      }
+    },
+    "pending_repairs": {
+      "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": [
+        "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty"
+      ],
+      "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": [
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility"
+      ]
+    }
+  },
+  "resolved_manifest_stop_by_10_28": {
+    "status": "STOP_INSTRUCTION_TOOL_MISMATCH",
+    "instruction": "main 16e9b06cc §10.27-2",
+    "discovery": [
+      "scripts/audit_*.lean",
+      "scripts/audit/*.lean"
+    ],
+    "current_discovered": 99,
+    "current_manifest": 99,
+    "hypothetical_missing_audits": [
+      "scripts/check_infinity_f2_pending.lean"
+    ],
+    "expected_error": "manifest audit missing: scripts/check_infinity_f2_pending.lean",
+    "classification": {
+      "keep": 0,
+      "move": 1497
+    },
+    "pending_import_modules": 769,
+    "scanned_entries": [
+      "SerrePositivity.lean",
+      "SerrePositivity/InfinityCategories/Coherent.lean",
+      "SerrePositivity/InfinityCategories/Core.lean",
+      "SerrePositivity/InfinityCategories/DGNerve.lean",
+      "SerrePositivity/InfinityCategories/Derived.lean",
+      "SerrePositivity/InfinityCategories/DoldKanComparison.lean",
+      "SerrePositivity/InfinityCategories/F1.lean",
+      "SerrePositivity/InfinityCategories/F1B.lean",
+      "SerrePositivity/InfinityCategories/F2.lean",
+      "SerrePositivity/InfinityCategories/HomotopyLimits.lean",
+      "SerrePositivity/InfinityCategories/Kan.lean",
+      "SerrePositivity/InfinityCategories/ModelBridge.lean",
+      "SerrePositivity/InfinityCategories/Simplicial.lean",
+      "SerrePositivity/InfinityCategories/Stable.lean",
+      "SerrePositivity/InfinityCategories/StablePresentable.lean"
+    ],
+    "check_movement_applied": false,
+    "manifest_modified": false,
+    "build_started": false,
+    "preservation_completed": false,
+    "new_commits": [],
+    "repairs": {
+      "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+      "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility"
+    }
+  },
+  "module_renames_R72_5": {
+    "SerrePositivity.HomotopicalAlgebra.Generated.Basic": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass",
+    "SerrePositivity.HomotopicalAlgebra.Generated.FunctorClosure": "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor",
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.DiagonalFrame": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram",
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame": "SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom",
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.StandardCosimplicial": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction",
+    "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": "SerrePositivity.HomotopicalAlgebra.Simplicial.EvaluationMorphismProperties",
+    "SerrePositivity.HomotopicalAlgebra.Transfer.FullyFaithfulLifting": "SerrePositivity.HomotopicalAlgebra.Simplicial.FullyFaithfulLifting"
+  },
+  "resolved_generated_basic_stop_by_10_30": {
+    "status": "STOP_BEFORE_POINT_2",
+    "basis": "§10.24 per-module forbidden closure must not increase",
+    "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+    "needed_import": "SerrePositivity.HomotopicalAlgebra.Generated.Basic",
+    "applied": false,
+    "declaration": "SerrePositivity.ModelGeneration.generatedLeft_le_of_cells_le",
+    "use_line": 60,
+    "definition_line": 34,
+    "increased_core_modules": {
+      "W1": 0,
+      "W2a": 1083,
+      "W2b": 1083
+    },
+    "before": {
+      "direct": 296,
+      "tiers": {
+        "W1": 1,
+        "W2a": 172,
+        "W2b": 172
+      }
+    },
+    "after_if_added": {
+      "direct": 296,
+      "tiers": {
+        "W1": 1,
+        "W2a": 172,
+        "W2b": 172
+      }
+    },
+    "examples": [
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits",
+        "before": 49,
+        "after": 50
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Diagrams.CocartesianKanUnstraighteningUnitPoints",
+        "before": 2,
+        "after": 3
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Diagrams.ConstantDiagramSectionTransport",
+        "before": 49,
+        "after": 50
+      }
+    ],
+    "check_move": {
+      "status": "APPLIED",
+      "checks": 1497,
+      "imports": 769,
+      "manifest_count": 100,
+      "manifest_intent": "F2入口から移した既存1497宣言の受入検査をverifyに残す",
+      "forbidden_closure": {
+        "W1": 1,
+        "W2a": 172,
+        "W2b": 172
+      },
+      "direct_violations": 296
+    },
+    "entry_commit": "999d292e3df7bf2df574d76dcbedf660d932931d",
+    "r72_commit": "16e808ff6cab84bfeaaf6a137d39f77eb156e437",
+    "rounds": {
+      "5": {
+        "status": "FAIL",
+        "pid": 86916,
+        "started": "2026-11-01T15:19:06.973870+09:00",
+        "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3",
+        "cache": {
+          "LAKE_CACHE_DIR": "/Users/sugakubunka/.cache/lake",
+          "LAKE_ARTIFACT_CACHE": "true",
+          "LAKE_RESTORE_ARTIFACTS": "true"
+        },
+        "target_count": 20289,
+        "root_count": 172,
+        "concurrent_builds": [],
+        "lake_pid": 86993,
+        "exit_code": 1,
+        "seconds": 189.714,
+        "finished": "2026-11-01T15:22:16.690357+09:00",
+        "cache_new_files": 405,
+        "cache_new_bytes": 99363867,
+        "cache_before_files": 189836,
+        "cache_after_files": 190241,
+        "new_project_jobs": 58,
+        "failures": {
+          "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean": [
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:19:40: Unknown identifier `ModelCategory`",
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:22:28: Unknown identifier `Quillen.relativeCells`",
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:23:4: failed to synthesize instance of type class"
+          ],
+          "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean": [
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:20:32: Invalid field `IsSmall`: The environment does not contain `Function.IsSmall`, so it is not possible to project the field `IsSmall` from an expression",
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:31:32: Invalid field `HasSmallObjectArgument`: The environment does not contain `Function.HasSmallObjectArgument`, so it is not possible to project the field `HasSmallObjectArgument` from an expression",
+            "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:42:53: Invalid field `IsSmall`: The environment does not contain `Function.IsSmall`, so it is not possible to project the field `IsSmall` from an expression"
+          ]
+        }
+      },
+      "6": {
+        "status": "FAIL",
+        "pid": 88344,
+        "started": "2026-11-01T15:24:55.828347+09:00",
+        "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3",
+        "cache": {
+          "LAKE_CACHE_DIR": "/Users/sugakubunka/.cache/lake",
+          "LAKE_ARTIFACT_CACHE": "true",
+          "LAKE_RESTORE_ARTIFACTS": "true"
+        },
+        "target_count": 20289,
+        "root_count": 172,
+        "concurrent_builds": [],
+        "lake_pid": 88479,
+        "exit_code": 1,
+        "seconds": 73.665,
+        "finished": "2026-11-01T15:26:09.494195+09:00",
+        "cache_new_files": 430,
+        "cache_new_bytes": 8565070,
+        "cache_before_files": 190241,
+        "cache_after_files": 190671,
+        "new_project_jobs": 71,
+        "failures": {
+          "SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean": [
+            "error: SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean:60:10: Unknown identifier `SerrePositivity.ModelGeneration.generatedLeft_le_of_cells_le`",
+            "error: SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean:61:4: No goals to be solved"
+          ]
+        }
+      }
+    },
+    "preservation_completed": false,
+    "full_verify_run": false,
+    "downstream_commit_created": false
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 3238.197,
+      "new_project_jobs": 5837,
+      "unique_new_modules": 5837,
+      "warning_builds": 374,
+      "targets": 20192,
+      "failed_module_count": 14,
+      "failures": {
+        "SerrePositivity/InfinityCategories/ModelBridge.lean": [
+          "error: SerrePositivity/InfinityCategories/ModelBridge.lean:19:6: unexpected token 'import'; expected 'abbrev', 'axiom', 'builtin_initialize', 'class', 'coinductive', 'def', 'example', 'inductive', 'initialize', 'instance', 'opaque', 'section', 'structure', 'syntax' or 'theorem'",
+          "error: SerrePositivity/InfinityCategories/ModelBridge.lean:19:7: invalid 'import' command, it must be used in the beginning of the file"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:37:55: Unknown identifier `CofibrantlyGenerated`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:45:17: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/Right.lean:50:23: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/EInfinity/ProjectiveModel.lean": [
+          "error: SerrePositivity/EInfinity/ProjectiveModel.lean:412:4: Unknown identifier `SerrePositivity.ModelGeneration.CofibrantlyGenerated`",
+          "error: SerrePositivity/EInfinity/ProjectiveModel.lean:414:33: Unknown identifier `A`",
+          "error: SerrePositivity/EInfinity/ProjectiveModel.lean:413:90: unsolved goals"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Generated/Replacement.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Generated/Replacement.lean:18:40: Unknown identifier `ModelCategory`",
+          "error: SerrePositivity/HomotopicalAlgebra/Generated/Replacement.lean:20:24: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Generated/Replacement.lean:20:20: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/FixedBoundaryExtensions.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/FixedBoundaryExtensions.lean:33:74: unknown namespace `HomotopicalAlgebra`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/FixedBoundaryExtensions.lean:39:47: Unknown identifier `CartesianMonoidalCategory.isTerminalTensorUnit`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/FixedBoundaryExtensions.lean:42:54: Unknown identifier `ihom`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean:15:74: unknown namespace `HomotopicalAlgebra`",
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean:16:5: unknown namespace `SerrePositivity.Reedy`",
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean:21:47: Unknown identifier `CartesianMonoidalCategory.isTerminalTensorUnit`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:84:30: Unknown identifier `CofibrantlyGenerated`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:93:18: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:94:10: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterHomotopy.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterHomotopy.lean:51:4: Unknown identifier `HomotopyFunctionComplex.BoundaryOne.isColimit`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorCofibrant.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/SimplicialTensorCofibrant.lean:32:8: Unknown identifier `StandardCosimplicial.reedy_cofibrant`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean:61:72: Invalid field `rlp`: The environment does not contain `Function.rlp`, so it is not possible to project the field `rlp` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean:63:8: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalCofibrations.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalCofibrations.lean:87:13: Unknown identifier `isCofibrant`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalCofibrations.lean:86:50: unsolved goals"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Monoidal/GeneratedBifunctor.lean:28:5: Unknown identifier `CofibrantlyGenerated`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Smith/Recognition.lean:119:4: Unknown identifier `ModelGeneration.CofibrantlyGenerated`"
+        ],
+        "SerrePositivity/Spectra/ModelCategory/LevelClasses.lean": [
+          "error: SerrePositivity/Spectra/ModelCategory/LevelClasses.lean:57:10: Unknown identifier `ModelCategory`",
+          "error: SerrePositivity/Spectra/ModelCategory/LevelClasses.lean:59:0: invalid 'include', variable `I` has not been declared in the current scope",
+          "error: SerrePositivity/Spectra/ModelCategory/LevelClasses.lean:61:49: Unknown identifier `trivialFibrations`"
+        ]
+      },
+      "unknown_identifiers": [
+        "A",
+        "CartesianMonoidalCategory.isTerminalTensorUnit",
+        "Category.assoc",
+        "Category.comp_id",
+        "CofibrantlyGenerated",
+        "CofibrantlyGenerated.rlp_I",
+        "CofibrantlyGenerated.rlp_J",
+        "Functor.const_obj_map",
+        "Functor.const_obj_obj",
+        "Functor.map_comp",
+        "HomotopyFunctionComplex.BoundaryOne.isColimit",
+        "I",
+        "I.strictMap",
+        "J.strictMap",
+        "L",
+        "ModelCategory",
+        "ModelGeneration.CofibrantlyGenerated",
+        "MonoidalClosed.internalHom.map",
+        "NatIso.ofComponents",
+        "R",
+        "SerrePositivity.ModelGeneration.CofibrantlyGenerated",
+        "StandardCosimplicial.reedy_cofibrant",
+        "adj",
+        "cofibrantComparison",
+        "fibrantComparison",
+        "fibrations",
+        "ihom",
+        "isCofibrant",
+        "pullback",
+        "pullback.condition",
+        "pullback.fst",
+        "pullback.lift",
+        "pullback.lift_fst",
+        "pullback.lift_snd",
+        "pullback.snd",
+        "rightTransfer",
+        "trivialFibrations"
+      ],
+      "cache_new_files": 152565,
+      "cache_new_bytes": 8424999322,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/build.log",
+      "repairs_for_next_round": {
+        "downstream_imports": {
+          "SerrePositivity.EInfinity.ProjectiveModel": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Generated.Replacement": [
+            "Mathlib.AlgebraicTopology.ModelCategory.Basic"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorCofibrant": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting": [
+            "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy": [
+            "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryOne"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Smith.Recognition": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ],
+          "SerrePositivity.HomotopicalAlgebra.Transfer.Right": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ],
+          "SerrePositivity.Spectra.ModelCategory.LevelClasses": [
+            "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+          ]
+        },
+        "syntax_repairs": {
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame": "remove now-unused Homotopicalgebra from open",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions": "remove now-unused Homotopicalgebra from open",
+          "SerrePositivity.InfinityCategories.ModelBridge": "place the approved import header before the module docstring"
+        },
+        "source_hashes": {
+          "SerrePositivity.EInfinity.ProjectiveModel": {
+            "before": "675990be1890b67cf18227e999d0445fb713df044fe53f0dc1c9f2976cb8c5b7",
+            "after": "b29e27c94b9d44de9654e7b580e02a571bebda08bae3c5770d7f6b0ddbd7ceb9"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Generated.Replacement": {
+            "before": "5f380f7069f6ae833597ce281e0d9ac0d8b762e7a9186f4c5e3734adea62261c",
+            "after": "35b365c796f20526fccae7bebf71fcc80e86191ecb1b2c5943fbae93fd1a1806"
+          },
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenStandardFrame": {
+            "before": "36120f637b2822a5496e32ea0b6bbe876f514c0baabcc85ff08a3bbfa2a436b3",
+            "after": "aec7e71d6ba69118c9cf9b5f067b873d8f8db414ac9e2007d07c8c7c9aa96c6c"
+          },
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorCofibrant": {
+            "before": "319852586f730426b7b5f6ff63f6ab37ac851f13e93179b7a5e3cfd133bbf437",
+            "after": "92cc3297cf9af9e661c028fef27333ce0e63ffe9251d520faeede4ca2e6c69c4"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor": {
+            "before": "7d034ed008c3a2fba2dae65b61a0491ae3bf92ef7f1e186c7903b0c9b221c6f4",
+            "after": "53e126fe7f978e11685cbc2a4bb51c7dc815c8a362e5ecdae9f710b20e005c24"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting": {
+            "before": "b5dce87cf83e3b0e6ce773ee807704a0ca9de4509d4075f664496c91f4c60d8e",
+            "after": "e9bf8bb8ca1004c709676ad2bfc342797076433e02e4c48e7051ae50305f6140"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations": {
+            "before": "03b842271dbfe511ae88a1536cf5466e1a5deb8fb64c5a7282fb42f9fd48ba47",
+            "after": "cbfa47a0000f0b4ba45678a90c8a647b5cdc604a6a02dcf74eae0f080700bef9"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions": {
+            "before": "1c6f55854f1f4ff917be636c1f7bd427ca53b7f880b8fcea731f863aa33849ab",
+            "after": "b07319d60e423616ab9fc16e3ffb97791f73713509146b503bb6ee32e586aafa"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy": {
+            "before": "7ee1344c4ecba3a665b842690e680de56c7ad93842a513ea7b410fd558c279e5",
+            "after": "f2e6082c42dc75b48255b4c83490c3ade4b1961cb3d49cfb89e3b9970fdc6609"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Smith.Recognition": {
+            "before": "2375d570666415c55cb6fd9dc4b4080939e05dfb1ede106eef09f9c2ffa69722",
+            "after": "325b79e4a36712a982f970ca8bda614624117e9f05f09691f755b04783e4839b"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": {
+            "before": "7a12ea99c7115fe329d3bb214963b12f617803abeb0b2ef4003fb3f9b93a452d",
+            "after": "3f663c0a47df372168e8736680a436b82052bd5bf6a4a72a05e3ea0b888e77d1"
+          },
+          "SerrePositivity.HomotopicalAlgebra.Transfer.Right": {
+            "before": "352044d8cc480dc1469cdd0fd041da9990ceb64691611c914444dbb814c2bb6a",
+            "after": "1992a4e61c70a6e862b4421e801a4864ef6bd7bb4dcc0b30c41603285b6e8def"
+          },
+          "SerrePositivity.Spectra.ModelCategory.LevelClasses": {
+            "before": "35be89e75a6013f8d1fb7a4a50b605bff12dbaa8b8f6cd448023f80c414e4354",
+            "after": "62186b3e3b26e5f29ca220b7f0e483e54bff786b285328b27a0d8f9fcaefab44"
+          },
+          "SerrePositivity.InfinityCategories.ModelBridge": {
+            "before": "a7bba9949774eeb57acabea9d7e9c29fd19164b4e9c71dd83d98206c07e0f74b",
+            "after": "c850530110c2d861df3258d79b9b3567a286c36c133c031648d564e8fb16140c"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "status": "STOP_CORE_IMPORT",
+      "exit_code": null,
+      "seconds": 715.557,
+      "new_project_jobs": 1731,
+      "unique_new_modules": 1731,
+      "warning_builds": 82,
+      "targets": 14601,
+      "failed_module_count": 9,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenStandardFrame.lean:16:5: unknown namespace `SerrePositivity.Reedy`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Smith/AccessibleModelFactorizations.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Smith/AccessibleModelFactorizations.lean:94:32: Unknown identifier `ModelGeneration.CofibrantlyGenerated`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean:78:13: Unknown identifier `matchingEvaluation_mem_right`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean:75:75: unsolved goals",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean:100:7: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/KST/Spectra/SimplexTensorBoundary.lean": [
+          "error: SerrePositivity/KST/Spectra/SimplexTensorBoundary.lean:53:2: failed to synthesize instance of type class",
+          "error: SerrePositivity/KST/Spectra/SimplexTensorBoundary.lean:62:2: failed to synthesize instance of type class",
+          "error: SerrePositivity/KST/Spectra/SimplexTensorBoundary.lean:75:4: Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+        ],
+        "SerrePositivity/EInfinity/Hammock/StagePushoutNaturality.lean": [
+          "error: SerrePositivity/EInfinity/Hammock/StagePushoutNaturality.lean:77:2: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/FunctorHomotopyStrictBaseSquare.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/FunctorHomotopyStrictBaseSquare.lean:38:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/Derived/FunctorHomotopyStrictBaseSquare.lean:35:75: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F1/MappingSpaces/HomSpanSectionFiberCoherence.lean": [
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomSpanSectionFiberCoherence.lean:62:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F1/MappingSpaces/HomSpanSectionFiberCoherence.lean:59:70: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoWhiskerCancellation.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoWhiskerCancellation.lean:26:13: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoWhiskerCancellation.lean:24:84: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/DGModuleResolvedComparisonProjection.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/DGModuleResolvedComparisonProjection.lean:41:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/Derived/DGModuleResolvedComparisonProjection.lean:33:70: unsolved goals"
+        ]
+      },
+      "unknown_identifiers": [
+        "F2.functorIso_postcomp_heq_of_heq",
+        "ModelGeneration.CofibrantlyGenerated",
+        "functorIso_postcomp_heq_of_map_eq",
+        "matchingEvaluation_mem_right"
+      ],
+      "cache_new_files": 12117,
+      "cache_new_bytes": 308094571,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-2/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-2/build.log"
+    },
+    {
+      "round": 3,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 1721.918,
+      "new_project_jobs": 3059,
+      "unique_new_modules": 3059,
+      "warning_builds": 167,
+      "targets": 20194,
+      "failed_module_count": 28,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:18:20: unknown namespace `CategoryTheory.Limits`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:20:23: Unknown identifier `Category`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:24:18: Unknown identifier `MorphismProperty`"
+        ],
+        "SerrePositivity/InfinityCategories/ModelBridge/StandardFrame.lean": [
+          "error: SerrePositivity/InfinityCategories/ModelBridge/StandardFrame.lean:93:2: Unknown identifier `adjunctionHomIsoSameUniverse`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalInternalHom.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalInternalHom.lean:67:24: Unknown identifier `ihom`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalInternalHom.lean:69:34: Unknown identifier `ihom.adjunction`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/DiagonalInternalHom.lean:76:25: Unknown identifier `ihom.adjunction`"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/FunctorIsoLiftedWhiskerSquare.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/FunctorIsoLiftedWhiskerSquare.lean:25:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/Derived/FunctorIsoLiftedWhiskerSquare.lean:21:68: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorIsoPrecompositionProjection.lean": [
+          "error: SerrePositivity/InfinityCategories/F1/FunctorCategories/FunctorIsoPrecompositionProjection.lean:76:5: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/ResolutionSourceComparisonComposition.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/ResolutionSourceComparisonComposition.lean:41:15: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/ResolutionOutputPostcomposition.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/ResolutionOutputPostcomposition.lean:30:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/Derived/ResolutionOutputPostcomposition.lean:25:43: unsolved goals",
+          "error: SerrePositivity/InfinityCategories/Derived/ResolutionOutputPostcomposition.lean:45:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`"
+        ],
+        "SerrePositivity/InfinityCategories/Derived/DGModuleOutputComparisonRawSource.lean": [
+          "error: SerrePositivity/InfinityCategories/Derived/DGModuleOutputComparisonRawSource.lean:63:13: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/Derived/DGModuleOutputComparisonRawSource.lean:45:63: unsolved goals"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean:63:21: Invalid field `isTerminalObj₀`: The environment does not contain `CategoryTheory.Functor.isTerminalObj₀`, so it is not possible to project the field `isTerminalObj₀` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryFillerLifting.lean:66:2: Tactic `constructor` failed: no applicable constructor found"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/DiagonalPrismPrecompValue.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/DiagonalPrismPrecompValue.lean:60:5: Unknown identifier `functorIso_postcomp_heq_of_heq`"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberTransportDiagonalComparisonPresentation.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberTransportDiagonalComparisonPresentation.lean:65:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FiberTransportDiagonalComparisonPresentation.lean:53:94: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoTriplePostTransport.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoTriplePostTransport.lean:25:13: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoTriplePostTransport.lean:24:67: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoInverseRatioExchange.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoInverseRatioExchange.lean:43:12: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoInverseRatioExchange.lean:41:41: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPostcompReduction.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPostcompReduction.lean:27:13: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPostcompReduction.lean:24:80: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPostPairTransport.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/FunctorIsoPostPairTransport.lean:26:6: Unknown identifier `functorIso_postcomp_heq_of_map_eq`"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeRightImageProjection.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeRightImageProjection.lean:36:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeRightImageProjection.lean:31:51: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeStrictNaturality.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeStrictNaturality.lean:47:5: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeStrictNaturality.lean:61:10: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/KanIntervalConeStrictNaturality.lean:63:4: No goals to be solved"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentCospanNativeLegFinalImages.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentCospanNativeLegFinalImages.lean:46:10: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentCospanNativeLegFinalImages.lean:72:10: Unknown identifier `functorIso_postcomp_heq_of_map_eq`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryOneCotensor.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryOneCotensor.lean:45:20: Unknown constant `SSet.boundary`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryOneCotensor.lean:46:27: Unknown identifier `boundary`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryOneCotensor.lean:46:43: Unknown constant `SSet.boundary.ι`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterMapping.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterMapping.lean:62:47: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterMapping.lean:64:7: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/LargeParameterMapping.lean:65:80: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeRightImageProjection.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeRightImageProjection.lean:34:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeRightImageProjection.lean:31:46: unsolved goals"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftAnodyneReflection.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftAnodyneReflection.lean:143:48: Unknown identifier `ModelCategory`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftAnodyneReflection.lean:153:47: Unknown identifier `ModelCategory`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenCylinder.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenCylinder.lean:22:40: Unknown identifier `Quillen.IsLeftQuillen`",
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenCylinder.lean:26:6: Unknown identifier `L.IsLeftAdjoint`",
+          "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/QuillenCylinder.lean:27:0: invalid 'include', variable `hcof` has not been declared in the current scope"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Localization/LocalFibrantApproximation.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Localization/LocalFibrantApproximation.lean:23:30: Unknown identifier `ModelGeneration.CofibrantlyGenerated`",
+          "error: SerrePositivity/HomotopicalAlgebra/Localization/LocalFibrantApproximation.lean:27:20: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Localization/LocalFibrantApproximation.lean:27:42: Unknown identifier `J`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:61:27: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:63:48: failed to synthesize instance of type class",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:65:22: Unknown identifier `simplicial_pushoutProduct_mono`"
+        ],
+        "SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeLeftImagePath.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeLeftImagePath.lean:52:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/CatInfinity/CatPullbackConeLeftImagePath.lean:34:39: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/ModelBridge/HA/QuillenStandardFrame.lean": [
+          "error: SerrePositivity/InfinityCategories/ModelBridge/HA/QuillenStandardFrame.lean:33:13: Unknown identifier `StandardCosimplicial.reedy_cofibrant`",
+          "error: SerrePositivity/InfinityCategories/ModelBridge/HA/QuillenStandardFrame.lean:32:42: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/ModelBridge/HA/LargeParameterExtension.lean": [
+          "error: SerrePositivity/InfinityCategories/ModelBridge/HA/LargeParameterExtension.lean:50:10: Unknown identifier `ModelCategory`",
+          "error: SerrePositivity/InfinityCategories/ModelBridge/HA/LargeParameterExtension.lean:57:0: invalid 'include', variable `hcof` has not been declared in the current scope",
+          "error: SerrePositivity/InfinityCategories/ModelBridge/HA/LargeParameterExtension.lean:59:13: Unknown identifier `RelativeChoiceSpace.extension`"
+        ]
+      },
+      "unknown_identifiers": [
+        "C",
+        "Category",
+        "CategoryWithCofibrations",
+        "CategoryWithFibrations",
+        "CategoryWithWeakEquivalences",
+        "F2.functorIso_postcomp_heq_of_heq",
+        "HomotopyFunctionComplex.BoundaryOne.isColimit",
+        "J",
+        "J.IsSmall",
+        "J.rlp",
+        "K",
+        "L",
+        "L.IsLeftAdjoint",
+        "L.map",
+        "L.obj",
+        "ModelCategory",
+        "ModelGeneration.CofibrantlyGenerated",
+        "MonoidalClosed.internalHom",
+        "MonoidalClosed.internalHom.map",
+        "MonoidalClosed.internalHomAdjunction₂",
+        "MorphismProperty",
+        "Quillen.IsLeftQuillen",
+        "Quillen.map_weakEquivalence_of_cofibrant",
+        "RelativeChoiceSpace.FixedBoundaryHomotopy",
+        "RelativeChoiceSpace.extension",
+        "RelativeChoiceSpace.obj",
+        "RelativeChoiceSpace.pointUnitIso.hom",
+        "S",
+        "S.IsSmall",
+        "SSet.boundary",
+        "SSet.boundary.ι",
+        "StandardCosimplicial.reedy_cofibrant",
+        "adjunctionHomIsoSameUniverse",
+        "b",
+        "boundary",
+        "cof",
+        "cylinder",
+        "functorIso_postcomp_heq_of_heq",
+        "functorIso_postcomp_heq_of_map_eq",
+        "hcof",
+        "hfib",
+        "ihom",
+        "ihom.adjunction",
+        "j",
+        "reedyCofibrant",
+        "restriction_lifting",
+        "simplicial_pushoutProduct_mono"
+      ],
+      "cache_new_files": 20316,
+      "cache_new_bytes": 989695431,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-3/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-3/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryFillerLifting": [
+          "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationFamily": [
+          "Mathlib.CategoryTheory.Limits.Cones"
+        ],
+        "SerrePositivity.InfinityCategories.ModelBridge.StandardFrame": [
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalInternalHom": [
+          "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOneCotensor": [
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping": [
+          "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": [
+          "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection": [
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneModelDetection"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.QuillenCylinder": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Localization.LocalFibrantApproximation": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+        ],
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial"
+        ],
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.FunctorIsoLiftedWhiskerSquare": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.ResolutionSourceComparisonComposition": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.ResolutionOutputPostcomposition": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.Derived.DGModuleOutputComparisonRawSource": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.DiagonalPrismPrecompValue": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberTransportDiagonalComparisonPresentation": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoTriplePostTransport": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoInverseRatioExchange": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostcompReduction": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPostPairTransport": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeRightImageProjection": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanIntervalConeStrictNaturality": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCospanNativeLegFinalImages": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeRightImageProjection": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeftImagePath": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ]
+      }
+    },
+    {
+      "round": 4,
+      "status": "STOP_FORBIDDEN_CLOSURE",
+      "exit_code": null,
+      "seconds": 193.824,
+      "new_project_jobs": 187,
+      "unique_new_modules": 187,
+      "warning_builds": 2,
+      "targets": 10394,
+      "failed_module_count": 3,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:42:21: Invalid field `rlp`: The environment does not contain `Function.rlp`, so it is not possible to project the field `rlp` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:42:40: Invalid field `rlp`: The environment does not contain `Function.rlp`, so it is not possible to project the field `rlp` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationFamily.lean:45:14: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:66:22: Unknown identifier `simplicial_pushoutProduct_mono`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:91:13: Unknown identifier `RelativeChoiceSpace.obj`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:92:14: Unknown identifier `RelativeChoiceSpace.obj`"
+        ],
+        "SerrePositivity/InfinityCategories/F2.lean": [
+          "error: SerrePositivity/InfinityCategories/F2.lean:210:8: Unknown identifier `SerrePositivity.InfinityCategories.F2.coherentColimitUnitFirstTotalRelation`",
+          "error: SerrePositivity/InfinityCategories/F2.lean:212:8: Unknown identifier `SerrePositivity.InfinityCategories.F2.coherentColimitUnitLastTotalRelation`",
+          "error: SerrePositivity/InfinityCategories/F2.lean:214:8: Unknown identifier `SerrePositivity.InfinityCategories.F2.coherentColimitUnitMiddleTotalRelation`"
+        ]
+      },
+      "unknown_identifiers": [
+        "RelativeChoiceSpace.FixedBoundaryHomotopy",
+        "RelativeChoiceSpace.obj",
+        "RelativeChoiceSpace.pointUnitIso.hom",
+        "SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation.largeIso_heq_map",
+        "SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex",
+        "SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.left_map_heq",
+        "SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.right_map_heq",
+        "SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.square_of_reindexed",
+        "SerrePositivity.InfinityCategories.F2.TetrahedronComparisonReindex.whisker_map_heq",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitActionComparison_eq_conjugate",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_eq_conjugate",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_heq",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitFiberTransportComparisonIso_precomp_heq_conjugate",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_eq_triangle_transport",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_component",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerActionIso_heq_factors",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeAction",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso_app_heq_triangle",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerCompositeIso_map_heq_action",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerComposite_source_vertex",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerComposite_target_vertex",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_middle_vertex",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_source_vertex",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerFactor_target_vertex",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerFiberHomIso_app_heq_factors",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerTransportFactorIso_heq_component",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitLowerTriangleActionIso",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeAction_unit_lift",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeTriangleActionComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeTriangleActionComparison_heq_original",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitRelativeComparison_map_heq_action",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitNativeUnitValueComparison_total_heq",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitFirstTotalRelation",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitLastTotalRelation",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitLowerComparison_app_heq_target",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitMiddleTotalRelation",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleActionComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitTriangleValue_coherence",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitUpperComparison_app_heq_native",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_coherence",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_heq_native",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_overPre_heq",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_precomp_firstEdge",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueAction_total_heq_native",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_heq_native",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUnitValueComparison_total_heq_nativeRelative",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso_eq_triangle",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperActionIso_eq_triangle_transport",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperCompositeAction",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperNativeFactorIso",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperRelativeComparison_map_heq_action",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperTransportFactorIso",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperTriangleActionIso",
+        "SerrePositivity.InfinityCategories.F2.coherentColimitUpperUnitFactorIso",
+        "SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison",
+        "SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison_eq_factors",
+        "SerrePositivity.InfinityCategories.F2.coherentConstantTriangleLargeComparison_heq_raw",
+        "SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_largeIso_eq",
+        "SerrePositivity.InfinityCategories.F2.coherentConstantTriangleRepresentation_value_heq",
+        "SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_hom_eq_projection",
+        "SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_eq_projection",
+        "SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_overPre",
+        "SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_post",
+        "SerrePositivity.InfinityCategories.F2.constantUnstraighteningRelativeIso_value_vertex",
+        "SerrePositivity.InfinityCategories.F2.functorHomotopyRelativePost_overPre_square",
+        "SerrePositivity.InfinityCategories.F2.functorIso_app_heq_of_vertex_eq",
+        "SerrePositivity.InfinityCategories.F2.functorIso_app_precomp_heq",
+        "SerrePositivity.InfinityCategories.F2.functorIso_trans_target_heq",
+        "SerrePositivity.InfinityCategories.F2.functorSquareComparison_app_heq_target",
+        "SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_heq",
+        "SerrePositivity.InfinityCategories.F2.functorSquareComparison_total_app_map_heq",
+        "SerrePositivity.InfinityCategories.F2.functorSquareComparison_value_heq_target",
+        "SerrePositivity.InfinityCategories.F2.functorSquareRelativeComparison_map_constantTarget",
+        "SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_heq",
+        "SerrePositivity.InfinityCategories.F2.functorSquareSequentialPostComparison_overPre_app_map_heq",
+        "SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparisonReindex",
+        "SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_reindexed",
+        "SerrePositivity.InfinityCategories.F2.functorTetrahedronPostComparison_square_of_tensor_pre",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleConstantTargetActionIso",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison_heq_family_app",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleRelativeComparison_map_constantTarget",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_post",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_app_heq_target",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_heq_target",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_overPre_app_heq",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_heq",
+        "SerrePositivity.InfinityCategories.F2.functorTriangleSequentialPostComparison_total_app_map_heq",
+        "SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_app_heq",
+        "SerrePositivity.InfinityCategories.F2.relativeFunctorPostVertexIso_overPre_heq",
+        "SerrePositivity.InfinityCategories.F2.relativeFunctorPost_overPre",
+        "SerrePositivity.InfinityCategories.F2.threeTriangleIso_cancel",
+        "SerrePositivity.InfinityCategories.F2.unstraighteningMappingTriangleIso_app_heq_of_family_eq",
+        "SerrePositivity.InfinityCategories.F2.unstraighteningTriangleVertexIso_postcomp_heq_second_eq",
+        "SerrePositivity.InfinityCategories.F2.vertexIso_five_factor_relation_map",
+        "SerrePositivity.InfinityCategories.F2.vertexIso_map_identity_heq",
+        "SerrePositivity.InfinityCategories.F2.vertexIso_map_iso_roundtrip",
+        "SerrePositivity.InfinityCategories.F2.vertexIso_triangle_relation_map",
+        "b",
+        "j",
+        "simplicial_pushoutProduct_mono"
+      ],
+      "cache_new_files": 1309,
+      "cache_new_bytes": 65897572,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-4/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-4/build.log"
+    },
+    {
+      "round": 5,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 189.714,
+      "new_project_jobs": 58,
+      "unique_new_modules": 58,
+      "warning_builds": 0,
+      "targets": 20289,
+      "failed_module_count": 2,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:20:32: Invalid field `IsSmall`: The environment does not contain `Function.IsSmall`, so it is not possible to project the field `IsSmall` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:31:32: Invalid field `HasSmallObjectArgument`: The environment does not contain `Function.HasSmallObjectArgument`, so it is not possible to project the field `HasSmallObjectArgument` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationSmallness.lean:42:53: Invalid field `IsSmall`: The environment does not contain `Function.IsSmall`, so it is not possible to project the field `IsSmall` from an expression"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:19:40: Unknown identifier `ModelCategory`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:22:28: Unknown identifier `Quillen.relativeCells`",
+          "error: SerrePositivity/HomotopicalAlgebra/Transfer/EvaluationLeftProper.lean:23:4: failed to synthesize instance of type class"
+        ]
+      },
+      "unknown_identifiers": [
+        "CategoryTheory.MorphismProperty.transfiniteCompositions_monotone",
+        "ModelCategory",
+        "Quillen.relativeCells"
+      ],
+      "cache_new_files": 405,
+      "cache_new_bytes": 99363867,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-5/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-5/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness": [
+          "Mathlib.CategoryTheory.SmallObject.Basic"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper": [
+          "SerrePositivity.HomotopicalAlgebra.Transfer.CellMap"
+        ]
+      }
+    },
+    {
+      "round": 6,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 73.665,
+      "new_project_jobs": 72,
+      "unique_new_modules": 72,
+      "warning_builds": 1,
+      "targets": 20289,
+      "failed_module_count": 1,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean:60:10: Unknown identifier `SerrePositivity.ModelGeneration.generatedLeft_le_of_cells_le`",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/Generators.lean:61:4: No goals to be solved"
+        ]
+      },
+      "unknown_identifiers": [
+        "SerrePositivity.ModelGeneration.generatedLeft_le_of_cells_le"
+      ],
+      "cache_new_files": 430,
+      "cache_new_bytes": 8565070,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-6/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-6/build.log"
+    },
+    {
+      "round": 7,
+      "status": "STOP_ROUND_BUILD_COUNT_INCREASE",
+      "exit_code": null,
+      "seconds": 567.412,
+      "new_project_jobs": 1378,
+      "unique_new_modules": 1378,
+      "warning_builds": 45,
+      "targets": 20291,
+      "failed_module_count": 4,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/BoundaryReedyFactorization.lean:101:7: failed to synthesize instance of type class"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/ModelCompatibility.lean:57:4: Unknown identifier `SerrePositivity.ModelGeneration.CofibrantlyGenerated`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/KanTestLiftingClass.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/KanTestLiftingClass.lean:73:32: Invalid field `hasLiftingProperty_iff`: The environment does not contain `CategoryTheory.ParametrizedAdjunction.hasLiftingProperty_iff`, so it is not possible to project the field `hasLiftingProperty_iff` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/KanTestLiftingClass.lean:81:28: Invalid field `hasLiftingProperty_iff`: The environment does not contain `CategoryTheory.ParametrizedAdjunction.hasLiftingProperty_iff`, so it is not possible to project the field `hasLiftingProperty_iff` from an expression",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/KanTestLiftingClass.lean:96:34: Invalid field `hasLiftingProperty_iff`: The environment does not contain `CategoryTheory.ParametrizedAdjunction.hasLiftingProperty_iff`, so it is not possible to project the field `hasLiftingProperty_iff` from an expression"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoRelativeHomotopy.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/KanMonoRelativeHomotopy.lean:65:58: Invalid field `hasLiftingProperty_iff`: The environment does not contain `CategoryTheory.ParametrizedAdjunction.hasLiftingProperty_iff`, so it is not possible to project the field `hasLiftingProperty_iff` from an expression"
+        ]
+      },
+      "unknown_identifiers": [
+        "SerrePositivity.ModelGeneration.CofibrantlyGenerated"
+      ],
+      "cache_new_files": 4241,
+      "cache_new_bytes": 136106280,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-7/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-7/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization": [
+          "Mathlib.CategoryTheory.Adjunction.Limits",
+          "Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass": [
+          "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy": [
+          "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+        ]
+      }
+    },
+    {
+      "round": 8,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 5132.899,
+      "new_project_jobs": 8601,
+      "unique_new_modules": 8601,
+      "warning_builds": 674,
+      "targets": 20291,
+      "failed_module_count": 22,
+      "failures": {
+        "SerrePositivity/InfinityCategories/ModelBridge/MixedFrameComparison.lean": [
+          "error: SerrePositivity/InfinityCategories/ModelBridge/MixedFrameComparison.lean:105:12: Unknown identifier `cosimplicialFrame_isCofibrant_obj`"
+        ],
+        "SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean": [
+          "error: SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean:73:10: Unknown identifier `cosimplicialFrame_isCofibrant_obj`",
+          "error: SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean:71:72: unsolved goals",
+          "error: SerrePositivity/EInfinity/HomotopyWeight/TensorPiZero.lean:85:56: Application type mismatch: The argument"
+        ],
+        "SerrePositivity/InfinityCategories/F2/Ind/IndConeEndpointEvaluationNaturality.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/Ind/IndConeEndpointEvaluationNaturality.lean:48:12: Unknown identifier `F2.functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/Ind/IndConeEndpointEvaluationNaturality.lean:45:79: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/ConstantDiagramSourceComparison.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/ConstantDiagramSourceComparison.lean:66:10: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/ConstantDiagramSourceComparison.lean:68:2: No goals to be solved"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedIntervalPointPrismDiagonal.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedIntervalPointPrismDiagonal.lean:77:9: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedIntervalPointPrismDiagonal.lean:79:2: No goals to be solved"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyCounitNaturality.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyCounitNaturality.lean:39:5: Unknown identifier `functorIso_postcomp_heq_of_map_eq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyCounitNaturality.lean:35:52: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyRightUnit.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyRightUnit.lean:33:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedValueFamilyRightUnit.lean:28:90: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedRightFamilyTransportActionFactor.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedRightFamilyTransportActionFactor.lean:50:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/PointedRightFamilyTransportActionFactor.lean:43:62: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/LiftedIntervalCospanPathImage.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/LiftedIntervalCospanPathImage.lean:46:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/LiftedIntervalCospanPathImage.lean:44:55: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentNativeKanValueImage.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentNativeKanValueImage.lean:35:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentNativeKanValueImage.lean:29:52: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanLeftInverseImage.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanLeftInverseImage.lean:74:13: Unknown identifier `functorIso_postcomp_heq_of_heq`",
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CospanLeftInverseImage.lean:62:52: unsolved goals"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalSectionPathImage.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/IntervalSectionPathImage.lean:39:8: Unknown identifier `functorIso_postcomp_heq_of_heq`"
+        ],
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitUnitTrianglePostValue.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentColimitUnitTrianglePostValue.lean:52:9: Unknown identifier `functorIso_postcomp_heq_of_map_eq`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftWeakEquivalence.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftWeakEquivalence.lean:71:61: failed to synthesize",
+          "error: SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftWeakEquivalence.lean:72:61: failed to synthesize"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Diagram/WeightedHomotopyColimitFrame.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Diagram/WeightedHomotopyColimitFrame.lean:68:8: Unknown identifier `QuillenStandardFrame.reedyCofibrant`",
+          "error: SerrePositivity/HomotopicalAlgebra/Diagram/WeightedHomotopyColimitFrame.lean:80:5: Unknown identifier `QuillenStandardFrame.augmentation_weakEquivalence`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceBoundary.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceBoundary.lean:57:20: Unknown identifier `extension`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceBoundary.lean:57:9: Tactic `rcases` failed: `x✝ : ?m.115` is not an inductive datatype",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceBoundary.lean:75:20: Unknown identifier `extension`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceCells.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceCells.lean:55:12: Unknown identifier `RelativeChoiceSpace.extension`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceCells.lean:53:75: unsolved goals",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RelativeChoiceCells.lean:65:53: Application type mismatch: The argument"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:92:13: Unknown identifier `RelativeChoiceSpace.obj`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:93:14: Unknown identifier `RelativeChoiceSpace.obj`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/LargeParameterRelativeChoice.lean:94:33: Unknown identifier `j`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/NerveParameterExtension.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/NerveParameterExtension.lean:76:2: Unknown identifier `RelativeChoiceSpace.restriction_trivialFibration`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/CoherentLiftRelative.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/CoherentLiftRelative.lean:75:2: Unknown identifier `SimplicialModel.RelativeChoiceSpace.projection_trivialFibration`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/CoherentLiftRelative.lean:124:2: Unknown identifier `SimplicialModel.RelativeChoiceSpace.extension`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/CoherentLiftRelative.lean:144:2: Unknown identifier `SimplicialModel.RelativeChoiceSpace.relative_homotopy`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RecursiveChoiceExtension.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RecursiveChoiceExtension.lean:65:13: Unknown identifier `RelativeChoiceSpace.extension`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RecursiveChoiceExtension.lean:60:64: unsolved goals",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/Simplicial/RecursiveChoiceExtension.lean:72:63: Application type mismatch: The argument"
+        ],
+        "SerrePositivity/Spectra/ModelCategory/SimplicialGenerators.lean": [
+          "error: SerrePositivity/Spectra/ModelCategory/SimplicialGenerators.lean:21:35: Unknown constant `SerrePositivity.SimplicialModel.simplicialSet_isCofibrant`"
+        ]
+      },
+      "unknown_identifiers": [
+        "F2.functorIso_postcomp_heq_of_heq",
+        "QuillenStandardFrame.augmentation_weakEquivalence",
+        "QuillenStandardFrame.reedyCofibrant",
+        "RelativeChoiceSpace.FixedBoundaryHomotopy",
+        "RelativeChoiceSpace.extension",
+        "RelativeChoiceSpace.obj",
+        "RelativeChoiceSpace.pointUnitIso.hom",
+        "RelativeChoiceSpace.restriction_trivialFibration",
+        "SerrePositivity.SimplicialModel.simplicialSet_isCofibrant",
+        "SimplicialModel.RelativeChoiceSpace.extension",
+        "SimplicialModel.RelativeChoiceSpace.nonempty_fixedBoundaryHomotopy",
+        "SimplicialModel.RelativeChoiceSpace.projection_trivialFibration",
+        "SimplicialModel.RelativeChoiceSpace.relative_homotopy",
+        "b",
+        "cosimplicialFrame_isCofibrant_obj",
+        "extension",
+        "functorIso_postcomp_heq_of_heq",
+        "functorIso_postcomp_heq_of_map_eq",
+        "j"
+      ],
+      "cache_new_files": 57339,
+      "cache_new_bytes": 2304195636,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-8/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-8/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison": [
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+        ],
+        "SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero": [
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+        ],
+        "SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointEvaluationNaturality": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ConstantDiagramSourceComparison": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedIntervalPointPrismDiagonal": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyCounitNaturality": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedValueFamilyRightUnit": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.PointedRightFamilyTransportActionFactor": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.LiftedIntervalCospanPathImage": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CospanLeftInverseImage": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalSectionPathImage": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra"
+        ],
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentColimitUnitTrianglePostValue": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Diagram.WeightedHomotopyColimitFrame": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceBoundary": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceCells": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice": [
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveParameterExtension": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftRelative": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions"
+        ],
+        "SerrePositivity.Spectra.ModelCategory.SimplicialGenerators": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.Generators"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftWeakEquivalence": [
+          "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
+        ]
+      }
+    },
+    {
+      "round": 9,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 586.652,
+      "new_project_jobs": 733,
+      "unique_new_modules": 733,
+      "warning_builds": 53,
+      "targets": 913,
+      "failed_module_count": 3,
+      "failures": {
+        "SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentNativeKanValueImage.lean": [
+          "error: SerrePositivity/InfinityCategories/F2/FilteredExchange/CoherentNativeKanValueImage.lean:41:15: Unknown identifier `functorIso_postcomp_heq_of_map_eq`"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/AllFactorizationComparison.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/AllFactorizationComparison.lean:70:2: Unknown identifier `LargeParameterExtension.relativeExtend`",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/AllFactorizationComparison.lean:77:4: Function expected at",
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/AllFactorizationComparison.lean:77:20: Application type mismatch: The argument"
+        ],
+        "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/MixedResolutionComparison.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/MixedResolutionComparison.lean:55:4: Unknown identifier `cosimplicialFrame_isCofibrant_obj`"
+        ]
+      },
+      "unknown_identifiers": [
+        "LargeParameterExtension.relativeExtend",
+        "cosimplicialFrame_isCofibrant_obj",
+        "functorIso_postcomp_heq_of_map_eq"
+      ],
+      "cache_new_files": 5138,
+      "cache_new_bytes": 401887452,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-9/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-9/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentNativeKanValueImage": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension"
+        ],
+        "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.MixedResolutionComparison": [
+          "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation"
+        ]
+      }
+    },
+    {
+      "round": 10,
+      "status": "FAIL",
+      "exit_code": 1,
+      "seconds": 103.846,
+      "new_project_jobs": 78,
+      "unique_new_modules": 78,
+      "warning_builds": 3,
+      "targets": 179,
+      "failed_module_count": 1,
+      "failures": {
+        "SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingComparison.lean": [
+          "error: SerrePositivity/HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/OrdinaryBarMappingComparison.lean:55:5: Unknown identifier `UniverseLift.anodyneQ_map_isIso_of_weakEquivalence`"
+        ]
+      },
+      "unknown_identifiers": [
+        "UniverseLift.anodyneQ_map_isIso_of_weakEquivalence"
+      ],
+      "cache_new_files": 546,
+      "cache_new_bytes": 34931206,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-10/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-10/build.log",
+      "repairs_for_next_round": {
+        "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarMappingComparison": [
+          "SerrePositivity.InfinityCategories.ModelBridge.HA.UniverseLiftAnodyne"
+        ]
+      }
+    },
+    {
+      "round": 11,
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 252.19,
+      "new_project_jobs": 101,
+      "unique_new_modules": 101,
+      "warning_builds": 0,
+      "targets": 101,
+      "failed_module_count": 0,
+      "failures": {},
+      "unknown_identifiers": [],
+      "cache_new_files": 707,
+      "cache_new_bytes": 32832377,
+      "state_file": ".lake/verify/batch-w1w2a/stop2/round-11/build-state.json",
+      "log_file": ".lake/verify/batch-w1w2a/stop2/round-11/build.log"
+    }
+  ],
+  "resolved_build_count_stop_by_10_32": {
+    "status": "STOP_BEFORE_POINT_2",
+    "basis": "main 8cdd4c61e §10.31 condition 5",
+    "trigger": {
+      "previous_round": 6,
+      "previous_new_project_jobs": 71,
+      "current_round": 7,
+      "current_new_project_jobs": 1333,
+      "current_round_changes": "seven approved R72 keep moves and one Generators import",
+      "seconds_to_stop_request": 567.412
+    },
+    "commits": {
+      "tool": "9bc69dc79e034c408848afa5dce1a500cd51e358",
+      "keep_moves": "8dc0f29a0ed5b9406432c135a08729edf6c1f562"
+    },
+    "static_validation": {
+      "status": "PASS",
+      "target_count": 1285,
+      "forbidden_closure": {
+        "W1": 1,
+        "W2a": 166,
+        "W2b": 166
+      },
+      "direct_violations": 294,
+      "increases": 0
+    },
+    "tests": {
+      "count": 170,
+      "result": "PASS",
+      "new_test_methods": 2
+    },
+    "rules_applied_this_phase": {
+      "direct_imports": 1,
+      "pure_keep_moves": 7,
+      "additional_noncore_splits": 0,
+      "entry_check_moves": 0,
+      "split_then_keep_move_validator_extension": 1
+    },
+    "pending_repairs": {
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization": [
+        "Mathlib.CategoryTheory.Adjunction.Limits",
+        "Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory"
+      ],
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility": [
+        "SerrePositivity.InfinityCategories.ModelBridge.HA.Basic"
+      ],
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass": [
+        "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+      ],
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy": [
+        "Mathlib.CategoryTheory.LiftingProperties.ParametrizedAdjunction"
+      ]
+    },
+    "pending_repair_count": 5,
+    "pending_repair_modules": 4,
+    "pending_layer_increases": 0,
+    "after_snapshot_started": false,
+    "preservation_completed": false,
+    "verify_run": false,
+    "downstream_import_commit_created": false,
+    "cache_new_files": 4241,
+    "cache_new_bytes": 136106280
+  },
+  "new_build_count_definition": "all successful Built SerrePositivity lines, including warnings; distinct modules within each round",
+  "resolved_build_count_stop_by_10_33": {
+    "status": "STOP_BEFORE_POINT_2",
+    "basis": "main 431ee6b71 §10.32 condition 5",
+    "downstream_build_status": "PASS",
+    "downstream_build_exit_code": 0,
+    "trigger": {
+      "previous_round": 10,
+      "previous_new_project_jobs": 78,
+      "current_round": 11,
+      "current_new_project_jobs": 101,
+      "observed_count_before_stop_request": 85,
+      "stop_command_found_build_already_finished": true,
+      "build_errors": 0
+    },
+    "new_build_count_rule": "all successful Built SerrePositivity lines, including warnings; distinct modules within each round",
+    "phase_build_seconds": 6075.587,
+    "phase_new_jobs": 9513,
+    "all_round_build_seconds": 12775.874,
+    "all_round_new_jobs": 21835,
+    "phase_cache_new_files": 63730,
+    "phase_cache_new_bytes": 2773846671,
+    "all_round_cache_new_files": 255113,
+    "all_round_cache_new_bytes": 12806568784,
+    "downstream_import_modules": 75,
+    "downstream_import_count": 83,
+    "source_hashes_refreshed": 78,
+    "actual_graph_matches_plan": true,
+    "layers": {
+      "direct": 294,
+      "tiers": {
+        "W1": 1,
+        "W2a": 166,
+        "W2b": 166
+      }
+    },
+    "layer_increases": 0,
+    "before_modules": 3020,
+    "before_rows": 30828,
+    "after_modules_planned": 3033,
+    "after_snapshot_started": false,
+    "preservation_completed": false,
+    "verify_run": false,
+    "new_commits": [],
+    "active_lake_builds": [],
+    "growth_explanation": {
+      "round10_targets": 179,
+      "round10_successful_new_modules": 78,
+      "round11_targets": 101,
+      "remaining_identity": true,
+      "round11_all_targets_built": true,
+      "explanation": "The parent failed in round 10. Adding its direct import let the previously unbuilt 101 descendants run; the target set shrank 913 -> 179 -> 101. Both rounds nevertheless contain imports only, so the literal §10.32 count condition applies."
+    },
+    "resolution": "main ffe1125b0 §10.33: failed module counts 22 -> 3 -> 1 -> 0; newly built counts are not the convergence criterion"
+  },
+  "stop_point_2_before_10_34": {
+    "status": "STOP_POINT_2",
+    "basis": "main ffe1125b0 §10.33-3",
+    "downstream_build": "PASS",
+    "preservation": {
+      "status": "FAIL",
+      "before_count": 17180,
+      "after_count": 17181,
+      "parent_count": 16468
+    },
+    "change_count": 69,
+    "changes_by_kind": {
+      "removed": 29,
+      "added": 30,
+      "type": 5,
+      "auxiliaries": 4,
+      "body": 1
+    },
+    "snapshot_before": {
+      "modules": 3020,
+      "rows": 30828,
+      "transient_names": 323,
+      "transient_rows": 335
+    },
+    "snapshot_after": {
+      "modules": 3033,
+      "rows": 30829,
+      "transient_names": 323,
+      "transient_rows": 335
+    },
+    "private_generated_collision_names": 12,
+    "private_authored_collision_names": 0,
+    "after_capture_seconds": 1546.94,
+    "integration_compare_seconds": 33.502,
+    "initial_integration_guard_seconds": 1.34,
+    "audit_move_occurrences": 325,
+    "audit_split_expansions": 18,
+    "audit_imports_added": 8,
+    "verify_run": false,
+    "new_commits": [],
+    "comparison_rules_relaxed": false,
+    "project_source_edits_this_phase": false
+  },
+  "resolved_stop_10_34_by_10_35": {
+    "status": "STOP_POINT_2_PRIME",
+    "basis": "main 255651547 §10.34",
+    "machine_changes": 39,
+    "pp_accepted": 7,
+    "remaining": 32,
+    "A_body_mismatches": 28,
+    "before_not_compared": 4,
+    "scratch_deleted": true,
+    "verify_run": false,
+    "new_commits": [],
+    "report": "batch-w1w2a-preservation-10-34.md"
+  },
+  "status": "DOWNSTREAM_BUILD_AND_PRESERVATION_PASS",
+  "preservation": {
+    "status": "PASS",
+    "unresolved": 0,
+    "before_count": 16411,
+    "after_count": 16412,
+    "matched_count_including_instance_pp": 16412,
+    "transient_names_each": 1092,
+    "notation_transient_pairs": 769,
+    "report": "batch-w1w2a-preservation-10-35.md"
+  },
+  "verify": "not yet executed; next authorized gate under §10.35"
+}

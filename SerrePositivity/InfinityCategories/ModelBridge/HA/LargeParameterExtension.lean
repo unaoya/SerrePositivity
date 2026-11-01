@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterExtension

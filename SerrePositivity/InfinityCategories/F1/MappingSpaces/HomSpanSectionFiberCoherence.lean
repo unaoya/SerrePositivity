@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionUnitCoherence

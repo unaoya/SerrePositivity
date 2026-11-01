@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms

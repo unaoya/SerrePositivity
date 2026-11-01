@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
 
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorRealization
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PiZero

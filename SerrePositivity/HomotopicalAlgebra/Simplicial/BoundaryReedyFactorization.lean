@@ -1,4 +1,7 @@
 module
+public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
+public import Mathlib.CategoryTheory.Adjunction.Limits
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy

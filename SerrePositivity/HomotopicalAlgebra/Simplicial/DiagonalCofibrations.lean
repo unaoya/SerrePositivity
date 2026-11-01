@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension
 
 public import SerrePositivity.CategoryTheory.NerveVertices
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AnchoredPostComparison

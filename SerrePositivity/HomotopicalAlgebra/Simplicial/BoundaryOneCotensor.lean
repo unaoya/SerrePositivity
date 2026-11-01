@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryOne
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FixedBoundaryExtensions
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
