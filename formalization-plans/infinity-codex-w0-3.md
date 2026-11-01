@@ -587,3 +587,15 @@ R72 の preflight（`r72-trials-2`）は、1 モジュールごとに「split-pr
 3. 使い終わった scratch worktree は削除する。
 
 **E. 報告**：13 件それぞれの処置を表にして**停止点 2′**で報告する。すべて一致扱いになれば、その報告のあと止まらずに「downstream imports」「監査の追従」「保存比較の規則」をコミットして verify へ（§10.33-3）。STOP が 1 件でもあれば止まる。
+
+### 10.35 追記（11-01、残り 32 件：macro／unexpander の補助宣言は transient、before の復元は再コンパイルを許す）
+
+**承認**：9 件の一致（B 2・D 7）、生成名の正規化と試験（171 件 PASS）。
+
+**A の 28 組（`_aux_…___macroRules_…`・`…___unexpand_…`）**：本体の `Name.mkStr` にもモジュール名が埋め込まれているので、ハッシュでは一致しない。これらは `macro_rules`／`unexpander` が生成する**記法のための補助宣言**で、数学的な内容を持たず、正しく生成されたことはビルドが通ったことで示される。**transient（生成宣言）として保存比較から除外**し、組数と名前を記録に残す（§10.22 の生成名のガードに `_aux_` の `___macroRules_`・`___unexpand_` を加える）。本体のリテラルまで写す正規化は作らない。
+
+**C の無名 instance `instIsDGPretriangulatedDGOdotGluing_5`**：無名 instance の自動番号は、環境に同じ基底名があると変わる（import の変化で付け替わる）。before では同じモジュールの `instIsDGPretriangulatedDGOdotGluing_<n>` のどれかが相手のはずなので、**番号を無視して (モジュール, 型の pp) で照合**する。D と同じ scratch で `#print` して比べる。
+
+**D の未復元 4 件（`kanTensorReplacement_isCofibrant/_isFibrant/_left_isFibrant`＋C）**：scratch worktree でキャッシュに無い 165 本が再コンパイルされたのは、それらの before の成果物がキャッシュ採用（11-01）より前に作られていたからで、前提の違反ではあるが規則の違反ではない。**再コンパイルを許して復元を続ける**（数百本・数分の規模。全ビルドではないが、他の全ビルドがないことは確かめる）。復元できたら pp で比べる（定理は `pp.explicit false` の型が同じなら一致）。
+
+**その後**：全件一致なら停止せずに「downstream imports」「監査の追従」「保存比較の規則（_aux_ transient、instance の番号無視）」をコミットし、verify へ（§10.33-3）。一致しないものがあれば停止点 2″ で差分を報告。scratch は削除。
