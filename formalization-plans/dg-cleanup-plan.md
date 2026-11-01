@@ -84,7 +84,7 @@
 
 - `dg-theory-u12e-general-inventory.md`（521 本）・`dg-theory-m5-status.md`（9 本）を `git mv` で `formalization-plans/archive/` へ移し、同じコミットで docstring のパスを `formalization-plans/archive/…` に替える。相対パスの深さは保つ。
 - D4 の統合と同じ窓で行う（統合で docstring を写すときに書き換えれば、再ビルドが一回で済む）。文書ごとに 1 コミット。案内の削除と README の表の更新は論文の層のコーディネータが行うので、コミットのハッシュを知らせる。
-- 前提：D4 と同時。工数：1〜2h。**11-01**：書き換えスクリプト `targets/rewrite_dg_docs.py`（infra/dg-w2）の dry-run は 521（現役 453＋Archive 68）／9 で期待どおり。適用は統合の後に統合先へ。
+- 前提：D4 と同時。工数：1〜2h。**11-02**：本文 2 本を `formalization-plans/archive/` へ `git mv` 済み（Claude、main）。**11-01**：書き換えスクリプト `targets/rewrite_dg_docs.py`（infra/dg-w2）の dry-run は 521（現役 453＋Archive 68）／9 で期待どおり。適用は統合の後に統合先へ。
 
 ### D6 証明を変える統合（窓の外）
 
@@ -154,4 +154,4 @@
 - [archive/dg-survey-2026-10-30.md](archive/dg-survey-2026-10-30.md)：調査の全文。
 - [archive/dg-consolidation-2026-10-30.json](archive/dg-consolidation-2026-10-30.json)・[blockers](archive/dg-consolidation-blockers-2026-10-30.json)。
 - [refactoring-infinity-r2-b.md](refactoring-infinity-r2-b.md)：R2-B の DG の分類（未登録 555 の内訳）。
-- [dg-theory-m5-status.md](dg-theory-m5-status.md)・[dg-theory-u12e-general-inventory.md](dg-theory-u12e-general-inventory.md)：M5 の完了状況と U12e の目録（D5 で archive へ）。
+- [dg-theory-m5-status.md](archive/dg-theory-m5-status.md)・[dg-theory-u12e-general-inventory.md](archive/dg-theory-u12e-general-inventory.md)：M5 の完了状況と U12e の目録（D5 で archive へ）。

@@ -18,8 +18,8 @@
 
 | 文書 | 中身 | 参照元と参照の形 | 片づけ方 |
 | --- | --- | --- | --- |
-| `dg-theory-u12e-general-inventory.md` | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
-| `dg-theory-m5-status.md` | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
+| `dg-theory-u12e-general-inventory.md`（11-02 に本文を `archive/` へ移動済み。docstring の張り替えは DG-W2(b) の D5） | dg 理論 M5 の単位 U12e の一般版（中断・未受入）の棚卸し：再利用できる API、全モジュール台帳、検証手順、再開条件 | DifferentialGraded 521。「棚卸しと再開条件は…を参照」 | 本文を `archive/` へ移し、参照を張り替える |
+| `dg-theory-m5-status.md`（11-02 に本文を `archive/` へ移動済み。張り替えは DG-W2(b) の D5） | M5（dg 圏の一般論）の完了記録：U0〜U17 の受入表、保留と再開点、M9 への引き継ぎ | DifferentialGraded 9（`Checks/` など）。「受入表からビルド・監査を再現する」 | 本文を `archive/` へ移し、参照を張り替える |
 
 HomotopicalAlgebra・CategoryTheory の 635 本が参照していた案内 2 本（`k-theory.md`・`k-theory-generalization-inventory.md`）は、[∞ 基盤の整備計画](infinity-foundation-plan.md) の R79 で `archive/k-theory-v1.md`・`archive/k-theory-generalization-inventory.md` へ張り替え（c4290092a・2c8a89952、∞ の束 a12012f0e で main に入った）、2026-11-01 に案内を削除した。残る 2 本（DifferentialGraded の 530 本が参照）は [DG の整理計画](dg-cleanup-plan.md) の D5 として、DG の統合（D4）と同じ窓で書き換える（10-30 決定）。docstring だけの変更でも利用先の再ビルドが要るので、それまではこの 2 本を動かさない。
 
@@ -70,7 +70,7 @@ HomotopicalAlgebra・CategoryTheory の 635 本が参照していた案内 2 本
 
 | 系列 | 現状の文書 | 状態 |
 | --- | --- | --- |
-| dg 理論（M5） | [M5 の完了状況](dg-theory-m5-status.md)、[U12e-general の棚卸し](dg-theory-u12e-general-inventory.md) | 2026-10-17 完了。中心作用・群作用は K 理論の M9 へ。旧 dg-theory.md の内容は M5 の完了状況に統合 |
+| dg 理論（M5） | [M5 の完了状況](archive/dg-theory-m5-status.md)、[U12e-general の棚卸し](archive/dg-theory-u12e-general-inventory.md) | 2026-10-17 完了。中心作用・群作用は K 理論の M9 へ。旧 dg-theory.md の内容は M5 の完了状況に統合 |
 | CLMST | [当時の計画と実施記録](archive/clmst.md) | 2026-10-17 完了。数学は解説と `SerrePositivity/CLMST/` の docstring |
 
 ## 調査・計画のみ
@@ -104,7 +104,7 @@ Lean の docstring へ要約済みで、各ファイルの冒頭に要約先を�
 | [CLMST の長さの引用監査](archive/clmst-length-audit.md) | 監査済み（2026-10-13） | 解説、`SerrePositivity/CLMST/` |
 | [CLMST の実装境界と作業単位](archive/clmst-interfaces.md) | 初回の接続実装まで完了 | 同上 |
 | [CLMST 主計画（旧）](archive/clmst.md) | 2026-10-17 完了 | 同上 |
-| [dg 理論の主計画（旧）](archive/dg-theory.md) と単位別の記録 `archive/dg-theory-*.md` | 2026-10-17 完了 | [M5 の完了状況](dg-theory-m5-status.md) |
+| [dg 理論の主計画（旧）](archive/dg-theory.md) と単位別の記録 `archive/dg-theory-*.md` | 2026-10-17 完了 | [M5 の完了状況](archive/dg-theory-m5-status.md) |
 | [BS 主計画（旧）](archive/bhatt-scholze-log.md) | 2026-10-14〜17 の計画と実施記録 | [BS](bhatt-scholze/bhatt-scholze.md)、解説の付録 A |
 | [BS：B4 の実行記録](archive/bhatt-scholze-b4-execution.md) | B4 完了（2026-10-16） | 同上 |
 | [André の平坦性補題](archive/andre-flatness.md) | Thm 7.14 を証明（2026-10-17） | [BS](bhatt-scholze/bhatt-scholze.md) §4、解説 `par:bs-andre` |

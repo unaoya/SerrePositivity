@@ -141,7 +141,7 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - [CLMST の計画](archive/clmst.md)：9〜11番。2026-10-17 に完了。
 - [BS の計画](bhatt-scholze/bhatt-scholze.md)：δ環・prism から perfectoid 化まで。8番と E3 界面を担当する（別セッション）。
 - [perfectoid 化の界面](bhatt-scholze/perfectoidization-interface.md)：残る BS の引用（E3 界面）の原典照合と型。
-- [K理論の KST 経路](kst-lanes/k-theory-kst-route.md)：定理3.1・補題4.6の基盤と降下。旧計画は [archive/k-theory-v1.md](archive/k-theory-v1.md)、dg 理論は [M5 の完了状況](dg-theory-m5-status.md)。
+- [K理論の KST 経路](kst-lanes/k-theory-kst-route.md)：定理3.1・補題4.6の基盤と降下。旧計画は [archive/k-theory-v1.md](archive/k-theory-v1.md)、dg 理論は [M5 の完了状況](archive/dg-theory-m5-status.md)。
 - [∞ 圏基盤の整備計画](infinity-foundation-plan.md)：K 理論の各レーンを再開する前に行う ∞ 層の整備。
 
 完了の報告では、次を分ける。
