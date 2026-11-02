@@ -29,7 +29,7 @@ NAME = r"[\w\u0080-\uffff'][\w\u0080-\uffff'.]*"
 SCOPE = re.compile(r'^(?:@\[expose\]\s+)?(?:(?:public|private|noncomputable|meta)\s+)*(section|namespace)(?:\s+('+NAME+r'))?\s*$')
 HEADER = re.compile(r'^(?:@\[expose\]\s+)?public\s+(?:noncomputable\s+)?section\s*$')
 IMPORT = re.compile(r'(?m)^[ \t]*(?:(?:public|private|meta)[ \t]+)*import\s+(?:all\s+)?')
-BOUNDARIES = set('module prelude import public private meta open namespace section end def abbrev opaque theorem lemma example instance inductive structure class variable variables universe universes noncomputable set_option attribute export initialize syntax macro macro_rules elab deriving in include omit axiom constant mutual local scoped'.split())
+BOUNDARIES = set('module prelude import public private meta open namespace section end def abbrev opaque theorem lemma example instance inductive structure class variable variables universe universes noncomputable set_option attribute export initialize syntax macro macro_rules elab deriving in include omit axiom constant mutual local scoped assert_no_sorry assert_not_exists assert_not_imported run_cmd run_elab'.split())
 
 
 def module_path(module):
