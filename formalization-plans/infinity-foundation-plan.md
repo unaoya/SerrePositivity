@@ -226,6 +226,8 @@ InfinityCategories/
 | R78 | **新設（10-30、伝達文 §3.3〜3.4・§6.1・§7）**：CategoryTheory の下位ディレクトリとトップ階層の 12 本、GroupTheory/Coxeter について、Mathlib と重なる宣言の置き換え（`Functor.copyObj`・`isoCopyObj`（FunctorTransport はファイルごと）、`Adjunction.homEquiv_naturality_*`（AdjunctionHomLaws）、`Equiv.Perm.mclosure_swap_castSucc_succ`（Coxeter の帰納法）、`Paths.liftNatTrans`・`Paths.ext_functor`・`Quiv.adj.toComonad`・`MorphismProperty.naturalityProperty`・`rightAdjointUniq`・`MonoidalRightAction`・`TransportEnrichment` など）、未使用の宣言の削除、ファイルの中だけで使う約 120 の名前の private 化、ファイル名由来の名前空間の付け替え（R54 と一緒に）。証明と公開 API が変わるので窓の外。論文の層の計画と同じく、群ごとに「提案 → 承認 → 実装」で進める。Mathlib にない部分（`SimplexCategoryGenRel ≌ SimplexCategory` など）は提出候補として [mathlib-upstream.md](mathlib-upstream.md) へ |
 | M11 | **新設（10-28）**：一般の相対圏 (C, W) について、hammock 局所化の nerve への関手 `hammockLocalizationNerveMap : nerve C.category ⟶ kanHammockNerve C` が `IsLocalization` を満たすこと。いまはモデル圏の場合（`modelHammock_isLocalization`、ModelBridge へ出す）しか証明がなく、一般には `hammockLocalizationNerveMap_inverts` だけがある。数学的には知られた定理（Hinich, "Dwyer–Kan localization revisited", 2016 など。参照は要確認）。これがあれば、局所化の写像空間を、モデル圏を使わずに中核（F1B/Localization/DwyerKan）で計算できる。Verdier 商の写像空間（分数）との比較にも使える |
 
+| M12 | **新設（11-02、BS 発）**：∞ 層の一般論。小さい site 上の D(A) 値前層の層条件・層化 F ↦ F^♯・大域切断・RΓ(J, F) := lim F^♯（層である前層にだけ lim で定義する案は採らない）、層化の左完全性（HTT 6.2.2.7、A6＝Cor 8.12 で要る見込み）。大きい site は基数 κ（既定 (#A + #R + ℵ₀)^{ℵ₀}）で切り落とした小さい site に取り替え、κ 不変性は定理（宇宙は上げない）。前提：D(A) の presentable 性（StablePresentable は空の骨組み）、小さい 𝒞 について Fun(𝒞^op, D(A)) の presentable 性（HTT 5.5.3.6）、presentable 圏での小さい射の集合に関する局所置換の存在（HTT 5.5.4.15 前半。F2/Presentable の `LocalReplacementReflection` は後半まで）。使う部品：F2/Presentable の accessible・随伴関手定理・反射、Core/Limit の `JoinCone`・`IsLimitCone`、HomotopyLimits の Bousfield–Kan、Derived の `CofinalLimitTransfer`。設計書 `bhatt-scholze/infinity-sheaves-design.md` と骨組み（`bhatt-scholze/drafts/`）は BS セッションが書く。置き場所（F2/Presentable の上か新しい層か）と時期は設計書の後に調整役が決める。∞ レーンへの依頼は今はない |
+
 置き場所は Stable/Verdier と StablePresentable（R55）。M1〜M7 の詳細は [refactoring-verdier.md](refactoring-verdier.md) §5。
 2 件目の外部レビューが M2 の参照として挙げた「Drew, 定理 1.3」は、まだ確かめていない。
 
@@ -280,6 +282,7 @@ InfinityCategories/
 - DifferentialGraded/ の整理（検査の処置、入口、層の逆転、1,592 → 126 の統合、R79 の DG 分）：[DG の整理計画](dg-cleanup-plan.md)（10-30 新設。∞ 基盤とは独立に、別の Codex セッションで進める。干渉の取り決めは同 §5）。
 - 論文の層の整理と一般論の切り出し（[refactor-plan.md](refactor-plan.md)）。ただし CategoryTheory の下位ディレクトリ・Nerve まわり・殻は本計画の R75〜R78（10-30 の伝達）。CategoryTheory のトップ階層の残り（Karoubi・三角圏・t 構造・K₀ など）は論文の層の側。伝達文 §7 の追加で、両側の対象の間の import はなくなった（10-30 時点）。
 - BS 側（R35、別セッション）。
+- ∞ 層の一般論（M12、BS 発、11-02）：設計書は BS セッション、置き場所と時期は未定。本計画の窓（W0〜W2c）の範囲外。
 - 第 II 段の perfect 複体と K₀ の橋（[全体調査](archive/repository-survey-2026-10-28.md) §7 の #4・#5）。
 
 - **R80（11-01 新設、窓の外・段 G）：巨大な項と重いモジュールの整理。** 計測は [build-profile-2026-10-31](archive/build-profile-2026-10-31.md)（120 秒超は 7 本、ビルド時間は本数で決まる）と、snapshot で見つかる巨大な項の一覧（`targets/huge-terms-2026-11.md`、例：`KST.SConstruction` の `dgOdotMilnorActualOuterKernelFrameComparison._proof_17`、木に展開して 56 GB）、監査ごとの RSS（IF-W0-4）。対象は KST/SConstruction・IC/Derived・EInfinity/BarrattEccles の定義で、反復する部分項を `abbrev`／補題に切り出す、定義の中の `by` の証明義務を名前つき定理にする、`@[simps]` の自動生成を抑える、など**証明と定義を変える**作業なので窓の外。群ごとに「計測 → 提案 → 承認 → 実装」。目標：モジュールの最大 60 秒、監査の最大 RSS 10 GB、snapshot の木の展開 1 GB 未満。
