@@ -105,3 +105,24 @@
 4. **停止条件の言い換え**（§7 の「一致しなければ止める」の精密化。以後の束と DG-W3 でも有効）：同一とは **v3（証明を消した項）の digest の一致**。v3 でも不一致で、差がデータ（Type 水準の部分項、instance のデータ、宇宙）にあるなら止める。v2 だけの不一致は止めない。
 
 **報告してほしいこと（停止点 2）**：v3 の実装の要点と試験、273 本の before/after 比較の結果（v2 の 9 件の行方）、下流ビルドの round の表、補充・修飾・宇宙の明示の件数と一覧。
+
+## 9. 追記（2026-11-02 14:00、v3 の残り：証明は型ではなく標識に置き換える（v3b）、`_proof_N` は def の親にも束ねる）
+
+**観察**（Claude、`section8/annotations-{before,after}-v3.json` の読み取りと、before scratch・after の `#print` の比較）：v3（証明の部分項をその型に置換）で Reedy の 4 補題の型は一致したが、`SimplicialLevel` の `simplicialLevelI`・`simplicialLevelJ`・`simplicialLevelModelCategory` の本体、`…_fibrations`・`…_weakEquivalences` の型、`_proof_1〜6` の型が残った。`pp.explicit true`・`pp.universes true`・`pp.proofs false` で `simplicialLevelI` を before/after で印字すると**バイト単位で一致**（28,288 バイト）するので、差は証明の部分項の中だけにある。
+
+**原因**：`simplicialLevelI._proof_1` の型（命題）が before では `HasFiniteColimits SSet.{u}`、after では `HasFiniteColimits (SimplexCategoryᵒᵖ ⥤ Type u)`（`SSet` を展開した形）。after の instance 連鎖 `instHasFiniteColimitsFunctor` は結果の型を関手圏の形で述べるため、**定義的には等しいが構文的には違う命題**になる。v3 は証明を `inferType` の結果に置き換えるので、この構文の差がハッシュに残る。核の受け入れた項である以上、命題は文脈（関数の束縛子の型と他の引数）で決まっている。
+
+**処置 v3b**：証明の部分項は型ではなく**固定の標識**に置き換える（`pp.proofs false` が `⋯` にするのと同じ）：
+
+```lean
+def DeclSnapshot.eraseProofs (e : Expr) : MetaM Expr :=
+  Meta.transform e (pre := fun e => do
+    let isPrf ← try Meta.isProof e catch _ => pure false
+    if isPrf then return .done (mkConst `_erased_proof) else return .continue)
+```
+
+健全性：引数の位置の証明の命題は関数の型と他の引数（どちらもハッシュされる）で決まり、`let`・λ の束縛子の型もハッシュされるので、標識に置き換えても「データが同じで命題だけ違う」二つの項が同一視されることはない。theorem 自身の型は従来どおり別にハッシュする。`hash_algorithm` を `… v3b (term-level, proof marker)`。試験：§8 の (a)(b)(c) に加え (d) 命題が定義的に等しく構文的に違う証明（`SSet` と展開形）で本体 digest が一致。
+
+**`compare_snapshots.py`**：`_proof_N` の束ね（110〜122 行）は親が theorem のときだけなので、**親が def・abbrev・instance でも束ねる**：親の型・本体が一致していれば `_proof_N` の型の差は報告しない（v3b では親の本体から証明が消えているので、補助定理の命題は親の同一性に関係ない）。親が不一致なら従来どおり両方報告。
+
+**手順**：v3b を別コミット（道具・試験）→ 取りかけの v3 の before shard（18/37）は捨て、before scratch から v3b で 273 本を取り直す → after も v3b → 比較。下流ビルドはそのまま続ける（並列は 8 本）。停止点 2 の報告に、v2 の 9 件と v3 の残り 12 件の行方を書く。v3b でも残るものがあれば、それはデータの差なので止める。
