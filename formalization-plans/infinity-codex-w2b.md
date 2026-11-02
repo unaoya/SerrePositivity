@@ -173,5 +173,12 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 
 1. **終了コード 23 の扱い**：無害。消失は、同じ時刻に Claude が main で `lake build`（1-4 取り込み後の温め：ルート＋監査対象、11-02 深夜）を走らせていたためで、生成出力が書き直された瞬間に当たった。`warm_build_dir.sh` は DG の道具なので**変えない**（build/ir の許容追加は要らない）。
 2. **復元は rsync ではなくキャッシュから**（IF-W2a-2 で行ったのと同じ：`lake build <根>` で復元、数分）。rsync は「キャッシュにない成果物が要るとき」の予備で、今回は要らない。main から複製した成果物は main の**現在の**ソース（1-4 後）に対応しており、worktree のソースと食い違う（差分 9 本がそれ）。`lake build` の trace 検査がモジュールごとに正しい版を復元するので、複製した `.lake/build` はそのまま置いて `lake build` を走らせればよい。
-3. **main を先に取り込む**：`infra/if-w2b` は 85cb45f1a（1-4 前）から切ってある。**今 main（a682ec32b、1-4 を含む）を merge してから** before snapshot を取る。before ＝ merge 後の状態。1-4 は InfinityCategories を触っていない（Claude が確認）ので衝突はないはず。**下流ビルド（#10）の前にもう一度 main（DG-W3 取り込み後）を merge** し、内部ビルドと静的検査を再実行してから下流に入る（DG-W3 は DG の土台を 608 → 48 に統合するので、Derived・KST などの import 行が変わる）。
+3. **main を先に取り込む**：`infra/if-w2b` は 85cb45f1a（1-4 前）から切ってある。**今 main（a682ec32b、1-4 を含む）を merge してから** before snapshot を取る。before ＝ merge 後の状態。1-4 は InfinityCategories を触っていない（Claude が確認）。KST・EInfinity・監査では 6 本（下の一覧）を触っているので、W2b が同じファイルの import 行を書き換える場合は merge で両方を残す。**下流ビルド（#10）の前にもう一度 main（DG-W3 取り込み後）を merge** し、内部ビルドと静的検査を再実行してから下流に入る（DG-W3 は DG の土台を 608 → 48 に統合するので、Derived・KST などの import 行が変わる）。
 4. **再開**：main の merge → キャッシュから復元（`lake build` で before の対象の根）→ before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド → after snapshot → 保存比較 → **停止点 2**。
+   1-4 が触った 6 本：
+   - `scripts/audit/adams.lean`
+   - `scripts/audit/shared.lean`
+   - `scripts/audit_clmst.lean`
+   - `scripts/audit_euler_betti_finite_support.lean`
+   - `scripts/audit_euler_group_shared.lean`
+   - `scripts/audit_triangulated_k0_shift_shared.lean`
