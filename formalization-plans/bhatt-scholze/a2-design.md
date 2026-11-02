@@ -1,0 +1,138 @@
+# A2 の設計：導来 prismatic コホモロジー（原典 Construction 7.6、2026-11-02）
+
+概要：E3 を消す道筋の単位 A2。原典 BS 著者版 Construction 7.6（多項式代数の Δ_{R/A} を、すべての導来 p 完備な単体的可換 A/I 代数へ左 Kan 延長して
+導来 prismatic コホモロジーを定め、HT 比較から HT filtration を得る）と、その帰結 (1)〜(5) のうち E3 に要るもの（(1) 多項式代数での一致、
+(4) 底変換、(5) 余極限との両立・対称モノイダル性）を、**定義は原典のまま、定理は E3 に要る特別な場合だけ**の方針で形式化するための
+項目表・定義の形・必要な一般論・差の記録・決定待ち。A0（Δ の定義と Čech–Alexander 模型）・A1（HT 比較、Cor 4.12）を前提にする。
+方針：単体的可換環（animated 環）の ∞ 圏を、有限生成多項式 A/I 代数の圏の sifted 余極限による完備化 P_Σ(Poly_{A/I}) として入れる
+（Lurie SAG 25.1.1.1、HTT 5.5.8）。基盤の F2/Presentable に P_Σ の一般論（Yoneda、HTT 5.5.8.10・5.5.8.15、左 Kan 延長、bar 実現）がある。
+Δ は Poly 上の関手（A0 の Čech–Alexander ＝ RΓ）の P_Σ への sifted 余極限保存な延長（HTT 5.5.8.15）。値は (p,I) 完備な D(A) の可換代数対象で、
+CAlg 値の Δ（G-A1-11）がここで本格的に要る。
+規約：向き付き有界基底（D19）。R の始域は「導来 p 完備な単体的 A/I 代数」ではなく P_Σ(Poly_{A/I}) 全体にし、Δ が導来 p 完備化で不変であることを
+定理にする（D32）。HT filtration は Postnikov 切り捨ての左 Kan 延長で定義し、その次数商が導来外冪つき余接複体の p 完備化の定義になる（D33）。
+Lean の名前は仮。ビルドしない。
+使われ方：A3（Lemma 7.7、Ex 7.9、Prop 7.10：離散な場合）、A4（Def 8.2 の Frobenius 余極限）、A5（Prop 8.5）、A7（Prop 8.13）、A8（Thm 10.11）。
+E3 の `perfd` の始域（通常の離散 R 代数 `A_R R`）への制限は離散環の P_Σ への埋め込み（§2.3）で。
+
+## 0. 範囲と前提
+
+- 含む：Construction 7.6 の定義（Kan 延長、HT filtration、Frobenius）、(1)（多項式代数で元の Δ と一致）、(4)（底変換）、(5)（sifted 余極限・
+  有限余積（テンソル）との両立 ＝ 対称モノイダル性）、離散環の埋め込み、導来 p 完備化での不変性。
+- 含まない：(2) étale 層性、(3) quasisyntomic 層性（E3 の経路で使わない。Thm 7.14 の原典の証明が Prop 7.11 で使うが、André は証明済み）。
+  形式スキーム X への大域化。
+- 前提：A0 の `prismaticCohomology`（多項式代数の Δ、D(A) 値）と Čech–Alexander 模型、A1 の Thm 6.3（HT 比較）と Cor 4.12（底変換）、
+  ∞ 層の S2（RΓ）、G-A1-11（CAlg 値の RΓ と模型の E∞ 構造）。
+
+## 1. 原典の項目と形式化の対応
+
+| 原典 | 扱い | Lean の形（§2） | 既存・不足 | 単位 |
+| --- | --- | --- | --- | --- |
+| 単体的可換 A/I 代数の ∞ 圏 | 定義（P_Σ(Poly_{A/I})、SAG 25.1.1.1） | `AnimatedAlgebra k := SigmaPresheafInfinity (nerve (Poly k))` | F2/Presentable の `SigmaPresheafInfinity`、sigma Yoneda | A2-1 |
+| 離散環の埋め込み | 定義（R ↦ (P ↦ Hom(P, R))、HTT 5.5.8.10） | `discreteToAnimated` | sigma Yoneda の有限余積保存の判定 | A2-1 |
+| 導来 p 完備化 | 定義（Δ の不変性の定理に要る） | `derivedPCompletion` on P_Σ（要確認：定義の形。§2.3） | HA/DerivedCompletion（1 圏） | A2-4 |
+| Constr 7.6 の Δ | 定義そのまま（左 Kan 延長） | `derivedPrismaticCohomology` | HTT 5.5.8.15（`SigmaLeftKan*`）、CAlg_A の sifted 余極限、(p,d) 完備化の ∞ 関手 | A2-2 |
+| 同、Frobenius | 定義（Poly 上の φ の Kan 延長） | `derivedPrismaticFrobenius` | A0 の `prismaticCohomologyFrobenius`、φ_{A*} が余極限を保つ | A2-2 |
+| HT filtration | 定義（τ^{≤i} Δ̄_P の Kan 延長）。gr^i = (∧^i L)^∧{−i}[−i] は定義（D33） | `hodgeTateFiltration`、`cotangentWedge` | D(A) の t 構造（要確認）、Thm 6.3 | A2-3 |
+| (1) 多項式代数で一致 | 定理（充満忠実な包含に沿う左 Kan 延長の制限は元の関手） | `derivedPrismaticCohomology_poly` | HTT 4.3.2.17 系 | A2-2 |
+| (2)(3) | 不要 | — | — | — |
+| (4) 底変換 | 定理 | `derivedPrismaticCohomology_baseChange` | Cor 4.12（A1）、Kan 延長と底変換の交換 | A2-4 |
+| (5) 余極限・対称モノイダル | 定理 | `derivedPrismaticCohomology_tensor`、`_siftedColimit` | 多項式代数の Künneth（HT filtration の gr で、または Čech–Alexander と Eilenberg–Zilber） | A2-4 |
+| Rem 4.2（導来 prismatic site） | 不要 | — | — | — |
+
+## 2. 定義の形
+
+### 2.1 animated 代数（P_Σ）
+
+k := A/d。`Poly k`：有限生成多項式 k 代数 k[X_1,…,X_n]（n : ℕ）と k 代数の射の圏（小さい。対象は n、射は k[X_n] → k[X_m]）。
+`AnimatedAlgebra k := SigmaPresheafInfinity (nerve (Poly k))`（F2 の P_Σ：有限積を保つ空間値前層の ∞ 圏）。
+- sifted 余極限をもち、Yoneda j : Poly k → AnimatedAlgebra k は充満忠実で、像は compact projective な生成系（HTT 5.5.8.10・5.5.8.22）。
+- `discreteToAnimated k : nerve (Under (CommRingCat.of k)) ⟶ AnimatedAlgebra k`：離散 k 代数 R に P ↦ Hom_k(P, R)（有限余積を保つ前層）。
+  E3 の `algebraNerve` からの射。R が多項式なら j(R) に一致。
+- 原典の「p 完備化した多項式代数」ではなく完備化しない多項式代数を生成系にする（D32。値は完備なので同じ）。
+
+### 2.2 値の圏と Kan 延長
+
+- 値の圏 𝒱：(p,d) 完備な E∞-A 代数の ∞ 圏（EInfinity の `CAlg_R`（R := A）の、(p,d) 導来完備な対象の充満部分圏）。sifted 余極限は
+  CAlg_A で取って (p,d) 完備化する（完備化は左随伴、G-A2-3）。忘却 U : CAlg_A → D(A) は sifted 余極限を保つ（HA 3.2.3.1。EInfinity/Operad の
+  `AlgebraSiftedColimits` はモデルの側。∞ 側の形は要確認）。
+- Poly 上の関手 Δ_0 : nerve (Poly k) ⟶ 𝒱：P ↦ Δ_{P^∧/A}（A0 の `prismaticCohomology` の CAlg 版、G-A1-11）。関手性は site の関手性
+  （多項式代数の射 P → P′ から (P′/A)_Δ → (P/A)_Δ の制限と RΓ の関手性。S2 の `derivedGlobalSections_map` の CAlg 版）。
+- `derivedPrismaticCohomology : AnimatedAlgebra k ⟶ 𝒱`：Δ_0 の sifted 余極限保存な延長（HTT 5.5.8.15：Fun^{Σ}(P_Σ(C), 𝒱) ≃ Fun(C, 𝒱)。
+  F2 の `SigmaLeftKanAllColimitPreservation`・`SigmaYonedaColimitPreservationCriterion`）。
+- Frobenius：Δ_0 の φ : Δ_0 → φ_{A*} ∘ Δ_0（A0 の `prismaticCohomologyFrobenius`、CAlg 版）を Kan 延長。φ_{A*} はスカラー制限で余極限を保つ。
+- 離散 R に対する Δ_R := `derivedPrismaticCohomology (discreteToAnimated R)`。E3 の `perfd` の材料（A4）。
+
+### 2.3 HT filtration と導来外冪つき余接複体（D33）
+
+- Poly 上：Δ̄_P := Δ_P ⊗^L_A A/d は D^{[0,n]}（Thm 6.3）。Postnikov 切り捨て τ^{≤i} Δ̄_P（D(A) の標準 t 構造。要確認 G-A2-2）は P について関手的で、
+  gr^i := τ^{≤i}/τ^{≤i−1} = H^i(Δ̄_P)[−i] ≅ Ω^i_{P/k}[−i]（Thm 6.3、捻りなし）。
+- `hodgeTateFiltration i : AnimatedAlgebra k ⟶ D(A)` := (P ↦ τ^{≤i} Δ̄_P) の Kan 延長（D(A) 値。E∞ 構造は filtration 全体で）。
+  増大、exhaustive（colim_i = Δ̄：Kan 延長は余極限と交換し、Poly 上では τ^{≤n} = Δ̄_P）。
+- `cotangentWedge i : AnimatedAlgebra k ⟶ D(A)` := (P ↦ Ω^i_{P/k}（Shared/DeRhamPolynomial の `forms`、A 加群として）) の Kan 延長。
+  これが (∧^i L_{R/k})^∧ の定義（Illusie の単体的分解による定義と同じ。D33）。i = 1 が p 完備化した余接複体 L^∧_{R/k}。
+- 定理：gr^i hodgeTateFiltration ≅ cotangentWedge i [−i]（Kan 延長は cofiber と交換、Poly 上で Thm 6.3）。原典の「HT 比較 for Δ̄_R」。
+- 原典の捻り {−i} は向き付きなので落とす（D28）。
+
+### 2.4 帰結
+
+- (1) `derivedPrismaticCohomology_poly`：j(P) での値は Δ_0(P)（充満忠実な包含に沿う Kan 延長の制限）。
+- 導来 p 完備化での不変性（D32）：R → R^∧_p で Δ_R ≃ Δ_{R^∧}。HT filtration の gr で確かめる：(∧^i L_{R/k})^∧ は R の導来 p 完備化で不変
+  （余接複体の p 完備化の性質）、filtration は exhaustive で完備、導来 Nakayama。要確認：P_Σ 上の導来 p 完備化の定義（§1 の表）。
+  E3 の経路では離散 R の完備化 R^∧（E3 の `completionRing`）との比較に使う。
+- (4) `derivedPrismaticCohomology_baseChange`：prism の射 (A,d) → (A′,d′) について Δ_{R_{A′}/A′} ≃ Δ_{R/A} ⊗̂^L_A A′。Poly 上は Cor 4.12（A1）、
+  Kan 延長と底変換（余極限を保つ）の交換。
+- (5) `derivedPrismaticCohomology_tensor`：Δ_{R ⊗^L_k R′} ≃ Δ_R ⊗̂ Δ_{R′}（CAlg の余積 ＝ 完備テンソル）。Poly 上の Künneth
+  （P ⊗ P′ も多項式。HT filtration の gr で Ω^•_{P⊗P′} = Ω^•_P ⊗ Ω^•_{P′}、または Čech–Alexander 模型と Eilenberg–Zilber）、
+  両辺が sifted 余極限を各変数で保つことから一般へ。sifted 余極限の保存は構成から。これが「対称モノイダル」の内容（E∞ 代数の余積）。
+
+## 3. 必要な一般論（G-A2）
+
+| # | 内容 | 既存 | 使う箇所 |
+| --- | --- | --- | --- |
+| G-A2-1 | P_Σ(C) の定義、Yoneda の充満忠実性と compact projective 性、sifted 余極限、HTT 5.5.8.15（Fun^Σ(P_Σ(C), 𝒱) ≃ Fun(C, 𝒱)）、充満忠実な包含に沿う Kan 延長の制限 | F2/Presentable の Sigma*（105 本。`SigmaPresheafInfinity`、`SigmaYoneda*`、`SigmaLeftKan*`、`SiftedColimitPreservation`）。5.5.8.15 の形は要確認 | §2.1・§2.2 |
+| G-A2-2 | D(A) の標準 t 構造と Postnikov 切り捨て τ^{≤i}（∞ 関手として）、cofiber の gr、有界性 | **未**（InfinityCategories に t 構造の切り捨て関手は見当たらない。CategoryTheory のトップ階層に 1 圏の t 構造） | §2.3 |
+| G-A2-3 | (p,d) 導来完備化の ∞ 関手 D(A) → D(A)_comp（左随伴、完備な対象の充満部分圏、余極限の完備化） | **未**（HA/DerivedCompletion は複体の 1 圏） | §2.2・(4)・(5) |
+| G-A2-4 | CAlg_A の sifted 余極限と、U : CAlg_A → D(A) がそれを保つこと（HA 3.2.3.1）、CAlg_A の余積 ＝ テンソル（HA 3.2.4.7） | EInfinity/Operad/AlgebraSiftedColimits（モデルの側）。∞ 側（`CAlg_R`）の形は要確認。G12（presentable 性） | §2.2・(5) |
+| G-A2-5 | スカラー制限 φ_{A*} : D(A) → D(A)（CAlg 版も）が余極限を保つ | A0 の要確認 (A) | Frobenius |
+| G-A2-6 | 多項式代数の Künneth（Ω^•_{P⊗P′} = Ω^•_P ⊗ Ω^•_{P′}、または余単体的加群の Eilenberg–Zilber） | Shared/DeRhamPolynomial（外冪のテンソル） | (5) |
+| G-A2-7 | 離散環の P_Σ への埋め込みと、E3 の `algebraNerve` からの射 | sigma Yoneda の有限余積保存の判定（`SigmaYonedaEvaluation`） | §2.1 |
+| G-A2-8 | 余接複体の p 完備化の導来 p 完備化不変性（gr の不変性） | なし | D32 |
+
+G-A2-2・G-A2-3 が主な不足で、どちらも ∞ 基盤の一般論（D(A) の t 構造、完備化の局所化）。調整役に予告する（M12 に続く項目）。
+
+## 4. 原典との差
+
+| 番号 | 原典 | 本書 | 評価 |
+| --- | --- | --- | --- |
+| D31 | 単体的可換 A/I 代数 | P_Σ(Poly_{A/I})（Lurie の animated 環の定義） | 同じ ∞ 圏（SAG 25.1.1.1） |
+| D32 | 始域は導来 p 完備な単体的代数、生成系は p 完備化した多項式代数 | 始域は P_Σ(Poly) 全体、生成系は完備化しない多項式代数。Δ の導来 p 完備化不変性を定理に | 値は (p,d) 完備なので同じ。完備化の ∞ 関手を始域で避ける |
+| D33 | gr^i = (∧^i L_{R/(A/I)})^∧{−i}[−i]（Illusie の導来外冪つき余接複体） | (∧^i L)^∧ を Ω^i の Kan 延長として定義（Illusie の定義と一致） | 定義。Mathlib に余接複体はない |
+| D34 | (1) は p 完全 smooth な R | 多項式代数（充満忠実な包含の Kan 延長）。(2)(3) は不要 | D29 と同じ範囲 |
+| D35 | 値は (p,I) 完備な D(A) の可換代数対象 | CAlg_A の (p,d) 完備な対象（E∞）。D(A) 値の版は忘却で | E3 の二本立て（D18・D27・G-A1-11） |
+
+## 5. 単位と順序
+
+| 単位 | 内容 | 前提 |
+| --- | --- | --- |
+| A2-1 | `Poly k`、`AnimatedAlgebra k`、Yoneda、`discreteToAnimated` | G-A2-1・7 |
+| A2-2 | 値の圏 𝒱、Δ_0（CAlg 版、A0 の Δ と G-A1-11）、`derivedPrismaticCohomology`、Frobenius、(1) | G-A2-3・4・5、A1 の Thm 6.3 は不要 |
+| A2-3 | HT filtration、`cotangentWedge`、gr の同一視 | G-A2-2、Thm 6.3 |
+| A2-4 | 導来 p 完備化不変性、(4) 底変換、(5) テンソルと sifted 余極限 | G-A2-3・6・8、Cor 4.12 |
+
+骨組みは A2-1 → A2-2 → A2-3 → A2-4。A2-1 は既存の F2 だけで書ける。
+
+## 6. 決定待ち
+
+1. 値の圏を最初から CAlg_A（E∞）にするか、D(A) 値で定義して CAlg 版を並行させるか。原典どおりなら CAlg。E3 の `perfd` は D(R) 版と CAlg 版の両方が
+   あり、CAlg 版から D(R) 版が出る（`nonempty_e3_of_cAlg`）。推奨：**CAlg_A 値を正とし、D(A) 値は忘却**（G-A1-11 を A2 の前提に格上げ）。
+2. D(A) の t 構造（G-A2-2）と完備化の ∞ 関手（G-A2-3）を ∞ 側に依頼するか、BS 側で drafts に骨組みを書くか。推奨：**BS が骨組みを書き、置き場所は
+   M12 と同じ扱いで調整役に**（Sheaves と並ぶ一般論）。
+3. `Poly k` の添字：n : ℕ の k[X_1..X_n]（有限生成）でよいか、任意有限集合か。推奨：**n : ℕ**（P_Σ の生成系は同値類で足りる）。
+
+## 7. 紙で確かめる項目
+
+1. §2.1：離散環 R に対する P ↦ Hom_k(P, R) が有限余積を保つこと（Poly の余積はテンソル）と、R が多項式のとき j(R) に一致すること。
+2. §2.3：Kan 延長が cofiber と交換し、exhaustive 性が Poly 上の有界性から出ること。gr^i の同一視の自然性（η^* が多項式代数の射と両立）。
+3. (5)：多項式代数の Künneth を HT filtration の gr で示す議論（filtration つきの比較射が gr で同型 ⇒ 同型。完備性と exhaustive 性）。
+4. D32：余接複体の p 完備化が R の導来 p 完備化で不変であること（L_{R^∧/R} の p 完備化が零）。
+5. E3 の `perfd` に要る形：Δ_R（離散 R）とその Frobenius、H⁰ の環構造（CAlg 版なら H⁰ は環）、`unit`（R → Δ̄_R の H⁰ への射。A4 で S_perfd）。

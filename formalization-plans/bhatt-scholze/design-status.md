@@ -92,6 +92,15 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D25〜D30 | Thm 5.2 β、微分形式、模型の環構造、捻りなし、一般の r、E を作らない | a1-design §5・§7 |
 | 順序 | A1-1 → A1-4 → A1-2 → A1-3、結晶は最小限 | a1-design §6 |
 
+## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
+
+- Shared 3 本の置き場所：cup 積・Bockstein は `HomologicalAlgebra/Cosimplicial/`、de Rham は `CommutativeAlgebra/DeRham/`（新設、HA の第一層＝一般論）。
+  移すのは 2b の後。名前は論文の層に予約してもらう。それまで drafts/Shared/ のまま。
+- 2b の改名表は `BhattScholze/` に加えて `HomologicalAlgebra/DerivedCompletion/` の分も回る（(D) の読解に使う）。
+- Sheaves の骨組みで使っている基盤の名前は実在を確認済み（nerve・ihom は Mathlib）。形の確認は W2b 後の窓の判断のとき。F1B・F2 の改名は
+  W2b・W2c の改名表で回る。
+- A2 の設計（P_Σ・左 Kan 延長・CAlg_R の API を読む）は進めてよい。読むだけでビルドなし。
+
 ## 4. 次の作業（提案）
 
 1. A2 の設計書（Construction 7.6：多項式代数からの左 Kan 延長、HT filtration、底変換 (4)、余極限 (5)、CAlg 値の Δ（G-A1-11））。
