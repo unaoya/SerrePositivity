@@ -47,15 +47,14 @@ public import SerrePositivity.CLMST.KLAllModule
 public import SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
 public import SerrePositivity.CLMST.KLOriginalTorFromExcision
-public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
+public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CLMST.NonunitIsogeny
 public import SerrePositivity.CLMST.NormalizedAlmostLength
 public import SerrePositivity.CLMST.ParameterFormulaDescent
 public import SerrePositivity.CLMST.ParameterLastPowerLength
 public import SerrePositivity.CLMST.ParameterLength
 public import SerrePositivity.CLMST.PerfectoidCokernelEuler
-public import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
-public import SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel
+public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.CLMST.PerfectoidFiniteProductTor
 public import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
@@ -83,7 +82,7 @@ public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
 public import SerrePositivity.CLMST.Prop247RankClosedSides
 public import SerrePositivity.CLMST.Prop247RankComponentExcision
-public import SerrePositivity.CLMST.Prop247RankCone
+public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 public import SerrePositivity.CLMST.Prop247RankSourceValuation
 public import SerrePositivity.CLMST.Prop247SourceComparison
 public import SerrePositivity.CLMST.Prop247StandardSquare
@@ -95,8 +94,7 @@ public import SerrePositivity.CLMST.SourceEulerEvaluation
 public import SerrePositivity.CLMST.StageBaseChange
 public import SerrePositivity.CLMST.StageDimension
 public import SerrePositivity.CLMST.StageLocality
-public import SerrePositivity.CLMST.StageModPImageLength
-public import SerrePositivity.CLMST.StageModPLengthBound
+public import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
 public import SerrePositivity.CLMST.StageParameterChange
 public import SerrePositivity.CLMST.StagePowerMembership
 public import SerrePositivity.CLMST.StageResidueLength

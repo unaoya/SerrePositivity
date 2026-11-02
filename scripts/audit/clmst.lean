@@ -53,7 +53,7 @@ import SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge
 import SerrePositivity.CLMST.KLCohomologyFromExcision
 import SerrePositivity.CLMST.KLFiniteComparisonExcision
 import SerrePositivity.CLMST.KLOriginalTorFromExcision
-import SerrePositivity.CLMST.ModPHypersurfaceGrowth
+import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 import SerrePositivity.CLMST.NonunitIsogeny
 import SerrePositivity.CLMST.NormalizedAlmostLength
 import SerrePositivity.CLMST.ParameterFormulaDescent
@@ -61,8 +61,7 @@ import SerrePositivity.CLMST.ParameterLastPowerLength
 import SerrePositivity.CLMST.ParameterLength
 import SerrePositivity.CLMST.PerfectoidCokernel
 import SerrePositivity.CLMST.PerfectoidCokernelEuler
-import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
-import SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel
+import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 import SerrePositivity.CLMST.PerfectoidFiniteProductTor
 import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
@@ -82,14 +81,13 @@ import SerrePositivity.CLMST.Prop247AicRankImages
 import SerrePositivity.CLMST.Prop247AndreBase
 import SerrePositivity.CLMST.Prop247BaseChange
 import SerrePositivity.CLMST.Prop247CanonicalRankDescent
-import SerrePositivity.CLMST.Prop247CommonSquare
+import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 import SerrePositivity.CLMST.Prop247Cone
 import SerrePositivity.CLMST.Prop247ConeComparison
 import SerrePositivity.CLMST.Prop247ConstantRankExcision
 import SerrePositivity.CLMST.Prop247CoveredDescent
 import SerrePositivity.CLMST.Prop247ExcisionLocal
 import SerrePositivity.CommutativeAlgebra.Localization.Away
-import SerrePositivity.CLMST.Prop247FiniteFreeComparison
 import SerrePositivity.CLMST.Prop247GeneralRank
 import SerrePositivity.CLMST.Prop247IdempotentQuotient
 import SerrePositivity.CLMST.Prop247LocalComparison
@@ -104,7 +102,6 @@ import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
 import SerrePositivity.CLMST.Prop247RankClosedSides
 import SerrePositivity.CLMST.Prop247RankCompleteness
 import SerrePositivity.CLMST.Prop247RankComponentExcision
-import SerrePositivity.CLMST.Prop247RankCone
 import SerrePositivity.CLMST.Prop247RankData
 import SerrePositivity.CLMST.Prop247RankProductUniversality
 import SerrePositivity.CLMST.Prop247RankSourceValuation
@@ -127,8 +124,7 @@ import SerrePositivity.CLMST.StageBaseChange
 import SerrePositivity.CLMST.StageDimension
 import SerrePositivity.CLMST.StageFiniteness
 import SerrePositivity.CLMST.StageLocality
-import SerrePositivity.CLMST.StageModPImageLength
-import SerrePositivity.CLMST.StageModPLengthBound
+import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
 import SerrePositivity.CLMST.StageParameterChange
 import SerrePositivity.CLMST.StagePowerMembership
 import SerrePositivity.CLMST.StageResidueLength

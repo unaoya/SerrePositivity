@@ -5,18 +5,33 @@ public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.Algebra.CharP.Quotient
 
-/-! # A/(p,g)に使う低次元のFrobenius長さ評価
+/-! # `A/(p, g)` の Frobenius 長さの低次元評価
 
-pを先頭にもつ最小極大イデアル生成列からA/pの正則局所性・次元・標数を確認する。
-pがgを割らずgが極大イデアルに入るとき、その像はA/pの非零因子なので、
-前段の一般評価を指数dim(A)-2で適用する。
-有限段のWitt冪級数Frobenius比較そのものはここに含めない。
+## 概要
+
+`p` を先頭に持つ極小な極大イデアル生成列から、`A/p` の正則局所性・次元・標数・整域性を確かめ、`p ∤ g` で `g ∈ m` のとき `g` の像が `A/p` の非零因子であることを示す。これにより、超曲面 `A/(p, g)` の Frobenius 冪の商の長さに、指数 `dim A - 2` で一般の増大評価（CommutativeAlgebra/FrobeniusHypersurfaceGrowth）を当て、正規化した長さが零へ収束することを得る。
+
+## 方針
+
+正則局所環の商の正則性と次元公式を使って一般評価の仮定を確かめる。
+
+## 規約
+
+有限段の Witt 冪級数の Frobenius 比較はここに含めない（CommutativeAlgebra/RootTower/StageModPLength）。旧 `CLMST/ModPHypersurfaceGrowth`。
+
+## 使われ方
+
+`RootTower/StageModPLength`、CLMST の `CyclicLengthBound`（Prop 4.0.10）。
 -/
 
 @[expose] public noncomputable section
-set_option backward.isDefEq.respectTransparency false
+
 universe u
-namespace SerrePositivity.CLMST
+
+section ModPHypersurfaceGrowthPart
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity
 open IsLocalRing
 open scoped ENNReal
 
@@ -141,4 +156,6 @@ theorem tendsto_modP_hypersurface_normalized_length_zero
   exact tendsto_frobenius_hypersurface_normalized_length_zero Q p (Fact.out : p.Prime).one_lt
     (q g) (modP_image_mem_nonZeroDivisors_of_not_dvd A t p ht htp hdim g hpg) hgQ hQ.2
 
-end SerrePositivity.CLMST
+end SerrePositivity
+
+end ModPHypersurfaceGrowthPart
