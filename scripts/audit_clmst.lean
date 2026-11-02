@@ -12,14 +12,11 @@ import SerrePositivity.CLMST.AlmostLength
 import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 import SerrePositivity.LengthAlgebra.RootTowerLength.BaseChangeApproximation
 import SerrePositivity.CLMST.NormalizedAlmostLength
-import SerrePositivity.CLMST.Inputs.AlmostLength
 import SerrePositivity.CLMST.CohomologyVanishing
-import SerrePositivity.CLMST.TensorOrder
 import SerrePositivity.CLMST.ParameterLength
 import SerrePositivity.CLMST.PerfectoidIsogeny
 import SerrePositivity.CLMST.TensorIsogeny
 import SerrePositivity.CLMST.CompletedTensorIsogeny
-import SerrePositivity.CLMST.CompletedCokernelKoszul
 import SerrePositivity.CLMST.CompletedCokernelLength
 import SerrePositivity.CLMST.CompletedTargetLength
 import SerrePositivity.CLMST.ParameterLastPowerLength
@@ -305,8 +302,6 @@ assert_no_sorry SerrePositivity.CLMST.stageToCompletedTower
 assert_no_sorry SerrePositivity.CLMST.stageToCompletedTensor
 assert_no_sorry SerrePositivity.CLMST.stageToCompletedTensor_algebraMap
 assert_no_sorry SerrePositivity.CLMST.stageToCompletedTensor_tmul
-#print sorries SerrePositivity.CLMST.exists_uniform_stageCokernel_koszul_annihilator
-#print sorries SerrePositivity.CLMST.stagePerfectoidCokernel_koszul_shortExact
 
 -- 長完全列の両方向の長さ評価と、具体的な正規化長さへの適用。
 assert_no_sorry SerrePositivity.lambdaHomology_shortExact_le
@@ -745,8 +740,8 @@ assert_no_sorry SerrePositivity.CLMST.cyclic_length_eq_zero
 assert_no_sorry SerrePositivity.CLMST.completedLength_eq_zero_of_perfectoidIdeal_annihilates
 assert_no_sorry SerrePositivity.CLMST.completedLength_eq_of_perfectoid_mod_almost_iso
 #print sorries SerrePositivity.CLMST.toPerfectoidization_cyclic_surjective_of_not_dvd
-#print sorries SerrePositivity.CLMST.Inputs.cyclic_length_eq_zero_of_not_dvd
-#print sorries SerrePositivity.CLMST.Inputs.cyclic_length_eq_zero
+#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero_of_not_dvd
+#print sorries SerrePositivity.CLMST.cyclic_length_eq_zero
 
 -- 具体的な塔のmod p Frobeniusと、BSへ渡すWitt加法公式は引用非依存。
 assert_no_sorry SerrePositivity.Section2.completedTowerRoot

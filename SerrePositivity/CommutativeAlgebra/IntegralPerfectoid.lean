@@ -37,3 +37,32 @@ def IsPerfectoidization {S C : Type u} [CommRing S] [CommRing C]
       ∀ g : S →+* T, ∃! l : C →+* T, l.comp f = g
 
 end SerrePositivity
+
+section ComposeRingEquivPart
+
+namespace SerrePositivity
+
+/-- perfectoid 化の普遍性は、始域の環同型に沿う前合成で保たれる。 -/
+theorem IsPerfectoidization.comp_ringEquiv {S S' C : Type u}
+    [CommRing S] [CommRing S'] [CommRing C]
+    {p : ℕ} [Fact p.Prime] {f : S →+* C}
+    (hf : IsPerfectoidization p f) (e : S' ≃+* S) :
+    IsPerfectoidization p (f.comp e.toRingHom) := by
+  refine ⟨hf.1, ?_⟩
+  intro T _ hT g
+  obtain ⟨l, hl, hu⟩ := hf.2 T hT (g.comp e.symm.toRingHom)
+  refine ⟨l, ?_, ?_⟩
+  · ext x
+    simpa only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe,
+      RingEquiv.coe_toRingHom, RingEquiv.symm_apply_apply] using
+      DFunLike.congr_fun hl (e x)
+  · intro l' hl'
+    apply hu l'
+    ext x
+    simpa only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe,
+      RingEquiv.coe_toRingHom, RingEquiv.apply_symm_apply] using
+      DFunLike.congr_fun hl' (e.symm x)
+
+end SerrePositivity
+
+end ComposeRingEquivPart

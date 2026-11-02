@@ -24,7 +24,6 @@ public import SerrePositivity.BhattScholze.Andre.TorDescent
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor
 public import SerrePositivity.CLMST.CohomologyVanishing
 public import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
-public import SerrePositivity.CLMST.CompletedCokernelKoszul
 public import SerrePositivity.CLMST.CompletedCokernelLength
 public import SerrePositivity.CLMST.CompletedParameterFiniteness
 public import SerrePositivity.CLMST.CompletedSourceLength
@@ -42,7 +41,6 @@ public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 public import SerrePositivity.CLMST.FiniteStageKoszulAnnihilator
 public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
 public import SerrePositivity.CLMST.KLAllModule
-public import SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge
 public import SerrePositivity.CLMST.KLCohomologyFromExcision
 public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
@@ -55,11 +53,8 @@ public import SerrePositivity.CLMST.PerfectoidCokernelEuler
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
-public import SerrePositivity.CLMST.PerfectoidIdealExcisionTor
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
-public import SerrePositivity.CLMST.PerfectoidIdealTorComparison
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Tor
-public import SerrePositivity.CLMST.PerfectoidIdealTorRoots
 public import SerrePositivity.CLMST.PerfectoidIsogeny
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison
 public import SerrePositivity.CLMST.Prop247AicRankAssembly
@@ -94,7 +89,6 @@ public import SerrePositivity.CLMST.StageParameterChange
 public import SerrePositivity.CLMST.StagePowerMembership
 public import SerrePositivity.CLMST.StageResidueLength
 public import SerrePositivity.CLMST.TensorIsogeny
-public import SerrePositivity.CLMST.TensorOrder
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.Derived
 public import SerrePositivity.CategoryTheory.Euler
