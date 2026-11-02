@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReferenceRows
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint
-public import SerrePositivity.CategoryTheory.NerveHomotopyUniverse
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopyUniverse
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveEquivalence
 public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
 

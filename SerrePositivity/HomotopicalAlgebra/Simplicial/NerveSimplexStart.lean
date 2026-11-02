@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.NerveSimplexEndpoint
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexEndpoint
 
 /-!
 # nerveの単体圏から先頭頂点を反変に評価する関手を構成する

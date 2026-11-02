@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowPaddingSpan
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!

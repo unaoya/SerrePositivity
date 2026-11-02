@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalEvaluation
-public import SerrePositivity.CategoryTheory.NerveHomotopyUniverse
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopyUniverse
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!

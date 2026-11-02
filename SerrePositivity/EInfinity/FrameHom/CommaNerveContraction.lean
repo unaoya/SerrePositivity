@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowDiagram
-public import SerrePositivity.CategoryTheory.ElementsChainLifting
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-!

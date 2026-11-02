@@ -3,7 +3,7 @@ module
 public import Mathlib.CategoryTheory.Category.Cat
 public import Mathlib.Algebra.Group.Action.Basic
 public import Mathlib.CategoryTheory.SingleObj
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false

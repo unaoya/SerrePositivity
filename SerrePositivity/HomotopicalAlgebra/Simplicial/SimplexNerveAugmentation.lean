@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.SimplexChainVertices
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexChainVertices
 public import Mathlib.CategoryTheory.Elements
 
 /-!
