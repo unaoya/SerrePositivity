@@ -264,3 +264,13 @@ IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順�
 区切りごとの定期的な掃除は行わない。古い版が残ることによる問題は使用容量だけである。
 
 2026-11-02 時点の参考値は `~/.cache/lake` が 22 GB・成果物 331,250 本、空き 455 GB。
+
+### IF-W2b §12 の強制判定
+
+`layer_check.py --enforce W2b` は、中核層間の順序違反が 0、直接違反が承認済み
+21 辺の集合を超えない、W1/W2a の禁止モジュール数・affected core が既存上限を
+超えない、の三条件を検査する。既定の上限は
+`targets/w2b-enforcement-baseline.json`（承認された辺と変更前の W2a-2 全体上限）。
+`--w2b-baseline PATH` で明示した検査用基準も使える。
+個別 root の継承された閉包は診断に残す。`--ratchet` の判定、既存の ratchet 基準、
+`layers.json` の例外は変えない。ratchet 基準の取り直しは W2b の verify PASS 後。
