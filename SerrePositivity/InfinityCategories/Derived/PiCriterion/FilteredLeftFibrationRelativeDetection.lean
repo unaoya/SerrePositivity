@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationDetection
+public import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationDetection
 
 /-!
 概要：filtered な底の全空間の有限な相対図式を同じ fiber の Kan 置換で検出する。

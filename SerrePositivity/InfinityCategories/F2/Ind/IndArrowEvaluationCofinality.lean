@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSourceEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowTargetEvaluationFiltered
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedPointQuillenA
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramCommaEvaluation
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 /-!
 概要：元の射図式 comma と小さい表示添字の両端評価は right cofinal。
 方針：指定変換下の実引き戻しの filtered 性と、元の点へ戻す Quillen A を使う。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
 public import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationHomotopyDetection
 
 /-!

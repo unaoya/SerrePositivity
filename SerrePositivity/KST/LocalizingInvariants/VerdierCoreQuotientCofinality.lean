@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreSliceCones
 public import SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
 public import SerrePositivity.InfinityCategories.F1B.Cones.SliceIdentityTerminal
 public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison

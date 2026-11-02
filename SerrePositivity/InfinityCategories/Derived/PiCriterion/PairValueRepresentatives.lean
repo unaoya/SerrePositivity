@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.PiCriterion.SphereClassPath
-public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
 public import SerrePositivity.KST.Spectra.FilteredLoopColimit
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
 

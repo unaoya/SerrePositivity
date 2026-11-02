@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.HornPointJoin
 public import SerrePositivity.InfinityCategories.Core.JoinTensor
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.IndElementsLeftKanModel
-public import SerrePositivity.InfinityCategories.F2.Filtered.KappaFilteredCoslices
+public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
 public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredDiagonalCofinality
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredDiagonalCofinality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.WeakContractibilityNonempty
 
 /-!

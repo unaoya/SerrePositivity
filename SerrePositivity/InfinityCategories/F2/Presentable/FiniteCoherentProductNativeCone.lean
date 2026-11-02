@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence

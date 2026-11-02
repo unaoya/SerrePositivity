@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint
 
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity

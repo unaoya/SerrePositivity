@@ -1001,14 +1001,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredLimitExchange",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredLimitExchange",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredLimitExchange": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.Limit",
@@ -1022,14 +1022,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredSimplexExchange",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredSimplexExchange",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredSimplexExchange",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredSimplexExchange": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredSimplexExchange": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.JoinCells",
@@ -1049,14 +1049,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTerminal",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTerminal",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTerminal",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTerminal": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTerminal": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.ContractibleKan",
         "SerrePositivity.InfinityCategories.Core.Terminal",
@@ -1122,14 +1122,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTotalDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection": [
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
         "SerrePositivity.InfinityCategories.Core.InnerFiber",
@@ -2244,14 +2244,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberProductCofinality",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberProductCofinality",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FiberProductCofinality",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberProductCofinality": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FiberProductCofinality": [
         "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition",
@@ -2587,14 +2587,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackBoundaryModelTransport",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackBoundaryModelTransport",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackBoundaryModelTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackBoundaryModelTransport": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackBoundaryModelTransport": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -2820,14 +2820,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanBoundaryLifting",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanBoundaryLifting",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanBoundaryLifting",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanBoundaryLifting": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanBoundaryLifting": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling",
@@ -2912,14 +2912,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanRelativeDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanRelativeDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanRelativeDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeDetection": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -2950,14 +2950,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanRelativeLifting",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanRelativeLifting",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeLifting",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanRelativeLifting": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeLifting": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -2976,14 +2976,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanStrictRelativeLifting",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanStrictRelativeLifting",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanStrictRelativeLifting",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanStrictRelativeLifting": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanStrictRelativeLifting": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence",
@@ -3024,14 +3024,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanWeakEquivalence",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanWeakEquivalence",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanWeakEquivalence",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanWeakEquivalence": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanWeakEquivalence": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling",
@@ -3051,14 +3051,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackOriginalInputRelativeDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackOriginalInputRelativeDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackOriginalInputRelativeDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackOriginalInputRelativeDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackOriginalInputRelativeDetection": [
         "SerrePositivity.InfinityCategories.Core.IntervalBoundary",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
@@ -3132,14 +3132,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackRelativeOriginalBoundary",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackRelativeOriginalBoundary",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackRelativeOriginalBoundary",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackRelativeOriginalBoundary": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackRelativeOriginalBoundary": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -3277,14 +3277,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredBinaryDiagonal",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredBinaryDiagonal",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredBinaryDiagonal",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredBinaryDiagonal": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredBinaryDiagonal": [
         "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition",
         "SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite",
         "SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality",
@@ -3299,14 +3299,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCosliceCofinality",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredCosliceCofinality",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCosliceCofinality",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredCosliceCofinality": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCosliceCofinality": [
         "SerrePositivity.InfinityCategories.Core.PrecompositionTensor",
         "SerrePositivity.InfinityCategories.Core.Slice",
         "SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality",
@@ -3321,14 +3321,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCoslices",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredCoslices",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCoslices",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredCoslices": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCoslices": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Coslice",
         "SerrePositivity.InfinityCategories.Core.Join",
@@ -3343,14 +3343,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredDiagonalCofinality",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredDiagonalCofinality",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredDiagonalCofinality",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredDiagonalCofinality": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredDiagonalCofinality": [
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.EquivalencePath",
         "SerrePositivity.InfinityCategories.Core.Slice",
@@ -3370,14 +3370,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredEquivalence",
+    "dest": "SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredEquivalence": [
+      "SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence": [
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredHomotopyRetracts",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity"
@@ -3406,14 +3406,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredHomotopyRetracts",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredHomotopyRetracts",
+    "dest": "SerrePositivity.InfinityCategories.Core.Filtered.FilteredHomotopyRetracts",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredHomotopyRetracts": [
+      "SerrePositivity.InfinityCategories.Core.Filtered.FilteredHomotopyRetracts": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.Join",
@@ -3426,14 +3426,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity",
+    "dest": "SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity": [
+      "SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity": [
         "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes"
@@ -3527,14 +3527,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLeftFibrationContractibility",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationContractibility",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationContractibility",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationContractibility": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationContractibility": [
         "SerrePositivity.InfinityCategories.Core.ContractibleKan",
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.EquivalenceTerminal",
@@ -3559,14 +3559,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLeftFibrationDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationDetection": [
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
@@ -3589,14 +3589,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLeftFibrationTransport",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationTransport",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredLeftFibrationTransport": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
@@ -3656,14 +3656,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredNullHomotopy",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredNullHomotopy",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredNullHomotopy",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredNullHomotopy": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FilteredNullHomotopy": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.F1B.FilteredExchange.FilteredNullHomotopy",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity"
@@ -3673,14 +3673,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredPathCollapseContraction",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredPathCollapseContraction",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.FilteredPathCollapseContraction",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredPathCollapseContraction": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.FilteredPathCollapseContraction": [
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredNullHomotopy",
@@ -3727,14 +3727,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredRetracts",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredRetracts",
+    "dest": "SerrePositivity.InfinityCategories.Core.Filtered.FilteredRetracts",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredRetracts": [
+      "SerrePositivity.InfinityCategories.Core.Filtered.FilteredRetracts": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity",
@@ -3761,14 +3761,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.ContractibleKan",
         "SerrePositivity.InfinityCategories.Core.Equivalence",
@@ -4449,14 +4449,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.GluedFiberDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.GluedFiberDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.GluedFiberDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.GluedFiberDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.GluedFiberDetection": [
         "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
@@ -4470,14 +4470,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.GluedMappedBoundaryTransport",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.GluedMappedBoundaryTransport",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.GluedMappedBoundaryTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.GluedMappedBoundaryTransport": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.GluedMappedBoundaryTransport": [
         "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
@@ -4846,14 +4846,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementHomotopyPoint",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint",
+    "dest": "SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint": [
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint": [
         "SerrePositivity.InfinityCategories.Core.EquivalencePath",
         "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
@@ -4968,14 +4968,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementRelativeLifting",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting",
+    "dest": "SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting": [
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting": [
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalDiagram",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementHomotopyPoint",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPath",
@@ -5342,14 +5342,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanCospanRelativeInputReduction",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.KanCospanRelativeInputReduction",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.KanCospanRelativeInputReduction",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.KanCospanRelativeInputReduction": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.KanCospanRelativeInputReduction": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -5574,14 +5574,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.KappaFilteredCoslices",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.KappaFilteredCoslices": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices": [
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Coslice",
         "SerrePositivity.InfinityCategories.Core.Join",
@@ -6728,14 +6728,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePathFiniteComparison",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathFiniteComparison",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteComparison",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathFiniteComparison": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteComparison": [
         "SerrePositivity.InfinityCategories.Core.IntervalBoundary",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
@@ -6763,14 +6763,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePathFiniteModelTransport",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathFiniteModelTransport",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteModelTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathFiniteModelTransport": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteModelTransport": [
         "SerrePositivity.InfinityCategories.Core.IntervalBoundary",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
@@ -6814,14 +6814,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativePathInputsTransport",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathInputsTransport",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathInputsTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.RelativePathInputsTransport": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.RelativePathInputsTransport": [
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
@@ -7214,14 +7214,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.SimultaneousFiberDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.SimultaneousFiberDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousFiberDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.SimultaneousFiberDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousFiberDetection": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering",
@@ -7234,14 +7234,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.SimultaneousRelativeCylinderDetection",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.SimultaneousRelativeCylinderDetection",
+    "dest": "SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousRelativeCylinderDetection",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.SimultaneousRelativeCylinderDetection": [
+      "SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousRelativeCylinderDetection": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
@@ -7567,14 +7567,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexConeRestrictions",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions",
+    "dest": "SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions": []
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions": []
     }
   },
   {
@@ -7706,14 +7706,14 @@
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.TotalKanProductEquivalence",
     "action": "move",
-    "dest": "SerrePositivity.InfinityCategories.F2.Filtered.TotalKanProductEquivalence",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Filtered.TotalKanProductEquivalence",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F2.Filtered.TotalKanProductEquivalence": [
+      "SerrePositivity.InfinityCategories.Stable.Filtered.TotalKanProductEquivalence": [
         "SerrePositivity.InfinityCategories.Core.RightFibration",
         "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling",

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceBinaryTensorProduct
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 
 /-!
 概要：coherent 積図式の元の余極限を頂点とする native な二項積錐を作る。

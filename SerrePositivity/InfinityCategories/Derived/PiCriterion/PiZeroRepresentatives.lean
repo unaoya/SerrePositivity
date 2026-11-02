@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
 
 /-!
 概要：coherent filtered 全空間の各連結成分に、元の一つの値から代表を取る。

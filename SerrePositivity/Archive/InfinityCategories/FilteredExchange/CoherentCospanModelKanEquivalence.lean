@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanModelTotalEquivalence
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F2.Filtered.FiberwisePullbackKanWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanWeakEquivalence
 
 /-!
 概要：各点の native 極限性から元の全空間 Kan 引き戻し比較の同値性を証明する。

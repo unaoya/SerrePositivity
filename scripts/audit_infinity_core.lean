@@ -141,7 +141,7 @@ import SerrePositivity.InfinityCategories.Core.BoundaryPair
 import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
 import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
-import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
@@ -168,10 +168,10 @@ import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyF
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyExistence
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.LeftFibrationProduct
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.KanBoundaryHomotopyFinalExtension
-import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath
-import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackLift
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopySquare
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint
@@ -3990,10 +3990,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopySquare,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackLift,
-    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso,
-    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.KanBoundaryHomotopyFinalExtension,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.LeftFibrationProduct,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyExistence,
@@ -4020,7 +4020,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading,
-    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions,
     `SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
   ]
   for mod in expected do

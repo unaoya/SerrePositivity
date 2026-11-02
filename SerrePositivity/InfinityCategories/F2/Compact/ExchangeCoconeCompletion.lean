@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.LimitConeEdgeReflection
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex
-public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredLimitExchange
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex

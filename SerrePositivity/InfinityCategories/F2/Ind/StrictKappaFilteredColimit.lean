@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaRelativeFactorization
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import Mathlib.AlgebraicTopology.Quasicategory.Basic
 
 /-!

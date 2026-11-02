@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredBinaryDiagonal
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredBinaryDiagonal
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
 
 /-!

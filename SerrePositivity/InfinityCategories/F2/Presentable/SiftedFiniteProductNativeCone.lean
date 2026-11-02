@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductNative
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteFiberProduct
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackKanObjects
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible

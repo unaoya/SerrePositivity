@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalenc
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
 
 /-!

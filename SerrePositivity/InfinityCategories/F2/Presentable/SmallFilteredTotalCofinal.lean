@@ -6,8 +6,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.RightKanShapeIso
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredEquivalence
-public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
 
 /-!

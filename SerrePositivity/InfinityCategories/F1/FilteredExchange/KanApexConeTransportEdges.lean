@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexLimitConeTransport
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 
