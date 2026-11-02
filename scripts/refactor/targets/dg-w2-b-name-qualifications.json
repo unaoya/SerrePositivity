@@ -1,0 +1,254 @@
+[
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 19,
+    "column": 21,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 19,
+    "column": 52,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 20,
+    "column": 11,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 20,
+    "column": 34,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 23,
+    "column": 21,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 23,
+    "column": 36,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 25,
+    "column": 13,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 25,
+    "column": 20,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 30,
+    "column": 11,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 30,
+    "column": 39,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 31,
+    "column": 21,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 31,
+    "column": 44,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 39,
+    "column": 55,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 41,
+    "column": 6,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 41,
+    "column": 29,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 41,
+    "column": 36,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 45,
+    "column": 40,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 46,
+    "column": 6,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 50,
+    "column": 16,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 50,
+    "column": 23,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 52,
+    "column": 33,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 52,
+    "column": 56,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 53,
+    "column": 23,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 60,
+    "column": 55,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 62,
+    "column": 6,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 62,
+    "column": 13,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 62,
+    "column": 36,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 66,
+    "column": 40,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 66,
+    "column": 47,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 69,
+    "column": 19,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 69,
+    "column": 26,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 71,
+    "column": 33,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 71,
+    "column": 40,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 71,
+    "column": 67,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 78,
+    "column": 12,
+    "old": "op",
+    "new": "Opposite.op"
+  },
+  {
+    "file": "SerrePositivity/DifferentialGraded/Functor/ModuleShiftOpposite.lean",
+    "line": 78,
+    "column": 44,
+    "old": "op",
+    "new": "Opposite.op"
+  }
+]

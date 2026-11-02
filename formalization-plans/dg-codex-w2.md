@@ -177,3 +177,17 @@ DG が import してよいのは DG・HomologicalAlgebra・CategoryTheory・Math
 1. その間に、束の前のコミット（887896bba）の scratch worktree `../SerrePositivity-dgw1-before` を作り、Lake キャッシュから復元しておく（事前ビルドはキャッシュで行ったので再コンパイルは少ないはず。多ければ許す。他の全ビルドと重ねない）。
 2. 道具が main に入ったら取り込み、before（scratch）と after（現在）の snapshot を新しい規則で採り直して比較する。残った不一致は §10.34 の方式（pp 比較）で個別に見る。一致しなければ STOP。
 3. その後 外からの import と監査の一覧の付け替え → 下流ビルド → `layers.json` → verify → 停止点 2。
+
+## 16. 追記（2026-11-02、宇宙引数の順序：`universe` 行は元ファイルの section の中に残す）
+
+**承認**：main 1ff0ac691 の取り込み、新規則での採り直し（2,585 → 418）、pp 比較で 13 宣言の宇宙引数の順序の変化を見つけて STOP した判断。
+
+**原因**：Lean は宣言の宇宙引数（level params）の順序を、スコープで明示的に宣言された `universe` 名の**宣言順**で決める（`sortDeclLevelParams`）。`merge_modules.py` は各元ファイルの `universe` 行を**統合先の先頭で和**にしているので、元ファイルごとに違っていた順序が統合先では一つの順序に固定され、`sequentialCoproductMap.{0,1,2}` のような明示的な宇宙の指定が別の変数に対応するようになった。下流で明示的に宇宙を与えている箇所を壊しうるので、保存の対象として扱う（STOP は正しい）。残り 405 件はこの 13 宣言に依存する型・本体の連鎖と見られる。
+
+**処置（DG の Codex。道具の修正は `merge_modules.py` だけ）**：
+1. `merge_modules.py` を直す：`universe` 宣言を先頭で和にせず、**各元ファイルの `universe` 行をその section の中（section 行の直後）にそのまま置く**（`universe` は section の中で宣言でき、その section に閉じる）。先頭には何も置かない。試験 1 件（`universe v u` と `universe u v` の 2 ファイルを統合しても各宣言の level params の順序が変わらないこと——`decl_snapshot` の型ハッシュで確認）。
+2. **D4 をやり直す**：`git reset --hard 0fe63746a`（D3 の直後）で作業木を戻し、直した道具で D4 を適用し直す。D5（docstring）、`op` の修飾（§14）、heartbeat の 1 行（§15）も同じ手順で再適用する（記録してある箇所の一覧を使う）。コミットは前と同じ分け方（D4・D5・修飾・heartbeat）で作り直す（元の 4 コミットは置き換わる。ブランチは `infra/dg-w2` のまま）。
+3. 内部ビルド（111 本、キャッシュがあるので短い）→ after snapshot → before（scratch）との比較。宇宙順序の 13 件とその連鎖が消えて、残りが 0 か pp で説明できるものだけになること。説明できない不一致は STOP。
+4. その後 外からの import と監査の一覧の付け替え → 下流ビルド → `layers.json` → verify → 停止点 2。
+
+**次の束への教訓**：`universe` の和は不可。∞ の IF-W2a-2（R77）も同じ `merge_modules.py` を使うので、この修正を main に入れてから適用する（Claude が cherry-pick する）。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelAction
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
-public import SerrePositivity.KST.SConstruction.DGFunctorParamNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamNaturality
 public import SerrePositivity.DifferentialGraded.Category.TensorComposition
 
 /-! # 入力とラベルを動かす Perf の tensor Hom 作用

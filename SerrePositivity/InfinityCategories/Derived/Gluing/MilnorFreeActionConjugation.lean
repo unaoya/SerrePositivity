@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeAugmentationSquare
-public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomConjugation
 /-!
 概要：元自由対角の左右作用は、固定した角の閉同型の共役と整合する。
 方針：D-19 で得た閉比較の可換式を前後合成へ移す。

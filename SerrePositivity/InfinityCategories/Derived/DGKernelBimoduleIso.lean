@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 /-!
 概要：元の双加群同型を実 tensor と半自由出力分解の全関手同型へ送る。
 方針：指定の通常 tensor と全 Hom 自然な実同型、同じ出力分解を使う。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeRepresentativeComparison
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionModuleCompositionIso
 public import SerrePositivity.KST.SConstruction.DGFunctorWhiskering
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-!
 概要：固定合成 data と固定 data 二本の合成を、実加群評価の全 Hom end で比較する。

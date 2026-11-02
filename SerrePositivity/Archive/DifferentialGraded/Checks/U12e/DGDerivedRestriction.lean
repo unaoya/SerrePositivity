@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Restriction
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import SerrePositivity.DifferentialGraded.Derived.RestrictionCoherence
 public import Mathlib.Data.ZMod.Basic
 

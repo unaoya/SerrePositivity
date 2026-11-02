@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelResolutionMoritaInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCompactEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelTelescope
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 /-!
 概要：一般 kernel の実分解の source と replacement の perfect 性を保存・反映する。
 方針：元の実主導来比較自然同型と compact 性の輸送を使う。

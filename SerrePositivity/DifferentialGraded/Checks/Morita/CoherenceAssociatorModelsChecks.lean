@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorModels
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主導来kernel結合子の同じモデル計算の監査

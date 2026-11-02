@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoendCoherence
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
 public import SerrePositivity.DifferentialGraded.Derived.ResolutionFunctorChoice
 

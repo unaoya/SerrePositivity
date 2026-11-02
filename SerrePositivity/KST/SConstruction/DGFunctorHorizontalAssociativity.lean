@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalElements
 public import SerrePositivity.KST.SConstruction.DGFunctorHomElements
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-! # 横合成の元の全斉次成分の外側結合則
 概要：三つの斉次自然変換の横合成を、元の関手の結合の等号に沿って比較する。

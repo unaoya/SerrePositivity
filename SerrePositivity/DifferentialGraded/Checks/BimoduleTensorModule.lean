@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 積dg圏上の加群から主bimodule圏への射・評価比較の受入監査

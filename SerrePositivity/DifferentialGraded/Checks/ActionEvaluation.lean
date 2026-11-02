@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
 public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionEvaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全Hom自然性のための合成・作用評価の検査 -/

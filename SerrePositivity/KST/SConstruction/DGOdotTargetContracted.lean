@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotTargetFunctor
-public import SerrePositivity.DifferentialGraded.Quotient.ContractedFunctor
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 
 /-! # 元の対角像の指定収縮を持つ実 cone 関手
 概要：元の対角像の実収縮元を、D β3 の ContractedFunctor へ渡す。

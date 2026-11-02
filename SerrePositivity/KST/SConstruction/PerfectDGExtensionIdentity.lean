@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionIdentity
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionIdentity
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-! # 実 Perf dg 延長の恒等比較
 概要：恒等入力の実 Perf 延長を、元の Perf 模型の恒等関手と全次数で比較する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorInverseCoherence
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphAssociativity
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 
 /-! # 実延長の三重比較を tensor の自然性と五角へ分解する
 概要：元の graph と恒等加群に対する逆向きの tensor coherence を固定する。

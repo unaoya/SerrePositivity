@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CellDGResolutionNerve
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroObjects
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-! # 平坦分解を先行させた dg 商の nerve
 

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGModuleClosedStability
 public import SerrePositivity.KST.SConstruction.DGApplication
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
 
 /-! # 射影的 perfect dg 加群と小さい代表系の実安定模型

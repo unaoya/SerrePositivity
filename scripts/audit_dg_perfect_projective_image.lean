@@ -1,11 +1,11 @@
-import SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
+import SerrePositivity.DifferentialGraded.Morita.Perfect
 import Lean
 
 /-! 全公開補題と補助宣言を標準三公理で監査し、K-S• の元の全称型を照合する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
-  let target := `SerrePositivity.DifferentialGraded.Morita.PerfectProjectiveImage
+  let target := `SerrePositivity.DifferentialGraded.Morita.Perfect
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

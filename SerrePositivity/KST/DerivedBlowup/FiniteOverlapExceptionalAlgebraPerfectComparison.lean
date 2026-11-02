@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalAlgebraVertexComparison
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraLocallyPerfect
 public import SerrePositivity.KST.DerivedBlowup.TransitionDerivedRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalenceOpposite
 
 /-!

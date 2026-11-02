@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-! # 全 Hom 自然な指定同型族と実 dg 関手圏の閉同型
 概要：元の全次数自然な同型族を、元の Hom end を持つ dg 関手圏の閉同型にする。

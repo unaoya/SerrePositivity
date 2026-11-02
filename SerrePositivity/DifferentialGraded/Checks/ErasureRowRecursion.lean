@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.PrefixErasure
+public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 非空pathの消去和再帰と全作用素の前方因子分解の受入監査 -/

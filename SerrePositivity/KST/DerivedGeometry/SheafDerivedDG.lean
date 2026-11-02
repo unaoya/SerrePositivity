@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LiftedCoefficientComplex
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.VerdierTransport
-public import SerrePositivity.DifferentialGraded.Quotient.ContractedFunctor
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import SerrePositivity.DifferentialGraded.Category.Homotopy
 
 /-!

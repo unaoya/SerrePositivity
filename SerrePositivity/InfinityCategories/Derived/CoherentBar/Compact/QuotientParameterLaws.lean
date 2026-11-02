@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterExtension
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-!
 概要：固定 ε を持つ商パラメータ延長の、元の単位・tensor 縦合成の厳密保存。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedUnderlyingIso
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedProjectiveComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactor

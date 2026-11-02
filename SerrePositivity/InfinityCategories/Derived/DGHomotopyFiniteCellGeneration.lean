@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulated
-public import SerrePositivity.DifferentialGraded.Verdier.FiniteCellHomotopy
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-! # K(D) における有限 cell の三角的生成性
 

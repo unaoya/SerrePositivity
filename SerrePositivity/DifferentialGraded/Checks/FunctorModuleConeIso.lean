@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
-public import SerrePositivity.DifferentialGraded.Tensor.Cone
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

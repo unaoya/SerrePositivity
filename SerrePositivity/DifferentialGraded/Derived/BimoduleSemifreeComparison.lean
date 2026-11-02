@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeResolution
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Derived.ProjectiveResolution
 public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleBasic

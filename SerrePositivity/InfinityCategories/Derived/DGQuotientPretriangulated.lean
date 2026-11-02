@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientNerve
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonEquivalence
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
 
 /-! # 局所 K-flat な dg 商の前三角性と安定性
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionProjective
 public import SerrePositivity.DifferentialGraded.Derived.FreeProjective
-public import SerrePositivity.DifferentialGraded.Bimodule.RestrictedFree
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor
 public import SerrePositivity.DifferentialGraded.Complexes.SphereHom
 

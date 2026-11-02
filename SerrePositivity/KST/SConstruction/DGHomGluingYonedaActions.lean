@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingYonedaComposition
-public import SerrePositivity.DifferentialGraded.Bimodule.ActionEvaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 元の Yoneda 同型を通す双加群の二作用
 概要：二つの加群合成を、同じ元の双加群の左右作用へ戻す。

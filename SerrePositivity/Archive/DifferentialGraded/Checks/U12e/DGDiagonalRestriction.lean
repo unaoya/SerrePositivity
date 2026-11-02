@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.DiagonalComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 対角制限と既存解像度変更の対角保存の検査

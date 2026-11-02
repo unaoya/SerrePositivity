@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGraphComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectFunctoriality
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 
 /-!
 概要：元の主 Perf 延長の合成同型と合成の同値判定を供給する dg 一般入口。

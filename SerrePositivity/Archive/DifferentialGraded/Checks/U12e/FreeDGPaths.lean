@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Composition
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 自由dg圏構成に使う有限path・Hom直和・連結chain mapの監査

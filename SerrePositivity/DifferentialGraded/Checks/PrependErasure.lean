@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.PrependErasure
+public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全位置の先頭Hom自然性・全消去作用素との可換性の受入監査 -/

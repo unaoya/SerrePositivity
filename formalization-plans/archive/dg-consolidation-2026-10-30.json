@@ -455,7 +455,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/Swap.lean",
   "SerrePositivity/DifferentialGraded/Tensor/SwapNaturality.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension1.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/CategoriesAndModules.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/RestrictionComparison.lean",
   "SerrePositivity/DifferentialGraded/Tensor/RestrictionComparisonCoherence.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ScalarExtensionColimits.lean",
@@ -472,7 +472,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/ScalarRestrictionModule.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ScalarRestrictionNaturality.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension2.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/ScalarExtension/BalancedTensor.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/ScalarRestrictionModuleMaps.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ScalarExtensionAdjunction.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ScalarExtensionActions.lean",
@@ -483,7 +483,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/ScalarExtensionRing.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ScalarExtensionCoendCoherence.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/Path1.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/Path/Construction.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/Paths.lean",
   "SerrePositivity/DifferentialGraded/Quotient/PathUniversal.lean",
   "SerrePositivity/DifferentialGraded/Quotient/PathPrefix.lean",
@@ -498,7 +498,7 @@
   "SerrePositivity/DifferentialGraded/Quotient/EpsilonTensor.lean",
   "SerrePositivity/DifferentialGraded/Quotient/EpsilonHomogeneousExt.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/Path2.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/Path/Evaluation.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/PathGeneration.lean",
   "SerrePositivity/DifferentialGraded/Quotient/ScalarExtension.lean",
   "SerrePositivity/DifferentialGraded/Quotient/EpsilonContraction.lean",
@@ -588,7 +588,7 @@
   "SerrePositivity/DifferentialGraded/Quotient/Associativity.lean",
   "SerrePositivity/DifferentialGraded/Quotient/Category.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison1.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Filtration.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/Extension.lean",
   "SerrePositivity/DifferentialGraded/Quotient/Reconstruction.lean",
   "SerrePositivity/DifferentialGraded/Quotient/Universal.lean",
@@ -605,13 +605,13 @@
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLengthAction.lean",
   "SerrePositivity/DifferentialGraded/Quotient/FunctorLaws.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison2.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/ColimitCones.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLengthModule.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonModuleColimit.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonConeDiagram.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonConeColimit.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison3.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LocalFlatness.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonCells.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonFlatness.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonContraction.lean",
@@ -628,12 +628,12 @@
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonGradedModule.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLocalHom.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison4.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/LayerTriangles.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLayerModule.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLayerTriangle.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonFreeExtension.lean"
  ],
- "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison5.lean": [
+ "SerrePositivity/DifferentialGraded/Quotient/DerivedComparison/Equivalence.lean": [
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonAdjointUnit.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonFreeGeneration.lean",
   "SerrePositivity/DifferentialGraded/Quotient/DerivedComparisonLayerGeneration.lean",
@@ -693,7 +693,7 @@
   "SerrePositivity/DifferentialGraded/Perfect/RepresentableHomologyNaturalIso.lean",
   "SerrePositivity/DifferentialGraded/Perfect/RepresentableCoproductSupport.lean"
  ],
- "SerrePositivity/DifferentialGraded/Perfect/Compact1.lean": [
+ "SerrePositivity/DifferentialGraded/Perfect/Compact/Enhancement.lean": [
   "SerrePositivity/DifferentialGraded/Perfect/Compact.lean",
   "SerrePositivity/DifferentialGraded/Perfect/CompactComparison.lean",
   "SerrePositivity/DifferentialGraded/Perfect/CompactRetracts.lean",
@@ -706,7 +706,7 @@
   "SerrePositivity/DifferentialGraded/Perfect/EssentiallySmall.lean",
   "SerrePositivity/DifferentialGraded/Perfect/SmallEnhancement.lean"
  ],
- "SerrePositivity/DifferentialGraded/Perfect/Compact2.lean": [
+ "SerrePositivity/DifferentialGraded/Perfect/Compact/FiniteGeneration.lean": [
   "SerrePositivity/DifferentialGraded/Perfect/RingTriangleFiniteModel.lean",
   "SerrePositivity/DifferentialGraded/Perfect/RingRetractFiniteRepresentative.lean",
   "SerrePositivity/DifferentialGraded/Perfect/RingPerfectRepresentatives.lean",
@@ -766,7 +766,7 @@
   "SerrePositivity/DifferentialGraded/Presentation/CategoryFromHomSurjections.lean",
   "SerrePositivity/DifferentialGraded/Presentation/ZeroComplexCode.lean"
  ],
- "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom1.lean": [
+ "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom/CoefficientClosure.lean": [
   "SerrePositivity/DifferentialGraded/Presentation/GeneratedHomWords.lean",
   "SerrePositivity/DifferentialGraded/Presentation/GeneratedHomSpan.lean",
   "SerrePositivity/DifferentialGraded/Presentation/GeneratedHomComplex.lean",
@@ -789,7 +789,7 @@
   "SerrePositivity/DifferentialGraded/Presentation/GeneratedHomAugmentedCode.lean",
   "SerrePositivity/DifferentialGraded/Presentation/GeneratedHomAugmentedClosedFamily.lean"
  ],
- "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom2.lean": [
+ "SerrePositivity/DifferentialGraded/Presentation/GeneratedHom/SphereLifts.lean": [
   "SerrePositivity/DifferentialGraded/Presentation/EnrichedLawTransport.lean",
   "SerrePositivity/DifferentialGraded/Presentation/CategorySigma.lean",
   "SerrePositivity/DifferentialGraded/Presentation/CategorySigmaDesc.lean",
@@ -856,7 +856,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/FreeEvaluation.lean",
   "SerrePositivity/DifferentialGraded/Tensor/SphereFreeKFlat.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/Bimodule1.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/Bimodule/Actions.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/BimoduleActions.lean",
   "SerrePositivity/DifferentialGraded/Tensor/Bimodule.lean",
   "SerrePositivity/DifferentialGraded/Tensor/BimoduleElements.lean",
@@ -881,7 +881,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/BimoduleMiddleMap.lean",
   "SerrePositivity/DifferentialGraded/Tensor/BimoduleMiddleNaturality.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/Bimodule2.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/Bimodule/KFlatness.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/Cone.lean",
   "SerrePositivity/DifferentialGraded/Tensor/QuasiIsoLeft.lean",
   "SerrePositivity/DifferentialGraded/Tensor/KFlatCriterion.lean",
@@ -904,7 +904,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/FubiniRightRestriction.lean",
   "SerrePositivity/DifferentialGraded/Tensor/Fubini.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/Associator1.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/Associator/Components.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/TripleFunctors.lean",
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorValues.lean",
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorGenerators.lean",
@@ -933,7 +933,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorTransforms.lean",
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorIso.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/Associator2.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/Associator/Pentagon.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/ProjectiveComparison.lean",
   "SerrePositivity/DifferentialGraded/Tensor/ProjectiveKFlat.lean",
   "SerrePositivity/DifferentialGraded/Tensor/PentagonLongElements.lean",
@@ -945,7 +945,7 @@
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorParameterValues.lean",
   "SerrePositivity/DifferentialGraded/Tensor/AssociatorParameters.lean"
  ],
- "SerrePositivity/DifferentialGraded/Tensor/Associator3.lean": [
+ "SerrePositivity/DifferentialGraded/Tensor/Associator/Restriction.lean": [
   "SerrePositivity/DifferentialGraded/Tensor/OuterUnitRestriction.lean",
   "SerrePositivity/DifferentialGraded/Tensor/RightRestrictionValueHom.lean",
   "SerrePositivity/DifferentialGraded/Tensor/MiddleRestrictionValueHom.lean",
@@ -1129,7 +1129,7 @@
   "SerrePositivity/DifferentialGraded/Resolution/Cells/PrimitiveAction.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/BoundarySquare.lean"
  ],
- "SerrePositivity/DifferentialGraded/Resolution/Cells/Append1.lean": [
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Append/Recursion.lean": [
   "SerrePositivity/DifferentialGraded/Resolution/Cells/Differential.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/PathCochainDesc.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/InternalComposition.lean",
@@ -1146,7 +1146,7 @@
   "SerrePositivity/DifferentialGraded/Resolution/Cells/TensorRightPathCochainExt.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/TensorTwoPathCochainExt.lean"
  ],
- "SerrePositivity/DifferentialGraded/Resolution/Cells/Append2.lean": [
+ "SerrePositivity/DifferentialGraded/Resolution/Cells/Append/BoundaryCompatibility.lean": [
   "SerrePositivity/DifferentialGraded/Resolution/Cells/PrependBoundary.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/PrependDifferential.lean",
   "SerrePositivity/DifferentialGraded/Resolution/Cells/InternalBoundaryHead.lean",
@@ -1373,7 +1373,7 @@
   "SerrePositivity/DifferentialGraded/Perfect/RingShiftComparison.lean",
   "SerrePositivity/DifferentialGraded/Perfect/RingHomotopyDerivedComparison.lean"
  ],
- "SerrePositivity/DifferentialGraded/Perfect/Ring2.lean": [
+ "SerrePositivity/DifferentialGraded/Perfect/Ring/FiniteProjectiveComparison.lean": [
   "SerrePositivity/DifferentialGraded/Perfect/StrictComplexEnhancement.lean",
   "SerrePositivity/DifferentialGraded/Perfect/StrictComplexEnhancementLinear.lean",
   "SerrePositivity/DifferentialGraded/Perfect/StrictComplexProjective.lean",
@@ -1435,7 +1435,7 @@
   "SerrePositivity/DifferentialGraded/Endomorphism/ModuleInsertion.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ModuleAdjunction.lean"
  ],
- "SerrePositivity/DifferentialGraded/Endomorphism/Derived1.lean": [
+ "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Functors.lean": [
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedHom.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedTensor.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedTensorNaturality.lean",
@@ -1444,7 +1444,7 @@
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedScalarTensor.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedLocalizingGeneration.lean"
  ],
- "SerrePositivity/DifferentialGraded/Endomorphism/Derived2.lean": [
+ "SerrePositivity/DifferentialGraded/Endomorphism/Derived/Adjunction.lean": [
   "SerrePositivity/DifferentialGraded/Endomorphism/ActualScalarEnd.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ActualScalarEvaluation.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/HomotopyAdjunction.lean",
@@ -1456,7 +1456,7 @@
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedAdjunction.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/DerivedGenerators.lean"
  ],
- "SerrePositivity/DifferentialGraded/Endomorphism/Scalar1.lean": [
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/HomComparison.lean": [
   "SerrePositivity/DifferentialGraded/Endomorphism/IsoLocus.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarEvaluation.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarHomFactors.lean",
@@ -1475,7 +1475,7 @@
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarHomHomotopyRetracts.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarHomElementComponents.lean"
  ],
- "SerrePositivity/DifferentialGraded/Endomorphism/Scalar2.lean": [
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/PerfectStability.lean": [
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarHomShift.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarHomCone.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarPerfectHom.lean",
@@ -1487,7 +1487,7 @@
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarModuleShiftImage.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/ScalarPerfectImage.lean"
  ],
- "SerrePositivity/DifferentialGraded/Endomorphism/Scalar3.lean": [
+ "SerrePositivity/DifferentialGraded/Endomorphism/Scalar/EnhancementComparison.lean": [
   "SerrePositivity/DifferentialGraded/Endomorphism/ThickHomComparison.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/PerfectImage.lean",
   "SerrePositivity/DifferentialGraded/Endomorphism/HomotopyImage.lean",
@@ -1571,7 +1571,7 @@
   "SerrePositivity/DifferentialGraded/Morita/PerfectDerivedKernelCoherence.lean",
   "SerrePositivity/DifferentialGraded/Morita/PerfectDerivedKernelComposition.lean"
  ],
- "SerrePositivity/DifferentialGraded/Morita/ScalarExtension1.lean": [
+ "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/KernelComparison.lean": [
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernel.lean",
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelTensor.lean",
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelAction.lean",
@@ -1587,7 +1587,7 @@
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelDerivedComparison.lean",
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelHomotopyNaturality.lean"
  ],
- "SerrePositivity/DifferentialGraded/Morita/ScalarExtension2.lean": [
+ "SerrePositivity/DifferentialGraded/Morita/ScalarExtension/PerfectSquares.lean": [
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelOutputModels.lean",
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelEvaluationModels.lean",
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelDerivedNaturality.lean",
@@ -1602,7 +1602,6 @@
   "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelOutputEvaluation.lean"
  ],
  "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedCoproducts.lean": [
-  "SerrePositivity/DifferentialGraded/Morita/ScalarExtensionKernelOutputComponents.lean",
   "SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelColimits.lean",
   "SerrePositivity/DifferentialGraded/Morita/AdjunctionKernelCoproducts.lean",
   "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedCoproducts.lean",
@@ -1681,7 +1680,7 @@
   "SerrePositivity/DifferentialGraded/Morita/CriterionPerfTensorHomComparison.lean",
   "SerrePositivity/DifferentialGraded/Morita/CriterionPerfFullHomCriterion.lean"
  ],
- "SerrePositivity/DifferentialGraded/Morita/Adjunction1.lean": [
+ "SerrePositivity/DifferentialGraded/Morita/Adjunction/Construction.lean": [
   "SerrePositivity/DifferentialGraded/Morita/CriterionPerf.lean",
   "SerrePositivity/DifferentialGraded/Morita/CriterionPerfRelativeFullyFaithful.lean",
   "SerrePositivity/DifferentialGraded/Morita/CriterionPerfGeneratorHomComparison.lean",
@@ -1697,7 +1696,7 @@
   "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedEquivalence.lean",
   "SerrePositivity/DifferentialGraded/Morita/CriterionDerivedConditions.lean"
  ],
- "SerrePositivity/DifferentialGraded/Morita/Adjunction2.lean": [
+ "SerrePositivity/DifferentialGraded/Morita/Adjunction/Coherence.lean": [
   "SerrePositivity/DifferentialGraded/Morita/AdjunctionSquare.lean",
   "SerrePositivity/DifferentialGraded/Morita/AdjunctionCoherence.lean",
   "SerrePositivity/DifferentialGraded/Morita/AdjunctionScalarExtension.lean",
@@ -1815,7 +1814,6 @@
  ],
  "SerrePositivity/DifferentialGraded/Verdier/Comparison.lean": [
   "SerrePositivity/DifferentialGraded/Verdier/ComparisonLinear.lean",
-  "SerrePositivity/DifferentialGraded/Verdier/OrderSquare.lean",
   "SerrePositivity/DifferentialGraded/Verdier/SupportSquare.lean"
  ],
  "SerrePositivity/DifferentialGraded/Verdier/Karoubi.lean": [

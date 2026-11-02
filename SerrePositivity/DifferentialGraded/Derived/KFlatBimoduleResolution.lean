@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.KFlatBimoduleLocalization
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleSemifreeKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 
 /-! # 右相対K-flat部分圏の局所化から導来bimodule圏への対象の到達性
 

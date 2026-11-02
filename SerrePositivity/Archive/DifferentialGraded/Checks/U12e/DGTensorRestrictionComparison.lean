@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictionComparisonYoneda
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg関手に沿うtensor比較の自然性・合成整合性と代表加群での検査

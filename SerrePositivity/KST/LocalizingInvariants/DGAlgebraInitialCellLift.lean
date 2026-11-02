@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraFreeGeneratorExt
 public import SerrePositivity.KST.LocalizingInvariants.CochainCycleCoverLift
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
-public import SerrePositivity.DifferentialGraded.Resolution.Initial
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
 
 /-!
 概要：自由 cycle 被覆による初期 dg 圏を、全射準同型な実 dg 代数射を通って持ち上げる。

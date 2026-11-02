@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleFunctorLift
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
-public import SerrePositivity.DifferentialGraded.Bimodule.Category
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-!
 概要：同じ実 bimodule と閉比較を、各右対象が射影的 perfect なら実 Perf dg 関手にする。

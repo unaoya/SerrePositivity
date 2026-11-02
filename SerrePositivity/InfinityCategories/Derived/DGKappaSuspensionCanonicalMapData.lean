@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionInputLaws
 
 /-!

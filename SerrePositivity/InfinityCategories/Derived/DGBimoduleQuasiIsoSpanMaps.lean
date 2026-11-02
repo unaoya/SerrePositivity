@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSurjectiveSpan
-public import SerrePositivity.DifferentialGraded.Bimodule.RightModuleComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 /-!
 概要：同じ右加群 disk span を、全 Hom 自然な双加群の実 span へ移す。
 方針：実同値と余単位を通じ、元の射を回収する同じ切断も構成する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModuleConeSquareIso
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaAction
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleConeImage
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
+public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 
 /-!
 双加群の列の射の cone を、代表加群の cone の通常 kernel tensor 像と実加群同型で比較する。

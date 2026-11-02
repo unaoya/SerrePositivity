@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingDiagonalLeftGeneration
 public import SerrePositivity.KST.SConstruction.DGPointedQuotientEnd
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-! # 指定 dg gluing 対角商の右軸生成性
 概要：左成分の明示生成条件の下で、同じ実対角商の Perf は元の右軸像から生成される。

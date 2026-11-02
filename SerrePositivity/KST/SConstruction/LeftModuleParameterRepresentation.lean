@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 public import SerrePositivity.KST.SConstruction.DGParameterPullback
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterLeft
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 
 /-! # 左加群の任意パラメータの既存 Hom 表示
 概要：任意 K の左加群自然変換を、元の左加群 Hom 複体への射として表示する。

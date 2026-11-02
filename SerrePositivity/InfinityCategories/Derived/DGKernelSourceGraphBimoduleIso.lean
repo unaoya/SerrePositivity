@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphComparison
-public import SerrePositivity.DifferentialGraded.Tensor.ComposeLeftRestriction
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
+public import SerrePositivity.DifferentialGraded.Tensor.Compose
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 /-!
 概要：同じ graph 合成双加群を、元の kernel の始域制限へ全 Hom 自然に同定する。
 方針：指定の通常 tensor と全 Hom 自然な実同型、同じ出力分解を使う。

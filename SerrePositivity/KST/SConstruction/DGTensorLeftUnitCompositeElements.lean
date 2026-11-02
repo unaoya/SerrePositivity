@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitElements
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorDegreeExt
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueExt
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 元の tensor 左単位と結合同型の両立
 概要：左端の単位を消す経路と、結合後に単位を消す経路の一致を示す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 
 /-! # 全 Hom 自然な閉比較の合成
 概要：元の閉比較を合成した同じ射族の全 Hom 自然性を証明する。

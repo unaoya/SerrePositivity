@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGraphCompositionInputRight
 public import SerrePositivity.KST.SConstruction.BimoduleSecondParameterHom
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 
 /-! # graph 合成比較と入力の二つの whiskering
 概要：元の graph 合成比較は、入力の前合成・後合成の任意パラメータ作用と可換。

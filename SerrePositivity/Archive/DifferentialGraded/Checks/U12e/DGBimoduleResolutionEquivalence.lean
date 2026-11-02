@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.BimoduleDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 解像度変更の導来bimodule同値と必要仮定の受入検査

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentityAugmentation
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 作用の恒等・合成比較と増大の監査

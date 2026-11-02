@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Universal
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 
 /-! # 対角像を消す実 dg 商の指定対象 End

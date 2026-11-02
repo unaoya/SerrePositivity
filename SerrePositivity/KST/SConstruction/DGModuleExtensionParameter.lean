@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 全パラメータの元の実 dg 加群延長への作用
 概要：厳密 dg 入力間の K 自然変換を、実 graph 延長間の K 自然変換へ送る。

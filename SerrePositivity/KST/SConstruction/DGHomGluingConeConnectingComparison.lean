@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeConnecting
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-!
 概要：元 Hom gluing の全 cone 関手から元左対象の shift への dg 自然比較を構成する。

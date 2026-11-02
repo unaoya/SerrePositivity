@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceTriangles
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 
 /-! # 元の指定 End 包含の実 Perf 延長の充満忠実性
 概要：元の全 End 包含の実導来延長と、その実 Perf 制限の全 Hom を保持する。

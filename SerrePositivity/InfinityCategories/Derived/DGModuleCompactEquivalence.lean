@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverse
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 /-!
 概要：異なる小さい dg 圏の主導来加群圏の加法的同値は compact・perfect を保存反映する。
 方針：実余積比較と随伴 Hom 全単射で有限和表示を輸送する。

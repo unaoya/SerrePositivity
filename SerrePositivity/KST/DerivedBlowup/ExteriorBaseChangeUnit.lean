@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainBaseChangeInclusion
 public import SerrePositivity.KST.DerivedBlowup.ExteriorDGCategory
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 
 /-!
 概要：KST Def3.1 の Koszul cochain 底変更同型は単位を保つ。

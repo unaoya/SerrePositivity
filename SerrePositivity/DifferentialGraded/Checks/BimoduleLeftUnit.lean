@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.LeftUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 対角bimoduleとの左単位比較の検査 -/

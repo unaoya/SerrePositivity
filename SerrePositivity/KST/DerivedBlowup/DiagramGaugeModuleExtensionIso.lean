@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeGraphIso
-public import SerrePositivity.DifferentialGraded.Morita.KernelNaturality
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 
 /-!
 概要：KST §3.1 の包含 gauge の通常係数拡大上の指定自己同型。

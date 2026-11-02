@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingBimodule
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 /-!
 概要：恒等脚に沿う制限 Yoneda と Hom gluing 係数を、全 dg 関手の等号で同定する。
 方針：加群 Hom の全評価で対象移送と Hom 作用を照合し、厳密な合成単位則を使う。

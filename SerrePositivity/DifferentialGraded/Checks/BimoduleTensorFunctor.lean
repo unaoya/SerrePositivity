@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorFunctor
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 
 /-! # tensor積上のdg関手からbimoduleへの変換の受入 -/
 @[expose] public section

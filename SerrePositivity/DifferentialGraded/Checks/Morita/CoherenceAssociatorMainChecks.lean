@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociatorMain
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意主導来kernelの作用結合図式の監査

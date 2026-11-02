@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FullFunctor
-public import SerrePositivity.KST.SConstruction.DGParameterConjugation
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGParameterConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 
 /-!
 概要：閉包代表の実比較を使い、全次数パラメータ変換を充満部分圏間へ移す。

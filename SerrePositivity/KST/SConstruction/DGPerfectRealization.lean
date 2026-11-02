@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnit
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 
 /-! # 元の perfect 値 dg 関手による実加群の tensor 評価
 概要：小さい dg 圏の perfect 値関手を双加群にし、元の代表加群をその実像へ戻す。

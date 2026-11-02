@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionScalarExtension
-public import SerrePositivity.DifferentialGraded.Morita.Criterion
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 実際のMorita右随伴の正方形の監査

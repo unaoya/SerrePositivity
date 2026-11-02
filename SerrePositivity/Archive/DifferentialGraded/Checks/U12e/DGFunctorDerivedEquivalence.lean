@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.DerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg準同値による導来同値と指定解像度比較の監査

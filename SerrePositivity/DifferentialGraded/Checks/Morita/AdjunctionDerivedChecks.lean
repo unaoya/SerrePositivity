@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionDerived
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意kernelの実際の導来右随伴とunit/counitの監査

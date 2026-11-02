@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomMapNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! # 指定 Hom 同型による全パラメータ閉比較の自然性の反映
 概要：元の dg 関手の一つの Hom 同型で、閉比較の全 Hom 自然性を反映する。

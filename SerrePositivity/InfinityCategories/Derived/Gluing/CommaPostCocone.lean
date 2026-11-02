@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CommaPostBottom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CoconeExtraction
-public import SerrePositivity.DifferentialGraded.Endomorphism.HomMapNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! 実 comma 後合成の cocone の二成分と、回収した下辺を元の二射影・像の後合成へ同定。 -/
 @[expose] public section

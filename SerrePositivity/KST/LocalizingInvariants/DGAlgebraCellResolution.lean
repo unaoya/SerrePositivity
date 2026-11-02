@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGEndAlgebra
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomology
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
 
 /-!

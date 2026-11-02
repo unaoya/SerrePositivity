@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellResolution
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
 
 /-!

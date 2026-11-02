@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-! # 厳密 dg 入力の通常の圏
 概要：dg 圏を束ね、厳密 dg 関手を射とする通常の入力圏を構成する。

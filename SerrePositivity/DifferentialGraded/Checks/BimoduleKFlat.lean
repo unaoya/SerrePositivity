@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U12eの相対K-flat合成と指定準同型保存の受入監査

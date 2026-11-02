@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.FunctorRestrictionQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleSourceFull
 
 /-! # 準同値に沿う制限後モデルの実際のbimodule合成比較の準同型性

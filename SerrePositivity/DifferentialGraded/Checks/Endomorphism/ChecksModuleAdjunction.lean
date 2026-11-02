@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleAdjunction
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
 
 /-! # 再構成随伴の単位・余単位・三角恒等式の公理監査 -/
 public section

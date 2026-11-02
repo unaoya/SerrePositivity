@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceIdentity
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 対角kernelの恒等作用と入力解像度増大の監査

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionTripleTensor
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionEvaluationTransport
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionEvaluationTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 
 /-! # 元の実加群延長の三重比較
 概要：三重 tensor 比較を評価し、元の実加群の比較射の等号へ移す。

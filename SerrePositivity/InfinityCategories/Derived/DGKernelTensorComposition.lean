@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerve
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosed
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 /-!
 概要：任意の二つの通常 tensor 作用の実 dg nerve 上の合成比較。
 方針：主 Hom 鎖写像の厳密等式と、同じ全 Hom 自然な双加群結合子を使う。

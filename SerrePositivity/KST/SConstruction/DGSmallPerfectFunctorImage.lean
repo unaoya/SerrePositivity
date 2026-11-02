@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-!
 概要：小さい始域からの実 Perf 関手を、同じ全像を含む小模型へ厳密に因子化する。

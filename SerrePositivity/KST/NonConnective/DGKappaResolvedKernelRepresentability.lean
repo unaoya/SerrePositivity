@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupplyComparison
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaAction
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeed
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 
 /-! # 生成元からの初期被覆と局所小性の宇宙監査
 

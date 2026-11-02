@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorIso
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全Hom自然な閉零bimodule圏と実際の結合同型の受入監査 -/

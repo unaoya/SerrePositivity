@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FullFunctor
-public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomConjugation
 
 /-!
 概要：指定実比較データの恒等・合成と、全 Hom 共役の厳密な合成式。

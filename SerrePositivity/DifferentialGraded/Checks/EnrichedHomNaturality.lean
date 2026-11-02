@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomSource
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomTarget
-public import SerrePositivity.DifferentialGraded.Tensor.EnrichedHomLeft
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
+
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # M/N/Tの全Hom自然性の統合検査 -/

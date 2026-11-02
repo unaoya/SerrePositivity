@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionIdentity
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 
 /-! # 実 Perf dg 延長の合成比較
 概要：二回の実 Perf 延長と、合成入力の一回の実 Perf 延長を全次数で比較する。

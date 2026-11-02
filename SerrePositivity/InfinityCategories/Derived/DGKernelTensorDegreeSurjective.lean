@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.DegreeElementsExt
-public import SerrePositivity.DifferentialGraded.Morita.KernelNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 /-!
 概要：任意の balanced tensor と双加群作用は、左加群側の次数別全射性を保つ。
 方針：同じ斉次 tensor 生成元の持ち上げと各次数の線形射の外延性で全射を証明する。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
-public import SerrePositivity.DifferentialGraded.Perfect.Generators
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-! # finite cellとPerfの最小性の検査 -/
 @[expose] public section

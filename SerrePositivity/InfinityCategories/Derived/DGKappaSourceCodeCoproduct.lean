@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigma
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindex
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexInverse
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaInclusion
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaDesc
-public import SerrePositivity.DifferentialGraded.Presentation.CategorySigmaComponents
+public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
+public import SerrePositivity.DifferentialGraded.Presentation.Category
+
+
+
+
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCoproduct
 /-!
 概要：κ 未満個の異なる出発提示を一つの小さい dg 圏提示へまとめる。

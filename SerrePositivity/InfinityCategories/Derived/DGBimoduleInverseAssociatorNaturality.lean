@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 /-!
 概要：双加群射の実作用と逆結合子の自然性を、同じ全関手射で照合する。
 方針：元の閉零成分・全 Hom 自然な厳密変換・同じ実 nerve を使う。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherencePerfectAssociator
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Coherence
 public import SerrePositivity.DifferentialGraded.Checks.Morita.CriterionChecks
 
 /-! # 既存Perf作用比較の単位・結合coherenceの監査

@@ -129,6 +129,13 @@
       "prefixes": [
         "SerrePositivity.InfinityCategories.Derived"
       ]
+    },
+    {
+      "name": "DG",
+      "rank": -1,
+      "prefixes": [
+        "SerrePositivity.DifferentialGraded"
+      ]
     }
   ],
   "core": [
@@ -171,7 +178,10 @@
   },
   "allowed_until_move": [
     "SerrePositivity.Spectra.PointedSimplicialSet",
-    "SerrePositivity.Spectra.Pointed"
+    "SerrePositivity.Spectra.Pointed",
+    "SerrePositivity.PerfectComplex.KoszulLength",
+    "SerrePositivity.PerfectComplex.BiproductPerfect",
+    "SerrePositivity.PerfectComplex.Perfect.HomotopyCategory"
   ],
   "restricted_imports": {
     "Core": {
@@ -202,9 +212,38 @@
       "external_prefixes": [
         "Mathlib"
       ]
+    },
+    "DG": {
+      "layers": [
+        "DG"
+      ],
+      "external_prefixes": [
+        "SerrePositivity.HomologicalAlgebra",
+        "SerrePositivity.CategoryTheory",
+        "Mathlib"
+      ]
     }
   },
-  "exceptions": [],
+  "exceptions": [
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Basic",
+      "to": "SerrePositivity.PerfectComplex.KoszulLength",
+      "reason": "DG-W2 §9-2、論文側の配置確定まで。移動時に再照合。",
+      "expires": "W2b"
+    },
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison",
+      "to": "SerrePositivity.PerfectComplex.BiproductPerfect",
+      "reason": "DG-W2 §9-2、論文側の配置確定まで。移動時に再照合。",
+      "expires": "W2b"
+    },
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison",
+      "to": "SerrePositivity.PerfectComplex.Perfect.HomotopyCategory",
+      "reason": "DG-W2 §9-2、論文側の配置確定まで。移動時に再照合。",
+      "expires": "W2b"
+    }
+  ],
   "prefix_matching": {
     "rule": "m == p or m.startswith(p + \".\")",
     "layer_precedence": "longest matching prefix",

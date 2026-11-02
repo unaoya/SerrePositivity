@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.UnitFunctors
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 単位の閉零bimodule変数自然性と自然同型の受入監査 -/

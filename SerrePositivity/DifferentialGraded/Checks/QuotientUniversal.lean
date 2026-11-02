@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Universal
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定収縮付きdg商の厳密普遍性・一意性・後合成自然性の受入監査 -/

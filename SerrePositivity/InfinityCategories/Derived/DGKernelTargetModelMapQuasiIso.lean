@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
-public import SerrePositivity.DifferentialGraded.Bimodule.QuasiIso
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+
 /-!
 概要：同じ原 kernel へ増大する模型の比較は、直接選択と二段合成で一致する。
 方針：実 augmentation の二合成から準同型性を回収し、指定比較の選択独立性を使う。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Category
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cell付加の豊穣dg圏・包含関手・符号の監査

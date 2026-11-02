@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FullFunctor
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionIdentity
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionIdentity
 public import SerrePositivity.KST.SConstruction.DGFunctorClosedFamilyIso
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
 /-!
 概要：実全 Hom の共役と恒等加群延長を、同じ dg 関手 end の閉同型へ束ねる。

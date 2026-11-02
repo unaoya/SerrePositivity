@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureFirstEvaluation
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import Mathlib.Data.ZMod.Basic
 
 /-! # unitorの全次数自然性と中間ε消去・先頭生成元の受入監査 -/

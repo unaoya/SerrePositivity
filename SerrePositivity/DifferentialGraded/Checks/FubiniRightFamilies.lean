@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.FubiniRightFamilies
+public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 二重balanced族の右反復tensorへの降下の検査 -/

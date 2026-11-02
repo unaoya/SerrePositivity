@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureGradedExtension
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeCover
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseSequentialCone
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
 
 /-!

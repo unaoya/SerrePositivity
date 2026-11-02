@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalAssociativity
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.InternalUnits
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cell pathの内部合成・単位・結合則の監査

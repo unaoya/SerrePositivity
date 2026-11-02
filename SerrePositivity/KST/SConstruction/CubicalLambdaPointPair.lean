@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPairCoherence
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFreeExtension
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles
 public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
 
 /-! # Λ 対角による組と元の固定対象の単位挿入

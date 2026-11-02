@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelComparisonFunctor
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
 public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
-public import SerrePositivity.DifferentialGraded.Endomorphism.LargeHomBimodule
-public import SerrePositivity.DifferentialGraded.Bimodule.OfActions
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! kernel comma の各対象への Hom を、native gluing 上の全 dg 自然な右加群へ束ねる。 -/
 @[expose] public section

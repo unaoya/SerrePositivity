@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Extension
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意path合成保存・dg延長・制限との往復の受入監査 -/

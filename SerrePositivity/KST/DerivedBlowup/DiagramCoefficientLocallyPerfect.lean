@@ -4,7 +4,7 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientEvaluation
 public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientDerivedEquivalence
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraLocallyPerfect
 public import SerrePositivity.KST.DerivedBlowup.AlgebraVertexIso
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 public import Mathlib.CategoryTheory.ObjectProperty.Equivalence
 
 /-!

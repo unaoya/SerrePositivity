@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 
 /-! # 全次数 dg 関手圏上の厳密な前後合成
 概要：元の Hom end 上の前後合成を、単位と縦合成を保つ dg 関手へ束ねる。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-! # 元の閉射を保持する実 perfect 加群同型の持ち上げ
 概要：実加群の指定閉同型を、同じ成分のまま perfect 充満部分圏へ持ち上げる。

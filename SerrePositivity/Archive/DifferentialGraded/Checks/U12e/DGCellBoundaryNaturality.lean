@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.BoundaryNaturality
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
 
 /-! # 任意位置のcell境界置換と先頭Hom作用の公理監査
 

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.KernelComparisonNaturality
-public import SerrePositivity.DifferentialGraded.Verdier.GraphPairMorita
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
+
 
 /-! # kernel 射に自然な指定商・完備化・perfect 比較の公理監査 -/
 @[expose] public section

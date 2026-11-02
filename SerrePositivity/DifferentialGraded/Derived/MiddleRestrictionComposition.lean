@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.MiddleRestrictionIdentification
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleLiftIso
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleLeftRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRightRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+
 
 /-! # 既存の導来bimodule制限の二段階合成の正規化
 

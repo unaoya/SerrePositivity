@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-!
 概要：D の元の graph 延長・制限の余単位の全 Hom 自然性を供給する。

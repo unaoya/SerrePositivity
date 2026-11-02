@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
 public import SerrePositivity.DifferentialGraded.Functor.HomIso
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionTriangle
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 
 /-! # 元の実加群延長の対象別単位三角
 概要：全 Hom 自然な三角を、元の実延長の対象別比較射の等号に移す。

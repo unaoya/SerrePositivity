@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCone
 public import SerrePositivity.InfinityCategories.Stable.ZeroSourceCoproductComparison
 public import SerrePositivity.InfinityCategories.Stable.HomotopyBinaryCoproduct
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedCoproductComparison
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 /-!
 概要：同じ実導来加群頂点の κ-compact 性は二項直和で閉じる。
 方針：零始点の実押し出しを作り、h 圏の余積比較で元の加群直和へ戻す。

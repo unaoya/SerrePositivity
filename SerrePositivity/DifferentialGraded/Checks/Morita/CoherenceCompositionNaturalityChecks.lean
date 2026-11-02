@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionNaturality
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceComposition
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 
 /-! # kernel射による計算と通常作用合成の自然性の監査
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeGraphIso
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraDerivedComparison
-public import SerrePositivity.DifferentialGraded.Morita.KernelDerivedFunctor
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 
 /-!
 概要：KST §3.1 の包含 gauge を局所導来係数拡大の自然自己同型へ移す。

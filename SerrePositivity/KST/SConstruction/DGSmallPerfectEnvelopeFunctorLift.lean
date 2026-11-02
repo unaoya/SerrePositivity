@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-!
 概要：指定像を含む小さい Perf 包絡へ、同じ実 dg 関手を厳密に持ち上げる。

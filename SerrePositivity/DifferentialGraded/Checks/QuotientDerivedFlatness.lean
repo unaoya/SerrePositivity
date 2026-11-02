@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-! # 局所 K-flat 仮定の向き・宇宙と公理監査 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproduct
-public import SerrePositivity.DifferentialGraded.Presentation.CategoryReindexIdentity
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Presentation.Category
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 /-!
 概要：再添字済み共通提示の各成分で、元の dg 評価関手を厳密に回収する。
 方針：逆再添字と評価の恒等式、および非連結和の成分上の厳密式を合成する。

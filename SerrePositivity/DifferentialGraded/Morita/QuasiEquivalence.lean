@@ -1,44 +1,44 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedComposition
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizedSquare
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalizationAugmentation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelLocalization
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopyNaturality
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalenceTriangles
-public import SerrePositivity.DifferentialGraded.Morita.PerfectEnhancementComparison
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.PerfectSquares
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.KernelComparison
+
+
+
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphNaturality
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraphAction
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceDerivedGraph
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceProducts
-public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceEndomorphismComparison
-public import SerrePositivity.DifferentialGraded.Morita.PerfectFunctoriality
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelImage
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelEvaluationNaturality
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectKernelColumns
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelCoherence
-public import SerrePositivity.DifferentialGraded.Morita.PerfectDerivedKernelComposition
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorModels
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfect
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionPerfectSquares
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelTensor
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernel
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelFunctor
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBalancedModule
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelHomotopy
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelDerivedComparison
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelPerfectSquare
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelBaseChangeNaturality
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelAction
+
+
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
+
+
+
+
+
+
+
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
+
+
+
+
+
+
+
+
+
+
+
+
 /-! # U16b・U16d担当の比較API入口
 既存の実際の導来延長・制限同値、主Perf・shift・三角性、U13/U14との比較、
 局所Hom条件を保持した積擬同値、非flatな導来係数変更のPerf制限を公開する。

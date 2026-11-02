@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側右制限と通常結合子の可換square・非有界次数の検査

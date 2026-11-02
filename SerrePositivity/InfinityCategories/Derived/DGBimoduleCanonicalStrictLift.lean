@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictLift
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeResolution
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 /-!
 概要：双加群の指定 canonical 半自由分解間に、厳密な augmentation square を持つ射を作る。
 方針：積 dg 圏上の実 strict lift を元の圏同値で戻し、指定余単位の自然性を使う。

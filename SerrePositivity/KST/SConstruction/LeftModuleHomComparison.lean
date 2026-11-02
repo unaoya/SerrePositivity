@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftModuleParameterRepresentation
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-! # 関手 Hom end から既存の左加群 Hom への比較
 概要：元の全次数自然変換を、既存の左加群 Hom へ単位・合成を保って移す。

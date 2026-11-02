@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.QuasiIso
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 public import Mathlib.CategoryTheory.Localization.HasLocalization
 
 /-! # 値ごとのquasiIsoの標準局所化による導来bimodule圏

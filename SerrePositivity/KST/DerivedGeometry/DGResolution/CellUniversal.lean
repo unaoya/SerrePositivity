@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.CellEmbedding
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Universal
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
 
 /-!
 # 指定微分を持つ自由な生成元添加の普遍性

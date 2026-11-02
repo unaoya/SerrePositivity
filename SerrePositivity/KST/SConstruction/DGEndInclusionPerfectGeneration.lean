@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGEndInclusionPerfectFull
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneration
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
 
 /-! # 元の指定 End 包含の実 Perf 延長の生成性
 概要：同じ指定代表が Perf を生成すれば、元の End 包含の実 Perf 延長は本質的全射。

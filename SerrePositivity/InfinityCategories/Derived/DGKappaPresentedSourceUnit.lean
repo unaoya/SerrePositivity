@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction
 public import SerrePositivity.DifferentialGraded.Functor.InducedClosedTransport
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionRightUnitEvaluation
-public import SerrePositivity.KST.SConstruction.DGConjugationNaturality
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 /-!
 概要：出発提示を保持する小模型の恒等入力作用を、全 Hom 上の厳密恒等と同定する。
 方針：ラベル等号の評価を元の入力移送へ照合し、実延長の右単位則と全 Hom 自然性を使う。

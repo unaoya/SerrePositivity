@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionRing
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左加群の係数拡大と一対象 tensor 比較の検査 -/

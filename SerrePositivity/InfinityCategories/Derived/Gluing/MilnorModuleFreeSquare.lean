@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.MilnorFreeHomComponents
-public import SerrePositivity.DifferentialGraded.Module.ExtensionRepresentableComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableComposition
 /-!
 概要：Milnor 四角形の実二回延長と自由代表比較の整合を、元の比較射について証明する。
 方針：D-19 の代表上の合成則を両脚へ適用し、入力等号の輸送を保持する。

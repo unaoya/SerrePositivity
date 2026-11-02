@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphBimoduleIso
-public import SerrePositivity.DifferentialGraded.Tensor.OuterUnitRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import SerrePositivity.InfinityCategories.Derived.DGDiagonalBimoduleUnit
 public import SerrePositivity.InfinityCategories.Derived.DGKernelTargetModelAugmentation
-public import SerrePositivity.DifferentialGraded.Tensor.RightUnitRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction
 /-!
 概要：graph と対角の実比較を左右の閉零単位子へ同定する。
 方針：対角の二単位子の一致と既存の外側制限・中間制限の単位正方形を使う。

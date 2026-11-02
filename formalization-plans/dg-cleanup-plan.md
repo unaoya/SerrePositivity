@@ -26,9 +26,9 @@
 | 1 | `scripts/audit/dg.lean` が追跡中の全モジュールを覆う | **達成（DG-W1、10-31 取り込み待ち）**：1,910 本を監査、18,377 宣言、sorry 依存 0 |
 | 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | **達成（DG-W1）**：削除 271・Checks/ へ 39・Archive 68・保持 272（例外：`Verdier/ChecksU17Integration`・`ChecksOrderSquare` は D3 で Asymptotic へ） |
 | 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | **達成（DG-W1）**：新入口 1,598 本、ルートは 1 行、Stage 8 本と殻 `Complexes/Monoidal` を削除。import だけの集約 7 本は D4 で解消 |
-| 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | KST 13 辺、IC/Derived 1 辺、Asymptotic 1 辺は DG-W2(b) で解消。PerfectComplex 3 辺は論文の層の統合まで例外（§3 D3） |
-| 5 | 検査以外のモジュールが約 126 本に統合されている | 1,592 本 |
-| 6 | docstring が旧計画の案内を参照していない | 530 本が参照 |
+| 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | **達成（DG-W2(b)、11-02）**：KST 13・IC 1・Asymptotic 1 の辺は解消。PerfectComplex 3 辺は `layers.json` の例外（論文の層 1-4 で解消） |
+| 5 | 検査以外のモジュールが約 126 本に統合されている | 土台でない 9 ディレクトリは **979 → 78 本（DG-W2(b)）**。土台 5 ディレクトリ 608 本 → 48 本は DG-W3 |
+| 6 | docstring が旧計画の案内を参照していない | 土台でない分は archive への参照に書き換え済み（DG-W2(b) D5）。土台分は DG-W3 |
 | 7 | DG の内部の層の順序が文書化され、層検査に登録されている | 逆向き 71 本（最良の順序）。強連結成分 2 |
 
 ## 3. 候補
@@ -106,7 +106,7 @@
 | 指示書 | 内容 | 再ビルド | 前提 |
 | --- | --- | --- | --- |
 | DG-W1 | D0 → D1 → D2 | 1 回（実測 11,250 本、6 時間 57 分、3 セッション同時） | **完了**：D0 e30366937・D1 024eaa702・D2 36ddfd7fb、main の merge 3af962416、verify PASS・gate:true（10-31 17:00、監査対象ビルド 4,367 秒＋監査 1,792 秒＋sorry 272 秒）。**main へ取り込み済み 194a65110（10-31、区切り 1-3 の後。衝突 3 件を解決し、`CochainTensorLinear` 等の旧名 import 12 本を伝達文 §10 の表で新名に）。取り込み後の全 verify は省略し（領域が重ならないため）、main の全ビルドと次の ∞ の束の verify で確認** |
-| DG-W2 | (a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
+| DG-W2 | **完了（11-02 昼、main に取り込み）**。(a) 道具 `merge_modules.py`（BS の `bhatt-scholze-merge-modules.py` の一般化、保存検査との結合、試験）。ビルドなし。(b) D3 ＋ D4 の土台でない 9 ディレクトリ（Morita・Endomorphism・Verdier・Quotient・Resolution・Tensor・Bimodule・Perfect・Presentation）＋ その分の D5 を**一つの束**で：DG 内部の検証（統合先だけをビルドして保存検査）→ 外からの import の付け替え → 下流の再ビルド 1 回 → verify | 1 回 | DG-W1。`layers.json` に DG の規則を追加。道具は DG の Codex が作る（IF-W0-4 から移管、10-31） |
 | DG-W3 | D4 の土台 5 ディレクトリ（Module・Complexes・Category・Functor・Derived）＋ 残りの D5 を一つの束で。**草案 作成済み（11-01、infra/dg-w2 4727922a9）**：48 統合先・611 元、`--check` 成功（private 衝突 0、最大 1,601 行）、番号つき 9 件の本名 承認済み、外からの直接 import 840 辺、下流の逆閉包 **16,319 本（Paper 11 本を含む）、単独 4.5〜7 時間** | 1 回（Paper まで） | DG-W2。論文の層の 1-4 の後に時期を合わせる |
 | DG-G | D6・D7 | 群ごと | 窓の外 |
 

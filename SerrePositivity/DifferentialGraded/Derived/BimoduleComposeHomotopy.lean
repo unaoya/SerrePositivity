@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleCylinder
+public import SerrePositivity.DifferentialGraded.Tensor.Compose
 public import SerrePositivity.DifferentialGraded.Module.Homotopy
 
 /-! # 任意の前因子とのbimodule合成後にsourceホモトピーを同一視する

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Verdier.ScalarDirectCompletion
+public import SerrePositivity.DifferentialGraded.Verdier.Kernel
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 直接局所化した係数変更の完備化比較の監査と非平坦な係数変更の例 -/

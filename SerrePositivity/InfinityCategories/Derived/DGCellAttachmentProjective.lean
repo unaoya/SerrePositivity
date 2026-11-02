@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure
 public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthColimit
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
 
 /-!
 概要：同じ全境界 cell 付加の Hom の K-projective 性。

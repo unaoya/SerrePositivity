@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluationPrepend
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 有限・全path評価の先頭Hom作用との整合性の受入監査 -/

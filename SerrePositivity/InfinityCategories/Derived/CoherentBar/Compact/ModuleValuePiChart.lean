@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeHomSmallPiChart
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.PiChartSpaceCast
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.UnderlyingValueRestriction
-public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomologyNaturality
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import SerrePositivity.InfinityCategories.DoldKanComparison.CoherentHomSection
 /-!
 概要：実加群の native 基礎空間を、元の評価複体の全基点コホモロジーへ同定する。

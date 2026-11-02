@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 
 /-!
 概要：全 Hom 自然な閉射族を厳密 dg 関手で後合成しても同じ全自然性を保持する。

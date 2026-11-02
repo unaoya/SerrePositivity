@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.ParameterSquare
-public import SerrePositivity.DifferentialGraded.Bimodule.LeftEvaluation
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+
 
 /-! # パラメータ可換四角形の元の値での回収
 概要：双加群の全 Hom での可換式を、元の二対象の値での可換式へ戻す。

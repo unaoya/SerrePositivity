@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNormalization
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 public import SerrePositivity.DifferentialGraded.Module.Postcomposition
 
 /-! 正規化シフト同型で移送した augmentation の、全次数の厳密な射影正方形。 -/

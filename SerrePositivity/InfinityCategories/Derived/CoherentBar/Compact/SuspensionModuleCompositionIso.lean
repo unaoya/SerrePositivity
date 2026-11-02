@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 
 /-!
 概要：二回の実加群延長と合成入力の実延長を、全 Hom 自然な同じ閉同型で比較する。

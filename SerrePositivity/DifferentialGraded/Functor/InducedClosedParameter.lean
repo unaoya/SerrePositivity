@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-public import SerrePositivity.KST.SConstruction.DGParameterConjugation
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPrecomposition
+public import SerrePositivity.DifferentialGraded.Functor.DGParameterConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPrecomposition
 /-!
 概要：任意のラベル族に沿う閉共役へ、全次数パラメータ自然変換も移す。
 方針：評価で前合成した元の変換へ一般の閉共役を適用し、同じ Hom 複体を保持する。

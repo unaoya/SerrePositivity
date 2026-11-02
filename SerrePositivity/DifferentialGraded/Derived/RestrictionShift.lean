@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
 public import SerrePositivity.DifferentialGraded.Derived.Restriction
-public import SerrePositivity.DifferentialGraded.Endomorphism.ConeTriangleComparison
+public import SerrePositivity.DifferentialGraded.Endomorphism.Perfect
 public import SerrePositivity.DifferentialGraded.Derived.Shift
 
 /-! # 導来制限の全Homモデルと整合的整数shift

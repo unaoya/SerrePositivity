@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorSecondMiddleRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparison
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 
 /-! # 第二中間圏の制限後の指定増大と通常結合子の整合性
 

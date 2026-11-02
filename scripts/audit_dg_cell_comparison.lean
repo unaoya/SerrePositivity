@@ -5,11 +5,8 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.DifferentialGraded.Resolution.CycleCoverComparisonLaws,
-    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectMapLaws,
-    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentExt,
-    `SerrePositivity.DifferentialGraded.Resolution.FixedObjectAttachmentLaws,
-    `SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws,
+    `SerrePositivity.DifferentialGraded.Resolution.Basic,
+    `SerrePositivity.DifferentialGraded.Resolution.Cell,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)

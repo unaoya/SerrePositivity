@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelCommaObjects
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNormalization
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! 同じ通常 kernel の加群 comma 内で、両代表加群の任意整数シフトを組み立てる。 -/
 @[expose] public section

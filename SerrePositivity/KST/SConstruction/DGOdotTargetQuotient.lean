@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotTargetContracted
-public import SerrePositivity.DifferentialGraded.Quotient.Extension
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 
 /-! # 元の対角商から終域 cone への実 dg 延長
 概要：元の指定収縮を使い、同じ対角商と指定 End から実終域への dg 関手を構成する。

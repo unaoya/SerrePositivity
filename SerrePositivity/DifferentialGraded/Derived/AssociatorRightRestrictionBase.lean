@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleRightRestrictionFamily
 public import SerrePositivity.DifferentialGraded.Derived.RightKFlatComposition
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorRightRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 
 /-! # 外側右制限比較の局所化前の計算
 

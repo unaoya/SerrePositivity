@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
-public import SerrePositivity.DifferentialGraded.Bimodule.Uncurry
-public import SerrePositivity.DifferentialGraded.Bimodule.Identity
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 /-!
 概要：任意の大きさの dg 圏の同じ局所 Hom から、二入力の実 Hom 鎖写像を作る。
 方針：同じ代表作用を、小さい対角双加群と有限実充満像の局所計算へ比較する。
