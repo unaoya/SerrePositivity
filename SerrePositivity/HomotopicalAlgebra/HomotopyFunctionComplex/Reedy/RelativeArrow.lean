@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.RelativeArrow
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects
 public import Mathlib.CategoryTheory.MorphismProperty.Retract
 

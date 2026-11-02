@@ -4,7 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.Localization.Bifunctor
 public import SerrePositivity.HomotopicalAlgebra.Localization.MonoidalUnit
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.BifunctorSymmetrize
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor
-public import SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Monoidal compatibility of an actual localization
 

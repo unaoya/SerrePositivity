@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSourceOperators
-public import SerrePositivity.CategoryTheory.Quiver.PathObjectTransport
+public import SerrePositivity.CategoryTheory.Quiver.FreePathComonad
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarSourceExtraOperators

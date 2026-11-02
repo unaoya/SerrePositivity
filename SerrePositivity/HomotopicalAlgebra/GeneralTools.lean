@@ -5,7 +5,7 @@ public import SerrePositivity.CategoryTheory.ArrowFactorizationCategory
 public import SerrePositivity.CategoryTheory.ArrowFactorizationTransport
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsNaturalPrecomp
-public import SerrePositivity.CategoryTheory.Limits.SequentialExtension
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopyUniverse
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexEndpoint
@@ -14,15 +14,15 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexStart
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveVertices
 public import SerrePositivity.CategoryTheory.Quiver.FreePathComonad
 public import SerrePositivity.CategoryTheory.Quiver.PathFunctorExt
-public import SerrePositivity.CategoryTheory.Quiver.PathIntersections
+public import SerrePositivity.CategoryTheory.Quiver.PathMap
 public import SerrePositivity.CategoryTheory.Quiver.PathNatTrans
-public import SerrePositivity.CategoryTheory.Quiver.PathObjectTransport
+
 public import SerrePositivity.CategoryTheory.Simplex.Naturality
 public import SerrePositivity.CategoryTheory.Simplex.Prefix
-public import SerrePositivity.CategoryTheory.Simplex.PrefixInterval
-public import SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies
-public import SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence
-public import SerrePositivity.CategoryTheory.Simplex.PresentationFaces
+
+public import SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence
+
+
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexChainVertices
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionOperators

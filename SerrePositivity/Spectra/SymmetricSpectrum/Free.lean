@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.FreeModule
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
 public import SerrePositivity.Spectra.SymmetricSpectrum.Sphere
 
 /-! # 自由対称スペクトルと忘却関手の随伴

@@ -89,7 +89,7 @@ public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionNatur
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionAssociator
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleAssociator
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorMapLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft

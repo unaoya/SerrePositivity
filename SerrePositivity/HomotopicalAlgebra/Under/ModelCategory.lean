@@ -6,8 +6,8 @@ Authors: Joël Riou
 module
 
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
-public import SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization
-public import SerrePositivity.CategoryTheory.LiftingProperties.Under
+public import SerrePositivity.CategoryTheory.Under
+
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Basic
 public import Mathlib.CategoryTheory.Limits.Comma
 

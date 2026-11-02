@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorCoherence
-public import SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # 基点付き写像対象の合成・単位と通常の射との対応 -/
 

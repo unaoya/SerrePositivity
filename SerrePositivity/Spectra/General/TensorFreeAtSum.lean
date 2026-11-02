@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.General.TensorClosed
 public import SerrePositivity.Spectra.SymmetricSequence.FreePairConvolution
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 
 /-! # Tensor products of general free spectra are free in the sum degree
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.IntervalCuts.TensorDegreeTransport
 public import SerrePositivity.EInfinity.IntervalCuts.CochainUnit
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPermutations
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 
 /-!
 # 区間テンソルの先頭二因子の Koszul 交換

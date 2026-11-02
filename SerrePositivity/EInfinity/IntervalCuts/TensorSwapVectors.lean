@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap
 public import SerrePositivity.EInfinity.IntervalCuts.CutRenaming
-public import SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 public import SerrePositivity.GroupTheory.Coxeter.FirstToLast
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Enriched.TensorUnit
+public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
 public import Mathlib.AlgebraicTopology.ModelCategory.Basic
 public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator
 
 /-! # 球面上のテンソル積のpentagon整合性 -/

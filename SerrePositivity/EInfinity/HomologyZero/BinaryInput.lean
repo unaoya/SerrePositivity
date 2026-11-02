@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.PermutationAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 
 /-!
 # 二入力のテンソルと反復冪の交換の比較

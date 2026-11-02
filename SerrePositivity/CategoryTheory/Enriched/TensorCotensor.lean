@@ -2,6 +2,26 @@ module
 
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 public import Mathlib.CategoryTheory.Adjunction.Parametrized
+public import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
+public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+
+/-!
+# Enriched.TensorCotensor
+
+## 概要
+関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。
+
+## 方針
+元の宣言と証明を保持し、依存順に section を分けて配置する。
+
+## 規約
+公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。
+
+## 使われ方
+旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.TensorCotensor` を直接 import する。
+-/
+
+/-! ## TensorCotensor（旧 SerrePositivity/CategoryTheory/Enriched/TensorCotensor.lean） -/
 
 /-!
 # Represented tensor and cotensor for an existing enriched ordinary category
@@ -13,8 +33,7 @@ compatibility and naturality; the stronger enriched Hom-object representability
 is kept separately in `EnrichedRepresentability`.
 -/
 
-@[expose] public section
-
+@[expose] public section TensorCotensor
 universe u v u' v'
 
 open CategoryTheory Opposite
@@ -141,3 +160,162 @@ lemma cotensor_triangle (K : V) (Y : C) :
 end TensorCotensor
 
 end SerrePositivity.Enriched
+
+end TensorCotensor
+
+/-! ## TensorUnit（旧 SerrePositivity/CategoryTheory/Enriched/TensorUnit.lean） -/
+
+/-! # The represented enriched tensor unit is naturally the identity -/
+
+@[expose] public section TensorUnit
+universe u v u' v'
+
+noncomputable section
+open CategoryTheory CategoryTheory.MonoidalCategory
+
+namespace SerrePositivity.Enriched
+variable {V : Type u} [Category.{v} V] [MonoidalCategory V]
+  {C : Type u'} [Category.{v'} C] [EnrichedOrdinaryCategory V C]
+
+lemma eHomEquiv_postcomp {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    eHomEquiv V (f ≫ g) = eHomEquiv V f ≫ eHomWhiskerLeft V X g := by
+  rw [eHomEquiv_comp, unitors_inv_equal, rightUnitor_inv_comp_tensorHom_assoc]
+  rfl
+
+lemma eHomEquiv_precomp {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
+    eHomEquiv V (f ≫ g) = eHomEquiv V g ≫ eHomWhiskerRight V f Z := by
+  rw [eHomEquiv_comp, leftUnitor_inv_comp_tensorHom_assoc]
+  rfl
+
+namespace TensorCotensor
+variable (S : TensorCotensor V C)
+
+def unitMap (X : C) : (S.tensor.obj (𝟙_ V)).obj X ⟶ X :=
+  (S.tensorHomEquiv (𝟙_ V) X X).symm (eHomEquiv V (𝟙 X))
+
+lemma unitMap_comp {X Y : C} (f : X ⟶ Y) :
+    unitMap S X ≫ f = (S.tensorHomEquiv (𝟙_ V) X Y).symm (eHomEquiv V f) := by
+  apply (S.tensorHomEquiv (𝟙_ V) X Y).injective
+  rw [S.tensorHom_naturality_target, unitMap, Equiv.apply_symm_apply,
+    ← eHomEquiv_postcomp, Category.id_comp, Equiv.apply_symm_apply]
+
+instance unitMap_isIso (X : C) : IsIso (unitMap S X) := by
+  apply isIso_of_coyoneda_map_bijective
+  intro Y
+  let E : (X ⟶ Y) ≃ ((S.tensor.obj (𝟙_ V)).obj X ⟶ Y) :=
+    (eHomEquiv V).trans (S.tensorHomEquiv (𝟙_ V) X Y).symm
+  have h : (fun f : X ⟶ Y ↦ unitMap S X ≫ f) = E := by
+    funext f
+    exact unitMap_comp S f
+  exact h.symm ▸ E.bijective
+
+lemma unitMap_naturality {X Y : C} (f : X ⟶ Y) :
+    (S.tensor.obj (𝟙_ V)).map f ≫ unitMap S Y = unitMap S X ≫ f := by
+  apply (S.tensorHomEquiv (𝟙_ V) X Y).injective
+  rw [S.tensorHom_naturality_source, unitMap, Equiv.apply_symm_apply,
+    ← eHomEquiv_precomp, Category.comp_id, unitMap_comp, Equiv.apply_symm_apply]
+
+def unitIso : S.tensor.obj (𝟙_ V) ≅ 𝟭 C :=
+  NatIso.ofComponents (fun X ↦ by
+    let e := asIso (unitMap S X)
+    exact e) (fun {_ _} f ↦ unitMap_naturality S f)
+
+end TensorCotensor
+end SerrePositivity.Enriched
+end
+
+end TensorUnit
+
+/-! ## EnrichedRepresentability（旧 SerrePositivity/CategoryTheory/Enriched/EnrichedRepresentability.lean） -/
+
+/-!
+# Enriched Hom-object representability of tensor and cotensor
+
+Ordinary Hom adjunctions alone do not assert an isomorphism of V-valued Hom
+objects. This additional contract records those isomorphisms as natural
+isomorphisms in both category variables, their variance in V, and compatibility
+with the already chosen ordinary adjunctions. No new enrichment is constructed.
+-/
+
+@[expose] public section EnrichedRepresentability
+universe u v u' v'
+
+open CategoryTheory Opposite
+
+namespace SerrePositivity.Enriched
+
+variable {V : Type u} [Category.{v} V] [MonoidalCategory V] [MonoidalClosed V]
+  {C : Type u'} [Category.{v'} C] [EnrichedOrdinaryCategory V C]
+  (S : TensorCotensor V C)
+
+def powerHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
+  eHomFunctor V C ⋙ (Functor.whiskeringRight C V V).obj (ihom K)
+
+def tensorEnrichedHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
+  (S.tensor.obj K).op ⋙ eHomFunctor V C
+
+def cotensorEnrichedHom (K : V) : Cᵒᵖ ⥤ C ⥤ V :=
+  eHomFunctor V C ⋙ (Functor.whiskeringLeft C C V).obj (S.cotensor.obj (op K))
+
+/-- Full V-valued representability, with all variance and the compatibility of
+generalized points with the three ordinary Hom equivalences fixed explicitly. -/
+structure EnrichedRepresentability where
+  tensorIso (K : V) : tensorEnrichedHom S K ≅ powerHom (C := C) K
+  cotensorIso (K : V) : cotensorEnrichedHom S K ≅ powerHom (C := C) K
+  tensor_parameter {K L : V} (a : K ⟶ L) (X Y : C) :
+    eHomWhiskerRight V ((S.tensor.map a).app X) Y ≫
+        ((tensorIso K).hom.app (op X)).app Y =
+      ((tensorIso L).hom.app (op X)).app Y ≫ (MonoidalClosed.pre a).app (X ⟶[V] Y)
+  cotensor_parameter {K L : V} (a : K ⟶ L) (X Y : C) :
+    eHomWhiskerLeft V X ((S.cotensor.map a.op).app Y) ≫
+        ((cotensorIso K).hom.app (op X)).app Y =
+      ((cotensorIso L).hom.app (op X)).app Y ≫ (MonoidalClosed.pre a).app (X ⟶[V] Y)
+  tensor_points (K : V) (X Y : C) (f : (S.tensor.obj K).obj X ⟶ Y) :
+    (MonoidalClosed.curryHomEquiv' (X := K) (Y := X ⟶[V] Y)).symm
+      (eHomEquiv V f ≫ ((tensorIso K).hom.app (op X)).app Y) =
+        S.tensorHomEquiv K X Y f
+  cotensor_points (K : V) (X Y : C) (f : X ⟶ (S.cotensor.obj (op K)).obj Y) :
+    (MonoidalClosed.curryHomEquiv' (X := K) (Y := X ⟶[V] Y)).symm
+      (eHomEquiv V f ≫ ((cotensorIso K).hom.app (op X)).app Y) =
+        S.cotensorHomEquiv K X Y f
+
+namespace EnrichedRepresentability
+
+variable {S} (E : EnrichedRepresentability S)
+
+def tensorHomIso (K : V) (X Y : C) :
+    ((S.tensor.obj K).obj X ⟶[V] Y) ≅ (ihom K).obj (X ⟶[V] Y) :=
+  (E.tensorIso K).app (op X) |>.app Y
+
+def cotensorHomIso (K : V) (X Y : C) :
+    (X ⟶[V] (S.cotensor.obj (op K)).obj Y) ≅ (ihom K).obj (X ⟶[V] Y) :=
+  (E.cotensorIso K).app (op X) |>.app Y
+
+/-- The two representing Hom objects compare by their actual natural isomorphisms. -/
+def homObjectComparison (K : V) (X Y : C) :
+    ((S.tensor.obj K).obj X ⟶[V] Y) ≅ (X ⟶[V] (S.cotensor.obj (op K)).obj Y) :=
+  E.tensorHomIso K X Y ≪≫ (E.cotensorHomIso K X Y).symm
+
+/-- On ordinary points this enriched comparison is exactly the chosen
+tensor/cotensor adjunction, rather than an unrelated isomorphism. -/
+lemma homObjectComparison_points (K : V) (X Y : C)
+    (f : (S.tensor.obj K).obj X ⟶ Y) :
+    eHomEquiv V f ≫ (E.homObjectComparison K X Y).hom =
+      eHomEquiv V (S.tensorCotensorHomEquiv K X Y f) := by
+  apply (cancel_mono (E.cotensorHomIso K X Y).hom).1
+  change (eHomEquiv V f ≫ (E.tensorHomIso K X Y).hom ≫
+      (E.cotensorHomIso K X Y).inv) ≫ (E.cotensorHomIso K X Y).hom = _
+  simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+  apply (MonoidalClosed.curryHomEquiv' (X := K) (Y := X ⟶[V] Y)).symm.injective
+  change (MonoidalClosed.curryHomEquiv' (X := K) (Y := X ⟶[V] Y)).symm
+      (eHomEquiv V f ≫ ((E.tensorIso K).hom.app (op X)).app Y) =
+    (MonoidalClosed.curryHomEquiv' (X := K) (Y := X ⟶[V] Y)).symm
+      (eHomEquiv V (S.tensorCotensorHomEquiv K X Y f) ≫
+        ((E.cotensorIso K).hom.app (op X)).app Y)
+  rw [E.tensor_points, E.cotensor_points, S.homEquiv_compatibility]
+
+end EnrichedRepresentability
+
+end SerrePositivity.Enriched
+
+end EnrichedRepresentability

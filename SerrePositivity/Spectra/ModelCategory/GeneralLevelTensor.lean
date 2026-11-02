@@ -4,7 +4,7 @@ public import SerrePositivity.Spectra.General.FreePushoutProduct
 public import SerrePositivity.Spectra.ModelCategory.LevelFacts
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor
-public import SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleUnit
 
 /-! # Pushout-product and unit axioms for general spectrum level models

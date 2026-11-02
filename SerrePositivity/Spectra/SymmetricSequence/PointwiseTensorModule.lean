@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleTransport
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Limits
 public import SerrePositivity.CategoryTheory.FunctorTransport
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation
 

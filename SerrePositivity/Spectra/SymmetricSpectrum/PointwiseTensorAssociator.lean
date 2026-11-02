@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeAtSum
 public import Mathlib.CategoryTheory.Whiskering
-public import SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport
+public import SerrePositivity.CategoryTheory.Monoidal.Action
 
 /-! # 各段のsmashによる作用の結合比較 -/
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Spectra.General.Limits
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleClosed
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric
 
 /-! # Tensor and internal Hom of general symmetric spectra
 

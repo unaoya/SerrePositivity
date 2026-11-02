@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpacePointedOrdinary
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched
 

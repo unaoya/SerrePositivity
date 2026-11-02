@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
 

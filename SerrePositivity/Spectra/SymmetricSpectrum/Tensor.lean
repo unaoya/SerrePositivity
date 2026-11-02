@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient
 
 /-! # 球面上の対称スペクトルのテンソル積

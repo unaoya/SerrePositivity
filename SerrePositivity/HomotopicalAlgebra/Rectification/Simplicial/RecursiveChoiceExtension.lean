@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
 
-public import SerrePositivity.CategoryTheory.Limits.SequentialExtension
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
 public import Mathlib.AlgebraicTopology.SimplicialSet.Skeleton
 

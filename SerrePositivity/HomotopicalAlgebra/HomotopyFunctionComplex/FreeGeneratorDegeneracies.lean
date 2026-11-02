@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Quiver.PathIntersections
+public import SerrePositivity.CategoryTheory.Quiver.PathMap
 public import Mathlib.Data.Fintype.Fin
 public import Mathlib.Tactic.FinCases
 

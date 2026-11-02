@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
 
 /-! # 二つの自由スペクトルのテンソル積

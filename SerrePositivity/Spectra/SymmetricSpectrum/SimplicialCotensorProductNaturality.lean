@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProductNaturality
-public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # 反復cotensorの比較のパラメータ自然性 -/
 
