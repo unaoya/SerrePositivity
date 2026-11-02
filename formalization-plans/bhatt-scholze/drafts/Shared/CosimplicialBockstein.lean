@@ -42,6 +42,8 @@ variable {k : Type u} [CommRing k]
 structure CosimplicialShortExact (M' M M'' : CosimplicialObject (ModuleCat.{u} k)) where
   ι : M' ⟶ M
   π : M ⟶ M''
+  /-- π ∘ ι = 0 をデータとして保持（W9-I-21）。係数は共通の基底 k（A または ℤ）に固定し、C⁰ を係数環にしない。 -/
+  zero : ι ≫ π = 0
   exact : ∀ n : SimplexCategory, (ShortComplex.mk (ι.app n) (π.app n) (by sorry)).ShortExact
 
 /-- 概要：交代余面複体の短完全列（項ごとの短完全列から）。
@@ -77,12 +79,14 @@ def quotPow (k' : ℕ) : CosimplicialObject CommRingCat.{u} :=
 
 /-- 概要：短完全列 0 → C/d →d→ C/d² → C/d → 0（d 正則）。
 方針：d 倍は C/d → C/d² へ単射（正則性）、像は dC/d²C、余核は C/d。
-規約：加群として（係数 k は C^0 など、必要なら指定）。
+規約：加群として。係数は共通の基底環 k（prism の A、または ℤ）に固定する（C⁰ は一般には共通の係数環ではない、W9-I-21）。
 使われ方：Bockstein β : H^i(C/d) → H^{i+1}(C/d)。 -/
 def regularShortExact : True := trivial -- 要確認：係数環を固定して CosimplicialShortExact の形に
 
 /-- 概要：Bockstein は H^*(C/d) の cup 積に関する微分：β(a ∪ b) = β(a) ∪ b + (−1)^{|a|} a ∪ β(b)、β² = 0。
-方針：余輪体の C/d² への持ち上げの cup 積と Leibniz 則（`cochainDifferential_cup`）。β² = 0 は長完全列の合成が零。
+方針：d が各項で正則な複体 C への持ち上げで計算する（W9-I-21）：a ∈ C^i/d の余輪体の持ち上げ ã について ∂ã = d·b と書くと d·∂b = ∂²ã = 0、
+正則性で ∂b = 0、よって β²[a] = 0（β の二回の合成は同じ短完全列の長完全列の隣接二射ではないので「合成が零」では出ない）。
+Leibniz は ∂(ã ∪ c̃) = ∂ã ∪ c̃ + (−1)^i ã ∪ ∂c̃ を d で割る（`cochainDifferential_cup`）。
 規約：cup 積は `CosimplicialCupProduct`。
 使われ方：H^*(Ō) が dg 環であること（Constr 4.9）。 -/
 theorem bockstein_leibniz : True := by trivial

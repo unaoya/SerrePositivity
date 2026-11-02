@@ -177,7 +177,7 @@ theorem baseChange_cechAlexanderAffine_eq (r : ℕ) : True := by trivial
 
 /-- 概要：Prop 6.2（一般の r）＝ Thm 6.3（多項式代数）：一般の有界向き付き prism (A,(d)) と R = (A/d)⟨X_1,…,X_r⟩ について η^* は同型。
 方針：(a) 結晶：`hodgeTate_iso_crystalline`。(b)(c)：b̂^* が保存的、b̂^*η^* が ĉ^*（Z_p 側の η^*）に一致（生成元で）、Z_p 側は
-`hodgeTate_iso_polynomial_Zp`。
+`hodgeTate_iso_polynomial_Zp`。順序（W9-I-25）：r = 1 の加群の比較（η⁰・η¹）→ Lemma 4.10（`bockstein_sq_zero'`）→ 一般 r の dg 比較。
 規約：D30。
 使われ方：Cor 4.12、Lemma 4.10、A2・A5・A7。 -/
 theorem hodgeTate_iso (hP : IsBoundedPrism P) (r : ℕ) : True := by trivial

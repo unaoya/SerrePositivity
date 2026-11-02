@@ -187,6 +187,14 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-15 D69：保存性だけでは比較射が作れない | 要確認 | **訂正済み**（a1-design §9.1・§9.3：原典 Thm 6.4 の ψ・W(A_0/d_0) の経路を A_0 上で行い（p ねじれなしは A_0 で成立）、完全 prism へ底変換。D69 の決定は差し替えた案で再提示） |
 | W9-I-16 Lemma 5.4 の無限変数 | 要修正 | G-A1-15（filtered 余極限）を追加 |
 | W9-I-17 a1-design 前半の Thm 6.4「不要」 | 軽微 | 訂正済み（§0・§6） |
+| W9-I-18 δ 座標つき D^• に列の Poincaré 議論を直接当てられない（t^p が H⁰ に残る） | 致命 | **訂正済み**（a1-design §3 の 6 (ii)：追加座標の Čech 因子 E^• = Q^{⊗(•+1)} の収縮で D_0^• → D^• が擬同型、G-A1-16） |
+| W9-I-19 J つきの比較は Z_p の黒箱と Lemma 4.20 だけでは出ない | 要確認 | 反映済み（G-A1-17 を A1-3 の独立補題に。黒箱は Z_p のまま一つ） |
+| W9-I-20 D69 の最後の W → A_0/d_0 の底変換 | 要修正 | 訂正済み（a1-design §9.1 の 2 に係数の列を明記） |
+| W9-I-21 Bockstein の β² = 0 の説明、π∘ι = 0、係数環 | 要修正 | 訂正済み（drafts/Shared/CosimplicialBockstein） |
+| W9-I-22 de Rham の d は P^∧ 線形でない | 要修正 | 訂正済み（drafts/Shared/DeRhamPolynomial） |
+| W9-I-23 `hodgeTate_iso`・`prismaticCohomology_baseChange'` の二重宣言 | 要修正 | 訂正済み（HodgeTateMap 側を述語に） |
+| W9-I-24 CAlg の錐の指定（正規化模型、AW との比較） | 要確認 | 反映済み（drafts/Shared/CosimplicialEInfinity の方針） |
+| W9-I-25 r = 1 → Lemma 4.10 → 一般 r の順序 | 要確認 | 反映済み（a1-design §3 の 2、HodgeTateComparison の方針） |
 
 既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
 
