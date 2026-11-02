@@ -3,9 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.Idempotent
 public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-! # perfectoid 環の冪等元による直因子と有限直積の perfectoid 化
 

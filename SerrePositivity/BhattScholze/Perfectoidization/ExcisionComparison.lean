@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Excision
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 
 /-! # perfectoid 化の比較の標準 excision の入力

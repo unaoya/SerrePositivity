@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import Mathlib.RingTheory.FinitePresentation
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-! # perfectoid イデアル
 
@@ -12,7 +12,7 @@ integral perfectoid な `R` と `g : R` に対し、主イデアル商 `R/(g)` �
 
 ## 方針
 
-射は perfectoid 化の普遍性（CommutativeAlgebra/PerfectoidizationFunctor）だけから作る。整代数の perfectoid 化の存在の引用は使わない。
+射は perfectoid 化の普遍性（CommutativeAlgebra/Perfectoid/Defs）だけから作る。整代数の perfectoid 化の存在の引用は使わない。
 
 ## 規約
 

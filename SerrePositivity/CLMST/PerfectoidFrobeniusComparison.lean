@@ -2,10 +2,9 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import Mathlib.Algebra.CharP.Frobenius
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 

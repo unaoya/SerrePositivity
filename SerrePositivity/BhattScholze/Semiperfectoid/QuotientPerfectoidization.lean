@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 
 /-! # 全射な商の指定した perfectoid 化

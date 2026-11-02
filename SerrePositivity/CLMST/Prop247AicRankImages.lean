@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-! # Prop 2.4.7：André 基底上の実 rank 像は既に perfectoid
 

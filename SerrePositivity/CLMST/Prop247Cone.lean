@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Cone
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 

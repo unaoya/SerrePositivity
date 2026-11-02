@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorExtension
 public import SerrePositivity.CommutativeAlgebra.Almost.Basic
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 
 /-!
 # Thm 4.0.3(a) の全加群への帰着

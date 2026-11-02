@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision

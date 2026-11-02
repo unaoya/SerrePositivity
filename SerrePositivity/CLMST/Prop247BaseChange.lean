@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247Cone
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：通常 tensor の完備化と標準 perfectoid 化の四角形

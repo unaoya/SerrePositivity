@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 

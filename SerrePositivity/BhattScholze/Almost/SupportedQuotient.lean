@@ -6,7 +6,7 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import Mathlib.LinearAlgebra.Quotient.Basic
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 public import Mathlib.RingTheory.Finiteness.Basic

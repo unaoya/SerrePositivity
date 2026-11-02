@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basi
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-! # 絶対整閉な perfectoid 環の完備な根基商
 
