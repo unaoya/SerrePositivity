@@ -393,6 +393,7 @@ end ScalarExtensionActions
 
 @[expose] public section ScalarExtensionPresentation
 universe u v
+set_option synthInstance.maxHeartbeats 40000
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
