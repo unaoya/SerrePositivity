@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Derived.PairedRestrictionIdentification
 
 /-! # 既存の両端導来制限の恒等・合成比較とモデル計算

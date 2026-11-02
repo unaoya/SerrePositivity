@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlatNaturality
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import SerrePositivity.DifferentialGraded.Checks.Morita.CoherenceCompositionChecks
 
 /-! # K-flatモデルの作用合成squareと主局所化計算の監査

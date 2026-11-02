@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 
 /-! # 実延長比較の入力等号に関する整合性
 概要：入力の等号移送を合成比較の前後へ動かす式を固定する。

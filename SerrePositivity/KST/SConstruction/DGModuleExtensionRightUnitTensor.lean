@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitAssociativity
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputTransport
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionInputTransport
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphRightUnit
 
 /-! # 元の実延長の右恒等入力と tensor 左単位

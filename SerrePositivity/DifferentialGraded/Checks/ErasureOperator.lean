@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureOperator
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全path直和の消去作用素と有限pathへの制限の受入監査 -/

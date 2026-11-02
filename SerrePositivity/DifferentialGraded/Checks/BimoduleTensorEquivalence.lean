@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorModuleFull
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 積dg圏上の加群と主bimodule圏の閉零圏同値の監査

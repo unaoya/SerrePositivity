@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.ShiftHom
 public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-!
 概要：実加群 shift の零・加法同型の全 Hom 自然性を保持する。

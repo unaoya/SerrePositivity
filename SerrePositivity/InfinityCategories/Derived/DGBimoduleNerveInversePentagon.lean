@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleNerveCoherenceImages
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCoherencePathTools
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 /-!
 概要：同じ双加群五角の逆向き経路を、実 h Fun 内で照合する。
 方針：元の dg 五角を同型として反転してから、同じ実関手で写す。

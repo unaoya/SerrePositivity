@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeComparison
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationModuleInput
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Module.AcyclicTriangulated
 
 /-!

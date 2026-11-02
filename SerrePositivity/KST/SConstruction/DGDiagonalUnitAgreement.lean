@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
-public import SerrePositivity.DifferentialGraded.Bimodule.ValueExt
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-! # 対角双加群の左右単位の一致
 概要：元の対角双加群の左右 tensor 単位が同じ実同型であることを示す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.DerivedYoneda
-public import SerrePositivity.DifferentialGraded.Verdier.Tria
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 
 /-!
 概要：実際の導来 Yoneda を有限 cell の前三角化へ制限する。

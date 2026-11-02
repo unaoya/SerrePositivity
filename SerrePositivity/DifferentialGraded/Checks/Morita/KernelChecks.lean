@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.KernelTensor
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 
 /-! # U16a kernelの公開型・通常作用の監査
 

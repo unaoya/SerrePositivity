@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.RightIdentity
+public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全pathと最終Homの右単位の受入監査 -/

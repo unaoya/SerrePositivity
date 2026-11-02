@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PathEvaluation
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.GeneratorDisk
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # cell生成元の境界・指定原始元・有限path評価の監査

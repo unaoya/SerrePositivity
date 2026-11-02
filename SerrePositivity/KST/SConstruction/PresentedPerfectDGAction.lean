@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGModel
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
 
 /-! # ラベル付き Perf 模型への厳密 dg 入力の作用
 概要：ラベルの延長関手を後合成し、全 Hom を元の合成比較で共役する。

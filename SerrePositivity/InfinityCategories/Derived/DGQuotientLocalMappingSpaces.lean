@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorQuasiIsoFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientNerve
 public import SerrePositivity.InfinityCategories.DGNerve.FullSubcategory
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonLocalHom
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-! # dg 商の局所対象における実写像空間
 

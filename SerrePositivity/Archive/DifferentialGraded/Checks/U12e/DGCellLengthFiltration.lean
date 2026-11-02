@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.LengthColimit
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Augmentation
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cell付加のpath長filtration・分裂・最終K-flat性の監査

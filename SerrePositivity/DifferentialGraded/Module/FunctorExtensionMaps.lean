@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Tensor.Homotopy
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-! # graph延長の閉零射とtensor生成元上の計算
 

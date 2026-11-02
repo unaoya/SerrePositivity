@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverseResolutionStages
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-! # 標準解像度の有限因子分解の監査 -/
 @[expose] public section

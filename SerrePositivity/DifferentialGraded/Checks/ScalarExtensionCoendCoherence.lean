@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionCoendCoherence
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 相対 tensor の係数変更と単位・結合比較の検査 -/

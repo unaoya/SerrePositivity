@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 閉零bimodule射の三変数に関する結合自然同型の受入監査 -/

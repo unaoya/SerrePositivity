@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Balanced
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 多対象balanced tensorの普遍性の受入検査 -/

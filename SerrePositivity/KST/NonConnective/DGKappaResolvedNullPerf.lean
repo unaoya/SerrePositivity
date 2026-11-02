@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedConnectiveSquare
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonRestriction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Derived.AcyclicZero
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity

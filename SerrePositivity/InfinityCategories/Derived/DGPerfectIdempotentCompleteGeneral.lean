@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGIdempotentCompleteGeneral
-public import SerrePositivity.DifferentialGraded.Perfect.EnhancementIdempotents
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 /-!
 概要：実 perfect dg 加群の coherent 冪等完備性を公開する最小 dg 入口。
 方針：同じ perfect dg 加群の H⁰ 分裂を一般の nerve 判定へ渡す。

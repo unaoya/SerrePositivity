@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedCompositionHomNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedComparisonCoherence
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleKFlatQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 /-!
 概要：元の κ の全射自然性を準同型比較の同型正方形へ移す。
 方針：既存の同じ射の作用・比較の逆・合成則を使う。

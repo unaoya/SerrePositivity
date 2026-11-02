@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.RightKFlatComposition
-public import SerrePositivity.DifferentialGraded.Tensor.Pentagon
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 
 /-! # 三つの固定右K-flat因子に関する導来合成の五角coherence
 

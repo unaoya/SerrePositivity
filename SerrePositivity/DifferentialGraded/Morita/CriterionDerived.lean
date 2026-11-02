@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedGeneration
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedHomCoproducts
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedFullyFaithful
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedConditions
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproducts
+
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
+
+
 
 /-! # U16c：右随伴を使わない全主導来圏へのMorita拡張の入口
 

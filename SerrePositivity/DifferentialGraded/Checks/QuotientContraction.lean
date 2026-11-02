@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.EpsilonContraction
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定εの次数−1と最終微分dε=idの受入監査 -/

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureSquare
+public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意二位置の反交換・有限和相殺・全消去作用素二乗零の受入監査 -/

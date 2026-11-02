@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterExtension
-public import SerrePositivity.KST.SConstruction.DGFunctorHomPostcomposition
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
 
 /-!
 概要：ε 整合 Hom 部分複体の包含を、固定 ε の全次数整合と同値にする。

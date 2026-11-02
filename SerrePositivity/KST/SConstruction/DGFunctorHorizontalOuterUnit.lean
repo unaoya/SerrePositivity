@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalComposition
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 
 /-! # 横合成の外側の恒等 dg 関手による単位則
 概要：恒等 dg 関手の閉単位との横合成が、元の自然変換をそのまま回収する。

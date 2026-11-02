@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.ConeData
-public import SerrePositivity.DifferentialGraded.Quotient.ParameterExtension
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 
 /-!
 概要：正本 strict data の指定収縮を保持した、同じ実懸垂間の全次数変換の延長入口。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfYonedaAction
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaStrict
 public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso
 /-!

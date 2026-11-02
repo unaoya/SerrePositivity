@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleConeImage
+public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 /-!
 概要：加群値 dg 関手と標準 cone の実比較射を構成する。
 方針：既存の Endomorphism.ModuleConeImage の同じ実比較を公開入口で再利用する。

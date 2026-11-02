@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionModuleMaps
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg 係数制限の型検査と公理監査 -/

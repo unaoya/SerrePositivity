@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectEndIsoComparison
 public import SerrePositivity.KST.SConstruction.DGEndIsoIntertwining
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
 
 /-! # 同じ perfect End 比較の実代表加群上の作用
 概要：元の perfect 加群の End 作用と、比較先の代表加群上の作用を同じ閉同型で結ぶ。

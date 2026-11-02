@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.LeftColimits
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左加群変数のbalanced tensorの余極限保存 -/

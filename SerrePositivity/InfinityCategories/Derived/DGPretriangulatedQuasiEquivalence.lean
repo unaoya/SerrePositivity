@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonCells
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
 
 /-! # dg 準同値に沿う前三角性の反映

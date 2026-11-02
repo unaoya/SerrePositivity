@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 /-!
 概要：任意ラベル族の等号移送を、評価値の閉同型による全 Hom 共役として表す。
 方針：等号帰納と一般の共役恒等則を使い、元の豊穣関手の外延性へ接続する。

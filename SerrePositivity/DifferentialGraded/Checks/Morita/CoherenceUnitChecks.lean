@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceUnitMain
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主導来kernel作用の右単位coherenceの監査

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleClosedRightShift
-public import SerrePositivity.DifferentialGraded.Endomorphism.ShiftNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 
 /-! # 未正規化の斉次 shift 単位の閉射に関する自然性
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
-public import SerrePositivity.DifferentialGraded.Morita.KernelNaturality
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 /-!
 概要：任意の双加群射の実 tensor 成分を、半自由入力の全 Hom 自然な閉射族にする。
 方針：元の全 Hom 自然な双加群合成射の成分と自然性を、同じ充満包含へ制限する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorLeftRestriction
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側左制限と通常結合子のsquareの検査

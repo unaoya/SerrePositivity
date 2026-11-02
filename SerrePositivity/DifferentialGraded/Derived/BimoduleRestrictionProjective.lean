@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.RestrictionProjective
-public import SerrePositivity.DifferentialGraded.Bimodule.RightRestriction
-public import SerrePositivity.DifferentialGraded.Bimodule.SemifreeResolution
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
+
 
 /-!
 概要：積 dg 圏の生成 sphere の右制限から固定 bimodule 解像度の射影性を回収する。

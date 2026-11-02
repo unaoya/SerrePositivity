@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionUnitTensor
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphUnits
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphUnits
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-! # 元の実 graph 延長の単位三角
 概要：恒等入力との実合成比較を、元の全加群上の単位比較と照合する。

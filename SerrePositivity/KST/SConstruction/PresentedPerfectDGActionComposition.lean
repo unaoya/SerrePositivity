@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGActionCompositionIso
-public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomConjugation
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionConjugation
 
 /-! # ラベル付き Perf の dg 作用の厳密な合成法則

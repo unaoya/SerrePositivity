@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
-public import SerrePositivity.KST.SConstruction.DGFunctorParamComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamComposition
 
 /-! # 元の graph パラメータ作用の全次数縦合成保存
 概要：任意 K・L の入力自然変換の合成は、元の graph 加群 Hom の合成へ送られる。

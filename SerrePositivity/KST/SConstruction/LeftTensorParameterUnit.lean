@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftTensorParameterFactorization
-public import SerrePositivity.KST.SConstruction.DGFunctorHomIdentity
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomIdentity
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
 /-! # 任意パラメータ表示からの元の左 tensor 単位保存

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelPostcompBimodule
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
 /-!
 概要：元の通常双加群結合子とその逆を、入力 dg 関手の制限と実 nerve で照合する。
 方針：同じ dg 関手の端点等式と、全 Hom 自然な閉零成分の評価式を使う。

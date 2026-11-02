@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellMapPrimitives
-public import SerrePositivity.DifferentialGraded.Resolution.InitialStageComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：全射擬同型に沿う任意の次段の射の厳密な cell 延長。

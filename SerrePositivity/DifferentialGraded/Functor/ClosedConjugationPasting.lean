@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomConjugation
 /-!
 概要：全 Hom 作用と三つの閉同型による共役を、指定した比較の貼り合わせで整理する。
 方針：dg 関手と共役の交換、同型の連結、比較の全 Hom 自然性を順に適用する。

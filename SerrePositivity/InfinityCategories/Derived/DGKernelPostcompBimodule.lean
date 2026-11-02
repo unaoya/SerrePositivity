@@ -3,8 +3,8 @@ public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgeb
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleStrictNatTransAlgebra
 public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionClosed
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 /-!
 概要：通常 kernel 後合成と双加群合成を、dg 関手・厳密変換・実全関手射で照合する。
 方針：主 Hom の評価式、同じ閉零成分、元の全ホモトピーの後合成式を使う。

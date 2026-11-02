@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGParameterPullback
 public import SerrePositivity.KST.SConstruction.DGParameterCrossNaturality
-public import SerrePositivity.DifferentialGraded.Tensor.ParameterLeft
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
 
 /-! # 左 tensor パラメータ作用の引き戻し

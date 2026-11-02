@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesDerivedTriangle
-public import SerrePositivity.DifferentialGraded.Perfect.UniversalProperty
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
 
 /-! # 元の二軸による実 gluing の Perfect 生成性
 概要：元の全右軸・全左軸の代表加群は、同じ gluing の全 Perfect 対象を生成する。

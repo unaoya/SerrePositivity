@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGEndIsoConjugation
 public import SerrePositivity.KST.SConstruction.DGEndYonedaInverse
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-! # 元の perfect 加群の End と代表対象の End の比較
 概要：指定した実閉同型を使い、perfect 加群の全 End を元の代表対象の End に送る。

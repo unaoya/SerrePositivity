@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatCriterion
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

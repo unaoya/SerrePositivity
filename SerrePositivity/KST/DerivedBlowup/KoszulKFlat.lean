@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.KoszulConeComparison
-public import SerrePositivity.DifferentialGraded.Tensor.KFlatComplex
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
 /-!
 概要：KST Def3.1 の有限 Koszul 複体は K-flat である。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Bimodule.DiagonalRestriction
 public import SerrePositivity.DifferentialGraded.Derived.DiagonalRestriction
 public import SerrePositivity.DifferentialGraded.Derived.PairedRestrictionCoherence
 

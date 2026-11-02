@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.Differential
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cellの二重置換相殺と最終Hom微分の監査

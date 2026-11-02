@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.FiniteCell
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

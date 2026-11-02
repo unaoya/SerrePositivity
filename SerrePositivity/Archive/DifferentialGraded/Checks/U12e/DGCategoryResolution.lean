@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Coherence
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定dg圏解像度と解像度版の導来bimodule合成の監査

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureTensorRight
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 
 /-! # ε消去と右tensorの受入監査 -/
 @[expose] public section

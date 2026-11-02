@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LeftTensorParameterUnit
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # bimodule の第一 tensor 変数の高次単位保存
 概要：単位パラメータ自然変換は、元の tensor 合成の単位自然変換へ送られる。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.PretriangulationTriangles
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonPerfect
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
 
 /-!
 # 分解を先行させた一般の dg 商

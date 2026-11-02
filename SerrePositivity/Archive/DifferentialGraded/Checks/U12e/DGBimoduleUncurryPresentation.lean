@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.ExplicitRightModuleFunctor
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionUncurry
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 明示的uncurry表示の同型と左右制限Homの検査

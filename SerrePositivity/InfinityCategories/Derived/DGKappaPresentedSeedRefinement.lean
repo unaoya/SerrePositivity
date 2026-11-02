@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionRange
-public import SerrePositivity.KST.SConstruction.DGModuleExtensionComposition
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 /-!
 概要：共通源への seed 精密化を、同じ標的での元の実評価のホモトピー同型へ運ぶ。
 方針：全 seed の延長被覆と、同じ実 graph 延長の合成比較を合成する。

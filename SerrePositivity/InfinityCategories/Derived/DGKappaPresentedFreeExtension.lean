@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeLabelOperations
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 /-!
 概要：ラベル付き κ 未満自由模型に、dg 加群延長の全次数作用を移す。
 方針：同じ自由 sphere と余積の比較同型を使い、全 Hom 複体を閉同型で共役する。

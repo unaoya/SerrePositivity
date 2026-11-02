@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.ResolutionFunctorChoice
-public import SerrePositivity.DifferentialGraded.Tensor.ProjectiveComparison
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 public import Mathlib.Algebra.Homology.DerivedCategory.Basic
 
 /-! # 固定左dg加群との導来tensor

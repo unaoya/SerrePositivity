@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.KFlatBimoduleLocalization
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-! # 外側の左dg作用を制限しても右相対K-flat性を保つ
 

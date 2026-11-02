@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Pentagon
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 四重合成の五角と生成元計算の受入監査 -/

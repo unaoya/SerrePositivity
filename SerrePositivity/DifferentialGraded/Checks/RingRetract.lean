@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingRetract
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 一対象Aのperfect比較とretractの受入監査 -/

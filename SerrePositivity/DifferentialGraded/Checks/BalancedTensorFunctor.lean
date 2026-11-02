@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Elements
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # balanced tensor双関手と斉次成分式の受入検査 -/

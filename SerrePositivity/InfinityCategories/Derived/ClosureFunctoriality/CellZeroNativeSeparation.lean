@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroObstruction
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparisonLaws
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
 
 /-!

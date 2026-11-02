@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCompositionNerveIsoNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedIsoAlgebra
-public import SerrePositivity.DifferentialGraded.Tensor.Triangle
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 /-!
 概要：二つの対角 kernel を使う三角式と左単位の coherence を、同じ全関手同型で扱う。
 方針：元の dg 三角・全関手同型の実交換則・同じ指定単位を保つ。

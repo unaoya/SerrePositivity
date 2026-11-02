@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.Induced
-public import SerrePositivity.KST.SConstruction.DGClosedComparisonIso
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 /-!
 概要：任意のラベル族の間で、実 dg 関手を全次数の閉同型に沿って移す。
 方針：ラベルの評価後の関手を既存の全 Hom 共役入口に渡し、標的のラベルを保持する。

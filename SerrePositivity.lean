@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.Asymptotic.DGVerdier.OrderSquare
 public import SerrePositivity.InfinityCategories.ModelBridge
 public import Mathlib.Algebra.Module.Projective
 public import Mathlib.CategoryTheory.Localization.CalculusOfFractions.Fractions

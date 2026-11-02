@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectComparison
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 既存PerfectHomotopyと主Perfとの線形完全忠実比較の監査 -/

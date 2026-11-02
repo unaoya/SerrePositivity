@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
-public import SerrePositivity.DifferentialGraded.Resolution.Bimodule
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意の小さいdg圏のK-flat解像度：反復列・豊穣構造・準同値・一般存在の監査

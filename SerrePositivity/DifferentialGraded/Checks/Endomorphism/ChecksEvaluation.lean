@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.EvaluationAdjunction
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
 public import Mathlib.Data.ZMod.Basic
 
 /-! # balanced評価とtensor–Hom単位・余単位の監査 -/

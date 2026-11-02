@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated
-public import SerrePositivity.DifferentialGraded.Verdier.NullObjects
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
 /-!
 概要：実 dg 商の零頂点を、代表対象の三角生成部分圏の retract 閉包で検出する。
 方針：商の tria 比較と代表加群の零性を通じ、既存 Verdier 商の核判定を適用する。

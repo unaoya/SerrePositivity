@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Resolution.Free.Universal
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 public import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
 
 /-!

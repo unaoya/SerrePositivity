@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.BoundarySequence
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 境界cellの可換squareと逐次列の準同型判定の監査

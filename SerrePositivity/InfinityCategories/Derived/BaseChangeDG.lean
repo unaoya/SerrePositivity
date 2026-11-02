@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange
 public import SerrePositivity.InfinityCategories.Derived.SemifreeSubcategory
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtensionHom
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 
 /-! # 底変更の dg 関手
 

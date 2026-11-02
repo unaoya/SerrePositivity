@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Yoneda
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import Mathlib.Data.ZMod.Basic
 
 /-! # representable tensorのYoneda評価同型の受入検査 -/

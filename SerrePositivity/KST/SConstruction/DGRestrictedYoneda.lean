@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
-public import SerrePositivity.DifferentialGraded.Endomorphism.LargeHomBimodule
-public import SerrePositivity.DifferentialGraded.Bimodule.OfActions
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 大きい標的から小さい入力への制限 Yoneda
 概要：標的の Small 性を要求せず、Hom_E(p(c),e) を右 C 加群値 dg 関手へ束ねる。

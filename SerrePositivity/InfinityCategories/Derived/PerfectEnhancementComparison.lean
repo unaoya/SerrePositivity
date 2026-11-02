@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PerfectImage
-public import SerrePositivity.DifferentialGraded.Perfect.RingPerfectEquivalence
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-! # Perf の既存 perfect dg 加群との比較
 

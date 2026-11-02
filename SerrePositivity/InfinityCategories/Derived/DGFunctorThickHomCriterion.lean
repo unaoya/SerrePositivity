@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfGeneratorHomComparison
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
 public import SerrePositivity.DifferentialGraded.Derived.HomotopicallyProjective
 public import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftHomQuasiIso

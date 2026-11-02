@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift
 
 /-! # 元の dg 二セルの共通宇宙への移送

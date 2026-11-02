@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCellAttachmentProjective
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：固定した標準 cell source の全 Hom の K-projective 性。

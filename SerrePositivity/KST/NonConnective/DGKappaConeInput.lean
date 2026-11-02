@@ -4,7 +4,7 @@ public import SerrePositivity.KST.NonConnective.DGCountableSum
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
 public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
 概要：未供給の非可算 κ-compact dg 小模型を、明示の入力として保持する。

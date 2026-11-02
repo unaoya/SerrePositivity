@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CompositionChange
+public import SerrePositivity.DifferentialGraded.Resolution.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 三圏同時制限と指定解像度変更の全導来合成比較の検査

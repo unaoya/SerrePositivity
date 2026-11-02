@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCoherenceInverses
-public import SerrePositivity.DifferentialGraded.Tensor.Pentagon
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
+
 
 /-! # 元の tensor 結合同型の逆向きの五角と自然性
 概要：実延長で使う逆結合同型の式を、元の順向きの coherence から導く。

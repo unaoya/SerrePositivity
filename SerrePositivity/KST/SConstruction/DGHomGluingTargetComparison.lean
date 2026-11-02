@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingTargetCone
-public import SerrePositivity.DifferentialGraded.Perfect.SmallStageCover
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import SerrePositivity.DifferentialGraded.Module.ConeContractible
 
 /-! # 同型である元の Hom gluing 比較の cone の収縮

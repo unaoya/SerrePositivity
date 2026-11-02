@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.BimoduleParameterSquareValues
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleParameters
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleValueElements
-public import SerrePositivity.DifferentialGraded.Tensor.ElementsExt
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+
+
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
 
 /-! # 実 tensor による全パラメータ可換四角形の保存

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKRoof
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFunctoriality
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFHomotopyFunctor
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：同じ κ の選択 cone と平坦分解を保つ懸垂屋根の射作用。

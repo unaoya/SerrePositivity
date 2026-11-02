@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFunctoriality
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 public import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
 
 /-!

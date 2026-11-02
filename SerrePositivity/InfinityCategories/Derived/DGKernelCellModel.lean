@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelCellSourceComparison
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleSemifreeKFlat
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 /-!
 概要：任意の元の kernel を両端の cell 分解へ制限し、同じ半自由双加群分解を指定する。
 方針：両作用の実制限と、平坦な cell 始域上の実半自由分解を使う。

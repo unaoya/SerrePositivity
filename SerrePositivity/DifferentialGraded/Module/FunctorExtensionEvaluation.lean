@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorGraphActions
-public import SerrePositivity.DifferentialGraded.Tensor.RestrictBalanced
-public import SerrePositivity.DifferentialGraded.Tensor.LeftYoneda
-public import SerrePositivity.DifferentialGraded.Tensor.Elements
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
+
+public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 
 /-! # graph延長と制限の評価成分
 

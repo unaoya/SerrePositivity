@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.CompositionDifferential
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cellの全Leibniz則と最終合成chain mapの監査

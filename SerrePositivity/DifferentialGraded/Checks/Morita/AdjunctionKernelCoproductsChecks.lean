@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionKernelCoproducts
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionBrownSeed
+public import SerrePositivity.DifferentialGraded.Morita.CriterionDerivedCoproducts
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 実際の主導来kernel作用の余積保存の監査

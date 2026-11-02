@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion
-public import SerrePositivity.DifferentialGraded.Quotient.FunctorLaws
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeCompositionCoherence
 
 /-!

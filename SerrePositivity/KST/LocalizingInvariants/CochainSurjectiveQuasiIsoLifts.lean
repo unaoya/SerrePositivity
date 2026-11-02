@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainBoundaryFillingEpi
-public import SerrePositivity.DifferentialGraded.Resolution.CycleCoverFunctor
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
 
 /-!
 概要：全射準同型を通る cycle と指定境界の、厳密な同時持ち上げを構成する。

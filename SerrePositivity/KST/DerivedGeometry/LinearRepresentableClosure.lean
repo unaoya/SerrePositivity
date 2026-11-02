@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearYonedaFunctor
 public import SerrePositivity.DifferentialGraded.Module.ConeFunctor
-public import SerrePositivity.DifferentialGraded.Perfect.FiniteCell
+public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import Mathlib.CategoryTheory.Preadditive.AdditiveFunctor
 
 /-!

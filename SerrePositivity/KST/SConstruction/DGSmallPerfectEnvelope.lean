@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGRepresentableThickGeneration
-public import SerrePositivity.DifferentialGraded.Perfect.SmallEnhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 public import Mathlib.Logic.Small.Set
 

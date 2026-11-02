@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.ErasureRows
+public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import Mathlib.Data.ZMod.Basic
 
 /-! # ε消去・任意位置のface・有限消去和の受入監査 -/

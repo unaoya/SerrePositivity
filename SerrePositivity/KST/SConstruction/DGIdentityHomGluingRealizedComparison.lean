@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectRealizationYonedaRestri
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictCone
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePostcompArrow
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedNaturality
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturality
 
 /-!
 概要：元小模型の二つの Yoneda 評価同型を元厳密比較の全 square に保持する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Semifree
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.DifferentialGraded.Category.Examples
 public import Mathlib.Data.ZMod.Basic
 

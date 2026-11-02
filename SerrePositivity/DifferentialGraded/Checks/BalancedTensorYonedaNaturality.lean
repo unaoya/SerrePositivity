@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaNaturality
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-! # Yoneda評価の通常射・任意次数Homに関する自然性の検査 -/
 @[expose] public section

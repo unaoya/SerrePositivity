@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 
 /-! # dg 圏の対象宇宙の持ち上げ
 

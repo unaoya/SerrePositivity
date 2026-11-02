@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainBoundaryFillingEpi
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：既存固定対象 cell 分解の増大射が、全境界 cell を実際に充填することを示す。

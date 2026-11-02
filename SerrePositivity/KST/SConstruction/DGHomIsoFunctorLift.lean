@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation
 
 /-! # 全 Hom 鎖同型を持つ実 dg 関手に沿う関手の持ち上げ
 概要：対象を指定し、元の閉零同型を保ったまま実 dg 関手の全 Hom 作用を持ち上げる。

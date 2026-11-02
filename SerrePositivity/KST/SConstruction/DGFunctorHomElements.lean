@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 public import SerrePositivity.DifferentialGraded.Complexes.DiskGenerator
 
 /-! # 全次数 Hom end の元の判定と自然性

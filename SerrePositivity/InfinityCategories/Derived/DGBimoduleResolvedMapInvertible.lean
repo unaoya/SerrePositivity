@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictNatTransInvertible
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra
-public import SerrePositivity.DifferentialGraded.Bimodule.QuasiIso
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 /-!
 概要：同じ双加群射の像と準同型性を、実分解後の可逆性へ接続する。
 方針：元の評価射・全 Hom 自然性・型付きの射の一致を保持する。

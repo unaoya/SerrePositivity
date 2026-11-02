@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomIsoFunctorLift
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 
 /-! # 対象の厳密な一致を保つ dg 関手の持ち上げ
 概要：対象像が厳密に一致するとき、元の実 dg 関手そのものを回収する持ち上げを作る。

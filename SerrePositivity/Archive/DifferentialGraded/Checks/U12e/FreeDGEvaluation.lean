@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Free.EvaluationComposition
+public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 自由pathの右単位と任意dg圏への評価の監査

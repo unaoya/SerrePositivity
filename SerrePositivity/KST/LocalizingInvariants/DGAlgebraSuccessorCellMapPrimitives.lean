@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInitialCellMapLift
-public import SerrePositivity.DifferentialGraded.Resolution.FixedObjectGenerators
+public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
 
 /-!
 概要：任意の次段の代数射の指定原始元を保つ cell 延長の入力。

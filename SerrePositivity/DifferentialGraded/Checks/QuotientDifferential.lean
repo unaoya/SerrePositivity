@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.Differential
+public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 最終Hom微分・元のHomの包含・空部分圏比較の受入監査 -/

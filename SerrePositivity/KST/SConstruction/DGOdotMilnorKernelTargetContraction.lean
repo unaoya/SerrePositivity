@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationYoneda
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorFlatKernelNullSquare
-public import SerrePositivity.DifferentialGraded.Bimodule.RightModuleComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonContraction
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.InfinityCategories.Derived.PinchedPrecompositionMaps
 
 /-! # 合成閉分母の商前合成

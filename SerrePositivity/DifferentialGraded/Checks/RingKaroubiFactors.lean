@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingKaroubiFactors
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Karoubi実現のfactor・導来比較・三角形比較の整合性の監査 -/

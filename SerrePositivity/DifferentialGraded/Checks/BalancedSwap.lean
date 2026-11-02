@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.Swap
+public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import Mathlib.Data.ZMod.Basic
 
 /-! # opposite上のbalanced tensorとの符号付き交換の検査 -/

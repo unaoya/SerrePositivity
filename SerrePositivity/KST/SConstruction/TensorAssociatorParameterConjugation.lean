@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGParameterConjugationReverse
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorParameters
+public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
 
 /-! # 実 tensor 結合比較の逆による全パラメータ共役
 概要：D レーンの任意 K の結合自然性を、実延長で使う逆比較の共役へ移す。

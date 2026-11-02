@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaNerveIso
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTensorHomComparison
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
 /-!
 概要：元の係数脚を、Yoneda 後の実 kernelTensor と全 Hom 自然な比較で結ぶ。
 方針：公開済み criterionPerfTensorYonedaHom_naturality を厳密 dg 自然変換へ渡す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 
 /-!

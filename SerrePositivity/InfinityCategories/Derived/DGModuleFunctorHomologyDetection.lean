@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorHomologyDetection
 public import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctor
 public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
-public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfDGFunctorShift
+public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
 /-!
 概要：射影的加群上の H⁰ の充満忠実性から、全 Hom 鎖写像の準同型性を回収する。
 方針：全 source shift の H⁰ を、同じ dg 関手の正規化 shift 同型で Hⁿ へ同定する。

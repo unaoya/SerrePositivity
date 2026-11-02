@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.TensorComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U11b：bimoduleのcurried/uncurried表示の両往復 -/

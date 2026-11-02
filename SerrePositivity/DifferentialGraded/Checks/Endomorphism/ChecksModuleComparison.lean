@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Endomorphism.ModuleComparison
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
 
 /-! # 大きい加群dg圏上の比較関手と正則加群の再構成の公理監査 -/
 public section

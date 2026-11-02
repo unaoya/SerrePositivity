@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSuccessorCellPrimitives
-public import SerrePositivity.DifferentialGraded.Resolution.InitialStageComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 
 /-!
 概要：段階代数射を全境界 cell の付加へ延長し、元の増大との合成を保つ。

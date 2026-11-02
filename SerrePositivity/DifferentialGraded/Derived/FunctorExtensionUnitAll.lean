@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionPerfect
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentableUnit
 public import SerrePositivity.DifferentialGraded.Derived.CompactAdjunctionCoproducts
-public import SerrePositivity.DifferentialGraded.Endomorphism.IsoLocus
+public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Adjunction.FullyFaithful
 public import Mathlib.CategoryTheory.MorphismProperty.Retract

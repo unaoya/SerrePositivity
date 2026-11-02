@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationResolvedIso
 public import SerrePositivity.InfinityCategories.Derived.DGKernelDerivedInfinity
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKFlat
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 /-!
 概要：最初の右相対 K-flat kernel について、同じ実 augmentation の tensor 像の準同型性を証明する。
 方針：元の指定切断・augmentation と、全単体上の関手比較を使う。

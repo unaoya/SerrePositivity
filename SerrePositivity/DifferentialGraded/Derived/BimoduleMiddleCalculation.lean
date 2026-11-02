@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparison
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-! # 実際の導来中間比較から通常のモデル計算射を回復する
 

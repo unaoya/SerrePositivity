@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.PrefixBoundary
-public import SerrePositivity.DifferentialGraded.Resolution.Cells.AppendBoundaryHead
+public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
+
 public import SerrePositivity.DifferentialGraded.Complexes.PrefixTensorCochainPostcompose
 public import Mathlib.Data.ZMod.Basic
 

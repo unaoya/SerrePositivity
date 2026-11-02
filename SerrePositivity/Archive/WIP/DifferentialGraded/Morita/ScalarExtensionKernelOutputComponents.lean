@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionTensorNaturality
+public import SerrePositivity.DifferentialGraded.Morita.Kernel
 public import Mathlib.Tactic.CategoryTheory.Slice
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelOutputEvaluation
-public import SerrePositivity.DifferentialGraded.Morita.ScalarExtensionKernelEvaluationModels
+public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.PerfectSquares
+
 
 /-! # kernel出力評価とU12f比較の成分計算 -/
 @[expose] public section

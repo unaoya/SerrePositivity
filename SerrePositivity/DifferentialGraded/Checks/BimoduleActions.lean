@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.Action
+public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U11b1：bimoduleの全次数交換則の受入検査 -/

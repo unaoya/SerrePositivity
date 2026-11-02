@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.LocalDGModels
-public import SerrePositivity.DifferentialGraded.Tensor.ObjectwiseKFlat
+public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-!
 概要：KST Def3.1・Lemma3.6 と §5.3 の局所 dg 模型は Hom ごとに K-flat。

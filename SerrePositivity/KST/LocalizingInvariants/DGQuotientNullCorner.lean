@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Quotient.Universal
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroObjects
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphArrow
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionHom
 
 /-!

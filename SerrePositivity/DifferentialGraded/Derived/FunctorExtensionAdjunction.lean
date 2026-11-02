@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionHomNaturality
-public import SerrePositivity.DifferentialGraded.Endomorphism.LocalizationHomNaturality
+public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 
 /-! # graph導来延長と導来制限の随伴
 

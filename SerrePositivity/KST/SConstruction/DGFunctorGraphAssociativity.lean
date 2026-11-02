@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphTripleGenerators
-public import SerrePositivity.DifferentialGraded.Tensor.AssociatorValueEvaluation
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleFunctor
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 /-! # 元の graph 合成比較の結合 coherence
 概要：元の graph 合成比較の三重結合則を入力等号の移送つきで示す。

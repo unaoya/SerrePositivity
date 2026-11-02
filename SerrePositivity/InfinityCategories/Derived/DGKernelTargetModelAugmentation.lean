@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.BimoduleMiddleMap
-public import SerrePositivity.DifferentialGraded.Bimodule.MiddleRestrictionMaps
-public import SerrePositivity.DifferentialGraded.Tensor.UnitBimoduleIso
-public import SerrePositivity.DifferentialGraded.Tensor.FunctorRestrictionQuasiIso
+public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
+public import SerrePositivity.DifferentialGraded.Bimodule.Value
+public import SerrePositivity.DifferentialGraded.Tensor.Triple
+public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
 public import SerrePositivity.InfinityCategories.Derived.DGKernelSourceGraphComparison
 /-!
 概要：出力模型の graph 合成から元の kernel への実比較射と準同型性を構成する。

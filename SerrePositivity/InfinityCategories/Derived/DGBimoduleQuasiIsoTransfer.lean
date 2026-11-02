@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Bimodule.RightModuleComparison
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Module.CellLifting
 /-!
 概要：右加群と全 Hom 自然な双加群の実同値を通じ、全次数全射性と準同型性を移す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Tensor.YonedaRepresentative
+public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg Yonedaと代表対象を動かす全Hom自然性の検査 -/

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
 public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
 public import SerrePositivity.DifferentialGraded.Functor.HomotopyAdjunction
-public import SerrePositivity.DifferentialGraded.Endomorphism.ProjectiveCriterion
+public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction
 
 /-! # graph延長の主K随伴とホモトピー射影性の保存
 

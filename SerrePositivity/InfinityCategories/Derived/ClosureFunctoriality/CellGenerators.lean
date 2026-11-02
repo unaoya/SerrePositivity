@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Resolution.CellComparison
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.SConstruction.DGFunctorHomElements
 public import SerrePositivity.DifferentialGraded.Functor.Components
 

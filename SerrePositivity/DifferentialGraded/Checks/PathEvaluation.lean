@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Quotient.InternalEvaluation
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 有限path評価と全直和へのcochain貼合せの受入監査 -/

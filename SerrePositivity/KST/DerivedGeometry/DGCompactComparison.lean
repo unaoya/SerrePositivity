@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.AdjunctionCompact
-public import SerrePositivity.DifferentialGraded.Perfect.CompactConverse
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-!
 概要：圏の余積 compact 性と既存 dg 加群の compact 性を接続する。

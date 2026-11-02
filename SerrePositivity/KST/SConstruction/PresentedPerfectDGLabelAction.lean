@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomComposition
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHomUnit
-public import SerrePositivity.KST.SConstruction.DGFunctorEnrichment
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 
 /-! # 固定したラベルにおける元の高次入力の dg 関手
 概要：元の入力関手圏の全次数 Hom を使い、各ラベルで厳密な dg 関手を得る。

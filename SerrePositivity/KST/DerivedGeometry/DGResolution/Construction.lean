@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.Filtration
 public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
-public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparisonFlatness
+public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-!
 # 一般の dg 圏の生成元添加による分解

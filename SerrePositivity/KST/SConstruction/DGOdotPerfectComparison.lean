@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotAlgebraRealization
 public import SerrePositivity.KST.SConstruction.DGOdotGeneratorConditions
-public import SerrePositivity.DifferentialGraded.Verdier.DerivedGraphComposition
-public import SerrePositivity.DifferentialGraded.Morita.PerfectFunctoriality
+public import SerrePositivity.DifferentialGraded.Verdier.Derived
+public import SerrePositivity.DifferentialGraded.Morita.Perfect
 
 /-! # 実 ⊙ 代数から元の対角商への同じ Perf 延長
 概要：代数の一対象圏から指定 End を通る元の商への実射を固定する。

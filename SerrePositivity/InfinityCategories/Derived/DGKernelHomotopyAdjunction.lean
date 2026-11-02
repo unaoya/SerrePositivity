@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKernelInfinityClassicalComparison
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionDerived
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
 /-!
 概要：同じ kernel ∞ 関手の通常の h に、既存 telescope の実右随伴を移送する。
 方針：主導来圏との比較同値と同じ kernel 作用の全関手自然同型を使う。

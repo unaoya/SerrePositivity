@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Tensor.ScalarRestrictionCategory
+public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import SerrePositivity.DifferentialGraded.Category.Components
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelCoherence
-public import SerrePositivity.KST.SConstruction.DGClosedIsoConjugationLaws
+public import SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugationLaws
 
 /-! # ラベルの等号による全 Hom 移送
 概要：ラベルの等号移送を、評価対象の実閉零同型による共役として計算する。

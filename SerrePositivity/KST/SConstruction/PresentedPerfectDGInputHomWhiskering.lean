@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionInputHomWhiskering
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGCompositionTransport
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGInputHom
-public import SerrePositivity.KST.SConstruction.DGFunctorHomConjugation
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomConjugation
 
 /-! # ラベル付き入力 Hom の元の前後合成
 概要：元の入力 Hom の前後合成を、既存のラベル等号移送を保って厳密に照合する。

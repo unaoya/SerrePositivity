@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.QuotientWordSeparation
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellUnitNonzero
-public import SerrePositivity.DifferentialGraded.Quotient.PathGeneration
+public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import SerrePositivity.DifferentialGraded.Functor.Components
 
 /-!

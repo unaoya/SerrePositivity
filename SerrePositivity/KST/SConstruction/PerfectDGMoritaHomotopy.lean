@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGDerivedComparison
-public import SerrePositivity.DifferentialGraded.Morita.PerfectQuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
 
 /-! # 実 Perf dg 延長の H⁰ による Morita 比較
 概要：主導来延長の Perf 制限と実 dg 関手の H⁰ を自然に照合する。

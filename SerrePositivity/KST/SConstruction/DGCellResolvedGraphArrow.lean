@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorGraphParameter
-public import SerrePositivity.DifferentialGraded.Resolution.CellCategory
-public import SerrePositivity.DifferentialGraded.Bimodule.PairedRestriction
+public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
+public import SerrePositivity.DifferentialGraded.Resolution.Cell
+public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleSemifreeLift
-public import SerrePositivity.DifferentialGraded.Perfect.Enhancement
+public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
 概要：同じ cell source 上に元全 Hom 自然な関手 graph と比較射の解像度を保持する。

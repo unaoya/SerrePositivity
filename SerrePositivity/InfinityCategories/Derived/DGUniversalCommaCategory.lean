@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGDoubleOpposite
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaProjections
 public import SerrePositivity.InfinityCategories.Derived.DGKernelUniversalCounit
-public import SerrePositivity.InfinityCategories.Derived.DGObjectImage
+public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 /-!
 概要：普遍余単位の実比較対象に、全比較 cochain を持つ実 dg comma 構造を与える。
 方針：一般の dg comma を反対 dg 圏へ適用し、対象ラベルに沿う充満像を取る。

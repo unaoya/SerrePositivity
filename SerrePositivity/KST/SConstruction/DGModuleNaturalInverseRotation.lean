@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.DGFunctorCoherence
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftComparisonNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeCompositeNative
 public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecifiedComposite

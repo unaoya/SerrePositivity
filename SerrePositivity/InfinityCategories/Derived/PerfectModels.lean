@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
-public import SerrePositivity.DifferentialGraded.Perfect.StrictComplexProjective
+public import SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison
 public import SerrePositivity.PerfectComplex.BiproductPerfect
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import Mathlib.Algebra.Homology.HomotopyCategory.KProjective

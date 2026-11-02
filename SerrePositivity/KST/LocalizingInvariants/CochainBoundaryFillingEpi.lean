@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Resolution.BoundaryCells
+public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.CategoryTheory.ConcreteCategory.EpiMono
 
 /-!

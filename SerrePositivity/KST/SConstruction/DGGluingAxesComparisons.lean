@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesHomNaturality
-public import SerrePositivity.KST.SConstruction.DGFunctorClosedComparison
+public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-! # 元の二軸への二射の全次数自然変換
 概要：同じ二射の全 Hom 自然性を、単位パラメータの豊穣自然変換へ束ねる。

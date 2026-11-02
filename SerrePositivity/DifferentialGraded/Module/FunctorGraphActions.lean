@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Endomorphism.LargeHomBimodule
+public import SerrePositivity.DifferentialGraded.Endomorphism.Module
 
 /-! # graphの左作用と共変representableの制限の一致
 

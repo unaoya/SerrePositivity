@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Morita.AdjunctionDerived
-public import SerrePositivity.DifferentialGraded.Morita.CoherenceLeftUnitMain
+public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
+public import SerrePositivity.DifferentialGraded.Morita.CoherenceAssociator
 
 /-! # U16a：主導来kernelの作用・随伴・単位と結合の整合性
 

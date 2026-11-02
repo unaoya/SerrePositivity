@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Perfect.RingSingleShift
+public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 有限射影項の全整数次数でのperfect性と有限和閉性の監査 -/
