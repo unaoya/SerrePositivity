@@ -40,9 +40,14 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
 | A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | E′（p 反転の議論 G-A3-7 は A3 の黒箱）、G-A3-1・2 |
 | A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
-| A4〜A9 | 未 | 未 | — | — |
+| A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
+| A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
+| A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |
+| G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所・担当は調整役。Barratt–Eccles の作用の型） |
+| A4-4 Example 8.3 | a4-design §2.4 | A4/Perfectoidization | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
+| A5〜A9 | 未 | 未 | — | — |
 
-骨組みの規模：11 本、約 1,700 行（`sorry` 85、置き場の `True` 38）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e。
+骨組みの規模：24 本、約 3,200 行（`sorry` 148、置き場の `True` 95）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835 ほか（A4 まで）。
 
 ## 2. 要確認の分類
 
@@ -102,6 +107,9 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | Tot 非正規化、Čech (b)、HA は 2b の後 | | a0-design §6 |
 | D25〜D30 | Thm 5.2 β、微分形式、模型の環構造、捻りなし、一般の r、E を作らない | a1-design §5・§7 |
 | 順序 | A1-1 → A1-4 → A1-2 → A1-3、結晶は最小限 | a1-design §6 |
+| D31〜D35 | P_Σ、完備化不変性、gr が (∧^i L)^∧ の定義、Poly の添字、CAlg_A 値 | a2-design §4・§6 |
+| D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
+| D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
 
@@ -116,8 +124,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 
 ## 4. 次の作業（提案）
 
-1. A2 の設計書（Construction 7.6：多項式代数からの左 Kan 延長、HT filtration、底変換 (4)、余極限 (5)、CAlg 値の Δ（G-A1-11））。
-   ∞ 側の P_Σ・左 Kan 延長・CAlg_R の API の確認から。
-2. (B) の決定を骨組みへ反映（短い。A2 の設計の後でも可）。
+1. A5 の設計書（Prop 8.5：完全 prism の site・Δ_perf の極限表示・界面の limitCone、Lemma 8.6）。
+2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
 3. (E) の骨組み（A1-2・A1-3）。
-4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。
+4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）の置き場所・担当は調整役の返答待ち。

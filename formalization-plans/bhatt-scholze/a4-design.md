@@ -45,8 +45,9 @@ A5（Prop 8.5）、A6（Prop 8.10〜Cor 8.12）、A7（Prop 8.13、Cor 8.14）�
   原典の φ_*^n は、A 完全なので φ_A^{n*} と同一視（D42：A 完全の場合に限る。Not 8.1 の設定どおり）。
 - Δ_perf は (p,d) 完備な E∞-A 代数で、φ は自己同型（余極限の shift）。
 - S_perfd := Δ_perf ⊗^L_A A/d（CAlg_R の対象。D(R) 版は忘却）。p 完備な E∞-S 代数（S → S_perfd は §2.3 の単位）。
-- D32・D41：S は離散な R 代数（E3 の始域）で、p 完備でなくてよい。Δ_S は `discreteToAnimated` で直接。E3 の界面の規約 (v)（非完備な始域は導来 p 完備化の
-  H⁰ を介して延ばす）は、Δ_S ≃ Δ_{S^∧}（A2-4 の D32）により同じものになる。
+- 定義域（D41、2026-11-02 決定）：Def 8.2 は原典どおり**導来 p 完備な S**（E3 の始域では p 完備な離散 R 代数）について定義する。p 完備でない離散 S については、
+  E3 の界面の規約 (v) どおり `perfd S := perfectoidization (S^∧)`（S^∧ は E3 の `completionRing`、導来 p 完備化の H⁰）で**界面の欄として**定義し、
+  これが直接の式（P_Σ 上の Δ_S を同じ構成に通したもの）に等しいことを定理にする（A2-4 の D32：Δ_S ≃ Δ_{S^∧}）。Def 8.2 の定義域は原典と同じ。
 
 ### 2.2 Lemma 8.4
 
@@ -92,7 +93,7 @@ A6（Prop 8.10：Perfd 上の arc 層性を tilt で標数 p に帰着）で使�
 
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
-| D41 | S は導来 p 完備な単体的 R 代数 | S は離散な R 代数（E3 の始域）、p 完備でなくてよい（Δ_S = Δ_{S^∧}、D32）。単体的 S は A2 の P_Σ 上で定義されるが E3 では使わない | E3 の界面の規約 (v) と同じ結論 |
+| D41 | S は導来 p 完備な単体的 R 代数 | Def 8.2 は原典どおり導来 p 完備な S に定義する。E3 の `perfd` の欄（任意の離散 S）は界面の規約 (v) どおり (S^∧)_perfd で定義し、直接の式との一致は定理（D32） | 定義域は原典と同じ。拡張は界面の欄の定義として別に置く |
 | D42 | φ_*^n Δ（スカラー制限） | A 完全なので φ_A^{n*}（自己同値の逆）で書く | Not 8.1 の設定（完全 prism）では同じ |
 | D43 | Lemma 8.4 は Lur11 の P⁰ を引用 | P⁰ を Barratt–Eccles 模型で定義し Rem 2.2.7 を証明する（G-A4-1） | 引用を定理に。E∞ 側の新しい一般論 |
 | D44 | `coconnective` 欄（Lemma 8.4）は E3 の欄だった | 欄は削除済み（10-26）。Lemma 8.4 は Cor 8.14・Prop 8.5・Thm 10.11 の証明の中で使う定理として A4 に置く | 界面の型は変えない |
@@ -108,13 +109,13 @@ A6（Prop 8.10：Perfd 上の arc 層性を tilt で標数 p に帰着）で使�
 
 骨組みは A4-1 → A4-3 → A4-2 → A4-4。G-A4-1 は E∞ 側の一般論として別ファイル（`drafts/Shared/EInfinityPowerOperation.lean`）に主張だけ置く。
 
-## 6. 決定待ち
+## 6. 決定（2026-11-02、ユーザー）
 
-1. **G-A4-1（P⁰）の扱い**：E∞ 側の一般論で、EInfinity レーンは休止中。(a) BS が主張の骨組み（P⁰ の定義の形、Rem 2.2.7、levelwise Frobenius との一致）を
-   drafts/Shared に書き、置き場所と担当は調整役（M12・M13 と同じ扱い）。(b) Lemma 8.4 の別証明を探す（HT filtration は Frobenius 安定でないので
-   mod d では使えない。mod p の Frobenius 安定な filtration（conjugate filtration）は原典にない）。推奨：**(a)**。
-2. E3 の始域：離散 S に Δ を直接定義する（D41）。推奨：**可**。
-3. 構成する界面：CAlg 版 `PerfectoidizationInterfaceCAlg` を正とし、D(R) 版は `nonempty_e3_of_cAlg` で得る。推奨：**可**（D35 と整合）。
+1. **G-A4-1（P⁰）**：BS が主張の骨組み（P⁰ の定義の形、Rem 2.2.7、levelwise Frobenius との一致）を `drafts/Shared/EInfinityPowerOperation.lean` に書き、
+   置き場所と担当は調整役（M12・M13 と同じ扱い）。
+2. **E3 の始域（D41）**：Def 8.2 は原典どおり導来 p 完備な S に定義。非完備な離散 S への延長は界面の欄 `perfd` の定義として (S^∧)_perfd で置き、
+   直接の式との一致を定理にする（§2.1）。
+3. **構成する界面**：CAlg 版 `PerfectoidizationInterfaceCAlg` を正とし、D(R) 版は `nonempty_e3_of_cAlg` で得る。
 
 ## 7. 紙で確かめる項目
 
