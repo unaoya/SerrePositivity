@@ -99,3 +99,13 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 1. `verify_runner.py`：`VERIFY_MEMORY_GB` の既定を 45 → **40**（IF-W0-4 の実測 50.8 GB と、IF-W2a-2 の verify の最大同時 RSS 37.5 GB・待ち 2 回から）。`scripts/refactor/README.md` の「既定の並列数（6）と予算」を直す。試験の既定値も合わせる。
 2. **Lake キャッシュの掃除の方針**（`scripts/refactor/README.md` に書く。実行はしない）：11-02 時点で `~/.cache/lake` は 22 GB・成果物 331,250 本、空き 455 GB。`lake cache clean` は**空きが 150 GB を切ったときだけ**、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。区切りごとの定期的な掃除はしない（古い版が残っても害は容量だけ）。
 3. `merge_modules.py --check` の循環検出と、`test_merge_modules.py` の既存の失敗（`test_snapshot_cli_delegates_and_ignores_module`）は **DG の道具なので DG に任せる**（DG-W3 §8）。∞ は触らない。
+
+## 8. 追記（2026-11-02 夜、草案の停止（§5-2）への回答：集計条件 3 点と、試験の既存失敗 1 件）
+
+**受領**：X 2,094・C 33、集計 3 通り（`w2b-r73-preflight-stop.json`）、§7 完了（runner 40 GB・README、ed1981cdd）。
+
+1. **監査の除外**：`scripts/audit/` だけでなく **`scripts/audit_*.lean`・`scripts/audit/*checks*` を含む全監査を除外**する。監査は利用者ではなく、再生成する側。
+2. **C を利用者に数えるか**：**数える**（A 368・B 1,726）。archive する B を誰かが import していてはいけないので、C（PiCriterion）が使う B のモジュールは A 側。ただし、**外側の利用者が C だけ**のモジュール（368 − 365 ＝ 3 本の見込み）は中核の層ではなく **C と一緒に `Derived/PiCriterion/` へ移す**（PiCriterion の支え。中核に不要な一般論を増やさない）。対象 JSON では `dest` を `Derived/PiCriterion/` にし、`note` に「利用者は PiCriterion のみ」と書く。
+3. **「A の逆閉包が中核外へ出たら停止」の意図**：書き方が悪かった。意図は **順方向の依存閉包**（A の各モジュールが import で辿り着く集合）が中核の層・Foundation・Mathlib の中に収まること（KST・DG・Derived・EInfinity・モデル圏の HA に届かないこと）。**A の利用者が中核の外（KST 35 辺・Derived 33 辺・EInfinity 3 辺）にあるのは問題ない**。利用者の import 行を新しい場所へ書き換えるだけ（所有範囲 §2 の「外側は import 行だけ」）。§5-2 を「A の**依存**閉包が中核の外へ出る」と読み替える。
+4. **試験の既存失敗（∞ の道具）**：main で `test_layer_check.LayerTests.test_foundation_negative_rank_and_prefix_scope` が失敗する（`layers.json` に DG-W2(b) が **DG 層を rank −1** で登録したため、「Foundation 以外は rank > −1」の仮定が古くなった）。§7 の道具の回で直す：rank −1 の基盤層が複数あってよい（Foundation・DG）とし、検査は「中核（`core` の層）は rank ≥ 0」に改める。verify には影響しない（Python 試験は gate の外）。
+5. これで §3.0 を再開：A の各モジュールの先（依存閉包から最も低い層）、B の利用者 0 の検査（全監査除外・C を利用者に含めた上で）、C ＋ 支え 3 本の move、R37・R38 の表、validator・dry-run・適用後の模擬 → 停止点 1。
