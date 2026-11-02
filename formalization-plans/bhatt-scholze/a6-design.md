@@ -151,9 +151,9 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
-| D53 | arc 位相は p 進形式スキーム fSch の上、Perfd ⊂ fSch | affine（κ-small の perfectoid 環）の上にだけ定義する。原典も Cor 8.11・8.12 で affPerfd（基底）で計算する | fSch は定義しない。E3 の経路は affine で閉じる |
+| D53 | arc 位相は p 進形式スキーム fSch の上、Perfd ⊂ fSch | affine（κ-small の p 完備環 affCompl_κ）の上に定義し、affPerfd_κ は誘導位相の充満部分 site（決定 4 の (a′)）。非 affine は定義しない | fSch の affine 部分。E3 の経路は affine で閉じる（§9） |
 | D54 | arc 被覆は qcqs な一つの射、位相は arc 被覆と開被覆で生成 | [BM18, Def 1.2] の有限族の形で定義（affine では開被覆は有限族に含まれる） | 同じ位相（affine 上） |
-| D55 | Cor 8.11：S_perfd = RΓ_arc(Spf S, O)（fSch 上の層コホモロジー）と arc 降下 | 述べない。E3 で使う等式 T_perfd = Γ(F_T, O) = lim_{Perfd_{T/}} O は Prop 8.5。Lemma 8.8 は記録 | 使わない主張を省く |
+| D55 | Cor 8.11：S_perfd = RΓ_arc(Spf S, O)（fSch 上の層コホモロジー）と arc 降下 | affine 版「S_perfd ≃ RΓ_arc(affPerfd_κ/S, O)」を記録として述べる（Prop 8.10＋Prop 8.5）。fSch・affCompl_κ 上の RΓ との比較（∞ 版の比較補題）はしない。Lemma 8.8 の affine 版は cover-dense として証明の中で使う | E3 で使う等式は Prop 8.5 の極限の形 |
 | D56 | Prop 8.10 の証明は [BS17, Thm 4.1]・[BM18, Thm 1.6]・[BS17, Lemma 6.3] を引用 | 三つを**別々に**引用の形で述べ `sorry`（G-A6-1a・1b・1c）、三つから G-A6-1 を導き、tilt への帰着は証明する（決定 2、2026-11-02） | 引用を定理の形に。1c は初等的で後で証明 |
 | D59 | [BM18, Thm 1.7] は qcqs スキーム上の関手について | affine 版（F_p 代数の圏上の finitary な関手、v 被覆・arc 被覆は有限族）で述べる。qcqs スキームへの延長（Zariski 降下）は使わない | 特別な場合 |
 | D57 | Cor 8.12 の証明は Perfd 上の空間の層 | S8（空間値の層と E 値の層の局所性）を一般論として立てる。集合の層の等式は 1 圏（Mathlib）で | 同じ証明。∞ 側の一般論が一つ増える（決定項目 3） |
@@ -163,7 +163,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 
 | 単位 | 内容 | 依存 |
 | --- | --- | --- |
-| A6-1 | arc site（定義、coverage、Lemma 8.8 の affine 版） | 既存の perfectoid、`CompletedTensor`、S1 |
+| A6-1 | arc site（affCompl_κ と affPerfd_κ、coverage、Lemma 8.8 の affine 版＝cover-dense） | 既存の perfectoid、`CompletedTensor`、S1、Mathlib `IsCoverDense` |
 | A6-2 | Prop 8.10（tilt への帰着、黒箱 G-A6-1、Hom の層性） | A6-1、G-A6-4〜7 |
 | A6-3 | 集合の層の等式（§3.2 の 1〜4、1 圏）、G-A6-2、G-A6-9 | A6-1、A5 |
 | A6-4 | Cor 8.12（S8 を入力に）と E3 の `excision` | A6-2、A6-3、S8、A4-3、A5-1 |
@@ -177,7 +177,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 - 2：三つの引用 [BS17, Thm 4.1]・[BM18, Thm 1.7（BS の引用では 1.6）]・[BS17, Lemma 6.2/6.3] を**別々に**、原典が引用している形で述べて `sorry` にする
   （G-A6-1a・1b・1c）。合わせた G-A6-1 はそこから導く。1c は初等的なので後で証明する。
 - 3：(a) S8 を ∞ 側の一般論として立て、集合の層の等式は Mathlib の 1 圏の層で証明する。
-- 4：**再検討**（§10 に再検討の案。未決）。
+- 4：**案 (a′)**（§10、2026-11-02 決定）：arc site は κ-small の p 完備環 `affCompl_κ` の上に定義し、affPerfd_κ は cover-dense な充満部分 site。
+  Lemma 8.8 の affine 版は `IsCoverDense`、集合の層の延長は Mathlib の `sheafEquiv`、Cor 8.11 は affPerfd_κ/S 上の RΓ で記録として述べる。
 - 5：(a) 付値環の tilt・untilt は A6 の中で主張を置く。
 
 相談した選択肢（記録）：

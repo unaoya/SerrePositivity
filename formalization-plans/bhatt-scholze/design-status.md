@@ -50,9 +50,14 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 未（a5 §8 の 6・7） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §6（追記） | 未 | — | A1-4 の装置 |
-| A6〜A9 | 未 | 未 | — | — |
+| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3 |
+| A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
+| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
+| A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
+| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所・担当は調整役） |
+| A7〜A9 | 未 | 未 | — | — |
 
-骨組みの規模：30 本、約 4,000 行（`sorry` 169、置き場の `True` 158）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d ほか（A5 まで）。
+骨組みの規模：35 本、約 4,600 行（`sorry` 189、置き場の `True` 200）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
 
 ## 2. 要確認の分類
 
@@ -95,7 +100,7 @@ G10（Tot ＝ 全複体）、`isSheaf_toGrothendieck_iff`（生成系で十分�
 A0-3b（Lemma 3.7(2) 一般形・(3)）、A0-3d（Cor 3.12 (a)〜(e)。有限段の Amitsur は新規）、A0-4（Tor 振幅・Lemma 4.22・4.20）、
 G-A1-4（導来 Nakayama）、G-A1-5（完全忠実平坦の保存性）、G-A1-13（底変換の合成）。改名表は調整役から。
 
-### (E) 結晶側の黒箱（独立の作業単位。いつでも書ける）
+### (E) 結晶側の黒箱と arc 降下の引用（独立の作業単位。いつでも書ける）
 
 A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包の Čech 脈体 ≃ de Rham 複体、Cartier、Cor 5.5）。
 結論は `hodgeTate_iso_polynomial_Zp` 一つ。BS と独立な部分（余単体的ホモトピー、pd-Poincaré、Cartier）は `drafts/Shared/` に。
@@ -116,6 +121,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
 | D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
 | D45〜D52 | S 離散、位相の順序、κ と Type u の一致、D48 取り下げ（G-A5-17）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
+| D53〜D59 | arc site は affine（affCompl_κ ⊃ affPerfd_κ）、有限族、Cor 8.11 は affine 版を記録、三つの引用は別々に `sorry`、S8、S′ × S/I は有限積の保存で戻す、BM18 は affine 版 | a6-design §5・§7・§9・§10 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
 
@@ -134,7 +140,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 
 ## 4. 次の作業（提案）
 
-1. A6 の設計書（Def 8.7〜Cor 8.12：arc 位相・Prop 8.10 の arc 層性・Cor 8.11・excision の欄）。A1-5 の設計の追記。
+1. A7 の設計書（Prop 8.13 の導来版、Cor 8.14：E3 の universal の欄）。A1-5 の設計の追記。
 2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
