@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarCommaCone
-public import SerrePositivity.CategoryTheory.ElementsNaturalPrecomp
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsNaturalPrecomp
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeZeroLevels
 public import SerrePositivity.Spectra.SymmetricSpectrum.Cotensor
 

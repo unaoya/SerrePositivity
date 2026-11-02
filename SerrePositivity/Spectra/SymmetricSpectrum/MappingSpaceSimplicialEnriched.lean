@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceEnriched
-public import SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 
 /-! # 基点を忘れた単体的写像対象の合成の整合性 -/
 

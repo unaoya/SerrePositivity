@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity
-public import SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # 通常のスペクトル射の合成と基点付き写像対象の合成の一致 -/
 

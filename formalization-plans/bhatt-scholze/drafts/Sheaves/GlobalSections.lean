@@ -1,0 +1,188 @@
+-- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.GlobalSections（層 Sheaves）
+-- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1・§3、単位 S2（層化は S4 の入力として仮定）。
+-- 基準コミット 972bb7f53。ビルドしない。
+module
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
+-- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
+
+/-!
+# 大域切断と RΓ（∞ topos の Γ(F) = Map(1, F) = lim F）
+
+## 概要
+E 値前層 F の大域切断 Γ(F) を F の添字全体（N(𝒞)^op）上の極限として、層化 F ↦ F^♯ を層のなす充満部分 ∞ 圏への反射として、
+RΓ(J, F) := Γ(F^♯) を定める。層化の存在（HTT 5.5.4.15、E が安定・presentable のとき）は S4 の定理で、ここでは反射のデータを
+入力にとる。
+
+## 方針
+Γ は `Core.HasLimit`・`IsLimitCone` で述べ、極限錐を選んで頂点を取る。E が presentable なら小さい形状の極限が存在する
+（`IsPresentable.hasLimit`）。層化は F2/Presentable の `IsReflectiveSubcategory` を、関手 ∞ 圏 `(ihom (presheafShape 𝒞)).obj E` の
+頂点のうち層であるものに適用する。
+
+## 規約
+RΓ は Čech 層の層化で定義する。古典的な層係数コホモロジー（＝hypersheaf 化の Γ）とは、非有界な前層で異なりうる。
+離散（有界）な Čech 層では一致する（`isSheaf_discrete_hypercomplete` の形で A0 に置く。設計書 §2.1、ノート第 4 章 D17）。
+`derivedGlobalSections` の値は選んだ極限錐の頂点で、使う側は頂点の等号でなく `IsLimitCone` の普遍性で扱う（E3 の `BSLimitConeData` と同じ）。
+
+## 使われ方
+A0 Not 4.16（Δ_{R/A} = RΓ((R/A)_Δ, O_Δ)）、A5 Prop 8.5、A6 Cor 8.11。Frobenius など前層の射に沿う関手性は `derivedGlobalSections_map`。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory Limits SSet MonoidalClosed
+open scoped Simplicial
+
+namespace SerrePositivity.InfinityCategories.Sheaves
+
+variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u + 1}} [Quasicategory E]
+
+/-! ## 大域切断 -/
+
+/-- 概要：前層 F の大域切断の錐：添字全体の上の極限錐。
+方針：`HasLimit F` から錐を選ぶ。
+規約：選択を含む。頂点の等号は主張しない。
+使われ方：`globalSections`。 -/
+def globalSectionsCone (F : Presheaf 𝒞 E) (h : HasLimit F) : JoinCone F :=
+  h.choose
+
+lemma globalSectionsCone_isLimit (F : Presheaf 𝒞 E) (h : HasLimit F) :
+    IsLimitCone (globalSectionsCone F h) :=
+  h.choose_spec
+
+/-- 概要：大域切断 Γ(F) = lim_{N(𝒞)^op} F。
+方針：選んだ極限錐の頂点。
+規約：E の頂点。
+使われ方：RΓ の定義。Mathlib の 1 圏版は `Sheaf.ΓNatIsoLim`。 -/
+def globalSections (F : Presheaf 𝒞 E) (h : HasLimit F) : E _⦋0⦌ :=
+  (globalSectionsCone F h).vertex
+
+/-- 概要：E が presentable なら任意の前層が大域切断を持つ。
+方針：`IsPresentable.hasLimit`（形状 `nerve 𝒞ᵒᵖ : SSet.{u}` を持ち上げたもの）。
+規約：𝒞 が小さいことを使う。
+使われ方：Γ の存在。 -/
+lemma hasLimit_presheaf (hE : IsPresentable E) (F : Presheaf 𝒞 E) : HasLimit F :=
+  hE.hasLimit F
+
+/-! ## 層化（反射のデータ） -/
+
+/-- 概要：前層の関手 ∞ 圏（HTT 1.2.7.3）。
+方針：内部 Hom `ihom`。頂点が `Presheaf 𝒞 E` に対応する。
+規約：quasicategory（E が quasicategory なら ihom もそう）。
+使われ方：層化を反射的部分圏として述べる土台。 -/
+abbrev PresheafCat (𝒞 : Type u) [SmallCategory 𝒞] (E : SSet.{u + 1}) : SSet.{u + 1} :=
+  (ihom (presheafShape 𝒞)).obj E
+
+/-- 概要：関手 ∞ 圏の頂点を単体的集合の射として読む。
+方針：`functorVertex` の逆（Core/FullSubcomplexInternalHom）。
+規約：全単射。
+使われ方：`sheafProperty`。
+要確認：Core の正確な名前（`functorVertex` と yoneda）。 -/
+def vertexToPresheaf (F : (PresheafCat 𝒞 E) _⦋0⦌) : Presheaf 𝒞 E :=
+  sorry -- Core の functorVertex の逆
+
+/-- 概要：関手 ∞ 圏の頂点が J 層であるという性質。
+方針：`IsSheaf` を `vertexToPresheaf` で引き戻す。
+規約：Prop。
+使われ方：層の充満部分 ∞ 圏、反射。 -/
+def sheafProperty (J : GrothendieckTopology 𝒞) : (PresheafCat 𝒞 E) _⦋0⦌ → Prop :=
+  fun F => IsSheaf J (vertexToPresheaf F)
+
+/-- 概要：層化のデータ：層への反射。
+方針：F2/Presentable の `IsReflectiveSubcategory`（左随伴付きの充満部分圏）。
+規約：存在は S4（`sheafification_exists`）。ここでは与えられたものとして使う。
+使われ方：RΓ。 -/
+abbrev Sheafification (J : GrothendieckTopology 𝒞) (E : SSet.{u + 1}) [Quasicategory E] : Prop :=
+  IsReflectiveSubcategory (PresheafCat 𝒞 E) (sheafProperty (E := E) J)
+
+/-- 概要：層化の存在（HTT 6.2.2.7、5.5.4.15）：E が安定・presentable なら層は反射的部分圏。
+方針：被覆篩の単射 S ⊗ M → h_U ⊗ M（M は E の生成系）の小さい集合 W に関する局所対象が層であることと、
+presentable 圏の小さい W に関する局所化の存在（`isReflectiveSubcategory_of_localReplacements` と、局所置換の存在）。
+規約：G3（E = D(A) の presentable 性）、G4、G6、G8 を前提にする。
+使われ方：RΓ の存在。S4。 -/
+theorem sheafification_exists (J : GrothendieckTopology 𝒞) [IsStable E] (hE : IsPresentable E) :
+    Sheafification J E := by
+  sorry -- S4：W の構成、層 ⇔ W 局所、HTT 5.5.4.15（G4・G6・G8）
+
+/-- 概要：与えられた反射で F を層化した前層 F^♯。
+方針：反射関手の頂点での値を `vertexToPresheaf` で読む。
+規約：選択を含む（反射関手の選択）。
+使われ方：RΓ。
+要確認：`IsReflectiveSubcategory` の中身（関手と随伴の `∃`）から関手を取り出す形。 -/
+def sheafify (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
+    Presheaf 𝒞 E :=
+  sorry -- 反射関手 L を選び、F の頂点の像を読む
+
+lemma isSheaf_sheafify (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
+    IsSheaf J (sheafify J hJ F) := by
+  sorry -- 反射の像は部分圏に入る
+
+/-- 概要：層化の単位 F → F^♯（前層の射＝単体的ホモトピー）。
+方針：随伴の単位の成分。
+規約：E3 の `NatInfinity`（`SSet.Homotopy`）と同じ形。
+使われ方：層の場合に F^♯ ≃ F（`sheafify_of_isSheaf`）、RΓ の関手性。 -/
+def sheafifyUnit (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
+    SSet.Homotopy F (sheafify J hJ F) :=
+  sorry -- 随伴の単位
+
+/-- 概要：層の層化は（単位を通して）自分自身。
+方針：反射的部分圏の対象で単位は同値。
+規約：同値は関手 ∞ 圏の辺の可逆性で述べる。
+使われ方：Cor 3.12 の後、RΓ(O_Δ) = Γ(O_Δ)。 -/
+lemma sheafifyUnit_isEquivalence_of_isSheaf (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
+    {F : Presheaf 𝒞 E} (hF : IsSheaf J F) :
+    True := by -- 要確認：辺の可逆性の述語（FunctorIso か IsEquivalence 辺）を入れる
+  sorry
+
+/-! ## RΓ -/
+
+/-- 概要：RΓ(J, F) := Γ(F^♯)。
+方針：層化してから大域切断。
+規約：値は選んだ極限錐の頂点。Čech 層の RΓ（モジュールの規約）。
+使われ方：A0 Not 4.16、A5 Prop 8.5、A6 Cor 8.11。 -/
+def derivedGlobalSections (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
+    (hE : IsPresentable E) (F : Presheaf 𝒞 E) : E _⦋0⦌ :=
+  globalSections (sheafify J hJ F) (hasLimit_presheaf hE _)
+
+/-- 概要：RΓ の錐：F^♯ 上の極限錐と、単位を通した F 上の錐。
+方針：`globalSectionsCone` と `sheafifyUnit` の合成。
+規約：使う側はこの錐の普遍性で RΓ を特徴づける（E3 の `BSLimitConeData` と同じ規約）。
+使われ方：脚注 10 の補題との比較。 -/
+def derivedGlobalSectionsCone (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
+    (hE : IsPresentable E) (F : Presheaf 𝒞 E) : JoinCone (sheafify J hJ F) :=
+  globalSectionsCone (sheafify J hJ F) (hasLimit_presheaf hE _)
+
+/-- 概要：層 F については RΓ(J, F) は F 自身の極限（Γ(F)）。
+方針：`sheafifyUnit_isEquivalence_of_isSheaf` と、同値な図式の極限の比較。
+規約：同値は E の辺の可逆性。
+使われ方：Cor 3.12 の後に Δ_{R/A} = lim O_Δ、脚注 10 で Tot と比較。 -/
+theorem derivedGlobalSections_of_isSheaf (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
+    (hE : IsPresentable E) {F : Presheaf 𝒞 E} (hF : IsSheaf J F) :
+    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F := by
+  sorry -- 単位が同値なので F 上の極限錐へ移送
+
+/-- 概要：前層の射 F → G（単体的ホモトピー）から RΓ の辺 RΓ(F) → RΓ(G)。
+方針：層化の関手性と極限の関手性。
+規約：辺は E の 1 単体。
+使われ方：O_Δ の Frobenius から Δ_{R/A} の Frobenius（A0）。 -/
+def derivedGlobalSections_map (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
+    (hE : IsPresentable E) {F G : Presheaf 𝒞 E} (η : SSet.Homotopy F G) :
+    E.Edge (derivedGlobalSections J hJ hE F) (derivedGlobalSections J hJ hE G) :=
+  sorry -- 層化の関手性と極限の普遍性
+
+/-- 概要：位相を粗くしても層である前層の RΓ は変わらない（Rem 4.5 の形）。
+方針：J ≤ J′ で F が J′ 層なら J 層でもあり、どちらの RΓ も Γ(F)。
+規約：`derivedGlobalSections_of_isSheaf` の系。
+使われ方：原典 Rem 4.5・Prop 8.5 の「位相によらない」。 -/
+theorem derivedGlobalSections_of_le (J J' : GrothendieckTopology 𝒞) (h : J ≤ J')
+    (hJ : Sheafification J E) (hJ' : Sheafification J' E) (hE : IsPresentable E)
+    {F : Presheaf 𝒞 E} (hF : IsSheaf J' F) :
+    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F ∧
+      c.vertex = derivedGlobalSections J' hJ' hE F := by
+  sorry -- 両方 Γ(F)
+
+end SerrePositivity.InfinityCategories.Sheaves

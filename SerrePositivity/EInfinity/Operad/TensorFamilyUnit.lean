@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.SchurComposition
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
 
 /-!
 # 一要素の有限テンソル族の比較同型と単位子

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence
+public import SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadResolutionPresentation
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 

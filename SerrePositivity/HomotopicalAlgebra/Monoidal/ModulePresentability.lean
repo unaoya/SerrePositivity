@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Smith.ConservativeAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Smith.Smallness
-public import SerrePositivity.CategoryTheory.Monoidal.FreeModule
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleColimits
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Limits
 
 /-! # Local presentability of actual internal modules
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SimplicialPath
 public import SerrePositivity.KST.SConstruction.DiagonalReduction
-public import SerrePositivity.CategoryTheory.Simplex.PrefixInterval
+public import SerrePositivity.CategoryTheory.Simplex.Prefix
 
 /-! # 経路構成の対角の実際の収縮
 概要：経路構成の対角は元の零段へ区間ホモトピーで変形収縮する。

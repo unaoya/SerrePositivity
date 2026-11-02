@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.FiniteBijection
+public import SerrePositivity.CategoryTheory.Limits
 
 /-!
 # 互換 import

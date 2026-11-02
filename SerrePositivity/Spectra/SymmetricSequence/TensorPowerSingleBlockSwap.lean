@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSequence.TensorPowerCommutativity
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
 
 /-! # 第1段と任意の段のブロック交換
 

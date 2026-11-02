@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalNaturality
 public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
 /-!
 # 相対自然変換の固定語での実際の nerve ホモトピー

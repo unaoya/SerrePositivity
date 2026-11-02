@@ -1,0 +1,134 @@
+[
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveHomotopy",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopyUniverse",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexEndpoint",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexStart",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexStart",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexFirstFunctor",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveVertices",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveVertices",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.SimplexChainVertices",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexChainVertices",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.ElementsChainLifting",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsNaturalPrecomp",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.KanQuillen",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.ResolutionHom",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.SimplicialLevel",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  }
+]

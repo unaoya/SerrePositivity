@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PointwisePushoutApex
 public import SerrePositivity.KST.SConstruction.CofiberEvaluations
 public import SerrePositivity.KST.SConstruction.ColimitComparison
-public import SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange
+public import SerrePositivity.CategoryTheory.Monoidal.Braided
 
 /-! # 元の標的で選んだ図式の押し出しの普遍性
 概要：C 内の同じ押し出し選択が二重関手圏でも普遍四角形を与える。

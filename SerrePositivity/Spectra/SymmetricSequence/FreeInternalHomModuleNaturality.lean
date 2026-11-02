@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation
 

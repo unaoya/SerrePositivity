@@ -19,21 +19,22 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
 <h1>第 4 章　prismatic site と HT 比較の定式化（§4）</h1>
-<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.36–45。E3 に必要な項目だけを載せる（判定は <a href="#items-04">原典の項目一覧</a>）。</p>
+<p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。方針と差の評価は 2026-11-02 に追記。原典 pp.36–45。E3 に必要な項目だけを載せる（判定は <a href="#items-04">原典の項目一覧</a>、原典との差の評価は <a href="#diff-04">末尾</a>）。</p>
 <p>固定した有界 prism \((A,I)\) と p 完全 smooth な \(A/I\) 代数 \(R\) について、prismatic site \((R/A)_\Delta\) とその構造層のコホモロジー \(\Delta_{R/A}\) を定義し（§4.1）、HT 比較を定式化し（§4.2）、Čech–Alexander 複体で \(\Delta_{R/A}\) を具体的に計算する（§4.3）。この章の内容は全て未形式化で、A0 の範囲。</p><div class="box">
-<p class="label">方針（2026-10-25 決定）</p>
+<p class="label">方針（2026-10-25 決定、2026-11-02 追記）</p>
 <p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
+<p><b>2026-11-02</b>：定義は原典のまま入れ、定理だけ E3 に要る特別な場合に絞る。すなわち Def 4.1 の site（圏・平坦位相・構造層）と Not 4.16 の \(\Delta_{R/A}=R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\) をそのまま定義にし、Čech–Alexander 複体（Construction 4.17・4.18）が \(\Delta_{R/A}\) を計算することは定理（脚注 10 と Cor 3.12）にする。\(R\Gamma\) は ∞ 圏的に、D(A) 値前層の層化 \(F\mapsto F^\sharp\) と大域切断 \(\Gamma(F^\sharp)=\lim F^\sharp\) で定義する（設計書 <a href="../../../formalization-plans/bhatt-scholze/infinity-sheaves-design.md">infinity-sheaves-design.md</a>）。層は HTT 6.2.2.6 の意味（Čech 層）で、hypersheaf との差は D17 に記す。大きい site は濃度 \(\le\kappa\) で切り落とす（D16）。向き付き・有界な基底 prism に限り（ノート D5）、完備化は導来完備化の \(H^0\) で、離散性は Lemma 3.7(2) の定理とする。</p>
 </div>
 <h2>1. prismatic site（§4.1）</h2>
 <p><b>Def 4.1.</b> \((X/A)_\Delta\)：有界 prism の射 \((A,I)\to(B,IB)\) と \(\mathrm{Spf}(B/IB)\to X\) の組の圏。被覆は忠実平坦な prism の射。構造層 \(\mathcal O_\Delta(B)=B\)、\(\overline{\mathcal O}_\Delta(B)=B/IB\)。Cor 3.12 で site で、\(\mathcal O_\Delta\) は層。<b>Rem 4.3・4.5</b>：位相（flat・étale・Zariski）によらず同じコホモロジー。<b>Rem 4.6</b>：完全 prismatic site は perfectoid 環への写像の圏と同じ（§8 で使う）。<b>Lemma 4.8</b>：完全 prism \((A,I)\) と任意の prism \((B,J)\) について、環準同型 \(A/I\to B/J\) は prism の射に一意に持ち上がる。<b>証明</b>：\(A=W(\text{完全})\) は p 完全に \(L_{A/\mathbb Z_p}=0\) なので変形理論で \(A\to B\) に一意に持ち上がる。δ 射であることは、\(A\to B\) が逆極限の完全化 \(B^{\mathrm{perf}}=\lim_\varphi B\)（p ねじれなしの完全 δ 環）を経由することから。</p>
 <div class="box">
 <p class="label">A0 で要る範囲</p>
-<p>E3 で使うのは affine な R、特に多項式代数だけ。\(\Delta_{R/A}\) は §4.3 の Čech–Alexander 複体で定義でき、site・topos・étale 層との関係（Construction 4.4、Rem 4.3・4.5）は形式化しなくてよい見込み。ただし Lemma 7.7(3)・Prop 8.5 は「\(\Delta_{R/A}=\lim_{C\in(R/A)_\Delta}C\)」（圏上の極限としての記述）を使うので、「弱始対象の Čech 脈体の totalization が圏上の極限を計算する」という一般的な事実（脚注 10）は要る。Lemma 4.8 は、標的が完全 prism なら Thm 3.10 の射の一意持ち上げ（<code>existsUnique_perfectPrismHomLift</code>）で足りる。一般の標的（Prop 7.10 で使う）には変形理論（\(W\)(完全) の p 完全な形式エタール性）と逆極限の完全化が要る（A3）。</p>
+<p>E3 で使うのは affine な R、特に多項式代数だけ。定義は原典どおり site の \(R\Gamma\)（2026-11-02 の方針。それ以前の「Čech–Alexander 複体を定義に使い、site は避ける」見込みは取り下げた）。site の圏・平坦位相・\(\mathcal O_\Delta\) は定義し、Cor 3.12（\(\mathcal O_\Delta\) が層で、忠実平坦な Čech 脈体に沿って導来降下する）は一般の形で証明する。étale 層との関係（Construction 4.4、Rem 4.3・4.5）は要らない。Lemma 7.7(3)・Prop 8.5 と Construction 4.18 が使う「弱終対象の Čech 脈体の totalization が圏上の極限を計算する」という一般論（脚注 10）は、∞ 層の設計書の S3。Lemma 4.8 は、標的が完全 prism なら Thm 3.10 の射の一意持ち上げ（<code>existsUnique_perfectPrismHomLift</code>）で足りる。一般の標的（Prop 7.10 で使う）には変形理論（\(W\)(完全) の p 完全な形式エタール性）と逆極限の完全化が要る（A3）。</p>
 </div>
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Def 4.1</td><td>prismatic site と構造層</td><td class="todo">未</td><td>A0。affine の場合だけ。Čech–Alexander 複体を定義に使い、圏上の極限との一致を示す</td></tr>
+<tr><td>Def 4.1</td><td>prismatic site と構造層</td><td class="todo">未</td><td>A0。affine の R について、濃度 \(\le\kappa\) の向き付き有界 prism の圏（D16）、忠実平坦射が生成する位相、\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) をそのまま定義する。site の公理と層性は Cor 3.12（定理）</td></tr>
 <tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>A0・A4（Lemma 8.4・Prop 8.5）</td></tr>
 <tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="ok">済（有界な標的）</td><td>標的が<b>有界</b>な向き付き prism の場合 <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>、一意性 <a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:199</a>）。Rem 7.15 の照合のために作られたもので、主経路外。標的が完全な場合は Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>、主経路）。原典は標的を任意の prism とするが、prismatic site の対象は有界なので E3 にはこれで足りる。証明は原典の変形理論（\(L_{A/\mathbb Z_p}\) の消滅）ではなく tilt の比較と Witt 持ち上げの一意性。BR33 に沿って BS-W7 で André の下から Prism/ へ移した</td></tr>
 </table></div>
@@ -58,15 +59,17 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <ul>
   <li><b>向き付きで足りるか</b>：Construction 4.17 の対象 C・D は、固定した向き付き基底 \((A,(d))\) 上では剛性（Lemma 3.5）により \(IC=dC\) で単項。向き付き prism のまま進められる。</li>
   <li><b>離散版で足りるか</b>：多項式代数の \(J_0\) は正則列で生成されるので、Prop 3.13 の envelope は離散で平坦（Cor 2.44 の離散版、T2-3）。Čech 脈体の各項も同じ形なので、単体的環は要らない見込み。</li>
-  <li><b>要る部品</b>：自由 δ-A 代数の完備化（既存の相対自由 δ 環 + Lemma 2.17）、δ 環の完備テンソル積（T2-0、Čech 脈体と余積）、Prop 3.13 の一般形（T3-4）、Lemma 4.22（導来完備化と Koszul 複体の一般論、共通基盤の DerivedCompletion にある部品を確認）、弱始対象の Čech 脈体が圏上の極限を計算するという一般論（∞ 圏側の極限か、具体的な cosimplicial の計算か）。</li>
+  <li><b>要る部品</b>：自由 δ-A 代数の完備化（既存の相対自由 δ 環 + Lemma 2.17）、δ 環の完備テンソル積（T2-0、Čech 脈体と余積）、Prop 3.13（定義は普遍性、存在は Ex 3.14 の場合の定理。T3-4）、Lemma 4.22（導来完備化と Koszul 複体の一般論、共通基盤の DerivedCompletion にある部品を確認）、弱終対象の Čech 脈体が圏上の極限を計算するという一般論（∞ 層の設計書 S3。∞ 圏側の極限として述べる）。</li>
+  <li><b>\(\Delta_{R/A}\) の定義（2026-11-02）</b>：Not 4.16 どおり \(R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\)。∞ 層の設計書の <code>derivedGlobalSections</code>（層化してから site 上の極限）で、値は D(A)。Čech–Alexander 複体がこれを計算することは、Cor 3.12（\(\mathcal O_\Delta\) は層なので層化で変わらない）と脚注 10 から出る定理。乗法構造（Construction 7.6 の可換代数対象）は A2・A4 で CAlg 値の同じ構成を作って結ぶ（D18）。</li>
   <li><b>最初の単位</b>：\(R=A/d\langle X\rangle\)、\(B_0=A\langle X\rangle\)（Rem 4.19）。\(C^n\) は \(A\langle X_0,\dots,X_n\rangle\) の δ 完備化に \((X_i-X_j)/d\) を添加した envelope で、具体的に書ける。</li>
 </ul>
 </div>
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Not 4.16、Constr 4.17</td><td>弱始対象（多項式代数の envelope）</td><td class="todo">未</td><td>A0。入力は Prop 3.13（T3-4）、T2-0</td></tr>
-<tr><td>Constr 4.18</td><td>Čech–Alexander 複体</td><td class="todo">未</td><td>A0</td></tr>
+<tr><td>Not 4.16</td><td>\(\Delta_{R/A}=R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\)、\(\overline\Delta=\Delta\otimes^L_AA/I\)</td><td class="todo">未</td><td>A0。∞ 層の設計書の RΓ（S2）で定義。D16・D17</td></tr>
+<tr><td>Constr 4.17</td><td>弱始対象（多項式代数の envelope）</td><td class="todo">未</td><td>A0。入力は Prop 3.13（普遍性で定義、Ex 3.14 の場合に存在。T3-4）、T2-0</td></tr>
+<tr><td>Constr 4.18</td><td>Čech–Alexander 複体が \(\Delta_{R/A}\) を計算する</td><td class="todo">未</td><td>A0。脚注 10（S3）と Cor 3.12 から。B₀ は R の台集合上の多項式環（原典の strictly functorial な選び方）</td></tr>
 <tr><td>Rem 4.19</td><td>affine 直線の底変換と両立する複体</td><td class="todo">未</td><td>A0。最初の実装単位</td></tr>
 <tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
 <tr><td>Lemma 4.22</td><td>有限 Tor 振幅の完備底変換と totalization</td><td class="todo">未</td><td>A0・A5</td></tr>
@@ -74,7 +77,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>§4 prismatic site と HT 比較の定式化 の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
-<tr><td>Def 4.1</td><td>prismatic site</td><td class="todo">未</td><td>affine の場合だけ。Čech 模型で定義すれば site 自体は避けられる見込み（A0）</td></tr>
+<tr><td>Def 4.1</td><td>prismatic site</td><td class="todo">未</td><td>affine の場合だけ。原典どおり site を定義する（2026-11-02、D16）。A0</td></tr>
 <tr><td>Rem 4.2・4.3、Constr 4.4、Rem 4.5</td><td>位相の変種、topos、étale 層</td><td class="no">不要</td><td></td></tr>
 <tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>Lemma 8.4 で使う（A0・A4）</td></tr>
 <tr><td>Rem 4.7</td><td>絶対 prismatic site</td><td class="no">不要</td><td>Prop 7.2 用。迂回済み</td></tr>
@@ -83,10 +86,20 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Thm 4.11</td><td>HT 比較</td><td class="todo">未</td><td>A1（証明は §5・§6）</td></tr>
 <tr><td>Cor 4.12</td><td>底変換</td><td class="todo">未</td><td>A1</td></tr>
 <tr><td>Rem 4.13・4.14、Prop 4.15</td><td>Higgs、持ち上げの障害、余接複体</td><td class="no">不要</td><td></td></tr>
-<tr><td>Not 4.16、Constr 4.17・4.18、Rem 4.19</td><td>弱始対象、Čech–Alexander 複体、affine 直線</td><td class="todo">未</td><td>A0 の中心</td></tr>
+<tr><td>Not 4.16</td><td>\(\Delta_{R/A}\) の定義（site の RΓ）</td><td class="todo">未</td><td>A0。∞ 層の設計書の RΓ で定義（D17）</td></tr>
+<tr><td>Constr 4.17・4.18、Rem 4.19</td><td>弱始対象、Čech–Alexander 複体、affine 直線</td><td class="todo">未</td><td>A0 の中心。Δ を計算することは定理</td></tr>
 <tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">未</td><td>A0</td></tr>
 <tr><td>Lemma 4.21</td><td>étale 局所化</td><td class="no">不要</td><td>多項式代数からの左 Kan 延長で済ませる場合</td></tr>
 <tr><td>Lemma 4.22</td><td>完備底変換と totalization</td><td class="todo">未</td><td>A0・A5（Prop 8.5 でも使う）</td></tr>
+</table></div>
+
+<h2 id="diff-04">原典との差の評価</h2>
+<p>この章で原典と定義・経路が違う箇所ごとに、それぞれの利点・欠点を比べる。<b>方針</b>：定義は原典のまま入れ、避けられない差だけを記す。D 番号は全章で通す。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
+<tr><td>D16</td><td>Def 4.1 の site は有界 prism 全体（大きい圏）</td><td>台集合の濃度 \(\le\kappa\) の prism（Type u）に切り落とす。\(\kappa=(\#A+\#R+\aleph_0)^{\aleph_0}\) を既定値にし、\(\kappa^{\aleph_0}=\kappa\) で証明中の構成（Čech–Alexander、押し出し、André 拡大、perfectoid 化、p 冪根）が閉じる</td><td>小さい site で層化と \(\Gamma=\lim\) が存在し、\(\Delta\) が Type u に収まる。大きい平坦 site では一般の前層の層化が存在しないことがある（Waterhouse 1975）ので、層化を使う定義には必須</td><td>定義に \(\kappa\) が入る。\(\kappa\) 不変性（\(\kappa_0\le\kappa\le\kappa'\) で \(R\Gamma\) が一致）は Cor 3.12 と脚注 10 から出る定理で、\(\mathcal O_\Delta\) にだけ主張する</td><td>原典は集合論の処置を省いている（Stacks の「十分大きい基数で切る」と同じ）。数学的内容は変わらない</td><td>Lean を保つ。宇宙を上げる案（Mathlib の ℓ 進コホモロジーの方式）は、基盤の D(A) と E3 の界面が Type u で閉じているので採らない</td></tr>
+<tr><td>D17</td><td>\(R\Gamma\) は 1 topos の層係数コホモロジー（古典的な導来関手。∞ 圏の言葉では hypercomplete な層の大域切断、SAG 2.1.2.3）</td><td>HTT 6.2.2.6 の層（被覆篩に沿う降下。Čech 層）の層化 \(F^\sharp\) と \(\Gamma(F^\sharp)=\lim F^\sharp\) で定義する（∞ 層の設計書 D-S1、案 1）</td><td>hypercover・∞ 連結射・層の t 構造が要らない。§8 の arc 位相の「層」もこの意味</td><td><b>ずれ</b>：非有界な前層 \(F\) では、site の Postnikov 塔が収束しないとき \(\Gamma(F^\sharp)\) と古典的 \(R\Gamma=\Gamma(F^{\mathrm{hyp}})\) が異なりうる（Dugger–Hollander–Isaksen 2004 の例）。有界（特に離散）な Čech 層は hypersheaf なので一致する。E3 までに \(R\Gamma\) を当てる前層（\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\)・完全 site の \(\mathcal O\)・arc 位相の \(\mathcal O\)）はすべて離散</td><td>Čech 層の方が短い。原典は離散な層にしか \(R\Gamma\) を当てない</td><td>案 1 を保つ。\(\mathcal O_\Delta\) について「離散な Čech 層 ⇒ hypersheaf、\(\Gamma\) は古典的 \(R\Gamma\)」を Cor 3.12 の系として定理に置き、<code>derivedGlobalSections</code> の docstring と解説付録 A にも注意を書く。非有界な前層に \(R\Gamma\) を当てる必要が出たら hypersheaf 化を加える</td></tr>
+<tr><td>D18</td><td>\(\Delta_{R/A}\) は（Construction 7.6 で）\((p,I)\) 完備な D(A) の可換代数対象</td><td>まず D(A) の対象として定義し、CAlg 値の同じ構成（層化と \(\Gamma\) を CAlg_R で）を A2・A4 で作って、忘却が極限を保つこと（証明済み）で結ぶ</td><td>E3 の界面が D(R) 版と CAlg 版の二本立てなのと同じ形で、既存の橋がそのまま使える</td><td>二度構成する。CAlg_R の presentable 性は未確認</td><td>—</td><td>A2・A4 の設計で確定</td></tr>
 </table></div>
 
 <h2>リファクタの候補</h2>
@@ -94,9 +107,10 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <h2>この章で押さえること</h2>
 <ol class="checks">
-  <li>E3 に要るのは多項式代数の \(\Delta_{R/A}\) で、Čech–Alexander 複体（Construction 4.17・4.18）で具体的に定義・計算できる。site と topos の一般論は避けられる見込み。</li>
+  <li>E3 に要るのは多項式代数の \(\Delta_{R/A}\)。定義は原典どおり site の \(R\Gamma\)（∞ 層の設計書、Čech 層、濃度 \(\le\kappa\) の切り落とし）で、Čech–Alexander 複体（Construction 4.17・4.18）がそれを計算することは定理（脚注 10 と Cor 3.12）。</li>
   <li>固定した向き付き基底の上では envelope も単項のままなので、向き付き prism で進められる。正則列なので離散版で足りる見込み。</li>
-  <li>部品：自由 δ 代数の完備化、δ 環の完備テンソル積（T2-0）、Prop 3.13（T3-4）、Lemma 4.22、弱始対象の Čech 脈体と極限の一般論。最初の単位は affine 直線（Rem 4.19）。</li>
+  <li>部品：∞ 層の一般論（設計書 S1〜S7）、自由 δ 代数の完備化、δ 環の完備テンソル積（T2-0）、Prop 3.13（T3-4）、Cor 3.12、Lemma 4.22。最初の単位は Def 4.1・Not 4.16 の定義と affine 直線（Rem 4.19）。</li>
+  <li>原典との差は D16（κ）・D17（Čech 層と hypersheaf のずれ）・D18（D(A) 値と CAlg 値）。D17 のずれは離散な層では消える。</li>
 </ol>
 </main>
 </body>

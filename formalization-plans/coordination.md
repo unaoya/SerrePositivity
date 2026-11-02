@@ -12,7 +12,7 @@
 | ∞ 基盤 | Codex（∞） | [infinity-foundation-plan.md](infinity-foundation-plan.md) | [IF-W0-3 §10.12〜10.16](infinity-codex-w0-3.md)、`targets/batch-w1w2a.md` | `../SerrePositivity-ifw0-3`、`infra/if-w0-3` |
 | DG の整理 | Codex（DG） | [dg-cleanup-plan.md](dg-cleanup-plan.md) | [DG-W2](dg-codex-w2.md) | `../SerrePositivity-dgw1`、`infra/dg-w2` |
 | 論文の層 | Claude Code（別セッション、自分で実装） | [refactor-plan.md](refactor-plan.md) | 先方が自分で管理。伝達文 [handover-ct-to-infinity](handover-ct-to-infinity-2026-10-30.md) §8〜§10 | main で作業（凍結中は worktree） |
-| BS | 人が主導の別セッション | [bhatt-scholze/](bhatt-scholze/) | — | 論文の層の区切り 2a・2b で時間を合わせる |
+| BS | 人が主導の別セッション。**設計のみ再開（11-02）**：E3 を消す道筋は stage2 の A 案（[bhatt-scholze-stage2.md](bhatt-scholze/bhatt-scholze-stage2.md) §3）、最初の範囲は A0〜A1。**ビルドなし**（`lake build`・`lake env lean`・監査を行わない）。触るのは `exposition/ja/bs/`・`formalization-plans/bhatt-scholze/` だけで、Lean の骨組みは `formalization-plans/bhatt-scholze/drafts/`（`SerrePositivity/` の外。root からも監査からも届かない）。**コードを書く段階に入るときは暦（§3）に載せてから**（単体の `lake build <module>` でも他の全ビルドと重ねない）。**∞ 層の一般論の設計を含む**（11-02 追加：D(A) 値前層の層化と RΓ。drafts/ 内。∞ 側への依頼は設計書 `infinity-sheaves-design.md` の後で、置き場所と窓は調整役が判断。置き場所は 11-02 に決定：新しい層 `InfinityCategories/Sheaves/`（StablePresentable の上・ModelBridge の下）、F2 の一般論 G4・G6・G8 は `F2/Presentable/`、D(A) への適用は `Derived/`。実装は段 G、開始は W2b の後（[infinity-foundation-plan.md](infinity-foundation-plan.md) 段 G の M12）。**設計段階の到達点（11-02 夕、main 771fc9756、正本 `bhatt-scholze/design-status.md`）**：設計書 3 本（∞ 層・A0・A1）、骨組み 13 本（Sheaves 3・A0 3・A1 2・Shared 3・DerivedGeneral 2）。DerivedGeneral 2 本（D(A) の t 構造と Postnikov 切り捨て、導来 (p,d) 完備化の ∞ 関手）は `InfinityCategories/Derived/` 行き、段 G・W2b 後（完備化は 2b 後）＝計画の M13。Shared の一般論 3 本（余単体的環の Alexander–Whitney cup 積、余単体的加群の Bockstein、多項式代数の de Rham 複体）の置き場所は **2b の後に `HomologicalAlgebra/Cosimplicial/`・`CommutativeAlgebra/DeRham/`（新設）**とし、論文の層に名前を予約してもらう。A0-3b・3d・A0-4 は HA/DerivedCompletion の上なので **2b の改名表（HA/DerivedCompletion を含む）を BS へ回す**。統合は BS-W1〜W9 で完了済み（10-26） | [bhatt-scholze/](bhatt-scholze/) | — | 設計のみ。論文の層の 2a・2b は BS の区切りを待たずに暦に入れてよい（`BhattScholze/`・`CLMST/` を動かしても衝突しない）。**2a・2b で `BhattScholze/` のモジュール名・宣言名が変わったら、旧→新の対応表（コミットメッセージのもの）を Claude が BS セッションへ回す** |
 
 連絡はすべてユーザーが貼り付けで中継する。Codex への指示は指示書の追記（§番号）で出し、短い引き渡し文を添える。
 
@@ -37,16 +37,17 @@
 | 3 | ∞ の束を main へ取り込み、main を温める | 数分（Lake キャッシュから復元） | #2 PASS | **完了**（11-01 夜、merge。温めはキャッシュからの `lake build`） |
 | 4 | DG-W2(b)：main を取り込み → 複製 → D3 の move ＋ 土台でない 9 ディレクトリの統合 ＋ D5 → 内部検証（統合先だけビルド＋保存検査）→ 下流ビルド 約 7,200 本（2〜3 時間）→ verify | 約 4 時間 | #3。統合先の名前は承認済み | **完了**（11-02 昼：D3 move 33・D4 979 → 78・D5、下流 5,750 本 85 分、保存比較 PASS（個別照合 393・未説明 0）、verify 100／100） |
 | 5 | DG-W2(b) を main へ取り込み、main を温める | 数分（キャッシュ） | #4 PASS | **完了**（11-02 昼、merge） |
-| 6 | 論文の層の区切り 1-4（KTheory・Asymptotic・Paper の再構成、Perfect の 3 宣言を HA へ、`Asymptotic/DGVerdier/` を含める） | 先方の全体ビルド＋verify | #5 の後に**編集と直接 importer までの小さなビルド**は始めてよい（worktree で）。**全体ビルドと verify は #8a（∞ の束）が main に入った後**（11-02 改訂：順序を #8a → #6 に。∞ の束は今日 3〜5 時間、1-4 の全体ビルドは明朝） | 先方が準備完了・時刻待ち |
-| 7 | DG-W3：土台 5 ディレクトリの統合＋残りの D5（Paper の経路 326 本まで再ビルド） | 約 5 時間 | #6（Paper の再構成の後） | 未作成 |
-| 8 | IF-W0-4（完了）→ **IF-W2a-2（R76・R77・R67、下流 11,888 本 1 回）：#5 の直後、1-4 の全体ビルドより先** | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | **IF-W0-4 完了・取り込み済み**（11-01 夜、bddb9b570：Foundation 103 本・違反 0、runner のメモリ予算。初回は全件未計測で 2 並列・監査 44 分、次回から実測値で並列化）。IF-W2a-2 は草案（停止点 1）を先に、束のビルドは DG-W2(b) の後 |
-| 9 | 論文の層の区切り 2a・2b（BS の区切りに合わせる） | 先方 | BS の区切り | 先方 |
+| 6 | 論文の層の区切り 1-4（KTheory・Asymptotic・Paper の再構成、Perfect の 3 宣言を HA へ、`Asymptotic/DGVerdier/` を含める） | 先方の全体ビルド＋verify | #5 の後に**編集と直接 importer までの小さなビルド**は始めてよい（worktree で）。**全体ビルドと verify は #8a（∞ の束）が main に入った後**（11-02 改訂：順序を #8a → #6 に。∞ の束は今日 3〜5 時間、1-4 の全体ビルドは明朝） | 先方が準備完了・時刻待ち。**全ビルド可（11-02 16:45 に合図）** |
+| 7 | DG-W3：土台 5 ディレクトリの統合（48 統合先・608 元）＋残りの D5＋層の仕上げ（PerfectComplex の例外を外す、126 本の一覧） | 下流約 16,300 本、単独 4.5〜7 時間＋verify | #6（1-4 の後） | 指示書 作成済み（11-02）：[DG-W3](dg-codex-w3.md)。**事前の静的検査は完了**（11-02 夕、`ef951fa5d`：名前解決の候補 4 箇所・universe 608/608・最大 1,621 行。回答は §7）。開始は 1-4 の後に合図 |
+| 8 | IF-W0-4（完了）→ **IF-W2a-2（R76・R77・R67、下流 11,888 本 1 回）：#5 の直後、1-4 の全体ビルドより先** | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | **IF-W0-4 完了・取り込み済み**（11-01 夜、bddb9b570：Foundation 103 本・違反 0、runner のメモリ予算。初回は全件未計測で 2 並列・監査 44 分、次回から実測値で並列化）。IF-W2a-2 は草案（停止点 1）を先に、束のビルドは DG-W2(b) の後。**IF-W2a-2 完了・取り込み済み**（11-02 16:40、merge 5c909058e：R76 move 9・R77 95 → 25・R67 move 3、修飾 4・宇宙の明示 2、下流 11,550 本 1 時間 55 分、保存比較 v3b 2,033 宣言一致、verify 100/100 gate:true 39 分 45 秒・RSS 最大 37.5 GB、層検査 CategoryTheory → HotA 直接辺 1 → 0。main の温め 36 秒・29,714 ジョブ） |
+| 9 | 論文の層の区切り 2a・2b（CA の perfectoid 部分を BS へ、CLMST の分離、DerivedCompletion 第二層） | 先方の全ビルド 1 回ずつ | BS は設計のみ（Lean は `drafts/` 以下）なので時期は自由。他の全ビルドと重ねない。`BhattScholze/` の改名の旧→新の対応表を Claude が BS セッションへ回す | 先方。準備は 1-4 の後 |
 
 ## 4. いまの待ち条件（10-31 夜）
 
-- ∞ Codex：IF-W2a-2 の草案 28767dee9。11-02 昼に「束を始めてよい」を合図（main を取り込むと DG の `universe` 修正 7e1fb1dea と proof-irrelevant の道具が入る）。
-- DG Codex：DG-W2(b) 完了・取り込み済み。次は DG-W3 の指示書（Claude が作成。§14 の名前の隠蔽・§16 の universe の教訓を反映）。それまでビルドなし。
-- 論文の層：凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
+- ∞ Codex：**IF-W2a-2 完了・取り込み済み**（11-02 16:40、5c909058e）。次は IF-W2b（R73 → R37 → R38）の指示書を Claude が書く。それまでビルドなし。道具の回（`merge_modules.py` の循環検出、Python 試験の既存失敗、runner の既定予算 40 GB、`lake cache clean` の方針）は W2b の指示書に含めるか別に出す。
+- DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。
+- BS セッション：設計のみ再開（11-02、A 案 A0〜A1）。ビルドなし、Lean は `formalization-plans/bhatt-scholze/drafts/` 以下のみ、所有範囲だけを `--only` で main に直接コミット。コードを書く段階に入るときは BS が暦の空きを相談し、Claude が §3 に載せる。
+- 論文の層：**11-02 16:45 に「全ビルド可」を合図**（∞ の束が main に入った。1-4 の全ビルドと verify は今夜〜明朝、他の全ビルドと重ねない。取り込み後に Claude が main を温め、DG-W3 を合図）。再開の合図と一緒に伝えること：(1) 2b の改名表は `BhattScholze/` だけでなく `HomologicalAlgebra/DerivedCompletion/` の分も BS セッションへ回す（Claude 経由）。(2) 2b の後に BS の共有一般論 3 本が入る新しい下位ディレクトリ `HomologicalAlgebra/Cosimplicial/`・`CommutativeAlgebra/DeRham/` の名前を予約（HA の層の規則の中では第一層＝一般論の扱い）。凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
 - （11-01 実施）`~/.zshenv` に Lake キャッシュの 3 変数を設定（ユーザー）。使い終わった worktree `ifw0-1`・`ifw0-2` を削除（ブランチ `infra/if-w0-1`・`if-w0-2` は残してある。パッチは main に取り込み済み）。空き 344 → 447 GB。
 - （10-31 決定）調整役の交代は今はしない。#5（DG-W2(b) の取り込み）の後に §6 の目安で再判断。
@@ -55,6 +56,7 @@
 
 - 11-01：∞ の束の停止点 3 で、監査 2 本（`audit_homotopy_limits`・`audit_infinity_f2`）の import が束で動かした定義に届かず FAIL（他の 98 本は成功）。import を直した後の再検証は `VERIFY_CACHE=1`（gate:false）で、成功済みの 98 本はキャッシュの鍵（本文と閉包の olean ハッシュ）が同一なので当たり、2 本だけ実行する。この束ではこれを合否とする（IF-W0-3 §10.36）。
 
+- 11-02：main の温めは既定 target（ルート `SerrePositivity`）だけなので、ルートの閉包外（Spectra・Checks など）の olean は古いまま残る。main で `lake env lean` の探針を走らせると旧 olean（例：`InfinityCategories/ModelBridge/HA/Basic`）が読まれて「environment already contains」で失敗する。探針・監査は worktree で行う。1-4 の取り込み後の温めでは、verify の監査対象の一覧も含めてキャッシュから復元する（数分）。
 - 10-31：main の温め（#1）の後、`scripts/audit/dg.lean` は走らせていない（Checks/ の 300 本がルートの閉包外で未ビルドのため。verify の監査対象ビルドで作られる）。∞ の束の verify で確認する。
 
 - 10-31：DG-W1 の取り込み（194a65110）は、区切り 1-3 の後の merge で、merge 後の状態に全 verify を行っていない（領域が重ならず、重なりはルートの import 行だけ）。main の全ビルド（#1）と ∞ の束の verify（#2）で確認する。

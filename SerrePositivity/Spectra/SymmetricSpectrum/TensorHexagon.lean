@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry
 

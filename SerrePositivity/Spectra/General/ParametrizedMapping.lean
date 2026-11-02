@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.MappingObject
-public import SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Spectrum-parameter naturality of mapping-object representability -/
 

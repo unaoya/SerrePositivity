@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Enriched.TensorUnit
+public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorConstant
 
 /-! # The natural augmentation of the actual simplicial tensor diagram

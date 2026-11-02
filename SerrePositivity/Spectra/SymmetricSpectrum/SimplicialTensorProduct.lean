@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointProduct
 public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator
-public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-!
 # 直積による反復tensor・cotensorの比較

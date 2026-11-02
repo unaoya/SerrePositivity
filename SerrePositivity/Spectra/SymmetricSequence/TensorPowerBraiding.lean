@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSequence.PowerBijectionMonoidal
 public import SerrePositivity.Spectra.SymmetricSequence.TensorPowerSingleBlockSwap
-public import SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation
+public import SerrePositivity.CategoryTheory.Monoidal.Braided
 
 /-! # 反復テンソル関手のbraidingの保存と一般のブロック交換
 

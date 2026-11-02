@@ -3,7 +3,7 @@ module
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
-public import SerrePositivity.CategoryTheory.ElementsChainLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 
 /-!
 # 中断した任意モデル源への一般化：LabelledChain

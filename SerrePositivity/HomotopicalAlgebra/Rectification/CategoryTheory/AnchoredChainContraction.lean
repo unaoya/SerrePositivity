@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainNerve
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
 /-!
 # 中断した任意モデル源への一般化：AnchoredChainContraction

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
 
 /-! # 自由スペクトルを原変数とする内部Hom

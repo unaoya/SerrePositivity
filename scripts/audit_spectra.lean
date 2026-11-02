@@ -1,8 +1,8 @@
 -- lake build SerrePositivity.Spectra.Foundations の後に実行する。
 -- スペクトルと、そのための共通圏論・群論の公開宣言を標準公理のみで監査する。
 import SerrePositivity.Spectra.Foundations
-import SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor
-import SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction
+import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
+
 import SerrePositivity.Spectra.Pointed.SmashPushoutProduct
 import SerrePositivity.Spectra.ModelCategory.PointedGenerators
 import SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal
@@ -30,17 +30,17 @@ run_cmd do
     let mod := env.header.modules[idx.toNat]!.module
     unless #[`SerrePositivity.Spectra, `SerrePositivity.CategoryTheory.FunctorTransport,
         `SerrePositivity.HomotopicalAlgebra.Topological,
-        `SerrePositivity.CategoryTheory.AdjunctionHomLaws,
-        `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
-        `SerrePositivity.CategoryTheory.Monoidal,
+        `SerrePositivity.CategoryTheory.Adjunction.Comparison,
+        `SerrePositivity.CategoryTheory.Adjunction.Comparison,
+        `SerrePositivity.CategoryTheory.Monoidal, `SerrePositivity.CategoryTheory.Adjunction.Comparison, `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping, `SerrePositivity.CategoryTheory.Enriched.Simplicial, `SerrePositivity.CategoryTheory.Enriched.Transport,
         `SerrePositivity.CategoryTheory.Limits,
-        `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.FiniteBijection,
-        `SerrePositivity.CategoryTheory.FiniteBijectionAction,
-        `SerrePositivity.CategoryTheory.FiniteBijectionSum,
-        `SerrePositivity.CategoryTheory.FiniteBijectionShift,
-        `SerrePositivity.CategoryTheory.Groupoid.ThinComponents,
-        `SerrePositivity.CategoryTheory.FiniteBijectionInduction,
-        `SerrePositivity.CategoryTheory.FiniteBlockEquiv].any (·.isPrefixOf mod) do continue
+        `SerrePositivity.GroupTheory.Coxeter, `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits,
+        `SerrePositivity.CategoryTheory.Limits].any (·.isPrefixOf mod) do continue
     let axioms ← collectAxioms name
     let unexpected := axioms.filter fun ax ↦
       !(#[``propext, ``Classical.choice, ``Quot.sound].contains ax)
@@ -62,12 +62,12 @@ run_cmd do
       `SerrePositivity.Spectra.ModelCategory.SimplicialGenerators,
       `SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy,
       `SerrePositivity.Spectra.Pointed.SmashPushoutProduct,
-      `SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport,
+      `SerrePositivity.CategoryTheory.Adjunction.Comparison,
       `SerrePositivity.Spectra.General.ParametrizedCotensor,
       `SerrePositivity.Spectra.General.ParametrizedMapping,
-      `SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering,
-      `SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor,
-      `SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
+      `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping,
       `SerrePositivity.Spectra.General.MappingFunctorComparison,
       `SerrePositivity.Spectra.General.TensorCotensorEnriched,
       `SerrePositivity.Spectra.General.TensorMappingObject,
@@ -88,8 +88,8 @@ run_cmd do
       `SerrePositivity.Spectra.ModelCategory.LevelFromGenerators,
       `SerrePositivity.Spectra.ModelCategory.FreeLevelCofibrations,
       `SerrePositivity.Spectra.ModelCategory.MonoidalLevel,
-      `SerrePositivity.CategoryTheory.Groupoid.ThinComponents,
-      `SerrePositivity.CategoryTheory.FiniteBijectionInduction,
+      `SerrePositivity.CategoryTheory.Limits,
+      `SerrePositivity.CategoryTheory.Limits,
       `SerrePositivity.Spectra.General.Basic,
       `SerrePositivity.Spectra.General.StructureMaps,
       `SerrePositivity.Spectra.General.FreeLevels,

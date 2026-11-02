@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import Mathlib.Tactic.FinCases
 
 /-!

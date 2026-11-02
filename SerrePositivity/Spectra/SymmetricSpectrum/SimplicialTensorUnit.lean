@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointUnit
 public import Mathlib.CategoryTheory.Adjunction.Unique
-public import SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # 零次標準単体によるtensor・cotensorの単位比較 -/
 

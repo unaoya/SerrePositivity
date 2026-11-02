@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal
 public import SerrePositivity.Spectra.SymmetricSpectrum.Tensor
 
 /-! # 球面上のテンソル積の結合自然同型

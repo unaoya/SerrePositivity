@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.Basic
-public import SerrePositivity.CategoryTheory.Monoidal.FreeModule
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
 
 /-! # Free Sym(K) modules and their universal property -/
 

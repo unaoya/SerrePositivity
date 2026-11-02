@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.PointwiseTensor
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSequence.UnshiftedInternalHom
 
 /-! # Pointwise cotensor of general symmetric spectra

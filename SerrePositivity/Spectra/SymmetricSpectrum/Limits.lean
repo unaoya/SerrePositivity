@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleColimits
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Limits
 public import SerrePositivity.Spectra.SymmetricSequence.Limits
 public import SerrePositivity.Spectra.SymmetricSpectrum.Evaluation
 

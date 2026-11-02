@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
+
 public import SerrePositivity.Spectra.SymmetricSequence.SpherePermutationAction
 public import SerrePositivity.Spectra.SymmetricSequence.SpherePowers
 

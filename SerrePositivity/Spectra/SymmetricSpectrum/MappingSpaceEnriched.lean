@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicial
 public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence
-public import SerrePositivity.CategoryTheory.Monoidal.ReverseComposition
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 
 /-! # 基点付き写像対象による豊穣圏 -/
 

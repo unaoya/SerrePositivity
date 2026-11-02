@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarNerveBridge
-public import SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexFirstFunctor
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFirstEndpoint

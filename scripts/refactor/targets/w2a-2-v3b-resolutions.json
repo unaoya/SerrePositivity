@@ -1,0 +1,190 @@
+{
+  "status": "PASS",
+  "instructions": "infinity-codex-w2a-2.md §9 (main 62b33ca79)",
+  "hash_algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "scope": "Three additionally edited modules; full 273-module batch comparison is recorded separately.",
+  "v2_changes": [
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_fst",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "5972874182997146124"
+    },
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_snd",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "7589481179942082195"
+    },
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.inl_domainMap",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "6364327391664539850"
+    },
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.inr_domainMap",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "4140657890689789756"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelI",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "6345842339582009454"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelJ",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "1154703908863293633"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory_fibrations",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "11558633586149935388"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory_weakEquivalences",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "7107165199782360373"
+    }
+  ],
+  "v3_changes": [
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_7",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "removed",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelI",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "6345842339582009454"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_1",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelI",
+      "parent_type_hash": "7013592534687469047",
+      "parent_body_hash": "6345842339582009454"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelJ",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "1154703908863293633"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "body",
+      "resolution": "v3b_digest_equal",
+      "hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_1",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_2",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_3",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_4",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_5",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_6",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "grouped_under_matching_parent",
+      "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "parent_type_hash": "1347024715780116303",
+      "parent_body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory_fibrations",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "11558633586149935388"
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory_weakEquivalences",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "change": "type",
+      "resolution": "v3b_digest_equal",
+      "hash": "7107165199782360373"
+    }
+  ],
+  "v3_type_body_count": 12,
+  "v3_generated_inventory_change_count": 1,
+  "annotation_comparison": {
+    "status": "PASS",
+    "before_count": 35,
+    "after_count": 35,
+    "parent_count": 35,
+    "changes": []
+  },
+  "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2a2-batch/section9"
+}

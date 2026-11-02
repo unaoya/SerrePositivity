@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "hash_algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "instructions": [
+    "68486e16e §7",
+    "55ad70a20 §8",
+    "62b33ca79 §9"
+  ],
+  "declarations": [
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+      "kind": "def",
+      "type_hash": "8066630407777709036",
+      "body_hash": "17819232983695613459"
+    },
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.domainMap_id",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "kind": "theorem",
+      "type_hash": "6041595205622698333",
+      "body_hash": null
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "kind": "def",
+      "type_hash": "1347024715780116303",
+      "body_hash": "10251006725095338798"
+    },
+    {
+      "name": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_id",
+      "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+      "kind": "theorem",
+      "type_hash": "1916836136779210812",
+      "body_hash": null
+    },
+    {
+      "name": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory_generated",
+      "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+      "kind": "theorem",
+      "type_hash": "131032969134580604",
+      "body_hash": null
+    }
+  ],
+  "patches": [
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean",
+      "line": 158,
+      "kind": "qualification",
+      "occurrences": 1,
+      "text": "rw [CategoryTheory.Functor.map_id, Category.id_comp]"
+    },
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean",
+      "line": 169,
+      "kind": "qualification",
+      "occurrences": 1,
+      "text": "rw [CategoryTheory.Functor.map_id, Category.comp_id]"
+    },
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/FunctorialExtension.lean",
+      "line": 68,
+      "kind": "qualification",
+      "occurrences": 2,
+      "text": "rw [CategoryTheory.Functor.map_id, CategoryTheory.Functor.map_id]"
+    },
+    {
+      "file": "SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean",
+      "line": 44,
+      "kind": "universe_annotation",
+      "occurrences": 1,
+      "text": "exact levelModelCategoryOfMonoidalGenerators.{u, u + 1, u} PointedSimplicialSet.circle"
+    },
+    {
+      "file": "SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean",
+      "line": 67,
+      "kind": "universe_annotation",
+      "occurrences": 1,
+      "text": "exact levelModelCategoryOfMonoidalGenerators_generated.{u, u + 1, u} PointedSimplicialSet.circle"
+    }
+  ],
+  "comparison": {
+    "status": "PASS",
+    "before_count": 35,
+    "after_count": 35,
+    "parent_count": 35,
+    "changes": [],
+    "transient": {
+      "before": [],
+      "after": []
+    },
+    "auxiliary_groups": {
+      "before": [
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_2",
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_fst",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap_fst_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_snd",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap_snd_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_2",
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.extensionMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.extensionMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.extensionMap._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.inl_domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.inl_domainMap_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.inr_domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.inr_domainMap_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.leftTransformation",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.leftTransformation._proof_1"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.rightTransformation",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.rightTransformation._proof_1"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelI",
+          "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+          "names": [
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_1",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_2",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+          "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+          "names": [
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_1",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_2",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_3",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_4",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_5",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_6",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_7"
+          ]
+        }
+      ],
+      "after": [
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_2",
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_fst",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap_fst_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.codomainMap_snd",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.codomainMap_snd_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_2",
+            "SerrePositivity.Reedy.FactorizationProblem.domainMap._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.extensionFunctor._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.extensionMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.extensionMap._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.extensionMap._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.inl_domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.inl_domainMap_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.inr_domainMap",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.inr_domainMap_assoc"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.leftTransformation",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.leftTransformation._proof_1"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeBoundaryFunctor",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor._proof_1",
+            "SerrePositivity.Reedy.FactorizationProblem.relativeBoundaryFunctor._proof_2"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.Reedy.FactorizationProblem.rightTransformation",
+          "module": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorialExtension",
+          "names": [
+            "SerrePositivity.Reedy.FactorizationProblem.rightTransformation._proof_1"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelI",
+          "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+          "names": [
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_1",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_2",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelI._proof_3"
+          ]
+        },
+        {
+          "parent": "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory",
+          "module": "SerrePositivity.Spectra.ModelCategory.SimplicialLevel",
+          "names": [
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_1",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_2",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_3",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_4",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_5",
+            "SerrePositivity.SimplicialModelInputs.simplicialLevelModelCategory._proof_6"
+          ]
+        }
+      ]
+    }
+  },
+  "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2a2-batch/section9"
+}

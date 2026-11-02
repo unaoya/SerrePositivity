@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight
 public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
 

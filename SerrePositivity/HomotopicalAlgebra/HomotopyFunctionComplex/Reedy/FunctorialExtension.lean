@@ -65,7 +65,7 @@ def extensionFunctor : FactorizationProblem r j C ⥤ BoundaryDiagram r j C wher
     apply BoundaryDiagram.Hom.ext
     · rfl
     · change data.Z.map ((relativeBoundaryFunctor r j C).map (𝟙 a)) = 𝟙 _
-      rw [Functor.map_id, Functor.map_id]
+      rw [CategoryTheory.Functor.map_id, CategoryTheory.Functor.map_id]
   map_comp f g := by
     apply BoundaryDiagram.Hom.ext
     · rfl

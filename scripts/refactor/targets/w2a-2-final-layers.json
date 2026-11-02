@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "instruction_commit": "183332caf",
+  "source_commit": "7c127089ba865d487233b87d758225e0227a3302",
+  "before": {
+    "module_count": 32276,
+    "edge_count": 112751,
+    "direct_violations": 297,
+    "foundation_violations": 0,
+    "forbidden_modules": {
+      "W1": 1,
+      "W2a": 166,
+      "W2b": 166
+    },
+    "category_theory_to_hota_direct": 1,
+    "hota_to_category_theory_direct": 79,
+    "category_theory_to_hota_transitive_pairs": 1,
+    "hota_to_category_theory_transitive_pairs": 4139,
+    "mutual_transitive_pairs": 0
+  },
+  "after": {
+    "module_count": 32206,
+    "edge_count": 112571,
+    "status": "PASS",
+    "foundation_violations": 0,
+    "ratchet_increases": [],
+    "forbidden_modules": {
+      "W1": 1,
+      "W2a": 166,
+      "W2b": 166
+    },
+    "category_theory_to_hota_direct": 0,
+    "hota_to_category_theory_direct": 48,
+    "category_theory_to_hota_transitive_pairs": 0,
+    "hota_to_category_theory_transitive_pairs": 1915,
+    "mutual_transitive_pairs": [],
+    "before_direct_violations": 297,
+    "after_direct_violations": 297,
+    "seconds": 48.277
+  },
+  "ratchet": {
+    "status": "PASS",
+    "increases": [],
+    "baseline": "scripts/refactor/targets/w2a-2-layer-baseline.json",
+    "metrics": 33908,
+    "seconds": 58.255
+  },
+  "interpretation": "HotA -> CategoryTheory is an allowed use of foundations. The reverse direction is now zero; mutual dependence is zero.",
+  "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2a2-batch/section10"
+}

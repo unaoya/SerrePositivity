@@ -87,9 +87,9 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
 <div class="table-wrap"><table>
 <tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
-<tr><td>D10</td><td>Prop 7.2・Cor 7.3</td><td>全 prism の中の始対象（超限帰納）を経由せず、完全試験 prism への写像の始対象を直接作る</td><td>超限帰納が不要（完全化の後では d が非零因子）</td><td>全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) がない。Prop 7.10（\(\Delta_S=\Delta^{\mathrm{init}}_S\)）を述べるときに要るかもしれない</td><td>Lean の方が簡単</td><td>Lean を保つ。A3 で \(\Delta^{\mathrm{init}}_S\) が要るか確かめる</td></tr>
+<tr><td>D10</td><td>Prop 7.2・Cor 7.3</td><td>全 prism の中の始対象（超限帰納）を経由せず、完全試験 prism への写像の始対象を直接作る</td><td>超限帰納が不要（完全化の後では d が非零因子）</td><td>全 prism の中の始対象 \(\Delta^{\mathrm{init}}_S\) がない。Prop 7.10（\(\Delta_S=\Delta^{\mathrm{init}}_S\)）を述べるときに要るかもしれない</td><td>Lean の方が簡単</td><td>Lean を保つ。<b>2026-11-02（A3 の設計、a3-design D37）：\(\Delta^{\mathrm{init}}_S\) の一般構成は不要。</b>qrsp な S では Prop 7.10 が \(\Delta_S\) 自身を始 prism として与え、既存の Cor 7.3 の対象（完全試験 prism への始対象）はその完全化（Lemma 3.9）。E3 で要るのは S′ = R⟨X^{1/p^∞}⟩/(X)^∧ の場合だけ</td></tr>
 <tr><td>D11</td><td>Thm 7.4</td><td>（W3 前）André を使わない根付き拡大の経路。（W3 後）原典どおり André 経由</td><td>André 経由版は、原典の「有限生成・単項への帰着」も不要（絶対整閉なので全元が同時に根を持つ）</td><td>旧経路は B4 専用の 33 本を要した</td><td>André 経由版は原典より簡単</td><td>W3 で André 経由に揃えた（f4dcf1d1a・7b82e02aa）。旧経路は Semiperfectoid/RootEnvelope/ に別証明として保存</td></tr>
-<tr><td>D12</td><td>Thm 7.14 の一段の拡大</td><td>Prop 7.11(2)（導来 prismatic コホモロジー・HT 比較）の代わりに、モニック根の割り算包の pd 計算（Rem 7.15）</td><td>当時は HT 比較なしで André の補題が証明できた</td><td>一段の拡大のために根付き拡大の構成（100 本規模）が要る。A1〜A3 ができれば原典の一段は Prop 7.10 の議論の系として短い</td><td><b>A3 の後は原典の方が簡単</b></td><td>今は Lean を保つ。A3 の後に原典に揃えるかを決める（BR30）</td></tr>
+<tr><td>D12</td><td>Thm 7.14 の一段の拡大</td><td>Prop 7.11(2)（導来 prismatic コホモロジー・HT 比較）の代わりに、モニック根の割り算包の pd 計算（Rem 7.15）</td><td>当時は HT 比較なしで André の補題が証明できた</td><td>一段の拡大のために根付き拡大の構成（100 本規模）が要る。A1〜A3 ができれば原典の一段は Prop 7.10 の議論の系として短い</td><td><b>A3 の後は原典の方が簡単</b></td><td>Lean を保つ。<b>2026-11-02 決定（a3-design D38）：原典に揃えない。</b>Prop 7.11 は E3 の経路で使わず、André（Thm 7.14）は証明済みなので、A3 の範囲に Prop 7.11 を入れない。BR30 は閉じる</td></tr>
 </table></div>
 
 <h2>リファクタの候補</h2>

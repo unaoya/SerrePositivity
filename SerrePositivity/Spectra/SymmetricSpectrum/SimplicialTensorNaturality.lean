@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorCotensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceNaturality
-public import SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality
-public import SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
+
 
 /-! # 通常の単体的集合による三つのHom同値の自然性 -/
 

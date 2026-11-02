@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Transfer.CellMap
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Right
-public import SerrePositivity.CategoryTheory.Monoidal.FreeModule
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleColimits
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Free
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Limits
 public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
 
 /-! # Model structures on modules from the monoid axiom

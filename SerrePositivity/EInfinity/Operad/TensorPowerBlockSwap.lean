@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.Operad.TensorPowerEquivariance
 public import SerrePositivity.EInfinity.Operad.BlockSwapConcatenation
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
 
 /-!
 # テンソル冪の連結と入力ブロックの交換

@@ -4,8 +4,8 @@ public import SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy
 public import SerrePositivity.Spectra.Pointed.AdjoinBasepoint
 public import Mathlib.CategoryTheory.Limits.Comma
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Connected
-public import SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization
-public import SerrePositivity.CategoryTheory.LiftingProperties.Under
+public import SerrePositivity.CategoryTheory.Under
+
 
 /-! # Actual pointed boundary and horn generators
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.PermutationAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 public import SerrePositivity.Spectra.SymmetricSequence.SpherePowers
 
 /-!

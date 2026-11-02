@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.ElementsChainLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 
 /-! # 要素の反対圏の射列と最後のラベル
 概要：反対圏の射列は底の射列と最後の係数ラベルから復元される。

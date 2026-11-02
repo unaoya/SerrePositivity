@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws
-public import SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # 基点付き写像対象の合成の結合則 -/
 

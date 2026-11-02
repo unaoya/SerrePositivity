@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying
 
 /-! # 球面作用を持つ内部Homスペクトルと評価

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.Slots
-public import SerrePositivity.CategoryTheory.FiniteBlockEquiv
+public import SerrePositivity.CategoryTheory.Limits
 
 /-!
 # 部分合成の挿入区間における置換の計算

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.CotensorMappingObject
-public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Source naturality of C-valued cotensor mapping representability -/
 

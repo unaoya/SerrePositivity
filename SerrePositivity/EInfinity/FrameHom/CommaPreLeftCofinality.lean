@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaPreLeftRetraction
 public import SerrePositivity.EInfinity.FrameHom.NerveQuillenA
 public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
 /-!
 # 元の左変数の余終性から全図式の比較の余終性
