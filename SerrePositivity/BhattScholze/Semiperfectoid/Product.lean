@@ -45,12 +45,12 @@ theorem isIntegralPerfectoid_idempotent_quotient
   let ρ : R → ℕ → R := fun _ _ => e
   have hρ : ∀ s n, ρ s (n + 1) ^ p = ρ s n := fun _ _ =>
     he.pow_eq (Fact.out : p.Prime).ne_zero
-  have hK : compatibleRootFamilyIdeal ρ = Ideal.span {e} := by
-    simp only [compatibleRootFamilyIdeal, ρ, Set.range_const]
+  have hK : SerrePositivity.compatibleRootFamilyIdeal ρ = Ideal.span {e} := by
+    simp only [SerrePositivity.compatibleRootFamilyIdeal, ρ, Set.range_const]
   have hP := BhattScholze.compatibleRootFamilyCompletion_isIntegralPerfectoid hR ρ hρ
   change IsIntegralPerfectoid
-    (AdicCompletion (Ideal.span {(p : R ⧸ compatibleRootFamilyIdeal ρ)})
-      (R ⧸ compatibleRootFamilyIdeal ρ)) p at hP
+    (AdicCompletion (Ideal.span {(p : R ⧸ SerrePositivity.compatibleRootFamilyIdeal ρ)})
+      (R ⧸ SerrePositivity.compatibleRootFamilyIdeal ρ)) p at hP
   rw [hK] at hP
   let eqv : (R ⧸ Ideal.span {e}) ≃+*
       AdicCompletion (Ideal.span {(p : R ⧸ Ideal.span {e})}) (R ⧸ Ideal.span {e}) :=
