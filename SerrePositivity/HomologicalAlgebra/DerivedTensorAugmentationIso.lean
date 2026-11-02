@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.RealizedSingleH0Normalization
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Algebra
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionMonoidal
 public import Mathlib.CategoryTheory.ConcreteCategory.EpiMono
 
 /-! # Tor vanishing inverts the actual tensor augmentation and its completion -/

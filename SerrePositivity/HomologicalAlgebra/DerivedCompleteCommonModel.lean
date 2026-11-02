@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalIdeal
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
 public import SerrePositivity.CommutativeAlgebra.Localization.Away
 

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 /-! # Regular principal completion H0 is the classical adic completion
 

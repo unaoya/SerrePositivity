@@ -1,6 +1,6 @@
 import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 import SerrePositivity.BhattScholze.Almost.Lemma103
-import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry
 

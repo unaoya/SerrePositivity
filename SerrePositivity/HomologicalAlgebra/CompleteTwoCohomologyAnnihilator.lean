@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteMilnorAnnihilator
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # 完備な二次数導来対象の標準Koszul塔からの零化

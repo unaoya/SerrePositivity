@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.KoszulTorComparison
 public import SerrePositivity.HomologicalAlgebra.KoszulScalarControl
 public import SerrePositivity.HomologicalAlgebra.LinearFunctorScalarCone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 
 /-! # 係数付きKoszul複体のテンソルモデルと反復錐モデル
 

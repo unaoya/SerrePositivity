@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.ScalarConeModuleQuotient
 public import SerrePositivity.HomologicalAlgebra.DerivedScalarConeBaseChange
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionDerivedDescent
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 
 /-! # 完全平坦な底変換と正則加群の完備導来 tensor
 

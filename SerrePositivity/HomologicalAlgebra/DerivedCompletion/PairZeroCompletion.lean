@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-! # A zero second coordinate preserves the original principal completion H⁰ algebra -/
