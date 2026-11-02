@@ -307,6 +307,7 @@ lemma termBaseChangeIso_cons_hom {S : Set D} (b : S) (w : Word S) (x y : D) :
 
 variable [Small.{u} D]
 
+set_option synthInstance.maxHeartbeats 40000
 /-- path の直和は同じ Word S を添字とする直和へ移る。 -/
 def internalHomBaseChangeIso (S : Set D) (x y : D) :
     (extension φ).obj (internalHom A D S x y) ≅
@@ -318,6 +319,7 @@ def internalHomBaseChangeIso (S : Set D) (x y : D) :
 lemma map_ι_internalHomBaseChangeIso (S : Set D) (x y : D) (w : Word S) :
     (extension φ).map (ι A D S x y w) ≫ (internalHomBaseChangeIso φ D S x y).hom =
       (termBaseChangeIso φ D w x y).hom ≫ ι A' (DGBaseChange φ D) S x y w := by
+  letI : HasColimitsOfSize.{u, u} (Complex A') := ⟨fun _ _ => inferInstance⟩
   simp only [internalHomBaseChangeIso, Iso.trans_hom]
   rw [show ι A D S x y w = Sigma.ι (fun w : Word S => term A D w x y) w from rfl,
     map_ι_coproductIso_assoc, Sigma.ι_mapIso_hom]

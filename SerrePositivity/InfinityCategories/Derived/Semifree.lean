@@ -57,6 +57,7 @@ def freeSphereEvaluationIso (n : ℤ) :
       complexSphere S n :=
   ρ_ (complexSphere S n)
 
+set_option synthInstance.maxHeartbeats 40000 in
 /-- 概要：自由 sphere 表示の評価は通常の sphere の余積と同型である。
 方針：同値による余積の保存と各 sphere の右単位子を合成する。
 規約：表示の添字集合をそのまま用いる。使われ方：初期段と各商の展開。 -/

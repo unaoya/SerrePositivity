@@ -24,6 +24,7 @@ open CategoryTheory Limits HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 variable (A : Type u) [CommRing A]
 
+set_option synthInstance.maxHeartbeats 40000 in
 lemma normalizedSimplex_reedyCofibrant :
     letI := projectiveModelCategory A
     reedyLeft simplex (cofibrations (Complex A))
