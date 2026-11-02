@@ -90,10 +90,12 @@ E ≃ Δ_{R_univ/U} を底変換。
 使われ方：離散性の移送。 -/
 theorem lciDerivedEnvelope_eq_prismatic (hf : IsKoszulRegularModGenerator P f) : True := by trivial
 
-/-- 概要：G-A3-10：Δ_{R/A} が離散なら B も離散、すなわち E と A は U 上 Tor 独立で B = E ⊗̂_U A（離散 δ 環の完備押し出し、δ 環）。
-δ 環の押し出しの普遍性 Hom_{δ-A}(E ⊗̂_U A, D) = Hom_{δ-U}(E, D) と E の A_0 上の envelope の普遍性（A0-3c）で、(B, dB) は (A,(d,f)) の envelope、
-(R/A)_Δ の**全 prism の中の始対象**（p ねじれなしの制限は要らない。W9-I-40）。有界性は R の有界 p 冪ねじれから。
-方針：完備テンソルの δ 構造（既存 `Prism/Tensor`、要確認）、押し出しの普遍性。
+/-- 概要：G-A3-10：Δ_{R/A} が離散なら B = LΛ_I(E ⊗^L_U A) も離散。K = E ⊗^L_U A → N = E ⊗_U A は H⁰ 同型で、完備化後も H⁰ 同型
+（既存 `derivedComplexCompletion_h0_map_isIso`、W9-I-41。Tor 独立性は主張しない）ので B ≃ H⁰ LΛ_I N。N の通常の δ 構造は W₂ への切断の貼り合わせ
+（`PerfectDeltaTensor` は完全 δ 環用で使えない、W9-I-42）、δ 射の普遍性 Hom_{δ-A}(N, D) = Hom_{δ-U}(E, D) と E の A_0 上の envelope の普遍性（A0-3c）、
+完備化の一意延長 `existsUnique_deltaPDCompletionHom` で、(B, dB) は (A,(d,f)) の envelope、(R/A)_Δ の**全 prism の中の始対象**（p ねじれなし不要）。
+有界性は R の有界 p 冪ねじれと p 完全平坦な HT filtration から。
+方針：上の三段（G-A3-10 (a)(b)(c)）。
 規約：—
 使われ方：`prismaticCohomology_lci_eq_envelope`、Prop 7.10 の始性。 -/
 theorem lciDerivedEnvelope_isEnvelope_of_discrete : True := by trivial
@@ -172,7 +174,8 @@ def regularSemiperfectoid (r : ℕ) (f : Fin r → R) : Type u := sorry
 使われ方：Prop 7.10 (b)。 -/
 theorem regularSemiperfectoid_prismatic (r : ℕ) (f : Fin r → R) : True := by trivial
 
-/-- 概要：Prop 7.10 (b)：S qrsp なら (Δ_S, dΔ_S) は S 上の始 prism（Lemma 7.7(3) の冪等元が恒等）。
+/-- 概要：Prop 7.10 (b)（**一般形。E3 では使わず別単位**、W9-I-43：この経路で供給されるのは T・S′ の始性 `rootQuotient_initial`）：
+S qrsp なら (Δ_S, dΔ_S) は S 上の始 prism（原典は自然な δ 自己準同型の議論）。
 方針：R を R⟨Y^{1/p^∞}⟩ に替えて R → S 全射、核の生成系 {f_j} で S′ := R⟨X_j^{1/p^∞}⟩/(X_j − f_j)^∧ → S（全射、余接複体で全射）、HT で
 Δ_{S′} → Δ_S 全射、S′ は T の filtered 余極限、Δ は filtered 余極限と交換（A2-4 (5)）、T は `regularSemiperfectoid_prismatic`。
 規約：—

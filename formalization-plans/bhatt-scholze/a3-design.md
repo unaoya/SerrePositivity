@@ -76,11 +76,18 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
   (i) 分類射 U → A（d ↦ d、f_i ↦ f_i。普遍向き付き prism の普遍性と自由 δ 環）は有界 prism の射（U/d = (A_0/d){f}^∧ は p ねじれなし）。
   R = R_univ ⊗̂^L_U A（U/(d,f) ⊗^L_U A = Kos(A; f) mod d は f̄ の Koszul 正則性で A/(d,f) に集中）、A2 (4) で Δ_{R/A} ≃ Δ_{R_univ/U} ⊗̂^L_U A。
   (ii) **B := E ⊗̂^L_U A（CAlg の完備導来テンソル。離散性は仮定しない）**。普遍の場合の比較 E ≃ Δ_{R_univ/U}（下）を底変換して B ≃ Δ_{R/A}。
-  (iii) Δ_{R/A} は離散で d 正則（HT filtration と R の有界 p 冪ねじれ、下の「離散性」）。よって B も離散、すなわち E と A は U 上 Tor 独立で
-  B = E ⊗̂_U A（離散 δ 環の完備押し出し：δ 環のテンソル積は δ 環）。
-  (iv) envelope の普遍性は**δ 環の押し出しの普遍性**：prism D over A と δ-A 射で (d,f) ↦ dD なら、Hom_{δ-A}(E ⊗̂_U A, D) = Hom_{δ-U}(E, D) =
-  {δ-U 射 U → D で (d,f) ↦ dD}（E は A_0 上の (U,(d,f)) の envelope、A0-3c。標的 D は A_0 → A → D で A_0 上）= 一点。よって (B, dB) は
-  (A,(d,f)) の envelope で、R → B/dB をもつ (R/A)_Δ の**全 prism の中の始対象**（p ねじれなしの制限は要らない）。有界性は R の有界ねじれから。
+  (iii) Δ_{R/A} は離散で d 正則（HT filtration と R の有界 p 冪ねじれ、下の「離散性」）。よって B = LΛ_I(E ⊗^L_U A) も離散。
+  **B の台環の同定（W9-I-41 で訂正：「Tor 独立」は主張しない）**：K := E ⊗^L_U A → N := E ⊗_U A（通常のテンソル）は非正次数の対象の H⁰ 同型。
+  主イデアルの導来完備化は非正次数の H⁰ 同型を保つ（既存 `HomologicalAlgebra/DerivedCompletion/CompletionH0Comparison` の
+  `derivedComplexCompletion_h0_map_isIso`、p・d の順に二回）ので H⁰ LΛ_I K ≃ H⁰ LΛ_I N、B は離散なので **B ≃ H⁰ LΛ_I N**（環として：K → N は CAlg の標準射）。
+  通常の高次 Tor の消滅は要らず、主張もしない。
+  (iv) N の通常の δ 構造（**W9-I-42**：`PerfectDeltaTensor` は完全 δ 環用で使えない）：E → W₂(E) → W₂(N) と A → W₂(A) → W₂(N) は U 上一致するので、
+  環の押し出しで s : N → W₂(N)、W₂(N) → N との合成は両因子で恒等ゆえ恒等、よって δ 構造。標的 D への環準同型が δ 射であることも両因子で比較（p ねじれなし不要）。
+  完備化：`Delta/Extension/DeltaPDCompletion` の `existsUnique_deltaPDCompletionHom`（通常の δ 環 N の (p,d) 完備化の H⁰ から導来完備な δ 標的への一意延長）を
+  上の環同型で B へ移す。envelope の普遍性：prism D over A と R → D/dD に対し、U の f_i は dD に入るので E の A_0 上の envelope の普遍性（A0-3c）で唯一の
+  δ-U 射 E → D、A → D と貼り合わせて N → D、完備化の一意延長で B → D。よって (B, dB) は (A,(d,f)) の envelope で、R → B/dB をもつ (R/A)_Δ の
+  **全 prism の中の始対象**（D の p ねじれなしは使わない）。有界性は R の有界ねじれと R 上 p 完全平坦な完備 HT filtration から。
+  普遍比較の底変換で得る φ と、この押し出しの構造射の φ の一致は構造射との両立として記録する。
   **B が A 上完全平坦であることは要求しない**（Codex の修復案の第 2〜4 段）。導来 δ 環は使わない（B は CAlg の対象、δ 構造は離散化後に押し出しから）。
   紙 7 を差し替え。
 - 普遍の場合の証明（原典）：B → Δ_R の構成（原典は「単体的可換 δ-A 代数の射」。本書では D36 により、Δ_R が離散であることを先に HT で示してから
@@ -105,7 +112,10 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
   余接複体は A2 の `cotangentWedge` を基底 Z_p で（D39：一般の基底 k で独立に定義する、W9-I-36）。
 - 主張（S qrsp、R → S perfectoid、A = A_inf(R)）：Δ_{S/A} は離散、(Δ_S, dΔ_S) は S 上の始 prism（R によらない）、S → Δ_S/d は p 完全忠実平坦。
   **始性の圏（W9-I-40）**：T の場合は Ex 7.9 の envelope の普遍性で全 prism over A′ の中で始、A′ 上の prism と A 上の prism は Lemma 4.8 で同じ
-  （R′ → T → D/dD から A′ → D が一意に持ち上がる）ので A 上でも全 prism の中で始。S′ はその filtered 余極限。完全化は完全 prism の中で始（Lemma 3.9）。
+  （R′ → T → D/dD から A′ → D が一意に持ち上がる）ので A 上でも全 prism の中で始。S′ はその filtered 余極限（有限部分集合の T の完備 filtered 余極限、
+  envelope の δ 射の余極限と完備化の普遍性）。完全化は完全 prism の中で始（Lemma 3.9）。
+  **公開範囲（W9-I-43）**：始性の定理は E3 に要る **T・S′ に絞って**述べる（§0 の決定どおり）。一般の qrsp S の始性（原典は自然な δ 自己準同型の議論）は
+  この経路では供給されないので、骨組みの一般形 `qrsp_initial` は「別単位、E3 不要」と注記する。離散性・平坦性 (a) は一般の qrsp でよい。
 - 証明：(a) 離散・平坦：L_{S/R}[−1] p 完全平坦 ⇒ (∧^i L_{S/R})^∧[−i] は p 完全平坦な S 加群で離散（décalage、G-A3-2）⇒ HT filtration の各 gr が
   離散・平坦 ⇒ Δ̄_S 離散・p 完全忠実平坦（exhaustive、完備）。(b) 始対象：Lemma 7.7(3) の冪等元が恒等であること。R を R⟨Y_i^{1/p^∞}⟩ に替えて
   R → S 全射にし（余接複体は不変）、核の生成系 {f_j} で S′ := R⟨X_j^{1/p^∞}⟩/(X_j − f_j)^∧ → S（全射、余接複体で全射）、HT で Δ_{S′} → Δ_S 全射、
@@ -117,6 +127,11 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 - **E3 で要る形**：S′ = R⟨X_j^{1/p^∞}⟩/(X_j)^∧（f_j = 0 の場合、Prop 8.5 の最後の段落）について、Δ_{S′} は離散で始 prism、その完全化は
   Cor 7.3 の完全試験 prism の始対象（既存 `exists_perfectoidization_of_perfectPrism_quotient` の構成）に一致（Lemma 3.9 で始 prism の完全化は
   始完全 prism）。これが「S′_perfd = R0」（A5）。
+  **既存入口へ渡すデータ（W9-I-44）**：完全 prism は A′ = A_inf(R′)（R′ = R⟨X_j^{1/p^∞}⟩、R → S′ は一般に全射でないので R′ から）、全射 r : A′ → S′ は
+  θ と R′ → (R′/(X_j − f_j))^∧ の合成（p 完備な R′ からの商の完備化への全射）、r(d) = 0 は θ(d) = 0、p が A′/d の非単元は R′ ≠ 0 なら p 進分離性から
+  （R′ = 0 は零 prism の分岐、`Fact (¬ IsUnit p)` を作らない）。完全化の普遍性は `Prism/Perfection` の `existsUnique_deltaPerfectionPDCompletionHom`
+  （非完全な源から完全・完備な標的への一意延長）で、`existsUnique_perfectDeltaPDPrismHom`（源が既に完全）ではない。二つの候補は完全試験 prism の圏の
+  始対象として S′ からの単位と両立する唯一の同型。
 - RootEnvelope の再利用：`Semiperfectoid/RootEnvelope/` は完全 prism 上の X^p − b 族の割り算包 A{(X^p − b)/d}-型の離散性・p 完全忠実平坦性・
   完全化と perfectoid 候補の一致を示している。T の envelope A′{(X_i − f_i)/d}^∧（X_i は p 冪根をもつ変数）と形が近く、A3-3・A3-4 で
   Ex 7.9 の envelope の計算（特に完全化の同一視）に転用できる見込み。設計時に対応表を作る。
@@ -132,9 +147,10 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 | G-A3-5 | prism の圏の冪等完備性、retract の始対象（Lemma 7.8） | なし（圏論、短い） | Lemma 7.7(3) |
 | G-A3-6 | p ねじれなし環の Frobenius 持ち上げから δ 構造（Rem 2.2）、一意性 | 要確認（`Delta/Basic`） | Lemma 7.7(1′) |
 | G-A3-7 | Ex 7.9 の p 反転の議論：Δ̄_R[1/p] が gr^1 で生成される Banach 代数、[Bha12, Claim 3.30] の標準計算 | なし。A3 の最重量 | Ex 7.9 |
+| G-A3-8′ | 既存 Cor 7.3 入口（`exists_perfectoidization_of_perfectPrism_quotient`）への A′・r・非単元・零環の分岐の供給（W9-I-44） | 既存の型 | §2.3 |
 | G-A3-8 | 始 prism の完全化は始完全 prism（Lemma 3.9 の普遍性）、既存 Cor 7.3 の対象との一致 | `Prism/Perfection`（`existsUnique_perfectDeltaPDPrismHom`）、`Semiperfectoid/Perfectoidization` | Prop 7.10 → A5 |
-| G-A3-9 | p ねじれなし環 C と Frobenius 持ち上げ φ_C：φ_C が mod p で x ↦ x^p であることの判定（C/p の E∞-F_p 代数としての Frobenius の π_0 への作用）。A4 の P⁰ の π_0 の部分を前倒しし、A4 の結論を使わない | なし（W9-I-34） | (1′) |
-| G-A3-10 | 離散 δ 環の完備押し出し E ⊗̂_U A が δ 環で、δ-A 射の普遍性 Hom_{δ-A}(E ⊗̂_U A, D) = Hom_{δ-U}(E, D) をもつこと；CAlg の完備導来テンソルが離散なら Tor 独立でこの押し出しに一致すること | `Prism/Tensor`・`Delta/*`（要確認） | §2.2 (iii)(iv)（W9-I-39） |
+| G-A3-9 | p ねじれなし環 C と Frobenius 持ち上げ φ_C：φ_C が mod p で x ↦ x^p であることの判定。**A2 の模型から来る φ_R が C/p の E∞-F_p 代数の Frobenius 演算を誘導するという比較を含む**（π_0 への作用が p 乗という性質だけでは出ない、W9-I-45）。A4 の P⁰ の π_0 の部分を前倒しし、A4 の結論を使わない。段 II で A4 の P⁰ と同時に検証 | なし（W9-I-34・45） | (1′) |
+| G-A3-10 | (a) 通常の δ 環の押し出し N = E ⊗_U A の δ 構造（W₂ への切断の貼り合わせ）と δ-A 射の普遍性 Hom_{δ-A}(N, D) = Hom_{δ-U}(E, D)（非完全な δ 環。`PerfectDeltaTensor` は使えない、W9-I-42）；(b) 完備化の H⁰ 比較：K = E ⊗^L_U A → N は H⁰ 同型で、LΛ_I 後も H⁰ 同型（既存 `derivedComplexCompletion_h0_map_isIso`、W9-I-41）；(c) `existsUnique_deltaPDCompletionHom` で完備化の一意延長 | (b)(c) は既存、(a) は Delta/ の隣に | §2.2 (iii)(iv) |
 
 ## 4. 原典との差
 
@@ -186,10 +202,11 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 1. §2.2 の普遍の場合：A_univ/d と R_univ が p ねじれなし、f̄ が Koszul 正則、Δ_{R_univ} が p ねじれなし（HT filtration の gr = Γ^i(J/J²) が p ねじれなし）。
 2. §2.2 の離散性：gr^i = Γ^i(J̄/J̄²)[0] が全 i ≥ 0 で非零なのに Δ̄_R が離散であること（W9 で確認済み：Fil_i は分裂、通常の余極限は有界ねじれ、
    LΛ_p で離散。「遷移が単射」だけでは足りない）。
-3. G-A3-7：[Bha12, Claim 3.30] の計算の prismatic 版（B の f/d が gr^1 = J/(J²+I) へ全射に写ること）。
+3. G-A3-7：[Bha12, Claim 3.30] の計算の prismatic 版（B の f/d が gr^1 = J/(J²+I) へ全射に写ること）。W9 で ○：bar 分解の t̃ と Čech の差商 z = (t_1 − t_0)/d、
+   D t̃ = f − dz、Y = f/d ↦ [z]、mod d で z = β(t) ∈ gr¹ は f mod f²。p 反転後の全射性は稠密性＋retraction による像の閉性。
 4. §2.3 (b)：R を R⟨Y^{1/p^∞}⟩ に替えても L_{S/R} が変わらないこと、S′ → S が余接複体で全射であること、Δ_{S′} → Δ_S の全射性が HT から出ること。
 5. G-A3-8：始 prism の完全化が始完全 prism であること（Lemma 3.9 の普遍性）と、既存の `exists_perfectoidization_of_perfectPrism_quotient` の構成
    （δ 除算 → d ねじれ除去 → 完全化 → 完備化）が (Δ_{S′})_perf に一致すること。
 6. RootEnvelope の対応表：`PerfectPrismRootSource*`・`PerfectPrismRootPrismCompletelyFlat` などと T の envelope の対応。
-7. §2.2 の一般への帰着（W9-I-39 で差し替え）：R = R_univ ⊗̂^L_U A（Koszul 正則性）、B := E ⊗̂^L_U A ≃ Δ_{R/A}（普遍の比較の底変換と A2 (4)）、
-   Δ_{R/A} の離散性から B の離散性と Tor 独立性、δ 環の完備押し出しの普遍性から envelope の普遍性と全 prism の中の始性。
+7. §2.2 の一般への帰着（W9-I-39・41・42 で差し替え、W9 で ○）：R = R_univ ⊗̂^L_U A（Koszul 正則性）、B := LΛ_I(E ⊗^L_U A) ≃ Δ_{R/A}（普遍の比較の底変換と A2 (4)）、
+   Δ_{R/A} の離散性から B の離散性、H⁰ 比較で B ≃ H⁰ LΛ_I(E ⊗_U A)、通常の δ 押し出しと完備化の一意延長から envelope の普遍性と全 prism の中の始性。

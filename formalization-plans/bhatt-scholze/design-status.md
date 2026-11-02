@@ -211,6 +211,13 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-38 無限 filtration の離散性の説明、gr¹ の shift、G-A2-5 | 要修正 | 訂正済み（a3-design §2.2：有界ねじれによる議論、gr¹ は次数 0、J と J̄ の区別；a2-design G-A2-5 は sifted） |
 | W9-I-39 「B_univ は A_univ 上完全平坦」は偽（f = dY で f の乗法が零） | 致命 | **訂正済み**（a3-design §2.2 を原典 Ex 7.9 の順序に：B := E ⊗̂^L_U A（CAlg）を普遍の比較の底変換で Δ_{R/A} と同一視し、HT の離散性から B 離散・Tor 独立、δ 環の押し出しの普遍性で envelope と全 prism の中の始性。G-A3-10、骨組み `lciDerivedEnvelope*`） |
 | W9-I-40 p ねじれなしへ制限後も全 prism の始性が結論に残る | 要修正 | 訂正済み（`exists_initial_of_discrete` は部分圏での始性。Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から。A5 で要る Lemma 7.7(3) の δ 射は完全 prism への脚だけ） |
+| W9-I-41 完備化後の離散性を Tor 独立と言い換えない | 要修正 | 訂正済み（a3-design §2.2 (iii)：H⁰ 比較 `derivedComplexCompletion_h0_map_isIso` で B ≃ H⁰ LΛ_I(E ⊗_U A)） |
+| W9-I-42 非完全 δ 環の押し出しに `PerfectDeltaTensor` は使えない | 要修正 | 訂正済み（G-A3-10 (a)：W₂ への切断で通常の δ 押し出し、`existsUnique_deltaPDCompletionHom`） |
+| W9-I-43 一般 qrsp の始性と T・S′ の始性を区別 | 要修正 | 訂正済み（公開する始性は T・S′ に絞る。`qrsp_initial` は別単位・E3 不要と注記） |
+| W9-I-44 既存 Cor 7.3 入口へ渡すデータ | 要修正 | 訂正済み（a3-design §2.3：A′ = A_inf(R′)、r : A′ → S′、非単元・零環の分岐、`existsUnique_deltaPerfectionPDCompletionHom`。G-A3-8′） |
+| W9-I-45 G-A3-9 は φ と E∞ 演算の比較を含む | 要確認 | 反映済み（G-A3-9 の仕様に追加。段 II で A4 の P⁰ と同時に検証） |
+| W9-I-46 ノートの表記の同期 | 軽微 | ノート第 7 章（Lemma 7.7 の入口は Δ̄、Prop 7.10 の射は Δ̄ へ、RootEnvelope は完全化後の比較）を更新 |
+| **段 I の総括（W9 続き 6）** | — | 新たな致命なし。段 II（A4〜A7）へ進む。残る要修正・要確認は上表のとおり反映済み（G-A3-9 の比較は段 II で） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
