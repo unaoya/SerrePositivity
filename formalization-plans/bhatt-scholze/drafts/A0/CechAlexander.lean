@@ -80,13 +80,14 @@ def cechEval (n : ℕ) : MvPolynomial (cechIndex R n) A →+* R :=
   letI : Algebra A R := ((algebraMap (A ⧸ P.ideal) R).comp (Ideal.Quotient.mk P.ideal)).toAlgebra
   (MvPolynomial.aeval (fun x : cechIndex R n => x.1)).toRingHom
 
-/-- 概要：原典 Constr 4.17 の J = ker(B → (B/J₀B)^∧)（J₀ = ker(B₀ → R)、完備化は p 進）。
-方針：J₀ の B^n での像の生成するイデアルの、導来 p 完備化 H⁰ への核としての閉包。
-規約：J ⊇ (d)（R は A/d 代数なので d ∈ J₀）。
+/-- 概要：原典 Constr 4.17 の J = ker(B → (B/J₀B)^∧)（J₀ = ker(B₀ → R)、完備化は**導来** p 完備化の H⁰）。
+方針：J₀ の B^n での像の生成するイデアル J₀B^n について、B^n → (B^n ⧸ J₀B^n)^∧_p の核。
+規約：J ⊇ (d)（R は A/d 代数なので d ∈ J₀）。古典的な p 進閉包ではなく導来完備化で取る：普遍性の標的 D は有界でないので D/dD は
+p 進分離とは限らないが導来 p 完備ではあり、B/J₀B → D/dD が完備化を経由する（a0-design §5.1 の 2 の注意）。
 使われ方：envelope の J。
-要確認：p 進完備化は `PDCompletionH0 _ p 0`（d = 0）で表す。 -/
+要確認：一変数の導来 p 完備化 H⁰ の環（E3 の `completionRing` が包んでいる一変数 Koszul 完備化）を使う。`PDCompletionH0 _ p 0` は使わない。 -/
 def cechKernel (n : ℕ) : Ideal (cechFreeDelta P R n) :=
-  sorry -- ker(B^n → PDCompletionH0 (B^n ⧸ J₀B^n) p 0)
+  sorry -- RingHom.ker (B^n → 一変数 p 完備化 H⁰ (B^n ⧸ J₀B^n))
 
 lemma generator_mem_cechKernel (n : ℕ) :
     completedFreeDeltaBase P (cechIndex R n) P.generator ∈ cechKernel P R n := by
