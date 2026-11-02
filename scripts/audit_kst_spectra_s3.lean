@@ -18,7 +18,7 @@ run_cmd do
     `SerrePositivity.KST.Spectra.S3KappaConnection]
   for mod in #[
       `SerrePositivity.KST.Spectra.D3All,
-      `SerrePositivity.Inputs.Homotopy.KanQuillen] do
+      `SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen] do
     if env.header.modules.any (·.module == mod) then
       throwError "Sp-3 s3: forbidden import: {mod}"
   let mut roots : List Name := []

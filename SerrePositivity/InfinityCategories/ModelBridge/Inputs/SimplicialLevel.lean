@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Inputs.Homotopy.KanQuillen
+public import SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevel
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor
 public import SerrePositivity.Spectra.ModelCategory.SimplicialLevelEnriched

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Inputs.Homotopy.KanQuillen
+public import SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SourceInvariance
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ChosenComparison
 
