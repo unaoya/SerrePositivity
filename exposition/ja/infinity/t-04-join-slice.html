@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>join とスライス</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 4</nav>
+<h1>第 III 部 4　join とスライス</h1>
+
+<div class="env definition" id="def-extension-lin">
+<p class="env-head">定義 4.1 <span class="env-name">（有限全順序集合での値 \(X^+\)）</span></p>
+<div class="env-body">
+<p>有限な全順序集合 \(I\)（空でもよい）について、\(I\) が空でなければ \(|I|=n+1\) として唯一の順序同型 \(r_I\colon I\xrightarrow{\cong}[n]\) をとる。単体的集合 \(X\) について</p>
+<p>\[X^+(I)=\begin{cases}X([n])&amp;(I\ne\varnothing)\\ \{\ast\}&amp;(I=\varnothing)\end{cases}\]</p>
+<p>とおく。順序を保つ写像 \(\alpha\colon I\to J\) について、\(I\ne\varnothing\) なら \(X^+(\alpha)=X(r_J\circ\alpha\circ r_I^{-1})\colon X^+(J)\to X^+(I)\)、\(I=\varnothing\) なら一点集合への唯一の写像とする。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-initial-segment">
+<p class="env-head">定義 4.2 <span class="env-name">（始切片）</span></p>
+<div class="env-body">
+<p>全順序集合 \(J\) の部分集合 \(I\) が始切片であるとは、\(i\in I\)、\(j\le i\) なら \(j\in I\) となることをいい、\(I\sqsubseteq J\) と書く（空集合と \(J\) 自身も始切片である）。順序を保つ写像 \(\theta\colon J'\to J\) と始切片 \(I\sqsubseteq J\) について、\(\theta^{-1}(I)\sqsubseteq J'\) である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-join">
+<p class="env-head">定義 4.3 <span class="env-name">（単体的集合の join）</span></p>
+<div class="env-body">
+<p>単体的集合 \(K,L\) の join \(K\star L\) を</p>
+<p>\[(K\star L)([n])=\bigsqcup_{I\sqsubseteq[n]}K^+(I)\times L^+([n]\setminus I)\]</p>
+<p>で定める（\(K^+\)、\(L^+\) は<a href="#def-extension-lin">定義 4.1</a>、始切片は<a href="#def-initial-segment">定義 4.2</a>）。\(\theta\colon[m]\to[n]\) は、\(I\) の成分の元 \((\sigma,\tau)\) を、\(I'=\theta^{-1}(I)\) の成分の元</p>
+<p>\[\bigl(K^+(\theta|_{I'})(\sigma),\ L^+(\theta|_{[m]\setminus I'})(\tau)\bigr)\]</p>
+<p>に送る。ここで \(\theta|_{I'}\colon I'\to I\)、\(\theta|_{[m]\setminus I'}\colon[m]\setminus I'\to[n]\setminus I\) は \(\theta\) の制限である。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-join-formula">
+<p class="env-head">注意 <span class="env-name">（段ごとの公式）</span></p>
+<div class="env-body">
+<p>\([n]\) の始切片は \(\varnothing\)、\(\{0,\dots,p\}\)（\(0\le p&lt;n\)）、\([n]\) のいずれかなので、<a href="#def-join">定義 4.3</a> は段ごとには</p>
+<p>\[(K\star L)([n])=L([n])\ \sqcup\bigsqcup_{p+1+q=n}K([p])\times L([q])\ \sqcup\ K([n])\]</p>
+<p>となる（Kerodon Remark 4.3.3.19）。\(I=\varnothing\) の成分が \(L([n])\)、\(I=\{0,\dots,p\}\) の成分が \(K([p])\times L([q])\)、\(I=[n]\) の成分が \(K([n])\) である。この表示で \(\theta\) の作用を書くと、\(\theta\) の像が \(I\) と \([n]\setminus I\) のどちらに入るかで場合分けが要る。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-join-functor">
+<p class="env-head">定義 4.4 <span class="env-name">（join の関手性と包含）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(f\colon K\to K'\)、\(g\colon L\to L'\) について、\(f\star g\colon K\star L\to K'\star L'\) を各成分で \((\sigma,\tau)\mapsto(f(\sigma),g(\tau))\) により定める（\(\ast\) は \(\ast\) に送る）。また包含</p>
+<p>\[\iota_K\colon K\to K\star L,\quad\sigma\mapsto(\sigma,\ast)\ (I=[n]\text{ の成分}),\qquad \iota_L\colon L\to K\star L,\quad\tau\mapsto(\ast,\tau)\ (I=\varnothing\text{ の成分})\]</p>
+<p>を定める。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-slice">
+<p class="env-head">定義 4.5 <span class="env-name">（スライスとコスライス）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X,K\) と射 \(p\colon K\to X\) について、単体的集合 \(X_{/p}\) と \(X_{p/}\) を</p>
+<p>\[X_{/p}([n])=\{\sigma\colon\Delta^n\star K\to X\mid\sigma\circ\iota_K=p\},\qquad X_{p/}([n])=\{\sigma\colon K\star\Delta^n\to X\mid\sigma\circ\iota_K=p\}\]</p>
+<p>で定め、\(\theta\colon[m]\to[n]\) はそれぞれ \(\theta_*\star\mathrm{id}_K\)、\(\mathrm{id}_K\star\theta_*\) の前合成で作用させる（\(\theta_*\) は<a href="t-02-kan-category.html#def-fun">定義 2.2</a>、\(\star\) と \(\iota_K\) は<a href="#def-join">定義 4.3</a>・<a href="#def-join-functor">定義 4.4</a>）。\(X_{/p}\) をスライス、\(X_{p/}\) をコスライスという。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-identity-vertex">
+<p class="env-head">定義 4.6 <span class="env-name">（恒等頂点）</span></p>
+<div class="env-body">
+<p>単体的集合 \(B\) の頂点 \(b\colon\Delta^0\to B\) について、合成 \(\Delta^0\star\Delta^0\to\Delta^0\xrightarrow{b}B\) は \(\Delta^0\) 上で \(b\) となるので、コスライス \(B_{b/}\) の頂点を定める。これを \(\mathrm{id}_b\) と書く。スライス \(B_{/b}\) の頂点 \(\mathrm{id}_b\) も同様に定める（<a href="#def-slice">定義 4.5</a>）。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-slice-projection">
+<p class="env-head">定義 4.7 <span class="env-name">（スライスとコスライスの射影）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(X_{/p}\to X\) を、\(n\) 単体 \(\sigma\colon\Delta^n\star K\to X\) を \(\sigma\circ\iota_{\Delta^n}\colon\Delta^n\to X\)、すなわち \(X([n])\) の元に送ることで定める。同様に \(X_{p/}\to X\) を、\(\sigma\colon K\star\Delta^n\to X\) を \(\sigma\circ\iota_{\Delta^n}\) に送ることで定める（\(\iota_{\Delta^n}\) は<a href="#def-join-functor">定義 4.4</a> の包含。\(\Delta^n\to X\) と \(X([n])\) の元は米田の補題で同一視する）。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-slice">
+<p class="env-head">注意 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p><a href="#def-slice">定義 4.5</a> は \(X\)、\(K\) の大きさを問わず、\(X_{/p}([n])\) は集合 \(\mathrm{Hom}_{\mathrm{sSet}}(\Delta^n\star K,X)\) の部分集合である。\(X\) と \(K\) が小さければ \(X_{/p}\)、\(X_{p/}\) も小さい。<a href="#def-extension-lin">定義 4.1</a> では有限全順序集合の全体を一つの圏としては使わず、個々の \(I\) と \(\alpha\) に対して値を定めているだけである。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-slice-quasicategory">
+<p class="env-head">定理 4.8 <span class="env-name">（quasicategory のスライス）</span></p>
+<div class="env-body">
+<p>\(X\) を quasicategory（<a href="t-01-definitions.html#def-quasicategory">定義 1.8</a>）、\(K\) を単体的集合、\(p\colon K\to X\) を射とする。このとき \(X_{/p}\) と \(X_{p/}\) は quasicategory である（Kerodon Proposition 4.3.6.1）。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

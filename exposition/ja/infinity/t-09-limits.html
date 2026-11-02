@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>極限と余極限</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 9</nav>
+<h1>第 III 部 9　極限と余極限</h1>
+
+<div class="env definition" id="def-limit">
+<p class="env-head">定義 9.1 <span class="env-name">（極限と余極限）</span></p>
+<div class="env-body">
+<p>\(C\) を quasicategory、\(K\) を単体的集合、\(p\colon K\to C\) を射とする。<a href="t-04-join-slice.html#thm-slice-quasicategory">定理 4.8</a> によりスライス \(C_{/p}\) とコスライス \(C_{p/}\)（<a href="t-04-join-slice.html#def-slice">定義 4.5</a>）は quasicategory である。</p>
+<ul>
+  <li>\(C_{/p}\) の頂点で終対象（<a href="t-08-initial-terminal.html#def-terminal">定義 8.3</a>）であるものを \(p\) の極限という。</li>
+  <li>\(C_{p/}\) の頂点で始対象（<a href="t-08-initial-terminal.html#def-initial">定義 8.1</a>）であるものを \(p\) の余極限という。</li>
+</ul>
+</div>
+</div>
+
+<div class="env remark" id="rem-limit-cone">
+<p class="env-head">注意 <span class="env-name">（錐）</span></p>
+<div class="env-body">
+<p>\(C_{/p}\) の頂点は、\(K\) 上で \(p\) となる射 \(\Delta^0\star K\to C\)、つまり \(p\) 上の錐である。極限はその中の終対象、余極限は \(C_{p/}\) の頂点（\(K\star\Delta^0\to C\)、余錐）の中の始対象である。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>モデル圏を使わない基礎</title>
-<link rel="stylesheet" href="../infinity/style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -53,7 +53,7 @@ X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \as
 <p>つまり、関手的な Kan 置換 \(X \to RX\) である（<code>AnodyneKanReplacement.factorization : FunctorialFactorizationData anodyneExtensions J.rlp</code>、HA/Simplicial/AnodyneKanReplacement.lean:44）。
 これは small object argument（Mathlib）と anodyne の定義だけから作られており、モデル構造は使っていない。</p>
 
-<p>関連する一般的な補題もある：<code>generatedLeft_map</code>（HA/Generated/FunctorClosure.lean:70）。余極限を保つ関手 \(F\) が \(I\) を \(W\) に送るなら、\(I\) から生成される射（\({}^{\boxslash}(I^{\boxslash})\)）もすべて \(W\) に送る。
+<p>関連する一般的な補題もある：<code>generatedLeft_map</code>（HA/Generated/FunctorClosure.lean:70）。余極限を保つ関手 \(F\) が \(I\) を \(W\) に送るなら、\(I\) から生成される射（\({}^{\text{⧄}}(I^{\text{⧄}})\)）もすべて \(W\) に送る。
 これは、宇宙の持ち上げが anodyne を保つこと、inner anodyne を保つことなどに使われる。</p>
 
 <!-- ============================================================ -->

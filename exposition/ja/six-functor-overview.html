@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>∞-圏と六関手形式の形式化：概要ノート</title>
+<link rel="stylesheet" href="infinity/style.css">
+</head>
+<body>
+<main>
+<h1>∞-圏と六関手形式の形式化：概要ノート</h1>
+<p class="meta">2026-10-16 作成の Claude Doc（claude.ai/artifact/327aiEDtadrsWT7inCRUDi、37 版）を 2026-10-28 に HTML に書き出したもの。正本は Claude Doc 側。</p>
+<h2>目標と全体像</h2>
+<p>最終目標はエタールコホモロジーの六関手形式を Lean で形式化することで、独立リポジトリで進める。必要な仕事は三系統に分かれる。</p>
+<ul>
+<li><b>A. ∞-圏論の道具</b>：straightening、局所化、安定 ∞-圏、presentability、∞-オペラド、∞-層。</li>
+<li><b>B. 六関手形式そのもの</b>：対応の ∞-圏 Corr(C, E)、定義、拡張定理。幾何から独立した純粋な ∞-圏論。</li>
+<li><b>C. 代数幾何の入力</b>：永田コンパクト化、固有基底変換、𝔸¹ / ℙ¹ のコホモロジー。三角圏・アーベル層のレベルで証明できる。</li>
+</ul>
+<p>B が受け取る入力は「ある自然変換が同値である」という命題（Prop）なので、C は B とインターフェースを決めて並行に進められる。</p>
+<div class="table-wrap"><svg viewBox='0 0 760 432' role='img' aria-label='B は A の道具で作り、C の定理を条件として受け取る' font-size='13' style='max-width:760px;width:100%;height:auto'><defs><marker id='abc-arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0L10 5L0 10z' fill='var(--muted)'/></marker></defs><text x='24' y='32' font-size='15' font-weight='600' fill='var(--fg)'>B は A の道具で作り、C の定理を条件として受け取る</text><rect x='24' y='56' width='340' height='104' rx='8' fill='none' stroke='var(--muted)' stroke-width='1.25'/><text x='40' y='80' font-weight='600' fill='var(--fg)'>A. ∞-圏論の道具</text><text x='40' y='100' font-size='11.5' fill='var(--muted)'>straightening・ファイブレーション</text><text x='40' y='116' font-size='11.5' fill='var(--muted)'>局所化・安定 ∞-圏・D(Λ)</text><text x='40' y='132' font-size='11.5' fill='var(--muted)'>presentability・随伴関手定理</text><text x='40' y='148' font-size='11.5' fill='var(--muted)'>∞-オペラド・∞-層</text><rect x='396' y='56' width='340' height='104' rx='8' fill='none' stroke='var(--muted)' stroke-width='1.25'/><text x='412' y='80' font-weight='600' fill='var(--fg)'>C. 代数幾何の入力</text><text x='412' y='100' font-size='11.5' fill='var(--muted)'>永田コンパクト化</text><text x='412' y='116' font-size='11.5' fill='var(--muted)'>固有基底変換（曲線の場合が核心）</text><text x='412' y='132' font-size='11.5' fill='var(--muted)'>𝔸¹ / ℙ¹ のコホモロジー</text><text x='412' y='148' font-size='11.5' fill='var(--muted)'>三角圏・アーベル層のレベルで証明</text><rect x='170' y='216' width='420' height='88' rx='8' fill='var(--accent)' fill-opacity='0.12' stroke='var(--accent)' stroke-width='2'/><text x='186' y='240' font-weight='600' fill='var(--fg)'>B. 六関手形式（純粋な ∞-圏論）</text><text x='186' y='260' font-size='11.5' fill='var(--fg)'>対応の ∞-圏 Corr(C, E)</text><text x='186' y='276' font-size='11.5' fill='var(--fg)'>定義：lax 対称モノイダル関手 Corr → Cat_∞</text><text x='186' y='292' font-size='11.5' fill='var(--fg)'>拡張定理：D^* と条件 1〜3 から一意に延びる</text><rect x='250' y='360' width='260' height='48' rx='8' fill='none' stroke='var(--muted)' stroke-width='1.25'/><text x='380' y='388' text-anchor='middle' font-weight='600' fill='var(--fg)'>エタールの六関手形式</text><g fill='none' stroke='var(--muted)' stroke-width='1.25'><path d='M250 160V216' marker-end='url(#abc-arrow)'/><path d='M510 160V216' marker-end='url(#abc-arrow)'/><path d='M380 304V360' marker-end='url(#abc-arrow)'/></g><text x='258' y='192' font-size='11.5' fill='var(--muted)'>道具</text><text x='518' y='192' font-size='11.5' fill='var(--muted)'>条件 1〜3（Prop）</text><text x='388' y='336' font-size='11.5' fill='var(--muted)'>f_! = p_* j_!</text></svg></div>
+<p>C の定理は自然変換が同値であるという性質として B に渡るので、∞-圏側と幾何側は独立に進められる。</p>
+<h2>先行事例と現状（2026-10 時点）</h2>
+<p>土台は Mathlib に入りつつあるが、「quasicategory 全体が ∞-cosmos をなす」はまだ誰も示しておらず、straightening と ∞-オペラドは手つかず。</p>
+<div class="table-wrap"><table><tr><th>対象</th><th>状況</th></tr>
+<tr><td>Mathlib（2026-10-15 時点）</td><td>quasicategory、inner fibration、inner anodyne と pushout-product、内部 Hom が quasicategory になること、nerve ⊣ ho、<code>QCat.strictBicategory</code>、モデル圏の一般論。SSet の Kan–Quillen / Joyal モデル構造のインスタンスはまだない</td></tr>
+<tr><td><a href="https://github.com/emilyriehl/infinity-cosmos">Infinity-Cosmos</a>（Riehl ほか）</td><td>∞-cosmos の公理、isofibration の閉性、enriched limits と cotensor、homotopy 2-category。約 4,700 行、sorry なし。最後の数学的追加は 2026 年 7 月で、以後は保守のみ。blueprint は homotopy 2-category で止まっている</td></tr>
+<tr><td>Carneiro–Riehl（ITP 2025）</td><td>ho ⊣ nerve と Cat の余完備性</td></tr>
+<tr><td>McKoen 修士論文（2026 年 3 月）</td><td>functor quasi-category が quasi-category になること（Mathlib に入った）</td></tr>
+<tr><td>Riou（Lean Together 2026）</td><td>位相空間と単体的集合のモデル構造（別リポジトリ）</td></tr>
+<tr><td>Rzk（Riehl–Kudasov–Weinberger）</td><td>単体的 HoTT による synthetic な ∞-圏論。Lean ではないので参考扱い</td></tr>
+</table></div>
+<h2>なぜ ∞-圏が要るのか</h2>
+<p>三角圏でも f ↦ f_! を擬関手にまとめるところまでは手で済む（SGA4 XVII）。破綻するのは貼り合わせと整合性の爆発である。</p>
+<ul>
+<li><b>貼り合わせ</b>：錐が関手的でないので、被覆に沿って対象を貼れず、D(X) が被覆上の D の極限にならない。</li>
+<li><b>整合性の爆発</b>：基底変換・射影公式・Künneth の間の可換図式が増え続け、個別の検証が要る。</li>
+</ul>
+<p>要点は「データを持つこと」より、「選択の曖昧さが可縮な空間になる形でデータを持つこと」。安定 ∞-圏では錐の選び方の空間が可縮なので、錐が関手的になる。降下は Cat_∞ での極限 D(X) ≃ lim D(U_•) として文字通り成り立ち、整合性はすべて「Corr(C, E) から出る一つの関手」に押し込まれる。</p>
+<h2>∞ 圏論の基礎（移動済み）</h2>
+<p>この位置にあった三節「straightening/unstraightening と、極限・余極限・随伴」「∞-オペラドと対称モノイダル構造」「局所化」は、2026-10-28 に「∞ 圏基盤の解説」の補章 10（<a href="infinity/sixff-foundations.html">六関手ノートから移した基礎</a>）へ移した。</p>
+<h2>三関手部分 D^* の構成</h2>
+<p>拡張定理の入力 D^*: C^op → CAlg(Pr^L)、X ↦ Shv(X_ét; D(Λ)) は、厳密に関手的な向き（f_* と前層）で全空間を作り、性質を点ごとに確認し、f^* を逆読みで取り出して作る。</p>
+<ol>
+<li><b>係数</b>：D(Λ)（Λ は n を可逆とする捩れ環）を、presentable な対称モノイダル安定 ∞-圏として固定する。</li>
+<li><b>サイトの族</b>：U ↦ U ×_X Y は擬関手だが、unstraighten すると (X, U → X エタール) の1-圏 Et と、引き戻しによるデカルトファイブレーション Et → Sch になる。整合性の問題は消える。</li>
+<li><b>前層と f_*</b>：PShv(X) = Fun(X_ét^op, D(Λ))、f_* は f^{-1} による制限。制限は厳密に関手的で、点ごとの ⊗ に関して厳密に対称モノイダル。ファイバーごとの関手圏は相対関手圏の構成（HTT 3.2.2）で書ける。X ↦ (PShv(X), ⊗, f_*) は CAlg(Cat_∞) 値の関手。</li>
+<li><b>層と層化</b>：Shv(X) は降下条件（Prop）を満たす充満部分圏。f^{-1} が被覆を保つので f_* は層を保ち、X ↦ Shv(X) は Pr^R 値。包含の左随伴 L（層化）は accessible で左完全な局所化で、存在は presentability から。</li>
+<li><b>f^* を逆読みで得る</b>：各 f_* は左随伴を持ち、族の随伴で Sch → Pr^R ≃ (Pr^L)^op を逆に読むと f ↦ f^*。具体的には f^* = L ∘ f^*_pre（f^{-1} に沿った左 Kan 拡張）。</li>
+<li><b>対称モノイダル性</b>：層化が ⊗ と両立（L(F ⊗ G) ≅ L(LF ⊗ G)）すれば Shv(X) に ⊗ = L(⊗_pre) が入る（HA 2.2.1）。f^*_pre の余極限の添字圏は余フィルター的なので余極限はフィルター的で ⊗ と交換し、f^* は対称モノイダル。層の上の f_* は lax にすぎず左随伴は一般に oplax だが、比較写像が点ごとに同型なので関手全体が CAlg(Pr^L) 値になる（相対随伴の一般論 HA 7.3.2 を Fin_* 上のファイブレーションの性質として使う）。</li>
+<li><b>超層と古典との比較</b>：古典的な非有界導来圏 D(Sh(X_ét, Λ)) は超層の圏と一致する。C 側の定理を渡すには超層で定義すると比較が楽。有限コホモロジー次元のもとでは層と超層の差は消える（Clausen–Mathew など）。どちらで定義するかは f^* との相性も含めて Phase 0 で決める。</li>
+</ol>
+<div class="table-wrap"><table><tr><th>部品</th><th>内容</th><th>重さ</th></tr>
+<tr><td>D1</td><td>D(Λ)：presentable な対称モノイダル安定 ∞-圏</td><td>中〜重</td></tr>
+<tr><td>D2</td><td>相対関手圏と点ごとの ⊗（Et → Sch から PShv への族）</td><td>中</td></tr>
+<tr><td>D3</td><td>降下条件と、f_* が層を保つこと</td><td>軽</td></tr>
+<tr><td>D4</td><td>層化の存在・左完全性・⊗ との両立</td><td>重</td></tr>
+<tr><td>D5</td><td>族の随伴で f^* を得て、点ごとにモノイダル性を確認</td><td>中</td></tr>
+<tr><td>D6</td><td>超層と古典的な導来圏の比較 Shv^hyp(X_ét; D(Λ)) ≃ D(Sh(X_ét, Λ))</td><td>重</td></tr>
+</table></div>
+<p>D4 は presentability に、D6 は古典との橋に依存する。D3 と D5 は「性質を点ごとに確認」の路線でそのまま書ける。</p>
+<h3>段1：係数（詳細）</h3>
+<p>一般論として必要なのは CAlg(Pr^L) の対象。</p>
+<div class="table-wrap"><table><tr><th>条件</th><th>中身</th><th>後でどこに効くか</th><th>D(Λ) での実現</th></tr>
+<tr><td>安定</td><td>零対象、有限極限・余極限、押し出し = 引き戻し</td><td>錐が関手的、ho が三角圏（段7）</td><td>写像錐、ho は古典的 D(Λ)</td></tr>
+<tr><td>presentable</td><td>小さな余極限、κ-コンパクト対象の小集合で生成</td><td>随伴関手定理（段4・段5、右随伴）</td><td>Λ[0] がコンパクト生成元、コンパクト対象は完全複体</td></tr>
+<tr><td>⊗ が各変数で余極限を保つ</td><td>Pr^L の中の可換代数</td><td>段6で ⊗ とフィルター余極限の交換、内部 Hom</td><td>導来テンソル ⊗^L（RHom の左随伴）</td></tr>
+</table></div>
+<p><b>設計判断</b>：K-入射的複体の dg-nerve は ⊗ で閉じないので、D(Λ) は「Ch(Λ) の擬同型での対称モノイダルな局所化」として作るのがよさそう。W が K-平坦な対象の上で ⊗ に関して閉じていれば局所化は対称モノイダル構造を受け継ぐ（HA 4.1.7）。局所化の判定法にモノイダル版が加わる。</p>
+<h3>段2：サイトの族（詳細）</h3>
+<ul>
+<li><b>一般論</b>：擬関手 C^op → Cat のグロタンディーク構成は1-圏のデカルトファイブレーション。<b>鍵の補題</b>：1-圏のグロタンディークファイブレーションの脈体は ∞ の意味でデカルトファイブレーション。1-圏のデータがそのまま ∞ の入力になる（小さく独立で、最初の形式化の候補）。</li>
+<li><b>層の場合</b>：1-圏 Et の対象は (X, U → X エタール)、射は f: Y → X と h: V → U の可換正方形。p: Et → Sch のファイバーは X_ét、デカルト射は引き戻しの正方形 (Y, U ×_X Y) → (X, U)。U ↦ U ×_X Y の擬関手性の管理は不要で、引き戻しの選択も要らない。被覆族はファイバーごとに与えられ、デカルト射で保たれる。</li>
+<li><b>サイズ</b>：X_ét は有限表示のアフィンエタールなどに制限して本質的に小さくする。</li>
+<li><b>サイトは1-圏のまま</b>：段2では脈体をとって ∞-圏として見るだけで、∞ 的なサイトは作らない。∞ 性は係数 D(Λ) だけから入る。∞-圏的なサイトが必要なのは導来代数幾何のように空間側も ∞ 的な場合で、エタールの六関手には不要。</li>
+</ul>
+<h3>段3：前層と f_*（詳細）</h3>
+<ul>
+<li><b>一般論（相対関手圏、HTT 3.2.2）</b>：E' → B とD に対し、T → B を {K → T（B 上）} ≅ {K ×_B E' → D} で定義する（n-単体は σ: Δⁿ → B と Δⁿ ×_B E' → D の組で、SSet の言葉だけで書ける）。E' → B が余デカルトなら T → B はデカルトで、ファイバーは Fun(E'_b, D)。関手圏が反変なので向きが一回ひっくり返る。要は余デカルトファイブレーションが平坦（exponentiable）であることで、重さは中〜重。</li>
+<li><b>層の場合</b>：Et^op → Sch^op（余デカルト、ファイバー X_ét^op）に適用すると、T → Sch^op はデカルトで、ファイバーは PShv(X) = Fun(X_ét^op, D(Λ))、分類する関手は共変な X ↦ PShv(X)。</li>
+<li><b>T の射の具体形</b>：f: Y → X の上の射は前層の射 F → f_* G（f_* G(U) = G(U ×_X Y)）。デカルト持ち上げは G ↦ (f_*G, 恒等射)。straighten すると f ↦ 普通の押し出し f_* で、(gf)_* ≅ g_* f_* とその高次の整合性はすべて T の合成則に入っている。</li>
+<li><b>個々の PShv(X) は易しい</b>：quasicategory への関手の空間（内部 Hom）は Mathlib にある。段3で新しいのは族としてまとめる部分だけ。</li>
+<li><b>Rf_* が自動的に出る</b>：段4で層に制限すると、係数が D(Λ) なので G(U ×_X Y) は導来大域切断を表し、f_* は自動的に Rf_* になる。入射分解は「係数を D(Λ) にして極限をとる」ことに吸収される。</li>
+<li><b>モノイダル構造</b>：D を D^⊗ → Fin_* に替えて同じ構成をすると点ごとの ⊗ が族として入る（HA 2.1.3）。f_* は制限なので厳密に保つ（段6）。</li>
+</ul>
+<h3>古典論が高次の整合性を気にしなくて済んだ理由</h3>
+<ol>
+<li><b>アーベル層のレベル</b>：X ↦ Sh(X) は2-圏 Cat への擬関手で、整合性は有限個。しかも (gf)_* ≅ g_* f_* はファイバー積の普遍性から来る標準的な同型で、一意的なので図式は自動的に可換になる。これが ∞ の「選択の空間が可縮」の1-圏的な影。</li>
+<li><b>導来圏のレベル</b>：三角圏は関手の間の同型までしか保持しないので、高次の整合性は表現できない。代償が、降下ができないことと錐が関手的でないこと。</li>
+<li><b>整合性が本当に効く場面</b>：古典的にも気にしていて苦労している。SGA4 XVII・XVIII の両立性の検証、コヒーレント双対性での Conrad の <i>Grothendieck Duality and Base Change</i>。</li>
+</ol>
+<p>∞ の枠組みは、古典論が2-圏のレベルで「標準的な同型の一意性」で暗黙に処理していたことを、全レベルで「可縮性」として処理できるようにした。</p>
+<h3>段4：層と層化（詳細）</h3>
+<p>部分圏をとるだけの易しい部分（層の条件、f_* が層を保つこと）と、presentability が効く重い部分（層化の存在）に分かれる。</p>
+<ul>
+<li><b>4a 層の条件</b>：各被覆 {U_i → U} の Čech 脈体 U_• について F(U) → lim_Δ F(U_•) が同値（有限直和 → 積も要求）。Prop なので Shv ⊂ PShv は充満部分圏。右辺は D の一般の極限で、錐の圏の終対象による定義を使う。超被覆に替えると超層（段7）。エタールでは被覆はエタールで全射な族（qcqs なら有限族）で、F(U) は RΓ(U, F) を表す複体、条件は Čech 降下そのもの。</li>
+<li><b>4b f_* は層を保つ</b>：デカルトファイブレーションの中で、ファイバーの充満部分圏の族が推移関手で保たれれば、それらを集めたものもデカルトファイブレーション（軽い補題）。U の被覆を引き戻すと U ×_X Y の被覆になり Čech 脈体も保たれるので、f_*G は層。T を T_sh に制限すると X ↦ Shv(X)、f ↦ f_*（= Rf_*）。</li>
+<li><b>4c 層化の存在</b>：PShv(X) は presentable で、Shv(X) は小さな射の集合 S（篩の包含 y(R) → y(U) と D の生成元のテンソル）に関する S-局所対象の圏。presentable な圏の小集合に関する局所対象の圏は反射的（HTT 5.5.4.15）。presentability が本格的に効く重い部品。</li>
+<li><b>安定係数の恩恵</b>：一般の ∞-トポスでは L の左完全性が実質的な仕事（HTT 6.2.2）だが、係数が安定なら左随伴は有限余極限 = 有限極限を保つので L の完全性は自動。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>方針</th><th>f_*</th><th>層化 L</th><th>古典との比較（段7）</th></tr>
+<tr><td>前層から（基本方針）</td><td>合成するだけで易しい</td><td>presentability が要り重い</td><td>定理として示す</td></tr>
+<tr><td>古典的な複体から（D(Sh(X_ét, Λ)) を直接 ∞ 局所化として定義）</td><td>K-入射分解が要り、族の関手性が難しい</td><td>項ごとの古典的層化で易しい</td><td>定義そのもの</td></tr>
+</table></div>
+<p>前層からは「関手性が易しく個々の圏の性質が重い」、古典的な複体からは「個々の圏が易しく関手性が重い」。段7の比較定理で二つの道が出会う。</p>
+<h3>古典的な層化との関係</h3>
+<ol>
+<li><b>レシピは同じ</b>：古典的にも f^{-1}F = a(f^{-1}_pre F)、F ⊗ G = a(F ⊗_pre G) と前層で作って層化した。∞ でも f^* = L ∘ f^*_pre、⊗ = L(⊗_pre) で、違いは係数が D(Λ) であることだけ。</li>
+<li><b>コホモロジーをとると一致</b>：D(Λ) 値の前層 F について H^n(LF) ≅ a(U ↦ H^n(F(U)))。F → LF はコホモロジー層の上で同型になる局所同値。F が前層の複体 C^• のとき、項ごとに古典的層化 a をかけた複体は ∞ の超層化を表す（完全関手 a が誘導する D(PSh) → D(Sh) が超層化）。有限コホモロジー次元のもとでは層化と超層化の差は消える。</li>
+<li><b>本質的な違いは分解が要らないこと</b>：古典的には層化と導来関手は別の段階で、⊗^L には平坦分解、Rf_* には入射分解が要った（層の複体 C について C(U ×_X Y) は C が K-入射的でなければ RΓ を計算しない）。∞ では降下条件 F(U) ≃ lim F(U_•) がホモトピー極限を要求するので層の値は自動的に RΓ で、f_* はそのまま Rf_*。<b>∞ の降下条件は古典論の「K-入射的（fibrant）であること」の役割を内蔵している。</b></li>
+</ol>
+<p>段7の比較定理 Shv^hyp(X; D(Λ)) ≃ D(Sh(X_ét, Λ)) の証明の中心は、2（項ごとの層化が超層化を表す）と3（降下条件を満たす対象が K-入射的複体の役割を果たす）。</p>
+<h3>段5：f^* を逆読みで得る（詳細）</h3>
+<ul>
+<li><b>5a 点ごとの左随伴</b>：随伴関手定理（HTT 5.5.2.9）は使わず、明示的に作る。前層では制限 f_*^pre の左随伴 f^*_pre は左 Kan 拡張（HTT 4.3）、層化 L は包含の左随伴、層の f_* は f_*^pre の制限なので、随伴の合成で f^* = L ∘ f^*_pre ⊣ f_*。</li>
+<li><b>層の場合の公式</b>：f^*_pre F(V) = colim_{(U, V → U ×_X Y)} F(U)（古典的な f^{-1}_pre の公式）。茎は (f^*F)_ȳ = F_{f(ȳ)}。</li>
+<li><b>f がエタールの場合</b>：Y_ét は X_ét のスライスなので f^* は単なる制限で層化不要。さらに左随伴 f_♯ を持ち、開埋め込みでは j_♯ = j_!（零拡張）。これが拡張定理の条件1の j_!。</li>
+<li><b>5b 族として組む（HTT 5.2.2 の相対版）</b>：デカルトファイブレーションの推移関手がすべて左随伴を持てば余デカルトでもある。点ごとの判定は「f の上の射 F → f_* G が余デカルト ⇔ 随伴で移した f^* F → G が同値」で、余デカルト持ち上げは単位射 F → f_* f^* F。T_sh → Sch^op を余デカルトとして straighten すると X ↦ Shv(X)、f ↦ f^*（Pr^L 値）。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>部品</th><th>内容</th><th>重さ</th></tr>
+<tr><td>E1</td><td>左 Kan 拡張の存在（点ごとの余極限）</td><td>中</td></tr>
+<tr><td>E2</td><td>随伴の合成</td><td>軽〜中</td></tr>
+<tr><td>E3</td><td>デカルト + 推移関手が左随伴 ⇒ 余デカルト</td><td>中・鍵（拡張定理や f^! でも再利用）</td></tr>
+<tr><td>E4</td><td>余デカルト ⇔ 随伴で移した射が同値</td><td>軽</td></tr>
+</table></div>
+<p>f^! には明示的な公式がないので、六関手の段階では随伴関手定理が本当に必要になる。</p>
+<h3>段6：対称モノイダル性（詳細）</h3>
+<ul>
+<li><b>6a 前層の点ごとの ⊗（HA 2.1.3）</b>：Fun(K, D)^⊗ := Fun(K, D^⊗) ×_{Fun(K, Fin_*)} Fin_*。制限は厳密に対称モノイダル。段3の構成を D^⊗ で Sch^op × Fin_* 上で行うと、Sch^op 方向にデカルト、Fin_* 方向に余デカルトな2変数ファイブレーション T^⊗。(F ⊗_pre G)(U) = F(U) ⊗^L G(U)。</li>
+<li><b>6b f^*_pre がモノイダル</b>：モノイダル関手の左随伴は自動的に oplax。f^* が強モノイダル ⇔ Fin_* 方向の余デカルト射が Sch^op 方向の輸送で保たれる。B2 の「基底変換 ⇔ 余デカルト射が引き戻しで保たれる」と同じ型に統一される。層の場合、比較写像は対角 I → I × I から来て、I（U ∈ X_ét と V → U ×_X Y の組）はファイバー積を持つので余フィルター的、余極限の添字は sifted で対角は共終、よって同型。</li>
+<li><b>6c 層化で降ろす（HA 2.2.1）</b>：L-同値 f と任意の Z で f ⊗ Z も L-同値なら、C' に ⊗' = L(⊗) が入り L は対称モノイダル。族としては推移関手が局所同値を保てばよい。層の場合、y(R) → y(U) と y(V) のテンソルは y(R ×_X V) → y(U ×_X V)、f^*_pre(y(R) → y(U)) = y(R ×_X Y) → y(U ×_X Y) で、どちらも被覆の引き戻し。Shv(X) の ⊗ = L(⊗_pre) は層の導来テンソル積で、平坦分解は不要。</li>
+<li><b>内部 Hom</b>：Hom(F, G)(U) = Map(F|_U, G|_U) と明示的に書け、随伴関手定理は避けられる。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>部品</th><th>内容</th><th>重さ</th></tr>
+<tr><td>F1</td><td>点ごとのモノイダル構造とその族版</td><td>中</td></tr>
+<tr><td>F2</td><td>左随伴の oplax 構造と「点ごとに同型なら強モノイダル」</td><td>中・鍵</td></tr>
+<tr><td>F3</td><td>sifted な余極限と ⊗ の交換</td><td>軽〜中</td></tr>
+<tr><td>F4</td><td>モノイダル局所化の判定法（HA 2.2.1）</td><td>中</td></tr>
+<tr><td>F5</td><td>推移関手と両立するファイバーごとの局所化</td><td>中</td></tr>
+</table></div>
+<p>幾何的な入力は「X_ét がファイバー積を持つ」と「被覆が引き戻しで保たれる」だけで、どちらもサイトの公理。</p>
+<h3>段7：超層と古典との比較（詳細）</h3>
+<p>C 側の古典的定理を B に渡す橋。推奨は D(X) を最初から超層の圏として定義すること。</p>
+<ul>
+<li><b>7a 層と超層</b>：超被覆 U_• → U（各段 U_n → (cosk_{n−1} U_•)_n が被覆）すべてで F(U) ≃ lim F(U_•) となるのが超層。同値に、∞-連結な射（全コホモロジー層で同型な射）に関して局所的な対象。Shv^hyp ⊂ Shv は反射的。hypercomplete ⇔ Whitehead の定理（コホモロジー層で同型なら同値）。有限コホモロジー次元のもとでは Shv = Shv^hyp（Clausen–Mathew：有限 Krull 次元 qcqs で剰余体の ℓ-コホモロジー次元が一様有界など）。一般には全コホモロジー層が 0 でも 0 でない層がありうる。</li>
+<li><b>7b t-構造</b>：Shv(X; D(Λ)) に D(Λ) から t-構造が入り、H^n(F) = a(U ↦ H^n F(U))、ハートは Sh(X_ét, Λ)。</li>
+<li><b>7c 比較定理 Shv^hyp(X; D(Λ)) ≃ D(Sh(X_ét, Λ))</b>：(1) 複体を前層と見て超層化、擬同型は ∞-連結なので局所化の普遍性で D(A) から降りる。(2) t-完全でハートの上で同値。(3) 下に有界な部分で同値（単射的対象では RΓ = Γ、Ext は普遍 δ-関手として一致）。(4) 非有界への拡張は Postnikov 完備性を使い、ここが最大の難所（Spaltenstein・Neeman の問題）。ho D(A) は Mathlib の <code>DerivedCategory</code> と一致し、DerivedCategory(Sh(X_ét, Λ)) ≃ ho D(A) ≃ ho Shv^hyp の鎖ができる。</li>
+<li><b>7d インターフェース</b>：(1) ho をとると ∞ 版の関手が古典的導来関手と一致すること（ho(f_*) = Rf_*、ho(f^*) = f^{-1}、⊗ = ⊗^L、f_! = Rf_!）と、比較写像（mate として定義される基底変換の写像など）の一致。(2) 射が同値 ⇔ ho で同型（自明）。実質的な仕事は (1)。非有界は D^+ から有限コホモロジー次元と way-out 論法で拡張。</li>
+<li><b>超層で定義する理由</b>：f^* は茎を保つので ∞-連結な射を保ち超層に降り、f_* も超層を保つので段3〜6はそのまま通る。同値性を茎で判定できるので、条件1〜3や固有基底変換を古典どおり茎で確かめられる。古典との比較も直接的。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>部品</th><th>内容</th><th>重さ</th></tr>
+<tr><td>G1</td><td>超被覆と超層、超層化の存在</td><td>中</td></tr>
+<tr><td>G2</td><td>有限コホモロジー次元のもとでの hypercomplete 性</td><td>重</td></tr>
+<tr><td>G3</td><td>t-構造とハート = Sh(X_ét, Λ)</td><td>中</td></tr>
+<tr><td>G4</td><td>比較定理（特に非有界への拡張）</td><td>重</td></tr>
+<tr><td>G5</td><td>ホモトピー圏での関手と比較写像の同一視</td><td>中・鍵</td></tr>
+</table></div>
+<h2>対応の ∞-圏と六関手形式の定義</h2>
+<p>六関手形式とは lax 対称モノイダル関手 D: Corr(C, E) → Cat_∞ のこと（Mann/Scholze）。基底変換・射影公式・Künneth とその高次整合性は、すべて「D が関手である」に含まれる。</p>
+<h3>Corr(C, E)</h3>
+<ul>
+<li><b>設定</b>：C は引き戻しを持つ（∞-）圏、E は同型を含み引き戻しと合成で閉じた射のクラス。エタールの場合は C = qcqs スキーム、E = 分離的有限型射。</li>
+<li><b>射</b>：X ←g− W −f→ Y（f ∈ E）。合成は引き戻し W ×_Y V。</li>
+<li><b>単体</b>：対角線に X₀, …, X_n、その上に W_{i,i+1}、さらに上に合成が並ぶ三角形の格子状図式で、すべての正方形が引き戻し、一方向の射が E に入るもの。純粋に組合せ的な SSet。</li>
+<li><b>C が 1-圏の場合</b>：写像空間は対応の同型の亜群なので、Corr は実質 (2,1)-圏。quasicategory であることは「引き戻しが同型を除いて一意」に帰着する。</li>
+<li><b>モノイダル構造</b>：X ⊗ Y := X × Y。Fin_* 上のファイブレーション Corr^⊗ として組む。</li>
+</ul>
+<h3>定義から形式的に出るもの</h3>
+<div class="table-wrap"><table><tr><th>取り出し方</th><th>得られるもの</th></tr>
+<tr><td>g: Y → X を X ← Y = Y と見る（C^op ⊂ Corr）</td><td>g^*</td></tr>
+<tr><td>f ∈ E を X = X → Y と見る</td><td>f_!</td></tr>
+<tr><td>一般の対応 X ← W → Y</td><td>f_! g^*</td></tr>
+<tr><td>合成が引き戻しで定義されていること</td><td>基底変換 g^* f_! ≅ f'_! g'^*</td></tr>
+<tr><td>対角射で X が可換代数になり、lax 性から ⊠</td><td>⊗ = Δ^* ∘ ⊠</td></tr>
+<tr><td>lax モノイダル性 + 合成</td><td>射影公式、Künneth</td></tr>
+</table></div>
+<h3>右随伴側</h3>
+<p>各 D(X) が presentable で関手が余極限を保つ（D を Pr^L 値とする）なら、随伴関手定理で f_*、f^!、内部 Hom が出る。f_!・g^*・⊗ の公式の mate も形式的に出る（例：g_* f'^! ≅ f^! g'_*）。</p>
+<p>形式的に<b>出ない</b>もの：f_* と g^* の一般の基底変換（固有・滑らかなときだけ）、滑らかな射に対する f^! ≅ f^*(d)[2d]。</p>
+<p>実装上は D を Corr^⊗ 上の余デカルトファイブレーションとして持つ。</p>
+<h2>拡張定理</h2>
+<p>三関手部分 D^* と「開埋め込みと固有射の随伴の条件」から、六関手形式が一意的に延びる。スキームは主張に出てこない純粋な ∞-圏論の定理で、リジッド解析・凝縮・モチーフの設定にもそのまま使える。</p>
+<p><b>入力</b></p>
+<ul>
+<li>D^*: C^op → CAlg(Cat_∞)（f^* と ⊗）</li>
+<li>E の部分クラス I（開埋め込み）と P（固有射）。どちらも引き戻しと合成で閉じ、E の射はすべて p ∘ j（j ∈ I, p ∈ P）と分解でき、I ∩ P の射は切断的（スキームなら開かつ閉な埋め込みで単射）</li>
+</ul>
+<p><b>条件</b></p>
+<ol>
+<li>j ∈ I に対し j^* は左随伴 j_! を持ち、基底変換と射影公式を満たす。</li>
+<li>p ∈ P に対し p^* は右随伴 p_* を持ち、基底変換と射影公式を満たす。</li>
+<li>混合基底変換：引き戻しの正方形で j ∈ I、p ∈ P のとき、自然な写像 j'_! p'_* → p_* j_! が同型である（I ∩ P での一致 j_! ≅ j_* はその特殊な場合。Scholze の定式化に合わせた形で、正確な形は原典で要確認）。</li>
+</ol>
+<p><b>結論</b>：D^* は Corr(C, E) 上の六関手形式に一意的に延び、f = p ∘ j に対し f_! = p_* j_!。</p>
+<p><b>証明の考え方</b></p>
+<ol>
+<li>I だけ、P だけについて Corr(C, I)、Corr(C, P) への延長を作る。D^* のデカルトファイブレーションが I の射の上でも余デカルトになること（左随伴の存在と基底変換）を使い、対応の圏の上のファイブレーションに組み直す（族の随伴）。</li>
+<li>二つを貼り合わせる。鍵は「f の分解 p ∘ j のなす ∞-圏が弱可縮」で、これは分解の存在と I ∩ P の切断性という抽象的公理から ∞-圏論の中で示される。三角圏で Deligne が手で検証していた「コンパクト化によらない」の ∞ 版。</li>
+</ol>
+<p>文献は Liu–Zheng（多重単体集合）、Mann の学位論文、Scholze の講義ノートの付録。形式化では Scholze/Mann 版を追う。</p>
+<h2>拡張定理の証明の仕組みと部品表</h2>
+<p>核心は「基底変換という条件を、余デカルト射が引き戻しで閉じるという性質に翻訳する」ことと、「コンパクト化によらない」を Fact(f) の可縮性と局所化の普遍性に置き換えること。</p>
+<h3>一つのクラスの延長</h3>
+<ol>
+<li>D^* を C 上のデカルトファイブレーション E → C として持つ（対象 (X, F)、g の上の射 G → g^*F）。</li>
+<li>j^* が左随伴を持つ ⇔ j の上に余デカルト射がある。余デカルト持ち上げ (W, H) → (Y, j_! H) が j_! を与える。</li>
+<li><b>Beck–Chevalley ⇔ j の上の余デカルト射を g でデカルト的に引き戻すと j' の上の余デカルト射になる</b>。基底変換の同型の族と高次整合性が、一つの Prop になる。</li>
+<li>「C の対応の上にある E の対応」の ∞-圏 Corr(E) を作る。射は (X, F) ← (W, H) → (Y, G) で、左足は g の上のデカルト射、右足は j ∈ I の上の任意の射。</li>
+<li>Corr(E) → Corr(C, I) は余デカルトファイブレーションで、straighten すると X ← W → Y ↦ j_! g^*。Barwick の unfurling と同じ発想。射影公式も Fin_* 上の同じ型の条件になり、lax モノイダル性まで出る。</li>
+</ol>
+<p>P については右随伴 p_* を使う双対版で同様。</p>
+<h3>二つのクラスの貼り合わせ</h3>
+<ol>
+<li><b>分解つきの対応 Corr^fact</b>：X ← W −j→ W̄ −p→ Y を射とする ∞-圏。一つのクラスの延長を I 方向、P 方向の二回適用して (g, j, p) ↦ p_* j_! g^* を作る。両立の条件が混合基底変換。</li>
+<li><b>分解を忘れる</b>：π: Corr^fact → Corr(C, E) の f の上のファイバーは分解の圏 Fact(f)。D は分解を取り替える射をすべて同値に送る（混合基底変換から）。</li>
+<li><b>可縮性</b>：Fact(f) は空でなく（永田）、余フィルター的（二つの分解は X → W̄₁ ×_Y W̄₂ の分解で支配される）なので弱可縮。I ∩ P の切断性は分解の間の射の空間の制御に使う。C が1-圏なら Fact(f) も1-圏で古典的事実で済む。</li>
+<li><b>降ろす</b>：ファイバーが弱可縮なので π は局所化 Corr^fact[W⁻¹] ≃ Corr(C, E)。D は W を同値に送るので、局所化の普遍性で Corr(C, E) 上に一意的に降りる。Deligne が手で検証した無限の整合条件が、可縮性と局所化の普遍性の二つに置き換わる。</li>
+</ol>
+<h3>部品表</h3>
+<div class="table-wrap"><table><tr><th>部品</th><th>内容</th><th>重さ</th></tr>
+<tr><td>B1</td><td>Corr(C, E) が quasicategory（まず C が1-圏の場合）</td><td>中</td></tr>
+<tr><td>B2</td><td>Beck–Chevalley ⇔ 余デカルト射がデカルト引き戻しで閉じる</td><td>軽・鍵</td></tr>
+<tr><td>B3</td><td>一つのクラスの延長（unfurling）とその双対版</td><td>中</td></tr>
+<tr><td>B4</td><td>Corr^fact と二段階の延長、混合基底変換</td><td>重</td></tr>
+<tr><td>B5</td><td>Fact(f) の弱可縮性（余フィルター的 ⇒ 可縮）</td><td>軽〜中</td></tr>
+<tr><td>B6</td><td>局所化の普遍性と「ファイバーが弱可縮なら局所化」という判定法（Quillen の定理 A の ∞ 版の変種）</td><td>重</td></tr>
+<tr><td>B7</td><td>Fin_* 上のモノイダル版</td><td>中</td></tr>
+</table></div>
+<p>B6 は A の局所化（Dwyer–Kan）に依存するので、A と B の接点として最初に設計を固める。B2 と B5 は短く独立なので、最初の形式化の練習台に向く。</p>
+<h2>幾何的入力と形式的帰結の分解</h2>
+<p>エタールの場合、<b>六関手 = 三関手 D^* + 固有基底変換 + 永田コンパクト化</b>。各定理は「形式的な閉包性 + 少数の生成元での幾何的計算」に分解される。</p>
+<div class="table-wrap"><table><tr><th>定理</th><th>立場</th><th>幾何の入力</th><th>形式的な部分</th></tr>
+<tr><td>拡張定理の条件 1（開埋め込み）</td><td>入力</td><td>零拡張の基底変換・射影公式（初等的）</td><td>—</td></tr>
+<tr><td>拡張定理の条件 3（混合基底変換）</td><td>入力</td><td>開埋め込みの零拡張と固有射の順像の交換（固有基底変換から従う）</td><td>—</td></tr>
+<tr><td>永田コンパクト化</td><td>入力（分解の存在）</td><td>Conrad–Lütkebohmert–Temkin</td><td>—</td></tr>
+<tr><td>固有基底変換</td><td>入力（条件 2）</td><td>曲線の場合の核心（SGA4 XII）</td><td>Chow の補題・閉埋め込み・射影空間を経た曲線への帰着</td></tr>
+<tr><td>Poincaré 双対</td><td>帰結</td><td>𝔸¹ がコホモロジー的に滑らか（H^*_c(𝔸¹)、跡写像、Kummer 列、Pic(ℙ¹)）</td><td>「コホモロジー的に滑らか」が合成・基底変換で閉じ、エタール局所的に判定でき、エタール射では f^! = f^*</td></tr>
+<tr><td>滑らかな基底変換</td><td>帰結</td><td>なし</td><td>f^* ≅ f^! ⊗ ω_f^{−1} と f^! の基底変換（f_! 基底変換の mate）</td></tr>
+</table></div>
+<p>滑らかな基底変換は SGA4 と論理の順序が逆で、Poincaré 双対から純粋に形式的に出る。</p>
+<p>条件 1〜3 はどれも「ある自然変換が同値である」という Prop なので、ホモトピー圏（有限コホモロジー次元のもとではコホモロジー層）で確認できる。古典的な定理を三角圏・アーベル層のレベルで証明し、インターフェース越しに渡せばよい。</p>
+<p><b>別枠</b>：構成可能性の保存（有限性定理）と構成可能層上の Verdier 双対の完全性は、この型に収まらず、Deligne の生成的基底変換などの別の幾何的入力が要る。六関手の構成自体には不要。</p>
+<h2>寄り道：位相空間・多様体での枠組みと現代的な不変量</h2>
+<p>同じ枠組みは局所コンパクト・ハウスドルフ空間でも作れ、三角圏レベルでは古典の書き換え、∞ 版では新しい中身を持つ。さらに現代的な多様体・位相空間の不変量の多くの共通の言葉になっている。詳細は別途。</p>
+<h3>位相空間版の六関手形式</h3>
+<div class="table-wrap"><table><tr><th>構成要素</th><th>エタールの場合</th><th>位相空間の場合</th></tr>
+<tr><td>C</td><td>qcqs スキーム</td><td>局所コンパクト・ハウスドルフ空間（LCH）</td></tr>
+<tr><td>サイト</td><td>小エタール景 X_ét</td><td>開集合の半順序集合 Open(X)</td></tr>
+<tr><td>サイトの族</td><td>Et → Sch（擬関手を unstraighten）</td><td>f^{-1}: Open(X) → Open(Y) が厳密な関手</td></tr>
+<tr><td>I / P</td><td>開埋め込み / 固有射</td><td>開埋め込み / 固有写像</td></tr>
+<tr><td>分解の存在</td><td>永田（深い）</td><td>易しい：Γ_f ⊂ X⁺ × Y の閉包 Γ̄ をとると X ≅ Γ_f ↪ Γ̄（開）→ Y（固有）</td></tr>
+<tr><td>固有基底変換</td><td>SGA4 XII（深い）</td><td>初等的</td></tr>
+<tr><td>Poincaré 双対の入力</td><td>𝔸¹ のコホモロジー</td><td>H^*_c(ℝ) = Λ[−1]</td></tr>
+</table></div>
+<ul>
+<li><b>古典</b>：Verdier（1965）の局所コンパクト空間の双対性。教科書は Kashiwara–Schapira <i>Sheaves on Manifolds</i>、Iversen <i>Cohomology of Sheaves</i>。</li>
+<li><b>∞ 版</b>：Lurie HA の Verdier 双対の節、HTT 7.3 の固有基底変換、Volpe の学位論文 <i>The six operations in topology</i>（任意の presentable 安定係数）、Scholze の講義ノートの位相的な例。</li>
+<li><b>書き換えを超える部分</b>：係数を Sp にするとパラメータ付きスペクトラムの理論になり、滑らかな M → pt で f^! S が接束のマイナスの Thom スペクトラム（パラメータ付き Atiyah 双対）。</li>
+<li><b>注意</b>：位相空間上の層は一般には hypercomplete でない（有限被覆次元なら hypercomplete、HTT 7.2.3）。</li>
+<li><b>形式化のパイロット候補</b>：段2が自明、永田と固有基底変換が初等的、Mathlib に <code>OnePoint</code>・<code>IsProperMap</code>・位相空間上の層がある。∞-圏側（段1・3〜6、拡張定理）はエタール版と同じものが要る。</li>
+</ul>
+<h3>現代的な不変量の解釈</h3>
+<div class="table-wrap"><table><tr><th>例</th><th>内容</th><th>古典の書き換えか</th><th>枠組みのどこが効くか</th></tr>
+<tr><td>局所系</td><td>局所定数層 ≃ Fun(Π_∞(X), D)、高次ホモトピーまで含むモノドロミー</td><td>1-圏版は古典</td><td>straightening</td></tr>
+<tr><td>exodromy</td><td>成層空間の構成可能層 ≃ exit-path ∞-圏からの関手（Lurie HA 付録、Barwick–Glasman–Haine）。エタール版もある</td><td>新しい</td><td>straightening</td></tr>
+<tr><td>Atiyah 双対</td><td>Sp 係数で f^! S が Thom スペクトラム</td><td>Λ 係数は古典</td><td>六関手</td></tr>
+<tr><td>トレース</td><td>Euler 標数、Lefschetz 数、Becker–Gottlieb 転送、Lefschetz–Verdier 跡公式、特性サイクル（Lu–Zheng）</td><td>整合性は新しい</td><td>六関手 + (∞,2)-圏</td></tr>
+<tr><td>マイクロ局所層</td><td>特異台、Legendre 結び目の層の圏（Shende–Treumann–Zaslow）、Fukaya 圏との比較（Nadler–Zaslow、Ganatra–Pardon–Shende）、Tamarkin、Guillermou–Kashiwara–Schapira</td><td>新しい</td><td>圏の層、Pr^L の極限</td></tr>
+<tr><td>因子化ホモロジー</td><td>E_n-代数の多様体上の積分（Lurie、Ayala–Francis）、非可換 Poincaré 双対 = Ran 空間上の Verdier 双対</td><td>新しい</td><td>余層、Verdier 双対</td></tr>
+<tr><td>持続ホモロジー</td><td>ℝ 上の構成可能層としての持続加群（Kashiwara–Schapira）</td><td>比較的新しい応用</td><td>構成可能層の演算</td></tr>
+</table></div>
+<p>exodromy はエタール版もあるので、特異点の局所基本群や結び目の不変量の正標数・混標数での類似を考える方向と直結する。</p>
+<h3>掘り下げ：exodromy</h3>
+<ul>
+<li><b>局所系</b>：LC(X; D) ≃ Fun(Π_∞(X), D)（HA 付録 A.4）。被覆空間と π₁ の表現の対応の ∞ 版。</li>
+<li><b>exit-path ∞-圏</b>：成層空間 X → P で、exit path は γ(0) があるストラタにあり t &gt; 0 でより開いたストラタに出る道。Exit(X) は点・exit path・そのホモトピーからなる。円錐的成層空間で Shv_cbl(X; D) ≃ Fun(Exit(X), D)（MacPherson の着想、Treumann、HA 付録 A）。ストラタ内のモノドロミー、ストラタ間の一般化写像 F_x → F_y、その整合性がまとまる。</li>
+<li><b>例 (ℂ, {0})</b>：End(b) ≃ ℤ、Hom(0, b) は可縮。構成可能層は V₀ → V^{hT}（ホモトピー不動点 = 穴あき円板上の RΓ）。</li>
+<li><b>2ストラタ X = Z ⊔ U</b>：Exit(X) はスパン Π_∞(Z) ← Π_∞(holink) → Π_∞(U) のコラージュ（随伴で見た profunctor のコラージュ）。構成可能層は Z・U 上の局所系と holink 上の貼り合わせ写像で、recollement の ∞ 版。</li>
+<li><b>結び目</b>：K ⊂ S³ では Π_∞(U) の π₁ が結び目群、holink は境界トーラスで、π₁ = ℤ²（メリディアンとロンジチュード）から結び目群への写像が周辺系。結び目群と周辺系は（Waldhausen と Gordon–Luecke により）完全不変量で、Exit(S³, K) はその情報を含む。</li>
+<li><b>エタール版と数論的位相幾何</b>：Barwick–Glasman–Haine は qcqs スキームの構成可能エタール層を副有限な exit-path ∞-圏（対象は幾何学的点、射は特殊化）からの関手として記述。Spec O_K を素点 S で成層すると、スパンは B Gal(k(𝔭)) ← B Gal(K_𝔭) → B Gal(K_S/K) で、Gal(K_𝔭) → G_{K,S} は分解群、惰性群がメリディアン、フロベニウスがロンジチュード。Mazur–森下の「素数と結び目」（森下『Knots and Primes』）の正確な定式化になり、正標数・混標数の特異点の局所基本群や結び目の不変量の類似の土台になる。</li>
+<li><b>形式化</b>：一般の円錐的成層空間は位相的に重い。有限単体的複体を単体で成層すると Exit(X) は面の半順序集合と同値で、構成可能層はその表現。初等的で形式化の入口に向く。</li>
+</ul>
+<h3>掘り下げ：Legendre 結び目の層理論的不変量</h3>
+<ul>
+<li><b>設定と特異台</b>：Legendre 結び目 Λ ⊂ T^∞ℝ² は前面射影で ℝ² 上の曲線として描ける。特異台 SS(F) ⊂ T^*M（Kashiwara–Schapira）は F が伝播しない余方向の集合で、構成可能層ではラグランジュ的、無限遠部分は Legendre 的。</li>
+<li><b>不変量</b>：Sh_Λ(ℝ²) = 無限遠での特異台が Λ に含まれる層の安定 ∞-圏（Shende–Treumann–Zaslow）。接触同位で Sh_Λ ≃ Sh_{Λ'}（Guillermou–Kashiwara–Schapira）。証明は接触同位を M × M × I 上の核として量子化し、核の合成 p_{13!}(p_{12}^* K ⊗ p_{23}^* L) で作用させるもので、位相空間の六関手形式（f_!、f^*、⊗）をそのまま使う。</li>
+<li><b>計算 = exodromy + マイクロ局所条件</b>：前面射影の成層（領域・弧・カスプ・交点）について構成可能なので、「領域にベクトル空間、弧をまたぐ写像、カスプと交点での条件」という箙の表現で書ける（STZ の組合せ的モデル）。マイクロ局所階数1の対象は Chekanov–Eliashberg DGA のオーグメンテーションと対応（Ng–Rutherford–Shende–Sivek–Zaslow）。有限体上の数え上げでルーリング多項式などが出る。階数1のモジュライにクラスター構造（Shende–Treumann–Williams–Zaslow、Casals–Zaslow の weave）。</li>
+<li><b>∞-圏が本質的な理由</b>：特異台は錐と導来 Hom で定義される。マイクロ局所層は Λ 上の圏の層（Kashiwara–Schapira のスタック μsh）で、大域的な対象は Cat_∞ での極限 = 余デカルト切断。不変性の証明に六関手形式を使う。</li>
+<li><b>Fukaya 圏との関係</b>：余接束の Fukaya 圏 ≃ 構成可能層の圏（Nadler–Zaslow）、Λ で止めた wrapped Fukaya 圏 ≃ Sh_Λ のコンパクト対象（Ganatra–Pardon–Shende）。</li>
+<li><b>数論的な対応物</b>：マイクロ局所層理論のエタール版は Beilinson のエタール層の特異台と斎藤毅の特性サイクル。接触同位の量子化（GKS）にはっきりした対応物は（知る限り）ない。</li>
+<li><b>形式化</b>：一般論は重いが、前面射影の成層についての STZ の組合せ的モデルは有限的な箙の表現で扱いやすい。</li>
+</ul>
+<p><b>応用</b></p>
+<div class="table-wrap"><table><tr><th>方向</th><th>内容</th><th>代表的な結果</th></tr>
+<tr><td>Legendre 結び目の分類・フィリング</td><td>古典的不変量で区別できない結び目の区別。フィリング L の層量子化が Sh_Λ の階数1の対象を与えるので、階数1の対象がなければフィリングは存在しない。フィリングがクラスターのシードに対応し、Legendre ループのモノドロミーが無限位数のクラスター変換として作用する</td><td>Chekanov 対の区別、無限個のフィリング（Casals–Gao）</td></tr>
+<tr><td>滑らかな結び目</td><td>単位余法束 Λ_K は Legendre トーラスで、Sh_{Λ_K} から結び目群と周辺系を復元できる。exodromy の周辺系とマイクロ局所層が直接つながる</td><td>余法トーラスは完全不変量（Shende、Ekholm–Ng–Shende）</td></tr>
+<tr><td>シンプレクティック位相</td><td>同じ層の道具（特異台・GKS 量子化）で、Floer 理論の解析的に重い議論を代数的に処理</td><td>近傍ラグランジュ予想の一部（Guillermou、Abouzaid–Kragh の別証明）、非転位性（Tamarkin）、スペクトル不変量（Guillermou–Viterbo）、接触非圧縮（Chiu）</td></tr>
+<tr><td>ミラー対称性</td><td>GPS の比較で Fukaya 圏を層の圏で計算</td><td>トーリックの coherent–constructible 対応（Fang–Liu–Treumann–Zaslow 予想、桑垣が証明）、Lagrangian skeleton 上の貼り合わせ（Nadler など）</td></tr>
+<tr><td>特異点・結び目ホモロジー</td><td>平面曲線特異点の絡み目の階数1の層のモジュライの 𝔽_q 点の数が q の多項式（ルーリング多項式）で HOMFLY の特殊化と結びつく。組紐の Legendre 閉包の層のモジュライは braid variety</td><td>Shende–Treumann–Zaslow、Oblomkov–Shende（–Rasmussen）予想の文脈、Casals–Gorsky–Gorsky–Simental、Khovanov–Rozansky ホモロジーとの関係</td></tr>
+</table></div>
+<p>「𝔽_q 上で点を数えると q の多項式になり結び目の不変量になる」という Weil 予想的な現象と、特異点の絡み目と圧縮ヤコビ多様体の関係は、特異点と結び目の不変量の正標数・混標数での類似を考える際の具体的な参照点になる。</p>
+<h3>Legendre 不変量：基礎からの説明</h3>
+<p>Legendre 結び目 Λ に「特異台が Λ に入る層」の安定 ∞-圏 Sh_Λ を対応させる。Legendre 同位で不変で、前面射影の図から組合せ的に計算できる。</p>
+<ol>
+<li><b>接触幾何の準備</b>：ℝ³ の接触構造 ξ = ker(dz − y dx)。Legendre 結び目はどこでも ξ に接する結び目。前面射影 (x, y, z) ↦ (x, z) で y = dz/dx は傾きとして復元され、垂直な接線の代わりにカスプが現れ、交点では傾きの小さい方が手前。前面の図だけで Legendre 結び目が決まる。古典的不変量（Thurston–Bennequin 数・回転数）では区別できない例がある（Chekanov）。ℝ³ = J¹(ℝ) は T^∞ℝ² の開部分と同一視でき、Legendre 結び目は「前面の曲線と各点での余法方向の選択」。</li>
+<li><b>特異台</b>（Kashiwara–Schapira）：(x, ξ) ∉ SS(F) ⇔ x の近くで φ(x) = 0、dφ(x) = ξ となる関数の等位線を ξ の方向にまたいでも切断が変わらない（{φ ≥ 0} に台をもつ局所コホモロジー = i^! 型の操作が消える）。「その方向をまたぐと切断が跳ぶ余方向の集合」。例：定数層は零切断、開半平面の零延長と閉半平面の定数層は境界の反対の余法方向。SS^∞(F) は零切断を除いて T^∞ に射影したもので、構成可能層では Legendre 的。</li>
+<li><b>Sh_Λ の定義</b>（Shende–Treumann–Zaslow）：SS^∞(F) ⊂ Λ で z ≪ 0 で 0 となる層の充満部分圏（安定 ∞-圏）。マイクロ局所茎 μ_p(F) は p の余方向をまたぐ跳びの錐、その次元がマイクロ局所階数。階数1の対象のモジュライ 𝓜₁(Λ) は代数的スタック。</li>
+<li><b>不変性</b>（Guillermou–Kashiwara–Schapira）：同位を接触同位 φ_t に延長し、M × M × I 上の核 K（特異台が φ_t のグラフ）を作り（層量子化）、畳み込み K ∘ F = p_{2!}(K ⊗ p_1^* F) で作用させる。特異台の評価で SS^∞ が Λ₀ から Λ₁ に動く。Sh_Λ、𝓜₁(Λ)、その 𝔽_q 点の数、Hochschild ホモロジーなどが不変量。</li>
+<li><b>組合せ的な計算</b>（exodromy の応用、STZ の組合せ的モデルのおおよその形）：前面の成層について構成可能なので exit-path 圏の表現。領域に複体（非有界な下の領域は 0）、弧をはさむ領域の間に余向き付けで向きの決まる写像、カスプでは内外の写像の合成が恒等、交点では4領域の正方形が可換で全複体が非輪状、階数1では各弧の写像の錐が1次元。例：標準的な非結び目（二つのカスプの「空飛ぶ円盤」）では内側が1次元に決まり、𝓜₁ は一点を G_m で割ったもの。</li>
+<li><b>他の理論との関係</b>：Chekanov–Eliashberg DGA（Reeb コードで生成、正則円板を数える微分）のオーグメンテーションの圏 ≃ マイクロ局所階数1の部分（Ng–Rutherford–Shende–Sivek–Zaslow）。ルーリング多項式（前面を目の対に分解する仕方の数え上げ）は 𝓜₁(Λ) の 𝔽_q 点の数と q のべきを除いて一致。Λ で止めた wrapped Fukaya 圏 ≃ Sh_Λ のコンパクト対象（Ganatra–Pardon–Shende）。</li>
+<li><b>局所から大域へ</b>：Λ 上の圏の層 μsh_Λ（大域切断は Cat_∞ での極限 = 余デカルト切断）。マイクロ局所化 Sh_Λ → μsh(Λ)、Λ が円周なら μsh(Λ) は（Maslov 指数などで捻られた）局所系の圏で、𝓜₁(Λ) → Loc₁(Λ)。フィリング L 上の階数1の局所系から 𝓜₁(Λ) のトーラス・チャート (G_m)^{b₁(L)} が得られ、チャートの間の座標変換がクラスター変換（Casals–Gao）。</li>
+</ol>
+<div class="table-wrap"><table><tr><th>段階</th><th>使われている道具</th></tr>
+<tr><td>特異台の定義</td><td>安定 ∞-圏、局所コホモロジー（i^!）、錐</td></tr>
+<tr><td>不変性（GKS）</td><td>位相空間の六関手形式（核の畳み込み）</td></tr>
+<tr><td>組合せ的な計算</td><td>exodromy（straightening）</td></tr>
+<tr><td>局所から大域へ</td><td>圏の層、Cat_∞ での極限 = 余デカルト切断</td></tr>
+</table></div>
+<h2>素数と結び目：圏論的な抽象化による類似の記述</h2>
+<p>表面的な対応表ではなく、類似を「同じ圏の対象の二つの例」「同じ関手的な構成の二つの値」として書くことを目指す。確立度はレベル1・2が高く、レベル3は研究の最前線。</p>
+<h3>基本の辞書（確立）</h3>
+<div class="table-wrap"><table><tr><th>結び目・3次元多様体</th><th>数論</th></tr>
+<tr><td>S³</td><td>Spec ℤ（Spec O_K）</td></tr>
+<tr><td>結び目 K</td><td>素点 𝔭</td></tr>
+<tr><td>補空間</td><td>Spec O_K ∖ S（G_{K,S}）</td></tr>
+<tr><td>境界トーラス</td><td>Spec K_𝔭（tame な分解群は στσ⁻¹ = τ^q で非可換）</td></tr>
+<tr><td>メリディアン / ロンジチュード</td><td>惰性群の生成元 / フロベニウス</td></tr>
+<tr><td>絡み数</td><td>Legendre 記号</td></tr>
+<tr><td>Alexander 多項式</td><td>岩澤多項式（主予想 ↔ Alexander 多項式 = トーション）</td></tr>
+<tr><td>Milnor 不変量</td><td>Rédei 記号、多重剰余記号（森下）</td></tr>
+<tr><td>Chern–Simons 不変量</td><td>数論的 Chern–Simons 理論（Kim ほか）</td></tr>
+</table></div>
+<h3>現代的な話題ごとの数論的類似</h3>
+<div class="table-wrap"><table><tr><th>話題</th><th>数論側</th><th>確立度</th></tr>
+<tr><td>exodromy</td><td>Barwick–Glasman–Haine のエタール exodromy。スパン B Gal(k(𝔭)) ← B Gal(K_𝔭) → B Gal(K_S/K)</td><td>確立</td></tr>
+<tr><td>周辺系は完全不変量</td><td>遠アーベル幾何（Neukirch–内田、分解群つき G_{K,S} からの復元）。単遠アーベル的復元は「exit-path ∞-圏から空間を復元する」問題の数論版</td><td>確立（対応の精密化は課題）</td></tr>
+<tr><td>マイクロ局所層・特異台</td><td>Beilinson の特異台、斎藤毅の特性サイクル（1次元では Swan・Artin 導手）。ε-因子と特性サイクルの関係が中心。素点の「余法的な対象」は不明</td><td>部分的</td></tr>
+<tr><td>層の圏を不変量に・ミラー対称性</td><td>Langlands（Fargues–Scholze の Bun_G の層、Ben-Zvi–Sakellaridis–Venkatesh の相対 Langlands 双対）</td><td>研究プログラム</td></tr>
+<tr><td>点の数え上げ・結び目多項式</td><td>岩澤多項式は確立。量子不変量の類似は数論的 Chern–Simons・Dijkgraaf–Witten が候補</td><td>一部</td></tr>
+<tr><td>フィリング・接触フレーミング</td><td>フロベニウスが標準的なフレーミング？ 4次元のフィリングに相当するものは不明</td><td>推測</td></tr>
+</table></div>
+<h3>レベル1：成層 shape と Poincaré 双対</h3>
+<p>P-成層空間のホモトピー論は P への保存的関手をもつ ∞-圏の ∞-圏 Str_P と同値（Haine）、副有限版は Barwick–Glasman–Haine。(S³, K) も (Spec O_K, S) も Str_P（の副有限完備化）の対象。</p>
+<div class="table-wrap"><table><tr><th>部分</th><th>位相</th><th>数論</th><th>双対の次元</th></tr>
+<tr><td>全体</td><td>S³</td><td>Spec O_K（Artin–Verdier、双対化対象 G_m）</td><td>3</td></tr>
+<tr><td>絡み</td><td>T²</td><td>Spec K_𝔭（Tate の局所双対）</td><td>2</td></tr>
+<tr><td>閉ストラタ</td><td>S¹</td><td>Spec k(𝔭)（Ẑ の双対）</td><td>1</td></tr>
+</table></div>
+<p><b>抽象的な結び目</b>の候補：3次元 Poincaré 双対をもつ2ストラタの成層ホモトピー型で、閉ストラタが1次元、絡みが2次元の Poincaré 双対をもつもの。双対性しか使わないので、数論側の絡みの群が非可換であることも許される。Mazur の「Spec ℤ は3次元」の精密化。</p>
+<h3>レベル2：六関手で定義される不変量</h3>
+<p>不変量を六関手の演算（j_*、i^*、i^!、近接サイクル、双対性）と双対化対象だけで定義すれば、位相とエタールの六関手形式で同じ定義の二つの値になり、辞書の各項目が一つの定理の二つの例になる。</p>
+<ul>
+<li>絡み数 ↔ Legendre 記号：recollement の境界写像と双対性ペアリングの合成（森下のカップ積の抽象化）。</li>
+<li>Alexander 加群 ↔ 岩澤加群：補空間上の普遍的なアーベル局所系を係数とするコホモロジー。</li>
+<li>Milnor 不変量 ↔ 多重剰余記号：Massey 積。</li>
+</ul>
+<h3>レベル3：(∞,2)-圏（マイクロ局所・トレース・場の理論）</h3>
+<ul>
+<li><b>ULA と特異台</b>：普遍局所非輪状性は、六関手形式から作ったコホモロジー的対応の2-圏での双対化可能性と同値（Lu–Zheng）。Beilinson の特異台は ULA で定義されるので、特異台は六関手形式から抽象的に定義できる。Kashiwara–Schapira の特異台もテスト関数に沿った伝播で特徴づけられ、同じ抽象的定義の位相版と見られる可能性がある。成り立てば Sh_Λ の数論版が定義でき、欠けているのは接触同位の不変性（GKS 量子化）の対応物。</li>
+<li><b>トレース</b>：Grothendieck–Lefschetz は圏論的トレース（Lu–Zheng）の例で、Lefschetz 数とフロベニウスのトレースは同じ構成の二つの値（確立）。</li>
+<li><b>場の理論</b>：Ben-Zvi–Sakellaridis–Venkatesh の数論的な場の理論。現時点では指導原理の段階。</li>
+</ul>
+<h3>量子不変量の圏論的抽象化</h3>
+<div class="table-wrap"><table><tr><th>枠組み</th><th>抽象化の形</th><th>代表例</th></tr>
+<tr><td>Reshetikhin–Turaev</td><td>枠付き向き付きタングルの圏は一つの対象で自由に生成されたリボン圏（Shum）。量子不変量はリボン圏の対象の選択で決まるリボン関手</td><td>Jones（Rep U_q(sl₂)）、HOMFLY、色付き Jones</td></tr>
+<tr><td>TQFT とコボルディズム仮説</td><td>完全拡張 TQFT = 完全双対化可能な対象（Lurie）</td><td>Turaev–Viro（球面的フュージョン圏）、Reshetikhin–Turaev（モジュラー圏）</td></tr>
+<tr><td>スケインと因子化ホモロジー</td><td>曲面のスケイン代数 = Rep_q(G) の因子化ホモロジー（Ben-Zvi–Brochier–Jordan）</td><td>Kauffman ブラケットのスケイン代数</td></tr>
+<tr><td>圏化</td><td>結び目ホモロジーは4次元コボルディズムに関手的。Khovanov–Rozansky は Rouquier 複体の Hochschild ホモロジー = 圏論的トレース</td><td>Khovanov、HOMFLY ホモロジー</td></tr>
+</table></div>
+<ul>
+<li><b>そのまま移るもの：有限ゲージ理論</b>。Dijkgraaf–Witten は π₁ と3次元の基本類だけを使うのでレベル1の抽象化に乗り、数論側は G_{K,S} の表現を Artin–Verdier の跡写像で重みづけた数論的 Dijkgraaf–Witten（Kim ほか）。圏論的には BG への写像空間に沿った f_! f^*（有限な経路積分）で、π-有限な射の ambidexterity（Hopkins–Lurie）が鍵。六関手で定義されるのでレベル2に乗る。</li>
+<li><b>移らないもの：Reshetikhin–Turaev 型</b>。組紐とタングルの合成は3次元空間でのイソトピーから来るが、素数は動かせず、素数のタングルの圏に相当するものがない。Jones の数論版がはっきりしない根本的な理由。</li>
+<li><b>別の入口：q = |𝔽_q|</b>。岩堀–Hecke 代数は B(𝔽_q)∖G(𝔽_q)/B(𝔽_q) 上の関数で、HOMFLY は Ocneanu トレース。量子パラメータ q は文字どおり有限体の元の個数。Hecke 圏（旗多様体上の層）が圏化で、Webster–Williamson は Frobenius の重みで HOMFLY ホモロジーの q-次数を構成（量子次数 = Frobenius の重み）。原理は関数と層の辞書で、Frobenius トレースが圏論的トレースによる脱圏化。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>類似</th><th>何が数論に対応するか</th><th>抽象化</th></tr>
+<tr><td>A：素数 = 結び目（Mazur–森下）</td><td>3次元多様体 ↔ Spec O_K、結び目 ↔ 素点</td><td>成層 shape + Poincaré 双対、六関手で定義される不変量（有限ゲージ理論まで）</td></tr>
+<tr><td>B：関数と層の辞書</td><td>q ↔ |𝔽_q|、圏化 ↔ 層、脱圏化 ↔ Frobenius トレース</td><td>圏論的トレース</td></tr>
+</table></div>
+<p><b>問い</b>：A と B を統合できるか。たとえば A の数論的有限ゲージ理論を B の意味で q-変形できるか（数論で q が現れる q-de Rham・プリズム的コホモロジーとの関係は推測の域）。</p>
+<h3>研究プログラムとしての形</h3>
+<ol>
+<li>レベル1：抽象的な結び目を副有限 Str_P の中で Poincaré 双対の次元で定義し、位相・数論の両方がその例であることを確認する。</li>
+<li>レベル2：辞書の項目を六関手の演算で定義し直し、古典的な不変量が同じ定義の値になることを示す。</li>
+<li>レベル3：ULA = 双対化可能性を経由して特異台を抽象化し、Sh_Λ の数論版を定義する。不変性の類似を探す。</li>
+</ol>
+<p>形式化との関係：自由リボン圏と Reshetikhin–Turaev 関手は1-圏の話で Mathlib の組紐モノイダル圏の上に作れそう。有限ゲージ理論の六関手による定義は、位相版とエタール版を同じ抽象 API の上で作れば「同じ定義の二つの値」が形式的に意味を持つ。</p>
+<h3>Legendre 不変量の基礎レベルでの数論的類似</h3>
+<div class="table-wrap"><table><tr><th>Legendre 不変量の段階</th><th>数論側の候補</th><th>確からしさ</th></tr>
+<tr><td>余法トーラス Λ_K（= 単位法束 = 境界トーラス、空間としては T²）</td><td>Spec K_𝔭（メリディアン ↔ 惰性、結び目方向 ↔ フロベニウス）</td><td>構造的。周囲の接触多様体に相当するものは欠落（Spec O_K の3次元性はコホモロジー的で接平面を持たない）</td></tr>
+<tr><td>特異台・マイクロ局所階数</td><td>分岐と Artin 導手。曲線上の特性サイクルの各点の係数は全次元（階数 + Swan 導手）</td><td>確立</td></tr>
+<tr><td>Sh_Λ</td><td>各 𝔭 ∈ S での分岐が上界（Abbes–斎藤の分岐フィルトレーションや導手）以下の層の圏。Deligne の有限性・Esnault–Kerz で研究されている</td><td>自然な候補</td></tr>
+<tr><td>同位による不変性</td><td>数体では欠落（素点は動かせない）。関数体では次数 d の閉点が写像トーラスの中の閉じた組紐で、配置空間の中で動かせ、組紐群が現れる（Ellenberg–Venkatesh–Westerland）</td><td>部分的</td></tr>
+<tr><td>前面射影・カスプ・交点</td><td>有限射と分岐点などが考えられるが不明</td><td>—</td></tr>
+<tr><td>Chekanov–Eliashberg DGA とオーグメンテーション</td><td>導来ガロア変形環（Galatius–Venkatesh）。どちらも境界（局所）条件つき局所系のモジュライを表現する導来代数</td><td>構造的な候補</td></tr>
+<tr><td>マイクロ局所化・フィリング</td><td>大域の表現から局所の表現への制限。Tate 局所双対がシンプレクティック構造、Poitou–Tate が「大域の像はラグランジュ」、Selmer 群は二つの極大等方部分空間の交わり（Poonen–Rains）。位相の A-多項式（補空間の指標多様体の境界トーラスへの像はラグランジュ）と対応</td><td>最も強い</td></tr>
+</table></div>
+<p>最後の行の抽象的な理由：シフトしたシンプレクティック構造の一般論（PTVV、境界つきは Calaque）では、向き付けられた（Poincaré 双対をもつ）対象からの写像スタックはシフトしたシンプレクティック構造を持ち、境界つきならラグランジュを与える。向きとして Artin–Verdier・Tate 双対を使えば、A-多項式と Selmer 群が同じ定理の二つの例になるはず（文献での整備状況は要確認）。</p>
+<h3>観点：空間そのものでなく、群・表現・局所系の類似</h3>
+<p>類似の正しいレベルは結び目や Spec ℤ そのものではなく、結び目群とその表現・局所系 ↔ ガロア群とガロア表現。exodromy により「局所系 = 基本 ∞-亜群の表現 = 構成可能層」なので、比較の対象は「局所条件つきの局所系の圏（とそのモジュライ）」で、六関手・exodromy の枠組みのレベルと一致する。</p>
+<div class="table-wrap"><table><tr><th>位相</th><th>数論</th></tr>
+<tr><td>結び目群 π₁(S³ ∖ K)</td><td>G_{K,S}</td></tr>
+<tr><td>周辺部分群 π₁(T²)</td><td>分解群 G_{K_𝔭}</td></tr>
+<tr><td>指標多様体（表現のモジュライ）</td><td>ガロア変形空間（導来ガロア変形環）</td></tr>
+<tr><td>境界への制限の像（A-多項式、ラグランジュ）</td><td>局所への制限の像（Poitou–Tate、ラグランジュ）、Selmer 群 = ラグランジュの交わり</td></tr>
+<tr><td>色付き Jones は A-多項式の量子化（AJ 予想、Garoufalidis）</td><td>？（ラグランジュの「量子化」として保型側・L-関数を見る、という問いは推測の域）</td></tr>
+</table></div>
+<h3>関数体版</h3>
+<p>有限体上の曲線 C の関数体は、類似 A（素数 = 結び目）と類似 B（q = |𝔽_q|）が同時に成り立つ場所で、二つの統合を考える自然な実験場。</p>
+<ul>
+<li><b>ファイバー付き3次元多様体</b>：C は「曲面 C_{𝔽̄_q} のフロベニウスによる写像トーラス」で、π₁^ét(C ∖ S) は副有限な曲面群の Ẑ による拡大 = ファイバー付き3次元多様体の基本群の類似。閉点はフロベニウスの周期軌道（閉じた組紐）。</li>
+<li><b>点を動かせる</b>：配置空間と組紐群で同位の類似がある（Ellenberg–Venkatesh–Westerland の Hurwitz 空間、関数体の Cohen–Lenstra）。</li>
+<li><b>Langlands が証明済み</b>：Drinfeld、L. Lafforgue（GL_n）、V. Lafforgue。幾何学的 Langlands と Frobenius のトレース（Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky）で、層の圏から保型関数が出る。</li>
+<li><b>局所系の数え上げ</b>：曲線上の ℓ 進局所系の数え上げ（Drinfeld、Deligne の予想、その後の進展）は、Higgs 束や指標多様体の点の数（Hausel–Letellier–Rodriguez-Villegas）と結びつく。位相側の「指標多様体の点の数」「ルーリング多項式」と並べて比べられる具体的な橋。</li>
+<li><b>六関手</b>：曲線上のエタール六関手はエタール版そのもので、位相版とともに形式化ライブラリの直接の適用先。</li>
+</ul>
+<h3>Selmer 群 = ラグランジュの交わり と Heegaard 分解</h3>
+<p><b>数論側（Poonen–Rains）</b>：E/K、M = E[p]。Weil 対と Tate 局所双対で H¹(K_v, M) に非退化ペアリングが入り、二次形式に持ち上がる。制限直積 V = ∏'_v H¹(K_v, M) は局所コンパクトな二次空間。</p>
+<ul>
+<li>局所条件 W = ∏_v E(K_v)/pE(K_v) は極大等方（E(K_v)/p は自分自身の零化部分空間）。ほとんどすべての v で不分岐クラス H¹(O_v, M)。</li>
+<li>大域の像 Z = Im(H¹(K, M) → V) は極大等方（等方性は相互法則、極大性は Poitou–Tate）。</li>
+<li>Sel_p(E) = Z ∩ W。ランダムな極大等方部分空間の交わりのモデルから Selmer 群の分布を予想。</li>
+</ul>
+<p><b>位相側（Heegaard 分解）</b>：M = H₁ ∪_Σ H₂ で Mayer–Vietoris。H¹(Σ) は交差形式でシンプレクティック、H¹(H_i) の像 L_i はラグランジュ、H¹(H_i) → H¹(Σ) が単射なので H¹(M) = L₁ ∩ L₂。非可換版は指標多様体のラグランジュの交わりと Atiyah–Floer。結び目補空間では A-多項式が一つ目、Dehn 手術の中実トーラスが二つ目のラグランジュ。</p>
+<div class="table-wrap"><table><tr><th>位相</th><th>数論</th></tr>
+<tr><td>ハンドル体 H₁</td><td>局所的な部分 ∐ Spec O_v（不分岐なら中実トーラスの類似）</td></tr>
+<tr><td>ハンドル体 H₂</td><td>大域的な部分 Spec K</td></tr>
+<tr><td>分割曲面 Σ</td><td>局所体の制限直積 ∏' Spec K_v（アデールの「曲面」）</td></tr>
+<tr><td>H¹(Σ) の交差形式</td><td>Tate 局所双対による二次形式</td></tr>
+<tr><td>L₁</td><td>局所条件 W（不分岐なら H¹(O_v, M)）</td></tr>
+<tr><td>L₂</td><td>大域の像 Z</td></tr>
+<tr><td>H¹(M) = L₁ ∩ L₂</td><td>Sel_p(E) = Z ∩ W</td></tr>
+</table></div>
+<ul>
+<li>Selmer 群は「閉じた数論的3次元多様体の H¹」で、アデールによる分解の Mayer–Vietoris で計算される（Bloch–Kato の H¹_f とも整合）。</li>
+<li>Nekovář の Selmer 複体は3次元の双対性 RΓ_f(M) ≃ RΓ_f(M^∨(1))^∨[−3] を満たす。</li>
+<li>Cassels–Tate ペアリング ↔ H₁ の捩れ部分の絡み形式（Mazur 以来の観察）。</li>
+<li><b>問い</b>：Selmer 複体は二つのラグランジュの導来交わりとして書けるか（H¹ が Selmer、H² に双対 Selmer・Sha の情報）。局所条件つきガロア表現のモジュライは、PTVV・Calaque を Artin–Verdier・Tate 双対を向きとして適用したラグランジュの交わりになるか。数論側に「Selmer 型のラグランジュの交わりの Floer 理論」はあるか。</li>
+<li>形式化：Tate 局所双対と Poitou–Tate 完全系列が中核で、Selmer 群の形式化で整備する部分と重なる。</li>
+</ul>
+<h3>既存研究（2026-10 時点の検索による）</h3>
+<div class="table-wrap"><table><tr><th>研究</th><th>内容</th><th>この類似との関係</th></tr>
+<tr><td><a href="https://arxiv.org/abs/2205.02292">Pridham（arXiv:2205.02292）</a></td><td>ℓ 進ガロア表現の導来モジュライに Tate・Poitou–Tate 双対からシフトしたシンプレクティック構造とラグランジュ構造を構成、Kim の予想を証明。Tate 捻りのため重み付きシフト・シンプレクティック構造を導入。非可換 Selmer 複体、0-シフト・シンプレクティック構造と一般化 Cassels–Tate ペアリング</td><td>非可換版の問い（PTVV・Calaque を数論的双対で適用）の大部分を実現</td></tr>
+<tr><td><a href="https://arxiv.org/pdf/1510.05818.pdf">Kim, Arithmetic Chern–Simons Theory I（arXiv:1510.05818）</a> と後続</td><td>ガロア表現上の数論的 Chern–Simons 汎関数。分解公式、有限巡回群の相関関数の数論的絡み数による計算、実素点を含む数体への拡張</td><td>3次元 TQFT の類似</td></tr>
+<tr><td><a href="https://ar5iv.arxiv.org/html/2106.02308">平野–Kim–森下（arXiv:2106.02308）</a></td><td>数論的 Dijkgraaf–Witten 理論の基礎：曲面の前量子化束、共形ブロック、分配関数と貼り合わせ公式</td><td>分割曲面 Σ = ∏' Spec K_v 側の TQFT</td></tr>
+<tr><td><a href="https://arxiv.org/pdf/1911.02236">abelian 数論的 BF 理論のノート（arXiv:1911.02236）</a>、<a href="https://arxiv.org/abs/2602.19621">Park–Park（arXiv:2602.19621、2026-02）</a></td><td>Carlson–Kim が導入した数論的 BF 理論の体系的展開。Cassels–Tate ペアリングを数論的 BF 汎関数として解釈</td><td>Cassels–Tate ↔ 絡み形式</td></tr>
+<tr><td>Poonen–Rains</td><td>Selmer 群を二つの極大等方部分空間の交わりとして記述し分布を予想</td><td>Heegaard 描像の線形代数的な核</td></tr>
+<tr><td>Mazur、Kapranov–Reznikov、森下『Knots and Primes』、Galatius–Venkatesh</td><td>Spec ℤ の3次元性、数論的位相幾何の辞書、導来ガロア変形環</td><td>背景</td></tr>
+</table></div>
+<p><b>見つからなかったもの（網羅的ではない）</b>：Selmer 群を「数論的 Heegaard 分解」の Mayer–Vietoris として明示的に解釈する定式化、Selmer 型ラグランジュの交わりの Floer 理論の数論版、A-多項式の量子化（AJ 予想）の数論版、Sh_Λ 型の層の圏の不変量の数論版。後の二つは Pridham の構造を出発点に「量子化」「層の圏の不変量」を考える方向として自然に続く。</p>
+<h3>既存研究の詳細</h3>
+<p><b>Kim の数論的ゲージ理論（Chern–Simons・Dijkgraaf–Witten）</b></p>
+<ul>
+<li>X = Spec O_F（総虚数体）で inv: H³(X, G_m) ≅ ℚ/ℤ（ℤ/n 係数版 H³(X, ℤ/n) ≅ (1/n)ℤ/ℤ）を3次元多様体の基本類の類似とし、有限群 A と c ∈ H³(A, ℤ/n) に対し CS_c(ρ) = inv(ρ^*c)。</li>
+<li>X_S を絡み目補空間、局所ガロア群の表現のモジュライを境界とし、大域から局所への制限関手と、局所モジュライ上の Chern–Simons 直線束（(1/n)ℤ/ℤ-トーサー）を構成。Kim は Spec F_v が本当にトーラスかという疑問を明示。最終節は L-関数を作る推測的構想。</li>
+<li>後続：分解公式と例の計算、有限巡回群の相関関数を数論的絡み数で記述、実素点を含む数体への拡張。平野–Kim–森下は 2+1次元 TQFT（Gomi の扱い）に沿って前量子化束・Chern–Simons 1-コサイクル・汎関数・共形ブロック・分配関数を構成し、分解公式と貼り合わせ公式を証明。エンタングルメント・エントロピーの研究もある。</li>
+</ul>
+<p><b>数論的 BF 理論</b></p>
+<ul>
+<li>Carlson–Kim：BF(a, b) = inv(a ∪ δb)（二つの場で双対化層の向きの問題を回避）。指数和が、ℤ/n・μ_n では類数と単数指数の積、双対なアーベル多様体 A、B では |A(F)/n| · |B(F)/n| · |Ш(A)[n]|。Ш の位数が経路積分として書け、A と B について対称（Cassels–Tate と整合）。位相の BF 経路積分 = Alexander 多項式との類似で p 進 L-関数との関係を予想。</li>
+<li><a href="https://arxiv.org/abs/2207.03732v1">Carlson–Chung–Kim–Kim–Park–Yoo（arXiv:2207.03732）</a>：Kubota–Leopoldt p 進 L-関数の1の冪根での値（p 進絶対値の逆数）の経路積分公式。</li>
+<li><a href="https://arxiv.org/html/2312.05587v1">Park–Park（arXiv:2312.05587）</a>：ℚ 上の良い通常還元をもつ楕円曲線に拡張（Iwasawa 主予想と Mazur の制御定理を使用）。分配関数は Selmer 群の位数の比で決まる。「Alexander 多項式 = 岩澤多項式」が経路積分のレベルで実現。</li>
+<li>Park–Park（2026）：場の空間（素点での境界条件込み）、双対性による作用、境界場の空間上のエルミート直線束の切断としての分配関数、貼り合わせ・分解公式の4本柱で体系化。Cassels–Tate = 数論的 BF 汎関数、大域体の分配関数は Selmer 群の大きさで決まる。</li>
+</ul>
+<p><b>Pridham</b></p>
+<ul>
+<li>非アルキメデス的導来解析幾何（dagger 代数の dg 版）の基礎と副エタール層の導来解析的モジュライ。</li>
+<li>シフトの規則：F が n-シフト・シンプレクティックで X が m 次元の滑らかで固有なら X 上の F 値の層のモジュライは (n − 2m)-シフト・シンプレクティック、固有でなければラグランジュ。BGL_r は 2-シフト。局所体の Tate 双対からシンプレクティック、Poitou–Tate からラグランジュ。</li>
+<li>Tate 捻りは重み付き（G_m 作用つき）構造で扱う（Iwasawa 理論に似る）。</li>
+<li>Kim の「Selmer 群をモジュライのラグランジュの交わりとして解釈する」予想を証明。最終節で重み付きポアソン構造の量子化（代数的な形）を扱う：AJ 予想の数論版の形式的な足がかり。</li>
+</ul>
+<p><b>Poonen–Rains</b>：二つの極大等方部分空間の交わりのモデルで Sel_p の次元の分布を予想。平均の大きさ p + 1 は Bhargava–Shankar や2-Selmer の分布の結果（Heath-Brown、Swinnerton-Dyer、Kane）と整合。</p>
+<div class="table-wrap"><table><tr><th>私たちの描像</th><th>既存研究での実現</th></tr>
+<tr><td>境界トーラス Spec K_𝔭 とその捩れ</td><td>Kim が同じ疑問を明示</td></tr>
+<tr><td>局所モジュライ（シンプレクティック）と大域の像（ラグランジュ）</td><td>Pridham（非可換・導来）、Poonen–Rains（線形）</td></tr>
+<tr><td>Heegaard 分解の Mayer–Vietoris</td><td>明示的には見当たらないが、境界上の直線束の切断としての分配関数と貼り合わせ公式（平野–Kim–森下、Park–Park）が実質的に同じ構造</td></tr>
+<tr><td>Cassels–Tate ↔ 絡み形式</td><td>Park–Park：Cassels–Tate = BF 汎関数</td></tr>
+<tr><td>Alexander 多項式 ↔ 岩澤多項式</td><td>BF 経路積分で p 進 L-関数を表す公式</td></tr>
+<tr><td>ラグランジュの量子化</td><td>Pridham の重み付きポアソン構造の量子化</td></tr>
+<tr><td>Floer 理論、Legendre・マイクロ局所の不変量</td><td>見当たらない（六関手・層の圏の視点から貢献できる可能性）</td></tr>
+</table></div>
+<h3>新しい方向：Weil–Moore anima・ホモトピー的類体論・FF 曲線・ガロア表現のモジュライ</h3>
+<p><b>Clausen の Weil–Moore anima（</b><b><a href="https://arxiv.org/html/2605.11950">arXiv:2605.11950</a></b><b>、2026）</b></p>
+<ul>
+<li>BW_K を精密化した凝縮 anima X_K。π₁ は Weil 群、高次のホモトピー群はコンパクト・ハウスドルフ。動機は (1) BW_K の ℝ/ℤ 係数高次コホモロジーが消えず Artin 写像の同型が頑健でないこと、(2) 3次元多様体の類似がアルキメデス素点で破綻すること（非アルキメデス素点は2次元の境界成分だが、複素素点は寄与せず、実素点は無限個の次数に2-捩れ）。</li>
+<li>修正：ℂ では BW_ℂ ≃ ℂP^∞ の2-骨格 S²、ℝ では ℝP²。単位四元数 S³ の Weil 群による商として実現。X_K と分岐制限版のコホモロジー次元2、局所・大域で一様な Poitou–Tate 双対、分岐有限での Euler 標数0。</li>
+<li>その他：Lichtenbaum の Weil-étale の切断操作が不要、Kato の主予想のアルキメデス的補正因子を避けた定式化、mod p Langlands で Weil–Moore 表現、twistor 直線 Tw_ℝ（|Tw_ℝ| = ℝP²）上の Betti 幾何学的 Langlands によるアルキメデス的圏論的局所 Langlands の提案、X_ℚ は大域的 FF 曲線の類似の閉点の空間のホモトピー型という見方。</li>
+<li><b>描像との関係</b>：レベル1の抽象化に必要な正しいホモトピー型そのもので、アルキメデス素点まで一様。アルキメデス素点の境界は S²・ℝP²（球面）で、非アルキメデス素点（結び目、境界トーラス）と違い「穴」として現れる。</li>
+</ul>
+<p><b>類体論をホモトピー的に理解する</b></p>
+<ul>
+<li>Clausen の K-理論的 Artin 写像（<a href="https://ar5iv.arxiv.org/html/1703.07842">arXiv:1703.07842</a>、2017）：Selmer K-ホモロジーを使い Artin 写像をスペクトラムの写像として構成。</li>
+<li>結び目の辞書では、H₁ と Poincaré 双対・絡み形式の関係の数論版として類体論を読める。Weil–Moore anima が双対性を一様にするなら「類体論 = 数論的3次元多様体の Poincaré 双対」が正確な主張になる見込み。</li>
+</ul>
+<p><b>Fargues–Fontaine 曲線</b></p>
+<ul>
+<li>Fargues（<a href="https://arxiv.org/pdf/1705.01526">arXiv:1705.01526</a>）：Abel–Jacobi 写像のファイバーの単連結性から、Div¹ 上の階数1の ℓ 進局所系は Pic¹ から引き戻され、局所類体論が幾何学的に再証明される。</li>
+<li>Caleca–Hauck（<a href="https://arxiv.org/pdf/2606.03902">arXiv:2606.03902</a>）：Scholze の twistor-ℙ¹ 上で同じことを行い W_E^ab ≅ E^×。準連接層のため可縮なファイバーが要り、無限レベルの Abel–Jacobi 写像を使う。</li>
+<li><b>捩れた境界トーラスの正体</b>：Div¹ = Spd(ℚ̆_p)/φ^ℤ は π₁ が惰性群の空間のフロベニウスによる写像トーラスで π₁ = W_{ℚ_p}。フロベニウス方向がロンジチュード、惰性方向がメリディアン。tame な関係式 στσ⁻¹ = τ^q は円周の q 次写像の写像トーラスの基本群の関係式。</li>
+</ul>
+<p><b>ガロア表現のモジュライの幾何学的研究</b></p>
+<ul>
+<li>局所：Langlands パラメータのスタック（Dat–Helm–Kurinczuk–Moss、Zhu、Fargues–Scholze）、Fargues–Scholze の圏論的局所 Langlands 予想（Bun_G の層の圏 ≃ パラメータのスタック上の冪零特異台つき連接層）、p 進では Emerton–Gee のスタックと Emerton–Gee–Hellmann。</li>
+<li>大域：制限変動をもつ局所系と冪零特異台つきの Bun_G の層（Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky）、Pridham のラグランジュ構造。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>位相（3次元 TQFT、Betti Langlands）</th><th>数論</th></tr>
+<tr><td>Loc(T²)（シンプレクティック）</td><td>局所 Langlands パラメータのスタック（Tate 双対でシンプレクティック）</td></tr>
+<tr><td>トーラスに割り当てられる圏</td><td>圏論的局所 Langlands の圏</td></tr>
+<tr><td>結び目補空間が与える境界の対象（ラグランジュ）</td><td>大域ガロア表現のモジュライのラグランジュ（Pridham）とその局所への押し出し</td></tr>
+<tr><td>貼り合わせ</td><td>局所・大域の両立性</td></tr>
+</table></div>
+<p>「大域の保型的な対象は、数論的3次元多様体が境界の局所 Langlands の圏に与える対象」という描像（Ben-Zvi–Sakellaridis–Venkatesh と同じ精神）。</p>
+<ul>
+<li><b>Legendre・マイクロ局所との接点</b>：冪零特異台の条件は、Kashiwara–Schapira（エタールでは Beilinson）の特異台が大域冪零錐という錐的ラグランジュに入る条件。Sh_Λ 型の層の圏は Langlands の中に Shv_Nilp(Bun_G) として既に現れている。</li>
+</ul>
+<p><b>統合した研究の地図</b></p>
+<ol>
+<li>ホモトピー型：Weil–Moore anima を数論的3次元多様体の正しいホモトピー型とし、レベル1の抽象化（成層された凝縮 anima + Poincaré 双対）をアルキメデス素点まで含めて定式化。</li>
+<li>類体論：Poincaré 双対として読み、絡み数・Legendre 記号などをアルキメデス素点（S²・ℝP² の境界）まで一様に扱う。</li>
+<li>境界の幾何：FF 曲線の Div¹ を捩れた境界トーラスの実体とし、境界の圏（圏論的局所 Langlands）を Loc(T²) と並べる。</li>
+<li>モジュライと圏：大域のラグランジュと冪零特異台つきの層の圏を、3次元 TQFT の「補空間が境界に与える対象」として統一的に見る。六関手形式と特異台のライブラリがこの土台になる。</li>
+</ol>
+<h3>ここまでの議論から見える研究の方向（2026-10-16 時点の整理、新規性は要文献確認）</h3>
+<p><b>原理</b></p>
+<ol>
+<li>類似の正しいレベルは「局所系の圏 + 六関手 + 双対性」。ホモトピー型の側は成層された（凝縮）anima + Poincaré 双対で、Weil–Moore anima によりアルキメデス素点まで一様。</li>
+<li>数論に移る不変量はホモトピー型と Poincaré 双対だけで定義されるもの（Dijkgraaf–Witten、BF、有限ゲージの Chern–Simons、Alexander、Milnor、ラグランジュ構造）。移らないのは埋め込み・イソトピーを使うもの（Reshetikhin–Turaev・Jones、Legendre 不変量の同位不変性）。数論に欠けているのは素点を動かすことで、関数体では配置空間を通じて動かせる。</li>
+<li>空白は層の圏・圏化（Floer 理論、マイクロ局所の不変量）に集中しており、六関手と特異台の視点が貢献できる位置。</li>
+<li><b>本当に研究すべきこと</b>：一見移らないように見えるもの（イソトピー・組紐・接触同位を使う不変量）を移すアイディアを考えること。</li>
+</ol>
+<p><b>具体的な方向</b></p>
+<div class="table-wrap"><table><tr><th>方向</th><th>内容</th><th>新しさ</th><th>専門との近さ</th><th>着手しやすさ</th><th>形式化との相性</th></tr>
+<tr><td>A：層理論的な数論的 Floer</td><td>Abouzaid–Manolescu（Heegaard 分解のラグランジュの交わり上の BBDJS 消滅サイクル偏屈層による SL(2, ℂ) Floer の層理論的モデル）の数論版。Pridham のラグランジュの導来交わり（非可換 Selmer スタック、(−1)-シフト）上の消滅サイクル偏屈層とそのコホモロジーは何を測るか、BF・Chern–Simons 分配関数との関係。ℓ 進導来解析的設定と重みでの消滅サイクルの理論が課題</td><td>高</td><td>高</td><td>中〜難</td><td>低〜中</td></tr>
+<tr><td>B：ε-因子・特性サイクルのトレース化</td><td>斎藤毅の特性サイクルと ε-因子（捻りの公式）を Lu–Zheng 型の (∞,2)-圏的トレースのマイクロ局所的不変量として定式化</td><td>中〜高</td><td>非常に高</td><td>中</td><td>中</td></tr>
+<tr><td>C：関数体の等分岐変形と組紐作用</td><td>分岐点の配置 D を配置空間で動かし Sh_{≤r}(C ∖ D) の族が局所定数な圏の族になるか（tame ではおおむね、暴分岐では等分岐変形に限れば？）。なれば組紐群が圏に作用し GKS の数論的類似</td><td>高</td><td>高</td><td>中</td><td>低</td></tr>
+<tr><td>D：Selmer 複体の六関手表示</td><td>recollement だけで Selmer 複体をラグランジュの導来交わりとして書き、Cassels–Tate を3次元双対の絡み形式として導く。Nekovář・Park–Park と重なる可能性大</td><td>中</td><td>中</td><td>易</td><td>高</td></tr>
+<tr><td>E：Weil–Moore anima の exodromy</td><td>成層 Weil–Moore anima と構成可能層の exodromy（アルキメデス素点込み）。無限素点での符号を「無限遠との絡み」として Poincaré 双対から導く</td><td>高</td><td>中</td><td>中〜難</td><td>中</td></tr>
+</table></div>
+<p>研究の本命は A か C、足場として D を並行（Selmer 群の形式化と共有）。</p>
+<h3>結び目の場合に「点を動かす」とは</h3>
+<p>「点を動かす」には三つの意味があり、それぞれ別の数学に関係する。</p>
+<ol>
+<li><b>結び目そのものが動く点の軌跡</b>：円板の中の n 点を時間とともに動かし元の配置に戻すと組紐（配置空間 Conf_n(円板) のループ、組紐群は配置空間の基本群）。両端を貼ると閉じた組紐で結び目・絡み目（Alexander の定理：すべての結び目は組紐の閉包）。ファイバー付き3次元多様体では写像トーラスの中の自己同相の周期軌道が結び目。関数体では次数 d の閉点は d 点が Frobenius で巡回的に置換されるもので、Frobenius の写像トーラスの中の閉じた組紐（𝔽_q[t] の d 次既約多項式は Conf_d(𝔸¹) の 𝔽_q-点）。</li>
+<li><b>結び目を動かす（イソトピー）</b>：結び目の同値は周囲の空間の中での連続変形で、不変量はこの動きで変わらない量。Markov の定理：二つの組紐の閉包が同じ結び目 ⇔ 共役と安定化（Markov 移動）で移り合う。関数体では多項式の係数を族として動かすことが配置空間の中で点を動かすことに当たり、配置空間のエタール基本群（副有限組紐群）が現れる。</li>
+<li><b>点を動かすことから生まれる代数構造</b>：平面で二点を入れ替えるとき右回りと左回りで異なる動きになることが組紐構造（E₂-構造の影）の起源。Reshetikhin–Turaev 型の不変量は組紐群の表現（R-行列）と Markov トレースから作られ、Jones 多項式も Temperley–Lieb（Hecke）代数の表現とトレースから見つかった。Chern–Simons 理論では結び目は Wilson 線で、時刻の断面の中で点として動き、その交換が組紐構造。「点を動かせる → 組紐群の表現 → 量子不変量」の連鎖。</li>
+</ol>
+<div class="table-wrap"><table><tr><th>意味</th><th>位相</th><th>数体</th><th>関数体</th></tr>
+<tr><td>1. 結び目 = 動く点の軌跡</td><td>閉じた組紐、周期軌道</td><td>素点（Frobenius の軌道だが周りに配置空間がない）</td><td>閉点 = Frobenius による閉じた組紐</td></tr>
+<tr><td>2. 結び目を動かす</td><td>イソトピー、Markov 移動</td><td>ない</td><td>配置空間の中で係数を動かす</td></tr>
+<tr><td>3. 組紐構造・量子不変量</td><td>組紐群の表現 + Markov トレース</td><td>直接はない。ガロア群が GT 群を通じて副有限組紐群に作用（伊原、Drinfeld）</td><td>配置空間の副有限組紐群とその表現</td></tr>
+</table></div>
+<p>数体では素点は意味1としては結び目に似るが、取り囲む配置空間がないので意味2・3が欠ける（Reshetikhin–Turaev 型が移らない理由）。関数体では三つともそろう。「Frobenius 組紐の量子不変量」は関数体で意味1と意味3を直接つなぐ試み、「形式的な変形で動かす」は意味2の無限小版（冪単完備化、無限小組紐リー代数）を数論側に作る発想。</p>
+<h3>移らないものを移すための手</h3>
+<p>移らない理由は「素点を動かせない」の一点なので、移すアイディアは「動きをどこから調達するか」に整理できる。</p>
+<ol>
+<li><b>動ける場所を借りる</b>：関数体の配置空間 Conf_d(𝔸¹)（基本群は組紐群）、FF 曲線（Fargues–Scholze で点は Div¹ の上を動き、Hecke 作用素の融合積が Div^d 上に現れる）、p 進族（Hida・Coleman 族、固有値曲線）。</li>
+<li><b>イソトピーをホモトピー的な影に置き換える</b>：組紐構造は E₂-構造の影。絶対ガロア群は GT 群を通じて副有限組紐群に作用する（伊原、Drinfeld）。組紐モノイダル圏や Drinfeld アソシエーターにもガロア群が作用。</li>
+<li><b>1の冪根で評価して有限・副有限にする</b>：有限な像の量子表現は副有限組紐群に延び、数論的基本群と比べられる。</li>
+<li><b>量子パラメータ q を Frobenius から作る</b>（類似 B）。</li>
+<li><b>接触同位を分岐を保つ変形に置き換える</b>（方向 C）。</li>
+<li><b>形式的な変形で動かす</b>（下記）。</li>
+</ol>
+<p><b>スケッチ：Frobenius 組紐の量子不変量</b>（推測的）</p>
+<ol>
+<li>𝔽_q 上の平方因子のない d 次多項式 f は Conf_d(𝔸¹)(𝔽_q) の点で、その Frobenius 元は数論的基本群（幾何的部分が副有限組紐群）の捻れた共役類を与える。f の「閉じた組紐 = 結び目・絡み目」（点の数え上げとの関係は Church–Ellenberg–Farb など）。</li>
+<li>1の冪根 ζ で有限な像をもつ量子表現は副有限組紐群に延びる。</li>
+<li>Frobenius 方向への延長には量子パラメータとの両立が要り、円分指標と GT 作用から「Frobenius が ζ を ζ^q に送る」形が期待される。類似 A（点 = 閉じた組紐）と類似 B（q = |𝔽_q|）が一つの式で出会う。</li>
+<li>各 f に Jones の1の冪根での値の類似を対応させる不変量の候補。数体へは EVW 流に関数体の統計から予想として移す。</li>
+<li>要確認：有限な像の量子表現のレベル、Frobenius 方向への延長の障害、ガロア作用と量子不変量の既存研究との重なり。</li>
+</ol>
+<h3>B'：非可換トレースと暴分岐（Toën–Vezzosi・BRTV・Beraldo–Pippi）</h3>
+<ul>
+<li><b>Bloch の導手予想</b>：正則固有平坦な X → S（離散付値環）で、Artin 導手（Euler 標数の差 + Swan 導手）は対角の局所化自己交点数（Kato–斎藤）にマイナスをつけたもの。既知：相対次元0、純標数0、底の上の曲線、正規交叉の特殊ファイバー。</li>
+<li><a href="https://arxiv.org/abs/1710.05902v1">Toën–Vezzosi（arXiv:1710.05902、Compositio）</a>：基底モノイダル dg 圏上の飽和 dg 圏の ℓ 進トレース公式、特異圏と惰性不変な消滅サイクルの Künneth 公式、惰性が冪単に作用する場合の Bloch 予想の一形。</li>
+<li><a href="https://jep.centre-mersenne.org/articles/10.5802/jep.81">Blanc–Robalo–Toën–Vezzosi（JEP 2018）</a>：dg 圏の動機的・ℓ 進実現。特殊ファイバーの特異圏（行列因子化）の ℓ 進実現が惰性不変な消滅サイクルを復元。</li>
+<li><a href="https://arxiv.org/html/2211.11717v3">Beraldo–Pippi（arXiv:2211.11717）</a>：Kato–斎藤の局所化交点積を圏化（対角との交わりを特異圏の間の dg 関手として実現、行き先は導来自己交叉上の特異圏 = 行列因子化）。非可換 ℓ 進 Chern 指標で「圏論的全次元」を定義し、予想をそれが古典的全次元と一致することに帰着。冪単モノドロミー（Swan = 0）で一般化予想を証明（超曲面、純標数、Deligne–Milnor の冪単な場合）。冪単でない場合は新しいアイディアが必要で続編で扱う。2026年初めに Pippi が「The Bloch conductor formula」の題で講演しており進展の可能性。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>枠組み</th><th>道具</th><th>対象</th></tr>
+<tr><td>六関手・(∞,2)-圏のトレース</td><td>Lu–Zheng（ULA = 双対化可能性、特性類）</td><td>層、特異台</td></tr>
+<tr><td>非可換トレース</td><td>Toën–Vezzosi、BRTV、Beraldo–Pippi</td><td>特異圏・行列因子化、ℓ 進 Chern 指標</td></tr>
+</table></div>
+<p><b>B'</b>：非可換側の残る壁は暴分岐（Swan）で、斎藤毅の特性サイクルと ε-因子・捻り公式が扱う部分そのもの。暴分岐の寄与（特性サイクル）を非可換トレースに組み込み、ε-因子を「行列式（K₁）レベルの局所化されたトレース」として理解する。大域 ε-因子はコホモロジー上の Frobenius の行列式で積公式により局所 ε-因子の積に分解。導手がトレースの局所化なら ε-因子は行列式の局所化で、捻り公式は局所化された行列式の乗法性として出る見通し（新規性は要確認）。</p>
+<h3>形式的な変形で動かす</h3>
+<p>素点は自由には動かせなくても、形式的（冪単）な変形なら動かせる。位相側でも組紐構造の本質の多くは形式的な変形で捉えられる。</p>
+<ul>
+<li><b>位相側の形式的な影</b>：無限小組紐リー代数（Drinfeld–河野）、KZ 接続、Drinfeld アソシエーターが組紐群の冪単完備化を記述。Kontsevich 積分はアソシエーターから作る普遍的な有限型不変量で、量子不変量の摂動部分をすべて含み、係数に多重ゼータ値。</li>
+<li><b>ガロア群の作用</b>：GT 群を通じた組紐への作用（伊原、Drinfeld）、Brown の定理（ℤ 上の混合 Tate 動機の動機的ガロア群が ℙ¹ ∖ {0, 1, ∞} の冪単基本群に忠実に作用）。形式的には組紐構造と量子不変量の摂動部分はすでに数論的な対称性を持つ。</li>
+</ul>
+<div class="table-wrap"><table><tr><th>変形の方向</th><th>数論側</th><th>位相側の対応</th><th>既存研究</th></tr>
+<tr><td>表現の変形</td><td>Mazur のガロア変形</td><td>指標多様体の局所的な変形</td><td>確立</td></tr>
+<tr><td>被覆の方向</td><td>岩澤代数 Λ = ℤ_p[[T]]</td><td>無限巡回被覆、t = 1 の近くの Alexander 多項式</td><td>確立</td></tr>
+<tr><td>冪単（pro-ℓ）完備化</td><td>森下の数論的 Milnor 不変量（pro-ℓ Magnus 展開）、Kim の冪単 Selmer 多様体（非可換 Chabauty）</td><td>Milnor 不変量（有限型の木の部分）、冪単な表現のモジュライ</td><td>確立</td></tr>
+<tr><td>q の方向</td><td>q-de Rham コホモロジー、Habiro 環</td><td>1の冪根の近くでの量子不変量の展開</td><td>下記</td></tr>
+</table></div>
+<p>Kim の冪単 Selmer 多様体（局所条件つき冪単トーサーのモジュライ）は Heegaard・ラグランジュの描像の形式的（冪単）版。</p>
+<p><b>Habiro 環</b>（<a href="https://arxiv.org/html/2412.04241v2">Garoufalidis–Scholze–Wheeler–Zagier（arXiv:2412.04241）</a>）：数体 K の Habiro 環と K₃(K) で次数づけられた加群。元は各複素1の冪根での冪級数の族で、Frobenius で捻ったうえで数論的に貼り合い、各素数で Bloch 群からの補正。摂動的 Chern–Simons（4₁ の Kashaev 不変量）の整数性と貼り合わせを説明し、動機の一つは q-de Rham コホモロジーを Habiro 環上で定義すること。後続に <a href="https://arxiv.org/pdf/2510.04782">Habiro 環上の q-Hodge 複体（arXiv:2510.04782）</a>。量子不変量を数論に持ち込む最も直接的な既存の実現だが、数体は結び目の双曲幾何から来るトレース体で「素数 = 結び目」とは向きが違う。Frobenius で捻った貼り合わせは、スケッチの「ζ ↦ ζ^q」の両立と同じ形。</p>
+<p><b>問い：数論的 Melvin–Morton–Rozansky</b>。位相では色付き Jones を q = 1 のまわりで展開すると主要部分から Alexander 多項式が出る。数論では被覆の方向（岩澤多項式）と q の方向（q-de Rham・Habiro）がどちらも形式的変形として使えるので、「岩澤多項式を主要項として含む q − 1 について形式的な数論的不変量（q-変形）はあるか」。移らないとされた量子不変量を形式的変形で移す試金石（推測）。</p>
+<h3>Scholze のゲシュタルテン（Gestalten）</h3>
+<p>六関手形式を幾何の側から受け止める普遍的な受け皿として設計された新しい幾何的対象。出典は <a href="https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf">Scholze, </a><a href="https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf"><i>Geometry and Higher Category Theory</i></a><a href="https://people.mpim-bonn.mpg.de/scholze/Gestalten.pdf">（ボン 2025/26 冬学期の講義ノート、Germán Stefanich との共同研究、序文 2026-02）</a>。</p>
+<ul>
+<li><b>動機</b>：Gelfand・Stone・Hilbert・Grothendieck・Tannaka の「幾何 ↔ 代数」の双対の系譜を完成させる。可換環を超えて概環・関数解析的な圏・安定 ∞-圏を扱い、B²G_m・B³G_m のような高次スタックに乗る高次線形圏の層まで、すべての次数の線形高次圏を追跡する。</li>
+<li><b>定義</b>：Stefanich 環は列 (A₁, A₂, …)、各 A_n は κ-presentable な (∞,n)-圏の圏 nPr の中の可換代数で A_n ≃ End_{A_{n+1}}(1)（足し算と掛け算の完全な脱ループ）。ゲシュタルテンは Stefanich 環の圏の反対圏。</li>
+<li><b>主定理（Scholze–Stefanich）</b>：実用上ゲシュタルテンの圏は ∞-トポスで、標準位相は有効エピ射、層化は不要。</li>
+<li><b>サイズ</b>：NBG 集合論で κ = ℵ₁ の Pr^L_κ を使い、それ自身 presentable な「自分自身を含む圏の圏」を作って宇宙の扱いのほとんどを避ける。</li>
+<li><b>他の枠組み</b>：代数的スタック（qcqs、アフィン対角）はゲシュタルテンに写り、十分大きな部分圏で充満忠実（一般にはそうでない）。解析的スタックからの関手は ℵ₁-コンパクトな対象上で保守的。</li>
+<li><b>六関手</b>：Spec A ↦ nPr_A がアフィン上の六関手形式。n ≥ 1 で可算表示の射は両側随伴的、fpqc 降下。ゲシュタルテン上にも !-可能な射の六関手形式。</li>
+<li><b>変換（transmutation）</b>：圏 C 上の任意の presentable な六関手形式 D から C → Gest、X ↦ [X]_D が得られ、有限極限と !-位相の貼り合わせを保つ。ゲシュタルテンはすべての六関手形式の共通の受け皿（ノートでは普遍性でなく分解の結果として述べている）。</li>
+<li><b>例</b>：Morel–Voevodsky の SH から [Spec ℤ]_SH。青木の定理で「1-アフィン、コホモロジー的に滑らか、ホモロジー的に可縮で、零切断と単数による成層をもつ環ゲシュタルト」として特徴づけ。最終講は Berkovich 動機のゲシュタルト、第X〜XII講は Cartier 双対（中身は未確認）。</li>
+</ul>
+<p><b>これまでの議論との関係</b></p>
+<ol>
+<li><b>素数と結び目を同じ圏の対象にする場所</b>：(S³, K) は Betti（位相）の六関手から、(Spec O_K, S) はエタールの六関手から、変換でどちらも Gest の対象になる。比較が「六関手が見る幾何」のレベルで行われ、「局所系の圏 + 六関手 + 双対性が類似の正しいレベル」という原理と一致。</li>
+<li><b>抽象的な3次元多様体・結び目の公理化</b>（推測）：青木の定理のように、ゲシュタルテンの中で「構造射が次元3のコホモロジー的滑らかさ（Poincaré 双対）、閉ストラタが次元1、絡みが次元2」といった公理でレベル1の定義を書ける言語になっている可能性。</li>
+<li><b>形式化の設計への示唆</b>：宇宙レベルの問題に対する「ℵ₁-presentable な自分自身を含む圏の圏」は Lean での実装方針の参考になる。幾何を六関手から作る発想は「六関手のライブラリを先に作り幾何をその上に載せる」設計と相性がよい。ただしゲシュタルテン自体はすべての n の (∞,n)-圏を使い今の Mathlib から遠いので、直接の目標ではなく設計思想として取り入れるのが現実的。</li>
+</ol>
+<p>関連：<a href="https://www.quantamagazine.org/two-researchers-are-rebuilding-mathematics-from-the-ground-up-20260520/">Quanta Magazine（2026-05-20）</a>、<a href="https://www.math.columbia.edu/~woit/wordpress/?p=15307">Woit のブログ（2025-10-25）</a>。</p>
+<h2>形式化の設計方針とフェーズ案</h2>
+<p>中核はファイブレーションの理論で、Cat_∞ を明示的に登場させない設計を第一候補にする。</p>
+<p><b>設計方針</b></p>
+<ul>
+<li><b>ファイブレーション路線</b>：Cat_∞ に値をとる関手は、すべて底の上の余デカルト（デカルト）ファイブレーションとして実装する。性質は Prop になり、宇宙レベルも上がらない。</li>
+<li><b>straightening は後回し</b>：使うのは (a) ファイブレーションの定義と基底変換、(b) ファイバー間の輸送が可縮な選択で決まること、(c) 極限 = 切断、の三つ。straightening 定理は「Cat_∞ の極限・関手と一致する」という正当化として独立に示す。</li>
+<li><b>D(Λ) の構成</b>：Dwyer–Kan 局所化よりも、K-入射的複体の dg-nerve（HA 1.3.5）を有力候補にする。</li>
+<li><b>最大の実装上の難所</b>：presentability と随伴関手定理のサイズ・宇宙レベルの扱い。</li>
+<li><b>既存資産との接続</b>：Mathlib の <code>QCat.strictBicategory</code> と <code>Bicategory.Adjunction</code> を使い、「双デカルトファイブレーション ⇔ homotopy 2-category の随伴」を早い段階のマイルストーンにする。</li>
+</ul>
+<p><b>フェーズ案</b></p>
+<ol>
+<li><b>Phase 0</b>：Mathlib と InfinityCosmos に依存するリポジトリを立て、最終目標から逆算した依存グラフを blueprint にする。</li>
+<li><b>Phase 1</b>：余デカルトファイブレーションの基本理論、切断としての極限、降下の定式化。</li>
+<li><b>Phase 2</b>：随伴（双デカルトファイブレーション）、族の随伴、homotopy 2-category の随伴との一致。</li>
+<li><b>Phase 3</b>：安定 ∞-圏・D(Λ)・presentability・∞-オペラド・∞-層。Mathlib の <code>DerivedCategory</code> との比較。</li>
+<li><b>Phase 4</b>：Corr(C, E)、六関手形式の定義、拡張定理。</li>
+<li><b>並行（C 側）</b>：永田コンパクト化、固有基底変換、𝔸¹ / ℙ¹ のコホモロジー。三角圏・アーベル層のレベルで進め、Phase 4 の条件にインターフェースで渡す。</li>
+</ol>
+<h2>参考文献</h2>
+<ul>
+<li>Lurie, <i>Higher Topos Theory</i>（HTT）：straightening（2〜3 章）、極限（1.2.13、3.3.3）、随伴（5.2.2）、Pr^L（5.5.3）</li>
+<li>Lurie, <i>Higher Algebra</i>（HA）：安定 ∞-圏、dg-nerve（1.3.5）、∞-オペラド</li>
+<li>Cisinski, <i>Higher Categories and Homotopical Algebra</i>：組合せ的で形式化向きの straightening</li>
+<li><a href="https://kerodon.net">Kerodon</a>：Mathlib の参照元</li>
+<li>Riehl–Verity, <a href="https://math.jhu.edu/~eriehl/elements.pdf"><i>Elements of ∞-Category Theory</i></a>：∞-cosmos、homotopy 2-category、ファイブレーションのモデル非依存な扱い</li>
+<li>Scholze, 六関手形式の講義ノート（2022）：定義と拡張定理（付録）、コホモロジー的に滑らかな射</li>
+<li>Mann, 学位論文（p 進六関手形式）：拡張定理の整理</li>
+<li>Liu–Zheng：多重単体集合による六関手の構成</li>
+<li>Fargues–Scholze：コホモロジー的に滑らかな射の扱い</li>
+<li><a href="https://github.com/emilyriehl/infinity-cosmos">emilyriehl/infinity-cosmos</a>、<a href="https://drops.dagstuhl.de/storage/00lipics/lipics-vol352-itp2025/html/LIPIcs.ITP.2025.20/LIPIcs.ITP.2025.20.html">Formalizing Colimits in Cat（Carneiro–Riehl, ITP 2025）</a>、<a href="https://ualberta.scholaris.ca/items/d2cf93fd-8083-41a2-b089-3a0df24f67ca/full">McKoen, A Formalization of Functor Quasi-Categories in Lean 4</a></li>
+</ul>
+</main>
+</body>
+</html>

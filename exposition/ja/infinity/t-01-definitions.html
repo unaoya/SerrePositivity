@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>単体的集合と quasicategory の定義</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 1</nav>
+<h1>第 III 部 1　単体的集合と quasicategory の定義</h1>
+
+<div class="env convention" id="conv-universe">
+<p class="env-head">規約 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p>第 III 部を通して、Grothendieck 宇宙 \(\mathbb U\) を一つ固定する。\(\mathbb U\) の元である集合を小さいという。単体的集合 \(X\) が小さいとは、すべての \([m]\) について \(X([m])\) が小さいことをいう。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-delta">
+<p class="env-head">定義 1.1 <span class="env-name">（単体圏 \(\Delta\)）</span></p>
+<div class="env-body">
+<p>\(n\ge0\) について、\([n]=\{0,1,\dots,n\}\) に通常の大小関係 \(0&lt;1&lt;\cdots&lt;n\) で全順序を入れたものを考える。単体圏 \(\Delta\) を次で定める。</p>
+<ul>
+  <li>対象：\([n]\)（\(n\ge0\)）。</li>
+  <li>射：\(\mathrm{Hom}_\Delta([m],[n])\) は、順序を保つ写像 \(\theta\colon[m]\to[n]\)、つまり \(i\le j\) なら \(\theta(i)\le\theta(j)\) をみたす写像の全体。</li>
+  <li>合成：写像の合成。恒等射：恒等写像。</li>
+</ul>
+</div>
+</div>
+
+<div class="env definition" id="def-sset">
+<p class="env-head">定義 1.2 <span class="env-name">（単体的集合）</span></p>
+<div class="env-body">
+<p>単体的集合とは関手 \(X\colon\Delta^{\mathrm{op}}\to\mathrm{Set}\) のことである。単体的集合の射は関手の間の自然変換とする。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-simplex">
+<p class="env-head">定義 1.3 <span class="env-name">（標準単体 \(\Delta^n\)）</span></p>
+<div class="env-body">
+<p>\(\Delta^n\) を \([n]\) が表現する関手 \(\Delta^n=\mathrm{Hom}_\Delta(-,[n])\colon\Delta^{\mathrm{op}}\to\mathrm{Set}\) と定める。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-subsset">
+<p class="env-head">定義 1.4 <span class="env-name">（部分単体的集合）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X\) の部分単体的集合とは、各 \([m]\) について部分集合 \(A([m])\subseteq X([m])\) を与え、任意の射 \(\theta\colon[m]\to[m']\) について \(X(\theta)(A([m']))\subseteq A([m])\) をみたすものをいう。このとき \(A\) は \(X\) の作用を制限して単体的集合になり、包含 \(A\hookrightarrow X\) は単体的集合の射である。\(A\subseteq X\) と書く。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-union">
+<p class="env-head">定義 1.5 <span class="env-name">（和）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X\) の部分単体的集合の族 \((A_j)_{j\in J}\) について、その和 \(\bigcup_{j\in J}A_j\subseteq X\) を</p>
+<p>\[\Bigl(\bigcup_{j\in J}A_j\Bigr)([m])=\bigcup_{j\in J}A_j([m])\]</p>
+<p>で定める。これは \(X\) の部分単体的集合である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-face">
+<p class="env-head">定義 1.6 <span class="env-name">（面 \(\partial_j\Delta^n\)）</span></p>
+<div class="env-body">
+<p>\(0\le j\le n\) について、\(\Delta^n\) の部分単体的集合 \(\partial_j\Delta^n\) を</p>
+<p>\[\partial_j\Delta^n([m])=\{\theta\colon[m]\to[n]\mid j\notin\theta([m])\}\]</p>
+<p>で定め、\(\Delta^n\) の \(j\) 番目の面という。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-horn">
+<p class="env-head">定義 1.7 <span class="env-name">（horn \(\Lambda^n_i\)）</span></p>
+<div class="env-body">
+<p>\(n\ge1\)、\(0\le i\le n\) とする。\(\Delta^n\) の部分単体的集合 \(\Lambda^n_i\) を、次のどちらかの書き方で定める。</p>
+<ol>
+  <li><b>部分単体的集合として直接</b>：\(\Lambda^n_i([m])=\{\theta\colon[m]\to[n]\mid\theta([m])\cup\{i\}\ne[n]\}\)。</li>
+  <li><b>面の和として</b>：\(\Lambda^n_i=\bigcup_{j\ne i}\partial_j\Delta^n\)。</li>
+</ol>
+<p>両者は一致する。\(\theta([m])\cup\{i\}\ne[n]\) は、\(\theta([m])\) に含まれない \(j\ne i\) があること、つまりある \(j\ne i\) について \(\theta\in\partial_j\Delta^n([m])\) であることと同じだからである。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-quasicategory">
+<p class="env-head">定義 1.8 <span class="env-name">（quasicategory）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X\) が quasicategory であるとは、すべての \(0&lt;i&lt;n\) について、任意の射 \(\Lambda^n_i\to X\) が \(\Delta^n\to X\) に延長できることをいう。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-kan">
+<p class="env-head">定義 1.9 <span class="env-name">（Kan 複体）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X\) が Kan 複体であるとは、すべての \(0\le i\le n\) について、任意の射 \(\Lambda^n_i\to X\) が \(\Delta^n\to X\) に延長できることをいう。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

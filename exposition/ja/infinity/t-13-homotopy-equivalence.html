@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ホモトピー同値と充満忠実</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 13</nav>
+<h1>第 III 部 13　ホモトピー同値と充満忠実</h1>
+
+<div class="env definition" id="def-homotopy-equivalence">
+<p class="env-head">定義 13.1 <span class="env-name">（ホモトピー同値）</span></p>
+<div class="env-body">
+<p>Kan 複体の射 \(f\colon X\to Y\) がホモトピー同値であるとは、射 \(g\colon Y\to X\) と射 \(h\colon X\times\Delta^1\to X\)、\(k\colon Y\times\Delta^1\to Y\) で、\(h\) の \(X\times\{0\}\)、\(X\times\{1\}\) への制限がそれぞれ \(g\circ f\)、\(\mathrm{id}_X\)、\(k\) の \(Y\times\{0\}\)、\(Y\times\{1\}\) への制限がそれぞれ \(f\circ g\)、\(\mathrm{id}_Y\) となるものが存在することをいう。Kan 複体 \(X,Y\) の間にホモトピー同値があるとき、\(X\) と \(Y\) はホモトピー同値であるという。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-induced-hom">
+<p class="env-head">定義 13.2 <span class="env-name">（写像空間への作用）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(f\colon C\to D\) と頂点 \(x,y\) について、\(\mathrm{Hom}^R_C(x,y)\) の \(n\) 単体 \(\sigma\colon\Delta^n\star\Delta^0\to C\) を \(f\circ\sigma\) に送ることで、射</p>
+<p>\[f_*\colon\mathrm{Hom}^R_C(x,y)\to\mathrm{Hom}^R_D(f(x),f(y))\]</p>
+<p>を定める（\(\mathrm{Hom}^R\) は<a href="t-07-mapping-spaces.html#def-pinched-hom">定義 7.1</a>）。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-fully-faithful">
+<p class="env-head">定義 13.3 <span class="env-name">（充満忠実）</span></p>
+<div class="env-body">
+<p>quasicategory の間の関手 \(f\colon C\to D\) が充満忠実であるとは、すべての頂点 \(x,y\) について \(f_*\colon\mathrm{Hom}^R_C(x,y)\to\mathrm{Hom}^R_D(f(x),f(y))\)（<a href="#def-induced-hom">定義 13.2</a>）がホモトピー同値（<a href="#def-homotopy-equivalence">定義 13.1</a>）であることをいう（両辺は<a href="t-07-mapping-spaces.html#thm-pinched-hom-kan">定理 7.2</a> により Kan 複体である）。</p>
+</div>
+</div>
+
+
+</main>
+</body>
+</html>

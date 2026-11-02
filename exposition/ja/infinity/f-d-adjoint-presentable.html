@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>随伴関手定理と presentability</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.tag { display: inline-block; font-size: 0.78rem; padding: 0 0.4em; border: 1px solid var(--rule); border-radius: 3px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 4</nav>
+<h1>補章 4　随伴関手定理と presentability</h1>
+<p class="meta">
+  2026-10-29。Claude との議論を整理した数学の章。形式化の状況は SerrePositivity の Lean ソース（F2/Presentable）と formalization-plans の進捗記録を 2026-10-28 に読んだもの。
+  随伴関手定理に何が要るか、左随伴の側だけにアクセシブル性が要る理由、\(\mathrm{Pr}^L\) の形式化の状況、表現可能性定理の用語と証明をまとめる。
+</p>
+
+<!-- ============================================================ -->
+<h2>1. 随伴関手定理の主張と骨格</h2>
+<p>\(C,D\) を presentable ∞ 圏とする（HTT 5.5.2.9）。</p>
+<ol>
+  <li>\(F\colon C\to D\) が右随伴をもつ ⇔ \(F\) は小さい余極限を保つ。</li>
+  <li>\(G\colon D\to C\) が左随伴をもつ ⇔ \(G\) はアクセシブルで、小さい極限を保つ。</li>
+</ol>
+<p>どちらも「随伴 = 各点の表現可能性」（随伴の (E)）に帰着する。</p>
+<ul>
+  <li><b>1 の向き</b>：各 \(Y\) で \(\mathrm{Map}_D(F(-),Y)\colon C^{\mathrm{op}}\to\mathcal S\) は、\(F\) が余極限を保つので余極限を極限に送る（極限の (3)、写像空間の極限公式）。表現可能性定理（HTT 5.5.2.2）で表現され、表現対象を \(GY\) とする。各点の表現を (C) の構成（cograph が cocartesian fibration になること）で関手 \(G\) にまとめる。</li>
+  <li><b>2 の向き</b>：各 \(X\) で \(\mathrm{Map}_C(X,G(-))\colon D\to\mathcal S\) は極限を保ちアクセシブル。アクセシブルで極限を保つ関手は余表現可能（解集合条件の ∞ 版）。(E) から (C) で左随伴を組み立てる。</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2>2. 必要な部品</h2>
+<div class="table-wrap"><table>
+<tr><th>部品</th><th>内容</th><th>どこで使うか</th></tr>
+<tr><td>\(\mathrm{Map}\) の関手性</td><td>Hom 関手（Tw の St、補章 3 §11）、表現可能前層 \(h_y\)、Yoneda 埋め込みの充満忠実性</td><td>表現可能性を言うため</td></tr>
+<tr><td>随伴の (E)⇒(C)</td><td>各点の普遍射から関手を作る（cograph の cocartesian 持ち上げ）</td><td>各点の表現から随伴へ</td></tr>
+<tr><td>\(\mathcal S\) の極限・余極限</td><td>小さい極限・余極限をもつ。\(\mathrm{Map}(\operatorname{colim}X_i,Y)\simeq\lim\mathrm{Map}(X_i,Y)\)</td><td>「余極限を極限に送る」を扱う</td></tr>
+<tr><td>前層の圏 \(\mathcal P(C_0)\)</td><td>各点で計算される極限・余極限、Yoneda 埋め込みが極限を保つこと、稠密性、自由余完備化（左 Kan 拡張）</td><td>表現可能性定理の本体</td></tr>
+<tr><td>Kan 拡張</td><td>各点の左 Kan 拡張の存在</td><td>自由余完備化と Ind</td></tr>
+<tr><td>大きさ</td><td>宇宙、正則基数 \(\kappa\)、本質的に小さい、局所小</td><td>全体の大きさの制御</td></tr>
+<tr><td>filtered 余極限</td><td>\(\kappa\)-filtered、\(\mathcal S\) で filtered 余極限と有限極限が可換</td><td>コンパクト性</td></tr>
+<tr><td>アクセシブル圏</td><td>\(\kappa\)-コンパクト対象、\(\mathrm{Ind}_\kappa\)、アクセシブル関手</td><td>presentability の定義、2 の向き</td></tr>
+<tr><td>presentable 圏</td><td>定義（アクセシブルかつ余完備）と Lurie–Simpson の特徴づけ（HTT 5.5.1.1）</td><td>表現可能性定理を前層の場合に帰着する（(1)⇒(2) の向きだけ）</td></tr>
+<tr><td>局所化の存在</td><td>射の集合での局所化 \(S^{-1}\mathcal P(C_0)\) が反射的で presentable（small object argument の ∞ 版、HTT 5.5.4.15）</td><td>表現可能性定理には不要。新しい presentable 圏（層、安定化、Bousfield 局所化）を作るとき</td></tr>
+</table></div>
+<pre>
+Map の関手性（St・Tw）──┐
+随伴 (E)⇒(C) ──────────┤
+𝒮 と 𝒫(C₀) の極限・余極限、稠密性、自由余完備化 ──► 表現可能性定理 ──► 随伴関手定理 1
+filtered・κ-コンパクト・Ind・アクセシブル ──► presentable（Lurie–Simpson (1)⇒(2)）──┘
+                                    └──► 余表現可能性 ──► 随伴関手定理 2
+</pre>
+
+<!-- ============================================================ -->
+<h2>3. 左随伴の側だけアクセシブル性が要る理由</h2>
+<p>presentable 圏は「余極限の側では小さいデータで生成されるが、極限の側ではそうでない」非対称な概念で、アクセシブル性は極限の側で足りない小さい解集合を補う条件。</p>
+<h3>3.1 1 の向きで条件が要らない理由</h3>
+<p>\(C\) は小さい \(C_0=C^\kappa\) から余極限で生成され（\(C\simeq\mathrm{Ind}_\kappa(C^\kappa)\)）、余極限を極限に送る前層は \(C_0\) への制限で決まる。小さい圏上の前層なので大きさの問題は起きず、\(\mathcal P(C_0)\) で表現して局所化で降ろすだけ。左随伴はすべての余極限を保つので自動的にアクセシブルで、presentable 圏の間の右随伴も自動的にアクセシブル（HTT 5.4.7.7）。</p>
+<h3>3.2 2 の向きでアクセシブル性が効く場所</h3>
+<p>\(G\) の左随伴には各 \(X\) でコンマ圏 \(X\downarrow G\)（対象 \((Y,X\to GY)\)）の始対象が要る。\(X\downarrow G\) 全体の極限は大きすぎて存在せず、小さい弱始的な部分集合（解集合）が必要。\(D\) が presentable でも \(D^{\mathrm{op}}\) は presentable でないので、極限の側に小さい生成系はない。</p>
+<ol>
+  <li>\(\kappa\) を十分大きくとり、\(X\) が \(\kappa\)-コンパクト、\(G\) が \(\kappa\)-filtered 余極限を保つようにする。</li>
+  <li>任意の \(Y\) は \(\kappa\)-コンパクト対象の \(\kappa\)-filtered 余極限 \(Y\simeq\operatorname{colim}Y_i\)。</li>
+  <li>\(G\) は \(\kappa\)-filtered 余極限を保つので \(GY\simeq\operatorname{colim}GY_i\)。</li>
+  <li>\(X\) は \(\kappa\)-コンパクトなので \(X\to GY\) はある \(X\to GY_i\) を経由する。</li>
+  <li>\(\kappa\)-コンパクトな \(Y'\) をもつ \((Y',X\to GY')\) が弱始的で、\(D^\kappa\) は本質的に小さいので小さい解集合。</li>
+  <li>その上で極限をとれば、\(D\) の極限と \(G\) の極限保存から始対象が得られる。</li>
+</ol>
+<p>アクセシブル性は 3 の一点にだけ効く。1 圏では Freyd の一般随伴関手定理の解集合条件そのもの。極限を保つだけで解集合がない古典的な例は完備束の圏から集合の圏への忘却関手（3 元生成の自由完備束が存在しない、Gaifman–Hales）だが、完備束の圏は presentable ではないので「極限保存だけでは解集合が出ない」ことの説明にとどまる。presentable 圏の間で極限を保つがアクセシブルでない関手が存在するかは集合論的な仮定（Vopěnka 原理など）が絡む問題だったと記憶しているが、確かめていない。</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>左随伴になる条件</th><th>右随伴になる条件</th></tr>
+<tr><td>presentable 圏の間</td><td>余極限を保つ</td><td>極限を保ち、かつアクセシブル</td></tr>
+<tr><td>理由</td><td>余極限の側は \(C^\kappa\) で生成されるので小ささが自動</td><td>極限の側には生成系がなく、解集合をアクセシブル性で作る</td></tr>
+<tr><td>圏の圏</td><td>\(\mathrm{Pr}^L\)：余極限を保つ関手</td><td>\(\mathrm{Pr}^R\)：アクセシブルで極限を保つ関手</td></tr>
+</table></div>
+<p>\(\mathrm{Pr}^R\) の射の定義にアクセシブル性が入っているのもこの非対称のためで、\(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\) は二つの条件が随伴でちょうど入れ替わることを言う。</p>
+
+<!-- ============================================================ -->
+<h2>4. 表現可能性定理</h2>
+<p>注意：以前「再帰的局所化」と書いたのは誤記で、正しくは反射的局所化（reflective localization）。</p>
+<h3>4.1 用語</h3>
+<div class="table-wrap"><table>
+<tr><th>用語</th><th>定義</th></tr>
+<tr><td>\(C_0\)</td><td>\(C\) の小さい充満部分圏で \(C\) を余極限で生成するもの。標準的には十分大きい正則基数 \(\kappa\) で \(C_0=C^\kappa\)（\(\mathrm{Map}(c,-)\) が \(\kappa\)-filtered 余極限を保つ対象の全体、本質的に小さい）</td></tr>
+<tr><td>反射的局所化</td><td>充満部分圏の包含 \(i\colon C\hookrightarrow E\) が左随伴 \(L\)（反射、局所化関手）をもつこと。\(L\circ i\simeq\mathrm{id}\)。アクセシブルとは \(i\) が \(\kappa\)-filtered 余極限を保つこと。例：層化 \(\mathrm{Sh}\subseteq\mathrm{PSh}\)</td></tr>
+<tr><td>局所対象</td><td>射の集合 \(S\) について、すべての \(s\colon A\to B\) で \(\mathrm{Map}(B,Z)\to\mathrm{Map}(A,Z)\) が同値な \(Z\)。反射的部分圏 \(C\subseteq E\) はちょうど \(L\)-同値に関する局所対象の全体。層の条件は「被覆篩 \(\to\) 表現可能前層」に関する局所性</td></tr>
+<tr><td>稠密性</td><td>\(F\in\mathcal P(C_0)\) は表現可能前層の余極限 \(F\simeq\operatorname{colim}_{(c,x\in F(c))}h_c\)（∞ 版では \(\mathrm{Un}(F)\to C_0\) と Yoneda 埋め込みの合成の余極限）。証明は \(\mathrm{Map}(\operatorname{colim}h_c,G)\simeq\lim G(c)\simeq\mathrm{Map}(F,G)\)（形式化：PresheafDensity 以下）</td></tr>
+<tr><td>Lurie–Simpson の特徴づけ（HTT 5.5.1.1）</td><td>(1) \(C\) は presentable。(2) ある小さい \(C_0\) で \(C\) は \(\mathcal P(C_0)\) のアクセシブルな反射的局所化。(3) ある小さい \(C_0\) と射の小さい集合 \(S\) で \(C\simeq S^{-1}\mathcal P(C_0)\)。この三つは同値</td></tr>
+</table></div>
+
+<h3>4.2 二つの向きの役割</h3>
+<ul>
+  <li><b>(1)⇒(2)</b>（表現可能性定理の手順 1）：比較的初等的。\(C_0=C^\kappa\)、\(\nu\colon C\to\mathcal P(C_0)\)、\(X\mapsto\mathrm{Map}_C(-,X)|_{C_0}\)。\(C\simeq\mathrm{Ind}_\kappa(C^\kappa)\) から \(\nu\) は充満忠実。左随伴 \(L\) は包含 \(C_0\hookrightarrow C\) の Yoneda 埋め込みに沿った左 Kan 拡張（\(C\) が余完備なので存在）。\(\nu\) が \(\kappa\)-filtered 余極限を保つのでアクセシブル。</li>
+  <li><b>(3)⇒(1)</b> で使う「局所化の存在」（HTT 5.5.4.15）：任意の小さい \(S\) で \(S\)-局所対象が反射的部分圏をなし presentable になる。反射 \(L\) を作るのに small object argument の ∞ 版が要る重い部分で、新しい presentable 圏を作るときに使う。</li>
+</ul>
+<p>表現可能性定理には (1)⇒(2) しか要らない。presentability の理論全体では Lurie–Simpson と局所化の存在が重いが、表現可能性定理に限れば重いのは \(\mathrm{Ind}_\kappa\) による記述と稠密性。</p>
+
+<h3>4.3 証明</h3>
+<p>\(C\) を presentable、\(H\colon C^{\mathrm{op}}\to\mathcal S\) を余極限を極限に送る関手、\(C\overset{\nu}{\hookrightarrow}\mathcal P(C_0)\) を 4.2 の反射的局所化、反射を \(L\) とする。</p>
+<ol>
+  <li><b>候補</b>：\(\tilde H:=H|_{C_0^{\mathrm{op}}}\in\mathcal P(C_0)\)。</li>
+  <li><b>鍵の計算</b>：任意の \(F\in\mathcal P(C_0)\) で自然に \(\mathrm{Map}_{\mathcal P(C_0)}(F,\tilde H)\simeq H(LF)\)。稠密性 \(F\simeq\operatorname{colim}h_c\) から左辺は \(\lim\tilde H(c)=\lim H(c)\)。\(L\) は余極限を保ち \(L(h_c)\simeq c\) なので \(LF\simeq\operatorname{colim}c\)（\(C\) での余極限）。\(H\) は余極限を極限に送るので \(H(LF)\simeq\lim H(c)\)。</li>
+  <li><b>\(\tilde H\) は局所対象</b>：\(f\colon F\to F'\) が \(L\)-同値なら \(LF\simeq LF'\) なので、2 により \(\mathrm{Map}(F',\tilde H)\to\mathrm{Map}(F,\tilde H)\) は同値。よって \(\tilde H\simeq\nu Y\)（\(Y=L\tilde H\)）。</li>
+  <li><b>表現</b>：\(X\in C\) について 2 を \(F=\nu X\) に適用し \(L\nu X\simeq X\) を使うと \(H(X)\simeq\mathrm{Map}_{\mathcal P(C_0)}(\nu X,\nu Y)\simeq\mathrm{Map}_C(X,Y)\)（\(\nu\) が充満忠実）。</li>
+</ol>
+<p><b>自然性</b>：\(H\) と \(\mathrm{Map}_C(-,Y)\) はどちらも \(C_0^{\mathrm{op}}\) への制限の右 Kan 拡張（余極限を極限に送り、\(C_0\) が稠密だから）で、\(C_0\) 上で一致するので Kan 拡張の一意性から関手として同値。3 は形式化の「表現可能前層の辺の作用による局所性判定」（<code>presheaf_representableInversionDetectsLocality</code>）にあたる。</p>
+<div class="table-wrap"><table>
+<tr><th>概念</th><th>一言で</th><th>証明での役割</th></tr>
+<tr><td>\(C_0=C^\kappa\)</td><td>余極限で \(C\) を生成する小さい部分圏</td><td>前層を小さい圏の上で扱う</td></tr>
+<tr><td>反射的局所化</td><td>左随伴をもつ充満部分圏</td><td>\(C\subseteq\mathcal P(C_0)\) と \(L\)</td></tr>
+<tr><td>局所対象</td><td>\(L\)-同値に関して \(\mathrm{Map}(-,Z)\) が同値な対象</td><td>候補 \(\tilde H\) が \(C\) に入る判定</td></tr>
+<tr><td>稠密性</td><td>前層は表現可能前層の余極限</td><td>鍵の計算（2）</td></tr>
+<tr><td>Lurie–Simpson</td><td>presentable ⇔ 前層の圏のアクセシブルな反射的局所化</td><td>(1)⇒(2) が手順。(3)⇒(1) は別の道具</td></tr>
+<tr><td>局所化の存在</td><td>\(S^{-1}\mathcal P(C_0)\) が反射的で presentable</td><td>表現可能性定理には不要</td></tr>
+</table></div>
+
+<!-- ============================================================ -->
+<h2>5. 形式化の状況（F2/Presentable、約 700 ファイル）</h2>
+<h3>5.1 随伴関手定理</h3>
+<ul>
+  <li><code>AdjointFunctorTheorem.lean</code>：<code>presentableContinuous_isRepresentable</code>（表現可能性定理）と <code>exists_rightAdjoint_iff_preservesSmallColimits</code>（1 の向き、無条件）。方針は表現可能前層の辺の作用による局所性判定を反映模型に入力する。</li>
+  <li><code>AdjunctionFromHomRepresentation.lean</code>：各点の余表現から随伴を組み立てる（(E)⇒(C)）。</li>
+  <li><code>AccessibleCorepresentability.lean</code>：アクセシブルで極限を保つ関手の余表現可能性（2 の向きの中心）。方針「関手と圏の濃度をそろえ、Ind 模型上の全自然な retract を分裂して元へ移す」は 3.2 の \(\kappa\) の選び方と \(\mathrm{Ind}_\kappa\) による解集合の議論にあたる。</li>
+  <li><code>RightAdjointFunctorCriterion.lean</code>：2 の向きの判定。方針欄に「宇宙変更の充満忠実性を明示し、その無条件の供給は別の所有界面に残す」とあり、宇宙の比較を仮定として受け取る形。仮定が解消済みかは未確認。</li>
+</ul>
+<p>六関手で主に使うのは 1 の向き（\(f^*\) が余極限を保つので \(f_*\)、\(f_!\) が余極限を保つので \(f^!\)）で、これは無条件に証明済み。</p>
+
+<h3>5.2 \(\mathrm{Pr}^L\)</h3>
+<div class="table-wrap"><table>
+<tr><th>内容</th><th>HTT</th><th>状態・場所</th></tr>
+<tr><td>\(\mathrm{Pr}^L\)・\(\mathrm{Pr}^R\) の定義と quasicategory 性</td><td>5.5.3</td><td>済み：<code>PrInfinity.lean</code>。対象は presentable ∞ 圏、Hom は保存関手圏の core、その単体的圏の coherent nerve（補章 3 の定理で quasicategory）。宇宙は対象が \(u+1\)、\(\mathrm{Pr}\) 自身が \(u+2\)</td></tr>
+<tr><td>随伴関手定理（1 の向き）</td><td>5.5.2.9</td><td>済み：<code>AdjointFunctorTheorem.lean</code></td></tr>
+<tr><td>対象ごとの双対 \(\mathrm{Fun}^L(C,D)\simeq\mathrm{Fun}^R(D,C)^{\mathrm{op}}\)</td><td>5.2.6.2</td><td>済み：<code>Duality/PairDuality.lean</code>（249c2b818）</td></tr>
+<tr><td>presentable 圏の小さい極限</td><td>5.5.2.4</td><td>済み：<code>PresentableSmallLimits.lean</code></td></tr>
+<tr><td>直積・関手圏が presentable</td><td>5.5.3.6 など</td><td>済み：<code>TensorPresentable.lean</code>（「tensor」は単体的集合の直積で、Lurie テンソル積ではない）、<code>FunctorPresentable.lean</code></td></tr>
+<tr><td>全体の同値 \(\mathrm{Pr}^L\simeq(\mathrm{Pr}^R)^{\mathrm{op}}\)</td><td>5.5.3.4</td><td>未完（進捗の e6-5）。第 II 段に保留</td></tr>
+<tr><td>\(\mathrm{Pr}^L\) の小さい極限と \(\mathrm{Cat}_\infty\) での計算</td><td>5.5.3.13</td><td>第 II 段に保留（e7）。準備の <code>PiSmallColimits</code>・<code>PullbackSmallColimits</code> は済み、<code>PresentablePullback</code> はアクセシブル圏の引き戻しの一般命題を明示的な入力とする条件付き</td></tr>
+<tr><td>Lurie テンソル積</td><td>HA 4.8</td><td>未着手。計画で採用していない</td></tr>
+</table></div>
+<ul>
+  <li><b>全体の同値が止まっている理由</b>：随伴の (C) の「随伴を族として関手的に作る」問題そのもの。進捗記録（10-28 19:55）によると、対ごとに随伴を局所的に選ぶ方法では三つの対象の合成の三角形の整合が保証できず、双 cartesian fibration による随伴の分類（すべての単体の作用と両立する一つの quasicategory と、左右の分類の同値）と一般の \(\mathrm{Cat}_\infty\) 値 straightening（休止中の F1/Cocartesian 相当）が要る。主経路（KST・Sp など）に \(\mathrm{Pr}^L\)・\(\mathrm{Pr}^R\) を使うレーンがないので、19:59 の判断で対ごとの双対を公開して止め、全体の同値は第 II 段に回した。</li>
+  <li><b>Lurie テンソル積を使わない理由</b>：foundations.md で HA 流の A 案（Pr^L のテンソル積、∞-オペラド、\(E_1\) 環スペクトル、10〜20 万行）ではなく、B 案「dg 増強流」（環と加群を dg 代数と \(N_{\mathrm{dg}}\) で扱う、3〜6 万行、HA §2〜4 不要）を採用。</li>
+</ul>
+<p>六関手で \(f\mapsto f_*\) を関手的に得るには全体の同値が要るが、今の主経路はそれを dg の側で回避する設計。∞ 側で進めるなら F1/Cocartesian の \(\mathrm{Cat}_\infty\) 値 straightening の再開が先になる。</p>
+
+<!-- ============================================================ -->
+<h2>この章で押さえること</h2>
+<ol>
+  <li>随伴関手定理は「随伴 = 各点の表現可能性」に帰着し、右随伴の側は表現可能性定理、左随伴の側は余表現可能性（解集合）を使う。</li>
+  <li>presentable 圏は余極限の側でだけ小さい生成系をもつ非対称な概念で、左随伴の存在にだけアクセシブル性（解集合を作る条件）が要る。\(\mathrm{Pr}^R\) の射の定義にアクセシブル性が入るのも同じ理由。</li>
+  <li>表現可能性定理は Lurie–Simpson の (1)⇒(2)（\(C\subseteq\mathcal P(C_0)\) の反射的局所化）、稠密性、局所対象の判定で示せ、局所化の存在（small object argument）は要らない。</li>
+  <li>形式化では随伴関手定理の右随伴の向き、\(\mathrm{Pr}^L\)・\(\mathrm{Pr}^R\) の定義、対ごとの双対まで済み。全体の同値と \(\mathrm{Pr}^L\) の極限は \(\mathrm{Cat}_\infty\) 値 straightening 待ちで第 II 段、Lurie テンソル積は dg 流の採用で不要。</li>
+</ol>
+
+</main>
+</body>
+</html>

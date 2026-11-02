@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>補章 10　六関手ノートから移した基礎：straightening・極限・随伴、∞-オペラド、局所化</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 補章 10</nav>
+<h1>補章 10　六関手ノートから移した基礎：straightening・極限・随伴、∞-オペラド、局所化</h1>
+<p class="meta">基準コミットなし。「∞-圏と六関手形式の形式化：概要ノート」（Claude Doc、2026-10-16）の三節（straightening/unstraightening と極限・余極限・随伴、∞-オペラドと対称モノイダル構造、局所化）を 2026-10-28 にこのシリーズへ移したもの。六関手の幾何から独立した ∞ 圏論の部分で、詳しくは第 3・4 章、補章 4・5 を参照。記号は原文どおりプレーンテキスト。</p>
+<h2>straightening/unstraightening と、極限・余極限・随伴</h2>
+<p>高次の圏に値をとる関手を、一段低いレベルの「底の上のファイブレーション」に翻訳する。整合データが、一つの写像の性質（Prop）に変わる。</p>
+<h3>三段階の対応</h3>
+<div class="table-wrap"><table><tr><th>底 C</th><th>値</th><th>対応するもの</th><th>整合性の問題</th></tr>
+<tr><td>集合（射なし）</td><td>Set / Cat</td><td>Set/C、Cat/C（ただの族）</td><td>なし</td></tr>
+<tr><td>圏</td><td>Set</td><td>離散余ファイブレーション</td><td>なし（Set は 1-圏なので厳密な関手で足りる）</td></tr>
+<tr><td>圏</td><td>Cat</td><td>グロタンディーク余ファイブレーション（擬関手）</td><td>あり（Cat は 2-圏）</td></tr>
+<tr><td>∞-圏</td><td>S（空間）</td><td>左ファイブレーション</td><td>可縮な選択で解消</td></tr>
+<tr><td>∞-圏</td><td>Cat_∞</td><td>余デカルトファイブレーション</td><td>可縮な選択で解消</td></tr>
+</table></div>
+<p>整合性の問題は、底の射と値の側の高次の射が両方そろったときに初めて生じる。1-圏では余デカルト持ち上げの選択（cleavage）が要るが、∞ では選び方の空間が可縮で選択が問題にならない。</p>
+<h3>極限と余極限</h3>
+<ul>
+<li><b>Set 値</b>：lim F = ∫F → C の切断の集合（整合条件付きの Π）、colim F = π₀(∫F)（Σ の商）。Mathlib の型の圏の極限（<code>F.sections</code>）・余極限（Σ 型の商）はこの形で実装されている。</li>
+<li><b>Cat 値</b>：すべての切断 = lax 極限、余デカルト切断 = 擬極限。∫F それ自体が oplax 余極限で、余デカルト射で局所化すると擬余極限。Mathlib の Cat の極限・余極限は厳密な方で、これとは別物。</li>
+<li><b>∞（S 値・Cat_∞ 値）</b>：共変な F について lim F ≃ 余デカルト切断の ∞-圏（反変ならデカルト切断）。切断は Fun(C, E) ×_{Fun(C,C)} {id} として SSet の言葉で書ける。S 値なら colim F ≃ |∫F|。</li>
+<li><b>一般の ∞-圏 D</b>：極限は錐の圏 D_{/G} の終対象（HTT 1.2.13）として定義し、straightening は使わない。米田で写像空間の極限に帰着する。Riehl–Verity は homotopy 2-category の絶対右持ち上げとして定義している。</li>
+<li><b>普遍性</b>：ファイブレーションの言葉での普遍性はカリー化でほぼ自明。Cat_∞ での極限と一致することは straightening 定理そのもので、正当化として後回しにできる。</li>
+<li><b>Pr^L・Pr^R での極限</b>は Cat_∞ で計算した極限と一致する（HTT 5.5.3.13・5.5.3.18）。六関手で必要な極限はすべて余デカルト切断で書ける。</li>
+</ul>
+<h3>降下</h3>
+<p>Čech 脈体 U_• に対し、[n] ↦ D(U_n) の余デカルト切断は、F₀、降下同型 φ、コサイクル条件のホモトピー、その高次の整合性をすべて含む降下データそのもの。値が (n,1)-圏なら Δ_{≤n+1} で極限が決まり、1-圏なら古典的な降下データ（Δ_{≤2}）に戻る。</p>
+<p>拡大単体圏 Δ_+ は始対象を持つので、<b>降下 ⇔ Δ_+ 上の余デカルト切断から Δ 上への制限が圏同値</b>。Cat_∞ も straightening も使わずに書ける。</p>
+<h3>随伴</h3>
+<div class="table-wrap"><table><tr><th>レベル</th><th>随伴の記述</th></tr>
+<tr><td>順序集合</td><td>A ⊔ B 上の順序 a ≤ b ⇔ f(a) ≤ b。最小の持ち上げが f、最大の持ち上げが g。両方あることがガロア接続</td></tr>
+<tr><td>1-圏</td><td>profunctor H のコラージュ M → [1]。余デカルト ⇔ F が存在、デカルト ⇔ G が存在、両方 ⇔ F ⊣ G。三角等式は持ち上げの一意性から自動</td></tr>
+<tr><td>∞-圏</td><td>双デカルトファイブレーション M → Δ¹（HTT 5.2.2.1）。同値な定義：homotopy 2-category の随伴（Riehl–Verity）、写像空間の自然同値</td></tr>
+</table></div>
+<p><b>族の随伴</b>：X ↦ (D(X), f_*) を Sch 上の余デカルトファイブレーションとして持つ。各 f_* が左随伴を持てば自動的にデカルトでもあり（HTT 5.2.2.5 の相対版）、同じ全空間を逆に読むと f ↦ f^* が得られる。何も選ばない。f_! から f^! も同様で、Pr^L ≃ (Pr^R)^op もこの帰結。</p>
+<h2>∞-オペラドと対称モノイダル構造</h2>
+<p>⊗ の結合性・可換性の無限個の高次ホモトピーも、straightening で一つのファイブレーションに押し込む。</p>
+<ul>
+<li><b>対称モノイダル ∞-圏</b>：余デカルトファイブレーション p: C^⊗ → Fin_*（有限点付き集合）で、⟨n⟩ 上のファイバーが Cⁿ になる（Segal 条件）もの。能動射 ⟨2⟩ → ⟨1⟩ 上の余デカルト持ち上げが ⊗ を与える。Cat_∞ の中の可換モノイドと言っても同じ。</li>
+<li><b>∞-オペラド</b>：余デカルト持ち上げの存在を inert 射（成分の射影）に限って要求する。多重射が扱える。</li>
+<li><b>lax 対称モノイダル関手</b>：inert 余デカルト射だけを保つ写像。六関手では D(X) × D(Y) → D(X × Y)（外部積 ⊠）が同値である必要がないので、ちょうど lax が必要な一般性。</li>
+<li><b>形式化</b>：Fin_* の inert / 能動射の組合せ論は軽い。重いのは straightening と Segal 条件の扱い。</li>
+</ul>
+<h2>局所化</h2>
+<p>局所化は余極限の側をすべて担う道具で、API は「構成」ではなく「判定法と普遍性」を中心に切る。極限 = 切断（安い）、余極限 = 局所化（高い）という非対称性が全体を通じて現れる。</p>
+<h3>定義と1-圏との比較</h3>
+<p>C → C[W⁻¹] が Dwyer–Kan 局所化 ⇔ 任意の ∞-圏 D について Fun(C[W⁻¹], D) → Fun_W(C, D)（W を同値に送る関手の充満部分圏）が圏同値。</p>
+<ul>
+<li>1-圏版（Gabriel–Zisman）は射集合がジグザグの商。Mathlib には Riou による <code>CategoryTheory.Localization</code> がある。</li>
+<li>∞ 版は写像空間がジグザグ全体の空間（ハンモック空間）で、高次の情報を保つ。</li>
+<li>ho(C[W⁻¹]) ≃ (ho C)[W⁻¹]。Mathlib の <code>DerivedCategory</code>（K(A) を擬同型で1-圏的に局所化したもの）は ∞ 版 D(A) のホモトピー圏とちょうど一致し、D6 の橋の半分はこの一般論から出る。</li>
+</ul>
+<h3>二種類の局所化</h3>
+<div class="table-wrap"><table><tr><th>種類</th><th>例</th><th>作り方</th><th>形式化の重さ</th></tr>
+<tr><td>反射的（Bousfield）局所化</td><td>層化 PShv → Shv</td><td>充満部分圏 + 左随伴 L</td><td>軽い</td></tr>
+<tr><td>一般の Dwyer–Kan 局所化</td><td>Ch(Λ) → D(Λ)、Corr^fact → Corr、余極限</td><td>W を形式的に逆にする</td><td>重い</td></tr>
+</table></div>
+<p>反射的局所化は W = {f | L(f) が同値} の Dwyer–Kan 局所化。可能な限り反射的な形か具体的なモデルで実現する。D(Λ) は K-入射的複体の dg-nerve で作り、「Ch(Λ) → N_dg(K-入射的複体) が擬同型での局所化」を示せば一般的な構成は要らない。</p>
+<p>一般的な存在には、逆射の形式的な貼り付けと Joyal モデル構造での fibrant 置換が要り、これはまだ Mathlib にない（quasicategory の ∞-cosmos が未完なのと同じ根）。</p>
+<h3>判定法</h3>
+<ol>
+<li><b>充満忠実な右随伴があれば局所化</b>（反射的局所化。層化はこれで済む）。</li>
+<li><b>ファイバーが弱可縮なファイブレーション</b>：p: E → B が余デカルト（デカルト）ファイブレーションで各ファイバーが弱可縮なら、p はファイバー内の射での局所化。ファイバー内の射を逆にすると各ファイバーが可縮な ∞-亜群、つまり一点になる。B6 の Corr^fact → Corr(C, E)（ファイバー Fact(f)）がこの形だが、文字通り仮定を満たすかは原典で確認が要る。</li>
+<li><b>Quillen の定理 A の ∞ 版</b>：各 b でコンマ ∞-圏 E_{/b} が弱可縮なら p は共終。余極限の計算と局所化の判定の両方に使う。</li>
+</ol>
+<h3>余極限との関係</h3>
+<ul>
+<li>S 値：colim F ≃ |∫F|（すべての射で局所化）</li>
+<li>Cat_∞ 値：colim F ≃ ∫F[余デカルト射⁻¹]（HTT 3.3.4）</li>
+<li>Set 値：π₀(∫F) はその0-切断</li>
+</ul>
+<h3>形式化の設計</h3>
+<ol>
+<li><code>IsLocalization</code> を普遍性を述べる性質として定義し、C[W⁻¹] は構成しない。</li>
+<li>判定法1〜3を定理として示す（層化・Corr^fact → Corr・余極限の計算をまかなう）。</li>
+<li>W を同値に送る関手が一意的に降りる補題（B6 の最後のステップ）。</li>
+<li>ho(C[W⁻¹]) ≃ (ho C)[W⁻¹] で Mathlib の <code>CategoryTheory.Localization</code> と接続（D6 と <code>DerivedCategory</code> への橋）。</li>
+<li>一般的な存在定理は Joyal モデル構造が入るまで後回し。</li>
+</ol>
+</main>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>単体的集合と Kan 複体</title>
-<link rel="stylesheet" href="../infinity/style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -67,8 +67,8 @@
 <h3>1.3 anodyne 射と inner anodyne 射</h3>
 <p>Kan fibration に対して左持ち上げ性質を持つ射を <b>anodyne</b> といい、inner fibration に対して左持ち上げ性質を持つ射を <b>inner anodyne</b> という。</p>
 \[
-\text{anodyne} = {}^{\boxslash}(\text{Kan fibration}),\qquad
-\text{inner anodyne} = {}^{\boxslash}(\text{inner fibration})
+\text{anodyne} = {}^{\text{⧄}}(\text{Kan fibration}),\qquad
+\text{inner anodyne} = {}^{\text{⧄}}(\text{inner fibration})
 \]
 <ul>
   <li><code>anodyneExtensions := (fibrations _).llp</code>、<code>innerAnodyneExtensions := innerFibrations.llp</code>（Mathlib）。</li>

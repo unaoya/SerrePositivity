@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""章ごとの HTML を、claude.ai Artifact 公開用の 1 ページにまとめる。
+"""章ごとの HTML を、claude.ai Artifact 公開用の 1 ページにまとめる（第 I 部の旧シリーズと、f- で始まる第 II 部の新シリーズ）。
 
 使い方: python3 build_artifact.py OUT_DIR KATEX_DIR
   KATEX_DIR には katex.min.css と fonts/*.woff2 を置いておく。
@@ -31,7 +31,9 @@ def rewrite_links(body: str) -> str:
     # リポジトリ内ファイルへのリンクは文字だけにする
     body = re.sub(r'<a href="\.\./[^"]*">(.*?)</a>', r"\1", body, flags=re.S)
     body = re.sub(r'href="index\.html"', 'href="#top"', body)
-    body = re.sub(r'href="([A-Za-z0-9_-]+)\.html(?:#[^"]*)?"', r'href="#sec-\1"', body)
+    # ページ内の要素へのリンク（xx.html#id）は #id に、ページ全体へのリンクは #sec-xx にする
+    body = re.sub(r'href="[A-Za-z0-9_-]+\.html#([^"]+)"', r'href="#\1"', body)
+    body = re.sub(r'href="([A-Za-z0-9_-]+)\.html"', r'href="#sec-\1"', body)
     return body
 
 
@@ -67,7 +69,7 @@ section.chapter { border-top: 2px solid var(--rule); margin-top: 3.5rem; padding
 .backtop { margin-top: 2rem; font-size: 0.9rem; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding-block: 0.2rem; }
 """
-    page = f"""<title>∞ 圏基盤の解説</title>
+    page = f"""<title>∞ 圏基盤（統合版）</title>
 <style>
 {chr(10).join(styles)}
 {extra_css}
