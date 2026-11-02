@@ -5,6 +5,8 @@ skips it immediately (exit 75); all temporary sources, index entries and outputs
 are removed. No production/root/downstream build is run.
 """
 import copy
+import contextlib
+import io
 import json
 import os
 from pathlib import Path
@@ -185,14 +187,83 @@ class MergeTests(unittest.TestCase):
         r=self.analyze()
         with self.assertRaisesRegex(ValueError,'mixed move/split'):mm.apply(self.root,r)
 
-    def test_snapshot_cli_delegates_and_ignores_module(self):
+    def test_snapshot_cli_delegates_with_explicit_module_map(self):
         row={'name':'Demo.a','parent':'Demo.a','kind':'def','type':['const','Nat',[]],'body':['lit',1],'axioms':[],'attributes':{},'module':'A'}
-        a=self.root/'before.json';b=self.root/'after.json'
+        a=self.root/'before.json';b=self.root/'after.json';mapping=self.root/'module-map.json'
         a.write_text(json.dumps({'schema_version':1,'declarations':[row]}))
         row['module']='Merged';b.write_text(json.dumps({'schema_version':1,'declarations':[row]}))
-        self.assertEqual(mm.main(['--snapshot-before',str(a),'--snapshot-after',str(b)]),0)
+        args=['--snapshot-before',str(a),'--snapshot-after',str(b)]
+        # Module identity is significant; an unapproved move must still fail.
+        self.assertEqual(mm.main(args),1)
+        mapping.write_text(json.dumps({'modules':{'A':'Merged'}}))
+        args.extend(['--module-map',str(mapping)])
+        self.assertEqual(mm.main(args),0)
         row['body']=['lit',2];b.write_text(json.dumps({'schema_version':1,'declarations':[row]}))
-        self.assertEqual(mm.main(['--snapshot-before',str(a),'--snapshot-after',str(b)]),1)
+        self.assertEqual(mm.main(args),1)
+        row['body']=['lit',1];row['type']=['const','Int',[]]
+        b.write_text(json.dumps({'schema_version':1,'declarations':[row]}))
+        self.assertEqual(mm.main(args),1)
+
+    def test_module_map_requires_snapshots(self):
+        error=io.StringIO()
+        with contextlib.redirect_stderr(error):
+            self.assertEqual(mm.main(['--module-map','unused.json']),1)
+        self.assertIn('--module-map requires snapshots',error.getvalue())
+
+    def cycle_fixture(self):
+        # The original graph is a DAG: IHAdjunction -> ClosedStructure -> IHDef.
+        # Contracting IHDef and IHAdjunction produces InternalHom <-> Closed.
+        self.put('Mod.IHDef','def ih := 1\n')
+        self.put('Mod.ClosedStructure','def closed := 2\n',imports=[AREA+'.Mod.IHDef'])
+        self.put('Mod.IHAdjunction','def adj := 3\n',imports=[AREA+'.Mod.ClosedStructure'])
+        self.git('add','.')
+        return [dict(module=AREA+'.Mod.InternalHom',action='merge',
+                     sources=[AREA+'.Mod.IHDef',AREA+'.Mod.IHAdjunction'],docstring='# InternalHom'),
+                dict(module=AREA+'.Mod.Closed',action='merge',
+                     sources=[AREA+'.Mod.ClosedStructure'],docstring='# Closed')]
+
+    def test_check_rejects_target_cycle_and_reports_original_edges(self):
+        plan=self.cycle_fixture()
+        path=self.root/'plan.json';path.write_text(json.dumps(plan))
+        before={p:p.read_bytes() for p in self.root.rglob('*.lean')}
+        error=io.StringIO()
+        with contextlib.redirect_stderr(error):
+            rc=mm.main([str(path),'--root',str(self.root),'--area',AREA,'--check'])
+        self.assertEqual(rc,1)
+        for edge in [('Mod.InternalHom','Mod.Closed'),('Mod.Closed','Mod.InternalHom'),
+                     ('Mod.IHAdjunction','Mod.ClosedStructure'),('Mod.ClosedStructure','Mod.IHDef')]:
+            self.assertIn(AREA+'.'+edge[0]+' -> '+AREA+'.'+edge[1],error.getvalue())
+        self.assertEqual(before,{p:p.read_bytes() for p in self.root.rglob('*.lean')})
+
+    def test_acyclic_target_import_union_and_internal_edges(self):
+        plan=self.cycle_fixture()
+        self.put('Mod.IHAdjunction','def adj := 3\n',imports=[AREA+'.Mod.IHDef'])
+        result=self.analyze(plan)
+        self.assertNotIn('public import '+AREA+'.Mod.InternalHom',result['built'][AREA+'.Mod.InternalHom'])
+        self.assertIn('public import '+AREA+'.Mod.InternalHom',result['built'][AREA+'.Mod.Closed'])
+        self.assertNotIn('cycle',mm.report(result))
+
+    def test_cycles_include_final_destination_imports(self):
+        plan=self.cycle_fixture()
+        self.put('Mod.IHAdjunction','def adj := 3\n',imports=[AREA+'.Mod.Closed'])
+        with self.assertRaisesRegex(ValueError,'original: '+AREA+r'\.Mod.IHAdjunction -> '+AREA+r'\.Mod.Closed'):
+            self.analyze(plan)
+
+    def test_all_cyclic_components_and_edges_are_reported(self):
+        edges={('A','B'),('B','C'),('C','A'),('A','C'),('D','E'),('E','D'),('Tail','A')}
+        origins={edge:{('Old'+edge[0],'Old'+edge[1])} for edge in edges}
+        with self.assertRaises(ValueError) as raised:
+            mm.check_target_cycles({'A','B','C','D','E','Tail'},origins)
+        message=str(raised.exception)
+        self.assertIn('targets: A, B, C',message)
+        self.assertIn('targets: D, E',message)
+        self.assertNotIn('Tail',message)
+        for a,b in edges-{('Tail','A')}:
+            self.assertIn('original: Old'+a+' -> Old'+b,message)
+
+    def test_long_acyclic_target_graph(self):
+        nodes=[str(i) for i in range(1500)]
+        mm.check_target_cycles(nodes,{(a,b):{(a,b)} for a,b in zip(nodes,nodes[1:])})
 
 
 @unittest.skipUnless(os.environ.get('DG_W2_LEAN_TEST')=='1','opt-in: DG_W2_LEAN_TEST=1')
@@ -224,7 +295,9 @@ def lean_worker():
             paths[2].write_text(result['built'][mods[2]])
             run(['lake','build',mods[2]])
             run(['lake','env','lean','--run','scripts/refactor/decl_snapshot.lean','--modules',mods[2],'--output',str(out/'after.json')])
-            rc=mm.main(['--snapshot-before',str(out/'before.json'),'--snapshot-after',str(out/'after.json')])
+            mapping=out/'module-map.json'
+            mapping.write_text(json.dumps({'modules':{m:mods[2] for m in mods[:2]}}))
+            rc=mm.main(['--snapshot-before',str(out/'before.json'),'--snapshot-after',str(out/'after.json'),'--module-map',str(mapping)])
             if rc:raise RuntimeError('snapshot preservation failed')
         finally:
             subprocess.run(['git','rm','--cached','--ignore-unmatch','--',*[str(p.relative_to(ROOT)) for p in paths[:2]]],cwd=ROOT,check=True)
