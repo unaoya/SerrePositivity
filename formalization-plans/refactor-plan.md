@@ -173,6 +173,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
+| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で編集が完了（2026-11-02、静的な検査は通過、変更モジュールと直接 importer のビルドは ∞ の W2b の後）。全ビルドは 11-05（記録は下の「区切り 2a の記録」） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -299,6 +300,38 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
     （IsSerreClass）、Paper → LA の一般の補題（§10.6）の残り、§5.2 の 2〜4、StageDecay、Lemma3_5・GaloisNormalization の補助。
   - maxHeartbeats：統合で各パートを `section … end` で包んだので、ファイル全体の `set_option` はパートの範囲に限られた。個々の引き上げの値は変えていない。
   - scripts/check_adams_import_boundaries.py は 1-3 の HA の統合の時点で古い名前を参照している（verify からは呼ばれない）。直すか削除するかは後で。
+
+区切り 2a の記録（2026-11-02、worktree refactor/2a、main d27c4798d から。全ビルドの前）：
+
+- 層の境界：CA・HA・LA から BS・CLMST への import は 0 件になった。BS → CLMST（BS/Almost/PerfectoidAlmost → CLMST.Almost）と
+  Paper → CLMST の再エクスポート（Paper/Section2/MixedPerfectoid、削除）の逆転（§8.5）も解消した。KST → BS は MonicRelation の 1 件が残る（下）。
+- CA の BS 依存の 12 本 → BhattScholze の下の 6 本：`PerfectoidIdeal/{Basic, Powers, Cover}`・`Perfectoidization/Finite`・
+  `Semiperfectoid/AbsolutelyIntegrallyClosedQuotient`・`Andre/OrdinaryRoots/MonicRelation`（宣言名は変えない）。
+- CLMST の基礎（A）：
+  - BS に依存しないもの 20 本 → `CommutativeAlgebra/RankLocus`・`HomologicalAlgebra/FiniteFreeComparison`・`CommutativeAlgebra/ModPHypersurfaceGrowth`・
+    `CommutativeAlgebra/RootTower/StageModPLength`・`HomologicalAlgebra/DerivedCompleteCommonModel` と既存 3 本への追記。Stage* の 10 本 →
+    `CommutativeAlgebra/RootTower/BaseChange`（名前空間 `Section2`。`RPerfd` への写像は CLMST に残す）。
+  - BS に依存するもの → BhattScholze の下の 12 本（`Andre/TorDescent`・`PerfectoidIdeal/{Roots, Tor, CompletedQuotient, TorCriteria}`・
+    `Perfectoidization/{Cone, ExcisionComparison, ExcisionTor, CompletedTensorComparison, FiniteComparisonExcision, RootTower}`・
+    `Semiperfectoid/{Product, QuotientPerfectoidization}`）と BS/Almost/PerfectoidAlmost への追記。
+- CLMST の論文側（B）：77 → 18 本（承認済みの名前：`PerfectoidizationIsogeny/`（12 本）・`AllModuleTorVanishing`・`KoszulAnnihilation`・
+  `CyclicLengthBound`・`ParameterQuotientLength`・`ParameterPowerLength`・`Algebra`）。CLMST/Inputs/ は吸収した。CLMST は 146 → 18 本。
+- 削除：§8.4 の死んだ 11 本、主経路外のうち 3 本（TensorOrder の残り・CompletedCokernelKoszul・Inputs/AlmostLength、11-02 決定。残りの 5 本は
+  BS・CA へ移して残した）、`finiteAlgebraConeIsogeny`。
+- 重複の一本化：mod pᴺ の冪等性（3 → BS の 1）、`perfectoidIdeal_quotient_isIntegralPerfectoid`（2 → BS の 1）、`corollary_4_0_4`（2 → 1）、
+  有限比較 excision の証明（Prop247Proof の別証明 → `BhattScholze.klFiniteComparisonExcision_of_perfectoid`）、`Inputs.proposition_2_4_7` の入口。
+  CLMST の `completedTowerRoot*` の別名 5 つを削除（`Section2` の本体を使う）。
+- 改名：`prop247_` を 74 個の論文側と、基礎の 40 個余りから外した。宣言の改名表は計 296 件（scratch の rename_all.json、2a の取り込み時に BS へ回す）。
+- その他：Koszul・KoszulResolution → `CommutativeAlgebra/Koszul/{Basic, Resolution}`。IteratedTensor の 6 本 → `BhattScholze/Prism/Tensor/IteratedTensor`。
+  P1：Perfectoidization* → `CommutativeAlgebra/Perfectoid/{Defs, Completion}`（Nilpotent は Torsion へ、未使用だが一般論なので残す）。
+  PerfectoidDerivedComplete → `HomologicalAlgebra/DerivedCompletion/IntegralPerfectoid`。`IsPerfectoidization.comp_ringEquiv` → CA の Perfectoid/Defs。
+- ファイル：main d27c4798d との差で 160 本を削除・33 本を新設（改名 15）、−13933・＋12862 行（SerrePositivity のみ）。
+- 見送り・未決：
+  - MonicRelationRegularSequence は BS のまま（KST → BS が残る）。BS の Andre/OrdinaryRoots の多項式の補題を CA へ下ろす件は未決（11-02）。
+  - Inputs/Perfectoidization は BS の管轄のまま（BS セッションと調整）。
+  - 2b へ：Prop247ConeComparison・Prop247Cone・Prop247RankCompleteness の一般部分（HA/DerivedCompletion へ）。
+  - `hetale` の長い仮定を名前つきの述語にする件、Corollary404 などの不要な import（§8.4）は未着手。
+  - CA → HA の import は 2a の前から 40 か所以上ある（層の規則の対象外）。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
