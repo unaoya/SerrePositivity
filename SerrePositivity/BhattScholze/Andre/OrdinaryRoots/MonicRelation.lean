@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.CommutativeAlgebra.RegularSequence
 public import Mathlib.Data.List.Nodup
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Algebra.Polynomial.Monic
