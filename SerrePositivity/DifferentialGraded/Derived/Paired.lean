@@ -42,7 +42,7 @@ DG の土台とその下流から import する。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionCoherence
@@ -111,7 +111,7 @@ end AssociatorSecondMiddleRestrictionCoherence
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section LeftUnitOuterRestriction
@@ -218,7 +218,7 @@ U12e-general（中断）の一部。R1〜R7への足場として保持する。�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PairedRestrictionIdentification
@@ -346,7 +346,7 @@ U12e-general（中断）の一部。R1〜R7への足場として保持する。�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section PairedRestrictionCoherence
@@ -433,7 +433,7 @@ end PairedRestrictionCoherence
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section DiagonalRestriction
@@ -493,7 +493,7 @@ end DiagonalRestriction
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section DiagonalRestrictionCoherence
@@ -589,7 +589,7 @@ U12e-general（中断）の一部。R1〜R7への足場として保持する。�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleEndpointRestriction
@@ -656,7 +656,7 @@ U12e-general（中断）の一部。R1〜R7への足場として保持する。�
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleSimultaneousRestriction

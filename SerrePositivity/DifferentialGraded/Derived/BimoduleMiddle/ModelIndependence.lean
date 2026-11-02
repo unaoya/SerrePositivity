@@ -41,7 +41,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleResolutionLiftTensor
@@ -110,7 +110,7 @@ end BimoduleResolutionLiftTensor
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleComparison
@@ -226,7 +226,7 @@ end BimoduleMiddleComparison
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleHomotopy
@@ -302,7 +302,7 @@ end BimoduleMiddleHomotopy
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleNaturality
@@ -374,7 +374,7 @@ end BimoduleMiddleNaturality
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleCalculation
@@ -425,7 +425,7 @@ end BimoduleMiddleCalculation
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleComparisonFamily
@@ -524,7 +524,7 @@ end BimoduleMiddleComparisonFamily
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleComparisonLocalization
@@ -632,7 +632,7 @@ end BimoduleMiddleComparisonLocalization
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleIndependence
@@ -711,7 +711,7 @@ end BimoduleMiddleIndependence
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleSecondFactor
@@ -789,7 +789,7 @@ end BimoduleMiddleSecondFactor
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleKFlatIndependence
@@ -854,7 +854,7 @@ end BimoduleMiddleKFlatIndependence
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleSemifreeIndependence
@@ -974,7 +974,7 @@ end BimoduleMiddleSemifreeIndependence
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleSemifreeSecondFactor
@@ -1085,7 +1085,7 @@ end BimoduleMiddleSemifreeSecondFactor
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleSecondFamily
@@ -1222,7 +1222,7 @@ end BimoduleMiddleSecondFamily
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleKFlatFamily
@@ -1332,7 +1332,7 @@ end BimoduleMiddleKFlatFamily
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleMiddleFullComparison
@@ -1446,7 +1446,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleModuleEquivalence

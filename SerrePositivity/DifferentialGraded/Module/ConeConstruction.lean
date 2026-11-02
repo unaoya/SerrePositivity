@@ -214,7 +214,7 @@ dg関手に沿った右加群の制限と全Hom自然な閉零射。
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Module/RestrictionAction.lean、Module/
 RestrictionColimits.lean、Module/RestrictionGradedSplit.lean等。dg加群の導来作用・準同値比較の基盤。任意可換環上のMorita・
 K理論のモデル比較に再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section Restriction
@@ -325,7 +325,7 @@ end Restriction
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Bimodule/RestrictedRepresentableAction.lean。dg加群の導来作用・
 準同値比較の基盤。任意可換環上のMorita・K理論のモデル比較に再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RestrictionAction
@@ -377,7 +377,7 @@ dg関手に沿う制限のHom複体上の構成。
 
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。dg加群の導来作用・準同値比較の基盤。任意可換環上のMorita・K理論のモデル比較に再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RestrictionEnriched

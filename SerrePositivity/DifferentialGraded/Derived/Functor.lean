@@ -246,7 +246,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section ModuleFunctorProjective
@@ -293,7 +293,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightKFlatIsoLift
@@ -371,7 +371,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section RightKFlatIsoLiftComputation
@@ -526,7 +526,7 @@ end RightKFlatIsoLiftComputation
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorMiddleRestrictionResolved
@@ -620,7 +620,7 @@ end AssociatorMiddleRestrictionResolved
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section AssociatorSecondMiddleRestrictionResolved
@@ -705,7 +705,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section FunctorExtension
@@ -818,7 +818,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section FunctorExtensionNaturality
@@ -940,7 +940,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section FunctorExtensionRepresentable

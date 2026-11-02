@@ -38,7 +38,7 @@ DG の土台とその下流から import する。
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleRestriction
@@ -107,7 +107,7 @@ end BimoduleRestriction
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanからは未使用。U16dで指定の制限squareを使う際の候補。一般Morita・tensor・
 Hochschild型構成のモデル比較にも利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleRestrictionEvaluation
@@ -175,7 +175,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionResolution.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleComposition
@@ -265,7 +265,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionPairResolution.lean、
 Derived/BimoduleCompositionResolutionValues.lean、Derived/BimoduleCompositionRightUnit.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionResolution
@@ -350,7 +350,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionValueNaturality.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionResolutionValues
@@ -436,7 +436,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionLeftUnit.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionRightUnit
@@ -490,7 +490,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionLeftUnitComputation.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionLeftUnit
@@ -616,7 +616,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionTriangle.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionLeftUnitComputation
@@ -731,7 +731,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionAssociatorResolution.lean、
 Derived/BimoduleCompositionPairNaturality.lean。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionPairResolution
@@ -811,7 +811,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionInnerNaturality.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionPairNaturality
@@ -903,7 +903,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleLocal.lean。固定dg圏上の導来tensor・
 Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionValueNaturality
@@ -972,7 +972,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionAssociatorNaturality.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionInnerNaturality
@@ -1077,7 +1077,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionAssociatorNaturality.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionAssociatorResolution
@@ -1178,7 +1178,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionAssociatorFunctors.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionAssociatorNaturality
@@ -1310,7 +1310,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 ## 使われ方
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/BimoduleCompositionAssociator.lean。
 固定dg圏上の導来tensor・Morita作用の基盤。非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionAssociatorFunctors
@@ -1392,7 +1392,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/
 BimoduleCompositionAssociatorIndependence.lean。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleCompositionAssociator
@@ -1515,7 +1515,7 @@ semifree・K-flatモデルと指定準同型局所化の計算を組み合わせ
 局所入口Derived/BimoduleLocal.leanの依存。直接の利用箇所：Derived/
 BimoduleCompositionAssociatorIndependence.lean。固定dg圏上の導来tensor・Morita作用の基盤。
 非平坦Homの分解source上でも同じ計算APIを再利用できる。
-棚卸しと再開条件はformalization-plans/dg-theory-u12e-general-inventory.mdを参照。
+棚卸しと再開条件はformalization-plans/archive/dg-theory-u12e-general-inventory.mdを参照。
 -/
 
 @[expose] public section BimoduleResolutionLift
