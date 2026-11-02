@@ -126,3 +126,12 @@ def DeclSnapshot.eraseProofs (e : Expr) : MetaM Expr :=
 **`compare_snapshots.py`**：`_proof_N` の束ね（110〜122 行）は親が theorem のときだけなので、**親が def・abbrev・instance でも束ねる**：親の型・本体が一致していれば `_proof_N` の型の差は報告しない（v3b では親の本体から証明が消えているので、補助定理の命題は親の同一性に関係ない）。親が不一致なら従来どおり両方報告。
 
 **手順**：v3b を別コミット（道具・試験）→ 取りかけの v3 の before shard（18/37）は捨て、before scratch から v3b で 273 本を取り直す → after も v3b → 比較。下流ビルドはそのまま続ける（並列は 8 本）。停止点 2 の報告に、v2 の 9 件と v3 の残り 12 件の行方を書く。v3b でも残るものがあれば、それはデータの差なので止める。
+
+## 10. 追記（2026-11-02 15:30、停止点 2 の承認：層検査と verify へ）
+
+**承認**：下流 round 1（11,550 本、1 時間 55 分）PASS、v3b の保存比較（273 → 203 本、2,033 宣言）不一致 0、修飾した 3 モジュールの 35 宣言一致、v2 の 9 件・v3 の 12 件の行方の説明、補充 0・完全修飾 4・宇宙の明示 2、ログ 34 本にエラー・PANIC 0。コミット 515c71147・a4274406b・56ee73f32・7c127089b。
+
+**次**：
+1. §2-3 の層検査を after の最終状態で再実行して記録：Foundation の違反 0、CategoryTheory ↔ HotA の相互依存 0（R76 の目的）、W1/W2a/W2b の禁止モジュール数が 1/166/166 から増えていないこと、ratchet の基準を取り直す。
+2. verify：`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40 zsh scripts/refactor/verify.sh`（gate:true、鍵のもと。他の全ビルドがないことは Claude が確認済み：15:30 時点で `lake build` なし）。IF-W0-4 の実測（RSS 最大 50.8 GB > 45）に合わせて予算は 40。
+3. **停止点 3**：verify の summary（PASS・gate:true、実時間、最大同時 RSS、待ちの発生）、層検査の前後、コミット一覧、`audit-stats.json` の更新の有無。取り込みは Claude が行う（main へ merge → キャッシュから温め → 論文の層へ「全ビルド可」）。
