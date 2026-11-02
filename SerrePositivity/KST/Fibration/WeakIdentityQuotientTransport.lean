@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint
 public import SerrePositivity.KST.Fibration.WeakSpanKanFiberUnit
 public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedRightFiberVertices
 public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
 public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaRelativeFactorization
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoin
 public import SerrePositivity.InfinityCategories.Core.Coslice
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 

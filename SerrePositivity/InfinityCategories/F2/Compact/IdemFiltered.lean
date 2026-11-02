@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRetraction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 
 /-!
 概要：元の全 coherent 冪等図式の添字 Idem は、任意の κ について κ-filtered。

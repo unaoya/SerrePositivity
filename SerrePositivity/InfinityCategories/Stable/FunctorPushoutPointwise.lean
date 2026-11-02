@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FunctorLoopSquareCriterion
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
 /-!
 概要：関手圏の同じ四角形の押し出し性を全評価から回収する。

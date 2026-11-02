@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.UnstraighteningVertexPrism
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeIntervalTransportUnit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeUnitFamilyEndpoints
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeIntervalTransportUnit
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeUnitFamilyEndpoints
 
 /-!
 概要：元の指定余錐の fiber 写像そのものを終点とする、同じ join 上の実際の prism。

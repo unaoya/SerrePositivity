@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FunctorIsoInverseHEq
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
 
 /-!
 概要：全余錐の指定比較と旧族の指定下側比較が一致すると、元の実 under comma に余錐。

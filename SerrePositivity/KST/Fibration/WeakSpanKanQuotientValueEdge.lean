@@ -2,12 +2,12 @@ module
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSimplexRestriction
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientPointedComparison
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFiberUnit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
 public import SerrePositivity.InfinityCategories.Stable.FunctorHoEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoTriangleEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoVertexEvaluation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoComponentPre
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoDisplayComponent
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoDisplayComponent
 
 /-!
 概要：同じ実商比較の transport 辺を元の降下同型の指定成分へ照合する。

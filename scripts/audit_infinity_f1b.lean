@@ -1,3 +1,36 @@
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathKanPointComparison
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathComparisonFaces
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathBoundaryCylinderCompatibility
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeKanHomotopyStrictification
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantInverse
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantComposition
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.NullHomotopyRestriction
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.MappedBoundaryKanComparison
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanCospanPointHomotopy
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanCospanBoundarySquare
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanBoundaryHomotopyExtension
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.InitialShapeLimitExistence
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorTrianglePostcomposition
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPost
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FiniteRelativeWeakCriterion
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FilteredPointwiseWeakEquivalences
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FilteredNullHomotopy
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.DiagonalCommaWeakContractibility
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanSpecifiedHomotopy
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanFilteredUnit
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanCoconeContraction
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeRestrictionTransport
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeMappingSpace
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoconeCompletion
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.BousfieldKanTerminalWeight
+import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ApexLimitConeTransport
 import SerrePositivity.InfinityCategories.F1B
 import SerrePositivity.InfinityCategories.F1B.Localization.UniversalConsequences
 import SerrePositivity.InfinityCategories.F1B.Localization.UniverseDescent
@@ -3185,3 +3218,55 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (6): no declarations audited"
   logInfo m!"Ind-S weak deformation source audit passed: {count} declarations."
+
+-- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ApexLimitConeTransport,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.BousfieldKanTerminalWeight,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoconeCompletion,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeMappingSpace,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeRestrictionTransport,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanCoconeContraction,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanFilteredUnit,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanSpecifiedHomotopy,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.DiagonalCommaWeakContractibility,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FilteredNullHomotopy,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FilteredPointwiseWeakEquivalences,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FiniteRelativeWeakCriterion,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPost,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorTrianglePostcomposition,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.InitialShapeLimitExistence,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanBoundaryHomotopyExtension,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanCospanBoundarySquare,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.KanCospanPointHomotopy,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.MappedBoundaryKanComparison,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.NullHomotopyRestriction,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantComposition,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantInverse,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeKanHomotopyStrictification,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathBoundaryCylinderCompatibility,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathComparisonFaces,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathKanPointComparison,
+    `SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."

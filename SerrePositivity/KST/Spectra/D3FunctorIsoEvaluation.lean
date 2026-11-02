@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.D3StageLoopStructureFamily
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：全図式に写した指定同型を頂点で評価し、元の同型の同じ前合成へ戻す。

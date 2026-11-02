@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.JoinUniverseReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaOppositeLimits
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 
 /-!
 概要：同じ元の余錐の反転と宇宙持ち上げの全射を照合する。

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.FunctorIsoSandwichCompo
 public import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompIdentity
 public import SerrePositivity.InfinityCategories.Derived.ActionComparisonComposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：始域同値の指定逆を使う比較を、前向きの比較正方形へ回収する。
 方針：同じ比較値・前後合成の交換則を保持する。

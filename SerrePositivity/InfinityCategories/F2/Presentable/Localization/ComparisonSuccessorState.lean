@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorLeftAugmentation
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeApexTerminal
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoin
 
 /-!
 概要：二つの元の表示・全余錐を保持する、compact 全前置比較の後続状態を作る。

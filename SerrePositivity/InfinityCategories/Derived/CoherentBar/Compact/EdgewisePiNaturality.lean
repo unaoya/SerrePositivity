@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EdgewisePiComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PiPathRelation
+public import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathRelation
 /-!
 概要：全基点の反転 π 比較は、元の Kan 射と可換する。
 方針：同じ定値解像基点上の両端射影の厳密な自然性を使う。

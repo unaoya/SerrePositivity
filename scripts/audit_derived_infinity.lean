@@ -1,3 +1,39 @@
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.SphereClassPath
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.RestrictionLeg
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveVertexRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveValueRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiZeroRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathSphereComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathRelation
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathVertexEdge
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathTransport
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathMapSurjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathFamilyHomotopy
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PairValueRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PairPathEquality
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.NativeTotalComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.LiftedTotalPiCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.KanMapCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FiniteDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredSpaceBridge
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationHomotopyDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.CoherentNativeCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.CoconeLegNaturality
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeStageKernel
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveSurjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveInjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathTranspose
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathRealization
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeFiniteCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeComponents
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.All
 import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
 import SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
 import SerrePositivity.DifferentialGraded.Morita.Perfect
@@ -7868,8 +7904,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated,
 
     `SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDown,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyFaithful,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientThickKernelCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGFullKernelEssentialImage,
@@ -7981,3 +8017,58 @@ run_cmd do
   for mod in expected do
     unless seen.contains mod do throwError "Module not audited: {mod}"
   logInfo m!"D2 axiom audit passed: {count} declarations in {seen.size} modules."
+
+-- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.All,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeComponents,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeFiniteCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathRealization,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathTranspose,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveInjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeStageKernel,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.CoconeLegNaturality,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.CoherentNativeCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationHomotopyDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredSpaceBridge,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FiniteDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.KanMapCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.LiftedTotalPiCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.NativeTotalComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PairPathEquality,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PairValueRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathMapSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathTransport,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathRelation,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathSphereComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiZeroRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveValueRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveVertexRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.RestrictionLeg,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.SphereClassPath,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."

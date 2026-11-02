@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentProductComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!

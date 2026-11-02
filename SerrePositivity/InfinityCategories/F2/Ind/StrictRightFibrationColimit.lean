@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLifting
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredLifting
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 
 /-!

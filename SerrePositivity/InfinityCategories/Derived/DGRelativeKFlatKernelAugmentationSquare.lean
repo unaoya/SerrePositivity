@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatAugmenta
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAugmentation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedRawFactorAugmentationEq
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
 /-!
 概要：元の半自由 kernel 制限比較と同じ augmentation の正方形を K-flat 圏内で証明する。
 方針：実包含後に元の raw factor 正方形を回収し、全関手圏の充満忠実性で反映する。

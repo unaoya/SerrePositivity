@@ -8345,8 +8345,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated,
 
     `SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDown,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyFaithful,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientThickKernelCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGFullKernelEssentialImage,

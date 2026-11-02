@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.WeakComponents
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTotalDetection
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredTotalDetection
 
 /-!
 概要：元の全空間 Kan 模型の点を、元の一つの図式の値の点で連結成分まで回収する。

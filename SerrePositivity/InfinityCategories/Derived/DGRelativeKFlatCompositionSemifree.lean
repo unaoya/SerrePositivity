@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatibilityInclusion
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelRestrictionNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!

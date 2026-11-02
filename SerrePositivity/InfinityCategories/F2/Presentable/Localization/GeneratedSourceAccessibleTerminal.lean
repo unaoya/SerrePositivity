@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceLocalTerminal
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceSmallColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.EmptyShapeConeCriterion
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.EmptyShapeConeCriterion
 
 /-!
 概要：固定始域圏の accessibility が得られれば、その終対象と局所置換を構成できる。

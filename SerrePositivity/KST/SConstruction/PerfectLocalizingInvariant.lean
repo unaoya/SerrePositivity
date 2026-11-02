@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectVerdierDiagram
 public import SerrePositivity.KST.Spectra.SpectrumFiberSquares
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
 
 /-! # Cat^perf 上の Sp 値局所化不変量

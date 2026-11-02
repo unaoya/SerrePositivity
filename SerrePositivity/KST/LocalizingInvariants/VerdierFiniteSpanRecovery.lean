@@ -4,8 +4,8 @@ public import SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalResol
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
 public import SerrePositivity.InfinityCategories.Stable.CoconeTransport
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanHomotopy
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy
 
 /-!
 概要：完成した実分母・次辺族の有限パラメータを、一つの実分母上へ戻す。

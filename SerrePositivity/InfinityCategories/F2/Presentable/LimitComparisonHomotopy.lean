@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitComparisonReflection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitHomotopyPointwise
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ColimitHomotopyPointwise
 
 /-!
 概要：同じ二つの普遍錐間の全比較は、基底の各成分が可逆なら全体が可逆。

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafAllSmallLimit
 public import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimits
 public import SerrePositivity.InfinityCategories.F2.Ind.FullConeLift
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitExchangeInput
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconePostcompose
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconePostcompose
 
 /-!
 概要：Ind 内の全極限錐族の filtered 補完は、明示交換入力のもとで再び極限錐となる。

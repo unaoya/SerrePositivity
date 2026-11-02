@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedProductNativeCone
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyTriangles
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
 
 /-!

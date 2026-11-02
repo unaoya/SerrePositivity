@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationUnderFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationUnderSource
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
 /-!
 概要：指定始点評価図式の下で、元の実試験族を延長する相対余錐を構成する。
 方針：同じ下側変換を持つ補間全族の余錐を、実 under comma 内の同型で戻す。

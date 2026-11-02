@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
 /-!
 概要：二つの対角 kernel を使う三角式と左単位の coherence を、同じ全関手同型で扱う。

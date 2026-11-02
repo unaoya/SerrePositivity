@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredBinaryDiagonal
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredBinaryDiagonal
 
 /-!
 概要：sifted な単体集合を非空性と二項対角の right cofinality で定義する。

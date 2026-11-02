@@ -1,3 +1,98 @@
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoinCover
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoin
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativePathBoundaryDiagram
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativePathBoundary
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHornTensorExtension
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyTriangleFilling
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopySharedFinal
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyFactorThrough
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyCompositionAlongMap
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyComposite
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.QuasiHomotopyTriangle
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.PointFunctorIso
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.PointConeDegeneracy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareEndHomotopy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareCurry
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.PathCollapseBase
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.OverPostMapCompatibility
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyFunctor
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyExistence
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.LeftFibrationProduct
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.KanBoundaryHomotopyFinalExtension
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackLift
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopySquare
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackBoundarySquare
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalFamilyHomotopy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryPostcomposition
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryHomotopy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.HornOneLastPrism
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleEdges
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleComposite
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompEndpointTransport
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoDisplayComponent
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindexImage
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconePostcompose
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkTriangleMissingHomotopy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkHomotopyHorn
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexes
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexFactorization
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexColimit
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoinPieces
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoinCover
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteAnchorCylinder
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredTrivialKanFibrations
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredRelativeFactorization
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredLifting
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanFibrations
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanColimits
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredFiniteLimits
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.DegenerateHomotopyTriangles
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CylinderBoundaryMono
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductFunctorIso
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductCylinderMap
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductConstantCylinder
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentTriangleInitialHomotopy
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentHomotopyHorn
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ComposableHomotopyHorn
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.ColimitVertexTransport
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightSimplexLift
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftNormalization
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftForget
+import SerrePositivity.InfinityCategories.Core.FilteredExchange.AnchorCylinderCoordinates
 import SerrePositivity.InfinityCategories.Core
 import SerrePositivity.InfinityCategories.Core.UniverseEdgeTransport
 
@@ -3684,3 +3779,117 @@ run_cmd do
   setEnv saved
   if count == 0 then throwError "Ind-S (7): no declarations audited"
   logInfo m!"Ind-S inner-horn cardinal audit passed: {count} declarations."
+
+-- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.AnchorCylinderCoordinates,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftForget,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightLiftNormalization,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightSimplexLift,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ColimitVertexTransport,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ComposableHomotopyHorn,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentHomotopyHorn,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentTriangleInitialHomotopy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductConstantCylinder,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductCylinderMap,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductFunctorIso,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.CylinderBoundaryMono,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.DegenerateHomotopyTriangles,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredFiniteLimits,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanColimits,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanFibrations,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredLifting,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredRelativeFactorization,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredTrivialKanFibrations,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteAnchorCylinder,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoinCover,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoinPieces,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexColimit,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexFactorization,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexes,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkHomotopyHorn,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkTriangleMissingHomotopy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconePostcompose,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindexImage,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoDisplayComponent,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompEndpointTransport,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleComposite,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleEdges,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.HornOneLastPrism,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryHomotopy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryPostcomposition,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackBoundarySquare,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopyPoint,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopySquare,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackLift,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementHomotopyPoint,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementRelativeLifting,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.KanBoundaryHomotopyFinalExtension,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.LeftFibrationProduct,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyExistence,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyFunctor,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.OverPostMapCompatibility,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.PathCollapseBase,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareCurry,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareEndHomotopy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.PointConeDegeneracy,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.PointFunctorIso,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.QuasiHomotopyTriangle,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyComposite,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyCompositionAlongMap,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyFactorThrough,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopySharedFinal,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHomotopyTriangleFilling,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativeHornTensorExtension,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativePathBoundary,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.RelativePathBoundaryDiagram,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoin,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoinCover,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions,
+    `SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."

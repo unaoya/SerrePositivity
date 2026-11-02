@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.TerminalSourceCompactFactorization
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointCoslice
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCosliceCofinality
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredCosliceCofinality
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
 
 /-!

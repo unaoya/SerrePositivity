@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredLimitExchange
+public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredLimitExchange
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 
 /-!

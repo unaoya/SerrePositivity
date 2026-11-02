@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSpanKanComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathSection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeHomotopyConstantComposition
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativeHomotopyConstantComposition
 
 /-!
 概要：元の完成分数の有限族を、指定実境界の輸送円柱を保って実分母族へ戻す。

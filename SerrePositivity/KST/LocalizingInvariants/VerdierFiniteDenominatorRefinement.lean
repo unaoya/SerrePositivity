@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotop
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin
 
 /-!
 概要：共通終点へ向かう実分母の有限図式を、全図式を保持して共通精密化する。

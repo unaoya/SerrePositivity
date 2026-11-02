@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalCarrierCosliceCone
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteProductCofinal
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility
 
 /-!
 概要：全鎖の実現空間の値写像の各 coslice 引き戻しは filtered。

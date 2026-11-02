@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanDiscreteLegHomotopy
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 
 /-!
 概要：元の Kan 対象と元の離散全脚から、同じ全一単体を持つ native 全錐を構成する。

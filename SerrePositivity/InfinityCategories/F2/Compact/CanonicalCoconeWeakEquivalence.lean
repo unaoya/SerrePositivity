@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.WeakUniverse
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LargeTotalCoconeUnit
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
 
 /-!
 概要：元の全空間余極限余錐の実際の fiber 写像は、大きい全 Kan 標的で弱同値。

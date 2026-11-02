@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：前合成で回収される指定同型は、任意の元の作用でさらに前合成しても回収される。

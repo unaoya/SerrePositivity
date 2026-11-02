@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeUnitCylinder
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeUnitCylinder
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber

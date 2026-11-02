@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConstantCoconeHomotopyComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalMapCocone
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMapCocone
 
 /-!
 概要：元の余極限 Kan 模型の射を、元の単位を使う native 余錐全体へ移す。

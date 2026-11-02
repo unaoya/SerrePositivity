@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.Derived.DGResolutionAugmentationRetract
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatibilityInclusion
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
 /-!
 概要：同じ augmentation の戻り同型を K-flat の分解と元の変形円柱へ接続する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientValueCancellation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeTransportValue
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 
 /-!

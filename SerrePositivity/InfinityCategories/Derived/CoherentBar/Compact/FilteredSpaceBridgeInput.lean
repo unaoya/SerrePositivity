@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceEdgeValue
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.NativePreservationPosetReductionUniverse

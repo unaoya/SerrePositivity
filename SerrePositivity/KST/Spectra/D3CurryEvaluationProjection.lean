@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoCurryPresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoCurryPresentation
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：全関手空間の curry 後の図式評価を、元の指定係数への制限へ戻す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialColimit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitVertexTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.ColimitVertexTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegs
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaSmallRange
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSubcomplexCovers
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.SetTheory.Cardinal.HasCardinalLT

@@ -1,3 +1,61 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedConeOppositeComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitWeightMap
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitReindexNaturality
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitReindex
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitOppositeAugmentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitOpposite
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitHomotopies
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitFamilies
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitDegreeExt
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitDegree
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitAugmentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.UniverseKanPullback
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndNaturality
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceLimitShapes
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ReflectedFilteredAugmentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.PointConeIdentityComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDiagram
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDegreeSection
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDegreeNormalization
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanComparisonSurjective
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanColimitIso
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanCocone
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanAugmentationMaps
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanAugmentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OppositeWeakHomotopy
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanPrismExtension
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackTransport
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackNative
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalCospanIso
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalCospan
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanCoconeAugmentationCriterion
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanCoconeAugmentationComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKanComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredWeakEquivalences
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitCanonical
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FiberwisePullbackValue
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.EmptyShapeConeCriterion
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CosliceCoproduct
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTransformationUnitCocone
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTotalMapNative
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeTransportAction
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeComposition
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoconeHomWeightedComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanWeightPost
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalWeightNaturality
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalStages
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalCylinderNaturality
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalCylinder
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalContraction
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanReindex
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanFiniteLifts
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanFilteredAugmentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanAugmentation
 import SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenDerivedHom
 import SerrePositivity.InfinityCategories.ModelBridge.ChosenQuillenFrameHom
 import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenFrameComparison
@@ -14964,3 +15022,80 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPost_fibration
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.relativeFunctorPullbackCone_isLimit
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.leftFibrationPullbackCone_isLimit
+
+-- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanFilteredAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanFiniteLifts,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanReindex,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalContraction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalCylinder,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalCylinderNaturality,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalStages,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalWeightNaturality,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanWeightPost,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoconeHomWeightedComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeComposition,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeTransportAction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTotalMapNative,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTransformationUnitCocone,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CosliceCoproduct,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.EmptyShapeConeCriterion,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FiberwisePullbackValue,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitCanonical,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredKanColimitComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredWeakEquivalences,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKanComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanCoconeAugmentationComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanCoconeAugmentationCriterion,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalCospan,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalCospanIso,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackNative,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackTransport,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanPrismExtension,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OppositeWeakHomotopy,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanAugmentationMaps,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanCocone,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanColimitIso,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanComparisonSurjective,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDegreeNormalization,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDegreeSection,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OverBousfieldKanDiagram,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.PointConeIdentityComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ReflectedFilteredAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceLimitShapes,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndNaturality,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.UniverseKanPullback,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitDegree,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitDegreeExt,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitFamilies,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitHomotopies,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitOpposite,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitOppositeAugmentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitReindex,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitReindexNaturality,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitWeightMap,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedConeOppositeComparison
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."

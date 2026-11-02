@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteConeEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 
 /-!
 概要：元の離散空間値錐を、元の全 Kan 脚を持つ通常の錐から厳密に回収する。

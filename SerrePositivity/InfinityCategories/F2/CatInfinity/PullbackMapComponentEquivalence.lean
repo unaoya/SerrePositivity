@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackFunctorCoreNaturality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PostcompositionCoreDetection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 /-!

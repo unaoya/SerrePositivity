@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
 public import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 

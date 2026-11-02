@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeUniverseFiberComparison
 public import SerrePositivity.InfinityCategories.F2.Compact.CanonicalCoconeWeakEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 
 /-!
 概要：指定した空間の宇宙変更は、小さい κ-filtered 図式の元の余極限余錐を保存する。

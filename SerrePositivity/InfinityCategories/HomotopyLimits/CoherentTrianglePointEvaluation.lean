@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransformationPoint
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces
 
 /-!
 概要：元の coherent 合成三角形を一点で評価し、元の三辺と Kan 合成ホモトピーを回収する。

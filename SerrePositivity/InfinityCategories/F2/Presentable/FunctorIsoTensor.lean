@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
 public import SerrePositivity.InfinityCategories.F2.Presentable.TensorAdjunction
 
 /-!

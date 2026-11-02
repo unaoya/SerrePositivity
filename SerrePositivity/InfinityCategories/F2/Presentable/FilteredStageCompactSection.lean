@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeCompactPresentationSection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointCoslice
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCosliceCofinality
+public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredCosliceCofinality
 
 /-!
 概要：filtered 表示の指定段を保ち、compact な表示頂点への切断を後続段で作る。

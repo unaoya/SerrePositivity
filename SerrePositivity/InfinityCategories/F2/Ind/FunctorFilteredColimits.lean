@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 
 /-!
 概要：Ind 関手圏で同じ小さい filtered 図式の点ごとの余極限を構成する。

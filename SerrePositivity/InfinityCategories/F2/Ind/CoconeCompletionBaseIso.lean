@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaCoconeFamily
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SimplicialHomEnriched
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteInternalHomContinuity
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost

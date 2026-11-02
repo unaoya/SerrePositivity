@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationPointEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
 
 /-!

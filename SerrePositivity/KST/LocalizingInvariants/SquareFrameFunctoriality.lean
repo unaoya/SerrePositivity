@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameBoundary
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalBoundaryExt
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalBoundaryPostcomposition
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryPostcomposition
 public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
 
 /-!

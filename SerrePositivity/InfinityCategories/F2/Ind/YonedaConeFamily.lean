@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramYoneda
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitConeFamily
 
