@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.StageModPLengthBound
+public import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
 public import SerrePositivity.CLMST.CyclicRootEstimate
 public import SerrePositivity.LengthAlgebra.RootTowerLength.StageDecay
 public import SerrePositivity.LengthAlgebra.QuotientBounds

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.ModPHypersurfaceGrowth
+public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Graded

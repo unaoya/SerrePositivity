@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Prop247AicRankImages
 public import SerrePositivity.CLMST.Prop247RankBaseChangeDiagram
-public import SerrePositivity.CLMST.Prop247RankCone
+public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：André 基底上の実 rank 係数比較の冪零化
@@ -41,7 +41,7 @@ theorem prop247_aic_rankCoefficient_annihilators
     Function.Bijective.piMap (fun n : t =>
       prop247_aic_rankTarget_unit_bijective R S p hR hAIC g hetale n (T n)
         (algebraMap (prop247_rankSourceImage R S g hetale n) (T n)) (hf n))
-  obtain ⟨q, hq⟩ := prop247_rankImageProduct_cone_isogeny R S g hetale t ht
+  obtain ⟨q, hq⟩ := rankImageProduct_cone_isogeny R S g hetale t ht
   obtain ⟨huk, huc⟩ := moduleMapCone_pow_scalar_eq_zero_annihilates R u g q hq
   have hsq : (LinearMap.id : ((n : t) → T n) →ₗ[R] ((n : t) → T n)).comp f =
       e.comp u := by

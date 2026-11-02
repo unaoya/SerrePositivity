@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247CommonSquare
+public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 public import SerrePositivity.CLMST.Prop247Uniform
 
 /-! # Prop 2.4.7：元の局所分裂と perfectoid 化比較からの実錐零化
@@ -34,7 +34,7 @@ theorem prop247_fixed_cone_of_localized_splitting
     (hw : ∀ z : (Fin r → R), η (b z) = 0 → d • z = 0)
     (hcw : ∀ y : Q ⧸ (η.comp b).toLinearMap.range, d • y = 0) :
     ∃ q : ℕ, moduleMapConeScalar R β.toLinearMap (d ^ q) = 0 := by
-  obtain ⟨k, u, hsq, hu, _hq⟩ := prop247_exists_perfectoid_common_square
+  obtain ⟨k, u, hsq, hu, _hq⟩ := exists_perfectoid_common_square
     p β hβ η hη d L r e a b l ha hb
   exact prop247_fixed_cone_of_scaled_common_comparison d r β.toLinearMap u
     (IsPerfectoidization.mapAlgHom hβ hη a).toLinearMap (η.comp b).toLinearMap

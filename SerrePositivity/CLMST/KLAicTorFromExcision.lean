@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.CanonicalExcisionTorInput
-public import SerrePositivity.CLMST.PerfectoidEtaleCommonCover
+public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.CLMST.PerfectoidIdealTorCover
 
 /-! # The full AIC Tor input from the remaining finite-comparison excision input
