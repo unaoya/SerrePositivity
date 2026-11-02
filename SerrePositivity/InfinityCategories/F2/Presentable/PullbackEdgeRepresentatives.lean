@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackInvertibleEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.PullbackInvertibleEdges
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EdgeRepresentativeLift
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBaseChange
 

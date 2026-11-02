@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 
 
 /-!

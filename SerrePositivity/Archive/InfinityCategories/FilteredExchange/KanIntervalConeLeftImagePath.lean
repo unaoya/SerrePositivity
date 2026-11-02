@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeImageCommutativity
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalReplacementPathIsoSection

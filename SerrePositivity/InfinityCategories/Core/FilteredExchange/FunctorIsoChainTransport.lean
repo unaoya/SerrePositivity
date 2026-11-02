@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：指定同型の三対二の合成式を五つの端点の等式で輸送する。

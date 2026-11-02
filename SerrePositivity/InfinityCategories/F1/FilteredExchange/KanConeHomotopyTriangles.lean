@@ -6,11 +6,11 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyDiagonalEdge
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyLowerTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyUpperTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyLowerTriangle
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyDiagonal
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces

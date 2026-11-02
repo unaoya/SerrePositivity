@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 
 /-!

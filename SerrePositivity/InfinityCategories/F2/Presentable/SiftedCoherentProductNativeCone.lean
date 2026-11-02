@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentProductComparisonEdge
+public import SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceBinaryTensorProduct
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
 

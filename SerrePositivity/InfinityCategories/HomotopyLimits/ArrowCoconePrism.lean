@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismTotalCocone
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalPrismRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPrismRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 
 /-!

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.JoinCells
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftAnodynePushoutProduct
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorRestriction
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseRestrictionPullback

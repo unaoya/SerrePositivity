@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.Core.VertexFiberPullback
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniversePointSlice
+public import SerrePositivity.InfinityCategories.Core.Idempotent.UniversePointSlice
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseSliceUncurry
 
 /-!

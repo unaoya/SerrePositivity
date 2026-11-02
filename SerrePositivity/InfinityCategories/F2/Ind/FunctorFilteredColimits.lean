@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 
 /-!

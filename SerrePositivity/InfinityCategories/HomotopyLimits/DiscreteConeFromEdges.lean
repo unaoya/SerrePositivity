@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedDiscreteVertexMap
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 概要：元の離散図式の各値へ向かう指定辺から、頂点と全脚を保持する全錐を構成する。

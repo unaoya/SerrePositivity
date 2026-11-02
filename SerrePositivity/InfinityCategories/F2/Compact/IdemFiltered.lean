@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRetraction
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemConeRetraction
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 
 /-!

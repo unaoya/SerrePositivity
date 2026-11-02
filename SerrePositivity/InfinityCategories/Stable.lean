@@ -17,7 +17,7 @@ public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Core.UniverseSlices
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.HomotopyCategory
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PointConstantHomEquivalence
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse
+public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionCompositeCounit
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite

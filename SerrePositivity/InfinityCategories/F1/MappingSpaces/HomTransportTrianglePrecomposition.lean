@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleIdentity
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：指定輸送三角形の等式を同じ共通 Hom へ写る任意の作用で引き戻す。

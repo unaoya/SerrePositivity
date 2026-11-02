@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyDiagonalEdge
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeg
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeComparisonEdges
 

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatCompatib
 public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelRestrictionNerve
 public import SerrePositivity.InfinityCategories.Derived.DGKernelTensorCompositionSemifreeTransport
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：元の K-flat 通常合成比較を半自由入力と同じ出力分解上で回収する。

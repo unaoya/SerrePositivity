@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalKanComparison
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates

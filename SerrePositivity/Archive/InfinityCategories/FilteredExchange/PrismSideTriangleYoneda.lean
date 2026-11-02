@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismLowerSides
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
 public import SerrePositivity.InfinityCategories.Core.Square
 
 /-!

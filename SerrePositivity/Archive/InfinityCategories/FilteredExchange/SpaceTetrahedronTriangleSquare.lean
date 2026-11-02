@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTetrahedronWhiskerEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareOfEdgeEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareOfEdgeEquality
 
 /-!
 概要：同じ六関手で表した四面の指定辺の可換正方形。

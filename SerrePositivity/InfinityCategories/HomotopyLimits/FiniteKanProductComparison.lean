@@ -1,10 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
 
 /-!
 概要：元の有限非空積の Kan 置換から、元の各 Kan 置換の反復積への比較。

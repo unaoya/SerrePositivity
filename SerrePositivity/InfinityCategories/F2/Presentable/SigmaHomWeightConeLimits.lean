@@ -4,8 +4,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightCo
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafUniverseArbitraryColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitMappingComparison
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 
 /-!
 概要：元の P_Σ sifted 余極限全余錐は、全 Hom 係数族の同じ極限錐を与える。

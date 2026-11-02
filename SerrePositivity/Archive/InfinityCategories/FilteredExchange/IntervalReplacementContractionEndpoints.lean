@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalReplacementContraction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 
 /-!
 概要：区間置換内の指定収縮の両端を元の定値切断と恒等射に同定する。

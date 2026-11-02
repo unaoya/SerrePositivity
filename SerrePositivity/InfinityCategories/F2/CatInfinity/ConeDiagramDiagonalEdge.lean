@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyDiagonalEdge
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge
 
 /-!
 概要：図式側の指定円柱の対角辺。

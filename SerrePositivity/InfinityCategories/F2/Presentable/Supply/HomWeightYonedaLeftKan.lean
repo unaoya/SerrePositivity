@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightLocalColimit
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightYonedaUnit
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftHomUniversal

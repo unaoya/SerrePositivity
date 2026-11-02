@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenANecessary
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.DiagonalCommaWeakContractibility
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredWeakContractibility

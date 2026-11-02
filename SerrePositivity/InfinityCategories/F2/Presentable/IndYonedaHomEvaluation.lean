@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHomComparison
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
-public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
+public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
 
 /-!
 概要：Ind の元の Yoneda 対象からの全 Hom を前層評価の小さい模型と比較する。

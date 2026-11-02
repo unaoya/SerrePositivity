@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 
 /-!
 概要：元の関手 F の Hom(F(−), d) を、一つの全前層値関手として構成する。

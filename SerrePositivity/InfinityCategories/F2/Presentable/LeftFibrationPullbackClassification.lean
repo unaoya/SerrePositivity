@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraig
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
-public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback
 
 /-!

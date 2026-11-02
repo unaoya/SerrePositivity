@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorKernelEdges
 public import SerrePositivity.InfinityCategories.Stable.UniverseKernelImage
 public import SerrePositivity.InfinityCategories.Stable.UniverseExactFunctorLift
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse
+public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 /-!
 概要：核包含の cofiber 辺と商の反転辺の一致を任意の追加 ULift 宇宙で得る。
 方針：零対象核の本質像判定・完全性・安定性を同じ宇宙へ持ち上げて判定する。

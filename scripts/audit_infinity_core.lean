@@ -1,3 +1,63 @@
+import SerrePositivity.InfinityCategories.Core.Presentable.ThinNerveExt
+import SerrePositivity.InfinityCategories.Core.Presentable.LimitComparisonReflection
+import SerrePositivity.InfinityCategories.Core.Ind.TerminalVertexCocone
+import SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift
+import SerrePositivity.InfinityCategories.Core.Ind.NerveProductSwapIso
+import SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape
+import SerrePositivity.InfinityCategories.Core.Idempotent.WeakComparison
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingSourceLeftComma
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingSourceComma
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageUniversal
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageLeftComma
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageComma
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingCones
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification
+import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingAbsorption
+import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
+import SerrePositivity.InfinityCategories.Core.Idempotent.UniverseSliceProjection
+import SerrePositivity.InfinityCategories.Core.Idempotent.UniversePointSlice
+import SerrePositivity.InfinityCategories.Core.Idempotent.TriangleKernel
+import SerrePositivity.InfinityCategories.Core.Idempotent.SourceSubcomplex
+import SerrePositivity.InfinityCategories.Core.Idempotent.SourceChains
+import SerrePositivity.InfinityCategories.Core.Idempotent.ScalarUniverse
+import SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection
+import SerrePositivity.InfinityCategories.Core.Idempotent.IdentityCollapseChain
+import SerrePositivity.InfinityCategories.Core.Idempotent.IdentityCollapse
+import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
+import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
+import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
+import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
+import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.PullbackInvertibleEdges
+import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
+import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
+import SerrePositivity.InfinityCategories.Core.CatInfinity.JoinSummands
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopySimplexFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyDiagonalEdge
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorWhiskerSimplex
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorCompositionWhiskerEdges
+import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
+import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareOfEdgeEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrismVertical
+import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrism
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantPrism
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge
+import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundaryEvaluation
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary
 import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
 import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
@@ -4076,3 +4136,82 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundaryEvaluation,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantPrism,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrism,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrismVertical,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareOfEdgeEquality,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorCompositionWhiskerEdges,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorWhiskerSimplex,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyDiagonalEdge,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopySimplexFaces,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.JoinSummands,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.PullbackInvertibleEdges,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides,
+    `SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality,
+    `SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation,
+    `SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.Coherent,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.IdentityCollapse,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.IdentityCollapseChain,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.ScalarUniverse,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.SourceChains,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.SourceSubcomplex,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.TriangleKernel,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.UniversePointSlice,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.UniverseSliceProjection,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.Walking,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingAbsorption,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingCones,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageComma,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageLeftComma,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageUniversal,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingSourceComma,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WalkingSourceLeftComma,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WeakComparison,
+    `SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape,
+    `SerrePositivity.InfinityCategories.Core.Ind.NerveProductSwapIso,
+    `SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift,
+    `SerrePositivity.InfinityCategories.Core.Ind.TerminalVertexCocone,
+    `SerrePositivity.InfinityCategories.Core.Presentable.LimitComparisonReflection,
+    `SerrePositivity.InfinityCategories.Core.Presentable.ThinNerveExt
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

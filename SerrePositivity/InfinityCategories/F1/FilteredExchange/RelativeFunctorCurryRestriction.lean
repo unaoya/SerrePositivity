@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFu
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSpace
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorSquarePost
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 
 /-!
 概要：相対 curry の豊穣作用と、元の始域の制限を厳密に交換する。

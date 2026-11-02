@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitMappingComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.MappingOpposite
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconeVertex
 
 /-!

@@ -1,3 +1,38 @@
+import SerrePositivity.InfinityCategories.F1B.Ind.TwistedElementsReconstructionPointed
+import SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone
+import SerrePositivity.InfinityCategories.F1B.Ind.InitialBoundaryCoconeRestriction
+import SerrePositivity.InfinityCategories.F1B.Ind.DensityFiberTransformationRestriction
+import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingLeftCommaContractibility
+import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingJoinCones
+import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingFullCoconePoint
+import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingFullCocone
+import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingCommaContractibility
+import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
+import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafComplete
+import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure
+import SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt
+import SerrePositivity.InfinityCategories.F1B.Idempotent.PointColimitExistence
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemWeakContractibility
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLocalColimits
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLeftCofinality
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemInclusionFull
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemImageKanShape
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemConeRetraction
+import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemCofinality
+import SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits
+import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+import SerrePositivity.InfinityCategories.F1B.Compact.CanonicalCoconeWeakEquivalence
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.SpecifiedConeTransport
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalCommaIso
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalComma
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.FatCoconeHomotopyEquiv
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreRightFibration
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreInvertibleEdgeLifting
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathKanPointComparison
 import SerrePositivity.InfinityCategories.F1B.FilteredExchange.RelativePathComparisonFaces
@@ -3270,3 +3305,57 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreInvertibleEdgeLifting,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreRightFibration,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.FatCoconeHomotopyEquiv,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalComma,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalCommaIso,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.SpecifiedConeTransport,
+    `SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp,
+    `SerrePositivity.InfinityCategories.F1B.Compact.CanonicalCoconeWeakEquivalence,
+    `SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice,
+    `SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemCofinality,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemConeRetraction,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemImageKanShape,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemInclusionFull,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLeftCofinality,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLocalColimits,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.IdemWeakContractibility,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.PointColimitExistence,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafComplete,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingCommaContractibility,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingFullCocone,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingFullCoconePoint,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingJoinCones,
+    `SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingLeftCommaContractibility,
+    `SerrePositivity.InfinityCategories.F1B.Ind.DensityFiberTransformationRestriction,
+    `SerrePositivity.InfinityCategories.F1B.Ind.InitialBoundaryCoconeRestriction,
+    `SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone,
+    `SerrePositivity.InfinityCategories.F1B.Ind.TwistedElementsReconstructionPointed
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

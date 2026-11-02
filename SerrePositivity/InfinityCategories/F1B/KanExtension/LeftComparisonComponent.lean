@@ -1,9 +1,12 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalHom
+public import SerrePositivity.InfinityCategories.Core.Cocone
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHomComparison
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalHom
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.UniversalProperty
-public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：指定変換に両立する二つの左 Kan 拡張間の射の各点での可逆性。

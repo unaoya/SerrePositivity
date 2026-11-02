@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafUniverse
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseYonedaComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseLeftKanCanonical
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
 /-!
 概要：Ind の元の包含を大きい Hom 係数前層と比較するための宇宙変更。

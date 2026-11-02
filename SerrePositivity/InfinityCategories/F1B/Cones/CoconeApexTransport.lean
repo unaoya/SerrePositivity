@@ -1,6 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
+public import SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge
 
 /-!
 概要：余錐頂点で可逆な cartesian 輸送を明示的に構成する。

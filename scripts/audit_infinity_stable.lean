@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.All
 import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
 import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
@@ -8359,7 +8360,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelImage,
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelEdges,
     `SerrePositivity.InfinityCategories.F1B.Localization.Saturation,
-    `SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse,
+    `SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,
@@ -8772,3 +8773,23 @@ run_cmd do
   for mod in expected do
     unless seen.contains mod do throwError "Module not audited: {mod}"
   logInfo m!"Stable axiom audit passed: {count} declarations in {seen.size} modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

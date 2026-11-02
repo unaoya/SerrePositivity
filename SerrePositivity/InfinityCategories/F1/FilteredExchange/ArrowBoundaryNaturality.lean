@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundary
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundaryEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundaryEvaluation
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 
 /-!
 概要：二点の関手空間の評価同型は後合成と定値図式を保つ。

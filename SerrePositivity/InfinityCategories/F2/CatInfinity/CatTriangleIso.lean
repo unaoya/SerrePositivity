@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleEdge
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleEdge
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatHomPostcomposition
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanDiagramColimitTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 

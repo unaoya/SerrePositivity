@@ -1,9 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProjectionCocones
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts
+public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso
 
 /-!
 概要：元の有限 coherent 積の余極限頂点の native 積錐を一般の非空有限添字へ移す。

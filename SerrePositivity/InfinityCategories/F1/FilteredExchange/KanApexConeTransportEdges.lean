@@ -7,8 +7,8 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexLimitConeTransport

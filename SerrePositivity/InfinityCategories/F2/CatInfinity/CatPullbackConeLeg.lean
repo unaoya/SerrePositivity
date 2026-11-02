@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackCone
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseInternalHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
+public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
 
 /-!
 概要：小さい前層を、持ち上げた同じ底上の一段大きい空間値前層へ送る。

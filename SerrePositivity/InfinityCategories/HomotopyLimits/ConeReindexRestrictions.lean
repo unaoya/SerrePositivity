@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 概要：形状同型による native 錐の再添字が、元の頂点と脚の全一単体を保持する。

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
 public import SerrePositivity.InfinityCategories.Core.Pointed
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Core.JoinVertexSurjectivity
 
 /-!

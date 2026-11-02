@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackNative
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedConeTransportRestrictions
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 
 /-!
 概要：元の Kan cospan の path 引き戻し錐と置換後の錐の全比較を各辺で読む。

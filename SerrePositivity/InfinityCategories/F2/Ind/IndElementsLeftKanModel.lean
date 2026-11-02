@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanCommaIso
-public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceEquivalence
+public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence
 
 /-!
 概要：指定 Indκ 頂点の元の小さい元の圏を、左 Kan 局所添字の同値な模型へ移す。

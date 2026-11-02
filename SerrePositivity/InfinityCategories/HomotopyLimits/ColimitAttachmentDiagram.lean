@@ -1,7 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
 
 /-!
 概要：部分図式の余極限頂点を、元の図式へ実際に付加した単体集合と図式を構成する。

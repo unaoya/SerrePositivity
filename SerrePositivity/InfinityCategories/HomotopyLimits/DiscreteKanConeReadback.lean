@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteConeEdgeReconstruction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitEquivalence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 
 /-!

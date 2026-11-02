@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Compact.LimitConeEdgeReflect
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex
 public import SerrePositivity.InfinityCategories.F2.Filtered.CoherentFilteredLimitExchange
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 

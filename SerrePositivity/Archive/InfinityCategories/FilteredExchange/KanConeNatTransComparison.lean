@@ -3,9 +3,9 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramComparisonIsos
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictDiagramTriangleConstant
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleConstantFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：通常の自然変換の指定円柱に沿う Kan 錐比較の図式成分と二次比較。

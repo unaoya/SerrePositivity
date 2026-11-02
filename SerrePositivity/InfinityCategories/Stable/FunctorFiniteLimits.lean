@@ -1,8 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Definition
 public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
+public import SerrePositivity.InfinityCategories.Stable.Definition
 
 /-!
 概要：比較格子の初期角を実引き戻しへ置換し、矢印圏の普遍性へ接続する。

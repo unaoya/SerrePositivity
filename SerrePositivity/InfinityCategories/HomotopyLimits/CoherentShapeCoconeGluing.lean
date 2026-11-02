@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 public import SerrePositivity.InfinityCategories.Core.JoinPushout
-public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 
 /-!
 概要：形状の押し出し上に、共通部分の全単体で一致する二つの余錐を実際に貼り合わせる。

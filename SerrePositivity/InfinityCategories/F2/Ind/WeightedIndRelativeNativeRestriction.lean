@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
+public import SerrePositivity.InfinityCategories.F1B.Ind.InitialBoundaryCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFunctorInitialBoundary
 

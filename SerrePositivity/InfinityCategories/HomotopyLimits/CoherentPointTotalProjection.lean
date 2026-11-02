@@ -3,7 +3,6 @@ module
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedEmptyProductNative
 
 /-!
 概要：定値一点 coherent 図式の元の小さい全空間を、元の底へ比較する。

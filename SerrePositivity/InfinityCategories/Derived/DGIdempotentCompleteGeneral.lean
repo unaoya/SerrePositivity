@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGNerveUniverseLift
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessUniverse
 public import Mathlib.CategoryTheory.Idempotents.Basic
 /-!

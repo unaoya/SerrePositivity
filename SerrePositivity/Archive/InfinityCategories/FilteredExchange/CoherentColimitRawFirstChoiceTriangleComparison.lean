@@ -5,7 +5,7 @@ public import
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawConstantEdgeTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoComponentNaturality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMappingLaws
 
 /-!

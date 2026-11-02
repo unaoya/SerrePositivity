@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaConeFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.FullConeLift
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：元の小さい極限全錐を、Ind Yoneda がそのまま保存する。

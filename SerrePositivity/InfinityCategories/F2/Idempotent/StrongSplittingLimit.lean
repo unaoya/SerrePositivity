@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCone
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingCones
+public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones
 
 /-!
 概要：元の強い分裂の同じ全 Idem 錐は極限であり、任意の後合成でも極限。

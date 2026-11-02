@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy
 
 /-!

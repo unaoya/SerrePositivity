@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeClassificationHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallSolutionCone
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
 
 /-!
 概要：小さい全解錐を、元の制限関手から頂点の共変 Hom への全自然な射に送る。

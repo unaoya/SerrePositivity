@@ -9,8 +9,8 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaComparison
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaEquivalence
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxCosliceDiagonalCommaIso
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalCommaIso
 public import SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence
 public import SerrePositivity.InfinityCategories.Core.LaxCoslice
 

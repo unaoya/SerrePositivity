@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseColimits
-public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
+public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!

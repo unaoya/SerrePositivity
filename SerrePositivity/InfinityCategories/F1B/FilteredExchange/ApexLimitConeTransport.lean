@@ -8,11 +8,11 @@ public import SerrePositivity.InfinityCategories.Core.Limit
 public import SerrePositivity.InfinityCategories.Core.PrismContraction
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.F1B.SpecifiedHomotopyLift
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantPrism
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoproductPrism
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoproductPrismVertical
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.JoinSummands
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantPrism
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrism
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrismVertical
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.JoinSummands
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 

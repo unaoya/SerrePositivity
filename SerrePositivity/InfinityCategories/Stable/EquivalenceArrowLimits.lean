@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.Presentable.LimitComparisonHomotopy
+public import SerrePositivity.InfinityCategories.F1.Presentable.LimitComparisonHomotopy
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalFamilyHomotopy
 
 /-!

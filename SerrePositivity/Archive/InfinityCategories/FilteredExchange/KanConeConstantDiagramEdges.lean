@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeHomEquality
 
 /-!

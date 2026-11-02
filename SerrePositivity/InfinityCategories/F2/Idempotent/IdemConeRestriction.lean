@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLeftCofinality
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemLeftCofinality
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction
 public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 
 /-!

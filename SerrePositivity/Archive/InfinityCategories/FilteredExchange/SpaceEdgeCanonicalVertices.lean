@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
 
 /-!

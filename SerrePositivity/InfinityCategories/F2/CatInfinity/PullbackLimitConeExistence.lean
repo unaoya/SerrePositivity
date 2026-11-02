@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackConeGluing
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeImageStrictification
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackConeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：選んだ第二成分の極限錐を厳密に保つ引き戻し内の極限錐の存在。

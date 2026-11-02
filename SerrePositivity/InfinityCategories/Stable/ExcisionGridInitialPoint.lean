@@ -1,14 +1,14 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedCones
-public import SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism
-public import SerrePositivity.InfinityCategories.Stable.ExcisionCorePunctured
-public import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinIso
-public import SerrePositivity.InfinityCategories.Stable.ThinNerveConeComparison
-public import SerrePositivity.InfinityCategories.Stable.PullbackConeVertex
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
-public import SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanBoundary
+public import SerrePositivity.InfinityCategories.Stable.ExcisionCorePunctured
+public import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedCones
+public import SerrePositivity.InfinityCategories.Stable.ExcisionFullPuncturedIndex
+public import SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid
+public import SerrePositivity.InfinityCategories.Stable.PosetInteriorPrism
+public import SerrePositivity.InfinityCategories.Stable.PullbackConeVertex
+public import SerrePositivity.InfinityCategories.Stable.ThinNerveConeComparison
+public import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
 
 /-!
 概要：比較格子の初期角を実引き戻しへ置換し、矢印圏の普遍性へ接続する。

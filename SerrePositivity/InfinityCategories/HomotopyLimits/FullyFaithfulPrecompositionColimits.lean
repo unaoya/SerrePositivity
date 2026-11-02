@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence
+public import SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction
 
 /-!
 概要：前合成の充満忠実性から、元の全余錐の制限の同値性を得る。

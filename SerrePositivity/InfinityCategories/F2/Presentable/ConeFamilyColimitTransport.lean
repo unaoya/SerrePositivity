@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStrictification
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ConeFamilyStrictification
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.VertexConeIsoTransport
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
 
 /-!
 概要：引き戻し候補への全試験関手 core の厳密な引き戻し表示。

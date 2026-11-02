@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
-public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.CoconeLeg
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
-public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 
 /-!
 概要：終対象を持つ添字上の余極限余錐の終対象での脚は可逆。

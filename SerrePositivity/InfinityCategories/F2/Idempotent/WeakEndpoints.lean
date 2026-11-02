@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakComparison
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakComparison
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteImageRetracts
-public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafClosure
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure
 
 /-!
 概要：冪等完備な元の ∞ 圏の Yoneda 本質像は、前層圏内の retract に閉じる。

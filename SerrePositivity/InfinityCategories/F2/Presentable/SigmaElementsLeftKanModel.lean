@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLeftKanShapeAmbient
-public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceEquivalence
+public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence
 
 /-!
 概要：P_Σ の元の左 Kan 添字を、元の小さい元の圏からの同じ密度比較で表す。

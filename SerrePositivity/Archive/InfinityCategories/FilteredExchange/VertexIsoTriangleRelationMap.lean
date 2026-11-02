@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
 
 /-!

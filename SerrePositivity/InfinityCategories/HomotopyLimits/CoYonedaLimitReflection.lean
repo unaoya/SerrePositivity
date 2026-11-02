@@ -1,9 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FullHomColimitDetection
-public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection
 public import SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits
+public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits
 
 /-!
 概要：元の全 co-Yoneda 族は、同じ全錐の極限性を反映する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.JoinUniverseReverse
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaOppositeLimits
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 
 /-!

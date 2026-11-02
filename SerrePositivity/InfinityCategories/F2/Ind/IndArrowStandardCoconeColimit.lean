@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowEvaluationCofinality
 public import SerrePositivity.InfinityCategories.F2.Ind.IndContinuousLeftKan
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 /-!
 概要：元の射図式を頂点とする小さい表示添字の標準全余錐は、関手圏内の余極限。
 方針：両端評価の cofinal 性で元の scalar 密度余錐へ戻し、点ごとの余極限判定を使う。

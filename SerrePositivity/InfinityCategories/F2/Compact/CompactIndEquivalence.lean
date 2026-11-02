@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.IndCompactRetraction
 public import SerrePositivity.InfinityCategories.F2.Compact.CompactIndComparisonCriterion
-public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractReflection
+public import SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection
 
 /-!
 概要：元の Idem(C) から元の κ-compact Indκ(C) への実比較そのものは全 ∞ 圏同値。

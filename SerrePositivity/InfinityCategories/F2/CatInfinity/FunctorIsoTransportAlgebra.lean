@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：指定同型の合成正方形の端点の輸送。

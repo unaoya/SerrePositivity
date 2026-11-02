@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPrecompFaithful
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange

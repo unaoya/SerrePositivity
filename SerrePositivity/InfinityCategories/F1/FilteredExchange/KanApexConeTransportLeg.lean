@@ -8,9 +8,9 @@ public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoheren
 public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanApexConeTransportEdges
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg

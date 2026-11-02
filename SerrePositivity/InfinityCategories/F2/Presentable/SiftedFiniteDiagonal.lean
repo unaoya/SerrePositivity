@@ -1,8 +1,11 @@
 module
-
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CofinalTensor
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CofinalTensor
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteDiagonal
+
 
 /-!
 概要：sifted な底から元の全有限非空反復積への対角は right cofinal。
@@ -18,27 +21,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
-
-/-- 元の底の n+1 個の反復積への、元の恒等射を全成分に持つ対角。 -/
-def nonemptyFiniteDiagonal (B : SSet.{u}) :
-    (n : ℕ) → B ⟶ nonemptyFiniteSSetProduct n (fun _ ↦ B)
-  | 0 => 𝟙 B
-  | n + 1 => lift (𝟙 B) (nonemptyFiniteDiagonal B n)
-
-/-- 元の反復対角の各射影は厳密に元の恒等射。 -/
-lemma nonemptyFiniteDiagonal_projection (B : SSet.{u}) (n : ℕ) (i : Fin (n + 1)) :
-    nonemptyFiniteDiagonal B n ≫ nonemptyFiniteSSetProjection n (fun _ ↦ B) i = 𝟙 B := by
-  induction n with
-  | zero =>
-    have hi : i = 0 := Fin.eq_zero i
-    subst i
-    simp only [nonemptyFiniteDiagonal, nonemptyFiniteSSetProjection, eqToHom_refl,
-      Category.comp_id]
-  | succ n ih =>
-    refine Fin.cases ?_ (fun j ↦ ?_) i
-    · exact lift_fst _ _
-    · change lift (𝟙 B) (nonemptyFiniteDiagonal B n) ≫ (_ ≫ _) = _
-      rw [← Category.assoc, lift_snd, ih]
 
 /-- sifted な底の元の有限非空反復対角は、全因子数で right cofinal。 -/
 lemma nonemptyFiniteDiagonal_isRightCofinal (B : SSet.{u}) [IsSiftedInfinity B] (n : ℕ) :

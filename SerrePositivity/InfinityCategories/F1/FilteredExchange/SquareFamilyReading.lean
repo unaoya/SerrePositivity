@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Core.Limit
 public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 public import SerrePositivity.InfinityCategories.Core.Pullback
 public import SerrePositivity.InfinityCategories.Core.Square
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoconeCompletion
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone

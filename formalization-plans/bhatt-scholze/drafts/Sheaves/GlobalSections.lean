@@ -4,7 +4,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
 

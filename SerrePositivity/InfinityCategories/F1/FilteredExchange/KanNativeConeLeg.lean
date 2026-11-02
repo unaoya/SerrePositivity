@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
 public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 概要：𝒮 の native な錐の脚を、指定した Kan 対象間の実際の射へ読み戻す。

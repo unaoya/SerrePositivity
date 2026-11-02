@@ -1,8 +1,20 @@
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundary
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundaryEvaluation
+import SerrePositivity.InfinityCategories.F2.Presentable.PresheafHomWeightTransport
+import SerrePositivity.InfinityCategories.F2.Presentable.PresheafColimitEmptyProducts
+import SerrePositivity.InfinityCategories.F2.Presentable.FullHomColimitDetection
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyTransportedLegComparison
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyOriginalColimitTransport
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitNativeCone
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitLegEdges
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeLegs
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductKanComparison
+import SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundaryEvaluation
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowColimitConeExistence
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowConeComponentCriterion
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowInitialVertices
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowLimitConeExistence
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowTerminalVertices
@@ -65,7 +77,7 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleFacesEqualit
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleIso
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeHomEquality
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeStructure
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentOrderDiagram
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentPathHom
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronBoundary
@@ -73,11 +85,11 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronFirs
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronHom
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronLastFace
 import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronLongFaces
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleComposite
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleEdge
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleHomotopy
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePaths
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentVertices
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleComposite
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleEdge
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentVertices
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ColimitConeImageStrictification
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDiagramDiagonalEdge
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDiagramLowerTriangle
@@ -89,49 +101,49 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyPullbackCompo
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyPullbackLift
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyPullbackLimit
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeFamilyTensorIso
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyDiagonalEdge
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyLowerTriangle
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeHomotopyDiagonalEdge
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyLowerTriangle
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedra
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedronLowerSides
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedronUpperSides
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyUpperTriangle
+import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantCoherentTriangle
-import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoproductPrism
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoproductPrismVertical
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
-import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreRightFibration
-import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareOfEdgeEquality
-import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
+import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
+import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrism
+import SerrePositivity.InfinityCategories.Core.CatInfinity.CoproductPrismVertical
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreRightFibration
+import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareOfEdgeEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
 import SerrePositivity.InfinityCategories.F2.CatInfinity.EquivalenceHomotopyFixedPrecomposition
 import SerrePositivity.InfinityCategories.F2.CatInfinity.EquivalenceHomotopyIsoPresentation
 import SerrePositivity.InfinityCategories.F2.CatInfinity.ExactFunctorSpanCospanPreservation
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeFromHomotopy
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeHomotopy
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeHomotopyEquiv
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeHomotopyNaturality
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCompositionWhiskerEdges
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeFromHomotopy
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopy
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.FatCoconeHomotopyEquiv
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopyNaturality
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorCompositionWhiskerEdges
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportSquare
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
-import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorWhiskerSimplex
-import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyDiagonalEdge
-import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeTriangleLowerFaces
-import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeTriangleUpperFaces
-import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopySimplexFaces
-import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
+import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorWhiskerSimplex
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyDiagonalEdge
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopySimplexFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 import SerrePositivity.InfinityCategories.F2.CatInfinity.InternalHomTensorLift
-import SerrePositivity.InfinityCategories.F2.CatInfinity.JoinSummands
+import SerrePositivity.InfinityCategories.Core.CatInfinity.JoinSummands
 import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
-import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxCosliceDiagonalComma
-import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxCosliceDiagonalCommaIso
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalComma
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.LaxCosliceDiagonalCommaIso
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullback
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackCoconeComponentCriterion
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackCofibers
@@ -175,21 +187,21 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackZeroSpanColi
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackZeroVertices
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitConeImageStrictification
 import SerrePositivity.InfinityCategories.F2.CatInfinity.LimitDiagramIso
-import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
-import SerrePositivity.InfinityCategories.F2.CatInfinity.OppositeFunctorEvaluation
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.OppositeFunctorEvaluation
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomEndpointTransport
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomPullbackIso
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomPullbackLimit
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PinchedHomTensorIso
-import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
+import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismIsoCancellation
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackCoconeGluing
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackColimitConeExistence
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackConeComponentCriterion
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackConeGluing
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackInitialVertices
-import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackInvertibleEdges
+import SerrePositivity.InfinityCategories.Core.CatInfinity.PullbackInvertibleEdges
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackLimitConeExistence
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion
 import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareConeCriterion
@@ -205,15 +217,15 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.ReplacementPathHomotopy
 import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareCones
 import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareLimits
 import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareProjections
-import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedConeTransport
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.SpecifiedConeTransport
 import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedConeTransportRestrictions
 import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedFiberCospan
-import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedLimitConeTransport
-import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
-import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTrans
-import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
+import SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport
+import SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
 import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictDiagramTriangleConstant
-import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeTriangle
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorColimitConeExistence
@@ -221,12 +233,12 @@ import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorConeComponentCrit
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorInitialVertices
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorLimitConeExistence
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorTerminalVertices
-import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismFaces
-import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismLowerSides
-import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismTetrahedra
-import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismUpperSides
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra
+import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
 import SerrePositivity.InfinityCategories.F2.CatInfinity.TrivialKanIsoFixedPrecomposition
-import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.AnchorCylinderCoordinates
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchorCylinderKanCorrection
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchorCylinderKanPrism
@@ -2652,3 +2664,34 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F2.Presentable.CoherentProductComparisonEdge,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductKanComparison,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeLegs,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitLegEdges,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitNativeCone,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyOriginalColimitTransport,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyTransportedLegComparison,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FullHomColimitDetection,
+    `SerrePositivity.InfinityCategories.F2.Presentable.PresheafColimitEmptyProducts,
+    `SerrePositivity.InfinityCategories.F2.Presentable.PresheafHomWeightTransport
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

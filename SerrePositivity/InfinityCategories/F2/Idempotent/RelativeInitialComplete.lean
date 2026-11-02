@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialRetracts
-public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting
+public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
 public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 

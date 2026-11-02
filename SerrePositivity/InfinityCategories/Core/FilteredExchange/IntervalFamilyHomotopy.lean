@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
 public import SerrePositivity.InfinityCategories.Core.PrismContraction
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopySimplexFaces
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopySimplexFaces
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 
 /-!

@@ -5,9 +5,9 @@ public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanAnodyne
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundary
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 

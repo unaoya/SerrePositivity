@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorWhiskerSimplex
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorWhiskerSimplex
 
 /-!
 概要：Cat_∞ の三単体の六辺の関手としての読み戻し。

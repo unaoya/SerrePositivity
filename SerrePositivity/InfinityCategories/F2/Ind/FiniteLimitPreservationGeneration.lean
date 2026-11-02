@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitPreservationGeneration
 public import SerrePositivity.InfinityCategories.F2.Ind.LimitPreservationOpposite
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.F1.Joins.FiniteLimitGeneration
 public import SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso
 

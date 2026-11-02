@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeUnitFamilyEndpoints
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 
 /-!
 概要：全単位族の終端を、元の余錐頂点の評価の後の定値図式として表示する。

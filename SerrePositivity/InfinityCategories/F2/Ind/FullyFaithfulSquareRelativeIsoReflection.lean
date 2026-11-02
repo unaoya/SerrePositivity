@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 public import
   SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence

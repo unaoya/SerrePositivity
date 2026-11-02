@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointPaths
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleHomotopy
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentPathHom
 
 /-!

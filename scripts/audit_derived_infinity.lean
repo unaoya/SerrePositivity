@@ -7918,7 +7918,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelImage,
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelEdges,
     `SerrePositivity.InfinityCategories.F1B.Localization.Saturation,
-    `SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse,
+    `SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,

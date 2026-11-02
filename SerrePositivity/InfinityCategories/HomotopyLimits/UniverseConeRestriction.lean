@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductPreservation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 
 /-!

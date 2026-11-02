@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
 
 /-!

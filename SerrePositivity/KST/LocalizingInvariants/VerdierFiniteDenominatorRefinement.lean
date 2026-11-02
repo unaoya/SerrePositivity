@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeShapeAdjunction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.JoinVertexSummands
 public import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotopy
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeComparisonEdges
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
 
 /-!
 概要：読み戻した引き戻し錐の脚と置換後の射影の関手同型。

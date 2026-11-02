@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomCosliceEquivalence
-public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
+public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
 
 /-!
 概要：相対豊穣 Hom の全関手を、N の定義に使う元の大きい共変 Hom と比較する。

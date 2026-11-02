@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 
 /-!

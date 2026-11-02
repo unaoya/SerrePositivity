@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInt
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：有限単体集合始点の全 Hom が、同じ strict filtered 余極限余錐を native に保存する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafLegBottom
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyColimitLegEdges
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitLegEdges
 
 /-!
 概要：標準有限評価余極限錐の元の各脚と、実際の頂点脚の共役の Hom 類を照合する。

@@ -1,3 +1,50 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ThinConeIndexComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaYonedaConeSections
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaElementsConeRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteFiberProduct
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteDiagonal
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalStrongSaturation
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSpanRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPushoutRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPushoutEquivalences
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPrismRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjectLimits
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalInitialComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEquivalenceTriangles
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeFamilyLifting
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalCoslicePrecomposition
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalColimitComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalArrowColimits
+import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ConeFamilyStrictification
+import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.YonedaSliceOppositeComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.RightFibrationFiberCriterion
+import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.LiftedConeSectionRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.ElementsYonedaSliceValue
+import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
+import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.SplittingDiagramCocone
+import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemUniverse
+import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.WeakUniverse
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseRepresentationRestriction
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseRepresentation
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseCoconeRepresentations
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseVertex
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniversePrism
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseImagePrism
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseImage
+import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseFiberComparison
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.OppositeFunctorEvaluation
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
+import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
 import SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber
 import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedConeOppositeComparison
@@ -15122,3 +15169,69 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.OppositeFunctorEvaluation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseFiberComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseImage,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseImagePrism,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniversePrism,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseVertex,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseCoconeRepresentations,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseRepresentation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseRepresentationRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Compact.WeakUniverse,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemUniverse,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.SplittingDiagramCocone,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Ind.ElementsYonedaSliceValue,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Ind.LiftedConeSectionRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Ind.RightFibrationFiberCriterion,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Ind.YonedaSliceOppositeComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ConeFamilyStrictification,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalArrowColimits,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalColimitComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalCoslicePrecomposition,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeFamilyLifting,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEquivalenceTriangles,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalInitialComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjectLimits,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPrismRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPushoutEquivalences,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPushoutRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSpanRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalStrongSaturation,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteDiagonal,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteFiberProduct,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaElementsConeRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaYonedaConeSections,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ThinConeIndexComparison,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

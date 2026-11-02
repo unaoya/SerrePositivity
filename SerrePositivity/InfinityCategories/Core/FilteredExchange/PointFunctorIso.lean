@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 
 /-!
 概要：点上の定値図式関手は厳密な同型。

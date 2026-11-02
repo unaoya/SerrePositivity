@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalComposition
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOpposite
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductFunctorIso
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredDiagonalCofinality
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity

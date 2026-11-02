@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.PointProjectionCofinality
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.Core.IdentityCocone
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：一点への射が right cofinal な形状上の定値余錐は余極限である。

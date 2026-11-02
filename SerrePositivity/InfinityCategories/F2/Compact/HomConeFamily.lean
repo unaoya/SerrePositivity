@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableCone
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback
 

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!

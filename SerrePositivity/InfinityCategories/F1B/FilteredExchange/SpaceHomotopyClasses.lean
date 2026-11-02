@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.HomNaturality
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 
 /-!

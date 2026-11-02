@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegValueComparison
-public import SerrePositivity.InfinityCategories.F2.Compact.CanonicalCoconeWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Compact.CanonicalCoconeWeakEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPointRepresentatives
 public import SerrePositivity.InfinityCategories.F2.Compact.FunctorComponentComparison
 

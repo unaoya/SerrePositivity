@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleRelativeComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleVertex
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 
 /-!
 概要：定値標的の相対三角形比較を、同じ全空間作用の三角形比較へ値まで移す。

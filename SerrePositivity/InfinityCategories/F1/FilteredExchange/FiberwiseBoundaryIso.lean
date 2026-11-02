@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundary
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowBoundaryEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundaryEvaluation
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ArrowBoundaryNaturality
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
 

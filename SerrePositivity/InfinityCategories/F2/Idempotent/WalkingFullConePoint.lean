@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullCone
-public import SerrePositivity.InfinityCategories.F2.Idempotent.PointJoinNerveExt
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt
 
 /-!
 概要：元の全錐を元の分裂対象の一点へ制限すると、元の定値な一点錐になる。

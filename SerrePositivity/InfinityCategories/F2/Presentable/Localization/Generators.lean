@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEquivalences
+public import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalHomCriterion
 
 /-!

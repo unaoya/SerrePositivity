@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates
-public import SerrePositivity.InfinityCategories.Core.StandardJoinOpposite
 
 /-!
 概要：点と任意の標準単体の join の反転を標準単体の反転と照合する。

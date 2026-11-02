@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.PrismContraction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ArrowBoundaryNaturality
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalKanComparison
 

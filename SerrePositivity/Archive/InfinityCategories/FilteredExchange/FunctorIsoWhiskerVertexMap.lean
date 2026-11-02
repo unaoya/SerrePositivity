@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 
 /-!
 概要：同じ関手同型の前後合成を、内部 Hom の同じ合成射による像へ戻す。

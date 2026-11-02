@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalCospan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks

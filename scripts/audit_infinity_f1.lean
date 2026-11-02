@@ -1,3 +1,69 @@
+import SerrePositivity.InfinityCategories.F1.Presentable.SpaceFamilyStrictification
+import SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction
+import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
+import SerrePositivity.InfinityCategories.F1.Presentable.LimitComparisonHomotopy
+import SerrePositivity.InfinityCategories.F1.Ind.YonedaSliceFiberProjection
+import SerrePositivity.InfinityCategories.F1.Ind.YonedaSliceFiber
+import SerrePositivity.InfinityCategories.F1.Ind.YonedaSlice
+import SerrePositivity.InfinityCategories.F1.Ind.VertexFiberIsoProjection
+import SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityValue
+import SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityReconstruction
+import SerrePositivity.InfinityCategories.F1.Ind.PointPrismTransportComparison
+import SerrePositivity.InfinityCategories.F1.Ind.NativeCoconeIntervalPrism
+import SerrePositivity.InfinityCategories.F1.Ind.MappingVertexLiftPrism
+import SerrePositivity.InfinityCategories.F1.Ind.IntervalYonedaEvaluation
+import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval
+import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceFiberMap
+import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence
+import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceComparison
+import SerrePositivity.InfinityCategories.F1.Ind.ElementsCoconeComparison
+import SerrePositivity.InfinityCategories.F1.Ind.DensityOriginalFiberPrism
+import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityPointedStart
+import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLiftBase
+import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLift
+import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityEndpointEquivalence
+import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberYonedaValue
+import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationFamily
+import SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalValueCriterion
+import SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalTransportEquivalence
+import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTransposePrism
+import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspose
+import SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction
+import SerrePositivity.InfinityCategories.F1.Ind.CanonicalIntervalYonedaValue
+import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones
+import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit
+import SerrePositivity.InfinityCategories.F1.Idempotent.IdemSourceIso
+import SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete
+import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
+import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationTransport
+import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationEquivalence
+import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationCoslice
+import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
+import SerrePositivity.InfinityCategories.F1.Compact.UnstraighteningVertexPrism
+import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
+import SerrePositivity.InfinityCategories.F1.Compact.UniverseCoconeCylinder
+import SerrePositivity.InfinityCategories.F1.Compact.RepresentationPointedFiber
+import SerrePositivity.InfinityCategories.F1.Compact.RepresentationDiagramComparison
+import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
+import SerrePositivity.InfinityCategories.F1.Compact.CoconeVertexFiberIso
+import SerrePositivity.InfinityCategories.F1.Compact.CoconeTotalPrism
+import SerrePositivity.InfinityCategories.F1.Compact.CoconeFiberPrism
+import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
+import SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopyNaturality
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopy
+import SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeFromHomotopy
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackMap
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
+import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
+import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyLowerTriangle
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentVertices
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleEdge
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleComposite
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
+import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 import SerrePositivity.InfinityCategories.F1.SquareTranspose
@@ -10537,3 +10603,88 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleComposite,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleEdge,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentVertices,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyLowerTriangle,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackMap,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeFromHomotopy,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopy,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopyNaturality,
+    `SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport,
+    `SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport,
+    `SerrePositivity.InfinityCategories.F1.Compact.CoconeFiberPrism,
+    `SerrePositivity.InfinityCategories.F1.Compact.CoconeTotalPrism,
+    `SerrePositivity.InfinityCategories.F1.Compact.CoconeVertexFiberIso,
+    `SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison,
+    `SerrePositivity.InfinityCategories.F1.Compact.RepresentationDiagramComparison,
+    `SerrePositivity.InfinityCategories.F1.Compact.RepresentationPointedFiber,
+    `SerrePositivity.InfinityCategories.F1.Compact.UniverseCoconeCylinder,
+    `SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening,
+    `SerrePositivity.InfinityCategories.F1.Compact.UnstraighteningVertexPrism,
+    `SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification,
+    `SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationCoslice,
+    `SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationEquivalence,
+    `SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationTransport,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.Completion,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.IdemSourceIso,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones,
+    `SerrePositivity.InfinityCategories.F1.Ind.CanonicalIntervalYonedaValue,
+    `SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction,
+    `SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspose,
+    `SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTransposePrism,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalTransportEquivalence,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalValueCriterion,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationFamily,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityFiberYonedaValue,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityEndpointEquivalence,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLift,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLiftBase,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityPointedStart,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityOriginalFiberPrism,
+    `SerrePositivity.InfinityCategories.F1.Ind.ElementsCoconeComparison,
+    `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceComparison,
+    `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence,
+    `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceFiberMap,
+    `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval,
+    `SerrePositivity.InfinityCategories.F1.Ind.IntervalYonedaEvaluation,
+    `SerrePositivity.InfinityCategories.F1.Ind.MappingVertexLiftPrism,
+    `SerrePositivity.InfinityCategories.F1.Ind.NativeCoconeIntervalPrism,
+    `SerrePositivity.InfinityCategories.F1.Ind.PointPrismTransportComparison,
+    `SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityReconstruction,
+    `SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityValue,
+    `SerrePositivity.InfinityCategories.F1.Ind.VertexFiberIsoProjection,
+    `SerrePositivity.InfinityCategories.F1.Ind.YonedaSlice,
+    `SerrePositivity.InfinityCategories.F1.Ind.YonedaSliceFiber,
+    `SerrePositivity.InfinityCategories.F1.Ind.YonedaSliceFiberProjection,
+    `SerrePositivity.InfinityCategories.F1.Presentable.LimitComparisonHomotopy,
+    `SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences,
+    `SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction,
+    `SerrePositivity.InfinityCategories.F1.Presentable.SpaceFamilyStrictification
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."

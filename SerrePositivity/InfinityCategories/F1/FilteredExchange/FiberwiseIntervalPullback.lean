@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 

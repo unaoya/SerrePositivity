@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanConePointwise
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 概要：各点の native 錐の二三角形と頂点を元の coherent な指定データへ戻す。

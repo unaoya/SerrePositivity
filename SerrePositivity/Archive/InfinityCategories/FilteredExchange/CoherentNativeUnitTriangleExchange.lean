@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleTotalAction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
 
 /-!

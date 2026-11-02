@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.RightFibration
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationInternalHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 
 /-!

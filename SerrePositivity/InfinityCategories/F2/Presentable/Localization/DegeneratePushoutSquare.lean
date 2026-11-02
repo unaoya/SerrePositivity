@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SpanCollapse
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!

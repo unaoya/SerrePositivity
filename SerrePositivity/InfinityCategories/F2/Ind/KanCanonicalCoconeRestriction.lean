@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison

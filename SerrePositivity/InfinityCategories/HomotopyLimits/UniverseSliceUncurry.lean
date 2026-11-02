@@ -1,6 +1,5 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseSliceProjection
 public import SerrePositivity.InfinityCategories.Core.JoinCurryHomExt
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 

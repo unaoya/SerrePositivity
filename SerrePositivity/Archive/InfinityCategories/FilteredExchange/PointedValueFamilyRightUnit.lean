@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueFamilyFactorPresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueRightTriangleReindex
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 

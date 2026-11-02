@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalityTriangleEndpoints
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
 
 /-!
 概要：正規化前の大域自然性の第二辺は、同じ指定第二辺を正規化後に回収する。

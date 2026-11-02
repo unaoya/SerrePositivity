@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 
 /-!
 概要：coherent nerve の辺の全単射、恒等辺、合成三角形。

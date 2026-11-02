@@ -1,7 +1,6 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ClassifiedConeLimit
-public import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
 
 /-!
 概要：元の離散 nerve の反転を、元の同じ離散添字の厳密な同型で戻す。
