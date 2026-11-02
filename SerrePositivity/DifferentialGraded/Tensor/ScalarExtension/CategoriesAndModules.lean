@@ -7,15 +7,15 @@ public import SerrePositivity.HomologicalAlgebra.TensorBaseChangeNaturality
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Equalizers
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.BaseChange
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
-public import SerrePositivity.DifferentialGraded.Functor.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
 public import SerrePositivity.DifferentialGraded.Module.Basic
-public import SerrePositivity.DifferentialGraded.Module.Action
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightHom
-public import SerrePositivity.DifferentialGraded.Module.ClosedMaps
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.CategoryTheory.Monoidal.NaturalTransformation
 
 /-!

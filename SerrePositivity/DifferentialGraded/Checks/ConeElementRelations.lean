@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.ModuleConeRelations
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主Hom内と複体値dg関手の像でのcone行列恒等式 -/

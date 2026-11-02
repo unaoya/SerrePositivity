@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproductUniversal
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-! # K(D)の余積の受入検査 -/
 @[expose] public section

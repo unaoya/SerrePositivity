@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomBifunctorChoice
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7g：導来Hom双関手の解像度族選択独立性 -/
 @[expose] public section

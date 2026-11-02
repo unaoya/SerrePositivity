@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ResolutionComparison
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b6f：解像度の比較と選択独立性 -/
 @[expose] public section

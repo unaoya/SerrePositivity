@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 public import SerrePositivity.DifferentialGraded.Morita.Kernel
 public import SerrePositivity.DifferentialGraded.Morita.Perfect
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionNaturality
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionEquivalence
+public import SerrePositivity.DifferentialGraded.Derived.Functor
+
 public import SerrePositivity.DifferentialGraded.Endomorphism.Perfect
 public import SerrePositivity.DifferentialGraded.Endomorphism.Enhancement
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomotopyShift
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # K(D)から主導来圏への局所化のshift整合性の受入検査 -/
 @[expose] public section

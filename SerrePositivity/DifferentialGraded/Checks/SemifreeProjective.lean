@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10b5c：semifree全体のHom acyclic性と射影解像度の存在 -/

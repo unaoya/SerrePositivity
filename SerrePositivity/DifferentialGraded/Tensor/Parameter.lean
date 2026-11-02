@@ -1,18 +1,18 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.ActionChain
-public import SerrePositivity.DifferentialGraded.Module.LeftAction
-public import SerrePositivity.DifferentialGraded.Module.Colimits
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
+public import SerrePositivity.DifferentialGraded.Module.Basic
+
 public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
-public import SerrePositivity.DifferentialGraded.Module.LeftMorphisms
-public import SerrePositivity.DifferentialGraded.Module.LeftRing
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
-public import SerrePositivity.DifferentialGraded.Module.Representable
-public import SerrePositivity.DifferentialGraded.Module.FreeHom
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.DifferentialGraded.Module.LeftParamNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.ParameterCross
-public import SerrePositivity.DifferentialGraded.Module.Action
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+
+
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+
 
 /-!
 # Tensor.Parameter

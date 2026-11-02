@@ -2,16 +2,16 @@ module
 
 public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import SerrePositivity.DifferentialGraded.Quotient.Scalar
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightTwoCoproductExt
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
-public import SerrePositivity.DifferentialGraded.Category.Components
-public import SerrePositivity.DifferentialGraded.Complexes.UnitSandwichEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCompositionAssociativity
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+public import SerrePositivity.DifferentialGraded.Category.Basic
+
+
+
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 # Quotient.Composition

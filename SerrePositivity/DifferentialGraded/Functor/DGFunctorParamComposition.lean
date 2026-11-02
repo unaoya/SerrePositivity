@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-! # dg 関手の全次数パラメータ自然変換の縦合成
 概要：元のパラメータと全対象の Hom 合成を保って全次数自然変換を合成する。

@@ -2,11 +2,11 @@ module
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Module.Restriction
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
+
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Tensor.Graded

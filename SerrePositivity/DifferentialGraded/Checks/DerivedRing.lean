@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10d1：一対象環と既存導来圏の同値・局所化・整合的shift -/

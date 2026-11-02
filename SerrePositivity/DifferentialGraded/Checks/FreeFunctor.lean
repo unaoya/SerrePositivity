@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Free
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U6b の全次数自然な閉零射・自由加群関手の検証 -/

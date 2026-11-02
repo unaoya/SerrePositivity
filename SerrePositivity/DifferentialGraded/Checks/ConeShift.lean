@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeShift
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # 加群圏のcone shift同型の受入検査 -/
 @[expose] public section

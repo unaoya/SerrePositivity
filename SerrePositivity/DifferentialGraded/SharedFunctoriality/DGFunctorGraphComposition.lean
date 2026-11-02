@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 
 /-! # 厳密 dg 合成の graph 双加群の実比較

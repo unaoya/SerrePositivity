@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomElements
+public import SerrePositivity.DifferentialGraded.Module.Basic
 
 /-! # U10b4a：主Hom endの全次数要素の受入検査 -/
 @[expose] public section

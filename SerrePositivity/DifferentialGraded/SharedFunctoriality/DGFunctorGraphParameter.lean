@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomPostcomposition
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-! # 元の dg 関手の全パラメータの graph 作用

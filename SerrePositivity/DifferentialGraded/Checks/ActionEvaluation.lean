@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import Mathlib.Data.ZMod.Basic
 

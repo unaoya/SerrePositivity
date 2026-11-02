@@ -1,15 +1,15 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import Mathlib.LinearAlgebra.Span.Defs
-public import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
-public import SerrePositivity.DifferentialGraded.Category.Induced
+public import SerrePositivity.DifferentialGraded.Category.Basic
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 public import Mathlib.Data.W.Cardinal
 public import Mathlib.LinearAlgebra.Finsupp.LinearCombination
 public import Mathlib.SetTheory.Cardinal.Ordinal
 public import SerrePositivity.DifferentialGraded.Presentation.Category
-public import SerrePositivity.DifferentialGraded.Functor.FullHomLift
+
 public import Mathlib.LinearAlgebra.Quotient.Defs
 public import Mathlib.SetTheory.Cardinal.Arithmetic
 public import Mathlib.Data.Finset.Card

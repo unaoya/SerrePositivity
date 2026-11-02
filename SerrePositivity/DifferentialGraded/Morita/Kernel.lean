@@ -1,14 +1,14 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Derived.BimoduleLocal
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 public import SerrePositivity.DifferentialGraded.Verdier.Derived
 public import Mathlib.CategoryTheory.ObjectProperty.Retract
 public import Mathlib.CategoryTheory.Triangulated.Opposite.Subcategory
 public import Mathlib.CategoryTheory.Triangulated.Opposite.Functor
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
-public import SerrePositivity.DifferentialGraded.Derived.RightTensorLeftFunctor
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-!
 # Morita.Kernel

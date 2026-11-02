@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorCochainFactors
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 右tensor合成保存とassociatorの全次数自然性の受入監査 -/

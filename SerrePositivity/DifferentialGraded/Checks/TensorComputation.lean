@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.TensorBifunctorComputationChoice
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来tensor計算と解像度族比較の統合検査 -/

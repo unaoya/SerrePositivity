@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Module.LeftClosedMaps
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-!

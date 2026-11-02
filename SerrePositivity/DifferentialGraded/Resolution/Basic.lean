@@ -4,8 +4,8 @@ public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
-public import SerrePositivity.DifferentialGraded.Complexes.FilteredCycles
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+
 
 /-!
 # Resolution.Basic

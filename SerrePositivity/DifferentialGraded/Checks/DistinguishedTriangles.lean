@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DistinguishedTriangles
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # coneによる三角形のクラスの受入検査 -/
 @[expose] public section

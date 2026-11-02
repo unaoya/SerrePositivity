@@ -3,11 +3,11 @@ module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 public import SerrePositivity.DifferentialGraded.Endomorphism.Module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveResolution
-public import SerrePositivity.DifferentialGraded.Module.Precomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Functors
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveDerivedLifting
+
 
 /-!
 # Endomorphism.Derived.Adjunction

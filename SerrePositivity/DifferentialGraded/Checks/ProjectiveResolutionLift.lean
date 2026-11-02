@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveResolutionLift
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7e：解像度への射の持ち上げと関手法則 -/
 @[expose] public section

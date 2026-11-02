@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.Triangulated
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # 導来三角構造と比較の受入検査 -/
 @[expose] public section

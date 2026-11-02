@@ -3,8 +3,8 @@ module
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
-public import SerrePositivity.DifferentialGraded.Module.RestrictionRepresentable
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestriction
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 
 /-!
 # Bimodule.DiagonalRestriction

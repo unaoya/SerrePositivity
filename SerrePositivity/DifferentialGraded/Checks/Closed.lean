@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U4 tensor–Hom の受入検査と公理監査 -/

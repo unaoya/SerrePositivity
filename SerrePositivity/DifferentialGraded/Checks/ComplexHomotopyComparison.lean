@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 主dg複体のH⁰と既存ホモトピー商の線形比較 -/

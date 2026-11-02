@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Examples
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
+
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import Mathlib.Algebra.Homology.SingleHomology
 public import Mathlib.Data.ZMod.Basic

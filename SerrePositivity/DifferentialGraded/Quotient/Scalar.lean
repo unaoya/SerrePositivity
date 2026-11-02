@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
-public import SerrePositivity.DifferentialGraded.Complexes.TensorJoinRightAction
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
