@@ -265,7 +265,7 @@ variable (A : Type u) [CommRing A] {D : Type v} {E : Type w}
   [DGCategory A D] [DGCategory A E]
 
 /-- Homのchain mapに対して斉次単位・合成式を与える構成子。 -/
-def ofHomMaps (F : D → E) (H : ∀ x y, (x ⟶[Complex A] y) ⟶ (F x ⟶[Complex A] F y))
+def ofHomMaps (F : D → E) (H : ∀ (x y : D), (x ⟶[Complex A] y) ⟶ (F x ⟶[Complex A] F y))
     (hi : ∀ x, (H x x).f 0 (unitElement A x).val = (unitElement A (F x)).val)
     (hc : ∀ (x y z : D) (p q n : ℤ) (hn : p + q = n)
       (f : GradedHom A x y p) (g : GradedHom A y z q),
