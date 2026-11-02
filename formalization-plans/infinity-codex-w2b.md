@@ -142,3 +142,15 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 4. 判定の表（辺 → D_M → PΣ 依存の有無 → split／連鎖）を停止点 1 の報告に付ける。
 
 **再開**：上の規則で R38 の処置を確定 → validator・dry-run → 適用後の模擬 → **停止点 1**。
+
+## 11. 追記（2026-11-02 夜、validator と §8 の食い違いへの回答：archive の利用者検査から監査を除く）
+
+**受領**：上移動 12 本（候補 6＋連鎖 2＋独立 4）は `F2/Presentable/` へ、実参照 5 辺はモジュール内で `IsSiftedInfinity` に到達するので split 不要、未検出 3 辺は削除の模擬、validator PASS・増加指標 0、直接違反 297 → 280、禁止モジュール数 1／166／166 不変。R73 の archive 検査は `scripts.audit_infinity_f2` を外側の利用者として数えて FAIL（96fbbab87）。
+
+**判断**：食い違いは validator 側。監査（`scripts/audit/`・`scripts/audit_*.lean`・checks）は利用者ではなく、この束で再生成・書き換える側（§1 の R73、§8-1）。`validate_targets.py` は ∞ の道具なので直してよい：
+
+1. `validate_targets.py` に **`--ignore-importer-prefix <接頭辞>`**（複数可）を加え、archive の利用者検査でその接頭辞のモジュールを数えない。W2b では `scripts.audit`・`scripts.audit_`・`scripts.checks` を渡す。既定は空（従来どおり）。試験 1 件（監査だけが import する archive 対象が通ること、監査以外が import すれば従来どおり FAIL すること）。別コミット（道具）。
+2. 監査の処置を R73 の対象に明記する：`scripts/audit_infinity_f2.lean`（手書きの import 一覧）は B の import 行を**削除**し、A の import 行を新しい場所へ書き換える。`scripts/audit/` の生成分は `make_area_audits.py` の area `infinity_f2_exchange` を削除して再生成。適用後に `--ignore-importer-prefix` **なし**で validator を再実行し、archive の利用者が本当に 0 であることを確かめる（これが本当の検査）。
+3. 未検出 3 辺の削除は内部ビルドで確認（§10-1）。
+
+**再開**：1 を入れて R73 の validator → dry-run → 適用後の全体模擬（直接違反・ratchet・`--enforce W2b` の見込み。280 からどこまで下がるか）→ **停止点 1**（A/B/C と支え、R37・R38 の処置の表、上移動 12 本、下流の見積もり）。
