@@ -109,3 +109,21 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 3. **「A の逆閉包が中核外へ出たら停止」の意図**：書き方が悪かった。意図は **順方向の依存閉包**（A の各モジュールが import で辿り着く集合）が中核の層・Foundation・Mathlib の中に収まること（KST・DG・Derived・EInfinity・モデル圏の HA に届かないこと）。**A の利用者が中核の外（KST 35 辺・Derived 33 辺・EInfinity 3 辺）にあるのは問題ない**。利用者の import 行を新しい場所へ書き換えるだけ（所有範囲 §2 の「外側は import 行だけ」）。§5-2 を「A の**依存**閉包が中核の外へ出る」と読み替える。
 4. **試験の既存失敗（∞ の道具）**：main で `test_layer_check.LayerTests.test_foundation_negative_rank_and_prefix_scope` が失敗する（`layers.json` に DG-W2(b) が **DG 層を rank −1** で登録したため、「Foundation 以外は rank > −1」の仮定が古くなった）。§7 の道具の回で直す：rank −1 の基盤層が複数あってよい（Foundation・DG）とし、検査は「中核（`core` の層）は rank ≥ 0」に改める。verify には影響しない（Python 試験は gate の外）。
 5. これで §3.0 を再開：A の各モジュールの先（依存閉包から最も低い層）、B の利用者 0 の検査（全監査除外・C を利用者に含めた上で）、C ＋ 支え 3 本の move、R37・R38 の表、validator・dry-run・適用後の模擬 → 停止点 1。
+
+## 9. 追記（2026-11-02 夜、§8 の読み替え後の再停止への回答：§5-2 の最終形は「直接 import」の水準）
+
+**受領**：A 368・B 1,726・C 33、B の利用者 0、支え 3 本（C と合わせて Derived へ 36 本）、R37/R38 の辺 127/139、中核候補 365 本のうち 180 本の依存閉包が中核外 224 モジュールへ到達、試験修正 95f95cde4。
+
+**Claude の確認（11-02 夜、main のソースで）**：PiCriterion を除く FilteredExchange のモジュールで、KST・HA のモデル圏（Quillen・Transfer・Generated・Monoidal・HomotopyFunctionComplex）・DG・EInfinity・Derived・ModelBridge を**直接** import するものは 0。180 本の到達は、既存の中核のモジュールが持つ辺（`HomotopyLimits → KST` 16、`HomotopyLimits → HA` 2。例：`IntervalHomBoundary → KST.Spectra.PointedInterval`）を経由している。これらの辺は現在の基準（W2a の禁止モジュール 166、`layer_check --report` 11-02）に含まれており、**W2c（R69・R70・R56b：KST/Spectra の一般部分を中核へ下ろす）の課題**であって、W2b の停止理由ではない。FilteredExchange はいま F2（中核）にあるので、A を中核の別の層へ動かしても中核全体の禁止閉包は変わらない。
+
+**§5-2 の最終形**（§8-3 を置き換える）：止めるのは次のときだけ。
+
+1. A のモジュールの**直接 import**（prune 後）に、禁止領域（KST・DG・EInfinity・モデル圏の HA・Derived・ModelBridge）か、置き先より上の層があるとき。
+2. 適用後のグラフの模擬で、`layer_check.py --ratchet <基準>` の W1／W2a／W2b の禁止モジュール数・affected core が基準から**増える**とき（A が中核内で動くだけなら増えないはず。増えたら原因の辺を報告）。
+3. 制限つきの層（Core・Kan、`restricted_imports`）に置こうとするモジュールの依存閉包が、その層の許可集合（Core：Simplicial・Foundation・Mathlib、Kan：＋Core）の外へ出るとき。→ そのモジュールは F1 以上に置く（Core・Kan には置かない）。
+
+**置き先の規則**（§1 の「最も低い層」の精密化）：直接 import の層の最大値以上で最も低い層。ただし 3 により、閉包が中核外へ届くモジュールは F1 以上（実際には HL を経由するなら HomotopyLimits 以上になるはず）。
+
+**W2c への引き継ぎ**：180 本とその経由辺（`w2b-section8-forward-closure-stop.json` の `example_paths`・`outside_by_prefix`）を停止点 1 の報告に「W2c の入力」として添える。処置は W2c。
+
+**再開**：置き先の確定 → R37・R38 の表 → validator・dry-run → 適用後の模擬（直接違反・ratchet・`--enforce W2b` の見込み）→ **停止点 1**。
