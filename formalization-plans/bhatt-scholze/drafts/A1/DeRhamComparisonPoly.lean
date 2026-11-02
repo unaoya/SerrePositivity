@@ -44,12 +44,15 @@ theorem hodgeTate_of_deRham_cartier (n : ℕ) : True := by trivial
 /-- 概要：結晶 prism (B,(p)) と多項式 (B/p)[X]：Lemma 4.20（(p)-prism の Δ は p 完備底変換と可換、A0-4）で Z_p に帰着。 -/
 theorem deRham_iso_polynomial_crystalline : True := by trivial
 
-/-- 概要：普遍向き付き prism A_0：Construction 6.1 の α : A_0 → D_0 で α̂^* は保存的（(1)）、(3) で α̂^*Δ_{T_0/A_0} = Δ_{T_{D_0}/D_0}、α は δ 射で φ と両立。
-方針：A1-4 の `crystallineCover*`・`baseChangeB`、CAlg の同型の反映（紙 2）。 -/
+/-- 概要：普遍向き付き prism A_0 上の比較同型（原典 Thm 6.4 の証明そのもの、D69 訂正後）：A_0/d_0 は p ねじれなし（Ex 3.4）なので W(A_0/d_0) も p ねじれなし。
+ψ := F ∘ can : A_0 → W(A_0/d_0) は prism の射 (A_0,(d_0)) → (W(A_0/d_0),(p))、底変換 (4) で Δ_{T_0/A_0} ⊗̂_{A_0,ψ} W ≅ Δ_{T′/W}、Thm 5.2 β（pd イデアル J つき）で
+RΓ_crys、持ち上げの de Rham 複体 Ω^*_{T_0/(A_0/d_0)} に自然に同型。
+方針：`deRham_iso_polynomial_crystalline`、A0-4 の底変換、W9-I-15（保存性だけでは比較射が作れない）。
+規約：CAlg の自然な同型。 -/
 theorem deRham_iso_polynomial_universal : True := by trivial
 
 /-- 概要：A1-5 の主張：完全 prism (A,(d))、T = R⟨X_1..X_n⟩ で φ_A^*Δ_{T/A} ⊗̂^L_A A/(p,d) ≃ Ω^*_{(T/p)/(R/p)}（CAlg(D(R/p))、T について自然）。
-方針：d の選択で A_0 → A、(4) で A_0 上に帰着（Frobenius と両立、紙 1）、`deRham_iso_polynomial_universal`。
+方針：d の選択で A_0 → A、`deRham_iso_polynomial_universal` の比較同型を (4) で底変換（Frobenius と両立、紙 1）。保存性は使わない。
 規約：Lemma 8.6 で使う形は Δ_T ⊗_A A/(p, φ^{-1}(d))。
 使われ方：A5-3。 -/
 theorem deRham_iso_polynomial_modP (n : ℕ) : True := by trivial

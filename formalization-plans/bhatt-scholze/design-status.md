@@ -178,6 +178,15 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-06 `True` の置き場・A 代数構造 | 要修正 | `ringPresheafToCAlg` の入力を A 代数値関手に。`of_closure`・`prismaticEnvelope_baseChange_of_variables` は主張を文で追記。残りの `True` は中身の段階で型にする（drafts/README の規約） |
 | W9-I-07 Γ の説明 | 軽微 | 訂正済み |
 | W9-I-08 ノート・状態表の不整合 | 要修正 | 訂正済み（05 の Thm 6.4 行、index と 07 の BR30、本表 §4 の 2） |
+| W9-I-09 変数変換後の対の等式に閉包が落ちている | 要修正 | 訂正済み（a0-design §5.1 の 2：(d, Z)^−、`of_closure` で結ぶ、A/d = 0 は別扱い） |
+| W9-I-10 `flatTopology` の篩の置き場（op X）、refine の被覆先 | 要修正 | 訂正済み（drafts/A0/PrismaticSite） |
+| W9-I-11 κ の許容条件（κ^{ℵ₀} = κ） | 要確認 | `IsAdmissibleCutoff` を追加し `flatTopology_refine` の仮定に（drafts/A0/PrismaticSite）。a0-design §2.7 は中身の段階で追従 |
+| W9-I-12 `HasEnvelopes` に濃度の条件がない | 要確認 | `HasEnvelopes` に濃度 ≤ cutoff を追加（多項式 R では模型との一意同型で供給） |
+| W9-I-13 PD Čech 脈体 D_0^• 自体を切断つきとする行の証明は誤り（H¹(D_0^•/p) ≠ 0） | 致命 | **訂正済み**（a1-design §3 の 6：j ≥ 1 の行 Ω^j_{D_0^•} の収縮 G-A1-14（Bhatt–de Jong Lemma 2.15–2.17）、j = 0 の行は収縮しない。retraction による (ii) の比較も撤回） |
+| W9-I-14 pd 微分の明示 | 要修正 | 訂正済み（G-A1-7 を pd 微分加群・pd de Rham 複体に） |
+| W9-I-15 D69：保存性だけでは比較射が作れない | 要確認 | **訂正済み**（a1-design §9.1・§9.3：原典 Thm 6.4 の ψ・W(A_0/d_0) の経路を A_0 上で行い（p ねじれなしは A_0 で成立）、完全 prism へ底変換。D69 の決定は差し替えた案で再提示） |
+| W9-I-16 Lemma 5.4 の無限変数 | 要修正 | G-A1-15（filtered 余極限）を追加 |
+| W9-I-17 a1-design 前半の Thm 6.4「不要」 | 軽微 | 訂正済み（§0・§6） |
 
 既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
 
