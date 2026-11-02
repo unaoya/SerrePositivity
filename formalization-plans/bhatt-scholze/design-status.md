@@ -46,13 +46,13 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所は `EInfinity/PowerOperation/`、M14。担当は A4 の中身の段階で。Barratt–Eccles の作用の型） |
 | A4-4 Example 8.3 | a4-design §2.4 | A4/Perfectoidization | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
 | A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
-| A5-2 semiperfectoid の場合 | a5-design §3.4 | 未 | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
-| A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | 未 | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
-| A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | 未 | 未（a5 §8 の 6・7） | G-A5-1・6・12・13・15（A1-5） |
+| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
+| A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
+| A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 未（a5 §8 の 6・7） | G-A5-1・6・12・13・15（A1-5） |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §6（追記） | 未 | — | A1-4 の装置 |
 | A6〜A9 | 未 | 未 | — | — |
 
-骨組みの規模：24 本、約 3,200 行（`sorry` 148、置き場の `True` 95）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835 ほか（A4 まで）。
+骨組みの規模：30 本、約 4,000 行（`sorry` 169、置き場の `True` 158）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d ほか（A5 まで）。
 
 ## 2. 要確認の分類
 
@@ -132,7 +132,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 
 ## 4. 次の作業（提案）
 
-1. A5 の骨組みの続き（A5-2 → A5-4 → A5-3）、A1-5 の設計の追記。
+1. A6 の設計書（Def 8.7〜Cor 8.12：arc 位相・Prop 8.10 の arc 層性・Cor 8.11・excision の欄）。A1-5 の設計の追記。
 2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
