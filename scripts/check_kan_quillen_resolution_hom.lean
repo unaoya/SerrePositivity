@@ -1,4 +1,4 @@
-import SerrePositivity.Inputs.Homotopy.ResolutionHom
+import SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom
 import Lean.Util.CollectAxioms
 import Lean.Util.Sorry
 

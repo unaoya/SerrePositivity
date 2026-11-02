@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.FinBijection
 public import SerrePositivity.Spectra.SymmetricSequence.TensorPowerSequence
 public import SerrePositivity.Spectra.SymmetricSequence.Convolution
 

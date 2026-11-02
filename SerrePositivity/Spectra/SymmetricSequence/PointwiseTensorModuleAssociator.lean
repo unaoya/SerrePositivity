@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModule
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolutionAssociator
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 
 /-! # 各段のテンソルの係数加群の結同比較 -/
 

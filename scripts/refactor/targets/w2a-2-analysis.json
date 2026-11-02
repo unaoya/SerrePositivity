@@ -1,0 +1,2881 @@
+{
+  "base": "b5bc733a8cd79f6c17f47b94952e3359225d1b8a",
+  "status": "PASS",
+  "counts": {
+    "R76": {
+      "sources": 9,
+      "external": {
+        "EInfinity": {
+          "edges": 9,
+          "importers": 8
+        },
+        "HomotopicalAlgebra": {
+          "edges": 26,
+          "importers": 17
+        },
+        "InfinityCategories": {
+          "edges": 3,
+          "importers": 3
+        },
+        "KST": {
+          "edges": 6,
+          "importers": 6
+        },
+        "scripts": {
+          "edges": 9,
+          "importers": 1
+        }
+      },
+      "reverse_closure_production": 2858,
+      "strict_downstream_production": 2849,
+      "reverse_closure_scripts": 225
+    },
+    "R77": {
+      "sources": 95,
+      "external": {
+        "EInfinity": {
+          "edges": 16,
+          "importers": 14
+        },
+        "HomotopicalAlgebra": {
+          "edges": 38,
+          "importers": 26
+        },
+        "InfinityCategories": {
+          "edges": 1,
+          "importers": 1
+        },
+        "KST": {
+          "edges": 8,
+          "importers": 8
+        },
+        "Spectra": {
+          "edges": 95,
+          "importers": 84
+        },
+        "scripts": {
+          "edges": 97,
+          "importers": 2
+        }
+      },
+      "reverse_closure_production": 11678,
+      "strict_downstream_production": 11583,
+      "reverse_closure_scripts": 343
+    },
+    "R67": {
+      "sources": 3,
+      "external": {
+        "scripts": {
+          "edges": 6,
+          "importers": 4
+        }
+      },
+      "reverse_closure_production": 3,
+      "strict_downstream_production": 0,
+      "reverse_closure_scripts": 4
+    },
+    "all": {
+      "sources": 107,
+      "external": {
+        "EInfinity": {
+          "edges": 25,
+          "importers": 22
+        },
+        "HomotopicalAlgebra": {
+          "edges": 64,
+          "importers": 42
+        },
+        "InfinityCategories": {
+          "edges": 4,
+          "importers": 4
+        },
+        "KST": {
+          "edges": 14,
+          "importers": 14
+        },
+        "Spectra": {
+          "edges": 95,
+          "importers": 84
+        },
+        "scripts": {
+          "edges": 112,
+          "importers": 5
+        }
+      },
+      "reverse_closure_production": 11888,
+      "strict_downstream_production": 11781,
+      "reverse_closure_scripts": 343
+    }
+  },
+  "cycles": [],
+  "snapshot": {
+    "manifest": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/batch-w1w2a/stop2/after-shards/manifest.json",
+    "selected_modules": [
+      "SerrePositivity.CategoryTheory.ElementsChainLifting",
+      "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp",
+      "SerrePositivity.CategoryTheory.Limits.SequentialExtension",
+      "SerrePositivity.CategoryTheory.NerveHomotopy",
+      "SerrePositivity.CategoryTheory.NerveHomotopyUniverse",
+      "SerrePositivity.CategoryTheory.NerveSimplexEndpoint",
+      "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+      "SerrePositivity.CategoryTheory.NerveSimplexStart",
+      "SerrePositivity.CategoryTheory.NerveVertices",
+      "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
+      "SerrePositivity.CategoryTheory.Quiver.PathIntersections",
+      "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport",
+      "SerrePositivity.CategoryTheory.Simplex.Prefix",
+      "SerrePositivity.CategoryTheory.Simplex.PrefixInterval",
+      "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies",
+      "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence",
+      "SerrePositivity.CategoryTheory.Simplex.PresentationFaces",
+      "SerrePositivity.CategoryTheory.SimplexChainVertices"
+    ],
+    "missing_modules": [
+      "SerrePositivity.CategoryTheory.AdjunctionHomLaws",
+      "SerrePositivity.CategoryTheory.CommaIdentities",
+      "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability",
+      "SerrePositivity.CategoryTheory.Enriched.TensorCotensor",
+      "SerrePositivity.CategoryTheory.Enriched.TensorUnit",
+      "SerrePositivity.CategoryTheory.FiniteBijection",
+      "SerrePositivity.CategoryTheory.FiniteBijectionAction",
+      "SerrePositivity.CategoryTheory.FiniteBijectionInduction",
+      "SerrePositivity.CategoryTheory.FiniteBijectionShift",
+      "SerrePositivity.CategoryTheory.FiniteBijectionSum",
+      "SerrePositivity.CategoryTheory.FiniteBlockEquiv",
+      "SerrePositivity.CategoryTheory.Groupoid.ThinComponents",
+      "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration",
+      "SerrePositivity.CategoryTheory.LiftingProperties.Under",
+      "SerrePositivity.CategoryTheory.Limits.InitialColimits",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorIterated",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle",
+      "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation",
+      "SerrePositivity.CategoryTheory.Monoidal.FreeModule",
+      "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal",
+      "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange",
+      "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleLimits",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.PermutationAction",
+      "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend",
+      "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor",
+      "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor",
+      "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment",
+      "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition",
+      "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockGenerators",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossing",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowers",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorRightModule",
+      "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons",
+      "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment",
+      "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization",
+      "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport",
+      "SerrePositivity.CategoryTheory.PointwiseAdjunction",
+      "SerrePositivity.CategoryTheory.RelativeArrow",
+      "SerrePositivity.Inputs.Homotopy.KanQuillen",
+      "SerrePositivity.Inputs.Homotopy.ResolutionHom",
+      "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+    ],
+    "source_checks": {
+      "SerrePositivity.CategoryTheory.ElementsChainLifting": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Limits.SequentialExtension": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveHomotopy": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveHomotopyUniverse": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveSimplexEndpoint": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveSimplexStart": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.NerveVertices": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Quiver.FreePathComonad": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Quiver.PathIntersections": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Simplex.Prefix": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Simplex.PrefixInterval": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.Simplex.PresentationFaces": {
+        "file": "shard-000.json",
+        "source_equal": true
+      },
+      "SerrePositivity.CategoryTheory.SimplexChainVertices": {
+        "file": "shard-000.json",
+        "source_equal": true
+      }
+    },
+    "declaration_count": 258,
+    "transitive_uses": [
+      {
+        "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+        "name": "SerrePositivity.NerveSimplexFirstFunctor.canonical_chain",
+        "used_module": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+        "name": "SerrePositivity.NerveSimplexFirstFunctor.first._proof_2",
+        "used_module": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+        "name": "SerrePositivity.NerveSimplexFirstFunctor.chain_augmentation",
+        "used_module": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "module": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence",
+        "name": "SerrePositivity.SimplexPresentation.toSimplexCategory_map_injective",
+        "used_module": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies"
+      },
+      {
+        "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+        "name": "SerrePositivity.NerveSimplexFirstFunctor.first._proof_3",
+        "used_module": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      }
+    ]
+  },
+  "external_edges": {
+    "R76": [
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaNerveContraction",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaNerveContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.ConstantBarRows",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.GrothendieckCommaRetraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.NerveTerminalImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Hammock.NerveWeakTransport",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.LabelledChain",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.SimplexChainParameter",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFirstEndpoint",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReferenceRowHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalCone",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveBiparameter",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentFamily",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveFunctor",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.NerveHomotopyFunctoriality",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalGraphHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowPaddingNerve",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.Comparison.RegularBar",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.ProExcision.ActionCategory",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.ProExcision.Conjugation",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.ElementsResolution",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.FiberResolutionContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.OppositeLabelledChains",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      }
+    ],
+    "R77": [
+      {
+        "importer": "SerrePositivity.EInfinity.HomologyZero.BinaryInput",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.EdgePermutation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorSwapVectors",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorVectors",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.CommutativePowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.MonoidPowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.SlotPermutations",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBlockEquiv"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorFamilyPermutations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorFamilyUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerColimits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerEquivariance",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerEquivariance",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerLastInput",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveBifunctor",
+        "imported": "SerrePositivity.CategoryTheory.PointwiseAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Enriched.UnitAxiom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.EnrichedTensorFrameHom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorDegeneracies",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathDegeneracyImage",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionPresentation",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+        "imported": "SerrePositivity.CategoryTheory.CommaIdentities"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorHom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Localization.Monoidal",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreePathResolution",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSourceExtraOperators",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyInterval",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Under.ModelCategory",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Under.ModelCategory",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.ModelBridge.FixedSimplicialModelCompatibility",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.PointwiseDiagramPushout",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.SimplicialPath",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.SimplicialPathContraction",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.D3CommonEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.PointedEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Cotensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.CotensorMappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.CotensorMappingSource",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.EnrichedMappingObjects",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Free",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Limits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingFunctorComparison",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ParametrizedCotensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ParametrizedMapping",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ShiftedHomAdjoint",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorClosed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorClosed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorCotensorEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorFreeAtSum",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorMappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorMappingSource",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.FreeLevelCofibrations",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionInduction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.GeneralLevelTensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.DisjointUnion",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionSum"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FiniteBijection",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijection"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeConvolution",
+        "imported": "SerrePositivity.CategoryTheory.Limits.InitialColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInduction",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionShift"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomModuleNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModule",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PowerBijectionMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SphereFirstCrossing",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePermutationAction",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowerCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowerCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerBraiding",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerMultiplication",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerSequence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerSingleBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Closed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Cotensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Free",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHom",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFree",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreeNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Limits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.AdjunctionHomLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceArrowComposition",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialCotensorProductNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProductNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Tensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorHexagon",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorPentagon",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.AdjunctionHomLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.CommaIdentities"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijection"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionInduction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionShift"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionSum"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBlockEquiv"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Groupoid.ThinComponents"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Limits.InitialColimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorIterated"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleLimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockGenerators"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossing"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorRightModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.PointwiseAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces"
+      },
+      {
+        "importer": "scripts.audit_spectra",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "scripts.audit_spectra",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      }
+    ],
+    "R67": [
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.KanQuillen"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.ResolutionHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      },
+      {
+        "importer": "scripts.check_kan_quillen_level",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      },
+      {
+        "importer": "scripts.check_kan_quillen_resolution_hom",
+        "imported": "SerrePositivity.Inputs.Homotopy.ResolutionHom"
+      },
+      {
+        "importer": "scripts.check_model_replacement",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      }
+    ],
+    "all": [
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaNerveContraction",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaNerveContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.ConstantBarRows",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.GrothendieckCommaRetraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.FrameHom.NerveTerminalImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Hammock.NerveWeakTransport",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.HomologyZero.BinaryInput",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.EdgePermutation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorFirstSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorSwapVectors",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.IntervalCuts.TensorVectors",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.CommutativePowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.MonoidPowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.SlotPermutations",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBlockEquiv"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorFamilyPermutations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorFamilyUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerColimits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerEquivariance",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerEquivariance",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.EInfinity.Operad.TensorPowerLastInput",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveBifunctor",
+        "imported": "SerrePositivity.CategoryTheory.PointwiseAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Enriched.UnitAxiom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.GeneralTools",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ComonadSimplicialResolution",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.EnrichedTensorFrameHom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreeGeneratorDegeneracies",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathDegeneracyImage",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FreePathResolutionPresentation",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+        "imported": "SerrePositivity.CategoryTheory.CommaIdentities"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorHom",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Localization.Monoidal",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModulePresentability",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Monoidal.ModuleTransfer",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.AnchoredChainContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.LabelledChain",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.CategoryTheory.SimplexChainParameter",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AllFactorizationComparison",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreePathResolution",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFirstEndpoint",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReferenceRowHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarSourceExtraOperators",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalCone",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarTotalHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveBiparameter",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentFamily",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveInitialImage",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RecursiveChoiceExtension",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.ExtraDegeneracyInterval",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarIdentity",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveFunctor",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Simplicial.TotalNerveBarAugmentation",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Under.ModelCategory",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "SerrePositivity.HomotopicalAlgebra.Under.ModelCategory",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.NerveHomotopyFunctoriality",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeNaturalGraphHomotopy",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.ModelBridge.FixedSimplicialModelCompatibility",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowPaddingNerve",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.Comparison.RegularBar",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.ProExcision.ActionCategory",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.ProExcision.Conjugation",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.ElementsResolution",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.FiberResolutionContraction",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.OppositeLabelledChains",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.PointwiseDiagramPushout",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.SimplicialPath",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "SerrePositivity.KST.SConstruction.SimplicialPathContraction",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.AdjointLoopRelativeCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.AdjointLoopRelativeFullCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.D3CommonEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.PointedEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.KST.Spectra.SpectrumCotensorCompatibleEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.Foundations",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Cotensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.CotensorMappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.CotensorMappingSource",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.EnrichedMappingObjects",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Free",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.Limits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingEnrichment",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingFunctorComparison",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.MappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ParametrizedCotensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ParametrizedMapping",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.ShiftedHomAdjoint",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorClosed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorClosed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorCotensorEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorFreeAtSum",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorMappingObject",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.General.TensorMappingSource",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.FreeLevelCofibrations",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionInduction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.GeneralLevelTensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.SimplicialHomComparison",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.ModelCategory.SimplicialLevelTensor",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlyingCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.DisjointUnion",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionSum"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FiniteBijection",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijection"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeConvolution",
+        "imported": "SerrePositivity.CategoryTheory.Limits.InitialColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInduction",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionShift"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomModuleNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomShiftEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleEvaluation",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModule",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PointwiseTensorModuleUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.PowerBijectionMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SphereFirstCrossing",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePermutationAction",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowerCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowerCoherence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.SpherePowers",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerBraiding",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerMultiplication",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerSequence",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSequence.TensorPowerSingleBlockSwap",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Closed",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Cotensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Free",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.FreeLeftUncurry",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.FreeMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHom",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFree",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFreeNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomShift",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.InternalHomUnderlying",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Limits",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.AdjunctionHomLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpace",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceArrowComposition",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceAssociativity",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialEnriched",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialOrdinary",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceUnitLaws",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialCotensorProductNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProductNaturality",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.Tensor",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorAssociator",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeLeft",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreePair",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorFreeRight",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorHexagon",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorMonoidal",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorPentagon",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorQuotient",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorRightUnit",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetric",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorSymmetry",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry"
+      },
+      {
+        "importer": "SerrePositivity.Spectra.SymmetricSpectrum.TensorTriangle",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.AdjunctionHomLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.CommaIdentities"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ElementsChainLifting"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Enriched.TensorUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijection"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionInduction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionShift"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBijectionSum"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.FiniteBlockEquiv"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Groupoid.ThinComponents"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.LiftingProperties.Under"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Limits.InitialColimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Limits.SequentialExtension"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorIterated"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleLimits"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockGenerators"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossing"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorPowers"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TensorRightModule"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopy"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveSimplexStart"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.NerveVertices"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.PointwiseAdjunction"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.RelativeArrow"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.Prefix"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.Simplex.PresentationFaces"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.CategoryTheory.SimplexChainVertices"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.KanQuillen"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.ResolutionHom"
+      },
+      {
+        "importer": "scripts.audit.shared",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      },
+      {
+        "importer": "scripts.audit_spectra",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction"
+      },
+      {
+        "importer": "scripts.audit_spectra",
+        "imported": "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+      },
+      {
+        "importer": "scripts.check_kan_quillen_level",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      },
+      {
+        "importer": "scripts.check_kan_quillen_resolution_hom",
+        "imported": "SerrePositivity.Inputs.Homotopy.ResolutionHom"
+      },
+      {
+        "importer": "scripts.check_model_replacement",
+        "imported": "SerrePositivity.Inputs.Homotopy.SimplicialLevel"
+      }
+    ]
+  },
+  "analysis_seconds": 29.479,
+  "previous_cycles": [
+    {
+      "modules": [
+        "SerrePositivity.CategoryTheory.Monoidal.Mod.Closed",
+        "SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom"
+      ],
+      "edges": [
+        {
+          "source": "SerrePositivity.CategoryTheory.Monoidal.Mod.Closed",
+          "target": "SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom",
+          "witnesses": [
+            [
+              "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed",
+              "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction"
+            ]
+          ]
+        },
+        {
+          "source": "SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom",
+          "target": "SerrePositivity.CategoryTheory.Monoidal.Mod.Closed",
+          "witnesses": [
+            [
+              "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor",
+              "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "graph_check": "w2a-2-graph-check.json"
+}

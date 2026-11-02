@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
 public import SerrePositivity.EInfinity.Operad.TensorFamily
 
 /-!

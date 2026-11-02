@@ -41,7 +41,7 @@ def simplicialLevelModelCategory : ModelCategory SymmetricSpectrum.{u} := by
     pointedSimplicial_monoidalModel hCof hFib
   let : IsCofibrant (𝟙_ PointedSimplicialSet.{u}) := pointedSimplicial_isCofibrant hCof _
   let : IsCofibrant PointedSimplicialSet.circle.{u} := pointedSimplicial_isCofibrant hCof _
-  exact levelModelCategoryOfMonoidalGenerators PointedSimplicialSet.circle
+  exact levelModelCategoryOfMonoidalGenerators.{u, u + 1, u} PointedSimplicialSet.circle
     pointedI pointedJ Cardinal.aleph0.{u}
     pointedI_domain_presentable pointedJ_domain_presentable
 
@@ -64,7 +64,7 @@ lemma simplicialLevelModelCategory_generated :
     pointedSimplicial_monoidalModel hCof hFib
   let : IsCofibrant (𝟙_ PointedSimplicialSet.{u}) := pointedSimplicial_isCofibrant hCof _
   let : IsCofibrant PointedSimplicialSet.circle.{u} := pointedSimplicial_isCofibrant hCof _
-  exact levelModelCategoryOfMonoidalGenerators_generated PointedSimplicialSet.circle
+  exact levelModelCategoryOfMonoidalGenerators_generated.{u, u + 1, u} PointedSimplicialSet.circle
     pointedI pointedJ Cardinal.aleph0.{u}
     pointedI_domain_presentable pointedJ_domain_presentable
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroUnitGenerators
-public import SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor
 
 /-! # 自由零生成の単位比較を係数加群へ移す -/
 

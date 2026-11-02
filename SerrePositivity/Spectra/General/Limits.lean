@@ -2,7 +2,7 @@ module
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.Spectra.SymmetricSequence.DayAdjunction
 public import SerrePositivity.Spectra.SymmetricSequence.Limits
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleColimits
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Limits
 
 /-! # Limits and colimits of general symmetric spectra
 

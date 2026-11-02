@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.ModelCategory.FreePushoutProductModel
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.GeneratedBifunctor
-public import SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroModuleUnit
 
 /-! # The full pushout-product axiom on the simplicial spectrum level model

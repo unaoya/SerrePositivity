@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.Cotensor
-public import SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # The general spectrum tensor/cotensor adjunction with parameter
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.SimplicialTensorProduct
-public import SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison
+public import SerrePositivity.CategoryTheory.Monoidal.Action
 
 /-! # 直積による反復作用のパラメータ自然性 -/
 

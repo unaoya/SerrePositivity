@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CategoryTheory.ElementsChainLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 public import Mathlib.CategoryTheory.Category.Cat.Op
 public import Mathlib.CategoryTheory.Functor.Currying
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence

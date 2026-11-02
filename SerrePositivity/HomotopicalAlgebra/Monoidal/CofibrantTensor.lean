@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.ModelCategory
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowers
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 

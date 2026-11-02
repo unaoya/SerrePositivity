@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom
 public import SerrePositivity.Spectra.SymmetricSpectrum.Closed
 
 /-! # 内部Homの反変関手性と球面との比較 -/

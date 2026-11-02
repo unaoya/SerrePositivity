@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowers
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
 public import SerrePositivity.DifferentialGraded.Complexes.Closed
 public import Mathlib.CategoryTheory.Limits.Sifted
 public import Mathlib.CategoryTheory.Limits.Connected

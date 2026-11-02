@@ -155,7 +155,7 @@ lemma domainMap_id (a : FactorizationProblem r j C) : domainMap (𝟙 a) = 𝟙 
   apply pushout.hom_ext
   · rw [inl_domainMap, Category.comp_id]
     change (lowerLatchingEvaluation r j).map (𝟙 a.factor.Z) ≫ pushout.inl _ _ = _
-    rw [Functor.map_id, Category.id_comp]
+    rw [CategoryTheory.Functor.map_id, Category.id_comp]
   · rw [inr_domainMap, Category.comp_id]
     exact Category.id_comp _
 
@@ -166,7 +166,7 @@ lemma codomainMap_id (a : FactorizationProblem r j C) : codomainMap (𝟙 a) = �
     exact Category.comp_id _
   · rw [codomainMap_snd, Category.id_comp]
     change pullback.snd _ _ ≫ (lowerMatchingEvaluation r j).map (𝟙 a.factor.Z) = _
-    rw [Functor.map_id, Category.comp_id]
+    rw [CategoryTheory.Functor.map_id, Category.comp_id]
 
 omit [HasLimitsOfShape (MatchingIndex r j) C] [HasPullbacks C] in
 lemma domainMap_comp {a b c : FactorizationProblem r j C} (f : a ⟶ b) (g : b ⟶ c) :

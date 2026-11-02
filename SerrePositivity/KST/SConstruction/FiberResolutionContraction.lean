@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FiberResolutionContractionArrows
 public import SerrePositivity.KST.SConstruction.ResolutionNerveMap
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
 /-! # fiber 解消の各係数次数の自然な縮約

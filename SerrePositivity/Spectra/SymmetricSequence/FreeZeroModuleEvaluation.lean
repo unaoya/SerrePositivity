@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
+
 public import SerrePositivity.Spectra.SymmetricSequence.FreeZeroConvolution
 
 /-! # 生成次数零の係数加群のcotensorと各段の評価 -/

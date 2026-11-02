@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.TensorFamilyPowers
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
 
 /-!
 # 入力ブロック内の置換と有限テンソルの連結

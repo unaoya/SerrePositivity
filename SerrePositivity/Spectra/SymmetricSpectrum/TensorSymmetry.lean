@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric
 public import SerrePositivity.Spectra.SymmetricSpectrum.TensorLeftUnit
 
 /-! # 球面上のテンソル積の交換同型

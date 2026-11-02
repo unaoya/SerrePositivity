@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.BalancedTensor
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor
 public import SerrePositivity.Spectra.SymmetricSpectrum.Limits
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Equalizers
 

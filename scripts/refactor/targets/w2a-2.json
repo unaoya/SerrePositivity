@@ -1,0 +1,429 @@
+[
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveHomotopy",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveHomotopyUniverse",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopyUniverse",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexEndpoint",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexEndpoint",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexStart",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexStart",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveSimplexFirstFunctor",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexFirstFunctor",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.NerveVertices",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveVertices",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.SimplexChainVertices",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexChainVertices",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.ElementsChainLifting",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.CategoryTheory.ElementsNaturalPrecomp",
+    "dest": "SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsNaturalPrecomp",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R76",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Free",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.FreeModule"
+    ],
+    "docstring": "# Monoidal.Mod.Free\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.Free` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Limits",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleLimits",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleColimits"
+    ],
+    "docstring": "# Monoidal.Mod.Limits\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.Limits` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensor",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorRightModule",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorModule",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorIterated"
+    ],
+    "docstring": "# Monoidal.Mod.BalancedTensor\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.BalancedTensor` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorAssociator",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorLeftUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorRightUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorPentagon",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorTriangle",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorMonoidal"
+    ],
+    "docstring": "# Monoidal.Mod.Monoidal\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.Monoidal` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetry",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorHexagon",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorSymmetric"
+    ],
+    "docstring": "# Monoidal.Mod.Symmetric\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.Symmetric` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeRight",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeLeft",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreePair",
+      "SerrePositivity.CategoryTheory.Monoidal.FreeModuleMonoidal",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeUnit",
+      "SerrePositivity.CategoryTheory.Monoidal.BalancedTensorFreeAssociator"
+    ],
+    "docstring": "# Monoidal.Mod.FreeTensor\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.FreeTensor` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHom",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomAction",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleClosed",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFunctor"
+    ],
+    "docstring": "# Monoidal.Mod.InternalHom\n\n## 概要\n加群の内部 Hom、その作用、閉構造と関手性をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHom` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFree",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeLeftEvaluation",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransportComparison"
+    ],
+    "docstring": "# Monoidal.Mod.InternalHomFree\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowers",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerCoherence"
+    ],
+    "docstring": "# Monoidal.TensorPower.Basic\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPermutations",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjacentTranspositions",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid",
+      "SerrePositivity.CategoryTheory.Monoidal.PermutationAction"
+    ],
+    "docstring": "# Monoidal.TensorPower.Permutation\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockGenerators",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerLeftBlock",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossing",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction"
+    ],
+    "docstring": "# Monoidal.TensorPower.Blocks\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.TensorPower.FinBijection",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor",
+      "SerrePositivity.CategoryTheory.Monoidal.PowerBijectionAppend"
+    ],
+    "docstring": "# Monoidal.TensorPower.FinBijection\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.TensorPower.FinBijection` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Action",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.ActionProductComparison",
+      "SerrePositivity.CategoryTheory.Monoidal.TensorActionTransport"
+    ],
+    "docstring": "# Monoidal.Action\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Action` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Monoidal.Braided",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.BraidingPreservation",
+      "SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange"
+    ],
+    "docstring": "# Monoidal.Braided\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Monoidal.Braided` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Enriched.RepresentedMapping",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingAssociativity",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingArrowComposition",
+      "SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment",
+      "SerrePositivity.CategoryTheory.Monoidal.MappingWhiskering",
+      "SerrePositivity.CategoryTheory.Monoidal.RepresentedHomFunctor"
+    ],
+    "docstring": "# Enriched.RepresentedMapping\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.RepresentedMapping` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Enriched.Transport",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.LaxPointHom",
+      "SerrePositivity.CategoryTheory.Monoidal.ReverseComposition",
+      "SerrePositivity.CategoryTheory.Monoidal.TransportEnrichmentComparisons",
+      "SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment"
+    ],
+    "docstring": "# Enriched.Transport\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.Transport` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Enriched.Simplicial",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws"
+    ],
+    "docstring": "# Enriched.Simplicial\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.Simplicial` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Enriched.TensorCotensor",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Enriched.TensorCotensor",
+      "SerrePositivity.CategoryTheory.Enriched.TensorUnit",
+      "SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability"
+    ],
+    "docstring": "# Enriched.TensorCotensor\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Enriched.TensorCotensor` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Adjunction.Comparison",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionUnitAdjunction",
+      "SerrePositivity.CategoryTheory.Monoidal.HomEquivNaturality",
+      "SerrePositivity.CategoryTheory.AdjunctionHomLaws",
+      "SerrePositivity.CategoryTheory.PointwiseAdjunction",
+      "SerrePositivity.CategoryTheory.ParametrizedAdjunctionTransport",
+      "SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality",
+      "SerrePositivity.CategoryTheory.Monoidal.AdjunctionCompositeNaturality"
+    ],
+    "docstring": "# Adjunction.Comparison\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Adjunction.Comparison` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Quiver.FreePathComonad",
+      "SerrePositivity.CategoryTheory.Quiver.PathObjectTransport"
+    ],
+    "docstring": "# Quiver.FreePathComonad\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Quiver.FreePathComonad` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Quiver.PathMap",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Quiver.PathIntersections"
+    ],
+    "docstring": "# Quiver.PathMap\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Quiver.PathMap` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Simplex.Prefix",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Simplex.Prefix",
+      "SerrePositivity.CategoryTheory.Simplex.PrefixInterval"
+    ],
+    "docstring": "# Simplex.Prefix\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Simplex.Prefix` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Simplex.PresentationDegeneracies",
+      "SerrePositivity.CategoryTheory.Simplex.PresentationFaces",
+      "SerrePositivity.CategoryTheory.Simplex.PresentationEquivalence"
+    ],
+    "docstring": "# Simplex.GenRelEquivalence\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Simplex.GenRelEquivalence` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Under",
+    "sources": [
+      "SerrePositivity.CategoryTheory.LiftingProperties.Under",
+      "SerrePositivity.CategoryTheory.MorphismProperty.UnderFactorization"
+    ],
+    "docstring": "# Under\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Under` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "action": "merge",
+    "module": "SerrePositivity.CategoryTheory.Limits",
+    "sources": [
+      "SerrePositivity.CategoryTheory.Limits.InitialColimits",
+      "SerrePositivity.CategoryTheory.Limits.SequentialExtension",
+      "SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration",
+      "SerrePositivity.CategoryTheory.Groupoid.ThinComponents",
+      "SerrePositivity.CategoryTheory.FiniteBijection",
+      "SerrePositivity.CategoryTheory.FiniteBlockEquiv",
+      "SerrePositivity.CategoryTheory.CommaIdentities",
+      "SerrePositivity.CategoryTheory.RelativeArrow",
+      "SerrePositivity.CategoryTheory.FiniteBijectionAction",
+      "SerrePositivity.CategoryTheory.FiniteBijectionSum",
+      "SerrePositivity.CategoryTheory.FiniteBijectionShift",
+      "SerrePositivity.CategoryTheory.FiniteBijectionInduction"
+    ],
+    "docstring": "# Limits\n\n## 概要\n関連する圏論の構成と補題をまとめる。各構成の詳細は以下の元モジュールの説明を参照。\n\n## 方針\n元の宣言と証明を保持し、依存順に section を分けて配置する。\n\n## 規約\n公開宣言名・名前空間・宇宙変数の意味を変更しない。元の module docstring は各節に保存する。\n\n## 使われ方\n旧モジュールの利用元は `SerrePositivity.CategoryTheory.Limits` を直接 import する。",
+    "candidate": "R77"
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.KanQuillen",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.ResolutionHom",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  },
+  {
+    "module": "SerrePositivity.Inputs.Homotopy.SimplicialLevel",
+    "dest": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+    "action": "move",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R67",
+    "note": "モジュール単位の移動。宣言・名前空間・本文を保持し、全利用元の import を対応表で更新する。",
+    "downstream_imports": {}
+  }
+]

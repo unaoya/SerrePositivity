@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.AdjacentBraid
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 
 /-!

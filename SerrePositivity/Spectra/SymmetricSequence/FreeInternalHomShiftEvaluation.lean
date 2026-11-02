@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomTransport
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSequence.Limits
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInternalHomSequenceIso
 public import SerrePositivity.Spectra.SymmetricSequence.ConvolutionActionEvaluation

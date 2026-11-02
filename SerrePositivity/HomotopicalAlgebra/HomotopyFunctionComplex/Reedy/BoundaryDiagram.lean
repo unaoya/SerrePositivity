@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor
-public import SerrePositivity.CategoryTheory.RelativeArrow
+public import SerrePositivity.CategoryTheory.Limits
 
 /-! # The category of Reedy attaching diagrams at one fixed object
 

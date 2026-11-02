@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.ElementsChainLifting
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.ElementsChainLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BarConstruction
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic

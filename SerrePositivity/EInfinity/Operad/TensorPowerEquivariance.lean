@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.PowerBijectionFunctor
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerBlockPermutations
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.FinBijection
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
 
 /-!
 # 標準有限集合の全単射がテンソル冪に誘導する射

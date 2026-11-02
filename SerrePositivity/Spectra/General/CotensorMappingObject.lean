@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.TensorCotensorEnriched
-public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonAdjunction
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Mapping-object representability of the general spectrum cotensor
 

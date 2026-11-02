@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.GroupCompletion
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 
 /-!
 # 正則作用の分類圏と収縮

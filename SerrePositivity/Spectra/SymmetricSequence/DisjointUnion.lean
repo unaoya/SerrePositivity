@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.FiniteBijectionSum
+public import SerrePositivity.CategoryTheory.Limits
 
 /-! # 有限全単射圏の直和の互換入口
 

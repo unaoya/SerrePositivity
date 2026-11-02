@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.NerveSimplexEndpoint
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexEndpoint
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Elements
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal

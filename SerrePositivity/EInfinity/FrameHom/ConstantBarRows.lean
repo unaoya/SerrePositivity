@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.BarRowsCoproduct
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 

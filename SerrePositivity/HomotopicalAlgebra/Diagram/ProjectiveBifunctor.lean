@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Diagram.ProjectiveQuillen
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
-public import SerrePositivity.CategoryTheory.PointwiseAdjunction
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Pointwise Quillen bifunctors for the projective diagram model
 

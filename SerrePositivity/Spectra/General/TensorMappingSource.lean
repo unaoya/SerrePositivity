@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.TensorMappingObject
-public import SerrePositivity.CategoryTheory.Monoidal.ActionComparisonNaturality
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
 
 /-! # Source naturality of C-valued tensor mapping representability -/
 

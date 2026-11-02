@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.MonoidPowers
-public import SerrePositivity.CategoryTheory.Monoidal.PermutationAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 
 /-!
 # 可換モノイド対象の反復積の置換不変性

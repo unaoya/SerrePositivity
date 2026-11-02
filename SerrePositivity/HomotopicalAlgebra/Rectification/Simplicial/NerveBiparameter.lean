@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.NerveSimplexStart
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSimplexStart
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveCoherentFamily
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.NerveHomotopy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.KST.ProExcision.LinearizedHomotopy
 public import Mathlib.Algebra.Group.Hom.Defs
 public import Mathlib.CategoryTheory.SingleObj

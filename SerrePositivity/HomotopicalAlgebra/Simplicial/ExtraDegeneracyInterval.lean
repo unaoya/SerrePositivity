@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Simplex.PrefixInterval
+public import SerrePositivity.CategoryTheory.Simplex.Prefix
 public import SerrePositivity.CategoryTheory.Simplex.Naturality
 public import Mathlib.AlgebraicTopology.ExtraDegeneracy
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal

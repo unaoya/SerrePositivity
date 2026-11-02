@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "base": "b5bc733a8cd79f6c17f47b94952e3359225d1b8a",
+  "method": "layer_check.read_graph + composed move/merge graph + graphlib.TopologicalSorter + layer_check.analyze; no Lean execution",
+  "cycles": {
+    "before": [],
+    "after": []
+  },
+  "merge_targets": 25,
+  "merge_sources": 95,
+  "foundation_targets_unclassified": [],
+  "before": {
+    "module_count": 33176,
+    "direct_by_pair": {
+      "F1 -> F2": 17,
+      "F1 -> Stable": 23,
+      "F1B -> Stable": 54,
+      "F2 -> Derived": 3,
+      "F2 -> SerrePositivity.KST": 7,
+      "HomotopyLimits -> F2": 82,
+      "HomotopyLimits -> SerrePositivity.HomotopicalAlgebra": 2,
+      "HomotopyLimits -> SerrePositivity.KST": 16,
+      "HomotopyLimits -> Stable": 50,
+      "Stable -> F2": 40
+    },
+    "direct_violation_count": 294,
+    "foundation_violations": [],
+    "forbidden_closure": {
+      "W1": 1,
+      "W2a": 166,
+      "W2b": 166
+    }
+  },
+  "after": {
+    "module_count": 33106,
+    "direct_by_pair": {
+      "F1 -> F2": 17,
+      "F1 -> Stable": 23,
+      "F1B -> Stable": 54,
+      "F2 -> Derived": 3,
+      "F2 -> SerrePositivity.KST": 7,
+      "HomotopyLimits -> F2": 82,
+      "HomotopyLimits -> SerrePositivity.HomotopicalAlgebra": 2,
+      "HomotopyLimits -> SerrePositivity.KST": 16,
+      "HomotopyLimits -> Stable": 50,
+      "Stable -> F2": 40
+    },
+    "direct_violation_count": 294,
+    "foundation_violations": [],
+    "forbidden_closure": {
+      "W1": 1,
+      "W2a": 166,
+      "W2b": 166
+    }
+  },
+  "layer_increases": [],
+  "seconds": 32.254
+}

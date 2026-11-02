@@ -2,7 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
 
-public import SerrePositivity.CategoryTheory.SimplexChainVertices
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexChainVertices
 
 /-!
 # 中断した任意モデル源への一般化：SimplexChainParameter

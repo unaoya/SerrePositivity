@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.IntervalCuts.AdjacentCutSigns
 public import SerrePositivity.EInfinity.IntervalCuts.TensorAdjacentSwap
-public import SerrePositivity.CategoryTheory.Monoidal.PermutationAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Permutation
 public import SerrePositivity.GroupTheory.Coxeter.PermutationInduction
 
 /-!

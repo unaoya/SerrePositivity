@@ -5,7 +5,7 @@ import Lean
 指定したビルド済みモジュールの公開宣言を、型・本体・公理・属性とともに保存する。
 ## 方針
 名前正規化後の Expr の DAG ハッシュを保存する。定理参照は型、生成定義参照は値を再帰的にハッシュする。
-通常の定義参照は名前で区別し、定理自身の証明は比較対象にしない。
+通常の定義参照は名前で区別する。Meta.transform で Prop の部分項を固定標識へ置き換え、定理自身の証明は比較対象にしない。
 ## 規約
 private のモジュール接頭辞を除き、補助宣言には親の名前を付ける。
 ## 使われ方
@@ -149,6 +149,20 @@ def DeclSnapshot.fingerprint (rules : List (String × String)) (e : Expr)
   let (d, memo) := (exprDigest rules env proofIrrelevant e).run {}
   (d.value, memo.expressions.size, d.bytes)
 
+/-- Erase proofs before DAG hashing, also under binders opened by Meta.transform. -/
+def DeclSnapshot.eraseProofs (e : Expr) : MetaM Expr :=
+  Meta.transform e (pre := fun e => do
+    let isPrf ← try Meta.isProof e catch _ => pure false
+    if isPrf then
+      return .done (mkConst `_erased_proof)
+    else return .continue)
+
+/-- Term-level proof irrelevance; the pure DAG hasher remains available for diagnostics. -/
+def DeclSnapshot.termFingerprint (rules : List (String × String)) (e : Expr)
+    (proofIrrelevant : Bool := true) : MetaM (UInt64 × Nat × Nat) := do
+  let normalized ← if proofIrrelevant then eraseProofs e else pure e
+  return fingerprint rules normalized (some (← getEnv)) proofIrrelevant
+
 private def declarationKind (env : Environment) (info : ConstantInfo) (inst : Bool) : String :=
   if inst then "instance" else
   match info with
@@ -168,7 +182,7 @@ private def definingModule (env : Environment) (name : Name) : Option Name := do
   return env.header.modules[idx.toNat]!.module
 
 private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
-    (rules : RenameRules) (proofIrrelevant : Bool) : CoreM Json := do
+    (rules : RenameRules) (proofIrrelevant : Bool) : MetaM Json := do
   let env ← getEnv
   let simp ← Meta.getSimpTheorems
   let mut rows : Array Json := #[]
@@ -197,10 +211,10 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
       ("selection_start_line", toJson r.selectionRange.pos.line),
       ("selection_end_line", toJson r.selectionRange.endPos.line)]
     let priority ← Meta.getInstancePriority? name
-    let fingerprint := fun e => DeclSnapshot.fingerprint rules e (some env) proofIrrelevant
-    let ty := fingerprint info.type
-    let body := if info.isTheorem then none else
-      (info.value? (allowOpaque := true)).map fingerprint
+    let fingerprint := fun e => DeclSnapshot.termFingerprint rules e proofIrrelevant
+    let ty ← fingerprint info.type
+    let body ← if info.isTheorem then pure none else
+      (info.value? (allowOpaque := true)).mapM fingerprint
     for (field, stat) in [("type", some ty), ("body", body)] do
       if let some (_, distinct, bytes) := stat then
         if bytes > 1000000000 then
@@ -236,7 +250,7 @@ private def snapshot (modules : Array Name) (namespacePrefix : Option Name)
     if ← System.FilePath.pathExists path then
       sources := sources.push <| Json.mkObj [("module", toJson mod.toString), ("source", toJson (← IO.FS.readFile path))]
   return Json.mkObj [("schema_version", toJson (2 : Nat)),
-    ("hash_algorithm", toJson (if proofIrrelevant then "normalized Expr DAG mixHash proof-irrelevant v2" else "normalized Expr DAG mixHash v1")),
+    ("hash_algorithm", toJson (if proofIrrelevant then "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)" else "normalized Expr DAG mixHash v1")),
     ("proof_irrelevant", toJson proofIrrelevant),
     ("huge_terms", toJson huge), ("name_map", Json.mkObj (rules.map fun (k, v) => (k, toJson v))),
     ("modules", toJson (modules.map Name.toString)), ("sources", toJson sources),
@@ -292,7 +306,7 @@ unsafe def main (args : List String) : IO UInt32 := do
       return (key, toJson aliases)
     IO.FS.writeFile outputPath ((Json.mkObj owners).pretty ++ "\n")
     return 0
-  let result ← (snapshot modules namespacePrefix rules proofIrrelevant).toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
+  let result ← (snapshot modules namespacePrefix rules proofIrrelevant).run'.toIO' { fileName := "<decl_snapshot>", fileMap := default } { env := env }
   IO.FS.writeFile outputPath (result.pretty ++ "\n")
   IO.println s!"snapshot saved: {outputPath}"
   return 0

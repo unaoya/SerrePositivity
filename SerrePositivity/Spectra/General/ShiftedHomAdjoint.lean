@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.General.ShiftedHomSuspension
-public import SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange
+public import SerrePositivity.CategoryTheory.Monoidal.Braided
 
 /-! # The adjoint bonding map of a shifted Hom as a mapped original bonding map
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.ModuleInternalHomFreeNaturality
+public import SerrePositivity.CategoryTheory.Monoidal.Mod.InternalHomFree
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFree
 
 /-! # 自由原変数の内部Hom比較の自然性と作用の評価公式

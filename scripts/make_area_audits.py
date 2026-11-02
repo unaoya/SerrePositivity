@@ -27,7 +27,7 @@ AREAS = {
                 "Paper", "Inputs"], [
         "SerrePositivity/Paper/Section4/SupportedDescent.lean",
         "SerrePositivity/Inputs/Descent.lean",
-        "SerrePositivity/Inputs/Homotopy/KanQuillen.lean",
+        "SerrePositivity/InfinityCategories/ModelBridge/Inputs/KanQuillen.lean",
     ]),
 }
 # Subdirectories of an area that belong to another area.

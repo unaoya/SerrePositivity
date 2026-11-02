@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Spectra.General.TensorMappingSource
 public import SerrePositivity.Spectra.General.CotensorMappingSource
-public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
+public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
 public import Mathlib.CategoryTheory.Whiskering
 
 /-! # Natural isomorphisms of enriched tensor/cotensor Hom objects

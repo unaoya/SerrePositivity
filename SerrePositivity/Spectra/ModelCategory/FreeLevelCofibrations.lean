@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Spectra.ModelCategory.LevelAcyclicity
 public import SerrePositivity.Spectra.General.FreeLevelNaturality
 public import SerrePositivity.Spectra.SymmetricSequence.FreeInductionNaturality
-public import SerrePositivity.CategoryTheory.FiniteBijectionInduction
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.CofibrantTensor
 
 /-! # Evaluated free generators in a monoidal model category

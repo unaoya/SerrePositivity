@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpacePointedOrdinary
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceSimplicialEnriched
-public import SerrePositivity.CategoryTheory.Monoidal.TransportOrdinaryEnrichment
+public import SerrePositivity.CategoryTheory.Enriched.Transport
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
-public import SerrePositivity.CategoryTheory.Monoidal.SimplicialHomLaws
+public import SerrePositivity.CategoryTheory.Enriched.Simplicial
 
 /-! # 単体的写像対象と既存のスペクトルの圏構造の一致 -/
 

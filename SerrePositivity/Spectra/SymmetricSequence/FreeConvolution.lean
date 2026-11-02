@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Limits.InitialColimits
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.Spectra.SymmetricSequence.FreeSupport
 public import SerrePositivity.Spectra.SymmetricSequence.Convolution
 public import Mathlib.CategoryTheory.Monoidal.Closed.Basic

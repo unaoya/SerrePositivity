@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.FiniteBijectionShift
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.Spectra.SymmetricSequence.FreeConvolutionDesc
 
 /-! # 自由convolutionの誘導図式による表示

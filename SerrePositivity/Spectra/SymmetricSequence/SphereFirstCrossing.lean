@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CategoryTheory.Monoidal.TensorPowerFirstCrossingAction
+public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Blocks
 public import SerrePositivity.Spectra.SymmetricSequence.SpherePermutationAction
 
 /-! # 円の先頭因子を末尾へ移す巡回置換

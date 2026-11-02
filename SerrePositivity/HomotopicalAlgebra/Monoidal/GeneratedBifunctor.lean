@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 
-public import SerrePositivity.CategoryTheory.LiftingProperties.ParametrizedGeneration
+public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Monoidal.QuillenBifunctor
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
 

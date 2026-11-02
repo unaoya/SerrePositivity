@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSpectrum.MappingSpaceComposition
-public import SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
 
 /-! # 基点付き写像対象の左単位の評価 -/
 

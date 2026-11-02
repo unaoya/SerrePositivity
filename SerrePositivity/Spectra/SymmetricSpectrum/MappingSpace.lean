@@ -4,11 +4,11 @@ public import SerrePositivity.Spectra.SymmetricSpectrum.PointwiseTensorFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.InternalHomFunctor
 public import SerrePositivity.Spectra.SymmetricSpectrum.CotensorCurryNaturality
 public import Mathlib.CategoryTheory.Whiskering
-public import SerrePositivity.CategoryTheory.AdjunctionHomLaws
-public import SerrePositivity.CategoryTheory.Monoidal.MappingAdjunction
-public import SerrePositivity.CategoryTheory.Monoidal.MappingParametrizedAdjunction
-public import SerrePositivity.CategoryTheory.Monoidal.MappingUnitLaws
-public import SerrePositivity.CategoryTheory.Monoidal.RepresentedMappingEnrichment
+public import SerrePositivity.CategoryTheory.Adjunction.Comparison
+public import SerrePositivity.CategoryTheory.Enriched.RepresentedMapping
+
+
+
 
 /-! # 基点付き写像対象と各段のsmashの表現性 -/
 

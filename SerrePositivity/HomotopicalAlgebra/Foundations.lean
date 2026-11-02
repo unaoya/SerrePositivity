@@ -233,9 +233,9 @@ public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationLeftProper
 public import SerrePositivity.HomotopicalAlgebra.Localization.FrameArrowTests
 public import SerrePositivity.HomotopicalAlgebra.Localization.FrameTargetTests
 public import SerrePositivity.HomotopicalAlgebra.Localization.ResolutionHomGenerators
-public import SerrePositivity.CategoryTheory.Monoidal.InternalHomExchange
+public import SerrePositivity.CategoryTheory.Monoidal.Braided
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
-public import SerrePositivity.CategoryTheory.Enriched.EnrichedRepresentability
+public import SerrePositivity.CategoryTheory.Enriched.TensorCotensor
 
 /-!
 # 共有モデル圏一般論の入口
