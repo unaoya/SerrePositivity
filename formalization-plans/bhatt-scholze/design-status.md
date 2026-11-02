@@ -29,7 +29,13 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A1-4 Prop 6.2・Thm 6.3 | a1-design §2.4・2.5・§3 | A1/HodgeTateComparison | 未（a1 §8 の 5〜7） | A（Flat の形）・D（G-A1-4・5・13） |
 | A1-2 結晶側の対象 | a1-design §2.3 | 未 | 未（a1 §8 の 1・2） | E |
 | A1-3 Lemma 5.4・Thm 5.2 β・Cartier・Cor 5.5 | a1-design §3 の 3〜6 | 未 | 未（a1 §8 の 3・4） | E |
-| A2〜A9 | 未 | 未 | — | — |
+| A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
+| A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | 未 | — | C（G-A2-3・4）、G-A1-11 |
+| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | 未 | 未（a2 §7 の 2） | C（G-A2-2） |
+| G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
+| G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
+| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | 未 | 未（a2 §7 の 3・4） | C・D |
+| A3〜A9 | 未 | 未 | — | — |
 
 骨組みの規模：11 本、約 1,700 行（`sorry` 85、置き場の `True` 38）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e。
 
