@@ -49,7 +49,6 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 未（a5 §8 の 6・7） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
-| A1-5 Thm 6.4 の多項式・mod p | a1-design §6（追記） | 未 | — | A1-4 の装置 |
 | A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3 |
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
@@ -61,7 +60,8 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 未（a8 §8 の 2） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
 | A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。古典的で独立、Codex 向き。置き場所は調整役 |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 未（a8 §8 の 3・4・6） | G-A8-6・8・9、A5・A7 |
-| A9 | 未 | 未 | — | — |
+| A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
+| A1-5 Thm 6.4 の多項式・mod p | a1-design §9（追記予定） | 未 | — | A1-4 の装置 |
 
 骨組みの規模：41 本、約 5,200 行（`sorry` 198、置き場の `True` 259）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
 
@@ -152,7 +152,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 
 ## 4. 次の作業（提案）
 
-1. A9 の設計書（界面 `PerfectoidizationInterfaceCAlg` の組み立てと `nonempty_e3_of_cAlg`、E3 の消去の形）。A1-5 の設計の追記。
+1. A1-5 の設計（a1-design に追記）と骨組み。その後は中身の段階へ：調整役と暦（W2b・2b の後）、(A) の名前探し。
 2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
