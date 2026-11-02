@@ -1002,7 +1002,7 @@ lemma comparison_identity :
   have he := congrArg (fun a => a (ULift.up (𝟙 P)))
     (congr_app (fac W L P hP).inv_hom_id P)
   change (fac W L P hP).hom.app P ((fac W L P hP).inv.app P (ULift.up (𝟙 P))) = ULift.up (𝟙 P) at he
-  rw [he, Functor.map_id] at h
+  rw [he, _root_.CategoryTheory.Functor.map_id] at h
   exact h
 
 def inverseComparison : target L P ⟶ model W L P hP where
