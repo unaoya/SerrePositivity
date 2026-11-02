@@ -151,6 +151,9 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
   M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版を追加。時期・担当は M12 と同じ。
 - （同）Prop 8.10 の引用 3 件の `sorry` 定理は drafts/ の間は問題なし。`SerrePositivity/` に入れるときに `scripts/make_area_audits.py` の許可一覧の更新が要る
   （そのとき調整役に知らせる）。
+- （11-02）論文の層の **2a**（CA の perfectoid 部分を BS へ、CLMST の整理、Perfectoidization* 12 本の Perfectoid/ への統合）が 11-05 の全ビルドに向けて開始。
+  **2a の取り込みまで BhattScholze/・CLMST/ の Lean には手を入れない**（drafts/ はそのまま）。取り込み後に改名表（BhattScholze/・CLMST/・prop247_ の宣言名）が回る。
+  **2b**（HA/DerivedCompletion）は 11-06 の見込みで、その改名表も回る。Codex レビュー W9 は読むだけなので影響なし。
 - （main 26f9f7fc5）Lemma 10.12（A8-3）の置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`
   （層別の本体）。どちらも 2a の後に新規ファイルだけで入れ、論文の層へ名前を予約。独立した Codex の単位、担当は 2a の後。A8-1・A8-2・A8-4 の仮置きも問題なし。
 
