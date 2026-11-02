@@ -127,3 +127,18 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 **W2c への引き継ぎ**：180 本とその経由辺（`w2b-section8-forward-closure-stop.json` の `example_paths`・`outside_by_prefix`）を停止点 1 の報告に「W2c の入力」として添える。処置は W2c。
 
 **再開**：置き先の確定 → R37・R38 の表 → validator・dry-run → 適用後の模擬（直接違反・ratchet・`--enforce W2b` の見込み）→ **停止点 1**。
+
+## 10. 追記（2026-11-02 夜、§5-1 の停止への回答：上移動の連鎖は宣言単位で閉じる）
+
+**受領**：R38 で sifted・PΣ を本当に使う HomotopyLimits の上移動候補 6 本・下位利用者の辺 7 本（実参照 4、未検出 3）、R37/R38 の宣言参照表、690 本の採取、180 本は W2c の入力に記録、3ac6cf89d。
+
+**規則**（§1 の (iii) の精密化）：
+
+1. **未検出の 3 辺**（`FiniteCoherentProductNativeLegs → FiniteFamilyOriginalColimitTransport`、`FiniteCoherentProjectionCocones → FiniteProductIndexTransport`、`FullHomColimitDetection → CoYonedaLimitReflection`）：import は不要とみなして**削除**（prune）。確認は内部ビルドで。失敗したら instance・notation 経由の参照なので「あり」に戻して 2 へ。
+2. **実参照のある辺** M → U（U が下位利用者）：U が参照する M の宣言の集合 D_M を取り、snapshot の `used_constants` を**モジュール内で推移的に**辿って、D_M が sifted・PΣ（F2 の定数）に依存するかを判定する。
+   - 依存しない → **M を split**：D_M とそのモジュール内の依存先を `keep`（HomotopyLimits に残す）、残りを `moved`（F2 へ）。これが優先（計画の「一般補題は下の層へ」）。
+   - 依存する → **U も上移動の候補**になる。U の下位利用者について同じ判定を繰り返し、連鎖を閉じる。閉じた集合 S（候補 6 本を含む）を**一群として F2 へ move** してよい条件は、(a) S の外からの利用者がすべて F2 以上か中核の外（KST・Spectra など、import 行の書き換えだけで済む）、(b) |S| ≤ 30 本。(b) を超えるか、(a) に反する利用者（F1・F1B・HL・Stable の、S に入れられないモジュール）が残れば、**そのモジュール名と宣言名を挙げて止める**。
+3. S の置き先は F2 の既存の下位ディレクトリ（`F2/Presentable/` か `F2/Ind/`。PΣ・sifted の正本の隣）。名前空間は変えない（R54）。
+4. 判定の表（辺 → D_M → PΣ 依存の有無 → split／連鎖）を停止点 1 の報告に付ける。
+
+**再開**：上の規則で R38 の処置を確定 → validator・dry-run → 適用後の模擬 → **停止点 1**。
