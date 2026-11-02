@@ -1,4 +1,4 @@
--- 将来の置き場所：E∞ 側の一般論（Mathew の descendability。BS 固有ではない。置き場所と担当は調整役、M12〜M14 と同じ扱い）
+-- 将来の置き場所：SerrePositivity.EInfinity.Descendable.*（新設。調整役の決定、main 86acd98db、M15。E∞ を使わない thick ⊗-ideal・index・安定性は Derived/ へ下ろしてよい。時期・担当は段 G、A5 の中身の段階で）
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §2.4、G-A5-1。基準コミット 972bb7f53。ビルドしない。
 module
 
