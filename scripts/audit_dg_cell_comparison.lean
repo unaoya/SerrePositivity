@@ -7,9 +7,6 @@ run_cmd do
   let modules : Array Name := #[
     `SerrePositivity.DifferentialGraded.Resolution.Basic,
     `SerrePositivity.DifferentialGraded.Resolution.Cell,
-    `SerrePositivity.DifferentialGraded.Resolution.Cell,
-    `SerrePositivity.DifferentialGraded.Resolution.Cell,
-    `SerrePositivity.DifferentialGraded.Resolution.Cell,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)

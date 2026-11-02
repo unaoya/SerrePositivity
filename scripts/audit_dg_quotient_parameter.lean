@@ -21,11 +21,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws,
-    `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration,
     `SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Construction,
-    `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation,
-    `SerrePositivity.DifferentialGraded.Quotient.ParameterExtension]
+    `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
