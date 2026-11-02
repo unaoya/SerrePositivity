@@ -103,3 +103,13 @@ worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込�
 1. **停止点 2 の条件付き事前承認**：内部ビルド（残り 42 本を含む 48 統合先）が通り、after snapshot v3b の保存比較で**未説明の不一致が 0**（`_proof_N` の束ね・生成名・Prop インスタンスの個別照合で説明できるものは説明済みとみなす）で、当てた処置が判断表の範囲（補充の import・完全修飾・宇宙の明示・束縛子の型の明示・heartbeat）だけなら、**Claude の承認を待たずに §3.2 へ進んでよい**：外からの付け替え → 監査の一覧 → 下流ビルド（鍵のもと）→ 層検査（例外 3 件の削除、内部 tier は違反 0 のときだけ）→ README の 126 本の表 → verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）。停止点 2 の内容は停止点 3 の報告にまとめて書く。条件を満たさなければ従来どおり止める。
 2. **鍵の優先**：いま走っている論文の層の 274 本のビルドが終わったら、次は DG（round 3 → 残り → 下流）。∞ の内部ビルドは DG の下流の後（明朝）に回す（Claude が ∞ に伝える）。論文の層も今夜はこれ以上ビルドしない。
 3. 下流ビルドの見込みは 4.5〜7 時間。失敗 round は判断表で処理し、§5 の条件に当たるときだけ止める。朝に停止点 3 を報告。
+
+## 11. 追記（2026-11-02 22:15、下流 round 1 の失敗への事前回答：DG の外のファイルにも注釈型の処置を許す）
+
+下流 round 1（22:04 開始、506 根）で `InfinityCategories/Derived/Semifree.lean:69` が `HasColimitsOfShape (Discrete E.Index) (Complex S)` の instance 探索の heartbeat 超過（`synthInstance.maxHeartbeats` 20000）で失敗している（Claude が 22:10 にログで確認）。統合先の import の和で instance の探索空間が広がった型で、宣言の意味は変わらない。
+
+**事前承認（この束の下流 round 全体で有効）**：DG の外のファイル（InfinityCategories・KST・EInfinity・Asymptotic・Paper・監査）でも、判断表の注釈型の処置を**止めずに当ててよい**：
+1. `set_option synthInstance.maxHeartbeats`／`maxHeartbeats` の section 内または `in` での引き上げ、または内部で行ったのと同じ「必要な instance を `letI`／`haveI` で局所に束縛して探索を切る」処置（b89ea0f97 の型）。
+2. 補充の import（禁止辺にならないもの）、完全修飾、宇宙の明示、束縛子の型の明示。
+3. 条件は従来どおり：before/after の保存比較（v3b）で型・本体・公理・属性が一致、別コミット「下流の修飾・heartbeat」、停止点 3 の報告にファイル・行・処置の一覧。宣言の本文・型・名前を変えないと直らない場合だけ止める（§5-4）。
+4. ∞ の束（`infra/if-w2b`）が同じファイルを触っている可能性があるので、処置は**最小の行**に限る（import 行の追加、`set_option … in` の 1 行、修飾の 1 語）。取り込み時の衝突は Claude が両方を残して解決する。
