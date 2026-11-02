@@ -60,12 +60,13 @@ def expression_value(row, field, mapping, use_hash):
     return value
 
 
-def normalized(snapshot, mapping, use_hash=False, module_map=None):
+def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_parents=None):
     if snapshot['schema_version'] not in (1, 2):
         raise ValueError('unsupported snapshot version')
     module_map = module_map or {}
     records = {}
     reference_kinds = {}
+    report_proof_parents = report_proof_parents or set()
     proof_irrelevant = snapshot.get("proof_irrelevant", False)
     skipped = set()
     sources = {s['module']: s for s in snapshot.get('sources', [])}
@@ -113,7 +114,14 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None):
     for name, record in records.items():
         parent = (record['parent'], name[1])
         if parent != name and parent in records:
-            if records[parent]['kind'] == 'theorem' and re.search(r'\._proof_\d', name[0]):
+            proof_parent = records[parent]['kind'] == 'theorem' or (
+                proof_irrelevant and records[parent]['kind'] in ('def', 'abbrev', 'instance'))
+            if proof_parent and re.search(r'\._proof_\d+(?:$|\.)', name[0]):
+                # The proof marker removes this helper from a matching parent's
+                # meaning. If that parent's type/body differs, retain the helper
+                # as its own row so the report shows both differences.
+                if parent in report_proof_parents:
+                    grouped[name] = dict(record)
                 continue
             if proof_irrelevant and reference_kinds[name] in ('proof', 'generated'):
                 # These helper references are already expanded by the parent's
@@ -184,6 +192,16 @@ def compare(before, after, mapping=None, module_map=None):
     else:
         a, skipped_a = normalized(before, mapping or {}, module_map=module_map)
         b, skipped_b = normalized(after, {})
+    changed_parents = {
+        key for key in a.keys() | b.keys()
+        if key not in a or key not in b or any(
+            a[key].get(field) != b[key].get(field) for field in ('type', 'body'))}
+    if changed_parents:
+        a, skipped_a = normalized(before, rules if hashed else mapping or {},
+                                  use_hash=bool(hashed), module_map=module_map,
+                                  report_proof_parents=changed_parents)
+        b, skipped_b = normalized(after, rules if hashed else {},
+                                  use_hash=bool(hashed), report_proof_parents=changed_parents)
     def identity(key):
         return {'name': key[0], **({'module': key[1]} if key[1] else {})}
     changes = []
