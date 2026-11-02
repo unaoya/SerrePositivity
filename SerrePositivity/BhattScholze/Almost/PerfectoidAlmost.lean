@@ -501,7 +501,7 @@ Prop 10.2（印刷 p.78）の導来完備 almost 零加群の拡大閉性をま�
 ルートの一つの import と、KL-T・CLMST への証明済み公開定理の受渡しに使う。
 -/
 
-section PerfectoidAlmostModCategoryPart
+@[expose] public noncomputable section PerfectoidAlmostModCategoryPart
 
 namespace SerrePositivity.BhattScholze
 open CategoryTheory
