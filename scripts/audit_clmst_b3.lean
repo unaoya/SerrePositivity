@@ -1,4 +1,4 @@
-import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers

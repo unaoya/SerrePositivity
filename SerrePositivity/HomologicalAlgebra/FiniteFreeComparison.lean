@@ -6,7 +6,7 @@ public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Mathlib.RingTheory.TensorProduct.IsBaseChangePi
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 
 /-! # 有限自由加群との比較写像と錐の同種

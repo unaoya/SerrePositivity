@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarRestriction
 
 /-! # Derived completeness of an integral perfectoid algebra

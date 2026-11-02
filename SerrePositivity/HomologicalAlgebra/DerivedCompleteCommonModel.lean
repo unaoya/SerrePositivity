@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalIdeal
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale

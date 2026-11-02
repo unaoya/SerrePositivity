@@ -155,10 +155,9 @@ public import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 public import SerrePositivity.CommutativeAlgebra.Perfection
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationNilpotent
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.ContinuousDerivation

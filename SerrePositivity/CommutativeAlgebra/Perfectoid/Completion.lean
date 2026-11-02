@@ -1,20 +1,36 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import Mathlib.RingTheory.AdicCompletion.RingHom
 public import Mathlib.RingTheory.AdicCompletion.Completeness
 
 /-! # 完備化を経由する perfectoid 化
 
-整 perfectoid 環への環準同型は、古典的な `p` 進完備化へ一意に延長する。
-したがって完備化の perfectoid 化は、元の環の perfectoid 化でもある。
-ここでは存在定理を引用せず、完備化の普遍性だけを証明する。
+## 概要
+
+整 perfectoid 環への環準同型は、古典的な `p` 進完備化へ一意に延長する。したがって完備化の perfectoid 化は、元の環の perfectoid 化でもある。
+
+## 方針
+
+存在定理を引用せず、完備化の普遍性（`IsAdicComplete` への一意な延長）だけを証明する。
+
+## 規約
+
+旧 `CommutativeAlgebra/PerfectoidizationCompletion`。
+
+## 使われ方
+
+BhattScholze の Perfectoidization、CLMST。
 -/
 
 @[expose] public noncomputable section
-set_option backward.isDefEq.respectTransparency false
 
 universe u
+
+section PerfectoidizationCompletionPart
+
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity
 
 variable (S T : Type u) [CommRing S] [CommRing T] (p : ℕ)
@@ -192,3 +208,5 @@ theorem to_completion [Fact p.Prime] {f : S →+* C}
 end IsPerfectoidization
 
 end SerrePositivity
+
+end PerfectoidizationCompletionPart
