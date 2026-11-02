@@ -77,3 +77,11 @@ worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込�
 4. **universe の 4 本**（`Category.IdempotentTelescope`・`Category.EquivalenceComparison`・`Derived.AssociatorMiddleRestrictionResolved`・`Derived.AssociatorSecondMiddleRestrictionResolved`）：before/after の型ハッシュで回帰確認の対象。宇宙引数の順序差を表示だけの差として処理しない（報告のとおり）。
 5. **草案の現在値**（48・608・1,621 行、private_renames 3 箇所）を正とし、旧 `dg-w3-merge-dryrun.md` の値（611 元・1,601 行）は本報告で置き換える。
 6. **main の取り込み後の再確認**：∞ の束（IF-W2a-2：CategoryTheory の統合 25 群と Nerve まわりの移動）が今夜 main に入り、翌日 1-4 が入る。`infra/dg-w3` を切ったあと §3.0-1 の `--check` と、**閉包の差分だけ**（新たに届く短名の候補が増えないか）を再確認する。静的検査の全再実行は要らない。
+
+## 8. 追記（2026-11-02 夕、1-4 を待つ間の道具の回：ビルドなし、`infra/dg-w2` の上で別コミット）
+
+1-4 の取り込みまでの待ち時間に、DG の道具だけを直す（Lean は触らない）：
+
+1. **`merge_modules.py --check` に循環検出を加える**：統合先どうしの import グラフ（統合元の import の和を統合先に付け替えたもの）に循環があれば、`--check` を失敗させ、循環に含まれる統合先と元の辺を報告する。IF-W2a-2 §6-4 で見つかった `Mod.InternalHom ↔ Mod.Closed` の形を試験に再現する（小さな模擬モジュールで）。既存の `--check` の出力は変えない（追加だけ）。
+2. **`test_merge_modules.py` の既存の失敗** `test_snapshot_cli_delegates_and_ignores_module`（IF-W0-4 の停止点 2 で報告されたもの）を直す。原因が道具側なら道具を、試験側なら試験を直し、どちらだったかを報告する。
+3. 試験は全部 PASS にして報告（短くてよい）。これは DG-W3 の事前検査には影響しない。main への取り込みは、DG-W3 の開始時に `infra/dg-w3` を切るときに一緒に入る（Claude が cherry-pick してもよい）。

@@ -257,7 +257,7 @@ InfinityCategories/
 | IF-W0-4 | `layers.json` への CategoryTheory の一般部分・トップ階層 12 本・GroupTheory/Coxeter の基盤としての登録、verify runner のメモリ予算つき並列化（監査ごとの RSS の記録、長い順、予算 45 GB）。**R75 は W1＋W2a の束へ、`merge_modules.py`・build lock・warm-up の道具は DG の Codex（DG-W2(a)）へ移管（10-31）** | W0（IF-W0-3 の後） |
 | IF-W1W2a | 一つの束：R79（2 コミット）＋ R75 ＋ w1.json ＋ w2a.json を適用 → DG-W1 後の main を取り込み、`.lake/build` を複製 → 下流の一回ビルド → 保存検査 → verify（§10.12〜10.14 の規則）。段 A・B・閉包の切断（R26・R39・R66・R71・R49b・R50）は w1.json の中身として同じ束に含まれる | W1＋W2a |
 | IF-W2a-2 | R76 → R77 → R67（Inputs/Homotopy）。`merge_modules.py` がそろってから | W1＋W2a の後半 **完了（11-02、5c909058e）** |
-| IF-W2b | R73 → R37 → R38 | W2b |
+| IF-W2b | R73 → R37 → R38 | W2b | 指示書 [infinity-codex-w2b.md](infinity-codex-w2b.md)（11-02）。B は archive に決定（§9-2） |
 | IF-W2c | 段 E | W2c |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
 
@@ -327,7 +327,7 @@ InfinityCategories/
 ## 9. 未決の点（ユーザーまたはコーディネータの判断が要る）
 
 1. **（10-28 決定済み）モデル圏**：中核の下に入れない（R72）。ModelBridge の骨組みは IF-W0-2 で作成済み。R72 は W2a。
-2. **（10-28 方針決定）FilteredExchange**：R73 の三分割で処置する。archive へ移す 1,727 本を、診断として残すか、archive へ移すか、削除するかは R60 で決める。
+2. **（10-28 方針決定、11-02 決定済み）FilteredExchange**：R73 の三分割で処置する。集約からしか届かない約 1,727 本は **`SerrePositivity/Archive/InfinityCategories/FilteredExchange/` へ archive**（追跡するがビルドしない）。`audit_infinity_f2_exchange` は area ごと削除し、使われている側は移った先の層の監査に入る（IF-W2b §1）。
 3. **（10-28 決定済み）名前空間**：R54 で最後にまとめて付け替える。新しく作る正本は最初から正しい名前空間で書き、移動のたびに名前空間の対応表を記録する。
 4. **（10-28 決定済み）R50**：束ねた定義を残し、束ねない形はそれを包む定義と同値補題として加える。試作（旧 R50p）は不要になった。
 5. **Kan と Core の順序**：本計画は、移動だけで済む Core < Kan を採る。外部レビューが支持する Kerodon の順序（Kan < Core）に揃えるには、Kan の証明から Core への依存を外す書き換えが要る。段 G の後で改めて判断する。

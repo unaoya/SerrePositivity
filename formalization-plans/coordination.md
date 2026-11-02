@@ -24,6 +24,7 @@
    - 既存の `.lake/build` の中身はキャッシュに入らない。効き始めるのは、この設定の後に `lake build` で作った分から。各 Codex は新しい shell を開くか `source ~/.zshenv` してから `lake` を使う（`lake env | grep LAKE_ARTIFACT_CACHE` で確認）。
    - 古い版が溜まるので、窓の区切りで `lake cache clean`（全消去）か、ディスクを見て判断する。
    - rsync の温め（`warm_build_dir.sh`）は、キャッシュに入っていない成果物が要るときの予備に格下げ。
+   - **掃除（11-02 決定）**：`lake cache clean` は空きが 150 GB を切ったときだけ、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。定期的な掃除はしない（11-02：22 GB・331,250 本、空き 455 GB）。
 4. verify は `VERIFY_JOBS=3`（最長の監査が RSS 19 GB）。中間の確認には `VERIFY_CACHE=1`（gate:false）を使ってよい。
 5. 土台（HomologicalAlgebra・CategoryTheory・HomotopicalAlgebra・DG の Complexes/Category/Module/Functor）に触る変更は、下流ほぼ全部（約 9,000〜20,000 本、単独で 3〜8 時間）を再ビルドする。これを起こす変更は窓ごとに一束。
 6. 実測（[verify-build-costs の記録](dg-cleanup-plan.md#5a-再ビルドの費用と規則2026-10-30dg-w1-の実測から)）：DG-W1 の土台 6 本の import 書き換えで 11,250 本・6 時間 57 分（3 セッション同時）、verify 1 時間 49 分。
@@ -41,11 +42,12 @@
 | 7 | DG-W3：土台 5 ディレクトリの統合（48 統合先・608 元）＋残りの D5＋層の仕上げ（PerfectComplex の例外を外す、126 本の一覧） | 下流約 16,300 本、単独 4.5〜7 時間＋verify | #6（1-4 の後） | 指示書 作成済み（11-02）：[DG-W3](dg-codex-w3.md)。**事前の静的検査は完了**（11-02 夕、`ef951fa5d`：名前解決の候補 4 箇所・universe 608/608・最大 1,621 行。回答は §7）。開始は 1-4 の後に合図 |
 | 8 | IF-W0-4（完了）→ **IF-W2a-2（R76・R77・R67、下流 11,888 本 1 回）：#5 の直後、1-4 の全体ビルドより先** | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | **IF-W0-4 完了・取り込み済み**（11-01 夜、bddb9b570：Foundation 103 本・違反 0、runner のメモリ予算。初回は全件未計測で 2 並列・監査 44 分、次回から実測値で並列化）。IF-W2a-2 は草案（停止点 1）を先に、束のビルドは DG-W2(b) の後。**IF-W2a-2 完了・取り込み済み**（11-02 16:40、merge 5c909058e：R76 move 9・R77 95 → 25・R67 move 3、修飾 4・宇宙の明示 2、下流 11,550 本 1 時間 55 分、保存比較 v3b 2,033 宣言一致、verify 100/100 gate:true 39 分 45 秒・RSS 最大 37.5 GB、層検査 CategoryTheory → HotA 直接辺 1 → 0。main の温め 36 秒・29,714 ジョブ） |
 | 9 | 論文の層の区切り 2a・2b（CA の perfectoid 部分を BS へ、CLMST の分離、DerivedCompletion 第二層） | 先方の全ビルド 1 回ずつ | BS は設計のみ（Lean は `drafts/` 以下）なので時期は自由。他の全ビルドと重ねない。`BhattScholze/` の改名の旧→新の対応表を Claude が BS セッションへ回す | 先方。準備は 1-4 の後 |
+| 10 | **IF-W2b**（R73 FilteredExchange の三分割：A 約 369 本を正しい層へ・B 約 1,727 本を `Archive/` へ・PiCriterion 33 本を `Derived/` へ、R37 Stable への逆向き辺 127、R38 F2 への逆向き辺 139。終了時に中核の層の順序の直接違反 0） | 草案と内部検証は小さなビルドだけ。**下流の一回ビルド＋verify は DG-W3 の後（見込み 11-04）** | #7（DG-W3）の後に Claude が合図 | 指示書 作成済み（11-02 夕）：[IF-W2b](infinity-codex-w2b.md)。草案は今すぐ |
 
 ## 4. いまの待ち条件（10-31 夜）
 
-- ∞ Codex：**IF-W2a-2 完了・取り込み済み**（11-02 16:40、5c909058e）。次は IF-W2b（R73 → R37 → R38）の指示書を Claude が書く。それまでビルドなし。道具の回（`merge_modules.py` の循環検出、Python 試験の既存失敗、runner の既定予算 40 GB、`lake cache clean` の方針）は W2b の指示書に含めるか別に出す。
-- DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。
+- ∞ Codex：**IF-W2a-2 完了・取り込み済み**（11-02 16:40、5c909058e）。**IF-W2b の指示書を渡した（11-02 夕）**：草案（ビルドなし）→ 停止点 1 → 適用と内部検証（小さなビルド）→ 停止点 2 → **下流ビルドと verify は #10 の合図（DG-W3 の後）**。道具の回：runner の既定予算 40 GB とキャッシュ掃除の方針は ∞（IF-W2b §7）、`merge_modules.py` の循環検出と既存の試験の失敗は DG（DG-W3 §8、1-4 待ちの間）。
+- DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。待ち時間の道具の回（[DG-W3 §8](dg-codex-w3.md)：`merge_modules.py` の循環検出、`test_merge_modules.py` の既存の失敗）。
 - BS セッション：設計のみ再開（11-02、A 案 A0〜A1）。ビルドなし、Lean は `formalization-plans/bhatt-scholze/drafts/` 以下のみ、所有範囲だけを `--only` で main に直接コミット。コードを書く段階に入るときは BS が暦の空きを相談し、Claude が §3 に載せる。
 - 論文の層：**11-02 16:45 に「全ビルド可」を合図**（∞ の束が main に入った。1-4 の全ビルドと verify は今夜〜明朝、他の全ビルドと重ねない。取り込み後に Claude が main を温め、DG-W3 を合図）。再開の合図と一緒に伝えること：(1) 2b の改名表は `BhattScholze/` だけでなく `HomologicalAlgebra/DerivedCompletion/` の分も BS セッションへ回す（Claude 経由）。(2) 2b の後に BS の共有一般論 3 本が入る新しい下位ディレクトリ `HomologicalAlgebra/Cosimplicial/`・`CommutativeAlgebra/DeRham/` の名前を予約（HA の層の規則の中では第一層＝一般論の扱い）。凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
