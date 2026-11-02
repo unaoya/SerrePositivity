@@ -174,6 +174,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
 | 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で編集が完了（2026-11-02、静的な検査は通過、変更モジュールと直接 importer のビルドは ∞ の W2b の後）。全ビルドは 11-05（記録は下の「区切り 2a の記録」） |
+| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）を編集済み（2026-11-02、未ビルド）。B（Pair の置き換え・PD の d = 0・`.choose` の def 化・完備化と完全関手の可換）は 11-03 以降、項目ごとに別コミット。全ビルドは 11-06 |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -332,6 +333,21 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   - 2b へ：Prop247ConeComparison・Prop247Cone・Prop247RankCompleteness の一般部分（HA/DerivedCompletion へ）。
   - `hetale` の長い仮定を名前つきの述語にする件、Corollary404 などの不要な import（§8.4）は未着手。
   - CA → HA の import は 2a の前から 40 か所以上ある（層の規則の対象外）。
+
+区切り 2b の記録（2026-11-02 夜、worktree refactor/2b。A のみ、未ビルド）：
+
+- 条件（ユーザー、coordination.md 207343063）：B は (i) DerivedCompletion の外から使われる宣言の型を変えない（snapshot の型ハッシュで確認、def の
+  本体は可）、(ii) BS・CLMST の証明は編集しない、(iii) 11-05 までに終わらない項目は段階 3 へ、(iv) 小さなビルドは coordination.md §2-4a。
+- A：HomologicalAlgebra/DerivedCompletion を 135 → 44 本（§3.5・§3.6 の表の 28 群）。表どおりに組むと import が循環する箇所は群を分けた
+  （Koszul/{Tower, Complete, Milnor}、ModuleComplete/{Basic, Closure, Presentation}、ComplexCompletion/{Basic, Reconstruction}、Principal の Classical、
+  CompletionReflection から KProjectiveProduct）。ModuleResolution・PairZeroCompletion・RegularCompletionPure・KProjectiveProduct・PrincipalClassicalComparison は
+  単独のまま（循環を避けるため）。宣言名は変えない。BS・CLMST は import 行だけ。
+- 2a から回した CLMST の一般部分：Prop247Cone・Prop247RankCompleteness の一般の 6 定理 → DerivedCompletion/IntegralPerfectoid（内容の名前に改名）、
+  Prop247ConeComparison の 4 宣言 → DerivedCompletion/CompletedTensorVanishing（名前空間 `DerivedCompletion`）。
+- 計画で削除とされていた ModuleConeCoordinates・ModuleConeNaturality・AdicTower・CompletedTensorModuleReduction・FlatResidueLimitTorsion・
+  PowerTorsionTorProduct は既にない。
+- 2a の小さなビルド（98484d01e、274 本）の失敗 3 件を修正（aae233fb5 ほか）：新しく書いたファイルの `noncomputable` の抜け 2 件と、BS の名前空間へ
+  移したファイルで BS の別名（`alias compatibleRootFamilyIdeal := …`）に修飾なしの名前が当たった 1 件。失敗した 3 本の下流は未検証。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
