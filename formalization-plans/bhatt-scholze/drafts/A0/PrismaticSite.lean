@@ -1,0 +1,275 @@
+-- 将来の置き場所：SerrePositivity.BhattScholze.Prismatic.Site（仮。BhattScholze/ の下、原典 §4.1）
+-- 設計書：formalization-plans/bhatt-scholze/a0-design.md §2.1〜2.4・2.7、単位 A0-1。基準コミット 972bb7f53。ビルドしない。
+module
+
+public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
+public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
+public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
+public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
+public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
+public import Mathlib.CategoryTheory.Sites.Grothendieck
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.SetTheory.Cardinal.Arithmetic
+-- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean（将来 …InfinityCategories.Sheaves.*）を import する。
+
+/-!
+# prismatic site とその構造層（BS 著者版 Def 4.1、Rem 4.6、Not 4.16）
+
+## 概要
+向き付き有界 prism (A, (d)) と p 完備な A/d 代数 R について、原典 Def 4.1 の prismatic site (R/A)_Δ を定義する：
+対象は (A,(d)) 上の有界 prism (B, dB) と R → B/dB の組、被覆は忠実平坦な prism の射、構造層 O_Δ(B) = B、Ō_Δ(B) = B/dB。
+Not 4.16 の Δ_{R/A} := RΓ((R/A)_Δ, O_Δ) を、∞ 層の層 Sheaves の `derivedGlobalSections` で定義する。
+Rem 4.6 の完全 prismatic site と、O_Δ の Frobenius（Construction 7.6 が使う）も定義する。
+
+## 方針
+環の側の圏 `PrismOver`（prism の射で、R からの写像と両立するもの）を作り、site はその opposite（原典 Cor 3.12 の「prism の圏の opposite」）。
+平坦位相は忠実平坦な射の篩が生成する最小の Grothendieck 位相（Mathlib の完備束の `sInf`）。site の公理（Cor 3.12 前半）は
+「被覆篩は忠実平坦な射で refine できる」という定理として別に入れる（設計書 D22）。大きい site は濃度 ≤ κ で切り落とし
+（ノート D16、κ = (#A + #R + ℵ₀)^{ℵ₀}）、本質的に小さいことを定理にして Mathlib の `SmallModel` を site にする。
+
+## 規約
+基底は向き付き（ノート D5）で有界（既存の形：A/d の p 冪ねじれが一様な冪で消える）。R に smooth 性は仮定しない（定義は任意の
+p 完備 A/d 代数について、定理は多項式代数について）。RΓ は Čech 層の層化と大域切断（ノート D17：古典的 RΓ との差は離散な層では消える）。
+値はまず D(A)（`derivedInfinityCategory A`）。CAlg 値は A2・A4。
+
+## 使われ方
+Constr 4.17・4.18（Čech–Alexander 複体、`drafts/A0/CechAlexander.lean`）、Cor 3.12（`drafts/A0/FlatDescent.lean`）、A1 の Thm 4.11 の定式化、
+A5 の Prop 8.5（完全 site）。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory SSet
+open scoped Simplicial Cardinal
+
+namespace SerrePositivity.BhattScholze.Prismatic
+
+open SerrePositivity.DerivedCompletion
+
+variable {p : ℕ} [Fact p.Prime]
+
+/-! ## 有界 prism -/
+
+/-- 概要：向き付き prism が有界：A/d の p 冪ねじれが一様な冪 p^N で消える（原典 Def 3.2 の「有界」）。
+方針：既存の有界性の仮定（`Prism/Bounded/Completeness` の `hB`）をそのまま述語にする。
+規約：A 自身の p ねじれには触れない。
+使われ方：site の対象の条件、Lemma 3.7。 -/
+def IsBoundedPrism {A : Type u} [CommRing A] (P : OrientedPrism p A) : Prop :=
+  ∃ N : ℕ, ∀ (n : ℕ) (x : A ⧸ P.ideal),
+    (p : A ⧸ P.ideal) ^ n * x = 0 → (p : A ⧸ P.ideal) ^ N * x = 0
+
+variable {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
+variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]
+
+/-! ## 濃度の切り落とし（ノート D16） -/
+
+/-- 概要：site の対象の濃度の上限 κ = (#A + #R + ℵ₀)^{ℵ₀}。
+方針：κ^{ℵ₀} = κ なので、Čech–Alexander 複体・完備テンソル・完全化・André 拡大・p 冪根の添加で閉じる（a0-design §2.7）。
+規約：定義にパラメータとして残し、κ 不変性は定理（O_Δ についてだけ）。
+使われ方：`PrismOver` の対象の条件、本質的小ささ。 -/
+def cutoff : Cardinal.{u} := (Cardinal.mk A + Cardinal.mk R + ℵ₀) ^ ℵ₀
+
+/-! ## 対象と射（Def 4.1 の圏、環の側） -/
+
+/-- 概要：(R/A)_Δ の対象（環の側）：(A,(d)) 上の有界向き付き prism (B, dB) と A/d 代数の射 R → B/dB。濃度 ≤ κ。
+方針：prism の射 `OrientedPrism.Hom P Q` で、剛性により Q.ideal = (d)B（`Hom.map_ideal_eq`）。R からの写像は商への A/d 代数射。
+規約：原典は (B, IB) と Spf(B/IB) → X。affine の R に限る。κ は明示のパラメータ。
+使われ方：site の対象。 -/
+structure PrismOver (κ : Cardinal.{u}) where
+  /-- 台の環。 -/
+  B : Type u
+  [ring : CommRing B]
+  /-- (B, dB) の向き付き prism 構造。 -/
+  Q : OrientedPrism p B
+  /-- 有界。 -/
+  bounded : IsBoundedPrism Q
+  /-- (A,(d)) → (B, dB) の prism の射。 -/
+  toHom : OrientedPrism.Hom P Q
+  /-- R → B/dB。A/d 代数の射（B/dB の A/d 代数構造は `toHom.quotientMap`）。 -/
+  sec : R →+* B ⧸ Q.ideal
+  /-- sec は A/d 線形：sec ∘ (A/d → R) = toHom.quotientMap。 -/
+  sec_comp : sec.comp (algebraMap (A ⧸ P.ideal) R) = toHom.quotientMap
+  /-- 濃度 ≤ κ。 -/
+  small : Cardinal.mk B ≤ κ
+
+attribute [instance] PrismOver.ring
+
+namespace PrismOver
+
+variable {P R} {κ : Cardinal.{u}}
+
+/-- 概要：(R/A)_Δ の射（環の側）：prism の射で、A からの射と R からの写像の両方と両立するもの。
+方針：`OrientedPrism.Hom` に二つの可換条件を足す。
+規約：原典の「obvious」な射。
+使われ方：圏の構造。 -/
+structure Hom (X Y : PrismOver P R κ) where
+  /-- 下にある prism の射。 -/
+  toHom : OrientedPrism.Hom X.Q Y.Q
+  /-- A 上の射。 -/
+  comm_base : toHom.comp X.toHom = Y.toHom
+  /-- R からの写像と両立。 -/
+  comm_sec : toHom.quotientMap.comp X.sec = Y.sec
+
+instance : Category (PrismOver P R κ) where
+  Hom := Hom
+  id X := ⟨OrientedPrism.Hom.id X.Q, by sorry, by sorry⟩
+  comp f g := ⟨g.toHom.comp f.toHom, by sorry, by sorry⟩
+  id_comp := by sorry
+  comp_id := by sorry
+  assoc := by sorry
+
+/-- 概要：射が忠実平坦：B → C が (p, d) 完全忠実平坦（原典の「(p, IB) 完全忠実平坦」）。
+方針：共通基盤の `IsCompletelyFaithfullyFlat`（イデアル (p, d)、C を B 加群として）。
+規約：Lemma 3.7(3) により、これが原典の「忠実平坦な prism の射」。
+使われ方：平坦位相の生成系、Cor 3.12。 -/
+def IsFaithfullyFlat {X Y : PrismOver P R κ} (f : X ⟶ Y) : Prop :=
+  letI : Algebra X.B Y.B := f.toHom.toRingHom.toAlgebra
+  IsCompletelyFaithfullyFlat (Ideal.span {(p : X.B), X.Q.generator}) Y.B
+
+/-- 概要：濃度 ≤ κ の prism の圏は本質的に小さい。
+方針：各対象は、濃度 κ の固定した型の部分型を台とする対象と同型（環・δ・prism・射の構造を全単射で移す）。
+規約：κ ≥ #A + #R が要る。
+使われ方：site を小さい圏（`SmallModel`）にする。 -/
+theorem essentiallySmall (hκ : Cardinal.mk A + Cardinal.mk R ≤ κ) :
+    EssentiallySmall.{u} (PrismOver P R κ) := by
+  sorry -- 構造の全単射による移送（a0-design §2.7）
+
+end PrismOver
+
+/-! ## site・位相・構造層（Def 4.1） -/
+
+variable (κ : Cardinal.{u}) [EssentiallySmall.{u} (PrismOver P R κ)]
+
+/-- 概要：(R/A)_Δ の小さい模型（環の側）。
+方針：Mathlib の `SmallModel` と `equivSmallModel`。
+規約：以後の site・前層はこの小さい圏の上で述べ、大きい圏との比較は `equivSmallModel` で。
+使われ方：∞ 層の層 Sheaves は小さい圏を仮定する。 -/
+abbrev PrismOverSmall : Type u := SmallModel (PrismOver P R κ)
+
+/-- 概要：prismatic site (R/A)_Δ：prism の圏の opposite（原典 Def 4.1・Cor 3.12）。
+方針：`PrismOverSmall` の opposite。
+規約：被覆は忠実平坦な射（環の側の射の opposite）。
+使われ方：平坦位相、構造層、Δ_{R/A}。 -/
+abbrev PrismaticSite : Type u := (PrismOverSmall P R κ)ᵒᵖ
+
+/-- 概要：小さい模型の射が忠実平坦：`equivSmallModel` で大きい圏へ送った射が忠実平坦。
+方針：性質の移送。
+規約：同値に沿うので well-defined。
+使われ方：平坦位相の生成系。 -/
+def PrismOverSmall.IsFaithfullyFlat {X Y : PrismOverSmall P R κ} (f : X ⟶ Y) : Prop :=
+  PrismOver.IsFaithfullyFlat ((equivSmallModel (PrismOver P R κ)).inverse.map f)
+
+/-- 概要：平坦位相：忠実平坦な射 f : B → C の篩（site では f.op : C → B で生成される篩）を被覆に含む最小の Grothendieck 位相。
+方針：`GrothendieckTopology` の完備束の `sInf`。site の公理の検証は不要。
+規約：原典 Def 4.1 の「flat cover」。Cor 3.12 前半（押し出しの存在）は `flatTopology_refine` に。
+使われ方：Δ_{R/A} の RΓ の位相。 -/
+def flatTopology : GrothendieckTopology (PrismaticSite P R κ) :=
+  sInf { J | ∀ {X Y : PrismOverSmall P R κ} (f : X ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f →
+    Sieve.generate (Presieve.singleton f.op) ∈ J (Opposite.op Y) }
+
+/-- 概要：Cor 3.12 前半：平坦位相の被覆篩は、忠実平坦な単射の篩で refine できる（忠実平坦な射の押し出しが存在し忠実平坦）。
+方針：押し出しは完備テンソル (B′ ⊗̂^L_B C)^∧ で、Lemma 3.7(2) により有界 prism、B′ 上忠実平坦。
+規約：D22。この定理により忠実平坦な単射の族は Mathlib の `Coverage` をなし、`flatTopology` はその `toGrothendieck`。
+使われ方：層条件を生成系（忠実平坦な単射）で確かめてよいこと（S1 の `isSheaf_toGrothendieck_iff`）。 -/
+theorem flatTopology_refine :
+    ∃ K : Coverage (PrismaticSite P R κ), K.toGrothendieck = flatTopology P R κ ∧
+      ∀ {U} (Rp : Presieve U), Rp ∈ K.covering U →
+        ∃ (X Y : PrismOverSmall P R κ) (f : X ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f ∧
+          Rp = Presieve.singleton f.op := by
+  sorry -- A0-3d（Cor 3.12 (a)）。押し出しの存在は完備テンソルと Lemma 3.7(2)
+
+/-- 概要：構造層 O_Δ：B ↦ B（環の前層。site の前層 (PrismaticSite)ᵒᵖ ⥤ CommRingCat は PrismOverSmall ⥤ CommRingCat）。
+方針：小さい模型から `equivSmallModel.inverse` で大きい圏へ送り、台の環を取る。
+規約：A 代数の構造は `toHom` から（CommRingCat の値は環だけ）。
+使われ方：Δ_{R/A}。 -/
+def structurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
+  (equivSmallModel (PrismOver P R κ)).inverse ⋙
+    { obj := fun X => CommRingCat.of X.B
+      map := fun f => CommRingCat.ofHom f.toHom.toRingHom
+      map_id := by sorry
+      map_comp := by sorry }
+
+/-- 概要：被約構造層 Ō_Δ：B ↦ B/dB。
+方針：剛性により dB = Q.ideal。
+規約：A/d 代数の前層だが、ここでは環の前層として。
+使われ方：Ō_{R/A} との比較（Cor 3.12 の最後の文）。 -/
+def reducedStructurePresheaf : PrismOverSmall P R κ ⥤ CommRingCat.{u} :=
+  (equivSmallModel (PrismOver P R κ)).inverse ⋙
+    { obj := fun X => CommRingCat.of (X.B ⧸ X.Q.ideal)
+      map := fun f => CommRingCat.ofHom f.toHom.quotientMap
+      map_id := by sorry
+      map_comp := by sorry }
+
+/-- 概要：O_Δ の Frobenius：各 B の δ 構造の φ_B（環の自然変換。A 上は φ_A 半線形）。
+方針：δ 射は φ と可換するので自然。
+規約：A 代数の射ではない（半線形）。D(A) では φ_A に沿うスカラー制限を付けて述べる。
+使われ方：Δ_{R/A} の Frobenius、Construction 7.6、Def 8.2 の Frobenius 余極限。 -/
+def structurePresheafFrobenius : structurePresheaf P R κ ⟶ structurePresheaf P R κ where
+  app X := CommRingCat.ofHom (((equivSmallModel (PrismOver P R κ)).inverse.obj X).Q.deltaStructure.frobeniusLift)
+  naturality := by sorry -- δ 射は Frobenius 持ち上げと可換（`isDeltaHom_frobeniusLift_general` の系）
+
+/-! ## 完全 prismatic site（Rem 4.6） -/
+
+/-- 概要：完全 prismatic site：B が完全（φ_B 全単射）な対象の充満部分圏（の opposite）。
+方針：`ObjectProperty.FullSubcategory`。
+規約：Thm 3.10 により perfectoid 環 B/dB の圏と同値（定理、A5）。
+使われ方：Lemma 8.4、Prop 8.5（E3 の `limitCone`）。 -/
+def PerfectPrismaticSite : Type u :=
+  (ObjectProperty.FullSubcategory (fun X : PrismOverSmall P R κ =>
+    Function.Bijective ((equivSmallModel (PrismOver P R κ)).inverse.obj X).Q.deltaStructure.frobeniusLift))ᵒᵖ
+
+/-! ## Δ_{R/A}（Not 4.16） -/
+
+/-- 概要：O_Δ を D(A) 値前層として読む：B を A 代数（`toHom`）とみなし、離散埋め込み `discreteEmbedding A` で D(A) へ。
+方針：`PrismOver P R κ ⥤ Under (CommRingCat.of A)` の nerve を `discreteEmbedding` に前合成し、小さい模型の形状
+（`presheafShape (PrismaticSite)`、すなわち `uliftFunctor.obj (nerve (PrismOverSmall))`）から大きい nerve への射で引き戻す。
+規約：E3 の `J R = discreteEmbedding R` と同じ埋め込み。
+使われ方：Δ_{R/A} の RΓ の入力。
+要確認：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の形の射（ULift の圏の nerve と uliftFunctor の比較）を基盤から探す。 -/
+def structurePresheafDerived :
+    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (InfinityCategories.derivedInfinityCategory A) :=
+  sorry -- 小さい模型の持ち上げた nerve → nerve (PrismOver) → nerve (Under A) → D(A)
+
+/-- 概要：Not 4.16：Δ_{R/A} := RΓ((R/A)_Δ, O_Δ)。
+方針：∞ 層の層 Sheaves の `derivedGlobalSections`（層化してから大域切断）。層化のデータと D(A) の presentable 性は入力（S4・G3）。
+規約：値は選んだ極限錐の頂点。使う側は普遍性（`prismaticCohomologyCone`）で扱う。Čech 層の RΓ（D17）。
+使われ方：Constr 4.18、Lemma 4.20、A1 の Thm 4.11、A2 の Construction 7.6。 -/
+def prismaticCohomology
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
+    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
+  InfinityCategories.Sheaves.derivedGlobalSections (flatTopology P R κ) hJ hE (structurePresheafDerived P R κ)
+
+/-- 概要：Not 4.16：Ō_{R/A} := Δ_{R/A} ⊗^L_A A/d。
+方針：D(A) のテンソル（基盤の完備テンソル／Koszul の形）。
+規約：Ō_Δ の RΓ との一致は定理（Cor 3.12 の最後の文、A/d は完全複体）。
+使われ方：A1 の HT 比較の対象。
+要確認：D(A) の A/d とのテンソルを与える基盤の名前。 -/
+def hodgeTateCohomology
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
+    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
+  sorry -- prismaticCohomology ⊗^L_A A/d
+
+/-- 概要：Δ_{R/A} の Frobenius：Δ → φ_{A*}Δ。
+方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。
+規約：D(A) の辺。
+使われ方：A4（Def 8.2）。
+要確認：φ_A に沿うスカラー制限の D(A) 上の関手の名前。 -/
+def prismaticCohomologyFrobenius
+    (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
+    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    True := -- 要確認：型は `Edge (prismaticCohomology …) (φ_{A*} (prismaticCohomology …))`
+  trivial
+
+/-- 概要：κ 不変性：κ₀ ≤ κ ≤ κ′ なら Δ_{R/A} は同じ（O_Δ について）。
+方針：Constr 4.17 の C^0 はどの κ でも弱終で、C^• ⊂ 𝒞_{κ₀}。S3 の補題と Cor 3.12 で両辺とも Tot O_Δ(C^•)。
+規約：同型は D(A) の可逆な辺。一般の前層には主張しない。
+使われ方：κ が定義に入ることの正当化（ノート D16）。 -/
+theorem prismaticCohomology_cutoff_invariant : True := by
+  -- 要確認：二つの κ の site の間の比較射と、その上の RΓ の同型を述べる形（A0-2 の後に）
+  trivial
+
+end SerrePositivity.BhattScholze.Prismatic
