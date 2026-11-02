@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.HomologicalAlgebra.Complex.StrictlyPerfect
 public import SerrePositivity.CategoryTheory.HomotopyProperty
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.ScalarSupport
@@ -13,7 +14,7 @@ public import SerrePositivity.HomologicalAlgebra.CochainTensor.ShortExact
 
 ## 概要
 
-任意の可換環上の有界な有限射影複体の、台つきホモトピー圏を作り、任意の環準同型による係数変更とその合成の自然同型を与える。次数ごとの引き込み（鎖写像でなくてよい）の完全性も示す。
+任意の可換環上の有界な有限射影複体のホモトピー圏（`PerfectHomotopy`、HomologicalAlgebra/Complex/StrictlyPerfect）の台つき部分圏を作り、任意の環準同型による係数変更とその合成の自然同型を与える。次数ごとの引き込み（鎖写像でなくてよい）の完全性も示す。
 
 ## 方針
 
@@ -40,90 +41,6 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.Pretriangulated
 open scoped ZeroObject
 
 variable (R : Type u) [CommRing R]
-
-/-- 項が有限射影で、有限個の次数の外で零となる複体。 -/
-def strictlyPerfectComplex : ObjectProperty (CochainComplex (ModuleCat.{u} R) ℤ) :=
-  fun P ↦ strictlyBoundedComplex (ModuleCat R) P ∧
-    ∀ q, Module.Finite R (P.X q) ∧ Module.Projective R (P.X q)
-
-/-- 有界有限射影複体を代表とするホモトピー圏の対象。 -/
-def perfectHomotopyProperty : ObjectProperty (HomotopyCategory (ModuleCat.{u} R) (.up ℤ)) :=
-  (strictlyPerfectComplex R).strictMap (HomotopyCategory.quotient _ _)
-
-@[simp] lemma perfectHomotopyProperty_quotient (P : CochainComplex (ModuleCat.{u} R) ℤ) :
-    perfectHomotopyProperty R ((HomotopyCategory.quotient _ _).obj P) ↔
-      strictlyPerfectComplex R P :=
-  homotopyProperty_strictMap_quotient (strictlyPerfectComplex R) P
-
-section
-variable {R}
-
-/-- The zero complex is strictly perfect over every commutative ring. -/
-lemma strictlyPerfectComplex_zero :
-    strictlyPerfectComplex R (0 : CochainComplex (ModuleCat.{u} R) ℤ) := by
-  refine ⟨⟨0, 0, inferInstance, inferInstance⟩, fun i ↦ ?_⟩
-  have hz : IsZero ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
-    (HomologicalComplex.eval _ _ i).map_isZero
-      (isZero_zero (CochainComplex (ModuleCat.{u} R) ℤ))
-  have : Module.Free R ((0 : CochainComplex (ModuleCat.{u} R) ℤ).X i) :=
-    isZero_moduleCat_free hz
-  exact ⟨isZero_moduleCat_finite hz, Module.Projective.of_free⟩
-
-/-- Integer shifts preserve strict perfectness. -/
-lemma strictlyPerfectComplex_shift {P : CochainComplex (ModuleCat.{u} R) ℤ}
-    (hp : strictlyPerfectComplex R P) (n : ℤ) : strictlyPerfectComplex R (P⟦n⟧) := by
-  exact ⟨strictlyBoundedComplex_shift _ hp.1 n, fun i ↦ hp.2 (i + n)⟩
-
-end
-
-instance : (perfectHomotopyProperty R).ContainsZero where
-  exists_zero := ⟨(HomotopyCategory.quotient _ _).obj 0,
-    Functor.map_isZero _ (isZero_zero _), by
-      rw [perfectHomotopyProperty_quotient]
-      exact strictlyPerfectComplex_zero⟩
-
-instance : (perfectHomotopyProperty R).IsStableUnderShift ℤ where
-  isStableUnderShiftBy n :=
-    { le_shift X hX := by
-        obtain ⟨P : CochainComplex _ _, rfl⟩ := X.quotient_obj_surjective
-        rw [perfectHomotopyProperty_quotient] at hX
-        rw [ObjectProperty.prop_shift_iff, HomotopyCategory.shift_quotient_obj,
-          perfectHomotopyProperty_quotient]
-        exact strictlyPerfectComplex_shift hX n }
-
-/-- 有限射影複体の写像錐は有限射影複体である。 -/
-lemma strictlyPerfectComplex_mappingCone {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
-    (f : P ⟶ Q) (hP : strictlyPerfectComplex R P) (hQ : strictlyPerfectComplex R Q) :
-    strictlyPerfectComplex R (CochainComplex.mappingCone f) := by
-  refine ⟨strictlyBoundedComplex_mappingCone _ f hP.1 hQ.1, fun q ↦ ?_⟩
-  have := (hP.2 (q + 1)).1
-  have := (hP.2 (q + 1)).2
-  have := (hQ.2 q).1
-  have := (hQ.2 q).2
-  let e := (HomologicalComplex.homotopyCofiber.XIsoBiprod f q (q + 1) rfl ≪≫
-    ModuleCat.biprodIsoProd _ _).toLinearEquiv
-  exact ⟨Module.Finite.equiv e.symm, Module.Projective.of_equiv' e.symm⟩
-
-set_option backward.defeqAttrib.useBackward true in
-set_option backward.isDefEq.respectTransparency false in
-instance : (perfectHomotopyProperty R).IsTriangulatedClosed₃ :=
-  homotopyProperty_isTriangulatedClosed₃ _ _ (perfectHomotopyProperty_quotient R)
-    (fun f => strictlyPerfectComplex_mappingCone R f)
-
-instance : (perfectHomotopyProperty R).IsTriangulated where
-  toIsTriangulatedClosed₂ := .of_isTriangulatedClosed₃
-
-/-- 有界有限射影複体のホモトピー圏。 -/
-abbrev PerfectHomotopy := (perfectHomotopyProperty R).FullSubcategory
-
-/-- 全ホモトピー圏への三角関手。 -/
-abbrev perfectHomotopyInclusion : PerfectHomotopy R ⥤
-    HomotopyCategory (ModuleCat.{u} R) (.up ℤ) := (perfectHomotopyProperty R).ι
-
-/-- 具体的な有限射影複体をホモトピー圏の対象とする。 -/
-def perfectHomotopyObj (P : CochainComplex (ModuleCat.{u} R) ℤ)
-    (hP : strictlyPerfectComplex R P) : PerfectHomotopy R :=
-  ⟨(HomotopyCategory.quotient _ _).obj P, (perfectHomotopyProperty_quotient R P).mpr hP⟩
 
 variable {R} {e : ℕ} (z : Fin e → R)
 

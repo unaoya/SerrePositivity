@@ -10,8 +10,8 @@ import SerrePositivity.LengthAlgebra.Almost
 import SerrePositivity.CLMST.ModuleCompletion
 import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
 import SerrePositivity.CLMST.AlmostLength
-import SerrePositivity.Paper.Section2.CompletedTower
-import SerrePositivity.Paper.Section2.TowerApproximation
+import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
+import SerrePositivity.LengthAlgebra.RootTowerLength.BaseChangeApproximation
 import SerrePositivity.CLMST.NormalizedAlmostLength
 import SerrePositivity.CLMST.Inputs.AlmostLength
 import SerrePositivity.CLMST.CohomologyVanishing

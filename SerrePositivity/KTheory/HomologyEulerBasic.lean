@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.SupportedExactEuler
+public import SerrePositivity.KTheory.G0.Basic
 public import SerrePositivity.PerfectComplex.ClosedSupport.K0
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.SupportedCoefficients
+public import SerrePositivity.KTheory.Coefficients
 public import SerrePositivity.PerfectComplex.IntegerEuler
 
 /-! # Euler evaluation after extension of supported K₀ coefficients -/

@@ -2,10 +2,14 @@ module
 
 public import SerrePositivity.PerfectComplex.Eigen.Idempotent
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
+public import SerrePositivity.HomologicalAlgebra.Complex.StrictlyPerfect
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 
-/-! # Perfectness and closed support of binary sums -/
+/-! # 二項の直和の閉じた台
+
+二つの複体のホモロジーの台が閉集合 `Z` に入れば、直和のホモロジーの台も `Z` に入る。直和の有限射影性（`strictlyPerfectComplex_biprod`）は HomologicalAlgebra/Complex/StrictlyPerfect にある。
+-/
 
 @[expose] public section
 noncomputable section
@@ -18,37 +22,6 @@ variable {R : Type u} [CommRing R]
 
 attribute [local instance]
   CategoryTheory.Limits.preservesBinaryBiproducts_of_preservesBinaryProducts
-
-def cochainBiprodXIsoProd (P Q : CochainComplex (ModuleCat.{u} R) ℤ) (n : ℤ) :
-    (P ⊞ Q).X n ≅ ModuleCat.of R (P.X n × Q.X n) :=
-  Functor.mapBiprod (HomologicalComplex.eval _ _ n) P Q ≪≫
-    ModuleCat.biprodIsoProd (P.X n) (Q.X n)
-
-lemma strictlyPerfectComplex_biprod {P Q : CochainComplex (ModuleCat.{u} R) ℤ}
-    (hp : strictlyPerfectComplex R P) (hq : strictlyPerfectComplex R Q) :
-    strictlyPerfectComplex R (P ⊞ Q) := by
-  obtain ⟨a, b, ha, hb⟩ := hp.1
-  obtain ⟨c, d, hc, hd⟩ := hq.1
-  have hz : ∀ n, IsZero (P.X n) → IsZero (Q.X n) → IsZero ((P ⊞ Q).X n) := by
-    intro n hn hn'
-    have := ModuleCat.subsingleton_of_isZero hn
-    have := ModuleCat.subsingleton_of_isZero hn'
-    exact (ModuleCat.isZero_of_subsingleton (ModuleCat.of R (P.X n × Q.X n))).of_iso
-      (cochainBiprodXIsoProd P Q n)
-  refine ⟨⟨min a c, max b d, ?_, ?_⟩, fun n => ?_⟩
-  · exact ((P ⊞ Q).isStrictlyGE_iff _).mpr fun n hn => hz n
-      (P.isZero_of_isStrictlyGE a n (lt_of_lt_of_le hn (min_le_left _ _)))
-      (Q.isZero_of_isStrictlyGE c n (lt_of_lt_of_le hn (min_le_right _ _)))
-  · exact ((P ⊞ Q).isStrictlyLE_iff _).mpr fun n hn => hz n
-      (P.isZero_of_isStrictlyLE b n (lt_of_le_of_lt (le_max_left _ _) hn))
-      (Q.isZero_of_isStrictlyLE d n (lt_of_le_of_lt (le_max_right _ _) hn))
-  · have := (hp.2 n).1
-    have := (hq.2 n).1
-    have := (hp.2 n).2
-    have := (hq.2 n).2
-    let e := (cochainBiprodXIsoProd P Q n).toLinearEquiv
-    exact ⟨Module.Finite.of_surjective e.symm.toLinearMap e.symm.surjective,
-      Module.Projective.of_equiv' e.symm⟩
 
 lemma HasHomologySupportOn.biprod {Z : TopologicalSpace.Closeds (PrimeSpectrum R)}
     {P Q : CochainComplex (ModuleCat.{u} R) ℤ}

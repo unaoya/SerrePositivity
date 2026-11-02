@@ -1,5 +1,5 @@
 import SerrePositivity.CategoryTheory.Euler
-import SerrePositivity.Asymptotic.CompletedRankEvaluation
+import SerrePositivity.Asymptotic.Completed
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.homologicalEuler_hasFiniteSupport

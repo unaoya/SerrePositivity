@@ -27,7 +27,7 @@ Noether で、各冪商が平坦で剰余体を保つことから従う（`exist
 
 ## 使われ方
 
-論文の補題 2.1（`Paper/Section2/Lemma2_1`）。完備 Noether 版の文献は EGA I, 2nd ed., 0, Proposition 6.8.3（gonflement）と Stacks Project, Tag 03C3（https://stacks.math.columbia.edu/tag/03C3）。Mathlib への提出候補（mathlib-upstream の G8）。
+論文の補題 2.1（`Paper/Section2/ResidueFieldExtension`）。完備 Noether 版の文献は EGA I, 2nd ed., 0, Proposition 6.8.3（gonflement）と Stacks Project, Tag 03C3（https://stacks.math.columbia.edu/tag/03C3）。Mathlib への提出候補（mathlib-upstream の G8）。
 -/
 
 @[expose] public noncomputable section

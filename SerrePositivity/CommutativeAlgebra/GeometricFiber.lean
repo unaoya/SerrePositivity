@@ -22,7 +22,7 @@ public import Mathlib.RingTheory.TensorProduct.Basic
 - `IsGeometricallyTransitive A T G`：すべての代数閉な `A` 体 `Ω` と `Spec(T ⊗_A Ω)` の二点 `x`、`y` に
   ついて、`g ∈ G` があって、`g` の誘導する `Spec` の写像が `x` を `y` に送る。
 
-Theorem 3.1 の入力（`Inputs/Descent.lean`）、Lemma 3.5c（`Paper/Lemma3_5.lean`）、§5 の設定
+Theorem 3.1 の入力（`Inputs/Descent.lean`）、Lemma 3.5c（`Paper/Section3/NormComparison.lean`）、§5 の設定
 （`Paper/Section5/`）で仮定として使う。この条件自体の性質はここでは示さない。
 -/
 

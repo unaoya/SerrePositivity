@@ -130,7 +130,7 @@ theorem length_eq_of_common_residueField (M : Type u) [AddCommGroup M] [Module T
 include hres in
 /-- `length_eq_of_common_residueField` を、`ModuleCat` の係数制限関手 `restrictScalars` の言葉で
 述べたもの：係数制限した `T` 加群の `A` 上の長さは `T` 上の長さに等しい。複体の各項が `ModuleCat`
-の対象として現れる場面（`Paper/Lemma3_5/Ordinary.lean`、Lemma 5.2）で使う形。 -/
+の対象として現れる場面（`Paper/Section3/NormComparison.lean`、Lemma 5.2）で使う形。 -/
 lemma length_restrictScalars_eq (M : ModuleCat.{u} T) :
     Module.length A ((ModuleCat.restrictScalars (algebraMap A T)).obj M) =
       Module.length T M := by

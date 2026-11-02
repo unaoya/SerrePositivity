@@ -1,5 +1,5 @@
 import SerrePositivity.CategoryTheory.Euler
-import SerrePositivity.KTheory.HomologyEuler
+import SerrePositivity.KTheory.Comparison.Basic
 import SerrePositivity.PerfectComplex.Free.Euler
 import Mathlib.Util.AssertNoSorry
 
