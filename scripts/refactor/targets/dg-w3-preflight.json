@@ -15,7 +15,13 @@
   ],
   "seconds": 57.279,
   "closure_delta_donor_count": 1169,
-  "declaration_snapshot_reachability": "pending before snapshot",
+  "declaration_snapshot_reachability": {
+    "modules": 1626,
+    "declarations": 23522,
+    "lost_uses": 0,
+    "forbidden_uses": 0,
+    "metadata_revisions": 26
+  },
   "check": {
     "exit_code": 0,
     "max_lines": 1621,
@@ -25,5 +31,6 @@
     "target_cycles": 0,
     "rewrite_candidates": 830
   },
-  "build_started": false
+  "build_started": true,
+  "latest_status": "STOP: internal round 2; see dg-w3-stop-2026-11-02.json"
 }
