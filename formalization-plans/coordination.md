@@ -12,7 +12,7 @@
 | ∞ 基盤 | Codex（∞） | [infinity-foundation-plan.md](infinity-foundation-plan.md) | [IF-W0-3 §10.12〜10.16](infinity-codex-w0-3.md)、`targets/batch-w1w2a.md` | `../SerrePositivity-ifw0-3`、`infra/if-w0-3` |
 | DG の整理 | Codex（DG） | [dg-cleanup-plan.md](dg-cleanup-plan.md) | [DG-W2](dg-codex-w2.md) | `../SerrePositivity-dgw1`、`infra/dg-w2` |
 | 論文の層 | Claude Code（別セッション、自分で実装） | [refactor-plan.md](refactor-plan.md) | 先方が自分で管理。伝達文 [handover-ct-to-infinity](handover-ct-to-infinity-2026-10-30.md) §8〜§10 | main で作業（凍結中は worktree） |
-| BS | 人が主導の別セッション。**当面動かさない**（11-02 ユーザー決定：三つの整理が終わってから必要なら再開）。統合は BS-W1〜W9 で完了済み（10-26） | [bhatt-scholze/](bhatt-scholze/) | — | 休止中。論文の層の 2a・2b は BS の区切りを待たずに暦に入れてよい（`BhattScholze/`・`CLMST/` を動かすが、編集者がいないので衝突しない） |
+| BS | 人が主導の別セッション。**設計のみ再開（11-02）**：E3 を消す道筋は stage2 の A 案（[bhatt-scholze-stage2.md](bhatt-scholze/bhatt-scholze-stage2.md) §3）、最初の範囲は A0〜A1。**ビルドなし**（`lake build`・`lake env lean`・監査を行わない）。触るのは `exposition/ja/bs/`・`formalization-plans/bhatt-scholze/` だけで、Lean の骨組みは `formalization-plans/bhatt-scholze/drafts/`（`SerrePositivity/` の外。root からも監査からも届かない）。**コードを書く段階に入るときは暦（§3）に載せてから**（単体の `lake build <module>` でも他の全ビルドと重ねない）。統合は BS-W1〜W9 で完了済み（10-26） | [bhatt-scholze/](bhatt-scholze/) | — | 設計のみ。論文の層の 2a・2b は BS の区切りを待たずに暦に入れてよい（`BhattScholze/`・`CLMST/` を動かしても衝突しない）。**2a・2b で `BhattScholze/` のモジュール名・宣言名が変わったら、旧→新の対応表（コミットメッセージのもの）を Claude が BS セッションへ回す** |
 
 連絡はすべてユーザーが貼り付けで中継する。Codex への指示は指示書の追記（§番号）で出し、短い引き渡し文を添える。
 
@@ -40,12 +40,13 @@
 | 6 | 論文の層の区切り 1-4（KTheory・Asymptotic・Paper の再構成、Perfect の 3 宣言を HA へ、`Asymptotic/DGVerdier/` を含める） | 先方の全体ビルド＋verify | #5 の後に**編集と直接 importer までの小さなビルド**は始めてよい（worktree で）。**全体ビルドと verify は #8a（∞ の束）が main に入った後**（11-02 改訂：順序を #8a → #6 に。∞ の束は今日 3〜5 時間、1-4 の全体ビルドは明朝） | 先方が準備完了・時刻待ち |
 | 7 | DG-W3：土台 5 ディレクトリの統合（48 統合先・608 元）＋残りの D5＋層の仕上げ（PerfectComplex の例外を外す、126 本の一覧） | 下流約 16,300 本、単独 4.5〜7 時間＋verify | #6（1-4 の後） | 指示書 作成済み（11-02）：[DG-W3](dg-codex-w3.md)。**事前の静的検査は完了**（11-02 夕、`ef951fa5d`：名前解決の候補 4 箇所・universe 608/608・最大 1,621 行。回答は §7）。開始は 1-4 の後に合図 |
 | 8 | IF-W0-4（完了）→ **IF-W2a-2（R76・R77・R67、下流 11,888 本 1 回）：#5 の直後、1-4 の全体ビルドより先** | IF-W0-4 はほぼビルドなし、IF-W2a-2 は全ビルド 1 回＋verify | #3（IF-W0-4）、IF-W0-4 と DG-W2(b) の後（IF-W2a-2） | **IF-W0-4 完了・取り込み済み**（11-01 夜、bddb9b570：Foundation 103 本・違反 0、runner のメモリ予算。初回は全件未計測で 2 並列・監査 44 分、次回から実測値で並列化）。IF-W2a-2 は草案（停止点 1）を先に、束のビルドは DG-W2(b) の後 |
-| 9 | 論文の層の区切り 2a・2b（CA の perfectoid 部分を BS へ、CLMST の分離、DerivedCompletion 第二層） | 先方の全ビルド 1 回ずつ | BS は休止中なので時期は自由。他の全ビルドと重ねない | 先方。準備は 1-4 の後 |
+| 9 | 論文の層の区切り 2a・2b（CA の perfectoid 部分を BS へ、CLMST の分離、DerivedCompletion 第二層） | 先方の全ビルド 1 回ずつ | BS は設計のみ（Lean は `drafts/` 以下）なので時期は自由。他の全ビルドと重ねない。`BhattScholze/` の改名の旧→新の対応表を Claude が BS セッションへ回す | 先方。準備は 1-4 の後 |
 
 ## 4. いまの待ち条件（10-31 夜）
 
 - ∞ Codex：IF-W2a-2 を適用済み（R76・R77・R67、11-02 昼）。内部検証で 2 本失敗（名前の隠蔽 1、宇宙メタ変数の捕捉 1）→ 11-02 13:30 に回答（[IF-W2a-2 §7](infinity-codex-w2a-2.md)：完全修飾と宇宙の明示を承認、判断表に「宇宙の明示」を追加）。再開後：内部ビルド → 92 ファイル復元 → **下流 11,818 本（3.3〜5 時間、鍵）** → verify → 停止点 3（見込み 11-02 夜）。**その間、他の worktree のビルドは小さなものも止める。**
 - DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。
+- BS セッション：設計のみ再開（11-02、A 案 A0〜A1）。ビルドなし、Lean は `formalization-plans/bhatt-scholze/drafts/` 以下のみ、所有範囲だけを `--only` で main に直接コミット。コードを書く段階に入るときは BS が暦の空きを相談し、Claude が §3 に載せる。
 - 論文の層：**11-02 午後〜夜は ∞ の下流ビルドの間、`refactor-1-4` の小さなビルドも止める**（Claude が伝える。再開も Claude が伝える）。凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
 - （11-01 実施）`~/.zshenv` に Lake キャッシュの 3 変数を設定（ユーザー）。使い終わった worktree `ifw0-1`・`ifw0-2` を削除（ブランチ `infra/if-w0-1`・`if-w0-2` は残してある。パッチは main に取り込み済み）。空き 344 → 447 GB。
