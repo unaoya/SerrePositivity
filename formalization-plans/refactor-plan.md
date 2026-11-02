@@ -93,9 +93,9 @@ Mathlib
   外せなければ `section` の範囲に限る。`maxHeartbeats` の引き上げも同様。
 - docstring は日本語の 概要／方針／規約／使われ方 にそろえる（英語のもの、定型文の繰り返し、古い状況の記述を直す）。
 
-予約したディレクトリ名（2026-11-02 ユーザー）：区切り 2b の後に BS の共有一般論 3 本を受け入れる `HomologicalAlgebra/Cosimplicial/`（余単体加群・
-余単体可換環の全複体の積など）と `CommutativeAlgebra/DeRham/`（多項式環の de Rham 複体と p 進完備化）。HA の側は層の規則の第一層（一般論）として扱う。
-論文の層の作業ではこの 2 つの名前を別の用途に使わない（中身はまだ置かない）。
+予約したディレクトリ名（2026-11-02 ユーザー、同日に 2 つ追加）：区切り 2b の後に BS の一般論を受け入れる下位ディレクトリ。いずれも第一層（一般論）として扱う。
+`HomologicalAlgebra/Cosimplicial/`（余単体加群・余単体可換環の全複体の積など）、`CommutativeAlgebra/DeRham/`（多項式環の de Rham 複体と p 進完備化）、
+`CommutativeAlgebra/UniversalHomeomorphism/`、`CommutativeAlgebra/EtaleStratification/`。論文の層の作業ではこの 4 つの名前を別の用途に使わない（中身はまだ置かない）。
 
 ## D. 章をまたぐ共通の仕組み
 
