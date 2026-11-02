@@ -130,6 +130,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D63〜D67 | Thm 10.9 は連結性だけ原典 (1)(2) で、n = 1 は Perfd_{S/} = Perfd_{S_red/}、Lemma 10.12 は原典の形、Prop 10.4 は必要な同値、E3 は S^∧ 経由 | a8-design §5・§7 |
 | D68〜D69 | 結晶の黒箱は de Rham 形一つ、Thm 6.4 の帰着は Prop 6.2 の経路 | a1-design §9.3・§9.4 |
 | D60〜D62、D15 | Def 8.2 の定義域を原典（animated）に戻す、基底 R 固定、Cor 8.14 は離散 S、環版 Prop 8.13 は後で系に（BR31） | a7-design §4・§6 |
+| D20 訂正 | Def 2.42 の平坦性はホモロジーの底変換同型（高次の消滅ではない。Codex W9-I-01 の反例 (Z_p,(p))） | a0-design §2.5・§4 |
 | D53〜D59 | arc site は affine（affCompl_κ ⊃ affPerfd_κ）、有限族、Cor 8.11 は affine 版を記録、三つの引用は別々に `sorry`、S8、S′ × S/I は有限積の保存で戻す、BM18 は affine 版 | a6-design §5・§7・§9・§10 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
@@ -156,6 +157,24 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 ## 4. 次の作業（提案）
 
 1. A1-5 の決定（a1-design §9.4）の反映。その後は中身の段階へ：調整役と暦（W2b・2b の後）、(A) の名前探し、A1-2/A1-3 の黒箱の骨組み。
-2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
+2. （済）A6（excision の欄）、A7（universal の欄）、A8（integral の欄）、A9（界面の組み立て）の設計書と骨組みは 11-02 に完了。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
+
+## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
+
+正本：`review-codex-w9.md`。指示書：`bhatt-scholze-codex-w9.md`。
+
+| 指摘 | 重さ | 扱い |
+| --- | --- | --- |
+| W9-I-01 D20 の「高次の消滅」は偽（基底 (Z_p,(p)) の H₁ = F_p） | 致命 | **訂正済み**（a0-design §2.5・§4、drafts/A0/PrismaticEnvelope の `IsCompletelyRegularRel`）：HA 7.2.2.10 の平坦性（H₀ 平坦＋全次数の底変換同型）。変数の場合は満たす。下流は不変 |
+| W9-I-02 `cechShape` の始域 | 要修正 | 訂正済み（持ち上げた N(Δ)） |
+| W9-I-03 `derivedGlobalSections_of_le` の頂点の等号 | 要修正 | 訂正済み（可逆な辺で） |
+| W9-I-04 S3 の宇宙（E3 の添字圏は大きい） | 要修正 | 記録（infinity-sheaves-design §12、骨組みに注記）。中身の段階で大きい添字圏の版を足す |
+| W9-I-05 CAlg 値の層化と U の両立 | 要確認 | `forget_sheafify` を別の主張として置いた。S4 の非安定版（M12e の前提）の一部 |
+| W9-I-06 `True` の置き場・A 代数構造 | 要修正 | `ringPresheafToCAlg` の入力を A 代数値関手に。`of_closure`・`prismaticEnvelope_baseChange_of_variables` は主張を文で追記。残りの `True` は中身の段階で型にする（drafts/README の規約） |
+| W9-I-07 Γ の説明 | 軽微 | 訂正済み |
+| W9-I-08 ノート・状態表の不整合 | 要修正 | 訂正済み（05 の Thm 6.4 行、index と 07 の BR30、本表 §4 の 2） |
+
+既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
+

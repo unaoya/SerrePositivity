@@ -148,8 +148,8 @@ def derivedGlobalSections (J : GrothendieckTopology 𝒞) (hJ : Sheafification J
     (hE : IsPresentable E) (F : Presheaf 𝒞 E) : E _⦋0⦌ :=
   globalSections (sheafify J hJ F) (hasLimit_presheaf hE _)
 
-/-- 概要：RΓ の錐：F^♯ 上の極限錐と、単位を通した F 上の錐。
-方針：`globalSectionsCone` と `sheafifyUnit` の合成。
+/-- 概要：RΓ の錐：F^♯ 上の極限錐。F 自身の上の錐は、F が層で単位 F → F^♯ が同値のときに移送して得る（一般の F では Γ(F^♯) → F は得られない、W9-I-07）。
+方針：`globalSectionsCone`。
 規約：使う側はこの錐の普遍性で RΓ を特徴づける（E3 の `BSLimitConeData` と同じ規約）。
 使われ方：脚注 10 の補題との比較。 -/
 def derivedGlobalSectionsCone (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
@@ -181,8 +181,9 @@ def derivedGlobalSections_map (J : GrothendieckTopology 𝒞) (hJ : Sheafificati
 theorem derivedGlobalSections_of_le (J J' : GrothendieckTopology 𝒞) (h : J ≤ J')
     (hJ : Sheafification J E) (hJ' : Sheafification J' E) (hE : IsPresentable E)
     {F : Presheaf 𝒞 E} (hF : IsSheaf J' F) :
-    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = derivedGlobalSections J hJ hE F ∧
-      c.vertex = derivedGlobalSections J' hJ' hE F := by
-  sorry -- 両方 Γ(F)
+    ∃ e : E.Edge (derivedGlobalSections J hJ hE F) (derivedGlobalSections J' hJ' hE F), True := by
+  -- W9-I-03：二つの別々に選んだ極限の頂点の等号は主張しない。両者を結ぶ可逆な辺（要確認：可逆性の述語）で述べる。
+  -- 証明：`derivedGlobalSections_of_isSheaf` を J と J′ に当て、F 上の二つの極限錐の比較。
+  sorry
 
 end SerrePositivity.InfinityCategories.Sheaves

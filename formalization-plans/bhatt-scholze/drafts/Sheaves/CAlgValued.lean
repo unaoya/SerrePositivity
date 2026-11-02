@@ -83,7 +83,9 @@ theorem isSheaf_iff_forget (hA : IsPresentable (CAlg_R A)) (F : Presheaf 𝒞 (C
 方針：`sheafification_exists`（CAlg_A は安定ではないので、§方針の「安定なら左完全性は自動」は使えない。層化の左完全性は A6 で要るか再確認）。
 規約：G12。
 使われ方：RΓ_CAlg。
-要確認：S4 の証明は E の安定性を W 局所 ⇔ 層の部分で使っている（生成系の shift）。CAlg_A では生成系を自由代数に取り直す（HA 3.2.3.5 の free algebras）。 -/
+要確認：S4 の証明は E の安定性を W 局所 ⇔ 層の部分で使っている（生成系の shift）。CAlg_A では生成系を自由代数に取り直す（HA 3.2.3.5 の free algebras）。
+W9-I-05：U が極限を保つことから出るのは層条件の保存・反映まで。**層化と U の両立**（CAlg 値の単位の U 像が D(A) 値の局所同値であること）は別の一般補題
+（S4 の非安定版、M12e の前提）で、ここでは主張だけ置く（`forget_sheafify`）。既に層である前層（O_Δ）については極限保存だけで比較が取れる。 -/
 theorem sheafification_exists_cAlg (hA : IsPresentable (CAlg_R A)) : Sheafification J (CAlg_R A) := by
   sorry
 
@@ -99,16 +101,19 @@ def derivedGlobalSectionsCAlg (hJ : Sheafification J (CAlg_R A)) (hA : IsPresent
 方針：U は極限錐を保ち、層化と両立（層の忘却像は層、単位の忘却像は D(A) 値の層化の単位に同値）。
 規約：同値は D(A) の可逆な辺。
 使われ方：A0 の D(A) 値の Δ と A2 の CAlg 値の Δ の一致。 -/
+theorem forget_sheafify (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A)) : True := by
+  trivial -- 主張：U(F^♯_CAlg) ≃ (U F)^♯_{D(A)}（単位の U 像が局所同値）。S4 の非安定版の一部（W9-I-05）
+
 theorem forget_derivedGlobalSections (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A))
     (hA : IsPresentable (CAlg_R A)) (hD : IsPresentable (derivedInfinityCategory A)) (F : Presheaf 𝒞 (CAlg_R A)) :
-    True := by -- 要確認：辺の可逆性の述語
+    True := by -- 主張：D(A) の可逆な辺 U(RΓ_CAlg F) ≃ RΓ_{D(A)}(U ∘ F)。`forget_sheafify` と U の極限保存から。要確認：辺の可逆性の述語
   trivial
 
 /-- 概要：環の前層（O_Δ のような離散な環の前層）を CAlg_A 値前層として読む（離散埋め込み CommRing_A → CAlg_A）。
 方針：EInfinity の離散代数の埋め込み（`algebraEmbeddingForgetIso` の始域）。
 規約：忘却像は `J A ∘ O`（D(A) の離散埋め込み）。
 使われ方：A0 の O_Δ を CAlg 値に。 -/
-def ringPresheafToCAlg (O : 𝒞ᵒᵖ ⥤ CommRingCat.{u}) (hO : True) : Presheaf 𝒞 (CAlg_R A) := sorry
--- 要確認：O の A 代数構造の与え方（Under (CommRingCat.of A) 値の関手として）
+def ringPresheafToCAlg (O : 𝒞ᵒᵖ ⥤ Under (CommRingCat.of A)) : Presheaf 𝒞 (CAlg_R A) := sorry
+-- W9-I-06：入力は A 代数値の関手（`Under (CommRingCat.of A)`）。A0 の `structurePresheaf` は `toHom` で A 代数構造をもつのでこの形で与える。
 
 end SerrePositivity.InfinityCategories.Sheaves

@@ -46,12 +46,13 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p
 /-! ## 相対的な完全正則列（Def 2.42） -/
 
 /-- 概要：B の元の列 x が A に相対的に (p,d) 完全正則：Kos(A; p, d) → Kos(B; p, d, x) が平坦（原典 Def 2.42）。
-方針：単体的可換環の平坦射の代わりに、Kos(B; p, d, x) の H⁰ = B/(p, d, x) が A/(p,d) 上平坦で、正次数のホモロジーが消えること（設計書 D20）。
+方針：連結な環の射の平坦性（HA 7.2.2.10）をホモロジーで：H₀ = B/(p,d,x) が A/(p,d) 上平坦で、すべての i で
+H_i(Kos(A; p,d)) ⊗_{A/(p,d)} B/(p,d,x) → H_i(Kos(B; p,d,x)) が同型（設計書 D20、2026-11-02 訂正。以前の「正次数の消滅」は基底 (Z_p,(p)) の H₁ = F_p で破綻、Codex W9-I-01）。
 規約：B は導来 (p,d) 完備な A 代数。
 使われ方：Prop 3.13 の仮定（本書では Ex 3.14 の場合だけ使う）。
 要確認：Koszul 複体のホモロジーの基盤の名前（HA/Koszul*）。 -/
 def IsCompletelyRegularRel {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) : Prop :=
-  sorry -- B/(p, d, x) が A/(p,d) 上平坦 ∧ ∀ i > 0, H_i(Kos(B; p, d, x)) = 0
+  sorry -- B/(p,d,x) が A/(p,d) 上平坦 ∧ ∀ i, H_i(Kos(A;p,d)) ⊗_{A/(p,d)} B/(p,d,x) ≅ H_i(Kos(B;p,d,x))（自然な射が同型）
 
 /-! ## envelope の普遍性 -/
 
@@ -93,6 +94,7 @@ theorem IsPrismaticEnvelope.unique
 /-- 概要：J を (p,d) 完備閉包で置き換えても envelope は同じ（Constr 4.17 の J = ker(B → (B/J₀B)^∧) と J₀B の比較）。
 方針：標的 D は (p,d) 完備なので、J₀B ↦ dD なら閉包も ↦ dD。
 規約：閉包は導来 p 完備化の H⁰ への核で述べる。
+主張（中身の段階で型にする、W9-I-06）：J₀ ≤ J := ker(B → H⁰((B/J₀B)^∧_{(p,d)})) について、`IsPrismaticEnvelope P B J₀ … C η ↔ IsPrismaticEnvelope P B J … C η`。
 使われ方：Constr 4.17 の J の形を原典どおりにしたまま、変数の場合の存在定理を当てる。 -/
 theorem IsPrismaticEnvelope.of_closure : True := by
   -- 要確認：閉包の定義（PDCompletionH0 (B ⧸ J₀B) p 0 への核）を入れてから述べる
@@ -153,6 +155,7 @@ theorem exists_prismaticEnvelope_of_variables (hP : IsBoundedPrism P) (S : Type 
 方針：模型が自由 δ 環なので、底変換後も同じ形。普遍性で比較。
 規約：底変換は prism の射 (A,(d)) → (A′,(d′)) に沿う完備テンソル。
 使われ方：Rem 4.19 の底変換、Lemma 4.20、Thm 5.2 の φ_A^* C^•。
+主張（中身の段階で型にする、W9-I-06）：prism の射 f : P → P′ と変数の場合の envelope C について、C ⊗̂_A A′ は (B ⊗̂_A A′, J·(B ⊗̂ A′)) の P′ 上の envelope。
 要確認：完備テンソルの基盤の名前（BS/Perfectoidization/CompletedTensor）。 -/
 theorem prismaticEnvelope_baseChange_of_variables : True := by
   trivial
