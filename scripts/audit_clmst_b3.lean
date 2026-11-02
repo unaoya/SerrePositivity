@@ -1,8 +1,7 @@
 import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
 import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
-import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
-import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
-import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
+import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
+import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 import SerrePositivity.CLMST.PerfectoidIdealRoots
 import SerrePositivity.CLMST.PerfectoidFrobeniusComparison

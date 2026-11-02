@@ -110,7 +110,7 @@ public import SerrePositivity.CategoryTheory.TStructure.Localization
 public import SerrePositivity.CategoryTheory.TriangulatedK0
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
-public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
+public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
 public import SerrePositivity.CommutativeAlgebra.Adic.BoundedTorsionQuotient
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
@@ -173,9 +173,8 @@ public import SerrePositivity.CommutativeAlgebra.Perfection
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationNilpotent
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 public import SerrePositivity.CommutativeAlgebra.PowerSeries.Completeness

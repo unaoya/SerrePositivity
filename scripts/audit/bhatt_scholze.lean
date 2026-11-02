@@ -22,7 +22,7 @@ import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Family
 import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 import SerrePositivity.BhattScholze.Andre.Envelope.MonicSource
 import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
-import SerrePositivity.CommutativeAlgebra.MonicRelationRegularSequence
+import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.MonicRelation
 import SerrePositivity.BhattScholze.Andre.Variants.MonicRootedExtension
 import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 import SerrePositivity.BhattScholze.Andre.Perfection.PerfectPrismMonic
