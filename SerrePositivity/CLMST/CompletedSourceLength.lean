@@ -1,9 +1,7 @@
 module
 
-public import SerrePositivity.CLMST.CompletedStageBaseChange
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.CLMST.CompletedCokernelLength
-public import SerrePositivity.CLMST.StageFiniteness
-public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.HomologicalAlgebra.FlatKoszulFiniteness
 
 /-! # 比較元の完備テンソル代数の Koszul 長さ
@@ -27,19 +25,19 @@ variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
 omit [IsNoetherianRing A] in
 /-- 有限段のパラメータ系にも、標準段写像を通じて台の条件を供給する。 -/
 theorem completedTensorMaxIdeal_le_stage_parameter_radical
-    (n : ℕ) [IsLocalRing (StageAlgebra A D t p n)]
-    (hinj : Function.Injective (algebraMap A (StageAlgebra A D t p n)))
-    {r : ℕ} (z : Fin r → StageAlgebra A D t p n)
-    (hz : IsSystemOfParameters (StageAlgebra A D t p n) z) :
+    (n : ℕ) [IsLocalRing (Section2.StageAlgebra A D t p n)]
+    (hinj : Function.Injective (algebraMap A (Section2.StageAlgebra A D t p n)))
+    {r : ℕ} (z : Fin r → Section2.StageAlgebra A D t p n)
+    (hz : IsSystemOfParameters (Section2.StageAlgebra A D t p n) z) :
     completedTensorMaxIdeal A D t p ≤
-      (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical := by
-  let φ := (stageToCompletedTensor A D t p n).toRingHom
-  have hc : φ.comp (algebraMap A (StageAlgebra A D t p n)) =
+      (Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical := by
+  let φ := (Section2.stageToCompletedTensor A D t p n).toRingHom
+  have hc : φ.comp (algebraMap A (Section2.StageAlgebra A D t p n)) =
       algebraMap A ((CompletedTower A t p) ⊗[A] D) := by
     ext a
-    exact (stageToCompletedTensor A D t p n).commutes a
+    exact (Section2.stageToCompletedTensor A D t p n).commutes a
   have hm := Ideal.map_mono (f := φ)
-    (maximalIdeal_map_le_of_finite_of_injective A (StageAlgebra A D t p n) hinj)
+    (maximalIdeal_map_le_of_finite_of_injective A (Section2.StageAlgebra A D t p n) hinj)
   rw [Ideal.map_map, hc] at hm
   apply hm.trans
   rw [← hz.2]
@@ -82,47 +80,47 @@ theorem completedTensor_koszul_length_ne_top
 omit [IsLocalRing A] in
 /-- 任意の有限段から来る列でも、比較元のホモロジーは完備塔上有限生成。 -/
 theorem completedTensor_stage_koszulModuleHomology_finite
-    (n : ℕ) {r : ℕ} (z : Fin r → StageAlgebra A D t p n) (q : ℤ) :
+    (n : ℕ) {r : ℕ} (z : Fin r → Section2.StageAlgebra A D t p n) (q : ℤ) :
     let S := (CompletedTower A t p) ⊗[A] D
     let M := (((koszulModuleFunctor
-      ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj (ModuleCat.of S S)).homology q)
+      ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj (ModuleCat.of S S)).homology q)
     let _ := Module.compHom M (algebraMap (CompletedTower A t p) S)
     Module.Finite (CompletedTower A t p) M := by
-  let := completedTensorStageAlgebra A D t p n
-  let := completedTensorStageScalarTower A D t p n
-  let := completedTensorStageIsPushout A D t p n
+  let := Section2.completedTensorStageAlgebra A D t p n
+  let := Section2.completedTensorStageScalarTower A D t p n
+  let := Section2.completedTensorStageIsPushout A D t p n
   let := flat_completedTower_over_stage A t p n
-  let : Module.Finite (TowerStage A t p n) (StageAlgebra A D t p n) :=
+  let : Module.Finite (TowerStage A t p n) (Section2.StageAlgebra A D t p n) :=
     Module.Finite.of_restrictScalars_finite A _ _
   exact pushout_koszulModuleHomology_finite (TowerStage A t p n)
-    (CompletedTower A t p) (StageAlgebra A D t p n)
+    (CompletedTower A t p) (Section2.StageAlgebra A D t p n)
     ((CompletedTower A t p) ⊗[A] D) z q
 
 /-- 有限段の列の台の条件から、完備テンソル代数の全 Koszul 長さの有限性を導く。 -/
 theorem completedTensor_stage_koszul_length_ne_top
     (hp : (p : A) ∈ maximalIdeal A) (n : ℕ) {r : ℕ}
-    (z : Fin r → StageAlgebra A D t p n)
+    (z : Fin r → Section2.StageAlgebra A D t p n)
     (hJ : completedTensorMaxIdeal A D t p ≤
-      (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
+      (Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (q : ℤ) :
     (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
           ((CompletedTower A t p) ⊗[A] D))).homology q) ≠ ⊤ := by
   exact completedTensorLength_ne_top_of_finite A D t p ht hp _
     (completedTensor_stage_koszulModuleHomology_finite A D t p n z q)
     (isPowTorsion_koszulModuleHomology (completedTensorMaxIdeal_fg A D t p)
-      ((stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ
+      ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ
       (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D)) q)
 
 /-- 有限段のパラメータ系では台の条件も自動的に満たす。 -/
 theorem completedTensor_stage_parameter_source_length_ne_top
-    (hp : (p : A) ∈ maximalIdeal A) (n : ℕ) [IsLocalRing (StageAlgebra A D t p n)]
-    (hinj : Function.Injective (algebraMap A (StageAlgebra A D t p n)))
-    {r : ℕ} (z : Fin r → StageAlgebra A D t p n)
-    (hz : IsSystemOfParameters (StageAlgebra A D t p n) z) (q : ℤ) :
+    (hp : (p : A) ∈ maximalIdeal A) (n : ℕ) [IsLocalRing (Section2.StageAlgebra A D t p n)]
+    (hinj : Function.Injective (algebraMap A (Section2.StageAlgebra A D t p n)))
+    {r : ℕ} (z : Fin r → Section2.StageAlgebra A D t p n)
+    (hz : IsSystemOfParameters (Section2.StageAlgebra A D t p n) z) (q : ℤ) :
     (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
           ((CompletedTower A t p) ⊗[A] D))).homology q) ≠ ⊤ :=
   completedTensor_stage_koszul_length_ne_top A D t p ht hp n z

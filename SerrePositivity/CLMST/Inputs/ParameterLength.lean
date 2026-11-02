@@ -1,12 +1,13 @@
 module
 
-public import SerrePositivity.CLMST.StageLocality
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
 public import SerrePositivity.CLMST.SourceEulerEvaluation
 public import SerrePositivity.CLMST.ParameterFormulaDescent
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # CLMST Proposition 4.0.14 の一般段の商の長さ（証明済みの互換入口）
 
@@ -46,9 +47,9 @@ theorem proposition_4_0_14
     (he : ∀ (i : Fin h) (hi : (i : ℕ) ≠ 0), e (t i) = MvPowerSeries.X ⟨i, hi⟩)
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
     (n : ℕ) :
-    let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-    ∀ (y : Fin h → StageAlgebra A D t p n),
-      IsSystemOfParameters (StageAlgebra A D t p n) y →
+    let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+    ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y →
       let _ := Module.compHom
         ((RPerfd A D t p hperf) ⧸
           Ideal.span (Set.range fun j ↦ toRPerfd A D t p hperf n (y j)))
@@ -58,9 +59,9 @@ theorem proposition_4_0_14
         ((RPerfd A D t p hperf) ⧸
           Ideal.span (Set.range fun j ↦ toRPerfd A D t p hperf n (y j))) =
         ENNReal.ofReal
-          (HilbertSamuel.multiplicity (StageAlgebra A D t p n) (Ideal.span (Set.range y))
-            (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ≥0∞) := by
-  let := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+          (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n) (Ideal.span (Set.range y))
+            (Section2.StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ≥0∞) := by
+  let := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
   dsimp only
   intro y hy
   have htA : ∀ i, t i ∈ maximalIdeal A :=

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.CompletedSourceLength
-public import SerrePositivity.CLMST.StageResidueLength
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
 public import SerrePositivity.CommutativeAlgebra.Koszul.FiniteLength
@@ -31,30 +31,30 @@ variable (A D : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
 include ht hp htD hres in
 /-- 各次数の比較元の正規化長さは、有限段の通常長さを段の階数で割った値。 -/
 theorem completedTensor_stage_source_homology_length
-    (n : ℕ) {r : ℕ} (y : Fin r → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing A D t p htD n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) (q : ℤ) :
+    (n : ℕ) {r : ℕ} (y : Fin r → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing A D t p htD n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) (q : ℤ) :
     (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
           ((CompletedTower A t p) ⊗[A] D))).homology q) =
-    (Module.length (StageAlgebra A D t p n) ((koszulComplex y).homology q) : ℝ≥0∞) /
+    (Module.length (Section2.StageAlgebra A D t p n) ((koszulComplex y).homology q) : ℝ≥0∞) /
       (stageRank h p n : ℝ≥0∞) := by
-  let := stageAlgebra_isLocalRing A D t p htD n
-  let := completedTensorStageAlgebra A D t p n
-  let := completedTensorStageScalarTower A D t p n
-  let := completedTensorStageIsPushout A D t p n
+  let := Section2.stageAlgebra_isLocalRing A D t p htD n
+  let := Section2.completedTensorStageAlgebra A D t p n
+  let := Section2.completedTensorStageScalarTower A D t p n
+  let := Section2.completedTensorStageIsPushout A D t p n
   let := flat_completedTower_over_stage A t p n
   rw [koszulModuleFunctor_self_eq]
   let H := (koszulComplex y).homology q
-  let N := (koszulComplex ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).homology q
+  let N := (koszulComplex ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).homology q
   let : Module (TowerStage A t p n) H := Module.compHom H
-    (algebraMap (TowerStage A t p n) (StageAlgebra A D t p n))
+    (algebraMap (TowerStage A t p n) (Section2.StageAlgebra A D t p n))
   let : Module (CompletedTower A t p) N := Module.compHom N
     (algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D))
   have hlength : Module.length (TowerStage A t p n) H =
-      Module.length (StageAlgebra A D t p n) H :=
-    length_restrictScalars_stageAlgebra_eq A D t p htD hres n H
+      Module.length (Section2.StageAlgebra A D t p n) H :=
+    Section2.length_restrictScalars_stageAlgebra_eq A D t p htD hres n H
   have hfinite : IsFiniteLength (TowerStage A t p n) H := by
     apply Module.length_ne_top_iff.mp
     rw [hlength]
@@ -63,7 +63,7 @@ theorem completedTensor_stage_source_homology_length
   let e : N ≃ₗ[CompletedTower A t p]
       (CompletedTower A t p ⊗[TowerStage A t p n] H) :=
     pushoutKoszulHomologyEquiv (TowerStage A t p n) (CompletedTower A t p)
-    (StageAlgebra A D t p n) ((CompletedTower A t p) ⊗[A] D) y q
+    (Section2.StageAlgebra A D t p n) ((CompletedTower A t p) ⊗[A] D) y q
   change (RootTowerLength.completedNormalizedLength A t p ht).len N = _
   rw [(RootTowerLength.completedNormalizedLength A t p ht).len_congr _ _ e]
   rw [RootTowerLength.completedNormalizedLength_tensor_eq_length A t p ht hp n H hfinite]
@@ -72,11 +72,11 @@ theorem completedTensor_stage_source_homology_length
 include ht hp htD hres in
 /-- 比較元の Euler 評価は有限段の通常の Koszul Euler 数を正規化した値。 -/
 theorem completedTensor_stage_source_euler_eq_chiOrd
-    (n : ℕ) {r : ℕ} (y : Fin r → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing A D t p htD n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
+    (n : ℕ) {r : ℕ} (y : Fin r → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing A D t p htD n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
     lambdaEuler (completedTensorLength A D t p ht)
-      ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D))) =
       chiOrd (koszulComplex y) / (stageRank h p n : ℝ) := by
   unfold lambdaEuler chiOrd
@@ -87,15 +87,15 @@ theorem completedTensor_stage_source_euler_eq_chiOrd
 include ht hp htD hres in
 /-- 証明済みの Koszul 重複度公式により、比較元の Euler 評価は有限段の重複度の正規化。 -/
 theorem completedTensor_stage_source_euler_eq_multiplicity
-    (n : ℕ) {r : ℕ} (y : Fin r → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing A D t p htD n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
+    (n : ℕ) {r : ℕ} (y : Fin r → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing A D t p htD n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
     lambdaEuler (completedTensorLength A D t p ht)
-      ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D))) =
-      (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-        (Ideal.span (Set.range y)) (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ) := by
-  let := stageAlgebra_isLocalRing A D t p htD n
+      (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+        (Ideal.span (Set.range y)) (Section2.StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ) := by
+  let := Section2.stageAlgebra_isLocalRing A D t p htD n
   rw [completedTensor_stage_source_euler_eq_chiOrd A D t p ht hp htD hres n y hy,
     KoszulMultiplicity.multiplicity_eq_chiOrd_koszul y hy]
 

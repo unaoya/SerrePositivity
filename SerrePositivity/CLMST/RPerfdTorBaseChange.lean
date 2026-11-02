@@ -4,6 +4,7 @@ public import SerrePositivity.CLMST.RPerfdCohomologyInputs
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionTorBaseChange
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # Original completed-tower Tor tests supply the A-coefficient inputs
 
@@ -67,9 +68,9 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_tors
           (RPerfd A D t p hperf)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
@@ -100,9 +101,9 @@ lemma rPerfd_cohomology_vanishing_of_tower_power_torsion
           (RPerfd A D t p hperf)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))

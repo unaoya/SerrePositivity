@@ -57,8 +57,8 @@ theorem conditional_corollary_4_0_4_of_powerTorsion
     {e : ℕ} (t : Fin e → A) (p : ℕ) [Fact p.Prime]
     (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (hres : ∀ k : ℕ, IsKoszulResolution (fun j => t j ^ k))
-    (φ : ∀ n : ℕ, StageAlgebra A D t p n →+* C)
-    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (StageAlgebra A D t p n)
+    (φ : ∀ n : ℕ, Section2.StageAlgebra A D t p n →+* C)
+    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (Section2.StageAlgebra A D t p n)
       (algebraMap A D x)) = algebraMap A C x)
     (hS : IsIntegralPerfectoid S p) (g : S) (hC : IsIntegralPerfectoid C p)
     (ψ : S →+* C) (a : S) (j₀ : Fin e)
@@ -72,9 +72,9 @@ theorem conditional_corollary_4_0_4_of_powerTorsion
       HomologicalAlgebra.localCohomologyScalarEndomorphism
         (IsLocalRing.maximalIdeal D) i C (ψ s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin e → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin e → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i) ψ
           (perfectoidIdeal S p hS g) ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
   exact conditional_corollary_4_0_4_of_powerTorsion_and_extension
@@ -99,8 +99,8 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion
     [Algebra A D] [Module.Finite A D] [Algebra D C] [IsScalarTower A D C]
     (ht : Ideal.span (Set.range t) = maximalIdeal A) (hdim : ringKrullDim A = e)
     (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
-    (φ : ∀ n : ℕ, StageAlgebra A D t p n →+* C)
-    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (StageAlgebra A D t p n)
+    (φ : ∀ n : ℕ, Section2.StageAlgebra A D t p n →+* C)
+    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (Section2.StageAlgebra A D t p n)
       (algebraMap A D x)) = algebraMap A C x)
     (j₀ : Fin e) (htp : t j₀ = (p : A))
     (hI : ∀ k : ℕ, 0 < k → IsIdempotentElem
@@ -118,9 +118,9 @@ theorem completedTower_cohomology_vanishing_of_powerTorsion
         HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i C
           (algebraMap (CompletedTower A t p) C s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ y : Fin e → StageAlgebra A D t p n,
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ y : Fin e → Section2.StageAlgebra A D t p n,
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i)
             (algebraMap (CompletedTower A t p) C)
           perfectoidIdeal (CompletedTower A t p) p hperf

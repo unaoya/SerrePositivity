@@ -10,6 +10,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # Concrete inputs for the cohomology comparison on the selected RPerfd
 
@@ -254,7 +255,7 @@ lemma rPerfd_tor_eq_zero_of_power_torsion_and_quotientTorOne (g : A)
 Koszul/local-cohomology theorem. -/
 lemma toRPerfd_algebraMap_A (n : ℕ) (x : A) :
     toRPerfd A D t p hperf n
-      (algebraMap D (StageAlgebra A D t p n) (algebraMap A D x)) =
+      (algebraMap D (Section2.StageAlgebra A D t p n) (algebraMap A D x)) =
         algebraMap A (RPerfd A D t p hperf) x := by
   rw [toRPerfd_algebraMap_D]
   exact (IsScalarTower.algebraMap_apply A D (RPerfd A D t p hperf) x).symm
@@ -307,9 +308,9 @@ lemma rPerfd_cohomology_vanishing_of_tor_idempotent
           (RPerfd A D t p hperf)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))
@@ -351,9 +352,9 @@ lemma rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_power_torsion
           (RPerfd A D t p hperf)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))

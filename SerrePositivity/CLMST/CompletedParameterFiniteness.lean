@@ -34,48 +34,48 @@ variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- 選択した正冪の列の零次の有限性を、元の任意のパラメータ系へ戻す。 -/
 theorem completedTensor_stage_parameter_zero_length_ne_top
-    (n : ℕ) (y : Fin h → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
+    (n : ℕ) (y : Fin h → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
     (completedTensorLength A D t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology 0) ≠ ⊤ := by
   cases h with
   | zero => omega
   | succ r =>
-    let : IsLocalRing (StageAlgebra A D t p n) :=
-      stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+    let : IsLocalRing (Section2.StageAlgebra A D t p n) :=
+      Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
     obtain ⟨y', k, hspan, hk, hparams, _, _, hfinite⟩ :=
       exists_selected_parameter_euler_comparison A D hinj hres t hdimA hdimD hpos
         ht hsop p htp e he hperf n rfl y hy
     let w := Fin.snoc (Fin.init y') (y' (Fin.last r) ^ k)
     have hwJ := completedTensorMaxIdeal_le_stage_parameter_radical A D t p n
       (by
-        rw [IsScalarTower.algebraMap_eq A D (StageAlgebra A D t p n)]
-        exact (stageAlgebra_algebraMap_injective A D t p n).comp hinj) w hparams
+        rw [IsScalarTower.algebraMap_eq A D (Section2.StageAlgebra A D t p n)]
+        exact (Section2.stageAlgebra_algebraMap_injective A D t p n).comp hinj) w hparams
     have hle : Ideal.span (Set.range w) ≤ Ideal.span (Set.range y) :=
       (span_last_pow_le y' k hk).trans_eq hspan
-    have hSm : Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ w)) ≤
-        Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ y)) := by
-      have hm := Ideal.map_mono (f := (stageToCompletedTensor A D t p n).toRingHom) hle
+    have hSm : Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ w)) ≤
+        Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)) := by
+      have hm := Ideal.map_mono (f := (Section2.stageToCompletedTensor A D t p n).toRingHom) hle
       simpa only [Ideal.map_span, ← Set.range_comp] using hm
     exact ne_top_of_le_ne_top (hfinite 0)
       (LengthAlgebra.lambdaKoszul_homology_zero_le_of_span_le
         (completedTensorLength A D t p _) (RPerfd A D t p hperf)
         (completedTensorMaxIdeal_fg A D t p)
-        ((stageToCompletedTensor A D t p n).toRingHom ∘ w)
-        ((stageToCompletedTensor A D t p n).toRingHom ∘ y) hwJ hSm)
+        ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ w)
+        ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y) hwJ hSm)
 
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- 全有限段の任意のパラメータ系について、零次数を含む全 Koszul 長さが有限。 -/
 theorem completedTensor_stage_parameter_length_ne_top
-    (n : ℕ) (y : Fin h → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) (q : ℤ) :
+    (n : ℕ) (y : Fin h → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) (q : ℤ) :
     (completedTensorLength A D t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology q) ≠ ⊤ := by
   by_cases hq : q = 0
   · subst q
@@ -88,7 +88,7 @@ theorem completedTensor_stage_parameter_length_ne_top
     exact ENNReal.zero_ne_top
   · let := ModuleCat.subsingleton_of_isZero (isZero_homology_of_isZero_X _ q
       (koszulModuleFunctor_isZero_X_of_pos
-        ((stageToCompletedTensor A D t p n).toRingHom ∘ y)
+        ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf)) q (by omega)))
     rw [NormalizedLength.len_eq_zero_of_subsingleton]
     exact ENNReal.zero_ne_top

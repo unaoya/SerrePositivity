@@ -21,8 +21,8 @@ lemma conditional_corollary_4_0_4
     {e : ℕ} (t : Fin e → A) (p : ℕ) [Fact p.Prime]
     (hsop : IsSystemOfParameters D (algebraMap A D ∘ t))
     (hres : ∀ k : ℕ, IsKoszulResolution (fun j => t j ^ k))
-    (φ : ∀ n : ℕ, StageAlgebra A D t p n →+* C)
-    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (StageAlgebra A D t p n)
+    (φ : ∀ n : ℕ, Section2.StageAlgebra A D t p n →+* C)
+    (hφ : ∀ (n : ℕ) (x : A), φ n (algebraMap D (Section2.StageAlgebra A D t p n)
       (algebraMap A D x)) = algebraMap A C x)
     (ψ : S →+* C) (I : Ideal S) (a : S) (j₀ : Fin e)
     (ha : ψ a = algebraMap A C (t j₀))
@@ -34,9 +34,9 @@ lemma conditional_corollary_4_0_4
       HomologicalAlgebra.localCohomologyScalarEndomorphism
         (IsLocalRing.maximalIdeal D) i C (ψ s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin e → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin e → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom (koszulHomologySelf (φ n ∘ y) i) ψ
           I ≤ Module.annihilator S (koszulHomologySelf (φ n ∘ y) i)) := by
   constructor

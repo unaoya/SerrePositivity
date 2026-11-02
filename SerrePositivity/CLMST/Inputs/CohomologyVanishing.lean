@@ -1,13 +1,14 @@
 module
 
 public import SerrePositivity.CLMST.Corollary404
-public import SerrePositivity.CLMST.StageLocality
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.CLMST.EtaleLocus
 public import SerrePositivity.HomologicalAlgebra.LocalCohomology.Actions
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-!
 # CLMST Corollary 4.0.4 の二つの消滅
@@ -66,9 +67,9 @@ theorem corollary_4_0_4
       HomologicalAlgebra.localCohomologyScalarEndomorphism (maximalIdeal D) i
         (RPerfd A D t p hperf) (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) a) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j ↦ toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))

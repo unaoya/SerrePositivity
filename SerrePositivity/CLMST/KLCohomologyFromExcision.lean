@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 public import SerrePositivity.CLMST.RPerfdTorBaseChange
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # Both original KL cohomology conclusions from the explicit excision input
 
@@ -40,9 +41,9 @@ theorem rPerfd_cohomology_vanishing_of_finiteComparison_excision
           (RPerfd A D t p hperf)
           (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf) s) = 0) ∧
     (∀ n : ℕ,
-      let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ (y : Fin h → StageAlgebra A D t p n),
-        IsSystemOfParameters (StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
+      let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ (y : Fin h → Section2.StageAlgebra A D t p n),
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) y → ∀ i : ℕ, 0 < i →
           let _ := Module.compHom
             (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)
             (algebraMap (CompletedTower A t p) (RPerfd A D t p hperf))

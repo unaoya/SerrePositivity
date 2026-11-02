@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CLMST.CompletedTargetLength
 public import SerrePositivity.CLMST.NonunitIsogeny
-public import SerrePositivity.CLMST.StagePowerMembership
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 
 /-! # 零化冪とパラメータ選択から実際の Euler 比較へ
 
@@ -36,17 +36,17 @@ variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
 include hinj hres hdimA hdimD hpos ht hsop htp e he in
 /-- 任意の有限段のパラメータ系に対し、実際の零化冪と所属を満たす列を選び Euler 比較を適用する。 -/
 theorem exists_selected_parameter_euler_comparison
-    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
-    let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-    ∃ (y' : Fin (r + 1) → StageAlgebra A D t p n) (k : ℕ),
+    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
+    let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+    ∃ (y' : Fin (r + 1) → Section2.StageAlgebra A D t p n) (k : ℕ),
       Ideal.span (Set.range y') = Ideal.span (Set.range y) ∧ 0 < k ∧
-      IsSystemOfParameters (StageAlgebra A D t p n)
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n)
         (Fin.snoc (Fin.init y') (y' (Fin.last r) ^ k)) ∧
       (let lam := completedTensorLength A D t p
          (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))
-       let z := (stageToCompletedTensor A D t p n).toRingHom ∘
+       let z := (Section2.stageToCompletedTensor A D t p n).toRingHom ∘
          Fin.snoc (Fin.init y') (y' (Fin.last r) ^ k)
        let S := (CompletedTower A t p) ⊗[A] D
        let C := RPerfd A D t p hperf
@@ -57,8 +57,8 @@ theorem exists_selected_parameter_euler_comparison
        (∀ q : ℤ, lam.len (((koszulModuleFunctor z).obj
          (ModuleCat.of S C)).homology q) ≠ ⊤)) := by
   let : IsDomain A := isDomain_of_isRegularLocalRing A
-  let : IsLocalRing (StageAlgebra A D t p n) :=
-    stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+  let : IsLocalRing (Section2.StageAlgebra A D t p n) :=
+    Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
   dsimp only
   have hp : (p : A) ∈ maximalIdeal A := by
     rw [← htp, ← ht]
@@ -73,11 +73,11 @@ theorem exists_selected_parameter_euler_comparison
   have hgreg : IsSMulRegular D (algebraMap A D g) := fun x y hxy ↦
     mul_left_cancel₀ hgD hxy
   obtain ⟨y', k, hspan, hk, hparam, hmem⟩ :=
-    stage_parameter_power_selection_completed_of_regular_base A D t p htD n
+    Section2.stage_parameter_power_selection_completed_of_regular_base A D t p htD n
       g hgmD hgreg N hNpos y hy
   let w := Fin.snoc (Fin.init y') (y' (Fin.last r) ^ k)
-  have hprefix : Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ w) =
-      stageToCompletedTensor A D t p n ∘ Fin.init y' := by
+  have hprefix : Fin.init ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ w) =
+      Section2.stageToCompletedTensor A D t p n ∘ Fin.init y' := by
     funext i
     simp only [Fin.init, Function.comp_apply, w, Fin.snoc_castSucc]
     rfl
@@ -85,8 +85,8 @@ theorem exists_selected_parameter_euler_comparison
       (algebraMap A (CompletedTower A t p) g) =
       algebraMap A ((CompletedTower A t p) ⊗[A] D) g :=
     (IsScalarTower.algebraMap_apply A (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D) g).symm
-  have hLast : stageToCompletedTensor A D t p n (w (Fin.last r)) ∈
-      Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ w))) ⊔
+  have hLast : Section2.stageToCompletedTensor A D t p n (w (Fin.last r)) ∈
+      Ideal.span (Set.range (Fin.init ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ w))) ⊔
         Ideal.span {(algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D)
           (algebraMap A (CompletedTower A t p) g)) ^ N} := by
     rw [hprefix, hscalar]
@@ -99,18 +99,18 @@ theorem exists_selected_parameter_euler_comparison
   let : Module.FinitePresentation A D := Module.finitePresentation_of_finite A D
   let R := CompletedTower A t p
   let S := R ⊗[A] D
-  let z := (stageToCompletedTensor A D t p n).toRingHom ∘ w
+  let z := (Section2.stageToCompletedTensor A D t p n).toRingHom ∘ w
   let lam := completedTensorLength A D t p
     (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))
   have hJ := completedTensorMaxIdeal_le_stage_parameter_radical A D t p n
     (by
-      rw [IsScalarTower.algebraMap_eq A D (StageAlgebra A D t p n)]
-      exact (stageAlgebra_algebraMap_injective A D t p n).comp hinj) w hparam
+      rw [IsScalarTower.algebraMap_eq A D (Section2.StageAlgebra A D t p n)]
+      exact (Section2.stageAlgebra_algebraMap_injective A D t p n).comp hinj) w hparam
   have hinjC := toMixedPerfectoid_injective_of_domain A D t p hperf hinj g hg hEtale
   have hC : ∀ q : ℤ, q < 0 → lam.len
       (((koszulModuleFunctor z).obj (ModuleCat.of S (RPerfd A D t p hperf))).homology q) ≠ ⊤ := by
     intro q hq
-    have hyh : IsSystemOfParameters (StageAlgebra A D t p n)
+    have hyh : IsSystemOfParameters (Section2.StageAlgebra A D t p n)
         (fun j : Fin h ↦ w (Fin.cast hr j)) := by
       subst h
       simpa using hparam

@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CLMST.Inputs.CohomologyVanishing
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # CLMST の固定 g の消滅からパラメータ系の消滅への接続
 
@@ -44,14 +45,14 @@ theorem parameter_koszul_annihilates_of_etale (g : A) (hg : g ≠ 0)
       (algebraMap A (CompletedTower A t p) g) ≤
         Module.annihilator (CompletedTower A t p)
           (koszulHomologySelf (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) i) := by
-  let : IsLocalRing (StageAlgebra A D t p 0) := stage0IsLocalRing A D t p
-  let : Module.Finite D (StageAlgebra A D t p 0) := stage0ModuleFinite A D t p
-  have hz0 := hz.map_finite (StageAlgebra A D t p 0)
-    (stage0_algebraMap_injective A D t p)
+  let : IsLocalRing (Section2.StageAlgebra A D t p 0) := Section2.stage0IsLocalRing A D t p
+  let : Module.Finite D (Section2.StageAlgebra A D t p 0) := Section2.stage0ModuleFinite A D t p
+  have hz0 := hz.map_finite (Section2.StageAlgebra A D t p 0)
+    (Section2.stage0_algebraMap_injective A D t p)
   have hvan := (Inputs.corollary_4_0_4 A D hinj hres t hdimA hdimD hpos ht hsop
     p htp e he hperf g hg hEtale).2 0 (algebraMap D _ ∘ z) hz0 i hi
   have hseq : (fun j ↦ toRPerfd A D t p hperf 0
-      ((algebraMap D (StageAlgebra A D t p 0) ∘ z) j)) =
+      ((algebraMap D (Section2.StageAlgebra A D t p 0) ∘ z) j)) =
       (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) := by
     funext j
     exact toRPerfd_algebraMap_D A D t p hperf 0 (z j)

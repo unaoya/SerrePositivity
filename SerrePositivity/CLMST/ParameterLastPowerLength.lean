@@ -3,6 +3,7 @@ module
 public import SerrePositivity.CLMST.CompletedParameterFiniteness
 public import SerrePositivity.LengthAlgebra.KoszulModule
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Generators
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # CLMST Claim 4.0.15：最後のパラメータの冪による長さの倍率
 
@@ -44,23 +45,23 @@ theorem completedTensor_stage_parameter_last_pow_length
     (g : A) (hg : g ≠ 0)
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g)))
-    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) (k : ℕ) (hk : 0 < k) :
+    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) (k : ℕ) (hk : 0 < k) :
     let lam := completedTensorLength A D t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))
-    let φ := (stageToCompletedTensor A D t p n).toRingHom
+    let φ := (Section2.stageToCompletedTensor A D t p n).toRingHom
     let S := (CompletedTower A t p) ⊗[A] D
     let M := ModuleCat.of S (RPerfd A D t p hperf)
     lam.len (((koszulModuleFunctor
       (φ ∘ Fin.snoc (Fin.init y) (y (Fin.last r) ^ k))).obj M).homology 0) =
       (k : ℝ≥0∞) * lam.len (((koszulModuleFunctor (φ ∘ y)).obj M).homology 0) := by
   subst h
-  let : IsLocalRing (StageAlgebra A D t p n) :=
-    stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+  let : IsLocalRing (Section2.StageAlgebra A D t p n) :=
+    Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
   let lam := completedTensorLength A D t p
     (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))
-  let φ := (stageToCompletedTensor A D t p n).toRingHom
+  let φ := (Section2.stageToCompletedTensor A D t p n).toRingHom
   let S := (CompletedTower A t p) ⊗[A] D
   let M := ModuleCat.of S (RPerfd A D t p hperf)
   let w := φ ∘ y
@@ -89,8 +90,8 @@ theorem completedTensor_stage_parameter_last_pow_length
           (w (Fin.last r) ^ j))).obj M).homology q) := by
     have hJ := completedTensorMaxIdeal_le_stage_parameter_radical A D t p n
       (by
-        rw [IsScalarTower.algebraMap_eq A D (StageAlgebra A D t p n)]
-        exact (stageAlgebra_algebraMap_injective A D t p n).comp hinj)
+        rw [IsScalarTower.algebraMap_eq A D (Section2.StageAlgebra A D t p n)]
+        exact (Section2.stageAlgebra_algebraMap_injective A D t p n).comp hinj)
       _ (hy.pow_last j hj)
     rw [hmap j] at hJ
     exact isPowTorsion_koszulModuleHomology (completedTensorMaxIdeal_fg A D t p)
@@ -112,9 +113,9 @@ theorem completedTower_stage_parameter_quotient_last_pow_length
     (g : A) (hg : g ≠ 0)
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g)))
-    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) (k : ℕ) (hk : 0 < k) :
+    (n : ℕ) {r : ℕ} (hr : h = r + 1) (y : Fin (r + 1) → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) (k : ℕ) (hk : 0 < k) :
     let C := RPerfd A D t p hperf
     let φ := (toRPerfd A D t p hperf n).toRingHom
     let Qpow := C ⧸ Ideal.span
@@ -130,9 +131,9 @@ theorem completedTower_stage_parameter_quotient_last_pow_length
   dsimp only [completedTensorLength] at hh
   rw [LengthAlgebra.length_comap_koszulModuleHomology_zero_quotient,
     LengthAlgebra.length_comap_koszulModuleHomology_zero_quotient] at hh
-  have hseq (v : Fin (r + 1) → StageAlgebra A D t p n) :
+  have hseq (v : Fin (r + 1) → Section2.StageAlgebra A D t p n) :
       algebraMap ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf) ∘
-        ((stageToCompletedTensor A D t p n).toRingHom ∘ v) =
+        ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ v) =
         (toRPerfd A D t p hperf n).toRingHom ∘ v := by
     funext j
     exact stageToCompletedTensor_toMixedPerfectoid A D t p hperf n (v j)

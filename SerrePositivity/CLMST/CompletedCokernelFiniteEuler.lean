@@ -30,21 +30,21 @@ local instance : Module.FinitePresentation A D := Module.finitePresentation_of_f
 theorem completedTensor_stage_cokernel_negative_length_ne_top
     (hp : (p : A) ∈ maximalIdeal A)
     (hinj : Function.Injective (toMixedPerfectoid A D t p hperf))
-    (n : ℕ) {r : ℕ} (z : Fin r → StageAlgebra A D t p n)
+    (n : ℕ) {r : ℕ} (z : Fin r → Section2.StageAlgebra A D t p n)
     (hJ : completedTensorMaxIdeal A D t p ≤
-      (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
+      (Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (hC : ∀ q : ℤ, q < 0 → (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology q) ≠ ⊤)
     (q : ℤ) (hq : q < 0) :
     (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
           (AlgebraMapCokernel ((CompletedTower A t p) ⊗[A] D)
             (RPerfd A D t p hperf)))).homology q) ≠ ⊤ :=
   lambdaKoszul_algebraMap_cokernel_ne_top (completedTensorLength A D t p ht)
     (RPerfd A D t p hperf) hinj (completedTensorMaxIdeal_fg A D t p)
-    ((stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ q (hC q hq)
+    ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ q (hC q hq)
     (completedTensor_stage_koszul_length_ne_top A D t p ht hp n z hJ (q + 1))
 
 /-- 比較先の負次数の有限性、零化冪、最後の元の所属から余核の Euler 評価を消す。
@@ -52,28 +52,28 @@ theorem completedTensor_stage_cokernel_negative_length_ne_top
 theorem completedTensor_stage_cokernel_euler_eq_zero
     (hp : (p : A) ∈ maximalIdeal A)
     (hinj : Function.Injective (toMixedPerfectoid A D t p hperf))
-    (n : ℕ) {r : ℕ} (z : Fin (r + 1) → StageAlgebra A D t p n)
+    (n : ℕ) {r : ℕ} (z : Fin (r + 1) → Section2.StageAlgebra A D t p n)
     (hJ : completedTensorMaxIdeal A D t p ≤
-      (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
+      (Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (g : CompletedTower A t p) (N : ℕ)
     (hN : ∀ x : (RPerfd A D t p hperf) ⧸
       (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
         ((CompletedTower A t p) ⊗[A] D) p hperf).range, g ^ N • x = 0)
-    (hz : stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
-      Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔
+    (hz : Section2.stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
+      Ideal.span (Set.range (Fin.init ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔
         Ideal.span {(algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D) g) ^ N})
     (hC : ∀ q : ℤ, q < 0 → (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology q) ≠ ⊤) :
     lambdaEuler (completedTensorLength A D t p ht)
-      ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D)
           (AlgebraMapCokernel ((CompletedTower A t p) ⊗[A] D)
             (RPerfd A D t p hperf)))) = 0 :=
   perfectoidizationCokernel_euler_eq_zero (CompletedTower A t p)
     ((CompletedTower A t p) ⊗[A] D) p hperf (completedTensorLength A D t p ht)
     (completedTensorMaxIdeal_fg A D t p) g N hN
-    ((stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ hz
+    ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z) hJ hz
     (completedTensor_stage_cokernel_negative_length_ne_top A D t p ht hperf
       hp hinj n z hJ hC)
 
@@ -81,28 +81,28 @@ theorem completedTensor_stage_cokernel_euler_eq_zero
 theorem completedTensor_stage_euler_comparison
     (hp : (p : A) ∈ maximalIdeal A)
     (hinj : Function.Injective (toMixedPerfectoid A D t p hperf))
-    (n : ℕ) {r : ℕ} (z : Fin (r + 1) → StageAlgebra A D t p n)
+    (n : ℕ) {r : ℕ} (z : Fin (r + 1) → Section2.StageAlgebra A D t p n)
     (hJ : completedTensorMaxIdeal A D t p ≤
-      (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
+      (Ideal.span (Set.range ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (g : CompletedTower A t p) (N : ℕ)
     (hN : ∀ x : (RPerfd A D t p hperf) ⧸
       (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
         ((CompletedTower A t p) ⊗[A] D) p hperf).range, g ^ N • x = 0)
-    (hz : stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
-      Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔
+    (hz : Section2.stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
+      Ideal.span (Set.range (Fin.init ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔
         Ideal.span {(algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D) g) ^ N})
     (hC : ∀ q : ℤ, q < 0 → (completedTensorLength A D t p ht).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology q) ≠ ⊤) :
     lambdaEuler (completedTensorLength A D t p ht)
-      ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))) =
     lambdaEuler (completedTensorLength A D t p ht)
-      ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
+      ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D))) := by
   let R := CompletedTower A t p
   let S := R ⊗[A] D
-  let y := (stageToCompletedTensor A D t p n).toRingHom ∘ z
+  let y := (Section2.stageToCompletedTensor A D t p n).toRingHom ∘ z
   let lam := completedTensorLength A D t p ht
   have lNegative := completedTensor_stage_cokernel_negative_length_ne_top
     A D t p ht hperf hp hinj n z hJ hC

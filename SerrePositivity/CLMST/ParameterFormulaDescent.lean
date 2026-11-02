@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CLMST.ParameterLastPowerLength
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # 比較元の Euler 公式から任意のパラメータ商への降下
 
@@ -41,36 +42,36 @@ set_option maxHeartbeats 1000000 in
 数値的な比較元の評価は独立した明示的な入力として残す。 -/
 theorem completedTensor_stage_parameter_length_of_source_euler_formula
     (n : ℕ)
-    (hsource : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ v : Fin h → StageAlgebra A D t p n,
-        IsSystemOfParameters (StageAlgebra A D t p n) v →
+    (hsource : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ v : Fin h → Section2.StageAlgebra A D t p n,
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) v →
         lambdaEuler (completedTensorLength A D t p
           (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)))
-          ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ v)).obj
+          ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ v)).obj
             (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D))) =
-        (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-          (Ideal.span (Set.range v)) (StageAlgebra A D t p n) : ℝ) /
+        (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+          (Ideal.span (Set.range v)) (Section2.StageAlgebra A D t p n) : ℝ) /
           (stageRank h p n : ℝ))
-    (y : Fin h → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
+    (y : Fin h → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
     (completedTensorLength A D t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len
-      (((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
+      (((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y)).obj
         (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf))).homology 0) =
-      ENNReal.ofReal ((HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-        (Ideal.span (Set.range y)) (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ)) := by
+      ENNReal.ofReal ((HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+        (Ideal.span (Set.range y)) (Section2.StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ)) := by
   obtain ⟨r, hr⟩ := Nat.exists_eq_succ_of_ne_zero (Nat.ne_of_gt hpos)
   subst h
-  let : IsLocalRing (StageAlgebra A D t p n) :=
-    stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-  let T := StageAlgebra A D t p n
+  let : IsLocalRing (Section2.StageAlgebra A D t p n) :=
+    Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+  let T := Section2.StageAlgebra A D t p n
   let S := (CompletedTower A t p) ⊗[A] D
   let C := RPerfd A D t p hperf
   let M := ModuleCat.of S C
   let lam := completedTensorLength A D t p
     (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))
-  let φ := (stageToCompletedTensor A D t p n).toRingHom
+  let φ := (Section2.stageToCompletedTensor A D t p n).toRingHom
   obtain ⟨y', k, hspan, hk, hparam, hcompare⟩ :=
     exists_selected_parameter_euler_comparison A D hinj hres t hdimA hdimD hpos ht hsop
       p htp e he hperf n rfl y hy
@@ -108,8 +109,8 @@ theorem completedTensor_stage_parameter_length_of_source_euler_formula
       completedTensorMaxIdeal A D t p ≤ (Ideal.span (Set.range (φ ∘ v))).radical :=
     completedTensorMaxIdeal_le_stage_parameter_radical A D t p n
       (by
-        rw [IsScalarTower.algebraMap_eq A D (StageAlgebra A D t p n)]
-        exact (stageAlgebra_algebraMap_injective A D t p n).comp hinj) v hv
+        rw [IsScalarTower.algebraMap_eq A D (Section2.StageAlgebra A D t p n)]
+        exact (Section2.stageAlgebra_algebraMap_injective A D t p n).comp hinj) v hv
   have heq : lam.len (((koszulModuleFunctor (φ ∘ y')).obj M).homology 0) =
       lam.len (((koszulModuleFunctor (φ ∘ y)).obj M).homology 0) := by
     apply le_antisymm
@@ -129,33 +130,33 @@ set_option maxHeartbeats 600000 in
 出力は原典と同じ、重複度の ofReal を有限段の階数で割る形である。 -/
 theorem completedTower_stage_parameter_quotient_length_of_source_euler_formula
     (n : ℕ)
-    (hsource : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      ∀ v : Fin h → StageAlgebra A D t p n,
-        IsSystemOfParameters (StageAlgebra A D t p n) v →
+    (hsource : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      ∀ v : Fin h → Section2.StageAlgebra A D t p n,
+        IsSystemOfParameters (Section2.StageAlgebra A D t p n) v →
         lambdaEuler (completedTensorLength A D t p
           (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i)))
-          ((koszulModuleFunctor ((stageToCompletedTensor A D t p n).toRingHom ∘ v)).obj
+          ((koszulModuleFunctor ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ v)).obj
             (ModuleCat.of ((CompletedTower A t p) ⊗[A] D) ((CompletedTower A t p) ⊗[A] D))) =
-        (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-          (Ideal.span (Set.range v)) (StageAlgebra A D t p n) : ℝ) /
+        (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+          (Ideal.span (Set.range v)) (Section2.StageAlgebra A D t p n) : ℝ) /
           (stageRank h p n : ℝ))
-    (y : Fin h → StageAlgebra A D t p n)
-    (hy : let _ := stageAlgebra_isLocalRing_of_parameters A D t p hsop n
-      IsSystemOfParameters (StageAlgebra A D t p n) y) :
+    (y : Fin h → Section2.StageAlgebra A D t p n)
+    (hy : let _ := Section2.stageAlgebra_isLocalRing_of_parameters A D t p hsop n
+      IsSystemOfParameters (Section2.StageAlgebra A D t p n) y) :
     let C := RPerfd A D t p hperf
     let Q := C ⧸ Ideal.span (Set.range fun j ↦ toRPerfd A D t p hperf n (y j))
     let _ := Module.compHom Q (algebraMap (CompletedTower A t p) C)
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len Q =
-      ENNReal.ofReal (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-        (Ideal.span (Set.range y)) (StageAlgebra A D t p n) : ℝ) /
+      ENNReal.ofReal (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+        (Ideal.span (Set.range y)) (Section2.StageAlgebra A D t p n) : ℝ) /
         (stageRank h p n : ℝ≥0∞) := by
   have hh := completedTensor_stage_parameter_length_of_source_euler_formula A D hinj hres
     t hdimA hdimD hpos ht hsop p htp e he hperf n hsource y hy
   rw [completedTensorLength,
     LengthAlgebra.length_comap_koszulModuleHomology_zero_quotient] at hh
   have hseq : algebraMap ((CompletedTower A t p) ⊗[A] D) (RPerfd A D t p hperf) ∘
-      ((stageToCompletedTensor A D t p n).toRingHom ∘ y) =
+      ((Section2.stageToCompletedTensor A D t p n).toRingHom ∘ y) =
       fun j ↦ toRPerfd A D t p hperf n (y j) := by
     funext j
     exact stageToCompletedTensor_toMixedPerfectoid A D t p hperf n (y j)

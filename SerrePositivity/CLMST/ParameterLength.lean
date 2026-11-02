@@ -4,6 +4,7 @@ public import SerrePositivity.CLMST.Inputs.ParameterLength
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Basic
 public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Finite
 public import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
+public import SerrePositivity.CLMST.StageRPerfd
 
 /-! # 一般段のパラメータ商の長さから零段と階数の公式へ
 
@@ -49,14 +50,14 @@ theorem parameter_quotient_length_at_stage (n : ℕ)
       ((RPerfd A D t p hperf) ⧸
         Ideal.span (Set.range fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j))) =
       ENNReal.ofReal
-        (HilbertSamuel.multiplicity (StageAlgebra A D t p n)
-          (Ideal.span (Set.range (algebraMap D (StageAlgebra A D t p n) ∘ z)))
-          (StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ≥0∞) := by
-  have hzN := isSystemOfParameters_stageAlgebra A D t p hsop n z hz
+        (HilbertSamuel.multiplicity (Section2.StageAlgebra A D t p n)
+          (Ideal.span (Set.range (algebraMap D (Section2.StageAlgebra A D t p n) ∘ z)))
+          (Section2.StageAlgebra A D t p n) : ℝ) / (stageRank h p n : ℝ≥0∞) := by
+  have hzN := Section2.isSystemOfParameters_stageAlgebra A D t p hsop n z hz
   have hlen := Inputs.proposition_4_0_14 A D hinj hres t hdimA hdimD hpos ht hsop
     p htp e he hperf n (algebraMap D _ ∘ z) hzN
   have hseq : (fun j ↦ toRPerfd A D t p hperf n
-      ((algebraMap D (StageAlgebra A D t p n) ∘ z) j)) =
+      ((algebraMap D (Section2.StageAlgebra A D t p n) ∘ z) j)) =
       (fun j ↦ algebraMap D (RPerfd A D t p hperf) (z j)) := by
     funext j
     exact toRPerfd_algebraMap_D A D t p hperf n (z j)
@@ -78,13 +79,13 @@ theorem parameter_quotient_length
       ENNReal.ofReal (HilbertSamuel.multiplicity D (Ideal.span (Set.range z)) D : ℝ) := by
   have hlen := parameter_quotient_length_at_stage A D hinj hres t hdimA hdimD hpos ht hsop
     p htp e he hperf 0 z hz
-  have hsymm : (⇑(stage0Equiv A D t p).symm.toRingEquiv : D → StageAlgebra A D t p 0) =
-      algebraMap D (StageAlgebra A D t p 0) := by
+  have hsymm : (⇑(Section2.stage0Equiv A D t p).symm.toRingEquiv : D → Section2.StageAlgebra A D t p 0) =
+      algebraMap D (Section2.StageAlgebra A D t p 0) := by
     funext d
-    apply (stage0Equiv A D t p).injective
+    apply (Section2.stage0Equiv A D t p).injective
     simp
   have hm := HilbertSamuel.multiplicity_span_map_ringEquiv
-    (stage0Equiv A D t p).symm.toRingEquiv z
+    (Section2.stage0Equiv A D t p).symm.toRingEquiv z
   rw [hsymm] at hm
   rw [hm] at hlen
   simpa only [stageRank, Nat.zero_mul, pow_zero, Nat.cast_one, div_one] using hlen
