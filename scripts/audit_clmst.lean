@@ -7,7 +7,6 @@ import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
 import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 import SerrePositivity.LengthAlgebra.Almost
-import SerrePositivity.CLMST.ModuleCompletion
 import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
 import SerrePositivity.CLMST.AlmostLength
 import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
@@ -121,7 +120,6 @@ assert_no_sorry SerrePositivity.GenericEtale.exists_finite_etale_away_of_charZer
 #print axioms SerrePositivity.Section2.towerLengthFun_eq_fgLength_of_noetherian
 #print axioms SerrePositivity.LengthAlgebra.length_eq_of_almost_iso
 #print axioms SerrePositivity.DerivedCompletion.isModuleComplete_of_pow_smul_zero
-#print axioms SerrePositivity.CLMST.isModuleComplete_of_completedTower_powTorsion
 assert_no_sorry SerrePositivity.Section2.fgLength_submodule_le
 assert_no_sorry SerrePositivity.Section2.towerLengthFun_eq_fgLength_of_noetherian
 assert_no_sorry SerrePositivity.Section2.presentedLength_eq_fgLength_of_noetherian
@@ -133,7 +131,6 @@ assert_no_sorry SerrePositivity.Almost.isIso_localization_map_iff_isAlmostIso
 assert_no_sorry SerrePositivity.LengthAlgebra.length_eq_of_almost_iso
 assert_no_sorry SerrePositivity.DerivedCompletion.isComplete_of_scalar_pow_zero
 assert_no_sorry SerrePositivity.DerivedCompletion.isModuleComplete_of_pow_smul_zero
-assert_no_sorry SerrePositivity.CLMST.isModuleComplete_of_completedTower_powTorsion
 
 -- 加法性と証明済みの長さ構造を、旧C2の引用から独立に監査する。
 #print axioms SerrePositivity.Section2.towerLengthFun_add_of_exact_of_noetherian
