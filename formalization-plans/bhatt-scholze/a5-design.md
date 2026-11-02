@@ -139,13 +139,19 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
   R′ → S_perfd → R′ = id（R′ の始性）なので第二の射は分裂全射。S → S_perfd が全射なら R′ → S_perfd も全射で同型。
 - S → S_perfd の全射性：
   (α) perfectoid な R_1 → S 全射を取る（R_1 = R⟨Y_k^{1/p^∞}⟩ または R ⊗̂ W(S^♭)、θ の全射性、G-A5-14）。
-  (β) 原典の「R を R⟨Y_k^{1/p^∞}⟩ に替えてよい」：底変換 (4) で S ⊗̂_R R_1 → (S ⊗̂_R R_1)_perfd（A_1 上）に帰着できる（R → R_1 は p 完備忠実平坦で
-  全射性を反映する）が、R_1 → S ⊗̂_R R_1 は全射にならない。**代案（D48）**：R_1 → S の核の生成元 {f_j} に Thm 7.14 を R_1 で使い（R_1 → R_1′
-  忠実平坦、f_j が R_1′ で p 冪根の系をもつ）、S′ := (R_1′⟨X_j^{1/p^∞}⟩/(X_j))^∧ → S ⊗̂_{R_1} R_1′ 全射。Δ の底変換は (5)
-  （Δ_{S ⊗̂_{R_1} R_1′} = Δ_S ⊗̂_{B_{R_1}} B_{R_1′}）で S_perfd ⊗̂_{R_1} R_1′ = (S ⊗̂_{R_1} R_1′)_perfd、全射性は R_1 → R_1′ の忠実平坦性で反映（紙 5）。
-  (γ) S′_perfd → (S ⊗̂_{R_1} R_1′)_perfd 全射：S′ → S ⊗̂ R_1′ は π_0 と π_1(L_{−/Z_p}/p) で全射なので HT 比較で H⁰(Δ̄) が全射、完全化と Nakayama。
+  (β) 原典の「R を R⟨Y_k^{1/p^∞}⟩ に替えてよい」は、Prop 7.10 の証明（p.60）の同じ一文の理由で正当化する（決定 4、原典どおり）：
+  「余接複体を変えないので Δ_{S/R} も変えない」。すなわち **G-A5-17**：perfectoid 環の射 R → R_1 と R_1 代数 S について、自然な比較写像
+  Δ_{S/A} → Δ_{S/A_1}（(4) の Δ_{S/A} ⊗̂_A A_1 ≃ Δ_{(S ⊗̂_R R_1)/A_1} と乗法 S ⊗̂_R R_1 → S の関手性の合成）は同型。証明：HT filtration と両立し、
+  gr^i では ∧^i L_{S/R} → ∧^i L_{S/R_1} を誘導する。perfectoid の間では L_{R_1/R}^∧ = 0（ker θ の生成元が共通）なので遷移三角形から同型、
+  よって Δ̄ で同型、d 進 Nakayama で Δ で同型。これで S を R_1 代数とみなし Δ_{S/A_1,perf} を扱ってよく、R_1 → S 全射。
+  Thm 7.14 の段（R_1 → R_1′ 忠実平坦で f_j が p 冪根の系をもつ）も同じ G-A5-17 で R_1′ 上に移れる（原典は底変換 (4) を理由にするが、
+  S を R_1′ 代数にするのは S ⊗̂_{R_1} R_1′ であり、こちらは (5) で Δ_{S ⊗̂_{R_1} R_1′} = Δ_S ⊗̂_{B_{R_1}} B_{R_1′}、全射性は忠実平坦性で反映。
+  どちらでも書ける。骨組みでは G-A5-17 で統一する）。
+  (γ) S′ := (R_1′⟨X_j^{1/p^∞}⟩/(X_j))^∧ → S（または S ⊗̂_{R_1} R_1′）は π_0 と π_1(L_{−/Z_p}/p) で全射なので、HT 比較で H⁰(Δ̄) が全射、
+  完全化と Nakayama で S′_perfd → S_perfd 全射。
   (δ) J 有限に帰着（filtered 余極限、§3.2）。
   (ε) Prop 7.10（A3-4）：S′ = (R_1′⟨X_j^{1/p^∞}⟩/(X_j))^∧（J 有限）で S′_perfd = R_1′⟨X^{1/p^∞}⟩/(X^{1/p^∞}) かつ S′ → S′_perfd 全射。
+  A3-4 の主張が R_1′ を基底にして述べてあればそのまま、R を基底にして述べてあれば G-A5-17 で移す。
   (ζ) S′ → S′_perfd → S_perfd 全射、S′ → S → S_perfd と等しい ⇒ S → S_perfd 全射。
 
 ### 3.5 Lemma 8.6 の証明
@@ -181,6 +187,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | G-A5-14 | p 完備な R 代数で mod p semiperfect ⇒ semiperfectoid（θ 全射、[BMS19, Rem 4.22]）；perfectoid の商・完備テンソル T₁ ⊗̂_S T₂ の semiperfectoid 性 | 既存の Semiperfectoid（要確認） | §3.1・§3.4 |
 | G-A5-15 | de Rham 比較（Thm 6.4）の T = R⟨X⟩・mod p の形、E∞ 代数として、T → T_∞ と両立 | なし（A1 は HT まで） | §3.5 |
 | G-A5-16 | U : CAlg_R → D(R) が極限の錐を保ち反映する | Sheaves/CAlgValued の `forget_isLimitCone`・`forget_reflects_isLimitCone` | §2.3 |
+| G-A5-17 | perfectoid の射 R → R_1 と R_1 代数 S で Δ_{S/A} ≃ Δ_{S/A_1}（比較写像は (4) と乗法、HT の gr で ∧^i L_{S/R} ≃ ∧^i L_{S/R_1}、L_{R_1/R}^∧ = 0、Nakayama）。Prop 7.10 の「R によらない」の導来版 | A2-3・A2-4 の隣（なし） | §3.4 |
 
 ## 5. 原典との差
 
@@ -189,7 +196,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | D45 | S は導来 p 完備な単体的 R 代数、「π_0 S のみによる」 | S は離散。π_0 S の文は述べない | E3 の始域は離散。定義域の制限で、定義は変えない |
 | D46 | 「flat と chaotic の間の任意の位相」 | Grothendieck 位相の順序 ⊥ ≤ J ≤ `perfectFlatTopology` で述べる。位相非依存は O の flat 層性（G-A5-5）と S2 から形式的 | 同じ主張 |
 | D47 | 極限の添字は全ての perfectoid 環 | κ-small の site と Type u の `PerfUnder_u` の両方で、同じ弱始対象の Čech 余脈体の Tot（S3） | II-a の整合（補い、差ではない） |
-| D48 | semiperfectoid の場合の「R を R⟨Y^{1/p^∞}⟩ に替える」 | perfectoid R_1 → S 全射と (5) の底変換で読み替える（§3.4 (β)） | 証明の中だけ。原典の一文の正当化が不明なので代案を置く（決定項目 4） |
+| D48 | semiperfectoid の場合の「R を R⟨Y^{1/p^∞}⟩ に替える」 | 取り下げ（決定 4、原典どおり）。原典 Prop 7.10 の証明と同じ理由（余接複体が変わらない）を G-A5-17 として定理にし、§3.4 (β) で使う | 差なし |
 | D49 | descendable は [Mat16] を引用 | [Mat16, Def 3.18] の thick ⊗-ideal で定義し、index の判定は定理 | 引用を定義と定理に（決定項目 2） |
 | D50 | Lemma 8.6 は de Rham 比較（Thm 6.4）を使う | Thm 6.4 の多項式・mod p の特別な場合を定理として置く（G-A5-15） | 特別な場合の定理（決定項目 3） |
 | D51 | S̃ は超限帰納 | 全元を一度に添加する ω 段の帰納 | 同じ対象（原典 "repeating this transfinitely"） |
@@ -206,7 +213,16 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 
 骨組みは A5-1 → A5-2 → A5-4 → A5-3。G-A5-1 は Shared（E∞ 側の一般論）、G-A5-12・13 は Shared/DeRham の隣に主張だけ置く。
 
-## 7. 決定事項（相談）
+## 7. 決定事項
+
+決定（2026-11-02、ユーザー）：1・2・3・5 は推奨案、4 は原典どおり。
+- 1：Prop 8.5 は原典どおり「flat と chaotic の間の任意の位相」で述べ、O の flat 層性（G-A5-5）は別の定理。
+- 2：descendable は [Mat16, Def 3.18]（thick ⊗-ideal）で定義し、index の判定は定理（D49）。
+- 3：Lemma 8.6 の de Rham 入力は、Thm 6.4 を T = R⟨X_1,…,X_n⟩・mod p の特別な場合として A1 の装置で証明する新単位 **A1-5**（D50。a1-design §6 に追記）。
+- 4：§3.4 (β) は原典の理由（Prop 7.10 の証明の「余接複体を変えないので Δ も変えない」）で正当化する。G-A5-17 を立て、D48 は取り下げ。
+- 5：Prop 8.13 の導来版は A5-2 の前に出さず、(5) を直接使う。
+
+相談した選択肢（記録）：
 
 1. Prop 8.5 の述べ方：原典どおり「flat と chaotic の間の任意の位相」で述べ、O の flat 層性（A0-3d の制限、G-A5-5）を別の定理にする（推奨）／
    極限の形（chaotic）だけ述べる。
@@ -223,6 +239,6 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 2. S̃ の (i)〜(iv)（§3.1）。
 3. §3.2 の完備化と Tot の順序、Tot_{≤k} と filtered 余極限の交換。
 4. §3.3 右辺：L_n の左随伴性と始性、極限の交換。
-5. §3.4 (β)（原典の一文）と (γ)（HT の段）。
+5. §3.4 (β)：G-A5-17 の比較写像が HT filtration と両立し gr で余接複体の射を誘導すること、perfectoid の間で L^∧ = 0。(γ)（HT の段）。
 6. §3.5：完備性による底変換の正当化（G-A5-6 の形）、A/(p, φ^{-1}(d)) ≅ R/p、一変数 Cartier の分裂、(∗) の分解。
 7. Lemma 8.6 の perf 版で index 2n は不要か（(e) は index によらないので descendable であればよい）。
