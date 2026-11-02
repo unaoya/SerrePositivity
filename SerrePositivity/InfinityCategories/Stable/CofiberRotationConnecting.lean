@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.CofiberRotationRectangle
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnectingIndependence
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 
 /-! # 回転列の第二射と接続射
 

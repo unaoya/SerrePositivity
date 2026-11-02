@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanEndpointLoopDiagram
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorEvaluationLifting
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullSubcomplexEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.PathCorrectedFunctorSquare

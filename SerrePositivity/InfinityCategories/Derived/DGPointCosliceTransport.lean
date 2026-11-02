@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFiberTransportSquare
-public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport
+public import SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
 /-!
 概要：同じ充満忠実関手に沿う coslice の後合成は、実辺輸送の同値性を保存・反映する。

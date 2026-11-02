@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoproductPrismVe
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.JoinSummands
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の図式を固定し、頂点の指定可逆円柱に沿って極限錐を輸送する。

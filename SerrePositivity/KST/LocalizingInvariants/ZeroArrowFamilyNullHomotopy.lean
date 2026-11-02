@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
-public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 
 /-!
 概要：二つの実関手の間に、全頂点で零射を表す一つの全図式ホモトピーを構成する。

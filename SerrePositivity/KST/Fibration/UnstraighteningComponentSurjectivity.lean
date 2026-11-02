@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointHom
 public import SerrePositivity.KST.Fibration.PointedSpaceHomPoint
 public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-! # 実 unstraightening の fiber の全射性を、同じ比較成分の点の射へ移す
 

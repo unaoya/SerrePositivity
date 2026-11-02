@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeFunctorUnitPrism
 

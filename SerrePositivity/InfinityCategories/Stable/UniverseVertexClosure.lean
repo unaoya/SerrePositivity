@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle
 public import SerrePositivity.InfinityCategories.Stable.StableVertexClosure
 
 /-! # 指定頂点の実安定閉包の宇宙不変性

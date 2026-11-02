@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.NestedCosliceCoconeValue
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
 /-!
 概要：指定変換と元の図式の共同余錐から、射影の一致を保つ相対余錐を取り出す。
 方針：共同余錐を両部分へ制限し、展開した join 図式を同じ coslice 内へ戻す。

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：小さい κ-filtered 模型と同値な大きい圏で、小さい試験形状の余錐を作る。

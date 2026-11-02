@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InitialOpposite
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite
 
 /-! # 始対象と終対象の反転

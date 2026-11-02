@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCohe
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredKanCocone
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：有限始域の相対 Hom は、底上の strict filtered 全余錐を native な空間の余極限へ写す。

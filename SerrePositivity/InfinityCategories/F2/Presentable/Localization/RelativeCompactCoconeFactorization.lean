@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeFactorization
 public import SerrePositivity.InfinityCategories.F2.Presentable.TerminalSourceCoslice
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 
 /-!
 概要：終頂点を持つ既存の全前置図式を固定し、小さい compact 図式の全余錐を一段へ因子化する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 
 /-!

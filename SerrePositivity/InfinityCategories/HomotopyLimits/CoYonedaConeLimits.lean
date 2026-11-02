@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafAllSmallLimits
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の共同 Hom の全 co-Yoneda 族は、反対圏の元の指定全極限錐を保存する。

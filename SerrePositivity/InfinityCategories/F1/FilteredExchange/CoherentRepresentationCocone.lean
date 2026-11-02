@@ -18,7 +18,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyCoconeRealization
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.YonedaHomotopyVertex
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalUnitRepresentation
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：指定済みの全空間射の表現から、同じ変換を保持する native 余錐を実現する。

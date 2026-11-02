@@ -5,12 +5,12 @@ public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareShape
-public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareShape
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 
 /-!
 概要：小さい span 全余錐の宇宙持ち上げを、その同じ元の実四角形へ読み戻す。

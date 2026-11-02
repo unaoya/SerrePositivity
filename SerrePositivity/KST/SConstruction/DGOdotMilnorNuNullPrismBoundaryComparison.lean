@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPrismBoundaryHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
 概要：元指定三側面による同じ境界ホモトピー自体が可逆であることを示す。

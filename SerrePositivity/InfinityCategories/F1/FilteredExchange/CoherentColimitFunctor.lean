@@ -10,9 +10,9 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentCol
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitSection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：全小 coherent 空間値図式から空間への余極限関手を実際に構成する。

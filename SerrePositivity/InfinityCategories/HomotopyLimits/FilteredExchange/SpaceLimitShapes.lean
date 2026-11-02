@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVe
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.InitialShapeLimitExistence
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 
 /-!
 概要：有限セル帰納で必要な元の小さい形状の空間値極限の存在を明示する。

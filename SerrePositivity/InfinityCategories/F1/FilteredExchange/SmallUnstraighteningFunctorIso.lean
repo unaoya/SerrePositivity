@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftU
 public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialMap
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：元の全空間射の指定同型を縮小した全空間射の同型へ移す。

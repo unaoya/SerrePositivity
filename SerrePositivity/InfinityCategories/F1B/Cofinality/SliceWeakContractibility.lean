@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialTerminalWeakContractibility
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：指定頂点から出る coslice は弱可縮。

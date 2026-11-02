@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle
 
 /-!
 概要：元の安定 ∞ 圏の単体集合の宇宙持ち上げは安定。

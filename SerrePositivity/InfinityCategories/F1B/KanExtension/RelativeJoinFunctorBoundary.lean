@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.GlobalBoundaryDiagramExtension
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberTranspose
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-!
 概要：相対 join 上の関手の制限の正次元の境界充填。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCofinality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!
 概要：元の冪等包含への余錐制限は自明 Kan で、同じ余錐の余極限性を保ち反映する。

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberEdgeVertex
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero
-public import SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero
+public import SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex
 
 /-!
 概要：始対象を持つ left fibration の fiber の Hom 表示を、全空間の実際の辺で計算する。

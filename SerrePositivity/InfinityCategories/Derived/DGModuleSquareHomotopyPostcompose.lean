@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeEdge
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 /-!
 概要：全 dg 自然なホモトピー同値による終点後合成は同じ四角形の余極限性を保つ。

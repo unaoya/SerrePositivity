@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Stable.EdgeTerminalCocone
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeCosliceIntervalMap
 
 /-!

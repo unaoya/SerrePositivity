@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
 
 /-! # 全部分複体への指定合成三角形の持ち上げ
 

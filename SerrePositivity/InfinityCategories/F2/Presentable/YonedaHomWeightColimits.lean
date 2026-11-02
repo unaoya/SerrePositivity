@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の Yoneda を係数に持つ全 Hom 前層値関手は、小さい coherent 余極限を保つ。

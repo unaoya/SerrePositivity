@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappin
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：指定図式での Kan 普遍性を native な余錐の制限へ移す。

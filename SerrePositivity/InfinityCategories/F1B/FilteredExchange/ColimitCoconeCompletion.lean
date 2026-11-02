@@ -11,10 +11,10 @@ public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitia
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：余極限全余錐族の点ごとの余極限補完は、再び余極限全余錐となる。

@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.InitialBoundaryHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PostcompositionAdjunction
 public import SerrePositivity.InfinityCategories.F1B.Cones.ColimitConstantFamily
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeWholeEdgeSquare
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：同じ coslice 内の元の全余錐の族を、底を固定した全関手の族として表示する。

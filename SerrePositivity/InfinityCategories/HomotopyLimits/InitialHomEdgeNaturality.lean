@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeFamilies
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceShapePushout
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 

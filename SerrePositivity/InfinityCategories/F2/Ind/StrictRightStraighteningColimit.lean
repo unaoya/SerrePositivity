@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictOppositeFiberColimit
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：strict filtered right fibration 余極限の同じ分類余錐は前層 ∞ 圏の余極限。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingFullCoconePoint
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：任意の quasicategory への元の強分裂図式の全余錐は、余極限余錐である。

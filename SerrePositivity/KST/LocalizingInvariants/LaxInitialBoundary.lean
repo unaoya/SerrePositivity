@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.InitialPrismTwoEndpoints
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-!
 概要：第一成分とその像が始対象である lax pullback の頂点は第二射影に相対的に始対象。

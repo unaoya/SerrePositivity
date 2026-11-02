@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ThinNerveVertexExt
-public import SerrePositivity.InfinityCategories.Stable.PrismRetraction
+public import SerrePositivity.InfinityCategories.Core.PrismRetraction
 
 /-!
 概要：単調な上昇収縮の prism と両端の厳密な等式。

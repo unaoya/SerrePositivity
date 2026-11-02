@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemLeftCofinality
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 
 /-!
 概要：元の分裂対象での左 Kan 局所添字は、元の Idem と射影により同型。

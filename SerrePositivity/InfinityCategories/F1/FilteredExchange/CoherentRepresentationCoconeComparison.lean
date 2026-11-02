@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentCoconeTotalComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentRepresentationCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalUnitRepresentation
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：同じ指定全空間射を表す二つの元の native 余錐を比較する。

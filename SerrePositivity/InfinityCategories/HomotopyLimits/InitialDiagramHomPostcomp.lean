@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialDiagramHomFamily
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality
 
 /-!
 概要：同じ底上の関手による全余錐族の像と、その初期 Hom への制限を厳密に照合する。

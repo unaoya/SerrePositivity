@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DiagramFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-!
 概要：元の cofiber 四角形の全族は関手圏内の零角四角形である。

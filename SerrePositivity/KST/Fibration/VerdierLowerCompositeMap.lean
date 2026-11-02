@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierLowerTriangleZeroHom
 public import SerrePositivity.KST.Fibration.StableTriangleCompositeMap
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-! # 指定 Verdier 下側二胞体の元の二短辺と、同じ包含・商の実合成 -/
 

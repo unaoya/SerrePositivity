@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalHom
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHomComparison
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.UniversalProperty
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：指定変換に両立する二つの左 Kan 拡張間の射の各点での可逆性。

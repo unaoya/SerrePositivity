@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeUniversalRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalSpanRestriction
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 
 /-!

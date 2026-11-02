@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSquare
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 
 /-!
 概要：中央の実余錐と標準正方形の余錐を同じ頂点で同定する。

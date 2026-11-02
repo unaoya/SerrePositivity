@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationPoi
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityEquivalence
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：底上の left fibrations の strict filtered 余極限全余錐は、元の ∞ 圏でも余極限である。

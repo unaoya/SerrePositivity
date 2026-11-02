@@ -11,8 +11,8 @@ public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeC
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantDiagram
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxCosliceDiagonalCommaIso
-public import SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence
-public import SerrePositivity.InfinityCategories.Stable.LaxCoslice
+public import SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence
+public import SerrePositivity.InfinityCategories.Core.LaxCoslice
 
 /-!
 概要：対角関手の標準 comma の弱可縮性と元の図式の coslice の弱可縮性を比較する。

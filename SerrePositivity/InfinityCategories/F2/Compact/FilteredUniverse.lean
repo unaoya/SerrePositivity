@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!
 概要：小さい filtered ∞ 圏の任意の宇宙持ち上げも、一般の有限試験形状について filtered。

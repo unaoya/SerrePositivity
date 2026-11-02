@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：同じ元の余錐への後合成と宇宙持ち上げの厳密な可換性。

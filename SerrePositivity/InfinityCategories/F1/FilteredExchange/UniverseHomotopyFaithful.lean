@@ -3,7 +3,7 @@ module
 public import Mathlib.CategoryTheory.Functor.FullyFaithful
 public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：ホモトピー圏の宇宙下降が指定射の等式を反映することを証明する。

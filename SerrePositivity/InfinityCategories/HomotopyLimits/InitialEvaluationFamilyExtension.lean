@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison
 public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
 
 /-!

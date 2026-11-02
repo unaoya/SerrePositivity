@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomNaturality
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingSwap
 
 /-! # 余錐空間の Hom 表示と形状の制限

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FibersBaseIso
 
 /-!

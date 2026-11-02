@@ -23,7 +23,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentConstantTargetComparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentSmallConstantTarget
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：元の余錐の全 Hom 比較を、小さい全空間の内部 Hom 内で実際の相対合成と比較する。

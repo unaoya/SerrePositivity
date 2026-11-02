@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEdgeRestriction
-public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback
+public import SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback
 
 /-!
 概要：局所対象への span の余錐を右枝・その終点へ制限する射の全境界充填性。

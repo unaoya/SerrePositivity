@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftKanShapeCommaProjection
 public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-!
 概要：局所 Kan 図式の余極限と反転後の局所極限の存在を比較する。

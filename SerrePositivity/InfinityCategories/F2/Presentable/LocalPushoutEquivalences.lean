@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalPushoutRestriction
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：S-equivalence の元の辺集合が任意の coherent な pushout で保たれることを証明する。

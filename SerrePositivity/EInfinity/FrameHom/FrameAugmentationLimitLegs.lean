@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
 public import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 
 /-!

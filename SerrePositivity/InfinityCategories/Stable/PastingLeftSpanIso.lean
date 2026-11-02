@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PastingLeftSubcomplex
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-! # 左 span の標準形
 

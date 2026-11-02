@@ -1,3 +1,35 @@
+import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
+import SerrePositivity.InfinityCategories.F1.SquareTranspose
+import SerrePositivity.InfinityCategories.F1.SquareOpposite
+import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+import SerrePositivity.InfinityCategories.F1.SquareDuality
+import SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback
+import SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex
+import SerrePositivity.InfinityCategories.F1.PastingRightSpanComparison
+import SerrePositivity.InfinityCategories.F1.PastingRightCocone
+import SerrePositivity.InfinityCategories.F1.PastingCofinality
+import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero
+import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality
+import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison
+import SerrePositivity.InfinityCategories.F1.CosliceRestriction
+import SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport
+import SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation
+import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+import SerrePositivity.InfinityCategories.F1.ColimitHomotopyUniqueness
+import SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible
+import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
+import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
+import SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges
+import SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration
+import SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge
+import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
+import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
+import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
+import SerrePositivity.InfinityCategories.F1.CoconeMappingHomComparison
+import SerrePositivity.InfinityCategories.F1.CoconeMappingGluing
+import SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.VertexConeIsoTransport
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleVertex
 import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningTriangleRelativeVertex
@@ -10454,3 +10486,54 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R37: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport,
+    `SerrePositivity.InfinityCategories.F1.CoconeMappingGluing,
+    `SerrePositivity.InfinityCategories.F1.CoconeMappingHomComparison,
+    `SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero,
+    `SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction,
+    `SerrePositivity.InfinityCategories.F1.CoconeMappingSpace,
+    `SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge,
+    `SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration,
+    `SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges,
+    `SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies,
+    `SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful,
+    `SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible,
+    `SerrePositivity.InfinityCategories.F1.ColimitHomotopyUniqueness,
+    `SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary,
+    `SerrePositivity.InfinityCategories.F1.ColimitRestriction,
+    `SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation,
+    `SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport,
+    `SerrePositivity.InfinityCategories.F1.CosliceRestriction,
+    `SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison,
+    `SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality,
+    `SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero,
+    `SerrePositivity.InfinityCategories.F1.PastingCofinality,
+    `SerrePositivity.InfinityCategories.F1.PastingRightCocone,
+    `SerrePositivity.InfinityCategories.F1.PastingRightSpanComparison,
+    `SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex,
+    `SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback,
+    `SerrePositivity.InfinityCategories.F1.SquareDuality,
+    `SerrePositivity.InfinityCategories.F1.SquareFunctorTransport,
+    `SerrePositivity.InfinityCategories.F1.SquareOpposite,
+    `SerrePositivity.InfinityCategories.F1.SquareTranspose,
+    `SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows,
+    `SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."

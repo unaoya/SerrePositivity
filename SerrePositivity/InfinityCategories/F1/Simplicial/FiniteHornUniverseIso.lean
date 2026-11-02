@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteCospanNerveIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 
 /-!
 概要：小さい有限 span/cospan の nerve の ULift を、大きい宇宙の標準ホーンへ移す。

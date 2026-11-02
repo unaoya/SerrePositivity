@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorLimits
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：全評価で保存される指定余錐は、形状制限後も全評価で保存される。

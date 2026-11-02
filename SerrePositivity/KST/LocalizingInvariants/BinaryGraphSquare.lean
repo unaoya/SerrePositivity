@@ -4,7 +4,7 @@ public import SerrePositivity.KST.LocalizingInvariants.BinarySecondProjection
 public import SerrePositivity.KST.LocalizingInvariants.HorizontalEquivalencePullback
 public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
 
 /-!

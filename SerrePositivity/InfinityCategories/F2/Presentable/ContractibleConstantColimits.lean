@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PointProjectionCofinality
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 
 /-!

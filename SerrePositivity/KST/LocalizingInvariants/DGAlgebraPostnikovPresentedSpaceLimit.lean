@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresentedMappingCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveConeCoherentComparison
-public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 
 /-!
 概要：元の Postnikov 提示錐の実 AW 写像像が空間値の極限錐であることを示す。

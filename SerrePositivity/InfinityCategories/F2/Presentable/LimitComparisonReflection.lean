@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
-public import SerrePositivity.InfinityCategories.Stable.MappingSpacePositiveBoundary
-public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
 
 /-!
 概要：元の普遍錐全体から図式への射影は充満忠実で、比較の元の辺を保持する。

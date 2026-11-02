@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FullHomotopyLift
 public import SerrePositivity.InfinityCategories.DGNerve.Quasicategory
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-! # 充満 dg 包含に沿う図式の h の射の持ち上げ
 

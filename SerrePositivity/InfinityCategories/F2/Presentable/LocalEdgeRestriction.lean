@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEquivalenceTriangles
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CocartesianIntervalPrecomposition
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 public import SerrePositivity.InfinityCategories.Core.KanFibrationEquivalence
 
 /-!

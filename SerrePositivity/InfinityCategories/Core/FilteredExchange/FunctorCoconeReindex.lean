@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceMap
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：元の coherent な余錐のパラメータを制限しても点ごとの余極限性は保たれる。

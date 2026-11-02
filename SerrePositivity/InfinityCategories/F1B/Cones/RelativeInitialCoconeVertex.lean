@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeShapeHomRestriction
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorPointIso
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialComparison
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：余錐形状の全関手の相対始対象性から、その元の右端の相対始対象性を回収する。

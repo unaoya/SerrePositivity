@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：宇宙持ち上げのホモトピー圏から元のホモトピー圏への下降を関手として作る。

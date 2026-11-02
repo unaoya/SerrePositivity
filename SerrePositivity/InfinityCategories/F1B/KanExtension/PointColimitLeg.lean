@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 
 /-!

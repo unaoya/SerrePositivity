@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeFamilyEquivalenceLifting
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexIsoLifting
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：余極限錐の像を同じ図式上の指定余極限錐へ厳密に合わせる。

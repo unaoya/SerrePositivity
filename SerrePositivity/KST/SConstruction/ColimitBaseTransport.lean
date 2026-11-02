@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ColimitDiagramTransport
-public import SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport
+public import SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport
 public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
 
 /-! # 可逆な図式の辺に沿う余極限の存在

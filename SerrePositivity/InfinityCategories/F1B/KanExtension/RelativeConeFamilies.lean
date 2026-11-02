@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeFunctorBoundary
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 
 /-!

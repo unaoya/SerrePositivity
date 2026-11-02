@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
 
 /-! # 零対象から出る辺の族

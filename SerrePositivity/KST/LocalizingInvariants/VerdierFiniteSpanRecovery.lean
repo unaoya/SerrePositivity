@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalResolution
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransport
+public import SerrePositivity.InfinityCategories.Core.CoconeTransport
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy

@@ -7,11 +7,11 @@ public import SerrePositivity.InfinityCategories.Core.Square
 public import SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareShape
-public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareShape
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 
 /-!
 概要：小さい cospan 全錐の宇宙持ち上げを、その同じ元の実四角形へ読み戻す。

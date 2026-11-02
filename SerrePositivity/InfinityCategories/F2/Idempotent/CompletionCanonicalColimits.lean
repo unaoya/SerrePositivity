@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionCofinal
 public import SerrePositivity.InfinityCategories.F2.Idempotent.SliceCanonicalCocone
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-!
 概要：元の全部分圏の冪等完備化に沿って、全関手の元の標準左 Kan 余錐が余極限。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
-public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 
 /-! # 零枝の終点固定余錐の可縮性
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceJoinCofinality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IteratedSliceUnderRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：展開した join の右包含が right cofinal なら、coslice の終域射影は余極限を保ち反映する。

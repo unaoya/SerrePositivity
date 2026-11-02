@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityTransformation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.SmallRelativeTargetLift
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：元の大域評価との相対同型を、元の大きい unstraightening の全空間へ持ち上げる。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourcePointedFiber
 public import SerrePositivity.InfinityCategories.F1.Transport.ParametrizedPointTransportSquare
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 
 /-!
 概要：同じ Yoneda 写像の指定点評価に沿う普遍輸送は、同じ恒等点で評価すると同値。

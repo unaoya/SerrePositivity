@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 public import Mathlib.AlgebraicTopology.SimplicialSet.CompStruct
 
 /-!

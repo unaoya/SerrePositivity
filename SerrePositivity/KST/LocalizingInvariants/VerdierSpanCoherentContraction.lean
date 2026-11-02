@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Fibration.FractionFamilyCoslice
 public import SerrePositivity.KST.Fibration.PointSourceCosliceFiber
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilySquareInverse
 public import SerrePositivity.KST.Fibration.PointSourceFatRestriction
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
 public import SerrePositivity.InfinityCategories.F1.Joins.CoslicePostCoordinates
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointUniqueness

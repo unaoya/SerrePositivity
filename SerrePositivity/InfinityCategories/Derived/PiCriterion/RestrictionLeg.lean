@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegComposition
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 
 /-!
 概要：底の制限に沿って、元の余錐の同じ脚の全辺を厳密に回収する。

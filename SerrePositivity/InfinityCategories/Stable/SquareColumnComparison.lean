@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SquareHorizontalComponents
-public import SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison
+public import SerrePositivity.InfinityCategories.Core.TerminalArrowComparison
 
 /-! # 終対象への列の比較
 

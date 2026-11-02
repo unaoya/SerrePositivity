@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FunctorPullbackSquares
 public import SerrePositivity.InfinityCategories.Stable.Definition
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
 

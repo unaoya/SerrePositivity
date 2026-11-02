@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberMapTransport
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
 /-!

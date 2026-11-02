@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeTerminalFiberTransfer
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryIso
-public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 
 /-!
 概要：共通の底への cartesian 輸送を保つ射では、fiber の相対始対象性を全空間へ移せる。

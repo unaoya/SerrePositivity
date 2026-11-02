@@ -28,7 +28,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentSmallConstantTarget
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.PointedIntervalTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：元の native 余錐の全 Hom 比較を元の pointed-space 輸送の作用へ移す。

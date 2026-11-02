@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.FunctorZeroEvaluation
 public import SerrePositivity.KST.SConstruction.DegeneratePushouts
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges
-public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges
+public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 
 /-! # 異なる図式上の普遍余錐の比較
 概要：同型な図式上の二つの普遍余錐は全余錐として同型。

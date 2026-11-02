@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeUnitC
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 
 /-!
 概要：元の余錐変換を各頂点で評価した辺は、元の指定余錐の同じ脚。

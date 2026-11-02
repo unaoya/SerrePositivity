@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitCoconeEdge
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitFunctor
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：元の比較円柱を、元の全空間余錐間の全円柱へ持ち上げる。

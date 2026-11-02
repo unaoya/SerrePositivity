@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import SerrePositivity.InfinityCategories.Core.SliceRestriction
 public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 
 /-!
 概要：標準単体上の元の錐の極限性は最初の頂点への制限で判定できる。

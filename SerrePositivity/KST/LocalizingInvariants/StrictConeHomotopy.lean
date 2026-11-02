@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConePrismComponent
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopySimplexFaces
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：小さい始域から大きい宇宙への ∞ 関手の有限積保存。

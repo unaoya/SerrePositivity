@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FatCoconeHomotopyNaturality
-public import SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality
+public import SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberExtension
 
 /-!

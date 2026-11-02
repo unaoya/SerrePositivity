@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource

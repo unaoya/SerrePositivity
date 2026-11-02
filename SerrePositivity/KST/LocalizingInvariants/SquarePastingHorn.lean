@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathInnerFibration
-public import SerrePositivity.InfinityCategories.Stable.PastingShapes
+public import SerrePositivity.InfinityCategories.Core.PastingShapes
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!

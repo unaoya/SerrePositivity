@@ -13,8 +13,8 @@ public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoc
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 
 /-!
 概要：全四角形族の頂点を読み戻し、同じ引き戻し錐・押し出し余錐へ制限する。

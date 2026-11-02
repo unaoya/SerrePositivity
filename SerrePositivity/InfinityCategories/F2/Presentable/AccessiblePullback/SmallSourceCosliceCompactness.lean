@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ColimitSourceCosliceComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.FullCompactFactorization
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparison
-public import SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction
+public import SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction
 
 /-!
 概要：小さい compact 前置図式の余錐の頂点は、その全 coslice 内でも compact。

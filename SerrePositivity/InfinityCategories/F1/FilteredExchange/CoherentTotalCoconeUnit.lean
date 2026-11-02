@@ -20,7 +20,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalUnitRepresentation
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：構成した native 全空間余錐の標準比較の像を元の実際の単位と比較する。

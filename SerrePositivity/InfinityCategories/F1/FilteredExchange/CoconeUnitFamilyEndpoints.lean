@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationVertex
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeUnitCylinder
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitUnitFamily
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：元の全単位族の両端を、元の図式と頂点への定値図式に厳密に同定する。

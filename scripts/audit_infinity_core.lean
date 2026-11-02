@@ -1,3 +1,85 @@
+import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
+import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
+import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
+import SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle
+import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
+import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
+import SerrePositivity.InfinityCategories.Core.UniverseStandardJoins
+import SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles
+import SerrePositivity.InfinityCategories.Core.UniverseSquareShape
+import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
+import SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility
+import SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins
+import SerrePositivity.InfinityCategories.Core.UniverseHorns
+import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
+import SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary
+import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
+import SerrePositivity.InfinityCategories.Core.TerminalArrowComparison
+import SerrePositivity.InfinityCategories.Core.SuspensionDiagrams
+import SerrePositivity.InfinityCategories.Core.StandardJoinOpposite
+import SerrePositivity.InfinityCategories.Core.SquareOppositeShapes
+import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
+import SerrePositivity.InfinityCategories.Core.RightJoinCoproduct
+import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
+import SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint
+import SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison
+import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
+import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
+import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
+import SerrePositivity.InfinityCategories.Core.PushoutShape
+import SerrePositivity.InfinityCategories.Core.PrismRetraction
+import SerrePositivity.InfinityCategories.Core.Pointed
+import SerrePositivity.InfinityCategories.Core.PastingShapes
+import SerrePositivity.InfinityCategories.Core.PastingRightSpanMap
+import SerrePositivity.InfinityCategories.Core.PastingRightSpanIso
+import SerrePositivity.InfinityCategories.Core.PastingCornerCocone
+import SerrePositivity.InfinityCategories.Core.PastingCorner
+import SerrePositivity.InfinityCategories.Core.NestedCosliceIso
+import SerrePositivity.InfinityCategories.Core.NestedCoslice
+import SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary
+import SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal
+import SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry
+import SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality
+import SerrePositivity.InfinityCategories.Core.LaxCoslice
+import SerrePositivity.InfinityCategories.Core.LastJoinEvaluation
+import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
+import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+import SerrePositivity.InfinityCategories.Core.IdentityCocone
+import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
+import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath
+import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
+import SerrePositivity.InfinityCategories.Core.GridOpposite
+import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
+import SerrePositivity.InfinityCategories.Core.FixedHomotopyComponent
+import SerrePositivity.InfinityCategories.Core.FiniteShapes
+import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
+import SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting
+import SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary
+import SerrePositivity.InfinityCategories.Core.FatJoinRightTensorComparison
+import SerrePositivity.InfinityCategories.Core.FatJoinRightTensor
+import SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence
+import SerrePositivity.InfinityCategories.Core.CosliceFixedDiagramIso
+import SerrePositivity.InfinityCategories.Core.CosliceCylinderFixedDiagram
+import SerrePositivity.InfinityCategories.Core.CosliceCylinderExtension
+import SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence
+import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
+import SerrePositivity.InfinityCategories.Core.ColimitReindex
+import SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction
+import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
+import SerrePositivity.InfinityCategories.Core.ColimitAttachmentLifting
+import SerrePositivity.InfinityCategories.Core.ColimitAttachment
+import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
+import SerrePositivity.InfinityCategories.Core.CoconeTransport
+import SerrePositivity.InfinityCategories.Core.CoconeLeg
+import SerrePositivity.InfinityCategories.Core.CoconeLastVertex
+import SerrePositivity.InfinityCategories.Core.CoconeFixedComparison
+import SerrePositivity.InfinityCategories.Core.CoconeFamily
+import SerrePositivity.InfinityCategories.Core.CoconeFactorization
+import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
+import SerrePositivity.InfinityCategories.Core.BoundaryPair
+import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
+import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpecifiedApexConeRestrictions
 import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading
@@ -3893,3 +3975,104 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R37: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy,
+    `SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting,
+    `SerrePositivity.InfinityCategories.Core.BoundaryPair,
+    `SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary,
+    `SerrePositivity.InfinityCategories.Core.CoconeFactorization,
+    `SerrePositivity.InfinityCategories.Core.CoconeFamily,
+    `SerrePositivity.InfinityCategories.Core.CoconeFixedComparison,
+    `SerrePositivity.InfinityCategories.Core.CoconeLastVertex,
+    `SerrePositivity.InfinityCategories.Core.CoconeLeg,
+    `SerrePositivity.InfinityCategories.Core.CoconeTransport,
+    `SerrePositivity.InfinityCategories.Core.CoconeTransportPrism,
+    `SerrePositivity.InfinityCategories.Core.ColimitAttachment,
+    `SerrePositivity.InfinityCategories.Core.ColimitAttachmentLifting,
+    `SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily,
+    `SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction,
+    `SerrePositivity.InfinityCategories.Core.ColimitReindex,
+    `SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization,
+    `SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence,
+    `SerrePositivity.InfinityCategories.Core.CosliceCylinderExtension,
+    `SerrePositivity.InfinityCategories.Core.CosliceCylinderFixedDiagram,
+    `SerrePositivity.InfinityCategories.Core.CosliceFixedDiagramIso,
+    `SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence,
+    `SerrePositivity.InfinityCategories.Core.FatJoinRightTensor,
+    `SerrePositivity.InfinityCategories.Core.FatJoinRightTensorComparison,
+    `SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary,
+    `SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting,
+    `SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet,
+    `SerrePositivity.InfinityCategories.Core.FiniteShapes,
+    `SerrePositivity.InfinityCategories.Core.FixedHomotopyComponent,
+    `SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift,
+    `SerrePositivity.InfinityCategories.Core.GridOpposite,
+    `SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass,
+    `SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath,
+    `SerrePositivity.InfinityCategories.Core.HomotopyInvertibility,
+    `SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition,
+    `SerrePositivity.InfinityCategories.Core.IdentityCocone,
+    `SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair,
+    `SerrePositivity.InfinityCategories.Core.LastJoinEvaluation,
+    `SerrePositivity.InfinityCategories.Core.LaxCoslice,
+    `SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality,
+    `SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry,
+    `SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal,
+    `SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary,
+    `SerrePositivity.InfinityCategories.Core.NestedCoslice,
+    `SerrePositivity.InfinityCategories.Core.NestedCosliceIso,
+    `SerrePositivity.InfinityCategories.Core.PastingCorner,
+    `SerrePositivity.InfinityCategories.Core.PastingCornerCocone,
+    `SerrePositivity.InfinityCategories.Core.PastingRightSpanIso,
+    `SerrePositivity.InfinityCategories.Core.PastingRightSpanMap,
+    `SerrePositivity.InfinityCategories.Core.PastingShapes,
+    `SerrePositivity.InfinityCategories.Core.Pointed,
+    `SerrePositivity.InfinityCategories.Core.PrismRetraction,
+    `SerrePositivity.InfinityCategories.Core.PushoutShape,
+    `SerrePositivity.InfinityCategories.Core.ReindexSliceOver,
+    `SerrePositivity.InfinityCategories.Core.ReindexSliceUnder,
+    `SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary,
+    `SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison,
+    `SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint,
+    `SerrePositivity.InfinityCategories.Core.RelativeInitialVertices,
+    `SerrePositivity.InfinityCategories.Core.RightJoinCoproduct,
+    `SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory,
+    `SerrePositivity.InfinityCategories.Core.SquareOppositeShapes,
+    `SerrePositivity.InfinityCategories.Core.StandardJoinOpposite,
+    `SerrePositivity.InfinityCategories.Core.SuspensionDiagrams,
+    `SerrePositivity.InfinityCategories.Core.TerminalArrowComparison,
+    `SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport,
+    `SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary,
+    `SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone,
+    `SerrePositivity.InfinityCategories.Core.UniverseHorns,
+    `SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins,
+    `SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility,
+    `SerrePositivity.InfinityCategories.Core.UniverseSquareHom,
+    `SerrePositivity.InfinityCategories.Core.UniverseSquareShape,
+    `SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles,
+    `SerrePositivity.InfinityCategories.Core.UniverseStandardJoins,
+    `SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares,
+    `SerrePositivity.InfinityCategories.Core.UniverseZeroObjects,
+    `SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle,
+    `SerrePositivity.InfinityCategories.Core.VertexFiberOpposite,
+    `SerrePositivity.InfinityCategories.Core.ZeroHomotopy,
+    `SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
+public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
 
 /-!
 概要：図式全体の前向き円柱の終端に余錐があれば、始端の元の図式にも余錐がある。

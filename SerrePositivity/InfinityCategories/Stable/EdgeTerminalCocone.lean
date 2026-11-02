@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleLongEdge
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 

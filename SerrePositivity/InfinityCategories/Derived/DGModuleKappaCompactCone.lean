@@ -2,9 +2,9 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactShift
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSpanPosetShape
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetColimitCompactUniverse
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 public import SerrePositivity.InfinityCategories.Stable.PushoutComparisonCorners
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 /-!
 概要：非可算正則 κ について、実閉加群射の同じ cone の実導来頂点は κ-compact で閉じる。
 方針：実押し出しの span を小 poset に厳密制限し、P-9 の同じ κ による余極限閉性を使う。

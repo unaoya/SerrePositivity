@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Pasting
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：同じ 3×3 図式の四面から外側の押し出し性を得る。

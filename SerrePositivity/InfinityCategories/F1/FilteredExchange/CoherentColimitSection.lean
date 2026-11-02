@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitProjection
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.TrivialFibrationVertexSection
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-!
 概要：構成済みの全空間余極限余錐を全頂点で保つ、普遍余錐射影の厳密な切断。

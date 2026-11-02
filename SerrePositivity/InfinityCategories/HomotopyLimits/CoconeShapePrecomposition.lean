@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!
 概要：単射な前合成同値に沿い、元の全余錐を延長して同じ余極限性を保存・反映する。

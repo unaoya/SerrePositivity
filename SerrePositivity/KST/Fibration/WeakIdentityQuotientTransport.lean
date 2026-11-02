@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceEdgeTransportValue
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedRightFiberVertices
 public import SerrePositivity.InfinityCategories.F2.Compact.SpaceEdgeValueEquivalence
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：既存の商上の指定恒等点を、元の値同型の同じ実辺で輸送する。

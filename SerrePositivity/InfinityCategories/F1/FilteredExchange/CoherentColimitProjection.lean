@@ -8,10 +8,10 @@ public import SerrePositivity.InfinityCategories.Core.Terminal
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：全小 coherent 図式の普遍余錐の射影は、実際に自明 Kan 射である。

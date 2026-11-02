@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationPrismLift
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
 
 /-! # Left fibration の頂点 fiber の区間輸送

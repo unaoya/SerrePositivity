@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalVertexFiberPullback

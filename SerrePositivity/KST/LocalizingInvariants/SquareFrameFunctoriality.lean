@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameBoundary
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryPostcomposition
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：正方形の境界図式の四辺と、後合成・元の正方形への制限を保持する。

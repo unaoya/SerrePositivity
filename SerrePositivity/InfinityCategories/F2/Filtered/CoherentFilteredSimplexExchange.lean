@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCo
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.InitialShapeLimitExchange
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 
 
 /-!

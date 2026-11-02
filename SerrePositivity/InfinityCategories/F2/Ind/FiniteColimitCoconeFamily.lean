@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaColimitPreservation
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeConeFamilies
 
 /-!

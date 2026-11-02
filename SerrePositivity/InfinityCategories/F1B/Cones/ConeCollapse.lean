@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinShiftPrism
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
 
 /-!
 概要：二つの終端点を一つに潰す錐の射と境界の計算。

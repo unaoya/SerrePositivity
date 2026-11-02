@@ -21,7 +21,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.YonedaHomotopyVertex
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：指定射から実現した native 余錐の標準比較を元の指定射と照合する。

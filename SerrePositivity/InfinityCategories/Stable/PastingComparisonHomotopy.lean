@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PastingShapes
+public import SerrePositivity.InfinityCategories.Core.PastingShapes
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationPath
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath
 
 /-! # 左四角形から外側四角形への比較
 

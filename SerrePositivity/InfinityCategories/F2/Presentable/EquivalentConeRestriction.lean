@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafRestrictionEquivalence
-public import SerrePositivity.InfinityCategories.Stable.SquareOpposite
+public import SerrePositivity.InfinityCategories.F1.SquareOpposite
 public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
 
 /-!

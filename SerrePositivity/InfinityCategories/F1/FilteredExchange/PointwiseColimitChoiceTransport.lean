@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCo
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexCone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.VertexConeIsoTransport
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：同じ元の図式の点ごとの余極限余錐を替えても、完成後の全錐の極限性は同値。

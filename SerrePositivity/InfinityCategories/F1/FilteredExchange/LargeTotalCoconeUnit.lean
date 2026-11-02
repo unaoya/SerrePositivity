@@ -19,7 +19,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCoconeUnit
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：元の小さい単位の比較を大きい全空間の実際の写像へ戻す。

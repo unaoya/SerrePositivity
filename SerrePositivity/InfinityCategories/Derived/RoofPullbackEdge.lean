@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 
 /-! # 二つの指定実辺を持つ pullback の実辺

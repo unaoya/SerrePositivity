@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.InitialEvaluation
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaPresheafEvaluation
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 
 /-!
 概要：元の小さい圏の始対象は、Indκ への同じ Yoneda 因子化でも始対象。

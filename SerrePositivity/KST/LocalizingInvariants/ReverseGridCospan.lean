@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.SquareOpposite
+public import SerrePositivity.InfinityCategories.F1.SquareOpposite
 
 /-!
 概要：四角形の反転は cospan を反転した span に移す。

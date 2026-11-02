@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 public import SerrePositivity.InfinityCategories.Stable.Definition
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceLeft
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PastingOuterBase
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-! # 外側 span の標準形
 

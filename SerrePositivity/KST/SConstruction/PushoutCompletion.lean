@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeColimitCompletion
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 押し出し四角形の相対補完
 概要：押し出し四角形の選択を、普遍余錐の選択と厳密に同定する。

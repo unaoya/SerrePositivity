@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.Stable.InitialPrismBoundary
-public import SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
 
 /-! # 零対象上で恒等な零射の自然変換

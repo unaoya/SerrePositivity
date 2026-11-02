@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.CatInfinity.JoinSummands
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantPrism
 public import SerrePositivity.InfinityCategories.F1B.SpecifiedHomotopyLift
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：頂点と指定された図式の prism を保つ極限錐の輸送。

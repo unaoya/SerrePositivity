@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftU
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.F1.Universe.RelativeFunctor
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：元の底上の射の相対頂点を小さい全空間の相対写像空間へ移す。

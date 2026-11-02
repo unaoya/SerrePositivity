@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct
+public import SerrePositivity.InfinityCategories.Core.RightJoinCoproduct
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 
 /-! # 標準 span と一点・離散二点の join

@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroSquares
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
-public import SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
 public import SerrePositivity.InfinityCategories.Stable.SpanFamilies
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-!
 概要：元の双カルテジアン零角四角形の全族から、零枝と全普遍余錐の族を回収する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.FilteredUniverse
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 
 /-!
 概要：小さい底と大きい空間値を、底の ULift により同じ宇宙の公開 API へ移す。

@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentCon
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMap
 public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：全空間の射を、元の余極限頂点を持つ指定余錐に接続する。

@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeNestedCosliceProjection
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 /-!
 概要：元の pushout 四角形の全 coslice から入力 span への制限は自明 Kan fibration。

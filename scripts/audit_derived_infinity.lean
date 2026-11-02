@@ -569,7 +569,7 @@ import SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension
 import SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits
 import SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits
 import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
-import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 import SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits
 import SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence
 import SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence
@@ -5080,7 +5080,7 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits,
   `SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits,
   `SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn,
-  `SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet]
+  `SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet]
 
 @[noinline] private def derivedAuditExpectedChunk3 : Array Lean.Name := #[
   `SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits,
@@ -6873,8 +6873,8 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGClosedEdges,
   `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierDenominators,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs,
-  `SerrePositivity.InfinityCategories.Stable.UniverseVertexIso,
-  `SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle,
+  `SerrePositivity.InfinityCategories.F1.UniverseVertexIso,
+  `SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle,
   `SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure,
   `SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges,
   `SerrePositivity.InfinityCategories.Derived.DGNativeFiniteCellClosure,
@@ -6969,22 +6969,22 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated,
   `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence,
   `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability,
-  `SerrePositivity.InfinityCategories.Stable.UniverseHorns,
-  `SerrePositivity.InfinityCategories.Stable.ReindexSliceOver,
-  `SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder,
-  `SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareShape,
-  `SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility,
-  `SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareHom,
+  `SerrePositivity.InfinityCategories.Core.UniverseHorns,
+  `SerrePositivity.InfinityCategories.Core.ReindexSliceOver,
+  `SerrePositivity.InfinityCategories.Core.ReindexSliceUnder,
+  `SerrePositivity.InfinityCategories.Core.UniverseStandardJoins,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareShape,
+  `SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility,
+  `SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareHom,
   `SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent,
   `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundary,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling,
-  `SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects,
+  `SerrePositivity.InfinityCategories.Core.UniverseZeroObjects,
   `SerrePositivity.InfinityCategories.Core.UniverseLimits,
   `SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation,
   `SerrePositivity.InfinityCategories.Core.UniverseJoin,
@@ -7117,7 +7117,7 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGObjectImageNerve,
   `SerrePositivity.InfinityCategories.Derived.DGYonedaRepresentableNerve,
   `SerrePositivity.InfinityCategories.Derived.DGModelStability,
-  `SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone,
+  `SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSquares,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationStability,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSection,
@@ -7390,11 +7390,11 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonSlice,
   `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjection,
   `SerrePositivity.InfinityCategories.Derived.StandardFiberPushout,
-  `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison,
-  `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint,
-  `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport,
-  `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport,
-  `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
+  `SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison,
+  `SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint,
+  `SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport,
+  `SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport,
+  `SerrePositivity.InfinityCategories.F1.SquareFunctorTransport,
   `SerrePositivity.InfinityCategories.Derived.Stability,
   `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
   `SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget,

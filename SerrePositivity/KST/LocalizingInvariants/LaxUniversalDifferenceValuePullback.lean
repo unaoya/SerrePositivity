@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceOuter
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-!
 概要：一般商と恒等 lax 差を比較する元の正方形の値は、実 pullback である。

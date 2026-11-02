@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-! # 単体的自然変換の前合成と成分
 

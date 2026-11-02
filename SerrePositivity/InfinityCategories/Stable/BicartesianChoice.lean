@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
 public import SerrePositivity.InfinityCategories.Stable.IsomorphismFiberZero
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # 双カルテジアン性の fiber/cofiber の選択独立性
 

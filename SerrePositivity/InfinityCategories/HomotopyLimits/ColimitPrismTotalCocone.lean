@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismTotalShape
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 public import SerrePositivity.InfinityCategories.Kan.PrismEndpointRightAnodyne
 
 /-!

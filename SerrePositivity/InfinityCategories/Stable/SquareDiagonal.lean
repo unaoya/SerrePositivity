@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-!
 概要：実比較正方形の対角辺を保ったまま、同じ cospan の普遍錐を構成する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.ConeOpposite
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 public import SerrePositivity.InfinityCategories.F2.Filtered.FilteredInfinity
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 

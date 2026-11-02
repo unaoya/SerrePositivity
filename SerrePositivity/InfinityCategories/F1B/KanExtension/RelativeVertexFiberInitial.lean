@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeVertexFiberLifting
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-!
 概要：引き戻しへの比較の相対始対象性を指定された頂点 fiber へ制限する。

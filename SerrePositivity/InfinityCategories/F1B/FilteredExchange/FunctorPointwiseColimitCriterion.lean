@@ -9,9 +9,9 @@ public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryIso
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-!
 概要：元の coherent 余錐が点ごとに余極限なら、関手単体集合でも余極限である。

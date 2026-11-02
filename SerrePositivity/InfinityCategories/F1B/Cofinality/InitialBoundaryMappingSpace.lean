@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeVertexFiberLifting
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint
 
 /-!
 概要：相対始点境界充填から出る写像空間の制限の普遍性。

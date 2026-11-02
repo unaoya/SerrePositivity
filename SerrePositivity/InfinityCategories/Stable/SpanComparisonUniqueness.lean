@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.TerminalSpanRelative
 public import SerrePositivity.InfinityCategories.Stable.TerminalMappingSpace
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
 
 /-! # 終対象へ向かう span 比較の一意性

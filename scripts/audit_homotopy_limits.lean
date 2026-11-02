@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
+import SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber
 import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedConeOppositeComparison
 import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitWeightMap
 import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.WeightedColimitReindexNaturality
@@ -15099,3 +15101,24 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b R37: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.SmallSourceCosliceCompactness
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 
 /-!
 概要：終対象を持たない小さい前置図式も固定して、全 compact 余錐を一段へ因子化する。

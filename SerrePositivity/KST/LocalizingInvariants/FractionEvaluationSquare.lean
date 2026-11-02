@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FractionTriangleEvaluation
-public import SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison
+public import SerrePositivity.InfinityCategories.Core.TerminalArrowComparison
 
 /-!
 概要：元の分数評価三角形を、分子から評価辺への指定比較四角形へ移す。

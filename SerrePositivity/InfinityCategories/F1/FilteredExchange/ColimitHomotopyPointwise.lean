@@ -8,9 +8,9 @@ public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 
 /-!
 概要：元の余極限余錐の比較は基底の各点で可逆なら指定頂点でも可逆。

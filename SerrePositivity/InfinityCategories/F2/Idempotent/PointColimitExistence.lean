@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：一点図式と終頂点を持つ形状上の任意の図式は余極限を持つ。

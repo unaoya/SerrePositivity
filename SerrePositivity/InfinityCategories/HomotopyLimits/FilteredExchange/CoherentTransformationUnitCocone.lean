@@ -19,7 +19,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTra
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationUnitRepresentation
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationUnitTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 
 /-!
 概要：元の変換と単位の合成三角形を native 余錐・余極限写像の表示へ接続する。

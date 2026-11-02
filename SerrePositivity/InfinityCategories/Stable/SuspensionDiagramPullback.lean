@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LoopToSuspensionEquivalence
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の loop 四角形の押し出し性と、全 suspension/loop 図式の比較。

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.Derived.DGStableObjectProperty
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 /-!
 概要：零化される dg 対象条件の充満包含の本質像は、実関手の零対象核と一致する。
 方針：実頂点のラベルを使って核内対象を選び、頂点同型による零性の移送を行う。

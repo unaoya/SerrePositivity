@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence
 public import SerrePositivity.DifferentialGraded.Derived.Evaluation
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-!
 概要：実半自由分解での辺の可逆性は、元の出力閉射の準同型性を検出する。
