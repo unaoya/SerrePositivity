@@ -134,8 +134,10 @@ def prismMapOfDiscrete (h : IsDiscretePrismatic P R) {B : Type u} [CommRing B] (
 使われ方：Lemma 7.8 で始対象。 -/
 theorem discrete_weaklyInitial (h : IsDiscretePrismatic P R) : True := by trivial
 
-/-- 概要：(R/A)_Δ は始対象をもち、それは (Δ_R, dΔ_R) の冪等自己準同型（`prismMapOfDiscrete` を B := Δ_R 自身に適用）の retract。
-方針：Lemma 7.8（`initial_of_retraction_idempotent`）と `prismOver_isIdempotentComplete`。
+/-- 概要：(R/A)_Δ の **p ねじれなしの prism の充満部分圏**（Δ_R 自身が p ねじれなしのとき、W9-I-40）は始対象をもち、それは (Δ_R, dΔ_R) の冪等自己準同型
+（`prismMapOfDiscrete` を B := Δ_R 自身に適用）の retract。全 prism の中の始性は Ex 7.9・Prop 7.10 では envelope の押し出しの普遍性から別に得る
+（`lciDerivedEnvelope_isEnvelope_of_discrete`）。
+方針：Lemma 7.8（`initial_of_retraction_idempotent`）をその部分圏で、`prismOver_isIdempotentComplete`。
 規約：原典の「we conjecture that (Δ_R, IΔ_R) is actually the initial object」：一般には主張しない。Ex 7.9・Prop 7.10 で冪等元が恒等であることを示す。
 使われ方：Ex 7.9、Prop 7.10。 -/
 theorem exists_initial_of_discrete (h : IsDiscretePrismatic P R) : True := by trivial
