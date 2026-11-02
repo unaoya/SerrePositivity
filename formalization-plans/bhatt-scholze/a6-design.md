@@ -70,7 +70,14 @@ Lean の名前は仮。ビルドしない。
   S_perfd → S′_perfd、S_perfd → (S/I)_perfd、S′_perfd → (S′/IS′)_perfd、(S/I)_perfd → (S′/IS′)_perfd は引き戻し。
   原典の "(S′/I)_perfd" は S′/IS′（界面の `quotientAlgebra R T (I.map f)`）。
 - E3 の欄：`e3Excision f I h_S h_T h_I harc : IsPullbackSquare (ordinarySquare … ≫ e3Perfd)`。S・T 完備なので `e3Perfd_of_complete`（A4-3）で
-  S_perfd などに読み替え、S/I・T/IT も導来 p 完備（I 完備な商、要確認：`IsModuleComplete` の商での保存）。
+  S_perfd などに読み替える。**商の扱い（W9-II-15 で訂正）**：S/I は S・I の導来 p 完備性から導来 p 完備（cofiber で閉じる）だが、**T/IT は一般に導来 p 完備でない**
+  （反例：R = Z_p[p^{1/p^∞}]^∧、S = R ⊕ c₀(R)、T = R⟨t⟩ ⊕ c₀(R⟨t⟩) の平方零拡大、I = 0 ⊕ c₀(R)。S・T・I は完備で `ArcOutside` も成り立つが、IT は c₀(R) の
+  R⟨t⟩ 線形包で (p^n t^n)_n を含まず、T/IT の直和因子 c₀(R⟨t⟩)/IT は非零で p 可除）。界面の仮定に IT の完備性はないので、四頂点を完備として
+  `e3Perfd_of_complete` を使うことはできない。**修復**：一般の離散 R 代数 U について、perfectoid 標的 P は p 完備なので `completionRing` の普遍性から
+  F_U = Hom_R(U, −) ≃ F_{completionRing U}（Perfd 上の前層として自然同型）、よって Γ(F_U, O) ≃ Γ(F_{completionRing U}, O) ≃ (completionRing U)_perfd = e3Perfd(U)
+  （Prop 8.5 の Type u 版、D41 の定義そのもの）。四角形は商写像・比較写像・二つの合成の一致を含めて前層の自然変換として移し、S8 の押し出しは元の商 U の
+  Hom 前層で取る（F_{T/IT} ↪ F_T の単射性は T → T/IT の全射性から。T → completionRing(T/IT) の全射性は要らない）。affCompl_κ の対象として商を使う箇所は
+  completionRing(T/IT) を用いる。
 - 証明の筋は §3.2。
 
 ### 2.4 S8：空間値の層と E 値の層の局所性（∞ 側の一般論、新）
@@ -144,7 +151,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | G-A6-7 | 導来 d 進完備化は完全列を保ち、d が可逆な項を殺す；Čech 複体の各項の分解 | HA/DerivedCompletion（2b 後の名前） | §3.1 の 4 |
 | G-A6-8 | 基底上の集合の層の延長 F(T) := lim_{Perfd_{T/}} F は arc 被覆で層条件を満たす（1 圏） | Mathlib `Sheaf`（比較補題は要確認） | §3.2 の 3 |
 | G-A6-9 | 完備テンソルの arc 被覆（§3.2 の 3 の二つ）と `ArcOutside` からの arc 被覆性 | なし | §3.2 |
-| G-A6-10 | S/I・T/IT の導来 p 完備性（I 完備な商） | HA/DerivedCompletion（要確認） | E3 の欄 |
+| G-A6-10 | S・I 導来 p 完備 ⇒ S/I 導来 p 完備（cofiber）。**T/IT には成り立たない**（W9-II-15 の反例）ので、一般の商 U は `completionRing U` 経由：F_U ≃ F_{completionRing U}（perfectoid 標的は p 完備）と Γ(F_U, O) ≃ e3Perfd(U) の自然同型、四角形全体を自然変換として移す | HA/DerivedCompletion（要確認）、`completionRing` の普遍性（既存） | E3 の欄 |
 | S8 | §2.4 の 1〜6 | なし（Sheaves/ の続き、∞ トポス） | Cor 8.12 の 4・5 |
 
 ## 5. 原典との差
@@ -200,6 +207,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 4. §3.2 の 5：引き戻しの射が perfd の関手性の射（S → S′ など）の像に一致すること。
 5. §3.2 の 3：延長 F(T) の層条件（G-A6-8）と、二つの arc 被覆の確認。
 6. G-A6-2：perfectoid の因子 eT が perfectoid であること、Perfd_{(S′×S″)/} の分解。
+7. §2.3 の商の扱い（W9-II-15）：F_U ≃ F_{completionRing U} の自然同型、Γ(F_U, O) ≃ e3Perfd(U)、商写像を含む四角形の自然変換としての移送、
+   S8 の押し出しを元の商の Hom 前層で取ること。
 
 ## 9. affine で閉じることの確認（決定 1 の確認、2026-11-02）
 
