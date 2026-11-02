@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCompatibleRoots
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # Compatible roots detect the original full perfectoid-ideal Tor input

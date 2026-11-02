@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationSupportedQuotient
+public import SerrePositivity.BhattScholze.Semiperfectoid.AbsolutelyIntegrallyClosedQuotient
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCompatibleRoots
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap

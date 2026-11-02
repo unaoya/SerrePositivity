@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPowers
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 public import SerrePositivity.CLMST.CyclicFactorReduction
 
 /-! # pの冪の単元倍と一元パラメータ系の巡回評価

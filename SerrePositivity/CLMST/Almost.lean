@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationMap
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
 
 /-! # perfectoid ideal と mod p^N の almost 条件

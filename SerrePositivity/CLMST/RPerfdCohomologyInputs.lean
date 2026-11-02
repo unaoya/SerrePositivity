@@ -8,7 +8,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionT
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedQuotientTensorExtension
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 
 /-! # Concrete inputs for the cohomology comparison on the selected RPerfd

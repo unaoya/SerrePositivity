@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.AndrePerfectoidizationTorDescent
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.CLMST.PerfectoidIdealTorCover
 public import SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator
 

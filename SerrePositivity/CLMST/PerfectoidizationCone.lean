@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.BhattScholze.Perfectoidization.Finite
 public import SerrePositivity.HomologicalAlgebra.DerivedModuleCone
 
 /-! # perfectoid 化の標準写像の実導来錐

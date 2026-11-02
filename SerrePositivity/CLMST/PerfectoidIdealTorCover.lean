@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators

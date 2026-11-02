@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
+public import SerrePositivity.BhattScholze.Perfectoidization.Finite
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import Mathlib.RingTheory.FiniteStability
 public import Mathlib.RingTheory.TensorProduct.Finite

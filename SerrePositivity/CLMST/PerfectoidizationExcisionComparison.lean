@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Excision
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationAlgebraMap
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPullback
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 
 /-! # The exact canonical excision input for a perfectoidization comparison
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealRadical
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 public import SerrePositivity.CommutativeAlgebra.RootTower.Stage
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine

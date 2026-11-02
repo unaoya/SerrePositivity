@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealPullback
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
 
 /-! # Tor transport from an actual excision square

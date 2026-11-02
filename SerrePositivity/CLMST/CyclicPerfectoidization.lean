@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Graded
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
 
 /-! # pで割れない巡回商への全射性定理の適用条件
