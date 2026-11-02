@@ -27,7 +27,7 @@ public import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
 public import SerrePositivity.CLMST.CompletedCokernelLength
 public import SerrePositivity.CLMST.CompletedParameterFiniteness
 public import SerrePositivity.CLMST.CompletedSourceLength
-public import SerrePositivity.CLMST.CompletedStageBaseChange
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 public import SerrePositivity.CLMST.CompletedTargetLength
 public import SerrePositivity.CLMST.CompletedTensorIsogeny
 public import SerrePositivity.CLMST.ConditionalCohomologyVanishing
@@ -81,13 +81,7 @@ public import SerrePositivity.CLMST.RPerfdCohomologyInputs
 public import SerrePositivity.CLMST.RPerfdTorBaseChange
 public import SerrePositivity.CLMST.SelectedParameterEuler
 public import SerrePositivity.CLMST.SourceEulerEvaluation
-public import SerrePositivity.CLMST.StageBaseChange
-public import SerrePositivity.CLMST.StageDimension
-public import SerrePositivity.CLMST.StageLocality
 public import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
-public import SerrePositivity.CLMST.StageParameterChange
-public import SerrePositivity.CLMST.StagePowerMembership
-public import SerrePositivity.CLMST.StageResidueLength
 public import SerrePositivity.CLMST.TensorIsogeny
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.Derived
