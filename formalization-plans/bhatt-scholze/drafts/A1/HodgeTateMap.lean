@@ -36,7 +36,8 @@ variable (r : ℕ)
 方針：`Poly (A ⧸ P.ideal) (Fin r)` の p 完備化。
 規約：A0 の `cechAlexanderAffine` と同じ R。
 使われ方：以下の全て。
-要確認：A0 側で R の具体形を固定する（`cechAlexanderAffine` の要確認と同じ）。 -/
+決定（design-status.md (B)）：R := `MvPolynomial (Fin r) (A ⧸ P.ideal)` の一変数 p 進完備化の H⁰（E3 の `completionRing` と同じ道具）。
+A0 の `cechAlexanderAffine` と同じ定義にする。 -/
 def affineAlgebra : Type u := sorry
 
 /-- 概要：Ō_{R/A} の模型：余単体的環 C^•/dC^•（Rem 4.19 の小さい模型）。

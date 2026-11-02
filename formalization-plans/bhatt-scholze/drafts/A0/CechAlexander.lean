@@ -194,7 +194,9 @@ def cechAlexanderReducedComplex : CochainComplex (ModuleCat.{u} A) ℕ :=
 方針：`exists_prismaticEnvelope_of_variables`（S = Fin r × Fin (n+1)、Z = 差の変数、変数変換後）。
 規約：R は p 完備化した多項式代数（有限変数）。
 使われ方：Lemma 4.20、Prop 6.2、Thm 5.2 の計算。 -/
-def cechAlexanderAffine (r : ℕ) : True := trivial -- 要確認：R の具体形を固定してから `CosimplicialObject (PrismOver P R κ)` に
+def cechAlexanderAffine (r : ℕ) : True := trivial
+-- 決定（design-status.md (B)）：R := `MvPolynomial (Fin r) (A ⧸ P.ideal)` の一変数 p 進完備化の H⁰（E3 の `completionRing` と同じ道具）。
+-- A1 の `affineAlgebra` と同じ定義にし、`CosimplicialObject (PrismOver P R κ)` として書き直す。
 
 /-- 概要：Rem 4.19 の模型は Constr 4.18 の模型と同じ Δ を計算する（どちらも極限錐）。
 方針：両方の C^0 が弱始なので S3 の補題を二度使う。
