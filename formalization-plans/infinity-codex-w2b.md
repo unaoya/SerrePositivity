@@ -166,3 +166,12 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 3. **監査**：`make_area_audits.py` に area がないので、手書きの `scripts/audit_infinity_f2_exchange.lean` を**削除**する（B は archive、A・C は移った先の監査へ）。A と C（支え 3 本を含む）の全モジュールがどれかの監査の一覧に入ることを確かめ、入らないものは移った先の層の監査（生成分なら area の再生成、手書きなら import 行の追加）に加える。verify の監査は自動列挙なので、削除だけで一覧から消える。`w2b-r73-audits.json` の案をこれに合わせる。
 
 **次**：§3.1（キャッシュから復元 → before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド（移動先・分割先・直接の利用者。未検出 3 辺の削除の確認を含む）→ after snapshot → 保存比較）→ **停止点 2**。小さなビルドだけ。**下流 13,149 本と verify は暦 #10 の合図（DG-W3 の後、見込み 11-04）を待つ。**
+
+## 13. 追記（2026-11-03、復元の停止への回答：rsync はやめてキャッシュから、main（1-4 取り込み後）を先に取り込む）
+
+**受領**：§12 の W2b 判定の実装（fc047fd80、18 試験 PASS）、rsync の復元 14 分で終了コード 23（`build/ir/…ModelBifibrantSourceRoofCornerEvaluation.c` の消失、現在は両側に存在）、main と依存先ソース 9 本の差分。
+
+1. **終了コード 23 の扱い**：無害。消失は、同じ時刻に Claude が main で `lake build`（1-4 取り込み後の温め：ルート＋監査対象、11-02 深夜）を走らせていたためで、生成出力が書き直された瞬間に当たった。`warm_build_dir.sh` は DG の道具なので**変えない**（build/ir の許容追加は要らない）。
+2. **復元は rsync ではなくキャッシュから**（IF-W2a-2 で行ったのと同じ：`lake build <根>` で復元、数分）。rsync は「キャッシュにない成果物が要るとき」の予備で、今回は要らない。main から複製した成果物は main の**現在の**ソース（1-4 後）に対応しており、worktree のソースと食い違う（差分 9 本がそれ）。`lake build` の trace 検査がモジュールごとに正しい版を復元するので、複製した `.lake/build` はそのまま置いて `lake build` を走らせればよい。
+3. **main を先に取り込む**：`infra/if-w2b` は 85cb45f1a（1-4 前）から切ってある。**今 main（a682ec32b、1-4 を含む）を merge してから** before snapshot を取る。before ＝ merge 後の状態。1-4 は InfinityCategories を触っていない（Claude が確認）ので衝突はないはず。**下流ビルド（#10）の前にもう一度 main（DG-W3 取り込み後）を merge** し、内部ビルドと静的検査を再実行してから下流に入る（DG-W3 は DG の土台を 608 → 48 に統合するので、Derived・KST などの import 行が変わる）。
+4. **再開**：main の merge → キャッシュから復元（`lake build` で before の対象の根）→ before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド → after snapshot → 保存比較 → **停止点 2**。
