@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Section2.MixedPerfectoid
+public import SerrePositivity.BhattScholze.Perfectoidization.RootTower
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 public import SerrePositivity.CLMST.NormalizedAlmostLength
 public import SerrePositivity.CLMST.CohomologyVanishing
