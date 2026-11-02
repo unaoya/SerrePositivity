@@ -14,7 +14,7 @@ def row(name, parent=None, body='1'):
                 reference_kind='named')
 
 def snapshot(rows, source=None):
-    return dict(schema_version=2, hash_algorithm='normalized Expr DAG mixHash proof-irrelevant v3 (term-level)',
+    return dict(schema_version=2, hash_algorithm='normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)',
                 name_map={}, proof_irrelevant=True, declarations=rows,
                 sources=[] if source is None else [dict(module='M',source=source)])
 
@@ -52,19 +52,46 @@ class ParentGroups(unittest.TestCase):
         self.assertEqual(result['auxiliary_groups']['before'],
                          [{'parent':'N.f','module':'M','names':['N.f.match_1']}])
 
+    def test_matching_data_parent_suppresses_generated_proof_type(self):
+        for kind in ['def', 'abbrev', 'instance']:
+            with self.subTest(kind=kind):
+                parent = {**row('N.f'), 'kind': kind}
+                proof = {**row('N.f._proof_1', 'N.f', None),
+                         'kind': 'theorem', 'reference_kind': 'proof'}
+                before = snapshot([parent, proof])
+                after = copy.deepcopy(before)
+                after['declarations'][1]['type_hash'] = 'different proof proposition syntax'
+                self.assertEqual(compare(before, after)['status'], 'PASS')
+
+    def test_changed_parent_reports_its_generated_proof_too(self):
+        for kind in ['theorem', 'def', 'abbrev', 'instance']:
+            with self.subTest(kind=kind):
+                parent = {**row('N.f'), 'kind': kind}
+                proof = {**row('N.f._proof_1', 'N.f', None),
+                         'kind': 'theorem', 'reference_kind': 'proof'}
+                before = snapshot([parent, proof])
+                after = copy.deepcopy(before)
+                after['declarations'][0]['type_hash'] = 'changed parent type'
+                after['declarations'][1]['type_hash'] = 'changed helper type'
+                result = compare(before, after)
+                self.assertEqual(result['status'], 'FAIL')
+                self.assertEqual({r['name'] for r in result['changes']},
+                                 {'N.f', 'N.f._proof_1'})
+
 class TermProofErasure(unittest.TestCase):
     """Real Lean terms: application arguments and proofs below local binders."""
 
     @classmethod
     def setUpClass(cls):
         root = Path(__file__).resolve().parents[2]
-        out = root / '.lake/verify/proof-irrelevant-v3-tests'
+        out = root / '.lake/verify/proof-irrelevant-v3b-tests'
         out.mkdir(parents=True, exist_ok=True)
         search = subprocess.check_output(['lake', 'env', 'printenv', 'LEAN_PATH'],
                                          cwd=root, text=True).strip()
         env = {**os.environ, 'LEAN_PATH': str(out) + ':' + search}
         source = out / 'TermProofFixture.lean'
-        source.write_text("""import Lean
+        source.write_text("""import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+open CategoryTheory
 namespace TermProofFixture
 class Witness (n : Nat) : Prop where
   eq_self : n = n
@@ -76,6 +103,13 @@ def chooseB : Nat := @value 7 (routeB 7 ())
 def changedData : Nat := @value 8 (routeA 8)
 def underA : (n : Nat) → Witness n → Nat := fun n h => @value n h
 def underB : (n : Nat) → Witness n → Nat := fun n _ => @value n (routeB n ())
+class HasValue (A : Type 1) : Prop where
+  witness : True
+theorem aliasWitness : HasValue SSet.{0} := ⟨True.intro⟩
+theorem expandedWitness : HasValue (SimplexCategoryᵒᵖ ⥤ Type) := ⟨True.intro⟩
+def pickAlias (_ : HasValue SSet.{0}) : Nat := 7
+def fromAlias : Nat := pickAlias aliasWitness
+def fromExpanded : Nat := pickAlias expandedWitness
 end TermProofFixture
 """)
         commands = [
@@ -90,7 +124,7 @@ end TermProofFixture
             if result.returncode or re.search(r'(?m)^PANIC\b|\berror(?:\([^)]*\))?:', result.stdout):
                 raise RuntimeError(label + ': ' + result.stdout)
         snap = json.loads((out / 'snapshot.json').read_text())
-        if snap['hash_algorithm'] != 'normalized Expr DAG mixHash proof-irrelevant v3 (term-level)':
+        if snap['hash_algorithm'] != 'normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)':
             raise AssertionError('term-level snapshot mode was not used')
         cls.rows = {r['name'].split('.')[-1]: r for r in snap['declarations']}
 
@@ -99,6 +133,13 @@ end TermProofFixture
 
     def test_data_arguments_are_not_erased(self):
         self.assertNotEqual(self.rows['chooseA']['body_hash'], self.rows['changedData']['body_hash'])
+
+    def test_definitionally_equal_propositions_use_same_marker(self):
+        # The witness propositions really have different syntax before erasure.
+        self.assertNotEqual(self.rows['aliasWitness']['type_hash'],
+                            self.rows['expandedWitness']['type_hash'])
+        self.assertEqual(self.rows['fromAlias']['body_hash'],
+                         self.rows['fromExpanded']['body_hash'])
 
     def test_proofs_under_binders_are_erased(self):
         self.assertEqual(self.rows['underA']['type_hash'], self.rows['underB']['type_hash'])
