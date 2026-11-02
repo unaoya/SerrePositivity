@@ -1,0 +1,364 @@
+{
+  "status": "PASS",
+  "stop_point": 2,
+  "date": "2026-11-02T15:28:47.924311+09:00",
+  "branch": "infra/if-w2a-2",
+  "before_commit": "7a1fe85bf9004599f3210831b5fa9aac95400ae6",
+  "instructions": [
+    "§7:68486e16e",
+    "§8:55ad70a20",
+    "§9:62b33ca79"
+  ],
+  "hash_algorithm": "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)",
+  "name_map": {},
+  "snapshot": {
+    "before": {
+      "modules": 273,
+      "shards": 18,
+      "parallelism": 8,
+      "seconds": 76.902,
+      "raw_declarations": 3526,
+      "huge_terms": 0
+    },
+    "after": {
+      "modules": 203,
+      "shards": 13,
+      "parallelism": 8,
+      "seconds": 34.773,
+      "raw_declarations": 3521,
+      "huge_terms": 0
+    }
+  },
+  "comparison": {
+    "status": "PASS",
+    "before_count": 2033,
+    "after_count": 2033,
+    "parent_count": 2033,
+    "changes": []
+  },
+  "transient": {
+    "before": [
+      "CategoryTheory.Adjunction.CoreHomEquiv.mk.congr_simp",
+      "CategoryTheory.Adjunction.adjunctionOfEquivRight.eq_1",
+      "CategoryTheory.Mod.Hom.mk'.congr_simp",
+      "FintypeCat.Skeleton.len.eq_1",
+      "FintypeCat.Skeleton.mk.eq_1",
+      "SerrePositivity.EInfinity.IntervalCuts.simplexDegree.eq_1",
+      "SerrePositivity.EInfinity.IntervalCuts.vertex.eq_1",
+      "SerrePositivity.EInfinity.operadInnerPermutation.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.eq_2",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.splitter",
+      "SerrePositivity.EInfinity.operadOuterPermutation.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.eq_2",
+      "SerrePositivity.EInfinity.tensorFamily.eq_def",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.eq_2",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.splitter",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_1",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_2",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_def",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.eq_1",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.eq_2",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.splitter",
+      "SerrePositivity.FiniteBijection.addRight.eq_1",
+      "SerrePositivity.FiniteBijection.card.eq_1",
+      "SerrePositivity.FiniteBijection.isoOfEquiv.eq_1",
+      "SerrePositivity.FiniteBijection.of.eq_1",
+      "SerrePositivity.FiniteBijection.permutation.eq_1",
+      "SerrePositivity.FiniteBijection.sumAssociator.eq_1",
+      "SerrePositivity.FiniteBijection.sumFunctor.eq_1",
+      "SerrePositivity.FiniteBijection.sumLeftUnitor.eq_1",
+      "SerrePositivity.FiniteBijection.sumObj.eq_1",
+      "SerrePositivity.FiniteBijection.sumRightUnitor.eq_1",
+      "SerrePositivity.GeneralSymmetricSpectrum.adjointStructureMap.eq_1",
+      "SerrePositivity.GeneralSymmetricSpectrum.freeAt.eq_1",
+      "SerrePositivity.KST.SConstruction.chosenDiagramPushout.congr_simp",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.generators.eq_1",
+      "SerrePositivity.MonoidalBalancedTensor.associatorIso.congr_simp",
+      "SerrePositivity.MonoidalFreeModule.freeObj.eq_1",
+      "SerrePositivity.MonoidalFreeModule.generator.eq_1",
+      "SerrePositivity.MonoidalModuleInternalHom.homMap.congr_simp",
+      "SerrePositivity.PointedObject.adjoinFunctor.congr_simp",
+      "SerrePositivity.ReverseComposition.reverse.eq_1",
+      "SerrePositivity.SymmetricSequence.freeZeroConvolutionAssociatorIso.congr_simp",
+      "SerrePositivity.SymmetricSpectrum.internalHomFreeAtIso.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_2",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_def",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.eq_2",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.splitter",
+      "SerrePositivity.TensorPowers.bijectionFunctor.eq_1"
+    ],
+    "after": [
+      "CategoryTheory.Adjunction.adjunctionOfEquivRight.eq_1",
+      "CategoryTheory.Mod.Hom.mk'.congr_simp",
+      "FintypeCat.Skeleton.len.eq_1",
+      "FintypeCat.Skeleton.mk.eq_1",
+      "SerrePositivity.EInfinity.IntervalCuts.simplexDegree.eq_1",
+      "SerrePositivity.EInfinity.IntervalCuts.vertex.eq_1",
+      "SerrePositivity.EInfinity.operadInnerPermutation.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.eq_1",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.eq_2",
+      "SerrePositivity.EInfinity.operadInsertionEquiv.match_1.splitter",
+      "SerrePositivity.EInfinity.operadOuterPermutation.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.eq_2",
+      "SerrePositivity.EInfinity.tensorFamily.eq_def",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.eq_1",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.eq_2",
+      "SerrePositivity.EInfinity.tensorFamily.match_1.splitter",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_1",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_2",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.eq_def",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.eq_1",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.eq_2",
+      "SerrePositivity.EInfinity.tensorFamilyTensorIso.match_1.splitter",
+      "SerrePositivity.FiniteBijection.isoOfEquiv.eq_1",
+      "SerrePositivity.FiniteBijection.sumAssociator.eq_1",
+      "SerrePositivity.FiniteBijection.sumFunctor.eq_1",
+      "SerrePositivity.FiniteBijection.sumLeftUnitor.eq_1",
+      "SerrePositivity.FiniteBijection.sumRightUnitor.eq_1",
+      "SerrePositivity.GeneralSymmetricSpectrum.adjointStructureMap.eq_1",
+      "SerrePositivity.GeneralSymmetricSpectrum.freeAt.eq_1",
+      "SerrePositivity.KST.SConstruction.chosenDiagramPushout.congr_simp",
+      "SerrePositivity.ModelGeneration.EvaluationFamily.generators.eq_1",
+      "SerrePositivity.MonoidalFreeModule.freeObj.eq_1",
+      "SerrePositivity.MonoidalFreeModule.generator.eq_1",
+      "SerrePositivity.MonoidalModuleInternalHom.homMap.congr_simp",
+      "SerrePositivity.PointedObject.adjoinFunctor.congr_simp",
+      "SerrePositivity.SymmetricSequence.freeZeroConvolutionAssociatorIso.congr_simp",
+      "SerrePositivity.SymmetricSpectrum.internalHomFreeAtIso.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_2",
+      "SerrePositivity.TensorPowers.adjacentIso.eq_def",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.eq_1",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.eq_2",
+      "SerrePositivity.TensorPowers.adjacentIso.match_1.splitter"
+    ]
+  },
+  "additional_annotation_comparison": {
+    "status": "PASS",
+    "before_count": 35,
+    "after_count": 35,
+    "parent_count": 35,
+    "changes": []
+  },
+  "builds": [
+    {
+      "round": "internal-round1",
+      "status": "FAIL",
+      "target_count": 37,
+      "root_count": 10,
+      "exit_code": 1,
+      "seconds": 410.917,
+      "built_lines": 245,
+      "replayed_lines": 0,
+      "diagnostics": [
+        "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean:158:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+        "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean:169:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:45:22: Application type mismatch: The argument",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:44:8: failed to synthesize instance of type class",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:48:0: Not a definitional equality: the left-hand side",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:51:97: Type mismatch",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:53:0: Not a definitional equality: the left-hand side",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:56:91: Type mismatch",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:67:2: Type mismatch",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:75:24: Function expected at",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:75:46: Function expected at",
+        "error: SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean:75:54: Function expected at",
+        "error: build failed"
+      ],
+      "new_modules": 245,
+      "cache_before": {
+        "files": 273872,
+        "bytes": 14496564604
+      },
+      "cache_after": {
+        "files": 274763,
+        "bytes": 14598303450
+      }
+    },
+    {
+      "round": "internal-round2",
+      "status": "FAIL",
+      "target_count": 37,
+      "root_count": 10,
+      "exit_code": 1,
+      "seconds": 28.766,
+      "built_lines": 7,
+      "replayed_lines": 18,
+      "diagnostics": [
+        "error: SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/FunctorialExtension.lean:68:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+        "error: build failed"
+      ],
+      "new_modules": 7,
+      "cache_before": {
+        "files": 275025,
+        "bytes": 14674042296
+      },
+      "cache_after": {
+        "files": 275056,
+        "bytes": 14675274625
+      }
+    },
+    {
+      "round": "internal-round3",
+      "status": "PASS",
+      "target_count": 37,
+      "root_count": 10,
+      "exit_code": 0,
+      "seconds": 35.872,
+      "built_lines": 16,
+      "replayed_lines": 18,
+      "diagnostics": [],
+      "new_modules": 16,
+      "cache_before": {
+        "files": 275057,
+        "bytes": 14675297629
+      },
+      "cache_after": {
+        "files": 275070,
+        "bytes": 14676256807
+      }
+    },
+    {
+      "round": "downstream-round1",
+      "status": "PASS",
+      "target_count": 11818,
+      "root_count": 125,
+      "exit_code": 0,
+      "seconds": 6900.856,
+      "built_lines": 11550,
+      "replayed_lines": 1460,
+      "diagnostics": [],
+      "new_modules": 11550,
+      "cache_before": {
+        "files": 275070,
+        "bytes": 14676256807
+      },
+      "cache_after": {
+        "files": 277123,
+        "bytes": 15019579498
+      }
+    }
+  ],
+  "tests": {
+    "test_proof_irrelevant_compare": {
+      "count": 10,
+      "seconds": 22.357
+    },
+    "test_proof_irrelevant": {
+      "count": 5,
+      "seconds": 68.044
+    }
+  },
+  "import_supplements": [],
+  "qualification_occurrences": 4,
+  "universe_annotation_occurrences": 2,
+  "annotation_patches": [
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean",
+      "line": 158,
+      "kind": "qualification",
+      "occurrences": 1,
+      "text": "rw [CategoryTheory.Functor.map_id, Category.id_comp]"
+    },
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/RelativeBoundaryFunctor.lean",
+      "line": 169,
+      "kind": "qualification",
+      "occurrences": 1,
+      "text": "rw [CategoryTheory.Functor.map_id, Category.comp_id]"
+    },
+    {
+      "file": "SerrePositivity/HomotopicalAlgebra/HomotopyFunctionComplex/Reedy/FunctorialExtension.lean",
+      "line": 68,
+      "kind": "qualification",
+      "occurrences": 2,
+      "text": "rw [CategoryTheory.Functor.map_id, CategoryTheory.Functor.map_id]"
+    },
+    {
+      "file": "SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean",
+      "line": 44,
+      "kind": "universe_annotation",
+      "occurrences": 1,
+      "text": "exact levelModelCategoryOfMonoidalGenerators.{u, u + 1, u} PointedSimplicialSet.circle"
+    },
+    {
+      "file": "SerrePositivity/Spectra/ModelCategory/SimplicialLevel.lean",
+      "line": 67,
+      "kind": "universe_annotation",
+      "occurrences": 1,
+      "text": "exact levelModelCategoryOfMonoidalGenerators_generated.{u, u + 1, u} PointedSimplicialSet.circle"
+    }
+  ],
+  "static_checks": {
+    "before": {
+      "module_count": 32276,
+      "edge_count": 112751,
+      "direct_violations": 297,
+      "foundation_violations": 0,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 1,
+          "direct_violation_count": 3
+        },
+        "W2a": {
+          "forbidden_module_count": 166,
+          "direct_violation_count": 28
+        },
+        "W2b": {
+          "forbidden_module_count": 166,
+          "direct_violation_count": 294
+        }
+      }
+    },
+    "after": {
+      "module_count": 32206,
+      "edge_count": 112571,
+      "direct_violations": 297,
+      "foundation_violations": 0,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 1,
+          "direct_violation_count": 3
+        },
+        "W2a": {
+          "forbidden_module_count": 166,
+          "direct_violation_count": 28
+        },
+        "W2b": {
+          "forbidden_module_count": 166,
+          "direct_violation_count": 294
+        }
+      }
+    }
+  },
+  "ratchet_increases": [],
+  "commits": [
+    "36f9b1bd0efff993d3e8717367c02604988ed210 refactor(infinity): move nerve foundations to HomotopicalAlgebra",
+    "3ae691eba27534948db679e1c0963a31bfcc0dc3 refactor(category): consolidate lower foundations into 25 modules",
+    "ecc0be8263f52ed6f8ac6d2427a9f3a22e65bcf9 refactor(infinity): move homotopy inputs to ModelBridge",
+    "f12bac2daf94c4d29330a69b8bde812bbe402383 infra(snapshot): erase proof terms before DAG hashing (v3)",
+    "28eccc6ab74bf321178c85ac959b7f4a93a34a32 test(snapshot): cover term-level proof irrelevance and data guards",
+    "515c71147cb5f2d4d428f37943e357dcc993259a infra(snapshot): mark erased proofs and group matching parents (v3b)",
+    "a4274406b4a2e404c40573606482194dc2482294 test(snapshot): guard proof markers and data-parent grouping",
+    "56ee73f32382d193d176547e594e376774f93333 修飾・宇宙の明示"
+  ],
+  "verify": "NOT RUN: awaiting stop point 2 review",
+  "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2a2-batch",
+  "cleanup": {
+    "worker": "RELEASED",
+    "build_lock_released": true,
+    "before_scratch_removed": true
+  },
+  "final_log_scan": {
+    "logs": 34,
+    "error_or_panic": 0
+  }
+}
