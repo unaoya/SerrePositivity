@@ -66,3 +66,14 @@ worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込�
 
 - 宣言の本文・名前・名前空間の変更（§4 以外）。D6・D7・D8（証明を変える整理）。
 - ∞ の道具の変更。鍵なしの全ビルド。main の作業木での作業・ビルド。
+
+## 7. 追記（2026-11-02 夕、静的事前調査 `ef951fa5d` への回答）
+
+**受領・承認**：候補 4 箇所（`InfinityCategories/DGNerve/HomotopyCategory.lean` の 34・98・104・109 行）、universe 608/608 で順序保持、`--check` 48 統合先・608 元・最大 1,621 行・超過 0。報告の判断（今は何も変えず、before/after の保存比較で重点照合する）をそのまま採る。開始の合図は変わらず **1-4 が main に入った後**（見込み 11-03 午後）。それまでビルドなし。
+
+1. **`HomotopyCategory` の 4 箇所の見込みと扱い**：Mathlib の `HomotopyCategory V c` は `V` に `Category` と `Preadditive` のインスタンスを要るので、`HomotopyCategory A D`（`A` は `CommRing` の型）では Mathlib 側の候補は elaboration に失敗し、多重定義の解決は従来どおり `DifferentialGraded.HomotopyCategory` に落ちる見込み。したがって失敗も解決先の変化も出ないはずだが、確認は保存比較の型ハッシュ（4 宣言と、それを使う `DGNerve` の下流）で行う。失敗か不一致が出たら `DifferentialGraded.HomotopyCategory` へ完全修飾する。このファイルは DG の外だが、**この 4 箇所に限って §2 の所有範囲の例外として修飾を許す**（別コミット「修飾」、保存比較で同一を証明）。∞ の束 IF-W2a-2 はこのファイルに触れていない（Claude が 11-02 に確認）。
+2. **`Complexes.SphereHom` が `Complexes.Perturbation` の import 和に Mathlib の経路を持ち込む件**：統合先の import 和はそのままでよい（元の再分割や import の削減は W3 の範囲外）。同型の事例（統合先の import 和が外側の利用元に新しい短名を届ける）が内部ビルドや下流で現れたら、1 と同じ規則で扱う。
+3. **構造体フィールドの 3 出現**（`Presentation/Category.lean` の `differential`）：除外でよい。
+4. **universe の 4 本**（`Category.IdempotentTelescope`・`Category.EquivalenceComparison`・`Derived.AssociatorMiddleRestrictionResolved`・`Derived.AssociatorSecondMiddleRestrictionResolved`）：before/after の型ハッシュで回帰確認の対象。宇宙引数の順序差を表示だけの差として処理しない（報告のとおり）。
+5. **草案の現在値**（48・608・1,621 行、private_renames 3 箇所）を正とし、旧 `dg-w3-merge-dryrun.md` の値（611 元・1,601 行）は本報告で置き換える。
+6. **main の取り込み後の再確認**：∞ の束（IF-W2a-2：CategoryTheory の統合 25 群と Nerve まわりの移動）が今夜 main に入り、翌日 1-4 が入る。`infra/dg-w3` を切ったあと §3.0-1 の `--check` と、**閉包の差分だけ**（新たに届く短名の候補が増えないか）を再確認する。静的検査の全再実行は要らない。
