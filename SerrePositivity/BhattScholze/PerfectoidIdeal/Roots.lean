@@ -27,7 +27,7 @@ public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 CLMST の Prop 4.0.10（Cyclic*）と根のフィルトレーションの評価、`PerfectoidIdeal/Tor` の前段。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
