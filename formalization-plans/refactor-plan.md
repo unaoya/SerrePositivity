@@ -172,7 +172,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
-| 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | worktree（refactor/1-4）で編集と直接 importer までのビルドが完了（2026-11-02）。全体ビルド・監査・verify は ∞ の束の後（記録は下の「区切り 1-4 の記録」） |
+| 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -185,6 +185,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-1 | ca2fffe4d・25d50e9e8 | 203 本を削除・55 本を新設（CT 68 → 20、CA の E・D・X・H 約 120 → 約 35、Inputs 6 本を削除、shared の対象 → 1156 モジュール） | −19100・＋17583 |
 | 区切り 1-2 | 95c0a6d25・401fbbe6d | 153 本を削除・24 本を新設（HA1 69 → 13、HA3 31 → 5、HA4 33 → 5、HA5 20 → 2、shared の対象 → 1058 モジュール）。未使用の宣言 189 を削除 | −16182・＋13361 |
 | 区切り 1-3 | e032f83ea・ea54f9f4c | 166 本を削除・40 本を新設（LA・IM・CA/Almost 74 → 22、PC と HA/CochainTensor 100 → 26）。未使用の宣言 62 を削除 | −19012・＋17681 |
+| 区切り 1-4 | 3b825cacb・bbba9ee39（refactor/1-4、main 5c909058e を取り込み） | 247 本を削除・32 本を新設（ほか改名 18）。KTheory 127 → 28、Asymptotic 81 → 15、Paper 61 → 20、Devissage 7 本は research へ。未使用の宣言 48 を削除。shared の対象 752 モジュール | −25174・＋23077 |
 
 
 区切り 1-1 で見送った項目（2026-10-30）：
@@ -253,9 +254,10 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   エラーになった。Bounds と Finite を CochainTensor/Bounds に分けて解消。HA/ModuleTensorCochainExact の `tensorRight` の `Epi` の探索は重くなったので
   その補題だけ `synthInstance.maxHeartbeats 80000` にした。重い import を軽いファイルへ統合しないことを今後の統合の注意とする。
 
-区切り 1-4 の記録（2026-11-02、worktree refactor/1-4、main 8a6f1d918 から。全体ビルド・監査の前）：
+区切り 1-4 の記録（2026-11-02、worktree refactor/1-4、main 8a6f1d918 から。main 5c909058e を取り込んだ後に verify PASS：bbba9ee39、ビルド 2・監査 100・sorry 閉包 1 がすべて成功、gate true、80 分 38 秒）：
 
-- ファイル：264 本を削除・49 本を新設（KTheory 127 → 28、CA の SupportHeight・SemilocalSupport・ModuleSupportHeight・SubmoduleExact を吸収。
+- 1 回目の verify はルートのビルドで TensorCubeLowMixed が失敗した（未使用の宣言を消したとき、直前の `set_option … in` 2 行が残った）。直して再実行。
+- ファイル（main 8a6f1d918 との差、名前の付け替えを含む数え方）：264 本を削除・49 本を新設（KTheory 127 → 28、CA の SupportHeight・SemilocalSupport・ModuleSupportHeight・SubmoduleExact を吸収。
   Asymptotic 81 → 15（うち Paper/Section4/{RankQuotient, RankLowerBound} の 2 本）。Paper 61 → 20、うち LA/RootTowerLength/{Tower, BaseChangeApproximation}
   の 2 本）。Devissage* 7 本は research/kt-devissage/ へ（11-01 決定）。行数は −25174・＋23636（research を除く）。
 - 計画からの変更：
