@@ -22,7 +22,8 @@ A2 の Δ（CAlg_A 値）、φ_A 半線形な Frobenius を A 完全のもとで
 正次数のホモトピーを殺す。(b)(c) は A3 の (1′) と Lemma 2.34。
 
 ## 規約
-定義域は原典どおり導来 p 完備な S（D41）。非完備な離散 S への延長は界面の欄（drafts/A4/InterfaceFields）。値は CAlg_A・CAlg_R を正（D35）。
+定義域は原典どおり導来 p 完備な S（D41）。**A7（D60）**：原典の定義域は導来 p 完備な animated R 代数で、本ファイルの離散版は
+drafts/A7/AnimatedPerfectoidization.lean の `perfectoidizationAnimated` の `discreteToAnimated` に沿う制限（`perfectoidizationAnimated_discrete`）。非完備な離散 S への延長は界面の欄（drafts/A4/InterfaceFields）。値は CAlg_A・CAlg_R を正（D35）。
 φ_*^n は A 完全なので φ_A^{n*} で書く（D42）。
 
 ## 使われ方

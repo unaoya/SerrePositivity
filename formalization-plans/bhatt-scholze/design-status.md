@@ -55,9 +55,11 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
-| A7〜A9 | 未 | 未 | — | — |
+| A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedPerfectoidization | 未（a7 §7 の 1・2・6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
+| A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/UniversalProperty | 未（a7 §7 の 3〜5） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
+| A8〜A9 | 未 | 未 | — | — |
 
-骨組みの規模：35 本、約 4,600 行（`sorry` 189、置き場の `True` 200）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
+骨組みの規模：37 本、約 4,800 行（`sorry` 195、置き場の `True` 221）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
 
 ## 2. 要確認の分類
 
@@ -121,6 +123,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
 | D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
 | D45〜D52 | S 離散、位相の順序、κ と Type u の一致、D48 取り下げ（G-A5-17）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
+| D60〜D62、D15 | Def 8.2 の定義域を原典（animated）に戻す、基底 R 固定、Cor 8.14 は離散 S、環版 Prop 8.13 は後で系に（BR31） | a7-design §4・§6 |
 | D53〜D59 | arc site は affine（affCompl_κ ⊃ affPerfd_κ）、有限族、Cor 8.11 は affine 版を記録、三つの引用は別々に `sorry`、S8、S′ × S/I は有限積の保存で戻す、BM18 は affine 版 | a6-design §5・§7・§9・§10 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
@@ -144,7 +147,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 
 ## 4. 次の作業（提案）
 
-1. A7 の設計書（Prop 8.13 の導来版、Cor 8.14：E3 の universal の欄）。A1-5 の設計の追記。
+1. A8 の設計書（§10 Thm 10.11：E3 の integral の欄）。A1-5 の設計の追記。
 2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。

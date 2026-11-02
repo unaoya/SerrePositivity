@@ -90,7 +90,8 @@ theorem prismaticPerfection_connective_of_semiperfectoid (hS : IsSemiperfectoid 
 
 /-- 概要：Δ_{S/A,perf} は離散（連結かつ coconnective、Lemma 8.4 (a)）で、A4 の `prismaticPerfectionPrism` により完全 prism。
 S_perfd = Δ_{S/A,perf}/d は離散な perfectoid 環（完全 prism の商、Thm 3.10）。
-方針：A4 の Lemma 8.4、`quotient_isIntegralPerfectoid`。
+方針：連結性（上）で S_perfd が離散になることを示し、あとは A7-2 の芯 `perfectoidization_perfectPrism_of_discrete`・
+`perfectoidization_isIntegralPerfectoid_of_discrete`（仮定は「S_perfd が離散」、G-A7-5、2026-11-02 の決定 4）に渡す。
 規約：`IsDiscrete`（EInfinity/Perfectoidization/Comparison）。
 使われ方：以下、Cor 8.14。 -/
 theorem perfectoidization_discrete_of_semiperfectoid (hS : IsSemiperfectoid p R S) : True := by trivial
