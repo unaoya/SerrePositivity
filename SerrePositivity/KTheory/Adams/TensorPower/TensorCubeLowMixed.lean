@@ -838,8 +838,6 @@ lemma tensorCubeLowMixedShortComplex_shortExact :
     (tensorCubeLowMixedSplitting S hS hproj
       (cochainDegreewiseSplittingOfProjective S hS hproj) n).shortExact)
 
-set_option maxHeartbeats 600000 in
-set_option maxHeartbeats 600000 in
 end Adams
 end SerrePositivity
 

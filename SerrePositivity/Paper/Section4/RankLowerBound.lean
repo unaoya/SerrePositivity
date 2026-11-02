@@ -750,7 +750,6 @@ variable {R S : Type u} [CommRing R] [Nontrivial R] [CommRing S] [Nontrivial S]
   (U : Ultrafilter ℕ) (hU : (U : Filter ℕ) ≤ atTop) (hs : ∀ n, 0 < s n)
 
 set_option maxHeartbeats 800000 in
-set_option maxHeartbeats 800000 in
 -- 二つの係数環上で、具体的な評価複体と係数変更を同一視する。
 /-- (Kosₘ) を各段の自由振幅と環自身の Koszul 消滅で確認する版。 -/
 theorem paperBaseChangeHomology_vanishing
