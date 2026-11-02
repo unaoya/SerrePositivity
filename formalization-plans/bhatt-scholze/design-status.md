@@ -54,7 +54,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
-| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所・担当は調整役） |
+| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7〜A9 | 未 | 未 | — | — |
 
 骨組みの規模：35 本、約 4,600 行（`sorry` 189、置き場の `True` 200）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
@@ -137,6 +137,10 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
   時期は A4 の中身を書く段階まで不要、担当（E2 レーンか BS か）はそのとき決める。BS 固有の骨組みは Perfectoidization/Derived/ の隣の仮置きでよい。
 - （main 86acd98db、M15）G-A5-1（descendability）の置き場所は `EInfinity/Descendable/`（新設。CAlg と D(A) の両方を使う。EInfinity は Derived を import 済み）。
   E∞ を使わない thick ⊗-ideal・index・安定性の部分は Derived/ へ下ろしてよい。時期・担当は M14 と同じ（段 G、A5 の中身を書く段階で決める）。
+- （main 7b8b96286、M12e）S8 の置き場所：(1)(5)(6) は `Sheaves/SpaceValued/`、(2)(3) は `Sheaves/Discrete/`、(4) の一般部分（HTT 5.1.5.6、el(F) 上の極限）は
+  M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版を追加。時期・担当は M12 と同じ。
+- （同）Prop 8.10 の引用 3 件の `sorry` 定理は drafts/ の間は問題なし。`SerrePositivity/` に入れるときに `scripts/make_area_audits.py` の許可一覧の更新が要る
+  （そのとき調整役に知らせる）。
 
 ## 4. 次の作業（提案）
 

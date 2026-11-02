@@ -1,4 +1,5 @@
--- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.SpaceValued（仮。S8。Sheaves/ の続きか別層かは調整役）
+-- 将来の置き場所（調整役の決定、main 7b8b96286、M12e）：S8-1・5・6 は SerrePositivity.InfinityCategories.Sheaves.SpaceValued.*、S8-2・3 は Sheaves.Discrete.*、
+-- S8-4 の一般部分（HTT 5.1.5.6 の極限保存延長、el(F) 上の極限）は F2/（M12b と同じ）。前提：G13（𝒮 の presentable 性）、S4 の非安定版。時期・担当は M12 と同じ。
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.4、S8。基準コミット 972bb7f53。ビルドしない。
 module
 
