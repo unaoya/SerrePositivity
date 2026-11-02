@@ -52,7 +52,7 @@ theorem prop247_aic_rankSourceProduct_valuation_extension
     (hAIC : IsAbsolutelyIntegrallyClosed R) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
-    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R S g x ∈ t)
+    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, awayRank R S g x ∈ t)
     (T : t → Type u) [∀ n : t, CommRing (T n)] [∀ n : t, Algebra R (T n)]
     [∀ n : t, Algebra (prop247_rankSourceImage R S g hetale n) (T n)]
     [∀ n : t, IsScalarTower R (prop247_rankSourceImage R S g hetale n) (T n)]

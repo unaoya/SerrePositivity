@@ -22,10 +22,10 @@ theorem prop247_rankTarget_isAbsolutelyIntegrallyClosed
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ)
     (T : Type u) [CommRing T] [Algebra R T]
-    [Algebra (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T]
-    [IsScalarTower R (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T]
+    [Algebra (openSectionImage R (rankOpen R S g hetale n)) T]
+    [IsScalarTower R (openSectionImage R (rankOpen R S g hetale n)) T]
     (hf : IsPerfectoidization p
-      (algebraMap (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T)) :
+      (algebraMap (openSectionImage R (rankOpen R S g hetale n)) T)) :
     IsAbsolutelyIntegrallyClosed T :=
   hAIC.of_surjective (algebraMap R T)
     (prop247_rankTarget_surjective_finite R S p hR g hetale n T hf).1
@@ -40,13 +40,13 @@ theorem prop247_rankImage_exists_aic_perfectoid_target
     (hAIC : IsAbsolutelyIntegrallyClosed R) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ) :
-    let I := prop247_openSectionImage R (prop247_rankOpen R S g hetale n)
+    let I := openSectionImage R (rankOpen R S g hetale n)
     ∃ (T : Type u) (_ : CommRing T) (_ : Algebra R T) (_ : Algebra I T),
       IsScalarTower R I T ∧ IsPerfectoidization p (algebraMap I T) ∧
       IsAbsolutelyIntegrallyClosed T ∧
       Function.Surjective (algebraMap R T) ∧ Module.Finite R T ∧
       ∀ x : PrimeSpectrum.basicOpen (algebraMap R T g),
-        prop247_awayRank T (T ⊗[R] S) (algebraMap R T g) x = n := by
+        awayRank T (T ⊗[R] S) (algebraMap R T g) x = n := by
   obtain ⟨T, hT, hRT, hIT, htower, hf, hs, hfinite, hrank⟩ :=
     prop247_rankImage_exists_perfectoid_target R S p hR g hetale n
   letI := hT

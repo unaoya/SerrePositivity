@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247RankProductAway
+public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
@@ -25,13 +25,13 @@ theorem prop247_rankImageProduct_cone_isogeny
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
     (t : Finset ℕ)
-    (ht : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R S g x ∈ t) :
+    (ht : ∀ x : PrimeSpectrum.basicOpen g, awayRank R S g x ∈ t) :
     ∃ q : ℕ, moduleMapConeScalar R
-      (prop247_toRankImageProduct R S g hetale t).toLinearMap (g ^ q) = 0 := by
-  let P := prop247_rankImageProduct R S g hetale t
-  let f := prop247_toRankImageProduct R S g hetale t
-  letI : Module.Finite R P := prop247_rankImageProduct_finite R S g hetale t
-  have hloc := prop247_toRankImageProduct_away_bijective R S g hetale t ht
+      (toRankImageProduct R S g hetale t).toLinearMap (g ^ q) = 0 := by
+  let P := rankImageProduct R S g hetale t
+  let f := toRankImageProduct R S g hetale t
+  letI : Module.Finite R P := rankImageProduct_finite R S g hetale t
+  have hloc := toRankImageProduct_away_bijective R S g hetale t ht
   have hk (x : R) (hx : f x = 0) : g • x = 0 := by
     obtain ⟨n, hn⟩ := Localization.awayMap_injective_iff.mp hloc.1 x hx
     exact mul_eq_zero_of_pow_mul_eq_zero g x ⟨n, hn⟩

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247ExcisionLocal
-public import SerrePositivity.CLMST.Prop247RankLoci
+public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：定 rank の実被覆からの条件付き組立て
@@ -31,7 +31,7 @@ theorem prop247_aic_constantRank_isogeny_of_finiteComparison_excision
     (g : R) (β : A →ₐ[R] P) (hβ : IsPerfectoidization p β.toRingHom)
     (hetale : letI := GenericEtale.awayAlgebra R A g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R A g)))
-    (r₀ : ℕ) (_hRank : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R A g x = r₀) :
+    (r₀ : ℕ) (_hRank : ∀ x : PrimeSpectrum.basicOpen g, awayRank R A g x = r₀) :
     ∃ q : ℕ, moduleMapConeScalar R β.toLinearMap (g ^ q) = 0 := by
   classical
   obtain ⟨t, _ht, hcover, hmodels⟩ :=

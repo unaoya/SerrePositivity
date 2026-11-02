@@ -44,7 +44,7 @@ theorem prop247_aic_rankComponent_annihilators_of_excision
   let βT : T ⊗[R] S →ₐ[T] P := { β.toRingHom with commutes' := fun _ => rfl }
   have hβT : IsPerfectoidization p βT.toRingHom := hβ
   have hAIC_T := prop247_rankTarget_isAbsolutelyIntegrallyClosed R S p hR hAIC g hetale n T hT
-  have hRank := prop247_awayRank_baseChange_over_rankImage R S g hetale n T
+  have hRank := awayRank_baseChange_over_rankImage R S g hetale n T
   have hEtale := etaleAway_tensor_baseChange (R := R) (A := S) (B := T) g hetale
   obtain ⟨q, hq⟩ := prop247_aic_constantRank_isogeny_of_finiteComparison_excision p hT.1
     hAIC_T hExcision (algebraMap R T g) βT hβT hEtale n hRank
@@ -79,7 +79,7 @@ theorem prop247_aic_isogeny_of_rank_component_excision
     (hAIC : IsAbsolutelyIntegrallyClosed R) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
-    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R S g x ∈ t)
+    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, awayRank R S g x ∈ t)
     (T : t → Type u) [∀ n : t, CommRing (T n)] [∀ n : t, Algebra R (T n)]
     [∀ n : t, Algebra (prop247_rankSourceImage R S g hetale n) (T n)]
     [∀ n : t, IsScalarTower R (prop247_rankSourceImage R S g hetale n) (T n)]

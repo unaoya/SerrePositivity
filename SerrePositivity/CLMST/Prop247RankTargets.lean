@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247RankBaseChange
+public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CLMST.Prop247QuotientPerfectoidization
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
@@ -24,14 +24,14 @@ theorem prop247_rankTarget_surjective_finite
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ)
     (T : Type u) [CommRing T] [Algebra R T]
-    [Algebra (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T]
-    [IsScalarTower R (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T]
+    [Algebra (openSectionImage R (rankOpen R S g hetale n)) T]
+    [IsScalarTower R (openSectionImage R (rankOpen R S g hetale n)) T]
     (hf : IsPerfectoidization p
-      (algebraMap (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) T)) :
+      (algebraMap (openSectionImage R (rankOpen R S g hetale n)) T)) :
     Function.Surjective (algebraMap R T) ∧ Module.Finite R T := by
-  let I := prop247_openSectionImage R (prop247_rankOpen R S g hetale n)
-  let q := (prop247_toOpenSectionImage R (prop247_rankOpen R S g hetale n)).toRingHom
-  have hq : Function.Surjective q := prop247_toOpenSectionImage_surjective R _
+  let I := openSectionImage R (rankOpen R S g hetale n)
+  let q := (toOpenSectionImage R (rankOpen R S g hetale n)).toRingHom
+  have hq : Function.Surjective q := toOpenSectionImage_surjective R _
   have hf' := prop247_surjective_perfectoidization_of_quotient p hR q hq (algebraMap I T) hf
   have hs : Function.Surjective (algebraMap R T) := by
     rw [IsScalarTower.algebraMap_eq R I T]
@@ -45,18 +45,18 @@ theorem prop247_rankImage_exists_perfectoid_target
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ) :
-    let I := prop247_openSectionImage R (prop247_rankOpen R S g hetale n)
+    let I := openSectionImage R (rankOpen R S g hetale n)
     ∃ (T : Type u) (_ : CommRing T) (_ : Algebra R T) (_ : Algebra I T),
       IsScalarTower R I T ∧ IsPerfectoidization p (algebraMap I T) ∧
       Function.Surjective (algebraMap R T) ∧ Module.Finite R T ∧
       ∀ x : PrimeSpectrum.basicOpen (algebraMap R T g),
-        prop247_awayRank T (T ⊗[R] S) (algebraMap R T g) x = n := by
+        awayRank T (T ⊗[R] S) (algebraMap R T g) x = n := by
   letI := hR.isReduced R p
-  let I := prop247_openSectionImage R (prop247_rankOpen R S g hetale n)
-  let q := (prop247_toOpenSectionImage R (prop247_rankOpen R S g hetale n)).toRingHom
+  let I := openSectionImage R (rankOpen R S g hetale n)
+  let q := (toOpenSectionImage R (rankOpen R S g hetale n)).toRingHom
   obtain ⟨T, hT, f, hf⟩ :=
     BhattScholze.exists_perfectoidization_of_perfectoid_surjective_quotient hR q
-      (prop247_toOpenSectionImage_surjective R _)
+      (toOpenSectionImage_surjective R _)
   letI := hT
   letI : Algebra I T := f.toAlgebra
   letI : Algebra R T := (f.comp q).toAlgebra
@@ -64,6 +64,6 @@ theorem prop247_rankImage_exists_perfectoid_target
   obtain ⟨hs, hfinite⟩ := prop247_rankTarget_surjective_finite R S p hR g hetale n T hf
   refine ⟨T, hT, inferInstance, inferInstance, inferInstance, hf, hs, hfinite, ?_⟩
   intro x
-  exact prop247_awayRank_baseChange_over_rankImage R S g hetale n T x
+  exact awayRank_baseChange_over_rankImage R S g hetale n T x
 
 end SerrePositivity.CLMST

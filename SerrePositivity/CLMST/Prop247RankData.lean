@@ -29,7 +29,7 @@ theorem prop247_aic_exists_rank_comparison_data
     (g : R) (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
     (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom) :
-    ∃ (t : Finset ℕ) (_ : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R S g x ∈ t)
+    ∃ (t : Finset ℕ) (_ : ∀ x : PrimeSpectrum.basicOpen g, awayRank R S g x ∈ t)
       (T : t → CommAlgCat.{u} R)
       (u : ∀ n : t, prop247_rankSourceImage R S g hetale n →ₐ[R] T n)
       (_ : ∀ n : t, IsPerfectoidization p (u n).toRingHom)
@@ -43,7 +43,7 @@ theorem prop247_aic_exists_rank_comparison_data
         (∀ y : C ⧸ f.toLinearMap.range, g ^ q • y = 0) := by
   classical
   obtain ⟨t, _ht, _hc, hcover, _hd⟩ :=
-    prop247_awayRank_finite_clopen_decomposition R S g hetale
+    awayRank_finite_clopen_decomposition R S g hetale
   have htargets (n : t) : ∃ (T : CommAlgCat.{u} R)
       (u : prop247_rankSourceImage R S g hetale n →ₐ[R] T),
       IsPerfectoidization p u.toRingHom := by

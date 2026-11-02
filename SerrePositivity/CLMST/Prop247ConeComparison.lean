@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.IsogenyDescent
+public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeTriangle
 
 /-! # Prop 2.4.7：標準射の四角形から実錐全体の比較へ

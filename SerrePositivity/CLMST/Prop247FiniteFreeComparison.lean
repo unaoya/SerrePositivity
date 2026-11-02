@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
-public import SerrePositivity.CLMST.FiniteFreeConeIsogeny
+public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Mathlib.RingTheory.TensorProduct.IsBaseChangePi
 

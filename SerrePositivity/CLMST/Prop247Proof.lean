@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.Prop247CanonicalRankDescent
 public import SerrePositivity.CLMST.Prop247RankClosedSides
 public import SerrePositivity.CLMST.Prop247RankSourceValuation
-public import SerrePositivity.CLMST.Prop247FiniteComparisonValuation
+public import SerrePositivity.CommutativeAlgebra.Localization.Away
 public import SerrePositivity.BhattScholze.Perfectoidization.Excision
 
 /-! # Prop 2.4.7：BS の excision による引用の置換
@@ -55,7 +55,7 @@ theorem prop247_finiteComparison_excision
     hA hB (isModuleComplete_principal_ideal A (p : A) (algebraMap R A a) hA)
   intro V _ _ _ _ _ k hI
   let : Algebra A V := k.toAlgebra
-  exact prop247_finiteComparison_valuation_extension a q hq hk hc V hI
+  exact finiteComparison_valuation_extension a q hq hk hc V hI
 
 /--
 ## 概要

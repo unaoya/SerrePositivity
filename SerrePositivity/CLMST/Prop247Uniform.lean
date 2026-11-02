@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.IsogenyDescent
+public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 
 /-! # Prop 2.4.7：固定した比較錐からの全段共通指数

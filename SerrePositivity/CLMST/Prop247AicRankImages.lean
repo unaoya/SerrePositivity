@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247RankPrincipal
+public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CommutativeAlgebra.ReducedSpectrum
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosedPerfectoidQuotient
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
@@ -24,16 +24,16 @@ theorem prop247_aic_rankImage_isIntegralPerfectoid
     (hAIC : IsAbsolutelyIntegrallyClosed R) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ) :
-    IsIntegralPerfectoid (prop247_openSectionImage R (prop247_rankOpen R S g hetale n)) p := by
+    IsIntegralPerfectoid (openSectionImage R (rankOpen R S g hetale n)) p := by
   letI := hR.isReduced R p
-  obtain ⟨a, ha⟩ := prop247_rankOpen_exists_basicOpen R S g hetale n
+  obtain ⟨a, ha⟩ := rankOpen_exists_basicOpen R S g hetale n
   have hI : PrimeSpectrum.vanishingIdeal
-      (prop247_rankOpen R S g hetale n : Set (PrimeSpectrum R)) =
+      (rankOpen R S g hetale n : Set (PrimeSpectrum R)) =
       (Ideal.span {g * a}).annihilator := by
     rw [ha]
     exact vanishingIdeal_basicOpen_eq_annihilator R (g * a)
   let e := (Ideal.quotientEquivAlgOfEq R hI.symm).trans
-    (prop247_openSectionImageQuotientEquiv R (prop247_rankOpen R S g hetale n))
+    (openSectionImageQuotientEquiv R (rankOpen R S g hetale n))
   exact BhattScholze.isIntegralPerfectoid_of_ringEquiv p e.toRingEquiv
     (aicPerfectoid_annihilatorPrincipalQuotient R p hR hAIC (g * a))
 
@@ -45,7 +45,7 @@ theorem prop247_aic_rankTarget_unit_bijective
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g))) (n : ℕ)
     (T : Type u) [CommRing T]
-    (f : prop247_openSectionImage R (prop247_rankOpen R S g hetale n) →+* T)
+    (f : openSectionImage R (rankOpen R S g hetale n) →+* T)
     (hf : IsPerfectoidization p f) : Function.Bijective f := by
   have hI := prop247_aic_rankImage_isIntegralPerfectoid R S p hR hAIC g hetale n
   obtain ⟨e, he⟩ := hI.isPerfectoidization_id.exists_equiv p hf

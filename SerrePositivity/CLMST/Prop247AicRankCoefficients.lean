@@ -23,7 +23,7 @@ theorem prop247_aic_rankCoefficient_annihilators
     (hAIC : IsAbsolutelyIntegrallyClosed R) (g : R)
     (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
-    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, prop247_awayRank R S g x ∈ t)
+    (t : Finset ℕ) (ht : ∀ x : PrimeSpectrum.basicOpen g, awayRank R S g x ∈ t)
     (T : t → Type u) [∀ n : t, CommRing (T n)] [∀ n : t, Algebra R (T n)]
     [∀ n : t, Algebra (prop247_rankSourceImage R S g hetale n) (T n)]
     [∀ n : t, IsScalarTower R (prop247_rankSourceImage R S g hetale n) (T n)]
@@ -34,7 +34,7 @@ theorem prop247_aic_rankCoefficient_annihilators
       (∀ y : ((n : t) → T n) ⧸ (Algebra.linearMap R ((n : t) → T n)).range,
         g ^ q • y = 0) := by
   letI := hR.isReduced R p
-  let u := (prop247_toRankImageProduct R S g hetale t).toLinearMap
+  let u := (toRankImageProduct R S g hetale t).toLinearMap
   let e := (prop247_rankTargetProductMap R S g hetale t T).toLinearMap
   let f := Algebra.linearMap R ((n : t) → T n)
   have he : Function.Bijective e :=
@@ -51,7 +51,7 @@ theorem prop247_aic_rankCoefficient_annihilators
   have hek : ∀ x : e.ker, (1 : R) • x = 0 := by
     intro x
     apply Subtype.ext
-    change (1 : R) • (x : prop247_rankImageProduct R S g hetale t) = 0
+    change (1 : R) • (x : rankImageProduct R S g hetale t) = 0
     simpa only [one_smul] using he.1 (x.property.trans (map_zero e).symm)
   have hec : ∀ y : ((n : t) → T n) ⧸ e.range, (1 : R) • y = 0 := by
     intro y

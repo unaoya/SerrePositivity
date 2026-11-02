@@ -42,7 +42,7 @@ theorem prop247_exists_generalRank_descent_data
         (hβ : IsPerfectoidization p β.toRingHom)
         (t : Finset ℕ)
         (_ : ∀ x : PrimeSpectrum.basicOpen (algebraMap R B g),
-          prop247_awayRank B (B ⊗[R] S) (algebraMap R B g) x ∈ t)
+          awayRank B (B ⊗[R] S) (algebraMap R B g) x ∈ t)
         (T : t → CommAlgCat.{u} B)
         (u : ∀ n : t, prop247_rankSourceImage B (B ⊗[R] S)
           (algebraMap R B g) hetaleB n →ₐ[B] T n)

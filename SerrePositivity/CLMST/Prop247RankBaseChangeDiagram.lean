@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankTargets
-public import SerrePositivity.CLMST.Prop247RankProduct
+public import SerrePositivity.CommutativeAlgebra.RankLocus
 public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
 
 /-! # Prop 2.4.7：原典の rank 像から指定した各対象への実底変換図式
@@ -22,26 +22,26 @@ variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S] [Module.Finite R
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
     (t : Finset ℕ)
 abbrev prop247_rankSourceImage (n : ℕ) : Type u :=
-  prop247_openSectionImage R (prop247_rankOpen R S g hetale n)
+  openSectionImage R (rankOpen R S g hetale n)
 variable (T : t → Type u) [∀ n : t, CommRing (T n)] [∀ n : t, Algebra R (T n)]
     [∀ n : t, Algebra (prop247_rankSourceImage R S g hetale n) (T n)]
     [∀ n : t, IsScalarTower R (prop247_rankSourceImage R S g hetale n) (T n)]
 
 /-- 各元の Ri→Ti を有限直積にした実 R 代数写像。 -/
 def prop247_rankTargetProductMap :
-    prop247_rankImageProduct R S g hetale t →ₐ[R] (n : t) → T n :=
+    rankImageProduct R S g hetale t →ₐ[R] (n : t) → T n :=
   AlgHom.pi (fun n => (IsScalarTower.toAlgHom R (prop247_rankSourceImage R S g hetale n) (T n)).comp
     (Pi.evalAlgHom R (fun n : t => prop247_rankSourceImage R S g hetale n) n))
 
 /-- 元の R→∏Ri→∏Ti は、元の R の代数作用そのものである。 -/
 theorem prop247_rankTargetProductMap_comp :
     (prop247_rankTargetProductMap R S g hetale t T).comp
-      (prop247_toRankImageProduct R S g hetale t) = Algebra.ofId R ((n : t) → T n) := by
+      (toRankImageProduct R S g hetale t) = Algebra.ofId R ((n : t) → T n) := by
   exact Subsingleton.elim _ _
 
 /-- 元の各 Ri→Ti の tensor 比較と、有限直積の標準比較の各座標は可換である。 -/
 theorem prop247_rankTargetTensor_square
-    (x : (prop247_rankImageProduct R S g hetale t) ⊗[R] S) (n : t) :
+    (x : (rankImageProduct R S g hetale t) ⊗[R] S) (n : t) :
     finiteProductBaseChangeEquiv R S T
       (Algebra.TensorProduct.map (prop247_rankTargetProductMap R S g hetale t T)
         (AlgHom.id R S) x) n =
@@ -56,7 +56,7 @@ theorem prop247_rankTargetTensor_square
 theorem prop247_rankTargetTensor_unit (s : S) (n : t) :
     finiteProductBaseChangeEquiv R S T
       (Algebra.TensorProduct.map (prop247_rankTargetProductMap R S g hetale t T)
-        (AlgHom.id R S) ((1 : prop247_rankImageProduct R S g hetale t) ⊗ₜ[R] s)) n =
+        (AlgHom.id R S) ((1 : rankImageProduct R S g hetale t) ⊗ₜ[R] s)) n =
       (1 : T n) ⊗ₜ[R] s := by
   rw [Algebra.TensorProduct.map_tmul]
   simp only [map_one, AlgHom.id_apply, finiteProductBaseChangeEquiv_unit]
@@ -71,7 +71,7 @@ theorem prop247_rankTargetBaseChange_inputs [Algebra.FinitePresentation R S]
       ∀ n : t, Module.Finite (T n) (T n ⊗[R] S) ∧
         Algebra.FinitePresentation (T n) (T n ⊗[R] S) ∧
         ∀ x : PrimeSpectrum.basicOpen (algebraMap R (T n) g),
-          prop247_awayRank (T n) (T n ⊗[R] S) (algebraMap R (T n) g) x = n.1 := by
+          awayRank (T n) (T n ⊗[R] S) (algebraMap R (T n) g) x = n.1 := by
   letI := hR.isReduced R p
   letI (n : t) : Module.Finite R (T n) :=
     (prop247_rankTarget_surjective_finite R S p hR g hetale n (T n) (hf n)).2
@@ -79,6 +79,6 @@ theorem prop247_rankTargetBaseChange_inputs [Algebra.FinitePresentation R S]
   intro n
   refine ⟨inferInstance, inferInstance, ?_⟩
   intro x
-  exact prop247_awayRank_baseChange_over_rankImage R S g hetale n (T n) x
+  exact awayRank_baseChange_over_rankImage R S g hetale n (T n) x
 
 end SerrePositivity.CLMST
