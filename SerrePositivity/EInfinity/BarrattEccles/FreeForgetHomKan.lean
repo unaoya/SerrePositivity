@@ -30,6 +30,7 @@ lemma freeHomLeft_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
 lemma freeHomRight_kanComplex (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     SSet.KanComplex (((complexSourceFrameHom A).obj X).obj B.carrier) := by
   let := projectiveModelCategory A
+  letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   let := modelCategory A
   have := forget_isRightQuillen A
   have := (operad A).freeAlgebraAdjunction.isRightAdjoint

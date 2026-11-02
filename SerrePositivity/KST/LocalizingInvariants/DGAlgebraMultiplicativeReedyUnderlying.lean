@@ -33,9 +33,11 @@ lemma simplexConvolutionUnderlyingDual_eq (B : Mon (Complex R)) :
 
 lemma simplexConvolutionUnderlyingDual_reedyCofibrant (B : Mon (Complex R)) :
     letI := EInfinity.projectiveModelCategory R
+    letI : HasLimitsOfSize.{u, u} (Complex R) := ⟨fun _ _ => inferInstance⟩
     reedyLeft simplex (cofibrations (Complex R)ᵒᵖ)
       (initial.to (simplexConvolutionUnderlyingDual R B)) := by
   let := EInfinity.projectiveModelCategory R
+  letI : HasLimitsOfSize.{u, u} (Complex R) := ⟨fun _ _ => inferInstance⟩
   let F : Complex R ⥤ (Complex R)ᵒᵖ :=
     (MonoidalClosed.internalHom.flip.obj B.X).rightOp
   have hF : cofibrations (Complex R) ≤ (cofibrations (Complex R)ᵒᵖ).inverseImage F := by
