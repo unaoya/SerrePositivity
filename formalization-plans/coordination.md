@@ -46,7 +46,7 @@
 
 ## 4. いまの待ち条件（10-31 夜）
 
-- ∞ Codex：**IF-W2a-2 完了・取り込み済み**（11-02 16:40、5c909058e）。**IF-W2b の指示書を渡した（11-02 夕）**：草案（ビルドなし）→ 停止点 1 → 適用と内部検証（小さなビルド）→ 停止点 2 → **下流ビルドと verify は #10 の合図（DG-W3 の後）**。道具の回：runner の既定予算 40 GB とキャッシュ掃除の方針は ∞（IF-W2b §7）、`merge_modules.py` の循環検出と既存の試験の失敗は DG（DG-W3 §8、1-4 待ちの間）。
+- ∞ Codex：**IF-W2a-2 完了・取り込み済み**（11-02 16:40、5c909058e）。**IF-W2b**：11-02 深夜に停止点 1 を承認（[§12](infinity-codex-w2b.md)：模擬で直接違反 297 → 21（残りは W2c・DG-W3 の既存分）、禁止モジュール 166 → 150、下流 13,149 本 約 2 時間 11 分）→ 適用と内部検証（小さなビルド）→ 停止点 2 → **下流ビルドと verify は #10 の合図（DG-W3 の後）**。道具の回：runner の既定予算 40 GB とキャッシュ掃除の方針は ∞（IF-W2b §7）、`merge_modules.py` の循環検出と既存の試験の失敗は DG（DG-W3 §8、1-4 待ちの間）。
 - DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。待ち時間の道具の回（[DG-W3 §8](dg-codex-w3.md)：`merge_modules.py` の循環検出、`test_merge_modules.py` の既存の失敗）。
 - BS セッション：設計のみ再開（11-02、A 案 A0〜A1）。ビルドなし、Lean は `formalization-plans/bhatt-scholze/drafts/` 以下のみ、所有範囲だけを `--only` で main に直接コミット。コードを書く段階に入るときは BS が暦の空きを相談し、Claude が §3 に載せる。
 - 論文の層：**11-02 16:45 に「全ビルド可」を合図**（∞ の束が main に入った。1-4 の全ビルドと verify は今夜〜明朝、他の全ビルドと重ねない。取り込み後に Claude が main を温め、DG-W3 を合図）。再開の合図と一緒に伝えること：(1) 2b の改名表は `BhattScholze/` だけでなく `HomologicalAlgebra/DerivedCompletion/` の分も BS セッションへ回す（Claude 経由）。(2) 2b の後に BS の共有一般論 3 本が入る新しい下位ディレクトリ `HomologicalAlgebra/Cosimplicial/`・`CommutativeAlgebra/DeRham/` の名前を予約（HA の層の規則の中では第一層＝一般論の扱い）。凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
