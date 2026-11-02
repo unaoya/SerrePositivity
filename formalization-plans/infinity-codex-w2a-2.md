@@ -51,3 +51,28 @@
 4. **`merge_modules.py --check` が循環を検出しない件**：今は道具を変えない（DG の束が同じ道具を使用中）。束の静的検査では `layer_check.py` のグラフで循環を確かめる（今回と同じ手順）。循環検出の追加は、両方の束が main に入った後の道具の回に回す。
 
 **適用の時期**：下流 11,888 本の束は、**DG-W2(b) が main に入ってから**（coordination.md #5 の後）Claude が合図する。それまでに 1〜3 を草案に反映し、`--check`・validator・循環の再確認を済ませて止める（停止点 1′、報告は短くてよい）。
+
+## 7. 追記（2026-11-02 13:30、内部検証の停止への回答：2 本とも「意味を変えない注釈」で直し、下流へ進む）
+
+**受領**：R76・R77・R67 適用済み（36f9b1bd0・3ae691eba・ecc0be826）、before snapshot 273 本、内部ビルド 37 対象で失敗 2 本、外部利用者 92 ファイルの保留、鍵の解放。宣言の変更に当たるか不明な失敗で止めた判断は正しい。
+
+**原因**（Claude が 11-02 13:00 に `ifw0-3` の after 環境で探針を `lake env lean` して再現。本番ファイルは触っていない）：
+
+1. `Reedy/RelativeBoundaryFunctor` 158・169 行：R77 の統合先の import の和で Mathlib の `_root_.Functor.map_id`（`Mathlib/Control/Basic.lean`、applicative の補題）が閉包に新たに入り、`open CategoryTheory` の下の `Functor.map_id` の解決が変わった。DG-W2 §14 と同型。
+2. `Spectra/ModelCategory/SimplicialLevel` 45 行：`exact levelModelCategoryOfMonoidalGenerators PointedSimplicialSet.circle …` の `circle` の宇宙がメタ変数 `?u` のまま instance 合成に入り、`MonoidalCategory PointedSimplicialSet.{?u}` → `PointedObject.smashMonoidalCategory` → `HasFiniteColimits (Type ?u)` → `hasFiniteColimits_of_hasColimits` → `Types.hasColimitsOfSize [UnivLE.{?u, ?u}]` → `univLE_of_max` → `UnivLE.zero : UnivLE.{0, v}` が **`?u := 0` を代入**する。以後 `C = PointedSimplicialSet.{0}`・`w = 0` となって `Cardinal.aleph0.{u}` が合わず、局所 instance `ModelCategory PointedSimplicialSet.{u}` も見つからない。before 環境では同じ合成がこの経路に入らなかった（import の和で環境に入る instance の集合と順序が変わる。同じ優先度の instance は環境で後に来るものから試される）。名前の問題ではないので完全修飾で直らないのは当然。
+
+**処置**（承認。宣言の型・本文・名前は変えない注釈で、保存比較のハッシュ一致で同一を証明する）：
+
+1. `RelativeBoundaryFunctor`：2 箇所を `CategoryTheory.Functor.map_id` に完全修飾。
+2. `SimplicialLevel`：`exact` の引数を `PointedSimplicialSet.circle.{u}` にする（同じファイルの直前の `let` 行と同じ書き方）。67 行の `levelModelCategoryOfMonoidalGenerators_generated PointedSimplicialSet.circle …` も `circle.{u}`。Claude の探針では `circle.{u}` だけで通り、定数の宇宙を明示する `levelModelCategoryOfMonoidalGenerators.{u, u + 1, u}` でも通った。前者を採り、保存比較で `simplicialLevelModelCategory` の本体ハッシュが一致しなければ後者を試す。
+3. コミットは別に 1 本「修飾・宇宙の明示」（R67 の後、`git commit --only`）。
+
+**判断表への追加**（IF-W0-3 §10.31 の拡張。この束と以後の束、DG-W3 でも有効）：「補充の import」「完全修飾」に加えて、**「宇宙の明示」**（引数や定数への `.{u}` の付加）と**「名前付き引数の明示」**を、宣言の意味を変えない処置として許す。条件は同じ：before/after の保存比較で一致（def は本体も、theorem は型。道具の既定）、別コミット、報告に一覧。一致しなければ止める。背景：import の和で環境の instance の集合と順序が変わると、宇宙メタ変数が別の instance に捕まることがある。名前の隠蔽と同じ「環境が広がったことによる elaboration の変化」であり、宣言の意味は変わらない。
+
+**再開の手順**：
+
+1. 処置 1・2 を当て、内部ビルド（37 対象）を再実行。失敗が残れば判断表（補充・修飾・宇宙の明示）で。新しい型の失敗は止めて報告。
+2. 内部の保存比較（273 本）。処置した宣言（`domainMap_id`・`codomainMap_id`・`simplicialLevelModelCategory`・`simplicialLevelModelCategory_generated`）は報告で個別に挙げる。
+3. 保留した 92 ファイルを `deferred-imports.json` の hash で確かめて HEAD の内容へ戻す（報告の手順どおり。一括 reset はしない）。
+4. 下流の一回ビルド（11,818 本、鍵のもと）→ 保存比較 → **停止点 2**。条件 5 は失敗モジュール数で（IF-W0-3 §10.33）。論文の層の worktree（`SerrePositivity-refactor-1-4`）の小さなビルドは、下流ビルドの間 Claude が止めてもらう。
+5. 層検査（§2-3）→ verify → **停止点 3**（見込み 11-02 夜）。

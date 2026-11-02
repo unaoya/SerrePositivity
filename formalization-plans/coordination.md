@@ -44,9 +44,9 @@
 
 ## 4. いまの待ち条件（10-31 夜）
 
-- ∞ Codex：IF-W2a-2 の草案 28767dee9。11-02 昼に「束を始めてよい」を合図（main を取り込むと DG の `universe` 修正 7e1fb1dea と proof-irrelevant の道具が入る）。
+- ∞ Codex：IF-W2a-2 を適用済み（R76・R77・R67、11-02 昼）。内部検証で 2 本失敗（名前の隠蔽 1、宇宙メタ変数の捕捉 1）→ 11-02 13:30 に回答（[IF-W2a-2 §7](infinity-codex-w2a-2.md)：完全修飾と宇宙の明示を承認、判断表に「宇宙の明示」を追加）。再開後：内部ビルド → 92 ファイル復元 → **下流 11,818 本（3.3〜5 時間、鍵）** → verify → 停止点 3（見込み 11-02 夜）。**その間、他の worktree のビルドは小さなものも止める。**
 - DG Codex：DG-W2(b) 完了・取り込み済み。DG-W3 の指示書と事前の静的検査（`ef951fa5d`、回答 [DG-W3 §7](dg-codex-w3.md)）まで済み。**1-4 が main に入ったら Claude が開始を合図**。それまでビルドなし。
-- 論文の層：凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
+- 論文の層：**11-02 午後〜夜は ∞ の下流ビルドの間、`refactor-1-4` の小さなビルドも止める**（Claude が伝える。再開も Claude が伝える）。凍結解除済み。案内 2 本の削除と README の表の更新は完了（99b57430b、Lean に変更なし）。1-4 の準備をビルドなしで進行中（群の定義・循環の確認・docstring の下書き。DGVerdier の群は DG-W2(b) の後に決める）。1-4 の取り込みとビルドは DG-W2(b)（#4・#5）の後に Claude が時刻を伝える。
 - （10-31 決定・実施済み 4eb1f4d6b）main の未追跡 WIP 6 本は `SerrePositivity/Archive/WIP/` に追跡して元の場所から消した（README に由来）。∞ の束の R75 の段で `audit_kst_spectra_s3`・`d3tail` の名前一覧から旧名 4 本を外す。
 - （11-01 実施）`~/.zshenv` に Lake キャッシュの 3 変数を設定（ユーザー）。使い終わった worktree `ifw0-1`・`ifw0-2` を削除（ブランチ `infra/if-w0-1`・`if-w0-2` は残してある。パッチは main に取り込み済み）。空き 344 → 447 GB。
 - （10-31 決定）調整役の交代は今はしない。#5（DG-W2(b) の取り込み）の後に §6 の目安で再判断。
@@ -55,6 +55,7 @@
 
 - 11-01：∞ の束の停止点 3 で、監査 2 本（`audit_homotopy_limits`・`audit_infinity_f2`）の import が束で動かした定義に届かず FAIL（他の 98 本は成功）。import を直した後の再検証は `VERIFY_CACHE=1`（gate:false）で、成功済みの 98 本はキャッシュの鍵（本文と閉包の olean ハッシュ）が同一なので当たり、2 本だけ実行する。この束ではこれを合否とする（IF-W0-3 §10.36）。
 
+- 11-02：main の温めは既定 target（ルート `SerrePositivity`）だけなので、ルートの閉包外（Spectra・Checks など）の olean は古いまま残る。main で `lake env lean` の探針を走らせると旧 olean（例：`InfinityCategories/ModelBridge/HA/Basic`）が読まれて「environment already contains」で失敗する。探針・監査は worktree で行う。1-4 の取り込み後の温めでは、verify の監査対象の一覧も含めてキャッシュから復元する（数分）。
 - 10-31：main の温め（#1）の後、`scripts/audit/dg.lean` は走らせていない（Checks/ の 300 本がルートの閉包外で未ビルドのため。verify の監査対象ビルドで作られる）。∞ の束の verify で確認する。
 
 - 10-31：DG-W1 の取り込み（194a65110）は、区切り 1-3 の後の merge で、merge 後の状態に全 verify を行っていない（領域が重ならず、重なりはルートの import 行だけ）。main の全ビルド（#1）と ∞ の束の verify（#2）で確認する。
