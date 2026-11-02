@@ -36,7 +36,11 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
 | G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
 | A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor | 未（a2 §7 の 3・4） | C・D |
-| A3〜A9 | 未 | 未 | — | — |
+| A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
+| A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
+| A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | E′（p 反転の議論 G-A3-7 は A3 の黒箱）、G-A3-1・2 |
+| A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
+| A4〜A9 | 未 | 未 | — | — |
 
 骨組みの規模：11 本、約 1,700 行（`sorry` 85、置き場の `True` 38）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e。
 
