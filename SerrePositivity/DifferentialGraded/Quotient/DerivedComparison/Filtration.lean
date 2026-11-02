@@ -876,7 +876,7 @@ namespace SerrePositivity.DifferentialGraded.DGQuotient
 open CategoryTheory Limits HomologicalComplex
 variable (A : Type u) [CommRing A] {J : Type v} [Category.{w} J]
   [Small.{u} J] [HasColimitsOfShape J (ModuleCat.{u} A)]
-  [HasExactColimitsOfShape J (ModuleCat.{u} A)]
+  [hJ : HasExactColimitsOfShape J (ModuleCat.{u} A)]
 
 def complexTransposeMap {F G : J ⥤ Complex A} (α : F ⟶ G) :
     complexDiagramTranspose A F ⟶ complexDiagramTranspose A G where
@@ -894,16 +894,19 @@ lemma complexTransposeMap_quasiIso {F G : J ⥤ Complex A} (α : F ⟶ G)
   intro j
   exact hα j
 
+include hJ in
 /-- 次数ごとの余極限で構成した複体と、指定された複体の余極限との同型。 -/
 def complexColimitComparison (F : J ⥤ Complex A) :
     ((colim : (J ⥤ ModuleCat.{u} A) ⥤ ModuleCat.{u} A).mapHomologicalComplex (.up ℤ)).obj
       (complexDiagramTranspose A F) ≅ colimit F :=
   (isColimitCoconeOfHasColimitEval F).coconePointUniqueUpToIso (colimit.isColimit F)
 
+include hJ in
 @[reassoc] lemma complexColimitComparison_ι (F : J ⥤ Complex A) (j : J) :
     (coconeOfHasColimitEval F).ι.app j ≫ (complexColimitComparison A F).hom = colimit.ι F j :=
   (isColimitCoconeOfHasColimitEval F).comp_coconePointUniqueUpToIso_hom _ j
 
+include hJ in
 lemma complexColimitComparison_naturality {F G : J ⥤ Complex A} (α : F ⟶ G) :
     (complexColimitComparison A F).hom ≫ colimMap α =
       ((colim : (J ⥤ ModuleCat.{u} A) ⥤ ModuleCat.{u} A).mapHomologicalComplex (.up ℤ)).map
