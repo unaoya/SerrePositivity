@@ -79,7 +79,8 @@ def IsArcCoverFamily {R : Type u} [CommRing R] {ι : Type u} [Finite ι] (B : ι
     (f : ∀ i, R →+* B i) : Prop :=
   ∀ (V : Type u) [CommRing V], IsRankOneCompleteValuationRing p V → ∀ k : R →+* V,
     ∃ (i : ι) (W : Type u) (_ : CommRing W), IsRankOneCompleteValuationRing p W ∧
-      ∃ (e : V →+* W), e.Flat ∧ Function.Injective e ∧ -- 要確認：忠実平坦の述べ方（局所単射なら忠実平坦）
+      ∃ (e : V →+* W), e.FaithfullyFlat ∧ -- 原典 Def 8.7 の「忠実平坦な拡大」そのもの（W9-II-10：「平坦かつ単射」は弱すぎる。
+        -- 標数 p の A = F_p[t^{1/p^∞}] で {A → A[1/t], A → F_p} が被覆になり O の Čech 降下が破綻する。付値環の局所単射で代える場合は同値を証明する）
         ∃ l : B i →+* W, l.comp (f i) = e.comp k
 
 /-- 概要：arc 位相：有限 arc 被覆族の生成 sieve を含む Grothendieck 位相の sInf（A0 の `flatTopology` と同じ形）。

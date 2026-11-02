@@ -95,9 +95,10 @@ E(S)^∧_p とは同一視しない。
 使われ方：§3.2 の右辺の可換性。 -/
 theorem algebraicRootCover_properties : True := by trivial
 
-/-- 概要：flat semiperfectoid 被覆 S → S̃′ の取り替えで Čech 計算（(S̃′^{⊗_S •+1})_perfd の Tot、(p,d) 完備化）と lim_{Perfd_{S/}} O の比較射は変わらない
-（原典 p.65「任意の flat semiperfectoid 被覆で同じ Čech–Alexander 計算」）。
-方針：紙 3′（W9-II-09 の修復案の残件）。
+/-- 概要：E 被覆 U = E(S_alg)^∧_p について、任意の perfectoid T への S → T は U → T に延びる（各段で根と p 除算の原像）ので Q(U) は Perfd_{S/} の弱始対象。
+よって Čech 計算は S3 で閉じ（Q(U^{⊗̂_S (•+1)}) の Tot）、S̃ による計算と同じ極限の錐の比較で一致（W9-II-11）。
+一般の flat semiperfectoid 被覆（F_p → F_{p²} のように Q(U) が弱始でない）への一般化は別補題（E3 不要）。
+方針：S3 を二回、紙 3′。
 規約：—
 使われ方：`limit_perfectSite_filteredColimit`。 -/
 theorem cech_independent_of_flatSemiperfectoidCover : True := by trivial

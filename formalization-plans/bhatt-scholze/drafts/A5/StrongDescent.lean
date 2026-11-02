@@ -43,7 +43,8 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 使われ方：perf 版。 -/
 theorem prismaticCohomology_rootMap_descendable (n : ℕ) : True := by trivial
 
-/-- 概要：Lemma 8.6（perf 版）：Δ_{T/A,perf} → Δ_{T_∞/A,perf} は descendable（index ≤ 2n、(g)）。A5-1 の主張の証明。
+/-- 概要：Lemma 8.6（perf 版）：Δ_{T/A,perf} → Δ_{T_∞/A,perf} は descendable（(g)：非 perf 版の index の上界 m から perf 版は ≤ 2m。n は変数の個数で index ではない、
+W9 §8.7。結論は `IsDescendable` でよく数値は公開しない）。A5-1 の主張の証明。
 方針：非 perf 版と `hasDescentIndexLE_frobeniusColimit`、完備化。
 規約：—
 使われ方：A5-4。 -/
@@ -71,6 +72,14 @@ theorem rootMap_fiber_rhom_coconnective : True := by trivial
 規約：—
 使われ方：底変換後に確かめる。 -/
 theorem coconnective_of_modBaseChange : True := by trivial
+
+/-- 概要：G-A5-6′（W9-II-12、要確認）：M := RHom_{Δ_T}(F^{⊗2}, Δ_T) は第二引数の完備性から導来 (p,d) 完備。F^{⊗2} は perfect でないので
+RHom_{Δ_T ⊗ C}((F ⊗ C)^{⊗2}, Δ_T ⊗ C)（C = A/(p, φ^{-1}(d))）を M ⊗ C と無条件に同一視できない。有限 Koszul 複体 K_m（双対可能）では
+RHom(F^{⊗2}, Δ_T ⊗ K_m) = M ⊗ K_m と交換できるので、完備性の判定を K_m で述べ、通常の商 C 上の (∗) の計算へ渡す接続を専用補題にする。
+方針：原典 "By completeness" の一文の形式化。
+規約：—
+使われ方：`rootMap_fiber_rhom_coconnective`。 -/
+theorem rhom_baseChange_koszul_connection : True := by trivial
 
 /-- 概要：A/(p, φ^{-1}(d)) ≅ R/p（φ_A が自己同型で A/φ^{-1}(d) ≅_φ A/d = R）。Δ_T ⊗_A A/φ^{-1}(d) = φ_A^*Δ_T ⊗_A A/d。
 方針：完全 prism の φ_A。

@@ -228,6 +228,11 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionLeg`） |
 | W9-II-08 D45 改訂と旧「離散のみ・系 4 なし」の併存 | 要修正 | 訂正済み（a5-design 冒頭・§0・§1・§6、骨組みの概要・規約、本表の D45〜D52 行） |
 | W9-II-09 S̃ は完備 filtered 余極限を保たない（完備化で現れる元の Y 変数） | 致命 | **訂正済み**（a5-design §3.1 (iv′)・§3.2・D51・G-A5-18：S̃ は弱始対象用に限り、filtered 余極限は完備化前の代数的根添加 E(S_alg)^∧_p と「flat semiperfectoid 被覆の取り替えで Čech 計算不変」で。`rootClosure_filteredColimit` 撤回、`algebraicRootClosure*`） |
+| W9-II-10 arc 被覆の骨組みが「忠実平坦」を「平坦かつ単射」に弱めている（F_p[t^{1/p^∞}] の反例で O の Čech 降下が破綻） | 致命 | **訂正済み**（`IsArcCoverFamily` を `e.FaithfullyFlat` に。原典 Def 8.7 どおり） |
+| W9-II-11 G-A5-18 の「任意の flat semiperfectoid 被覆」は S3 だけでは出ない | 要確認 | 反映済み（E 被覆は Q(U) が弱始なので S3 で閉じる。一般形は別補題・E3 不要。a5-design §3.2・G-A5-18） |
+| W9-II-12 Lemma 8.6 の RHom と完備性の接続 | 要確認 | 反映済み（G-A5-6′ `rhom_baseChange_koszul_connection` を専用補題に。a5-design §3.5） |
+| W9-II-13 `IsDescendable` の底が離散環に限られる | 要修正 | 反映済み（一般形 `IsDescendableOver`：対称モノイダル安定 ∞ 圏の可換代数対象を底に。a5-design §2.4） |
+| W9-II-14 G-A5-11 の「次数 −1 集中」 | 要修正 | 訂正済み（次数 −1 以下。a5-design G-A5-11、SemiperfectoidCase） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
