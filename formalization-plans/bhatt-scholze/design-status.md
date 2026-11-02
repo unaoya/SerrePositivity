@@ -202,6 +202,13 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-29 animated 完備化と `completionRing` = H⁰ の区別 | 要確認 | 反映済み（a2-design §2.4・D32、BaseChangeAndTensor）。E3 との接続は perfd の段で Prop 8.5 系 4 が要る → **a5-design §7.1 の決定項目 6（Prop 8.5 を animated S で、D45 改訂）** |
 | W9-I-30 E3 の `unit` は CAlg の関手射 | 要確認 | 反映済み（Fil_0 → Δ̄ を CAlg で：`hodgeTateUnitCAlg`、a2-design §2.3） |
 | W9-I-31 `Poly` の k パラメータ | 要修正 | 訂正済み（AnimatedAlgebra） |
+| W9-I-32 qrsp の定義に有界 p 冪ねじれがない（S = ∏ O_C/(p^n) が反例） | 致命 | **訂正済み**（a3-design §1・§2.3・D39、`IsQuasiregularSemiperfectoid.boundedTorsion`） |
+| W9-I-33 Lemma 7.7 の仮定は Δ̄ の離散性；有界性は自動でない | 要修正 | 訂正済み（a3-design §2.1、`IsDiscreteHodgeTate` → `IsDiscretePrismatic`、`discretePrism` の `hbdd`） |
+| W9-I-34 源の p ねじれなしでは δ 射が出ない；φ mod p は独立補題に | 要修正 | 反映済み（δ 射は p ねじれなしの標的に限定する案を a3-design §7.1 に。G-A3-9 追加）。**決定待ち（D36 の射の範囲）** |
+| W9-I-35 Δ_{T/A} ≃ Δ_{T/A′} は A2 (4) ではない | 要修正 | 訂正済み（G-A5-17 を G-A2-10 として A2 の隣に前倒し、A3 §2.3・`regularSemiperfectoid_prismatic`） |
+| W9-I-36 HT の多項式入口の値の圏、一般の k の余接複体 | 要修正 | 訂正済み（`hodgeTatePoly` を D(k) 値に、`cotangentWedgeGeneral` の注記） |
+| W9-I-37 一般への帰着の順序（B の離散性を先に） | 要確認 | 反映済み（a3-design §2.2：B_univ ⊗̂ A の離散性を導来 Nakayama で、紙 7） |
+| W9-I-38 無限 filtration の離散性の説明、gr¹ の shift、G-A2-5 | 要修正 | 訂正済み（a3-design §2.2：有界ねじれによる議論、gr¹ は次数 0、J と J̄ の区別；a2-design G-A2-5 は sifted） |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
 既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。

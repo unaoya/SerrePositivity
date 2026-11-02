@@ -40,19 +40,19 @@ variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p
 
 /-! ## 多項式代数上の切り捨て -/
 
-/-- 概要：Δ̄_0(P) := Δ_0(P) ⊗^L_A A/d（D(A) 値）。
-方針：`derivedPrismaticCohomologyDerived` と D(A) の ⊗^L A/d（A0 の `hodgeTateCohomology` と同じ）。
-規約：D(A) の頂点。
+/-- 概要：Δ̄_0(P) := Δ_0(P) ⊗^L_A A/d を **D(k) 値**（k = A/d）で（W9-I-36：Fil と gr の値の圏に合わせる。D(A) 値は忘却で）。
+方針：`derivedPrismaticCohomologyDerived` と底変換 D(A) → D(k)（⊗^L_A A/d は k 加群構造をもつ）。
+規約：D(k) の頂点。D(A) 値の版は `Res_A` を後合成。
 使われ方：Postnikov 切り捨ての入力。 -/
-def hodgeTatePoly : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory A := sorry
+def hodgeTatePoly : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory (A ⧸ P.ideal) := sorry
 
 /-- 概要：Poly 上の τ^{≤i} Δ̄_0（i : ℕ）、関手的。
 方針：DerivedGeneral/Truncation の `truncationLE A i` を後合成。
 規約：i について増大（τ^{≤i} → τ^{≤i+1}）。
 使われ方：Fil_i の Kan 延長の入力。 -/
 def hodgeTatePolyTruncated (i : ℕ) :
-    (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory A :=
-  hodgeTatePoly P ≫ Derived.truncationLE A i
+    (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ derivedInfinityCategory (A ⧸ P.ideal) :=
+  hodgeTatePoly P ≫ Derived.truncationLE (A ⧸ P.ideal) i
 
 /-- 概要：Thm 6.3 による gr^i の同一視（Poly 上）：τ^{≤i}/τ^{≤i−1} Δ̄_P ≃ H^i(Δ̄_P)[−i] ≃ Ω^i_{P/k}[−i]。
 方針：`truncation_cofiber`（DerivedGeneral）と A1 の `hodgeTate_iso`（η^i : Ω^i ≅ H^i）。自然性は η^* の関手性。
@@ -87,6 +87,8 @@ def hodgeTateFiltration_step (i : ℕ) : True := trivial
 規約：i = 1 が余接複体 L^∧_{R/k}。Illusie の定義（単体的分解による Kan 延長）の p 完備化と同じ。
 使われ方：gr の同一視、A5（L_{S/Z_p} の連結性）。 -/
 def cotangentWedge (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory (A ⧸ P.ideal) := sorry
+-- W9-I-36：完備余接複体・外冪は prism P に依らず**一般の基底 k** で独立に定義する（A3 の qrsp は k = Z_p で使う）。`cotangentWedgeGeneral (k) i :
+-- AnimatedAlgebra k ⟶ derivedInfinityCategory k` を置き、上はその k = A/d の場合。評価値の S 加群構造（R 上の加群として）も明記する。
 
 /-- 概要：gr^i Fil Δ̄_R ≃ cotangentWedge i (R)[−i]（原典の「Hodge–Tate comparison for Δ̄_R」）。
 方針：LΛ_p は完全で cofiber と交換、Kan 延長は余極限と shift と交換、Poly 上で `hodgeTatePoly_gr`。

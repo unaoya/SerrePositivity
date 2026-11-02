@@ -114,9 +114,11 @@ section Quasiregular
 規約：D39。
 使われ方：Prop 7.10 の仮定。 -/
 structure IsQuasiregularSemiperfectoid (S : Type u) [CommRing S] : Prop where
-  pComplete : True
+  pComplete : True -- 導来 p 完備
   semiperfectoid : ∃ (R : Type u) (_ : CommRing R) (f : R →+* S), IsIntegralPerfectoid R p ∧ Function.Surjective f
-  cotangent_flat : True -- (L_{S/Z_p}[−1])^∧ が p 完全平坦
+  /-- 原典 Not 7.1 の「有界な p 冪ねじれ」。W9-I-32 で復元（他の条件から従わない：S = ∏ O_C/(p^n)）。 -/
+  boundedTorsion : ∃ N : ℕ, ∀ (n : ℕ) (x : S), (p : S) ^ n * x = 0 → (p : S) ^ N * x = 0
+  cotangent_flat : True -- (L_{S/Z_p}[−1])^∧ が p 完全平坦（A2 の `cotangentWedge` を基底 Z_p で）
 
 variable (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
 
@@ -142,8 +144,9 @@ theorem qrsp_completelyFaithfullyFlat (hS : IsQuasiregularSemiperfectoid (p := p
 使われ方：Prop 7.10 (b) の帰着先、Ex 7.9 の適用。 -/
 def regularSemiperfectoid (r : ℕ) (f : Fin r → R) : Type u := sorry
 
-/-- 概要：T について Ex 7.9：Δ_{T/A′} ≅ A′{(X − f)/d}^∧ は始 prism。Δ_{T/A} ≃ Δ_{T/A′}（底変換、A2-4 (4)）。
-方針：`prismaticCohomology_lci_eq_envelope` を (A′, X_i − f_i) に。
+/-- 概要：T について Ex 7.9：Δ_{T/A′} ≅ A′{(X − f)/d}^∧ は始 prism（p ねじれなしの標的の中で、D36 改訂案）。Δ_{T/A} ≃ Δ_{T/A′} は
+**A2 (4) ではなく G-A2-10**（perfectoid の基底拡大での不変性：比較射は (4) と乗法、HT の gr と Nakayama。W9-I-35）。
+方針：`prismaticCohomology_lci_eq_envelope` を (A′, X_i − f_i) に、G-A2-10。T の有界 p 冪ねじれは R の有界ねじれと平坦性から。
 規約：—
 使われ方：Prop 7.10 (b)。 -/
 theorem regularSemiperfectoid_prismatic (r : ℕ) (f : Fin r → R) : True := by trivial

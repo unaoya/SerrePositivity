@@ -108,10 +108,11 @@ k := A/d。`Poly k`：有限生成多項式 k 代数 k[X_1,…,X_n]（n : ℕ）
 | G-A2-2 | D(A) の標準 t 構造と Postnikov 切り捨て τ^{≤i}（∞ 関手として）、cofiber の gr、有界性 | **未**（InfinityCategories に t 構造の切り捨て関手は見当たらない。CategoryTheory のトップ階層に 1 圏の t 構造） | §2.3 |
 | G-A2-3 | (p,d) 導来完備化の ∞ 関手 D(A) → D(A)_comp（左随伴、完備な対象の充満部分圏、余極限の完備化） | **未**（HA/DerivedCompletion は複体の 1 圏） | §2.2・(4)・(5) |
 | G-A2-4 | CAlg_A の sifted 余極限と、U : CAlg_A → D(A) がそれを保つこと（HA 3.2.3.1）、CAlg_A の余積 ＝ テンソル（HA 3.2.4.7） | EInfinity/Operad/AlgebraSiftedColimits（モデルの側）。∞ 側（`CAlg_R`）の形は要確認。G12（presentable 性） | §2.2・(5) |
-| G-A2-5 | スカラー制限 φ_{A*} : D(A) → D(A)（CAlg 版も）が余極限を保つ | A0 の要確認 (A) | Frobenius |
+| G-A2-5 | スカラー制限 φ_{A*} : D(A) → D(A) が全余極限を保つこと；CAlg 版は **sifted 余極限**を保つこと（W9-I-27・38） | A0 の要確認 (A) | Frobenius |
 | G-A2-6 | 多項式代数の Künneth（Ω^•_{P⊗P′} = Ω^•_P ⊗ Ω^•_{P′}、または余単体的加群の Eilenberg–Zilber） | Shared/DeRhamPolynomial（外冪のテンソル） | (5) |
 | G-A2-7 | 離散環の P_Σ への埋め込みと、E3 の `algebraNerve` からの射 | sigma Yoneda の有限余積保存の判定（`SigmaYonedaEvaluation`） | §2.1 |
 | G-A2-8 | 余接複体の p 完備化の導来 p 完備化不変性（gr の不変性） | なし | D32 |
+| G-A2-10 | **perfectoid の基底拡大での Δ の不変性**（= A5 の G-A5-17 をここに前倒し、W9-I-35）：perfectoid の射 R → R′ と R′ 代数 T について、比較射 Δ_{T/A} → Δ_{T/A′}（(4) と乗法）は HT の gr（L̂_{R′/R} = 0）と Nakayama で同値 | なし | A3（Prop 7.10 の帰着）、A5（semiperfectoid の段） |
 | G-A2-9 | 導来 p 完備化 LΛ_p は D(k) の対称モノイダルな局所化で CAlg_k に持ち上がる；完備圏 D(k)_{p-comp} 内の sifted 余極限＝LΛ_p ∘（D(k) の余極限）；LΛ_p は完全で cofiber と交換 | DerivedGeneral/CompletionFunctor の隣（W9-I-26・30） | §2.3 |
 
 G-A2-2・G-A2-3 が主な不足で、どちらも ∞ 基盤の一般論（D(A) の t 構造、完備化の局所化）。調整役に予告する（M12 に続く項目）。
