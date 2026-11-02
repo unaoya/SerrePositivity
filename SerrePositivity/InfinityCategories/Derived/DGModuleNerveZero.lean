@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedZeroVertex
-public import SerrePositivity.DifferentialGraded.Module.Zero
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! # dg 加群圏の nerve の実零対象
 

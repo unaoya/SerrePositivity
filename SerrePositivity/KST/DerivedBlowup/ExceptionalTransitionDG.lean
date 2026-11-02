@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedBlowup.ExceptionalTransitionChart
 public import SerrePositivity.KST.DerivedBlowup.ChartDGFunctors
 public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainMapTransport
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：KST v4 Lemma 3.6（pp.11–14）の例外因子の重なりを Koszul dg 関手にする。

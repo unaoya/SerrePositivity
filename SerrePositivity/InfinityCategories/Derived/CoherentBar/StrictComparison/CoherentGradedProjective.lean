@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutModule
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentDimensionLayers
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+
 
 /-!
 概要：h-projective 頂点の各実次元層と、微分変更前の切断直和は h-projective。

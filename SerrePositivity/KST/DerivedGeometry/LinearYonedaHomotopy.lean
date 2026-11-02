@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearYonedaShift
 public import SerrePositivity.KST.DerivedGeometry.LinearComplexHomotopy
-public import SerrePositivity.DifferentialGraded.Module.Pretriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 概要：複体の代表加群の関手を Mathlib のホモトピー圏から降ろす。

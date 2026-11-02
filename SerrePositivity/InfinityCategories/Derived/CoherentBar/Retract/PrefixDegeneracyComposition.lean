@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.PrefixDegeneracyNaturality
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：重複頂点より前の prefix と退化ブロックの合成を、元の高次係数へ戻す。
 方針：始域・終域の等式を明示し、シフト合成則で中間の退化単位を消す。

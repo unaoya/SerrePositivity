@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Zero
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-! # 実零複体を標的とする全 cochain の零性
 概要：標的の実零対象性から、全整数次数の比較 cochain の零性を得る。

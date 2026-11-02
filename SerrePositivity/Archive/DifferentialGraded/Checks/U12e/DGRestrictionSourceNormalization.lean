@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionSource
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnit
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側・中間sourceの正規化と左単位モデル経路の検査

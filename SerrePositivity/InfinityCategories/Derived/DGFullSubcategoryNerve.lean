@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorFullyFaithful
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # dg 充満部分圏の nerve の充満忠実性
 

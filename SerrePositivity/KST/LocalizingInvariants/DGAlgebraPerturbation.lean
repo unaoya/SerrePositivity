@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbedMultiplication
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCompositionAssociativity
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
 
 /-!
 概要：単位を消す閉じた平方零 derivation に沿う微分変更を、実 dg 代数にする。

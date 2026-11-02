@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomologyZero.PairingLinear
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # H⁰ の双線形作用のホモトピー不変性と交換

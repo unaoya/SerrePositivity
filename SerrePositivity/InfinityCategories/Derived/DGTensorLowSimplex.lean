@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.InfinityCategories.Derived.DGTensorTriangleData
 public import SerrePositivity.InfinityCategories.DGNerve.TruncatedTriangles
 /-!

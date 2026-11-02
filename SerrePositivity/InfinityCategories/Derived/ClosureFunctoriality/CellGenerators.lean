@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.SConstruction.DGFunctorHomElements
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：最終 cell 分解内の初期 cycle 生成元と、native Hom が満たす厳密な自然性。

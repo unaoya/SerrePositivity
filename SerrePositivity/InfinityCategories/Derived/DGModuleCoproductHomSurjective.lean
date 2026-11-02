@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.CoproductHom
-public import SerrePositivity.DifferentialGraded.Complexes.TowerLimitAcyclic
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 /-!
 概要：余積を始域とする Hom の次数別全射性を実普遍性で構成する。

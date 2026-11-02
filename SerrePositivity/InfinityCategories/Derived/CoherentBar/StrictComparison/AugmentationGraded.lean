@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Diagram
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：strict 図式の余錐から、正規化 graded bar の標準 augmentation を作る。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyEdges
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeColumns
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：元の各頂点加群から実正規化 coherent bar への閉零射。

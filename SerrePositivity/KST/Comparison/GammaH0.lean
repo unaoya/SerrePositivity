@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Comparison.GammaRing
 public import SerrePositivity.KST.Comparison.PiZeroRing
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedPiZero
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomology
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 # Γ の連結成分と H⁰

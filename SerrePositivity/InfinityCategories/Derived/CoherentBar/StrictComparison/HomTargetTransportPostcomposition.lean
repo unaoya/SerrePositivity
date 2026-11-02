@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+
 
 /-!
 概要：Hom の標的等号輸送を実等号射との後合成へ同定する。

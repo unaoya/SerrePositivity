@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionPerfect
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 /-!
 概要：dg 関手に沿う graph tensor を、実 perfect 加群の安定 ∞ 圏へ制限する。
 方針：実射影性と、同じ恒等射影分解で計算した主導来 perfect 保存を使う。

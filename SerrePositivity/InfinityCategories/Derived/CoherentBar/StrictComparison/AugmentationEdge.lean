@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictCompa
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Edge
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ShiftPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.EdgeCoefficients
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：strict augmentation の一次元の面と prefix は余錐の可換式で一致する。

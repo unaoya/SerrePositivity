@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNativeDerivedFiniteCell
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 代表加群間の導来射を元の閉 dg 射へ戻す
 

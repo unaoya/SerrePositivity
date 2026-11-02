@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.RepresentableUnitNaturality
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：KST §3.1 の regular 比較に使う閉零 Yoneda 射の回収公式。

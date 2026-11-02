@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroConeOperator
 public import SerrePositivity.KST.LocalizingInvariants.CochainTensorShiftElements
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 概要：包含の次数一 shift が、元の左右作用と満たす符号付き Leibniz の二式。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomCalculus
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaProjections
 public import SerrePositivity.DifferentialGraded.Category.ObjectImage
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 双加群 gluing の代表加群表示。

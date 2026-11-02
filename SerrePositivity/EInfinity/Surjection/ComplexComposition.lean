@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Surjection.CochainLeibniz
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # 全射語の整数複体の部分合成射

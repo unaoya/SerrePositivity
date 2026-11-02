@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import Mathlib.Logic.Small.Set
 public import Mathlib.SetTheory.Cardinal.Ordinal
 

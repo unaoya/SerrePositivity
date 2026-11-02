@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeModuleExtensionIso
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Module.Functor
 public import Mathlib.CategoryTheory.Adjunction.Mates
 
 /-!

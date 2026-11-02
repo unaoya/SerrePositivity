@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedEnrichedPrecomposition
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-!
 # 元の複体射の Hom 前合成と dg nerve の全区間族

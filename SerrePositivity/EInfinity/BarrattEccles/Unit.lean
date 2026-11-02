@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleChainMap
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # Barratt–Eccles の単位演算

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.Homotopy
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! 代表加群間の K(D) の射を、元の同じ閉 dg 射へ持ち上げる。 -/
 @[expose] public section

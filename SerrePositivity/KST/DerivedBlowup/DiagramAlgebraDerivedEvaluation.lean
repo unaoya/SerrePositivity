@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraModuleComparison
-public import SerrePositivity.DifferentialGraded.Derived.Restriction
-public import SerrePositivity.DifferentialGraded.Module.RestrictionColimits
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：KST §3.1 の正規表示の局所 dg 代数への主導来評価。

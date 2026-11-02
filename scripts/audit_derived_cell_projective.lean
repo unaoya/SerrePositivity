@@ -5,11 +5,9 @@ open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor,
-    `SerrePositivity.DifferentialGraded.Derived.FreeProjective,
-    `SerrePositivity.DifferentialGraded.Derived.RestrictionProjective,
-    `SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionProjective,
-    `SerrePositivity.DifferentialGraded.Derived.BimoduleRightProjective,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Derived.Basic,
+    `SerrePositivity.DifferentialGraded.Derived.BimoduleTensor,
     `SerrePositivity.InfinityCategories.Derived.RingComplexColimits,
     `SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure,
     `SerrePositivity.InfinityCategories.Derived.DGCellAttachmentProjective,

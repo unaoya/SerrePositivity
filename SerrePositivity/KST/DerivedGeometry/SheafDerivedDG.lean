@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedGeometry.LiftedCoefficientComplex
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.VerdierTransport
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
-public import SerrePositivity.DifferentialGraded.Category.Homotopy
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 # 全係数加群層の複体の acyclic dg 商

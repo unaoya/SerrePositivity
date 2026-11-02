@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeElementRelations
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.InfinityCategories.Derived.CofiberHomCoordinates
 
 /-! # dg 加群の cone から出る全次数の成分の復元

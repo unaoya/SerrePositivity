@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DGEndMonoid
-public import SerrePositivity.DifferentialGraded.Complexes.Zero
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.CategoryTheory.Category.Preorder
 
 /-!

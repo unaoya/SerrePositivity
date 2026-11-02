@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.ExteriorMultiplication
-public import SerrePositivity.DifferentialGraded.Complexes.Unit
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 
 /-!
 概要：KST Def3.1 の整数次数 Koszul 外積複体に単位射を構成する。

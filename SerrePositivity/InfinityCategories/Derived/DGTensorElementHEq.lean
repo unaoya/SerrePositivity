@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.TensorElements
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：端点・次数の等式と成分の異種等号を、同じ斉次 tensor 要素へ移す。
 方針：二つの端点と三次数の等式を消去し、同じ二つの実成分に戻す。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGCyclePostcomposition
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornResidualCompatibility
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornFinalEdge
-public import SerrePositivity.DifferentialGraded.Complexes.QuasiIsoCycles
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 
 /-! # 実最後外ホーンの二残差を Hom 後合成の cone に入れる
 

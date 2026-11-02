@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Ring
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # 一点 dg 環から転送した semifree 複体 -/
 @[expose] public section

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # dg nerve の成分計算に使う合成の法則
 

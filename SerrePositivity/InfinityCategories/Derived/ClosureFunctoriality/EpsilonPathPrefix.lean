@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.Ep
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.QuotientWordSeparation
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellUnitNonzero
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：任意長の語への ε 前置と、その次数別係数回収。

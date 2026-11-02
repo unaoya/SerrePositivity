@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulated
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：実表現可能加群の演算から前三角性を判定する。
 方針：零・shift・cone の表現可能性から全三角形への閉性を得る。

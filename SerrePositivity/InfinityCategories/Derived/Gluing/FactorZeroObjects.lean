@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulated
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 元の前三角 dg 圏のホモトピー零対象を、代表加群の零性から選ぶ。 -/
 @[expose] public section

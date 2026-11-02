@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleFullComparison
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 中間圏比較の両変数の全導来圏上での自然性と局所化の検査

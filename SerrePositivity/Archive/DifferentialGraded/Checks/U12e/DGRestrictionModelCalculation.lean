@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionModelCalculation
-public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionFull
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.IteratedModels
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnit
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側・中間の全導来比較の任意モデル計算と左単位経路の検査

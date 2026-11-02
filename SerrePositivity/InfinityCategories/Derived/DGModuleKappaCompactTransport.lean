@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactBasic
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedReflectsQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.AcyclicZero
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 /-!
 概要：実 dg 加群の準同型と非輪状性を、同じ実導来頂点の κ-compact 性へ接続する。
 方針：元の閉射の実分解辺が可逆である判定を使い、頂点同型で全 Hom の保存性を輸送する。

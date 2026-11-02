@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!

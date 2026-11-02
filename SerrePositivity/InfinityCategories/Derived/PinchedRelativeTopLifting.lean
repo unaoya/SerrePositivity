@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedLinearChainMap
 public import SerrePositivity.InfinityCategories.Derived.PinchedProperEquations
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # pinched 線形境界と指定された目標成分の同時持ち上げ
 

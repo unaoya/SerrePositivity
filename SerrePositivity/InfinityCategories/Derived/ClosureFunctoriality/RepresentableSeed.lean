@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureOperations
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：固定 sphere-free 閉包の中に、各代表加群と実同型な一セル代表を指定する。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeSimplexLift
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.QuotientNative
 public import SerrePositivity.InfinityCategories.F1.KanModels.KanEquivalenceLiftingFibration
 

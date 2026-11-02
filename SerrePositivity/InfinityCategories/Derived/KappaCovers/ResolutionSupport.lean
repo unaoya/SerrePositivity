@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionLabels
-public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：標準 resolution の各有限段の斉次要素に、有限のセル support を与える。

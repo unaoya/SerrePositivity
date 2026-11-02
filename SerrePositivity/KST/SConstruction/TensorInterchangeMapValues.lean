@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TensorInterchange
-public import SerrePositivity.DifferentialGraded.Complexes.Currying
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # tensor 交差後の二つの射の全斉次値
 概要：四つの純斉次成分の交差と二つの chain map の値を、一つの式へ束ねる。

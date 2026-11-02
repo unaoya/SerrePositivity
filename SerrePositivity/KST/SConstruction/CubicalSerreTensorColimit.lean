@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CubicalSerreGenerators
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.CategoryTheory.Monoidal.Limits.Colimits
 
 /-! # 元の両 cell の tensor による Serre 鎖の表示

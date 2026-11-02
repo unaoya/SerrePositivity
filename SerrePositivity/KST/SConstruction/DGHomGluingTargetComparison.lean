@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingTargetCone
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
-public import SerrePositivity.DifferentialGraded.Module.ConeContractible
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-! # 同型である元の Hom gluing 比較の cone の収縮
 概要：元の比較が閉零同型なら、その同じ実 cone は加群ホモトピー圏で零。

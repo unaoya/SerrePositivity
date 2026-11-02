@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGWalkingHomPinched
 public import SerrePositivity.InfinityCategories.Derived.DGWalkingHomRefinementNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransComponentExt
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransSimplexWhisker
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 自由 Hom の閉細分 prism の全単体の自然性
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoproduct
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：ラベル付き κ 未満自由模型の対象作用と整数 shift を与える。
 方針：元の表示ラベルへ作用し、shift は対象を変えず次数だけをずらす。

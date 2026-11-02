@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalDiagonalEndpoints
-public import SerrePositivity.DifferentialGraded.Complexes.Currying
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorReindex
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
 
 /-! # 元の鎖区間の Serre 対角の余結合律
 概要：元の鎖区間の二重対角の二つの括り方を、同じ tensor 結合射で比較する。

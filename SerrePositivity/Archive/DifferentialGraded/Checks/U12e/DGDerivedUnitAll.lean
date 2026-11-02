@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionUnitAll
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来制限の三角性・余積保存と全対象の導来単位

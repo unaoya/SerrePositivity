@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitRelations
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.NestedCut
 /-!
 概要：始域の整数シフトを解いた全次数 Hom の線形座標を与える。

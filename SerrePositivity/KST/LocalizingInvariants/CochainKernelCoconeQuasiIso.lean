@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeComparison
 public import SerrePositivity.KST.LocalizingInvariants.CochainMappingCoconeMapSurjective
-public import SerrePositivity.DifferentialGraded.Complexes.AcyclicCone
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：次数全射な複体射の kernel と cocone の標準比較は準同型である。

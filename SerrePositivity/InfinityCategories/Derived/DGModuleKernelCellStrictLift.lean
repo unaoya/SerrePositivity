@@ -3,8 +3,8 @@ public import SerrePositivity.InfinityCategories.Derived.DGFreeSphereHomSurjecti
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomSurjective
 public import SerrePositivity.InfinityCategories.Derived.DGModulePrimitiveOverZero
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConeStrictPostcomposition
-public import SerrePositivity.DifferentialGraded.Module.KernelCells
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 /-!
 概要：実 kernel cell 付加の一段を、次数別全射準同型に沿って厳密に持ち上げる。
 方針：自由 sphere の余積の Hom を使い、零像の原始元から cone を延長する。

@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationModuleInput
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
-public import SerrePositivity.DifferentialGraded.Module.AcyclicTriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 概要：元第二対象の収縮から実逆回転対象の V 条件を導く。

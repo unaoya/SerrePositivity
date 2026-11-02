@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionKMap
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedRelativeRoof
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedFunctorExact
-public import SerrePositivity.DifferentialGraded.Category.Restriction
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData
 
 /-!

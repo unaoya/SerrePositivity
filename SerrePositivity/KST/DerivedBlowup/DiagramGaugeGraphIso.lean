@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeRegularIso
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraVertex
-public import SerrePositivity.DifferentialGraded.Module.FunctorGraphActions
+public import SerrePositivity.DifferentialGraded.Module.Functor
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 
 /-!

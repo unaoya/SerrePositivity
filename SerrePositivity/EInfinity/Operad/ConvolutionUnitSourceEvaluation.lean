@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Operad.ConvolutionUnitEvaluation
 public import SerrePositivity.EInfinity.Operad.UnitPowers
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 単位対象からの内部 Hom の評価

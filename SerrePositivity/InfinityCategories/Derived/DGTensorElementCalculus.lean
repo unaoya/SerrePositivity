@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.TensorElements
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 /-!
 概要：斉次 tensor の同じ Leibniz 則・双線形性・零・閉性を照合する。

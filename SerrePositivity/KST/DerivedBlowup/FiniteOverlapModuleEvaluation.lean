@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapVertex
-public import SerrePositivity.DifferentialGraded.Derived.Restriction
-public import SerrePositivity.DifferentialGraded.Module.RestrictionColimits
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：KST §3.1 の各非空有限重なりへの全 diagram-module の導来評価。

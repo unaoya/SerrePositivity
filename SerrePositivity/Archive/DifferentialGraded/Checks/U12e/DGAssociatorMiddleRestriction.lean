@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionResolved
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 二つの中間圏の制限と結合子・指定モデルの検査

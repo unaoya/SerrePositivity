@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.DiagonalRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.Paired
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 対角比較と両端制限の恒等・合成整合性の検査

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGProjectiveModules
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductStandardFan
 public import SerrePositivity.InfinityCategories.Derived.DGStandardClosedPrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteHomColimits
-public import SerrePositivity.DifferentialGraded.Derived.Coproducts
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 /-!
 概要：射影的 dg 加群の同じ直和と包含を coherent nerve の余積余錐へ送る。
 方針：実 Hom の標準 DK 積表示と離散形状の豊穣余極限判定を使う。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedTransport
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionRightUnitEvaluation
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGConjugationNaturality
 /-!

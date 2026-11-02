@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.Operad.ConvolutionAlgebra
 public import SerrePositivity.EInfinity.Operad.ConvolutionPostcomposition
 public import SerrePositivity.EInfinity.Operad.ConvolutionPrecomposition
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-!
 # Convolution 代数の関手性

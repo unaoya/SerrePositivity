@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeftRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeft
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全三因子に対する外側左制限と導来結合子のcoherenceの検査

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionPerfect
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionProjective
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+
 /-!
 概要：perfect seed の実延長像を共通出発圏の閉代表族へホモトピー同型まで精密化する。
 方針：同じ射影的 seed による実延長計算と perfect 性の保存を代表被覆へ渡す。

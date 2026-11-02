@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.IntervalCuts.NormalizedInterval
 public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # 正規化区間の反復テンソルの斉次生成元

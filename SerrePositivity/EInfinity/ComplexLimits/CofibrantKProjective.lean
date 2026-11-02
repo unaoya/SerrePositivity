@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ProjectiveHomotopyInverse
-public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveHom
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 
 /-!
 # 実射影 cofibrant 複体の K-projective 性

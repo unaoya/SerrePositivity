@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryPretriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Category.Induced
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：重複を許す小さい実加群ラベル族の演算閉性から前三角性を判定する。
 方針：同じ値の range への全 Hom 恒等な準同値を介し、D-8 b の一般判定を再利用する。

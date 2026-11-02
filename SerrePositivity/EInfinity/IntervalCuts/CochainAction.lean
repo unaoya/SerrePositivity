@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.IntervalCuts.CochainLeibniz
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # 区間切断余演算の整数複体射

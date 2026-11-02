@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Spectra.SymmetricSequence.TensorPowerSequence
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # オペラッドの Schur 関手に必要なテンソル置換の自然性

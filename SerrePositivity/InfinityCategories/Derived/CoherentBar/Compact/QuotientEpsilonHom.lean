@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
-public import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 概要：固定 ε と整合する null 保存関手間の Hom 部分複体を構成する。

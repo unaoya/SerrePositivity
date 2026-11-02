@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramHomGauge
 public import SerrePositivity.KST.DerivedBlowup.AlgebraVertex
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：KST §3.1 の Hom gauge を局所 regular 加群の自己同型にする。

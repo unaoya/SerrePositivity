@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCompositionIso
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedTransport
-public import SerrePositivity.DifferentialGraded.Functor.ClosedConjugationPasting
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.ModuleExtensionConjugation
 /-!
 概要：小さい出発提示模型の作用が、全 Hom を含めて入力の合成を厳密に保つことを示す。

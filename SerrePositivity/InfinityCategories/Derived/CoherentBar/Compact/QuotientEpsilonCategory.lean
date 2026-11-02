@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonHom
-public import SerrePositivity.DifferentialGraded.Category.Induced
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
 概要：固定 ε 整合 Hom 部分複体で dg 関手圏を作り、同じ正本商への豊穣作用を供給する。

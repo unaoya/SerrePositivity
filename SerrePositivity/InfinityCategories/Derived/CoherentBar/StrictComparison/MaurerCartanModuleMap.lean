@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.MaurerCartan
-public import SerrePositivity.DifferentialGraded.Module.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanRestriction
 
 /-!

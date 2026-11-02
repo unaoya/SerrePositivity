@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyProperty
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 表現可能加群の同型閉包による dg 前三角性
 

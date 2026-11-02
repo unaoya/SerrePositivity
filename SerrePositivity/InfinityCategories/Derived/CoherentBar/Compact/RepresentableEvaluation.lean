@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Basic
 /-!
 概要：代表可能加群からの全次数 Hom を評価複体へ移す比較を与える。
 方針：dg Yoneda の単位元評価を使い、任意次数の後合成と Koszul 符号を照合する。

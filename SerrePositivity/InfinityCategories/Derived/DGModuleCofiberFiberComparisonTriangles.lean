@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSourceTriangleComponents
-public import SerrePositivity.DifferentialGraded.Module.ConeContractible
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCofiberFiberEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare
 

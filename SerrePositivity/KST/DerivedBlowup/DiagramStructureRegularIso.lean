@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramStructureRegularMap
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：KST §3.1 の局所構造加群への直接 regular 比較は実際に同型。

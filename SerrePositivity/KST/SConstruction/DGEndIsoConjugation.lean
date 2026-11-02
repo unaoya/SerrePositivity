@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Category.Homotopy
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 元の閉同型による全 dg End の共役
 概要：指定閉同型を使い、元の全次数 End 複体の間の dg 関手を構成する。

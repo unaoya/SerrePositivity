@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
 /-! # dg 関手と閉零射による豊穣 Hom の前後合成

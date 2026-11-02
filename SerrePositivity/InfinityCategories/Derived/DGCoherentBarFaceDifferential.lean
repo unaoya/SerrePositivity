@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 /-!
 概要：bar の始点を保つ面の shift ブロックは閉次数一要素である。

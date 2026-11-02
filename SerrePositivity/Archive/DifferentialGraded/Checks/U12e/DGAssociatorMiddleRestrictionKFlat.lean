@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionPresentation
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionInner
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddle
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 第一中間圏の指定K-flatモデルと全導来比較の検査

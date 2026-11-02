@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.BoundaryFiltration
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 /-!
 概要：同じ theta の境界で作る有限段階を、元の graded bar の全 Hom 上に置く。
 方針：単位と境界の和を反復合成し、標的単体次数のフィルトレーションを保つことを示す。

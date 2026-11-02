@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.ExteriorCochainLeibniz
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：KST Def3.1 の整数次数 Koszul 外積複体に chain map としての積を装備する。

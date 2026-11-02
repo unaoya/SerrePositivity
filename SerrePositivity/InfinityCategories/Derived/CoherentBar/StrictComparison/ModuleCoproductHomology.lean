@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexCoproductHomologyInclusions
-public import SerrePositivity.DifferentialGraded.Module.Colimits
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
 
 /-!
 概要：実 dg 加群直和の評価ホモロジーと成分ホモロジーの直和の自然な同型。

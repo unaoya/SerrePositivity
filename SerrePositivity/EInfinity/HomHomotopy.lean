@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-!
 # 内部 Hom の前合成と鎖ホモトピー

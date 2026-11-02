@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.RightUnitRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnit
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 右単位子・制限比較と任意K-flat解像度のモデル独立性の検査

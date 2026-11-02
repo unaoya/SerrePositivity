@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Functor.ClosedComplex
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-! 全 Hom の閉後合成は、元の H⁰ での同型を複体のホモトピー同型へ送る。 -/
 @[expose] public section

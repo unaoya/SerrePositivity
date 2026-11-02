@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreCubeOrientationSigns
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 元の向き補正と dg の通常順合成
 概要：二区間の向き補正と豊穣順の合成を、native dg nerve の通常順合成で回収する。

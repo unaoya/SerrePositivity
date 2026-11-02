@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
 概要：元の小 dg 関手と実 Perf 延長の Yoneda 四角形を全関手同型で比較する。

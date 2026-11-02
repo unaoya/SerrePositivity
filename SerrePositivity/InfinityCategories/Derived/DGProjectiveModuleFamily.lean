@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+
 
 /-!
 概要：正則非可算 κ の小さい射影的代表族を、実際の加群演算で閉じる。

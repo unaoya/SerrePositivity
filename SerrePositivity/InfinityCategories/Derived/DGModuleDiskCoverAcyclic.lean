@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DiskCover
-public import SerrePositivity.DifferentialGraded.Complexes.ExactColimits
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso
-public import SerrePositivity.DifferentialGraded.Module.Biproduct
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.Algebra.Category.ModuleCat.AB
 /-!
 概要：実 disk 被覆の非有界非輪状性と、非輪状直和項からの射影の準同型性。

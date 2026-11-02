@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Derived.RestrictionConservative
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
 
 /-!
 # H⁰ から導来加群圏への代表加群による完全忠実な埋め込み

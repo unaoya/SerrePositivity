@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import Mathlib.Algebra.Homology.QuasiIso
 
 /-! # dg nerve の同型な辺と複体のホモトピー同値

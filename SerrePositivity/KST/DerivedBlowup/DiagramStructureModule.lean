@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraBottomInclusion
-public import SerrePositivity.DifferentialGraded.Module.Representable
-public import SerrePositivity.DifferentialGraded.Module.Restriction
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 の構造加群を全係数図式上の実際の dg 加群として構成する。

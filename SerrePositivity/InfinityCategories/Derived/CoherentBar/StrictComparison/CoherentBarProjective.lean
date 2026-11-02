@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutProjective
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutColimit
-public import SerrePositivity.DifferentialGraded.Module.ColimitHom
-public import SerrePositivity.DifferentialGraded.Complexes.TowerLimitAcyclic
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-!
 概要：h-projective 頂点の coherent 図式の実正規化 bar は h-projective。

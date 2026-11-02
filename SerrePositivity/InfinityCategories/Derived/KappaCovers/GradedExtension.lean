@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.HomotopyRetract
-public import SerrePositivity.DifferentialGraded.Derived.GradedExtensionProjective
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 
 /-!

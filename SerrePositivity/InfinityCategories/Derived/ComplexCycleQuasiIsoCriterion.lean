@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
-public import SerrePositivity.DifferentialGraded.Complexes.QuasiIsoCycles
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 /-!
 概要：閉 cochain の像の持ち上げと境界の反映から Hom 複体の準同型性を検出する。
 方針：元の cycle と境界原始元を保持した商の比較を使う。

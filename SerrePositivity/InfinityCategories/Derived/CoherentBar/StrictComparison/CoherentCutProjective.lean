@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGradedSplit
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutZero
-public import SerrePositivity.DifferentialGraded.Derived.GradedExtensionProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 概要：h-projective 頂点の coherent bar の各有限次元段階は h-projective。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveResolution
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-!
 概要：KST §3.1 の全 diagram-module の射影的 dg 模型と主導来圏の H⁰ 比較。

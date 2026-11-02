@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：元の dg nerve 射の実辺と二切断の H⁰ 比較を、同じ dg 関手の作用へ照合する。
 方針：実閉 cycle の異種等号を端点の移送ごと保持し、辺の商の代表上で比較する。

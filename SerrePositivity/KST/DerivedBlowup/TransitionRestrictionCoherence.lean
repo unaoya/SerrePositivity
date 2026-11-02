@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 で用いる dg 遷移の等式に沿う加群制限の標準比較。

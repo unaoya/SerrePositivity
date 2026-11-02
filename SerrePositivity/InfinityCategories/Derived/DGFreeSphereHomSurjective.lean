@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FreeHomNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.SphereHom
-public import SerrePositivity.DifferentialGraded.Module.CellLifting
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：自由 sphere の全次数 Hom は次数別全射な後合成を保つ。
 方針：実全次数 Hom と評価・余積の既存の普遍性を使う。

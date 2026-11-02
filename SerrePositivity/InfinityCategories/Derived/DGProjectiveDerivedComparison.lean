@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveModules
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveResolution
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
 /-!
 概要：射影的右 dg 加群の H⁰ と、既存の主導来加群圏の比較同値。
 方針：全 Hom end の射影性による実局所化 Hom 計算と、具体的射影分解を使う。
