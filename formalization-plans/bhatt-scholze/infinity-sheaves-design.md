@@ -204,18 +204,23 @@ S1・S2・S6 は既存の基盤だけで骨組みが書ける。S3・S4 は G6�
 BS の A0 の Def 4.1・Constr 4.17・4.18（余単体的対象として）、Prop 3.13 の特別な場合、Cor 3.12 は S1〜S3 と並行して進められる。
 Not 4.16 の定義は S2 の型が決まれば書け、「Čech–Alexander が Δ を計算する」定理は S3・S4 の後。
 
-## 9. 置き場所の案（調整役が判断）
+## 9. 置き場所（調整役の決定、2026-11-02、main d9254e8b0。infinity-foundation-plan.md の M12 と §3）
 
-一般論（S1〜S5）は E を任意の安定 presentable ∞ 圏として述べるので、F2/Presentable と Stable の上、Derived より下の新しい層
-（例：`InfinityCategories/Sheaves/`）が自然。S7（D(A) への適用）は Derived の上。BS 固有の site（prism の圏、平坦位相、κ の既定値）は
-BhattScholze/ の下。A5 の E3 への接続は BhattScholze/Perfectoidization/Derived/ の隣。
+- 一般論 S1〜S6：新層 `InfinityCategories/Sheaves/`。層の順序は StablePresentable < Sheaves < ModelBridge（モデル圏・dg を要しないため）。
+  最初のファイルを置くときに layers.json に登録する。
+- 前提の置き場所：G4・G6 は `F2/Presentable/`、G8 は `F2/` か `HomotopyLimits/`、G9 は `HomotopyLimits/`、G7 は `Stable/`、
+  G3 と S7 は `Derived/`（`Derived/Sheaves/`）。BS 固有の site（prism の圏、平坦位相、κ の既定値）は `BhattScholze/`。
+  A5 の E3 への接続は `BhattScholze/Perfectoidization/Derived/` の隣。
+- 窓：G3・G4・G6 は新しい数学なので段 G（W2b・W2c の外）。開始は W2b が main に入った後（11-05〜06 見込み）、W2c と並行可。
+  新しいファイルだけを足し、ビルドは閉包だけ、全ビルドは暦に載せる。担当は W2b の後に決める。
+- BS 側：S1・S2・S6 の骨組みを `drafts/` で先に進めてよい。W2b・W2c の改名表は調整役から回る。
 
 ## 10. 決定待ち
 
 1. ~~[[D-S1]] Čech 層（案 1）か hypersheaf（案 2）か~~ → 案 1（2026-11-02）。ずれは §2.1 の五か所に記録する。
 2. S3 の証明経路（効果的エピの Čech 脈体 ＝ HTT 流、または Bousfield–Kan ＝ Stacks 07JM 流）。基盤の現状では G9 の Bousfield–Kan の
    部品が多いので後者が近いかもしれない。実装の設計で決める。
-3. 一般論 S1〜S5 の置き場所と、∞ レーンのどの窓に入れるか（調整役）。
+3. ~~一般論 S1〜S5 の置き場所と、∞ レーンのどの窓に入れるか（調整役）~~ → §9（2026-11-02 決定）。
 
 ## 11. 紙で確かめる項目
 
