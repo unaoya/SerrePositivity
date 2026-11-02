@@ -1,0 +1,29 @@
+{
+  "head": "b23296091f876701097c5e4407feb4e9f1578213",
+  "targets": 48,
+  "sources": 608,
+  "lost_reachable_modules": 0,
+  "forbidden_DG_closures": {},
+  "closure_delta_consumers": 1583,
+  "new_raw_candidates": 0,
+  "lexical_issues": [],
+  "universe_sections_preserved": 608,
+  "downstream": 10571,
+  "estimated_minutes": [
+    176.2,
+    264.3
+  ],
+  "seconds": 57.279,
+  "closure_delta_donor_count": 1169,
+  "declaration_snapshot_reachability": "pending before snapshot",
+  "check": {
+    "exit_code": 0,
+    "max_lines": 1621,
+    "max_lines_limit": 1700,
+    "warnings": 601,
+    "max_lines_warnings": 0,
+    "target_cycles": 0,
+    "rewrite_candidates": 830
+  },
+  "build_started": false
+}
