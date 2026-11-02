@@ -32,7 +32,7 @@ public import SerrePositivity.CommutativeAlgebra.RootTower.Koszul
 
 ## 使われ方
 
-Paper/Section2（Theorem 2.5）、`BaseChangeApproximation`、CLMST/Inputs。
+Paper/Section2（Theorem 2.5）、`BaseChangeApproximation`、CLMST。
 -/
 
 @[expose] public noncomputable section

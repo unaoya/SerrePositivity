@@ -8,34 +8,19 @@ import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
 import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 import SerrePositivity.LengthAlgebra.Almost
 import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
-import SerrePositivity.CLMST.AlmostLength
+import SerrePositivity.CLMST.CyclicLengthBound
 import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 import SerrePositivity.LengthAlgebra.RootTowerLength.BaseChangeApproximation
-import SerrePositivity.CLMST.NormalizedAlmostLength
-import SerrePositivity.CLMST.CohomologyVanishing
-import SerrePositivity.CLMST.ParameterLength
-import SerrePositivity.CLMST.PerfectoidIsogeny
-import SerrePositivity.CLMST.TensorIsogeny
-import SerrePositivity.CLMST.CompletedTensorIsogeny
-import SerrePositivity.CLMST.CompletedCokernelLength
-import SerrePositivity.CLMST.CompletedTargetLength
-import SerrePositivity.CLMST.ParameterLastPowerLength
-import SerrePositivity.CLMST.CyclicPLength
+import SerrePositivity.CLMST.KoszulAnnihilation
+import SerrePositivity.CLMST.ParameterPowerLength
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Consequences
+import SerrePositivity.CLMST.ParameterQuotientLength
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 import Mathlib.RingTheory.Ideal.Quotient.Operations
-import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
-import SerrePositivity.CLMST.CyclicRootEstimate
-import SerrePositivity.CLMST.CyclicNormalizedBound
-import SerrePositivity.CLMST.CyclicUnitLength
-import SerrePositivity.CLMST.CyclicFactorReduction
-import SerrePositivity.CLMST.CyclicPPowerLength
-import SerrePositivity.CLMST.CyclicTorsionComparison
 import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
 import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
 import SerrePositivity.CommutativeAlgebra.PowerSeries.Basic
 import SerrePositivity.CommutativeAlgebra.KoszulMultiplicity.Formula
-import SerrePositivity.CLMST.CompletedCokernelFiniteEuler
-import SerrePositivity.CLMST.PerfectoidCokernelEuler
 import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 import SerrePositivity.LengthAlgebra.KoszulModule
 import SerrePositivity.LengthAlgebra.Cone
@@ -459,7 +444,7 @@ assert_no_sorry SerrePositivity.CLMST.completedTensor_stage_source_euler_eq_chiO
 assert_no_sorry SerrePositivity.CLMST.completedTensor_stage_source_euler_eq_multiplicity
 #print sorries SerrePositivity.CLMST.completedTensor_stage_parameter_length_of_source_euler_formula
 #print sorries SerrePositivity.CLMST.completedTower_stage_parameter_quotient_length_of_source_euler_formula
-#print sorries SerrePositivity.CLMST.Inputs.proposition_4_0_14
+#print sorries SerrePositivity.CLMST.proposition_4_0_14
 
 -- 4.0.10の数値側。一般のperfectoid商の同定は後続の基礎工程で扱う。
 assert_no_sorry SerrePositivity.ennreal_eq_zero_of_geometric_bound

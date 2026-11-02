@@ -4,9 +4,7 @@ import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Powers
 import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
-import SerrePositivity.CLMST.PerfectoidFrobeniusComparison
-import SerrePositivity.CLMST.CyclicLength
-import SerrePositivity.CLMST.NormalizedAlmostLength
+import SerrePositivity.CLMST.CyclicLengthBound
 import Mathlib.Util.PrintSorries
 import Mathlib.Util.AssertNoSorry
 
