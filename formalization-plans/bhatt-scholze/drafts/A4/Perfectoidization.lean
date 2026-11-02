@@ -92,7 +92,7 @@ def perfectoidizationDerived : (derivedInfinityCategory R) _⦋0⦌ := sorry
 /-- 概要：Lemma 8.4 (a)：Δ_perf ∈ D^{≥0}。
 方針：Δ_perf/p は E∞-F_p 代数で、φ の自己同型が P⁰ を誘導し P⁰ が可逆（Shared/EInfinityPowerOperation の levelwise Frobenius ＝ P⁰）、
 P⁰ は π_n（n > 0）で零（Rem 2.2.7）⇒ π_n(Δ_perf/p) = 0 ⇒ Δ_perf/p ∈ D^{≥0} ⇒ Δ_perf ∈ D^{≥0}（p 完備、導来 Nakayama）。
-規約：D(A) の `IsConnectiveAt 0`（cohomological な D^{≥0}）。
+規約：D(A) の `IsCoconnectiveAt 0`（cohomological な D^{≥0}。W9-I-28 で名前を原典に揃えた）。
 使われ方：(b)、Cor 8.14、Prop 8.5、Thm 10.11。 -/
 theorem prismaticPerfection_coconnective : True := by trivial
 

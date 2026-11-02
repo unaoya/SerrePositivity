@@ -107,7 +107,8 @@ theorem derivedPrismaticCohomology_preservesSifted : True := by trivial
 theorem derivedPrismaticCohomology_poly (n : ℕ) : True := by trivial
 
 /-- 概要：Frobenius φ : Δ → φ_{A*} ∘ Δ（Poly 上の φ の Kan 延長）。
-方針：φ_{A*} は余極限を保つので、両辺とも sifted 余極限保存。Poly 上の自然変換の延長（HTT 5.5.8.15 の関手 ∞ 圏の同値）。
+方針：φ_{A*} は CAlg_A の **sifted** 余極限を保つ（全余極限ではない：初期対象は保たれない、W9-I-27）ので、両辺とも sifted 余極限保存。
+完備版では (p,d) と (p,φ(d)) が同じ位相なのでスカラー制限は完備対象を保つ。Poly 上の自然変換の延長（HTT 5.5.8.15 の関手 ∞ 圏の同値）。
 規約：—
 使われ方：A4（Def 8.2 の φ 余極限）。 -/
 def derivedPrismaticFrobenius : True := trivial

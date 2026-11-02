@@ -233,6 +233,18 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 4. semiperfectoid の場合の底変換（D48）：§3.4 (β) の代案を採る／原典の一文の正当化を先に紙で詰める。
 5. Prop 8.13 の導来版（A7）を A5-2 の前に出すか：(5) を直接使えば不要（推奨）。
 
+### 7.1 追加の決定項目（2026-11-02、Codex W9-I-29 から）
+
+6. **Prop 8.5 の定義域と系 4**：D45 で「S は離散、π_0 S の文は述べない」としたが、E3 の非完備な離散 S の欄（D41：perfd S := (completionRing S)_perfd、
+   completionRing S = H⁰(LΛ_p S)）と、A8 の Thm 10.11（原典は「整写像の p 完備化」＝animated LΛ_p S について）・A4-3 の `e3Perfd_eq_direct` を結ぶには、
+   (LΛ_p S)_perfd ≃ (π_0 LΛ_p S)_perfd が要る。これは原典 Prop 8.5 の系 4「Δ_{S,perf} と S_perfd は π_0 S のみによる」。
+   **提案（推奨）**：A7 の D60 で Def 8.2 の定義域を導来 p 完備な animated R 代数に戻したのに合わせ、Prop 8.5 も原典どおり導来 p 完備な animated S で述べる
+   （site は π_0 S で定義：(S/A)^perf = (π_0 S/A)^perf、原典 p.64）。証明の四段は animated S でも同じ（(2) filtered 余極限、(3) T → S は π_0 で全射、
+   (4) π_0 S semiperfectoid：HT の連結性は L_{S/Z_p}[−1] の連結性 ⇔ Ω^1_{π_0 S}/p = 0 で、Thm 7.4 は π_0 S に）。系 4 はこれから直ちに出る
+   （Perfd_{S/} = Perfd_{π_0 S/}）。D45 を「S は導来 p 完備な animated（E3 の始域の離散 S はその特別な場合）」に改める。
+   ／代案：Prop 8.5 は離散のまま、Thm 10.11 と E3 の欄を H⁰ 完備化 S^∧ の離散環について直接述べる（S^∧ が整写像の p 完備化であることの確認と、
+   filtered 余極限の議論を S^∧ で組み直す必要があり、原典から離れる）。
+
 ## 8. 紙で確かめる項目
 
 1. Perfd_{S/} の余積が (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ が semiperfectoid、Cor 7.3 の普遍性）。

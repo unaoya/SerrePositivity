@@ -68,11 +68,13 @@ theorem hodgeTatePoly_bounded (n : ℕ) : True := by trivial
 
 /-! ## Kan 延長 -/
 
-/-- 概要：HT filtration Fil_i Δ̄ : P_Σ(N(Poly k)) → D(A)、τ^{≤i} Δ̄_0 の sifted 余極限保存な延長。
-方針：A2-1 の `exists_siftedExtension`（D(A) は sifted 余極限をもつ）。
-規約：D(A) 値。
+/-- 概要：HT filtration Fil_i Δ̄ : P_Σ(N(Poly k)) → D(k)_{p-comp}（k = A/d）、τ^{≤i} Δ̄_0 の**完備圏内の** sifted 余極限保存な延長
+（= LΛ_p ∘ Lan。W9-I-26：D(A) で延長すると p 完備性が失われ Fil_0 ≠ R^∧）。
+方針：A2-1 の `exists_siftedExtension` を完備圏（または D(k) で延長して `completion`（DerivedGeneral/CompletionFunctor）を後合成）。
+規約：値は導来 p 完備な D(k) の対象（`IsDerivedComplete`）。D(A) へは忘却。
 使われ方：以下。 -/
-def hodgeTateFiltration (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory A := sorry
+def hodgeTateFiltration (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory (A ⧸ P.ideal) := sorry
+-- 要確認：値の圏を完備な fullSubcomplex（A7-1 の `CompleteAnimatedAlgebra` と同じ道具で D(k) 版）にするか、LΛ_p を後合成した形にするか
 
 /-- 概要：Fil_i → Fil_{i+1} と Fil_i → Δ̄（Poly 上の τ^{≤i} → τ^{≤i+1} → Δ̄ の延長）。
 方針：自然変換の Kan 延長。
@@ -80,28 +82,35 @@ def hodgeTateFiltration (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedI
 使われ方：filtration の構造。 -/
 def hodgeTateFiltration_step (i : ℕ) : True := trivial
 
-/-- 概要：導来外冪つき余接複体の p 完備化の定義（D33）：(∧^i L_{R/k})^∧ := (P ↦ Ω^i_{P/k}) の sifted 余極限保存な延長。
-方針：Shared/DeRhamPolynomial の `completedForms` を A 加群として D(A) に埋め、Kan 延長。
-規約：i = 1 が余接複体 L^∧_{R/k}。Illusie の定義（単体的分解による Kan 延長）と同じ。
+/-- 概要：導来外冪つき余接複体の p 完備化の定義（D33）：(∧^i L_{R/k})^∧ := LΛ_p ∘ Lan（P ↦ Ω̂^i_{P/k}）（完備圏内の sifted 余極限保存延長、W9-I-26）。
+方針：Shared/DeRhamPolynomial の `completedForms` を k 加群として D(k) に埋め、完備圏で Kan 延長。
+規約：i = 1 が余接複体 L^∧_{R/k}。Illusie の定義（単体的分解による Kan 延長）の p 完備化と同じ。
 使われ方：gr の同一視、A5（L_{S/Z_p} の連結性）。 -/
-def cotangentWedge (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory A := sorry
+def cotangentWedge (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory (A ⧸ P.ideal) := sorry
 
 /-- 概要：gr^i Fil Δ̄_R ≃ cotangentWedge i (R)[−i]（原典の「Hodge–Tate comparison for Δ̄_R」）。
-方針：Kan 延長は cofiber と交換（余極限と shift と交換）、Poly 上で `hodgeTatePoly_gr`。
+方針：LΛ_p は完全で cofiber と交換、Kan 延長は余極限と shift と交換、Poly 上で `hodgeTatePoly_gr`。
 規約：同値は D(A) の可逆な辺、R について自然。
 使われ方：A2-4、A5、A7、A8。 -/
 theorem hodgeTateFiltration_gr (i : ℕ) : True := by trivial
 
-/-- 概要：filtration は exhaustive：colim_i Fil_i Δ̄_R ≃ Δ̄_R。
-方針：Kan 延長は ℕ 添字の余極限と交換、Poly 上は有限段で止まる（`hodgeTatePoly_bounded`）。
-規約：完備化との両立は A2-4 の完備化不変性で扱う（Δ̄ は Δ ⊗ A/d で、Δ は完備。Δ̄ の完備性は p についてのみ）。
+/-- 概要：filtration は exhaustive：**完備圏の余極限で** colim_i^{comp} Fil_i Δ̄_R ≃ Δ̄_R（D(k) の余極限で述べるなら LΛ_p を付ける、W9-I-26）。
+方針：完備圏内の Kan 延長は ℕ 添字の（完備化した）余極限と交換、Poly 上は有限段で止まる（`hodgeTatePoly_bounded`）。
+規約：Δ̄ = Δ ⊗ A/d は p 完備（Δ は (p,d) 完備）。
 使われ方：連結性・離散性の議論（A3・A5）。 -/
 theorem hodgeTateFiltration_exhaustive : True := by trivial
 
-/-- 概要：Fil_0 Δ̄_R ≃ (L^∧ の 0 次 =) R^∧ の p 完備化、すなわち単位 R → Δ̄_R の H⁰ への射（E3 の `unit` の材料）。
-方針：Poly 上で τ^{≤0} Δ̄_P = H⁰ = P^∧（Thm 6.3 の η⁰）、Kan 延長。
-規約：—
+/-- 概要：Fil_0 Δ̄_R ≃ LΛ_p R（animated な導来 p 完備化）、すなわち単位 R → Δ̄_R（E3 の `unit` の材料）。
+方針：Poly 上で τ^{≤0} Δ̄_P = H⁰ = P^∧（Thm 6.3 の η⁰）、完備圏で Kan 延長。
+規約：離散 R では LΛ_p R は一般に離散でない（W9-I-29）。E3 の `completionRing R` = H⁰(LΛ_p R) との関係は perfd の段で（a5-design §7.1）。
 使われ方：A4（単位）、E3 の `unit`・`h0`。 -/
 theorem hodgeTateFiltration_zero : True := by trivial
+
+/-- 概要：Fil_0 → Δ̄ を **CAlg_k の自然変換**として（W9-I-30）：Poly 上で H⁰(Δ̄_P) = P^∧ は coconnective な E∞ 代数 Δ̄_P の連結被覆で
+H⁰(Δ̄_P) → Δ̄_P は E∞ 代数の射、LΛ_p は CAlg に持ち上がる（G-A2-9）ので CAlg_k で Kan 延長。
+方針：A7-1 の `animatedCompletion`、`derivedPrismaticCohomology` の CAlg 値。
+規約：`FunctorHom`（CAlg_k 値の関手の圏の射）。E3 の `unit` は H⁰ の環準同型ではなくこれから作る。
+使われ方：A4-3 `e3Unit`。 -/
+def hodgeTateUnitCAlg : True := trivial
 
 end SerrePositivity.BhattScholze.Prismatic

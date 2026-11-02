@@ -195,6 +195,12 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-23 `hodgeTate_iso`・`prismaticCohomology_baseChange'` の二重宣言 | 要修正 | 訂正済み（HodgeTateMap 側を述語に） |
 | W9-I-24 CAlg の錐の指定（正規化模型、AW との比較） | 要確認 | 反映済み（drafts/Shared/CosimplicialEInfinity の方針） |
 | W9-I-25 r = 1 → Lemma 4.10 → 一般 r の順序 | 要確認 | 反映済み（a1-design §3 の 2、HodgeTateComparison の方針） |
+| W9-I-26 HT filtration・導来外冪を D(A) で Kan 延長すると完備性が失われる（Fil_0 ≠ R^∧） | 致命 | **訂正済み**（a2-design §2.3・D33：D(k)_{p-comp} 内の延長 LΛ_p ∘ Lan、exhaustive は完備圏で、G-A2-9；drafts/A2/HodgeTateFiltration） |
+| W9-I-27 φ_{A*} は CAlg_A の全余極限を保たない | 要修正 | 訂正済み（sifted に。a2-design §2.2、DerivedPrismaticCohomology） |
+| W9-I-28 切り捨ては dg 関手にならない；connective の名前が原典と逆 | 要修正 | 訂正済み（Truncation：相対圏の局所化または t 構造の随伴；`IsConnectiveAt` = D^{≤n}、`IsCoconnectiveAt` = D^{≥n} に入れ替え、A4 の参照も） |
+| W9-I-29 animated 完備化と `completionRing` = H⁰ の区別 | 要確認 | 反映済み（a2-design §2.4・D32、BaseChangeAndTensor）。E3 との接続は perfd の段で Prop 8.5 系 4 が要る → **a5-design §7.1 の決定項目 6（Prop 8.5 を animated S で、D45 改訂）** |
+| W9-I-30 E3 の `unit` は CAlg の関手射 | 要確認 | 反映済み（Fil_0 → Δ̄ を CAlg で：`hodgeTateUnitCAlg`、a2-design §2.3） |
+| W9-I-31 `Poly` の k パラメータ | 要修正 | 訂正済み（AnimatedAlgebra） |
 
 既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
 
