@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.CategoryTheory.IteratedCone
 public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 

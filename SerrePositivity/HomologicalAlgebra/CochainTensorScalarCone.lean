@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.HomologicalAlgebra.TensorConeNaturality
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Symmetric
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 
 /-! # Tensoring the unit scalar cone with a cochain complex -/
 @[expose] public section

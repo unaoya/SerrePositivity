@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Criterion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Dimension
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.PerfectComplex.FiniteProjectiveResolutions
 
 /-! # Regularity of prime localizations without a global dimension assumption -/

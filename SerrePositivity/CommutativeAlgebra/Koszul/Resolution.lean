@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomologicalFunctor
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
@@ -23,7 +23,7 @@ public import SerrePositivity.HomologicalAlgebra.Tor
 かつ `H^0(K(x)) ≅ R/(x)` であることを示す（`isKoszulResolution_of_isWeaklyRegular`）。この性質を
 `IsKoszulResolution x` と名付け、これをみたす `K(x)` を Mathlib の射影分解に仕立て
 （`koszulResolution`）、`Tor_i^A(C, A/(z))` を Koszul ホモロジー `H_i(φ z; C)` で計算する
-（`torAlgKoszulEquiv`。論文 (3.9)）。Koszul 複体の定義と項の性質は `Koszul.lean`。
+（`torAlgKoszulEquiv`。論文 (3.9)）。Koszul 複体の定義と項の性質は `Koszul/Basic.lean`。
 
 ## 証明の筋道
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.PerfectComplex.Free.Euler
 public import SerrePositivity.LengthAlgebra.KoszulFormula
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.PerfectComplex.KoszulGeneration
 public import SerrePositivity.PerfectComplex.Free.K0
 public import SerrePositivity.LengthAlgebra.Koszul
@@ -316,7 +316,7 @@ variable [IsRegularLocalRing A] [Module.Finite A T]
 include hz' hdim in
 /-- 正則局所環の正則パラメータ系 `z` の Koszul 複体は `A/(z) = k` の分解である。A1（`z` は弱正則列、
 `CommutativeAlgebra/RegularLocalRing.lean`）と Koszul 複体の完全性
-（`CommutativeAlgebra/KoszulResolution.lean`）
+（`CommutativeAlgebra/Koszul/Resolution.lean`）
 による。3.5b の両側が共通に使う。 -/
 lemma isKoszulResolution_of_regular : IsKoszulResolution z :=
   isKoszulResolution_of_isWeaklyRegular z (isWeaklyRegular_of_span_eq_maximalIdeal A z hz' hdim)

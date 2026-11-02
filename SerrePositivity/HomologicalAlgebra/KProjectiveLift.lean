@@ -25,7 +25,7 @@ Lemma 3.5b の証明（`PerfectComplex/KoszulGeneration.lean`）では、台つ�
 ## 使われ方
 
 `Q`（有界で項が射影的なので K 射影的）から `k[0]` への射を、擬同型 `K(z) → k[0]`
-（Koszul 複体の添加写像、`CommutativeAlgebra/KoszulResolution.lean`）に沿って持ち上げる。
+（Koszul 複体の添加写像、`CommutativeAlgebra/Koszul/Resolution.lean`）に沿って持ち上げる。
 `CommutativeAlgebra/Truncate.lean` では、K 射影的な複体の間の擬同型がホモトピー同値であることを
 Mathlib から直接使う。
 -/

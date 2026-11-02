@@ -27,7 +27,7 @@ public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 性質を示す。Koszul 複体はこのプロジェクトで二つの役割をもつ。
 
 - 正則局所環 `A` の正則パラメータ系 `z` について、`K(z; A)` は剰余体 `k = A/(z)` の有限自由分解で
-  ある（`KoszulResolution.lean`）。これにより `Tor_i^A(C, k)` が Koszul ホモロジー `H_i(z; C)` で
+  ある（`Koszul/Resolution.lean`）。これにより `Tor_i^A(C, k)` が Koszul ホモロジー `H_i(z; C)` で
   計算でき（論文 (3.9)、Lemma 3.4、Corollary 2.6）、また `K(z)` の類が台つき完全複体の `K₀` を
   生成する（Lemma 3.5b、`PerfectComplex/KoszulGeneration.lean`）。
 - `K(z)` は、`z` に台をもつ完全複体の基本例である（`PerfectComplex/Support.lean`）。
@@ -61,7 +61,7 @@ public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
   等しい（Serre の定理。`CommutativeAlgebra/RegularLocalRing.lean` の入力）。
 - 基底変更との両立 `K(z; A) ⊗_A C ≅ K(φ z; C)`。
 
-完全性（正則列なら分解）は `KoszulResolution.lean`。
+完全性（正則列なら分解）は `Koszul/Resolution.lean`。
 -/
 
 @[expose] public section
@@ -348,7 +348,7 @@ lemma koszulComplex_free_finite_X :
     exact mappingCone_free_finite _ i
 
 /-- Koszul 複体の各項は射影的（有限自由だから）。`K(x)` を射影分解として使うとき
-（`KoszulResolution.lean`）に要る。 -/
+（`Koszul/Resolution.lean`）に要る。 -/
 lemma koszulComplex_projective_X {n : ℕ} (x : Fin n → R) (i : ℤ) :
     Projective ((koszulComplex x).X i) :=
   projective_of_free (koszulComplex_free_finite_X x i).1
@@ -387,7 +387,7 @@ Koszul 複体と両立する：`K(z; A) ⊗_A C ≅ K(φ z; C)`（`baseChangeKos
 `homotopyCofiber.mapHomologicalComplexObjIso`）と、係数拡大が `a • 𝟙` を `φ(a) • 𝟙` に送ること
 （`baseChange_smulId`）から、`n` についての帰納法で出る。Lemma 3.5b で `K(z; A) ⊗_A T` の Euler 評価を
 計算するときと、`Tor_i^A(C, A/(z))` を Koszul ホモロジー `H_i(φ z; C)` で表すとき
-（`KoszulResolution.lean` の `torAlgKoszulIso`）に使う。任意の複体を係数とする版
+（`Koszul/Resolution.lean` の `torAlgKoszulIso`）に使う。任意の複体を係数とする版
 `baseChangeKoszulOnIso` は §4 の係数変更の評価（Paper/Section4/RankQuotient）で使う。
 -/
 

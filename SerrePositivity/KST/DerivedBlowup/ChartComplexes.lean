@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.Charts
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 
 /-!
 概要：KST Def3.1・Lemma3.6 と §5.3 の有限チャートの Koszul 複体を構成する。

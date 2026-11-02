@@ -4,7 +4,7 @@ public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.HomologicalAlgebra.TorFiniteLength
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.LengthAlgebra.Core
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import Mathlib.RingTheory.Regular.RegularSequence
 public import Mathlib.Topology.Instances.ENNReal.ENatENNReal
 public import SerrePositivity.LengthAlgebra.Koszul

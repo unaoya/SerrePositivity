@@ -4,7 +4,7 @@ public import SerrePositivity.LengthAlgebra.RootTowerLength.Basic
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Additivity
 public import SerrePositivity.LengthAlgebra.Normalized
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.Perfect
