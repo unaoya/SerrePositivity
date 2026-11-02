@@ -32,10 +32,10 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
 | A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology | — | C（G-A2-3・4）、G-A1-11 |
 | G-A1-11 CAlg 値の層・RΓ、模型の E∞ 構造 | a1-design G-A1-11、a2-design §2.2 | Sheaves/CAlgValued、Shared/CosimplicialEInfinity | — | C（G12、U の保存性、Barratt–Eccles の余鎖作用の形） |
-| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | 未 | 未（a2 §7 の 2） | C（G-A2-2） |
+| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | A2/HodgeTateFiltration | 未（a2 §7 の 2） | C（G-A2-2） |
 | G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
 | G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
-| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | 未 | 未（a2 §7 の 3・4） | C・D |
+| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor | 未（a2 §7 の 3・4） | C・D |
 | A3〜A9 | 未 | 未 | — | — |
 
 骨組みの規模：11 本、約 1,700 行（`sorry` 85、置き場の `True` 38）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e。
