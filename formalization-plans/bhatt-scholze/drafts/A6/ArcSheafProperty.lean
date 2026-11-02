@@ -52,34 +52,50 @@ def IsVCoverFamily {A : Type u} [CommRing A] {ι : Type u} [Finite ι] (B : ι �
 def IsArcCoverFamilyCharP {A : Type u} [CommRing A] {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]
     (f : ∀ i, A →+* B i) : Prop := sorry
 
-/-- 概要：**G-A6-1a**［引用、`sorry`］[BS17, Thm 4.1 (i)]（n = 1、E = O）：完全 F_p 代数 A と v 被覆族 {A → B_i} について A = RΓ_v(Spec A, O)、
-すなわち 0 → A → ∏B_i → ∏B_i ⊗_A B_j → ⋯ が完全。
+/-- 概要：**G-A6-1a**［引用、`sorry`］[BS17, Thm 4.1 (i)]（n = 1、E = O）：完全 F_p 代数 A と**完全** F_p 代数 B_i への v 被覆族 {A → B_i} について
+A = RΓ_v(Spec A, O)、すなわち 0 → A → ∏B_i → ∏B_i ⊗_A B_j → ⋯ が完全（W9-II-18：被覆と Čech の各項は完全スキームの圏で取る。適用先
+B = S^♭ × R^♭[1/d] は完全）。
 方針：引用（v 降下、完全スキーム）。
 規約：affine・有限族（D59）。
 使われ方：G-A6-1。 -/
-theorem cech_exact_of_vCover_perfect {A : Type u} [CommRing A] [CharP A p] [PerfectRing A p] : True := by
+theorem cech_exact_of_vCover_perfect {A : Type u} [CommRing A] [CharP A p] [PerfectRing A p]
+    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)] [∀ i, CharP (B i) p] [∀ i, PerfectRing (B i) p]
+    (f : ∀ i, A →+* B i) (hf : IsVCoverFamily B f) : True := by
   sorry -- [BS17, Thm 4.1 (i)]
 
-/-- 概要：**G-A6-1b**［引用、`sorry`］[BM18, Thm 1.7]（BS の引用では Thm 1.6）の affine 版：finitary（filtered 余極限と可換）な
-F : (F_p 代数)^op → D(Z)_{≥0} について、F が arc 層 ⇔ F が v 層かつ、分数体が代数閉な任意の付値環 V と素イデアル 𝔭 ⊂ V について
+/-- 概要：**G-A6-1b**［引用、`sorry`］[BM18, Thm 1.7]（BS の引用では Thm 1.6）の affine 版：finitary（filtered 余極限と可換）な**共変**関手
+F : Ring_{F_p} → D(ℤ)^{≥0}（W9-II-17：環の圏の上では共変、値は cohomological に coconnective：H^i = 0 for i < 0。適用する A ↦ A_perf は環に共変）
+について、F が arc 層 ⇔ F が v 層かつ、分数体が代数閉な任意の付値環 V と素イデアル 𝔭 ⊂ V について
 F(V) → F(V/𝔭)、F(V_𝔭) → F(κ(𝔭)) の四角形が cartesian。使うのは ⇐。
 方針：引用。
-規約：D(Z)_{≥0} は `derivedInfinityCategory ℤ` の連結部分。層条件は有限族の Čech（D-S1）。
+規約：D(ℤ)^{≥0} は `derivedInfinityCategory ℤ` の coconnective 部分（`IsCoconnectiveAt 0`）。層条件は有限族の Čech（D-S1）。
+affine 版（D59）の根拠：v 層は有限 affine 開被覆の降下を満たすので affine の値から qcqs へ延長でき、finitary 性は有限段の降下と一様に coconnective な
+Tot の filtered 余極限との交換（BM18 v4 p.4 Thm 1.7、p.17 Ex 3.6(1)、p.25 Thm 4.1）。
 使われ方：G-A6-1。 -/
 theorem arcSheaf_of_vSheaf_of_valuationSquares : True := by
   sorry -- [BM18, Thm 1.7]
 
-/-- 概要：**G-A6-1c**［引用、後で証明］[BS17, Lemma 6.2・6.3]：付値環 V と素イデアル 𝔭 について、V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は
-環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian。
-方針：Mathlib の `ValuationRing`：x ∈ V_𝔭 の像が V/𝔭 に入るなら x ∈ V。
+/-- 概要：初等補題（引用ではない、W9-II-18）：任意の付値環 V と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全、すなわち
+V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian。
+方針：𝔭V_𝔭 = 𝔭（a ∈ 𝔭、s ∉ 𝔭 で a/s ∉ V なら付値環性で s/a ∈ V、s = a·(s/a) ∈ 𝔭 で矛盾；a/s ∈ V なら素性で a/s ∈ 𝔭）。よって V_𝔭/𝔭V_𝔭 = κ(𝔭) で
+V → V_𝔭 と V → V/𝔭 の核が一致し短完全列、右の射は差で V_𝔭 → κ(𝔭) は全射。cocartesian は局所化と商の可換性。加群の導来圏でも cartesian。
 規約：—
-使われ方：G-A6-1（F = O_perf の四角形）。 -/
+使われ方：`valuationRing_milnorSquare_perfect`。 -/
 theorem valuationRing_milnorSquare {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] (𝔭 : Ideal V) [𝔭.IsPrime] : True := by
   sorry -- 初等的。中身の段階で証明
 
+/-- 概要：**G-A6-1c**［引用、`sorry`、上の初等補題の特殊化として後で証明］[BS17, Lemma 6.3]（Lemma 6.2 は付値環による v 被覆の主張で、この四角形
+ではない。W9-II-18）：**完全**付値環 V（標数 p）と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全。
+方針：原典の形で引用。適用先（分数体が代数閉な標数 p の付値環）は完全なのでこの特殊化で足りる。
+規約：「完全」の仮定を落とした一般版を引用そのものとは記さない。
+使われ方：G-A6-1（F = O_perf の四角形）。 -/
+theorem valuationRing_milnorSquare_perfect {V : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CharP V p] [PerfectRing V p]
+    (𝔭 : Ideal V) [𝔭.IsPrime] : True := by
+  sorry -- [BS17, Lemma 6.3]
+
 /-- 概要：G-A6-1：完全 F_p 代数の有限族の arc 被覆 {A → B_i} について 0 → A → ∏B_i → ∏B_i ⊗_A B_j → ⋯ が完全。
 方針：F := (A ↦ A_perf) は F_p 代数上の finitary な関手。1a を完全化に当てて v 層（完全化は v 被覆を保つ）。分数体が代数閉な付値環は完全なので
-四角形は 1c の Milnor 四角形で cartesian。1b で arc 層。arc 層で F(A) 離散なら Tot = Čech 複体の完全性。
+四角形は 1c の Milnor 四角形（`valuationRing_milnorSquare_perfect`）で cartesian。1b（共変、D(ℤ)^{≥0} 値）で arc 層。arc 層で F(A) 離散なら Tot = Čech 複体の完全性。
 規約：—
 使われ方：Prop 8.10。 -/
 theorem cech_exact_of_arcCover_perfect {A : Type u} [CommRing A] [CharP A p] [PerfectRing A p] : True := by trivial

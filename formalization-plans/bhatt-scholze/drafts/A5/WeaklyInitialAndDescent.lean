@@ -62,7 +62,8 @@ theorem rootClosure_extends : True := by trivial
 /-- 概要：(ii) S̃ は semiperfectoid：S̃/p は semiperfect（各元が次の段で p 乗根をもつ）、p 完備な R 代数で mod p semiperfect なら perfectoid の商
 （G-A5-14、[BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ 全射、R ⊗̂ W(S̃^♭) は perfectoid）。
 方針：既存の θ（`fontaineTheta`）と完備テンソル。
-規約：A5-2 の `IsSemiperfectoid`。
+規約：A5-2 の `IsSemiperfectoid`。**perfectoid 基底 R は本質的**（W9-II-16）：ker θ の distinguished 元は R 由来。基底なしでは偽
+（S = ℤ_p の根添加は ℤ_p へ retraction をもつ）。A6 の Lemma 8.8 は前段 G-A6-11 で R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移してから本定理を使う。
 使われ方：S̃_perfd の存在（Cor 7.3）、A5-2 の適用。 -/
 theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) := by sorry
 

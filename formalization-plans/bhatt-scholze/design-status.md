@@ -49,7 +49,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 未（a5 §8 の 6・7） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
-| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3 |
+| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
@@ -234,6 +234,10 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-II-13 `IsDescendable` の底が離散環に限られる | 要修正 | 反映済み（一般形 `IsDescendableOver`：対称モノイダル安定 ∞ 圏の可換代数対象を底に。a5-design §2.4） |
 | W9-II-14 G-A5-11 の「次数 −1 集中」 | 要修正 | 訂正済み（次数 −1 以下。a5-design G-A5-11、SemiperfectoidCase） |
 | W9-II-15 S・T・I が完備でも T/IT は導来 p 完備とは限らない（平方零拡大の反例、`ArcOutside` も成立） | 致命 | **訂正済み**（a6-design §2.3・G-A6-10・§8.7：S/I の部分だけ残し、T/IT は `completionRing` 経由の自然同型 F_U ≃ F_{completionRing U}、Γ(F_U, O) ≃ e3Perfd(U) で四角形を自然変換として移す。`Excision.lean`） |
+| W9-II-16 全 p 完備環の affCompl_κ の cover-dense を、perfectoid 基底を仮定する A5-4 の `rootClosure_isSemiperfectoid` から導いている（ℤ_p から基底なしの根添加を始めると ℤ_p へ retraction、perfectoid 環から ℤ_p への環準同型はないので semiperfectoid でない） | 致命 | **訂正済み（2026-11-03）**：global な affCompl_κ は維持（Codex 推奨 (a)）し、前段 G-A6-11 を追加：R₀ := ℤ_p[p^{1/p^∞}]^∧、S₀ := completionRing(S ⊗_{ℤ_p} R₀) を R₀ 代数として A5-4 の根添加へ。arc 被覆の持ち上げは perfectoid な W（G-A6-3）を**先に**取り、R₀ → W・S₀ → W → `rootClosure_extends` → 普遍性の順（旧「S̃ → V に延びてから W」は順序が誤り）。a6-design §1・§2.1・§4・§7・§8.8・§9・§10、`ArcSite.lean`（`perfectoidBaseRing`・`baseExtension`・`exists_baseExtension_lift`・`exists_perfectoid_arcCover`）、ノート第 8 章。別案 (b)（固定 R 上の相対 site）は採らない。修復後の層の延長までの全接続は Codex 未確認 |
+| W9-II-17 G-A6-1b の骨組みが `(F_p 代数)^op` と「連結部分」で、BM18 の共変 Ring_{F_p} → D(ℤ)^{≥0}（coconnective）と揃わない | 要修正 | 訂正済み（共変・H^i = 0 for i < 0 の規約を明示。affine 版 D59 の根拠として Zariski 降下と finitary 性の確認を記録。a6-design §4・D59、`arcSheaf_of_vSheaf_of_valuationSquares`） |
+| W9-II-18 1a は被覆側も完全環であることを明記、1c は BS17 Lemma 6.3（完全付値環）の特殊化で Lemma 6.2 はその四角形ではない | 要修正 | 訂正済み（1a に B_i の完全性を追加。1c は `valuationRing_milnorSquare`（任意の付値環、初等補題：𝔭V_𝔭 = 𝔭）と引用 `valuationRing_milnorSquare_perfect`（[BS17, Lemma 6.3]）に分離。a6-design §4・D56） |
+| W9-II-19 S′ × S/I への取り替え後の四角形は元の四角形と恒等四角形の文字どおりの積ではない | 軽微 | 訂正済み（(B × C) ×_{D × C} C ≃ B ×_D C、C → D × C は (g, id) として記述。a6-design §3.2(2)、`excision_of_excision_prod`） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

@@ -68,8 +68,10 @@ def perfdUnderProdEquiv : True := trivial
 使われ方：Cor 8.12 で S′ を S′ × S/I に替えて戻す（D58）。 -/
 theorem perfectoidization_prod : True := by trivial
 
-/-- 概要：S″ := S′ × S/I の四角形（S → S″、I）が引き戻しなら、S′ の四角形も引き戻し（S″/IS″ = S′/IS′ × S/I、S″ の四角形は S′ の四角形と恒等の四角形の積）。
-方針：`perfectoidization_prod` と引き戻しの積。
+/-- 概要：S″ := S′ × S/I の四角形（S → S″、I）が引き戻しなら、S′ の四角形も引き戻し（S″/IS″ = S′/IS′ × S/I）。
+方針（W9-II-19 で訂正）：左上の S_perfd は積に変わらないので「S′ の四角形と恒等四角形の文字どおりの積」ではない。B := S′_perfd、C := (S/I)_perfd、
+D := (S′/IS′)_perfd、g : B → D と書き、`perfectoidization_prod` で S″_perfd ≃ B × C、(S″/IS″)_perfd ≃ D × C。S″ の四角形の引き戻しは
+(B × C) ×_{D × C} C（C → D × C は (g, id_C)）で、有限極限の計算により B ×_D C に標準的に同値、各射影は元の商写像と両立する。結論は変わらない。
 規約：—
 使われ方：Cor 8.12 の帰着。 -/
 theorem excision_of_excision_prod : True := by trivial

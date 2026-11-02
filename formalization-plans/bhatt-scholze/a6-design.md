@@ -18,7 +18,7 @@ Lean の名前は仮。ビルドしない。
 ## 0. 範囲と前提
 
 - 含む：Def 8.7 の affine 版（κ-small の perfectoid 環の圏の arc 位相、[BM18, Def 1.2] の有限族の形）、arc 被覆の底変換・合成での安定性、
-  Prop 8.10（O が arc 層；affine T について Hom(T, −) が集合の arc 層）、Cor 8.12、E3 の `excision`、Lemma 8.8 の affine 版（記録。A5-4 の S̃ から）。
+  Prop 8.10（O が arc 層；affine T について Hom(T, −) が集合の arc 層）、Cor 8.12、E3 の `excision`、Lemma 8.8 の affine 版（cover-dense。前段 G-A6-11 で R₀ 上へ移してから A5-4 の S̃、W9-II-16）。
 - 含まない：p 進形式スキーム fSch とその上の arc 位相（D53）、Cor 8.11 の RΓ_arc(Spf S, O)（fSch 上の層コホモロジー。E3 で使う等式
   S_perfd = Γ(F_S, O) は Prop 8.5 の極限の形そのもの、D55）、Prop 8.10 の後半の非 affine T、Rem 8.9。
 - 前提：A5（Prop 8.5 の極限の形、Type u 版、Perfd_{S/} の余積、弱始対象）、S1〜S4（E 値の層）、**S8**（空間値の層、§4）、
@@ -32,7 +32,7 @@ Lean の名前は仮。ビルドしない。
 | --- | --- | --- | --- | --- |
 | Def 8.7 | 定義（affine 版、D53・D54）：perfectoid 環 R → R_i の有限族が arc 被覆 ⇔ p 完備な階数 1 の付値環 V への R → V は、忠実平坦な拡大 V ⊂ W と或る R_i → W に持ち上がる；位相は生成される Grothendieck 位相 | `IsArcCoverFamily`、`arcTopology` | `ArcOutside`（界面、同じ V の条件） | A6-1 |
 | arc 被覆の安定性 | 定理：底変換・合成・有限族の合併で安定（coverage） | `isArcCover_baseChange`、`_comp` | なし | A6-1 |
-| Lemma 8.8 | 定理（affine 版、記録）：任意の p 完備 S は perfectoid による arc 被覆をもつ（S → S̃ → S̃_perfd） | `exists_perfectoid_arcCover` | A5-4 の `rootClosure` | A6-1 |
+| Lemma 8.8 | 定理（affine 版、cover-dense として証明の中で使う）：任意の p 完備 S は perfectoid による arc 被覆をもつ（S → S₀ → S̃₀ → (S̃₀)_perfd。S₀ := completionRing(S ⊗_{ℤ_p} R₀)、R₀ := ℤ_p[p^{1/p^∞}]^∧ の上で A5-4 の根添加。W9-II-16） | `exists_perfectoid_arcCover` | G-A6-11（前段）、A5-4 の `rootClosure`（R₀ 上）、A5-2、G-A6-3 | A6-1 |
 | Rem 8.9 | 不要 | — | — | — |
 | Prop 8.10 前半 | 定理：O は affPerfd_κ 上の arc 層（Čech 層、D-S1） | `structurePresheaf_isArcSheaf` | tilt への帰着（§3.1）、**黒箱 G-A6-1** | A6-2 |
 | Prop 8.10 後半 | 定理（affine T）：Hom(T, −) は集合の arc 層 | `homPresheaf_isArcSheaf` | 前半から（環の等化子） | A6-2 |
@@ -53,8 +53,18 @@ Lean の名前は仮。ビルドしない。
 - `arcTopology`：有限 arc 被覆族の生成 sieve を含む Grothendieck 位相の sInf（A0 の `flatTopology` と同じ形、D22）。coverage であること
   （底変換で安定：R → R′ と arc 被覆 {R → R_i} に対し {R′ → R_i ⊗̂_R R′}（完備テンソルは perfectoid、`CompletedTensor`）が arc 被覆；
   V への R′ → V は R → V を与え、持ち上げ R_i → W と R′ → V → W で R_i ⊗̂_R R′ → W）で、S1 の「生成系で十分」の補題が使える。
-- Lemma 8.8（記録）：p 完備 S に対し S → S̃ → S̃_perfd（A5-4）は arc 被覆（S → V は S̃ → V に延び（A5-4 の (i)）、V を perfectoid に取り替えてから
-  S̃_perfd → W。G-A6-3）。
+- Lemma 8.8（cover-dense、**W9-II-16 で修復**）：A5-4 の `rootClosure` の semiperfectoid 性（G-A5-14）は perfectoid 基底 R を仮定するので、全 p 完備環の
+  affCompl_κ の対象にそのまま当てることはできない。反例：S = ℤ_p から基底なしで同じ根添加 C_{k+1} = (C_k⟨X_a, Y_a⟩/(a − X_a^p − pY_a))^∧ を始めると、
+  各段で x^p ≡ z mod p の x ∈ ℤ_p を選んで C_{k+1} → ℤ_p が延び、ℤ_p → C_∞ → ℤ_p は恒等。perfectoid 環 P から ℤ_p への環準同型は存在しない
+  （p = uϖ^p から 1 = v_p(p) = p·v_p(ϖ) で矛盾、零環からも不可）ので C_∞ は perfectoid の商でなく semiperfectoid でない（C_∞/p の Frobenius 全射は正しい。
+  誤りは基底なしに semiperfectoid 性へ進む所）。そこで**前段**を置く（G-A6-11）：R₀ := ℤ_p[p^{1/p^∞}]^∧（perfectoid）、
+  S₀ := completionRing(S ⊗_{ℤ_p} R₀)（p 完備な R₀ 代数、#S₀ ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ）とし、S₀ に R₀ 上の A5-4 の根添加を施して S̃₀、その普遍 perfectoid 環
+  (S̃₀)_perfd（A5-2）を取る。S → S₀ → S̃₀ → (S̃₀)_perfd が arc 被覆であること：S → V（試験付値環）に対し**先に** V を perfectoid な W（絶対整閉包の p 完備化、
+  G-A6-3）に忠実平坦に埋め、W の中で p の両立する p 冪根を選んで R₀ → W、S → V → W と合わせて S ⊗_{ℤ_p} R₀ → W、W は p 完備なので S₀ → W；
+  `rootClosure_extends`（標的は perfectoid）で S̃₀ → W；S̃₀ は R₀ 上 semiperfectoid（`rootClosure_isSemiperfectoid`）なので普遍性で (S̃₀)_perfd → W。
+  旧記述「S̃ → V に延びてから W に替える」は `rootClosure_extends` の標的が perfectoid であることと順序が合わないので改めた。
+  記録：S → S₀ は p 完備忠実平坦（ℤ_p → R₀ が p 完備忠実平坦）で、原典 Lemma 8.8 の証明の「semiperfectoid な p 完備忠実平坦被覆」は S → S̃₀ がそれにあたる
+  （S₀ → S̃₀ も p 完備忠実平坦、A5-4）。E3 には arc 被覆性だけ要る。未証明の E3 や A7 の普遍性は使わない。
 
 ### 2.2 Prop 8.10（affine）
 
@@ -121,7 +131,9 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 1. S → S″ は arc 被覆（S → V が I を殺せば S/I を通り、殺さなければ `ArcOutside` で S′ → V に延びる。W = V でよい）。
 2. perfd は有限積を保つ（G-A6-2）：Prop 8.5 の極限の形で Perfd_{(S′ × S/I)/} ≅ Perfd_{S′/} × Perfd_{(S/I)/}（冪等元で分解、perfectoid の
    因子は perfectoid）、積圏上の T′ × T″ の極限は極限の積。よって S″ の四角形（S → S″、I）が引き戻しなら S′ の四角形も引き戻し
-   （S″/IS″ = S′/IS′ × S/I で、S″ の四角形は S′ の四角形と恒等の四角形 (S/I)_perfd = (S/I)_perfd の積）。以下 S′ := S″。
+   （S″/IS″ = S′/IS′ × S/I。左上の S_perfd は積に変わらないので「S′ の四角形と恒等の四角形の文字どおりの積」ではない（W9-II-19）。
+   B := S′_perfd、C := (S/I)_perfd、D := (S′/IS′)_perfd、g : B → D と書くと、S″ の四角形の引き戻しは (B × C) ×_{D × C} C（C → D × C は (g, id_C)）で、
+   有限極限の計算により B ×_D C に標準的に同値、各射影は元の商写像と両立する。よって S″ の四角形が引き戻しなら S′ の四角形も引き戻し）。以下 S′ := S″。
 3. 集合の層の等式（1 圏、Mathlib の `Sheaf` で）：arc 層 F（集合値、affPerfd_κ 上）とその延長 F(T) := lim_{Perfd_{T/}} F = Hom(F_T, F) に対し
    F(S) = F(S′) ×_{F(S′/I)} F(S/I)。証明：S → S′ に沿う降下 F(S) = eq(F(S′) ⇉ F(S′ ⊗̂_S S′))（延長が arc 被覆で層条件を満たすこと：
    F_{S′} → F_S が局所全射で Čech 脈体の余等化子が F_S、G-A6-8）。S′ ⊗̂_S S′ → S′ × (S′/I ⊗̂_{S/I} S′/I)（乗法と mod I）は arc 被覆
@@ -139,12 +151,12 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 
 | # | 内容 | 既存 | 使う箇所 |
 | --- | --- | --- | --- |
-| G-A6-1a | **引用（`sorry`）**[BS17, Thm 4.1 (i)]（n = 1、E = O）：完全 F_p 代数 A と v 被覆 A → B（[BS17, Def 2.1]：任意の付値環 V と A → V に付値環の拡大 V ↪ W と B → W）について A = RΓ_v(Spec A, O)、すなわち 0 → A → B → B ⊗_A B → ⋯ が完全（有限族の形で述べる） | なし | Prop 8.10 |
-| G-A6-1b | **引用（`sorry`）**[BM18, Thm 1.7]（BS の引用では Thm 1.6）：finitary（filtered 余極限と可換）な F : (qcqs スキーム)^op → D(Z)_{≥0} について、F が arc 層 ⇔ F が v 層かつ、分数体が代数閉な任意の付値環 V と素イデアル 𝔭 ⊂ V について F(V) → F(V/𝔭)、F(V_𝔭) → F(κ(𝔭)) の四角形が cartesian。affine 版（F_p 代数上の関手、κ-small）で述べる（D59） | なし | Prop 8.10 |
-| G-A6-1c | **引用（`sorry`、初等的なので後で証明）**[BS17, Lemma 6.2・6.3]：付値環 V と素イデアル 𝔭 について、V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian | なし（Mathlib の `ValuationRing` で証明可能） | Prop 8.10 |
+| G-A6-1a | **引用（`sorry`）**[BS17, Thm 4.1 (i)]（n = 1、E = O）：完全 F_p 代数 A と**完全** F_p 代数 B への v 被覆 A → B（[BS17, Def 2.1]：任意の付値環 V と A → V に付値環の拡大 V ↪ W と B → W。被覆と Čech の各項は完全スキームの圏で取る、W9-II-18）について A = RΓ_v(Spec A, O)、すなわち 0 → A → B → B ⊗_A B → ⋯ が完全（有限族の形で述べる） | なし | Prop 8.10 |
+| G-A6-1b | **引用（`sorry`）**[BM18, Thm 1.7]（BS の引用では Thm 1.6）：finitary（filtered 余極限と可換）な F : (qcqs スキーム)^op → D(ℤ)^{≥0}（cohomological に coconnective：H^i = 0 for i < 0。環の圏の上では**共変** Ring_{F_p} → D(ℤ)^{≥0}、W9-II-17）について、F が arc 層 ⇔ F が v 層かつ、分数体が代数閉な任意の付値環 V と素イデアル 𝔭 ⊂ V について F(V) → F(V/𝔭)、F(V_𝔭) → F(κ(𝔭)) の四角形が cartesian。affine 版（F_p 代数の圏上の共変 finitary 関手、κ-small）で述べる（D59。affine から qcqs への延長の根拠は Zariski 降下：v 層は有限 affine 開被覆の降下を満たすので affine の値から qcqs 上へ延長でき、finitary 性は有限段の降下と一様に coconnective な Tot の filtered 余極限との交換で確認する。定義の変更でも第四の黒箱でもない） | なし | Prop 8.10 |
+| G-A6-1c | **引用（`sorry`、後で証明）**[BS17, Lemma 6.3]（Lemma 6.2 は付値環による v 被覆の主張で、この四角形ではない。W9-II-18）：**完全**付値環 V と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全、すなわち V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian。任意の付値環での同じ主張は引用ではなく初等補題として証明する（𝔭V_𝔭 = 𝔭：a ∈ 𝔭、s ∉ 𝔭 で a/s ∉ V なら s/a ∈ V、s ∈ 𝔭 で矛盾；よって V_𝔭/𝔭 = κ(𝔭) で核が一致し短完全列、cocartesian は局所化と商の可換性）。引用はその特殊化。適用する付値環（分数体が代数閉、標数 p）は完全なので特殊化で足りる | なし（Mathlib の `ValuationRing` で証明可能） | Prop 8.10 |
 | G-A6-1 | 三つから：完全 F_p 代数の有限族の arc 被覆 {A → B_i} について 0 → A → ∏B_i → ∏ B_i ⊗_A B_j → ⋯ が完全。F := (A ↦ A_perf) は F_p 代数上の finitary な関手で、v 層（1a を完全化に当てる。完全化は v 被覆を保つ）、分数体が代数閉な付値環は完全なので四角形は 1c の Milnor 四角形、よって 1b で arc 層 | 上の三つ | Prop 8.10 |
 | G-A6-2 | perfd は有限積を保つ（Prop 8.5 の極限の形、Perfd_{(S′×S″)/} ≅ Perfd_{S′/} × Perfd_{S″/}、perfectoid の因子は perfectoid） | なし | Cor 8.12 の 2 |
-| G-A6-3 | p 完備な階数 1 の付値環は perfectoid な p 完備階数 1 付値環に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長） | なし（Mathlib の付値の延長、要確認） | Lemma 8.8、§3.1 の 2 |
+| G-A6-3 | p 完備な階数 1 の付値環 V は perfectoid な p 完備階数 1 付値環 W に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長）。W には p の両立する p 冪根があり R₀ → W が取れる | なし（Mathlib の付値の延長、要確認） | Lemma 8.8（G-A6-11 と合わせて。W を**先に**取る）、§3.1 の 2 |
 | G-A6-4 | perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ = S^♭ ⊗̂_{R^♭} S′^♭（d 進） | `CompletedTensor`、`WittQuotientTilt`（部分） | §3.1 の 1 |
 | G-A6-5 | W は完全 F_p 代数の完全列を保つ；mod d は d 正則な項で完全性を保つ | Mathlib `WittVector`（部分） | §3.1 の 1 |
 | G-A6-6 | 階数 1 の付値環の tilt・untilt（V 完全 d 進完備 ⇒ W(V)/d は p 完備階数 1 付値環、(V^♯)^♭ = V；perfectoid 付値環の tilt は付値環） | `WittQuotientTilt`（環の部分）、付値は なし | §3.1 の 2 |
@@ -152,6 +164,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | G-A6-8 | 基底上の集合の層の延長 F(T) := lim_{Perfd_{T/}} F は arc 被覆で層条件を満たす（1 圏） | Mathlib `Sheaf`（比較補題は要確認） | §3.2 の 3 |
 | G-A6-9 | 完備テンソルの arc 被覆（§3.2 の 3 の二つ）と `ArcOutside` からの arc 被覆性 | なし | §3.2 |
 | G-A6-10 | S・I 導来 p 完備 ⇒ S/I 導来 p 完備（cofiber）。**T/IT には成り立たない**（W9-II-15 の反例）ので、一般の商 U は `completionRing U` 経由：F_U ≃ F_{completionRing U}（perfectoid 標的は p 完備）と Γ(F_U, O) ≃ e3Perfd(U) の自然同型、四角形全体を自然変換として移す | HA/DerivedCompletion（要確認）、`completionRing` の普遍性（既存） | E3 の欄 |
+| G-A6-11 | Lemma 8.8 の前段（W9-II-16）：R₀ := ℤ_p[p^{1/p^∞}]^∧ は perfectoid；S₀ := completionRing(S ⊗_{ℤ_p} R₀) は p 完備な R₀ 代数で #S₀ ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ；S → S₀ は p 完備忠実平坦（記録。E3 には不要）；S → V（試験付値環）は perfectoid な W（G-A6-3）と p の p 冪根の選択を経て S₀ → W に延びる | R₀ の perfectoid 性（要確認：既存の例があるか）、`completionRing`（既存） | Lemma 8.8 = cover-dense |
 | S8 | §2.4 の 1〜6 | なし（Sheaves/ の続き、∞ トポス） | Cor 8.12 の 4・5 |
 
 ## 5. 原典との差
@@ -161,8 +174,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | D53 | arc 位相は p 進形式スキーム fSch の上、Perfd ⊂ fSch | affine（κ-small の p 完備環 affCompl_κ）の上に定義し、affPerfd_κ は誘導位相の充満部分 site（決定 4 の (a′)）。非 affine は定義しない | fSch の affine 部分。E3 の経路は affine で閉じる（§9） |
 | D54 | arc 被覆は qcqs な一つの射、位相は arc 被覆と開被覆で生成 | [BM18, Def 1.2] の有限族の形で定義（affine では開被覆は有限族に含まれる） | 同じ位相（affine 上） |
 | D55 | Cor 8.11：S_perfd = RΓ_arc(Spf S, O)（fSch 上の層コホモロジー）と arc 降下 | affine 版「S_perfd ≃ RΓ_arc(affPerfd_κ/S, O)」を記録として述べる（Prop 8.10＋Prop 8.5）。fSch・affCompl_κ 上の RΓ との比較（∞ 版の比較補題）はしない。Lemma 8.8 の affine 版は cover-dense として証明の中で使う | E3 で使う等式は Prop 8.5 の極限の形 |
-| D56 | Prop 8.10 の証明は [BS17, Thm 4.1]・[BM18, Thm 1.6]・[BS17, Lemma 6.3] を引用 | 三つを**別々に**引用の形で述べ `sorry`（G-A6-1a・1b・1c）、三つから G-A6-1 を導き、tilt への帰着は証明する（決定 2、2026-11-02） | 引用を定理の形に。1c は初等的で後で証明 |
-| D59 | [BM18, Thm 1.7] は qcqs スキーム上の関手について | affine 版（F_p 代数の圏上の finitary な関手、v 被覆・arc 被覆は有限族）で述べる。qcqs スキームへの延長（Zariski 降下）は使わない | 特別な場合 |
+| D56 | Prop 8.10 の証明は [BS17, Thm 4.1]・[BM18, Thm 1.6]・[BS17, Lemma 6.3] を引用 | 三つを**別々に**引用の形で述べ `sorry`（G-A6-1a・1b・1c）、三つから G-A6-1 を導き、tilt への帰着は証明する（決定 2、2026-11-02） | 引用を定理の形に。1c は完全付値環の Lemma 6.3 の形で引用し、一般の付値環版は初等補題（W9-II-18） |
+| D59 | [BM18, Thm 1.7] は qcqs スキーム上の関手について | affine 版（F_p 代数の圏上の共変 finitary 関手 Ring_{F_p} → D(ℤ)^{≥0}、v 被覆・arc 被覆は有限族）で述べる。qcqs スキームへの延長は使わない（根拠の Zariski 降下は G-A6-1b の行に記録、W9-II-17） | 特別な場合 |
 | D57 | Cor 8.12 の証明は Perfd 上の空間の層 | S8（空間値の層と E 値の層の局所性）を一般論として立てる。集合の層の等式は 1 圏（Mathlib）で | 同じ証明。∞ 側の一般論が一つ増える（決定項目 3） |
 | D58 | 「S′ を S′ × S/I に替える」 | perfd が有限積を保つこと（G-A6-2）を Prop 8.5 から示して戻す | 原典が省く一歩を補う |
 
@@ -186,6 +199,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 - 3：(a) S8 を ∞ 側の一般論として立て、集合の層の等式は Mathlib の 1 圏の層で証明する。
 - 4：**案 (a′)**（§10、2026-11-02 決定）：arc site は κ-small の p 完備環 `affCompl_κ` の上に定義し、affPerfd_κ は cover-dense な充満部分 site。
   Lemma 8.8 の affine 版は `IsCoverDense`、集合の層の延長は Mathlib の `sheafEquiv`、Cor 8.11 は affPerfd_κ/S 上の RΓ で記録として述べる。
+  **W9-II-16（2026-11-03）**：cover-dense の証明は前段 G-A6-11（R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移す被覆）の後に A5-4 の根添加。global な affCompl_κ は維持
+  （Codex の推奨 (a)。別案 (b)「固定 perfectoid R 上の相対 site に全体を揃える」は D53・型・比較補題の範囲の書き換えが要るので採らない）。
 - 5：(a) 付値環の tilt・untilt は A6 の中で主張を置く。
 
 相談した選択肢（記録）：
@@ -196,6 +211,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 3. Cor 8.12 の層の議論：S8（空間値の層の層化・0 切り捨て・E 値の層の局所性）を ∞ 側の一般論として立て（D57、推奨）、集合の層の等式は Mathlib の
    1 圏の層で証明する／S8 を避けて E 値の Tot で直接「ほどく」— 検討したが見通しが立たない（arc 被覆に沿う Tot の各項をさらに被覆で分解する必要）。
 4. Lemma 8.8・Cor 8.11：記録のみ（Lemma 8.8 の affine 版は A5-4 の S̃ から一行、Cor 8.11 は述べない、D55、推奨）／Cor 8.11 も affine の形で述べる。
+   （※「S̃ から一行」は誤り：A5-4 の semiperfectoid 性は perfectoid 基底を要する。前段 G-A6-11 が要る、W9-II-16。）
 5. G-A6-3・G-A6-6（付値環の tilt・untilt、絶対整閉包への埋め込み）：A6 の中で主張を置く（推奨）／既存の CLMST の付値の道具（`Prop247*Valuation`）を
    先に確認する。
 
@@ -208,7 +224,9 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 5. §3.2 の 3：延長 F(T) の層条件（G-A6-8）と、二つの arc 被覆の確認。
 6. G-A6-2：perfectoid の因子 eT が perfectoid であること、Perfd_{(S′×S″)/} の分解。
 7. §2.3 の商の扱い（W9-II-15）：F_U ≃ F_{completionRing U} の自然同型、Γ(F_U, O) ≃ e3Perfd(U)、商写像を含む四角形の自然変換としての移送、
-   S8 の押し出しを元の商の Hom 前層で取ること。
+   S8 の押し出しを元の商の Hom 前層で取ること（Codex W9 続き 5 で ○）。
+8. Lemma 8.8 の前段（G-A6-11、W9-II-16）：R₀ の perfectoid 性、S₀ の R₀ 代数構造と濃度、W の中での p の p 冪根の選択と R₀ → W、`rootClosure_extends` の
+   順序（W を先に取る）、修復後の cover-dense から `sheafEquiv` による層の延長までの全接続（Codex 未確認）。
 
 ## 9. affine で閉じることの確認（決定 1 の確認、2026-11-02）
 
@@ -225,9 +243,9 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | Prop 8.10 後半（Hom(X, T) の層性） | 一般の形式スキーム T | 使うのは T affine（S・S′・S/I・S′/I）だけ：H⁰ の等化子から直ちに出る | ○（非 affine は不要） |
 | Cor 8.12 の F_T = Hom(−, Spf T) | Perfd 上の層 | affPerfd_κ 上の集合の前層 R ↦ Hom(T, R)、層性は Prop 8.10 後半 | ○ |
 | Cor 8.12 の Spf S′ ⊔ Spf(S′/I) ×_{Spf(S/I)} Spf(S′/I) → Spf S′ ×_{Spf S} Spf S′ | 形式スキームのファイバー積と非交和 | 完備テンソル S′ ⊗̂_S S′、S′/I ⊗̂_{S/I} S′/I と有限積 S′ × (⋯)。有限族の arc 被覆 | ○ |
-| Cor 8.12 の降下「Spf S′ → Spf S に沿う」 | S は perfectoid でない | 集合の層を affPerfd_κ から p 完備環へ延長して使う（G-A6-8。§10 の案なら Mathlib の dense subsite で） | ○（延長が要る） |
+| Cor 8.12 の降下「Spf S′ → Spf S に沿う」 | S は perfectoid でない | 集合の層を affPerfd_κ から p 完備環へ延長して使う（G-A6-8。§10 の案なら Mathlib の dense subsite で。cover-dense の証明は前段 G-A6-11 つき、W9-II-16） | ○（延長が要る） |
 | Γ(F_T, O) = T_perfd | Cor 8.11（fSch 上の RΓ_arc） | Prop 8.5 の極限の形（Type u 版と κ 版の一致は A5 の D47） | ○（Cor 8.11 不要） |
-| κ の制限 | — | 使う環（S・S′・S/I・S′/I・S̃_perfd・完備テンソル冪・有限積）はすべて濃度 ≤ κ（κ^{ℵ₀} = κ） | ○ |
+| κ の制限 | — | 使う環（S・S′・S/I・S′/I・S₀・S̃₀・(S̃₀)_perfd・完備テンソル冪・有限積）はすべて濃度 ≤ κ（κ^{ℵ₀} = κ。前段 S₀ の分は W9-II-16 で追加、#S₀ ≤ (#S + ℵ₀)^{ℵ₀}） | ○（前段を含めた再確認は Codex 未） |
 
 結論：E3 に要る Prop 8.10（affine）と Cor 8.12 の証明は affine で閉じる。非 affine の主張は引用 1a・1b の原典の形だけで、そこは affine の
 特別な場合として述べる。唯一の注意は「集合の層の p 完備環への延長」（G-A6-8）で、§10 の案で自然に扱える。
@@ -246,7 +264,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
   - Cor 8.11 の affine 版「S_perfd ≃ RΓ_arc(affCompl_κ/S, O^♯)」も述べられる：∞ 版の比較補題（dense subsite で E 値の層の圏が同値）が
     あれば Prop 8.5＋Prop 8.10 から従う。∞ 版の比較補題は S8 に入れるか、Cor 8.11 を「affPerfd_κ/S 上の RΓ」で述べて fSch との比較は
     しないかのどちらか。E3 には不要なので後者（記録）でよい。
-  - 費用：site の定義は同じ（被覆の条件は環の種類によらない）。cover-dense の証明は A5-4 の S̃ から一行。
+  - 費用：site の定義は同じ（被覆の条件は環の種類によらない）。cover-dense の証明は**前段 G-A6-11（R₀ 上へ移す被覆）＋A5-4 の S̃**
+    （W9-II-16 で訂正。元の「S̃ から一行」は A5-4 の perfectoid 基底の仮定を見落としていた。§2.1）。
 - **案 (a)（元の案）**：affPerfd_κ だけ。G-A6-8 を手で作る（右 Kan 延長が層になることを直接示す）。Lemma 8.8 は記録、Cor 8.11 は述べない。
 
 推奨は (a′)：原典の構造（fSch ⊃ Perfd、Perfd は基底）に近く、Mathlib の dense subsite が使え、Lemma 8.8 が証明の中で実際に使われる形になる。

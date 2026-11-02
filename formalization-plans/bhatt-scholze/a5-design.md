@@ -115,7 +115,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 - S̃ の構成（D51）：S_0 = S、S_{k+1} = (S_k⟨X_s, Y_s : s ∈ S_k⟩/(s − X_s^p − pY_s))^∧、S̃ = (colim_k S_k)^∧。
   (i) 任意の perfectoid T と S → T は S̃ → T に延びる（帰納的に：s ↦ t、y^p ≡ t mod p の y を選び（Frobenius 全射）、X_s ↦ y、Y_s ↦ (t − y^p)/p の
   任意の原像）。(ii) S̃/p は semiperfect（各元は次の段で p 乗根をもつ）。p 完備な R 代数で mod p semiperfect なら semiperfectoid（G-A5-14、
-  [BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ が全射で R ⊗̂ W(S̃^♭) は perfectoid）。(iii) 濃度 ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ。(iv) S ↦ S̃ は関手的。
+  [BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ が全射で R ⊗̂ W(S̃^♭) は perfectoid。**perfectoid 基底 R は本質的**で基底なしでは偽（W9-II-16、a6-design §2.1 の ℤ_p の反例）；A6 の Lemma 8.8 は R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移す前段 G-A6-11 の後に使う）。(iii) 濃度 ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ。(iv) S ↦ S̃ は関手的。
   **（iv′）完備化した filtered 余極限とは可換でない（W9-II-09 で訂正、以前の主張は偽）**：完備化で初めて現れる元 s（例：R = Z_p[p^{1/p^∞}]^∧、
   S_n = R⟨t_1..t_n⟩、S = (colim S_n)^∧、s = Σ p^j t_j）に付く独立な変数 Y_s は有限段からの比較射の像に入らず、(colim_n S̃(S_n))^∧ → S̃(S) は
   エピ射ですらない。S̃ の用途は弱始対象（と濃度管理）に限る。filtered 余極限の段では §3.2 の整合する被覆 E を使う。
