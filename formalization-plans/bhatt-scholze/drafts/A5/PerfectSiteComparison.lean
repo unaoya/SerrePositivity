@@ -11,7 +11,8 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 # 完全 prismatic site と Prop 8.5 の主張（BS 著者版 Rem 4.6、Lemma 4.8、Prop 8.5）
 
 ## 概要
-完全 prism (A,(d))（R = A/d perfectoid）と離散 R 代数 S に対し、完全 prismatic site (S/A)^perf_Δ（A0 の `PerfectPrismaticSite` に flat 位相）、
+完全 prism (A,(d))（R = A/d perfectoid）と導来 p 完備な animated R 代数 S（D45 改訂。本ファイルの `S : Type u` は離散の特別な場合）に対し、
+完全 prismatic site (S/A)^perf_Δ = (π_0 S/A)^perf_Δ（A0 の `PerfectPrismaticSite` に flat 位相）、
 Lemma 4.8 の系（site ≃ perfectoid 環への写像 S → T の圏、濃度 ≤ κ）、Lemma 7.7(3) の関手的写像からの比較写像
 Δ_{S/A,perf} → lim_{(S/A)^perf} O_Δ、Prop 8.5（flat と chaotic の間の任意の位相で同値）とその系（S_perfd ≃ lim_{S→R′} R′ — κ-small の
 site でも Type u の `PerfUnder_u` でも、A によらない、semiperfectoid なら Cor 7.3 の perfectoid 化）。
@@ -21,7 +22,8 @@ site でも Type u の `PerfUnder_u` でも、A によらない、semiperfectoid
 弱始対象 S̃_perfd の Čech 余脈体（S3）で、A5-4 の `perfectoidTargetWeaklyInitial` を入力にする。Prop 8.5 本体の証明は A5-2〜A5-4。
 
 ## 規約
-S は離散（D45）。位相の順序は Grothendieck 位相の ⊥ ≤ J ≤ flat（D46）。κ = `cutoff`（A0）。値は CAlg_A・CAlg_R。
+S は導来 p 完備な animated（D45 改訂、系 4 を含む）。本ファイルの `S : Type u` は離散版で、animated 版は末尾の `perfectionComparison_isIso_animated`・
+`perfectoidization_piZero`（定義域の書き換えは中身の段階、W9-II-08）。位相の順序は Grothendieck 位相の ⊥ ≤ J ≤ flat（D46）。κ = `cutoff`（A0）。値は CAlg_A・CAlg_R。
 
 ## 使われ方
 E3 の `limitCone`・`limit_isLimit`（drafts/A5/InterfaceLimitCone）、Cor 8.11（A6）、Cor 8.14（A7）。
@@ -56,8 +58,10 @@ abbrev perfectSite : Type u := PerfectPrismaticSite (perfectPrism p R) S (cutoff
 使われ方：Prop 8.5 の位相の上限。 -/
 def perfectFlatTopology : GrothendieckTopology (perfectSite p R S) := sorry
 
-/-- 概要：完全 site の各対象に Čech 余脈体がある：完全 prism の余積（完備テンソル）は完全（`PerfectDeltaTensor`）で有界。
-方針：A0 の `cechAlexander_isCoproduct` 型の余積の構成を完全な対象に制限。
+/-- 概要：完全 site の各対象に Čech 余脈体がある：**Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd**（Cor 7.3 の普遍 perfectoid 環の普遍性、A5-4 `perfUnder_cechNerveData`）を
+Lemma 4.8 の圏同値 `perfectSiteEquivPerfectoidUnder` で完全 site に運ぶ。
+方針：W9-II-06 で訂正：A 上の完備テンソル B ⊗̂_A B′ では S の二つの構造射が一致せず（S = F_p[t]、T = F_p[t^{1/p^∞}] で反例）、S3 に渡すと極限が変わる。
+flat 被覆の相対 Čech 項 B₁ ⊗̂_{B₀} B₁（G-A5-5 の層性に使う）とは別物。
 規約：S3 の `CechNerveData`。
 使われ方：弱始対象から極限（`perfectoidization_isLimit`）。 -/
 def perfectSite_cechNerveData (U : perfectSite p R S) : True := trivial
@@ -90,9 +94,9 @@ def perfectSiteEquivPerfectoidUnder : True := trivial
 
 /-! ## 比較写像 -/
 
-/-- 概要：完全 (B,J) ∈ (S/A)^perf に対する Δ_{S/A,perf} → B：Lemma 7.7(3) の Δ_{S/A} → B（A3 `prismMapOfDiscrete`）を φ_A^{n*} に
-通して colim_φ から、B が (p,d) 完備なので完備化から。
-方針：B の φ_B が全単射なので φ_A^{n*}Δ_S → B が φ と両立。
+/-- 概要：完全 (B,J) ∈ (S/A)^perf に対する Δ_{S/A,perf} → B：Lemma 7.7(3) の A 線形・Frobenius 両立の f : Δ_{S/A} → B（A3 `prismMapOfDiscrete`）から、
+塔（φ_{A*}^n、A4）の第 n 項への脚 f_n := φ_B^{-n} ∘ f : Res_{φ_A}^n Δ_S → B（W9-II-07）、余極限から colim → B、B が (p,d) 完備なので完備化から。
+方針：f_n(φ_A^n(a) x) = a f_n(x) で A 線形、f_{n+1} ∘ φ = f_n で塔と整合、B について自然（B 間の射は φ_B とその逆に可換）。
 規約：CAlg_A の射。
 使われ方：錐。 -/
 def perfectionLeg (B : perfectSite p R S) : True := trivial

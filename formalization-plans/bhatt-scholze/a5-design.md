@@ -9,7 +9,7 @@ Cor 7.3 の perfectoid 化と一致する。証明に要る Lemma 8.6（T = R⟨
 RΓ は β（S2）。E3 の Type u の添字圏と κ-small の site は、S3（脚注 10 の補題：弱始対象の Čech 余脈体）で同じ Tot に結ぶ。証明は原典の四段
 （(1) 弱始対象と位相非依存、(2) filtered 余極限、(3) Lemma 8.6 による降下、(4) semiperfectoid の場合）をそのまま追う。Lemma 8.6 は
 Mathew の descendability を定義して（G-A5-1）原典の証明（n = 1 への帰着、(p, φ^{-1}(d)) での底変換、de Rham 比較と Cartier、dg 加群の計算 (∗)）。
-規約：S は離散（E3 の始域。「π_0 S のみによる」は述べない、D45）。基底は Not 8.1 の完全 prism。値は CAlg_A・CAlg_R（D35）、E3 の欄は
+規約：S は導来 p 完備な animated R 代数（D45 改訂、決定 6。完全 site は π_0 S で定義し、系 4「π_0 S のみによる」を述べる。E3 の始域の離散 S は特別な場合）。基底は Not 8.1 の完全 prism。値は CAlg_A・CAlg_R（D35）、E3 の欄は
 CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 使われ方：E3 の `limitCone`・`limit_isLimit`。Cor 8.11（A6）は Prop 8.5 と Prop 8.10 を合わせる。Cor 8.14（A7）、Thm 10.11（A8）。
 
@@ -18,7 +18,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 - 含む：Rem 4.6 の完全 prismatic site、Lemma 4.8（完全 prism からの射は環の射から一意に持ち上がる。系：site は perfectoid 環への写像の圏と同じ）、
   Lemma 7.7(3) の関手的写像 Δ_S → B から作る比較写像、Prop 8.5（主張と系：Ō の RΓ、極限の形、A によらない、semiperfectoid なら Cor 7.3 と一致）、
   Lemma 8.6（両方の主張）、descendability の一般論、E3 の `limitCone`・`limit_isLimit`。
-- 含まない：Prop 8.5 の「Δ_{S/A,perf} と S_perfd は π_0 S のみによる」（単体的 S を扱わない、D45）、§8.2（A6）、Prop 8.13 の導来版（A7。
+- 含まない：§8.2（A6）、Prop 8.13 の導来版（A7。（旧：系 4 を含まない — D45 改訂で含むことにした、W9-II-08）
   §3.4 では Construction 7.6 (5) の形で使う）。
 - 前提：A0（site、`PerfectPrismaticSite`、O_Δ、Cor 3.12 の層性 A0-3d）、S1〜S3（層条件、RΓ、脚注 10）、A2（Δ の Kan 延長、(4)(5)、HT filtration）、
   A3（Lemma 7.7(3) `prismMapOfDiscrete`、Prop 7.10、Cor 7.3 との接続）、A4（Def 8.2、Lemma 8.4、`prismaticPerfectionPrism`）。
@@ -34,7 +34,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | Lemma 4.8 | 定理（既存を確認）：完全 (A,I) と任意の (B,J) で A/I → B/J は prism の射に一意に持ち上がる。系：(S/A)^perf ≃ Perfd_{S/}（perfectoid 環への写像の圏、濃度 ≤ κ） | `perfectPrismHomLift`、`perfectSiteEquivPerfectoidUnder` | Thm 3.10 の関手版（G-A5-4） | A5-1 |
 | Lemma 7.7(3) | 既存（A3-1）：関手的 Δ_S → B | `prismMapOfDiscrete` | A3 | — |
 | 比較写像 | 定義 | `perfectionComparison : Δ_perf ⟶ lim_{(S/A)^perf} O` | S2、G-A4-3 | A5-1 |
-| Prop 8.5 | 定理（S 離散）：⊥ ≤ J ≤ flat の全ての J で比較写像は同値 | `perfectionComparison_isIso`、`perfectionComparison_isIso_topology` | §3 全体 | A5-1〜A5-4 |
+| Prop 8.5 | 定理（S は導来 p 完備な animated、D45 改訂）：⊥ ≤ J ≤ flat の全ての J で比較写像は同値 | `perfectionComparison_isIso`、`perfectionComparison_isIso_topology` | §3 全体 | A5-1〜A5-4 |
 | Prop 8.5 系 1 | S_perfd ≃ RΓ(Ō) ≃ lim_{S→R′} R′（κ-small の site でも Type u の Perfd_{S/} でも） | `perfectoidization_isLimit`、`perfectoidization_isLimit_u` | S3、G-A5-9 | A5-1 |
 | Prop 8.5 系 2 | A によらない | `perfectoidization_indep` | 系 1 と Lemma 4.8 | A5-1 |
 | Prop 8.5 系 3 | semiperfectoid なら Cor 7.3 の perfectoid 化と一致 | `perfectoidization_semiperfectoid` | §3.4 そのもの | A5-2 |
@@ -51,16 +51,23 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 - `PerfectPrismaticSite P S κ`（A0 既存）：`PrismOverSmall P S κ` の Frobenius 全単射な対象の充満部分圏の opposite。位相 `perfectFlatTopology` は
   A0 の `flatTopology` と同じ形：完全 prism の間の忠実平坦な単射 f の生成 sieve を含む位相の sInf（原典 "the flat topology"）。包含関手による
   引き戻し位相との一致は使わないので述べない。
-- site の有限積（prism の余積）：完全 prism の完備テンソル B ⊗̂_A B′ は完全（`PerfectDeltaTensor`）で有界（完全 prism は有界）。よって完全 site の
-  Čech 余脈体は大きい site のものと同じで、S3 の `CechNerveData` が各対象で得られる。
+- site の有限積（**W9-II-06 で訂正**）：以前の「完全 prism の完備テンソル B ⊗̂_A B′」は誤り。A 上のテンソルでは S からの二つの構造射を一致させる条件が
+  入らない（反例：A = Z_p、S = F_p[t]、T = F_p[t^{1/p^∞}] は Perfd_{S/} の始対象で自己余積は T 自身だが、W(T) ⊗̂_{Z_p} W(T) の mod p は T ⊗_{F_p} T で
+  t の二つの像 u ≠ v。この式を S3 に渡すと Tot が F_p になり極限が変わる）。**正しい余積**：Perfd_{S/} の余積は (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ は
+  perfectoid T₁ ⊗̂_R T₂ の商の完備化で semiperfectoid、Cor 7.3 の普遍 perfectoid 環 Q(−) について Hom_S(Q(C), U) = Hom_S(C, U) = Hom_S(T₁,U) × Hom_S(T₂,U)。
+  未証明の Prop 8.5 は使わない）。これを Lemma 4.8 の圏同値で完全 site に運び、S3 の `CechNerveData` を得る（§3.1 の `perfUnder_cechNerveData` と同じ構成）。
+  **flat 被覆の相対 Čech 項**（B₀ → B₁ について B₁ ⊗̂_{B₀} B₁。二つの S 構造射は B₀/d 経由で一致）とは別物で、G-A5-5（O の flat 層性）はこちらについて述べる。
+  「完全 site の Čech 余脈体は大きい site と同じ」という一括の理由づけは撤回。
 - Lemma 4.8：既存の `PerfectPrismHomLift` を確認する（要確認）。系（`perfectSiteEquivPerfectoidUnder`）：関手 (B,J) ↦ B/J は
   (S/A)^perf_Δ から「S → T、T perfectoid、濃度 ≤ κ」の圏への圏同値。Hom の全単射は Lemma 4.8 を (A,I) := (B,J) に使い、本質的全射は Thm 3.10
   （`exists_perfectoidTrialPrism`）。これで site が A によらない。
 
 ### 2.2 比較写像と Prop 8.5
 
-- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な Δ_{S/A} → B（CAlg_A）。完全 B では φ_B が全単射なので φ_A^{n*}Δ_S → B が φ と両立し、
-  colim_φ Δ_S → B。B は (p,d) 完備なので完備化を通り Δ_{S/A,perf} → B。自然性から O の上の錐、よって `perfectionComparison : Δ_perf → lim O`。
+- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な A 線形・Frobenius 両立の f : Δ_{S/A} → B（CAlg_A）。塔（A4、原典の φ_{A*}^n）の第 n 項への脚は
+  f_n := φ_B^{-n} ∘ f : Res_{φ_A}^n Δ_S → B（B 完全なので φ_B 可逆。f_n(φ_A^n(a) x) = a f_n(x) で A 線形、f_{n+1} ∘ φ = f_n で塔と整合、B について自然。
+  W9-II-07 で D42 撤回後の記法に揃えた）。余極限から colim → B、B は (p,d) 完備なので完備化を通り Δ_{S/A,perf} → B。自然性から O の上の錐、
+  よって `perfectionComparison : Δ_perf → lim O`。
 - RΓ_J(O) = lim O となるのは O が J 層のとき（S2 `derivedGlobalSections_of_isSheaf`）。O は完全 site で flat 層（G-A5-5：A0-3d の制限）なので、
   ⊥ ≤ J ≤ flat の全てで J 層（S1 `IsSheaf.of_le`）。これが原典の「位相の取り方によらない」の形式的な部分。
 - Prop 8.5 の主張：`IsIso perfectionComparison`（実体、chaotic）と、各 J についての `Δ_perf ≃ derivedGlobalSections J O`（層性で従う）。
@@ -211,7 +218,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 | 単位 | 内容 | 依存 |
 | --- | --- | --- |
-| A5-1 | 完全 site の位相、Lemma 4.8 の系、比較写像、Prop 8.5 の主張と系 1〜3、E3 の `limitCone`・`limit_isLimit`（系 1 の Type u 版から） | A0、S1〜S3、A3-1、A4 |
+| A5-1 | 完全 site の位相、Lemma 4.8 の系、Perfd_{S/} の余積から完全 site の Čech 余脈体、比較写像、Prop 8.5 の主張と系 1〜4（animated 版を含む）、E3 の `limitCone`・`limit_isLimit`（系 1 の Type u 版から） | A0、S1〜S3、A3-1、A4、A5-2（Cor 7.3 の普遍環） |
 | A5-2 | semiperfectoid の場合（§3.4）、系 3 | A2-3、A3-4、A4、Thm 7.4・7.14（既存） |
 | A5-4 | 弱始対象 S̃・S3 の適用・位相非依存・filtered 余極限・降下の形式部分（§3.1〜3.3） | A5-2、G-A5-2・7・8・14、Lemma 8.6 |
 | A5-3 | descendability の一般論（G-A5-1）と Lemma 8.6（§2.4・§3.5）、de Rham 入力（G-A5-15） | A2-4、G-A5-6・12・13 |
@@ -254,7 +261,8 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 ## 8. 紙で確かめる項目
 
-1. Perfd_{S/} の余積が (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ が semiperfectoid、Cor 7.3 の普遍性）。
+1. Perfd_{S/} の余積が (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ が semiperfectoid、Cor 7.3 の普遍性）。W9 で ○。完全 site の余積は**これを Lemma 4.8 で移したもの**であり、
+   A 上の完備テンソルではない（W9-II-06 の反例）。
 2. S̃ の (i)〜(iv)（§3.1）。
 3. §3.2 の完備化と Tot の順序、Tot_{≤k} と filtered 余極限の交換。
 4. §3.3 右辺：L_n の左随伴性と始性、極限の交換。

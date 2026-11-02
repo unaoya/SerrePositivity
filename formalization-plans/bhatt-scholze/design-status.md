@@ -127,7 +127,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
 | D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
 | D45 改訂、D68・D69 | Prop 8.5 は導来 p 完備な animated S（site は π_0 S）で系 4 を述べる（決定 6、11-02）；結晶の黒箱は仕様つきの de Rham 形一つ＋G-A1-17；Thm 6.4 の帰着は A_0 上で原典の経路 | a5-design §5・§7.1、a1-design §9.3・§9.4 |
-| D45〜D52 | S 離散、位相の順序、κ と Type u の一致、D48 取り下げ（G-A5-17）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
+| D45〜D52 | S は導来 p 完備な animated（D45 改訂、系 4 を含む）、位相の順序、κ と Type u の一致（余積は Perfd_{S/} の (T₁ ⊗̂_S T₂)_perfd を Lemma 4.8 で移す、W9-II-06）、D48 取り下げ（G-A5-17 = G-A2-10）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
 | D63〜D67 | Thm 10.9 は連結性だけ原典 (1)(2) で、n = 1 は Perfd_{S/} = Perfd_{S_red/}、Lemma 10.12 は原典の形、Prop 10.4 は必要な同値、E3 は S^∧ 経由 | a8-design §5・§7 |
 | D68〜D69 | 結晶の黒箱は de Rham 形一つ、Thm 6.4 の帰着は Prop 6.2 の経路 | a1-design §9.3・§9.4 |
 | D60〜D62、D15 | Def 8.2 の定義域を原典（animated）に戻す、基底 R 固定、Cor 8.14 は離散 S、環版 Prop 8.13 は後で系に（BR31） | a7-design §4・§6 |
@@ -224,6 +224,9 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-II-03 D41 の説明が D32 だけ | 要修正 | 訂正済み（二段：animated D32 ＋ Prop 8.5 系 4） |
 | W9-II-04 H⁰(Δ_perf) に A3 の離散 Δ 用定理を直接当てられない | 要修正 | 訂正済み（C/p ↪ H⁰(X/p) の単射、一般の Rem 2.2 = G-A4-8/G-A3-6、prism 性を直接組み立て） |
 | W9-II-05 単位名とノートの coconnective 欄 | 軽微 | 訂正済み（InterfaceFields、ノート第 8 章） |
+| W9-II-06 完全 site の余積を B ⊗̂_A B′ とすると S 構造射の一致が失われる（S = F_p[t] の反例） | 致命 | **訂正済み**（a5-design §2.1：Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd（Cor 7.3 の普遍性）を Lemma 4.8 の圏同値で完全 site へ。flat 被覆の相対 Čech 項（G-A5-5）とは区別。`perfectSite_cechNerveData`） |
+| W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionLeg`） |
+| W9-II-08 D45 改訂と旧「離散のみ・系 4 なし」の併存 | 要修正 | 訂正済み（a5-design 冒頭・§0・§1・§6、骨組みの概要・規約、本表の D45〜D52 行） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
