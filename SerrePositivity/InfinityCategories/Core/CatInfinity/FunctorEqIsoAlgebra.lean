@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
 
 
 /-!

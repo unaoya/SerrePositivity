@@ -13,6 +13,11 @@
         "SerrePositivity.InfinityCategories.Core.IntervalEndpointPullback",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteAnchorCylinder"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentVertices"
+      ]
     }
   },
   {
@@ -446,7 +451,10 @@
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightSimplexLift": []
+      "SerrePositivity.InfinityCategories.Core.FilteredExchange.BousfieldKanWeightSimplexLift": [
+        "Mathlib.CategoryTheory.Comma.Over.Basic",
+        "Mathlib.CategoryTheory.ComposableArrows.Basic"
+      ]
     }
   },
   {
@@ -1753,6 +1761,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.ComposableHomotopyHorn": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyTriangleEdges"
       ]
@@ -1901,6 +1911,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteSubcomplexColimit",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteSubcomplexFactorization",
@@ -2012,6 +2023,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.ConvergentHomotopyHorn": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyTriangleEdges"
       ]
@@ -2089,7 +2102,12 @@
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom": []
+      "SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Types",
+        "Mathlib.CategoryTheory.Monoidal.Limits.Preserves"
+      ]
     }
   },
   {
@@ -2141,6 +2159,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.DegenerateHomotopyTriangles": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyTriangleEdges"
       ]
@@ -2238,7 +2258,11 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.LeftFibrationProduct"
       ],
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality": []
+      "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiberProductCofinality": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver"
+      ]
     }
   },
   {
@@ -3520,6 +3544,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanFibrations": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLifting"
       ]
     }
@@ -3846,7 +3872,8 @@
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteInternalHomContinuity": [
         "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
-        "Mathlib.AlgebraicTopology.SimplicialSet.Presentable"
+        "Mathlib.AlgebraicTopology.SimplicialSet.Presentable",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes"
       ]
     }
   },
@@ -3983,6 +4010,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.ForkHomotopyHorn": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.HomotopyTriangleEdges"
       ]
@@ -4038,6 +4067,7 @@
         "SerrePositivity.InfinityCategories.Core.EquivalencePath",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexCone"
       ]
     }
@@ -4057,6 +4087,7 @@
         "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic",
         "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone"
       ]
@@ -4443,7 +4474,11 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredNullHomotopy",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.LeftFibrationHomotopyTransport"
       ],
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection": []
+      "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
+        "Mathlib.CategoryTheory.Limits.Types.Pushouts",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver"
+      ]
     }
   },
   {
@@ -5243,6 +5278,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.FilteredExchange.KanCospanPathEndpoints": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence"
       ]
     }
@@ -6068,7 +6105,10 @@
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareEndHomotopy": []
+      "SerrePositivity.InfinityCategories.Core.FilteredExchange.PathSquareEndHomotopy": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver"
+      ]
     }
   },
   {
@@ -7574,7 +7614,9 @@
     "candidate": "R73",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions": []
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexLimitConeTransport"
+      ]
     }
   },
   {
@@ -26163,10 +26205,8 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackHomotopyPoint",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackHomotopySquare",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackLift",
-        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementHomotopyPoint",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPath",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathIso",
-        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementRelativeLifting",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanBoundaryHomotopyFinalExtension",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.LeftFibrationProduct",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.LimitConeFamilyExistence",
@@ -26193,7 +26233,6 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSubcomplexCovers",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpanSquareUniverseReading",
-        "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexConeRestrictions",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.TrivialFibrationVertexSection",
         "SerrePositivity.InfinityCategories.F2.Idempotent.Coherent",
         "SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting",
@@ -28146,7 +28185,9 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackInputFibration",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackInputTransport",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackRelativeInputTransport",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementHomotopyPoint",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathSection",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementRelativeLifting",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanApexConeTransportEdges",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanApexConeTransportLeg",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.KanConeHomotopyDiagonal",
@@ -28195,6 +28236,7 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceLeftHomValue",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleFaces",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleHomotopy",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexConeRestrictions",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpecifiedApexLimitConeTransport",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SquareFamilyReading",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence",

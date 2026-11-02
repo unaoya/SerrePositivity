@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint
 public import Mathlib.CategoryTheory.Limits.Preorder
 public import SerrePositivity.InfinityCategories.Core.JoinCells
 public import SerrePositivity.InfinityCategories.Core.NerveCone

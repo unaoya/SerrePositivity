@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite
 public import SerrePositivity.InfinityCategories.Core.InitialOpposite
 public import SerrePositivity.InfinityCategories.Core.JoinBoundary

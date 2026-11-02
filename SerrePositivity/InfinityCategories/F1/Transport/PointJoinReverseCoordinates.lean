@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.JoinReverse
+public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates
 

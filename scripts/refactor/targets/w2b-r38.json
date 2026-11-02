@@ -10,6 +10,10 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.CatInfinity.ArrowBoundary": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic"
       ]
     }
@@ -323,7 +327,12 @@
     "candidate": "R38",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram": []
+      "SerrePositivity.InfinityCategories.Core.CatInfinity.ConstantDiagram": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver"
+      ]
     }
   },
   {
@@ -499,7 +508,9 @@
     "candidate": "R38",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport": []
+      "SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat"
+      ]
     }
   },
   {
@@ -689,7 +700,10 @@
     "candidate": "R38",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra": []
+      "SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra",
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso"
+      ]
     }
   },
   {
@@ -703,7 +717,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport": [
-        "SerrePositivity.InfinityCategories.Core.Equivalence"
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso"
       ]
     }
   },
@@ -1148,6 +1163,11 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+        "Mathlib.CategoryTheory.Monoidal.FunctorCategory",
+        "Mathlib.CategoryTheory.Monoidal.Types.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic"
       ]
     }
@@ -2080,7 +2100,8 @@
         "SerrePositivity.InfinityCategories.Core.Retracts",
         "SerrePositivity.InfinityCategories.Core.TerminalVertices",
         "SerrePositivity.InfinityCategories.F2.Idempotent.Coherent",
-        "SerrePositivity.InfinityCategories.F2.Idempotent.Walking"
+        "SerrePositivity.InfinityCategories.F2.Idempotent.Walking",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification"
       ]
     }
   },
@@ -2481,6 +2502,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.Idempotent.ScalarUniverse": [
+        "Mathlib.Algebra.Group.PUnit",
         "Mathlib.Algebra.Group.WithOne.Basic"
       ]
     }
@@ -2584,6 +2606,8 @@
       "SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit": [
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.F2.Idempotent.Coherent",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction",
+        "SerrePositivity.InfinityCategories.F2.Idempotent.SplittingDiagramCocone",
         "SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingCones",
         "SerrePositivity.InfinityCategories.F2.Idempotent.Walking"
       ]
@@ -3014,6 +3038,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
         "Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback"
       ]
     }
@@ -3897,7 +3922,9 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift": [
-        "Mathlib.CategoryTheory.Limits.Preorder"
+        "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+        "Mathlib.CategoryTheory.Limits.Preorder",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver"
       ]
     }
   },
@@ -5067,6 +5094,8 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.Presentable.ThinNerveExt": [
+        "Mathlib.CategoryTheory.WithTerminal.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
         "SerrePositivity.InfinityCategories.Core.Join"
       ]
     }
@@ -5540,6 +5569,8 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.Transport.PointJoinReverseCoordinates": [
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
         "SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberCoordinates"
       ]
     }
@@ -5628,6 +5659,7 @@
     "imports": {
       "SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace": [
         "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
         "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
         "SerrePositivity.InfinityCategories.Core.Terminal",
         "SerrePositivity.InfinityCategories.Core.TerminalMappingSpace"
@@ -5822,6 +5854,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentShapeCoconeGluing": [
+        "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer",
         "SerrePositivity.InfinityCategories.Core.JoinPushout",
         "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport"
       ]
@@ -5840,6 +5873,11 @@
       "SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentDiagram": [
         "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport",
         "SerrePositivity.InfinityCategories.Stable.ColimitAttachment"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachedCocone": [
+        "SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer"
       ]
     }
   },
@@ -5871,6 +5909,7 @@
     "imports": {
       "SerrePositivity.InfinityCategories.HomotopyLimits.CosliceRestrictionOpposite": [
         "SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber",
         "SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws",
         "SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber",
         "SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift",
@@ -5954,6 +5993,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues": [
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal",
         "SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible",
         "SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces",
         "SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibleKan",
@@ -5972,6 +6012,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction": [
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
         "SerrePositivity.InfinityCategories.Core.UniverseLimits"
       ]
     }
@@ -6035,6 +6076,8 @@
     "imports": {
       "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection": [
         "SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra",
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation",
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition",
         "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection"
       ]
     }
@@ -6086,6 +6129,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTrianglePrecomposition": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation",
         "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportTriangleIdentity"
       ]
     }

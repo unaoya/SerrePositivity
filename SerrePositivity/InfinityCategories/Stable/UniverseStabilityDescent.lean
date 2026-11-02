@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 
 public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom

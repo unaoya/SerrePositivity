@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits

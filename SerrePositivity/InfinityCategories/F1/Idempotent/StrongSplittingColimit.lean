@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.SplittingDiagramCocone
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction
 
 public import SerrePositivity.InfinityCategories.Core.Join
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent

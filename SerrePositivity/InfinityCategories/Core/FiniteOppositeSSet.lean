@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
 
 /-!
 概要：有限極限から反対圏の同じ有限図式の余極限を構成する。

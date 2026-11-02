@@ -1,4 +1,7 @@
 module
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.CategoryTheory.Limits.Types.Pushouts
+public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 
 
 /-!

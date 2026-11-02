@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.BoundaryPrismOpposite
 public import SerrePositivity.InfinityCategories.Core.InitialHornProductBoundary
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.Opposite

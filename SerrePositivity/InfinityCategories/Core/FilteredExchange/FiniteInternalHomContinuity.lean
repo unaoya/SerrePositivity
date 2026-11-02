@@ -1,4 +1,5 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 public import Mathlib.AlgebraicTopology.SimplicialSet.Presentable

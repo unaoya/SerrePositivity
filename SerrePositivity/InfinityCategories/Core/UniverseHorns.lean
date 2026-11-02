@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
 public import SerrePositivity.InfinityCategories.Core.UniverseSSetMaps
 
 /-! # 標準ホーンの宇宙比較

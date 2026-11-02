@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration
+public import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 public import SerrePositivity.InfinityCategories.Core.Join

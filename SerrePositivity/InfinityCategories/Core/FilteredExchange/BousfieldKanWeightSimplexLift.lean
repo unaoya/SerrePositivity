@@ -1,4 +1,6 @@
 module
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.ComposableArrows.Basic
 
 
 /-!

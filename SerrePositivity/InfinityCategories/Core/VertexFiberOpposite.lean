@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InitialOpposite
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 public import SerrePositivity.InfinityCategories.Core.JoinCoproductPushout
 

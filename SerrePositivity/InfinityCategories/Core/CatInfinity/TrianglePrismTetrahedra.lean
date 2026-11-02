@@ -1,4 +1,9 @@
 module
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 

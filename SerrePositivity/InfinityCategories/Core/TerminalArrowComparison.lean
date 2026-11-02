@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.Pullback
 public import SerrePositivity.InfinityCategories.Core.SimplexVertexDetection

@@ -1,4 +1,5 @@
 module
+public import Mathlib.Algebra.Group.PUnit
 
 public import Mathlib.Algebra.Group.WithOne.Basic
 

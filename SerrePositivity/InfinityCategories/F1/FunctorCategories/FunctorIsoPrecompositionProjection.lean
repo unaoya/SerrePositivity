@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoEndpointProjection
 

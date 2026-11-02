@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification
 
 public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.Core.TerminalVertices

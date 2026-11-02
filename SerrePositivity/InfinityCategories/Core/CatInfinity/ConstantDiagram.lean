@@ -1,4 +1,8 @@
 module
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 
 
 /-!

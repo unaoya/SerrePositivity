@@ -1,4 +1,8 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Limits.Preserves
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.CategoryTheory.Monoidal.Closed.Types
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 
 
 /-!

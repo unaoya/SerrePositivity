@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces

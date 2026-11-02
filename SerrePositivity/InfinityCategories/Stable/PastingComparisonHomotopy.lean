@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.SimplexVertexDetection
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.PastingShapes
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
 public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath

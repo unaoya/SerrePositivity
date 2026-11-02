@@ -1,4 +1,6 @@
 module
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 
 /-!

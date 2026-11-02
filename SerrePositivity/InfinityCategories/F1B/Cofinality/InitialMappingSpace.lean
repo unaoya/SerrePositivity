@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InitialOpposite
 
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceLeft

@@ -1,4 +1,6 @@
 module
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 public import SerrePositivity.InfinityCategories.Core.PrismContraction
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.HomotopyTriangleEdges

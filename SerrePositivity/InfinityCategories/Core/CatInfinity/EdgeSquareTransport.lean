@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
 
 
 /-!

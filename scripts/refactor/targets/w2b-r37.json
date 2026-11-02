@@ -215,6 +215,11 @@
         "SerrePositivity.InfinityCategories.Core.SliceMap",
         "SerrePositivity.InfinityCategories.Core.TerminalUniqueness"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges": [
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ]
     }
   },
   {
@@ -422,6 +427,11 @@
         "SerrePositivity.InfinityCategories.Core.PrismContraction",
         "SerrePositivity.InfinityCategories.Stable.CoconeTransport"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeOfHomotopyConstant": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ]
     }
   },
   {
@@ -445,6 +455,14 @@
         "SerrePositivity.InfinityCategories.Core.Terminal",
         "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
         "SerrePositivity.InfinityCategories.Stable.ColimitAttachmentLifting"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F1.Joins.ConeSpanColimitTransfer": [
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer": [
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
       ]
     }
   },
@@ -677,7 +695,9 @@
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary",
         "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
       ]
     }
@@ -969,6 +989,14 @@
         "SerrePositivity.InfinityCategories.Stable.Pointed",
         "SerrePositivity.InfinityCategories.Stable.PushoutShape"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.StableOpposite": [
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares"
+      ]
     }
   },
   {
@@ -1022,6 +1050,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary": [
+        "SerrePositivity.InfinityCategories.Core.BoundaryPrismOpposite",
         "SerrePositivity.InfinityCategories.Core.InitialHornProductBoundary",
         "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
         "SerrePositivity.InfinityCategories.Core.Opposite",
@@ -1061,7 +1090,9 @@
     "candidate": "R37",
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
-      "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet": []
+      "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Finite"
+      ]
     }
   },
   {
@@ -1179,6 +1210,12 @@
         "SerrePositivity.InfinityCategories.PinchedHom.Basic",
         "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy": [
+        "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
     }
   },
   {
@@ -1264,10 +1301,12 @@
     "imports": {
       "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport": [
         "Mathlib.CategoryTheory.Limits.Preorder",
+        "SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting",
         "SerrePositivity.InfinityCategories.Core.JoinCells",
         "SerrePositivity.InfinityCategories.Core.NerveCone",
         "SerrePositivity.InfinityCategories.Core.PointCosliceEdge",
-        "SerrePositivity.InfinityCategories.Core.Slice"
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint"
       ]
     }
   },
@@ -1477,6 +1516,11 @@
         "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
         "SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport",
         "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZeroNaturality": [
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero"
       ]
     }
   },
@@ -1837,6 +1881,11 @@
         "SerrePositivity.InfinityCategories.Core.Slice",
         "SerrePositivity.InfinityCategories.Core.Square",
         "SerrePositivity.InfinityCategories.Core.Terminal"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare": [
+        "SerrePositivity.InfinityCategories.Core.Pullback"
       ]
     }
   },
@@ -2279,6 +2328,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.TerminalArrowComparison": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
         "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
         "SerrePositivity.InfinityCategories.Core.Pullback",
         "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
@@ -2308,6 +2358,8 @@
         "SerrePositivity.InfinityCategories.Core.Opposite",
         "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp",
         "SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension",
+        "SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso",
+        "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
       ]
     }
@@ -2368,6 +2420,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.UniverseHorns": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
         "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
       ]
     }
@@ -2569,6 +2622,7 @@
         "SerrePositivity.InfinityCategories.Stable.Pointed",
         "SerrePositivity.InfinityCategories.Stable.UniverseSquareHom",
         "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares",
         "SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects"
       ]
     }
@@ -2584,6 +2638,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.VertexFiberOpposite": [
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic"
       ]
@@ -2603,6 +2658,7 @@
         "Mathlib.CategoryTheory.Adjunction.Limits",
         "Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal",
         "Mathlib.CategoryTheory.Limits.Shapes.ZeroObjects",
+        "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
         "SerrePositivity.InfinityCategories.Stable.Pointed"
       ]
     }

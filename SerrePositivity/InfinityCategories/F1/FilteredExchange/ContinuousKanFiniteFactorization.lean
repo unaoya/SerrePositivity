@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexColimit

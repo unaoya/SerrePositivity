@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso
 public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws

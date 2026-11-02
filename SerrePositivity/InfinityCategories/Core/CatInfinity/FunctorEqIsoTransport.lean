@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
 
 public import SerrePositivity.InfinityCategories.Core.Equivalence
 
