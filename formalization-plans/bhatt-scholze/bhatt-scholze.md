@@ -160,6 +160,8 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 
 - [BS のリファクタリング](bhatt-scholze-refactoring.md)：証明済みの BS を共通 API へ載せ替える計画（§13 が現行）。
 - [∞ 圏の計画](../infinity-lanes/infinity-categories.md)：界面 `PerfectoidizationInterface` と、残る二入力の解消。
+- [∞ 層の一般論の設計](infinity-sheaves-design.md)（2026-11-02）：原典 Not 4.16・Prop 8.5・Prop 8.10 の RΓ を定義のまま形式化するための
+  D(A) 値前層の層条件・層化・Γ・RΓ、脚注 10 の補題、基数 κ の切り落とし、必要な基盤の前提（G1〜G12）。A0 の設計書はこれを前提にする。
 - 実施記録（将来削除）：[旧主計画](../archive/bhatt-scholze-log.md)、[B3](../archive/bhatt-scholze-b3-execution.md)、
   [Prop 7.2 の接続](../archive/bhatt-scholze-prop72-construction.md)、[F3 受領後](../archive/bhatt-scholze-f3-next.md)、
   [B4](../archive/bhatt-scholze-b4-execution.md)、[André](../archive/andre-flatness.md)、[Tor 独立性](../archive/tor-independence.md)、
@@ -208,3 +210,11 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 - 2026-10-26：W8 の受入確認で `scripts/audit_andre_initial_coefficient.lean`・`audit_andre_unoriented.lean` も対象モジュール配列の重複で落ちた（worktree の試験では scripts/ の André 監査を走らせていなかった）。重複除去スクリプトを配列の変数名によらない形に直した。所有範囲の監査でほかに重複はない。
 - 2026-10-26：BS-W8 の作業 C `19655cbd1`。進捗確認チャットが `d6169a9df` で `MonicRelationRegularSequence` を `CommutativeAlgebra/` へ移した（KST の import も同時に）。BS 側の import 元 `Andre/Envelope/MonicCandidate` を `ebf510bcc` で直した（それまで main の BS のビルドが壊れていた）。W9（`Delta/DividedPower`・`Delta/Division` の 133 本 → 11 本）の計画を作り、worktree で受入確認を全部通した。
 - 2026-10-26：W9（`1e070183d`）完了。BS 作業チャットで prism の射の剛性を一本化（ノート BR27）：`DerivedCompletion.mem_jacobson_bot_of_isModuleComplete` で向き付き prism の p と d は Jacobson 根基に属するので、生成元の distinguished 性（`OrientedPrism.isDistinguished_generator`）、生成元の像の単元係数、IB = J、I ⊗ B ≅ J、商による同型判定を、p 正則・完全・有界の仮定なしの一本にした（p 正則版・完全版・André の有界版の 22 宣言を削除、呼び出し 62 か所を置換）。使わなくなった仮定 `hW`・`hP` は `InputCategory`（向きなし入力圏との同値）と `…_ordinaryQuotientIso` 2 本から外した。`Prism/Basic/OrientedPrism` の節は原典の順に並べ替えた。worktree で BS・CLMST の全ビルド・全監査・構造監査を確認。
+- 2026-11-02：BS を**設計のみ**再開（ビルドなし。Lean の骨組みは `drafts/` に置き、`SerrePositivity/` に触れない。coordination.md §1）。
+  道筋は stage2 の A 案、最初の範囲は A0〜A1。ユーザー決定：**定義は原典のまま**入れ、定理だけ E3 に要る特別な場合に絞る
+  （Def 4.1 の site、Not 4.16 の RΓ、Prop 3.13 の envelope の普遍性をそのまま定義に。Čech–Alexander 複体や自由 δ 環の模型は定理）。
+  RΓ は ∞ 圏的に、D(A) 値前層の層化と大域切断で定義する（β 案。層である前層にだけ lim で定義する γ 案は不採用）。大きい site は
+  濃度 ≤ κ = (#A + #R + ℵ₀)^{ℵ₀} で切り落とす（宇宙は上げない）。層は HTT 6.2.2.6 の Čech 層（hypersheaf との差は離散な層では
+  消える。ノート D17、設計書 §2.1）。向き付き有界基底（ノート D5）と導来完備化の H⁰ は既存の規約を保つ。
+  設計書 [infinity-sheaves-design.md](infinity-sheaves-design.md) を作成し、ノート第 4 章に方針と D16〜D18 を追記。∞ 層の一般論の
+  置き場所と ∞ レーンの窓は調整役が判断（infinity-foundation-plan.md 段 G の M12）。
