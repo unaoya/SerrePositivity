@@ -15,6 +15,8 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 | `Sheaves/` | `SerrePositivity/InfinityCategories/Sheaves/`（層の順序 StablePresentable < Sheaves < ModelBridge。最初のファイルで `scripts/refactor/layers.json` に登録） | S1〜S6 |
 | `DerivedSheaves/` | `SerrePositivity/InfinityCategories/Derived/Sheaves/` | S7（D(A) への適用） |
 | `A0/` | `SerrePositivity/BhattScholze/Prismatic/`（仮） | A0-1〜A0-4 |
+| `A1/` | `SerrePositivity/BhattScholze/Prismatic/`（仮） | A1-1〜A1-4 |
+| `Shared/` | 共有層（HomologicalAlgebra/Cosimplicial、CommutativeAlgebra/DeRham など。BS 固有でない一般論。置き場所は調整役と相談） | G-A1-1・2・9 ほか |
 
 | 基準コミット | 日付 | 内容 |
 | --- | --- | --- |
