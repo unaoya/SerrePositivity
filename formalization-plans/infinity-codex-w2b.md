@@ -182,3 +182,8 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
    - `scripts/audit_euler_betti_finite_support.lean`
    - `scripts/audit_euler_group_shared.lean`
    - `scripts/audit_triangulated_k0_shift_shared.lean`
+
+### §7 の追記（2026-11-02 20:00）
+
+4. `snapshot_batch.py` が v1 の `hash_algorithm` 名だけを検査するため、DG-W3 では実行時ラッパーで v3b の名前に合わせている。**現行の名前（`… proof-irrelevant v3b (term-level, proof marker)`）を受け付ける**ように直す（試験 1 件、別コミット）。
+5. 判断表に「**束縛子の型の明示**」を加える（DG-W3 §9 で承認：省略した束縛子の型が、環境に新たに入った instance に捕まって別の型に推論されるとき、前の型を明示する。条件は宇宙の明示と同じ）。

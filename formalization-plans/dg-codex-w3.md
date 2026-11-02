@@ -85,3 +85,15 @@ worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込�
 1. **`merge_modules.py --check` に循環検出を加える**：統合先どうしの import グラフ（統合元の import の和を統合先に付け替えたもの）に循環があれば、`--check` を失敗させ、循環に含まれる統合先と元の辺を報告する。IF-W2a-2 §6-4 で見つかった `Mod.InternalHom ↔ Mod.Closed` の形を試験に再現する（小さな模擬モジュールで）。既存の `--check` の出力は変えない（追加だけ）。
 2. **`test_merge_modules.py` の既存の失敗** `test_snapshot_cli_delegates_and_ignores_module`（IF-W0-4 の停止点 2 で報告されたもの）を直す。原因が道具側なら道具を、試験側なら試験を直し、どちらだったかを報告する。
 3. 試験は全部 PASS にして報告（短くてよい）。これは DG-W3 の事前検査には影響しない。main への取り込みは、DG-W3 の開始時に `infra/dg-w3` を切るときに一緒に入る（Claude が cherry-pick してもよい）。
+
+## 9. 追記（2026-11-02 20:00、§5-4 の停止への回答：束縛子の型の明示を許す）
+
+**受領**：事前検査（48・608、失われる参照 0・禁止依存 0、universe 608/608）、before snapshot 1,626 本・23,522 宣言（v3b）、D4・D5 コミット、修飾 1 箇所（`_root_.CategoryTheory.Functor.map_id`、保存一致）、内部 round 2 で `Functor.QuasiEquivalence` の `DGFunctor.ofHomMaps` が失敗（3966182e8）。
+
+**原因の確認**：報告の診断どおり。`H : ∀ x y, (x ⟶[Complex A] y) ⟶ …` の束縛子 `x y` の型は省略されており、enriched hom の記法の instance 合成が `?C` を未確定のまま走る。統合先 `Category.Basic` に旧 `Category.Examples` の `complexEnrichment : DGCategory A (Complex A)` が入ったため、`?C := Complex A` が先に確定し、後の `F x` と合わなくなった。IF-W2a-2 §7 の「宇宙メタ変数の捕捉」と同じ機構（環境が広がり、メタ変数を含む instance 合成が別の instance に捕まる）で、宣言の意味は変わっていない。before の elaboration では `x y : D` だった。
+
+**処置（承認）**：`(H : ∀ (x y : D), …)` と**束縛子の型を明示**する。これを判断表の新しい項目「**束縛子の型の明示**」として、「補充の import／完全修飾／宇宙の明示／名前付き引数の明示」と同じ条件で許す（DG・∞ の両方の束で有効）：before/after の保存比較（v3b）で型・本体・公理・属性が一致すること、別コミット「修飾・型の明示」、報告に一覧。一致しなければ止める。
+
+**再開**：処置を当てて内部 round 3 → 残りの統合先 42 本 → after snapshot → 保存比較（止めて報告する点 2）→ §3.2（外からの付け替え、下流約 16,300 本、層の仕上げ、verify）→ 止めて報告する点 3。
+
+**道具の注意**（∞ へ回す）：`snapshot_batch.py` が v1 の形式名を検査するため、実行時ラッパーで v3b の名前に合わせたとのこと。∞ の道具の回で `snapshot_batch.py` が現行の `hash_algorithm`（v3b）を受け付けるように直す（IF-W2b §7 に追記）。
