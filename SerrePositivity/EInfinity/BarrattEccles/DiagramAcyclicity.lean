@@ -42,6 +42,7 @@ abbrev generatingTrivialCofibrations : MorphismProperty (K ⥤ (operad A).Algebr
   generators (operad A) K
     ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
 
+set_option synthInstance.maxHeartbeats 40000 in
 /-- 概要：自由図式の生成 trivial cofibration は全頂点で trivial（BM 命題 4.1）。
 方針：元の生成類の右持ち上げ判定と余積での安定性を使う。
 規約：実際の E 代数モデルを局所的に選ぶ。
