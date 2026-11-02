@@ -16,6 +16,8 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 | `DerivedSheaves/` | `SerrePositivity/InfinityCategories/Derived/Sheaves/` | S7（D(A) への適用） |
 | `A0/` | `SerrePositivity/BhattScholze/Prismatic/`（仮） | A0-1〜A0-4 |
 | `A1/` | `SerrePositivity/BhattScholze/Prismatic/`（仮） | A1-1〜A1-4 |
+| `A2/` | `SerrePositivity/BhattScholze/Prismatic/Derived/`（仮） | A2-1〜A2-4 |
+| `DerivedGeneral/` | InfinityCategories の Derived の上（D(A) の t 構造・切り捨て、(p,d) 完備化の ∞ 関手。BS 固有でない一般論。置き場所は M12 と同じ扱いで調整役） | G-A2-2・G-A2-3 |
 | `Shared/` | 共有層（調整役の決定、main 26f1f4d94）：cup 積・Bockstein は `HomologicalAlgebra/Cosimplicial/`、de Rham は `CommutativeAlgebra/DeRham/`（いずれも新設、HA の第一層＝一般論の扱い）。移すのは 2b の後。名前は論文の層に予約してもらう。それまで drafts/Shared/ のまま | G-A1-1・2・9 ほか |
 
 | 基準コミット | 日付 | 内容 |
