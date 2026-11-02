@@ -212,3 +212,58 @@ A5 の Lemma 8.6 が使う標数 p の de Rham 比較は (2) の W(k) への平�
    完備化との交換、Rem 4.19 の三つの底変換 A_0 → A、A_0 → D_0、Z_p → D_0 の両立）。
 7. G-A1-12：A_0 の Frobenius の mod p 平坦性（F_p{d, δ(d)^{-1}} の Frobenius は多項式環の p 乗で自由、局所化と d 完備化で d 完全平坦）と、
    Construction 6.1 の (6) で要るのが「A/(p,d) → A/(p,d^p) が忠実平坦」であること（平坦かつ Spec の同相）。
+
+## 9. A1-5：de Rham 比較の多項式・mod p の場合（原典 Thm 6.4、2026-11-02 追記）
+
+概要：A5 の決定 3 で追加した単位。Lemma 8.6（A5-3）の入力：完全 prism (A,(d))（R = A/d perfectoid）と T = R⟨X_1,…,X_n⟩ について、
+φ_A^*Δ_{T/A} ⊗̂^L_A A/(p,d) ≃ Ω^*_{(T/p)/(R/p)}（p 完備 de Rham 複体の mod p）を D(R/p) の可換代数の自然な同型として。
+T_∞ = R⟨X_i^{1/p^∞}⟩ については T_∞ = (colim_m T_m)^∧（T_m = R⟨X_i^{1/p^m}⟩ は多項式）と Δ の filtered 余極限の可換性で、
+φ^*Δ_{T_∞} ⊗ A/(p,d) ≃ colim_m Ω^*_{(T_m/p)/(R/p)} = T_∞/p（遷移写像 d(X^{1/p^m}) = d((X^{1/p^{m+1}})^p) = 0 が Ω^{≥1} を殺す）。
+Lemma 8.6 で使う形：Δ_T ⊗_A A/(p, φ^{-1}(d)) = φ_A^*Δ_T ⊗_A A/(p,d)（φ_A は自己同型、A/φ^{-1}(d) ≅_φ A/d）。
+原典 Thm 6.4 の証明は ψ : A → W(A/I)（標準射と Frobenius の合成）で (A,I) → (W(A/I),(p)) を作り、底変換と Thm 5.2（pd イデアル J）で
+RΓ_crys に移し、結晶コホモロジーが持ち上げの de Rham 複体を持ち上げることで示す。技術的仮定「W(A/I) が p ねじれなし」（Cor 15.4 で除去）。
+
+### 9.1 帰着の筋（A1-4 の装置で、D69）
+
+Thm 6.4 の証明の ψ・W(A/I) の経路ではなく、Prop 6.2（A1-4）と同じ帰着を使う：
+1. 完全 prism → 普遍向き付き prism A_0（Ex 3.4）：d の選択で A_0 → A、Cor 4.12／(4) で Δ_{T/A} = Δ_{T_0/A_0} ⊗̂_{A_0} A（T_0 = (A_0/d_0)⟨X⟩）、
+   Frobenius と両立（δ 射）、de Rham 複体は底変換と両立。よって A_0 上で示せばよい。
+2. A_0 → D_0（Construction 6.1 の α、結晶 prism (D_0,(p))）：α̂^* は保存的（(1)）、(3) で α̂^*Δ_{T_0/A_0} = Δ_{T_{D_0}/D_0}、α は δ 射なので φ と両立。
+   よって結晶 prism (D_0,(p)) 上で示せばよい。
+3. 結晶 prism (B,(p)) と多項式 (B/p)[X]：Lemma 4.20（(p)-prism の Δ は任意の p 完備底変換と可換、A0-4）で Z_p に帰着。
+4. Z_p と F_p[X]：**結晶の黒箱**（A1-3）を de Rham の形で：φ^*Δ_{F_p[X]/Z_p} ≃ Ω^*_{Z_p⟨X⟩/Z_p}（Thm 5.2 β の使う形、可換代数として）。mod p で
+   Ω^*_{F_p[X]/F_p}。HT 比較（Cor 5.5、A1-3 の `hodgeTate_iso_polynomial_Zp`）は同じ黒箱と Cartier 同型（一変数は G-A5-12、n 変数は Künneth）から。
+   **結晶の黒箱は一つのまま**（D68）。
+
+### 9.2 単位と形
+
+| 項目 | Lean の形 | 既存・不足 |
+| --- | --- | --- |
+| 黒箱（de Rham 形） | `crystalline_deRham_polynomial_Zp : φ^*Δ_{F_p[X_1..X_n]/Z_p} ≃ Ω^*（CAlg(D(Z_p))）` | A1-3（A1-2 の対象の上） |
+| Cor 5.5（HT）を黒箱から | `hodgeTate_iso_polynomial_Zp` の証明：黒箱 mod p と Cartier | G-A5-12 の n 変数版 |
+| Lemma 4.20 | (p)-prism の Δ の底変換 | A0-4（D、2b 後） |
+| 結晶 prism の多項式 | `deRham_iso_polynomial_crystalline` | 3 |
+| A_0 への持ち上げ | `deRham_iso_polynomial_universal`（α̂^* 保存的、(3)、φ 両立） | A1-4 `baseChangeB`・`crystallineCover*` |
+| 完全 prism | `deRham_iso_polynomial_modP`（A1-5 の主張） | 1 |
+| T_∞ | `deRham_iso_rootAlgebra_modP`：φ^*Δ_{T_∞} ⊗ A/(p,d) ≃ T_∞/p | A5-4 の filtered 余極限、Ω の遷移の消滅 |
+| 可換代数構造 | 全段を CAlg の同型として | Shared/DeRhamPolynomial の cdga → CAlg、G-A1-11 |
+
+### 9.3 原典との差
+
+| 番号 | 原典 | 本書 | 評価 |
+| --- | --- | --- | --- |
+| D68 | 結晶の入力は Thm 5.2（結晶 site）と Cor 5.5 | 黒箱を Thm 5.2 β の de Rham 形一つにし、HT（Cor 5.5）と de Rham mod p の両方をそこから出す | 黒箱は増えない（A5 の決定 3 の「結晶の範囲は増えない」を満たす） |
+| D69 | Thm 6.4 の証明は ψ : A → W(A/I) と pd イデアル、仮定「W(A/I) p ねじれなし」 | Prop 6.2 と同じ帰着（A_0、Construction 6.1、Lemma 4.20、Z_p）で、仮定を使わない | 多項式・mod p の特別な場合なので可能。perfectoid R について W(R) の p ねじれを確かめる必要がなくなる |
+
+### 9.4 決定事項（相談）
+
+1. 結晶の黒箱を de Rham 形 `crystalline_deRham_polynomial_Zp` 一つにして、HT（`hodgeTate_iso_polynomial_Zp`）をそこから Cartier で導く（推奨、D68）／
+   de Rham 形を第二の黒箱として別に置く。
+2. 帰着は Prop 6.2 と同じ A_0・Construction 6.1・Lemma 4.20 の経路（推奨、D69）／原典 Thm 6.4 の ψ・W(A/I) の経路（W(R) の p ねじれなしを確かめる必要）。
+
+### 9.5 紙で確かめる項目
+
+1. 9.1 の 1：Frobenius 捻りと底変換の両立（φ_{A_0}^* と ⊗_{A_0} A の交換、δ 射）。
+2. 9.1 の 2：α̂^* の保存性で CAlg の同型を反映できること（U で見て D(D_0) の保存性）。
+3. T_∞ の段：colim_m Ω^*_{T_m/p} = T_∞/p（Ω^{≥1} の遷移が零）、Δ の完備化した filtered 余極限との整合。
+4. Cartier の n 変数版（Künneth）で Cor 5.5 を黒箱から出せること。
