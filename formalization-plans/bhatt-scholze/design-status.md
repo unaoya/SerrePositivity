@@ -58,7 +58,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/UniversalProperty | 未（a7 §7 の 3〜5） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
 | A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 未（a8 §8 の 1） | B5 の既存、A7 |
 | A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 未（a8 §8 の 2） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
-| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。古典的で独立、Codex 向き。置き場所は調整役 |
+| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 未（a8 §8 の 3・4・6） | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
@@ -150,6 +150,8 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
   M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版を追加。時期・担当は M12 と同じ。
 - （同）Prop 8.10 の引用 3 件の `sorry` 定理は drafts/ の間は問題なし。`SerrePositivity/` に入れるときに `scripts/make_area_audits.py` の許可一覧の更新が要る
   （そのとき調整役に知らせる）。
+- （main 26f9f7fc5）Lemma 10.12（A8-3）の置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`
+  （層別の本体）。どちらも 2a の後に新規ファイルだけで入れ、論文の層へ名前を予約。独立した Codex の単位、担当は 2a の後。A8-1・A8-2・A8-4 の仮置きも問題なし。
 
 ## 4. 次の作業（提案）
 

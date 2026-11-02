@@ -1,4 +1,5 @@
--- 将来の置き場所：SerrePositivity.CommutativeAlgebra.FiniteEtaleStratification（仮。原典 Lemma 10.12。古典的可換環論で BS 固有ではない。置き場所は調整役）
+-- 将来の置き場所（調整役の決定、main 26f9f7fc5）：普遍同相の一般論は SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.*、層別の本体は
+-- SerrePositivity.CommutativeAlgebra.EtaleStratification.*。2a の後に新規ファイルだけで入れる。独立した Codex の単位、担当は 2a の後。
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.3・§3.4、単位 A8-3。基準コミット 972bb7f53。ビルドしない。
 module
 
