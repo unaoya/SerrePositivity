@@ -92,7 +92,8 @@ theorem e3Perfd_of_complete (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) : True := by trivial
 
 /-- 概要：任意の離散 S で、`e3Perfd` の値は直接の式 (colim_φ Δ_S)^∧ ⊗^L_A A/d（S を完備化せずに A2 の Δ_S に当てたもの）に一致する。
-方針：D32（`derivedPrismaticCohomology_completion_discrete`：Δ_S ≃ Δ_{S^∧}）を Frobenius の塔・余極限・完備化・底変換に通す。
+方針：D32 の animated 版（Δ_S ≃ Δ_{LΛ_p S}、A2-4 `derivedPrismaticCohomology_completion_animated`）で直接の式は (LΛ_p S)_perfd、
+Prop 8.5 の系 4（A5-1 `perfectoidization_piZero`）で (LΛ_p S)_perfd ≃ (π_0 LΛ_p S)_perfd = (completionRing S)_perfd（W9-I-29、決定 6）。
 規約：これが D41 の「直接の式との一致は定理」。
 使われ方：A6（Prop 8.10：任意の離散 S に対する arc 層としての記述）、A8。 -/
 theorem e3Perfd_eq_direct (S : Type u) [CommRing S] [Algebra R S] : True := by trivial

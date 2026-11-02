@@ -94,7 +94,8 @@ theorem prismaticPerfection_discrete_of_integral (h : Algebra.IsIntegral R S) : 
 theorem perfectoidization_isIntegralPerfectoid_of_integral (h : Algebra.IsIntegral R S) : True := by trivial
 
 /-- 概要：E3 の `integral`：任意の整 R 代数 S（非完備も）について `IsDiscrete R (e3Perfd S) ∧ IsIntegralPerfectoid (H⁰(e3Perfd S)) p`。
-方針：`e3Perfd S = (S^∧)_perfd`（D41）、S^∧ は整写像の p 完備化、Thm 10.11、`e3H0_of_complete`（A4-3）。
+方針：`e3Perfd S = (S^∧)_perfd`（D41、S^∧ = completionRing S = π_0(LΛ_p S)）。Thm 10.11 は原典どおり animated LΛ_p S（整写像の導来 p 完備化）について示し、
+Prop 8.5 の系 4（`perfectoidization_piZero`、決定 6）で (LΛ_p S)_perfd ≃ (S^∧)_perfd、`e3H0_of_complete`（A4-3）。
 規約：`PerfectoidizationInterfaceCAlg.integral` の型そのまま。
 使われ方：A9。 -/
 theorem e3Integral (S : A_R R)

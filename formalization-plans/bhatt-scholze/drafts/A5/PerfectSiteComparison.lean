@@ -39,6 +39,8 @@ open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 variable (S : Type u) [CommRing S] [Algebra R S]
+-- D45 改訂（2026-11-02、決定 6）：Prop 8.5 の定義域は導来 p 完備な animated R 代数（A7-1 `CompleteAnimatedAlgebra`）。完全 site・Perfd_{S/} は π_0 S で定義する
+-- （原典 p.64）。本ファイルの `S : Type u` は離散の特別な場合で、中身の段階で定義域を animated に書き換える（design-status §5）。animated 版の主張は末尾に置く。
 
 /-! ## Rem 4.6：完全 prismatic site -/
 
@@ -139,6 +141,22 @@ theorem perfectoidization_indep : True := by trivial
 規約：R′ は既存の `Semiperfectoid/Perfectoidization`（要確認）。
 使われ方：A5-4 の弱始対象、Cor 8.14。 -/
 theorem perfectoidization_semiperfectoid : True := by sorry -- A5-2
+
+/-! ## animated 版（D45 改訂）と系 4 -/
+
+/-- 概要：Prop 8.5（animated 版）：導来 p 完備な animated R 代数 S（`CompleteAnimatedAlgebra`）について、site を π_0 S で取った比較写像
+Δ_{S/A,perf} → lim_{(π_0 S/A)^perf} O は同値。
+方針：§3 の四段を animated S で（T → S は π_0 で全射、semiperfectoid の段は π_0 S）。離散 S は `discreteToAnimated` 経由の特別な場合。
+規約：π_0 S は離散環（要確認：`animatedPiZero : AnimatedAlgebra R → CommRing`）。
+使われ方：系 4、A8（Thm 10.11 は animated LΛ_p S について）。 -/
+theorem perfectionComparison_isIso_animated : True := by sorry -- A5-2〜A5-4（animated）
+
+/-- 概要：系 4（決定 6）：Δ_{S,perf} と S_perfd は π_0 S のみによる：S → π_0 S が Δ_{S,perf} ≃ Δ_{π_0 S,perf}、S_perfd ≃ (π_0 S)_perfd を誘導する。
+方針：perfectoid 環は離散なので Perfd_{S/} = Perfd_{π_0 S/}、両辺とも同じ極限（animated 版の Prop 8.5）。
+規約：—
+使われ方：E3 の非完備な離散 S（perfd S := (completionRing S)_perfd、completionRing S = π_0(LΛ_p S)）と直接の式 (LΛ_p S)_perfd の一致（A4-3 `e3Perfd_eq_direct`）、
+A8 の `integral`（Thm 10.11 の LΛ_p S から H⁰ 完備化へ）。 -/
+theorem perfectoidization_piZero : True := by trivial
 
 /-! ## Lemma 8.6 の主張（証明は A5-3） -/
 

@@ -38,7 +38,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | Prop 8.5 系 1 | S_perfd ≃ RΓ(Ō) ≃ lim_{S→R′} R′（κ-small の site でも Type u の Perfd_{S/} でも） | `perfectoidization_isLimit`、`perfectoidization_isLimit_u` | S3、G-A5-9 | A5-1 |
 | Prop 8.5 系 2 | A によらない | `perfectoidization_indep` | 系 1 と Lemma 4.8 | A5-1 |
 | Prop 8.5 系 3 | semiperfectoid なら Cor 7.3 の perfectoid 化と一致 | `perfectoidization_semiperfectoid` | §3.4 そのもの | A5-2 |
-| Prop 8.5 系 4 | π_0 S のみによる | 述べない（D45） | — | — |
+| Prop 8.5 系 4 | Δ_{S,perf}・S_perfd は π_0 S のみによる | 定理（決定 6、2026-11-02）：Perfd_{S/} = Perfd_{π_0 S/}（perfectoid 環は離散）と系 1 から | `perfectoidization_piZero` | A5-1 |
 | descendable | 定義（[Mat16, Def 3.18]） | `IsDescendable` | なし（G-A5-1） | A5-3 |
 | Lemma 8.6 | 定理 | `prismaticCohomology_rootMap_descendable`、`prismaticPerfection_rootMap_descendable` | G-A5-1、de Rham 入力 G-A5-15 | A5-3 |
 | E3 `limitCone` | 構成 | `e3LimitCone S : BSLimitConeDataCAlg R p e3Perfd e3Unit e3H0RingData S` | 系 1（Type u 版）、A4-3 の欄 | A5-1 |
@@ -95,7 +95,12 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 - 使う形（§3.3）：S̃ := S ⊗̂_T T_∞ について Δ_{S,perf} ≃ Tot Δ_{S̃^{⊗_S •+1},perf}（(a)、Construction 7.6 (5)、完全化のテンソル可換 G-A5-3、(e)）、
   および各 perfectoid R′ under S について B_{R′} ≃ Tot Δ_{R′ ⊗̂_S S̃^{•+1},perf}。使うのは perf 版だけで、非 perf 版は perf 版の証明の途中（(g)）。
 
-## 3. 証明の筋（Prop 8.5、S 離散）
+## 3. 証明の筋（Prop 8.5、S は導来 p 完備な animated R 代数。離散 S はその特別な場合）
+
+決定 6（2026-11-02）により S は animated。原典 p.64 のとおり完全 site は (π_0 S/A)^perf、弱始対象 S̃ は π_0 S から、T = R⟨X⟩ → S は π_0 で全射、
+semiperfectoid の場合は π_0 S について（HT の連結性は L_{S/Z_p}[−1] の連結性 ⇔ Ω^1_{π_0 S}/p = 0、Thm 7.4 は π_0 S に）。以下の各段の「S」はそのまま
+animated S と読み、離散化が要る箇所を π_0 S と書く。骨組みの定義域の書き換え（`variable (S : Type u) [CommRing S]` → `CompleteAnimatedAlgebra`）は
+中身の段階で行う（design-status §5）。
 
 ### 3.1 弱始対象と位相非依存（原典 (1)）
 
@@ -193,7 +198,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 
 | 番号 | 原典 | 本書 | 評価 |
 | --- | --- | --- | --- |
-| D45 | S は導来 p 完備な単体的 R 代数、「π_0 S のみによる」 | S は離散。π_0 S の文は述べない | E3 の始域は離散。定義域の制限で、定義は変えない |
+| D45 | S は導来 p 完備な単体的 R 代数、「π_0 S のみによる」 | **改訂（2026-11-02、決定 6）**：S は導来 p 完備な animated R 代数（A7-1 の `CompleteAnimatedAlgebra`、D60 と同じ定義域）。完全 site は π_0 S で定義（原典 p.64）。系 4 を述べる。E3 の始域の離散 S はその特別な場合。（旧：S 離散、系 4 は述べない — W9-I-29 で E3 の非完備 S との接続に系 4 が要ると判明） | 原典の定義域そのもの |
 | D46 | 「flat と chaotic の間の任意の位相」 | Grothendieck 位相の順序 ⊥ ≤ J ≤ `perfectFlatTopology` で述べる。位相非依存は O の flat 層性（G-A5-5）と S2 から形式的 | 同じ主張 |
 | D47 | 極限の添字は全ての perfectoid 環 | κ-small の site と Type u の `PerfUnder_u` の両方で、同じ弱始対象の Čech 余脈体の Tot（S3） | II-a の整合（補い、差ではない） |
 | D48 | semiperfectoid の場合の「R を R⟨Y^{1/p^∞}⟩ に替える」 | 取り下げ（決定 4、原典どおり）。原典 Prop 7.10 の証明と同じ理由（余接複体が変わらない）を G-A5-17 として定理にし、§3.4 (β) で使う | 差なし |
@@ -244,6 +249,8 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
    （Perfd_{S/} = Perfd_{π_0 S/}）。D45 を「S は導来 p 完備な animated（E3 の始域の離散 S はその特別な場合）」に改める。
    ／代案：Prop 8.5 は離散のまま、Thm 10.11 と E3 の欄を H⁰ 完備化 S^∧ の離散環について直接述べる（S^∧ が整写像の p 完備化であることの確認と、
    filtered 余極限の議論を S^∧ で組み直す必要があり、原典から離れる）。
+   **決定（2026-11-02、ユーザー）：推奨案 (a)。** D45 を改訂し、系 4 `perfectoidization_piZero` を A5-1 に置く。E3 の非完備 S の欄との接続
+   （`e3Perfd_eq_direct`、A8 の integral）は系 4 で。
 
 ## 8. 紙で確かめる項目
 

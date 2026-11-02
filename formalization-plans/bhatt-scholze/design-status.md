@@ -126,6 +126,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D31〜D35 | P_Σ、完備化不変性、gr が (∧^i L)^∧ の定義、Poly の添字、CAlg_A 値 | a2-design §4・§6 |
 | D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
 | D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
+| D45 改訂、D68・D69 | Prop 8.5 は導来 p 完備な animated S（site は π_0 S）で系 4 を述べる（決定 6、11-02）；結晶の黒箱は仕様つきの de Rham 形一つ＋G-A1-17；Thm 6.4 の帰着は A_0 上で原典の経路 | a5-design §5・§7.1、a1-design §9.3・§9.4 |
 | D45〜D52 | S 離散、位相の順序、κ と Type u の一致、D48 取り下げ（G-A5-17）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
 | D63〜D67 | Thm 10.9 は連結性だけ原典 (1)(2) で、n = 1 は Perfd_{S/} = Perfd_{S_red/}、Lemma 10.12 は原典の形、Prop 10.4 は必要な同値、E3 は S^∧ 経由 | a8-design §5・§7 |
 | D68〜D69 | 結晶の黒箱は de Rham 形一つ、Thm 6.4 の帰着は Prop 6.2 の経路 | a1-design §9.3・§9.4 |
@@ -201,6 +202,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-29 animated 完備化と `completionRing` = H⁰ の区別 | 要確認 | 反映済み（a2-design §2.4・D32、BaseChangeAndTensor）。E3 との接続は perfd の段で Prop 8.5 系 4 が要る → **a5-design §7.1 の決定項目 6（Prop 8.5 を animated S で、D45 改訂）** |
 | W9-I-30 E3 の `unit` は CAlg の関手射 | 要確認 | 反映済み（Fil_0 → Δ̄ を CAlg で：`hodgeTateUnitCAlg`、a2-design §2.3） |
 | W9-I-31 `Poly` の k パラメータ | 要修正 | 訂正済み（AnimatedAlgebra） |
+| （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
 既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
 
