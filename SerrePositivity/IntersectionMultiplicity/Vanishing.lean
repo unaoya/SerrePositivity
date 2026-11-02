@@ -1,15 +1,14 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.ModuleSupportHeight
-public import SerrePositivity.KTheory.Adams.CupVanishing
+public import SerrePositivity.KTheory.G0.SemilocalSupport
+public import SerrePositivity.KTheory.Adams.PureWeight
 public import SerrePositivity.PerfectComplex.TensorTorComparison
 public import SerrePositivity.PerfectComplex.CoefficientEuler
-public import SerrePositivity.KTheory.Adams.CyclicTwoFamily
+public import SerrePositivity.KTheory.Adams.CyclicTwo
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic
 public import SerrePositivity.CommutativeAlgebra.CubicCyclotomic.LocalExtension
 public import SerrePositivity.IntersectionMultiplicity.Basic
-public import SerrePositivity.KTheory.Adams.CyclicThreeFamily
-public import SerrePositivity.KTheory.Adams.CubicCoefficientField
+public import SerrePositivity.KTheory.Adams.CyclicThree
 
 /-! # 台つき Adams 作用素による交点重複度の消滅
 

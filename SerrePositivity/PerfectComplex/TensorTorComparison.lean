@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.PerfectComplex.ClosedSupport.Cup
 public import SerrePositivity.PerfectComplex.IntegerEulerIso
-public import SerrePositivity.KTheory.ResolutionClass
+public import SerrePositivity.KTheory.Comparison.ResolutionClass
 public import SerrePositivity.CommutativeAlgebra.Support.Closed
 public import SerrePositivity.IntersectionMultiplicity.Basic
 public import SerrePositivity.CategoryTheory.AlternatingSum

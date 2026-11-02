@@ -2,13 +2,12 @@ module
 
 public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
 public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
-public import SerrePositivity.PerfectComplex.Perfect.HomotopyCategory
+public import SerrePositivity.HomologicalAlgebra.Complex.StrictlyPerfect
 public import SerrePositivity.DifferentialGraded.Module.RingProjective
 public import Mathlib.Algebra.Category.ModuleCat.Projective
 public import SerrePositivity.DifferentialGraded.Module.RingHomotopyComparison
 public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
 public import SerrePositivity.DifferentialGraded.Derived.HomotopyLinear
-public import SerrePositivity.PerfectComplex.BiproductPerfect
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement

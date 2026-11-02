@@ -93,6 +93,10 @@ Mathlib
   外せなければ `section` の範囲に限る。`maxHeartbeats` の引き上げも同様。
 - docstring は日本語の 概要／方針／規約／使われ方 にそろえる（英語のもの、定型文の繰り返し、古い状況の記述を直す）。
 
+予約したディレクトリ名（2026-11-02 ユーザー）：区切り 2b の後に BS の共有一般論 3 本を受け入れる `HomologicalAlgebra/Cosimplicial/`（余単体加群・
+余単体可換環の全複体の積など）と `CommutativeAlgebra/DeRham/`（多項式環の de Rham 複体と p 進完備化）。HA の側は層の規則の第一層（一般論）として扱う。
+論文の層の作業ではこの 2 つの名前を別の用途に使わない（中身はまだ置かない）。
+
 ## D. 章をまたぐ共通の仕組み
 
 一つの章だけで作業すると重複が残るものを、担当の章と一緒に挙げる。
@@ -168,6 +172,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | CommutativeAlgebra の H の BS に依存する部分（P1 普遍性・P8 perfectoid イデアル）・RootTower/Koszul | 区切り 2a |
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
+| 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -180,6 +185,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-1 | ca2fffe4d・25d50e9e8 | 203 本を削除・55 本を新設（CT 68 → 20、CA の E・D・X・H 約 120 → 約 35、Inputs 6 本を削除、shared の対象 → 1156 モジュール） | −19100・＋17583 |
 | 区切り 1-2 | 95c0a6d25・401fbbe6d | 153 本を削除・24 本を新設（HA1 69 → 13、HA3 31 → 5、HA4 33 → 5、HA5 20 → 2、shared の対象 → 1058 モジュール）。未使用の宣言 189 を削除 | −16182・＋13361 |
 | 区切り 1-3 | e032f83ea・ea54f9f4c | 166 本を削除・40 本を新設（LA・IM・CA/Almost 74 → 22、PC と HA/CochainTensor 100 → 26）。未使用の宣言 62 を削除 | −19012・＋17681 |
+| 区切り 1-4 | 3b825cacb・bbba9ee39（refactor/1-4、main 5c909058e を取り込み） | 247 本を削除・32 本を新設（ほか改名 18）。KTheory 127 → 28、Asymptotic 81 → 15、Paper 61 → 20、Devissage 7 本は research へ。未使用の宣言 48 を削除。shared の対象 752 モジュール | −25174・＋23077 |
 
 
 区切り 1-1 で見送った項目（2026-10-30）：
@@ -247,6 +253,52 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   Basic だけを使うファイルで `K.ιTruncLE` などのドット記法が Mathlib の `CochainComplex.ιTruncLE`（ℤ を取る版）に解決されるようになり、KST・∞ 側で
   エラーになった。Bounds と Finite を CochainTensor/Bounds に分けて解消。HA/ModuleTensorCochainExact の `tensorRight` の `Epi` の探索は重くなったので
   その補題だけ `synthInstance.maxHeartbeats 80000` にした。重い import を軽いファイルへ統合しないことを今後の統合の注意とする。
+
+区切り 1-4 の記録（2026-11-02、worktree refactor/1-4、main 8a6f1d918 から。main 5c909058e を取り込んだ後に verify PASS：bbba9ee39、ビルド 2・監査 100・sorry 閉包 1 がすべて成功、gate true、80 分 38 秒）：
+
+- 1 回目の verify はルートのビルドで TensorCubeLowMixed が失敗した（未使用の宣言を消したとき、直前の `set_option … in` 2 行が残った）。直して再実行。
+- ファイル（main 8a6f1d918 との差、名前の付け替えを含む数え方）：264 本を削除・49 本を新設（KTheory 127 → 28、CA の SupportHeight・SemilocalSupport・ModuleSupportHeight・SubmoduleExact を吸収。
+  Asymptotic 81 → 15（うち Paper/Section4/{RankQuotient, RankLowerBound} の 2 本）。Paper 61 → 20、うち LA/RootTowerLength/{Tower, BaseChangeApproximation}
+  の 2 本）。Devissage* 7 本は research/kt-devissage/ へ（11-01 決定）。行数は −25174・＋23636（research を除く）。
+- 計画からの変更：
+  - Asymptotic/PaperRankQuotient は Asymptotic/Completed に置いた（DGVerdier/OrderSquare が import するので Paper へ移すと層が逆転する）。
+    DGVerdier の 3 本はそのまま、OrderSquare の import だけ `Asymptotic.Completed` に。
+  - PaperVanishing は死んでいなかった（変種の FlatRealization が使う）。Paper/Section4/RankLowerBound の一部にした。
+  - KoszulBaseChange の `baseChangeKoszulOnIso` は CA/Koszul へ（名前空間は `SerrePositivity.Asymptotic` から `SerrePositivity` に。利用者は
+    `SerrePositivity.Asymptotic` の中なので書き換え不要）。
+  - LengthAlgebraConsequences は Section2/LengthAlgebra に入れず、軽い Paper/Section2/LengthAlgebra/Formulas に分けた。Section2/LengthAlgebra
+    （Theorem 2.5、BS・CLMST に届く）と同じファイルにすると、それを import する Section5/Positivity の ApproximationPositivity の `variable` で
+    instance 探索が時間切れになった（1-3 の「重い import を軽いファイルへ統合しない」と同じ現象）。
+  - Section2/BaseChange は作らなかった。§10.4 の一本化により Cor 2.6 の 1・2 は Section3/LengthComputation に置いた（下）。
+- §10.4 の重複（決定 3）：Cor 2.6(3) は主経路の `Section4.residue_length_pos_of_lengthAlgebra_values`（Section4/LengthHypotheses、docstring に論文の番号）
+  を残し、`Section2.cor_2_6_residue_pos`（Section2/Corollary2_6、ファイルごと）と包みの `cor_2_6_pos` を削除。Cor 2.6(1,2) の `cor_2_6_tor` は
+  `lemma_3_4` を `T = D` で適用する 2 行の証明に（同じ議論の二重を解消、`lengthAlgebra_base_values_one` は不要になり削除）。(2.5) の v = 1 は
+  `parameterQuotient_length_eq_multiplicity`（Positivity、一乗の値の書き換えだけ）と Formulas の `parameter_quotient_values_pow` が残る（計算の重複ではない）。
+  Thm 4.7・FlatRealization の並行と正値性の二経路は変種として残す（G の 8）。
+- DG の依頼：`strictlyPerfectComplex`・`perfectHomotopyProperty`（と `_quotient`・`_zero`・`_shift`・`_mappingCone`・三角部分圏の instance）・
+  `PerfectHomotopy`・`perfectHomotopyInclusion`・`perfectHomotopyObj`・`cochainBiprodXIsoProd`・`strictlyPerfectComplex_biprod` を
+  新しい HomologicalAlgebra/Complex/StrictlyPerfect へ（名前は変えない）。PC/Perfect/HomotopyCategory と PC/BiproductPerfect はそれを import する。
+  DG/Perfect/Basic は `finiteProjective_exists_retract` を Mathlib の `Module.Finite.exists_comp_eq_id_of_projective` に置き換え、PC/KoszulLength の
+  import を外した。DG/Perfect/Ring/FiniteProjectiveComparison は PC の 2 本の代わりに HA の 1 本を import する。DG → PC の辺は無くなった
+  （scripts/refactor/layers.json の例外 3 件は DG-W3 で外す）。
+- docstring：15 群（Asymptotic・Paper/Section4）と 19 群（Paper・LA/RootTowerLength）を規約の形で新しく書いた。LengthAlgebraConstruction・Theorem 2.5 の
+  「Roberts の引用に依存」を直した（等標数は FrobeniusGrowth の初等的な評価を使い、Roberts の一般定理には依存しない）。旧ファイル名の参照 25 か所を
+  新しいパスへ。Section3/NormComparison の旧ファイルの閉じ `end` 2 か所を除いた。
+- 未使用の宣言（2026-11-02 ユーザーの方針：論文の主張は残す、一般論として意義のあるものは残す、それ以外は消す）：scripts も参照元に数えた走査で
+  scripts・文書の参照がない 80 件のうち 41 件を残し（論文の主張と変種 13・一般の補題 28）、40 件を削除した。KTheory/Adams の計算の足場 28
+  （KoszulCube の次数ごとの同型 9・KoszulCubeFourier の基底の同型 3・KoszulSquareSplitting の双対の等式 3・TensorCube の First layer 2・Low/High mixed の
+  回転と余核の同型 6・TensorSquare の対角と四項の同型 6）、`heightStratumComplement_le_primeCompl`、PaperVanishing の `_vanishing_of_koszul`・
+  `Betti_eq_zero_of_isZero`、旧 ApproximationEuler・ApproximationBetti の正値性の旧経路の中間段 8（`paperOrdinaryEulerK0_eq_twistedEuler` ほか。
+  走査が見落とした利用者 `exists_supported_approximation_with_lambdaChi` も未使用なので合わせて削除し、ApproximationEuler のパートは空になったので除いた）。
+  exposition/ja/exposition-ja.tex の 1070 行が `paperOrdinaryEulerK0_eq_lambdaChi` と旧モジュール名を参照している（exposition の側で直す）。
+- 見送った項目：
+  - 名前空間の `SerrePositivity.Paper` へのそろえ（決定 1）。
+  - 文書（.md・.py）だけが名前を挙げる未使用の宣言 86 件は、同じ方針で 78 件を残し、8 件（KoszulSquare の次数ごとの同型 7・
+    `tensorCubeHighMixedCokernel`）を削除した（2026-11-02 ユーザー了承）。
+  - KTheory の Mathlib への置き換え（§6.2.2：Coefficient*・`g0CoefficientMap`）、PC から KTheory・Asymptotic への移動、Euler の定義域の一般化
+    （IsSerreClass）、Paper → LA の一般の補題（§10.6）の残り、§5.2 の 2〜4、StageDecay、Lemma3_5・GaloisNormalization の補助。
+  - maxHeartbeats：統合で各パートを `section … end` で包んだので、ファイル全体の `set_option` はパートの範囲に限られた。個々の引き上げの値は変えていない。
+  - scripts/check_adams_import_boundaries.py は 1-3 の HA の統合の時点で古い名前を参照している（verify からは呼ばれない）。直すか削除するかは後で。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。

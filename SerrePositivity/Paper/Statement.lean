@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.IntersectionMultiplicity.Basic
-public import SerrePositivity.Paper.Section5.CompletionReduction
-public import SerrePositivity.Paper.Section5.CharacteristicZeroReduction
+public import SerrePositivity.Paper.Section5.Reduction
 public import Mathlib.Algebra.CharP.Defs
 public import Mathlib.FieldTheory.IsAlgClosed.Basic
 public import Mathlib.LinearAlgebra.TensorProduct.Basic
@@ -30,13 +29,12 @@ Lemma 5.1 で帰着した後の核の場合を述べる。主定理と核の場�
 
 証明は帰着（完備化・剰余体の拡大・素イデアル商へのデヴィサージュ）と
 核（§5 の正値性の議論、`Paper/Section5/`）で与える。
-`Paper/Section5/Core.lean` は素イデアル商から正規化基底とガロア拡大を構成し、長さ代数、
+`Paper/Section5/Setup.lean` は素イデアル商から正規化基底とガロア拡大を構成し、長さ代数、
 群作用、二つの比較へ接続する。`core_statement` 自身の `sorry` は除去済み。
-`Paper/Section5/ModuleReduction.lean` は同じ環の仮定の下で任意の有限生成加群へ広げる。
-`Paper/Section5/ResidueFieldReduction.lean` は Lemma 2.1 と平坦局所拡大の保存則により
-剰余体の代数閉性も外す。`CompletionReduction.lean` は完備化で一般の環へ広げる。
-`CharacteristicZeroReduction.lean` は剰余標数零の場合に `ℚ` の作用を構成して
-Serre の等標数正値性へ帰着する。Serre の定理、§2 の長さ代数の存在などの引用入力は残る。
+`Paper/Section5/Reduction.lean` は、核の場合を任意の有限生成加群へ広げ（デヴィサージュ）、
+Lemma 2.1 と平坦局所拡大の保存則で剰余体の代数閉性を外し、完備化で一般の環へ広げる。
+剰余標数零の場合は Serre の対角線論法（`IntersectionMultiplicity/EqualCharZeroPositivity.lean`）による。
+§2 の長さ代数の存在などの引用入力は残る。
 -/
 
 public section

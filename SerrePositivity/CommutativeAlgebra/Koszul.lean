@@ -368,7 +368,7 @@ lemma koszulComplex_isZero_homology_of_pos {n : ℕ} (x : Fin n → R) (i : ℤ)
 `χ^A(z; T) = rank_A T`。この等式は `CommutativeAlgebra/RegularLocalRing.lean` の
 `koszulEulerChar_eq_finrank` で、一般の有限自由分解の Euler–Poincaré 公式と
 証明済みの正則局所環の性質から導き、
-Lemma 3.5b の通常の長さ側（`Paper/Lemma3_5/Ordinary.lean`）で使う。 -/
+Lemma 3.5b の通常の長さ側（`Paper/Section3/NormComparison.lean`）で使う。 -/
 noncomputable def koszulEulerChar (A T : Type u) [CommRing A] [CommRing T] [Algebra A T] {e : ℕ}
     (z : Fin e → A) : ℝ :=
   ∑ᶠ i : ℤ, ((i.negOnePow : ℤ) : ℝ) * ((Module.length A ((ModuleCat.restrictScalars
@@ -387,7 +387,8 @@ Koszul 複体と両立する：`K(z; A) ⊗_A C ≅ K(φ z; C)`（`baseChangeKos
 `homotopyCofiber.mapHomologicalComplexObjIso`）と、係数拡大が `a • 𝟙` を `φ(a) • 𝟙` に送ること
 （`baseChange_smulId`）から、`n` についての帰納法で出る。Lemma 3.5b で `K(z; A) ⊗_A T` の Euler 評価を
 計算するときと、`Tor_i^A(C, A/(z))` を Koszul ホモロジー `H_i(φ z; C)` で表すとき
-（`KoszulResolution.lean` の `torAlgKoszulIso`）に使う。
+（`KoszulResolution.lean` の `torAlgKoszulIso`）に使う。任意の複体を係数とする版
+`baseChangeKoszulOnIso` は §4 の係数変更の評価（Paper/Section4/RankQuotient）で使う。
 -/
 
 @[expose] public section
@@ -421,6 +422,21 @@ noncomputable def baseChangeKoszulIso :
     exact HomologicalComplex.homotopyCofiber.mapArrowIso _ _ (fun j ↦ ⟨j - 1, by simp⟩)
       (Arrow.isoMk (baseChangeKoszulIso (Fin.init z)) (baseChangeKoszulIso (Fin.init z))
         (by simp [smulId]))
+
+/-- 任意の複体に対し、Koszul 構成とテンソルによる係数変更を交換する
+`K(z; K) ⊗_A C ≅ K(φ z; K ⊗_A C)`。`baseChangeKoszulIso` と同じ帰納法で、写像錐と係数拡大の可換性
+（`mapHomologicalComplexIso`）と `baseChange_smulId` を合成する。 -/
+noncomputable def baseChangeKoszulOnIso : ∀ {e : ℕ} (x : Fin e → A)
+    (K : CochainComplex (ModuleCat.{u} A) ℤ),
+    baseChange φ (koszulComplexOn x K) ≅ koszulComplexOn (φ ∘ x) (baseChange φ K)
+  | 0, _, _ => Iso.refl _
+  | n + 1, x, K => by
+      let P := koszulComplexOn (Fin.init x) K
+      let a := x (Fin.last n)
+      exact CochainComplex.mappingCone.mapHomologicalComplexIso (smulId a P)
+        (ModuleCat.extendScalars φ) ≪≫
+        eqToIso (congrArg (fun f ↦ CochainComplex.mappingCone f) (baseChange_smulId φ P a)) ≪≫
+        (scalarConeFunctor (φ a)).mapIso (baseChangeKoszulOnIso (Fin.init x) K)
 
 end SerrePositivity
 

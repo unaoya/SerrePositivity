@@ -262,7 +262,7 @@ end
 `T` 加群の `A` 上の長さと `T` 上の長さは一致する（`length_eq_of_common_residueField`）。
 鍵は、単純 `T` 加群が `A` 上でも単純であること：単純 `T` 加群は `T/m_T` と同型で、`T` の任意の元は
 `A` の元と `m_T` の元の和に書けるので、`T` の作用は `A` の作用で尽くされる。論文の Lemma 3.5b
-（`χ_T` を `A` 上の長さで測る、`Paper/Lemma3_5/Ordinary.lean`）と Lemma 5.2
+（`χ_T` を `A` 上の長さで測る、`Paper/Section3/NormComparison.lean`）と Lemma 5.2
 （`IntersectionMultiplicity/ResolutionEvaluation.lean`）で使う。
 -/
 

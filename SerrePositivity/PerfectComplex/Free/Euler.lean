@@ -239,7 +239,7 @@ lemma chiLam_cone_of_finite
 
 /-- 有限性の仮定 `hfinite` のもとで、`chiLam` を `K₀^{(z)}(T)` から `ℝ` への準同型に降ろしたもの。
 `K0.lift` にホモトピー不変性と錐の関係式を渡す。Lemma 3.5a・3.5b の正規化長さ側
-（`Paper/Lemma3_5/Normalized.lean`）で、`K0.hom_ext_koszul` と組み合わせて使う。 -/
+（`Paper/Section3/NormComparison.lean`）で、`K0.hom_ext_koszul` と組み合わせて使う。 -/
 noncomputable def chiLamHom_of_finite
     (hz : (Ideal.span (Set.range z)).radical = maximalIdeal A)
     (hfinite : ∀ (P : PerfSupp T (algebraMap A T ∘ z)) (i : ℤ),
@@ -311,7 +311,7 @@ theorem chiOrd_cone {P Q : CochainComplex (ModuleCat.{u} T) ℤ} (f : P ⟶ Q)
 /-- Noether 環 `T` 上、`T/(w)` が Artin 環のとき、`chiOrd` を `K₀^{(w)}(T)` から `ℝ` への準同型に
 降ろしたもの。`K0.lift` にホモトピー不変性と錐の関係式（有限性は
 `homology_finiteLength_of_isPerfectSupported` で供給）を渡す。Lemma 3.5b の通常の長さ側
-（`Paper/Lemma3_5/Ordinary.lean`）で `K0.hom_ext_koszul` と組み合わせて使う。 -/
+（`Paper/Section3/NormComparison.lean`）で `K0.hom_ext_koszul` と組み合わせて使う。 -/
 noncomputable def chiOrdHom {e : ℕ} (w : Fin e → T)
     [IsArtinianRing (T ⧸ Ideal.span (Set.range w))] : K0Supported T w →+ ℝ :=
   K0.lift (fun P ↦ chiOrd P.1)

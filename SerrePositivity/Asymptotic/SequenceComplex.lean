@@ -4,19 +4,36 @@ public import SerrePositivity.Asymptotic.FreeSequence
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import Mathlib.CategoryTheory.Idempotents.Karoubi
 public import Mathlib.CategoryTheory.Pi.Basic
+public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
+public import Mathlib.Algebra.Category.ModuleCat.Projective
+public import Mathlib.LinearAlgebra.StdBasis
+public import SerrePositivity.PerfectComplex.Free.Support
+public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
-/-!
-# 自由列の複体と各段の複体
+/-! # 自由列の複体・ホモトピー圏・導来圏
 
-各段の鎖写像・ホモトピーを列全体の鎖写像・ホモトピーに組み戻す。
-射やホモトピーに有界性を要求しないため、選択した各段のデータをそのまま使える。
-有界ホモトピー圏とその加法的 Karoubi 包絡も定義する。
-Karoubi 包絡の三角構造やランクによる商は、この定義だけからはまだ得られない。
+## 概要
+
+各段の鎖写像・ホモトピーを列全体のものに組み戻し、自由列の有界ホモトピー圏とその加法的 Karoubi 包絡を定める。共通有界な自由列の各段は K 射影的なので、ホモトピー圏から加群の導来圏の積への関手は完全忠実である。行列による係数変更とテンソル積の比較も与える。
+
+## 方針
+
+射やホモトピーに有界性を課さないので、各段で選んだデータをそのまま使える。
+
+## 規約
+
+Karoubi 包絡の三角構造やランクによる商はこの上の層で扱う。
+
+## 使われ方
+
+`RankQuotient` 以下。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 universe u
+
+section SequenceComplexPart
 
 namespace SerrePositivity.Asymptotic
 
@@ -156,3 +173,131 @@ lemma evaluateComplex_uniform_bounds (P : CochainComplex (FreeSequence R s) ℤ)
     exact (FreeSequence.evaluation n).map_isZero (P.isZero_of_isStrictlyLE b i hi)
 
 end SerrePositivity.Asymptotic
+
+end SequenceComplexPart
+
+section SequenceDerivedPart
+
+namespace SerrePositivity.Asymptotic
+
+open CategoryTheory CategoryTheory.Limits
+
+variable {R : Type u} [CommRing R] {s : ℕ → ℕ}
+
+/-- 共通有界な自由列の各段は K 射影的である。 -/
+lemma evaluateComplex_isKProjective (P : CochainComplex (FreeSequence R s) ℤ)
+    (hP : strictlyBoundedComplex (FreeSequence R s) P) (n : ℕ) :
+    ((evaluateComplex n).obj P).IsKProjective := by
+  obtain ⟨a, b, h⟩ := evaluateComplex_uniform_bounds P hP
+  have := (h n).2
+  have (i : ℤ) : Projective (((evaluateComplex n).obj P).X i) :=
+    ModuleCat.projective_of_free (Pi.basisFun R (Fin ((P.X i).rank n)))
+  exact CochainComplex.isKProjective_of_projective _ b
+
+variable [HasDerivedCategory (ModuleCat.{u} R)]
+
+/-- 共通有界な自由列を、各段の導来圏の対象の列に移す関手。 -/
+def pointwiseDerived : SequenceHomotopy R s ⥤ (ℕ → DerivedCategory (ModuleCat.{u} R)) where
+  obj P n := DerivedCategory.Qh.obj (pointwiseHomotopy.obj P.obj n)
+  map f n := DerivedCategory.Qh.map (pointwiseHomotopy.map f.hom n)
+  map_id P := by funext n; simp
+  map_comp f g := by funext n; simp
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 導来圏の積への関手は忠実である。 -/
+instance : (pointwiseDerived (R := R) (s := s)).Faithful where
+  map_injective {P Q} f g h := by
+    apply ObjectProperty.hom_ext
+    apply pointwiseHomotopy.map_injective
+    funext n
+    have hb : strictlyBoundedComplex (FreeSequence R s) P.obj.as := by
+      exact (boundedHomotopyProperty_quotient _ P.obj.as).1 P.property
+    have := evaluateComplex_isKProjective P.obj.as hb n
+    exact (CochainComplex.IsKProjective.Qh_map_bijective
+      ((evaluateComplex n).obj P.obj.as) _).injective (congrFun h n)
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+/-- 導来圏の積への関手は充満である。 -/
+instance : (pointwiseDerived (R := R) (s := s)).Full where
+  map_surjective {P Q} f := by
+    have hb : strictlyBoundedComplex (FreeSequence R s) P.obj.as := by
+      exact (boundedHomotopyProperty_quotient _ P.obj.as).1 P.property
+    have h (n : ℕ) : ∃ g : pointwiseHomotopy.obj P.obj n ⟶ pointwiseHomotopy.obj Q.obj n,
+        DerivedCategory.Qh.map g = f n := by
+      have := evaluateComplex_isKProjective P.obj.as hb n
+      exact (CochainComplex.IsKProjective.Qh_map_bijective
+        ((evaluateComplex n).obj P.obj.as) _).surjective (f n)
+    choose g hg using h
+    obtain ⟨k, hk⟩ := pointwiseHomotopy.map_surjective
+      (show pointwiseHomotopy.obj P.obj ⟶ pointwiseHomotopy.obj Q.obj from g)
+    refine ⟨ObjectProperty.homMk k, ?_⟩
+    funext n
+    change DerivedCategory.Qh.map (pointwiseHomotopy.map k n) = f n
+    rw [hk]
+    exact hg n
+
+end SerrePositivity.Asymptotic
+
+end SequenceDerivedPart
+
+section FreeSequenceTensorPart
+
+namespace SerrePositivity.Asymptotic.FreeSequence
+
+open CategoryTheory
+open scoped TensorProduct
+
+variable {R S : Type u} [CommRing R] [CommRing S] {s : ℕ → ℕ}
+
+/-- 行列への係数変更は、ベクトルの各係数への環準同型と両立する。 -/
+lemma changeMatrix_apply_map (φ : R →+* S) {a b : ℕ}
+    (f : (Fin a → R) →ₗ[R] (Fin b → R)) (x : Fin a → R) :
+    changeMatrix φ f (φ ∘ x) = φ ∘ f x := by
+  funext j
+  simp only [changeMatrix, Matrix.toLin'_apply, ← RingHom.map_mulVec,
+    LinearMap.toMatrix'_mulVec, Function.comp_apply]
+
+set_option backward.isDefEq.respectTransparency false in
+/-- 標準自由加群の係数変更をテンソル積として実現する同型。 -/
+noncomputable def standardTensorIso (φ : R →+* S) (a : ℕ) :
+    (ModuleCat.extendScalars φ).obj (ModuleCat.of R (Fin a → R)) ≅
+      ModuleCat.of S (Fin a → S) := by
+  letI := φ.toAlgebra
+  exact (TensorProduct.piScalarRight R S S (Fin a)).toModuleIso
+
+set_option backward.isDefEq.respectTransparency false in
+/-- 標準自由加群のテンソル同型の自然性。 -/
+lemma standardTensorIso_naturality (φ : R →+* S) {a b : ℕ}
+    (f : (Fin a → R) →ₗ[R] (Fin b → R)) :
+    (ModuleCat.extendScalars φ).map (ModuleCat.ofHom f) ≫ (standardTensorIso φ b).hom =
+      (standardTensorIso φ a).hom ≫ ModuleCat.ofHom (changeMatrix φ f) := by
+  let := φ.toAlgebra
+  apply ModuleCat.ExtendScalars.hom_ext
+  intro x
+  change (TensorProduct.piScalarRight R S S (Fin b)) (1 ⊗ₜ[R] f x) =
+    changeMatrix φ f ((TensorProduct.piScalarRight R S S (Fin a)) (1 ⊗ₜ[R] x))
+  simpa only [TensorProduct.piScalarRight_apply, TensorProduct.piScalarRightHom_tmul,
+    Algebra.smul_def, RingHom.algebraMap_toAlgebra, mul_one, Function.comp_def] using
+    (changeMatrix_apply_map φ f x).symm
+
+/-- 自由列を評価してからテンソル積をとる操作と、行列の係数変更後の評価との自然同型。 -/
+noncomputable def evaluationTensorIso (φ : R →+* S) (n : ℕ) :
+    evaluation (R := R) (s := s) n ⋙ ModuleCat.extendScalars φ ≅
+      changeRing φ ⋙ evaluation n :=
+  NatIso.ofComponents (fun X ↦ standardTensorIso φ (X.rank n))
+    (fun f ↦ standardTensorIso_naturality φ (f n))
+
+/-- 自由列の複体の係数変更は、各段で実際のテンソル積複体と同型である。 -/
+noncomputable def evaluateComplexTensorIso (φ : R →+* S) (n : ℕ)
+    (K : CochainComplex (FreeSequence R s) ℤ) :
+    baseChange φ ((evaluateComplex n).obj K) ≅
+      (evaluateComplex n).obj (((changeRing φ).mapHomologicalComplex (.up ℤ)).obj K) :=
+  (Functor.mapHomologicalComplexCompIso (Iso.refl _) (.up ℤ)).app K ≪≫
+    (NatIso.mapHomologicalComplex (evaluationTensorIso φ n) (.up ℤ)).app K ≪≫
+    ((Functor.mapHomologicalComplexCompIso (Iso.refl _) (.up ℤ)).app K).symm
+
+end SerrePositivity.Asymptotic.FreeSequence
+
+end FreeSequenceTensorPart

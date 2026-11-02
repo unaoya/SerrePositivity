@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KTheory.ComparisonNaturality
+public import SerrePositivity.KTheory.Comparison.Basic
 
 /-! # Supported K₀ localization and right exactness -/
 @[expose] public section

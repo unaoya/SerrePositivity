@@ -63,7 +63,7 @@ André の補題（BS Thm 7.14）、BS Lemma 10.3・Remark 10.7、CLMST の Prop
 - 7：[PerfectoidTower](../SerrePositivity/Inputs/PerfectoidTower.lean)。
 - 8：[Perfectoidization](../SerrePositivity/Inputs/Perfectoidization.lean)（互換入口）。残る引用は [BhattScholze/Inputs/PerfectoidizationInterface](../SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean)。
 - 9〜11：[CLMST](../SerrePositivity/Inputs/CLMST.lean)。
-- 12・13：[TowerLength](../SerrePositivity/Paper/Section2/TowerLength.lean)。
+- 12・13：[RootTowerLength/Tower](../SerrePositivity/LengthAlgebra/RootTowerLength/Tower.lean)。
 
 ## 4. K理論の二つの保留入力
 

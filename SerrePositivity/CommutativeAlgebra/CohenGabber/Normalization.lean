@@ -17,7 +17,7 @@ p > 0 case*, Theorem 1.1（https://arxiv.org/abs/1510.03573）。
 規約：分数体の間の代数構造は Mathlib の `FractionRing.liftAlgebra`。主定理は `A` を抽象的な正則完備局所環とし、
 `k[[X]]` との同型と標準座標を添えて述べる。
 形式冪級数環の正則性・完備性には Stacks Project, Remark 10.160.9（https://stacks.math.columbia.edu/tag/0323）を併用する。
-使われ方：論文の補題 2.2（`Paper/Section2/Lemma2_2`）。Mathlib への提出の最終目標。
+使われ方：論文の補題 2.2（`Paper/Section2/NormalizationBase`）。Mathlib への提出の最終目標。
 -/
 
 @[expose] public noncomputable section

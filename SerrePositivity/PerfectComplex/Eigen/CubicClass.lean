@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.PerfectComplex.Eigen.Cubic
-public import SerrePositivity.KTheory.SupportedCoefficients
+public import SerrePositivity.KTheory.Coefficients
 public import SerrePositivity.PerfectComplex.Eigen.Idempotent
 public import Mathlib.Algebra.Homology.QuasiIso
 public import SerrePositivity.HomologicalAlgebra.Complex.Idempotent
