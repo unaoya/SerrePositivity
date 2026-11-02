@@ -162,7 +162,7 @@ CLMST を import しない。∞ 圏の計画の Π3 は、この二つの供給
 - [∞ 圏の計画](../infinity-lanes/infinity-categories.md)：界面 `PerfectoidizationInterface` と、残る二入力の解消。
 - [設計段階の状態と要確認](design-status.md)（2026-11-02）：A0〜A5 の設計書・骨組みの到達点、要確認の分類（A 名前探し／B BS の決定／C ∞ 側／D 2b 後／E 結晶の黒箱）、決定の所在。
 - [A0 の設計](a0-design.md)・[A1 の設計](a1-design.md)（2026-11-02）：原典 §4.1・§4.3（§3 の前提を含む）と §4.2・§5・§6 の項目表・定義の形・証明の筋・差。
-- [A2 の設計](a2-design.md)・[A3 の設計](a3-design.md)・[A4 の設計](a4-design.md)・[A5 の設計](a5-design.md)・[A6 の設計](a6-design.md)・[A7 の設計](a7-design.md)（2026-11-02）：原典 Construction 7.6、Lemma 7.7〜Prop 7.10、Def 8.2〜Lemma 8.4、Prop 8.5・Lemma 8.6、Def 8.7〜Cor 8.12、Prop 8.13・Cor 8.14 の項目表・定義の形・証明の筋・差（D31〜D62）・決定事項。
+- [A2 の設計](a2-design.md)・[A3 の設計](a3-design.md)・[A4 の設計](a4-design.md)・[A5 の設計](a5-design.md)・[A6 の設計](a6-design.md)・[A7 の設計](a7-design.md)・[A8 の設計](a8-design.md)（2026-11-02）：原典 Construction 7.6、Lemma 7.7〜Prop 7.10、Def 8.2〜Lemma 8.4、Prop 8.5・Lemma 8.6、Def 8.7〜Cor 8.12、Prop 8.13・Cor 8.14、Lemma 10.5〜Lemma 10.12 の項目表・定義の形・証明の筋・差（D31〜D67）・決定事項。
 - [∞ 層の一般論の設計](infinity-sheaves-design.md)（2026-11-02）：原典 Not 4.16・Prop 8.5・Prop 8.10 の RΓ を定義のまま形式化するための
   D(A) 値前層の層条件・層化・Γ・RΓ、脚注 10 の補題、基数 κ の切り落とし、必要な基盤の前提（G1〜G12）。A0 の設計書はこれを前提にする。
 - 実施記録（将来削除）：[旧主計画](../archive/bhatt-scholze-log.md)、[B3](../archive/bhatt-scholze-b3-execution.md)、
