@@ -113,3 +113,17 @@ worktree は `../SerrePositivity-dgw1` をそのまま使い、1-4 の取り込�
 2. 補充の import（禁止辺にならないもの）、完全修飾、宇宙の明示、束縛子の型の明示。
 3. 条件は従来どおり：before/after の保存比較（v3b）で型・本体・公理・属性が一致、別コミット「下流の修飾・heartbeat」、停止点 3 の報告にファイル・行・処置の一覧。宣言の本文・型・名前を変えないと直らない場合だけ止める（§5-4）。
 4. ∞ の束（`infra/if-w2b`）が同じファイルを触っている可能性があるので、処置は**最小の行**に限る（import 行の追加、`set_option … in` の 1 行、修飾の 1 語）。取り込み時の衝突は Claude が両方を残して解決する。
+
+## 12. 追記（2026-11-03 09:00、保存比較の型差への回答：落ちた section 変数を `include` で戻す）
+
+**受領**：下流 round 5 PASS（round 1〜5、注釈処置 21 ファイル・44 箇所は v3b 一致）、全体 snapshot（before 1,645・after 1,085 モジュール）、機械比較 42 件中 38 件は説明済み、残り 4 件（3 宣言）：`DGQuotient.complexColimitComparison` の型から `[HasExactColimitsOfShape J (ModuleCat.{u} A)]` が消え、`_naturality`・`_ι` がそれを参照（06f2cf626）。
+
+**原因**：ソースの差は import 1 行（`Complexes.ExactColimits` → 統合先 `Complexes.Perturbation`）だけ。`[HasExactColimitsOfShape …]` は 878–879 行の section `variable`。Lean 4 の取り込み規則では、instance-implicit な section 変数は宣言の elaboration で**実際に使われたときだけ**型に含まれる。統合先の import の和で同じ命題を与える大域 instance が届くようになり、elaboration が section 変数ではなく大域 instance を使ったため、束縛子が型から落ちた。宣言の内容は「仮定が一つ減って強くなった」だけで矛盾はないが、**型が変わった**ことに変わりはなく、停止は正しい。
+
+**処置（承認）**：before の型をそのまま保つ。3 宣言の直前に `include` を置いて section 変数を明示的に取り込む（例：`include ‹HasExactColimitsOfShape J (ModuleCat.{u} A)› in` の形か、変数に名前を付けて `include hJ in`。名前を付ける場合は `variable [hJ : HasExactColimitsOfShape …]` に変えるが、これは束縛子の名前の変更にすぎず型は変わらない）。判断表の「束縛子の型の明示」と同じ扱い：v3b で型・本体・公理・属性が before と一致すること、別コミット「include」、報告に記録。`linter.unusedSectionVars` の注意が出ても許す。
+
+**代替**（`include` で before と同じ束縛子の位置・形に戻らない場合）：型の差を「大域 instance の到達による冗長な仮定の脱落。主張は強くなり、下流 13,972 本はそのまま通った」として説明済みに分類し、3 宣言を報告に明記して進む。この場合も after の型が before の型を含意すること（仮定の削除だけ）を pp の差分で示す。
+
+**どの instance か**：after 環境で `#synth HasExactColimitsOfShape J (ModuleCat.{u} A)`（`lake env lean` の探針、ビルドなし）で供給元を確かめ、報告に書く（Mathlib か DG の統合先か）。
+
+**再開**：処置 → 当該モジュールの再ビルド（小）→ 3 宣言の v3b 比較 → 層検査（例外 3 件の削除、内部 tier）→ README の 126 本の表 → verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）→ **停止点 3**。
