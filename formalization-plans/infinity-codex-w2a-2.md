@@ -76,3 +76,32 @@
 3. 保留した 92 ファイルを `deferred-imports.json` の hash で確かめて HEAD の内容へ戻す（報告の手順どおり。一括 reset はしない）。
 4. 下流の一回ビルド（11,818 本、鍵のもと）→ 保存比較 → **停止点 2**。条件 5 は失敗モジュール数で（IF-W0-3 §10.33）。論文の層の worktree（`SerrePositivity-refactor-1-4`）の小さなビルドは、下流ビルドの間 Claude が止めてもらう。
 5. 層検査（§2-3）→ verify → **停止点 3**（見込み 11-02 夜）。
+
+## 8. 追記（2026-11-02 14:00、保存比較の停止への回答：証明無関係を項の水準へ（v3）、FunctorialExtension の修飾を承認、下流ビルドは先に始める）
+
+**受領**：§7 の 4 宣言のうち `simplicialLevelModelCategory` の本体不一致（`circle.{u}` 案・`.{u, u + 1, u}` 案とも同じハッシュ）、2 モジュールで 9 宣言の不一致、`FunctorialExtension:68` の同型の失敗、92 ファイル保留、コミットなし。§7 の条件どおりの停止で正しい。
+
+**診断**（Claude、`w2a-2-section7-comparison.json` と `decl_snapshot.lean` の読み取りから）：9 件はすべて **Prop 型の部分項（instance の証明）の導出経路の違い**として説明がつく見込み。
+
+- 修正していない `simplicialLevelI`・`simplicialLevelJ`（abbrev）の本体や、`codomainMap_fst` など 4 補題の型、`…_fibrations`・`…_weakEquivalences` の型まで不一致なのは、ソースではなく環境の違いによる。`levelGenerators`・`pullback.fst` などの `[HasColimitsOfSize …]`・`[HasPullback …]` の引数（Prop の class の instance）が、before と after で別の instance の連鎖で合成された（§7 の原因 2 と同じ機構：import の和で環境の instance の集合と順序が変わる）。`_proof_7` → `simplicialLevelI._proof_1` も、abbrev から切り出された補助証明の名前の違いで同じ種類。
+- 現行の道具（v2）は**定数**の水準でしか証明無関係にしていない。theorem 定数は型で置き換えるが、`@thm₁ args₁` と `@thm₂ args₂` という同じ命題の異なる証明は `app` の構造が違うので不一致になる。核では Prop は証明無関係（definitional）なので、宣言の意味は変わっていない。
+- データの instance（`MonoidalCategory` など）は同じ定数 `PointedObject.smashMonoidalCategory` で、違いは Prop の引数だけのはず。これを機械で確かめるのが下の v3。
+
+**処置**：
+
+1. **`FunctorialExtension:68` の 2 箇所**：`CategoryTheory.Functor.map_id` へ完全修飾（承認。コミット「修飾・宇宙の明示」に含める）。内部ビルドで同型の失敗が他に出ても同じ扱い。
+2. **道具 v3：項の水準の証明無関係**。`snapshot` は既に `CoreM` なので `MetaM` に持ち上げ（`(… : MetaM _).run'`）、`fingerprint` の前に証明を消す：
+   ```lean
+   def eraseProofs (e : Expr) : MetaM Expr :=
+     Meta.transform e (pre := fun e => do
+       let isPrf ← try Meta.isProof e catch _ => pure false
+       if isPrf then return .done (← instantiateMVars (← inferType e)) else return .continue)
+   ```
+   `Meta.transform` は束縛子の下を fvar で開いて `mkLambdaFVars` で閉じ直すので、閉じた項に `isProof`（型が命題か）を使える。証明の部分項はその**型**（命題）の digest に置き換わる。theorem 定数の型置換（v2）は残してよい（v3 に包含される）。`generatedDefinition` の値展開もそのまま。`hash_algorithm` を `… proof-irrelevant v3 (term-level)` にする。性能：`inferType` は MetaM 内でキャッシュされる。巨大な項（R80 の候補）で時間が倍以上になったら報告するが、まず試す。
+   試験：`test_proof_irrelevant_compare.py` に (a) 同じ命題の 2 つの証明（instance 連鎖の違い）で def の本体 digest が一致、(b) データの引数が違えば不一致、(c) 束縛子の下の証明も消える、を加える。
+   `decl_snapshot.lean` は ∞ の道具なので ∞ が直してよい（§6-4 の「今は道具を変えない」は `merge_modules.py` の循環検出の話）。DG-W3 が始まる前に main へ cherry-pick する。
+3. **順序（時間を使わないため）**：処置 1 を当てて内部ビルドを通す → **92 ファイルを hash 確認のうえ HEAD へ戻し、下流ビルド（11,818 本、鍵）を先に始める** → その間に v3 を作る（ビルド不要）→ before 環境を cache から scratch に復元して v3 の before/after snapshot（273 本）を取り直し、比較（snapshot はビルドではないので鍵の外でよいが、下流ビルドと CPU を分け合うので 16 本並列は 8 本に落とす）→ 残りは §10.34〜10.35 で個別に照合 → 停止点 2 の報告に、v2 で不一致だった 9 件が v3 で一致したこと（しなければその理由）を明記する。
+   根拠：9 件はすべて Prop の経路の違いと説明でき、下流ビルドは比較の結果に依存しない。万一データの違いが見つかって修正が要っても、Lake キャッシュで影響範囲の再ビルドだけで済む。
+4. **停止条件の言い換え**（§7 の「一致しなければ止める」の精密化。以後の束と DG-W3 でも有効）：同一とは **v3（証明を消した項）の digest の一致**。v3 でも不一致で、差がデータ（Type 水準の部分項、instance のデータ、宇宙）にあるなら止める。v2 だけの不一致は止めない。
+
+**報告してほしいこと（停止点 2）**：v3 の実装の要点と試験、273 本の before/after 比較の結果（v2 の 9 件の行方）、下流ビルドの round の表、補充・修飾・宇宙の明示の件数と一覧。
