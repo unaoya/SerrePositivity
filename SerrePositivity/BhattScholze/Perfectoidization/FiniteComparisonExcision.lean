@@ -21,7 +21,7 @@ KL の標準 excision の四角（`KLCanonicalExcisionSquare`）と、有限比�
 
 ## 規約
 
-旧 `CLMST/KLAicTorFromExcision`・`KLOriginalTorFromExcision` と、`CLMST/KLFiniteComparisonExcision` の証明の部分。主張 Prop 2.4.9(a)（`perfectoidIdeal_powerTorsionTorInput`）は CLMST に残る。CLMST の `prop247_finiteComparison_excision`（Prop 2.4.7 の証明）は同じ述語の別証明で、論文側の統合で一本にする。
+旧 `CLMST/KLAicTorFromExcision`・`KLOriginalTorFromExcision` と、`CLMST/KLFiniteComparisonExcision` の証明の部分。主張 Prop 2.4.9(a)（`perfectoidIdeal_powerTorsionTorInput`）は CLMST/KoszulAnnihilation に残る。CLMST の `finiteComparison_excision`（Prop 2.4.7 の証明）は同じ述語の別証明で、論文側の統合で一本にする。
 
 ## 使われ方
 
