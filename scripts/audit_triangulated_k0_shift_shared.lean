@@ -3,6 +3,6 @@ import SerrePositivity.KTheory.ResolutionClass
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.TriangulatedK0.mk_shift
- SerrePositivity.K0WithSupport.mk_shift
+assert_no_sorry SerrePositivity.K0WithSupport.mk_shift
 #print axioms SerrePositivity.TriangulatedK0.mk_shift
 #print axioms SerrePositivity.K0WithSupport.mk_shift

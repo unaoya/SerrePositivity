@@ -29,8 +29,8 @@ import Mathlib.Util.PrintSorries
 
 -- BS基礎の全公開定義・補題に未証明入力を持ち込まない。
 assert_no_sorry SerrePositivity.BhattScholze.WittTwo
- SerrePositivity.BhattScholze.DeltaStructure
- SerrePositivity.BhattScholze.wittTwoProjection
+assert_no_sorry SerrePositivity.BhattScholze.DeltaStructure
+assert_no_sorry SerrePositivity.BhattScholze.wittTwoProjection
 #print axioms SerrePositivity.BhattScholze.wittTwoProjection
 assert_no_sorry SerrePositivity.BhattScholze.wittTwoProjection_apply
 #print axioms SerrePositivity.BhattScholze.wittTwoProjection_apply

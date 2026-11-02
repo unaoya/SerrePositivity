@@ -4,9 +4,9 @@ import SerrePositivity.CategoryTheory.Triangulated.Idempotent
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.CochainCubicAction.comapIso
- SerrePositivity.CochainCubicAction.comapIso_hom
- SerrePositivity.shortExactCokernelIso_π_hom
- SerrePositivity.three_components_rotation
+assert_no_sorry SerrePositivity.CochainCubicAction.comapIso_hom
+assert_no_sorry SerrePositivity.shortExactCokernelIso_π_hom
+assert_no_sorry SerrePositivity.three_components_rotation
 
 open CategoryTheory SerrePositivity
 universe u
