@@ -17,14 +17,15 @@ perfectoid 環 R に対応する完全 prism (A,(d))（Not 8.1）の上で、導
 その過程で H⁰(Δ_perf) は p 完備な完全 δ 環で d は正則、(H⁰(Δ_perf), (d)) は完全 prism。Example 8.3：標数 p では S_perfd は通常の完全化。
 
 ## 方針
-A2 の Δ（CAlg_A 値）、φ_A 半線形な Frobenius を A 完全のもとで sequential 図式 Δ → φ_A^*Δ → ⋯ にし、CAlg_A の余極限を取って完備化
-（DerivedGeneral/CompletionFunctor）。Lemma 8.4 (a) は E∞-F_p 代数の P⁰（Shared/EInfinityPowerOperation）：Δ_perf/p では P⁰ が可逆、P⁰ は
-正次数のホモトピーを殺す。(b)(c) は A3 の (1′) と Lemma 2.34。
+A2 の Δ（CAlg_A 値）と φ_A 半線形な Frobenius φ : Δ → φ_{A*}Δ から、原典どおりの塔 Δ → φ_{A*}Δ → φ_{A*}²Δ → ⋯（遷移射 φ_{A*}^n(φ)、W9-II-01 で訂正）
+の CAlg_A の余極限を取って完備化（DerivedGeneral/CompletionFunctor）。Lemma 8.4 (a) は E∞-F_p 代数の P⁰（Shared/EInfinityPowerOperation、coherent な
+自然変換）：Δ_perf/p では塔の shift が P⁰ と同じ作用を誘導し可逆、P⁰ は正次数のホモトピーを殺す。(b) は H⁰ の単射 C/p ↪ H⁰(X/p) と一般の Rem 2.2
+（G-A4-8 = G-A3-6）、(c) は Lemma 2.34。
 
 ## 規約
 定義域は原典どおり導来 p 完備な S（D41）。**A7（D60）**：原典の定義域は導来 p 完備な animated R 代数で、本ファイルの離散版は
 drafts/A7/AnimatedPerfectoidization.lean の `perfectoidizationAnimated` の `discreteToAnimated` に沿う制限（`perfectoidizationAnimated_discrete`）。非完備な離散 S への延長は界面の欄（drafts/A4/InterfaceFields）。値は CAlg_A・CAlg_R を正（D35）。
-φ_*^n は A 完全なので φ_A^{n*} で書く（D42）。
+塔は原典どおり φ_{A*}^n（スカラー制限の正の反復。D42 は撤回：Res_φ ≃ (φ^{-1})^* であって φ^* ではない）。
 
 ## 使われ方
 E3 の `perfd`（InterfaceFields）、Prop 8.5（A5）、Prop 8.10〜Cor 8.12（A6）、Prop 8.13・Cor 8.14（A7）、Thm 10.11（A8）。
@@ -57,9 +58,9 @@ def perfectPrism_quotientEquiv : (perfectPrismRing p R ⧸ (perfectPrism p R).id
 
 variable (S : Type u) [CommRing S] [Algebra R S] (hS : True) -- 要確認：S が導来 p 完備（`IsModuleComplete S p`）
 
-/-- 概要：Frobenius の sequential 図式 Δ_S → φ_A^*Δ_S → φ_A^{2*}Δ_S → ⋯（CAlg_A の ℕ 添字の図式）。
-方針：A2 の `derivedPrismaticFrobenius` φ : Δ → φ_{A*}Δ と、A 完全による自己同値 φ_{A*}（G-A4-3）。
-規約：D42。
+/-- 概要：Frobenius の sequential 図式 Δ_S → φ_{A*}Δ_S → φ_{A*}²Δ_S → ⋯（CAlg_A の ℕ 添字の図式、遷移射は φ_{A*}^n(φ)。原典 Def 8.2 (1) の形、W9-II-01）。
+方針：A2 の `derivedPrismaticFrobenius` φ : Δ → φ_{A*}Δ と、スカラー制限 φ_{A*} = Res_{φ_A} の反復（G-A4-3）。φ_{A*} の逆は使わない。
+規約：A 完全は余極限の shift が φ_A 半線形な自己同型になることにだけ使う。
 使われ方：Δ_perf の余極限。 -/
 def frobeniusTower : True := trivial -- 要確認：ℕ の nerve を持ち上げた形状から CAlg_A への図式
 
@@ -97,8 +98,9 @@ P⁰ は π_n（n > 0）で零（Rem 2.2.7）⇒ π_n(Δ_perf/p) = 0 ⇒ Δ_perf
 theorem prismaticPerfection_coconnective : True := by trivial
 
 /-- 概要：Lemma 8.4 (b)：H⁰(Δ_perf) は p ねじれなしで、φ は mod p で Frobenius、よって p 完備な完全 δ 環（A → H⁰ は δ 射）。
-方針：H^{−1}(Δ_perf/p) = H⁰(Δ_perf)[p] = 0（(a)）、P⁰ は π_0 で Frobenius、A3 の `deltaStructure_of_discrete_pTorsionFree`（Rem 2.2）、
-φ 全単射で `DeltaStructure.IsPerfect`。
+方針（W9-II-04）：X := Δ_perf、C := H⁰ X。長完全列から C[p] = H^{−1}(X/p) = 0 と単射 C/p ↪ H⁰(X/p)（同型ではない）。φ の自然性と P⁰ が H⁰(X/p) で p 乗
+であることから φ(c) ≡ c^p mod p、一般の p ねじれなし環の Rem 2.2（G-A4-8 = G-A3-6。A3 の `deltaStructure_of_discrete_pTorsionFree` は `IsDiscretePrismatic` を
+仮定するので使わない）で δ、A → C は δ 射（p 消去）、φ 全単射で `DeltaStructure.IsPerfect`、p 完備性は X の導来完備性と p ねじれなしから。X の離散性は使わない。
 規約：—
 使われ方：(c)、Cor 8.14。 -/
 theorem prismaticPerfection_h0_perfectDelta : True := by trivial
@@ -110,8 +112,8 @@ theorem prismaticPerfection_h0_perfectDelta : True := by trivial
 使われ方：Cor 8.14、Prop 8.5。 -/
 theorem perfectoidization_coconnective : True := by trivial
 
-/-- 概要：(H⁰(Δ_perf), (d)) は完全 prism（A3 の (2) と (b)(c)）。
-方針：導来 (p,d) 完備（値の圏）、δ 構造、d 正則、p ∈ (d, φ(d))、完全。
+/-- 概要：(H⁰(Δ_perf), (d)) は完全 prism（(b)(c) から直接。A3 の (2) は Δ・Δ̄ の離散性を仮定するので使わない、W9-II-04）。
+方針：H⁰ の導来 (p,d) 完備性、(b) の δ 構造、基底から来る p ∈ (d, φ(d))、Lemma 2.34 の d 正則性、完全性。
 規約：`OrientedPrism`。
 使われ方：Cor 8.14（S_perfd 離散なら perfectoid 環）、Prop 8.5。 -/
 def prismaticPerfectionPrism : True := trivial

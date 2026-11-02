@@ -218,6 +218,12 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-I-45 G-A3-9 は φ と E∞ 演算の比較を含む | 要確認 | 反映済み（G-A3-9 の仕様に追加。段 II で A4 の P⁰ と同時に検証） |
 | W9-I-46 ノートの表記の同期 | 軽微 | ノート第 7 章（Lemma 7.7 の入口は Δ̄、Prop 7.10 の射は Δ̄ へ、RootEnvelope は完全化後の比較）を更新 |
 | **段 I の総括（W9 続き 6）** | — | 新たな致命なし。段 II（A4〜A7）へ進む。残る要修正・要確認は上表のとおり反映済み（G-A3-9 の比較は段 II で） |
+| **段 II 開始（W9 第 2 部）** | — | A4 の途中で停止、以下を反映 |
+| W9-II-01 D42：φ_* と φ^* の同一視で塔の遷移射が型をもたない | 致命 | **訂正済み**（a4-design §2.1・D42・G-A4-3、`frobeniusTower`：原典どおり φ_{A*}^n の塔。D42 撤回） |
+| W9-II-02 P⁰ と levelwise Frobenius の比較を p 重 cup 積で説明できない | 要修正 | 訂正済み（coherent な自然変換（Lurie の強さ）と Tot・実現への移送。a4-design §2.2 (a)・G-A4-1、EInfinityPowerOperation） |
+| W9-II-03 D41 の説明が D32 だけ | 要修正 | 訂正済み（二段：animated D32 ＋ Prop 8.5 系 4） |
+| W9-II-04 H⁰(Δ_perf) に A3 の離散 Δ 用定理を直接当てられない | 要修正 | 訂正済み（C/p ↪ H⁰(X/p) の単射、一般の Rem 2.2 = G-A4-8/G-A3-6、prism 性を直接組み立て） |
+| W9-II-05 単位名とノートの coconnective 欄 | 軽微 | 訂正済み（InterfaceFields、ノート第 8 章） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
