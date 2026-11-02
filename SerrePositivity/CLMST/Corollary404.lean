@@ -71,6 +71,6 @@ theorem corollary_4_0_4
                 (koszulHomologySelf (fun j ↦ toRPerfd A D t p hperf n (y j)) i)) := by
   exact rPerfd_cohomology_vanishing_of_finiteComparison_excision A t D p hperf
     ht hdimA hsop ⟨0, hpos⟩ htp g hEtale
-    (fun E _ _ hE _ => klFiniteComparisonExcision_of_perfectoid E p hE)
+    (fun E _ _ hE _ => BhattScholze.klFiniteComparisonExcision_of_perfectoid E p hE)
 
 end SerrePositivity.CLMST

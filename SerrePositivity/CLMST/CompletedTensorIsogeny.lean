@@ -30,10 +30,10 @@ theorem completedTensor_injective_and_exists_pow_annihilates_coker
     (g : A) (hg : IsSMulRegular D (algebraMap A D g)) (hp : IsSMulRegular D (p : D))
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g))) :
-    Function.Injective (perfectoidizationModuleMap (CompletedTower A t p)
+    Function.Injective (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
       ((CompletedTower A t p) ⊗[A] D) p hperf) ∧
       ∃ N : ℕ, ∀ x : (RPerfd A D t p hperf) ⧸
-        (perfectoidizationModuleMap (CompletedTower A t p)
+        (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
           ((CompletedTower A t p) ⊗[A] D) p hperf).range,
         (algebraMap A (CompletedTower A t p) g ^ N) • x = 0 := by
   let := flat_completedTower_over_base A t p
@@ -46,10 +46,10 @@ theorem completedTensor_injective_and_exists_pow_annihilates_coker_of_domain
     (g : A) (hg : g ≠ 0)
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g))) :
-    Function.Injective (perfectoidizationModuleMap (CompletedTower A t p)
+    Function.Injective (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
       ((CompletedTower A t p) ⊗[A] D) p hperf) ∧
       ∃ N : ℕ, ∀ x : (RPerfd A D t p hperf) ⧸
-        (perfectoidizationModuleMap (CompletedTower A t p)
+        (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
           ((CompletedTower A t p) ⊗[A] D) p hperf).range,
         (algebraMap A (CompletedTower A t p) g ^ N) • x = 0 := by
   have hgD : algebraMap A D g ≠ 0 := fun hzero ↦ hg (hinj (hzero.trans (map_zero _).symm))
@@ -74,7 +74,7 @@ theorem exists_completedTensor_isogeny [IsDomain A] [IsDomain D] [CharZero D]
     ∃ g : A, g ≠ 0 ∧
       Function.Injective (toMixedPerfectoid A D t p hperf) ∧
       ∃ N : ℕ, ∀ x : (RPerfd A D t p hperf) ⧸
-        (perfectoidizationModuleMap (CompletedTower A t p)
+        (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
           ((CompletedTower A t p) ⊗[A] D) p hperf).range,
         (algebraMap A (CompletedTower A t p) g ^ N) • x = 0 := by
   obtain ⟨g, hg, he⟩ := GenericEtale.exists_finite_etale_away_of_charZero A D hinj

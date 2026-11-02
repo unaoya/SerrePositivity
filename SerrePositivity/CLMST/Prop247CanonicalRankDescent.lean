@@ -26,7 +26,7 @@ theorem prop247_exists_canonical_generalRank_descent_data
     [Algebra R S] [Algebra R C] [Module.Finite R S] [Algebra.FinitePresentation R S]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     (hExcision : ∀ (B : Type u) [CommRing B], IsIntegralPerfectoid B p →
-      IsAbsolutelyIntegrallyClosed B → KLFiniteComparisonExcision B p)
+      IsAbsolutelyIntegrallyClosed B → BhattScholze.KLFiniteComparisonExcision B p)
     (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom)
     (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ s : S,
       (p : S) ^ n * s = 0 → (p : S) ^ N * s = 0)
@@ -51,7 +51,7 @@ theorem prop247_exists_canonical_generalRank_descent_data
         (hγ : ∀ n : t, IsPerfectoidization p (γ n).toRingHom),
         ∃ hProduct : IsPerfectoidization p
           (prop247_rankProductUnit B (B ⊗[R] S) (fun n => T n) (fun n => Q n) γ).toRingHom,
-          KLCanonicalExcisionSquare hβ hProduct
+          BhattScholze.KLCanonicalExcisionSquare hβ hProduct
             (prop247_rankTensorUnit B (B ⊗[R] S) (fun n => T n)) (algebraMap R B g) →
         ∃ q : ℕ, moduleMapConeScalar R f.toLinearMap (g ^ q) = 0 ∧
           (∀ x : f.toLinearMap.ker, g ^ q • x = 0) ∧

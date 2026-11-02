@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.PerfectoidizationCone
+public import SerrePositivity.BhattScholze.Perfectoidization.Cone
 public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
@@ -50,9 +50,9 @@ theorem prop247_cone_isComplete_of_perfectoid_target
 /-- Prop 2.4.7 の実際の標準写像の実導来錐は p 完備。
 エタール性、J、g、André 拡大、almost 比較を使わない。 -/
 theorem prop247_cone_isComplete :
-    IsComplete R (p : R) (perfectoidizationCone R S p hR) := by
+    IsComplete R (p : R) (BhattScholze.perfectoidizationCone R S p hR) := by
   exact prop247_cone_isComplete_of_perfectoid_target R S p hR
     (Perfectoidization R S p hR) (isPerfectoidization_toPerfectoidization R S p hR).1
-    (perfectoidizationModuleMap R S p hR)
+    (BhattScholze.perfectoidizationModuleMap R S p hR)
 
 end SerrePositivity.CLMST

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # The original p-power-torsion Tor input from an actual finite free almost comparison -/
@@ -25,6 +25,6 @@ lemma perfectoidIdeal_powerTorsionTorInput_of_finiteFree_comparison
   intro N k hN i hi s hs
   exact torCoefficientScalar_eq_zero_of_finiteFree_almost_comparison r f
     (perfectoidIdeal R p hR g) hc hk N ((p : R) ^ k) hN
-    (perfectoidIdeal_mod_power_idempotent R p hR g k) i hi s hs
+    (BhattScholze.perfectoidIdealMod_idempotent R p hR g k) i hi s hs
 
 end SerrePositivity.CLMST

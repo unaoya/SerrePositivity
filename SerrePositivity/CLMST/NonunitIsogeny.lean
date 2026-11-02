@@ -57,7 +57,7 @@ theorem exists_nonunit_completedTensor_positive_isogeny
        Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g))) ∧
       Function.Injective (toMixedPerfectoid A D t p hperf) ∧
       (∀ x : (RPerfd A D t p hperf) ⧸
-        (perfectoidizationModuleMap (CompletedTower A t p)
+        (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
           ((CompletedTower A t p) ⊗[A] D) p hperf).range,
         (algebraMap A (CompletedTower A t p) g) ^ N • x = 0) := by
   obtain ⟨g, hg, hgm, hgmD, hEtale⟩ := exists_nonzero_nonunit_etale_away A D p hinj hp

@@ -37,7 +37,7 @@ theorem completedLength_cyclic_pow_eq_of_p_factor
   let C := CompletedTower A t p
   let : Algebra.FinitePresentation C (C ⧸ Ideal.span {algebraMap A C g}) :=
     Algebra.FinitePresentation.quotient (Submodule.fg_span_singleton (algebraMap A C g))
-  let S := perfectoidQuotient C p hperf (algebraMap A C g)
+  let S := BhattScholze.perfectoidQuotient C p hperf (algebraMap A C g)
   let κ : C →+* S := (toQuotientPerfectoidization C (Ideal.span {algebraMap A C g}) p hperf).comp
     (Ideal.Quotient.mk (Ideal.span {algebraMap A C g}))
   have hS : IsIntegralPerfectoid S p :=
@@ -55,9 +55,9 @@ theorem completedLength_cyclic_pow_eq_of_p_factor
   have hpb : (p : S) * κ b = 0 :=
     perfectoidIdeal_image_p_mul_eq_zero_of_torsionQuotient_perfectoid C S p
       hperf hS hQ κ (algebraMap A C g') c hgzero b hb
-  have hρ : κ (completedTowerRoot A t p n i) ^ (p ^ n) = (p : S) := by
-    rw [← map_pow, completedTowerRoot_pow, hti, map_natCast, map_natCast]
-  change κ (completedTowerRoot A t p n i * b) = 0
+  have hρ : κ (Section2.completedTowerRoot A t p n i) ^ (p ^ n) = (p : S) := by
+    rw [← map_pow, Section2.completedTowerRoot_pow, hti, map_natCast, map_natCast]
+  change κ (Section2.completedTowerRoot A t p n i * b) = 0
   rw [map_mul]
   exact hS.p_power_root_mul_eq_zero_of_pow_mul_eq_zero S p _ n hρ 1 (κ b)
     (by simpa only [pow_one] using hpb)

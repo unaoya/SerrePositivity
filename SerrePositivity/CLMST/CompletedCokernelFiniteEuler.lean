@@ -57,7 +57,7 @@ theorem completedTensor_stage_cokernel_euler_eq_zero
       (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (g : CompletedTower A t p) (N : ℕ)
     (hN : ∀ x : (RPerfd A D t p hperf) ⧸
-      (perfectoidizationModuleMap (CompletedTower A t p)
+      (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
         ((CompletedTower A t p) ⊗[A] D) p hperf).range, g ^ N • x = 0)
     (hz : stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
       Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔
@@ -86,7 +86,7 @@ theorem completedTensor_stage_euler_comparison
       (Ideal.span (Set.range ((stageToCompletedTensor A D t p n).toRingHom ∘ z))).radical)
     (g : CompletedTower A t p) (N : ℕ)
     (hN : ∀ x : (RPerfd A D t p hperf) ⧸
-      (perfectoidizationModuleMap (CompletedTower A t p)
+      (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
         ((CompletedTower A t p) ⊗[A] D) p hperf).range, g ^ N • x = 0)
     (hz : stageToCompletedTensor A D t p n (z (Fin.last r)) ∈
       Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ z))) ⊔

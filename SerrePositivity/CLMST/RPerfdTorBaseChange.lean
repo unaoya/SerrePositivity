@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.RPerfdCohomologyInputs
-public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionTorBaseChange
 
@@ -112,7 +112,7 @@ lemma rPerfd_cohomology_vanishing_of_tower_power_torsion
                 (koszulHomologySelf (fun j => toRPerfd A D t p hperf n (y j)) i)) :=
   rPerfd_cohomology_vanishing_of_completed_quotient_mul_and_tower_power_torsion
     A t D p hperf ht hdim hsop j₀ htp g
-    (perfectoidIdeal_completedQuotientMul_isIso (CompletedTower A t p) p hperf
+    (BhattScholze.perfectoidIdeal_completedQuotientMul_map_isIso (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g)) hTor
 
 end SerrePositivity.CLMST

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.KLAicTorFromExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 
 /-! # The exact integer-module triangle needed for canonical perfectoid excision
@@ -47,7 +47,7 @@ theorem canonicalExcision_isPullback_of_distinguished_single_triangle
         (canonicalExcisionIntegerModuleComplex hf hg q a).f)
       ((DerivedCategory.singleFunctor (ModuleCat.{u} ℤ) 0).map
         (canonicalExcisionIntegerModuleComplex hf hg q a).g) δ ∈ distTriang _) :
-    KLCanonicalExcisionSquare hf hg q a :=
+    BhattScholze.KLCanonicalExcisionSquare hf hg q a :=
   ringHom_isPullback_of_distinguished_single_triangle
     (IsPerfectoidization.map hf hg q.toRingHom)
     (perfectoidizationClosedSideProjection hf (Ideal.span {algebraMap R A a}))

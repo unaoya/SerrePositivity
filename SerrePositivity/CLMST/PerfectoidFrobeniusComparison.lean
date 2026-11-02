@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Fontaine
-public import SerrePositivity.CLMST.PerfectoidIdealRoots
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
 public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
 public import SerrePositivity.CommutativeAlgebra.RootTower.CompletedRoots
 
@@ -196,13 +196,13 @@ theorem exists_completed_root_mem_sup_perfectoidIdeal_of_surjective
     (i : Fin h) (hti : t i = (p : A)) (n : ℕ) :
     ∃ x : CompletedTower A t p,
       x ^ (p ^ n) - g ∈ Ideal.span {(p : CompletedTower A t p)} ∧
-      x ∈ Ideal.span {completedTowerRoot A t p n i} ⊔
+      x ∈ Ideal.span {Section2.completedTowerRoot A t p n i} ⊔
         perfectoidIdeal (CompletedTower A t p) p hperf g := by
   obtain ⟨x, hx⟩ := exists_root_mod_p_of_perfectoid _ p hperf n g
   refine ⟨x, hx, root_mem_sup_perfectoidIdeal_of_surjective _ p hperf g hsurj
-    (fun m ↦ completedTowerRoot A t p m i) ?_
-    (fun m ↦ completedTowerRoot_succ_pow A t p m i) n x hx⟩
-  exact (CLMST.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast])
+    (fun m ↦ Section2.completedTowerRoot A t p m i) ?_
+    (fun m ↦ Section2.completedTowerRoot_succ_pow A t p m i) n x hx⟩
+  exact (Section2.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast])
 
 /-- mod pで等しい代表元は、任意の冪を取ってもmod pで等しい。 -/
 theorem pow_sub_mem_of_sub_mem {R : Type u} [CommRing R]
@@ -251,7 +251,7 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
       z ^ (p ^ n) - algebraMap A (TowerStage A t p m) g ∈
         Ideal.span {(p : TowerStage A t p m)} ∧
       algebraMap (TowerStage A t p m) (CompletedTower A t p) z ∈
-        Ideal.span {completedTowerRoot A t p n i} ⊔
+        Ideal.span {Section2.completedTowerRoot A t p n i} ⊔
           perfectoidIdeal (CompletedTower A t p) p hperf
             (algebraMap A (CompletedTower A t p) g) := by
   obtain ⟨m, hm, z, hz⟩ := exists_stage_root_mod_p_of_perfectoid A t p hperf g n (max m₀ n)
@@ -261,9 +261,9 @@ theorem exists_stage_root_mem_sup_perfectoidIdeal_of_surjective
   rw [Ideal.map_span, Set.image_singleton, map_natCast, map_sub, map_pow,
     ← IsScalarTower.algebraMap_apply A (TowerStage A t p m) (CompletedTower A t p)] at hmap
   exact root_mem_sup_perfectoidIdeal_of_surjective _ p hperf _ hsurj
-    (fun l ↦ completedTowerRoot A t p l i)
-    ((CLMST.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast]))
-    (fun l ↦ completedTowerRoot_succ_pow A t p l i) n _ hmap
+    (fun l ↦ Section2.completedTowerRoot A t p l i)
+    ((Section2.completedTowerRoot_zero A t p i).trans (by rw [hti, map_natCast]))
+    (fun l ↦ Section2.completedTowerRoot_succ_pow A t p l i) n _ hmap
 
 /-- perfectoid環で二つのp冪根がmod pで同じ値を持てば、その差は対応するp冪根に属する。
 代表元を有限段で選び直す際の曖昧さを、同じ根イデアルの中で制御する。 -/

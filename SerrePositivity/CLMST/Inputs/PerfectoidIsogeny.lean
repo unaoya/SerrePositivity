@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.PerfectoidizationCone
+public import SerrePositivity.BhattScholze.Perfectoidization.Cone
 public import SerrePositivity.CommutativeAlgebra.GenericEtale
 public import SerrePositivity.CLMST.Prop247Proof
 
@@ -35,7 +35,7 @@ theorem proposition_2_4_7
     (hbounded : ∃ N : ℕ, ∀ (n : ℕ) (s : S),
       (p : S) ^ n * s = 0 → (p : S) ^ N * s = 0) :
     ∀ g ∈ J, ∃ N : ℕ,
-      moduleMapConeScalar R (perfectoidizationModuleMap R S p hR) (g ^ N) = 0 := by
+      moduleMapConeScalar R (BhattScholze.perfectoidizationModuleMap R S p hR) (g ^ N) = 0 := by
   exact proposition_2_4_7_proved R S p hR J hJ hEtale hbounded
 
 end SerrePositivity.CLMST.Inputs

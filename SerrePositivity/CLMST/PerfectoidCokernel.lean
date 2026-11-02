@@ -26,13 +26,13 @@ abbrev PerfectoidizationCokernel := AlgebraMapCokernel S (Perfectoidization R S 
 
 /-- 原典の isogeny で制御した R 加群の余核との比較。 -/
 def perfectoidizationCokernelRestrictEquiv :
-    ((Perfectoidization R S p hR) ⧸ (perfectoidizationModuleMap R S p hR).range) ≃ₗ[R]
+    ((Perfectoidization R S p hR) ⧸ (BhattScholze.perfectoidizationModuleMap R S p hR).range) ≃ₗ[R]
       PerfectoidizationCokernel R S p hR :=
   algebraMapCokernelRestrictEquiv R S (Perfectoidization R S p hR)
 
 /-- 原典の余核の零化を、S 加群としての余核へ移す。同じ冪を保持する。 -/
 theorem perfectoidizationCokernel_annihilated (g : R) (N : ℕ)
-    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (perfectoidizationModuleMap R S p hR).range,
+    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (BhattScholze.perfectoidizationModuleMap R S p hR).range,
       g ^ N • x = 0) :
     ∀ x : PerfectoidizationCokernel R S p hR, (algebraMap R S g) ^ N • x = 0 := by
   simpa only [map_pow] using algebraMapCokernel_annihilated_algebraMap_of_restrict
@@ -40,7 +40,7 @@ theorem perfectoidizationCokernel_annihilated (g : R) (N : ℕ)
 
 /-- 任意の S の列と全次数に、余核と同じ消去冪を供給する。 -/
 theorem perfectoidizationCokernel_koszul_annihilated (g : R) (N : ℕ)
-    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (perfectoidizationModuleMap R S p hR).range,
+    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (BhattScholze.perfectoidizationModuleMap R S p hR).range,
       g ^ N • x = 0) {e : ℕ} (z : Fin e → S) (q : ℤ) :
     ∀ x : ((koszulModuleFunctor z).obj
       (ModuleCat.of S (PerfectoidizationCokernel R S p hR))).homology q,
@@ -52,7 +52,7 @@ theorem perfectoidizationCokernel_koszul_annihilated (g : R) (N : ℕ)
 theorem perfectoidizationCokernel_restricted_koszul_annihilated
     {T : Type u} [CommRing T] (φ : T →+* S)
     (g : R) (a : T) (ha : φ a = algebraMap R S g) (N : ℕ)
-    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (perfectoidizationModuleMap R S p hR).range,
+    (h : ∀ x : (Perfectoidization R S p hR) ⧸ (BhattScholze.perfectoidizationModuleMap R S p hR).range,
       g ^ N • x = 0) {e : ℕ} (z : Fin e → T) (q : ℤ) :
     ∀ x : ((koszulModuleFunctor z).obj ((ModuleCat.restrictScalars φ).obj
       (ModuleCat.of S (PerfectoidizationCokernel R S p hR)))).homology q,
@@ -63,14 +63,14 @@ theorem perfectoidizationCokernel_restricted_koszul_annihilated
 
 /-- 単射性から、標準写像とS加群の余核の実際の短完全列が得られる。 -/
 theorem perfectoidizationCokernel_shortExact
-    (hinj : Function.Injective (perfectoidizationModuleMap R S p hR)) :
+    (hinj : Function.Injective (BhattScholze.perfectoidizationModuleMap R S p hR)) :
     (algebraMapCokernelShortComplex S (Perfectoidization R S p hR)).ShortExact :=
   algebraMapCokernelShortComplex_shortExact S (Perfectoidization R S p hR) hinj
 
 /-- 部分係数環への制限とKoszul構成の後も、同じ余核による短完全列が得られる。 -/
 theorem perfectoidizationCokernel_restricted_koszul_shortExact
     {T : Type u} [CommRing T] (φ : T →+* S) {e : ℕ} (z : Fin e → T)
-    (hinj : Function.Injective (perfectoidizationModuleMap R S p hR)) :
+    (hinj : Function.Injective (BhattScholze.perfectoidizationModuleMap R S p hR)) :
     ((algebraMapCokernelShortComplex S (Perfectoidization R S p hR)).map
       (ModuleCat.restrictScalars φ ⋙ koszulModuleFunctor z)).ShortExact := by
   rw [ShortComplex.map_comp]

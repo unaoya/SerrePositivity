@@ -32,7 +32,7 @@ theorem prop247_aic_rankComponent_annihilators_of_excision
     [Algebra (prop247_rankSourceImage R S g hetale n) T]
     [IsScalarTower R (prop247_rankSourceImage R S g hetale n) T]
     (hT : IsPerfectoidization p (algebraMap (prop247_rankSourceImage R S g hetale n) T))
-    (hExcision : KLFiniteComparisonExcision T p)
+    (hExcision : BhattScholze.KLFiniteComparisonExcision T p)
     (β : T ⊗[R] S →ₐ[R] P) (hβ : IsPerfectoidization p β.toRingHom) :
     ∃ q : ℕ, (∀ x : β.toLinearMap.ker, g ^ q • x = 0) ∧
       (∀ y : P ⧸ β.toLinearMap.range, g ^ q • y = 0) := by
@@ -85,7 +85,7 @@ theorem prop247_aic_isogeny_of_rank_component_excision
     [∀ n : t, IsScalarTower R (prop247_rankSourceImage R S g hetale n) (T n)]
     (hT : ∀ n : t, IsPerfectoidization p
       (algebraMap (prop247_rankSourceImage R S g hetale n) (T n)))
-    (hExcision : ∀ n : t, KLFiniteComparisonExcision (T n) p)
+    (hExcision : ∀ n : t, BhattScholze.KLFiniteComparisonExcision (T n) p)
     (C : Type u) [CommRing C] [Algebra R C]
     (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom)
     (P : t → Type u) [∀ n : t, CommRing (P n)] [∀ n : t, Algebra R (P n)]

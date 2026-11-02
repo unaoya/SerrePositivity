@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
-public import SerrePositivity.CLMST.Almost
+public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.WittVector.Basic
 public import Mathlib.RingTheory.MvPowerSeries.Basic

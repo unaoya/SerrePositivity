@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247RankAssembly
-public import SerrePositivity.CLMST.KLAicTorFromExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 
 /-! # Prop 2.4.7：実 rank 終域比較と指定 canonical excision 比較
 
@@ -52,10 +52,10 @@ theorem prop247_rankPerfectoidComparison_eq_canonical :
 直積の普遍性と引き戻し性は実データとして指定し、Cor 8.12 は引用しない。 -/
 theorem prop247_rankPerfectoidComparison_ker_of_canonical_excision
     (hR : IsIntegralPerfectoid R p) (g : R)
-    (hPB : KLCanonicalExcisionSquare hf hProduct (prop247_rankTensorUnit R S T) g) :
+    (hPB : BhattScholze.KLCanonicalExcisionSquare hf hProduct (prop247_rankTensorUnit R S T) g) :
     ∀ x : (prop247_rankPerfectoidComparison R S T p C f hf P β hβ).toLinearMap.ker,
       g • x = 0 := by
-  obtain ⟨hk, _hc⟩ := perfectoidization_comparison_almost_of_canonical_excision hR hf hProduct
+  obtain ⟨hk, _hc⟩ := BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hf hProduct
     (prop247_rankTensorUnit R S T) g hPB
   rw [prop247_rankPerfectoidComparison_eq_canonical R S T P β p C f hf hβ hProduct]
   exact hk g (span_le_perfectoidIdeal R p hR g (Ideal.subset_span (Set.mem_singleton g)))

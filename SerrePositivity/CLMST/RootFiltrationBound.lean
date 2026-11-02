@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.PerfectoidIdealRoots
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
 public import SerrePositivity.LengthAlgebra.QuotientBounds
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Completion
 
@@ -28,17 +28,17 @@ theorem completedLength_quotient_le_root_factor
     (i : Fin h) (hti : t i = (p : A)) (n : ℕ) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸ K) ≤
       (p : ℝ≥0∞) ^ n * (completedNormalizedLength A t p ht).len
-        (CompletedTower A t p ⧸ (K ⊔ Ideal.span {completedTowerRoot A t p n i})) := by
+        (CompletedTower A t p ⧸ (K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i})) := by
   have hpK : (p : CompletedTower A t p) ∈ K := by
     apply hJK
     have hpA : (p : A) ∈ maximalIdeal A := hti ▸ ht i
     simpa only [completedTowerMaxIdeal, map_natCast] using Ideal.mem_map_of_mem
       (algebraMap A (CompletedTower A t p)) hpA
-  have hroot : completedTowerRoot A t p n i ^ (p ^ n) ∈ K := by
-    simpa only [completedTowerRoot_pow, hti, map_natCast] using hpK
+  have hroot : Section2.completedTowerRoot A t p n i ^ (p ^ n) ∈ K := by
+    simpa only [Section2.completedTowerRoot_pow, hti, map_natCast] using hpK
   simpa only [pow_one, Nat.cast_pow] using
     (completedNormalizedLength A t p ht).len_quotient_le_mul_of_pow_mem
-      K 1 (by simpa only [pow_one] using hJK) (completedTowerRoot A t p n i) (p ^ n) hroot
+      K 1 (by simpa only [pow_one] using hJK) (Section2.completedTowerRoot A t p n i) (p ^ n) hroot
 
 /-- 任意の有限段の有限長な商で、根を追加した商を覆えば、元の商の数値上界が得られる。
 根の指数nと評価する段mの分母を混同しない。 -/
@@ -50,7 +50,7 @@ theorem completedLength_quotient_le_root_factor_stage_length
     (hJH : completedTowerMaxIdeal A t p ≤
       H.map (algebraMap (TowerStage A t p m) (CompletedTower A t p)))
     (hHK : H.map (algebraMap (TowerStage A t p m) (CompletedTower A t p)) ≤
-      K ⊔ Ideal.span {completedTowerRoot A t p n i}) :
+      K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i}) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸ K) ≤
       (p : ℝ≥0∞) ^ n *
         ((Module.length (TowerStage A t p m) (TowerStage A t p m ⧸ H) : ℝ≥0∞) /
@@ -95,22 +95,22 @@ theorem isFiniteLength_stage_quotient_of_maximalIdeal_map_le
 theorem completedLength_quotient_le_root_contraction_length
     (K : Ideal (CompletedTower A t p)) (hJK : completedTowerMaxIdeal A t p ≤ K)
     (i : Fin h) (hti : t i = (p : A)) (n m : ℕ) :
-    let H := (K ⊔ Ideal.span {completedTowerRoot A t p n i}).comap
+    let H := (K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i}).comap
       (algebraMap (TowerStage A t p m) (CompletedTower A t p))
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸ K) ≤
       (p : ℝ≥0∞) ^ n *
         ((Module.length (TowerStage A t p m) (TowerStage A t p m ⧸ H) : ℝ≥0∞) /
           (stageRank h p m : ℝ≥0∞)) := by
-  let H := (K ⊔ Ideal.span {completedTowerRoot A t p n i}).comap
+  let H := (K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i}).comap
     (algebraMap (TowerStage A t p m) (CompletedTower A t p))
   have hbase : (maximalIdeal A).map (algebraMap A (TowerStage A t p m)) ≤ H := by
     rw [Ideal.map_le_iff_le_comap]
     intro a ha
     change algebraMap (TowerStage A t p m) (CompletedTower A t p)
       (algebraMap A (TowerStage A t p m) a) ∈
-        K ⊔ Ideal.span {completedTowerRoot A t p n i}
+        K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i}
     rw [← IsScalarTower.algebraMap_apply A (TowerStage A t p m) (CompletedTower A t p)]
-    exact (show K ≤ K ⊔ Ideal.span {completedTowerRoot A t p n i} from le_sup_left)
+    exact (show K ≤ K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i} from le_sup_left)
       (hJK (Ideal.mem_map_of_mem _ ha))
   have hJH : completedTowerMaxIdeal A t p ≤
       H.map (algebraMap (TowerStage A t p m) (CompletedTower A t p)) := by
@@ -134,7 +134,7 @@ theorem completedLength_quotient_le_stage_root_estimate
     (i : Fin h) (hti : t i = (p : A)) (n m : ℕ) (hnm : n ≤ m)
     (z : TowerStage A t p m)
     (hz : algebraMap (TowerStage A t p m) (CompletedTower A t p) z ∈
-      K ⊔ Ideal.span {completedTowerRoot A t p n i}) :
+      K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i}) :
     (completedNormalizedLength A t p ht).len (CompletedTower A t p ⧸ K) ≤
       (p : ℝ≥0∞) ^ n *
         ((Module.length (TowerStage A t p m)
@@ -148,14 +148,14 @@ theorem completedLength_quotient_le_stage_root_estimate
     have hh := Ideal.map_mono (f := algebraMap (TowerStage A t p m) (CompletedTower A t p)) hbase
     simpa only [Ideal.map_map, ← IsScalarTower.algebraMap_eq, completedTowerMaxIdeal] using hh
   have hHK : H.map (algebraMap (TowerStage A t p m) (CompletedTower A t p)) ≤
-      K ⊔ Ideal.span {completedTowerRoot A t p n i} := by
+      K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i} := by
     dsimp only [H, stageRootRepresentativeIdeal]
     rw [Ideal.map_sup, Ideal.map_sup, Ideal.map_map, ← IsScalarTower.algebraMap_eq,
       Ideal.map_span, Ideal.map_span, Set.image_singleton, Set.image_singleton, map_pow]
     change completedTowerMaxIdeal A t p ⊔
-      Ideal.span {completedTowerRoot A t p m i ^ (p ^ (m - n))} ⊔
+      Ideal.span {Section2.completedTowerRoot A t p m i ^ (p ^ (m - n))} ⊔
         Ideal.span {algebraMap (TowerStage A t p m) (CompletedTower A t p) z} ≤ _
-    rw [completedTowerRoot_pow_of_le A t p n m hnm i]
+    rw [Section2.completedTowerRoot_pow_of_le A t p n m hnm i]
     exact sup_le (sup_le (hJK.trans le_sup_left) le_sup_right)
       ((Ideal.span_singleton_le_iff_mem _).mpr hz)
   exact completedLength_quotient_le_root_factor_stage_length A t p ht (hti ▸ ht i)

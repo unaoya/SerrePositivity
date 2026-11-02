@@ -41,7 +41,7 @@ Prop 2.4.7 の定 rank 成分の条件付き組立てに供給する。
 -/
 theorem prop247_finiteComparison_excision
     (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) : KLFiniteComparisonExcision R p := by
+    (hR : IsIntegralPerfectoid R p) : BhattScholze.KLFiniteComparisonExcision R p := by
   intro A B C D _ _ _ _ _ _ _ _ _ _ _ _ a q hq hk hc f g hf hg
   have hA : IsModuleComplete A (p : A) (ModuleCat.of A A) := by
     simpa only [map_natCast] using
@@ -90,7 +90,7 @@ theorem prop247_isogeny_of_specified
   have hT (n : t) : IsIntegralPerfectoid (T n) p := (hu n).1
   obtain ⟨hA, hX, hI, _⟩ := prop247_rankSource_closedSide_completeness
     B (B ⊗[R] S) p hB (algebraMap R B g) (fun n => T n) hT
-  have hPB : KLCanonicalExcisionSquare hβ hProduct
+  have hPB : BhattScholze.KLCanonicalExcisionSquare hβ hProduct
       (prop247_rankTensorUnit B (B ⊗[R] S) (fun n => T n)) (algebraMap R B g) := by
     apply BhattScholze.klCanonicalExcisionSquare_of_excision B p hB
       (B ⊗[R] S) ((n : t) → T n ⊗[B] (B ⊗[R] S)) P ((n : t) → Q n)
@@ -126,7 +126,7 @@ theorem proposition_2_4_7_proved
     (hbounded : ∃ N : ℕ, ∀ (n : ℕ) (s : S),
       (p : S) ^ n * s = 0 → (p : S) ^ N * s = 0) :
     ∀ g ∈ J, ∃ N : ℕ,
-      moduleMapConeScalar R (perfectoidizationModuleMap R S p hR) (g ^ N) = 0 := by
+      moduleMapConeScalar R (BhattScholze.perfectoidizationModuleMap R S p hR) (g ^ N) = 0 := by
   clear hJ
   intro g hg
   exact prop247_isogeny_of_specified R S (Perfectoidization R S p hR) p hR

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.RankLocus
-public import SerrePositivity.CLMST.Prop247QuotientPerfectoidization
+public import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 
 /-! # Prop 2.4.7：原典の rank 像の実 perfectoid 化対象
@@ -32,7 +32,7 @@ theorem prop247_rankTarget_surjective_finite
   let I := openSectionImage R (rankOpen R S g hetale n)
   let q := (toOpenSectionImage R (rankOpen R S g hetale n)).toRingHom
   have hq : Function.Surjective q := toOpenSectionImage_surjective R _
-  have hf' := prop247_surjective_perfectoidization_of_quotient p hR q hq (algebraMap I T) hf
+  have hf' := BhattScholze.surjective_perfectoidization_of_quotient p hR q hq (algebraMap I T) hf
   have hs : Function.Surjective (algebraMap R T) := by
     rw [IsScalarTower.algebraMap_eq R I T]
     exact hf'.comp hq

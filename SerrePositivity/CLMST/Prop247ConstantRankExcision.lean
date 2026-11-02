@@ -27,7 +27,7 @@ theorem prop247_aic_constantRank_isogeny_of_finiteComparison_excision
     {R A P : Type u} [CommRing R] [CommRing A] [CommRing P]
     [Algebra R A] [Algebra R P] [Module.Finite R A] [Algebra.FinitePresentation R A]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
-    (hAIC : IsAbsolutelyIntegrallyClosed R) (hExcision : KLFiniteComparisonExcision R p)
+    (hAIC : IsAbsolutelyIntegrallyClosed R) (hExcision : BhattScholze.KLFiniteComparisonExcision R p)
     (g : R) (β : A →ₐ[R] P) (hβ : IsPerfectoidization p β.toRingHom)
     (hetale : letI := GenericEtale.awayAlgebra R A g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R A g)))

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247LocalComparison
-public import SerrePositivity.CLMST.KLAicTorFromExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 
 /-! # Prop 2.4.7：KL と共通の指定 excision 入力から局所実錐へ
 
@@ -32,8 +32,8 @@ theorem prop247_fixed_cone_of_two_canonical_excision
     (ha : ∀ x, l (a x) = e ((1 : L) ⊗ₜ[R] x))
     (hb : ∀ z i, l (b z) i = algebraMap R L (z i))
     (hfree : IsIntegralPerfectoid (Fin r → R) p)
-    (hPBa : KLCanonicalExcisionSquare hβ hη a d)
-    (hPBb : KLCanonicalExcisionSquare (f := AlgHom.id R (Fin r → R))
+    (hPBa : BhattScholze.KLCanonicalExcisionSquare hβ hη a d)
+    (hPBb : BhattScholze.KLCanonicalExcisionSquare (f := AlgHom.id R (Fin r → R))
       hfree.isPerfectoidization_id
       hη b d) :
     ∃ q : ℕ, moduleMapConeScalar R β.toLinearMap (d ^ q) = 0 := by
@@ -44,9 +44,9 @@ theorem prop247_fixed_cone_of_two_canonical_excision
   have hd : d ∈ perfectoidIdeal R p hR d :=
     span_le_perfectoidIdeal R p hR d (Ideal.subset_span (Set.mem_singleton d))
   obtain ⟨hak, _hac⟩ :=
-    perfectoidization_comparison_almost_of_canonical_excision hR hβ hη a d hPBa
+    BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hβ hη a d hPBa
   obtain ⟨hbk, hbc⟩ :=
-    perfectoidization_comparison_almost_of_canonical_excision hR hh hη b d hPBb
+    BhattScholze.perfectoidization_comparison_almost_of_canonical_excision hR hh hη b d hPBb
   have heq : IsPerfectoidization.mapAlgHom hh hη b = η.comp b := by
     simpa only [h, AlgHom.comp_id] using IsPerfectoidization.mapAlgHom_comp hh hη b
   rw [heq] at hbk hbc

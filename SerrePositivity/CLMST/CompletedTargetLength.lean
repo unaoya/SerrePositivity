@@ -116,7 +116,7 @@ theorem completedTensor_stage_parameter_euler_comparison
       IsSystemOfParameters (StageAlgebra A D t p n) y)
     (b : CompletedTower A t p) (N : ℕ)
     (hN : ∀ x : (RPerfd A D t p hperf) ⧸
-      (perfectoidizationModuleMap (CompletedTower A t p)
+      (BhattScholze.perfectoidizationModuleMap (CompletedTower A t p)
         ((CompletedTower A t p) ⊗[A] D) p hperf).range, b ^ N • x = 0)
     (hyLast : stageToCompletedTensor A D t p n (y (Fin.last r)) ∈
       Ideal.span (Set.range (Fin.init ((stageToCompletedTensor A D t p n).toRingHom ∘ y))) ⊔

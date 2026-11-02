@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.PerfectoidIdealRoots
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Coordinate
 
 /-! # 命題4.0.10の p の場合の数値接続
@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
 theorem completedLength_cyclic_p_eq_zero_of_reduced
     (i : Fin h) (hti : t i = (p : A))
     (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
-    (hred : IsReduced (perfectoidQuotient (CompletedTower A t p) p hperf
+    (hred : IsReduced (BhattScholze.perfectoidQuotient (CompletedTower A t p) p hperf
       (p : CompletedTower A t p))) (n : ℕ) :
     (RootTowerLength.completedNormalizedLength A t p ht).len
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
@@ -38,7 +38,7 @@ theorem completedLength_cyclic_p_eq_zero_of_reduced
     A t p ht hp ((maximalIdeal A) ^ n)
     (RootTowerLength.finiteLength_quotient_maximalIdeal_pow A n) n le_rfl _ hIK i
     (fun m ↦ (le_sup_right : perfectoidIdeal (CompletedTower A t p) p hperf
-      (p : CompletedTower A t p) ≤ _) (completedTowerRoot_mem_perfectoidIdeal_p_of_reduced
+      (p : CompletedTower A t p) ≤ _) (BhattScholze.completedTowerRoot_mem_perfectoidIdeal_p_of_reduced
         A t p hperf hred m i hti))
 
 /-- 標数pのperfectoid商の被約性を定義から供給し、pの場合の全巡回評価を得る。 -/
@@ -49,6 +49,6 @@ theorem completedLength_cyclic_p_eq_zero
       (CompletedTower A t p ⧸ ((completedTowerMaxIdeal A t p) ^ n ⊔
         perfectoidIdeal (CompletedTower A t p) p hperf (p : CompletedTower A t p))) = 0 :=
   completedLength_cyclic_p_eq_zero_of_reduced A t p ht i hti hperf
-    (perfectoidQuotient_p_isReduced (CompletedTower A t p) p hperf) n
+    (BhattScholze.perfectoidQuotient_p_isReduced (CompletedTower A t p) p hperf) n
 
 end SerrePositivity.CLMST

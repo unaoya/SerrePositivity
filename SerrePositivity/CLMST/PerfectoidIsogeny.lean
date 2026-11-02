@@ -29,24 +29,24 @@ include hJ hEtale hbounded in
 /-- 原典の錐の零射から、各 g∈J に対して核・余核を同じ冪で零化できる。 -/
 theorem exists_pow_annihilates_ker_coker (g : R) (hg : g ∈ J) :
     ∃ N : ℕ,
-      (∀ x : (perfectoidizationModuleMap R S p hR).ker, (g ^ N) • x = 0) ∧
+      (∀ x : (BhattScholze.perfectoidizationModuleMap R S p hR).ker, (g ^ N) • x = 0) ∧
       (∀ x : (Perfectoidization R S p hR) ⧸
-        (perfectoidizationModuleMap R S p hR).range, (g ^ N) • x = 0) := by
+        (BhattScholze.perfectoidizationModuleMap R S p hR).range, (g ^ N) • x = 0) := by
   obtain ⟨N, hN⟩ := Inputs.proposition_2_4_7 R S p hR J hJ hEtale hbounded g hg
   exact ⟨N, moduleMapCone_pow_scalar_eq_zero_annihilates R
-    (perfectoidizationModuleMap R S p hR) g N hN⟩
+    (BhattScholze.perfectoidizationModuleMap R S p hR) g N hN⟩
 
 include hJ hEtale hbounded in
 /-- 始域で g が正則なら標準写像は単射で、余核を g の同じ冪で消せる。
 単射性そのものは外部引用の結論に追加せず、錐と正則性から証明する。 -/
 theorem injective_and_exists_pow_annihilates_coker (g : R) (hg : g ∈ J)
     (hregular : IsSMulRegular S g) :
-    Function.Injective (perfectoidizationModuleMap R S p hR) ∧
+    Function.Injective (BhattScholze.perfectoidizationModuleMap R S p hR) ∧
       ∃ N : ℕ, ∀ x : (Perfectoidization R S p hR) ⧸
-        (perfectoidizationModuleMap R S p hR).range, (g ^ N) • x = 0 := by
+        (BhattScholze.perfectoidizationModuleMap R S p hR).range, (g ^ N) • x = 0 := by
   obtain ⟨N, hN⟩ := Inputs.proposition_2_4_7 R S p hR J hJ hEtale hbounded g hg
   obtain ⟨hinj, hcoker⟩ := moduleMapCone_pow_scalar_eq_zero_injective_of_regular R
-    (perfectoidizationModuleMap R S p hR) g N hregular hN
+    (BhattScholze.perfectoidizationModuleMap R S p hR) g N hregular hN
   exact ⟨hinj, N, hcoker⟩
 
 end SerrePositivity.CLMST

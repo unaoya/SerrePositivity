@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247ProductUniversality
+public import SerrePositivity.BhattScholze.Semiperfectoid.Product
 public import SerrePositivity.CLMST.Prop247RankTargetComparison
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 
@@ -32,9 +32,9 @@ theorem prop247_rankProductUnit_isPerfectoidization_of_finite_coefficients
   obtain ⟨C, hC, f, hf⟩ := BhattScholze.Inputs.exists_perfectoidization_of_integral R
     ((i : ι) → T i ⊗[R] S) p hR
   letI := hC
-  change IsPerfectoidization p (prop247_productPerfectoidizationUnit
+  change IsPerfectoidization p (BhattScholze.productPerfectoidizationUnit
     (fun i => T i ⊗[R] S) P (fun i => (β i).toRingHom))
-  exact prop247_productUnit_isPerfectoidization_of_specified (fun i => T i ⊗[R] S) P
+  exact BhattScholze.productUnit_isPerfectoidization_of_specified (fun i => T i ⊗[R] S) P
     (fun i => (β i).toRingHom) p hβ C f hf
 
 end SerrePositivity.CLMST

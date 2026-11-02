@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.KLOriginalTorFromExcision
+public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
 public import SerrePositivity.CLMST.RPerfdTorBaseChange
 
 /-! # Both original KL cohomology conclusions from the explicit excision input
@@ -32,7 +32,7 @@ theorem rPerfd_cohomology_vanishing_of_finiteComparison_excision
     (hetale : letI := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g)))
     (hExcision : ∀ (E : Type u) [CommRing E] [Algebra (CompletedTower A t p) E],
-      IsIntegralPerfectoid E p → IsAbsolutelyIntegrallyClosed E → KLFiniteComparisonExcision E p) :
+      IsIntegralPerfectoid E p → IsAbsolutelyIntegrallyClosed E → BhattScholze.KLFiniteComparisonExcision E p) :
     (∀ i : ℕ, i < h →
       ∀ s ∈ perfectoidIdeal (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g),
@@ -60,7 +60,7 @@ theorem rPerfd_cohomology_vanishing_of_finiteComparison_excision
   have he := etaleAway_tensor_baseChange (B := CompletedTower A t p) g hetale
   let := GenericEtale.awayAlgebra (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D)
     (algebraMap A (CompletedTower A t p) g)
-  have hTor := perfectoidIdeal_powerTorsionTorInput_of_finiteComparison_excision
+  have hTor := BhattScholze.perfectoidIdeal_powerTorsionTorInput_of_finiteComparison_excision
     p hperf hExcision (algebraMap A (CompletedTower A t p) g) f hf he
   exact rPerfd_cohomology_vanishing_of_tower_power_torsion A t D p hperf
     ht hdim hsop j₀ htp g (fun N k _hk hN i hi s hs => hTor N k hN i hi s hs)

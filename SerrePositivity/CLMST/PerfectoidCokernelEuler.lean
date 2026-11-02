@@ -22,7 +22,7 @@ variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
 theorem perfectoidizationCokernel_euler_eq_zero
     {J : Ideal S} (lam : NormalizedLength S J) (hfg : J.FG)
     (g : R) (N : ℕ)
-    (hN : ∀ x : (Perfectoidization R S p hR) ⧸ (perfectoidizationModuleMap R S p hR).range,
+    (hN : ∀ x : (Perfectoidization R S p hR) ⧸ (BhattScholze.perfectoidizationModuleMap R S p hR).range,
       g ^ N • x = 0)
     {e : ℕ} (z : Fin (e + 1) → S)
     (hJ : J ≤ (Ideal.span (Set.range z)).radical)

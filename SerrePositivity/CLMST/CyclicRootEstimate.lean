@@ -47,8 +47,8 @@ theorem exists_cyclic_root_stage_length_estimate
     exists_stage_root_mem_sup_perfectoidIdeal_of_surjective A t p hperf g hsurj i hti n m₀
   refine ⟨m, hm, hnm, z, hz,
     completedLength_quotient_le_stage_root_estimate A t p ht K le_sup_left i hti n m hnm z ?_⟩
-  have hle : Ideal.span {completedTowerRoot A t p n i} ⊔ I ≤
-      K ⊔ Ideal.span {completedTowerRoot A t p n i} :=
+  have hle : Ideal.span {Section2.completedTowerRoot A t p n i} ⊔ I ≤
+      K ⊔ Ideal.span {Section2.completedTowerRoot A t p n i} :=
     sup_le le_sup_right (le_sup_of_le_left le_sup_right)
   exact hle hmem
 

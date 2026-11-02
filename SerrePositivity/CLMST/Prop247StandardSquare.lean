@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.CLMST.Prop247SourceComparison
-public import SerrePositivity.CLMST.Prop247TargetComparison
-public import SerrePositivity.CLMST.Prop247TensorUnit
+public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison
 
 /-! # Prop 2.4.7：元の標準射の実完備底変換四角形
 
@@ -33,7 +32,7 @@ local notation "AC" => boundedAboveCompletedTensorAlgebra R (p : R) B C
 /-- 元の射の底変換と完備化単位を、終域の実 H⁰ 比較で写すと元の β となる。 -/
 theorem prop247_targetH0LinearEquiv_unit_map
     (x : (DerivedCategory.homologyFunctor (ModuleCat B) 0).obj XS) :
-    prop247_targetH0LinearEquiv R S B C P p hR hB f hf β hβ
+    BhattScholze.targetH0LinearEquiv R S B C P p hR hB f hf β hβ
       ((DerivedCategory.homologyFunctor (ModuleCat B) 0).map
         ((derivedComplexCompletionUnit B (algebraMap R B (p : R))).app XC)
         ((DerivedCategory.homologyFunctor (ModuleCat B) 0).map
@@ -48,12 +47,12 @@ theorem prop247_targetH0LinearEquiv_unit_map
   let m := ModuleCat.ofHom f.toLinearMap
   let u := ((boundedAboveDerivedBaseChange (algebraMap R B)).map
     (boundedAboveDerivedSingleFunctor.map m)).hom
-  let e := prop247_targetTensorAlgEquiv R S B C P p hR hB f hf β hβ
+  let e := BhattScholze.targetTensorAlgEquiv R S B C P p hR hB f hf β hβ
   change e (completedBaseChangeTensorH0LinearEquiv R B C (p : R)
     ((DerivedCategory.homologyFunctor (ModuleCat B) 0).map
       ((derivedComplexCompletionUnit B (algebraMap R B (p : R))).app XC)
       ((DerivedCategory.homologyFunctor (ModuleCat B) 0).map u x))) = _
-  rw [prop247_completedBaseChangeTensorH0_unit]
+  rw [BhattScholze.completedBaseChangeTensorH0_unit]
   have hn := (boundedAboveDerivedBaseChangeModuleH0Iso (algebraMap R B)).hom.naturality m
   have hx : (boundedAboveDerivedBaseChangeModuleH0Iso (algebraMap R B)).hom.app
       (ModuleCat.of R C) ((DerivedCategory.homologyFunctor (ModuleCat B) 0).map u x) =
@@ -61,7 +60,7 @@ theorem prop247_targetH0LinearEquiv_unit_map
       ((boundedAboveDerivedBaseChangeModuleH0Iso (algebraMap R B)).hom.app (ModuleCat.of R S) x) :=
     congrArg (fun k => k.hom x) hn
   rw [hx, algebraScalarExtensionModuleIso_algMap_apply]
-  exact RingHom.congr_fun (prop247_targetTensorAlgEquiv_comp R S B C P p hR hB f hf β hβ) _
+  exact RingHom.congr_fun (BhattScholze.targetTensorAlgEquiv_comp R S B C P p hR hB f hf β hβ) _
 
 variable [Module.Finite R S] [Algebra.FinitePresentation R S]
     (hflat : IsCompletelyFlat (Ideal.span {(p : R)})
@@ -74,7 +73,7 @@ theorem prop247_completedBaseChange_standard_square :
     (derivedComplexCompletionFunctor B (algebraMap R B (p : R))).map
         ((boundedAboveDerivedBaseChange (algebraMap R B)).map
           (boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f.toLinearMap))).hom ≫
-      (prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom =
+      (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom =
     (prop247_sourceCompletedBaseChangeIso R S B p hB hflat N hbounded).hom ≫
       (moduleObjectFunctor B).map (ModuleCat.ofHom β.toLinearMap) := by
   let φ := algebraMap R B
@@ -83,7 +82,7 @@ theorem prop247_completedBaseChange_standard_square :
   let u := ((boundedAboveDerivedBaseChange φ).map
     (boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f.toLinearMap))).hom
   let eS := prop247_sourceCompletedBaseChangeIso R S B p hB hflat N hbounded
-  let eC := prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ
+  let eC := BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ
   let βM := ModuleCat.ofHom β.toLinearMap
   have hP : IsComplete B (φ (p : R)) ((moduleObjectFunctor B).obj (ModuleCat.of B P)) := by
     change IsModuleComplete B (φ (p : R)) (ModuleCat.of B P)
@@ -101,7 +100,7 @@ theorem prop247_completedBaseChange_standard_square :
     (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S)) 0
   apply (derivedNonpositiveHomToSingleEquiv XS (ModuleCat.of B P)).injective
   simp only [derivedNonpositiveHomToSingleEquiv_apply, Functor.map_comp, Category.assoc]
-  have hc := prop247_targetCompletedBaseChangeIso_homology R S B C P p hR hB f hf β hβ
+  have hc := BhattScholze.targetCompletedBaseChangeIso_homology R S B C P p hR hB f hf β hβ
   change (DerivedCategory.homologyFunctor (ModuleCat B) 0).map eC.hom ≫ _ = _ at hc
   rw [hc]
   let ε := DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat B) 0
@@ -130,7 +129,7 @@ theorem prop247_completedBaseChange_adic_standard_square :
     (derivedComplexCompletionFunctor B (algebraMap R B (p : R))).map
         ((boundedAboveDerivedBaseChange (algebraMap R B)).map
           (boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f.toLinearMap))).hom ≫
-      (prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom =
+      (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom =
     (prop247_sourceCompletedAdicIso R S B p hB hflat N hbounded).hom ≫
       (moduleObjectFunctor B).map
         (ModuleCat.ofHom (prop247_completionMap p β hβ).toLinearMap) := by

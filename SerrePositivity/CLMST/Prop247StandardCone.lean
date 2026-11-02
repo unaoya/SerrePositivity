@@ -37,7 +37,7 @@ def prop247_standardCompletedConeIso :
   prop247_completedModuleConeIso (algebraMap R B) (p : R) f.toLinearMap
     (prop247_completionMap p β hβ).toLinearMap
     (prop247_sourceCompletedAdicIso R S B p hB hflat N hbounded)
-    (prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
+    (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
     (prop247_completedBaseChange_adic_standard_square R S B C P p hR hB f hf β hβ
       hflat N hbounded)
 
@@ -45,12 +45,12 @@ def prop247_standardCompletedConeIso :
 theorem prop247_standardCompletedConeIso_inclusion :
     (prop247_completedModuleTriangle (algebraMap R B) (p : R) f.toLinearMap).mor₂ ≫
       (prop247_standardCompletedConeIso R S B C P p hR hB f hf β hβ hflat N hbounded).hom =
-    (prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom ≫
+    (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom ≫
       (moduleMapConeTriangle B (prop247_completionMap p β hβ).toLinearMap).mor₂ :=
   prop247_completedModuleConeIso_inclusion (algebraMap R B) (p : R) f.toLinearMap
     (prop247_completionMap p β hβ).toLinearMap
     (prop247_sourceCompletedAdicIso R S B p hB hflat N hbounded)
-    (prop247_targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
+    (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
     (prop247_completedBaseChange_adic_standard_square R S B C P p hR hB f hf β hβ
       hflat N hbounded)
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CLMST.CyclicLength
 public import SerrePositivity.CLMST.AlmostLength
 public import SerrePositivity.LengthAlgebra.Almost
-public import SerrePositivity.CLMST.BasicSetup
+public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 
 /-! # CLMST の巡回評価から一般加群と almost 同型への接続
 
@@ -55,7 +55,7 @@ theorem exists_common_completedTower_p_pow_annihilates
     (hM' : IsPowTorsion (completedTowerMaxIdeal A t p) M') :
     ∃ N : ℕ, Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M ∧
       Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M' := by
-  apply exists_common_p_pow_annihilates (CompletedTower A t p) p
+  apply BhattScholze.exists_common_p_pow_annihilates (CompletedTower A t p) p
     (completedTowerMaxIdeal A t p) _ M M' hM hM'
   have hp : (p : A) ∈ maximalIdeal A := by
     rw [← htp, ← ht]
@@ -76,10 +76,10 @@ theorem completedLength_eq_of_perfectoid_mod_almost_iso
     (hNM' : Almost.IsAlmostZero (Ideal.span {(p : CompletedTower A t p) ^ N}) M') :
     let _ := Almost.quotientModule (Ideal.span {(p : CompletedTower A t p) ^ N}) M hNM
     let _ := Almost.quotientModule (Ideal.span {(p : CompletedTower A t p) ^ N}) M' hNM'
-    ((perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
+    ((BhattScholze.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N).obj
         (ModuleCat.of ((CompletedTower A t p) ⧸ Ideal.span {(p : CompletedTower A t p) ^ N}) M) ≅
-      (perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
+      (BhattScholze.perfectoidAlmostModLocalization (CompletedTower A t p) p hperf
         (algebraMap A (CompletedTower A t p) g) N).obj
           (ModuleCat.of
             ((CompletedTower A t p) ⧸ Ideal.span {(p : CompletedTower A t p) ^ N}) M')) →
@@ -87,13 +87,13 @@ theorem completedLength_eq_of_perfectoid_mod_almost_iso
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M =
     (RootTowerLength.completedNormalizedLength A t p
       (fun i ↦ ht ▸ Ideal.subset_span (Set.mem_range_self i))).len M' := by
-  let : Fact (perfectoidIdealMod (CompletedTower A t p) p hperf
+  let : Fact (BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N *
-    perfectoidIdealMod (CompletedTower A t p) p hperf
+    BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N =
-    perfectoidIdealMod (CompletedTower A t p) p hperf
+    BhattScholze.perfectoidIdealMod (CompletedTower A t p) p hperf
       (algebraMap A (CompletedTower A t p) g) N) :=
-    ⟨Inputs.perfectoidIdealMod_idempotent _ p hperf _ N⟩
+    ⟨BhattScholze.perfectoidIdealMod_idempotent _ p hperf _ N⟩
   apply LengthAlgebra.length_eq_of_quotient_almost_iso
     (Ideal.span {(p : CompletedTower A t p) ^ N})
     (perfectoidIdeal (CompletedTower A t p) p hperf (algebraMap A (CompletedTower A t p) g))

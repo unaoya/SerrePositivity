@@ -25,7 +25,7 @@ theorem prop247_aic_exists_rank_comparison_data
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     (hAIC : IsAbsolutelyIntegrallyClosed R)
     (hExcision : ∀ (B : Type u) [CommRing B], IsIntegralPerfectoid B p →
-      IsAbsolutelyIntegrallyClosed B → KLFiniteComparisonExcision B p)
+      IsAbsolutelyIntegrallyClosed B → BhattScholze.KLFiniteComparisonExcision B p)
     (g : R) (hetale : letI := GenericEtale.awayAlgebra R S g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap R S g)))
     (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom) :

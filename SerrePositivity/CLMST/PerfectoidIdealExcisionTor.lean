@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
-public import SerrePositivity.CLMST.PerfectoidIdealTorTransport
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 
 /-! # Tor transport from an actual excision square
 
@@ -34,6 +34,6 @@ theorem perfectoidIdeal_TorInput_iff_of_isPullback
     hR f l r b hPB hC g hg
   exact torCoefficientIdeal_eq_zero_iff_of_almost_comparison f.toLinearMap
     (perfectoidIdeal R p hR g) hk hc N ((p : R) ^ k) hN
-    (perfectoidIdeal_mod_power_idempotent R p hR g k) i
+    (BhattScholze.perfectoidIdealMod_idempotent R p hR g k) i
 
 end SerrePositivity.CLMST

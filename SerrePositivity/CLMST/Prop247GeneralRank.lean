@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CLMST.Prop247AndreBase
+public import SerrePositivity.BhattScholze.Andre.TorDescent
 public import SerrePositivity.CLMST.Prop247RankData
 public import SerrePositivity.CLMST.Prop247CoveredDescent
 public import SerrePositivity.CommutativeAlgebra.Localization.EtaleAway
@@ -27,7 +27,7 @@ theorem prop247_exists_generalRank_descent_data
     [Algebra R S] [Algebra R C] [Module.Finite R S] [Algebra.FinitePresentation R S]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
     (hExcision : ∀ (B : Type u) [CommRing B], IsIntegralPerfectoid B p →
-      IsAbsolutelyIntegrallyClosed B → KLFiniteComparisonExcision B p)
+      IsAbsolutelyIntegrallyClosed B → BhattScholze.KLFiniteComparisonExcision B p)
     (f : S →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom)
     (hbounded : ∃ N : ℕ, ∀ n : ℕ, ∀ s : S,
       (p : S) ^ n * s = 0 → (p : S) ^ N * s = 0)
@@ -56,7 +56,7 @@ theorem prop247_exists_generalRank_descent_data
         ∃ q : ℕ, moduleMapConeScalar R f.toLinearMap (g ^ q) = 0 ∧
           (∀ x : f.toLinearMap.ker, g ^ q • x = 0) ∧
           (∀ y : C ⧸ f.toLinearMap.range, g ^ q • y = 0) := by
-  obtain ⟨B, hB, hRB, hperf, hAIC, hflat⟩ := prop247_exists_andre_descent_base R p hR
+  obtain ⟨B, hB, hRB, hperf, hAIC, hflat⟩ := BhattScholze.exists_andre_descent_base R p hR
   letI := hB
   letI := hRB
   let A := B ⊗[R] S

@@ -5,7 +5,7 @@ public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
 public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Graded
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
-public import SerrePositivity.CLMST.PerfectoidIdealCompletedMul
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 
 /-! # pで割れない巡回商への全射性定理の適用条件
 
@@ -85,7 +85,7 @@ theorem toPerfectoidization_cyclic_surjective_of_not_dvd
         (Submodule.fg_span_singleton (algebraMap A (CompletedTower A t p) g))
     Function.Surjective (toQuotientPerfectoidization (CompletedTower A t p)
         (Ideal.span {algebraMap A (CompletedTower A t p) g}) p hperf) := by
-  exact perfectoidIdeal_quotientMap_surjective (CompletedTower A t p) p hperf
+  exact BhattScholze.perfectoidIdeal_quotientMap_surjective (CompletedTower A t p) p hperf
     (algebraMap A (CompletedTower A t p) g)
 
 end SerrePositivity.CLMST

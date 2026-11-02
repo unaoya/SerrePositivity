@@ -32,9 +32,9 @@ theorem tensor_injective_and_exists_pow_annihilates_coker
     (hg : IsSMulRegular D (algebraMap A D g)) (hp : IsSMulRegular D (p : D))
     (hEtale : let _ := GenericEtale.awayAlgebra A D g
       Algebra.Etale (Localization.Away g) (Localization.Away (algebraMap A D g))) :
-    Function.Injective (perfectoidizationModuleMap R (R ⊗[A] D) p hR) ∧
+    Function.Injective (BhattScholze.perfectoidizationModuleMap R (R ⊗[A] D) p hR) ∧
       ∃ N : ℕ, ∀ x : (Perfectoidization R (R ⊗[A] D) p hR) ⧸
-        (perfectoidizationModuleMap R (R ⊗[A] D) p hR).range,
+        (BhattScholze.perfectoidizationModuleMap R (R ⊗[A] D) p hR).range,
         (algebraMap A R g ^ N) • x = 0 := by
   have hregular := isSMulRegular_tensorProduct_of_flat A R D g hg
   have hp' : IsSMulRegular (R ⊗[A] D) (p : R ⊗[A] D) := by
