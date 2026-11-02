@@ -227,6 +227,7 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-II-06 完全 site の余積を B ⊗̂_A B′ とすると S 構造射の一致が失われる（S = F_p[t] の反例） | 致命 | **訂正済み**（a5-design §2.1：Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd（Cor 7.3 の普遍性）を Lemma 4.8 の圏同値で完全 site へ。flat 被覆の相対 Čech 項（G-A5-5）とは区別。`perfectSite_cechNerveData`） |
 | W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionLeg`） |
 | W9-II-08 D45 改訂と旧「離散のみ・系 4 なし」の併存 | 要修正 | 訂正済み（a5-design 冒頭・§0・§1・§6、骨組みの概要・規約、本表の D45〜D52 行） |
+| W9-II-09 S̃ は完備 filtered 余極限を保たない（完備化で現れる元の Y 変数） | 致命 | **訂正済み**（a5-design §3.1 (iv′)・§3.2・D51・G-A5-18：S̃ は弱始対象用に限り、filtered 余極限は完備化前の代数的根添加 E(S_alg)^∧_p と「flat semiperfectoid 被覆の取り替えで Čech 計算不変」で。`rootClosure_filteredColimit` 撤回、`algebraicRootClosure*`） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

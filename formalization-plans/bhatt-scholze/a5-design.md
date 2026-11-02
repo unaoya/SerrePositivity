@@ -114,8 +114,10 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 - S̃ の構成（D51）：S_0 = S、S_{k+1} = (S_k⟨X_s, Y_s : s ∈ S_k⟩/(s − X_s^p − pY_s))^∧、S̃ = (colim_k S_k)^∧。
   (i) 任意の perfectoid T と S → T は S̃ → T に延びる（帰納的に：s ↦ t、y^p ≡ t mod p の y を選び（Frobenius 全射）、X_s ↦ y、Y_s ↦ (t − y^p)/p の
   任意の原像）。(ii) S̃/p は semiperfect（各元は次の段で p 乗根をもつ）。p 完備な R 代数で mod p semiperfect なら semiperfectoid（G-A5-14、
-  [BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ が全射で R ⊗̂ W(S̃^♭) は perfectoid）。(iii) 濃度 ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ。(iv) S ↦ S̃ は関手的で filtered 余極限と
-  可換（§3.2 で使う）。
+  [BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ が全射で R ⊗̂ W(S̃^♭) は perfectoid）。(iii) 濃度 ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ。(iv) S ↦ S̃ は関手的。
+  **（iv′）完備化した filtered 余極限とは可換でない（W9-II-09 で訂正、以前の主張は偽）**：完備化で初めて現れる元 s（例：R = Z_p[p^{1/p^∞}]^∧、
+  S_n = R⟨t_1..t_n⟩、S = (colim S_n)^∧、s = Σ p^j t_j）に付く独立な変数 Y_s は有限段からの比較射の像に入らず、(colim_n S̃(S_n))^∧ → S̃(S) は
+  エピ射ですらない。S̃ の用途は弱始対象（と濃度管理）に限る。filtered 余極限の段では §3.2 の整合する被覆 E を使う。
 - S̃_perfd（Cor 7.3 の普遍 perfectoid 環。§3.4 で Δ_{S̃,perf}/d と一致）は `PerfUnder_u p S`（Type u）でも κ 側の site でも弱始：S → T を S̃ → T に
   延ばし、普遍性で S̃_perfd → T。
 - S3（脚注 10）：弱始対象の Čech 余脈体で lim_{Perfd_{S/}} T = Tot((S̃^{⊗_S •+1})_perfd)。Perfd_{S/} の余積は (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ は
@@ -125,9 +127,15 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 ### 3.2 filtered 余極限（原典 (2)）
 
 - 左辺 S ↦ Δ_{S,perf}：A2 の Δ は sifted 余極限を保ち、colim_φ と (p,d) 完備化は（完備化した）filtered 余極限と可換。
-- 右辺 S ↦ lim_{Perfd_{S/}} T = Tot((S̃_S^•)_perfd)：S ↦ S̃_S は filtered 余極限と可換（各段が有限型の構成＋完備化）。semiperfectoid の (−)_perfd
-  （Cor 7.3）は（完備化した）filtered 余極限と可換（普遍性）。Tot は一様に coconnective（ここでは離散）な余単体的対象では filtered 余極限と可換
-  （H^k(Tot) = H^k(Tot_{≤k+1})、G-A5-2）。最後に (p,d) 完備化（紙 3）。
+- 右辺（**W9-II-09 で書き直し**）：S̃ の連続性は使えないので、図式に整合する被覆を**完備化前に**作る（G-A5-18）：通常の環 C に対し
+  E_0(C) = C、E_{k+1}(C) = E_k(C)[X_a, Y_a : a ∈ E_k(C)]/(a − X_a^p − pY_a)、E(C) = colim_k E_k(C)（途中で完備化しない）。E は**通常の環の** filtered
+  余極限と可換（添字の元も関係式の有限個の演算も有限段から来る）。filtered 図式 S_i に対し S_alg := colim_i S_i、S = S_alg^∧ とし、S_i の被覆を E(S_i)^∧_p、
+  S の被覆を **E(S_alg)^∧_p**（E(S)^∧_p と同一視しない）に選ぶと、後者は前者の完備 filtered 余極限。各段は Y 変数上の X のモニック関係で自由な拡大なので
+  p 完備忠実平坦、mod p の根の議論で semiperfectoid（G-A5-14）。原典 p.65 の「任意の flat semiperfectoid 被覆 S → S̃ で同じ Čech–Alexander 計算ができる」
+  に沿い、右辺 lim_{Perfd_{S/}} T を**どの flat semiperfectoid 被覆からも**同じ Tot（(被覆の S 上のテンソル冪)_perfd）で計算できることを示す（紙 3′：
+  被覆を取り替えたときの Čech 計算の一致。弱始対象の場合（§3.1）と、flat 被覆の場合の G-A5-5 の層性との関係を整理）。
+  semiperfectoid の (−)_perfd（Cor 7.3）は（完備化した）filtered 余極限と可換（普遍性）。Tot は一様に coconnective（ここでは離散）な余単体的対象では
+  filtered 余極限と可換（H^k(Tot) = H^k(Tot_{≤k+1})、G-A5-2）。最後に (p,d) 完備化（紙 3）。
 - よって S = (colim S_i)^∧（S_i は π_0 が位相的有限生成）に帰着し、以下 S は R⟨X_1,…,X_r⟩ → S（π_0 で全射）をもつとする。
 
 ### 3.3 Lemma 8.6 による降下（原典 (3)）
@@ -199,6 +207,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 | G-A5-14 | p 完備な R 代数で mod p semiperfect ⇒ semiperfectoid（θ 全射、[BMS19, Rem 4.22]）；perfectoid の商・完備テンソル T₁ ⊗̂_S T₂ の semiperfectoid 性 | 既存の Semiperfectoid（要確認） | §3.1・§3.4 |
 | G-A5-15 | de Rham 比較（Thm 6.4）の T = R⟨X⟩・mod p の形、E∞ 代数として、T → T_∞ と両立 | なし（A1 は HT まで） | §3.5 |
 | G-A5-16 | U : CAlg_R → D(R) が極限の錐を保ち反映する | Sheaves/CAlgValued の `forget_isLimitCone`・`forget_reflects_isLimitCone` | §2.3 |
+| G-A5-18 | **図式に整合する flat semiperfectoid 被覆**（W9-II-09）：完備化前の代数的な根添加 E(C)（通常の filtered 余極限と可換）、E(S_alg)^∧_p の p 完備忠実平坦性と semiperfectoid 性、flat semiperfectoid 被覆の取り替えで Čech 計算が不変 | なし | §3.2 |
 | G-A5-17 | perfectoid の射 R → R_1 と R_1 代数 S で Δ_{S/A} ≃ Δ_{S/A_1}（比較写像は (4) と乗法、HT の gr で ∧^i L_{S/R} ≃ ∧^i L_{S/R_1}、L_{R_1/R}^∧ = 0、Nakayama）。Prop 7.10 の「R によらない」の導来版 | A2-3・A2-4 の隣（なし） | §3.4 |
 
 ## 5. 原典との差
@@ -211,7 +220,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 | D48 | semiperfectoid の場合の「R を R⟨Y^{1/p^∞}⟩ に替える」 | 取り下げ（決定 4、原典どおり）。原典 Prop 7.10 の証明と同じ理由（余接複体が変わらない）を G-A5-17 として定理にし、§3.4 (β) で使う | 差なし |
 | D49 | descendable は [Mat16] を引用 | [Mat16, Def 3.18] の thick ⊗-ideal で定義し、index の判定は定理 | 引用を定義と定理に（決定項目 2） |
 | D50 | Lemma 8.6 は de Rham 比較（Thm 6.4）を使う | Thm 6.4 の多項式・mod p の特別な場合を定理として置く（G-A5-15） | 特別な場合の定理（決定項目 3） |
-| D51 | S̃ は超限帰納 | 全元を一度に添加する ω 段の帰納 | 同じ対象（原典 "repeating this transfinitely"） |
+| D51 | S̃ は超限帰納 | 全元を一度に添加する ω 段の帰納。**用途は弱始対象と濃度管理に限る**（完備 filtered 余極限は保たない、W9-II-09。filtered 余極限の段は G-A5-18 の E） | 同じ対象（原典 "repeating this transfinitely"） |
 | D52 | Cor 7.3 との一致は Prop 8.5 の系 | 証明 (4) がそのもの。既存の普遍 perfectoid 環を R′ として使う | 同じ |
 
 ## 6. 単位と順序
@@ -263,8 +272,10 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 1. Perfd_{S/} の余積が (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ が semiperfectoid、Cor 7.3 の普遍性）。W9 で ○。完全 site の余積は**これを Lemma 4.8 で移したもの**であり、
    A 上の完備テンソルではない（W9-II-06 の反例）。
-2. S̃ の (i)〜(iv)（§3.1）。
+2. S̃ の (i)〜(iv)（§3.1）。W9 で (i)(ii)(iii)・関手性は ○、完備 filtered 余極限との可換性は ×（W9-II-09、撤回）。
 3. §3.2 の完備化と Tot の順序、Tot_{≤k} と filtered 余極限の交換。
+3′. §3.2 の整合する被覆 E(S_alg)^∧_p：p 完備忠実平坦・semiperfectoid・filtered 余極限との可換、そして flat semiperfectoid 被覆の取り替えで
+   Čech 計算（各項の普遍 perfectoid 化・Tot・(p,d) 完備化）と RΓ の比較射が変わらないこと（W9-II-09 の修復案の残件）。
 4. §3.3 右辺：L_n の左随伴性と始性、極限の交換。
 5. §3.4 (β)：G-A5-17 の比較写像が HT filtration と両立し gr で余接複体の射を誘導すること、perfectoid の間で L^∧ = 0。(γ)（HT の段）。
 6. §3.5：完備性による底変換の正当化（G-A5-6 の形）、A/(p, φ^{-1}(d)) ≅ R/p、一変数 Cartier の分裂、(∗) の分解。

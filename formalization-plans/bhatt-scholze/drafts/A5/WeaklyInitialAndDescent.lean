@@ -72,11 +72,35 @@ theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) 
 使われ方：κ 側の site の対象になること（D47）。 -/
 theorem rootClosure_cardinal_le : True := by trivial
 
-/-- 概要：(iv) S ↦ S̃ は関手的で filtered 余極限と可換（各段が有限型の構成＋完備化）。
+/-- 概要：(iv) S ↦ S̃ は関手的（段ごとに X_a ↦ X_{f(a)}、Y_a ↦ Y_{f(a)}）。
+**完備化した filtered 余極限とは可換でない**（W9-II-09：完備化で現れる元に付く独立な Y 変数が有限段から来ない。反例 R = Z_p[p^{1/p^∞}]^∧、S_n = R⟨t_1..t_n⟩、
+s = Σ p^j t_j）。旧 `rootClosure_filteredColimit` は撤回。filtered 余極限の段は下の `algebraicRootClosure` を使う。
 方針：段ごとの関手性。
-規約：完備化した余極限。
-使われ方：§3.2。 -/
-theorem rootClosure_filteredColimit : True := by trivial
+規約：—
+使われ方：弱始対象の関手性のみ。 -/
+theorem rootClosure_functorial : True := by trivial
+
+/-- 概要：G-A5-18：完備化前の代数的な根添加 E(C)：E_0 = C、E_{k+1} = E_k[X_a, Y_a : a ∈ E_k]/(a − X_a^p − pY_a)、E = colim_k E_k（途中で完備化しない）。
+通常の環の filtered 余極限と可換。各段は Y 変数上の X のモニック関係で自由な拡大。
+方針：`MvPolynomial` の商の余極限。
+規約：通常の環。
+使われ方：filtered 図式に整合する被覆 E(S_alg)^∧_p。 -/
+def algebraicRootClosure (C : Type u) [CommRing C] : Type u := sorry
+theorem algebraicRootClosure_filteredColimit : True := by trivial
+
+/-- 概要：S = S_alg^∧（S_alg = colim_i S_i）の被覆 E(S_alg)^∧_p：p 完備忠実平坦、semiperfectoid（mod p の根、G-A5-14）、E(S_i)^∧_p の完備 filtered 余極限。
+E(S)^∧_p とは同一視しない。
+方針：各段の自由性と完備化。
+規約：—
+使われ方：§3.2 の右辺の可換性。 -/
+theorem algebraicRootCover_properties : True := by trivial
+
+/-- 概要：flat semiperfectoid 被覆 S → S̃′ の取り替えで Čech 計算（(S̃′^{⊗_S •+1})_perfd の Tot、(p,d) 完備化）と lim_{Perfd_{S/}} O の比較射は変わらない
+（原典 p.65「任意の flat semiperfectoid 被覆で同じ Čech–Alexander 計算」）。
+方針：紙 3′（W9-II-09 の修復案の残件）。
+規約：—
+使われ方：`limit_perfectSite_filteredColimit`。 -/
+theorem cech_independent_of_flatSemiperfectoidCover : True := by trivial
 
 /-- 概要：弱始対象 S̃_perfd ∈ `PerfUnder_u p S`（A5-2 の普遍 perfectoid 環 R′(S̃)、Prop 8.5 の系 3 で Δ_{S̃,perf}/d）。
 方針：`universalPerfectoidRing` を S の上の環として。
@@ -120,8 +144,9 @@ theorem prismaticPerfection_filteredColimit : True := by trivial
 使われ方：右辺の可換性。 -/
 theorem tot_coconnective_filteredColimit : True := by trivial
 
-/-- 概要：右辺：S ↦ lim_{Perfd_{S/}} T = Tot((S̃_S^•)_perfd) は filtered 余極限と可換（(iv)、semiperfectoid の (−)_perfd の可換性、G-A5-2、完備化）。
-方針：上の三つ。紙 3（完備化と Tot の順序）。
+/-- 概要：右辺：S ↦ lim_{Perfd_{S/}} T は（完備化した）filtered 余極限と可換：図式に整合する被覆 E(S_alg)^∧_p の Tot で計算し
+（`algebraicRootCover_properties`、`cech_independent_of_flatSemiperfectoidCover`。旧 (iv) は使わない、W9-II-09）、semiperfectoid の (−)_perfd の可換性、G-A5-2、完備化。
+方針：上の三つ。紙 3（完備化と Tot の順序）、紙 3′。
 規約：—
 使われ方：有限生成への帰着。 -/
 theorem limit_perfectSite_filteredColimit : True := by trivial
