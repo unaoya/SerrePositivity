@@ -4,13 +4,12 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicSource
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
@@ -18,7 +17,7 @@ public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Localization
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionScalarConeComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 
 /-!
 # 無限根源の完備化比較と純性

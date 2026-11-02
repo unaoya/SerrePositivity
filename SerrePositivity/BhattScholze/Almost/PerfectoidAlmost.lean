@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.BhattScholze.Almost.Lemma103
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeScalar
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChange
 public import SerrePositivity.CategoryTheory.ExactDerivedTStructure
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorModuleAction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
 
 /-!

@@ -11,9 +11,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import Mathlib.LinearAlgebra.Finsupp.VectorSpace
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 
 /-!
 # 根添加の源の導来還元と完備性

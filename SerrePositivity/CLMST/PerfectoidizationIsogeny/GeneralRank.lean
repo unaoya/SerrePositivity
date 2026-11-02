@@ -93,7 +93,7 @@ theorem exists_generalRank_descent_data
   have hU := uniform_of_standard_fixed_cone R S B C P p hR hperf f hf hbounded
     g β hβ hflat.1 ⟨q, hq⟩
   exact moduleMapConeIsogeny_descent (algebraMap R B) (p : R) hflat f.toLinearMap
-    (cone_isComplete_of_perfectoid_target R S p hR C hf.1 f.toLinearMap) g hU
+    (cone_isComplete_of_integralPerfectoid_target R S p hR C hf.1 f.toLinearMap) g hU
 
 end SerrePositivity.CLMST
 

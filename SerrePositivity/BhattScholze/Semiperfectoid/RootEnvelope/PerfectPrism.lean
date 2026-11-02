@@ -4,11 +4,9 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPowerCokernelModel
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.RawCompletion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import SerrePositivity.BhattScholze.Andre.Perfection.DeltaAlgebra

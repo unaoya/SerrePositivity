@@ -4,7 +4,7 @@ public import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
 
 /-! # perfectoid イデアルによる商の完備な積と Tor の入力の移送

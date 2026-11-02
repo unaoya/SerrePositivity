@@ -5,7 +5,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRoot
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
