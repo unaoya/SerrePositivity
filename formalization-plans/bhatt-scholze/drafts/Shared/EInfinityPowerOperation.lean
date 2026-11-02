@@ -1,4 +1,4 @@
--- 将来の置き場所：EInfinity の上（E∞-F_p 代数の冪作用。BS 固有ではない。置き場所と担当は調整役、M12・M13 と同じ扱い）
+-- 将来の置き場所：SerrePositivity.EInfinity.PowerOperation.*（新設、BarrattEccles・Operad の隣。調整役の決定、main 431c40741、M14。担当は A4 の中身を書く段階で決める）
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md G-A4-1。基準コミット 972bb7f53。ビルドしない。
 module
 

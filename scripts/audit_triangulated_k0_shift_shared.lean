@@ -1,5 +1,5 @@
 import SerrePositivity.CategoryTheory.TriangulatedK0
-import SerrePositivity.KTheory.ResolutionClass
+import SerrePositivity.KTheory.Comparison.ResolutionClass
 import Mathlib.Util.AssertNoSorry
 
 assert_no_sorry SerrePositivity.TriangulatedK0.mk_shift

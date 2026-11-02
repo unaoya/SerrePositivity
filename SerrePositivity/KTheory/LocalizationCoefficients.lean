@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KTheory.LocalizationKernelSupport
+public import SerrePositivity.KTheory.G0.Localization
 public import SerrePositivity.KTheory.CoefficientExactness
-public import SerrePositivity.KTheory.G0Coefficients
+public import SerrePositivity.KTheory.Coefficients
 public import Mathlib.RingTheory.Flat.TorsionFree
 
 /-! # Supported localization after extending coefficients -/

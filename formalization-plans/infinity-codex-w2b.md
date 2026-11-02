@@ -99,3 +99,86 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 1. `verify_runner.py`：`VERIFY_MEMORY_GB` の既定を 45 → **40**（IF-W0-4 の実測 50.8 GB と、IF-W2a-2 の verify の最大同時 RSS 37.5 GB・待ち 2 回から）。`scripts/refactor/README.md` の「既定の並列数（6）と予算」を直す。試験の既定値も合わせる。
 2. **Lake キャッシュの掃除の方針**（`scripts/refactor/README.md` に書く。実行はしない）：11-02 時点で `~/.cache/lake` は 22 GB・成果物 331,250 本、空き 455 GB。`lake cache clean` は**空きが 150 GB を切ったときだけ**、全ビルドのない時刻に、全 worktree が温まった状態で行い、直後に main で `lake build` を走らせて現行の成果物を登録し直す。区切りごとの定期的な掃除はしない（古い版が残っても害は容量だけ）。
 3. `merge_modules.py --check` の循環検出と、`test_merge_modules.py` の既存の失敗（`test_snapshot_cli_delegates_and_ignores_module`）は **DG の道具なので DG に任せる**（DG-W3 §8）。∞ は触らない。
+
+## 8. 追記（2026-11-02 夜、草案の停止（§5-2）への回答：集計条件 3 点と、試験の既存失敗 1 件）
+
+**受領**：X 2,094・C 33、集計 3 通り（`w2b-r73-preflight-stop.json`）、§7 完了（runner 40 GB・README、ed1981cdd）。
+
+1. **監査の除外**：`scripts/audit/` だけでなく **`scripts/audit_*.lean`・`scripts/audit/*checks*` を含む全監査を除外**する。監査は利用者ではなく、再生成する側。
+2. **C を利用者に数えるか**：**数える**（A 368・B 1,726）。archive する B を誰かが import していてはいけないので、C（PiCriterion）が使う B のモジュールは A 側。ただし、**外側の利用者が C だけ**のモジュール（368 − 365 ＝ 3 本の見込み）は中核の層ではなく **C と一緒に `Derived/PiCriterion/` へ移す**（PiCriterion の支え。中核に不要な一般論を増やさない）。対象 JSON では `dest` を `Derived/PiCriterion/` にし、`note` に「利用者は PiCriterion のみ」と書く。
+3. **「A の逆閉包が中核外へ出たら停止」の意図**：書き方が悪かった。意図は **順方向の依存閉包**（A の各モジュールが import で辿り着く集合）が中核の層・Foundation・Mathlib の中に収まること（KST・DG・Derived・EInfinity・モデル圏の HA に届かないこと）。**A の利用者が中核の外（KST 35 辺・Derived 33 辺・EInfinity 3 辺）にあるのは問題ない**。利用者の import 行を新しい場所へ書き換えるだけ（所有範囲 §2 の「外側は import 行だけ」）。§5-2 を「A の**依存**閉包が中核の外へ出る」と読み替える。
+4. **試験の既存失敗（∞ の道具）**：main で `test_layer_check.LayerTests.test_foundation_negative_rank_and_prefix_scope` が失敗する（`layers.json` に DG-W2(b) が **DG 層を rank −1** で登録したため、「Foundation 以外は rank > −1」の仮定が古くなった）。§7 の道具の回で直す：rank −1 の基盤層が複数あってよい（Foundation・DG）とし、検査は「中核（`core` の層）は rank ≥ 0」に改める。verify には影響しない（Python 試験は gate の外）。
+5. これで §3.0 を再開：A の各モジュールの先（依存閉包から最も低い層）、B の利用者 0 の検査（全監査除外・C を利用者に含めた上で）、C ＋ 支え 3 本の move、R37・R38 の表、validator・dry-run・適用後の模擬 → 停止点 1。
+
+## 9. 追記（2026-11-02 夜、§8 の読み替え後の再停止への回答：§5-2 の最終形は「直接 import」の水準）
+
+**受領**：A 368・B 1,726・C 33、B の利用者 0、支え 3 本（C と合わせて Derived へ 36 本）、R37/R38 の辺 127/139、中核候補 365 本のうち 180 本の依存閉包が中核外 224 モジュールへ到達、試験修正 95f95cde4。
+
+**Claude の確認（11-02 夜、main のソースで）**：PiCriterion を除く FilteredExchange のモジュールで、KST・HA のモデル圏（Quillen・Transfer・Generated・Monoidal・HomotopyFunctionComplex）・DG・EInfinity・Derived・ModelBridge を**直接** import するものは 0。180 本の到達は、既存の中核のモジュールが持つ辺（`HomotopyLimits → KST` 16、`HomotopyLimits → HA` 2。例：`IntervalHomBoundary → KST.Spectra.PointedInterval`）を経由している。これらの辺は現在の基準（W2a の禁止モジュール 166、`layer_check --report` 11-02）に含まれており、**W2c（R69・R70・R56b：KST/Spectra の一般部分を中核へ下ろす）の課題**であって、W2b の停止理由ではない。FilteredExchange はいま F2（中核）にあるので、A を中核の別の層へ動かしても中核全体の禁止閉包は変わらない。
+
+**§5-2 の最終形**（§8-3 を置き換える）：止めるのは次のときだけ。
+
+1. A のモジュールの**直接 import**（prune 後）に、禁止領域（KST・DG・EInfinity・モデル圏の HA・Derived・ModelBridge）か、置き先より上の層があるとき。
+2. 適用後のグラフの模擬で、`layer_check.py --ratchet <基準>` の W1／W2a／W2b の禁止モジュール数・affected core が基準から**増える**とき（A が中核内で動くだけなら増えないはず。増えたら原因の辺を報告）。
+3. 制限つきの層（Core・Kan、`restricted_imports`）に置こうとするモジュールの依存閉包が、その層の許可集合（Core：Simplicial・Foundation・Mathlib、Kan：＋Core）の外へ出るとき。→ そのモジュールは F1 以上に置く（Core・Kan には置かない）。
+
+**置き先の規則**（§1 の「最も低い層」の精密化）：直接 import の層の最大値以上で最も低い層。ただし 3 により、閉包が中核外へ届くモジュールは F1 以上（実際には HL を経由するなら HomotopyLimits 以上になるはず）。
+
+**W2c への引き継ぎ**：180 本とその経由辺（`w2b-section8-forward-closure-stop.json` の `example_paths`・`outside_by_prefix`）を停止点 1 の報告に「W2c の入力」として添える。処置は W2c。
+
+**再開**：置き先の確定 → R37・R38 の表 → validator・dry-run → 適用後の模擬（直接違反・ratchet・`--enforce W2b` の見込み）→ **停止点 1**。
+
+## 10. 追記（2026-11-02 夜、§5-1 の停止への回答：上移動の連鎖は宣言単位で閉じる）
+
+**受領**：R38 で sifted・PΣ を本当に使う HomotopyLimits の上移動候補 6 本・下位利用者の辺 7 本（実参照 4、未検出 3）、R37/R38 の宣言参照表、690 本の採取、180 本は W2c の入力に記録、3ac6cf89d。
+
+**規則**（§1 の (iii) の精密化）：
+
+1. **未検出の 3 辺**（`FiniteCoherentProductNativeLegs → FiniteFamilyOriginalColimitTransport`、`FiniteCoherentProjectionCocones → FiniteProductIndexTransport`、`FullHomColimitDetection → CoYonedaLimitReflection`）：import は不要とみなして**削除**（prune）。確認は内部ビルドで。失敗したら instance・notation 経由の参照なので「あり」に戻して 2 へ。
+2. **実参照のある辺** M → U（U が下位利用者）：U が参照する M の宣言の集合 D_M を取り、snapshot の `used_constants` を**モジュール内で推移的に**辿って、D_M が sifted・PΣ（F2 の定数）に依存するかを判定する。
+   - 依存しない → **M を split**：D_M とそのモジュール内の依存先を `keep`（HomotopyLimits に残す）、残りを `moved`（F2 へ）。これが優先（計画の「一般補題は下の層へ」）。
+   - 依存する → **U も上移動の候補**になる。U の下位利用者について同じ判定を繰り返し、連鎖を閉じる。閉じた集合 S（候補 6 本を含む）を**一群として F2 へ move** してよい条件は、(a) S の外からの利用者がすべて F2 以上か中核の外（KST・Spectra など、import 行の書き換えだけで済む）、(b) |S| ≤ 30 本。(b) を超えるか、(a) に反する利用者（F1・F1B・HL・Stable の、S に入れられないモジュール）が残れば、**そのモジュール名と宣言名を挙げて止める**。
+3. S の置き先は F2 の既存の下位ディレクトリ（`F2/Presentable/` か `F2/Ind/`。PΣ・sifted の正本の隣）。名前空間は変えない（R54）。
+4. 判定の表（辺 → D_M → PΣ 依存の有無 → split／連鎖）を停止点 1 の報告に付ける。
+
+**再開**：上の規則で R38 の処置を確定 → validator・dry-run → 適用後の模擬 → **停止点 1**。
+
+## 11. 追記（2026-11-02 夜、validator と §8 の食い違いへの回答：archive の利用者検査から監査を除く）
+
+**受領**：上移動 12 本（候補 6＋連鎖 2＋独立 4）は `F2/Presentable/` へ、実参照 5 辺はモジュール内で `IsSiftedInfinity` に到達するので split 不要、未検出 3 辺は削除の模擬、validator PASS・増加指標 0、直接違反 297 → 280、禁止モジュール数 1／166／166 不変。R73 の archive 検査は `scripts.audit_infinity_f2` を外側の利用者として数えて FAIL（96fbbab87）。
+
+**判断**：食い違いは validator 側。監査（`scripts/audit/`・`scripts/audit_*.lean`・checks）は利用者ではなく、この束で再生成・書き換える側（§1 の R73、§8-1）。`validate_targets.py` は ∞ の道具なので直してよい：
+
+1. `validate_targets.py` に **`--ignore-importer-prefix <接頭辞>`**（複数可）を加え、archive の利用者検査でその接頭辞のモジュールを数えない。W2b では `scripts.audit`・`scripts.audit_`・`scripts.checks` を渡す。既定は空（従来どおり）。試験 1 件（監査だけが import する archive 対象が通ること、監査以外が import すれば従来どおり FAIL すること）。別コミット（道具）。
+2. 監査の処置を R73 の対象に明記する：`scripts/audit_infinity_f2.lean`（手書きの import 一覧）は B の import 行を**削除**し、A の import 行を新しい場所へ書き換える。`scripts/audit/` の生成分は `make_area_audits.py` の area `infinity_f2_exchange` を削除して再生成。適用後に `--ignore-importer-prefix` **なし**で validator を再実行し、archive の利用者が本当に 0 であることを確かめる（これが本当の検査）。
+3. 未検出 3 辺の削除は内部ビルドで確認（§10-1）。
+
+**再開**：1 を入れて R73 の validator → dry-run → 適用後の全体模擬（直接違反・ratchet・`--enforce W2b` の見込み。280 からどこまで下がるか）→ **停止点 1**（A/B/C と支え、R37・R38 の処置の表、上移動 12 本、下流の見積もり）。
+
+## 12. 追記（2026-11-02 深夜、停止点 1 の承認：ratchet の個別指標は「継承」として受け入れ、基準は W2b の終わりに取り直す）
+
+**受領**：草案完成（R73 move 401・split 4・reimport 9・archive 1,726、R37 move 115・split 1・reimport 1、R38 move 216・split 5・reimport 67、上移動 12 本を含む）、全体模擬で対象の逆向き辺 0・循環 0、直接違反 297 → 21、W1 禁止 1 → 0、W2a/W2b 禁止モジュール 166 → 150、affected core 3,379 → 2,528、ルート閉包 25,028 → 25,005、dry-run 成功、10 分割の静的保存検査 PASS、下流 13,149 本（約 2 時間 11 分）、道具 34f2afa6d、草案 aa95d2f97。
+
+**承認**：草案どおり適用してよい。判断 3 点：
+
+1. **ratchet の個別指標 12 件の増加**（分割先 3 本・入口 3 本の root ごとの禁止閉包）：原因は既存の W2c 経路（HL → KST 16・HL → HA 2）の**継承**であり、新しい禁止辺はない（残る直接違反 21 はすべて既存：HL → KST 16・HL → HA 2・DG → PerfectComplex 3）。全体の禁止集合は減っている。したがって**止めない**。扱い：(a) 停止点 2・3 の報告に 12 件と経由する経路を表で記す、(b) W2b の終わり（verify PASS の後）に ratchet の基準を取り直す（W2a-2 の最終基準と同じ手順）、(c) `layers.json` の例外一覧には**加えない**。
+2. **`--enforce W2b` の意味**（本束での合否）：(a) 中核の層どうしの順序の直接違反 0、(b) 直接の禁止辺が上の 21 本から増えない、(c) 全体の W1／W2a の禁止モジュール数と affected core が増えない。root ごとの指標は W2c までは診断扱い。道具の `--enforce W2b` がこれと違う判定をするなら、(a)〜(c) を検査する形に直す（∞ の道具、別コミット、試験つき）。基準の取り直しで通すのではなく、検査の定義を上の 3 条件にする。
+3. **監査**：`make_area_audits.py` に area がないので、手書きの `scripts/audit_infinity_f2_exchange.lean` を**削除**する（B は archive、A・C は移った先の監査へ）。A と C（支え 3 本を含む）の全モジュールがどれかの監査の一覧に入ることを確かめ、入らないものは移った先の層の監査（生成分なら area の再生成、手書きなら import 行の追加）に加える。verify の監査は自動列挙なので、削除だけで一覧から消える。`w2b-r73-audits.json` の案をこれに合わせる。
+
+**次**：§3.1（キャッシュから復元 → before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド（移動先・分割先・直接の利用者。未検出 3 辺の削除の確認を含む）→ after snapshot → 保存比較）→ **停止点 2**。小さなビルドだけ。**下流 13,149 本と verify は暦 #10 の合図（DG-W3 の後、見込み 11-04）を待つ。**
+
+## 13. 追記（2026-11-03、復元の停止への回答：rsync はやめてキャッシュから、main（1-4 取り込み後）を先に取り込む）
+
+**受領**：§12 の W2b 判定の実装（fc047fd80、18 試験 PASS）、rsync の復元 14 分で終了コード 23（`build/ir/…ModelBifibrantSourceRoofCornerEvaluation.c` の消失、現在は両側に存在）、main と依存先ソース 9 本の差分。
+
+1. **終了コード 23 の扱い**：無害。消失は、同じ時刻に Claude が main で `lake build`（1-4 取り込み後の温め：ルート＋監査対象、11-02 深夜）を走らせていたためで、生成出力が書き直された瞬間に当たった。`warm_build_dir.sh` は DG の道具なので**変えない**（build/ir の許容追加は要らない）。
+2. **復元は rsync ではなくキャッシュから**（IF-W2a-2 で行ったのと同じ：`lake build <根>` で復元、数分）。rsync は「キャッシュにない成果物が要るとき」の予備で、今回は要らない。main から複製した成果物は main の**現在の**ソース（1-4 後）に対応しており、worktree のソースと食い違う（差分 9 本がそれ）。`lake build` の trace 検査がモジュールごとに正しい版を復元するので、複製した `.lake/build` はそのまま置いて `lake build` を走らせればよい。
+3. **main を先に取り込む**：`infra/if-w2b` は 85cb45f1a（1-4 前）から切ってある。**今 main（a682ec32b、1-4 を含む）を merge してから** before snapshot を取る。before ＝ merge 後の状態。1-4 は InfinityCategories を触っていない（Claude が確認）。KST・EInfinity・監査では 6 本（下の一覧）を触っているので、W2b が同じファイルの import 行を書き換える場合は merge で両方を残す。**下流ビルド（#10）の前にもう一度 main（DG-W3 取り込み後）を merge** し、内部ビルドと静的検査を再実行してから下流に入る（DG-W3 は DG の土台を 608 → 48 に統合するので、Derived・KST などの import 行が変わる）。
+4. **再開**：main の merge → キャッシュから復元（`lake build` で before の対象の根）→ before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド → after snapshot → 保存比較 → **停止点 2**。
+   1-4 が触った 6 本：
+   - `scripts/audit/adams.lean`
+   - `scripts/audit/shared.lean`
+   - `scripts/audit_clmst.lean`
+   - `scripts/audit_euler_betti_finite_support.lean`
+   - `scripts/audit_euler_group_shared.lean`
+   - `scripts/audit_triangulated_k0_shift_shared.lean`

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Verdier.Comparison
-public import SerrePositivity.Asymptotic.PaperRankQuotient
+public import SerrePositivity.Asymptotic.Completed
 
 /-! # 完備化と Verdier 商の順序交換正方形の構造
 

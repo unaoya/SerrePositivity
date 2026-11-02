@@ -16,7 +16,8 @@ public import SerrePositivity.DifferentialGraded.Derived.Linear
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Biproducts
 public import SerrePositivity.DifferentialGraded.Derived.IdempotentComplete
 public import Mathlib.CategoryTheory.Triangulated.Adjunction
-public import SerrePositivity.PerfectComplex.KoszulLength
+public import SerrePositivity.HomologicalAlgebra.Complex.StrictlyPerfect
+public import Mathlib.RingTheory.Finiteness.Projective
 public import Mathlib.Algebra.Category.ModuleCat.Biproducts
 public import SerrePositivity.DifferentialGraded.Module.RingComplexFunctor
 public import SerrePositivity.DifferentialGraded.Module.FreeSphereShift
@@ -762,7 +763,9 @@ lemma modulePerfectOver_image_finiteProjective (S : Set D)
     (hA : modulePerfectOver A D S (F.obj (ModuleCat.of A A)))
     (M : ModuleCat.{u} A) [Module.Finite A M] [Module.Projective A M] :
     modulePerfectOver A D S (F.obj M) := by
-  obtain ⟨n, ⟨r⟩⟩ := SerrePositivity.finiteProjective_exists_retract M
+  obtain ⟨n, f, g, -, -, hfg⟩ := Module.Finite.exists_comp_eq_id_of_projective A M
+  let r : Retract M (ModuleCat.of A (Fin n → A)) :=
+    ⟨ModuleCat.ofHom g, ModuleCat.ofHom f, ModuleCat.hom_ext hfg⟩
   let X : Fin n → ModuleCat.{u} A := fun _ => ModuleCat.of A A
   let e : F.obj (ModuleCat.of A (Fin n → A)) ≅ ⨁ (fun j => F.obj (X j)) :=
     F.mapIso (ModuleCat.biproductIsoPi X).symm ≪≫ F.mapBiproduct X

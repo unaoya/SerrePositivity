@@ -3,12 +3,13 @@
 
 方針：BS の統合方式を一般化し、宣言・証明・namespace・variable を保持する。
 規約：--area は統合の所有範囲。外部ファイルは import だけを変更する。
-       --check は git 追跡・順序・scope・private・option を検査する。
+       --check は git 追跡・順序・scope・private・option・統合先の循環を検査する。
        move/split は草案の報告用であり、混在計画の --apply は拒否する。
 使われ方：merge_modules.py plan.json --area SerrePositivity.DifferentialGraded
           --check --max-lines 1500 --report report.md
 保存検査：--snapshot-before before.json --snapshot-after after.json
-          （計画なしでも可）。比較規則は compare_snapshots.py に委譲する。
+          （計画なしでも可）。移動の対応は --module-map map.json で明示する。
+          比較規則は compare_snapshots.py に委譲する。
 """
 from __future__ import annotations
 
@@ -226,6 +227,61 @@ def render_group(entry, parts, rename):
     return out, imps
 
 
+
+def check_target_cycles(targets, origins):
+    """Reject every cyclic SCC of the rendered target-to-target import graph.
+
+    origins[(target, dependency)] retains all source import edges, including
+    imports naming an already-final destination. Intra-target imports have been
+    removed by render_group and are deliberately absent from this graph.
+    """
+    graph = {target: set() for target in targets}
+    reverse = {target: set() for target in targets}
+    for source, dependency in origins:
+        graph[source].add(dependency)
+        reverse[dependency].add(source)
+    # Iterative Kosaraju: long acyclic plans must not hit Python's recursion limit.
+    seen, finished = set(), []
+    for start in sorted(graph):
+        if start in seen:
+            continue
+        seen.add(start)
+        pending = [(start, iter(sorted(graph[start])))]
+        while pending:
+            node, children = pending[-1]
+            child = next(children, None)
+            if child is None:
+                finished.append(node)
+                pending.pop()
+            elif child not in seen:
+                seen.add(child)
+                pending.append((child, iter(sorted(graph[child]))))
+    seen, cycles = set(), []
+    for start in reversed(finished):
+        if start in seen:
+            continue
+        component, pending = set(), [start]
+        seen.add(start)
+        while pending:
+            node = pending.pop()
+            component.add(node)
+            for parent in reverse[node] - seen:
+                seen.add(parent)
+                pending.append(parent)
+        if len(component) > 1:
+            cycles.append(sorted(component))
+    if cycles:
+        lines = ['target import cycle(s):']
+        for component in sorted(cycles):
+            lines.append('  targets: ' + ', '.join(component))
+            for source in component:
+                for dependency in sorted(graph[source] & set(component)):
+                    lines.append(f'    {source} -> {dependency}')
+                    lines.extend(f'      original: {a} -> {b}'
+                                 for a, b in sorted(origins[source, dependency]))
+        raise ValueError('\n'.join(lines))
+
+
 def analyze(root, plan, areas, scope, max_lines=None):
     if not isinstance(plan,list): raise ValueError('targets must be an array')
     tracked = git_files(root)
@@ -269,6 +325,7 @@ def analyze(root, plan, areas, scope, max_lines=None):
         originals[rel]=(root/rel).read_bytes().decode('utf-8')
         graph[rel[:-5].replace('/','.')]=imports(originals[rel])
     built, rows, warnings = {}, [], []
+    target_origins = defaultdict(set)
     for row in merge:
         dest = row['module']; order={s:i for i,s in enumerate(row['sources'])}
         parts=[parse_part(s,originals[module_path(s)],row.get('private_renames',{}).get(s)) for s in order]
@@ -287,11 +344,17 @@ def analyze(root, plan, areas, scope, max_lines=None):
         for name,values in options.items():
             if len(values)>1: local.append(f'set_option {name}: '+', '.join(values)+' (isolated by source section)')
         built[dest],imps=render_group(row,parts,sources)
+        for part in parts:
+            for dependency in part.imports:
+                mapped = sources.get(dependency, dependency)
+                if mapped in dests and mapped != dest:
+                    target_origins[dest, mapped].add((part.module, dependency))
         lines=len(built[dest].splitlines())
         if max_lines and lines>max_lines: local.append(f'max-lines: {lines} > {max_lines}')
         consumers=sorted(n for n,deps in graph.items() if n not in order and deps & order.keys())
         rows.append({'module':dest,'sources':len(parts),'source_lines':sum(len(p.text.splitlines()) for p in parts),'lines':lines,'imports':len(imps),'importers':len(consumers),'warnings':local})
         warnings.extend(local)
+    check_target_cycles(dests, target_origins)
     edits={}
     for rel,text in originals.items():
         mod=rel[:-5].replace('/','.')
@@ -361,11 +424,15 @@ def main(argv=None):
     mode=p.add_mutually_exclusive_group();mode.add_argument('--check',action='store_true');mode.add_argument('--apply',action='store_true')
     p.add_argument('--max-lines',type=int);p.add_argument('--report',type=Path)
     p.add_argument('--snapshot-before',type=Path);p.add_argument('--snapshot-after',type=Path)
+    p.add_argument('--module-map',type=Path,help='explicit before-to-after module/declaration map for snapshots')
     a=p.parse_args(argv)
     try:
         if bool(a.snapshot_before)!=bool(a.snapshot_after): raise ValueError('both snapshot paths are required')
+        if a.module_map and not a.snapshot_before: raise ValueError('--module-map requires snapshots')
         if a.snapshot_before:
-            rc=subprocess.call([sys.executable,str(Path(__file__).with_name('compare_snapshots.py')),str(a.snapshot_before),str(a.snapshot_after)])
+            command=[sys.executable,str(Path(__file__).with_name('compare_snapshots.py')),str(a.snapshot_before),str(a.snapshot_after)]
+            if a.module_map: command.extend(['--module-map',str(a.module_map)])
+            rc=subprocess.call(command)
             if rc: return rc
         if a.plan is None:
             if not a.snapshot_before: raise ValueError('plan or snapshots required')

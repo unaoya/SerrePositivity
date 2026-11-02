@@ -71,6 +71,12 @@ variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]
 使われ方：`PrismOver` の対象の条件、本質的小ささ。 -/
 def cutoff : Cardinal.{u} := (Cardinal.mk A + Cardinal.mk R + ℵ₀) ^ ℵ₀
 
+/-- 概要：許容する切り落とし：κ ≥ cutoff かつ κ^{ℵ₀} = κ（完備テンソル・完備化・可算反復で閉じるための条件。W9-I-11：κ ≥ cutoff だけでは κ^{ℵ₀} = κ は従わない）。
+方針：site の公理（押し出しが切り落としに残る）と κ 比較の定理はこの仮定で述べる。`cutoff` 自身は満たす。
+規約：—
+使われ方：`flatTopology_refine`、`prismaticCohomology_cutoff_invariant`。 -/
+def IsAdmissibleCutoff (κ : Cardinal.{u}) : Prop := cutoff P R ≤ κ ∧ κ ^ ℵ₀ = κ
+
 /-! ## 対象と射（Def 4.1 の圏、環の側） -/
 
 /-- 概要：(R/A)_Δ の対象（環の側）：(A,(d)) 上の有界向き付き prism (B, dB) と A/d 代数の射 R → B/dB。濃度 ≤ κ。
@@ -167,16 +173,17 @@ def PrismOverSmall.IsFaithfullyFlat {X Y : PrismOverSmall P R κ} (f : X ⟶ Y) 
 使われ方：Δ_{R/A} の RΓ の位相。 -/
 def flatTopology : GrothendieckTopology (PrismaticSite P R κ) :=
   sInf { J | ∀ {X Y : PrismOverSmall P R κ} (f : X ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f →
-    Sieve.generate (Presieve.singleton f.op) ∈ J (Opposite.op Y) }
+    Sieve.generate (Presieve.singleton f.op) ∈ J (Opposite.op X) }
+-- W9-I-10：f : X → Y（環 B_X → B_Y）の opposite f.op : op Y → op X が生成する篩は op X 上（被覆先は Spf(B_X)）。
 
-/-- 概要：Cor 3.12 前半：平坦位相の被覆篩は、忠実平坦な単射の篩で refine できる（忠実平坦な射の押し出しが存在し忠実平坦）。
-方針：押し出しは完備テンソル (B′ ⊗̂^L_B C)^∧ で、Lemma 3.7(2) により有界 prism、B′ 上忠実平坦。
-規約：D22。この定理により忠実平坦な単射の族は Mathlib の `Coverage` をなし、`flatTopology` はその `toGrothendieck`。
-使われ方：層条件を生成系（忠実平坦な単射）で確かめてよいこと（S1 の `isSheaf_toGrothendieck_iff`）。 -/
-theorem flatTopology_refine :
+/-- 概要：Cor 3.12 前半：平坦位相の被覆篩は、忠実平坦な**単一の射**の篩で refine できる（忠実平坦な射の押し出しが存在し忠実平坦）。
+方針：押し出しは完備テンソル (B′ ⊗̂^L_B C)^∧ で、Lemma 3.7(2) により有界 prism、B′ 上忠実平坦。κ は `IsAdmissibleCutoff`（押し出しが切り落としに残る、W9-I-11）。
+規約：D22。この定理により忠実平坦な単一射の族は Mathlib の `Coverage` をなし、`flatTopology` はその `toGrothendieck`。被覆先 U を固定し、単一射の presieve は U 上（W9-I-10）。
+使われ方：層条件を生成系（忠実平坦な単一射）で確かめてよいこと（S1 の `isSheaf_toGrothendieck_iff`）。 -/
+theorem flatTopology_refine (hκ : IsAdmissibleCutoff P R κ) :
     ∃ K : Coverage (PrismaticSite P R κ), K.toGrothendieck = flatTopology P R κ ∧
-      ∀ {U} (Rp : Presieve U), Rp ∈ K.covering U →
-        ∃ (X Y : PrismOverSmall P R κ) (f : X ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f ∧
+      ∀ {U : PrismaticSite P R κ} (Rp : Presieve U), Rp ∈ K.covering U →
+        ∃ (Y : PrismOverSmall P R κ) (f : U.unop ⟶ Y), PrismOverSmall.IsFaithfullyFlat P R κ f ∧
           Rp = Presieve.singleton f.op := by
   sorry -- A0-3d（Cor 3.12 (a)）。押し出しの存在は完備テンソルと Lemma 3.7(2)
 

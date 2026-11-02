@@ -1,14 +1,39 @@
 module
+
 public import SerrePositivity.KTheory.K0Localization
-public import SerrePositivity.KTheory.SupportedCoefficients
+public import SerrePositivity.KTheory.Coefficients
 public import SerrePositivity.KTheory.CoefficientExactness
 public import Mathlib.RingTheory.Localization.Submodule
+public import SerrePositivity.KTheory.G0.MaximalSupport
+public import SerrePositivity.KTheory.CoefficientLinearExtension
+public import Mathlib.LinearAlgebra.TensorProduct.Pi
 
-/-! # Supported K₀ localization with extended coefficients -/
-@[expose] public section
-noncomputable section
-set_option backward.isDefEq.respectTransparency false
+/-! # 係数つきの台つき K₀ の局所化と極大台の長さ
+
+## 概要
+
+係数を拡大した台つき K₀ の局所化と、有限な極大台上の G₀ の係数つきの長さの座標を与える。
+
+## 方針
+
+係数なしの局所化（`K0Localization`・`LocalizationCoefficients`）に係数の拡大を合わせる。
+
+## 規約
+
+局所化の完全列の一本化は保留（refactor-plan §6.2.3）。
+
+## 使われ方
+
+KTheory/Adams の係数つきの重みの議論。
+-/
+
+@[expose] public noncomputable section
+
 universe u v
+
+section K0LocalizationCoefficientsPart
+
+set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity
 open scoped TensorProduct
 variable (E : Type v) [CommRing E] {R S : Type u} [CommRing R] [CommRing S]
@@ -112,3 +137,38 @@ lemma coefficientLocalize_kernel_supported_of_resolution_contract
 
 end K0WithSupport
 end SerrePositivity
+
+end K0LocalizationCoefficientsPart
+
+section MaximalSupportCoefficientLengthPart
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+namespace SerrePositivity
+open TensorProduct IsLocalRing
+namespace Adams
+variable (E : Type v) [CommRing E] {R : Type u} [CommRing R] [IsNoetherianRing R]
+variable (W : TopologicalSpace.Closeds (PrimeSpectrum R))
+variable (hw : ∀ p ∈ W, p.asIdeal.IsMaximal)
+variable [Fintype {p : PrimeSpectrum R // p ∈ W}]
+
+def coefficientG0LengthEquiv : G0WithSupport.Coefficients E W ≃ₗ[E]
+    ({p : PrimeSpectrum R // p ∈ W} → E) := by
+  classical
+  exact ((maximalLengthEquiv W hw).toIntLinearEquiv.baseChange ℤ E _ _) ≪≫ₗ
+    TensorProduct.piScalarRight ℤ E E {p : PrimeSpectrum R // p ∈ W}
+
+lemma coefficientG0LengthEquiv_tmul (a : E) (x : G0WithSupport W)
+    (p : {p : PrimeSpectrum R // p ∈ W}) :
+    coefficientG0LengthEquiv E W hw (a ⊗ₜ[ℤ] x) p =
+      a * (localLengthMap W hw p.val x : E) := by
+  classical
+  change (TensorProduct.piScalarRightHom ℤ E E _
+    (a ⊗ₜ[ℤ] maximalLengthEvaluation W hw x)) p = _
+  rw [TensorProduct.piScalarRightHom_tmul]
+  simp only [maximalLengthEvaluation_apply, zsmul_eq_mul, mul_comm]
+
+end Adams
+end SerrePositivity
+
+end MaximalSupportCoefficientLengthPart

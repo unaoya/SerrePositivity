@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Asymptotic.PaperTwist
+public import SerrePositivity.Paper.Section4.RankQuotient
 public import SerrePositivity.CommutativeAlgebra.GeometricFiber
 public import Mathlib.RingTheory.RegularLocalRing.Defs
 public import Mathlib.RingTheory.LocalRing.ResidueField.Basic

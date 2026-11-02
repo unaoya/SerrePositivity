@@ -1,40 +1,38 @@
 module
 
 public import SerrePositivity.IntersectionMultiplicity.ParameterQuotient
-public import SerrePositivity.Paper.Section2.TowerApproximation
+public import SerrePositivity.LengthAlgebra.RootTowerLength.BaseChangeApproximation
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
 public import SerrePositivity.HomologicalAlgebra.MinimalResolution
 public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
+public import SerrePositivity.LengthAlgebra.Flat
+public import Mathlib.RingTheory.Finiteness.Ideal
+public import SerrePositivity.CommutativeAlgebra.SystemOfParameters.Basic
 
-/-!
-# パラメータ商とその有限近似（論文 §5.2–5.3、Lemma 5.3、5.4）
+/-! # パラメータ商とその有限近似（論文 Lemma 5.3・5.4）
 
 ## 概要
 
-§5.2 の設定：正則局所環 `R`（次元 `d`）、`R` 代数 `C`（`φ : R → C`、論文ではひねった作用
-`ι_σ : R → D′ → C`）、`R` 正則列 `x = (x_1, …, x_h)`、`B = R/(x)`、`U = C/(x)C`。
+正則局所環 `R`、`R` 代数 `C`、`R` 正則列 `x`、`B = R/(x)`、`U = C/(x)C` について、Lemma 5.3（`lemma_5_3`）：有限生成 `B` 加群 `L` で `λ(Tor_i^B(U, L)) = λ(Tor_i^R(C, L))`、すべて有限、`i > d - h` で零。λ-CM 代数の版（`lemma_5_3_of_cm`）も与える。Lemma 5.4（`lemma_5_4`）：塔の近似の一般論を `T = D′/I_σ`、`U = C/I_σ C` に適用する。その準備として (5.6) の冪（`exists_pow_maximalIdeal_map_le`）と `S = Λ ⊗_A T` の `U` への作用 `θ`（`paramTheta`）を作る。
 
-- **Lemma 5.3**（`lemma_5_3`、証明済み）：有限生成 `B` 加群 `L` について
-  `τ_i(L) := λ(Tor_i^B(U, L)) = λ(Tor_i^R(C, L))`、すべて有限、`i > d − h` で `0`。
-  一般論 `ParamQuot.torClaim`、`ParamQuot.len_torAlg_eq_zero` に、正則局所環上の長さ `d` 以下の
-  有限自由分解を与える。
-- **Lemma 5.4**（`lemma_5_4`、証明済み）：塔の近似の一般論
-  （`Section2.exists_tower_approximation_B`）を `T = D′/I_σ`、`U = C/I_σ C` に適用したもの。
-  `S = Λ ⊗_A T` の `U` への作用 `θ` の両立から、`S` 加群と `C` 加群としての長さが一致し
-  （`hE1`）、`Tor^B(U, L)` の二つの計算（`U ⊗_S (S ⊗_B G)` と `TorAlg ψ`）が一致する（`hE2`、
-  `extendRestrictScalarsTensorIso` と `extendScalarsComp`）。(5.11) は
-  `ℓ_B(M) ≤ β₀(M) · ℓ_B(B/I)`（`length_le_tor_zero_mul`）の極限。
+## 方針
 
-## 仮定の形
+Lemma 5.3 は一般論 `ParamQuot.torClaim` に正則局所環上の長さ `d` 以下の有限自由分解を与える。Lemma 5.4 は `θ` の両立から `S` 加群と `C` 加群としての長さの一致と Tor の二つの計算の一致を得る。
 
-`λ` は `C` 上の正規化長さ（論文の `λ_D`）。`J` は有限生成で `J ⊆ √((x)C)`、`J^a ⊆ (x)C`
-（論文では `J = 𝔡′C`、`I_σ` は `𝔡′` 準素）。Koszul ホモロジーの評価はすべての冪 `x^v` で仮定する
-（Theorem 2.5 の (2.4)）。
+## 規約
+
+`φσ ι = (D′ → C) ∘ ι` を `R` の `C` への作用とし、`B → T` は `paramBT`。
+
+## 使われ方
+
+`Section5/Positivity`・`Section5/Approximation`。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
 
 universe u
+
+section ParameterQuotientPart
 
 open IsLocalRing CategoryTheory
 open scoped ENNReal
@@ -308,3 +306,169 @@ theorem lemma_5_4 (A : Type u) [CommRing A] [IsLocalRing A] [IsNoetherianRing A]
 end Section5
 
 end SerrePositivity
+
+end ParameterQuotientPart
+
+section ParameterQuotientCMPart
+
+open IsLocalRing
+open scoped ENNReal
+
+namespace SerrePositivity.Section5
+
+open ParamQuot
+
+variable {R D C : Type u} [CommRing R] [IsRegularLocalRing R] [CommRing D] [IsLocalRing D]
+  [CommRing C] (ι : R →+* D) (ρ : D →+* C) (φ : R →+* C) (hφ : φ = ρ.comp ι)
+  {h : ℕ} (x : Fin h → R) {J : Ideal C} (lam : NormalizedLength C J)
+  (hcm : ∀ {n : ℕ} (y : Fin n → D), IsSystemOfParameters D y →
+    ∀ i : ℕ, 0 < i → lam.len (koszulHomologySelf (ρ ∘ y) i) = 0)
+  (hcmfin : ∀ {n : ℕ} (y : Fin n → D), IsSystemOfParameters D y →
+    lam.len (C ⧸ Ideal.span (Set.range (ρ ∘ y))) ≠ ⊤)
+  (hx : IsSystemOfParameters D (ι ∘ x))
+
+include hφ hcm hx in
+omit [IsRegularLocalRing R] in
+/-- λ-CM 性から、`lemma_5_3` の Koszul 消滅の入力（全ての冪 `x^v` での消滅）を得る。 -/
+lemma koszul_zero_of_cm_parameters :
+    ∀ v : ℕ, 0 < v → ∀ q : ℕ, 0 < q →
+      lam.len (koszulHomologySelf (fun j ↦ φ (x j ^ v)) q) = 0 := by
+  subst hφ
+  intro v hv q hq
+  have hfun : (fun j ↦ (ρ.comp ι) (x j ^ v)) = (fun j ↦ (ρ ∘ ι ∘ x) j ^ v) :=
+    funext fun j ↦ by rw [map_pow]; rfl
+  rw [hfun]
+  exact LengthAlgebra.koszulAcyclic_of_cm ρ lam hcm (ι ∘ x) hx v hv q hq
+
+include hφ hcmfin hx in
+omit [IsRegularLocalRing R] in
+/-- λ-CM 性から、`lemma_5_3` のパラメータ商の有限性の入力を得る。 -/
+lemma parameterQuotient_len_ne_top_of_cm : lam.len (U φ x) ≠ ⊤ := by
+  subst hφ
+  rw [lam.len_congr _ _ (Submodule.quotEquivOfEq _ _ (IC_eq (ρ.comp ι) x))]
+  exact hcmfin (ι ∘ x) hx
+
+include hφ hcm hcmfin hx in
+/-- **Lemma 5.3 の λ-CM 版**：`d = dim R`、`x` は `R` 正則列でその像は `D` のパラメータ系、`C` は
+`D` 上 λ-CM、`J` は有限生成で `J^a ⊆ (x)C`、`J ⊆ √((x)C)` なら、有限生成 `B` 加群 `L` について
+`λ(Tor_i^B(U, L)) = λ(Tor_i^R(C, L))`、有限、`i + h > d` で `0`。
+`lemma_5_3` の Koszul 入力を λ-CM 性から供給したもの。 -/
+theorem lemma_5_3_of_cm {d : ℕ} (hd : ringKrullDim R = d)
+    (hreg : RingTheory.Sequence.IsWeaklyRegular R (List.ofFn x))
+    (hfg : J.FG) {a : ℕ} (hJ : J ^ a ≤ IC φ x)
+    (hJrad : J ≤ (Ideal.span (Set.range (φ ∘ x))).radical)
+    (L : Type u) [AddCommGroup L] [Module R L] [Module (B x) L] [IsScalarTower R (B x) L]
+    [Module.Finite (B x) L] (i : ℕ) :
+    (lamU φ x lam).len (TorAlg (ParamQuot.ψ φ x) i L) = lam.len (TorAlg φ i L) ∧
+      lam.len (TorAlg φ i L) ≠ ⊤ ∧ (d < i + h → lam.len (TorAlg φ i L) = 0) :=
+  lemma_5_3 φ x lam hd hreg hfg hJ hJrad (koszul_zero_of_cm_parameters ι ρ φ hφ x lam hcm hx)
+    (parameterQuotient_len_ne_top_of_cm ι ρ φ hφ x lam hcmfin hx) L i
+
+end SerrePositivity.Section5
+
+end ParameterQuotientCMPart
+
+section PreparationPart
+
+namespace SerrePositivity
+
+open IsLocalRing ParamQuot
+
+namespace Section5
+
+/-! ## (5.6) -/
+
+/-! ## `θ : Λ ⊗_A (D′/I_σ) → C/(x)C` -/
+
+section theta
+
+variable {R D C : Type u} [CommRing R] [CommRing D] [CommRing C] [Algebra D C] (ι : R →+* D)
+  {h : ℕ} (x : Fin h → R)
+
+/-- `R` の `C` への作用 `(D′ → C) ∘ ι`。 -/
+noncomputable abbrev φσ : R →+* C := (algebraMap D C).comp ι
+
+/-- `I_σ = (ι(x_1), …, ι(x_h)) D′`。 -/
+abbrev Iσ : Ideal D := Ideal.span (Set.range (ι ∘ x))
+
+/-- `T = D′/I_σ`。 -/
+abbrev TD : Type u := D ⧸ Iσ ι x
+
+lemma Iσ_le_comap : Iσ ι x ≤ (IC (φσ (C := C) ι) x).comap (algebraMap D C) := by
+  rw [Ideal.span_le]
+  rintro _ ⟨i, rfl⟩
+  exact Ideal.mem_map_of_mem _ (Ideal.subset_span ⟨i, rfl⟩)
+
+lemma span_le_comap_Iσ : Ideal.span (Set.range x) ≤ (Iσ ι x).comap ι := by
+  rw [Ideal.span_le]
+  rintro _ ⟨i, rfl⟩
+  exact Ideal.subset_span ⟨i, rfl⟩
+
+/-- `B = R/(x) → T = D′/I_σ`（`ι` の誘導）。 -/
+noncomputable def paramBT : B x →+* TD ι x :=
+  Ideal.quotientMap (Iσ ι x) ι (span_le_comap_Iσ ι x)
+
+/-- `T = D′/I_σ → U = C/(x)C`。 -/
+noncomputable def paramTU : TD ι x →+* U (φσ (C := C) ι) x :=
+  Ideal.quotientMap _ (algebraMap D C) (Iσ_le_comap ι x)
+
+variable (A : Type u) [CommRing A] {hA : ℕ} (t : Fin hA → A) (p : ℕ) [Algebra A D]
+  [Algebra (Section2.Tower A t p) C]
+
+/-- **θ**：`Λ → C` と `D′ → C` が `A` 上で両立する（`hAC`）とき、`S = Λ ⊗_A (D′/I_σ) → U = C/(x)C`、
+`λ ⊗ t ↦ λ · t`。 -/
+noncomputable def paramTheta
+    (hAC : (algebraMap (Section2.Tower A t p) C).comp (algebraMap A (Section2.Tower A t p)) =
+      (algebraMap D C).comp (algebraMap A D)) :
+    Section2.TS A t p (TD ι x) →+* U (φσ (C := C) ι) x :=
+  letI : Algebra A (U (φσ (C := C) ι) x) :=
+    ((Ideal.Quotient.mk _).comp ((algebraMap (Section2.Tower A t p) C).comp
+      (algebraMap A (Section2.Tower A t p)))).toAlgebra
+  (Algebra.TensorProduct.lift (S := A)
+    { toRingHom := (Ideal.Quotient.mk (IC (φσ (C := C) ι) x)).comp
+        (algebraMap (Section2.Tower A t p) C)
+      commutes' := fun _ ↦ rfl }
+    { toRingHom := paramTU ι x
+      commutes' := fun a ↦ by
+        change Ideal.Quotient.mk _ (algebraMap D C (algebraMap A D a)) =
+          Ideal.Quotient.mk _ (((algebraMap (Section2.Tower A t p) C).comp
+            (algebraMap A (Section2.Tower A t p))) a)
+        rw [hAC]
+        rfl }
+    (fun _ _ ↦ Commute.all _ _)).toRingHom
+
+variable {A t p}
+
+/-- `θ` は `Λ` の作用と両立（Lemma 5.4 の `hθΛ`）。 -/
+theorem paramTheta_comp_tower
+    (hAC : (algebraMap (Section2.Tower A t p) C).comp (algebraMap A (Section2.Tower A t p)) =
+      (algebraMap D C).comp (algebraMap A D)) :
+    (paramTheta ι x A t p hAC).comp
+        (algebraMap (Section2.Tower A t p) (Section2.TS A t p (TD ι x))) =
+      (Ideal.Quotient.mk (IC (φσ (C := C) ι) x)).comp (algebraMap (Section2.Tower A t p) C) := by
+  refine RingHom.ext fun l ↦ ?_
+  change paramTheta ι x A t p hAC (l ⊗ₜ 1) = _
+  simp only [paramTheta, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
+    Algebra.TensorProduct.lift_tmul, map_one, mul_one]
+  rfl
+
+/-- `θ` は `B` の作用と両立（Lemma 5.4 の `hθB`）。`B → T` は `paramBT`。 -/
+theorem paramTheta_comp_ψU
+    (hAC : (algebraMap (Section2.Tower A t p) C).comp (algebraMap A (Section2.Tower A t p)) =
+      (algebraMap D C).comp (algebraMap A D))
+    [Algebra (B x) (TD ι x)] (hBT : algebraMap (B x) (TD ι x) = paramBT ι x) :
+    (paramTheta ι x A t p hAC).comp (Section2.ψU A t p (TD ι x) (B x)) =
+      ψ (φσ (C := C) ι) x := by
+  refine Ideal.Quotient.ringHom_ext (RingHom.ext fun r ↦ ?_)
+  change paramTheta ι x A t p hAC (1 ⊗ₜ algebraMap (B x) (TD ι x) (Ideal.Quotient.mk _ r)) = _
+  simp only [paramTheta, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
+    Algebra.TensorProduct.lift_tmul, map_one, one_mul, hBT]
+  rfl
+
+end theta
+
+end Section5
+
+end SerrePositivity
+
+end PreparationPart

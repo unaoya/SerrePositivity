@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.Paper.Section2.TowerLength
+public import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
 
 /-!
 # Lemma 2.4（零長さの極限）

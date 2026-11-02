@@ -32,7 +32,7 @@ public import Mathlib.LinearAlgebra.FreeModule.StrongRankCondition
 
 ## 使われ方
 
-`Paper/Section2/TowerApproximation.lean`（Lemma 5.4 の一般論）。
+`LengthAlgebra/RootTowerLength/BaseChangeApproximation.lean`（Lemma 5.4 の一般論）。
 -/
 
 @[expose] public section

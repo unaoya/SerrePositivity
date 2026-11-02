@@ -41,6 +41,8 @@ open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Sheaves
 
 variable {𝒟 : Type u} [SmallCategory 𝒟] {E : SSet.{u + 1}} [Quasicategory E]
+-- W9-I-04：E3 の添字圏 `PerfUnder_u p S` は対象が Type (u+1) の大きい圏。S3 は「添字圏の対象は大きくてよく、Čech 側（U_• と Tot）は小さい」形でも
+-- 述べる必要がある（宇宙を対象・射・値で分ける）。A5-4 の `limit_perfUnder_eq_tot` で使う。中身の段階で `𝒟 : Type (u+1)`・`[Category.{u} 𝒟]` の版を足す。
 
 /-- 概要：弱終対象：任意の対象から射がある。
 方針：原典の「弱始対象」は環の圏（site の opposite）での言い方で、site では弱終。
@@ -65,10 +67,10 @@ structure CechNerveData (U : 𝒟) where
 
 /-- 概要：Čech 脈体の形状の射：N(Δ) → N(𝒟)^op（U_• の rightOp の nerve を持ち上げたもの）。
 方針：`SimplicialObject 𝒟 = SimplexCategoryᵒᵖ ⥤ 𝒟` の `rightOp : SimplexCategory ⥤ 𝒟ᵒᵖ`。
-規約：形状は `presheafShape SimplexCategory`。
+規約：始域は持ち上げた N(Δ)（`presheafShape SimplexCategory` = N(Δᵒᵖ) ではない。W9-I-02 で訂正）。Tot の添字は Δ（原典 Constr 4.18・脚注 10）。
 使われ方：前層 F をこれに沿って制限すると余単体的対象 [n] ↦ F(U_n)。 -/
 def cechShape {U : 𝒟} (d : CechNerveData U) :
-    presheafShape SimplexCategory ⟶ presheafShape 𝒟 :=
+    (SSet.uliftFunctor.{u + 1, u}).obj (nerve SimplexCategory) ⟶ presheafShape 𝒟 :=
   (SSet.uliftFunctor.{u + 1, u}).map (nerveMap d.obj.rightOp)
 
 /-- 概要：脚注 10（前層版）：U が弱終で U_• がその Čech 脈体なら、F 上の錐が極限錐であることと、Čech 脈体への制限が極限錐であることは同値。

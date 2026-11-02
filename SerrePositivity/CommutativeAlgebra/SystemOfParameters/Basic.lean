@@ -58,7 +58,7 @@ variable (D : Type u) [CommRing D]
 
 /-- `z : Fin h → D` が局所環 `D` のパラメータ系であること：`h = dim D`（Krull 次元）かつ `(z)` が
 `m_D` 準素（`√(z) = m_D`）。Lemma 2.2 の正規化基底の条件（`A` の正則パラメータ系が `D` の
-パラメータ系になる、`Paper/Section2/Lemma2_2.lean`）に使う。 -/
+パラメータ系になる、`Paper/Section2/NormalizationBase.lean`）に使う。 -/
 def IsSystemOfParameters [IsLocalRing D] {h : ℕ} (z : Fin h → D) : Prop :=
   ringKrullDim D = h ∧ (Ideal.span (Set.range z)).radical = IsLocalRing.maximalIdeal D
 

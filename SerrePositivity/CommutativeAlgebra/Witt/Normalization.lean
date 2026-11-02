@@ -28,7 +28,7 @@ public import SerrePositivity.CommutativeAlgebra.FiniteNormalization
 
 ## 使われ方
 
-論文の補題 2.2（`Paper/Section2/Lemma2_2`）の混標数の場合。出典は Stacks Project, Lemma 10.160.11 の混標数の分岐と Remark 10.160.9（https://stacks.math.columbia.edu/tag/0323）。
+論文の補題 2.2（`Paper/Section2/NormalizationBase`）の混標数の場合。出典は Stacks Project, Lemma 10.160.11 の混標数の分岐と Remark 10.160.9（https://stacks.math.columbia.edu/tag/0323）。
 -/
 
 @[expose] public noncomputable section

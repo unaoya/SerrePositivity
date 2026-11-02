@@ -40,7 +40,7 @@ Roberts の Frobenius ホモロジー消滅定理（一般形の引用 `Inputs.f
 
 ## 使われ方
 
-`Paper/Section2/LengthAlgebraConstruction.lean` の `perfectClosure_length_properties` で、
+`Paper/Section2/LengthAlgebra.lean` の `perfectClosure_length_properties` で、
 Roberts の引用の代わりに使う（解説の注意「Roberts の定理を使わない消滅」（`exposition/ja/exposition-ja.tex` の `rem:koszul-elementary`））。
 -/
 

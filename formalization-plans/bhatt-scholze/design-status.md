@@ -43,11 +43,27 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
 | A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
 | A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |
-| G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所・担当は調整役。Barratt–Eccles の作用の型） |
+| G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所は `EInfinity/PowerOperation/`、M14。担当は A4 の中身の段階で。Barratt–Eccles の作用の型） |
 | A4-4 Example 8.3 | a4-design §2.4 | A4/Perfectoidization | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
-| A5〜A9 | 未 | 未 | — | — |
+| A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
+| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
+| A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
+| A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 未（a5 §8 の 6・7） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
+| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3 |
+| A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
+| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 未（a6 §8 の 2・3） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
+| A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
+| S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
+| A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedPerfectoidization | 未（a7 §7 の 1・2・6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
+| A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/UniversalProperty | 未（a7 §7 の 3〜5） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
+| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 未（a8 §8 の 1） | B5 の既存、A7 |
+| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 未（a8 §8 の 2） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
+| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
+| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 未（a8 §8 の 3・4・6） | G-A8-6・8・9、A5・A7 |
+| A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
+| A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模：24 本、約 3,200 行（`sorry` 148、置き場の `True` 95）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835 ほか（A4 まで）。
+骨組みの規模：41 本、約 5,200 行（`sorry` 198、置き場の `True` 259）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
 
 ## 2. 要確認の分類
 
@@ -90,7 +106,7 @@ G10（Tot ＝ 全複体）、`isSheaf_toGrothendieck_iff`（生成系で十分�
 A0-3b（Lemma 3.7(2) 一般形・(3)）、A0-3d（Cor 3.12 (a)〜(e)。有限段の Amitsur は新規）、A0-4（Tor 振幅・Lemma 4.22・4.20）、
 G-A1-4（導来 Nakayama）、G-A1-5（完全忠実平坦の保存性）、G-A1-13（底変換の合成）。改名表は調整役から。
 
-### (E) 結晶側の黒箱（独立の作業単位。いつでも書ける）
+### (E) 結晶側の黒箱と arc 降下の引用（独立の作業単位。いつでも書ける）
 
 A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包の Čech 脈体 ≃ de Rham 複体、Cartier、Cor 5.5）。
 結論は `hodgeTate_iso_polynomial_Zp` 一つ。BS と独立な部分（余単体的ホモトピー、pd-Poincaré、Cartier）は `drafts/Shared/` に。
@@ -110,6 +126,12 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | D31〜D35 | P_Σ、完備化不変性、gr が (∧^i L)^∧ の定義、Poly の添字、CAlg_A 値 | a2-design §4・§6 |
 | D36〜D40 | Lemma 7.7(1) は特別な場合だけ、Δ^init 不要、BR30 閉じる、qrsp は余接複体で、Prop 7.10 の範囲 | a3-design §4・§7 |
 | D41〜D44 | Def 8.2 は p 完備な S に、perfd の欄は (S^∧)_perfd、φ_A^{n*}、Lemma 8.4 は内部で要る、P⁰ は BS が骨組み | a4-design §4・§6 |
+| D45〜D52 | S 離散、位相の順序、κ と Type u の一致、D48 取り下げ（G-A5-17）、descendable は Mat16 の定義、de Rham 入力は A1-5、S̃ は ω 段、Cor 7.3 との一致 | a5-design §5・§7 |
+| D63〜D67 | Thm 10.9 は連結性だけ原典 (1)(2) で、n = 1 は Perfd_{S/} = Perfd_{S_red/}、Lemma 10.12 は原典の形、Prop 10.4 は必要な同値、E3 は S^∧ 経由 | a8-design §5・§7 |
+| D68〜D69 | 結晶の黒箱は de Rham 形一つ、Thm 6.4 の帰着は Prop 6.2 の経路 | a1-design §9.3・§9.4 |
+| D60〜D62、D15 | Def 8.2 の定義域を原典（animated）に戻す、基底 R 固定、Cor 8.14 は離散 S、環版 Prop 8.13 は後で系に（BR31） | a7-design §4・§6 |
+| D20 訂正 | Def 2.42 の平坦性はホモロジーの底変換同型（高次の消滅ではない。Codex W9-I-01 の反例 (Z_p,(p))） | a0-design §2.5・§4 |
+| D53〜D59 | arc site は affine（affCompl_κ ⊃ affPerfd_κ）、有限族、Cor 8.11 は affine 版を記録、三つの引用は別々に `sorry`、S8、S′ × S/I は有限積の保存で戻す、BM18 は affine 版 | a6-design §5・§7・§9・§10 |
 
 ## 3.1 調整役からの返答（2026-11-02、main 26f1f4d94）
 
@@ -121,10 +143,50 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 - A2 の設計（P_Σ・左 Kan 延長・CAlg_R の API を読む）は進めてよい。読むだけでビルドなし。
 - （main 600e578d7、M13）DerivedGeneral 2 本の置き場所は `InfinityCategories/Derived/`（一般の t 構造の定義を切り出すなら Stable/）。時期は段 G、
   W2b の後。CompletionFunctor は 2b の改名表を受けてから。それまで drafts/DerivedGeneral/ のまま。
+- （main 431c40741、M14）G-A4-1（P⁰）の置き場所は `EInfinity/PowerOperation/`（新設、BarrattEccles・Operad の隣。Barratt–Eccles の作用の型はそこで確認）。
+  時期は A4 の中身を書く段階まで不要、担当（E2 レーンか BS か）はそのとき決める。BS 固有の骨組みは Perfectoidization/Derived/ の隣の仮置きでよい。
+- （main 86acd98db、M15）G-A5-1（descendability）の置き場所は `EInfinity/Descendable/`（新設。CAlg と D(A) の両方を使う。EInfinity は Derived を import 済み）。
+  E∞ を使わない thick ⊗-ideal・index・安定性の部分は Derived/ へ下ろしてよい。時期・担当は M14 と同じ（段 G、A5 の中身を書く段階で決める）。
+- （main 7b8b96286、M12e）S8 の置き場所：(1)(5)(6) は `Sheaves/SpaceValued/`、(2)(3) は `Sheaves/Discrete/`、(4) の一般部分（HTT 5.1.5.6、el(F) 上の極限）は
+  M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版を追加。時期・担当は M12 と同じ。
+- （同）Prop 8.10 の引用 3 件の `sorry` 定理は drafts/ の間は問題なし。`SerrePositivity/` に入れるときに `scripts/make_area_audits.py` の許可一覧の更新が要る
+  （そのとき調整役に知らせる）。
+- （11-02）論文の層の **2a**（CA の perfectoid 部分を BS へ、CLMST の整理、Perfectoidization* 12 本の Perfectoid/ への統合）が 11-05 の全ビルドに向けて開始。
+  **2a の取り込みまで BhattScholze/・CLMST/ の Lean には手を入れない**（drafts/ はそのまま）。取り込み後に改名表（BhattScholze/・CLMST/・prop247_ の宣言名）が回る。
+  **2b**（HA/DerivedCompletion）は 11-06 の見込みで、その改名表も回る。Codex レビュー W9 は読むだけなので影響なし。
+- （main 26f9f7fc5）Lemma 10.12（A8-3）の置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`
+  （層別の本体）。どちらも 2a の後に新規ファイルだけで入れ、論文の層へ名前を予約。独立した Codex の単位、担当は 2a の後。A8-1・A8-2・A8-4 の仮置きも問題なし。
 
 ## 4. 次の作業（提案）
 
-1. A5 の設計書（Prop 8.5：完全 prism の site・Δ_perf の極限表示・界面の limitCone、Lemma 8.6）。
-2. A6（Def 8.7〜Cor 8.12：tilt・arc 層・integral の欄）、A7（Prop 8.13・Cor 8.14：universal の欄）、A8（§10 Thm 10.11：excision）、A9（界面の組み立て）。
+1. A1-5 の決定（a1-design §9.4）の反映。その後は中身の段階へ：調整役と暦（W2b・2b の後）、(A) の名前探し、A1-2/A1-3 の黒箱の骨組み。
+2. （済）A6（excision の欄）、A7（universal の欄）、A8（integral の欄）、A9（界面の組み立て）の設計書と骨組みは 11-02 に完了。
 3. (E) の骨組み（A1-2・A1-3）。
-4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）の置き場所・担当は調整役の返答待ち。
+4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
+
+## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
+
+正本：`review-codex-w9.md`。指示書：`bhatt-scholze-codex-w9.md`。
+
+| 指摘 | 重さ | 扱い |
+| --- | --- | --- |
+| W9-I-01 D20 の「高次の消滅」は偽（基底 (Z_p,(p)) の H₁ = F_p） | 致命 | **訂正済み**（a0-design §2.5・§4、drafts/A0/PrismaticEnvelope の `IsCompletelyRegularRel`）：HA 7.2.2.10 の平坦性（H₀ 平坦＋全次数の底変換同型）。変数の場合は満たす。下流は不変 |
+| W9-I-02 `cechShape` の始域 | 要修正 | 訂正済み（持ち上げた N(Δ)） |
+| W9-I-03 `derivedGlobalSections_of_le` の頂点の等号 | 要修正 | 訂正済み（可逆な辺で） |
+| W9-I-04 S3 の宇宙（E3 の添字圏は大きい） | 要修正 | 記録（infinity-sheaves-design §12、骨組みに注記）。中身の段階で大きい添字圏の版を足す |
+| W9-I-05 CAlg 値の層化と U の両立 | 要確認 | `forget_sheafify` を別の主張として置いた。S4 の非安定版（M12e の前提）の一部 |
+| W9-I-06 `True` の置き場・A 代数構造 | 要修正 | `ringPresheafToCAlg` の入力を A 代数値関手に。`of_closure`・`prismaticEnvelope_baseChange_of_variables` は主張を文で追記。残りの `True` は中身の段階で型にする（drafts/README の規約） |
+| W9-I-07 Γ の説明 | 軽微 | 訂正済み |
+| W9-I-08 ノート・状態表の不整合 | 要修正 | 訂正済み（05 の Thm 6.4 行、index と 07 の BR30、本表 §4 の 2） |
+| W9-I-09 変数変換後の対の等式に閉包が落ちている | 要修正 | 訂正済み（a0-design §5.1 の 2：(d, Z)^−、`of_closure` で結ぶ、A/d = 0 は別扱い） |
+| W9-I-10 `flatTopology` の篩の置き場（op X）、refine の被覆先 | 要修正 | 訂正済み（drafts/A0/PrismaticSite） |
+| W9-I-11 κ の許容条件（κ^{ℵ₀} = κ） | 要確認 | `IsAdmissibleCutoff` を追加し `flatTopology_refine` の仮定に（drafts/A0/PrismaticSite）。a0-design §2.7 は中身の段階で追従 |
+| W9-I-12 `HasEnvelopes` に濃度の条件がない | 要確認 | `HasEnvelopes` に濃度 ≤ cutoff を追加（多項式 R では模型との一意同型で供給） |
+| W9-I-13 PD Čech 脈体 D_0^• 自体を切断つきとする行の証明は誤り（H¹(D_0^•/p) ≠ 0） | 致命 | **訂正済み**（a1-design §3 の 6：j ≥ 1 の行 Ω^j_{D_0^•} の収縮 G-A1-14（Bhatt–de Jong Lemma 2.15–2.17）、j = 0 の行は収縮しない。retraction による (ii) の比較も撤回） |
+| W9-I-14 pd 微分の明示 | 要修正 | 訂正済み（G-A1-7 を pd 微分加群・pd de Rham 複体に） |
+| W9-I-15 D69：保存性だけでは比較射が作れない | 要確認 | **訂正済み**（a1-design §9.1・§9.3：原典 Thm 6.4 の ψ・W(A_0/d_0) の経路を A_0 上で行い（p ねじれなしは A_0 で成立）、完全 prism へ底変換。D69 の決定は差し替えた案で再提示） |
+| W9-I-16 Lemma 5.4 の無限変数 | 要修正 | G-A1-15（filtered 余極限）を追加 |
+| W9-I-17 a1-design 前半の Thm 6.4「不要」 | 軽微 | 訂正済み（§0・§6） |
+
+既存の作業ツリーの差分（`exposition/ja/infinity*` ほか 43 件）は他セッションのもので、BS のレビューの受入条件は「新たな差分が報告ファイルだけ」と読む。
+
