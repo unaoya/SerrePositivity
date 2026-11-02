@@ -11,14 +11,16 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 # 構造層の arc 層性（BS 著者版 Prop 8.10 の affine 版）と三つの引用
 
 ## 概要
-O : R ↦ R（CAlg_R 値）は affPerfd_κ 上の arc 層（Čech 層、D-S1）。affine T について Hom(T, −) は集合の arc 層。
+O : R ↦ R（**CAlg_ℤ 値**。W9-II-22：global な affPerfd_κ の対象には固定 R からの射がないので CAlg_R 値にはできない。F_U の元の圏 Perfd_{U/} の上で
+R → U → T により CAlg_R 値に持ち上げ、極限・引き戻しは忘却 CAlg_R → CAlg_ℤ が作る）は affPerfd_κ 上の arc 層（Čech 層、D-S1）。affine T について Hom(T, −) は集合の arc 層。
 原典の証明を追う：単射 arc 被覆 R → S の完備 Čech 複体の完全性に帰着し、tilt で完全 F_p 代数の d 進完備 Čech 複体に移し、
 完全 F_p 代数の arc 被覆の Čech 完全性（G-A6-1）を使う。G-A6-1 は三つの引用 [BS17, Thm 4.1 (i)]・[BM18, Thm 1.7]・[BS17, Lemma 6.2/6.3] から
 導く。三つは原典が引用している形で述べ、`sorry`（決定 2）。1c は初等的なので後で証明する。
 
 ## 方針
-tilt の段：R = W(R^♭)/d、S ⊗̂_R S = W(S^♭ ⊗̂_{R^♭} S^♭)/d（G-A6-4）、W は完全 F_p 代数の完全列を保ち mod d は d 正則な項で完全性を保つ（G-A6-5）。
-{R^♭ → S^♭, R^♭ → R^♭[1/d]} は完全 F_p 代数の arc 被覆族（付値環の tilt・untilt、G-A6-6）。導来 d 進完備化で R^♭[1/d] の項を消す（G-A6-7）。
+tilt の段：R = W(R^♭)/d、S ⊗̂_R S = W(S^♭ ⊗̂_{R^♭} S^♭)/d（G-A6-4）。余単体的な完全環に levelwise の W_n を当て、V の短完全列で Čech 複体の完全性を帰納、
+Rlim で W へ、各 Witt 環で正則な d の cofiber で mod d へ（G-A6-5。W9-II-20：正則なのは W(B) 上の d で、tilt 上の a := d mod p は零になり得る）。
+{R^♭ → S^♭, R^♭ → R^♭[1/a]} は完全 F_p 代数の arc 被覆族（付値環の tilt・untilt、G-A6-6。階数 0・a = 0 の分岐込み、W9-II-21）。導来 a 進完備化で R^♭[1/a] の項を消す（G-A6-7）。
 
 ## 規約
 v 被覆は [BS17, Def 2.1]（任意の付値環）、arc 被覆は [BM18, Def 1.2]（階数 ≤ 1 の付値環）の affine・有限族の形。引用は affine 版（D59）。
@@ -108,29 +110,35 @@ theorem cech_exact_of_arcCover_perfect {A : Type u} [CommRing A] [CharP A p] [Pe
 使われ方：Čech 複体の tilt。 -/
 theorem completedTensor_tilt : True := by trivial
 
-/-- 概要：G-A6-5：W(−) は完全 F_p 代数の完全列を完全列に送る（W_n は V^k による反復拡大、Mittag-Leffler）；mod d は d が各項で正則なら完全性を保つ。
-方針：Mathlib `WittVector` の `ghost`／`verschiebung` の API。
+/-- 概要：G-A6-5（W9-II-20 で訂正）：augmented 余単体的な完全 F_p 代数 B^• の Čech 複体が完全なら、W(B^•) の Čech 複体も完全で、W(B^•)/d（d は各 W(B^k) で
+正則な distinguished 元）の Čech 複体も完全。正則なのは Witt 環上の d であって tilt 上の d mod p ではない（R が標数 p なら d = p、像は 0）。
+方針：levelwise に W_n、加法群の短完全列 0 → W_{n−1}(B^•) → W_n(B^•) → B^• → 0（V）で帰納、遷移 W_n → W_{n−1} は項ごとに全射なので Rlim = lim（Mittag-Leffler）、
+d の cofiber は d 正則なので通常の商の複体。Mathlib `WittVector` の `verschiebung`・`truncate` の API。「W を交代和微分に直接当てる」のではない。
 規約：—
 使われ方：Čech 複体の tilt。 -/
 theorem witt_exact_of_perfect : True := by trivial
 theorem modD_exact_of_regular : True := by trivial
 
-/-- 概要：G-A6-6：階数 1 の付値環の tilt・untilt：V が完全で d 進完備な階数 1 の付値環（R^♭ 上）なら V^♯ := W(V)/d は p 完備な階数 1 の付値環で
-(V^♯)^♭ = V；W が perfectoid な p 完備階数 1 の付値環なら W^♭ は完全な階数 1 の付値環。
-方針：既存 `WittQuotientTilt`（環の部分）＋付値の対応。
+/-- 概要：G-A6-6：階数 1 の付値環の tilt・untilt：V が完全で a 進完備（a := d mod p）な階数 1 の付値環（R^♭ 上）なら V^♯ := W(V)/d は p 完備な階数 1 の付値環で
+(V^♯)^♭ = V（a = 0 なら d は W(V) で p の単元倍、V^♯ = V）；W が perfectoid な p 完備階数 1 の付値環なら W^♭ は完全な階数 1 の付値環。
+方針：既存 `WittQuotientTilt`（環の部分）＋付値の対応。付値環性（W9 続き 6）：U = W(V)/d は局所・被約・p ねじれなし、非零元を p 冪で割って mod p 非零にし、
+Teichmüller の像で x = b^♯ + ϖc、V の可除性の全順序で x = b^♯(1 + (ϖ^♭/b)^♯c) と単元倍の sharp に書ける。[Česnavičius–Scholze, Purity for flat cohomology,
+Prop 2.1.9] の証明と同じ（証明の参照。第四の黒箱ではない）。
 規約：—
 使われ方：§3.1 の 2。 -/
 theorem untilt_rankOneValuationRing : True := by trivial
 theorem tilt_rankOneValuationRing : True := by trivial
 
-/-- 概要：{R^♭ → S^♭, R^♭ → R^♭[1/d]} は完全 F_p 代数の arc 被覆族（R → S が perfectoid の arc 被覆のとき）。
-方針：R^♭ → V（完全としてよい）で d 可逆なら第二成分、そうでなければ V を d 進完備化し R → V^♯ に対応させ、仮定で S → W（perfectoid に取り替え、G-A6-3）、
-S^♭ → W^♭。
+/-- 概要：{R^♭ → S^♭, R^♭ → R^♭[1/a]}（a := d mod p）は完全 F_p 代数の arc 被覆族（`IsArcCoverFamilyCharP`、階数 ≤ 1 で試す。R → S が perfectoid の arc 被覆のとき）。
+方針（W9-II-21 で分岐を補記）：R^♭ → V。V → V_perf は整・局所・単射で忠実平坦なので V は完全としてよい。(i) a が単元なら第二成分。(ii) V 階数 1、a 非零非単元なら
+a 進完備化 V̂（階数 1・完全、V → V̂ 忠実平坦）、untilt V̂^♯ へ R → V̂^♯。(iii) V 階数 1、a = 0 なら V^♯ = V。(iv) V 階数 0（完全体 k）、a 非単元なら a = 0、
+V₁ := k[t^{1/p^∞}]_{(t^{1/p^∞})} の t 進完備化（完全・階数 1、k → V₁ 忠実平坦）へ移って (iii)。R → V̂^♯ に仮定を当て、perfectoid な W に拡大（G-A6-3）、
+S → W、V̂ → W^♭ は局所単射で忠実平坦、S^♭ → W^♭。
 規約：—
 使われ方：Prop 8.10。 -/
 theorem tilt_arcCoverFamily : True := by trivial
 
-/-- 概要：G-A6-7：導来 d 進完備化は完全列を保ち、d が可逆な項を殺す；Čech 複体 of {R^♭ → S^♭, R^♭ → R^♭[1/d]} の各項の分解で R^♭[1/d] が混じる項の完備化は零。
+/-- 概要：G-A6-7：導来 a 進完備化（a := d mod p）は完全列を保ち、a が可逆な項を殺す；Čech 複体 of {R^♭ → S^♭, R^♭ → R^♭[1/a]} の各項の分解で R^♭[1/a] が混じる項の完備化は零。
 方針：HA/DerivedCompletion（2b 後の名前）。
 規約：—
 使われ方：Prop 8.10。 -/
@@ -144,7 +152,7 @@ theorem cech_completion_kills_inverted : True := by trivial
 使われ方：`structurePresheaf_isArcSheaf`。 -/
 theorem cech_exact_of_arcCover_perfectoid : True := by trivial
 
-/-- 概要：Prop 8.10 前半：O（CAlg_R 値、R ↦ R）は affPerfd_κ 上の arc 層（Čech 層、D-S1）。
+/-- 概要：Prop 8.10 前半：O（CAlg_ℤ 値、R ↦ R。W9-II-22）は affPerfd_κ 上の arc 層（Čech 層、D-S1）。
 方針：S1 の生成系の補題と `isSheaf_arc_iff_cech`、有限族を R → ∏R_i に置き換え、`cech_exact_of_arcCover_perfectoid`（離散な余単体的環の Tot は Čech 複体）。
 規約：`IsSheaf (arcTopologyPerfd p κ) (structurePresheaf …)`。
 使われ方：Cor 8.11 の affine 版、Cor 8.12。 -/

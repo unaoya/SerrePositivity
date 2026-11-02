@@ -7,6 +7,7 @@ public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 -- 本ファイルは drafts/A5/PerfectSiteComparison.lean、drafts/A4/Perfectoidization.lean、drafts/A3/LciAndQuasiregular.lean、
 -- drafts/A2/{HodgeTateFiltration,BaseChangeAndTensor}.lean、drafts/DerivedGeneral/Truncation.lean を import する。
+-- G-A7-5 の芯は drafts/A7/DiscreteCore.lean（W9-II-24：UniversalProperty ではなく A5 より先に置く独立ファイル）を import する。
 
 /-!
 # semiperfectoid の場合（BS 著者版 Prop 8.5 の証明 (4)）

@@ -66,7 +66,12 @@ Lean の名前は仮。ビルドしない。
   - 存在：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionLeg`）の mod d が S_perfd → S′（S の下）。
   - 一意性（原典）：g_1, g_2 : S_perfd → S′ が S 上で一致すれば、η := (g_1, g_2) : X := S_perfd ⊗̂^L_S S_perfd → S′。S′ は perfectoid なので
     η は X → X_perfd → S′_perfd ≃ S′ を通り（関手性と `perfectoidization_of_perfectoid`）、X_perfd ≃ S_perfd ⊗̂_{S_perfd} S_perfd ≃ S_perfd
-    （Prop 8.13 と (S_perfd)_perfd ≃ S_perfd）。この合成 X → S_perfd は乗法 m（紙 3）。よって η = g ∘ m、g_1 = η ∘ i_1 = g = g_2。
+    （Prop 8.13 と (S_perfd)_perfd ≃ S_perfd）。この合成 X → S_perfd は乗法 m（紙 3。**W9-II-23：単位の自然性だけでは出ない**。先に**単位の整合性**
+    F(η_S) = η_P（F = perfd、P = S_perfd、G-A7-8）を A5 の極限表示の脚から示す：脚 λ_f : P → T（f : S → T、T perfectoid）で f = η_S の脚 q : P → P を取る。任意の
+    f について λ_f 自身が添字圏 Perfd_{S/} の射 (P, η_S) → (T, f) なので錐の可換性から λ_f ∘ q = λ_f、P・T は離散で脚が射を識別するので q = id_P。極限比較の S に
+    関する自然性と η_P の可逆性から η_P^{-1} ∘ F(η_S) = q = id_P、よって F(η_S) = η_P。次に Prop 8.13 の比較 F(P) ⊗̂_{F(S)} F(P) → F(X) の二つの脚は F(i_1)・F(i_2)。
+    上の一致と η_P の逆で左辺を P ⊗̂_P P ≃ P と同一視し、逆向きを e : F(X) → P とすると、単位の自然性から e ∘ η_X ∘ i_j = e ∘ F(i_j) ∘ η_P = id_P、押し出しの普遍性で
+    e ∘ η_X = m。Cor 8.14 の一意性は使っていない）。よって η = g ∘ m、g_1 = η ∘ i_1 = g = g_2。
     離散な環の間の animated／E∞ 代数の射は環準同型（`discreteToAnimated_fullyFaithful`、G-A7-6）。
 - `e3Universal (S) (hS : IsDiscrete R (e3Perfd S))`：`IsPerfectoidization p (e3H0RingData.unit.app S)`。S^∧ について Cor 8.14、
   perfectoid 環は p 完備なので S → T は S^∧ → T を一意に通る（`completionRing` の普遍性、Interface.lean:237）、`e3Perfd_of_complete`・
@@ -83,6 +88,7 @@ Lean の名前は仮。ビルドしない。
 | G-A7-5 | 芯：S_perfd 離散 ⇒ 完全 prism ⇒ perfectoid（A5-2 の `perfectoidization_discrete_of_semiperfectoid` の仮定を「離散」に） | A4・A5-2 | Cor 8.14 前半 |
 | G-A7-6 | 押し出しからの射は対の射；離散な対象の間の射は環準同型（π_0 Map = Hom） | A2-1 `discreteToAnimated_fullyFaithful` | Cor 8.14 後半 |
 | G-A7-7 | `completionRing` の普遍性（p 完備な標的への射は S^∧ を一意に通る） | 既存（Interface.lean:237） | E3 の欄 |
+| G-A7-8 | 単位の整合性（W9-II-23）：P = S_perfd 離散のとき F(η_S) = η_P（A5 の極限の脚 q = id_P と比較の自然性から。一意性の先取りなし） | A5-1 の極限表示 | Cor 8.14 の乗法 m |
 
 ## 4. 原典との差
 
@@ -101,6 +107,13 @@ Lean の名前は仮。ビルドしない。
 | A7-2 | `perfectoidization_of_perfectoid`、芯 G-A7-5、Cor 8.14、E3 の `universal` | A7-1、A4-3、A5 |
 
 骨組みは A7-1 → A7-2。A5-2 の該当補題の仮定の書き換え（G-A7-5）は A7-2 で行う。
+**配置（W9-II-24、2026-11-03）**：A5 が G-A7-5 と G-A7-1 を使うので、両者を A7-2・A7-1 の普遍性／Prop 8.13 のモジュールに同居させると import が閉じない。
+数学的な循環ではなく配置の問題（芯の入力は A4・導来 Nakayama・完全 prism の商だけで、Prop 8.5 や Cor 8.14 後半は不要）。そこで
+- `drafts/A7/DiscreteCore.lean`：G-A7-5 の芯（`prismaticPerfection_discrete_of_perfectoidization_discrete`・`perfectoidization_perfectPrism_of_discrete`・
+  `perfectoidization_isIntegralPerfectoid_of_discrete`）。A4 と DerivedGeneral だけを import し、A5/SemiperfectoidCase と A7/UniversalProperty が import する。
+- `drafts/A7/AnimatedDomain.lean`：G-A7-1（`animatedForget`・`CompleteAnimatedAlgebra`・`animatedCompletion`・`discreteToAnimated_complete`）。A2 と DerivedGeneral
+  だけを import し、D45 改訂後の A5/PerfectSiteComparison と A7/AnimatedPerfectoidization が import する。
+所有単位は A7 のまま（A7-2・A7-1）。
 
 ## 6. 決定事項
 
@@ -108,7 +121,7 @@ Lean の名前は仮。ビルドしない。
 - 1：Def 8.2 は導来 p 完備な animated R 代数の充満部分 ∞ 圏 `CompleteAnimatedAlgebra R` の上で定義し、A4 の離散版はその制限（D60）。
 - 2：Prop 8.13 は原典の形で述べる。
 - 3：BR31 は記録し、A7 の中身の後に環版を導来版の系へ置き換える。
-- 4：A5-2 の離散性の補題の仮定を「S_perfd が離散」にした芯 G-A7-5 を A7-2 に置き、A5-2 と Cor 8.14 で共有する。
+- 4：A5-2 の離散性の補題の仮定を「S_perfd が離散」にした芯 G-A7-5 を A7-2 に置き、A5-2 と Cor 8.14 で共有する（宣言の置き場所は独立ファイル `A7/DiscreteCore.lean`、W9-II-24）。
 
 相談した選択肢（記録）：
 
@@ -123,7 +136,13 @@ Lean の名前は仮。ビルドしない。
 
 1. 押し出し（相対テンソル）が bar 構成の sifted 余極限であること、Δ がそれを保つこと（G-A7-2）。
 2. colim_φ と相対テンソルの可換性（φ の捻りの扱い。Frobenius の塔の対角）。
-3. Cor 8.14：X → X_perfd と Prop 8.13 の同値の合成が乗法 m に一致すること（単位の自然性と (S_perfd)_perfd ≃ S_perfd の単位）。
+3. Cor 8.14：X → X_perfd と Prop 8.13 の同値の合成が乗法 m に一致すること（**単位の自然性だけでは不足**、W9-II-23：G-A7-8 の単位の整合性 F(η_S) = η_P を A5 の極限の脚から先に示す）。
 4. 一意性の議論を π_0 Map で行ってよいこと（離散な標的）。
 5. E3 の欄：S^∧ 経由の読み替え（`completionRing` の普遍性と A4-3 の `_of_complete` 三つ）。
 6. A4 の離散版 Def 8.2 と animated 版の一致（`discreteToAnimated` の像が完備であること、完備化の整合）。
+
+W9 続き 6（2026-11-03）：1〜6 すべて紙で ○（3 は G-A7-8 を補って）。補記：6 では animated p 完備化を単体的可換環としての導来 mod p^n の逆極限で構成できる
+（π_0 の商の遷移が全射なので lim¹ は現れず animated 圏に留まる；底の加群で完備性を判定し、完備対象への反射という普遍性を使う）ことを G-A7-1 に記す。
+導来 p 完備な**離散** S では底の加群が S 自身なので埋め込みは `CompleteAnimatedAlgebra` に入り A4 の版と一致するが、一般の離散 S の animated 完備化は高次ホモトピーを
+もち得るので、その場合まで離散との一致は主張しない。4 では「animated な連結対象から離散標的への Map が 0 切り捨てで Hom(π_0 X, T)」を使い、非連結な一般の E∞ 始域には
+拡張しない。

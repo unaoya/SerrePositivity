@@ -6,6 +6,7 @@ public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 -- 本ファイルは drafts/A0/PrismaticSite.lean（`PerfectPrismaticSite`、`flatTopology`、`structurePresheafDerived`）、drafts/Sheaves/{SheafCondition,GlobalSections,CechConerveLimit,CAlgValued}.lean、
 -- drafts/A3/DiscreteCase.lean（`prismMapOfDiscrete`）、drafts/A4/Perfectoidization.lean を import する。
+-- animated 版の定義域 `CompleteAnimatedAlgebra` は drafts/A7/AnimatedDomain.lean（W9-II-24：A5 より先に置く独立ファイル）を import する。
 
 /-!
 # 完全 prismatic site と Prop 8.5 の主張（BS 著者版 Rem 4.6、Lemma 4.8、Prop 8.5）

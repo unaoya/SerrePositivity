@@ -181,15 +181,21 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 - perf 版：非 perf 版と (g)（[BS17, Lemma 11.22]）。
 - n = 1 への帰着：Δ_{T_n} = Δ_{T_1}^{⊗̂_A n}（(5)）、descendable のテンソル (c)。
-- n = 1：F := fib(Δ_T → Δ_{T_∞}) ∈ D(Δ_T)。(f) で M := RHom_{Δ_T}(F^{⊗2}, Δ_T) ∈ D^{<0} を示せばよい。**底変換との接続（W9-II-12、要確認）**：M は第二引数が
-  完備なので導来 (p,d) 完備。しかし F^{⊗2} は perfect ではないので、底変換後に計算する RHom_{Δ_T ⊗ C}((F ⊗ C)^{⊗2}, Δ_T ⊗ C)（C = A/(p, φ^{-1}(d))）を M ⊗ C と
-  無条件に同一視できない。有限 Koszul 複体 K_m（双対可能）なら RHom(F^{⊗2}, Δ_T ⊗ K_m) = M ⊗ K_m と交換できるので、完備性の判定を Koszul 複体で述べ、
-  そこから通常の商 C 上の (∗) へ渡す補題（G-A5-6′）を専用に置く。原典の "By completeness" の一文の形式化はこの補題。完備性（G-A5-6）で A → A/(p, φ^{-1}(d)) の底変換後に
-  確かめればよい。Δ_T ⊗_A A/φ^{-1}(d) = φ_A^*Δ_T ⊗_A A/d（φ_A は自己同型、A/φ^{-1}(d) ≅ A/d = R）は de Rham 比較（Thm 6.4 の T = R⟨X⟩ の場合、mod p、
+- n = 1：F := fib(Δ_T → Δ_{T_∞}) ∈ D(Δ_T)。(f) で M := RHom_{Δ_T}(F^{⊗2}, Δ_T) ∈ D^{<0} を示せばよい。**底変換との接続（G-A5-6′、W9-II-12。W9 続き 6 で紙 ○、仕様を確定）**：D := Δ_T、N := F ⊗^L_D F、
+  M := RHom_D(N, D)、e := φ_A^{-1}(d)、C := A/(p,e)。M は第二引数の完備性から導来 (p,e) 完備。**C が perfect であることも、M ⊗^L_A C と底変換後の RHom の一致も
+  仮定できない**ので、次の順で行う。(1) **任意の離散 C 加群 L を係数にした (∗)**：D_C = D ⊗^L_A C を Ω = B ⊕ Bε（B = C[X^p]、|ε| = 1、ε² = 0、微分 0）と書き
+  （G-A5-15＋一変数 Cartier）、F_C ≃ B^{(J)}[−1]、Q := B ⊗_C L（B は C 上自由なので導来的にも離散）。B の Ω 上の半自由分解 P（次数 0 の生成元 e_n、d(e_0) = 0、
+  d(e_n) = εe_{n−1}）で Hom_Ω(P, Ω ⊗_C L) は次数 0・1 に ∏_n Q、微分は shift (a_0, a_1, …) ↦ (0, a_0, a_1, …) で核 0・余核 Q、よって RHom_Ω(B, Ω ⊗_C L) ≃ Q[−1]、
+  B ⊗^L_Ω B ≃ ⊕_n B は次数 0。F_C の二乗と shift を戻して RHom_Ω(N_C, Ω ⊗_C L) ≃ (∏ Q)[1] ∈ D^{≤−1}（積は完全、L の平坦性は不要）。(2) 随伴で任意の C 加群 L に
+  RHom_D(N, D ⊗^L_A L) ≃ RHom_{D_C}(N_C, D_C ⊗^L_C L) ∈ D^{≤−1}。(3) 有限 Koszul 複体 K := K_A(p,e) は A 上双対可能、H^j(K) は j ∈ [−2,0] にあり p・e の作用が
+  ホモトピーで零なので各 H^j(K) は C 加群。K の有限 Postnikov filtration の段階 H^j(K)[−j]（j ≤ 0）に (2) を当てると各段階は D^{≤−1}、よって
+  RHom_D(N, D ⊗^L_A K) ∈ D^{≤−1}。双対可能性で**ここで初めて** RHom とテンソルを交換し、これは M ⊗^L_A K。(4) 完備性の Koszul 判定：K(p^n, e^n) は K(p,e) から有限拡大で
+  作られ遷移の最高次コホモロジーは全射なので、M ≃ Rlim_n(M ⊗^L_A K(p^n,e^n)) に lim¹ の次数 0 の項はなく M ∈ D^{≤−1}。(p,e) と (p,d) は同じ根基。原典の
+  "By completeness" の一文の形式化はこの (1)〜(4)。Lemma 8.6 の perf 版は有限 index と Frobenius 余極限の一般補題へ渡す。Prop 8.13（A7）は使わない。Δ_T ⊗_A A/φ^{-1}(d) = φ_A^*Δ_T ⊗_A A/d（φ_A は自己同型、A/φ^{-1}(d) ≅ A/d = R）は de Rham 比較（Thm 6.4 の T = R⟨X⟩ の場合、mod p、
   G-A5-15）で Ω^•_{(T/p)/(R/p)}、T_∞ では L_{T_∞/R}^∧ = 0 なので T_∞/p。Cartier（一変数、任意の F_p 代数 R_0 上で初等的：
   Ω^•_{R_0[X]/R_0} ≃ R_0[X^p] ⊕ R_0[X^p]·X^{p−1}dX[−1] は cdga の擬同型、G-A5-12）で (∗) に帰着：Ω := T ⊕ Ω^1[−1]（分裂二乗零拡大、T は
   R_0[X^p] ≅ T^{(1)}）、F = fib(Ω → T → T_∞) ≅ T^{⊕J}[−1]（T_∞ は T 上自由で 1 を基底に含む）、RHom_Ω((T[−1])^{⊗2}, Ω) ∈ D^{<0} を分解
-  (⋯ → Ω[−2] → Ω[−1]) ≃ T[−1] で計算（G-A5-13）。
+  (⋯ → Ω[−2] → Ω[−1]) ≃ T[−1] で計算（G-A5-13。**任意の離散 C 加群 L を係数にした形** RHom_Ω(N_C, Ω ⊗_C L) ≃ (∏ Q)[1]、Q = B ⊗_C L、で述べる。W9 続き 6）。
 - de Rham 入力（G-A5-15）：Thm 6.4 の T = R⟨X_1,…,X_n⟩（ここでは n = 1）での mod p の形。E∞ 代数の同型として、T → T_∞ と両立するもの。A1 では
   HT 比較（Thm 6.3）までしか計画していない。選択肢は §7 の 3。
 
@@ -203,14 +209,14 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 | G-A5-4 | Thm 3.10 の関手版：完全 prism ↔ perfectoid 環の圏同値（Hom は Lemma 4.8） | `Prism/Perfectoid`、`PerfectPrismHomLift`（要確認） | §2.1 |
 | G-A5-5 | O_Δ は完全 site で flat 層（A0-3d Cor 3.12 の制限。完全 prism の余積は完全） | A0-3d（D、2b 後）、`PerfectDeltaTensor` | §2.2 |
 | G-A5-6 | 導来完備な M で M ⊗^L A/(p,d) ∈ D^{<0} ⇒ M ∈ D^{<0}（Nakayama の上界版） | DerivedGeneral/Truncation の `derived_nakayama` の変種 | §3.5 |
-| G-A5-6′ | RHom と底変換の接続（W9-II-12）：M = RHom_{Δ_T}(F^{⊗2}, Δ_T) の完備性判定を有限 Koszul 複体 K_m（双対可能、RHom と交換）で述べ、通常の商 C = A/(p,φ^{-1}(d)) 上の (∗) の計算へ渡す | なし | §3.5 |
+| G-A5-6′ | RHom と底変換の接続（W9-II-12、W9 続き 6 で ○）：任意の C 加群 L を係数とする (∗)（G-A5-13）→ 随伴で RHom_D(N, D ⊗^L_A L) ∈ D^{≤−1} → 有限 Koszul 複体 K = K_A(p,e) の Postnikov filtration（H^j(K) は C 加群）で RHom_D(N, D ⊗ K) ∈ D^{≤−1} → 双対可能性で = M ⊗ K → K(p^n,e^n) の Rlim（lim¹ なし）で M ∈ D^{≤−1}。C を perfect と仮定しない | なし | §3.5 |
 | G-A5-7 | 左随伴は始的：lim_{D} F ≃ lim_{C} F ∘ L（L ⊣ U） | ∞ 側（HTT 4.1.1.8 の系） | §3.3 |
 | G-A5-8 | 極限の交換 | ∞ 側 | §3.3 |
 | G-A5-9 | ⊗^L_A A/d（cofib d）は極限と可換；完全 prism で B ⊗^L_A A/d = B/J | G-A4-4、Lemma 2.34（G-A4-5） | 系 1 |
 | G-A5-10 | 連結性の保存：sequential 余極限・導来完備化は D^{≤0} を保つ；gr が連結な完備 filtration の全体は連結 | DerivedGeneral | §3.4 |
 | G-A5-11 | semiperfectoid S：L_{S/R}^∧[−1] は連結（L^∧ は**次数 −1 以下**：Ω^1_{(S/p)/F_p} = 0。「次数 −1 集中」や I/I² の平坦性は qrsp/lci 型の別条件、W9-II-14） | A3 の qrsp（D39）の隣 | §3.4 |
 | G-A5-12 | 一変数 de Rham 複体の Cartier・形式性（任意の F_p 代数上、cdga の擬同型） | Shared/DeRhamPolynomial の隣 | §3.5 |
-| G-A5-13 | (∗)：Ω = T ⊕ Ω^1[−1] 上で RHom_Ω((T[−1])^{⊗2}, Ω) ∈ D^{<0} | なし（dg 加群の計算） | §3.5 |
+| G-A5-13 | (∗)、**任意の離散 C 加群 L を係数に**：Ω = B ⊕ Bε 上で RHom_Ω(N_C, Ω ⊗_C L) ≃ (∏ B ⊗_C L)[1] ∈ D^{≤−1}（半自由分解 P と shift 微分の核・余核、B ⊗^L_Ω B ≃ ⊕B。L = C だけの形より一段強く、G-A5-6′ に要る） | なし（dg 加群の計算） | §3.5 |
 | G-A5-14 | p 完備な R 代数で mod p semiperfect ⇒ semiperfectoid（θ 全射、[BMS19, Rem 4.22]）；perfectoid の商・完備テンソル T₁ ⊗̂_S T₂ の semiperfectoid 性 | 既存の Semiperfectoid（要確認） | §3.1・§3.4 |
 | G-A5-15 | de Rham 比較（Thm 6.4）の T = R⟨X⟩・mod p の形、E∞ 代数として、T → T_∞ と両立 | なし（A1 は HT まで） | §3.5 |
 | G-A5-16 | U : CAlg_R → D(R) が極限の錐を保ち反映する | Sheaves/CAlgValued の `forget_isLimitCone`・`forget_reflects_isLimitCone` | §2.3 |
@@ -288,5 +294,5 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 5. §3.4 (β)：G-A5-17（= G-A2-10）の比較写像が HT filtration と両立し gr で余接複体の射を誘導すること、perfectoid の間で L^∧ = 0。(γ)（HT の段）。W9 で ○
    （次数 0 の全射性は gr の décalage と有限段の帰納、網羅性・完備化・Nakayama。animated S でも π_0 S の semiperfectoid 性で足りる）。
 6. §3.5：A/(p, φ^{-1}(d)) ≅ R/p（φ_A による係数の取り替え込み）、一変数 Cartier の分裂、(∗) の分解（RHom_Ω(T,Ω) ≃ T[−1]、RHom_Ω((T[−1])^{⊗2},Ω) ≃ (∏T)[1]）は
-   W9 で ○。完備性による底変換の正当化（RHom と底変換の接続、G-A5-6′）は**未**（W9-II-12）。
+   W9 で ○。完備性による底変換の正当化（G-A5-6′）は W9 続き 6 の任意係数の (∗) と有限 Koszul 複体の Postnikov filtration の計算で ○（W9-II-12 解消。仕様は §3.5）。
 7. Lemma 8.6 の perf 版：W9 で ○。結論は descendable でよく、index の数値（変数の個数 n と元の index の上界 m を区別。一変数で index ≤ 2 なら perf 版は ≤ 4）は公開しない。
