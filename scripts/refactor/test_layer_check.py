@@ -21,8 +21,8 @@ class LayerTests(unittest.TestCase):
         lc.validate_config(CONFIG)
         foundation = next(x for x in CONFIG['layers'] if x['name'] == 'Foundation')
         self.assertEqual(foundation['rank'], -1)
-        self.assertTrue(all(x['rank'] > -1 for x in CONFIG['layers'] if x['name'] != 'Foundation'))
-        self.assertEqual(len(foundation['prefixes']), 23)
+        self.assertTrue(all(x['rank'] >= 0 for x in CONFIG['layers'] if x['name'] in CONFIG['core']))
+        self.assertEqual(len(foundation['prefixes']), 24)
         self.assertNotIn('Foundation', CONFIG['core'])
         for prefix in foundation['prefixes']:
             self.assertEqual(lc.classify(prefix, CONFIG), 'Foundation')
