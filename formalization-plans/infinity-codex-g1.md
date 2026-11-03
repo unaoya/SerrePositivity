@@ -32,3 +32,24 @@ worktree：`../SerrePositivity-ig1`（新規。`git worktree add ../SerrePositiv
 ## 3. 禁止事項
 
 - 既存の宣言の本文・型・名前の変更。整理の束（W2c・段 F）の対象ファイルの編集。全ビルド。`sorry`・公理・引用の追加。BS の drafts の編集（型の調整は報告で）。
+
+## 4. 追記（2026-11-04 未明、停止点 1 の承認：型案と順序）
+
+**承認**：型案はすべて採る（略記 D A・↑K・PSh C E も報告の定義でよい）。項目ごとの判断：
+
+| # | 判断 |
+| --- | --- |
+| G4 | **既存で済む**：`F2.Presentable.functor_isPresentable (nerve Cᵒᵖ) hE`。新規なし。BS の S4 はこれを使う（Claude が BS に伝える） |
+| G6 | **既存で済む**：`F2.Presentable.Localization.exists_bousfieldLocalEquivalenceReplacement hE w x`（反射まで使うなら `bousfield_isReflectiveSubcategory hE w`）。新規なし。BS に伝える |
+| G7 | 承認。`isExactFunctor_of_adjunction` を `Stable/` に。層圏の安定性は S5 側の前提でよい |
+| Core | 承認。`smallModelNerveComparison C` を `Core/` に（向きは報告のとおり） |
+| G13 | 承認。`discreteSpaceInclusion : nerve (Type u) ⟶ SpaceInfinity.{u}` と `IsFullyFaithful`、述語 `Is0TruncatedSpace` を `F1/` に。BS の `Is0Truncated`（前層圏での本質像）との接続（点ごとの適用と `discretePresheafInclusion` の頂点・辺の式）は BS 側。Claude が伝える |
+| ⊗^L | 承認。`tensorWith M : D A ⟶ D A`（N ↦ N ⊗ᴸ M）と `tensorLeft M`、対称性 `FunctorIso (tensorWith M) (tensorLeft M)` を `Derived/Tensor/` に。BS の `IsThickTensorIdeal.tensor` の欄（現行 `True`）を `∀ x M, P x → P ((tensorWith M).app _ x)` に替えるのは BS 側の調整（Claude が伝える） |
+| G3 | 承認、ただし**紙の筋を先に**（§2-4）：D(A) が A の shift で compact 生成されること、各対象が半自由セル閉包の小模型から filtered 余極限で表示されること、accessibility。既存の部品で足りない箇所を一覧にしてから着手。全小図式の余極限は `Derived/StableLimits` の範囲を確認 |
+| G8 | 承認。まず **BS が要る形**（S4 の篩と表現可能＝集合値の X）で `Map_PSh(X ⋙ tensorSpaceFunctor hE M, F) ≃ Map_E(M, Γ(X, F))` を、草稿の `sectionsOfDiagram X F` の極限に一致する形で供給する。一般の空間値 X（S8-4、`weightedSectionsData` の右 Kan 拡張との比較）は後回し |
+| G12 | 承認、ただし**最後**。EInfinity 側（E2 レーンの範囲）で重い（転送モデル構造の accessible 表示と具体的 nerve への比較）。紙の筋を先に報告してから。非安定な係数での層化は BS 側 |
+| G9・G10 | S3 の経路決定後（保留のまま） |
+
+**順序**：G7 → Core → G13 → ⊗^L → G3（紙の筋 → 証明）→ G8 → G12。項目ごとに別コミットと入口への登録、監査の再生成。
+
+**ビルド**：11-04 未明は論文の層 2a の全ビルドと verify が走っている。新規ファイルの型検査（小さなビルド）も、それが終わるまで待つ（§2-4a：`ps` で `lake build`・`verify.sh` がないことを確かめてから）。Lean のテキストは書き進めてよい。
