@@ -2,12 +2,15 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.2・§2.4 (1)、単位 A2-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
 public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
 
--- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/A0/PrismaticSite.lean、drafts/Sheaves/CAlgValued.lean、
--- drafts/Shared/CosimplicialEInfinity.lean、drafts/DerivedGeneral/CompletionFunctor.lean を import する。
+-- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/A0/{PrismaticSite,CechAlexander}.lean、drafts/Sheaves/CAlgValued.lean、
+-- drafts/Shared/CosimplicialEInfinity.lean、drafts/DerivedGeneral/{CompletionFunctor,ScalarRestriction}.lean を import する。
 
 /-!
 # 導来 prismatic コホモロジー（BS 著者版 Construction 7.6）
@@ -99,8 +102,12 @@ def prismSiteAlgebras (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ 
   map_id := by sorry -- 基底上の恒等射
   map_comp := by sorry -- 基底上の合成
 
+def testSiteRings (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
+    [EssentiallySmall.{u} (PrismOver P S κ)] : (PrismaticSite P S κ)ᵒᵖ ⥤ A_R A :=
+  unopUnop _ ⋙ (equivSmallModel _).inverse ⋙ prismSiteAlgebras P S κ
+
 def polyStructureRing (n : ℕ) : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ ⥤ A_R A :=
-  unopUnop _ ⋙ (equivSmallModel _).inverse ⋙ prismSiteAlgebras P _ _
+  testSiteRings P (polyCompletion P n) (polyCutoff P n)
 
 theorem polyStructureRing_forget (n : ℕ) :
     polyStructureRing P n ⋙ Under.forget (CommRingCat.of A) =
@@ -149,18 +156,47 @@ theorem prismaticCohomologyCAlg_eq_totEInfinity (hP : IsBoundedPrism P) (n : ℕ
   sorry -- 要確認：Shared/CosimplicialEInfinity の totEInfinity_isLimitCone 待ち。
         -- Rem 4.19 の標準余積と S3 で同じ CAlg_A 図式上の極限錐を比較
 
+abbrev polyTest (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :=
+  (equivSmallModel (PrismOver P (polyCompletion P n) (polyCutoff P n))).inverse.obj b.unop.unop
+
+def polyFiberIso (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :
+    VertexIso ((polyStructure P n).app _ (ULift.up (nerveVertex b)))
+      ((algebraEmbedding A).app _ (nerveVertex ((polyStructureRing P n).obj b))) := by
+  sorry -- S2 ringPresheafToCAlg の指定した環での評価
+
+def polyEval (hP : IsBoundedPrism P) (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) :=
+  eqToHom (congrArg HomotopyCategory.mk (polySectionsCone P hP n).property.2.symm) ≫
+    SSet.Truncated.HomotopyCategory.homMk (polySectionsProjection P hP n b) ≫ (polyFiberIso P n b).hom
+
 /-- 概要：Δ_0 : N(Poly k) → 𝒱（多項式代数の射 P → P′ についての関手性）。
 方針：k 代数の射 P → P′ は P′^∧ 上の site から P^∧ 上の site への関手（prism B と R′ → B/dB から R → R′ → B/dB）を誘導し、RΓ の関手性
 （S2 の `derivedGlobalSections_map` の CAlg 版）。∞ 関手としての coherent 性は、Čech–Alexander 模型の厳密な関手性（大きい模型、A0 の
 Constr 4.18）から nerve で。
 規約：持ち上げた形状 `uliftFunctor.obj (polyNerve k)` から。
-使われ方：Kan 延長の入力。
-要確認：site の関手性の coherent な形（1 圏の関手の nerve で足りる：Poly は 1 圏、𝒱 の値は模型の Tot_{E∞} の厳密な関手性）。 -/
-def polyDeltaData (hP : IsBoundedPrism P) :
-    { F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ CompleteCAlg P //
-      ∀ Q : Poly (A ⧸ P.ideal), F.app _ (ULift.up (nerveVertex Q)) = prismaticCohomologyCAlg P hP Q.n } := by
-  sorry -- site の R からの構造射を多項式準同型で前合成。O の同じ制限から RΓ の射を作り、
-        -- cutoff は共通上界で比較して全単体の合成を RΓ の関手性から得る
+使われ方：Kan 延長の入力。 -/
+structure PolyDeltaData (hP : IsBoundedPrism P) where
+  val : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)) ⟶ CompleteCAlg P
+  obj_eq (Q : Poly (A ⧸ P.ideal)) : val.app _ (ULift.up (nerveVertex Q)) = prismaticCohomologyCAlg P hP Q.n
+  map_eval {Q Q' : Poly (A ⧸ P.ideal)} (f : Q ⟶ Q')
+      (b : (PrismaticSite P (polyCompletion P Q.n) (polyCutoff P Q.n))ᵒᵖ)
+      (b' : (PrismaticSite P (polyCompletion P Q'.n) (polyCutoff P Q'.n))ᵒᵖ)
+      (g : OrientedPrism.Hom (polyTest P Q.n b).Q (polyTest P Q'.n b').Q)
+      (hg : g.comp (polyTest P Q.n b).toHom = (polyTest P Q'.n b').toHom)
+      (_ : g.quotientMap.comp ((polyTest P Q.n b).sec.comp (prismPolynomialUnit P (Fin Q.n))) =
+        (polyTest P Q'.n b').sec.comp ((prismPolynomialUnit P (Fin Q'.n)).comp f.toRingHom)) :
+    let D := val ≫ prismCompleteInclusion P
+    let β : (polyStructureRing P Q.n).obj b ⟶ (polyStructureRing P Q'.n).obj b' :=
+      Under.homMk (CommRingCat.ofHom g.toRingHom) (by sorry) -- hg の台の環射の等式
+    let transport (U : Poly (A ⧸ P.ideal)) :=
+      eqToHom (congrArg (fun v => HomotopyCategory.mk ((prismCompleteInclusion P).app _ v)) (obj_eq U))
+    transport Q ≫ polyEval P hP Q.n b ≫
+      SSet.Truncated.HomotopyCategory.homMk ((nerve.edgeMk β).map (algebraEmbedding A)).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk
+        ((uliftEdge (nerve.edgeMk f).toTruncated).map ((truncation 2).map D)) ≫ transport Q' ≫ polyEval P hP Q'.n b'
+
+def polyDeltaData (hP : IsBoundedPrism P) : PolyDeltaData P hP := by
+  sorry -- 要確認：A0/S2 へ。site の R からの構造射を多項式準同型で前合成。共通 cutoff での RΓ の関手性から
+        -- 全単体の合成を得る。map_eval は同じ構造前層の制限を評価した可換四角形
 
 def prismaticCohomologyPolyFunctor (hP : IsBoundedPrism P := by assumption) := (polyDeltaData P hP).val
 
@@ -171,11 +207,28 @@ abbrev prismRestriction := cAlgRestrictScalars P.deltaStructure.frobeniusLift
 方針：A0 の `structurePresheafFrobenius` の CAlg 版と RΓ の関手性。
 規約：φ_{A*} はスカラー制限（CAlg_A 上の関手、G-A2-5）。
 使われ方：Frobenius の Kan 延長。 -/
-def prismaticFrobeniusPoly (hP : IsBoundedPrism P) :
-    ((ihom ((SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)))).obj (CAlg_R A)).Edge
-      (functorVertex (polyUnderlying P hP)) (functorVertex (polyUnderlying P hP ≫ prismRestriction P)) := by
-  sorry -- 各試験 prism B の structurePresheafFrobenius は A→B の φ 半線形な環射。
-        -- cAlgRestrictScalars_algebraEmbedding を通して O の自然変換を RΓ に送る
+def polyTestFrobenius (n : ℕ) (b : (PrismaticSite P (polyCompletion P n) (polyCutoff P n))ᵒᵖ) := by
+  let U := (polyStructureRing P n).obj b
+  let φ := P.deltaStructure.frobeniusLift
+  let Uφ : A_R A := Under.mk (CommRingCat.ofHom (U.hom.hom.comp φ))
+  let g : U ⟶ Uφ := Under.homMk (CommRingCat.ofHom (polyTest P n b).Q.deltaStructure.frobeniusLift)
+    (by sorry) -- toHom は Frobenius と可換
+  exact SSet.Truncated.HomotopyCategory.homMk ((nerve.edgeMk g).map (algebraEmbedding A)).toTruncated ≫
+    (cAlgRestrictScalars_algebraEmbedding φ U).hom
+
+def polyFrobeniusData (hP : IsBoundedPrism P) :
+    { e : ((ihom ((SSet.uliftFunctor.{u+1,u}).obj (polyNerve (A ⧸ P.ideal)))).obj (CAlg_R A)).Edge
+        (functorVertex (polyUnderlying P hP)) (functorVertex (polyUnderlying P hP ≫ prismRestriction P)) //
+      ∀ (Q : Poly (A ⧸ P.ideal)) (b : (PrismaticSite P (polyCompletion P Q.n) (polyCutoff P Q.n))ᵒᵖ),
+        let x := ULift.up (nerveVertex Q)
+        let π := eqToHom (congrArg (fun v => HomotopyCategory.mk ((prismCompleteInclusion P).app _ v))
+          ((polyDeltaData P hP).obj_eq Q)) ≫ polyEval P hP Q.n b
+        π ≫ polyTestFrobenius P Q.n b =
+          functorHomEvaluate (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) x ≫
+            (hoFunctor.map (prismRestriction P)).toFunctor.map π } := by
+  sorry -- structurePresheafFrobenius と RΓ 射影の自然性、cAlgRestrictScalars_algebraEmbedding
+
+def prismaticFrobeniusPoly (hP : IsBoundedPrism P) := (polyFrobeniusData P hP).val
 
 /-! ## 左 Kan 延長（Construction 7.6） -/
 
@@ -201,7 +254,7 @@ def derivedPrismaticCohomology_poly (hP : IsBoundedPrism P) (n : ℕ) :
     let j := polyYoneda (A ⧸ P.ideal)
     let x := ULift.up (nerveVertex (⟨n⟩ : Poly (A ⧸ P.ideal)))
     VertexIso ((j ≫ derivedPrismaticCohomology P hP).app _ x) (prismaticCohomologyCAlg P hP n) :=
-  (polyRecovery P hP).app _ ≪≫ eqToIso (congrArg HomotopyCategory.mk ((polyDeltaData P hP).property ⟨n⟩))
+  (polyRecovery P hP).app _ ≪≫ eqToIso (congrArg HomotopyCategory.mk ((polyDeltaData P hP).obj_eq ⟨n⟩))
 
 abbrev deltaUnderlying (hP : IsBoundedPrism P) := derivedPrismaticCohomology P hP ≫ prismCompleteInclusion P
 
@@ -217,8 +270,8 @@ def frobeniusExtension (hP : IsBoundedPrism P) :
     { e : ((ihom (AnimatedAlgebra k)).obj (CAlg_R A)).Edge (functorVertex H) (functorVertex (H ≫ res)) //
       let ρ := (polyRecovery P hP).postcomp (prismCompleteInclusion P)
       F2.Presentable.precomposeFunctorHom (polyYoneda k)
-        (SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated) ≫ (ρ.postcomp res).hom =
-        ρ.hom ≫ SSet.Truncated.HomotopyCategory₂.homMk (prismaticFrobeniusPoly P hP).toTruncated } := by
+        (SSet.Truncated.HomotopyCategory.homMk e.toTruncated) ≫ (ρ.postcomp res).hom =
+        ρ.hom ≫ SSet.Truncated.HomotopyCategory.homMk (prismaticFrobeniusPoly P hP).toTruncated } := by
   sorry -- 完備圏内で siftedRestriction_equivalence の充満忠実性を使い包含で送る。
         -- φ_* は sifted 余極限を保ち、(p,d) と (p,φ(d)) の根基一致で完備化と両立
 
@@ -242,6 +295,52 @@ def derivedPrismaticCohomologyDerived (hP : IsBoundedPrism P) :
 
 def discreteFrobeniusComponent (hP : IsBoundedPrism P) (U : A_R (A ⧸ P.ideal)) :=
   (derivedPrismaticFrobenius P hP).map (evaluateFunctorAt ((discreteToAnimated _).app _ (nerveVertex U)))
+
+section Evaluation
+variable (S : Type u) [CommRing S] [Algebra (A ⧸ P.ideal) S] (κ : Cardinal.{u})
+  [EssentiallySmall.{u} (PrismOver P S κ)]
+
+abbrev testStructure := Sheaves.ringPresheafToCAlg A (testSiteRings P S κ)
+
+/-- 離散代数値の O の Frobenius。係数射を φ_A と合成して A 線形な射にする。 -/
+def testStructureFrobenius :
+    FunctorHom (testStructure P S κ) (testStructure P S κ ≫ prismRestriction P) := by
+  sorry -- structurePresheafFrobenius と cAlgRestrictScalars_algebraEmbedding。
+        -- 成分は小さい模型に対応する試験 prism B の φ_B
+
+/-- 多項式分解から得た Δ_S を頂点にもつ評価錐。完全 site にはこの錐を制限する。
+各脚は RΓ の評価から誘導され、一般の離散 S に対してこの錐の極限性を使わない。 -/
+def discreteEvaluation (hP : IsBoundedPrism P) :
+    let U := ofAlgebra (A ⧸ P.ideal) S
+    let x := (derivedPrismaticCohomologyDiscrete P hP ≫ prismCompleteInclusion P).app _ (nerveVertex U)
+    Σ c : JoinCone (testStructure P S κ), { v : VertexIso x c.vertex //
+      ∀ b : (PrismaticSite P S κ)ᵒᵖ,
+        let t := ULift.up (nerveVertex b)
+        let π := v.hom ≫ SSet.Truncated.HomotopyCategory.homMk (F2.nativeConeLeg c t)
+        π ≫ functorHomEvaluate (testStructureFrobenius P S κ) t =
+          SSet.Truncated.HomotopyCategory.homMk (discreteFrobeniusComponent P hP U).toTruncated ≫
+            (hoFunctor.map (prismRestriction P)).toFunctor.map π } := by
+  sorry -- 各多項式→S→B/d に対する polySectionsProjection を sifted 表示で合わせる。
+        -- 任意の B は共通 cutoff へ移して評価。Frobenius 両立は同じ RΓ 射影の自然性
+end Evaluation
+
+/-- 任意の完全 prism と B/d≃R に対する Def 8.2 の計算の入口。
+A4 の restrictionSequence をここに逆 import しないため、塔を指定された全頂点・後続辺で受ける。 -/
+def perfdValueOverPrism (hP : IsBoundedPrism P) (_ : P.deltaStructure.IsPerfect)
+    {R : Type u} [CommRing R] (e : A ⧸ P.ideal ≃+* R) (S : A_R R) :
+    (CAlg_R R) _⦋0⦌ := by
+  let U := (Under.map (CommRingCat.ofHom e.toRingHom)).obj S
+  let φ := discreteFrobeniusComponent P hP U
+  let τ := prismRestriction P
+  let iter : ℕ → (CAlg_R A ⟶ CAlg_R A) := Nat.rec (𝟙 _) (fun _ G => τ ≫ G)
+  let T := Classical.choose (show ∃ D : (SSet.uliftFunctor.{u+1,0}).obj (nerve ℕ) ⟶ CAlg_R A,
+    (∀ n : ℕ, D.app _ (ULift.up (nerveVertex n)) =
+      (iter n).app _ ((derivedPrismaticCohomologyDiscrete P hP ≫ prismCompleteInclusion P).app _ (nerveVertex U))) ∧
+    (∀ n : ℕ, D.app _ (ULift.up (ComposableArrows.mk₁ (homOfLE (Nat.le_succ n)))) =
+      (φ.map (iter n)).edge) from by sorry) -- 後続辺の自由な合成から ℕ の図式を選ぶ
+  have h : HasColimit T := by sorry -- CAlg_A は小さい逐次余極限をもつ
+  exact (prismCompletion P ≫ prismCompleteInclusion P ≫ prismModIdeal P ≫
+    cAlgBaseChange e.toRingHom).app _ h.choose.vertex
 
 /-- 概要：H⁰(Δ_R) の環構造（CAlg 値なので H⁰ は可換環）と、A3 の Lemma 7.7(1) の準備（離散なら δ 構造）。
 方針：E∞ 代数の H⁰ は可換環（EInfinity の H⁰ の環構造、E3 の `H0RingData` と同じ）。

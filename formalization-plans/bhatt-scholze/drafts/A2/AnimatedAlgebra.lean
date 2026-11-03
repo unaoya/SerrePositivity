@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.1、単位 A2-1。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
@@ -88,7 +90,7 @@ abbrev polyNerve : SSet.{u} := nerve (Poly k)
 
 /-- 概要：単体的可換 k 代数の ∞ 圏 := P_Σ(N(Poly k))。
 方針：F2 の `SigmaPresheafInfinity`。
-規約：SSet.{u+1}。quasicategory 性は F2 の instance（要確認）。
+規約：SSet.{u+1}。quasicategory 性は F2 の instance。
 使われ方：Δ の始域。 -/
 abbrev AnimatedAlgebra : SSet.{u + 1} := SigmaPresheafInfinity (polyNerve k)
 
@@ -163,7 +165,7 @@ def discretePresheaf : Under (CommRingCat.of k) ⥤ ((Poly k)ᵒᵖ ⥤ Type u) 
 方針：集合値前層の 1 圏の nerve から `PresheafInfinity (polyNerve k)` への射（離散埋め込み）。
 規約：—
 使われ方：`discreteToAnimated`。
-要確認：F1/F2 に「集合値前層の nerve → PresheafInfinity」の射があるか。なければ `SpaceInfinity` の離散埋め込みと ihom で作る。 -/
+離散 Kan 複体を用いて同時評価の nerve をカリー化する。 -/
 def discreteSpaceFunctor : Type u ⥤ KanObject.{u} where
   obj T := ⟨nerve (Discrete T), F2.Compact.discreteNerve_kanComplex T⟩
   map f := nerveMap (Discrete.functor (fun t => Discrete.mk (f t)))
@@ -218,5 +220,12 @@ def animatedPiZeroUnit := (animatedPiZeroAdjunction k).2.unitHom
 def animatedCAlgRealization : AnimatedAlgebra k ⟶ EInfinity.CAlg_R k :=
   siftedLan k (by sorry) -- G12：CAlg(k) は小さい sifted 余極限をもつ
     (polyAlgebraNerve k ≫ EInfinity.Perfectoidization.algebraEmbedding k)
+
+/-- A4 が離散入力へ制限するときの始域の同定。 -/
+def discreteRealizationIso :
+    FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization k)
+      (EInfinity.Perfectoidization.algebraEmbedding k) := by
+  sorry -- 多項式分解の実現。CAlg の sifted 余極限を底の複体で計算すると S[0] に戻り、
+        -- 増大写像は S とその準同型に自然
 
 end SerrePositivity.BhattScholze.Prismatic

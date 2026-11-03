@@ -2,8 +2,13 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.3、単位 A2-3。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Derived.Stability
+public import SerrePositivity.InfinityCategories.Stable.Loop
+public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology}.lean、drafts/DerivedGeneral/Truncation.lean、
--- drafts/A1/HodgeTateComparison.lean（Thm 6.3）、drafts/Shared/DeRhamPolynomial.lean を import する。
+-- drafts/A1/HodgeTateComparison.lean（Thm 6.3）、drafts/Shared/DeRhamPolynomial.lean、drafts/A7/AnimatedDomain.lean を import する。
 
 /-!
 # Hodge–Tate filtration と導来外冪つき余接複体（BS 著者版 Construction 7.6 の第二段落）
@@ -55,6 +60,10 @@ def completeDInclusion (p : ℕ) (k : Type u) [CommRing k] : CompleteD p k ⟶ d
 def pCompletionReflection (p : ℕ) (k : Type u) [CommRing k] :
     Σ L : derivedInfinityCategory k ⟶ CompleteD p k, QCatAdjunction L (completeDInclusion p k) := by
   sorry -- 要確認：DerivedGeneral/CompletionFunctor へ。主元 p の反射の単位・余単位
+
+def pCompletionUnit (p : ℕ) (k : Type u) [CommRing k] :
+    FunctorHom (𝟙 (derivedInfinityCategory k)) ((pCompletionReflection p k).1 ≫ completeDInclusion p k) :=
+  (pCompletionReflection p k).2.unitHom
 
 def completeModuleLan (p : ℕ) (k : Type u) [CommRing k]
     (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ derivedInfinityCategory k) :
@@ -120,7 +129,7 @@ structure HTTower (hP : IsBoundedPrism P) where
     let e := (mapJoinCocone (evaluateFunctorAt x ≫ completeDInclusion p _) augmentation).leg
       (SSet.yonedaEquiv.symm (filtrationIndex i))
     IsIso ((DerivedCategory.homologyFunctor (ModuleCat (A ⧸ P.ideal)) j).map
-      ((derivedInfinityHomotopyEquivalence _).functor.map (SSet.Truncated.HomotopyCategory₂.homMk e)))
+      ((derivedInfinityHomotopyEquivalence _).functor.map (SSet.Truncated.HomotopyCategory.homMk e)))
 
 def hodgeTateTower (hP : IsBoundedPrism P) : HTTower P hP := by
   sorry -- 要確認：DerivedGeneral/Truncation へ。τ≤i の増大列と余単位を Poly 上で取り、
@@ -130,36 +139,97 @@ def hodgeTateTower (hP : IsBoundedPrism P) : HTTower P hP := by
 def hodgeTateFiltration_step (hP : IsBoundedPrism P) (i : ℕ) :
     FunctorHom (hodgeTateFiltration P hP i) (hodgeTateFiltration P hP (i+1)) := by
   let T := hodgeTateTower P hP
-  let e := (uliftEdge.{0,u+1} (nerve.edgeMk (homOfLE (Nat.le_succ i))).toTruncated).map T.diagram
+  let e := (uliftEdge.{0,u+1} (nerve.edgeMk (homOfLE (Nat.le_succ i))).toTruncated).map ((truncation 2).map T.diagram)
   exact eqToHom (congrArg HomotopyCategory.mk (T.level i).symm) ≫
-    SSet.Truncated.HomotopyCategory₂.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk (T.level (i+1)))
+    SSet.Truncated.HomotopyCategory.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk (T.level (i+1)))
 
 def hodgeTateAugmentation (hP : IsBoundedPrism P) (i : ℕ) :
     FunctorHom (hodgeTateFiltration P hP i) (reducedDeltaComplete P hP) := by
   let T := hodgeTateTower P hP
   let e := T.augmentation.leg (SSet.yonedaEquiv.symm (filtrationIndex i))
   exact eqToHom (by simpa using congrArg HomotopyCategory.mk (T.level i).symm) ≫
-    SSet.Truncated.HomotopyCategory₂.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk T.target)
+    SSet.Truncated.HomotopyCategory.homMk e ≫ eqToHom (congrArg HomotopyCategory.mk T.target)
 
-/-- 概要：導来外冪つき余接複体の p 完備化の定義（D33）：(∧^i L_{R/k})^∧ := LΛ_p ∘ Lan（P ↦ Ω̂^i_{P/k}）（完備圏内の sifted 余極限保存延長、W9-I-26）。
-方針：Shared/DeRhamPolynomial の `completedForms` を k 加群として D(k) に埋め、完備圏で Kan 延長。
-規約：i = 1 が余接複体 L^∧_{R/k}。Illusie の定義（単体的分解による Kan 延長）の p 完備化と同じ。
-使われ方：gr の同一視、A5（L_{S/Z_p} の連結性）。 -/
-def cotangentWedge (i : ℕ) : AnimatedAlgebra (A ⧸ P.ideal) ⟶ derivedInfinityCategory (A ⧸ P.ideal) := sorry
--- W9-I-36：完備余接複体・外冪は prism P に依らず**一般の基底 k** で独立に定義する（A3 の qrsp は k = Z_p で使う）。`cotangentWedgeGeneral (k) i :
--- AnimatedAlgebra k ⟶ derivedInfinityCategory k` を置き、上はその k = A/d の場合。評価値の S 加群構造（R 上の加群として）も明記する。
+/-- D4-01。多項式上の通常の外微分形式。f は dX_j を d(f(X_j)) に送る。 -/
+def polyFormsModule (k : Type u) [CommRing k] (i : ℕ) : Poly k ⥤ ModuleCat.{u} k where
+  obj Q := ModuleCat.of k (SerrePositivity.DeRham.forms k (Fin Q.n) i)
+  map {Q Q'} f := by
+    sorry -- a dX₁∧…∧dXᵢ ↦ f(a) d(fX₁)∧…∧d(fXᵢ)、Shared の外積と線形性
+  map_id := by sorry -- 自由基底上で恒等
+  map_comp := by sorry -- 微分と代入の連鎖律
 
-/-- 概要：Thm 6.3 による gr^i の同一視（Poly 上）：τ^{≤i}/τ^{≤i−1} Δ̄_P ≃ H^i(Δ̄_P)[−i] ≃ Ω^i_{P/k}[−i]。
-方針：`truncation_cofiber`（DerivedGeneral）と A1 の `hodgeTate_iso`（η^i : Ω^i ≅ H^i）。自然性は η^* の関手性。
-規約：Ω^i は Shared/DeRhamPolynomial の `completedForms`（p 完備化した多項式代数の微分形式）を A 加群として D(A) に埋めたもの。
-使われ方：gr の同一視の Kan 延長。 -/
-theorem hodgeTatePoly_gr (i : ℕ) : True := by trivial
+def ordinaryFormsDiagram (k : Type u) [CommRing k] (i : ℕ) :
+    (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ derivedInfinityCategory k := by
+  let F := polyFormsModule k i ⋙ moduleSemifreeResolutionFunctor k
+  let N : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ nerve _ :=
+    { app := fun n => ↾fun x => (F.mapComposableArrows _).obj x.down
+      naturality := by sorry } -- 射列の制限と F の合成
+  exact N ≫ closedNerveInclusion k (Semifree k)
 
-/-- 概要：gr^i Fil Δ̄_R ≃ cotangentWedge i (R)[−i]（原典の「Hodge–Tate comparison for Δ̄_R」）。
-方針：LΛ_p は完全で cofiber と交換、Kan 延長は余極限と shift と交換、Poly 上で `hodgeTatePoly_gr`。
-規約：同値は D(A) の可逆な辺、R について自然。
-使われ方：A2-4、A5、A7、A8。 -/
-theorem hodgeTateFiltration_gr (i : ℕ) : True := by trivial
+/-- D33。任意の k に対し LΛ_p∘Lan(Ω^i) を完備圏で取る。 -/
+def cotangentWedgeGeneral (p : ℕ) (k : Type u) [CommRing k] (i : ℕ) :=
+  completeModuleLan p k (ordinaryFormsDiagram k i) ≫ completeDInclusion p k
+
+def cotangentWedge (i : ℕ) := cotangentWedgeGeneral p (A ⧸ P.ideal) i
+
+/-- 離散 S での値は S 加群。k へ係数制限すると上の k 加群を回収する（W9-I-36）。 -/
+def cotangentWedgeAtAlgebra (p : ℕ) (k S : Type u) [CommRing k] [CommRing S] [Algebra k S] (i : ℕ) :
+    Σ M : (CompleteD p S) _⦋0⦌, VertexIso
+      ((completeDInclusion p S ≫ derivedInfinityRestrictScalars (algebraMap k S)).app _ M)
+      ((discreteToAnimated k ≫ cotangentWedgeGeneral p k i).app _
+        (nerveVertex (PerfectoidizationInterface.ofAlgebra k S))) := by
+  sorry -- 多項式分解の各段の Ω^i を S 上に引き戻し、その S 加群の実現を導来 p 完備化
+
+/-- D4-01 の有界な場合。一般の k では左辺を使う。 -/
+theorem polyForms_boundedComparison (hP : IsBoundedPrism P) (n i : ℕ) :
+    let k := A ⧸ P.ideal
+    let F := ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1 ≫ completeDInclusion p k
+    Nonempty (VertexIso (F.app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k))))
+      (moduleHeartVertex k (ModuleCat.of k (SerrePositivity.DeRham.completedForms k (Fin n) p i)))) := by
+  sorry -- 要確認：Shared の completedForms_eq_derivedCompletion_of_boundedTorsion 待ち。
+        -- hP より k=A/d の p 冪ねじれが有界。多項式形式は有限自由
+
+/-- 向きで捻りを同定したあとの cohomological shift [−i]。 -/
+def formShift (k : Type u) [CommRing k] : ℕ → (derivedInfinityCategory k ⟶ derivedInfinityCategory k)
+  | 0 => 𝟙 _
+  | i+1 => formShift k i ≫ loopFunctor _
+
+/-- 0 段は Fil₀、後続段は指定した遷移の cofiber。関手圏での四角形により自然性を含める。 -/
+def IsGradedTerm {K D : SSet.{u+1}} [Quasicategory D] (L : ℕ → (K ⟶ D))
+    (step : ∀ i, FunctorHom (L i) (L (i+1))) (i : ℕ) (W : K ⟶ D) : Prop :=
+  match i with
+  | 0 => Nonempty (FunctorIso (L 0) W)
+  | j+1 =>
+    ∃ e : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom K).obj D))
+        (functorVertex (L j)) (functorVertex (L (j+1))),
+      SSet.Truncated.HomotopyCategory.homMk e = step j ∧
+        ∃ c : CofiberSquare e, Nonempty (VertexIso c.cofiber (functorVertex W))
+
+abbrev filtrationUnderlying (hP : IsBoundedPrism P) (i : ℕ) :=
+  hodgeTateFiltration P hP i ≫ completeDInclusion p _
+
+def polyTruncationIso (hP : IsBoundedPrism P) (i : ℕ) :
+    FunctorIso (polyYoneda _ ≫ filtrationUnderlying P hP i) (hodgeTatePolyTruncated P hP i) := by
+  sorry -- siftedLanIso と、p 完備な切り捨てにおける反射の単位の同型
+
+def polyTruncationStep (hP : IsBoundedPrism P) (i : ℕ) :=
+  (polyTruncationIso P hP i).inv ≫ F2.Presentable.precomposeFunctorHom (polyYoneda _)
+    (F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step P hP i)) ≫
+    (polyTruncationIso P hP (i+1)).hom
+
+/-- 多項式上の gr は LΛ_p Ω^i[−i]。Thm 6.3 の Ω̂^i から D4-01 で移す。 -/
+theorem hodgeTatePoly_gr (i : ℕ) :
+    let k := A ⧸ P.ideal
+    IsGradedTerm (hodgeTatePolyTruncated P hP) (polyTruncationStep P hP) i
+      (ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1 ≫ completeDInclusion p k ≫ formShift k i) := by
+  sorry -- Postnikov cofiber は H^i[−i]。Thm 6.3 の自然な η^i と polyForms_boundedComparison
+
+/-- 完備圏内で延長した gr^i Fil Δ̄ ≃ (∧^i L)^∧[−i]。 -/
+theorem hodgeTateFiltration_gr (i : ℕ) :
+    IsGradedTerm (filtrationUnderlying P hP)
+      (fun j => F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step P hP j)) i
+      (cotangentWedge P i ≫ formShift (A ⧸ P.ideal) i) := by
+  sorry -- hodgeTatePoly_gr の cofiber 四角形を完備圏内で延長。導来完備化は完全
 
 /-- 概要：filtration は exhaustive：**完備圏の余極限で** colim_i^{comp} Fil_i Δ̄_R ≃ Δ̄_R（D(k) の余極限で述べるなら LΛ_p を付ける、W9-I-26）。
 方針：完備圏内の Kan 延長は ℕ 添字の（完備化した）余極限と交換、Poly 上は有限段で止まる（`hodgeTatePoly_bounded`）。

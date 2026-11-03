@@ -2,8 +2,11 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.4、単位 A2-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
+
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,HodgeTateFiltration}.lean、drafts/DerivedGeneral/CompletionFunctor.lean、
--- drafts/A1/HodgeTateComparison.lean（Cor 4.12）を import する。
+-- drafts/A1/HodgeTateComparison.lean（Cor 4.12）、drafts/A7/AnimatedDomain.lean、drafts/DerivedGeneral/ScalarRestriction.lean を import する。
 
 /-!
 # 導来 prismatic コホモロジーの底変換・テンソル・導来 p 完備化不変性（BS 著者版 Construction 7.6 の (4)(5)）
@@ -64,6 +67,11 @@ def completePiZeroReflection (k : Type u) [CommRing k] :
     Σ L : CompleteAnimatedAlgebra p k ⟶ nerve (PerfectoidizationInterface.C_R k p),
       QCatAdjunction L (completeDiscreteToAnimated p k) := by
   sorry -- animatedPiZeroAdjunction の制限。導来 p 完備な複体の各ホモロジー加群は導来 p 完備
+/-- 完備 R 代数から、P/d≃R で底を読み替えた Δ。A7 の animatedDelta の入口。 -/
+def deltaOverQuotientIso {R : Type u} [CommRing R] (e : A ⧸ P.ideal ≃+* R) :
+    CompleteAnimatedAlgebra p R ⟶ CompleteCAlg P :=
+  animatedCompleteInclusion p R ≫ animatedScalarExtension e.symm.toRingHom ≫ derivedPrismaticCohomology P hP
+
 /-- 概要：prism の射 f : (A,(d)) → (A′,(d′)) に沿う始域の底変換 R ↦ R ⊗^L_k k′（P_Σ の関手。Poly 上は多項式代数の底変換で、sifted 余極限保存な延長）。
 方針：Poly k → Poly k′（同じ添字 n）の nerve を P_Σ へ延長。
 規約：k′ = A′/d′。
@@ -137,6 +145,11 @@ theorem derivedPrismaticCohomology_tensor (X Y : (AnimatedAlgebra (A ⧸ P.ideal
     (c : JoinCocone (binaryPointDiagram X Y)) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone (derivedPrismaticCohomology P hP) c) := by
   sorry -- 各変数の多項式 sifted 表示に prismaticCohomologyPoly_tensor を適用して余極限を交換
+
+/-- 空の余積も保つ。二項テンソルと合わせて有限余積の保存になる。 -/
+theorem derivedPrismaticCohomology_initial {X : (AnimatedAlgebra (A ⧸ P.ideal)) _⦋0⦌}
+    (hX : IsInitialVertex X) : IsInitialVertex ((derivedPrismaticCohomology P hP).app _ X) := by
+  sorry -- 始対象は変数 0 の多項式。基底 prism がその site の始対象なので Δ_k=A
 
 /-! ## D32：導来 p 完備化不変性 -/
 
