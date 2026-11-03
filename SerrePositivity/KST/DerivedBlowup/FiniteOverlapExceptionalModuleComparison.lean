@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalTransitionTransformation
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapExceptionalModuleEvaluation
 public import SerrePositivity.KST.DerivedBlowup.TransitionModuleAction
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：KST v4 §3.1・Lemma 3.6（pp.11–14）の図式加群の canonical な局所制限比較射。

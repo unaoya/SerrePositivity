@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.TruncatedTriangles
-public import SerrePositivity.DifferentialGraded.Category.Homotopy
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 辺のホモトピーと閉零射の境界関係
 

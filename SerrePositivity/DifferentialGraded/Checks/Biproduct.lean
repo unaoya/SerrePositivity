@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Biproduct
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7a2：有限直和の全次数作用・普遍性・評価の受入と公理監査 -/

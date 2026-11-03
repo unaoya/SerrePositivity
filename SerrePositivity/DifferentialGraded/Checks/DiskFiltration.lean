@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DiskFiltration
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a9：自由diskの二段sphere filtration -/

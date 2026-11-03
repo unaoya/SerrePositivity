@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCellSourceProjective
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRightProjective
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfect
 
 /-!

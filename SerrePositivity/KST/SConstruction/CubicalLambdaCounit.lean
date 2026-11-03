@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CubicalLambdaDiagonal
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
 
 /-! # Λ の元の Serre 増大による実 dg 関手

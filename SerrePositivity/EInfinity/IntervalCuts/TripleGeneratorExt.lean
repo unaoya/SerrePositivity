@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.IntervalCuts.GeneratorLinearExt
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 語基底と区間三生成元による全整数三重テンソル射の外延性

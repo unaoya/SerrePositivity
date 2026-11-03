@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ClosedCompositionCochain
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Basic
 /-! 挿入した比較 cochain を全次数の加群 Hom 後合成へ移し、Yoneda の全次数での自然性を示す。 -/
 @[expose] public section
 open CategoryTheory Limits MonoidalCategory CochainComplex HomComplex

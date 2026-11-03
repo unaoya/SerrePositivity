@@ -89,9 +89,11 @@ lemma rightFrameComparison_quasiIso (X : (Complex A)) (n : SimplexCategory) :
 使われ方：余テンソルの境界包含に沿う fibration の証明。 -/
 lemma rightFrame_cofibrant (X : (Complex A)) :
     let := projectiveModelCategory A
+    letI : Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
     reedyLeft simplex (cofibrations (Complex A)ᵒᵖ)
       (Limits.initial.to (rightFrame A X)) := by
   let := projectiveModelCategory A
+  letI : Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   exact (rightFrameFamily A).cofibrant (op X)
 
 /-- 概要：右 frame のすべての単体作用素は弱同値（Hovey §5.2）。

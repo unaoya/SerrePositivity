@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeCone
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 /-!
 概要：一段 cone 表示のラベル型に、全 Hom を保持する dg 圏と固定関手作用を与える。
 方針：実 cone 評価から Hom 複体を引き戻し、同じ延長比較を一般共役入口へ渡す。

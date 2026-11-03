@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：H⁰ の同じ実 Hom 写像の全単射性から、元の Hom 鎖写像の H⁰ 準同型性を得る。
 方針：cycle の標準ホモロジー類の関手自然性を全単射と共役する。

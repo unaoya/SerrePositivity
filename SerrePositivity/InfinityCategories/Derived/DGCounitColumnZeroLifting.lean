@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCounitColumn
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionComponents
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：同じ余単位の H⁰ 普遍性を、実次数零 cycle の持ち上げと境界反映へ移す。
 方針：閉射の同じ合成と Hom の商の代表を使い、実境界原始元を回収する。

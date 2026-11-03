@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.BasedEndColumnAction
-public import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：始点保存自己写像のブロックを零次数に固定し、列への後合成を制限で計算する。
 方針：次数移送と直和包含の交換を等号の消去で示し、既存の閉包含合成則を使う。

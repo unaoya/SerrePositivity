@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：選んだ実加群部分圏の Yoneda と shift 同型。
 方針：制限 Yoneda に同じ shift 比較を適用する。

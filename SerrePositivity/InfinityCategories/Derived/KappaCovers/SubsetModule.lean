@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
-public import SerrePositivity.DifferentialGraded.Complexes.CoproductSupport
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-!
 概要：セルの部分族の余積を、全セルの余積へ分裂単射で入れる。

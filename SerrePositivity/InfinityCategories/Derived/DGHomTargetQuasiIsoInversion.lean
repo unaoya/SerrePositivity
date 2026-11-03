@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetTransportRepresentation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnderlyingCosliceTransport
 public import SerrePositivity.InfinityCategories.Derived.DGClosedCosliceTransport
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 /-!
 概要：全 Hom 後合成の準同型性を同じ空間値 Hom 関手の実辺の可逆性へ昇格する。
 方針：同じ実 coslice 輸送と pointed 全空間の比較を使う。

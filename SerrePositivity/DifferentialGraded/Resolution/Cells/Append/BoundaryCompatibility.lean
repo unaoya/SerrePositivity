@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryCochain
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryAssociativity
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
-public import SerrePositivity.DifferentialGraded.Complexes.TensorClosedZero
-public import SerrePositivity.DifferentialGraded.Complexes.PrefixTensorCochainAction
-public import SerrePositivity.DifferentialGraded.Complexes.PrefixTensorCochainPrecomp
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
+
 
 /-!
 # Resolution.Cells.Append.BoundaryCompatibility

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.GradedExtensionProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # U10b4c：Hom短完全列とsemifree有限段の受入検査 -/
 @[expose] public section

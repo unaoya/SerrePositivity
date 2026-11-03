@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FreeHom
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 自由加群の全次数 Hom 複体同型の受入検証 -/

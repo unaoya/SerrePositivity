@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ParameterCross
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # パラメータ横断のパラメータ射に関する自然性
 概要：K′→K は、加群値を横切る元の符号付き交換と可換である。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
-public import SerrePositivity.DifferentialGraded.Complexes.DiskGenerator
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-! # 全次数 Hom end の元の判定と自然性
 概要：Hom end の斉次元を全対象の評価で判定し、全次数の自然性を回収する。

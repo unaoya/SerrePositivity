@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.HomDegrees
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：元の graded bar の斉次自己作用素を、MC 後の実 bar の全 Hom に移す。
 方針：全評価 cochain の成分を保持し、両端の変形後も同じ符号付き自然性を検証する。

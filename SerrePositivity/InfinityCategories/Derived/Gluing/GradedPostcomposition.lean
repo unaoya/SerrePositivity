@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 任意 dg 圏の全次数の後合成、その Yoneda 評価、および実 dg 関手との整合。 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 /-!
 概要：R の代表加群からの実 pinched Hom の後合成は、加群の準同型を全空間同値へ送る。
 方針：代表加群の射影性で全 Hom 鎖写像の準同型性を示し、実 pinched 空間に送る。

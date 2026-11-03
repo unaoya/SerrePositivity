@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.LeftUnit
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来左単位経路と制限後の既存左単位子の一致を検査

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CochainConnectiveLift
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：smart 非正次数切断への、負次数の任意元と非正次数の閉元の実持ち上げ。

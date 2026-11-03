@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
-public import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：元の coherent bar の MC 方程式を、各元の summand からの式へ帰着する。
 方針：同じ直和からの全 Hom の直積表示と、閉包含による制限の微分・合成保存を使う。

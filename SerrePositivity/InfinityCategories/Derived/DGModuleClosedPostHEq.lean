@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 
 /-!

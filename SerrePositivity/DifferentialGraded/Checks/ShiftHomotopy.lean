@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftHomotopy
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # U8a2：全次数 shift・境界保存・K(D) の整合的 shift -/
 @[expose] public section

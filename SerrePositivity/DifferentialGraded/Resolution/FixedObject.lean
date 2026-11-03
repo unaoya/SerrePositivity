@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Basic
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionTriangleFamily
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagon
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
+
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Path
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
 

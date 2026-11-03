@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedOperations
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
-public import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 /-!

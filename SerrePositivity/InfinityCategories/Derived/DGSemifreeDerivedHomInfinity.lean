@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation
-public import SerrePositivity.DifferentialGraded.Module.RingDGComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
 /-!
 概要：半自由 dg 加群の全 Hom 複体を、半自由 R 加群値の実共変・反変 ∞ 関手へ移す。

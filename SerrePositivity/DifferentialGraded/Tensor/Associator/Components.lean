@@ -3,13 +3,13 @@ module
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
-public import SerrePositivity.DifferentialGraded.Complexes.MapEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.MapComponentFunctions
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
-public import SerrePositivity.DifferentialGraded.Module.HomWhisker
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 # Tensor.Associator.Components

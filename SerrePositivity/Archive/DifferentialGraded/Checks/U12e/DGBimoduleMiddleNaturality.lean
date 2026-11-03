@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparisonLocalization
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 中間dg圏の比較の両因子自然性と前因子の全導来圏への降下の検査

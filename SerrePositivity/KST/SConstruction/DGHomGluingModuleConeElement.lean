@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeComposition
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # 三成分 cone 作用の実加群 Hom 元
 概要：左右の斉次自然変換と第三成分から、実 end 内の cone 間の元を作る。

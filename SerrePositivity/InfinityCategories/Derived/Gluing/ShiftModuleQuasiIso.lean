@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleMap
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomModuleEvaluation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelShiftRepresentativeHomotopy
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! 同じ全 dg 自然なシフト加群比較自身の objectwise quasi-isomorphism 性。 -/
 @[expose] public section

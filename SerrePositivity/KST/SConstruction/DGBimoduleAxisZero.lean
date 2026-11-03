@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGBimoduleClosedZero
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 指定閉零対象での双加群の実零値
 概要：左右どちらかの指定閉零対象における双加群の値は、全複体として実零となる。

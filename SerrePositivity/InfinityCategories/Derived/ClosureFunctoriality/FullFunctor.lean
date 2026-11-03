@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FamilyImage
 public import SerrePositivity.KST.NonConnective.DGKappaConeInput
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：実同型による像の被覆を、固定した充満部分 dg 圏間の関手へ移す。

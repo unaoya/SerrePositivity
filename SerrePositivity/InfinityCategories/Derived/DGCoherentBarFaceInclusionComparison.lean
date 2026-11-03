@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnitShiftBlockInclusion
 public import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedInclusions
-public import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：元の面列をシフト包含に合成した係数を、同じ削除単体の bar 包含へ戻す。

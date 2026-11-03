@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
-public import SerrePositivity.DifferentialGraded.Module.CellLifting
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：右加群と全 Hom 自然な双加群の実同値を通じ、全次数全射性と準同型性を移す。
 方針：同じ評価自然同型と同値の余単位に沿って、実射の性質を照合する。

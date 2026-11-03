@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeFamilyHomDifferential
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeCoordinates
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：指定された native 余錐から全正規化 bar の実 dg 増大射を回収する。

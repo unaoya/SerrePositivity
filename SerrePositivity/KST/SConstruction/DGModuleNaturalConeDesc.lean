@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGConeDescModuleNaturality
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：同じ全自然な指定零化から実 cone の全厳密比較を構成する。

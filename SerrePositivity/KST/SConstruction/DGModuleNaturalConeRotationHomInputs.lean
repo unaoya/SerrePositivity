@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeLift
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGModuleClosedLeftShiftNaturality
 public import SerrePositivity.KST.SConstruction.DGModuleConeNullLeftShiftNaturality
-public import SerrePositivity.DifferentialGraded.Module.ConeRotationInputs
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-!
 概要：元実回転比較の同じ第一・第二成分に全自然性と閉条件を与える。

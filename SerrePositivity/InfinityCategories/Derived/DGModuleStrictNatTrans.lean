@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
-public import SerrePositivity.DifferentialGraded.Module.HomWhisker
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! # 全 Hom 自然な閉加群射族の厳密 dg 自然変換
 

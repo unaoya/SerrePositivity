@@ -5,8 +5,9 @@ module
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
--- 本ファイルは drafts/A5/PerfectSiteComparison.lean、drafts/A4/Perfectoidization.lean、drafts/A3/LciAndQuasiregular.lean、
+-- 本ファイルは drafts/A5/PerfectSite.lean（比較写像。W9-III-09：PerfectSiteComparison＝Prop 8.5 の証明は本ファイルより後）、drafts/A4/Perfectoidization.lean、drafts/A3/LciAndQuasiregular.lean、
 -- drafts/A2/{HodgeTateFiltration,BaseChangeAndTensor}.lean、drafts/DerivedGeneral/Truncation.lean を import する。
+-- G-A7-5 の芯は drafts/A7/DiscreteCore.lean（W9-II-24：UniversalProperty ではなく A5 より先に置く独立ファイル）を import する。
 
 /-!
 # semiperfectoid の場合（BS 著者版 Prop 8.5 の証明 (4)）
@@ -70,8 +71,9 @@ theorem derivedPrismaticCohomology_baseIndep : True := by trivial
 使われ方：以下。 -/
 def IsSemiperfectoid : Prop := sorry
 
-/-- 概要：G-A5-11：semiperfectoid S では L_{S/R}^∧[−1] が連結（S/p が semiperfect なので Ω^1_{(S/p)/F_p} = 0、L は次数 −1 以下）。
-方針：perfectoid T → S 全射から L_{S/T}^∧ = (I/I²)^∧[1]-型、`cotangent_perfectoid_vanish`。A3 の qrsp（`IsQuasiregularSemiperfectoid`）の隣。
+/-- 概要：G-A5-11：semiperfectoid S では L_{S/R}^∧[−1] が連結（S/p が semiperfect なので Ω^1_{(S/p)/F_p} = 0、L^∧ は**次数 −1 以下**。
+「次数 −1 集中」や (I/I²)^∧[1] との同一視は qrsp/lci 型の別条件で、ここでは使わない。W9-II-14）。
+方針：振幅の上界：perfectoid T → S 全射で L_{S/T}^∧ は次数 ≤ −1（H⁻¹ は (I/I²)^∧ の記述に使うだけ）、`cotangent_perfectoid_vanish`。
 規約：導来 p 完備化、ホモロジー的連結性。
 使われ方：`hodgeTate_connective_of_semiperfectoid`。 -/
 theorem cotangent_shift_connective_of_semiperfectoid (hS : IsSemiperfectoid p R S) : True := by trivial

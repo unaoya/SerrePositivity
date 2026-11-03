@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ShiftModuleQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! 同じ全 dg 自然なシフト比較を K(Gluing) の同型へ送り、全整数シフトを表現する。 -/
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
-public import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：coherent bar の頂点 summand を通る二乗項は消える。
 方針：元の包含を全次数合成の中間で移し、頂点での元の列が零であることを使う。

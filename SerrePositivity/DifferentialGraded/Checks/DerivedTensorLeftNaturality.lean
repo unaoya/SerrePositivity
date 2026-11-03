@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.RightTensorLeftFunctor
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左加群の射による導来tensor自然変換の受入検査 -/

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalMaps
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 元の鎖区間の Serre 対角
 概要：零頂点をその二重 tensor、辺を zero⊗edge+edge⊗one に送る chain map を作る。

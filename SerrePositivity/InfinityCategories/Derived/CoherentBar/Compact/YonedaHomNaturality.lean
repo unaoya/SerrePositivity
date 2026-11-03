@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.RepresentableEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
 public import SerrePositivity.InfinityCategories.DGNerve.Checks
 /-!

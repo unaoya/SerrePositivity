@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramGaugeFunctor
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST v4 §3.1（pp.11–14）の捻りを表す gauge 制限は全次数 Hom を保つ。

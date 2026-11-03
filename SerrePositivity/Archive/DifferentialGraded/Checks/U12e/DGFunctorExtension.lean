@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
-public import SerrePositivity.DifferentialGraded.Module.FunctorGraphActions
+public import SerrePositivity.DifferentialGraded.Derived.Functor
+public import SerrePositivity.DifferentialGraded.Module.Functor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # graph tensorの導来延長・代表加群比較・独立宇宙の監査

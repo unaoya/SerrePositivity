@@ -166,3 +166,37 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 3. **監査**：`make_area_audits.py` に area がないので、手書きの `scripts/audit_infinity_f2_exchange.lean` を**削除**する（B は archive、A・C は移った先の監査へ）。A と C（支え 3 本を含む）の全モジュールがどれかの監査の一覧に入ることを確かめ、入らないものは移った先の層の監査（生成分なら area の再生成、手書きなら import 行の追加）に加える。verify の監査は自動列挙なので、削除だけで一覧から消える。`w2b-r73-audits.json` の案をこれに合わせる。
 
 **次**：§3.1（キャッシュから復元 → before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド（移動先・分割先・直接の利用者。未検出 3 辺の削除の確認を含む）→ after snapshot → 保存比較）→ **停止点 2**。小さなビルドだけ。**下流 13,149 本と verify は暦 #10 の合図（DG-W3 の後、見込み 11-04）を待つ。**
+
+## 13. 追記（2026-11-03、復元の停止への回答：rsync はやめてキャッシュから、main（1-4 取り込み後）を先に取り込む）
+
+**受領**：§12 の W2b 判定の実装（fc047fd80、18 試験 PASS）、rsync の復元 14 分で終了コード 23（`build/ir/…ModelBifibrantSourceRoofCornerEvaluation.c` の消失、現在は両側に存在）、main と依存先ソース 9 本の差分。
+
+1. **終了コード 23 の扱い**：無害。消失は、同じ時刻に Claude が main で `lake build`（1-4 取り込み後の温め：ルート＋監査対象、11-02 深夜）を走らせていたためで、生成出力が書き直された瞬間に当たった。`warm_build_dir.sh` は DG の道具なので**変えない**（build/ir の許容追加は要らない）。
+2. **復元は rsync ではなくキャッシュから**（IF-W2a-2 で行ったのと同じ：`lake build <根>` で復元、数分）。rsync は「キャッシュにない成果物が要るとき」の予備で、今回は要らない。main から複製した成果物は main の**現在の**ソース（1-4 後）に対応しており、worktree のソースと食い違う（差分 9 本がそれ）。`lake build` の trace 検査がモジュールごとに正しい版を復元するので、複製した `.lake/build` はそのまま置いて `lake build` を走らせればよい。
+3. **main を先に取り込む**：`infra/if-w2b` は 85cb45f1a（1-4 前）から切ってある。**今 main（a682ec32b、1-4 を含む）を merge してから** before snapshot を取る。before ＝ merge 後の状態。1-4 は InfinityCategories を触っていない（Claude が確認）。KST・EInfinity・監査では 6 本（下の一覧）を触っているので、W2b が同じファイルの import 行を書き換える場合は merge で両方を残す。**下流ビルド（#10）の前にもう一度 main（DG-W3 取り込み後）を merge** し、内部ビルドと静的検査を再実行してから下流に入る（DG-W3 は DG の土台を 608 → 48 に統合するので、Derived・KST などの import 行が変わる）。
+4. **再開**：main の merge → キャッシュから復元（`lake build` で before の対象の根）→ before snapshot v3b → R73 → R37 → R38 の適用（3 コミット）→ 内部ビルド → after snapshot → 保存比較 → **停止点 2**。
+   1-4 が触った 6 本：
+   - `scripts/audit/adams.lean`
+   - `scripts/audit/shared.lean`
+   - `scripts/audit_clmst.lean`
+   - `scripts/audit_euler_betti_finite_support.lean`
+   - `scripts/audit_euler_group_shared.lean`
+   - `scripts/audit_triangulated_k0_shift_shared.lean`
+
+### §7 の追記（2026-11-02 20:00）
+
+4. `snapshot_batch.py` が v1 の `hash_algorithm` 名だけを検査するため、DG-W3 では実行時ラッパーで v3b の名前に合わせている。**現行の名前（`… proof-irrelevant v3b (term-level, proof marker)`）を受け付ける**ように直す（試験 1 件、別コミット）。
+5. 判断表に「**束縛子の型の明示**」を加える（DG-W3 §9 で承認：省略した束縛子の型が、環境に新たに入った instance に捕まって別の型に推論されるとき、前の型を明示する。条件は宇宙の明示と同じ）。
+
+## 14. 追記（2026-11-02 深夜、§5-3 の停止への回答：配置は宣言単位の依存で決め直し、補充は許される層の中で行う）
+
+**受領**：main merge（408b0f05a、衝突なし）、復元 14 秒、before snapshot v3b 3,616 本（28 分）、R73・R37・R38 の適用（4d02ee532・d12e85d0e・9c38c984e）、適用後の静的検査 PASS（直接違反 294 → 18、中核の順序違反 0、禁止モジュール 1/166/166 → 0/150/150、archive 利用者 0、監査収録漏れ 0）、内部ビルド 1,128/1,899 まで進んで失敗 57 本、`SpecifiedApexConeRestrictions`（Core）が `SpecifiedApexLimitConeTransport`（F1）を型に使う。
+
+**判断**：
+
+1. **失敗 57 本の内訳**（Claude が `w2b-section13-stop.json` と `pending-imports.json` で確認）：unknown identifier 28、unknown namespace 15（Mathlib の `MonoidalCategory` など）、unknown constant 7（`SSet.Homotopy` など）、invalid field 4、failed to synthesize 2、型の不一致 1。いずれも **prune で落ちた import の補充**で直る型で、`proposals` の補充先は Mathlib と同じ層以下のモジュール。判断表の「補充の import」として**そのまま当ててよい**（禁止辺・上の層への辺にならないものに限る）。
+2. **禁止辺になる 1 本**：`Core/FilteredExchange/SpecifiedApexConeRestrictions` の Core への配置が誤り。配置の規則（§9）が「直接 import の層の最大値」だったため、構造体の型を通じた依存（`SpecifiedApexLimitConeTransport.apex`・`.diagram`）を見落とした。**配置を F1（`F1/FilteredExchange/`）へ直す**（束の中の move。違反にならない）。
+3. **配置の規則の最終形**：モジュール M の置き先は、**M の宣言が使う定数の定義元モジュール全部の層の最大値**（snapshot の `used_constants` → 定義元、推移的でなく直接の使用でよい）以上で最も低い層。直接 import だけで決めない。A の全モジュールと R37・R38 の split 先について**この規則で再計算し、食い違うものを補充の前に動かす**（補充が禁止辺になる事態をなくす）。再計算は snapshot のデータだけで済むのでビルド不要。
+4. 補充の import は、置き先と同じ層以下と Mathlib・Foundation に限る。上の層が要るなら 3 で置き先を上げる。禁止領域（KST・DG・EInfinity・モデル圏の HA・Derived・ModelBridge）が要るなら止める（§5-3 はこの場合だけ）。
+
+**再開**：3 の再計算と配置の修正（別コミット「配置の修正」）→ 補充の import（別コミット「補充」、件数と一覧）→ 内部ビルドの続き（残り 771 対象＋失敗 57 本）→ after snapshot v3b → 保存比較 → **停止点 2**（配置修正・補充・修飾などの件数、round の表、静的指標の前後）。

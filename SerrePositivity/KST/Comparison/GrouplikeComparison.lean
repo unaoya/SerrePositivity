@@ -43,7 +43,7 @@ theorem monoidGroupCompletionMap_localized_isIso (M : SimplicialObject MonCat.{u
     congr 1
     exact terminalIsTerminal.hom_ext _ _⟩
   let : IsIso (terminal.from (Δ[0] : SSet.{u})) :=
-    isIso_of_isTerminal SSet.stdSimplex.isTerminalObj₀ terminalIsTerminal _
+    isIso_of_isTerminal SSet.stdSimplex.isTerminalObj₀.{u} terminalIsTerminal _
   have hs : IsHomotopyPullback sq := by
     apply (isHomotopyPullback_iff_of_localized_isIso
       (regularBarFiber_isPullback M).toCommSq sq

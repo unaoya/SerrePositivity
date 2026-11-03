@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Category.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.Unit
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.Algebra.Homology.Embedding.TruncLE
 public import Mathlib.Algebra.Homology.ShortComplex.ModuleCat

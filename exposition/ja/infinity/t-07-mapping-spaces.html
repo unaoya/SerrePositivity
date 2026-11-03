@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>写像空間</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 7</nav>
+<h1>第 III 部 7　写像空間</h1>
+
+<div class="env definition" id="def-pinched-hom">
+<p class="env-head">定義 7.1 <span class="env-name">（写像空間 \(\mathrm{Hom}^L\)、\(\mathrm{Hom}^R\)）</span></p>
+<div class="env-body">
+<p>単体的集合 \(C\) の頂点 \(x,y\) について、コスライスの射影 \(C_{x/}\to C\) の \(y\) 上のファイバーを \(\mathrm{Hom}^L_C(x,y)\)、スライスの射影 \(C_{/y}\to C\) の \(x\) 上のファイバーを \(\mathrm{Hom}^R_C(x,y)\) とおく（スライス・コスライスとその射影は<a href="t-04-join-slice.html#def-slice">定義 4.5</a>・<a href="t-04-join-slice.html#def-slice-projection">定義 4.7</a>、ファイバーは<a href="t-06-fiber-products.html#def-fiber">定義 6.2</a>）。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-pinched-hom-kan">
+<p class="env-head">定理 7.2 <span class="env-name">（写像空間は Kan 複体）</span></p>
+<div class="env-body">
+<p>\(C\) が quasicategory なら、頂点 \(x,y\) について \(\mathrm{Hom}^L_C(x,y)\) と \(\mathrm{Hom}^R_C(x,y)\)（<a href="#def-pinched-hom">定義 7.1</a>）は Kan 複体である。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

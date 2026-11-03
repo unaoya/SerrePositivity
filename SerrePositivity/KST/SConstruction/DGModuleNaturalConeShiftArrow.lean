@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransWhisker
-public import SerrePositivity.DifferentialGraded.Module.ShiftHom
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：元全厳密比較の dg shift が同じ実加群 shift 射を保つことを示す。

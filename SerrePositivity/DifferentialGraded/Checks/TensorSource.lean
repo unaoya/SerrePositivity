@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.TensorSource
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-! # U10b3b：固定複体とのtensorの余極限保存 -/
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeBoundary
-public import SerrePositivity.DifferentialGraded.Complexes.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 
 /-!
 概要：元厳密比較と標準右包含の合成を零化する元左包含の全次数自然性を保持する。

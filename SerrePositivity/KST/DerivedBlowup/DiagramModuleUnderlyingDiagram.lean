@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnitCoherence
-public import SerrePositivity.DifferentialGraded.Module.Left
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 概要：KST §3.1 の図式加群の指定単位矢に沿う underlying 複体図式。

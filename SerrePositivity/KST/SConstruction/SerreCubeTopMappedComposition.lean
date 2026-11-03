@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreCubeTopCompositionImage
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 元の分割最高生成元像と厳密 dg 関手
 概要：元の tensor 分割・豊穣合成の最高生成元像を、実 dg 関手の値でも回収する。

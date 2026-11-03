@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeExtension
-public import SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport
-public import SerrePositivity.DifferentialGraded.Module.ConeFunctor
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：自由表示の二対象と元の閉射を保持する、小さい cone 表示を構成する。
 方針：閉射を評価前のラベルに残し、延長像を両端の実比較同型で輸送する。

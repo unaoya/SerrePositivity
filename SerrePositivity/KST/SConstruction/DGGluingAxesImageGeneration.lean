@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesPerfectGeneration
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionTriangles
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-! # 元の実 dg 関手像における二軸生成判定
 概要：元の gluing を送る同じ dg 関手の像は、元の二軸の像から生成される。

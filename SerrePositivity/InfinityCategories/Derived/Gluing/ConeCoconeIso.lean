@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoconeComparison
-public import SerrePositivity.DifferentialGraded.Complexes.ConeElements
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 /-! 二重 cone の比較は、全整数次数の四成分を交換する実鎖同型。 -/
 @[expose] public section
 open CategoryTheory Limits CochainComplex HomComplex

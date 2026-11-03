@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeNullCochain
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UnitCochainElement
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! 指定した native の零ホモトピーを、Yoneda の全 Hom 写像で同じ加群境界元へ送る。 -/
 @[expose] public section

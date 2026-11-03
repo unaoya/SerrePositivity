@@ -26,10 +26,10 @@ def connectiveHomHomologyIso (x y : D) (n : ℕ) :
   let K := homObject S D x y
   let e := ComplexShape.embeddingUpIntLE 0
   have he : e.f n = -(n : ℤ) := by simp [e]
-  have := K.quasiIsoAt_ιTruncLE e he
+  have := HomologicalComplex.quasiIsoAt_ιTruncLE K e he
   exact ((K.truncLE' e).extendHomologyIso e he).symm ≪≫
     (HomologicalComplex.homologyFunctor _ _ (-(n : ℤ))).mapIso (K.truncLEIso e).symm ≪≫
-      isoOfQuasiIsoAt (K.ιTruncLE e) (-(n : ℤ))
+      isoOfQuasiIsoAt (HomologicalComplex.ιTruncLE K e) (-(n : ℤ))
 
 /-- 概要：実際の pinched Moore 複体のホモロジーは H^{-n} Hom の宇宙持ち上げである。
 方針：複体の同型をホモロジーに送り、完全な ULift のホモロジー交換を使う。

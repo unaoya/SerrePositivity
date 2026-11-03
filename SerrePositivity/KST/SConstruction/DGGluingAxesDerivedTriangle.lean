@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ConeTriangles
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleThirdTransport
 
 /-! # 元の二軸代表の指定導来圏内の三角形

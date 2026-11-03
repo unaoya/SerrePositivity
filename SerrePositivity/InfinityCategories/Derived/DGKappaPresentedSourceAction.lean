@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceModel
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 /-!
 概要：小さい出発提示を保持する模型に実 dg 延長の作用を与える。

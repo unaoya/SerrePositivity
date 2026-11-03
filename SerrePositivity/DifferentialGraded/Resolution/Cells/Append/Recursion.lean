@@ -4,9 +4,9 @@ public import SerrePositivity.DifferentialGraded.Resolution.Cells.Boundary
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
-public import SerrePositivity.DifferentialGraded.Complexes.TensorJoinRightAction
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryUnit
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproductExt
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
+
 
 /-!
 # Resolution.Cells.Append.Recursion

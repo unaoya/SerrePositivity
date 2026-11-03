@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RingComplexColimits
-public import SerrePositivity.DifferentialGraded.Module.RingProjective
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
-public import SerrePositivity.DifferentialGraded.Complexes.SphereHom
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：K-projective 複体の余積・次数付き分裂拡大・分裂逐次余極限の閉性。

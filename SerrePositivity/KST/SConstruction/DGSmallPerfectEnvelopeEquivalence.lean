@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
 public import SerrePositivity.KST.SConstruction.PerfectDGStableModel
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 指定延長像を保持した小さい Perf 模型の準同値
 概要：元の小代表系を含む模型の包含は準同値であり、元の全 Perf の安定性を反映する。

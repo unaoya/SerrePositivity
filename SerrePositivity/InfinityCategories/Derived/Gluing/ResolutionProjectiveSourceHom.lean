@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ResolutionHomAugmentationChainHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionProjection
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! 射影的な実入力を始域とすると、同じ分解の半自由出力 Hom 射影は準同型。 -/
 @[expose] public section

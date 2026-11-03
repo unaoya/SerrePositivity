@@ -56,6 +56,6 @@ theorem nonempty_perfectoidizationInterfaceCAlg : Nonempty (PerfectoidizationInt
 規約：公開名・型は Inputs のまま。
 使われ方：E3 の消去。 -/
 theorem exists_perfectoidizationInterfaceE3' : Nonempty (PerfectoidizationInterfaceE3 R p hR) :=
-  nonempty_e3_of_cAlg R p hR (nonempty_perfectoidizationInterfaceCAlg R p hR)
+  nonempty_e3_of_cAlg R p (hR := hR) (nonempty_perfectoidizationInterfaceCAlg R p hR) -- hR は暗黙引数（W9-III-13）
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

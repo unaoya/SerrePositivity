@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearComplexShift
-public import SerrePositivity.DifferentialGraded.Complexes.ConeElements
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 
 /-!
 # 一般の線形加法圏の写像複体と cone の比較

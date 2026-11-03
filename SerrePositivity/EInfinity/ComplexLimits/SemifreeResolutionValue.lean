@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionAugmentation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation
-public import SerrePositivity.DifferentialGraded.Derived.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 # 既存 D(R) 値解像の同じ実値と元の複体への準同型

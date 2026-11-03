@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 係数の全 Yoneda 同型による前後合成の評価と、同じ元の加群作用。 -/
 @[expose] public section

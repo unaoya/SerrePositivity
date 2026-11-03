@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionLeftUnitComputation
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来bimodule合成の左右単位と解像度比較の監査

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitElements
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：零 shift の斉次射影を、既存の零 shift 同型の閉零射として読む。

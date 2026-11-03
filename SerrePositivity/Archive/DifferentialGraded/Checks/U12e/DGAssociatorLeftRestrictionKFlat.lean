@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeftRestrictionModel
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeft
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 固定右K-flat二因子の導来結合子と外側左制限の検査

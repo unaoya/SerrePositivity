@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomotopyEvaluationTriangles
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # K(D)の評価関手の三角性の受入検査 -/
 @[expose] public section

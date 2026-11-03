@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullCriterion
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
-public import SerrePositivity.DifferentialGraded.Module.AcyclicTriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges
 public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
 

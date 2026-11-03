@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaComonoids
 public import SerrePositivity.KST.SConstruction.ComonoidTensorDiagonal
 public import SerrePositivity.KST.SConstruction.DGTensorFunctor
 public import SerrePositivity.DifferentialGraded.Category.Tensor
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # Λ の元の Serre 対角による実 dg 関手
 概要：各 Hom の元の Serre 対角を、Λ から実 dg tensor への関手へ束ねる。

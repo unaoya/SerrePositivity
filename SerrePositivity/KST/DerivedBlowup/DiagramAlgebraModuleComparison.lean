@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraVertex
 public import SerrePositivity.KST.DerivedBlowup.TransitionModuleNaturality
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：KST §3.1 の一対象正規表示に沿う図式加群の指定局所比較。

@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.PinchedClosedPrecomposi
 public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
 public import SerrePositivity.InfinityCategories.Derived.PinchedChainMapQuasiIso
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEdges
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # 可逆な実閉辺による全 Hom と pinched Hom の前合成同値
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
-public import SerrePositivity.DifferentialGraded.Functor.ContractingElements
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
 
 /-! # dg 関手の nerve は実零対象を保存する

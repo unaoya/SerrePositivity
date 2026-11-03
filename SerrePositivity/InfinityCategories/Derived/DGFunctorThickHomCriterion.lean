@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.Adjunction.Construction
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Derived.HomotopicallyProjective
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftHomQuasiIso
 /-!
 概要：元の dg 関手の自由生成代表上の Hom 準同型性から全 Hom 準同型性を検出する。

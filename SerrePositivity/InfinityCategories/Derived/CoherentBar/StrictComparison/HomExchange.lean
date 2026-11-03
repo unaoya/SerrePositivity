@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：閉零射による全次数 Hom の前後合成と微分の可換式を成分で公開する。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.MappingHomotopyGroups
 public import SerrePositivity.InfinityCategories.Derived.DerivedComparison
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedPiZero
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyLinear
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexCohomology
 public import Mathlib.Algebra.Homology.DerivedCategory.Linear
 

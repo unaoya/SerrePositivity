@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomRestoration
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeFullCoefficient
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：任意の native 余錐から回収した Hom 候補は閉じ、同じ正規化実 bar からの実加群射を与える。
 方針：回収単体の HA 方程式で微分の全 native 列を消し、全次数 Hom の単射性で判定する。

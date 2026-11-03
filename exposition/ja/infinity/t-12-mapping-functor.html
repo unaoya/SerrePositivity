@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>関手 Map</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 12</nav>
+<h1>第 III 部 12　twisted arrow と関手 Map</h1>
+
+<div class="env definition" id="def-opposite">
+<p class="env-head">定義 12.1 <span class="env-name">（反対の単体的集合）</span></p>
+<div class="env-body">
+<p>\(\theta\colon[m]\to[n]\) について \(\theta^{\mathrm{rev}}\colon[m]\to[n]\) を \(\theta^{\mathrm{rev}}(i)=n-\theta(m-i)\) で定める。単体的集合 \(X\) の反対 \(X^{\mathrm{op}}\) を</p>
+<p>\[X^{\mathrm{op}}([n])=X([n]),\qquad X^{\mathrm{op}}(\theta)=X(\theta^{\mathrm{rev}})\]</p>
+<p>で定める。単体的集合の射 \(f\colon X\to Y\) について、同じ成分の写像で \(f^{\mathrm{op}}\colon X^{\mathrm{op}}\to Y^{\mathrm{op}}\) を定める。単体的集合の射 \(X^{\mathrm{op}}\to Y\) と射 \(X\to Y^{\mathrm{op}}\) は、同じ成分の写像として一対一に対応する。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-twisted-arrow">
+<p class="env-head">定義 12.2 <span class="env-name">（twisted arrow \(\mathrm{Tw}(C)\)）</span></p>
+<div class="env-body">
+<p>単体的集合 \(C\) について、単体的集合 \(\mathrm{Tw}(C)\) を</p>
+<p>\[\mathrm{Tw}(C)([n])=\mathrm{Hom}_{\mathrm{sSet}}\bigl((\Delta^n)^{\mathrm{op}}\star\Delta^n,\ C\bigr)\]</p>
+<p>で定め、\(\theta\colon[m]\to[n]\) は \((\theta_*)^{\mathrm{op}}\star\theta_*\colon(\Delta^m)^{\mathrm{op}}\star\Delta^m\to(\Delta^n)^{\mathrm{op}}\star\Delta^n\) の前合成で作用させる（反対は<a href="#def-opposite">定義 12.1</a>、join とその関手性は<a href="t-04-join-slice.html#def-join">定義 4.3</a>・<a href="t-04-join-slice.html#def-join-functor">定義 4.4</a>、\(\theta_*\) は<a href="t-02-kan-category.html#def-fun">定義 2.2</a>）。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-twisted-arrow-projection">
+<p class="env-head">定義 12.3 <span class="env-name">（\(\mathrm{Tw}(C)\) の射影）</span></p>
+<div class="env-body">
+<p>\(n\) 単体 \(\sigma\colon(\Delta^n)^{\mathrm{op}}\star\Delta^n\to C\) について、包含 \(\iota_{(\Delta^n)^{\mathrm{op}}}\)、\(\iota_{\Delta^n}\)（<a href="t-04-join-slice.html#def-join-functor">定義 4.4</a>）への制限は射 \((\Delta^n)^{\mathrm{op}}\to C\) と \(\Delta^n\to C\) である。前者を<a href="#def-opposite">定義 12.1</a> の対応で \(\Delta^n\to C^{\mathrm{op}}\) とみて、射</p>
+<p>\[\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\]</p>
+<p>を定める（積は<a href="t-02-kan-category.html#def-product">定義 2.1</a>。\(\Delta^n\) からの射と \(n\) 単体は米田の補題で同一視する）。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-twisted-arrow-left-fibration">
+<p class="env-head">定理 12.4 <span class="env-name">（\(\mathrm{Tw}(C)\) は左 fibration）</span></p>
+<div class="env-body">
+<p>\(C\) が quasicategory なら、射影 \(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\)（<a href="#def-twisted-arrow-projection">定義 12.3</a>）は左 fibration（<a href="t-05-fibrations.html#def-fibrations">定義 5.3</a>）である。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-twisted-arrow">
+<p class="env-head">注意 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p>\(C\) が小さければ \(\mathrm{Tw}(C)\) は小さく、射影 \(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) は小さいファイバーをもつ（<a href="t-11-straightening.html#def-small-fibers">定義 11.2</a>）。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-map-functor">
+<p class="env-head">定義 12.5 <span class="env-name">（関手 \(\mathrm{Map}_C\)）</span></p>
+<div class="env-body">
+<p>\(C\) を小さい quasicategory とする。<a href="#thm-twisted-arrow-left-fibration">定理 12.4</a> と上の注意により、射影 \(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\) は小さいファイバーをもつ左 fibration なので、その straightening（<a href="t-11-straightening.html#def-straightening">定義 11.3</a>）</p>
+<p>\[\mathrm{Map}_C=\mathrm{St}\bigl(\mathrm{Tw}(C)\to C^{\mathrm{op}}\times C\bigr)\colon C^{\mathrm{op}}\times C\to\mathcal S\]</p>
+<p>を \(C\) の写像空間の関手と定める。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

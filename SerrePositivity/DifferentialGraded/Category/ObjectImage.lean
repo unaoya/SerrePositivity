@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 対象ラベルで指定した dg 圏の充満像
 

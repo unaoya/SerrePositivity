@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>始対象と終対象</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 8</nav>
+<h1>第 III 部 8　始対象と終対象</h1>
+
+<div class="env definition" id="def-initial">
+<p class="env-head">定義 8.1 <span class="env-name">（始対象）</span></p>
+<div class="env-body">
+<p>quasicategory \(C\) の頂点 \(x\) が始対象であるとは、コスライスの射影 \(C_{x/}\to C\)（<a href="t-04-join-slice.html#def-slice-projection">定義 4.7</a>）が trivial Kan fibration（<a href="t-05-fibrations.html#def-fibrations">定義 5.3</a>）であることをいう。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-initial-equiv">
+<p class="env-head">定理 8.2 <span class="env-name">（始対象の写像空間による特徴づけ）</span></p>
+<div class="env-body">
+<p>quasicategory \(C\) の頂点 \(x\) について、次は同値である。</p>
+<ol>
+  <li>\(x\) は始対象である（<a href="#def-initial">定義 8.1</a>）。</li>
+  <li>すべての頂点 \(y\) について \(\mathrm{Hom}^L_C(x,y)\)（<a href="t-07-mapping-spaces.html#def-pinched-hom">定義 7.1</a>）は可縮である（<a href="t-05-fibrations.html#def-contractible">定義 5.4</a>）。</li>
+</ol>
+</div>
+</div>
+
+<div class="env definition" id="def-terminal">
+<p class="env-head">定義 8.3 <span class="env-name">（終対象）</span></p>
+<div class="env-body">
+<p>quasicategory \(C\) の頂点 \(y\) が終対象であるとは、スライスの射影 \(C_{/y}\to C\)（<a href="t-04-join-slice.html#def-slice-projection">定義 4.7</a>）が trivial Kan fibration（<a href="t-05-fibrations.html#def-fibrations">定義 5.3</a>）であることをいう。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-terminal-equiv">
+<p class="env-head">定理 8.4 <span class="env-name">（終対象の写像空間による特徴づけ）</span></p>
+<div class="env-body">
+<p>quasicategory \(C\) の頂点 \(y\) について、次は同値である。</p>
+<ol>
+  <li>\(y\) は終対象である（<a href="#def-terminal">定義 8.3</a>）。</li>
+  <li>すべての頂点 \(x\) について \(\mathrm{Hom}^R_C(x,y)\)（<a href="t-07-mapping-spaces.html#def-pinched-hom">定義 7.1</a>）は可縮である（<a href="t-05-fibrations.html#def-contractible">定義 5.4</a>）。</li>
+</ol>
+</div>
+</div>
+
+</main>
+</body>
+</html>

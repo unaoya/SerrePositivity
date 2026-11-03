@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionTriangleFamily
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来bimodule合成の三角恒等式の監査

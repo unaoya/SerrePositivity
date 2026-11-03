@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutDiagram
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentStageColimit
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：実正規化 bar は実 dg 次元段階の可算余極限。

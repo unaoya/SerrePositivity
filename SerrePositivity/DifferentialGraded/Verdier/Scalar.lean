@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import Mathlib.CategoryTheory.Adjunction.Unique
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeRotationTriangle
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # 全dg自然な回転比較と三角形の回転同型の受入検査 -/
 @[expose] public section

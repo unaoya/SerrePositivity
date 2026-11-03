@@ -3,16 +3,16 @@ module
 public import SerrePositivity.DifferentialGraded.Quotient.Append
 public import SerrePositivity.DifferentialGraded.Quotient.Composition
 public import SerrePositivity.DifferentialGraded.Quotient.Scalar
-public import SerrePositivity.DifferentialGraded.Functor.ContractingElements
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 public import SerrePositivity.DifferentialGraded.Quotient.Erasure
 public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
-public import SerrePositivity.DifferentialGraded.Complexes.TensorJoinEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochainEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochainLeftMap
-public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochainNaturality
-public import SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.PerturbationMap
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
+
+
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # Quotient.Path.Evaluation

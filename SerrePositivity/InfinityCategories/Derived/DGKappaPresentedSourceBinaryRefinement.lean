@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCommonSource
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCommonOperations
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproductUniversal
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 /-!
 概要：異なる出発コードと arrow を持つ二つの提示対象の直和を同じ提示模型で表す。
 方針：二つの出発圏を一つへまとめ、seed の精密化と共通源の二項直和を使う。

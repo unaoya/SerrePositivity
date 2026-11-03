@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGParameterPullback
 public import SerrePositivity.KST.SConstruction.DGParameterCrossNaturality
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 左 tensor パラメータ作用の引き戻し
 概要：パラメータ複体の射と、元の balanced tensor の作用が可換である。

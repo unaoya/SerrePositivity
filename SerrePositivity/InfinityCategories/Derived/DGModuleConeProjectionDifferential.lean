@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveEdges
-public import SerrePositivity.DifferentialGraded.Module.ConeElements
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # dg 加群の cone の第二射影の微分
 

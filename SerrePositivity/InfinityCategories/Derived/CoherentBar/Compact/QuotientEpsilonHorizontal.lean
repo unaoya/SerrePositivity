@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
-public import SerrePositivity.DifferentialGraded.Functor.Tensor
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 

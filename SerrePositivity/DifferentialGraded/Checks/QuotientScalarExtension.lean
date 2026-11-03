@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
 public import Mathlib.Data.ZMod.Basic
 

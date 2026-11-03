@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.MaurerCartanModuleMap
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：零 MC 要素による微分変更は、元の全 dg 加群と同型である。

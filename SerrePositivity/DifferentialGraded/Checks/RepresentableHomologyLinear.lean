@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyNaturality
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来Hom計算の線形性とcycle類の自然性の検査 -/

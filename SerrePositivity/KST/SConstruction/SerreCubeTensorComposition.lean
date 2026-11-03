@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreCubeTensorPairFaces
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 元の左右 Hom 鎖射の実 tensor 合成
 概要：元の左右 cube の Hom 鎖射を、元の実 tensor 比較と豊穣合成で連結する。

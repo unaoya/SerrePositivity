@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.GradedSplitElements
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Basic
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # U10b4b：全次数分裂から得られるHom制限の全射性 -/
 @[expose] public section

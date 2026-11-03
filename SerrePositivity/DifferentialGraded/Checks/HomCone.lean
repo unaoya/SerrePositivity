@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomConeIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # U10b6c：全Hom endのcone比較の受入検査 -/
 @[expose] public section

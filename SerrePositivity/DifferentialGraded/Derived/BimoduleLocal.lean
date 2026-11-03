@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagon
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionTriangleFamily
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionValueNaturality
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
+
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 
 /-! # U12e-local：局所Hom K-flat条件下の全導来bimodule合成
 

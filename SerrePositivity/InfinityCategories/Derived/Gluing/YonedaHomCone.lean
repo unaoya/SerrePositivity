@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModulePostAction
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeLeftModule
-public import SerrePositivity.DifferentialGraded.Module.HomConeIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 既存の全 Hom 円錐比較を Yoneda 評価の標準円錐写像と同定する。 -/
 @[expose] public section

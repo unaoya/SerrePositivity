@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
 /-! # 実 graph 延長の恒等比較と全 Hom 自然性

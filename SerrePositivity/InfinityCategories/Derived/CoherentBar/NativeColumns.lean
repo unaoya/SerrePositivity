@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedTargetHom
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarColumnAction
-public import SerrePositivity.DifferentialGraded.Module.Zero
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：正規化実 bar を頂点とする native 余錐の全単体成分を構成する。
 方針：元の符号付き shift 包含を正規化射影へ送り、同じ MC 標的へ成分を保って移す。

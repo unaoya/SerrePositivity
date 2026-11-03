@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.NormalizedShiftInverseImage
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 正規化した逆斉次元による augmentation の厳密正方形。 -/
 @[expose] public section

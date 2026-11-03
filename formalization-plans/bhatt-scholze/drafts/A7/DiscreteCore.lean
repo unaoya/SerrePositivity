@@ -1,0 +1,59 @@
+-- 将来の置き場所：SerrePositivity.BhattScholze.Perfectoidization.Derived.DiscreteCore（仮。原典 Cor 8.14 前半の芯）
+-- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3・§5（配置、W9-II-24）、単位 A7-2。基準コミット 972bb7f53。ビルドしない。
+module
+
+public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
+-- 本ファイルは drafts/A4/Perfectoidization.lean、drafts/DerivedGeneral/Truncation.lean だけを import する（A5 より先に置く）。
+
+/-!
+# 芯 G-A7-5：S_perfd が離散なら perfectoid（BS 著者版 Cor 8.14 前半）
+
+## 概要
+S_perfd 離散 ⇒ Δ_{S/A,perf} 離散（d 進 Nakayama）⇒ 完全 p 完備 δ 環（A4 Lemma 8.4 (b)）⇒ 完全 prism（A4）⇒ S_perfd = Δ_perf/d は perfectoid 環（Thm 3.10）。
+
+## 方針
+W9-II-24 で A7/UniversalProperty.lean から切り出した。A5-2（semiperfectoid の場合：連結性を前置してここへ渡す）と A7-2（Cor 8.14）が共有するので、
+入力を A4・導来 Nakayama・完全 prism の商だけに限り、Prop 8.5・Cor 8.14 後半に依存しない独立ファイルにする。所有単位は A7-2 のまま。
+
+## 規約
+S は導来 p 完備な R 代数（離散版。animated 版は `perfectoidizationAnimated` の制限で同じ主張）。`IsDiscrete`（EInfinity/Perfectoidization/Comparison）。
+
+## 使われ方
+A5-2 `perfectoidization_discrete_of_semiperfectoid`・`perfectoidization_isIntegralPerfectoid_of_semiperfectoid`、A7-2 `perfectoidization_isPerfectoidization_of_discrete`。
+-/
+
+@[expose] public section
+noncomputable section
+universe u
+open CategoryTheory
+
+namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
+
+open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EInfinity.Perfectoidization
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+
+variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
+variable (S : Type u) [CommRing S] [Algebra R S]
+
+/-! ## G-A7-5：芯（A5-2 と共有） -/
+
+/-- 概要：S_perfd が離散なら Δ_{S/A,perf} も離散（d 進 Nakayama：d 完備で mod d が離散）。
+方針：DerivedGeneral/Truncation。
+規約：`IsDiscrete`。
+使われ方：芯。 -/
+theorem prismaticPerfection_discrete_of_perfectoidization_discrete (h : True) : True := by trivial
+
+/-- 概要：S_perfd 離散 ⇒ (H⁰(Δ_perf), (d)) は完全 prism（A4 `prismaticPerfection_h0_perfectDelta`・`prismaticPerfectionPrism`）。
+方針：上と A4。
+規約：`OrientedPrism`。
+使われ方：perfectoid 性。 -/
+theorem perfectoidization_perfectPrism_of_discrete (h : True) : True := by trivial
+
+/-- 概要：Cor 8.14 前半：S_perfd 離散 ⇒ S_perfd（環として H⁰）は perfectoid（完全 prism の商、`quotient_isIntegralPerfectoid`）。
+方針：上。A5-2 の `perfectoidization_isIntegralPerfectoid_of_semiperfectoid` はこれに連結性を前置したもの。
+規約：`IsIntegralPerfectoid (H⁰) p`。
+使われ方：`universal` の第一成分。 -/
+theorem perfectoidization_isIntegralPerfectoid_of_discrete (h : True) : True := by trivial
+
+end SerrePositivity.BhattScholze.Perfectoidization.Derived

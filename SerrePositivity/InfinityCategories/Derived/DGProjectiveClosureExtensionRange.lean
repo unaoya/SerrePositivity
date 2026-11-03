@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyRangeClosure
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureProperty
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
-public import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 /-!
 概要：加群値 dg 関手による seed 延長の代表化を、演算閉包の全段階へ伝播する。
 方針：ホモトピー同型による像の演算閉性と、既存の超限閉包の帰納法を使う。

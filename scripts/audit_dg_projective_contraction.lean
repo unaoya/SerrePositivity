@@ -1,11 +1,11 @@
-import SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
+import SerrePositivity.DifferentialGraded.Derived.Basic
 import Lean
 
 /-! 新葉の全宣言を標準三公理で監査し、明示境界の公開型を照合する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
-  let target := `SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
+  let target := `SerrePositivity.DifferentialGraded.Derived.Basic
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

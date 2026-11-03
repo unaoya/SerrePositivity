@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaCategory
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightComposition
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
 
 /-! comma 合成の第三 cochain の第一項を、実斉次元の式へ回収する。 -/
 @[expose] public section

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ColimitHom
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import Mathlib.CategoryTheory.Functor.OfSequence
 
 /-! # U10b5b：主Hom endの余極限から極限への普遍性 -/

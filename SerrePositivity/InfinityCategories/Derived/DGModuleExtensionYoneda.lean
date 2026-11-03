@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 
 /-! # dg 加群延長と Yoneda の全次数自然性
 

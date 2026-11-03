@@ -39,17 +39,17 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <h2>2. 導来 prismatic コホモロジー（Construction 7.6〜Prop 7.10）</h2>
 <p><b>Construction 7.6.</b> 有界 prism \((A,I)\) 上、p 完全 smooth な \(A/I\) 代数の \(\Delta_{R/A}\) を左 Kan 延長して、任意の導来 p 完備な単体的 \(A/I\) 代数に \(\Delta_{R/A}\) を定める。HT 比較から \(\overline\Delta_{R/A}\) は \(\wedge^iL_{R/(A/I)}\{-i\}[-i]\) を次数商とする filtration を持ち、(1) smooth なら元と一致、(2) étale 層、(3) 完全 prism 上で quasisyntomic 層、(4) 底変換と可換、(5) 余極限と可換（対称モノイダル）。</p>
-<p><b>Lemma 7.7・7.8.</b> \(\Delta_{R/A}\) が離散なら δ 構造を持ち（W₂ への切断を Čech–Alexander 複体から移す）、prism になり、\((R/A)_\Delta\) の弱始対象。Lemma 7.8（冪等完備な圏の一般論）で始対象はその冪等元の像。<b>Ex 7.9.</b> \(R=A/(I,f_1,\dots,f_r)\)（Koszul 正則）なら \(\Delta_{R/A}=A\{f/d\}^\wedge\)（prismatic envelope）で、始対象。<b>Prop 7.10.</b> quasiregular semiperfectoid な \(S\) では \(\Delta_{S/A}\) は離散で \(\Delta^{\mathrm{init}}_S\) と一致し、\(S\to\Delta_S\) は p 完全忠実平坦。証明は \(T=R\langle X_1^{1/p^\infty},\dots,X_r^{1/p^\infty}\rangle/(X_i-f_i)\) という正則 semiperfectoid 環の場合に帰着し、Ex 7.9 を使う。</p>
+<p><b>Lemma 7.7・7.8.</b> \(\Delta_{R/A}\) （原典の仮定は \(\overline{\Delta}_{R/A}\) ＝ \(\Delta_{R/A}/d\) が次数 0 に集中すること。そこから \(\Delta\) の離散性と d の正則性が出る）なら δ 構造を持ち（W₂ への切断を Čech–Alexander 複体から移す。形式化では p ねじれなしの場合と envelope の場合だけ、a3-design D36）、prism になり、\((R/A)_\Delta\) の弱始対象。Lemma 7.8（冪等完備な圏の一般論）で始対象はその冪等元の像。<b>Ex 7.9.</b> \(R=A/(I,f_1,\dots,f_r)\)（Koszul 正則）なら \(\Delta_{R/A}=A\{f/d\}^\wedge\)（prismatic envelope）で、始対象。<b>Prop 7.10.</b> quasiregular semiperfectoid な \(S\) では \(\Delta_{S/A}\) は離散で \(\Delta^{\mathrm{init}}_S\) と一致し、\(S\to\overline{\Delta}_S=\Delta_S/d\) は p 完全忠実平坦。証明は \(T=R\langle X_1^{1/p^\infty},\dots,X_r^{1/p^\infty}\rangle/(X_i-f_i)\) という正則 semiperfectoid 環の場合に帰着し、Ex 7.9 を使う。</p>
 <div class="box">
 <p class="label">既存のコードとの関係</p>
-<p>W3 で残す <code>Semiperfectoid/RootEnvelope/</code> は、完全 prism 上の \(X^p-b\) 族の割り算包（\(A\{f/d\}\) の形の envelope）が離散で p 完全忠実平坦であること、その完全化が perfectoid 候補と一致することを示している。これは Prop 7.10 の証明で帰着先になる \(T\) の envelope（Ex 7.9）の計算そのものに近く、A3 で \(\Delta_T\) を既存の環と比べるときの材料になる見込み（A3 の設計で確かめる）。</p>
+<p>W3 で残す <code>Semiperfectoid/RootEnvelope/</code> は、完全 prism 上の \(X^p-b\) 族の割り算包（\(A\{f/d\}\) の形の envelope）が離散で p 完全忠実平坦であること、その完全化が perfectoid 候補と一致することを示している。A3 の設計（a6 以前、2026-11-02、Codex W9 §8.6 の対応表）で確かめた範囲：\(X^p-b\) 族の表示と A3 の \(X_i-f_i\)（\(A_{\inf}(R\langle X^{1/p^\infty}\rangle)\) 上）は完全化前には別の対象で、\(\Delta_T\) 自体とは同一視しない。完全化後は「互換 p 冪根を指定する普遍性」で \((\Delta_T)_{\mathrm{perf}}\) と既存の完全な候補 prism（deltaRootPrism）が一意に同型になり、離散性・H⁰・完備化の部品（perfectPrismRootSource_pure、deltaRootPDCompletedPerfectionEquiv など）を再利用できる。</p>
 </div>
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2。∞ 圏側の P_Σ（提供済み）を読み取り専用で使う</td></tr>
 <tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造と始対象</td><td class="todo">未</td><td>A3</td></tr>
-<tr><td>Ex 7.9</td><td>lci 商の \(\Delta\) は prismatic envelope</td><td class="todo">未</td><td>A3。完全 prism 上の \(X^p-b\) 族の envelope の計算は Semiperfectoid/RootEnvelope/（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/RootEnvelope/PerfectPrism.lean">PerfectPrism:229</a> の <code>perfectPrismRootSource_pure</code> ほか）</td></tr>
+<tr><td>Ex 7.9</td><td>lci 商の \(\Delta\) は prismatic envelope</td><td class="todo">未</td><td>A3（a3-design §2.2、W9 で訂正：普遍の場合 → B := LΛ(E ⊗^L_U A) を Δ と同一視 → HT で離散 → 通常の δ 押し出しの普遍性で envelope・全 prism の始対象。envelope の A_0 上の平坦性は元の δ 代数上には移らない）。RootEnvelope の再利用は完全化後の比較だけ</td></tr>
 <tr><td>Prop 7.10</td><td>qrsp の \(\Delta_S\) は離散で始対象、\(S\to\Delta_S\) は p 完全忠実平坦</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
 </table></div>
 
@@ -149,7 +149,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
   <li>Cor 7.3（B3）は Prop 7.2 を経ずに、完全試験 prism への写像の始対象として作る。完全化の後では \(d\) が非零因子なので超限帰納が要らない。</li>
   <li>Thm 7.4（B4）は W3 で原典どおり André 経由になる。André を使わない証明は別名で残る。</li>
   <li>Thm 7.14 は反復の構造は原典どおりで、一段の拡大だけが別経路（Rem 7.15 の pd 計算）。原典に揃えない（BR30 は 2026-11-02 に閉じた、D38）。</li>
-  <li>§7.2（Construction 7.6、Lemma 7.7、Ex 7.9、Prop 7.10）は未形式化で、E3 の Def 8.2 の土台（A2・A3）。RootEnvelope/ は Ex 7.9 の envelope の計算に近い。</li>
+  <li>§7.2（Construction 7.6、Lemma 7.7、Ex 7.9、Prop 7.10）は未形式化で、E3 の Def 8.2 の土台（A2・A3）。RootEnvelope/ は Ex 7.9 の envelope と完全化後に普遍性で比較できる（完全化前の \(\Delta_T\) とは別の対象）。</li>
 </ol>
 </main>
 </body>

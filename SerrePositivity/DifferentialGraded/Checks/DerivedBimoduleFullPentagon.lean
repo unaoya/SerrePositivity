@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagon
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来因子の五角恒等式とパラメータ族の監査

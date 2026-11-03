@@ -22,7 +22,9 @@ D(A) 側の G10（Δ 上の極限 ＝ 全複体）。
 
 ## 規約
 E∞ 構造の明示的な構成は EInfinity の operad の形に合わせる（要確認：EInfinity の Barratt–Eccles 作用素が余鎖に作用する形で公開されているか）。
-正規化と非正規化は擬同型（Dold–Kan）。
+正規化と非正規化は擬同型（Dold–Kan）。ただし W9-I-24：複体の擬同型だけでは E∞ 構造の比較にならない。**正規化模型を選んで** CAlg の
+ホモトピー整合的な錐を構成し（U で見た underlying cone が各項への射影の錐に一致すること）、AW 積との比較を示す。非正規化模型への
+E∞ 構造の移送を使うなら、その比較射を明記する。
 
 ## 使われ方
 A2-2（Δ_0 の CAlg 値が Čech–Alexander 模型の Tot_{E∞}）、A1 の D27（模型の cup 積と抽象的な環構造の一致）、A4（Frobenius 余極限の E∞ 構造）。
@@ -64,8 +66,9 @@ theorem totEInfinity_forget (X : CosimplicialAlgebra A) : True := by trivial
 theorem totEInfinity_cohomologyRing (X : CosimplicialAlgebra A) : True := by trivial
 
 /-- 概要：Tot_{E∞}(X^•) は CAlg_A における余単体的図式 [n] ↦ X^n（離散 E∞ 代数）の Δ 上の極限。
-方針：U は極限錐を保ち反映（Sheaves/CAlgValued）、D(A) 側は G10（Δ 上の極限 ＝ 全複体）。
-規約：錐は各項への射影。
+方針：まず CAlg_A のホモトピー整合的な錐（正規化模型から）を構成し、その underlying cone を各項への射影の錐と同一視してから、U が極限錐を
+保ち反映すること（Sheaves/CAlgValued）と D(A) 側の G10（Δ 上の極限 ＝ 全複体）を使う（W9-I-24：「各項への射影」だけでは CAlg の錐を指定していない）。
+規約：錐は CAlg_A の JoinCone。
 使われ方：CAlg 値の脚注 10。 -/
 theorem totEInfinity_isLimitCone (X : CosimplicialAlgebra A) : True := by trivial
 

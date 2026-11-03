@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
 
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition
 public import Mathlib.Algebra.Category.ModuleCat.EpiMono
 public import Mathlib.Algebra.Category.ModuleCat.FilteredColimits

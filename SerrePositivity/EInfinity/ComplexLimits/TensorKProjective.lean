@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveHom
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 public import Mathlib.Algebra.Homology.BifunctorHomotopy
 
 /-!

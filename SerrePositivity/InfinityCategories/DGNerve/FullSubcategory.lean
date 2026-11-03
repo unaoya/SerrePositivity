@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-! # 充満 dg 部分圏の dg nerve の像

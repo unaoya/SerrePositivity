@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 全 Hom の鎖同型に沿う dg 圏構造の移送。単位と合成を共役し、三つの圏法則を証明する。 -/
 @[expose] public section

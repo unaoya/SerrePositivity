@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGNerveNoninjectiveCutP
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorInjectiveNaturality
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorEmptyCut
 public import SerrePositivity.InfinityCategories.Derived.DGTensorElementCalculus
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorEdge
 /-!
 概要：全次元 tensor 候補の非単射成分は、高次では零、二点では同じ単位に一致する。

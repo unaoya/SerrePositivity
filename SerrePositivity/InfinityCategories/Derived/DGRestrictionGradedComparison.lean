@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGYonedaGradedPrimitives
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
-public import SerrePositivity.DifferentialGraded.Module.RestrictionRepresentable
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 
 /-! # 制限代表比較の全次数 Yoneda 評価
 

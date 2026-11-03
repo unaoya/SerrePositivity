@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ファイバー積</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 6</nav>
+<h1>第 III 部 6　ファイバー積とファイバー</h1>
+
+<div class="env definition" id="def-fiber-product">
+<p class="env-head">定義 6.1 <span class="env-name">（ファイバー積）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(f\colon X\to Z\)、\(g\colon Y\to Z\) について、単体的集合 \(X\times_ZY\) を</p>
+<p>\[(X\times_ZY)([m])=\{(x,y)\in X([m])\times Y([m])\mid f(x)=g(y)\}\]</p>
+<p>で定め、\(\theta\) は成分ごとに作用させる。これは積 \(X\times Y\)（<a href="t-02-kan-category.html#def-product">定義 2.1</a>）の部分単体的集合（<a href="t-01-definitions.html#def-subsset">定義 1.4</a>）である。射影 \(X\times_ZY\to X\)、\(X\times_ZY\to Y\) を成分への射影で定める。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-fiber-product-pullback">
+<p class="env-head">注意 <span class="env-name">（引き戻し）</span></p>
+<div class="env-body">
+<p>\(X\times_ZY\) と二つの射影は、単体的集合の圏における \(f\) と \(g\) の引き戻しである。単体的集合の極限は段ごとに集合の極限として計算できる。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-fiber">
+<p class="env-head">定義 6.2 <span class="env-name">（頂点上のファイバー）</span></p>
+<div class="env-body">
+<p>単体的集合 \(B\) の頂点とは \(B([0])\) の元のことであり、米田の補題により射 \(\Delta^0\to B\) と同一視する。単体的集合の射 \(q\colon E\to B\) と頂点 \(b\colon\Delta^0\to B\) について、ファイバー積（<a href="#def-fiber-product">定義 6.1</a>）</p>
+<p>\[E_b=E\times_B\Delta^0\]</p>
+<p>を \(q\) の \(b\) 上のファイバーという。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-fiber-subset">
+<p class="env-head">注意 <span class="env-name">（ファイバーの具体形）</span></p>
+<div class="env-body">
+<p>\(\Delta^0\) は各段が一点なので、\(c_m\colon[m]\to[0]\) を唯一の射として、\(E_b\) は \(E\) の部分単体的集合</p>
+<p>\[E_b([m])=\{e\in E([m])\mid q(e)=B(c_m)(b)\}\]</p>
+<p>と同一視できる。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

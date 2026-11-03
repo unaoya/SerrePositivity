@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.KernelCells
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # U10a4：全dg自然なcone延長とkernel内でのcycle消去 -/
 @[expose] public section

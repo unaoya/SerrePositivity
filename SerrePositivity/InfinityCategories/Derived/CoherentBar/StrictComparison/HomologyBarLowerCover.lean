@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarLowerEmbedding
-public import SerrePositivity.DifferentialGraded.Complexes.CoproductSupport
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import Mathlib.CategoryTheory.Filtered.Basic
 
 /-!

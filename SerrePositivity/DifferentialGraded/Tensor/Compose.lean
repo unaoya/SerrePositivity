@@ -2,16 +2,16 @@ module
 
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
-public import SerrePositivity.DifferentialGraded.Module.Cylinder
-public import SerrePositivity.DifferentialGraded.Module.RestrictionTensor
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleBasic
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 # Tensor.Compose

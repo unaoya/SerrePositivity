@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # graded-split拡張のtensor保存と非有界coneの検査 -/

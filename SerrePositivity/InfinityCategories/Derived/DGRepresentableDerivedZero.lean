@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ContractingElementCriterion
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：dg 対象の実零頂点性と、その代表加群の主導来圏での零性を同定する。
 方針：代表加群の射影性で恒等と零の等式を戻し、全 Hom Yoneda の忠実性で収縮元を得る。

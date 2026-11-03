@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroTransport
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Complexes.Biproduct
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-! C 因子から D 因子への全 Hom の、二つの対角成分の通常ホモトピー零性。 -/
 @[expose] public section

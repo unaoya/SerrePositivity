@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGLabelAction
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorParamNaturality
-public import SerrePositivity.DifferentialGraded.Category.TensorComposition
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # 入力とラベルを動かす Perf の tensor Hom 作用
 概要：元の入力 Hom と元のラベル Hom の tensor から、同じ作用対象間の Hom を作る。

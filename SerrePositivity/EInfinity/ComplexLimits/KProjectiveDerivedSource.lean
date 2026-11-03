@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
-public import SerrePositivity.DifferentialGraded.Module.RingProjective
+public import SerrePositivity.DifferentialGraded.Module.Functor
 
 /-!
 # 元の K-projective 複体の dg nerve と同じ導来源

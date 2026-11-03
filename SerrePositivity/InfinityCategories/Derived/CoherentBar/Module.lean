@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion
-public import SerrePositivity.DifferentialGraded.Module.MaurerCartan
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 /-!
 概要：D の公開 MC 方程式から、元の coherent bar の実右 dg 加群を作る。
 方針：同じ graded 直和と dgCoherentBarTheta を moduleMaurerCartan に渡す。

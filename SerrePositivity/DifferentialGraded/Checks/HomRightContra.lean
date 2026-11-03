@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomRightContraMaps
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左加群変数の反変右Hom dg関手の検査 -/

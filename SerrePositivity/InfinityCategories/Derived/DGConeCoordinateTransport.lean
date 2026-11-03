@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ConeElements
-public import SerrePositivity.DifferentialGraded.Complexes.ConeMaps
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
+
 
 /-! # cone の等式輸送と次数零対角作用の二座標
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：bar の shift ブロックを作る斉次単位の次数ごとの評価式。

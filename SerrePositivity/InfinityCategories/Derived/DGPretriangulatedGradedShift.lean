@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGGradedConjugation
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
 

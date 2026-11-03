@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Shift
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7b1：整数 shift の全次数符号と評価の受入 -/

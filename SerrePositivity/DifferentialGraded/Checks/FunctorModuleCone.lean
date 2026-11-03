@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.ModuleCone
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 複体値dg関手の符号規約と標準cone比較射の検査 -/

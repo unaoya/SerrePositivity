@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.EndRebaseAlgebra
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyLinear
+public import SerrePositivity.DifferentialGraded.Category.Basic
 /-!
 概要：加群射の閉零 Hom 要素への移送は加法と合成を保つ。
 方針：既存の閉 Hom 同値と評価 cochain の合成公式を直接使う。

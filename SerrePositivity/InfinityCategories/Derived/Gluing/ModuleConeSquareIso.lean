@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeFunctor
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 実加群同型の可換正方形に沿う cone 同型と、両方向の包含の厳密な比較。 -/
 @[expose] public section

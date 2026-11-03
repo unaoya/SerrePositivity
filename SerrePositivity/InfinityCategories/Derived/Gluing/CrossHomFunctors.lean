@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CrossHomCoefficient
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
-public import SerrePositivity.DifferentialGraded.Module.ShiftHom
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+
 
 /-! 実充満因子間の制限 Hom と、同じ M[-1] を値に持つ加群値 dg 関手。 -/
 @[expose] public section

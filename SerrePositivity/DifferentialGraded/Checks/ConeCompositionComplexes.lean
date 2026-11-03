@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ConeComposition
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 
 /-! # 八面体用の既存複体比較の受入検査 -/
 @[expose] public section

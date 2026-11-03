@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedChainsHomNaturality
 public import SerrePositivity.EInfinity.ComplexLimits.LinearizedSimplexHom
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.InfinityCategories.DoldKanComparison.ConnectiveHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.HornTensor
 

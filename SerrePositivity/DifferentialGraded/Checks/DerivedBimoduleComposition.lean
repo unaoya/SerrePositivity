@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 public import Mathlib.Data.ZMod.Basic
 
 /-! # K-flat局所化比較同値と両変数の導来bimodule合成の監査

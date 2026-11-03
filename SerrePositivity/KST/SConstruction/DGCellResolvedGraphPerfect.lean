@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphArrow
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionHom
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
 概要：同じ制限 graph 解像度の各右制限の導来 perfect 性を証明し、残る射影性を分離する。

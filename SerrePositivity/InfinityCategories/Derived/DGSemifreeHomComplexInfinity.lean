@@ -2,9 +2,9 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeModules
 public import SerrePositivity.InfinityCategories.Derived.DGUniverseLift
 public import SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
 /-!
 概要：半自由模型の全 Hom 複体を、固定入力ごとの実 ∞ 関手と実写像空間へ接続する。
 方針：元の dg 代表関手を全 Hom のまま nerve に移し、pinched 複体模型と比較する。

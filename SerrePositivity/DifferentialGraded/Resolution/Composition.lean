@@ -2,12 +2,12 @@ module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionEvaluation
-public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionEquivalence
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleSimultaneousRestriction
-public import SerrePositivity.DifferentialGraded.Derived.DiagonalRestriction
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleFullComposition
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+
+public import SerrePositivity.DifferentialGraded.Derived.Paired
+
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.FunctorCoherence
 
 /-!
 # Resolution.Composition

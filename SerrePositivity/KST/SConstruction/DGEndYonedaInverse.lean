@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 元の Yoneda 全 Hom 同型を逆に読む End 関手
 概要：元の代表加群の End を、元の dg 対象の End へ厳密に戻す。

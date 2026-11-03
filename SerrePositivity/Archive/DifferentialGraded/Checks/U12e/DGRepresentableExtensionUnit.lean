@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentableUnit
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # graph延長–制限単位の代表加群計算と可逆性

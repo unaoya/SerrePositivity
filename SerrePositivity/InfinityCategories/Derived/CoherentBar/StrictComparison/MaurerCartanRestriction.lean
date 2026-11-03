@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanDescent
-public import SerrePositivity.DifferentialGraded.Complexes.PerturbationRestriction
-public import SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 概要：分裂包含で保たれる部分加群に Maurer–Cartan 方程式を制限する。

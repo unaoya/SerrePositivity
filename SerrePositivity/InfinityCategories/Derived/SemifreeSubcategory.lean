@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+
 
 /-! # Semifree 複体の充満 dg 部分圏とその H⁰ -/
 @[expose] public section

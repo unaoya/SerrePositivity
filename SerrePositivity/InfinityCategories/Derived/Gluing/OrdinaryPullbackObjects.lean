@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LaxComparisonEquivalence
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceSubcomplex
 /-!
 概要：元 dg gluing の中で、同じ導来 augmentation が可逆な対象の充満 dg 部分圏を取る。

@@ -1,0 +1,91 @@
+--- before
++++ after
+@@ -4,17 +4,15 @@
+       [inst_1 : CategoryTheory.Category.{w, v} J] →
+         [inst_2 : Small.{u, v} J] →
+           [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{w, v, u, u + 1} J (ModuleCat.{u, u} A)] →
+-            [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)] →
+-              (F : CategoryTheory.Functor.{w, u, v, u + 1} J (SerrePositivity.DifferentialGraded.Complex.{u} A)) →
+-                CategoryTheory.Iso.{u, u + 1}
+-                  (CategoryTheory.Functor.obj.{max u v, u, max (max (u + 1) v) w, u + 1}
+-                    (CategoryTheory.Functor.mapHomologicalComplex.{0, max u v, max (max (u + 1) v) w, u, u + 1}
+-                      CategoryTheory.Limits.colim.{w, v, u, u + 1} (ComplexShape.up.{0} ℤ))
+-                    (SerrePositivity.DifferentialGraded.complexDiagramTranspose.{u, v, w} A F))
+-                  (CategoryTheory.Limits.colimit.{w, v, u, u + 1} F) :=
++            (F : CategoryTheory.Functor.{w, u, v, u + 1} J (SerrePositivity.DifferentialGraded.Complex.{u} A)) →
++              CategoryTheory.Iso.{u, u + 1}
++                (CategoryTheory.Functor.obj.{max u v, u, max (max (u + 1) v) w, u + 1}
++                  (CategoryTheory.Functor.mapHomologicalComplex.{0, max u v, max (max (u + 1) v) w, u, u + 1}
++                    CategoryTheory.Limits.colim.{w, v, u, u + 1} (ComplexShape.up.{0} ℤ))
++                  (SerrePositivity.DifferentialGraded.complexDiagramTranspose.{u, v, w} A F))
++                (CategoryTheory.Limits.colimit.{w, v, u, u + 1} F) :=
+ fun A [CommRing.{u} A] {J} [CategoryTheory.Category.{w, v} J] [Small.{u, v} J]
+-    [CategoryTheory.Limits.HasColimitsOfShape.{w, v, u, u + 1} J (ModuleCat.{u, u} A)]
+-    [CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)] F =>
++    [CategoryTheory.Limits.HasColimitsOfShape.{w, v, u, u + 1} J (ModuleCat.{u, u} A)] F =>
+   CategoryTheory.Limits.IsColimit.coconePointUniqueUpToIso.{w, u, v, u + 1}
+     (HomologicalComplex.isColimitCoconeOfHasColimitEval.{u, u + 1, 0, w, v} F)
+     (CategoryTheory.Limits.colimit.isColimit.{w, v, u, u + 1} F)
+@@ -25,24 +23,23 @@
+       [inst_1 : CategoryTheory.Category.{u_3, u_2} J] →
+         [inst_2 : Small.{u_1, u_2} J] →
+           [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{u_3, u_2, u_1, u_1 + 1} J (ModuleCat.{u_1, u_1} A)] →
+-            [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u_1, u_3, u_1 + 1, u_2} J (ModuleCat.{u_1, u_1} A)] →
+-              (F :
+-                  CategoryTheory.Functor.{u_3, u_1, u_2, u_1 + 1} J
+-                    (SerrePositivity.DifferentialGraded.Complex.{u_1} A)) →
+-                CategoryTheory.Iso.{u_1, u_1 + 1}
+-                  (CategoryTheory.Functor.obj.{max u_1 u_2, u_1, max (max (u_1 + 1) u_2) u_3, u_1 + 1}
+-                    (CategoryTheory.Functor.mapHomologicalComplex.{0, max u_1 u_2, max (max (u_1 + 1) u_2) u_3, u_1,
+-                        u_1 + 1}
+-                      CategoryTheory.Limits.colim.{u_3, u_2, u_1, u_1 + 1} (ComplexShape.up.{0} ℤ))
+-                    (SerrePositivity.DifferentialGraded.complexDiagramTranspose.{u_1, u_2, u_3} A F))
+-                  (CategoryTheory.Limits.colimit.{u_3, u_2, u_1, u_1 + 1} F)
++            (F :
++                CategoryTheory.Functor.{u_3, u_1, u_2, u_1 + 1} J
++                  (SerrePositivity.DifferentialGraded.Complex.{u_1} A)) →
++              CategoryTheory.Iso.{u_1, u_1 + 1}
++                (CategoryTheory.Functor.obj.{max u_1 u_2, u_1, max (max (u_1 + 1) u_2) u_3, u_1 + 1}
++                  (CategoryTheory.Functor.mapHomologicalComplex.{0, max u_1 u_2, max (max (u_1 + 1) u_2) u_3, u_1,
++                      u_1 + 1}
++                    CategoryTheory.Limits.colim.{u_3, u_2, u_1, u_1 + 1} (ComplexShape.up.{0} ℤ))
++                  (SerrePositivity.DifferentialGraded.complexDiagramTranspose.{u_1, u_2, u_3} A F))
++                (CategoryTheory.Limits.colimit.{u_3, u_2, u_1, u_1 + 1} F)
+ 'SerrePositivity.DifferentialGraded.DGQuotient.complexColimitComparison' depends on axioms: [propext,
+  Classical.choice.{u},
+  Quot.sound.{u}]
+ theorem SerrePositivity.DifferentialGraded.DGQuotient.complexColimitComparison_naturality.{u, v, w} : ∀ (A : Type u)
+   [inst : CommRing.{u} A] {J : Type v} [inst_1 : CategoryTheory.Category.{w, v} J] [inst_2 : Small.{u, v} J]
+   [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{w, v, u, u + 1} J (ModuleCat.{u, u} A)]
+-  [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)]
++  [CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)]
+   {F G : CategoryTheory.Functor.{w, u, v, u + 1} J (SerrePositivity.DifferentialGraded.Complex.{u} A)}
+   (α : Quiver.Hom.{max u v, max (max (u + 1) v) w} F G),
+   Eq.{u + 1}
+@@ -197,7 +194,7 @@
+   u_3} : ∀ (A : Type u_1) [inst : CommRing.{u_1} A] {J : Type u_2} [inst_1 : CategoryTheory.Category.{u_3, u_2} J]
+   [inst_2 : Small.{u_1, u_2} J]
+   [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{u_3, u_2, u_1, u_1 + 1} J (ModuleCat.{u_1, u_1} A)]
+-  [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u_1, u_3, u_1 + 1, u_2} J (ModuleCat.{u_1, u_1} A)]
++  [CategoryTheory.HasExactColimitsOfShape.{u_1, u_3, u_1 + 1, u_2} J (ModuleCat.{u_1, u_1} A)]
+   {F G : CategoryTheory.Functor.{u_3, u_1, u_2, u_1 + 1} J (SerrePositivity.DifferentialGraded.Complex.{u_1} A)}
+   (α : Quiver.Hom.{max u_1 u_2, max (max (u_1 + 1) u_2) u_3} F G),
+   Eq.{u_1 + 1}
+@@ -218,7 +215,7 @@
+ theorem SerrePositivity.DifferentialGraded.DGQuotient.complexColimitComparison_ι.{u, v, w} : ∀ (A : Type u)
+   [inst : CommRing.{u} A] {J : Type v} [inst_1 : CategoryTheory.Category.{w, v} J] [inst_2 : Small.{u, v} J]
+   [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{w, v, u, u + 1} J (ModuleCat.{u, u} A)]
+-  [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)]
++  [CategoryTheory.HasExactColimitsOfShape.{u, w, u + 1, v} J (ModuleCat.{u, u} A)]
+   (F : CategoryTheory.Functor.{w, u, v, u + 1} J (SerrePositivity.DifferentialGraded.Complex.{u} A)) (j : J),
+   Eq.{u + 1}
+     (CategoryTheory.CategoryStruct.comp.{u, u + 1}
+@@ -239,7 +236,7 @@
+   u_3} : ∀ (A : Type u_1) [inst : CommRing.{u_1} A] {J : Type u_2} [inst_1 : CategoryTheory.Category.{u_3, u_2} J]
+   [inst_2 : Small.{u_1, u_2} J]
+   [inst_3 : CategoryTheory.Limits.HasColimitsOfShape.{u_3, u_2, u_1, u_1 + 1} J (ModuleCat.{u_1, u_1} A)]
+-  [inst_4 : CategoryTheory.HasExactColimitsOfShape.{u_1, u_3, u_1 + 1, u_2} J (ModuleCat.{u_1, u_1} A)]
++  [CategoryTheory.HasExactColimitsOfShape.{u_1, u_3, u_1 + 1, u_2} J (ModuleCat.{u_1, u_1} A)]
+   (F : CategoryTheory.Functor.{u_3, u_1, u_2, u_1 + 1} J (SerrePositivity.DifferentialGraded.Complex.{u_1} A)) (j : J),
+   Eq.{u_1 + 1}
+     (CategoryTheory.CategoryStruct.comp.{u_1, u_1 + 1}

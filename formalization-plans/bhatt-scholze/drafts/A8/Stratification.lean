@@ -74,11 +74,13 @@ theorem generic_structure : True := by trivial
 方針：有限個の等式を分母を払って広げる。 -/
 theorem spread_out_generic : True := by trivial
 
-/-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（Z_(p) 代数）に層別 g_1,…,g_n：(1)(2)(3)。
+/-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
 方針：`exists_noetherianApproximation`、`generic_structure`、`spread_out_generic`、R_0/(g_1) への noetherian 帰納、(pg_i, g_i) での細分（紙 5）。
-規約：原典の Lemma 10.12。
+規約：原典の Lemma 10.12。Z_(p) の仮定は落とせない（W9-III-07：q ≠ p、K = F_q(t) → K(t^{1/q}) は有限表示有限な純非分離拡大で、非空の層では p が可逆
+なので (2) が有限エタールを要求し矛盾）。E3 の perfectoid 基底は Z_(p) 代数なので下流の一般性は失われない。
 使われ方：Thm 10.11。 -/
 theorem exists_finiteEtaleStratification {R S : Type u} [CommRing R] [CommRing S] [Algebra R S]
-    [Module.Finite R S] [Algebra.FinitePresentation R S] (p : ℕ) [Fact p.Prime] : True := by trivial
+    [Module.Finite R S] [Algebra.FinitePresentation R S] (p : ℕ) [Fact p.Prime]
+    (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) : True := by trivial
 
 end SerrePositivity.CommutativeAlgebra

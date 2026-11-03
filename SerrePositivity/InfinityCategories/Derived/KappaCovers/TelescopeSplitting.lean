@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.IdempotentTelescope
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.CategoryTheory.Triangulated.Subcategory
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedGraded
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：元の全単体ラベルの退化写像から、bar 上の次数マイナス一作用素を作る。
 方針：始点を保つ退化写像を同じ shift 単位ブロックにし、全 Hom の直積表示で貼り合わせる。

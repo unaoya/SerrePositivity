@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomDifferential
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberHomProjections
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConeSquare
-public import SerrePositivity.DifferentialGraded.Module.ConeElementRelations
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # dg 加群の標準 cofiber から fiber への実比較射
 

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
-public import SerrePositivity.DifferentialGraded.Module.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：KST §3.1 の局所 regular 加群比較に使う閉零 Yoneda 拡張。

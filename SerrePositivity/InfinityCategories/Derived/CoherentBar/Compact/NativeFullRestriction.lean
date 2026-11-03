@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Restriction
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorEnrichment
 public import SerrePositivity.KST.SConstruction.DGStandardCoherentMap
 public import SerrePositivity.InfinityCategories.F1.Categories.CoreKan

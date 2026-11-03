@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.CofibrantComponentsProjective
-public import SerrePositivity.DifferentialGraded.Complexes.HomFunctor
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 
 /-!
 # 射影始域からの内部 Hom の各次数での全射性

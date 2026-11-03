@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Cells
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a1：sphere/disk・生成元・微分・自由cellの検証 -/

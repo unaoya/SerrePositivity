@@ -38,7 +38,7 @@ lemma dgModuleNaturalConeImage_boundary (x : P) :
       (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
         (dgModuleNaturalConeArrow R E (FQ) (GQ) (ηQ) x ≫
           dgModuleNaturalConeArrow R E (GQ) (CQ) (νQ) x))).val := by
-  exact (dgModuleFunctorConeInl_d R D E Q (a x)).trans
+  exact (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl_d R D E Q (a x)).trans
     (congrArg (fun t => (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) t)).val)
       (congrArg₂ (fun p q => p ≫ q)
         (dgModuleNaturalConePostcompArrow R E D F G η Q x).symm

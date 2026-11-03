@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGHomTargetUnit
-public import SerrePositivity.DifferentialGraded.Module.HomElementComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：実 Hom 単位による全 Hom の比較鎖写像は、同じ dg Yoneda 同型の逆そのもの。
 方針：全次数で評価し、実閉単位の回収と共変 representable の符号付き作用を使う。
