@@ -84,6 +84,21 @@ def cAlgRestrictScalars_comp {U : Type u} [CommRing U] (f : S →+* T) (g : T �
     FunctorIso (cAlgRestrictScalars (g.comp f)) (cAlgRestrictScalars g ≫ cAlgRestrictScalars f) := sorry -- 基盤待ち
 def cAlgRestrictScalars_id : FunctorIso (cAlgRestrictScalars (RingHom.id S)) (𝟙 _) := sorry -- 基盤待ち
 
+/-! ## CAlg の係数拡大（左随伴。11-03、BS-D3 停止点 2 の StrongDescent `prismScalarExtension` の一般形、D3-05） -/
+
+/-- 概要：f に沿う E∞ 代数の係数拡大 f^! : CAlg(S) → CAlg(T)、X ↦ X ⊗^L_S T（`cAlgRestrictScalars f` の左随伴）。
+方針：Barratt–Eccles 代数の底変換（D 側は既存 `derivedInfinityBaseChange f`）。忘却との比較は `cAlgBaseChange_forget`。
+規約：基盤待ち（M13 の CAlg 版、置き場所は EInfinity 側）。f は明示引数。
+使われ方：A5 StrongDescent（A → C = A/(p, φ^{-1}(d)) に沿う Δ_T ⊗^L_A C）、A2 の底変換 (4)。 -/
+def cAlgBaseChange (f : S →+* T) : CAlg_R S ⟶ CAlg_R T := sorry -- 基盤待ち
+
+/-- 概要：随伴 f^! ⊣ f_*（Map_{CAlg(T)}(X ⊗^L_S T, Y) ≃ Map_{CAlg(S)}(X, f_* Y)）。主張の形は ∞ 随伴の述語が決まってから。 -/
+theorem cAlgBaseChange_restrictScalars_adjunction (f : S →+* T) : True := by trivial -- 基盤待ち
+
+/-- 概要：忘却との両立：U_T ∘ f^! ≃ f^{*,D} ∘ U_S（`derivedInfinityBaseChange f`）。 -/
+def cAlgBaseChange_forget (f : S →+* T) :
+    FunctorIso (cAlgBaseChange f ≫ cAlgForgetDerived T) (cAlgForgetDerived S ≫ derivedInfinityBaseChange f) := sorry -- 基盤待ち
+
 /-! ## 一般の補題（11-03、BS-D2 停止点 1 の A4 の「ScalarRestriction へ」三件の一般形） -/
 
 /-- 概要：CAlg の係数制限は **sifted** 余極限錐を保つ（sifted 余極限は台の加群で計算され、加群の係数制限は全ての余極限を保つ）。

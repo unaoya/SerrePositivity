@@ -59,3 +59,7 @@ T/IT は completionRing 経由（W9-II-15）、積の取り替えは (B×C)×_{D
   （3acedf8eb）、**D3-01** 比較の第 0 脚は A3 の `prismMapOfDiscrete` ではなく A0/S2 の CAlg 値 RΓ の射影（1480a4e5c）、**D3-02** `PerfUnder_u` は大きい圏なので S3 の大きい版 `CechNerveDataLarge`
   を基盤側に置く（2bb0d406c）、**D3-03** 離散代数の埋め込みと係数制限の比較 `cAlgRestrictScalars_algebraEmbedding` を基盤側に（本コミット）。
 - 次：停止点 2（RootAdjunction の残り 2、StrongDescent 11、WeaklyInitialAndDescent 15、PerfectSiteComparison 7）。
+- 第 2 部（0deed4fbc、**停止点 2 完了・検収済み**）：RootAdjunction 2、StrongDescent 11、WeaklyInitialAndDescent 15、PerfectSiteComparison 8（系 4 を含む）の計 36 件。
+  **D3-04**（Lemma 8.6 の底 Δ_T は離散でない）→ `IsDescendableOver A R B (f : SSet.Edge R B)` を基盤側に確定（df86ebb71）。**D3-05**（CAlg の係数拡大）→ `cAlgBaseChange` を
+  ScalarRestriction.lean に（本コミット）。要確認 9 のうち残りは M15 の Mod_D（1）、A1-5（3）、S3 の大きい版（1）、G12（1）、BS-D4（2）。
+- 次：停止点 3（A6 の excision：SheafOfSetsExcision 13、Excision 5、PerfectoidFiniteProduct 1）。
