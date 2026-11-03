@@ -226,3 +226,15 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 2. **下流の一回ビルド（13,149 本、鍵のもと）**：Claude の合図を待つ。round の記録は §16 の基準（再発・未検証の根）で、失敗は判断表（補充・修飾・宇宙・束縛子の型・局所 instance・heartbeat。DG-W3 §11 と同じく ∞ の外のファイルでも最小の行で）。
 3. **条件付き事前承認（DG-W3 §10 と同じ）**：下流が通り、全体の保存比較 v3b で未説明の不一致が 0（個別照合で説明できるものは説明済み）で、処置が判断表の範囲だけなら、Claude の承認を待たずに層検査（`--enforce W2b` の 3 条件、ratchet 基準の取り直し）→ 監査の再生成の確認（`audit_infinity_f2_exchange` の削除、A・C の監査）→ verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）まで進み、**停止点 3** にまとめて報告する。条件を満たさなければ止める。
 4. 停止点 3 の報告：verify の summary、ルート閉包とビルド時間の前後、層検査の前後、処置の件数と一覧、W2c への入力（180 本と 6 根の経路）、コミット一覧。取り込みは Claude。
+
+## 18. 追記（2026-11-03 夜、verify の失敗 5 本への回答：F1B の straightening 禁止は入口の閉包全体に適用、監査は移動に追従させる）
+
+**事実（Claude が 11-03 夜に確認）**：
+- straightening の禁止は `audit_infinity_f1b.lean`（F1B の入口の閉包全体に「straightening 系モジュールがあれば拒否」）と、`audit_infinity_f1b`・`audit_infinity_core` の Ind-S の保護対象（特定のモジュール一覧）にある。**W2b 前の main では F1B の入口だけが straightening 非依存**で、F2・F2.Ind・F2.Compact・F2.Presentable・Stable・HomotopyLimits の入口はもともと straightening に依存していた。Ind-S の保護対象 5 本は W2b 後も非依存。
+- W2b 後に F1B の入口の閉包へ straightening を持ち込んでいるのは **W2b で F1B に置いた 18 本**（R38 の下ろし 8 本：`F1B/Ind/*`・`F1B/Compact/*`・`F1B/Idempotent/*`、R73 の A の配置 10 本：`F1B/FilteredExchange/*`）。F1B に元からある 2 本（`ConstantEdgeFamily`・`Roof/RightFibrationTerminalRepresentation`）も straightening に届くが、入口の閉包には入っていない（従来どおり。W2c か段 F で扱う）。
+- 他の 4 本の失敗：`audit_f2_pi_criterion`（PiCriterion が Derived へ移ったので対象 0）、`audit_homotopy_limits`（`finiteCoherentProjectionCoconeIso` が R38 で F2/Presentable へ上がり、HL の監査から見えない）、`audit_infinity_f2`（`coreMap_trivialKanFibration` などが下の層へ下り、F2 の監査の閉包から外れた）、`audit_infinity_stable`（`Stable.ColimitFamilyExtension` が R37 で下り、モジュール一覧と `#check` が古い）。いずれも**監査が移動に追従していない**だけ。
+
+**判断**：
+1. **F1B の straightening 禁止は入口の閉包全体に適用する**（監査の定義どおり。W2b 前の状態を保つ）。監査は変えない。したがって **18 本を F1B から F1 へ配置し直す**（同じ tier なので HL・Stable の利用者からの import はそのまま成り立ち、R37・R38 の目的（逆向きの辺の解消）は保たれる。F1 は straightening を含む層なので禁止に触れない）。置き先は `F1/Ind/`・`F1/Compact/`・`F1/Idempotent/`・`F1/FilteredExchange/`（名前空間は変えない）。**配置の規則に追加**：straightening に依存するモジュールは F1B に置かない（F1 へ）。
+2. **監査の追従（承認。検査を弱めない）**：(a) `audit_f2_pi_criterion` は対象を `Derived.PiCriterion.*` に向け直す（置き場所に合わせて `audit_derived_*` へ統合してもよい）。(b) 移動した宣言の `#check` 行とモジュール一覧は、移動先の領域の監査へ移す（HL → F2/Presentable の分は `audit_infinity_f2` へ、F2 → F1B/F1 の分は `audit_infinity_f1b`／`audit_infinity_f1` へ、Stable → F1B の分は `audit_infinity_f1b` へ）。宣言の数は前後で一致させ、報告に表を付ける。
+3. 手順：配置の修正（別コミット「配置の修正（F1B → F1）」）→ 18 本と直接の利用者の小さなビルド → 影響モジュールの after snapshot v3b と比較（型・本体の一致）→ 監査の追従（別コミット「監査の追従」）→ `layer_check --report`・`--enforce W2b`（変化なしのはず）→ **verify を再実行**（通った 94 本はキャッシュで省略される見込み）→ **停止点 3**。§17-3 の条件付き事前承認はそのまま有効。

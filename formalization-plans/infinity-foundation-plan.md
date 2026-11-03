@@ -65,6 +65,8 @@
 
 ```
 Simplicial < Core < Kan < Coherent < {F1, F1B, HomotopyLimits} < Stable < F2 < StablePresentable < **Sheaves**（11-02 予約、M12a。最初のファイルが入るときに `layers.json` に登録） < ModelBridge < {DGNerve, DoldKanComparison} < Derived
+
+不変条件（11-03 確認）：**F1B（α2b：随伴・局所化・cofinality・Kan 拡張）の入口の閉包は straightening を含まない**（`audit_infinity_f1b` が検査。F2・Stable・HomotopyLimits はもともと straightening に依存してよい）。straightening に依存する一般補題は F1 に置く（IF-W2b §18）。
 ```
 
 **Kan を Core の上に置く理由**（レビューで判明、10-28 修正）：
