@@ -139,7 +139,8 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
   `IsAdmissibleCutoff κ`・`IsAdmissibleCutoff κ′`（cutoff ≤ κ、κ^{ℵ₀} = κ）、κ ≤ κ′。一般の p 完備 R で無条件には述べない（一般の Prop 3.13 は A0 の範囲外）。
   多項式代数 R では `hasEnvelopes_of_polynomial` が供給し、E3 に要るのはその場合だけ（A2 は多項式代数からの左 Kan 延長）。結論は包含 ι : 𝒞_κ → 𝒞_{κ′} に沿う
   O_Δ の制限について `derivedGlobalSections` を結ぶ D(A) の可逆な辺（頂点の等号は主張しない、W9-I-03）。証明は両辺を同じ Tot O_Δ(C^•) と結ぶ
-  （`prismaticCohomology_eq_cechAlexanderTot` を κ と κ′ で）。
+  （`prismaticCohomology_eq_cechAlexanderTot` を κ と κ′ で）。**置き場所**（11-03）：包含関手 ι と O_Δ の制限は PrismaticSite.lean に残し、`HasEnvelopes` を使う
+  比較定理本体は CechAlexander.lean の Tot 比較の直後に置く（同じ名前空間。CechAlexander が Site と Envelope を import するので逆向きは循環。W9-III-09 の「定義は先、後段の定理は後」と同じ）。
 
 ### 2.8 Čech–Alexander 複体（Constr 4.17・4.18、Rem 4.19）
 
