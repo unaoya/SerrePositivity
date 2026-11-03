@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
 public import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction

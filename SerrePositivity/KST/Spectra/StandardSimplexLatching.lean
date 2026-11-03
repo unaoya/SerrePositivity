@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
