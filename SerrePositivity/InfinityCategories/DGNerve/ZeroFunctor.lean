@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.NatTrans
-public import SerrePositivity.DifferentialGraded.Complexes.Zero
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-! # 零複体への定値 dg 関手と零自然変換
 

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Ring
-public import SerrePositivity.DifferentialGraded.Module.HomElements
-public import SerrePositivity.DifferentialGraded.Module.GradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 一点 dg 環上での次数付き線形写像の自然性
 

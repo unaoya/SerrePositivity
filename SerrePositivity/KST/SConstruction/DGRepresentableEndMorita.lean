@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGRepresentableThickGeneration
 public import SerrePositivity.DifferentialGraded.Endomorphism.Perfect
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 指定代表の全 End と元の対象の全 End による Perf 再構成
 概要：指定代表が生成する場合、元の dg 対象の全 End で Perf を再構成する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagonPaths
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来同型で指定した代表との結合比較と五角図式の経路の監査

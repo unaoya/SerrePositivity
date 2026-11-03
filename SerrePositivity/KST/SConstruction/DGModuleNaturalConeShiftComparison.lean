@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftNull
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeDesc
-public import SerrePositivity.DifferentialGraded.Module.ConeShift
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：同じ元 cone と整数 shift の実比較を全厳密自然変換へ束ねる。

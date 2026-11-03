@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：元の実加群 cone の逆 shift から元始域への指定閉射を構成する。

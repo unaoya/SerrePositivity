@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Resolution
-public import SerrePositivity.DifferentialGraded.Derived.Ring
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # 複体の次数ごと全射な semifree 解像度 -/
 @[expose] public section

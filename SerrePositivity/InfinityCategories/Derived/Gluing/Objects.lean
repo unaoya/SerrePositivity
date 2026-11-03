@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.Biproduct
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.CategoryTheory.Limits.Shapes.Biproducts
 
 /-!

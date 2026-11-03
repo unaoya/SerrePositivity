@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorComparison
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorUnit
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorAssociator
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
+
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来合成関手の比較・右単位・結合自然同型の受入監査

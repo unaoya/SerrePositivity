@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Unconditional
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StableProjectionCompatibility
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：正規化 bar への実閉射影は、元の次数付き射影と同じ成分を持つ。
 方針：MC 射の閉零サイクルを評価し、元の次数付き包含による切断を保つ。

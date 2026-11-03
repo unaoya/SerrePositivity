@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.ClosureFunctor
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionPerfect
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionRepresentable
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-!
 概要：実延長の代表化が、同じ導来 perfect 性を保つことを証明する。

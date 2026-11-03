@@ -16,8 +16,9 @@ S ↦ (S^∧)_perfd（S^∧ は界面の `completionRing`、導来 p 完備化�
 の合成の coherent な単位、`e3H0RingData` は H⁰(S_perfd) の環の関手と加群構造・射・単位との整合。
 
 ## 方針
-Def 8.2 は導来 p 完備な S にだけ定義されている（D41）ので、界面の欄は S^∧ を経由して定める。直接の式 (colim_φ Δ_S)^∧ ⊗ A/d を
-非完備な離散 S に当てたものと一致することは D32（`derivedPrismaticCohomology_completion_discrete`）から従う定理として置く。
+Def 8.2 は導来 p 完備な S にだけ定義されている（D41）ので、界面の欄は S^∧ = completionRing S = π_0(LΛ_p S) を経由して定める。直接の式
+(colim_φ Δ_S)^∧ ⊗ A/d を非完備な離散 S に当てたものと一致することは二段（W9-II-03）：Δ_S ≃ Δ_{LΛ_p S}（A2-4 `derivedPrismaticCohomology_completion_animated`）と
+(LΛ_p S)_perfd ≃ (π_0 LΛ_p S)_perfd（A5-1 `perfectoidization_piZero`、Prop 8.5 系 4）。
 関手性は A2 の Δ（`derivedPrismaticCohomologyDiscrete`、nerve の射）から：Frobenius の塔・余極限・完備化・⊗ A/d をすべて関手の段で取る。
 
 ## 規約
@@ -25,8 +26,8 @@ Def 8.2 は導来 p 完備な S にだけ定義されている（D41）ので、
 2b の改名表が来たら名前を追従する（`completionRing` など）。
 
 ## 使われ方
-`PerfectoidizationInterfaceCAlg` の構成（A9）。残りの欄 universal（A7 Cor 8.14）、limitCone・limit_isLimit（A5 Prop 8.5）、integral（A6）、
-excision（A8 Thm 10.11）。
+`PerfectoidizationInterfaceCAlg` の構成（A9）。残りの欄 universal（A7 Cor 8.14）、limitCone・limit_isLimit（A5 Prop 8.5）、integral（A8 Thm 10.11）、
+excision（A6 Cor 8.12）。
 -/
 
 @[expose] public section
@@ -91,11 +92,7 @@ def e3Perfd : algebraNerve R ⟶ CAlg_R R := sorry
 theorem e3Perfd_of_complete (S : Type u) [CommRing S] [Algebra R S]
     (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S)) : True := by trivial
 
-/-- 概要：任意の離散 S で、`e3Perfd` の値は直接の式 (colim_φ Δ_S)^∧ ⊗^L_A A/d（S を完備化せずに A2 の Δ_S に当てたもの）に一致する。
-方針：D32（`derivedPrismaticCohomology_completion_discrete`：Δ_S ≃ Δ_{S^∧}）を Frobenius の塔・余極限・完備化・底変換に通す。
-規約：これが D41 の「直接の式との一致は定理」。
-使われ方：A6（Prop 8.10：任意の離散 S に対する arc 層としての記述）、A8。 -/
-theorem e3Perfd_eq_direct (S : Type u) [CommRing S] [Algebra R S] : True := by trivial
+-- `e3Perfd_eq_direct`（直接の式との一致、Prop 8.5 系 4 を使う）は drafts/A4/AfterComparison.lean へ（W9-III-09：本ファイルは A5 より先）。
 
 /-- 概要：D(R) 版の `perfd`（忘却 U との合成）。
 方針：`e3Perfd ≫ cAlgForgetDerived R`。
@@ -151,7 +148,7 @@ def e3H0RingData : H0RingData R (e3Perfd p R ≫ cAlgForgetDerived R) (underlyin
 H⁰ は S_perfd の「最初の」コホモロジー。離散なら S_perfd 自身。
 方針：`e3Perfd_of_complete`、`perfectoidization_coconnective`。
 規約：—
-使われ方：Cor 8.14（universal）、integral の欄（A6）。 -/
+使われ方：Cor 8.14（universal）、integral の欄（A8）。 -/
 theorem e3H0_of_complete : True := by trivial
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

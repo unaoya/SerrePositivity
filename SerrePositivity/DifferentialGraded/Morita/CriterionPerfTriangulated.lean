@@ -2,11 +2,11 @@ module
 
 public import SerrePositivity.DifferentialGraded.Verdier.Scalar
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 public import SerrePositivity.DifferentialGraded.Perfect.RepresentableHomology
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyNaturality
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.DifferentialGraded.Morita.Kernel
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShiftSequence
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel

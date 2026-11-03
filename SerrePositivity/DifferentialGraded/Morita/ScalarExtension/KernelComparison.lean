@@ -6,16 +6,16 @@ public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.BalancedTensor
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleBasic
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionHomotopy
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
+
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleModuleEquivalence
+
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionNaturality
+
 
 /-!
 # Morita.ScalarExtension.KernelComparison

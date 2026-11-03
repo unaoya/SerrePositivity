@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeEquivalence
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 元の零加群を保持する小さい Perf 模型の閉零対象
 概要：指定小模型の零対象は、元の実零加群そのものとして選ぶ。

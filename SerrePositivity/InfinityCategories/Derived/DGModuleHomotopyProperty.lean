@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Pretriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberObject
 public import Mathlib.CategoryTheory.Triangulated.Subcategory
 

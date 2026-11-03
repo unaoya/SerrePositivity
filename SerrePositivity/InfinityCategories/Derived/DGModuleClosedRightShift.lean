@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomRightShift
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
-public import SerrePositivity.DifferentialGraded.Module.ShiftHomotopy
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
 
 /-! # 斉次閉加群 Hom からシフトへの実閉射

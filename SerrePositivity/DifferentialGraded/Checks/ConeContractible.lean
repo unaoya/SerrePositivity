@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeContractible
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-! # 恒等射のconeの全dg自然な収縮の受入検査 -/
 @[expose] public section

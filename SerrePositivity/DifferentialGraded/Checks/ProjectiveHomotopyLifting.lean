@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b6e：ホモトピーまでの持ち上げ・一意性とK(D)のHom -/
 @[expose] public section

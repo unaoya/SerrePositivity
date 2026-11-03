@@ -1,12 +1,12 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Category.TensorMixed
-public import SerrePositivity.DifferentialGraded.Functor.ComplexValued
-public import SerrePositivity.DifferentialGraded.Complexes.CochainInterchange
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
-public import SerrePositivity.DifferentialGraded.Module.LeftMapNaturality
-public import SerrePositivity.DifferentialGraded.Category.TensorSmall
+public import SerrePositivity.DifferentialGraded.Module.Graded
+
 
 /-!
 # Bimodule.Tensor

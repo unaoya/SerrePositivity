@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleCanonicalComposition
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.FunctorCoherence
 public import SerrePositivity.DifferentialGraded.Tensor.ResolvedRestriction
 public import Mathlib.Data.ZMod.Basic
 

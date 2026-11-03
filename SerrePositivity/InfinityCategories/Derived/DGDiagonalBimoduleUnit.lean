@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
 
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Restriction
 /-!
 概要：対角双加群の二つの単位子を同じ閉零同型として同定する。

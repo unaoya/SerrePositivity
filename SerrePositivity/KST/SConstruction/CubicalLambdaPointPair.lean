@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CubicalLambdaFunctorPairCoherence
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LayerTriangles
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # Λ 対角による組と元の固定対象の単位挿入
 概要：右出力が元の増大と固定対象の閉単位なら、対角による組は元の tensor 包含に等しい。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Semifree
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
-public import SerrePositivity.DifferentialGraded.Module.RingProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Functor
 
 /-! # Semifree 複体の K-projective 性 -/
 @[expose] public section

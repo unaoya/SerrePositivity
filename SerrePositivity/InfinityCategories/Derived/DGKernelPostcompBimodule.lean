@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleIsoNerveAlgebra
 public import SerrePositivity.InfinityCategories.Derived.DGBimoduleStrictNatTransAlgebra
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions

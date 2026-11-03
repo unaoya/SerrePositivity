@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.DegreeOneShiftHomology
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.SignedShiftBlockValues
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.DGNerve.Algebra
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroTransport
-public import SerrePositivity.DifferentialGraded.Category.ComplexHomotopyComparison
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 

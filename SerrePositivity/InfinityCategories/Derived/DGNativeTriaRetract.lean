@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：元の dg nerve の h 圏と tria の同じ代表対象の間で retract を移す。
 方針：Yoneda を有限 cell のホモトピー圏へ制限し、主導来比較の完全忠実性を使う。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b6d：全Homの指定quasiIso不変性 -/
 @[expose] public section

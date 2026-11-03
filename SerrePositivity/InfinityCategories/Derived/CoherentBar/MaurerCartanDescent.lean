@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomFactorization
-public import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
-public import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+
 /-!
 概要：分裂した射影と可換な次数一作用素の MC 方程式を商へ降ろす。
 方針：射影による全 Hom の制限の単射性で判定し、微分・斉次合成の保存を使う。

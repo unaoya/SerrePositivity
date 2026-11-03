@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # PerfとKaroubi延長の本質像・完全忠実性・shift整合性検査 -/

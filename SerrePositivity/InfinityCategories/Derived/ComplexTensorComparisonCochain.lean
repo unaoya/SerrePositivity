@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightComposition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorClosedZero
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
+
 /-!
 概要：全パラメータ複体の比較 cochain を左右 tensor し、実微分式を保つ。
 方針：全 Hom の実鎖写像と、閉零射の tensor との厳密な比較を使う。

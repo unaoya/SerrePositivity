@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeModules
 public import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPropertyStability
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 /-!
 概要：全 Hom end の意味で射影的な右 dg 加群の安定な実 nerve。
 方針：零・cone・shift の実閉性から標準四角形を制限する。

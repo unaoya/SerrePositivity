@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionExact
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import Mathlib.Data.ZMod.Basic
 
 @[expose] public section

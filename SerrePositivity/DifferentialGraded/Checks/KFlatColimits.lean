@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # K-flat性の余積・逐次余極限保存と独立宇宙の検査 -/

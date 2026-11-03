@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyHomotopyComponent
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：各垂直辺が擬同型である coherent ホモトピーは頂点ホモロジーの自然同型を与える。

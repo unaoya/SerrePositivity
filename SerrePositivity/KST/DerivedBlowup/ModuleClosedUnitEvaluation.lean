@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.Action
-public import SerrePositivity.DifferentialGraded.Module.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：KST §3.1 の指定閉零係数射の加群作用の計算。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全整数shift比較と相対K-flat閉性の検査 -/

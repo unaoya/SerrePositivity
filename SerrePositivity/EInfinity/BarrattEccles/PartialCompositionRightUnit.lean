@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleRightUnit
 public import SerrePositivity.EInfinity.BarrattEccles.Unitors
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 部分合成の複体の射の右単位則

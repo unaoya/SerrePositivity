@@ -12,7 +12,7 @@ public import Mathlib.CategoryTheory.Sites.DenseSubsite.SheafEquiv
 ## 概要
 S → S′ を p 完備環の射、I ⊂ S を p 完備なイデアル、`ArcOutside f I`（I を殺さない V への S → V は S′ → V に一意に延びる）とする。
 (1) S → S′ × S/I は arc 被覆。(2) perfd は有限積を保つ（G-A6-2）ので S′ を S′ × S/I に替えてよい。(3) 任意の集合の arc 層 F
-（affCompl_κ 上。affPerfd_κ 上の層から `sheafEquiv` で延長したもの）について F(S) = F(S′) ×_{F(S′/I)} F(S/I)。(4) 同値な形：
+（affCompl_κ 上。affPerfd_κ 上の層から `sheafInducedTopologyEquivOfIsCoverDense` で延長したもの）について F(S) = F(S′) ×_{F(S′/I)} F(S/I)。(4) 同値な形：
 F_S は集合の層の圏で F_{S′} ⊔_{F_{S′/I}} F_{S/I}（F_T := Hom(T, −)）。
 
 ## 方針
@@ -68,15 +68,19 @@ def perfdUnderProdEquiv : True := trivial
 使われ方：Cor 8.12 で S′ を S′ × S/I に替えて戻す（D58）。 -/
 theorem perfectoidization_prod : True := by trivial
 
-/-- 概要：S″ := S′ × S/I の四角形（S → S″、I）が引き戻しなら、S′ の四角形も引き戻し（S″/IS″ = S′/IS′ × S/I、S″ の四角形は S′ の四角形と恒等の四角形の積）。
-方針：`perfectoidization_prod` と引き戻しの積。
+/-- 概要：S″ := S′ × S/I の四角形（S → S″、I）が引き戻しなら、S′ の四角形も引き戻し（S″/IS″ = S′/IS′ × S/I）。
+方針（W9-II-19 で訂正）：左上の S_perfd は積に変わらないので「S′ の四角形と恒等四角形の文字どおりの積」ではない。B := S′_perfd、C := (S/I)_perfd、
+D := (S′/IS′)_perfd、g : B → D（S′ → S′/IS′ から）、h : C → D（S/I → S′/IS′ から）と書き、`perfectoidization_prod` で S″_perfd ≃ B × C、(S″/IS″)_perfd ≃ D × C。
+S″ の四角形の引き戻しは (B × C) ×_{D × C} C（B × C → D × C は (g, id_C)、C → D × C は (h, id_C)）で、有限極限の計算により B ×_D C に標準的に同値、各射影は元の商写像と両立する。結論は変わらない。
 規約：—
 使われ方：Cor 8.12 の帰着。 -/
 theorem excision_of_excision_prod : True := by trivial
 
 /-! ## (3)(4) 集合の層の等式 -/
 
-/-- 概要：affPerfd_κ 上の集合の arc 層 F を affCompl_κ へ延長（Mathlib `IsCoverDense.sheafEquiv` の逆、右 Kan 延長）。F(T) = lim_{Perfd_{T/}} F。
+/-- 概要：affPerfd_κ 上の集合の arc 層 F を affCompl_κ へ延長（Mathlib `Functor.sheafInducedTopologyEquivOfIsCoverDense`（`Sites/DenseSubsite/InducedTopology.lean`、
+= `Functor.IsDenseSubsite.sheafEquiv`）の逆、右 Kan 延長。包含は opposite `affPerfdInclusion.op`、誘導位相 `arcTopologyPerfd`、cover-dense `affPerfdInclusion_isCoverDense`、
+値の圏 Set の `HasLimitsOfShape (StructuredArrow X G.op)` を明示。W9-II-25 で名前を訂正）。F(T) = lim_{Perfd_{T/}} F（`Hom(F_T, F) = F(T)` は Kan 延長の随伴）。
 方針：`affPerfdInclusion_isCoverDense`（A6-1）。
 規約：G-A6-8。
 使われ方：以下。 -/

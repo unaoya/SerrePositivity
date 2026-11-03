@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.Algebra.Homology.QuasiIso
 
 /-! # 単位を始点とする実 Hom 複体の自然同型

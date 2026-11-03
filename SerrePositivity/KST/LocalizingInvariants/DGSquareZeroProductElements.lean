@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroProjection
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 概要：平方零代数の四つの積成分を、元の斉次元上で計算する。

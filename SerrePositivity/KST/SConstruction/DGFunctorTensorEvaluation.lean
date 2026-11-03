@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalDG
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
 概要：全次数 Hom end の dg 関手族を、元対象と同時に評価する tensor dg 関手。

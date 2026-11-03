@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.CategoryTheory.Enriched.Opposite
 public import Mathlib.Data.ZMod.Basic
 

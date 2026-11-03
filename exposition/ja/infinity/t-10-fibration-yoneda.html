@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fibration 版 Yoneda</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 10</nav>
+<h1>第 III 部 10　fibration 版 Yoneda</h1>
+
+<div class="env definition" id="def-relative-fun">
+<p class="env-head">定義 10.1 <span class="env-name">（相対関手空間）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(r\colon K\to S\)、\(q\colon X\to S\) について、\(r\) を \(\mathrm{Fun}(K,S)\) の頂点とみて（\(K\times\Delta^0\cong K\)）、ファイバー（<a href="t-06-fiber-products.html#def-fiber">定義 6.2</a>）</p>
+<p>\[\mathrm{Fun}_{/S}(K,X)=\mathrm{Fun}(K,X)\times_{\mathrm{Fun}(K,S)}\Delta^0\]</p>
+<p>を相対関手空間という（\(q_*\) の \(r\) 上のファイバー。<a href="t-02-kan-category.html#def-postcomposition">定義 2.3</a>）。その \(n\) 単体は \(q\circ f=r\circ\mathrm{pr}_K\) をみたす射 \(f\colon K\times\Delta^n\to X\) である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-yoneda-evaluation">
+<p class="env-head">定義 10.2 <span class="env-name">（恒等頂点での評価）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(q\colon E\to B\) と頂点 \(b\) について、\(B_{b/}\) を射影 \(B_{b/}\to B\)（<a href="t-04-join-slice.html#def-slice-projection">定義 4.7</a>）で \(B\) 上の単体的集合とみる。射</p>
+<p>\[\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{b/},E)\to E_b\]</p>
+<p>を、\(n\) 単体 \(f\colon B_{b/}\times\Delta^n\to E\) を \(f\circ(\mathrm{id}_b\times\mathrm{id}_{\Delta^n})\colon\Delta^0\times\Delta^n\cong\Delta^n\to E\) に送ることで定める（\(\mathrm{id}_b\) は<a href="t-04-join-slice.html#def-identity-vertex">定義 4.6</a>、\(E_b\) は<a href="t-06-fiber-products.html#def-fiber">定義 6.2</a>）。\(q\circ f\) は \(B_{b/}\to B\) を経由するので、像は \(b\) の上にある。スライス \(B_{/b}\) についても同様に \(\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{/b},E)\to E_b\) を定める。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-fibration-yoneda">
+<p class="env-head">定理 10.3 <span class="env-name">（fibration 版 Yoneda）</span></p>
+<div class="env-body">
+<p>\(B\) を単体的集合、\(b\) をその頂点、\(q\colon E\to B\) を射とする。</p>
+<ol>
+  <li>\(q\) が左 fibration（<a href="t-05-fibrations.html#def-fibrations">定義 5.3</a>）なら、\(\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{b/},E)\to E_b\)（<a href="#def-yoneda-evaluation">定義 10.2</a>）は trivial Kan fibration である。</li>
+  <li>\(q\) が右 fibration なら、\(\mathrm{ev}\colon\mathrm{Fun}_{/B}(B_{/b},E)\to E_b\) は trivial Kan fibration である。</li>
+</ol>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-relative-fun">
+<p class="env-head">注意 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p>\(\mathrm{Fun}_{/S}(K,X)\) は \(K\)、\(X\)、\(S\) の大きさを問わず単体的集合であり、\(K\) と \(X\) が小さければ小さい。<a href="#thm-fibration-yoneda">定理 10.3</a> で \(B\) は quasicategory でなくてよい。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.KFlatBimoduleReplacement
+public import SerrePositivity.DifferentialGraded.Derived.KFlat
 public import Mathlib.Data.ZMod.Basic
 
 /-! # K-flat cylinder・ホモトピー同一視・導来置換関手の監査

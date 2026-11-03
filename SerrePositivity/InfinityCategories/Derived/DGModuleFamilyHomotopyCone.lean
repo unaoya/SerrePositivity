@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFamilyYonedaNaturality
-public import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 /-!
 概要：ラベルの実評価での cone のホモトピー代表を、ラベル圏の Yoneda cone へ戻す。
 方針：同じ Yoneda 自然比較と標準 distinguished triangle の二頂点比較を使う。

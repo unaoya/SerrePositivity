@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.TensorDegreeSeparation
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：単一収縮記号を持つ tensor 項で、先頭単位の次数を用いて成分を分離する。

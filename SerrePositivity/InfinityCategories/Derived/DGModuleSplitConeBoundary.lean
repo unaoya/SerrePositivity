@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
-public import SerrePositivity.DifferentialGraded.Module.Homotopy
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+
 /-!
 概要：閉分裂する右 dg 加群の cone 射影に全 dg 自然な収縮を与える。
 方針：cone の左右成分と同じ閉射影から次数 −1 の Hom end 要素を構成する。

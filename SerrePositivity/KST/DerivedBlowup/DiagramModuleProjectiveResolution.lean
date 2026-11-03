@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleCoefficientCategory
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveResolution
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-!
 概要：KST §3.1 の全 diagram-module の図式全体での半自由・射影的置換。

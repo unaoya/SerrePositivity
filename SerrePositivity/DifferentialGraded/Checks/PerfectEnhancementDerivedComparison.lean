@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 実際のdg shiftに対する主導来三角比較の計算 -/

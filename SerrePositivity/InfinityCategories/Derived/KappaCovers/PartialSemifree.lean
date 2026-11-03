@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialTower
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.SequencePrepend
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.SmallSemifree
-public import SerrePositivity.DifferentialGraded.Module.DiskCoverFiltration
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：部分 cell 列の strict 余極限に、実 semifree filtration を与える。

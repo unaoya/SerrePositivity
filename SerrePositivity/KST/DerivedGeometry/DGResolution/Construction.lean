@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.KST.DerivedGeometry.DGResolution.Filtration
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.LocalFlatness
 
 /-!

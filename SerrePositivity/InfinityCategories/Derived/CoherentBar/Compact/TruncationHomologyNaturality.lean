@@ -44,18 +44,18 @@ lemma dgBarCompactConnectiveHomHomologyIso_naturality_of_truncation
     simpa only [homologyMap_comp] using
       congrArg (fun f => homologyMap f (-(n : ℤ))) ht
   have h₃ : homologyMap (truncLEMap φ e) (-(n : ℤ)) ≫
-      homologyMap (L.ιTruncLE e) (-(n : ℤ)) =
-    homologyMap (K.ιTruncLE e) (-(n : ℤ)) ≫ homologyMap φ (-(n : ℤ)) := by
+      homologyMap (HomologicalComplex.ιTruncLE L e) (-(n : ℤ)) =
+    homologyMap (HomologicalComplex.ιTruncLE K e) (-(n : ℤ)) ≫ homologyMap φ (-(n : ℤ)) := by
     simpa only [homologyMap_comp] using
       congrArg (fun f => homologyMap f (-(n : ℤ))) (ιTruncLE_naturality φ e)
   change homologyMap (truncLE'Map φ e) n ≫
     (B.inv ≫ homologyMap (L.truncLEIso e).inv (-(n : ℤ)) ≫
-      homologyMap (L.ιTruncLE e) (-(n : ℤ))) =
+      homologyMap (HomologicalComplex.ιTruncLE L e) (-(n : ℤ))) =
     (A.inv ≫ homologyMap (K.truncLEIso e).inv (-(n : ℤ)) ≫
-      homologyMap (K.ιTruncLE e) (-(n : ℤ))) ≫ homologyMap φ (-(n : ℤ))
+      homologyMap (HomologicalComplex.ιTruncLE K e) (-(n : ℤ))) ≫ homologyMap φ (-(n : ℤ))
   rw [← Category.assoc, h₁]
   simp only [Category.assoc]
-  rw [← Category.assoc _ _ (homologyMap (L.ιTruncLE e) (-(n : ℤ))), h₂]
+  rw [← Category.assoc _ _ (homologyMap (HomologicalComplex.ιTruncLE L e) (-(n : ℤ))), h₂]
   simp only [Category.assoc]
   rw [h₃]
 

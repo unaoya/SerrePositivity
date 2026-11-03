@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCompactEquivalence
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionTriangles
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
 概要：Morita 実延長を代表化した同じ cone 関手が、商の perfect 集合を保存・反映する。

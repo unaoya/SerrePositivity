@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意可換環と独立対象宇宙における左準同型保存の検査 -/

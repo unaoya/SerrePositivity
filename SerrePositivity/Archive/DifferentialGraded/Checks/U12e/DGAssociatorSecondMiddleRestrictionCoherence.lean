@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorSecondMiddleRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.Paired
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 第二中間圏の指定モデルと全導来結合子coherenceの検査

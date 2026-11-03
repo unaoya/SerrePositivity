@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomOutPrecomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7c：導来Homの前合成・自然同型・ホモトピー独立性 -/
 @[expose] public section

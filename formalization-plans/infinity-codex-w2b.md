@@ -182,3 +182,21 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
    - `scripts/audit_euler_betti_finite_support.lean`
    - `scripts/audit_euler_group_shared.lean`
    - `scripts/audit_triangulated_k0_shift_shared.lean`
+
+### §7 の追記（2026-11-02 20:00）
+
+4. `snapshot_batch.py` が v1 の `hash_algorithm` 名だけを検査するため、DG-W3 では実行時ラッパーで v3b の名前に合わせている。**現行の名前（`… proof-irrelevant v3b (term-level, proof marker)`）を受け付ける**ように直す（試験 1 件、別コミット）。
+5. 判断表に「**束縛子の型の明示**」を加える（DG-W3 §9 で承認：省略した束縛子の型が、環境に新たに入った instance に捕まって別の型に推論されるとき、前の型を明示する。条件は宇宙の明示と同じ）。
+
+## 14. 追記（2026-11-02 深夜、§5-3 の停止への回答：配置は宣言単位の依存で決め直し、補充は許される層の中で行う）
+
+**受領**：main merge（408b0f05a、衝突なし）、復元 14 秒、before snapshot v3b 3,616 本（28 分）、R73・R37・R38 の適用（4d02ee532・d12e85d0e・9c38c984e）、適用後の静的検査 PASS（直接違反 294 → 18、中核の順序違反 0、禁止モジュール 1/166/166 → 0/150/150、archive 利用者 0、監査収録漏れ 0）、内部ビルド 1,128/1,899 まで進んで失敗 57 本、`SpecifiedApexConeRestrictions`（Core）が `SpecifiedApexLimitConeTransport`（F1）を型に使う。
+
+**判断**：
+
+1. **失敗 57 本の内訳**（Claude が `w2b-section13-stop.json` と `pending-imports.json` で確認）：unknown identifier 28、unknown namespace 15（Mathlib の `MonoidalCategory` など）、unknown constant 7（`SSet.Homotopy` など）、invalid field 4、failed to synthesize 2、型の不一致 1。いずれも **prune で落ちた import の補充**で直る型で、`proposals` の補充先は Mathlib と同じ層以下のモジュール。判断表の「補充の import」として**そのまま当ててよい**（禁止辺・上の層への辺にならないものに限る）。
+2. **禁止辺になる 1 本**：`Core/FilteredExchange/SpecifiedApexConeRestrictions` の Core への配置が誤り。配置の規則（§9）が「直接 import の層の最大値」だったため、構造体の型を通じた依存（`SpecifiedApexLimitConeTransport.apex`・`.diagram`）を見落とした。**配置を F1（`F1/FilteredExchange/`）へ直す**（束の中の move。違反にならない）。
+3. **配置の規則の最終形**：モジュール M の置き先は、**M の宣言が使う定数の定義元モジュール全部の層の最大値**（snapshot の `used_constants` → 定義元、推移的でなく直接の使用でよい）以上で最も低い層。直接 import だけで決めない。A の全モジュールと R37・R38 の split 先について**この規則で再計算し、食い違うものを補充の前に動かす**（補充が禁止辺になる事態をなくす）。再計算は snapshot のデータだけで済むのでビルド不要。
+4. 補充の import は、置き先と同じ層以下と Mathlib・Foundation に限る。上の層が要るなら 3 で置き先を上げる。禁止領域（KST・DG・EInfinity・モデル圏の HA・Derived・ModelBridge）が要るなら止める（§5-3 はこの場合だけ）。
+
+**再開**：3 の再計算と配置の修正（別コミット「配置の修正」）→ 補充の import（別コミット「補充」、件数と一覧）→ 内部ビルドの続き（残り 771 対象＋失敗 57 本）→ after snapshot v3b → 保存比較 → **停止点 2**（配置修正・補充・修飾などの件数、round の表、静的指標の前後）。

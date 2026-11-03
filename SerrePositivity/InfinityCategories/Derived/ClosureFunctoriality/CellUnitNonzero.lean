@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellDegreeSplitting
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 概要：標準 cell 分解は、係数環が非零なら全対象で非零の厳密単位を持つ。

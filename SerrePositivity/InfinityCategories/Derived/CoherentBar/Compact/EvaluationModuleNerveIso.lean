@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.YonedaNerveIso
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ProjectiveHomCriterion
-public import SerrePositivity.DifferentialGraded.Module.RingDGComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 /-!
 概要：代表 Hom と評価との全比較を、実 R 加群値の coherent 関手へ送る。
 方針：共通宇宙の nerve 関手同型を、同じ ringConstantDG の nerve で後合成する。

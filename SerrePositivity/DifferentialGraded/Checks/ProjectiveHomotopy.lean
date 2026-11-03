@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopy
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # U10b6a：射影的始域からacyclic加群へのホモトピー -/
 @[expose] public section

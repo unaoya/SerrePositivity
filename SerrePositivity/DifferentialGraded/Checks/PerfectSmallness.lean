@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 小さいfinite cell代表系とPerfの本質的小性の受入検査 -/

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Biproduct
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionChainMap
 public import Mathlib.CategoryTheory.Limits.Shapes.Biproducts
 /-!

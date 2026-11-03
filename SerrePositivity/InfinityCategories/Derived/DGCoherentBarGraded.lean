@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertices
 public import SerrePositivity.InfinityCategories.Derived.DGModuleCoproductHomDegrees
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitElements
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：元の coherent dg 加群図式の全単体を保持する bar の graded 直和。
 方針：各 n 単体の始点加群を n シフトし、同じ単体のラベルで余積を取る。

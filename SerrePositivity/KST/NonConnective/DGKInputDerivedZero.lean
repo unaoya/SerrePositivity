@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputPerfectZero
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
-public import SerrePositivity.DifferentialGraded.Derived.AcyclicZero
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 概要：固定 ν が零なら、同じ元 dg 入力の主導来圏の全対象は零。

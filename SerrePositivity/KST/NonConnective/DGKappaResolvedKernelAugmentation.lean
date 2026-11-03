@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedRelativeRoof
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
 public import SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful
-public import SerrePositivity.DifferentialGraded.Category.Restriction
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
 概要：同じ平坦分解の実小核を、元の cone 内の perfect 安定閉包へ照合する。

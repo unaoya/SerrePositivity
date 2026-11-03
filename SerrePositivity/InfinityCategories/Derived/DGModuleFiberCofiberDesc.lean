@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberNullHomotopy
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConeDesc
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # dg 加群の標準 fiber から cofiber への実比較射
 

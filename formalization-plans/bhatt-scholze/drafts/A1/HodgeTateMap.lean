@@ -86,12 +86,12 @@ def hodgeTateMap : True := trivial
 方針：A1-4（Prop 6.2 の一般の r）。
 規約：基底は一般の有界向き付き prism（D30）。
 使われ方：Cor 4.12、A2、A5。 -/
-theorem hodgeTate_iso : True := by trivial -- A1-4
+def HodgeTateIsoStatement : Prop := True -- 主張の述語。定理 `hodgeTate_iso` は HodgeTateComparison.lean に一度だけ置く（W9-I-23）
 
 /-- 概要：Cor 4.12：Δ_{R/A} の形成は有界 prism の任意の底変換と可換（Tor 振幅の仮定なし）。
 方針：導来 Nakayama で mod d に帰着し、Thm 6.3 と微分形式の底変換から。
 規約：A0 の Lemma 4.20 の仮定を外した形。
 使われ方：Construction 7.6 の底変換（A2）。 -/
-theorem prismaticCohomology_baseChange' : True := by trivial -- A1-4
+def PrismaticCohomologyBaseChangeStatement : Prop := True -- 主張の述語。定理 `prismaticCohomology_baseChange'` は HodgeTateComparison.lean に（W9-I-23）
 
 end SerrePositivity.BhattScholze.Prismatic

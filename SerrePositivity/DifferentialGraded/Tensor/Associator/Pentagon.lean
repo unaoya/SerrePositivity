@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # Tensor.Associator.Pentagon

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomChoice
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7d：解像度を替えた導来Homの自然同型と整合性 -/
 @[expose] public section

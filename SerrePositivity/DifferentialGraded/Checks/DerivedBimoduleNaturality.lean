@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorNaturality
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorTriangle
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来結合比較の固定因子自然性と三角整合性の受入監査

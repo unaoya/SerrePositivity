@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Resolution.Composition
-public import SerrePositivity.DifferentialGraded.Derived.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg圏変更の導来制限・両側bimodule評価・解像度比較の監査

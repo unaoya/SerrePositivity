@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.ContractingElements
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 
 /-! # dg 関手と閉零射の実 cycle
 

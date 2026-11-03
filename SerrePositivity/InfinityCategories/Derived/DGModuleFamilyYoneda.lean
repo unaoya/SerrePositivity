@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorRestrictedYoneda
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedRepresentableOperations
-public import SerrePositivity.DifferentialGraded.Category.Induced
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：重複を許す任意の小さい加群ラベル族について制限 Yoneda と shift を比較する。
 方針：全 Hom を実加群から引き戻し、同じ制限 Yoneda の実 shift 同型を使う。

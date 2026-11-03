@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yoneda の補題</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 15</nav>
+<h1>第 III 部 15　Yoneda の補題</h1>
+
+<div class="env definition" id="def-yoneda-evaluation-functor">
+<p class="env-head">定義 15.1 <span class="env-name">（評価写像）</span></p>
+<div class="env-body">
+<p>（未記入）</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-yoneda">
+<p class="env-head">定理 15.2 <span class="env-name">（Yoneda の補題）</span></p>
+<div class="env-body">
+<p>\(C\) を小さい quasicategory とする。</p>
+<ol>
+  <li>前層 \(F\)（<a href="t-14-presheaves.html#def-presheaf">定義 14.2</a>）と頂点 \(y\) について、\(\mathrm{Hom}^R_{\mathcal P(C)}(h_y,F)\) と \(F(y)\) はホモトピー同値である。</li>
+  <li>Yoneda 埋め込み \(j\colon C\to\mathcal P(C)\)（<a href="t-14-presheaves.html#def-yoneda-embedding">定義 14.4</a>）は充満忠実（<a href="t-13-homotopy-equivalence.html#def-fully-faithful">定義 13.3</a>）である。</li>
+</ol>
+</div>
+</div>
+
+</main>
+</body>
+</html>

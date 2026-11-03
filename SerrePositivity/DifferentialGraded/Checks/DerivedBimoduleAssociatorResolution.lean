@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionAssociatorResolution
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定K-flat解像度による全導来結合比較の監査

@@ -2,11 +2,11 @@ module
 
 public import Mathlib.CategoryTheory.Monoidal.Category
 public import SerrePositivity.DifferentialGraded.Presentation.Category
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficientCycles
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereImageCoefficient
-public import SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableClosedNaturality
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.TensorNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.Currying
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # Convolution の反復評価

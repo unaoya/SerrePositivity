@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPrimitives
 public import SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedMaps
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # 代表加群を始域とする導来零射の実 Hom end の原始元
 

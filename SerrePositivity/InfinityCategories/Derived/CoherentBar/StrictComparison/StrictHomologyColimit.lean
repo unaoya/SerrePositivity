@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictHomologyDiagram
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.FilteredHomologyColimitLegs
-public import SerrePositivity.DifferentialGraded.Module.Colimits
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
 
 /-!
 概要：strict dg 余極限のホモロジーを coherent ホモロジー図式の余極限へ同定する。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ComplexColimit
-public import SerrePositivity.DifferentialGraded.Module.Colimits
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：strict filtered 余極限は、対象ごとの dg 加群擬同型を保存する。

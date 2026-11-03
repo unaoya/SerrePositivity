@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleEquivalence
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.FunctorCoherence
 public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.Data.ZMod.Basic
 

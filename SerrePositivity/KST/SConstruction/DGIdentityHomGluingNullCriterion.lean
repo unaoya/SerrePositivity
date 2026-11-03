@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingNullDomain
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 概要：元の実比較射の準同型性から同じ cone の可縮性を得る。

@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Basic
-public import SerrePositivity.DifferentialGraded.Module.GradedSplitElements
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import Mathlib.Logic.Small.Basic
-public import SerrePositivity.DifferentialGraded.Module.Colimits
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
 
 /-!
 概要：元の semifree filtration の実初期層と各商から、cell の小さいラベルを取り出す。

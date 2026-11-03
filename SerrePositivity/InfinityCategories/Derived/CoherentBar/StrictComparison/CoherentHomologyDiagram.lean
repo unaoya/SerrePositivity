@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictCompa
 public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryMap
 public import SerrePositivity.InfinityCategories.Core.UniverseEdgeTransport
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
-public import SerrePositivity.DifferentialGraded.Module.HomotopyQuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Disk
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
 

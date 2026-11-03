@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.GradedNaturalWhiskering
-public import SerrePositivity.DifferentialGraded.Module.Left
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 の指定の全次数自然変換を実際の図式加群に作用させる。

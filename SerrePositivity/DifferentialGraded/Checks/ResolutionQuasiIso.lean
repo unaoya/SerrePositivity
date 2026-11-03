@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ResolutionQuasiIso
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a6：可算cell候補のobjectwise準同型性 -/

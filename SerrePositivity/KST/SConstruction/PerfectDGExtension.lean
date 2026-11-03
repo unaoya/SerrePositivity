@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGStableModel
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionPerfect
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-! # 厳密 dg 関手の実射影的 Perf への延長
 概要：graph 延長を全次数 Hom を保持して射影的 perfect dg 加群へ制限する。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleSemifreeComparison
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意bimoduleへの積dg圏上semifree解像度の受入監査

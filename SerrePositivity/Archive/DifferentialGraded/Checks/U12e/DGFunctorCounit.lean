@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionCounitNaturality
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionInsertion
+public import SerrePositivity.DifferentialGraded.Module.Functor
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # graph延長の評価・余単位・挿入の独立宇宙と公理監査

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGBoundaryAssembly
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # dg 関手に沿う最上位成分と境界の同時持ち上げ

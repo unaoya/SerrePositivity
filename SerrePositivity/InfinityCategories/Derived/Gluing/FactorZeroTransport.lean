@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroObjects
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
+public import SerrePositivity.DifferentialGraded.Module.Basic
 
 /-! ホモトピー零対象の関手像、反対圏、および全 Hom 複体への移送。 -/
 @[expose] public section

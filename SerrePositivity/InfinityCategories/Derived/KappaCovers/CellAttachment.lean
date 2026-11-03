@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetModule
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.ConeEmbedding
-public import SerrePositivity.DifferentialGraded.Module.KernelCells
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：選択した kernel cell の境界を、単射な小さい前段へ持ち上げて付加する。

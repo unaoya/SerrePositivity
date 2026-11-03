@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 相対条件とlocal Hom仮定付きobjectwise条件の区別 -/

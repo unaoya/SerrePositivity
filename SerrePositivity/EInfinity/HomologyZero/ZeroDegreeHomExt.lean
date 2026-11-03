@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.HomologyZero.ZeroDegreeLinear
 public import SerrePositivity.EInfinity.HomologyZero.PairingRepresentatives
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 零次集中源の単位元による射の判定

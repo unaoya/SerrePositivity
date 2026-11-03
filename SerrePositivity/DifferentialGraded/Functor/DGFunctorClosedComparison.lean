@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 
 /-! # 全 Hom の可換式からの閉零 dg 自然比較

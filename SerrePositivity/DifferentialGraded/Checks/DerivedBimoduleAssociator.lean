@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionAssociator
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Resolution
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全三因子に自然な導来結合比較と局所化前の計算式の監査

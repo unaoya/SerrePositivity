@@ -2,8 +2,8 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactCoproduct
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactPerfectCriterion
 public import SerrePositivity.InfinityCategories.Derived.DGKappaClosedProjectiveProperty
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereShift
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：代表加群の native κ-compact 性を、現 κ-small 代表模型の七入力へ伝える。
 方針：球面自由項を代表加群の shift と比較し、κ 未満直和・perfect retract・演算木を適用する。

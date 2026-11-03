@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedZero
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ComplexPinchedPullback
-public import SerrePositivity.DifferentialGraded.Complexes.Biproduct
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-! 二項直和は零複体の上の引き戻しであり、同じ実空間模型もこの正方形を保つ。 -/
 @[expose] public section

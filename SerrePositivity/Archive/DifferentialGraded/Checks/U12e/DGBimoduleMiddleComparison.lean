@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparison
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 中間dg圏の制限に沿う全Hom自然なbimodule射と解像度を使う導来比較の検査

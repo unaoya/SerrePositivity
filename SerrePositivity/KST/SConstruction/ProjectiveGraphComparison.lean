@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionNaturality
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-! # 射影的対象における graph 延長の実自然比較
 概要：実 graph 延長と主導来延長を、元の射影的加群と全閉零射で自然に比較する。

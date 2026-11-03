@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ResolutionFreeQuotients
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a12：shiftと自由なcell商 -/

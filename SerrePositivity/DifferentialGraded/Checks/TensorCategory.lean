@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.Tensor
-public import SerrePositivity.DifferentialGraded.Complexes.TensorInterchange
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # U11b2：Mathlib transportによるtensor積dg圏 -/
 @[expose] public section

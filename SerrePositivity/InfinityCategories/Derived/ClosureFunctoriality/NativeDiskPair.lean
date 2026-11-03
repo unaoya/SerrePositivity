@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeCoreIso
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.PointFamily
-public import SerrePositivity.DifferentialGraded.Category.Induced
-public import SerrePositivity.DifferentialGraded.Category.Comparison
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
-public import SerrePositivity.DifferentialGraded.Complexes.DiskContractible
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Category.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.KST.SConstruction.DGFunctorWhiskering
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeComposition
 

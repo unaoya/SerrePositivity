@@ -5,16 +5,16 @@ public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import Mathlib.CategoryTheory.Preadditive.Biproducts
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereShift
-public import SerrePositivity.DifferentialGraded.Module.ResolutionSequence
-public import SerrePositivity.DifferentialGraded.Complexes.ExactColimits
-public import SerrePositivity.DifferentialGraded.Derived.AcyclicZero
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import Mathlib.Algebra.Category.ModuleCat.AB
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Category.EquivalenceComparison
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 # Perfect.Compact.FiniteGeneration

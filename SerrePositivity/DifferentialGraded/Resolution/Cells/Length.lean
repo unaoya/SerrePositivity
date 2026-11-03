@@ -2,14 +2,14 @@ module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.Recursion
-public import SerrePositivity.DifferentialGraded.Complexes.UnitorCochainNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightTwoCoproductExt
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCompositionAssociativity
-public import SerrePositivity.DifferentialGraded.Functor.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.CoproductSubfamily
-public import SerrePositivity.DifferentialGraded.Complexes.PerturbationRestriction
-public import SerrePositivity.DifferentialGraded.Complexes.PerturbationMap
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-!

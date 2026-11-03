@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeLift
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # cone への全 Hom の復元と射影
 

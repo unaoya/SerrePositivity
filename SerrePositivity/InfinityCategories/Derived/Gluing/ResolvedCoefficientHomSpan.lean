@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ResolvedModuleValues
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
+public import SerrePositivity.DifferentialGraded.Module.Basic
 
 /-! 実分解 Hom と元の係数を、同じ二つの augmentation からの準同型 span で比較する。 -/
 @[expose] public section

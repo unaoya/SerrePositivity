@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.RingDGComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 非有界複体と一対象Aの右dg加群の準同値の検査 -/

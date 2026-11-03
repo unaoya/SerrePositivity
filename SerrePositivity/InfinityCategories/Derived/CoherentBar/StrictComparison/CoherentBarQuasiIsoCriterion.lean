@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyColimit
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.HomologyBarNondegCokernel
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：coherent bar からの実 dg 射を頂点ホモロジーの余極限で擬同型判定する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStage
-public import SerrePositivity.DifferentialGraded.Module.ResolutionGradedSteps
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：依存閉なセル選択から、実 dg 加群の可算 cell 列とその余極限を作る。

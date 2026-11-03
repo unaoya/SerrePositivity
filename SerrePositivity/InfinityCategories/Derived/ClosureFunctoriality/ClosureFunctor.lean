@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.FullFunctor
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Module.Functor
 
 /-!
 概要：互換な任意の射影的基底から、閉包代表の充満部分 dg 圏間の実関手を構成。

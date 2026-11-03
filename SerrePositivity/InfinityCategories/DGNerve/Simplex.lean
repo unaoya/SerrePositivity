@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.InfinityCategories.DGNerve.Index
 
 /-! # dg nerve の単体

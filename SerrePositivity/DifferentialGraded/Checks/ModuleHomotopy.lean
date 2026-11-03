@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomotopyQuasiIso
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U8a1/b1：加群ホモトピーと objectwise quasiIso の受入入口 -/

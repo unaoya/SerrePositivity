@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 /-!
 概要：指定境界を後合成で零となる全 dg 自然な原始元へ持ち上げる。
 方針：始域の K-projective 性と実 Hom 射の境界持ち上げを接続する。

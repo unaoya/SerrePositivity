@@ -3,12 +3,12 @@ module
 public import SerrePositivity.DifferentialGraded.Resolution.FixedObject
 public import SerrePositivity.DifferentialGraded.Resolution.Basic
 public import Mathlib.CategoryTheory.Functor.OfSequence
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.CategoryTheory.Monoidal.Limits.Colimits
 public import Mathlib.CategoryTheory.Filtered.Final
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCompositionAssociativity
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 # Resolution.Cell

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.StrictRange
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveClosureProperty
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
-public import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
+public import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 
 /-!
 概要：基底の実 dg 同型による像の被覆を、閉包の全段階へ伝播する。

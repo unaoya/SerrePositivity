@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorBraidingLaws
-public import SerrePositivity.DifferentialGraded.Category.TensorComposition
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # 元の tensor dg 圏の符号つき交換関手
 概要：二つの tensor 因子を交換し、元の Hom の signed braiding で厳密 dg 関手を作る。

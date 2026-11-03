@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanDescent
-public import SerrePositivity.DifferentialGraded.Module.MaurerCartan
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：MC 作用素と可換な元の加群射を、両端の実 MC 加群の閉零射へ移す。
 方針：元の全次数自然な零サイクルを成分を保って移し、既存の MC Hom 微分公式で閉性を示す。

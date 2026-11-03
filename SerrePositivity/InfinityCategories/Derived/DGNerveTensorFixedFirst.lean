@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveTensorProductMap
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedFront
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：第一入力を固定した実 tensor 写像を、元の第二因子の dg 包含の nerve へ同定する。
 方針：定値入力の非空切断を消し、同じ単位辺と空切断の実 cochain を使う。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 全次数 Yoneda 像の原始元の元の Hom への反映
 

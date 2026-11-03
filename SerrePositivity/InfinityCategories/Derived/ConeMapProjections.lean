@@ -1,6 +1,6 @@
 module
 public import Mathlib.Algebra.Homology.HomotopyCategory.Pretriangulated
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 可換四角形による cone 射の二射影
 

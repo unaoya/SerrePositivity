@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Hom
+public import SerrePositivity.DifferentialGraded.Module.Basic
 
 /-! # 厳密 dg 関手間の全次数自然変換の Hom end
 概要：任意の標的 dg 圏への厳密 dg 関手の全次数 Hom 複体を構成する。

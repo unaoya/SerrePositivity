@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomElements
-public import SerrePositivity.DifferentialGraded.Module.Category
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 /-!
 概要：加群 Hom の標的の等号に沿う全次数輸送を、元の係数との異種等号とまとめる。

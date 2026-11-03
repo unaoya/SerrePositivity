@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-!
 概要：D の元の graph 延長・制限の単位が、全 Hom 複体について自然であることを示す。

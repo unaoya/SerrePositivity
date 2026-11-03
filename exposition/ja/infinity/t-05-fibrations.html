@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fibration</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 5</nav>
+<h1>第 III 部 5　fibration</h1>
+
+<div class="env definition" id="def-boundary">
+<p class="env-head">定義 5.1 <span class="env-name">（境界 \(\partial\Delta^n\)）</span></p>
+<div class="env-body">
+<p>\(n\ge0\) について、\(\Delta^n\) の部分単体的集合 \(\partial\Delta^n=\bigcup_{0\le j\le n}\partial_j\Delta^n\) を境界という（面は<a href="t-01-definitions.html#def-face">定義 1.6</a>、和は<a href="t-01-definitions.html#def-union">定義 1.5</a>）。\(\partial\Delta^0\) は空である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-lifting">
+<p class="env-head">定義 5.2 <span class="env-name">（右持ち上げ性質）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(q\colon E\to B\) が部分単体的集合の包含 \(A\subseteq A'\) に対して右持ち上げ性質をもつとは、射 \(u\colon A\to E\)、\(v\colon A'\to B\) が \(q\circ u=v|_A\) をみたすとき、必ず射 \(w\colon A'\to E\) で \(w|_A=u\)、\(q\circ w=v\) となるものが存在することをいう。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-fibrations">
+<p class="env-head">定義 5.3 <span class="env-name">（fibration）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(q\colon E\to B\) が、次の表の包含のすべてに対して右持ち上げ性質（<a href="#def-lifting">定義 5.2</a>）をもつとき、それぞれ次のように呼ぶ（horn は<a href="t-01-definitions.html#def-horn">定義 1.7</a>）。</p>
+<div class="table-wrap"><table>
+<tr><th>名前</th><th>包含</th></tr>
+<tr><td>Kan fibration</td><td>\(\Lambda^n_i\subseteq\Delta^n\)（\(n\ge1\)、\(0\le i\le n\)）</td></tr>
+<tr><td>inner fibration</td><td>\(\Lambda^n_i\subseteq\Delta^n\)（\(0&lt;i&lt;n\)）</td></tr>
+<tr><td>左 fibration</td><td>\(\Lambda^n_i\subseteq\Delta^n\)（\(0\le i&lt;n\)）</td></tr>
+<tr><td>右 fibration</td><td>\(\Lambda^n_i\subseteq\Delta^n\)（\(0&lt;i\le n\)）</td></tr>
+<tr><td>trivial Kan fibration</td><td>\(\partial\Delta^n\subseteq\Delta^n\)（\(n\ge0\)、<a href="#def-boundary">定義 5.1</a>）</td></tr>
+</table></div>
+</div>
+</div>
+
+<div class="env remark" id="rem-fibration-point">
+<p class="env-head">注意 <span class="env-name">（一点への射）</span></p>
+<div class="env-body">
+<p>\(\Delta^0\) は各段が一点の単体的集合で、任意の単体的集合 \(X\) から唯一の射 \(X\to\Delta^0\) がある。\(X\) が quasicategory（<a href="t-01-definitions.html#def-quasicategory">定義 1.8</a>）であることは \(X\to\Delta^0\) が inner fibration であることと、Kan 複体（<a href="t-01-definitions.html#def-kan">定義 1.9</a>）であることは \(X\to\Delta^0\) が Kan fibration であることと同じである。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-contractible">
+<p class="env-head">定義 5.4 <span class="env-name">（可縮）</span></p>
+<div class="env-body">
+<p>単体的集合 \(X\) が可縮であるとは、\(X\to\Delta^0\) が trivial Kan fibration（<a href="#def-fibrations">定義 5.3</a>）であること、すなわち任意の射 \(\partial\Delta^n\to X\)（\(n\ge0\)）が \(\Delta^n\to X\) に延長できることをいう。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

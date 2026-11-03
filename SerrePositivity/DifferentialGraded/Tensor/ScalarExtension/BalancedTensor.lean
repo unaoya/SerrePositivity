@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Module.LeftClosedMaps
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 
 /-!
@@ -393,6 +393,7 @@ end ScalarExtensionActions
 
 @[expose] public section ScalarExtensionPresentation
 universe u v
+set_option synthInstance.maxHeartbeats 40000
 
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

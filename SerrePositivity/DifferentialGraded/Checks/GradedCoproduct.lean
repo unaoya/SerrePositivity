@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Disk
 
 /-! # U10a10：u-small余積上の全次数分裂 -/
 @[expose] public section

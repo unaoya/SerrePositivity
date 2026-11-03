@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleClosedRightShift
 public import SerrePositivity.InfinityCategories.Derived.DGYonedaGradedPrimitives
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
 
 /-! # 元の斉次 Hom の Yoneda shift と原始元の回収

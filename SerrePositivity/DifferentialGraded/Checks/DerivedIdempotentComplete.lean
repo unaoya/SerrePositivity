@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.IdempotentComplete
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Functor
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 非有界導来圏の可算telescopeと冪等分裂の検査 -/

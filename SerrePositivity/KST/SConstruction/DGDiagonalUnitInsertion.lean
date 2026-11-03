@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorLeftUnitElements
-public import SerrePositivity.DifferentialGraded.Module.FreeHomNaturality
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
 
 /-! # 対角双加群の単位挿入を chain map として固定する
 概要：元の単位元の挿入を、次数ごとの式から chain map の逆単位へ接続する。

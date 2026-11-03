@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
-public import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.DGNerve.Residual
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorRightRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorLeft
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全導来結合子と外側右制限の標数2・仮定の検査

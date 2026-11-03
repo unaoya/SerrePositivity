@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DiskCoverFiltration
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a11：初期自由disk被覆全体の二段分解 -/

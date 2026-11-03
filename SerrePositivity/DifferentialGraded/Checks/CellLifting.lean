@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.CellLifting
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a2：I/Jの具体的右liftクラスと非有界複体の準同型判定 -/

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGUniverseNerveFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveZero
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # dg Yoneda の全加群圏への実際の nerve
 

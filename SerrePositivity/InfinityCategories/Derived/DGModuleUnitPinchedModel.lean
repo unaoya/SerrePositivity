@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeDerivedHomAugmentationInfinity
 public import SerrePositivity.InfinityCategories.Derived.PinchedComplexModelComparison
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
+public import SerrePositivity.DifferentialGraded.Module.Basic
 /-!
 概要：全 dg R 加群の実 nerve で、R の代表加群からの Hom を同じ評価複体へ同定する。
 方針：全 Hom の Yoneda 同型と単位 Hom 同型を、同じ実 pinched 鎖写像へ送る。

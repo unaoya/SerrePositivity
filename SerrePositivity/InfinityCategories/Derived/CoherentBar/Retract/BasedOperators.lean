@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.DegeneracyOperators
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 /-!
 概要：始点を保つ単体写像を、実 bar の係数族の閉斉次ブロックとして扱う。

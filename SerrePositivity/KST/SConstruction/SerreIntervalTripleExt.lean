@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalTensorExt
-public import SerrePositivity.DifferentialGraded.Complexes.CompositionLaws
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-! # 元の鎖区間の三重 tensor の生成元判定
 概要：二端点と辺の全ての三つ組で、三重 tensor からの chain map を判定する。

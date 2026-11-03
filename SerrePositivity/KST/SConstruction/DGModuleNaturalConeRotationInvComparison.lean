@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
-public import SerrePositivity.DifferentialGraded.Module.ConeRotationHomotopy
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-!
 概要：全厳密回転逆の元閉射を従来の実回転逆と照合する。

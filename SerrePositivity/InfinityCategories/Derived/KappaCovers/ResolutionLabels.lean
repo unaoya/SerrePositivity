@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetModule
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.DependencyPieces
-public import SerrePositivity.DifferentialGraded.Module.ResolutionSequence
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-!
 概要：標準 cell resolution の disk と kernel cell を同じ小宇宙のラベルへ入れる。

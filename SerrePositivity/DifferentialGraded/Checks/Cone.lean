@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Cone
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7b3a：cone の全次数作用と objectwise 評価 -/

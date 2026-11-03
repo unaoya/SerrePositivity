@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10b3c：余積のHom endとhomotopically projective性 -/

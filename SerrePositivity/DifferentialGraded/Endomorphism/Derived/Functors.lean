@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ResolutionFunctorChoice
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon
-public import SerrePositivity.DifferentialGraded.Derived.RightTensor
-public import SerrePositivity.DifferentialGraded.Derived.EvaluationTriangles
-public import SerrePositivity.DifferentialGraded.Derived.RightTensorResolution
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensorCoherence
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
 
 /-!

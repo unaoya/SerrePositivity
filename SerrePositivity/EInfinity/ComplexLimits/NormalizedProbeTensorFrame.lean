@@ -30,6 +30,7 @@ def normalizedProbeTensorAugmentation :
     normalizedProbeTensorFrame A ⟶ framedLimitProbeFunctor A ⋙ Functor.const SimplexCategory :=
   Functor.whiskerLeft (framedLimitProbeFunctor A) (normalizedSimplexTensorFamilyAugmentation A)
 
+set_option synthInstance.maxHeartbeats 40000 in
 lemma normalizedProbeTensorFrame_cofibrant (X : Complex A) :
     letI := projectiveModelCategory A
     reedyLeft simplex (cofibrations (Complex A))

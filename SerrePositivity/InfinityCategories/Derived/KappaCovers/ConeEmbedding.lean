@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeFunctor
-public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+
 
 /-!
 概要：可換 square の両辺の次数ごとの単射性を、実 cone の射へ運ぶ。

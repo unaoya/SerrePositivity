@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.GammaH0
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyLinear
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.CategoryTheory.Preadditive.Basic
 
 /-!

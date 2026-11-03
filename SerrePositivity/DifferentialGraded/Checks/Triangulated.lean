@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Triangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # K(D)の八面体公理の受入検査 -/
 @[expose] public section

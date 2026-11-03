@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.NestedCut
 
 /-!

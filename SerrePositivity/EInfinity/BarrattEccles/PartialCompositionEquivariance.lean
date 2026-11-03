@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionExt
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleEquivariance
 public import SerrePositivity.EInfinity.BarrattEccles.NormalizedRightAction
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # shuffle 部分合成の複体の射としての等変性

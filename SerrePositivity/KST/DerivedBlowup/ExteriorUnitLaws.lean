@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.ExteriorUnit
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 概要：KST Def3.1 の Koszul 外積複体の左右単位則。

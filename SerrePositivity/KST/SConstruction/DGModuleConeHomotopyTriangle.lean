@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyMap
-public import SerrePositivity.DifferentialGraded.Module.ConeCompositionTriangle
-public import SerrePositivity.DifferentialGraded.Module.Pretriangulated
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
+
 
 /-!
 概要：指定加群ホモトピーから同じ実 cone 射の三角形写像と同値判定を作る。

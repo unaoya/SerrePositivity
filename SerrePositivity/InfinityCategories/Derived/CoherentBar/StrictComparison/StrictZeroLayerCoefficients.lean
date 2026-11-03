@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentNaturalLayerHomology
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictHomologyDiagram
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：strict 図式の零次元層ホモロジーの係数同型を元の頂点へ戻す。

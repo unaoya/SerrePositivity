@@ -1,14 +1,14 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Quotient.Erasure
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorCochainNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.TensorJoinHomNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
 public import SerrePositivity.DifferentialGraded.Quotient.Scalar
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryUnit
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproductExt
-public import SerrePositivity.DifferentialGraded.Complexes.PrefixTensorCochain
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryAssociativity
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
+
 
 /-!
 # Quotient.Append

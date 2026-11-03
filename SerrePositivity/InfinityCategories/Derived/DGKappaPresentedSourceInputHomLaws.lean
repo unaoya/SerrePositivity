@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceParameter
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionInputHomComposition
-public import SerrePositivity.DifferentialGraded.Functor.ClosedConjugationTensorComposition
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 /-!
 概要：出発提示表示の入力 Hom 作用が全次数の単位・合成を保つことを示す。
 方針：元の加群延長の全 Hom 法則と、指定した閉同型の共役の法則を合成する。

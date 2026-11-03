@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 /-!
 概要：任意の小さい dg 圏上の半自由加群の実 dg nerve と分解を定義する。
