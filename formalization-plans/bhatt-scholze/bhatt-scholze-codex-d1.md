@@ -68,3 +68,28 @@
   （`Sites/DenseSubsite/InducedTopology.lean`）、`Presheaf.IsSheaf`、`Sieve.generate`・`Presieve.ofArrows`、`SmallModel`・`equivSmallModel`（Mathlib EssentiallySmall）。
 - 付値環：`ValuationRing`、`ringKrullDim`、`IsIntegralClosure`、`integralClosure`、`IsFractionRing`（Mathlib）。界面の `ArcOutside`（`Derived/Interface.lean:645`）。
 - ∞ 側（A0 で使う）：`functorVertexEquiv`（`InfinityCategories/Core/EquivalencePath.lean`）、`FunctorIso`、S1〜S3 の名前は `drafts/Sheaves/*.lean`。
+
+## 5. 経緯（2026-11-03、停止点 1 まで。新しいチャットで続ける Codex のために）
+
+- **背景**：この計画は Serre positivity の形式化で唯一残る perfectoid 側の文献入力 E3（`BhattScholze.Inputs.exists_perfectoidizationInterfaceE3`）を、
+  Bhatt–Scholze 原典の経路（A0〜A9：prismatic site、HT 比較、導来 Δ、semiperfectoid、Def 8.2、Prop 8.5、arc 降下と excision、Prop 8.13・Cor 8.14、§10 の almost、組み立て）で
+  消すためのもの。設計は `formalization-plans/bhatt-scholze/a0-design.md`〜`a9-design.md`、状態は `design-status.md`、Lean の骨組みは `drafts/`（`SerrePositivity/` の外、
+  **一度もビルドしていない**）。Codex のレビュー W9（`review-codex-w9.md`、致命 14 件を訂正）で設計は条件付き妥当と判定済み。
+- **いまの段階**：本体の `BhattScholze/` の Lean は論文の層の整理 2a の取り込み（11-05）まで凍結。その間に drafts の `True`／`Type u := sorry` の仮置きを具体的な型に直す
+  下書き作業が BS-D1（本指示書）。実装は 2a 後に BS-W10（CompletedTensor の分割、Lemma 10.12）、BS-W11（根添加・付値環・arc site）から。
+- **BS-D1 の進み**（報告 `report-codex-d1.md` 第 1〜3 部、コミット 034e12102・1c4a324b8・106e8d227）：
+  - 第 1 部：`drafts/A6/ArcSite.lean` の AffCompl・AffPerfd・包含・位相・coverage の三補題を具体化。**D1-01** で停止：S3 の `CechNerveData`（`drafts/Sheaves/CechConerveLimit.lean`）は
+    圏 𝒟 の絶対積のデータだが、arc site で要る Čech 項 S ⊗̂_R S は相対（R = S = F_p[t] の恒等被覆で絶対積 S ⊗̂_{ℤ_p} S と異なる）。
+    **決定**（Claude、3628dc9ca）：Čech データは被覆 f の生成 sieve Q の圏 `sieveCategory Q`（S1、`drafts/Sheaves/SheafCondition.lean`）の中で取る。
+    U = f.op が弱終、U の冪は op R 上のファイバー積。主張を (1) 生成 sieve ごとの Čech 同値 `isSheaf_generateSieve_iff_cech` と (2) 層判定 `isSheaf_arc_iff_cech` に分けた。
+  - 第 2 部：(1) と一点被覆の coverage `arcCoverage` を具体化。**D1-02** で停止：有限族の coverage と一点族の coverage は同じ位相を生成しない
+    （k × k → k の二つの射影は有限 arc 被覆だが、生成 sieve は一点被覆を含まない。任意の前層では一点 Čech 条件だけで層にならない：二点集合の定数前層と零環の空族）。
+    **決定**（Claude、f1947a44c）：`arcTopology = K₁ ⊔ K_ext`（一点被覆と有限積の射影の族）。任意の前層の層判定は「有限積を保つ ∧ 一点被覆の相対 Čech 条件」
+    （`PreservesFiniteRingProducts`、S1-E `isSheaf_extensive_iff_preservesFiniteProducts` は基盤待ち）。O（CAlg_ℤ 値）と Hom(T, −) は有限積を保つので Prop 8.10 の帰着は一点被覆で足りる。
+  - 第 3 部：D1-02 の三定義、G-A6-11（R₀ = ℤ_p[p^{1/p^∞}]^∧ の表示、S₀ = completionRing(S ⊗_{ℤ_p} R₀)、濃度）、G-A6-3（試験付値環 V の perfectoid な拡大 W と p の両立根）、
+    `exists_baseExtension_lift`、`exists_perfectoid_arcCover`、`affPerfdInclusion_isCoverDense`（Mathlib `Functor.isCoverDense_of_generate_singleton_functor_π_mem`）を具体化。
+    ArcSite の `True` は 0 件。**停止点 1 完了、検収済み**（734b702ba）。
+- **次**：停止点 2（`drafts/A6/ArcSheafProperty.lean`）。要点は §1 の 2 と、続行指示（O は CAlg_ℤ 値、`PreservesFiniteRingProducts` を O と Hom(T, −) について、
+  三つの引用の形、G-A6-4〜7、Prop 8.10 の主張）。その後、停止点 3（`drafts/A8/Stratification.lean`）、停止点 4（A0 の三本）。
+- **設計上の約束**（変わらない）：定義は原典どおり、定理は E3 に要る特別な場合だけ、差は D 番号（ユーザーが付ける）。主張を変えたくなったら止めて報告。
+  ビルド・`lake env lean` なし。編集は drafts の指定ファイルと報告ファイルだけ。
