@@ -58,8 +58,8 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
 | A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
 | A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
-| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
-| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 未（a8 §8 の 3・4・6） | G-A8-6・8・9、A5・A7 |
+| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分は Codex 未） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
+| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
@@ -248,7 +248,11 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-III-01 G-A8-3「導来 p 完備な環上の有限加群は導来 p 完備」は偽（R = ∏V、M = R/⊕V：p x_{k+1} = x_k、x_0 ≠ 0 で R[1/p] → M 非零；S = R × M は有限で D(e_0) 上自明な有限エタールだが非完備）。Cor 8.12 の前提の供給が崩れる | 致命 | **訂正済み（2026-11-03、Codex 推奨 (a)）**：Thm 10.9 の入力を原典どおり有限表示有限に戻す（脚注 19、既存 `isModuleComplete_of_finitePresentation`。E3 の始域は狭まらない：Thm 10.11 は有限表示有限に帰着）。S′ の完備性は構成固有の計算 G-A8-3′（有限個の e_j s_a で生成、R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r、既存 `ModuleClosure`）。a8-design §2.2・§3.2(5)・§4・§7・§8.2、`AlmostPurityConnectivity.lean`（`finitePresentation_isModuleComplete`・`trivialCoverComparison_isModuleComplete`）。(b)（任意の有限 S を completionRing 経由で残す）は採らない |
 | W9-III-02 局所化の同型だけでは `ArcOutside` は出ない（S = V = F_p[t^{1/p^∞}]^∧_t、S′ = V[1/t]、g = t で id が延びない）。界面の条件は g の像が非零であって可逆ではない | 要修正 | 訂正済み（G-A8-3″：整写像＋局所化の同型 ⇒ Frac(V) へ延長し整閉性で V へ。界面を弱めない。a8-design §3.2(4)・§4、`arcOutside_of_integral_of_localization_iso`、`perfectoidization_almostIso_of_localization_iso` の前提に整・完備を明示） |
 | W9-III-03 「R/J = R/f_1 ⊗̂ ⋯（導来）」は偽（p ねじれなし R、f_1 = f_2 = p で H^{−1} = R/p） | 要修正 | 訂正済み（Q := ⊗̂^L R/(f_i)、π_0 Q = R/J、Prop 8.5 系 4 で Q_perfd ≃ (R/J)_perfd、Prop 8.13 の二段。生成元ごとの判定は維持。a8-design §3.1・G-A8-2、`isAlmostZero_iff_forall_gen`） |
-| （W9 第 3 部の要確認）Thm 10.11 の整閉包 S′ に Cor 8.12 を当てる前提（整性・導来 p 完備性）の供給 | 要確認 | 記録（`IntegralDiscreteness.lean` の `perfectoidization_almostConnective_of_stratification` に要確認を追記。Codex の §8.3〜8.6 の確認で扱う） |
+| （W9 第 3 部の要確認）Thm 10.11 の整閉包 S′ に Cor 8.12 を当てる前提（整性・導来 p 完備性）の供給 | 要確認 | → W9-III-04 で致命と判明、下の行で修復 |
+| W9-III-04 Thm 10.11 の整閉包 T は導来 p 完備とは限らない（V 値の p 進収束列の環 R（perfectoid）、g = (p^n)、S = R で、b = (n) は T の p 進 Cauchy 列の極限だが R 上整でない）。Cor 8.12 を直接当てられない | 致命 | **訂正済み（2026-11-03、Codex 推奨 (a)）**：T（代数的整閉包、原典どおり）と T̂ = completionRing T を分け、Cor 8.12 は S → T̂ に当てる（D70・G-A8-10：ArcOutside は W の p 完備性で T̂ へ延びる、T の p 冪ねじれは有界なので T̂ は離散で導来完備、e3Perfd(T) = T̂_perfd、商の比較は A6 §2.3 の自然同型）。生の T の完備性を一般補題にする案は不可。(b)（A6 側に系を追加）は採らない。a8-design §3.3(5)・§4・§5・§7・§8.7、`IntegralDiscreteness.lean`、ノート第 10 章 |
+| W9-III-05 S → T の局所化は同型とは限らない（S = V[ε]/(ε²)、g = p。原典は arc 層の同型）ので G-A8-3″ を S に直接当てられない | 要修正 | 訂正済み（S → S_red → T ⊂ B と書き、ArcOutside は W 被約で S_red を通し Frac(W) と整閉性で。`integralClosureInLocalization_arcOutside`） |
+| W9-III-06 「整閉包の有限生成部分代数」では有限表示性が出ない | 要修正 | 訂正済み（G-A8-11：T への写像を備えた有限表示有限 A_λ の filtered 系、A_λ[1/g_1] ≅ B、単射性を要求しない。`exists_finitePresentation_approximation_fixedLocalization`） |
+| W9-III-07 Lemma 10.12 の骨組みの引数に Z_(p) 代数の仮定がない（q ≠ p の純非分離拡大で偽） | 要修正 | 訂正済み（`exists_finiteEtaleStratification` に `hZp : ∀ q, q.Prime → q ≠ p → IsUnit (q : R)` を追加） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
