@@ -40,10 +40,10 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
 | G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
 | A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor（BS-D4 停止点 1 済：`True` 0 件。(4)(5)・D32、要確認は ScalarRestriction の随伴の単位） | 未（a2 §7 の 3・4） | C・D |
-| A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
-| A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
-| A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |
-| A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
+| A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase（BS-D4 停止点 2 済、11-03：`True` 0 件。評価射の δ 射性は p ねじれなしの標的、始対象はその充満部分圏、D36 (a)） | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
+| A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase（BS-D4 停止点 2 済：`True` 0 件。要確認 G-A3-9） | — | A（Rem 2.2 の δ 構造の名前） |
+| A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular（BS-D4 停止点 2 済：`True` 0 件。普遍例は任意の有界 P₀ と分類射を明示引数に、D4-02。G-A3-7 は証明予定） | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |
+| A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular（BS-D4 停止点 2 済：`True` 0 件。qrsp は完備・perfectoid の全射商・有界 p 冪ねじれ・完備余接複体の平坦性の四条件 D39、Cor 7.3 の入口は非零・零環で分岐 W9-I-44。要確認：p 完備環の標準 ℤ_p 作用（主元完備化の一意延長、2b の HA/DerivedCompletion へ。A6 の `arcPadicIntMap` と同じ）） | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
 | A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization（BS-D2 停止点 1 済、11-03：`True` 0 件。塔は `cAlgRestrictScalars φ_A` の正の反復、Frobenius の成分は A2 待ちの仮置き `discreteDeltaFrobenius`、`perfectPrismRing` = A_inf(R) = W(PreTilt R)） | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
 | A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields（BS-D2 停止点 1 済：`True` 0 件。界面の欄の型に合わせた） | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
 | A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |

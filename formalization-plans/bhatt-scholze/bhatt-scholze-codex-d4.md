@@ -59,3 +59,8 @@ Ex 7.9 は原典の順序（W9-I-39）、G-A3-7 は証明予定。A1：D68（de 
   `completePiZeroReflection`、D3-01 の第 0 脚は `discreteEvaluation`）。要確認は基盤側（G-A2-3・9 の CAlg 反射、G12、Shared の Tot、DerivedGeneral の反射・切り捨て、ScalarRestriction の随伴の単位、
   A0/S2 の関手性）。置き換え自体は中身の段階。
 - 次：停止点 2（A3）。
+- **D4-02**：A1 の `universalOrientedPrismRing` に p の引数と `CommRing` がない → A3 の普遍例は任意の有界 P₀ と d を保つ分類射を明示引数にし、停止点 3 で A1 から渡す（e901167e4）。
+- 第 2 部（c984e4150、**停止点 2 完了・検収済み**）：A3 の 13 件＋`Type u := sorry` 4 件（`discretePrismaticRing`・`universalLciPrismRing`・`ainfPrismRing`・`regularSemiperfectoid`）。
+  Lemma 7.7・7.8 は p ねじれなしの標的の充満部分圏、Ex 7.9 は導来底変換 → H⁰ 比較 → W₂ 切断と envelope の普遍性、Prop 7.10 の Cor 7.3 入口は非零・零環で分岐。
+  A1 から渡す引数の対応表は報告第 2 部。要確認：G-A3-9、p 完備環の標準 ℤ_p 作用（2b の HA へ）、濃度条件。
+- 次：停止点 3（A1。D4-02 の特殊化を含む）。
