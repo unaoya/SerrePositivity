@@ -20,6 +20,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <nav class="top"><a href="index.html">目次</a> › 第 5 章</nav>
 <h1>第 5 章　Hodge–Tate 比較と結晶比較（§5・§6）</h1>
 <p class="meta">基準コミット <code>a0ccccb09</code>（2026-10-25）。原典 pp.45–55。E3 に必要な項目だけを載せる（判定は <a href="#items-05">原典の項目一覧</a>）。</p>
+<p class="meta">2026-11-03 更新：BS-D4 で A1 の骨組み（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/">drafts/A1/</a>、4 本）が揃ったので、各表に宣言名を付け、Construction 6.1 の Tor 振幅（D4-04）と「原典との差の評価」を加えた。</p>
 <p>HT 比較（Thm 4.11）の証明。§5 で標数 p（\(I=(p)\) の結晶 prism）の場合を、結晶比較（Thm 5.2）と Cartier 同型から示し（Cor 5.5）、§6 で普遍向き付き prism を結晶 prism へ写す構成（Construction 6.1）を使って一般の場合に延ばす（Prop 6.2、Thm 6.3）。全て未形式化で、A1 の範囲。形式化（D68、2026-11-02 決定、W9-III-16 で本章を更新）：結晶コホモロジーは定義せず、Thm 5.2 β の de Rham 形「\(\varphi^*\Delta_{\mathbb F_p[X]/\mathbb Z_p}\simeq\Omega^*_{\mathbb Z_p\langle X\rangle}\)」を仕様つき（自然性・乗法・Bockstein・根の遷移）の黒箱一件 <code>crystalline_deRham_polynomial_Zp</code> として置き、Cor 5.5 は Cartier 同型による系（A1/CrystallineInput）。</p><div class="box">
 <p class="label">方針（2026-10-25 決定）</p>
 <p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
@@ -37,32 +38,43 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Not 5.1、Thm 5.2</td><td>結晶比較</td><td class="todo">未</td><td>A1。\(A=\mathbb Z_p\)、\(I=(p)\)、多項式代数の場合だけ。結晶コホモロジーは定義しない：既知の値 \(\mathbb Z_p\langle X\rangle\) の de Rham 複体との比較を仕様つきの黒箱一件 <code>crystalline_deRham_polynomial_Zp</code>（D68）として置き、HT 比較は Cartier による系（A1/CrystallineInput）</td></tr>
-<tr><td>Lemma 5.4</td><td>Frobenius 捻りと Čech 脈体の擬同型</td><td class="todo">未</td><td>A1。cosimplicial 加群の計算</td></tr>
-<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の Cartier 同型が要る（Mathlib にはない）</td></tr>
+<tr><td>Not 5.1、Thm 5.2</td><td>結晶比較</td><td class="todo">未</td><td>A1。骨組み：<code>crystalline_deRham_polynomial_Zp</code>（仕様 <code>CrystallineComparison</code>、drafts/A1/CrystallineInput）。\(A=\mathbb Z_p\)、\(I=(p)\)、多項式代数の場合だけ。結晶コホモロジーは定義しない：既知の値 \(\mathbb Z_p\langle X\rangle\) の de Rham 複体との比較を仕様つきの黒箱一件 <code>crystalline_deRham_polynomial_Zp</code>（D68）として置き、HT 比較は Cartier による系（A1/CrystallineInput）</td></tr>
+<tr><td>Lemma 5.4</td><td>Frobenius 捻りと Čech 脈体の擬同型</td><td class="todo">未</td><td>A1。cosimplicial 加群の計算。D68 の経路では黒箱 <code>crystalline_deRham_polynomial_Zp</code> の内側（独立には形式化しない）</td></tr>
+<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の Cartier 同型が要る（Mathlib にはない）。骨組み：<code>hodgeTate_iso_crystalline</code>、Cartier は <code>finitePolynomialCartier</code>・<code>hodgeTate_of_deRham_cartier</code></td></tr>
 </table></div>
 
 <h2>2. 混標数：一般の HT 比較（§6）</h2>
 <p><b>Construction 6.1.</b> \(A/p\) の Frobenius が平坦で \(A/d\) が p ねじれなしの向き付き prism（例：普遍向き付き prism、Ex 3.4）について、\(B=A\{\varphi(d)/p\}^\wedge\)（Cor 2.39 で \((d)\) の pd 包、離散で p ねじれなし）と、\(\alpha=(A\to B)\circ\varphi\) で prism の射 \((A,(d))\to(B,(p))\) ができる（Lemma 2.24 で \(\varphi(d)=pu\)）。mod p で \(\alpha\) は \(A/p\to A/(p,d)\to A/(p,d^p)\to D_{(d)}(A/p)\) と分解し、底変換 \(\widehat{\alpha}^*\) は (1) 保存的、(2) 有限 Tor 振幅、(3) \(\widehat\alpha^*\Delta_{R/A}\simeq\Delta_{R_B/B}\)（Lemma 4.20）。</p>
 <p><b>Prop 6.2</b>（affine 直線の HT 比較）. \(R=A/I\langle X\rangle\) で \(\eta^0,\eta^1\) は同型、\(H^{i>1}=0\)。<b>証明</b>：\(\eta:R\oplus\Omega^1\{-1\}[-1]\to\overline\Delta_{R/A}\) を選ぶ。I=(p) なら Cor 5.5。普遍向き付き prism なら Construction 6.1 の α で I=(p) に底変換（(1)(3)）。一般の向き付き prism \((A,(d))\) は普遍向き付き prism \(A_0\to A\) を経由し、\(E=A\widehat\otimes^L_{A_0}D_0\) への底変換 \(\widehat b^*\)（保存的）で \(\widehat b^*\overline\Delta_{R/A}\simeq\widehat c^*\overline\Delta_{\mathbb F_p[X]/\mathbb Z_p}\)（Rem 4.19 の複体と Lemma 4.22）に帰着し、\(\mathbb F_p[X]/\mathbb Z_p\) の HT 比較（Cor 5.5）で結論。一般の有界 prism は Lemma 3.7(4) で向き付きに帰着（向き付きで進めるなら不要）。Lemma 4.10 もここから出る。<b>Thm 6.3</b>：étale 局所化で多項式代数に帰着し、Prop 6.2 と同じ議論。</p>
 
+<p><b>Lean の骨組み（A1、BS-D4、2026-11-03）.</b> 四本：<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean">HodgeTateMap</a>（Constr 4.9）、<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/CrystallineInput.lean">CrystallineInput</a>（§5）、<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">HodgeTateComparison</a>（§6）、<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/DeRhamComparisonPoly.lean">DeRhamComparisonPoly</a>（Thm 6.4 の多項式・mod p）。普遍向き付き prism は <code>universalOrientedPrismRing p</code>（ℤ の自由 δ 環で p と素な整数と δ(d) を δ 局所化し (p,d) 完備化した環。p を明示引数に取り <code>CommRing</code> を備える、D4-02）、有界性 <code>universalOrientedPrism_bounded</code>、普遍性 <code>universalOrientedPrism_hom</code>（d ↦ d_A の prism 射の一意性）。Construction 6.1 は <code>crystallineCover</code>・<code>crystallineCoverMap</code>（仮定は <code>Construction61Hypotheses</code>）、保存性 <code>crystallineCoverMap_conservative</code>。<b>Tor 振幅は二つに分ける（D4-04）</b>：α mod p の通常の Tor 振幅 ≤ 1（<code>torAmplitude_modP_le_one</code>、保存性と (6) の分解に使う）と、A0 §2.9 の Koszul 版の (p,d) 完全 Tor 振幅 <b>3</b>（<code>crystallineCoverMap_torAmplitude</code>。任意の \(K\in D^{\ge n}(A_0)\) について \((K\otimes^L B)\otimes\mathrm{Kos}(B;p,\alpha(d))\in D^{\ge n-3}\)。上界は B/p の \(A_0\) 上の Tor 次元 ≤ 2 に標的の \(\mathrm{Kos}(B;p,pu)\simeq\mathrm{Kos}(B;p)\otimes\mathrm{Kos}(B;0)\) の余分な一段を加えたもの、下界は \(K=A_0/(p,d)\) で \(H^{-3}=B/p\ne0\)）。Lemma 4.20・4.22 に要るのは有限性だけなので、利用側は <code>crystallineCoverMap_finiteTorAmplitude</code> だけを見る。Prop 6.2 は <code>hodgeTate_iso_of_construction61</code>、底変換 <code>baseChangeB</code>・<code>baseChangeC</code>（b̂* は同値を反映し、両方とも指定した Čech 模型の Tot を保つ：<code>baseChange_cechAlexanderAffine_eq</code>）、一変数の加群比較 <code>affineLine_moduleComparison</code> から \(H^2=0\) と平方零 <code>bockstein_sq_zero</code>、Thm 6.3 は <code>hodgeTate_iso</code>（<code>HodgeTateIsoStatement</code>：一般 r の dg 比較）。HT 写像 <code>hodgeTateMap</code> は各次数の線形写像と単位・積・微分との両立の組で、Bockstein は Shared の <code>regularBockstein</code>（係数は基底 A の余単体的加群、D4-03）。結晶側の恒久的な引用は <code>crystalline_deRham_polynomial_Zp</code> の一件（<code>CrystallineComparison</code>：p 完備な二つの CAlg 値多項式図式の自然同型、mod p の Bockstein の可換式、根の後続遷移の可換式の組）、Cor 5.5 は <code>hodgeTate_of_deRham_cartier</code>（有限変数 Cartier <code>finitePolynomialCartier</code>、次数 1 は \(dX_j\mapsto[X_j^{p-1}dX_j]\)）。Bhatt–de Jong の行の収縮 <code>pdRow_contractible</code>（j &gt; 0 に限定）と J つきの比較 <code>pdPolynomialComparison</code>（G-A1-17）は証明予定。Thm 6.4 の多項式・mod p は <code>deRham_iso_polynomial_crystalline</code>（Lemma 4.20）→ <code>deRham_iso_polynomial_universal</code>（ψ・J つき pd 脈体・W→C の底変換）→ <code>deRham_iso_polynomial_modP</code> → <code>deRham_iso_rootAlgebra_modP</code>（A5 の <code>rootMap_modP_eq_deRham</code> へ）、Ex 7.9 の普遍例への特殊化は <code>prismaticCohomology_lci_universal</code>（A3 へ）。</p>
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1。入力は Ex 2.21・Ex 3.4・Lemma 2.24・Cor 2.39（T2-4・T3-3・T2-2）</td></tr>
-<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位（第 4 章の Rem 4.19 と組で）</td></tr>
-<tr><td>Thm 6.3</td><td>HT 比較（多項式代数）</td><td class="todo">未</td><td>A1。étale 局所化は不要（多項式代数なら Prop 6.2 と同じ議論）</td></tr>
+<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1。入力は Ex 2.21・Ex 3.4・Lemma 2.24・Cor 2.39（T2-4・T3-3・T2-2）。骨組み：<code>crystallineCover</code>・<code>crystallineCoverMap</code>・<code>torAmplitude_modP_le_one</code>・<code>crystallineCoverMap_torAmplitude</code>（drafts/A1/HodgeTateComparison）</td></tr>
+<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位（第 4 章の Rem 4.19 と組で）。骨組み：<code>hodgeTate_iso_of_construction61</code>・<code>baseChangeB</code>・<code>baseChangeC</code>・<code>affineLine_moduleComparison</code></td></tr>
+<tr><td>Thm 6.3</td><td>HT 比較（多項式代数）</td><td class="todo">未</td><td>A1。étale 局所化は不要（多項式代数なら Prop 6.2 と同じ議論）。骨組み：<code>hodgeTate_iso</code>（<code>HodgeTateIsoStatement</code>）・<code>prismaticCohomology_baseChange'</code></td></tr>
 </table></div>
 <h2 id="items-05">原典の項目一覧（§5・§6）</h2>
 <p>§5・§6 HT 比較と結晶比較 の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>判定</th><th>備考</th></tr>
 <tr><td>Not 5.1、Thm 5.2、Rem 5.3</td><td>標数 p の結晶比較</td><td class="todo">未</td><td>A1。\(A=\mathbb Z_p\)・I=(p)・多項式代数の場合だけで足りる。結晶コホモロジーは定義せず、de Rham 形の黒箱一件（D68）。Thm 6.4 の特別な場合（A1-5）は普遍向き付き prism 上で証明して底変換（D69）</td></tr>
-<tr><td>Lemma 5.4</td><td>多項式代数の計算（Cartier 型）</td><td class="todo">未</td><td>A1</td></tr>
-<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ。Cartier 同型が要る</td></tr>
-<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1（Ex 2.21・Ex 3.4・Lemma 3.6 を使う）</td></tr>
-<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位</td></tr>
-<tr><td>Thm 6.3</td><td>HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ（Construction 7.6 は多項式代数からの左 Kan 延長）</td></tr>
-<tr><td>Thm 6.4</td><td>de Rham 比較</td><td class="todo">一部</td><td>A1-5（2026-11-02 追加、a1-design §9）：T = R⟨X_1,…,X_n⟩・mod p の特別な場合だけ（Lemma 8.6 の入力）。帰着は普遍向き付き prism \(A_0\) 上で Thm 6.4 の証明を行い完全 prism へ底変換（D69。W9-I-15 で「Prop 6.2 の経路」から訂正）、結晶の黒箱は de Rham 形一つ（D68）。一般の Thm 6.4 は不要</td></tr>
+<tr><td>Lemma 5.4</td><td>多項式代数の計算（Cartier 型）</td><td class="todo">未</td><td>A1（黒箱の内側、D68）</td></tr>
+<tr><td>Cor 5.5</td><td>標数 p の HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ。Cartier 同型が要る。骨組み：<code>hodgeTate_iso_crystalline</code>・<code>hodgeTate_of_deRham_cartier</code></td></tr>
+<tr><td>Constr 6.1</td><td>普遍向き付き prism から結晶 prism へ</td><td class="todo">未</td><td>A1（Ex 2.21・Ex 3.4・Lemma 3.6 を使う）。骨組み：<code>universalOrientedPrismRing p</code>・<code>crystallineCoverMap</code>、Tor 振幅は mod p の通常 ≤ 1 と Koszul 版 3 に分離（D4-04）</td></tr>
+<tr><td>Prop 6.2</td><td>affine 直線の HT 比較</td><td class="todo">未</td><td>A1。最初の実装単位。骨組み：<code>hodgeTate_iso_of_construction61</code></td></tr>
+<tr><td>Thm 6.3</td><td>HT 比較</td><td class="todo">未</td><td>A1。多項式代数の場合だけ（Construction 7.6 は多項式代数からの左 Kan 延長）。骨組み：<code>hodgeTate_iso</code>・<code>hodgeTateMap</code></td></tr>
+<tr><td>Thm 6.4</td><td>de Rham 比較</td><td class="todo">一部</td><td>A1-5（2026-11-02 追加、a1-design §9）：T = R⟨X_1,…,X_n⟩・mod p の特別な場合だけ（Lemma 8.6 の入力）。帰着は普遍向き付き prism \(A_0\) 上で Thm 6.4 の証明を行い完全 prism へ底変換（D69。W9-I-15 で「Prop 6.2 の経路」から訂正）、結晶の黒箱は de Rham 形一つ（D68）。一般の Thm 6.4 は不要。骨組み：<code>deRham_iso_polynomial_crystalline</code>・<code>_universal</code>・<code>_modP</code>・<code>deRham_iso_rootAlgebra_modP</code>（A5 へ）・<code>prismaticCohomology_lci_universal</code>（A3 へ）（drafts/A1/DeRhamComparisonPoly）</td></tr>
+</table></div>
+
+<h2 id="diff-05">原典との差の評価</h2>
+<p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す（詳細は a1-design §5・§9.3）。</p>
+<div class="table-wrap"><table>
+<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
+<tr><td>D68</td><td>Thm 5.2（結晶 site の比較）と Cor 5.5</td><td>結晶コホモロジーを定義せず、Thm 5.2 β の de Rham 形を仕様つき（自然性・乗法・Bockstein・根の遷移）の黒箱 <code>crystalline_deRham_polynomial_Zp</code> 一件にし、HT（Cor 5.5）と de Rham mod p（Thm 6.4）の両方をそこから出す</td><td>結晶 site の一般論が不要。黒箱は増えない（A5 の決定 3）</td><td>恒久的な文献入力が一件残る（監査の許可一覧）</td><td>Lean の方が短い</td><td>Lean を保つ（W9 で妥当）</td></tr>
+<tr><td>D69</td><td>Thm 6.4 の証明（ψ : A → W(A/I)、W(A/I) の p ねじれなしを仮定）</td><td>普遍向き付き prism \(A_0\) 上だけで原典の証明を行い（\(A_0/d_0\) は p ねじれなし）、完全 prism へは底変換で移す</td><td>仮定の確認が普遍例一つで済む</td><td>最後の底変換（W9-I-20）を補う必要がある</td><td>同程度</td><td>Lean の経路（W9 で妥当）</td></tr>
+<tr><td>D27</td><td>\(H^*(\overline\Delta_{X/A})\) は位相の可換環対象のコホモロジーの環</td><td>Čech–Alexander 模型の cup 積と Bockstein で環構造を与え、CAlg 値の Δ との一致は A2・A4 の一般論（<code>totEInfinity_cohomologyRing</code>、基盤待ち）</td><td>A1 の定理が模型の計算で閉じる</td><td>模型と抽象的な Δ を結ぶ一般論が一つ要る</td><td>Lean の方が具体的</td><td>Lean を保ち、一般論は基盤側に置く</td></tr>
+<tr><td>D20</td><td>Def 2.42 の平坦性</td><td>H₀ の平坦性と全次数の標準底変換射の全単射性（<code>FlatKoszulComparison</code>）で述べる</td><td>Koszul 複体の計算に直結</td><td>原典の述べ方との同値は A0 の実装時に確認</td><td>同程度</td><td>Lean の形</td></tr>
 </table></div>
 
 <h2>リファクタの候補</h2>
@@ -72,6 +84,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
   <li>HT 比較は多項式代数の場合だけでよく、Prop 6.2 の帰着により最終的に \(\mathbb F_p[X_1,\dots,X_n]/\mathbb Z_p\) の場合に帰着する。</li>
   <li>結晶比較（Thm 5.2）は \(\mathbb Z_p\) 上の多項式代数だけでよく、結晶コホモロジーは定義せず、de Rham 形の仕様つき黒箱一件（D68）に閉じ込める。結晶 site の一般論は要らない。</li>
   <li>部品：Cor 2.39（pd 包 ＝ \(\varphi(f)/p\) の添加）、Lemma 5.4（cosimplicial の計算）、多項式代数の Cartier 同型、Construction 6.1、Lemma 4.20・4.22。</li>
+  <li>Construction 6.1 の α の Tor 振幅は二つの量：α mod p の通常の振幅 ≤ 1 と、A0 §2.9 の Koszul 版の (p,d) 完全 Tor 振幅 3。Lemma 4.20・4.22 に要るのは後者の有限性だけ（D4-04）。</li>
+  <li>Bockstein の係数は余単体的環 \(C^\bullet\) の \(C^0\) ではなく共通の基底環 A（余単体的 A 加群として短完全列を取る、D4-03）。普遍向き付き prism は p を明示引数に取る（D4-02）。</li>
 </ol></main>
 </body>
 </html>

@@ -197,6 +197,11 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
    - 段 3：A8-4、A9 の組み立て、Inputs の証明の置換、監査の許可一覧（恒久 3＋暫定 2）。
    - 基盤 66 の分担（調整役了承 11-03、§3.1）：BS が M12a（S1〜S3・S8）と M13（DerivedGeneral）を書く、∞ が G3・G4・G6（必要なら G8・G9）。W2b 後の段 G、新規ファイルのみ。段 2 の BS 側の指示書（BS-W12 以降の見込み）はそのとき。
 
+8. （11-03 夜、ユーザー「それで進めて」）2a までの追加作業：(a) **基盤の入口表** `foundation-entry-points.md`（基盤側 53 件の「使う側・担当・D5 での形」、A 側の要確認 → 入口、∞ レーンへの依頼案 §4、段 2 の点検表 §5）。
+   見つかった穴：空間の ∞ 圏 𝒮 の名前がない（G13 と一緒に ∞ へ）、導来テンソル ⊗^L の ∞ 関手がない（必須は M15 だけ）、S4・S5（層化の存在・完全性）の担当が分担に入っていない。
+   (b) **BS-D5**（`bhatt-scholze-codex-d5.md`、Codex、ビルドなし）：基盤側 53 件のうち型にできる 48 件程度を型に（×：`totEInfinity_cohomologyRing`、Descendable の RHom・完備版・`tensor` 欄）。停止点は DerivedGeneral → Shared → Sheaves。
+   (c) ノート第 4・5・7・8・10 章に BS-D1〜D4 の決定と A1・A3・A6 の骨組みの宣言名を反映（第 5 章に「原典との差の評価」D68・D69・D27・D20 を追加）。
+
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
 正本：`review-codex-w9.md`。指示書：`bhatt-scholze-codex-w9.md`。
