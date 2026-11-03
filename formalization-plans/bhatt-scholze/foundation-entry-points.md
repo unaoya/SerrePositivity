@@ -111,8 +111,8 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | `homotopy`・`powerOperationZero`（型つき sorry） | π_n と P⁰ | A3 G-A3-9、A4 Lemma 8.4 | — | 本体は M14 |
 | `powerOperationZero_zero` | π_0 で Frobenius | Lemma 8.4 (b) | ○ | `homotopy k p X 0 ≃+* cAlgH0Ring X`（1.3 の新設）を置き、`P⁰ x = x ^ p` |
 | `powerOperationZero_natural` | E∞ 射で自然 | Δ_perf/p の Frobenius | ○ | `homotopyMap (f : SSet.Edge X Y) n : homotopy X n →+ homotopy Y n` を追加し、P⁰ との可換 |
-| `powerOperationZero_natTrans`（def、`True`） | U 上の coherent な自然自己変換 | (iii) | ○ | `FunctorHom (cAlgForgetDerived k) (cAlgForgetDerived k)`（W9-II-02 の強さ）、`powerOperationZero` はその成分が π_n に誘導する写像 |
-| `powerOperationZero_eq_frobenius_tot` | 離散 B で P⁰ = U(Frob)、Tot へ移る | Lemma 8.4 (a) | ○ | 離散 B（CharP B p）の `algebraEmbedding` での成分が Frobenius の辺の U 像とホモトピック；`totEInfinity` への移送は `totEInfinity_isLimitCone` と自然変換の錐との両立 |
+| `powerOperationZero_natTrans`（def、`True`） | U 上の coherent な自然変換（**φ_k 半線形**） | (iii) | ○ | **D5-03**：P⁰ は k 線形ではなく Frobenius 半線形（k = F_p[t]、B = k で t ↦ t^p は k 線形でない）ので、D(k) 値の自己変換 U ⇒ U は誤り。一般形は `FunctorHom (cAlgForgetDerived k) (cAlgForgetDerived k ≫ derivedInfinityRestrictScalars (frobenius k p))`（U(X) → φ_{k*} U(X)、W9-II-02 の強さ）。k = F_p では `frobenius = RingHom.id` と `derivedInfinityRestrictScalars_id` で自己変換に特殊化。`powerOperationZero` はその成分が π_n に誘導する写像 |
+| `powerOperationZero_eq_frobenius_tot` | 離散 B で P⁰ = U(Frob)、Tot へ移る | Lemma 8.4 (a) | ○ | 離散 B（CharP B p）の `algebraEmbedding` での成分が Frobenius の辺（φ_k 半線形なので k 代数の射 B → φ_{k*}B として読む、D5-03）の U 像とホモトピック；`totEInfinity` への移送は `totEInfinity_isLimitCone` と自然変換の錐との両立 |
 
 ### 1.9 Sheaves/SheafCondition・GlobalSections（S1・S2、M12a、BS）
 
@@ -222,5 +222,6 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-03（D5-03、Codex）：P⁰ は φ_k 半線形。`powerOperationZero_natTrans` は U ⇒ U ≫ `derivedInfinityRestrictScalars (frobenius k p)` の形にし、k = F_p で自己変換に特殊化。
 - 2026-11-03（D5-02、Codex）：`discreteEmbedding A` は A 代数用。加群 H^n(X)・Ω^i は `moduleSemifreeResolutionFunctor` ＋ `closedNerveInclusion`（A2 `ordinaryFormsDiagram` と同じ）で入れる。§1.2・§1.6 を訂正、`discreteModuleEmbedding` を新設。
 - 2026-11-03（D5-01、Codex）：§1.2 の shift の式を `IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)` に訂正、分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。
