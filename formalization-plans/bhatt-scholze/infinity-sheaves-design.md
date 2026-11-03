@@ -247,7 +247,7 @@ Not 4.16 の定義は S2 の型が決まれば書け、「Čech–Alexander が 
 - D1-01：S3 の `CechNerveData` を global な site（A6 の affCompl_κ）で使うときは、全 site ではなく被覆 f の生成 sieve の圏 `sieveCategory Q` の中で取る（U = f.op が弱終、
   U の冪は基底上のファイバー積）。S1 の `restriction F Q` がその前層。A0・A5 の site は最初から相対なので区別は不要。
 - D1-02：有限族の coverage と一点族の coverage は同じ位相を生成しない（有限積の射影の族が反例）。**S1-E（新しい一般補題、基盤待ち）**：extensive coverage（有限余積の
-  射影の族、空族を含む）の層 ⇔ 有限積を保つ（Mathlib `isSheaf_iff_preservesFiniteProducts`、`FinitaryPreExtensive` の ∞ 版、HTT 6.2.2 の系）。
+  射影の族、空族を含む）の層 ⇔ 有限積を保つ（Mathlib `isSheaf_iff_preservesFiniteProducts`、**`FinitaryExtensive`** の ∞ 版、HTT 6.2.2 の系。D5-06（11-03）：`FinitaryPreExtensive`（余積の引き戻し安定性だけ）では偽——二元順序圏 0 < 1 の被覆 {1→1, 1→1} の層条件から F(1) ≃ F(1)² は出ない。余積の非交叉性（`FinitaryExtensive`）が要る。A6 の affine な site では余積＝環の直積で、非交叉性は二つの射影の引き戻しが零環であること（零環は site に含める、D1-03 と同じ扱い））。
   また「位相の ⊔ の層 ⇔ 両方の層」を S1 に明示する。A6 の `isSheaf_arc_iff_cech` はこの二つで一点被覆の Čech 条件に帰着する。
 - D3-02（BS-D3、11-03）：S3 の大きい添字圏の版（W9-I-04 で予告）を drafts/Sheaves/CechConerveLimit.lean に `CechNerveDataLarge`・`IsWeaklyTerminalLarge`・
   `isLimitCone_iff_restrict_cech_large` として置いた（𝒟 : Type (u+1)、`[Category.{u} 𝒟]`、四欄は小さい版と同じ）。A5 の `PerfUnder_u p S` はこれを使う。補題の形は大きい圏の

@@ -118,7 +118,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 | 宣言 | 主張 | 使う側 | D5 | D5 での形 |
 | --- | --- | --- | --- | --- |
-| S1-E `isSheaf_extensive_iff_preservesFiniteProducts`（今は A6/ArcSite に仮置き） | extensive coverage の層 ⇔ 有限積を保つ | A6 `isSheaf_arc_iff_cech` | ○ | SheafCondition へ移す（A6 側は中身の段階で差し替え）。`isSheaf_sup_iff`（J ⊔ J′ の層 ⇔ 両方の層、A6 `arcTopology_eq_sup`）も新設 |
+| S1-E `isSheaf_extensive_iff_preservesFiniteProducts`（今は A6/ArcSite に仮置き） | extensive coverage の層 ⇔ 有限積を保つ（**`FinitaryExtensive`**、D5-06） | A6 `isSheaf_arc_iff_cech` | ○ | SheafCondition へ移す（A6 側は中身の段階で差し替え。A6 の docstring の `FinitaryPreExtensive` は誤りで、非交叉性＝二つの射影の引き戻しが零環であることを A6 の site で示す）。`isSheaf_sup_iff`（J ⊔ J′ の層 ⇔ 両方の層、A6 `arcTopology_eq_sup`）も新設 |
 | `Sheafification J E : Prop`（`sheafify`・`sheafifyUnit` は型つき） | 層化の存在 | A0・A2・A5・A6（仮定として受け取る） | — | S4：G4・G6・G8 の後、**担当未定**（§4 の 9） |
 | `sheafifyUnit_isEquivalence_of_isSheaf` | 層の単位は同値 | Cor 3.12、RΓ(O_Δ) = Γ(O_Δ) | ○ | ihom の辺に `IsInvertibleEdge`（W9-I-03 の規約） |
 | `derivedGlobalSections_of_le`（∃ e, `True`） | 位相を粗くしても RΓ は同じ | Rem 4.5、Prop 8.5 | ○ | `∃ e, IsInvertibleEdge e` |
@@ -222,6 +222,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-03（D5-06、Codex）：S1-E は `FinitaryExtensive`（非交叉性つき）で述べる。`FinitaryPreExtensive` だけでは偽（0 < 1 の被覆 {1→1, 1→1}）。A6 の site では非交叉性を別に示す。
 - 2026-11-03（D5-05、Codex）：Shared/CosimplicialCupProduct の既存の入口 `cohomologyEquivHomology` が未定義名 `CosimplicialObject.alternatingCofaceMapComplex` を使っていた。Mathlib の実名は `AlgebraicTopology.alternatingCofaceMapComplex C`、忘却は CommRingCat → RingCat → AddCommGrpCat の合成。名前・引数・主張を保って直す（Bockstein の `CosimplicialShortExact.bockstein` も同じ）。
 - 2026-11-03（D5-04、Codex）：`isDescendable_of_faithfullyFlat` は忠実平坦＋有限表示に限定（Mathew Prop 3.31。忠実平坦だけでは偽、Aoki arXiv:2411.05995）。
 - 2026-11-03（D5-03、Codex）：P⁰ は φ_k 半線形。`powerOperationZero_natTrans` は U ⇒ U ≫ `derivedInfinityRestrictScalars (frobenius k p)` の形にし、k = F_p で自己変換に特殊化。
