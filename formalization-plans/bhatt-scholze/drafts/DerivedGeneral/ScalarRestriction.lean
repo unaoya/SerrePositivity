@@ -9,6 +9,7 @@ public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
+public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 
 /-!
 # 係数制限の ∞ 関手 f_* : D(T) → D(S)（基盤待ち、M13）
@@ -123,5 +124,15 @@ theorem derivedInfinityRestrictScalars_completion (f : S →+* T) : True := by t
 規約：基盤待ち。A4 の `restrictH0Equiv`・`restrictH0Equiv_base` はこれ（A4 の `cAlgH0Algebra` と同じ H⁰ の取り方）。
 使われ方：Lemma 8.4 (b)、E3 の `h0`。 -/
 theorem cAlgRestrictScalars_h0 (f : S →+* T) : True := by trivial -- 基盤待ち（H⁰ の取り方 `cAlgH0Algebra`（A4）を基盤側に移してから型にする）
+
+/-- 概要：離散代数の埋め込みと係数制限の両立（BS-D3 の D3-03、11-03）：離散 T 代数 U（`A_R T = Under (CommRingCat.of T)`）について、
+U を f で S 代数として読んだものの埋め込み `algebraEmbedding S` の像と、U の埋め込み `algebraEmbedding T` の像を `cAlgRestrictScalars f` で制限したものは
+`VertexIso`（E∞ 代数としては同じ離散環、係数だけ f に沿って読む）。
+方針：`algebraEmbedding = discreteCAlgUnderEmbedding`（EInfinity/Perfectoidization/Comparison）の定義と忘却の比較 `cAlgRestrictScalars_forget`。
+規約：基盤待ち。A5/PerfectSite の `discreteRestrictionIso`（f = φ_A）はこの特別な場合。
+使われ方：A5 の比較写像の脚（完備な試験環の Frobenius の逆を読む所）、A4 の離散版との一致。 -/
+def cAlgRestrictScalars_algebraEmbedding (f : S →+* T) (U : A_R T) :
+    VertexIso ((algebraEmbedding S).app _ (nerveVertex (Under.mk (CommRingCat.ofHom (U.hom.hom.comp f)))))
+      ((cAlgRestrictScalars f).app _ ((algebraEmbedding T).app _ (nerveVertex U))) := sorry -- 基盤待ち
 
 end SerrePositivity.InfinityCategories

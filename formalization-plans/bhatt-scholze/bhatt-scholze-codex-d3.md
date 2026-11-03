@@ -52,3 +52,10 @@
 S̃ は弱始性・濃度用で filtered 余極限は E 被覆（W9-II-09・11）、semiperfectoid 性には perfectoid 基底（W9-II-16）、G-A5-6′ は任意係数の (∗)（W9-II-12）。
 A6：global な affCompl_κ と前段 G-A6-11、Čech データは sieve の圏（D1-01）、層判定は有限積保存 ∧ 一点 Čech（D1-02）、tilt は零環を含む `tiltRing`（D1-03）、O は CAlg_ℤ 値（W9-II-22）、
 T/IT は completionRing 経由（W9-II-15）、積の取り替えは (B×C)×_{D×C}C（W9-II-19）。
+
+## 3. 経緯（2026-11-03）
+
+- 第 1 部（4f9f983ee、**停止点 1 完了・検収済み**）：PerfectSite 8 件、SemiperfectoidCase 17 件、`universalPerfectoidRing` は Cor 7.3 の選択。途中の設計上の確認：Lemma 4.8 は有界標的版で十分
+  （3acedf8eb）、**D3-01** 比較の第 0 脚は A3 の `prismMapOfDiscrete` ではなく A0/S2 の CAlg 値 RΓ の射影（1480a4e5c）、**D3-02** `PerfUnder_u` は大きい圏なので S3 の大きい版 `CechNerveDataLarge`
+  を基盤側に置く（2bb0d406c）、**D3-03** 離散代数の埋め込みと係数制限の比較 `cAlgRestrictScalars_algebraEmbedding` を基盤側に（本コミット）。
+- 次：停止点 2（RootAdjunction の残り 2、StrongDescent 11、WeaklyInitialAndDescent 15、PerfectSiteComparison 7）。

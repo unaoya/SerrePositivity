@@ -49,8 +49,8 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |
 | G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所は `EInfinity/PowerOperation/`、M14。担当は A4 の中身の段階で。Barratt–Eccles の作用の型） |
 | A4-4 Example 8.3 | a4-design §2.4 | A4/AfterComparison（BS-D2 停止点 1 済） | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
-| A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
-| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
+| A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone（BS-D3 停止点 1 済、11-03：PerfectSite の `True` 0 件。Lemma 4.8 は有界標的版、第 0 脚は A0/S2 の CAlg 値 RΓ の射影待ち、Čech データは `CechNerveDataLarge`／小さい版の使い分け） | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
+| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase（BS-D3 停止点 1 済：`True` 0 件、`universalPerfectoidRing` は Cor 7.3 の選択） | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 済（a5 §8 の 6 は W9 続き 6 の G-A5-6′ の計算、7 は W9 ○） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
 | A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite（BS-D1 停止点 1 済、11-03：`True` 0 件。D1-01 sieve の圏、D1-02 K₁ ⊔ K_ext、S1-E は基盤待ち） | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
@@ -303,6 +303,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | D2-02（BS-D2、Codex）`perfectoidIdeal_baseChange` の右辺：(JR′)_perfd は J_perfd R′ の通常の `Ideal.map` ではなく p 進閉包（Fayolle Prop 2.9）。閉包を外す補題はない | 要修正 | 訂正済み（11-03）：右辺を「完備テンソル J_perfd ⊗̂_R R′ の像＝ker(R′ → (R/J)_perfd ⊗̂ R′)＝J_perfd R′ の p 進閉包」で述べ、`Ideal.map` との一致の補題は**置かない**（有界ねじれだけでは偽：R = V⟨x_i^{1/p^∞}⟩、K = ker(R → V)、R′ = R⟨t^{1/p^∞}⟩ で Σ p^n x_n t^n が閉包にだけ入る。K 有限生成なら成り立つが J_perfd は一般に有限生成でない）。almost 零の反映は K′ ≅ K ⊗̂_R R′ で閉包に依らない。a8-design §3.1 |
 | D3-01（BS-D3、Codex）比較の第 0 脚に指定した A3 の `prismMapOfDiscrete` は離散性を仮定して環準同型を返すが、A5 は仮定なしの CAlg_A の Frobenius 両立な射が要る | 要修正 | 回答（11-03）：Lemma 7.7(3) の一般形は RΓ の極限の射影（S2 `derivedGlobalSectionsCAlg` の対象 B での脚、Frobenius 両立は `structurePresheafFrobenius` の自然性）。A5 には「A0/S2 の CAlg 値 RΓ の射影待ち」の型つき仮置きを置く（A3 待ちではない）。a5-design §2.2 |
 | D3-02（BS-D3、Codex）S3 の `CechNerveData` は `SmallCategory` 専用だが A5 の `PerfUnder_u p S` は大きい圏（対象 Type (u+1)、射 Type u） | 要修正 | 回答（11-03）：W9-I-04 で予告した大きい版を基盤側の draft に置いた（`CechNerveDataLarge`・`IsWeaklyTerminalLarge`・`isLimitCone_iff_restrict_cech_large`、Sheaves/CechConerveLimit）。A5 はこれを返す。infinity-sheaves-design §13 |
+| D3-03（BS-D3、Codex）離散代数の埋め込みと `cAlgRestrictScalars` の標準比較（A5 の `discreteRestrictionIso`）は基盤側 | 要確認 | 反映済み（11-03）：一般形 `cAlgRestrictScalars_algebraEmbedding` を ScalarRestriction.lean に（基盤待ち）。A5 の版はその特別な場合 |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
