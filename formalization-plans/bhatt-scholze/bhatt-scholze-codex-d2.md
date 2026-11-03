@@ -40,3 +40,14 @@
 
 定義は原典どおり、定理は E3 に要る特別な場合だけ、差は D 番号（ユーザーが付ける）。A8 の有限表示有限（W9-III-01）、T と T̂ の区別（W9-III-04、D70）、almost 連結性の
 余極限保存は G-A8-1 の系で G-A8-8 を A_λ の段で使わない（W9-III-10）、Cor 8.14 の乗法は単位の整合性 G-A7-8 から（W9-II-23）、P⁰ は基盤側（D43）。
+
+## 3. 経緯（2026-11-03）
+
+- 第 1 部（641c7db03）：A0 の `prismaticCohomologyFrobenius` の標的で停止——(A) の調査で挙げた `dgNerveRestrictScalarsIso` は dg 圏の Hom の係数制限で、D(T) → D(S) の関手ではない。
+  **決定**：係数制限の ∞ 関手を基盤待ちの宣言として `drafts/DerivedGeneral/ScalarRestriction.lean`（M13）に置く（378b17471）。A4 の塔は CAlg の中なので CAlg 版
+  `cAlgRestrictScalars` と忘却との比較 `cAlgRestrictScalars_forget` を同ファイルに追加、f は明示引数（acebb81cc）。A2 の `derivedPrismaticFrobenius` がまだ `True` なので
+  A4 に離散 S での成分 `discreteDeltaFrobenius` を A2 待ちの仮置きとして置くことを承認（7be013b32）。
+- 第 2 部（d68904dec、**停止点 1 完了・検収済み**）：A0 の 1 件と A4 の 17 件（`perfectPrismRing` を含む）。A4 の「ScalarRestriction へ」三件（塔の余極限の保存、完備化との両立、H⁰）は
+  一般形を `ScalarRestriction.lean` に置いた（27bbde06d：`cAlgRestrictScalars_isColimitCone`・`derivedInfinityRestrictScalars_completion`・`cAlgRestrictScalars_h0`）。
+  A2 の名前 3 件（`completeCAlgInclusion`・`reflectCompleteCAlg`・`modPrismFunctor`）は BS-D4（A2）で確定。
+- 次：停止点 2（A7）。

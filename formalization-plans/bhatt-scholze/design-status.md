@@ -44,11 +44,11 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
 | A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |
 | A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
-| A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
-| A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
+| A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization（BS-D2 停止点 1 済、11-03：`True` 0 件。塔は `cAlgRestrictScalars φ_A` の正の反復、Frobenius の成分は A2 待ちの仮置き `discreteDeltaFrobenius`、`perfectPrismRing` = A_inf(R) = W(PreTilt R)） | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
+| A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields（BS-D2 停止点 1 済：`True` 0 件。界面の欄の型に合わせた） | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
 | A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |
 | G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所は `EInfinity/PowerOperation/`、M14。担当は A4 の中身の段階で。Barratt–Eccles の作用の型） |
-| A4-4 Example 8.3 | a4-design §2.4 | A4/Perfectoidization | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
+| A4-4 Example 8.3 | a4-design §2.4 | A4/AfterComparison（BS-D2 停止点 1 済） | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
 | A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
 | A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
