@@ -3,7 +3,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.4、S8。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.Basic
+public import SerrePositivity.InfinityCategories.F2.Presentable
+-- 11-03：`F2.Presentable.Basic` は存在しない名前だった（DG-W3 の改名ではなく当初の推測）。F2 の束ねモジュール `F2.Presentable` に直した。
 -- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean を import する（要確認：F2 の空間の ∞ 圏と `SigmaPresheafInfinity` の名前）。
 
 /-!

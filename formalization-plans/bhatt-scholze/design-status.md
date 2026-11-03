@@ -163,6 +163,10 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 （`integralPerfectoid_completedTensor_pure_and_h0` まで）を E3 非依存のモジュール（仮称 `CompletedTensorCore`）へ切り出し、`Almost/Lemma103` の依存をそこへ向け、有限直積は
 直接証明に替えたい。2a が Perfectoidization* を Perfectoid/ へ統合するので、**2a に含めるか 2a 直後の最初の作業**にしてほしい（BS は 2a まで BS の Lean を触らない）。
 詳細は a9-design §7。
+- （11-03、調整役）**DG-W3 の取り込み**で DG のモジュールを import していた BhattScholze/ などの import 行が機械的に書き換わった（宣言は不変。対応表は
+  `scripts/refactor/targets/dg-w3-merge-plan.json`）。2a まで BhattScholze/・CLMST/ の Lean に手を入れない方針はそのまま。BS 側の確認：drafts の `public import`
+  67 本のうち本体に存在しないものは `F2.Presentable.Basic` 一本だけで、これは DG-W3 の影響ではなく当初の推測名（git 履歴に存在しない）。`F2.Presentable` に直した
+  （Sheaves/SpaceValued）。DG の名前は drafts から直接は import していない。
 
 ## 4. 次の作業（提案）
 
