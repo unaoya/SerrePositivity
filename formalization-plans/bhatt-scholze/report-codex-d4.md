@@ -92,3 +92,75 @@ G-A3-7 用の U/d とその変数商の p ねじれなしは、普遍 A₀ の�
 - `DiscreteCase` の G-A3-9 は、A2 の Frobenius と mod p の E∞ 演算の比較を要する。そこから δ 構造を回収する G-A3-6 には既存の `DeltaStructure.existsUnique_of_frobeniusLift` があり、標的が p ねじれなしの場合の δ 両立には `DeltaStructure.isDeltaHom_of_map_frobeniusLift` がある。同型への移送には `DeltaStructure.comapEquiv` を使った。濃度条件は定理の `hs` で受ける。
 - `LciAndQuasiregular` の `padicBaseAlgebra` は、完備 S 上の標準 ℤ_p 作用を主元完備化の単位に接続する箇所。G-A3-7 の局所化全射は Koszul・bar の計算を証明する予定の補題で、外部引用にはしていない。
 - 宣言の結論・裸の `Type u := sorry` を開始基準と比較した。コメントを除いて括弧の対応と `True` の残数を調べ、実際の import 先と `git diff --check` を確認した。Lean の型検査・ビルドは行っていない。
+
+## 第 3 部　A1（停止点 3、最終）
+
+A1 の開始基準は main `dacf638b5`。変更対象は `drafts/A1/` の四本と本報告。設計側の D4-03（`b17815ca5`）、D4-05（`6d0a0fa08`）、D4-04 の再訂正（`709a83741`）を読み、最後の値を採用した。履歴を確認すると、A1 四本のうち二本の途中差分が設計側の `32384e535` と `6d0a0fa08` に含まれている。履歴はそのままにし、第 3 部の件数は `dacf638b5` との差から一度だけ数えた。
+
+### A1 の宣言
+
+| ファイル | 旧結論が `True` | 型に含めたもの |
+|---|---:|---|
+| CrystallineInput | 2 | `crystalline_deRham_polynomial_Zp` は p 完備な二つの CAlg 値多項式図式の自然同型、mod p の Bockstein の可換式、根の後続遷移の可換式を一組とする。左辺は多項式射の mod p に依存し、右辺は持ち上げの連続形式を引き戻す。CAlg の射が積と単位を保つ。`hodgeTate_of_deRham_cartier` はこの入力から導く系。有限変数 Cartier の次数 1 は dXⱼ を [Xⱼ^(p−1)dXⱼ] に送る。 |
+| HodgeTateMap | 5 | `reducedModel` は Rem 4.19 の各項を、基底から送った d で割る余単体的環。`hodgeTateMapZero` は構造射 sec の次数零の余輪体。`hodgeTateMapOne` は R 線形で f dg ↦ f β(η⁰g) を満たす。`bockstein_sq_zero` は cup による平方零。`hodgeTateMap` は各次数の線形写像と、単位・積・微分との両立を含む。 |
+| HodgeTateComparison | 14 | `hodgeTate_iso_polynomial_Zp`、`hodgeTate_iso_crystalline`、`universalOrientedPrism_frobenius_flat`、`crystallineCoverMap_conservative`、`crystallineCoverMap_torAmplitude`、`crystallineCoverMap_prismaticCohomology`、`hodgeTate_iso_of_construction61`、`baseChangeB`、`baseChangeC`、`baseChangeB_conservative`、`baseChange_cechAlexanderAffine_eq`、`hodgeTate_iso`、`bockstein_sq_zero'`、`prismaticCohomology_baseChange'`。b̂* は同値を反映し、b̂*・ĉ* の両方で指定した Čech 模型の Tot を保存する。一変数の加群比較から H²=0 を得て平方零に進み、一般 r の dg 比較へ進む。 |
+| DeRhamComparisonPoly | 4 | `deRham_iso_polynomial_crystalline` は Lemma 4.20 の結晶基底変換。`deRham_iso_polynomial_universal` は ψ、J つき pd 脈体、W→C に沿う最後の底変換を通る自然同型。`deRham_iso_polynomial_modP` は各成分がその普遍比較の底変換であることを指定。`deRham_iso_rootAlgebra_modP` は T_∞/p の離散埋め込みとの同型と、T→T_∞ に対する可換四角形。 |
+
+A1 で旧結論が `True` の宣言は **25 件**。指示書の「24 件」は HodgeTateComparison の列挙が実際には 14 件であるため 1 件少ない。別に裸の型だった `affineAlgebra`、`hodgeTateCohomology'`、`universalDistinguishedRing`、`universalOrientedPrismRing`、`crystallineCoverRing` を具体化した。`HodgeTateIsoStatement` と `PrismaticCohomologyBaseChangeStatement` は述語の本体を置き換えたので、この 25 件には含めない。
+
+### 設計判断と要確認
+
+- **D68・D69**　恒久的な文献入力は `crystalline_deRham_polynomial_Zp` の一件。G-A1-14 の `pdRow_contractible` は j>0 に限定した。G-A1-16 では pd 包の δ⁰ 座標と追加 δ 座標の Čech 因子を分け、追加座標を零にする切断を使う。G-A1-17 は `pdPolynomialComparison` として独立に置き、J 上同じ二つの多項式射の持ち上げが同じ射を誘導する条件を含めた。これらと Witt 側の橋は証明予定。比較射を構成したのち A₀→A に沿って移す。
+- **D4-03・D4-05**　Bockstein は A を係数環とし、`cohomologyEquivHomology` で cup の H に移した `regularBockstein` を使う。Shared の `bockstein_leibniz` の本証明は基盤待ち。完備形式は `completedDeRhamComplex`、`completedWedge`、`completedDeRhamD` を使い、微分は k 線形。E∞ 実現は可換モノイド複体から `commutativeAlgebraFunctor` と `Operad.restrictAlgebra (augmentation k)` を経て `algebraCAlgSource` に送る。同名の source の頂点は `cAlgVertex` と標準同型。
+- **D20・D4-04**　`FlatKoszulComparison` は H₀ の平坦性と全次数の標準底変換射の全単射性。Construction 6.1 の `torAmplitude_modP_le_one` は α mod p の通常の上界 1。`crystallineCoverMap_torAmplitude` は全 K を量化する A0 §2.9 の Koszul 版で上界 **3**。B/p の A 上の Tor 次元の上界 2 に、Kos_B(p,pu) の零元の一段が加わる。普遍 A₀ では K=A₀/(p,d) に対し H⁻³=B/p≠0。利用側の `crystallineCoverMap_finiteTorAmplitude` は有限性だけを公開する。
+- **残る接続**　CrystallineInput の `pdTotMap` は Shared の `totEInfinity_map` の型付け待ち。HodgeTateComparison の `moduleReflection` は DerivedGeneral の (p,d) を指定する反射待ち。DeRhamComparisonPoly の `primeAlgReflection` は G-A2-9 の主元 p の CAlg 反射待ち。A0 の `IsCompletelyRegularRel` の本体と D20 の式の接続は A0 実装時に行う。D4-03 の指定どおり A1 からは `hd_reg` を渡す。基盤の `regularShortExact` は、定義の本体が `sorry` の段階でもこの引数が残る形にする必要がある。
+
+### A3 の引数 ← A1 の宣言
+
+| A3 の引数 | 今回の A1 の宣言 |
+|---|---|
+| A₀、環構造、P₀ | p を明示引数にした `universalOrientedPrismRing p` とその `CommRing`、`universalOrientedPrism p`。ℤ の自由 δ 環で p と互いに素な整数と δ(d) を δ 局所化し、(p,d) 完備化した。 |
+| h₀ | `universalOrientedPrism_bounded`。A₀/d₀ の p 正則性を使う。 |
+| g と hd、自由変数の像 | `universalOrientedPrism_hom P` の唯一の射と生成元の式、既存 A3 の `lciClassifyingMap` の fᵢ。 |
+| Ex 7.9 の特殊化 | `prismaticCohomology_lci_universal` でこれらを A3 の `prismaticCohomology_lci_eq_envelope` に渡す。A3 が使う A2 の底変換・A1 の HT 比較より後の DeRhamComparisonPoly に置いた。 |
+
+### A5 の仮置き → A1 の宣言
+
+| A5/StrongDescent | A1 の接続と係数 |
+|---|---|
+| `rootDeRhamSource C` | `rootSource p C` = `formsVertex p C 1`。ここで C の標数は p なので完備 de Rham 形式は通常の多項式形式と一致する。 |
+| `rootDeRhamAugmentation` | `rootFormsAugmentation p P 1`。次数零では `rootDegreeZeroMap` により X を X₀ mod p に送り、離散標的で正次数は零。 |
+| `rootMap_modP_eq_deRham` | `deRham_iso_rootAlgebra_modP p P hP hperf 1` の可換式。左脚は `completedPolynomialRecovery` と `deRham_iso_polynomial_modP`、右脚は根の列の余極限で T_∞/p に至る同型。A5 では `baseChange_phiInv_eq_frobeniusTwist` の係数同型 A/(p,φ⁻¹(d)) ≃ (A/d)/p に沿って移す。 |
+
+### BS-D4 全体
+
+| 停止点 | 結論が `True` だった宣言 | 別に具体化した `Type u := sorry` |
+|---|---:|---:|
+| 1　A2 | 26 | 1 |
+| 2　A3 | 13 | 4 |
+| 3　A1 | 25 | 5 |
+| 合計 | **64** | **10** |
+
+比較の基準は各部の開始コミット。BS-D4 でこの二種類の仮置きを置き換えた名前つき宣言は計 **74 件**。下記の一覧では、コメントを除いた宣言の結論が `True` であるものだけを数えた。証明、補助宣言、構造体の欄、述語の右辺の変更はこの数に加えていない。
+
+<details>
+<summary>drafts 全体に残る、結論が True の名前つき宣言（53件）</summary>
+
+- `DerivedGeneral/CompletionFunctor.lean`（5件）　`completion_isReflective`、`completion_tensor_koszul`、`completion_exact`、`complete_colimit`、`completedBaseChange`
+- `DerivedGeneral/ScalarRestriction.lean`（4件）　`derivedInfinityBaseChange_restrictScalars_adjunction`、`cAlgBaseChange_restrictScalars_adjunction`、`derivedInfinityRestrictScalars_completion`、`cAlgRestrictScalars_h0`
+- `DerivedGeneral/Truncation.lean`（5件）　`truncationLE_counit`、`truncation_cofiber`、`tStructure_axioms`、`truncationLE_of_isConnective`、`derived_nakayama`
+- `Shared/CosimplicialBockstein.lean`（2件）　`bockstein_leibniz`、`bockstein_natural`
+- `Shared/CosimplicialEInfinity.lean`（5件）　`totEInfinity_forget`、`totEInfinity_cohomologyRing`、`totEInfinity_isLimitCone`、`totEInfinity_map`、`derivedGlobalSectionsCAlg_eq_totEInfinity`
+- `Shared/DeRhamPolynomial.lean`（1件）　`completedForms_eq_derivedCompletion_of_boundedTorsion`
+- `Shared/Descendable.lean`（16件）　`isDescendableOver_unit_iff`、`isDescendableOver_pushout`、`isDescendableOver_comp`、`isDescendableOver_tensor`、`isDescendableOver_tot_equiv`、`hasDescentIndexLEOver_two_of_rhom`、`hasDescentIndexLEOver_frobeniusColimit`、`isDescendableOver_complete`、`isDescendable_baseChange`、`isDescendable_comp`、`isDescendable_tensor`、`isDescendable_tot_equiv`、`hasDescentIndexLE_two_of_rhom`、`hasDescentIndexLE_frobeniusColimit`、`isDescendable_complete`、`isDescendable_of_faithfullyFlat`
+- `Shared/EInfinityPowerOperation.lean`（4件）　`powerOperationZero_zero`、`powerOperationZero_natural`、`powerOperationZero_natTrans`、`powerOperationZero_eq_frobenius_tot`
+- `Sheaves/CAlgValued.lean`（3件）　`forget_conservative`、`forget_sheafify`、`forget_derivedGlobalSections`
+- `Sheaves/CechConerveLimit.lean`（1件）　`isLimitCone_iff_restrict_cech_large`
+- `Sheaves/GlobalSections.lean`（1件）　`sheafifyUnit_isEquivalence_of_isSheaf`
+- `Sheaves/SpaceValued.lean`（6件）　`sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf_pushout`、`sectionsOf_colimit`
+
+</details>
+
+結論以外の仮置きとして、Shared/DeRhamPolynomial の `exists_unique_dgHom` の仮定 `hlin`、Shared/Descendable の `finiteColimits`・`retracts`・`shifts`・`tensor` の四欄、Sheaves/GlobalSections の二位相比較の存在文中の `True` が残る。A6/ArcSheafProperty の `ValuativeCoverFamily (fun _ => True)` は全付値試験環を選ぶ意図的な述語。A0〜A9 に、結論を `True` にした仮置きはない。
+
+**確認の範囲**　四本の宣言名を開始基準と比較し、コメントを除いて二種類の仮置き、新しい axiom、括弧、実際の import 先を静的に確認した。`git diff --check` を実行した。ビルド・Lean の型検査は行っていない。E3 の証明と各 draft の本体への取り込みは BS-D4 の対象外。

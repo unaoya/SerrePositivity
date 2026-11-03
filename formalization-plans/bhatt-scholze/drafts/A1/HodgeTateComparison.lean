@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.4・§2.5・§3、単位 A1-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import SerrePositivity.CommutativeAlgebra.Koszul
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
@@ -34,7 +35,7 @@ A2（Construction 7.6）、A5（Prop 8.5、Lemma 8.6）、A7（Prop 8.13）。
 noncomputable section
 universe u
 open CategoryTheory SSet
-open scoped Simplicial
+open scoped Simplicial TensorProduct
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
@@ -48,8 +49,9 @@ variable {p : ℕ} [Fact p.Prime]
 方針：Thm 5.2 の β 形（Tot C^• ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}、Lemma 5.4 と導来 Nakayama）、mod p、Cartier 同型、η^* との一致。
 規約：結晶の話はこの定理の証明にだけ現れる。
 使われ方：Cor 5.5（一般の結晶 prism）、Prop 6.2。 -/
-theorem hodgeTate_iso_polynomial_Zp (r : ℕ) : True := by
-  trivial -- A1-3。要確認：(Z_p,(p)) の OrientedPrism と `hodgeTateMap` の型に合わせて述べる
+theorem hodgeTate_iso_polynomial_Zp (r : ℕ) :
+    HodgeTateIsoStatement (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r :=
+  hodgeTate_of_deRham_cartier p r
 
 /-! ## Cor 5.5：結晶 prism -/
 
@@ -59,8 +61,9 @@ theorem hodgeTate_iso_polynomial_Zp (r : ℕ) : True := by
 規約：`OrientedPrism.crystalline`。
 使われ方：Prop 6.2 (a)(b)。 -/
 theorem hodgeTate_iso_crystalline {A : Type u} [CommRing A] (P : OrientedPrism p A)
-    (hcrys : P.generator = (p : A)) (r : ℕ) : True := by
-  trivial
+    (hcrys : P.generator = (p : A)) (r : ℕ) :
+    HodgeTateIsoStatement P (crystallineBounded p P hcrys) r := by
+  sorry -- Z_p→A は平坦。Lemma 4.20 の標準脚と Bockstein を使い η⁰・η¹、外積で η^i を移す
 
 /-! ## 普遍向き付き prism（Ex 2.21、Ex 3.4、G-A1-12） -/
 
@@ -112,13 +115,15 @@ theorem universalOrientedPrism_bounded : IsBoundedPrism (universalOrientedPrism 
 abbrev modPrime (p : ℕ) (A : Type u) [CommRing A] := A ⧸ Ideal.span {(p : A)}
 
 def modPrimeFrob (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] : modPrime p A →+* modPrime p A := by
-  have hp : (p : modPrime p A) = 0 := by
-    sorry -- p は商で零（零環を含む）
-  letI : ExpChar (modPrime p A) p := by sorry -- p が素数で p=0。零環も p 乗は環準同型
-  exact frobenius (modPrime p A) p
+  classical
+  by_cases h : Subsingleton (modPrime p A)
+  · exact RingHom.id _
+  · letI : Nontrivial (modPrime p A) := not_subsingleton_iff_nontrivial.mp h
+    letI : CharP (modPrime p A) p := by sorry -- p は素数で商では零、商は非自明
+    exact frobenius _ p
 
 def FrobeniusFlatModP (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] : Prop :=
-  letI := (modPrimeFrob p A).toAlgebra
+  letI : Module (modPrime p A) (modPrime p A) := Module.compHom _ (modPrimeFrob p A)
   Module.Flat (modPrime p A) (modPrime p A)
 
 theorem universalOrientedPrism_frobenius_flat (p : ℕ) [Fact p.Prime] :
@@ -138,6 +143,35 @@ theorem universalOrientedPrism_hom {A : Type u} [CommRing A] (P : OrientedPrism 
 /-! ## Construction 6.1 -/
 
 variable {A : Type u} [CommRing A] (P : OrientedPrism p A)
+
+/-! D20。Def 2.42 は Koszul ホモロジーの底変換を全次数で検査する。 -/
+
+abbrev koszulResidue {T : Type u} [CommRing T] {r : ℕ} (x : Fin r → T) := T ⧸ Ideal.span (Set.range x)
+def koszulResidueModule {T : Type u} [CommRing T] {r : ℕ} (x : Fin r → T) (j : ℕ) : ModuleCat.{u} (koszulResidue x) := by
+  let H := (koszulComplex x).homology (-(j : ℤ))
+  letI : Module (koszulResidue x) H := by sorry -- x_i 倍は Koszul で零ホモトピック、作用が商を経由
+  exact ModuleCat.of _ H
+
+abbrev relBaseSequence := ![(p : A), P.generator]
+def relSequence {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) : Fin (2+r) → B :=
+  Fin.addCases (algebraMap A B ∘ relBaseSequence P) x
+def relResidueMap {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) :
+    koszulResidue (relBaseSequence P) →+* koszulResidue (relSequence P x) :=
+  Ideal.quotientMap _ (algebraMap A B) (by sorry) -- 最初の二生成元の像
+
+def relHomologyBaseChange {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) (j : ℕ) :
+    let k := koszulResidue (relBaseSequence P)
+    let S := koszulResidue (relSequence P x)
+    letI : Algebra k S := (relResidueMap P x).toAlgebra
+    S ⊗[k] (koszulResidueModule (relBaseSequence P) j) →ₗ[S] koszulResidueModule (relSequence P x) j := by
+  sorry -- 係数を送り最初の二つの Koszul 因子を包含した鎖写像の H_j を S 線形に延長
+
+/-- A0 の IsCompletelyRegularRel 用の D20 の右辺。H₀ の平坦性だけでは足りない。 -/
+def FlatKoszulComparison {B : Type u} [CommRing B] [Algebra A B] {r : ℕ} (x : Fin r → B) : Prop :=
+  let k := koszulResidue (relBaseSequence P)
+  let S := koszulResidue (relSequence P x)
+  letI : Algebra k S := (relResidueMap P x).toAlgebra
+  Module.Flat k S ∧ ∀ j, Function.Bijective (relHomologyBaseChange P x j)
 
 /-- 概要：Construction 6.1 の仮定：A/p の Frobenius が平坦、A/d が p ねじれなし。
 方針：述語。
@@ -182,23 +216,66 @@ def crystallineCoverMap (h : Construction61Hypotheses P) : OrientedPrism.Hom P (
   map_delta := by sorry -- δ 射の合成
   ideal_le := by sorry -- φ(d)/p を添加したので α(d)∈(p)
 
+/-- D(A) の (p,d) 完備な頂点とその反射。 -/
+abbrev CompleteModules := fullSubcomplexOnVertices (derivedInfinityCategory A)
+  (fun x => completeAt (p : A) x ∧ completeAt P.generator x)
+instance : Quasicategory (CompleteModules P) := fullSubcomplexOnVertices_quasicategory _ _
+abbrev moduleInclusion : (CompleteModules P : SSet) ⟶ derivedInfinityCategory A := (CompleteModules P).ι
+def moduleReflection : Σ L : derivedInfinityCategory A ⟶ (CompleteModules P : SSet),
+    QCatAdjunction L (moduleInclusion P) := by
+  sorry -- 要確認：DerivedGeneral/CompletionFunctor へ。(p,d) を指定した完備反射
+
+def alphaStar (h : Construction61Hypotheses P) :=
+  moduleInclusion P ≫ derivedInfinityBaseChange (crystallineCoverMap P h).toRingHom ≫
+    (moduleReflection (crystallineCover P h)).1
+
+def ReflectsEquivalences {X Y : SSet.{u+1}} (F : X ⟶ Y) : Prop :=
+  ∀ {x y : X _⦋0⦌} (e : X.Edge x y), IsIso (HomotopyCategory.homMk (e.map F)) → IsIso (HomotopyCategory.homMk e)
+
 /-- 概要：Construction 6.1 (1)：α̂^* は導来 (p,d) 完備な A 複体の上で保存的。
 方針：mod p の分解 (6)：A/p → A/(p,d)（導来 Nakayama で保存的）→ A/(p,d^p)（Frobenius、忠実平坦）→ B/p = D_{(d)}(A/p)（pd 包、自由）。
 規約：導来 Nakayama は G-A1-4。
 使われ方：Prop 6.2 (b)(c)。 -/
-theorem crystallineCoverMap_conservative (h : Construction61Hypotheses P) : True := by trivial
+theorem crystallineCoverMap_conservative (h : Construction61Hypotheses P) :
+    ReflectsEquivalences (alphaStar P h) := by
+  sorry -- cofiber を mod p に落とし、(6) の d 完備 Nakayama と忠実平坦な Frobenius・pd 包を順に使う
 
-/-- 概要：Construction 6.1 (2)：α̂^* は有限 (p,d) 完全 Tor 振幅（c = 1）。
-方針：(6) の最初の射が Tor 振幅 ≤ 1（d は A/p で正則）、残りは平坦。
-規約：A0 の `HasFiniteCompleteTorAmplitude` の形で。
-使われ方：Lemma 4.20・4.22 の適用。 -/
-theorem crystallineCoverMap_torAmplitude (h : Construction61Hypotheses P) : True := by trivial
+/-- A0 §2.9。任意の K∈D^{≥m}(A) を底変換したあと、標的の Koszul 複体を掛ける。
+有限自由な Koszul 複体なので semifree 代表上で計算できる。 -/
+def HasFiniteCompleteTorAmplitude {B : Type u} [CommRing B] (f : A →+* B)
+    {r : ℕ} (x : Fin r → A) (c : ℕ) : Prop :=
+  ∀ (m : ℤ) (K : (derivedInfinityCategory A) _⦋0⦌), Derived.IsCoconnectiveAt A m K →
+    let Y := (derivedInfinityBaseChange f).app _ K
+    let M := (dgNerve.vertexEquiv B (Semifree B) Y).val
+    ∀ i : ℤ, i < m - c → Limits.IsZero ((koszulComplexOn (f ∘ x) M).homology i)
+
+def alphaModP (h : Construction61Hypotheses P) : modPrime p A →+* modPrime p (crystallineCoverRing P h) :=
+  Ideal.quotientMap _ (crystallineCoverMap P h).toRingHom (by sorry) -- p ↦ p
+
+theorem torAmplitude_modP_le_one (h : Construction61Hypotheses P) (n : ℤ)
+    (K : (derivedInfinityCategory (modPrime p A)) _⦋0⦌) (hK : Derived.IsCoconnectiveAt _ n K) :
+    Derived.IsCoconnectiveAt _ (n-1) ((derivedInfinityBaseChange (alphaModP P h)).app _ K) := by
+  sorry -- (6) は d 正則元による商と平坦射の合成。これは mod p の通常の振幅
+
+theorem crystallineCoverMap_torAmplitude (h : Construction61Hypotheses P) :
+    HasFiniteCompleteTorAmplitude (crystallineCoverMap P h).toRingHom ![(p : A), P.generator] 3 := by
+  sorry -- D4-04。B/p は A 上 Tor 次元 ≤2（A/p で一段、torAmplitude_modP_le_one で一段）。
+        -- Kos_B(p,pu) ≃ Kos_B(p,0) の零元の分がもう一段。普遍例の K=A/(p,d) で H⁻³=B/p
+        -- Lemma 4.22 には上界の有限性だけを用いる
+
+theorem crystallineCoverMap_finiteTorAmplitude (h : Construction61Hypotheses P) :
+    ∃ c : ℕ, HasFiniteCompleteTorAmplitude (crystallineCoverMap P h).toRingHom ![(p : A), P.generator] c :=
+  ⟨_, crystallineCoverMap_torAmplitude P h⟩
 
 /-- 概要：Construction 6.1 (3)：α̂^*Δ_{R/A} ≃ Δ_{R_B/B}（Lemma 4.20）。
 方針：Rem 4.19 の模型の項ごとの底変換と Lemma 4.22。
 規約：—
 使われ方：Prop 6.2 (b)。 -/
-theorem crystallineCoverMap_prismaticCohomology (h : Construction61Hypotheses P) (r : ℕ) : True := by trivial
+theorem crystallineCoverMap_prismaticCohomology (hP : IsBoundedPrism P) (h : Construction61Hypotheses P) (r : ℕ) :
+    PrismaticCohomologyBaseChangeStatement P hP r (crystallineCover P h)
+      (by sorry) -- mod p では p=0
+      (crystallineCoverMap P h) := by
+  sorry -- crystallineCoverMap_finiteTorAmplitude と A0 の項別比較を Lemma 4.22 で Tot に移す
 
 /-! ## Prop 6.2（一般の r）と Thm 6.3 -/
 
@@ -206,50 +283,105 @@ theorem crystallineCoverMap_prismaticCohomology (h : Construction61Hypotheses P)
 方針：α̂^* は保存的、α̂^*Δ_{R/A} ≃ Δ_{R_B/B}、(B,(p)) は結晶 prism で `hodgeTate_iso_crystalline`、α̂^*η^* が B 側の η^* に一致（生成元で）。
 規約：—
 使われ方：普遍向き付き prism への適用、Prop 6.2 (c)。 -/
-theorem hodgeTate_iso_of_construction61 (h : Construction61Hypotheses P) (r : ℕ) : True := by trivial
+theorem hodgeTate_iso_of_construction61 (hP : IsBoundedPrism P) (h : Construction61Hypotheses P) (r : ℕ) :
+    HodgeTateIsoStatement P hP r := by
+  sorry -- α̂* は保存的。生成元で HT 写像を比較し結晶 prism 側の Cor 5.5 で検出
 
 /-- 概要：底変換関手 b̂^*（b : A → E = A ⊗̂^L_{A_0} D_0 の読み替え）：Res_{A_0} の後に â^*（a = α_{A_0}）。
 方針：D30。E は作らない。
 規約：K は導来 (p,d) 完備な A 複体。
 使われ方：Prop 6.2 (c)。 -/
-def baseChangeB : True := trivial
+abbrev orientationMap := (universalOrientedPrism_hom P).exists.choose
+def universal61 (p : ℕ) [Fact p.Prime] : Construction61Hypotheses (universalOrientedPrism.{u} p) :=
+  ⟨universalOrientedPrism_frobenius_flat p, by sorry⟩ -- Ex 3.4：A₀/d₀ は p ねじれなし
+abbrev universalCover (p : ℕ) [Fact p.Prime] := crystallineCover (universalOrientedPrism.{u} p) (universal61 p)
+
+def baseChangeB : (CompleteModules P : SSet) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
+  moduleInclusion P ≫ derivedInfinityRestrictScalars (orientationMap P).toRingHom ≫
+    derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection (universalCover p)).1
 
 /-- 概要：底変換関手 ĉ^*（c : Z_p → E の読み替え）：(− ⊗^L_{Z_p} A) の後に Res_{A_0}、â^*。
 方針：D30。
 規約：—
 使われ方：Prop 6.2 (c)。 -/
-def baseChangeC : True := trivial
+def baseChangeC : derivedInfinityCategory (crystallineBase.{u} p) ⟶ (CompleteModules (universalCover.{u} p) : SSet) :=
+  derivedInfinityBaseChange (padicCoefficientMap P) ≫ derivedInfinityRestrictScalars (orientationMap P).toRingHom ≫
+    derivedInfinityBaseChange (crystallineCoverMap _ (universal61 p)).toRingHom ≫ (moduleReflection _).1
 
 /-- 概要：b̂^* は (p,d) 完備な A 複体の上で保存的（Res は完備性と零を保ち、â^* は保存的）。
 方針：`crystallineCoverMap_conservative` を A_0 に。
 規約：—
 使われ方：Prop 6.2 (c)。 -/
-theorem baseChangeB_conservative : True := by trivial
+theorem baseChangeB_conservative : ReflectsEquivalences (baseChangeB P) := by
+  sorry -- d を保つ分類射での制限は完備性と零を反映し、universal61 の α̂* は保存的
 
 /-- 概要：Rem 4.19 の複体の項ごとの一致 b̂^*C^n_{R/A} ≃ ĉ^*C^n_{F_p[X]/Z_p}、したがって b̂^*Δ_{R/A} ≃ ĉ^*Δ_{F_p[X]/Z_p}。
 方針：C^n_A = C^n_{A_0} ⊗̂_{A_0} A、C^n_{A_0} ⊗̂_{A_0} D_0 = C^n_{D_0} = C^n_{Z_p} ⊗̂_{Z_p} D_0（A0 の `cechAlexanderAffine_baseChange`）、テンソルの結合則。
 Tot と交換するのは Lemma 4.22（a は有限振幅、Z_p → A は Tor 振幅 ≤ 1、Res は完全）。
 規約：—
 使われ方：Prop 6.2 (c)。 -/
-theorem baseChange_cechAlexanderAffine_eq (r : ℕ) : True := by trivial
+abbrev simplexShape := (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)
+def affineModuleDiagram (hP : IsBoundedPrism P) (r : ℕ) : simplexShape.{u} ⟶ derivedInfinityCategory A := by
+  let D := polyCosimplicialAlgebra P hP r
+  let N : simplexShape.{u} ⟶ nerve (BhattScholze.PerfectoidizationInterface.A_R A) :=
+    { app := fun _ => ↾fun x => (D.mapComposableArrows _).obj x.down
+      naturality := by sorry } -- 射列の同時制限
+  exact N ≫ discreteEmbedding A
+
+def affineCompleteDiagram (hP : IsBoundedPrism P) (r : ℕ) : simplexShape.{u} ⟶ (CompleteModules P : SSet) :=
+  fullSubcomplexLift _ (affineModuleDiagram P hP r) (by sorry) -- 各項の prism の (p,d) 完備性
+def affineCompleteTot (hP : IsBoundedPrism P) (r : ℕ) : (CompleteModules P : SSet) _⦋0⦌ := by
+  let x := prismaticCohomologyCAlg P hP r
+  exact ⟨(cAlgForgetDerived A).app _ x.val, by sorry⟩ -- x の完備性を忘却
+
+/-- D30 で使用する二つの Tot 交換。保存性の対象は指定した cosimplicial 模型の極限錐。 -/
+theorem baseChange_preserves_affineTot (hP : IsBoundedPrism P) (r : ℕ) :
+    (∀ c : JoinCone (affineCompleteDiagram P hP r), IsLimitCone c →
+      IsLimitCone (c.postcomp (baseChangeB P))) ∧
+    (∀ c : JoinCone (affineModuleDiagram (crystallineBasePrism.{u} p) (crystallineBaseBounded p) r),
+      IsLimitCone c → IsLimitCone (c.postcomp (baseChangeC P))) := by
+  sorry -- Z_p→A は通常の Tor 振幅 ≤1、Res は極限を保つ。
+        -- 完備底変換には Lemma 4.22 と crystallineCoverMap_finiteTorAmplitude を使う
+
+theorem baseChange_cechAlexanderAffine_eq (hP : IsBoundedPrism P) (r : ℕ) :
+    let Z := crystallineBasePrism.{u} p
+    let hz := crystallineBaseBounded.{u} p
+    Nonempty (FunctorIso (affineCompleteDiagram P hP r ≫ baseChangeB P)
+      (affineModuleDiagram Z hz r ≫ baseChangeC P)) ∧
+      Nonempty (VertexIso ((baseChangeB P).app _ (affineCompleteTot P hP r))
+        ((baseChangeC P).app _ ((moduleInclusion Z).app _ (affineCompleteTot Z hz r)))) := by
+  sorry -- A0.cechAlexanderAffine_baseChange の二つの係数脚を copy ごとに比較。
+        -- Lemma 4.22 と有限完全 Tor 振幅で同じ比較を Tot に移す
 
 /-- 概要：Prop 6.2（一般の r）＝ Thm 6.3（多項式代数）：一般の有界向き付き prism (A,(d)) と R = (A/d)⟨X_1,…,X_r⟩ について η^* は同型。
 方針：(a) 結晶：`hodgeTate_iso_crystalline`。(b)(c)：b̂^* が保存的、b̂^*η^* が ĉ^*（Z_p 側の η^*）に一致（生成元で）、Z_p 側は
 `hodgeTate_iso_polynomial_Zp`。順序（W9-I-25）：r = 1 の加群の比較（η⁰・η¹）→ Lemma 4.10（`bockstein_sq_zero'`）→ 一般 r の dg 比較。
 規約：D30。
 使われ方：Cor 4.12、Lemma 4.10、A2・A5・A7。 -/
-theorem hodgeTate_iso (hP : IsBoundedPrism P) (r : ℕ) : True := by trivial
+theorem affineLine_moduleComparison (hP : IsBoundedPrism P) :
+    Function.Bijective (hodgeTateMapZero P hP 1) ∧ Function.Bijective (hodgeTateMapOne P hP 1) ∧
+      ∀ i : ℕ, 1 < i → Subsingleton (hodgeTateCohomology' P hP 1 i) := by
+  sorry -- η⁰・η¹ の基底の代表だけで加群の比較を作り、baseChangeB と Z_p の一変数
+        -- Cartier 計算で検出する。この段階で η の外積への延長は用いない
+
+theorem hodgeTate_iso (hP : IsBoundedPrism P) (r : ℕ) : HodgeTateIsoStatement P hP r := by
+  sorry -- baseChangeB_conservative と項別比較で η の加群比較を検出。
+        -- 一変数は η⁰・η¹ だけで H²=0、次に平方零、最後に r 変数で外積を使う
 
 /-- 概要：Lemma 4.10：β(η^0 f)² = 0。
 方針：r = 1 の `hodgeTate_iso` で H^2(Tot(C^•/d)) ≅ Ω^2 = 0、X ↦ f の関手性（Bockstein と cup 積の自然性）。
 規約：—
 使われ方：η^* の存在（`HodgeTateMap`）。循環ではない：Prop 6.2 の証明では η を D(R) の射として選ぶ（Ω^i は自由）ので η^* の存在を前提にしない。 -/
-theorem bockstein_sq_zero' (hP : IsBoundedPrism P) : True := by trivial
+theorem bockstein_sq_zero' (hP : IsBoundedPrism P) (r : ℕ) : BetaSquareZero P hP r := by
+  exact betaSquareZero_of_line P hP r ((affineLine_moduleComparison P hP).2.2 2 (by decide))
 
 /-- 概要：Cor 4.12：Δ_{R/A} の形成は有界 prism の任意の射 (A,(d)) → (A′,(d′)) に沿う底変換と可換（Tor 振幅の仮定なし）。
 方針：導来 Nakayama で mod d に帰着し、`hodgeTate_iso` と微分形式の底変換。
 規約：—
 使われ方：Construction 7.6 (4)（A2）。 -/
-theorem prismaticCohomology_baseChange' (hP : IsBoundedPrism P) (r : ℕ) : True := by trivial
+theorem prismaticCohomology_baseChange' (hP : IsBoundedPrism P) (r : ℕ)
+    {A' : Type u} [CommRing A'] (P' : OrientedPrism p A') (hP' : IsBoundedPrism P') (f : OrientedPrism.Hom P P') :
+    PrismaticCohomologyBaseChangeStatement P hP r P' hP' f := by
+  sorry -- 同じ polynomialChangeEdge を mod d で検査。Thm 6.3、完備形式の基底変換と導来 Nakayama
 
 end SerrePositivity.BhattScholze.Prismatic
