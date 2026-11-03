@@ -55,3 +55,36 @@ S = T = A の場合にも区別は残る。例えば有界 prism (ℤ_p[[x]], (p
 A0 には指定外の既存注記2箇所（`structurePresheafDerived` の小さい nerve の比較と `hodgeTateCohomology` の導来テンソル）が残る。InterfaceFields・AfterComparison は0件。第1部の食い違いは M13 の D 版・CAlg 版で解決した。A2 の Frobenius 成分の仮置き以外に、新たな数学的主張の変更はない。
 
 今回の確認は、参照名のソース照合、変更4ファイルでの対象宣言・import 先・括弧の照合、`git diff --check`。Lean の実行・型検査・ビルドは行っていない。A2 と DerivedGeneral/ScalarRestriction は編集していない。停止点2（A7）以降は未着手。
+
+## 第 3 部　停止点 2（A7、基準 main `bfbc0167e`）
+
+A7 の4ファイルで、基準コミットにあった結論 `True` の宣言 **22 件**を具体化した。既に型のあった `e3Universal` は別に扱い、E3 の欄に合わせて基底の perfectoid 性と完備化を経る証明の入口を明示した。
+
+| ファイル | 件数 | 今回の型 |
+| --- | ---: | --- |
+| A7/AnimatedDomain | 2 | `animatedForget` を通して底の導来加群の p 完備性を判定する充満部分圏、そこへの反射と随伴の単位。導来 mod pⁿ の塔は、通常の R ← R[t] → R を animated な塔の圏で押し出し、X と R 上で導来テンソルして作る。完備化の頂点をもつ極限錐と、完備離散代数の埋め込みを指定した。π₀(X)/pⁿ の遷移が全射なのでこの系の lim¹ が消える。 |
+| A7/AnimatedPerfectoidization | 10 | 二側 bar を Δ[1] の単体の要素圏から Δᵒᵖ への左 Kan 延長で表した。次数 n の n+2 個の因子は左端・n 個の中央・右端。押し出し余錐が Δ・Frobenius の余極限・完備化・mod d の各段で余極限になる条件を置いた。塔の後続辺は τⁿ(φ)、τ は Frobenius に沿う係数制限。完備 CAlg の押し出し余錐から、入力の押し出しを perfd で送った余錐へ移る辺が Prop 8.13 の標準比較射で、その辺の可逆性を結論とした。離散版との比較は完備離散代数の nerve 上の `FunctorIso`。 |
+| A7/DiscreteCore | 3 | d 完備な Δ_perf の離散性、H⁰(Δ_perf) 上の完全 prism（生成元は基底の d の像、その商は H⁰(S_perfd) と環同型）、H⁰(S_perfd) の perfectoid 性。A4 の `prismaticPerfection_h0_perfectDelta` と `prismaticPerfectionPrism` を参照する。 |
+| A7/UniversalProperty | 7 | perfectoid T で指定単位が可逆になること、比較の脚の mod d による延長の存在、G-A7-8 の等式、自己テンソルの同値と乗法の等式、環準同型の一意性、完備離散 S での Cor 8.14。任意の離散 S に対する `e3Universal` は S^∧ に適用し、A4 の三つの `_of_complete` と `completion_existsUnique` により E3 の単位へ戻す。 |
+
+G-A7-8 では P = H⁰(FS) の離散表示を H⁰ で規格化し、F(η_S) と η_P を同じ始域の射として比較する。証明の入口は A5 の極限の脚 λ_f ∘ q = λ_f から得る q = id_P と比較の自然性。続く自己テンソルの同値 e には、Prop 8.13 の左右の脚を η_P の後に合成すると両方とも恒等になる条件を付けた。これにより e ∘ η_X = m を、離散とは限らない X の E∞ 実現からの射として書ける。離散標的 T への写像は Hom(π₀X,T) で判定する。AnimatedDomain と DiscreteCore は A5 を参照する証明を必要としない。
+
+### 要確認と A2 待ち
+
+`-- 要確認：` は **5 箇所**。BS-D4 で接続する型と既存の仮置きの対応は次のとおり。
+
+1. AnimatedDomain の `animatedForget`。A2 の `exists_siftedExtension` が返す sifted 保存と、多項式生成系への制限同型を具体化する。
+2. AnimatedPerfectoidization の `animatedDelta`。A/d ≃ R に沿って R 代数を A/d 代数として読む animated 基底移送。A4 では同じ向きを通常の `Under.map` で扱っている。
+3. 同ファイルの `animatedDeltaFrobenius`。A2 の `derivedPrismaticFrobenius` の自然変換。離散成分には A4 の `discreteDeltaFrobenius` を使う。完備圏の包含・反射・mod d は A4 の `completeCAlgInclusion`・`reflectCompleteCAlg`・`modPrismFunctor` を使用した。
+4. UniversalProperty の `animatedRealization`。A2 の `hodgeTateUnitCAlg` の始域になる animated 代数の E∞ 実現。多項式環の離散 E∞ 実現からの sifted 延長で指定した。
+5. 同ファイルの `animatedPerfdUnit` 内の Fil₀ の射。A2 の `hodgeTateUnitCAlg` を完備入力に制限し、同じ塔の第0脚と完備化単位の mod d を合成する。`animatedPerfdUnit_discrete` は、離散制限が A4 の `directHodgeTateUnit ≫ directToPerfection` に一致する等式。
+
+DiscreteCore の要確認は0件。A5 の `perfectoidization_semiperfectoid_iso` と `perfectionComparisonLeg` は証明の依存先で、A7 の宣言の型には仮の A5 成分を追加していない。
+
+### 設計との照合
+
+A7 の主張に設計との食い違いはない。D60 の完備 animated 定義域、W9-II-23 の単位の整合性、W9-II-24 の A5 より前に置く二ファイルを維持した。
+
+関連する基盤に一件、A7 の範囲外の注意がある。`ScalarRestriction.lean` の `cAlgRestrictScalars_isColimitCone` は任意の環写像と任意の図式形状を量化する。しかし ℤ → 𝔽₂ に沿う制限は、𝔽₂ 代数の始対象 𝔽₂ を ℤ 代数の始対象へ送らない（空図式が反例）。押し出しや sequential 余極限にはこの反例は当たらない。A7 では完全 prism の φ_A が自己同型であることから τ と完備圏へのその制限が押し出しを保つことを使った。この基盤宣言は使わず、ScalarRestriction も A4 も編集していない。
+
+基準コミットと宣言名を照合し、22 件すべてが残り、A7 の4ファイルに `True` が残らないことを確認した。参照名・import パス・括弧・`git diff --check` を静的に確認した。Lean による型検査・ビルドは行っていない。証明は理由付きの `sorry`。停止点 3（A8）は未着手。

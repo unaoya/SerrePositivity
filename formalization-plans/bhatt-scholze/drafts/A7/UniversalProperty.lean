@@ -4,6 +4,8 @@ module
 
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CurryFirstPrecomposition
+public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationBaseChangeHom
 -- 本ファイルは drafts/A7/{AnimatedDomain,DiscreteCore,AnimatedPerfectoidization}.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean を import する。
 -- G-A7-5 の芯は drafts/A7/DiscreteCore.lean に切り出した（W9-II-24：A5 が import するので本ファイルには置けない）。
 
@@ -30,7 +32,8 @@ S 離散。離散な環の間の animated／E∞ 代数の射は環準同型（`
 @[expose] public section
 noncomputable section
 universe u
-open CategoryTheory
+open CategoryTheory SSet
+open scoped Simplicial
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -38,7 +41,21 @@ open SerrePositivity.BhattScholze.PerfectoidizationInterface SerrePositivity.EIn
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
-variable (S : Type u) [CommRing S] [Algebra R S]
+/-- 完備な離散入力における A4 の直接の単位を H⁰ で読む。
+P の R 代数構造と η : S → P は同じ CAlg の射から来る。 -/
+abbrev perfdValue (S : A_R R) := (perfectoidizationFunctor p R hR).app _ (nerveVertex S)
+abbrev perfdRing (S : A_R R) := cAlgH0Algebra R (perfdValue p R hR S)
+
+def discretePerfdUnit (S : A_R R) : S ⟶ perfdRing p R hR S :=
+  (discreteToH0 R S).hom ≫ (cAlgH0OnHomotopy R).map
+    (functorHomEvaluate (directHodgeTateUnit p R hR ≫ directToPerfection p R hR) (nerveVertex S))
+
+/-- 指定された離散表示。H⁰ による同定が恒等になる向きを選ぶ。 -/
+def discretePerfdIso (S : A_R R) (h : IsDiscrete R (perfdValue p R hR S)) :
+    { e : VertexIso (perfdValue p R hR S)
+        ((algebraEmbedding R).app _ (nerveVertex (perfdRing p R hR S))) //
+      (cAlgH0OnHomotopy R).map e.hom = (discreteToH0 R (perfdRing p R hR S)).hom } := by
+  sorry -- 離散表示を H⁰ の標準同型で補正し、H⁰ が恒等となる表示を得る
 
 /-! ## G-A7-3：perfectoid の perfd -/
 
@@ -46,7 +63,10 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 方針：T は semiperfectoid で普遍 perfectoid 化は T 自身、A5-2 `perfectoidization_semiperfectoid_iso`。
 規約：—
 使われ方：Cor 8.14 の一意性。 -/
-theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] (hT : IsIntegralPerfectoid T p) : True := by trivial
+theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] (hT : IsIntegralPerfectoid T p) :
+    IsIso (functorHomEvaluate (directHodgeTateUnit p R hR ≫ directToPerfection p R hR)
+      (nerveVertex (ofAlgebra R T))) := by
+  sorry -- A5-2 perfectoidization_semiperfectoid_iso。T の普遍 perfectoid 化は恒等射
 
 /-! ## Cor 8.14 後半：普遍性 -/
 
@@ -54,7 +74,11 @@ theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] 
 方針：A5-1。
 規約：環準同型（両者離散）。
 使われ方：`IsPerfectoidization` の存在部分。 -/
-theorem exists_extension_of_perfectoid : True := by trivial
+theorem exists_extension_of_perfectoid (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj))
+    (T : Type u) [CommRing T] (hT : IsIntegralPerfectoid T p) (f : S.obj.right →+* T) :
+    ∃ g : (perfdRing p R hR S.obj).right →+* T,
+      g.comp (discretePerfdUnit p R hR S.obj).right.hom = f := by
+  sorry -- f が定める完全 prism への perfectionComparisonLeg の mod d を H⁰ で読む
 
 /-- 概要：G-A7-8（W9-II-23）：単位の整合性。P := S_perfd が離散（よって perfectoid、DiscreteCore）のとき F(η_S) = η_P : P → P_perfd（F = perfd）。
 方針：A5-1 の極限表示 P = lim_{Perfd_{S/}} O の脚 λ_f : P → T（f : S → T）。f = η_S の脚を q : P → P とすると、任意の f について λ_f は添字圏の射
@@ -62,7 +86,86 @@ theorem exists_extension_of_perfectoid : True := by trivial
 （`perfectoidization_of_perfectoid`）から η_P^{-1} ∘ F(η_S) = q = id_P。Cor 8.14 の一意性は使わない（循環なし）。単位の自然性だけでは「S 上で一致」までしか出ない。
 規約：—
 使われ方：`selfTensor_unit_eq_mul`。 -/
-theorem perfectoidization_map_unit_eq_unit (h : True) : True := by trivial
+theorem perfectoidization_map_unit_eq_unit (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    let P := perfdRing p R hR S.obj
+    let F := perfectoidizationFunctor p R hR
+    let η := discretePerfdUnit p R hR S.obj
+    (discretePerfdIso p R hR S.obj h).1.inv ≫
+        SSet.Truncated.HomotopyCategory₂.homMk (((nerve.edgeMk η).map F).toTruncated) =
+      functorHomEvaluate (directHodgeTateUnit p R hR ≫ directToPerfection p R hR) (nerveVertex P) := by
+  sorry -- 比較の脚 λ_f に対し λ_f ∘ λ_η = λ_f。離散な極限の脚が射を識別して q=λ_η=id。
+        -- A5 の比較の自然性と η_P の可逆性で移す（Cor 8.14 の一意性は用いない）
+
+/-- 左右とも同じ指定単位 S → H⁰(FS) の完備 animated 押し出し。 -/
+def completePerfdRing (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) : C_R R p :=
+  ⟨perfdRing p R hR S.obj, by
+    sorry⟩ -- G-A7-5 で perfectoid、従って底の環は導来 p 完備
+
+def selfTensorSpan (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    TensorSpan (CompleteAnimatedAlgebra p R) :=
+  let η : S ⟶ completePerfdRing p R hR S h := ObjectProperty.homMk (discretePerfdUnit p R hR S.obj)
+  let f := (nerve.edgeMk η).map (completeDiscreteToAnimated p R)
+  edgeSpan f.toTruncated f.toTruncated
+
+abbrev selfTensorObj (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :=
+  (completeAnimatedPushout p R (selfTensorSpan p R hR S h)).1.vertex
+
+abbrev selfTensorFactor (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :=
+  (completeDiscreteToAnimated p R).app _ (nerveVertex (completePerfdRing p R hR S h))
+
+/-- i=0,1 は span の頂点 1,2 での同じ余錐の脚。 -/
+def selfTensorLeg (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) (i : Fin 2) :
+    (CompleteAnimatedAlgebra p R).Edge (selfTensorFactor p R hR S h) (selfTensorObj p R hR S h) := by
+  let v : (horn 2 0 : SSet.{u+1}) _⦋0⦌ :=
+    ⟨stdSimplex.obj₀Equiv.symm i.succ, by sorry⟩ -- 各頂点はホーンに含まれる
+  let c := (completeAnimatedPushout p R (selfTensorSpan p R hR S h)).1
+  convert HomotopyLimits.coconeVertexLeg c v using 1 <;>
+    sorry -- i=0,1 について edgeSpan_left・edgeSpan_right の終点を読む
+
+abbrev hoEdge {V : SSet.{u+1}} {x y : V _⦋0⦌} (e : V.Edge x y) :=
+  SSet.Truncated.HomotopyCategory₂.homMk e.toTruncated
+
+/-- (id_P,id_P) から来る乗法。標的 P は離散なので二脚上の等式がこの射を決める。 -/
+def selfTensorMul (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    let X := selfTensorObj p R hR S h
+    let P := selfTensorFactor p R hR S h
+    { m : (HomotopyCategory.mk X : hoFunctor.obj (CompleteAnimatedAlgebra p R)) ⟶ HomotopyCategory.mk P //
+      ∀ i, hoEdge (selfTensorLeg p R hR S h i) ≫ m = 𝟙 _ } := by
+  sorry -- 指定単位二本への恒等な整合をもつ余錐から押し出しの普遍性で降ろす
+
+/-- A2 の Fil₀ の始域。Poly_R の離散 E∞ 代数値の関手を sifted 延長し、
+導来 p 完備入力に制限する。非離散の X の単位もこの CAlg_R で評価する。 -/
+def animatedRealization : AnimatedAlgebra R ⟶ CAlg_R R :=
+  Classical.choose (show ∃ G : AnimatedAlgebra R ⟶ CAlg_R R,
+    HomotopyLimits.PreservesSmallSiftedColimits G ∧
+      Nonempty (FunctorIso (polyYoneda R ≫ G) (polynomialDiscreteDiagram R ≫ algebraEmbedding R)) from by
+    sorry) -- 要確認：A2 の hodgeTateUnitCAlg の始域。多項式代数の E∞ 実現を sifted 延長
+
+def animatedUnderlyingCAlg : CompleteAnimatedAlgebra p R ⟶ CAlg_R R :=
+  animatedCompleteInclusion p R ≫ animatedRealization R
+
+def animatedPerfdUnit (hR : IsIntegralPerfectoid R p) :
+    FunctorHom (animatedUnderlyingCAlg p R) (perfectoidizationAnimated p R hR) := by
+  let P := perfectPrism p R hR
+  let modD := modPrismFunctor p R hR
+  let fil₀ : FunctorHom (animatedUnderlyingCAlg p R) (animatedDeltaUnderlying p R hR ≫ modD) := by
+    sorry -- 要確認：A2 の hodgeTateUnitCAlg の完備 animated 入力への制限
+  let toCompletion := F2.Presentable.precomposeFunctorHom (animatedFrobeniusColimit p R hR)
+    (prismCAlgCompletionUnit (p := p) P)
+  exact fil₀ ≫ F2.Presentable.postcomposeFunctorHom modD (animatedTowerLeg p R hR ≫ toCompletion)
+
+/-- 完備な離散代数の実現は通常の離散 CAlg と自然に同型。 -/
+def completeRealizationDiscreteIso :
+    FunctorIso (completeDiscreteToAnimated p R ≫ animatedUnderlyingCAlg p R)
+      (nerveMap (completeInclusion R p) ≫ algebraEmbedding R) := by
+  sorry -- 多項式分解の幾何学的実現は元の離散代数を表す
+
+theorem animatedPerfdUnit_discrete (hR : IsIntegralPerfectoid R p) :
+    F2.Presentable.precomposeFunctorHom (completeDiscreteToAnimated p R) (animatedPerfdUnit p R hR) ≫
+        (perfectoidizationAnimated_discrete p R hR).hom =
+      (completeRealizationDiscreteIso p R).hom ≫ F2.Presentable.precomposeFunctorHom
+        (nerveMap (completeInclusion R p)) (directHodgeTateUnit p R hR ≫ directToPerfection p R hR) := by
+  sorry -- A2 の Fil₀ と A4 の同じ第0脚を離散入力に制限した自然性
 
 /-- 概要：X := S_perfd ⊗̂^L_S S_perfd（`CompleteAnimatedAlgebra`）の perfd は S_perfd：Prop 8.13（S_1 = S_2 = S_perfd、S_3 = S）と
 (S_perfd)_perfd ≃ S_perfd（`perfectoidization_of_perfectoid`）。単位 X → X_perfd とこの同値の合成は乗法 m : X → S_perfd（紙 3）。
@@ -71,21 +174,43 @@ theorem perfectoidization_map_unit_eq_unit (h : True) : True := by trivial
 A7-1 `perfectoidization_relativeTensor`。
 規約：—
 使われ方：一意性。 -/
-theorem selfTensor_perfectoidization_eq : True := by trivial
-theorem selfTensor_unit_eq_mul : True := by trivial
+def selfTensor_perfectoidization_eq (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    let X := selfTensorObj p R hR S h
+    let P := selfTensorFactor p R hR S h
+    let F := perfectoidizationAnimated p R hR
+    { e : VertexIso (F.app _ X) ((animatedUnderlyingCAlg p R).app _ P) //
+      ∀ i, functorHomEvaluate (animatedPerfdUnit p R hR) P ≫
+        hoEdge ((selfTensorLeg p R hR S h i).map F) ≫ e.hom = 𝟙 _ } := by
+  sorry -- Prop 8.13 の二脚は F(i_j)。G-A7-8 と η_P の逆で P ⊗̂_P P ≃ P に移し、比較の逆から e を取る
+
+theorem selfTensor_unit_eq_mul (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    functorHomEvaluate (animatedPerfdUnit p R hR) (selfTensorObj p R hR S h) ≫
+        (selfTensor_perfectoidization_eq p R hR S h).1.hom =
+      (hoFunctor.map (animatedUnderlyingCAlg p R)).toFunctor.map (selfTensorMul p R hR S h).1 := by
+  sorry -- 単位の自然性と e の両脚上の式で、双方の i_j 制限は恒等。
+        -- P は離散なので X→P は π₀X→P で判定でき、押し出しの普遍性で一致する
 
 /-- 概要：一意性：g_1, g_2 : S_perfd → S′（S′ perfectoid）が S 上で一致すれば g_1 = g_2。
 方針：η := (g_1, g_2) : X → S′（押し出しの普遍性、G-A7-6）。S′ perfectoid なので η は X → X_perfd → S′_perfd ≃ S′ を通り、`selfTensor_unit_eq_mul` で
 η = g ∘ m。g_i = η ∘ i_i = g。離散な標的なので π_0 Map = Hom（`discreteToAnimated_fullyFaithful`）。
 規約：—
 使われ方：`IsPerfectoidization` の一意性部分。 -/
-theorem extension_unique_of_perfectoid : True := by trivial
+theorem extension_unique_of_perfectoid (S : C_R R p) (h : IsDiscrete R (perfdValue p R hR S.obj))
+    (T : Type u) [CommRing T] (hT : IsIntegralPerfectoid T p)
+    (g₁ g₂ : (perfdRing p R hR S.obj).right →+* T)
+    (heq : g₁.comp (discretePerfdUnit p R hR S.obj).right.hom =
+      g₂.comp (discretePerfdUnit p R hR S.obj).right.hom) : g₁ = g₂ := by
+  sorry -- (g₁,g₂) が誘導する X→T は η_X を通る。selfTensor_unit_eq_mul で乗法を通り、
+        -- 離散標的への Map は 0 切り捨て（Hom(π₀X,T)）なので両脚は同じ環準同型
 
 /-- 概要：Cor 8.14：S_perfd 離散 ⇒ `IsPerfectoidization p (S → S_perfd)`。
 方針：`perfectoidization_isIntegralPerfectoid_of_discrete`、`exists_extension_of_perfectoid`、`extension_unique_of_perfectoid`。
 規約：S は導来 p 完備な離散 R 代数。
 使われ方：`e3Universal`。 -/
-theorem perfectoidization_isPerfectoidization_of_discrete (h : True) : True := by trivial
+theorem perfectoidization_isPerfectoidization_of_discrete (S : C_R R p)
+    (h : IsDiscrete R (perfdValue p R hR S.obj)) :
+    IsPerfectoidization p (discretePerfdUnit p R hR S.obj).right.hom := by
+  sorry -- G-A7-5 を perfectoidizationFunctor_vertex で移送。存在の脚と extension_unique_of_perfectoid
 
 /-! ## E3 の欄 -/
 
@@ -94,8 +219,9 @@ theorem perfectoidization_isPerfectoidization_of_discrete (h : True) : True := b
 一意に通る（`completionRing` の普遍性、Interface.lean:237、G-A7-7）。
 規約：`PerfectoidizationInterfaceCAlg.universal` の型そのまま。
 使われ方：A9。 -/
-theorem e3Universal (S : A_R R) (hS : IsDiscrete R ((e3Perfd p R).app _ (nerveVertex S))) :
-    IsPerfectoidization p ((e3H0RingData p R).unit.app S).right.hom := by
-  sorry -- Cor 8.14（A7-1・A7-2）を待つ
+theorem e3Universal (hR : IsIntegralPerfectoid R p := by assumption) (S : A_R R) (hS : IsDiscrete R ((e3Perfd p R hR).app _ (nerveVertex S))) :
+    IsPerfectoidization p ((e3H0RingData p R hR).unit.app S).right.hom := by
+  sorry -- S^∧ に Cor 8.14。e3Perfd_of_complete・e3Unit_of_complete・e3H0_of_complete
+        -- で離散性・単位・H⁰ を読み替え、completion_existsUnique で S→T の存在一意性を戻す
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

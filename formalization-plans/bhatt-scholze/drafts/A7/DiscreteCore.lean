@@ -35,6 +35,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 variable (S : Type u) [CommRing S] [Algebra R S]
+variable (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
 
 /-! ## G-A7-5：芯（A5-2 と共有） -/
 
@@ -42,18 +43,30 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 方針：DerivedGeneral/Truncation。
 規約：`IsDiscrete`。
 使われ方：芯。 -/
-theorem prismaticPerfection_discrete_of_perfectoidization_discrete (h : True) : True := by trivial
+theorem prismaticPerfection_discrete_of_perfectoidization_discrete (h : IsDiscrete R (perfectoidization p R hR S hS)) :
+    IsDiscrete (perfectPrismRing p R) (prismaticPerfection p R hR S hS) := by
+  sorry -- d 完備性と mod d の離散性に導来 Nakayama を適用する
 
 /-- 概要：S_perfd 離散 ⇒ (H⁰(Δ_perf), (d)) は完全 prism（A4 `prismaticPerfection_h0_perfectDelta`・`prismaticPerfectionPrism`）。
 方針：上と A4。
 規約：`OrientedPrism`。
 使われ方：perfectoid 性。 -/
-theorem perfectoidization_perfectPrism_of_discrete (h : True) : True := by trivial
+theorem perfectoidization_perfectPrism_of_discrete (h : IsDiscrete R (perfectoidization p R hR S hS)) :
+    let C := cAlgH0Algebra (perfectPrismRing p R) (prismaticPerfection p R hR S hS)
+    let B := cAlgH0Algebra R (perfectoidization p R hR S hS)
+    ∃ Q : OrientedPrism p C.right, Q.generator = C.hom.hom (perfectPrism p R hR).generator ∧
+      Q.deltaStructure.IsPerfect ∧ Nonempty ((C.right ⧸ Q.ideal) ≃+* B.right) := by
+  have hΔ := prismaticPerfection_discrete_of_perfectoidization_discrete p R hR S hS h
+  have hδ := prismaticPerfection_h0_perfectDelta p R hR S hS
+  let Q := prismaticPerfectionPrism p R hR S hS
+  sorry -- A4 の H⁰ の完全 δ 構造。両対象が離散で d が正則なので mod d の H⁰ は指定された商
 
 /-- 概要：Cor 8.14 前半：S_perfd 離散 ⇒ S_perfd（環として H⁰）は perfectoid（完全 prism の商、`quotient_isIntegralPerfectoid`）。
 方針：上。A5-2 の `perfectoidization_isIntegralPerfectoid_of_semiperfectoid` はこれに連結性を前置したもの。
 規約：`IsIntegralPerfectoid (H⁰) p`。
 使われ方：`universal` の第一成分。 -/
-theorem perfectoidization_isIntegralPerfectoid_of_discrete (h : True) : True := by trivial
+theorem perfectoidization_isIntegralPerfectoid_of_discrete (h : IsDiscrete R (perfectoidization p R hR S hS)) :
+    IsIntegralPerfectoid (cAlgH0Algebra R (perfectoidization p R hR S hS)).right p := by
+  sorry -- 上で同定した完全 prism の商に quotient_isIntegralPerfectoid を適用して移送する
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived
