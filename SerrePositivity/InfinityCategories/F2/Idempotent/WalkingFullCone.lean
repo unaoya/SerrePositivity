@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingJoinCones
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingImageUniversal
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingJoinCones
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingImageUniversal
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeNaturality
 
 /-!

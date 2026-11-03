@@ -1,7 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex
-public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
-public import SerrePositivity.InfinityCategories.Stable.CoconeFactorization
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero
+public import SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex
+public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Core.CoconeFactorization
 
 /-! # 始対象からの fiber の Hom 表示の代表元
 

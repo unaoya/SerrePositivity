@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentPointHom
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceEdgeSectionFiber
 
 /-!

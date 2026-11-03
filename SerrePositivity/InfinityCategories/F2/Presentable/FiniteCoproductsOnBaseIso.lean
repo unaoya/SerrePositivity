@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoproductsOnBase
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の小さい底の有限余積保存は全関手同型で不変。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.SectionsRestrictionLifting
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
 
 /-!
 概要：任意の単射による cocartesian section の core の制限は Kan fibration。

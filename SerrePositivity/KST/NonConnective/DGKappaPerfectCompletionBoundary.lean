@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteImageRetracts
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
 

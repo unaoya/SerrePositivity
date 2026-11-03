@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectIdempotentCompleteGeneral
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 /-!
 概要：前三角な小 dg 圏の実 Yoneda は、実 Perf への native 冪等完備化を与える。
 方針：perfect 加群を有限 cell の retract と表示し、前三角性で有限 cell を同じ Yoneda 像へ戻す。

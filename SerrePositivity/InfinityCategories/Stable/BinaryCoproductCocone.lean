@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.SpanPointJoin
 public import SerrePositivity.InfinityCategories.Stable.InitialJoinRestriction
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductSquare
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 
 /-! # 離散二点図式の余極限
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.ExtendedSourceSliceInput
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.CompactExtendedPullbackInput
 public import SerrePositivity.InfinityCategories.F1.Joins.JoinQuasicategory
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallJoin
 
 /-!
 概要：指定した片方の compact 始点を含む二成分の小さい追加入力族を構成する。

@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality
 
 /-! # 始対象による fiber 表示の連結成分での自然性
 

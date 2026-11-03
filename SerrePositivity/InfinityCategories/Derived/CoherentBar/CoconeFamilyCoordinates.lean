@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.JoinCoordinates
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 /-!
 概要：終点固定の高次余錐族から、元の単体とパラメーターを併せた HA 単体を読む。
 方針：既存の coslice fiber の射を二つの標準単体の join へ制限する。

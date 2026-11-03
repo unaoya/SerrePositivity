@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareLeg
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-!
 概要：BF fiber 四角形の三対象と二辺を、元の BF 射の類に同時に同定する。

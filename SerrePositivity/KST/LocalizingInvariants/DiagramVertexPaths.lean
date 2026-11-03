@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
 public import SerrePositivity.InfinityCategories.Core.VertexDiscrete
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：図式の全頂点に指定した可逆 path を、図式全体の可逆 path へ延長する。

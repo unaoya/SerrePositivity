@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ZeroReturnPasting
 public import SerrePositivity.InfinityCategories.Stable.TerminalCompositeTriangle
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-! # 零終点を付加する押し出し長方形
 

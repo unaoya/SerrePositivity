@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
 
 /-! # 自明 Kan fibration による零対象と普遍四角形の比較

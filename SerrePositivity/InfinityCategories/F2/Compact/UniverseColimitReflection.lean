@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseConservativity
 public import SerrePositivity.InfinityCategories.F2.Compact.ConservativeColimitReflection
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 
 /-!
 概要：指定された空間の宇宙変更は、元の小さい全図式の指定余錐の余極限性を反映する。

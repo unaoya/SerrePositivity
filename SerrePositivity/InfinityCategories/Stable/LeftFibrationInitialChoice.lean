@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison
 
 /-! # 始対象の変更と fiber の Hom 表示
 

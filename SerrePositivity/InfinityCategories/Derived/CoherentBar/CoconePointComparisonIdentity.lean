@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconePointComparison
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeParameterFaces
 /-!
 概要：指定 native 余錐の一点下への回収は、実際の恒等余錐に一致する。

@@ -1,10 +1,10 @@
 module
+public import SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
+public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedSpaceMappingSpaces
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibleKan
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
 
 /-!
 概要：空間の ∞ 圏の終対象性を、元の Kan 値の可縮性と照合する。

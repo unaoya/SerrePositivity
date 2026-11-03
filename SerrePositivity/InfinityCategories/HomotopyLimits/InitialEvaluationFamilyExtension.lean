@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison
 public import SerrePositivity.InfinityCategories.Core.RelativeInternalHomTrivialFibration
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
 
 /-!
 概要：始対象 Hom の終点評価を固定した族を、任意の単射パラメータ境界から延長する。

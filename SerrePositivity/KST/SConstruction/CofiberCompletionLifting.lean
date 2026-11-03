@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
+public import SerrePositivity.InfinityCategories.Stable.SpanFamilies
 public import SerrePositivity.KST.SConstruction.CofiberCompletion
 
 /-! # cofiber の選択の自明 Kan ファイブレーション

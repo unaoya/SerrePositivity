@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationPointHomFamily
 /-!
 概要：固定終点の fiber の比較から、指定頂点の選択済み標準 Hom の族の同値性を反映する。

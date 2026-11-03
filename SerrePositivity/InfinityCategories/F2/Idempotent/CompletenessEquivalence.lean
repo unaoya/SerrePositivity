@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.Core.FunctorComposition
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 

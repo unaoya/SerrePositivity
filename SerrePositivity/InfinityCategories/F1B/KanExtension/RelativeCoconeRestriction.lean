@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeFunctorBoundary
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：図式と標的での余錐を同時に固定する相対余錐制限。

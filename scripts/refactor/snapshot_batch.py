@@ -87,7 +87,8 @@ def collect(modules, name_map, directory, inventory=None):
             raise RuntimeError(f"{label} exited {code}, see {log}")
         snap = json.loads(out.read_text())
         if (snap["schema_version"] != 2 or snap["name_map"] != rules or snap["modules"] != subset
-                or snap["hash_algorithm"] != "normalized Expr DAG mixHash v1"
+                or snap["hash_algorithm"] not in ("normalized Expr DAG mixHash v1",
+                    "normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)")
                 or snap["count"] != len(snap["declarations"])
                 or any("type" in row or "body" in row or "type_hash" not in row or "body_hash" not in row
                        for row in snap["declarations"])):

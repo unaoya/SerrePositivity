@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.YonedaEvaluationJointFibrations
-public import SerrePositivity.InfinityCategories.F2.Compact.YonedaEvaluationClassification
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 
 /-!
 概要：元の共同 Yoneda 評価図式の C の対象への制限を、既存の全係数評価と照合する。

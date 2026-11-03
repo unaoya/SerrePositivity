@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ComponentCompactOverSmallTests
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
 
 /-!
 概要：小さい全試験形状への余錐を、指定された小さい全同値模型の filtered 性へ移す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagram
-public import SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation
+public import SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 
 /-!

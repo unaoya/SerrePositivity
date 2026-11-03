@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "config_sha256": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
+  "approval": "IF-W2b §12 main df0d45e69",
+  "description": "Approved existing 21 direct edges plus the unchanged pre-W2b W2a-2 aggregate bounds. This is not a ratchet baseline reset.",
+  "direct_edges": [
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Basic",
+      "to": "SerrePositivity.PerfectComplex.KoszulLength"
+    },
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison",
+      "to": "SerrePositivity.PerfectComplex.BiproductPerfect"
+    },
+    {
+      "from": "SerrePositivity.DifferentialGraded.Perfect.Ring.FiniteProjectiveComparison",
+      "to": "SerrePositivity.PerfectComplex.Perfect.HomotopyCategory"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionFrameHomBifunctor",
+      "to": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.FibrationComponentTransport",
+      "to": "SerrePositivity.KST.Spectra.FibrationIntervalLifting"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.IntervalHomBoundary",
+      "to": "SerrePositivity.KST.Spectra.PointedInterval"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction",
+      "to": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.KanWhiteheadComparison",
+      "to": "SerrePositivity.KST.Spectra.PointedKanWhitehead"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.LoopTowers",
+      "to": "SerrePositivity.KST.Spectra.PostMappingFibration"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+      "to": "SerrePositivity.KST.Spectra.MappingPathSpace"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTargetLifting",
+      "to": "SerrePositivity.KST.Spectra.PointedKanWhitehead"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.PullbackFiberIso",
+      "to": "SerrePositivity.KST.Spectra.PullbackKanSequence"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting",
+      "to": "SerrePositivity.KST.Spectra.PostMappingFibration"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProductSequence",
+      "to": "SerrePositivity.KST.Spectra.KanSequence"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProductSequence",
+      "to": "SerrePositivity.KST.Spectra.PointedGroupProduct"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumMappingDiagram",
+      "to": "SerrePositivity.KST.Spectra.CoherentNerve"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackAdjoints",
+      "to": "SerrePositivity.KST.Spectra.CofibrantOmegaSequence"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackAdjoints",
+      "to": "SerrePositivity.KST.Spectra.PostMappingFibration"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackMonomorphisms",
+      "to": "SerrePositivity.KST.Spectra.PullbackKanSequence"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumTowerSequence",
+      "to": "SerrePositivity.KST.Spectra.CofibrantOmegaSequence"
+    },
+    {
+      "from": "SerrePositivity.InfinityCategories.HomotopyLimits.TowerMatchingLifting",
+      "to": "SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence"
+    }
+  ],
+  "aggregate_limits": {
+    "W1": {
+      "forbidden_module_count": 1,
+      "affected_core_module_count": 11
+    },
+    "W2a": {
+      "forbidden_module_count": 166,
+      "affected_core_module_count": 3379
+    }
+  }
+}

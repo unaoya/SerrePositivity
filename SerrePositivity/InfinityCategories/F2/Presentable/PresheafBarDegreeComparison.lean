@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafBarObjec
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：同じ次数の離散全単体を、元の bar 左 Kan 添字へ cofinal に入れる。

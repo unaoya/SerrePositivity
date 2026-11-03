@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleIso
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantCoherentTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleFacesEquality
 
 /-!

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.SimplicialEnrichedComposition
 public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCompositionWhiskerEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorCompositionWhiskerEdges
 /-!
 概要：quasicategory 双圏の whiskering を h Fun の前後合成へ同定する。
 方針：実辺と全次数の成分を使って同じ作用を照合する。

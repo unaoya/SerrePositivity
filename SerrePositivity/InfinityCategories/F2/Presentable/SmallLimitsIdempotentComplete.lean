@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceSmallLimits
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimitExistence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FibrationComplete
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite

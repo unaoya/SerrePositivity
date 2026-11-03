@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedTerminalComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminal
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiberwisePullbackKanObjects
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackKanObjects
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 
 /-!

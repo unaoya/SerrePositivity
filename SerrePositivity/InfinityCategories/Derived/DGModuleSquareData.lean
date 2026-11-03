@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendMissingFace
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 全 Hom end の二つの三角形による実加群四角形
 

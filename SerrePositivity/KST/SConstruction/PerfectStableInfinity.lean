@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Coherent
+public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeUnitHom
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping

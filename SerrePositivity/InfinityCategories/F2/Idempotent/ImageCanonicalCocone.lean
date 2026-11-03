@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemImageKanShape
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingJoinCones
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemImageKanShape
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingJoinCones
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftCanonicalCocone
 
 /-!

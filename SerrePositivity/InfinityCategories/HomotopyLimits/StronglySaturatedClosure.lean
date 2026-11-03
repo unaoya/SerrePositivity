@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalStrongSaturation
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalStrongSaturation
 
 /-!
 概要：小添字の宇宙を指定した強飽和生成閉包と局所同値との比較。

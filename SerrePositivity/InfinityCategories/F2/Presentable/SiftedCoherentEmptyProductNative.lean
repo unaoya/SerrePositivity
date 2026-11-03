@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedEmptyProductNative
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPointTotalProjection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalCocone
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 
 /-!
 概要：定値終対象 coherent 図式の元の余極限頂点は、sifted な底上で終対象。

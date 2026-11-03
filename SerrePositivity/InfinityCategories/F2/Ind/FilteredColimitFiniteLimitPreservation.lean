@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ChosenColimitExchange
 public import SerrePositivity.InfinityCategories.F2.Ind.LimitPreservationShapeIso
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteExchangeBasicShapes
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteExchangeUniverseShapes
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceLimitShapes
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceLimitShapes
 public import SerrePositivity.InfinityCategories.Stable.FunctorFiniteLimits
 public import SerrePositivity.InfinityCategories.Stable.ExcisionRepresentableLimits
 

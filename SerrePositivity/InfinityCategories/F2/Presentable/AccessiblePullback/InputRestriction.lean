@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.StableInputLifting
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationCoconeTarget
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationEquivalenceLifting
 

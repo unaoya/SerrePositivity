@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PushoutRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.DiagramOppositeRetracts
-public import SerrePositivity.InfinityCategories.Stable.SquareOpposite
+public import SerrePositivity.InfinityCategories.F1.SquareOpposite
 
 /-!
 概要：全四角形の関手 ∞ 圏内の元の引き戻し四角形の retract は引き戻し。

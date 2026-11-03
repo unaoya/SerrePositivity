@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.ConstantKanModel
 public import SerrePositivity.KST.Spectra.KanEquivalenceBridge
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanSpecifiedHomotopy
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanSpecifiedHomotopy
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeDiagonal
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyUpperTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 
 /-!
 概要：引き戻し錐の上側の比較三角形の三辺。

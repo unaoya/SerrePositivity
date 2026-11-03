@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 /-! # 指定実辺と点上の slice 頂点の相互表示
 

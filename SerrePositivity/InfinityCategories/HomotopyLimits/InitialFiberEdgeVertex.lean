@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan
+public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 
 /-!

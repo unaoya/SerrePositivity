@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallQuasicategoryDiagramFactorization
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedPointQuillenA
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeFilteredCriterion
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 
 /-!
 概要：指定始点の下の小さい quasicategory 試験余錐から cofinal 性を得る。

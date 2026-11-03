@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleFaces
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceEdgeValue
 
 /-!
 概要：元の余錐間の辺の可換三角形を、同じ脚の Kan 値の合成ホモトピーへ移す。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SpanFamilies
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 
 /-! # 零頂点へ向かう脚を持つ span のデータ

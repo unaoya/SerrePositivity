@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
+public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
 public import SerrePositivity.InfinityCategories.Core.SliceMap
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 

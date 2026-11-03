@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PushoutCompletion
 public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-! # 恒等な枝を持つ span の標準押し出し
 概要：一方の枝が恒等となる span の全ての族に、退化した標準の押し出し四角形を与える。

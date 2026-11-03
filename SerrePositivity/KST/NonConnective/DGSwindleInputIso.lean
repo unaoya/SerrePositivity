@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaSwindleInfinity
 public import SerrePositivity.KST.SConstruction.DGFunctorClosedFamilyIso
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 
 /-!
 概要：同じ厳密 dg swindle を、固定 K の元の入力 native Hom の実辺へ写す。

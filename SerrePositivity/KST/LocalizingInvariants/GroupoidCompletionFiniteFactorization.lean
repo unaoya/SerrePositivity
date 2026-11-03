@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
 
 /-!
 概要：元の亜群化への任意の有限全族を、元の有限部分複体の亜群化へ下ろす。

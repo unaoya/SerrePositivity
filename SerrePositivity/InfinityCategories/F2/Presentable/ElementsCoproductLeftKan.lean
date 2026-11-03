@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ElementsDegreeFi
 public import SerrePositivity.InfinityCategories.F2.Presentable.CofinalColimitExistence
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoproductRealizationConditions
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.LeftKanShapeIso
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 

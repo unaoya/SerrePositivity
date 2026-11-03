@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FullCofiberSquare
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-! # 充満部分圏の標準 cofiber 正方形の頂点
 

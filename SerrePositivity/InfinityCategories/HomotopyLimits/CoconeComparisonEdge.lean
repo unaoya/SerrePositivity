@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentComparison
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
 
 /-!
 概要：余錐全体の下の余錐を、元の余錐圏での実際の比較辺として表示する。

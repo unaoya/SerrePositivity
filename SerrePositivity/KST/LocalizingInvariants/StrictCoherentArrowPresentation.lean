@@ -5,7 +5,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.TriangleEdgeNormalization
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyMapTransport
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
 
 /-!
 概要：通常の自然変換の一つの射への制限を、元の二つの合成三角形の全 h Fun 合成で表す。

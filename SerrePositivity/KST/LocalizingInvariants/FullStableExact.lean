@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FullStableClosure
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：安定閉条件の全部分圏の元の包含は完全関手。

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.SpanCollapse
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!
 概要：二本の水平辺が恒等である元の縦長退化四角形は pushout である。

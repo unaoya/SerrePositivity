@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLimit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 
 /-!
 概要：native な lax pullback の錐の脚の回収。

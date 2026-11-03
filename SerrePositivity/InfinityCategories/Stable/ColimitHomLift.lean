@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 
 /-! # 普遍余錐間のホモトピー圏の射の一意な持ち上げ
 

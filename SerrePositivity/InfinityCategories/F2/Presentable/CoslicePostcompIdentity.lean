@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport
+public import SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport
 
 /-!
 概要：元の頂点の coslice の後合成は同じ恒等錐を厳密に保持する。

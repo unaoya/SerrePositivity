@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
 
 /-! # 反対ホモトピー圏の比較と辺

@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeDomainHomotopy
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeDomainHomotopy
 
 /-!
 概要：元の全余錐間の変換の底と頂点は、両余錐の元の変換とホモトピー圏で可換。

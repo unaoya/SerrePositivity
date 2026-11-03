@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-!
 概要：区間全比較の同じ端点経路から、評価した射の類の一致を回収する。

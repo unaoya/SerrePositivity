@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-! # 零角の列のホモトピー圏への関手性
 

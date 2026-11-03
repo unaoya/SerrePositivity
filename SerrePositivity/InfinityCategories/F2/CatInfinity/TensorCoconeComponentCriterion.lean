@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorConeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 public import SerrePositivity.InfinityCategories.Core.PrismOpposite
 
 /-!

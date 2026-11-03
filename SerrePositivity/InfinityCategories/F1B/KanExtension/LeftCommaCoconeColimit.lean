@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LocalRelativeJoinConeEndpoint
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 
 /-!

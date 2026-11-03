@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndLeftKanShapeAmbient
-public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSlice
+public import SerrePositivity.InfinityCategories.F1.Ind.YonedaSlice
 
 /-!
 概要：Indκ 内の左 Kan 局所添字と、元の前層の Yoneda comma の同じ射影を同定する。

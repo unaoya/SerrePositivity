@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafKanExtension
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 
 /-!
 概要：冪等完備化上へ実際に構成した前層値の延長は、元の Yoneda retract 閉包に値を持つ。

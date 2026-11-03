@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalFunctorOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
-public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLimit
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeTerminalMapping
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingSpaceHom

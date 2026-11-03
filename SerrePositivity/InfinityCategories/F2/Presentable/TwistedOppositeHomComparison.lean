@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedArrowTarget
-public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
+public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：有限 cospan 上の同じ実錐から、正方形の底辺・左辺を元の実脚として回収する。

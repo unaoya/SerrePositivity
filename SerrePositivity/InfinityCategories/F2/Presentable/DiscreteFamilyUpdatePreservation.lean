@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.DiscreteFamilyUpdate
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedConstantColimitPreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFunctorOperations
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 
 /-!
 概要：離散図式の一成分更新関手は小さい sifted 余極限を保存する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.TwistedSourceElementsComparison
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 
 /-!
 概要：同じ始点を持つ全族の大域評価を、元の反転した fiber 内で読む。

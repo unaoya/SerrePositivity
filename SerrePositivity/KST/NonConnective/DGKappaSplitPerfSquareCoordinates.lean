@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitNativeSquare
 public import SerrePositivity.KST.NonConnective.DGKappaPerfZeroFamily
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：元の閉 dg 関手の分裂四角形の二胞体と、Perf の実零角を回収する。

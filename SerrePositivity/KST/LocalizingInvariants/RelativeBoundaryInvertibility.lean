@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryHom
-public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 
 /-!
 概要：同じ射影に相対的に始または終対象である両端の辺は、像の可逆性を反映する。

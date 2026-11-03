@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 
 /-!
 概要：Cat_∞ の錐の比較の頂点辺と図式辺の具体的な同定。

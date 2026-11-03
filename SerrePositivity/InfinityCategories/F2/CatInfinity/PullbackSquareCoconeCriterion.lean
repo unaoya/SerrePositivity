@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareConeCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 
 /-!
 概要：厳密な引き戻し正方形内の指定余錐の成分ごとの余極限性。

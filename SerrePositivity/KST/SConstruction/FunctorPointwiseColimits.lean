@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.FunctorInitialBoundary
 public import SerrePositivity.KST.SConstruction.InitialBoundaryIso
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import SerrePositivity.InfinityCategories.Core.FunctorLimits
 public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
 

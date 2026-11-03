@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.RetractComplementCofiber
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctorTriangulated
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 /-!
 概要：完全な冪等完備化射の本質像は、各対象 d とその一回懸垂の双積を含む。
 方針：像の retract の補射影を充満忠実性で始域へ戻し、完全性でその cofiber を写す。

@@ -4,8 +4,8 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageIdentities
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowPushoutFamily
 public import SerrePositivity.InfinityCategories.Stable.PushoutComparisonCorners
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 
 /-!
 概要：同じ実 Ind 像の元の辺クラスは、元の任意の pushout で保存される。

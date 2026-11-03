@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
 概要：元の分数評価の全比較四角形は、パラメータ関手圏で実際に可逆である。

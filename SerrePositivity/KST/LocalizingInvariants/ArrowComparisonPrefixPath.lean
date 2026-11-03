@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.ArrowIsoRealization
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-!
 概要：前段の全比較の指定成分を共有する、次辺の実可逆比較を構成する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ZeroEndPasting
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 public import SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy
 
 /-! # Cofiber 列の回転長方形

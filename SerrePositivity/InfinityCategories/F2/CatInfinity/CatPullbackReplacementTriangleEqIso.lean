@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleConstantFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementTriangleIso
 
 /-!

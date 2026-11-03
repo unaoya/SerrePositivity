@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.TerminalSubcomplexFiniteBound
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveBoundCocone
+public import SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone
 
 /-!
 概要：有限図式の像を含む共通上界を、添字図式の実際の余錐の頂点として実現する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.StrictPathPullbackMap
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackInputFibration
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalPullbackInputFibration
 
 /-! 二段の区間引き戻しと、同じ全 path・二入力を持つ一段の引き戻しの厳密同型。 -/
 @[expose] public section

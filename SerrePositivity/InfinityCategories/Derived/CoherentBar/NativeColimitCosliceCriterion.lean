@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeHomSpaceIso
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection
 public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 /-!
 概要：可変終点での coslice 比較から、指定した native 余錐の余極限性を反映する。
 方針：left fibration の全 fiber の同値で全空間の同値を得て、恒等余錐の始対象性を移す。

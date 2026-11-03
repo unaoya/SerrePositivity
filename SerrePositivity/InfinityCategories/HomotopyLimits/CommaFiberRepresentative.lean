@@ -1,8 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalVertexHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFiberIntervalIso
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalVertexHomotopy
 
 /-!
 概要：同じ標的を持つ comma の矢印の Hom 類による始対象性の不変性。

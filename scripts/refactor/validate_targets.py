@@ -63,9 +63,14 @@ def simulated_model_mentions(root, mentions, renames, changed_sources, config):
     return result
 
 
-def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
+def validate(root, entries, snapshots=None, config=None, *, return_graph=False,
+             ignore_importer_prefixes=()):
     config=config or json.loads((ROOT/'scripts/refactor/layers.json').read_text())
     snapshots=snapshots or {}
+    # Importer prefixes are literal string prefixes (e.g. scripts.audit_).
+    ignored_prefixes=tuple(ignore_importer_prefixes)
+    if any(not isinstance(p,str) or not p for p in ignored_prefixes):
+        raise ValueError("ignore-importer-prefix must be nonempty")
     seen,destinations=set(),set()
     actions={}
     sources={}
@@ -112,7 +117,9 @@ def validate(root, entries, snapshots=None, config=None, *, return_graph=False):
     graph,mentions=lc.read_graph(root,config)
     for entry in entries:
         if entry['action']=='archive':
-            outside=sorted(n for n,deps in graph.items() if entry['module'] in deps and n not in seen)
+            outside=sorted(n for n,deps in graph.items()
+                           if entry['module'] in deps and n not in seen
+                           and not n.startswith(ignored_prefixes))
             if outside: raise ValueError('archive still has outside importers: '+repr(outside))
     after={n:set(ds) for n,ds in graph.items()}
     changed_sources={}
@@ -221,6 +228,8 @@ def main():
     parser.add_argument('plans',type=Path,nargs='+');parser.add_argument('--root',type=Path,default=ROOT)
     parser.add_argument('--snapshot',action='append',default=[],metavar='MODULE=FILE')
     parser.add_argument('--output',type=Path)
+    parser.add_argument('--ignore-importer-prefix',action='append',default=[],
+                        help='Ignore this literal importer name prefix in archive checks only; repeatable, default none')
     args=parser.parse_args()
     try:
         entries=[]
@@ -233,7 +242,8 @@ def main():
         for value in args.snapshot:
             module,path=value.split('=',1)
             snapshots[module]=json.loads(Path(path).read_text())
-        result=validate(args.root.resolve(),entries,snapshots)
+        result=validate(args.root.resolve(),entries,snapshots,
+                        ignore_importer_prefixes=args.ignore_importer_prefix)
         text=json.dumps(result,ensure_ascii=False,indent=2)+'\n';print(text,end='')
         if args.output: args.output.write_text(text)
         return int(result['status']=='FAIL')

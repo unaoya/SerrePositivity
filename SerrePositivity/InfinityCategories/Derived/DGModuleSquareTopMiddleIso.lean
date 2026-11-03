@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSquareTopMiddleHomotopy
 public import SerrePositivity.InfinityCategories.Stable.FixedMapHomotopyEvaluation
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # 零角変更の実四角形ホモトピーの可逆性
 

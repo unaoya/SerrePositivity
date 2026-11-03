@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalSectionComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalSectionComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeRestrictionTransport
 
 /-!

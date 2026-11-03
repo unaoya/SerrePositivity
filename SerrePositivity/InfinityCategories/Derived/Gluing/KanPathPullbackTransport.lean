@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KanIntervalPathTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.KanTensorComplex
 
 /-! 同じ二作用を係数同値で移す実 path 引き戻し比較は、同じ区間族を保つ同値。 -/

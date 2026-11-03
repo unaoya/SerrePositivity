@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeFamilyInitial
-public import SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence
+public import SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence
 
 /-!
 概要：相対余錐の充填条件から通常の coslice の写像空間の普遍性を回収する。

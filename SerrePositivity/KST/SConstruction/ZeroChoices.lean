@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 
 /-! # 零対象の選択空間

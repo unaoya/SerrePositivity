@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentDiagram
 

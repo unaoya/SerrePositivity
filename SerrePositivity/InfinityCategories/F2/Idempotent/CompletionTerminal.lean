@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractContractibility
 
 /-!

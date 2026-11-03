@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting
+public import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
 
 /-!
 概要：単射への全 RLP を持つ射の同じ fiber の二頂点を、射影に垂直な辺で結ぶ。

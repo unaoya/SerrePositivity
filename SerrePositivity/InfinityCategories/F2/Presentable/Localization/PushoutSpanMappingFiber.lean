@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutCosliceRestriction
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NormalizedCosliceRestrictionComposition
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.KanSquareFiberEquivalence
 

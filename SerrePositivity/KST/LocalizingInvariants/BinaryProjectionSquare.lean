@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.BinaryProjectionCone
 public import SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs
 public import SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-!
 概要：元の BF 積の射影を基底変換する、四辺を厳密に保持した実 pullback 正方形。

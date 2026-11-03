@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 public import Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex
 

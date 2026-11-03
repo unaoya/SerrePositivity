@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftKanIdentityVertex
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimitReindex
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 /-!
 概要：終対象への一点制限による標準相対余極限の判定。

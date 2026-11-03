@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.PositiveKanEvaluationDetection
 public import SerrePositivity.KST.Fibration.FiberSquareKanEvaluation
 public import SerrePositivity.KST.Fibration.DGRelativeFiberComparison
 public import SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SquareConePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightFibrationMappingSpan
 
 /-! # 元の相対 K 四角形の引き戻し性を、同じ正段・ν 像の S• 四角形で検出する -/

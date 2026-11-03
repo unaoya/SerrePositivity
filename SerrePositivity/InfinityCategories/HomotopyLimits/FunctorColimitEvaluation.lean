@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
-public import SerrePositivity.InfinityCategories.Stable.InitialTransport
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeAbsolute
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 
 /-!
 概要：点ごとの余極限の存在から、元の任意の関手圏の余極限余錐の評価が余極限となることを示す。

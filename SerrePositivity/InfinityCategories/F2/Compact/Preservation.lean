@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：κ-filtered 余極限保存の全自然同型不変性と、一つの余極限余錐による判定。

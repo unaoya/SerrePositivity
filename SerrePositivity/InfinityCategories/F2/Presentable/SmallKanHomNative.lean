@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomContinuity
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictCoconePostcomposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
 
 /-!

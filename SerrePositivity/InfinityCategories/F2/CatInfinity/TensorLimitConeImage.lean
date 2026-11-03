@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorConeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：直積内の錐の成分の像から直積関手による像の極限性を得る。

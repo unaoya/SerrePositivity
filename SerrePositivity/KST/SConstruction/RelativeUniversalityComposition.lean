@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 

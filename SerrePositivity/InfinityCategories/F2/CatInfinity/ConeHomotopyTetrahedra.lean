@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismFaces
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
 
 /-!

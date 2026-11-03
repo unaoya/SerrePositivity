@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-! # 二枝交換と余錐空間の枝の交換
 

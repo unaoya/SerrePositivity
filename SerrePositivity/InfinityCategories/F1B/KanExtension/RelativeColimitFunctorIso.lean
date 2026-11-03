@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeCriterion
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
 
 /-!
 概要：余錐全体の関手同型による標準 U 余極限の輸送。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaFamilies
-public import SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting
+public import SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 

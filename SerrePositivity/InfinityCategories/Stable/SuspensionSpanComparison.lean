@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Stable.TerminalSpanComparison
 public import SerrePositivity.InfinityCategories.Stable.Suspension
 

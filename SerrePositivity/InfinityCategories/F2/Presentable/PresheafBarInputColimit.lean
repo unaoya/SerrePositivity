@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafBarIndexEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningRepresentation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：bar 入力の元の前層を頂点とする密度余極限。

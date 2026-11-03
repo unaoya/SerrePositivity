@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorConeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 
 /-!

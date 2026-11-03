@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeRestriction
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryCalculus
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 
 /-!
 概要：相対余錐の充填条件と底の余極限性から絶対的な余極限性を回収する。

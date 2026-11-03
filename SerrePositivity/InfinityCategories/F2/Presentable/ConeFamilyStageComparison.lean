@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.WithInitialKanCone
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
 public import SerrePositivity.InfinityCategories.F2.Presentable.StrictConeFamilyRead
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyColimitTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCurryPointVertex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 
 /-!
 概要：共同 strictification の各段階の全錐は、元の共同図式から読んだ N の strict 錐に一致する。

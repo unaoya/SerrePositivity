@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-! # 関手の h の射の頂点評価
 

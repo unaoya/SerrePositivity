@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallKanHomNative
-public import SerrePositivity.InfinityCategories.F2.Presentable.SpaceDiagramStrictification
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Ind.NativeCoconePreservationTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve

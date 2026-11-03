@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafCoherentColimitCones
 public import SerrePositivity.InfinityCategories.Core.InitialUniqueness
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：前層圏の指定余錐の各評価を、元の標準全空間余極限余錐へ比較する。

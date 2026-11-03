@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberDiagramChange
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 /-!
 概要：右 anodyne な切断を持つ形の崩壊は、固定終点の coslice fiber の比較同値を与える。

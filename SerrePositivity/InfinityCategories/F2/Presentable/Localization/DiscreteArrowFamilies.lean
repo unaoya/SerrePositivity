@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.DiscreteDiagramV
 public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismVertexEvaluation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CoconeFamilyVertices
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!
 概要：同じパラメータ上の小さい辺族を、一つの離散図式の全関手族へまとめる。

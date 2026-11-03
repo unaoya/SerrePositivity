@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallPushout
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCosliceCofinality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCosliceCofinality
+public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
 
 /-!
 概要：小さい全前置図式の下の表示添字は、元の filtered 添字へ共終に射影する。

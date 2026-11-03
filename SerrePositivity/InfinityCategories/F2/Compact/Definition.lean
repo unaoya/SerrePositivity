@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableValues
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 

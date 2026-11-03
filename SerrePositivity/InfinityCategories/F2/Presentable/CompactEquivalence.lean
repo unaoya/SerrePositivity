@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHomComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
 
 /-!

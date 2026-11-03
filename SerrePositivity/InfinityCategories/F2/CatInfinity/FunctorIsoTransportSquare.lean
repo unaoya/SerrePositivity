@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
 
 /-!
 概要：等式からの同型を含む可換正方形の端点の正規化。

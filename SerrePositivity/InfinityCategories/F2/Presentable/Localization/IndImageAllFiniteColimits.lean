@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Ind
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSpanColimits
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitPreservationGeneration
 public import SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 
 /-!
 概要：実像の全有限単体集合形状の余極限と、包含による指定余錐の保存。

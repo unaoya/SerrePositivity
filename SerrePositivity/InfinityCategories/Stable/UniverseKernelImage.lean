@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 /-!
 概要：実零対象核と包含の本質像の一致を任意の追加宇宙へ持ち上げる。
 方針：核の零性と本質像の頂点同型をそれぞれ ULift で保ち反映する。

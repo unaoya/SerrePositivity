@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafElementsLeftKan
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：全前層圏の元の密度による恒等単位の左 Kan 判定。

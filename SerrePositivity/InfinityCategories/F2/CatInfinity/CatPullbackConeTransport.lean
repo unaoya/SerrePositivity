@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackDiagramComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedLimitConeTransport
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport
 
 /-!
 概要：Cat_∞ の引き戻し錐の追跡可能な相対輸送。

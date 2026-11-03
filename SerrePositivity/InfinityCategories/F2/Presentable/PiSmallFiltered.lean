@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PiSmallQuasicategory
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
+public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
 

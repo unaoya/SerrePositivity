@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionRectangle
 public import SerrePositivity.InfinityCategories.Stable.PastingComparisonMiddle
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
 
 /-! # 合成 cofiber 比較の三成分

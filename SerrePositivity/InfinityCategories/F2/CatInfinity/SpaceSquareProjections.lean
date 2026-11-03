@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpaceSquareLimits
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 
 /-!
 概要：正方形から作った空間の極限錐の元の二射影の回収。

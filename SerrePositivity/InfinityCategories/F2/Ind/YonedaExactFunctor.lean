@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSquarePreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaZero
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 
 /-!
 概要：元の Yoneda 包含は、明示交換入力のもとで零頂点と全 cofiber 列を保存する。

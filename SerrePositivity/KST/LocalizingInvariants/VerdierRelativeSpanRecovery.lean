@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSpanRecovery
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchoredFiniteFactorization
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.AnodyneHomotopyExtension
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnodyneHomotopyExtension
 
 /-!
 概要：指定実境界を、同じ実輸送円柱とともに完成分母族から回収する。

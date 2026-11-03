@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.EdgeTargetColimit
-public import SerrePositivity.InfinityCategories.Stable.ColimitAttachment
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 
 /-! # 恒等辺を持つ span の余極限
 概要：恒等射を一方の脚とする span の余極限性を、もう一方の辺に制限して判定する。

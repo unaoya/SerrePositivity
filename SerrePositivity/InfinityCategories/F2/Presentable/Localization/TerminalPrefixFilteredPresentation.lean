@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.TerminalSourceCoslice
 public import SerrePositivity.InfinityCategories.F2.Presentable.SourceCosliceRestrictedVertex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredCosliceCofinality
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCosliceCofinality
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TrivialFibrationCofinality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCosliceProjection
 

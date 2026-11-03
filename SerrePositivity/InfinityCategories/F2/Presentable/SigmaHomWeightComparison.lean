@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightFamilyComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RightKanRestrictionIso

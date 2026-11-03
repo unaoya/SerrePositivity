@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGRelativeKFlatKernelAu
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomFaithfulPostcomposition
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawEndpoints
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
 /-!
 概要：元の導来対角単位を、K-flat 圏内の同じ augmentation と通常単位の経路へ同定する。

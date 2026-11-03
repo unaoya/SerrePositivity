@@ -1,12 +1,13 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 
 public import SerrePositivity.InfinityCategories.F2.Compact.LimitConeEdgeReflection
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredLimitExchange
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：極限錐の族の指定余錐は、底図式で点ごとに余極限なら全錐でも点ごとに余極限。

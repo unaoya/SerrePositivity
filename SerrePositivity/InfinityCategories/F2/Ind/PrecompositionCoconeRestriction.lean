@@ -1,12 +1,13 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence
 
-public import SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：同値な添字による native 全余錐の制限を、単射性なしで比較する。

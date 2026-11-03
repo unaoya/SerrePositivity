@@ -1,8 +1,7 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentOppositeIso
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
 
 /-!
 概要：native な余錐の値域の同型による移送と coherent nerve の反対からの帰還。

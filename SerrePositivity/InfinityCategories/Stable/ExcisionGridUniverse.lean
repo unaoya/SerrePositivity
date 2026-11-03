@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridSuspensionCorners
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
 /-!
 概要：切除格子の全単体と指定された四角形を別の宇宙へ持ち上げる。

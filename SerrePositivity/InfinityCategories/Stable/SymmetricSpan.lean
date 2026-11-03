@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 /-! # 転置と同じ二枝を持つ span

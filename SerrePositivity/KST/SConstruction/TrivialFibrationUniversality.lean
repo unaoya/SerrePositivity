@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.ExactMaps
 public import SerrePositivity.KST.SConstruction.ColimitDiagramTransport
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-! # trivial Kan fibration による普遍性の保存と反映
 概要：零対象と任意の余極限錐、押し出し・引き戻しを trivial Kan fibration で移す。

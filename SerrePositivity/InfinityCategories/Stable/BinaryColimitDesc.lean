@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
-public import SerrePositivity.InfinityCategories.Stable.CoconeFactorization
+public import SerrePositivity.InfinityCategories.Core.CoconeFactorization
 
 /-! # 二点図式の余極限からの射の存在
 

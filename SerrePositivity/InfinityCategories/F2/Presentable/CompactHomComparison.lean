@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomComparisonColimitClass
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
 /-!
 概要：元の全共変 Hom 比較の可逆成分を、compact 性で小さい filtered 余極限へ拡張。

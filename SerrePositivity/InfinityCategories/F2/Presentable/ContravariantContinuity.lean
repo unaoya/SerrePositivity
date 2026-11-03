@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafRepresentation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：小余極限を小極限へ送る空間値前層と元の全 Hom による表現可能性を定義する。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeColimit
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：点ごとに相対始対象である族の余極限全余錐は、全族の後合成について相対始対象。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-!
 概要：正方形の転置と四辺の制限の交換。

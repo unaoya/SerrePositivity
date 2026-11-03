@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.OppositeUnstraighteningSections
-public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceOppositeComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.YonedaSliceOppositeComparison
 
 /-!
 概要：元の指定有限余極限に沿う Yoneda slice の全切断制限自身が同値。

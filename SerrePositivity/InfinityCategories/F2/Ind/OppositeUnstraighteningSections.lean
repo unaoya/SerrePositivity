@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteCoconeSections
-public import SerrePositivity.InfinityCategories.F2.Ind.LiftedConeSectionRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.LiftedConeSectionRestriction
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafUnstraightening
 
 /-!

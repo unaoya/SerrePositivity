@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeSimple
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCosliceUncurry
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinFunctor
-public import SerrePositivity.InfinityCategories.F2.Presentable.WithInitialKanCone
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
 
 /-!

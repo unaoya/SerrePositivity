@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ArrowCompositionEndpointPair
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalMappingProductIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 /-!
 概要：矢印 Hom の二端評価を積の区間 Hom から元の二可変辺へ厳密に分離する。
 方針：全区間族を展開し、両端評価の二射影を比較する。

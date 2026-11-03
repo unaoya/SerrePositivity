@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.EdgeTerminalCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitAttachment
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 public import SerrePositivity.InfinityCategories.Stable.SquareHorizontalHomotopies
 
 /-! # 横方向に一定な四角形の押し出し性

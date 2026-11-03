@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinBaseFiber
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryIso
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 
 /-!
 概要：相対 join 上の関手の族の制限を、各底の fiber で通常の余錐制限と同定する。

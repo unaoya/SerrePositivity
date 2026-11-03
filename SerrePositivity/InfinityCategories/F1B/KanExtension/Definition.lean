@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.Core.ConeHomotopyTransport
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
+public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
 
 /-!
 概要：指定した自然変換が与える点ごとの錐・余錐による左右 Kan 拡張の定義。

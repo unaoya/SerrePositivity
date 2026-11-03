@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ActionComparisonComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 /-!
 概要：同じ指定比較と合成子の自然性を、全関手同型の等式として輸送する。
 方針：実交換則・指定正方形・同じ末尾比較の消去を使う。

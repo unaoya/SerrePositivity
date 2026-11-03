@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniversePointSliceUncurry
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalRestrictionHom
 
 /-!

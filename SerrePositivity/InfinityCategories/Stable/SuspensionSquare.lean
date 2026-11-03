@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Definition
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 
 /-! # Suspension と loop の四角形

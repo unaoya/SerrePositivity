@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanDiagram
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanBoundary
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
 
 /-!

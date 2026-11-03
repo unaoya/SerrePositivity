@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeWholeEdgeNaturality
 

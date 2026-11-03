@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRecoveredEdge
 public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!

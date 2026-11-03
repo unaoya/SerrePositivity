@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornComparison
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite
-public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
 
 /-!
 概要：cartesian fibration の fiber の始対象から全空間の相対始点境界充填を得る。

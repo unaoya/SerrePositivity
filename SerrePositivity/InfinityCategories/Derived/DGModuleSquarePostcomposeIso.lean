@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSquarePostcomposeEdge
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # 終点の加群同型による実四角形の関手同型
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.MappingRetractContractibility
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeInitialBoundaryCriterion
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-!
 概要：元の終対象・始対象・零対象の指定 retract も、同じ元の圏内で普遍対象。

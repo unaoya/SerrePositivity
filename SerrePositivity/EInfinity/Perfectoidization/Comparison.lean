@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteUnderRecognition
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 # BS 界面の CAlg_R と D(R) の比較

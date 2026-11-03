@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteSubcomplexColimit
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexColimit
 public import Mathlib.Logic.Encodable.Basic
 public import Mathlib.Basic.Countable.Basic
 

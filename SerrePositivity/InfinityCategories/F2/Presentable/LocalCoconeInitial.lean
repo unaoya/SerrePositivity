@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalTargetCocones
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulBoundary
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：局所終点への制限は、元の余錐圏の始対象を保持する。

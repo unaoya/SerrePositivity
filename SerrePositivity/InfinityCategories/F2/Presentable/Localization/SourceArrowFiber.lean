@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.Core.VertexFiber
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
-public import SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence
+public import SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence
 
 /-!
 概要：固定始域の余錐族を、元の始点評価の厳密な fiber に送る。

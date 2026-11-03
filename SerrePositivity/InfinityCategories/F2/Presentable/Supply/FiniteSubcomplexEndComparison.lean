@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.TwistedHomEndRestriction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteSubcomplexes
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexes
 
 /-!
 概要：有限部分複体に制限した関手の twisted Hom と end 切断を一つの比較図式に束ねる。

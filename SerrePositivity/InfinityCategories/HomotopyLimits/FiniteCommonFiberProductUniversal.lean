@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteFiberProduct
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteSSetProductUniversal
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteFiberProduct
 
 /-!
 概要：元の有限共通 fiber 積への普遍射と、元の全射影による一意性。

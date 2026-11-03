@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredComparisonContinuity
-public import SerrePositivity.InfinityCategories.F2.Presentable.WithInitialKanCone
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanFamilyColimit
 
 /-!

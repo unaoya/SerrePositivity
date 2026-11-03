@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 
 /-!
 概要：小さい辺族に対する既存の局所対象の全部分圏を固定する。

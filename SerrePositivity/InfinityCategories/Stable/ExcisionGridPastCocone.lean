@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.PosetNestedBoundColimit
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCorePoint
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveBoundCocone
+public import SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone
 
 /-!
 概要：比較格子の中央終点へ向かう八頂点の実余錐とその余極限性。

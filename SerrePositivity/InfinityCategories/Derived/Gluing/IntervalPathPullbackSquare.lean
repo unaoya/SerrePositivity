@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackCoordinates
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomotopyIntervalPath
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalPullbackHomotopySquare
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackHomotopySquare
 /-! # 全正方形から一段 path 引き戻し内の実ホモトピーへ
 
 概要：指定した path の全正方形と二入力の変形を、一段の引き戻しの同じ三座標へ移す。

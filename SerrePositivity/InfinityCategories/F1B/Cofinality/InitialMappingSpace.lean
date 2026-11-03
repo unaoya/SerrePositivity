@@ -1,8 +1,10 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InitialOpposite
 
-public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
+public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceLeft
-public import SerrePositivity.InfinityCategories.Stable.InitialOpposite
+public import SerrePositivity.InfinityCategories.Core.Terminal
+public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
 
 /-!
 概要：始対象性を左 pinched 写像空間の可縮性で判定する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialDiagramTransport
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：同じ BF 余錐全体の比較を行うための、サイズを調整した自然変換の実現。

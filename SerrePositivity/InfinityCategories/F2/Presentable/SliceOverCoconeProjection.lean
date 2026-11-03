@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SliceOverCoconeIso
 public import SerrePositivity.InfinityCategories.Core.Cocone
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：二重 slice 比較は元の底の余錐への射影を厳密に保つ。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.UnitCommaArrowNaturality
 public import SerrePositivity.InfinityCategories.Stable.HomotopyVertexArrow
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaUnitComponent
 
 /-!

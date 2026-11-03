@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorColimitCreation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 
 /-!
 概要：関手圏の評価と compact 対象からの Hom の合成の filtered 保存を与える。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PastingCornerCocone
+public import SerrePositivity.InfinityCategories.Core.PastingCornerCocone
 
 /-! # 長方形の終端角による join 表示
 

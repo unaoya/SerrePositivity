@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndDensityKanCoconeMap
-public import SerrePositivity.InfinityCategories.F2.Ind.ElementsYonedaSliceEquivalence
+public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 
 /-!

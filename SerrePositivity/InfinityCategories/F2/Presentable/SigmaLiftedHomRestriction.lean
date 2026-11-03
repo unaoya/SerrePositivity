@@ -1,7 +1,18 @@
 module
-
+public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Core.Opposite
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
+public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLeftKanExtension
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRightKan
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeightTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafInfinity
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaInfinity
+
 
 /-!
 概要：元の持ち上げた延長の全 Hom 族の制限を、元の図式の全 Hom 族へ比較する。
@@ -18,16 +29,6 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 variable {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D]
-
-/-- 元の図式全体を持ち上げた、元の全標的係数の Hom 族。 -/
-def liftedHomWeightFamily (F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D) :
-    (SSet.uliftFunctor.{u + 3, u + 2}).obj
-        ((SSet.uliftFunctor.{u + 2, u + 1}).obj ((SSet.uliftFunctor.{u + 1, u}).obj C)).op ⟶
-      (ihom ((SSet.uliftFunctor.{u + 3, u + 2}).obj
-        ((SSet.uliftFunctor.{u + 2, u + 1}).obj D))).obj SpaceInfinity.{u + 2} :=
-  (SSet.uliftFunctor.{u + 3, u + 2}).map
-      (SSet.opFunctor.map ((SSet.uliftFunctor.{u + 2, u + 1}).map F₀)) ≫
-    coyonedaInfinityMap ((SSet.uliftFunctor.{u + 2, u + 1}).obj D)
 
 /-- 元の指定単位から、持ち上げた延長の全 Hom 制限を元の図式の全族へ比較する。 -/
 def sigmaLiftedHomFamily_restrictionIso

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceEdges
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismPointEdges
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
-public import SerrePositivity.InfinityCategories.Stable.CoconeFactorization
+public import SerrePositivity.InfinityCategories.Core.CoconeFactorization
 
 /-!
 概要：固定始域の閉包内射を、閉包内の指定終域辺に沿って輸送する。

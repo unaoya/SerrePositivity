@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison
+public import SerrePositivity.InfinityCategories.Core.TerminalArrowComparison
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 
 /-!

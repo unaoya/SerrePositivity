@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
-public import SerrePositivity.InfinityCategories.Stable.ColimitAttachment
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 
 /-! # 余錐の厳密な延長と余極限の存在の転送

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.SpanSquareCompletion
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSpanSquareFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.F1.Joins.ColimitCoconeDiagramComparison
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：安定な C の Ind の指定 span は、実引き戻しでもある余極限全余錐を持つ。

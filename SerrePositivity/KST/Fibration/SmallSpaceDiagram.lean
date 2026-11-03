@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.SpaceDiagramImage
 public import SerrePositivity.KST.Fibration.QuasicategoryUniverseReflection
 public import SerrePositivity.InfinityCategories.F1.Universe.EquivalenceDescent
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso
 

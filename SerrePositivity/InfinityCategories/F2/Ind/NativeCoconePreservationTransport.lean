@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanDiagramColimitTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：同型な図式の指定余極限余錐の間で、元の関手による保存性を移す。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.KanKernelPairLoops
 public import SerrePositivity.InfinityCategories.Stable.CoconeMappingContractible
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 
 /-! # 零枝の余錐空間の自己引き戻しとループ模型
 

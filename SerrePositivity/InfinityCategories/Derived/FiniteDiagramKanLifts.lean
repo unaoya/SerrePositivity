@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 public import SerrePositivity.InfinityCategories.Derived.FiniteDiagramSpanLifts
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanHomotopy
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanHomotopy
 
 /-! # Kan 置換後の任意の有限図式のホモトピー持ち上げ
 

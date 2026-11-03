@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPreservation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：小さい sifted 余極限保存の恒等と合成。

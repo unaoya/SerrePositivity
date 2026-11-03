@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.CodiscreteConeLabels
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallVerticesFreshLabel
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.Core.Cocone
 
 /-!

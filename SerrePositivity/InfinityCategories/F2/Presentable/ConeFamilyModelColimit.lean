@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.KanFamilyRealize
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanFamilyJointRealization
 public import SerrePositivity.InfinityCategories.F2.Presentable.PointwiseColimitPrecomposition
 public import SerrePositivity.InfinityCategories.F2.Presentable.ConeFamilyStageComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointwiseColimitChoiceTransport
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.PointwiseColimitChoiceTransport
 
 /-!
 概要：共同 strict 模型の指定余極限図式を、元の strict 化した全錐族の点ごとの native 余極限として公開する。

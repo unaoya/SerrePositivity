@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMap
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 /-!
 概要：共通宇宙の dg nerve 写像が標準単体と四角形の宇宙比較に整合する。
 方針：標準単体上の写像を Yoneda で評価し、四角形の二セルを比較する。

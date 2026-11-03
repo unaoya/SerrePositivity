@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1.Universe.LeftFibrationReflection
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 
 /-! # 同じホーンを保つ quasicategory 性の宇宙降下と小さい模型 -/

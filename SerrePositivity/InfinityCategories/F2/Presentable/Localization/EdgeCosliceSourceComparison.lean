@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeNestedCosliceProjection
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapIso
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft
 

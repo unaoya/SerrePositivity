@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.ImageCanonicalCocone
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemInclusionFull
+public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.IdemInclusionFull
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftIdentityLeg
 
 /-!

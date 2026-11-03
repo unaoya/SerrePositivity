@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentShapeCoconeGluing
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FibrationComponentTransport
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 
 /-!
 概要：形状の押し出しの二つの部分余錐が境界で同じ連結成分なら、単射側を直して厳密に貼る。

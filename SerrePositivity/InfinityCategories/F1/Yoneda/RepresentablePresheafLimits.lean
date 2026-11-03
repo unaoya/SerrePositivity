@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedConePointedRestriction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePointLimitDetection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceLimitShapes
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.SpaceLimitShapes
 
 /-!
 概要：元の表現可能前層による全極限錐の保存を、像の極限の存在から証明する。

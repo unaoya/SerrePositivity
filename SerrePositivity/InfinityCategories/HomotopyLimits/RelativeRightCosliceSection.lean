@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeTriangleFamilies
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 /-!
 概要：任意の right anodyne な単射に沿い、上の余錐族と底の族を同時に延長する。
