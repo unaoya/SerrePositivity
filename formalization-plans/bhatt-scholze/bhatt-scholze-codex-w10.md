@@ -1,6 +1,7 @@
 # Codex 作業指示書 BS-W10：E3 非依存化（CompletedTensor の分割）と Lemma 10.12（A8-3）
 
-作成：2026-11-03（BS 作業チャット）。宛先：Codex。**2a の取り込み後に開始**（基準コミットは開始時に記入：main `________`）。
+作成：2026-11-03（BS 作業チャット）。宛先：Codex。**2a の取り込み直後（11-05）に開始**（基準コミットは開始時に記入：main `________`）。
+調整役の決定（11-03、coordination.md 588f589f3）：作業 A は 2a には入れず BS-W10 で行う。全ビルドは 2b（11-06）に便乗するので、本指示書では単体ビルドだけ。
 段 1 の第一束（design-status §4 の 6、ユーザー決定 11-03）。これまでの BS-W1〜W9 と同じく worktree で行い、窓単位で進め、停止点で報告する。
 
 ## 0. 前提と方針
@@ -17,14 +18,14 @@
 - コミットは作業ごとに独立（`git add -- <paths>`、`git add -A` は不可）。メッセージ：`refactor(bs): split CompletedTensor core from the E3-dependent finite products (BS-W10 A)`、
   `feat(ca): Lemma 10.12 étale stratification (BS-W10 B, stop N)`。末尾に `Co-Authored-By` は付けなくてよい。
 
-## 1. 作業 A：CompletedTensor の分割（2a で未実施の場合だけ）
+## 1. 作業 A：CompletedTensor の分割（2a 取り込み直後に行う。調整役の決定 11-03）
 
 仕様は `completed-tensor-split.md` §2・§3。要点：
 1. 前半 5 節を E3 非依存の芯（名前は 2a 後の Perfectoid/ の配置に合わせる）へ移し、`Derived.IntegralExistence` の import を外す。宣言名・証明は不変。
 2. `isIntegralPerfectoid_finPi` を §3 の直接証明に差し替える（r = 0 は零環、r ≥ 1 は二つの直積に帰着、Fontaine 核は PreTilt・W の直積の同型で成分ごと）。
    必要な小補題（`IsAdicComplete`・`PreTilt`・`WittVector` の直積）は同じモジュールに置く。E3 を使う旧証明は削除。
-3. 利用側 9 本（仕様 §1）の import 行を付け替える。
-4. 受入：仕様 §2 の到達性スクリプトが空リストを返す；変更モジュールと直接の importer の `lake build` が通る；`scripts/audit/bhatt_scholze.lean`・`clmst.lean` を再生成して差分が import 行だけ。
+3. 利用側 9 本（仕様 §1）の import 行を付け替える。**CLMST の 5 本は import 行だけ**（宣言・証明は触らない。CLMST は論文の層の管轄）。
+4. 受入：仕様 §2 の到達性スクリプトが空リストを返す；変更モジュールと直接の importer の `lake build` が通る（全ビルドは 2b の 11-06 に便乗、ここでは回さない）；`scripts/audit/bhatt_scholze.lean`・`clmst.lean` を再生成して差分が import 行だけ。
 - **停止点 A-1**：直接証明の小補題の型が決まり、`isIntegralPerfectoid_finPi` が `sorry` 付きで型検査を通った時点で、補題の一覧と見積もりを報告。
 - **停止点 A-2**：全部通った時点で、到達性の出力・ビルドしたモジュール数・所要時間を報告して止まる。
 

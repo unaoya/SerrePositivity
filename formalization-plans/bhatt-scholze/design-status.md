@@ -166,9 +166,11 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う。E3 を消す組み立て（Inputs の証明を Assembly に置換）で循環するので、Fontaine による完備テンソルの芯
 （`integralPerfectoid_completedTensor_pure_and_h0` まで）を E3 非依存のモジュール（仮称 `CompletedTensorCore`）へ切り出し、`Almost/Lemma103` の依存をそこへ向け、有限直積は
 直接証明に替えたい。2a が Perfectoidization* を Perfectoid/ へ統合するので、**2a に含めるか 2a 直後の最初の作業**にしてほしい（BS は 2a まで BS の Lean を触らない）。
-詳細は a9-design §7。**仕様書 `completed-tensor-split.md`（11-03）**：移す節・差し替える定理・利用側 9 本・直接証明の筋・到達性の確認片を記した。2a に含めるのが最も安い。
-- **調整役へ提案（11-03、基盤 66 宣言の分担、未返答）**：Sheaves の S1〜S3・S8 と DerivedGeneral 2 本は利用者も設計者も BS なので BS（Codex、BS-Wn）が drafts の中身を書き、
-  置き場所（`InfinityCategories/Sheaves/`・`Derived/`、M12・M13）へ入れる；G3・G4・G6（presentable の一般論、F2/）は ∞ レーンに依頼。時期はどちらも W2b 後の段 G。
+詳細は a9-design §7。**仕様書 `completed-tensor-split.md`（11-03）**：移す節・差し替える定理・利用側 9 本・直接証明の筋・到達性の確認片を記した。
+  **返答（11-03、coordination.md 588f589f3）**：2a には入れない。**2a 取り込み直後（11-05）に BS-W10 作業 A として BS の Codex で**行う。BhattScholze/ と利用側の import 行（CLMST 5 本は import 行だけ）、単体 `lake build`、全ビルドは 2b（11-06）に便乗。
+- **基盤 66 宣言の分担（11-03 提案 → 同日返答、coordination.md 588f589f3、計画 M12 の行）**：提案どおり。**BS が M12a（S1〜S3・S8）と M13（DerivedGeneral）を書く**、∞ が G3・G4・G6（必要なら G8・G9）。
+  時期は W2b 後の段 G、新規ファイルのみ。∞ への依頼は W2b 取り込み後に調整役が起こす。Sheaves 層の `layers.json` 登録は調整役。
+- （同返答）段 1（Lemma 10.12 ほか）は BS の Codex で。Lemma 10.12 は `CA/UniversalHomeomorphism/`・`CA/EtaleStratification/` へ。2a の合図と改名表は 11-05、2b の改名表は 11-06。
 - （11-03、調整役）**DG-W3 の取り込み**で DG のモジュールを import していた BhattScholze/ などの import 行が機械的に書き換わった（宣言は不変。対応表は
   `scripts/refactor/targets/dg-w3-merge-plan.json`）。2a まで BhattScholze/・CLMST/ の Lean に手を入れない方針はそのまま。BS 側の確認：drafts の `public import`
   67 本のうち本体に存在しないものは `F2.Presentable.Basic` 一本だけで、これは DG-W3 の影響ではなく当初の推測名（git 履歴に存在しない）。`F2.Presentable` に直した
@@ -184,11 +186,11 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し（済、§2 (A)） → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。
 7. **（11-03 決定、ユーザー「全て ok」）段取り**：
    - 段 0（今〜2a、ビルドなし）：`completed-tensor-split.md`（済）、(A) の名前探し（済）、BS-W10 の指示書（`bhatt-scholze-codex-w10.md`、済。基準コミットは 2a 後に記入）。
-   - 段 1（2a 後、基盤を待たない古典的単位。担当は Codex、こちらは検収）：① CompletedTensor 分割＋G-A6-12（2a に含められればそこで）→ ② Lemma 10.12（A8-3）→
+   - 段 1（2a 後、基盤を待たない古典的単位。担当は BS の Codex、こちらは検収。調整役了承 11-03）：① CompletedTensor 分割＋G-A6-12（**2a 直後 11-05、BS-W10 作業 A**。全ビルドは 2b に便乗）→ ② Lemma 10.12（A8-3）→
      ③ A5/RootAdjunction・G-A6-11（R₀）・G-A6-3/6（付値環）・G-A8-6・1c の初等補題 → ④ A6/ArcSite の 1 圏部分 → ⑤ A0 の site の定義と A0-3c。BS-W10 は ①②、W11 以降に ③〜⑤。
    - 段 2（W2b・段 G 後）：∞ 基盤 S1〜S8・DerivedGeneral・Shared → A2 → A4〜A7 の中身 → A5 の Prop 8.5。
    - 段 3：A8-4、A9 の組み立て、Inputs の証明の置換、監査の許可一覧（恒久 3＋暫定 2）。
-   - 基盤 66 の分担案（調整役へ、§3.1）：S1〜S3・S8 と DerivedGeneral は BS が drafts の中身を書く（利用者も設計者も BS）、G3・G4・G6（presentable の一般論）は ∞ レーン。
+   - 基盤 66 の分担（調整役了承 11-03、§3.1）：BS が M12a（S1〜S3・S8）と M13（DerivedGeneral）を書く、∞ が G3・G4・G6（必要なら G8・G9）。W2b 後の段 G、新規ファイルのみ。段 2 の BS 側の指示書（BS-W12 以降の見込み）はそのとき。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
