@@ -144,7 +144,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 | 宣言 | 主張 | 使う側 | D5 | D5 での形 |
 | --- | --- | --- | --- | --- |
-| E = 𝒮 | **空間の ∞ 圏 𝒮 の名前がリポジトリにない**（Kan 複体の simplicial nerve としての quasicategory） | S8 全体、A6 Cor 8.12 | △ | `SpaceInfinity : SSet.{u+1}`＋`Quasicategory` を `-- 要確認` の仮名で置く（G13 と一緒に ∞ へ、§4 の 7） |
+| E = 𝒮 | 空間の ∞ 圏 𝒮 は**既にある**（D5-07 で訂正）：`SpaceInfinity : SSet.{u+1} := SimplicialNerve KanObject`、`instance spaceInfinity_quasicategory`（`InfinityCategories/F1/Categories/CatInfinity.lean`、Kerodon 3.1.6.1） | S8 全体、A6 Cor 8.12 | ○ | 実体を参照する。残る要確認は `IsPresentable SpaceInfinity`（G13）と離散前層の接続（`Type u` → 𝒮 の離散埋め込み）だけ |
 | `sheafification_exists_spaces` | S8-1 | Cor 8.12 | △ | `IsPresentable SpaceInfinity → Sheafification J SpaceInfinity` |
 | `sheafify_discrete_eq` | 離散な前層の層化は 1 圏の層化 | 局所同値の判定 | △ | `discretePresheaf : (𝒞ᵒᵖ ⥤ Type u) → Presheaf 𝒞 SpaceInfinity`（仮置き）と `FunctorIso (sheafify J hJ (discretePresheaf P)) (discretePresheaf ((presheafToSheaf J _).obj P).val)` |
 | `localEquiv_of_sheafifyIso` | S8-2′ | A6 `sections_localEquiv_iso` の証明 | △ | `IsLocalEquivSet J φ → IsInvertibleEdge (L(discretePresheaf φ))` |
@@ -191,7 +191,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 `QCatAdjunction`（F1B/Adjunction。A2 の反射と同じ型）、`IsSiftedInfinity`・`exists_siftedExtension`・`SigmaPresheafInfinity`（F2）、`IsPresentable`（F2/Presentable）、
 `IsInvertibleEdge`（Core/InvertibleEdgeLifting）、`FunctorIso`・`FunctorHom`・`VertexIso`（Core）、`JoinCone`・`JoinCocone`・`IsLimitCone`・`IsColimitCone`・`mapJoinCocone`（Core/Limit）、
-`fullSubcomplexOnVertices`（Core/TerminalVertices）、`derivedInfinityBaseChange`・`discreteEmbedding`（**代数**の埋め込み。加群は `moduleSemifreeResolutionFunctor` ＋ `closedNerveInclusion`、D5-02）・`H`（Derived）、`suspensionFunctor`・`loopFunctor`（Stable）、
+`fullSubcomplexOnVertices`（Core/TerminalVertices）、`SpaceInfinity`・`spaceInfinity_quasicategory`・`SpaceInfinityFunctor`（F1/Categories/CatInfinity。D5-07）、`derivedInfinityBaseChange`・`discreteEmbedding`（**代数**の埋め込み。加群は `moduleSemifreeResolutionFunctor` ＋ `closedNerveInclusion`、D5-02）・`H`（Derived）、`suspensionFunctor`・`loopFunctor`（Stable）、
 `derivedSuspensionShiftObjectIso`（Derived、Σ = [1]）、`cAlgForgetDerived`・`algebraEmbedding`・`CAlg_R`（EInfinity）、`koszulComplexOn`・`dgNerve.vertexEquiv`（HA／DGNerve）、Mathlib の `GrothendieckTopology`・`Sieve`・`Coverage`・`presheafToSheaf`・`pushout`。
 
 ## 4. ∞ レーンへの依頼（案。W2b の取り込み後に調整役が IF の指示書に起こす。**調整役の回答 11-03**（coordination.md 8ef332d45）を各行の備考に記した）
@@ -204,14 +204,14 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | 4 | **G6** presentable ＋ 小さい W ⇒ 局所置換の存在（HTT 5.5.4.15 前半） | S4 | M12b |
 | 5 | **G8** 空間とのテンソル X ⊗ M と Map(X ⊗ M, F) ≃ Map(M, lim_{el X} F)（HTT 5.1.5・4.2.4） | S3 の証明、S4、S8-4 の一般部分 | M12b |
 | 6 | **G9・G10** 効果的エピの Čech 脈体の実現（または Bousfield–Kan との比較）、Δ 上の極限 ＝ 全複体 | S3 `isLimitCone_iff_restrict_cech` の証明 | M12d、`HomotopyLimits/`。S3 の主張は型つきで、証明経路の選択はここ |
-| 7 | **G13 と 𝒮** 空間の ∞ 圏 𝒮（Kan 複体の simplicial nerve としての quasicategory。**今は名前がない**）と `IsPresentable 𝒮` | S8-1 `sheafification_exists_spaces`、`sectionsOf` の `HasLimit`、A6 Cor 8.12 | 回答：∞ レーン。名前の候補 `SpaceInfinity`（drafts の仮名もこれに揃える）、`IsPresentable 𝒮` は F2/ |
+| 7 | **G13** `IsPresentable SpaceInfinity`（𝒮 自体は F1 の `SpaceInfinity` として既にある、D5-07）と、`Type u` → 𝒮 の離散埋め込み（離散前層 `discretePresheaf` の実体） | S8-1 `sheafification_exists_spaces`、`sectionsOf` の `HasLimit`、`sheafify_discrete_eq`、A6 Cor 8.12 | 回答：∞ レーン（`IsPresentable 𝒮` は F2/）。D5-07 で依頼は presentable 性と離散埋め込みだけに縮む |
 | 8 | **導来テンソル ⊗^L の ∞ 関手**（少なくとも固定対象とのテンソル `tensorWith M : D(A) ⟶ D(A)` と対称性。HA には複体レベルの `derivedTensor*` の同型だけ） | Descendable の thick ⊗-ideal（`IsThickTensorIdeal.tensor`、(f)(h)）。A0 `hodgeTateCohomology`・`completion_tensor_koszul`・`derived_nakayama`・A2 (5) は f^* f_*・Koszul・CAlg の余積で回避できる | 回答：∞ レーン（β5 の一部、`Derived/`、`tensorWith M` と対称性から）。**M13 には含めない**。必須なのは M15 だけ |
 | 9 | **S4・S5 の担当**（層化の存在と完全性。G4・G6・G8 の後） | `Sheafification J E` を仮定している全部（A0・A2・A5・A6） | 回答：**BS 側**が書く（G4・G6・G8・G7 を ∞ が供給）。BS の M12a に S4・S5 を加える |
 | 10 | Core の小補題：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の比較 | A0 `structurePresheafDerived` | 回答：∞ の依頼に入れる（存在確認のうえ、なければ Core に一つ） |
 
 ## 5. 段 2 の点検表（中身を書く順）
 
-1. ∞：G3・G4・G6・G7・G8・G12・G13（𝒮 = `SpaceInfinity`）・⊗^L（β5）・Core の小補題 → BS：S4・S5。
+1. ∞：G3・G4・G6・G7・G8・G12・G13（`IsPresentable SpaceInfinity` と離散埋め込み。𝒮 自体は既存）・⊗^L（β5）・Core の小補題 → BS：S4・S5。
 2. BS M13：`completionReflection`・`cAlgCompletionReflection`・`completion_*`、Truncation、ScalarRestriction（D 版）。CAlg 版の置き場所は調整役。
 3. BS Shared：Tot_{E∞}（関手形）、Bockstein の Leibniz、`completedForms_eq_derivedCompletion_of_boundedTorsion`。
 4. A2（P_Σ・Δ・HT filtration・底変換）→ A1（HT 比較・結晶入力・Thm 6.4 の多項式）→ A3。
@@ -222,6 +222,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-03（D5-07、Codex）：𝒮 は F1 に `SpaceInfinity` として既にあった（入口表の「名前がない」は誤り）。S8 は実体を参照し、要確認は `IsPresentable` と離散前層の接続だけ。∞ への依頼 7 はその二つに縮む。
 - 2026-11-03（D5-06、Codex）：S1-E は `FinitaryExtensive`（非交叉性つき）で述べる。`FinitaryPreExtensive` だけでは偽（0 < 1 の被覆 {1→1, 1→1}）。A6 の site では非交叉性を別に示す。
 - 2026-11-03（D5-05、Codex）：Shared/CosimplicialCupProduct の既存の入口 `cohomologyEquivHomology` が未定義名 `CosimplicialObject.alternatingCofaceMapComplex` を使っていた。Mathlib の実名は `AlgebraicTopology.alternatingCofaceMapComplex C`、忘却は CommRingCat → RingCat → AddCommGrpCat の合成。名前・引数・主張を保って直す（Bockstein の `CosimplicialShortExact.bockstein` も同じ）。
 - 2026-11-03（D5-04、Codex）：`isDescendable_of_faithfullyFlat` は忠実平坦＋有限表示に限定（Mathew Prop 3.31。忠実平坦だけでは偽、Aoki arXiv:2411.05995）。
