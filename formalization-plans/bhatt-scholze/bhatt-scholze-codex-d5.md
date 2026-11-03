@@ -93,4 +93,5 @@ descendable の一般形は Mod_R の thick ⊗-ideal（W9-II-13、D3-04）、�
 
 - 指示書作成（入口表 `foundation-entry-points.md` と同時）。開始は BS-D4 の後、2a の取り込みを待たない。基準コミット dc77a84dd。
 - 調整役回答（11-03、coordination.md 8ef332d45）：BS-D5 の開始を了承。空間の ∞ 圏の名前の候補は `SpaceInfinity`（∞ レーンが作る）なので、停止点 3 の仮名はこれに揃える。S4・S5 は BS が書く（後続の束）。
+- **D5-02**：`discreteEmbedding A` の始域は A 代数なので、`truncation_cofiber` の H^n(X)[−n] と DeRham の Ω^i は加群として `moduleSemifreeResolutionFunctor A` ＋ `closedNerveInclusion A (Semifree A)`（A2 `ordinaryFormsDiagram` と同じ）で D(A) に入れる。`discreteModuleEmbedding A : nerve (ModuleCat A) ⟶ derivedInfinityCategory A` を DerivedGeneral に一つ置いて両方で使う。
 - **D5-01**：入口表 §1.2 の shift の式の向きを訂正（`IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)`、Σ = [1] は `derivedSuspensionShiftObjectIso`）。分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。
