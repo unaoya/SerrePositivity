@@ -31,7 +31,7 @@
   `IsConnectiveAt`、`IsCoconnectiveAt`、`cAlgH0Algebra`（A4 の定義。基盤側には別名 `cAlgH0Ring` を新設する）。
 - **body が `sorry` の宣言は section `variable` が落ちる**（D4-03・D4-06 の教訓）。利用側が渡す引数は明示の binder にするか、`include x in` を直前に置く。
 - 既存の名前は grep で確かめる（`design-status.md` §2 (A)・(B)、入口表 §3 の一覧）。見つからないものは `-- 要確認：` 付きの仮の名前で。
-  本束で仮名が要ると分かっているもの：空間の ∞ 圏 `spacesQCat`、`discretePresheaf`、`Is0Truncated`（§1 の 3）。
+  本束で仮名が要ると分かっているもの：空間の ∞ 圏 `SpaceInfinity`、`discretePresheaf`、`Is0Truncated`（§1 の 3）。
 - 止めて報告する点：主張が曖昧で型にできない／設計書・入口表と食い違う、既存の名前の形が前提と合わない、一ファイルで `要確認` が 10 を超える、
   入口表で ○ とした宣言が型にできないと分かった。
 - 報告：`formalization-plans/bhatt-scholze/report-codex-d5.md`（新規、日本語）。コミットは drafts と報告だけ：
@@ -76,8 +76,8 @@
 11. `drafts/Sheaves/CechConerveLimit.lean`（`isLimitCone_iff_restrict_cech_large`。`PresheafLarge 𝒟 E := nerve 𝒟ᵒᵖ ⟶ E`、ulift 不要）。
 12. `drafts/Sheaves/CAlgValued.lean`（3：`forget_conservative`、`forget_sheafify`（各 F で `FunctorIso`。`Sheafification` は Prop なので関手 L は使えない）、`forget_derivedGlobalSections`）。
 13. `drafts/Sheaves/SpaceValued.lean`（6：`sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf_pushout`、
-    `sectionsOf_colimit`）。空間の ∞ 圏は**リポジトリに名前がない**ので `spacesQCat : SSet.{u+1}` と `instance : Quasicategory spacesQCat` を `-- 要確認（G13、∞ レーン）` 付きの仮名で
-    先頭に置き、`discretePresheaf`・`Is0Truncated` も同様。`sectionsOf_colimit` は ∞ 余極限（`Presheaf 𝒞 spacesQCat` の `IsColimitCone`）で述べる
+    `sectionsOf_colimit`）。空間の ∞ 圏は**リポジトリに名前がない**ので `SpaceInfinity : SSet.{u+1}` と `instance : Quasicategory SpaceInfinity` を `-- 要確認（G13、∞ レーン）` 付きの仮名で
+    先頭に置き、`discretePresheaf`・`Is0Truncated` も同様。`sectionsOf_colimit` は ∞ 余極限（`Presheaf 𝒞 SpaceInfinity` の `IsColimitCone`）で述べる
     （1 圏の余極限では偽：余等化子で円が出る）。— **停止点 3（総括）**。
 
 各停止点で報告して止まる。総括では直した宣言の数、新設した宣言の一覧（名前・ファイル）、`要確認` の一覧、× のまま残した宣言とその理由、
@@ -92,4 +92,5 @@ descendable の一般形は Mod_R の thick ⊗-ideal（W9-II-13、D3-04）、�
 ## 3. 経緯（2026-11-03）
 
 - 指示書作成（入口表 `foundation-entry-points.md` と同時）。開始は BS-D4 の後、2a の取り込みを待たない。基準コミット dc77a84dd。
+- 調整役回答（11-03、coordination.md 8ef332d45）：BS-D5 の開始を了承。空間の ∞ 圏の名前の候補は `SpaceInfinity`（∞ レーンが作る）なので、停止点 3 の仮名はこれに揃える。S4・S5 は BS が書く（後続の束）。
 - **D5-01**：入口表 §1.2 の shift の式の向きを訂正（`IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)`、Σ = [1] は `derivedSuspensionShiftObjectIso`）。分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。

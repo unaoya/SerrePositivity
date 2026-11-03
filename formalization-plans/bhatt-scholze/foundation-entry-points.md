@@ -18,8 +18,8 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | 記号 | 内容 | 担当 | 置き場所 |
 | --- | --- | --- | --- |
 | S1〜S3、S6、S8 | ∞ 層の一般論のうち既存の基盤で書ける部分（層条件、Γ・RΓ の型、弱終対象の Čech 脈体、切り落とし、空間値の層） | BS（M12a・M12e、W2b 後の段 G） | `InfinityCategories/Sheaves/` |
-| S4・S5 | 層化の存在・完全性 | **担当未定**（G4・G6・G8 の後） | `InfinityCategories/Sheaves/` |
-| G3・G12・G13 | D(A)・CAlg_A・𝒮 の presentable 性 | ∞ レーン（M12c。G12 は EInfinity 側） | `Derived/`・`EInfinity/`・`Kan/` |
+| S4・S5 | 層化の存在・完全性 | **BS**（調整役回答 11-03、coordination.md 8ef332d45。G4・G6・G8・G7 は ∞ が供給） | `InfinityCategories/Sheaves/` |
+| G3・G12・G13 | D(A)・CAlg_A・𝒮 の presentable 性 | ∞ レーン（M12c。G12 は EInfinity 側。𝒮 の名前の候補 `SpaceInfinity`、`IsPresentable 𝒮` は F2/） | `Derived/`・`EInfinity/`・`Kan/` |
 | G4・G6・G8・G9 | 関手圏の presentable 性、局所置換、空間とのテンソル、効果的エピの Čech 脈体 | ∞ レーン（M12b・M12d） | `F2/Presentable/`・`HomotopyLimits/` |
 | M13 | D(A) の t 構造・切り捨て、導来 (p,d) 完備化、係数制限 f_*（D 版） | BS（W2b 後の段 G） | `InfinityCategories/Derived/` |
 | M13-CAlg | 係数制限・係数拡大・完備反射の CAlg 版 | BS（置き場所は調整役） | `EInfinity/` |
@@ -144,13 +144,13 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 | 宣言 | 主張 | 使う側 | D5 | D5 での形 |
 | --- | --- | --- | --- | --- |
-| E = 𝒮 | **空間の ∞ 圏 𝒮 の名前がリポジトリにない**（Kan 複体の simplicial nerve としての quasicategory） | S8 全体、A6 Cor 8.12 | △ | `spacesQCat : SSet.{u+1}`＋`Quasicategory` を `-- 要確認` の仮名で置く（G13 と一緒に ∞ へ、§4 の 7） |
-| `sheafification_exists_spaces` | S8-1 | Cor 8.12 | △ | `IsPresentable spacesQCat → Sheafification J spacesQCat` |
-| `sheafify_discrete_eq` | 離散な前層の層化は 1 圏の層化 | 局所同値の判定 | △ | `discretePresheaf : (𝒞ᵒᵖ ⥤ Type u) → Presheaf 𝒞 spacesQCat`（仮置き）と `FunctorIso (sheafify J hJ (discretePresheaf P)) (discretePresheaf ((presheafToSheaf J _).obj P).val)` |
+| E = 𝒮 | **空間の ∞ 圏 𝒮 の名前がリポジトリにない**（Kan 複体の simplicial nerve としての quasicategory） | S8 全体、A6 Cor 8.12 | △ | `SpaceInfinity : SSet.{u+1}`＋`Quasicategory` を `-- 要確認` の仮名で置く（G13 と一緒に ∞ へ、§4 の 7） |
+| `sheafification_exists_spaces` | S8-1 | Cor 8.12 | △ | `IsPresentable SpaceInfinity → Sheafification J SpaceInfinity` |
+| `sheafify_discrete_eq` | 離散な前層の層化は 1 圏の層化 | 局所同値の判定 | △ | `discretePresheaf : (𝒞ᵒᵖ ⥤ Type u) → Presheaf 𝒞 SpaceInfinity`（仮置き）と `FunctorIso (sheafify J hJ (discretePresheaf P)) (discretePresheaf ((presheafToSheaf J _).obj P).val)` |
 | `localEquiv_of_sheafifyIso` | S8-2′ | A6 `sections_localEquiv_iso` の証明 | △ | `IsLocalEquivSet J φ → IsInvertibleEdge (L(discretePresheaf φ))` |
 | `discretePushout_isDiscrete` | S8-3 | A6 `homSheaf_pushout` | △ | `Is0Truncated`（仮置き）が単射に沿う押し出しで保たれる |
 | `sectionsOf_pushout` | S8-4 の押し出し | A6 Cor 8.12 | ○ | cospan 形の `JoinCone` と `IsLimitCone` |
-| `sectionsOf_colimit` | 一般の余極限（記録） | — | ○ | 述べるなら **∞ 余極限**（`Presheaf 𝒞 spacesQCat` の `IsColimitCone`）で。1 圏の余極限では偽（余等化子の例：円） |
+| `sectionsOf_colimit` | 一般の余極限（記録） | — | ○ | 述べるなら **∞ 余極限**（`Presheaf 𝒞 SpaceInfinity` の `IsColimitCone`）で。1 圏の余極限では偽（余等化子の例：円） |
 | 型つき残り：`sectionsOf` の `HasLimit`（G13 の系）、`sections_localEquiv_iso`（S8-5、HTT 5.5.4.20） | | | — | 証明は段 G |
 
 ## 2. 表 B：A 側の「要確認／待ち」→ 入口
@@ -194,24 +194,24 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 `fullSubcomplexOnVertices`（Core/TerminalVertices）、`derivedInfinityBaseChange`・`discreteEmbedding`・`H`（Derived）、`suspensionFunctor`・`loopFunctor`（Stable）、
 `derivedSuspensionShiftObjectIso`（Derived、Σ = [1]）、`cAlgForgetDerived`・`algebraEmbedding`・`CAlg_R`（EInfinity）、`koszulComplexOn`・`dgNerve.vertexEquiv`（HA／DGNerve）、Mathlib の `GrothendieckTopology`・`Sieve`・`Coverage`・`presheafToSheaf`・`pushout`。
 
-## 4. ∞ レーンへの依頼（案。W2b の取り込み後に調整役が IF の指示書に起こす）
+## 4. ∞ レーンへの依頼（案。W2b の取り込み後に調整役が IF の指示書に起こす。**調整役の回答 11-03**（coordination.md 8ef332d45）を各行の備考に記した）
 
 | # | 項目 | 使う側（drafts） | 備考 |
 | --- | --- | --- | --- |
 | 1 | **G3** `IsPresentable (derivedInfinityCategory A)` | S2 `derivedGlobalSections` の `hE`、A0 CechAlexander・PrismaticSite、A2、A5、A6 ArcSheafProperty | M12c、`Derived/`。StablePresentable の一般論から |
-| 2 | **G12** `IsPresentable (CAlg_R A)`（HA 3.2.3.5。忘却の極限保存は既存） | `sheafification_exists_cAlg`、A2:122、A5 `perfectCoefficientPresentable` | EInfinity 側 |
+| 2 | **G12** `IsPresentable (CAlg_R A)`（HA 3.2.3.5。忘却の極限保存は既存） | `sheafification_exists_cAlg`、A2:122、A5 `perfectCoefficientPresentable` | EInfinity 側。回答：∞ の依頼に入れる |
 | 3 | **G4** `IsPresentable E → IsPresentable (ihom (presheafShape 𝒞) E)`（HTT 5.5.3.6） | S4 | M12b、`F2/Presentable/` |
 | 4 | **G6** presentable ＋ 小さい W ⇒ 局所置換の存在（HTT 5.5.4.15 前半） | S4 | M12b |
 | 5 | **G8** 空間とのテンソル X ⊗ M と Map(X ⊗ M, F) ≃ Map(M, lim_{el X} F)（HTT 5.1.5・4.2.4） | S3 の証明、S4、S8-4 の一般部分 | M12b |
 | 6 | **G9・G10** 効果的エピの Čech 脈体の実現（または Bousfield–Kan との比較）、Δ 上の極限 ＝ 全複体 | S3 `isLimitCone_iff_restrict_cech` の証明 | M12d、`HomotopyLimits/`。S3 の主張は型つきで、証明経路の選択はここ |
-| 7 | **G13 と 𝒮** 空間の ∞ 圏 𝒮（Kan 複体の simplicial nerve としての quasicategory。**今は名前がない**）と `IsPresentable 𝒮` | S8-1 `sheafification_exists_spaces`、`sectionsOf` の `HasLimit`、A6 Cor 8.12 | 名前が決まり次第 drafts の `spacesQCat` を置き換える |
-| 8 | **導来テンソル ⊗^L の ∞ 関手**（少なくとも固定対象とのテンソル `tensorWith M : D(A) ⟶ D(A)` と対称性。HA には複体レベルの `derivedTensor*` の同型だけ） | Descendable の thick ⊗-ideal（`IsThickTensorIdeal.tensor`、(f)(h)）。A0 `hodgeTateCohomology`・`completion_tensor_koszul`・`derived_nakayama`・A2 (5) は f^* f_*・Koszul・CAlg の余積で回避できる | 必須なのは M15 だけ。M13 に含めるか ∞ に依頼するか、調整役の判断 |
-| 9 | **S4・S5 の担当**（層化の存在と完全性。G4・G6・G8 の後） | `Sheafification J E` を仮定している全部（A0・A2・A5・A6） | 現在の分担（BS：S1〜S3・S8、∞：G3・G4・G6）に入っていない。候補：∞ レーンが G と一緒に、または BS が段 2 で |
-| 10 | Core の小補題：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の比較 | A0 `structurePresheafDerived` | 存在確認のみ。なければ Core に一つ |
+| 7 | **G13 と 𝒮** 空間の ∞ 圏 𝒮（Kan 複体の simplicial nerve としての quasicategory。**今は名前がない**）と `IsPresentable 𝒮` | S8-1 `sheafification_exists_spaces`、`sectionsOf` の `HasLimit`、A6 Cor 8.12 | 回答：∞ レーン。名前の候補 `SpaceInfinity`（drafts の仮名もこれに揃える）、`IsPresentable 𝒮` は F2/ |
+| 8 | **導来テンソル ⊗^L の ∞ 関手**（少なくとも固定対象とのテンソル `tensorWith M : D(A) ⟶ D(A)` と対称性。HA には複体レベルの `derivedTensor*` の同型だけ） | Descendable の thick ⊗-ideal（`IsThickTensorIdeal.tensor`、(f)(h)）。A0 `hodgeTateCohomology`・`completion_tensor_koszul`・`derived_nakayama`・A2 (5) は f^* f_*・Koszul・CAlg の余積で回避できる | 回答：∞ レーン（β5 の一部、`Derived/`、`tensorWith M` と対称性から）。**M13 には含めない**。必須なのは M15 だけ |
+| 9 | **S4・S5 の担当**（層化の存在と完全性。G4・G6・G8 の後） | `Sheafification J E` を仮定している全部（A0・A2・A5・A6） | 回答：**BS 側**が書く（G4・G6・G8・G7 を ∞ が供給）。BS の M12a に S4・S5 を加える |
+| 10 | Core の小補題：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の比較 | A0 `structurePresheafDerived` | 回答：∞ の依頼に入れる（存在確認のうえ、なければ Core に一つ） |
 
 ## 5. 段 2 の点検表（中身を書く順）
 
-1. ∞：G3・G4・G6・G8・G13（𝒮）→ S4・S5（担当決定後）。
+1. ∞：G3・G4・G6・G7・G8・G12・G13（𝒮 = `SpaceInfinity`）・⊗^L（β5）・Core の小補題 → BS：S4・S5。
 2. BS M13：`completionReflection`・`cAlgCompletionReflection`・`completion_*`、Truncation、ScalarRestriction（D 版）。CAlg 版の置き場所は調整役。
 3. BS Shared：Tot_{E∞}（関手形）、Bockstein の Leibniz、`completedForms_eq_derivedCompletion_of_boundedTorsion`。
 4. A2（P_Σ・Δ・HT filtration・底変換）→ A1（HT 比較・結晶入力・Thm 6.4 の多項式）→ A3。
@@ -221,4 +221,5 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 ## 6. 履歴
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
+- 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
 - 2026-11-03（D5-01、Codex）：§1.2 の shift の式を `IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)` に訂正、分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。
