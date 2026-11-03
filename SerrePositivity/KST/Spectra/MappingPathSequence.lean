@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.PullbackKanSequence
 
 public import SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace
 public import SerrePositivity.KST.Spectra.MappingKanSequence

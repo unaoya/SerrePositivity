@@ -49,8 +49,7 @@ cofibrancy, without a separate assumed latching condition.
 @[expose] public section
 universe v u
 noncomputable section
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.Quillen
+open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.HomotopyFunctionComplex.StandardCosimplicial
 variable {C : Type u} [Category.{v} C] [HasFiniteColimits C]

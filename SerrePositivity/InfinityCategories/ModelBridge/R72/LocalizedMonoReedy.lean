@@ -85,6 +85,7 @@ open SerrePositivity.Reedy
 
 namespace SerrePositivity.SimplicialModel.LocalizedMonoReedy
 open KanTestLiftingClass
+attribute [local instance] instIsLocallyPresentableSSet_serrePositivity
 
 /-- Reedy局所化単射をReedy単射かつ各成分の局所化同値として特徴付ける。
 
