@@ -22,8 +22,8 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | ∞ 層 S5 完全性 | 同 §1 の 5 | 未 | — | C（G7） |
 | ∞ 層 S6 κ | 同 §5 | A0/PrismaticSite の `essentiallySmall` | 済（a0 §5.1 の 4） | B（構造の移送） |
 | ∞ 層 S7 D(A) への適用 | 同 §4 G3 | 未 | — | C |
-| A0-1 site・Not 4.16 | a0-design §2.1〜2.4・2.7 | A0/PrismaticSite | 済（κ） | A（4 件）・B（κ 不変性の形） |
-| A0-2 Čech–Alexander | a0-design §2.8 | A0/CechAlexander | 済（弱始性・余積） | A（1 件）・B（R の形、cechKernel、型合わせ） |
+| A0-1 site・Not 4.16 | a0-design §2.1〜2.4・2.7 | A0/PrismaticSite（BS-D1 停止点 4：cutoff 不変性は HasEnvelopes 仮定で CechAlexander に、残る `True` は `prismaticCohomologyFrobenius` 1 件） | 済（κ） | A（4 件）・B（κ 不変性の形） |
+| A0-2 Čech–Alexander | a0-design §2.8 | A0/CechAlexander（BS-D1 停止点 4 済：余積は標準頂点の脚 §2.8′、`cechNerveData`、Tot 比較、Rem 4.19 の模型と底変換） | 済（弱始性・余積） | A（1 件）・B（R の形、cechKernel、型合わせ） |
 | A0-3a Def 2.42 | a0-design §2.5 | A0/PrismaticEnvelope | — | A（Koszul の名前） |
 | A0-3c Prop 3.13 の定義と変数の場合 | a0-design §2.5 | A0/PrismaticEnvelope | 済（a0 §5.1 の 1・2） | A（完備テンソル）・B（閉包の定義） |
 | A0-3b Lemma 3.7(2)(3) | a0-design §2.6 | 未 | 自由加群の場合は済（a0 §5.1 の 1） | D |
@@ -67,7 +67,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模：41 本、約 5,200 行（`sorry` 198、置き場の `True` 259）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
+骨組みの規模（11-03、BS-D1 後）：50 本、約 7,233 行（結論が `True` の名前つき宣言 260、`sorry` の出現 356）。BS-D1（Codex、11-03）で A6/ArcSite・A6/ArcSheafProperty・A8/Stratification・A0 の 49 件の仮置きを具体的な型にした（報告 `report-codex-d1.md` 第 1〜7 部、D1-01〜03 は設計側で解決）。残る `True` 270 件の一覧は報告第 7 部。
 
 ## 2. 要確認の分類
 

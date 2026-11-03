@@ -114,3 +114,7 @@
 - **次**：停止点 4（A0 の三本：`drafts/A0/PrismaticSite.lean` の `prismaticCohomology_cutoff_invariant`、`drafts/A0/PrismaticEnvelope.lean` の `IsPrismaticEnvelope.of_closure`・
   `prismaticEnvelope_baseChange_of_variables`、`drafts/A0/CechAlexander.lean` の `cechNerveData`・`cechAlexander_isLimitCone_iff`・`prismaticCohomology_eq_cechAlexanderTot`・
   `cechAlexanderAffine`・`cechAlexanderAffine_computes`・`cechAlexanderAffine_baseChange`）。prismatic site は最初から R 上の相対な圏なので D1-01 の sieve の圏は不要。
+- **第 7 部（停止点 4 完了、a3a65d6cd、検収済み）・BS-D1 終了**：A0 の 9 件。cutoff 不変性は `HasEnvelopes P R`・許容 κ ≤ κ′ を仮定し CechAlexander の Tot 比較の直後に（包含と制限は Site）、
+  `IsPrismaticEnvelope.of_closure`（A/d = 0 を別扱い）、変数の envelope の完備底変換（`PDCompletionH0`）、`cechAlexander_isCoproduct` は標準頂点の脚の `IsColimit`（def）、
+  `cechNerveData`・`cechAlexander_isLimitCone_iff`・`prismaticCohomology_eq_cechAlexanderTot`、Rem 4.19 の模型と Tot 比較・項ごとの底変換。
+  **BS-D1 全体：49 件（`True` 45、`Type u := sorry` 4）を具体化、指定対象の残り 0 件。** drafts 全体に残る `True` は 270 件（報告第 7 部の一覧）。次の下書き束は BS-D2。
