@@ -207,15 +207,57 @@ theorem cech_exact_of_arcCover_perfect {A : Type u} [CommRing A] [CharP A p] [Pe
     AugmentedRingCechExact (affineFamilyCech B f) := by
   sorry -- 完全化に 1a・1c と 1b を適用し、完全環上で相対 Čech 複体の完全性に戻す
 
-/-! ## tilt への帰着 -/
+/-! ## tilt（零環を含む。BS-D1 の D1-03、2026-11-03 決定） -/
 
-/-- 概要：G-A6-4：perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ ≅ S^♭ ⊗̂_{R^♭} S′^♭（d 進完備）。
-方針：既存の `CompletedTensor`・`WittQuotientTilt`。
+/-- 概要：G-A6-14：零環を含む tilt。p 完備な O について、O が零環なら零環、そうでなければ Mathlib の `PreTilt O p`（p 完備で非零なら p は Jacobson 根基に入り
+非単元なので `Fact (¬IsUnit (p : O))` が立つ）。原典の tilt O^♭ = lim_φ O/p は零環で零環なので**定義の変更ではない**。Mathlib の `PreTilt` の環構造が
+`¬IsUnit p` を仮定することへの対処（D1-03：F_p × F_p の二つの射影による F_p 同士の相対完備テンソルは零環で、両因子が非零でも起こる）。
+方針：`Classical` で `Subsingleton O` により分岐し `CommRingCat.{u}` の対象を返す。
+規約：非零の場合の同一視は `tiltRingEquivPreTilt`。A6 の tilt を使う主張はすべてこの `tiltRing` で述べる。
+使われ方：G-A6-4〜6、Prop 8.10 の tilt の段。 -/
+def tiltRing (O : Type u) [CommRing O] : CommRingCat.{u} := sorry
+theorem tiltRing_subsingleton (O : Type u) [CommRing O] [Subsingleton O] : Subsingleton (tiltRing p O) := by
+  sorry -- 分岐の左
+def tiltRingEquivPreTilt (O : Type u) [CommRing O] [Fact (¬ IsUnit (p : O))] : (tiltRing p O : Type u) ≃+* PreTilt O p := sorry
+
+/-- 概要：p 完備で非零な環では p は単元でない（p は Jacobson 根基に入る：1 − px は p 進級数で可逆）。
+方針：`IsModuleComplete` から p 進完備性、幾何級数。
 規約：—
-使われ方：Čech 複体の tilt。 -/
--- 要確認：D1-03。完備テンソルが零環のとき PreTilt の既存の CommRing instance に必要な
--- Fact (¬ IsUnit (p : O)) は成り立たない。零環を含む比較の仕様は報告の第4部へ。
-theorem completedTensor_tilt : True := by trivial
+使われ方：`tiltRing` の分岐を `Subsingleton` で取ってよい根拠。 -/
+theorem not_isUnit_p_of_isModuleComplete (O : Type u) [CommRing O] [Nontrivial O]
+    (hO : IsModuleComplete O (p : O) (ModuleCat.of O O)) : ¬ IsUnit (p : O) := by
+  sorry
+
+/-- 概要：tilt の関手性：O → O′ に対し tiltRing O → tiltRing O′。場合は三つ（零→零、非零→零は零環への一意な射、非零→非零は ModP の射の `Perfection.map`）。
+零環から非零への環準同型はない。
+方針：分岐ごと。
+規約：恒等・合成を保つ。
+使われ方：G-A6-4 の代数構造、Čech 複体の tilt の関手性。 -/
+def tiltMap {O O' : Type u} [CommRing O] [CommRing O'] (f : O →+* O') : tiltRing p O ⟶ tiltRing p O' := sorry
+theorem tiltMap_id (O : Type u) [CommRing O] : tiltMap p (RingHom.id O) = 𝟙 (tiltRing p O) := by sorry
+theorem tiltMap_comp {O O' O'' : Type u} [CommRing O] [CommRing O'] [CommRing O''] (f : O →+* O') (g : O' →+* O'') :
+    tiltMap p (g.comp f) = tiltMap p f ≫ tiltMap p g := by sorry
+
+/-- 概要：R^♭ の元 a が「核の生成元 d の mod p の像」であること（R 非零なら ker θ_R = (d) の d に対し a = d mod p；R 零なら任意）。
+方針：`fontaineTheta` の核の生成元から。
+規約：a による完備化は原典の「d 進完備」。
+使われ方：G-A6-4 の右辺の完備化。 -/
+def IsTiltGenerator (R : Type u) [CommRing R] (a : tiltRing p R) : Prop := sorry
+
+/-- 概要：G-A6-4：perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ ≅ (S^♭ ⊗_{R^♭} S′^♭)^∧_a（a 進完備化、a = d mod p）。零環の場合を含む（`tiltRing`）。
+方針：非零の場合は既存の `CompletedTensor` の芯（Fontaine 表示 W(−)/d との比較）と `WittQuotientTilt`。零環が現れる場合（因子が零、または相対テンソルだけが零）は
+両辺とも零環。
+規約：代数構造は `tiltMap` で入れる。完備化は `PrincipalCompletionH0 _ a`。
+使われ方：Čech 複体の tilt（Prop 8.10 の §3.1 の 1）。 -/
+theorem completedTensor_tilt (R S S' : Type u) [CommRing R] [CommRing S] [CommRing S'] [Algebra R S] [Algebra R S']
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p) (hS' : IsIntegralPerfectoid S' p)
+    (a : tiltRing p R) (ha : IsTiltGenerator p R a) :
+    letI := (tiltMap p (algebraMap R S)).hom.toAlgebra
+    letI := (tiltMap p (algebraMap R S')).hom.toAlgebra
+    Nonempty ((tiltRing p (completionRing p (CommRingCat.of (S ⊗[R] S'))) : Type u) ≃+*
+      PrincipalCompletionH0 ((tiltRing p S : Type u) ⊗[(tiltRing p R : Type u)] (tiltRing p S' : Type u))
+        (algebraMap (tiltRing p R : Type u) _ a)) := by
+  sorry -- 非零：Fontaine 表示と完備テンソルの芯。零環：両辺零
 
 /-- 概要：G-A6-5（W9-II-20 で訂正）：augmented 余単体的な完全 F_p 代数 B^• の Čech 複体が完全なら、W(B^•) の Čech 複体も完全で、W(B^•)/d（d は各 W(B^k) で
 正則な distinguished 元）の Čech 複体も完全。正則なのは Witt 環上の d であって tilt 上の d mod p ではない（R が標数 p なら d = p、像は 0）。

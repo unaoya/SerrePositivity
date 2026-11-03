@@ -55,7 +55,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 済（a5 §8 の 6 は W9 続き 6 の G-A5-6′ の計算、7 は W9 ○） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
 | A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite（BS-D1 停止点 1 済、11-03：`True` 0 件。D1-01 sieve の圏、D1-02 K₁ ⊔ K_ext、S1-E は基盤待ち） | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
-| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
+| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 途中：三引用と G-A6-1 は具体化済み、D1-03 の tilt は解決済み、G-A6-5〜7・Prop 8.10・有限積保存は未） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
@@ -298,6 +298,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | **W9 最終判定（第 3 部続き 3）** | — | 条件付き妥当。12 論点すべて妥当（A9 は W9-III-08 の実施条件つき）。D19〜D70 の三者照合 ○、κ ○、sorry 194 宣言（恒久的 3・証明予定 125・基盤待ち 66）。a9-design §8 |
 | D1-01（BS-D1、Codex の下書き作業）S3 の `CechNerveData` は圏 𝒟 の絶対積のデータだが、arc site で要る Čech 項 S ⊗̂_R S は相対（R = S = F_p[t] の恒等被覆で絶対積 S ⊗̂_{ℤ_p} S と異なる） | 要修正 | 反映済み（11-03）：𝒟 := sieveCategory Q（Q は単射被覆の生成 sieve）の中で取る（U = f.op が弱終、冪は op R 上のファイバー積）。主張を (1) 生成 sieve ごとの Čech 同値 `isSheaf_generateSieve_iff_cech` と (2) 層判定 `isSheaf_arc_iff_cech`（coverage `arcCoverage`、`arcTopology_eq_toGrothendieck`）に分離。ArcSite・a6-design §2.2 |
 | D1-02（BS-D1）有限族の coverage と一点族の coverage は同じ位相を生成しない（k × k → k の二つの射影：有限 arc 被覆だが生成 sieve は一点被覆を含まない）。任意の前層では一点 Čech 条件だけで層にならない（二点定数前層と零環の空族） | 要修正 | 反映済み（11-03）：`arcTopology_eq_toGrothendieck` を有限族版に、`arcTopology_eq_sup`（一点 ⊔ extensive）、`PreservesFiniteRingProducts`、S1-E `isSheaf_extensive_iff_preservesFiniteProducts`（基盤待ち）、`isSheaf_arc_iff_cech` を「有限積保存 ∧ 一点 Čech」に。O と Hom(T,−) は有限積を保つので Prop 8.10 の帰着は従来どおり。ArcSite、a6-design §2.2、infinity-sheaves-design §13 |
+| D1-03（BS-D1）Mathlib `PreTilt O p` の環構造は `Fact (¬IsUnit (p : O))` を要求し、設計が含む零環（両因子が非零でも相対完備テンソルは零になり得る：F_p × F_p の二つの射影）と合わない | 要修正 | 反映済み（11-03）：零環を含む tilt `tiltRing`（G-A6-14。零環なら零環、非零なら `PreTilt`；p 完備で非零なら p は非単元）と関手性 `tiltMap`、`IsTiltGenerator`、G-A6-4 を `tiltRing` で具体的に。定義の変更ではない（原典の tilt は零環で零環）。ArcSheafProperty、a6-design §3.1・§4 |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

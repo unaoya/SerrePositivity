@@ -121,7 +121,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 ### 3.1 Prop 8.10 前半（arc 被覆 R → S の完備 Čech 複体の完全性）
 
 原典 p.67–68 を affine で追う：
-1. tilt：R^♭ → S^♭ は完全 F_p 代数の射、d は ker(A_inf(R) → R) の生成元で、R = W(R^♭)/d、S = W(S^♭)/d、S ⊗̂_R S = W(S^♭ ⊗̂_{R^♭} S^♭)/d
+1. tilt（零環を含む `tiltRing`、G-A6-14）：R^♭ → S^♭ は完全 F_p 代数の射、d は ker(A_inf(R) → R) の生成元で、R = W(R^♭)/d、S = W(S^♭)/d、S ⊗̂_R S = W(S^♭ ⊗̂_{R^♭} S^♭)/d
    （a := d mod p ∈ R^♭ 進完備テンソル。原典は d と書く。G-A6-4：perfectoid の完備テンソルの tilt）。よって「0 → R^♭ → S^♭ → S^♭ ⊗̂ S^♭ → ⋯（a 進完備）が完全」を
    示せばよい（G-A6-5、**W9-II-20 で訂正**：正則なのは Witt 環 W(B)（B 完全）上の distinguished 元 d であって、tilt 上の a ではない。R が標数 p なら d = p、
    a = 0 で「tilt は d ねじれなし」は偽。手順：augmented 余単体的な完全環 B^• に levelwise に W_n を当て、加法群の短完全列 0 → W_{n−1}(B^•) → W_n(B^•) → B^• → 0
@@ -179,7 +179,8 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | G-A6-2 | perfd は有限積を保つ（Prop 8.5 の極限の形、Perfd_{(S′×S″)/} ≅ Perfd_{S′/} × Perfd_{S″/}、perfectoid の因子は perfectoid） | なし | Cor 8.12 の 2 |
 | G-A6-12 | perfectoid 環の有限積は perfectoid（§2.2 の ∏R_i、G-A6-2 の逆向き）。**直接証明**：有限積と tilt・Witt ベクトルの可換性、各因子の核生成元の組、空積は零環として別処理。既存 `isIntegralPerfectoid_finPi`（CompletedTensor.lean）は E3 の `Inputs.exists_perfectoidization_of_integral` を使うので**使えない**（W9-III-08）。骨組み：`drafts/A6/PerfectoidFiniteProduct.lean`（`isIntegralPerfectoid_prod`・`isIntegralPerfectoid_pi`・`isIntegralPerfectoid_finPi'`、11-03） | `IsIntegralPerfectoid`（既存の判定）、Mathlib `Perfection`・`WittVector`・`fontaineTheta` | §2.2、Cor 8.12 の 2 |
 | G-A6-3 | p 完備な階数 1 の付値環 V は perfectoid な p 完備階数 1 付値環 W に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長）。W には p の両立する p 冪根があり R₀ → W が取れる | なし（Mathlib の付値の延長、要確認） | Lemma 8.8（G-A6-11 と合わせて。W を**先に**取る）、§3.1 の 2 |
-| G-A6-4 | perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ = S^♭ ⊗̂_{R^♭} S′^♭（d 進） | `CompletedTensor`、`WittQuotientTilt`（部分） | §3.1 の 1 |
+| G-A6-4 | perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ = (S^♭ ⊗_{R^♭} S′^♭)^∧_a（a = d mod p 進）。**零環を含む**（D1-03：両因子が非零でも相対完備テンソルは零になり得る。F_p × F_p の二つの射影） | `CompletedTensor` の芯、`WittQuotientTilt`（部分） | §3.1 の 1 |
+| G-A6-14 | 零環を含む tilt `tiltRing`（D1-03、11-03）：p 完備 O が零環なら零環、非零なら Mathlib `PreTilt O p`（p 完備で非零なら p は Jacobson 根基に入り非単元）。関手性 `tiltMap`（零→零、非零→零、非零→非零の三つ。零→非零の環準同型はない）。原典の tilt は零環で零環なので定義の変更ではなく、Mathlib の `PreTilt` の環構造が `¬IsUnit p` を仮定することへの対処 | Mathlib `PreTilt`・`Perfection.map` | A6 の tilt を使う全主張 |
 | G-A6-5 | 余単体的な完全環 B^• に levelwise の W_n、V の短完全列 0 → W_{n−1} → W_n → B → 0 で Čech 複体の完全性を帰納、項ごとに全射な遷移の Rlim で W(B^•) へ、各 Witt 環で正則な d（Lemma 2.34）の cofiber で mod d へ（W9-II-20：正則なのは W(B) 上の d。tilt 上の a = d mod p は零になり得る） | Mathlib `WittVector`（部分） | §3.1 の 1 |
 | G-A6-6 | 階数 1 の付値環の tilt・untilt（V 完全 a 進完備 ⇒ W(V)/d は p 完備階数 1 付値環、(V^♯)^♭ = V；a = 0 なら V^♯ = V；perfectoid 付値環の tilt は付値環）。分岐（a 単元／階数 1 で a ≠ 0／階数 1 で a = 0／階数 0 は V₁ = k[t^{1/p^∞}]^∧ へ）は W9-II-21。付値環性の計算は [Česnavičius–Scholze, Prop 2.1.9] の証明と同じ（参照のみ） | `WittQuotientTilt`（環の部分）、付値は なし | §3.1 の 2 |
 | G-A6-7 | 導来 d 進完備化は完全列を保ち、d が可逆な項を殺す；Čech 複体の各項の分解 | HA/DerivedCompletion（2b 後の名前） | §3.1 の 4 |

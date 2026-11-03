@@ -93,3 +93,11 @@
   三つの引用の形、G-A6-4〜7、Prop 8.10 の主張）。その後、停止点 3（`drafts/A8/Stratification.lean`）、停止点 4（A0 の三本）。
 - **設計上の約束**（変わらない）：定義は原典どおり、定理は E3 に要る特別な場合だけ、差は D 番号（ユーザーが付ける）。主張を変えたくなったら止めて報告。
   ビルド・`lake env lean` なし。編集は drafts の指定ファイルと報告ファイルだけ。
+- **第 4 部（停止点 2 の途中、ce81ee8f0）**：`drafts/A6/ArcSheafProperty.lean` の三引用（1a は結論を増大 Čech 複体の完全性 `AugmentedRingCechExact` に、1b は共変
+  `A_R (ULift (ZMod p))` → `derivedInfinityCategory (ULift ℤ)` で、1c は短完全列 `MilnorShortExact`）と `cech_exact_of_arcCover_perfect` を具体化。**D1-03** で停止：
+  Mathlib の `PreTilt O p` の環構造は `Fact (¬IsUnit (p : O))` を要求し、設計が含む零環（両因子が非零でも相対完備テンソルは零になり得る）と合わない。
+  **決定**（Claude）：零環を含む tilt `tiltRing`（零環なら零環、非零なら `PreTilt`。p 完備で非零なら p は Jacobson 根基に入り非単元）と関手性 `tiltMap`、
+  `IsTiltGenerator`、G-A6-4 の具体的な型を ArcSheafProperty に置いた（G-A6-14、a6-design §4）。原典の tilt は零環で零環なので定義の変更ではない。
+- **次（停止点 2 の残り）**：G-A6-5〜7（`witt_exact_of_perfect`・`modD_exact_of_regular`・`untilt_rankOneValuationRing`・`tilt_rankOneValuationRing`・
+  `tilt_arcCoverFamily`・`cech_completion_kills_inverted`）、Prop 8.10（`cech_exact_of_arcCover_perfectoid`・`structurePresheaf_isArcSheaf`・`homPresheaf_isArcSheaf`・
+  `perfectoidization_eq_arcCohomology`）、O と Hom(T, −) の `PreservesFiniteRingProducts`。tilt は `tiltRing`・`tiltMap` で述べる。
