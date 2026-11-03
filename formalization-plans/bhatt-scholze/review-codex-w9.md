@@ -2793,3 +2793,268 @@ Galois 構造を使わない D63 の方針と、生成元ごとの判定の回�
 - **致命の残件あり：W9-III-04。段 III は未完了。** 修復後の A8 残部、Prop 10.4 の非有界接続、D64、Lemma 10.12 の残部、G-A8-8、Thm 10.11・E3 integral の全接続を再確認する必要がある。
 - A9、DiscreteCore・AnimatedDomain 新設後を含む import の全体監査、D 番号・κ・sorry の一覧、12点の最終総括は未実施。段 I・II の完了判定を撤回するものではない。
 - 報告ファイル一本だけに追記し、ビルド・Lean 実行・設計・骨組みの編集はしていない。報告のみのコミットと終了時の `git status --short` で、開始時から報告以外の差分が増えていないことを確認する。
+
+
+## 第 3 部（続き 2：A8 の残部・A9・E3 へ戻る import、途中停止）
+
+基準：main `03d9b3f78`（開始時 HEAD も同じ）。開始時の作業ツリーと index は空。
+指示書 §0〜§6、design-status、drafts の規約を読み直した。W9-III-04〜07 と D70 の修復を確認し、A8、A9、横断事項の順に進めた。
+
+### 1. 総括
+
+- A8 の残る紙の計算は、以下の補足を明記すれば成立する。T と T̂ を区別する D70 は妥当であり、前回の致命 W9-III-04 は解消した。
+- almost 連結性の完備 filtered 余極限による保存は、perfectoid 性の G-A8-8 とは別の補題である。Prop 10.4 と完備テンソルから証明できる。
+- Prop 10.4 の非有界版、D64、Lemma 10.12、Thm 10.11 から e3Integral への数学的接続を下に記録した。
+- A9 の八欄は現行界面の要求と対応し、証明済みの `nonempty_e3_of_cAlg` が D(R) 版への橋を供給する。ただし引用一覧・呼び出しの表記は訂正が必要。
+- **致命的指摘 W9-III-08**：既存 `CompletedTensor.lean` の import が、`IntegralExistence` を経由して消去対象の Inputs に戻る。A6 と A8 がこれを読み、Inputs から Assembly を読む計画は循環する。
+- これは完備テンソルの Fontaine による証明そのものの循環と同義ではない。E3 に依存する有限直積の証明が同じモジュールに同居していることによる、実在するモジュール依存の障害である。
+- DiscreteCore・AnimatedDomain の切り出しは正しいが、A1・A5 にも定義と後段の証明の配置による循環候補が残る。
+- 指示書 §4 に従い横断監査の途中で停止する。**段 III 全体の承認は保留**。D 番号・κ・sorry の最終監査は完了としていない。
+
+### 2. 指摘一覧
+
+`drafts/` と設計書のパスは `formalization-plans/bhatt-scholze/` からの相対パス。`SerrePositivity/` はリポジトリの本体。
+
+| 番号 | 単位 | 重さ | 場所 | 指摘 | 理由（原典・計算） | 提案 |
+| --- | --- | --- | --- | --- | --- | --- |
+| W9-III-08 | 横断・A6・A8・A9 | **致命** | `SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean:12`・`:567`〜`:570`、`Almost/Lemma103.lean:3`、`drafts/A6/ArcSite.lean:6`・`ArcSheafProperty.lean:7` | Assembly へ向かう上流が、消すべき E3 の Inputs を import しているため、予定の Inputs の証明置換で循環する。 | 下記の実 import 経路。CompletedTensor の有限直積定理は `Inputs.exists_perfectoidization_of_integral` を実際に使用する。 | Fontaine による完備テンソルの部分を E3 非依存のモジュールへ切り出し、A6 と Lemma103 の依存をそこへ向ける。有限直積は直接証明へ替えるか E3 後の別モジュールへ隔離する。 |
+| W9-III-09 | A1・A4・A5 の配置 | 要修正 | `drafts/A1/DeRhamComparisonPoly.lean:6`〜`:7`、`drafts/A5/{PerfectSiteComparison,SemiperfectoidCase,WeaklyInitialAndDescent,StrongDescent}.lean`、`drafts/A4/InterfaceFields.lean` | DiscreteCore・AnimatedDomain 以外にも、上流が必要とする定義と、その上流を使う後段の定理が同居している。 | 下記の宣言単位の依存。A5-1 の比較写像を A5-2 が使う一方、同じファイルの Prop 8.5 は A5-2〜4 を使う。A1 の黒箱・A4 の A5 後の比較にも同型の問題がある。 | 比較写像、結晶黒箱、根添加の定義、基本的な filtered 余極限保存を先行ファイルに分け、Prop 8.5・その系・A4 の後段の比較を後に置く。数学的循環とモジュール配置を混同しない。 |
+| W9-III-10 | A8-1・A8-4、G-A8-1・8 | 要修正 | `a8-design.md` §2.1・§3.3(5)・G-A8-8、`drafts/A8/AlmostConnectivity.lean` と `IntegralDiscreteness.lean` | almost 連結性の余極限保存は G-A8-8 の主張からは出ず、非有界版にも完全忠実な忘却の極限・余極限保存を補う必要がある。 | BS p.79 Prop 10.4、p.82 Thm 10.11。A_λ,perfd はこの段では perfectoid と分かっていない。下に独立の証明を与える。 | 「almost 連結な完備複体は完備 filtered 余極限で閉じる」を G-A8-1 の系などに追加する。一般 J の核 K と既存の単項 `perfectoidIdeal` の API も分けて記す。 |
+| W9-III-11 | DerivedGeneral | 要修正 | `drafts/DerivedGeneral/Truncation.lean` の `truncationLE_isCoconnective` と `truncationLE_of_isCoconnective` | 次数規約を訂正した後も、τ≤n の結論・仮定の述語に逆向きが残っている。 | 同ファイルの定義で IsCoconnectiveAt n は H^{<n}=0。非零の A に対し X=A[1]、n=0 なら τ≤0X=X はこれを満たさない。 | τ≤n の値には IsConnectiveAt n を使い、τ≤nX≃X の仮定も同じ向きにする。非有界の補足に先立ち仕様を揃える。 |
+| W9-III-12 | A9 の残る引用 | 要修正 | `a9-design.md` §2・§3、`design-status.md` の A3-3 行 | 結晶の残る黒箱名が D68 の決定前のままで、引用と証明予定の一般論の境界も十分明確でない。 | 実際の黒箱は `crystalline_deRham_polynomial_Zp`。HT はその系。G-A3-7 は「黒箱」と呼ばれるが具体計算・証明方針も既にある。S8 の G13 も全体像の列挙から抜けている。 | D68 の仕様付き黒箱一件へ更新し、G-A6-1a・1b、暫定1c、P⁰を区別する。G-A3-7 は証明予定なら残存引用に数えず、そう明記する。基盤依存と恒久的な引用を別欄にする。 |
+| W9-III-13 | A9 の骨組み | 軽微 | `drafts/A9/Assembly.lean:59`、`a9-design.md` §2 | `nonempty_e3_of_cAlg` の hR は暗黙引数だが、位置引数として渡している。 | 本体 `EInfinity/Perfectoidization/DerivedCorollary.lean:58` の入力は Nonempty の証拠で、hR は `{hR : …}`。 | `nonempty_e3_of_cAlg R p (hR := hR) (nonempty_perfectoidizationInterfaceCAlg R p hR)` の形にする。橋の主張自体に不足はない。 |
+
+### 3. 紙で確かめた項目
+
+#### A8 §8.6：完備 filtered 余極限の perfectoid 性・離散性 — ○
+
+まず固定 perfectoid R 上の filtered 系 P_λ を考える。P=colim_λ P_λ を通常の環の余極限とする。
+BS pp.21–22 Lemma 2.34(2) により全 P_λ の p 冪ねじれは p で殺される。
+p^n x=0 という関係は filtered 系のある段で成立するので、P の p 冪ねじれも p で殺される。
+従って LΛ_p P は離散で、通常の p 進完備化 P̂ に一致する。余極限の射の単射性は必要ない。
+
+perfectoid 性の供給では、Witt ベクトルが任意の filtered 余極限とそのまま可換だとは言わない。
+(A,(d))=A_inf(R) の完全 prism を固定し、P_λ に対応する完全 prism (B_λ,dB_λ) を取る。
+BS p.32 Thm 3.10 と prism の射の剛性により、同じ d を全ての段の核生成元として使える。
+C=colim_λ B_λ は完全 δ 環で、p と d は非零因子、C/d=P である。非零因子性は filtered 余極限の完全性から従う。
+
+C をまず p 完備化する。p ねじれなしなので導来完備化は離散、Frobenius の逆も p 進連続なので完全 δ 環性を保つ。
+mod d の cofiber は完備化と可換し、その値は既述の LΛ_p P=P̂ で離散だから、完備化後にも d は非零因子である。
+次に d 完備化する。BS pp.31–32 Lemma 3.9 の証明と同じ順序で、導来完備化は離散な (p,d) 完備環 D となり、D/d=P̂。
+Frobenius は (p,d) と (p,φ(d))=(p,d^p) という同値な位相の間の同型なので、D はなお完全 δ 環である。
+d は distinguished のままなので (D,(d)) は完全 prism、Thm 3.10 より P̂ は perfectoid となる。
+
+固定基底を持たない filtered 系でも、一つの対象 λ₀ を選び、cofinal な λ₀/ の系へ移れば P_{λ₀} を共通基底にできる。
+これは Thm 10.11 の最初の帰着で使う G-A8-8 の証明であり、Thm 10.11 自体を前提にしない。
+
+#### Prop 10.4 の非有界複体と D66 — ○（必要な内部補題を明記）
+
+K=J_perfd、B=(R/J)_perfd=R/K と置く。既存の semiperfectoid の結果から B は perfectoid。
+BS pp.78–79 Lemma 10.3 によって B⊗̂^L_R B≃B は乗法の同値である。
+従って忘却 U:D_{p-comp}(B)→D_{p-comp}(R) は完全忠実になる。
+U は極限を保存し、余極限も保存する：通常の加群の忘却は余極限を保存し、両側の完備化は同じ p について行うためである。
+ここで完備テンソルが任意の逆極限を保存するという主張は使わない。
+
+K が全 H^i(M) を殺せば、各 H^i(M) は導来 p 完備な B 加群で U の像に入る。
+有界切り捨ては有限個の拡大で作れ、像は安定部分圏なのでこれらも像に入る。
+τ≤m M を下側の切り捨ての逆極限で、M を m→∞ の完備余極限で復元する。
+D(R) の Postnikov 完備性と U の極限・余極限保存により M 自身が像に入る。
+像の上では K⊗̂^L_R B=0 を係数変更して K⊗̂^L_R M=0 を得る。
+逆に後者が零なら三角形 K⊗̂M→M→B⊗̂M によって M は B 加群の忘却と同値であり、全 H^i が K で零化される。
+これで BS p.79 Prop 10.4 の非有界な M を含む同値が得られる。
+
+D66 は妥当。ただし「圏同値を結論にしない」ことと、その証明で完全忠実性・像の閉性を使わないことは異なる。
+G-A8-1 の仕様に上の内部補題を含める必要がある。
+また既存 `PerfectoidAlmost.lean` の `perfectoidIdeal_completedTensor_isZero_of_isAlmostZero` は引数 g:R の単項版である。
+一般 J をその名前に直接渡すことはできない。K=ker(R→B) に対する補題として一般化し、一般の perfectoid 商の Lemma 10.3 を使えばよい。
+これは新しい文献引用を要する問題ではない。
+
+#### A8 §8.7：A_λ から T̂_perfd の almost 連結性へ — ○
+
+D70・G-A8-10・11 の修復を確認した。T は代数的整閉包のまま、T̂=completionRing T と分けてある。
+T の p 冪ねじれの有界性から LΛ_p T=T̂ は離散であり、Cor 8.12 は S→T̂ に適用される。
+整性は S→T について使い、完備化後の整性を仮定していない。前回の反例と修復の扱いに齟齬はない。
+
+各 A_λ は有限表示有限 R 代数で A_λ[1/g]=B、colim A_λ=T。
+修復済みの Thm 10.9 の部分結論により M_λ=(A_λ)_perfd は g-almost 連結である。
+A5 の filtered 余極限保存を**完備圏で**使うと
+
+`T̂_perfd ≃ LΛ_p(colim_λ M_λ)`
+
+を得る。ここで M_λ が離散または perfectoid であることはまだ使えない。
+この時点で G-A8-8 を直接適用すると、Thm 10.11 の結論の先取りになってしまう。
+
+代わりに K=(g)_perfd とし、次の一般論を使う。
+導来 p 完備な M について「M は g-almost 連結」と「K⊗̂^L M は連結」は同値である。
+順方向は Prop 10.4 により K⊗̂τ>0M=0 とし、K⊗̂τ≤0M の連結性を使う（BS p.79 Lemma 10.5 の証明）。
+逆方向は三角形 K⊗̂M→M→(R/K)⊗̂M から、i>0 の H^i(M) が R/K 加群の H^i と一致することで従う。
+完備テンソルは完備余極限を保存し、連結な複体は完備 filtered 余極限で閉じる。
+後者は通常の filtered 余極限が完全で、LΛ_p が D^{≤0} を保つことによる。
+従って上式の T̂_perfd は g-almost 連結となる。
+
+これを G-A8-10 の g-almost 同型 S_perfd→T̂_perfd に沿って移せば、S_perfd の g-almost 連結性を得る。
+G-A8-8 は、有限表示有限な S の連結性を帰納で証明し、Cor 8.14 により各 perfd が perfectoid となった**後**、一般の整代数へ戻す段で使う。
+この二つの余極限補題を分ければ循環はない。
+
+#### A8 §8.5：Lemma 10.12 の残部 — ○
+
+原典 BS p.83 Lemma 10.12 と `Stratification.lean` を照合した。
+追加された hZp（p と異なる全素数が単元）は Z_(p) 代数構造の存在と同値である。
+perfectoid 基底では p が Jacobson 根基に入り、p と互いに素な整数が単元となるので、この前提を満たす。
+
+S の有限表示に、各代数生成元のモニック関係を加え、その有限個の係数を含む有限生成 Z_(p) 部分代数 R₀ を取る。
+S₀ を同じ表示で作れば有限 R₀ 加群であり、S₀⊗_{R₀}R=S。R₀ は noetherian である。
+被約商を先に取ったモデルと、底変換してから被約化した環との差は nil な核を持つ商で吸収され、普遍同相の底変換安定性を使える。
+一般の nil イデアルについて一様な冪零指数を主張する必要はない。
+
+(R₀)_red の全商環 K は有限個の極小素イデアルの剰余体の積。
+(S₀⊗K)_red は有限体拡大の有限積で、各拡大は有限分離拡大と純非分離拡大に分解する。
+p 可逆な因子の体は標数 0 なので純非分離部分は自明であり、残りの因子は標数 p。
+K 上の冪等元、有限エタール代数の表示、S 側への射の有限個の係数・関係の分母を同時に払う。
+必要ならさらに主開集合を縮め、有限エタール性を確保する。
+標数 0 の因子では同型とその逆を広げ、標数 p の因子では有限個の生成元の p 冪が像に入る関係と核の nil 性を広げる。
+noetherian 性によりこの検証に要る有限個の関係を選べ、普遍同相を得る。
+各極小点を含む D(g₁) を取ったので、残りの閉集合 V(g₁) は真に小さく、noetherian 帰納が適用できる。
+
+最後の細分は元の (g₁,…,g_n) を (pg₁,g₁,…,pg_n,g_n) に替える。
+第 2i−1 層は元の第 i 層で p を反転した部分、第 2i 層は元の第 i 層を p=0 にして被約化した部分になる。
+前段の (pg_j,g_j) が生成するイデアルは (g_j) と同じなので、この記述は全層について成立する。
+有限エタール性・普遍同相性・p 反転後の同型は前回確認した底変換の議論で保たれる。
+全体の単位イデアル条件も変わらない。ここまでに Δ・perfd・Thm 10.11 は現れず、Lemma 10.12 は独立の古典的単位である。
+
+#### D64、有限エタールの場合、Thm 10.11 と E3 integral — ○（数学的接続）
+
+D64：perfectoid 標的 P は被約なので、S→P は一意に S_red を通る。
+これは対象だけでなく射も保存する Perfd_{S/}≃Perfd_{S_red/} を与え、Prop 8.5 の極限と単位を同一視する。
+S_red が完備でない一般の場合も completionRing の普遍性を介せる。帰納の n=1 では S_red 自体が有限エタールで完備である。
+
+有限エタール代数の完備性は「有限」だけからでなく、有限射影加群であることから供給する。
+完全 prism (A,(d)) の商 R 上の有限エタール代数は、完備対 (A,(p,d)) に沿って有限エタール A 代数へ持ち上がる。
+その mod p は完全環上の有限エタール環で完全、Frobenius を持ち上げれば完全 δ 環となる。
+d の正則性と (p,d) 完備性も有限エタール性から保たれ、BS p.32 Thm 3.10 により商は perfectoid。
+G-A8-6 の「T は p 完備（有限）」という骨組みの短い説明は、この有限射影性を補って読む。
+
+有限表示有限 S の場合、Lemma 10.12 の層別、n=1 の D64、n>1 の既確認の底変換、上の g-almost 連結性を Lemma 10.5 で合わせる。
+これで S_perfd は連結となり、A4 の coconnectivity と Cor 8.14 の芯から離散・perfectoid、Δ_perf も離散な完全 δ 環となる。
+一般の整 R 代数 S_alg は有限表示有限 S_λ の filtered 余極限である。
+S^an=LΛ_p S_alg を完備 animated 圏での余極限として取り、A5 の保存性と G-A8-8 により (S^an)_perfd は離散・perfectoid。
+Δ_perf の離散性は mod d の離散性と導来 Nakayama、完全 δ 構造は A4 から得る。S_alg の p 冪ねじれの有界性は要求しない。
+
+E3 の入力はこの S_alg そのものであり、D41 の値は (completionRing S_alg)_perfd。
+Prop 8.5 系4により
+
+`(LΛ_p S_alg)_perfd ≃ (π₀ LΛ_p S_alg)_perfd = (completionRing S_alg)_perfd`
+
+を移し、A4 の指定 H⁰ 環との同型を通せば `e3Integral` の二つの結論になる。
+Thm 10.11 を「completionRing S_alg が R 上整」と読み替える必要はなく、その主張は使っていない。
+以上は証明の数学的な接続の確認である。下記の実 import の E3 依存が残るため、現行配置で E3 消去まで完成しているという判定ではない。
+
+#### A9：八欄と橋 — ○（仕様の対応）、現行の消去計画全体は×
+
+`EInfinity/Perfectoidization/Interface.lean:62` 以下と供給側を照合した。
+
+| 欄 | 確認した対応 |
+| --- | --- |
+| perfd | A4 の algebraNerve R→CAlg_R R。通常の非完備 S に completionRing を介して定義する。 |
+| unit | 同じ e3Perfd への FunctorHom。Fil₀ の単位・完備化・perfection の脚を合成する。 |
+| h0 | 同じ perfd の U 像と underlyingUnit に対する H0RingData。環の関手、加群同型、射・単位との整合が仕様にある。 |
+| universal | A7 の IsDiscrete を仮定する IsPerfectoidization。非完備 S は completionRing の Hom 普遍性を介する。 |
+| limitCone | A5 の BSLimitConeDataCAlg。指定頂点、底の錐、overSource と単位、比較の境界・頂点まで含む。 |
+| limit_isLimit | 上の同じ指定錐の IsLimitCone。存在する別の錐で代用していない。 |
+| integral | A8 の letI で指定した R 代数構造での整性から、同じ perfd の IsDiscrete と同じ h0.ringFunctor の perfectoid 性。 |
+| excision | A6 の S・T・I の完備性と ArcOutside、通常の商による ordinarySquare を同じ perfd で送った引き戻し。 |
+
+`DerivedCorollary.lean` の toE3 は、離散性を U との比較で、極限・excision を U の極限保存で移し、h0 をそのまま保つ。
+`nonempty_e3_of_cAlg` 自体に E3 の存在入力はなく、CAlg 版が供給されれば Inputs の公開名・型は変更不要である。
+W9-III-13 は呼び出し表記の修正であり、第九の欄が必要だという指摘ではない。
+
+残る引用一覧は完全とは判定しない。D68 の黒箱は `crystalline_deRham_polynomial_Zp` 一件で、自然性・乗法・Bockstein・根の遷移の整合を含む。
+`hodgeTate_iso_polynomial_Zp` を独立の残存引用とするのは現在の決定と異なる。
+G-A6-1a は BS17 Thm 4.1(i)、1b は BM18 Thm 1.7、1c は BS17 Lemma 6.3 の特殊化で、1c は初等補題から証明する予定。
+P⁰ は Lur11 Rem 2.2.7 の仕様を持つ共有補題。G-A3-7 は前回までの具体計算に基づく証明予定なのか、恒久的な引用なのかを一覧で明確にする必要がある。
+この区別をせず、未実装の一般論の sorry を全て「残る文献入力」と数えてはならない。
+
+#### 横断監査で検出した E3 への経路 — ×、ここで停止
+
+Lean は実行せず、45 本の drafts の実 import を起点に、本体の import 行を読み取って到達経路を調べた。
+次の三つの入口から、消去対象の `Inputs/PerfectoidizationInterface` に到達する。
+
+1. `drafts/A6/ArcSite` → `Perfectoidization/CompletedTensor` → `Perfectoidization/Derived/IntegralExistence` → `Inputs/PerfectoidizationInterface`。
+2. `drafts/A6/ArcSheafProperty` → 同じ経路。
+3. `drafts/A8/AlmostConnectivity` → `Almost/Lemma103` → `Perfectoidization/CompletedTensor` → 同じ経路。
+
+Inputs の証明を Assembly へ置き換えると、例えば次の閉路ができる。
+
+`Inputs → Assembly → IntegralDiscreteness → AlmostConnectivity → Lemma103 → CompletedTensor → IntegralExistence → Inputs`。
+
+前半は骨組みに明記された予定の import、後半は本体に既にある実 import である。
+現在の drafts がビルドされていないからこの閉路が実際にロード済みだ、とは主張していない。
+しかし現行の配置のまま Inputs の証明を置き換える計画は成立しない。
+
+原因も確認した。`CompletedTensor.lean:567` の `isIntegralPerfectoid_finPi` は、`:570` で
+`Inputs.exists_perfectoidization_of_integral R (Fin r → R) p hR` を使っている。
+同ファイルの規約にも有限直積の E3 依存が明記されている。
+一方、前半の `integralPerfectoid_completedTensor_pure_and_h0` は Fontaine 表示と完全 prism のテンソルから証明されている。
+従って「Lemma 10.3 の数学的な証明が Thm 10.11 を必要とする」とは結論しない。前半を独立ファイルへ出せばこの混入を避けられる。
+有限直積の perfectoid 性も、有限積と tilt・Witt の可換性、各核生成元の組から直接示せる。空積は零環として別処理する。
+この直接証明を採れば、有限直積を E3 より先で使うことも循環なしに正当化できる。
+
+#### DiscreteCore・AnimatedDomain 後にも残る配置上の問題
+
+両新設ファイルの依存は、前者が A4 と切り捨て、後者が A2 と完備化で、A5 に戻る辺はない。W9-II-24 の修復は正しい。
+ただし全体の順序はまだ定まらない。致命を確定する前に読んだ範囲では、次の切り分けも必要である。
+
+- A1 の結晶黒箱を宣言する `DeRhamComparisonPoly` は `HodgeTateComparison` を予定 import する一方、後者の HT 比較はその黒箱と Cartier を使う。黒箱と初期の結晶比較を先行ファイルにする。
+- 同じ `DeRhamComparisonPoly` は polyRootAlgebra のため A5/WeaklyInitialAndDescent を予定 import する。そのファイルには A1-5→StrongDescent を使う後段の降下の証明もある。根添加と初等的な filtered 余極限の定義・補題を先に分ける。
+- A5/PerfectSiteComparison には比較写像と Prop 8.5 の証明・系が同居する。SemiperfectoidCase が前者を必要とし、後者は SemiperfectoidCase と StrongDescent・WeaklyInitialAndDescent を必要とする。比較写像の定義と定理の完成を分ける。
+- A4/InterfaceFields の e3Perfd 等の定義は A5 より前だが、同居する e3Perfd_eq_direct は Prop 8.5 系4を使う。A4/Perfectoidization に同居する Prop 8.5 後の Example 8.3 も、先行の定義から分離する。
+
+これらは数学的な循環の認定ではなく、証明の中身を入れたときにファイル単位の順序が閉じるようにする提案である。
+所有単位の A 番号を変える必要はない。全ファイルの修復後の DAG を今回提示・検証したとはしない。
+
+#### 横断事項の到達点
+
+| 項目 | 今回の状態 |
+| --- | --- |
+| D 番号 | 各設計書の表を一次抽出した。A0〜A8 に D19〜D70 の行があり、D42 撤回、D68・69・70 の所在を確認。D70 の整閉包の定義と完備化の比較は明示的。全定義・ノートとの差の網羅検証は未了。 |
+| import | 上記の致命的経路を検出。DiscreteCore・AnimatedDomain の局所的な切り出しは○。全体の非循環性は×。 |
+| κ | 段 I・II の既報の判定は維持する。今回の A_λ の近似は集合に属する有限表示の圏で取れるが、全 site・完備化・試験付値環を通した κ の再監査は未了。 |
+| sorry | drafts は45本、コメントを含む語としての sorry は218箇所という一次集計。axiom 宣言の検出は0。これは証明穴の確定数・残存引用数ではない。宣言ごとの一覧と理由・引用の分類は、途中停止のため未了。 |
+| ノート第10章 | Thm 10.11 の T と completionRing T、D70 の追記を確認。全章の横断照合は未了。 |
+
+### 4. 指示書 §3 の12点への回答と全体判定
+
+段 I・II の項目は既報と修復の決定を前提とする。全項目を今回再証明したという表ではない。
+
+| §3 | 回答 | 理由・留保 |
+| --- | --- | --- |
+| 1 β・Čech 層 | 妥当 | 既報の D-S1 の区別と層化を介する RΓ を維持。離散の構造層での一致と一般の安定圏値の議論を区別する。 |
+| 2 κ・S3 | 妥当 | 弱始対象の Čech 計算と、完全 site の余積を perfd 後の完備テンソルとする修復を前提に維持。今回の全体再監査は未了。 |
+| 3 A0 | 妥当 | D20 の HA 7.2.2.10 型の訂正、envelope の普遍性、cechKernel の H⁰ 完備化という既報を維持。 |
+| 4 A1 | 妥当 | D68 の仕様付き de Rham 黒箱一件と Cartier、D69 の普遍向き付き prism 上の Thm 6.4 の経路を維持。ファイル配置と古い要約は別途揃える必要がある。 |
+| 5 A2 | 妥当 | HT filtration と外冪の延長を完備圏内の LΛ_p∘Lan とする訂正を前提に維持。切り捨ての骨組みには W9-III-11 が残る。 |
+| 6 A3 | 妥当 | D36(a)、普遍の場合から導来底変換→HT の離散性→envelope の普遍性の順序を維持。Prop 7.2・7.11 の全形を新たな入力にする必要は今回も見つからない。 |
+| 7 A4 | 妥当 | φ_{A*} の塔と coherent な P⁰ の比較・Tot/実現への移送の訂正を前提とする。 |
+| 8 A5 | 妥当 | E 被覆、G-A5-18、animated Prop 8.5・π₀ の系、G-A5-6′ の既決の補足を維持。配置の循環は W9-III-09 として分ける。 |
+| 9 A6 | 妥当 | global affCompl の前段 G-A6-11、集合の層から S8 を介す移送、三引用の訂正後の仕様を維持。ただし CompletedTensor の実 import が W9-III-08。 |
+| 10 A7 | 妥当 | D60、相対テンソル、単位と乗法の一致、および DiscreteCore・AnimatedDomain の切り出しを確認。 |
+| 11 A8 | 妥当（仕様の補足を要する） | D63・D64・D66・D70 の数学的接続は上記の計算で通る。almost 連結性の余極限保存を G-A8-8 から独立させ、非有界版の内部補題を追加する。E3 非依存の配置は別に修復が必要。 |
+| 12 A9 | **疑義、代案あり** | 八欄からの橋は妥当。しかし現行 import のままでは E3 消去が循環する。残存引用一覧も要訂正。E3 非依存の先行モジュールへ分けてから再監査する代案を推奨。 |
+
+**段 I〜III 全体の判定：承認保留。** A8 の残る紙の項目は今回の補足で○となり、A9 の八欄も仕様として対応する。
+しかし「この配置から nonempty_e3_of_cAlg を使えば E3 が消える」という実装可能な設計の全体像は、W9-III-08 により未成立である。
+12点には上記の回答を付したが、横断監査が未了なので最終合格の総括ではない。
+
+### 5. ユーザーに決めてもらう事項
+
+- **CompletedTensor の E3 依存**：(a) Fontaine による完備テンソルの芯を先行モジュールへ切り出し、有限直積も Fontaine/定義から直接証明する（推奨）／(b) 芯だけを切り出し、E3 を使う有限直積は E3 後の別モジュールに隔離する。(b) の場合も A6・A8 で有限直積を必要とする箇所には独立な供給を明示する必要がある。現在の E3 を仮定したまま組み立てを完了扱いにする案は採れない。
+- A1・A4・A5 の先行定義と後段定理を別ファイルに分けることを推奨する。A 番号の所有は維持できる。特に結晶黒箱、根添加、比較写像、filtered 余極限保存を後段の降下から独立させる。
+- G-A3-7 の「黒箱」は、既報の具体計算を形式化する証明予定補題という意味に統一することを推奨する。恒久的な引用として残すなら a9-design §3 の一覧と決定に明記する必要がある。D68・D69 の既決事項の再決定は不要。
+
+### 6. 確認済みの一覧と残件
+
+- A8 §8.1〜4 は既報・修復後の計算を維持し、§8.5・6・7、Prop 10.4 の非有界版、D64、Lemma 10.12 の独立性、Thm 10.11→e3Integral の数学的接続を今回確認した。
+- A9 の設計・Assembly、現行 CAlg 界面、DerivedCorollary、Inputs の公開型と八欄の供給を読んで照合した。
+- 本体の実 import による E3 到達経路をソース上で確認し、CompletedTensor 内の有限直積の E3 呼び出しも確認した。ビルドや axiom 検査は実行していない。
+- **致命の残件：W9-III-08。** 修復後の E3 非依存性と全体の import 順、残存引用一覧、D 番号・κ の全体照合、宣言ごとの sorry 一覧が次回の残件である。
+- 報告ファイルへの追記だけを行った。設計・骨組み・本体・ノートは変更していない。指定の報告一本のコミットと終了時の `git status --short` により、他の差分を増やしていないことを確認する。
