@@ -222,6 +222,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-03（D5-05、Codex）：Shared/CosimplicialCupProduct の既存の入口 `cohomologyEquivHomology` が未定義名 `CosimplicialObject.alternatingCofaceMapComplex` を使っていた。Mathlib の実名は `AlgebraicTopology.alternatingCofaceMapComplex C`、忘却は CommRingCat → RingCat → AddCommGrpCat の合成。名前・引数・主張を保って直す（Bockstein の `CosimplicialShortExact.bockstein` も同じ）。
 - 2026-11-03（D5-04、Codex）：`isDescendable_of_faithfullyFlat` は忠実平坦＋有限表示に限定（Mathew Prop 3.31。忠実平坦だけでは偽、Aoki arXiv:2411.05995）。
 - 2026-11-03（D5-03、Codex）：P⁰ は φ_k 半線形。`powerOperationZero_natTrans` は U ⇒ U ≫ `derivedInfinityRestrictScalars (frobenius k p)` の形にし、k = F_p で自己変換に特殊化。
 - 2026-11-03（D5-02、Codex）：`discreteEmbedding A` は A 代数用。加群 H^n(X)・Ω^i は `moduleSemifreeResolutionFunctor` ＋ `closedNerveInclusion`（A2 `ordinaryFormsDiagram` と同じ）で入れる。§1.2・§1.6 を訂正、`discreteModuleEmbedding` を新設。
