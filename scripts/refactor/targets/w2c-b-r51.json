@@ -1,0 +1,32 @@
+[
+  {
+    "module": "SerrePositivity.KST.SConstruction.PushoutCompletion",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.PushoutCompletion",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R51",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  },
+  {
+    "module": "SerrePositivity.KST.SConstruction.RelativeColimitCompletion",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R51",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  },
+  {
+    "module": "SerrePositivity.KST.SConstruction.StableSpanPushout",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.StableSpanPushout",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R51",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  }
+]

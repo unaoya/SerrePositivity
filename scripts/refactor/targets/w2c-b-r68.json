@@ -1,0 +1,12 @@
+[
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  }
+]

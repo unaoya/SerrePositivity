@@ -1,0 +1,101 @@
+[
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakEquivalences",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierDiagramCategory",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery": [
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeShapeIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.CosliceFractionTriangleNormalization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.CosliceRoofPasting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.GridOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.JoinReverseBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinReverseFactors",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.PastingCorner",
+        "SerrePositivity.InfinityCategories.Core.PastingCornerCocone",
+        "SerrePositivity.InfinityCategories.Core.PastingShapes",
+        "SerrePositivity.InfinityCategories.Core.PrismOpposite",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.PushoutShape",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerGluing",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingLeftSquareIso"
+      ]
+    }
+  }
+]
