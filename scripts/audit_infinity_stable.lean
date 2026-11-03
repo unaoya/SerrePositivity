@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.AdjunctionExact
 import SerrePositivity.InfinityCategories.Stable.ColimitFamilyExtension
 import SerrePositivity.InfinityCategories.Stable.Filtered.FiberProductCofinality
 import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredBinaryDiagonal
@@ -8298,3 +8299,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_unit_product
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_isWeakHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_homotopyEquivalence
+
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_adjunction
