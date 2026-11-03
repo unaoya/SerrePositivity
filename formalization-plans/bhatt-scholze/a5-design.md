@@ -31,7 +31,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | 原典 | 扱い | Lean の形（§2） | 既存・不足 | 単位 |
 | --- | --- | --- | --- | --- |
 | Rem 4.6 | 定義：(S/A)^perf_Δ ＝ 完全 prism の充満部分圏＋flat 位相 | `PerfectPrismaticSite`（A0）、`perfectFlatTopology` | A0 | A5-1 |
-| Lemma 4.8 | 定理（既存を確認）：完全 (A,I) と任意の (B,J) で A/I → B/J は prism の射に一意に持ち上がる。系：(S/A)^perf ≃ Perfd_{S/}（perfectoid 環への写像の圏、濃度 ≤ κ） | `perfectPrismHomLift`、`perfectSiteEquivPerfectoidUnder` | Thm 3.10 の関手版（G-A5-4） | A5-1 |
+| Lemma 4.8 | 定理（既存を確認）：完全 (A,I) と任意の (B,J) で A/I → B/J は prism の射に一意に持ち上がる。系：(S/A)^perf ≃ Perfd_{S/}（perfectoid 環への写像の圏、濃度 ≤ κ） | `perfectPrismHomLift`、`perfectSiteEquivPerfectoidUnder` | Thm 3.10 の関手版（G-A5-4） | A5-1。**標的の範囲（11-03、BS-D3 の質問への回答）**：原典 Lemma 4.8 は任意の prism (B,J) が標的だが、A0 の site の対象は有界 prism（Def 4.1）で、A5 で使う標的もその範囲なので、`hQ : IsBoundedPrism Q` の特別な場合として述べる（既存 `existsUnique_perfectPrismHomLift_to_bounded`。「定理は特別な場合だけ」の方針、D 番号なし） |
 | Lemma 7.7(3) | 既存（A3-1）：関手的 Δ_S → B | `prismMapOfDiscrete` | A3 | — |
 | 比較写像 | 定義 | `perfectionComparison : Δ_perf ⟶ lim_{(S/A)^perf} O` | S2、G-A4-3 | A5-1 |
 | Prop 8.5 | 定理（S は導来 p 完備な animated、D45 改訂）：⊥ ≤ J ≤ flat の全ての J で比較写像は同値 | `perfectionComparison_isIso`、`perfectionComparison_isIso_topology` | §3 全体 | A5-1〜A5-4 |
