@@ -1,3 +1,6 @@
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs
+import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone
 import SerrePositivity.InfinityCategories.F2.Presentable.PresheafHomWeightTransport
 import SerrePositivity.InfinityCategories.F2.Presentable.PresheafColimitEmptyProducts
 import SerrePositivity.InfinityCategories.F2.Presentable.FullHomColimitDetection
@@ -2695,3 +2698,18 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b §10/14: 追加 move と分割の移動側を定義元モジュールで監査。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs,
+    `SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport]
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"

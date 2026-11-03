@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits

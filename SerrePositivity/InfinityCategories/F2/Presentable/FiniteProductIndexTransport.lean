@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso

@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
 
 /-!
 概要：一般有限添字へ再添字した元の native 有限積錐の各脚と全余錐比較。

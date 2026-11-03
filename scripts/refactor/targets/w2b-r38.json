@@ -6791,18 +6791,63 @@
   },
   {
     "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport",
-    "action": "reimport",
-    "dest": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
     "moved": [],
     "keep": [],
     "attributes": {},
     "candidate": "R38",
-    "note": "§10-1: 未検出辺の削除。内部ビルドで失敗したら実参照に戻す。",
+    "note": "§10/14: 内部ビルドで未検出の辺が実参照と判明。sifted 依存のため F2 へ。宣言本文・名前空間は不変。",
     "imports": {
-      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport": [
         "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions",
         "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts",
-        "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso"
+        "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductNativeCone"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R38",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProjectionCocones",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport"
+      ]
+    },
+    "note": "§10/14: 内部ビルドで未検出の辺が実参照と判明。sifted 依存のため F2 へ。宣言本文・名前空間は不変。"
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+    "moved": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex"
+    ],
+    "keep": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+    ],
+    "attributes": {},
+    "candidate": "R38",
+    "note": "§10/14: 利用元が使う一般の有限添字表示と積図式の2宣言を HL に残し、sifted を要る native cone の4宣言だけ F2 へ。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport"
       ]
     }
   }
