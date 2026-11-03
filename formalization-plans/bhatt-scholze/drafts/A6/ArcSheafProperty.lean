@@ -9,9 +9,16 @@ public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservati
 public import Mathlib.AlgebraicTopology.CechNerve
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import Mathlib.Algebra.Category.Ring.Colimits
+public import Mathlib.Algebra.Regular.Defs
+public import Mathlib.AlgebraicTopology.Quasicategory.Nerve
+public import Mathlib.CategoryTheory.Sites.SheafOfTypes
+public import Mathlib.RingTheory.AdicCompletion.Algebra
+public import Mathlib.RingTheory.Localization.Away.Basic
+public import Mathlib.RingTheory.WittVector.Truncated
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+-- Cor 8.11 は drafts/A5/{PerfectSiteComparison,InterfaceLimitCone}.lean と drafts/Sheaves/GlobalSections.lean を使う。
 -- 本ファイルは drafts/DerivedGeneral/Truncation.lean の IsCoconnectiveAt も使う。
 -- W9-III-08：2a 後は E3 非依存の芯（仮称 CompletedTensorCore）だけを import する（a9-design §7）。
 -- 本ファイルは drafts/A6/ArcSite.lean、drafts/Sheaves/{SheafCondition,CAlgValued}.lean、drafts/A0/PrismaticSite.lean（`ringPresheafToCAlg`）、
@@ -43,7 +50,7 @@ Cor 8.11 の affine 版（記録）、Cor 8.12（A6-4：O と F_T の層性）�
 noncomputable section
 universe u
 open CategoryTheory Limits SSet MonoidalCategory
-open scoped Simplicial
+open scoped Simplicial TensorProduct
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -52,6 +59,7 @@ variable (p : ℕ) [Fact p.Prime] (κ : Cardinal.{u})
 /-! ## 三つの引用（`sorry`） -/
 
 open SerrePositivity.InfinityCategories SerrePositivity.BhattScholze.PerfectoidizationInterface
+open SerrePositivity.DerivedCompletion
 
 /-- 指定した階数の付値環で試す有限族。W とその整域構造を同じ証人として保持する。 -/
 def ValuativeCoverFamily (rank : CommRingCat.{u} → Prop)
@@ -259,14 +267,72 @@ theorem completedTensor_tilt (R S S' : Type u) [CommRing R] [CommRing S] [CommRi
         (algebraMap (tiltRing p R : Type u) _ a)) := by
   sorry -- 非零：Fontaine 表示と完備テンソルの芯。零環：両辺零
 
+/-- 増大項を含む全次数で完全 F_p 代数。p = 0 の形は零環にも適用できる。 -/
+def IsPerfectFpDiagram (B : CosimplicialObject.Augmented CommRingCat.{u}) : Prop :=
+  ((p : B.left) = 0 ∧ PerfectRing B.left p) ∧
+    ∀ k : SimplexCategory, (p : B.right.obj k) = 0 ∧ PerfectRing (B.right.obj k) p
+
+def arcWittFunctor : CommRingCat.{u} ⥤ CommRingCat.{u} where
+  obj A := CommRingCat.of (WittVector p A)
+  map f := CommRingCat.ofHom (WittVector.map f.hom)
+  map_id := by sorry -- 各 Witt 係数で恒等
+  map_comp := by sorry -- map_coeff で合成を比較
+
+def arcTruncatedWittFunctor (n : ℕ) : CommRingCat.{u} ⥤ CommRingCat.{u} where
+  obj A := CommRingCat.of (TruncatedWittVector p n A)
+  map f := CommRingCat.ofHom {
+    toFun := fun x => TruncatedWittVector.mk p (fun i => f.hom (x.coeff i))
+    map_one' := by sorry -- truncate の全射性と WittVector.map の単位保存
+    map_mul' := by sorry -- WittVector.truncate と係数写像の可換性
+    map_zero' := by sorry -- 零の係数はすべて零
+    map_add' := by sorry } -- WittVector.truncate と係数写像の可換性
+  map_id := by sorry -- 係数ごと
+  map_comp := by sorry -- 係数ごと
+
+/-- 増大射を構造射として全次数を B.left 上に置く。 -/
+def augmentedOverBase (B : CosimplicialObject.Augmented CommRingCat.{u}) :
+    CosimplicialObject.Augmented (Under B.left) where
+  left := Under.mk (𝟙 B.left)
+  right := {
+    obj := fun k => Under.mk (B.hom.app k)
+    map := fun g => Under.homMk (B.right.map g) (by sorry) -- 増大射の自然性
+    map_id := by sorry -- Under の射は環の射で決まる
+    map_comp := by sorry } -- 同じく B.right.map_comp
+  hom := {
+    app := fun k => Under.homMk (B.hom.app k) (by simp)
+    naturality := by sorry } -- B.hom.naturality
+
+/-- A 上の各環における d の像で割る。射は構造射との可換性による商への降下。 -/
+def quotientByBaseElement (A : CommRingCat.{u}) (d : A) : Under A ⥤ CommRingCat.{u} where
+  obj T := CommRingCat.of (T.right ⧸ Ideal.span {T.hom.hom d})
+  map {T U} f := CommRingCat.ofHom ((Ideal.span {U.hom.hom d}).quotientMap f.right.hom
+    (by sorry)) -- Under.w によって生成元の像が一致
+  map_id := by sorry -- 商写像の全射性
+  map_comp := by sorry -- 商写像の全射性
+
 /-- 概要：G-A6-5（W9-II-20 で訂正）：augmented 余単体的な完全 F_p 代数 B^• の Čech 複体が完全なら、W(B^•) の Čech 複体も完全で、W(B^•)/d（d は各 W(B^k) で
 正則な distinguished 元）の Čech 複体も完全。正則なのは Witt 環上の d であって tilt 上の d mod p ではない（R が標数 p なら d = p、像は 0）。
 方針：levelwise に W_n、加法群の短完全列 0 → W_{n−1}(B^•) → W_n(B^•) → B^• → 0（V）で帰納、遷移 W_n → W_{n−1} は項ごとに全射なので Rlim = lim（Mittag-Leffler）、
 d の cofiber は d 正則なので通常の商の複体。Mathlib `WittVector` の `verschiebung`・`truncate` の API。「W を交代和微分に直接当てる」のではない。
 規約：—
 使われ方：Čech 複体の tilt。 -/
-theorem witt_exact_of_perfect : True := by trivial
-theorem modD_exact_of_regular : True := by trivial
+theorem witt_exact_of_perfect (B : CosimplicialObject.Augmented CommRingCat.{u})
+    (hB : IsPerfectFpDiagram p B) (hex : AugmentedRingCechExact B) :
+    (∀ n : ℕ, AugmentedRingCechExact
+      ((CosimplicialObject.Augmented.whiskeringObj _ _ (arcTruncatedWittFunctor p n)).obj B)) ∧
+    AugmentedRingCechExact
+      ((CosimplicialObject.Augmented.whiskeringObj _ _ (arcWittFunctor p)).obj B) := by
+  sorry -- V の短完全列で n に帰納し、項ごとに全射な切断塔の Rlim を取る
+
+theorem modD_exact_of_regular (B : CosimplicialObject.Augmented CommRingCat.{u})
+    (hB : IsPerfectFpDiagram p B) (hex : AugmentedRingCechExact B)
+    (d : WittVector p B.left) (hd : IsUnit (d.coeff 1)) (hreg : IsLeftRegular d)
+    (hregTerm : ∀ k : SimplexCategory, IsLeftRegular (WittVector.map (B.hom.app k).hom d)) :
+    let W := (CosimplicialObject.Augmented.whiskeringObj _ _ (arcWittFunctor p)).obj B
+    AugmentedRingCechExact
+      ((CosimplicialObject.Augmented.whiskeringObj _ _ (quotientByBaseElement W.left d)).obj
+        (augmentedOverBase W)) := by
+  sorry -- witt_exact_of_perfect と d の乗法の短完全列。項ごとの正則性により cofiber は通常の商
 
 /-- 概要：G-A6-6：階数 1 の付値環の tilt・untilt：V が完全で a 進完備（a := d mod p）な階数 1 の付値環（R^♭ 上）なら V^♯ := W(V)/d は p 完備な階数 1 の付値環で
 (V^♯)^♭ = V（a = 0 なら d は W(V) で p の単元倍、V^♯ = V）；W が perfectoid な p 完備階数 1 の付値環なら W^♭ は完全な階数 1 の付値環。
@@ -275,8 +341,55 @@ Teichmüller の像で x = b^♯ + ϖc、V の可除性の全順序で x = b^♯
 Prop 2.1.9] の証明と同じ（証明の参照。第四の黒箱ではない）。
 規約：—
 使われ方：§3.1 の 2。 -/
-theorem untilt_rankOneValuationRing : True := by trivial
-theorem tilt_rankOneValuationRing : True := by trivial
+theorem untilt_rankOneValuationRing (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V]
+    [CharP V p] [PerfectRing V p] (hV : ringKrullDim V = 1)
+    (d : WittVector p V) (hd : (wittDeltaStructure p V).IsDistinguished d)
+    (ha : d.coeff 0 = 0 ∨ (d.coeff 0 ≠ 0 ∧ ¬ IsUnit (d.coeff 0)))
+    (hc : IsAdicComplete (Ideal.span {d.coeff 0}) V) :
+    let U := WittVector p V ⧸ Ideal.span {d}
+    IsIntegralPerfectoid U p ∧ IsRankOneCompleteValuationRing p U ∧
+      (∃ hpU : ¬ IsUnit (p : U),
+        letI : Fact (¬ IsUnit (p : U)) := ⟨hpU⟩
+        ∃ e : V ≃+* (tiltRing p U : Type u), e.toRingHom =
+          (tiltRingEquivPreTilt p U).symm.toRingHom.comp (wittQuotientTiltMap p V d)) ∧
+      (d.coeff 0 = 0 → Nonempty (U ≃+* V)) := by
+  sorry -- a ≠ 0 は sharp による可除性と Witt 商の tilt 比較。a = 0 は d が p の単元倍
+
+theorem tilt_rankOneValuationRing (W : Type u) [CommRing W]
+    (hW : IsRankOneCompleteValuationRing p W) (hperf : IsIntegralPerfectoid W p) :
+    let V := (tiltRing p W : Type u)
+    ∃ hV : IsDomain V, @ValuationRing V _ hV ∧ ringKrullDim V = 1 ∧
+      CharP V p ∧ PerfectRing V p := by
+  sorry -- 非零付値環の tilt の値群の対応と Frobenius の逆極限表示
+
+/-- 階数 1 の非零非単元分岐で実際に用いる完備化とその単位。 -/
+theorem arcValuation_completeAt [Fact p.Prime] (V : Type u) [CommRing V] [IsDomain V] [ValuationRing V]
+    [CharP V p] [PerfectRing V p] (hV : ringKrullDim V = 1)
+    (a : V) (ha : a ≠ 0) (hna : ¬ IsUnit a) :
+    let T := AdicCompletion (Ideal.span {a}) V
+    let e := algebraMap V T
+    ∃ hT : IsDomain T, @ValuationRing T _ hT ∧ ringKrullDim T = 1 ∧
+      CharP T p ∧ PerfectRing T p ∧ IsAdicComplete (Ideal.span {e a}) T ∧ e.FaithfullyFlat := by
+  sorry -- a 進位相は階数 1 の付値位相で、完備化への単位は局所単射
+
+/-- 階数 0 の非単元分岐で a = 0 の階数 1 の試験環に移る。 -/
+theorem arcValuation_extendField [Fact p.Prime] (k : Type u) [Field k] [CharP k p] [PerfectRing k p]
+    (a : k) (ha : ¬ IsUnit a) :
+    ∃ (V : CommRingCat.{u}) (hV : IsDomain V) (e : k →+* V),
+      @ValuationRing V _ hV ∧ ringKrullDim V = 1 ∧ CharP V p ∧ PerfectRing V p ∧
+        e.FaithfullyFlat ∧ e a = 0 := by
+  sorry -- k[t^{1/p^∞}] の t の全根の素点で局所化し t 進完備化する。体 k の非単元は零
+
+/-- 二成分を同一の有限添字で表す。 -/
+def tiltArcTarget (R S : Type u) [CommRing R] [CommRing S] (a : tiltRing p R) :
+    ULift.{u} Bool → CommRingCat.{u}
+  | ⟨false⟩ => tiltRing p S
+  | ⟨true⟩ => CommRingCat.of (Localization.Away a)
+
+def tiltArcArrow {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (a : tiltRing p R) :
+    ∀ i, (tiltRing p R : Type u) →+* tiltArcTarget p R S a i
+  | ⟨false⟩ => (tiltMap p f).hom
+  | ⟨true⟩ => algebraMap _ (Localization.Away a)
 
 /-- 概要：{R^♭ → S^♭, R^♭ → R^♭[1/a]}（a := d mod p）は完全 F_p 代数の arc 被覆族（`IsArcCoverFamilyCharP`、階数 ≤ 1 で試す。R → S が perfectoid の arc 被覆のとき）。
 方針（W9-II-21 で分岐を補記）：R^♭ → V。V → V_perf は整・局所・単射で忠実平坦なので V は完全としてよい。(i) a が単元なら第二成分。(ii) V 階数 1、a 非零非単元なら
@@ -285,13 +398,48 @@ V₁ := k[t^{1/p^∞}]_{(t^{1/p^∞})} の t 進完備化（完全・階数 1、
 S → W、V̂ → W^♭ は局所単射で忠実平坦、S^♭ → W^♭。
 規約：—
 使われ方：Prop 8.10。 -/
-theorem tilt_arcCoverFamily : True := by trivial
+theorem tilt_arcCoverFamily {R S : Type u} [CommRing R] [CommRing S]
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p) (f : R →+* S)
+    (hf : IsArcCoverFamily p (fun _ : PUnit.{u + 1} => S) (fun _ => f))
+    (a : tiltRing p R) (ha : IsTiltGenerator p R a) :
+    IsArcCoverFamilyCharP (fun i => (tiltArcTarget p R S a i : Type u)) (tiltArcArrow p f a) := by
+  sorry -- 完全化後、単元は局所化、階数 0 の非単元は arcValuation_extendField。階数 1 の非零非単元は
+        -- arcValuation_completeAt、零は V 自身を untilt。hf と G-A6-3 で得た拡大を tiltMap で戻す
+
+/-- A→T 上で a の像について導来完備化した H⁰ と、その標準射。 -/
+def arcPrincipalH0 {A : CommRingCat.{u}} (a : A) (T : Under A) : CommRingCat.{u} := by
+  letI := principalCompletionCommRing T.right (T.hom.hom a)
+  exact CommRingCat.of (PrincipalCompletionH0 T.right (T.hom.hom a))
+
+def arcPrincipalUnit {A : CommRingCat.{u}} (a : A) (T : Under A) : T.right ⟶ arcPrincipalH0 a T :=
+  CommRingCat.ofHom (principalCompletionUnitRingHom T.right (T.hom.hom a))
+
+def arcPrincipalFunctor {A : CommRingCat.{u}} (a : A) : Under A ⥤ CommRingCat.{u} where
+  obj := arcPrincipalH0 a
+  map {T U} f := CommRingCat.ofHom (Classical.choose
+    (principalCompletion_existsUnique_ringHom T.right (T.hom.hom a) (arcPrincipalH0 a U)
+      (f.right ≫ arcPrincipalUnit a U).hom
+      (by sorry))) -- U の完備化は a の像について完備。Under.w で T の作用に制限
+  map_id := by sorry -- 標準射上で一致する延長の一意性
+  map_comp := by sorry -- 合成も同じ標準射を延長する
 
 /-- 概要：G-A6-7：導来 a 進完備化（a := d mod p）は完全列を保ち、a が可逆な項を殺す；Čech 複体 of {R^♭ → S^♭, R^♭ → R^♭[1/a]} の各項の分解で R^♭[1/a] が混じる項の完備化は零。
 方針：HA/DerivedCompletion（2b 後の名前）。
 規約：—
 使われ方：Prop 8.10。 -/
-theorem cech_completion_kills_inverted : True := by trivial
+theorem cech_completion_kills_inverted [Fact p.Prime] {A B : Type u} [CommRing A] [CommRing B]
+    (f : A →+* B) (a : A) (hA : (p : A) = 0) (hB : (p : B) = 0)
+    [PerfectRing A p] [PerfectRing B p]
+    (hex : AugmentedRingCechExact ((Arrow.mk (CommRingCat.ofHom
+      (f.prod (algebraMap A (Localization.Away a))))).augmentedCechConerve)) :
+    (let X := (Arrow.mk (CommRingCat.ofHom f)).augmentedCechConerve
+     AugmentedRingCechExact ((CosimplicialObject.Augmented.whiskeringObj _ _
+       (arcPrincipalFunctor (A := CommRingCat.of A) a)).obj (augmentedOverBase X))) ∧
+    (∀ (T : Under (CommRingCat.of A)), IsUnit (T.hom.hom a) →
+      ∀ n : ℤ, IsZero ((koszulCompletionComplex T.right
+        (fun _ : Fin 1 => T.hom.hom a)).homology n)) := by
+  sorry -- 完全な増大複体を導来完備化する。有限積分解の混合項では a が可逆で Koszul 塔は零。
+        -- 完全 F_p 代数のテンソル冪は被約で a 冪ねじれは a で消え、各項の完備化は H⁰ に集中する
 
 /-! ## Prop 8.10 -/
 
@@ -299,24 +447,120 @@ theorem cech_completion_kills_inverted : True := by trivial
 方針：tilt（G-A6-4・5）、`tilt_arcCoverFamily`、`cech_exact_of_arcCover_perfect`、`cech_completion_kills_inverted`。
 規約：—
 使われ方：`structurePresheaf_isArcSheaf`。 -/
-theorem cech_exact_of_arcCover_perfectoid : True := by trivial
+theorem cech_exact_of_arcCover_perfectoid {R S : Type u} [CommRing R] [CommRing S]
+    (hR : IsIntegralPerfectoid R p) (hS : IsIntegralPerfectoid S p) (f : R →+* S)
+    (hf : IsArcCoverFamily p (fun _ : PUnit.{u + 1} => S) (fun _ => f)) :
+    AugmentedRingCechExact ((CosimplicialObject.Augmented.whiskeringObj _ _ (ringCompletionFunctor p)).obj
+      (Arrow.mk (CommRingCat.ofHom f)).augmentedCechConerve) := by
+  sorry -- 相対テンソル冪の tilt は completedTensor_tilt。一点族 R♭ → S♭ × R♭[1/a] に
+        -- cech_exact_of_arcCover_perfect、G-A6-7、G-A6-5。零の積環は別扱いで、完備な R,S は単位で戻す
+
+open SerrePositivity.InfinityCategories.Sheaves SerrePositivity.EInfinity
+
+/-- site の opposite を戻し、包含に沿って環とその射を読む。 -/
+def arcPerfdRingFunctor : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ CommRingCat.{u} :=
+  unopUnop (AffPerfd p κ) ⋙ affPerfdInclusion p κ ⋙ affComplForget p κ
+
+/-- ℤ の標準射を備えた環値の図式。 -/
+def arcIntegerAlgebras : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ Under (CommRingCat.of ArcZ.{u}) where
+  obj T := Under.mk (CommRingCat.ofHom
+    ((Int.castRingHom ((arcPerfdRingFunctor p κ).obj T)).comp ULift.ringEquiv.toRingHom))
+  map f := Under.homMk ((arcPerfdRingFunctor p κ).map f) (by sorry) -- 整数上の構造射との可換性
+  map_id := by sorry -- 環への忘却は忠実
+  map_comp := by sorry -- 同じく環の射の合成で判定
+
+def structurePresheaf : Sheaves.Presheaf (AffPerfd p κ)ᵒᵖ (CAlg_R ArcZ.{u}) :=
+  ringPresheafToCAlg ArcZ.{u} (arcIntegerAlgebras p κ)
+
+def homPresheaf (T : Type u) [CommRing T] : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ Type u where
+  obj D := T →+* (arcPerfdRingFunctor p κ).obj D
+  map f := ↾fun l => ((arcPerfdRingFunctor p κ).map f).hom.comp l
+  map_id := by sorry -- 環準同型の恒等射
+  map_comp := by sorry -- 環準同型の合成の結合則
+
+/-- 集合値の通常の前層を nerve 値に読み、S1 の有限積条件に渡す。 -/
+def arcSetNerve {C : Type u} [SmallCategory C] (F : Cᵒᵖ ⥤ Type u) :
+    Sheaves.Presheaf C (nerve (Type u)) where
+  app _ := ↾fun x => (F.mapComposableArrows _).obj x.down
+  naturality := by sorry -- 単体射での制限と F による後合成は可換
+
+/-- ArcSite の PreservesFiniteRingProducts を包含に沿って制限した条件。
+環側の錐が AffCompl で積かどうかを調べ、F は AffPerfd の対象と射にだけ適用する。
+G-A6-12 により有限積（空積も含む）は AffPerfd にあり、この検査でその全てを覆う。 -/
+def PreservesFiniteRingProductsOnPerfd {E : SSet.{u + 1}} [Quasicategory E]
+    (F : Sheaves.Presheaf (AffPerfd p κ)ᵒᵖ E) : Prop :=
+  ∀ (ι : Type u) [Finite ι] (B : ι → AffPerfd p κ) (c : Fan B),
+    Nonempty (IsLimit ((affPerfdInclusion p κ).mapCone c)) →
+      IsLimitCone ((JoinCone.ulift.{u, u + 1}
+        (F1B.nerveCone ((opOp (AffPerfd p κ)).mapCone c))).postcomp F)
+
+theorem structurePresheaf_preservesFiniteRingProducts
+    [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
+    PreservesFiniteRingProductsOnPerfd p κ (structurePresheaf p κ) := by
+  sorry -- G-A6-12 と離散環の有限積は CAlg_ℤ の積であること（零環は終対象）
+
+theorem homPresheaf_preservesFiniteRingProducts
+    [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] (T : Type u) [CommRing T] :
+    PreservesFiniteRingProductsOnPerfd p κ (arcSetNerve (homPresheaf p κ T)) := by
+  sorry -- 有限積環への射は各射影との合成の族に一意に対応する
 
 /-- 概要：Prop 8.10 前半：O（CAlg_ℤ 値、R ↦ R。W9-II-22）は affPerfd_κ 上の arc 層（Čech 層、D-S1）。
 方針：S1 の生成系の補題と `isSheaf_arc_iff_cech`、有限族を R → ∏R_i に置き換え、`cech_exact_of_arcCover_perfectoid`（離散な余単体的環の Tot は Čech 複体）。
 規約：`IsSheaf (arcTopologyPerfd p κ) (structurePresheaf …)`。
 使われ方：Cor 8.11 の affine 版、Cor 8.12。 -/
-theorem structurePresheaf_isArcSheaf : True := by trivial
+theorem structurePresheaf_isArcSheaf [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)] :
+    Sheaves.IsSheaf (arcTopologyPerfd p κ) (structurePresheaf p κ) := by
+  have hbound := hκ.out
+  sorry -- isSheaf_arc_iff_cech の二つの生成系を cover-dense な包含に沿い制限する。
+        -- G-A6-12 と G-A6-4 で積・相対 Čech 項は Perfd にある。積は上の補題、
+        -- 一点被覆は cech_exact_of_arcCover_perfectoid と CAlg_ℤ の忘却による極限判定
 
 /-- 概要：Prop 8.10 後半（affine T）：R ↦ Hom(T, R) は affPerfd_κ 上の集合の arc 層。
 方針：H⁰ の等化子 R = eq(S ⇉ S ⊗̂_R S) に Hom(T, −) を当てる。
-規約：Mathlib の `Presheaf.IsSheaf`（集合値）。
+規約：Mathlib の `Presieve.IsSheaf`（集合値）。
 使われ方：Cor 8.12 の F_T。 -/
-theorem homPresheaf_isArcSheaf (T : Type u) [CommRing T] : True := by trivial
+theorem homPresheaf_isArcSheaf [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
+    (T : Type u) [CommRing T] :
+    Presieve.IsSheaf (arcTopologyPerfd p κ) (homPresheaf p κ T) := by
+  have hbound := hκ.out
+  sorry -- 一点被覆の H⁰ の等化子に Hom(T,−) を適用し、有限射影族には上の積保存を使う
+
+/-- affPerfd_κ/S の環側。S は p 完備でよく、各対象が S→T を持つ。 -/
+abbrev ArcPerfdUnder (S : AffCompl p κ) := StructuredArrow S (affPerfdInclusion p κ)
+
+/-- slice の被覆は、S からの射を忘れた標的上の arc 被覆。 -/
+def arcPerfdSliceTopology (S : AffCompl p κ) : GrothendieckTopology (ArcPerfdUnder p κ S)ᵒᵖ where
+  sieves X := {Q | Q.functorPushforward (StructuredArrow.proj S (affPerfdInclusion p κ)).op ∈
+    arcTopologyPerfd p κ (Opposite.op X.unop.right)}
+  top_mem' := by sorry -- 各標的上の恒等射を持つ
+  pullback_stable' := by sorry -- T→T′ には S→T→T′ を指定して一意に引き戻す
+  transitive' := by sorry -- 同じ射の持ち上げで標的の位相の局所性に帰着
+
+/-- slice 上の O を R→S→T で CAlg_R に持ち上げる。 -/
+def arcSliceAlgebras (R : Type u) [CommRing R] (S : AffCompl p κ)
+    (r : CommRingCat.of R ⟶ (affComplForget p κ).obj S) : ArcPerfdUnder p κ S ⥤ A_R R where
+  obj X := Under.mk (r ≫ (affComplForget p κ).map X.hom)
+  map f := Under.homMk ((affComplForget p κ).map ((affPerfdInclusion p κ).map f.right))
+    (by sorry) -- StructuredArrow.w と r の前合成
+  map_id := by sorry -- 忘却後は恒等射
+  map_comp := by sorry -- 忘却後は環の射の合成
 
 /-- 概要：Cor 8.11 の affine 版（記録、D55）：S_perfd ≃ RΓ_arc(affPerfd_κ/S, O)（slice site の上の β の RΓ）。
 方針：O は層なので RΓ = lim（S2）、lim_{Perfd_{S/}} O = S_perfd（Prop 8.5、A5）。
 規約：fSch・affCompl_κ 上の RΓ との比較はしない。
 使われ方：記録。 -/
-theorem perfectoidization_eq_arcCohomology : True := by trivial
+theorem perfectoidization_eq_arcCohomology
+    [Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
+    (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (hsize : Cardinal.mk R ≤ κ)
+    (S : AffCompl p κ) (r : CommRingCat.of R ⟶ (affComplForget p κ).obj S)
+    (hJ : Sheafification (arcPerfdSliceTopology p κ S) (CAlg_R R))
+    (hE : F2.Presentable.IsPresentable (CAlg_R R)) :
+    let O := ringPresheafToCAlg R
+      (unopUnop (ArcPerfdUnder p κ S) ⋙ arcSliceAlgebras p κ R S r)
+    ∃ e : SSet.Edge (perfectoidizationCone p R (Under.mk r)).vertex
+      (derivedGlobalSections (arcPerfdSliceTopology p κ S) hJ hE O),
+      IsInvertibleEdge e.toTruncated := by
+  sorry -- S は p 完備なので A5 の指定錐の頂点は S_perfd。perfectoidization_isLimit の κ 版と
+        -- structurePresheaf_isArcSheaf の slice への制限、S2 の derivedGlobalSections_of_isSheaf で両極限を比較
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

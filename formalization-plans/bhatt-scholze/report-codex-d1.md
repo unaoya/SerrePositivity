@@ -187,3 +187,24 @@ D1-01 の決定に従い、`drafts/A6/ArcSite.lean` に (1) と一点被覆の `
 - Mathlib の `Arrow.augmentedCechConerve`、`alternatingCofaceMapComplex`、`Function.Exact`、`AsSmall.up/down`、`Localization.AtPrime`・`Ideal.ResidueField`・`IsLocalRing.residue` をソースで確認した。本体では `ordinarySquare`・`IsPullbackSquare`・`PreservesSmallKappaFilteredColimits` と完備テンソルの入口を、drafts では `IsCoconnectiveAt` と `ringPresheafToCAlg` の型を読んだ。1b の二つの剰余の合成と sieve の錐の自然性には理由つきの証明穴を置いた。
 - `completedTensor_tilt` 以降の主張は基準のまま。G-A6-5〜7、Prop 8.10、O と Hom(T, −) の有限積保存、Cor 8.11 の記録は再開後の対象である。ArcSheafProperty 内の `要確認` は D1-03 の1件。
 - 今回の編集は ArcSheafProperty と本報告への追記だけ。ビルド・Lean 実行・型検査は行っていない。
+
+## 第5部（停止点2完了）
+
+開始時の HEAD は main `7fff2bcc6`。作業ツリー・index は空だった。`drafts/A6/ArcSheafProperty.lean` に残っていた10件の `True` を具体化し、O と Hom の有限積保存を一件ずつ加えた。今回の具体化は定理の型と定義までで、証明は理由つきの `sorry` である。
+
+| 宣言 | 型にした内容 |
+| --- | --- |
+| `witt_exact_of_perfect`・`modD_exact_of_regular`（G-A6-5） | 増大項と全次数で p = 0 かつ p 乗が全単射な環の図式 B に対し、B の増大複体が完全なら全ての有限長 W_n(B) と W(B) の増大複体が完全。Witt 関手は交代和を作る前に各環と各構造射に作用する。d は増大項の Witt 元で、第1 Witt 係数を単元とし、増大項の d と全ての構造射による像に正則性を課した。商の図式は各構造射で同じ d を送って割る。証明予定は V の短完全列、全射な切断塔の Rlim、d の乗法の cofiber の順。 |
+| `untilt_rankOneValuationRing`・`tilt_rankOneValuationRing`（G-A6-6） | 完全 a 進完備な階数1付値環 V の distinguished 元 d（a = d.coeff 0）から U = W(V)/(d) の perfectoid 性、階数1と p 完備性、標準係数射を持ち上げた V ≃ U^♭ を述べた。a = 0 なら U ≃ V。逆向きは perfectoid な p 完備階数1付値環 W について W^♭ の整域性・付値環性・階数1・完全性。tilt の値は `tiltRing`。 |
+| `tilt_arcCoverFamily` | 一点 arc 被覆 f から、二成分 `tiltMap p f` と a による局所化の標準射の `IsArcCoverFamilyCharP` を述べた。単元なら局所化、階数1の非零非単元なら V→V̂ の忠実平坦性、階数1で零なら V 自身の untilt、階数0の非単元なら完全体から完全な階数1付値環への忠実平坦な拡大を使う。後二つの階数を混同しないよう完備化と体の拡大に別の補題を置いた。 |
+| `cech_completion_kills_inverted`（G-A6-7） | A→B × A[1/a] の相対増大複体の完全性から、A→B の相対余脈体を各次数で導来 a 進完備化した H⁰ の増大複体の完全性を得る。同時に、a が可逆となる任意の A→T について完備化の Koszul 複体の全次数のホモロジーが零。新しい完備化関手の射は `principalCompletionUnitRingHom` を通る一意延長。 |
+| `cech_exact_of_arcCover_perfectoid`（Prop 8.10） | 一点 arc 被覆 R→S の `Arrow.augmentedCechConerve` を `ringCompletionFunctor p` で次数ごとに完備化し、`AugmentedRingCechExact` を課した。第1次の交叉項は R 上の完備テンソルで、増大項と第0項は完備化単位で R, S に戻る。被覆の仮定に単射性を追加していない。 |
+| O・Hom の有限積保存と層性 | `PreservesFiniteRingProductsOnPerfd` は AffPerfd の錐を包含で AffCompl に送り、その像が有限積なら前層で送った錐が極限であること。G-A6-12 で空積を含む有限積はこの制限に残る。O は標準射 ULift ℤ→T を備えた図式を `ringPresheafToCAlg` に渡した。結論は `Sheaves.IsSheaf (arcTopologyPerfd p κ) …`。Hom(T,−) は集合値の通常の関手で、結論は `Presieve.IsSheaf`。誘導位相では ArcSite の二つの生成系を包含に沿って制限し、積保存と一点被覆の相対 Čech 条件を別々に使う。 |
+| `perfectoidization_eq_arcCohomology`（Cor 8.11、記録） | S は AffCompl の対象とし、S→T を対象とする `StructuredArrow S (affPerfdInclusion p κ)` の opposite 上に slice 位相を置いた。R→S→T による CAlg_R 値の O に S2 の `derivedGlobalSections` を適用。p 完備な S で S_perfd を表す A5 の `perfectoidizationCone` の頂点から、この RΓ への可逆な辺を結論にした。比較に使うのは A5 の `perfectoidization_isLimit` の κ 版。κ の閉性と基底の濃度上限、S2 の層化・presentability のデータを明示した。 |
+
+### 要確認・設計との照合
+
+- 未発見名の仮置き、ArcSheafProperty 内の `要確認`、対象の `: True := …` はいずれも0件。Mathlib の `CosimplicialObject.Augmented.whiskeringObj`、`TruncatedWittVector.mk`、`Ideal.quotientMap`、`StructuredArrow.proj`、`Presieve.IsSheaf` の定義を照合した。本体の `wittDeltaStructure_isDistinguished_iff`、`wittQuotientTiltMap`、一元の Koszul 完備化・単位・普遍性、`ringCompletionFunctor`、drafts の A5 の錐、S1・S2・S4 の定義も照合した。
+- 零環を含む箇所では `CharP B p` の代わりに `(p : B) = 0` と `PerfectRing B p` を使った。`CharP` は n の像が零であることと p∣n の同値を全ての n で要求し、零環で n = 1 とすると成立しない。G-A6-1 を適用するのは設計 §3.1(3) の積 B = S^♭ × R^♭[1/a] への一点族である。a = 0 のとき局所化因子自身に `CharP` は要求しない。基底が零なら図式全体が零。積が零ならその一点被覆の試験射がない場合を別に扱う（非零の完全 F_p 代数には素点の剰余体への試験射がある）。
+- §3 の停止を要する新しい設計差は見つからなかった。Prop 8.10 の一次的な結論には docstring に合わせて増大交代和複体の完全性を選んだ。Cor 8.11 は affPerfd_κ/S の上だけで述べた。A5 の極限性や S1 の生成系の補題など、証明で使う drafts 側の入力は未証明である。
+- 検査は宣言・依存名のソース照合、対象の仮置きの検索、変更パスの確認、`git diff --check`。ビルド・Lean 実行・型検査はしていない。編集は ArcSheafProperty と本報告への追記だけ。停止点3（A8）以降は未着手。
