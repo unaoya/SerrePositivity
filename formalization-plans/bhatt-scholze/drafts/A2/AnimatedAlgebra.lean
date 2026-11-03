@@ -2,7 +2,14 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md §2.1、単位 A2-1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafInfinity
+public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
+public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
+public import SerrePositivity.InfinityCategories.Core.FatJoinTensorDesc
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.OppositeIso
+public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
 public import Mathlib.Algebra.MvPolynomial.Basic
@@ -34,7 +41,7 @@ E3 の `perfd` の始域との接続（`discreteToAnimated`）。
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
-open CategoryTheory SSet
+open CategoryTheory SSet MonoidalCategory
 open scoped Simplicial
 
 namespace SerrePositivity.BhattScholze.Prismatic
@@ -49,10 +56,8 @@ variable (k : Type u) [CommRing k]
 方針：対象を添字で持ち、射は `MvPolynomial (Fin n) k →ₐ[k] MvPolynomial (Fin m) k`。
 規約：小さい圏（Type u）。有限余積は n + m（テンソル積 ＝ 変数の併置）。
 使われ方：P_Σ の生成系、Čech–Alexander の R の範囲（A0 の `cechAlexanderAffine`）。 -/
-structure Poly (k : Type u) [CommRing k] where
+structure Poly (k : Type u) [CommRing k] : Type u where
   n : ℕ
--- W9-I-31：k を構造体の明示パラメータに（section の variable は使われない構造体のパラメータにならない）。対象は ℕ（Type 0）、射は Type u：
--- `SmallCategory` ではなく対象・射の宇宙を分けた instance にするか、対象を `ULift` で Type u に上げる（要確認）。
 
 instance : SmallCategory (Poly k) where
   Hom P Q := MvPolynomial (Fin P.n) k →ₐ[k] MvPolynomial (Fin Q.n) k
@@ -68,7 +73,12 @@ instance : SmallCategory (Poly k) where
 使われ方：`IsSigmaPresheaf` の検証。 -/
 def polyCoproduct (P Q : Poly k) : Poly k := ⟨P.n + Q.n⟩
 
-theorem polyCoproduct_isCoproduct (P Q : Poly k) : True := by trivial -- 要確認：Mathlib の BinaryCofan/IsColimit で
+def polyCofan (P Q : Poly k) : Limits.BinaryCofan P Q :=
+  Limits.BinaryCofan.mk (P := polyCoproduct k P Q)
+    (MvPolynomial.rename (Fin.castAdd Q.n)) (MvPolynomial.rename (Fin.natAdd P.n))
+
+def polyCoproduct_isCoproduct (P Q : Poly k) : Limits.IsColimit (polyCofan k P Q) := by
+  sorry -- 二つの AlgHom の変数像を Fin.addCases でつなぎ、aeval の一意性を使う
 
 /-- 概要：多項式代数の圏の nerve（小さい形状）。
 方針：Mathlib の `nerve`。
@@ -80,7 +90,7 @@ abbrev polyNerve : SSet.{u} := nerve (Poly k)
 
 /-- 概要：単体的可換 k 代数の ∞ 圏 := P_Σ(N(Poly k))。
 方針：F2 の `SigmaPresheafInfinity`。
-規約：SSet.{u+1}。quasicategory 性は F2 の instance（要確認）。
+規約：SSet.{u+1}。quasicategory 性は F2 の instance。
 使われ方：Δ の始域。 -/
 abbrev AnimatedAlgebra : SSet.{u + 1} := SigmaPresheafInfinity (polyNerve k)
 
@@ -89,28 +99,48 @@ abbrev AnimatedAlgebra : SSet.{u + 1} := SigmaPresheafInfinity (polyNerve k)
 `sigmaPresheafInfinityLift`。
 規約：充満忠実（F1 の `YonedaInfinityFullyFaithful`）、像は compact projective（HTT 5.5.8.22）。
 使われ方：Δ_0 の始域、(1) の主張。
-要確認：F1 の Yoneda 射の名前（`yonedaInfinity`）。 -/
+Yoneda の因子化には F2 の `sigmaYonedaInfinityMap` を使う。 -/
 def polyYoneda : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve k) ⟶ AnimatedAlgebra k :=
-  sorry -- sigmaPresheafInfinityLift (yonedaInfinity (polyNerve k)) (表現可能前層の有限積保存)
+  sigmaYonedaInfinityMap (polyNerve k)
 
-theorem polyYoneda_fullyFaithful : True := by trivial -- F1 の Yoneda の充満忠実性
+theorem polyYoneda_fullyFaithful : IsFullyFaithful (polyYoneda k) :=
+  sigmaYonedaInfinityMap_isFullyFaithful _
 
-/-- 概要：P_Σ は sifted 余極限をもち、Yoneda の像で sifted 余極限により生成される（HTT 5.5.8.10）。
-方針：F2 の `PresheafBarRealization`（bar 図式の幾何学的実現）と `SiftedColimitPreservation`。
-規約：主張の形は F2 の既存の定理に合わせる。
-使われ方：Kan 延長の一意性（A2-2）。 -/
-theorem animatedAlgebra_siftedColimits : True := by trivial
+theorem polyNerve_finiteCoproducts (J : Type u) [Finite J]
+    (D : nerve (Discrete J) ⟶ (polyNerve k).op) : HasLimit D := by
+  sorry -- 空族は変数 0、二項は polyCofan。有限族の余積錐を opposite の nerve に移す
+
+/-- P_Σ の小 sifted 余極限と、各頂点の多項式による sifted 表示。 -/
+theorem animatedAlgebra_siftedColimits :
+    HasSmallSiftedColimits (AnimatedAlgebra k) ∧ ∀ v : (AnimatedAlgebra k) _⦋0⦌,
+      ∃ (B : SSet.{u}) (D : B ⟶ polyNerve k)
+        (c : JoinCocone ((SSet.uliftFunctor.{u+1,u}).map D ≫ polyYoneda k)),
+        Quasicategory B ∧ IsSiftedInfinity B ∧ c.vertex = v ∧ IsColimitCone c :=
+  ⟨sigma_hasSmallSiftedColimits _, sigmaPresheaf_siftedPresentation _ (polyNerve_finiteCoproducts k)⟩
 
 /-- 概要：HTT 5.5.8.15：sifted 余極限をもつ ∞ 圏 𝒱 について、sifted 余極限を保つ関手 P_Σ → 𝒱 の制限 Fun^Σ(P_Σ, 𝒱) → Fun(N(Poly), 𝒱) は同値。
 方針：F2 の `SigmaLeftKanAllColimitPreservation`・`SigmaYonedaColimitPreservationCriterion`。
 規約：存在（左 Kan 延長）と一意性（sifted 余極限保存な延長は一意）を分けて述べる。
 使われ方：A2-2 の `derivedPrismaticCohomology` の定義と性質。 -/
 theorem exists_siftedExtension {V : SSet.{u + 1}} [Quasicategory V]
-    (hV : True) -- 要確認：V が sifted 余極限をもつことの述語
-    (F : (SSet.uliftFunctor.{u + 1, u}).obj (polyNerve k) ⟶ V) :
-    ∃ G : AnimatedAlgebra k ⟶ V, True ∧ -- G は sifted 余極限を保ち、polyYoneda ≫ G ≃ F
-      True := by
-  sorry -- F2 の左 Kan 延長の存在と HTT 5.5.8.15
+    (hV : HasSmallSiftedColimits V)
+    (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) :
+    ∃ G : AnimatedAlgebra k ⟶ V, PreservesSmallSiftedColimits G ∧ Nonempty (FunctorIso (polyYoneda k ≫ G) F) := by
+  obtain ⟨G, β, hβ, e⟩ := sigma_exists_leftKanExtension_with_recovery (polyNerve_finiteCoproducts k) hV F
+  exact ⟨G, sigmaLeftKanExtension_preservesSmallSiftedColimits β hβ, e⟩
+
+theorem siftedRestriction_equivalence {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V) :
+    IsQCatEquivalence (sigmaSiftedContinuousRestriction (polyNerve k) V) :=
+  sigmaSiftedContinuousRestriction_isQCatEquivalence _ (polyNerve_finiteCoproducts k) V hV
+
+/-- 多項式上の関手を指定された回収同型つきで延長する。 -/
+def siftedLan {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V)
+    (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) := (exists_siftedExtension k hV F).choose
+
+def siftedLanIso {V : SSet.{u+1}} [Quasicategory V] (hV : HasSmallSiftedColimits V)
+    (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ V) :
+    FunctorIso (polyYoneda k ≫ siftedLan k hV F) F :=
+  (exists_siftedExtension k hV F).choose_spec.2.some
 
 /-! ## 離散環の埋め込み -/
 
@@ -118,16 +148,40 @@ theorem exists_siftedExtension {V : SSet.{u + 1}} [Quasicategory V]
 方針：`Under (CommRingCat.of k) ⥤ (Poly k)ᵒᵖ ⥤ Type u`。
 規約：有限余積を積へ送る（Hom(P ⊗ Q, R) = Hom(P, R) × Hom(Q, R)）。
 使われ方：`discreteToAnimated`。 -/
+def polyAlgebras : Poly k ⥤ Under (CommRingCat.of k) where
+  obj P := BhattScholze.PerfectoidizationInterface.ofAlgebra k (MvPolynomial (Fin P.n) k)
+  map f := Under.homMk (CommRingCat.ofHom f.toRingHom) (by ext a; exact f.commutes a)
+  map_id := by sorry -- 係数と全変数で恒等
+  map_comp := by sorry -- AlgHom の合成
+
+def polyAlgebraNerve : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ nerve (Under (CommRingCat.of k)) where
+  app n := ↾fun x => ((polyAlgebras k).mapComposableArrows _).obj x.down
+  naturality := by sorry -- 射列の制限と後合成は可換
+
 def discretePresheaf : Under (CommRingCat.of k) ⥤ ((Poly k)ᵒᵖ ⥤ Type u) :=
-  sorry -- R ↦ (P ↦ (MvPolynomial (Fin P.n) k →ₐ[k] R))
+  yoneda ⋙ (Functor.whiskeringLeft _ _ _).obj (polyAlgebras k).op
 
 /-- 概要：集合値前層を空間値前層（`PresheafInfinity`）の頂点として読む（離散空間）。
 方針：集合値前層の 1 圏の nerve から `PresheafInfinity (polyNerve k)` への射（離散埋め込み）。
 規約：—
 使われ方：`discreteToAnimated`。
-要確認：F1/F2 に「集合値前層の nerve → PresheafInfinity」の射があるか。なければ `SpaceInfinity` の離散埋め込みと ihom で作る。 -/
+離散 Kan 複体を用いて同時評価の nerve をカリー化する。 -/
+def discreteSpaceFunctor : Type u ⥤ KanObject.{u} where
+  obj T := ⟨nerve (Discrete T), F2.Compact.discreteNerve_kanComplex T⟩
+  map f := nerveMap (Discrete.functor (fun t => Discrete.mk (f t)))
+  map_id := by sorry -- 離散 nerve のラベルで判定
+  map_comp := by sorry -- ラベル写像の合成
+
+def setPresheafEvaluation :
+    nerve ((Poly k)ᵒᵖ ⥤ Type u) ⊗ (SSet.uliftFunctor.{u+1,u}).obj (nerve (Poly k)ᵒᵖ) ⟶ SpaceInfinity.{u} where
+  app n := ↾fun x => enrichedFunctorOfOrderDiagram
+    ((⟨ULift.down, fun _ _ h => h⟩ : ULift.{u} (Fin (n.unop.len + 1)) →o Fin (n.unop.len + 1)).toFunctor ⋙
+      (x.2.down.prod' x.1) ⋙ (uncurry.obj (evaluation (Poly k)ᵒᵖ (Type u))) ⋙ discreteSpaceFunctor)
+  naturality := by sorry -- 二つの射列の同時制限は評価の射列の制限
+
 def discretePresheafEmbedding : nerve ((Poly k)ᵒᵖ ⥤ Type u) ⟶ PresheafInfinity (polyNerve k) :=
-  sorry
+  curryTensorRight ((𝟙 _ ⊗ₘ (SSet.uliftFunctor.{u+1,u}).map (F1B.nerveOppositeIso (Poly k)).inv) ≫
+    setPresheafEvaluation k)
 
 /-- 概要：離散 k 代数の ∞ 圏（E3 の `algebraNerve k`）から animated 代数への埋め込み R ↦ (P ↦ Hom_k(P, R))。
 方針：`nerveMap (discretePresheaf k) ≫ discretePresheafEmbedding k` を、有限積保存（`IsSigmaPresheaf`）の検証つきで
@@ -135,18 +189,43 @@ def discretePresheafEmbedding : nerve ((Poly k)ᵒᵖ ⥤ Type u) ⟶ PresheafIn
 規約：E3 の `perfd` の始域はこの合成で Δ に接続する。
 使われ方：A4（S_perfd の定義域）、E3。 -/
 def discreteToAnimated : nerve (Under (CommRingCat.of k)) ⟶ AnimatedAlgebra k :=
-  sorry -- sigmaPresheafInfinityLift (nerveMap (discretePresheaf k) ≫ discretePresheafEmbedding k) (有限積保存)
+  sigmaPresheafInfinityLift (nerveMap (discretePresheaf k) ≫ discretePresheafEmbedding k) (by
+    sorry) -- Hom(∐ P_i,S) は Hom(P_i,S) の積、空族は一点
 
 /-- 概要：多項式代数 R = k[X_n] の離散埋め込みは Yoneda j(n) に一致。
 方針：Hom_k(P, k[X_n]) は表現可能前層。
 規約：同値（頂点の同型）で述べる。
 使われ方：(1) を離散 R へ移す、A0 の Δ との接続。 -/
-theorem discreteToAnimated_poly (n : ℕ) : True := by trivial
+theorem discreteToAnimated_poly (n : ℕ) :
+    Nonempty (VertexIso ((discreteToAnimated k).app _ (nerveVertex ((polyAlgebras k).obj ⟨n⟩)))
+      ((polyYoneda k).app _ (ULift.up (nerveVertex (⟨n⟩ : Poly k))))) := by
+  sorry -- P↦Hom(P,k[X₁,…,Xₙ]) は指定された表現可能前層
 
 /-- 概要：離散埋め込みは充満忠実。
 方針：Hom_k(k[X_n], R) = R^n の Yoneda 的な議論（P_Σ の射は生成系で決まる）。
 規約：—
 使われ方：Δ の離散 R での値が R だけで決まること。 -/
-theorem discreteToAnimated_fullyFaithful : True := by trivial
+theorem discreteToAnimated_fullyFaithful : IsFullyFaithful (discreteToAnimated k) := by
+  sorry -- 離散前層間の写像空間は離散。多項式演算を保つラベル写像は k 代数準同型
+
+/-- 0 切り捨ては離散な k 代数への反射、その単位は X→π₀X。 -/
+def animatedPiZeroAdjunction : Σ L : AnimatedAlgebra k ⟶ nerve (Under (CommRingCat.of k)),
+    QCatAdjunction L (discreteToAnimated k) := by
+  sorry -- 各多項式で連結成分を取り、有限積保存な集合値前層を k 代数に戻す
+
+abbrev animatedPiZero := (animatedPiZeroAdjunction k).1
+def animatedPiZeroUnit := (animatedPiZeroAdjunction k).2.unitHom
+
+/-- 離散多項式代数の E∞ 実現を sifted 延長する。 -/
+def animatedCAlgRealization : AnimatedAlgebra k ⟶ EInfinity.CAlg_R k :=
+  siftedLan k (by sorry) -- G12：CAlg(k) は小さい sifted 余極限をもつ
+    (polyAlgebraNerve k ≫ EInfinity.Perfectoidization.algebraEmbedding k)
+
+/-- A4 が離散入力へ制限するときの始域の同定。 -/
+def discreteRealizationIso :
+    FunctorIso (discreteToAnimated k ≫ animatedCAlgRealization k)
+      (EInfinity.Perfectoidization.algebraEmbedding k) := by
+  sorry -- 多項式分解の実現。CAlg の sifted 余極限を底の複体で計算すると S[0] に戻り、
+        -- 増大写像は S とその準同型に自然
 
 end SerrePositivity.BhattScholze.Prismatic

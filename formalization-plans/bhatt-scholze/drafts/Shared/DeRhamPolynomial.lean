@@ -47,11 +47,12 @@ abbrev Poly : Type u := MvPolynomial T k
 方針：`exteriorPower k i (T → k)` を P 上に係数拡大。
 規約：i > #T なら零。
 使われ方：de Rham 複体の項。 -/
-def forms (i : ℕ) : Type u :=
-  sorry -- TensorProduct k (Poly k T) (exteriorPower k i (T → k))
+def forms (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (i : ℕ) : Type u :=
+  sorry -- TensorProduct k (Poly k T) (exteriorPower k i (T → k))。11-03（BS-D4 の D4-01）：k・T を明示引数に（body が sorry だと section 変数が落ちる）
 
 instance (i : ℕ) : AddCommGroup (forms k T i) := sorry
 instance (i : ℕ) : Module (Poly k T) (forms k T i) := sorry
+instance (i : ℕ) : Module k (forms k T i) := sorry
 
 /-- 概要：dX_t ∈ Ω^1。
 方針：1 ⊗ e_t。
@@ -122,7 +123,23 @@ theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
 方針：係数拡大。d は **k 線形な連続微分**として完備化へ延びる（偏微分の連続性）。P^∧ 線形ではない（d(X) = dX ≠ X·d(1) = 0、W9-I-22）。外積は P^∧ 線形。
 規約：原典の Ω^i_{R/(A/I)}（R = A/I⟨X⟩）はこれ（D26）。
 使われ方：A1 の HT 比較の対象 R = (A/d)⟨X⟩。
-要確認：k⟨X_T⟩ の表し方（導来 p 完備化の H⁰、E3 の `completionRing` と同じ）。 -/
-def completedForms (i : ℕ) : Type u := sorry
+**D4-01（11-03、BS-D4 の質問への回答）**：これは **H⁰ の（古典的）完備化**で、A1 の有界 prism（k = A/d は有界 p 冪ねじれ）では導来 p 完備化と一致する。
+A2 の HT filtration（一般の k、D(k)_{p-comp} 内）では H⁰ を取ると導来完備化の負次数を失う（k の p 冪ねじれが有界でないと LΛ_p(自由加群) は離散でない）ので、
+A2 は通常の `forms` を `discreteEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施した対象を使い、有界 p 冪ねじれの下でだけ `completedForms` と同定する
+（`completedForms_eq_derivedCompletion_of_boundedTorsion`）。k⟨X_T⟩ は `PrincipalCompletionH0 (Poly k T) p`（E3 の `completionRing` と同じ道具）。 -/
+abbrev completedPoly (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) : Type u :=
+  SerrePositivity.DerivedCompletion.PrincipalCompletionH0 (Poly k T) (p : Poly k T)
+def completedForms (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) (i : ℕ) : Type u :=
+  sorry -- completedPoly k T p ⊗_{Poly k T} forms k T i（有限自由なので = PrincipalCompletionH0 (forms k T i) p）
+instance (p i : ℕ) : AddCommGroup (completedForms k T p i) := sorry
+instance (p i : ℕ) : Module (completedPoly k T p) (completedForms k T p i) := sorry
+instance (p i : ℕ) : Module k (completedForms k T p i) := sorry
+
+/-- 概要：k の p 冪ねじれが有界（例：有界 prism の A/d）なら、`forms k T i` の導来 p 完備化（DerivedGeneral `completion`、D(k) の対象）は離散で、
+`completedForms k T p i` の `discreteEmbedding` の像と `VertexIso`。A1 はこの同定で設計の Ω̂ を使い、A2 は導来側を使う。
+方針：有界ねじれの自由加群の導来完備化は離散で古典的完備化（a0-design §5.1 の 1 の計算と同じ）。
+規約：基盤待ち（DerivedGeneral の `completion` の引数（p 進、d = 0 か）と `discreteEmbedding` の形に合わせる）。
+使われ方：A1-1・A1-3（Ω̂）、A2 HodgeTateFiltration の gr との比較。 -/
+theorem completedForms_eq_derivedCompletion_of_boundedTorsion : True := by trivial -- 基盤待ち
 
 end SerrePositivity.DeRham

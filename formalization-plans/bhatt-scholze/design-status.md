@@ -9,6 +9,10 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 
 ## 1. 状態
 
+**Codex レビュー W9（2026-11-02〜03）完了：条件付き妥当**（段 I〜III、12 論点すべて「妥当」、A9 は実施条件つき）。条件は W9-III-08 の実施（CompletedTensor の芯の分離・有限直積の
+E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W9-I-01…39、W9-II-01…16、W9-III-01・04・08 の計 14 件で、すべて訂正または方針決定済み。sorry は 194 宣言（恒久的な引用 3）。
+詳細は §5 と a9-design §8。
+
 | 単位 | 設計書 | 骨組み（drafts） | 紙の検証 | 中身 |
 | --- | --- | --- | --- | --- |
 | ∞ 層 S1 層条件 | infinity-sheaves-design §1・§3 | Sheaves/SheafCondition | — | C（JoinCone.ulift、生成系で十分の補題） |
@@ -18,8 +22,8 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | ∞ 層 S5 完全性 | 同 §1 の 5 | 未 | — | C（G7） |
 | ∞ 層 S6 κ | 同 §5 | A0/PrismaticSite の `essentiallySmall` | 済（a0 §5.1 の 4） | B（構造の移送） |
 | ∞ 層 S7 D(A) への適用 | 同 §4 G3 | 未 | — | C |
-| A0-1 site・Not 4.16 | a0-design §2.1〜2.4・2.7 | A0/PrismaticSite | 済（κ） | A（4 件）・B（κ 不変性の形） |
-| A0-2 Čech–Alexander | a0-design §2.8 | A0/CechAlexander | 済（弱始性・余積） | A（1 件）・B（R の形、cechKernel、型合わせ） |
+| A0-1 site・Not 4.16 | a0-design §2.1〜2.4・2.7 | A0/PrismaticSite（BS-D1 停止点 4：cutoff 不変性は HasEnvelopes 仮定で CechAlexander に、残る `True` は `prismaticCohomologyFrobenius` 1 件） | 済（κ） | A（4 件）・B（κ 不変性の形） |
+| A0-2 Čech–Alexander | a0-design §2.8 | A0/CechAlexander（BS-D1 停止点 4 済：余積は標準頂点の脚 §2.8′、`cechNerveData`、Tot 比較、Rem 4.19 の模型と底変換） | 済（弱始性・余積） | A（1 件）・B（R の形、cechKernel、型合わせ） |
 | A0-3a Def 2.42 | a0-design §2.5 | A0/PrismaticEnvelope | — | A（Koszul の名前） |
 | A0-3c Prop 3.13 の定義と変数の場合 | a0-design §2.5 | A0/PrismaticEnvelope | 済（a0 §5.1 の 1・2） | A（完備テンソル）・B（閉包の定義） |
 | A0-3b Lemma 3.7(2)(3) | a0-design §2.6 | 未 | 自由加群の場合は済（a0 §5.1 の 1） | D |
@@ -29,60 +33,60 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A1-4 Prop 6.2・Thm 6.3 | a1-design §2.4・2.5・§3 | A1/HodgeTateComparison | 未（a1 §8 の 5〜7） | A（Flat の形）・D（G-A1-4・5・13） |
 | A1-2 結晶側の対象 | a1-design §2.3 | 未 | 未（a1 §8 の 1・2） | E |
 | A1-3 Lemma 5.4・Thm 5.2 β・Cartier・Cor 5.5 | a1-design §3 の 3〜6 | 未 | 未（a1 §8 の 3・4） | E |
-| A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
-| A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology | — | C（G-A2-3・4）、G-A1-11 |
+| A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra（BS-D4 停止点 1 済、11-03：`True` 0 件） | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
+| A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology（BS-D4 停止点 1 済：`True` 0 件。`prismaticCohomologyCAlg`＝A5 の第 0 脚、`derivedPrismaticFrobenius`＝A4/A7 の Frobenius の行き先、要確認は G-A2-3・9 の CAlg 反射・G12・Shared の Tot・A0/S2 の関手性） | — | C（G-A2-3・4）、G-A1-11 |
 | G-A1-11 CAlg 値の層・RΓ、模型の E∞ 構造 | a1-design G-A1-11、a2-design §2.2 | Sheaves/CAlgValued、Shared/CosimplicialEInfinity | — | C（G12、U の保存性、Barratt–Eccles の余鎖作用の形） |
-| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | A2/HodgeTateFiltration | 未（a2 §7 の 2） | C（G-A2-2） |
+| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | A2/HodgeTateFiltration（BS-D4 停止点 1 済：`True` 0 件。gr は導来 p 完備化、D4-01） | 未（a2 §7 の 2） | C（G-A2-2） |
 | G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
 | G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
-| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor | 未（a2 §7 の 3・4） | C・D |
+| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor（BS-D4 停止点 1 済：`True` 0 件。(4)(5)・D32、要確認は ScalarRestriction の随伴の単位） | 未（a2 §7 の 3・4） | C・D |
 | A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
 | A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
 | A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |
 | A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
-| A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
-| A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
+| A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization（BS-D2 停止点 1 済、11-03：`True` 0 件。塔は `cAlgRestrictScalars φ_A` の正の反復、Frobenius の成分は A2 待ちの仮置き `discreteDeltaFrobenius`、`perfectPrismRing` = A_inf(R) = W(PreTilt R)） | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
+| A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields（BS-D2 停止点 1 済：`True` 0 件。界面の欄の型に合わせた） | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
 | A4-2 Lemma 8.4 | a4-design §2.2 | A4/Perfectoidization | 済（a4 §5 の P⁰ の筋） | G-A4-1、A（Lemma 2.34 の名前）、A3-2 |
 | G-A4-1 E∞-F_p 代数の P⁰ | a4-design §3 | Shared/EInfinityPowerOperation | — | C（置き場所は `EInfinity/PowerOperation/`、M14。担当は A4 の中身の段階で。Barratt–Eccles の作用の型） |
-| A4-4 Example 8.3 | a4-design §2.4 | A4/Perfectoidization | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
-| A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
-| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
+| A4-4 Example 8.3 | a4-design §2.4 | A4/AfterComparison（BS-D2 停止点 1 済） | — | A5 の後（Prop 8.5 を使う）。A6 で要るか確認 |
+| A5-1 完全 site・Lemma 4.8・比較写像・Prop 8.5 の主張と系・E3 の limitCone | a5-design §2 | A5/PerfectSiteComparison、A5/InterfaceLimitCone（BS-D3 停止点 1 済、11-03：PerfectSite の `True` 0 件。Lemma 4.8 は有界標的版、第 0 脚は A0/S2 の CAlg 値 RΓ の射影待ち、Čech データは `CechNerveDataLarge`／小さい版の使い分け）；PerfectSiteComparison も停止点 2 で済（Prop 8.5 は比較射の `IsIso`、系 4 は切り捨て単位の像の可逆性。要確認 3：G12、BS-D4 の離散 Frobenius、A2 の π₀） | — | A（`PerfectPrismHomLift`、Cor 7.3 の対象、`SmallModel`）、C（S2・S3）、D（A0-3d の制限 G-A5-5） |
+| A5-2 semiperfectoid の場合・G-A5-17 | a5-design §3.4 | A5/SemiperfectoidCase（BS-D3 停止点 1 済：`True` 0 件、`universalPerfectoidRing` は Cor 7.3 の選択） | 未（a5 §8 の 5） | G-A5-10・11・17、A2-3、A3-4 |
 | A5-4 弱始対象・filtered 余極限・降下の形式部分 | a5-design §3.1〜3.3 | A5/WeaklyInitialAndDescent | 未（a5 §8 の 1〜4） | G-A5-2・7・8・14 |
-| A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 済（a5 §8 の 6 は W9 続き 6 の G-A5-6′ の計算、7 は W9 ○） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
-| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
-| A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
-| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
-| A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
+| A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable（D3-04 の `IsDescendableOver`）、A5/StrongDescent（BS-D3 停止点 2 済、11-03：`True` 0 件。要確認 5：M15 の Mod_D、係数拡大（ScalarRestriction に追加、D3-05）、A1-5 の三つ） | 済（a5 §8 の 6 は W9 続き 6 の G-A5-6′ の計算、7 は W9 ○） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
+| A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite（BS-D1 停止点 1 済、11-03：`True` 0 件。D1-01 sieve の圏、D1-02 K₁ ⊔ K_ext、S1-E は基盤待ち） | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
+| A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision（BS-D3 停止点 3 済、11-03：SheafOfSetsExcision の `True` 0 件。延長は比較同値の `.functor`（D3-06）、S8 の離散入口（D3-07）） | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
+| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 済、11-03：`True` 0 件。三引用、G-A6-1、tilt（D1-03 の `tiltRing`）、G-A6-4〜7、Prop 8.10 は増大交代和複体の完全性、O は `CAlg_R (ULift ℤ)` 値、O と Hom の有限積保存、Cor 8.11 は affPerfd_κ/S 上の可逆な辺） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
+| A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision（BS-D3 停止点 3 済：Excision の `True` 0 件。Cor 8.12 は界面の IsPullbackSquare、証明は S8 `sectionsOf_pushout` の引き戻し述語待ち） | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
-| A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
-| A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
-| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
-| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
-| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分は Codex 未） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
-| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
+| A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization（BS-D2 停止点 2 済、11-03：`True` 0 件。Prop 8.13 は完備 CAlg の押し出しからの指定比較射の可逆性。A2 待ちの仮置き 5） | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
+| A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty（BS-D2 停止点 2 済：F(η_S) = η_P を先に置き、自己テンソルの同値と単位の合成＝乗法） | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
+| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity（BS-D2 停止点 3 済、11-03：`True` 0 件。一般 J の核 K、D2-02 の底変換は完備テンソルの像） | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
+| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity（BS-D2 停止点 3 済：`True` 0 件） | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
+| A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification（BS-D1 停止点 3 済、11-03：`True` 0 件。普遍同相は Spec 全単射＋剰余体の純非分離、核は nil、層は `StratumRing I g = (R/√I)[1/g]`、結論 (1)(2)(3) を ∃ 文に） | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分の証明は中身の段階） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
+| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness（BS-D2 停止点 3 済：`True` 0 件。T・T̂・A_λ の型、Cor 8.12 は S → T̂、G-A8-8 は一般の整代数への帰着でだけ） | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模：41 本、約 5,200 行（`sorry` 198、置き場の `True` 259）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
+骨組みの規模（11-03、BS-D3 後）：51 本、約 10,200 行（結論が `True` の名前つき宣言 114）。BS-D1（49）・BS-D2（83）・BS-D3（88）で A0・A4〜A8 の仮置みを具体的な型にした（報告 `report-codex-d1/2/3.md`、D1-01〜03・D2-01〜02・D3-01〜07 は設計側で解決）。残りは A1〜A3（62）→ BS-D4、基盤（Shared 30・Sheaves 9・DerivedGeneral 13）→ W2b 後。
 
 ## 2. 要確認の分類
 
-### (A) 基盤の名前を探すだけ（中身を書く段階の最初に。ビルドなしで grep で済む）
+### (A) 基盤の名前を探すだけ（11-03 に grep で確認。ビルドなし）
 
-| 箇所 | 探すもの |
-| --- | --- |
-| Shared/CosimplicialCupProduct:80 | CommRingCat の余単体的対象 → ModuleCat の忘却（`forget₂`） |
-| Sheaves/GlobalSections:84 | 関手 ∞ 圏 `(ihom K).obj E` の頂点 ↔ 射 `K ⟶ E`（Core の `functorVertex` の逆） |
-| Sheaves/GlobalSections:115 | `IsReflectiveSubcategory` の中身から反射関手を取り出す形 |
-| Sheaves/GlobalSections:138 | E の辺の可逆性の述語（`FunctorIso` か同値辺） |
-| Sheaves/SheafCondition:98 | `uliftFunctor` と join の可換性（`JoinCone.ulift`。F2/Presentable の宇宙比較） |
-| A0/PrismaticSite:230 | `uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C`（ULift の圏の nerve との比較） |
-| A0/PrismaticSite:249 | D(A) の `⊗^L A/d` |
-| A0/PrismaticSite:260 | φ_A に沿うスカラー制限 D(A) → D(A) |
-| A0/PrismaticEnvelope:52 | Koszul 複体のホモロジー（HA/Koszul*） |
-| A0/PrismaticEnvelope:156 | 完備テンソル（BS/Perfectoidization/CompletedTensor、HA/DerivedCompletion/CompletedBaseChange*） |
-| A0/CechAlexander:88、Shared/DeRhamPolynomial:125 | 一変数の導来 p 完備化 H⁰（E3 の `completionRing`） |
-| A1/HodgeTateComparison:106 | Frobenius に沿う `Module.Flat` の述べ方 |
+| 箇所 | 探すもの | 結果（11-03） |
+| --- | --- | --- |
+| Shared/CosimplicialCupProduct:80 | CommRingCat の余単体的対象 → ModuleCat の忘却（`forget₂`） | Mathlib `forget₂ CommRingCat RingCat`・`forget₂ CommRingCat AddCommGrpCat`（Algebra/Category/{Ring,Grp}/Basic）。余単体的対象は `Functor.comp`（whiskering）。A 加群構造は (B) の決定どおり基底 A の作用を別に付ける |
+| Sheaves/GlobalSections:84 | 関手 ∞ 圏 `(ihom K).obj E` の頂点 ↔ 射 `K ⟶ E` | `Core/Equivalence.lean` `functorVertex`、逆向きを含む同値は `Core/EquivalencePath.lean` `functorVertexEquiv : (X ⟶ Y) ≃ ((ihom X).obj Y) _⦋0⦌` |
+| Sheaves/GlobalSections:115 | `IsReflectiveSubcategory` から反射関手を取り出す形 | `F1B/Localization/Reflective.lean`：`IsReflectiveSubcategory X P := Nonempty (ReflectiveSubcategory X P)`。構造 `ReflectiveSubcategory` を `Classical.choice` で取り出して関手を使う |
+| Sheaves/GlobalSections:138 | E の辺の可逆性の述語 | `FunctorIso`（Core.lean で export。F1・HomotopyLimits・Derived・Stable で使用） |
+| Sheaves/SheafCondition:98 | `uliftFunctor` と join の可換性（`JoinCone.ulift`） | `JoinCone` は F1・F1B・Derived・Stable；`uliftFunctor` の比較は `Stable/UniverseVertexIso.lean`・`Stable/UniverseHorns.lean`・`ModelBridge/HA/UniverseLiftAnodyne.lean`。join との可換性そのものは未発見（なければ新規、S1 の中身で） |
+| A0/PrismaticSite:237 | `uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` | `SmallModel`・`equivSmallModel` は Mathlib（EssentiallySmall）。比較射は未発見：新規（nerve の関手性と `uliftFunctor` の単位） |
+| A0/PrismaticSite:256 | D(A) の `⊗^L A/d` | `HA/DerivedQuotientBaseChange.lean` `derivedTensorQuotientModuleIso`・`derivedTensorQuotientAlgebraIso`、`HA/DerivedQuotientTensorAugmentation.lean`。D(A) の ∞ 版は Derived/ のテンソル（2b 後の名前） |
+| A0/PrismaticSite:267 | φ_A に沿うスカラー制限 D(A) → D(A) | **訂正（11-03、BS-D2 の質問）**：`Derived/ScalarRestrictionNerve.lean` の `dgNerveRestrictScalarsIso` は dg 圏の Hom の係数制限の同型で、D(T) → D(S) の関手ではない。∞ 関手 f_* は未発見（底変換 f^* は `Derived/BaseChange.lean` の `derivedInfinityBaseChange`）。基盤待ちの宣言 `derivedInfinityRestrictScalars` を `drafts/DerivedGeneral/ScalarRestriction.lean`（M13）に置いた |
+| A0/PrismaticEnvelope:52 | Koszul 複体のホモロジー | HA の Koszul 群：`KoszulLinearDuality.lean`（`koszulLinearDualHomologyIso`）、`DerivedQuotientKoszul.lean`、`AlgebraKoszul*.lean`、`BoundedTermKoszulAcyclic.lean`。名前は 2b の改名表の後に確定 |
+| A0/PrismaticEnvelope:156 | 完備テンソル | `BhattScholze/Perfectoidization/CompletedTensor.lean`（分割後は芯、`completed-tensor-split.md`）、`HA/DerivedCompletion/{CompletedBaseChangeH0Coefficient,AlgebraBaseChangeTensorUnit}.lean` |
+| A0/CechAlexander:88、Shared/DeRhamPolynomial:125 | 一変数の導来 p 完備化 H⁰ | `completionRing`（`BhattScholze/Perfectoidization/Derived/Interface.lean`）、`PDCompletionH0 p d := PairCompletionH0 R (p) d`（`HA/DerivedCompletion/PDCompletion.lean:29`） |
+| A1/HodgeTateComparison:106 | Frobenius に沿う `Module.Flat` の述べ方 | 用例：`HA/Tor.lean`、`HA/PerfectResidueTensorRegular.lean`、`BhattScholze/Delta/DividedPower/PrincipalDP.lean`。Frobenius に沿う形は `RestrictScalars` か `Algebra` インスタンスで（既存の Frobenius 平坦性の宣言は未発見、A1 の中身で） |
 
 ### (B) BS 側で決める設計の細部（決定：2026-11-02）
 
@@ -162,7 +166,15 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う。E3 を消す組み立て（Inputs の証明を Assembly に置換）で循環するので、Fontaine による完備テンソルの芯
 （`integralPerfectoid_completedTensor_pure_and_h0` まで）を E3 非依存のモジュール（仮称 `CompletedTensorCore`）へ切り出し、`Almost/Lemma103` の依存をそこへ向け、有限直積は
 直接証明に替えたい。2a が Perfectoidization* を Perfectoid/ へ統合するので、**2a に含めるか 2a 直後の最初の作業**にしてほしい（BS は 2a まで BS の Lean を触らない）。
-詳細は a9-design §7。
+詳細は a9-design §7。**仕様書 `completed-tensor-split.md`（11-03）**：移す節・差し替える定理・利用側 9 本・直接証明の筋・到達性の確認片を記した。
+  **返答（11-03、coordination.md 588f589f3）**：2a には入れない。**2a 取り込み直後（11-05）に BS-W10 作業 A として BS の Codex で**行う。BhattScholze/ と利用側の import 行（CLMST 5 本は import 行だけ）、単体 `lake build`、全ビルドは 2b（11-06）に便乗。
+- **基盤 66 宣言の分担（11-03 提案 → 同日返答、coordination.md 588f589f3、計画 M12 の行）**：提案どおり。**BS が M12a（S1〜S3・S8）と M13（DerivedGeneral）を書く**、∞ が G3・G4・G6（必要なら G8・G9）。
+  時期は W2b 後の段 G、新規ファイルのみ。∞ への依頼は W2b 取り込み後に調整役が起こす。Sheaves 層の `layers.json` 登録は調整役。
+- （同返答）段 1（Lemma 10.12 ほか）は BS の Codex で。Lemma 10.12 は `CA/UniversalHomeomorphism/`・`CA/EtaleStratification/` へ。2a の合図と改名表は 11-05、2b の改名表は 11-06。
+- （11-03、調整役）**DG-W3 の取り込み**で DG のモジュールを import していた BhattScholze/ などの import 行が機械的に書き換わった（宣言は不変。対応表は
+  `scripts/refactor/targets/dg-w3-merge-plan.json`）。2a まで BhattScholze/・CLMST/ の Lean に手を入れない方針はそのまま。BS 側の確認：drafts の `public import`
+  67 本のうち本体に存在しないものは `F2.Presentable.Basic` 一本だけで、これは DG-W3 の影響ではなく当初の推測名（git 履歴に存在しない）。`F2.Presentable` に直した
+  （Sheaves/SpaceValued）。DG の名前は drafts から直接は import していない。
 
 ## 4. 次の作業（提案）
 
@@ -171,6 +183,19 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
 5. （11-03、W9-III-08）2a 後：CompletedTensor の E3 非依存の芯への分割と有限直積の直接証明（調整役と時期を合わせる）。中身の段階の `lake build` の前に import の到達性で E3 非依存と drafts/README の DAG を確認する。
+6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し（済、§2 (A)） → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。
+7. **（11-03 決定、ユーザー「全て ok」）段取り**：
+   - 段 0（今〜2a、ビルドなし）：`completed-tensor-split.md`（済）、(A) の名前探し（済）、BS-W10 の指示書（`bhatt-scholze-codex-w10.md`、済。基準コミットは 2a 後に記入）。
+     追加（11-03 午後）：G-A6-12 の骨組み `drafts/A6/PerfectoidFiniteProduct.lean`（直積・Fin r・有限族、ModP/Perfection/Witt の直積の同型と θ の両立）、
+     `drafts/A5/RootAdjunction.lean` の主張を具体的な型に（延長性・完備性・濃度・関手性、`polyAlgebra`・`polyRootAlgebra` の perfectoid 性、`rootCover`）、
+     `ArcSite` の cover-dense を Mathlib の `Functor.IsCoverDense` の型に、BS-W11 の下書き（`bhatt-scholze-codex-w11.md`：段 1 ③④）。
+     11-03 夕（ユーザー決定）：残りの主張の具体化（A6/ArcSite・ArcSheafProperty、A8/Stratification、A0 の三本）は Codex の下書き作業 **BS-D1**（`bhatt-scholze-codex-d1.md`、
+     ビルドなし、drafts と報告だけ）、ノート第 4・7 章の W9 との照合は BS 側で実施（済：04-site の方針の追記と Rem 4.6・D16 の行、07-semiperfectoid の Not 7.1・Lemma 7.7・Prop 7.10・要点）。
+   - 段 1（2a 後、基盤を待たない古典的単位。担当は BS の Codex、こちらは検収。調整役了承 11-03）：① CompletedTensor 分割＋G-A6-12（**2a 直後 11-05、BS-W10 作業 A**。全ビルドは 2b に便乗）→ ② Lemma 10.12（A8-3）→
+     ③ A5/RootAdjunction・G-A6-11（R₀）・G-A6-3/6（付値環）・G-A8-6・1c の初等補題 → ④ A6/ArcSite の 1 圏部分 → ⑤ A0 の site の定義と A0-3c。BS-W10 は ①②、W11 以降に ③〜⑤。
+   - 段 2（W2b・段 G 後）：∞ 基盤 S1〜S8・DerivedGeneral・Shared → A2 → A4〜A7 の中身 → A5 の Prop 8.5。
+   - 段 3：A8-4、A9 の組み立て、Inputs の証明の置換、監査の許可一覧（恒久 3＋暫定 2）。
+   - 基盤 66 の分担（調整役了承 11-03、§3.1）：BS が M12a（S1〜S3・S8）と M13（DerivedGeneral）を書く、∞ が G3・G4・G6（必要なら G8・G9）。W2b 後の段 G、新規ファイルのみ。段 2 の BS 側の指示書（BS-W12 以降の見込み）はそのとき。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
@@ -232,7 +257,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | W9-II-04 H⁰(Δ_perf) に A3 の離散 Δ 用定理を直接当てられない | 要修正 | 訂正済み（C/p ↪ H⁰(X/p) の単射、一般の Rem 2.2 = G-A4-8/G-A3-6、prism 性を直接組み立て） |
 | W9-II-05 単位名とノートの coconnective 欄 | 軽微 | 訂正済み（InterfaceFields、ノート第 8 章） |
 | W9-II-06 完全 site の余積を B ⊗̂_A B′ とすると S 構造射の一致が失われる（S = F_p[t] の反例） | 致命 | **訂正済み**（a5-design §2.1：Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd（Cor 7.3 の普遍性）を Lemma 4.8 の圏同値で完全 site へ。flat 被覆の相対 Čech 項（G-A5-5）とは区別。`perfectSite_cechNerveData`） |
-| W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionLeg`） |
+| W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionComparisonLeg`（W9-III-15 で改名、PerfectSite）） |
 | W9-II-08 D45 改訂と旧「離散のみ・系 4 なし」の併存 | 要修正 | 訂正済み（a5-design 冒頭・§0・§1・§6、骨組みの概要・規約、本表の D45〜D52 行） |
 | W9-II-09 S̃ は完備 filtered 余極限を保たない（完備化で現れる元の Y 変数） | 致命 | **訂正済み**（a5-design §3.1 (iv′)・§3.2・D51・G-A5-18：S̃ は弱始対象用に限り、filtered 余極限は完備化前の代数的根添加 E(S_alg)^∧_p と「flat semiperfectoid 被覆の取り替えで Čech 計算不変」で。`rootClosure_filteredColimit` 撤回、`algebraicRootClosure*`） |
 | W9-II-10 arc 被覆の骨組みが「忠実平坦」を「平坦かつ単射」に弱めている（F_p[t^{1/p^∞}] の反例で O の Čech 降下が破綻） | 致命 | **訂正済み**（`IsArcCoverFamily` を `e.FaithfullyFlat` に。原典 Def 8.7 どおり） |
@@ -266,6 +291,24 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | W9-III-11 `truncationLE_isCoconnective`・`truncationLE_of_isCoconnective` の述語の向きが逆（τ^{≤n} は `IsConnectiveAt n`） | 要修正 | 訂正済み（`truncationLE_isConnective`・`truncationLE_of_isConnective` に改名・訂正。A2/HodgeTateFiltration の参照も） |
 | W9-III-12 A9 の残存引用一覧が D68 前の形（`hodgeTate_iso_polynomial_Zp`）、G-A3-7 の「黒箱」の意味が曖昧、S8 の G13 が抜け | 要修正 | 訂正済み（a9-design §3 を「恒久的な引用」「証明予定」「基盤依存」の三欄に。黒箱は `crystalline_deRham_polynomial_Zp` 一件、1c と P⁰ は暫定、G-A3-7 は証明予定。a3-design §6、本表 A3-3 行） |
 | W9-III-13 `nonempty_e3_of_cAlg` の hR は暗黙引数 | 軽微 | 訂正済み（`(hR := hR)`。`Assembly.lean`、a9-design §2） |
+| W9-III-14 DiscreteCore が入力の A4 より前に並び、A5 の先行ファイルが後段の Čech データ・filtered 余極限補題を参照 | 要修正 | 訂正済み（README の順序：A7/DiscreteCore は A4/Perfectoidization の後；`prismaticPerfection_filteredColimit` を A4/Perfectoidization へ（A2 の sifted 余極限保存・塔・完備化の反射性だけ）；`perfUnder_cechNerveData` を A5/PerfectSite へ（既存 Cor 7.3 の普遍環から直接）。AfterComparison の利用側（A6・A8）と ArcSite の根添加の所在の import コメントも補った） |
+| W9-III-15 同じ namespace に内容の異なる `perfectionLeg` が二つ | 要修正 | 訂正済み（A4 は `toPerfection`、A5 は `perfectionComparisonLeg`。利用箇所 InterfaceLimitCone・SemiperfectoidCase・UniversalProperty・a7-design を更新） |
+| W9-III-16 ノート第 5 章に訂正前の「帰着は Prop 6.2 の経路」の D69 と、結晶側を「具体的に定義する」旧説明が残る；第 8 章「E3 での扱い」も | 要修正 | 訂正済み（05-hodge-tate の冒頭・§5 の概要・Thm 5.2/Cor 5.5 の後・項目表 2 行・要点、08-perfection「E3 での扱い」と Lemma 8.6 の行を D68（黒箱一件、Cartier で系、RΓ_crys は定義しない）・D69（普遍 A₀ 上で Thm 6.4 を証明して底変換）に揃えた） |
+| W9-III-17 恒久的引用の表に証明予定の 1c と基盤側の P⁰ が同居 | 軽微 | 訂正済み（a9-design §3：最終引用は D68・G-A6-1a・1b の三件、1c は証明予定、P⁰ は基盤待ち（D43）。暫定の許可数（最大五）と最終引用数（三）を区別） |
+| **W9 最終判定（第 3 部続き 3）** | — | 条件付き妥当。12 論点すべて妥当（A9 は W9-III-08 の実施条件つき）。D19〜D70 の三者照合 ○、κ ○、sorry 194 宣言（恒久的 3・証明予定 125・基盤待ち 66）。a9-design §8 |
+| D1-01（BS-D1、Codex の下書き作業）S3 の `CechNerveData` は圏 𝒟 の絶対積のデータだが、arc site で要る Čech 項 S ⊗̂_R S は相対（R = S = F_p[t] の恒等被覆で絶対積 S ⊗̂_{ℤ_p} S と異なる） | 要修正 | 反映済み（11-03）：𝒟 := sieveCategory Q（Q は単射被覆の生成 sieve）の中で取る（U = f.op が弱終、冪は op R 上のファイバー積）。主張を (1) 生成 sieve ごとの Čech 同値 `isSheaf_generateSieve_iff_cech` と (2) 層判定 `isSheaf_arc_iff_cech`（coverage `arcCoverage`、`arcTopology_eq_toGrothendieck`）に分離。ArcSite・a6-design §2.2 |
+| D1-02（BS-D1）有限族の coverage と一点族の coverage は同じ位相を生成しない（k × k → k の二つの射影：有限 arc 被覆だが生成 sieve は一点被覆を含まない）。任意の前層では一点 Čech 条件だけで層にならない（二点定数前層と零環の空族） | 要修正 | 反映済み（11-03）：`arcTopology_eq_toGrothendieck` を有限族版に、`arcTopology_eq_sup`（一点 ⊔ extensive）、`PreservesFiniteRingProducts`、S1-E `isSheaf_extensive_iff_preservesFiniteProducts`（基盤待ち）、`isSheaf_arc_iff_cech` を「有限積保存 ∧ 一点 Čech」に。O と Hom(T,−) は有限積を保つので Prop 8.10 の帰着は従来どおり。ArcSite、a6-design §2.2、infinity-sheaves-design §13 |
+| D1-03（BS-D1）Mathlib `PreTilt O p` の環構造は `Fact (¬IsUnit (p : O))` を要求し、設計が含む零環（両因子が非零でも相対完備テンソルは零になり得る：F_p × F_p の二つの射影）と合わない | 要修正 | 反映済み（11-03）：零環を含む tilt `tiltRing`（G-A6-14。零環なら零環、非零なら `PreTilt`；p 完備で非零なら p は非単元）と関手性 `tiltMap`、`IsTiltGenerator`、G-A6-4 を `tiltRing` で具体的に。定義の変更ではない（原典の tilt は零環で零環）。ArcSheafProperty、a6-design §3.1・§4 |
+| D2-01（BS-D2、Codex）`cAlgRestrictScalars_isColimitCone` は任意の環写像・任意の図式では偽（ℤ → F₂ に沿う制限は始対象を保たない；余積 ⊗_T は ⊗_S にならない） | 要修正 | 訂正済み（11-03）：CAlg 版は sifted 図式（`IsSiftedInfinity K`）に限定、同型に沿う制限は全余極限を保つ別補題 `_of_bijective`（A7 の完全 prism の φ_A）、D 版は全余極限で正しい。ScalarRestriction.lean |
+| D2-02（BS-D2、Codex）`perfectoidIdeal_baseChange` の右辺：(JR′)_perfd は J_perfd R′ の通常の `Ideal.map` ではなく p 進閉包（Fayolle Prop 2.9）。閉包を外す補題はない | 要修正 | 訂正済み（11-03）：右辺を「完備テンソル J_perfd ⊗̂_R R′ の像＝ker(R′ → (R/J)_perfd ⊗̂ R′)＝J_perfd R′ の p 進閉包」で述べ、`Ideal.map` との一致の補題は**置かない**（有界ねじれだけでは偽：R = V⟨x_i^{1/p^∞}⟩、K = ker(R → V)、R′ = R⟨t^{1/p^∞}⟩ で Σ p^n x_n t^n が閉包にだけ入る。K 有限生成なら成り立つが J_perfd は一般に有限生成でない）。almost 零の反映は K′ ≅ K ⊗̂_R R′ で閉包に依らない。a8-design §3.1 |
+| D3-01（BS-D3、Codex）比較の第 0 脚に指定した A3 の `prismMapOfDiscrete` は離散性を仮定して環準同型を返すが、A5 は仮定なしの CAlg_A の Frobenius 両立な射が要る | 要修正 | 回答（11-03）：Lemma 7.7(3) の一般形は RΓ の極限の射影（S2 `derivedGlobalSectionsCAlg` の対象 B での脚、Frobenius 両立は `structurePresheafFrobenius` の自然性）。A5 には「A0/S2 の CAlg 値 RΓ の射影待ち」の型つき仮置きを置く（A3 待ちではない）。a5-design §2.2 |
+| D3-02（BS-D3、Codex）S3 の `CechNerveData` は `SmallCategory` 専用だが A5 の `PerfUnder_u p S` は大きい圏（対象 Type (u+1)、射 Type u） | 要修正 | 回答（11-03）：W9-I-04 で予告した大きい版を基盤側の draft に置いた（`CechNerveDataLarge`・`IsWeaklyTerminalLarge`・`isLimitCone_iff_restrict_cech_large`、Sheaves/CechConerveLimit）。A5 はこれを返す。infinity-sheaves-design §13 |
+| D3-03（BS-D3、Codex）離散代数の埋め込みと `cAlgRestrictScalars` の標準比較（A5 の `discreteRestrictionIso`）は基盤側 | 要確認 | 反映済み（11-03）：一般形 `cAlgRestrictScalars_algebraEmbedding` を ScalarRestriction.lean に（基盤待ち）。A5 の版はその特別な場合 |
+| D3-04（BS-D3、Codex）`IsDescendableOver` が引数のない `True` で、`IsDescendable A B` は離散底。Lemma 8.6 の底 Δ_T は離散でない | 要修正 | 入口を確定（11-03）：`IsDescendableOver A R B (f : SSet.Edge R B)`（R・B は CAlg_A の頂点、Mod_R(D(A)) の thick ⊗-ideal、基盤待ち M15）、`HasDescentIndexLEOver`、`isDescendableOver_iff_exists_index`、一般形の (a)〜(h)（押し出し・合成・テンソル・Tot・RHom 判定・Frobenius 余極限・完備版、基盤待ち）。Shared/Descendable.lean。A5 はこの API だけを使う |
+| D3-05（BS-D3、Codex）StrongDescent の `prismScalarExtension`（A → C に沿う CAlg の係数拡大 ⊗^L_A C）は基盤側 | 要確認 | 反映済み（11-03）：`cAlgBaseChange f : CAlg_R S ⟶ CAlg_R T`、`cAlgRestrictScalars` との随伴、忘却との比較 `cAlgBaseChange_forget`（D 側は既存 `derivedInfinityBaseChange`）を ScalarRestriction.lean に（基盤待ち） |
+| D3-06（BS-D3、Codex）`extendArcSheaf` の向き：`sheafInducedTopologyEquivOfIsCoverDense` は `Sheaf (inducedTopology) ≌ Sheaf K` なので延長は `.functor`、制限が `.inverse` | 軽微 | 確認（11-03）：そのとおり。指示書の「逆」は「制限の逆」の意味。a6-design G-A6-8 |
+| D3-07（BS-D3、Codex）S8 の入口 `sectionsOf`・`localEquiv_of_sheafifyIso` が引数のない `True` | 要修正 | 入口を確定（11-03）：離散（集合値）の場合を型つきに——`IsLocalEquivSet J φ`（Mathlib `presheafToSheaf` で同型）、`presheafPushout`、`sectionsOfDiagram F O`（`F.Elements` の nerve の持ち上げと O の合成）、`sectionsOf F O h`（選んだ極限の頂点）、`sectionsOf_map`、`sectionsOf_representable`、`sections_localEquiv_iso`（`IsInvertibleEdge`）、`sectionsOf_eq_limit_elements`（元の圏と同値な D 上の極限）。∞ 側との橋（S8-1・2、`sectionsOf_pushout` の引き戻しの述語）は基盤待ち。Sheaves/SpaceValued |
+| D4-01（BS-D4、Codex）Shared の `forms`・`completedForms` が k・変数型を引数に取らず、後者に加群構造がない。一般の k で H⁰ 完備化に置き換えると導来完備化の負次数を失う | 要修正 | 回答（11-03）：A2 は通常の `forms` を `discreteEmbedding` で D(k) に入れ DerivedGeneral の `completion`（LΛ_p）を施す；有界 p 冪ねじれ（有界 prism の A/d）でだけ H⁰ 版 `completedForms` と同定（`completedForms_eq_derivedCompletion_of_boundedTorsion`、基盤待ち）。Shared の `forms`・`completedForms` は k・T・p を明示引数に、`completedPoly`・加群構造を追加。a2-design §0′ |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

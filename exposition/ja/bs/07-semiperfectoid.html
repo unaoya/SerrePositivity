@@ -33,13 +33,13 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Not 7.1</td><td>semiperfectoid 環</td><td class="ok">済</td><td>perfectoid 環の全射商として扱う</td></tr>
+<tr><td>Not 7.1</td><td>semiperfectoid 環</td><td class="ok">済</td><td>perfectoid 環の全射商として扱う。注意（W9-II-16）：「p 完備で mod p が semiperfect」だけでは semiperfectoid にならない（\(\mathbb Z_p\) から基底なしで p 乗根を添加した環は \(\mathbb Z_p\) へ retraction をもつが、perfectoid 環から \(\mathbb Z_p\) への環準同型はない）。perfectoid 基底 \(R\) の上でなら \(\theta:W(S^\flat)\to S\) の核に \(R\) 由来の distinguished 元があって成り立つ（G-A5-14）</td></tr>
 <tr><td>Cor 7.3</td><td>\(S_{\mathrm{perfd}}\) の存在と普遍性（B3）</td><td class="ok">済</td><td><code>exists_perfectoidization_of_semiperfectoid_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/Perfectoidization.lean">Perfectoidization:415</a>）、完全試験 prism の商の版（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/Perfectoidization.lean">Perfectoidization:354</a>）、選んだ普遍環 <code>QuotientPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Semiperfectoid/Perfectoidization.lean">Perfectoidization:439</a>）</td></tr>
 </table></div>
 
 <h2>2. 導来 prismatic コホモロジー（Construction 7.6〜Prop 7.10）</h2>
 <p><b>Construction 7.6.</b> 有界 prism \((A,I)\) 上、p 完全 smooth な \(A/I\) 代数の \(\Delta_{R/A}\) を左 Kan 延長して、任意の導来 p 完備な単体的 \(A/I\) 代数に \(\Delta_{R/A}\) を定める。HT 比較から \(\overline\Delta_{R/A}\) は \(\wedge^iL_{R/(A/I)}\{-i\}[-i]\) を次数商とする filtration を持ち、(1) smooth なら元と一致、(2) étale 層、(3) 完全 prism 上で quasisyntomic 層、(4) 底変換と可換、(5) 余極限と可換（対称モノイダル）。</p>
-<p><b>Lemma 7.7・7.8.</b> \(\Delta_{R/A}\) （原典の仮定は \(\overline{\Delta}_{R/A}\) ＝ \(\Delta_{R/A}/d\) が次数 0 に集中すること。そこから \(\Delta\) の離散性と d の正則性が出る）なら δ 構造を持ち（W₂ への切断を Čech–Alexander 複体から移す。形式化では p ねじれなしの場合と envelope の場合だけ、a3-design D36）、prism になり、\((R/A)_\Delta\) の弱始対象。Lemma 7.8（冪等完備な圏の一般論）で始対象はその冪等元の像。<b>Ex 7.9.</b> \(R=A/(I,f_1,\dots,f_r)\)（Koszul 正則）なら \(\Delta_{R/A}=A\{f/d\}^\wedge\)（prismatic envelope）で、始対象。<b>Prop 7.10.</b> quasiregular semiperfectoid な \(S\) では \(\Delta_{S/A}\) は離散で \(\Delta^{\mathrm{init}}_S\) と一致し、\(S\to\overline{\Delta}_S=\Delta_S/d\) は p 完全忠実平坦。証明は \(T=R\langle X_1^{1/p^\infty},\dots,X_r^{1/p^\infty}\rangle/(X_i-f_i)\) という正則 semiperfectoid 環の場合に帰着し、Ex 7.9 を使う。</p>
+<p><b>Lemma 7.7・7.8.</b> \(\Delta_{R/A}\) （原典の仮定は \(\overline{\Delta}_{R/A}\) ＝ \(\Delta_{R/A}/d\) が次数 0 に集中すること。そこから \(\Delta\) の離散性と d の正則性が出る）なら δ 構造を持ち（W₂ への切断を Čech–Alexander 複体から移す。形式化では p ねじれなしの場合と envelope の場合だけ、a3-design D36。<b>D36 (a)</b>（2026-11-02）：Lemma 7.7(3) の δ 射は p ねじれなしの標的に限って述べ、全 prism の中での始性は Ex 7.9・Prop 7.10 では envelope の押し出しの普遍性から出す。源の p ねじれなしだけでは δ 射は出ない、W9-I-34）、prism になり、\((R/A)_\Delta\) の弱始対象。Lemma 7.8（冪等完備な圏の一般論）で始対象はその冪等元の像。<b>Ex 7.9.</b> \(R=A/(I,f_1,\dots,f_r)\)（Koszul 正則）なら \(\Delta_{R/A}=A\{f/d\}^\wedge\)（prismatic envelope）で、始対象。<b>Prop 7.10.</b> quasiregular semiperfectoid な \(S\)（定義に<b>有界 p 冪ねじれ</b>を含める：\(S=\prod_n\mathcal O_C/p^n\) は mod p semiperfect で余接複体も条件を満たすが有界でなく、原典の結論が崩れる。W9-I-32、D39）では \(\Delta_{S/A}\) は離散で \(\Delta^{\mathrm{init}}_S\) と一致し、\(S\to\overline{\Delta}_S=\Delta_S/d\) は p 完全忠実平坦。証明は \(T=R\langle X_1^{1/p^\infty},\dots,X_r^{1/p^\infty}\rangle/(X_i-f_i)\) という正則 semiperfectoid 環の場合に帰着し、Ex 7.9 を使う。基底を替える段（\(R\to R_1'\)）は「余接複体が変わらないので \(\Delta\) が変わらない」（G-A5-17＝G-A2-10）で正当化する。Ex 7.9 の p 反転の議論（G-A3-7、[Bha12, Claim 3.30] の計算）は証明予定の補題であって引用ではない（W9-III-12）。</p>
 <div class="box">
 <p class="label">既存のコードとの関係</p>
 <p>W3 で残す <code>Semiperfectoid/RootEnvelope/</code> は、完全 prism 上の \(X^p-b\) 族の割り算包（\(A\{f/d\}\) の形の envelope）が離散で p 完全忠実平坦であること、その完全化が perfectoid 候補と一致することを示している。A3 の設計（a6 以前、2026-11-02、Codex W9 §8.6 の対応表）で確かめた範囲：\(X^p-b\) 族の表示と A3 の \(X_i-f_i\)（\(A_{\inf}(R\langle X^{1/p^\infty}\rangle)\) 上）は完全化前には別の対象で、\(\Delta_T\) 自体とは同一視しない。完全化後は「互換 p 冪根を指定する普遍性」で \((\Delta_T)_{\mathrm{perf}}\) と既存の完全な候補 prism（deltaRootPrism）が一意に同型になり、離散性・H⁰・完備化の部品（perfectPrismRootSource_pure、deltaRootPDCompletedPerfectionEquiv など）を再利用できる。</p>
@@ -48,9 +48,9 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2。∞ 圏側の P_Σ（提供済み）を読み取り専用で使う</td></tr>
-<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造と始対象</td><td class="todo">未</td><td>A3</td></tr>
+<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造と始対象</td><td class="todo">未</td><td>A3（仮定は \(\overline\Delta\) の離散性、有界性は自動でない（W9-I-33）；δ 射は p ねじれなしの標的に限定（D36 (a)））</td></tr>
 <tr><td>Ex 7.9</td><td>lci 商の \(\Delta\) は prismatic envelope</td><td class="todo">未</td><td>A3（a3-design §2.2、W9 で訂正：普遍の場合 → B := LΛ(E ⊗^L_U A) を Δ と同一視 → HT で離散 → 通常の δ 押し出しの普遍性で envelope・全 prism の始対象。envelope の A_0 上の平坦性は元の δ 代数上には移らない）。RootEnvelope の再利用は完全化後の比較だけ</td></tr>
-<tr><td>Prop 7.10</td><td>qrsp の \(\Delta_S\) は離散で始対象、\(S\to\Delta_S\) は p 完全忠実平坦</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
+<tr><td>Prop 7.10</td><td>qrsp の \(\Delta_S\) は離散で始対象、\(S\to\Delta_S\) は p 完全忠実平坦</td><td class="todo">未</td><td>A3（必要部分のみ。qrsp は有界 p 冪ねじれつき D39；既存 Cor 7.3 の入口へ渡すデータは \(A'=A_{\inf}(R')\) と非単元・零環の分岐、W9-I-44）</td></tr>
 </table></div>
 
 <h2>3. André の補題と Thm 7.4（§7.3）</h2>
@@ -70,14 +70,14 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>§7 semiperfectoid 環と perfection の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
-<tr><td>Not 7.1</td><td>semiperfectoid</td><td class="ok">済</td><td>perfectoid 環の商として扱う</td></tr>
+<tr><td>Not 7.1</td><td>semiperfectoid</td><td class="ok">済</td><td>perfectoid 環の商として扱う（mod p semiperfect だけでは不足、W9-II-16）</td></tr>
 <tr><td>Prop 7.2</td><td>普遍 prism の存在</td><td class="no">不要</td><td>迂回済み：Cor 7.3 を完全試験 prism の始対象で直接構成</td></tr>
 <tr><td>Cor 7.3</td><td>S_perfd の存在（B3）</td><td class="ok">済</td><td><code>SemiperfectoidPerfectoidization</code>（Semiperfectoid）</td></tr>
 <tr><td>Thm 7.4</td><td>S → S_perfd は全射（B4）</td><td class="ok">済</td><td><code>SemiperfectoidSurjectivity</code>（Semiperfectoid）。原典どおり André 経由（W3）。旧経路は Semiperfectoid/RootEnvelope/</td></tr>
 <tr><td>Rem 7.5</td><td>Zariski 閉集合</td><td class="no">不要</td><td></td></tr>
 <tr><td>Constr 7.6</td><td>導来 prismatic コホモロジー</td><td class="todo">未</td><td>A2</td></tr>
-<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造</td><td class="todo">未</td><td>A3</td></tr>
-<tr><td>Ex 7.9、Prop 7.10</td><td>lci 商・qrsp の計算</td><td class="todo">未</td><td>A3（必要部分のみ）</td></tr>
+<tr><td>Lemma 7.7・7.8</td><td>離散な場合の δ 構造</td><td class="todo">未</td><td>A3（D36 (a)、W9-I-33・34）</td></tr>
+<tr><td>Ex 7.9、Prop 7.10</td><td>lci 商・qrsp の計算</td><td class="todo">未</td><td>A3（必要部分のみ。Ex 7.9 は原典の順序（W9-I-39）、qrsp は有界 p 冪ねじれつき（W9-I-32）、G-A3-7 は証明予定）</td></tr>
 <tr><td>Prop 7.11、Ex 7.12・7.13</td><td>quasisyntomic 被覆の持ち上げ</td><td class="no">不要</td><td>André の原典の証明用。迂回済み</td></tr>
 <tr><td>Thm 7.14</td><td>André の補題</td><td class="ok">済</td><td><code>Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed</code>（Andre/Transfinite）。別経路</td></tr>
 <tr><td>Rem 7.15</td><td>André の補題の精密形</td><td class="part">途中まで</td><td>結論（\(R\to S\) が mod p で ind-syntomic）は未。途中の計算は済：原典どおりの一元拡大 \(S=R\langle Y^{1/p^\infty}\rangle/f(Y)\) と prismatic envelope の初期性、\(\varphi^*_A(T/\varpi)\) が \(R/\varpi[Y^{1/p^\infty}]\) の中の \(f\) の pd 包であること、事実 (1)（標数 p の分冪代数の切断表示）。事実 (2) は未。<code>Andre/PowerRootEnvelope/</code>（旧 Remark715、W8 で改名）。主定理に不要</td></tr>
@@ -150,6 +150,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
   <li>Thm 7.4（B4）は W3 で原典どおり André 経由になる。André を使わない証明は別名で残る。</li>
   <li>Thm 7.14 は反復の構造は原典どおりで、一段の拡大だけが別経路（Rem 7.15 の pd 計算）。原典に揃えない（BR30 は 2026-11-02 に閉じた、D38）。</li>
   <li>§7.2（Construction 7.6、Lemma 7.7、Ex 7.9、Prop 7.10）は未形式化で、E3 の Def 8.2 の土台（A2・A3）。RootEnvelope/ は Ex 7.9 の envelope と完全化後に普遍性で比較できる（完全化前の \(\Delta_T\) とは別の対象）。</li>
+  <li>Codex レビュー W9 で入った訂正（2026-11-03 にこの章へ反映）：qrsp の定義に有界 p 冪ねじれ（D39）、Lemma 7.7 の仮定は \(\overline\Delta\) の離散性、δ 射は p ねじれなしの標的だけ（D36 (a)）、Ex 7.9 の一般への帰着は原典の順序（「\(B_{\mathrm{univ}}\) は \(A_{\mathrm{univ}}\) 上完全平坦」は偽）、semiperfectoid 性には perfectoid 基底が要る（W9-II-16）。Cor 7.3 の普遍環は A5 で \(\mathrm{Perfd}_{S/}\) の余積 \((T_1\widehat\otimes_S T_2)_{\mathrm{perfd}}\) を作るのにも使う。</li>
 </ol>
 </main>
 </body>

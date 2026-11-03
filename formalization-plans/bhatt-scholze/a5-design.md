@@ -31,7 +31,7 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 | 原典 | 扱い | Lean の形（§2） | 既存・不足 | 単位 |
 | --- | --- | --- | --- | --- |
 | Rem 4.6 | 定義：(S/A)^perf_Δ ＝ 完全 prism の充満部分圏＋flat 位相 | `PerfectPrismaticSite`（A0）、`perfectFlatTopology` | A0 | A5-1 |
-| Lemma 4.8 | 定理（既存を確認）：完全 (A,I) と任意の (B,J) で A/I → B/J は prism の射に一意に持ち上がる。系：(S/A)^perf ≃ Perfd_{S/}（perfectoid 環への写像の圏、濃度 ≤ κ） | `perfectPrismHomLift`、`perfectSiteEquivPerfectoidUnder` | Thm 3.10 の関手版（G-A5-4） | A5-1 |
+| Lemma 4.8 | 定理（既存を確認）：完全 (A,I) と任意の (B,J) で A/I → B/J は prism の射に一意に持ち上がる。系：(S/A)^perf ≃ Perfd_{S/}（perfectoid 環への写像の圏、濃度 ≤ κ） | `perfectPrismHomLift`、`perfectSiteEquivPerfectoidUnder` | Thm 3.10 の関手版（G-A5-4） | A5-1。**標的の範囲（11-03、BS-D3 の質問への回答）**：原典 Lemma 4.8 は任意の prism (B,J) が標的だが、A0 の site の対象は有界 prism（Def 4.1）で、A5 で使う標的もその範囲なので、`hQ : IsBoundedPrism Q` の特別な場合として述べる（既存 `existsUnique_perfectPrismHomLift_to_bounded`。「定理は特別な場合だけ」の方針、D 番号なし） |
 | Lemma 7.7(3) | 既存（A3-1）：関手的 Δ_S → B | `prismMapOfDiscrete` | A3 | — |
 | 比較写像 | 定義 | `perfectionComparison : Δ_perf ⟶ lim_{(S/A)^perf} O` | S2、G-A4-3 | A5-1 |
 | Prop 8.5 | 定理（S は導来 p 完備な animated、D45 改訂）：⊥ ≤ J ≤ flat の全ての J で比較写像は同値 | `perfectionComparison_isIso`、`perfectionComparison_isIso_topology` | §3 全体 | A5-1〜A5-4 |
@@ -64,7 +64,11 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 
 ### 2.2 比較写像と Prop 8.5
 
-- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な A 線形・Frobenius 両立の f : Δ_{S/A} → B（CAlg_A）。塔（A4、原典の φ_{A*}^n）の第 n 項への脚は
+- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な A 線形・Frobenius 両立の f : Δ_{S/A} → B（CAlg_A）。**形式化の入口（11-03、BS-D3 の質問への回答）**：A3 の `prismMapOfDiscrete`
+  は `IsDiscretePrismatic` を仮定して環準同型を返す離散版で、A5 が要るのは仮定なしの CAlg_A の射。これは Δ_{S/A} = RΓ((S/A)_Δ, O_Δ) の**極限の射影**（S2 の `derivedGlobalSectionsCAlg` の
+  site の対象 B での脚、O_Δ(B) = B。A0 の `structurePresheaf` を `ringPresheafToCAlg` で CAlg 値にしたもの、A2 の `prismaticCohomologyCAlg`）で、Frobenius 両立は `structurePresheafFrobenius` の
+  自然性から。完全 prism B は有界なので site の対象。A5 の骨組みでは「A0/S2 の CAlg 値 RΓ の射影待ち」の型つき仮置きとして置く（A3 待ちではない）。animated S（D45）では
+  π_0 S の site で同じ。塔（A4、原典の φ_{A*}^n）の第 n 項への脚は
   f_n := φ_B^{-n} ∘ f : Res_{φ_A}^n Δ_S → B（B 完全なので φ_B 可逆。f_n(φ_A^n(a) x) = a f_n(x) で A 線形、f_{n+1} ∘ φ = f_n で塔と整合、B について自然。
   W9-II-07 で D42 撤回後の記法に揃えた）。余極限から colim → B、B は (p,d) 完備なので完備化を通り Δ_{S/A,perf} → B。自然性から O の上の錐、
   よって `perfectionComparison : Δ_perf → lim O`。
@@ -203,7 +207,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 | # | 内容 | 既存 | 使う箇所 |
 | --- | --- | --- | --- |
-| G-A5-1 | descendability（[Mat16, Def 3.18]）：定義、(a) 底変換、(b) 合成、(c) テンソル、(d) index の判定、(e) 降下 M ≃ Tot(M ⊗ B^{⊗•+1})、(f) RHom(F^{⊗2}, A) ∈ D^{<0} ⇒ index ≤ 2、(g) [BS17, Lemma 11.22]、(h) 完備版 | なし | Lemma 8.6、§3.3 |
+| G-A5-1（入口 11-03、D3-04：`IsDescendableOver A R B f`・`HasDescentIndexLEOver`、R・B は CAlg_A の頂点、f は `SSet.Edge`。離散版 `IsDescendable` は単位対象の特殊化） | descendability（[Mat16, Def 3.18]）：定義、(a) 底変換、(b) 合成、(c) テンソル、(d) index の判定、(e) 降下 M ≃ Tot(M ⊗ B^{⊗•+1})、(f) RHom(F^{⊗2}, A) ∈ D^{<0} ⇒ index ≤ 2、(g) [BS17, Lemma 11.22]、(h) 完備版 | なし | Lemma 8.6、§3.3 |
 | G-A5-2 | 一様に coconnective な余単体的対象の Tot は filtered 余極限と可換（H^k(Tot) = H^k(Tot_{≤k+1})） | なし（Tot = 全複体 G10 の隣） | §3.2 |
 | G-A5-3 | 完全化（colim_φ と完備化）と完備テンソルの可換性 | G-A4-2・G-A2-3 の隣 | §3.3・§3.5 |
 | G-A5-4 | Thm 3.10 の関手版：完全 prism ↔ perfectoid 環の圏同値（Hom は Lemma 4.8） | `Prism/Perfectoid`、`PerfectPrismHomLift`（要確認） | §2.1 |
