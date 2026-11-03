@@ -88,3 +88,27 @@ A7 の主張に設計との食い違いはない。D60 の完備 animated 定義
 関連する基盤に一件、A7 の範囲外の注意がある。`ScalarRestriction.lean` の `cAlgRestrictScalars_isColimitCone` は任意の環写像と任意の図式形状を量化する。しかし ℤ → 𝔽₂ に沿う制限は、𝔽₂ 代数の始対象 𝔽₂ を ℤ 代数の始対象へ送らない（空図式が反例）。押し出しや sequential 余極限にはこの反例は当たらない。A7 では完全 prism の φ_A が自己同型であることから τ と完備圏へのその制限が押し出しを保つことを使った。この基盤宣言は使わず、ScalarRestriction も A4 も編集していない。
 
 基準コミットと宣言名を照合し、22 件すべてが残り、A7 の4ファイルに `True` が残らないことを確認した。参照名・import パス・括弧・`git diff --check` を静的に確認した。Lean による型検査・ビルドは行っていない。証明は理由付きの `sorry`。停止点 3（A8）は未着手。
+
+## 第4部　A8 の途中停止（基準 main `6a7e6ec04`）
+
+### 具体化した宣言
+
+`A8/AlmostConnectivity.lean` の11件中9件を具体化した。一般の J に対する `perfectoidKernel` は B3 の `toQuotientPerfectoidization` と商写像の合成の核であり、単項 g 用の既存 `perfectoidIdeal` から独立している。
+
+- `IsAlmostConnective` は i > 0 の各 `derivedInfinityHomology R i M` を K が零化する条件。`IsJAlmostZero` は全次数での条件。完備テンソルは D(R) の二つの頂点の semifree 複体を `cochainTensor` でテンソルし、`derivedComplexCompletionFunctor` で完備化した頂点。
+- `restrictScalars_perfectoidQuotient_fullyFaithful` は完備部分圏上の係数制限の完全忠実性と指定した極限錐・余極限余錐の保存。`isAlmostZero_iff_completedTensor_isZero` の非有界の場合はこの像で Postnikov の極限・完備余極限を取る。 `isAlmostConnective_iff_completedTensor_connective`、`isAlmostConnective_completedFilteredColimit`、`connective_iff_almost` を同じ K、B と完備テンソルで記述した。G-A8-8 はこの余極限の主張に使わない。
+- `perfectoidIdeal_radical`、`isAlmostZero_radical`、`isAlmostZero_iff_forall_gen` を具体化。最後の証明の入口は Q の π₀ を経る Prop 8.5 系4 と、その後の Prop 8.13 の比較。
+
+### 停止規則に該当する点
+
+a8-design §3.1 と `perfectoidIdeal_baseChange` の docstring には (JR′)_perfd = J_perfd R′ とある。f : R → R′、K = J_perfd として、右辺を `K.map f` と読むことと、p 進閉包を取ることは別の Lean の主張である。
+
+Prop 8.13 による比較は B の**完備**底変換であり、R′ からこの完備商への核を比較する。通常の `K.map f` との等号をここから得るには、`K.map f` 自体が p 進閉であることをさらに示す必要がある。有限生成 J と p 完全平坦な射に対する Fayolle の Proposition 2.9 には、この右辺に明示的に p 進閉包が付く。J が有限生成でも K の有限生成性は仮定されていない。閉包を外す根拠は確認できなかった。通常の等式への反例を確認したわけではない。[Fayolle, *Centers of perfectoid purity*, Proposition 2.9](https://jep.centre-mersenne.org/item/10.5802/jep.313.pdf)
+
+一般 J では完備底変換への単位の核を比較し、有限生成 J のイデアル等式には閉包を明記するか、通常の `Ideal.map` の閉性を別に示すか、設計側の判断を求めた。主張を書き替えず、`perfectoidIdeal_baseChange` と `isAlmostZero_baseChange_iff` の直前で止めた。
+
+### 現在の件数と確認範囲
+
+今回具体化した9件に新規の仮名による `-- 要確認：` は0件。上記の設計判断は1件。A8 の対象40件中、残る `True` は31件（AlmostConnectivity の上の2件、AlmostPurityConnectivity の12件、IntegralDiscreteness の17件。宣言名の一覧は BS-D1 報告第7部）。BS-D2 全体では結論の `True` を17 + 22 + 9 = 48件具体化し、停止点1での `perfectPrismRing : Type u` も含めると49件。A8 の型の仮置き `trivialCoverComparison`、`integralClosureInLocalization`、`integralClosureCompletion` も残る。停止点3の検収・最終総括には未到達。
+
+参照名と引数をリポジトリで照合し、差分に `git diff --check` を実施。型検査とビルドは行っていない。

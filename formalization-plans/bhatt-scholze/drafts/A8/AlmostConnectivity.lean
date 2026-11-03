@@ -169,12 +169,41 @@ theorem isAlmostZero_iff_forall_gen {r : ℕ} (f : Fin r → R) (hf : J = Ideal.
     IsJAlmostZero p R hR J M ↔ ∀ i, IsJAlmostZero p R hR (Ideal.span {f i}) M := by
   sorry -- Q の π₀ は R/J。系4で Q_perfd に移し、Prop 8.13 で各 (R/f_i)_perfd の完備テンソルに移す
 
-/-- 概要：perfectoid の射 R → R′ が p 完備忠実平坦なら (JR′)_perfd = J_perfd R′（(R′/JR′)_perfd = (R/J)_perfd ⊗̂_R R′、Prop 8.13）。
-M が J-almost 零 ⇔ M ⊗̂_R R′ が JR′-almost 零。
-方針：Prop 8.13（A7-1）、忠実平坦で零性を反映。
-規約：—
-使われ方：Thm 10.9 で基底を絶対整閉に取り替える。 -/
-theorem perfectoidIdeal_baseChange : True := by trivial
-theorem isAlmostZero_baseChange_iff : True := by trivial
+variable {R' : Type u} [CommRing R'] [Algebra R R']
+
+/-- X の semifree 代表を R′ に延ばし、底変換先で p 完備化する。 -/
+def completeModuleBaseChange (X : DVertex R) : DVertex R' := by
+  let F := (ModuleCat.extendScalars (algebraMap R R')).mapHomologicalComplex (.up ℤ)
+  let Y := (derivedComplexCompletionFunctor R' (p : R')).obj (DerivedCategory.Q.obj (F.obj (X.obj 0).val))
+  exact ((derivedInfinityHomotopyEquivalence R').inverse.obj Y).pt
+
+/-- 離散加群の完備底変換の H⁰。K→R の像はこの関手で指定射を送って取る。 -/
+def completeBaseChangeH0 : ModuleCat.{u} R ⥤ ModuleCat.{u} R' :=
+  moduleFreeCochainResolution R ⋙ (ModuleCat.extendScalars (algebraMap R R')).mapHomologicalComplex (.up ℤ) ⋙
+    DerivedCategory.Q ⋙ derivedComplexCompletionFunctor R' (p : R') ⋙
+    DerivedCategory.homologyFunctor (ModuleCat R') 0
+
+def completeBaseChangeUnitIso (hR' : IsIntegralPerfectoid R' p) :
+    (completeBaseChangeH0 p R (R' := R')).obj (ModuleCat.of R R) ≅ ModuleCat.of R' R' := by
+  sorry -- R ⊗^L_R R′ の乗法同型と R′ の p 完備化単位の逆
+
+/-- 一般 J の比較は K⊗̂R′→R′ の像。有限生成 J のときは K R′ の p 進閉包（D2-02）。 -/
+theorem perfectoidIdeal_baseChange (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
+    (hR' : IsIntegralPerfectoid R' p) (hf : IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) R') :
+    let K := perfectoidKernel p R hR J
+    let K' := perfectoidKernel p R' hR' (J.map (algebraMap R R'))
+    let i := (completeBaseChangeH0 p R (R' := R')).map (ModuleCat.ofHom K.subtype) ≫
+      (completeBaseChangeUnitIso p R hR').hom
+    Function.Injective i ∧ K' = LinearMap.range i.hom ∧
+      (J.FG → K' = ⨅ n : ℕ, K.map (algebraMap R R') ⊔ Ideal.span {(p : R') ^ n}) := by
+  sorry -- 完備平坦な底変換の完全性と Prop 8.13 で B の完備底変換への核を同定。
+        -- 各 pⁿ 商で像を読んで逆極限を取ると有限生成 J の閉包の式
+
+theorem isAlmostZero_baseChange_iff (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
+    (hR' : IsIntegralPerfectoid R' p) (hf : IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) R')
+    (M : DVertex R) (hM : isPCompleteVertex p R M) :
+    IsJAlmostZero p R hR J M ↔ IsJAlmostZero p R' hR' (J.map (algebraMap R R'))
+      (completeModuleBaseChange p R M) := by
+  sorry -- 完備底変換後の K′⊗̂M′ は K⊗̂M の完備底変換。Prop 10.4 と忠実平坦性で零性を反映
 
 end SerrePositivity.BhattScholze.Almost
