@@ -62,7 +62,10 @@ theorem perfectoidIdeal_radical : True := by trivial
 theorem isAlmostZero_radical : True := by trivial
 
 /-- 概要：J = (f_1,…,f_r) のとき、M が J-almost 零 ⇔ ∀ i, M が (f_i)-almost 零。
-方針：⇐：(R/J)_perfd = (R/f_1)_perfd ⊗̂_R ⋯（Prop 8.13）、Lemma 10.3 の形で J_perfd ⊗̂ M の消滅を各 (f_i)_perfd ⊗̂ M = 0 から（紙 1）。
+方針（W9-III-03 で訂正）：⇐：Q := R/f_1 ⊗̂^L_R ⋯ ⊗̂^L_R R/f_r（animated な完備押し出し）は π_0 Q = R/J だが Q ≠ R/J（p ねじれなしの R、f_1 = f_2 = p で H^{−1} = R/p ≠ 0）。
+Prop 8.5 系 4（`perfectoidization_piZero`）で Q_perfd ≃ (R/J)_perfd、Prop 8.13 で (R/J)_perfd ≃ (R/f_1)_perfd ⊗̂_R ⋯（単位と両立）。M が各 (f_i)-almost 零なら
+三角形 (f_i)_perfd ⊗̂ M → M → (R/f_i)_perfd ⊗̂ M で M → (R/f_i)_perfd ⊗̂ M は同値、順にテンソルして M → (R/J)_perfd ⊗̂ M が同値、よって J_perfd ⊗̂ M = 0（紙 1）。
+⇒：(f_i) ⊂ J から (f_i)_perfd ⊂ J_perfd を各 H^j(M) に。空の生成族は J = 0 で自明。
 規約：—
 使われ方：Thm 10.9 を一つの生成元に帰着。 -/
 theorem isAlmostZero_iff_forall_gen : True := by trivial

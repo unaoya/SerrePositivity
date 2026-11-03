@@ -56,8 +56,8 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
-| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 未（a8 §8 の 1） | B5 の既存、A7 |
-| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 未（a8 §8 の 2） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
+| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
+| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
 | A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 未（a8 §8 の 5） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 未（a8 §8 の 3・4・6） | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
@@ -245,6 +245,10 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-II-24 G-A7-5（A5 が使う）を A5 に依存する A7 の普遍性モジュールに置くと import が閉じない。G-A7-1 も同様 | 要修正 | 訂正済み（数学的循環ではなく配置。`drafts/A7/DiscreteCore.lean`（G-A7-5）と `drafts/A7/AnimatedDomain.lean`（G-A7-1）に切り出し、A5/SemiperfectoidCase・A5/PerfectSiteComparison が import。所有は A7 のまま。a7-design §5・§6、drafts/README） |
 | W9-II-25 `IsCoverDense.sheafEquiv` は Mathlib の正確な名前でなく、包含は site の opposite で渡す | 軽微 | 訂正済み（`Functor.inducedTopology`、`Functor.sheafInducedTopologyEquivOfIsCoverDense`（= `Functor.IsDenseSubsite.sheafEquiv`、`Sites/DenseSubsite/{InducedTopology,Basic}.lean`）、包含 `affPerfdInclusion.op`、Set の `HasLimitsOfShape (StructuredArrow X G.op)`。a6-design §4 G-A6-8・§7・§10、`ArcSite.lean`・`SheafOfSetsExcision.lean`） |
 | （W9 続き 6）W9-II-19 の補足：g : B → D のまま C → D × C = (g, id) は型違い | 軽微 | 訂正済み（商からの射 h : C → D と書き分け。a6-design §3.2(2)、`excision_of_excision_prod`） |
+| W9-III-01 G-A8-3「導来 p 完備な環上の有限加群は導来 p 完備」は偽（R = ∏V、M = R/⊕V：p x_{k+1} = x_k、x_0 ≠ 0 で R[1/p] → M 非零；S = R × M は有限で D(e_0) 上自明な有限エタールだが非完備）。Cor 8.12 の前提の供給が崩れる | 致命 | **訂正済み（2026-11-03、Codex 推奨 (a)）**：Thm 10.9 の入力を原典どおり有限表示有限に戻す（脚注 19、既存 `isModuleComplete_of_finitePresentation`。E3 の始域は狭まらない：Thm 10.11 は有限表示有限に帰着）。S′ の完備性は構成固有の計算 G-A8-3′（有限個の e_j s_a で生成、R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r、既存 `ModuleClosure`）。a8-design §2.2・§3.2(5)・§4・§7・§8.2、`AlmostPurityConnectivity.lean`（`finitePresentation_isModuleComplete`・`trivialCoverComparison_isModuleComplete`）。(b)（任意の有限 S を completionRing 経由で残す）は採らない |
+| W9-III-02 局所化の同型だけでは `ArcOutside` は出ない（S = V = F_p[t^{1/p^∞}]^∧_t、S′ = V[1/t]、g = t で id が延びない）。界面の条件は g の像が非零であって可逆ではない | 要修正 | 訂正済み（G-A8-3″：整写像＋局所化の同型 ⇒ Frac(V) へ延長し整閉性で V へ。界面を弱めない。a8-design §3.2(4)・§4、`arcOutside_of_integral_of_localization_iso`、`perfectoidization_almostIso_of_localization_iso` の前提に整・完備を明示） |
+| W9-III-03 「R/J = R/f_1 ⊗̂ ⋯（導来）」は偽（p ねじれなし R、f_1 = f_2 = p で H^{−1} = R/p） | 要修正 | 訂正済み（Q := ⊗̂^L R/(f_i)、π_0 Q = R/J、Prop 8.5 系 4 で Q_perfd ≃ (R/J)_perfd、Prop 8.13 の二段。生成元ごとの判定は維持。a8-design §3.1・G-A8-2、`isAlmostZero_iff_forall_gen`） |
+| （W9 第 3 部の要確認）Thm 10.11 の整閉包 S′ に Cor 8.12 を当てる前提（整性・導来 p 完備性）の供給 | 要確認 | 記録（`IntegralDiscreteness.lean` の `perfectoidization_almostConnective_of_stratification` に要確認を追記。Codex の §8.3〜8.6 の確認で扱う） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

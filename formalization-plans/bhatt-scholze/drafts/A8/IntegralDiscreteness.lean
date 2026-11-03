@@ -79,7 +79,9 @@ theorem perfectoidization_quotient_connective_of_ih : True := by trivial
 
 /-- 概要：g_1-almost 連結性：R[1/g_1] → S_red[1/g_1] 有限エタール、S′ := R の S_red[1/g_1] での整閉包、S → S′ は g_1 の外で同型、Cor 8.12 で
 S_perfd → S′_perfd は g_1-almost 同型、S′ は有限表示有限 S″（S″[1/g_1] ≅ S_red[1/g_1]）の filtered 余極限（紙 4）、各 S″ に Thm 10.9 の連結性（A8-2）。
-方針：A8-2 `perfectoidization_almostConnective_of_finiteEtaleAway`、A8-2 `perfectoidization_almostIso_of_localization_iso`、filtered 余極限。 -/
+方針：A8-2 `perfectoidization_almostConnective_of_finiteEtaleAway`（有限表示有限 S″ に当てる）、A8-2 `perfectoidization_almostIso_of_localization_iso`、filtered 余極限。
+要確認（W9-III-01・02 の後）：ここでの S′（整閉包）に Cor 8.12 を当てる前提——S → S′ の整性と S′ の導来 p 完備性——の供給。S′ は有限でも有限表示でもないので
+A8-2 の G-A8-3′ はそのまま使えない。Codex 第 3 部の §8.3〜8.6 の確認で扱う。 -/
 theorem perfectoidization_almostConnective_of_stratification : True := by trivial
 
 /-- 概要：Thm 10.11 の連結性：有限表示有限 S で S_perfd 連結（Lemma 10.12 の層別の長さの帰納、Lemma 10.5 で合わせる）。
