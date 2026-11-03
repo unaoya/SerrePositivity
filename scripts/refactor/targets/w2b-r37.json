@@ -2036,6 +2036,11 @@
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
     }
   },
   {
