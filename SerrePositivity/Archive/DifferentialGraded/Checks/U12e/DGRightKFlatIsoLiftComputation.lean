@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleLeftRestrictionComputation
+public import SerrePositivity.DifferentialGraded.Derived.Bimodule
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 右K-flatモデルからの移送の計算と外側左制限のモデル一致の検査

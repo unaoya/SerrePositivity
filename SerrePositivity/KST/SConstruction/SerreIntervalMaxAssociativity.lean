@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalTripleExt
 public import SerrePositivity.KST.SConstruction.SerreIntervalMaxVertexValues
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorReindex
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 元の max connection の結合則
 概要：元の鎖区間の三重 tensor 上で、max の二つの反復を厳密に比較する。

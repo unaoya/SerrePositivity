@@ -7,10 +7,10 @@ public import SerrePositivity.DifferentialGraded.Tensor.Triple
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.HomologicalAlgebra.Complex.ConeLES
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtension
-public import SerrePositivity.DifferentialGraded.Module.LeftEquivalence
-public import SerrePositivity.DifferentialGraded.Module.LeftClosedMaps
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.Graded
+
 
 /-!
 # Tensor.LeftUnitRestriction

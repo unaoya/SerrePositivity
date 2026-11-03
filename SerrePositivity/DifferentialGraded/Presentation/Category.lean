@@ -7,11 +7,11 @@ public import Mathlib.LinearAlgebra.Quotient.Defs
 public import Mathlib.LinearAlgebra.Isomorphisms
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.SetTheory.Cardinal.Ordinal
-public import SerrePositivity.DifferentialGraded.Functor.Basic
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedTransport
-public import SerrePositivity.DifferentialGraded.Category.HomTransport
-public import SerrePositivity.DifferentialGraded.Category.Induced
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+
+
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import Mathlib.LinearAlgebra.Quotient.Basic
 
 /-!

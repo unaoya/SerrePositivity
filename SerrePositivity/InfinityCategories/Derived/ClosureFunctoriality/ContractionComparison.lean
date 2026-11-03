@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：二つの指定収縮と閉零次射の交換の欠損に、明示的な次数 -2 の原始元を与える。

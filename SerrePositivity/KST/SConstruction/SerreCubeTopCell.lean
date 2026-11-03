@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreCubeComonoid
-public import SerrePositivity.DifferentialGraded.Complexes.Currying
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 元の Serre 鎖立方体の最高次元生成元
 概要：元の単位生成元と元の辺の tensor から、全次元の最高次元生成元を構成する。

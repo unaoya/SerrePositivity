@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.LeftAction
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U11a：左dg加群・二重opposite・全次数作用の受入 -/

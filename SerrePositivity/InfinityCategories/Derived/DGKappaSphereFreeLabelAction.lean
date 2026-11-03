@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeFamily
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：κ 未満 sphere-free 表示のラベルに dg 関手を厳密に作用させる。
 方針：ordinal と次数を保持し、縮小した対象ラベルだけを元の対象作用で写す。

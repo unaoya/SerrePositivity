@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeElements
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+
 
 /-! # U10b6b：coneの斉次包含・射影と全次数後合成 -/
 @[expose] public section

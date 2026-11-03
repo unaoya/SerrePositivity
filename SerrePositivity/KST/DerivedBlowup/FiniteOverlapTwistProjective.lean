@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistEquivalence
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleProjectiveResolution
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionProjective
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
 概要：KST v4 §3.1（pp.11–14）の整数捻りを全次数の dg 作用へ持ち上げ、ホモトピー射影性を保存する。

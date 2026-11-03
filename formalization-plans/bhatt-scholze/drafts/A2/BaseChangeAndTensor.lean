@@ -76,11 +76,11 @@ theorem derivedPrismaticCohomology_tensor : True := by trivial
 
 /-! ## D32：導来 p 完備化不変性 -/
 
-/-- 概要：P_Σ 上の導来 p 完備化 R ↦ R^∧（要確認：定義。E3 の経路では離散 R の完備化 R^∧ = `completionRing` との比較だけが要る）。
-方針：ここでは離散 R について：単位 R → R^∧（E3 の `completionUnit`）が Δ の同値を誘導することを述べる。
-規約：一般の P_Σ 上の完備化は定義しない（E3 に不要）。
-使われ方：E3 の `perfd` が非完備な始域に延びること（界面の規約 (v)）。 -/
-theorem derivedPrismaticCohomology_completion_discrete : True := by trivial
--- Δ_R ≃ Δ_{R^∧}：gr（cotangentWedge）の不変性（L_{R^∧/R} の p 完備化が零）と exhaustive 性、導来 Nakayama
+/-- 概要：D32：animated な導来 p 完備化 R → LΛ_p R（A7-1 `animatedCompletion`）は Δ の同値 Δ_R ≃ Δ_{LΛ_p R} を誘導する。
+方針：gr（`cotangentWedge`）の不変性（S = LΛ_p R で R/p^n → S/p^n 同値、L_{S/R}^∧ = 0、推移三角）、exhaustive 性（完備圏）、導来 Nakayama。
+規約：**離散 R の `completionRing R` = H⁰(LΛ_p R) とは別**（W9-I-29：LΛ_p R は離散とは限らない。例 R = Z_p ⊕ Q_p/Z_p）。E3 の欄との接続は
+perfd の段で Prop 8.5 の系 4（a5-design §7.1）。
+使われ方：A7（Prop 8.13 の完備化）、A8（Thm 10.11 の filtered 余極限）。 -/
+theorem derivedPrismaticCohomology_completion_animated : True := by trivial
 
 end SerrePositivity.BhattScholze.Prismatic

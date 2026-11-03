@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.CoproductHom
-public import SerrePositivity.DifferentialGraded.Derived.CoproductProjective
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.InfinityCategories.Derived.EnrichedClosedWhiskering
 
 /-!

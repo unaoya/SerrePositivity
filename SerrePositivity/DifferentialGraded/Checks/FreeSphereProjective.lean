@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.FreeSphereProjective
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10b2：自由sphereの全次数Homとhomotopically projective性 -/

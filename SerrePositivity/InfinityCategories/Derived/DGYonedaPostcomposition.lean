@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCyclePostcomposition
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.HomFunctor
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # Yoneda 閉射の評価と元の Hom の後合成
 

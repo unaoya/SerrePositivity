@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>前層</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 14</nav>
+<h1>第 III 部 14　前層と表現可能前層</h1>
+
+<div class="env theorem" id="thm-fun-quasicategory">
+<p class="env-head">定理 14.1 <span class="env-name">（関手の ∞ 圏）</span></p>
+<div class="env-body">
+<p>\(K\) を単体的集合、\(D\) を quasicategory とすると、\(\mathrm{Fun}(K,D)\)（<a href="t-02-kan-category.html#def-fun">定義 2.2</a>）は quasicategory である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-presheaf">
+<p class="env-head">定義 14.2 <span class="env-name">（前層の ∞ 圏）</span></p>
+<div class="env-body">
+<p>小さい quasicategory \(C\) について、\(\mathcal P(C)=\mathrm{Fun}(C^{\mathrm{op}},\mathcal S)\) とおく（反対は<a href="t-12-mapping-functor.html#def-opposite">定義 12.1</a>、\(\mathcal S\) は<a href="t-03-coherent-nerve.html#def-spaces">定義 3.7</a>）。<a href="#thm-fun-quasicategory">定理 14.1</a> により \(\mathcal P(C)\) は quasicategory である。その頂点 \(F\colon C^{\mathrm{op}}\to\mathcal S\) を前層という。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-presheaf">
+<p class="env-head">注意 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p>\(\mathcal S\) は小さくない（<a href="t-03-coherent-nerve.html#rem-size-spaces">第 3 章の注意</a>）ので、\(\mathcal P(C)\) も小さくない単体的集合である。前層 \(F\) の頂点 \(x\) での値 \(F(x)\) は \(\mathcal S\) の頂点、つまり小さい Kan 複体である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-representable">
+<p class="env-head">定義 14.3 <span class="env-name">（表現可能前層）</span></p>
+<div class="env-body">
+<p>小さい quasicategory \(C\) の頂点 \(y\) について、前層 \(h_y\) を合成</p>
+<p>\[h_y\colon C^{\mathrm{op}}\cong C^{\mathrm{op}}\times\Delta^0\xrightarrow{\ \mathrm{id}\times y\ }C^{\mathrm{op}}\times C\xrightarrow{\ \mathrm{Map}_C\ }\mathcal S\]</p>
+<p>で定め、\(y\) が表現する前層という（\(\mathrm{Map}_C\) は<a href="t-12-mapping-functor.html#def-map-functor">定義 12.5</a>）。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-yoneda-embedding">
+<p class="env-head">定義 14.4 <span class="env-name">（Yoneda 埋め込み）</span></p>
+<div class="env-body">
+<p>小さい quasicategory \(C\) について、\(\mathrm{Map}_C\) と成分の入れ替え \(C\times C^{\mathrm{op}}\cong C^{\mathrm{op}}\times C\) の合成 \(C\times C^{\mathrm{op}}\to\mathcal S\) に、<a href="t-02-kan-category.html#thm-adjunction">定理 2.4</a> の全単射で対応する射を</p>
+<p>\[j\colon C\to\mathcal P(C)\]</p>
+<p>と書き、Yoneda 埋め込みという。頂点 \(y\) について \(j(y)=h_y\)（<a href="#def-representable">定義 14.3</a>）である。</p>
+</div>
+</div>
+
+
+</main>
+</body>
+</html>

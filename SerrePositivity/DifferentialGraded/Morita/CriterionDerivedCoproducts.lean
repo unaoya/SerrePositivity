@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Morita.Perfect
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import SerrePositivity.DifferentialGraded.Verdier.Derived

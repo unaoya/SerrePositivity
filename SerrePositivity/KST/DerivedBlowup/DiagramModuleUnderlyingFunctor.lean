@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnderlyingDiagram
 public import SerrePositivity.KST.DerivedBlowup.TransitionModuleNaturality
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：KST §3.1 の図式 dg 加群の射を underlying 複体図式の自然変換へ送る。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.CategoryTheory.Monoidal.Comon_
 public import Mathlib.CategoryTheory.Monoidal.Mon
 public import Mathlib.CategoryTheory.Monoidal.Braided.Basic

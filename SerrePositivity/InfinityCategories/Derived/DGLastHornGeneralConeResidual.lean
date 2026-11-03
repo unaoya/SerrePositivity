@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornGeneralFinalEdge
 public import SerrePositivity.InfinityCategories.Derived.DGLastHornBianchiCompatibility
-public import SerrePositivity.DifferentialGraded.Complexes.QuasiIsoCycles
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 
 /-! # 一般最後外ホーンの Hom cone の閉残差
 

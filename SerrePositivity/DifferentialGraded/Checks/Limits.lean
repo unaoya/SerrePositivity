@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Limits
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7c1：objectwise 極限・全次数作用・普遍性・宇宙契約 -/

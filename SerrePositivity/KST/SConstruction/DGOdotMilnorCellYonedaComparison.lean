@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaith
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
 概要：同じ resolved cell 商包含について、実 Perf 延長と元 Yoneda の全自然性を回収する。

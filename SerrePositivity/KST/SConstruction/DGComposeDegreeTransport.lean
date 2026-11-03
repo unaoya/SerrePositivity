@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 元の通常順 dg 合成と次数移送
 概要：元の左右成分と出力の次数移送を、同じ通常順 dg 合成と交換する。

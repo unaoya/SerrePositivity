@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.PolynomialPushoutBaseChange
 public import SerrePositivity.KST.DerivedBlowup.PolynomialKoszulKFlat
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionComplexNaturality
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 
 /-!
 概要：KST Lemma3.6 の普遍基底からの導来底変更を表示多項式環上の底変更へ比較する。

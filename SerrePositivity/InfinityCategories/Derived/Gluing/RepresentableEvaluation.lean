@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.HomConeBlocks
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
-public import SerrePositivity.DifferentialGraded.Module.Cone
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-! 代表加群の閉射と augmentation の評価を、元の Hom 後合成と双加群の左作用へ戻す。 -/
 @[expose] public section
 open CategoryTheory Limits CochainComplex HomComplex

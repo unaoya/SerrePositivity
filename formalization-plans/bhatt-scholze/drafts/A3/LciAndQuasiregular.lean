@@ -67,15 +67,38 @@ def universalLciPrism (r : ℕ) : OrientedPrism p (universalLciPrismRing (p := p
 def lciClassifyingMap : OrientedPrism.Hom (universalLciPrism (p := p) r) P := sorry
 
 /-- 概要：(A, (d, f)) の prismatic envelope A{f/d}^∧ の存在（Prop 3.13 の適用）。
-方針：普遍の場合は A0-3c の変数の場合（S = Fin r、Z = 全部、基底 A_0）：B_univ = A_0{Y}^∧（f_i = dY_i）。一般は底変換（A0-3c の
-`prismaticEnvelope_baseChange_of_variables`）。
-規約：原典どおり Prop 3.13 を使う形。f が Koszul 正則なら Prop 3.13 の仮定（(p,d) 完全正則）を満たすが、本書では普遍の場合の変数の envelope と
-底変換で済ませる（存在だけ）。
+方針（W9-I-39 で訂正）：普遍の場合は A0-3c の変数の場合（S = Fin r、Z = 全部、基底 A_0）：E = B_univ = A_0{Y}^∧（f_i = dY_i）。E は **A_0 上**
+(p,d) 完全平坦で、U = A_univ 上ではない（f = dY は U/(p,d) 上の正則元を零に写す）。一般は `lciDerivedEnvelope`（B := E ⊗̂^L_U A、CAlg）の離散性を
+Δ_{R/A} との比較と HT から得てから、δ 環の完備押し出しの普遍性で envelope にする。
+規約：原典どおり Prop 3.13 の envelope。存在は普遍の場合の変数の envelope と、離散化後の押し出しで。
 使われ方：Ex 7.9 の B。 -/
 theorem exists_lciEnvelope (hf : IsKoszulRegularModGenerator P f) :
     ∃ (B : Type u) (_ : CommRing B) (Q : OrientedPrism p B) (η : A →+* B),
       IsPrismaticEnvelope P P.deltaStructure (RingHom.id A) (by sorry) (P.ideal ⊔ Ideal.span (Set.range f)) (by sorry) Q η := by
   sorry
+
+/-- 概要：B := E ⊗̂^L_U A（普遍 envelope E = A_0{Y}^∧ の分類射 U = A_0{f}^∧ → A に沿う CAlg の完備導来テンソル。離散性は仮定しない。W9-I-39）。
+方針：A7-1 の相対テンソル／完備化、または D(A) の完備導来テンソルの CAlg 版。
+規約：原典 Ex 7.9 の「導来完備な単体的 δ 代数 B」の underlying（δ 構造は離散化後、G-A3-10）。
+使われ方：`lciDerivedEnvelope_eq_prismatic`。 -/
+def lciDerivedEnvelope : True := trivial
+
+/-- 概要：B ≃ Δ_{R/A}：R = R_univ ⊗̂^L_U A（U/(d,f) ⊗^L_U A は f̄ の Koszul 正則性で A/(d,f)）、A2 (4) で Δ_{R/A} ≃ Δ_{R_univ/U} ⊗̂^L_U A、普遍の場合の
+E ≃ Δ_{R_univ/U} を底変換。
+方針：A2-4 `derivedPrismaticCohomology_baseChange`、普遍の場合の比較（G-A3-7）。
+規約：CAlg の同値。
+使われ方：離散性の移送。 -/
+theorem lciDerivedEnvelope_eq_prismatic (hf : IsKoszulRegularModGenerator P f) : True := by trivial
+
+/-- 概要：G-A3-10：Δ_{R/A} が離散なら B = LΛ_I(E ⊗^L_U A) も離散。K = E ⊗^L_U A → N = E ⊗_U A は H⁰ 同型で、完備化後も H⁰ 同型
+（既存 `derivedComplexCompletion_h0_map_isIso`、W9-I-41。Tor 独立性は主張しない）ので B ≃ H⁰ LΛ_I N。N の通常の δ 構造は W₂ への切断の貼り合わせ
+（`PerfectDeltaTensor` は完全 δ 環用で使えない、W9-I-42）、δ 射の普遍性 Hom_{δ-A}(N, D) = Hom_{δ-U}(E, D) と E の A_0 上の envelope の普遍性（A0-3c）、
+完備化の一意延長 `existsUnique_deltaPDCompletionHom` で、(B, dB) は (A,(d,f)) の envelope、(R/A)_Δ の**全 prism の中の始対象**（p ねじれなし不要）。
+有界性は R の有界 p 冪ねじれと p 完全平坦な HT filtration から。
+方針：上の三段（G-A3-10 (a)(b)(c)）。
+規約：—
+使われ方：`prismaticCohomology_lci_eq_envelope`、Prop 7.10 の始性。 -/
+theorem lciDerivedEnvelope_isEnvelope_of_discrete : True := by trivial
 
 /-- 概要：Ex 7.9 の離散性：Δ_{R/A} は離散で d ねじれなし（HT filtration の gr^i = (∧^i L_{R/k})^∧[−i]、L = (J/J²)[1]、décalage で Γ^i(J/J²)[0]、
 各 Fil_i 離散、exhaustive）。R の p ねじれ有界を使う。
@@ -114,9 +137,11 @@ section Quasiregular
 規約：D39。
 使われ方：Prop 7.10 の仮定。 -/
 structure IsQuasiregularSemiperfectoid (S : Type u) [CommRing S] : Prop where
-  pComplete : True
+  pComplete : True -- 導来 p 完備
   semiperfectoid : ∃ (R : Type u) (_ : CommRing R) (f : R →+* S), IsIntegralPerfectoid R p ∧ Function.Surjective f
-  cotangent_flat : True -- (L_{S/Z_p}[−1])^∧ が p 完全平坦
+  /-- 原典 Not 7.1 の「有界な p 冪ねじれ」。W9-I-32 で復元（他の条件から従わない：S = ∏ O_C/(p^n)）。 -/
+  boundedTorsion : ∃ N : ℕ, ∀ (n : ℕ) (x : S), (p : S) ^ n * x = 0 → (p : S) ^ N * x = 0
+  cotangent_flat : True -- (L_{S/Z_p}[−1])^∧ が p 完全平坦（A2 の `cotangentWedge` を基底 Z_p で）
 
 variable (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (S : Type u) [CommRing S] [Algebra R S]
 
@@ -142,13 +167,15 @@ theorem qrsp_completelyFaithfullyFlat (hS : IsQuasiregularSemiperfectoid (p := p
 使われ方：Prop 7.10 (b) の帰着先、Ex 7.9 の適用。 -/
 def regularSemiperfectoid (r : ℕ) (f : Fin r → R) : Type u := sorry
 
-/-- 概要：T について Ex 7.9：Δ_{T/A′} ≅ A′{(X − f)/d}^∧ は始 prism。Δ_{T/A} ≃ Δ_{T/A′}（底変換、A2-4 (4)）。
-方針：`prismaticCohomology_lci_eq_envelope` を (A′, X_i − f_i) に。
+/-- 概要：T について Ex 7.9：Δ_{T/A′} ≅ A′{(X − f)/d}^∧ は始 prism（p ねじれなしの標的の中で、D36 改訂案）。Δ_{T/A} ≃ Δ_{T/A′} は
+**A2 (4) ではなく G-A2-10**（perfectoid の基底拡大での不変性：比較射は (4) と乗法、HT の gr と Nakayama。W9-I-35）。
+方針：`prismaticCohomology_lci_eq_envelope` を (A′, X_i − f_i) に、G-A2-10。T の有界 p 冪ねじれは R の有界ねじれと平坦性から。
 規約：—
 使われ方：Prop 7.10 (b)。 -/
 theorem regularSemiperfectoid_prismatic (r : ℕ) (f : Fin r → R) : True := by trivial
 
-/-- 概要：Prop 7.10 (b)：S qrsp なら (Δ_S, dΔ_S) は S 上の始 prism（Lemma 7.7(3) の冪等元が恒等）。
+/-- 概要：Prop 7.10 (b)（**一般形。E3 では使わず別単位**、W9-I-43：この経路で供給されるのは T・S′ の始性 `rootQuotient_initial`）：
+S qrsp なら (Δ_S, dΔ_S) は S 上の始 prism（原典は自然な δ 自己準同型の議論）。
 方針：R を R⟨Y^{1/p^∞}⟩ に替えて R → S 全射、核の生成系 {f_j} で S′ := R⟨X_j^{1/p^∞}⟩/(X_j − f_j)^∧ → S（全射、余接複体で全射）、HT で
 Δ_{S′} → Δ_S 全射、S′ は T の filtered 余極限、Δ は filtered 余極限と交換（A2-4 (5)）、T は `regularSemiperfectoid_prismatic`。
 規約：—

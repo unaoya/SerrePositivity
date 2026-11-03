@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>∞ 圏基盤の解説</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.tag { display: inline-block; font-size: 0.78rem; padding: 0 0.4em; border: 1px solid var(--rule); border-radius: 3px; white-space: nowrap; }
+</style>
 </head>
 <body>
 <main>
 <h1>∞ 圏基盤の解説</h1>
-<p class="meta">自分用の読解ノート。<code>SerrePositivity/InfinityCategories/</code> の形式化を、数学・Lean の構造・リファクタ候補の三つの面から読む。</p>
+<p class="meta">自分用の読解ノート。第 I 部（旧シリーズ、2026-10-28 まで）と第 II 部（整備後の ∞ 圏基盤、2026-10-28〜、ファイル名が f- で始まるもの）からなる。<code>SerrePositivity/InfinityCategories/</code> の形式化を、数学・Lean の構造・リファクタ候補の三つの面から読む。</p>
 
 <h2>目標：∞ 圏の解説動画</h2>
 <p>このノートは、∞ 圏の解説動画シリーズを作るための土台として使う。</p>
@@ -20,9 +23,14 @@
 </ul>
 <p>主な素材は読書ルートの「六関手形式の定義への最短路」と「fibration の分類定理への道」。</p>
 
-<div class="box"><p class="label">新しいシリーズ（2026-10-28〜）</p><p>整備計画が目指す層の構成に沿った解説は <a href="../infinity-foundation/index.html">整備後の ∞ 圏基盤</a> に書く。このシリーズ（旧ディレクトリ単位）は残し、詳しい説明の参照先として使う。</p></div>
+<ul>
+  <li><a href="#part1">第 I 部　旧シリーズ（ディレクトリ単位）</a></li>
+  <li><a href="#part2">第 II 部　整備後の ∞ 圏基盤</a></li>
+  <li><a href="#part3">第 III 部（仮）</a></li>
+</ul>
 
-<h2>章</h2>
+<h2 id="part1">第 I 部　旧シリーズ（ディレクトリ単位）</h2>
+<h3>章</h3>
 <div class="table-wrap"><table>
 <tr><th>章</th><th>内容</th><th>対象</th><th>状態</th></tr>
 <tr><td><a href="00-map.html">0</a></td><td>全体地図：符号化、ディレクトリと層、依存関係、リファクタ候補</td><td>全体</td><td>草稿</td></tr>
@@ -48,7 +56,7 @@
 </table></div>
 
 
-<h2>読書ルート</h2>
+<h3>読書ルート</h3>
 <ul>
   <li><a href="route-yoneda.html">Yoneda への道</a>：Yoneda の補題の証明（四つの同値の合成）を、必要な準備から順にたどる。straightening を使わない fibration 版も</li>
   <li><a href="route-arith.html">数論のための ∞ トポス</a>：補章 8・9 の Brauer 群と局所類体論の背後にある一般論の地図（∞ トポス、シェイプ、降下、Tate 構成、モノイダル、双対性）と、Hoyois・Nikolaus–Scholze・Antieau–Gepner の要約、読む順序</li>
@@ -56,17 +64,17 @@
   <li><a href="route-classification.html">fibration の分類定理への道</a>：\(\mathcal S\) は左 fibration を、\(\mathrm{Cat}_\infty\) は cocartesian fibration を分類する、という主張をゼロから証明まで理解するための最短経路（fibration の意義、目標と段階）</li>
 </ul>
 
-<h2>設計ノート</h2>
+<h3>設計ノート</h3>
 <ul>
   <li><a href="k-nonconnective-design.html">非連結 K の設計：関手性をどこに置くか</a>：K-7 c4 の反例、10-27 の設計変更、∞ 側と dg 側の関手の形式化状況と対応</li>
 </ul>
 
-<h2>リファクタ記録</h2>
+<h3>リファクタ記録</h3>
 <ul>
   <li><a href="r8-duplication.html">R8　重複コードの調査</a>：F1/F1B の KanSection 系の複製、その根本原因と解消の計画</li>
 </ul>
 
-<h2>各章の書き方</h2>
+<h3>各章の書き方</h3>
 <ul>
   <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
   <li>数学の定義・定理を述べ、対応する Lean の宣言名とファイルを添える。証明は方針と鍵になる補題、そして Lean での組み立て方まで追う。</li>
@@ -74,6 +82,71 @@
   <li>リファクタ候補は赤い囲みにし、番号（R1、R2、…）を全章で通す。</li>
   <li>末尾に「この章で押さえること」を置く。</li>
 </ul>
+
+<h2 id="part2">第 II 部　整備後の ∞ 圏基盤（2026-10-28〜）</h2>
+
+<p class="meta">
+  自分用の解説の新しいシリーズ（2026-10-28 開始）。
+  <a href="../../../formalization-plans/infinity-foundation-plan.md">∞ 圏基盤の整備計画</a>が目指す層の構成に沿って、∞ 圏基盤の数学と Lean の配置を説明する。
+</p>
+
+<h3>この部の書き方</h3>
+<ul>
+  <li><b>整備後の構成で書く。</b>章立ては計画 §3 の層の順序（Simplicial &lt; Core &lt; Kan &lt; … &lt; Stable &lt; F2）に従う。</li>
+  <li><b>宣言ごとに、いまの所在と状態を添える。</b>
+    <ul>
+      <li>いまの所在 → 移し先、の形で書く。</li>
+      <li>状態は次の三つで示す。
+        <ul>
+          <li><span class="tag">済</span>：もう目標の場所にある。</li>
+          <li><span class="tag">移動予定</span>：計画の候補番号（R…）を付ける。</li>
+          <li><span class="tag">未着手</span>：まだない数学。段 G の M…。</li>
+        </ul>
+      </li>
+    </ul>
+    作業が進むたびに更新する。
+  </li>
+  <li>各章の冒頭に、基準コミットと計画の版を書く。</li>
+  <li>第 I 部（旧シリーズ、旧ディレクトリ単位、第 0〜8 章）は残す。
+    straightening・Yoneda・presentable などの詳しい説明は旧シリーズを参照する。</li>
+</ul>
+
+<h3>章</h3>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>内容</th><th>層</th><th>状態</th></tr>
+<tr><td><a href="f-00-map.html">0</a></td><td>全体地図：層の構成と順序の理由、各層の主な宣言と所在、中核に入れないもの、Verdier 商までの道筋</td><td>全体</td><td>草稿</td></tr>
+<tr><td><a href="f-01-simplicial-kan.html">1</a></td><td>単体的集合と Kan 複体：組合せ論、Kan fibration、ホモトピー群・長完全列・Whitehead、塔と lim¹、基点付き（Σ ⊣ Ω）</td><td>Simplicial・Kan</td><td>草稿</td></tr>
+<tr><td><a href="f-02-model-free.html">2</a></td><td>モデル圏を使わない基礎：small object argument による Kan 置換、anodyne 局所化、Kan 複体による判定、対角、ModelBridge の役割</td><td>Simplicial・Kan・ModelBridge</td><td>草稿</td></tr>
+<tr><td><a href="f-03-localization.html">3</a></td><td>quasicategory と局所化：Core の基本、Dwyer–Kan 局所化の存在（逆辺の貼り付けと inner anodyne 置換）、普遍性、hammock 局所化</td><td>Core・F1B/Localization</td><td>草稿</td></tr>
+<tr><td><a href="f-04-stable-verdier.html">4</a></td><td>安定 ∞ 圏と Verdier 列：定義、9 人論文の特徴づけ、束ねた形と束ねない形、厚い部分圏、随伴による判定</td><td>Stable・Stable/Verdier</td><td>草稿</td></tr>
+<tr><td><a href="f-05-verdier-quotient.html">5</a></td><td>Verdier 商への道筋：分数（Ore 条件と写像空間）、局所化の安定性、商の存在と関手性、Ind・Bousfield・Thomason–Neeman</td><td>Stable/Verdier・StablePresentable</td><td>草稿</td></tr>
+<tr><td><a href="f-06-straightening.html">6</a></td><td>straightening の現状と Cat∞ 値版への道：空間値の主経路、Kerodon との比較、一般の底に必要なもの、証明方法の比較、普遍 cocartesian fibration の構成案、Cat∞ 値が要る場所、presentable と \(\mathrm{Pr}^L\)</td><td>F1・F2</td><td>草稿</td></tr>
+<tr><td><a href="f-a-basics.html">補</a></td><td>基本事項の確認：始対象と写像空間、スライスと join の補題、4 単体と五角形、極限・随伴・随伴関手定理、基礎の枠組み（HoTT・∞-cosmos・合成的圏論）</td><td>Core ほか</td><td>草稿</td></tr>
+<tr><td><a href="f-b-literature-yoneda.html">補 2</a></td><td>文献の章立て・極限と Kan 拡張・Yoneda：Kerodon と HTT の章立て、Kerodon 第 7 章、cofinality、Kan 拡張の位置づけ、ホモトピー極限、fibration 版 Yoneda の詳しい証明</td><td>F1・F1B</td><td>草稿</td></tr>
+<tr><td><a href="f-c-spaces.html">補 3</a></td><td>空間の ∞ 圏 S：単体的圏と 𝔠[Δ^n]、coherent nerve と quasicategory 性、S と Cat∞、他の定義との比較、写像空間の比較定理（Kerodon 4.6.7 と形式化）、Hom 関手（twisted arrow の straightening、Tw の低次元の計算、持ち上げとファイバー、Yoneda の比較）</td><td>Coherent・F1/Coherent・Core</td><td>草稿</td></tr>
+<tr><td><a href="f-d-adjoint-presentable.html">補 4</a></td><td>随伴関手定理と presentability：定理の骨格と必要な部品、左随伴だけにアクセシブル性が要る理由、表現可能性定理（反射的局所化・局所対象・稠密性・Lurie–Simpson）、Pr^L の形式化の状況</td><td>F2/Presentable</td><td>草稿</td></tr>
+</table></div>
+
+<h2 id="part3">第 III 部（仮）</h2>
+<h3>章</h3>
+<div class="table-wrap"><table>
+<tr><th>章</th><th>内容</th><th>状態</th></tr>
+<tr><td><a href="t-01-definitions.html">1</a></td><td>単体的集合と quasicategory の定義</td><td>執筆中</td></tr>
+<tr><td><a href="t-02-kan-category.html">2</a></td><td>Kan 複体のなす単体的圏</td><td>執筆中</td></tr>
+<tr><td><a href="t-03-coherent-nerve.html">3</a></td><td>homotopy coherent nerve</td><td>執筆中</td></tr>
+<tr><td><a href="t-04-join-slice.html">4</a></td><td>join とスライス</td><td>執筆中</td></tr>
+<tr><td><a href="t-05-fibrations.html">5</a></td><td>fibration</td><td>執筆中</td></tr>
+<tr><td><a href="t-06-fiber-products.html">6</a></td><td>ファイバー積とファイバー</td><td>執筆中</td></tr>
+<tr><td><a href="t-07-mapping-spaces.html">7</a></td><td>写像空間</td><td>執筆中</td></tr>
+<tr><td><a href="t-08-initial-terminal.html">8</a></td><td>始対象と終対象</td><td>執筆中</td></tr>
+<tr><td><a href="t-09-limits.html">9</a></td><td>極限と余極限</td><td>執筆中</td></tr>
+<tr><td><a href="t-10-fibration-yoneda.html">10</a></td><td>fibration 版 Yoneda</td><td>執筆中</td></tr>
+<tr><td><a href="t-11-straightening.html">11</a></td><td>straightening</td><td>執筆中</td></tr>
+<tr><td><a href="t-12-mapping-functor.html">12</a></td><td>twisted arrow と関手 Map</td><td>執筆中</td></tr>
+<tr><td><a href="t-13-homotopy-equivalence.html">13</a></td><td>ホモトピー同値と充満忠実</td><td>執筆中</td></tr>
+<tr><td><a href="t-14-presheaves.html">14</a></td><td>前層と表現可能前層</td><td>執筆中</td></tr>
+<tr><td><a href="t-15-yoneda.html">15</a></td><td>Yoneda の補題</td><td>執筆中</td></tr>
+</table></div>
 </main>
 </body>
 </html>

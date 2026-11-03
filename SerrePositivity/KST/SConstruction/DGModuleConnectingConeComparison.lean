@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
-public import SerrePositivity.DifferentialGraded.Module.ConeRotationHomotopy
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-!
 概要：元 connecting 射の実 cone から元終域の shift への指定比較を作る。

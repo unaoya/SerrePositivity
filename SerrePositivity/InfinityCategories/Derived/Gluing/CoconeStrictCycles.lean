@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBoundary
-public import SerrePositivity.DifferentialGraded.Complexes.Unit
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 
 /-! 差写像が零になる任意次数の閉元を、第三成分零の同じ cocone 閉元へ持ち上げる。 -/
 @[expose] public section

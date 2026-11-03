@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexCochainAugmentationZero
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorAugmentation
-public import SerrePositivity.DifferentialGraded.Complexes.Enrichment
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-!
 # 同じ正規化テンソル augmentation の零次数 curry は元の恒等射

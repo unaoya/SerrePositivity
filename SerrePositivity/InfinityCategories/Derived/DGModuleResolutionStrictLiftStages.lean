@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleDiskCoverStrictLift
 public import SerrePositivity.InfinityCategories.Derived.DGModuleKernelCellStrictLift
-public import SerrePositivity.DifferentialGraded.Module.ResolutionSequence
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：canonical 分解の全 cell 段に整合する strict lift を再帰する。
 方針：初期 disk 被覆と後続 kernel cell の実持ち上げ・余極限の普遍性を使う。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.RingHomotopyComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 全Hom同型によるH⁰の完全忠実性と一対象環比較の監査 -/

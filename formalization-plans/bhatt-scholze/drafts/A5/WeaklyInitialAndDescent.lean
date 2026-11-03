@@ -3,8 +3,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
--- 本ファイルは drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean、drafts/Sheaves/CechConerveLimit.lean、drafts/Shared/Descendable.lean、
--- drafts/A2/BaseChangeAndTensor.lean を import する。
+-- 本ファイルは drafts/A5/{RootAdjunction,PerfectSite,SemiperfectoidCase,StrongDescent}.lean、drafts/Sheaves/CechConerveLimit.lean、drafts/Shared/Descendable.lean、
+-- drafts/A2/BaseChangeAndTensor.lean を import する。PerfectSiteComparison（Prop 8.5 の証明・系）は本ファイルより**後**（W9-III-09）。
+-- 根添加の定義と初等的補題（`rootClosure`・`algebraicRootClosure`・`polyRootAlgebra`・`rootCover`）は drafts/A5/RootAdjunction.lean に切り出した。
 
 /-!
 # 弱始対象・filtered 余極限・Lemma 8.6 による降下（BS 著者版 Prop 8.5 の証明 (1)〜(3)）
@@ -40,43 +41,28 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 
 /-! ## (1) 弱始対象 -/
 
-/-- 概要：一段：S_1 = (S⟨X_s, Y_s : s ∈ S⟩/(s − X_s^p − pY_s))^∧（全元に p 乗根を mod p で添加）。
-方針：`MvPolynomial (S ⊕ S) S` の商の p 進完備化（H⁰、U4）。
-規約：関手的（S の射で変数を送る）。
-使われ方：`rootClosure`。 -/
-def rootAdjunctionStep : Type u := sorry
-
-/-- 概要：S̃ := (colim_k S_k)^∧（ω 段、D51）。
-方針：段の余極限の p 進完備化。
-規約：R 代数、S → S̃。
-使われ方：弱始対象。 -/
-def rootClosure : Type u := sorry
-def rootClosureUnit : S →+* rootClosure p R S := sorry
-
-/-- 概要：(i) 延長性：任意の perfectoid T と S → T は S̃ → T に延びる（各段：s ↦ t、y^p ≡ t mod p の y、X_s ↦ y、Y_s ↦ (t − y^p)/p の原像）。
-方針：Frobenius 全射（perfectoid）と p 完備性で段ごとに延長し余極限へ。
-規約：延長は一意でない（存在だけ）。
-使われ方：弱始性。 -/
-theorem rootClosure_extends : True := by trivial
-
 /-- 概要：(ii) S̃ は semiperfectoid：S̃/p は semiperfect（各元が次の段で p 乗根をもつ）、p 完備な R 代数で mod p semiperfect なら perfectoid の商
 （G-A5-14、[BMS19, Rem 4.22]：θ : W(S̃^♭) → S̃ 全射、R ⊗̂ W(S̃^♭) は perfectoid）。
 方針：既存の θ（`fontaineTheta`）と完備テンソル。
-規約：A5-2 の `IsSemiperfectoid`。
+規約：A5-2 の `IsSemiperfectoid`。**perfectoid 基底 R は本質的**（W9-II-16）：ker θ の distinguished 元は R 由来。基底なしでは偽
+（S = ℤ_p の根添加は ℤ_p へ retraction をもつ）。A6 の Lemma 8.8 は前段 G-A6-11 で R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移してから本定理を使う。
 使われ方：S̃_perfd の存在（Cor 7.3）、A5-2 の適用。 -/
 theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) := by sorry
 
-/-- 概要：(iii) #S̃ ≤ (#S + ℵ₀)^{ℵ₀} ≤ κ。
-方針：各段の濃度評価と完備化の濃度（A0 `cardinal_envelope_le` と同型の議論）。
-規約：κ = `cutoff`。
-使われ方：κ 側の site の対象になること（D47）。 -/
-theorem rootClosure_cardinal_le : True := by trivial
+/-- 概要：S = S_alg^∧（S_alg = colim_i S_i）の被覆 E(S_alg)^∧_p：p 完備忠実平坦、semiperfectoid（mod p の根、G-A5-14）、E(S_i)^∧_p の完備 filtered 余極限。
+E(S)^∧_p とは同一視しない。
+方針：各段の自由性と完備化。
+規約：—
+使われ方：§3.2 の右辺の可換性。 -/
+theorem algebraicRootCover_properties : True := by trivial
 
-/-- 概要：(iv) S ↦ S̃ は関手的で filtered 余極限と可換（各段が有限型の構成＋完備化）。
-方針：段ごとの関手性。
-規約：完備化した余極限。
-使われ方：§3.2。 -/
-theorem rootClosure_filteredColimit : True := by trivial
+/-- 概要：E 被覆 U = E(S_alg)^∧_p について、任意の perfectoid T への S → T は U → T に延びる（各段で根と p 除算の原像）ので Q(U) は Perfd_{S/} の弱始対象。
+よって Čech 計算は S3 で閉じ（Q(U^{⊗̂_S (•+1)}) の Tot）、S̃ による計算と同じ極限の錐の比較で一致（W9-II-11）。
+一般の flat semiperfectoid 被覆（F_p → F_{p²} のように Q(U) が弱始でない）への一般化は別補題（E3 不要）。
+方針：S3 を二回、紙 3′。
+規約：—
+使われ方：`limit_perfectSite_filteredColimit`。 -/
+theorem cech_independent_of_flatSemiperfectoidCover : True := by trivial
 
 /-- 概要：弱始対象 S̃_perfd ∈ `PerfUnder_u p S`（A5-2 の普遍 perfectoid 環 R′(S̃)、Prop 8.5 の系 3 で Δ_{S̃,perf}/d）。
 方針：`universalPerfectoidRing` を S の上の環として。
@@ -120,8 +106,9 @@ theorem prismaticPerfection_filteredColimit : True := by trivial
 使われ方：右辺の可換性。 -/
 theorem tot_coconnective_filteredColimit : True := by trivial
 
-/-- 概要：右辺：S ↦ lim_{Perfd_{S/}} T = Tot((S̃_S^•)_perfd) は filtered 余極限と可換（(iv)、semiperfectoid の (−)_perfd の可換性、G-A5-2、完備化）。
-方針：上の三つ。紙 3（完備化と Tot の順序）。
+/-- 概要：右辺：S ↦ lim_{Perfd_{S/}} T は（完備化した）filtered 余極限と可換：図式に整合する被覆 E(S_alg)^∧_p の Tot で計算し
+（`algebraicRootCover_properties`、`cech_independent_of_flatSemiperfectoidCover`。旧 (iv) は使わない、W9-II-09）、semiperfectoid の (−)_perfd の可換性、G-A5-2、完備化。
+方針：上の三つ。紙 3（完備化と Tot の順序）、紙 3′。
 規約：—
 使われ方：有限生成への帰着。 -/
 theorem limit_perfectSite_filteredColimit : True := by trivial
@@ -134,22 +121,13 @@ theorem perfectionComparison_isIso_of_finiteType_cases : True := by trivial
 
 /-! ## (3) Lemma 8.6 による降下 -/
 
-/-- 概要：T_∞ = R⟨X_1^{1/p^∞},…,X_r^{1/p^∞}⟩（p 完備化）と T = R⟨X_1,…,X_r⟩ → T_∞。
-方針：`MvPolynomial (Fin r × ℕ)` の商の p 進完備化、既存の `CompatibleRootCompletion` の多変数版（要確認）。
-規約：—
-使われ方：S̃ = S ⊗̂_T T_∞。 -/
-def polyRootAlgebra (r : ℕ) : Type u := sorry
-
-/-- 概要：S̃ = S ⊗̂_T T_∞（T → S 全射）と S̃^n = (S̃^{⊗_S n+1})^∧。各 S̃^n は semiperfectoid（S/p の元は R/p 係数の x_i の多項式）。
-方針：完備テンソル。
-規約：`IsSemiperfectoid`。
-使われ方：降下。 -/
-def rootCover (r : ℕ) (f : Fin r → S) : Type u := sorry
+/-- 概要：各 S̃^n = (S̃^{⊗_S n+1})^∧（`rootCover`、RootAdjunction）は semiperfectoid（S/p の元は R/p 係数の x_i の多項式、G-A5-14）。
+規約：`IsSemiperfectoid`（SemiperfectoidCase）。 -/
 theorem rootCover_isSemiperfectoid (r : ℕ) (f : Fin r → S) (hf : True) : True := by trivial
 
 /-- 概要：左辺の降下：Δ_{S,perf} → Δ_{S̃,perf} は Δ_{T,perf} → Δ_{T_∞,perf} の底変換（(5) と G-A5-3）で descendable（Lemma 8.6、(a)）、
 よって Δ_{S,perf} ≃ Tot Δ_{S̃^•,perf}（(e)）。
-方針：Shared/Descendable の `isDescendable_baseChange`・`isDescendable_tot_equiv`、A5-1 の `prismaticPerfection_rootMap_descendable`。
+方針：Shared/Descendable の `isDescendable_baseChange`・`isDescendable_tot_equiv`、A5-3 の `prismaticPerfection_rootMap_descendable'`（StrongDescent。W9-III-09：PerfectSiteComparison の重複した主張は削除）。
 規約：D_comp(A)。
 使われ方：`perfectionComparison_isIso_of_finiteType`。 -/
 theorem prismaticPerfection_rootCover_descent (r : ℕ) (f : Fin r → S) : True := by trivial

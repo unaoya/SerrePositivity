@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.RepresentableUnitMap
-public import SerrePositivity.DifferentialGraded.Module.RestrictionRepresentable
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 
 /-!
 概要：KST §3.1 の指定閉零 Yoneda 拡張の加群射・係数制限に関する自然性。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomOut
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7a：射影的始域からの導来Hom関手と計算同型 -/
 @[expose] public section

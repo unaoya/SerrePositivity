@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomotopicallyProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # U10b1：Hom end による性質と代表/零加群の証明 -/
 @[expose] public section

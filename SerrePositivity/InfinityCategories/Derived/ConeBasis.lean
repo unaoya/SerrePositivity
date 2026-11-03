@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence
 public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisHeight
-public import SerrePositivity.DifferentialGraded.Complexes.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 public import Mathlib.LinearAlgebra.Basis.Prod
 
 /-! # 任意の鎖写像の cone の semibasis

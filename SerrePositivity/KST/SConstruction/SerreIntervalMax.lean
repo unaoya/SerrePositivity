@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalContraction
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
-public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 元の鎖区間の max connection
 概要：一端点への収縮を転置して、元の鎖区間の max connection の chain map を作る。

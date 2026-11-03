@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNullHomotopy
-public import SerrePositivity.DifferentialGraded.Module.LeftShiftElements
-public import SerrePositivity.DifferentialGraded.Module.ShiftElements
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：指定次数 −1 零化元の始域 shift は次数零の全自然性を持つ。

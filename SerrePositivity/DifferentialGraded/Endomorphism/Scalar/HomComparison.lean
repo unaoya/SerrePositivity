@@ -3,13 +3,13 @@ module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Functors
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Products
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
-public import SerrePositivity.DifferentialGraded.Module.HomFunctor
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.CategoryTheory.MorphismProperty.Retract
 public import Mathlib.Algebra.Homology.QuasiIso
-public import SerrePositivity.DifferentialGraded.Module.Homotopy
-public import SerrePositivity.DifferentialGraded.Functor.Components
-public import SerrePositivity.DifferentialGraded.Module.Precomposition
+
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 # Endomorphism.Scalar.HomComparison

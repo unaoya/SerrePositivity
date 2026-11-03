@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
 /-!
 概要：シフトブロックを対象・シフト・次数の等式に沿って比較する。

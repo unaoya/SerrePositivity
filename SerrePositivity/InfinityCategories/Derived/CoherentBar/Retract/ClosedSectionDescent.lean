@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.GradedSplitElements
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：次数付き分裂射影を通る鎖自己写像から、全作用と可換する閉包含を作る。
 方針：次数付き切断の後に自己写像を合成し、射影の次数ごとの分裂で鎖条件を検出する。

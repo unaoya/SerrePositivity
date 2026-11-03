@@ -26,11 +26,15 @@ open CategoryTheory Limits HomotopicalAlgebra
 
 variable (A : Type u) [CommRing A] (ι : Type u)
 
+set_option synthInstance.maxHeartbeats 40000
+set_option maxHeartbeats 400000
 /-- 概要：離散 E 代数図式の極限関手（BM §1）。
 方針：通常の小積を取る。
 規約：離散図式そのものを始域に使い、空の添字も許す。
 使われ方：homotopy 積の右導来関手の元の関手。 -/
-def productFunctor : (Discrete ι ⥤ (operad A).Algebra) ⥤ (operad A).Algebra := lim
+def productFunctor : (Discrete ι ⥤ (operad A).Algebra) ⥤ (operad A).Algebra :=
+  letI : HasLimitsOfSize.{u, u} (DifferentialGraded.Complex A) := ⟨fun _ _ => inferInstance⟩
+  lim
 
 /-- 概要：小積は離散図式の具体的なモデルに対して右 Quillen（BM 命題 4.1）。
 方針：fibration と trivial fibration の積での安定性を使う。
@@ -93,12 +97,14 @@ def productDerivedIso (X : ι → (operad A).Algebra)
     (Q : (operad A).Algebra ⥤ H) (L : (Discrete ι ⥤ (operad A).Algebra) ⥤ D)
     (RF : D ⥤ H) (β : productFunctor A ι ⋙ Q ⟶ L ⋙ RF) :
     let := modelCategory A
+    letI : HasLimitsOfSize.{u, u} (DifferentialGraded.Complex A) := ⟨fun _ _ => inferInstance⟩
     let := Diagram.projectiveModelCategory A (Discrete ι)
     ∀ [Q.IsLocalization (weakEquivalences (operad A).Algebra)]
       [L.IsLocalization (weakEquivalences (Discrete ι ⥤ (operad A).Algebra))],
       RF.IsRightDerivedFunctor β (weakEquivalences (Discrete ι ⥤ (operad A).Algebra)) →
       (Q.obj (∏ᶜ X) ≅ RF.obj (L.obj (Discrete.functor X))) := by
   let := modelCategory A
+  letI : HasLimitsOfSize.{u, u} (DifferentialGraded.Complex A) := ⟨fun _ _ => inferInstance⟩
   let := Diagram.projectiveModelCategory A (Discrete ι)
   dsimp only
   intro hQ hL hRF

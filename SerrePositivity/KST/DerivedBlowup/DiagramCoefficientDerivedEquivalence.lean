@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramCoefficientQuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalenceOpposite
-public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
 概要：KST v4 §3.1・Lemma 3.6（pp.11–14）の係数図式同型による全図式加群の導来比較。

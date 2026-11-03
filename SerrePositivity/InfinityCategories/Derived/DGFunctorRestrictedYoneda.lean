@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Module
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Graded
 /-!
 概要：一般 dg 関手に沿う制限 Yoneda 双加群。
 方針：全 Hom end の作用を同じ制限加群へ送る。

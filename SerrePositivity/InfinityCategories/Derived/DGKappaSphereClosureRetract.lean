@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureImage
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.TelescopeSplitting
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproductUniversal
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：同じ選択代表系の K(D) 内の本質像は可算直和と retract で閉じる。

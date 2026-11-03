@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.DGNerve.PinchedPiZero
 public import SerrePositivity.InfinityCategories.DGNerve.NatTrans
 public import SerrePositivity.InfinityCategories.DGNerve.FullSubcategory
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # dg nerve の具体例と受入検査
 

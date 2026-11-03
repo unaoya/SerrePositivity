@@ -3,8 +3,8 @@ module
 public import SerrePositivity.KST.DerivedBlowup.RepresentableUnitMap
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnitAction
 public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraVertex
-public import SerrePositivity.DifferentialGraded.Module.Restriction
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 の共変 representable の包含先での局所 regular 加群比較。

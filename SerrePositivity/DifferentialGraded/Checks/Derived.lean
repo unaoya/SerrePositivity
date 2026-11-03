@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.Evaluation
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U9a：指定quasiIsoの局所化、宇宙、普遍性・評価の受入入口 -/

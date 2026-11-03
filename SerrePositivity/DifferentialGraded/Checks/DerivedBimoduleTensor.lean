@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorFunctor
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U12eの標準局所化と固定K-flat因子による導来合成の受入監査

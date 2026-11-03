@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TowerPrimitives
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # U10b5a：全射的acyclic可算塔での互換な原像 -/
 @[expose] public section

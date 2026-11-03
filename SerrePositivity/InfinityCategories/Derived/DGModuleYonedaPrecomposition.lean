@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # 全 Hom Yoneda の逆写像と元の次数零元の前合成
 

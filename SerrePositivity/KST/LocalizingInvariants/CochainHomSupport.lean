@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 
 /-!

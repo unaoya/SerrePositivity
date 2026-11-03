@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleAppendMissingFace
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberCofiberEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberSquare
-public import SerrePositivity.DifferentialGraded.Module.ConeContractible
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-! # dg 加群の双対比較三単体
 

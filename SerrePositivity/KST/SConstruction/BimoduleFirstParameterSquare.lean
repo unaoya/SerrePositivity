@@ -4,7 +4,7 @@ public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 
 
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 実 tensor による全パラメータ可換四角形の保存
 概要：第一因子に関する任意 K の可換四角形は、元の相対 tensor の下でも可換。

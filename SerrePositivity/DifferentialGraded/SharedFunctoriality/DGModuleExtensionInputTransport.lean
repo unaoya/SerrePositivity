@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGModuleExtensionComposition
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphUnits
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionMaps
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 
 /-! # 実延長の入力等号移送と tensor 射の評価
 概要：入力の等号による実延長の比較と、tensor 作用の元の閉零射を固定する。

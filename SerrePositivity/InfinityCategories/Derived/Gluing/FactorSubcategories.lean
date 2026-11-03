@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.FactorZeroObjects
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Projections
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
-public import SerrePositivity.DifferentialGraded.Category.FullSubcategory
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! 片側がホモトピー零である gluing 対象の、二つの実充満 dg 部分圏。 -/
 @[expose] public section

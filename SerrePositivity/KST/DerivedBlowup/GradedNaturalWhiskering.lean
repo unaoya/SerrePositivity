@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：KST §3.1 の canonical な cartesian 比較を作るための全次数自然変換の whiskering。

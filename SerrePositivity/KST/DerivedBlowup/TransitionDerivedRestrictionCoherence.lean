@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.TransitionRestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Derived.Restriction
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 概要：KST §3.1 の dg 遷移に沿う導来加群制限の単位・合成比較。

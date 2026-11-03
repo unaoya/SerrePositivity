@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleHomotopy
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # flat条件なしの合成後のホモトピー同一視と増大squareの検査

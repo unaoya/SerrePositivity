@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.RingCoproducts
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-! # 導来余積と一対象環の比較の受入検査 -/
 @[expose] public section

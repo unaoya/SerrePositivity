@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfEvaluation
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
 
 /-!

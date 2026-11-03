@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleCompositePresentation
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleTransportComputation
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.IteratedModels
+
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 二段階sourceの正規化squareと移送付き全導来比較の検査

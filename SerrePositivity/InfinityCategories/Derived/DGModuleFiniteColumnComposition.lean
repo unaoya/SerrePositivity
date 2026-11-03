@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Algebra
-public import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：有限個の閉包含を通る全次数係数の和を、微分と次の斉次合成について展開する。
 方針：閉射による後合成の鎖写像性と、中間閉射を移す結合則を有限和へ適用する。

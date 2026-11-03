@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.RestrictionEnriched
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Endomorphism.Module
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
 

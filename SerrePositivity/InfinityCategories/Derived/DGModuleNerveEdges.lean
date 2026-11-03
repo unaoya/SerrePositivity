@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveZero
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.DGNerve.TruncatedTriangles
 
 /-! # dg 加群射と全 Hom 成分からの nerve の辺・三角形

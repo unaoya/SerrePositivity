@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryCochain
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-! 二つの全 Hom パラメータと係数を変えた際の、任意次数の tensor cochain の比較。 -/
 @[expose] public section

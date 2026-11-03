@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Yoneda
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 元の全 Yoneda 鎖同型は、任意の閉加群射による後合成と厳密に可換。 -/
 @[expose] public section

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGGradedClosedPrecomposition
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomPrecompose
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 元の閉射による Hom 鎖写像
 

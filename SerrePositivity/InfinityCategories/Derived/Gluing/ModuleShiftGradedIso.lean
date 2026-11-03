@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.ShiftRepresentation
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 
 /-! 加群の互いに逆な閉斉次元から、全 dg 自然な実シフト同型を構成する。 -/
 @[expose] public section

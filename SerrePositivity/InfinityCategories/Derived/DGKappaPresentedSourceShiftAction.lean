@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShift
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-public import SerrePositivity.DifferentialGraded.Module.ShiftHom
+public import SerrePositivity.DifferentialGraded.Functor.Closed
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
 /-!
 概要：出発提示の整数 shift を全 Hom 複体の dg 自己関手と native nerve の作用にする。

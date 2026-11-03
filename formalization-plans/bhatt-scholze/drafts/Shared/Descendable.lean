@@ -51,9 +51,17 @@ def thickTensorIdealGenerated (M : (derivedInfinityCategory A) _⦋0⦌) : (deri
 
 /-- 概要：[Mat16, Def 3.18]：A → B（CAlg_A の対象 B）が descendable ⇔ B の生成する thick ⊗-ideal が単位 A を含む。
 方針：定義どおり。
-規約：B は `(CAlg_R A) _⦋0⦌`、底の D(A) 対象は忘却。
+規約：B は `(CAlg_R A) _⦋0⦌`、底の D(A) 対象は忘却。**W9-II-13**：これは離散環 A を底とする特殊化。Lemma 8.6 の Δ_T → Δ_{T_∞} は E∞ 代数 Δ_T を底とする
+射なので、一般形は「対称モノイダルな安定 ∞ 圏 𝒞 の可換代数対象 B と Mod_B(𝒞) の thick ⊗-ideal」で定義する（`IsDescendableOver`、下）。
 使われ方：以下すべて。 -/
 def IsDescendable (B : (CAlg_R A) _⦋0⦌) : Prop := sorry -- thickTensorIdealGenerated A (U B) (unit)
+
+/-- 概要：一般形（W9-II-13）：対称モノイダルな安定 ∞ 圏 𝒞（D_comp(A)、Mod_{Δ_T}(D_comp(A)) など）の可換代数対象の射 B → B′ が descendable ⇔
+Mod_B(𝒞) で B′ の生成する thick ⊗-ideal が B を含む。離散環版 `IsDescendable` はこの特殊化。
+方針：𝒞 と Mod_B の形は EInfinity の `CAlg`／加群の ∞ 圏に合わせる（要確認）。
+規約：中身の段階で底の型を変える（実装計画に記録）。
+使われ方：Lemma 8.6（A5-3）、A5-4。 -/
+def IsDescendableOver : True := trivial
 
 /-- 概要：index ≤ n：fib(A → B)^{⊗n} → A が零（[BS17, §11.2]）。
 方針：fib と導来テンソル冪。

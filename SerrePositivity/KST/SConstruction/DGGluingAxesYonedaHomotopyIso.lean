@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomotopyHom
+public import SerrePositivity.DifferentialGraded.Derived.Basic
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # 元の二軸 Yoneda 円錐比較のホモトピー圏同型
 概要：同じ円錐比較の準同型性を、実射影的加群のホモトピー圏同型へ持ち上げる。

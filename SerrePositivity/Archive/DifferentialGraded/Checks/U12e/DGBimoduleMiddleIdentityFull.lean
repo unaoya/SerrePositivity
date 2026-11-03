@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleIdentityFamily
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleIdentityFull
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleComparisonComputation
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleLiftIso
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.FunctorCoherence
+
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.IteratedModels
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 恒等比較の全導来化と指定モデル計算の公理監査

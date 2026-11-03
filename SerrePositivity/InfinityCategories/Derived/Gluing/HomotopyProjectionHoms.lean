@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.LeftFactorHom
 public import SerrePositivity.InfinityCategories.Derived.Gluing.RightFactorHom
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 因子への Hom 射影の擬同型から、同じ H⁰ Hom 写像の全単射を回収する。 -/
 @[expose] public section

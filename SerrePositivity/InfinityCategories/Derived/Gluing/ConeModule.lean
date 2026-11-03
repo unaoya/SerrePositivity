@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeCoefficient
-public import SerrePositivity.DifferentialGraded.Module.ConeElementRelations
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! cone の三項行列を全 Hom end 内で構成し、指定比較ホモトピーを保持する閉零 dg 加群射にする。 -/
 @[expose] public section

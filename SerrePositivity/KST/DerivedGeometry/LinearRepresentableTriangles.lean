@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableConeEvaluation
 public import SerrePositivity.KST.DerivedGeometry.LinearYonedaShift
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.KST.DerivedGeometry.TriangleComparison
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ResolutionSequence
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # U10a5：可算cell列と有限段kernel cycleの消去 -/
 @[expose] public section

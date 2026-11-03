@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：境界付き cone 降下の後合成を実 augmentation の零境界降下と照合する。
 方針：同じ次数別成分と原始元の零像を使って厳密な等式を示す。

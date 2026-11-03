@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.TensorElements
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # tensor積の全次数合成公式の公理監査 -/
 @[expose] public section

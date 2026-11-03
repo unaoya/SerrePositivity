@@ -19,7 +19,8 @@ A6-3 の集合の層の押し出し F_S = F_{S′} ⊔_{F_{S′/I}} F_{S/I} を 
 Γ(F_S, O) ≃ Γ(P, O) = Γ(F_{S′}, O) ×_{Γ(F_{S′/I}, O)} Γ(F_{S/I}, O)、Γ(F_T, O) = lim_{Perfd_{T/}} O = T_perfd（Prop 8.5）。
 
 ## 規約
-S・T は完備なので `e3Perfd_of_complete`（A4-3）で S_perfd に読み替える。S/I・T/IT の導来 p 完備性は G-A6-10。CAlg_R の引き戻しは U が反映（G-A5-16）。
+S・T は完備なので `e3Perfd_of_complete`（A4-3）で S_perfd に読み替える。S/I は完備（G-A6-10）だが **T/IT は一般に完備でない**（W9-II-15 の反例）ので、
+商は `completionRing` 経由の自然同型 F_U ≃ F_{completionRing U}、Γ(F_U, O) ≃ e3Perfd(U) で扱う。CAlg_R の引き戻しは U が反映（G-A5-16）。
 
 ## 使われ方
 `PerfectoidizationInterfaceCAlg.excision`（A9）。環の帰結は既存（`Perfectoidization/Derived/Excision`）。
@@ -60,14 +61,25 @@ theorem perfectoidization_excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.righ
     (hI : IsModuleComplete S.right (p : S.right) (ModuleCat.of S.right I))
     (h : ArcOutside R p f I) : True := by trivial
 
-/-- 概要：G-A6-10：S・I が導来 p 完備なら S/I も；T と IT（I の像）についても。
+/-- 概要：G-A6-10：S・I が導来 p 完備なら S/I も（cofiber）。**T/IT については成り立たない**（W9-II-15：S = R ⊕ c₀(R)、T = R⟨t⟩ ⊕ c₀(R⟨t⟩)、I = 0 ⊕ c₀(R) で
+S・T・I 完備かつ `ArcOutside` だが T/IT の直和因子が非零で p 可除）。旧「T と IT についても」は撤回。
 方針：完備加群の短完全列（HA/DerivedCompletion、2b 後の名前）。
 規約：—
-使われ方：`e3Excision` で商を Def 8.2 の定義域に入れる。 -/
+使われ方：`e3Excision` で S/I を Def 8.2 の定義域に入れる。 -/
 theorem quotient_isModuleComplete : True := by trivial
 
+/-- 概要：一般の離散 R 代数 U について、Perfd 上の前層 F_U = Hom_R(U, −) ≃ F_{completionRing U}（perfectoid 標的は p 完備、`completionRing` の普遍性 Interface.lean:237）、
+よって Γ(F_U, O) ≃ Γ(F_{completionRing U}, O) ≃ (completionRing U)_perfd = e3Perfd(U)（Prop 8.5 の Type u 版、D41）。U について自然（商写像・比較写像を含む四角形を
+自然変換として移す）。
+方針：W9-II-15 の修復。T → completionRing(T/IT) の全射性は要らない（F_{T/IT} ↪ F_T の単射性は T → T/IT の全射性から）。
+規約：affCompl_κ の対象として商を使う箇所は completionRing(T/IT)。
+使われ方：`e3Excision`。 -/
+theorem homPresheaf_completionRing_iso : True := by trivial
+theorem sectionsOf_homSheaf_eq_e3Perfd : True := by trivial
+
 /-- 概要：E3 の `excision`：`IsPullbackSquare (ordinarySquare R f (quotientProjection R S I) (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I) (quotientSquare_commutes R f I) ≫ e3Perfd p R)`。
-方針：`perfectoidization_excision` と `e3Perfd_of_complete`（A4-3、四頂点とも完備：`quotient_isModuleComplete`）。
+方針：`perfectoidization_excision` を S・T（完備、`e3Perfd_of_complete`）と S/I（完備、`quotient_isModuleComplete`）に、T/IT は
+`homPresheaf_completionRing_iso`・`sectionsOf_homSheaf_eq_e3Perfd` で completionRing(T/IT) 経由に読み替え、四角形を自然変換として移す（W9-II-15）。
 規約：`PerfectoidizationInterfaceCAlg.excision` の型そのまま。
 使われ方：A9。 -/
 theorem e3Excision {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right)

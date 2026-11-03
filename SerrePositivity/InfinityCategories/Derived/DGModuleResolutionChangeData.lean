@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionData
 public import SerrePositivity.InfinityCategories.Derived.EnrichedDifferencePostcompose
-public import SerrePositivity.DifferentialGraded.Module.HomWhisker
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：全 Hom 自然な次数別全射準同型で、同じ入力と半自由出力を保つ分解対象を作る。
 方針：augmentation を後合成し、比較差の全パラメータ上の可換性を照合する。

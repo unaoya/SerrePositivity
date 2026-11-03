@@ -4,10 +4,10 @@ public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import Mathlib.Logic.Small.List
 public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import Mathlib.CategoryTheory.Monoidal.CoherenceLemmas
-public import SerrePositivity.DifferentialGraded.Functor.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproductExt
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryAssociativity
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightTwoCoproductExt
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 
 /-!

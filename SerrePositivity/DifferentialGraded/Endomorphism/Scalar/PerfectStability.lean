@@ -2,14 +2,14 @@ module
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
-public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveDerivedLifting
-public import SerrePositivity.DifferentialGraded.Module.ShiftHomotopy
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Module.HomotopyEvaluationTriangles
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 # Endomorphism.Scalar.PerfectStability

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.TensorFamily
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.CategoryTheory.Monoidal.Limits.Colimits
 
 /-!

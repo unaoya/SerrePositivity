@@ -5,7 +5,7 @@ public import SerrePositivity.KST.DerivedBlowup.DiagramAlgebraLocallyPerfect
 public import SerrePositivity.KST.DerivedBlowup.DiagramLocallyPerfect
 public import SerrePositivity.KST.DerivedBlowup.TransitionDerivedRestrictionCoherence
 public import SerrePositivity.DifferentialGraded.Morita.QuasiEquivalenceGraph
-public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalenceOpposite
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 の一対象正規表示と既存 Koszul 局所模型の perfect 条件の一致。

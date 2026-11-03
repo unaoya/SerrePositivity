@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensorPentagon
+public import SerrePositivity.DifferentialGraded.Derived.KFlat
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 右K-flat固定因子に関する導来五角整合性の受入監査

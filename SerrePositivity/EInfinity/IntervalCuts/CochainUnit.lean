@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.IntervalCuts.UnitValues
-public import SerrePositivity.DifferentialGraded.Complexes.Braiding
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 区間余演算の複体射の単位則

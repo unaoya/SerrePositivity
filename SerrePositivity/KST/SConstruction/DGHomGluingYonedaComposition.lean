@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # 元の Yoneda 評価と斉次合成
 概要：代表加群からの斉次射の合成を、元の単位での評価として計算する。

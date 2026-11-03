@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
+public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
 public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意複体値dg関手の標準cone保存 -/

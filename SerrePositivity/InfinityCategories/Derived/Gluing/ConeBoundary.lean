@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelConeNullhomotopy
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeRightModuleMap
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 標準円錐の零ホモトピーを native gluing と全 dg 自然な Yoneda 加群へ移す。 -/
 @[expose] public section

@@ -65,12 +65,18 @@ theorem powerOperationZero_pos (X : (CAlg_R k) _⦋0⦌) (n : ℤ) (hn : 0 < n) 
 使われ方：Frobenius の自己同型が P⁰ と可換（Δ_perf/p）。 -/
 theorem powerOperationZero_natural : True := by trivial
 
-/-- 概要：(iii) 余単体的可換 k 代数 X^• の levelwise Frobenius x ↦ x^p は、Tot_{E∞}(X^•) の P⁰ を誘導する（H^* 上で）。
-単体的余単体的（Kan 延長の分解）でも同様に実現の P⁰。
-方針：Barratt–Eccles 作用素の p 乗の作用（Alexander–Whitney の p 重 cup 積）が、levelwise の p 乗に一致すること（余単体的可換環では
-x ∪ ⋯ ∪ x = front^*(x)⋯back^*(x) が x^p の余面の像に等しい）と、高次の作用素の成分による補正の消滅。
+/-- 概要：P⁰ を忘却 U : CAlg_k → Sp（D(k)）上の **coherent な自然自己変換**として（Lurie DAG XIII Constr 2.2.6 の強さ。W9-II-02）。
+方針：Barratt–Eccles で実装するなら、この強さと Lurie 型演算との対応を仕様に含める。π_n 上の作用 `powerOperationZero` はその成分。
+規約：E∞ 代数の射で自然、極限・幾何学的実現の錐と両立。
+使われ方：(iii)。 -/
+def powerOperationZero_natTrans : True := trivial
+
+/-- 概要：(iii) 離散な可換 k 代数 B では P⁰_{HB} = H(Frob_B)。U が極限と幾何学的実現を保ち P⁰ が coherent な自然変換なので、この同定は
+余単体的 Tot_{E∞}(X^•) と単体的実現へ移る：levelwise Frobenius x ↦ x^p が Tot・実現の P⁰ を誘導する。
+方針：自然変換の錐との両立（W9-II-02 で訂正：**通常の p 重 cup 積による説明は誤り**。P⁰ は次数を保つが p 重 cup 積は次数 q を pq にする。
+S¹ の mod 2 で x ∪ x = 0 だが Frobenius は恒等）。
 規約：Shared/CosimplicialEInfinity の `totEInfinity`。
-使われ方：Lemma 8.4 (a)：Δ_perf/p の φ が P⁰ を誘導する。 -/
+使われ方：Lemma 8.4 (a)：Δ_perf/p の塔の shift が P⁰ と同じ作用を誘導する（G-A3-9 の模型の φ との比較と合わせて）。 -/
 theorem powerOperationZero_eq_frobenius_tot : True := by trivial
 
 end SerrePositivity.EInfinity

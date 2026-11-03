@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomotopyIso
 public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleThirdTransport
-public import SerrePositivity.DifferentialGraded.Module.Triangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # 元の二軸射を保持する実 Yoneda distinguished 三角形
 概要：右軸・元の対象・左軸の同じ三代表を持つ distinguished 三角形を構成する。

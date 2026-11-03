@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionAssociatorKFlat
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意K-flat解像度による全導来結合同型の計算と選択独立性の監査

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddleRestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Derived.AssociatorMiddle
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 第一中間圏の制限と全導来三因子の結合子coherenceの検査

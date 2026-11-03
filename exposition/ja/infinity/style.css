@@ -46,7 +46,7 @@ body {
   line-height: 1.8;
   font-size: 16px;
 }
-main { max-width: 52rem; margin: 0 auto; padding: 2rem 16px 5rem; }
+main { max-width: none; margin: 0 auto; padding: 2rem clamp(16px, 4vw, 4rem) 5rem; }
 nav.top { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem; }
 a { color: var(--accent); }
 h1 { font-size: 1.7rem; line-height: 1.4; margin: 0 0 0.3rem; }

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.AppendDifferential
-public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTargetHom
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 概要：局所縮約の graded 自己射を、実正規化 MC 加群の斉次自己射へ移す。

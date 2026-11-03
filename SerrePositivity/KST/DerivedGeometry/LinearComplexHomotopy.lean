@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearComplexClosed
-public import SerrePositivity.DifferentialGraded.Category.Homotopy
-public import SerrePositivity.DifferentialGraded.Complexes.Zero
+public import SerrePositivity.DifferentialGraded.Category.Basic
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.Algebra.Homology.HomotopyCategory
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Pretriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # K(D)のpretriangulated構造の受入検査 -/
 @[expose] public section

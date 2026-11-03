@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 実加群同型の評価による判定
 

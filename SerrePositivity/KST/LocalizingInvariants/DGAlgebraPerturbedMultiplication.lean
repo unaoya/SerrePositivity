@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
+
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAlgebra
 
 /-!

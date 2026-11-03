@@ -2,17 +2,17 @@ module
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Module.ConeShiftSquares
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import Mathlib.Algebra.Homology.HomologySequenceLemmas
-public import SerrePositivity.DifferentialGraded.Module.GradedSplitHomExact
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-public import SerrePositivity.DifferentialGraded.Module.HomWhisker
+
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.CategoryTheory.Enriched.HomCongr
-public import SerrePositivity.DifferentialGraded.Module.Precomposition
-public import SerrePositivity.DifferentialGraded.Functor.ModuleShiftOpposite
-public import SerrePositivity.DifferentialGraded.Module.ConeGradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
+
 
 /-!
 # Endomorphism.Shift

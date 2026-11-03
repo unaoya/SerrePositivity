@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.TensorResolutionComparison
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来tensorの両変数選択独立性と任意解像度比較 -/

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedInclusions
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftBlockInclusion
-public import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：元の prefix 列とシフト包含の合成を、同じ tail 包含と元の高次射の合成へ戻す。

@@ -4,7 +4,8 @@ module
 
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
--- 本ファイルは drafts/A7/AnimatedPerfectoidization.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean を import する。
+-- 本ファイルは drafts/A7/{AnimatedDomain,DiscreteCore,AnimatedPerfectoidization}.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean を import する。
+-- G-A7-5 の芯は drafts/A7/DiscreteCore.lean に切り出した（W9-II-24：A5 が import するので本ファイルには置けない）。
 
 /-!
 # 離散な場合の普遍性（BS 著者版 Cor 8.14）と E3 の欄 `universal`
@@ -14,9 +15,10 @@ S_perfd が離散なら S_perfd は perfectoid 環で、S → S_perfd は perfec
 （非完備も）について `IsDiscrete R (e3Perfd S) → IsPerfectoidization p (unit S)` で、S^∧ 経由（D41）。
 
 ## 方針
-芯 G-A7-5（A5-2 と共有）：S_perfd 離散 ⇒ Δ_perf 離散（d 進 Nakayama）⇒ 完全 p 完備 δ 環（A4）⇒ 完全 prism ⇒ S_perfd perfectoid（Thm 3.10）。
+芯 G-A7-5（A5-2 と共有、drafts/A7/DiscreteCore.lean）：S_perfd 離散 ⇒ Δ_perf 離散（d 進 Nakayama）⇒ 完全 p 完備 δ 環（A4）⇒ 完全 prism ⇒ S_perfd perfectoid（Thm 3.10）。
 普遍性：存在は比較写像の脚（A5-1）、一意性は原典：g_1, g_2 が S 上で一致 ⇒ η = (g_1, g_2) : X := S_perfd ⊗̂^L_S S_perfd → S′ は
-X_perfd ≃ S_perfd（Prop 8.13、T perfectoid ⇒ T_perfd = T）を通り乗法で因数分解 ⇒ g_1 = g_2。
+X_perfd ≃ S_perfd（Prop 8.13、T perfectoid ⇒ T_perfd = T）を通り乗法で因数分解 ⇒ g_1 = g_2。乗法との一致には単位の整合性 F(η_S) = η_P（G-A7-8、
+A5 の極限の脚から。W9-II-23：単位の自然性だけでは不足）を先に示す。
 
 ## 規約
 S 離散。離散な環の間の animated／E∞ 代数の射は環準同型（`discreteToAnimated_fullyFaithful`）。
@@ -46,26 +48,6 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 使われ方：Cor 8.14 の一意性。 -/
 theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] (hT : IsIntegralPerfectoid T p) : True := by trivial
 
-/-! ## G-A7-5：芯（A5-2 と共有） -/
-
-/-- 概要：S_perfd が離散なら Δ_{S/A,perf} も離散（d 進 Nakayama：d 完備で mod d が離散）。
-方針：DerivedGeneral/Truncation。
-規約：`IsDiscrete`。
-使われ方：芯。 -/
-theorem prismaticPerfection_discrete_of_perfectoidization_discrete (h : True) : True := by trivial
-
-/-- 概要：S_perfd 離散 ⇒ (H⁰(Δ_perf), (d)) は完全 prism（A4 `prismaticPerfection_h0_perfectDelta`・`prismaticPerfectionPrism`）。
-方針：上と A4。
-規約：`OrientedPrism`。
-使われ方：perfectoid 性。 -/
-theorem perfectoidization_perfectPrism_of_discrete (h : True) : True := by trivial
-
-/-- 概要：Cor 8.14 前半：S_perfd 離散 ⇒ S_perfd（環として H⁰）は perfectoid（完全 prism の商、`quotient_isIntegralPerfectoid`）。
-方針：上。A5-2 の `perfectoidization_isIntegralPerfectoid_of_semiperfectoid` はこれに連結性を前置したもの。
-規約：`IsIntegralPerfectoid (H⁰) p`。
-使われ方：`universal` の第一成分。 -/
-theorem perfectoidization_isIntegralPerfectoid_of_discrete (h : True) : True := by trivial
-
 /-! ## Cor 8.14 後半：普遍性 -/
 
 /-- 概要：存在：perfectoid S′ と S → S′ に対し S_perfd → S′（S の下）：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionLeg`）の mod d。
@@ -74,9 +56,19 @@ theorem perfectoidization_isIntegralPerfectoid_of_discrete (h : True) : True := 
 使われ方：`IsPerfectoidization` の存在部分。 -/
 theorem exists_extension_of_perfectoid : True := by trivial
 
+/-- 概要：G-A7-8（W9-II-23）：単位の整合性。P := S_perfd が離散（よって perfectoid、DiscreteCore）のとき F(η_S) = η_P : P → P_perfd（F = perfd）。
+方針：A5-1 の極限表示 P = lim_{Perfd_{S/}} O の脚 λ_f : P → T（f : S → T）。f = η_S の脚を q : P → P とすると、任意の f について λ_f は添字圏の射
+(P, η_S) → (T, f) なので錐の可換性から λ_f ∘ q = λ_f、P・T は離散で脚は射を識別する（極限は環の極限）ので q = id_P。極限比較の S に関する自然性と η_P の可逆性
+（`perfectoidization_of_perfectoid`）から η_P^{-1} ∘ F(η_S) = q = id_P。Cor 8.14 の一意性は使わない（循環なし）。単位の自然性だけでは「S 上で一致」までしか出ない。
+規約：—
+使われ方：`selfTensor_unit_eq_mul`。 -/
+theorem perfectoidization_map_unit_eq_unit (h : True) : True := by trivial
+
 /-- 概要：X := S_perfd ⊗̂^L_S S_perfd（`CompleteAnimatedAlgebra`）の perfd は S_perfd：Prop 8.13（S_1 = S_2 = S_perfd、S_3 = S）と
 (S_perfd)_perfd ≃ S_perfd（`perfectoidization_of_perfectoid`）。単位 X → X_perfd とこの同値の合成は乗法 m : X → S_perfd（紙 3）。
-方針：A7-1 `perfectoidization_relativeTensor`。
+方針（W9-II-23）：Prop 8.13 の比較 F(P) ⊗̂_{F(S)} F(P) → F(X) の二つの脚は F(i_1)・F(i_2)。`perfectoidization_map_unit_eq_unit` と η_P の逆で左辺を P ⊗̂_P P ≃ P と
+同一視し、逆向きを e : F(X) → P とすると、単位の自然性から e ∘ η_X ∘ i_j = e ∘ F(i_j) ∘ η_P = id_P、押し出しの普遍性（G-A7-6）で e ∘ η_X = m。
+A7-1 `perfectoidization_relativeTensor`。
 規約：—
 使われ方：一意性。 -/
 theorem selfTensor_perfectoidization_eq : True := by trivial

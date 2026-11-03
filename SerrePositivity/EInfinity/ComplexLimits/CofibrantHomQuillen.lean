@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.HomPostcomposeSurjective
 public import SerrePositivity.EInfinity.ComplexLimits.CofibrantKProjective
 public import SerrePositivity.EInfinity.ComplexLimits.AcyclicKernelQuasiIso
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
-public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveHom
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
 
 /-!

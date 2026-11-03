@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentCutGradedSplitting
-public import SerrePositivity.DifferentialGraded.Module.GradedSplit
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：隣接する実 MC 段階と最高次元層は、全次数作用に関して分裂した拡大をなす。

@@ -21,7 +21,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCategory,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonCriterion,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientParameterLaws,
-    `SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Construction,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]

@@ -122,8 +122,10 @@ lemma cofibrantlyGenerated :
 使われ方：図式の局所化 Hom の frame 計算。 -/
 lemma isFibrant (F : K ⥤ Complex A) :
     let := projectiveModelCategory A K
+    letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
     IsFibrant F := by
   let := projectiveModelCategory A K
+  letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   change IsFibrant F
   apply (isFibrant_iff_of_isTerminal (0 : F ⟶ (0 : K ⥤ Complex A))
     (isZero_zero _).isTerminal).mpr
@@ -141,8 +143,10 @@ lemma isFibrant (F : K ⥤ Complex A) :
 使われ方：各値の frame Hom の Kan 性。 -/
 lemma complex_isFibrant (X : Complex A) :
     let := SerrePositivity.EInfinity.projectiveModelCategory A
+    letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
     IsFibrant X := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A
+  letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   change IsFibrant X
   apply (isFibrant_iff_of_isTerminal (0 : X ⟶ (0 : Complex A))
     (isZero_zero _).isTerminal).mpr

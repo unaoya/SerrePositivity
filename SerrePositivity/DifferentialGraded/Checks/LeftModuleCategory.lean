@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.LeftMorphisms
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 左加群の全Hom豊穣圏と実際の射の作用可換性 -/
 @[expose] public section

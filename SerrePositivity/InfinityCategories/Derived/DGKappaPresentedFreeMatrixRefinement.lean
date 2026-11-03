@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement
 public import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
 
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 /-!
 概要：κ未満自由直和間の任意閉射を、元の出発関手を含む共通コードの seed 閉射へ精密化する。
 方針：行有限係数を一コードへ併合し、実延長の全行列比較と自由 seed 被覆を接続する。

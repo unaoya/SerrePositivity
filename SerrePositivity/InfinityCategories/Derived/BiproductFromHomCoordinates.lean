@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 
 /-! # 二項直和から出る Hom の全次数座標

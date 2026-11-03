@@ -27,9 +27,9 @@
 | 2 | 検査専用モジュールが `DifferentialGraded/Checks/` に集まり、本番の木に散らばっていない。`#print axioms` だけのものはない | **達成（DG-W1）**：削除 271・Checks/ へ 39・Archive 68・保持 272（例外：`Verdier/ChecksU17Integration`・`ChecksOrderSquare` は D3 で Asymptotic へ） |
 | 3 | 入口が一つ（`DifferentialGraded.lean`）で、ルートがそれを import する。Stage* の鎖はない | **達成（DG-W1）**：新入口 1,598 本、ルートは 1 行、Stage 8 本と殻 `Complexes/Monoidal` を削除。import だけの集約 7 本は D4 で解消 |
 | 4 | DG が KST・InfinityCategories・Asymptotic・PerfectComplex を import しない（DG の外で使うのは HomologicalAlgebra・CategoryTheory・Mathlib だけ） | **達成（DG-W2(b)、11-02）**：KST 13・IC 1・Asymptotic 1 の辺は解消。PerfectComplex 3 辺は `layers.json` の例外（論文の層 1-4 で解消） |
-| 5 | 検査以外のモジュールが約 126 本に統合されている | 土台でない 9 ディレクトリは **979 → 78 本（DG-W2(b)）**。土台 5 ディレクトリ 608 本 → 48 本は DG-W3 |
-| 6 | docstring が旧計画の案内を参照していない | 土台でない分は archive への参照に書き換え済み（DG-W2(b) D5）。土台分は DG-W3 |
-| 7 | DG の内部の層の順序が文書化され、層検査に登録されている | 逆向き 71 本（最良の順序）。強連結成分 2 |
+| 5 | 検査以外のモジュールが約 126 本に統合されている | **達成（DG-W3、11-03）**：土台でない 9 ディレクトリ 979 → 78 本（DG-W2(b)）、土台 5 ディレクトリ 608 → 48 本（DG-W3）、計 126 本 |
+| 6 | docstring が旧計画の案内を参照していない | **達成（DG-W3、11-03）**：土台でない分（DG-W2(b)）と土台分（DG-W3 D5、31 ファイル・224 参照）を archive への参照に書き換え済み |
+| 7 | DG の内部の層の順序が文書化され、層検査に登録されている | **達成（DG-W3、11-03）**：PerfectComplex の例外 3 辺を削除、DG の直接違反 0、126 本の表を `DifferentialGraded/README.md` に記載。内部 tier の登録は違反 0 のものだけ（最終報告 `targets/dg-w3-final-report.md`） |
 
 ## 3. 候補
 

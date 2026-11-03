@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeTransportIso
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Disk
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
 /-!

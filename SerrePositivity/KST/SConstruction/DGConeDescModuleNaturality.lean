@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGConeDescCochainNaturality
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：指定 cone descent の全次数自然性を実加群 Hom end 上に持ち上げる。

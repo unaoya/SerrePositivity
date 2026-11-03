@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ResolutionHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # 実際の導来射集合と局所小性の受入検査 -/
 @[expose] public section

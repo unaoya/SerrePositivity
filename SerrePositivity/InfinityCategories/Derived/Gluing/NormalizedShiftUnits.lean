@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! 正規化した標準シフト射影の閉斉次逆元と、通常順の両単位関係。 -/
 @[expose] public section

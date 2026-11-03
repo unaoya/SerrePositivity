@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomotopyConeEndpointTransport
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproductUniversal
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 /-!
 概要：実加群の演算で閉じた族を、ホモトピー同型による飽和へ拡張する。

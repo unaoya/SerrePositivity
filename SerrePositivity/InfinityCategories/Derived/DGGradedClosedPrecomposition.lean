@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 閉次数零射による斉次前合成の微分・合成・関手性
 

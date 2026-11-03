@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
--- 本ファイルは drafts/Shared/Descendable.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A5/{PerfectSiteComparison,WeaklyInitialAndDescent}.lean、
+-- 本ファイルは drafts/Shared/Descendable.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A5/{PerfectSite,RootAdjunction}.lean（W9-III-09：PerfectSiteComparison・WeaklyInitialAndDescent は本ファイルより後）、
 -- drafts/A2/BaseChangeAndTensor.lean、drafts/DerivedGeneral/Truncation.lean、drafts/A1/（A1-5：Thm 6.4 の多項式・mod p）を import する。
 
 /-!
@@ -43,7 +43,8 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 使われ方：perf 版。 -/
 theorem prismaticCohomology_rootMap_descendable (n : ℕ) : True := by trivial
 
-/-- 概要：Lemma 8.6（perf 版）：Δ_{T/A,perf} → Δ_{T_∞/A,perf} は descendable（index ≤ 2n、(g)）。A5-1 の主張の証明。
+/-- 概要：Lemma 8.6（perf 版）：Δ_{T/A,perf} → Δ_{T_∞/A,perf} は descendable（(g)：非 perf 版の index の上界 m から perf 版は ≤ 2m。n は変数の個数で index ではない、
+W9 §8.7。結論は `IsDescendable` でよく数値は公開しない）。A5-1 の主張の証明。
 方針：非 perf 版と `hasDescentIndexLE_frobeniusColimit`、完備化。
 規約：—
 使われ方：A5-4。 -/
@@ -72,6 +73,16 @@ theorem rootMap_fiber_rhom_coconnective : True := by trivial
 使われ方：底変換後に確かめる。 -/
 theorem coconnective_of_modBaseChange : True := by trivial
 
+/-- 概要：G-A5-6′（W9-II-12。W9 続き 6 で紙 ○）：D := Δ_T、N := F ⊗^L_D F、M := RHom_D(N, D)、e := φ_A^{-1}(d)、C := A/(p,e)。M は導来 (p,e) 完備。
+C が perfect であることも M ⊗^L_A C と底変換後の RHom の一致も仮定しない。
+方針：(1) 任意の離散 C 加群 L について RHom_{D_C}(N_C, D_C ⊗^L_C L) ∈ D^{≤−1}（`squareZero_rhom_coconnective` の任意係数版）。(2) 随伴で
+RHom_D(N, D ⊗^L_A L) ≃ RHom_{D_C}(N_C, D_C ⊗^L_C L) ∈ D^{≤−1}。(3) 有限 Koszul 複体 K := K_A(p,e)（双対可能、H^j(K) は j ∈ [−2,0] の C 加群）の有限 Postnikov
+filtration の段階 H^j(K)[−j] に (2) を当て RHom_D(N, D ⊗^L_A K) ∈ D^{≤−1}；双対可能性でここで初めて RHom とテンソルを交換し M ⊗^L_A K。(4) K(p^n,e^n) は K から
+有限拡大で、遷移の最高次コホモロジーが全射なので M ≃ Rlim_n(M ⊗^L_A K(p^n,e^n)) に lim¹ の次数 0 の項はなく M ∈ D^{≤−1}。原典 "By completeness" の一文の形式化。
+規約：(p,e) と (p,d) は同じ根基。
+使われ方：`rootMap_fiber_rhom_coconnective`。 -/
+theorem rhom_baseChange_koszul_connection : True := by trivial
+
 /-- 概要：A/(p, φ^{-1}(d)) ≅ R/p（φ_A が自己同型で A/φ^{-1}(d) ≅_φ A/d = R）。Δ_T ⊗_A A/φ^{-1}(d) = φ_A^*Δ_T ⊗_A A/d。
 方針：完全 prism の φ_A。
 規約：—
@@ -92,9 +103,10 @@ theorem rootMap_modP_eq_deRham : True := by trivial
 使われ方：(∗)。 -/
 theorem deRhamOneVariable_formal : True := by trivial
 
-/-- 概要：G-A5-13 (∗)：Ω = T ⊕ Ω^1[−1] 上、F = fib(Ω → T → T_∞) ≅ T^{⊕J}[−1]（T_∞ は T 上自由で 1 を基底に含む）、
-RHom_Ω((T[−1])^{⊗2}, Ω) ∈ D^{<0}（分解 (⋯ → Ω[−2] → Ω[−1]) ≃ T[−1] の計算）。
-方針：dg 加群の明示計算。
+/-- 概要：G-A5-13 (∗)、**任意の離散 C 加群 L を係数に**（W9 続き 6）：Ω = B ⊕ Bε（B = C[X^p]、|ε| = 1、ε² = 0、微分 0）上、F_C ≅ B^{(J)}[−1]（T_∞/p は B 上自由で
+1 を基底に含む）、Q := B ⊗_C L（B は C 上自由なので導来的にも離散）として RHom_Ω(N_C, Ω ⊗_C L) ≃ (∏ Q)[1] ∈ D^{≤−1}。L = C が元の (∗)。
+方針：B の Ω 上の半自由分解 P（次数 0 の生成元 e_n、d(e_0) = 0、d(e_n) = εe_{n−1}）で Hom_Ω(P, Ω ⊗_C L) は次数 0・1 に ∏_n Q、微分は shift で核 0・余核 Q、
+RHom_Ω(B, Ω ⊗_C L) ≃ Q[−1]；B ⊗^L_Ω B ≃ ⊕_n B は次数 0；F_C の二乗と shift を戻す。積は完全で L の平坦性は不要。
 規約：D(Ω)。
 使われ方：`rootMap_fiber_rhom_coconnective`。 -/
 theorem squareZero_rhom_coconnective : True := by trivial

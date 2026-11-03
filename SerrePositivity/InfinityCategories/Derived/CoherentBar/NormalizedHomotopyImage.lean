@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.DegeneracyOperators
-public import SerrePositivity.DifferentialGraded.Module.Zero
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：退化作用素の各列は、非退化因子への射影で零になる。
 方針：退化ラベルへの包含と正規化射影の合成が零であることを全 Hom の後合成へ送る。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 /-!
 概要：二重反対 dg 圏を元の dg 圏へ戻す、全 Hom が恒等の実 dg 関手。
 方針：二つの Koszul 交換を対称律で相殺する。

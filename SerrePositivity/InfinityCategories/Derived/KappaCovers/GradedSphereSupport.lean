@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FreeHomNaturality
-public import SerrePositivity.DifferentialGraded.Module.Cells
-public import SerrePositivity.DifferentialGraded.Complexes.SphereHom
-public import SerrePositivity.DifferentialGraded.Complexes.CoproductSupport
-public import SerrePositivity.DifferentialGraded.Module.Colimits
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Module.ActionLimits
 
 /-!
 概要：自由 sphere からの任意次数の主 Hom 要素は、直和内で有限 support を持つ。

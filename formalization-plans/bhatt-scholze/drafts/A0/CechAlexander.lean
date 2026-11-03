@@ -95,15 +95,15 @@ lemma generator_mem_cechKernel (n : ℕ) :
 
 /-! ## envelope の選択（Prop 3.13 の適用） -/
 
-/-- 概要：各項 (B^n, J^n) の envelope が存在するという仮定（Prop 3.13 の適用可能性）。
-方針：定義は仮定として持ち、多項式代数の R については A0-3c の定理で供給する。
-規約：原典の「Applying Proposition 3.13 yields」に対応。
+/-- 概要：各項 (B^n, J^n) の envelope が存在し、有界で、**濃度 ≤ cutoff** であるという仮定（Prop 3.13 の適用可能性）。
+方針：定義は仮定として持ち、多項式代数の R については A0-3c の定理で供給する（濃度は変数模型との一意同型で `cardinal_envelope_le` から移す）。
+規約：原典の「Applying Proposition 3.13 yields」に対応。濃度の条件は W9-I-12（一般の `HasEnvelopes` だけからは envelope の濃度を評価できない）で追加。
 使われ方：`cechAlexanderObj`。 -/
 def HasEnvelopes : Prop :=
   ∀ n : ℕ, ∃ (C : Type u) (_ : CommRing C) (Q : OrientedPrism p C) (η : cechFreeDelta P R n →+* C),
     IsPrismaticEnvelope P (completedFreeDeltaStructure P _) (completedFreeDeltaBase P _)
       (completedFreeDeltaBase_isDeltaHom P _) (cechKernel P R n) (generator_mem_cechKernel P R n) Q η ∧
-    IsBoundedPrism Q
+    IsBoundedPrism Q ∧ Cardinal.mk C ≤ cutoff P R
 
 /-- 概要：多項式代数 R = (A/d)⟨X_T⟩ では envelope が存在する（Ex 3.14 の場合）。
 方針：J₀B は、A/d → A の集合論的切断で係数を持ち上げた変数変換により「変数の部分集合 ＋ (d)」になる（a0-design §2.5、紙の検証 2）。
@@ -118,7 +118,7 @@ theorem hasEnvelopes_of_polynomial (T : Type u)
 variable (h : HasEnvelopes P R) (κ : Cardinal.{u}) (hκ : cutoff P R ≤ κ)
 
 /-- 概要：Čech–Alexander の n 項目の対象 C^n ∈ (R/A)_Δ（環の側）。
-方針：`HasEnvelopes` から envelope を選び、R → C^n/dC^n は B₀^n → R の持ち上げから。濃度は `cardinal_envelope_le` で ≤ κ。
+方針：`HasEnvelopes` から envelope を選び、R → C^n/dC^n は B₀^n → R の持ち上げから。濃度は `HasEnvelopes` の条件（≤ cutoff ≤ κ）。
 規約：選択を含む（普遍対象なので同型を除いて一意）。
 使われ方：余単体的対象 `cechAlexander`。 -/
 def cechAlexanderObj (n : ℕ) : PrismOver P R κ :=

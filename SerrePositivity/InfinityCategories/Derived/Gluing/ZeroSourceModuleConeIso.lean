@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 /-!
 概要：閉零始域からの実加群 cone の右包含を、同じ右包含を順射とする実同型にする。
 方針：元 cone 延長を逆に選び、全評価・全次数の cone 分解で往復則を確認する。

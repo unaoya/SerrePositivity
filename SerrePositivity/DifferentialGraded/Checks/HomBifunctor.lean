@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomBifunctor
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7f：両変数の指定局所化上の全導来Hom -/
 @[expose] public section

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameter
 /-!
 概要：出発提示を保持する作用へ dg 関手間の任意パラメータ変換を送る。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
-public import SerrePositivity.DifferentialGraded.Module.Zero
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Zero
 
 /-! # 閉零対象の全 Hom 複体と実定数零 dg 関手

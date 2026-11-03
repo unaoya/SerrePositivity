@@ -37,7 +37,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 
 /-- 概要：Perfd_{S/}（Type u）上の図式 T ↦ T（CAlg_R）の、頂点 (S^∧)_perfd の錐。
-方針：`perfectionLeg` の mod d を `perfectSiteEquivPerfectoidUnder` で Type u の添字へ（κ を超える T へは弱始対象を経由して延ばす：
+方針：`perfectionLeg`（PerfectSite） の mod d を `perfectSiteEquivPerfectoidUnder` で Type u の添字へ（κ を超える T へは弱始対象を経由して延ばす：
 S3 の錐の構成）。`PerfUnder_u p (S^∧) ≌ PerfUnder_u p S` で S^∧ に帰着。
 規約：`JoinCone (targetCAlgDiagram R p S)`、頂点は `(e3Perfd p R).app _ (nerveVertex S)`。
 使われ方：`e3LimitCone`。 -/

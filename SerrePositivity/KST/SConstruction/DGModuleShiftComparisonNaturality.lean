@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftHom
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Graded
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison
 
 /-!

@@ -1,5 +1,5 @@
 import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
-import SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction
+import SerrePositivity.DifferentialGraded.Derived.Basic
 import SerrePositivity.DifferentialGraded.Morita.Perfect
 import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
 import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
@@ -48,7 +48,7 @@ import SerrePositivity.InfinityCategories.Derived.DGModuleUnitShiftBlockInclusio
 import SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents
-import SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition
+import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedDetection
@@ -62,7 +62,7 @@ import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetLabels
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedInclusions
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn
-import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
+import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarBoundaryTerms
@@ -71,27 +71,27 @@ import SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixDifferentia
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarSigns
 import SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices
-import SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition
-import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
-import SerrePositivity.DifferentialGraded.Module.HomClosedInsertion
+import SerrePositivity.DifferentialGraded.Complexes.HomComplex
+
+
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalOrders
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarVertexColumn
 import SerrePositivity.InfinityCategories.Derived.DGModuleFiniteColumnComposition
-import SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition
+
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential
-import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarGraded
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
 import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
-import SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation
-import SerrePositivity.DifferentialGraded.Module.MaurerCartan
-import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap
-import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation
-import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom
+import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
+
+import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
+
 import SerrePositivity.InfinityCategories.Derived.DGKappaClosedCompactGeneratorCriterion
 import SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertices
 import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
@@ -122,37 +122,37 @@ import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectVertices
 import SerrePositivity.InfinityCategories.Derived.DGTotalQuotientPerfectZero
 import SerrePositivity.InfinityCategories.Stable.StablePushoutExistence
 import SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits
-import SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison
-import SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison
-import SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality
-import SerrePositivity.DifferentialGraded.Complexes.TensorShiftSecondNaturality
-import SerrePositivity.DifferentialGraded.Complexes.SphereTensorShiftNaturality
-import SerrePositivity.DifferentialGraded.Module.FreeSphereImageCoefficient
+import SerrePositivity.DifferentialGraded.Module.Functor
+
+
+import SerrePositivity.DifferentialGraded.Complexes.TensorShift
+
+
 import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts
-import SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison
+import SerrePositivity.DifferentialGraded.Functor.ModuleValued
 
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCoveredArrowRefinement
 import SerrePositivity.InfinityCategories.Derived.DGKappaClosedSphereFreeCover
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeMatrixRefinement
-import SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift
-import SerrePositivity.DifferentialGraded.Complexes.CycleTransport
-import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient
-import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficientCycles
 
-import SerrePositivity.DifferentialGraded.Module.ExtensionFreeAdjunction
+
+import SerrePositivity.DifferentialGraded.Module.FreeSphere
+
+
+
 
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement
-import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles
-import SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport
-import SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage
+
+
+import SerrePositivity.DifferentialGraded.Module.Graded
 import SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure
-import SerrePositivity.DifferentialGraded.Module.RepresentableCoproductClosedMatrix
-import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedLinear
-import SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoproductSupport
-import SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix
-import SerrePositivity.DifferentialGraded.Functor.FullHomLift
+
+
+
+
+import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 
 
@@ -169,9 +169,9 @@ import SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresent
 import SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableComposition
 import SerrePositivity.DifferentialGraded.Tensor.Compose
 
-import SerrePositivity.DifferentialGraded.Category.HomTransport
+import SerrePositivity.DifferentialGraded.Category.Basic
 import SerrePositivity.DifferentialGraded.Presentation.Category
-import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
+
 
 
 
@@ -193,7 +193,7 @@ import SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction
 import SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproduct
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedOperations
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCommonOperations
-import SerrePositivity.DifferentialGraded.Module.HomotopyConeEndpointTransport
+
 import SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover
 import SerrePositivity.InfinityCategories.Derived.DGKappaPerfectSeedRefinement
 import SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionBase
@@ -264,12 +264,12 @@ import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeConeAction
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeParameter
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeInputHomLaws
 import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeFunctor
-import SerrePositivity.DifferentialGraded.Category.Induced
-import SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone
-import SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate
-import SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter
-import SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport
-import SerrePositivity.DifferentialGraded.Module.ConeTransportIso
+import SerrePositivity.DifferentialGraded.Category.Tensor
+
+import SerrePositivity.DifferentialGraded.Functor.Closed
+
+
+
 import SerrePositivity.InfinityCategories.Derived.DGCompositionUnitCollapse
 import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionUnitLaws
 import SerrePositivity.InfinityCategories.Derived.DGCoherentCompositionRightUnit
@@ -7484,7 +7484,7 @@ run_cmd do
   let expected := #[
     `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedGradedShift,
     `SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence,
-    `SerrePositivity.DifferentialGraded.Derived.ProjectiveContraction,
+    `SerrePositivity.DifferentialGraded.Derived.Basic,
     `SerrePositivity.DifferentialGraded.Morita.Perfect,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonFamilyLift,
     `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.QuotientEpsilonNative,
@@ -7537,7 +7537,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement,
     `SerrePositivity.InfinityCategories.Derived.NativeDiagramFamilyReplacement,
     `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration,
-    `SerrePositivity.DifferentialGraded.Functor.HomogeneousNaturality,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Construction,
     `SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation,
     `SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration,
@@ -7547,11 +7547,11 @@ run_cmd do
     `SerrePositivity.DifferentialGraded.Resolution.Cell,
     `SerrePositivity.DifferentialGraded.Resolution.Cell,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSuspensionCanonicalMapData,
-    `SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor,
-    `SerrePositivity.DifferentialGraded.Derived.FreeProjective,
-    `SerrePositivity.DifferentialGraded.Derived.RestrictionProjective,
-    `SerrePositivity.DifferentialGraded.Derived.BimoduleRestrictionProjective,
-    `SerrePositivity.DifferentialGraded.Derived.BimoduleRightProjective,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Derived.Basic,
+    `SerrePositivity.DifferentialGraded.Derived.Basic,
+    `SerrePositivity.DifferentialGraded.Derived.BimoduleTensor,
+    `SerrePositivity.DifferentialGraded.Derived.BimoduleTensor,
     `SerrePositivity.InfinityCategories.Derived.RingComplexColimits,
     `SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure,
     `SerrePositivity.InfinityCategories.Derived.DGCellAttachmentProjective,
@@ -7652,7 +7652,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleClosedPostHEq,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiTerminalCoefficients,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPrefixComponents,
-    `SerrePositivity.DifferentialGraded.Module.HomPostcompositionComposition,
+    `SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBianchiFaces,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarSubsetCuts,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarShiftedDetection,
@@ -7667,7 +7667,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramEdgeBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarEdgeColumn,
 
-    `SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear,
+    `SerrePositivity.DifferentialGraded.Module.ShiftResolution,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopBoundary,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarPositiveFamily,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarBoundaryTerms,
@@ -7677,33 +7677,33 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalSimplices,
 
-    `SerrePositivity.DifferentialGraded.Complexes.GradedConjugationComposition,
-    `SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition,
-    `SerrePositivity.DifferentialGraded.Module.HomClosedInsertion,
+    `SerrePositivity.DifferentialGraded.Complexes.HomComplex,
+    `SerrePositivity.DifferentialGraded.Module.ShiftResolution,
+    `SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarIntervalOrders,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarVertexColumn,
     `SerrePositivity.InfinityCategories.Derived.DGModuleFiniteColumnComposition,
 
-    `SerrePositivity.DifferentialGraded.Module.HomRestrictionComposition,
+    `SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarMaurerCartanCriterion,
 
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarCoefficients,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarDifferential,
 
-    `SerrePositivity.DifferentialGraded.Module.ShiftBlocks,
+    `SerrePositivity.DifferentialGraded.Module.ShiftResolution,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramTopHom,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertexMap,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarGraded,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces,
     `SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts,
 
-    `SerrePositivity.DifferentialGraded.Module.MaurerCartanEvaluation,
-    `SerrePositivity.DifferentialGraded.Module.MaurerCartan,
+    `SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated,
+    `SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated,
 
-    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHomMap,
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying,
 
-    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanPerturbation,
-    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanHom,
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying,
+    `SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying,
 
     `SerrePositivity.InfinityCategories.Derived.DGKappaClosedCompactGeneratorCriterion,
     `SerrePositivity.InfinityCategories.DGNerve.CoherentDiagramVertices,
@@ -7741,40 +7741,40 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.StablePushoutExistence,
     `SerrePositivity.InfinityCategories.Stable.StableFiniteLimitsColimits,
 
-    `SerrePositivity.DifferentialGraded.Module.FreeRestrictionComparison,
-    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeUnitComparison,
-    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeNaturality,
-    `SerrePositivity.DifferentialGraded.Complexes.TensorShiftSecondNaturality,
-    `SerrePositivity.DifferentialGraded.Complexes.SphereTensorShiftNaturality,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereImageCoefficient,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts,
-    `SerrePositivity.DifferentialGraded.Functor.CoproductMatrixComparison,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedCoveredArrowRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGKappaClosedSphereFreeCover,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeArrowSeedRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeMatrixRefinement,
 
-    `SerrePositivity.DifferentialGraded.Complexes.SphereTensorShift,
-    `SerrePositivity.DifferentialGraded.Complexes.CycleTransport,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficient,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoefficientCycles,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Complexes.TensorShift,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphere,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphere,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts,
-    `SerrePositivity.DifferentialGraded.Module.ExtensionFreeAdjunction,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.SphereLifts,
 
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedPerfectArrowRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedRepresentableArrowRefinement,
-    `SerrePositivity.DifferentialGraded.Module.RepresentableClosedCycles,
-    `SerrePositivity.DifferentialGraded.Module.RepresentableClosedCoproductSupport,
-    `SerrePositivity.DifferentialGraded.Module.YonedaClosedPreimage,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Module.Graded,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
-    `SerrePositivity.DifferentialGraded.Module.RepresentableCoproductClosedMatrix,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedLinear,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereClosedCoproductSupport,
-    `SerrePositivity.DifferentialGraded.Module.FreeSphereCoproductClosedMatrix,
+    `SerrePositivity.DifferentialGraded.Module.Functor,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphere,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphere,
+    `SerrePositivity.DifferentialGraded.Module.FreeSphere,
 
-    `SerrePositivity.DifferentialGraded.Functor.FullHomLift,
+    `SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
@@ -7812,9 +7812,9 @@ run_cmd do
     `SerrePositivity.DifferentialGraded.SharedFunctoriality.ExtensionRepresentableComposition,
     `SerrePositivity.DifferentialGraded.Tensor.Compose,
     `SerrePositivity.DifferentialGraded.Tensor.Compose,
-    `SerrePositivity.DifferentialGraded.Category.HomTransport,
+    `SerrePositivity.DifferentialGraded.Category.Basic,
     `SerrePositivity.DifferentialGraded.Presentation.Category,
-    `SerrePositivity.DifferentialGraded.Category.FaithfulHomConstruction,
+    `SerrePositivity.DifferentialGraded.Category.Basic,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
     `SerrePositivity.DifferentialGraded.Presentation.GeneratedHom.CoefficientClosure,
@@ -7837,7 +7837,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGKappaSourceCodeCoproduct,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSeedOperations,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCommonOperations,
-    `SerrePositivity.DifferentialGraded.Module.HomotopyConeEndpointTransport,
+    `SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated,
     `SerrePositivity.InfinityCategories.Derived.DGKappaClosedPerfectHomotopyCover,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPerfectSeedRefinement,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSeedExtensionBase,
@@ -7896,12 +7896,12 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeParameter,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeInputHomLaws,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeFunctor,
-    `SerrePositivity.DifferentialGraded.Category.Induced,
-    `SerrePositivity.DifferentialGraded.Functor.ModuleValuedCone,
-    `SerrePositivity.DifferentialGraded.Functor.InducedClosedConjugate,
-    `SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter,
-    `SerrePositivity.DifferentialGraded.Functor.ModuleValuedConeTransport,
-    `SerrePositivity.DifferentialGraded.Module.ConeTransportIso,
+    `SerrePositivity.DifferentialGraded.Category.Tensor,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
+    `SerrePositivity.DifferentialGraded.Functor.Closed,
+    `SerrePositivity.DifferentialGraded.Functor.Closed,
+    `SerrePositivity.DifferentialGraded.Functor.ModuleValued,
+    `SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison,
     `SerrePositivity.DifferentialGraded.Functor.DGClosedComparisonIso,
     `SerrePositivity.DifferentialGraded.Functor.DGClosedIsoConjugation,
     `SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedComparison,

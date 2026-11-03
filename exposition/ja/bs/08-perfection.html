@@ -30,7 +30,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
 <tr><td>Def 8.2</td><td>\(S_{\mathrm{perfd}}\)</td><td class="todo">未（界面）</td><td><code>perfd</code>・<code>unit</code>・<code>h0</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>, :26, :28）。A4（入力は A2 の Construction 7.6）</td></tr>
-<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td><code>coconnective</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。A4（Lur11 の P⁰ の切片）</td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未</td><td>界面の coconnective 欄は 10-26 に削除済み（D44）。Lemma 8.4 は Cor 8.14・Prop 8.5・Thm 10.11 の証明の入力として A4 で示す（P⁰ は coherent な自然変換、W9-II-02；塔は φ_{A*}^n、W9-II-01）</td></tr>
 </table></div>
 
 <h2>2. perfectoid 環への写像の極限（Prop 8.5・Lemma 8.6）</h2>
@@ -49,7 +49,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </table></div>
 
 <h2>3. arc 降下と excision（§8.2）</h2>
-<p><b>Def 8.7・Lemma 8.8.</b> arc 被覆：p 完備な階数 1 の付値環への写像が、忠実平坦な拡大の後で持ち上がる写像。perfectoid は arc 位相の基底をなす（semiperfectoid な被覆 \(\tilde R\) と \(\tilde R\to\tilde R_{\mathrm{perfd}}\) の合成）。<b>Prop 8.10.</b> 構造層 \(\mathcal O\) は perfectoid の圏 Perfd 上の arc 層で、高次コホモロジーが消える。<b>証明</b>：tilt して \(R^\flat\to S^\flat\) の d 進完備な Čech 複体の完全性に帰着し、完全スキームの v 降下（[BS17, Thm 4.1]）と arc 降下の判定（[BM18, Thm 1.6]、[BS17, Lemma 6.3]）を使う。<b>Cor 8.11.</b> \(S_{\mathrm{perfd}}=R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)\)（Prop 8.5 と Prop 8.10 を合わせる）。<b>Cor 8.12</b>（E3 の <code>excision</code>）. \(S\to S'\) が I の外で arc 層の同型（付値環への写像が一意に延びる）なら、\(S_{\mathrm{perfd}},S'_{\mathrm{perfd}},(S/I)_{\mathrm{perfd}},(S'/I)_{\mathrm{perfd}}\) の四角形は \(E_\infty\)-S 代数の引き戻し。<b>証明</b>：\(S'\) を \(S'\times S/I\) に替えて arc 被覆とし、[BS17, Thm 2.9] にならって Perfd 上の層の押し出しとして計算する。形式化では、集合の層の等式 \(F(S)=F(S')\times_{F(S'/I)}F(S/I)\) を 1 圏の層（Mathlib）で証明し、空間値の層への持ち上げと \(E\) 値の層 \(\mathcal O\) の局所性（S8、∞ 側の一般論）で引き戻しに移す（a6-design §3.2、D57）。</p>
+<p><b>Def 8.7・Lemma 8.8.</b> arc 被覆：p 完備な階数 1 の付値環への写像が、忠実平坦な拡大の後で持ち上がる写像。perfectoid は arc 位相の基底をなす（semiperfectoid な p 完備忠実平坦被覆 \(\tilde R\) と \(\tilde R\to\tilde R_{\mathrm{perfd}}\) の合成。形式化では先に \(R\to R_0:=\) completionRing\((R\otimes_{\mathbb Z_p}\mathbb Z_p[p^{1/p^\infty}]^\wedge)\) で perfectoid 基底の上へ移してから A5 の根添加を施す。基底なしの根添加は semiperfectoid にならない（\(\mathbb Z_p\) への retraction、W9-II-16）。試験付値環 V は先に perfectoid な W（絶対整閉包の p 完備化）に替える）。<b>Prop 8.10.</b> 構造層 \(\mathcal O\) は perfectoid の圏 Perfd 上の arc 層で、高次コホモロジーが消える。<b>証明</b>：tilt して \(R^\flat\to S^\flat\) の d 進完備な Čech 複体の完全性に帰着し、完全スキームの v 降下（[BS17, Thm 4.1]）と arc 降下の判定（[BM18, Thm 1.6]、[BS17, Lemma 6.3]）を使う。<b>Cor 8.11.</b> \(S_{\mathrm{perfd}}=R\Gamma_{\mathrm{arc}}(\mathrm{Spf}S,\mathcal O)\)（Prop 8.5 と Prop 8.10 を合わせる）。<b>Cor 8.12</b>（E3 の <code>excision</code>）. \(S\to S'\) が I の外で arc 層の同型（付値環への写像が一意に延びる）なら、\(S_{\mathrm{perfd}},S'_{\mathrm{perfd}},(S/I)_{\mathrm{perfd}},(S'/I)_{\mathrm{perfd}}\) の四角形は \(E_\infty\)-S 代数の引き戻し。<b>証明</b>：\(S'\) を \(S'\times S/I\) に替えて arc 被覆とし、[BS17, Thm 2.9] にならって Perfd 上の層の押し出しとして計算する。形式化では、集合の層の等式 \(F(S)=F(S')\times_{F(S'/I)}F(S/I)\) を 1 圏の層（Mathlib）で証明し、空間値の層への持ち上げと \(E\) 値の層 \(\mathcal O\) の局所性（S8、∞ 側の一般論）で引き戻しに移す（a6-design §3.2、D57）。</p>
 <p><b>Lean での扱い.</b> 環としての帰結を界面から証明している：四つの環の普遍 perfectoid 化を指定すると、それぞれが標的圏の始対象になり、導来対象が指定環の離散像と同値になる。D(R) の指定四辺の長完全列で \(H^{-1}\)・\(H^1\) の両端が消え、環の引き戻しと差写像の全射性が出る（<code>perfectoidization_excision_isPullback</code>・<code>perfectoidization_excision_difference_surjective</code>、PerfectoidizationInterface/Excision:59,70）。CLMST が使う形は <code>klCanonicalExcisionSquare_of_excision</code>（Perfectoidization/PerfectoidizationExcision:48）。脚注 14（整写像で \(V(I)\) の外で同型なら条件を満たす）も証明済み。</p>
 
 <div class="table-wrap"><table>
@@ -78,7 +78,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
 <tr><td>Def 8.2</td><td>perfectoid 化 S_perfd</td><td class="todo">未（界面）</td><td>perfd・unit・h0（A4）</td></tr>
 <tr><td>Ex 8.3</td><td>標数 p の場合</td><td class="no">不要</td><td></td></tr>
-<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未（界面）</td><td>coconnective（A4、Lur11 の切片）</td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未</td><td>A4（後続の証明の入力。界面の欄は削除済み、D44）</td></tr>
 <tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td>limitCone・limit_isLimit（A5）</td></tr>
 <tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 の切片）</td></tr>
 <tr><td>Def 8.7、Lemma 8.8</td><td>arc 位相、perfectoid による被覆</td><td class="todo">未</td><td>A6</td></tr>

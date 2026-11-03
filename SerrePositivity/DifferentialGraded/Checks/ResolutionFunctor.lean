@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ResolutionFunctorChoice
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Projective
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 指定局所化上の解像度関手と選択の自己/推移整合性 -/

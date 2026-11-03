@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Algebra.Homology.Monoidal
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaEvaluation
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! # 元の二軸 Yoneda 円錐比較の実準同型性
 概要：元の右軸射の代表加群円錐から同じ左軸代表への比較は、各対象で準同型となる。

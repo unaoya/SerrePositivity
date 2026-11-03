@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalDiagonalEndpoints
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-! # 元の鎖区間の Serre 対角の余単位律
 概要：増大写像を Serre 対角の左右に適用すると、元の区間の恒等射を回収する。

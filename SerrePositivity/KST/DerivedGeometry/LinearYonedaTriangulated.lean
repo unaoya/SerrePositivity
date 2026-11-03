@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedGeometry.LinearRepresentableTriangles
 public import SerrePositivity.KST.DerivedGeometry.LinearYonedaHomotopy
-public import SerrePositivity.DifferentialGraded.Module.HomotopyEvaluationTriangles
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-!
 概要：元の複体の Mathlib ホモトピー圏からの代表加群関手の完全性を証明する。

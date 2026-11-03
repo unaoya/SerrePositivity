@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGRestrictedYoneda
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # 元の二つの dg 関手に沿う Hom gluing 双加群
 概要：Hom_E(p(c),q(d)) を全次数の左右作用を持つ実双加群として構成する。

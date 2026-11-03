@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorHorizontalComposition
-public import SerrePositivity.DifferentialGraded.Functor.Components
-public import SerrePositivity.DifferentialGraded.Category.TensorElements
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # 横合成の元の全斉次パラメータと対象評価
 概要：横合成の chain map を全次数の元で計算し、各対象の元の合成を回収する。

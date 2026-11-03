@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComplex
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
 
 /-! # 元の二軸短複体の Yoneda 円錐比較

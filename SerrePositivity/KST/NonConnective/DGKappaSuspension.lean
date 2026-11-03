@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGKappaConeInput
-public import SerrePositivity.DifferentialGraded.Category.Restriction
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 public import SerrePositivity.KST.SConstruction.PerfDGInput
 
 /-!

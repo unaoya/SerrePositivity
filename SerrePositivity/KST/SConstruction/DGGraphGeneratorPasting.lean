@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TensorGeneratorMaps
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # graph 生成元射の合成を抽象複体で貼り合わせる
 概要：tensor 生成元の比較に終端の射を追加し、元の合成射を保つ。

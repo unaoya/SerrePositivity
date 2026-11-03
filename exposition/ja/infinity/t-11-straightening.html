@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>straightening</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 11</nav>
+<h1>第 III 部 11　straightening</h1>
+
+<div class="env definition" id="def-functor-qcat">
+<p class="env-head">定義 11.1 <span class="env-name">（関手）</span></p>
+<div class="env-body">
+<p>単体的集合 \(B\) と quasicategory \(D\) について、\(B\) から \(D\) への関手とは単体的集合の射 \(B\to D\) のことである。関手の全体は \(\mathrm{Fun}(B,D)\)（<a href="t-02-kan-category.html#def-fun">定義 2.2</a>）の頂点の全体である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-small-fibers">
+<p class="env-head">定義 11.2 <span class="env-name">（小さいファイバー）</span></p>
+<div class="env-body">
+<p>単体的集合の射 \(q\colon E\to B\) が小さいファイバーをもつとは、\(B\) のすべての頂点 \(b\) について、ファイバー \(E_b\)（<a href="t-06-fiber-products.html#def-fiber">定義 6.2</a>）が小さい（<a href="t-01-definitions.html#conv-universe">冒頭の規約</a>）ことをいう。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-straightening">
+<p class="env-head">定義 11.3 <span class="env-name">（straightening）</span></p>
+<div class="env-body">
+<p>単体的集合 \(B\) 上の左 fibration（<a href="t-05-fibrations.html#def-fibrations">定義 5.3</a>）\(q\colon E\to B\) で小さいファイバーをもつもの（<a href="#def-small-fibers">定義 11.2</a>）に、関手（<a href="#def-functor-qcat">定義 11.1</a>）</p>
+<p>\[\mathrm{St}(q)\colon B\to\mathcal S\]</p>
+<p>を対応させる操作を straightening という（\(\mathcal S\) は<a href="t-03-coherent-nerve.html#def-spaces">定義 3.7</a>）。構成は後の章で与える。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-straightening-intuition">
+<p class="env-head">注意 <span class="env-name">（直観と大きさ）</span></p>
+<div class="env-body">
+<p>\(\mathrm{St}(q)\) は頂点 \(b\) をファイバー \(E_b\) に、辺 \(b\to b'\) を左 fibration の持ち上げで得られる \(E_b\to E_{b'}\) に送る関手である。\(\mathcal S\) の対象は小さい Kan 複体なので、値が \(\mathcal S\) に入るためにファイバーが小さいことを仮定する。\(B\) は quasicategory でなくてよく、大きさも問わない。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

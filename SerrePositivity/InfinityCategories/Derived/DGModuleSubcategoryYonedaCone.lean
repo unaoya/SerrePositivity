@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSubcategoryYonedaShift
-public import SerrePositivity.DifferentialGraded.Module.ConeElements
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
-public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：選んだ実加群部分圏の Yoneda と cone 同型。
 方針：元の包含と次数 −1 成分から比較を作り全評価で反映する。

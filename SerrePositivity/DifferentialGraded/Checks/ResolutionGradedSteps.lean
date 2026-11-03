@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ResolutionGradedSteps
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 
 /-! # U10a8：cell列の真の商とfiltrationの包含 -/
 @[expose] public section

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>homotopy coherent nerve</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]})"></script>
+<style>
+.env { border-left: 3px solid var(--accent); background: var(--box-bg); padding: 0.6rem 1rem; margin: 1.2rem 0; border-radius: 0 4px 4px 0; }
+.env > .env-head { font-weight: bold; margin: 0 0 0.3rem; }
+.env > .env-head .env-name { font-weight: normal; }
+.env.theorem { border-left-color: var(--ok); }
+.env.remark { border-left-color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="index.html">目次</a> › 第 III 部 3</nav>
+<h1>第 III 部 3　homotopy coherent nerve</h1>
+
+<div class="env definition" id="def-sfunctor">
+<p class="env-head">定義 3.1 <span class="env-name">（単体的関手）</span></p>
+<div class="env-body">
+<p>単体的圏 \(\mathcal C,\mathcal D\) の間の単体的関手 \(F\colon\mathcal C\to\mathcal D\) とは、対象の対応 \(x\mapsto F(x)\) と、対象 \(x,y\) ごとの単体的集合の射 \(F_{x,y}\colon\mathcal C(x,y)\to\mathcal D(F(x),F(y))\) の組で、合成と恒等射を保つものをいう。単体的圏と単体的関手のなす圏を \(\mathrm{sCat}\) と書く。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-poset-nerve">
+<p class="env-head">定義 3.2 <span class="env-name">（半順序集合の脈体）</span></p>
+<div class="env-body">
+<p>半順序集合 \(P\) について、単体的集合 \(N(P)\) を、\(N(P)([m])\) を順序を保つ写像 \([m]\to P\) の全体とし、\(\theta\colon[m]\to[m']\) には前合成で作用させて定める。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-path-category">
+<p class="env-head">定義 3.3 <span class="env-name">（\(\mathfrak C[\Delta^n]\)）</span></p>
+<div class="env-body">
+<p>\(n\ge0\) について、単体的圏 \(\mathfrak C[\Delta^n]\) を次で定める。</p>
+<ul>
+  <li>対象：\(0,1,\dots,n\)。</li>
+  <li>射の単体的集合：\(i\le j\) なら \(\mathfrak C[\Delta^n](i,j)=N(P_{ij})\)。ここで \(P_{ij}\) は \(\{i,j\}\subseteq S\subseteq\{i,i+1,\dots,j\}\) をみたす部分集合 \(S\) の全体に包含で順序を入れた半順序集合。\(i&gt;j\) なら空。</li>
+  <li>合成：和集合 \(P_{jk}\times P_{ij}\to P_{ik}\)、\((T,S)\mapsto T\cup S\) が誘導する射 \(N(P_{jk})\times N(P_{ij})\to N(P_{ik})\)。恒等射は \(\{i\}\in P_{ii}\)。</li>
+</ul>
+<p>\(\theta\colon[m]\to[n]\) について、単体的関手 \(\mathfrak C[\theta]\colon\mathfrak C[\Delta^m]\to\mathfrak C[\Delta^n]\) を、対象を \(i\mapsto\theta(i)\)、射を \(S\mapsto\theta(S)\) で定める。これにより関手 \(\mathfrak C\colon\Delta\to\mathrm{sCat}\) が得られる。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-hc-nerve">
+<p class="env-head">定義 3.4 <span class="env-name">（homotopy coherent nerve）</span></p>
+<div class="env-body">
+<p>単体的圏 \(\mathcal C\) について、単体的集合 \(N^{hc}(\mathcal C)\) を</p>
+<p>\[N^{hc}(\mathcal C)([n])=\mathrm{Hom}_{\mathrm{sCat}}(\mathfrak C[\Delta^n],\mathcal C),\qquad N^{hc}(\mathcal C)(\theta)(\sigma)=\sigma\circ\mathfrak C[\theta]\]</p>
+<p>で定める。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-hc-functor">
+<p class="env-head">定理 3.5 <span class="env-name">（関手性）</span></p>
+<div class="env-body">
+<p>単体的関手 \(F\colon\mathcal C\to\mathcal D\) に後合成 \(\sigma\mapsto F\circ\sigma\) を対応させることで、\(N^{hc}\) は関手 \(\mathrm{sCat}\to\mathrm{sSet}\) になる。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-scat">
+<p class="env-head">注意 <span class="env-name">（大きさ）</span></p>
+<div class="env-body">
+<p><a href="#thm-hc-functor">定理 3.5</a> の \(\mathrm{sCat}\) と \(\mathrm{sSet}\) は、大きさを制限しない、すべての単体的圏（対象が集合をなすもの）とすべての単体的集合の圏である。どちらも対象の全体は集合にならず、各 \(\mathrm{Hom}\) は集合だが小さいとは限らない。\(N^{hc}\) を単体的集合として定めるのに必要なのは \(\mathcal C\) の対象が集合をなすことで、\(\mathcal C\) が小さいことは要らない。</p>
+</div>
+</div>
+
+<div class="env theorem" id="thm-hc-quasicategory">
+<p class="env-head">定理 3.6 <span class="env-name">（局所 Kan なら quasicategory）</span></p>
+<div class="env-body">
+<p>単体的圏 \(\mathcal C\) のすべての射の単体的集合 \(\mathcal C(x,y)\) が Kan 複体であるとき（\(\mathcal C\) は局所 Kan であるという）、\(N^{hc}(\mathcal C)\) は quasicategory である。</p>
+</div>
+</div>
+
+<div class="env definition" id="def-spaces">
+<p class="env-head">定義 3.7 <span class="env-name">（空間の ∞ 圏 \(\mathcal S\)）</span></p>
+<div class="env-body">
+<p>\(\mathcal S=N^{hc}(\mathcal Kan)\) と定める（\(\mathcal Kan\) は<a href="t-02-kan-category.html#def-kan-category">定義 2.8</a>）。<a href="t-02-kan-category.html#thm-kan-hom-kan">定理 2.9</a> により \(\mathcal Kan\) は局所 Kan なので、<a href="#thm-hc-quasicategory">定理 3.6</a> により \(\mathcal S\) は quasicategory である。</p>
+</div>
+</div>
+
+<div class="env remark" id="rem-size-spaces">
+<p class="env-head">注意 <span class="env-name">（\(\mathcal S\) の大きさ）</span></p>
+<div class="env-body">
+<p>\(\mathcal Kan\) の対象は小さい Kan 複体で、その全体は \(\mathbb U\) の部分集合として集合をなすが、小さくはない。したがって \(\mathcal S\) は単体的集合だが小さくない。一方、小さい Kan 複体 \(X,Y\) について \(\mathcal Kan(X,Y)=\mathrm{Fun}(X,Y)\) は小さい（宇宙は直積と冪集合で閉じている）。</p>
+</div>
+</div>
+
+</main>
+</body>
+</html>

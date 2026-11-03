@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.HomotopyCategory
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 閉 dg 射の実辺とその関手性
 

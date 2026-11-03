@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Retract.ShiftUnitIdentity
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockComposition
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.NestedCut
 /-!
 概要：単位のシフトブロックによる前合成は全斉次 Hom の零性を反映する。

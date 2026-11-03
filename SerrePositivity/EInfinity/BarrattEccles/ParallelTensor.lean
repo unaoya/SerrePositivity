@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.TripleComplexExt
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorReindex
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 並列代入の二つの内側テンソル因子の交換

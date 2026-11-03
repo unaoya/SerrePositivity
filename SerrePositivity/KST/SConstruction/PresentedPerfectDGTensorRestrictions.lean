@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGTensorAction
-public import SerrePositivity.DifferentialGraded.Category.TensorInclusions
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # tensor dg 作用から元の二つの作用の厳密な回収
 概要：片方の対象を固定して閉単位を挿入すると、元の入力作用・ラベル作用へ戻る。

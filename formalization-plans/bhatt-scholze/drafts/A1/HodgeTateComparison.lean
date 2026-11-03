@@ -6,7 +6,8 @@ public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
--- 本ファイルは drafts/A0/{PrismaticSite,PrismaticEnvelope,CechAlexander}.lean、drafts/A1/HodgeTateMap.lean、drafts/Shared/DeRhamPolynomial.lean を import する。
+-- 本ファイルは drafts/A0/{PrismaticSite,PrismaticEnvelope,CechAlexander}.lean、drafts/A1/{HodgeTateMap,CrystallineInput}.lean、drafts/Shared/DeRhamPolynomial.lean を import する。
+-- 結晶の黒箱は drafts/A1/CrystallineInput.lean（W9-III-09：本ファイルより先）。DeRhamComparisonPoly は本ファイルより後。
 
 /-!
 # Hodge–Tate 比較の証明の骨組み（BS 著者版 Construction 6.1、Prop 6.2、Thm 6.3、Cor 4.12、Lemma 4.10）
@@ -39,7 +40,7 @@ open SerrePositivity.DerivedCompletion
 
 variable {p : ℕ} [Fact p.Prime]
 
-/-! ## 結晶側の入力（唯一の黒箱。A1-2・A1-3 で証明） -/
+/-! ## 結晶側の入力から導く HT 比較（黒箱 `crystalline_deRham_polynomial_Zp` は A1/CrystallineInput、D68。本定理はその系） -/
 
 /-- 概要：Cor 5.5 の (Z_p,(p)) の場合：R = F_p[X_1,…,X_r] について、η^* : Ω^*_{R/F_p} → H^*(Tot(C^•/p)) は同型。
 方針：Thm 5.2 の β 形（Tot C^• ≃ Tot D^• ≃ Ω^•_{Z_p⟨X⟩}、Lemma 5.4 と導来 Nakayama）、mod p、Cartier 同型、η^* との一致。
@@ -177,7 +178,7 @@ theorem baseChange_cechAlexanderAffine_eq (r : ℕ) : True := by trivial
 
 /-- 概要：Prop 6.2（一般の r）＝ Thm 6.3（多項式代数）：一般の有界向き付き prism (A,(d)) と R = (A/d)⟨X_1,…,X_r⟩ について η^* は同型。
 方針：(a) 結晶：`hodgeTate_iso_crystalline`。(b)(c)：b̂^* が保存的、b̂^*η^* が ĉ^*（Z_p 側の η^*）に一致（生成元で）、Z_p 側は
-`hodgeTate_iso_polynomial_Zp`。
+`hodgeTate_iso_polynomial_Zp`。順序（W9-I-25）：r = 1 の加群の比較（η⁰・η¹）→ Lemma 4.10（`bockstein_sq_zero'`）→ 一般 r の dg 比較。
 規約：D30。
 使われ方：Cor 4.12、Lemma 4.10、A2・A5・A7。 -/
 theorem hodgeTate_iso (hP : IsBoundedPrism P) (r : ℕ) : True := by trivial

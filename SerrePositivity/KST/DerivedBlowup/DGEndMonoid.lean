@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import Mathlib.CategoryTheory.Monoidal.Mon
 
 /-!

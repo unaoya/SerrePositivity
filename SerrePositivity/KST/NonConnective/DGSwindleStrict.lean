@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleEnriched
 public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransUnitNaturality
-public import SerrePositivity.DifferentialGraded.Module.HomIsoSquare
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：構成した swindle を、全斉次射に自然な厳密 dg 自然変換へ束ねる。

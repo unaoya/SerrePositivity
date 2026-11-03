@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorShiftIso
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
-public import SerrePositivity.DifferentialGraded.Module.FreeSphereShift
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
+public import SerrePositivity.DifferentialGraded.Module.Functor
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
 public import Mathlib.CategoryTheory.Adjunction.Limits
 /-!
 概要：dg 加群の延長と、ラベル付き自由 sphere の評価を比較する。

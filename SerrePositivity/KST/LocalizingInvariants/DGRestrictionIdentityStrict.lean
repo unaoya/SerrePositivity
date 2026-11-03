@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionUnitHomNaturality
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 概要：D の元の恒等制限同型の逆を、全 Hom に自然な厳密 dg 自然変換へ移す。

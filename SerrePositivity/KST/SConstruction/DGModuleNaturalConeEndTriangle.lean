@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeEndNullHomoto
 public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 
 /-!

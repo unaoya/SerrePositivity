@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotQuotient
 public import SerrePositivity.KST.SConstruction.DGAlgebraRightEndOrientation
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-! # 元の実対角商 End の dg 代数と元の右代数射
 概要：元の商 End を右加群の向きに代数化し、元の右代数からの単位・積保存射を構成する。

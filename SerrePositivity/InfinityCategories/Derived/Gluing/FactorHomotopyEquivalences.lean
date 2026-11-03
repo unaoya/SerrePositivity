@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.CFactorComparison
 public import SerrePositivity.InfinityCategories.Derived.Gluing.DFactorComparison
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! 同じ両制限射影を順関手に保つ、実充満因子と元の二圏の H⁰ 同値。 -/
 @[expose] public section

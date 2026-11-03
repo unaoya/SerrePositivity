@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingTargetCone
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxis
-public import SerrePositivity.DifferentialGraded.Module.ConeDesc
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! # 元の零左成分を持つ gluing の終域 cone の厳密比較
 概要：実閉零対象を左成分とする同じ cone を、元の右対象の代表加群と同定する。

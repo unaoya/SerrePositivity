@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Resolution
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a13：任意非有界dg加群へのsemifree解像度の存在 -/

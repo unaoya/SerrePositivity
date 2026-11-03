@@ -49,8 +49,10 @@ variable (k : Type u) [CommRing k]
 方針：対象を添字で持ち、射は `MvPolynomial (Fin n) k →ₐ[k] MvPolynomial (Fin m) k`。
 規約：小さい圏（Type u）。有限余積は n + m（テンソル積 ＝ 変数の併置）。
 使われ方：P_Σ の生成系、Čech–Alexander の R の範囲（A0 の `cechAlexanderAffine`）。 -/
-structure Poly where
+structure Poly (k : Type u) [CommRing k] where
   n : ℕ
+-- W9-I-31：k を構造体の明示パラメータに（section の variable は使われない構造体のパラメータにならない）。対象は ℕ（Type 0）、射は Type u：
+-- `SmallCategory` ではなく対象・射の宇宙を分けた instance にするか、対象を `ULift` で Type u に上げる（要確認）。
 
 instance : SmallCategory (Poly k) where
   Hom P Q := MvPolynomial (Fin P.n) k →ₐ[k] MvPolynomial (Fin Q.n) k

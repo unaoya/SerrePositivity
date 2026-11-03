@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCutProduct
-public import SerrePositivity.DifferentialGraded.Category.TensorElements
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 /-!
 概要：同じ内部点の切断合成と選択した第一 Hom 成分から、指定次数の符号付き tensor 項を作る。
 方針：同じ実 Hom と切断合成の次数を明示し、有限交差の点数で符号を定める。

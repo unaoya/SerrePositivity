@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Category.Tensor
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 元の dg 関手の tensor 作用
 概要：二つの dg 関手から、元の tensor dg 圏の間の厳密 dg 関手を作る。

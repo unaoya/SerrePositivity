@@ -4,7 +4,7 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,BaseChangeAndTensor}.lean、drafts/A4/Perfectoidization.lean、
--- drafts/DerivedGeneral/CompletionFunctor.lean を import する。
+-- drafts/DerivedGeneral/CompletionFunctor.lean、drafts/A7/AnimatedDomain.lean（G-A7-1。W9-II-24 で切り出し）を import する。
 
 /-!
 # animated 代数上の perfectoid 化と対称モノイダル性（BS 著者版 Def 8.2 の定義域、Prop 8.13）
@@ -35,32 +35,6 @@ namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 open SerrePositivity.BhattScholze.Prismatic SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
-
-/-! ## G-A7-1：底の加群、完備性、完備化 -/
-
-/-- 概要：animated R 代数の底の D(R) 対象：Poly_R → D(R)（多項式環を離散加群として）の sifted 余極限を保つ延長。
-方針：A2-1 の `exists_siftedExtension`（HTT 5.5.8.15）。
-規約：`AnimatedAlgebra R ⟶ derivedInfinityCategory R`。
-使われ方：導来 p 完備性の定義、A2-2 の Δ との整合（Δ の底）。 -/
-def animatedForget : AnimatedAlgebra R ⟶ derivedInfinityCategory R := sorry
-
-/-- 概要：導来 p 完備な animated R 代数の充満部分 ∞ 圏（原典 Def 8.2 の定義域）。
-方針：`animatedForget` の像が `IsDerivedComplete`（DerivedGeneral/CompletionFunctor）であるような頂点の fullSubcomplex。
-規約：`SSet` の部分複体。
-使われ方：Def 8.2、Prop 8.13。 -/
-def CompleteAnimatedAlgebra : SSet.{u + 1} := sorry
-
-/-- 概要：animated R 代数の導来 p 完備化（反射的局所化、代数構造と両立）。
-方針：D(R) の完備化（DerivedGeneral/CompletionFunctor）は対称モノイダルな局所化なので代数に持ち上がる（要確認：P_Σ 上の構成）。
-規約：`AnimatedAlgebra R ⟶ CompleteAnimatedAlgebra R` と単位。
-使われ方：完備テンソル S_1 ⊗̂^L_{S_3} S_2。 -/
-def animatedCompletion : True := trivial
-
-/-- 概要：導来 p 完備な離散 R 代数は `discreteToAnimated`（A2-1）で `CompleteAnimatedAlgebra` に入る。
-方針：離散環の底は離散加群。
-規約：—
-使われ方：離散版との一致。 -/
-theorem discreteToAnimated_complete : True := by trivial
 
 /-! ## G-A7-2：相対テンソル -/
 

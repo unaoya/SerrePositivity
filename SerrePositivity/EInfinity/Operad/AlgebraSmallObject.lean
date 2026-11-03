@@ -53,6 +53,7 @@ instance freeAlgebra_finitelyPresentable (K : Complex A) [IsFinitelyPresentable.
 lemma freeFamily_smallObjectArgument {ι : Type v} [Small.{u} ι] {K L : ι → Complex A}
     (f : ∀ i, K i ⟶ L i) [∀ i, IsFinitelyPresentable.{u} (K i)] :
     ((MorphismProperty.ofHoms f).strictMap P.freeAlgebraFunctor).HasSmallObjectArgument.{u} := by
+  letI : HasCoproducts.{u} P.Algebra := fun J => (inferInstance : HasColimitsOfSize.{u, u} P.Algebra).has_colimits_of_shape (Discrete J)
   let κ : Cardinal.{u} := Cardinal.aleph0
   let : Fact κ.IsRegular := Cardinal.fact_isRegular_aleph0
   let : Nonempty κ.ord.ToType := Cardinal.nonempty_ord_toType (Fact.out : κ.IsRegular).ne_zero
