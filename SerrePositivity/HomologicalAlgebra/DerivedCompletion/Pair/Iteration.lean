@@ -11,7 +11,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
 
 ## 方針
 
-両方向の写像を普遍性から作り、合成が恒等であることを単位で確かめる。
+両方向の写像を持ち上げの def（`pairCompletionLift`・`iteratedCompletionLift`、反復の側は一座標の `principalCompletionLift` を二度当てる）で作り、合成が恒等であることを普遍性の一意性と単位で確かめる。
 
 ## 規約
 
@@ -176,6 +176,35 @@ theorem iteratedCompletion_existsUnique_ringHom (f d : R)
     rw [RingHom.comp_assoc]
     exact hk
 
+/-- 二座標に導来完備な離散環への環準同型の、反復したH⁰からの延長
+（`iteratedCompletion_existsUnique_ringHom` の写像）。fについて延長してから、dの像について延長する。 -/
+def iteratedCompletionLift (f d : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hf : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T))
+    (hd : letI := g.toAlgebra; IsModuleComplete R d (ModuleCat.of R T)) :
+    letI := iteratedCompletionCommRing R f d
+    IteratedCompletionH0 R f d →+* T :=
+  letI := principalCompletionCommRing R f
+  principalCompletionLift (PrincipalCompletionH0 R f) (principalCompletionUnitRingHom R f d) T
+    (principalCompletionLift R f T g hf)
+    ((isModuleComplete_ringHom_comp_iff R (PrincipalCompletionH0 R f) T
+      (principalCompletionUnitRingHom R f) (principalCompletionLift R f T g hf) d).mpr
+      (Eq.mpr (congrArg (fun q : R →+* T ↦
+        letI := q.toAlgebra
+        IsModuleComplete R d (ModuleCat.of R T)) (principalCompletionLift_comp R f T g hf)) hd))
+
+/-- 延長は標準写像との合成で元の環準同型に戻る。 -/
+theorem iteratedCompletionLift_comp (f d : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hf : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T))
+    (hd : letI := g.toAlgebra; IsModuleComplete R d (ModuleCat.of R T)) :
+    letI := iteratedCompletionCommRing R f d
+    (iteratedCompletionLift R f d T g hf hd).comp (iteratedCompletionUnitRingHom R f d) = g := by
+  letI := principalCompletionCommRing R f
+  change (iteratedCompletionLift R f d T g hf hd).comp
+    ((principalCompletionUnitRingHom (PrincipalCompletionH0 R f)
+      (principalCompletionUnitRingHom R f d)).comp (principalCompletionUnitRingHom R f)) = g
+  rw [← RingHom.comp_assoc, iteratedCompletionLift, principalCompletionLift_comp,
+    principalCompletionLift_comp]
+
 end SerrePositivity.DerivedCompletion
 
 end IteratedKoszulRingPart
@@ -193,9 +222,9 @@ def pairCompletionToIterated (f d : R) :
     letI := iteratedCompletionCommRing R f d
     PairCompletionH0 R f d →+* IteratedCompletionH0 R f d :=
   letI := iteratedCompletionCommRing R f d
-  (pairCompletion_existsUnique_ringHom R f d (IteratedCompletionH0 R f d)
+  pairCompletionLift R f d (IteratedCompletionH0 R f d)
     (iteratedCompletionUnitRingHom R f d) (iteratedCompletion_isModuleComplete_unit_first R f d)
-      (iteratedCompletion_isModuleComplete_unit_second R f d)).choose
+      (iteratedCompletion_isModuleComplete_unit_second R f d)
 
 /-- 比較射は元の環からの標準写像を保つ。 -/
 theorem pairCompletionToIterated_comp_unit (f d : R) :
@@ -204,9 +233,9 @@ theorem pairCompletionToIterated_comp_unit (f d : R) :
     (pairCompletionToIterated R f d).comp (pairCompletionUnitRingHom R f d) =
       iteratedCompletionUnitRingHom R f d :=
   letI := iteratedCompletionCommRing R f d
-  (pairCompletion_existsUnique_ringHom R f d (IteratedCompletionH0 R f d)
+  pairCompletionLift_comp R f d (IteratedCompletionH0 R f d)
     (iteratedCompletionUnitRingHom R f d) (iteratedCompletion_isModuleComplete_unit_first R f d)
-      (iteratedCompletion_isModuleComplete_unit_second R f d)).choose_spec.1
+      (iteratedCompletion_isModuleComplete_unit_second R f d)
 
 /-- 反復したH⁰から元の二座標H⁰への標準比較射。 -/
 def iteratedCompletionToPair (f d : R) :
@@ -214,9 +243,9 @@ def iteratedCompletionToPair (f d : R) :
     letI := iteratedCompletionCommRing R f d
     IteratedCompletionH0 R f d →+* PairCompletionH0 R f d :=
   letI := pairCompletionCommRing R f d
-  (iteratedCompletion_existsUnique_ringHom R f d (PairCompletionH0 R f d)
+  iteratedCompletionLift R f d (PairCompletionH0 R f d)
     (pairCompletionUnitRingHom R f d) (pairCompletion_isModuleComplete_unit_first R f d)
-      (pairCompletion_isModuleComplete_unit_second R f d)).choose
+      (pairCompletion_isModuleComplete_unit_second R f d)
 
 /-- 逆向きの比較射も標準写像を保つ。 -/
 theorem iteratedCompletionToPair_comp_unit (f d : R) :
@@ -225,9 +254,9 @@ theorem iteratedCompletionToPair_comp_unit (f d : R) :
     (iteratedCompletionToPair R f d).comp (iteratedCompletionUnitRingHom R f d) =
       pairCompletionUnitRingHom R f d :=
   letI := pairCompletionCommRing R f d
-  (iteratedCompletion_existsUnique_ringHom R f d (PairCompletionH0 R f d)
+  iteratedCompletionLift_comp R f d (PairCompletionH0 R f d)
     (pairCompletionUnitRingHom R f d) (pairCompletion_isModuleComplete_unit_first R f d)
-      (pairCompletion_isModuleComplete_unit_second R f d)).choose_spec.1
+      (pairCompletion_isModuleComplete_unit_second R f d)
 
 /-- 普遍性により、二座標H⁰上の比較の合成は恒等写像。 -/
 theorem iteratedCompletionToPair_comp_toIterated (f d : R) :

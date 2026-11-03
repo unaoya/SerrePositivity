@@ -1027,6 +1027,30 @@ theorem pairCompletion_existsUnique_ringHom (f d : R)
       { k with commutes' := fun r ↦ congrArg (fun m : R →+* T ↦ m r) hk }
     exact congrArg AlgHom.toRingHom (hu k' trivial)
 
+/-- 標準写像に沿った、両方の座標で導来完備な離散環への環準同型の延長
+（`pairCompletion_existsUnique_ringHom` の写像）。 -/
+def pairCompletionLift (f d : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hf : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T))
+    (hd : letI := g.toAlgebra; IsModuleComplete R d (ModuleCat.of R T)) :
+    letI := pairCompletionCommRing R f d
+    PairCompletionH0 R f d →+* T := by
+  letI := g.toAlgebra
+  letI := pairCompletionCommRing R f d
+  letI := pairCompletionAlgebra R f d
+  exact (pairCompletionLiftAlgHom R f d T hf hd).toRingHom
+
+/-- 延長は標準写像との合成で元の環準同型に戻る。 -/
+theorem pairCompletionLift_comp (f d : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hf : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T))
+    (hd : letI := g.toAlgebra; IsModuleComplete R d (ModuleCat.of R T)) :
+    letI := pairCompletionCommRing R f d
+    (pairCompletionLift R f d T g hf hd).comp (pairCompletionUnitRingHom R f d) = g := by
+  letI := g.toAlgebra
+  letI := pairCompletionCommRing R f d
+  letI := pairCompletionAlgebra R f d
+  ext r
+  exact (pairCompletionLiftAlgHom R f d T hf hd).commutes r
+
 end SerrePositivity.DerivedCompletion
 
 end PairKoszulRingPart
