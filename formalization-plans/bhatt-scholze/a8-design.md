@@ -88,8 +88,11 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
   R/p ⊗^L R/p ≃ [R/p →0→ R/p] で H^{−1} = R/p ≠ 0、p で零化されるので完備化しても消えない）。Prop 8.5 系 4（perfd は π_0 だけによる）で Q_perfd ≃ (R/J)_perfd、
   Prop 8.13 で (R/J)_perfd ≃ (R/f_1)_perfd ⊗̂_R ⋯（単位と両立）、
   J_perfd ⊗̂ M の消滅を各 (f_i)_perfd ⊗̂ M = 0 から（Lemma 10.3 の形 (R/J)_perfd ⊗̂ J_perfd = 0 と、J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M）。紙 1。
-- 忠実平坦な基底変換：R → R′ perfectoid、p 完備忠実平坦。(R′/JR′)_perfd = (R/J)_perfd ⊗̂_R R′（Prop 8.13）⇒ (JR′)_perfd = J_perfd R′（Thm 7.4 の全射性と
-  平坦性）。M が J-almost 零 ⇔ M ⊗̂_R R′ が JR′-almost 零（忠実平坦で零性を反映）。
+- 忠実平坦な基底変換：R → R′ perfectoid、p 完備忠実平坦。(R′/JR′)_perfd = (R/J)_perfd ⊗̂_R R′（Prop 8.13）。**D2-02（BS-D2、11-03）**：(JR′)_perfd = ker(R′ → (R/J)_perfd ⊗̂_R R′) は
+  完備テンソル J_perfd ⊗̂_R R′ の R′ への像（0 → J_perfd → R → (R/J)_perfd → 0 の p 完備平坦な底変換が完全：(R/J)_perfd は有界 p ねじれで H^{−1} = 0）であり、
+  これは **J_perfd·R′ の p 進閉包**（Fayolle, Prop 2.9 の式、有限生成 J）。通常の `Ideal.map` に一致するのは閉包が要らないとき（R′/J_perfd R′ の p 冪ねじれが有界のとき）だけで、
+  一般には閉包を外せない。almost 零の反映には閉包の有無は効かない：K′ := (JR′)_perfd ≅ K ⊗̂_R R′（平坦で単射）なので K′ ⊗̂_{R′} M′ = K ⊗̂_R M′。
+  M が J-almost 零 ⇔ M ⊗̂_R R′ が JR′-almost 零（忠実平坦で零性を反映）。
 
 ### 3.2 Thm 10.9 の J-almost 連結性（原典 (1)(2) の筋、(3)(4) なし）
 
