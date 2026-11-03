@@ -768,25 +768,6 @@ section CohomologyVanishingPart
 namespace SerrePositivity.CLMST
 open IsLocalRing Section2
 
-/--
-## 概要
-Cor 4.0.4 の局所コホモロジーと全有限段の Koszul ホモロジーの almost 消滅。
-
-## 方針
-同署名の実証明 CLMST.corollary_4_0_4 を適用する。
-
-## 規約
-原典の両成分を保持し、n=0 への特殊化や g の存在を内部へ隠さない。
-
-end SerrePositivity.CLMST
-
-end CohomologyVanishingPart
-
-section CohomologyVanishingPart
-
-namespace SerrePositivity.CLMST
-open IsLocalRing Section2
-
 variable (A D : Type u) [CommRing A] [IsRegularLocalRing A]
     [IsAdicComplete (maximalIdeal A) A]
     [CommRing D] [IsLocalRing D] [IsNoetherianRing D] [IsDomain D]
