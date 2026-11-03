@@ -82,4 +82,32 @@ def cAlgRestrictScalars_comp {U : Type u} [CommRing U] (f : S →+* T) (g : T �
     FunctorIso (cAlgRestrictScalars (g.comp f)) (cAlgRestrictScalars g ≫ cAlgRestrictScalars f) := sorry -- 基盤待ち
 def cAlgRestrictScalars_id : FunctorIso (cAlgRestrictScalars (RingHom.id S)) (𝟙 _) := sorry -- 基盤待ち
 
+/-! ## 一般の補題（11-03、BS-D2 停止点 1 の A4 の「ScalarRestriction へ」三件の一般形） -/
+
+/-- 概要：係数制限は余極限錐を保つ（f_* は左随伴 f^* をもつだけでなく、余誘導 Hom_S(T, −) を右随伴にもつので極限も余極限も保つ。dg 模型では忘却が余極限を変えない）。
+方針：dg 模型で忘却関手は余極限を保つ；nerve に移す。
+規約：基盤待ち。A4 の `restrictFrobeniusTowerColimit`（完全基底の φ_A は同型なので特に）はこの特別な場合。
+使われ方：A4 の塔の余極限。 -/
+theorem cAlgRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{u + 1}} {F : K ⟶ CAlg_R T}
+    (c : JoinCocone F) (hc : IsColimitCone c) :
+    IsColimitCone (mapJoinCocone (cAlgRestrictScalars f) c) := by
+  sorry -- 基盤待ち：忘却は余極限を保つ
+theorem derivedInfinityRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{u + 1}} {F : K ⟶ derivedInfinityCategory T}
+    (c : JoinCocone F) (hc : IsColimitCone c) :
+    IsColimitCone (mapJoinCocone (derivedInfinityRestrictScalars f) c) := by
+  sorry -- 基盤待ち
+
+/-- 概要：係数制限と導来完備化の両立：I ⊂ S、J ⊂ T で √(f(I)T) = √J なら、J 完備化の後に制限したものと、制限の後に I 完備化したものは `FunctorIso`
+（導来完備性は根基だけによる。Koszul 完備化の塔は f で対応する）。
+方針：D 版は DerivedGeneral/CompletionFunctor の `completion`（M13）で、CAlg 版は忘却との比較 `cAlgRestrictScalars_forget` を経由。
+規約：基盤待ち。主張の形は `completion` の引数（イデアル）が確定してから。A4 の `restrictFrobeniusCompletion`（f = φ_A、(p,d) と (p,φ(d)) は同じ根基）はこの特別な場合。
+使われ方：A4 の Δ_perf の完備化と shift。 -/
+theorem derivedInfinityRestrictScalars_completion (f : S →+* T) : True := by trivial -- 基盤待ち（M13、`completion` の引数が決まってから型にする）
+
+/-- 概要：係数制限と H⁰：f_*(x) の H⁰ の台の環は x の H⁰ の台の環と同じで、S 作用は f に沿って読む。
+方針：忘却は台の複体を変えない。
+規約：基盤待ち。A4 の `restrictH0Equiv`・`restrictH0Equiv_base` はこれ（A4 の `cAlgH0Algebra` と同じ H⁰ の取り方）。
+使われ方：Lemma 8.4 (b)、E3 の `h0`。 -/
+theorem cAlgRestrictScalars_h0 (f : S →+* T) : True := by trivial -- 基盤待ち（H⁰ の取り方 `cAlgH0Algebra`（A4）を基盤側に移してから型にする）
+
 end SerrePositivity.InfinityCategories
