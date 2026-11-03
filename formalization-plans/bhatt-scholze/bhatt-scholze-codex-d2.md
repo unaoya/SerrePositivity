@@ -55,3 +55,6 @@
   A2 待ちの仮置き 5（sifted 延長、A/d ≃ R に沿う基底移送、animated Frobenius、Fil₀ の始域の E∞ 実現、Fil₀ の単位射）。**D2-01**：`cAlgRestrictScalars_isColimitCone` は任意の図式では偽
   （空図式で ℤ → F₂）→ sifted 図式に限定し、同型に沿う制限の全余極限保存を別補題に（ScalarRestriction.lean、design-status §5）。
 - 次：停止点 3（A8 の残り）。
+- 第 4・5 部（1189e6dfe、**停止点 3 完了・BS-D2 終了・検収済み**）：A8 の 40 件＋型 3 件。**D2-02**：`perfectoidIdeal_baseChange` の右辺は完備テンソル K ⊗̂_R R′ の像
+  （J_perfd R′ の p 進閉包、Fayolle Prop 2.9）で通常の `Ideal.map` ではない；`Ideal.map` との一致の補題は置かない（有界ねじれだけでは偽、Codex の反例）。
+  **BS-D2 全体 83 件（`True` 79、`Type u := sorry` 4）。** drafts 全体の残り 187 件は A5・A6 の excision（BS-D3）、A1〜A3（BS-D4）、基盤（W2b 後）。

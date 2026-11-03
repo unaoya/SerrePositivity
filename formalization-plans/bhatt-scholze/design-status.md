@@ -60,14 +60,14 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization（BS-D2 停止点 2 済、11-03：`True` 0 件。Prop 8.13 は完備 CAlg の押し出しからの指定比較射の可逆性。A2 待ちの仮置き 5） | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty（BS-D2 停止点 2 済：F(η_S) = η_P を先に置き、自己テンソルの同値と単位の合成＝乗法） | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
-| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
-| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
+| A8-1 Prop 10.4 複体版・Lemma 10.5・J-almost の基本 | a8-design §2.1・§3.1 | A8/AlmostConnectivity（BS-D2 停止点 3 済、11-03：`True` 0 件。一般 J の核 K、D2-02 の底変換は完備テンソルの像） | 済（W9 第 3 部 ○、W9-III-03 の訂正。非有界での Prop 10.4 の接続は Codex 未） | B5 の既存、A7 |
+| A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity（BS-D2 停止点 3 済：`True` 0 件） | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
 | A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification（BS-D1 停止点 3 済、11-03：`True` 0 件。普遍同相は Spec 全単射＋剰余体の純非分離、核は nil、層は `StratumRing I g = (R/√I)[1/g]`、結論 (1)(2)(3) を ∃ 文に） | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分の証明は中身の段階） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
-| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
+| A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness（BS-D2 停止点 3 済：`True` 0 件。T・T̂・A_λ の型、Cor 8.12 は S → T̂、G-A8-8 は一般の整代数への帰着でだけ） | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模（11-03、BS-D1 後）：50 本、約 7,233 行（結論が `True` の名前つき宣言 260、`sorry` の出現 356）。BS-D1（Codex、11-03）で A6/ArcSite・A6/ArcSheafProperty・A8/Stratification・A0 の 49 件の仮置きを具体的な型にした（報告 `report-codex-d1.md` 第 1〜7 部、D1-01〜03 は設計側で解決）。残る `True` 270 件の一覧は報告第 7 部。
+骨組みの規模（11-03、BS-D2 後）：51 本、約 8,500 行（結論が `True` の名前つき宣言 187）。BS-D1（49 件）・BS-D2（83 件：A0 残り・A4・A7・A8）で A0・A4・A6/ArcSite・ArcSheafProperty・A7・A8 の仮置きを具体的な型にした（報告 `report-codex-d1.md`・`report-codex-d2.md`、D1-01〜03・D2-01〜02 は設計側で解決）。残りは A5（60）・A6 の excision（19）→ BS-D3、A1〜A3（62）→ BS-D4、基盤（Sheaves・DerivedGeneral・Shared、42）→ W2b 後。
 
 ## 2. 要確認の分類
 
