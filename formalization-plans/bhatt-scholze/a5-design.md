@@ -64,7 +64,11 @@ CAlg 版 `BSLimitConeDataCAlg`。Lean の名前は仮。ビルドしない。
 
 ### 2.2 比較写像と Prop 8.5
 
-- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な A 線形・Frobenius 両立の f : Δ_{S/A} → B（CAlg_A）。塔（A4、原典の φ_{A*}^n）の第 n 項への脚は
+- Lemma 7.7(3)（A3-1）：各 (B,J) ∈ (S/A)_Δ に関手的な A 線形・Frobenius 両立の f : Δ_{S/A} → B（CAlg_A）。**形式化の入口（11-03、BS-D3 の質問への回答）**：A3 の `prismMapOfDiscrete`
+  は `IsDiscretePrismatic` を仮定して環準同型を返す離散版で、A5 が要るのは仮定なしの CAlg_A の射。これは Δ_{S/A} = RΓ((S/A)_Δ, O_Δ) の**極限の射影**（S2 の `derivedGlobalSectionsCAlg` の
+  site の対象 B での脚、O_Δ(B) = B。A0 の `structurePresheaf` を `ringPresheafToCAlg` で CAlg 値にしたもの、A2 の `prismaticCohomologyCAlg`）で、Frobenius 両立は `structurePresheafFrobenius` の
+  自然性から。完全 prism B は有界なので site の対象。A5 の骨組みでは「A0/S2 の CAlg 値 RΓ の射影待ち」の型つき仮置きとして置く（A3 待ちではない）。animated S（D45）では
+  π_0 S の site で同じ。塔（A4、原典の φ_{A*}^n）の第 n 項への脚は
   f_n := φ_B^{-n} ∘ f : Res_{φ_A}^n Δ_S → B（B 完全なので φ_B 可逆。f_n(φ_A^n(a) x) = a f_n(x) で A 線形、f_{n+1} ∘ φ = f_n で塔と整合、B について自然。
   W9-II-07 で D42 撤回後の記法に揃えた）。余極限から colim → B、B は (p,d) 完備なので完備化を通り Δ_{S/A,perf} → B。自然性から O の上の錐、
   よって `perfectionComparison : Δ_perf → lim O`。
