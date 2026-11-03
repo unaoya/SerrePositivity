@@ -188,6 +188,50 @@ end SerrePositivity.DerivedCompletion
 
 end CompletionQuotientPart
 
+section CompletionCommutesPart
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.defeqAttrib.useBackward true
+namespace SerrePositivity.DerivedCompletion
+open CategoryTheory
+attribute [local instance] HasDerivedCategory.standard
+variable {R : Type u} [CommRing R] (a : R) {S : Type u} [CommRing S] (c : S)
+  (G : DerivedCategory.Minus (ModuleCat.{u} R) ⥤ ConcreteDerivedCategory S)
+  (hG : ∀ X, IsComplete S c (G.obj ((boundedAboveDerivedCompletionFunctor R a).obj X)))
+
+/-- 完備化の目標で完備性を保つ関手 `G` について、`c` 完備化と `G` を標準の単位で比べる射。
+`G` の像の上の完備化の単位の逆を、`G` で送った `a` 完備化の単位と合成する。 -/
+def completionCommComparison (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
+    (derivedComplexCompletionFunctor S c).obj (G.obj X) ⟶
+      G.obj ((boundedAboveDerivedCompletionFunctor R a).obj X) :=
+  (derivedComplexCompletionFunctor S c).map
+      (G.map ((boundedAboveDerivedCompletionUnit R a).app X)) ≫
+    (derivedComplexCompletionUnitIso S c _ (hG X)).inv
+
+/-- 比較の射は、完備化の単位との合成で `G` で送った単位に戻る。 -/
+lemma completionCommComparison_unit (X : DerivedCategory.Minus (ModuleCat.{u} R)) :
+    (derivedComplexCompletionUnit S c).app (G.obj X) ≫ completionCommComparison a c G hG X =
+      G.map ((boundedAboveDerivedCompletionUnit R a).app X) :=
+  (derivedComplexCompletionHomEquiv S c _ _ (hG X)).apply_symm_apply _
+
+/-- 比較の射は自然である（完備な目標への射は単位との合成で決まる）。 -/
+lemma completionCommComparison_naturality {X Y : DerivedCategory.Minus (ModuleCat.{u} R)}
+    (f : X ⟶ Y) :
+    (derivedComplexCompletionFunctor S c).map (G.map f) ≫ completionCommComparison a c G hG Y =
+      completionCommComparison a c G hG X ≫
+        G.map ((boundedAboveDerivedCompletionFunctor R a).map f) := by
+  apply derivedComplexCompletionHom_ext S c (hG Y)
+  have hr := (derivedComplexCompletionUnit S c).naturality (G.map f)
+  simp only [Functor.id_map] at hr
+  rw [← Category.assoc, ← hr, Category.assoc, completionCommComparison_unit,
+    ← Category.assoc, completionCommComparison_unit, ← Functor.map_comp, ← Functor.map_comp]
+  simpa only [Functor.id_map] using
+    congrArg G.map ((boundedAboveDerivedCompletionUnit R a).naturality f)
+
+end SerrePositivity.DerivedCompletion
+
+end CompletionCommutesPart
+
 section CompletionScalarConeComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
@@ -235,27 +279,24 @@ lemma scalarCone_completionUnit_map_isIso (X : D) :
 def completionScalarConeComparison (X : D) :
     (derivedComplexCompletionFunctor R a).obj ((derivedScalarConeFunctor R b).obj X.obj) ⟶
       (derivedScalarConeFunctor R b).obj ((derivedComplexCompletionFunctor R a).obj X.obj) :=
-  (derivedComplexCompletionFunctor R a).map
-      ((derivedScalarConeFunctor R b).map ((derivedComplexCompletionUnit R a).app X.obj)) ≫
-    (derivedComplexCompletionUnitIso R a _
-      (derivedScalarCone_isComplete R a b _
-        (derivedComplexCompletionFunctor_isComplete R a X.obj))).inv
+  completionCommComparison a a (DerivedCategory.Minus.ι ⋙ derivedScalarConeFunctor R b)
+    (fun X ↦ derivedScalarCone_isComplete R a b _
+      (derivedComplexCompletionFunctor_isComplete R a X.obj)) X
 
 /-- This extension has exactly the original scalar-cone completion-unit diagram. -/
 lemma completionScalarConeComparison_unit (X : D) :
     (derivedComplexCompletionUnit R a).app ((derivedScalarConeFunctor R b).obj X.obj) ≫
         completionScalarConeComparison R a b X =
       (derivedScalarConeFunctor R b).map ((derivedComplexCompletionUnit R a).app X.obj) :=
-  (derivedComplexCompletionHomEquiv R a _ _
-    (derivedScalarCone_isComplete R a b _
-      (derivedComplexCompletionFunctor_isComplete R a X.obj))).apply_symm_apply _
+  completionCommComparison_unit a a (DerivedCategory.Minus.ι ⋙ derivedScalarConeFunctor R b)
+    (fun X ↦ derivedScalarCone_isComplete R a b _
+      (derivedComplexCompletionFunctor_isComplete R a X.obj)) X
 
 /-- Actual a-completion and the b-cone commute by the original unit-normalized map. -/
 lemma completionScalarConeComparison_isIso (X : D) :
     IsIso (completionScalarConeComparison R a b X) := by
-  dsimp only [completionScalarConeComparison]
   have := scalarCone_completionUnit_map_isIso R a b X
-  infer_instance
+  exact IsIso.comp_isIso' this inferInstance
 
 /-- The standard comparison is an isomorphism of the original derived objects. -/
 def completionScalarConeIso (X : D) :
@@ -269,17 +310,10 @@ lemma completionScalarConeComparison_naturality {X Y : D} (f : X ⟶ Y) :
     (derivedComplexCompletionFunctor R a).map ((derivedScalarConeFunctor R b).map f.hom) ≫
         completionScalarConeComparison R a b Y =
       completionScalarConeComparison R a b X ≫
-        (derivedScalarConeFunctor R b).map ((derivedComplexCompletionFunctor R a).map f.hom) := by
-  apply derivedComplexCompletionHom_ext R a
-    (derivedScalarCone_isComplete R a b _ (derivedComplexCompletionFunctor_isComplete R a Y.obj))
-  have hr := (derivedComplexCompletionUnit R a).naturality
-    ((derivedScalarConeFunctor R b).map f.hom)
-  simp only [Functor.id_map] at hr
-  rw [← Category.assoc, ← hr, Category.assoc, completionScalarConeComparison_unit,
-    ← Category.assoc, completionScalarConeComparison_unit,
-    ← Functor.map_comp, ← Functor.map_comp]
-  simpa only [Functor.id_map] using congrArg (derivedScalarConeFunctor R b).map
-    ((derivedComplexCompletionUnit R a).naturality f.hom)
+        (derivedScalarConeFunctor R b).map ((derivedComplexCompletionFunctor R a).map f.hom) :=
+  completionCommComparison_naturality a a (DerivedCategory.Minus.ι ⋙ derivedScalarConeFunctor R b)
+    (fun X ↦ derivedScalarCone_isComplete R a b _
+      (derivedComplexCompletionFunctor_isComplete R a X.obj)) f
 
 /-- The unit-normalized comparisons assemble into a natural isomorphism. -/
 def completionScalarConeNatIso :
@@ -369,12 +403,9 @@ def completionQuotientBaseChangeComparison (X : D) :
     (derivedComplexCompletionFunctor Q ((q) a)).obj ((boundedAboveDerivedBaseChange (q)).obj X).obj ⟶
       ((boundedAboveDerivedBaseChange (q)).obj
         ((boundedAboveDerivedCompletionFunctor R a).obj X)).obj :=
-  (derivedComplexCompletionFunctor Q ((q) a)).map
-      (((boundedAboveDerivedBaseChange (q)).map
-        ((boundedAboveDerivedCompletionUnit R a).app X)).hom) ≫
-    (derivedComplexCompletionUnitIso Q ((q) a) _
-      (derivedBaseChange_principal_isComplete R a b hb _
-        (derivedComplexCompletionFunctor_isComplete R a X.obj))).inv
+  completionCommComparison a ((q) a) (boundedAboveDerivedBaseChange (q) ⋙ DerivedCategory.Minus.ι)
+    (fun X ↦ derivedBaseChange_principal_isComplete R a b hb _
+      (derivedComplexCompletionFunctor_isComplete R a X.obj)) X
 
 /-- The Q-linear comparison preserves the original base-change completion unit. -/
 lemma completionQuotientBaseChangeComparison_unit (X : D) :
@@ -382,16 +413,16 @@ lemma completionQuotientBaseChangeComparison_unit (X : D) :
         completionQuotientBaseChangeComparison R a b hb X =
       (((boundedAboveDerivedBaseChange (q)).map
         ((boundedAboveDerivedCompletionUnit R a).app X)).hom) :=
-  (derivedComplexCompletionHomEquiv Q ((q) a) _ _
-    (derivedBaseChange_principal_isComplete R a b hb _
-      (derivedComplexCompletionFunctor_isComplete R a X.obj))).apply_symm_apply _
+  completionCommComparison_unit a ((q) a)
+    (boundedAboveDerivedBaseChange (q) ⋙ DerivedCategory.Minus.ι)
+    (fun X ↦ derivedBaseChange_principal_isComplete R a b hb _
+      (derivedComplexCompletionFunctor_isComplete R a X.obj)) X
 
 /-- The original comparison is an actual derived isomorphism over the quotient coefficient ring. -/
 lemma completionQuotientBaseChangeComparison_isIso (X : D) :
     IsIso (completionQuotientBaseChangeComparison R a b hb X) := by
-  dsimp only [completionQuotientBaseChangeComparison]
   have := completionQuotientUnit_map_isIso R a b hb X
-  infer_instance
+  exact IsIso.comp_isIso' this inferInstance
 
 /-- Completion and regular principal base change commute on the original derived objects. -/
 def completionQuotientBaseChangeIso (X : D) :
