@@ -65,6 +65,11 @@ A8（Thm 10.11、Lemma 10.5）。ノート第 7 章の D10・D12（BR30）の再
 
 ### 2.2 Ex 7.9（lci 商）
 
+**D4-02（11-03、BS-D4 の質問への回答）**：A3 の普遍の場合（A_0{f} の envelope と分類射）は A1 の具体的な普遍向き付き prism に結び付けず、**任意の有界向き付き prism A₀ と
+d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示引数**にして述べる。A1 の `universalOrientedPrismRing` は現状 p を引数に取らず `CommRing` インスタンスもない
+（停止点 3 で直す）ので、A3 はそれに依存しない。停止点 3（A1）で A1 の具体的な A₀（Ex 2.21・3.4 の普遍向き付き prism、`universalOrientedPrism_hom`）に特殊化する。
+数学的内容は同じ（原典 Ex 7.9 の「普遍の場合に帰着」は分類射の存在だけを使う）。
+
 設定：(A,(d))、f_1,…,f_r ∈ A で f̄ が A/d 上 Koszul 正則、R := A/(d, f)、R の p ねじれ有界。主張：Δ_{R/A} は離散で d ねじれなし、
 (Δ_R, dΔ_R) は (R/A)_Δ の始対象で、envelope B := A{f/d}^∧（(A, (d, f)) の prismatic envelope）に等しい。
 - 普遍の場合：A_univ := A_0{f_1,…,f_r}^∧（A_0 は普遍向き付き prism、A1-4 の `universalOrientedPrism`。f_i は自由 δ 変数）。
