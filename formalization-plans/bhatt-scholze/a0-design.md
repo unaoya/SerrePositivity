@@ -200,6 +200,13 @@ A0-3b・A0-3d の HA の部品の読解の結果で、順序を見直す。
 | D23 | Construction 4.18 の Čech 余脈体は完備テンソルの反復 | 変数の添字で直接書く（B_0^n = A[X_{S × [n]}]^∧、余単体的構造は添字集合の写像から）。決定 11-02 | 同じ対象。`PrismOver` に一般の余積がないので Mathlib の `cechConerve` は使えない |
 | D24 | Lemma 4.21（étale 局所化）で smooth に延ばす | 多項式代数に限り、A2 の左 Kan 延長で済ませる | 定理の範囲を絞る |
 
+### 2.8′ Čech 余脈体の余積の脚（11-03、BS-D1 の質問への回答）
+
+`cechAlexander_isCoproduct` は「或る入射族が余積をなす」ではなく、**標準の脚**で述べる：[0] → [n] の n+1 個の頂点の包含（`SimplexCategory.const` の形）を
+`cechAlexander.map` で送った射 C^0 → C^n を脚とする余錐が余積（`IsColimit (Cofan.mk (C^n) (fun i => cechAlexander.map (vertex i)))`）。これが S3 の `CechNerveData` の
+`proj_map`（単体的構造の射は射影の添字を写す）にそのまま使える形で、§5.1 の計算（各項は自由 δ 環の完備化で、変数の添字の包含が余積の脚）と一致する。
+∃ 版が要るならこの標準形から導く。
+
 ## 5. 紙で確かめる項目
 
 1〜4 は 2026-11-02 に検証済み（§5.1）。5・6 は A0-3d の前に行う。
