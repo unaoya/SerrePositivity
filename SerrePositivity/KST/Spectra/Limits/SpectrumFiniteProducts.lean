@@ -1,7 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint
 public import Mathlib.CategoryTheory.Limits.Constructions.FiniteProductsOfBinaryProducts
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint
+public import SerrePositivity.KST.Spectra.Limits.SpectrumPoint
 
 /-!
 概要：L9 の Ω スペクトルの全ての有限積と各段での計算。

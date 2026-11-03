@@ -1,6 +1,44 @@
 module
 
-public import SerrePositivity.KST.Spectra.AcyclicKanLifting
+public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
+public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
+public import Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.FunLike.Equiv
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.CommSq
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.LiftingProperties.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Subfunctor.Basic
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Set.Defs
+public import Mathlib.Logic.Equiv.Defs
+public import Mathlib.Logic.Function.Basic
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpoints
+public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 
 /-!
 概要：Kan fibration に沿う区間の持ち上げと π₀ 全射からの頂点の持ち上げ。

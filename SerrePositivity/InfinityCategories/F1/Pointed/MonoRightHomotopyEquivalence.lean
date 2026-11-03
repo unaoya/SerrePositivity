@@ -1,7 +1,51 @@
 module
 
-public import SerrePositivity.KST.Spectra.PointedHomotopy
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.FunLike.Equiv
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.CommSq
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.LiftingProperties.Basic
+public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Subfunctor.Basic
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Set.Defs
+public import Mathlib.Logic.Equiv.Defs
+public import Mathlib.Logic.Function.Defs
+public import Mathlib.Order.BoundedOrder.Basic
+public import Mathlib.Order.CompleteLattice.Defs
+public import Mathlib.Order.Defs.Lattice
+public import Mathlib.Order.Defs.PartialOrder
+public import Mathlib.Order.Notation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy
+public import SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 
 /-!
 概要：単射への右持ち上げ性を持つ射の全基点 π_* 同型性。

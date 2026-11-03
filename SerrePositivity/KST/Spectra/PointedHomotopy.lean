@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy
 public import SerrePositivity.KST.Spectra.PathContractibility
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor
 
@@ -23,27 +24,6 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-
-/-- 概要：点つき射間の基点固定ホモトピーを基点部分複体に相対なホモトピーへ移す。
-方針：基点の定数射の表示と全時刻での基点固定式を使う。
-規約：源・標的の Kan 性はこの変換に不要。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。π_* の不変性。 -/
-def pointedRelativeHomotopy {X Y : PointedSimplicialSet.{u}} (f g : X ⟶ Y)
-    (H : SSet.Homotopy f.right g.right)
-    (hbase : X.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
-      toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ Y.hom) :
-    (RelativeMorphism.ofSimplex₀ f.right X.basepoint Y.basepoint
-      (OmegaSpectrum.pointedMap_basepoint f)).Homotopy
-      (RelativeMorphism.ofSimplex₀ g.right X.basepoint Y.basepoint
-        (OmegaSpectrum.pointedMap_basepoint g)) where
-  h := H.h
-  h₀ := H.h₀
-  h₁ := H.h₁
-  rel := by
-    rw [Subcomplex.ofSimplex_ι, ← pointedConstant_eq_const X,
-      comp_whiskerRight_assoc, hbase, comp_toUnit_assoc]
-    rw [SSet.const_comp, SSet.comp_const]
-    exact pointedConstant_eq_const Y _
 
 /-- 概要：点つき Kan 複体の射による全自然数次数の誘導写像。
 方針：点つき射の基点保存を通常の誘導写像へ渡す。

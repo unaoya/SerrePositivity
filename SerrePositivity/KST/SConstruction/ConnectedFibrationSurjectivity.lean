@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.FibrationIntervalLifting
+public import SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting
 public import SerrePositivity.KST.Comparison.FibrantTargetLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
 

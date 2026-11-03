@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.TotalizationFibration
 public import SerrePositivity.KST.Spectra.BoundaryTensorMonomorphism
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：通常の Tot による相対 matching 全ての単射に対する RLP の保存。

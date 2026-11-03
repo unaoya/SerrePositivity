@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
 public import SerrePositivity.KST.Spectra.CofiberMappingPullback
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-!
 概要：anodyne 射の cofiber と、その Kan 値の点つき写像空間の相対充填。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumTowerSequence
+public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashJointProjections
 
 /-!

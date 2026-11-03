@@ -1,8 +1,62 @@
 module
 
-public import SerrePositivity.KST.Spectra.PointedEnrichment
-public import Mathlib.CategoryTheory.Limits.Types.Coproducts
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.FunLike.Equiv
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Discrete.Basic
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Functor.Const
+public import Mathlib.CategoryTheory.Limits.Cones
+public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
+public import Mathlib.CategoryTheory.Limits.IsLimit
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.BinaryFan
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.BinaryProducts
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.WalkingPair
+public import Mathlib.CategoryTheory.Limits.Shapes.FiniteLimits
+public import Mathlib.CategoryTheory.Limits.Types.Colimits
+public import Mathlib.CategoryTheory.Limits.Types.Coproducts
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Products.Basic
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Set.Basic
+public import Mathlib.Data.Set.BooleanAlgebra
+public import Mathlib.Data.Set.Defs
+public import Mathlib.Data.Set.Operations
+public import Mathlib.Logic.Equiv.Defs
+public import Mathlib.Order.BooleanAlgebra.Basic
+public import Mathlib.Order.BooleanAlgebra.Set
+public import Mathlib.Order.CompleteBooleanAlgebra
+public import Mathlib.Order.ConditionallyCompleteLattice.Basic
+public import Mathlib.Order.ConditionallyCompleteLattice.Defs
+public import Mathlib.Order.Defs.Lattice
+public import Mathlib.Order.Defs.PartialOrder
+public import Mathlib.Order.Disjoint
+public import Mathlib.Order.Fin.Basic
+public import Mathlib.Order.Heyting.Basic
+public import Mathlib.Order.Hom.Basic
+public import Mathlib.Tactic.CategoryTheory.Reassoc
+public import SerrePositivity.Spectra.Pointed.SmashMonoidal
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
+public import SerrePositivity.Spectra.PointedSimplicialSet.SmashUnderlying
 
 /-!
 概要：始点を基点とする単体的区間と終点の包含。

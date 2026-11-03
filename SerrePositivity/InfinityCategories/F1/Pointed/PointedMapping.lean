@@ -1,9 +1,46 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
-public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
-public import SerrePositivity.Spectra.Pointed.InternalHom
+public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
+public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
+public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.CommSq
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.LiftingProperties.Basic
+public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
+public import Mathlib.CategoryTheory.Limits.HasLimits
+public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
+public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Tactic.CategoryTheory.Reassoc
+public import SerrePositivity.Spectra.Pointed.Basic
+public import SerrePositivity.Spectra.Pointed.InternalHom
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 
 /-!
 概要：点つき単体集合の写像空間の Kan 性。

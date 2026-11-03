@@ -1,7 +1,48 @@
 module
 
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
-public import SerrePositivity.KST.Spectra.PullbackKanSequence
+public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.CommSq
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.Discrete.Basic
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.LiftingProperties.Basic
+public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
+public import Mathlib.CategoryTheory.Limits.HasLimits
+public import Mathlib.CategoryTheory.Limits.Over
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.BinaryProducts
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.WalkingPair
+public import Mathlib.CategoryTheory.Limits.Shapes.FiniteProducts
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Cospan
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
+public import Mathlib.CategoryTheory.Limits.Shapes.Terminal
+public import Mathlib.CategoryTheory.Limits.Shapes.WidePullbacks
+public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Fintype.EquivFin
+public import Mathlib.Data.Fintype.OfMap
+public import Mathlib.Tactic.CategoryTheory.Reassoc
+public import SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 
 /-!
 概要：点つき射の mapping path による Kan fibration への因子分解。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackMonomorphisms
+public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackMonomorphisms
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 public import SerrePositivity.KST.Spectra.PostMappingFibration
 

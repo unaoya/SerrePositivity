@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumMappingDiagram
+public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 
 /-!
 概要：段ごとの極限を持つ Ω スペクトルの錐に、全 Hom パラメータの普遍的な各段の族を作る。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
 public import SerrePositivity.KST.Spectra.PointedRlpSection
-public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
 
 /-!
 概要：指定した源の一つの普遍区間を、全標的の全写像族へ同じ anodyne 制限から移す。

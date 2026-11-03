@@ -1,6 +1,35 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProduct
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.FunLike.Equiv
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
+public import Mathlib.CategoryTheory.Limits.Shapes.ZeroMorphisms
+public import Mathlib.CategoryTheory.Limits.Shapes.ZeroObjects
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import Mathlib.Logic.Equiv.Defs
+public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop
+public import SerrePositivity.Spectra.Pointed.Basic
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 
 /-!
 概要：各段が一点の Ω スペクトル。
@@ -54,26 +83,6 @@ lemma loopPoint_isZero :
         (PointedObject.point_isZero.eq_of_tgt _ _))
   exact PointedObject.point_isZero.of_iso
     (h.uniqueUpToIso PointedObject.point_isZero.isTerminal)
-
-/-- 概要：各段が一点の実際の Ω スペクトル。
-方針：懸垂構造射とその随伴が零対象間の同型であることを使う。
-規約：全基点・零次数を含む Ω 条件と単射な構造射を持つ。
-使われ方：BF 1978 §2、Sp の空積の頂点。 -/
-def spectrumPoint : OmegaSpectrum.{u} where
-  level _ := ⟨PointedObject.point, pointedPoint_kanComplex⟩
-  sigma _ := PointedObject.toPoint _
-  sigma_mono _ := by
-    have := suspensionPoint_isZero.isIso PointedObject.point_isZero (PointedObject.toPoint _)
-    change Mono (PointedSimplicialSet.forget.map (PointedObject.toPoint
-      (suspension (PointedObject.point : PointedSimplicialSet.{u}))))
-    infer_instance
-  omega_condition _ := by
-    let f := suspensionLoopEquiv (PointedObject.point : PointedSimplicialSet.{u}) _
-      (PointedObject.toPoint _)
-    have := PointedObject.point_isZero.isIso loopPoint_isZero f
-    exact KanPiIsomorphism.of_iso (X := (PointedObject.point : PointedSimplicialSet.{u}).right)
-      (Y := (loopSpace (PointedObject.point : PointedSimplicialSet.{u})).right)
-      (PointedSimplicialSet.forget.mapIso (asIso f))
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

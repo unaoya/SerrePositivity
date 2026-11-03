@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
 
 public import SerrePositivity.KST.Spectra.PointedMappingParameters
 public import SerrePositivity.KST.Spectra.PointedIntervalAnodyne
@@ -25,23 +26,6 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-
-/-- 概要：anodyne な射による Kan 標的への指数の制限は全ての単射に RLP を持つ。
-方針：単射との pushout-product の anodyne 性とパラメータ付き随伴を使う。
-規約：全ての単射についての右持ち上げ性を述べる。
-使われ方：Kerodon §3.1.3、Goerss–Jardine I §7。path space の全境界充填。 -/
-theorem anodyne_pre_rlp_monomorphisms {A B : SSet.{u}} (i : A ⟶ B)
-    (hi : anodyneExtensions i) (Y : SSet.{u}) [KanComplex Y] :
-    (MorphismProperty.monomorphisms SSet.{u}).rlp ((MonoidalClosed.pre i).app Y) := by
-  intro S T j hj
-  let : Mono j := hj
-  let sq₁₂ := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) i j
-  let sq₁₃ := Functor.PullbackObjObj.ofIsTerminal MonoidalClosed.internalHom
-    i (terminal.from Y) terminalIsTerminal
-  change HasLiftingProperty j sq₁₃.π
-  rw [← internalHomAdjunction₂.hasLiftingProperty_iff sq₁₂ sq₁₃]
-  exact (anodyneExtensions_pushoutObjObjι' sq₁₂ hi) (terminal.from Y)
-    ((HomotopicalAlgebra.fibration_iff _).mp inferInstance)
 
 /-- 概要：anodyne な基点包含を持つ源からの点つき Hom は全ての単射に RLP を持つ。
 方針：指数の制限の RLP を基点条件の等化子へ移す。

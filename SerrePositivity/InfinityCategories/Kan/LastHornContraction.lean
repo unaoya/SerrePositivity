@@ -1,6 +1,46 @@
 module
 
-public import SerrePositivity.KST.Spectra.SimplexLastContraction
+public import Mathlib.Algebra.Group.Nat.Defs
+public import Mathlib.Algebra.GroupWithZero.Defs
+public import Mathlib.Algebra.GroupWithZero.Nat
+public import Mathlib.Algebra.NeZero
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
+public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
+public import Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.FunLike.Equiv
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Limits.Shapes.IsTerminal
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Subfunctor.Basic
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Set.CoeSort
+public import Mathlib.Data.Set.Defs
+public import Mathlib.Data.Set.Operations
+public import Mathlib.Logic.Equiv.Defs
+public import Mathlib.Order.BoundedOrder.Basic
+public import Mathlib.Order.CompleteLattice.Defs
+public import Mathlib.Order.Defs.Lattice
+public import Mathlib.Order.Defs.PartialOrder
+public import Mathlib.Order.Notation
+public import Mathlib.Tactic.CategoryTheory.Reassoc
+public import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
 
 /-!
 概要：最後のホーンの最後の頂点への収縮。

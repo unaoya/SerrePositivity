@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackOmega
+public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackOmega
 
 /-!
 概要：段ごとの一脚 fibration の引き戻しのスペクトル錐と実際の豊穣 Hom の普遍性。

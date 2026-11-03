@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashMonomorphisms
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProduct
+public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 public import SerrePositivity.KST.Spectra.PullbackKanSequence
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.BasedPathSpectrumZero
 public import SerrePositivity.KST.Spectra.StrictCospanHorn
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 
 /-!
 概要：BF path の終点 fibration と一点から作る、具体的な loop の極限錐。

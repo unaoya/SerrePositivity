@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting
 
 /-! # anodyne 局所化の比較から L9 の全基点 π_* への接続

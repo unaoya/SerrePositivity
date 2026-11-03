@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberSpectrum
 public import SerrePositivity.KST.LocalizingInvariants.PointedFiberLimit
 public import SerrePositivity.KST.Spectra.SpectrumZeroObject
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 
 /-!
 概要：実 fiber の各段と包含を保持する Sp の極限錐。

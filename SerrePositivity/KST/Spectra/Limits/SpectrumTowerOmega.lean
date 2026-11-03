@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumTowerSequence
+public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
 
 /-!
 概要：段ごとに fibration の Ω 条件を持つ Kan 列の塔の極限も Ω 条件を持つ。

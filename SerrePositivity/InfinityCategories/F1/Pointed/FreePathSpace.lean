@@ -1,8 +1,52 @@
 module
 
-public import SerrePositivity.KST.Spectra.FreeInterval
-public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
-public import SerrePositivity.KST.Spectra.PointedMappingNaturality
+public import Mathlib.AlgebraicTopology.ModelCategory.CategoryWithCofibrations
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Comma.Basic
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.Discrete.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Iso
+public import Mathlib.CategoryTheory.LiftingProperties.Basic
+public import Mathlib.CategoryTheory.Limits.FunctorCategory.Basic
+public import Mathlib.CategoryTheory.Limits.HasLimits
+public import Mathlib.CategoryTheory.Limits.Shapes.Equalizers
+public import Mathlib.CategoryTheory.Limits.Shapes.FiniteLimits
+public import Mathlib.CategoryTheory.Limits.Types.Colimits
+public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Category
+public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
+public import Mathlib.CategoryTheory.Monoidal.FunctorCategory
+public import Mathlib.CategoryTheory.Monoidal.Types.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Composition
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.PUnit
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Tactic.CategoryTheory.Reassoc
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality
+public import SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+public import SerrePositivity.Spectra.Pointed.Basic
+public import SerrePositivity.Spectra.Pointed.InternalHom
+public import SerrePositivity.Spectra.Pointed.SmashMonoidal
+public import SerrePositivity.Spectra.PointedSimplicialSet.Basic
 
 /-!
 概要：両端を固定しない点つき path space と端点評価。

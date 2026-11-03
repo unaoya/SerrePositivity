@@ -1,6 +1,5 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumBinaryProductSequence
 
 /-!
 概要：smash の単体を非基点の組または基点として表示するための集合の計算。

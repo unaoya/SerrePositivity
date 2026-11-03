@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumTowerOmega
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumTowerMonomorphisms
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega
+public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerMonomorphisms
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 
 /-!
 概要：L9 の段ごとに fibration の Ω スペクトルの塔の実際の ∞ 極限錐。

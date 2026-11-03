@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomLimitFamilies
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
 
 /-!
 概要：L9 の Ω スペクトルの段ごとの二項積。

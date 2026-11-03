@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop
 
-public import SerrePositivity.KST.Spectra.PointedMapping
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
 public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 
 /-!
@@ -23,34 +24,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-/-- 概要：点つき単体集合の reduced suspension。
-方針：単体的円 Δ[1]/∂Δ[1] との smash を取る。
-規約：この単体集合自体の Kan 性は要求しない。
-使われ方：BF 1978 §2、HA §1.4.2。スペクトルの構造写像の定義域。 -/
-abbrev suspension (X : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
-  PointedSimplicialSet.circle ⊗ X
-
-/-- 概要：点つき単体集合の loop 対象。
-方針：単体的円からの点つき内部 Hom を取る。
-規約：基点は定数ループ。
-使われ方：HA §1.4.2、BF 1978 §2。Ω 条件の標的。 -/
-abbrev loopSpace (X : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
-  PointedObject.basedHom PointedSimplicialSet.circle X
-
 /-- 概要：Kan な点つき単体集合の loop 対象は Kan。
 方針：点つき内部 Hom の相対充填を円に適用する。
 規約：円自身の Kan 性は不要。
 使われ方：HA §1.4.2、BF 1978 §2。Ω 条件のホモトピー群。 -/
 instance loopSpace_kanComplex (X : PointedSimplicialSet.{u}) [KanComplex X.right] :
     KanComplex (loopSpace X).right := PointedMapping.basedHom_kanComplex _ _
-
-/-- 概要：suspension と loop の間の随伴の Hom 同値。
-方針：smash と点つき内部 Hom の構成済み随伴を使う。
-規約：通常の点つき射の同値。
-使われ方：HA §1.4.2、BF 1978 §2。構造写像の随伴。 -/
-def suspensionLoopEquiv (X Y : PointedSimplicialSet.{u}) :
-    (suspension X ⟶ Y) ≃ (X ⟶ loopSpace Y) :=
-  (PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle).homEquiv X Y
 
 /-- 概要：suspension が点つき写像空間に誘導する単体的な射。
 方針：smash の結合子と内部 Hom の評価を curry する。

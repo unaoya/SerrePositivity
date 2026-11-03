@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedPostComposition
 public import SerrePositivity.KST.Spectra.MappingPathSequence
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-!
 概要：一般の Kan 列の段ごとの全基点 π 同型は、BF 源の元の全 Hom への後合成でも π 同型。

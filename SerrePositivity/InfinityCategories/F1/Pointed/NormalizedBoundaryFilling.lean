@@ -1,7 +1,28 @@
 module
 
-public import SerrePositivity.KST.Spectra.BoundaryNormalization
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
+public import Mathlib.AlgebraicTopology.SimplicialSet.Horn
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct
+public import Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism
+public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
+public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Subfunctor.Basic
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Fin.SuccPred
+public import Mathlib.Data.Set.Defs
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIndexing
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
+public import SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
 
 /-!
 概要：ホーン上で定数の境界の充填を最後の面のホモトピー類へ還元する。

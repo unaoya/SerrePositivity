@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PullbackPiComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackAdjoints
+public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
 
 /-!
 概要：段ごとの一脚 Kan fibration の引き戻し列の Ω 条件。

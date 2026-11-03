@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomHornFamilies
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPullbackCones
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies
+public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackCones
 
 /-!
 概要：段ごとの fibration は実際のスペクトル Hom の fibration を与え、Sp の引き戻しを検証する。

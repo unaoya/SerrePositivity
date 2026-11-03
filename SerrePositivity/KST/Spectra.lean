@@ -50,7 +50,7 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationExactness
 public import SerrePositivity.InfinityCategories.Kan.HomotopyZeroRelations
 public import SerrePositivity.InfinityCategories.Kan.FibrationNaturality
 public import SerrePositivity.InfinityCategories.Kan.FibrationMultiplication
-public import SerrePositivity.KST.Spectra.PointedMapping
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
 public import SerrePositivity.InfinityCategories.Kan.FibrationTower
 public import SerrePositivity.KST.Spectra.TruncatedMapping
 public import SerrePositivity.KST.Spectra.OmegaSpectrum
@@ -65,7 +65,7 @@ public import SerrePositivity.KST.Spectra.OmegaSpectrumTransitions
 public import SerrePositivity.KST.Spectra.OmegaSpectrumZeroGroups
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.KST.Spectra.PointedKanReplacement
 public import SerrePositivity.KST.Spectra.PointedFactorization
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
@@ -80,9 +80,9 @@ public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
 public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum
 public import SerrePositivity.KST.Spectra.SpectrumFibrationSequence
 public import SerrePositivity.KST.Spectra.StageTransitionCoherence
-public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
 public import SerrePositivity.KST.Spectra.CofibrantSequenceLifting
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyFiber
 public import SerrePositivity.KST.Spectra.Rationalization
