@@ -1,8 +1,9 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
 
 /-!
 # 各行が弱同値である二重単体写像の対角も弱同値となる

@@ -1,10 +1,11 @@
 module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
-
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Saturation
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+
 
 /-!
 # 単体集合モデルを仮定しない左随伴の標準 frame

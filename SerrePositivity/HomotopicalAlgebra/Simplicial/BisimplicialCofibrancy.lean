@@ -1,6 +1,13 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingMonomorphisms
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Products.Basic
+public import Mathlib.CategoryTheory.Types.Basic
 
 /-!
 # 標準的な単射cofibration条件のもとで二重単体的集合はReedy cofibrantである
@@ -45,38 +52,5 @@ namespace SerrePositivity.BisimplicialModel
 
 abbrev column (B : SimplexCategoryᵒᵖ ⥤ SSet.{v}) (k : SimplexCategoryᵒᵖ) : SSet.{v} :=
   B ⋙ (evaluation SimplexCategoryᵒᵖ (Type v)).obj k
-
-/-- The actual latching comparison commutes with evaluation via colimit preservation. -/
-lemma evaluation_comparison (B : SimplexCategoryᵒᵖ ⥤ SSet.{v})
-    (j k : SimplexCategoryᵒᵖ) :
-    (preservesColimitIso ((evaluation SimplexCategoryᵒᵖ (Type v)).obj k)
-      (latchingSource simplexOp j ⋙ B)).inv ≫
-      ((latchingComparison simplexOp j).app B).app k =
-        (latchingComparison simplexOp j).app (column B k) := by
-  let E := (evaluation SimplexCategoryᵒᵖ (Type v)).obj k
-  let D := latchingSource simplexOp j ⋙ B
-  apply colimit.hom_ext
-  intro a
-  change colimit.ι (D ⋙ E) a ≫
-      ((preservesColimitIso E D).inv ≫ E.map ((latchingComparison simplexOp j).app B)) = _
-  rw [← Category.assoc, ι_preservesColimitIso_inv, ← E.map_comp]
-  exact (congrArg E.map (colimit.ι_desc (latchingCocone simplexOp B j) a)).trans
-    (colimit.ι_desc (latchingCocone simplexOp (column B k) j) a).symm
-
-lemma latchingComparison_mono (B : SimplexCategoryᵒᵖ ⥤ SSet.{v})
-    (j : SimplexCategoryᵒᵖ) : Mono ((latchingComparison simplexOp j).app B) := by
-  have : ∀ k, Mono (((latchingComparison simplexOp j).app B).app k) := by
-    intro k
-    let e := preservesColimitIso ((evaluation SimplexCategoryᵒᵖ (Type v)).obj k)
-      (latchingSource simplexOp j ⋙ B)
-    have : Mono ((latchingComparison simplexOp j).app (column B k)) :=
-      SimplicialLatching.comparison_mono _ _
-    have he : ((latchingComparison simplexOp j).app B).app k =
-        e.hom ≫ (latchingComparison simplexOp j).app (column B k) := by
-      rw [← evaluation_comparison B j k]
-      exact (Iso.hom_inv_id_assoc e _).symm
-    rw [he]
-    infer_instance
-  exact NatTrans.mono_of_mono_app _
 
 end SerrePositivity.BisimplicialModel

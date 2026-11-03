@@ -1,11 +1,42 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedTransfinite
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
-public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLimits
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Discrete.Basic
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Iso
+public import Mathlib.CategoryTheory.Limits.Shapes.BinaryProducts.WalkingPair
+public import Mathlib.CategoryTheory.Limits.Shapes.FiniteLimits
+public import Mathlib.CategoryTheory.Limits.Shapes.Products
+public import Mathlib.CategoryTheory.Limits.Types.Colimits
+public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.CategoryTheory.Localization.Construction
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Composition
+public import Mathlib.CategoryTheory.MorphismProperty.LiftingProperty
+public import Mathlib.CategoryTheory.MorphismProperty.Limits
+public import Mathlib.CategoryTheory.MorphismProperty.Retract
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Presentable.LocallyPresentable
 public import Mathlib.CategoryTheory.Presentable.Type
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Fintype.EquivFin
+public import Mathlib.Order.CompleteBooleanAlgebra
+public import Mathlib.Order.ConditionallyCompleteLattice.Basic
+public import Mathlib.Order.ConditionallyCompleteLattice.Defs
+public import Mathlib.Order.Defs.Lattice
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestLiftingClass
+public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLimits
 
 /-!
 # Reedy局所化単射をReedy単射かつ各成分の局所化同値として特徴付ける
@@ -75,27 +106,5 @@ abbrev equivalences : MorphismProperty SSet.{v} :=
 
 lemma localizedMonos_inf : localizedMonos.{v} =
     MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences := rfl
-
-/-- Reedy局所化単射をReedy単射かつ各成分の局所化同値として特徴付ける。
-
-宇宙・境界・比較射は各宣言に指定されたものを用いる。
-構成に現れる射と比較写像を明示し、各成分の等式を照合する。
-既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
--/
-lemma reedy_iff {A B : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : A ⟶ B) :
-    reedyLeft simplexOp localizedMonos f ↔
-      reedyLeft simplexOp (MorphismProperty.monomorphisms _) f ∧
-        ∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (f.app n)) := by
-  have : (MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences).IsMultiplicative :=
-    multiplicative
-  have : (MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences).IsStableUnderRetracts := retracts
-  have : (MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences).IsStableUnderCoproducts.{v} :=
-    coproducts
-  have : (MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences).IsStableUnderCobaseChange :=
-    cobaseChange
-  have : MorphismProperty.IsStableUnderTransfiniteComposition.{v}
-      (MorphismProperty.monomorphisms SSet.{v} ⊓ equivalences) := KanLocalizedTransfinite.stable
-  rw [localizedMonos_inf]
-  exact reedyLeft_inf_iff.{v} simplexOp f (MorphismProperty.monomorphisms _) equivalences
 
 end SerrePositivity.SimplicialModel.LocalizedMonoReedy

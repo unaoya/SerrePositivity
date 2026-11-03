@@ -1,8 +1,11 @@
 module
 
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalKanTests
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
 
 /-!
 # 各行で局所化可逆な二重単体写像の対角は局所化可逆となる

@@ -4,6 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedColimits
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedMonomorphismCofibration
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingPreservation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
 
 /-!
 # 元の正規化標準単体の Reedy cofibrancy

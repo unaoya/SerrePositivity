@@ -1,8 +1,19 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Degenerate
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
 public import Mathlib.CategoryTheory.Limits.Types.Colimits
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Set.CoeSort
+public import Mathlib.Data.Set.Defs
 
 /-!
 # 二つの退化表示に共通の細分を構成する
@@ -71,44 +82,5 @@ lemma common_nondegenerate (X : SSet.{v}) {n m l : ℕ}
   subst z'
   exact ⟨k, a, b, ha, hb, z, hx, hy,
     X.unique_nonDegenerate_map _ (f ≫ a) z hx' (g ≫ b) z hy'⟩
-
-/-- A proper epimorphism determines an actual latching-index object. -/
-def ofEpi {n m : SimplexCategory} (f : n ⟶ m)
-    [Epi f] (hlt : m.len < n.len) : LatchingIndex simplexOp (Opposite.op n) :=
-  ⟨Over.mk f.op, inferInstanceAs (Epi f), by
-    have hid : MorphismProperty.identities SimplexCategoryᵒᵖ ≤
-        fun i j _ => i.unop.len = j.unop.len := by
-      rintro _ _ _ ⟨i⟩
-      rfl
-    intro h
-    exact (Nat.ne_of_lt hlt) (hid _ h)⟩
-
-/- 旧宣言の技術注記：
-Equal images in a simplicial latching cocone have an actual common refinement.
--/
-/-- 二つの退化表示に共通の細分を構成する。
-
-宇宙・境界・比較射は各宣言に指定されたものを用いる。
-構成に現れる射と比較写像を明示し、各成分の等式を照合する。
-既存の普遍性と自然性、必要な帰納を用いて全体の主張へ接続する。
--/
-lemma common_refinement (X : SSet.{v}) {j : SimplexCategoryᵒᵖ}
-    (a b : LatchingIndex simplexOp j) (x : X.obj a.obj.left) (y : X.obj b.obj.left)
-    (h : X.map a.obj.hom x = X.map b.obj.hom y) :
-    ∃ (r : LatchingIndex simplexOp j) (u : r ⟶ a) (w : r ⟶ b) (z : X.obj r.obj.left),
-      X.map u.hom.left z = x ∧ X.map w.hom.left z = y := by
-  have : Epi a.obj.hom.unop := a.property.1
-  have : Epi b.obj.hom.unop := b.property.1
-  obtain ⟨k, u, w, hu, hw, z, hx, hy, he⟩ :=
-    common_nondegenerate X a.obj.hom.unop b.obj.hom.unop x y h
-  have : Epi u := hu
-  have : Epi w := hw
-  let r := ofEpi (a.obj.hom.unop ≫ u)
-    (lt_of_le_of_lt (SimplexCategory.len_le_of_epi u) (latching_degree_lt simplexOp a))
-  let ra : r ⟶ a := ObjectProperty.homMk (Over.homMk u.op (by rfl))
-  let rb : r ⟶ b := ObjectProperty.homMk (Over.homMk w.op (by
-    change (b.obj.hom.unop ≫ w).op = (a.obj.hom.unop ≫ u).op
-    exact congrArg Quiver.Hom.op he.symm))
-  exact ⟨r, ra, rb, z.val, hx.symm, hy.symm⟩
 
 end SerrePositivity.SimplicialLatching
