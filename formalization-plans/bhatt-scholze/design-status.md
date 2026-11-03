@@ -306,6 +306,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | D3-03（BS-D3、Codex）離散代数の埋め込みと `cAlgRestrictScalars` の標準比較（A5 の `discreteRestrictionIso`）は基盤側 | 要確認 | 反映済み（11-03）：一般形 `cAlgRestrictScalars_algebraEmbedding` を ScalarRestriction.lean に（基盤待ち）。A5 の版はその特別な場合 |
 | D3-04（BS-D3、Codex）`IsDescendableOver` が引数のない `True` で、`IsDescendable A B` は離散底。Lemma 8.6 の底 Δ_T は離散でない | 要修正 | 入口を確定（11-03）：`IsDescendableOver A R B (f : SSet.Edge R B)`（R・B は CAlg_A の頂点、Mod_R(D(A)) の thick ⊗-ideal、基盤待ち M15）、`HasDescentIndexLEOver`、`isDescendableOver_iff_exists_index`、一般形の (a)〜(h)（押し出し・合成・テンソル・Tot・RHom 判定・Frobenius 余極限・完備版、基盤待ち）。Shared/Descendable.lean。A5 はこの API だけを使う |
 | D3-05（BS-D3、Codex）StrongDescent の `prismScalarExtension`（A → C に沿う CAlg の係数拡大 ⊗^L_A C）は基盤側 | 要確認 | 反映済み（11-03）：`cAlgBaseChange f : CAlg_R S ⟶ CAlg_R T`、`cAlgRestrictScalars` との随伴、忘却との比較 `cAlgBaseChange_forget`（D 側は既存 `derivedInfinityBaseChange`）を ScalarRestriction.lean に（基盤待ち） |
+| D3-06（BS-D3、Codex）`extendArcSheaf` の向き：`sheafInducedTopologyEquivOfIsCoverDense` は `Sheaf (inducedTopology) ≌ Sheaf K` なので延長は `.functor`、制限が `.inverse` | 軽微 | 確認（11-03）：そのとおり。指示書の「逆」は「制限の逆」の意味。a6-design G-A6-8 |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 
