@@ -33,13 +33,13 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A1-4 Prop 6.2・Thm 6.3 | a1-design §2.4・2.5・§3 | A1/HodgeTateComparison | 未（a1 §8 の 5〜7） | A（Flat の形）・D（G-A1-4・5・13） |
 | A1-2 結晶側の対象 | a1-design §2.3 | 未 | 未（a1 §8 の 1・2） | E |
 | A1-3 Lemma 5.4・Thm 5.2 β・Cartier・Cor 5.5 | a1-design §3 の 3〜6 | 未 | 未（a1 §8 の 3・4） | E |
-| A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
-| A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology | — | C（G-A2-3・4）、G-A1-11 |
+| A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra（BS-D4 停止点 1 済、11-03：`True` 0 件） | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
+| A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology（BS-D4 停止点 1 済：`True` 0 件。`prismaticCohomologyCAlg`＝A5 の第 0 脚、`derivedPrismaticFrobenius`＝A4/A7 の Frobenius の行き先、要確認は G-A2-3・9 の CAlg 反射・G12・Shared の Tot・A0/S2 の関手性） | — | C（G-A2-3・4）、G-A1-11 |
 | G-A1-11 CAlg 値の層・RΓ、模型の E∞ 構造 | a1-design G-A1-11、a2-design §2.2 | Sheaves/CAlgValued、Shared/CosimplicialEInfinity | — | C（G12、U の保存性、Barratt–Eccles の余鎖作用の形） |
-| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | A2/HodgeTateFiltration | 未（a2 §7 の 2） | C（G-A2-2） |
+| A2-3 HT filtration・cotangentWedge | a2-design §2.3 | A2/HodgeTateFiltration（BS-D4 停止点 1 済：`True` 0 件。gr は導来 p 完備化、D4-01） | 未（a2 §7 の 2） | C（G-A2-2） |
 | G-A2-2 D(A) の t 構造・切り捨て | a2-design §3 | DerivedGeneral/Truncation | — | C（置き場所は調整役、BS が骨組み） |
 | G-A2-3 (p,d) 完備化の ∞ 関手 | a2-design §3 | DerivedGeneral/CompletionFunctor | — | C・D（HA の名前は 2b 後） |
-| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor | 未（a2 §7 の 3・4） | C・D |
+| A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor（BS-D4 停止点 1 済：`True` 0 件。(4)(5)・D32、要確認は ScalarRestriction の随伴の単位） | 未（a2 §7 の 3・4） | C・D |
 | A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
 | A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
 | A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |

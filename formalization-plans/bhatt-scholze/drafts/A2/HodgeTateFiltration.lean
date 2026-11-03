@@ -59,16 +59,20 @@ def completeDInclusion (p : ℕ) (k : Type u) [CommRing k] : CompleteD p k ⟶ d
 
 def pCompletionReflection (p : ℕ) (k : Type u) [CommRing k] :
     Σ L : derivedInfinityCategory k ⟶ CompleteD p k, QCatAdjunction L (completeDInclusion p k) := by
-  sorry -- 要確認：DerivedGeneral/CompletionFunctor へ。主元 p の反射の単位・余単位
+  sorry -- 要確認：DerivedGeneral/CompletionFunctor へ。主元 p の反射の単位・余単位。completion の p, d が明示引数になった段階で (p,0) に特殊化する。
 
 def pCompletionUnit (p : ℕ) (k : Type u) [CommRing k] :
     FunctorHom (𝟙 (derivedInfinityCategory k)) ((pCompletionReflection p k).1 ≫ completeDInclusion p k) :=
   (pCompletionReflection p k).2.unitHom
 
+theorem completeD_siftedColimits (p : ℕ) (k : Type u) [CommRing k] :
+    HasSmallSiftedColimits (CompleteD p k) := by
+  sorry -- D(k) の sifted 余極限を反射し、随伴で完備対象への余錐を判定する
+
 def completeModuleLan (p : ℕ) (k : Type u) [CommRing k]
     (F : (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ derivedInfinityCategory k) :
     AnimatedAlgebra k ⟶ CompleteD p k :=
-  siftedLan k (by sorry) -- D(k) の sifted 余極限を反射して完備圏の余極限を得る
+  siftedLan k (completeD_siftedColimits p k)
     (F ≫ (pCompletionReflection p k).1)
 
 /-- 概要：Δ̄_0(P) := Δ_0(P) ⊗^L_A A/d を **D(k) 値**（k = A/d）で（W9-I-36：Fil と gr の値の圏に合わせる。D(A) 値は忘却で）。
@@ -158,6 +162,7 @@ def polyFormsModule (k : Type u) [CommRing k] (i : ℕ) : Poly k ⥤ ModuleCat.{
   map_id := by sorry -- 自由基底上で恒等
   map_comp := by sorry -- 微分と代入の連鎖律
 
+/-- discreteEmbedding の加群から先の部分を使い、通常の形式を次数零に入れる。 -/
 def ordinaryFormsDiagram (k : Type u) [CommRing k] (i : ℕ) :
     (SSet.uliftFunctor.{u+1,u}).obj (polyNerve k) ⟶ derivedInfinityCategory k := by
   let F := polyFormsModule k i ⋙ moduleSemifreeResolutionFunctor k
@@ -220,16 +225,20 @@ def polyTruncationStep (hP : IsBoundedPrism P) (i : ℕ) :=
 /-- 多項式上の gr は LΛ_p Ω^i[−i]。Thm 6.3 の Ω̂^i から D4-01 で移す。 -/
 theorem hodgeTatePoly_gr (i : ℕ) :
     let k := A ⧸ P.ideal
-    IsGradedTerm (hodgeTatePolyTruncated P hP) (polyTruncationStep P hP) i
-      (ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1 ≫ completeDInclusion p k ≫ formShift k i) := by
-  sorry -- Postnikov cofiber は H^i[−i]。Thm 6.3 の自然な η^i と polyForms_boundedComparison
+    let Ω := ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1 ≫ completeDInclusion p k
+    Nonempty (FunctorIso (polyYoneda k ≫ cotangentWedge P i) Ω) ∧
+      IsGradedTerm (hodgeTatePolyTruncated P hP) (polyTruncationStep P hP) i (Ω ≫ formShift k i) := by
+  constructor
+  · exact ⟨(siftedLanIso k (completeD_siftedColimits p k) (ordinaryFormsDiagram k i ≫ (pCompletionReflection p k).1)).postcomp
+      (completeDInclusion p k)⟩
+  · sorry -- Postnikov cofiber は H^i[−i]。Thm 6.3 の自然な η^i と polyForms_boundedComparison
 
 /-- 完備圏内で延長した gr^i Fil Δ̄ ≃ (∧^i L)^∧[−i]。 -/
 theorem hodgeTateFiltration_gr (i : ℕ) :
     IsGradedTerm (filtrationUnderlying P hP)
       (fun j => F2.Presentable.postcomposeFunctorHom (completeDInclusion p _) (hodgeTateFiltration_step P hP j)) i
       (cotangentWedge P i ≫ formShift (A ⧸ P.ideal) i) := by
-  sorry -- hodgeTatePoly_gr の cofiber 四角形を完備圏内で延長。導来完備化は完全
+  sorry -- hodgeTatePoly_gr の回収同型と cofiber 四角形を完備圏内で延長。導来完備化は完全
 
 /-- 概要：filtration は exhaustive：**完備圏の余極限で** colim_i^{comp} Fil_i Δ̄_R ≃ Δ̄_R（D(k) の余極限で述べるなら LΛ_p を付ける、W9-I-26）。
 方針：完備圏内の Kan 延長は ℕ 添字の（完備化した）余極限と交換、Poly 上は有限段で止まる（`hodgeTatePoly_bounded`）。

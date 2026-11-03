@@ -49,3 +49,13 @@
 
 定義は原典どおり、定理は E3 に要る特別な場合だけ、差は D 番号（ユーザーが付ける）。A2：P_Σ、HT filtration は完備圏内（D31〜D35）、G-A2-10 の前倒し。A3：D36 (a)、qrsp に有界 p 冪ねじれ（D39）、
 Ex 7.9 は原典の順序（W9-I-39）、G-A3-7 は証明予定。A1：D68（de Rham 形の黒箱一件、HT は Cartier）、D69（普遍 A_0 上で Thm 6.4 を証明して底変換）、D20（Def 2.42 の平坦性は H⁰ 平坦＋底変換同型）。
+
+## 3. 経緯（2026-11-03）
+
+- **D4-01**（HT の係数）：A2 は通常の `forms` を D(k) に入れて導来 p 完備化、有界 p 冪ねじれ（有界 prism の A/d）でだけ H⁰ 版 `completedForms` と同定。Shared の `forms`・`completedForms` は
+  k・T・p を明示引数に、`completedPoly` と加群構造を追加（947be6174）。
+- 第 1 部（5ac684b9e、**停止点 1 完了・検収済み**）：A2 の四本 26 件（底変換 5 件）＋`polyCompletion`。A4・A5・A7 の「A2 待ち」仮置き 11 件の行き先を A2 に定義し対応表を報告に
+  （`discreteFrobeniusComponent`・`hodgeTateUnitFromInput`・`prismCompleteInclusion`・`prismCompletion`・`prismModIdeal`・`deltaOverQuotientIso`・`animatedCAlgRealization`・`perfdValueOverPrism`・
+  `completePiZeroReflection`、D3-01 の第 0 脚は `discreteEvaluation`）。要確認は基盤側（G-A2-3・9 の CAlg 反射、G12、Shared の Tot、DerivedGeneral の反射・切り捨て、ScalarRestriction の随伴の単位、
+  A0/S2 の関手性）。置き換え自体は中身の段階。
+- 次：停止点 2（A3）。

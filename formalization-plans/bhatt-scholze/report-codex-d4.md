@@ -46,6 +46,8 @@ D4-01 は HT の係数について設計側で解決済み。一般 k の `cotan
 | HodgeTateFiltration | ① DerivedGeneral の主元 p の完備反射。② DerivedGeneral/Truncation の自然な増大列・余単位・cofiber。③ Shared の `completedForms_eq_derivedCompletion_of_boundedTorsion` は設計側に名前があり、現時点の結論は `True`。 |
 | BaseChangeAndTensor | ScalarRestriction の `cAlgBaseChange_restrictScalars_adjunction` の単位。現在は `True` なので `perfectBaseComparison` に型を置いた。多項式上の比較証明は A1 の Cor 4.12 と Thm 6.3 に依存する。 |
 
+D4-01 の回答に合わせ、`hodgeTatePoly_gr` の結論には二つの比較を同じ Ω = LΛ_p(forms) で記した。第一項は `cotangentWedge` の多項式への制限が Ω に戻る自然同型（`siftedLanIso`）、第二項は Ω[−i] が次数商であること。現行の `Derived.completion` には p と d の明示引数がないため、A2 では主元 p の反射 `pCompletionReflection` を使い、基盤側で (p,0) へ特殊化する箇所を要確認に残した。
+
 ### 確認の範囲
 
 コメントを除いた宣言を開始基準と比較し、A2 四本には上記二種類の仮置きが 0 件であることを確認した。参照名は本体・Mathlib・基盤 drafts と照合し、四本の括弧と実際の import 先、`git diff --check` を静的に確認した。ビルド・Lean の型検査は行っていない。ここは停止点 1 で、A3 と A1 は次の停止点の対象。
