@@ -33,13 +33,14 @@ Not 4.16 の Δ_{R/A} の計算、Lemma 4.20（底変換）、A1（Thm 5.2 で �
 @[expose] public section
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-universe u
+universe u v
 open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.DerivedCompletion
+open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
+open SerrePositivity.InfinityCategories.Sheaves
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]
@@ -85,13 +86,15 @@ def cechEval (n : ℕ) : MvPolynomial (cechIndex R n) A →+* R :=
 規約：J ⊇ (d)（R は A/d 代数なので d ∈ J₀）。古典的な p 進閉包ではなく導来完備化で取る：普遍性の標的 D は有界でないので D/dD は
 p 進分離とは限らないが導来 p 完備ではあり、B/J₀B → D/dD が完備化を経由する（a0-design §5.1 の 2 の注意）。
 使われ方：envelope の J。
-要確認：一変数の導来 p 完備化 H⁰ の環（E3 の `completionRing` が包んでいる一変数 Koszul 完備化）を使う。`PDCompletionH0 _ p 0` は使わない。 -/
+一変数の標準射とその核は `envelopeClosure`。 -/
 def cechKernel (n : ℕ) : Ideal (cechFreeDelta P R n) :=
-  sorry -- RingHom.ker (B^n → 一変数 p 完備化 H⁰ (B^n ⧸ J₀B^n))
+  let ι := (pdCompletionUnit (RelativeFreeDeltaRing (R := A) (cechIndex R n)) p
+    (algebraMap A _ P.generator)).comp (relativeFreeInitialPolynomialMap (cechIndex R n) A).toRingHom
+  envelopeClosure p ((RingHom.ker (cechEval P R n)).map ι)
 
 lemma generator_mem_cechKernel (n : ℕ) :
     completedFreeDeltaBase P (cechIndex R n) P.generator ∈ cechKernel P R n := by
-  sorry
+  sorry -- 評価で d は零なので延長イデアルに入り、le_envelopeClosure を適用する
 
 /-! ## envelope の選択（Prop 3.13 の適用） -/
 
@@ -100,29 +103,63 @@ lemma generator_mem_cechKernel (n : ℕ) :
 規約：原典の「Applying Proposition 3.13 yields」に対応。濃度の条件は W9-I-12（一般の `HasEnvelopes` だけからは envelope の濃度を評価できない）で追加。
 使われ方：`cechAlexanderObj`。 -/
 def HasEnvelopes : Prop :=
-  ∀ n : ℕ, ∃ (C : Type u) (_ : CommRing C) (Q : OrientedPrism p C) (η : cechFreeDelta P R n →+* C),
+  ∀ n : ℕ, ∃ (C : Type u) (rc : CommRing C),
+    letI := rc
+    ∃ (Q : OrientedPrism p C) (η : cechFreeDelta P R n →+* C),
     IsPrismaticEnvelope P (completedFreeDeltaStructure P _) (completedFreeDeltaBase P _)
       (completedFreeDeltaBase_isDeltaHom P _) (cechKernel P R n) (generator_mem_cechKernel P R n) Q η ∧
-    IsBoundedPrism Q ∧ Cardinal.mk C ≤ cutoff P R
+    IsBoundedPrism Q ∧ Cardinal.mk C ≤ cutoff A R
+
+/-- (A/d)⟨X_T⟩。有限添字 Fin r にも同じ一変数の完備化を使う。 -/
+abbrev prismPolynomialCompletion (T : Type v) :=
+  PrincipalCompletionH0 (MvPolynomial T (A ⧸ P.ideal)) (p : MvPolynomial T (A ⧸ P.ideal))
+
+instance prismPolynomialRing (T : Type v) : CommRing (prismPolynomialCompletion P T) :=
+  principalCompletionCommRing _ _
+
+def prismPolynomialUnit (T : Type v) : MvPolynomial T (A ⧸ P.ideal) →+* prismPolynomialCompletion P T :=
+  principalCompletionUnitRingHom _ _
+
+instance prismPolynomialAlgebra (T : Type v) : Algebra (A ⧸ P.ideal) (prismPolynomialCompletion P T) :=
+  ((prismPolynomialUnit P T).comp MvPolynomial.C).toAlgebra
 
 /-- 概要：多項式代数 R = (A/d)⟨X_T⟩ では envelope が存在する（Ex 3.14 の場合）。
 方針：J₀B は、A/d → A の集合論的切断で係数を持ち上げた変数変換により「変数の部分集合 ＋ (d)」になる（a0-design §2.5、紙の検証 2）。
 `exists_prismaticEnvelope_of_variables` と `IsPrismaticEnvelope.of_closure`。
 規約：T は任意の集合（有限でなくてよい）。
 使われ方：Constr 4.18 の定理の範囲。 -/
-theorem hasEnvelopes_of_polynomial (T : Type u)
-    (hR : True) : -- 要確認：R ≃ (A/d)⟨X_T⟩（p 完備化した多項式代数）の述べ方
+theorem hasEnvelopes_of_polynomial (hP : IsBoundedPrism P) (T : Type v)
+    (hR : Nonempty (R ≃ₐ[A ⧸ P.ideal] prismPolynomialCompletion P T)) :
     HasEnvelopes P R := by
   sorry -- 変数変換 ＋ exists_prismaticEnvelope_of_variables
 
-variable (h : HasEnvelopes P R) (κ : Cardinal.{u}) (hκ : cutoff P R ≤ κ)
+variable (h : HasEnvelopes P R) (κ : Cardinal.{u}) (hκ : cutoff A R ≤ κ)
 
 /-- 概要：Čech–Alexander の n 項目の対象 C^n ∈ (R/A)_Δ（環の側）。
 方針：`HasEnvelopes` から envelope を選び、R → C^n/dC^n は B₀^n → R の持ち上げから。濃度は `HasEnvelopes` の条件（≤ cutoff ≤ κ）。
 規約：選択を含む（普遍対象なので同型を除いて一意）。
 使われ方：余単体的対象 `cechAlexander`。 -/
 def cechAlexanderObj (n : ℕ) : PrismOver P R κ :=
-  sorry -- Classical.choose (h n) から組み立てる
+  by
+    classical
+    let C := (h n).choose
+    letI : CommRing C := (h n).choose_spec.choose
+    have w := (h n).choose_spec.choose_spec
+    let Q := w.choose
+    let η := w.choose_spec.choose
+    have he := w.choose_spec.choose_spec.1
+    have hb := w.choose_spec.choose_spec.2.1
+    have hs := w.choose_spec.choose_spec.2.2
+    exact {
+      B := C
+      Q := Q
+      bounded := hb
+      toHom := { toRingHom := η.comp (completedFreeDeltaBase P _)
+                 map_delta := he.isDeltaHom.comp (completedFreeDeltaBase_isDeltaHom P _)
+                 ideal_le := he.base_hom }
+      sec := by sorry -- 多項式の評価の核が Q.ideal に入るので R から商への射が降下
+      sec_comp := by sorry -- 商への射は係数上で構造射に一致
+      small := hs.trans hκ }
 
 /-- 概要：余単体的対象 C^• : Δ ⥤ PrismOver P R κ（原典 Constr 4.18）。
 方針：θ : [m] → [n] に `cechFreeDeltaMap θ` を envelope の普遍性で C^m → C^n に延ばす。関手性は lift の一意性。
@@ -148,31 +185,75 @@ theorem cechAlexanderObj_weaklyInitial (D : PrismOver P R κ) :
 方針：envelope の普遍性と自由 δ 環の普遍性で余積の普遍性を確かめる。
 規約：Mathlib の `Cofan` と `IsColimit`。一般の余積の存在は主張しない。
 使われ方：S3 の `CechNerveData`（site では積）。 -/
-theorem cechAlexander_isCoproduct (n : ℕ) :
-    ∃ ι : Fin (n + 1) → (cechAlexanderObj P R h κ hκ 0 ⟶ cechAlexanderObj P R h κ hκ n),
-      Nonempty (IsColimit (Cofan.mk (cechAlexanderObj P R h κ hκ n) ι)) := by
-  sorry
+def cechAlexander_isCoproduct (n : ℕ) :
+    IsColimit (Cofan.mk (cechAlexanderObj P R h κ hκ n) (fun i : Fin (n+1) =>
+      (cechAlexander P R h κ hκ).map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i))) := by
+  sorry -- §5.1：C^n→D は n+1 組の持ち上げ。i 番目への制限はこの標準入射との合成
 
-/-- 概要：C^• の Čech 脈体のデータ（site の側、S3 の入力）。
-方針：`cechAlexander` を site（opposite）の単体的対象として読み、`cechAlexander_isCoproduct` の余錐を積の錐にする。
-規約：S3 の `CechNerveData`。
-使われ方：`cechAlexander_isLimitCone`。
-要確認：`PrismOverSmall` への移送（`equivSmallModel`）。 -/
-def cechNerveData : True := trivial
+variable [EssentiallySmall.{u} (PrismOver P R κ)]
+
+/-- 標準頂点を脚とする余積を小さい模型へ移し、site 側で積の Fan として読む。 -/
+def smallCechNerveOfCoproducts (X : CosimplicialObject (PrismOver P R κ))
+    (hc : ∀ n : ℕ, IsColimit (Cofan.mk (X.obj ⦋n⦌) (fun i : Fin (n+1) =>
+      X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i)))) :
+    CechNerveData (Opposite.op ((equivSmallModel (PrismOver P R κ)).functor.obj (X.obj ⦋0⦌))) where
+  obj := (X ⋙ (equivSmallModel (PrismOver P R κ)).functor).op
+  proj n i := ((equivSmallModel (PrismOver P R κ)).functor.map
+    (X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i))).op
+  isLimit n := by
+    have hx := hc n
+    sorry -- 同値で標準余積を移し、opposite で同じ脚の積にする
+  proj_map := by sorry -- 頂点 i の包含と θ の合成は頂点 θ(i) の包含
+
+/-- Constr 4.18 の C^0 の Čech データ。各次数は指定の C^n。 -/
+def cechNerveData : CechNerveData (Opposite.op
+    ((equivSmallModel (PrismOver P R κ)).functor.obj (cechAlexanderObj P R h κ hκ 0))) :=
+  smallCechNerveOfCoproducts P R κ (cechAlexander P R h κ hκ) (cechAlexander_isCoproduct P R h κ hκ)
+
+theorem cechSmall_weaklyTerminal : IsWeaklyTerminal (Opposite.op
+    ((equivSmallModel (PrismOver P R κ)).functor.obj (cechAlexanderObj P R h κ hκ 0))) := by
+  sorry -- cechAlexanderObj_weaklyInitial を逆同値の対象に適用し、余単位と opposite で移送
 
 /-- 概要：Constr 4.18 ＋ 脚注 10：O_Δ 上の錐が極限錐 ⇔ C^• への制限（Tot）が極限錐。
 方針：S3 の `isLimitCone_iff_restrict_cech` に `cechAlexanderObj_weaklyInitial` と `cechNerveData` を渡す。
 規約：O_Δ は D(A) 値前層 `structurePresheafDerived`。層化は経由しない（前層の主張）。
 使われ方：`prismaticCohomology_eq_cechAlexanderTot`。 -/
-theorem cechAlexander_isLimitCone_iff : True := by
-  trivial -- 要確認：形状の射 `cechShape` と `structurePresheafDerived` の型が揃ってから述べる
+theorem cechAlexander_isLimitCone_iff (c : JoinCone (structurePresheafDerived P R κ)) :
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShape (cechNerveData P R h κ hκ))) :=
+  isLimitCone_iff_restrict_cech (cechSmall_weaklyTerminal P R h κ hκ)
+    (cechNerveData P R h κ hκ) (structurePresheafDerived P R κ) c
 
 /-- 概要：Δ_{R/A} は Tot O_Δ(C^•) に等しい（Constr 4.18 の主張）。
 方針：Cor 3.12(d)（O_Δ は層）で RΓ = Γ(O_Δ)、`derivedGlobalSections_of_isSheaf`、`cechAlexander_isLimitCone_iff`、`exists_limitCone_of_cech`。
 規約：等しさは「同じ頂点をもつ極限錐の存在」（E3 の規約）。
 使われ方：A1 の計算を Tot で行う根拠。 -/
-theorem prismaticCohomology_eq_cechAlexanderTot : True := by
-  trivial -- 要確認：同上
+theorem prismaticCohomology_eq_cechAlexanderTot (hP : IsBoundedPrism P)
+    (hadm : IsAdmissibleCutoff P R κ)
+    (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
+    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A))
+    (t : JoinCone (cechShape (cechNerveData P R h κ hκ) ≫ structurePresheafDerived P R κ))
+    (ht : IsLimitCone t) :
+    (∃ c : JoinCone (structurePresheafDerived P R κ), IsLimitCone c ∧ c.vertex = t.vertex) ∧
+    ∃ e : SSet.Edge (prismaticCohomology P R κ hJ hE) t.vertex, IsInvertibleEdge e.toTruncated := by
+  refine ⟨exists_limitCone_of_cech (cechSmall_weaklyTerminal P R h κ hκ)
+    (cechNerveData P R h κ hκ) (structurePresheafDerived P R κ) t ht, ?_⟩
+  sorry -- Cor 3.12(d) と derivedGlobalSections_of_isSheaf の錐を上の極限錐と比較する
+
+/-- 大きい site の O を制限して RΓ を比較する。HasEnvelopes の各項は両 cutoff に入る。 -/
+theorem prismaticCohomology_cutoff_invariant (hP : IsBoundedPrism P)
+    (κ' : Cardinal.{u}) [EssentiallySmall.{u} (PrismOver P R κ')]
+    (hk : IsAdmissibleCutoff P R κ) (hk' : IsAdmissibleCutoff P R κ') (hle : κ ≤ κ')
+    (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
+    (hJ' : Sheafification (flatTopology P R κ') (derivedInfinityCategory A))
+    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) (h : HasEnvelopes P R) :
+    let Ores := restrictCutoffStructure P R hle
+    let x := derivedGlobalSections (flatTopology P R κ) hJ hE Ores
+    Nonempty (FunctorIso Ores (structurePresheafDerived P R κ)) ∧
+      (∃ e : SSet.Edge (prismaticCohomology P R κ' hJ' hE) x, IsInvertibleEdge e.toTruncated) ∧
+      ∃ e : SSet.Edge (prismaticCohomology P R κ' hJ' hE) (prismaticCohomology P R κ hJ hE),
+        IsInvertibleEdge e.toTruncated := by
+  sorry -- 小さい模型の同値で Ores を同定。hk.1 と hk'.1 により同じ C^• が入り、
+        -- 両側の prismaticCohomology_eq_cechAlexanderTot で同じ Tot と比較する
 
 /-- 概要：Tot を余鎖複体で表す：余単体的 A 加群 [n] ↦ C^n の交代余面複体（非正規化、Mathlib）。
 方針：`CosimplicialObject.alternatingCofaceMapComplex`。
@@ -190,24 +271,105 @@ def cechAlexanderReducedComplex : CochainComplex (ModuleCat.{u} A) ℕ :=
 
 /-! ## Rem 4.19：affine 空間の小さい模型 -/
 
+abbrev AffineIndex (r n : ℕ) := ULift.{u} (Fin r × Fin (n+1))
+
+def affineVariable (r n : ℕ) (j : Fin r) (i : Fin (n+1)) : completedFreeDelta P (AffineIndex.{u} r n) :=
+  pdCompletionUnit (RelativeFreeDeltaRing (R := A) (AffineIndex.{u} r n)) p (algebraMap A _ P.generator)
+    (MvPolynomial.X (ULift.up (j, i), 0))
+
+def affineDifferenceIdeal (r n : ℕ) : Ideal (completedFreeDelta P (AffineIndex.{u} r n)) :=
+  Ideal.span (insert (completedFreeDeltaBase P _ P.generator)
+    (Set.range (fun ji : Fin r × Fin (n+1) =>
+      affineVariable P r n ji.1 ji.2 - affineVariable P r n ji.1 0)))
+
+/-- 次数 n の envelope とその座標を、site の対象の構造写像に結び付ける。 -/
+structure AffineEnvelopeTerm (r n : ℕ) (κ : Cardinal.{u}) where
+  X : PrismOver P (prismPolynomialCompletion P (Fin r)) κ
+  η : completedFreeDelta P (AffineIndex.{u} r n) →+* X.B
+  envelope : IsPrismaticEnvelope P (completedFreeDeltaStructure P _) (completedFreeDeltaBase P _)
+    (completedFreeDeltaBase_isDeltaHom P _) (affineDifferenceIdeal P r n)
+    (Ideal.subset_span (Set.mem_insert _ _)) X.Q η
+  base_eq : η.comp (completedFreeDeltaBase P _) = X.toHom.toRingHom
+  sec_X : ∀ j : Fin r, X.sec (prismPolynomialUnit P (Fin r) (MvPolynomial.X j)) =
+    Ideal.Quotient.mk X.Q.ideal (η (affineVariable P r n j 0))
+
+def affineEnvelopeTerm (hP : IsBoundedPrism P) (r n : ℕ) (κ : Cardinal.{u})
+    (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ) : AffineEnvelopeTerm P r n κ := by
+  sorry -- 各 j の copy 0 を残し他を差変数にして exists_prismaticEnvelope_of_variables。
+        -- 商の座標と p 完備化単位で sec を作り、自由変数模型の濃度評価を移す
+
+/-- 頂点の添字を θ で写す一意の envelope 射。 -/
+def affineTermMap {r m n : ℕ} {κ : Cardinal.{u}} (X : AffineEnvelopeTerm P r m κ)
+    (Y : AffineEnvelopeTerm P r n κ) (θ : ⦋m⦌ ⟶ ⦋n⦌) : X.X ⟶ Y.X :=
+  Classical.choose (show ∃! f : X.X ⟶ Y.X, ∀ j i,
+    f.toHom.toRingHom (X.η (affineVariable P r m j i)) =
+      Y.η (affineVariable P r n j (θ.toOrderHom i)) from by
+    sorry) -- 指定した生成元の像に自由 δ 環・完備化・envelope の普遍性を順に使う
+
 /-- 概要：R = (A/d)⟨X_1,…,X_r⟩ に対する B₀ = A⟨X_1,…,X_r⟩ の小さい模型。C^n は (A{X^{(0)},…,X^{(n)}}^∧, (d, X^{(i)} − X^{(0)})) の envelope。
 方針：`exists_prismaticEnvelope_of_variables`（S = Fin r × Fin (n+1)、Z = 差の変数、変数変換後）。
 規約：R は p 完備化した多項式代数（有限変数）。
 使われ方：Lemma 4.20、Prop 6.2、Thm 5.2 の計算。 -/
-def cechAlexanderAffine (r : ℕ) : True := trivial
--- 決定（design-status.md (B)）：R := `MvPolynomial (Fin r) (A ⧸ P.ideal)` の一変数 p 進完備化の H⁰（E3 の `completionRing` と同じ道具）。
--- A1 の `affineAlgebra` と同じ定義にし、`CosimplicialObject (PrismOver P R κ)` として書き直す。
+def cechAlexanderAffine (hP : IsBoundedPrism P) (r : ℕ) (κ : Cardinal.{u})
+    (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ) :
+    CosimplicialObject (PrismOver P (prismPolynomialCompletion P (Fin r)) κ) where
+  obj n := (affineEnvelopeTerm P hP r n.len κ hk).X
+  map {m n} θ := affineTermMap P (affineEnvelopeTerm P hP r m.len κ hk) (affineEnvelopeTerm P hP r n.len κ hk) θ
+  map_id := by sorry -- 恒等射は指定の座標を保つ
+  map_comp := by sorry -- 合成は θ の合成と同じ座標を持つ
+
+/-- Rem 4.19 の模型でも頂点入射が余積の脚になる。 -/
+def cechAlexanderAffine_isCoproduct (hP : IsBoundedPrism P) (r : ℕ) (κ : Cardinal.{u})
+    (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ) (n : ℕ) :
+    let X := cechAlexanderAffine P hP r κ hk
+    IsColimit (Cofan.mk (X.obj ⦋n⦌) (fun i : Fin (n+1) =>
+      X.map (SimplexCategory.const ⦋0⦌ ⦋n⦌ i))) := by
+  sorry -- 差変数の envelope からの写像は n+1 組の独立な座標の持ち上げで決まる
 
 /-- 概要：Rem 4.19 の模型は Constr 4.18 の模型と同じ Δ を計算する（どちらも極限錐）。
 方針：両方の C^0 が弱始なので S3 の補題を二度使う。
 規約：—
 使われ方：計算は小さい模型で、関手性は大きい模型で。 -/
-theorem cechAlexanderAffine_computes : True := by trivial
+theorem cechAlexanderAffine_computes (hP : IsBoundedPrism P) (r : ℕ) (κ : Cardinal.{u})
+    [EssentiallySmall.{u} (PrismOver P (prismPolynomialCompletion P (Fin r)) κ)]
+    (hk : IsAdmissibleCutoff P (prismPolynomialCompletion P (Fin r)) κ)
+    (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
+    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) :
+    let R := prismPolynomialCompletion P (Fin r)
+    let h := hasEnvelopes_of_polynomial P R hP (Fin r) ⟨AlgEquiv.refl⟩
+    let O := structurePresheafDerived P R κ
+    let X := cechAlexanderAffine P hP r κ hk.1
+    let d := smallCechNerveOfCoproducts P R κ X (cechAlexanderAffine_isCoproduct P hP r κ hk.1)
+    let small := cechShape d ≫ O
+    ∀ (t : JoinCone (cechShape (cechNerveData P R h κ hk.1) ≫ O)) (s : JoinCone small),
+      IsLimitCone t → IsLimitCone s →
+        (∃ e : SSet.Edge t.vertex s.vertex, IsInvertibleEdge e.toTruncated) ∧
+        ∃ e : SSet.Edge (prismaticCohomology P R κ hJ hE) s.vertex, IsInvertibleEdge e.toTruncated := by
+  sorry -- affine 側でも単一 copy が弱始で、差変数の envelope は標準余積。
+        -- S3 を両模型に適用すると、それぞれの Tot が同じ O の極限を計算する
 
 /-- 概要：Rem 4.19 の模型は prism の底変換と可換：(A,(d)) → (A′,(d′)) について項ごとの完備底変換が A′ 側の模型（Prop 3.13(2)）。
 方針：`prismaticEnvelope_baseChange_of_variables`。
 規約：底変換は prism の射に沿う完備テンソル。
 使われ方：Lemma 4.20、Constr 6.1、Prop 6.2。 -/
-theorem cechAlexanderAffine_baseChange : True := by trivial
+theorem cechAlexanderAffine_baseChange {A' : Type u} [CommRing A'] (P' : OrientedPrism p A')
+    (f : OrientedPrism.Hom P P') (hP : IsBoundedPrism P) (hP' : IsBoundedPrism P')
+    (r n : ℕ) (κ κ' : Cardinal.{u}) (hk : cutoff A (prismPolynomialCompletion P (Fin r)) ≤ κ)
+    (hk' : cutoff A' (prismPolynomialCompletion P' (Fin r)) ≤ κ') :
+    let X := affineEnvelopeTerm P hP r n κ hk
+    let Y := affineEnvelopeTerm P' hP' r n κ' hk'
+    letI := f.toRingHom.toAlgebra
+    letI := X.X.toHom.toRingHom.toAlgebra
+    let C' := envelopeBaseChangeRing (A := A) (T := X.X.B) P'
+    let l := envelopeBaseLeg (A := A) (T := X.X.B) P'
+    let v := envelopeChangeLeg (A := A) (T := X.X.B) P'
+    ∃ (Qbc : OrientedPrism p C') (e : (C' : Type u) ≃+* Y.X.B) (g : OrientedPrism.Hom X.X.Q Y.X.Q),
+      P'.deltaStructure.IsDeltaHom Qbc.deltaStructure l ∧ X.X.Q.deltaStructure.IsDeltaHom Qbc.deltaStructure v ∧
+      Qbc.deltaStructure.IsDeltaHom Y.X.Q.deltaStructure e.toRingHom ∧ Qbc.ideal.map e.toRingHom = Y.X.Q.ideal ∧
+      e.toRingHom.comp l = Y.X.toHom.toRingHom ∧ e.toRingHom.comp v = g.toRingHom ∧
+      g.comp X.X.toHom = Y.X.toHom.comp f ∧
+      ∀ j i, g.toRingHom (X.η (affineVariable P r n j i)) = Y.η (affineVariable P' r n j i) := by
+  sorry -- 差変数に対する prismaticEnvelope_baseChange_of_variables と envelope の一意性。
+        -- 等式は A′ の係数と各 copy の座標を指定するので単体射による添字の変更とも両立
 
 end SerrePositivity.BhattScholze.Prismatic
