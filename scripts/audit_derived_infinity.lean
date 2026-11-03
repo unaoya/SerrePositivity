@@ -8072,3 +8072,9 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b でこの領域に移した宣言の型と公理を検査する。
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_relative_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_homotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_boundaryFilling
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_homotopy_detection

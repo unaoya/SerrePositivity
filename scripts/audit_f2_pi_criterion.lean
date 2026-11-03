@@ -67,7 +67,7 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless `SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion |>.isPrefixOf mod do
+    unless `SerrePositivity.InfinityCategories.Derived.PiCriterion |>.isPrefixOf mod do
       continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do

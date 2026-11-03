@@ -12410,16 +12410,6 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductTotalKanComparison_isWeakHomotopyEquivalence
 #check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductTotalKanComparison_homotopyEquivalence
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductTotalKanComparison_homotopyEquivalence
-#check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductTotalKanMap
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductTotalKanMap
-#check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism
-#check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_zero
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_zero
-#check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_one
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_one
-#check SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_vertical_isInvertible
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentProductComparisonApexPrism_vertical_isInvertible
 #check SerrePositivity.InfinityCategories.HomotopyLimits.siftedCoherentProductNativeConeTransport
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.siftedCoherentProductNativeConeTransport
 #check SerrePositivity.InfinityCategories.HomotopyLimits.siftedCoherentProductNativeCone
@@ -12952,59 +12942,23 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentSpaceProductTotalComparison_isWeakHomotopyEquivalence
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentSpaceProductTotalComparison_isWeakHomotopyEquivalence
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_projection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_projection
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_unit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_unit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_isWeakHomotopyEquivalence
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_isWeakHomotopyEquivalence
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_homotopyEquivalence
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProductTotalKanComparison_homotopyEquivalence
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentTotalComparisonKanMap
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentTotalComparisonKanMap
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentTotalComparisonApexPrism
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentTotalComparisonApexPrism
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeTransport
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeTransport
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_isLimit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_vertex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_vertex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_apex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_apex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_diagram
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_diagram
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_apexEdge
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_apexEdge
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_diagramEdge
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeConeHomotopy_diagramEdge
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeKanLeg
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeKanLeg
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeKanLeg_projection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeKanLeg_projection
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.coherentIdentityTransformationVertex
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coherentIdentityTransformationVertex
@@ -13021,14 +12975,8 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProjectionUnitIso
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProjectionUnitIso
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProjectionCoconeIso
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteCoherentProjectionCoconeIso
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeEdge
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeEdge
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCoconeIso
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCoconeIso
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.discreteIndexNerveIso
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.discreteIndexNerveIso
@@ -13054,38 +13002,16 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.nativeConeLeg_reindexIso_edge
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.nativeConeLeg_reindexIso_edge
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram_eq
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram_eq
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_isLimit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_vertex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_vertex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_leg_edge
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_leg_edge
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram_original
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram_original
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg_eq
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg_eq
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg_projection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeKanLeg_projection
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCoconeIso
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCoconeIso
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation
@@ -13093,17 +13019,9 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.liftedDiscreteVertexMap
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.liftedDiscreteVertexMap
@@ -13552,29 +13470,13 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_homotopy_indexed
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_homotopy_indexed
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeApexKanObjectMap
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeApexKanObjectMap
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitConeTransport
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitConeTransport
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone_vertex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone_vertex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitTransportedCone_isLimit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyTransportedColimitKanLeg
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyTransportedColimitKanLeg
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyTransportedColimitKanLeg_projection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyTransportedColimitKanLeg_projection
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_transported
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_transported
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.kanDiscreteNativeConeOfLegs
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.kanDiscreteNativeConeOfLegs
@@ -13585,17 +13487,9 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.kanDiscreteNativeConeOfLegs_kanLeg
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.kanDiscreteNativeConeOfLegs_kanLeg
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_vertex
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_vertex
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_kanLeg
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_kanLeg
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitNativeCone_isLimit
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitFamilyCone
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalColimitFamilyCone
@@ -13663,20 +13557,10 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check SerrePositivity.InfinityCategories.HomotopyLimits.presheafCoconeVertexEvaluationIso
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.presheafCoconeVertexEvaluationIso
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.emptyDiscreteNerveVertices
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.emptyDiscreteNerveVertices
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.emptyUliftDiscreteNerveVertices
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.emptyUliftDiscreteNerveVertices
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.sigmaPresheafEmptyConeEvaluation_isTerminal
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.sigmaPresheafEmptyConeEvaluation_isTerminal
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.presheafColimitVertex_mapEmptyCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.presheafColimitVertex_mapEmptyCone_isLimit
 
-#check SerrePositivity.InfinityCategories.HomotopyLimits.sigmaPresheafAmbientColimit_mapEmptyCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.sigmaPresheafAmbientColimit_mapEmptyCone_isLimit
 
 #check SerrePositivity.InfinityCategories.HomotopyLimits.coconeRightApexVertex
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.coconeRightApexVertex
@@ -13924,10 +13808,6 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms sigmaPresheafCoconeBottomLeg_eq
 #check @sigmaPresheafCoconeBottomLeg_vertex
 #print axioms sigmaPresheafCoconeBottomLeg_vertex
-#check @finiteFamilyOriginalColimitFamilyCone_originalLeg_edge
-#print axioms finiteFamilyOriginalColimitFamilyCone_originalLeg_edge
-#check @sigmaPresheafColimitFiniteCone_originalLeg_edge
-#print axioms sigmaPresheafColimitFiniteCone_originalLeg_edge
 #check @sigmaPresheafColimitLegConjugate_kanHomMk
 #print axioms sigmaPresheafColimitLegConjugate_kanHomMk
 #check @sigmaPresheafColimitFiniteCone_vertex
@@ -14564,14 +14444,8 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @sigma_exists_densityLeftKanExtension_with_recovery
 #print axioms sigma_exists_densityLeftKanExtension_with_recovery
 
-#check @covariantRepresentableDiagram_reflects_isLimit
-#print axioms covariantRepresentableDiagram_reflects_isLimit
 
-#check @isColimitCone_iff_fullHomCone
-#print axioms isColimitCone_iff_fullHomCone
 
-#check @preservesSmallSiftedColimits_iff_fullHomCones
-#print axioms preservesSmallSiftedColimits_iff_fullHomCones
 
 #check @uliftInternalHomComparison_evaluation
 #print axioms uliftInternalHomComparison_evaluation
@@ -14615,11 +14489,7 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @presheafHomWeightDiagram_map_isLimit
 #print axioms presheafHomWeightDiagram_map_isLimit
 
-#check @presheafHomWeightDiagram_iso
-#print axioms presheafHomWeightDiagram_iso
 
-#check @sigmaLeftKanHomWeightRestrictionIso
-#print axioms sigmaLeftKanHomWeightRestrictionIso
 
 #check @coyonedaInfinityMap_evaluation
 #print axioms coyonedaInfinityMap_evaluation
@@ -15160,6 +15030,7 @@ run_cmd do
   for mod in expected do
     unless env.header.modules.any (fun entry => entry.module == mod) do
       throwError "W2b: audit module not imported: {mod}"
+  let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
@@ -15167,7 +15038,11 @@ run_cmd do
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
+    let mod := env.header.modules[idx.toNat]!.module
+    unless seen.contains mod do seen := seen.push mod
     count := count + 1
+  for mod in expected do
+    if !seen.contains mod then throwError "Module not audited: {mod}"
   logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."
 
 -- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
@@ -15235,3 +15110,121 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b でこの領域に移した宣言の型と公理を検査する。
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι_isQCatEquivalence_of_contractible_base
+#print axioms SerrePositivity.InfinityCategories.vertexFiberι_homotopyEquivalence_of_contractible_base
+#print axioms SerrePositivity.InfinityCategories.vertexFiberPiZeroEquivOfContractibleBase
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotal
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialProjection
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialProjection_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialEvaluation_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotal_kanComplex
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialBaseIso
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_zero
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_one
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_component
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransIso
+#check @SerrePositivity.InfinityCategories.F2.strictCoherentNatTransMap_vertical_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.nativeConeLeg_strict
+#check @SerrePositivity.InfinityCategories.F2.oppositeInternalHom_evaluate
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_functor_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.isColimitCone_arrow_of_endpoints
+#check @SerrePositivity.InfinityCategories.F2.exists_colimitCone_functor_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproductFst
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproductSnd
+#check @SerrePositivity.InfinityCategories.F2.cosliceCoproduct_isPullback
+#check @SerrePositivity.InfinityCategories.F2.filteredColimitMap_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitι_augmentation
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation_naturality
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanι_augmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_naturality
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanStage
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanStage_augmentation
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_lifts_finite
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitFamily
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitHomotopy
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightHomotopy_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightStage_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalWeightLegHomotopy_naturality
+#check @SerrePositivity.InfinityCategories.F2.terminalBousfieldKanAugmentation_isSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitReindex
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitWeightMap
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanReindex_comp
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanDiagram
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanAugmentation
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanColimitComparison_augmentation
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanAugmentation_colimit_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitDegreeCowedge_isColimit
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanDegreeSection_rightInverse
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanDegreeSection_leftInverse
+#check @SerrePositivity.InfinityCategories.F2.overBousfieldKanColimitIso
+#check @SerrePositivity.InfinityCategories.F2.bousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.anodyne_opFunctor_map
+#check @SerrePositivity.InfinityCategories.F2.opposite_map_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitOppositeIso
+#check @SerrePositivity.InfinityCategories.F2.weightedColimitAugmentation_op_factor
+#check @SerrePositivity.InfinityCategories.F2.reflectedBousfieldKanAugmentation_isWeakHomotopyEquivalence_of_filtered
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitComparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coconeHomCone_weightedComparison
+#check @SerrePositivity.InfinityCategories.F2.coconeHomCone_reflectedWeightedComparison
+#check @SerrePositivity.InfinityCategories.F2.weightedConeComparison_reflected
+#check @SerrePositivity.InfinityCategories.F2.kanCoconeAugmentationComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.strictNativeCocone_isColimit_of_reflectedAugmentation_weak
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_forget
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitOrdinaryCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.filteredKanColimitCanonicalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.equivalenceIntervalReplacementIso_endpoint
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementEndpoint_fibration
+#check @SerrePositivity.InfinityCategories.F2.intervalPullback_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.kanIntervalCospanDiagramIso
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackStrictConeTransport
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackCone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalRelativeComparison_factor
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeCompositionIso
+#check @SerrePositivity.InfinityCategories.F2.continuousKanProductUnit_anodyne
+#check @SerrePositivity.InfinityCategories.F2.continuousKanProductUnit_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueToTotal
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValue_kanComplex
+#check @SerrePositivity.InfinityCategories.F2.intervalEndpoint_zero_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.kan_prism_extension
+#check @SerrePositivity.InfinityCategories.F2.CoherentTotalMapNativeRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapNativeComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeTransportAction
+#check @SerrePositivity.InfinityCategories.F2.coherentCoconeTransportActionIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitCocone
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationNativeCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndCone
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndCone_isLimit
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndCone_left
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndCone_right
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_naturality
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackEndComparison_detect_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.uliftMap_fibration
+#check @SerrePositivity.InfinityCategories.F2.uliftFunctor_preservesCospanLimits
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_fst
+#check @SerrePositivity.InfinityCategories.F2.uliftPullbackIso_snd
+#check @SerrePositivity.InfinityCategories.F2.emptyShapeSliceProjection_isIso
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_emptyShape_iff_vertex
+#check @SerrePositivity.InfinityCategories.F2.pointConeIdentityComparison
+#check @SerrePositivity.InfinityCategories.F2.pointConeIdentityComparison_projection_edge
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_point_iff_invertible
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_point_iff_edge
+#check @SerrePositivity.InfinityCategories.F2.HasSpaceLimitsOfShape
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_of_iso
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_of_empty
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_empty
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_simplex
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeTransportValueIso
+#check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape

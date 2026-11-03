@@ -1,3 +1,49 @@
+import SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed
+import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
+import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
+import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafComplete
+import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure
+import SerrePositivity.InfinityCategories.F1.Compact.UniverseColimits
+import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
+import SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence
+import SerrePositivity.InfinityCategories.F1.CoreTrivialFibration
+import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
+import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredSimplexExchange
+import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTerminal
+import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackBoundaryModelTransport
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanBoundaryLifting
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanRelativeLifting
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanStrictRelativeLifting
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackKanWeakEquivalence
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackOriginalInputRelativeDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.FiberwisePullbackRelativeOriginalBoundary
+import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationContractibility
+import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport
+import SerrePositivity.InfinityCategories.F1.Filtered.FilteredNullHomotopy
+import SerrePositivity.InfinityCategories.F1.Filtered.FilteredPathCollapseContraction
+import SerrePositivity.InfinityCategories.F1.Filtered.GluedFiberDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.GluedMappedBoundaryTransport
+import SerrePositivity.InfinityCategories.F1.Filtered.KanCospanRelativeInputReduction
+import SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteComparison
+import SerrePositivity.InfinityCategories.F1.Filtered.RelativePathFiniteModelTransport
+import SerrePositivity.InfinityCategories.F1.Filtered.RelativePathInputsTransport
+import SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousFiberDetection
+import SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousRelativeCylinderDetection
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanCoconeContraction
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFilteredUnit
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanHomotopy
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.FilteredPointwiseWeakEquivalences
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiniteRelativeWeakCriterion
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoComponentPost
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementHomotopyPoint
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceHomotopyClasses
+import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
 import SerrePositivity.InfinityCategories.F1.Presentable.SpaceFamilyStrictification
 import SerrePositivity.InfinityCategories.F1.Presentable.SigmaLiftedHomRestriction
 import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
@@ -10427,6 +10473,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMap,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMapCocone,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalUnitRepresentation,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTotalMap,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTriangleRelative,
@@ -10436,7 +10483,10 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ColimitHomotopyPointwise,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ConeSquareUniverseReading,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ConstantDiagramTransportCoordinates,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanCoconeContraction,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFilteredUnit,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanHomotopy,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanRelativeReflection,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanStrongRetraction,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseBoundaryIso,
@@ -10474,6 +10524,9 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackValueKanComparison,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseRestrictionLifting,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseRestrictionPullback,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.FilteredPointwiseWeakEquivalences,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.FiniteRelativeWeakCriterion,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoComponentPost,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoCurryPresentation,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.InitialShapeConeCriterion,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.InitialShapeLimitExchange,
@@ -10481,6 +10534,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalPullbackInputTransport,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalPullbackRelativeInputTransport,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.KanApexConeTransportEdges,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.KanApexConeTransportLeg,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyDiagonal,
@@ -10526,6 +10580,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningRelativeVertex,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceEdgeValue,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceHomotopyClasses,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceLeftHomValue,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces,
     `SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy,
@@ -10594,6 +10649,7 @@ run_cmd do
   for mod in expected do
     unless env.header.modules.any (fun entry => entry.module == mod) do
       throwError "W2b: audit module not imported: {mod}"
+  let mut seen : Array Name := #[]
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
@@ -10601,7 +10657,11 @@ run_cmd do
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
+    let mod := env.header.modules[idx.toNat]!.module
+    unless seen.contains mod do seen := seen.push mod
     count := count + 1
+  for mod in expected do
+    if !seen.contains mod then throwError "Module not audited: {mod}"
   logInfo m!"W2b R37: {count} declarations audited in {expected.size} imported modules."
 
 -- IF-W2b R38: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
@@ -10624,14 +10684,17 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopy,
     `SerrePositivity.InfinityCategories.F1.CatInfinity.FatCoconeHomotopyNaturality,
     `SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport,
+    `SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence,
     `SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport,
     `SerrePositivity.InfinityCategories.F1.Compact.CoconeFiberPrism,
     `SerrePositivity.InfinityCategories.F1.Compact.CoconeTotalPrism,
     `SerrePositivity.InfinityCategories.F1.Compact.CoconeVertexFiberIso,
     `SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison,
+    `SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice,
     `SerrePositivity.InfinityCategories.F1.Compact.RepresentationDiagramComparison,
     `SerrePositivity.InfinityCategories.F1.Compact.RepresentationPointedFiber,
     `SerrePositivity.InfinityCategories.F1.Compact.UniverseCoconeCylinder,
+    `SerrePositivity.InfinityCategories.F1.Compact.UniverseColimits,
     `SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening,
     `SerrePositivity.InfinityCategories.F1.Compact.UnstraighteningVertexPrism,
     `SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification,
@@ -10641,6 +10704,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.Idempotent.Completion,
     `SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete,
     `SerrePositivity.InfinityCategories.F1.Idempotent.IdemSourceIso,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure,
+    `SerrePositivity.InfinityCategories.F1.Idempotent.PresheafComplete,
     `SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit,
     `SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingCones,
     `SerrePositivity.InfinityCategories.F1.Ind.CanonicalIntervalYonedaValue,
@@ -10650,6 +10715,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalTransportEquivalence,
     `SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalValueCriterion,
     `SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationFamily,
+    `SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction,
     `SerrePositivity.InfinityCategories.F1.Ind.DensityFiberYonedaValue,
     `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityEndpointEquivalence,
     `SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLift,
@@ -10661,12 +10727,14 @@ run_cmd do
     `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceEquivalence,
     `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceFiberMap,
     `SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval,
+    `SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction,
     `SerrePositivity.InfinityCategories.F1.Ind.IntervalYonedaEvaluation,
     `SerrePositivity.InfinityCategories.F1.Ind.MappingVertexLiftPrism,
     `SerrePositivity.InfinityCategories.F1.Ind.NativeCoconeIntervalPrism,
     `SerrePositivity.InfinityCategories.F1.Ind.PointPrismTransportComparison,
     `SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityReconstruction,
     `SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityValue,
+    `SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed,
     `SerrePositivity.InfinityCategories.F1.Ind.VertexFiberIsoProjection,
     `SerrePositivity.InfinityCategories.F1.Ind.YonedaSlice,
     `SerrePositivity.InfinityCategories.F1.Ind.YonedaSliceFiber,
@@ -10688,3 +10756,504 @@ run_cmd do
       throwError "W2b: unexpected axioms in {name}: {axioms}"
     count := count + 1
   logInfo m!"W2b R38: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b でこの領域に移した宣言の型と公理を検査する。
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertex
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_restriction
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeFamilyUncurry_inr
+#print axioms SerrePositivity.InfinityCategories.cosliceCoconeDiagramMap_vertexEvaluation
+#print axioms SerrePositivity.InfinityCategories.stableHomotopyCategoryOpHomEquiv_homMk
+#print axioms SerrePositivity.InfinityCategories.stablePinchedLeftVertexEdge
+#print axioms SerrePositivity.InfinityCategories.stablePinchedHomLeftPiZeroEquiv_mk
+#print axioms SerrePositivity.InfinityCategories.stableCosliceFiberPiZeroEquiv_mk
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_projection
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_uncurry
+#print axioms SerrePositivity.InfinityCategories.stableCoslicePostcomp_comp
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialBaseDiagram_eq
+#print axioms SerrePositivity.InfinityCategories.stableCosliceFiberChange_ι
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap_evaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialTotalMap_projection
+#print axioms SerrePositivity.InfinityCategories.stablePiZeroEquivOfTrivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_evaluation
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.pushoutCocone_vertex
+#print axioms SerrePositivity.InfinityCategories.pushoutCoconeMappingSpacePiZeroEquiv
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialSection
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialSection_evaluation
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialHomComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.leftFibrationInitialFiberPiZeroEquiv_eq_comparison
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpaceHomComparison_homotopyEquivalence
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpacePiZeroEquiv_eq_comparison
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_kanComplex
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_ι
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_comp
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_change_uncurry
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_uncurry
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_change_uncurry
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_leftFibration_of_mono
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_leftFibration
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_restrict_fibration
+#print axioms SerrePositivity.InfinityCategories.exists_coconeMappingSpace_glue
+#print axioms SerrePositivity.InfinityCategories.coconeMappingSpace_hom_ext_of_pushout
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMappingRightBase
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMappingRightBase_uncurry
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMapping_restriction_comm
+#print axioms SerrePositivity.InfinityCategories.spanCoconeMapping_isPullback
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeHomotopy_isInvertible_of_restriction
+#print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_transpose
+#print axioms SerrePositivity.InfinityCategories.dualSquare
+#print axioms SerrePositivity.InfinityCategories.isPushoutSquare_iff_dualSquare
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_dualSquare
+#print axioms SerrePositivity.InfinityCategories.JoinCone.reverseCocone_val
+#print axioms SerrePositivity.InfinityCategories.isPullbackSquare_iff_reverseGrid
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeVertex
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeVertex_projection
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCocone_edge
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeHomotopy
+#print axioms SerrePositivity.InfinityCategories.relativeInitialProjection_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjectionHoFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_ho_map_injective
+#print axioms SerrePositivity.InfinityCategories.coconeApexEvaluation
+#print axioms SerrePositivity.InfinityCategories.isCartesianEdge_coconeRestriction_of_apex
+#print axioms SerrePositivity.InfinityCategories.exists_cartesian_cocone_lift
+#print axioms SerrePositivity.InfinityCategories.cocartesianHornFibration_coconeRestriction_op
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.initialBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_initialBoundaryLifting
+#print axioms SerrePositivity.InfinityCategories.colimitCocones
+#print axioms SerrePositivity.InfinityCategories.colimitCocones_quasicategory
+#print axioms SerrePositivity.InfinityCategories.colimitCocones_vertex_iff
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeProjection_pullback_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.exists_colimitCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.colimitCoconeFamilyIso
+#print axioms SerrePositivity.InfinityCategories.stable_pre_evaluateFunctorAt
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramBottomArrow_source
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramLeftArrow_source
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_ι
+#print axioms SerrePositivity.InfinityCategories.suspensionDiagramCoconeFamily_projection
+#print axioms SerrePositivity.InfinityCategories.sliceUnderRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_restrict_of_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.IsColimitCone.restrict_of_rightAnodyne
+#print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_rightSpan
+#print axioms SerrePositivity.InfinityCategories.pastingRightSpanIso_hom_ι
+#print axioms SerrePositivity.InfinityCategories.pastingCornerRestrict_standardSpan_trivialKanFibration
+#print axioms SerrePositivity.InfinityCategories.pastingCorner_isColimitCone_iff_standardSpan
+#print axioms SerrePositivity.InfinityCategories.stableJoin_prodStdSimplex_hom_ext
+#print axioms SerrePositivity.InfinityCategories.pastingCornerCocone_rightSpan
+#print axioms SerrePositivity.InfinityCategories.isColimitCone_iff_of_val_eq
+#print axioms SerrePositivity.InfinityCategories.pastingCocone
+#print axioms SerrePositivity.InfinityCategories.pastingCocone_isColimitCone_iff_right
+#print axioms SerrePositivity.InfinityCategories.downTruncatedEdge
+#print axioms SerrePositivity.InfinityCategories.downTruncatedCompStruct
+#print axioms SerrePositivity.InfinityCategories.IsInvertibleEdge.down
+#print axioms SerrePositivity.InfinityCategories.uliftVertexIso
+#print axioms SerrePositivity.InfinityCategories.downVertexIso
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_vertexIso_pre
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_evaluate
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryHom_vertexIso_evaluate
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorCurryIso_heq_map
+#check @SerrePositivity.InfinityCategories.F2.vertexIso_map_heq_of_heq
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_map_homMk
+#check @SerrePositivity.InfinityCategories.F2.downVertexIso_eq_mapIso
+#check @SerrePositivity.InfinityCategories.F2.constMap_vertex_value
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingConst_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningMappingConstComposite_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentVertexEquiv
+#check @SerrePositivity.InfinityCategories.F2.catInfinityVertexEquiv
+#check @SerrePositivity.InfinityCategories.F2.coherentEdgeHom_edge
+#check @SerrePositivity.InfinityCategories.F2.coherentEdge_source
+#check @SerrePositivity.InfinityCategories.F2.coherentEdge_target
+#check @SerrePositivity.InfinityCategories.F2.coherentEdge_recover
+#check @SerrePositivity.InfinityCategories.F2.corePullbackIso
+#check @SerrePositivity.InfinityCategories.F2.coreMap_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.corePathReplacementProjection_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.specifiedLimitConeTransport
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleRefinement
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleHomotopy_source
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleComposite_image
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleHomotopy_target
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentTriangleHomotopy_orderDiagram
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_zero
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_one
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyUpperTriangle_two
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_zero
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_one
+#check @SerrePositivity.InfinityCategories.F2.coneHomotopyLowerTriangle_two
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_finite_factorization
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_boundary_factorization
+#check @SerrePositivity.InfinityCategories.F2.exists_nullHomotopy_of_isFilteredInfinity
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_map_null_of_cocone
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeFromHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fatCoconeHomotopy_precomp_h
+#check @SerrePositivity.InfinityCategories.F2.continuousKanDiagramUnit_colimit_factor
+#check @SerrePositivity.InfinityCategories.F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementSection_endpoint
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_to_cocone_fiber
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_map_homotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_fiber_detection_unreplaced
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalKan
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramValueToTotalKan
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalKan_finite_value_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalKan_isContractibleKan
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_lift_prism_relative
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_to_fiber_relative
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalVertex_object
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_factor
+#check @SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalUnitRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalUnit_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeUnitIso
+#check @SerrePositivity.InfinityCategories.F2.spaceLeftHomValueEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentLargeTotalCoconeUnitIso
+#check @SerrePositivity.InfinityCategories.F2.coherentLargeTotalUnit_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeFiber_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentDiagramTotalCocone_isColimit
+#check @SerrePositivity.InfinityCategories.F2.hasColimit_coherentSpaceDiagram
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_along_nullHomotopy
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_pair_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison
+#check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_unit
+#check @SerrePositivity.InfinityCategories.F2.fiberPairToPullback_comparison
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_glued_finite_fiber_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_anchored_finite_factorization
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorSpace
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorProjection
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorUncurry_projection
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpoint
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpoint_projection
+#check @SerrePositivity.InfinityCategories.F2.constantDiagram_vertex
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorFiberIso
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorFiberIso_hom_ι
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullback
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackComparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackProjection
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullback_left_projection
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullback_right_projection
+#check @SerrePositivity.InfinityCategories.F2.arrowEndpointPair_fibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpoint_unit
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalKanComparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalKanComparison_unit
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalKanComparison_boundary
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalKanComparison_endpoint
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackPath
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackPath_zero
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackPath_one
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_unit_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_unit_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_unit_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorRestriction
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorRestriction_fst
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorRestriction_projection
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseRestrictionBase
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseRestriction_isPullback
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorRestriction_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorRestriction_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.arrowBoundaryEvaluation_naturality
+#check @SerrePositivity.InfinityCategories.F2.constantDiagram_arrowBoundaryEvaluation
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseBoundaryIso
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseBoundaryIso_hom_product
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpointPair
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpointPair_restriction
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalEndpointPair_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullback_hom_ext
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackInputPair
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseCospanPair
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackLift
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackLift_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackLift_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackLift_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullback_isPullback
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackInputPair_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseIntervalPullbackProjection_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorFiberIso_interval_endpoint
+#check @SerrePositivity.InfinityCategories.F2.fiberwiseFunctorFiberIso_inv_interval_endpoint
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberPath
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberLeft
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberRight
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberPath_zero
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberPath_one
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberComparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberLift
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberLift_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiber_hom_ext
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberInverse
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackFiberIso
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueToTotal_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueToTotal_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueToTotal_path
+#check @SerrePositivity.InfinityCategories.F2.anchorCylinder_kan_prism
+#check @SerrePositivity.InfinityCategories.F2.anchorCylinder_kan_correction
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_monic_anchored_finite_approximation
+#check @SerrePositivity.InfinityCategories.F2.anodyne_relative_homotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_strong_retraction
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_relative_reflection
+#check @SerrePositivity.InfinityCategories.F2.anodyne_homotopy_extension
+#check @SerrePositivity.InfinityCategories.F2.kanCospanUnitPath
+#check @SerrePositivity.InfinityCategories.F2.kanCospanRawPath
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_left
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_right
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_path
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_congr
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueKanComparison
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueKanComparison_left
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueKanComparison_right
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackValueKanComparison_path
+#check @SerrePositivity.InfinityCategories.F2.kanFibration_lift_homotopy
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputPair
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputPair_isPullback
+#check @SerrePositivity.InfinityCategories.F2.intervalPullbackInputPair_fibration
+#check @SerrePositivity.InfinityCategories.F2.intervalPullback_transport_inputs
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_recognition
+#check @SerrePositivity.InfinityCategories.F2.kanFibration_leftFibration
+#check @SerrePositivity.InfinityCategories.F2.kanFibration_lift_homotopy_relative
+#check @SerrePositivity.InfinityCategories.F2.intervalPullback_transport_inputs_relative
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_relative_path_finite_approximation
+#check @SerrePositivity.InfinityCategories.F2.exists_nullHomotopy_with_collapsed_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrism
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrism_zero
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrism_one
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrism_projection
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrism_precomp
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrismHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrismHomotopy_zero
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrismHomotopy_one
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackPathPrismHomotopy_projection
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullback_boundary_model_transport
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackBoundaryLeftHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackBoundaryRightHomotopy
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullback_boundary_inputs_transport
+#check @SerrePositivity.InfinityCategories.F2.collapsedPathCylinder_endpoint
+#check @SerrePositivity.InfinityCategories.F2.RelativePathInputTransportData
+#check @SerrePositivity.InfinityCategories.F2.exists_relativePathInputTransportData
+#check @SerrePositivity.InfinityCategories.F2.relativePathTargetPath_zero
+#check @SerrePositivity.InfinityCategories.F2.relativePathTargetPath_one
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTarget
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTarget_side
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTarget_ends
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTarget_projection
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTargetFiber
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTargetFiber_ι
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundarySideHomotopy
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundaryEndsHomotopy
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundaryTransportHomotopy
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundaryTransportHomotopy_side
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundaryTransportHomotopy_ends
+#check @SerrePositivity.InfinityCategories.F2.relativePathBoundaryTransportHomotopy_projection
+#check @SerrePositivity.InfinityCategories.F2.relativePath_model_transport
+#check @SerrePositivity.InfinityCategories.F2.exists_relativePathFiniteModelTransport
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTargetFiber_zero
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTargetFiber_one
+#check @SerrePositivity.InfinityCategories.F2.relativePathTransportTargetFiber_side
+#check @SerrePositivity.InfinityCategories.F2.relativePathFiberPath_zero
+#check @SerrePositivity.InfinityCategories.F2.relativePathFiberPath_one
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_path
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_left
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_right
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_restrict
+#check @SerrePositivity.InfinityCategories.F2.relativePath_model_reflection
+#check @SerrePositivity.InfinityCategories.F2.exists_relativeHomotopyZigzag
+#check @SerrePositivity.InfinityCategories.F2.relativePath_model_comparison
+#check @SerrePositivity.InfinityCategories.F2.exists_relativePathFiniteComparison
+#check @SerrePositivity.InfinityCategories.F2.relativePathComparison_square_boundary
+#check @SerrePositivity.InfinityCategories.F2.relativePathValuePoint_kan_point
+#check @SerrePositivity.InfinityCategories.F2.relativePathSquareCurry_restrict
+#check @SerrePositivity.InfinityCategories.F2.relativePathKanComparison_restrict
+#check @SerrePositivity.InfinityCategories.F2.kanCospanPoint_relative_boundary_path
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_original_input_relative_detection
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_original_input_relative_detection_of_boundary
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_transport_mapped_boundary
+#check @SerrePositivity.InfinityCategories.F2.leftFibration_glued_mapped_boundary_transport
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacement_relative_model_comparison
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_pair_relative_cylinder_detection
+#check @SerrePositivity.InfinityCategories.F2.kanCospan_relative_input_reduction
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_finite_relative_value_detection
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_finite_relative_lifting
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_finite_kan_boundary_lifting
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_finite_strict_relative_lifting
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementHomotopyPoint
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementHomotopyPoint_path
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementHomotopyPoint_input
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementHomotopyPoint_endpoint
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementHomotopyPoint_restrict
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementEndpoint_relative_lift
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementEndpoint_trivialKanFibration_of_strict_relative_lifting
+#check @SerrePositivity.InfinityCategories.F2.isWeakHomotopyEquivalence_of_strict_relative_lifting
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackKanComparison_isSimplicialHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.specifiedApexLimitConeTransport
+#check @SerrePositivity.InfinityCategories.F2.SpecifiedApexLimitConeTransport.apex
+#check @SerrePositivity.InfinityCategories.F2.SpecifiedApexLimitConeTransport.diagram
+#check @SerrePositivity.InfinityCategories.F2.continuousKanObject
+#check @SerrePositivity.InfinityCategories.F2.continuousKanMap
+#check @SerrePositivity.InfinityCategories.F2.fiberwisePullbackComparisonKanMap
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinity_homotopy_of_homMk_eq
+#check @SerrePositivity.InfinityCategories.F2.kanNativeConeLeg
+#check @SerrePositivity.InfinityCategories.F2.kanNativeConeLeg_edge
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleEdge
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleHomotopy
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleHomotopy_edge
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityTriangleHomotopy_of_faces
+#check @SerrePositivity.InfinityCategories.F2.kanConeHomotopyDiagonal
+#check @SerrePositivity.InfinityCategories.F2.kanConeHomotopyLower
+#check @SerrePositivity.InfinityCategories.F2.kanConeHomotopyUpper
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementSection_path
+#check @SerrePositivity.InfinityCategories.F2.intervalReplacementCanonicalPathHomotopy_section
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalVertexMap
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalVertexMap_factor
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalVertexMap_unit
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalVertexMap_comp
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantCocone
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantCoconeComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentConstantCoconeFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapCocone
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapCoconeComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalMapCoconeFiberIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalSourceValueMap
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalSourceValueMap_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalCoconeFiber_value_pre_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.relativeFunctorComposition_vertex
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleVertexIso
+#check @SerrePositivity.InfinityCategories.F2.CoherentTransformationVertexTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationVertexTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTotalMap
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTotalMap_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTotalMap_lift
+#check @SerrePositivity.InfinityCategories.F2.coherentSmallConstantTargetMap_inv_vertex
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningHomIso_hom_vertex
+#check @SerrePositivity.InfinityCategories.F2.CoherentConstantRepresentation.largeIso
+#check @SerrePositivity.InfinityCategories.F2.CoherentTransformationUnitTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitTriangle
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitTriangleLargeIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTotalMap_unit_lift
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationUnitRepresentation
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationCoconeRealization
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationCocone
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationCocone_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationCoconeComparisonIso
+#check @SerrePositivity.InfinityCategories.F2.coherentRepresentationCoconeIso
+#check @SerrePositivity.InfinityCategories.F2.functorIsoDown
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningFunctorIso
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningRelativeIso_inv_vertex
+#check @SerrePositivity.InfinityCategories.F2.smallUnstraighteningRelativeVertexIso
+#check @SerrePositivity.InfinityCategories.F2.unstraighteningTriangleRelativeVertexIso
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationRelativeVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTransformationTriangleRelativeIso
+#check @SerrePositivity.InfinityCategories.F2.strictKanPullbackMap_homotopyEquivalence
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyUp
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyUp_map_homMk
+#check @SerrePositivity.InfinityCategories.F2.uliftTruncatedEdge_down
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_up
+#check @SerrePositivity.InfinityCategories.F2.universeHomotopyDown_faithful
+#check @SerrePositivity.InfinityCategories.F2.kanApexConeTransport_vertex
+#check @SerrePositivity.InfinityCategories.F2.kanApexConeTransport_apexEdge
+#check @SerrePositivity.InfinityCategories.F2.kanApexConeTransport_diagramEdge
+#check @SerrePositivity.InfinityCategories.F2.kanApexConeTransportLeg
+#check @SerrePositivity.InfinityCategories.F2.kanApexConeTransportLeg_comparison
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredTotalVertex_isTerminal
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredColimitVertex_isTerminal
+#check @SerrePositivity.InfinityCategories.F2.CoherentFilteredLimitExchangeShape
+#check @SerrePositivity.InfinityCategories.F2.homotopyVertexEdge_precomp
+#check @SerrePositivity.InfinityCategories.F2.colimitHomotopy_isInvertible_of_pointwise
+#check @SerrePositivity.InfinityCategories.F2.colimitHomotopy_vertex_isInvertible
+#check @SerrePositivity.InfinityCategories.F2.isEquivalencePathVertex_colimitVertex
+#check @SerrePositivity.InfinityCategories.F2.isEquivalencePathVertex_of_pointwiseColimit
+#check @SerrePositivity.InfinityCategories.F2.coneInitialLeg
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_iff_initialLeg
+#check @SerrePositivity.InfinityCategories.F2.pointwiseColimit_preserves_initialShapeLimits
+#check @SerrePositivity.InfinityCategories.F2.coherentFilteredLimitExchangeShape_simplex
+#check @SerrePositivity.InfinityCategories.F2.functorVertexConeIso
+#check @SerrePositivity.InfinityCategories.F2.isLimitCone_functorVertexCone_iff_of_vertexIso
+#check @SerrePositivity.InfinityCategories.F2.pointwiseColimitCoconeFunctorIso
+#check @SerrePositivity.InfinityCategories.F2.pointwiseColimitConeVertexIso
+#check @SerrePositivity.InfinityCategories.F2.pointwiseColimitCompletedLimit_iff
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalColimitCoconeVertex
+#check @SerrePositivity.InfinityCategories.F2.coherentTotalColimitCoconeVertex_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeProjection_trivialKanFibration
+#check @SerrePositivity.InfinityCategories.F2.exists_coherentColimitCoconeSection
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeSection
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeSection_projection
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeSection_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeFunctor
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeFunctor_restrict
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeFunctor_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFunctor
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFunctor_vertex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitFunctorEdge
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeEdge_apex
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_curry
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitCoconeHomotopy_restrict
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitCylinderMap
+#check @SerrePositivity.InfinityCategories.F2.coconeTransformationHomotopy_h
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.coconeHomotopyUnitCylinder_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitCylinder_target
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_bottom
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_top
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_source
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitSquare_target
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalRelativeComposite
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalRelativeComposite_coordinates
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeValue
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeValue_edge
+#check @SerrePositivity.InfinityCategories.F2.spaceInfinityIdentity_edge
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitFamily
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitFamily_precomp
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitFamily
+#check @SerrePositivity.InfinityCategories.F2.coherentColimitUnitFamily_edge
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitFamily_evaluate
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitCylinderMap_zero
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitCylinderMap_one
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitFamily_zero
+#check @SerrePositivity.InfinityCategories.F2.coconeUnitFamily_one
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_postcomp_heq
+#check @SerrePositivity.InfinityCategories.F2.functorIso_app_eqToIso_heq
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_projection
+#check @SerrePositivity.InfinityCategories.F2.constantUnstraighteningFiberProjection_ι
+#check @SerrePositivity.InfinityCategories.F2.constantDiagramTransportWitness_endpoint
+#check @SerrePositivity.InfinityCategories.F2.functorIso_curry_heq_map
+#check @SerrePositivity.InfinityCategories.F2.coconeFiberMap_eq_unit_projection
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_eq_unit_tensor
+#check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_point
