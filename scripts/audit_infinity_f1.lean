@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
 import SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed
 import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
 import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
@@ -11257,3 +11258,16 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconeFiberMap_eq_unit_projection
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_eq_unit_tensor
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_point
+
+#print axioms SerrePositivity.InfinityCategories.discreteKanFunctor
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_vertex
+#print axioms SerrePositivity.InfinityCategories.Is0TruncatedSpace
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.DiscreteSpaceModel.simplex
+#print axioms SerrePositivity.InfinityCategories.DiscreteSpaceModel.simplex_eq
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_edge
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_diagramVertex
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_diagramEdge
+#print axioms SerrePositivity.InfinityCategories.setsToKan
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_presheafInclusion_edge

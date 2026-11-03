@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
 public import SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence
 public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F1.Compact.UniverseColimits
