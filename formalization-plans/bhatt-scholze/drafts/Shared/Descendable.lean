@@ -9,7 +9,7 @@ public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.InfinityCategories.Core.CocartesianPathSpace
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconeEquiv
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
 public import SerrePositivity.InfinityCategories.Derived.Stability
 public import SerrePositivity.InfinityCategories.Stable.Suspension

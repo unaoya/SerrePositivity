@@ -3,11 +3,11 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
 public import SerrePositivity.EInfinity.Perfectoidization.Comparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 -- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/A0/{PrismaticSite,CechAlexander}.lean、drafts/Sheaves/CAlgValued.lean、
 -- drafts/Shared/CosimplicialEInfinity.lean、drafts/DerivedGeneral/{CompletionFunctor,ScalarRestriction}.lean を import する。

@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Almost.Lemma103
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 -- W9-III-08：Lemma103 は現行の CompletedTensor（→ IntegralExistence → Inputs）を import する。2a 後に Lemma103 の依存を E3 非依存の芯（仮称 CompletedTensorCore）へ向ける（a9-design §7）。
 -- 本ファイルは drafts/A7/AnimatedPerfectoidization.lean（Prop 8.13）、drafts/DerivedGeneral/{Truncation,CompletionFunctor}.lean を import する。
 

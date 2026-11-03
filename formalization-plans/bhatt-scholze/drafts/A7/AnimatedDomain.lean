@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryCompari
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPreservation
 public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 -- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/DerivedGeneral/CompletionFunctor.lean だけを import する（A5 より先に置く）。

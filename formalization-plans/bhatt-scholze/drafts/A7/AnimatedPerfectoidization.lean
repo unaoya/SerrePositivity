@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Hom
 public import Mathlib.CategoryTheory.Elements

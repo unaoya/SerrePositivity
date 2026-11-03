@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNatural
 public import SerrePositivity.InfinityCategories.Kan.PiZeroConstant
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
 public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
 public import Mathlib.CategoryTheory.Sites.LeftExact

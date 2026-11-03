@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 -- 本ファイルは drafts/A0/PrismaticSite.lean（`PerfectPrismaticSite`、`flatTopology`、`structurePresheafDerived`）、drafts/Sheaves/{SheafCondition,GlobalSections,CechConerveLimit,CAlgValued}.lean、

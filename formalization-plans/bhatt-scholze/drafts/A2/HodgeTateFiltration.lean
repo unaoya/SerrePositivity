@@ -5,7 +5,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.Stability
 public import SerrePositivity.InfinityCategories.Stable.Loop
-public import SerrePositivity.InfinityCategories.Stable.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology}.lean、drafts/DerivedGeneral/Truncation.lean、
 -- drafts/A1/HodgeTateComparison.lean（Thm 6.3）、drafts/Shared/DeRhamPolynomial.lean、drafts/A7/AnimatedDomain.lean を import する。

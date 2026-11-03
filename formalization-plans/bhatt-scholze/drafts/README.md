@@ -35,6 +35,7 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 | 基準コミット | 日付 | 内容 |
 | --- | --- | --- |
 | 972bb7f53 | 2026-11-02 | 最初の骨組み（S1・S2）。InfinityCategories の名前はこの時点の main |
+| 3e27dda00 | 2026-11-03 | ∞ W2b の取り込み。drafts の import 行は調整役が機械的に書き換え（対応表 `scripts/refactor/targets/w2b-r37.json`・`w2b-r38.json`・`w2b-r73.json`・`w2b-section18-placement.json`）、Sheaves/GlobalSections の衝突は BS の追加行と書き換えの両方を残す。BS 側で追加確認：11-02 に Core へ下りた 6 モジュール（`Stable.{TrivialFibrationCocone,UniverseSquareHom,FiniteShapes,PushoutShape}`、`F2.FilteredExchange.FilteredInfinity`、`F2.CatInfinity.NativeConeLeg`）への旧名 import が 11-03 の BS-D2・D3-02・D5 で 10 ファイル 12 行入っていた（機械書き換えの対象外）ので `Core.*` に直した。全 import の解決を確認。`F2.IsFilteredInfinity` の名前空間は Core でも `F2` のまま |
 
 ## ファイル順序（W9-III-08・09、2026-11-03）
 

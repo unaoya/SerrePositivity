@@ -6,8 +6,8 @@ public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.EInfinity.BarrattEccles.HomologyAlgebra
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import Mathlib.Algebra.Category.Ring.Basic
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid

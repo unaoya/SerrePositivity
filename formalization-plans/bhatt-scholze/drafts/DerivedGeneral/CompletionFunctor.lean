@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.Derived.Homology
 public import SerrePositivity.InfinityCategories.Derived.StableLimits
 public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
