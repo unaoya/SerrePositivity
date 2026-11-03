@@ -23,6 +23,7 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 | `A6/` | `SerrePositivity/BhattScholze/Perfectoidization/Derived/`（A4 と同じ仮置き。arc site は BS 固有の扱い）。Prop 8.10 の引用 3 件の `sorry` 定理は drafts/ の間は問題なし。`SerrePositivity/` に入れるときは `scripts/make_area_audits.py` の許可一覧の更新が要る（調整役に知らせる、main 7b8b96286） | A6-1〜A6-4 |
 | `A7/` | `SerrePositivity/BhattScholze/Perfectoidization/Derived/`（A4 と同じ仮置き）。`AnimatedDomain.lean`（G-A7-1）・`DiscreteCore.lean`（G-A7-5）は A5 が import する共有部分で A5 より先に置く（W9-II-24）。所有は A7 | A7-1〜A7-2 |
 | `A1/CrystallineInput`・`A4/AfterComparison`・`A5/RootAdjunction`・`A5/PerfectSite` | 各 A 番号の置き場所と同じ。W9-III-09 で先行の定義と後段の定理を分けた（下の「ファイル順序」） | A1-3／A1-5、A4-3／A4-4、A5-4、A5-1 |
+| `A6/PerfectoidFiniteProduct` | `SerrePositivity/BhattScholze/Perfectoid/FiniteProduct`（仮、2a の統合先に合わせる）。G-A6-12 の E3 非依存の直接証明。BS-W10 作業 A で `CompletedTensor` の `isIntegralPerfectoid_finPi` の本体にする（`completed-tensor-split.md` §3） | G-A6-12 |
 | `A8/` | A8-1・A8-2 は `SerrePositivity/BhattScholze/Almost/`（既存の almost の隣）、A8-4 は `Perfectoidization/Derived/`（調整役了承、main 26f9f7fc5）。A8-3（Lemma 10.12）は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`（層別の本体）に、2a の後に新規ファイルだけで入れる（論文の層へ名前を予約）。独立した Codex の単位、担当は 2a の後。それまで drafts/A8/ のまま | A8-1〜A8-4 |
 | `A9/` | `SerrePositivity/BhattScholze/Perfectoidization/Derived/`（組み立て）と Inputs/PerfectoidizationInterface.lean の証明の置き換え（中身の段階、暦に載せてから） | A9-1 |
 | `Sheaves/SpaceValued` | S8（調整役の決定、main 7b8b96286、infinity-foundation-plan.md の M12e）：(1) 空間の層化・(5) 局所性・(6) 元の圏上の極限は `InfinityCategories/Sheaves/SpaceValued/`、(2) 離散の層化＝1 圏・(3) 単射に沿う押し出しは `Sheaves/Discrete/`、(4) の一般部分（HTT 5.1.5.6 の極限保存延長、el(F) 上の極限）は M12b と同じ `F2/`。前提に G13（𝒮 の presentable 性）と S4 の非安定版。時期・担当は M12 と同じ。それまで drafts/Sheaves/ のまま | S8 |
@@ -42,6 +43,7 @@ import 行は現時点の main の名前で書く（基準コミットは下の�
 A6/ArcSite・A6/ArcSheafProperty・A8/AlmostConnectivity（Lemma103 経由）がこれに当たる。2a 後に Fontaine の芯を E3 非依存のモジュールへ切り出す（a9-design §7、調整役へ依頼）。
 
 **drafts 内の順序**（→ は「先に置く」。同じ A 番号でも定義を先行ファイルへ、後段の定理を後に）：
+0. A6/PerfectoidFiniteProduct（既存の CommutativeAlgebra と Mathlib だけに依存。どこよりも先に置ける）
 1. Sheaves/・DerivedGeneral/・Shared/ → A0 → A1/CrystallineInput → A1/{HodgeTateMap,HodgeTateComparison} → A2 → A3
 2. A7/AnimatedDomain（A5 より先）
 3. A4/Perfectoidization（`prismaticPerfection_filteredColimit` もここ：A2 の sifted 余極限保存・塔の余極限・完備化の反射性だけで示す、W9-III-14）→ **A7/DiscreteCore（A4 の後、A5 より先）** → A4/InterfaceFields（定義。Prop 8.5 を使わない）

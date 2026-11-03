@@ -186,6 +186,9 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し（済、§2 (A)） → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。
 7. **（11-03 決定、ユーザー「全て ok」）段取り**：
    - 段 0（今〜2a、ビルドなし）：`completed-tensor-split.md`（済）、(A) の名前探し（済）、BS-W10 の指示書（`bhatt-scholze-codex-w10.md`、済。基準コミットは 2a 後に記入）。
+     追加（11-03 午後）：G-A6-12 の骨組み `drafts/A6/PerfectoidFiniteProduct.lean`（直積・Fin r・有限族、ModP/Perfection/Witt の直積の同型と θ の両立）、
+     `drafts/A5/RootAdjunction.lean` の主張を具体的な型に（延長性・完備性・濃度・関手性、`polyAlgebra`・`polyRootAlgebra` の perfectoid 性、`rootCover`）、
+     `ArcSite` の cover-dense を Mathlib の `Functor.IsCoverDense` の型に、BS-W11 の下書き（`bhatt-scholze-codex-w11.md`：段 1 ③④）。
    - 段 1（2a 後、基盤を待たない古典的単位。担当は BS の Codex、こちらは検収。調整役了承 11-03）：① CompletedTensor 分割＋G-A6-12（**2a 直後 11-05、BS-W10 作業 A**。全ビルドは 2b に便乗）→ ② Lemma 10.12（A8-3）→
      ③ A5/RootAdjunction・G-A6-11（R₀）・G-A6-3/6（付値環）・G-A8-6・1c の初等補題 → ④ A6/ArcSite の 1 圏部分 → ⑤ A0 の site の定義と A0-3c。BS-W10 は ①②、W11 以降に ③〜⑤。
    - 段 2（W2b・段 G 後）：∞ 基盤 S1〜S8・DerivedGeneral・Shared → A2 → A4〜A7 の中身 → A5 の Prop 8.5。

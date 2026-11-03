@@ -96,6 +96,7 @@ def IsArcCoverFamily {R : Type u} [CommRing R] {ι : Type u} [Finite ι] (B : ι
 def arcTopology : GrothendieckTopology (AffCompl p κ)ᵒᵖ := sorry
 
 /-- 概要：affPerfd_κ への誘導位相（`affPerfdInclusion.op` による引き戻し、Mathlib `Functor.inducedTopology`。包含は site の opposite の向きで渡す、W9-II-25）。
+定義の本体は `(affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)`（要確認：`IsLocallyCoverDense` のインスタンスが要る版なら `affPerfdInclusion_isCoverDense` から供給）。
 方針：Mathlib の dense subsite の道具。
 規約：原典 "Perfd ⊂ fSch with the induced topology" の affine 版。
 使われ方：Prop 8.10、Cor 8.12。 -/
@@ -177,6 +178,7 @@ theorem exists_perfectoid_arcCover : True := by trivial
 方針：`exists_perfectoid_arcCover`（前段 G-A6-11 つき。global な affCompl_κ を維持する、W9-II-16）。
 規約：Mathlib の 1 圏の道具。これで集合の層の圏同値 `Functor.sheafInducedTopologyEquivOfIsCoverDense`（= `IsDenseSubsite.sheafEquiv`、G-A6-8。W9-II-25 で名前を訂正）が使える。
 使われ方：A6-3。 -/
-theorem affPerfdInclusion_isCoverDense : True := by trivial
+theorem affPerfdInclusion_isCoverDense : (affPerfdInclusion p κ).op.IsCoverDense (arcTopology p κ) := by
+  sorry -- `exists_perfectoid_arcCover`：各対象の一対象被覆の像が生成する sieve が被覆
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived
