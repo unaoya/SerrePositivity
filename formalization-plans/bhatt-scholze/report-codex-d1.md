@@ -236,3 +236,19 @@ W9 の「Lemma 10.12 の残部」（`review-codex-w9.md` 2907–2908、2915行�
 
 - 新しい未発見名の仮置きとファイル内の名前に関する `要確認` は0件。`PrimeSpectrum.comap_asIdeal`、`Ideal.ResidueField.map` の等式の向き、`IsPurelyInseparable`、`Algebra.TensorProduct.includeRight`、本体での `IsNilpotent (RingHom.ker f)` の使用例をソースで照合した。
 - 標数 p の判定以降の7定理（完全環から被約環の場合、純非分離、近似、一般点、主開への拡張、最終層別を含む）は基準のまま。変更は `drafts/A8/Stratification.lean` と本報告のみ。ビルド・Lean 実行・型検査はしていない。
+
+### 第6部の続き（核の意味を確定、停止点3完了）
+
+前半のコミットは `03206fb58`。ユーザーの回答と a8-design の決定（`7a59fd9ed`）に従い、G-A8-4 の核の条件を `RingHom.ker f ≤ nilradical A` に統一した。全射の補題は `isUniversalHomeomorphism_of_nil_kernel` に改名し、同値判定の指数は `∀ b : B, ∃ n : ℕ, b ^ (p ^ n) ∈ f.range` とした。基底の条件 `(p : A) = 0` は射 f を通じて B にも伝わり、零環も含む。G-A8-5 の全射性は A で p 冪根を取り B の被約性で示し、単射性は A の被約性と核の nil 性で示す。核全体の一様な指数はどちらにも使わない。
+
+| 宣言 | 型にした内容 |
+| --- | --- |
+| `isUniversalHomeomorphism_of_isPurelyInseparable` | 体の純非分離拡大の構造射の普遍同相性。有限分離拡大については別の補題で、有限次元性・分離性を入力に `Algebra.Etale` を結論にした。 |
+| `exists_noetherianApproximation` | ℤ_(p) を ℤ の (p) での局所化として表し、hZp から R への射を作った。指定の有限係数集合を含む有限生成部分代数 R₀、noetherian 性、有限表示有限 R₀ 代数 S₀、右の脚の R 作用に関する S₀⊗_{R₀}R ≃ₐ[R] S を返す。証明では表示にモニック関係を加え、その係数も用いて R₀ を生成する。 |
+| `generic_structure` | 極小点の有限性、その剰余体の積 K が R の全商環であること、(K⊗_R S)_red の K 代数としての体の有限積分解。各体因子にはその下の極小点を指定した。同じ点の上の複数因子と、因子のない点も許す。各拡大の相対分離閉包 M は基底体上有限エタールで L/M は純非分離。p 可逆な基底体の標数は 0 で M→L は全単射。 |
+| `spread_out_generic` | noetherian 基底で全ての極小点を含む D(g) を取り、その上の指定された環の射を有限エタール射と普遍同相に分解する。後者が p 反転後に誘導する射の全単射性も条件に含めた。 |
+| `exists_finiteEtaleStratification` | n と g : Fin n → R の存在、全 g の生成イデアルが ⊤、各層で元の射の誘導射と分解の合成が一致すること、p = 0 または可逆であること。分解は同じ中間環 T に有限性・エタール性・普遍同相性・p 反転後の同型を課す。証明の穴には、近似環上で真に小さい V(g₁) への noetherian 帰納と (pgᵢ,gᵢ) による細分を記した。 |
+
+`earlierIdeal` は厳密に j < i の元だけを取り、`StratumRing I g` は (R/√I)[1/g]。これは (R/I)_red[1/g] の表示である。S 側は f に沿って I を延長し、それから根基を取り f(g) を反転する。`stratumUnit` と `stratumMap` は商・局所化の標準射から構成した。p 反転後の同型は、存在する任意の環同型ではなく同じ T→Sᵢ の誘導射に対する `Function.Bijective` として記録した。
+
+**確認結果。** `Ideal.ResidueField.map`、`IsLocalization.lift`、`IsLocalization.Away.lift`・`map`、`Ideal.quotientMap`、`Algebra.TensorProduct.includeRight`、`Subalgebra.FG`、`Ideal.finite_minimalPrimes_of_isNoetherianRing`、`separableClosure`、`Algebra.FormallyEtale.of_isSeparable`、`Algebra.isOpen_etaleLocus` をソースで照合した。未発見名の仮置き・ファイル内の「要確認」は0件。前半の核の解釈以外に設計との差は見つからなかった。対象の `: True`／`Type u := sorry` は残っていない。静的な差分・変更パスの確認のみで、Lean 実行・型検査・ビルドは未実施。停止点4（A0）には進んでいない。
