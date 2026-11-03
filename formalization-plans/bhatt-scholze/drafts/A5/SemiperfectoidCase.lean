@@ -229,13 +229,22 @@ def universalTest (hS : IsSemiperfectoid p R S) : (perfectSite p R S hR)ᵒᵖ :
 def universalTargetAlgebra (hS : IsSemiperfectoid p R S) : A_R R :=
   Under.mk (CommRingCat.ofHom ((universalPerfectoidUnit p R S hS).comp (algebraMap R S)))
 
-/-- 完全試験 prism の mod d は、圏同値の counit が指定する普遍標的 R′。 -/
+/-- 完全試験 prism の d は正則。derived mod d を離散商 B/J として読む。 -/
+def testModDResidueIso (U : (perfectSite p R S hR)ᵒᵖ) :
+    VertexIso ((modPrismFunctor p R hR).app _ (testValue p R hR S U))
+      ((algebraEmbedding R).app _ (nerveVertex ((targetAlgebra R p (ofAlgebra R S)).obj
+        ((perfectResidueFunctor p R hR S).obj U).obj))) := by
+  sorry -- B⊗^L_A A/d→B/J は d の正則性による商の標準同型。A/d≃R を通す
+
+/-- mod d の標的を R′ に運ぶ射は、普遍標的における圏同値の counit。 -/
 def universalTestModD (hS : IsSemiperfectoid p R S) :
     VertexIso ((modPrismFunctor p R hR).app _ (testValue p R hR S (universalTest p R hR S hS)))
       ((algebraEmbedding R).app _ (nerveVertex (universalTargetAlgebra p R S hS))) := by
-  let T := universalTarget p R S hS
-  let ε := (perfectSiteEquivPerfectoidUnder p R hR S).counitIso.app T
-  sorry -- 完全 prism の d は正則。導来 mod d は離散商であり、ε がそれを S 上で R′ と同定する
+  let ε := (perfectSiteEquivPerfectoidUnder p R hR S).counitIso.app (universalTarget p R S hS)
+  let forget : PerfUnderBounded p S (perfectSiteCutoff p R S) ⥤ A_R R :=
+    (ObjectProperty.ι _) ⋙ targetAlgebra R p (ofAlgebra R S)
+  exact testModDResidueIso p R hR S (universalTest p R hR S hS) ≪≫
+    (algebraNerveIso R (forget.mapIso ε)).map (algebraEmbedding R)
 
 /-- 概要：S_perfd → R′：比較写像の脚 Δ_{S/A,perf} → B_{R′}（A5-1 `perfectionComparisonLeg`（PerfectSite）、R′ の完全 prism）の mod d。S → S_perfd → R′ は単位。
 方針：定義の展開。

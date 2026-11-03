@@ -172,9 +172,17 @@ def perfPowerCosimplicial (U : PerfUnder_u p (CommRingCat.of S)) :
 Čech 余脈体 (S̃^{⊗_S n+1})_perfd。
 方針（W9-III-14）：**既存 Cor 7.3 の普遍 perfectoid 環**（`Semiperfectoid/Perfectoidization` の入口）から直接。T₁ ⊗̂_S T₂ は semiperfectoid（perfectoid T₁ ⊗̂_R T₂ の商）で
 Q(T₁ ⊗̂_S T₂) を取り、Hom の普遍性から Čech の整合。A5-2 の wrapper `universalPerfectoidRing`・比較同値・弱始対象は不要（後段を import しない）。
-規約：S3 の `CechNerveData`（`PerfUnder_u p S` の opposite）。
+規約：D3-02 の大きい版 `CechNerveDataLarge`。全 Perfd_{S/} の opposite で積を取る。
 使われ方：`limit_perfUnder_eq_tot`。 -/
-def perfUnder_cechNerveData : True := trivial
+def perfUnder_cechNerveData (U : (PerfUnder_u p (CommRingCat.of S))ᵒᵖ) :
+    Sheaves.CechNerveDataLarge U where
+  obj := (perfPowerCosimplicial p R hR S U.unop).op
+  proj n i := (perfPowerInj p R hR S U.unop n i).op
+  isLimit n := by
+    have hc := perfPowerIsColimit p R hR S U.unop n
+    sorry -- 同じ標準脚の余積を opposite に移して Fan の極限を得る
+  proj_map := by
+    sorry -- 余積からの desc の第 i 脚への制限は第 θ(i) 脚、op で射影の等式
 
 /-- 概要：構造前層 O_Δ の完全 site への制限（D(A) 値、CAlg_A 値）。
 方針：A0 の `structurePresheafDerived` を包含関手で引き戻す。
@@ -192,6 +200,15 @@ def perfectStructurePresheaf :
 def perfectStructurePresheafDerived :
     Sheaves.Presheaf (perfectSite p R S hR) (derivedInfinityCategory (perfectPrismRing p R)) :=
   perfectStructurePresheaf p R hR S ≫ SerrePositivity.EInfinity.BarrattEccles.cAlgForgetDerived _
+
+/-- 忘却後は A0 の structurePresheafDerived の完全対象への制限。 -/
+def perfectStructureRestriction :
+    let i : perfectSite p R S hR ⥤ PrismaticSite (perfectPrism p R hR) S (perfectSiteCutoff p R S) :=
+      (ObjectProperty.ι _).op
+    FunctorIso (perfectStructurePresheafDerived p R hR S)
+      ((SSet.uliftFunctor.{u+1,u}).map (nerveMap i.op) ≫
+        structurePresheafDerived (perfectPrism p R hR) S (perfectSiteCutoff p R S)) := by
+  sorry -- 同じ A 上の環の関手を離散埋め込みで送り、algebraEmbeddingForgetIso を前合成する
 
 /-- 概要：G-A5-5：O_Δ は完全 site で flat 層（Čech 層）。
 方針：A0-3d（Cor 3.12）の flat 被覆について B₁ ⊗̂_{B₀} B₁ の相対 Čech 項を用いる。

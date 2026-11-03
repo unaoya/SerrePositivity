@@ -1,6 +1,6 @@
 # BS-D3　drafts の主張の具体化　作業報告
 
-## 第1部　A5 の先行定義（基準 main `789259c90`）
+## 第1部　停止点1完了・A5 の先行定義（基準 main `789259c90`）
 
 ### 完全 site と比較写像
 
@@ -19,3 +19,10 @@
 
 - `PerfectSite.lean` の `-- 要確認：ScalarRestriction へ` は1件、`discreteRestrictionIso`。離散な A 代数 B の構造射を φ_A と合成したものの離散埋め込みと、元の埋め込みの `cAlgRestrictScalars φ_A` による制限を比較する。この同型を通して完備な試験環の Frobenius の逆を読んだ。`ScalarRestriction.lean` は編集していない。
 - 第0脚の仮置きは A0/S2 の CAlg 値 RΓ の射影待ち。A2 の `prismaticCohomologyCAlg` はこの基準でまだ `True`。A4 の `discreteDeltaFrobenius`、`completeCAlgInclusion`、`modPrismFunctor`、`directHodgeTateUnit` を既存の名前で使用した。A2 の底変換 (4)、HT filtration の具体化も証明の依存先。W9-III-08 の完備テンソルの perfectoid 性は、2a 後の E3 非依存の芯を使う予定。
+- D3-02（`2bb0d406c`）で、全 `PerfUnder_u` の opposite に対し S3 側の `CechNerveDataLarge` の四欄を供給できた。κ 以下の完全 site は小さい `CechNerveData` のまま。大きい版の極限判定 `isLimitCone_iff_restrict_cech_large` は基盤待ちで、使用先は次の停止点の `limit_perfUnder_eq_tot`。停止点1では両極限の一致は使わない。
+
+### 件数と確認範囲
+
+基準にあった結論 `True` を PerfectSite で8件、SemiperfectoidCase で17件、計25件具体化した。さらに `universalPerfectoidRing : Type u := sorry` を選択した普遍環に置き換えた。二種類の集計は計26件。既に型を持っていた `perfectFlatTopology`、`IsSemiperfectoid`、`universalPerfectoidUnit` の本体、環インスタンスや比較用の補助宣言は別集計。対象2ファイルの `True` 宣言・`Type u := sorry` はいずれも0件。`-- 要確認：` は PerfectSite 1件、SemiperfectoidCase 0件。
+
+設計側の `3acedf8eb`（有界版 Lemma 4.8）、`1480a4e5c`（D3-01）、`2bb0d406c`（D3-02）を読み、最後の二つに取り込まれた A5 の途中差分も含めて照合した。ほかに新しい設計判断はない。原典と照合した箇所、既存の宣言名と引数、基準の25件の名前、import パス、括弧、差分の空白を静的に確認した。指示どおり Lean の型検査・ビルドは行っていない。停止点2には進んでいない。
