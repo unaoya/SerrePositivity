@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 中間頂点を動かす三角柱の三単体への写像
 

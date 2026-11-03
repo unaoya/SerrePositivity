@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 /-!
 概要：全 path の引き戻しの二端点を、同じ二入力の指定像として回収する。
 方針：引き戻しの可換式を二つの直積射影へ送る。

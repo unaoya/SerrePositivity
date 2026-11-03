@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinDiagonalSplit
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
+public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
 public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
 public import SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
 
 /-!
 概要：join の左因子を第二の因子へ移す prism の構成と境界。

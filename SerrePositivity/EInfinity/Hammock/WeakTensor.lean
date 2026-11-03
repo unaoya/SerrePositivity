@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TensorHomotopy
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanProductUnit
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 

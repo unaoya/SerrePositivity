@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinInitialBoundary
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：各 fiber の全図式に余極限があると、相対 join の普遍余錐全体からの射は自明 Kan fibration。

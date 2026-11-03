@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 
 /-!
 概要：Kan 複体の元の二項直積と二射影を、空間の ∞ 圏の native な積錐にする。

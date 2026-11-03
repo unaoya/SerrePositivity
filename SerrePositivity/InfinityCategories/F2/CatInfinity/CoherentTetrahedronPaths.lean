@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePaths
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths
 
 /-!
 概要：coherent 三単体の四面を同じ Hom へ移す四つの path。

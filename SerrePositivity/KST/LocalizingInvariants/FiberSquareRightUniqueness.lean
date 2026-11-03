@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanHomotopyUniqueness
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareHomotopyUniqueness
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-!
 概要：零角を持つ pullback 四角形の比較は、右辺への全関手としての制限で決まる。

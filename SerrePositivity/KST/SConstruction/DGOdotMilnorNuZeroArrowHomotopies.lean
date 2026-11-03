@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuZeroCornerComparison
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
 概要：元実零角の二隣接辺を、端点成分を固定した元標準零角の辺と比較する。

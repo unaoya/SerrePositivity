@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingAbsorption
-public import SerrePositivity.InfinityCategories.F2.Idempotent.TriangleKernel
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingAbsorption
+public import SerrePositivity.InfinityCategories.Core.Idempotent.TriangleKernel
 
 /-!
 概要：元の交互列 Y→X→Y→… の全射を持つ、元の強い分裂添字の実際の nerve 単体。

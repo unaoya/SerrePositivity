@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitRepresentableCone
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LimitConeFamilyReadback
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyReadback
 
 /-!
 概要：元の余極限からの全 Hom の極限錐を、標的で添字付けた元の全錐の族へ転置する。

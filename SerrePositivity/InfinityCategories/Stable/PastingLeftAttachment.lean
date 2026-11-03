@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.PastingLeftSquareIso
 public import SerrePositivity.InfinityCategories.Stable.PastingLeftSpanIso
 public import SerrePositivity.InfinityCategories.Stable.PastingOuterCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitAttachment
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 
 /-! # 左押し出しによる余極限頂点の付加
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedCoslicePrecomposition
-public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport
+public import SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
 /-!
 概要：同じ dg 関手による実 coslice の後合成を、対象の標準点に正規化する。

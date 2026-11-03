@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-!
 概要：全ての指定形状の図式が余極限を持つとき、普遍余錐の射影は自明な Kan fibration。

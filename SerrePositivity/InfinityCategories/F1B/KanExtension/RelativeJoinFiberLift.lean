@@ -1,8 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberCocone
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLocalCone
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
 
 /-!
 概要：相対 join の fiber の同型を定値な底の係数による標準持ち上げとして同定する。

@@ -173,7 +173,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
-| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で編集が完了（2026-11-02、静的な検査は通過、変更モジュールと直接 importer のビルドは ∞ の W2b の後）。全ビルドは 11-05（記録は下の「区切り 2a の記録」） |
+| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で完了。全ビルドと verify は 11-04 未明に PASS（gate:true、監査 99/99、f3daa70ad。記録は下の「区切り 2a の記録」）。取り込み待ち |
 | 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドは 11-06（その前に main を取り込む） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
@@ -333,6 +333,11 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   - 2b へ：Prop247ConeComparison・Prop247Cone・Prop247RankCompleteness の一般部分（HA/DerivedCompletion へ）。
   - `hetale` の長い仮定を名前つきの述語にする件、Corollary404 などの不要な import（§8.4）は未着手。
   - CA → HA の import は 2a の前から 40 か所以上ある（層の規則の対象外）。
+- 全ビルドと verify（11-03 夜〜11-04、main 3e27dda00 を取り込んだ f4e4c1724 の上）：監査を make_area_audits で再生成（a85cfff19。
+  bhatt_scholze は 2a で BS の下へ移したファイルを含めるため再生成版を残した）。1 回目（VERIFY_JOBS=3、65 分）は audit_clmst の 1 件で FAIL：
+  RootTower/BaseChange へ移した `stageAlgebraIsNoetherianOfBase` の名前空間が `Section2` に変わっていた。f3daa70ad で直し、2 回目
+  （VERIFY_JOBS=6 VERIFY_MEMORY_GB=40、24 分）は **PASS gate:true、監査 99/99、sorry 閉包 PASS**。改名表は名前空間の突き合わせで 16 件
+  （上の 1 件と、29b688d02 でファイルごと消した Prop247 の宣言 15 件の「削除」）を足して 312 件。
 
 区切り 2b の記録（2026-11-02 夜、worktree refactor/2b。A のみ、未ビルド）：
 

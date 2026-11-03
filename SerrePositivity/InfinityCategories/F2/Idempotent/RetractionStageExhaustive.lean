@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.AbsorbingChainFace
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdentityCollapseChain
+public import SerrePositivity.InfinityCategories.Core.Idempotent.IdentityCollapseChain
 
 /-!
 概要：元の交互セルの像の増大列は、元の強い分裂添字全体を覆う。

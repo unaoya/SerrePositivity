@@ -88,8 +88,12 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
   R/p ⊗^L R/p ≃ [R/p →0→ R/p] で H^{−1} = R/p ≠ 0、p で零化されるので完備化しても消えない）。Prop 8.5 系 4（perfd は π_0 だけによる）で Q_perfd ≃ (R/J)_perfd、
   Prop 8.13 で (R/J)_perfd ≃ (R/f_1)_perfd ⊗̂_R ⋯（単位と両立）、
   J_perfd ⊗̂ M の消滅を各 (f_i)_perfd ⊗̂ M = 0 から（Lemma 10.3 の形 (R/J)_perfd ⊗̂ J_perfd = 0 と、J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M）。紙 1。
-- 忠実平坦な基底変換：R → R′ perfectoid、p 完備忠実平坦。(R′/JR′)_perfd = (R/J)_perfd ⊗̂_R R′（Prop 8.13）⇒ (JR′)_perfd = J_perfd R′（Thm 7.4 の全射性と
-  平坦性）。M が J-almost 零 ⇔ M ⊗̂_R R′ が JR′-almost 零（忠実平坦で零性を反映）。
+- 忠実平坦な基底変換：R → R′ perfectoid、p 完備忠実平坦。(R′/JR′)_perfd = (R/J)_perfd ⊗̂_R R′（Prop 8.13）。**D2-02（BS-D2、11-03）**：(JR′)_perfd = ker(R′ → (R/J)_perfd ⊗̂_R R′) は
+  完備テンソル J_perfd ⊗̂_R R′ の R′ への像（0 → J_perfd → R → (R/J)_perfd → 0 の p 完備平坦な底変換が完全：(R/J)_perfd は有界 p ねじれで H^{−1} = 0）であり、
+  これは **J_perfd·R′ の p 進閉包**（Fayolle, Prop 2.9 の式、有限生成 J）。通常の `Ideal.map` との一致は**述べない**（E3 で使わない。BS-D2 の反例：V 混標数 perfectoid 付値環、R = V⟨x_1^{1/p^∞}, x_2^{1/p^∞}, …⟩、J = K = ker(R → V)、
+  R′ = R⟨t^{1/p^∞}⟩ で R′/KR′ は p ねじれなしだが Σ p^n x_n t^n は KR′ の閉包にだけ入る。有界ねじれだけでは足りず、K が有限生成なら R′/KR′ は導来完備＋有界ねじれで
+  古典的完備＝分離で KR′ は閉、となるが J_perfd は一般に有限生成でない（例 (p^{1/p^∞})）ので補題にしない）。almost 零の反映には閉包の有無は効かない：K′ := (JR′)_perfd ≅ K ⊗̂_R R′（平坦で単射）なので K′ ⊗̂_{R′} M′ = K ⊗̂_R M′。
+  M が J-almost 零 ⇔ M ⊗̂_R R′ が JR′-almost 零（忠実平坦で零性を反映）。
 
 ### 3.2 Thm 10.9 の J-almost 連結性（原典 (1)(2) の筋、(3)(4) なし）
 
@@ -182,7 +186,7 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
 | G-A8-3 | ~~有限 R 加群は導来 p 完備~~（**偽**、W9-III-01 の反例 R = ∏V、R/⊕V）。正：**有限表示** R 加群は導来 p 完備（既存 `isModuleComplete_of_finitePresentation`）；完備な加群の核・余核・有限積（既存 `ModuleClosure`）；主イデアル (g)・gS・gR^r は乗法写像の像 | `HomologicalAlgebra/DerivedCompletion/{FinitePresentationComplete,ModuleClosure}.lean` | 3.2 の 4、Cor 8.12 の前提 |
 | G-A8-3′ | 比較環 S′ の有限性（e_j s_a で生成、S → S′・R^r → S′ は整）と導来 p 完備性（R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r）。W9-III-01 の修復計算（Codex 第 3 部で ○） | なし | 3.2 の 4 |
 | G-A8-3″ | 整写像 S → S′ が g の外で同型（S[1/g] ≅ S′[1/g]）なら `ArcOutside`（Frac(V) へ延長し、整閉性で V へ）。局所化の同型だけでは不成立（W9-III-02 の反例）。界面の「g 非零」を「g 可逆」に弱めない | なし（Mathlib `ValuationRing` の整閉性） | 3.2 の 4 |
-| G-A8-4 | 普遍同相（整・Spec 全射・radicial）の定義と、標数 p での判定（像の p 冪、核の冪零）、底変換・合成・冪零拡大 | なし（Mathlib に部分品？要確認） | Lemma 10.12、3.3 |
+| G-A8-4 | 普遍同相（整・Spec 全射・radicial）の定義と、標数 p での判定（**核は nil イデアル**＝各元が冪零（`RingHom.ker f ≤ nilradical A`）、一様な冪零指数は要求しない；各 b ∈ B に或る n で b^{p^n} ∈ im f、n は b ごと）、底変換・合成・nil 核をもつ全射。有限表示（Lemma 10.12 の場合）なら核は有限生成なので nil ⇒ 冪零だが、一般の補題は nil で述べる（11-03、Codex の質問への回答。W9 第 3 部続き 2 §3.5 の「一様な指数は不要」と同じ） | なし（Mathlib に部分品？要確認） | Lemma 10.12、3.3 |
 | G-A8-5 | 完全 F_p 環から被約環への普遍同相は同型 | なし | 3.3 の 3・5 |
 | G-A8-6 | perfectoid 環上の有限エタール代数は perfectoid（S/p で相対 Frobenius 同型、W(S^♭) = W(R^♭) のエタール持ち上げ、ker θ_S = d） | なし（要確認：`Prism/Perfectoid` の隣） | 3.3 の 3 |
 | G-A8-7 | 層別の底変換不変性（有限エタール・普遍同相・被約商）、全商環からの広げ（noetherian） | Mathlib（部分） | Lemma 10.12 |

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectVerdierDiagram
 public import SerrePositivity.KST.Spectra.SpectrumFiberSquares
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-! # Cat^perf 上の Sp 値局所化不変量
 概要：零・filtered 余極限・冪等完備 Verdier 列を保存する実 ∞ 関手を定義する。

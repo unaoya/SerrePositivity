@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison
+public import SerrePositivity.InfinityCategories.Core.TerminalArrowComparison
 public import SerrePositivity.InfinityCategories.Core.PushoutHomotopy
 
 /-! # 終対象へ向かう span との比較

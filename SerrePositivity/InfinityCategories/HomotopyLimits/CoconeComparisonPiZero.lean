@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeComparisonEdge
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialFiberEdgePiZero
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 
 /-!
 概要：余極限錐全体からの coherent な比較を、固定終点余錐空間の Hom 同値で計算する。

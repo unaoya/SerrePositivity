@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 public import SerrePositivity.InfinityCategories.F1.Joins.ConeSpanBaseDiagram
-public import SerrePositivity.InfinityCategories.Stable.ColimitAttachment
+public import SerrePositivity.InfinityCategories.Core.ColimitAttachment
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
 
 /-!

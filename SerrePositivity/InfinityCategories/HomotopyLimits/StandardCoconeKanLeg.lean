@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeStandardVertexHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanNativeEdgeUnitSquare
-public import SerrePositivity.InfinityCategories.Stable.CoconeFactorization
+public import SerrePositivity.InfinityCategories.Core.CoconeFactorization
 
 /-!
 概要：元の全余錐の脚の頂点共役辺は、同じ底変換の標準全空間 Kan 辺と同じ類を持つ。

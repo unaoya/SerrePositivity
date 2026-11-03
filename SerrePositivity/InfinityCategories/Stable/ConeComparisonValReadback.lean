@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
 public import SerrePositivity.InfinityCategories.Stable.ConeEdgeRebase
 
 /-!

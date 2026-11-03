@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SquareFamilyReading
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindexImage
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindexImage
 
 /-!
 概要：同じ全四角形族の点ごとの filtered 補完は普遍四角形を保つ。

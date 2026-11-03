@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftComma
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberPostIso
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 
 /-!
 概要：oriented fiber product の fiber を反転した関手の comma の fiber の反転として表示する。

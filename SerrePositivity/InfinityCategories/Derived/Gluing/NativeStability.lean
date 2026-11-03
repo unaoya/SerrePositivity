@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Pretriangulated
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse
+public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 /-!
 概要：元の二 dg 圏が前三角的なら、元 dg gluing の nerve と共通宇宙の nerve は安定である。
 方針：既存の実前三角性から native 安定性を得て、同じ単体集合の宇宙持ち上げへ移す。

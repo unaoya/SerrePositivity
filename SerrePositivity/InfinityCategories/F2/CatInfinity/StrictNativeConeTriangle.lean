@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
 public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
 

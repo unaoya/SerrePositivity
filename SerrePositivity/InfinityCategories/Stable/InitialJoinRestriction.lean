@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-! # 始点が始対象となる左 cone の余錐の制限
 

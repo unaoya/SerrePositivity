@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductSquare
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-! # 実積へ移送した Cat^perf 比較図式の四頂点
 概要：全図式を移した後も、指定した元の BF 値・実積を四角に厳密に回収する。

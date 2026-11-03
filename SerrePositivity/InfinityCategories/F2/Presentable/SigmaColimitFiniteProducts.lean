@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaColimitNonemptyProducts
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafColimitEmptyProducts
+public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafColimitEmptyProducts
 
 /-!
 概要：P_Σ の元の sifted 図式の前層余極限頂点が、元の有限積保存条件を満たすと証明する。

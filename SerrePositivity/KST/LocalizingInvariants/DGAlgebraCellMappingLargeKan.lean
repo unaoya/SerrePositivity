@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingKanFunctor
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
 public import SerrePositivity.InfinityCategories.F1.Universe.Kan
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseKanPullback
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.UniverseKanPullback
 
 /-!
 概要：native cell 写像の Kan 模型を、代数の ∞ 局所化の写像空間と同じ宇宙に持ち上げる。

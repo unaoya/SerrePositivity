@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductVertices
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-! # 実積へ移送した同じ全図式の四辺の自然性
 概要：全図式の移送から、指定した四成分と四辺の自然性をそのまま回収する。

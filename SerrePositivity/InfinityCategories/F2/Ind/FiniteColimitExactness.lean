@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteConeExactness
 public import SerrePositivity.InfinityCategories.F2.Ind.PresheafSubcategory
 public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
-public import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 
 /-!
 概要：元の有限余極限全余錐は、Ind の各前層で反転後に極限全錐となる。

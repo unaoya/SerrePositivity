@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint
 public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-! # 同じ復元の実 fiber 点の等式輸送と頂点同型は、指定分類射に反映される -/
 

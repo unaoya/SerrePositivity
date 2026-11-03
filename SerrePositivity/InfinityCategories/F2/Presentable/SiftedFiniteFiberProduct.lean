@@ -1,9 +1,21 @@
 module
-
-public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteDiagonal
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.Core.RightFibration
+public import SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanFilling
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.Cofinality
+public import SerrePositivity.InfinityCategories.F1B.Cofinality.LeftFibrationCofinalPullback
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedFiniteDiagonal
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.NonemptyFiniteSSetProduct
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteDiagonal
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SiftedFiniteFiberProduct
+
 
 /-!
 概要：sifted な底上の元の有限非空 fiber 積の全空間 Kan 比較。
@@ -19,27 +31,6 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
-
-/-- 元の有限非空族の全積射で元の対角を引き戻した、共通底の fiber 積。 -/
-def finiteCommonFiberProduct (n : ℕ) {B : SSet.{u}} {E : Fin (n + 1) → SSet.{u}}
-    (p : (i : Fin (n + 1)) → E i ⟶ B) : SSet.{u} :=
-  pullback (nonemptyFiniteSSetProductMap n p) (nonemptyFiniteDiagonal B n)
-
-/-- 元の共通 fiber 積から元の i 番目の全空間への射影。 -/
-def finiteCommonFiberProductProjection (n : ℕ) {B : SSet.{u}}
-    {E : Fin (n + 1) → SSet.{u}} (p : (i : Fin (n + 1)) → E i ⟶ B)
-    (i : Fin (n + 1)) : finiteCommonFiberProduct n p ⟶ E i :=
-  pullback.fst (nonemptyFiniteSSetProductMap n p) (nonemptyFiniteDiagonal B n) ≫
-    nonemptyFiniteSSetProjection n E i
-
-/-- 元の全射影は同じ元の底射影を被覆する。 -/
-lemma finiteCommonFiberProductProjection_base (n : ℕ) {B : SSet.{u}}
-    {E : Fin (n + 1) → SSet.{u}} (p : (i : Fin (n + 1)) → E i ⟶ B)
-    (i : Fin (n + 1)) : finiteCommonFiberProductProjection n p i ≫ p i =
-      pullback.snd (nonemptyFiniteSSetProductMap n p) (nonemptyFiniteDiagonal B n) := by
-  rw [finiteCommonFiberProductProjection, Category.assoc,
-    ← nonemptyFiniteSSetProductMap_projection, ← Category.assoc, pullback.condition,
-    Category.assoc, nonemptyFiniteDiagonal_projection, Category.comp_id]
 
 /-- sifted な共通底上の元の有限 fiber 積から元の全空間の反復積への射は right cofinal。 -/
 lemma finiteCommonFiberProduct_isRightCofinal (n : ℕ) {B : SSet.{u}} [IsSiftedInfinity B]

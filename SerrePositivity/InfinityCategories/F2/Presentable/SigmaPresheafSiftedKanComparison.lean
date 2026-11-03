@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafApexTotalComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductKanComparison
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductKanComparison
 
 /-!
 概要：元の有限極限錐頂点の評価の余極限から、元の全評価余極限の Kan 積へ比較する。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitPrismComparisonSection
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalColimitComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalColimitComparison
 
 /-!
 概要：局所同値な図式間の元の余極限余錐の prism の頂点辺が局所同値となることを証明する。

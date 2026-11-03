@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorColimitConeExistence
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorColimitConeExistence
 
 /-!
 概要：両端の余極限の存在から、両端評価の像も余極限である矢印圏の余極限錐を作る。

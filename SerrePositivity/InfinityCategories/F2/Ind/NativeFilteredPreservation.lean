@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.KappaColimits
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の宇宙 u+1 の関手について、宇宙 u の κ-filtered 余極限の保存性を定める。

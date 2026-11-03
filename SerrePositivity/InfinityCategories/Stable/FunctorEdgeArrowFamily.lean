@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
-public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 
 /-!
 概要：全パラメーターに整合する実錐比較を、矢印圏の四角形へ移す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows
+public import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 
 /-! # 二本の辺から span の族を構成する

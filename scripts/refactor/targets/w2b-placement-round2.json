@@ -1,0 +1,459 @@
+{
+  "status": "APPLIED_STATIC_PASS_BUILD_PENDING",
+  "moves": {
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs"
+  },
+  "headers": {
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso"
+    ],
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport"
+    ],
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap"
+    ],
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone"
+    ]
+  },
+  "requirements": {
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport": [
+      "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+      "Mathlib.Basic.FunLike.Basic",
+      "Mathlib.Basic.FunLike.Equiv",
+      "Mathlib.Basic.Opposite",
+      "Mathlib.CategoryTheory.Category.Basic",
+      "Mathlib.CategoryTheory.ComposableArrows.Basic",
+      "Mathlib.CategoryTheory.ConcreteCategory.Basic",
+      "Mathlib.CategoryTheory.Discrete.Basic",
+      "Mathlib.CategoryTheory.Functor.Basic",
+      "Mathlib.CategoryTheory.Functor.Category",
+      "Mathlib.CategoryTheory.Iso",
+      "Mathlib.CategoryTheory.NatTrans",
+      "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+      "Mathlib.CategoryTheory.Opposites",
+      "Mathlib.CategoryTheory.Types.Basic",
+      "Mathlib.Combinatorics.Quiver.Basic",
+      "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "Mathlib.Logic.Equiv.Defs",
+      "SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg",
+      "SerrePositivity.InfinityCategories.Core.Limit",
+      "SerrePositivity.InfinityCategories.Core.NerveCone",
+      "SerrePositivity.InfinityCategories.Core.ReindexSliceOver",
+      "SerrePositivity.InfinityCategories.Core.TerminalMap",
+      "SerrePositivity.InfinityCategories.F1.Categories.CatInfinity",
+      "SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve",
+      "SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces",
+      "SerrePositivity.InfinityCategories.F1.Coherent.Vertices",
+      "SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+      "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteCoherentSpaceProducts",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductNative"
+    ],
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs": [
+      "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "Mathlib.AlgebraicTopology.SimplicialNerve",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+      "Mathlib.Basic.FunLike.Basic",
+      "Mathlib.Basic.FunLike.Equiv",
+      "Mathlib.Basic.Opposite",
+      "Mathlib.CategoryTheory.ConcreteCategory.Basic",
+      "Mathlib.CategoryTheory.Discrete.Basic",
+      "Mathlib.CategoryTheory.Functor.Basic",
+      "Mathlib.CategoryTheory.Functor.Category",
+      "Mathlib.CategoryTheory.NatTrans",
+      "Mathlib.CategoryTheory.Opposites",
+      "Mathlib.CategoryTheory.Types.Basic",
+      "Mathlib.Combinatorics.Quiver.Basic",
+      "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "Mathlib.Logic.Equiv.Defs",
+      "SerrePositivity.InfinityCategories.Core.Cocone",
+      "SerrePositivity.InfinityCategories.Core.Equivalence",
+      "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+      "SerrePositivity.InfinityCategories.F1.Categories.CatInfinity",
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingSpace",
+      "SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv",
+      "SerrePositivity.InfinityCategories.F1.Coherent.Vertices",
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone",
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationUnitTriangle",
+      "SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg",
+      "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening",
+      "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationPoint",
+      "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence",
+      "SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeLegs",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProjectionCocones",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+      "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTransformationUnitCocone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProjection",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductNative",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanNativeHomAction"
+    ],
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone": [
+      "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "Mathlib.Basic.Finite.Defs",
+      "Mathlib.Basic.FunLike.Basic",
+      "Mathlib.Basic.FunLike.Equiv",
+      "Mathlib.Basic.Opposite",
+      "Mathlib.CategoryTheory.Functor.Basic",
+      "Mathlib.CategoryTheory.Functor.Category",
+      "Mathlib.CategoryTheory.Opposites",
+      "Mathlib.CategoryTheory.Types.Basic",
+      "Mathlib.Combinatorics.Quiver.Basic",
+      "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "Mathlib.Logic.Equiv.Defs",
+      "SerrePositivity.InfinityCategories.F1.Categories.CatInfinity",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.DiscreteIndexIso",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap"
+    ],
+    "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone": [
+      "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+      "Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated",
+      "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+      "Mathlib.Basic.Finite.Defs",
+      "Mathlib.Basic.FunLike.Basic",
+      "Mathlib.Basic.FunLike.Equiv",
+      "Mathlib.Basic.Opposite",
+      "Mathlib.CategoryTheory.ComposableArrows.Basic",
+      "Mathlib.CategoryTheory.ConcreteCategory.Basic",
+      "Mathlib.CategoryTheory.Discrete.Basic",
+      "Mathlib.CategoryTheory.Functor.Basic",
+      "Mathlib.CategoryTheory.Functor.Category",
+      "Mathlib.CategoryTheory.NatTrans",
+      "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+      "Mathlib.CategoryTheory.Opposites",
+      "Mathlib.CategoryTheory.Types.Basic",
+      "Mathlib.Combinatorics.Quiver.Basic",
+      "Mathlib.Combinatorics.Quiver.ReflQuiver",
+      "Mathlib.Logic.Equiv.Defs",
+      "SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg",
+      "SerrePositivity.InfinityCategories.Core.Limit",
+      "SerrePositivity.InfinityCategories.Core.TerminalMap",
+      "SerrePositivity.InfinityCategories.F1.Categories.CatInfinity",
+      "SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve",
+      "SerrePositivity.InfinityCategories.F1.Coherent.Vertices",
+      "SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport",
+      "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductNative"
+    ]
+  },
+  "enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "tiers": {
+    "W1": {
+      "forbidden_module_count": 0,
+      "affected_core_module_count": 0
+    },
+    "W2a": {
+      "forbidden_module_count": 150,
+      "affected_core_module_count": 2532
+    },
+    "W2b": {
+      "forbidden_module_count": 150,
+      "affected_core_module_count": 2532
+    }
+  },
+  "existing_upward_count": 12,
+  "additional_moves": 2,
+  "additional_split": 1,
+  "total_upward_moves": 14,
+  "kept_HL_modules": [
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeLegTriangles",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeUnitComparison",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalKanComparison",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalLegCocones",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalProjectionUnit",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductComparison",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+    "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductLegReadback"
+  ],
+  "split": {
+    "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+    "dest": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+    "moved": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex"
+    ],
+    "keep": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+    ],
+    "dependencies": {
+      "moved_to_keep": [
+        [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ],
+        [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ],
+        [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ],
+        [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct"
+        ],
+        [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ]
+      ],
+      "keep_to_moved": []
+    },
+    "transient": [],
+    "declaration_modules": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_isLimit": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_vertex": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductNativeCone_leg_edge": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone"
+    }
+  },
+  "declaration_analysis": {
+    "modules": [
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeLegTriangles",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeUnitComparison",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalKanComparison",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalLegCocones",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalProjectionUnit",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductComparison",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductLegReadback",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs",
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport"
+    ],
+    "missing_before": [],
+    "outside_importers": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitLegEdges",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitNativeCone",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyOriginalColimitTransport",
+      "SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyTransportedLegComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafFamilyComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafOriginalLegComparison",
+      "SerrePositivity.InfinityCategories.HomotopyLimits"
+    ],
+    "edges": [
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeLegTriangles",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductComparison",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductConeComparison"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductConeComparison"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeUnitComparison",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeLegTriangles",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonApexEdge",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonApexEdge_isInvertible",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonLegTriangle",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalConeLeg",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductConeLeg"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonApexEdge",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonApexEdge_isInvertible",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyConeComparisonLegTriangle",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalConeLeg",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductConeLeg"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyCoherentProduct",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.nonemptyFiniteIndexPresentation"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalKanComparison",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalLegCocones",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_indexed"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalLegKanMap_indexed"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalLegCocones",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalProjectionUnit",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalProjectionUnitIso_indexed"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyOriginalProjectionUnitIso_indexed"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyOriginalProjectionUnit",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductLegReadback",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductLegUnitIso_indexed"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductLegUnitIso_indexed"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductComparison",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorDiagram",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_isLimit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_vertex"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorDiagram",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_isLimit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_vertex"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs",
+        "D_M": [],
+        "f2_paths": {},
+        "no_f2_path": []
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductLegReadback",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyConeUnitComparison",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductLegTransformation"
+        ],
+        "f2_paths": {},
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyProductLegTransformation"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexLegs",
+        "dependency": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_leg_edge",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_vertex"
+        ],
+        "f2_paths": {
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone",
+              "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_leg_edge": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_leg_edge",
+              "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_vertex": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductNativeCone_vertex",
+              "SerrePositivity.InfinityCategories.HomotopyLimits.IsSiftedInfinity"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity"
+          }
+        },
+        "no_f2_path": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.reindexedFiniteProductDiagram"
+        ]
+      },
+      {
+        "importer": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport",
+        "dependency": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone",
+        "D_M": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_isLimit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_vertex"
+        ],
+        "f2_paths": {
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_isLimit": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_isLimit"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone"
+          },
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_vertex": {
+            "path": [
+              "SerrePositivity.InfinityCategories.HomotopyLimits.finiteSiftedCoherentProductNativeCone_vertex"
+            ],
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.FiniteCoherentProductNativeCone"
+          }
+        },
+        "no_f2_path": []
+      }
+    ],
+    "existing_upward_count": 12,
+    "proposed_additional_count": 11,
+    "total": 23
+  }
+}

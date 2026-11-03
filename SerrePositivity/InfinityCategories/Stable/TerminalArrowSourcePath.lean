@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryEdgeLift
 public import SerrePositivity.InfinityCategories.Stable.TerminalArrowRelative
 

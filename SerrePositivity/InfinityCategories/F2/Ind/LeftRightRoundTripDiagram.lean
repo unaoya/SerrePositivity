@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.UnderSectionRightDiagram
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationOppositeDiagram
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
 
 /-!
 概要：left/right 二重反転を、元の全通常図式上の自然な底上の比較として回収する。

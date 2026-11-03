@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionLimits
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOppositeGeneral
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 
 /-!
 概要：元の任意の冪等完備化は、元の図式に既に存在する全余極限余錐を保存する。

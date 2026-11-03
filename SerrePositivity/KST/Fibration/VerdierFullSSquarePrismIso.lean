@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierFullSSquarePrism
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の上下二胞体を保持する全四角柱を、その指定辺による全関手同型に束ねる。

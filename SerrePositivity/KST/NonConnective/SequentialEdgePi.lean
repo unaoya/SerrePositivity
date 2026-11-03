@@ -4,7 +4,7 @@ public import SerrePositivity.KST.NonConnective.SequentialCandidateLegs
 public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 
 /-!
 概要：実際の Sp 辺のホモトピー類の等号を、全整数 π への同じ作用へ移す。

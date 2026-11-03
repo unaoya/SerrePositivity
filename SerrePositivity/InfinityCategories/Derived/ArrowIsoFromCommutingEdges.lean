@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 /-!
 概要：可逆な指定二成分を持つ実辺の可換正方形を、全関手圏の実同型にする。
 方針：同じ四辺を実正方形に戻し、指定端点の可逆性で全区間関手の辺を可逆と判定する。

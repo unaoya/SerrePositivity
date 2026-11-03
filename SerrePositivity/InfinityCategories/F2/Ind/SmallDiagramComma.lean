@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramCommaSmallness
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallFibration
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!
 概要：元の全図式 comma を小さい全空間と厳密な射影で表示する。

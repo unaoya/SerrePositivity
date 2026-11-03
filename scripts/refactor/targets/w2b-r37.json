@@ -1,0 +1,2761 @@
+[
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
+        "SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization",
+        "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass",
+        "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationPath",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting": [
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Stable.BoundaryPair"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.BoundaryPair",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.BoundaryPair",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.BoundaryPair": [
+        "SerrePositivity.InfinityCategories.Core.IntervalBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary": [
+        "SerrePositivity.InfinityCategories.Core.CocartesianFibration",
+        "SerrePositivity.InfinityCategories.Core.CocartesianTerminalBoundary",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeFactorization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeFactorization",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeFactorization": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.CoconeLeg"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc": [
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula": [
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeFamily",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeFamily": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ConeFamily",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorRight",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeFixedComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeFixedComparison": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparison",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparisonEpi",
+        "SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramPrecomposition",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeLastVertex",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeLastVertex",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeLastVertex": [
+        "SerrePositivity.InfinityCategories.Core.Join"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeLeg",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeLeg",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeLeg": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.TerminalUniqueness"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges": [
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeMappingGluing",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingGluing": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.JoinPushout",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeMappingHomComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingHomComparison": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.PinchedSlice",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.PinchedHom.Index",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction": [
+        "SerrePositivity.InfinityCategories.Core.FibrationRestriction",
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.LeftKanFibration",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeMappingSpace",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeMappingSpace": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionCartesianEdge",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeRestrictionCartesianEdge": [
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.InternalHomFlipAdjunction",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.TerminalExtension",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeLastVertex",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration": [
+        "SerrePositivity.InfinityCategories.Core.CocartesianEdge",
+        "SerrePositivity.InfinityCategories.Core.CocartesianFibration",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianOpposite",
+        "SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeTransport": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.RightPrism",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CoconeTransportPrism",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CoconeTransportPrism": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransport"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeOfHomotopyConstant": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Ind.CoconeOfPrism": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges": [
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitAttachment",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ColimitAttachment",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ColimitAttachment": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.ColimitAttachmentLifting"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F1.Joins.ConeSpanColimitTransfer": [
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer": [
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitAttachmentLifting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ColimitAttachmentLifting",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ColimitAttachmentLifting": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.JoinPushout",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies": [
+        "Mathlib.CategoryTheory.LiftingProperties.Limits",
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePathIso",
+        "SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction": [
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementUniversal": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociator",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociatorMiddle",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.NestedCosliceIso"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful": [
+        "SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration",
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+        "SerrePositivity.InfinityCategories.Stable.MappingSpacePositiveBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+        "SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful",
+        "SerrePositivity.InfinityCategories.Stable.ColimitHomotopyUniqueness",
+        "SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitHomotopyUniqueness",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitHomotopyUniqueness",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitHomotopyUniqueness": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+        "SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful",
+        "SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitReindex",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ColimitReindex",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ColimitReindex": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.SConstruction.ColimitDiagramTransport": [
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ColimitRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.ColimitRestriction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.ColimitRestriction": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization": [
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorRight",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CosliceCoconeFamilyEquivalence": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCalculus",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparison",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorRight",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceCylinderExtension",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CosliceCylinderExtension",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CosliceCylinderExtension": [
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCylinder",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCylinderJointEndpoint",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FatJoinRightMono",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.RelativeCylinderExtension",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceCylinderFixedDiagram",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CosliceCylinderFixedDiagram",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CosliceCylinderFixedDiagram": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCylinder",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramCylinderIso",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinCylinderFixedDiagram",
+        "SerrePositivity.InfinityCategories.Core.JoinEquivalenceFunctor",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceFixedDiagramIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CosliceFixedDiagramIso",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CosliceFixedDiagramIso": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCylinder",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCylinderFunctorIso",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramCylinderIso",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderExtension",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCylinderFixedDiagram",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceLaxEquivalence",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.CosliceLaxEquivalence": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparison",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparisonEpi",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FatJoinGeneralComparison",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramPrecomposition",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramVertexEquiv",
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+        "SerrePositivity.InfinityCategories.Stable.CosliceFixedDiagramIso",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.CosliceRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.CosliceRestriction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.CosliceRestriction": [
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.SliceUnderRestriction",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.Definition",
+    "action": "reimport",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Definition",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Definition": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Finite",
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.StableOpposite": [
+        "SerrePositivity.InfinityCategories.Stable.InitialOpposite"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FatJoinRightTensor",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FatJoinRightTensor": [
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FatJoinTensorDesc",
+        "SerrePositivity.InfinityCategories.Core.FatJoinTensorExt"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensorComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FatJoinRightTensorComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FatJoinRightTensorComparison": [
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparison",
+        "SerrePositivity.InfinityCategories.Core.FatJoinTensorExt",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinCylinderSimplex",
+        "SerrePositivity.InfinityCategories.Core.JoinTensor",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorRight",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FinalHornProductBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FinalHornProductBoundary": [
+        "SerrePositivity.InfinityCategories.Core.BoundaryPrismOpposite",
+        "SerrePositivity.InfinityCategories.Core.InitialHornProductBoundary",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.OuterHornDuality",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FinalHornRestrictionLifting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting": [
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.SkeletalExtension",
+        "SerrePositivity.InfinityCategories.Core.SkeletalLifting",
+        "SerrePositivity.InfinityCategories.Core.TerminalExtension",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.FinalHornProductBoundary"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Finite"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FiniteShapes",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FiniteShapes": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.TerminalUniqueness",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FixedHomotopyComponent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FixedHomotopyComponent",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FixedHomotopyComponent": [
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift": [
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.GridOpposite",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.GridOpposite",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.GridOpposite": [
+        "SerrePositivity.InfinityCategories.Core.PrismOpposite",
+        "SerrePositivity.InfinityCategories.Stable.PastingShapes"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Stable.FixedHomotopyComponent"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationPath",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy": [
+        "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.HomotopyInvertibility",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.HomotopyInvertibility": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalMappingSpace",
+        "SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy",
+        "SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.IdentityCocone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.IdentityCocone",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.IdentityCocone": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.Core.NerveCone",
+        "SerrePositivity.InfinityCategories.Core.OuterHornDuality",
+        "SerrePositivity.InfinityCategories.Core.PointHornJoin",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport": [
+        "Mathlib.CategoryTheory.Limits.Preorder",
+        "SerrePositivity.InfinityCategories.Core.CocartesianCosliceLifting",
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.NerveCone",
+        "SerrePositivity.InfinityCategories.Core.PointCosliceEdge",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociator",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociatorFactors",
+        "SerrePositivity.InfinityCategories.Core.JoinAugmented",
+        "SerrePositivity.InfinityCategories.Core.JoinReassociation",
+        "SerrePositivity.InfinityCategories.Core.JoinReassociationNaturality"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber": [
+        "SerrePositivity.InfinityCategories.Core.CodiscreteNerve",
+        "SerrePositivity.InfinityCategories.Core.ContractibleKan",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCalculus",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.InnerPullback",
+        "SerrePositivity.InfinityCategories.Core.KanFibrationTools",
+        "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+        "SerrePositivity.InfinityCategories.Core.PrecompositionEquivalence",
+        "SerrePositivity.InfinityCategories.Core.PrecompositionTensor",
+        "SerrePositivity.InfinityCategories.Core.RelativeEquivalencePathAt",
+        "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration",
+        "SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.KanRelativePathLifting"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.LastJoinEvaluation",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.LastJoinEvaluation": [
+        "SerrePositivity.InfinityCategories.Core.Join"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.LaxCoslice",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.LaxCoslice": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinComparison",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FixedDiagramPrecomposition",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFixedComparison",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.LaxCosliceNaturality": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.LaxCosliceUncurry": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinTransform",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.LaxCosliceUniversal": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.FatJoinTensorExt",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.FatJoinRightTensor",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialHomComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalenceCalculus",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.InnerFiber",
+        "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+        "SerrePositivity.InfinityCategories.Core.PrecompositionTensor",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality": [
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
+        "SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZeroNaturality": [
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero": [
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialSpan",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.LeftFibrationInitialSpan": [
+        "SerrePositivity.InfinityCategories.Core.ConeAnodyne",
+        "SerrePositivity.InfinityCategories.Core.LeftFiberKan",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.Core.VertexFiberMap",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.MappingSpacePositiveBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.MappingSpacePositiveBoundary": [
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+        "SerrePositivity.InfinityCategories.Core.FunctorHomotopy",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan",
+        "SerrePositivity.InfinityCategories.Core.PinchedUniversal",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.NestedCoslice",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.NestedCoslice",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.NestedCoslice": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociator",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociatorFactors",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.NestedCosliceIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.NestedCosliceIso",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.NestedCosliceIso": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinAssociator",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Stable.NestedCoslice"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingCofinality",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.PastingCofinality",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.PastingCofinality": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRestriction",
+        "SerrePositivity.InfinityCategories.Stable.CosliceRestriction",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PastingCorner",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PastingCorner": [
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Stable.PrismRetraction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingCornerCocone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PastingCornerCocone",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PastingCornerCocone": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingRightCocone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.PastingRightCocone",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.PastingRightCocone": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.PrismBaseDetection",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerCocone",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingShapes",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingRightSpanComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.PastingRightSpanComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.PastingRightSpanComparison": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceRightRestriction",
+        "SerrePositivity.InfinityCategories.Stable.PastingCofinality",
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PastingRightSpanIso",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PastingRightSpanIso": [
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingRightSpanMap",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PastingRightSpanMap",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PastingRightSpanMap": [
+        "SerrePositivity.InfinityCategories.Stable.PastingCorner"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PastingShapes",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PastingShapes",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PastingShapes": [
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PinchedLeftPiZeroVertex",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex": [
+        "SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceLeft",
+        "SerrePositivity.InfinityCategories.Core.MappingSpacePiZero",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.CoslicePinchedLeft",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.PinchedLeftCoordinates",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.Pointed",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.Pointed",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.Pointed": [
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalUniqueness",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PrismRetraction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PrismRetraction",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PrismRetraction": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.PushoutProduct",
+        "SerrePositivity.InfinityCategories.Core.JoinCells",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Core.RightPrism",
+        "SerrePositivity.InfinityCategories.Stable.CoconeTransport"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.PushoutShape",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.PushoutShape": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLeftColimits",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.Terminal"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare": [
+        "SerrePositivity.InfinityCategories.Core.Pullback"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ReindexSliceOver",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ReindexSliceOver",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ReindexSliceOver": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.UniverseLimits"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ReindexSliceUnder",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ReindexSliceUnder": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Slice"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary": [
+        "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp",
+        "SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.RelativeCoslice",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.CosliceEndpointFibration",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.RelativeCoslice",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.RelativeInitialVertices",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.RelativeInitialVertices": [
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.RightJoinCoproduct",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.RightJoinCoproduct": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.FatJoin",
+        "SerrePositivity.InfinityCategories.Core.FatJoinFunctor",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Stable.LaxCoslice",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceNaturality",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUncurry",
+        "SerrePositivity.InfinityCategories.Stable.LaxCosliceUniversal"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback": [
+        "Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Basic",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing",
+        "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareDuality",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SquareDuality",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SquareDuality": [
+        "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Stable.GridOpposite",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.SquareOpposite",
+        "SerrePositivity.InfinityCategories.Stable.SquareTranspose"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SquareFunctorTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SquareFunctorTransport": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ConeFamily",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Derived.Stability": [
+        "SerrePositivity.InfinityCategories.Stable.Definition"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory": [
+        "Mathlib.Algebra.Homology.ShortComplex.Basic",
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.ZeroHomotopy"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows": [
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareOpposite",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SquareOpposite",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SquareOpposite": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.ConeOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Stable.ColimitReindex",
+        "SerrePositivity.InfinityCategories.Stable.GridOpposite",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightCocone",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.SquareOppositeShapes"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareOppositeShapes",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.SquareOppositeShapes",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.SquareOppositeShapes": [
+        "SerrePositivity.InfinityCategories.Core.ConeDiagramReverse",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Stable.GridOpposite",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SquareTranspose",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SquareTranspose",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SquareTranspose": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Stable.ColimitReindex",
+        "SerrePositivity.InfinityCategories.Stable.PastingRightCocone",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.StandardJoinOpposite",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.StandardJoinOpposite",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.StandardJoinOpposite": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.MappingSpaceMap",
+        "SerrePositivity.InfinityCategories.Core.SuspensionDiagrams",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic",
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
+        "SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies",
+        "SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices",
+        "SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationLifting": [
+        "SerrePositivity.InfinityCategories.Stable.SpanFamilies",
+        "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Core.SuspensionDiagrams",
+    "moved": [
+      "SerrePositivity.InfinityCategories.IsSuspensionDiagramVertex",
+      "SerrePositivity.InfinityCategories.squareDiagram",
+      "SerrePositivity.InfinityCategories.suspensionDiagramEvaluation",
+      "SerrePositivity.InfinityCategories.suspensionDiagrams"
+    ],
+    "keep": [
+      "SerrePositivity.InfinityCategories.IsLoopDiagramVertex",
+      "SerrePositivity.InfinityCategories.LoopSquare.diagramVertex",
+      "SerrePositivity.InfinityCategories.LoopSquare.diagramVertex_evaluation",
+      "SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex",
+      "SerrePositivity.InfinityCategories.SuspensionSquare.diagramVertex_evaluation",
+      "SerrePositivity.InfinityCategories.isSuspensionDiagramVertex_iff_isLoopDiagramVertex",
+      "SerrePositivity.InfinityCategories.loopDiagramEvaluation",
+      "SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_essentiallySurjective",
+      "SerrePositivity.InfinityCategories.loopDiagramEvaluation_target_surjective",
+      "SerrePositivity.InfinityCategories.loopDiagrams",
+      "SerrePositivity.InfinityCategories.loopDiagrams_quasicategory",
+      "SerrePositivity.InfinityCategories.squareDiagram_functorVertex",
+      "SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_essentiallySurjective",
+      "SerrePositivity.InfinityCategories.suspensionDiagramEvaluation_source_surjective",
+      "SerrePositivity.InfinityCategories.suspensionDiagrams_quasicategory",
+      "SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso",
+      "SerrePositivity.InfinityCategories.suspensionLoopDiagramsIso_evaluation"
+    ],
+    "attributes": {
+      "SerrePositivity.InfinityCategories.loopDiagrams_quasicategory": [
+        "instance"
+      ],
+      "SerrePositivity.InfinityCategories.suspensionDiagrams_quasicategory": [
+        "instance"
+      ]
+    },
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration",
+        "SerrePositivity.InfinityCategories.Core.FullSubcomplexIso",
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.SuspensionDiagrams",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.Definition",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+      ],
+      "SerrePositivity.InfinityCategories.Core.SuspensionDiagrams": [
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.TerminalArrowComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.TerminalArrowComparison",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.TerminalArrowComparison": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.SimplexVertexDetection",
+        "SerrePositivity.InfinityCategories.Core.StdSimplexProductMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalMappingSpace",
+        "SerrePositivity.InfinityCategories.Core.TerminalUniqueness",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport": [
+        "SerrePositivity.InfinityCategories.Core.BoundaryOpposite",
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.Opposite",
+        "SerrePositivity.InfinityCategories.Core.RelativeOuterHornOp",
+        "SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension",
+        "SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso",
+        "SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport",
+        "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary": [
+        "SerrePositivity.InfinityCategories.Core.FunctorTerminal",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.PrismBoundaryExtension",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Core.PrismFilling",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalExtension"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinLifting",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Core.SliceMap",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseColimitShapeReduction": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseHorns",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseHorns",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseHorns": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinNaturality",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Stable.UniverseHorns",
+        "SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseSquareHom",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseSquareHom",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseSquareHom": [
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseSquareShape",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseSquareShape": [
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins",
+        "SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseStandardJoins",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseStandardJoins": [
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares": [
+        "SerrePositivity.InfinityCategories.Core.Cocone",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.Limit",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.Square",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoin",
+        "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
+        "SerrePositivity.InfinityCategories.Core.UniverseLimits",
+        "SerrePositivity.InfinityCategories.Core.UniverseSSetMaps",
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape",
+        "SerrePositivity.InfinityCategories.Stable.ReindexSliceOver",
+        "SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder",
+        "SerrePositivity.InfinityCategories.Stable.UniverseHorns",
+        "SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseVertexIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.F1.UniverseVertexIso",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.F1.UniverseVertexIso": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration",
+        "SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseZeroObjects",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseZeroObjects": [
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal",
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle": [
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareHom",
+        "SerrePositivity.InfinityCategories.Stable.UniverseSquareShape",
+        "SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares",
+        "SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.VertexFiberOpposite",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.VertexFiberOpposite": [
+        "SerrePositivity.InfinityCategories.Core.InitialOpposite",
+        "SerrePositivity.InfinityCategories.Core.VertexFiber",
+        "SerrePositivity.InfinityCategories.PinchedHom.Basic"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ZeroHomotopy",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ZeroHomotopy",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ZeroHomotopy": [
+        "Mathlib.CategoryTheory.Adjunction.Limits",
+        "Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal",
+        "Mathlib.CategoryTheory.Limits.Shapes.ZeroObjects",
+        "SerrePositivity.InfinityCategories.Core.InitialHomotopy",
+        "SerrePositivity.InfinityCategories.Stable.Pointed"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Core.ZeroTargetArrows",
+    "moved": [],
+    "keep": [],
+    "attributes": {},
+    "candidate": "R37",
+    "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Core.ZeroTargetArrows": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.Core.JoinBoundary",
+        "SerrePositivity.InfinityCategories.Core.PrismContraction",
+        "SerrePositivity.InfinityCategories.Core.Terminal",
+        "SerrePositivity.InfinityCategories.Core.TerminalUniqueness",
+        "SerrePositivity.InfinityCategories.Core.TerminalVertices",
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes",
+        "SerrePositivity.InfinityCategories.Stable.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary"
+      ]
+    }
+  }
+]

@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FullSubcomplexEd
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeCosliceCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeFilteredCriterion
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedPointQuillenA
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 
 /-!
 概要：点 fiber の compact comma の第一成分射影が right cofinal であることを示す。

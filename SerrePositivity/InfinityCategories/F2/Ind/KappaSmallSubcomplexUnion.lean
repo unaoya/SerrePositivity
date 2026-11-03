@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSubcomplexCovers
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSubcomplexCovers
 
 /-!
 概要：正則 κ に関して κ 個未満の κ-small な部分複体の和は κ-small。

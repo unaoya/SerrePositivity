@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
 
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport

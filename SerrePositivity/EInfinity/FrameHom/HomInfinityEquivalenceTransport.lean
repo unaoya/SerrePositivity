@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulHomComparison
 public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence

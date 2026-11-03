@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.FixedCosliceReindex
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 
 /-! # 固定図式の再添字付けと余錐族の展開
 

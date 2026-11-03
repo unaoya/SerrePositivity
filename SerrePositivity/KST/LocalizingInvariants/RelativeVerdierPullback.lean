@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：提示源内の Verdier 比較長方形から、同じ値関手の実 pullback を導く。

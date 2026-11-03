@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.MarkedCocartesianFunctorPrecomposition
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.PredicateIso
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.RelativeRestrictionLifting
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
 
 /-!
 概要：指定辺を保つ相対 Hom の単射による制限の同値持ち上げと core の Kan 充填性。

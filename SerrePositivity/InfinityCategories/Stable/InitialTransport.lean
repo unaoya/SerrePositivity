@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 public import SerrePositivity.InfinityCategories.Core.PointHornJoin
 public import SerrePositivity.InfinityCategories.Core.OuterHornDuality

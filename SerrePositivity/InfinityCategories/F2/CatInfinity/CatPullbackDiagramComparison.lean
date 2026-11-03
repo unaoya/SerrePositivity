@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
 
 /-!
 概要：元の cospan と可逆 path で置換した cospan の Cat_∞ 内での同型。

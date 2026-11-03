@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.SpecifiedLimitConeTransport
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.SpecifiedLimitConeTransport
 
 /-!
 概要：指定された極限錐の輸送の二つの制限を明示する。

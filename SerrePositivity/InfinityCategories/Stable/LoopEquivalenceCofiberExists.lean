@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.CofiberPushoutComparison
 public import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceCofiberRotation
 public import SerrePositivity.InfinityCategories.Stable.LoopEquivalenceExcision
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：有限極限と実 loop 同値から、全ての辺の実 cofiber を構成する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceEdgeValue
 public import SerrePositivity.InfinityCategories.F1.Transport.UniversalTransportReflection
 public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
 

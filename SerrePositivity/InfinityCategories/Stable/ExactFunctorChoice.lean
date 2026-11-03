@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
 public import SerrePositivity.InfinityCategories.Stable.CofiberSquareComparisonIso
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # cofiber の選択と関手同型による完全性の判定
 

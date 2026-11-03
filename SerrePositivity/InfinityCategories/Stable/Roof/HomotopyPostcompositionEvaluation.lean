@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F1B.Roof.HomotopyPostcomposition
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-!
 概要：全後合成ホモトピーの各関手成分を、同じ元のホモトピーの制限へ照合する。

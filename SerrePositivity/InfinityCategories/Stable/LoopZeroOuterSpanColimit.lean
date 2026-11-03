@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SquareFixedSpanCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：固定 span の余錐比較から suspension の普遍四角形と厳密切断を構成する。

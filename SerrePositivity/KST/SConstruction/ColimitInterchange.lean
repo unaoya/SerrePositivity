@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DoubleCoconeUniversality
 public import SerrePositivity.KST.SConstruction.FunctorColimitReindex
 public import SerrePositivity.KST.SConstruction.ColimitDiagramTransport
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-! # 二方向の余極限の交換
 概要：点ごとの外側余極限は、内側の余極限性を境界から錐頂点へ延長する。

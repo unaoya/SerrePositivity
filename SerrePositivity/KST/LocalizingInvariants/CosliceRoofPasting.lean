@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares
 public import SerrePositivity.InfinityCategories.Stable.PastingCornerGluing
 public import SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso
-public import SerrePositivity.InfinityCategories.Stable.GridOpposite
+public import SerrePositivity.InfinityCategories.Core.GridOpposite
 public import SerrePositivity.InfinityCategories.Core.JoinReverseFactors
 public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint

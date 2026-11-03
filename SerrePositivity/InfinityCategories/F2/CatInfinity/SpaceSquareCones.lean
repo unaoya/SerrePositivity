@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentVertices
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentVertices
 
 /-!
 概要：与えられた Kan 複体の引き戻し正方形の通常の錐。

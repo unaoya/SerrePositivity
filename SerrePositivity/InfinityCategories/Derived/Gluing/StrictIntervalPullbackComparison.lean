@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackCoordinates
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathSection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-! 一脚が fibration の厳密引き戻しから、同じ定値 path の区間引き戻しへの比較。 -/

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
 
 /-!

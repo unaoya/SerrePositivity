@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialSectionLifting
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEvaluation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.AllEdges
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：left fibration の相対関手空間の始対象での評価は、自明 Kan fibration。

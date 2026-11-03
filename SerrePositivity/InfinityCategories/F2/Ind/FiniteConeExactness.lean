@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.ConePresheafRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteLimitExchangeInput
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredClosure
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeTransformationPointPost
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.VertexConeIsoTransport
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.VertexConeIsoTransport
 
 /-!
 概要：Indκ の全前層は、交換定理を入力した形状の元の極限全錐を保存する。

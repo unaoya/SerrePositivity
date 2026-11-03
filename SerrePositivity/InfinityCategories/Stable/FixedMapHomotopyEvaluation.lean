@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 
 /-! # 部分図式を固定するホモトピーの評価
 

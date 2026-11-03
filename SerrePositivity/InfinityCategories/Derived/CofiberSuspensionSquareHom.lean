@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CofiberSuspensionComparisonData
 public import SerrePositivity.InfinityCategories.Derived.ComplexSquareMiddleHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
 public import SerrePositivity.InfinityCategories.Stable.HomotopyEndpointTransport
 
 /-! # 標準 cofiber から標準 suspension への四角形比較

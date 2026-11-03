@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanDiagramBundle
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveProductSwapIso
+public import SerrePositivity.InfinityCategories.Core.Ind.NerveProductSwapIso
 public import Mathlib.CategoryTheory.Functor.Currying
 
 /-!

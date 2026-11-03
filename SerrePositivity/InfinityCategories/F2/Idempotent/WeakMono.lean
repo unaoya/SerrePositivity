@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.TriangleKernel
+public import SerrePositivity.InfinityCategories.Core.Idempotent.TriangleKernel
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Mono
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
 

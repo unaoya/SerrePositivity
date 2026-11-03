@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ConeCounitHomUni
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeUnitPrismSwap
 public import SerrePositivity.InfinityCategories.F2.Presentable.FlipConstantFunctorHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.HomTransportSameEdge
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LimitConeFamilyFunctor
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyFunctor
 
 /-!
 概要：全錐族の指定余単位の変数交換を、関手圏内の native な錐の余単位へ照合する。

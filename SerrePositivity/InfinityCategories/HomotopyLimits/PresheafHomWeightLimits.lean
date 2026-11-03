@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：Hom(F(−), d) の元の全前層値関手は、d の指定された全極限錐を保存する。

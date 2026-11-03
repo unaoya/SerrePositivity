@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.Stable.ColimitHomotopyUniqueness
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.F1.ColimitHomotopyUniqueness
 public import SerrePositivity.InfinityCategories.Stable.SpanComparisonUniqueness
 
 /-! # 始点固定の cofiber 比較の一意性

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
-public import SerrePositivity.InfinityCategories.Stable.ArrowSquareHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
 概要：実比較正方形の対角辺を保ったまま、同じ cospan の普遍錐を構成する。

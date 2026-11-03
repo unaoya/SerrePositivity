@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
 
 /-!
 概要：QCat の実際の豊穣 Hom の後合成と、関手空間の core の後合成の一致。

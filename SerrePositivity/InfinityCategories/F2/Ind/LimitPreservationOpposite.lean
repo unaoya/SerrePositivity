@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PreservedColimitRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeLimit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：元の関手の極限保存を、反転と二重反転の同じ全錐に輸送する。

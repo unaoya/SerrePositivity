@@ -6,13 +6,13 @@ public import SerrePositivity.InfinityCategories.F1B.Cones.CoconeShapeAdjunction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.JoinVertexSummands
 public import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpacePrismPoint
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakReverseHomotopy
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FiniteJoin
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin
 
 /-!
 概要：共通終点へ向かう実分母の有限図式を、全図式を保持して共通精密化する。

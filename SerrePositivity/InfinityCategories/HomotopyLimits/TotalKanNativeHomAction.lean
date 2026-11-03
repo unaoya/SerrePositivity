@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedValueTransportNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LeftHomEdgeTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TotalKanMapCocone
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentCoconeTransportAction
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalCoconeValuePre
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeTransportAction
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCoconeValuePre
 
 /-!
 概要：元の余極限 Kan 射の coherent 辺を、元の余錐の左 Hom の指定点として追跡する。

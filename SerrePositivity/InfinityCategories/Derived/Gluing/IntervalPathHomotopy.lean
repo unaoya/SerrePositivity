@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalDiagram
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-! 任意パラメーター上の実区間族を、同じ全区間写像を持つ端点間ホモトピーへ読む。 -/

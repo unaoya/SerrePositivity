@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ActionComparisonComposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 /-!
 概要：指定合成子の三重合成経路を、同じ比較の水平合成へ同定する。
 方針：元の二つの合成子正方形と全関手同型の実交換則を使う。

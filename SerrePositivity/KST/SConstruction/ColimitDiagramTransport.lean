@@ -1,6 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-! # 図式を動かす余極限の輸送

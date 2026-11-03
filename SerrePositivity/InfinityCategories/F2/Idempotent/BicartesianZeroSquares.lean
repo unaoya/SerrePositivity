@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PullbackRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.ZeroRetracts
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
-public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting
+public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
 
 /-!
 概要：冪等完備な元の標的の双カルテジアンな零角四角形の全 ∞ 圏は冪等完備。

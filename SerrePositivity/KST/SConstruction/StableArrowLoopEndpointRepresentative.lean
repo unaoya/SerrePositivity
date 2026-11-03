@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableProductHomClass
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.EdgeRepresentativeLift
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatTensorAndArrowObjects
 
 /-!

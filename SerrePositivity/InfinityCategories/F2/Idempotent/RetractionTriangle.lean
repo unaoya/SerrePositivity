@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakShape
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape
 public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 

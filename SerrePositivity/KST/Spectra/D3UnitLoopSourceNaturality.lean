@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3SectionUnitFaceComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoSelfUnitExchange
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoSelfUnitExchange
 
 /-!
 概要：元の単位比較と loop 始点表示の自然性を、指定単位面の始点上で厳密に貼る。

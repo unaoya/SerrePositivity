@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.LeftFibrationTransportHom
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingRestriction
 
 /-! # 余錐空間の終点輸送と Hom の後合成
 

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedSimplexCategory
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 
 /-!
 概要：上方共終な directed poset 写像の nerve は native に right cofinal。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.TerminalPrismBoundary
+public import SerrePositivity.InfinityCategories.Core.TerminalPrismBoundary
 
 /-! # 最後の終点だけを仮定した prism の境界延長
 

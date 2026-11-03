@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowPushoutFamily
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：元の合成三角形を、二本の辺と恒等射からなる射圏内の実 pushout へ送る。

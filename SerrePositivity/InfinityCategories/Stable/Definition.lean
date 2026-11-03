@@ -1,9 +1,11 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
-public import SerrePositivity.InfinityCategories.Stable.Pointed
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
 public import Mathlib.AlgebraicTopology.SimplicialSet.Finite
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
+public import SerrePositivity.InfinityCategories.Core.Pullback
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.Pointed
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 安定 ∞ 圏
 

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorCoconeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackProjections
 
 /-!

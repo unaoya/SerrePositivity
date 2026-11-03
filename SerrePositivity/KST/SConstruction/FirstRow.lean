@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.Gapped
 public import SerrePositivity.KST.SConstruction.ZeroChoices
 public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Stable.Definition
 
 /-! # gapped 図式の第一行

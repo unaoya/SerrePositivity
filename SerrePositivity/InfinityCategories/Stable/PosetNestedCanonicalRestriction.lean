@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PosetNestedLowerCocone
-public import SerrePositivity.InfinityCategories.F2.Ind.InitialBoundaryCoconeRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping
 
 /-!

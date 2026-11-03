@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorConeComponentCriterion
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowConeComponentCriterion
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackConeComponentCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackProjections
 
 /-!

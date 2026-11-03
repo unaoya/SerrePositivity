@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.IndCommaRelativeCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaTransport
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationOldFamilyIso
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowInterpolationExistence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoconeExistenceTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
 /-!
 概要：元の射図式族と指定終点変換を同時に延長する実 under comma の余錐。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KSpectrumInvariance
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompleteImageRetracts
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 
 /-!

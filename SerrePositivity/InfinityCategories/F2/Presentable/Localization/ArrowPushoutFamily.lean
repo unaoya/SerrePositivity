@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowPushoutPrism
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.DegeneratePushoutSquare
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalPrismRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalPrismRestriction
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 
 /-!
 概要：元の pushout 四角形を、射圏内の実 pushout 四角形へ写す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalPath
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 public import SerrePositivity.KST.LocalizingInvariants.FullyFaithfulEdgeRealization
 
 /-!

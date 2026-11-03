@@ -3,8 +3,8 @@ module
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.TerminalPointAnodyne
-public import SerrePositivity.InfinityCategories.Stable.IdentityCocone
-public import SerrePositivity.InfinityCategories.Stable.CosliceRestriction
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
+public import SerrePositivity.InfinityCategories.F1.CosliceRestriction
 
 /-!
 概要：終頂点を持つ形状、特に一点と標準単体の全図式は余極限を持つ。

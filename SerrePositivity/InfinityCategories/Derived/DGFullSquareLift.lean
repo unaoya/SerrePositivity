@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
 public import SerrePositivity.InfinityCategories.DGNerve.FullPullbackReflection
 public import SerrePositivity.InfinityCategories.DGNerve.FullZeroObject

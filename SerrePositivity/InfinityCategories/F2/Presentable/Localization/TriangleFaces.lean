@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowCardinals
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!
 概要：元の二単体の全関手圏と、その三つの辺への制限を扱う。

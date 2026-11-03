@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialHomComparison
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialEvaluationFamilyExtension
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.TrivialFibrationHomotopy

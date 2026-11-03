@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafSliceComparison
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningInfinityReconstruction
-public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
+public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
 public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Shapes
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights

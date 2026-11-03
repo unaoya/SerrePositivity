@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentConstantCoconeComparison
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantCoconeComparison
 public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 

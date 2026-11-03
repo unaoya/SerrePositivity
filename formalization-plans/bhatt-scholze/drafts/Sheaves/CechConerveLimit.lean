@@ -100,4 +100,49 @@ theorem exists_limitCone_of_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechN
     ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- 錐の延長と `isLimitCone_iff_restrict_cech`
 
+/-! ## 大きい添字圏の版（W9-I-04、BS-D3 の D3-02。2026-11-03）
+
+E3 の添字圏 `PerfUnder_u p S`（対象 Type (u+1)、射 Type u）は `SmallCategory` ではない。上の `CechNerveData` と同じ四欄を `[Category.{u} 𝒟]`・`𝒟 : Type (u+1)` で述べ、
+Čech 側（U_• と Tot）は小さいままにする。大きい nerve は最初から E と同じ宇宙にある。 -/
+
+section Large
+variable {𝒟 : Type (u + 1)} [Category.{u} 𝒟]
+
+/-- 概要：大きい添字圏での弱終対象（小さい版と同じ条件）。 -/
+def IsWeaklyTerminalLarge (U : 𝒟) : Prop := ∀ V : 𝒟, Nonempty (V ⟶ U)
+
+/-- 概要：大きい添字圏での Čech 脈体のデータ：小さい版 `CechNerveData` と同じ四欄（U_•、射影、Fan の `IsLimit`、射影と単体的構造射の両立）。
+方針：Mathlib の `Fan`・`IsLimit` は宇宙を跨いで使える。U_n 自体は 𝒟 の対象（大きくてよい）。
+規約：S3 の大きい版（W9-I-04）。A5 の `perfUnder_cechNerveData` はこれを返す。
+使われ方：A5-4 `limit_perfUnder_eq_tot`。 -/
+structure CechNerveDataLarge (U : 𝒟) where
+  obj : SimplicialObject 𝒟
+  proj : ∀ (n : ℕ) (i : Fin (n + 1)), obj.obj (Opposite.op ⦋n⦌) ⟶ U
+  isLimit : ∀ n : ℕ, IsLimit (Fan.mk (obj.obj (Opposite.op ⦋n⦌)) (proj n))
+  proj_map : ∀ {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)),
+    obj.map θ.op ≫ proj m i = proj n (θ.toOrderHom i)
+
+abbrev PresheafLarge (𝒟 : Type (u+1)) [Category.{u} 𝒟] (E : SSet.{u+1}) :=
+  nerve 𝒟ᵒᵖ ⟶ E
+
+/-- Δ 側だけを持ち上げる。A5 の largeCechShape と同じく射列に rightOp を適用する。 -/
+def cechShapeLarge {U : 𝒟} (d : CechNerveDataLarge U) :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ nerve 𝒟ᵒᵖ where
+  app _ := ↾fun x => (d.obj.rightOp.mapComposableArrows _).obj x.down
+  naturality := by sorry -- 射列の制限と関手による像は可換
+
+/-- 大きい添字圏の前層に対する S3。制限の前後で錐の頂点は同じ。 -/
+theorem isLimitCone_iff_restrict_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (c : JoinCone F) :
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShapeLarge d)) := by
+  sorry -- 各試験対象から U への写像の集合は非空。その Čech 脈体で S3 と同じ極限判定
+
+/-- A5 が受け取るのは Čech 側の錐だけなので、その延長も頂点つきで述べる。 -/
+theorem exists_limitCone_of_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (t : JoinCone (cechShapeLarge d ≫ F))
+    (ht : IsLimitCone t) : ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
+  sorry -- Čech の添字関手の始性による錐の延長（G8・G9）
+
+end Large
+
 end SerrePositivity.InfinityCategories.Sheaves

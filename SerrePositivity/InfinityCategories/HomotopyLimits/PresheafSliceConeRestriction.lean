@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSliceOppositeComparison
-public import SerrePositivity.InfinityCategories.F2.Ind.LiftedConeSectionRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.YonedaSliceOppositeComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.LiftedConeSectionRestriction
 public import SerrePositivity.InfinityCategories.F1.Transport.NativePointedRestrictionReflection
 public import SerrePositivity.InfinityCategories.F1.Coherent.PointedRestrictionReflection
 

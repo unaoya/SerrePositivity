@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-! # 零始点の押し出しの包含の cofiber
 

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanBaseCoordinates
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SymmetricCoconeBranches
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingGluing
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingGluing
 
 /-! # 対称 span 全体の余錐空間の自己引き戻し表示
 

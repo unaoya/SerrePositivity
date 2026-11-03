@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorIsoPrecompositionReflection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：指定五角式を、同じ共通比較と終辺の自然性を保って元の経路へ移す。
 方針：同じ水平比較を前置し、同じ末尾の指定同型を消去する。

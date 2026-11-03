@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact
 public import SerrePositivity.InfinityCategories.F2.Compact.Subcategory
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 
 /-!
 概要：元の Yoneda retract 閉包は、元の前層圏の κ-compact 対象の全部分圏へ入る。

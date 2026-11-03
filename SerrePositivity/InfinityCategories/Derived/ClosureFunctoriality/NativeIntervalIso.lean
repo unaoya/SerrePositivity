@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge
 public import SerrePositivity.InfinityCategories.F2.Presentable.VertexIsoUniverseLift
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
 
 /-!

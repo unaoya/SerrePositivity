@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.ContravariantCon
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulJointHom
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafRestrictionEquivalence
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableEquivalence
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
-public import SerrePositivity.InfinityCategories.Stable.BoundaryEdgeLifting
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 /-!
 概要：前段と次辺の指定比較を、両端と共有点の全経路を保持して全図式の比較へ延長する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.RightKanDensityRestriction
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafDensityLeftKanCriterion
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalentConeRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightCanonicalMapping
 
 /-!

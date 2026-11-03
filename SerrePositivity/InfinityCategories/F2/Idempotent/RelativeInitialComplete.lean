@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RelativeInitialRetracts
-public import SerrePositivity.InfinityCategories.F2.Idempotent.FullSubcomplexSplitting
+public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
 public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
-public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 
 /-!
 概要：冪等完備な全体の相対始対象の全部分 ∞ 圏、および全普遍余錐の ∞ 圏は冪等完備。

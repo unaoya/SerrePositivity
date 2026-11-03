@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionTerminal
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionOppositeGeneral
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionRawSuspensionSquare
 public import SerrePositivity.InfinityCategories.Stable.ExcisionSuspensionCospanRestriction
-public import SerrePositivity.InfinityCategories.F2.Compact.FlipEvaluation
+public import SerrePositivity.InfinityCategories.Core.Compact.FlipEvaluation
 
 /-!
 概要：四つの実 suspension 面の引き戻し性から、元の押し出しの像の普遍性を導く。

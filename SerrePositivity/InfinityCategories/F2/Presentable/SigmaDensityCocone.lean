@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaInfin
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexCoconeLift
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexColimitReflection
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!
 概要：元の前層密度余錐を、元の指定 P_Σ 対象を頂点とする内部余極限へ制限する。

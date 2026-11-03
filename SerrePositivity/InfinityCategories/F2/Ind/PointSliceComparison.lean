@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.PointSlicePostcomp
-public import SerrePositivity.InfinityCategories.F2.Ind.RightFibrationFiberCriterion
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Ind.RightFibrationFiberCriterion
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberIso
 
 /-!

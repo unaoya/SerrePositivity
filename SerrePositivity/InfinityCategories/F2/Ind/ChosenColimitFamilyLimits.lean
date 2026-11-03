@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ChosenColimitParameterApex
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FunctorColimitEvaluation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PointwiseColimitChoiceTransport
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.PointwiseColimitChoiceTransport
 
 /-!
 概要：選んだ余極限関手の全パラメータ余錐を、元の錐族の交換述語へ接続する。

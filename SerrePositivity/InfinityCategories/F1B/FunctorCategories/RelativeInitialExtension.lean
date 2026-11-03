@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.InitialHornRestrictionLifting
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 public import SerrePositivity.InfinityCategories.Core.SkeletalLifting
 
 /-!

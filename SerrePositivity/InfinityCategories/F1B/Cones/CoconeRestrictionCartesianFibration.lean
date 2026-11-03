@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoconeCartesianTransport
+public import SerrePositivity.InfinityCategories.F1.CoconeCartesianTransport
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianFibration
 
 /-!

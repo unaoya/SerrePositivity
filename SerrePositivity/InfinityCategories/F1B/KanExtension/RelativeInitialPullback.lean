@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 public import Mathlib.CategoryTheory.LiftingProperties.Limits
 
 /-!

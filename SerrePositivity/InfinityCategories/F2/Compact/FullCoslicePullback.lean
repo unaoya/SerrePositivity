@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
+public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
 public import SerrePositivity.InfinityCategories.Core.TerminalVertices
 public import SerrePositivity.InfinityCategories.Core.JoinLifting
 public import SerrePositivity.InfinityCategories.Core.EquivalenceAllLimits

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableRetractions
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
 public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 

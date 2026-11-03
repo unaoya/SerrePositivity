@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.RightJoinCoproduct
+public import SerrePositivity.InfinityCategories.Core.RightJoinCoproduct
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IteratedSliceOverRestriction
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
 

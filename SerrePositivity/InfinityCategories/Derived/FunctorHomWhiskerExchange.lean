@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 /-!

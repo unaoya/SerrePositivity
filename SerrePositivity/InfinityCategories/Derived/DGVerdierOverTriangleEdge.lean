@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofSliceTriangleInverse
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOver
-public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
 
 /-! # 指定合成三角形による実 Verdier over の辺
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.FixedInput
 public import SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 
 /-!
 第 I 段延長分の比較目標の型だけを固定する。存在定理・選択による実例は追加しない。

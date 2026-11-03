@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientValueEdge
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleFaces
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces
 
 /-!
 概要：元の実商比較と既存指定値比較の合成を、同じ Kan 値で零化する。

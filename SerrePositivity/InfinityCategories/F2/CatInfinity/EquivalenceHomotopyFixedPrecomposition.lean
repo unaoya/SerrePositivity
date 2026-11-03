@@ -1,8 +1,9 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.EquivalenceHomotopyIsoPresentation
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrivialKanIsoFixedPrecomposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
 
 /-!

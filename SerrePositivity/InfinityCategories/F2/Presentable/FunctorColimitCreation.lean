@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ChosenColimitPointwise
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorPointwiseColimitCriterion
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorPointwiseColimitCriterion
 public import SerrePositivity.InfinityCategories.F2.Presentable.PointwiseColimitPrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
 public import SerrePositivity.InfinityCategories.Core.InitialTransport

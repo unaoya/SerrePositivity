@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSource
 public import SerrePositivity.InfinityCategories.HomotopyLimits.NativeCoconeFamilyEvaluation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
 
 /-!

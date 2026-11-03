@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientOuter
 public import SerrePositivity.KST.SConstruction.PerfectLocalizingInvariant
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-! # 完備化後の商の普遍差比較の不変量値は引き戻し
 概要：Cat^perf の同じ比較正方形の値が、実 Sp の引き戻しになることを証明する。

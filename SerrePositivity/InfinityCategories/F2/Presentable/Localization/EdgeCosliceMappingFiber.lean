@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceSourceComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapFiber
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEdgeRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeRestriction
 
 /-!
 概要：coslice 内の写像空間を、元の固定終点の始点制限の同じ fiber と同定する。

@@ -68,7 +68,6 @@ scripts/audit_infinity_f1_f1b.lean
 scripts/audit_infinity_f1b.lean
 scripts/audit_infinity_f2.lean
 scripts/audit_infinity_f2_checks.lean
-scripts/audit_infinity_f2_exchange.lean
 scripts/audit_infinity_presentable.lean
 scripts/audit_infinity_presentable_duality.lean
 scripts/audit_infinity_presentable_local_objects.lean

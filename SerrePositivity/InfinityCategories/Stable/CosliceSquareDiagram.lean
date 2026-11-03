@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CosliceCoconeDiagramEvaluation
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 public import SerrePositivity.InfinityCategories.Stable.CofiberComparisonExt
 
 /-! # 固定した span 上の余錐の四角形表示

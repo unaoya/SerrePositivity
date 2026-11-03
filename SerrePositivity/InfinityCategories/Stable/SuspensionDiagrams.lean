@@ -1,8 +1,17 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
+public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexFibration
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
+public import SerrePositivity.InfinityCategories.Core.FullyFaithful
 public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
+public import SerrePositivity.InfinityCategories.Core.Pullback
+public import SerrePositivity.InfinityCategories.Core.SuspensionDiagrams
+public import SerrePositivity.InfinityCategories.Core.TerminalVertices
+public import SerrePositivity.InfinityCategories.Stable.Definition
+public import SerrePositivity.InfinityCategories.Core.Pointed
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 /-! # Suspension と loop の図式の族
 
@@ -18,26 +27,11 @@ namespace SerrePositivity.InfinityCategories
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 
-/-- 概要：正方形の関手の頂点を、正方形からの実際の射へ戻す。
-方針：関手頂点の標準同値を逆に使う。
-規約：正方形の二つの座標の順序を保つ。使われ方：普遍四角形の頂点条件。 -/
-def squareDiagram {X : SSet.{u}}
-    (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Δ[1] ⊗ Δ[1] ⟶ X :=
-  (functorVertexEquiv _ _).symm v
-
 /-- 概要：四角形の頂点表示を戻すと元の四角形。
 方針：関手頂点の同値の両逆性を使う。
 規約：厳密な等式。使われ方：選んだ四角形を族の頂点にする。 -/
 lemma squareDiagram_functorVertex {X : SSet.{u}} (F : Δ[1] ⊗ Δ[1] ⟶ X) :
     squareDiagram (functorVertex F) = F := (functorVertexEquiv _ _).symm_apply_apply F
-
-/-- 概要：suspension 図式の頂点条件は二つの零角と押し出し性。
-方針：図式の実際の四角形に条件を課す。
-規約：対角の頂点は自由に動く。使われ方：suspension 図式の全部分圏。 -/
-def IsSuspensionDiagramVertex {X : SSet.{u}}
-    (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Prop :=
-  IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧
-    IsZeroVertex (squareVertex (squareDiagram v) 1 0) ∧ IsPushoutSquare (squareDiagram v)
 
 /-- 概要：loop 図式の頂点条件は二つの零角と引き戻し性。
 方針：図式の実際の四角形に条件を課す。
@@ -46,13 +40,6 @@ def IsLoopDiagramVertex {X : SSet.{u}}
     (v : ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X) _⦋0⦌) : Prop :=
   IsZeroVertex (squareVertex (squareDiagram v) 0 1) ∧
     IsZeroVertex (squareVertex (squareDiagram v) 1 0) ∧ IsPullbackSquare (squareDiagram v)
-
-/-- 概要：全 suspension 図式からなる関手 ∞ 圏の全部分単体集合。
-方針：各頂点で零角と押し出し性を課す。
-規約：高次単体は実際の四角形の族。使われ方：suspension の関手性。 -/
-def suspensionDiagrams (X : SSet.{u}) : SSet.{u} :=
-  (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj X)
-    IsSuspensionDiagramVertex : SSet.{u})
 
 /-- 概要：全 loop 図式からなる関手 ∞ 圏の全部分単体集合。
 方針：各頂点で零角と引き戻し性を課す。
@@ -73,13 +60,6 @@ instance suspensionDiagrams_quasicategory (X : SSet.{u}) [Quasicategory X] :
 規約：C の安定性は不要。使われ方：図式の族のホモトピー圏。 -/
 instance loopDiagrams_quasicategory (X : SSet.{u}) [Quasicategory X] :
     Quasicategory (loopDiagrams X) := fullSubcomplexOnVertices_quasicategory _ _
-
-/-- 概要：suspension 図式を指定した角で評価する単体的な射。
-方針：全部分圏の包含と関手の評価を合成する。
-規約：全ての高次単体に自然。使われ方：Σ の始点・終点の関手。 -/
-def suspensionDiagramEvaluation (X : SSet.{u}) (i j : Fin 2) : suspensionDiagrams X ⟶ X :=
-  (fullSubcomplexOnVertices _ IsSuspensionDiagramVertex).ι ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 
 /-- 概要：loop 図式を指定した角で評価する単体的な射。
 方針：全部分圏の包含と関手の評価を合成する。

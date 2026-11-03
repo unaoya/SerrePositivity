@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroMaps
 public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：任意の抽象 Verdier 列の coherent 四角形による提示。

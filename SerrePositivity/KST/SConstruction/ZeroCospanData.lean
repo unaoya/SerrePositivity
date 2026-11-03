@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
 public import SerrePositivity.InfinityCategories.Stable.ZeroSourceArrows
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 
 /-! # 零頂点から出る脚を持つ cospan のデータ

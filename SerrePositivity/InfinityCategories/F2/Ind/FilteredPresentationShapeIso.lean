@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FinitePosetDiagramPresentation
 public import SerrePositivity.InfinityCategories.F2.Ind.FunctorFilteredColimitDetection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 
 /-!
 概要：元の全図式の単一 filtered 表示は、形状同型に沿って移送できる。

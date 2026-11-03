@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.DiagramNestedCoslice
-public import SerrePositivity.InfinityCategories.Stable.JoinAssociatorRightPair
+public import SerrePositivity.InfinityCategories.Core.JoinAssociatorRightPair
 public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTrivial
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
 

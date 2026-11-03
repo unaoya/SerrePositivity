@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.YonedaEvaluationJoint
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
 
 /-!
 概要：元の共同 Yoneda Hom と共同評価を、同じ元の底上の実 left fibration で表現する。

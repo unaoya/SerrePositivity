@@ -135,6 +135,12 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 - 各構成が閉じること（紙の検証 §5 の 4）：Čech–Alexander の各項（台集合 R 上の多項式環の完備化、濃度 ≤ (λ·ℵ₀)^{ℵ₀} = κ）、押し出し（完備テンソル、
   ≤ κ^{ℵ₀} = κ）、完全化（Lemma 3.9、≤ κ^{ℵ₀}）、A5 の S̃ と André 拡大。
 - κ 不変性：κ₀ ≤ κ ≤ κ′ で `prismaticCohomology` が一致（C^0 がどの κ でも弱始、C^• ⊂ 𝒞_{κ₀}、S3）。O_Δ についてだけ。
+  **R の範囲（11-03、BS-D1 の質問への回答）**：比較定理の仮定は `h : HasEnvelopes P R`（Čech–Alexander 模型 C^• が存在し各項の濃度 ≤ cutoff、§2.8 の規約と同じ）、
+  `IsAdmissibleCutoff κ`・`IsAdmissibleCutoff κ′`（cutoff ≤ κ、κ^{ℵ₀} = κ）、κ ≤ κ′。一般の p 完備 R で無条件には述べない（一般の Prop 3.13 は A0 の範囲外）。
+  多項式代数 R では `hasEnvelopes_of_polynomial` が供給し、E3 に要るのはその場合だけ（A2 は多項式代数からの左 Kan 延長）。結論は包含 ι : 𝒞_κ → 𝒞_{κ′} に沿う
+  O_Δ の制限について `derivedGlobalSections` を結ぶ D(A) の可逆な辺（頂点の等号は主張しない、W9-I-03）。証明は両辺を同じ Tot O_Δ(C^•) と結ぶ
+  （`prismaticCohomology_eq_cechAlexanderTot` を κ と κ′ で）。**置き場所**（11-03）：包含関手 ι と O_Δ の制限は PrismaticSite.lean に残し、`HasEnvelopes` を使う
+  比較定理本体は CechAlexander.lean の Tot 比較の直後に置く（同じ名前空間。CechAlexander が Site と Envelope を import するので逆向きは循環。W9-III-09 の「定義は先、後段の定理は後」と同じ）。
 
 ### 2.8 Čech–Alexander 複体（Constr 4.17・4.18、Rem 4.19）
 
@@ -160,7 +166,9 @@ Prop 3.13、Def 2.42）を、**定義は原典のまま、定理は E3 に要る
 
 - Tor 振幅：原典 Lemma 4.22 が使う形で定義する。`HasFiniteCompleteTorAmplitude (f : C → C′) (J = (x_1,…,x_r)) (c : ℕ)` :=
   任意の K ∈ D^{≥ n}(C) について (K ⊗^L_C C′) ⊗^L_{C′} Kos(C′; x) ∈ D^{≥ n−c}。平坦なら c = 0。Construction 6.1 の α と Prop 6.2 の b が
-  有限振幅であることは A1 で示す。
+  有限振幅であることは A1 で示す。**注意（D4-04、11-03）**：この Koszul 版は、原典の「M ⊗^L A/(p,I) の Tor 振幅」（商の版）と、x が標的で正則列でないとき
+  最大 r だけずれる（Kos(C′; x) と C′/(x) の差）。Lemma 4.22 の証明は有限性だけを使うので両者は同時に有限で、定理の主張はどちらでも同じ。c の値を記録する
+  ときは Koszul 版で数える（Constr 6.1 の α は c = 3：B/p の Tor 次元 ≤ 2 ＋ 標的 Koszul の余分な 1 段。α mod p の通常の Tor 振幅は ≤ 1。a1-design §2.5）。
 - Lemma 4.22：J 完備底変換 (−) ⊗̂^L_C C′ は D^{≥0} の余単体的対象の Tot と可換。原典の証明（n 骨格で示し、fiber が D^{≥ n+1−c} に
   あることから各次数で一致）をそのまま。各項が離散な余単体的対象なら Tot は余鎖複体で、底変換後は各列が [−c, 0] に有界な双複体なので
   全複体は各次数で有限和（HA の BoundedAbove*・Truncation の部品）。
@@ -193,6 +201,13 @@ A0-3b・A0-3d の HA の部品の読解の結果で、順序を見直す。
 | D22 | flatTopology は Cor 3.12 で site であることを示してから定義 | 生成される最小の位相として定義し、Cor 3.12 前半を「被覆篩は忠実平坦射で refine できる」という定理に | 同じ位相。定義の段階で公理の証明を要らなくする |
 | D23 | Construction 4.18 の Čech 余脈体は完備テンソルの反復 | 変数の添字で直接書く（B_0^n = A[X_{S × [n]}]^∧、余単体的構造は添字集合の写像から）。決定 11-02 | 同じ対象。`PrismOver` に一般の余積がないので Mathlib の `cechConerve` は使えない |
 | D24 | Lemma 4.21（étale 局所化）で smooth に延ばす | 多項式代数に限り、A2 の左 Kan 延長で済ませる | 定理の範囲を絞る |
+
+### 2.8′ Čech 余脈体の余積の脚（11-03、BS-D1 の質問への回答）
+
+`cechAlexander_isCoproduct` は「或る入射族が余積をなす」ではなく、**標準の脚**で述べる：[0] → [n] の n+1 個の頂点の包含（`SimplexCategory.const` の形）を
+`cechAlexander.map` で送った射 C^0 → C^n を脚とする余錐が余積（`IsColimit (Cofan.mk (C^n) (fun i => cechAlexander.map (vertex i)))`）。これが S3 の `CechNerveData` の
+`proj_map`（単体的構造の射は射影の添字を写す）にそのまま使える形で、§5.1 の計算（各項は自由 δ 環の完備化で、変数の添字の包含が余積の脚）と一致する。
+∃ 版が要るならこの標準形から導く。
 
 ## 5. 紙で確かめる項目
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.TerminalArrowRelative
 public import SerrePositivity.InfinityCategories.Stable.SpanFamilies
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-! # 終対象を両端とする span の相対境界充填
 

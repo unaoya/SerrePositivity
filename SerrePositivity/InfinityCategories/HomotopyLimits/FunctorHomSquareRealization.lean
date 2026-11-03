@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomSquare
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：h Fun の可換性を、四つの指定ホモトピーを境界とする実際の正方形へ戻す。

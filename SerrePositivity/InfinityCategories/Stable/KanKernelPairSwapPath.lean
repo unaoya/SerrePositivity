@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Stable.KanKernelPairFiber
 public import SerrePositivity.InfinityCategories.Core.PullbackSimplex
 

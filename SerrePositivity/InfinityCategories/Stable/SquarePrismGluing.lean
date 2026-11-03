@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.CategoryTheory.Monoidal.Closed.Types
 public import Mathlib.CategoryTheory.Monoidal.Limits.Preserves

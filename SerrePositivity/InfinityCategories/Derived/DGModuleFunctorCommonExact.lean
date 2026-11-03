@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleSquareCommonMap
 public import SerrePositivity.InfinityCategories.Derived.DGNerveCommonMapZero
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 /-!
 概要：独立の係数圏宇宙を持つ全 dg 加群間の関手の共通 nerve は完全である。

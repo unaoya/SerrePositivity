@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.TriangleAppendMissingFace
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 二つのホモトピー三角形による複体の四角形
 

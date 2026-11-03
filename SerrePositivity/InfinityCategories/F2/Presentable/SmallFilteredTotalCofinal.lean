@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredRetracts
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotal
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift
@@ -6,8 +7,8 @@ public import SerrePositivity.InfinityCategories.F2.Ind.CofinalCoconeRestriction
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.RightKanShapeIso
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredEquivalence
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.LimitProjectionExistence
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 public import SerrePositivity.InfinityCategories.Core.PullbackRightComposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
 

@@ -5,7 +5,7 @@ public import SerrePositivity.KST.Fibration.PointedLeftResolutionVertices
 public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseCompositionTransport
 public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
-public import SerrePositivity.InfinityCategories.Stable.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-! # Kan 写像の本質的全射性を、同じ点の射の全射性から回収する
 

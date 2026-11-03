@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaCoconeFamily
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 
 /-!
 概要：全余錐族の点ごとの補完の下方図式を、元の指定単一表示の図式へ同定する。

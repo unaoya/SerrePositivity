@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.StableCofiberWide
 public import SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
 
 /-!
 概要：完全充満忠実関手の元の本質像を保つ cofiber 分母の wide 部分圏を構成する。

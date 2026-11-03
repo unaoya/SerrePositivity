@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanSourceFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeSourceMappingTransport

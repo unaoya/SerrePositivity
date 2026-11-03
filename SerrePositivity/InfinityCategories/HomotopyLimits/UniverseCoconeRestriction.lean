@@ -1,6 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
 
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 
 /-!

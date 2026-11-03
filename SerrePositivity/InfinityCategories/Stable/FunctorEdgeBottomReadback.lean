@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaSourceOppositeFibration
-public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices
+public import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices
 
 /-!
 概要：各 comma の始対象から、普遍矢印の coherent な切断を構成する。

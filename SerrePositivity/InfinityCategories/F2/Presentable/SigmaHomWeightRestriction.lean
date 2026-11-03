@@ -1,7 +1,20 @@
 module
+public import SerrePositivity.InfinityCategories.Core.Equivalence
+public import SerrePositivity.InfinityCategories.Core.Opposite
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
+public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomInfinityBifunctor
+public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
+public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightFamily
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafInfinity
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaUniverseYoneda
+public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaYonedaInfinity
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SigmaHomWeightRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeights
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafHomWeightTransport
 
 /-!
 概要：元の全自然変換空間族の Yoneda 制限を、元の大きい Yoneda の全族へ比較する。
@@ -18,18 +31,6 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 namespace SerrePositivity.InfinityCategories.HomotopyLimits
 variable {C : SSet.{u}} [Quasicategory C] {D : SSet.{u + 1}} [Quasicategory D]
-
-/-- 元の大きい Yoneda から、元の全 Hom 係数前層への自然変換空間を束ねた全族。 -/
-def yonedaHomWeightFamily (F₀ : (SSet.uliftFunctor.{u + 1, u}).obj C ⟶ D) :
-    (SSet.uliftFunctor.{u + 3, u + 2}).obj
-        ((SSet.uliftFunctor.{u + 2, u + 1}).obj ((SSet.uliftFunctor.{u + 1, u}).obj C)).op ⟶
-      (ihom ((SSet.uliftFunctor.{u + 3, u + 2}).obj
-        ((SSet.uliftFunctor.{u + 2, u + 1}).obj D))).obj SpaceInfinity.{u + 2} :=
-  (SSet.uliftFunctor.{u + 3, u + 2}).map
-      (SSet.opFunctor.map (yonedaInfinityMap ((SSet.uliftFunctor.{u + 1, u}).obj C))) ≫
-    coyonedaInfinityMap (PresheafInfinity ((SSet.uliftFunctor.{u + 1, u}).obj C)) ≫
-      (pre ((SSet.uliftFunctor.{u + 3, u + 2}).map
-        (presheafHomWeightDiagram F₀))).app SpaceInfinity.{u + 2}
 
 /-- 元の自然変換空間族の制限は、大きい元の Yoneda の全族と自然同型。 -/
 def sigmaHomWeightFamily_restrictionIso

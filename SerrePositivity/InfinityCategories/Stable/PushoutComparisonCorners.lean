@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PushoutComparisonInvertible
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-!
 概要：押し出し四角形の比較の可逆性を入力 span の三つの角で検査する。

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeLifts
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeFilteredCriterion
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedPointQuillenA
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.Core.InnerPullback
 
 /-!

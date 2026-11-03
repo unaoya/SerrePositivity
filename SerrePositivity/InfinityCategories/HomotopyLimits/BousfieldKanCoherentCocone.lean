@@ -1,10 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedBousfieldKanColimit
-public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralHomHolimComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
-public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport
+public import SerrePositivity.InfinityCategories.HomotopyLimits.GeneralHomHolimComparison
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedBousfieldKanColimit
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
 
 /-!
 概要：一般の Kan 値図式の反転 coend から、元の図式上の実際の coherent な余錐を構成する。

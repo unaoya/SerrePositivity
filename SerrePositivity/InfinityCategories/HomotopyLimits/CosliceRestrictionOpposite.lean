@@ -1,11 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Joins.CosliceTriangleFiber
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SliceEndpointConeComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift
-public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberTotalIso
+public import SerrePositivity.InfinityCategories.F1B.Cones.SliceProjectionLaws
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeVertexFiber
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectedConeLimitLift
+public import SerrePositivity.InfinityCategories.HomotopyLimits.SliceEndpointConeComparison
 
 /-!
 概要：余錐の反転同型を元の制限と頂点 fiber に対して自然に構成する。

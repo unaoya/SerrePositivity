@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCenterSpanRetraction
-public import SerrePositivity.InfinityCategories.Stable.PastingRightSpanIso
+public import SerrePositivity.InfinityCategories.Core.PastingRightSpanIso
 
 /-!
 概要：中央の三点 span と既存の右 span の全単体の順逆写像。

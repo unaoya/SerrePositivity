@@ -300,6 +300,37 @@ def ratchet_increases(current, baseline):
             for k, value in current['ratchet_metrics'].items() if value > old.get(k, 0)]
 
 
+
+def enforce_w2b(report, baseline, config):
+    """IF-W2b §12: order, existing direct edges, and aggregate closure bounds.
+
+    Per-root ratchet metrics remain diagnostic until the W2c paths are removed.
+    This does not change ratchet_increases or the layer exception configuration.
+    """
+    if baseline['config_sha256'] != report['config_sha256']:
+        raise ValueError('W2b baseline config differs; coordinator review required')
+    core = set(config['core'])
+    order = [e for e in report['direct_violations']
+             if e['from_layer'] in core and e['to_layer'] in core
+             and 'upward-layer-import' in e['rules']]
+    allowed = {(e['from'], e['to']) for e in baseline['direct_edges']}
+    unexpected = [e for e in report['direct_violations']
+                  if e not in order and (e['from'], e['to']) not in allowed]
+    increases = []
+    for tier in ('W1', 'W2a'):
+        for metric in ('forbidden_module_count', 'affected_core_module_count'):
+            limit = baseline['aggregate_limits'][tier][metric]
+            value = report['tiers'][tier][metric]
+            if value > limit:
+                increases.append({'tier': tier, 'metric': metric,
+                                  'before': limit, 'after': value})
+    return {'status': 'FAIL' if order or unexpected or increases else 'PASS',
+            'core_order_violations': order, 'new_direct_edges': unexpected,
+            'aggregate_increases': increases,
+            'accepted_direct_edge_limit': len(allowed),
+            'per_root_metrics': 'diagnostic (IF-W2b §12; ratchet is unchanged)'}
+
+
 def print_report(report):
     print(f"modules={report['module_count']} edges={report['edge_count']} core={report['core_module_count']}")
     print('Direct violations by layer pair (distinct edges, before exceptions):')
@@ -325,6 +356,9 @@ def main():
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument('--config', type=Path, default=Path(__file__).with_name('layers.json'))
     parser.add_argument('--output', type=Path, help='default: ROOT/.lake/verify/layers.json')
+    parser.add_argument('--w2b-baseline', type=Path,
+                        default=Path(__file__).with_name('targets') / 'w2b-enforcement-baseline.json',
+                        help='approved direct edges and pre-W2b aggregate limits for --enforce W2b')
     args = parser.parse_args()
     started = time.monotonic()
     try:
@@ -332,7 +366,13 @@ def main():
         graph, mentions = read_graph(args.root.resolve(), config)
         result = analyze(graph, mentions, config)
         increases = ratchet_increases(result, json.loads(args.ratchet.read_text())) if args.ratchet else []
-        failed = bool(increases or (args.enforce and result['tiers'][args.enforce]['violation_count']))
+        w2b = (enforce_w2b(result, json.loads(args.w2b_baseline.read_text()), config)
+               if args.enforce == 'W2b' else None)
+        failed = bool(increases or (w2b['status'] == 'FAIL' if w2b is not None else
+                                   args.enforce and result['tiers'][args.enforce]['violation_count']))
+        if w2b is not None:
+            result['w2b_enforcement'] = w2b
+            result['w2b_baseline'] = str(args.w2b_baseline)
         result.update(mode='enforce' if args.enforce else 'ratchet' if args.ratchet else 'report',
                       enforced_tier=args.enforce, ratchet_increases=increases,
                       status='FAIL' if failed else 'REPORT' if args.report else 'PASS',
@@ -341,6 +381,7 @@ def main():
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
         print_report(result)
+        if w2b is not None: print('W2b contract:', json.dumps(w2b, ensure_ascii=False))
         for item in increases: print('INCREASE', json.dumps(item, ensure_ascii=False))
         print(f"{result['status']} ({result['seconds']}s) -> {output}")
         return int(failed)

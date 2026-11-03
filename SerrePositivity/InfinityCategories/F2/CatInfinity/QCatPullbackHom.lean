@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.QCatPullbackCone
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
 

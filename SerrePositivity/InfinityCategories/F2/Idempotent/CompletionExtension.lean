@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafCompletionValues
 public import SerrePositivity.InfinityCategories.F2.Idempotent.PresheafDiagramRecovery
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 
 /-!

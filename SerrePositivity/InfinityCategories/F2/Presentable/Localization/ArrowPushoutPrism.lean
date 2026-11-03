@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMinimum
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PrismVertexEvaluation
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 public import SerrePositivity.InfinityCategories.Core.Pullback
 
 /-!

@@ -1,7 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.Cocone
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 
 /-!
 概要：元の辺を、その終点への退化三角形の余錐として保持する。
