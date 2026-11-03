@@ -64,3 +64,11 @@ Ex 7.9 は原典の順序（W9-I-39）、G-A3-7 は証明予定。A1：D68（de 
   Lemma 7.7・7.8 は p ねじれなしの標的の充満部分圏、Ex 7.9 は導来底変換 → H⁰ 比較 → W₂ 切断と envelope の普遍性、Prop 7.10 の Cor 7.3 入口は非零・零環で分岐。
   A1 から渡す引数の対応表は報告第 2 部。要確認：G-A3-9、p 完備環の標準 ℤ_p 作用（2b の HA へ）、濃度条件。
 - 次：停止点 3（A1。D4-02 の特殊化を含む）。
+- **D4-03**（b17815ca5）：Shared の `cohomology (X) (n)`・`quotPow (C) (d) (hd_nat) (k')` を明示引数に、`cohomologyEquivHomology`・`toModules`・`regularShortExact`（型つき）・`regularBockstein`・`bockstein_sq`。
+- **D4-04**（32384e535、再訂正 709a83741）：Construction 6.1 の α の Koszul 版 (p,d) 完全 Tor 振幅は **3**（A0 §2.9 は全 K を量化、K = A₀/(p,d) で H⁻³ = B/p）、α mod p の通常の振幅 ≤ 1 は別の補題、
+  Lemma 4.20・4.22 には有限性だけ。
+- **D4-05**（6d0a0fa08）：`deRhamComplex k T`・`completedFormsUnit`・`completedWedge`・`completedDeRhamD`（k 線形連続、単位・合成・Leibniz）・`completedDeRhamComplex`。
+- 第 3 部（fea4346d6、**停止点 3 完了・検収済み、BS-D4 終了**）：A1 四本 25 件（指示書の 24 は HodgeTateComparison の数え落とし）＋`Type u := sorry` 5 件
+  （`affineAlgebra`・`hodgeTateCohomology'`・`universalDistinguishedRing`・`universalOrientedPrismRing`・`crystallineCoverRing`）。恒久的な引用は `crystalline_deRham_polynomial_Zp` 一件。
+  A3 へ渡す引数（`universalOrientedPrismRing p`・`universalOrientedPrism_bounded`・`universalOrientedPrism_hom`）と A5 の `rootMap_modP_eq_deRham` への接続は報告第 3 部の表。
+  要確認の `regularShortExact` の `hd_reg` は基盤側で `include hd_reg in`（D4-06）。BS-D4 合計 64＋10。A0〜A9 に結論 `True` の仮置きなし、残り 53 は基盤側（W2b 後の段 G）。

@@ -29,10 +29,10 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A0-3b Lemma 3.7(2)(3) | a0-design §2.6 | 未 | 自由加群の場合は済（a0 §5.1 の 1） | D |
 | A0-3d Cor 3.12 | a0-design §2.6 | PrismaticSite の `flatTopology_refine` のみ | 未（a0 §5 の 5・6） | D |
 | A0-4 Lemma 4.22・4.20 | a0-design §2.9 | 未 | — | D |
-| A1-1 de Rham・η^* | a1-design §2.1・2.2 | A1/HodgeTateMap、Shared/{CupProduct,Bockstein,DeRhamPolynomial} | — | B（R の形、線形性の述べ方、係数環）・A（忘却関手） |
-| A1-4 Prop 6.2・Thm 6.3 | a1-design §2.4・2.5・§3 | A1/HodgeTateComparison | 未（a1 §8 の 5〜7） | A（Flat の形）・D（G-A1-4・5・13） |
-| A1-2 結晶側の対象 | a1-design §2.3 | 未 | 未（a1 §8 の 1・2） | E |
-| A1-3 Lemma 5.4・Thm 5.2 β・Cartier・Cor 5.5 | a1-design §3 の 3〜6 | 未 | 未（a1 §8 の 3・4） | E |
+| A1-1 de Rham・η^* | a1-design §2.1・2.2 | A1/HodgeTateMap、Shared/{CupProduct,Bockstein,DeRhamPolynomial}（BS-D4 停止点 3 済、11-03：`True` 0 件。`hodgeTateMap` は各次数の線形写像＋単位・積・微分の両立、Bockstein は係数 A の `regularBockstein`、D4-03・D4-05・D4-06） | — | B（R の形、線形性の述べ方、係数環）・A（忘却関手） |
+| A1-4 Prop 6.2・Thm 6.3 | a1-design §2.4・2.5・§3 | A1/HodgeTateComparison（BS-D4 停止点 3 済：`True` 0 件。`universalOrientedPrismRing p`＋`CommRing`（D4-02）、α の Tor 振幅は mod p 通常 ≤ 1 と Koszul 版 3 に分離し利用側は有限性のみ（D4-04）） | 未（a1 §8 の 5〜7） | A（Flat の形）・D（G-A1-4・5・13） |
+| A1-2 結晶側の対象 | a1-design §2.3 | A1/CrystallineInput（BS-D4 停止点 3 済：`True` 0 件。恒久的な引用は `crystalline_deRham_polynomial_Zp` 一件、G-A1-14/16/17 は証明予定） | 未（a1 §8 の 1・2） | E |
+| A1-3 Lemma 5.4・Thm 5.2 β・Cartier・Cor 5.5 | a1-design §3 の 3〜6 | A1/CrystallineInput（BS-D4 停止点 3 済：`hodgeTate_of_deRham_cartier`、有限変数の Cartier） | 未（a1 §8 の 3・4） | E |
 | A2-1 animated 代数（P_Σ）・離散環の埋め込み | a2-design §2.1 | A2/AnimatedAlgebra（BS-D4 停止点 1 済、11-03：`True` 0 件） | 未（a2 §7 の 1） | A（Yoneda の名前、集合値前層の離散埋め込み） |
 | A2-2 Δ の Kan 延長・Frobenius・(1) | a2-design §2.2 | A2/DerivedPrismaticCohomology（BS-D4 停止点 1 済：`True` 0 件。`prismaticCohomologyCAlg`＝A5 の第 0 脚、`derivedPrismaticFrobenius`＝A4/A7 の Frobenius の行き先、要確認は G-A2-3・9 の CAlg 反射・G12・Shared の Tot・A0/S2 の関手性） | — | C（G-A2-3・4）、G-A1-11 |
 | G-A1-11 CAlg 値の層・RΓ、模型の E∞ 構造 | a1-design G-A1-11、a2-design §2.2 | Sheaves/CAlgValued、Shared/CosimplicialEInfinity | — | C（G12、U の保存性、Barratt–Eccles の余鎖作用の形） |
@@ -65,9 +65,9 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification（BS-D1 停止点 3 済、11-03：`True` 0 件。普遍同相は Spec 全単射＋剰余体の純非分離、核は nil、層は `StratumRing I g = (R/√I)[1/g]`、結論 (1)(2)(3) を ∃ 文に） | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分の証明は中身の段階） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness（BS-D2 停止点 3 済：`True` 0 件。T・T̂・A_λ の型、Cor 8.12 は S → T̂、G-A8-8 は一般の整代数への帰着でだけ） | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
-| A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
+| A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly（BS-D4 停止点 3 済：`True` 0 件。`deRham_iso_rootAlgebra_modP` → A5 の `rootMap_modP_eq_deRham`、`prismaticCohomology_lci_universal` → A3 の特殊化） | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模（11-03、BS-D3 後）：51 本、約 10,200 行（結論が `True` の名前つき宣言 114）。BS-D1（49）・BS-D2（83）・BS-D3（88）で A0・A4〜A8 の仮置みを具体的な型にした（報告 `report-codex-d1/2/3.md`、D1-01〜03・D2-01〜02・D3-01〜07 は設計側で解決）。残りは A1〜A3（62）→ BS-D4、基盤（Shared 30・Sheaves 9・DerivedGeneral 13）→ W2b 後。
+骨組みの規模（11-03、BS-D4 後）：51 本、約 12,100 行（結論が `True` の名前つき宣言 53、Codex 集計）。BS-D1（49）・BS-D2（83）・BS-D3（88）・BS-D4（64＋`Type u := sorry` 10）で A0〜A9 の仮置きを具体的な型にした（報告 `report-codex-d1/2/3/4.md`、D1-01〜03・D2-01〜02・D3-01〜07・D4-01〜06 は設計側で解決）。**A0〜A9 に結論が `True` の仮置きは残っていない。** 残り 53 は基盤側（Shared 28：Descendable 16・CosimplicialEInfinity 5・EInfinityPowerOperation 4・Bockstein 2・DeRhamPolynomial 1；DerivedGeneral 14：CompletionFunctor 5・Truncation 5・ScalarRestriction 4；Sheaves 11：SpaceValued 6・CAlgValued 3・CechConerveLimit 1・GlobalSections 1）→ W2b 後の段 G（BS が M12a・M13、∞ が G3・G4・G6）。
 
 ## 2. 要確認の分類
 
@@ -313,6 +313,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | D4-03（BS-D4、Codex）Shared の `Cosimplicial.cohomology`・`quotPow` は body が sorry で図式 X・C・元 d が引数に入らず、`regularShortExact` は `True` | 要修正 | 基盤側で確定（11-03）：`cohomology X n`（X 明示、`AddCommGroup`、Mathlib の `alternatingCofaceMapComplex` のホモロジーとの `cohomologyEquivHomology`）、`cohomologyMap`・`cohomologyMap_cup`、`quotPow C d hd_nat k′`、`toModules k C ι`（係数 k を固定、W9-I-21）、`regularShortExact … : CosimplicialShortExact`、`regularBockstein`、`bockstein_sq` を型つきに。A1 は Mathlib の homology を直接使う所では `cohomologyEquivHomology` で橋渡し |
 | D4-04（BS-D4、Codex）a1-design §2.5 の「Constr 6.1 の α は c = 1」は A0 §2.9 の Koszul 版の述語と合わない（標的で α(d) = p·u なので Kos(D₀; p, α(d)) に H^{−2} = D₀/p が残り c = 2） | 要修正 | 訂正済み（11-03、二度目：全 K を量化すると K = A₀/(p,d) で H^{−3} ≠ 0 なので **c = 3**＝B/p の Tor 次元 ≤ 2 ＋ 標的 Koszul の余分な 1 段）：二つを分ける——α mod p の通常の Tor 振幅 ≤ 1（保存性・(6) の分解用）と、Koszul 版の (p,d) 完全 Tor 振幅 c = 3（Lemma 4.20・4.22 用。要るのは有限性だけ）。A0 §2.9 に Koszul 版と商の版のずれ（≤ r）を注記。a1-design §2.5 |
 | D4-05（BS-D4、Codex）Shared の `deRhamComplex` が変数型 T を取らず、`completedForms` 上の連続微分・外積の宣言がない | 要修正 | 基盤側で確定（11-03）：`deRhamComplex k T`、`completedFormsUnit`、`completedWedge`（＋unit との両立）、`completedDeRhamD`（k 線形な連続微分、W9-I-22。unit との両立・d̂² = 0・Leibniz）、`completedDeRhamComplex k T p`。A1 はこれを CommMon (Complex k) にまとめ Barratt–Eccles の augmentation と `cAlgVertex` で E∞ 実現 |
+| D4-06（BS-D4、Codex）Shared の `regularShortExact` は body が sorry で型に `hd_reg` が現れないので section 変数 `hd_reg` が引数に残らない（A1 の `htSequence`・`regularBockstein` が渡す） | 要修正 | 基盤側で修正（11-03）：`include hd_reg in` を付けて引数に残す（def の body 依存の自動包含に頼らない。D4-03 と同じ教訓：body が sorry の宣言は section 変数が落ちる） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

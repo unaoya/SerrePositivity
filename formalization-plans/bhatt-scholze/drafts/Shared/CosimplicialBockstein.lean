@@ -85,6 +85,7 @@ def quotPow (C : CosimplicialObject CommRingCat.{u}) (d : ∀ n : SimplexCategor
 def toModules (k : Type u) [CommRing k] (C : CosimplicialObject CommRingCat.{u})
     (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ C) : CosimplicialObject (ModuleCat.{u} k) := sorry
 
+include hd_reg in -- 11-03（D4-06）：body が sorry でも hd_reg を引数に残す（A1 の `htSequence` が渡す。def の body 依存の自動包含には頼らない）
 /-- 概要：短完全列 0 → C/d →d→ C/d² → C/d → 0（d 正則）。
 方針：d 倍は C/d → C/d² へ単射（正則性）、像は dC/d²C、余核は C/d。
 規約：加群として。係数は共通の基底環 k（prism の A、または ℤ）に固定する（C⁰ は一般には共通の係数環ではない、W9-I-21）。
