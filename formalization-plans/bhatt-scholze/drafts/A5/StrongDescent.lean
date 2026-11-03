@@ -121,10 +121,11 @@ theorem coconnective_of_modBaseChange (M : (derivedInfinityCategory (perfectPris
     Derived.IsConnectiveAt (perfectPrismRing p R) (-1) M := by
   sorry -- 商環上の離散加群にテンソルしても上界を保つ。Koszul の有限 filtration と完備性を使う
 
-/-- CAlg の係数拡大は係数制限の左随伴。 -/
+/-- CAlg の係数拡大は係数制限の左随伴。D3-05 の一般形は `cAlgBaseChange`、
+忘却した底変換との比較は `cAlgBaseChange_forget`（DerivedGeneral/ScalarRestriction）。 -/
 def prismScalarExtension {A C : Type u} [CommRing A] [CommRing C] (q : A →+* C) : CAlg_R A ⟶ CAlg_R C :=
   Classical.choose (show ∃ G, Nonempty (QCatAdjunction G (cAlgRestrictScalars q)) from by
-    sorry) -- 要確認：ScalarRestriction へ。CAlg の導来係数拡大 ⊗^L_A C の随伴（M13）
+    sorry) -- cAlgBaseChange と cAlgBaseChange_restrictScalars_adjunction（D3-05、M13）
 
 abbrev reducedRootEdge := (deltaRootEdge p R hR 1).map
   (prismScalarExtension (Ideal.Quotient.mk (inversePair p R hR)))

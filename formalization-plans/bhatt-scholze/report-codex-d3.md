@@ -68,3 +68,64 @@ A2 待ちの Δ、Frobenius、完備 CAlg への反射、mod d には、A4・A7 
 途中で、離散環上の `IsDescendable` と当初は引数のなかった `IsDescendableOver` のどちらも Δ_T 上の射を受け取れないことを報告した。D3-04（`df86ebb71`）で基盤側に非離散底の型が確定したので、それに合わせた。押し出し・Tot・テンソル・RHom・Frobenius 余極限・完備化の証明は Shared/Descendable の一般底版 (a)〜(h) 待ち。ほかに設計上の変更はない。
 
 基準との差分には `df86ebb71` に入った RootAdjunction と WeaklyInitialAndDescent の途中差分も含めて照合した。指定四ファイルの元の宣言名と件数、既存の定義の向き、実ファイルの import パス、括弧と空白を静的に確認した。Lean の型検査・ビルドは実行していない。停止点3の A6 は未着手。
+
+## 第3部　A6 の excision（基準 main `0ba4a1ce5`）
+
+### 集合の層と Cor 8.12
+
+- S → T × S/I は、I が試験射の核に含まれるかどうかで二つの延長を分ける。両方で W=V を取る。対角の射は T ⊗̂_S T からの乗法と商の完備テンソルへの射の対。後者は通常の環の押し出しの比較を `completionMap` で送る。S/I → S′/IS′ の左逆は S′=T×S/I としたときの第二射影で、H⁰ 完備化でも分裂が残る。
+- 冪等元の因子 eT は T/(1−e) とした。二つの perfectoid 標的の積とその構造射を与える関手に `isIntegralPerfectoid_prod` を使い、圏同値を逆向きに読んだ。perfd の積保存は二本の環射影を脚とする錐の極限性。取り替え後の引き戻しの cospan は (g,id_C) と (h,id_C) で、g は T からの商射、h は S/I からの比較射に由来する。
+- D3-06（`d0ee7ce76`）に従い、集合の層の延長は Mathlib の比較同値の `.functor`、制限は `.inverse` とした。延長を制限する単位同型と、延長の値を S→P の圏で取る極限は別の宣言。集合の等化子の判定は有限積保存と一点被覆の生成 sieve での相対 Čech 条件を使う。得られる集合の引き戻しと、Hom 層の対応する押し出しは、それぞれ指定した四射の `IsPullback`・`IsPushout`。商の脚の `Mono` は完備化前の商射の全射性から得る。
+- O の係数は global な site で `ArcZ = ULift ℤ`。F_U の元 (P,l) における R 代数構造を R→U→P とし、`elementStructure_forget` で ℤ に制限すると元の O の引き戻しに戻る。S・I の完備性から得る商の完備性は S/I について述べた。T/IT を含む四角形ではすべての環の射を H⁰ 完備化関手で送る。Hom 層の完備化同型は `completionUnit` に沿う前合成を成分とする自然同型。
+- Fontaine の式は W(PreTilt(R×S)) をまず W(PreTilt R × PreTilt S)、次に W(PreTilt R) × W(PreTilt S) へ送り、θ_R × θ_S と合成する環準同型の等式。両同型の順方向は環射影から定めた。θ を使う節には両因子で p が非単元という既存の仮定があり、零環の因子は外側の積定理で扱う。
+
+### BS-D3 全体の件数（S8 の入口を確認中）
+
+基準 `789259c90` から、名前のある既存宣言の結論と、環の型を返す定義を別に集計した。
+
+| 停止点 | 結論の True を具体化 | 環の `Type u := sorry` を具体化 |
+| --- | ---: | ---: |
+| 1・完全 site と semiperfectoid の場合 | 25 | 1 |
+| 2・降下と Prop 8.5 | 36 | 6 |
+| 3・集合の層、Cor 8.12、Fontaine θ（途中） | 17 | 0 |
+| 現時点の合計 | 78 | 7 |
+
+**現時点で既存宣言85件**。環の型7件は `universalPerfectoidRing` と、停止点2で単位射・比較射の始域と終域を確定するために具体化した `rootAdjunctionStep`、`rootClosure`、`algebraicRootClosure`、`polyAlgebra`、`polyRootAlgebra`、`rootCover`。停止点3は SheafOfSetsExcision の13件、Excision の3件、PerfectoidFiniteProduct の1件を具体化した。指示書の Excision は5件とあるが、基準には完備化同型と Γ の自然同型が別々にあり、列挙された既存名は6件だった。既に型のある `e3Excision`、新設の補助宣言は上の件数に含めない。
+
+
+### S8 の入口・保留中の3件
+
+`sectionsOf` は現在、引数のない `True` の証明で、`localEquiv_of_sheafifyIso` も引数のない `True` の定理。指示書 §0 の「既存の名前の形が前提と合わない」に従い、元の圏での CAlg_R 極限と、層化で射が可逆になる条件を A6 の型として使うか、基盤の一般形を待つかを照会した。D3-06 で回答を受けたのは層の延長の向き。残る宣言は `sectionsOf_homSheaf_eq_perfectoidization`、`homPresheafPushout_localEquiv`、`sectionsOf_homSheaf_eq_e3Perfd`。S8 への接続以前の元の圏の係数図式、集合の前層の押し出しとその層化比較射、完備化の自然同型は具体化済み。
+
+基盤・A2 待ちのうち、A0/S2 の評価と離散 Frobenius（D3-01）、大きい添字圏の S3（D3-02）、G12、A1-5 の de Rham 比較、Mod_D の内部 Hom と descendability（D3-04）、animated π₀ は第1・2部のとおり。D3-03 の離散係数比較は `cAlgRestrictScalars_algebraEmbedding`、D3-05 の係数拡大と忘却比較は `cAlgBaseChange` と `cAlgBaseChange_forget` に名前が確定している。A6 の perfd は A4 の `perfectoidizationFunctor`・`e3Perfd` を使い、A2 の仮名は増やしていない。
+
+以下はこの作業時点の実ファイルを走査した一覧。名前付き宣言の結論だけを数え、仮定・構造の欄・証明中の `True` は除いた。Lean を起動せず、宣言名、既存 API の向き、import の実在、括弧、`git diff --check` を確認した。停止点3の完了コミットは保留した。
+
+<details>
+<summary>drafts 全体に残る、結論が True の名前つき宣言（125件）</summary>
+
+- `A1/CrystallineInput.lean`（2件）　`crystalline_deRham_polynomial_Zp`、`hodgeTate_of_deRham_cartier`
+- `A1/DeRhamComparisonPoly.lean`（4件）　`deRham_iso_polynomial_crystalline`、`deRham_iso_polynomial_universal`、`deRham_iso_polynomial_modP`、`deRham_iso_rootAlgebra_modP`
+- `A1/HodgeTateComparison.lean`（14件）　`hodgeTate_iso_polynomial_Zp`、`hodgeTate_iso_crystalline`、`universalOrientedPrism_frobenius_flat`、`crystallineCoverMap_conservative`、`crystallineCoverMap_torAmplitude`、`crystallineCoverMap_prismaticCohomology`、`hodgeTate_iso_of_construction61`、`baseChangeB`、`baseChangeC`、`baseChangeB_conservative`、`baseChange_cechAlexanderAffine_eq`、`hodgeTate_iso`、`bockstein_sq_zero'`、`prismaticCohomology_baseChange'`
+- `A1/HodgeTateMap.lean`（5件）　`reducedModel`、`hodgeTateMapZero`、`hodgeTateMapOne`、`bockstein_sq_zero`、`hodgeTateMap`
+- `A2/AnimatedAlgebra.lean`（5件）　`polyCoproduct_isCoproduct`、`polyYoneda_fullyFaithful`、`animatedAlgebra_siftedColimits`、`discreteToAnimated_poly`、`discreteToAnimated_fullyFaithful`
+- `A2/BaseChangeAndTensor.lean`（5件）　`derivedPrismaticCohomology_baseChange`、`derivedPrismaticCohomology_siftedColimit`、`prismaticCohomologyPoly_tensor`、`derivedPrismaticCohomology_tensor`、`derivedPrismaticCohomology_completion_animated`
+- `A2/DerivedPrismaticCohomology.lean`（9件）　`completeCAlg_siftedColimits`、`prismaticCohomologyCAlg`、`prismaticCohomologyCAlg_eq_totEInfinity`、`prismaticFrobeniusPoly`、`derivedPrismaticCohomology_preservesSifted`、`derivedPrismaticCohomology_poly`、`derivedPrismaticFrobenius`、`derivedPrismaticCohomologyDerived`、`derivedPrismaticCohomology_h0_ring`
+- `A2/HodgeTateFiltration.lean`（7件）　`hodgeTatePoly_gr`、`hodgeTatePoly_bounded`、`hodgeTateFiltration_step`、`hodgeTateFiltration_gr`、`hodgeTateFiltration_exhaustive`、`hodgeTateFiltration_zero`、`hodgeTateUnitCAlg`
+- `A3/DiscreteCase.lean`（3件）　`deltaStructure_of_envelopeIso`、`discrete_weaklyInitial`、`exists_initial_of_discrete`
+- `A3/LciAndQuasiregular.lean`（10件）　`lciDerivedEnvelope`、`lciDerivedEnvelope_eq_prismatic`、`lciDerivedEnvelope_isEnvelope_of_discrete`、`lci_envelope_surjective_invert_p_universal`、`prismaticCohomology_lci_eq_envelope`、`qrsp_isDiscretePrismatic`、`qrsp_completelyFaithfullyFlat`、`regularSemiperfectoid_prismatic`、`qrsp_initial`、`rootQuotient_prismatic_perfection_eq`
+- `A6/Excision.lean`（3件）　`sectionsOf_homSheaf_eq_perfectoidization`、`homPresheafPushout_localEquiv`、`sectionsOf_homSheaf_eq_e3Perfd`
+- `DerivedGeneral/CompletionFunctor.lean`（5件）　`completion_isReflective`、`completion_tensor_koszul`、`completion_exact`、`complete_colimit`、`completedBaseChange`
+- `DerivedGeneral/ScalarRestriction.lean`（4件）　`derivedInfinityBaseChange_restrictScalars_adjunction`、`cAlgBaseChange_restrictScalars_adjunction`、`derivedInfinityRestrictScalars_completion`、`cAlgRestrictScalars_h0`
+- `DerivedGeneral/Truncation.lean`（5件）　`truncationLE_counit`、`truncation_cofiber`、`tStructure_axioms`、`truncationLE_of_isConnective`、`derived_nakayama`
+- `Shared/CosimplicialBockstein.lean`（4件）　`regularShortExact`、`bockstein_leibniz`、`bockstein_sq`、`bockstein_natural`
+- `Shared/CosimplicialCupProduct.lean`（1件）　`cohomologyCup_map`
+- `Shared/CosimplicialEInfinity.lean`（5件）　`totEInfinity_forget`、`totEInfinity_cohomologyRing`、`totEInfinity_isLimitCone`、`totEInfinity_map`、`derivedGlobalSectionsCAlg_eq_totEInfinity`
+- `Shared/Descendable.lean`（16件）　`isDescendableOver_unit_iff`、`isDescendableOver_pushout`、`isDescendableOver_comp`、`isDescendableOver_tensor`、`isDescendableOver_tot_equiv`、`hasDescentIndexLEOver_two_of_rhom`、`hasDescentIndexLEOver_frobeniusColimit`、`isDescendableOver_complete`、`isDescendable_baseChange`、`isDescendable_comp`、`isDescendable_tensor`、`isDescendable_tot_equiv`、`hasDescentIndexLE_two_of_rhom`、`hasDescentIndexLE_frobeniusColimit`、`isDescendable_complete`、`isDescendable_of_faithfullyFlat`
+- `Shared/EInfinityPowerOperation.lean`（4件）　`powerOperationZero_zero`、`powerOperationZero_natural`、`powerOperationZero_natTrans`、`powerOperationZero_eq_frobenius_tot`
+- `Sheaves/CAlgValued.lean`（3件）　`forget_conservative`、`forget_sheafify`、`forget_derivedGlobalSections`
+- `Sheaves/CechConerveLimit.lean`（1件）　`isLimitCone_iff_restrict_cech_large`
+- `Sheaves/GlobalSections.lean`（1件）　`sheafifyUnit_isEquivalence_of_isSheaf`
+- `Sheaves/SpaceValued.lean`（9件）　`sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf`、`sectionsOf_colimit`、`sectionsOf_representable`、`sections_localEquiv_iso`、`sectionsOf_eq_limit_elements`
+
+</details>

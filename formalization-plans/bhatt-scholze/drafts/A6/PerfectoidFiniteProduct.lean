@@ -4,6 +4,7 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import Mathlib.RingTheory.Perfection
 public import Mathlib.RingTheory.Perfectoid.FontaineTheta
@@ -84,7 +85,9 @@ def perfectionProdEquiv (A B : Type u) [CommRing A] [CommRing B] [CharP A p] [Ch
 規約：Mathlib に直積の同型はないので係数で書く。
 使われ方：θ の直積。 -/
 def wittVectorProdEquiv (A B : Type u) [CommRing A] [CommRing B] :
-    WittVector p (A × B) ≃+* WittVector p A × WittVector p B := sorry
+    WittVector p (A × B) ≃+* WittVector p A × WittVector p B :=
+  RingEquiv.ofBijective ((WittVector.map (RingHom.fst A B)).prod (WittVector.map (RingHom.snd A B))) (by
+    sorry) -- Witt の各係数の対を逆写像にする
 
 end Prod
 
@@ -101,14 +104,26 @@ variable [Fact (¬ IsUnit (p : S))] [IsAdicComplete (Ideal.span {(p : S)}) S]
 使われ方：θ の直積。 -/
 def preTiltProdEquiv :
     letI : Fact (¬ IsUnit (p : R × S)) := ⟨not_isUnit_p_prod_left p R S Fact.out⟩
-    PreTilt (R × S) p ≃+* PreTilt R p × PreTilt S p := sorry
+    PreTilt (R × S) p ≃+* PreTilt R p × PreTilt S p := by
+  letI : Fact (¬ IsUnit (p : R × S)) := ⟨not_isUnit_p_prod_left p R S Fact.out⟩
+  let l := Perfection.map p (modPMap p (RingHom.fst R S))
+  let r := Perfection.map p (modPMap p (RingHom.snd R S))
+  exact RingEquiv.ofBijective (l.prod r) (by
+    sorry) -- modPProdEquiv で各係数の対を戻す。Frobenius の遷移は成分ごと
 
 /-- 概要：θ の両立：`wittVectorProdEquiv` と `preTiltProdEquiv` の下で θ_{R×S} = θ_R × θ_S（`fontaineTheta` は ghost 成分と Teichmüller で成分ごと、
 mod p^n の逆極限として定義されるので各段で成分ごと）。
 方針：`mk_pow_fontaineTheta` で mod p^{n+1} に落として成分ごとに比較。
-規約：主張の式は中身の段階で `wittVectorProdEquiv`・`preTiltProdEquiv` の向きを決めてから書く。
+規約：両同型を積から成分への向きに使う。この θ の計算には各因子の p 非単元の仮定がある。零環因子は下の積定理で別に扱う。
 使われ方：核の計算。 -/
-theorem fontaineTheta_prod_compat : True := by trivial
+theorem fontaineTheta_prod_compat :
+    letI : Fact (¬ IsUnit (p : R × S)) := ⟨not_isUnit_p_prod_left p R S Fact.out⟩
+    letI := isAdicComplete_span_p_prod p R S
+    fontaineTheta (R × S) p = ((fontaineTheta R p).prodMap (fontaineTheta S p)).comp
+      ((wittVectorProdEquiv p (PreTilt R p) (PreTilt S p)).toRingHom.comp
+        (WittVector.map (preTiltProdEquiv p R S).toRingHom)) := by
+  sorry -- mk_pow_fontaineTheta で各 p^(n+1) の商へ射影し、Witt 係数と tilt の射影を成分ごとに比較。
+        -- 両因子の p 進分離性で R × S の等式に戻す
 
 /-- 概要：ker θ_{R×S} ≅ ker θ_R × ker θ_S（直積環のイデアル）。両方が単項（生成元 ξ_R・ξ_S）なら (ξ_R, ξ_S) が生成する単項イデアル。
 方針：`fontaineTheta_prod_compat` と、直積環のイデアル I × J で I = (x)、J = (y) なら I × J = ((x, y))。
