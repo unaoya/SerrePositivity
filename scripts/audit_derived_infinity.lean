@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison
@@ -8078,3 +8079,13 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_homotopy
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_boundaryFilling
 #check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_homotopy_detection
+
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.leftDG
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.rightObj
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.swapIso
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.rightDG
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.swapStrict
+#print axioms SerrePositivity.InfinityCategories.tensorLeft
+#print axioms SerrePositivity.InfinityCategories.tensorWith
+#print axioms SerrePositivity.InfinityCategories.tensorWith_vertex
+#print axioms SerrePositivity.InfinityCategories.tensorWithSymmetry

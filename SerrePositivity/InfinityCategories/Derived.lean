@@ -2296,6 +2296,7 @@ public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomComp
 public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomProjection
 public import SerrePositivity.InfinityCategories.Derived.SuspensionSquareHomotopy
 public import SerrePositivity.InfinityCategories.Derived.SuspensionVertexNaturality
+public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 public import SerrePositivity.InfinityCategories.Derived.TensorArrowConjugation
 public import SerrePositivity.InfinityCategories.Derived.TensorBasis
 public import SerrePositivity.InfinityCategories.Derived.TerminalConeSectionEdges
