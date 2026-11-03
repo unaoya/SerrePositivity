@@ -8,6 +8,11 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- Fontaine による完備テンソルの芯を E3 非依存のモジュール（仮称 CompletedTensorCore）へ切り出し、本ファイルはそれだけを import する（a9-design §7、調整役へ依頼）。
 -- perfectoid 環の有限積が perfectoid であることは E3 を使う `isIntegralPerfectoid_finPi` ではなく直接証明（G-A6-12）。
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.Basic
+public import Mathlib.CategoryTheory.Sites.InducedTopology
+public import Mathlib.CategoryTheory.EssentiallySmall
+public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
+public import Mathlib.RingTheory.TensorProduct.Basic
+public import Mathlib.Algebra.Ring.Pi
 -- 本ファイルは drafts/A5/RootAdjunction.lean（`rootClosure`・`rootClosure_extends`）、drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure_isSemiperfectoid`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、
 -- drafts/A0/PrismaticSite.lean（`cutoff`）を import する（W9-III-14 で所在を RootAdjunction に揃えた）。
 
@@ -37,6 +42,7 @@ A6-2（Prop 8.10）、A6-3（集合の層の等式）、A6-4（Cor 8.12）、A8�
 noncomputable section
 universe u
 open CategoryTheory
+open scoped TensorProduct
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
@@ -56,24 +62,43 @@ structure IsRankOneCompleteValuationRing (V : Type u) [CommRing V] : Prop where
   krullDim_eq_one : ringKrullDim V = 1
   adicComplete : IsAdicComplete (Ideal.span {(p : V)}) V
 
+/-- 導来 p 完備性と濃度を併記する、環の圏上の対象条件。 -/
+def affComplProperty : ObjectProperty CommRingCat.{u} := fun S =>
+  IsModuleComplete S (p : S) (ModuleCat.of S S) ∧ Cardinal.mk S ≤ κ
+
+/-- 小さい模型を取る前の充満部分圏。 -/
+abbrev AffComplLarge := (affComplProperty p κ).FullSubcategory
+
+instance affComplLarge_essentiallySmall : EssentiallySmall.{u} (AffComplLarge p κ) := by
+  sorry -- 濃度 κ の固定した台の部分集合に環構造を移し、小さい同値な圏を作る
+
 /-- 概要：κ-small の p 完備環の圏（affine の p 進形式スキーム）。
-方針：`CommRingCat.{u}` の充満部分圏（導来 p 完備、濃度 ≤ κ）の `SmallModel`（要確認：A0 の `PrismOverSmall` と同じ道具）。
+方針：`CommRingCat.{u}` の充満部分圏（導来 p 完備、濃度 ≤ κ）の `SmallModel`（A0 の `PrismOverSmall` と同じ道具。`EssentiallySmall.{u}` を上で供給）。
 規約：対象の濃度 ≤ κ。
 使われ方：arc site の台。 -/
-def AffCompl : Type u := sorry
+abbrev AffCompl : Type u := SmallModel (AffComplLarge p κ)
 
-instance : Category.{u} (AffCompl p κ) := sorry
+instance : Category.{u} (AffCompl p κ) := inferInstance
+
+/-- 小さい模型から元の環への忘却。射の環準同型もこの関手で取り出す。 -/
+def affComplForget : AffCompl p κ ⥤ CommRingCat.{u} :=
+  (equivSmallModel (AffComplLarge p κ)).inverse ⋙ (affComplProperty p κ).ι
+
+/-- 小さい p 完備環の圏内での perfectoid 条件。 -/
+def affPerfdProperty : ObjectProperty (AffCompl p κ) := fun S =>
+  IsIntegralPerfectoid ((affComplForget p κ).obj S) p
 
 /-- 概要：κ-small の perfectoid 環の充満部分圏 affPerfd_κ ⊂ affCompl_κ。
 方針：`IsIntegralPerfectoid` の `ObjectProperty.FullSubcategory`。
 規約：—
 使われ方：Prop 8.10、F_T。 -/
-def AffPerfd : Type u := sorry
+abbrev AffPerfd : Type u := (affPerfdProperty p κ).FullSubcategory
 
-instance : Category.{u} (AffPerfd p κ) := sorry
+instance : Category.{u} (AffPerfd p κ) := inferInstance
 
 /-- 概要：包含関手 affPerfd_κ ⥤ affCompl_κ（充満忠実）。 -/
-def affPerfdInclusion : AffPerfd p κ ⥤ AffCompl p κ := sorry
+def affPerfdInclusion : AffPerfd p κ ⥤ AffCompl p κ :=
+  (affPerfdProperty p κ).ι
 
 /-! ## arc 被覆と arc 位相 -/
 
@@ -93,14 +118,22 @@ def IsArcCoverFamily {R : Type u} [CommRing R] {ι : Type u} [Finite ι] (B : ι
 方針：`Sieve.generate (Presieve.ofArrows …)`。
 規約：affCompl_κ の opposite の上。
 使われ方：以下。 -/
-def arcTopology : GrothendieckTopology (AffCompl p κ)ᵒᵖ := sorry
+def arcTopology : GrothendieckTopology (AffCompl p κ)ᵒᵖ :=
+  sInf { J | ∀ (ι : Type u) [Finite ι] (R : AffCompl p κ)
+    (B : ι → AffCompl p κ) (f : ∀ i, R ⟶ B i),
+    IsArcCoverFamily p (fun i => (affComplForget p κ).obj (B i))
+      (fun i => ((affComplForget p κ).map (f i)).hom) →
+    Sieve.generate (Presieve.ofArrows (fun i => Opposite.op (B i))
+      (fun i => (f i).op)) ∈ J (Opposite.op R) }
 
 /-- 概要：affPerfd_κ への誘導位相（`affPerfdInclusion.op` による引き戻し、Mathlib `Functor.inducedTopology`。包含は site の opposite の向きで渡す、W9-II-25）。
-定義の本体は `(affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)`（要確認：`IsLocallyCoverDense` のインスタンスが要る版なら `affPerfdInclusion_isCoverDense` から供給）。
+定義の本体は `(affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)`。
+Mathlib `Sites/InducedTopology.lean` の定義には cover-dense の仮定は不要（比較定理の仮定とは区別）。
 方針：Mathlib の dense subsite の道具。
 規約：原典 "Perfd ⊂ fSch with the induced topology" の affine 版。
 使われ方：Prop 8.10、Cor 8.12。 -/
-def arcTopologyPerfd : GrothendieckTopology (AffPerfd p κ)ᵒᵖ := sorry
+def arcTopologyPerfd : GrothendieckTopology (AffPerfd p κ)ᵒᵖ :=
+  (affPerfdInclusion p κ).op.inducedTopology (arcTopology p κ)
 
 /-! ## coverage -/
 
@@ -108,16 +141,50 @@ def arcTopologyPerfd : GrothendieckTopology (AffPerfd p κ)ᵒᵖ := sorry
 方針：R′ → V は R → V を与え、持ち上げ R_i → W と R′ → V → W から R_i ⊗̂_R R′ → W（W は p 完備）。
 規約：完備テンソルは `CompletedTensor`（perfectoid なら perfectoid）。
 使われ方：生成系の補題（S1 `isSheaf_toGrothendieck_iff`）を使うための coverage 条件。 -/
-theorem isArcCoverFamily_baseChange : True := by trivial
+theorem isArcCoverFamily_baseChange
+    {R R' : Type u} [CommRing R] [CommRing R']
+    {ι : Type u} [Finite ι] (B : ι → Type u) [∀ i, CommRing (B i)]
+    (f : ∀ i, R →+* B i) (g : R →+* R')
+    (hR : IsModuleComplete R (p : R) (ModuleCat.of R R))
+    (hR' : IsModuleComplete R' (p : R') (ModuleCat.of R' R'))
+    (hB : ∀ i, IsModuleComplete (B i) (p : B i) (ModuleCat.of (B i) (B i)))
+    (hf : IsArcCoverFamily p B f) :
+    letI : Algebra R R' := g.toAlgebra
+    letI : ∀ i, Algebra R (B i) := fun i => (f i).toAlgebra
+    IsArcCoverFamily p
+      (fun i => completionRing p (CommRingCat.of (B i ⊗[R] R')))
+      (fun i => (completionUnit p (CommRingCat.of (B i ⊗[R] R'))).hom.comp
+        (Algebra.TensorProduct.includeRight : R' →ₐ[R] B i ⊗[R] R').toRingHom) := by
+  sorry -- R' → V を R に制限して持ち上げ、テンソルと完備化の普遍性で W へ延ばす
 
 /-- 概要：合成・有限族の合併・有限積への置き換え（{R → R_i} と R → ∏R_i は同じ位相を生成）。 -/
-theorem isArcCoverFamily_comp : True := by trivial
-theorem isArcCoverFamily_prod_iff : True := by trivial
+theorem isArcCoverFamily_comp
+    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]
+    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i)
+    (J : ι → Type u) [∀ i, Finite (J i)]
+    (C : ∀ i, J i → Type u) [∀ i j, CommRing (C i j)]
+    (g : ∀ i j, B i →+* C i j)
+    (hf : IsArcCoverFamily p B f)
+    (hg : ∀ i, IsArcCoverFamily p (C i) (g i)) :
+    IsArcCoverFamily p (fun ij : Sigma J => C ij.1 ij.2)
+      (fun ij => (g ij.1 ij.2).comp (f ij.1)) := by
+  sorry -- V → W → W' の二段の持ち上げと忠実平坦射の合成、有限添字の Sigma
+
+theorem isArcCoverFamily_prod_iff
+    {R : Type u} [CommRing R] {ι : Type u} [Finite ι]
+    (B : ι → Type u) [∀ i, CommRing (B i)] (f : ∀ i, R →+* B i) :
+    IsArcCoverFamily p B f ↔
+      IsArcCoverFamily p (fun _ : PUnit.{u + 1} => ∀ i, B i)
+        (fun _ => RingHom.pi f) := by
+  sorry -- 付値環は非零整域なので有限積からの射は一因子を通る（空積の場合も含む）
 
 /-- 概要：単射 arc 被覆 R → S の生成 sieve の層条件は、完備テンソル冪の Čech 余脈体の Tot の条件（S3 `CechNerveData`：affCompl_κ の余積は完備テンソル）。
 方針：S1 の生成系の補題と S3。
 規約：—
 使われ方：Prop 8.10 の帰着。 -/
+-- 要確認：BS-D1 停止。S3.CechNerveData は絶対積のデータであり、ここで必要な
+-- S ⊗̂_R S の相対 Čech 項は (Under R)ᵒᵖ 等で扱う必要がある。
+-- 個々の生成 sieve の降下同値か、前層全体の層判定かも明示してから型にする（report-codex-d1.md）。
 theorem isSheaf_arc_iff_cech : True := by trivial
 
 /-! ## Lemma 8.8 の affine 版：affPerfd_κ は cover-dense
