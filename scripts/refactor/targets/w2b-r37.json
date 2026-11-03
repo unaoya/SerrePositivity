@@ -552,6 +552,11 @@
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitCoconeFamily": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ]
     }
   },
   {
@@ -2171,6 +2176,11 @@
         "SerrePositivity.InfinityCategories.Stable.PushoutShape",
         "SerrePositivity.InfinityCategories.Stable.ZeroHomotopy"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.LocalizingInvariants.BFFiberSquareArrows": [
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+      ]
     }
   },
   {
@@ -2633,6 +2643,11 @@
         "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
         "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration",
         "SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure": [
+        "SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent"
       ]
     }
   },

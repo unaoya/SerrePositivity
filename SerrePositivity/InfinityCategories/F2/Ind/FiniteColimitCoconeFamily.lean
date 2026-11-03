@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaColimitPreservation
 public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies

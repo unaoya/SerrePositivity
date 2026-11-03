@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence
 
 public import SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCanonicalMapping

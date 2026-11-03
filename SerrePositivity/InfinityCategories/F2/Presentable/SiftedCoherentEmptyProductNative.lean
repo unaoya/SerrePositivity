@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedEmptyProductNative
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentPointTotalProjection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone

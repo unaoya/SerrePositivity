@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronBoundary
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronArrows
 public import SerrePositivity.InfinityCategories.Core.SpecifiedSimplexEdge

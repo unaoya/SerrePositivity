@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.BinaryDiscreteShape
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoproductCriterion

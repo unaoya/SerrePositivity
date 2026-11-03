@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.FunctorCoconePointwiseCriterion
 
 public import SerrePositivity.InfinityCategories.F2.Compact.LimitConeEdgeReflection
 public import SerrePositivity.InfinityCategories.F2.Compact.ColimitComparisonApex

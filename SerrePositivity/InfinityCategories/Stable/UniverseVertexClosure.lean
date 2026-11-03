@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent
 public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 public import SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle
 public import SerrePositivity.InfinityCategories.Stable.StableVertexClosure

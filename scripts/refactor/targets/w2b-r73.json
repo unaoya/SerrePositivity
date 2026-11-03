@@ -57,6 +57,12 @@
       ],
       "SerrePositivity.KST.Spectra.D3StageLoopedCanonicalProjection": [
         "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra"
+      ],
+      "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomTransportSquarePrecomposition": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition"
+      ],
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.CatTetrahedronTriangles": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronBoundary"
       ]
     }
   },
@@ -1070,6 +1076,11 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexCone"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Compact.ExchangeCoconeCompletion": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorCoconePointwiseCriterion"
+      ]
     }
   },
   {
@@ -1278,6 +1289,11 @@
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyCoconeRealization",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalObject",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTotalUnitRepresentation"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentEmptyProductNative": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.SiftedEmptyProductNative"
       ]
     }
   },
@@ -4510,6 +4526,11 @@
         "SerrePositivity.InfinityCategories.Core.TerminalMap",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexCone"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.SiftedOppositeProducts": [
+        "SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn"
+      ]
     }
   },
   {
@@ -7624,6 +7645,11 @@
         "SerrePositivity.InfinityCategories.F1.Coherent.Vertices",
         "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpaceTriangleHomotopy"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTrianglePointEvaluation": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationVertexTriangle"
       ]
     }
   },

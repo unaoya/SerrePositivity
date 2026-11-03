@@ -1114,6 +1114,11 @@
         "SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams",
         "SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.StrictDiagramTriangleConstant": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismUpperSides"
+      ]
     }
   },
   {
@@ -1728,6 +1733,11 @@
         "SerrePositivity.InfinityCategories.Core.UniverseJoinSimplexShapes",
         "SerrePositivity.InfinityCategories.Core.UniverseLimits",
         "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Compact.YonedaCompact": [
+        "SerrePositivity.InfinityCategories.F2.Compact.Preservation"
       ]
     }
   },
@@ -3154,6 +3164,9 @@
     },
     "downstream_imports": {
       "SerrePositivity.InfinityCategories.F2.Presentable.CoconeRestrictionMappingCriterion": [
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Ind.KanCanonicalCoconeRestriction": [
         "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
       ]
     }
@@ -6256,6 +6269,11 @@
         "SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram",
         "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber",
         "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTriangleFromFunctorSimplex": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentTransformationVertexTriangle"
       ]
     }
   },

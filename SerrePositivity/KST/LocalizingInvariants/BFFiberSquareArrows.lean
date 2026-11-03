@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareLeg
 public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory

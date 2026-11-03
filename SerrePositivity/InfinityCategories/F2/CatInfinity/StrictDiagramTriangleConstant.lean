@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantCoherentTriangle
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans
