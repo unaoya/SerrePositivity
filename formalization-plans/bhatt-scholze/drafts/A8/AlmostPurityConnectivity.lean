@@ -2,7 +2,11 @@
 -- 設計書：formalization-plans/bhatt-scholze/a8-design.md §2.2・§3.2、単位 A8-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
+public import SerrePositivity.InfinityCategories.Derived.FiberTriangle
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 -- 本ファイルは drafts/A8/AlmostConnectivity.lean、drafts/A6/{Excision,SheafOfSetsExcision}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean を import する。
 
@@ -49,7 +53,7 @@ abbrev perfdModule (U : A_R R) : DVertex R :=
 /-- 指定された離散代数の射の perfd の fibre。Cor 8.12 の比較を D(R) で読む。 -/
 def perfdMapFiber {U V : A_R R} (f : U ⟶ V) : DVertex R := by
   let e := ((nerve.edgeMk f).map (perfectoidizationFunctor p R hR ≫ cAlgForgetDerived R)).toTruncated
-  let k := edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion))
+  let k := DGNerve.edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion))
   exact ((derivedInfinityHomotopyEquivalence R).inverse.obj (standardFiberDerivedTriangle k).obj₁).pt
 
 def FiniteEtaleAway (g : R) : Prop :=
@@ -67,7 +71,8 @@ R[1/p] → M が非零。S = R × M は有限 R 代数で D(e_0) 上は自明な
 include hR in
 theorem finitePresentation_isModuleComplete [Module.Finite R S] [Algebra.FinitePresentation R S] :
     IsModuleComplete R (p : R) (ModuleCat.of R S) := by
-  sorry -- 有限表示有限代数は有限表示加群。isModuleComplete_of_finitePresentation と hR.isModuleComplete
+  letI := Module.FinitePresentation.of_finite_of_finitePresentation R S
+  exact isModuleComplete_of_finitePresentation R (p : R) (hR.isModuleComplete R p) (ModuleCat.of R S)
 
 /-- 概要：主イデアル (g) ⊂ R、gS ⊂ S、gR^r は完備な加群上の乗法写像の像（= ker(標的 → coker)）なので導来 p 完備。
 方針：既存 `ModuleClosure.lean` の `isModuleComplete_ker`・`isModuleComplete_coker`。
@@ -80,7 +85,7 @@ theorem span_singleton_isModuleComplete (g : R)
 
 /-- 概要：§3.2 の 2：Thm 7.14（既存、絶対整閉 `IsAbsolutelyIntegrallyClosed` の p 完備忠実平坦な perfectoid 拡大 R → R′）で、主張を R′ 上に移してよい
 （(S ⊗̂_R R′)_perfd = S_perfd ⊗̂_R R′、A8-1 の反映）。
-方針：`CompatibleRootPerfectoid`（要確認：絶対整閉を結論する形の名前）、A7-1、A8-1。
+方針：`Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed`、A7-1、A8-1。
 規約：—
 使われ方：`perfectoidization_almostConnective_of_finiteEtaleAway`。 -/
 theorem almostConnective_of_aic_baseChange [Module.Finite R S] [Algebra.FinitePresentation R S] (g : R)
@@ -93,7 +98,7 @@ theorem almostConnective_of_aic_baseChange [Module.Finite R S] [Algebra.FinitePr
         -- 完備平坦な底変換で K⊗̂M の連結性を反映する。π₀ の有限表示有限代数へは Prop 8.5 系4
 
 /-- 概要：§3.2 の 3：R 絶対整閉、S[1/f] が R[1/f] 上有限エタールなら、有限個の h_j で D(f) = ∪ D(f h_j)、各 j で S[1/(f h_j)] ≅ R[1/(f h_j)]^{r_j}。
-方針：既存 `IsAbsolutelyIntegrallyClosed.finiteEtaleAway_exists_finite_cover`（要確認：形）。
+方針：既存 `IsAbsolutelyIntegrallyClosed.finiteEtaleAway_exists_finite_cover` の有限族の分子を使う。
 規約：—
 使われ方：生成元の細分。 -/
 theorem exists_principal_splitting_cover [Module.Finite R S] (hA : IsAbsolutelyIntegrallyClosed R)
@@ -128,6 +133,7 @@ def splitProduct (g : R) (r : ℕ) : (Fin r → R) →ₐ[R] (Fin r → Localiza
   map_mul' := by intros; ext; simp
   commutes' := by intros; rfl
 
+/-- 部分代数の subtype から環・R 代数のインスタンスを継承する。 -/
 def trivialCoverComparison (g : R) (r : ℕ) (e : AwaySplitting R S g r) :
     Subalgebra R (Fin r → Localization.Away g) :=
   (splitSource R S g r e).range ⊔ (splitProduct R g r).range
@@ -191,7 +197,7 @@ theorem perfectoidization_almostIso_of_localization_iso {U V : A_R R} (f : U ⟶
     IsJAlmostZero p R hR (Ideal.span {g}) (perfdMapFiber p R hR f) := by
   sorry -- ArcOutside を上で得て Cor 8.12。商の fibre は (R/g)_perfd 加群
 
-/-- 概要：(R^r)_perfd = R^r（G-A6-2 の有限積と `perfectoidization_of_perfectoid`）、離散。 -/
+/-- 概要：(R^r)_perfd = R^r（G-A6-12 の有限積と `perfectoidization_of_perfectoid`）、離散。 -/
 def perfectoidization_pow_eq (r : ℕ) :
     VertexIso (perfdValue p R hR (ofAlgebra R (Fin r → R)))
       ((algebraEmbedding R).app _ (nerveVertex (ofAlgebra R (Fin r → R)))) := by

@@ -187,18 +187,22 @@ def completeBaseChangeUnitIso (hR' : IsIntegralPerfectoid R' p) :
     (completeBaseChangeH0 p R (R' := R')).obj (ModuleCat.of R R) ≅ ModuleCat.of R' R' := by
   sorry -- R ⊗^L_R R′ の乗法同型と R′ の p 完備化単位の逆
 
-/-- 一般 J の比較は K⊗̂R′→R′ の像。有限生成 J のときは K R′ の p 進閉包（D2-02）。 -/
+/-- 一般 J について、(JR′)_perfd は K⊗̂_R R′→R′ の像、すなわち R′→B⊗̂_R R′ の核。
+有限生成 J でのイデアルの式は K R′ の p 進閉包（Fayolle, Prop 2.9）。
+通常の Ideal.map とは一般に異なる。K が有限生成なら一致するが、K = J_perfd 自体は
+一般に有限生成でない（D2-02、a8-design §3.1）。 -/
 theorem perfectoidIdeal_baseChange (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
     (hR' : IsIntegralPerfectoid R' p) (hf : IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) R') :
     let K := perfectoidKernel p R hR J
     let K' := perfectoidKernel p R' hR' (J.map (algebraMap R R'))
     let i := (completeBaseChangeH0 p R (R' := R')).map (ModuleCat.ofHom K.subtype) ≫
       (completeBaseChangeUnitIso p R hR').hom
-    Function.Injective i ∧ K' = LinearMap.range i.hom ∧
-      (J.FG → K' = ⨅ n : ℕ, K.map (algebraMap R R') ⊔ Ideal.span {(p : R') ^ n}) := by
+    Function.Injective i ∧ K' = LinearMap.range i.hom := by
   sorry -- 完備平坦な底変換の完全性と Prop 8.13 で B の完備底変換への核を同定。
-        -- 各 pⁿ 商で像を読んで逆極限を取ると有限生成 J の閉包の式
+        -- 有限生成 J での閉包の式は Fayolle, Proposition 2.9
 
+/-- M′ は M の完備底変換。K′ ≅ K⊗̂_R R′ を用い、K′⊗̂_{R′}M′ ≃ K⊗̂_R M′
+の零性を反映する。通常の拡大イデアルが閉であるという仮定は不要。 -/
 theorem isAlmostZero_baseChange_iff (hJ : IsModuleComplete R (p : R) (ModuleCat.of R J))
     (hR' : IsIntegralPerfectoid R' p) (hf : IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) R')
     (M : DVertex R) (hM : isPCompleteVertex p R M) :
