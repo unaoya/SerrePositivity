@@ -95,8 +95,16 @@ theorem cochainDifferential_cup {m n : ℕ} (x : X.obj ⦋m⦌) (y : X.obj ⦋n�
 方針：Mathlib の `HomologicalComplex.homology`。
 規約：ModuleCat の対象。
 使われ方：コホモロジー環。 -/
-def cohomology (n : ℕ) : Type u :=
-  sorry -- (alternatingCofaceMapComplex.obj (X ⋙ forget₂ CommRingCat (ModuleCat ℤ))).homology n
+def cohomology (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) : Type u :=
+  sorry -- (alternatingCofaceMapComplex.obj (X ⋙ forget₂ CommRingCat AddCommGrpCat)).homology n。11-03（D4-03）：X を明示引数に（body が sorry だと section 変数が落ちる）
+instance (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) : AddCommGroup (cohomology X n) := sorry
+
+/-- 概要：Mathlib の交代余面複体のホモロジーとの同一視（A1 が Mathlib の homology を直接使う所の橋）。
+方針：定義どおり（`forget₂ CommRingCat AddCommGrpCat` で加法群の余単体的対象に送る）。
+規約：`AddCommGrpCat` の `HomologicalComplex.homology`。
+使われ方：A1 `hodgeTateMap`、Bockstein との接続。 -/
+def cohomologyEquivHomology (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) :
+    cohomology X n ≃+ ((CosimplicialObject.alternatingCofaceMapComplex.obj (X ⋙ forget₂ CommRingCat AddCommGrpCat)).homology n) := sorry
 
 /-- 概要：cup 積はコホモロジーに降りる（Leibniz 則から、余輪体 × 余輪体 ⊆ 余輪体、余境界 × 余輪体 ⊆ 余境界）。
 方針：`cochainDifferential_cup`。
@@ -117,7 +125,9 @@ theorem cohomologyCup_comm {m n : ℕ} (a : cohomology X m) (b : cohomology X n)
 方針：面写像と環射の可換性。
 規約：—
 使われ方：模型の取り替え（大小の Čech–Alexander 模型、底変換）で環構造が移ること。 -/
-theorem cohomologyCup_map (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) : True := by
-  trivial -- 要確認：cohomology の関手性の型を決めてから述べる
+def cohomologyMap (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) (n : ℕ) : cohomology X n →+ cohomology Y n := sorry
+theorem cohomologyMap_cup (Y : CosimplicialObject CommRingCat.{u}) (f : X ⟶ Y) {m n : ℕ} (a : cohomology X m) (b : cohomology X n) :
+    cohomologyMap X Y f (m + n) (cohomologyCup X a b) = cohomologyCup Y (cohomologyMap X Y f m a) (cohomologyMap X Y f n b) := by
+  sorry -- 面写像と環射の可換性（(B) の決定：環の射で cup を保つ）
 
 end SerrePositivity.Cosimplicial

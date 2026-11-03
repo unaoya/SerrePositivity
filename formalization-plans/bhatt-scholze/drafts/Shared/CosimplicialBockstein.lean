@@ -74,14 +74,29 @@ variable (C : CosimplicialObject CommRingCat.{u}) (d : ∀ n : SimplexCategory, 
 方針：`Ideal.Quotient` と面写像の降下。
 規約：d は基底から来る元（prism の生成元の像）を想定するが、ここでは一般。
 使われ方：Ō_Δ の模型 C^•/dC^• と C^•/d²。 -/
-def quotPow (k' : ℕ) : CosimplicialObject CommRingCat.{u} :=
-  sorry -- n ↦ C.obj n ⧸ (d n)^k'
+def quotPow (C : CosimplicialObject CommRingCat.{u}) (d : ∀ n : SimplexCategory, C.obj n)
+    (hd_nat : ∀ {m n} (θ : m ⟶ n), C.map θ (d m) = d n) (k' : ℕ) : CosimplicialObject CommRingCat.{u} :=
+  sorry -- n ↦ C.obj n ⧸ (d n)^k'。11-03（D4-03）：C・d・hd_nat を明示引数に（body が sorry だと section 変数が落ちる）
+
+/-- 概要：係数環 k を固定した余単体的 k 加群としての読み替え（W9-I-21：係数は共通の基底 k、C⁰ ではない）。
+方針：定数図式 k → C の射 ι に沿って各項を k 加群に。
+規約：`CosimplicialObject (ModuleCat k)`。
+使われ方：`regularShortExact`。 -/
+def toModules (k : Type u) [CommRing k] (C : CosimplicialObject CommRingCat.{u})
+    (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ C) : CosimplicialObject (ModuleCat.{u} k) := sorry
 
 /-- 概要：短完全列 0 → C/d →d→ C/d² → C/d → 0（d 正則）。
 方針：d 倍は C/d → C/d² へ単射（正則性）、像は dC/d²C、余核は C/d。
 規約：加群として。係数は共通の基底環 k（prism の A、または ℤ）に固定する（C⁰ は一般には共通の係数環ではない、W9-I-21）。
 使われ方：Bockstein β : H^i(C/d) → H^{i+1}(C/d)。 -/
-def regularShortExact : True := trivial -- 要確認：係数環を固定して CosimplicialShortExact の形に
+def regularShortExact (k : Type u) [CommRing k] (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ C) :
+    CosimplicialShortExact (toModules k (quotPow C d hd_nat 1) sorry) (toModules k (quotPow C d hd_nat 2) sorry)
+      (toModules k (quotPow C d hd_nat 1) sorry) := -- 商への ι の合成は中身の段階で（sorry は定数図式の射の合成）
+  sorry -- d 倍 C/d → C/d²（正則性で単射）、商 C/d² → C/d
+
+/-- 概要：Bockstein β_i : H^i(C/d) → H^{i+1}(C/d)（上の短完全列の連結準同型）。 -/
+def regularBockstein (k : Type u) [CommRing k] (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ C) (i : ℕ) :=
+  (regularShortExact C d hd_nat hd_reg k ι).bockstein i
 
 /-- 概要：Bockstein は H^*(C/d) の cup 積に関する微分：β(a ∪ b) = β(a) ∪ b + (−1)^{|a|} a ∪ β(b)、β² = 0。
 方針：d が各項で正則な複体 C への持ち上げで計算する（W9-I-21）：a ∈ C^i/d の余輪体の持ち上げ ã について ∂ã = d·b と書くと d·∂b = ∂²ã = 0、
@@ -89,9 +104,11 @@ def regularShortExact : True := trivial -- 要確認：係数環を固定して 
 Leibniz は ∂(ã ∪ c̃) = ∂ã ∪ c̃ + (−1)^i ã ∪ ∂c̃ を d で割る（`cochainDifferential_cup`）。
 規約：cup 積は `CosimplicialCupProduct`。
 使われ方：H^*(Ō) が dg 環であること（Constr 4.9）。 -/
-theorem bockstein_leibniz : True := by trivial
+theorem bockstein_leibniz : True := by trivial -- 主張の形：`cohomologyEquivHomology`（CosimplicialCupProduct）で H^*(C/d) の cup 積に移してから述べる（D4-03）
 
-theorem bockstein_sq : True := by trivial
+theorem bockstein_sq (k : Type u) [CommRing k] (ι : (Functor.const SimplexCategory).obj (CommRingCat.of k) ⟶ C) (i : ℕ) :
+    regularBockstein C d hd_nat hd_reg k ι i ≫ regularBockstein C d hd_nat hd_reg k ι (i + 1) = 0 := by
+  sorry -- 正則な持ち上げの計算（W9-I-21）
 
 /-- 概要：Bockstein は余単体的環の射で自然（d を d に写す射について）。
 方針：連結準同型の自然性。
