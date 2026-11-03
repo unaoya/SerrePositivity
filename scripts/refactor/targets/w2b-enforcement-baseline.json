@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "config_sha256": "e542239dc143a34d44dd34458d7d35fddbcb4761db2ca9aeba0df6f8718480bd",
+  "config_sha256": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
   "approval": "IF-W2b §12 main df0d45e69",
   "description": "Approved existing 21 direct edges plus the unchanged pre-W2b W2a-2 aggregate bounds. This is not a ratchet baseline reset.",
   "direct_edges": [
