@@ -51,3 +51,44 @@ D4-01 の回答に合わせ、`hodgeTatePoly_gr` の結論には二つの比較�
 ### 確認の範囲
 
 コメントを除いた宣言を開始基準と比較し、A2 四本には上記二種類の仮置きが 0 件であることを確認した。参照名は本体・Mathlib・基盤 drafts と照合し、四本の括弧と実際の import 先、`git diff --check` を静的に確認した。ビルド・Lean の型検査は行っていない。ここは停止点 1 で、A3 と A1 は次の停止点の対象。
+
+## 第 2 部　A3（停止点 2）
+
+基準は main `b7881adac`。対象は `drafts/A3/DiscreteCase.lean` と `drafts/A3/LciAndQuasiregular.lean`。A2 の停止点 1 までの宣言を用いた。
+
+### 具体化した宣言
+
+| ファイル | 旧結論が `True` | 主張 |
+|---|---:|---|
+| DiscreteCase | 3 | `deltaStructure_of_envelopeIso` は指定された Frobenius 両立な A 環同型に沿って δ 構造を移す。`discrete_weaklyInitial` は p ねじれなしの標的 Y に対し、環の側で A2 の評価脚に等しい prism 射を与える。`exists_initial_of_discrete` は源も p ねじれなしのとき、この充満部分圏で自己評価の冪等射を分裂した始対象を得る。 |
+| LciAndQuasiregular（Ex 7.9） | 5 | `lciDerivedEnvelope` は U→A に沿う E の完備導来底変換。`lciDerivedEnvelope_eq_prismatic` は完備 CAlg の頂点同型。`lciDerivedEnvelope_isEnvelope_of_discrete` は離散化後の H⁰Δ・HT 単位を備えた envelope。`lci_envelope_surjective_invert_p_universal` は U/d とその変数商が p ねじれなしの普遍例で、指定した mod d の比較射を p で局所化したときの全射性。`prismaticCohomology_lci_eq_envelope` は Koszul 正則性と商の有界 p 冪ねじれの下での envelope と始性。 |
+| LciAndQuasiregular（Prop 7.10） | 5 | `qrsp_isDiscretePrismatic` と `qrsp_completelyFaithfullyFlat` は一般の qrsp の離散性と HT 単位 S→H⁰Δ/d の p 完全忠実平坦性。`regularSemiperfectoid_prismatic` は有限根付き商 T での G-A2-10、A′ 上の Ex 7.9、A 上の始性。`qrsp_initial` は一般形の記録。`rootQuotient_prismatic_perfection_eq` は任意の根の族の S′ について Cor 7.3 の具体的候補との S′ 上の唯一の完全 prism 同型を述べる。 |
+
+合計 **13 件**。別に `Type u := sorry` の四宣言（`discretePrismaticRing`、`universalLciPrismRing`、`ainfPrismRing`、`regularSemiperfectoid`）を具体化した。`IsDiscreteHodgeTate` は Δ̄ の次数零への集中、`IsDiscretePrismatic` は Δ の次数零への集中と H⁰Δ での d の正則性。有界性と κ に入る濃度は `discretePrismOver` の独立の引数とした。A3 二本のコードには `True` が残っていない。
+
+### 証明の依存と原典の範囲
+
+- Lemma 7.7 の H⁰ 環、HT 単位、Frobenius、試験 prism への評価を A2 に接続した。`prismMapOfDiscrete_natural` は評価の自然性を記録する。Lemma 7.8 ではこの自然な脚が `Under X` への切断を与え、`IsIdempotentComplete` で自己評価を分裂する。Ex 7.9 の全 prism への普遍性は `IsPrismaticEnvelope.lift` による。
+- G-A3-10 は、B と Δ の比較、HT による離散性、`lciCompletionH0Comparison`、通常テンソルの `lciTensorDelta` と `lciTensorDelta_map_iff`、完備化からの一意延長の順。H⁰ の段では既存の `derivedComplexCompletion_h0_map_isIso` を p と d に適用する。W₂ の段は両因子の切断で判定する。変数 envelope の平坦性の底は A₀。
+- D39 の qrsp には完備性、perfectoid 環からの全射、有界 p 冪ねじれ、完備余接複体の平坦性の四条件を置いた。最後の条件では A2 の `cotangentWedgeAtAlgebra` から S 加群を取り、シフト後の導来 mod p が次数零の平坦な S/p 加群であることを求める。
+- T の比較に使う A2 の入口は `perfectBaseComparison_isIso`。これは `derivedPrismaticCohomology_baseChange` と乗法の合成についての G-A2-10。E3 の S′ の始性は `rootQuotient_initial` で有限部分族の T から得る。一般の `qrsp_initial` の証明は W9-I-43 の別単位。
+- W9-I-44 では R′ に根を添加してから A′ = A_inf(R′) と r = (R′→S′) ∘ θ を取った。非零枝で p の非単元性、r の全射性、r(d′) = 0 を `exists_perfectoidization_of_perfectPrism_quotient` に渡す。始 prism の完全化からの一意延長には `existsUnique_deltaPerfectionPDCompletionHom` を使う。零枝では R′、S′、完全化の商が `Subsingleton` になる。
+
+### D4-02 と A1 から渡す引数
+
+元の A1 の `universalOrientedPrismRing` に p の明示引数・環インスタンスがなかった点は D4-02（`e901167e4`）で解決方針が決まった。A3 は任意の有界 P₀ と分類射を使う。停止点 3 の A1 で次を代入する。
+
+| A3 の引数 | A1 からの入力 |
+|---|---|
+| A₀ と `[CommRing A₀]`、P₀ | p を明示する `universalOrientedPrismRing`、その環インスタンス、`universalOrientedPrism` |
+| `h₀ : IsBoundedPrism P₀` | `universalOrientedPrism_bounded` |
+| `g : OrientedPrism.Hom P₀ P` と `hd : g.toRingHom P₀.generator = P.generator` | `universalOrientedPrism_hom` の唯一の射とその生成元の式 |
+| U の自由変数の像 | 与えられた f。A3 の `lciClassifyingMap` は U→A の基底との両立と各変数が fᵢ に写ることを返す。 |
+
+G-A3-7 用の U/d とその変数商の p ねじれなしは、普遍 A₀ の特性を用いる箇所で供給する。D4-02 以外に設計変更を要した点はない。
+
+### 要確認と静的確認
+
+- `DiscreteCase` の G-A3-9 は、A2 の Frobenius と mod p の E∞ 演算の比較を要する。そこから δ 構造を回収する G-A3-6 には既存の `DeltaStructure.existsUnique_of_frobeniusLift` があり、標的が p ねじれなしの場合の δ 両立には `DeltaStructure.isDeltaHom_of_map_frobeniusLift` がある。同型への移送には `DeltaStructure.comapEquiv` を使った。濃度条件は定理の `hs` で受ける。
+- `LciAndQuasiregular` の `padicBaseAlgebra` は、完備 S 上の標準 ℤ_p 作用を主元完備化の単位に接続する箇所。G-A3-7 の局所化全射は Koszul・bar の計算を証明する予定の補題で、外部引用にはしていない。
+- 宣言の結論・裸の `Type u := sorry` を開始基準と比較した。コメントを除いて括弧の対応と `True` の残数を調べ、実際の import 先と `git diff --check` を確認した。Lean の型検査・ビルドは行っていない。
