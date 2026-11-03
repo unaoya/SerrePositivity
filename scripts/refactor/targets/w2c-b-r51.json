@@ -3,30 +3,30 @@
     "module": "SerrePositivity.KST.SConstruction.PushoutCompletion",
     "action": "move",
     "dest": "SerrePositivity.InfinityCategories.Stable.PushoutCompletion",
-    "moved": [],
     "keep": [],
+    "moved": [],
     "attributes": {},
     "candidate": "R51",
-    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
   },
   {
     "module": "SerrePositivity.KST.SConstruction.RelativeColimitCompletion",
     "action": "move",
     "dest": "SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion",
-    "moved": [],
     "keep": [],
+    "moved": [],
     "attributes": {},
     "candidate": "R51",
-    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
   },
   {
     "module": "SerrePositivity.KST.SConstruction.StableSpanPushout",
     "action": "move",
     "dest": "SerrePositivity.InfinityCategories.Stable.StableSpanPushout",
-    "moved": [],
     "keep": [],
+    "moved": [],
     "attributes": {},
     "candidate": "R51",
-    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
   }
 ]

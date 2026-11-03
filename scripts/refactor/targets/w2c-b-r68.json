@@ -1,12 +1,650 @@
 [
   {
+    "module": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal",
+    "keep": [
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal_fst",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal_isExact",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal_snd",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.difference_diagonal_zero",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.exactDiagonal"
+    ],
+    "moved": [
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.constant_evaluation"
+    ],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: move the general source parents with all generated auxiliary declarations. Retain K-specific parents and import the new defining module on the keep side.",
+    "imports": {
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal": [
+        "SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor",
+        "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal",
+        "SerrePositivity.KST.LocalizingInvariants.ArrowStableExact",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal": [
+        "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.Basic.FunLike.Basic",
+        "Mathlib.Basic.Opposite",
+        "Mathlib.CategoryTheory.Category.Basic",
+        "Mathlib.CategoryTheory.ConcreteCategory.Basic",
+        "Mathlib.CategoryTheory.Functor.Basic",
+        "Mathlib.CategoryTheory.Functor.Category",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+        "Mathlib.CategoryTheory.Monoidal.FunctorCategory",
+        "Mathlib.CategoryTheory.Monoidal.Types.Basic",
+        "Mathlib.CategoryTheory.NatTrans",
+        "Mathlib.CategoryTheory.Opposites",
+        "Mathlib.CategoryTheory.Types.Basic",
+        "Mathlib.Combinatorics.Quiver.Basic",
+        "SerrePositivity.InfinityCategories.Core.FunctorEvaluation",
+        "SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier",
+    "keep": [
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.difference_isVerdier",
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.verdierSequence"
+    ],
+    "moved": [
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLax.identityAdjunction"
+    ],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: move the general source parents with all generated auxiliary declarations. Retain K-specific parents and import the new defining module on the keep side.",
+    "imports": {
+      "SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier": [
+        "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier",
+        "SerrePositivity.KST.LocalizingInvariants.IdentityLaxKernel",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier": [
+        "Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory",
+        "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.Basic.Opposite",
+        "Mathlib.CategoryTheory.Bicategory.Adjunction.Basic",
+        "Mathlib.CategoryTheory.Category.Basic",
+        "Mathlib.CategoryTheory.Functor.Category",
+        "Mathlib.CategoryTheory.Opposites",
+        "Mathlib.CategoryTheory.Types.Basic",
+        "SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberFamilyPrecomposition",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitCComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientDiagram",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitUnitComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientDiagram. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams",
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeRightComparison",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact",
+        "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientDiagram"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientUnitComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison": [
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxCounitSelectedRightCompatibility",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams",
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightImage",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceNullComposite",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite",
+    "keep": [
+      "SerrePositivity.KST.LocalizingInvariants.laxArrowHom",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceNullComposite",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceUnitD_nullComposite"
+    ],
+    "moved": [
+      "SerrePositivity.KST.LocalizingInvariants.comp_zero_of_arrowMk_eq",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZero",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceFunctorZeroMorphisms"
+    ],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: move the general source parents with all generated auxiliary declarations. Retain K-specific parents and import the new defining module on the keep side.",
+    "imports": {
+      "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceNullComposite": [
+        "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberFamilyZeroTriangle",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitD"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite": [
+        "Mathlib.AlgebraicTopology.Quasicategory.Basic",
+        "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+        "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+        "Mathlib.Basic.Opposite",
+        "Mathlib.CategoryTheory.Category.Basic",
+        "Mathlib.CategoryTheory.Comma.Arrow",
+        "Mathlib.CategoryTheory.EqToHom",
+        "Mathlib.CategoryTheory.Functor.Basic",
+        "Mathlib.CategoryTheory.Functor.Category",
+        "Mathlib.CategoryTheory.Limits.Shapes.ZeroMorphisms",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+        "Mathlib.CategoryTheory.Monoidal.FunctorCategory",
+        "Mathlib.CategoryTheory.Monoidal.Types.Basic",
+        "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+        "Mathlib.CategoryTheory.Opposites",
+        "Mathlib.CategoryTheory.Types.Basic",
+        "Mathlib.Combinatorics.Quiver.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
+        "SerrePositivity.InfinityCategories.Core.Pointed",
+        "SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory",
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRho",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho",
+    "keep": [
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_fullyFaithful",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_postcomp_fullyFaithful",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_sectionIso",
+      "SerrePositivity.KST.LocalizingInvariants.laxDifferenceRho_snd"
+    ],
+    "moved": [
+      "SerrePositivity.KST.LocalizingInvariants.fullyFaithfulRightAdjunction_counitHom_isIso"
+    ],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: move the general source parents with all generated auxiliary declarations. Retain K-specific parents and import the new defining module on the keep side.",
+    "imports": {
+      "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceRho": [
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition",
+        "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho": [
+        "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+        "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+        "Mathlib.Basic.Opposite",
+        "Mathlib.CategoryTheory.Category.Basic",
+        "Mathlib.CategoryTheory.Functor.Basic",
+        "Mathlib.CategoryTheory.Functor.Category",
+        "Mathlib.CategoryTheory.Iso",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes",
+        "Mathlib.CategoryTheory.Monoidal.FunctorCategory",
+        "Mathlib.CategoryTheory.Monoidal.Types.Basic",
+        "Mathlib.CategoryTheory.ObjectProperty.FullSubcategory",
+        "Mathlib.CategoryTheory.Opposites",
+        "Mathlib.CategoryTheory.Types.Basic",
+        "Mathlib.Combinatorics.Quiver.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition",
+        "SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction",
+        "SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveIdempotence",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+    "action": "split",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions",
+    "keep": [
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC_fst",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC_snd",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD_fst",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD_snd"
+    ],
+    "moved": [
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroC_post",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD",
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.zeroD_post"
+    ],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: move the general source parents with all generated auxiliary declarations. Retain K-specific parents and import the new defining module on the keep side.",
+    "imports": {
+      "SerrePositivity.KST.LocalizingInvariants.LaxInclusions": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLift",
+        "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory",
+        "SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions": [
+        "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+        "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+        "Mathlib.Basic.FunLike.Basic",
+        "Mathlib.Basic.Opposite",
+        "Mathlib.CategoryTheory.Category.Basic",
+        "Mathlib.CategoryTheory.ConcreteCategory.Basic",
+        "Mathlib.CategoryTheory.Functor.Basic",
+        "Mathlib.CategoryTheory.Functor.Category",
+        "Mathlib.CategoryTheory.NatTrans",
+        "Mathlib.CategoryTheory.Opposites",
+        "Mathlib.CategoryTheory.Types.Basic",
+        "Mathlib.Combinatorics.Quiver.Basic",
+        "Mathlib.Combinatorics.Quiver.ReflQuiver",
+        "SerrePositivity.InfinityCategories.Core.Pointed",
+        "SerrePositivity.InfinityCategories.Stable.Definition",
+        "SerrePositivity.InfinityCategories.Stable.ExactFunctor",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories",
+        "SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.StableValueFunctor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientNormalizedCone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullbackComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeLegComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientComparison. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams",
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.LaxCounitSelectedRightCompatibility",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionFiber",
+        "SerrePositivity.KST.LocalizingInvariants.SuspensionExactDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.SuspensionExactFunctor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftReflective",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueCone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg": [
+        "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction",
+        "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor",
+        "SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberRotationAdjunction",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact",
+        "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams",
+        "SerrePositivity.KST.LocalizingInvariants.LaxInclusions",
+        "SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs",
+        "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceFactor"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceKernel",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel": [
+        "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact",
+        "SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily",
+        "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal",
+        "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceOuter",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxVerdierInvariantFiber. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceKernel. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare": [
+        "SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath",
+        "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal",
+        "SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier",
+        "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceKernel",
+        "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceValuePullback",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension",
+        "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion",
+        "SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy",
+        "SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy",
+        "SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductSquare",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierHomotopyFiberValue",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierInvariantFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberLegs",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberVertices",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductMap",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierReflectiveCompatibility",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R68",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
     "module": "SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition",
     "action": "move",
     "dest": "SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition",
-    "moved": [],
     "keep": [],
+    "moved": [],
     "attributes": {},
     "candidate": "R68",
-    "note": "Provisional whole-module move; K-specific dependencies and unresolved candidates are listed separately."
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
   }
 ]
