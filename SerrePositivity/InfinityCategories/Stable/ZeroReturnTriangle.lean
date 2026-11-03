@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 
 /-! # 零頂点へ戻る合成二単体

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentProductNativeCone
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanConeHomotopyTriangles
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
 
 /-!
 概要：coherent な積の native な二脚を、元の射影変換の全空間作用へ照合する。

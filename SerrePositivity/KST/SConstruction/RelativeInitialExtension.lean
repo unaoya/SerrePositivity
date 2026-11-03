@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.SkeletalLifting
 public import SerrePositivity.InfinityCategories.Core.InitialExtension
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-! # 相対始点境界充填による図式の延長
 概要：指定した図式と基底を固定して、始点の普遍性から延長する。

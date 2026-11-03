@@ -1,8 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceLimitEdges
-public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceComparisons
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConeRestrictionTransport
 public import SerrePositivity.InfinityCategories.Core.TerminalMappingSpace
+public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceComparisons
+public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreSourceLimitEdges
 
 /-!
 概要：実 θ と元の始点の比較辺の合成を、同じ錐の圏で照合する。

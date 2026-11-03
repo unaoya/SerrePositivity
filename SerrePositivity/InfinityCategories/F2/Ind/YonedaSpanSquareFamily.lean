@@ -1,9 +1,10 @@
 module
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSquarePreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaCoconeFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteCospanInclusion
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SpanSquareUniverseReading
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading
 public import SerrePositivity.InfinityCategories.Stable.Bicartesian
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.SizedDiagramTransformation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCones
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # 元の頂点・全脚の通常の錐比較を、同じ全 coherent 錐の比較へ送る -/
 

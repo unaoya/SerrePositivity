@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.CofiberConnecting
-public import SerrePositivity.InfinityCategories.Stable.FixedHomotopyComponent
+public import SerrePositivity.InfinityCategories.Core.FixedHomotopyComponent
 
 /-! # Cofiber と suspension の比較の最初の二成分
 

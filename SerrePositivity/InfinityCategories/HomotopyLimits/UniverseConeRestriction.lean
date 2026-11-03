@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductPreservation
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
 
 /-!
 概要：形状制限と宇宙変更による全錐の比較。

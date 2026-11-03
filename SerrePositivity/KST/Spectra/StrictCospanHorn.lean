@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.CospanNerveHornIso
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedShapeNerveIso
 public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 /-!
 概要：通常の cospan の coherent な表示を二辺のホーン上で計算する。

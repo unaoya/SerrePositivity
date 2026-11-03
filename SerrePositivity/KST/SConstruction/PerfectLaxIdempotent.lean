@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackColimitConeExistence
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 
 /-! # 元の lax pullback の coherent 冪等完備性
 概要：両入力が冪等完備なら、同じ実 lax pullback の全 coherent 冪等図式が分裂する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallPieceKanIndex
 public import SerrePositivity.InfinityCategories.F2.Presentable.Accessible
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 

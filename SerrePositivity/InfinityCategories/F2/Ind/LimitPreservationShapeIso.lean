@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.LimitPreservationOpposite
-public import SerrePositivity.InfinityCategories.Stable.ReindexSliceOver
+public import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
 
 /-!
 概要：形状同型に沿い、元の関手による全極限錐の保存を輸送する。

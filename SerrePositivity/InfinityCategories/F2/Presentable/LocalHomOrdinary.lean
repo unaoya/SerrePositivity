@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 
 /-!
 概要：写像空間の局所性から通常のホモトピー圏の Hom の全単射を回収する。

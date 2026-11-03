@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.OppositeIdempotent
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingLimit
 
 /-!

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanDiagrams
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-!
 概要：反転関手で写した分母付き span を、元の両端点を保つ実三角形とその第三辺へ評価する。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductTotalMap
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentProductSmallFiber

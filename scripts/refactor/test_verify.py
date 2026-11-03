@@ -88,7 +88,7 @@ import verify_runner as vr
 
 
 class MemoryRunnerTests(unittest.TestCase):
-    def schedule(self, paths, stats, jobs=6, budget=45*vr.GB):
+    def schedule(self, paths, stats, jobs=6, budget=40*vr.GB):
         active = 0
         maximum = 0
         lock = threading.Lock()
@@ -114,7 +114,7 @@ class MemoryRunnerTests(unittest.TestCase):
                  for n,t,rss in [('large1',9,30),('large2',8,30),('small',1,10)]}
         report = self.schedule(['small','large2','large1'],stats)
         self.assertEqual(report['start_order'], ['large1','small','large2'])
-        self.assertLessEqual(report['max_reserved_rss_bytes'],45*vr.GB)
+        self.assertLessEqual(report['max_reserved_rss_bytes'],40*vr.GB)
         self.assertGreater(report['memory_wait_count'],0)
         self.assertGreater(report['memory_wait_seconds'],0)
 
@@ -124,7 +124,7 @@ class MemoryRunnerTests(unittest.TestCase):
         self.assertEqual(report['planned_order'],['u1','u2','u3','known'])
         starts = [e for e in report['events'] if e['event']=='start']
         self.assertEqual([e['estimated_rss_bytes'] for e in starts if e['name'].startswith('u')], [20*vr.GB]*3)
-        self.assertLessEqual(report['max_reserved_rss_bytes'],45*vr.GB)
+        self.assertLessEqual(report['max_reserved_rss_bytes'],40*vr.GB)
 
     def test_jobs_one_is_serial(self):
         report = self.schedule(['a','b','c'],{},jobs=1)

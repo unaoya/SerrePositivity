@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialHomEdgeComparison
-public import SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialNaturality
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialNaturality
 public import SerrePositivity.InfinityCategories.F1.Transport.PointCoslicePostIso
 
 /-!

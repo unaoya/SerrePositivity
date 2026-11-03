@@ -1,0 +1,64 @@
+{
+  "status": "APPLIED_PENDING_BUILD",
+  "instruction": "IF-W2b §10/14/16",
+  "module_count": 1,
+  "import_count": 1,
+  "changes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint",
+        "SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso",
+        "SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso",
+        "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitPreservationGeneration",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceContractibleColimits",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceInitial",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceProjection"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits",
+        "SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint",
+        "SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso",
+        "SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso",
+        "SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitPreservationGeneration",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceContractibleColimits",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceInitial",
+        "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceProjection"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedSourceInclusion_preservesFiniteColimit",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedSource_finite_colimit_mem",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedSource_hasPreservedFiniteColimit",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.emptyCosliceIso._proof_2",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.emptyCosliceIso._proof_1",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.generatedSource_hasFiniteColimits",
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization.emptyCosliceIso._proof_3"
+        ]
+      },
+      "plan_record": {
+        "stage": "R37",
+        "module": "SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint",
+        "field": "downstream_imports"
+      }
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  }
+}

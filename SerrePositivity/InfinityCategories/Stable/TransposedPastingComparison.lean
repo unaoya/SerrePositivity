@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PastingComparisonHomotopy
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 
 /-! # 転置した長方形の左から外側への比較
 

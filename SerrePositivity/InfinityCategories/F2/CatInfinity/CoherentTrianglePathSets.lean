@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePaths
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTrianglePaths
 
 /-!
 概要：三角形の三辺と合成 path の具体的な集合表示。

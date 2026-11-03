@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 
 /-!
 概要：Cat_∞ の平行な辺の類の一致と元の関手同型の同値。

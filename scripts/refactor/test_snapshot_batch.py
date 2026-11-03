@@ -42,3 +42,21 @@ class BatchTests(unittest.TestCase):
     def test_other_failures_do_not_retry(self):
         self.assertFalse(batch.memory_failure(1, "unknown module"))
         self.assertTrue(batch.memory_failure(1, "maximum memory consumption exceeded"))
+
+    def test_accepts_current_proof_irrelevant_v3b_format(self):
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            mapping = root / "names.json"
+            mapping.write_text("{}")
+            (root / "A.lean").write_text("module\n")
+            def snapshot(args, cwd, stdout, stderr):
+                Path(args[-1]).write_text(json.dumps(dict(
+                    schema_version=2, name_map={}, modules=["A"],
+                    declarations=[], count=0, huge_terms=[], proof_irrelevant=True,
+                    hash_algorithm='normalized Expr DAG mixHash proof-irrelevant v3b (term-level, proof marker)',
+                    sources=[dict(module="A", source="module\n")])))
+                return CompletedProcess(args, 0)
+            with patch.object(batch, "ROOT", root), patch.object(batch.subprocess, "run", snapshot):
+                batch.collect(["A"], mapping, root / "shards")
+            result = json.loads((root / "shards/manifest.json").read_text())
+            self.assertEqual((result["status"], result["completed"]), ("PASS", 1))

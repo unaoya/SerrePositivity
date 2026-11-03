@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.LeftFibrationProduct
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LeftFibrationProduct
 public import Mathlib.Data.Fin.Basic
 
 /-!

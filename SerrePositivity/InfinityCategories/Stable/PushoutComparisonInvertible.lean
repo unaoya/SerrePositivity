@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ColimitHomotopyInvertible
+public import SerrePositivity.InfinityCategories.F1.ColimitHomotopyInvertible
 public import SerrePositivity.InfinityCategories.Stable.PushoutSquareHomotopyLift
 
 /-! # 押し出し四角形の比較の可逆性

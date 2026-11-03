@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseRepresentation
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.UniverseRepresentation
 public import SerrePositivity.InfinityCategories.F1.Transport.RepresentationEdgeDetection
 public import SerrePositivity.InfinityCategories.F1.Universe.Transport
 public import SerrePositivity.InfinityCategories.F1.Universe.Reflection

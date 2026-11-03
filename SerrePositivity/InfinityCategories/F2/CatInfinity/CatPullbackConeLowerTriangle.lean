@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeUpperTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyLowerTriangle
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyLowerTriangle
 
 /-!
 概要：引き戻し錐の下側の比較三角形の三辺。

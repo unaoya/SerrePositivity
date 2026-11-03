@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGStrictNerveWhiskerHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomTypedWhiskerAlgebra
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorTrianglePostcomposition
 
 /-!
 概要：元実 gluing cone の入力同型と実評価の全比較を、元右包含を保って接続する。

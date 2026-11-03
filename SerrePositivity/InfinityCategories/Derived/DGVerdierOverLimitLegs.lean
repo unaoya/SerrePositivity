@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGVerdierOverLimitCone
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 /-!
 概要：任意反転関手の実分母図式の任意の実極限錐は、同じ各脚が全て可逆。
 方針：指定頂点の実評価極限錐との全錐同型と、定値全錐への比較 prism を合成する。

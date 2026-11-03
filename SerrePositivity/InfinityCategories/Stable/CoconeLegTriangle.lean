@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 
 /-! # 脚の合成二単体を点下の余錐の辺に戻す
 

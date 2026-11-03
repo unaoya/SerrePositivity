@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback
 public import SerrePositivity.InfinityCategories.Stable.SquareHorizontalHomotopies
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
 
 /-!

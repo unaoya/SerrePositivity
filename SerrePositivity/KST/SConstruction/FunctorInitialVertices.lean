@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FunctorInitialBoundary
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-! # 関手圏の点ごとの始対象と零対象
 概要：全ての点で始対象・零対象となる関手頂点の普遍性を証明する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 
 /-!
 概要：h 圏の可換四角形で指定した縦辺が同値なら、元の二辺の関手同型を構成する。

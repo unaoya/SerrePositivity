@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.TransportUniqueness
-public import SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.F1.CoconeRestrictionOppositeFibration
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 
 /-!

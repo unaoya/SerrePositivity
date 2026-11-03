@@ -4,7 +4,10 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.Core.EquivalencePath
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
 
@@ -38,6 +41,8 @@ open CategoryTheory Limits SSet MonoidalClosed
 open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories.Sheaves
+
+open F2.Presentable (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u + 1}} [Quasicategory E]
 
@@ -81,9 +86,9 @@ abbrev PresheafCat (𝒞 : Type u) [SmallCategory 𝒞] (E : SSet.{u + 1}) : SSe
 方針：`functorVertex` の逆（Core/FullSubcomplexInternalHom）。
 規約：全単射。
 使われ方：`sheafProperty`。
-要確認：Core の正確な名前（`functorVertex` と yoneda）。 -/
+Core の `functorVertexEquiv` を使う。 -/
 def vertexToPresheaf (F : (PresheafCat 𝒞 E) _⦋0⦌) : Presheaf 𝒞 E :=
-  sorry -- Core の functorVertex の逆
+  (functorVertexEquiv _ _).symm F
 
 /-- 概要：関手 ∞ 圏の頂点が J 層であるという性質。
 方針：`IsSheaf` を `vertexToPresheaf` で引き戻す。
@@ -108,14 +113,19 @@ theorem sheafification_exists (J : GrothendieckTopology 𝒞) [IsStable E] (hE :
     Sheafification J E := by
   sorry -- S4：W の構成、層 ⇔ W 局所、HTT 5.5.4.15（G4・G6・G8）
 
+/-- 同じ反射の選択を層化の頂点、射、単位に使う。 -/
+def sheafificationFunctor (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) :
+    PresheafCat 𝒞 E ⟶ PresheafCat 𝒞 E :=
+  (Classical.choice hJ).localization
+
 /-- 概要：与えられた反射で F を層化した前層 F^♯。
 方針：反射関手の頂点での値を `vertexToPresheaf` で読む。
 規約：選択を含む（反射関手の選択）。
 使われ方：RΓ。
-要確認：`IsReflectiveSubcategory` の中身（関手と随伴の `∃`）から関手を取り出す形。 -/
+選んだ反射の自己関手を評価する。 -/
 def sheafify (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
     Presheaf 𝒞 E :=
-  sorry -- 反射関手 L を選び、F の頂点の像を読む
+  vertexToPresheaf ((sheafificationFunctor J hJ).app _ (functorVertex F))
 
 lemma isSheaf_sheafify (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
     IsSheaf J (sheafify J hJ F) := by
@@ -127,7 +137,13 @@ lemma isSheaf_sheafify (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
 使われ方：層の場合に F^♯ ≃ F（`sheafify_of_isSheaf`）、RΓ の関手性。 -/
 def sheafifyUnit (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : Presheaf 𝒞 E) :
     SSet.Homotopy F (sheafify J hJ F) :=
-  sorry -- 随伴の単位
+  by
+    apply functorHomHomotopy
+    have hv : functorVertex (sheafify J hJ F) = (sheafificationFunctor J hJ).app _ (functorVertex F) :=
+      (functorVertexEquiv _ _).apply_symm_apply _
+    change HomotopyCategory.mk (functorVertex F) ⟶ HomotopyCategory.mk (functorVertex (sheafify J hJ F))
+    rw [hv]
+    exact functorHomEvaluate (Classical.choice hJ).unit (functorVertex F)
 
 /-- 概要：層の層化は（単位を通して）自分自身。
 方針：反射的部分圏の対象で単位は同値。
@@ -135,8 +151,8 @@ def sheafifyUnit (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) (F : 
 使われ方：Cor 3.12 の後、RΓ(O_Δ) = Γ(O_Δ)。 -/
 lemma sheafifyUnit_isEquivalence_of_isSheaf (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E)
     {F : Presheaf 𝒞 E} (hF : IsSheaf J F) :
-    True := by -- 要確認：辺の可逆性の述語（FunctorIso か IsEquivalence 辺）を入れる
-  sorry
+    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy (sheafifyUnit J hJ F)) := by
+  sorry -- 反射の単位は層で可逆。h Fun の単位を表すこの辺も可逆
 
 /-! ## RΓ -/
 
@@ -181,9 +197,7 @@ def derivedGlobalSections_map (J : GrothendieckTopology 𝒞) (hJ : Sheafificati
 theorem derivedGlobalSections_of_le (J J' : GrothendieckTopology 𝒞) (h : J ≤ J')
     (hJ : Sheafification J E) (hJ' : Sheafification J' E) (hE : IsPresentable E)
     {F : Presheaf 𝒞 E} (hF : IsSheaf J' F) :
-    ∃ e : E.Edge (derivedGlobalSections J hJ hE F) (derivedGlobalSections J' hJ' hE F), True := by
-  -- W9-I-03：二つの別々に選んだ極限の頂点の等号は主張しない。両者を結ぶ可逆な辺（要確認：可逆性の述語）で述べる。
-  -- 証明：`derivedGlobalSections_of_isSheaf` を J と J′ に当て、F 上の二つの極限錐の比較。
-  sorry
+    ∃ e : E.Edge (derivedGlobalSections J hJ hE F) (derivedGlobalSections J' hJ' hE F), IsInvertibleEdge e.toTruncated := by
+  sorry -- 両位相の RΓ は F 上の極限。比較する辺は E 内にある（W9-I-03）
 
 end SerrePositivity.InfinityCategories.Sheaves

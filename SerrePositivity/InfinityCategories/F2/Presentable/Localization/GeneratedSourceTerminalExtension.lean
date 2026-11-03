@@ -3,9 +3,9 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTransport
 public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
-public import SerrePositivity.InfinityCategories.Stable.UniverseHorns
+public import SerrePositivity.InfinityCategories.Core.UniverseHorns
 public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 
 /-!

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PosetNestedBoundColimit
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridExtension
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveBoundCocone
+public import SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone
 
 /-!
 概要：最終 (3,3) へ向かう十三頂点の実余錐の余極限性。

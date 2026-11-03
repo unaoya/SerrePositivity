@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.TerminalSourceCoslice
 public import SerrePositivity.InfinityCategories.F2.Ind.ConeTerminalSliceComparison
-public import SerrePositivity.InfinityCategories.Stable.ColimitCosliceRestriction
+public import SerrePositivity.InfinityCategories.Core.ColimitCosliceRestriction
 
 /-!
 概要：余極限を持つ全前置図式の coslice を、同じ余極限点の coslice と比較する。

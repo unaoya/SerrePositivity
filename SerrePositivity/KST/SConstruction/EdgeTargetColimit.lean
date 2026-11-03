@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.IdentityCocones
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
-public import SerrePositivity.InfinityCategories.Stable.PushoutShape
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.PushoutShape
 
 /-! # 標準辺の終点を余極限とする余錐
 概要：射の図式の終点に恒等辺を付けた余錐は余極限である。

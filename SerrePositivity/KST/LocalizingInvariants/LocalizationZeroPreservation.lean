@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationInitialPreservation
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationRightAdjunctionDescent
 public import SerrePositivity.KST.LocalizingInvariants.PointTerminalAdjunction
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-!
 概要：任意の辺集合の局所化は終対象と零対象を保ち、pointed な商を実際に与える。

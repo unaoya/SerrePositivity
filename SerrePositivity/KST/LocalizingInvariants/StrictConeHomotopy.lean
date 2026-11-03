@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConePrismComponent
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopySimplexFaces
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopySimplexFaces
 
 /-!
 概要：通常の錐の全比較から、元の二つの strict coherent 錐を結ぶ実ホモトピーを作る。

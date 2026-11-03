@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialRestrictionHomSquare
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachmentPiZero
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingHomComparison
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingHomComparison
 
 /-!
 概要：部分余極限の実際の比較辺を含む族で、余錐の制限の Hom 比較を全単体で計算する。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 public import SerrePositivity.InfinityCategories.Core.LimitConeFamilies
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.CosliceFiberVertices
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle
 

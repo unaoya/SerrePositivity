@@ -2,7 +2,6 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.BaseChangeTransportTriangleData
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoPrecompositionProjection
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の輸送三角形の第二辺・直接辺は、既存の指定同型の端点正規化そのもの。

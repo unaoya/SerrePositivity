@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
-public import SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows
+public import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 
 /-!

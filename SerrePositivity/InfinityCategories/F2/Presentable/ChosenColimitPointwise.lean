@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.ChosenColimitParameterCocone
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeEvaluation
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FlippedConeEvaluation
 
 /-!

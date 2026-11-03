@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationMappingSpaces
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 

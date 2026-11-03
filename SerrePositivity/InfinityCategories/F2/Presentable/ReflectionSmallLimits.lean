@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexConeLift
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FullSubcomplexLimitReflection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveInvertedHom
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjectLimits
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjectLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
 
 /-!

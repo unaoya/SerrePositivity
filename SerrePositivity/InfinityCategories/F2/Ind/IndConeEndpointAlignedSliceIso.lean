@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointReconstructedFace
 public import SerrePositivity.InfinityCategories.F2.Ind.IndConeEndpointSliceComparison
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の終点 slice 比較を、同じ実 comma の二射影の表示へそろえる。

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Stable.ThinNerveMonomorphism
 public import SerrePositivity.InfinityCategories.HomotopyLimits.InitialJoinIso
 public import SerrePositivity.InfinityCategories.Stable.ThinNerveConeComparison
 public import SerrePositivity.InfinityCategories.Stable.PullbackConeVertex
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 public import SerrePositivity.InfinityCategories.Stable.ExcisionSquareGrid
 public import SerrePositivity.InfinityCategories.Stable.ExcisionCoreCospanBoundary
 

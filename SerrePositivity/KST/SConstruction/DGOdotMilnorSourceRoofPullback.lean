@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceRoofNuEdges
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRelativeSourceRoof
 public import SerrePositivity.KST.LocalizingInvariants.HorizontalEquivalencePullback
-public import SerrePositivity.InfinityCategories.Stable.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UniversalUnitComma
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.UnitCommaSourceOppositeFibration
-public import SerrePositivity.InfinityCategories.Stable.CartesianInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.CartesianInitialBoundary
 
 /-!
 概要：comma の fiber の始対象性から相対始点境界充填を得る。

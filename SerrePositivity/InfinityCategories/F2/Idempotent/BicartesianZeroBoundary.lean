@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.BicartesianZeroFamilies
-public import SerrePositivity.InfinityCategories.Stable.ColimitFullyFaithful
+public import SerrePositivity.InfinityCategories.F1.ColimitFullyFaithful
 
 /-!
 概要：元の双カルテジアン零角四角形の下辺射影は、正次元の全境界を持ち上げる。

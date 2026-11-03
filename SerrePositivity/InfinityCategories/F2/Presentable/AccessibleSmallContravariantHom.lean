@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Representability
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleIndRepresentation
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallFiberStraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafSliceComparison
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseUnstraightening
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
 
 /-!
 概要：accessible 圏の元の各対象への反変 Hom を小さい空間値の全関手で表す。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.CosliceLimitConeLift
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraightening
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
 
 /-!
 概要：空間値関手が保つ底の極限錐を元の left unstraightening へ持ち上げる。

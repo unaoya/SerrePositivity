@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.NestedCosliceIso
+public import SerrePositivity.InfinityCategories.Core.NestedCosliceIso
 
 /-! # 任意の図式の二重 coslice
 

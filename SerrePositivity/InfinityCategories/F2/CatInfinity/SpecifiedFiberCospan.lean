@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 public import SerrePositivity.InfinityCategories.Stable.SpecifiedCofiberSpan
 public import SerrePositivity.InfinityCategories.Stable.StableOpposite
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 
 /-!
 概要：安定圏の始対象からの第二枝を持つ指定 cospan は極限を持つ。

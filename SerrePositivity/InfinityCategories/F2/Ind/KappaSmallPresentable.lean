@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteGeneratorPresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
 public import Mathlib.CategoryTheory.Presentable.Limits
 public import Mathlib.CategoryTheory.Comma.CardinalArrow
 public import Mathlib.SetTheory.Cardinal.Arithmetic

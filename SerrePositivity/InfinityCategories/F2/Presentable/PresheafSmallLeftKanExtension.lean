@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F2.Idempotent.UniverseLeftKanShape
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.UniverseLeftKanShape
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentRestrictionColimit
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCoconeColimit
 

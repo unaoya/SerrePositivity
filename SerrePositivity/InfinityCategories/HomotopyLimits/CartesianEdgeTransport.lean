@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianPrismOp
 public import SerrePositivity.InfinityCategories.F1.Transport.EdgeTransport
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CartesianInitialBoundary
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianHornFibrationComparison
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 
 /-!
 概要：元の終点 fiber から始点 fiber への Cartesian transport と輸送 prism を構成する。

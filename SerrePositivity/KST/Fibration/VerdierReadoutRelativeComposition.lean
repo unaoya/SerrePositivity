@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierReadoutBoundaryDiagram
 public import SerrePositivity.KST.Fibration.VerdierReadoutPathBoundary
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalBoundaryExt
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalBoundaryExt
 public import SerrePositivity.InfinityCategories.F1B.RoofRelativeCompositionTriangle
 
 /-!

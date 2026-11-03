@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredPointwiseWeakEquivalences
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FilteredPointwiseWeakEquivalences
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.CategoryTheory.Limits.Final
 public import Mathlib.CategoryTheory.Category.Preorder

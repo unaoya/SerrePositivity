@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification
 public import Mathlib.CategoryTheory.Category.Cat
 
 /-!

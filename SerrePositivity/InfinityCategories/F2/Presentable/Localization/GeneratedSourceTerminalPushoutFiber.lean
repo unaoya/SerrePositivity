@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceRetractionMappingFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanSourceFiber
 public import SerrePositivity.InfinityCategories.Stable.PastingSplitProjection
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 /-!
 概要：終対象の終域への pushout の指定 fiber を、上辺の retraction 空間から可縮にする。

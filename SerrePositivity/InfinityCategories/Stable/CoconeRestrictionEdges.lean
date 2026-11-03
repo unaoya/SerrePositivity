@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransportPrism
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-! # 余錐の制限射の辺の持ち上げ

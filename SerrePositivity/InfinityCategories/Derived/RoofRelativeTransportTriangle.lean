@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RoofRelativeFirstTriangle
 public import SerrePositivity.InfinityCategories.Derived.RoofFirstTriangleCollapse
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 
 /-! # 境界固定比較を指定輸送に沿って動かす相対三角形
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationVertexTriangle
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTransformationPoint
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismTriangles

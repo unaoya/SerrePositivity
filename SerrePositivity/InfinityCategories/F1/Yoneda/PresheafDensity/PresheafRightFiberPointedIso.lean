@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensityEvaluation
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.VertexFiberSquareIso

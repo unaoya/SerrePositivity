@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallLeftFibrationModels
 public import SerrePositivity.InfinityCategories.F1B.Equivalences.QCatEquivalenceOpposite
 public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.Stable.VertexFiberOpposite
+public import SerrePositivity.InfinityCategories.Core.VertexFiberOpposite
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalOppositeFibration
 
 /-!

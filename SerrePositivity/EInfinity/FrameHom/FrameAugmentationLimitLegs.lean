@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
 public import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
 public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 # 可逆 augmentation の元の極限錐の全脚

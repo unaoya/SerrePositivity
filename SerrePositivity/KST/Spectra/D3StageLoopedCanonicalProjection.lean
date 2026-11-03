@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 public import SerrePositivity.KST.Spectra.D3StageLoopedCanonical
 

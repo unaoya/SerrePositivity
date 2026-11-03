@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipAdjunction
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorRelativeInitial
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryIso
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：各点で普遍な全余錐族は関手圏内でも普遍余錐である。

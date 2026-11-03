@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegEdge
-public import SerrePositivity.InfinityCategories.F2.Compact.CoconeFiberPrism
+public import SerrePositivity.InfinityCategories.F1.Compact.CoconeFiberPrism
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningFiberTransport
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationPrismTransport
 

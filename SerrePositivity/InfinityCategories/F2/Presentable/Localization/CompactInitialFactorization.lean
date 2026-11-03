@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorization
 public import SerrePositivity.InfinityCategories.Core.InitialHomotopy
 public import SerrePositivity.InfinityCategories.Core.ConeAnodyne
-public import SerrePositivity.InfinityCategories.Stable.CoslicePostcompTransport
+public import SerrePositivity.InfinityCategories.F1.CoslicePostcompTransport
 public import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
 
 /-!

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedShapeCocone
 public import SerrePositivity.InfinityCategories.F2.Ind.IndElementsLeftKanModel
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KappaFilteredCoslices
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Stable.Filtered.KappaFilteredCoslices
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-!
 概要：元の Ind 頂点への実 comma とその指定図式の下で小さい余錐を作る。

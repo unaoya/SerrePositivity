@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanPreIsoAlgebra
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPrecompEndpointTransport
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoPrecompCompositionValue
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompEndpointTransport
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue
 
 /-!
 概要：共同単位比較の角制限を、以前の同じ実面の指定単位比較へ接続する。

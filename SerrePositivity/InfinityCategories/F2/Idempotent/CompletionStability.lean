@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionFibers
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse
+public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessUniverse
 public import SerrePositivity.InfinityCategories.Stable.BicartesianCriterion
 

@@ -1,3 +1,39 @@
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.SphereClassPath
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.RestrictionLeg
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveVertexRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveValueRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiZeroRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathSphereComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathRelation
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathVertexEdge
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathTransport
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathMapSurjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathFamilyHomotopy
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PairValueRepresentatives
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.PairPathEquality
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.NativeTotalComparison
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.LiftedTotalPiCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.KanMapCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FiniteDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredSpaceBridge
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationHomotopyDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.CoherentNativeCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.CoconeLegNaturality
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeStageKernel
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveSurjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveInjectivity
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathTranspose
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathRealization
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeFiniteCriterion
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeComponents
+import SerrePositivity.InfinityCategories.Derived.PiCriterion.All
 import SerrePositivity.InfinityCategories.Derived.DGNerveReflectsQuasiEquivalence
 import SerrePositivity.DifferentialGraded.Derived.Basic
 import SerrePositivity.DifferentialGraded.Morita.Perfect
@@ -533,7 +569,7 @@ import SerrePositivity.InfinityCategories.Stable.FiniteColimitPastingExtension
 import SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits
 import SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits
 import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
-import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 import SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits
 import SerrePositivity.InfinityCategories.Stable.TwoZeroCornerBicartesianOfEquivalence
 import SerrePositivity.InfinityCategories.Stable.SuspensionLoopAdjunctionOfEquivalence
@@ -5044,7 +5080,7 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Stable.CofiberRotationFromFiniteColimits,
   `SerrePositivity.InfinityCategories.Stable.PushoutCofiberFromFiniteColimits,
   `SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn,
-  `SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet]
+  `SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet]
 
 @[noinline] private def derivedAuditExpectedChunk3 : Array Lean.Name := #[
   `SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits,
@@ -6837,8 +6873,8 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGClosedEdges,
   `SerrePositivity.InfinityCategories.Derived.DGClosedVerdierDenominators,
   `SerrePositivity.InfinityCategories.Derived.DGQuotientActualRoofs,
-  `SerrePositivity.InfinityCategories.Stable.UniverseVertexIso,
-  `SerrePositivity.InfinityCategories.Stable.UniverseZeroTriangle,
+  `SerrePositivity.InfinityCategories.F1.UniverseVertexIso,
+  `SerrePositivity.InfinityCategories.Core.UniverseZeroTriangle,
   `SerrePositivity.InfinityCategories.Stable.UniverseVertexClosure,
   `SerrePositivity.InfinityCategories.Stable.UniverseCofiberEdges,
   `SerrePositivity.InfinityCategories.Derived.DGNativeFiniteCellClosure,
@@ -6933,22 +6969,22 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGQuotientPretriangulated,
   `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedQuasiEquivalence,
   `SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientStability,
-  `SerrePositivity.InfinityCategories.Stable.UniverseHorns,
-  `SerrePositivity.InfinityCategories.Stable.ReindexSliceOver,
-  `SerrePositivity.InfinityCategories.Stable.ReindexSliceUnder,
-  `SerrePositivity.InfinityCategories.Stable.UniverseStandardJoins,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareShape,
-  `SerrePositivity.InfinityCategories.Stable.UniverseOuterHornJoins,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareTriangles,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareCompatibility,
-  `SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares,
-  `SerrePositivity.InfinityCategories.Stable.UniverseSquareHom,
+  `SerrePositivity.InfinityCategories.Core.UniverseHorns,
+  `SerrePositivity.InfinityCategories.Core.ReindexSliceOver,
+  `SerrePositivity.InfinityCategories.Core.ReindexSliceUnder,
+  `SerrePositivity.InfinityCategories.Core.UniverseStandardJoins,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareShape,
+  `SerrePositivity.InfinityCategories.Core.UniverseOuterHornJoins,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareTriangles,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareCompatibility,
+  `SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares,
+  `SerrePositivity.InfinityCategories.Core.UniverseSquareHom,
   `SerrePositivity.InfinityCategories.Stable.UniverseStabilityDescent,
   `SerrePositivity.InfinityCategories.Derived.DGPretriangulatedStability,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundary,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundaryHom,
   `SerrePositivity.InfinityCategories.Core.UniverseBoundaryFilling,
-  `SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects,
+  `SerrePositivity.InfinityCategories.Core.UniverseZeroObjects,
   `SerrePositivity.InfinityCategories.Core.UniverseLimits,
   `SerrePositivity.InfinityCategories.Core.UniverseJoinAugmentation,
   `SerrePositivity.InfinityCategories.Core.UniverseJoin,
@@ -7081,7 +7117,7 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.DGObjectImageNerve,
   `SerrePositivity.InfinityCategories.Derived.DGYonedaRepresentableNerve,
   `SerrePositivity.InfinityCategories.Derived.DGModelStability,
-  `SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone,
+  `SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSquares,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationStability,
   `SerrePositivity.InfinityCategories.Stable.TrivialFibrationSection,
@@ -7354,11 +7390,11 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonSlice,
   `SerrePositivity.InfinityCategories.Derived.FiberCofiberComparisonProjection,
   `SerrePositivity.InfinityCategories.Derived.StandardFiberPushout,
-  `SerrePositivity.InfinityCategories.Stable.RelativeInitialCosliceComparison,
-  `SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint,
-  `SerrePositivity.InfinityCategories.Stable.InitialBoundaryTransport,
-  `SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport,
-  `SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport,
+  `SerrePositivity.InfinityCategories.Core.RelativeInitialCosliceComparison,
+  `SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint,
+  `SerrePositivity.InfinityCategories.Core.InitialBoundaryTransport,
+  `SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport,
+  `SerrePositivity.InfinityCategories.F1.SquareFunctorTransport,
   `SerrePositivity.InfinityCategories.Derived.Stability,
   `SerrePositivity.InfinityCategories.Derived.StableHomotopyComparison,
   `SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget,
@@ -7868,8 +7904,8 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Derived.SmallPerfectDGPretriangulated,
 
     `SerrePositivity.InfinityCategories.Stable.UniverseHomotopyRetract,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyDown,
-    `SerrePositivity.InfinityCategories.F2.FilteredExchange.UniverseHomotopyFaithful,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown,
+    `SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyFaithful,
     `SerrePositivity.InfinityCategories.Derived.DGRepresentableDerivedZero,
     `SerrePositivity.InfinityCategories.Derived.DGQuotientThickKernelCriterion,
     `SerrePositivity.InfinityCategories.Derived.DGFullKernelEssentialImage,
@@ -7882,7 +7918,7 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelImage,
     `SerrePositivity.InfinityCategories.Stable.UniverseKernelEdges,
     `SerrePositivity.InfinityCategories.F1B.Localization.Saturation,
-    `SerrePositivity.InfinityCategories.F2.Idempotent.StabilityUniverse,
+    `SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse,
     `SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeLabelAction,
     `SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeModel,
     `SerrePositivity.InfinityCategories.Derived.DGModuleExtensionSphereComparison,
@@ -7981,3 +8017,64 @@ run_cmd do
   for mod in expected do
     unless seen.contains mod do throwError "Module not audited: {mod}"
   logInfo m!"D2 axiom audit passed: {count} declarations in {seen.size} modules."
+
+-- IF-W2b R73: 移動・分割先を定義元モジュールで監査（宣言の名前空間は維持）。
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.All,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeComponents,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeFiniteCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathRealization,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePathTranspose,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveInjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgePositiveSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.BridgeStageKernel,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.CoconeLegNaturality,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.CoherentNativeCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationHomotopyDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredSpaceBridge,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.FiniteDetection,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.KanMapCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.LiftedTotalPiCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.NativeTotalComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PairPathEquality,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PairValueRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathMapSurjectivity,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathTransport,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PathVertexEdge,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathRelation,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathSphereComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PiZeroRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveValueRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.PositiveVertexRepresentatives,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.RestrictionLeg,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.SphereClassPath,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion,
+    `SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
+  ]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2b: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  for (name, _) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless expected.contains env.header.modules[idx.toNat]!.module do continue
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2b: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  logInfo m!"W2b R73: {count} declarations audited in {expected.size} imported modules."
+
+-- IF-W2b でこの領域に移した宣言の型と公理を検査する。
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_relative_detection
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_homotopy
+#check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_boundaryFilling
+#check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_homotopy_detection

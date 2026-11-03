@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.NativeUniverseContinuity
-public import SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport
+public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
 
 /-!
 概要：底変換した left fibration の分類へ、小さい filtered 余極限保存を移す。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.JoinVertexSummands
-public import SerrePositivity.InfinityCategories.Stable.PastingRightCocone
+public import SerrePositivity.InfinityCategories.F1.PastingRightCocone
 
 /-!
 概要：thin な nerve への射と余錐を実頂点で比較する。

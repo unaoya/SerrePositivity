@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.HomotopyInvertibility
+public import SerrePositivity.InfinityCategories.Core.HomotopyInvertibility
 public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
 public import SerrePositivity.InfinityCategories.Core.PushoutHomotopy
 

@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
-public import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 
 /-!
 概要：有限極限から反対圏の同じ有限図式の余極限を構成する。

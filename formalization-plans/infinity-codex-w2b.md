@@ -200,3 +200,41 @@ X ＝ `FilteredExchange/` の下で `PiCriterion/` を除く 2,094 本。集約 
 4. 補充の import は、置き先と同じ層以下と Mathlib・Foundation に限る。上の層が要るなら 3 で置き先を上げる。禁止領域（KST・DG・EInfinity・モデル圏の HA・Derived・ModelBridge）が要るなら止める（§5-3 はこの場合だけ）。
 
 **再開**：3 の再計算と配置の修正（別コミット「配置の修正」）→ 補充の import（別コミット「補充」、件数と一覧）→ 内部ビルドの続き（残り 771 対象＋失敗 57 本）→ after snapshot v3b → 保存比較 → **停止点 2**（配置修正・補充・修飾などの件数、round の表、静的指標の前後）。
+
+## 15. 追記（2026-11-03 11:00、main（DG-W3）取り込み後の設定ハッシュ不一致への回答）
+
+**受領**：main の merge d135a715f（import の衝突 2 件は両方を保持）、`--report` は中核の順序違反 0・直接違反 18・禁止 0/150/150 で増加なし、`--enforce W2b` は基準の設定ハッシュ不一致で終了コード 2（DG-W3 が `layers.json` の PerfectComplex の例外 3 辺を削除したため）。
+
+**承認**：処置案どおり。`layers.json` の変更は承認済みの束（DG-W3）による**例外の削除＝規則の強化**なので、基準の**設定ハッシュだけ**を現在の `layers.json` に合わせて更新し、承認済みの辺（直接の禁止辺 21 本の上限）と数値（禁止モジュール数・affected core）はそのまま。更新はコミット「ratchet 基準の設定ハッシュ」として記録し、DG-W3 の変更内容（例外 3 辺の削除、DG 層の tier）を注記する。
+
+**再開**：鍵 → 内部ビルドの続き 857 本 → after snapshot v3b → 保存比較 → 停止点 2。
+
+## 16. 追記（2026-11-03 14:30、§5-6 の停止への回答：進捗は「未検証の根」で測る）
+
+**受領**：round 2 失敗 51（857 根、2 時間 9 分）→ round 3 失敗 12（152 根、17 分）→ round 4 失敗 13（60 根、36 分。83 根のうち 14 根は依存先の失敗で未検証、9 根は未実行）。前回の 12 本のうち 10 本は成功、KST 2 本は未確認。13 本はすべて**新たに表面化**した失敗（Claude が停止記録で確認：unknown identifier 11・unknown constant 1・invalid field 1。すべて補充で直る型）。`--enforce W2b` PASS、禁止 0/150/150、affected core 2,532（上限 3,379 内）、監査収録漏れ 0、archive 照合 差分 0。再開リストの漏れ 86 本を検証範囲に戻した。
+
+**§5-6 の精密化**（以後の束でも有効）：補充の round の進捗は失敗モジュールの総数ではなく、(a) **前 round で補充したモジュールが再び落ちていないこと**、(b) **未検証の根（依存先の失敗で遮られた根＋未実行の根）の数が減っていること**で測る。前の失敗に遮られて初めてビルドされたモジュールの新しい失敗は、進捗の証拠であって停止理由ではない。止めるのは、(a) 補充したモジュールが次の round でも同じ型で落ちる、(b) 未検証の根が 2 round 続けて減らない、のどちらか。
+
+**再開**：13 本に補充（別コミット「補充（round 5）」）→ round 5（未検証 23 根＋13 本の利用者）→ 以後同じ規則で収束まで → after snapshot v3b → 保存比較 → **停止点 2**（round の表に「未検証の根」の列を加える）。停止点 2 の報告の後に新しいチャットへ移る（[再開文](infinity-codex-w2b-restart.md)）。
+
+## 17. 追記（2026-11-03 16:40、停止点 2 の承認と、下流〜停止点 3 の条件付き事前承認。以後は新しいチャット）
+
+**承認**：内部ビルド 8 round で PASS（§16 の基準：再発 0、未検証の根 771 → 0。snapshot 対象 1,928 本と直接利用者 31 本を検証、未検出 3 辺の削除も確認）。保存比較は 1,928 本の after snapshot（22 分）で生の差 43 宣言・49 件がすべて個別照合で一致（型・本体・公理が通常表示で一致。暗黙引数つきでは `ReflQuiver.toQuiver`／`catToReflQuiver` と `CategoryStruct.toQuiver`／`Category.toCategoryStruct` の対応＝instance の経路の差で、reducible な instance の展開で定義的に等しい）。未説明 0。`--enforce W2b` PASS（直接違反 294 → 18、中核層間の順序違反 266 → 0、禁止 1/166/166 → 0/150/150、affected core 11/3,379 → 0/2,532）。§12 の個別 12 指標は承認済み草案と同数で、6 根の経路は W2c への入力として記録済み。A 368・B 1,726・C 33、監査 405 本、archive 照合 差分 0。§16 の Lean 変更は import 27 行（26 モジュール）。記録 a6ff3946a。
+
+**次（新しいチャットで。[再開文](infinity-codex-w2b-restart.md)）**：
+1. main を merge（11-03 夕の main。BS の docs と論文の層の docs だけで Lean の変更はないはず。あれば両方を残す）→ 静的検査（`--report`・`--enforce W2b`）の再実行。
+2. **下流の一回ビルド（13,149 本、鍵のもと）**：Claude の合図を待つ。round の記録は §16 の基準（再発・未検証の根）で、失敗は判断表（補充・修飾・宇宙・束縛子の型・局所 instance・heartbeat。DG-W3 §11 と同じく ∞ の外のファイルでも最小の行で）。
+3. **条件付き事前承認（DG-W3 §10 と同じ）**：下流が通り、全体の保存比較 v3b で未説明の不一致が 0（個別照合で説明できるものは説明済み）で、処置が判断表の範囲だけなら、Claude の承認を待たずに層検査（`--enforce W2b` の 3 条件、ratchet 基準の取り直し）→ 監査の再生成の確認（`audit_infinity_f2_exchange` の削除、A・C の監査）→ verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）まで進み、**停止点 3** にまとめて報告する。条件を満たさなければ止める。
+4. 停止点 3 の報告：verify の summary、ルート閉包とビルド時間の前後、層検査の前後、処置の件数と一覧、W2c への入力（180 本と 6 根の経路）、コミット一覧。取り込みは Claude。
+
+## 18. 追記（2026-11-03 夜、verify の失敗 5 本への回答：F1B の straightening 禁止は入口の閉包全体に適用、監査は移動に追従させる）
+
+**事実（Claude が 11-03 夜に確認）**：
+- straightening の禁止は `audit_infinity_f1b.lean`（F1B の入口の閉包全体に「straightening 系モジュールがあれば拒否」）と、`audit_infinity_f1b`・`audit_infinity_core` の Ind-S の保護対象（特定のモジュール一覧）にある。**W2b 前の main では F1B の入口だけが straightening 非依存**で、F2・F2.Ind・F2.Compact・F2.Presentable・Stable・HomotopyLimits の入口はもともと straightening に依存していた。Ind-S の保護対象 5 本は W2b 後も非依存。
+- W2b 後に F1B の入口の閉包へ straightening を持ち込んでいるのは **W2b で F1B に置いた 18 本**（R38 の下ろし 8 本：`F1B/Ind/*`・`F1B/Compact/*`・`F1B/Idempotent/*`、R73 の A の配置 10 本：`F1B/FilteredExchange/*`）。F1B に元からある 2 本（`ConstantEdgeFamily`・`Roof/RightFibrationTerminalRepresentation`）も straightening に届くが、入口の閉包には入っていない（従来どおり。W2c か段 F で扱う）。
+- 他の 4 本の失敗：`audit_f2_pi_criterion`（PiCriterion が Derived へ移ったので対象 0）、`audit_homotopy_limits`（`finiteCoherentProjectionCoconeIso` が R38 で F2/Presentable へ上がり、HL の監査から見えない）、`audit_infinity_f2`（`coreMap_trivialKanFibration` などが下の層へ下り、F2 の監査の閉包から外れた）、`audit_infinity_stable`（`Stable.ColimitFamilyExtension` が R37 で下り、モジュール一覧と `#check` が古い）。いずれも**監査が移動に追従していない**だけ。
+
+**判断**：
+1. **F1B の straightening 禁止は入口の閉包全体に適用する**（監査の定義どおり。W2b 前の状態を保つ）。監査は変えない。したがって **18 本を F1B から F1 へ配置し直す**（同じ tier なので HL・Stable の利用者からの import はそのまま成り立ち、R37・R38 の目的（逆向きの辺の解消）は保たれる。F1 は straightening を含む層なので禁止に触れない）。置き先は `F1/Ind/`・`F1/Compact/`・`F1/Idempotent/`・`F1/FilteredExchange/`（名前空間は変えない）。**配置の規則に追加**：straightening に依存するモジュールは F1B に置かない（F1 へ）。
+2. **監査の追従（承認。検査を弱めない）**：(a) `audit_f2_pi_criterion` は対象を `Derived.PiCriterion.*` に向け直す（置き場所に合わせて `audit_derived_*` へ統合してもよい）。(b) 移動した宣言の `#check` 行とモジュール一覧は、移動先の領域の監査へ移す（HL → F2/Presentable の分は `audit_infinity_f2` へ、F2 → F1B/F1 の分は `audit_infinity_f1b`／`audit_infinity_f1` へ、Stable → F1B の分は `audit_infinity_f1b` へ）。宣言の数は前後で一致させ、報告に表を付ける。
+3. 手順：配置の修正（別コミット「配置の修正（F1B → F1）」）→ 18 本と直接の利用者の小さなビルド → 影響モジュールの after snapshot v3b と比較（型・本体の一致）→ 監査の追従（別コミット「監査の追従」）→ `layer_check --report`・`--enforce W2b`（変化なしのはず）→ **verify を再実行**（通った 94 本はキャッシュで省略される見込み）→ **停止点 3**。§17-3 の条件付き事前承認はそのまま有効。

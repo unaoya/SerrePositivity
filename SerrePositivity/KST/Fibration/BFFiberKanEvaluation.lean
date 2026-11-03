@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RawFiberKanEvaluation
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeTransportIso
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
 
 /-! # 元の BF fiber 錐は、同じ全 coherent 段評価で極限錐へ写る -/

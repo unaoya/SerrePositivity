@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.CoherentReturnPostcomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
-public import SerrePositivity.InfinityCategories.Stable.SquareOpposite
+public import SerrePositivity.InfinityCategories.F1.SquareOpposite
 
 /-!
 概要：元の通常の余錐全体の coherent な表示は、豊穣関手の実際の後合成と可換。

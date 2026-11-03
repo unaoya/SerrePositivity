@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.BoundaryPair
+public import SerrePositivity.InfinityCategories.Core.BoundaryPair
 public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
 
 /-! # 指定した相対終対象への辺の持ち上げ

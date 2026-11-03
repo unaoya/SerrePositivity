@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.IndExtensionHomW
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafUniverseArbitraryColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitMappingComparison
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeReversePostcomp
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoconeReversePostcomp
 
 /-!
 概要：全前層から元の全 Hom 係数前層への自然変換空間族。

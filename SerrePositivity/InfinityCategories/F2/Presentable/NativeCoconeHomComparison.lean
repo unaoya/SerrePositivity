@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.LeftFibrationHom
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorHomWhiskering
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
 public import SerrePositivity.InfinityCategories.Core.InitialTransport
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：指定した全余錐比較の頂点射を保持し、可逆性と余極限性を移す。

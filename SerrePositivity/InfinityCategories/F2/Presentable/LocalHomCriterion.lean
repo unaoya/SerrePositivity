@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalObjects
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
 
 /-!
 概要：局所性を全単体集合パラメータの定値関手間 Hom で特徴づける。

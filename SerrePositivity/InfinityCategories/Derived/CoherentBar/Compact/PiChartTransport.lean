@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ModuleZeroChartExtension
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PathVertexEdge
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.PiPathSphereComparison
+public import SerrePositivity.InfinityCategories.Derived.PiCriterion.PathVertexEdge
+public import SerrePositivity.InfinityCategories.Derived.PiCriterion.PiPathSphereComparison
 /-!
 概要：全基点チャートを指定道と全空間ホモトピーに沿って比較する。
 方針：指定道移送の関数性を使い、チャート値の等式と移送を同定する。

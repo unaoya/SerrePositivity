@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeStructure
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatHomotopyClasses
 

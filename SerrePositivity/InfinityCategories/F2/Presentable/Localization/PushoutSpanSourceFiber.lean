@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutTopMappingFiber
-public import SerrePositivity.InfinityCategories.Stable.SpanCoconeMappingPullback
+public import SerrePositivity.InfinityCategories.F1.SpanCoconeMappingPullback
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberIsPullbackIso
 
 /-!

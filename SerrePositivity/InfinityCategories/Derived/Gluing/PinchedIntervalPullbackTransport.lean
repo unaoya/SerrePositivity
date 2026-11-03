@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostHomCriterion
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestrictionFibration
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
 /-!
 概要：pinched Hom の厳密引き戻しを同じ入力の区間 Hom の引き戻しへ移す。
 方針：実後合成の自然性と二つの Kan fibration に沿う厳密引き戻し比較を用いる。

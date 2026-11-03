@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductJointRealization
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveProductSwapIso
+public import SerrePositivity.InfinityCategories.Core.Ind.NerveProductSwapIso
 
 /-!
 概要：同じ積添字全体の比較を curry し、元の strict 分類像の制限へ戻す。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.PosetSubtypeLowerKanShape
 public import SerrePositivity.InfinityCategories.Stable.ThinNerveVertexExt
 public import SerrePositivity.InfinityCategories.Stable.ColimitExistenceTransfer
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：native 左 Kan の局所余極限を同じ下方余錐へ移す。

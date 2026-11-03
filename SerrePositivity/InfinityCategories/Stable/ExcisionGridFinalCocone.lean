@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridFinalSpanProjection
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingPiZero
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingPiZero
 
 /-!
 概要：同じ (3,3) を頂点とする実余錐と標準正方形の余錐の同定。

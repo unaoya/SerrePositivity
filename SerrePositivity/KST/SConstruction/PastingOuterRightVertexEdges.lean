@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.PastingOuterToRightHomotopy
-public import SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory
+public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-!
 概要：始域屋根長方形の外周から右面への同じ全ホモトピーの四頂点辺を回収する。

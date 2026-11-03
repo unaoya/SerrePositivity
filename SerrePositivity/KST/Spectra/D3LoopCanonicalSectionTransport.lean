@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3ProjectionStructureIso
 public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
 
 /-!
 概要：標準 loop 図式間の指定 transport を、同じ終点同型の切断への後合成として回収する。

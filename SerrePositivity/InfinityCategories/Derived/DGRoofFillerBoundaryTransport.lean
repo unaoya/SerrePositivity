@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinementPrism
 public import SerrePositivity.InfinityCategories.Derived.DGQuotientClosedRoofRefinementPrism
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 
 /-! # 細分後の実充填境界と元の指定境界の比較
 

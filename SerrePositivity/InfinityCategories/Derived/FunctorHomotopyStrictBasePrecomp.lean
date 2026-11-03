@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyStrictBaseSquare
 /-!
 概要：厳密基底上での指定恒等と augmentation 正方形を、同じ入力制限へ移す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-! # 相対始点境界充填の同型による移送
 概要：可換な始域・標的の同型で相対始点境界充填を移す。

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 public import SerrePositivity.InfinityCategories.Stable.SymmetricSpan
 
 /-! # 固定した図式を保つ形状の再添字付け

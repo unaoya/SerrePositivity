@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeTargetCocone
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：局所対象へ向かう元の局所同値は、局所対象への普遍矢印。

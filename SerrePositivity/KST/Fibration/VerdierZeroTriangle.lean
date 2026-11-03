@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceMo
 public import SerrePositivity.KST.Fibration.ZeroStableHom
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentTerminal
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialMappingSpace
-public import SerrePositivity.InfinityCategories.Stable.UniverseZeroObjects
+public import SerrePositivity.InfinityCategories.Core.UniverseZeroObjects
 
 /-! # 指定 Verdier 四角形の零合成を、元の StableInfinity の零角付き四角形として保持する -/
 

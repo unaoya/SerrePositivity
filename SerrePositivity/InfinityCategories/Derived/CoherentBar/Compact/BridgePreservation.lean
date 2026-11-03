@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.Fil
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.EvaluationGeneratorClosure
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ProjectiveBarNativeCocone
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.UnconditionalCovers
-public import SerrePositivity.InfinityCategories.Stable.ColimitReindex
+public import SerrePositivity.InfinityCategories.Core.ColimitReindex
 /-!
 概要：元ごとの π 判定の橋を全 native 余極限保存と K-7 入力へ接続する。
 方針：実 bar 余錐を一重の添字持ち上げへ戻し、同じ全余錐の同型と poset 帰着を使う。

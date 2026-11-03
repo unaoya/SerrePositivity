@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.F1.Equivalences.EquivalenceLift
 public import SerrePositivity.InfinityCategories.Core.CodiscreteNerve
 public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFiniteTotalFibers
 public import SerrePositivity.InfinityCategories.Core.InnerFiber
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily
 
 /-!
 概要：零終点 span の可縮性と、固定した実 span 上の零隅四角形の始対象。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Core.ConeEdgeCompatibility
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 
 /-!
 概要：元の同じ slice 内の比較辺と、元の native 全錐の各脚の合成三角形を回収する。

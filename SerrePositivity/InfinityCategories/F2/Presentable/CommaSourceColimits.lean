@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.CoconeRestrictionMappingCriterion
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaHom
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionMappingPair
 
 /-!

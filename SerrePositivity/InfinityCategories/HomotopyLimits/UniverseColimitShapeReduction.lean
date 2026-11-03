@@ -1,10 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction
 public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：前層などの宇宙変更の小余極限保存を、quasicategory 添字だけの検証から戻す。

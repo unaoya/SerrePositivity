@@ -5,7 +5,7 @@ public import SerrePositivity.KST.LocalizingInvariants.ConeLegTriangle
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
 public import SerrePositivity.InfinityCategories.Stable.RightFibrationEdgeTarget
 public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 public import SerrePositivity.KST.LocalizingInvariants.ExactFiniteLimitPreservation
 
 /-!

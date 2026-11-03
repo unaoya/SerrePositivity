@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PushoutCompletion
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 public import SerrePositivity.InfinityCategories.Stable.Definition
 
 /-! # 射の族に対する cofiber 補完

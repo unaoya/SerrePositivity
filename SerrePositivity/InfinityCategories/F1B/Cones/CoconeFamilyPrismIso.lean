@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Core.VertexFiberInvertible
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
-public import SerrePositivity.InfinityCategories.Stable.CoconeFamily
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 
 /-!
 概要：図式を全時間固定する可逆な円柱を固定図式上の余錐の同型にする。

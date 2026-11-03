@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackDiagramTriangleConstant
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatTriangleConstantFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
 
 /-!
 概要：引き戻し図式の指定比較同型を自然性等式で簡約。

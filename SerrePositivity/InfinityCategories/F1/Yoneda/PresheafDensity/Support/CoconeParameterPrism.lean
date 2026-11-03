@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace
+public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 public import SerrePositivity.InfinityCategories.Core.FatJoinComparisonNaturality
 
 /-!

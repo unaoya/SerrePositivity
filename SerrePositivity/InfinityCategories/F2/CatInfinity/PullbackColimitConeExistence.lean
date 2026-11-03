@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackCoconeGluing
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ColimitConeImageStrictification
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.PullbackSquareCoconeCriterion
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：選んだ第二成分の余極限余錐を厳密に保つ引き戻し内の余極限余錐の存在。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.KanConeComparisonCriterion
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallBousfieldKanConeContinuity
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.KanDiagramOfSSet
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanDiagramOfSSet
 
 /-!
 概要：小さい poset 上の Kan 値 strict 極限錐族の μ-filtered 余極限は native な極限錐。

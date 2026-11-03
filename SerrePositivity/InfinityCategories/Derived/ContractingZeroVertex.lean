@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ContractingInitialVertex
 public import SerrePositivity.InfinityCategories.Derived.ContractingTerminalVertex
-public import SerrePositivity.InfinityCategories.Stable.Pointed
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 /-! # 収縮元を持つ dg 対象の零対象性
 

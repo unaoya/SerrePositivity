@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.D3LoopCanonicalSectionTransport
 public import SerrePositivity.InfinityCategories.Stable.SquareTransposeEvaluation
-public import SerrePositivity.InfinityCategories.Stable.SquareDuality
+public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-!
 概要：実 loop 図式の二つの零角の交換を、全 Hom・全単体を持つ転置作用にする。

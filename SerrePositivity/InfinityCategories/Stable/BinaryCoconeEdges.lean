@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 public import SerrePositivity.InfinityCategories.Core.JoinCoproductPushout
 
 /-! # 二本の辺からの離散二点図式の余錐

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitHomotopyPointwise
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ColimitHomotopyPointwise
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 /-!
 概要：元の余極限余錐の像の比較は、基底の各値で可逆なら指定頂点でも可逆。

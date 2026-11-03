@@ -3058,3 +3058,393 @@ Inputs の証明を Assembly へ置き換えると、例えば次の閉路がで
 - 本体の実 import による E3 到達経路をソース上で確認し、CompletedTensor 内の有限直積の E3 呼び出しも確認した。ビルドや axiom 検査は実行していない。
 - **致命の残件：W9-III-08。** 修復後の E3 非依存性と全体の import 順、残存引用一覧、D 番号・κ の全体照合、宣言ごとの sorry 一覧が次回の残件である。
 - 報告ファイルへの追記だけを行った。設計・骨組み・本体・ノートは変更していない。指定の報告一本のコミットと終了時の `git status --short` により、他の差分を増やしていないことを確認する。
+
+
+## 第 3 部（続き 3：分割後の配置を前提とする横断監査・最終総括）
+
+基準：main `1ed122760`。開始時 HEAD は同じで、作業ツリー・index は空。指示書 §0〜§6 を適用し、CompletedTensor の分割は未実施の既知の条件として扱った。
+途中で別作業の DG-W3 が main に入り HEAD は `dbd3cb090` へ進んだが、対象の設計・drafts・ノート・BhattScholze 本体には差がない。本体の import 到達性は `1ed122760` の内容に固定して確認した。以下の行番号もこの基準による。
+その後、別作業の `9334b4187` で design-status に DG の記録が加わり、SpaceValued の存在しなかった import 名 `F2.Presentable.Basic` が `F2.Presentable` に訂正された。これらには手を加えていない。sorry 一覧の行番号は引き続き指定基準のもの（この訂正で SpaceValued の現行行番号は1行ずれる）。
+
+### 1. 総括
+
+- **段 III の残る横断レビューを完了した。新たな致命的な数学上の問題は見つからない。**
+- CompletedTensor の芯の分離と有限積の E3 非依存化を前提に、別経路で消去対象の Inputs へ戻る import は見つからなかった。
+- W9-III-08 の実施は残っている。現行本体が既に E3 非依存になった、または E3 を消去できた、という判定ではない。
+- W9-III-09 の分割方針は妥当だが、README の順序と A5 の先行補題の置き場所に残件がある。下に非循環な修正後の順序を具体化した。
+- D19〜D70 は撤回した D42・D48 も含め全番号が記録されている。追加の無番号の定義変更は検出しなかった。ノートの古い D69 の要約等は更新が必要。
+- κ の計算は A5 の弱始対象、A6 の S₀、A8 の有限表示近似まで同じ閉性で通る。試験付値環は κ 以下に制限しない。
+- 49本の骨組みについて、コメントを除いた `sorry` は **194宣言・210箇所**。恒久的な引用3宣言、証明予定125宣言、基盤待ち66宣言に分類した。
+- **全体判定は設計として条件付き妥当**。W9-III-08 の実施と下記の配置・記述の訂正を条件とし、実装の完成・ビルド合格とは区別する。
+
+### 2. 指摘一覧
+
+設計・drafts のパスは `formalization-plans/bhatt-scholze/` からの相対パス。
+
+| 番号 | 単位 | 重さ | 場所 | 指摘 | 理由（原典・計算） | 提案 |
+| --- | --- | --- | --- | --- | --- | --- |
+| W9-III-14 | 全体の配置、W9-III-09 の残件 | 要修正 | `drafts/README.md`「ファイル順序」2〜4、`A7/DiscreteCore.lean:7`、`A5/PerfectSite.lean:57`、`A5/SemiperfectoidCase.lean:143`、`A5/WeaklyInitialAndDescent.lean:84`・`:101` | DiscreteCore が入力の A4 より前に並び、A5 の先行ファイルが後段ファイル内の Čech データ・filtered 余極限補題を参照している。 | BS pp.64–65 Prop 8.5。Čech 余積は既存 Cor 7.3、左辺の余極限保存は A2 と Def 8.2 だけで供給でき、後段を要しない。現在のファイルを丸ごと import すると先行／後段の分離が崩れる。 | DiscreteCore を A4 の後へ。`perfUnder_cechNerveData` を既存 Cor 7.3 から直接作る先行部分へ、`prismaticPerfection_filteredColimit` を A4 等へ移す。下の全体順序を参照。 |
+| W9-III-15 | A4・A5 の名前 | 要修正 | `drafts/A4/InterfaceFields.lean:116`、`drafts/A5/PerfectSite.lean:98` | 同じ namespace に内容の異なる `perfectionLeg` が二つある。 | A4 は Δ̄→Δ̄_perf の自然変換、A5 は完全試験 prism B への Δ_perf→B の脚。引数の違いで Lean の宣言名を重複させることはできない。 | 例えば前者を `toPerfection`、後者を `perfectionComparisonLeg` として利用箇所も区別する。数学的変更は不要。 |
+| W9-III-16 | ノートと D25・D68・D69 | 要修正 | `exposition/ja/bs/05-hodge-tate.html` の Thm 5.2・Thm 6.4 の行、`08-perfection.html` §2「E3 での扱い」 | 第5章に訂正前の「帰着は Prop 6.2 の経路」という D69 が残り、結晶側を具体的に「定義する」という旧説明も現在の黒箱一件の方針と揃っていない。 | 訂正後は BS pp.53–54 Thm 6.4 の証明を普遍 A₀ 上で行い、完全 prism へ底変換。Thm 5.2 β は仕様つき de Rham 比較一件、HT は Cartier による系。一般の Thm 6.4 を不要とすること自体は正しい。 | 両章の要約を a1-design §9.1・D68・D69 に揃える。RΓ_crys の新しい定義を置かず、既知の値を使う特別な比較定理と書く。 |
+| W9-III-17 | 残存引用の表示 | 軽微 | `a9-design.md` §3「恒久的な引用」の表、`a4-design.md` D43 | 恒久的引用の表に証明予定の G-A6-1c と基盤側で証明する P⁰ が同居し、後者だけ「予定なら」と未決のように読める。 | D43 は P⁰ を共有層で証明する方針。G-A6-1c も同表で恒久的でないと明記されている。内容の欠落ではなく分類表示の残件。 | 恒久的引用は D68・G-A6-1a・1b の三件とし、1c は証明予定、P⁰ は基盤待ちへ分ける。暫定の許可数と最終引用数を区別する。 |
+
+W9-III-14 は前回からの配置の残件を具体化したもの。証明が Prop 8.5 や E3 を先取りする必要がある、という新たな致命判定ではない。
+AfterComparison に移した宣言の利用側にも import コメントを補う。特に Example 8.3 を使う A6、`e3Perfd_eq_direct` を使う A8 へ明示し、ArcSite の根添加の所在は RootAdjunction に揃える。
+
+### 3. 紙で確かめた項目・横断監査
+
+#### 3.1 実 import と分割後の E3 非依存性 — ○（明示した条件の下）
+
+49本の drafts の実 import は、重複を除くと本体の45モジュールを起点にする。基準コミットの本体 import 行を再帰的に辿り、消去対象 `SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface` への到達性を調べた。Lean・ビルド・axiom 監査は実行していない。
+
+| drafts の入口 | 本体側の経路 |
+| --- | --- |
+| A6/ArcSite | CompletedTensor → Derived/IntegralExistence → Inputs |
+| A6/ArcSheafProperty | CompletedTensor → Derived/IntegralExistence → Inputs |
+| A8/AlmostConnectivity | Almost/Lemma103 → CompletedTensor → Derived/IntegralExistence → Inputs |
+| 同じ AlmostConnectivity の別 import | Almost/PerfectoidAlmost → Almost/Lemma103 → 上と同じ |
+
+基準時の45起点には、存在しない `F2.Presentable.Basic` が一本含まれていた。その名前を葉として扱った結果だけで判定せず、作業中に訂正された実在の `F2.Presentable` からの本体 import も別に辿り、Inputs へ到達しないことを確認した。この訂正は他セッションのコミットで既に済んでいる。
+
+現状の到達は三ファイル・四つの import 起点で、すべて既報の辺を通る。次に **CompletedTensor→Derived/IntegralExistence の辺だけを読み取り上のグラフから除いた場合**を計算すると、全起点で到達経路なしとなった。
+これは分割の効果を調べる反実仮想であり、ファイルを変更したり、旧 CompletedTensor がそのまま成立すると仮定したりしたものではない。実施時には Fontaine の芯だけへ付け替え、E3 を使う有限積の証明を上流から除く必要がある。
+
+- A4 の `Perfectoidization/Derived/Interface` は界面の型と導来・完備化の部品を読み、E3 の存在を読む入口ではない。`Interface` と `Inputs/PerfectoidizationInterface` は別モジュール。
+- A5 の `Semiperfectoid/Perfectoidization`・`Semiperfectoid/Surjectivity` 等は完全 prism・Cor 7.3・既存の全射性に到達するが、Inputs へ戻らない。
+- A8 の `Almost/PerfectoidAlmost`・`Almost/Lemma103` に独立の別経路はなく、CompletedTensor の既知の辺だけが障害である。
+- A9 の `EInfinity/Perfectoidization/DerivedCorollary` にも E3 の存在を前提とする経路はない。
+
+従って W9-III-08 の既決の分割・直接証明はこのグラフ上の障害を解消する。分割後の実ファイルで同じ到達性検査をすることは、取り込み時の受入条件として残る。
+
+#### 3.2 drafts の順序と同じ A 番号内の分離 — 現記述は×、次の補足後は○
+
+新設四ファイルの役割は適切。CrystallineInput は HodgeTateComparison を読まず、RootAdjunction は StrongDescent を読まず、PerfectSite の比較射の定義は Prop 8.5 の結論を要せず、AfterComparison は Prop 8.5 後へ置かれている。
+残る二つの先行補題は、次のように後段を読まずに作れる。
+
+1. `perfUnder_cechNerveData`：T₁,T₂ が S の下の perfectoid 環なら、相対完備テンソルの semiperfectoid 性と**既存 Cor 7.3 の普遍環**を使い、余積 Q(T₁⊗̂_S T₂) を作る。Hom の普遍性から Čech の整合を得る。A5 の比較同値・弱始対象は不要。現在の docstring が指す A5-2 の wrapper 自体を上流へ import せず、既存の普遍環の入口から構成する。
+2. `prismaticPerfection_filteredColimit`：A2 の Δ の sifted 余極限保存、Frobenius 塔の余極限、完備化の反射性を合成する。完備圏で二つの余極限を交換するだけで、site の Tot や StrongDescent を使わない（BS p.65 Prop 8.5 の左辺）。
+
+これらを先行部分へ移す前提で、全49ファイルに次の順序が取れる。これは配置提案であり、ファイルへ適用していない。
+
+| 段 | ファイル（同じ行は左から右、独立なものは任意順） |
+| --- | --- |
+| 基盤 | Sheaves/SheafCondition → GlobalSections・CechConerveLimit → CAlgValued・SpaceValued。DerivedGeneral/Truncation・CompletionFunctor。Shared/CosimplicialCupProduct → CosimplicialBockstein、DeRhamPolynomial、CosimplicialEInfinity（CAlgValued・CechConerveLimit の後）→ EInfinityPowerOperation、Descendable |
+| site | A0/PrismaticSite → PrismaticEnvelope → CechAlexander |
+| 初期の比較 | A1/CrystallineInput → HodgeTateMap → HodgeTateComparison |
+| 導来延長 | A2/AnimatedAlgebra → DerivedPrismaticCohomology → HodgeTateFiltration → BaseChangeAndTensor |
+| 離散の場合 | A3/DiscreteCase → LciAndQuasiregular |
+| A5 より前の定義・芯 | A7/AnimatedDomain、A4/Perfectoidization（基本的な filtered 余極限保存もここ等へ）→ A4/InterfaceFields。**A7/DiscreteCore は A4/Perfectoidization の後** |
+| A5 の先行定義 | A5/RootAdjunction、PerfectSite（Čech データは既存 Cor 7.3 から） |
+| 比較の完成 | A5/SemiperfectoidCase、A1/DeRhamComparisonPoly → A5/StrongDescent → WeaklyInitialAndDescent → PerfectSiteComparison → InterfaceLimitCone |
+| 比較の系 | A4/AfterComparison |
+| arc と普遍性 | A6/ArcSite → ArcSheafProperty → SheafOfSetsExcision → Excision。A7/AnimatedPerfectoidization → UniversalProperty |
+| almost と組み立て | A8/AlmostConnectivity → AlmostPurityConnectivity。A8/Stratification は独立に先行可能。これら → IntegralDiscreteness → A9/Assembly |
+
+A1-5 は名前が A1 でも A2・RootAdjunction の後、A7 の定義域と離散の芯は A5 より前である。A7/AnimatedPerfectoidization が A5 後の Prop 8.13 を供給し、A5 は AnimatedDomain と DiscreteCore に限って読むので、証明の循環はない。
+S8、一般の descendability、P⁰ にも BS 後段から逆向きの入力を要求しない。この修正後の配置について全 import コメントと本文中の上記依存を満たす順序を確認した。現 README をそのまま合格とはしていない。
+
+#### 3.3 D19〜D70 の網羅と三者の照合 — ○（ノートの記述訂正は別記）
+
+全52番号について、設計の D 表、定義・定理の欄、骨組みの主張と docstring、ノートの対応項目を照合した。ノートは既存 D1〜D18 や章の要約も併用するため、全番号の文字列の再掲を要求したわけではない。判定は**定義の仕様**についてであり、`True`・`sorry` に将来入る実装までは検証できない。
+
+| 番号 | 確認内容と原典との関係 |
+| --- | --- |
+| D19・20 | 有界向き付き基底。平坦性は H⁰ の平坦性と全次数の底変換同型で、d を一律に正則とする旧置換は撤回済み（BS p.26 Def 2.42）。 |
+| D21・22・23・24 | envelope は普遍性で定義し存在を変数の場合に限定。生成位相と refinement、Čech 模型と site/RΓ の定義を区別。smooth 全体の定理を多項式の場合に絞る（BS pp.33–35 Prop 3.13、pp.41–44 Constructions 4.17・4.18）。 |
+| D25・26・27・28 | 結晶 β の特殊比較、自由微分形式・連続微分、cup/Bockstein の模型、向きによる twist の自明化。RΓ_crys の別定義は導入しない。ノートの旧説明は W9-III-16（BS pp.45–50 Thm 5.2・Cor 5.5）。 |
+| D29・30 | 有限多変数の定理に限定。普遍 prism と底変換関手による一般基底への移送。導来環 E の記号を省いても必要な関手と比較を保持（BS pp.51–53 Prop 6.2・Thm 6.3）。 |
+| D31・32・33・34・35 | 原典の P_Σ、非完備入力を許す延長、完備圏内の LΛ_p∘Lan と exhaustive filtration、多項式への証明範囲の制限、CAlg の忘却を区別。π₀ と通常の完備化の接続は A5 後（BS pp.56–57 Construction 7.6）。 |
+| D36・37・38・39・40 | δ 射の標的を p ねじれなしに限定する(a)、Prop 7.2 全体不要、既存 André の経路維持、有界 p 冪ねじれつき qrsp、普遍例→導来底変換→離散性→envelope の順序。制限付き始性から全 prism の始性を誤って出していない（BS pp.57–62 Lemma 7.7・Ex 7.9・Prop 7.10・Rem 7.15）。 |
+| D41・42・43・44 | 完備 animated 入力の Def 8.2 と E3 の completionRing 経由を区別。D42 は撤回し塔は φ_{A*}^n。P⁰ は共有層の証明対象。coconnective 欄削除は Lemma 8.4 の削除ではない（BS pp.63–64 Def 8.2・Lemma 8.4）。 |
+| D45・46・47・48 | Prop 8.5 は animated 入力と π₀ の系を含む。⊥≤J≤flat。κ と Type u は同じ Čech 計算で比較。D48 は撤回し G-A5-17 を使う（BS pp.64–65 Prop 8.5）。 |
+| D49・50・51・52 | descendable は thick tensor ideal の定義。多項式/mod p の比較に限定。ω 段の S̃ は弱始性・濃度用、filtered 余極限は E 被覆。Cor 7.3 との一致は比較定理（BS pp.64–66 Prop 8.5・Lemma 8.6）。 |
+| D53・54・55・56 | global な affine affCompl_κ、有限族の arc 被覆、Cor 8.11 の記録の範囲、三引用の仕様。V→W は忠実平坦、試験環は κ 制限なし（BS pp.67–69 Def 8.7・Lemma 8.8・Prop 8.10・Cor 8.11）。 |
+| D57・58・59 | 集合の層から S8 を介す移送、有限積の perfectoid 性、BM18 の affine・finitary・共変 Ring→D(ℤ)≥0 の特殊化。既存 E3 による有限積は上流へ持ち込まない（BS pp.68–69 Prop 8.10・Cor 8.12）。 |
+| D60・61・62 | animated 入力が相対テンソル X を収容。固定基底、離散 perfd の普遍性を非完備入力へ移す。Cor 8.14 の射と乗法の整合を保持（BS pp.69–70 Prop 8.13・Cor 8.14）。 |
+| D63・64・65・66・67 | 有限表示有限の場合の J-almost 連結性、被約商の標的圏による比較、Z_(p) 上の層別、Prop 10.4 の必要な判定と内部の完全忠実性、任意の整代数から完備化を介す integral（BS pp.78–83 Def 10.1・Prop 10.4・Thm 10.9・Thm 10.11・Lemma 10.12）。 |
+| D68・69 | 黒箱一件と Cartier、J つきは独立補題、普遍 A₀ 上の Thm 6.4 と最後の底変換。決定は再提案しない。ノートは W9-III-16（BS pp.45–50 Thm 5.2・Cor 5.5、pp.53–54 Thm 6.4）。 |
+| D70 | T と T̂=completionRing T を分け、Cor 8.12 は S→T̂ に適用。T̂ の整性を仮定しない。設計・IntegralDiscreteness・ノート第10章が一致（BS p.82 Thm 10.11、p.69 Cor 8.12）。 |
+
+旧 D16・D17・D18 と D-S1・D-S2 は κ・Čech 層・値域の説明に引き続き使われる。番号の二重利用や D70 の未記録の定義変更は検出しなかった。ノートが原典の一般形を説明し、設計が E3 用の特殊定理だけを証明する箇所は定義の食い違いとは数えない。一方、現在採る証明を旧版で説明する箇所は更新対象とした。
+
+#### 3.4 κ の計算 — ○
+
+有限個の入力環・固定 prism の濃度を含む無限基数 μ を取り、κ=μ^{ℵ₀} とすれば κ^{ℵ₀}=κ。既定 cutoff 以上というだけで任意の κ がこの等式を満たすとは言わず、A0 の `IsAdmissibleCutoff` を使う。個々の入力・図式に対して選び、Type u の全環を一つの κ で支配しようとはしない。
+
+| 対象・操作 | 紙での評価と接続 |
+| --- | --- |
+| S1〜S3、A0 | κ 個以下の変数の自由環・自由 δ 環（δ 反復は可算）、商、有限テンソル、可算逆極限による完備化は ≤κ。Čech 各項も ≤κ。層化は小さい模型、O_Δ の κ 不変性は同じ Čech 模型から。任意の前層の κ 不変性ではない。 |
+| André・完全化 | ≤κ 個のモニック多項式を扱う根添加は envelope の自由生成・商・完備化で ≤κ。長さ ≤κ の反復と ω₁ 反復も κ≥2^{ℵ₀}≥ℵ₁ により ≤κ、可算共終の段の完備化も同じ。小さい実現を選べるという評価であり、既存の Classical.choose が自動的に濃度証拠を持つという主張ではない。 |
+| A5、D47・D51 | 各段の根添加、ω 段の余極限、p 完備化は ≤κ。S̃→任意の Type u の perfectoid T への延長には #T≤κ を使わない。Q(S̃) と Čech 各項が ≤κ なので小さい圏と全 Type u の圏で同じ Tot を使える（BS pp.64–65 Prop 8.5）。 |
+| 完全 site の Čech | 相対完備テンソルを Cor 7.3 の普遍環 Q へ送る。完全 prism の形成も tilt の可算逆極限・Witt の可算座標・商・完備化で閉じ、小さい perfectoid 側と prism 側の圏同値に同じ上限を使える。 |
+| A6 の前段 | R₀=ℤ_p[p^{1/p^∞}]^∧ は ≤2^{ℵ₀}。S₀=completionRing(S⊗_{ℤ_p}R₀) は (#S+ℵ₀)^{ℵ₀} 以下。根添加・Q・有限積・完備テンソル冪・商の完備化も ≤κ。global affCompl_κ の cover-dense に要る対象はこの範囲。 |
+| 試験付値環 V・W | site の対象の濃度計算とは別で κ 制限なし。先に V→W と perfectoid W を取り、その中で p の両立根を選び R₀→W、次に S₀→W を延ばす。#W≤κ は不要。rank 0・p=0 の処理も既報の通り。 |
+| A8 の A_λ | R・T・B を含む上限を選ぶ。有限表示有限 R 代数の有限個の係数・関係、T への射の有限個の値で対象を符号化でき、対象・射の集合は ≤κ。A_λ[1/g]=B の表示・逆射・関係も有限データで指定できる。T への単射性は要求しない。 |
+| A8 の余極限 | ≤κ 個の A_λ の余極限と p 完備化も ≤κ。almost 連結性の段は G-A8-1 の系、各 perfd が perfectoid と分かった後の一般整代数への移行は G-A8-8。両者を混同しない（BS p.82 Thm 10.11）。 |
+
+S3 は大きい添字でも必要な極限を小さい Čech 模型から**構成する**形で使い、大きい添字の全極限が presentable 性から自動的に存在するとはしない。これで S1〜S3・D47・S₀・A_λ を通した濃度の残る紙の確認は○。小さい模型・宇宙引数の実装は基盤待ちである。
+
+#### 3.5 修復と紙の確認の到達点
+
+| 項目 | 結果 | 要点 |
+| --- | --- | --- |
+| W9-III-10、G-A8-1・8 | ○ | AlmostConnectivity に一般 J の K、完全忠実な忘却と極限・余極限保存、almost 連結性の完備余極限の系が入った。IntegralDiscreteness は A_λ の段で G-A8-8 を先取りしない。前回の計算の仕様に一致。 |
+| W9-III-11 | ○ | τ≤n の像と恒等になる仮定は IsConnectiveAt n に訂正され、次数規約と一致。 |
+| W9-III-12・13 | ○（表示は W9-III-17） | 黒箱は CrystallineInput の D68 に更新、G13 と基盤依存も記載。Assembly は hR を名前つき暗黙引数で渡す。八欄の対応は前回から不変。 |
+| A8 §8.1〜7 | ○ | 前回までの紙の証明と今回の仕様訂正を照合。D63・64・66・70、Lemma 10.12 の独立性、Thm 10.11→e3Integral の接続を維持。 |
+| A9 の組み立て | ○（条件付き） | 同じ perfd・unit・h0・指定錐から既存の橋へ渡す。第九の引用は不要。実 import の障害は W9-III-08 の実施待ち。 |
+| 段 I・II の紙の項目 | ○（既報を継承） | 以前の×を放置した意味ではなく、ユーザーが反映した修復と以後の再確認を合わせた判定。今回の κ で横断部分も閉じた。 |
+| 分割後の実ファイル・型検査 | 未（今回の対象外） | CompletedTensor の分割は未実施。True の仕様化、宇宙・型・coherence の実装検証は今後。ビルドはしていない。 |
+
+#### 3.6 sorry の宣言別一覧
+
+対象は `drafts/**/*.lean` の49本。入れ子のブロックコメント・行コメント・文字列を除き、各宣言内の sorry を数えた。匿名 instance はファイル・行で識別。「穴数」は一宣言内の個数で、既存本体の transitive な sorry 数や sorryAx の依存数ではない。
+合計 **194宣言・210箇所（41ファイル）**、axiom 宣言0件。前回の「コメントを含む218」とは異なる集計で、今回の確定した字句上の一覧で置き換える。
+
+- **恒久的な引用**：D68・G-A6-1a・G-A6-1b の3宣言・3箇所。結晶比較は BS pp.45–50 Thm 5.2・Cor 5.5、v 降下は BS17 著者版 p.15 Thm 4.1(i)、arc 判定は BM18 v4 p.4 Thm 1.7（詳細 p.25 Thm 4.1）。後二文献の本文照合は段 II の既報を継承する。
+- **証明予定**：BS 固有の構成・計算・界面の供給、既存補題からの組み立て。125宣言・138箇所。基盤に依存していても宣言自体が BS 側の仕事ならこちら。定義・環構造を埋める作業も含む。
+- **基盤待ち**：S 群、Shared、DerivedGeneral、一般の P_Σ・完備 animated 圏の供給。66宣言・69箇所。これらも証明・構成する対象で、恒久的な文献入力ではない。
+
+`valuationRing_milnorSquare_perfect` は BS17 著者版 p.22 Lemma 6.3 の暫定引用だが、初等的な一般版から証明するので両方「証明予定」。P⁰ は D43・M14 に従い「基盤待ち」。G-A3-7、Lemma 10.12、有限エタール代数の perfectoid 性、G-A8-8 も恒久的な引用へ追加しない。
+**a9-design §3 に追加すべき恒久的な引用の漏れは見つからなかった。** 基盤の箇条書きは個々の sorry の一覧ではないため、その内訳を以下に補った。
+ただし `: True := trivial` 等の仮の主張はこの一覧に入らない。字句上 `: True :=` と書かれた宣言領域も317箇所あり、sorry が0のファイルを証明済みとは数えられない。
+sorry がない8本は A1/DeRhamComparisonPoly、A4/AfterComparison、A5/StrongDescent、A6/SheafOfSetsExcision、A7/DiscreteCore、A8/AlmostConnectivity、A8/Stratification、A9/Assembly。
+
+以下のファイル名は `drafts/` からの相対パス。各行が一宣言を表す。
+
+| ファイル | 宣言 | 行 | 穴数 | 分類 |
+| --- | --- | ---: | ---: | --- |
+| A0/CechAlexander.lean | `cechFreeDeltaMap` | 72 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechKernel` | 89 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `generator_mem_cechKernel` | 92 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `hasEnvelopes_of_polynomial` | 113 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexanderObj` | 124 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexander` | 131 | 3 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexanderObj_weaklyInitial` | 143 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexander_isCoproduct` | 151 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexanderComplex` | 181 | 1 | 証明予定 |
+| A0/CechAlexander.lean | `cechAlexanderReducedComplex` | 188 | 1 | 証明予定 |
+| A0/PrismaticEnvelope.lean | `IsCompletelyRegularRel` | 54 | 1 | 証明予定 |
+| A0/PrismaticEnvelope.lean | `IsPrismaticEnvelope.unique` | 85 | 1 | 証明予定 |
+| A0/PrismaticEnvelope.lean | `completedFreeDeltaBase_isDeltaHom` | 129 | 1 | 証明予定 |
+| A0/PrismaticEnvelope.lean | `exists_prismaticEnvelope_of_variables` | 145 | 2 | 証明予定 |
+| A0/PrismaticEnvelope.lean | `cardinal_envelope_le` | 167 | 1 | 証明予定 |
+| A0/PrismaticSite.lean | `匿名 instance` | 121 | 7 | 証明予定 |
+| A0/PrismaticSite.lean | `essentiallySmall` | 141 | 1 | 証明予定 |
+| A0/PrismaticSite.lean | `flatTopology_refine` | 183 | 1 | 証明予定 |
+| A0/PrismaticSite.lean | `structurePresheaf` | 194 | 2 | 証明予定 |
+| A0/PrismaticSite.lean | `reducedStructurePresheaf` | 205 | 2 | 証明予定 |
+| A0/PrismaticSite.lean | `structurePresheafFrobenius` | 216 | 1 | 証明予定 |
+| A0/PrismaticSite.lean | `structurePresheafDerived` | 238 | 1 | 証明予定 |
+| A0/PrismaticSite.lean | `hodgeTateCohomology` | 257 | 1 | 証明予定 |
+| A1/CrystallineInput.lean | `crystalline_deRham_polynomial_Zp` | 38 | 1 | 恒久的な引用 |
+| A1/HodgeTateComparison.lean | `universalDistinguishedRing` | 69 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `universalOrientedPrismRing` | 75 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `universalOrientedPrism` | 77 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `universalOrientedPrism_bounded` | 84 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `universalOrientedPrism_hom` | 93 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `crystallineCoverRing` | 115 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `crystallineCover` | 117 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `crystallineCover_generator` | 119 | 1 | 証明予定 |
+| A1/HodgeTateComparison.lean | `crystallineCoverMap` | 126 | 1 | 証明予定 |
+| A1/HodgeTateMap.lean | `affineAlgebra` | 41 | 1 | 証明予定 |
+| A1/HodgeTateMap.lean | `hodgeTateCohomology'` | 53 | 1 | 証明予定 |
+| A1/HodgeTateMap.lean | `bockstein` | 59 | 1 | 証明予定 |
+| A2/AnimatedAlgebra.lean | `polyYoneda` | 93 | 1 | 基盤待ち |
+| A2/AnimatedAlgebra.lean | `exists_siftedExtension` | 108 | 1 | 基盤待ち |
+| A2/AnimatedAlgebra.lean | `discretePresheaf` | 121 | 1 | 基盤待ち |
+| A2/AnimatedAlgebra.lean | `discretePresheafEmbedding` | 129 | 1 | 基盤待ち |
+| A2/AnimatedAlgebra.lean | `discreteToAnimated` | 137 | 1 | 基盤待ち |
+| A2/BaseChangeAndTensor.lean | `animatedBaseChange` | 46 | 1 | 証明予定 |
+| A2/DerivedPrismaticCohomology.lean | `CompleteCAlg` | 47 | 1 | 証明予定 |
+| A2/DerivedPrismaticCohomology.lean | `polyCompletion` | 61 | 1 | 証明予定 |
+| A2/DerivedPrismaticCohomology.lean | `prismaticCohomologyPolyFunctor` | 83 | 1 | 証明予定 |
+| A2/DerivedPrismaticCohomology.lean | `derivedPrismaticCohomology` | 98 | 1 | 証明予定 |
+| A2/HodgeTateFiltration.lean | `hodgeTatePoly` | 47 | 1 | 証明予定 |
+| A2/HodgeTateFiltration.lean | `hodgeTateFiltration` | 76 | 1 | 証明予定 |
+| A2/HodgeTateFiltration.lean | `cotangentWedge` | 89 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `initial_of_retraction_idempotent` | 48 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `prismOver_isIdempotentComplete` | 57 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `IsDiscreteHodgeTate` | 69 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `IsDiscretePrismatic` | 75 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `isDiscretePrismatic_of_hodgeTate` | 76 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `discretePrismaticRing` | 82 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `匿名 instance` | 84 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `discretePrismaticFrobenius` | 90 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `deltaStructure_of_discrete_pTorsionFree` | 99 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `discretePrism` | 118 | 1 | 証明予定 |
+| A3/DiscreteCase.lean | `prismMapOfDiscrete` | 127 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `IsKoszulRegularModGenerator` | 51 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `universalLciPrismRing` | 60 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `universalLciPrism` | 61 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `lciClassifyingMap` | 67 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `exists_lciEnvelope` | 75 | 3 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `lci_isDiscretePrismatic` | 108 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `ainfPrismRing` | 152 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `ainfPrism` | 153 | 1 | 証明予定 |
+| A3/LciAndQuasiregular.lean | `regularSemiperfectoid` | 168 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `prismaticPerfectionFunctor` | 52 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `perfectoidizationFunctor` | 58 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `completionFunctor` | 72 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `completionFunctorUnit` | 78 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `e3Perfd` | 86 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `e3Unit` | 123 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `e3H0RingFunctor` | 138 | 1 | 証明予定 |
+| A4/InterfaceFields.lean | `e3H0RingData` | 145 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectPrismRing` | 51 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectPrism` | 52 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectPrism_isPerfect` | 53 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectPrism_bounded` | 54 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectPrism_quotientEquiv` | 55 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `prismaticPerfection` | 71 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectoidization` | 83 | 1 | 証明予定 |
+| A4/Perfectoidization.lean | `perfectoidizationDerived` | 89 | 1 | 証明予定 |
+| A5/InterfaceLimitCone.lean | `perfectoidizationCone` | 44 | 1 | 証明予定 |
+| A5/InterfaceLimitCone.lean | `perfectoidizationCone_vertex` | 50 | 1 | 証明予定 |
+| A5/InterfaceLimitCone.lean | `perfectoidizationConeUnderlying` | 58 | 1 | 証明予定 |
+| A5/InterfaceLimitCone.lean | `e3LimitCone` | 65 | 1 | 証明予定 |
+| A5/InterfaceLimitCone.lean | `e3LimitCone_isLimit` | 73 | 1 | 証明予定 |
+| A5/PerfectSite.lean | `perfectFlatTopology` | 55 | 1 | 証明予定 |
+| A5/PerfectSiteComparison.lean | `perfectionComparison_isIso` | 54 | 1 | 証明予定 |
+| A5/PerfectSiteComparison.lean | `perfectoidization_semiperfectoid` | 85 | 1 | 証明予定 |
+| A5/PerfectSiteComparison.lean | `perfectionComparison_isIso_animated` | 94 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `rootAdjunctionStep` | 46 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `rootClosure` | 52 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `rootClosureUnit` | 53 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `algebraicRootClosure` | 80 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `polyRootAlgebra` | 89 | 1 | 証明予定 |
+| A5/RootAdjunction.lean | `rootCover` | 95 | 1 | 証明予定 |
+| A5/SemiperfectoidCase.lean | `IsSemiperfectoid` | 72 | 1 | 証明予定 |
+| A5/SemiperfectoidCase.lean | `universalPerfectoidRing` | 109 | 1 | 証明予定 |
+| A5/SemiperfectoidCase.lean | `universalPerfectoidUnit` | 110 | 1 | 証明予定 |
+| A5/WeaklyInitialAndDescent.lean | `rootClosure_isSemiperfectoid` | 50 | 1 | 証明予定 |
+| A6/ArcSheafProperty.lean | `IsVCoverFamily` | 48 | 1 | 証明予定 |
+| A6/ArcSheafProperty.lean | `IsArcCoverFamilyCharP` | 55 | 1 | 証明予定 |
+| A6/ArcSheafProperty.lean | `cech_exact_of_vCover_perfect` | 64 | 1 | 恒久的な引用 |
+| A6/ArcSheafProperty.lean | `arcSheaf_of_vSheaf_of_valuationSquares` | 78 | 1 | 恒久的な引用 |
+| A6/ArcSheafProperty.lean | `valuationRing_milnorSquare` | 87 | 1 | 証明予定 |
+| A6/ArcSheafProperty.lean | `valuationRing_milnorSquare_perfect` | 95 | 1 | 証明予定 |
+| A6/ArcSite.lean | `AffCompl` | 62 | 1 | 証明予定 |
+| A6/ArcSite.lean | `匿名 instance` | 64 | 1 | 証明予定 |
+| A6/ArcSite.lean | `AffPerfd` | 70 | 1 | 証明予定 |
+| A6/ArcSite.lean | `匿名 instance` | 72 | 1 | 証明予定 |
+| A6/ArcSite.lean | `affPerfdInclusion` | 75 | 1 | 証明予定 |
+| A6/ArcSite.lean | `arcTopology` | 95 | 1 | 証明予定 |
+| A6/ArcSite.lean | `arcTopologyPerfd` | 101 | 1 | 証明予定 |
+| A6/ArcSite.lean | `perfectoidBaseRing` | 131 | 1 | 証明予定 |
+| A6/ArcSite.lean | `匿名 instance` | 132 | 1 | 証明予定 |
+| A6/ArcSite.lean | `perfectoidBaseRing_isPerfectoid` | 133 | 1 | 証明予定 |
+| A6/ArcSite.lean | `baseExtension` | 139 | 1 | 証明予定 |
+| A6/ArcSite.lean | `匿名 instance` | 140 | 1 | 証明予定 |
+| A6/ArcSite.lean | `匿名 instance` | 141 | 1 | 証明予定 |
+| A6/ArcSite.lean | `baseExtensionUnit` | 142 | 1 | 証明予定 |
+| A6/Excision.lean | `e3Excision` | 85 | 1 | 証明予定 |
+| A7/AnimatedDomain.lean | `animatedForget` | 43 | 1 | 基盤待ち |
+| A7/AnimatedDomain.lean | `CompleteAnimatedAlgebra` | 49 | 1 | 基盤待ち |
+| A7/AnimatedPerfectoidization.lean | `prismaticPerfectionAnimated` | 66 | 1 | 証明予定 |
+| A7/AnimatedPerfectoidization.lean | `perfectoidizationAnimated` | 72 | 1 | 証明予定 |
+| A7/UniversalProperty.lean | `e3Universal` | 97 | 1 | 証明予定 |
+| A8/AlmostPurityConnectivity.lean | `trivialCoverComparison` | 72 | 1 | 証明予定 |
+| A8/IntegralDiscreteness.lean | `isIntegralPerfectoid_of_finiteEtale` | 47 | 1 | 証明予定 |
+| A8/IntegralDiscreteness.lean | `integralClosureInLocalization` | 92 | 1 | 証明予定 |
+| A8/IntegralDiscreteness.lean | `integralClosureCompletion` | 115 | 1 | 証明予定 |
+| A8/IntegralDiscreteness.lean | `e3Integral` | 164 | 1 | 証明予定 |
+| DerivedGeneral/CompletionFunctor.lean | `IsDerivedComplete` | 42 | 1 | 基盤待ち |
+| DerivedGeneral/CompletionFunctor.lean | `completeSubcomplex` | 48 | 1 | 基盤待ち |
+| DerivedGeneral/CompletionFunctor.lean | `completion` | 56 | 1 | 基盤待ち |
+| DerivedGeneral/Truncation.lean | `truncationLE` | 55 | 1 | 基盤待ち |
+| DerivedGeneral/Truncation.lean | `truncationGE` | 57 | 1 | 基盤待ち |
+| DerivedGeneral/Truncation.lean | `truncationLE_isConnective` | 64 | 1 | 基盤待ち |
+| Shared/CosimplicialBockstein.lean | `CosimplicialShortExact` | 42 | 1 | 基盤待ち |
+| Shared/CosimplicialBockstein.lean | `CosimplicialShortExact.cochainShortExact` | 53 | 2 | 基盤待ち |
+| Shared/CosimplicialBockstein.lean | `CosimplicialShortExact.bockstein` | 62 | 1 | 基盤待ち |
+| Shared/CosimplicialBockstein.lean | `quotPow` | 77 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cup_assoc` | 65 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `one_cup` | 73 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cochainDifferential` | 81 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cochainDifferential_cup` | 88 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cohomology` | 98 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cohomologyCup` | 105 | 1 | 基盤待ち |
+| Shared/CosimplicialCupProduct.lean | `cohomologyCup_comm` | 112 | 1 | 基盤待ち |
+| Shared/CosimplicialEInfinity.lean | `totEInfinity` | 54 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `forms` | 50 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `匿名 instance` | 53 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `匿名 instance` | 54 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `dX` | 60 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `wedge` | 66 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `deRhamD` | 72 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `deRhamD_comp` | 74 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `deRhamD_wedge` | 77 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `deRhamComplex` | 86 | 1 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `exists_unique_dgHom` | 108 | 3 | 基盤待ち |
+| Shared/DeRhamPolynomial.lean | `completedForms` | 126 | 1 | 基盤待ち |
+| Shared/Descendable.lean | `IsDescendable` | 57 | 1 | 基盤待ち |
+| Shared/Descendable.lean | `HasDescentIndexLE` | 70 | 1 | 基盤待ち |
+| Shared/Descendable.lean | `isDescendable_iff_exists_index` | 76 | 1 | 基盤待ち |
+| Shared/EInfinityPowerOperation.lean | `homotopy` | 40 | 1 | 基盤待ち |
+| Shared/EInfinityPowerOperation.lean | `powerOperationZero` | 47 | 1 | 基盤待ち |
+| Shared/EInfinityPowerOperation.lean | `powerOperationZero_pos` | 59 | 1 | 基盤待ち |
+| Sheaves/CAlgValued.lean | `forget_isLimitCone` | 55 | 1 | 基盤待ち |
+| Sheaves/CAlgValued.lean | `forget_reflects_isLimitCone` | 70 | 1 | 基盤待ち |
+| Sheaves/CAlgValued.lean | `isSheaf_iff_forget` | 78 | 1 | 基盤待ち |
+| Sheaves/CAlgValued.lean | `sheafification_exists_cAlg` | 89 | 1 | 基盤待ち |
+| Sheaves/CAlgValued.lean | `ringPresheafToCAlg` | 116 | 1 | 基盤待ち |
+| Sheaves/CechConerveLimit.lean | `isLimitCone_iff_restrict_cech` | 80 | 1 | 基盤待ち |
+| Sheaves/CechConerveLimit.lean | `hasLimit_iff_cech` | 89 | 1 | 基盤待ち |
+| Sheaves/CechConerveLimit.lean | `exists_limitCone_of_cech` | 98 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `vertexToPresheaf` | 85 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `sheafification_exists` | 107 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `sheafify` | 116 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `isSheaf_sheafify` | 120 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `sheafifyUnit` | 128 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `sheafifyUnit_isEquivalence_of_isSheaf` | 136 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `derivedGlobalSections_of_isSheaf` | 163 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `derivedGlobalSections_map` | 172 | 1 | 基盤待ち |
+| Sheaves/GlobalSections.lean | `derivedGlobalSections_of_le` | 181 | 1 | 基盤待ち |
+| Sheaves/SheafCondition.lean | `sieveCone` | 78 | 1 | 基盤待ち |
+| Sheaves/SheafCondition.lean | `JoinCone.ulift` | 99 | 1 | 基盤待ち |
+| Sheaves/SheafCondition.lean | `isSheaf_bot` | 129 | 1 | 基盤待ち |
+| Sheaves/SheafCondition.lean | `isSheaf_toGrothendieck_iff` | 137 | 1 | 基盤待ち |
+| Sheaves/SpaceValued.lean | `sheafification_exists_spaces` | 39 | 1 | 基盤待ち |
+| Sheaves/SpaceValued.lean | `sheafify_discrete_eq` | 45 | 1 | 基盤待ち |
+| Sheaves/SpaceValued.lean | `sections_localEquiv_iso` | 66 | 1 | 基盤待ち |
+
+### 4. 指示書 §3 の12点の最終回答・段 I〜III の判定
+
+| §3 | 回答 | 理由と最終条件 |
+| --- | --- | --- |
+| 1 β・D-S1 | **妥当** | RΓ=Γ(F♯) の仕様を維持。一般の非有界前層まで古典的 hypercohomology と同じとは言わず、E3 の離散の構造層・集合の層に既報の一致を使う。S8 の空間値の基盤は別途供給する。 |
+| 2 κ・S3 | **妥当** | 弱始対象と Čech 余積が小さい側と全 Type u 側に共通。余積は Q(T₁⊗̂_S T₂)。今回 S₀・A_λ・André の濃度も紙で確認。κ≥cutoff に加え κ^{ℵ₀}=κ が必要。 |
+| 3 A0 | **妥当** | Def 2.42 の訂正 D20、envelope の普遍性と存在定理の区別、cechKernel の導来完備化 H⁰、自由加群の場合の離散性が揃う。site/RΓ を模型で定義していない。 |
+| 4 A1 | **妥当** | D68(a) の de Rham 黒箱一件、HT は Cartier、J つきは G-A1-17。D69(a) は普遍 A₀ 上の Thm 6.4 と最後の底変換で、保存性だけから比較を降ろす旧案ではない。ノートは W9-III-16。 |
+| 5 A2 | **妥当** | 原典の P_Σ と sifted 延長。HT filtration・外冪は完備圏内の LΛ_p∘Lan、exhaustive 性も完備圏内。τ≤ の述語訂正を確認。π₀ と通常の completionRing は区別する。 |
+| 6 A3 | **妥当** | D36(a) の制限付き δ 射と部分圏の始性、envelope による全 prism の始性を分ける。D37・D38 の範囲で Prop 7.2・7.11 全体を新たに要求する接続はない。G-A3-7 は証明予定。 |
+| 7 A4 | **妥当** | 塔は φ_{A*}^n。P⁰ は coherent な自然変換として Tot・実現へ移し、G-A3-9 の Frobenius 模型と結ぶ。H⁰ の p ねじれなしを先に得て完全 δ 環・d 正則性へ進む。P⁰ は基盤側の証明対象。 |
+| 8 A5 | **妥当** | S̃ は弱始性・濃度に限定、filtered 余極限は E 被覆と G-A5-18。左随伴の始性、二つの降下、G-A2-10 と HT の全射性、Lemma 8.6 と perf 版、animated 入力・π₀ の系、G-A5-6′ は既報と修復で接続。配置のみ W9-III-14。 |
+| 9 A6 | **妥当** | global affCompl_κ に G-A6-11 を前置。集合の層の延長・等式から S8 で空間・CAlg へ移す。tilt/untilt、反転項、rank 0、試験環、三引用は既報の訂正後を維持。W9-III-08 の実分割が条件。 |
+| 10 A7 | **妥当** | D60 が X=S_perfd⊗̂^L_S S_perfd を収容。相対テンソル版と単位の整合から Cor 8.14 の射が乗法となる。A5 が読む DiscreteCore は A4 の後へ置けば循環しない。 |
+| 11 A8 | **妥当** | D63 は有限表示有限の場合の原典 (1)(2) から almost 連結性だけを取り出すので Galois 構造が不要。生成元ごとの almost、D64・D66、独立な Lemma 10.12、D70 の T/T̂、二種類の完備余極限補題から integral へ接続。 |
+| 12 A9 | **妥当（実施条件つき）** | 八欄と `nonempty_e3_of_cAlg` で現行公開型を供給する構造。恒久的引用の追加漏れは検出せず。CompletedTensor の実分割・有限積の E3 非依存化、および W9-III-14・15 の配置・名前の訂正が必要。 |
+
+**段 I〜III 全体：設計レビューは完了、判定は条件付き妥当。** 原典の定義を保ち、E3 に必要な定理へ絞り、差を D 番号で記録する方針は、修復後の数学的な道筋として維持されている。今回、新しい致命的な証明の循環・E3 接続の欠落・無番号の定義変更は見つからなかった。
+一方、**既知の致命 W9-III-08 は、決定済みでも実施未了**。分割・有限積の直接証明を実施し、Inputs への到達がないことを実ファイルで確認するまでは「E3 非依存の実装配置が完成した」「E3 が消えた」とする受入判定は出せない。
+W9-III-14〜17 は実装へ渡す前の配置・記述の訂正事項で、新しい数学的方針や恒久的引用の追加を求めるものではない。
+
+### 5. ユーザーに決めてもらう事項
+
+新しい数学的決定事項はない。D20、D36(a)、D45 改訂、D68(a)、D69(a)、D70 と W9-III-08(a) はそのまま適用する。既決方針に沿う配置として次を推奨する。
+
+- `prismaticPerfection_filteredColimit` は A4 の先行部分、`perfUnder_cechNerveData` は PerfectSite またはその前の専用部分へ。独立ファイルを増やすか先行ファイルへ置くかは実装上の選択で、証明内容は変わらない。
+- 二つの `perfectionLeg` は名前を分け、後段利用側に AfterComparison の import を明記する。
+- a9-design §3 は最終引用三件、暫定許可・基盤待ちを別表示にする。新しい文献入力を増やす提案ではない。
+
+提案はこの報告にだけ記し、設計・骨組み・ノートには適用していない。
+
+### 6. 確認済み一覧・終了条件
+
+- 指示書、design-status、全設計の D 表と定義の仕様、drafts/README、49本の依存コメント・sorry 所在、ノートの対応項目を照合した。
+- `1ed122760` の本体 import を固定して辿り、指定の A4・A5・A8 の入口を含め、W9-III-08 の辺を除いた場合の E3 到達がないことを確認した。
+- 新設四ファイルの分離、A7/AnimatedDomain・DiscreteCore の役割、A8 の余極限と非有界版の修復を確認した。
+- D19〜D70、κ、宣言別 sorry、指示書 §3 の全12点の最終回答を完了した。
+- 未実施なのは CompletedTensor の実分割、骨組みの実装・型検査・ビルド。これらを紙の議論のレビュー完了と取り違えない。
+- 今回の変更は報告への追記のみ。既存本文を保存し、他セッションのコミット・変更に手を加えていない。報告一本のコミットと終了時の `git status --short` で、今回増えた差分が報告以外にないことを確認する。

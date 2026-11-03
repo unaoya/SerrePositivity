@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronFacePaths
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentPathHom
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronHom
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTriangleHomotopy
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
 
 /-!
 概要：coherent 三単体の長辺を含む二面の指定辺の同定。

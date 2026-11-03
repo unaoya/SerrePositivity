@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberConeFullyFaithful
-public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 
 /-!

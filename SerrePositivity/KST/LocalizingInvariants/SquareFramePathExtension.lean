@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameFunctoriality
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：元の正方形の境界に指定された四辺の可逆 path を、正方形全体へ延長する。

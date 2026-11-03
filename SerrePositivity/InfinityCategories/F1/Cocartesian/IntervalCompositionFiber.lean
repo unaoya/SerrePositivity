@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F1.Cocartesian.IntervalOuterHornPullback
 public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexFiberIsPullbackIso
-public import SerrePositivity.InfinityCategories.Stable.KanContractibleBaseFiber
+public import SerrePositivity.InfinityCategories.HomotopyLimits.KanContractibleBaseFiber
 
 /-!
 概要：同じ合成三角形を固定した fiber を、元の外ホーン延長と厳密に同定する。

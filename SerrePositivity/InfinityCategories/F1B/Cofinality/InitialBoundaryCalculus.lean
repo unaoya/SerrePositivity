@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialBoundary
 
 /-!
 概要：相対始点境界充填の合成と底変換。

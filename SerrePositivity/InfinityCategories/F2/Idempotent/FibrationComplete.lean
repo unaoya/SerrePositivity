@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.Coherent
+public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemConeRestriction
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemCoconeRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemCoconeRestriction
 
 /-!
 概要：左右 fibration の標的が冪等完備なら、その全体も冪等完備。

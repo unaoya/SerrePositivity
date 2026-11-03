@@ -7,6 +7,9 @@ public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulRing
+public import Mathlib.Algebra.Category.Ring.Basic
+public import Mathlib.RingTheory.TensorProduct.Basic
 -- 本ファイルは drafts/A0/PrismaticSite.lean の `IsBoundedPrism` を使う。
 
 /-!
@@ -36,6 +39,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory
+open scoped TensorProduct
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
@@ -91,14 +95,29 @@ theorem IsPrismaticEnvelope.unique
     ∃ e : C ≃+* C', Q.deltaStructure.IsDeltaHom Q'.deltaStructure e.toRingHom ∧ e.toRingHom.comp η = η' := by
   sorry -- lift の一意性
 
+/-- J₀ を殺した後の一変数導来 p 完備化への標準射の核。 -/
+def envelopeClosure {B : Type u} [CommRing B] (p : ℕ) (J₀ : Ideal B) : Ideal B := by
+  let T := B ⧸ J₀
+  letI := principalCompletionCommRing T (p : T)
+  exact RingHom.ker ((principalCompletionUnitRingHom T (p : T)).comp (Ideal.Quotient.mk J₀))
+
+theorem le_envelopeClosure {B : Type u} [CommRing B] (p : ℕ) (J₀ : Ideal B) :
+    J₀ ≤ envelopeClosure p J₀ := by
+  sorry -- 商写像が J₀ を零に送る
+
 /-- 概要：J を (p,d) 完備閉包で置き換えても envelope は同じ（Constr 4.17 の J = ker(B → (B/J₀B)^∧) と J₀B の比較）。
 方針：標的 D は (p,d) 完備なので、J₀B ↦ dD なら閉包も ↦ dD。
 規約：閉包は導来 p 完備化の H⁰ への核で述べる。
-主張（中身の段階で型にする、W9-I-06）：J₀ ≤ J := ker(B → H⁰((B/J₀B)^∧_{(p,d)})) について、`IsPrismaticEnvelope P B J₀ … C η ↔ IsPrismaticEnvelope P B J … C η`。
 使われ方：Constr 4.17 の J の形を原典どおりにしたまま、変数の場合の存在定理を当てる。 -/
-theorem IsPrismaticEnvelope.of_closure : True := by
-  -- 要確認：閉包の定義（PDCompletionH0 (B ⧸ J₀B) p 0 への核）を入れてから述べる
-  trivial
+theorem IsPrismaticEnvelope.of_closure {B : Type u} [CommRing B]
+    (DB : DeltaStructure p B) (ι : A →+* B) (hι : P.deltaStructure.IsDeltaHom DB ι)
+    (J₀ : Ideal B) (h₀ : ι P.generator ∈ J₀)
+    {C : Type u} [CommRing C] (Q : OrientedPrism p C) (η : B →+* C) :
+    IsPrismaticEnvelope P DB ι hι J₀ h₀ Q η ↔
+      IsPrismaticEnvelope P DB ι hι (envelopeClosure p J₀) (le_envelopeClosure p J₀ h₀) Q η := by
+  by_cases hzero : Subsingleton (A ⧸ P.ideal)
+  · sorry -- d は単元で完備な基底は零 prism。変数を R に埋め込まず両イデアルを比較する
+  · sorry -- D/dD は導来 p 完備。B/J₀→D/dD は完備化単位を経由するので lift の試験射が一致
 
 /-! ## 存在：変数の場合（Ex 3.14） -/
 
@@ -114,10 +133,10 @@ instance (S : Type u) : CommRing (completedFreeDelta P S) :=
 
 /-- 概要：完備化した自由 δ 環の δ 構造。
 方針：`deltaPDCompletionStructure`。
-規約：`relativeFreeDeltaStructure P.deltaStructure` を完備化へ延ばす。
+規約：`relativeFreeDeltaStructure S P.deltaStructure` を完備化へ延ばす。
 使われ方：envelope の始域。 -/
 def completedFreeDeltaStructure (S : Type u) : DeltaStructure p (completedFreeDelta P S) :=
-  deltaPDCompletionStructure (relativeFreeDeltaStructure P.deltaStructure) _
+  deltaPDCompletionStructure (relativeFreeDeltaStructure S P.deltaStructure) (algebraMap A _ P.generator)
 
 /-- 概要：A → A{X_S}^∧ は δ 射。
 方針：定数の包含と完備化の単位の合成。
@@ -135,30 +154,75 @@ lemma completedFreeDeltaBase_isDeltaHom (S : Type u) :
 規約：Ex 3.14 の状況を変数変換した後の形。
 使われ方：存在定理の J。 -/
 def variableIdeal (S : Type u) (Z : Set S) : Ideal (completedFreeDelta P S) :=
-  Ideal.span ({completedFreeDeltaBase P S P.generator} ∪
-    ((pdCompletionUnit _ p _) '' (fun z : Z => (MvPolynomial.X ((z : S), 0) : RelativeFreeDeltaRing (R := A) S)) '' Set.univ))
+  Ideal.span (insert (completedFreeDeltaBase P S P.generator) (Set.range (fun z : Z =>
+    pdCompletionUnit (RelativeFreeDeltaRing (R := A) S) p (algebraMap A _ P.generator)
+      (MvPolynomial.X ((z : S), 0)))))
 
 /-- 概要：Prop 3.13 の存在（Ex 3.14 の場合）：(A{X_S}^∧, (d, Z)) の envelope が存在し、(1) (p,d) 完全平坦、(2) 底変換と可換。
 方針：候補は Z = d·Y とおいた A{(S∖Z) ⊔ Z}^∧（Y の添字は Z）。普遍性は d の正則性と自由 δ 環・完備化の普遍性、平坦性は Lemma 3.7(2)。
 規約：(3)（平坦局所化との両立）は A0 で使わないので主張しない。κ の濃度の評価は別の補題（`cardinal_envelope_le`）。
 使われ方：Constr 4.17（多項式代数の R）、Rem 4.19。 -/
 theorem exists_prismaticEnvelope_of_variables (hP : IsBoundedPrism P) (S : Type u) (Z : Set S) :
-    ∃ (C : Type u) (_ : CommRing C) (Q : OrientedPrism p C) (η : completedFreeDelta P S →+* C),
+    ∃ (C : Type u) (rc : CommRing C),
+      letI := rc
+      ∃ (Q : OrientedPrism p C) (η : completedFreeDelta P S →+* C),
       IsPrismaticEnvelope P (completedFreeDeltaStructure P S) (completedFreeDeltaBase P S)
-        (completedFreeDeltaBase_isDeltaHom P S) (variableIdeal P S Z) (by sorry) Q η ∧
+        (completedFreeDeltaBase_isDeltaHom P S) (variableIdeal P S Z) (Ideal.subset_span (Set.mem_insert _ _)) Q η ∧
       IsBoundedPrism Q ∧
       (letI : Algebra A C := (η.comp (completedFreeDeltaBase P S)).toAlgebra
         IsCompletelyFlat (Ideal.span {(p : A), P.generator}) C) := by
   sorry -- 模型 A{(S∖Z) ⊔ Z}^∧（Z = dY）。普遍性：existsUnique_deltaAdjoinDivisionHom_of_regular・existsUnique_deltaPDCompletionHom。平坦：Lemma 3.7(2)
 
+/-- A′⊗_A T を A′ の (p,d′) で完備化した H⁰。 -/
+def envelopeBaseChangeRing {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]
+    (P' : OrientedPrism p A') : CommRingCat.{u} := by
+  let U := A' ⊗[A] T
+  let d := (Algebra.TensorProduct.includeLeftRingHom : A' →+* U) P'.generator
+  letI := pdCompletionCommRing U p d
+  exact CommRingCat.of (PDCompletionH0 U p d)
+
+def envelopeBaseChangeUnit {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]
+    (P' : OrientedPrism p A') :
+    (A' ⊗[A] T) →+* envelopeBaseChangeRing (A := A) (T := T) P' :=
+  pdCompletionUnit _ p ((Algebra.TensorProduct.includeLeftRingHom : A' →+* A' ⊗[A] T) P'.generator)
+
+/-- 完備底変換後の二つの脚 A′→T′ と T→T′。 -/
+def envelopeBaseLeg {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]
+    (P' : OrientedPrism p A') : A' →+* envelopeBaseChangeRing (A := A) (T := T) P' :=
+  (envelopeBaseChangeUnit P').comp Algebra.TensorProduct.includeLeftRingHom
+
+def envelopeChangeLeg {A' T : Type u} [CommRing A'] [CommRing T] [Algebra A A'] [Algebra A T]
+    (P' : OrientedPrism p A') : T →+* envelopeBaseChangeRing (A := A) (T := T) P' :=
+  (envelopeBaseChangeUnit P').comp (Algebra.TensorProduct.includeRight : T →ₐ[A] A' ⊗[A] T).toRingHom
+
 /-- 概要：Prop 3.13(2)：envelope の形成は有界 prism の底変換と可換（変数の場合）。
 方針：模型が自由 δ 環なので、底変換後も同じ形。普遍性で比較。
 規約：底変換は prism の射 (A,(d)) → (A′,(d′)) に沿う完備テンソル。
 使われ方：Rem 4.19 の底変換、Lemma 4.20、Thm 5.2 の φ_A^* C^•。
-主張（中身の段階で型にする、W9-I-06）：prism の射 f : P → P′ と変数の場合の envelope C について、C ⊗̂_A A′ は (B ⊗̂_A A′, J·(B ⊗̂ A′)) の P′ 上の envelope。
-要確認：完備テンソルの基盤の名前（BS/Perfectoidization/CompletedTensor）。 -/
-theorem prismaticEnvelope_baseChange_of_variables : True := by
-  trivial
+-/
+theorem prismaticEnvelope_baseChange_of_variables {A' : Type u} [CommRing A']
+    (P' : OrientedPrism p A') (f : OrientedPrism.Hom P P') (hP : IsBoundedPrism P) (hP' : IsBoundedPrism P')
+    (S : Type u) (Z : Set S) {C : Type u} [CommRing C] (Q : OrientedPrism p C)
+    (η : completedFreeDelta P S →+* C) (hJ : completedFreeDeltaBase P S P.generator ∈ variableIdeal P S Z)
+    (h : IsPrismaticEnvelope P (completedFreeDeltaStructure P S) (completedFreeDeltaBase P S)
+      (completedFreeDeltaBase_isDeltaHom P S) (variableIdeal P S Z) hJ Q η) :
+    let B := completedFreeDelta P S
+    letI := f.toRingHom.toAlgebra
+    letI : Algebra A B := (completedFreeDeltaBase P S).toAlgebra
+    letI : Algebra A C := (η.comp (completedFreeDeltaBase P S)).toAlgebra
+    let B' := envelopeBaseChangeRing (A := A) (T := B) P'
+    let C' := envelopeBaseChangeRing (A := A) (T := C) P'
+    let b := envelopeBaseLeg (A := A) (T := B) P'
+    let c := envelopeBaseLeg (A := A) (T := C) P'
+    let u := envelopeChangeLeg (A := A) (T := B) P'
+    let v := envelopeChangeLeg (A := A) (T := C) P'
+    let J' := (variableIdeal P S Z).map u
+    ∃ (D' : DeltaStructure p B') (Q' : OrientedPrism p C') (η' : B' →+* C')
+      (hb : P'.deltaStructure.IsDeltaHom D' b) (hd : b P'.generator ∈ J'),
+      (completedFreeDeltaStructure P S).IsDeltaHom D' u ∧ Q.deltaStructure.IsDeltaHom Q'.deltaStructure v ∧
+      η'.comp u = v.comp η ∧ η'.comp b = c ∧ IsBoundedPrism Q' ∧
+      IsPrismaticEnvelope P' D' b hb J' hd Q' η' := by
+  sorry -- 自由変数模型と dY による模型を A′ 上に移す。二脚と完備化単位で誘導射を指定し、剛性で dA′ = (d′)
 
 /-- 概要：envelope の濃度は (#A + #S + ℵ₀)^{ℵ₀} 以下（κ の切り落としに入る）。
 方針：模型は多項式環の完備化で、完備化は Cauchy 列の商。

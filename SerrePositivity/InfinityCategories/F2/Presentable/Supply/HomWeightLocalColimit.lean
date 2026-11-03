@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.HomWeightElementsComparison
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.PresheafDensity
 public import SerrePositivity.InfinityCategories.F2.Ind.EquivalentCoconeRestriction
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：任意の関手の局所左 Kan 形状上の Yoneda 図式に、元の Hom 前層を頂点とする余極限を作る。

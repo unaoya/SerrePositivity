@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaConeFamily
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredLimitConeCompletion
 public import SerrePositivity.InfinityCategories.F2.Ind.DiagramFilteredPresentation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
 public import SerrePositivity.InfinityCategories.F1B.Cones.LimitDiagramIsoImage
 
 /-!

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-! # 指定した部分族を保つ普遍余錐の延長
 

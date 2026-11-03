@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentFunctorProductLimit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone

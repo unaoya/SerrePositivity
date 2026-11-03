@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorVertexConeReindex
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ColimitCoconeCompletion
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ColimitCoconeCompletion
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeConeFamilies
 
 /-!

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismUpperSides
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismLowerSides
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
 
 /-!
 概要：辺に制限した元の prism の標準二三角形を、既存の上下三角形と同定する。

@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenASliceOpp
 public import SerrePositivity.InfinityCategories.F1.Fibrations.RightFibrationYoneda
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorRestrictionLifting
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.RightAnodyneTensor
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEdgeRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalEdgeRestriction
 
 /-!
 概要：終点固定余錐の制限を切断の制限と照合し、元の辺の局所性を全境界充填へ移す。

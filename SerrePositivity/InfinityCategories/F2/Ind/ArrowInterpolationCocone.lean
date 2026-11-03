@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationCorner
 public import SerrePositivity.InfinityCategories.Core.JoinAssociatorBoundary
-public import SerrePositivity.InfinityCategories.Stable.LastJoinEvaluation
+public import SerrePositivity.InfinityCategories.Core.LastJoinEvaluation
 
 /-!
 概要：補間領域の余錐を元の全円柱へ比較する実際の射。

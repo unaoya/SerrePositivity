@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
-public import SerrePositivity.InfinityCategories.Stable.HomotopyEvaluationPath
+public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationPath
 public import SerrePositivity.InfinityCategories.Stable.CofiberComparisonComposition
 
 /-! # 四角形の水平な変形

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorization
 public import SerrePositivity.InfinityCategories.Core.InitialHomotopy
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 
 /-!
 概要：compact 源の因子化を、元の辺を合成辺とする実二単体として回収する。

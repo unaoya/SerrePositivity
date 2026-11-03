@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomGeneral
 public import SerrePositivity.InfinityCategories.Derived.DeformationFunctorDescentHom
 public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 /-!
 概要：正規化した同じ変形円柱の類の自然性と後合成への整合性を証明する。
 方針：元の円柱の交換則へ端点等式と恒等前合成の同じ射を代入する。

@@ -7,10 +7,11 @@ public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
 public import Mathlib.SetTheory.Cardinal.Arithmetic
--- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean（将来 …InfinityCategories.Sheaves.*）を import する。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean と drafts/DerivedGeneral/ScalarRestriction.lean（M13）を使う。
 
 /-!
 # prismatic site とその構造層（BS 著者版 Def 4.1、Rem 4.6、Not 4.16）
@@ -69,13 +70,13 @@ variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]
 方針：κ^{ℵ₀} = κ なので、Čech–Alexander 複体・完備テンソル・完全化・André 拡大・p 冪根の添加で閉じる（a0-design §2.7）。
 規約：定義にパラメータとして残し、κ 不変性は定理（O_Δ についてだけ）。
 使われ方：`PrismOver` の対象の条件、本質的小ささ。 -/
-def cutoff : Cardinal.{u} := (Cardinal.mk A + Cardinal.mk R + ℵ₀) ^ ℵ₀
+def cutoff (A R : Type u) : Cardinal.{u} := (Cardinal.mk A + Cardinal.mk R + ℵ₀) ^ ℵ₀
 
 /-- 概要：許容する切り落とし：κ ≥ cutoff かつ κ^{ℵ₀} = κ（完備テンソル・完備化・可算反復で閉じるための条件。W9-I-11：κ ≥ cutoff だけでは κ^{ℵ₀} = κ は従わない）。
 方針：site の公理（押し出しが切り落としに残る）と κ 比較の定理はこの仮定で述べる。`cutoff` 自身は満たす。
 規約：—
 使われ方：`flatTopology_refine`、`prismaticCohomology_cutoff_invariant`。 -/
-def IsAdmissibleCutoff (κ : Cardinal.{u}) : Prop := cutoff P R ≤ κ ∧ κ ^ ℵ₀ = κ
+def IsAdmissibleCutoff (P : OrientedPrism p A) (R : Type u) (κ : Cardinal.{u}) : Prop := cutoff A R ≤ κ ∧ κ ^ ℵ₀ = κ
 
 /-! ## 対象と射（Def 4.1 の圏、環の側） -/
 
@@ -245,7 +246,7 @@ def structurePresheafDerived :
 使われ方：Constr 4.18、Lemma 4.20、A1 の Thm 4.11、A2 の Construction 7.6。 -/
 def prismaticCohomology
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
     (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
   InfinityCategories.Sheaves.derivedGlobalSections (flatTopology P R κ) hJ hE (structurePresheafDerived P R κ)
 
@@ -263,20 +264,39 @@ def hodgeTateCohomology
 /-- 概要：Δ_{R/A} の Frobenius：Δ → φ_{A*}Δ。
 方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。
 規約：D(A) の辺。
-使われ方：A4（Def 8.2）。
-要確認：φ_A に沿うスカラー制限の D(A) 上の関手の名前。 -/
+使われ方：A2 の多項式上の Frobenius、A4 の正の反復（Def 8.2）。 -/
 def prismaticCohomologyFrobenius
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
-    True := -- 要確認：型は `Edge (prismaticCohomology …) (φ_{A*} (prismaticCohomology …))`
-  trivial
+    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    let Δ := prismaticCohomology P R κ hJ hE
+    let res := InfinityCategories.derivedInfinityRestrictScalars P.deltaStructure.frobeniusLift
+    SSet.Edge Δ (res.app (Opposite.op ⦋0⦌) Δ) := by
+  sorry -- 各 B の Frobenius は B → Res_φ B として A 線形。S2 で誘導した辺の標的を極限保存で Res_φ Δ に移す
 
-/-- 概要：κ 不変性：κ₀ ≤ κ ≤ κ′ なら Δ_{R/A} は同じ（O_Δ について）。
-方針：Constr 4.17 の C^0 はどの κ でも弱終で、C^• ⊂ 𝒞_{κ₀}。S3 の補題と Cor 3.12 で両辺とも Tot O_Δ(C^•)。
-規約：同型は D(A) の可逆な辺。一般の前層には主張しない。
-使われ方：κ が定義に入ることの正当化（ノート D16）。 -/
-theorem prismaticCohomology_cutoff_invariant : True := by
-  -- 要確認：二つの κ の site の間の比較射と、その上の RΓ の同型を述べる形（A0-2 の後に）
-  trivial
+/-- 濃度の上限だけを緩める環側の包含。射の二つの可換条件も同じものを使う。 -/
+def prismOverCutoffInclusion {κ κ' : Cardinal.{u}} (hle : κ ≤ κ') :
+    PrismOver P R κ ⥤ PrismOver P R κ' where
+  obj X := { B := X.B, ring := X.ring, Q := X.Q, bounded := X.bounded,
+             toHom := X.toHom, sec := X.sec, sec_comp := X.sec_comp, small := X.small.trans hle }
+  map f := ⟨f.toHom, f.comm_base, f.comm_sec⟩
+  map_id := by intro X; rfl
+  map_comp := by intro X Y Z f g; rfl
+
+/-- 小さい模型に移した site 側の包含。 -/
+def cutoffSiteInclusion {κ κ' : Cardinal.{u}} [EssentiallySmall.{u} (PrismOver P R κ)]
+    [EssentiallySmall.{u} (PrismOver P R κ')] (hle : κ ≤ κ') :
+    PrismaticSite P R κ ⥤ PrismaticSite P R κ' :=
+  ((equivSmallModel (PrismOver P R κ)).inverse ⋙ prismOverCutoffInclusion P R hle ⋙
+    (equivSmallModel (PrismOver P R κ')).functor).op
+
+/-- 大きい cutoff の構造前層を包含の opposite に沿って制限する。 -/
+def restrictCutoffStructure {κ κ' : Cardinal.{u}} [EssentiallySmall.{u} (PrismOver P R κ)]
+    [EssentiallySmall.{u} (PrismOver P R κ')] (hle : κ ≤ κ') :
+    InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (InfinityCategories.derivedInfinityCategory A) :=
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (cutoffSiteInclusion P R hle).op) ≫
+    structurePresheafDerived P R κ'
+
+-- HasEnvelopes を仮定する prismaticCohomology_cutoff_invariant は
+-- CechAlexander.lean の prismaticCohomology_eq_cechAlexanderTot の直後に置く。
 
 end SerrePositivity.BhattScholze.Prismatic

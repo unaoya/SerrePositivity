@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeLeftImagePath
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackConeRightImageProjection
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 
 /-!
 概要：native な極限錐と二射影・指定可逆 path の同時比較。

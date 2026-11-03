@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ArrowEndpointPair
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ArrowEndpointPair
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorInitial
 
 /-!

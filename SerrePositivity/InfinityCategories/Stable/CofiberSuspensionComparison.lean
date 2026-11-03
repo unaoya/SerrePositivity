@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeEdges
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeEdges
 public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleHoMap
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 

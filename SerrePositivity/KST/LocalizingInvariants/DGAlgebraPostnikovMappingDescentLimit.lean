@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMappingDescent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresentedSpaceLimit
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-!
 概要：指定局所化上の実 cell 写像関手は、元の Postnikov 錐を極限錐へ送る。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaSquarePreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteCospanInclusion
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ConeSquareUniverseReading
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ConeSquareUniverseReading
 public import SerrePositivity.InfinityCategories.Stable.Bicartesian
 
 /-!

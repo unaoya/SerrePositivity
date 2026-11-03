@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeLiftedComposition
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorIsoTensor
 

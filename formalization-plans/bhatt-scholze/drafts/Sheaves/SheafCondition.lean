@@ -5,6 +5,8 @@ module
 public import SerrePositivity.InfinityCategories.Core.Limit
 public import SerrePositivity.InfinityCategories.Core.TerminalMap
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Cone
+public import SerrePositivity.InfinityCategories.Core.UniverseLimits
+public import Mathlib.CategoryTheory.Sites.Coherent.ExtensiveSheaves
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -95,10 +97,10 @@ def restriction (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) :
 方針：`uliftFunctor` が join と Δ[0] を保つ同型で、錐の射と固定条件を移す。
 規約：頂点は元の頂点の持ち上げ。
 使われ方：1 圏の錐の nerve（SSet.{u}）を E（SSet.{u+1}）上の錐にするため。
-要確認：F2/Presentable の宇宙比較（`rightIntervalUniverseShape` など）に同じ道具があれば差し替える。 -/
-def JoinCone.ulift {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
+実装は Core/UniverseLimits の既存の錐の持ち上げ。 -/
+abbrev JoinCone.ulift {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
     JoinCone ((SSet.uliftFunctor.{u + 1, u}).map p) :=
-  sorry -- uliftFunctor と join の可換性（基盤の宇宙比較の補題）を待つ
+  SerrePositivity.InfinityCategories.JoinCone.ulift.{u,u+1} c
 
 /-- 概要：F(U) を頂点とする、F の S 上の制限図式の錐。
 方針：1 圏の錐 `sieveCone S` を `F1B.nerveCone` で nerve の join 錐にし、持ち上げてから F で後合成する。
@@ -136,8 +138,24 @@ lemma isSheaf_bot (F : Presheaf 𝒞 E) : IsSheaf ⊥ F := by
 要確認：∞ 版の証明は HTT 6.2.2 の議論を要する。S1 の中で最も重い。 -/
 theorem isSheaf_toGrothendieck_iff (K : Coverage 𝒞) (F : Presheaf 𝒞 E) :
     IsSheaf K.toGrothendieck F ↔
-      ∀ (U : 𝒞) (R : Presieve U), R ∈ K.covering U →
+      ∀ (U : 𝒞) (R : Presieve U), R ∈ K.coverings U →
         IsLimitCone (restrictionCone F (Sieve.generate R)) := by
   sorry -- HTT 6.2.2 系の一般論（生成系での降下で十分）
+
+/-- 有限積の指定された錐を F で送ったものが極限錐。空族を含む。 -/
+def PreservesFiniteProductsOnSite (F : Presheaf 𝒞 E) : Prop :=
+  ∀ (ι : Type u) [Finite ι] (B : ι → 𝒞ᵒᵖ) (c : Fan B), Nonempty (IsLimit c) →
+    IsLimitCone (mapJoinCone F (SerrePositivity.InfinityCategories.JoinCone.ulift.{u,u+1} (F1B.nerveCone c)))
+
+/-- S1-E。有限余積が普遍かつ非交叉な site での extensive 位相の層判定。 -/
+theorem isSheaf_extensive_iff_preservesFiniteProducts {E : SSet.{u+1}} [Quasicategory E]
+    [FinitaryExtensive 𝒞] (F : Presheaf 𝒞 E) :
+    IsSheaf (extensiveTopology 𝒞) F ↔ PreservesFiniteProductsOnSite F := by
+  sorry -- 異なる余積の脚の交叉は始対象。空被覆の条件と各余積被覆の降下で積錐を判定
+
+/-- J と J′ の被覆を合わせて生成した位相の層条件。 -/
+theorem isSheaf_sup_iff {E : SSet.{u+1}} [Quasicategory E] (J J' : GrothendieckTopology 𝒞) (F : Presheaf 𝒞 E) :
+    IsSheaf (J ⊔ J') F ↔ IsSheaf J F ∧ IsSheaf J' F := by
+  sorry -- 一方向は of_le。逆向きは二つの位相の被覆を合わせた生成系での降下
 
 end SerrePositivity.InfinityCategories.Sheaves

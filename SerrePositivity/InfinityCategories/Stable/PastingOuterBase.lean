@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PastingCorner
-public import SerrePositivity.InfinityCategories.Stable.ColimitRestriction
+public import SerrePositivity.InfinityCategories.Core.PastingCorner
+public import SerrePositivity.InfinityCategories.F1.ColimitRestriction
 
 /-! # 外側 span への四頂点図式の収縮
 

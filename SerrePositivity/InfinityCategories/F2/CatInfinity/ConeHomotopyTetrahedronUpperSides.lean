@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDomainTriangleFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyUpperTriangle
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismUpperSides
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides
 
 /-!
 概要：錐の比較三単体の上側の三つの側面。

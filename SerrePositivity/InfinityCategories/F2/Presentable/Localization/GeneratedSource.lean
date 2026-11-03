@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrows
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 
 /-!
 概要：固定した元の始域から強飽和生成閉包に属する辺の、全 coslice 部分圏を構成する。

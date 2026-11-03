@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 
 /-! # 普遍余錐の相対的な補完
 概要：既存部分で選ばれた普遍余錐を保ったまま、図式の族を補完する。

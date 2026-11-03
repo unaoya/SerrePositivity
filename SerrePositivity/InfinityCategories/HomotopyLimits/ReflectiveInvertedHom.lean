@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ReflectiveLocality
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalEquivalences
+public import SerrePositivity.InfinityCategories.F1.Presentable.LocalEquivalences
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 

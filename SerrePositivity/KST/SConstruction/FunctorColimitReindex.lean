@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimitExistence
 public import SerrePositivity.KST.SConstruction.IdentityCocones
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-! # 関手圏の余極限の添字の制限
 概要：点ごとの余極限が存在する図式の余極限は、パラメーターの前合成で保たれる。

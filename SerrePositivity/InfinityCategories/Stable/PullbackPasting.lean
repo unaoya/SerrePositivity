@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Pasting
-public import SerrePositivity.InfinityCategories.Stable.SquareOpposite
+public import SerrePositivity.InfinityCategories.F1.SquareOpposite
 
 /-! # 引き戻し四角形の貼り合わせ
 

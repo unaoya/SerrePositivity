@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.OppositeWeakHomotopy
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.OppositeWeakHomotopy
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
 public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor

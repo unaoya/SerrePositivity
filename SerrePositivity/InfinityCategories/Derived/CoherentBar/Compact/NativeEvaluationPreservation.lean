@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeEvaluationPiData
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.FilteredSpaceBridge
+public import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredSpaceBridge
 /-!
 概要：実評価空間関手は、全 native κ-filtered coherent 余極限を保存する。
 方針：元の bar の五条件を Ind-π の実判定へ代入し、poset 帰着を使う。

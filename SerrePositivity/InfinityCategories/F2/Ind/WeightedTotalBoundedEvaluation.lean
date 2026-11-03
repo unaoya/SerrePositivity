@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.StrictRightFibrationTotalAssembly
-public import SerrePositivity.InfinityCategories.F2.Ind.NerveSublevelLift
+public import SerrePositivity.InfinityCategories.Core.Ind.NerveSublevelLift
 public import SerrePositivity.InfinityCategories.F2.Ind.FilteredPosetNerve
 
 /-!

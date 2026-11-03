@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Joins.FiniteColimitSpanGeneration
-public import SerrePositivity.InfinityCategories.Stable.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 
 /-!
 概要：終対象と標準 cospan の極限から、全有限極限を生成する。

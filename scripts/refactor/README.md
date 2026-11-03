@@ -208,7 +208,7 @@ python3 scripts/refactor/rebase_helper.py --worktree /absolute/path/to/worktree 
 ## 監査の並列化・キャッシュ・絞り込み
 
 - `VERIFY_JOBS` は正の整数、既定6。1なら監査を順番に実行する。
-  `VERIFY_MEMORY_GB` は有限の非負数、既定45（1 GB = 1,000,000,000 bytes）。
+  `VERIFY_MEMORY_GB` は有限の非負数、既定40（1 GB = 1,000,000,000 bytes）。
   0ならメモリ予算なし。並列数と予算だけの変更では gate:true。
   監査ごとのログ・終了コード・時間を保存し、監査名順に統合する。
   `summary.json` の `runner.audit_wall_seconds` が並列監査の実時間で、個別時間の合計とは異なる。
@@ -230,7 +230,7 @@ python3 scripts/refactor/rebase_helper.py --worktree /absolute/path/to/worktree 
 同時実行数と、実行中監査の見積RSS合計が予算内になる先頭の監査を起動する。
 先頭が収まらなければ次に収まる監査を選ぶ。単独でも予算を超える監査は、他が終了してから
 単独で実行し、`oversize_alone` を記録する（永久待ちを避ける）。これはOSのハード制限ではない。
-初回は45 GBに20 GB見積り2本が収まるため、通常監査の並列度は最大2となる。
+初回は40 GBに20 GB見積り2本が収まるため、通常監査の並列度は最大2となる。
 
 `/usr/bin/time -l -o` の出力は監査ログと別の `.time` に保存する（macOSのRSSはbytes）。
 最新の所要時間・最大RSS・採取時刻・コミットは追跡外 `.lake/verify/audit-stats.json` に保存する。
@@ -243,7 +243,7 @@ python3 scripts/refactor/rebase_helper.py --worktree /absolute/path/to/worktree 
 `VERIFY_JOBS=3 VERIFY_MEMORY_GB=0` で従来の並列上限に戻せる。
 
 窓の合否は、試験用の絞り込み・キャッシュ・ビルド省略を設定せず、
-既定の並列数6・予算45 GB（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=45 zsh scripts/refactor/verify.sh`）で全監査を実行して判定する。
+既定の並列数6・予算40 GB（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40 zsh scripts/refactor/verify.sh`）で全監査を実行して判定する。
 IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順。
 `full` は一度だけ実行するためのマーカーを保存し、再実行を拒否する。
 ほかの段は監査を絞り、cache 段では監査一つの一時変更と復元も検査する。
@@ -255,3 +255,22 @@ IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順�
 保存検査の行は（宣言名、定義元モジュール）で照合する。移動・統合には `--module-map` の `modules`（旧→新）、分割には `declarations`（旧モジュール→宣言名→新モジュール）を使う。生成補題は親宣言の移し先を継承する。群をまたぐ生成補題の定義元は `decl_snapshot.lean --modules A,B --resolve-modules names.json --output owners.json` で共通環境から取得する。
 
 同じ保存名に異なる private 定数が対応する場合、照会結果は実名と定義元の一覧となる。§10.22 の生成名だけを transient とし、原本の行と各実名・定義元を保持する。ソースに明示した private 宣言は、生成名に似ていても定義元ごとに比較する。
+
+## Lake 成果物キャッシュの掃除
+
+`lake cache clean` は、空き容量が **150 GB を切ったときだけ**行う。
+全ビルドが動いていない時刻を選び、全 worktree が温まった状態で実行する。
+掃除の担当者は直後に main で `lake build` を実行し、現行の成果物をキャッシュへ登録し直す。
+区切りごとの定期的な掃除は行わない。古い版が残ることによる問題は使用容量だけである。
+
+2026-11-02 時点の参考値は `~/.cache/lake` が 22 GB・成果物 331,250 本、空き 455 GB。
+
+### IF-W2b §12 の強制判定
+
+`layer_check.py --enforce W2b` は、中核層間の順序違反が 0、直接違反が承認済み
+21 辺の集合を超えない、W1/W2a の禁止モジュール数・affected core が既存上限を
+超えない、の三条件を検査する。既定の上限は
+`targets/w2b-enforcement-baseline.json`（承認された辺と変更前の W2a-2 全体上限）。
+`--w2b-baseline PATH` で明示した検査用基準も使える。
+個別 root の継承された閉包は診断に残す。`--ratchet` の判定、既存の ratchet 基準、
+`layers.json` の例外は変えない。ratchet 基準の取り直しは W2b の verify PASS 後。

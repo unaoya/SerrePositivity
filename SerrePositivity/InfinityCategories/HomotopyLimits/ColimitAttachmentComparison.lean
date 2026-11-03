@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ColimitAttachedCocone
-public import SerrePositivity.InfinityCategories.Stable.CoconeLeg
+public import SerrePositivity.InfinityCategories.Core.CoconeLeg
 
 /-!
 概要：部分余極限の頂点から元の余錐の頂点への辺を、全ての脚を含む coherent な比較と構成する。

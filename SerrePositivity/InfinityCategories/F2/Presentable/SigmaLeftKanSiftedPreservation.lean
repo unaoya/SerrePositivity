@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
 /-!
 概要：元の P_Σ Yoneda に沿う左 Kan 延長は、任意小 sifted 余極限を保存する。

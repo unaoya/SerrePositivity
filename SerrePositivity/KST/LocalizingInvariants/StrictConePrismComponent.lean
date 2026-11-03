@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConeCoherentPrism
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 
 /-!
 概要：大きい添字圏上の coherent prism の各垂直辺を、元の自然変換の成分と同定する。

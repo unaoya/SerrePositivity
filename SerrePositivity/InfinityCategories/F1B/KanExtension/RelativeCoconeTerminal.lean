@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeCoconeRestriction
-public import SerrePositivity.InfinityCategories.Stable.ColimitRelativeBoundary
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 
 /-!
 概要：終対象への射の相対余錐充填条件から通常の余極限性を回収する。

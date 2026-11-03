@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Idempotent.IdemUniverse
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingExistence
+public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemUniverse
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.StrongSplittingExistence
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LimitColimitOpposite
 public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration

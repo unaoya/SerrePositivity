@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedCosliceStageCocone
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenA
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 
 /-!
 概要：元の weighted 全空間から元の通常の全空間余極限への比較は right cofinal。

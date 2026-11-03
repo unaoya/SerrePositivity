@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeDiagramDiagonalEdge
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyUpperTriangle
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.ConeHomotopyUpperTriangle
 
 /-!
 概要：図式側の比較正方形の上側の三角形と三辺。

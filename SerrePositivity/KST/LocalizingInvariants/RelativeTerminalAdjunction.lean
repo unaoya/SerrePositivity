@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctionOfOpposite
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitIso
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction
-public import SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.TerminalMappingSpace
 
 /-!

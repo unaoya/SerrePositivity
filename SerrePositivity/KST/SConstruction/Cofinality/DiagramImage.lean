@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.GappedIso
 public import SerrePositivity.KST.SConstruction.ObjectSVertices
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EssentialImageDiagram
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullyFaithfulConeReflection
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoconeValEquality
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 /-!
 概要：本質像内に値を持つ元の有限 S 図式を、指定された完全射の始域へ戻す。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.StrictCoherentNatTransComponent
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.PrismHomotopy
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTransComponent
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberRightShape
 
 /-!

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.AccessibleFunctor
 public import SerrePositivity.InfinityCategories.F2.Compact.UniverseColimits
-public import SerrePositivity.InfinityCategories.F2.Compact.UniverseCoconePostcomposition
+public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 
 /-!
 概要：元の関手の κ-filtered 保存を宇宙変更後の全関手の保存性へ送る。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.Pointed
 
 public import SerrePositivity.KST.Spectra.PointedZeroMapping
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts

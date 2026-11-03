@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.PrismBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.InitialExtension
-public import SerrePositivity.InfinityCategories.Stable.CoconeTransport
+public import SerrePositivity.InfinityCategories.Core.CoconeTransport
 
 /-! # 始対象を始点に持つ prism の境界延長
 

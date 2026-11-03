@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinityVertices
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovInfinityCone
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableLimitCharacterization
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 public import SerrePositivity.InfinityCategories.F1.Categories.OppositeFunctorIso
 public import SerrePositivity.InfinityCategories.Core.UniverseEdgeTransport
 

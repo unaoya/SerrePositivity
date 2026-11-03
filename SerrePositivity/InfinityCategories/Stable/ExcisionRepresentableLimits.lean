@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.ExcisionFunctorCriterion
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridUniverse
-public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection
 public import SerrePositivity.InfinityCategories.F1.Universe.SmallSimplicialSet
 

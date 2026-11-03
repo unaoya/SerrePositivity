@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.SquareTranspose
+public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 public import SerrePositivity.InfinityCategories.Stable.SuspensionComparisonIso
 
 /-! # Suspension 四角形の二枝の交換

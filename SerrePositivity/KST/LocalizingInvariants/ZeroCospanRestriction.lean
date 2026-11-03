@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
 public import SerrePositivity.InfinityCategories.Core.MappingSpaceTrivialFibration
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
-public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagramArrows
+public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-!
 概要：第二枝の始点が零対象である cospan は、第一枝への制限と同値。

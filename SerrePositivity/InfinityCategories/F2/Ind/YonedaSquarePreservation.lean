@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.YonedaLimitPreservation
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteYonedaColimitPreservation
-public import SerrePositivity.InfinityCategories.Stable.UniverseUniversalSquares
+public import SerrePositivity.InfinityCategories.Core.UniverseUniversalSquares
 
 /-!
 概要：元の小さい実普遍四角形を、同じ宇宙持ち上げと Ind Yoneda が保存する。

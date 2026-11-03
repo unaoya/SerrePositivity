@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.DGNuBoundaryFamily
 public import SerrePositivity.KST.Fibration.DGKPositiveEvaluation
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # ν 像の元の S• 境界商四角形と、固定 K の実正段四角形
 

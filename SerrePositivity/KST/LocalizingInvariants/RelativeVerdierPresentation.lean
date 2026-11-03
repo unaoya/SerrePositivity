@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：提示源内の実四角形を、その実際の ν 像で Verdier 提示として認証する。

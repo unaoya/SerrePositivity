@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.LocalityNaturalComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.ColimitComparisonDetection
-public import SerrePositivity.InfinityCategories.F2.Compact.HomCovariantComparison
+public import SerrePositivity.InfinityCategories.F1.Compact.HomCovariantComparison
 public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactEndpoints
 

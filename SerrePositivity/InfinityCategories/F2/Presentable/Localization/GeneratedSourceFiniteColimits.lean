@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceContractibleColimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceInitial
@@ -6,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.Gen
 public import SerrePositivity.InfinityCategories.F2.Ind.FiniteColimitPreservationGeneration
 public import SerrePositivity.InfinityCategories.F1.Simplicial.FiniteHornUniverseIso
 public import SerrePositivity.InfinityCategories.F1.Joins.PointConeSpanIso
-public import SerrePositivity.InfinityCategories.Stable.RelativeInitialEndpoint
+public import SerrePositivity.InfinityCategories.Core.RelativeInitialEndpoint
 
 /-!
 概要：固定始域の閉包内射圏の全有限余極限と、包含による指定余錐の保存。

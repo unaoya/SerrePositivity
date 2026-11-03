@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLimit
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CorePullbackIso
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoreIsofibration
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.CoreIsofibration
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
 
 /-!

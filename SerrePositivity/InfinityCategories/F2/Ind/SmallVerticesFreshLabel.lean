@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SmallSimplicialShapes
 
 /-!
 概要：κ-small な形状の頂点には κ 個未満のラベルしか現れず、大きいラベル集合には未使用点がある。

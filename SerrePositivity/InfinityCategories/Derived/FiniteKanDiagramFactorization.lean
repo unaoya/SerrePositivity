@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanFiniteFactorization
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 
 /-! # Kan 置換内の有限二図式の共通因子化

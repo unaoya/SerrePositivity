@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreOuterPushout
 public import SerrePositivity.InfinityCategories.Stable.ExcisionGridZeroValues
 

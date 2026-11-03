@@ -286,7 +286,7 @@ def retry_environment_failure(root, record):
     return final
 
 
-def run_checks(root, audits, keys, jobs, use_cache, memory_gb=45, telemetry=None):
+def run_checks(root, audits, keys, jobs, use_cache, memory_gb=40, telemetry=None):
     """Join scheduled audits before serial retries, audit_axioms, and sorry."""
     out = root / '.lake/verify'
     stats = read_stats(root)
@@ -343,7 +343,7 @@ def main():
     scheduling={}
     with RSSSampler() as sampler:
         records,pool_seconds,audit_seconds=run_checks(ROOT,audits,keys,jobs,use_cache,
-            os.environ.get('VERIFY_MEMORY_GB','45'),scheduling)
+            os.environ.get('VERIFY_MEMORY_GB','40'),scheduling)
     with (out/'stages.tsv').open('a') as stages, (ROOT/'scripts/refactor/verify.log').open('a') as combined:
         for r in records:
             stages.write(f"{r['kind']}\t{r['name']}\t{r['exit_code']}\t{r['seconds']:.3f}\t{r['log']}\n")

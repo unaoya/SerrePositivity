@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.FunctorPointwiseColimits
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamilies
+public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Stable.InitialTransport
 public import SerrePositivity.InfinityCategories.Core.InternalHomFlipVertices
 

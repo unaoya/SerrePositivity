@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.PullbackPresentation
 public import SerrePositivity.InfinityCategories.Derived.AcyclicVertex
-public import SerrePositivity.InfinityCategories.Stable.FiniteShapes
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 /-! # 導来 ∞ 圏の零対象と fiber の存在
 

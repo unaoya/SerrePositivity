@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanRestriction
-public import SerrePositivity.InfinityCategories.Stable.FullSubcomplexEdgeLift
-public import SerrePositivity.InfinityCategories.Stable.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
 
 /-!
 概要：零第二枝を持つ cospan 比較の類は、第一枝への全関手としての制限で決まる。

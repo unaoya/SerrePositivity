@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison
-public import SerrePositivity.InfinityCategories.Stable.CommutativeSquareRealization
+public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!
 概要：一般商の二脚の可換比較を、元の四つの BF 射を四辺に持つ実 Sp 正方形にする。

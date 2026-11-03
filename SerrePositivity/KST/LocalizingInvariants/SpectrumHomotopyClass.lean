@@ -1,10 +1,11 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass
 public import SerrePositivity.KST.Spectra.SpectrumMappingComponents
 public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
 public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatFunctorCoreIso
+public import SerrePositivity.InfinityCategories.F1.CatInfinity.CatFunctorCoreIso
 
 /-!
 概要：Sp のホモトピー圏で同じ射は、全整数次数で同じ準同型を誘導する。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakExtension
 public import SerrePositivity.InfinityCategories.F2.Idempotent.WeakEndpoints
-public import SerrePositivity.InfinityCategories.F2.Idempotent.WalkingClassification
-public import SerrePositivity.InfinityCategories.F2.Idempotent.StrongSplittingColimit
+public import SerrePositivity.InfinityCategories.Core.Idempotent.WalkingClassification
+public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexMapping
 
 /-!

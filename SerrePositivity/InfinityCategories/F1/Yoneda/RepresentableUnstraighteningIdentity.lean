@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
 
+public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningEvaluation
-public import SerrePositivity.InfinityCategories.Stable.ColimitCoconeFamily
 
 /-!
 概要：Yoneda 評価で使った同じ恒等点を、実際の unstraightening 全空間の始対象として指定する。

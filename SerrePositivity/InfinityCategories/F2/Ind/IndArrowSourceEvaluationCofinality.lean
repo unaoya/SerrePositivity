@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.Ind.IndArrowSourceEvaluationFiltered
 public import SerrePositivity.InfinityCategories.F2.Ind.LiftedPointQuillenA
 public import SerrePositivity.InfinityCategories.F2.Ind.SmallDiagramCommaEvaluation
-public import SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredWeakContractibility
+public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 /-!
 概要：元の射図式 comma と小さい表示添字の始点評価は right cofinal。
 方針：指定変換下の余錐で実 coslice 引き戻しを filtered とし、元の点の Quillen A に戻す。

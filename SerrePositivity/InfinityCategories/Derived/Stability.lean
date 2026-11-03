@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Definition
 public import SerrePositivity.InfinityCategories.Derived.StandardFiberPushout
-public import SerrePositivity.InfinityCategories.Stable.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
 /-! # D(S) の安定性
 

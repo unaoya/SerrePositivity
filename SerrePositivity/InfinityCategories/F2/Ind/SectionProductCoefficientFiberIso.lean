@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedParameterGraphIso
 public import SerrePositivity.InfinityCategories.F2.Ind.SectionProductScaffoldValue
-public import SerrePositivity.InfinityCategories.F2.Ind.VertexFiberIsoProjection
+public import SerrePositivity.InfinityCategories.F1.Ind.VertexFiberIsoProjection
 
 /-!
 概要：元の係数の指定 fiber と、同じ共同 weighted 射影の初頂点引き戻しの fiber を底上で同定する。
