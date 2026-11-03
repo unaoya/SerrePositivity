@@ -1,5 +1,5 @@
 -- 将来の置き場所（調整役の決定、main 7b8b96286、M12e）：S8-1・5・6 は SerrePositivity.InfinityCategories.Sheaves.SpaceValued.*、S8-2・3 は Sheaves.Discrete.*、
--- S8-4 の一般部分（HTT 5.1.5.6 の極限保存延長、el(F) 上の極限）は F2/（M12b と同じ）。前提：G13（𝒮 の presentable 性）、S4 の非安定版。時期・担当は M12 と同じ。
+-- S8-4 の一般部分（HTT 5.1.5.6 の極限保存延長、el(F) 上の極限）は F2/（M12b と同じ）。前提：G13（離散空間と 0 切り捨て）、S4 の生成辺。時期・担当は M12 と同じ。
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.4、S8。基準コミット 972bb7f53。ビルドしない。
 module
 
@@ -27,7 +27,7 @@ site 𝒞 上の空間値前層 PSh(𝒞) = Fun(𝒞^op, 𝒮) とその J 層�
 O が J 層なら Γ(−, O) はすべての J 局所同値を同値に送ること（HTT 5.1.5.6 の極限保存延長 O^ と 5.5.4.20 の筋）、Γ(h_c, O) = O(c)。
 
 ## 方針
-S4（E 値の層化）は `IsStable E` を仮定しているので、空間 𝒮 には HTT 6.2.2.7 の構成を別に置く。0 切り捨ては HTT 5.5.6.28（左完全な左随伴は
+空間 𝒮 の層化には S4 の生成辺と Bousfield 反射を適用する。0 切り捨ては HTT 5.5.6.28（左完全な左随伴は
 n 切り捨てを保つ）。局所性は O^ の逆像の類が強飽和で生成 sieve を含むこと。
 
 ## 規約
@@ -48,7 +48,9 @@ open scoped Simplicial
 open F2.Presentable (IsPresentable)
 
 -- SpaceInfinity と spaceInfinity_quasicategory は F1 の実体（D5-07）。
--- 要確認（G13、∞ レーン）：現行の presentable 性の入口は F2.Presentable.space_isPresentable。
+-- 要確認（IF-G1 G13：F1 に供給予定）
+-- discreteSpaceInclusion : nerve (Type u) ⟶ SpaceInfinity.{u}（完全忠実）
+-- Is0TruncatedSpace : SpaceInfinity.{u} _⦋0⦌ → Prop
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u+1}} [Quasicategory E]
 
 /-- 集合を定値単体的集合（離散 Kan 複体）へ送る。 -/
@@ -58,12 +60,18 @@ def setsToKan : Type u ⥤ KanObject.{u} where
   map_id := by intro; rfl
   map_comp := by intros; rfl
 
--- 要確認（G13、∞ レーン）：離散埋め込みと Is0Truncated の公開名。対象は各 P(U) の離散 Kan 複体で指定する。
+/-- 集合値前層を点ごとに離散 Kan 複体へ送り、その図式の coherent nerve を取る。 -/
 def discretePresheaf (P : 𝒞ᵒᵖ ⥤ Type u) : Presheaf 𝒞 SpaceInfinity.{u} :=
   kanDiagramCoherentNerve (P ⋙ setsToKan)
 
-/-- 集合値前層の自然変換も含む離散埋め込み。 -/
-def discretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
+/-- 離散前層の U での値は P(U) の離散空間。 -/
+theorem discretePresheaf_vertex (P : 𝒞ᵒᵖ ⥤ Type u) (U : 𝒞) :
+    (discretePresheaf P).app _ (ULift.up (nerveVertex (Opposite.op U))) =
+      discreteSpaceInclusion.app _ (nerveVertex (P.obj (Opposite.op U))) := by
+  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+
+/-- 集合値前層の自然変換を Kan 値図式の辺として実現する離散埋め込み。 -/
+private def kanDiscretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
     {I : nerve (𝒞ᵒᵖ ⥤ Type u) ⟶ PresheafCat 𝒞 SpaceInfinity.{u} //
       (∀ P, I.app _ (nerveVertex P) = functorVertex (discretePresheaf P)) ∧
       (∀ {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q), ((nerve.edgeMk φ).map I).edge =
@@ -71,17 +79,44 @@ def discretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
           (Functor.whiskerRight (Functor.whiskerRight φ setsToKan) kanObjectForget)).edge)} := by
   sorry -- 射列を各対象で評価し、集合の全ての写像を setsToKan で送って curry
 
+/-- Kan 値図式から作った同じ埋め込みの頂点と辺を点ごとに記述する。 -/
+def discretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
+    {I : nerve (𝒞ᵒᵖ ⥤ Type u) ⟶ PresheafCat 𝒞 SpaceInfinity.{u} //
+      (∀ P, I.app _ (nerveVertex P) = functorVertex (discretePresheaf P)) ∧
+      (∀ {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (U : 𝒞),
+        ((nerve.edgeMk φ).map (I ≫ evaluateFunctorAt (ULift.up (nerveVertex (Opposite.op U))))).edge =
+          ((nerve.edgeMk (φ.app (Opposite.op U))).map discreteSpaceInclusion).edge)} := by
+  let K := kanDiscretePresheafInclusion 𝒞
+  refine ⟨K.val, K.property.1, ?_⟩
+  intro P Q φ U
+  -- K.property.2 φ の辺を U で評価し、kanDiagramNaturalTransformationEdge_at を使う。
+  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+
+/-- φ の像の U 成分は、集合の写像 φ(U) を離散埋め込みで送った一単体。 -/
+theorem discretePresheafInclusion_edge {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (U : 𝒞) :
+    ((nerve.edgeMk φ).map ((discretePresheafInclusion 𝒞).val ≫
+      evaluateFunctorAt (ULift.up (nerveVertex (Opposite.op U))))).edge =
+        ((nerve.edgeMk (φ.app (Opposite.op U))).map discreteSpaceInclusion).edge :=
+  (discretePresheafInclusion 𝒞).property.2 φ U
+
 /-- 上の離散埋め込みの本質像として 0 切り捨てを述べる。 -/
 def Is0Truncated (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _⦋0⦌) : Prop :=
   ∃ P : 𝒞ᵒᵖ ⥤ Type u, Nonempty (VertexIso x (functorVertex (discretePresheaf P)))
 
+/-- 離散前層の本質像は点ごとの 0 切り捨てで判定できる。 -/
+theorem is0Truncated_iff_pointwise (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _⦋0⦌) :
+    Is0Truncated x ↔ ∀ U : 𝒞,
+      Is0TruncatedSpace ((vertexToPresheaf x).app _ (ULift.up (nerveVertex (Opposite.op U)))) := by
+  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+
 /-- 概要：S8-1：空間値前層の J 層化 L（HTT 6.2.2.7）。
-方針：∞ トポスの左完全局所化。
+方針：`exists_sheafGeneratingEdges` ＋ `sheafification_of_generatingEdges`。h𝒮 は `F2.Presentable.space_isPresentable` で与えられる。
 規約：S4 と同じ `IsReflectiveSubcategory` の形で、E = 𝒮。
 使われ方：以下。 -/
 theorem sheafification_exists_spaces (J : GrothendieckTopology 𝒞) (h𝒮 : IsPresentable SpaceInfinity.{u}) :
     Sheafification J SpaceInfinity.{u} := by
-  sorry -- HTT 6.2.2.7：presentable な空間値前層圏の被覆篩による左完全局所化（S4）
+  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J h𝒮
+  exact sheafification_of_generatingEdges J h𝒮 edges hW
 
 /-- 概要：S8-2：離散（0 切り捨て）な前層の L は離散で、1 圏の層化（Mathlib `presheafToSheaf`）に一致。
 方針：HTT 5.5.6.28、τ_{≤0} Sh(𝒞) ≃ Sh_{Set}(𝒞)。

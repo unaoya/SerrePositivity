@@ -8,7 +8,8 @@ public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
 public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.LocalObjects
-public import SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementReflection
+public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
+public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
 
 /-!
@@ -104,14 +105,32 @@ def sheafProperty (J : GrothendieckTopology 𝒞) : (PresheafCat 𝒞 E) _⦋0�
 abbrev Sheafification (J : GrothendieckTopology 𝒞) (E : SSet.{u + 1}) [Quasicategory E] : Prop :=
   IsReflectiveSubcategory (PresheafCat 𝒞 E) (sheafProperty (E := E) J)
 
-/-- 概要：層化の存在（HTT 6.2.2.7、5.5.4.15）：E が安定・presentable なら層は反射的部分圏。
-方針：被覆篩の単射 S ⊗ M → h_U ⊗ M（M は E の生成系）の小さい集合 W に関する局所対象が層であることと、
-presentable 圏の小さい W に関する局所化の存在（`isReflectiveSubcategory_of_localReplacements` と、局所置換の存在）。
-規約：G3（E = D(A) の presentable 性）、G4、G6、G8 を前提にする。
-使われ方：RΓ の存在。S4。 -/
+/-- 小さい辺族の局所対象がちょうど層なら、前層圏の Bousfield 反射が層化を与える。 -/
+theorem sheafification_of_generatingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E)
+    {I : Type u} (edges : I → (PresheafCat 𝒞 E) _⦋1⦌)
+    (hW : ∀ F, HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F) :
+    Sheafification J E := by
+  have hP : IsPresentable (PresheafCat 𝒞 E) :=
+    F2.Presentable.functor_isPresentable (nerve 𝒞ᵒᵖ) hE
+  have h : HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) =
+      sheafProperty (E := E) J :=
+    funext fun F => propext (hW F)
+  unfold Sheafification
+  rw [← h]
+  exact F2.Presentable.Localization.bousfield_isReflectiveSubcategory hP edges
+
+/-- 被覆篩 S ↪ h_U と E の生成系 M から、層条件を検出する辺 S ⊗ M → h_U ⊗ M を作る。 -/
+theorem exists_sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) :
+    ∃ (I : Type u) (edges : I → (PresheafCat 𝒞 E) _⦋1⦌),
+      ∀ F, HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F := by
+  -- 要確認（IF-G1 G8：集合値 X に対する Map_PSh(X ⋙ tensorSpaceFunctor hE M, F) ≃ Map_E(M, Γ(X, F)) を供給予定）
+  sorry
+
+/-- S4（HTT 5.5.4.15）。安定・presentable な係数について、被覆篩の生成辺から層化を得る。 -/
 theorem sheafification_exists (J : GrothendieckTopology 𝒞) [IsStable E] (hE : IsPresentable E) :
     Sheafification J E := by
-  sorry -- S4：W の構成、層 ⇔ W 局所、HTT 5.5.4.15（G4・G6・G8）
+  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hE
+  exact sheafification_of_generatingEdges J hE edges hW
 
 /-- 同じ反射の選択を層化の頂点、射、単位に使う。 -/
 def sheafificationFunctor (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) :

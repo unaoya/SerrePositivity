@@ -83,14 +83,14 @@ theorem isSheaf_iff_forget (hA : IsPresentable (CAlg_R A)) (F : Presheaf 𝒞 (C
   sorry
 
 /-- 概要：CAlg_A 値の層化の存在（S4 を E = CAlg_A で）。
-方針：`sheafification_exists`（CAlg_A は安定ではないので、§方針の「安定なら左完全性は自動」は使えない。層化の左完全性は A6 で要るか再確認）。
-規約：G12。
+方針：`exists_sheafGeneratingEdges` に hA を渡し、`sheafification_of_generatingEdges` で層への反射を得る。
+規約：G12 が hA を供給する。生成辺の構成は G8 待ち。
 使われ方：RΓ_CAlg。
-要確認：S4 の証明は E の安定性を W 局所 ⇔ 層の部分で使っている（生成系の shift）。CAlg_A では生成系を自由代数に取り直す（HA 3.2.3.5 の free algebras）。
 W9-I-05：U が極限を保つことから出るのは層条件の保存・反映まで。**層化と U の両立**（CAlg 値の単位の U 像が D(A) 値の局所同値であること）は別の一般補題
 （S4 の非安定版、M12e の前提）で、ここでは主張だけ置く（`forget_sheafify`）。既に層である前層（O_Δ）については極限保存だけで比較が取れる。 -/
 theorem sheafification_exists_cAlg (hA : IsPresentable (CAlg_R A)) : Sheafification J (CAlg_R A) := by
-  sorry
+  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J hA
+  exact sheafification_of_generatingEdges J hA edges hW
 
 /-- 概要：RΓ_CAlg(J, F) := Γ(F^♯)（CAlg_A 値）。
 方針：S2 の `derivedGlobalSections` を E = CAlg_A で。
