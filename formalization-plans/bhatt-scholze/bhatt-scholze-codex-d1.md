@@ -107,3 +107,10 @@
   Hom(T, −) は `Presieve.IsSheaf`、有限積保存は `PreservesFiniteRingProductsOnPerfd` で O・Hom の二件、Cor 8.11 は StructuredArrow の slice 位相上の RΓ への可逆な辺。
   零環を含む箇所では `CharP` の代わりに `(p : B) = 0 ∧ PerfectRing B p`。要確認 0 件、新しい設計差なし。
 - **次**：停止点 3（`drafts/A8/Stratification.lean`、Lemma 10.12）、停止点 4（A0 の三本）。
+- **第 6 部（停止点 3 完了、64cfd0b92、検収済み）**：`drafts/A8/Stratification.lean`。G-A8-4 の核は nil イデアル（`RingHom.ker f ≤ nilradical A`、p 冪の指数は b ごと。
+  ユーザーの回答と a8-design G-A8-4、7a59fd9ed）、`isUniversalHomeomorphism_of_nil_kernel` に改名。noetherian 近似（ℤ_(p) は ℤ の (p) での局所化、hZp から R への射）、
+  `generic_structure`（極小点の剰余体の積、(K ⊗ S)_red の体の積分解、分離閉包と純非分離）、`spread_out_generic`（全極小点を含む D(g)、`HasEtaleFactorization`）、
+  `exists_finiteEtaleStratification`（`StratumRing I g = (R/√I)[1/g]`、`earlierIdeal`、(1)(2)(3)、p 反転後の同型は同じ T → S_i の誘導射の全単射）。要確認 0 件。
+- **次**：停止点 4（A0 の三本：`drafts/A0/PrismaticSite.lean` の `prismaticCohomology_cutoff_invariant`、`drafts/A0/PrismaticEnvelope.lean` の `IsPrismaticEnvelope.of_closure`・
+  `prismaticEnvelope_baseChange_of_variables`、`drafts/A0/CechAlexander.lean` の `cechNerveData`・`cechAlexander_isLimitCone_iff`・`prismaticCohomology_eq_cechAlexanderTot`・
+  `cechAlexanderAffine`・`cechAlexanderAffine_computes`・`cechAlexanderAffine_baseChange`）。prismatic site は最初から R 上の相対な圏なので D1-01 の sieve の圏は不要。
