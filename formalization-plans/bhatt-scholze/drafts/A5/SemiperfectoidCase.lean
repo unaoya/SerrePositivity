@@ -2,12 +2,15 @@
 -- 設計書：formalization-plans/bhatt-scholze/a5-design.md §3.4、単位 A5-2。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import Mathlib.RingTheory.Extension.Cotangent.Basic
+public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
+public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
--- 本ファイルは drafts/A5/PerfectSite.lean（比較写像。W9-III-09：PerfectSiteComparison＝Prop 8.5 の証明は本ファイルより後）、drafts/A4/Perfectoidization.lean、drafts/A3/LciAndQuasiregular.lean、
+-- 本ファイルは drafts/A5/PerfectSite.lean（比較写像。W9-III-09：PerfectSiteComparison＝Prop 8.5 の証明は本ファイルより後）、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A3/LciAndQuasiregular.lean、
 -- drafts/A2/{HodgeTateFiltration,BaseChangeAndTensor}.lean、drafts/DerivedGeneral/Truncation.lean を import する。
--- G-A7-5 の芯は drafts/A7/DiscreteCore.lean（W9-II-24：UniversalProperty ではなく A5 より先に置く独立ファイル）を import する。
+-- 導来 p 完備性は drafts/A7/AnimatedDomain.lean、G-A7-5 の芯は drafts/A7/DiscreteCore.lean（W9-II-24：UniversalProperty ではなく A5 より先に置く独立ファイル）を import する。
 
 /-!
 # semiperfectoid の場合（BS 著者版 Prop 8.5 の証明 (4)）
@@ -74,7 +77,24 @@ def baseComparison (R₁ : Type u) [CommRing R₁] [Algebra R R₁] [Algebra R�
     (CAlg_R (perfectPrismRing p R)).Edge
       ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S)))
       ((discreteDeltaFunctor p R₁ h₁ ≫ res).app _ (nerveVertex (ofAlgebra R₁ S))) := by
-  sorry -- 完備底変換の単位、Construction 7.6(4)、S⊗̂_R R₁→S が誘導する辺を合成
+  let P := perfectPrism p R hR
+  let P₁ := perfectPrism p R₁ h₁
+  let a := perfectBaseHom p R hR R₁ h₁
+  let res := cAlgRestrictScalars a.toRingHom
+  let x := (nerveMap (Under.map (CommRingCat.ofHom (perfectPrism_quotientEquiv p R hR).toRingHom)) ≫
+    discreteToAnimated _).app _ (nerveVertex (ofAlgebra R S))
+  let y := (nerveMap (Under.map (CommRingCat.ofHom (perfectPrism_quotientEquiv p R₁ h₁).toRingHom)) ≫
+    discreteToAnimated _).app _ (nerveVertex (ofAlgebra R₁ S))
+  let xy := (animatedBaseChange P P₁ a).app _ x
+  let H := derivedPrismaticCohomology P₁ ≫ completeCAlgInclusion (p := p) P₁ ≫ res
+  let m : SSet.Edge xy y := by
+    sorry -- S⊗^L_R R₁→S は二つの指定された代数構造からの乗法。完備化は D32
+  let first : SSet.Edge ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S))) (H.app _ xy) := by
+    sorry -- A2 の derivedPrismaticCohomology_baseChange (4) で完備底変換の単位を移す
+  let second := m.map H
+  exact Classical.choose (show ∃ e : SSet.Edge ((discreteDeltaFunctor p R hR).app _ (nerveVertex (ofAlgebra R S)))
+      (H.app _ y), Nonempty (first.toTruncated.CompStruct second.toTruncated e.toTruncated) from by
+    sorry) -- 二辺の合成を表す三角形を選ぶ
 
 /-- 概要：perfectoid の間では L_{R_1/R} の p 完備化は零（ker θ の生成元が共通、L_{R/Z_p}^∧ = R[1] の遷移三角形）。
 方針：既存の perfectoid の ker θ（`fontaineKernel_eq_span_image_distinguished`）と余接複体の一般論（A2-3 の `cotangentWedge` の隣）。
@@ -147,6 +167,11 @@ theorem perfectoidization_discrete_of_semiperfectoid (hS : IsSemiperfectoid p R 
     IsDiscrete R (perfectoidization p R hR S hS.1) := by
   sorry -- Δ_perf の連結性から mod d は連結。A4 Lemma 8.4(c) の coconnective 性と合わせる
 
+theorem prismaticPerfection_discrete_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
+    IsDiscrete (perfectPrismRing p R) (prismaticPerfection p R hR S hS.1) :=
+  prismaticPerfection_discrete_of_perfectoidization_discrete p R hR S hS.1
+    (perfectoidization_discrete_of_semiperfectoid p R hR S hS)
+
 theorem perfectoidization_isIntegralPerfectoid_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
     IsIntegralPerfectoid (cAlgH0Algebra R (perfectoidization p R hR S hS.1)).right p :=
   perfectoidization_isIntegralPerfectoid_of_discrete p R hR S hS.1
@@ -154,7 +179,7 @@ theorem perfectoidization_isIntegralPerfectoid_of_semiperfectoid (hS : IsSemiper
 
 /-! ## Cor 7.3 の普遍 perfectoid 環との比較 -/
 
-/-- 概要：R′：S の普遍 perfectoid 化（Cor 7.3、既存 `exists_perfectoidization_of_semiperfectoid_quotient` で選ぶ）。
+/-- 概要：R′：S の普遍 perfectoid 化（Cor 7.3、既存 `exists_perfectoidization_of_perfectoid_surjective_quotient` で選ぶ）。
 方針：`IsPerfectoidization p (unit : S →+* R′)`。
 規約：Type u。
 使われ方：以下。 -/
@@ -198,21 +223,46 @@ def universalTarget (hS : IsSemiperfectoid p R S) :
   have hs := surjective_of_isPerfectoidization_of_semiperfectoid_quotient hT q hq hS.1 η hη
   sorry -- Thm 7.4 の全射から #R′ ≤ #S ≤ κ
 
-def universalTest (hS : IsSemiperfectoid p R S) : (perfectSite p R hR S)ᵒᵖ :=
+def universalTest (hS : IsSemiperfectoid p R S) : (perfectSite p R S hR)ᵒᵖ :=
   (perfectSiteEquivPerfectoidUnder p R hR S).inverse.obj (universalTarget p R S hS)
+
+def universalTargetAlgebra (hS : IsSemiperfectoid p R S) : A_R R :=
+  Under.mk (CommRingCat.ofHom ((universalPerfectoidUnit p R S hS).comp (algebraMap R S)))
+
+/-- 完全試験 prism の mod d は、圏同値の counit が指定する普遍標的 R′。 -/
+def universalTestModD (hS : IsSemiperfectoid p R S) :
+    VertexIso ((modPrismFunctor p R hR).app _ (testValue p R hR S (universalTest p R hR S hS)))
+      ((algebraEmbedding R).app _ (nerveVertex (universalTargetAlgebra p R S hS))) := by
+  let T := universalTarget p R S hS
+  let ε := (perfectSiteEquivPerfectoidUnder p R hR S).counitIso.app T
+  sorry -- 完全 prism の d は正則。導来 mod d は離散商であり、ε がそれを S 上で R′ と同定する
 
 /-- 概要：S_perfd → R′：比較写像の脚 Δ_{S/A,perf} → B_{R′}（A5-1 `perfectionComparisonLeg`（PerfectSite）、R′ の完全 prism）の mod d。S → S_perfd → R′ は単位。
 方針：定義の展開。
 規約：環準同型（両者は離散）。
 使われ方：分裂全射。 -/
-def perfectoidizationToUniversal (hS : IsSemiperfectoid p R S) : True := trivial
+def perfectoidizationToUniversal (hS : IsSemiperfectoid p R S) :
+    (directPerfdRing p R hR (ofAlgebra R S)).right →+* universalPerfectoidRing p R S hS := by
+  let B := universalTest p R hR S hS
+  let leg := (perfectionComparisonLeg p R hR S hS.1 B).1.map (modPrismFunctor p R hR)
+  let f := (perfectoidizationFunctor_vertex p R hR S hS.1).hom ≫
+    SSet.Truncated.HomotopyCategory₂.homMk leg.toTruncated ≫ (universalTestModD p R hR S hS).hom
+  exact ((cAlgH0OnHomotopy R).map f ≫ (discreteToH0 R (universalTargetAlgebra p R S hS)).inv).right.hom
 
-/-- 概要：合成 S → S_perfd → R′ は全射（Thm 7.4、既存 `Semiperfectoid/Surjectivity`、要確認：名前）。R′ の普遍性で R′ → S_perfd があり
+/-- 概要：合成 S → S_perfd → R′ は全射（Thm 7.4、既存 `surjective_of_isPerfectoidization_of_semiperfectoid_quotient`）。R′ の普遍性で R′ → S_perfd があり
 R′ → S_perfd → R′ = id、よって S_perfd → R′ は分裂全射。
 方針：既存の全射性と `IsPerfectoidization` の一意性。
 規約：—
 使われ方：`perfectoidization_semiperfectoid_iso`。 -/
-theorem perfectoidizationToUniversal_splitSurjective (hS : IsSemiperfectoid p R S) : True := by trivial
+theorem perfectoidizationToUniversal_splitSurjective (hS : IsSemiperfectoid p R S) :
+    let η := (directPerfdRingUnit p R hR (ofAlgebra R S)).right.hom
+    let q := universalPerfectoidUnit p R S hS
+    let f := perfectoidizationToUniversal p R hR S hS
+    f.comp η = q ∧ Function.Surjective q ∧
+      ∃ t : universalPerfectoidRing p R S hS →+* (directPerfdRing p R hR (ofAlgebra R S)).right,
+        t.comp q = η ∧ f.comp t = RingHom.id _ := by
+  sorry -- 第0脚と HT 単位は S 上で両立。Thm 7.4 で q は全射。
+        -- DiscreteCore で H⁰(S_perfd) は perfectoid。q の普遍性で t を得て f∘t=id
 
 /-! ## S → S_perfd の全射性（原典 (4) の後半） -/
 
@@ -243,7 +293,34 @@ def rootClass {J : Type u} (j : J) (n : ℕ) : (rootQuotientObj p R J).right :=
   (completionUnit p (CommRingCat.of (rawRootQuotient p R J))).hom
     (Ideal.Quotient.mk _ (rootVariable p R j n))
 
-/-- 概要：(β)(γ)：核の生成元 {f_j} ⊂ R_1 に Thm 7.14（既存 `CompatibleRootPerfectoid`、要確認）で R_1 → R_1′（p 完備忠実平坦、perfectoid）を取り、
+/-- Thm 7.14 の拡大において核の生成元を同時に発根する。 -/
+include hR in
+theorem exists_rootedBase {J : Type u} (f : J → R) :
+    ∃ (T : CommRingCat.{u}) (_ : Algebra R T) (ρ : J → ℕ → T), IsIntegralPerfectoid T p ∧
+      IsCompletelyFaithfullyFlat (Ideal.span {(p : R)}) T ∧
+      (∀ j, ρ j 0 = algebraMap R T (f j)) ∧ ∀ j n, ρ j (n+1)^p = ρ j n := by
+  sorry -- Andre.exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed と
+        -- IsAbsolutelyIntegrallyClosed.exists_compatible_pow_roots を生成元ごとに適用
+
+/-- π₁(L_{−/ℤ_p}/p) への射の全射性を、標準多項式表示のサイクルで読む。
+mod p では L_{ℤ_p/ℤ} が消えるので ℤ を基底にできる。H⁻¹ には余接複体の
+[−1,0] 切り捨てで足りる。その p 倍の cone で (a,b) の微分は p a + d b、
+境界は (−d z,p z)。この記述は π₂ 以上の消滅を仮定しない。 -/
+def surjectiveCotangentPiOneModP {V W : Type u} [CommRing V] [CommRing W] (f : V →+* W) : Prop :=
+  letI := f.toAlgebra
+  let P := Algebra.Generators.self ℤ V
+  let Q := Algebra.Generators.self ℤ W
+  let m := (Algebra.Generators.defaultHom P Q).toExtensionHom
+  let d := P.toExtension.cotangentComplex
+  let d' := Q.toExtension.cotangentComplex
+  ∀ (a : Q.toExtension.CotangentSpace) (b : Q.toExtension.Cotangent),
+    p • a + d' b = 0 →
+    ∃ (x : P.toExtension.CotangentSpace) (y : P.toExtension.Cotangent) (z : Q.toExtension.Cotangent),
+      p • x + d y = 0 ∧
+        a - Algebra.Extension.CotangentSpace.map m x = -(d' z) ∧
+        b - Algebra.Extension.Cotangent.map m y = p • z
+
+/-- 概要：(β)(γ)：核の生成元 {f_j} ⊂ R_1 に Thm 7.14（André の補題で compatible roots を取る）で R_1 → R_1′（p 完備忠実平坦、perfectoid）を取り、
 S′ := (R_1′⟨X_j^{1/p^∞}⟩/(X_j))^∧ → S ⊗̂_{R_1} R_1′ は π_0 と π_1(L_{−/Z_p}/p) で全射。HT 比較で H⁰(Δ̄_{S′}) → H⁰(Δ̄_{S ⊗̂ R_1′}) が全射、
 完全化と Nakayama で S′_perfd → (S ⊗̂_{R_1} R_1′)_perfd が全射。基底は G-A5-17 で R_1′ に移す。
 方針：A2-3 の HT filtration の H⁰ の記述（Fil_0 = S、gr^1 = L[−1]）。
@@ -259,7 +336,7 @@ theorem rootQuotient_to_perfectoidization_surjective
     let T := (completionFunctor p R).obj (ofAlgebra R (R ⊗[R₁] S₀))
     ∃ q : rootQuotientObj p R J ⟶ T,
       (∀ j n, q.right.hom (rootClass p R j n) = T.hom.hom (ρ j n)) ∧
-      Function.Surjective q.right.hom ∧
+      Function.Surjective q.right.hom ∧ surjectiveCotangentPiOneModP p q.right.hom ∧
       Function.Surjective ((cAlgH0OnHomotopy R).map (SSet.Truncated.HomotopyCategory₂.homMk
         (((nerve.edgeMk q).map (directHodgeTateFunctor p R hR)).toTruncated))).right.hom ∧
       Function.Surjective (directPerfdRingMap p R hR q).right.hom := by
@@ -287,8 +364,31 @@ def finiteRootCocone (J : Type u) : Limits.Cocone (finiteRootDiagram p R J) wher
            (by sorry) -- 係数は固定
          naturality := by sorry } -- 全体 J への同じ包含
 
+abbrev rootIndexShape (J : Type u) : SSet.{u+1} :=
+  (SSet.uliftFunctor.{u+1,u}).obj (nerve (Finset J))
+
+def finiteRootNerve (J : Type u) : rootIndexShape J ⟶ algebraNerve R where
+  app _ := ↾fun x => ((finiteRootDiagram p R J).mapComposableArrows _).obj x.down
+  naturality := by sorry -- 各合成可能列を写した nerve の自然性
+
+def finiteRootJoinCocone (J : Type u) : JoinCocone (finiteRootNerve p R J) := by
+  let c := finiteRootCocone p R J
+  exact Classical.choose (show ∃ d : JoinCocone (finiteRootNerve p R J),
+    d.vertex = nerveVertex c.pt ∧ ∀ I : Finset J,
+      (HomotopyLimits.coconeVertexLeg d (ULift.up (nerveVertex I))).edge =
+        (nerve.edgeMk (c.ι.app I)).edge from by
+    sorry) -- 同じ包含の余錐を nerve に送る
+
+/-- 完備 R 代数の圏で mod d を取る。値の台は A4 の modPrismFunctor。 -/
+def rootPerfdFunctor :
+    algebraNerve R ⟶ (fullSubcomplexOnVertices (CAlg_R R) (fun x =>
+      isPCompleteVertex p R ((cAlgForgetDerived R).app _ x)) : SSet.{u+1}) :=
+  fullSubcomplexLift _ (perfectoidizationFunctor p R hR) (by
+    sorry) -- (p,d) 完備な Δ_perf の mod d は p 完備
+
 theorem rootQuotient_finite_reduction (J : Type u) :
     Nonempty (Limits.IsColimit (finiteRootCocone p R J)) ∧
+      IsColimitCone (mapJoinCocone (rootPerfdFunctor p R hR) (finiteRootJoinCocone p R J)) ∧
       ((∀ I : Finset J, Function.Surjective
         (directPerfdRingUnit p R hR (rootQuotientObj p R I)).right.hom) →
         Function.Surjective (directPerfdRingUnit p R hR (rootQuotientObj p R J)).right.hom) := by
@@ -322,6 +422,16 @@ theorem surjective_unit_of_semiperfectoid (hS : IsSemiperfectoid p R S) :
 方針：上の二つ。A5-1 の `perfectoidization_semiperfectoid` の証明。
 規約：環の同型と `VertexIso`。
 使われ方：A5-4（S̃_perfd と Δ_{S̃,perf}/d の同一視）、Cor 8.14。 -/
-theorem perfectoidization_semiperfectoid_iso (hS : IsSemiperfectoid p R S) : True := by trivial
+theorem perfectoidization_semiperfectoid_iso (hS : IsSemiperfectoid p R S) :
+    let U := ofAlgebra R S
+    ∃ e : (directPerfdRing p R hR U).right ≃+* universalPerfectoidRing p R S hS,
+      e.toRingHom = perfectoidizationToUniversal p R hR S hS ∧
+      e.toRingHom.comp (directPerfdRingUnit p R hR U).right.hom = universalPerfectoidUnit p R S hS ∧
+      ∃ v : VertexIso (perfectoidization p R hR S hS.1)
+          ((algebraEmbedding R).app _ (nerveVertex (universalTargetAlgebra p R S hS))),
+        ((cAlgH0OnHomotopy R).map ((perfectoidizationFunctor_vertex p R hR S hS.1).hom ≫ v.hom) ≫
+          (discreteToH0 R (universalTargetAlgebra p R S hS)).inv).right.hom = e.toRingHom := by
+  sorry -- 分裂の t は S→H⁰(S_perfd) の全射性で全射、かつ分裂単射。
+        -- 逆同型の指定単位との等式を保ち、離散な両環を CAlg_R に移す
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

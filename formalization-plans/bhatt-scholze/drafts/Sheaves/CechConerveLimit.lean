@@ -100,4 +100,34 @@ theorem exists_limitCone_of_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechN
     ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
   sorry -- 錐の延長と `isLimitCone_iff_restrict_cech`
 
+/-! ## 大きい添字圏の版（W9-I-04、BS-D3 の D3-02。2026-11-03）
+
+E3 の添字圏 `PerfUnder_u p S`（対象 Type (u+1)、射 Type u）は `SmallCategory` ではない。上の `CechNerveData` と同じ四欄を `[Category.{u} 𝒟]`・`𝒟 : Type (u+1)` で述べ、
+Čech 側（U_• と Tot）は小さいままにする。補題の主張の形は S1 の前層の形状（`presheafShape` は小さい圏用）を大きい圏に広げる基盤の名前が決まってから。 -/
+
+section Large
+variable {𝒟 : Type (u + 1)} [Category.{u} 𝒟]
+
+/-- 概要：大きい添字圏での弱終対象（小さい版と同じ条件）。 -/
+def IsWeaklyTerminalLarge (U : 𝒟) : Prop := ∀ V : 𝒟, Nonempty (V ⟶ U)
+
+/-- 概要：大きい添字圏での Čech 脈体のデータ：小さい版 `CechNerveData` と同じ四欄（U_•、射影、Fan の `IsLimit`、射影と単体的構造射の両立）。
+方針：Mathlib の `Fan`・`IsLimit` は宇宙を跨いで使える。U_n 自体は 𝒟 の対象（大きくてよい）。
+規約：S3 の大きい版（W9-I-04）。A5 の `perfUnder_cechNerveData` はこれを返す。
+使われ方：A5-4 `limit_perfUnder_eq_tot`。 -/
+structure CechNerveDataLarge (U : 𝒟) where
+  obj : SimplicialObject 𝒟
+  proj : ∀ (n : ℕ) (i : Fin (n + 1)), obj.obj (Opposite.op ⦋n⦌) ⟶ U
+  isLimit : ∀ n : ℕ, IsLimit (Fan.mk (obj.obj (Opposite.op ⦋n⦌)) (proj n))
+  proj_map : ∀ {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)),
+    obj.map θ.op ≫ proj m i = proj n (θ.toOrderHom i)
+
+/-- 概要：S3 の大きい版：U が弱終で d がその Čech 脈体なら、E 値前層 F（大きい 𝒟 上）の錐が極限錐 ⇔ Čech 脈体への制限が極限錐。
+方針：小さい版の証明（効果的エピ／Bousfield–Kan）は添字の大きさによらない。主張の形は大きい圏の前層の形状の名前が決まってから型にする。
+規約：基盤待ち（W9-I-04）。
+使われ方：A5-4。 -/
+theorem isLimitCone_iff_restrict_cech_large {U : 𝒟} (hU : IsWeaklyTerminalLarge U) (d : CechNerveDataLarge U) : True := by trivial
+
+end Large
+
 end SerrePositivity.InfinityCategories.Sheaves
