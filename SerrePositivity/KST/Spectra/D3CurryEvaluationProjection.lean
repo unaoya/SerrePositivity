@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
 
 public import SerrePositivity.KST.Spectra.D3LoopedSectionComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FunctorIsoCurryPresentation

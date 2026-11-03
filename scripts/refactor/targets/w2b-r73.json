@@ -42,6 +42,21 @@
       "SerrePositivity.KST.SConstruction.CofiberCompletionLifting": [
         "SerrePositivity.InfinityCategories.Stable.SpanFamilies",
         "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams"
+      ],
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.CatEquivalence": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeStructure"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.ExcisionGridCoreSuspension": [
+        "SerrePositivity.InfinityCategories.Stable.SuspensionSquare"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.KanKernelPairSwapPath": [
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison": [
+        "SerrePositivity.InfinityCategories.Stable.SquareHomotopyCategory"
+      ],
+      "SerrePositivity.KST.Spectra.D3StageLoopedCanonicalProjection": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoAlgebra"
       ]
     }
   },
@@ -4285,6 +4300,11 @@
         "SerrePositivity.InfinityCategories.Core.Equivalence",
         "SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.Spectra.D3CurryEvaluationProjection": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.VertexIsoTerminalEquality"
+      ]
     }
   },
   {
@@ -8303,7 +8323,15 @@
     "keep": [],
     "attributes": {},
     "candidate": "R73",
-    "note": "PiCriterion を中核外の Derived へ"
+    "note": "PiCriterion を中核外の Derived へ",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.PiCriterion.ConstantBoundaryDetection": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchoredFiniteFactorization",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanHomotopy",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.ContinuousKanRelativeReflection",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredLeftFibrationTransport"
+      ]
+    }
   },
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.FilteredSpaceBridge",

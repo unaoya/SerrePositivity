@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation
 
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport

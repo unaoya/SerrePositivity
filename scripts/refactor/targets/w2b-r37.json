@@ -2146,6 +2146,11 @@
         "SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation",
         "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Derived.Stability": [
+        "SerrePositivity.InfinityCategories.Stable.Definition"
+      ]
     }
   },
   {

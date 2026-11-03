@@ -5675,6 +5675,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningIdentity": [
+        "SerrePositivity.InfinityCategories.Core.InitialEquivalence",
         "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningEvaluation",
         "SerrePositivity.InfinityCategories.Stable.IdentityCocone"
       ]
@@ -5691,6 +5692,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.Yoneda.YonedaEvaluatedTransportEquivalence": [
+        "SerrePositivity.InfinityCategories.Core.UniverseInitialTerminal",
         "SerrePositivity.InfinityCategories.F1.Transport.ParametrizedPointTransportSquare",
         "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial",
         "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourcePointedFiber"
@@ -6158,6 +6160,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionFactorCoherence": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerCancellation",
         "SerrePositivity.InfinityCategories.F1.MappingSpaces.HomSpanSectionTransport",
         "SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorEqIsoTransport"
       ]
@@ -6408,6 +6411,11 @@
     "imports": {
       "SerrePositivity.InfinityCategories.Stable.ConeEdgeRebase": [
         "SerrePositivity.InfinityCategories.Core.Limit"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.ConeComparisonValReadback": [
+        "SerrePositivity.InfinityCategories.Core.TerminalMappingSpace"
       ]
     }
   },

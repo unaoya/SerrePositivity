@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport
+public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy
 
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanRelativeReflection

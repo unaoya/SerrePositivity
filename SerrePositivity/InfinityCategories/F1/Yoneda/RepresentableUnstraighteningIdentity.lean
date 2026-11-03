@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
 
 public import SerrePositivity.InfinityCategories.Core.IdentityCocone
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentableUnstraighteningEvaluation
