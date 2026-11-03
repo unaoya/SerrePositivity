@@ -203,6 +203,8 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
    (c) ノート第 4・5・7・8・10 章に BS-D1〜D4 の決定と A1・A3・A6 の骨組みの宣言名を反映（第 5 章に「原典との差の評価」D68・D69・D27・D20 を追加）。
    (d) **∞ W2b の取り込み（3e27dda00、11-03）を確認**：drafts の変更は Sheaves/GlobalSections の import 1 行だけで、衝突解決（BS の追加行＋書き換え）は正しい。別に、11-02 の W2a 系コミット（d12e85d0e・9c38c984e・4d02ee532）で Core へ下りた 6 モジュールへの旧名 import が、11-03 の BS-D2・D3-02・D5 で 10 ファイル 12 行入っていた（書いた時点で既に古く、機械書き換えの対象外）。`Core.*` に直し、drafts の全 import の解決を確認（drafts/README の基準コミット表）。教訓：Codex の指示書に「import の実在を `ls` で確かめる」を加える。2a の取り込みと改名表は **11-04** 見込み（11-05 から前倒し）。調整役了解（11-03）：取り込み後に書かれた旧名は機械書き換えの対象外なので、**drafts は移動後の名前で書く運用**（Codex 指示書の規則に「import の実在を確かめる」を追加）。2a の改名表は **296 件**、2b は **11-05** 見込み。
 
+9. （11-04）**段 G 停止点 1 への追従**（IF-G1 §4、main 7401c3588）：G4・G6 は既存名で済む（`functor_isPresentable`、`exists_bousfieldLocalEquivalenceReplacement`／`bousfield_isReflectiveSubcategory`）。⊗^L は `tensorWith M`（`Derived/Tensor/`、供給予定）、G13 は `discreteSpaceInclusion`・`Is0TruncatedSpace`（F1、供給予定）。BS 側の調整は **BS-D6**（`bhatt-scholze-codex-d6.md`、Codex、ビルドなし、停止点一つ）：Descendable の `tensor` 欄と `IsDescendable` の本体・離散底の完備版、S4 を `sheafification_of_generatingEdges`＋`exists_sheafGeneratingEdges`（G8 待ち）に二段化、S8 の `Is0Truncated` の点ごとの接続。供給予定の名前は `-- 要確認（IF-G1）` の仮名で使う。
+
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
 正本：`review-codex-w9.md`。指示書：`bhatt-scholze-codex-w9.md`。
