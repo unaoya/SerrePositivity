@@ -69,7 +69,7 @@ A2 待ちの Δ、Frobenius、完備 CAlg への反射、mod d には、A4・A7 
 
 基準との差分には `df86ebb71` に入った RootAdjunction と WeaklyInitialAndDescent の途中差分も含めて照合した。指定四ファイルの元の宣言名と件数、既存の定義の向き、実ファイルの import パス、括弧と空白を静的に確認した。Lean の型検査・ビルドは実行していない。停止点3の A6 は未着手。
 
-## 第3部　A6 の excision（基準 main `0ba4a1ce5`）
+## 第3部　停止点3完了・A6 の excision（基準 main `0ba4a1ce5`、S8 の入口 `4f5235673`）
 
 ### 集合の層と Cor 8.12
 
@@ -79,30 +79,40 @@ A2 待ちの Δ、Frobenius、完備 CAlg への反射、mod d には、A4・A7 
 - O の係数は global な site で `ArcZ = ULift ℤ`。F_U の元 (P,l) における R 代数構造を R→U→P とし、`elementStructure_forget` で ℤ に制限すると元の O の引き戻しに戻る。S・I の完備性から得る商の完備性は S/I について述べた。T/IT を含む四角形ではすべての環の射を H⁰ 完備化関手で送る。Hom 層の完備化同型は `completionUnit` に沿う前合成を成分とする自然同型。
 - Fontaine の式は W(PreTilt(R×S)) をまず W(PreTilt R × PreTilt S)、次に W(PreTilt R) × W(PreTilt S) へ送り、θ_R × θ_S と合成する環準同型の等式。両同型の順方向は環射影から定めた。θ を使う節には両因子で p が非単元という既存の仮定があり、零環の因子は外側の積定理で扱う。
 
-### BS-D3 全体の件数（S8 の入口を確認中）
+### D3-07 で具体化した3件
 
-基準 `789259c90` から、名前のある既存宣言の結論と、環の型を返す定義を別に集計した。
+- **完備な T の切断。** 小さい圏の対象 (P,l : T→P) に R→T→P を付けると、R の構造射を指定した perfectoid 試験環上の Hom 前層の元になる。`markedTargetEquiv` はその圏同値。これを S8 の `sectionsOf_eq_limit_elements` に渡し、A5 の `perfectoidization_isLimit` の錐と同じ頂点の錐に移して、`sectionsOf_homSheaf_eq_perfectoidization` を CAlg_R の `VertexIso` とした。A5 の cutoff 以下の弱始対象と Čech 項が共通の κ に入ることを仮定に明示した。
+- **押し出しの局所同値。** `homPresheafPushout_localEquiv` は、完備化した四隅を Yoneda で表す affCompl_κ と、Hom 層で表す affPerfd_κ の二つで、S8 の `presheafPushout` から F_S への指定射が `IsLocalEquivSet` を満たすことを述べる。前者は全ての集合の arc 層に `sheafOfSets_excision` を適用する。後者には S8 の `sections_localEquiv_iso` を適用し、Γ(F_S,O) → Γ(P,O) の向きで可逆性を得る。
+- **非完備な入力と四角形の自然性。** `sectionsOf_homSheaf_eq_e3Perfd` は U が非完備でも Γ(F_U,O) と e3Perfd(U) を比較する。U とその射に共通の κ を取り、`homPresheaf_completionRing_iso` を経て、関手の自然同型 `sectionsFunctorIsoE3` の U 成分を使う。`sections_excision_square` は Γ の指定四角形の引き戻し性。`perfectoidization_excision` は、同じ四角形にこの自然同型を適用した `IsPullbackSquare`。T/IT に完備性を要求せず、商写像と二つの合成二単体も比較に含めた。
 
-| 停止点 | 結論の True を具体化 | 環の `Type u := sorry` を具体化 |
+### BS-D3 全体の件数
+
+開始時の main `789259c90` と完了時の同名宣言を照合した。既存宣言 **88件**を具体化した。新設の補助宣言と、既に具体的な型だった `e3Excision` は件数に含めていない。
+
+| 停止点 | 結論の `True` を具体化 | 環の `Type u := sorry` を具体化 |
 | --- | ---: | ---: |
 | 1・完全 site と semiperfectoid の場合 | 25 | 1 |
 | 2・降下と Prop 8.5 | 36 | 6 |
-| 3・集合の層、Cor 8.12、Fontaine θ（途中） | 17 | 0 |
-| 現時点の合計 | 78 | 7 |
+| 3・集合の層、Cor 8.12、Fontaine θ | 20 | 0 |
+| 合計 | 81 | 7 |
 
-**現時点で既存宣言85件**。環の型7件は `universalPerfectoidRing` と、停止点2で単位射・比較射の始域と終域を確定するために具体化した `rootAdjunctionStep`、`rootClosure`、`algebraicRootClosure`、`polyAlgebra`、`polyRootAlgebra`、`rootCover`。停止点3は SheafOfSetsExcision の13件、Excision の3件、PerfectoidFiniteProduct の1件を具体化した。指示書の Excision は5件とあるが、基準には完備化同型と Γ の自然同型が別々にあり、列挙された既存名は6件だった。既に型のある `e3Excision`、新設の補助宣言は上の件数に含めない。
+環の型7件は `universalPerfectoidRing`、`rootAdjunctionStep`、`rootClosure`、`algebraicRootClosure`、`polyAlgebra`、`polyRootAlgebra`、`rootCover`。停止点3の20件の内訳は SheafOfSetsExcision の13件、Excision の6件、PerfectoidFiniteProduct の1件。指示書に Excision は5件とあるが、完備化同型と Γ の自然同型を別々に数えると列挙された宣言は6件になる。
 
+### 要確認と基盤待ち
 
-### S8 の入口・保留中の3件
+- **停止点3の名前の照合。** A6 の今回の3ファイルに新しい仮名を示す `-- 要確認：` は0件。従来の有限積ファイルには Fin の積を分解する Mathlib 名の確認注記がある。可逆性の名前は `SerrePositivity.InfinityCategories.IsInvertibleEdge`（本体 `InfinityCategories/Core/InvertibleEdgeLifting.lean`）。引数は `SSet.Truncated.Edge` で、A6 は `(Sheaves.sectionsOf_map …).toTruncated` と明示した。Mathlib の `SSet.Edge` はこの切り捨ての辺と定義上等しい。
+- **A2・A0/S2。** `prismaticEvaluation` は CAlg 値 RΓ の指定射影待ち（D3-01）。離散 Frobenius は `discreteDeltaFrobenius`、Δ と完備化・mod d は A4 の `completeCAlgInclusion`、`reflectCompleteCAlg`、`modPrismFunctor`、単位は `directHodgeTateUnit` を参照する。animated 版は A7 の `animatedDelta` と `animatedDeltaFrobenius`、離散切り捨ては A5 の `piZeroReflection`。A6 の Γ の比較では A2 の仮名を追加していない。
+- **S3・係数制限・降下。** 大きい添字の極限判定と錐の延長（D3-02）、G12 の CAlg の presentability、A1-5 の `rootDeRhamSource`・`rootDeRhamAugmentation`・`rootMap_modP_eq_deRham`、M15 の `fiberSquareRHom` と `IsDescendableOver` の一般底版の性質（D3-04）が証明待ち。離散係数の比較は D3-03 の `cAlgRestrictScalars_algebraEmbedding`、係数拡大と忘却との両立は D3-05 の `cAlgBaseChange` と `cAlgBaseChange_forget` で入口が確定済み。停止点1・2で付けた個々の確認項目は第1・2部の表にある。
+- **S8。** D3-07 によって集合の前層の局所同値、`sectionsOf`、`sectionsOf_map`、`sections_localEquiv_iso`、`sectionsOf_eq_limit_elements` を型つきで使用できる。S8-4 の `sectionsOf_pushout` は `True` のままで、Cor 8.12 の証明理由に「sectionsOf_pushout（引き戻しの述語）待ち」と記した。離散な押し出しと空間値層化の比較（S8-2・3）も基盤側の証明待ち。
 
-`sectionsOf` は現在、引数のない `True` の証明で、`localEquiv_of_sheafifyIso` も引数のない `True` の定理。指示書 §0 の「既存の名前の形が前提と合わない」に従い、元の圏での CAlg_R 極限と、層化で射が可逆になる条件を A6 の型として使うか、基盤の一般形を待つかを照会した。D3-06 で回答を受けたのは層の延長の向き。残る宣言は `sectionsOf_homSheaf_eq_perfectoidization`、`homPresheafPushout_localEquiv`、`sectionsOf_homSheaf_eq_e3Perfd`。S8 への接続以前の元の圏の係数図式、集合の前層の押し出しとその層化比較射、完備化の自然同型は具体化済み。
+停止点3で確認を要した設計の扱いは D3-06 の延長の向きと D3-07 の S8 の入口で解決した。数学的な主張は変更していない。D3-07 のコミットに取り込まれた途中差分も含めて、名前・型の向き・変更対象・import の実在・括弧・差分の空白を静的に確認した。指示どおり Lean の型検査・ビルドは実行していない。
 
-基盤・A2 待ちのうち、A0/S2 の評価と離散 Frobenius（D3-01）、大きい添字圏の S3（D3-02）、G12、A1-5 の de Rham 比較、Mod_D の内部 Hom と descendability（D3-04）、animated π₀ は第1・2部のとおり。D3-03 の離散係数比較は `cAlgRestrictScalars_algebraEmbedding`、D3-05 の係数拡大と忘却比較は `cAlgBaseChange` と `cAlgBaseChange_forget` に名前が確定している。A6 の perfd は A4 の `perfectoidizationFunctor`・`e3Perfd` を使い、A2 の仮名は増やしていない。
+### 残る True の一覧
 
-以下はこの作業時点の実ファイルを走査した一覧。名前付き宣言の結論だけを数え、仮定・構造の欄・証明中の `True` は除いた。Lean を起動せず、宣言名、既存 API の向き、import の実在、括弧、`git diff --check` を確認した。停止点3の完了コミットは保留した。
+BS-D3 の対象9ファイルの結論 `True` は0件。以下は D3-07 を含む完了時の drafts 全体の一覧で、仮定・構造の欄・コメント・証明内の `True` は数えていない。
 
 <details>
-<summary>drafts 全体に残る、結論が True の名前つき宣言（125件）</summary>
+<summary>drafts 全体に残る、結論が True の名前つき宣言（119件）</summary>
 
 - `A1/CrystallineInput.lean`（2件）　`crystalline_deRham_polynomial_Zp`、`hodgeTate_of_deRham_cartier`
 - `A1/DeRhamComparisonPoly.lean`（4件）　`deRham_iso_polynomial_crystalline`、`deRham_iso_polynomial_universal`、`deRham_iso_polynomial_modP`、`deRham_iso_rootAlgebra_modP`
@@ -114,7 +124,6 @@ A2 待ちの Δ、Frobenius、完備 CAlg への反射、mod d には、A4・A7 
 - `A2/HodgeTateFiltration.lean`（7件）　`hodgeTatePoly_gr`、`hodgeTatePoly_bounded`、`hodgeTateFiltration_step`、`hodgeTateFiltration_gr`、`hodgeTateFiltration_exhaustive`、`hodgeTateFiltration_zero`、`hodgeTateUnitCAlg`
 - `A3/DiscreteCase.lean`（3件）　`deltaStructure_of_envelopeIso`、`discrete_weaklyInitial`、`exists_initial_of_discrete`
 - `A3/LciAndQuasiregular.lean`（10件）　`lciDerivedEnvelope`、`lciDerivedEnvelope_eq_prismatic`、`lciDerivedEnvelope_isEnvelope_of_discrete`、`lci_envelope_surjective_invert_p_universal`、`prismaticCohomology_lci_eq_envelope`、`qrsp_isDiscretePrismatic`、`qrsp_completelyFaithfullyFlat`、`regularSemiperfectoid_prismatic`、`qrsp_initial`、`rootQuotient_prismatic_perfection_eq`
-- `A6/Excision.lean`（3件）　`sectionsOf_homSheaf_eq_perfectoidization`、`homPresheafPushout_localEquiv`、`sectionsOf_homSheaf_eq_e3Perfd`
 - `DerivedGeneral/CompletionFunctor.lean`（5件）　`completion_isReflective`、`completion_tensor_koszul`、`completion_exact`、`complete_colimit`、`completedBaseChange`
 - `DerivedGeneral/ScalarRestriction.lean`（4件）　`derivedInfinityBaseChange_restrictScalars_adjunction`、`cAlgBaseChange_restrictScalars_adjunction`、`derivedInfinityRestrictScalars_completion`、`cAlgRestrictScalars_h0`
 - `DerivedGeneral/Truncation.lean`（5件）　`truncationLE_counit`、`truncation_cofiber`、`tStructure_axioms`、`truncationLE_of_isConnective`、`derived_nakayama`
@@ -126,6 +135,6 @@ A2 待ちの Δ、Frobenius、完備 CAlg への反射、mod d には、A4・A7 
 - `Sheaves/CAlgValued.lean`（3件）　`forget_conservative`、`forget_sheafify`、`forget_derivedGlobalSections`
 - `Sheaves/CechConerveLimit.lean`（1件）　`isLimitCone_iff_restrict_cech_large`
 - `Sheaves/GlobalSections.lean`（1件）　`sheafifyUnit_isEquivalence_of_isSheaf`
-- `Sheaves/SpaceValued.lean`（9件）　`sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf`、`sectionsOf_colimit`、`sectionsOf_representable`、`sections_localEquiv_iso`、`sectionsOf_eq_limit_elements`
+- `Sheaves/SpaceValued.lean`（6件）　`sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf_pushout`、`sectionsOf_colimit`
 
 </details>
