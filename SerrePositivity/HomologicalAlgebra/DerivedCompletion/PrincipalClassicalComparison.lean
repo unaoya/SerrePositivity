@@ -67,8 +67,8 @@ def principalCompletionToAdic :
   letI := principalCompletionAlgebra R a
   let : IsAdicComplete (Ideal.span {a}) (AdicCompletion (Ideal.span {a}) R) :=
     AdicCompletion.isAdicComplete (Submodule.fg_span (Set.toFinite _))
-  exact (principalCompletion_existsUnique_algHom R a (AdicCompletion (Ideal.span {a}) R)
-    (isModuleComplete_of_isAdicComplete R a _)).choose
+  exact principalCompletionLiftAlgHom R a (AdicCompletion (Ideal.span {a}) R)
+    (isModuleComplete_of_isAdicComplete R a _)
 
 /-- The classical completion extends the original map into principal H0. -/
 def adicCompletionToPrincipal :

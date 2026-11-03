@@ -208,11 +208,12 @@ theorem end_isComplete (j : Fin k) :
 
 /-- 単位候補を恒等自己準同型へ送る、唯一の線形写像。 -/
 def leftMultiplication : B →ₗ[R] Module.End R B :=
-  ((h.universal (ModuleCat.of R (Module.End R B)) h.end_isComplete).surjective LinearMap.id).choose
+  Function.surjInv (h.universal (ModuleCat.of R (Module.End R B)) h.end_isComplete).surjective
+    LinearMap.id
 
 @[simp] theorem leftMultiplication_unit : h.leftMultiplication e = LinearMap.id :=
-  ((h.universal (ModuleCat.of R (Module.End R B)) h.end_isComplete).surjective
-    LinearMap.id).choose_spec
+  Function.surjInv_eq (h.universal (ModuleCat.of R (Module.End R B)) h.end_isComplete).surjective
+    LinearMap.id
 
 /-- 普遍性から定まる積。 -/
 def mul (x y : B) : B := h.leftMultiplication x y
@@ -314,8 +315,8 @@ def liftAlgHom (T : Type u) [CommRing T] [Algebra R T]
     letI := h.commRing; letI := h.algebra; B →ₐ[R] T := by
   letI := h.commRing
   letI := h.algebra
-  let g : B →ₗ[R] T := ((h.universal (ModuleCat.of R T) hT).surjective 1).choose
-  have hg : g e = 1 := ((h.universal (ModuleCat.of R T) hT).surjective 1).choose_spec
+  let g : B →ₗ[R] T := Function.surjInv (h.universal (ModuleCat.of R T) hT).surjective 1
+  have hg : g e = 1 := Function.surjInv_eq (h.universal (ModuleCat.of R T) hT).surjective 1
   exact
     { toFun := g
       map_one' := hg
@@ -446,7 +447,7 @@ theorem principalReflection_diagonal_congr (f : R) (x y : ℕ → ℕ → R)
 def principalReflectionSum (f : R) (x : ℕ → PrincipalReflectionModule R f) :
     PrincipalReflectionModule R f :=
   principalReflectionMk R f (sequenceDiagonal R
-    (fun n ↦ ((principalReflectionRelation R f).range.mkQ_surjective (x n)).choose))
+    (fun n ↦ Function.surjInv (principalReflectionRelation R f).range.mkQ_surjective (x n)))
 
 /-- 任意の代表列で対角和を計算できる。 -/
 theorem principalReflectionSum_mk (f : R) (x : ℕ → ℕ → R) :
@@ -454,8 +455,8 @@ theorem principalReflectionSum_mk (f : R) (x : ℕ → ℕ → R) :
       principalReflectionMk R f (sequenceDiagonal R x) := by
   apply principalReflection_diagonal_congr
   intro n
-  exact ((principalReflectionRelation R f).range.mkQ_surjective
-    (principalReflectionMk R f (x n))).choose_spec
+  exact Function.surjInv_eq (principalReflectionRelation R f).range.mkQ_surjective
+    (principalReflectionMk R f (x n))
 
 /-- 対角和は、最初の行と残りの行の右シフトに分かれる。 -/
 theorem sequenceDiagonal_decomposition (x : ℕ → ℕ → R) :

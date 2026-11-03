@@ -920,6 +920,49 @@ theorem principalCompletion_existsUnique_ringHom (f : R)
       { k with commutes' := fun r ↦ congrArg (fun m : R →+* T ↦ m r) hk }
     exact congrArg AlgHom.toRingHom (hu k' trivial)
 
+/-- 導来完備な離散 `R` 代数への代数写像の延長（`principalCompletion_existsUnique_algHom` の写像）。 -/
+def principalCompletionLiftAlgHom (f : R) (T : Type u) [CommRing T] [Algebra R T]
+    (hT : IsModuleComplete R f (ModuleCat.of R T)) :
+    letI := principalCompletionCommRing R f
+    letI := principalCompletionAlgebra R f
+    PrincipalCompletionH0 R f →ₐ[R] T :=
+  (principalCompletionH0_isCompleteModuleReflection R f).liftAlgHom T (fun _ ↦ hT)
+
+/-- 標準写像に沿った、導来完備な離散環への環準同型の延長（`principalCompletion_existsUnique_ringHom` の写像）。
+加群の反映の `liftAlgHom` から作る。 -/
+def principalCompletionLift (f : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hT : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T)) :
+    letI := principalCompletionCommRing R f
+    PrincipalCompletionH0 R f →+* T := by
+  letI := g.toAlgebra
+  letI := principalCompletionCommRing R f
+  letI := principalCompletionAlgebra R f
+  exact ((principalCompletionH0_isCompleteModuleReflection R f).liftAlgHom T
+    (fun _ ↦ hT)).toRingHom
+
+/-- 延長は標準写像との合成で元の環準同型に戻る。 -/
+theorem principalCompletionLift_comp (f : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hT : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T)) :
+    letI := principalCompletionCommRing R f
+    (principalCompletionLift R f T g hT).comp (principalCompletionUnitRingHom R f) = g := by
+  letI := g.toAlgebra
+  letI := principalCompletionCommRing R f
+  letI := principalCompletionAlgebra R f
+  ext r
+  exact ((principalCompletionH0_isCompleteModuleReflection R f).liftAlgHom T
+    (fun _ ↦ hT)).commutes r
+
+/-- 標準写像との合成が元の環準同型になる延長は `principalCompletionLift` に限る。 -/
+theorem principalCompletionLift_unique (f : R) (T : Type u) [CommRing T] (g : R →+* T)
+    (hT : letI := g.toAlgebra; IsModuleComplete R f (ModuleCat.of R T)) :
+    letI := principalCompletionCommRing R f
+    ∀ h : PrincipalCompletionH0 R f →+* T,
+      h.comp (principalCompletionUnitRingHom R f) = g → h = principalCompletionLift R f T g hT := by
+  letI := principalCompletionCommRing R f
+  intro h hh
+  exact (principalCompletion_existsUnique_ringHom R f T g hT).unique hh
+    (principalCompletionLift_comp R f T g hT)
+
 end SerrePositivity.DerivedCompletion
 
 end PrincipalKoszulRingPart

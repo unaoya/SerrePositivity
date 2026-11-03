@@ -998,6 +998,16 @@ theorem pairCompletion_existsUnique_algHom (f d : R)
   (pairCompletionH0_isCompleteModuleReflection R f d).existsUnique_algHom T
     (pairKoszulCoordinates_isModuleComplete R f d (ModuleCat.of R T) hf hd)
 
+/-- 両方の座標について導来完備な離散 `R` 代数への代数写像の延長（`pairCompletion_existsUnique_algHom` の写像）。 -/
+def pairCompletionLiftAlgHom (f d : R) (T : Type u) [CommRing T] [Algebra R T]
+    (hf : IsModuleComplete R f (ModuleCat.of R T))
+    (hd : IsModuleComplete R d (ModuleCat.of R T)) :
+    letI := pairCompletionCommRing R f d
+    letI := pairCompletionAlgebra R f d
+    PairCompletionH0 R f d →ₐ[R] T :=
+  (pairCompletionH0_isCompleteModuleReflection R f d).liftAlgHom T
+    (pairKoszulCoordinates_isModuleComplete R f d (ModuleCat.of R T) hf hd)
+
 /-- 任意の環準同型は、実際の二座標H⁰の標準写像から一意に延長する。 -/
 theorem pairCompletion_existsUnique_ringHom (f d : R)
     (T : Type u) [CommRing T] (g : R →+* T)

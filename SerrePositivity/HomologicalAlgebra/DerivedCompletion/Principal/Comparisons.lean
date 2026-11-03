@@ -238,9 +238,8 @@ def principalCompletionMap (φ : R →+* S) (a : R) (b : S) (hab : φ a = b) :
     PrincipalCompletionH0 R a →+* PrincipalCompletionH0 S b := by
   letI := principalCompletionCommRing R a
   letI := principalCompletionCommRing S b
-  exact (principalCompletion_existsUnique_ringHom R a _
-    ((principalCompletionUnitRingHom S b).comp φ)
-    (principalCompletion_isModuleComplete_comp φ a b hab)).choose
+  exact principalCompletionLift R a _ ((principalCompletionUnitRingHom S b).comp φ)
+    (principalCompletion_isModuleComplete_comp φ a b hab)
 
 /-- The induced map retains the original completion-unit square. -/
 lemma principalCompletionMap_comp (φ : R →+* S) (a : R) (b : S) (hab : φ a = b) :
@@ -250,9 +249,8 @@ lemma principalCompletionMap_comp (φ : R →+* S) (a : R) (b : S) (hab : φ a =
       (principalCompletionUnitRingHom S b).comp φ := by
   letI := principalCompletionCommRing R a
   letI := principalCompletionCommRing S b
-  exact (principalCompletion_existsUnique_ringHom R a _
-    ((principalCompletionUnitRingHom S b).comp φ)
-    (principalCompletion_isModuleComplete_comp φ a b hab)).choose_spec.1
+  exact principalCompletionLift_comp R a _ ((principalCompletionUnitRingHom S b).comp φ)
+    (principalCompletion_isModuleComplete_comp φ a b hab)
 
 /-- Ring equivalences induce ring equivalences of the actual principal completions. -/
 def principalCompletionRingEquiv (e : R ≃+* S) (a : R) (b : S) (hab : e a = b) :

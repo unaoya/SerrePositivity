@@ -546,9 +546,9 @@ def pairCompletionToPrincipalOfCompleteFirst :
     PairCompletionH0 R a b →ₐ[R] PrincipalCompletionH0 R b := by
   letI := principalCompletionCommRing R b
   letI := principalCompletionAlgebra R b
-  exact (pairCompletion_existsUnique_algHom R a b (PrincipalCompletionH0 R b)
+  exact pairCompletionLiftAlgHom R a b (PrincipalCompletionH0 R b)
     (principalCompletionH0_isModuleComplete_first_of_base R a b hc)
-    (principalCompletionH0_isModuleComplete R b)).choose
+    (principalCompletionH0_isModuleComplete R b)
 
 /-- The principal completion maps to the actual pair completion. -/
 def principalCompletionToPair :
@@ -559,8 +559,8 @@ def principalCompletionToPair :
     PrincipalCompletionH0 R b →ₐ[R] PairCompletionH0 R a b := by
   letI := pairCompletionCommRing R a b
   letI := pairCompletionAlgebra R a b
-  exact (principalCompletion_existsUnique_algHom R b (PairCompletionH0 R a b)
-    (pairCompletionH0_isModuleComplete_second R a b)).choose
+  exact principalCompletionLiftAlgHom R b (PairCompletionH0 R a b)
+    (pairCompletionH0_isModuleComplete_second R a b)
 
 /-- The two universal maps compose to the identity on principal H0. -/
 lemma pairCompletionToPrincipal_comp :
@@ -706,8 +706,8 @@ def completionH0PrincipalAlgEquiv :
       commutes' x := by
         change f (J x) = f0 x
         exact congrArg (fun h : B →ₐ[R] P => h x) hf }
-  let g := (principalCompletion_existsUnique_algHom B b C
-    (completionH0_isModuleComplete_scalar R a A)).choose
+  let g := principalCompletionLiftAlgHom B b C
+    (completionH0_isModuleComplete_scalar R a A)
   have hfg : fB.comp g = AlgHom.id B P :=
     (principalCompletion_existsUnique_algHom B b P
       (principalCompletionH0_isModuleComplete B b)).unique trivial trivial
