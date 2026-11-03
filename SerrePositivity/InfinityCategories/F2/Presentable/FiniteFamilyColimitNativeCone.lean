@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyOriginalColimitTransport

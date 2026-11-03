@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentProductTotalEquivalence
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedProductComparison
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：coherent な点ごとの積の元の余極限 Kan 模型から、二つの元の余極限模型の積へ比較する。

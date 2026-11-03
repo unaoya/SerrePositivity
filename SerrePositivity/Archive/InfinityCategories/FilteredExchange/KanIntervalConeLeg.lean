@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanInt
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceHomotopyClasses
 
 /-!
 概要：区間引き戻しの native 錐の脚を元の Kan 射へ読み戻す。

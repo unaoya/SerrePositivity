@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstra
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoherentSmallConstantTarget
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：小さい全空間の Kan 置換への単位を、元の図式から定値図式への変換として表す。

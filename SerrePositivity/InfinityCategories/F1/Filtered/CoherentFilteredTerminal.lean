@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentFilteredTotalDetection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationContractibility
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpaceTerminalValues

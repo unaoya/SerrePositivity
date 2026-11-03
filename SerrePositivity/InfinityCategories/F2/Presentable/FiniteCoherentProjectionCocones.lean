@@ -19,7 +19,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeCo
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationPoint
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily

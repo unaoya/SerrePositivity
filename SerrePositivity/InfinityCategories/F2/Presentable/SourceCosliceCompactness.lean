@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.NativeBaseChange
 public import SerrePositivity.InfinityCategories.F2.Presentable.IdentityClassificationPreservation
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceMappingFiber
 public import SerrePositivity.InfinityCategories.F2.Presentable.Aleph0CardinalChangeBound
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplexTerminalCosliceFiber
 
 /-!

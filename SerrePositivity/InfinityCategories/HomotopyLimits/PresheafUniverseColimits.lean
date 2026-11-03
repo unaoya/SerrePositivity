@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafPointwiseColimits
-public import SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.Core.Compact.UniverseCoconePostcomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.PresheafUniverseDiagram
 

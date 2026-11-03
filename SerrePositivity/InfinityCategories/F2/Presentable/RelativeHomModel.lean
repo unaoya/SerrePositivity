@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeHomCosliceEquivalence
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F1.Compact.UniverseUnstraightening
 
 /-!

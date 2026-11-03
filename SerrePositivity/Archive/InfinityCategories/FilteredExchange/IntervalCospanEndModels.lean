@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndComparison
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 
 /-!

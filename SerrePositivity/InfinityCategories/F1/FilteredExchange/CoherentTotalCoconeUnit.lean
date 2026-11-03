@@ -18,7 +18,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.HomotopyCoconeRealization
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.YonedaHomotopyVertex
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalUnitRepresentation
 public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 

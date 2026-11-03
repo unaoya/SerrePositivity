@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentCol
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitCoconeHomotopy
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitFunctor
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：元の coherent 変換に沿う、元の native 全空間余錐の単位の自然性円柱。

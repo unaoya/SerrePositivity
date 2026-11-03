@@ -10,7 +10,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentFilteredTotalDetection
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentProductComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanTensorAdjunction

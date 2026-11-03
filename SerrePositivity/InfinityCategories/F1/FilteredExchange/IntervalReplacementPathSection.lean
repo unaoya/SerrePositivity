@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKanComparison
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
 
 /-!
 概要：元の置換 path の切断上での全円柱を定値円柱へ厳密に同定する。

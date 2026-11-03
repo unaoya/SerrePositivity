@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure
+public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure
 public import SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection
 
 /-!

@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentFilteredTotalDetection
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：coherent 余極限の指定頂点間に全空間の射から実際の射を構成する。

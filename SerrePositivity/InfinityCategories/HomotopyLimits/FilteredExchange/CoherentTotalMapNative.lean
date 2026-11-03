@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTot
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMap
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMapCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconePointHomFamily
 public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 

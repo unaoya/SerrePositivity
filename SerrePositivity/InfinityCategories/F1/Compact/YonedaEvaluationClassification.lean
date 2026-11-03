@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentabl
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationCoslice
 public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationEquivalence
 

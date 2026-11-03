@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.Compact.FullCoslicePullback
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 
 /-!
 概要：全部分包含後の元の全共変 Hom は、元の部分圏内の同じ全 Hom と自然同型。

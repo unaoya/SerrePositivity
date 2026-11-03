@@ -208,7 +208,7 @@ public import SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityR
 public import SerrePositivity.InfinityCategories.F1.Ind.NativeCoconeIntervalPrism
 public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval
 public import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspose
-public import SerrePositivity.InfinityCategories.F1B.Ind.DensityFiberTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationFamily
 public import SerrePositivity.InfinityCategories.F1.Ind.IntervalYonedaEvaluation
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberYonedaValue
@@ -216,7 +216,7 @@ public import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspos
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityOriginalFiberPrism
 public import SerrePositivity.InfinityCategories.F1.Ind.CanonicalIntervalYonedaValue
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityCanonicalValueCriterion
-public import SerrePositivity.InfinityCategories.F1B.Ind.TwistedElementsReconstructionPointed
+public import SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityPointedStart
 public import SerrePositivity.InfinityCategories.F1.Ind.MappingVertexLiftPrism
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityIdentityLift
@@ -371,7 +371,7 @@ public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiber
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberCoefficientColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeFiberColimit
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeHomUniversal
-public import SerrePositivity.InfinityCategories.F1B.Ind.InitialBoundaryCoconeRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.WeightedIndRelativeNativeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction
 public import SerrePositivity.InfinityCategories.F2.Ind.RelativeJoinRightNativeRestriction

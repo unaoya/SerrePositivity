@@ -6,7 +6,7 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementRelativeLifting
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
 
 /-!
 概要：全標準境界での境界固定相対持ち上げから弱ホモトピー同値性を証明する。

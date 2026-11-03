@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitProjection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitSection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 public import SerrePositivity.InfinityCategories.F1.ColimitCoconeFamilies
 public import SerrePositivity.InfinityCategories.Core.RelativeInitialVertices

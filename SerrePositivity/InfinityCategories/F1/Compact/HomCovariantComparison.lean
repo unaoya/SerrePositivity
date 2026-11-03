@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial
 public import SerrePositivity.InfinityCategories.F1.Yoneda.CovariantRepresentableInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 
 /-!
 概要：元の共同 Hom の共変制限を、定義に用いた元の全共変表現可能関手へ比較する。

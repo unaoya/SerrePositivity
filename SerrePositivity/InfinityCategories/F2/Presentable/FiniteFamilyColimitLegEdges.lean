@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafColimitFiniteCone
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafEvaluationCones

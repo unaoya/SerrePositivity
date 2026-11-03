@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantCocone
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantCoconeComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMap
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
 public import SerrePositivity.InfinityCategories.F1.CoconeMappingSpace
 

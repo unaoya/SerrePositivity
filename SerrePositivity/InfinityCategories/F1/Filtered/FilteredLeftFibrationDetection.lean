@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanHomotopy
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationTransport
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteSubcomplexes

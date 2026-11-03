@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspose
-public import SerrePositivity.InfinityCategories.F1B.Ind.DensityFiberTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval
 
 /-!

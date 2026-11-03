@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitCoconeEdge
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitUnitCylinder
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：元の変換と余極限の指定辺を結ぶ、native 余錐の単位の全正方形。

@@ -5,8 +5,8 @@ public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafInfinity
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
 public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafComplete
+public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure
+public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafComplete
 public import SerrePositivity.InfinityCategories.F1.Idempotent.StrongSplittingColimit
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
 

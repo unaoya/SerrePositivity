@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
-public import SerrePositivity.InfinityCategories.F1B.Compact.UniverseColimits
+public import SerrePositivity.InfinityCategories.F1.Compact.UniverseColimits
 public import SerrePositivity.InfinityCategories.F2.Compact.Definition
 public import SerrePositivity.InfinityCategories.F1.Compact.YonedaEvaluationClassification
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity

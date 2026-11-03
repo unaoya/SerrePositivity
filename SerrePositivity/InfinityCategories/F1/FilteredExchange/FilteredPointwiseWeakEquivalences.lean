@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanFilteredUnit
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFilteredUnit
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.FilteredWeakEquivalences
 
 /-!

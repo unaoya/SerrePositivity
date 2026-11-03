@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Suppo
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanCoconeContraction
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanCoconeContraction
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization
 public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredCoslices
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity

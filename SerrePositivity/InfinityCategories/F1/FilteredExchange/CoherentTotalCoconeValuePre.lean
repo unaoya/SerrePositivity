@@ -22,7 +22,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.Kan
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberValueMap
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit
 
 /-!

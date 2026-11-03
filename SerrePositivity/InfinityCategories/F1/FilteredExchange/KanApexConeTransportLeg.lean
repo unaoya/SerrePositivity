@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanApexConeTransportEdges
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.SpaceHomotopyClasses
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceHomotopyClasses
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexLimitConeTransport
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 

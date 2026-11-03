@@ -17,7 +17,7 @@ public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomo
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanSequence
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
 public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction

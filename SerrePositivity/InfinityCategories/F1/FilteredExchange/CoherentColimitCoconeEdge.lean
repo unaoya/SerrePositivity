@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentColimitFunctor
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCocone
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.CoherentTotalObject
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalObject
 
 /-!
 概要：元の比較円柱に余極限関手を適用し、元の全空間余錐間の指定辺を取り出す。

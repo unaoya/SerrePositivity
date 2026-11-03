@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
 
 /-!

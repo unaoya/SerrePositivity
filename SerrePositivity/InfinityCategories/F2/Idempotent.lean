@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Walking
 public import SerrePositivity.InfinityCategories.Core.Retracts
 public import SerrePositivity.InfinityCategories.Core.Idempotent.Coherent
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafClosure
+public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafClosure
 public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakShape
 public import SerrePositivity.InfinityCategories.Core.Idempotent.WeakComparison
 public import SerrePositivity.InfinityCategories.F2.Idempotent.RetractionTriangle
@@ -89,7 +89,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveIdempote
 public import SerrePositivity.InfinityCategories.F2.Idempotent.EffectiveSplittingRestriction
 public import SerrePositivity.InfinityCategories.Core.Idempotent.ScalarUniverse
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Idempotent.IdemUniverse
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PresheafComplete
+public import SerrePositivity.InfinityCategories.F1.Idempotent.PresheafComplete
 public import SerrePositivity.InfinityCategories.Core.Idempotent.FullSubcomplexSplitting
 public import SerrePositivity.InfinityCategories.F1.Idempotent.IdemComplete
 public import SerrePositivity.InfinityCategories.Core.Idempotent.RetractReflection

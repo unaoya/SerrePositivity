@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstru
 public import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTranspose
 public import SerrePositivity.InfinityCategories.F1.Ind.ConstantIntervalTransposePrism
 public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationFamily
-public import SerrePositivity.InfinityCategories.F1B.Ind.DensityFiberTransformationRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
 public import SerrePositivity.InfinityCategories.F1.Ind.ElementsYonedaSliceInterval
 
 /-!

@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.CommaSourceColim
 public import SerrePositivity.InfinityCategories.F2.Presentable.RelativeJoinRightColimits
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.LeftCommaCandidate
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFunctorInitialBoundary
-public import SerrePositivity.InfinityCategories.F1B.Ind.InitialBoundaryCoconeRestriction
+public import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
 
 /-!
 概要：各局所左 Kan 図式の余極限と延長先の余極限から元の余極限を構成する。

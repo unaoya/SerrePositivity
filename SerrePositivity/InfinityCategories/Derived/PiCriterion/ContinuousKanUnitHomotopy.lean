@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanHomotopy
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanHomotopy
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 

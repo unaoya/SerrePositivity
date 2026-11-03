@@ -25,7 +25,7 @@ public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Twist
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafUnstraightening
 public import SerrePositivity.InfinityCategories.F1.Yoneda.YonedaInfinityConstruction
 public import SerrePositivity.InfinityCategories.F1.Ind.PresheafDensityIdentityReconstruction
-public import SerrePositivity.InfinityCategories.F1B.Ind.TwistedElementsReconstructionPointed
+public import SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic
 
 /-!

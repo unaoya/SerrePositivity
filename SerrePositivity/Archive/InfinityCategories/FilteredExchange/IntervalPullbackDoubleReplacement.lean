@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
 

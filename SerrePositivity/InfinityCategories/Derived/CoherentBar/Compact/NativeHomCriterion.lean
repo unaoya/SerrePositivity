@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGSemifreeHomTargetSpaceComparison
 public import SerrePositivity.InfinityCategories.Derived.DGCosliceYonedaOppositeComparison
-public import SerrePositivity.InfinityCategories.F1B.Compact.RepresentableCoslice
+public import SerrePositivity.InfinityCategories.F1.Compact.RepresentableCoslice
 public import SerrePositivity.InfinityCategories.F2.Compact.Preservation
 /-!
 概要：半自由加群の native κ-compact 性を全 Hom 空間関手の余極限保存で判定する。

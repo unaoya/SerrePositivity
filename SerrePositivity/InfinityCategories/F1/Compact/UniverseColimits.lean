@@ -18,7 +18,7 @@ public import SerrePositivity.InfinityCategories.F1.Universe.InnerFibration
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberColimitCriterion
 public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeFiberEvaluation
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
-public import SerrePositivity.InfinityCategories.F1B.Compact.CanonicalCoconeWeakEquivalence
+public import SerrePositivity.InfinityCategories.F1.Compact.CanonicalCoconeWeakEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseFiberComparison
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseImage
 public import SerrePositivity.InfinityCategories.HomotopyLimits.Compact.CoconeUniverseVertex
