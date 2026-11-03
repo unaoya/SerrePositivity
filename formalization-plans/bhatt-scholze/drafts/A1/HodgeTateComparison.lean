@@ -33,10 +33,12 @@ A2（Construction 7.6）、A5（Prop 8.5、Lemma 8.6）、A7（Prop 8.13）。
 @[expose] public section
 noncomputable section
 universe u
+open CategoryTheory SSet
+open scoped Simplicial
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.DerivedCompletion
+open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 
 variable {p : ℕ} [Fact p.Prime]
 
@@ -66,24 +68,62 @@ theorem hodgeTate_iso_crystalline {A : Type u} [CommRing A] (P : OrientedPrism p
 方針：Z_(p) 上の一変数自由 δ 環（`RelativeFreeDeltaRing Unit`）を δ(d) で局所化（`DeltaStructure.localization`）。
 規約：普遍性：δ 環 B と distinguished な b ∈ B に対し、d ↦ b の δ 射が一意（δ(b) が単元なので局所化を経由）。
 使われ方：A_0 の定義。 -/
-def universalDistinguishedRing : Type u := sorry
+abbrev freeOrientationRing := FreeDeltaRing PUnit.{u+1}
+abbrev freeOrientation : freeOrientationRing.{u} := MvPolynomial.X (PUnit.unit, 0)
+abbrev freeOrientationDelta (p : ℕ) [Fact p.Prime] := freeDeltaStructure p PUnit.{u+1}
 
-/-- 概要：Ex 3.4：普遍向き付き prism (A_0,(d))：Z_(p){d, δ(d)^{-1}} の (p,d) 完備化。
-方針：`PDCompletionH0` と `deltaPDCompletionStructure`。d は distinguished（δ(d) 単元）で正則（(p,d) は正則列）。
-規約：有界（A_0/d は p ねじれなし）。
-使われ方：Prop 6.2 (c) の A_0 → A。 -/
-def universalOrientedPrismRing : Type u := sorry
+/-- ℤ_(p) の分母と δ(d) を逆にし、δ 局所化のため Frobenius で閉じる。 -/
+def orientationDenominators (p : ℕ) [Fact p.Prime] : Submonoid freeOrientationRing.{u} :=
+  Submonoid.closure (insert ((freeOrientationDelta p).delta freeOrientation)
+    (Set.range (fun n : {n : ℕ // Nat.Coprime n p} => (n.val : freeOrientationRing))))
 
-def universalOrientedPrism : OrientedPrism p (universalOrientedPrismRing (p := p)) := sorry
+abbrev universalDistinguishedRing (p : ℕ) [Fact p.Prime] :=
+  Localization ((freeOrientationDelta p).frobeniusDenominators (orientationDenominators p))
+
+def distinguishedDelta (p : ℕ) [Fact p.Prime] : DeltaStructure p (universalDistinguishedRing.{u} p) :=
+  (freeOrientationDelta p).localization _ _ ((freeOrientationDelta p).frobeniusDenominators_stable _)
+
+def rawOrientation (p : ℕ) [Fact p.Prime] : universalDistinguishedRing.{u} p :=
+  algebraMap freeOrientationRing _ freeOrientation
+
+/-- Ex 3.4。p と rawOrientation の順の導来完備化の H⁰。 -/
+abbrev universalOrientedPrismRing (p : ℕ) [Fact p.Prime] :=
+  PDCompletionH0 (universalDistinguishedRing.{u} p) p (rawOrientation p)
+
+instance (p : ℕ) [Fact p.Prime] : CommRing (universalOrientedPrismRing.{u} p) :=
+  pdCompletionCommRing _ p (rawOrientation p)
+
+def universalOrientedPrism (p : ℕ) [Fact p.Prime] : OrientedPrism p (universalOrientedPrismRing.{u} p) where
+  deltaStructure := deltaPDCompletionStructure (distinguishedDelta p) (rawOrientation p)
+  generator := pdCompletionUnit _ p (rawOrientation p) (rawOrientation p)
+  generator_regular := by sorry -- 自由 δ 環で (p,d) は正則列。局所化と完備化後も d は正則
+  complete_p := by sorry -- PD 完備化は p 完備
+  complete_generator := by sorry -- 同じ完備化は d 完備
+  p_mem := by sorry -- δ(d) は単元なので distinguished、従って p ∈ (d,φ(d))
 
 /-- 概要：Ex 3.4 の性質：(p, d) は正則列、A_0/p の Frobenius は d 完全平坦（F_p{d, δ(d)^{-1}} の Frobenius は多項式環の p 乗で自由、
 局所化と d 完備化で d 完全平坦）。
 方針：`FreeDeltaFrobeniusFlat` の mod p の自由性。
 規約：Construction 6.1 の仮定（(6) の二つ目の射の忠実平坦性）に使う。
 使われ方：`crystallineCover` の A_0 への適用。 -/
-theorem universalOrientedPrism_bounded : IsBoundedPrism (universalOrientedPrism (p := p)) := by sorry
+theorem universalOrientedPrism_bounded : IsBoundedPrism (universalOrientedPrism (p := p)) := by
+  sorry -- d を殺した商は p ねじれなし
 
-theorem universalOrientedPrism_frobenius_flat : True := by trivial
+abbrev modPrime (p : ℕ) (A : Type u) [CommRing A] := A ⧸ Ideal.span {(p : A)}
+
+def modPrimeFrob (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] : modPrime p A →+* modPrime p A := by
+  have hp : (p : modPrime p A) = 0 := by
+    sorry -- p は商で零（零環を含む）
+  letI : ExpChar (modPrime p A) p := by sorry -- p が素数で p=0。零環も p 乗は環準同型
+  exact frobenius (modPrime p A) p
+
+def FrobeniusFlatModP (p : ℕ) [Fact p.Prime] (A : Type u) [CommRing A] : Prop :=
+  letI := (modPrimeFrob p A).toAlgebra
+  Module.Flat (modPrime p A) (modPrime p A)
+
+theorem universalOrientedPrism_frobenius_flat (p : ℕ) [Fact p.Prime] :
+    FrobeniusFlatModP p (universalOrientedPrismRing.{u} p) := by
+  sorry -- mod p は δ 座標の多項式環の局所化と d 完備化。p 乗指数の剰余類で自由な Frobenius の平坦性を移す
 
 /-- 概要：普遍性：任意の向き付き prism (A,(d_A)) に対し、d ↦ d_A の prism の射 A_0 → A が一意。
 方針：d_A は distinguished（`OrientedPrism.isDistinguished_generator`）なので δ(d_A) は単元、自由 δ 環と局所化の普遍性、A の (p,d) 完備性で
@@ -93,7 +133,7 @@ theorem universalOrientedPrism_frobenius_flat : True := by trivial
 theorem universalOrientedPrism_hom {A : Type u} [CommRing A] (P : OrientedPrism p A) :
     ∃! f : OrientedPrism.Hom (universalOrientedPrism (p := p)) P,
       f.toRingHom (universalOrientedPrism (p := p)).generator = P.generator := by
-  sorry
+  sorry -- d↦P.generator の自由 δ 射を局所化して (p,d) 完備化の普遍性で延長
 
 /-! ## Construction 6.1 -/
 
@@ -104,7 +144,7 @@ variable {A : Type u} [CommRing A] (P : OrientedPrism p A)
 規約：普遍向き付き prism は満たす（`universalOrientedPrism_frobenius_flat`、(p,d) 正則）。
 使われ方：`crystallineCover`。 -/
 structure Construction61Hypotheses : Prop where
-  frobenius_flat : True -- 要確認：Module.Flat (A ⧸ (p)) (A ⧸ (p) via φ) の述べ方
+  frobenius_flat : FrobeniusFlatModP p A
   quotient_p_torsionFree : ∀ x : A ⧸ P.ideal, (p : A ⧸ P.ideal) * x = 0 → x = 0
 
 /-- 概要：B := A{φ(d)/p}^∧（φ(d)/p を自由に添加した δ-A 代数の p 完備化）。
@@ -112,18 +152,35 @@ structure Construction61Hypotheses : Prop where
 規約：Lemma 2.24（`isDistinguished_factor`）で φ(d) = p·u、u 単元。(p, φ(d)) 完備ゆえ (p,d) 完備。(d) の pd 包の p 完備化で離散・p ねじれなし
 （d は A/p で正則、仮定）。
 使われ方：結晶 prism (B,(p))。 -/
-def crystallineCoverRing (h : Construction61Hypotheses P) : Type u := sorry
+abbrev coverDivision := DeltaDivisionTorsionQuotient P.deltaStructure (p : A)
+  (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)
+abbrev coverDivisionMap := deltaDivisionTorsionMap P.deltaStructure (p : A)
+  (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)
 
-def crystallineCover (h : Construction61Hypotheses P) : OrientedPrism p (crystallineCoverRing P h) := sorry
+/-- (p,p) 完備化は一変数 p 完備化。ここで Frobenius 余極限は取らない。 -/
+abbrev crystallineCoverRing (_ : Construction61Hypotheses P) :=
+  PDCompletionH0 (coverDivision P) p (p : coverDivision P)
+
+instance (h : Construction61Hypotheses P) : CommRing (crystallineCoverRing P h) := pdCompletionCommRing _ p _
+def coverBase (h : Construction61Hypotheses P) : A →+* crystallineCoverRing P h :=
+  (pdCompletionUnit _ p (p : coverDivision P)).comp (coverDivisionMap P)
+
+def crystallineCover (h : Construction61Hypotheses P) : OrientedPrism p (crystallineCoverRing P h) where
+  deltaStructure := deltaPDCompletionStructure (deltaDivisionTorsionStructure P.deltaStructure (p : A)
+    (fun _ : Unit => P.deltaStructure.frobeniusLift P.generator)) (p : coverDivision P)
+  generator := p
+  generator_regular := by sorry -- Cor 2.39 の変数一個の場合と p ねじれ除去、p 完備化
+  complete_p := by sorry -- PDCompletionH0 の完備性
+  complete_generator := by sorry -- 生成元は p
+  p_mem := Ideal.subset_span (Set.mem_insert _ _)
 
 theorem crystallineCover_generator (h : Construction61Hypotheses P) :
-    (crystallineCover P h).generator = (p : crystallineCoverRing P h) := by sorry
+    (crystallineCover P h).generator = (p : crystallineCoverRing P h) := rfl
 
-/-- 概要：α := (A → B) ∘ φ_A : (A,(d)) → (B,(p)) は prism の射（α(d) = φ(d) ∈ pB）。
-方針：δ 射の合成。
-規約：—
-使われ方：底変換 α̂^*。 -/
-def crystallineCoverMap (h : Construction61Hypotheses P) : OrientedPrism.Hom P (crystallineCover P h) := sorry
+def crystallineCoverMap (h : Construction61Hypotheses P) : OrientedPrism.Hom P (crystallineCover P h) where
+  toRingHom := (coverBase P h).comp P.deltaStructure.frobeniusLift
+  map_delta := by sorry -- δ 射の合成
+  ideal_le := by sorry -- φ(d)/p を添加したので α(d)∈(p)
 
 /-- 概要：Construction 6.1 (1)：α̂^* は導来 (p,d) 完備な A 複体の上で保存的。
 方針：mod p の分解 (6)：A/p → A/(p,d)（導来 Nakayama で保存的）→ A/(p,d^p)（Frobenius、忠実平坦）→ B/p = D_{(d)}(A/p)（pd 包、自由）。
