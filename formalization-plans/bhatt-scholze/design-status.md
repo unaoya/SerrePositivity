@@ -189,6 +189,8 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
      追加（11-03 午後）：G-A6-12 の骨組み `drafts/A6/PerfectoidFiniteProduct.lean`（直積・Fin r・有限族、ModP/Perfection/Witt の直積の同型と θ の両立）、
      `drafts/A5/RootAdjunction.lean` の主張を具体的な型に（延長性・完備性・濃度・関手性、`polyAlgebra`・`polyRootAlgebra` の perfectoid 性、`rootCover`）、
      `ArcSite` の cover-dense を Mathlib の `Functor.IsCoverDense` の型に、BS-W11 の下書き（`bhatt-scholze-codex-w11.md`：段 1 ③④）。
+     11-03 夕（ユーザー決定）：残りの主張の具体化（A6/ArcSite・ArcSheafProperty、A8/Stratification、A0 の三本）は Codex の下書き作業 **BS-D1**（`bhatt-scholze-codex-d1.md`、
+     ビルドなし、drafts と報告だけ）、ノート第 4・7 章の W9 との照合は BS 側で実施（済：04-site の方針の追記と Rem 4.6・D16 の行、07-semiperfectoid の Not 7.1・Lemma 7.7・Prop 7.10・要点）。
    - 段 1（2a 後、基盤を待たない古典的単位。担当は BS の Codex、こちらは検収。調整役了承 11-03）：① CompletedTensor 分割＋G-A6-12（**2a 直後 11-05、BS-W10 作業 A**。全ビルドは 2b に便乗）→ ② Lemma 10.12（A8-3）→
      ③ A5/RootAdjunction・G-A6-11（R₀）・G-A6-3/6（付値環）・G-A8-6・1c の初等補題 → ④ A6/ArcSite の 1 圏部分 → ⑤ A0 の site の定義と A0-3c。BS-W10 は ①②、W11 以降に ③〜⑤。
    - 段 2（W2b・段 G 後）：∞ 基盤 S1〜S8・DerivedGeneral・Shared → A2 → A4〜A7 の中身 → A5 の Prop 8.5。
