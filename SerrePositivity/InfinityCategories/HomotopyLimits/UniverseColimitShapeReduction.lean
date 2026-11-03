@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits
 public import SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection

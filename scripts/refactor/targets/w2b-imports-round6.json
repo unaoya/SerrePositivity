@@ -1,0 +1,440 @@
+{
+  "status": "APPLIED_PENDING_BUILD",
+  "instruction": "IF-W2b §10/14/16",
+  "module_count": 11,
+  "import_count": 12,
+  "changes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPinchedIntervalTransport",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPullbackComparison",
+        "SerrePositivity.InfinityCategories.Derived.Gluing.PinchedIntervalPullbackTransport"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPullbackComparison",
+        "SerrePositivity.InfinityCategories.Derived.Gluing.PinchedIntervalPullbackTransport",
+        "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F1.Universe.InnerFibration"
+        ],
+        "source": "SerrePositivity.InfinityCategories.Derived.Gluing.LaxHomPinchedIntervalTransport",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomPinchedIntervalTransport",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomPinchedIntervalTransport_arrow",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomPinchedInputBase",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalPullback",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalEndpointMap",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalInputBase",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalPullback._proof_1",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomPinchedIntervalTransport_inputs",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomPinchedIntervalTransport_equivalence",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomArrowVertex",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalInputBase._proof_1",
+          "SerrePositivity.InfinityCategories.dgGluingLaxHomIntervalEndpointMap._proof_1"
+        ]
+      },
+      "plan_record": {
+        "stage": "R73",
+        "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchorCylinderCoordinates",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalitySecondImage",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalityTriangleEndpoints"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
+        "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalityTriangleEndpoints"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalitySecondImage",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.cocartesianOriginalOverNaturalitySecondIso_postcomp_heq",
+          "SerrePositivity.InfinityCategories.cocartesianOriginalOverNaturalitySecondIso_postcomp_target"
+        ]
+      },
+      "plan_record": {
+        "stage": "R38",
+        "module": "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalitySecondImage",
+        "field": "imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Ind.YonedaSpanSquareFamily",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading",
+        "SerrePositivity.InfinityCategories.F2.Ind.FiniteCospanInclusion",
+        "SerrePositivity.InfinityCategories.F2.Ind.YonedaCoconeFamily",
+        "SerrePositivity.InfinityCategories.F2.Ind.YonedaSquarePreservation",
+        "SerrePositivity.InfinityCategories.Stable.Bicartesian"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.FilteredExchange.SpanSquareUniverseReading",
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading",
+        "SerrePositivity.InfinityCategories.F2.Ind.FiniteCospanInclusion",
+        "SerrePositivity.InfinityCategories.F2.Ind.YonedaCoconeFamily",
+        "SerrePositivity.InfinityCategories.F2.Ind.YonedaSquarePreservation",
+        "SerrePositivity.InfinityCategories.Stable.Bicartesian"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F1.FilteredExchange.SquareFamilyReading"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F2.Ind.YonedaSpanSquareFamily",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.F2.Ind.indYonedaSpanSquareFamily._proof_1",
+          "SerrePositivity.InfinityCategories.F2.Ind.indYonedaSpanSquareFamily_vertex",
+          "SerrePositivity.InfinityCategories.F2.Ind.indYonedaSpanSquareFamily",
+          "SerrePositivity.InfinityCategories.F2.Ind.indYonedaSpanSquareFamily_bicartesian"
+        ]
+      },
+      "plan_record": {
+        "stage": "R73",
+        "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.SpanSquareUniverseReading",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.NativeBaseChangePreservation",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F2.Compact.Preservation"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport",
+        "SerrePositivity.InfinityCategories.F2.Presentable.NativeUniverseContinuity"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.F1.Compact.ClassificationTransport",
+        "SerrePositivity.InfinityCategories.F2.Compact.Preservation",
+        "SerrePositivity.InfinityCategories.F2.Presentable.NativeUniverseContinuity"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F2.Compact.Preservation"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F2.Compact.Preservation"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F2.Presentable.NativeBaseChangePreservation",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.leftClassification_baseChange_preservesKappaFilteredColimits",
+          "SerrePositivity.InfinityCategories.F2.Presentable.leftClassification_baseChange_fst_preservesKappaFilteredColimits"
+        ]
+      },
+      "plan_record": {
+        "stage": "R38",
+        "module": "SerrePositivity.InfinityCategories.F2.Compact.ClassificationTransport",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedTerminalDiagramColimit",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Core.FunctorTerminal",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentEmptyProductNative",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentInvertibleTotalKan"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.FunctorTerminal",
+        "SerrePositivity.InfinityCategories.Core.InitialUniqueness",
+        "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit",
+        "SerrePositivity.InfinityCategories.F2.Presentable.SiftedCoherentEmptyProductNative",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoherentInvertibleTotalKan"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalColimit"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedTerminalDiagramColimit",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.siftedTerminalDiagramColimit_isTerminal",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.siftedTerminalDiagramTotalVertex_isTerminal"
+        ]
+      },
+      "plan_record": {
+        "stage": "R73",
+        "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchorCylinderCoordinates",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightComparison",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan",
+        "SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightFamilyComparison",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.RightKanRestrictionIso"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan",
+        "SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction",
+        "SerrePositivity.InfinityCategories.F2.Presentable.YonedaWeightFamilyComparison",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.RightKanRestrictionIso"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan",
+          "SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightRightKan",
+          "SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRestriction",
+          "SerrePositivity.InfinityCategories.F2.Presentable.SigmaLiftedHomRightKan"
+        ],
+        "source": "SerrePositivity.InfinityCategories.F2.Presentable.SigmaHomWeightComparison",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso._proof_1",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedRestrictionIso",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso._proof_2",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso._proof_3"
+        ]
+      },
+      "plan_record": {
+        "stage": "R73",
+        "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchorCylinderCoordinates",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
+        "SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence"
+        ],
+        "source": "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.coyonedaInfinityMap_reflects_isLimit"
+        ]
+      },
+      "plan_record": {
+        "stage": "R38",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection",
+        "field": "imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentFunctorProductLimit",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentFunctorProductLimit",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyProductCone"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.ReindexSliceOver",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.ConeReindexRestrictions"
+        ],
+        "source": "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteFamilyFunctorProduct",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_vertex",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone._proof_1",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorDiagram_vertex",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_isLimit",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorDiagram",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorDiagram_reindex_eq",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone.eq_1",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.finiteFamilyFunctorProductCone_leg_edge"
+        ]
+      },
+      "plan_record": {
+        "stage": "R73",
+        "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.AnchorCylinderCoordinates",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.F1.CoconeMappingSpace",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison",
+        "SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.F1.CoconeMappingSpace",
+        "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison",
+        "SerrePositivity.InfinityCategories.F1.Ind.CoconeTransformationRestriction",
+        "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+        ],
+        "source": "SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.sliceUnderRestrict_isQCatEquivalence_of_fullyFaithful_pre",
+          "SerrePositivity.InfinityCategories.HomotopyLimits.isColimitCone_iff_restrict_of_fullyFaithful_pre"
+        ]
+      },
+      "plan_record": {
+        "stage": "R38",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits",
+        "field": "imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseColimitShapeReduction",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone",
+        "SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality",
+        "SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone",
+        "SerrePositivity.InfinityCategories.F1.Universe.InnerAnodyne",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.CoconeShapePrecomposition",
+        "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseCoconeRestriction",
+        "SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.CatInfinity.CoconeValEquality"
+        ],
+        "source": "SerrePositivity.InfinityCategories.HomotopyLimits.UniverseColimitShapeReduction",
+        "declarations_considered": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits.mapUliftCocone_isColimit_of_quasicategoryShapes"
+        ]
+      },
+      "plan_record": {
+        "stage": "R37",
+        "module": "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone",
+        "field": "downstream_imports"
+      }
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism",
+      "added_imports": [
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces"
+      ],
+      "imports_before": [
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces",
+        "SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism"
+      ],
+      "imports_after": [
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces",
+        "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces",
+        "SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism"
+      ],
+      "evidence": {
+        "imports": [
+          "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces"
+        ],
+        "required_missing_modules": [
+          "SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces",
+          "SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismUpperSides"
+        ],
+        "source": "SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism",
+        "declarations_considered": [
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightUpper.eq_1",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.domainRight",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightDiagonal._proof_2",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightLower.eq_1",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightLower",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightUpper",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightUpper_two",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightDiagonal._proof_4",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightLower_zero",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightLower_one",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightDiagonal",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightLower_two",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightUpper_zero",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightDiagonal._proof_3",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightUpper_one",
+          "SerrePositivity.KST.LocalizingInvariants.FiberDiagram.rightDiagonal._proof_1"
+        ]
+      },
+      "plan_record": {
+        "stage": "R38",
+        "module": "SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeTriangleLowerFaces",
+        "field": "downstream_imports"
+      }
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  }
+}

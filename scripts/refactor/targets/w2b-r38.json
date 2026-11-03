@@ -827,6 +827,11 @@
         "SerrePositivity.InfinityCategories.F2.CatInfinity.TrianglePrismLowerSides",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.HomotopyEdgeTriangleUpperFaces"
+      ]
     }
   },
   {
@@ -1314,6 +1319,11 @@
         "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningAllBases",
         "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange",
         "SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningRepresentation"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.NativeBaseChangePreservation": [
+        "SerrePositivity.InfinityCategories.F2.Compact.Preservation"
       ]
     }
   },
@@ -6020,6 +6030,7 @@
       "SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits": [
         "SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison",
         "SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence",
         "SerrePositivity.InfinityCategories.F2.Ind.CoconeTransformationRestriction",
         "SerrePositivity.InfinityCategories.Stable.CoconeMappingSpace"
       ]
@@ -6140,6 +6151,7 @@
     "note": "宣言参照表に基づく分割元から一般論側への import 付け替え。未検出辺は縮小候補で内部ビルド待ち。",
     "imports": {
       "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalitySecondImage": [
+        "SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport",
         "SerrePositivity.InfinityCategories.F1.Cocartesian.OriginalOverNaturalityTriangleEndpoints"
       ]
     }
@@ -6890,6 +6902,7 @@
     "note": "§10-1: 未検出辺の削除。内部ビルドで失敗したら実参照に戻す。",
     "imports": {
       "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection": [
+        "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitExistence",
         "SerrePositivity.InfinityCategories.F1.Coherent.SpaceSmallLimits",
         "SerrePositivity.InfinityCategories.F1.Yoneda.RepresentablePresheafLimitDetection",
         "SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaConeLimits"

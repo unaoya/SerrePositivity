@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleUpperFaces
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramPrism
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyEdgeTriangleLowerFaces
