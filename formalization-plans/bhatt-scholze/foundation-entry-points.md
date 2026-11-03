@@ -49,7 +49,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | --- | --- | --- | --- | --- |
 | `truncationLE_counit`（def、`True`） | τ^{≤n} → id と H^i（i ≤ n）での同型 | A2 `hodgeTateFiltration_step`（A2:139） | ○ | `truncationLE_counit n : FunctorHom (truncationLE A n) (𝟙 _)`、`truncationLE_counit_h n x (i ≤ n) : IsIso (H A i の成分)`。追加 `truncationLE_step n : FunctorHom (truncationLE A n) (truncationLE A (n+1))`（増大列。A2:139 が待つ） |
 | `truncation_cofiber` | τ^{≤n−1}X → τ^{≤n}X → H^n(X)[−n] | A2 gr^i = Ω^i[−i] | ○ | cofiber 四角形の述語（Stable）で、第三項は `(discreteEmbedding A).app _ (H A n x)` に `loopFunctor`／`suspensionFunctor` を n 回 |
-| `tStructure_axioms` | HA 1.2.1.4 | 導来 Nakayama、HT filtration の一意性 | ○ | 三つに分ける：直交性（D^{≤n} と D^{≥n+1} の間の写像空間の π₀ が自明。F1B の `QCatAdjunction.hoVertexHomEquiv` と同じ ho 圏の Hom）、shift（`IsConnectiveAt n x ↔ IsConnectiveAt (n+1) (Σx)`）、分解（τ^{≤n}x → x の fiber が D^{≥n+1}） |
+| `tStructure_axioms` | HA 1.2.1.4 | 導来 Nakayama、HT filtration の一意性 | ○ | 三つに分ける：直交性（D^{≤n} と D^{≥n+1} の間の写像空間の π₀ が自明。F1B の `QCatAdjunction.hoVertexHomEquiv` と同じ ho 圏の Hom）、shift（Σ = [1] は既存の `derivedSuspensionShiftObjectIso`。cohomological 添字なので H^i(Σx) = H^{i+1}(x)、よって **`IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)`**。D5-01 で訂正：以前の (n+1) は X = A[−1]、n = 0 が反例）、分解（標準の τ^{≤n}x → x → τ^{≥n+1}x が cofiber 四角形、安定なので同時に fiber 四角形。`truncationGE (n+1)` を使う） |
 | `truncationLE_of_isConnective` | X ∈ D^{≤n} ⇒ τ^{≤n}X ≃ X | A2 `hodgeTatePoly_bounded` | ○ | `IsConnectiveAt n x → IsInvertibleEdge ((truncationLE_counit n).成分 x)` |
 | `derived_nakayama` | 完備 X で X ⊗^L A/(p,d) = 0 ⇒ X = 0 | A1（Thm 5.2 の η、Constr 6.1 (1)、Cor 4.12）、A2 D32、A5 StrongDescent・SemiperfectoidCase | ○ | `IsDerivedComplete {p,d} x → (∀ i, IsZero ((koszulComplexOn ![p,d] M).homology i)) → ∀ i, Subsingleton (H A i x)`（M は semifree 代表。⊗^L を待たない） |
 
@@ -192,7 +192,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 `QCatAdjunction`（F1B/Adjunction。A2 の反射と同じ型）、`IsSiftedInfinity`・`exists_siftedExtension`・`SigmaPresheafInfinity`（F2）、`IsPresentable`（F2/Presentable）、
 `IsInvertibleEdge`（Core/InvertibleEdgeLifting）、`FunctorIso`・`FunctorHom`・`VertexIso`（Core）、`JoinCone`・`JoinCocone`・`IsLimitCone`・`IsColimitCone`・`mapJoinCocone`（Core/Limit）、
 `fullSubcomplexOnVertices`（Core/TerminalVertices）、`derivedInfinityBaseChange`・`discreteEmbedding`・`H`（Derived）、`suspensionFunctor`・`loopFunctor`（Stable）、
-`cAlgForgetDerived`・`algebraEmbedding`・`CAlg_R`（EInfinity）、`koszulComplexOn`・`dgNerve.vertexEquiv`（HA／DGNerve）、Mathlib の `GrothendieckTopology`・`Sieve`・`Coverage`・`presheafToSheaf`・`pushout`。
+`derivedSuspensionShiftObjectIso`（Derived、Σ = [1]）、`cAlgForgetDerived`・`algebraEmbedding`・`CAlg_R`（EInfinity）、`koszulComplexOn`・`dgNerve.vertexEquiv`（HA／DGNerve）、Mathlib の `GrothendieckTopology`・`Sieve`・`Coverage`・`presheafToSheaf`・`pushout`。
 
 ## 4. ∞ レーンへの依頼（案。W2b の取り込み後に調整役が IF の指示書に起こす）
 
@@ -221,3 +221,4 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 ## 6. 履歴
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
+- 2026-11-03（D5-01、Codex）：§1.2 の shift の式を `IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)` に訂正、分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。

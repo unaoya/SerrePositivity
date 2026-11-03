@@ -91,4 +91,5 @@ descendable の一般形は Mod_R の thick ⊗-ideal（W9-II-13、D3-04）、�
 
 ## 3. 経緯（2026-11-03）
 
-- 指示書作成（入口表 `foundation-entry-points.md` と同時）。開始は BS-D4 の後、2a の取り込みを待たない。
+- 指示書作成（入口表 `foundation-entry-points.md` と同時）。開始は BS-D4 の後、2a の取り込みを待たない。基準コミット dc77a84dd。
+- **D5-01**：入口表 §1.2 の shift の式の向きを訂正（`IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)`、Σ = [1] は `derivedSuspensionShiftObjectIso`）。分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。
