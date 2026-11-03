@@ -261,7 +261,7 @@ InfinityCategories/
 | IF-W1W2a | 一つの束：R79（2 コミット）＋ R75 ＋ w1.json ＋ w2a.json を適用 → DG-W1 後の main を取り込み、`.lake/build` を複製 → 下流の一回ビルド → 保存検査 → verify（§10.12〜10.14 の規則）。段 A・B・閉包の切断（R26・R39・R66・R71・R49b・R50）は w1.json の中身として同じ束に含まれる | W1＋W2a |
 | IF-W2a-2 | R76 → R77 → R67（Inputs/Homotopy）。`merge_modules.py` がそろってから | W1＋W2a の後半 **完了（11-02、5c909058e）** |
 | IF-W2b | R73 → R37 → R38 | W2b | **完了（11-03、3e27dda00）**。指示書 [infinity-codex-w2b.md](infinity-codex-w2b.md) §1〜§18。中核層間の順序違反 0、F1B の straightening 非依存を保持。W2c への入力：180 本と 6 根の経路（`targets/w2b-section18-stop3.json`） |
-| IF-W2c | 段 E | W2c |
+| IF-W2c | 群 A（R27・R64・R72 の残り：直接の禁止辺 18 を切り、中核の閉包から KST・モデル圏の HA を消す）→ 群 B（段 E：R51 → R68 → R52 → R69 → R70 → R56b）→ R45 | W2c | 指示書 [infinity-codex-w2c.md](infinity-codex-w2c.md)（11-03 深夜）。草案は今すぐ、下流は 2a・2b の後 |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
 
 **各回の検証**（すべて通るまで次へ進まない）：
