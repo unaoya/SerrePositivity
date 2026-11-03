@@ -207,6 +207,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 
 10. （11-04）**2a 取り込み（590c4eff7）**：BhattScholze/・CLMST/ の編集再開。drafts の import は旧 `CommutativeAlgebra.IntegralPerfectoid`（削除、宣言は `CommutativeAlgebra/Perfectoid/Defs`）7 行と `CommutativeAlgebra.Koszul`（→ `Koszul.Basic`）3 行を追従し、全 import の解決を確認。宣言の改名 312 件のうち drafts に当たるのは `CLMST.perfectoidizationCone` → `BhattScholze.perfectoidizationCone` だけで、drafts の同名は別名前空間（`…Perfectoidization.Derived`）の独自定義なので変更不要。BS-W10 の基準を 590c4eff7 以降に、`completed-tensor-split.md` §0 に 2a 後の利用側（有限直積は 3 本、CLMST 1 本）を追記。作業 A が main に入ったら調整役へ知らせる（2b の全ビルドの前に取り込む）。
    - BS-W10 停止点 A-1 検収（11-04、報告 dc9d5120f、Lean は worktree `codex/bs-w10-a` に未コミット）：芯は CompletedTensor に残し（前半 5 節は文字列一致）、有限直積は `BhattScholze/Perfectoid/FiniteProduct.lean`、利用側 3 本と CLMST ConstantRank は import 1 行ずつ。E3 への到達は drafts 111 起点で `[]`。`isIntegralPerfectoid_finPi` は名前・引数順を保ち型検査済み、直接証明の sorry 10（直積の完備性・mod p・Perfection・Witt・PreTilt の同型、θ の両立、核の主性、二項・Fin r の perfectoid 性）。A-2 で埋めて直接 importer のビルド。
+   - **BS-W10 作業 A 完了・main に取り込み（cc67ea88e、実装 fae7c9ca3、報告 0ce6df07b、11-04）**：sorry 0、`isIntegralPerfectoid_finPi` は空積を含めて E3 非依存の直接証明。CompletedTensor・FiniteProduct・drafts 111 起点のいずれからも E3 に到達しない（W9-III-08 の条件を満たし、A9 の前提が一つ外れた）。単体ビルド 11 本・126 秒、監査は BS が import と登録だけ・CLMST 差分なし。drafts/A6/PerfectoidFiniteProduct は削除。調整役へ通知（2b の全ビルドの前に取り込み済み）。次は作業 B（Lemma 10.12）。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
