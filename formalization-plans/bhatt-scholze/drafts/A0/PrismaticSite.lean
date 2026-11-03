@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
 public import Mathlib.SetTheory.Cardinal.Arithmetic
--- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean（将来 …InfinityCategories.Sheaves.*）を import する。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections}.lean と drafts/DerivedGeneral/ScalarRestriction.lean（M13）を使う。
 
 /-!
 # prismatic site とその構造層（BS 著者版 Def 4.1、Rem 4.6、Not 4.16）
@@ -265,12 +265,14 @@ def hodgeTateCohomology
 方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。
 規約：D(A) の辺。
 使われ方：A4（Def 8.2）。
-要確認：φ_A に沿うスカラー制限の D(A) 上の関手の名前。 -/
+使われ方：A2 の多項式上の Frobenius、A4 の正の反復。 -/
 def prismaticCohomologyFrobenius
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
-    True := -- 要確認：型は `Edge (prismaticCohomology …) (φ_{A*} (prismaticCohomology …))`
-  trivial
+    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    let Δ := prismaticCohomology P R κ hJ hE
+    let res := InfinityCategories.derivedInfinityRestrictScalars P.deltaStructure.frobeniusLift
+    SSet.Edge Δ (res.app (Opposite.op ⦋0⦌) Δ) := by
+  sorry -- 各 B の Frobenius は B → Res_φ B として A 線形。S2 で誘導した辺の標的を極限保存で Res_φ Δ に移す
 
 /-- 濃度の上限だけを緩める環側の包含。射の二つの可換条件も同じものを使う。 -/
 def prismOverCutoffInclusion {κ κ' : Cardinal.{u}} (hle : κ ≤ κ') :

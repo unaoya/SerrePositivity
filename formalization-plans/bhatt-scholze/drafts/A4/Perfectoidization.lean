@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a4-design.md §2.1・§2.2・§2.4、単位 A4-1・A4-2・A4-4。基準コミット 972bb7f53。ビルドしない。
 module
 
+public import Mathlib.Algebra.Category.Ring.Basic
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
@@ -44,19 +45,47 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 
 /-! ## Not 8.1：perfectoid 環と完全 prism -/
 
-/-- 概要：R に対応する完全 prism (A,(d))：A = A_inf(R)、d は distinguished な生成元、A/d ≅ R（Thm 3.10、既存）。
-方針：`exists_perfectoidTrialPrism` 型の既存定理で選ぶ（要確認：名前）。
-規約：向き付き（d を固定する。原典 Not 8.1 の "fix a distinguished element d"）。
-使われ方：Δ_{S/A} の基底。 -/
-def perfectPrismRing : Type u := sorry
-def perfectPrism : OrientedPrism p (perfectPrismRing p R) := sorry
-theorem perfectPrism_isPerfect : (perfectPrism p R).deltaStructure.IsPerfect := by sorry
-theorem perfectPrism_bounded : IsBoundedPrism (perfectPrism p R) := by sorry
-def perfectPrism_quotientEquiv : (perfectPrismRing p R ⧸ (perfectPrism p R).ideal) ≃+* R := sorry
+/-- A_inf(R)。perfectoid な R で p が単元になるのは零環の場合だけである。 -/
+def perfectPrismCoefficients : CommRingCat.{u} := by
+  classical
+  exact if hp : IsUnit (p : R) then CommRingCat.of R else
+    letI : Fact (¬ IsUnit (p : R)) := ⟨hp⟩
+    CommRingCat.of (WittVector p (PreTilt R p))
+
+abbrev perfectPrismRing : Type u := (perfectPrismCoefficients p R : Type u)
+
+def perfectPrismTheta (hR : IsIntegralPerfectoid R p) : perfectPrismRing p R →+* R := by
+  classical
+  by_cases hp : IsUnit (p : R)
+  · simpa [perfectPrismRing, perfectPrismCoefficients, hp] using RingHom.id R
+  · letI : Fact (¬ IsUnit (p : R)) := ⟨hp⟩
+    letI : IsAdicComplete (Ideal.span {(p : R)}) R := by
+      sorry -- hR の非零枝にある完備性。零環では hp は成り立たない
+    simpa [perfectPrismRing, perfectPrismCoefficients, hp] using WittVector.fontaineTheta R p
+
+/-- Not 8.1 の向きは Fontaine 核の distinguished 生成元を選んで決める。 -/
+theorem exists_perfectPrismOverTheta (hR : IsIntegralPerfectoid R p) :
+    ∃ P : OrientedPrism p (perfectPrismRing p R),
+      P.deltaStructure.IsPerfect ∧ P.ideal = RingHom.ker (perfectPrismTheta p R hR) := by
+  sorry -- 非零枝は exists_distinguished_fontaine_kernel_generator と Thm 3.10、零枝は零 prism
+
+def perfectPrism (hR : IsIntegralPerfectoid R p := by assumption) : OrientedPrism p (perfectPrismRing p R) :=
+  (exists_perfectPrismOverTheta p R hR).choose
+
+theorem perfectPrism_isPerfect (hR : IsIntegralPerfectoid R p) :
+    (perfectPrism p R hR).deltaStructure.IsPerfect := (exists_perfectPrismOverTheta p R hR).choose_spec.1
+
+theorem perfectPrism_bounded (hR : IsIntegralPerfectoid R p) : IsBoundedPrism (perfectPrism p R hR) := by
+  sorry -- A/d ≃ R と perfectoid 環の有界 p 冪ねじれ
+
+def perfectPrism_quotientEquiv (hR : IsIntegralPerfectoid R p) :
+    (perfectPrismRing p R ⧸ (perfectPrism p R hR).ideal) ≃+* R :=
+  (Ideal.quotEquivOfEq (exists_perfectPrismOverTheta p R hR).choose_spec.2).trans
+    ((perfectPrismTheta p R hR).quotientKerEquivOfSurjective (by sorry)) -- Fontaine 射は全射
 
 /-! ## Def 8.2 -/
 
-variable (S : Type u) [CommRing S] [Algebra R S] (hS : True) -- 要確認：S が導来 p 完備（`IsModuleComplete S p`）
+variable (S : Type u) [CommRing S] [Algebra R S] (hS : SerrePositivity.DerivedCompletion.IsModuleComplete S (p : S) (ModuleCat.of S S))
 
 /-- 概要：Frobenius の sequential 図式 Δ_S → φ_{A*}Δ_S → φ_{A*}²Δ_S → ⋯（CAlg_A の ℕ 添字の図式、遷移射は φ_{A*}^n(φ)。原典 Def 8.2 (1) の形、W9-II-01）。
 方針：A2 の `derivedPrismaticFrobenius` φ : Δ → φ_{A*}Δ と、スカラー制限 φ_{A*} = Res_{φ_A} の反復（G-A4-3）。φ_{A*} の逆は使わない。
