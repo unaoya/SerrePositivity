@@ -208,3 +208,31 @@ D1-01 の決定に従い、`drafts/A6/ArcSite.lean` に (1) と一点被覆の `
 - 零環を含む箇所では `CharP B p` の代わりに `(p : B) = 0` と `PerfectRing B p` を使った。`CharP` は n の像が零であることと p∣n の同値を全ての n で要求し、零環で n = 1 とすると成立しない。G-A6-1 を適用するのは設計 §3.1(3) の積 B = S^♭ × R^♭[1/a] への一点族である。a = 0 のとき局所化因子自身に `CharP` は要求しない。基底が零なら図式全体が零。積が零ならその一点被覆の試験射がない場合を別に扱う（非零の完全 F_p 代数には素点の剰余体への試験射がある）。
 - §3 の停止を要する新しい設計差は見つからなかった。Prop 8.10 の一次的な結論には docstring に合わせて増大交代和複体の完全性を選んだ。Cor 8.11 は affPerfd_κ/S の上だけで述べた。A5 の極限性や S1 の生成系の補題など、証明で使う drafts 側の入力は未証明である。
 - 検査は宣言・依存名のソース照合、対象の仮置きの検索、変更パスの確認、`git diff --check`。ビルド・Lean 実行・型検査はしていない。編集は ArcSheafProperty と本報告への追記だけ。停止点3（A8）以降は未着手。
+
+## 第6部（停止点3の途中、標数 p の判定の核）
+
+開始時の HEAD は main `a9dc3a164`、作業ツリー・index は空。G-A8-4 の定義と三つの性質を具体化した。`isUniversalHomeomorphism_iff_charP` で「核が冪零」の二つの読みが同値でないため、指示書 §3 に従いその宣言は `True` のまま残した。停止点3には未到達。
+
+### 具体化した宣言
+
+| 宣言 | 入力と結論 |
+| --- | --- |
+| `IsUniversalHomeomorphism` | 整性は既存の `f.IsIntegral`。Spec の全射性と単射性はいずれも `PrimeSpectrum.comap f` に課した。各 Q ∈ Spec B に対し P = f⁻¹Q とし、標準射 `Ideal.ResidueField.map P Q.asIdeal f rfl` の `toAlgebra` で κ(P)→κ(Q) の純非分離性を課した。 |
+| `isUniversalHomeomorphism_baseChange` | f : A→B と g : A→C が与える二つの代数構造を局所的に指定し、f の普遍同相性から右の脚 C→B⊗_A C の普遍同相性を結論にした。 |
+| `isUniversalHomeomorphism_comp` | A→B と B→C の普遍同相性からその合成の普遍同相性を得る。 |
+| `isUniversalHomeomorphism_of_nilpotent_kernel` | 全射 f と `IsNilpotent (RingHom.ker f)` を仮定する十分条件。ここでは核イデアル全体の冪零性を仮定してよい。 |
+
+### 停止理由と反例
+
+今回の指示と draft の docstring は、一般の F_p 代数の射の**必要十分条件**にも「核が冪零」と書いている。直前の十分条件と同じ `IsNilpotent (RingHom.ker f)` を入れると、必要性が成り立たない。
+
+k = F_p、A = k[x₁,x₂,…]/(x₁²,x₂²,…) とし、すべての xᵢ を 0 に送る f : A→k を取る。核 I の各元 z は zᵖ = 0 を満たす。実際、z は有限個の正次数単項式の和で、Frobenius は加法的である。よって全ての素イデアルが I を含み、商写像は Spec で全単射で剰余体は k→k。写像は整なので今回の定義による普遍同相であり、全射だから「各元のある p 冪が像に入る」も満たす。しかし全ての n ≥ 1 で x₁⋯xₙ は Iⁿ の非零元である。この単項式はどの xᵢ² でも割れない。従って I は冪零イデアルでない。
+
+W9 の「Lemma 10.12 の残部」（`review-codex-w9.md` 2907–2908、2915行）は一般の nil イデアルには一様な指数を要求せず、広げる際にも核の nil 性を使う。これに対応する判定の右辺の候補は
+`RingHom.ker f ≤ nilradical A ∧ ∀ b : B, ∃ n : ℕ, b ^ (p ^ n) ∈ f.range`。
+左の条件は `mem_nilradical` により各核元が冪零であることを表す。Mathlib の `PrimeSpectrum.isHomeomorph_comap` にもこの条件が現れる（同補題の結論は Spec の位相同型）。この読みを採用するか、イデアル自体の冪零性を必要とする別の一般性に限るかが、再開時の確認点である。Lemma 10.12 自体への反例ではない。
+
+### 確認と残件
+
+- 新しい未発見名の仮置きとファイル内の名前に関する `要確認` は0件。`PrimeSpectrum.comap_asIdeal`、`Ideal.ResidueField.map` の等式の向き、`IsPurelyInseparable`、`Algebra.TensorProduct.includeRight`、本体での `IsNilpotent (RingHom.ker f)` の使用例をソースで照合した。
+- 標数 p の判定以降の7定理（完全環から被約環の場合、純非分離、近似、一般点、主開への拡張、最終層別を含む）は基準のまま。変更は `drafts/A8/Stratification.lean` と本報告のみ。ビルド・Lean 実行・型検査はしていない。

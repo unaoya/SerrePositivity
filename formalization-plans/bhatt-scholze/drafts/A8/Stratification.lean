@@ -6,6 +6,9 @@ module
 public import Mathlib.RingTheory.Etale.Locus
 public import Mathlib.FieldTheory.PurelyInseparable.Basic
 public import Mathlib.RingTheory.Noetherian.Basic
+public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+public import Mathlib.RingTheory.Spectrum.Prime.Homeomorph
+public import Mathlib.RingTheory.TensorProduct.Basic
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
@@ -20,7 +23,7 @@ R → S を可換 Z_(p) 代数の有限表示有限射とする。g_1,…,g_n �
 各拡大は分離閉包（有限エタール）と純非分離（普遍同相）に分解、全商環から主開集合 D(g_1) に広げ、noetherian 帰納。(3) は (pg_i, g_i) で細分。
 
 ## 規約
-普遍同相は「整・Spec 全射・radicial」で定義（G-A8-4、要確認：Mathlib の相当物）。
+普遍同相は「整・Spec 全射・radicial」で定義（G-A8-4）。剰余体の代数構造は各点の標準射から取る。
 
 ## 使われ方
 Thm 10.11（A8-4）。
@@ -32,19 +35,38 @@ universe u
 
 namespace SerrePositivity.CommutativeAlgebra
 
+open scoped TensorProduct
+
 /-- 概要：G-A8-4：環の射が普遍同相：整・Spec で全射・radicial（普遍単射：剰余体の拡大が純非分離で Spec で単射）。
 方針：定義。
 規約：—
 使われ方：Lemma 10.12 (2)。 -/
 structure IsUniversalHomeomorphism {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) : Prop where
   isIntegral : f.IsIntegral
-  surjective_spec : True
-  radicial : True
+  surjective_spec : Function.Surjective (PrimeSpectrum.comap f)
+  radicial : Function.Injective (PrimeSpectrum.comap f) ∧
+    ∀ Q : PrimeSpectrum B,
+      let P := (PrimeSpectrum.comap f Q).asIdeal
+      letI := (Ideal.ResidueField.map P Q.asIdeal f rfl).toAlgebra
+      IsPurelyInseparable P.ResidueField Q.asIdeal.ResidueField
 
 /-- 概要：普遍同相は底変換・合成で安定、冪零イデアルによる商は普遍同相。 -/
-theorem isUniversalHomeomorphism_baseChange : True := by trivial
-theorem isUniversalHomeomorphism_comp : True := by trivial
-theorem isUniversalHomeomorphism_of_nilpotent_kernel : True := by trivial
+theorem isUniversalHomeomorphism_baseChange {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
+    (f : A →+* B) (g : A →+* C) (hf : IsUniversalHomeomorphism f) :
+    letI : Algebra A B := f.toAlgebra
+    letI : Algebra A C := g.toAlgebra
+    IsUniversalHomeomorphism (Algebra.TensorProduct.includeRight : C →ₐ[A] B ⊗[A] C).toRingHom := by
+  sorry -- 整性は底変換で保たれる。各点の幾何学的ファイバーが非空で一点であることも保たれる
+
+theorem isUniversalHomeomorphism_comp {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
+    (f : A →+* B) (g : B →+* C) (hf : IsUniversalHomeomorphism f)
+    (hg : IsUniversalHomeomorphism g) : IsUniversalHomeomorphism (g.comp f) := by
+  sorry -- 整性と剰余体の純非分離性の推移性、および Spec の全単射の合成
+
+theorem isUniversalHomeomorphism_of_nilpotent_kernel {A B : Type u} [CommRing A] [CommRing B]
+    (f : A →+* B) (hf : Function.Surjective f) (hker : IsNilpotent (RingHom.ker f)) :
+    IsUniversalHomeomorphism f := by
+  sorry -- 冪零核は全ての素イデアルに含まれ、商写像は Spec で全単射かつ各剰余体で同型
 
 /-- 概要：標数 p の判定：F_p 代数の射が普遍同相 ⇔ 核が冪零で、各元の或る p 冪が像にある。 -/
 theorem isUniversalHomeomorphism_iff_charP : True := by trivial
