@@ -346,6 +346,8 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   Prop247ConeComparison の 4 宣言 → DerivedCompletion/CompletedTensorVanishing（名前空間 `DerivedCompletion`）。
 - 計画で削除とされていた ModuleConeCoordinates・ModuleConeNaturality・AdicTower・CompletedTensorModuleReduction・FlatResidueLimitTorsion・
   PowerTorsionTorProduct は既にない。
+- BS の依頼（CompletedTensor の分割、仕様書 completed-tensor-split.md）は 2a に入れない。2a の取り込みの後に BS が BS-W10 の作業 A として行い、
+  2b の全ビルドに相乗りする（11-03 ユーザー決定）。**2b の全ビルドの前に main を取り込み、BS の変更を含める**。CLMST の 5 本の import 行は BS が直す。
 - 2a の小さなビルド（98484d01e、274 本）の失敗 3 件を修正（aae233fb5 ほか）：新しく書いたファイルの `noncomputable` の抜け 2 件と、BS の名前空間へ
   移したファイルで BS の別名（`alias compatibleRootFamilyIdeal := …`）に修飾なしの名前が当たった 1 件。失敗した 3 本の下流は未検証。
 ## G. 決定待ち
