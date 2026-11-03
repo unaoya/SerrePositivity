@@ -23,6 +23,13 @@ E3 の `perfd` の始域（通常の離散 R 代数 `A_R R`）への制限は離
 - 前提：A0 の `prismaticCohomology`（多項式代数の Δ、D(A) 値）と Čech–Alexander 模型、A1 の Thm 6.3（HT 比較）と Cor 4.12（底変換）、
   ∞ 層の S2（RΓ）、G-A1-11（CAlg 値の RΓ と模型の E∞ 構造）。
 
+## 0′. D4-01（11-03、BS-D4 の質問への回答）：HT filtration の係数
+
+gr^i = (∧^i L_{S/k})^∧[−i] の完備化は**導来** p 完備化（D(k)_{p-comp} 内、W9 で訂正）。多項式代数では ∧^i L = Ω^i（Shared の `forms`、通常の Kähler 形式）で、
+A2 はこれを `discreteEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施す。H⁰ の完備化 `completedForms`（Shared）に置き換えると、k の p 冪ねじれが
+有界でないとき導来完備化の負次数を失う。有界 prism の k = A/d（有界 p 冪ねじれ）では両者が一致（`completedForms_eq_derivedCompletion_of_boundedTorsion`、Shared）し、
+A1 はその同定で設計の Ω̂ を使う。Shared の `forms`・`completedForms` は k・T・p を明示引数にし、`completedForms` に `completedPoly k T p` 加群の構造を付けた。
+
 ## 1. 原典の項目と形式化の対応
 
 | 原典 | 扱い | Lean の形（§2） | 既存・不足 | 単位 |
