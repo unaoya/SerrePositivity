@@ -38,7 +38,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A2-4 完備化不変性・(4)・(5) | a2-design §2.4 | A2/BaseChangeAndTensor | 未（a2 §7 の 3・4） | C・D |
 | A3-1 Lemma 7.8、Lemma 7.7(2)(3) | a3-design §2.1 | A3/DiscreteCase | — | A（Mathlib の冪等完備・Under）、C（S2 の極限の脚） |
 | A3-2 Lemma 7.7(1′)(1″) | a3-design §2.1 | A3/DiscreteCase | — | A（Rem 2.2 の δ 構造の名前） |
-| A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | E′（p 反転の議論 G-A3-7 は A3 の黒箱）、G-A3-1・2 |
+| A3-3 Ex 7.9 | a3-design §2.2 | A3/LciAndQuasiregular | 未（a3 §8 の 1〜3） | G-A3-7（p 反転の議論。**証明予定**の補題で恒久的な引用ではない、W9-III-12）、G-A3-1・2 |
 | A3-4 qrsp・Prop 7.10・Cor 7.3 との接続 | a3-design §2.3 | A3/LciAndQuasiregular | 未（a3 §8 の 4〜6） | G-A3-3・4・8、RootEnvelope の対応表 |
 | A4-1 Not 8.1・Def 8.2 | a4-design §2.1 | A4/Perfectoidization | — | C（G-A4-2・3・4）、A（Thm 3.10 の prism の名前） |
 | A4-3 E3 の perfd・unit・h0 | a4-design §2.3 | A4/InterfaceFields | — | A（`completionRing` の関手版、CAlg_R の H⁰ の環）、D（2b の改名） |
@@ -60,7 +60,7 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 | A8-2 Thm 10.9 の J-almost 連結性 | a8-design §2.2・§3.2 | A8/AlmostPurityConnectivity | 修復済み（W9-III-01・02：有限表示有限に戻し、S′ の完備性は G-A8-3′、ArcOutside は整性つき G-A8-3″。修復計算は W9 第 3 部で ○） | A（Thm 7.14・aic エタールの名前）、A6-4、A7 |
 | A8-3 Lemma 10.12 | a8-design §2.3・§3.4 | A8/Stratification | 部分（被約商の底変換は W9 ○、Z_(p) の仮定を引数に戻した W9-III-07。近似・広げ・細分は Codex 未） | A（Mathlib：noetherian・極小素イデアル・分離閉包・エタール locus）、G-A8-4・5・7。独立した Codex の単位、置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`・`EtaleStratification/`（2a の後） |
 | A8-4 Thm 10.11・E3 の integral | a8-design §2.4・§3.3 | A8/IntegralDiscreteness | 修復済み（W9-III-04〜06：Cor 8.12 は S → T̂ = completionRing T に、近似は T への写像を備えた filtered 系、D70）。紙 3・4・7 の局所的接続は W9 ○、6 と filtered 余極限の全接続は Codex 未 | G-A8-6・8・9、A5・A7 |
-| A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | — | A4〜A8 の全欄。Inputs の書き換えは中身の段階 |
+| A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
 骨組みの規模：41 本、約 5,200 行（`sorry` 198、置き場の `True` 259）。コミットは 2ff4f3f09・48dd7ef31・e87797ee2・95c3ba18e・29c57f835・b70d99517・3d81d9f9d・37675c4b0 ほか（A6 まで）。
@@ -158,12 +158,19 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 - （main 26f9f7fc5）Lemma 10.12（A8-3）の置き場所は `CommutativeAlgebra/UniversalHomeomorphism/`（普遍同相の一般論）と `CommutativeAlgebra/EtaleStratification/`
   （層別の本体）。どちらも 2a の後に新規ファイルだけで入れ、論文の層へ名前を予約。独立した Codex の単位、担当は 2a の後。A8-1・A8-2・A8-4 の仮置きも問題なし。
 
+**調整役へ依頼（2026-11-03、W9-III-08、未返答）**：`BhattScholze/Perfectoidization/CompletedTensor.lean` は `Derived/IntegralExistence` 経由で `Inputs/PerfectoidizationInterface` を
+import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う。E3 を消す組み立て（Inputs の証明を Assembly に置換）で循環するので、Fontaine による完備テンソルの芯
+（`integralPerfectoid_completedTensor_pure_and_h0` まで）を E3 非依存のモジュール（仮称 `CompletedTensorCore`）へ切り出し、`Almost/Lemma103` の依存をそこへ向け、有限直積は
+直接証明に替えたい。2a が Perfectoidization* を Perfectoid/ へ統合するので、**2a に含めるか 2a 直後の最初の作業**にしてほしい（BS は 2a まで BS の Lean を触らない）。
+詳細は a9-design §7。
+
 ## 4. 次の作業（提案）
 
 1. A1-5 の決定（a1-design §9.4）の反映。その後は中身の段階へ：調整役と暦（W2b・2b の後）、(A) の名前探し、A1-2/A1-3 の黒箱の骨組み。
 2. （済）A6（excision の欄）、A7（universal の欄）、A8（integral の欄）、A9（界面の組み立て）の設計書と骨組みは 11-02 に完了。
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
+5. （11-03、W9-III-08）2a 後：CompletedTensor の E3 非依存の芯への分割と有限直積の直接証明（調整役と時期を合わせる）。中身の段階の `lake build` の前に import の到達性で E3 非依存と drafts/README の DAG を確認する。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
@@ -253,6 +260,12 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 | W9-III-05 S → T の局所化は同型とは限らない（S = V[ε]/(ε²)、g = p。原典は arc 層の同型）ので G-A8-3″ を S に直接当てられない | 要修正 | 訂正済み（S → S_red → T ⊂ B と書き、ArcOutside は W 被約で S_red を通し Frac(W) と整閉性で。`integralClosureInLocalization_arcOutside`） |
 | W9-III-06 「整閉包の有限生成部分代数」では有限表示性が出ない | 要修正 | 訂正済み（G-A8-11：T への写像を備えた有限表示有限 A_λ の filtered 系、A_λ[1/g_1] ≅ B、単射性を要求しない。`exists_finitePresentation_approximation_fixedLocalization`） |
 | W9-III-07 Lemma 10.12 の骨組みの引数に Z_(p) 代数の仮定がない（q ≠ p の純非分離拡大で偽） | 要修正 | 訂正済み（`exists_finiteEtaleStratification` に `hZp : ∀ q, q.Prime → q ≠ p → IsUnit (q : R)` を追加） |
+| W9-III-08 本体の実 import `CompletedTensor → IntegralExistence → Inputs`（有限直積 `isIntegralPerfectoid_finPi` が E3 を使用）により、A6・A8（Lemma103 経由）から Inputs へ到達し、Inputs の証明を Assembly に置き換えると循環 | 致命（配置） | **方針決定（2026-11-03、Codex 推奨 (a)）**：Fontaine の芯を E3 非依存のモジュールへ切り出し、Lemma103・A6・A8 の依存をそこへ、有限直積は直接証明（G-A6-12）。**実施は 2a 後**（BS は 2a まで BS の Lean を触らない。調整役へ依頼、§3.1）。drafts の import 行にコメント、a9-design §7（受入条件：Inputs への到達経路なし）、drafts/README「ファイル順序」 |
+| W9-III-09 A1・A4・A5 で先行の定義と後段の定理が同居（DeRhamComparisonPoly↔HodgeTateComparison の黒箱、WeaklyInitialAndDescent の根添加と降下、PerfectSiteComparison の比較写像と Prop 8.5、InterfaceFields の `e3Perfd_eq_direct`、Perfectoidization の Example 8.3） | 要修正 | 訂正済み（新設 `A1/CrystallineInput`・`A5/RootAdjunction`・`A5/PerfectSite`・`A4/AfterComparison`、Lemma 8.6 の主張は StrongDescent に一本化、各 import コメントを更新。DAG は drafts/README「ファイル順序」と a9-design §7。所有単位は不変） |
+| W9-III-10 almost 連結性の余極限保存は G-A8-8 からは出ず（A_λ の perfd が perfectoid とは未知）、非有界版 Prop 10.4 には忘却 U の完全忠実性・極限余極限保存が要る；一般 J と単項 `perfectoidIdeal` の API の区別 | 要修正 | 訂正済み（G-A8-1 の系 `isAlmostConnective_iff_completedTensor_connective`・`isAlmostConnective_completedFilteredColimit`、内部補題 `restrictScalars_perfectoidQuotient_fullyFaithful`；G-A8-8 は一般の整代数への帰着でだけ使う。a8-design §2.1・§3.3(5)・G-A8-1・G-A8-8・§8.7・8、`AlmostConnectivity.lean`・`IntegralDiscreteness.lean`） |
+| W9-III-11 `truncationLE_isCoconnective`・`truncationLE_of_isCoconnective` の述語の向きが逆（τ^{≤n} は `IsConnectiveAt n`） | 要修正 | 訂正済み（`truncationLE_isConnective`・`truncationLE_of_isConnective` に改名・訂正。A2/HodgeTateFiltration の参照も） |
+| W9-III-12 A9 の残存引用一覧が D68 前の形（`hodgeTate_iso_polynomial_Zp`）、G-A3-7 の「黒箱」の意味が曖昧、S8 の G13 が抜け | 要修正 | 訂正済み（a9-design §3 を「恒久的な引用」「証明予定」「基盤依存」の三欄に。黒箱は `crystalline_deRham_polynomial_Zp` 一件、1c と P⁰ は暫定、G-A3-7 は証明予定。a3-design §6、本表 A3-3 行） |
+| W9-III-13 `nonempty_e3_of_cAlg` の hR は暗黙引数 | 軽微 | 訂正済み（`(hR := hR)`。`Assembly.lean`、a9-design §2） |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

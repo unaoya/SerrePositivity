@@ -59,8 +59,10 @@ def truncationGE (n : ℤ) : derivedInfinityCategory A ⟶ derivedInfinityCatego
 /-- 概要：τ^{≤n}X → X の自然変換と、その H^i（i ≤ n）での同型。 -/
 def truncationLE_counit (n : ℤ) : True := trivial -- 要確認：NatInfinity（SSet.Homotopy）の形で
 
-theorem truncationLE_isCoconnective (n : ℤ) (x : (derivedInfinityCategory A) _⦋0⦌) :
-    IsCoconnectiveAt A n (vertexOf (truncationLE A n) x) := by sorry -- 要確認：頂点の記法
+/-- 概要：τ^{≤n}X ∈ D^{≤n}、すなわち `IsConnectiveAt n`（H^i = 0 for i > n）。W9-III-11 で述語の向きを訂正（以前は `IsCoconnectiveAt` で逆：
+非零 A、X = A[1]、n = 0 なら τ^{≤0}X = X は H^{−1} ≠ 0 で coconnective でない）。 -/
+theorem truncationLE_isConnective (n : ℤ) (x : (derivedInfinityCategory A) _⦋0⦌) :
+    IsConnectiveAt A n (vertexOf (truncationLE A n) x) := by sorry -- 要確認：頂点の記法
 
 /-- 概要：cofiber 列 τ^{≤n−1}X → τ^{≤n}X → H^n(X)[−n]（gr^n）。
 方針：複体の計算と `derivedCospanFiberSquare`。
@@ -78,8 +80,8 @@ theorem tStructure_axioms : True := by trivial
 方針：H^i の検出。
 規約：—
 使われ方：HT filtration が多項式代数で有限段で止まること。 -/
-theorem truncationLE_of_isCoconnective (n : ℤ) (x : (derivedInfinityCategory A) _⦋0⦌)
-    (hx : IsCoconnectiveAt A n x) : True := by trivial
+theorem truncationLE_of_isConnective (n : ℤ) (x : (derivedInfinityCategory A) _⦋0⦌)
+    (hx : IsConnectiveAt A n x) : True := by trivial -- W9-III-11：仮定も `IsConnectiveAt n`（X ∈ D^{≤n} ⇒ τ^{≤n}X ≃ X）
 
 /-- 概要：導来 Nakayama の形：導来 (p,d) 完備な X で X ⊗^L A/(p,d) = 0 ⇒ X = 0（G-A1-4）。
 方針：完備化の塔と H^i の検出。

@@ -4,6 +4,7 @@ module
 
 public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 public import SerrePositivity.BhattScholze.Almost.Lemma103
+-- W9-III-08：Lemma103 は現行の CompletedTensor（→ IntegralExistence → Inputs）を import する。2a 後に Lemma103 の依存を E3 非依存の芯（仮称 CompletedTensorCore）へ向ける（a9-design §7）。
 -- 本ファイルは drafts/A7/AnimatedPerfectoidization.lean（Prop 8.13）、drafts/DerivedGeneral/{Truncation,CompletionFunctor}.lean を import する。
 
 /-!
@@ -39,11 +40,34 @@ variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerf
 使われ方：Lemma 10.5、Thm 10.9。 -/
 def IsAlmostConnective : True := trivial
 
-/-- 概要：Prop 10.4 の必要部分（D66）：導来 p 完備な複体 M について、M が J-almost 零（全 H^i）⇔ J_perfd ⊗̂^L_R M = 0。
-方針：加群版（B5）を truncation の帰納で有界複体へ、完備性で非有界へ（原典 "writing any object as a limit and colimit of its truncations"）。
-規約：完備テンソル。
+/-- 概要：内部補題（W9-III-10）：B := (R/J)_perfd（perfectoid、R/K、K := J_perfd）について Lemma 10.3 の B ⊗̂^L_R B ≃ B から、忘却
+U : D_{p-comp}(B) → D_{p-comp}(R) は完全忠実で、極限と余極限を保つ（通常の忘却は余極限を保ち、両側の完備化は同じ p）。像は安定部分圏で、
+有界切り捨て（有限個の拡大）と Postnikov 塔の極限・完備余極限で閉じる。
+方針：一般の perfectoid 商の Lemma 10.3（既存 `Lemma103` は単項 g の版なので K = ker(R → B) に一般化する）。完備テンソルが任意の逆極限と可換とは主張しない。
+規約：—
+使われ方：Prop 10.4 の非有界版。 -/
+theorem restrictScalars_perfectoidQuotient_fullyFaithful : True := by trivial
+
+/-- 概要：Prop 10.4 の必要部分（D66）：導来 p 完備な複体 M について、M が J-almost 零（全 H^i）⇔ K ⊗̂^L_R M = 0（K = J_perfd）。
+方針：加群版（B5。**単項 g の版**なので一般 J は K に対する補題として一般化、W9-III-10）を truncation の帰納で有界複体へ。非有界：各 H^i(M) は B 加群で U の像、
+有界切り捨ても像、τ^{≤m}M を下側の切り捨ての逆極限で、M を完備余極限で復元（Postnikov 完備性と U の極限・余極限保存）して M が像に入る；像の上で
+K ⊗̂ B = 0 を係数変更。逆は三角形 K ⊗̂ M → M → B ⊗̂ M。
+規約：完備テンソル。D66：圏同値は結論にしないが、証明で完全忠実性・像の閉性は使う。
 使われ方：Lemma 10.5。 -/
 theorem isAlmostZero_iff_completedTensor_isZero : True := by trivial
+
+/-- 概要：G-A8-1 の系（W9-III-10）：導来 p 完備な M について、M が J-almost 連結 ⇔ K ⊗̂^L_R M が連結。
+方針：⇒：Prop 10.4 で K ⊗̂ τ^{>0}M = 0、K ⊗̂ τ^{≤0}M は連結（Lemma 10.5 の証明）。⇐：三角形 K ⊗̂ M → M → B ⊗̂ M で i > 0 の H^i(M) は B 加群 H^i(B ⊗̂ M) に一致。
+規約：—
+使われ方：下の余極限での閉性、Thm 10.11 の A_λ の段（A8-4）。 -/
+theorem isAlmostConnective_iff_completedTensor_connective : True := by trivial
+
+/-- 概要：almost 連結な完備複体は完備 filtered 余極限で閉じる：M_λ が J-almost 連結なら LΛ_p(colim_λ M_λ) も。
+方針：上の同値で K ⊗̂ − に移し、完備テンソルは完備余極限を保つ；連結な複体は完備 filtered 余極限で閉じる（通常の filtered 余極限は完全、LΛ_p は D^{≤0} を保つ）。
+G-A8-8（perfectoid 性の余極限保存）とは別の補題で、各 M_λ が離散・perfectoid であることは使わない。
+規約：—
+使われ方：Thm 10.11 の A_λ → T̂_perfd（A8-4）。 -/
+theorem isAlmostConnective_completedFilteredColimit : True := by trivial
 
 /-- 概要：Lemma 10.5：p 完備な M ∈ D(R) が連結 ⇔ M ⊗̂^L_R R/J_perfd が連結かつ M が J-almost 連結。
 方針：⇒ は ⊗̂ R/J_perfd が連結性を保つ。⇐：三角形 J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M、J_perfd ⊗̂ τ^{>0} M = 0（Prop 10.4）、

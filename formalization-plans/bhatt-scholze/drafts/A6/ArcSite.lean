@@ -4,6 +4,9 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
+-- W9-III-08（致命・配置）：現行の CompletedTensor は IntegralExistence 経由で消去対象の Inputs/PerfectoidizationInterface を import する。2a の取り込み後に
+-- Fontaine による完備テンソルの芯を E3 非依存のモジュール（仮称 CompletedTensorCore）へ切り出し、本ファイルはそれだけを import する（a9-design §7、調整役へ依頼）。
+-- perfectoid 環の有限積が perfectoid であることは E3 を使う `isIntegralPerfectoid_finPi` ではなく直接証明（G-A6-12）。
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.Basic
 -- 本ファイルは drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、drafts/A0/PrismaticSite.lean（`cutoff`）を import する。
 

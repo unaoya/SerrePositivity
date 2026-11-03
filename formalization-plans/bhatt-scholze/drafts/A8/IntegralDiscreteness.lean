@@ -56,9 +56,11 @@ theorem perfectoidization_red : True := by trivial
 /-- 概要：G-A8-9：整 R 代数は有限表示有限 R 代数の filtered 余極限（R[x]/I を I の有限生成部分イデアル（モニック関係を含む）で近似）。 -/
 theorem integral_isFilteredColimit_finitePresentation : True := by trivial
 
-/-- 概要：G-A8-8：perfectoid 環の p 完備化した filtered 余極限は perfectoid で、p^∞ ねじれが有界なので導来 p 完備化は離散。
-方針：perfectoid の p ねじれ R[p^∞] = R[p]、Frobenius 全射と ker θ の主性は余極限で保たれる。
-規約：—
+/-- 概要：G-A8-8：perfectoid 環の p 完備化した filtered 余極限は perfectoid で、p^∞ ねじれが p で殺される（Lemma 2.34 (2)）ので導来 p 完備化は離散。
+方針（Codex W9 第 3 部続き 2 で ○）：共通基底（cofinal な λ₀/）の完全 prism (B_λ, d)（同じ d、Thm 3.10 と剛性）、C = colim B_λ は完全 δ 環で p・d 非零因子、
+C/d = P。p 完備化（p ねじれなしで離散、φ^{-1} は p 進連続）、mod d の cofiber は完備化と可換で LΛ_p P = P̂ 離散、d は完備化後も非零因子；d 完備化
+（Lemma 3.9 の順序）で離散な (p,d) 完備 D、D/d = P̂、D は完全 δ 環、(D,(d)) 完全 prism、Thm 3.10。W が任意の filtered 余極限と可換とは言わない。
+規約：**使う場所は一般の整代数への帰着（有限表示有限の連結性と Cor 8.14 の後）だけ**。A_λ の段では使わない（W9-III-10、`isAlmostConnective_completedFilteredColimit`）。
 使われ方：filtered 余極限での帰着。 -/
 theorem isIntegralPerfectoid_completedFilteredColimit : True := by trivial
 
@@ -136,10 +138,11 @@ theorem perfectoidization_almostIso_integralClosureCompletion (g : R) : True := 
 theorem exists_finitePresentation_approximation_fixedLocalization (g : R) : True := by trivial
 
 /-- 概要：g_1-almost 連結性：S_perfd → T̂_perfd は g_1-almost 同型（上）、T̂_perfd は g_1-almost 連結：各 A_λ に Thm 10.9 の連結性（A8-2、A_λ[1/g_1] = B は
-R[1/g_1] 上有限エタール）、perfd と almost 連結性を p 完備化した filtered 余極限で T̂ に移す（G-A8-8）。
+R[1/g_1] 上有限エタール）、A5 の filtered 余極限保存を完備圏で使って T̂_perfd ≃ LΛ_p(colim_λ (A_λ)_perfd)、A8-1 の
+`isAlmostConnective_completedFilteredColimit`（almost 連結な完備複体は完備 filtered 余極限で閉じる）で T̂_perfd は g_1-almost 連結。
+G-A8-8 はここでは使わない（(A_λ)_perfd が perfectoid とはまだ分からない。使えば Thm 10.11 の先取り、W9-III-10）。
 方針：A8-2 `perfectoidization_almostConnective_of_finiteEtaleAway`、`perfectoidization_almostIso_integralClosureCompletion`、
-`exists_finitePresentation_approximation_fixedLocalization`、filtered 余極限。
-要確認：filtered 余極限で T̂_perfd の almost 連結性へ移す全接続（G-A8-8 と合わせて）は Codex 未確認（W9 第 3 部続き 1）。 -/
+`exists_finitePresentation_approximation_fixedLocalization`、A8-1 `isAlmostConnective_completedFilteredColimit`（Codex 第 3 部続き 2 で全接続 ○）。 -/
 theorem perfectoidization_almostConnective_of_stratification : True := by trivial
 
 /-- 概要：Thm 10.11 の連結性：有限表示有限 S で S_perfd 連結（Lemma 10.12 の層別の長さの帰納、Lemma 10.5 で合わせる）。

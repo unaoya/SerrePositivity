@@ -46,8 +46,13 @@ Lemma 10.12 は古典的な可換環論の独立した単位（A8-3）。§10.1�
 - J ⊂ R 導来 p 完備（E3 では有限生成）、J_perfd := ker(R → (R/J)_perfd)（既存 `perfectoidIdeal`、Thm 7.4 で全射）。M（D(R)、導来 p 完備）が
   J-almost 連結 ⇔ H^i(M) が J-almost 零（∀ i > 0）。
 - `isAlmostZero_iff_completedTensor_isZero`（Prop 10.4 の必要部分）：加群版（既存 `perfectoidIdeal_completedTensor_isZero_of_isAlmostZero`・
-  `_of_completedTensor_isZero`）を有界な複体に truncation の帰納で、非有界は完備性と truncation の極限・余極限で（原典の "writing any object as a
-  limit and colimit of its truncations"）。
+  `_of_completedTensor_isZero`——**単項 g : R の版**。一般の J は K := J_perfd = ker(R → B)、B := (R/J)_perfd に対する補題として一般化し、一般の perfectoid 商の
+  Lemma 10.3 を使う、W9-III-10）を有界な複体に truncation の帰納で、非有界は完備性と truncation の極限・余極限で（原典の "writing any object as a
+  limit and colimit of its truncations"）。**非有界版に要る内部補題（W9-III-10、Codex 第 3 部続き 2 で ○）**：Lemma 10.3 の B ⊗̂^L_R B ≃ B（乗法）から忘却
+  U : D_{p-comp}(B) → D_{p-comp}(R) は完全忠実；U は極限を保ち、余極限も保つ（通常の忘却は余極限を保ち、両側の完備化は同じ p）；像は安定部分圏で
+  有界切り捨て（有限個の拡大）を含み、τ^{≤m}M を下側の切り捨ての逆極限で、M を m → ∞ の完備余極限で復元する（D(R) の Postnikov 完備性）ので M 自身が像に入る；
+  像の上で K ⊗̂ B = 0 を係数変更して K ⊗̂ M = 0。逆は三角形 K ⊗̂ M → M → B ⊗̂ M。完備テンソルが任意の逆極限と可換だとは主張しない。
+  D66（圏同値を結論にしない）は維持するが、証明で完全忠実性・像の閉性を使うことは別。
 - `connective_iff_almost`（Lemma 10.5）：⇒ は ⊗̂ R/J_perfd が連結性を保つ。⇐：三角形 J_perfd ⊗̂ M → M → (R/J)_perfd ⊗̂ M で、M が J-almost 連結なら
   J_perfd ⊗̂ τ^{>0} M = 0（Prop 10.4）、J_perfd ⊗̂ τ^{≤0} M 連結、よって J_perfd ⊗̂ M 連結。注：原典の (R/J)_perfd ⊗̂ M と R/J_perfd ⊗̂ M は
   (R/J)_perfd = R/J_perfd（Thm 7.4）で同じ。
@@ -150,7 +155,10 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
      全射で核は有限生成、分母を払った関係を加えて A_0 → T、A_0[1/g_1] ≅ B（関係が T で零なのは T ⊂ B から）。T の有限個の元 t_j はモニック式と
      g_1^{N_j} Y_j − a_j（B での表示）で加え、T で零になる有限個の関係も課す。この圏は filtered（二対象はテンソルで受け、平行射は差を関係に加えて等化、
      局所化は常に B）、余極限は T。A_λ → T の単射性は要求しない。各 A_λ に修復済みの Thm 10.9（J = (g_1)、A_λ[1/g_1] = B は R[1/g_1] 上有限エタール）を当て、
-     perfd と almost 連結性を p 完備化した filtered 余極限で T̂ に移す（G-A8-8。**全接続は Codex 未確認**）。
+     A5 の filtered 余極限保存を**完備圏で**使って T̂_perfd ≃ LΛ_p(colim_λ (A_λ)_perfd)。ここで (A_λ)_perfd が離散・perfectoid とはまだ分からないので
+     G-A8-8 は使えない（使えば Thm 10.11 の結論の先取り、W9-III-10）。代わりに G-A8-1 の系「M が g-almost 連結 ⇔ K ⊗̂ M が連結（K = (g)_perfd）」と
+     「almost 連結な完備複体は完備 filtered 余極限で閉じる」で T̂_perfd の g_1-almost 連結性を得て、G-A8-10 の g_1-almost 同型に沿って S_perfd へ移す
+     （Codex 第 3 部続き 2 で ○）。G-A8-8 は有限表示有限の連結性が済んだ後の一般の整代数への帰着（§3.3 の 1）でだけ使う。二つの余極限補題を分ければ循環はない。
 
 ### 3.4 Lemma 10.12
 
@@ -169,7 +177,7 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
 
 | # | 内容 | 既存 | 使う箇所 |
 | --- | --- | --- | --- |
-| G-A8-1 | Prop 10.4 の複体版（truncation の帰納と極限・余極限）、Lemma 10.5 | 加群版は既存（B5） | A8-1 |
+| G-A8-1 | Prop 10.4 の複体版（truncation の帰納と極限・余極限。非有界版の内部補題：U : D_{p-comp}(B) → D_{p-comp}(R) の完全忠実性と極限・余極限保存、像の Postnikov 閉性。一般 J は K = ker(R → B) で、単項 `perfectoidIdeal` の API とは分ける）、Lemma 10.5。**系（W9-III-10）**：導来 p 完備な M について「M は J-almost 連結」⇔「K ⊗̂^L M は連結」（⇒ は Prop 10.4 で K ⊗̂ τ^{>0}M = 0、⇐ は三角形で i > 0 の H^i(M) が R/K 加群の H^i に一致）；よって **almost 連結な完備複体は完備 filtered 余極限で閉じる**（完備テンソルは完備余極限を保ち、連結な複体は完備 filtered 余極限で閉じる：通常の filtered 余極限は完全で LΛ_p は D^{≤0} を保つ） | 加群版は既存（B5） | A8-1、3.3 の 5 |
 | G-A8-2 | J-almost の基本：√J 不変、生成元ごと（animated テンソル Q → π_0 Q = R/J → Prop 8.5 系 4 → Prop 8.13。離散商の等式ではない、W9-III-03）、忠実平坦な基底変換で反映 | Rem 10.7 の既存の隣 | A8-1、3.2 |
 | G-A8-3 | ~~有限 R 加群は導来 p 完備~~（**偽**、W9-III-01 の反例 R = ∏V、R/⊕V）。正：**有限表示** R 加群は導来 p 完備（既存 `isModuleComplete_of_finitePresentation`）；完備な加群の核・余核・有限積（既存 `ModuleClosure`）；主イデアル (g)・gS・gR^r は乗法写像の像 | `HomologicalAlgebra/DerivedCompletion/{FinitePresentationComplete,ModuleClosure}.lean` | 3.2 の 4、Cor 8.12 の前提 |
 | G-A8-3′ | 比較環 S′ の有限性（e_j s_a で生成、S → S′・R^r → S′ は整）と導来 p 完備性（R 被約で R̄ = R/ann(g) 完備、S′ ≅ g^N S′ ⊂ R̄^r）。W9-III-01 の修復計算（Codex 第 3 部で ○） | なし | 3.2 の 4 |
@@ -178,7 +186,7 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
 | G-A8-5 | 完全 F_p 環から被約環への普遍同相は同型 | なし | 3.3 の 3・5 |
 | G-A8-6 | perfectoid 環上の有限エタール代数は perfectoid（S/p で相対 Frobenius 同型、W(S^♭) = W(R^♭) のエタール持ち上げ、ker θ_S = d） | なし（要確認：`Prism/Perfectoid` の隣） | 3.3 の 3 |
 | G-A8-7 | 層別の底変換不変性（有限エタール・普遍同相・被約商）、全商環からの広げ（noetherian） | Mathlib（部分） | Lemma 10.12 |
-| G-A8-8 | perfectoid 環の p 完備化した filtered 余極限は perfectoid で、導来 p 完備化は離散（p^∞ ねじれ有界） | 要確認（`Prism/Perfectoid`） | 3.3 の 1 |
+| G-A8-8 | perfectoid 環の p 完備化した filtered 余極限は perfectoid で、導来 p 完備化は離散（p^∞ ねじれは p で殺される、Lemma 2.34 (2)）。証明（Codex 第 3 部続き 2 で ○）：共通の基底（一つの対象 λ₀ を選び cofinal な λ₀/ へ）の完全 prism (B_λ, d) を取り（Thm 3.10・剛性で同じ d）、C = colim B_λ は完全 δ 環で p・d は非零因子、C/d = P；まず p 完備化（p ねじれなしで離散、φ^{-1} は p 進連続）、mod d の cofiber は完備化と可換で LΛ_p P = P̂ が離散なので完備化後も d は非零因子；次に d 完備化（Lemma 3.9 の順序）で離散な (p,d) 完備 D、D/d = P̂、φ は (p,d) と (p,d^p) の同値な位相の間の同型で D は完全 δ 環、(D,(d)) は完全 prism、Thm 3.10 で P̂ は perfectoid。W は任意の filtered 余極限と可換とは言わない。**使う場所は Thm 10.11 の最初の帰着（有限表示有限 S の連結性が済み Cor 8.14 で perfd が perfectoid と分かった後、一般の整代数へ戻す段）だけ**。§3.3 の 5 の A_λ の段では各 (A_λ)_perfd が perfectoid とはまだ分からないので使わず、G-A8-1 の系を使う（W9-III-10） | 要確認（`Prism/Perfectoid`） | 3.3 の 1 |
 | G-A8-9 | 整 R 代数は有限表示有限 R 代数の filtered 余極限 | Mathlib（`Algebra.FinitePresentation`、要確認） | 3.3 の 1 |
 | G-A8-10 | Thm 10.11 の整閉包 T と T̂ = completionRing T（W9-III-04）：S → T は整（S_red 経由、T ⊂ B）；S → T・S → T̂ は ArcOutside（S_red → W、Frac(W)、整閉性、W の p 完備性で T̂ へ）；T の p 冪ねじれは有界（B は R[1/g_1] 上平坦、Lemma 2.34 (2)）なので T̂ は離散で導来 p 完備化と一致；Cor 8.12 を S → T̂ に適用し e3Perfd(T) = T̂_perfd（D41）；商の比較は A6 §2.3 の自然同型。生の T の完備性は偽（収束列環の反例） | なし（`completionRing`、A6 の `homPresheaf_completionRing_iso`） | 3.3 の 5 |
 | G-A8-11 | 局所化を固定した有限表示有限近似（W9-III-06）：T への写像を備えた有限表示有限 R 代数 A_λ の filtered 系で A_λ[1/g_1] ≅ B、余極限 T。部分代数・単射性は要求しない | なし（Mathlib `Algebra.FinitePresentation`） | 3.3 の 5 |
@@ -242,5 +250,7 @@ Lemma 10.12 の骨組みの引数に Z_(p) 代数の仮定を戻す（W9-III-07�
 5. 3.4 の 1：被約商の違いを普遍同相で吸収する箇所、(3) の細分。
 6. 3.3 の 1：perfectoid の p 完備化した filtered 余極限の perfectoid 性と導来完備化の離散性（G-A8-8）。Codex 未。
 7. 3.3 の 5（W9-III-04 の修復、G-A8-10）：S → T の整性と ArcOutside、T → T̂ への ArcOutside の延長、T の有界 p ねじれと T̂ の離散性、Cor 8.12 の S → T̂ への適用と
-   e3Perfd(T) = T̂_perfd、商 T̂/g_1T̂ の比較の自然同型。Codex 第 3 部続き 1 で**局所的な接続は ○**、A_λ からの filtered 余極限で T̂_perfd の almost 連結性へ移す
-   全接続（G-A8-8 と合わせて）は**未**。
+   e3Perfd(T) = T̂_perfd、商 T̂/g_1T̂ の比較の自然同型。Codex 第 3 部続き 1 で局所的な接続は ○、A_λ からの filtered 余極限で T̂_perfd の almost 連結性へ移す
+   全接続は続き 2 で ○（G-A8-8 ではなく G-A8-1 の系「almost 連結な完備複体は完備 filtered 余極限で閉じる」を使う、W9-III-10）。
+8. 3.3 の 1：G-A8-8（完全 prism の余極限を p 完備化→d 完備化の順で、Lemma 3.9 の順序）。Codex 続き 2 で ○。Prop 10.4 の非有界版の内部補題（U の完全忠実性・極限余極限保存・
+   Postnikov 閉性、一般 J の核 K と単項 API の区別）も ○。Thm 10.11 → `e3Integral` の数学的接続（LΛ_p S_alg の perfd、系 4 で completionRing S_alg へ、A4 の H⁰ 環）も ○。

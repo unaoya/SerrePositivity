@@ -3,8 +3,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
--- 本ファイルは drafts/A1/{HodgeTateComparison,HodgeTateMap}.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A2/BaseChangeAndTensor.lean、
--- drafts/A5/WeaklyInitialAndDescent.lean（`polyRootAlgebra`）を import する。
+-- 本ファイルは drafts/A1/{CrystallineInput,HodgeTateComparison,HodgeTateMap}.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A2/BaseChangeAndTensor.lean、
+-- drafts/A5/RootAdjunction.lean（`polyRootAlgebra`。W9-III-09：WeaklyInitialAndDescent ではなく先行ファイル）を import する。
+-- 結晶の黒箱 `crystalline_deRham_polynomial_Zp` と Cartier は drafts/A1/CrystallineInput.lean に切り出した（W9-III-09：HodgeTateComparison がそれを使うため）。
 
 /-!
 # de Rham 比較の多項式・mod p の場合（BS 著者版 Thm 6.4 の特別な場合、A1-5）
@@ -31,15 +32,6 @@ universe u
 namespace SerrePositivity.BhattScholze.Prismatic
 
 variable (p : ℕ) [Fact p.Prime]
-
-/-- 概要：結晶の黒箱（de Rham 形、D68）：φ^*Δ_{F_p[X_1..X_n]/Z_p} ≃ Ω^*_{Z_p⟨X⟩/Z_p}（p 完備、CAlg(D(Z_p))）。Thm 5.2 β の使う形。
-方針：引用（結晶比較と、結晶コホモロジーが持ち上げの de Rham 複体で計算されること）。A1-3 の `hodgeTate_iso_polynomial_Zp` はこれと Cartier から。
-規約：`sorry`（結晶側、A1-2/A1-3 の唯一の黒箱）。
-使われ方：以下の帰着の終点。 -/
-theorem crystalline_deRham_polynomial_Zp (n : ℕ) : True := by sorry -- 結晶の黒箱（A1-3）
-
-/-- 概要：HT 比較（Cor 5.5）を黒箱と Cartier（G-A5-12 の n 変数版）から：A1-3 の `hodgeTate_iso_polynomial_Zp` の証明。 -/
-theorem hodgeTate_of_deRham_cartier (n : ℕ) : True := by trivial
 
 /-- 概要：結晶 prism (B,(p)) と多項式 (B/p)[X]：Lemma 4.20（(p)-prism の Δ は p 完備底変換と可換、A0-4）で Z_p に帰着。 -/
 theorem deRham_iso_polynomial_crystalline : True := by trivial

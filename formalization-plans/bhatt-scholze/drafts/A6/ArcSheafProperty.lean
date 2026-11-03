@@ -5,6 +5,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
+-- W9-III-08：2a 後は E3 非依存の芯（仮称 CompletedTensorCore）だけを import する（a9-design §7）。
 -- 本ファイルは drafts/A6/ArcSite.lean、drafts/Sheaves/{SheafCondition,CAlgValued}.lean、drafts/A0/PrismaticSite.lean（`ringPresheafToCAlg`）を import する。
 
 /-!

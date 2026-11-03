@@ -61,7 +61,7 @@ def hodgeTatePolyTruncated (i : ℕ) :
 theorem hodgeTatePoly_gr (i : ℕ) : True := by trivial
 
 /-- 概要：Poly 上で Δ̄_P ∈ D^{[0,n]}（n = 変数の個数）なので τ^{≤n} Δ̄_P ≃ Δ̄_P。
-方針：Thm 6.3（H^i = 0 for i > n）と `truncationLE_of_isCoconnective`。
+方針：Thm 6.3（H^i = 0 for i > n）と `truncationLE_of_isConnective`（W9-III-11 で改名）。
 規約：—
 使われ方：exhaustive 性。 -/
 theorem hodgeTatePoly_bounded (n : ℕ) : True := by trivial

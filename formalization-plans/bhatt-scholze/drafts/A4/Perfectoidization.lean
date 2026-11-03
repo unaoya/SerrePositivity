@@ -118,12 +118,6 @@ theorem perfectoidization_coconnective : True := by trivial
 使われ方：Cor 8.14（S_perfd 離散なら perfectoid 環）、Prop 8.5。 -/
 def prismaticPerfectionPrism : True := trivial
 
-/-! ## Example 8.3（標数 p） -/
-
-/-- 概要：Example 8.3：R が標数 p（A = W(R)、d = p）なら S_perfd ≅ (colim_φ S)^∧_p（通常の完全化の p 完備化）。
-方針：A によらないこと（Prop 8.5、A5）で A = Z_p に帰着し、HT 比較の Frobenius 同変な S → Δ_S/p が完全化で同型（∧^i L_{S/F_p}[−i] 上の Frobenius は i ≠ 0 で零）。
-規約：主張のみ。証明は A5 の後。A6（Prop 8.10 の tilt）で要るか確認。
-使われ方：A6。 -/
-theorem perfectoidization_charP : True := by trivial
+-- Example 8.3（`perfectoidization_charP`、Prop 8.5 の後）は drafts/A4/AfterComparison.lean へ（W9-III-09）。
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

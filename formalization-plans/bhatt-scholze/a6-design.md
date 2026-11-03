@@ -72,7 +72,7 @@ Lean の名前は仮。ビルドしない。
   CAlg_R 値とは書けない。F_U の元の圏 Perfd_{U/}（R → U）の上では R → U → T で CAlg_R 値に持ち上がり、極限・引き戻しは忘却 CAlg_R → CAlg_ℤ が作る（保ち反映する）ので
   E3 の型（CAlg_R の四角形）に戻せる。global な site は変えない）は arc 位相の Čech 層。S1 の生成系の補題で、
   有限 arc 被覆族 {R → R_i} について O(R) ≃ Tot(O(Čech 余脈体)) を示せばよく、Čech 余脈体は完備テンソル冪（S3 の `CechNerveData`、
-  Perfd の余積 = 完備テンソル、既存）。R → ∏ R_i =: S に置き換え（∏ R_i は perfectoid、`PerfdSmall` の有限積）、単射 arc 被覆 R → S に帰着。
+  Perfd の余積 = 完備テンソル、既存）。R → ∏ R_i =: S に置き換え（∏ R_i は perfectoid：G-A6-12 の直接証明。E3 を使う既存の `isIntegralPerfectoid_finPi` は不可、W9-III-08）、単射 arc 被覆 R → S に帰着。
 - 離散な余単体的環の Tot は Čech 複体 0 → R → S → S ⊗̂_R S → ⋯（非正規化 Tot、A0 の決定）なので、主張は「arc 被覆 R → S の完備 Čech 複体の完全性」。
 - `homPresheaf_isArcSheaf (T)`：R ↦ Hom(T, R) は集合の arc 層：H⁰ の等化子 R = eq(S ⇉ S ⊗̂_R S) に Hom(T, −) を当てる。原典 "immediate"。
 
@@ -170,6 +170,7 @@ Cor 8.12 で使うのは 2・3・5・6（1 は 2 の前提）。**決定項目 3
 | G-A6-1c | **引用（`sorry`、後で証明）**[BS17, Lemma 6.3]（Lemma 6.2 は付値環による v 被覆の主張で、この四角形ではない。W9-II-18）：**完全**付値環 V と素イデアル 𝔭 について 0 → V → V_𝔭 ⊕ V/𝔭 → κ(𝔭) → 0 が完全、すなわち V → V_𝔭、V → V/𝔭、→ κ(𝔭) の四角形は環の圏で cartesian（V = V_𝔭 ×_{κ(𝔭)} V/𝔭）かつ cocartesian。任意の付値環での同じ主張は引用ではなく初等補題として証明する（𝔭V_𝔭 = 𝔭：a ∈ 𝔭、s ∉ 𝔭 で a/s ∉ V なら s/a ∈ V、s ∈ 𝔭 で矛盾；よって V_𝔭/𝔭 = κ(𝔭) で核が一致し短完全列、cocartesian は局所化と商の可換性）。引用はその特殊化。適用する付値環（分数体が代数閉、標数 p）は完全なので特殊化で足りる | なし（Mathlib の `ValuationRing` で証明可能） | Prop 8.10 |
 | G-A6-1 | 三つから：完全 F_p 代数の有限族の arc 被覆 {A → B_i} について 0 → A → ∏B_i → ∏ B_i ⊗_A B_j → ⋯ が完全。F := (A ↦ A_perf) は F_p 代数上の finitary な関手で、v 層（1a を完全化に当てる。完全化は v 被覆を保つ）、分数体が代数閉な付値環は完全なので四角形は 1c の Milnor 四角形、よって 1b で arc 層 | 上の三つ | Prop 8.10 |
 | G-A6-2 | perfd は有限積を保つ（Prop 8.5 の極限の形、Perfd_{(S′×S″)/} ≅ Perfd_{S′/} × Perfd_{S″/}、perfectoid の因子は perfectoid） | なし | Cor 8.12 の 2 |
+| G-A6-12 | perfectoid 環の有限積は perfectoid（§2.2 の ∏R_i、G-A6-2 の逆向き）。**直接証明**：有限積と tilt・Witt ベクトルの可換性、各因子の核生成元の組、空積は零環として別処理。既存 `isIntegralPerfectoid_finPi`（CompletedTensor.lean）は E3 の `Inputs.exists_perfectoidization_of_integral` を使うので**使えない**（W9-III-08） | `IsIntegralPerfectoid`（既存の判定） | §2.2、Cor 8.12 の 2 |
 | G-A6-3 | p 完備な階数 1 の付値環 V は perfectoid な p 完備階数 1 付値環 W に忠実平坦に埋まる（絶対整閉包の p 完備化、付値の延長）。W には p の両立する p 冪根があり R₀ → W が取れる | なし（Mathlib の付値の延長、要確認） | Lemma 8.8（G-A6-11 と合わせて。W を**先に**取る）、§3.1 の 2 |
 | G-A6-4 | perfectoid の完備テンソルの tilt：(S ⊗̂_R S′)^♭ = S^♭ ⊗̂_{R^♭} S′^♭（d 進） | `CompletedTensor`、`WittQuotientTilt`（部分） | §3.1 の 1 |
 | G-A6-5 | 余単体的な完全環 B^• に levelwise の W_n、V の短完全列 0 → W_{n−1} → W_n → B → 0 で Čech 複体の完全性を帰納、項ごとに全射な遷移の Rlim で W(B^•) へ、各 Witt 環で正則な d（Lemma 2.34）の cofiber で mod d へ（W9-II-20：正則なのは W(B) 上の d。tilt 上の a = d mod p は零になり得る） | Mathlib `WittVector`（部分） | §3.1 の 1 |
