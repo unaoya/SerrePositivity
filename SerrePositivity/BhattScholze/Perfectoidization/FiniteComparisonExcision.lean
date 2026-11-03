@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Tor

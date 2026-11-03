@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Almost.SupportedQuotient
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
-public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
+public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
 public import SerrePositivity.CommutativeAlgebra.Localization.CommonModel
 public import SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison
 
