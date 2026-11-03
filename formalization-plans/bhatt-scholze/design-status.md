@@ -296,6 +296,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | W9-III-16 ノート第 5 章に訂正前の「帰着は Prop 6.2 の経路」の D69 と、結晶側を「具体的に定義する」旧説明が残る；第 8 章「E3 での扱い」も | 要修正 | 訂正済み（05-hodge-tate の冒頭・§5 の概要・Thm 5.2/Cor 5.5 の後・項目表 2 行・要点、08-perfection「E3 での扱い」と Lemma 8.6 の行を D68（黒箱一件、Cartier で系、RΓ_crys は定義しない）・D69（普遍 A₀ 上で Thm 6.4 を証明して底変換）に揃えた） |
 | W9-III-17 恒久的引用の表に証明予定の 1c と基盤側の P⁰ が同居 | 軽微 | 訂正済み（a9-design §3：最終引用は D68・G-A6-1a・1b の三件、1c は証明予定、P⁰ は基盤待ち（D43）。暫定の許可数（最大五）と最終引用数（三）を区別） |
 | **W9 最終判定（第 3 部続き 3）** | — | 条件付き妥当。12 論点すべて妥当（A9 は W9-III-08 の実施条件つき）。D19〜D70 の三者照合 ○、κ ○、sorry 194 宣言（恒久的 3・証明予定 125・基盤待ち 66）。a9-design §8 |
+| D1-01（BS-D1、Codex の下書き作業）S3 の `CechNerveData` は圏 𝒟 の絶対積のデータだが、arc site で要る Čech 項 S ⊗̂_R S は相対（R = S = F_p[t] の恒等被覆で絶対積 S ⊗̂_{ℤ_p} S と異なる） | 要修正 | 反映済み（11-03）：𝒟 := sieveCategory Q（Q は単射被覆の生成 sieve）の中で取る（U = f.op が弱終、冪は op R 上のファイバー積）。主張を (1) 生成 sieve ごとの Čech 同値 `isSheaf_generateSieve_iff_cech` と (2) 層判定 `isSheaf_arc_iff_cech`（coverage `arcCoverage`、`arcTopology_eq_toGrothendieck`）に分離。ArcSite・a6-design §2.2 |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

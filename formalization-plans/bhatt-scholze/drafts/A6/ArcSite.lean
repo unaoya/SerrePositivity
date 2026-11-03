@@ -178,13 +178,23 @@ theorem isArcCoverFamily_prod_iff
         (fun _ => RingHom.pi f) := by
   sorry -- 付値環は非零整域なので有限積からの射は一因子を通る（空積の場合も含む）
 
-/-- 概要：単射 arc 被覆 R → S の生成 sieve の層条件は、完備テンソル冪の Čech 余脈体の Tot の条件（S3 `CechNerveData`：affCompl_κ の余積は完備テンソル）。
-方針：S1 の生成系の補題と S3。
-規約：—
-使われ方：Prop 8.10 の帰着。 -/
--- 要確認：BS-D1 停止。S3.CechNerveData は絶対積のデータであり、ここで必要な
--- S ⊗̂_R S の相対 Čech 項は (Under R)ᵒᵖ 等で扱う必要がある。
--- 個々の生成 sieve の降下同値か、前層全体の層判定かも明示してから型にする（report-codex-d1.md）。
+/-- 概要：(1) 個々の単射 arc 被覆 f : R → S について、その生成 sieve Q := `Sieve.generate (Presieve.ofArrows (fun _ : Unit => op S) (fun _ => f.op))` の層条件
+（S1 の `restrictionCone F Q` が極限錐）は、**相対** Čech 余脈体 S^{⊗̂_R (•+1)} の Tot の条件と同値。
+方針（BS-D1 の D1-01 で確定、11-03）：S3 の `CechNerveData` は全 site ではなく **sieve の圏 𝒟 := sieveCategory Q** の中で取る。U := f.op は 𝒟 で弱終
+（Q の射は f.op を経由する）、𝒟 の U の (n+1) 乗は op R 上のファイバー積＝完備テンソル冪 op(completionRing (S ⊗_R ⋯ ⊗_R S))（κ-small で Q に属する）。
+全 site の絶対積 S ⊗̂_{ℤ_p} S ではない（R = S = F_p[t] の恒等被覆で両者は異なる）。S1 の `restriction F Q` は 𝒟 上の前層なので、S3 の
+`isLimitCone_iff_restrict_cech` をそのまま当てる。A5 の完全 site（Perfd_{S/}、最初から相対）とはここが違う。
+規約：F は (AffCompl p κ)ᵒᵖ 上の任意の E 値前層。
+使われ方：(2)、Prop 8.10 の帰着。 -/
+theorem isSheaf_generateSieve_iff_cech : True := by trivial
+
+/-- 概要：(2) F が arc 層（S1 `IsSheaf (arcTopology p κ) F`）⇔ 任意の単射 arc 被覆 R → S について (1) の Čech 条件。
+方針：単射 arc 被覆（一点族）からなる coverage K を定義し `arcTopology = K.toGrothendieck` を示す（有限族 {R → R_i} は `isArcCoverFamily_prod_iff` で R → ∏R_i に
+置き換える：族の各射は ∏ を経由するので族の生成 sieve ⊆ ∏ の生成 sieve、∏ への射は族が被覆なら被覆）。S1 の `isSheaf_toGrothendieck_iff` を K に当て、(1) で Čech に移す。
+規約：任意の E 値前層について述べる（O だけではない）。(1) と (2) は別の主張（BS-D1 の報告の区別）。
+使われ方：Prop 8.10（O、CAlg_ℤ 値）、Hom(T, −) の層性（集合値）。 -/
+def arcCoverage : Coverage (AffCompl p κ)ᵒᵖ := sorry
+theorem arcTopology_eq_toGrothendieck : arcTopology p κ = (arcCoverage p κ).toGrothendieck := by sorry
 theorem isSheaf_arc_iff_cech : True := by trivial
 
 /-! ## Lemma 8.8 の affine 版：affPerfd_κ は cover-dense

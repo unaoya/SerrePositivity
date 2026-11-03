@@ -68,6 +68,10 @@ Lean の名前は仮。ビルドしない。
 
 ### 2.2 Prop 8.10（affine）
 
+- **Čech 条件の形（BS-D1 の D1-01、11-03）**：S3 の `CechNerveData` は全 site の絶対積ではなく、単射被覆 f : R → S の生成 sieve Q の圏 sieveCategory Q の中で取る
+  （U = f.op が弱終、U の冪は op R 上のファイバー積＝相対完備テンソル冪。全 site の絶対積は S ⊗̂_{ℤ_p} S で別物）。二つの主張を分ける：(1) 個々の生成 sieve の層条件 ⇔ 相対 Čech の Tot
+  （`isSheaf_generateSieve_iff_cech`）、(2) arc 層 ⇔ 全ての単射 arc 被覆で (1)（coverage `arcCoverage` と S1 の生成系の補題、有限族は ∏ へ。`isSheaf_arc_iff_cech`）。
+  A5 の完全 site は Perfd_{S/} で最初から相対なのでこの区別は要らない。
 - `structurePresheaf_isArcSheaf`：O : R ↦ R（**CAlg_ℤ 値**、A0 の `ringPresheafToCAlg` の底を ℤ に。**W9-II-22**：global な affPerfd_κ の対象には固定 R からの射がないので
   CAlg_R 値とは書けない。F_U の元の圏 Perfd_{U/}（R → U）の上では R → U → T で CAlg_R 値に持ち上がり、極限・引き戻しは忘却 CAlg_R → CAlg_ℤ が作る（保ち反映する）ので
   E3 の型（CAlg_R の四角形）に戻せる。global な site は変えない）は arc 位相の Čech 層。S1 の生成系の補題で、
