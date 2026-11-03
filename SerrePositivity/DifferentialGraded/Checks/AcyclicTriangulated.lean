@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.AcyclicTriangulated
+public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # acyclic部分圏と指定準同型のVerdierクラスの受入検査 -/
 @[expose] public section

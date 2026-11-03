@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeIso
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.InfinityCategories.DGNerve.Functor
 /-!
 概要：実反対圏比較と、任意の dg 関手の全単体作用との厳密な自然性。

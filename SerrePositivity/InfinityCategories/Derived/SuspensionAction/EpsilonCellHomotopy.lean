@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
 

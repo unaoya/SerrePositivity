@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 public import Mathlib.Algebra.Category.ModuleCat.Limits
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks

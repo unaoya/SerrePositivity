@@ -40,6 +40,7 @@ lemma freeHomFromLeft_homotopyEquivalence (X : (Complex A)ᵒᵖ) (B : (operad A
 lemma freeHomFromRight_homotopyEquivalence (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
     IsSimplicialHomotopyEquivalence (((freeHomFromRight A).app X).app B) := by
   let := projectiveModelCategory A
+  letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   let := modelCategory A
   have := free_isLeftQuillen A
   have := (operad A).freeAlgebraAdjunction.isLeftAdjoint

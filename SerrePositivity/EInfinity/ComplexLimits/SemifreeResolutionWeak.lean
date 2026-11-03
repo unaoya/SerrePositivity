@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso
-public import SerrePositivity.DifferentialGraded.Derived.Ring
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 # 既存 D(R) への実分解は元の複体の準同型辺を反転する

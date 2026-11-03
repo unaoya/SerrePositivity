@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.CoconeCoordinates
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：閉零射の端点等号による移送と、同じ斉次 Hom の移送を照合する。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGUnitCompositionMap
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 /-!
 概要：単位からの実射と全 Hom の自然性を、同じ厳密 dg 比較へ接続する。
 方針：元の斉次合成と実分解の三成分の等式を使う。

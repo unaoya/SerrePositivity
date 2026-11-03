@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.DiagramModuleUnitCoherence
-public import SerrePositivity.DifferentialGraded.Complexes.UnitorCochainNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-!
 概要：KST §3.1 の指定包含単位矢による局所自己 Hom の作用。

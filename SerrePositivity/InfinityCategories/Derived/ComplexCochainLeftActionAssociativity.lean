@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryCochain
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 /-!
 概要：三重 tensor の右端の全 cochain と、前二因子の実合成の括弧変更を比較する。
 方針：結合子の全 cochain 自然性と、実 tensor の合成保存を使う。

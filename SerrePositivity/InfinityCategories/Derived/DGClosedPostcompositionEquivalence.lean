@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionChainMap
 public import SerrePositivity.InfinityCategories.Derived.DGClosedPrecompositionEquivalence
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveHomQuasiIso
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # 可逆な実閉辺による全 Hom と pinched Hom の後合成同値
 

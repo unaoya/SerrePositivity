@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleSourceFull
+public import SerrePositivity.DifferentialGraded.Derived.Bimodule
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 両変数の全導来中間比較と既存の制限・合成APIへのsource同定の検査

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Perfect.Basic
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # 元の生成代表の H⁰ 比較から実 dg 関手像の Perf 生成へ
 概要：元の生成対象と関手像の H⁰ 同型だけから、対象像の Perf 生成条件を供給する。

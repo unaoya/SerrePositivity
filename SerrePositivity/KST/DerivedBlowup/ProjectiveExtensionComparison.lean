@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionUnitComputation
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
 概要：KST §3.1 の局所射影的加群上での指定係数拡大比較と随伴像。

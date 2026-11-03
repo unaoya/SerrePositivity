@@ -5,12 +5,12 @@ public import SerrePositivity.DifferentialGraded.Tensor.Enriched
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Complexes.MapEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.UnitScalarEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.MapComponentFunctions
-public import SerrePositivity.DifferentialGraded.Module.LeftParamNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
-public import SerrePositivity.DifferentialGraded.Module.HomSquareComposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 # Tensor.Bimodule.Actions

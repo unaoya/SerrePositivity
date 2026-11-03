@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveResolutionIso
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorHomologyDetection
-public import SerrePositivity.DifferentialGraded.Derived.FunctorDerivedEquivalence
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 /-!
 概要：既存の主導来加群圏上の Morita 同値を、半自由模型の実 ∞ 圏同値へ昇格する。
 方針：標準分解の同じ自然同型で射影的 H⁰ 関手を比較し、全 source shift の Hom を検査する。

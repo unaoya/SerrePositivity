@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.MappingConeZeroTarget
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 /-!
 概要：零を標的とする実 dg 加群の標準 cone は、元の一回 shift に厳密な閉同型で一致する。
 方針：既存の複体 cone 接続射の同型性を全評価へ適用し、同じ加群射の同型性を反映する。

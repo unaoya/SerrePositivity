@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Basic
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # dg 関手による単体データの像
 

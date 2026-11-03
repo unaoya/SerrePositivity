@@ -1,15 +1,15 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Morita.ScalarExtension.KernelComparison
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionTensor
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Morita.Perfect
 public import SerrePositivity.DifferentialGraded.Morita.CoherenceCompositionKernel
 public import SerrePositivity.DifferentialGraded.Morita.Kernel
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.PerfectStability
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
+
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.EnhancementComparison
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.HomComparison
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionComplexNaturality
+
 
 /-!
 # Morita.ScalarExtension.PerfectSquares

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGTensorUnitorLaws
 public import SerrePositivity.DifferentialGraded.Category.Tensor
-public import SerrePositivity.DifferentialGraded.Category.Examples
-public import SerrePositivity.DifferentialGraded.Functor.Basic
+public import SerrePositivity.DifferentialGraded.Category.Basic
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 一対象 A との実 dg tensor の左右単位関手
 概要：元の単位複体との左右単位写像を、元の dg 圏への実 dg 関手へ束ねる。

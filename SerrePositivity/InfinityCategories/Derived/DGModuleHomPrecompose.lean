@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # dg 加群の閉射による Hom 成分の前合成
 

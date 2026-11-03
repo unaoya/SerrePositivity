@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SerreIntervalMax
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # 元の区間の収縮の端点・辺での値
 概要：一端点への収縮が、零端点を元の辺、一端点と辺を零に写すことを示す。

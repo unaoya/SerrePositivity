@@ -1,15 +1,15 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.LeftAction
-public import SerrePositivity.DifferentialGraded.Module.HomElements
-public import SerrePositivity.DifferentialGraded.Module.Category
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
-public import SerrePositivity.DifferentialGraded.Module.LeftRepresentable
-public import SerrePositivity.DifferentialGraded.Module.LeftCategory
-public import SerrePositivity.DifferentialGraded.Module.Action
-public import SerrePositivity.DifferentialGraded.Module.HomWhisker
-public import SerrePositivity.DifferentialGraded.Module.HomIsoSquare
-public import SerrePositivity.DifferentialGraded.Module.HomSquareComposition
+public import SerrePositivity.DifferentialGraded.Module.Basic
+
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.Graded
+
+
+
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+
+
 
 /-!
 # Bimodule.Basic

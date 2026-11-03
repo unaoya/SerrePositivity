@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluationPoint
 public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
 public import SerrePositivity.InfinityCategories.DGNerve.NatTrans
 public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-!
 概要：元厳密 dg 変換の全 end 辺の native 評価を、同じ指定ホモトピーへ厳密照合する。

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Tensor
-public import SerrePositivity.DifferentialGraded.Module.Underlying
+public import SerrePositivity.DifferentialGraded.Module.Basic
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U6a の自由加群対象・作用・underlying family の検証 -/

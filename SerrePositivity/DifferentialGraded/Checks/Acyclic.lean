@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Acyclic
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U8b2：標準加群 cone の objectwise acyclic 性と quasiIso -/

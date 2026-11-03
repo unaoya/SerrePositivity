@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.DGNerve.Simplex
-public import SerrePositivity.DifferentialGraded.Category.Homotopy
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # dg nerve の低次の単体
 

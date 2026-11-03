@@ -48,6 +48,7 @@ lemma normalizedOriginalHomRestriction_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (Y : Complex A) :
     IsSimplicialHomotopyEquivalence (((normalizedOriginalHomRestriction A).app X).app Y) := by
   let := projectiveModelCategory A
+  letI : CategoryTheory.Limits.HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   have : IsFibrant ((𝟭 (Complex A)).obj Y) :=
     BarrattEccles.CarrierDiagram.complex_isFibrant A Y
   exact resolutionHomSourceRestriction_homotopyEquivalence

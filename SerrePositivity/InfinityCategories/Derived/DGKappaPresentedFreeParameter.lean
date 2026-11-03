@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeExtension
-public import SerrePositivity.DifferentialGraded.Functor.InducedClosedParameter
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 public import SerrePositivity.KST.SConstruction.DGModuleExtensionParameter
 /-!
 概要：κ-small 自由表示の作用へ、入力 dg 関手間の全パラメータ変換を移す。

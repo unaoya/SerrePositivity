@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectivePrecomposition
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-! # U10b7b：前合成のホモトピーと射影解像度比較への適用 -/
 @[expose] public section

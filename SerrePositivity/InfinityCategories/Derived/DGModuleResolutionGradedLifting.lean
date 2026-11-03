@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionNerve
-public import SerrePositivity.DifferentialGraded.Complexes.CellCriterion
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 /-!
 概要：実入力射影に沿い、全次数の閉 cochain と境界原始元を持ち上げる。
 方針：同じ次数別全射準同型を使い、shift の半自由分解と実ホモトピー逆も回収する。

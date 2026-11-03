@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeElements
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+
 
 /-! # cone を標的とする全 Hom end の外延性
 

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleCompositeFamily
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.IteratedModels
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 導来制限の合成正規化と二段階全導来比較の検査

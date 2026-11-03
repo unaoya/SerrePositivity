@@ -4,14 +4,14 @@ public import SerrePositivity.DifferentialGraded.Bimodule.Tensor
 public import SerrePositivity.DifferentialGraded.Bimodule.Value
 public import Mathlib.CategoryTheory.Equivalence
 public import SerrePositivity.DifferentialGraded.Bimodule.Basic
-public import SerrePositivity.DifferentialGraded.Module.Isomorphism
-public import SerrePositivity.DifferentialGraded.Module.RestrictionColimits
-public import SerrePositivity.DifferentialGraded.Module.Semifree.Resolution
-public import SerrePositivity.DifferentialGraded.Category.TensorComposition
-public import SerrePositivity.DifferentialGraded.Module.RestrictionAction
-public import SerrePositivity.DifferentialGraded.Module.Free
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
-public import SerrePositivity.DifferentialGraded.Module.RestrictionTensor
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Category.Tensor
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+
 public import SerrePositivity.DifferentialGraded.Tensor.Fubini
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Pentagon

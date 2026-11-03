@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyMap
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-!
 概要：始域の恒等比較を持つ元 cone square の指定入力を回収する。

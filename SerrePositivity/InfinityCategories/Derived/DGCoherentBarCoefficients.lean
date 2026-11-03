@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarFaces
 public import SerrePositivity.InfinityCategories.Derived.DGCoherentBarCuts
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlocks
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomEndpointTransport
 /-!
 概要：元の coherent 図式の面と prefix の斉次成分を、bar 直和上の次数一成分に置く。

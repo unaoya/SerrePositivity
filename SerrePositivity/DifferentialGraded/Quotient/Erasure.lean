@@ -2,14 +2,14 @@ module
 
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Construction
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexShift
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCochainComposition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCochainInterchange
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
+
 public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
-public import SerrePositivity.DifferentialGraded.Complexes.TensorClosedZero
-public import SerrePositivity.DifferentialGraded.Complexes.UnitorCochainNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorCochainNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorCochainFactors
+
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
+
 
 /-!
 # Quotient.Erasure

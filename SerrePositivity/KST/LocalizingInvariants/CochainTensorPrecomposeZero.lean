@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Complexes.TensorRightComposition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCochainComposition
-public import SerrePositivity.DifferentialGraded.Complexes.TensorClosedZero
+public import SerrePositivity.DifferentialGraded.Complexes.TensorZeroCochain
+
+
 
 /-!
 概要：鎖写像の前合成で零となる全次数 cochain は、二因子の tensor でも零となる。

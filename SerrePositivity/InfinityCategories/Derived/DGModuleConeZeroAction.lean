@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGConeCoordinateTransport
-public import SerrePositivity.DifferentialGraded.Module.Cone
-public import SerrePositivity.DifferentialGraded.Module.Action
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Basic
 
 /-! # 加群 cone の次数零作用の二座標
 

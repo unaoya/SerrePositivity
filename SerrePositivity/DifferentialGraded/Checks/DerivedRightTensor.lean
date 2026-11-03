@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.RightTensorResolution
-public import SerrePositivity.DifferentialGraded.Category.Examples
+public import SerrePositivity.DifferentialGraded.Derived.Tensor
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 固定左加群との導来tensor・任意解像度計算と選択整合性 -/

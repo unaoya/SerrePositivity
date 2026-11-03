@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.TensorComposition
+public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-! # 通常順と豊穣順で異なるtensor積の交差符号を検査する -/
 @[expose] public section

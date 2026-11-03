@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionHom
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import Mathlib.Data.ZMod.Basic
 
 /-! # dg制限・主K随伴・延長の射影性保存と導来Hom同値

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeHomotopyRepresentation
 public import SerrePositivity.InfinityCategories.Derived.Gluing.Nonempty
-public import SerrePositivity.DifferentialGraded.Module.ConeContractible
+public import SerrePositivity.DifferentialGraded.Module.ConeRotation
 
 /-! 恒等射の標準円錐から、零加群の全 dg 自然なホモトピー表現可能性を回収する。 -/
 @[expose] public section

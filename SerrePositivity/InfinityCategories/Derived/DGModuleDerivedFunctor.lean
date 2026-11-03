@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGSemifreeProjectiveEqu
 public import SerrePositivity.InfinityCategories.Derived.DGFullFunctorRestriction
 public import SerrePositivity.InfinityCategories.Derived.DGFullInclusionExactReflection
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorExact
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionProjective
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 /-!
 概要：射影的加群を保つ dg 関手と graph 延長を、半自由模型間の実 ∞ 関手にする。
 方針：全 Hom を持つ射影的部分圏への実 dg 制限と、証明済み比較同値の逆を使う。

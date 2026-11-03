@@ -2,7 +2,7 @@ module
 public import SerrePositivity.DifferentialGraded.SharedFunctoriality.DGFunctorGraphParameter
 public import SerrePositivity.DifferentialGraded.Resolution.Cell
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleSemifreeLift
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleTensor
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!

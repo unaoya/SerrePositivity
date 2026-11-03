@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ConeModuleMapComparison
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-! 指定 cochain から作った全 dg 自然な加群円錐射自身の準同型性。 -/
 @[expose] public section

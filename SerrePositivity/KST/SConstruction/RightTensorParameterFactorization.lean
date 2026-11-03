@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGParameterPullback
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
-public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-! # 元の右 tensor Hom 写像を通る任意パラメータの因子化
 概要：任意 K の右加群 tensor 作用を、既存右加群 Hom と実 tensor Hom の合成で表す。

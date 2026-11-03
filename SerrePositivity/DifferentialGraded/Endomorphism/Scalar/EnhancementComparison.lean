@@ -2,16 +2,16 @@ module
 
 public import SerrePositivity.DifferentialGraded.Endomorphism.Shift
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
-public import SerrePositivity.DifferentialGraded.Module.ShiftHomotopy
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.DifferentialGraded.Endomorphism.Derived.Adjunction
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveFiniteOperations
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyNaturality
+public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
-public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
+
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
 public import SerrePositivity.DifferentialGraded.Endomorphism.Scalar.PerfectStability
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionNaturality
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 
 /-!
 # Endomorphism.Scalar.EnhancementComparison

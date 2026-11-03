@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Equivalence
-public import SerrePositivity.DifferentialGraded.Derived.HomotopyLinear
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 public import SerrePositivity.CategoryTheory.ScalarSupport
 public import Mathlib.CategoryTheory.Shift.Linear
 

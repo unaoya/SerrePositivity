@@ -3,7 +3,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereClosureRet
 public import SerrePositivity.InfinityCategories.Derived.DGModuleHomotopyRangeClosure
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeCover
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.NativeRetract
-public import SerrePositivity.DifferentialGraded.Module.TensorUnit
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
 
 /-!
 概要：sphere-only 閉包で有限 cell と perfect retract を同型まで被覆する。

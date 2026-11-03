@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaStrict
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNerveEdges
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 代表加群延長同型の閉射に対する自然性
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.UnitCochainElement
-public import SerrePositivity.DifferentialGraded.Module.HomCone
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! 単位に作用させた全 Hom 円錐左包含は、指定した実加群円錐の左包含元そのもの。 -/
 @[expose] public section

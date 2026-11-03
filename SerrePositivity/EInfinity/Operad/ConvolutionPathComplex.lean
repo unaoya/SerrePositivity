@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.CoalgebraInterval
-public import SerrePositivity.DifferentialGraded.Complexes.ClosedMaps
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 public import Mathlib.AlgebraicTopology.ModelCategory.PathObject
 
 /-!

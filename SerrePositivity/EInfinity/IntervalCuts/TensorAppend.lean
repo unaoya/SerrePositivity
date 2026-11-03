@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.IntervalCuts.TupleAppend
-public import SerrePositivity.DifferentialGraded.Complexes.UnitorCochainNaturality
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-!
 # 実際の区間面テンソルの連結

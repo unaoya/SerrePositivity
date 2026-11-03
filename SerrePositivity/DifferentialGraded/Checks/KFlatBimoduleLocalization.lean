@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.KFlatBimoduleResolution
+public import SerrePositivity.DifferentialGraded.Derived.KFlat
 public import Mathlib.Data.ZMod.Basic
 
 /-! # K-flat因子間の準同型比較と因子局所化の受入監査

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorHomUniversal
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # dg 関手のパラメータ自然性の全斉次成分
 概要：元の全 Hom 自然性を、任意の斉次パラメータと元の dg 射の式に戻す。

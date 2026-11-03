@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Graded
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7b2：shift の零・加法・逆と評価の整合性 -/

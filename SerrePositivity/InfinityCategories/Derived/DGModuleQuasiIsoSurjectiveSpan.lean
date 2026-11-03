@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleQuasiIsoSpanMaps
-public import SerrePositivity.DifferentialGraded.Module.HomotopyQuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：元の加群準同型から、両脚が次数別全射準同型となる同じ実 span を得る。
 方針：非輪状 disk 項と直和包含の準同型性、同じ射影・包含の厳密等式を使う。

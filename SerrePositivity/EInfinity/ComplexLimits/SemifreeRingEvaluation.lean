@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
 public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
-public import SerrePositivity.DifferentialGraded.Module.RingDGComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 
 /-!
 # 半自由一点 dg 加群から既存 D(R) への実評価

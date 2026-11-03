@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ProjectiveCofibration
-public import SerrePositivity.DifferentialGraded.Complexes.HomFunctor
+public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 
 /-!
 # 内部 Hom の cofibration への制限

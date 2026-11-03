@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.StrictAugmentationHomology
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.CoherentHomologyBarCokernel
-public import SerrePositivity.DifferentialGraded.Module.QuasiIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：filtered poset 上の strict 図式の正規化 bar 標準射は擬同型である。

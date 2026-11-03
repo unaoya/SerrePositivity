@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphRightUnit
-public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.TensorGeneratorMaps
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # 元の graph 合成射と dg 関手の Hom 作用
 概要：元の graph 合成射を coend 包含上の左作用として計算する。

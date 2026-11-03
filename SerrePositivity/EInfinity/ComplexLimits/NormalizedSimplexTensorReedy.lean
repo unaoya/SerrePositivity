@@ -23,6 +23,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
+set_option synthInstance.maxHeartbeats 40000 in
 lemma normalizedSimplexTensor_reedyCofibrant (X : Complex A)
     (hX : (projectiveGeneratingCofibrations A).rlp.llp
       (0 : (HomologicalComplex.zero : Complex A) ⟶ X)) :

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleConnectingConeComparison
-public import SerrePositivity.DifferentialGraded.Module.ConeShift
-public import SerrePositivity.DifferentialGraded.Module.ConeShiftSquares
-public import SerrePositivity.DifferentialGraded.Module.ShiftCoherence
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-!
 概要：元の実逆 shift connecting 射の cone を、元終域へ比較する。

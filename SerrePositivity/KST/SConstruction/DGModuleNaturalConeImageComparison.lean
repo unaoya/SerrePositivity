@@ -22,11 +22,11 @@ private lemma imageDescRecovery
     (q : Q.onClosed.obj N ⟶ Q.onClosed.obj (moduleCone R D f))
     (eg : g = Q.onClosed.map f) (eq : q = Q.onClosed.map (moduleConeInr R D f))
     (ds : (moduleHom R E (Q.obj M) (Q.obj (moduleCone R D f))).d (-1) 0
-      (dgModuleFunctorConeInl R D E Q f) =
+      (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl R D E Q f) =
         (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) (g ≫ q))).val) :
-    moduleConeDescOfBoundary R E g (dgModuleFunctorConeInl R D E Q f) q ds =
+    moduleConeDescOfBoundary R E g (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl R D E Q f) q ds =
       (eqToIso (congrArg (fun t => moduleCone R E t) eg)).hom ≫
-        dgModuleFunctorConeComparison R D E Q f := by
+        SerrePositivity.InfinityCategories.dgModuleFunctorConeComparison R D E Q f := by
   cases eg
   cases eq
   simp only [eqToIso_refl, Iso.refl_hom, Category.id_comp]
@@ -66,7 +66,7 @@ def dgModuleNaturalConeImageInputIso (x : P) :
 lemma dgModuleNaturalConeImage_arrow (x : P) :
     dgModuleNaturalConeArrow R E (CηQ) (CQ) (θ) x =
       (dgModuleNaturalConeImageInputIso R E D F G η Q x).hom ≫
-        dgModuleFunctorConeComparison R D E Q (a x) := by
+        SerrePositivity.InfinityCategories.dgModuleFunctorConeComparison R D E Q (a x) := by
   exact (dgModuleNaturalConeDesc_arrow R E (FQ) (GQ) (CQ) (ηQ) (νQ) (s)
     (dgModuleNaturalConeImage_boundary R E D F G η Q)
     (dgModuleNaturalConeImageInput_naturality R E D F G η Q) x).trans
@@ -85,5 +85,5 @@ lemma dgModuleNaturalConeImage_isIso (x : P) :
     IsIso (dgModuleNaturalConeArrow R E (CηQ) (CQ) (θ) x) := by
   rw [dgModuleNaturalConeImage_arrow]
   exact Iso.isIso_hom ((dgModuleNaturalConeImageInputIso R E D F G η Q x) ≪≫
-    dgModuleFunctorConeIso R D E Q (a x))
+    SerrePositivity.InfinityCategories.dgModuleFunctorConeIso R D E Q (a x))
 end SerrePositivity.KST.SConstruction

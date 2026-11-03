@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Tensor.Compose
 public import SerrePositivity.DifferentialGraded.Tensor.Triple
-public import SerrePositivity.DifferentialGraded.Complexes.MapComponentFunctions
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.Actions
 public import SerrePositivity.DifferentialGraded.Tensor.Associator.Components
 

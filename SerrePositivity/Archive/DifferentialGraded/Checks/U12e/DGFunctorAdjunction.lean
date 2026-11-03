@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Module.Functor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # graph延長–制限随伴の独立宇宙・全次数・三角恒等式の検査

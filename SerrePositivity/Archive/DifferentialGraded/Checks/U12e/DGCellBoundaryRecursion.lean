@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Append.BoundaryCompatibility
 
-public import SerrePositivity.DifferentialGraded.Complexes.PrefixTensorCochainPostcompose
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 任意次数cellの先頭境界と全path置換の再帰式の監査

@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
-public import SerrePositivity.DifferentialGraded.Module.Postcomposition
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.DGNerve.NestedCut
 
 /-! # dg 加群の標的の −1 shift の Hom 座標

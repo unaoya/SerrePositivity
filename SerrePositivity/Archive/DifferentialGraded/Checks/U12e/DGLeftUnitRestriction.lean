@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.LeftUnitRestrictionModel
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddleCalculation
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.ModelIndependence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 左単位子と対角・中間・外側制限比較のモデルsquareの検査

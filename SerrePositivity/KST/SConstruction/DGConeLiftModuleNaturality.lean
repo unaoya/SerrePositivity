@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGConeLiftCochainNaturality
-public import SerrePositivity.DifferentialGraded.Module.ConeLift
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-!
 概要：元二成分からの cone lift の全自然性を実加群 Hom end へ持ち上げる。

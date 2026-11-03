@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
-public import SerrePositivity.DifferentialGraded.Category.Components
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
 概要：KST §3.1 の係数制限後の合成を局所係数環で計算する。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorSeparation
 public import SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.QuotientWordSeparation
 public import SerrePositivity.DifferentialGraded.Quotient.Path.Evaluation
-public import SerrePositivity.DifferentialGraded.Functor.Components
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-!
 概要：元 Hom の成分と独立な固定 ε の交換を、実 path 直和の成分で読む。

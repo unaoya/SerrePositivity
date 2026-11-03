@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
-public import SerrePositivity.DifferentialGraded.Functor.Opposite
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
+public import SerrePositivity.DifferentialGraded.Functor.Closed
 
 /-!
 概要：KST §3.1 の補助係数圏の raw 加群に対する局所制限合成同型。

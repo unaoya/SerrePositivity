@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorGraphActions
-public import SerrePositivity.DifferentialGraded.Complexes.CurryingNaturality
-public import SerrePositivity.DifferentialGraded.Complexes.TensorGeneratorMaps
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # graph の二段の左作用と三重合成の結合
 概要：三重 graph 合成の二経路が持つ、元の Hom 作用の一致を示す。

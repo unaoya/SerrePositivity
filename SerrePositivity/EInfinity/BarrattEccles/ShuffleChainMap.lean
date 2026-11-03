@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleCochainLeibniz
-public import SerrePositivity.DifferentialGraded.Complexes.Composition
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # Barratt–Eccles の shuffle 部分合成の chain map

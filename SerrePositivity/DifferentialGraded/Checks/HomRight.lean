@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.HomRightFunctor
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 反変Homと右Hom加群の検査 -/

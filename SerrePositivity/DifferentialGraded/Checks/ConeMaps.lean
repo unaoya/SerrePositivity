@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeFunctor
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7b3b：cone の connecting map・可換 square・triangle 評価比較 -/

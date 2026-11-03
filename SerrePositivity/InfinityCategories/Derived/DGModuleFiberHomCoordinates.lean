@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleNegativeShiftHom
 public import SerrePositivity.InfinityCategories.Derived.DGModuleFiberObject
-public import SerrePositivity.DifferentialGraded.Module.HomConeIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! # shifted cone を標的とする全 Hom の二成分座標
 

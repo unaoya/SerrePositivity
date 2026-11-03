@@ -5,7 +5,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Normalized
 public import Mathlib.AlgebraicTopology.DoldKan.HomotopyEquivalence
 public import Mathlib.Algebra.Homology.Embedding.ExtendHomotopy
 public import Mathlib.Algebra.Homology.QuasiIso
-public import SerrePositivity.DifferentialGraded.Complexes.Cells
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 # Barratt–Eccles 正規化鎖の収縮

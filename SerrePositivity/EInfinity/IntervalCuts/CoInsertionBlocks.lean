@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.CoInsertion
-public import SerrePositivity.DifferentialGraded.Complexes.ParameterCross
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 public import SerrePositivity.EInfinity.IntervalCuts.TensorAppend
 
 /-!

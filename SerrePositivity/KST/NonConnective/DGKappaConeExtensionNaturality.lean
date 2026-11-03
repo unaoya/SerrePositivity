@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaConeExtensionDerivedComparison
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedComposition
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedDerivedComparison
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtension
+public import SerrePositivity.DifferentialGraded.Derived.Functor
 
 /-!
 概要：実延長の cone 作用を、元の導来延長との全関手自然性四角形へ接続する。

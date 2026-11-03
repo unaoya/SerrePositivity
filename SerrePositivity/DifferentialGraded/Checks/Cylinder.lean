@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Cylinder
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U9b1：全作用を持つcylinderとホモトピーの延長 -/

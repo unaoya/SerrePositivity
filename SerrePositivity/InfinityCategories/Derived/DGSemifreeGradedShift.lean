@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGGradedConjugation
 public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionGradedLifting
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
 /-!
 概要：shift の半自由分解から、実斉次閉射と両単位との差の境界原始元を構成する。

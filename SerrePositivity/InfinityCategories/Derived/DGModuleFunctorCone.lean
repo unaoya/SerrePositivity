@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCycles
-public import SerrePositivity.DifferentialGraded.Module.ConeHomotopyDesc
-public import SerrePositivity.DifferentialGraded.Functor.ModuleConeIso
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
 
 /-! # dg 加群間の dg 関手による実 cone 比較
 

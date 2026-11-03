@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Functor.ModuleShift
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 /-!
 概要：加群値 dg 関手と実 shift の比較同型。
 方針：同じ標準比較を全評価で検証して同型を反映する。

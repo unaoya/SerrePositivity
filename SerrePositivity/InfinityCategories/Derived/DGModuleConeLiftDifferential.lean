@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.ConeLift
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 
 /-! # dg 加群の cone への Hom の行列微分
 

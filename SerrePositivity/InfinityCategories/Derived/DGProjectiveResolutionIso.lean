@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGProjectiveDerivedComparison
-public import SerrePositivity.DifferentialGraded.Derived.ResolutionFunctor
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 /-!
 概要：射影的模型の主導来比較を標準分解関手で戻すと、元の同じ H⁰ 包含と自然同型。
 方針：実増大のホモトピー同型と lift 方程式を、境界商の自然同型として降ろす。

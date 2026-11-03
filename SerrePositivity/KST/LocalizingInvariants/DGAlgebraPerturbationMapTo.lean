@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPerturbation
-public import SerrePositivity.DifferentialGraded.Complexes.PerturbationMap
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 
 /-!
 概要：追加作用素を消す元の実代数射を、微分変更後の実代数射へ持ち上げる。

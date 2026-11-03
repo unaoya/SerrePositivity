@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.ShuffleNestedChains
 public import SerrePositivity.EInfinity.BarrattEccles.TripleComplexExt
 public import SerrePositivity.EInfinity.BarrattEccles.PartialCompositionLeftUnit
-public import SerrePositivity.DifferentialGraded.Complexes.AssociatorReindex
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # 部分合成の複体の射の入れ子結合則

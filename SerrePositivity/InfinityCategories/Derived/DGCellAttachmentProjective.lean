@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexProjectiveClosure
-public import SerrePositivity.DifferentialGraded.Complexes.KProjectiveTensor
+public import SerrePositivity.DifferentialGraded.Complexes.TensorShift
 public import SerrePositivity.DifferentialGraded.Resolution.Cells.Length
 
 /-!

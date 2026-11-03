@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.DerivedBlowup.FiniteOverlapTwistDGModel
-public import SerrePositivity.DifferentialGraded.Derived.RestrictionTriangles
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleMiddle.IteratedModels
 
 /-!
 概要：KST v4 §3.1（pp.11–14）の dg 模型上の捻りと指定導来捻りの H⁰ 比較。

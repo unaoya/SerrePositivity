@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.HomotopyRetract
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.CompactStage
-public import SerrePositivity.DifferentialGraded.Derived.ProjectiveLocalizationHom
+public import SerrePositivity.DifferentialGraded.Derived.Projective
 
 /-!
 概要：同じ選択代表の実導来頂点の native retract を、同じ代表系の実頂点同型で被覆する。

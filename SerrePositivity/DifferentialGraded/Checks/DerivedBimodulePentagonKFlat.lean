@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleCompositionPentagonKFlat
+public import SerrePositivity.DifferentialGraded.Derived.BimoduleComposition.Coherence
 public import Mathlib.Data.ZMod.Basic
 
 /-! # K-flat三因子上の全導来五角図式と両経路の比較の監査

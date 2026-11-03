@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGYonedaPostcomposition
-public import SerrePositivity.DifferentialGraded.Module.Cone
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 public import SerrePositivity.InfinityCategories.Derived.DGYonedaGradedPrimitives
 
 /-! # 元の Hom 後合成の cone と Yoneda 加群 cone への Hom

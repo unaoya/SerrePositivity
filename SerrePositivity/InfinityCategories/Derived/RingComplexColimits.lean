@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.RingGradedSplit
-public import SerrePositivity.DifferentialGraded.Module.EvaluationReflects
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-! 複体の指定余極限を同じ一点加群の指定余極限へ送る。 -/
 @[expose] public section

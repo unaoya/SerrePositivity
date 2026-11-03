@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.DegenerateCuts
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NativeDegeneracy
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.NormalizedHomotopyImage
-public import SerrePositivity.DifferentialGraded.Module.ShiftBlockLinear
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 /-!
 概要：重複二頂点を含む長さ二以上の prefix の実 bar 係数は零になる。
 方針：元の単体ラベルの退化性を、全高次成分の零性と線形な shift ブロックへ送る。

@@ -3,11 +3,11 @@ module
 public import SerrePositivity.DifferentialGraded.Tensor.ScalarExtension.CategoriesAndModules
 public import SerrePositivity.DifferentialGraded.Tensor.Parameter
 public import SerrePositivity.DifferentialGraded.Tensor.Bimodule.KFlatness
-public import SerrePositivity.DifferentialGraded.Module.RestrictionRepresentable
+public import SerrePositivity.DifferentialGraded.Module.FreeSphere
 public import SerrePositivity.DifferentialGraded.Tensor.LeftUnitRestriction
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionKFlatUnit
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
-public import SerrePositivity.DifferentialGraded.Module.RestrictionCoherence
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-!
 # Tensor.ResolvedRestriction

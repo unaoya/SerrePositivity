@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelope
-public import SerrePositivity.DifferentialGraded.Module.YonedaFunctor
+public import SerrePositivity.DifferentialGraded.Module.Graded
 
 /-! # 元の全代表を持つ小模型への厳密 Yoneda
 概要：元の dg 圏から、同じ代表対象を実際に含む小模型への厳密 dg 関手を構成する。

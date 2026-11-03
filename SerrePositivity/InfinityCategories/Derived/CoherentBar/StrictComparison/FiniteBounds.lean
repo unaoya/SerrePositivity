@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.Diagram
-public import SerrePositivity.DifferentialGraded.Complexes.CoproductSupport
-public import SerrePositivity.DifferentialGraded.Module.GradedCoproduct
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
+public import SerrePositivity.DifferentialGraded.Module.Disk
 public import Mathlib.CategoryTheory.Filtered.Basic
 
 /-!

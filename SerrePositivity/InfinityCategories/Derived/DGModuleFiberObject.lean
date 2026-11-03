@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleConeProjectionDifferential
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitDifferential
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.Algebra
 
 /-! # shifted cone による dg 加群の fiber 対象と射影

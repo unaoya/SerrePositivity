@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGNerveOppositeEquations
-public import SerrePositivity.DifferentialGraded.Module.Left
+public import SerrePositivity.DifferentialGraded.Module.Basic
 public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
 /-!
 概要：dg nerve の全単体と反対 dg 模型の全単体の、符号付き反転の全単射。

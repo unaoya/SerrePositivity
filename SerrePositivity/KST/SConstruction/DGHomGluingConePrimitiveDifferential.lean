@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeComponents
-public import SerrePositivity.DifferentialGraded.Complexes.HomMapEvaluation
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # 元の第三成分の Yoneda 像の微分
 概要：元の gluing の比較差を同じ実加群 Hom の合成として回収する。

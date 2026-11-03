@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.LeftUnitOuterRestriction
+public import SerrePositivity.DifferentialGraded.Derived.Paired
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側制限と単位子：標数2と独立宇宙での検査

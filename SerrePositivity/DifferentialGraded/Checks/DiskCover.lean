@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DiskCover
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Disk
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U10a3：自由disk被覆の宇宙と全射性 -/

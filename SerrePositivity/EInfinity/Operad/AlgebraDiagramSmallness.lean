@@ -27,6 +27,7 @@ open SerrePositivity.DifferentialGraded
 
 variable {A : Type u} [CommRing A] (P : Operad A) (K : Type u) [SmallCategory K]
 
+set_option synthInstance.maxHeartbeats 40000 in
 /-- 概要：指定した頂点に自由な代数図式を追加する（BM §1）。
 方針：評価の左随伴を使う。
 規約：他の頂点には各射で添字付けた余積を置く。
@@ -40,6 +41,7 @@ abbrev free (k : K) : P.Algebra ⥤ K ⥤ P.Algebra := evaluationLeftAdjoint P.A
 abbrev evaluation (k : K) : (K ⥤ P.Algebra) ⥤ P.Algebra :=
   (CategoryTheory.evaluation K P.Algebra).obj k
 
+set_option synthInstance.maxHeartbeats 40000 in
 /-- 概要：自由図式と評価の随伴（BM §1）。
 方針：余積による評価随伴を使う。
 規約：通常の関手圏そのものの随伴。

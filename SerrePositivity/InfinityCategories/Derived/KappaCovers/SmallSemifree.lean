@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.KappaCovers.GradedExtension
 public import SerrePositivity.InfinityCategories.Derived.DGKappaSphereFreeCover
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.FiniteGeneration
-public import SerrePositivity.DifferentialGraded.Derived.SemifreeProjective
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
 概要：各自由層が κ-small な実 semifree 加群を、同じ選択代表系で K(D) 同型まで被覆する。

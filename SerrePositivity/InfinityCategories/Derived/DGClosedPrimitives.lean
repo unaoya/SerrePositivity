@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Category.HomotopyHomologyLinear
+public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-! # 閉射の H⁰ での零性と具体的な原始元
 

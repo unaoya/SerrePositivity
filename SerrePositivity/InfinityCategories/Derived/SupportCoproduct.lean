@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Localization
 public import SerrePositivity.InfinityCategories.Derived.SupportOperations
-public import SerrePositivity.DifferentialGraded.Module.RingHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Module.HomotopyCoproductUniversal
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
+public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 
 /-! # 主イデアル上の台の任意直和閉性
 

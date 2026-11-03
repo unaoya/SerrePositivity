@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Operad.Schur
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 
 /-!
 # Schur 生成射をテンソルした射の一意性

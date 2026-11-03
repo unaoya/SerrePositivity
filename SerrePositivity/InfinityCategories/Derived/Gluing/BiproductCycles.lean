@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.Biproduct
+public import SerrePositivity.DifferentialGraded.Complexes.HomLimits
 
 /-! 二つの実 Hom 閉元を、同じ複体直和の閉元へ束ねる。 -/
 @[expose] public section

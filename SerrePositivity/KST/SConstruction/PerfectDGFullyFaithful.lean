@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PerfectDGMoritaHomotopy
 public import SerrePositivity.KST.SConstruction.DGModuleHomShiftCriterion
 public import SerrePositivity.KST.SConstruction.PerfectDGExtensionExact
-public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionUnitAll
+public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-! # Hom 準同型な元の dg 関手の実 Perf 延長の充満忠実性
 概要：本質的全射性なしで、元の実 Perf 延長の全 Hom 準同型性を証明する。

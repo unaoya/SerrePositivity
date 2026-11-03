@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.Zero
-public import SerrePositivity.DifferentialGraded.Module.Ring
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U7a1：零加群・全次数零 Hom・objectwise 判定の受入と公理監査 -/

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.DerivedBlowup.OverlapComplexComparison
 public import SerrePositivity.KST.DerivedBlowup.KoszulKFlat
-public import SerrePositivity.DifferentialGraded.Derived.ScalarExtensionComplexNaturality
+public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 
 /-!
 概要：KST Def3.1 のチャート複体の導来スカラー拡大を Koszul 外積模型で計算する。

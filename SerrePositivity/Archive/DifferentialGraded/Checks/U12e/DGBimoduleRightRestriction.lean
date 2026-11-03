@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.BimoduleRightRestrictionFull
+public import SerrePositivity.DifferentialGraded.Derived.Bimodule
 public import Mathlib.Data.ZMod.Basic
 
 /-! # 外側右制限の全Hom比較・全導来合成・必要仮定の検査

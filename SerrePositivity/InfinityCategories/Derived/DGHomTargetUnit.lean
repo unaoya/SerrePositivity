@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleUnitPinchedModel
-public import SerrePositivity.DifferentialGraded.Module.RingDGComparison
+public import SerrePositivity.DifferentialGraded.Module.Left.CategoryComparison
 /-!
 概要：Hom(x,x) の同じ dg 単位から、R の代表加群を始域とする実閉射を作る。
 方針：全 Hom の dg Yoneda 同型の逆で拡張し、同じ単位を回収する厳密等式を示す。

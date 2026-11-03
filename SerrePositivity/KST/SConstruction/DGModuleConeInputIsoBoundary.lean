@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoNaturality
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：同じ元 cone 入力等号の実同型が元包含・connecting を保つことを示す。

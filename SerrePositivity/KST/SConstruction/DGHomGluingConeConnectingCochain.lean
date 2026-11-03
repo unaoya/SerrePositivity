@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeCochain
-public import SerrePositivity.DifferentialGraded.Complexes.ConeGradedSplit
-public import SerrePositivity.DifferentialGraded.Complexes.Shift
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
+
 
 /-!
 概要：元三成分 cone 作用は connecting 射と全次数で自然に可換となる。

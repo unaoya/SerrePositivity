@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleInputIso
 public import SerrePositivity.InfinityCategories.Derived.DGClosedZeroVertex
-public import SerrePositivity.DifferentialGraded.Module.Zero
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!
 概要：同じ代表系内の実零加群の所属証拠を明示した、厳密な零 dg 自己関手。

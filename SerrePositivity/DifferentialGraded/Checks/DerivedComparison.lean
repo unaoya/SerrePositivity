@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-! # U9b2：境界を同一視する局所化と閉零/K(D)局所化比較 -/
 @[expose] public section

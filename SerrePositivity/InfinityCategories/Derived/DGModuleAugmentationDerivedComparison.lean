@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyComparison
-public import SerrePositivity.DifferentialGraded.Derived.HomotopyComparison
+public import SerrePositivity.DifferentialGraded.Derived.Basic
 /-!
 概要：実 augmentation の準同型性から、同じ主導来像の自然同型を構成する。
 方針：元の比較 cochain の境界式と同じ指定局所化を使う。

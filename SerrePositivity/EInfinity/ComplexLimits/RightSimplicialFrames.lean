@@ -84,8 +84,10 @@ lemma rightSimplicialFrameAugmentation_quasiIso (X : (Complex A))
 使われ方：混合 Hom の左比較の終域条件。 -/
 lemma rightSimplicialFrame_fibrant (X : (Complex A)) (n : SimplexCategoryᵒᵖ) :
     let := projectiveModelCategory A
+    letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
     IsFibrant (((rightSimplicialFrameFamily A).obj X).obj n) := by
   let := projectiveModelCategory A
+  letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   exact BarrattEccles.CarrierDiagram.complex_isFibrant A _
 
 /-- 概要：単体的右 frame の反対化は既存の Reedy cofibrant frame（Hovey §5.2）。
@@ -94,9 +96,11 @@ lemma rightSimplicialFrame_fibrant (X : (Complex A)) (n : SimplexCategoryᵒᵖ)
 使われ方：混合 Hom の右比較の入力。 -/
 lemma rightSimplicialFrame_cofibrant (X : (Complex A)) :
     let := projectiveModelCategory A
+    letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
     reedyLeft simplex (cofibrations (Complex A)ᵒᵖ)
       (initial.to ((rightSimplicialFrameFamily A).obj X).rightOp) := by
   let := projectiveModelCategory A
+  letI : HasLimitsOfSize.{u, u} (Complex A) := ⟨fun _ _ => inferInstance⟩
   exact rightFrame_cofibrant A X
 
 /-- 概要：単体的右 frame の反対化は homotopically constant（Hovey §5.2）。

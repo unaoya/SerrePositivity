@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGRestrictionGradedLift
 public import SerrePositivity.InfinityCategories.Derived.DGModuleYonedaPrecomposition
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # 制限代表への斉次持ち上げと元の閉射による前合成
 

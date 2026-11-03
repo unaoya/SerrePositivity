@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 
 /-! # dg 加群の全 Hom 射の shift による判定
 概要：H⁰ の全単射性を全ての源 shift で検査し、全 Hom の擬同型を得る。

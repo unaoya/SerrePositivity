@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeElement
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeConnectingCochain
-public import SerrePositivity.DifferentialGraded.Module.ShiftHom
-public import SerrePositivity.DifferentialGraded.Module.ConeMaps
+public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：実加群 cone の connecting 射は元の三成分全 Hom 作用について自然。

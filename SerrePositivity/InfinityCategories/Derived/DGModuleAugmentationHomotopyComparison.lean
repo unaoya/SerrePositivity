@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleAugmentationHomotopyNaturality
 public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
-public import SerrePositivity.DifferentialGraded.Functor.QuasiIsoHomology
-public import SerrePositivity.DifferentialGraded.Module.Homotopy
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
+public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 /-!
 概要：元の出力分解の augmentation を、閉射と実 H⁰ 関手の自然変換として比較する。
 方針：元の比較 cochain の境界式と同じ指定局所化を使う。

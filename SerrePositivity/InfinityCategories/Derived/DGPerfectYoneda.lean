@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
 public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedYonedaExact
-public import SerrePositivity.DifferentialGraded.Functor.HomIso
+public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
 /-!
 概要：元の dg Yoneda を実 perfect 加群へ因子化し、共通宇宙の完全充満忠実射を作る。
 方針：代表加群の射影性と perfect 性を対象に保持し、元の全 Hom 写像を使う。

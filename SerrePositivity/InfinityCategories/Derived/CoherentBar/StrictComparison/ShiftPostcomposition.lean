@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.ZeroShift
 public import SerrePositivity.InfinityCategories.Derived.CoherentBar.MaurerCartanDescent
-public import SerrePositivity.DifferentialGraded.Module.ShiftUnitRelations
+public import SerrePositivity.DifferentialGraded.Module.ShiftResolution
 public import SerrePositivity.InfinityCategories.DGNerve.NestedCut
-public import SerrePositivity.DifferentialGraded.Module.HomCycles
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-!
 概要：shift ブロックの零 shift 標的を、元の閉零射への後合成へ戻す。

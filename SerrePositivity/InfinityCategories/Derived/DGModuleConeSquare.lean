@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.DGModuleTriangleComponents
 public import SerrePositivity.InfinityCategories.Derived.StandardCofiberSquare
-public import SerrePositivity.DifferentialGraded.Module.ConeElements
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
 
 /-! # dg 加群の実際の cone 四角形

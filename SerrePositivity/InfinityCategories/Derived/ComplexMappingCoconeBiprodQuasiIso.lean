@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact
 public import SerrePositivity.InfinityCategories.Derived.ComplexShortExactQuasiIso
-public import SerrePositivity.DifferentialGraded.Complexes.AcyclicCone
+public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 /-!
 概要：第二成分が準同型なら、二成分差の mapping cocone の実第一射影も準同型。
 方針：実短完全列の左 cocone の acyclic 性を、同じ第二鎖写像の準同型性から得る。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact
-public import SerrePositivity.DifferentialGraded.Complexes.ConeDesc
+public import SerrePositivity.DifferentialGraded.Complexes.Cone
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 
 /-! # 二成分 mapping cocone の元の短完全列の cofiber 比較

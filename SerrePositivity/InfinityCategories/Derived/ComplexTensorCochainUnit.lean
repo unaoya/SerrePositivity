@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.RightUnitorEvaluation
-public import SerrePositivity.DifferentialGraded.Complexes.TensorCarryCochain
+public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
+
 /-!
 概要：全次数 cochain の tensor と、単位を挿入する実鎖写像との自然性。
 方針：全 cochain の交差符号と、左右単位子の実成分を使う。

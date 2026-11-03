@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Complexes.ProductAcyclic
+public import SerrePositivity.DifferentialGraded.Complexes.TensorCoproduct
 
 /-! # U10b3a：acyclic複体のu-small直積 -/
 @[expose] public section

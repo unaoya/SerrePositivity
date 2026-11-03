@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Gluing.KernelHomComposition
 public import SerrePositivity.InfinityCategories.Derived.Gluing.ModulePostAction
-public import SerrePositivity.DifferentialGraded.Module.HomConeIso
+public import SerrePositivity.DifferentialGraded.Module.Hom.ConeComparison
 
 /-! kernel 作用の全次数での自然性を cochain に転置し、円錐の左包含へ適用する。 -/
 @[expose] public section

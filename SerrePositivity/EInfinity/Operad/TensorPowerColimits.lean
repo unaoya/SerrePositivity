@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.CategoryTheory.Monoidal.TensorPower.Basic
-public import SerrePositivity.DifferentialGraded.Complexes.Closed
+public import SerrePositivity.DifferentialGraded.Complexes.MaurerCartanCurrying
 public import Mathlib.CategoryTheory.Limits.Sifted
 public import Mathlib.CategoryTheory.Limits.Connected
 

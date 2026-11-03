@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.TensorAdjunction
+public import SerrePositivity.DifferentialGraded.Module.TensorFree
 public import Mathlib.Data.ZMod.Basic
 
 /-! # U6c の全次数転置・自由評価随伴の受入検証と公理監査 -/

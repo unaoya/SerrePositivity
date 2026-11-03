@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.DifferentialGraded.Module.DiskCover
+public import SerrePositivity.DifferentialGraded.Module.Disk
 /-!
 概要：canonical 分解の初期自由 disk 被覆から厳密に持ち上げる。
 方針：自由 disk の全射評価と余積の実普遍性を使う。
