@@ -74,3 +74,15 @@ W2c は二つの群からなる。**群 A**（辺を切る：R27・R64・R72 の
 ## 4. 許す変更・止める条件・禁止事項
 
 W2b §4〜§6 と §12・§14・§16・§18 の最終形をそのまま適用する。追加：KST の K 固有の部分（BF スペクトル・S•・局所化不変量の定義）を中核へ移さない。`layers.json` に例外を足さない（要るなら止める）。
+
+## 5. 追記（2026-11-04 朝、停止点 1 の承認：群 A の仕上げ、群 A′（R72 の残り）、群 B の置き先の規則）
+
+**受領**：草案 1c05a5a16（ビルド 0 回）。模擬：中核層間の順序違反 0、直接禁止辺 18 → 1、禁止モジュール 150 → 106、affected core 2,531 → 2,366。群 B は探索 699 本のうち move 111・保留 588（内訳：K 固有の保留 211、混在依存の要再検討 367、一般補助の保留 10）。138 move の dry-run 終了 0、15 split の静的検査、循環 0。validator は ratchet の個別指標 26 件の増加で終了 1。下流 10,305 本・100 根・約 1 時間 43 分。
+
+**判断**：
+
+1. **群 A の残り 1 辺**（`HomotopyLimits.SpectrumPoint → KST.Spectra.Limits.SpectrumBinaryProduct`）：提案どおり、pointed な一点に関する 3 宣言を中核に残し、`spectrumPoint` と補助証明だけを KST へ **split**。これで直接禁止辺 0。
+2. **群 A′（HA の 90 本、R72 の残り）**：許可されている HotA の基盤部分（`HomotopicalAlgebra.Simplicial` など）の中に、モデル圏側（`HomotopyFunctionComplex/Reedy`・`Quillen`・`Transfer`・`Generated`・`Monoidal`）を import しているモジュールがあり、そこから 90 本が入っている（例：`F1.TwistedArrow.TwistedHomDiagonal → HA.Simplicial.DiagonalAdjunction → Reedy.SimplexResolution`）。計画 §3 の R72 の規則をそのまま適用する：入口になっている HotA の基盤モジュールごとに、(a) モデル圏側への import が末尾の「Model」の節や未使用 import のためなら **split／prune** でモデル圏部分を `ModelBridge/`（または HotA の Model 側）へ出す、(b) 中核の利用者が本当にモデル圏の宣言を使っているなら、その利用者を **ModelBridge へ上げる**（中核に利用者が残れば止めて報告）。入口の一覧（モジュール・経路・使う宣言）を草案に加える。目標は HA 90 → 0。
+3. **群 B の置き先**：「Stable へ移すだけ」が成り立たない混在依存 367 本は、**§14-3 の規則で置く**：依存が Stable に収まるものは `Stable/`、F2 の宣言を使うものは `StablePresentable/`（安定 presentable の置き場）、Derived（dg）の宣言を使うものは `Derived/`。目的は「KST の一般部分を ∞ 層へ出し、KST を K 固有の部分だけにする」ことであり、Stable の正本（一般の Verdier 分数）は段 G の M 項目で作り直す（この一覧を段 G の入力として記録）。**K 固有の保留 211 本**（BF fiber・S•・局所化不変量の定義本体を使うもの）は KST に残す。一般補助の保留 10 本（R56b）は Derived か ModelBridge。R48 の未了分があれば草案に含める。
+4. **ratchet の個別指標 26 件**：W2b §12 と同じ扱い（既存経路の継承、全体は減る）。報告に経路の表、束の終わりに基準の取り直し。例外は足さない。
+5. 以上で草案を更新（`w2c-a.json` に split と群 A′、`w2c-b-*.json` に置き先）→ validator・dry-run・模擬（直接禁止辺 0、禁止モジュールの見込み）を再実行 → **短い再報告（停止点 1′）** → 承認後に §3.1（適用と内部検証）。下流（見込み 10,000〜12,000 本）は 2a・2b の後に合図。

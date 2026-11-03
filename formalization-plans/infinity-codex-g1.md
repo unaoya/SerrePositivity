@@ -53,3 +53,11 @@ worktree：`../SerrePositivity-ig1`（新規。`git worktree add ../SerrePositiv
 **順序**：G7 → Core → G13 → ⊗^L → G3（紙の筋 → 証明）→ G8 → G12。項目ごとに別コミットと入口への登録、監査の再生成。
 
 **ビルド**：11-04 未明は論文の層 2a の全ビルドと verify が走っている。新規ファイルの型検査（小さなビルド）も、それが終わるまで待つ（§2-4a：`ps` で `lake build`・`verify.sh` がないことを確かめてから）。Lean のテキストは書き進めてよい。
+
+## 5. 追記（2026-11-04 朝、BS からの供給名への要望）
+
+BS-D6（main 2074a8d9e、検収 ed3184e56）で BS は G4・G6 の既存名を採用し、S4 は反射まで書けた。残るのは生成辺の存在（G8）。供給する三つの名前への要望：
+
+1. **`discreteSpaceInclusion : nerve (Type u) ⟶ SpaceInfinity.{u}`**：完全忠実性に加えて、**計算式が厳密に（rfl で）成り立つ**こと。頂点は `setsToKan`（集合を定値単体的集合にした離散 Kan 複体）の coherent nerve の頂点に、辺は Kan 値図式の辺の評価に等しい。drafts の `discretePresheaf_vertex`・`discretePresheafInclusion_edge` がこの等号を仮定している。定義はこの計算が定義的に出る形で与える（抽象的な存在だけにしない）。
+2. **`Is0TruncatedSpace`** は**離散埋め込みの本質像**として定義する（`is0Truncated_iff_pointwise` の証明に要る）。停止点 1 の案（`∃ T, Nonempty (VertexIso x (discreteSpaceInclusion.app _ (nerveVertex T)))`）はこの形なのでそのままでよい。
+3. **`tensorWith M`** は D(A) の自己関手 `D A ⟶ D A`（単体的集合の射）として、drafts では `Derived.completion A s` と合成して使う。合成できる形（同じ `derivedInfinityCategory A` を域と余域にする）で供給する。
