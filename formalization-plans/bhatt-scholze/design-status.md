@@ -67,7 +67,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly（BS-D4 停止点 3 済：`True` 0 件。`deRham_iso_rootAlgebra_modP` → A5 の `rootMap_modP_eq_deRham`、`prismaticCohomology_lci_universal` → A3 の特殊化） | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模（11-03、BS-D4 後）：51 本、約 12,100 行（結論が `True` の名前つき宣言 53、Codex 集計）。BS-D1（49）・BS-D2（83）・BS-D3（88）・BS-D4（64＋`Type u := sorry` 10）で A0〜A9 の仮置きを具体的な型にした（報告 `report-codex-d1/2/3/4.md`、D1-01〜03・D2-01〜02・D3-01〜07・D4-01〜06 は設計側で解決）。**A0〜A9 に結論が `True` の仮置きは残っていない。** 残り 53 は基盤側（Shared 28：Descendable 16・CosimplicialEInfinity 5・EInfinityPowerOperation 4・Bockstein 2・DeRhamPolynomial 1；DerivedGeneral 14：CompletionFunctor 5・Truncation 5・ScalarRestriction 4；Sheaves 11：SpaceValued 6・CAlgValued 3・CechConerveLimit 1・GlobalSections 1）→ W2b 後の段 G（BS が M12a・M13、∞ が G3・G4・G6）。
+骨組みの規模（11-03、BS-D4 後）：51 本、約 12,100 行（結論が `True` の名前つき宣言 53、Codex 集計）。BS-D1（49）・BS-D2（83）・BS-D3（88）・BS-D4（64＋`Type u := sorry` 10）で A0〜A9 の仮置きを具体的な型にした（報告 `report-codex-d1/2/3/4.md`、D1-01〜03・D2-01〜02・D3-01〜07・D4-01〜06 は設計側で解決）。**A0〜A9 に結論が `True` の仮置きは残っていない。** 残り 53 は基盤側（BS-D5 停止点 1 後は 39：DerivedGeneral 0。Shared 28：Descendable 16・CosimplicialEInfinity 5・EInfinityPowerOperation 4・Bockstein 2・DeRhamPolynomial 1；DerivedGeneral 14：CompletionFunctor 5・Truncation 5・ScalarRestriction 4；Sheaves 11：SpaceValued 6・CAlgValued 3・CechConerveLimit 1・GlobalSections 1）→ W2b 後の段 G（BS が M12a・M13、∞ が G3・G4・G6）。
 
 ## 2. 要確認の分類
 
@@ -199,7 +199,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 
 8. （11-03 夜、ユーザー「それで進めて」）2a までの追加作業：(a) **基盤の入口表** `foundation-entry-points.md`（基盤側 53 件の「使う側・担当・D5 での形」、A 側の要確認 → 入口、∞ レーンへの依頼案 §4、段 2 の点検表 §5）。
    見つかった穴：空間の ∞ 圏 𝒮 の名前がない（G13 と一緒に ∞ へ）、導来テンソル ⊗^L の ∞ 関手がない（必須は M15 だけ）、S4・S5（層化の存在・完全性）の担当が分担に入っていない。調整役の回答（11-03、coordination.md 8ef332d45）：𝒮・G13 は ∞（名前の候補 `SpaceInfinity`、`IsPresentable 𝒮` は F2/）、⊗^L は ∞（β5 の一部、Derived/、M13 には含めない）、**S4・S5 は BS**（G4・G6・G8・G7 を ∞ が供給）。G12 と Core の小補題も ∞ の依頼に入れる。依頼書は W2b 取り込み後に調整役が起こす。BS-D5 の開始は了承。
-   (b) **BS-D5**（`bhatt-scholze-codex-d5.md`、Codex、ビルドなし）：基盤側 53 件のうち型にできる 48 件程度を型に（×：`totEInfinity_cohomologyRing`、Descendable の RHom・完備版・`tensor` 欄）。停止点は DerivedGeneral → Shared → Sheaves。
+   (b) **BS-D5**（`bhatt-scholze-codex-d5.md`、Codex、ビルドなし）：基盤側 53 件のうち型にできる 48 件程度を型に（×：`totEInfinity_cohomologyRing`、Descendable の RHom・完備版・`tensor` 欄）。停止点は DerivedGeneral → Shared → Sheaves。**停止点 1（DerivedGeneral）済・検収済み（da51e50f3、11-03）**：14 件、新設 `completeAt`・`completionReflection s`・`completion s`・CAlg 版・`completedBaseChange f s`・`truncationLE_step`・`discreteModuleEmbedding`・`cohomologyLayer`・`tStructure_{orthogonal,shift,decomposition}`・`cAlgH0Ring`・`cAlgRestrictScalars_h0_base`。残り 39（Shared 28・Sheaves 11）。
    (c) ノート第 4・5・7・8・10 章に BS-D1〜D4 の決定と A1・A3・A6 の骨組みの宣言名を反映（第 5 章に「原典との差の評価」D68・D69・D27・D20 を追加）。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
