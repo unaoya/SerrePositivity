@@ -102,7 +102,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | `hasDescentIndexLEOver_two_of_rhom`・`hasDescentIndexLE_two_of_rhom` | (f) RHom(F^{⊗2}, R) ∈ D^{<0} ⇒ index ≤ 2 | A5 `fiberSquareRHom`（Lemma 8.6 の n = 1） | × | Mod_R の内部 Hom／D(A) の RHom の ∞ 関手がない。`True` のまま |
 | `hasDescentIndexLEOver_frobeniusColimit`・`hasDescentIndexLE_frobeniusColimit` | (g) BS17 Lemma 11.22 | Lemma 8.6 の perf 版 | ○ | ℕ の nerve 上の図式と余極限錐（A4 `frobeniusTower` と同じ形）、各段で index ≤ n ⇒ 余極限で ≤ 2n |
 | `isDescendableOver_complete`・`isDescendable_complete` | (h) 完備版 | Lemma 8.6 の形 | × | 完備テンソル（⊗^L の後に `completion`）が ⊗^L 待ち。`True` のまま |
-| `isDescendable_of_faithfullyFlat` | 忠実平坦 ⇒ descendable | 記録 | ○ | 離散環の忠実平坦射 A → B を `algebraEmbedding` で埋め込んだもの |
+| `isDescendable_of_faithfullyFlat` | 忠実平坦**かつ有限表示** ⇒ descendable（[Mat16, Prop 3.31]） | 記録 | ○ | **D5-04**：忠実平坦だけでは descendable とは限らない（Aoki, arXiv:2411.05995 の反例）。離散 A 代数 B が忠実平坦かつ有限表示（`Module.FaithfullyFlat` ＋ `Algebra.FinitePresentation`）の場合に限定し、`algebraEmbedding` で埋め込んで述べる |
 
 ### 1.8 Shared/EInfinityPowerOperation（M14、段 G）
 
@@ -222,6 +222,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-03（D5-04、Codex）：`isDescendable_of_faithfullyFlat` は忠実平坦＋有限表示に限定（Mathew Prop 3.31。忠実平坦だけでは偽、Aoki arXiv:2411.05995）。
 - 2026-11-03（D5-03、Codex）：P⁰ は φ_k 半線形。`powerOperationZero_natTrans` は U ⇒ U ≫ `derivedInfinityRestrictScalars (frobenius k p)` の形にし、k = F_p で自己変換に特殊化。
 - 2026-11-03（D5-02、Codex）：`discreteEmbedding A` は A 代数用。加群 H^n(X)・Ω^i は `moduleSemifreeResolutionFunctor` ＋ `closedNerveInclusion`（A2 `ordinaryFormsDiagram` と同じ）で入れる。§1.2・§1.6 を訂正、`discreteModuleEmbedding` を新設。
 - 2026-11-03（D5-01、Codex）：§1.2 の shift の式を `IsConnectiveAt n x ↔ IsConnectiveAt (n-1) (Σx)` に訂正、分解は τ^{≤n} → id → τ^{≥n+1} の cofiber＝fiber 四角形。
