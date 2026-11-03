@@ -86,3 +86,13 @@ W2b §4〜§6 と §12・§14・§16・§18 の最終形をそのまま適用す
 3. **群 B の置き先**：「Stable へ移すだけ」が成り立たない混在依存 367 本は、**§14-3 の規則で置く**：依存が Stable に収まるものは `Stable/`、F2 の宣言を使うものは `StablePresentable/`（安定 presentable の置き場）、Derived（dg）の宣言を使うものは `Derived/`。目的は「KST の一般部分を ∞ 層へ出し、KST を K 固有の部分だけにする」ことであり、Stable の正本（一般の Verdier 分数）は段 G の M 項目で作り直す（この一覧を段 G の入力として記録）。**K 固有の保留 211 本**（BF fiber・S•・局所化不変量の定義本体を使うもの）は KST に残す。一般補助の保留 10 本（R56b）は Derived か ModelBridge。R48 の未了分があれば草案に含める。
 4. **ratchet の個別指標 26 件**：W2b §12 と同じ扱い（既存経路の継承、全体は減る）。報告に経路の表、束の終わりに基準の取り直し。例外は足さない。
 5. 以上で草案を更新（`w2c-a.json` に split と群 A′、`w2c-b-*.json` に置き先）→ validator・dry-run・模擬（直接禁止辺 0、禁止モジュールの見込み）を再実行 → **短い再報告（停止点 1′）** → 承認後に §3.1（適用と内部検証）。下流（見込み 10,000〜12,000 本）は 2a・2b の後に合図。
+
+## 6. 追記（2026-11-04 朝、停止点 1′ の承認：残る HA 66・ModelBridge 8 は段 G の項目に）
+
+**受領**：草案 11eacaa39（ビルド 0）。群 A・A′：`spectrumPoint` の分離、HA の入口 10 モジュール・13 辺の分割案で直接禁止辺 0・循環 0、禁止モジュール 150 → 74（HA 66・ModelBridge 8）、affected core 2,531 → 1,730。残り：`CosliceTwistedHomEquivalence` の証明が Reedy の定理を実際に使い、ModelBridge へ上げると中核の `SourceInitial`・`RightRepresentableTwistedArrowEquivalence`・`TwistedHomFunctorMap` に実参照が残る。群 B：混在 367 本のうち 177 本を丸ごと move、92 本から一般宣言を split、98 本を保留、K 固有 211 本は KST に残す、R56b の 10 本は Derived。325 move の dry-run 終了 0、116 split の静的検査、`--enforce W2b` PASS、validator の増加は承認済み 26 指標のうち 14 件。下流 11,152 本・129 根・約 1 時間 51 分。段 G への一覧 `w2c-stage-g-input.json`。
+
+**判断**：
+1. **承認**。§3.1（適用と内部検証）へ進んでよい。下流と verify は 2a・2b の後の合図（2a は 11-04 朝に取り込み済み。2b は 11-05 見込み）。
+2. **残る HA 66・ModelBridge 8**：`CosliceTwistedHomEquivalence` → Reedy の依存は数学的な依存（twisted arrow の coslice の Hom の同値を Reedy の定理で示している）で、移動では切れない。**W2c の完了条件はこの残りを除いて判定する**（直接禁止辺 0、禁止モジュール 150 → 74、残りの入口と理由を一覧に）。残りは段 G の項目 **M16**：「`CosliceTwistedHomEquivalence` の Reedy 非依存の証明（Kerodon の twisted arrow の議論で書き直す）か、F1 の twisted arrow の該当部分の再編」。計画の段 G に追加（Claude）。`layers.json` の例外は足さない（ratchet の基準で保つ）。
+3. 群 B の保留 98 本と、Stable に置けなかった分数（StablePresentable・Derived に置いた分）の一覧は、段 G の M 項目（一般の Verdier 分数の正本）の入力として `w2c-stage-g-input.json` のまま残す。
+4. ratchet の 14 件は W2b §12 の扱い。

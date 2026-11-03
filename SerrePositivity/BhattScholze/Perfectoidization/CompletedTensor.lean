@@ -9,21 +9,20 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfe
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraH0
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IdealExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization
-public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-!
-# perfectoid 環の完備テンソル積と有限直積
+# perfectoid 環の完備テンソル積
 
 ## 概要
-perfectoid 代数の導来完備テンソル積 H⁰ は離散で perfectoid、普遍な perfectoid テンソル、商の完備積、有限直積の perfectoid 性。
+perfectoid 代数の導来完備テンソル積 H⁰ は離散で perfectoid、普遍な perfectoid テンソル、商の完備積。
 
 ## 方針
 Fontaine 表示（完全 prism の完備テンソル積）から離散性を得る。
 
 ## 規約
-有限直積は今 E3（整代数の perfectoid 化）に依存している（ノート BR20）。
+有限直積の perfectoid 性は `BhattScholze.Perfectoid.FiniteProduct` に置く。
 
 ## 使われ方
 Lemma 10.3、Prop 8.13 の環版、CLMST。
@@ -550,61 +549,3 @@ lemma completedTensorPerfectoidLift_isPerfectoidization
 end SerrePositivity.BhattScholze
 
 end CompletedTensorPerfectoidUniversal
-
-/-! ## Finite products from the existing universal integral-perfectoidization input（旧 Perfectoidization/PerfectoidFiniteProduct.lean）
-
-Coordinate maps to the original perfectoid ring give a retraction of the
-chosen universal object. Universality makes this a two-sided inverse. This
-proof explicitly retains the existing B-I existence dependency.
--/
-
-@[expose] public noncomputable section PerfectoidFiniteProduct
-
-namespace SerrePositivity.BhattScholze
-
-/-- A finite product of copies of a perfectoid ring is perfectoid, including the
-empty product. This proof uses the existing integral-existence input B-I. -/
-theorem isIntegralPerfectoid_finPi
-    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) (r : ℕ) : IsIntegralPerfectoid (Fin r → R) p := by
-  obtain ⟨C, hC, f, hf⟩ := Inputs.exists_perfectoidization_of_integral R (Fin r → R) p hR
-  let := hC
-  let k : C →+* (Fin r → R) :=
-    RingHom.pi fun i => hf.lift hR (Pi.evalRingHom (fun _ : Fin r => R) i)
-  have hkf : k.comp f = RingHom.id (Fin r → R) := by
-    apply RingHom.ext
-    intro x
-    apply funext
-    intro i
-    exact RingHom.congr_fun (hf.lift_comp hR (Pi.evalRingHom (fun _ : Fin r => R) i)) x
-  have hfk : f.comp k = RingHom.id C := by
-    obtain ⟨l, _hl, hu⟩ := hf.2 C hf.1 f
-    exact (hu (f.comp k) (by
-      change (f.comp k).comp f = f
-      rw [RingHom.comp_assoc, hkf, RingHom.comp_id])).trans
-      (hu (RingHom.id C) (RingHom.id_comp f)).symm
-  let e : (Fin r → R) ≃+* C :=
-    { f with invFun := k
-             left_inv := fun x => RingHom.congr_fun hkf x
-             right_inv := fun x => RingHom.congr_fun hfk x }
-  exact isIntegralPerfectoid_of_ringEquiv p e.symm hf.1
-
-/-- Any specified universal perfectoidization of the finite product is its
-original unit as an algebra equivalence over the original base. -/
-theorem finiteProduct_perfectoidization_exists_algEquiv
-    (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    (hR : IsIntegralPerfectoid R p) (r : ℕ)
-    (C : Type u) [CommRing C] [Algebra R C]
-    (f : (Fin r → R) →ₐ[R] C) (hf : IsPerfectoidization p f.toRingHom) :
-    ∃ e : (Fin r → R) ≃ₐ[R] C, e.toAlgHom = f := by
-  obtain ⟨e, he⟩ := (isIntegralPerfectoid_finPi R p hR r).isPerfectoidization_id.exists_equiv p hf
-  have hef : e.toRingHom = f.toRingHom := by simpa only [RingHom.comp_id] using he
-  let e' : (Fin r → R) ≃ₐ[R] C := AlgEquiv.ofRingEquiv (f := e) fun s => by
-    change e.toRingHom (algebraMap R (Fin r → R) s) = algebraMap R C s
-    rw [hef]
-    exact f.commutes s
-  exact ⟨e', by ext x; exact RingHom.congr_fun hef x⟩
-
-end SerrePositivity.BhattScholze
-
-end PerfectoidFiniteProduct

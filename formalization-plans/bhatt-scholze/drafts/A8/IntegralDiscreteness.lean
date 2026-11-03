@@ -4,7 +4,7 @@ module
 
 public import Mathlib.RingTheory.AdicCompletion.Algebra
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 -- 本ファイルは drafts/A8/{AlmostConnectivity,AlmostPurityConnectivity,Stratification}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean、
 -- drafts/A5/{PerfectSiteComparison,WeaklyInitialAndDescent}.lean、drafts/A4/{InterfaceFields,AfterComparison}.lean（`e3Perfd_eq_direct` は AfterComparison。W9-III-14）を import する。
 

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
 public import SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.Uniform
 public import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision

@@ -4,8 +4,8 @@ module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PowerRootPolynomial
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison

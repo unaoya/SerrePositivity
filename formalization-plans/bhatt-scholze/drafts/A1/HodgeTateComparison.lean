@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.4・§2.5・§3、単位 A1-4。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.BhattScholze.Delta.Free.FreeDeltaRing
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaLocalization
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
