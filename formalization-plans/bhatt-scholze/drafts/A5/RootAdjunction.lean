@@ -93,7 +93,7 @@ instance : Algebra R (rootClosure p R S) :=
 使われ方：κ 側の site の対象であること、Cor 8.12 の前提。 -/
 theorem rootClosure_isModuleComplete :
     SerrePositivity.DerivedCompletion.IsModuleComplete (rootClosure p R S) (p : rootClosure p R S) (ModuleCat.of (rootClosure p R S) (rootClosure p R S)) := by
-  sorry
+  exact completionRing_complete p _
 
 /-- 概要：(i) 延長性：任意の perfectoid T と S → T は S̃ → T に延びる（段ごとに `rootAdjunctionStep_extends`、余極限へ、完備化の普遍性）。
 方針：Frobenius 全射（perfectoid）と p 完備性で段ごとに延長し余極限へ。
@@ -101,14 +101,14 @@ theorem rootClosure_isModuleComplete :
 使われ方：弱始性、A6 の `exists_perfectoid_arcCover`。 -/
 theorem rootClosure_extends (T : Type u) [CommRing T] (hT : IsIntegralPerfectoid T p) (g : S →+* T) :
     ∃ l : rootClosure p R S →+* T, l.comp (rootClosureUnit p R S) = g := by
-  sorry
+  sorry -- 後続段の延長を順に選んで余極限へ降ろし、T の完備性を使う
 
 /-- 概要：(iii) #S̃ ≤ (#S + ℵ₀)^{ℵ₀}（各段は #S_k + ℵ₀ 個の変数の多項式環の商、可算余極限、完備化は可算列の逆極限）。
 方針：各段の濃度評価と完備化の濃度（A0 `cardinal_envelope_le` と同型の議論）。
 規約：κ = `cutoff` 以上の κ（`IsAdmissibleCutoff`、κ^{ℵ₀} = κ）なら ≤ κ。
 使われ方：κ 側の site の対象になること（D47）。 -/
 theorem rootClosure_cardinal_le : Cardinal.mk (rootClosure p R S) ≤ (Cardinal.mk S + Cardinal.aleph0) ^ Cardinal.aleph0 := by
-  sorry
+  sorry -- 可算個の段と可算完備化の濃度評価
 
 /-- 概要：(iv) S ↦ S̃ は関手的（段ごとに X_a ↦ X_{f(a)}、Y_a ↦ Y_{f(a)}）。
 **完備化した filtered 余極限とは可換でない**（W9-II-09：完備化で現れる元に付く独立な Y 変数が有限段から来ない。反例 R = Z_p[p^{1/p^∞}]^∧、S_n = R⟨t_1..t_n⟩、
@@ -116,15 +116,17 @@ s = Σ p^j t_j）。旧 `rootClosure_filteredColimit` は撤回。filtered 余�
 方針：段ごとの関手性。
 規約：—
 使われ方：弱始対象の関手性のみ。 -/
-def rootClosureMap {S' : Type u} [CommRing S'] [Algebra R S'] (f : S →+* S') : rootClosure p R S →+* rootClosure p R S' := sorry
+def rootClosureMap {S' : Type u} [CommRing S'] [Algebra R S'] (f : S →+* S') : rootClosure p R S →+* rootClosure p R S' := by
+  sorry -- 完備化した各段の変数を f で再添字付けし、余極限と完備化で送る
 theorem rootClosureMap_comp_unit {S' : Type u} [CommRing S'] [Algebra R S'] (f : S →+* S') :
     (rootClosureMap p R S f).comp (rootClosureUnit p R S) = (rootClosureUnit p R S').comp f := by
-  sorry
-theorem rootClosureMap_id : rootClosureMap p R S (RingHom.id S) = RingHom.id _ := by sorry
+  sorry -- 第零段の構造射の自然性
+theorem rootClosureMap_id : rootClosureMap p R S (RingHom.id S) = RingHom.id _ := by
+  sorry -- 各段の再添字付けが恒等射
 theorem rootClosureMap_comp {S' S'' : Type u} [CommRing S'] [Algebra R S'] [CommRing S''] [Algebra R S'']
     (f : S →+* S') (g : S' →+* S'') :
     rootClosureMap p R S (g.comp f) = (rootClosureMap p R S' g).comp (rootClosureMap p R S f) := by
-  sorry
+  sorry -- 各段の再添字付けの合成を完備化で送る
 
 /-- 概要：G-A5-18：完備化前の代数的な根添加 E(C)：E_0 = C、E_{k+1} = E_k[X_a, Y_a : a ∈ E_k]/(a − X_a^p − pY_a)、E = colim_k E_k（途中で完備化しない）。
 通常の環の filtered 余極限と可換。各段は Y 変数上の X のモニック関係で自由な拡大。
@@ -146,9 +148,20 @@ abbrev algebraicRootClosure (C : Type u) [CommRing C] := ↥(Limits.colimit (alg
 def algebraicRootClosureUnit (C : Type u) [CommRing C] : C →+* algebraicRootClosure p C :=
   (Limits.colimit.ι (algebraicTower p (CommRingCat.of C)) 0).hom
 
+def algebraicStageMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
+    ∀ n, algebraicStages p C n ⟶ algebraicStages p C' n
+  | 0 => f
+  | n + 1 => by
+    let g := (algebraicStageMap f n).hom
+    let rename := MvPolynomial.eval₂Hom (MvPolynomial.C.comp g)
+      (fun j => MvPolynomial.X (Sum.map g g j))
+    exact CommRingCat.ofHom (Ideal.quotientMap (algebraicStepIdeal p (algebraicStages p C' n))
+      rename (by sorry)) -- a−X_a^p−pY_a は g(a) の関係に移る
+
 def algebraicTowerMap {C C' : CommRingCat.{u}} (f : C ⟶ C') :
-    algebraicTower p C ⟶ algebraicTower p C' := by
-  sorry -- 段ごとに係数と変数の添字を f で送り、商の関係と遷移を保つ
+    algebraicTower p C ⟶ algebraicTower p C' :=
+  NatTrans.ofSequence (algebraicStageMap p f) (by
+    sorry) -- 係数の包含は g と可換なので後続段への正方形が可換
 
 def algebraicRootClosureMap {C C' : Type u} [CommRing C] [CommRing C'] (f : C →+* C') :
     algebraicRootClosure p C →+* algebraicRootClosure p C' :=
@@ -160,8 +173,8 @@ def algebraicRootFunctor : CommRingCat.{u} ⥤ CommRingCat.{u} where
   map_id := by sorry -- 各段で恒等射
   map_comp := by sorry -- 係数と変数の添字で合成を保つ
 
-/-- 概要：E(−) は通常の環の filtered 余極限と可換（各段が有限個の変数と関係で書けるので）。
-方針：`MvPolynomial` の余極限との交換。主張の形（filtered 図式 `J ⥤ CommRingCat` と `colimit` の比較同型）は中身の段階で `CategoryTheory.Limits` の形に合わせる。
+/-- 概要：E(−) は通常の環の filtered 余極限と可換（各元と各等式が有限個の変数と関係だけを使うので）。
+方針：`MvPolynomial` の余極限との交換。filtered 図式の標準射 `colimit.post` の可逆性で述べる。
 規約：—
 使われ方：A5-4 `algebraicRootCover_properties`。 -/
 theorem algebraicRootClosure_filteredColimit {J : Type u} [SmallCategory J] [IsFiltered J]
@@ -174,7 +187,7 @@ theorem algebraicRootClosure_filteredColimit {J : Type u} [SmallCategory J] [IsF
 使われ方：A5-4 の G-A5-14 への入力。 -/
 theorem algebraicRootClosure_frobenius_surjective (C : Type u) [CommRing C] :
     Function.Surjective (fun x : ModP (algebraicRootClosure p C) p ↦ x ^ p) := by
-  sorry
+  sorry -- 余極限の各元は有限段から来て次の段で mod p の根をもつ
 
 /-! ## (3) T_∞ と S ⊗̂_T T_∞ -/
 
@@ -199,24 +212,29 @@ abbrev polyRootAlgebra (r : ℕ) :=
   ↥(completionRing p (CommRingCat.of (MvPolynomial (Fin r × ℕ) R ⧸ polyRootIdeal p R r)))
 instance (r : ℕ) : Algebra R (polyRootAlgebra p R r) :=
   ((completionUnit p _).hom.comp ((Ideal.Quotient.mk (polyRootIdeal p R r)).comp MvPolynomial.C)).toAlgebra
+
 def polyRootAlgebraVar (r : ℕ) (i : Fin r) (n : ℕ) : polyRootAlgebra p R r :=
-  (completionUnit p _).hom (Ideal.Quotient.mk (polyRootIdeal p R r) (MvPolynomial.X (i,n)))
+  (completionUnit p _).hom (Ideal.Quotient.mk (polyRootIdeal p R r) (MvPolynomial.X (i, n)))
+
 def polyAlgebraToRoot (r : ℕ) : polyAlgebra p R r →+* polyRootAlgebra p R r :=
   (completionMap p (CommRingCat.ofHom ((Ideal.Quotient.mk (polyRootIdeal p R r)).comp
     (MvPolynomial.rename (fun i : Fin r => (i, 0))).toRingHom))).hom
 
 theorem polyRootAlgebraVar_pow (r : ℕ) (i : Fin r) (n : ℕ) :
-    polyRootAlgebraVar p R r i (n + 1) ^ p = polyRootAlgebraVar p R r i n := by sorry
+    polyRootAlgebraVar p R r i (n + 1) ^ p = polyRootAlgebraVar p R r i n := by
+  sorry -- 定義イデアルの関係を完備化へ送る
 theorem polyAlgebraToRoot_var (r : ℕ) (i : Fin r) :
-    polyAlgebraToRoot p R r (polyAlgebraVar p R r i) = polyRootAlgebraVar p R r i 0 := by sorry
+    polyAlgebraToRoot p R r (polyAlgebraVar p R r i) = polyRootAlgebraVar p R r i 0 := by
+  sorry -- completionMap_comp と添字 i ↦ (i,0)
 
 /-- 概要：R perfectoid なら T_∞ は perfectoid（R⟨X^{1/p^∞}⟩ は R の perfectoid 性を継ぐ：p 完備、ϖ は R から、mod p の Frobenius は変数の根で全射、
 核は R の核の生成元で生成）。
-方針：既存の一変数 `CompatibleRootPerfectoid`（Semiperfectoid/CompatibleRootPerfectoid.lean）の多変数版（要確認：名前）。
+方針：一変数の `compatibleRootCompletion_isIntegralPerfectoid` の計算を有限個の根変数で行う。
 規約：—
 使われ方：Lemma 8.6 の T_∞ 側（L_{T_∞/R}^∧ = 0）、A5-4 の S̃ の semiperfectoid 性。 -/
+include hR in
 theorem polyRootAlgebra_isIntegralPerfectoid (r : ℕ) : IsIntegralPerfectoid (polyRootAlgebra p R r) p := by
-  sorry
+  sorry -- 基底の擬一様化元と変数の根から各条件を得る
 
 /-- 概要：S̃ = S ⊗̂_T T_∞（T → S、f で X_i ↦ f i）と S̃^n = (S̃^{⊗_S n+1})^∧。
 方針：完備テンソル（A2 `BaseChangeAndTensor`、既存 `CompletedTensor` の芯）。
