@@ -9,6 +9,10 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 
 ## 1. 状態
 
+**Codex レビュー W9（2026-11-02〜03）完了：条件付き妥当**（段 I〜III、12 論点すべて「妥当」、A9 は実施条件つき）。条件は W9-III-08 の実施（CompletedTensor の芯の分離・有限直積の
+E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W9-I-01…39、W9-II-01…16、W9-III-01・04・08 の計 14 件で、すべて訂正または方針決定済み。sorry は 194 宣言（恒久的な引用 3）。
+詳細は §5 と a9-design §8。
+
 | 単位 | 設計書 | 骨組み（drafts） | 紙の検証 | 中身 |
 | --- | --- | --- | --- | --- |
 | ∞ 層 S1 層条件 | infinity-sheaves-design §1・§3 | Sheaves/SheafCondition | — | C（JoinCone.ulift、生成系で十分の補題） |
@@ -175,6 +179,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
 5. （11-03、W9-III-08）2a 後：CompletedTensor の E3 非依存の芯への分割と有限直積の直接証明（調整役と時期を合わせる）。中身の段階の `lake build` の前に import の到達性で E3 非依存と drafts/README の DAG を確認する。
+6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。実装の Codex 指示書（BS-W10 以降）はそのとき。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 
@@ -236,7 +241,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | W9-II-04 H⁰(Δ_perf) に A3 の離散 Δ 用定理を直接当てられない | 要修正 | 訂正済み（C/p ↪ H⁰(X/p) の単射、一般の Rem 2.2 = G-A4-8/G-A3-6、prism 性を直接組み立て） |
 | W9-II-05 単位名とノートの coconnective 欄 | 軽微 | 訂正済み（InterfaceFields、ノート第 8 章） |
 | W9-II-06 完全 site の余積を B ⊗̂_A B′ とすると S 構造射の一致が失われる（S = F_p[t] の反例） | 致命 | **訂正済み**（a5-design §2.1：Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd（Cor 7.3 の普遍性）を Lemma 4.8 の圏同値で完全 site へ。flat 被覆の相対 Čech 項（G-A5-5）とは区別。`perfectSite_cechNerveData`） |
-| W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionLeg`） |
+| W9-II-07 比較写像の脚に旧記法 φ_A^{n*} が残る | 要修正 | 訂正済み（f_n = φ_B^{-n} ∘ f : Res_φ^n Δ_S → B。a5-design §2.2、`perfectionComparisonLeg`（W9-III-15 で改名、PerfectSite）） |
 | W9-II-08 D45 改訂と旧「離散のみ・系 4 なし」の併存 | 要修正 | 訂正済み（a5-design 冒頭・§0・§1・§6、骨組みの概要・規約、本表の D45〜D52 行） |
 | W9-II-09 S̃ は完備 filtered 余極限を保たない（完備化で現れる元の Y 変数） | 致命 | **訂正済み**（a5-design §3.1 (iv′)・§3.2・D51・G-A5-18：S̃ は弱始対象用に限り、filtered 余極限は完備化前の代数的根添加 E(S_alg)^∧_p と「flat semiperfectoid 被覆の取り替えで Čech 計算不変」で。`rootClosure_filteredColimit` 撤回、`algebraicRootClosure*`） |
 | W9-II-10 arc 被覆の骨組みが「忠実平坦」を「平坦かつ単射」に弱めている（F_p[t^{1/p^∞}] の反例で O の Čech 降下が破綻） | 致命 | **訂正済み**（`IsArcCoverFamily` を `e.FaithfullyFlat` に。原典 Def 8.7 どおり） |
@@ -270,6 +275,11 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 | W9-III-11 `truncationLE_isCoconnective`・`truncationLE_of_isCoconnective` の述語の向きが逆（τ^{≤n} は `IsConnectiveAt n`） | 要修正 | 訂正済み（`truncationLE_isConnective`・`truncationLE_of_isConnective` に改名・訂正。A2/HodgeTateFiltration の参照も） |
 | W9-III-12 A9 の残存引用一覧が D68 前の形（`hodgeTate_iso_polynomial_Zp`）、G-A3-7 の「黒箱」の意味が曖昧、S8 の G13 が抜け | 要修正 | 訂正済み（a9-design §3 を「恒久的な引用」「証明予定」「基盤依存」の三欄に。黒箱は `crystalline_deRham_polynomial_Zp` 一件、1c と P⁰ は暫定、G-A3-7 は証明予定。a3-design §6、本表 A3-3 行） |
 | W9-III-13 `nonempty_e3_of_cAlg` の hR は暗黙引数 | 軽微 | 訂正済み（`(hR := hR)`。`Assembly.lean`、a9-design §2） |
+| W9-III-14 DiscreteCore が入力の A4 より前に並び、A5 の先行ファイルが後段の Čech データ・filtered 余極限補題を参照 | 要修正 | 訂正済み（README の順序：A7/DiscreteCore は A4/Perfectoidization の後；`prismaticPerfection_filteredColimit` を A4/Perfectoidization へ（A2 の sifted 余極限保存・塔・完備化の反射性だけ）；`perfUnder_cechNerveData` を A5/PerfectSite へ（既存 Cor 7.3 の普遍環から直接）。AfterComparison の利用側（A6・A8）と ArcSite の根添加の所在の import コメントも補った） |
+| W9-III-15 同じ namespace に内容の異なる `perfectionLeg` が二つ | 要修正 | 訂正済み（A4 は `toPerfection`、A5 は `perfectionComparisonLeg`。利用箇所 InterfaceLimitCone・SemiperfectoidCase・UniversalProperty・a7-design を更新） |
+| W9-III-16 ノート第 5 章に訂正前の「帰着は Prop 6.2 の経路」の D69 と、結晶側を「具体的に定義する」旧説明が残る；第 8 章「E3 での扱い」も | 要修正 | 訂正済み（05-hodge-tate の冒頭・§5 の概要・Thm 5.2/Cor 5.5 の後・項目表 2 行・要点、08-perfection「E3 での扱い」と Lemma 8.6 の行を D68（黒箱一件、Cartier で系、RΓ_crys は定義しない）・D69（普遍 A₀ 上で Thm 6.4 を証明して底変換）に揃えた） |
+| W9-III-17 恒久的引用の表に証明予定の 1c と基盤側の P⁰ が同居 | 軽微 | 訂正済み（a9-design §3：最終引用は D68・G-A6-1a・1b の三件、1c は証明予定、P⁰ は基盤待ち（D43）。暫定の許可数（最大五）と最終引用数（三）を区別） |
+| **W9 最終判定（第 3 部続き 3）** | — | 条件付き妥当。12 論点すべて妥当（A9 は W9-III-08 の実施条件つき）。D19〜D70 の三者照合 ○、κ ○、sorry 194 宣言（恒久的 3・証明予定 125・基盤待ち 66）。a9-design §8 |
 | （決定 11-02）D36 の射の範囲 (a) | — | 記録済み（a3-design §7.1）。Lemma 7.7(3) の δ 射は p ねじれなしの標的、始性はその部分圏；Ex 7.9・Prop 7.10 の全 prism の始性は envelope の普遍性から |
 | （決定 11-02）D68 (a)・D69 (a)・決定 6 (a) | — | 記録済み。A5 の骨組みの定義域（`S : Type u` → `CompleteAnimatedAlgebra`）の書き換えは中身の段階で。animated 版の主張 `perfectionComparison_isIso_animated`・系 4 `perfectoidization_piZero` を A5-1 に追加 |
 

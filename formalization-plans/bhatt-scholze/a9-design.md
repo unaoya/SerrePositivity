@@ -43,13 +43,15 @@ D(R) 版 `PerfectoidizationInterfaceE3` の存在を得て、唯一の引用 `Bh
   | 結晶側（唯一） | `crystalline_deRham_polynomial_Zp`（A1/CrystallineInput） | Thm 5.2 β の de Rham 形、D68 | 仕様つき（自然性・乗法・Bockstein・根の遷移）。`hodgeTate_iso_polynomial_Zp` は**その系**（引用ではない） |
   | v 降下 | `cech_exact_of_vCover_perfect`（G-A6-1a） | [BS17, Thm 4.1 (i)] | 完全スキーム、被覆側も完全 |
   | arc 層の判定 | `arcSheaf_of_vSheaf_of_valuationSquares`（G-A6-1b） | [BM18, Thm 1.7] | 共変 Ring_{F_p} → D(ℤ)^{≥0} |
-  | 完全付値環の Milnor 四角形 | `valuationRing_milnorSquare_perfect`（G-A6-1c） | [BS17, Lemma 6.3] | **暫定**：初等補題 `valuationRing_milnorSquare` から証明予定なので恒久的ではない |
-  | P⁰ の性質 | `powerOperationZero_pos`（G-A4-1） | [Lur11, Rem 2.2.7] | 共有補題の仕様。G-A4-1 の中で定理にする予定なら恒久的ではない |
+
+  **最終的な恒久的引用はこの三件**（W9-III-17）。監査の許可一覧に暫定で入れる `sorry` は、これに次の二件を加えて最大五件だが、二件は証明予定・基盤待ちで最終引用数には数えない：
+  `valuationRing_milnorSquare_perfect`（G-A6-1c、[BS17, Lemma 6.3] の特殊化。初等補題 `valuationRing_milnorSquare` から証明予定）、
+  `powerOperationZero_pos`（G-A4-1、[Lur11, Rem 2.2.7]。D43・M14 により共有層 `EInfinity/PowerOperation/` で証明する基盤待ち）。
 
 - **証明予定で引用ではないもの**（残存引用に数えない、W9-III-12）：G-A3-7（Ex 7.9 の p 反転の議論、[Bha12, Claim 3.30] の計算。W9 で計算 ○、証明予定の補題）、
-  G-A6-1c の一般版（初等）、Lemma 10.12（A8-3、古典的可換環論の独立単位）、付値環の tilt・untilt（G-A6-3・6）、有限エタール代数の perfectoid 性（G-A8-6）、
+  G-A6-1c（上）とその一般版（初等）、Lemma 10.12（A8-3、古典的可換環論の独立単位）、付値環の tilt・untilt（G-A6-3・6）、有限エタール代数の perfectoid 性（G-A8-6）、
   有限積の perfectoid 性（G-A6-12、直接証明）。
-- **基盤依存**（引用ではなく ∞ 側・論文の層の窓の供給）：S1〜S8（S8 の前提 G13 を含む）、G3・G4・G6〜G10、DerivedGeneral、P⁰（M14）、descendability（M15）、
+- **基盤依存**（引用ではなく ∞ 側・論文の層の窓の供給）：S1〜S8（S8 の前提 G13 を含む）、G3・G4・G6〜G10、DerivedGeneral、P⁰（M14。`powerOperationZero_pos` を含む、D43）、descendability（M15）、
   HA/DerivedCompletion（2b 後の名前）。未実装の一般論の `sorry` を「残る文献入力」とは数えない。
 
 ## 4. 原典との差
@@ -89,3 +91,10 @@ Fontaine 表示による完備テンソルの前半（`integralPerfectoid_comple
 - `A4/{Perfectoidization,InterfaceFields}`（定義、A5 より先）→ `A4/AfterComparison`（`e3Perfd_eq_direct`・Example 8.3、Prop 8.5 系 4 を使う）
 - `A7/AnimatedDomain`・`A7/DiscreteCore`（A5 より先、W9-II-24）→ `A7/{AnimatedPerfectoidization,UniversalProperty}`
 全体の DAG は drafts/README の「ファイル順序」に記す。所有単位の A 番号は変えない。
+
+## 8. Codex レビュー W9 の最終判定（2026-11-03、第 3 部続き 3）
+
+- **設計レビューは完了、判定は条件付き妥当**。新しい致命的な証明の循環・E3 接続の欠落・無番号の定義変更はなし。D19〜D70（撤回の D42・D48 を含む）は三者（設計・骨組み・ノート）で照合済み、κ は S1〜S3・D47・S₀・A_λ まで同じ閉性で通る。
+- 条件：**W9-III-08 の実施**（CompletedTensor の芯の分離と有限直積の E3 非依存化、2a 後）と、実ファイルでの到達性検査（Inputs への経路なし）。W9-III-14〜17 は配置・命名・記述の訂正（反映済み）。
+- drafts 49 本の `sorry`（コメント除く）：194 宣言・210 箇所。恒久的な引用 3 宣言（D68、G-A6-1a、G-A6-1b）、証明予定 125 宣言、基盤待ち 66 宣言。`: True :=` の仮置きは 317 箇所あり、sorry のないファイルを証明済みとは数えない。
+- 実装の完成・型検査・ビルド合格とは区別する。次の段階：2a の取り込み → CompletedTensor の分割（調整役）→ 改名表の反映 → 中身の段階（design-status §4）。

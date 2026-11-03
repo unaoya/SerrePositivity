@@ -4,6 +4,7 @@ module
 
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
 -- 本ファイルは drafts/A0/PrismaticSite.lean（`PerfectPrismaticSite`、`flatTopology`、`structurePresheafDerived`）、drafts/Sheaves/{SheafCondition,GlobalSections,CechConerveLimit,CAlgValued}.lean、
 -- drafts/A3/DiscreteCase.lean（`prismMapOfDiscrete`）、drafts/A4/Perfectoidization.lean、drafts/A7/AnimatedDomain.lean を import する。
 -- W9-III-09：Prop 8.5 の証明・系（PerfectSiteComparison）は A5-2〜A5-4 の後。本ファイルは A5-2（SemiperfectoidCase）より先に置く定義だけ。
@@ -54,7 +55,15 @@ abbrev perfectSite : Type u := PerfectPrismaticSite (perfectPrism p R) S (cutoff
 使われ方：Prop 8.5 の位相の上限。 -/
 def perfectFlatTopology : GrothendieckTopology (perfectSite p R S) := sorry
 
-/-- 概要：完全 site の各対象に Čech 余脈体がある：**Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd**（Cor 7.3 の普遍 perfectoid 環の普遍性、A5-4 `perfUnder_cechNerveData`）を
+/-- 概要：G-A5-14：Perfd_{S/} の余積は (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ は perfectoid T₁ ⊗̂_R T₂ の商で semiperfectoid、Cor 7.3 の普遍性）。
+Čech 余脈体 (S̃^{⊗_S n+1})_perfd。
+方針（W9-III-14）：**既存 Cor 7.3 の普遍 perfectoid 環**（`Semiperfectoid/Perfectoidization` の入口）から直接。T₁ ⊗̂_S T₂ は semiperfectoid（perfectoid T₁ ⊗̂_R T₂ の商）で
+Q(T₁ ⊗̂_S T₂) を取り、Hom の普遍性から Čech の整合。A5-2 の wrapper `universalPerfectoidRing`・比較同値・弱始対象は不要（後段を import しない）。
+規約：S3 の `CechNerveData`（`PerfUnder_u p S` の opposite）。
+使われ方：`limit_perfUnder_eq_tot`。 -/
+def perfUnder_cechNerveData : True := trivial
+
+/-- 概要：完全 site の各対象に Čech 余脈体がある：**Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd**（Cor 7.3 の普遍 perfectoid 環の普遍性、上の `perfUnder_cechNerveData`）を
 Lemma 4.8 の圏同値 `perfectSiteEquivPerfectoidUnder` で完全 site に運ぶ。
 方針：W9-II-06 で訂正：A 上の完備テンソル B ⊗̂_A B′ では S の二つの構造射が一致せず（S = F_p[t]、T = F_p[t^{1/p^∞}] で反例）、S3 に渡すと極限が変わる。
 flat 被覆の相対 Čech 項 B₁ ⊗̂_{B₀} B₁（G-A5-5 の層性に使う）とは別物。
@@ -95,10 +104,10 @@ def perfectSiteEquivPerfectoidUnder : True := trivial
 方針：f_n(φ_A^n(a) x) = a f_n(x) で A 線形、f_{n+1} ∘ φ = f_n で塔と整合、B について自然（B 間の射は φ_B とその逆に可換）。
 規約：CAlg_A の射。
 使われ方：錐。 -/
-def perfectionLeg (B : perfectSite p R S) : True := trivial
+def perfectionComparisonLeg (B : perfectSite p R S) : True := trivial -- W9-III-15：A4 の `toPerfection`（Δ̄ → Δ̄_perf）と名前を分けた
 
 /-- 概要：比較写像 Δ_{S/A,perf} → lim_{(S/A)^perf} O_Δ（CAlg_A）。
-方針：`perfectionLeg` の自然性で O 上の錐、極限の普遍性。
+方針：`perfectionComparisonLeg` の自然性で O 上の錐、極限の普遍性。
 規約：終域は chaotic の RΓ = lim（S2 の `globalSections`）。
 使われ方：Prop 8.5。 -/
 def perfectionComparison : True := trivial

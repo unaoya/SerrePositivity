@@ -110,7 +110,7 @@ def universalPerfectoidRing (hS : IsSemiperfectoid p R S) : Type u := sorry
 def universalPerfectoidUnit (hS : IsSemiperfectoid p R S) : S →+* universalPerfectoidRing p R S hS := sorry
 theorem universalPerfectoidUnit_isPerfectoidization (hS : IsSemiperfectoid p R S) : True := by trivial
 
-/-- 概要：S_perfd → R′：比較写像の脚 Δ_{S/A,perf} → B_{R′}（A5-1 `perfectionLeg`、R′ の完全 prism）の mod d。S → S_perfd → R′ は単位。
+/-- 概要：S_perfd → R′：比較写像の脚 Δ_{S/A,perf} → B_{R′}（A5-1 `perfectionComparisonLeg`（PerfectSite）、R′ の完全 prism）の mod d。S → S_perfd → R′ は単位。
 方針：定義の展開。
 規約：環準同型（両者は離散）。
 使われ方：分裂全射。 -/
@@ -140,7 +140,7 @@ S′ := (R_1′⟨X_j^{1/p^∞}⟩/(X_j))^∧ → S ⊗̂_{R_1} R_1′ は π_0 
 theorem rootQuotient_to_perfectoidization_surjective (hS : IsSemiperfectoid p R S) : True := by trivial
 
 /-- 概要：(δ) J を有限に帰着（S′ は有限部分集合の filtered 余極限、S′_perfd も、§3.2 の可換性）。
-方針：A5-4 の `prismaticPerfection_filteredColimit`。
+方針：A4 の `prismaticPerfection_filteredColimit`（W9-III-14 で A4/Perfectoidization へ）。
 規約：—
 使われ方：`surjective_unit_of_semiperfectoid`。 -/
 theorem rootQuotient_finite_reduction : True := by trivial

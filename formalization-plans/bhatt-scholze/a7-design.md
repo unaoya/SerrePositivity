@@ -18,7 +18,7 @@ Lean の名前は仮。ビルドしない。
   （S_3 上のテンソル）、Prop 8.13、perfectoid T で T_perfd ≃ T、Cor 8.14、E3 の `universal`。
 - 含まない：Prop 8.13 の環版の置き換え（BR31、中身の後）、単体的 S での Cor 8.14（E3 は離散）。
 - 前提：A2（`AnimatedAlgebra`、Δ、(5) `derivedPrismaticCohomology_tensor`、sifted 余極限の保存、`discreteToAnimated_fullyFaithful`）、
-  A4（Def 8.2、Lemma 8.4、`prismaticPerfectionPrism`、`e3Perfd`・`e3Unit`・`e3H0RingData`）、A5（Prop 8.5 の極限、`perfectionLeg`、A5-2 の
+  A4（Def 8.2、Lemma 8.4、`prismaticPerfectionPrism`、`e3Perfd`・`e3Unit`・`e3H0RingData`）、A5（Prop 8.5 の極限、`perfectionComparisonLeg`、A5-2 の
   離散性の芯と `perfectoidization_semiperfectoid_iso`）、DerivedGeneral（完備化）、既存：`IsPerfectoidization`（`CommutativeAlgebra/IntegralPerfectoid`）、
   `completionRing` の普遍性（Interface.lean:237）、環版 Prop 8.13（`TensorCompatibility`、参照のみ）。
 
@@ -63,7 +63,7 @@ Lean の名前は仮。ビルドしない。
 - 芯（G-A7-5、A5-2 から切り出す）：S_perfd 離散 ⇒ Δ_{S,perf} 離散（d 進 Nakayama）⇒ 完全 p 完備 δ 環（A4 `prismaticPerfection_h0_perfectDelta`）
   ⇒ 完全 prism（`prismaticPerfectionPrism`）⇒ S_perfd = Δ_perf/d は perfectoid 環（Thm 3.10、`quotient_isIntegralPerfectoid`）。
 - 普遍性：S′ perfectoid、S → S′ が与えられたとき：
-  - 存在：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionLeg`）の mod d が S_perfd → S′（S の下）。
+  - 存在：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionComparisonLeg`）の mod d が S_perfd → S′（S の下）。
   - 一意性（原典）：g_1, g_2 : S_perfd → S′ が S 上で一致すれば、η := (g_1, g_2) : X := S_perfd ⊗̂^L_S S_perfd → S′。S′ は perfectoid なので
     η は X → X_perfd → S′_perfd ≃ S′ を通り（関手性と `perfectoidization_of_perfectoid`）、X_perfd ≃ S_perfd ⊗̂_{S_perfd} S_perfd ≃ S_perfd
     （Prop 8.13 と (S_perfd)_perfd ≃ S_perfd）。この合成 X → S_perfd は乗法 m（紙 3。**W9-II-23：単位の自然性だけでは出ない**。先に**単位の整合性**

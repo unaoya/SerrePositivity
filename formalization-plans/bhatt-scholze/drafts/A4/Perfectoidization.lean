@@ -118,6 +118,15 @@ theorem perfectoidization_coconnective : True := by trivial
 使われ方：Cor 8.14（S_perfd 離散なら perfectoid 環）、Prop 8.5。 -/
 def prismaticPerfectionPrism : True := trivial
 
+/-! ## filtered 余極限との可換性（原典 Prop 8.5 の証明 (2) の左辺。W9-III-14 で A4 へ） -/
+
+/-- 概要：左辺：S ↦ Δ_{S/A,perf} は（完備化した）filtered 余極限と可換（Δ は sifted 余極限を保つ、colim_φ と完備化も）。
+方針：A2-4 `derivedPrismaticCohomology_siftedColimit`、Frobenius 塔の余極限（G-A4-2）、完備化の反射性（G-A2-3）だけ——完備圏で二つの余極限を交換する。
+site の Tot・StrongDescent は不要なので A4 に置く（W9-III-14 で A5/WeaklyInitialAndDescent から移動）。
+規約：D_comp(A) の余極限。
+使われ方：有限生成への帰着、A5-2 (δ)。 -/
+theorem prismaticPerfection_filteredColimit : True := by trivial
+
 -- Example 8.3（`perfectoidization_charP`、Prop 8.5 の後）は drafts/A4/AfterComparison.lean へ（W9-III-09）。
 
 end SerrePositivity.BhattScholze.Perfectoidization.Derived

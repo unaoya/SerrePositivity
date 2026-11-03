@@ -39,13 +39,13 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p><b>Lemma 8.6.</b> \(T=R[X_1,\dots,X_n]^\wedge\to T_\infty=R[X_i^{1/p^\infty}]^\wedge\) について、\(\Delta_{T/A}\to\Delta_{T_\infty/A}\) とその完全化は descendable（[Mat16]）。<b>証明</b>：完全化への移行は [BS17, Lemma 11.22]。n=1 に帰着し、\(A/(p,\varphi^{-1}(d))\) へ底変換して R を標数 p の完全環とし、<b>de Rham 比較と Cartier 同型</b>で、二乗零拡大 \(T\oplus\Omega^1[-1]\) 上の RHom の計算に帰着する。</p>
 <div class="box">
 <p class="label">E3 での扱い（界面の規約）</p>
-<p>E3 の <code>limitCone</code> は、極限の添字を Type u の perfectoid 標的に制限し、指定した錐と単位・\(H^0\) の乗法の整合を含めて述べる（原典の「全ての perfectoid 環への写像」の圏は大きい）。原典の (1) の \(\tilde S\) は u-small に取れるので、この制限でも同じ極限になる。Lemma 8.6 の標数 p の de Rham 比較は Thm 5.2（結晶比較、A1）から出るので、Thm 6.4（一般の de Rham 比較）は要らない。</p>
+<p>E3 の <code>limitCone</code> は、極限の添字を Type u の perfectoid 標的に制限し、指定した錐と単位・\(H^0\) の乗法の整合を含めて述べる（原典の「全ての perfectoid 環への写像」の圏は大きい）。原典の (1) の \(\tilde S\) は u-small に取れるので、この制限でも同じ極限になる。Lemma 8.6 の入力は Thm 6.4 の多項式・mod p の特別な場合（A1-5）で、普遍向き付き prism 上で証明して完全 prism へ底変換し（D69）、終点は結晶側の黒箱一件（D68）。一般の Thm 6.4 は要らない。</p>
 </div>
 
 <div class="table-wrap"><table>
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td><code>limitCone</code>・<code>limit_isLimit</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>, :37）。A5。証明は Thm 7.4・Thm 7.14（どちらも証明済み）と Prop 7.10（A3）を使う</td></tr>
-<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 Lemma 11.22 の切片、標数 p の de Rham 比較と Cartier 同型は A1）</td></tr>
+<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 Lemma 11.22 の切片、多項式・mod p の de Rham 比較は A1-5、Cartier 同型は G-A5-12）</td></tr>
 </table></div>
 
 <h2>3. arc 降下と excision（§8.2）</h2>

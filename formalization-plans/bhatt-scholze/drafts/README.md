@@ -43,10 +43,11 @@ A6/ArcSite・A6/ArcSheafProperty・A8/AlmostConnectivity（Lemma103 経由）が
 
 **drafts 内の順序**（→ は「先に置く」。同じ A 番号でも定義を先行ファイルへ、後段の定理を後に）：
 1. Sheaves/・DerivedGeneral/・Shared/ → A0 → A1/CrystallineInput → A1/{HodgeTateMap,HodgeTateComparison} → A2 → A3
-2. A7/AnimatedDomain、A7/DiscreteCore（A5 より先）
-3. A4/Perfectoidization → A4/InterfaceFields（定義。Prop 8.5 を使わない）
-4. A5/RootAdjunction（定義のみ）、A5/PerfectSite（site・比較写像）→ A5/SemiperfectoidCase → A1/DeRhamComparisonPoly（A1-5。RootAdjunction・HodgeTateComparison を使う）→ A5/StrongDescent
+2. A7/AnimatedDomain（A5 より先）
+3. A4/Perfectoidization（`prismaticPerfection_filteredColimit` もここ：A2 の sifted 余極限保存・塔の余極限・完備化の反射性だけで示す、W9-III-14）→ **A7/DiscreteCore（A4 の後、A5 より先）** → A4/InterfaceFields（定義。Prop 8.5 を使わない）
+4. A5/RootAdjunction（定義のみ）、A5/PerfectSite（site・比較写像・Čech データ `perfUnder_cechNerveData`：既存 Cor 7.3 の普遍環から直接、W9-III-14）→ A5/SemiperfectoidCase → A1/DeRhamComparisonPoly（A1-5。RootAdjunction・HodgeTateComparison を使う）→ A5/StrongDescent
    → A5/WeaklyInitialAndDescent → A5/PerfectSiteComparison（Prop 8.5 と系。A5 の最後）→ A5/InterfaceLimitCone
 5. A4/AfterComparison（`e3Perfd_eq_direct`・Example 8.3）
-6. A6 → A7/{AnimatedPerfectoidization,UniversalProperty} → A8 → A9/Assembly
+6. A6/ArcSite → ArcSheafProperty → SheafOfSetsExcision → Excision；A7/AnimatedPerfectoidization → UniversalProperty（A6 と A7 は互いに独立）；A8/AlmostConnectivity → AlmostPurityConnectivity、A8/Stratification（独立に先行可）→ A8/IntegralDiscreteness → A9/Assembly
+基盤・A0〜A3 の内部順序（Codex W9 第 3 部続き 3 の表）：Sheaves/SheafCondition → GlobalSections・CechConerveLimit → CAlgValued・SpaceValued；Shared/CosimplicialCupProduct → CosimplicialBockstein、DeRhamPolynomial、CosimplicialEInfinity（CAlgValued・CechConerveLimit の後）→ EInfinityPowerOperation、Descendable；A0/PrismaticSite → PrismaticEnvelope → CechAlexander；A2/AnimatedAlgebra → DerivedPrismaticCohomology → HodgeTateFiltration → BaseChangeAndTensor；A3/DiscreteCase → LciAndQuasiregular。
 中身の段階で `lake build` の前に、import の到達性（`scripts/` の道具）でこの DAG と E3 非依存を確認する。

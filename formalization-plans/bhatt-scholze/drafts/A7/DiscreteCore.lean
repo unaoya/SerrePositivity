@@ -4,7 +4,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
--- 本ファイルは drafts/A4/Perfectoidization.lean、drafts/DerivedGeneral/Truncation.lean だけを import する（A5 より先に置く）。
+-- 本ファイルは drafts/A4/Perfectoidization.lean、drafts/DerivedGeneral/Truncation.lean だけを import する（**A4/Perfectoidization の後、A5 より先**に置く。W9-III-14）。
 
 /-!
 # 芯 G-A7-5：S_perfd が離散なら perfectoid（BS 著者版 Cor 8.14 前半）

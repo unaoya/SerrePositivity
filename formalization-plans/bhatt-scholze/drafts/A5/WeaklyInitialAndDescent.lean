@@ -76,14 +76,10 @@ def perfectoidTargetWeaklyInitial : True := trivial
 使われ方：`limit_perfUnder_eq_tot`。 -/
 theorem perfectoidTargetWeaklyInitial_isWeaklyInitial : True := by trivial
 
-/-- 概要：G-A5-14：Perfd_{S/} の余積は (T₁ ⊗̂_S T₂)_perfd（T₁ ⊗̂_S T₂ は perfectoid T₁ ⊗̂_R T₂ の商で semiperfectoid、Cor 7.3 の普遍性）。
-Čech 余脈体 (S̃^{⊗_S n+1})_perfd。
-方針：A5-2 の `universalPerfectoidRing` と普遍性。
-規約：S3 の `CechNerveData`（`PerfUnder_u p S` の opposite）。
-使われ方：`limit_perfUnder_eq_tot`。 -/
-def perfUnder_cechNerveData : True := trivial
 
-/-- 概要：lim_{PerfUnder_u p S} T ≃ Tot((S̃^•)_perfd)（S3 `exists_limitCone_of_cech`）。κ 側の完全 site でも同じ Tot（弱始対象は濃度 ≤ κ）。
+-- Čech 余脈体 `perfUnder_cechNerveData`（Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd）は A5/PerfectSite へ移した（W9-III-14：既存 Cor 7.3 の普遍環から直接作れる）。
+
+/-- 概要：lim_{PerfUnder_u p S} T ≃ Tot((S̃^•)_perfd)（S3 `exists_limitCone_of_cech`、Čech データは PerfectSite `perfUnder_cechNerveData`）。κ 側の完全 site でも同じ Tot（弱始対象は濃度 ≤ κ）。
 よって Type u の極限と κ-small の site の極限は一致（D47）。
 方針：S3 を二回。
 規約：—
@@ -92,13 +88,8 @@ theorem limit_perfUnder_eq_tot : True := by trivial
 theorem limit_perfectSite_eq_tot : True := by trivial
 theorem limit_perfUnder_eq_limit_perfectSite : True := by trivial
 
-/-! ## (2) filtered 余極限 -/
+/-! ## (2) filtered 余極限（左辺の可換性 `prismaticPerfection_filteredColimit` は A4/Perfectoidization へ移した。W9-III-14） -/
 
-/-- 概要：左辺：S ↦ Δ_{S/A,perf} は（完備化した）filtered 余極限と可換（Δ は sifted 余極限を保つ、colim_φ と完備化も）。
-方針：A2-4 `derivedPrismaticCohomology_siftedColimit`、G-A4-2、G-A2-3。
-規約：D_comp(A) の余極限。
-使われ方：有限生成への帰着、A5-2 (δ)。 -/
-theorem prismaticPerfection_filteredColimit : True := by trivial
 
 /-- 概要：G-A5-2：一様に coconnective な余単体的対象の Tot は filtered 余極限と可換（H^k(Tot X) = H^k(Tot_{≤k+1} X)、部分 Tot は有限極限）。
 方針：Tot の塔と coconnectivity。

@@ -50,7 +50,7 @@ theorem perfectoidization_of_perfectoid (T : Type u) [CommRing T] [Algebra R T] 
 
 /-! ## Cor 8.14 後半：普遍性 -/
 
-/-- 概要：存在：perfectoid S′ と S → S′ に対し S_perfd → S′（S の下）：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionLeg`）の mod d。
+/-- 概要：存在：perfectoid S′ と S → S′ に対し S_perfd → S′（S の下）：比較写像の脚 Δ_{S,perf} → B_{S′}（A5-1 `perfectionComparisonLeg`）の mod d。
 方針：A5-1。
 規約：環準同型（両者離散）。
 使われ方：`IsPerfectoidization` の存在部分。 -/

@@ -113,10 +113,10 @@ def hodgeTateUnit : True := trivial
 方針：余極限の脚（関手の圏で点ごと）と完備化の単位（G-A2-3 の反射の単位）の合成、底変換で ⊗ A/d。
 規約：—
 使われ方：`e3Unit` の第三段。 -/
-def perfectionLeg : True := trivial
+def toPerfection : True := trivial -- W9-III-15：A5 の `perfectionComparisonLeg`（完全試験 prism への脚）と名前を分けた
 
 /-- 概要：E3 の `unit`：S → S^∧ → Δ̄_{S^∧} → (S^∧)_perfd の coherent な単位。
-方針：`nerveMap completionFunctorUnit`（離散の段、`algebraEmbedding` を通す）、`hodgeTateUnit`、`perfectionLeg` の合成。
+方針：`nerveMap completionFunctorUnit`（離散の段、`algebraEmbedding` を通す）、`hodgeTateUnit`、`toPerfection` の合成。
 各段が関手の圏の射なので合成も射。
 規約：`FunctorHom (algebraEmbedding R) (e3Perfd p R)`。
 使われ方：`PerfectoidizationInterfaceCAlg.unit`。 -/

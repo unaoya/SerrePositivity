@@ -8,7 +8,8 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 -- Fontaine による完備テンソルの芯を E3 非依存のモジュール（仮称 CompletedTensorCore）へ切り出し、本ファイルはそれだけを import する（a9-design §7、調整役へ依頼）。
 -- perfectoid 環の有限積が perfectoid であることは E3 を使う `isIntegralPerfectoid_finPi` ではなく直接証明（G-A6-12）。
 public import Mathlib.CategoryTheory.Sites.DenseSubsite.Basic
--- 本ファイルは drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、drafts/A0/PrismaticSite.lean（`cutoff`）を import する。
+-- 本ファイルは drafts/A5/RootAdjunction.lean（`rootClosure`・`rootClosure_extends`）、drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure_isSemiperfectoid`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、
+-- drafts/A0/PrismaticSite.lean（`cutoff`）を import する（W9-III-14 で所在を RootAdjunction に揃えた）。
 
 /-!
 # arc site（BS 著者版 Def 8.7 の affine 版、Lemma 8.8 の affine 版）

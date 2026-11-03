@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
 public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
 -- 本ファイルは drafts/A8/{AlmostConnectivity,AlmostPurityConnectivity,Stratification}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean、
--- drafts/A5/{PerfectSiteComparison,WeaklyInitialAndDescent}.lean、drafts/A4/InterfaceFields.lean を import する。
+-- drafts/A5/{PerfectSiteComparison,WeaklyInitialAndDescent}.lean、drafts/A4/{InterfaceFields,AfterComparison}.lean（`e3Perfd_eq_direct` は AfterComparison。W9-III-14）を import する。
 
 /-!
 # 整代数の perfectoid 化の離散性（BS 著者版 Thm 10.11）と E3 の欄 `integral`
