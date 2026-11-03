@@ -121,3 +121,39 @@ D1-01 の決定に従い、`drafts/A6/ArcSite.lean` に (1) と一点被覆の `
 ### 確認範囲
 
 今回の編集は `drafts/A6/ArcSite.lean` と本報告への追記のみ。G-A6-11 の節以降は基準と同じで、ArcSheafProperty・Stratification・A0 には進んでいない。ArcSite の `要確認` は3箇所（D1-02 と、従前の R₀ の例・付値延長）。文字列上の比較と `git diff --check` で確認し、Lean 実行・ビルド・型検査は行っていない。
+
+## 第3部（停止点1完了）
+
+基準・開始時 HEAD は main `f1947a44c`。作業開始時の `git status --short` は空だった。**停止点1に到達した。** ArcSite 内の最後の7件の `True` を具体化し、D1-02 の三定義と G-A6-11・G-A6-3 から cover-dense までの主張・証明方針を記入した。証明穴には理由を添えた。今回の確認はソース上の型と依存の照合までで、Lean の実行・型検査・ビルドは行っていない。
+
+### D1-02 の反映
+
+| 宣言 | 書いた内容 |
+| --- | --- |
+| `arcFamilyCoverage` | 有限添字、環の族、環側の射、その `IsArcCoverFamily` を指定し、opposite 側でその `Presieve.ofArrows` が被覆 presieve に等しいことを要求した。底変換の証明穴には `isArcCoverFamily_baseChange` と完備テンソルの二脚を使う。 |
+| `extensiveCoverage` | `X.unop` からの射影が `Fan.mk` の極限錐をなす有限族を取った。積の代表を一つ選ぶことへの依存がなく、空族では環側の終対象（零環）が現れる。底変換では直交冪等元による有限積分解を使う。 |
+| `isArcCoverFamily_projections` | 任意の有限環族について `Pi.evalRingHom` の族が `IsArcCoverFamily` を満たす形にした。付値環への射は一因子を通り、空積から非零付値環への単位的射は存在しない。 |
+| `PreservesFiniteRingProducts` | 環側の任意の有限積錐を `opOp` で前層の定義域へ運び、`nerveCone` と宇宙の持ち上げを経て F と合成した錐が `IsLimitCone` になること。空添字なら F(0) の終対象性である。 |
+
+有限族に対する位相は `arcTopology_eq_toGrothendieck_family`、一点被覆・有限積射影への分解は `arcTopology_eq_sup` に対応する。`k × k → k` の二射の族は射影族として新しい coverage に入る。零環上の空族も入るので、前報の二点集合の定数前層は有限積保存条件で除かれる。任意の E 値前層の判定では、S1-E `isSheaf_extensive_iff_preservesFiniteProducts` の証明は基盤待ちのままである。
+
+### G-A6-11・G-A6-3 と Lemma 8.8
+
+| 宣言 | 書いた内容 |
+| --- | --- |
+| `perfectoidBaseRing`・`perfectoidBaseRoot` | `PadicInt p` を入力環と同じ宇宙へ持ち上げ、可算変数の多項式環に `X₀ − p` と全 `X_{n+1}^p − X_n` の関係を課して `completionRing` を取った。第 n 根は `X_n` の商と完備化単位による像。係数の射を通して `ℤ_p` 代数構造を入れた。perfectoid 性は a6-design §8.8 の完全 prism の商との比較を証明穴に記した。 |
+| `baseExtension`・`baseExtensionUnit` | `hS : IsModuleComplete S (p : S) (ModuleCat.of S S)` から標準の `arcPadicIntMap` を供給し、その作用による `S ⊗[PadicInt p] R₀` の完備化 H⁰ を S₀ とした。R₀ 代数構造は右の脚、S→S₀ は左の脚に、それぞれ同じ完備化単位を合成する。環構造は両方とも `completionRing` のものを使う。 |
+| `baseExtension_cardinal_le`・`baseExtensionUnit_pCompletelyFaithfullyFlat` | `#S₀ ≤ (#S + ℵ₀)^ℵ₀`。後者は指定した S→S₀ から `letI` で作用を入れ、`IsCompletelyFaithfullyFlat (Ideal.span {(p : S)}) S₀` と述べた。完備忠実平坦性は記録用。 |
+| `exists_perfectoid_valuation_extension`・`perfectoidBaseRing_toValuationExtension` | 同じ W 上に階数1・p 完備・perfectoid 性、忠実平坦な e と `ρ 0 = p`、`ρ (n+1)^p = ρ n` を持つ列を返す。R₀→W は指定根をその ρ に送る。`ValuationRing` の整域 instance は既存の `isDomain` 欄を明示した。V・W の濃度には κ を課さない。 |
+| `exists_baseExtension_lift` | 補助の `_of_map` は、選んだ e と b:R₀→W を固定して `l:S₀→W` が `e ∘ k` と b の両方に制限されることを述べる。元の宣言は `k:S→V` から W・e・l を同時に返す。 |
+| `exists_perfectoid_arcCover` | `g:S₀→T`、T の perfectoid 性と濃度上限、および `g ∘ baseExtensionUnit` が一点族として arc 被覆であることを返す。証明では R₀ 上の `rootClosure` を S₀ に施し、その semiperfectoid 性と Cor 7.3 で T を取る。試験射を持ち上げる際は、上で選んだ W に `rootClosure_extends` と普遍環の普遍性で延ばす。 |
+| `affPerfdInclusion_isCoverDense` | 定義済みの包含の opposite に `Functor.isCoverDense_of_generate_singleton_functor_π_mem` を適用するところまで書いた。`#S ≤ κ` と cutoff 条件から `#T ≤ κ` を得て小さい模型に移し、一点被覆の生成 sieve の所属を示すのが残る証明穴である。 |
+
+`baseExtension` に完備性を明示したのは、一般の環に対する `ℤ_p` 作用を仮定せず、設計が対象とする p 完備環 S 自身から作用を取るためである。`arcPadicIntMap` の構成は整数の完備化からの一意延長を使う証明予定の補助定義。`affPerfdInclusion_isCoverDense` の κ の仮定は、相対 Čech と coverage が既に使う `Fact ((κ + ℵ₀)^ℵ₀ ≤ κ)` と揃えた。
+
+### 照合・引き継ぎ
+
+- Mathlib の `Coverage`、`Fan.mk`・`IsLimit`、`opOp`・`Functor.mapCone`、`Pi.evalRingHom`、`PadicInt`・`ULift.ringEquiv`、`MvPolynomial.X`・`C`、テンソルの `includeLeftRingHom`・`includeRight`、`ValuationRing`、`Functor.isCoverDense_of_generate_singleton_functor_π_mem` の向きと引数をソースで確認した。
+- 本体の `F1B.nerveCone`、`JoinCone.ulift`、`completionRing`・`completionUnit`・`completion_existsUnique`、`IsModuleComplete`、`IsCompletelyFaithfullyFlat` と既存 Cor 7.3 の入口を照合した。名前の新規仮置きは0件。ArcSite の `要確認` は付値の整拡大への延長の実装名についての既存1件である。
+- 今回指定の ArcSite に `True` または `Type u := sorry` のままの宣言は残っていない。S1-E・G-A6-3・G-A6-11 等の証明は予定の `sorry` として残る。`git diff --check` と変更パスを確認し、報告は既存本文に追記した。
+- 次の停止点2では `ArcSheafProperty.lean` の対象宣言に加え、O（CAlg_ℤ 値）と Hom(T, −)（集合値）の有限積保存を一件ずつ明示する。Prop 8.10 の構造前層が affPerfd_κ 上にあることに合わせ、積錐の判定の定義域を揃えて使う。
