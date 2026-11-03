@@ -174,7 +174,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
 | 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で編集が完了（2026-11-02、静的な検査は通過、変更モジュールと直接 importer のビルドは ∞ の W2b の後）。全ビルドは 11-05（記録は下の「区切り 2a の記録」） |
-| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）を編集済み（2026-11-02、未ビルド）。B（Pair の置き換え・PD の d = 0・`.choose` の def 化・完備化と完全関手の可換）は 11-03 以降、項目ごとに別コミット。全ビルドは 11-06 |
+| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドは 11-06（その前に main を取り込む） |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -350,6 +350,21 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   2b の全ビルドに相乗りする（11-03 ユーザー決定）。**2b の全ビルドの前に main を取り込み、BS の変更を含める**。CLMST の 5 本の import 行は BS が直す。
 - 2a の小さなビルド（98484d01e、274 本）の失敗 3 件を修正（aae233fb5 ほか）：新しく書いたファイルの `noncomputable` の抜け 2 件と、BS の名前空間へ
   移したファイルで BS の別名（`alias compatibleRootFamilyIdeal := …`）に修飾なしの名前が当たった 1 件。失敗した 3 本の下流は未検証。
+- A の小さなビルド（183 本）は通過（11-03）。
+- B（11-03、項目ごとに別コミット。どれも 107 本の小さなビルドが通り、snapshot（.lake/verify/2b-before.json との比較）で外から使われうる宣言
+  715 本の型の変化 0・消えた宣言 0）：
+  - B1（ebe3bec91）：`.choose` の def 化。`principalCompletionLift(AlgHom)`・`pairCompletionLiftAlgHom` を加え、Principal/Comparisons・
+    PairZeroCompletion・PrincipalClassicalComparison・CompletedAlgebraH0 の `.choose` を置き換えた。Reflection は `Function.surjInv`。
+  - B2（663126e92）：「完備化は、完備性を保つ関手と可換」を `completionCommComparison`（`_unit`・`_naturality`）1 本にし、ScalarCone と
+    QuotientBaseChange の比較はその例にした。
+  - B3（c85ae14cf）：PD の d = 0 の層をなくした。`completedTensorH0PrincipalRingEquiv` は H⁰ で可逆な完備化した添加と
+    `completedAlgebraH0NatPrincipalAlgEquiv` の合成、`completedTensorH0AdicRingEquiv` はその後に `principalCompletionAdicAlgEquiv`。
+    DerivedCompletion の中だけで使われていた PD 経由の 13 宣言（`completedAlgebraH0PD(B)AlgEquiv`・`completedTensorH0PDAlgEquiv(OfIso/OfTor/OfKoszul)`・
+    `pdCompletionBaseAlgebra` ほか）を削除し、改名表（rename_2b.json）に「削除」として載せた。
+  - B4a（f2339b603）：Pair/Iteration の `.choose` 4 か所を `pairCompletionLift`・`iteratedCompletionLift` に置き換えた。
+  - **B4 の本体（Pair* の定義を Principal の反復へ移す、§3.5.3）は段階 3 へ回す**。BS は `PairCompletionH0` を Koszul の H⁰ として定義どおりに使っている
+    （RootEnvelope/RawCompletion などで `koszulCompletionH0Unit Raw (pairKoszulCoordinates …)`、`pairKoszulCoordinates` は 16 回）。定義を反復の側へ移すと
+    これらの証明が壊れ、条件 (ii) に触れる。段階 3 で BS と相談して、BS 側を `pairCompletionUnitRingHom` などの API 経由に書き換えてから行う。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
