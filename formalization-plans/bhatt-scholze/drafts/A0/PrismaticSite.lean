@@ -264,8 +264,7 @@ def hodgeTateCohomology
 /-- 概要：Δ_{R/A} の Frobenius：Δ → φ_{A*}Δ。
 方針：`structurePresheafFrobenius` を D(A) 値前層の射にし、`derivedGlobalSections_map`。半線形性は φ_A に沿うスカラー制限で。
 規約：D(A) の辺。
-使われ方：A4（Def 8.2）。
-使われ方：A2 の多項式上の Frobenius、A4 の正の反復。 -/
+使われ方：A2 の多項式上の Frobenius、A4 の正の反復（Def 8.2）。 -/
 def prismaticCohomologyFrobenius
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
     (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :

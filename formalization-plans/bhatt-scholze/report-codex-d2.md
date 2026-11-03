@@ -21,3 +21,37 @@ S = T = A の場合にも区別は残る。例えば有界 prism (ℤ_p[[x]], (p
 導来スカラー制限 Res_f の∞圏での入口を指定する。例えば `Res_f : derivedInfinityCategory T ⟶ derivedInfinityCategory S` を `derivedInfinityBaseChange f` の右随伴として指定すれば、逆向きの関手とその意味が揃う。A0 の結論は Δ から `Res_f.app _ Δ` への辺となる。構成では S2 の `derivedGlobalSections_map` に O_Δ → Res_f O_Δ を渡し、標的の RΓ を Res_f Δ と比較する。A4 の CAlg 値の制限とその正の反復についても別途型を照合する。
 
 今回は未発見名を Lean に仮置きした箇所は0件。調査は本体・drafts・Mathlib のソース検索のみで、Lean 実行・型検査・ビルドはしていない。
+
+## 第2部　停止点1完了（A0 の Frobenius と A4）
+
+第1部は `641c7db03`。再開時の HEAD は `378b17471`。調整側の `acebb81cc` で M13 の f が明示引数となり、CAlg 版と忘却比較が加わった。`7be013b32` で A2 の離散 Frobenius 成分を A4 で仮置きする方針が記録された。これらを参照して A0・A4 を完了した。`acebb81cc` には同時作業中の A0 の Frobenius と A4 の完全 prism の具体化の一部も入っている。集計は BS-D2 の開始基準 `68ed1ec05` から行った。
+
+| ファイル | 開始時の True から具体化 | 内容 |
+| --- | ---: | --- |
+| A0/PrismaticSite | 1 | `prismaticCohomologyFrobenius` は Δ から `derivedInfinityRestrictScalars P.deltaStructure.frobeniusLift` を Δ で評価した頂点への D(A) の辺。頂点の評価には `.app (Opposite.op ⦋0⦌)` を使った。 |
+| A4/Perfectoidization | 7 | `frobeniusTower` は持ち上げた ℕ の nerve から CAlg_A への図式。第 n 頂点は Res_φⁿ(Δ_S)、第 n 後続辺は Res_φⁿ(φ_S)。実際の余極限余錐を選び、(p,d) 完備化の単位と第0脚から Δ_S→Δ_perf を指定した。shift は Res_φ Δ_perf への可逆な辺で、第0脚と Frobenius が可換。d での底変換の値が S_perfd である。Lemma 8.4 の (a) は忘却後の D^{≥0}、(b) は H⁰ の p ねじれなし・p 完備性・shift を Frobenius とする完全 δ 構造と基底射の整合、(c) は d の正則性と S_perfd の D^{≥0}。完全 prism の生成元には基底の d の像を指定した。filtered 余極限は、指定余錐を完備代数の圏に送った錐が余極限である形で述べた。 |
+| A4/InterfaceFields | 7 | 本体の `completionFunctor` と `completionAlgebraUnit` を再利用。E3 の `perfd` は S↦(S^∧)_perfd、`unit` は S→S^∧、Fil₀→Δ̄、余極限の第0脚と完備化単位の mod d の三つの `FunctorHom` の合成。完備な S での比較は、指定完備化単位の**逆同型**を写してから点ごとの比較を合成した。単位成分の一致は、この同じ同型を通したホモトピー圏の射の等号。H⁰ は実際の Barratt–Eccles 代数の `homologyCommRing`・`homologyAlgebra` を使い、E3 の `ringFunctor`・`moduleIso`・`map_compat`・`unit`・`unit_compat` に接続した。 |
+| A4/AfterComparison | 2 | 任意の離散 S で、E3 の値と、S 自身に塔・余極限・完備化・mod d を施した直接の式との頂点同型を述べた。証明は D32 の animated 完備化を経て Prop 8.5 系4を使う。Example 8.3 は、標数 p で通常の環の Frobenius 順系の余極限を取り、p 完備化した離散 R 代数との頂点同型。R の作用は順系の第0脚と完備化単位の合成で与える。 |
+
+上の **17件**に加えて、`perfectPrismRing : Type u := sorry` を具体化した。非零の perfectoid 環では A_inf(R) = W(PreTilt R p)、零環では零環。Fontaine 射の核を選んだ prism のイデアルと同定し、商と R の環同型をその同じ射から取る。新規補助宣言を除く二種類の仮置きの合計は **18件**。対象4ファイルには結論の `: True := …` も `: Type u := sorry` も残っていない。
+
+### A2 待ちの仮置き
+
+- `discreteDeltaFrobenius` は `derivedPrismaticFrobenius` の離散 U における CAlg_A の辺。承認どおり型と理由を置いた。BS-D4 で A2 の自然変換の成分に置き換える。CAlg の正の反復は `cAlgRestrictScalars_comp` と両立し、忘却は `cAlgRestrictScalars_forget` で D(A) の反復に移す。
+- `directHodgeTateUnit` は S→LΛ_p S≃Fil₀→Δ̄_S の `FunctorHom`。A2 の `hodgeTateUnitCAlg` もまだ True を返すため、BS-D4 でその離散部分への制限に接続する。E3 に使う `hodgeTateUnit` と `toPerfection` は完備化関手に沿った前合成。
+- `completePerfectionFunctor` の coherence は A2 の Frobenius 自然変換の塔を関手圏で取って与える。BS-D4 では `CompleteCAlg P` の prism 引数と包含を明示する必要がある。filtered 余極限の証明で、animated な入力の導来完備化をその H⁰ と同一視することは使っていない。
+
+### 要確認・設計との差
+
+`Perfectoidization.lean` の `要確認` は6箇所。最初の三つは A2/G-A4-4 の基盤名、後の三つは ScalarRestriction 側へ渡す補題である。
+
+1. `completeCAlgInclusion` — 完備 CAlg の充満部分圏の包含。
+2. `reflectCompleteCAlg` — (p,d) 完備化の反射。A4 では包含との合成と単位の型も明示した。
+3. `modPrismFunctor` — A→A/d≃R に沿う CAlg 底変換。`modPrismAdjunction` は対応する係数制限との随伴。
+4. `restrictFrobeniusTowerColimit` — 完全基底の φ_A に沿う制限が指定された塔の余極限錐を保つこと。
+5. `restrictFrobeniusCompletion` — 同じ制限と (p,d) 完備化との `FunctorIso`。
+6. `restrictH0Equiv` — 制限前後の H⁰ の台の環の標準同型。`restrictH0Equiv_base` に係数作用を f に沿って読む等式を置いた。
+
+A0 には指定外の既存注記2箇所（`structurePresheafDerived` の小さい nerve の比較と `hodgeTateCohomology` の導来テンソル）が残る。InterfaceFields・AfterComparison は0件。第1部の食い違いは M13 の D 版・CAlg 版で解決した。A2 の Frobenius 成分の仮置き以外に、新たな数学的主張の変更はない。
+
+今回の確認は、参照名のソース照合、変更4ファイルでの対象宣言・import 先・括弧の照合、`git diff --check`。Lean の実行・型検査・ビルドは行っていない。A2 と DerivedGeneral/ScalarRestriction は編集していない。停止点2（A7）以降は未着手。
