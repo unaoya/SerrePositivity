@@ -23,6 +23,8 @@
 2. **A4**（設計 `a4-design.md`、16 件）：`drafts/A4/Perfectoidization.lean`（`frobeniusTower`：CAlg_A の ℕ 添字の図式、遷移 φ_{A*}^n(φ)；`prismaticPerfectionFrobenius`；Lemma 8.4 の
    (a)(b)(c) と `prismaticPerfectionPrism`；`prismaticPerfection_filteredColimit`）、`drafts/A4/InterfaceFields.lean`（`e3Perfd_of_complete`・`e3Unit_of_complete`・`e3H0_of_complete` は
    `SerrePositivity/EInfinity/Perfectoidization/Interface.lean` の欄の型に合わせる、`hodgeTateUnit`・`toPerfection`）、`drafts/A4/AfterComparison.lean`（`e3Perfd_eq_direct`、Example 8.3）。
+   A2 の `derivedPrismaticFrobenius`（`drafts/A2/DerivedPrismaticCohomology.lean`）はまだ `True` なので、A4 側に離散 S での成分 Δ_S → φ_{A*}Δ_S（CAlg_A の辺、
+   `cAlgRestrictScalars φ_A`）を「A2 待ち」の理由つきの型つき定義として置いてよい（11-03 承認）。A2 を具体化する束（BS-D4）でその成分に置き換える。
    — **停止点 1**。
 3. **A7**（設計 `a7-design.md`、22 件）：`drafts/A7/AnimatedDomain.lean`（`animatedCompletion`：反射的局所化、`discreteToAnimated_complete`）、`drafts/A7/AnimatedPerfectoidization.lean`
    （相対テンソル＝bar 構成の sifted 余極限 G-A7-2、Δ・colim_φ・完備化・⊗A/d との可換性 G-A7-4、Prop 8.13 の比較射と同値）、`drafts/A7/DiscreteCore.lean`（G-A7-5 の三つ）、
