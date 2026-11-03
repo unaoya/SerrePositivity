@@ -50,7 +50,6 @@ stage 4の完成部分L・E・Sからの利用はない（依存監査で確認�
 universe v
 noncomputable section
 open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.Reedy
 
 namespace SerrePositivity.BisimplicialModel.BoundaryFactorization
 

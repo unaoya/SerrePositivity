@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
+public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 
 public import Mathlib.CategoryTheory.Limits.Constructions.FiniteProductsOfBinaryProducts
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint

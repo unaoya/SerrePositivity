@@ -51,7 +51,6 @@ universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 
 namespace SerrePositivity.BisimplicialModel
 

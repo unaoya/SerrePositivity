@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.RelativeCellComplex.Basic
 
 public import Mathlib.CategoryTheory.Category.Basic
 public import Mathlib.CategoryTheory.Functor.Basic

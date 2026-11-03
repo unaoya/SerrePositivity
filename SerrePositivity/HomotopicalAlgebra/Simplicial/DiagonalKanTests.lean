@@ -66,7 +66,7 @@ universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.SimplicialModel
+open SerrePositivity.SimplicialModel
 open scoped SSet.modelCategoryQuillen
 
 namespace SerrePositivity.BisimplicialModel

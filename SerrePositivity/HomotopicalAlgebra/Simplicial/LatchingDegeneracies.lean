@@ -52,7 +52,6 @@ universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits
-open SerrePositivity.Reedy
 
 namespace SerrePositivity.SimplicialLatching
 

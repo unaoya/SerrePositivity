@@ -1,0 +1,143 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 1,
+  "phase": "A",
+  "head_before": "cd4b4aa538ae9c3e81b4eee5cc8bec32d8f73e0d",
+  "reason": "初回の15失敗。個別コンパイルの結果と before v3b の used_constants / used_modules に従って、枝刈りで失った import と split の共通 open を補充する。",
+  "changes": [
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram",
+      "imports": [
+        "Mathlib.AlgebraicTopology.RelativeCellComplex.Basic"
+      ]
+    },
+    {
+      "module": "SerrePositivity.EInfinity.HomotopyWeight.Generators",
+      "imports": [
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.PathSpace",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies",
+      "imports": [
+        "SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram",
+        "SerrePositivity.KST.Spectra.PostMappingFibration"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.CosimplicialHornFactorization",
+      "imports": [
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplex",
+      "imports": [
+        "Mathlib.Data.Option.Basic",
+        "Mathlib.Data.Prod.Basic"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts",
+      "imports": [
+        "SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct",
+        "SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy",
+      "annotations": [
+        {
+          "before": "open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra\n",
+          "after": "open CategoryTheory CategoryTheory.Limits\n"
+        },
+        {
+          "before": "open SerrePositivity.Reedy\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction",
+      "annotations": [
+        {
+          "before": "open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra\n",
+          "after": "open CategoryTheory CategoryTheory.Limits\n"
+        },
+        {
+          "before": "open SerrePositivity.Reedy SerrePositivity.Quillen\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingDegeneracies",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalKanTests",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.Reedy SerrePositivity.SimplicialModel\n",
+          "after": "open SerrePositivity.SimplicialModel\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}

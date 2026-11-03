@@ -65,7 +65,6 @@ universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
-open SerrePositivity.Reedy
 
 namespace SerrePositivity.BisimplicialModel
 variable {Z Y : SSet.{v}} (p : Z ⟶ Y) (n : ℕ)

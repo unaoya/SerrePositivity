@@ -45,8 +45,7 @@ Eilenberg--Zilber gives its injectivity. No splitting in SSet is assumed.
 universe v
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
-open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
-open SerrePositivity.Reedy
+open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.BisimplicialModel
 

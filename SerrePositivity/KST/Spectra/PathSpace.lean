@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality
 
 public import SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval
 public import SerrePositivity.InfinityCategories.Kan.FibrationSequence
