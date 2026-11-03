@@ -3,7 +3,7 @@
 -- BS-W10 作業 A で `CompletedTensor.lean` の `isIntegralPerfectoid_finPi`（E3 を使う旧証明）をこの直接証明に差し替える。
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import Mathlib.RingTheory.Perfection

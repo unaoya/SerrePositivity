@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md G-A2-3。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.Homology
 public import SerrePositivity.InfinityCategories.Derived.StableLimits

@@ -2,7 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a7-design.md §2.3・§5（配置、W9-II-24）、単位 A7-2。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 -- 本ファイルは drafts/A4/Perfectoidization.lean、drafts/DerivedGeneral/Truncation.lean だけを import する（**A4/Perfectoidization の後、A5 より先**に置く。W9-III-14）。
 
