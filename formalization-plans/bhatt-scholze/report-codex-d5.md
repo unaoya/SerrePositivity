@@ -39,3 +39,49 @@
 * **D5-02**（`f7cfe33e5`）　`discreteEmbedding` の始域は通常の A 代数。加群の埋め込みを `nerveMap (moduleSemifreeResolutionFunctor A) ≫ closedNerveInclusion A (Semifree A)` で定義した。停止点 2 の完備微分形式にもこの入口を使える。shift は hD(A) 上の `loopFunctor`／`suspensionFunctor` を対象に反復している。
 * 今回の未確定名・× として残した宣言は 0 件。反射・切り捨て・係数制限の証明は M13／M13-CAlg 待ち。draft 同士の import は従来どおり、取り込み先が決まるまで依存先をコメントで指定した。
 * コメントを除いて開始基準と照合し、DerivedGeneral の結論 `True` は 14 → 0。drafts 全体では 53 → 39（Shared 28、Sheaves 11）。実 import のパス、括弧、新規 axiom がないこと、`git diff --check` を確認した。ビルド・Lean の型検査は行っていない。
+
+## 第 2 部　停止点 2・Shared
+
+停止点 1 の検収（`c992a4222`）後、Shared の名前つき宣言で結論が `True` だった **28 件中 23 件**を具体化した。指定五本と、D5-05 で許可された CupProduct の既存の入口を編集した。A0〜A9・Sheaves は読み取りのみ。
+
+| ファイル | 開始時 | 型を付けた件数 | 結論が `True` の残り |
+| --- | ---: | ---: | ---: |
+| CosimplicialBockstein | 2 | 2 | 0 |
+| CosimplicialEInfinity | 5 | 4 | 1 |
+| DeRhamPolynomial | 1 | 1 | 0 |
+| EInfinityPowerOperation | 4 | 4 | 0 |
+| Descendable | 16 | 12 | 4 |
+| 合計 | 28 | 23 | 5 |
+
+指示書 §1 の「22 件」との差は Descendable の小計による。入口表 §1.7 の 16 件から、内部 Hom 待ちの 2 件と完備テンソル待ちの 2 件を除くと 12 件。構造体の欄と、すでに型がある定義の修正はこの件数に含めていない。
+
+### 型を付けた宣言・新設した入口
+
+* **CosimplicialBockstein・CosimplicialCupProduct**　`bockstein_leibniz` は次数 i,j の cup に対する符号 (−1)ⁱ を含む式、`bockstein_natural` は正則元を正則元に写す余単体的射についての等式とした。新設は `quotProjection`、`quotPowMap`、`cohomologyEquivModuleHomology`、`cupBockstein`。商の標準射を使い、係数環 k の作用を短完全列の三項に明示した。連結準同型を加法群の cup 側へ運ぶ際は既存の `cohomologyEquivHomology` を経由する。
+* **CosimplicialEInfinity**　新設は `totEInfinityFunctor`、`totDiagram`、`totEInfinityCone`、`totEInfinity_forget_cohomology`、`totEInfinity_forget_negative`。`totEInfinity A X` は関手の頂点での値、`totEInfinity_map A f` は同じ関手で写した辺。`totEInfinity_forget` は各非負次数で A 加群の交代余面複体のホモロジーとの同型を与える。負次数では消滅する。`totEInfinity_isLimitCone` では錐の頂点を Tot に指定した。`derivedGlobalSectionsCAlg_eq_totEInfinity` は層である環の前層、弱終対象、標準射影つきの Čech データから RΓ とその余単体模型の Tot の `VertexIso` を返す。Tot 関手自身の始域は余単体的 A 代数の圏の通常の nerve。小さい Δ の nerve だけを項の図式で持ち上げる。
+* **DeRhamPolynomial**　`completedForms_eq_derivedCompletion_of_boundedTorsion k T p i hk` の左辺は `ModuleCat.of k (forms k T i)` を `discreteModuleEmbedding k` で埋め込み、`completion k {(p : k)}` を適用したもの。右辺には完備形式の同じ埋め込みを置いた。`IsBoundedPrism` の定義を確認したところ、ねじれの条件は「ある N が任意の p 冪ねじれ元を pᴺ で消す」という存在文であり、そのまま `hk` に用いた。
+* **EInfinityPowerOperation**　`powerOperationZero_zero`・`_natural`・`_natTrans`・`_eq_frobenius_tot` を具体化した。π₀ の環は定義上 `cAlgH0Ring X` で、`homotopyZeroRingEquiv` に沿って P⁰(x) = xᵖ と述べる。新設は二つの群・環インスタンス `homotopyZeroRing`・`homotopyAddGroup`、`homotopyZeroRingEquiv`、`homotopyCohomology`、`homotopyMap`、`restrictHomologyAddEquiv`、`powerOperationZero_component`・`_primeField`、`frobeniusRestriction`、`discreteFrobenius`、`cosimplicialFrobenius`、`totRestrictFrobeniusIso`、`powerOperationZero_eq_frobenius_discrete`。自然変換の標的で係数を制限し、その成分が各 πₙ の加法的 P⁰ を誘導する式を添えた。
+* **Descendable**　(a) 押し出し、(b) 二単体で指定した合成、(c) テンソル、(e) M = R の Amitsur 降下、(g) index の一様な上界 n から逐次余極限での上界 2n、単位との一致、有限表示忠実平坦の場合を型にした。`IsThickTensorIdeal` の有限余極限・retract・正負の shift の欄も具体化した。新設は `unitAlgebra`、`hasDescentIndexLEOver_pushout`、`algebraArrow`・`algebraArrowEdge`、`isDescendableOver_tensorMaps`、`augmentationIndexCone`、`amitsurStar`、`amitsurTermCone`、`augmentedShape`、`amitsurAug`、`AmitsurData`・`AmitsurData.aug`、`DiscreteSource`。増大と各段の余積の脚は一つの増大図式から取り、[−1] の上で n+1 個の [0] を貼った標準余錐の余極限性を要求した。射の塔は射の ∞ 圏に一つの余極限錐をとるので、両端の余極限を結ぶ射も指定される。
+
+### A 側の呼び出しと引数
+
+行番号は `c992a4222` の A drafts。各名前について、実コードの呼び出しと証明予定の参照を区別した。
+
+| A 側 | 渡す引数・利用の仕方 |
+| --- | --- |
+| A1/HodgeTateMap:72–82,153,171 | `cohomologyEquivHomology X i` の順序は同じ。A1 の `moduleCohomologyBridge` と `bockstein` の一般形が `cohomologyEquivModuleHomology` と `cupBockstein`。Leibniz 則には `C d hd_nat hd_reg k ι i j a b` を渡す。自然性は同じ先頭の六引数に標的の環・元・自然性・正則性、射と元の像の式、次数と類を加える。標的の k 作用は ι とその射の合成。 |
+| A1/CrystallineInput:249–255、A1/DeRhamComparisonPoly:104,115–116、A2/DerivedPrismaticCohomology:148,154–157 | 実コードの `totEInfinity A X` は同じ引数。A1 の `pdTotMap` は `totEInfinity_map k ((pdPolynomialFunctor p k).map f)` の辺を h 圏に送る。A2 の比較には `totEInfinity_isLimitCone A X` と S3。一般形 `derivedGlobalSectionsCAlg_eq_totEInfinity A J hJ hA O hO U hU d` は `d.obj.rightOp ⋙ O` を全化する。 |
+| A2/HodgeTateFiltration:187–195 | `polyForms_boundedComparison` の穴では k = A/d、T = Fin n とし、`completedForms_eq_derivedCompletion_of_boundedTorsion k (Fin n) p i hk` に prism の有界性を渡す。 |
+| A3/DiscreteCase:138、A4/Perfectoidization:29–30,284–297 | π₀ の比較は `powerOperationZero_zero k p X x`。一般 k では変換の標的を φₖ に沿って制限し、素体の自己変換には `powerOperationZero_primeField p` を使う。Tot での Frobenius 比較は `powerOperationZero_eq_frobenius_tot k p X`。A 側では証明方針からの参照。 |
+| A5/StrongDescent:69–84,102,263–265、A5/WeaklyInitialAndDescent:296–304 | 一般底の (g) には射の塔・余極限錐・余極限性・一様な index・各段の証人を渡す。(c) は共通始域の押し出しの対角辺。両端を一変数から n 重にテンソルする場合は `isDescendableOver_tensorMaps` を反復し、完備版 (h) と接続する。降下は `isDescendableOver_pushout A Q hQ hf` と `isDescendableOver_tot_equiv A f hf d`（`d : AmitsurData A f`）。公開される Lemma 8.6 には index の数値を追加していない。 |
+
+このほかに、今回変更した旧名を A 側から直接呼び出す箇所は見つからなかった。`totEInfinity` と `cohomologyEquivHomology` の既存の呼び出しは名前・引数を保っている。
+
+### 設計の訂正と未実装箇所
+
+* **D5-03**（`003d31296`）　k = Fₚ[t] の Frobenius は k 線形ではない。一般形の終域を `cAlgForgetDerived k ≫ derivedInfinityRestrictScalars (frobenius k p)` とした。k = Fₚ では `ZMod.frobenius_zmod` と `derivedInfinityRestrictScalars_id` で自己変換に戻る。
+* **D5-04**（`b5600c32f`）　記録用の `isDescendable_of_faithfullyFlat` は `Module.FaithfullyFlat A B` と `Algebra.FinitePresentation A B` の両方を仮定した。忠実平坦だけの場合には反例がある。[Aoki, *On cohomology of locally profinite sets*](https://arxiv.org/abs/2411.05995)
+* **D5-05**（`459368197`・`6aef245a4`）　Mathlib の `AlgebraicTopology.alternatingCofaceMapComplex C` を使用した。`cohomologyEquivHomology` の忘却は CommRingCat → RingCat → AddCommGrpCat の合成。A0/CechAlexander:259（説明）、A1/HodgeTateMap:74、A1/CrystallineInput:179,234,237 に同じ旧名が残る。これらは A 側の中身の段階で修正する。
+* **結論 True の五宣言**　`totEInfinity_cohomologyRing` は E∞ 代数の全次数の π_* の積の入口待ち。`hasDescentIndexLEOver_two_of_rhom` と `hasDescentIndexLE_two_of_rhom` はそれぞれ Mod_R と D(A) の内部 Hom 待ち。`isDescendableOver_complete` と `isDescendable_complete` は完備反射に先立つ導来テンソルの ∞ 関手（β5）待ち。`IsThickTensorIdeal.tensor` の一欄も同じ理由で残した。
+* **要確認**　新たな仮名はない。正規化余鎖の Barratt–Eccles 作用（CosimplicialEInfinity）と、P⁰ を定める E(p) の作用（EInfinityPowerOperation）は本体実装時に照合する。既存の `exists_unique_dgHom.hlin` は DeRhamPolynomial の仮定の仮置きで、入口表 §1.6 に従い中身の段階に残した。
+* **検査**　コメントを除いた宣言の結論を数え、Shared は 5 件、Sheaves は 11 件、drafts 全体は **16 件**。五宣言・構造体一欄の docstring に理由があること、追加した import のパス、括弧、A 側からの参照、`git diff --check` を点検した。ビルド・Lean の型検査は行っていない。

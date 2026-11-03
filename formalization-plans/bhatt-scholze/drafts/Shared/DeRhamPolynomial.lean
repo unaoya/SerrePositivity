@@ -2,6 +2,8 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md §2.1、G-A1-9、D26。基準コミット 972bb7f53。ビルドしない。
 module
 
+-- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
+public import SerrePositivity.InfinityCategories.Core.NerveCone
 public import Mathlib.Algebra.MvPolynomial.PDeriv
 public import Mathlib.LinearAlgebra.ExteriorAlgebra.Basic
 public import Mathlib.LinearAlgebra.ExteriorPower.Basic
@@ -126,7 +128,7 @@ theorem exists_unique_dgHom (H : GradedCommDGAlgebra k)
 使われ方：A1 の HT 比較の対象 R = (A/d)⟨X⟩。
 **D4-01（11-03、BS-D4 の質問への回答）**：これは **H⁰ の（古典的）完備化**で、A1 の有界 prism（k = A/d は有界 p 冪ねじれ）では導来 p 完備化と一致する。
 A2 の HT filtration（一般の k、D(k)_{p-comp} 内）では H⁰ を取ると導来完備化の負次数を失う（k の p 冪ねじれが有界でないと LΛ_p(自由加群) は離散でない）ので、
-A2 は通常の `forms` を `discreteEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施した対象を使い、有界 p 冪ねじれの下でだけ `completedForms` と同定する
+A2 は通常の `forms` を `discreteModuleEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施した対象を使い、有界 p 冪ねじれの下でだけ `completedForms` と同定する
 （`completedForms_eq_derivedCompletion_of_boundedTorsion`）。k⟨X_T⟩ は `PrincipalCompletionH0 (Poly k T) p`（E3 の `completionRing` と同じ道具）。 -/
 abbrev completedPoly (k : Type u) [CommRing k] (T : Type u) [Fintype T] [DecidableEq T] (p : ℕ) : Type u :=
   SerrePositivity.DerivedCompletion.PrincipalCompletionH0 (Poly k T) (p : Poly k T)
@@ -136,12 +138,19 @@ instance (p i : ℕ) : AddCommGroup (completedForms k T p i) := sorry
 instance (p i : ℕ) : Module (completedPoly k T p) (completedForms k T p i) := sorry
 instance (p i : ℕ) : Module k (completedForms k T p i) := sorry
 
+open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Derived
+
 /-- 概要：k の p 冪ねじれが有界（例：有界 prism の A/d）なら、`forms k T i` の導来 p 完備化（DerivedGeneral `completion`、D(k) の対象）は離散で、
-`completedForms k T p i` の `discreteEmbedding` の像と `VertexIso`。A1 はこの同定で設計の Ω̂ を使い、A2 は導来側を使う。
+`completedForms k T p i` の `discreteModuleEmbedding` の像と `VertexIso`。A1 はこの同定で設計の Ω̂ を使い、A2 は導来側を使う。
 方針：有界ねじれの自由加群の導来完備化は離散で古典的完備化（a0-design §5.1 の 1 の計算と同じ）。
-規約：基盤待ち（DerivedGeneral の `completion` の引数（p 進、d = 0 か）と `discreteEmbedding` の形に合わせる）。
+規約：有界性は IsBoundedPrism と同じ一様な指数。完備化の生成元は一元集合。
 使われ方：A1-1・A1-3（Ω̂）、A2 HodgeTateFiltration の gr との比較。 -/
-theorem completedForms_eq_derivedCompletion_of_boundedTorsion : True := by trivial -- 基盤待ち
+def completedForms_eq_derivedCompletion_of_boundedTorsion (p i : ℕ)
+    (hk : ∃ N : ℕ, ∀ (n : ℕ) (x : k), (p : k)^n * x = 0 → (p : k)^N * x = 0) :
+    VertexIso ((completion k {(p : k)}).app _ ((discreteModuleEmbedding k).app _
+      (nerveVertex (ModuleCat.of k (forms k T i)))))
+      ((discreteModuleEmbedding k).app _ (nerveVertex (ModuleCat.of k (completedForms k T p i)))) := by
+  sorry -- 多項式形式は多項式環上有限自由。係数のねじれの一様な上界により導来完備化は次数零
 
 /-! ## 完備形式上の連続微分と外積（D4-05、11-03。A1 の Ω̂ の dg 構造） -/
 

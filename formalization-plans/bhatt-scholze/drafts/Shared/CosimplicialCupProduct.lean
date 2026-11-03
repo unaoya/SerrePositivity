@@ -100,11 +100,13 @@ def cohomology (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) : Type u :=
 instance (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) : AddCommGroup (cohomology X n) := sorry
 
 /-- 概要：Mathlib の交代余面複体のホモロジーとの同一視（A1 が Mathlib の homology を直接使う所の橋）。
-方針：定義どおり（`forget₂ CommRingCat AddCommGrpCat` で加法群の余単体的対象に送る）。
+方針：CommRingCat → RingCat → AddCommGrpCat と忘却し、交代余面複体のホモロジーを取る（D5-05）。
 規約：`AddCommGrpCat` の `HomologicalComplex.homology`。
 使われ方：A1 `hodgeTateMap`、Bockstein との接続。 -/
 def cohomologyEquivHomology (X : CosimplicialObject CommRingCat.{u}) (n : ℕ) :
-    cohomology X n ≃+ ((CosimplicialObject.alternatingCofaceMapComplex.obj (X ⋙ forget₂ CommRingCat AddCommGrpCat)).homology n) := sorry
+    cohomology X n ≃+ ((AlgebraicTopology.alternatingCofaceMapComplex AddCommGrpCat.{u}).obj
+      (X ⋙ forget₂ CommRingCat RingCat ⋙ forget₂ RingCat AddCommGrpCat)).homology n := by
+  sorry -- cohomology の余輪体・余境界表示を同じ交代余面複体のホモロジーに移す
 
 /-- 概要：cup 積はコホモロジーに降りる（Leibniz 則から、余輪体 × 余輪体 ⊆ 余輪体、余境界 × 余輪体 ⊆ 余境界）。
 方針：`cochainDifferential_cup`。
