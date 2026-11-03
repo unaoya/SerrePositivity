@@ -263,6 +263,7 @@ InfinityCategories/
 | IF-W2b | R73 → R37 → R38 | W2b | **完了（11-03、3e27dda00）**。指示書 [infinity-codex-w2b.md](infinity-codex-w2b.md) §1〜§18。中核層間の順序違反 0、F1B の straightening 非依存を保持。W2c への入力：180 本と 6 根の経路（`targets/w2b-section18-stop3.json`） |
 | IF-W2c | 群 A（R27・R64・R72 の残り：直接の禁止辺 18 を切り、中核の閉包から KST・モデル圏の HA を消す）→ 群 B（段 E：R51 → R68 → R52 → R69 → R70 → R56b）→ R45 | W2c | 指示書 [infinity-codex-w2c.md](infinity-codex-w2c.md)（11-03 深夜）。草案は今すぐ、下流は 2a・2b の後 |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
+| IF-G1 | 段 G の最初の束：BS 発の一般論の ∞ 側（M12b・M12c・M12d・β5 の一部） | 窓の外（新規ファイルのみ、別チャット） | 依頼書 [infinity-codex-g1.md](infinity-codex-g1.md)（11-03 深夜） |
 
 **各回の検証**（すべて通るまで次へ進まない）：
 - `scripts/refactor/verify.sh`（R41 の強化版）：全体ビルド、自動で列挙した全監査、`main_statement` の sorry 閉包。失敗が一つでもあれば非零で終了する。
