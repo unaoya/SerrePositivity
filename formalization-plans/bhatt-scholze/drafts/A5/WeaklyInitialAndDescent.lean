@@ -29,12 +29,15 @@ A5-1 の `perfectionComparison_isIso`・`perfectoidization_isLimit_u`。
 @[expose] public section
 noncomputable section
 universe u
-open CategoryTheory
+open CategoryTheory SSet
+open scoped Simplicial TensorProduct
 
 namespace SerrePositivity.BhattScholze.Perfectoidization.Derived
 
 open SerrePositivity.BhattScholze.Prismatic SerrePositivity.BhattScholze.PerfectoidizationInterface
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
+
+open SerrePositivity.DerivedCompletion SerrePositivity.EInfinity.Perfectoidization
 
 variable (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p)
 variable (S : Type u) [CommRing S] [Algebra R S]
@@ -47,14 +50,103 @@ variable (S : Type u) [CommRing S] [Algebra R S]
 規約：A5-2 の `IsSemiperfectoid`。**perfectoid 基底 R は本質的**（W9-II-16）：ker θ の distinguished 元は R 由来。基底なしでは偽
 （S = ℤ_p の根添加は ℤ_p へ retraction をもつ）。A6 の Lemma 8.8 は前段 G-A6-11 で R₀ = ℤ_p[p^{1/p^∞}]^∧ 上へ移してから本定理を使う。
 使われ方：S̃_perfd の存在（Cor 7.3）、A5-2 の適用。 -/
-theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) := by sorry
+include hR in
+theorem rootClosure_isSemiperfectoid : IsSemiperfectoid p R (rootClosure p R S) := by
+  sorry -- 完備性と mod p の根を使い、perfectoid 基底 R 上で θ の全射から商表示を作る
+
+/-- E を先に作り、構造射・単位射も含めて H⁰ 完備化する。 -/
+def algebraicCoverUnit (C : CommRingCat.{u}) :
+    completionRing p C ⟶ completionRing p ((algebraicRootFunctor p).obj C) :=
+  completionMap p (CommRingCat.ofHom (algebraicRootClosureUnit p C))
 
 /-- 概要：S = S_alg^∧（S_alg = colim_i S_i）の被覆 E(S_alg)^∧_p：p 完備忠実平坦、semiperfectoid（mod p の根、G-A5-14）、E(S_i)^∧_p の完備 filtered 余極限。
 E(S)^∧_p とは同一視しない。
 方針：各段の自由性と完備化。
 規約：—
 使われ方：§3.2 の右辺の可換性。 -/
-theorem algebraicRootCover_properties : True := by trivial
+include hR in
+theorem algebraicRootCover_properties {J : Type u} [SmallCategory J] [IsFiltered J]
+    (D : J ⥤ A_R R) :
+    let D₀ := D ⋙ Under.forget (CommRingCat.of R)
+    let C := Limits.colimit D₀
+    let E := algebraicRootFunctor p
+    let U := completionRing p (E.obj C)
+    letI := (algebraicCoverUnit p C).hom.toAlgebra
+    letI : Algebra R U := ((algebraicCoverUnit p C).hom.comp ((completionUnit p C).hom.comp
+      ((Limits.colimit.ι D₀ (Classical.arbitrary J)).hom.comp
+        (D.obj (Classical.arbitrary J)).hom.hom))).toAlgebra
+    IsCompletelyFaithfullyFlat (Ideal.span {(p : completionRing p C)}) U ∧
+      IsSemiperfectoid p R U ∧
+      IsIso (completionMap p (Limits.colimit.desc (D₀ ⋙ E ⋙ ringCompletionFunctor p)
+        ((ringCompletionFunctor p).mapCocone (E.mapCocone (Limits.colimit.cocone D₀)))) ≫
+        (completionUnitIso p U (completionRing_complete p _)).inv) := by
+  classical
+  sorry -- モニックな各段は自由で mod p に根があり、E は通常の filtered 余極限を保つ。
+        -- 完備標的への普遍性により H⁰ 完備化を余極限の前後で取った指定比較が同型
+
+/-- 概要：弱始対象 S̃_perfd ∈ `PerfUnder_u p S`（A5-2 の普遍 perfectoid 環 R′(S̃)、Prop 8.5 の系 3 で Δ_{S̃,perf}/d）。
+方針：`universalPerfectoidRing` を S の上の環として。
+規約：`PerfUnder_u p S` の対象。
+使われ方：S3。 -/
+def perfectoidTargetWeaklyInitial : PerfUnder_u p (CommRingCat.of S) := by
+  let h := rootClosure_isSemiperfectoid p R hR S
+  let q := universalPerfectoidUnit p R (rootClosure p R S) h
+  exact ⟨Under.mk (CommRingCat.ofHom (q.comp (rootClosureUnit p R S))),
+    (universalPerfectoidUnit_isPerfectoidization p R (rootClosure p R S) h).1⟩
+
+def boundedWeakTarget : PerfUnderBounded p S (perfectSiteCutoff p R S) :=
+  ⟨perfectoidTargetWeaklyInitial p R hR S, by
+    sorry⟩ -- Cor 7.3 の単位は全射、rootClosure_cardinal_le と κ の定義を使う
+
+abbrev weakPerfectSiteObj : perfectSite p R S hR :=
+  ((perfectSiteEquivPerfectoidUnder p R hR S).inverse.obj (boundedWeakTarget p R hR S)).unop
+
+/-- 概要：弱始性：任意の T ∈ `PerfUnder_u p S` に S の下で S̃_perfd → T がある（延長性と R′ の普遍性）。κ 側の site でも同様。
+方針：`rootClosure_extends`、`universalPerfectoidUnit_isPerfectoidization`。
+規約：S3 の `IsWeaklyTerminal`（site は opposite）。
+使われ方：`limit_perfUnder_eq_tot`。 -/
+theorem perfectoidTargetWeaklyInitial_isWeaklyInitial :
+    Sheaves.IsWeaklyTerminalLarge (Opposite.op (perfectoidTargetWeaklyInitial p R hR S)) ∧
+      Sheaves.IsWeaklyTerminal (weakPerfectSiteObj p R hR S) := by
+  sorry -- rootClosure_extends の脚を Cor 7.3 で一意に降ろす。κ 側へは充満性と圏同値で移送
+
+
+-- Čech 余脈体 `perfUnder_cechNerveData`（Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd）は A5/PerfectSite へ移した（W9-III-14：既存 Cor 7.3 の普遍環から直接作れる）。
+
+abbrev cosimplicialShape : SSet.{u+1} := (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)
+
+def largeCechShape (U : PerfUnder_u p (CommRingCat.of S)) :
+    cosimplicialShape.{u} ⟶ perfectoidTargetNerve p (CommRingCat.of S) where
+  app n := ↾fun x =>
+    (((perfUnder_cechNerveData p R hR S (Opposite.op U)).obj.rightOp ⋙ unopUnop _).mapComposableArrows _).obj x.down
+  naturality := by sorry -- 各単体の列を同じ余積の関手で送る
+
+abbrev perfectResiduePresheaf :=
+  Sheaves.ringPresheafToCAlg R ((perfectResidueFunctor p R hR S) ⋙ (ObjectProperty.ι _) ⋙
+    targetAlgebra R p (ofAlgebra R S))
+
+/-- 概要：lim_{PerfUnder_u p S} T ≃ Tot((S̃^•)_perfd)（S3 `exists_limitCone_of_cech`、Čech データは PerfectSite `perfUnder_cechNerveData`）。κ 側の完全 site でも同じ Tot（弱始対象は濃度 ≤ κ）。
+よって Type u の極限と κ-small の site の極限は一致（D47）。
+方針：S3 を二回。
+規約：—
+使われ方：A5-1 の `perfectoidization_isLimit_u`。 -/
+theorem limit_perfUnder_eq_tot
+    (t : JoinCone (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S) ≫
+      targetCAlgDiagram R p (ofAlgebra R S))) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+  sorry -- 要確認：S3 の大きい版待ち（W9-I-04）。isLimitCone_iff_restrict_cech_large の錐の延長
+
+theorem limit_perfectSite_eq_tot {E : SSet.{u+1}} [Quasicategory E]
+    (F : Sheaves.Presheaf (perfectSite p R S hR) E)
+    (t : JoinCone (Sheaves.cechShape (perfectSite_cechNerveData p R hR S (weakPerfectSiteObj p R hR S)) ≫ F))
+    (ht : IsLimitCone t) :
+    ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex :=
+  Sheaves.exists_limitCone_of_cech (perfectoidTargetWeaklyInitial_isWeaklyInitial p R hR S).2 _ F t ht
+
+theorem limit_perfUnder_eq_limit_perfectSite
+    (t : JoinCone (perfectResiduePresheaf p R hR S)) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex := by
+  sorry -- D47：小さい極限を弱始対象の Čech 項に制限し、同じ余積の Ō 値を大きい版へ移送
 
 /-- 概要：E 被覆 U = E(S_alg)^∧_p について、任意の perfectoid T への S → T は U → T に延びる（各段で根と p 除算の原像）ので Q(U) は Perfd_{S/} の弱始対象。
 よって Čech 計算は S3 で閉じ（Q(U^{⊗̂_S (•+1)}) の Tot）、S̃ による計算と同じ極限の錐の比較で一致（W9-II-11）。
@@ -62,31 +154,12 @@ theorem algebraicRootCover_properties : True := by trivial
 方針：S3 を二回、紙 3′。
 規約：—
 使われ方：`limit_perfectSite_filteredColimit`。 -/
-theorem cech_independent_of_flatSemiperfectoidCover : True := by trivial
-
-/-- 概要：弱始対象 S̃_perfd ∈ `PerfUnder_u p S`（A5-2 の普遍 perfectoid 環 R′(S̃)、Prop 8.5 の系 3 で Δ_{S̃,perf}/d）。
-方針：`universalPerfectoidRing` を S の上の環として。
-規約：`PerfUnder_u p S` の対象。
-使われ方：S3。 -/
-def perfectoidTargetWeaklyInitial : True := trivial
-
-/-- 概要：弱始性：任意の T ∈ `PerfUnder_u p S` に S の下で S̃_perfd → T がある（延長性と R′ の普遍性）。κ 側の site でも同様。
-方針：`rootClosure_extends`、`universalPerfectoidUnit_isPerfectoidization`。
-規約：S3 の `IsWeaklyTerminal`（site は opposite）。
-使われ方：`limit_perfUnder_eq_tot`。 -/
-theorem perfectoidTargetWeaklyInitial_isWeaklyInitial : True := by trivial
-
-
--- Čech 余脈体 `perfUnder_cechNerveData`（Perfd_{S/} の余積 (T₁ ⊗̂_S T₂)_perfd）は A5/PerfectSite へ移した（W9-III-14：既存 Cor 7.3 の普遍環から直接作れる）。
-
-/-- 概要：lim_{PerfUnder_u p S} T ≃ Tot((S̃^•)_perfd)（S3 `exists_limitCone_of_cech`、Čech データは PerfectSite `perfUnder_cechNerveData`）。κ 側の完全 site でも同じ Tot（弱始対象は濃度 ≤ κ）。
-よって Type u の極限と κ-small の site の極限は一致（D47）。
-方針：S3 を二回。
-規約：—
-使われ方：A5-1 の `perfectoidization_isLimit_u`。 -/
-theorem limit_perfUnder_eq_tot : True := by trivial
-theorem limit_perfectSite_eq_tot : True := by trivial
-theorem limit_perfUnder_eq_limit_perfectSite : True := by trivial
+theorem cech_independent_of_flatSemiperfectoidCover
+    (U : PerfUnder_u p (CommRingCat.of S)) (hU : Sheaves.IsWeaklyTerminalLarge (Opposite.op U))
+    (t : JoinCone (largeCechShape p R hR S U ≫ targetCAlgDiagram R p (ofAlgebra R S))) (ht : IsLimitCone t) :
+    ∃ c : JoinCone (targetCAlgDiagram R p (ofAlgebra R S)), IsLimitCone c ∧ c.vertex = t.vertex ∧
+      IsLimitCone (restrictJoinCone c (largeCechShape p R hR S (perfectoidTargetWeaklyInitial p R hR S))) := by
+  sorry -- U=Q(E(S_alg)^∧) では各段の延長と Cor 7.3 が hU を供給。U と S̃_perfd に S3 を順に適用
 
 /-! ## (2) filtered 余極限（左辺の可換性 `prismaticPerfection_filteredColimit` は A4/Perfectoidization へ移した。W9-III-14） -/
 

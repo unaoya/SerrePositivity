@@ -56,12 +56,51 @@ def thickTensorIdealGenerated (M : (derivedInfinityCategory A) _⦋0⦌) : (deri
 使われ方：以下すべて。 -/
 def IsDescendable (B : (CAlg_R A) _⦋0⦌) : Prop := sorry -- thickTensorIdealGenerated A (U B) (unit)
 
-/-- 概要：一般形（W9-II-13）：対称モノイダルな安定 ∞ 圏 𝒞（D_comp(A)、Mod_{Δ_T}(D_comp(A)) など）の可換代数対象の射 B → B′ が descendable ⇔
-Mod_B(𝒞) で B′ の生成する thick ⊗-ideal が B を含む。離散環版 `IsDescendable` はこの特殊化。
-方針：𝒞 と Mod_B の形は EInfinity の `CAlg`／加群の ∞ 圏に合わせる（要確認）。
-規約：中身の段階で底の型を変える（実装計画に記録）。
-使われ方：Lemma 8.6（A5-3）、A5-4。 -/
-def IsDescendableOver : True := trivial
+/-- 概要：一般形（W9-II-13、**入口を確定：11-03、BS-D3 の D3-04**）：CAlg_A の射 f : R → B（R は一般に離散でない E∞-A 代数、例 Δ_T）が descendable ⇔
+Mod_R(D(A)) の中で B の生成する thick ⊗-ideal が R を含む（[Mat16, Def 3.18] を 𝒞 = Mod_R に適用）。離散環版 `IsDescendable` は R = 単位対象の特殊化。
+方針：Mod_R(D(A))（E∞ 代数 R 上の加群の安定 ∞ 圏）とその thick ⊗-ideal は基盤側（M15。EInfinity に加群の ∞ 圏がなければ Derived/ に下ろして作る）。
+A5 はこの Prop と下の API だけを使い、Mod_R の構成には触れない。
+規約：R・B は `(CAlg_R A) _⦋0⦌`、f は `SSet.Edge R B`。完備版（Lemma 8.6 の D_comp(A)）は R・B が完備な対象のときの同じ定義（(h)）。
+使われ方：Lemma 8.6（A5-3：R = Δ_T、B = Δ_{T_∞}）、A5-4 の降下。 -/
+def IsDescendableOver (R B : (CAlg_R A) _⦋0⦌) (f : SSet.Edge R B) : Prop := sorry -- 基盤待ち（M15）：Mod_R(D(A)) の thick ⊗-ideal
+
+/-- 概要：一般形の index ≤ n：F := fib(R → B)（Mod_R の対象）について F^{⊗_R n} → R が Mod_R で零（[BS17, §11.2]）。
+方針：Mod_R の相対テンソルと fiber。
+規約：基盤待ち。
+使われ方：(d)(f)(g) の一般形。 -/
+def HasDescentIndexLEOver (R B : (CAlg_R A) _⦋0⦌) (f : SSet.Edge R B) (n : ℕ) : Prop := sorry -- 基盤待ち（M15）
+
+/-- 概要：(d) の一般形：descendable ⇔ ∃ n, index ≤ n。 -/
+theorem isDescendableOver_iff_exists_index (R B : (CAlg_R A) _⦋0⦌) (f : SSet.Edge R B) :
+    IsDescendableOver A R B f ↔ ∃ n, HasDescentIndexLEOver A R B f n := by sorry -- 基盤待ち
+
+/-- 概要：離散環版との一致：R が CAlg_A の単位対象（A の埋め込み）で f が B の構造射なら `IsDescendableOver A R B f ↔ IsDescendable A B`。
+方針：Mod_{1} = D(A)。主張の形は CAlg_A の単位対象と構造射の名前が決まってから。
+規約：基盤待ち。 -/
+theorem isDescendableOver_unit_iff : True := by trivial -- 基盤待ち
+
+/-- 概要：(a) の一般形：f : R → B descendable、g : R → R′ なら R′ → B ⊔_R R′（CAlg_A の押し出し＝相対テンソル B ⊗_R R′）も descendable（index も保つ）。
+方針：Mod_R → Mod_{R′} の底変換は thick ⊗-ideal を保つ。押し出しの名前は A7 `relativeTensor` の E∞ 版（基盤待ち）。
+規約：基盤待ち。A5-4 の降下（Δ_T → Δ_S に沿う底変換）で使う。 -/
+theorem isDescendableOver_pushout : True := by trivial -- 基盤待ち
+
+/-- 概要：(b)(c) の一般形：合成と相対テンソル。合成の辺の指定（quasicategory の合成の証人）は基盤の名前が決まってから。 -/
+theorem isDescendableOver_comp : True := by trivial -- 基盤待ち
+theorem isDescendableOver_tensor : True := by trivial -- 基盤待ち
+
+/-- 概要：(e) の一般形 [Mat16, Prop 3.22]：f : R → B descendable なら任意の R 加群 M について M ≃ Tot(M ⊗_R B^{⊗_R (•+1)})。A5-4 では M = R = Δ_T。
+方針：index n で Tot_{≤n} の塔が分裂。Tot は HomotopyLimits（S3 と同じ）。
+規約：基盤待ち。 -/
+theorem isDescendableOver_tot_equiv : True := by trivial -- 基盤待ち
+
+/-- 概要：(f) の一般形：F := fib(R → B)、RHom_R(F^{⊗_R 2}, R) ∈ D^{≤−1}（Mod_R の内部 Hom。A5 StrongDescent の RHom_{Δ_T}）なら F^{⊗_R 2} → R は零で index ≤ 2。
+方針：π_0 RHom = 0。
+規約：基盤待ち。Lemma 8.6 の n = 1 で使う。 -/
+theorem hasDescentIndexLEOver_two_of_rhom : True := by trivial -- 基盤待ち
+
+/-- 概要：(g)(h) の一般形：Frobenius 余極限（[BS17, Lemma 11.22]、index ≤ n ⇒ colim_φ で ≤ 2n）と完備版（完備な R・B で同じ定義）。 -/
+theorem hasDescentIndexLEOver_frobeniusColimit : True := by trivial -- 基盤待ち
+theorem isDescendableOver_complete : True := by trivial -- 基盤待ち
 
 /-- 概要：index ≤ n：fib(A → B)^{⊗n} → A が零（[BS17, §11.2]）。
 方針：fib と導来テンソル冪。

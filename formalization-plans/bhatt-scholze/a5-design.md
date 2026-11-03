@@ -207,7 +207,7 @@ animated S と読み、離散化が要る箇所を π_0 S と書く。骨組み�
 
 | # | 内容 | 既存 | 使う箇所 |
 | --- | --- | --- | --- |
-| G-A5-1 | descendability（[Mat16, Def 3.18]）：定義、(a) 底変換、(b) 合成、(c) テンソル、(d) index の判定、(e) 降下 M ≃ Tot(M ⊗ B^{⊗•+1})、(f) RHom(F^{⊗2}, A) ∈ D^{<0} ⇒ index ≤ 2、(g) [BS17, Lemma 11.22]、(h) 完備版 | なし | Lemma 8.6、§3.3 |
+| G-A5-1（入口 11-03、D3-04：`IsDescendableOver A R B f`・`HasDescentIndexLEOver`、R・B は CAlg_A の頂点、f は `SSet.Edge`。離散版 `IsDescendable` は単位対象の特殊化） | descendability（[Mat16, Def 3.18]）：定義、(a) 底変換、(b) 合成、(c) テンソル、(d) index の判定、(e) 降下 M ≃ Tot(M ⊗ B^{⊗•+1})、(f) RHom(F^{⊗2}, A) ∈ D^{<0} ⇒ index ≤ 2、(g) [BS17, Lemma 11.22]、(h) 完備版 | なし | Lemma 8.6、§3.3 |
 | G-A5-2 | 一様に coconnective な余単体的対象の Tot は filtered 余極限と可換（H^k(Tot) = H^k(Tot_{≤k+1})） | なし（Tot = 全複体 G10 の隣） | §3.2 |
 | G-A5-3 | 完全化（colim_φ と完備化）と完備テンソルの可換性 | G-A4-2・G-A2-3 の隣 | §3.3・§3.5 |
 | G-A5-4 | Thm 3.10 の関手版：完全 prism ↔ perfectoid 環の圏同値（Hom は Lemma 4.8） | `Prism/Perfectoid`、`PerfectPrismHomLift`（要確認） | §2.1 |
