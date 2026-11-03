@@ -8,6 +8,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
+public import SerrePositivity.InfinityCategories.F2.Presentable.SiftedInfinity
 
 /-!
 # 係数制限の ∞ 関手 f_* : D(T) → D(S)（基盤待ち、M13）
@@ -84,14 +85,27 @@ def cAlgRestrictScalars_id : FunctorIso (cAlgRestrictScalars (RingHom.id S)) (�
 
 /-! ## 一般の補題（11-03、BS-D2 停止点 1 の A4 の「ScalarRestriction へ」三件の一般形） -/
 
-/-- 概要：係数制限は余極限錐を保つ（f_* は左随伴 f^* をもつだけでなく、余誘導 Hom_S(T, −) を右随伴にもつので極限も余極限も保つ。dg 模型では忘却が余極限を変えない）。
-方針：dg 模型で忘却関手は余極限を保つ；nerve に移す。
-規約：基盤待ち。A4 の `restrictFrobeniusTowerColimit`（完全基底の φ_A は同型なので特に）はこの特別な場合。
-使われ方：A4 の塔の余極限。 -/
-theorem cAlgRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{u + 1}} {F : K ⟶ CAlg_R T}
+/-- 概要：CAlg の係数制限は **sifted** 余極限錐を保つ（sifted 余極限は台の加群で計算され、加群の係数制限は全ての余極限を保つ）。
+**任意の余極限では偽**（BS-D2 の D2-01、11-03）：空図式でも ℤ → F₂ に沿う制限は始対象を保たない（CAlg_{F₂} の始対象 F₂ の制限は CAlg_ℤ の始対象 ℤ ではない）。
+一般に余積 ⊗_T は ⊗_S にならない。
+方針：dg 模型で忘却は sifted 余極限を保つ；nerve に移す。
+規約：基盤待ち。K は `IsSiftedInfinity`（F2/Presentable/SiftedInfinity）。A4 の塔（ℕ 添字、filtered）はこの場合。押し出しの保存は f が同型のときだけ
+（A7：完全 prism の Frobenius。同型に沿う制限は同値）。
+使われ方：A4 の塔の余極限、A7 の G-A7-4。 -/
+theorem cAlgRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{u + 1}} [IsSiftedInfinity K] {F : K ⟶ CAlg_R T}
     (c : JoinCocone F) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone (cAlgRestrictScalars f) c) := by
-  sorry -- 基盤待ち：忘却は余極限を保つ
+  sorry -- 基盤待ち：sifted 余極限は台で計算される
+
+/-- 概要：f が環同型なら CAlg の係数制限は同値で、全ての余極限錐（押し出し・始対象を含む）を保つ。
+方針：逆の制限と `cAlgRestrictScalars_comp`・`_id` で同値。
+規約：基盤待ち。A7 の完全 prism の φ_A に使う。
+使われ方：A7 `frobeniusColimit_relativeTensor`。 -/
+theorem cAlgRestrictScalars_isColimitCone_of_bijective (f : S →+* T) (hf : Function.Bijective f)
+    {K : SSet.{u + 1}} {F : K ⟶ CAlg_R T} (c : JoinCocone F) (hc : IsColimitCone c) :
+    IsColimitCone (mapJoinCocone (cAlgRestrictScalars f) c) := by
+  sorry -- 基盤待ち
+/-- 概要：D(−) の係数制限は**全ての**余極限錐を保つ（加群の忘却は左随伴 f^* と右随伴（余誘導）の両方をもつ）。CAlg 版と違い空図式・余積も保つ。 -/
 theorem derivedInfinityRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{u + 1}} {F : K ⟶ derivedInfinityCategory T}
     (c : JoinCocone F) (hc : IsColimitCone c) :
     IsColimitCone (mapJoinCocone (derivedInfinityRestrictScalars f) c) := by

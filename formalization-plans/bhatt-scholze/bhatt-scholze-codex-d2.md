@@ -51,3 +51,7 @@
   一般形を `ScalarRestriction.lean` に置いた（27bbde06d：`cAlgRestrictScalars_isColimitCone`・`derivedInfinityRestrictScalars_completion`・`cAlgRestrictScalars_h0`）。
   A2 の名前 3 件（`completeCAlgInclusion`・`reflectCompleteCAlg`・`modPrismFunctor`）は BS-D4（A2）で確定。
 - 次：停止点 2（A7）。
+- 第 3 部（b682bd4a4、**停止点 2 完了・検収済み**）：A7 の 4 ファイル 22 件。Prop 8.13 は完備 CAlg の押し出しからの指定比較射の可逆性、Cor 8.14 は F(η_S) = η_P を先に置いて乗法との一致。
+  A2 待ちの仮置き 5（sifted 延長、A/d ≃ R に沿う基底移送、animated Frobenius、Fil₀ の始域の E∞ 実現、Fil₀ の単位射）。**D2-01**：`cAlgRestrictScalars_isColimitCone` は任意の図式では偽
+  （空図式で ℤ → F₂）→ sifted 図式に限定し、同型に沿う制限の全余極限保存を別補題に（ScalarRestriction.lean、design-status §5）。
+- 次：停止点 3（A8 の残り）。
