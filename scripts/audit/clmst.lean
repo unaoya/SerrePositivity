@@ -8,48 +8,27 @@ Run from the repository root: lake env lean scripts/audit/clmst.lean
 -/
 import SerrePositivity.CLMST.Algebra
 import SerrePositivity.CLMST.AllModuleTorVanishing
-import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 import SerrePositivity.CLMST.CyclicLengthBound
-import SerrePositivity.BhattScholze.Andre.TorDescent
-import SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor
 import SerrePositivity.CLMST.KoszulAnnihilation
-import SerrePositivity.CLMST.ParameterQuotientLength
-import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.Consequences
-import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
 import SerrePositivity.CLMST.ParameterPowerLength
-import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
-import SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision
-import SerrePositivity.CommutativeAlgebra.ModPHypersurfaceGrowth
-import SerrePositivity.HomologicalAlgebra.DerivedCompleteCommonModel
-import SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient
-import SerrePositivity.BhattScholze.PerfectoidIdeal.Roots
-import SerrePositivity.BhattScholze.PerfectoidIdeal.Tor
-import SerrePositivity.BhattScholze.Perfectoidization.Cone
-import SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.AIC
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.StandardSquare
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.GeneralRank
-import SerrePositivity.HomologicalAlgebra.FiniteFreeComparison
+import SerrePositivity.CLMST.ParameterQuotientLength
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Consequences
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.ConstantRank
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.StandardSquare
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.Uniform
-import SerrePositivity.CommutativeAlgebra.Localization.Away
-import SerrePositivity.BhattScholze.Semiperfectoid.Product
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.GeneralRank
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.Proof
-import SerrePositivity.BhattScholze.Semiperfectoid.QuotientPerfectoidization
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Targets
-import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram
-import SerrePositivity.CommutativeAlgebra.RankLocus
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.AIC
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ClosedSides
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ComponentExcision
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram
 import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.TargetComparison
-import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison
-import SerrePositivity.CommutativeAlgebra.RootTower.StageModPLength
+import SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Targets
 
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
-  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.CLMST.Algebra, `SerrePositivity.CLMST.AllModuleAlmostTor, `SerrePositivity.CLMST.AllModuleTorFromBS, `SerrePositivity.CLMST.Almost, `SerrePositivity.CLMST.AlmostLength, `SerrePositivity.CLMST.AndrePerfectoidIdealTorDescent, `SerrePositivity.CLMST.AndrePerfectoidizationTorDescent, `SerrePositivity.CLMST.AndreTorDescent, `SerrePositivity.CLMST.BasicSetup, `SerrePositivity.CLMST.CanonicalExcisionTorInput, `SerrePositivity.CLMST.CohomologyVanishing, `SerrePositivity.CLMST.CompletedCokernelFiniteEuler, `SerrePositivity.CLMST.CompletedCokernelKoszul, `SerrePositivity.CLMST.CompletedCokernelLength, `SerrePositivity.CLMST.CompletedParameterFiniteness, `SerrePositivity.CLMST.CompletedSourceLength, `SerrePositivity.CLMST.CompletedStageBaseChange, `SerrePositivity.CLMST.CompletedTargetLength, `SerrePositivity.CLMST.CompletedTensorIsogeny, `SerrePositivity.CLMST.CompletedTowerAllModuleTor, `SerrePositivity.CLMST.ConditionalCohomologyFromPowerTorsion, `SerrePositivity.CLMST.ConditionalCohomologyVanishing, `SerrePositivity.CLMST.Corollary404, `SerrePositivity.CLMST.CyclicFactorReduction, `SerrePositivity.CLMST.CyclicLength, `SerrePositivity.CLMST.CyclicNormalizedBound, `SerrePositivity.CLMST.CyclicPLength, `SerrePositivity.CLMST.CyclicPPowerLength, `SerrePositivity.CLMST.CyclicPerfectoidization, `SerrePositivity.CLMST.CyclicRootEstimate, `SerrePositivity.CLMST.CyclicTorsionComparison, `SerrePositivity.CLMST.CyclicUnitLength, `SerrePositivity.CLMST.EtaleLocus, `SerrePositivity.CLMST.FiniteFreeConeIsogeny, `SerrePositivity.CLMST.FiniteStageKoszulAnnihilator, `SerrePositivity.CLMST.Inputs.AlmostLength, `SerrePositivity.CLMST.Inputs.BasicSetup, `SerrePositivity.CLMST.Inputs.CohomologyVanishing, `SerrePositivity.CLMST.Inputs.ParameterLength, `SerrePositivity.CLMST.Inputs.PerfectoidIsogeny, `SerrePositivity.CLMST.IsogenyDescent, `SerrePositivity.CLMST.KLAicTorFromExcision, `SerrePositivity.CLMST.KLAllModule, `SerrePositivity.CLMST.KLCanonicalSingleTriangleBridge, `SerrePositivity.CLMST.KLCohomologyFromExcision, `SerrePositivity.BhattScholze.KLFiniteComparisonExcision, `SerrePositivity.CLMST.KLOriginalTorFromExcision, `SerrePositivity.CLMST.ModPHypersurfaceGrowth, `SerrePositivity.CLMST.NonunitIsogeny, `SerrePositivity.CLMST.NormalizedAlmostLength, `SerrePositivity.CLMST.ParameterFormulaDescent, `SerrePositivity.CLMST.ParameterLastPowerLength, `SerrePositivity.CLMST.ParameterLength, `SerrePositivity.CLMST.PerfectoidCokernel, `SerrePositivity.CLMST.PerfectoidCokernelEuler, `SerrePositivity.CLMST.PerfectoidEtaleCommonCover, `SerrePositivity.CLMST.PerfectoidFinitePresentationCommonModel, `SerrePositivity.CLMST.PerfectoidFiniteProductTor, `SerrePositivity.CLMST.PerfectoidFrobeniusComparison, `SerrePositivity.CLMST.PerfectoidIdealCompletedMul, `SerrePositivity.CLMST.PerfectoidIdealExcisionTor, `SerrePositivity.CLMST.PerfectoidIdealRoots, `SerrePositivity.CLMST.PerfectoidIdealTorComparison, `SerrePositivity.CLMST.PerfectoidIdealTorCover, `SerrePositivity.CLMST.PerfectoidIdealTorRoots, `SerrePositivity.CLMST.PerfectoidIdealTorTransport, `SerrePositivity.CLMST.PerfectoidIsogeny, `SerrePositivity.CLMST.PerfectoidizationCone, `SerrePositivity.CLMST.PerfectoidizationExcisionComparison, `SerrePositivity.CLMST.PerfectoidizationImageTorComparison, `SerrePositivity.CLMST.Prop247AicRankAssembly, `SerrePositivity.CLMST.Prop247AicRankCoefficients, `SerrePositivity.CLMST.Prop247AicRankImages, `SerrePositivity.CLMST.Prop247AndreBase, `SerrePositivity.CLMST.Prop247BaseChange, `SerrePositivity.CLMST.Prop247CanonicalRankDescent, `SerrePositivity.CLMST.Prop247CommonSquare, `SerrePositivity.CLMST.Prop247Cone, `SerrePositivity.CLMST.Prop247ConeComparison, `SerrePositivity.CLMST.Prop247ConstantRankExcision, `SerrePositivity.CLMST.Prop247CoveredDescent, `SerrePositivity.CLMST.Prop247ExcisionLocal, `SerrePositivity.CLMST.Prop247FiniteComparisonValuation, `SerrePositivity.CLMST.Prop247FiniteFreeComparison, `SerrePositivity.CLMST.Prop247GeneralRank, `SerrePositivity.CLMST.Prop247IdempotentQuotient, `SerrePositivity.CLMST.Prop247LocalComparison, `SerrePositivity.CLMST.Prop247ProductComponents, `SerrePositivity.CLMST.Prop247ProductUniversality, `SerrePositivity.CLMST.Prop247Proof, `SerrePositivity.CLMST.Prop247QuotientPerfectoidization, `SerrePositivity.CLMST.Prop247RankAIC, `SerrePositivity.CLMST.Prop247RankAssembly, `SerrePositivity.CLMST.Prop247RankBaseChange, `SerrePositivity.CLMST.Prop247RankBaseChangeDiagram, `SerrePositivity.CLMST.Prop247RankClosedSides, `SerrePositivity.CLMST.Prop247RankCompleteness, `SerrePositivity.CLMST.Prop247RankComponentExcision, `SerrePositivity.CLMST.Prop247RankCone, `SerrePositivity.CLMST.Prop247RankData, `SerrePositivity.CLMST.Prop247RankImages, `SerrePositivity.CLMST.Prop247RankLoci, `SerrePositivity.CLMST.Prop247RankPrincipal, `SerrePositivity.CLMST.Prop247RankProduct, `SerrePositivity.CLMST.Prop247RankProductAway, `SerrePositivity.CLMST.Prop247RankProductUniversality, `SerrePositivity.CLMST.Prop247RankSourceValuation, `SerrePositivity.CLMST.Prop247RankTargetComparison, `SerrePositivity.CLMST.Prop247RankTargets, `SerrePositivity.CLMST.Prop247RankTransport, `SerrePositivity.CLMST.Prop247SourceComparison, `SerrePositivity.CLMST.Prop247StandardCone, `SerrePositivity.CLMST.Prop247StandardSquare, `SerrePositivity.CLMST.Prop247TargetComparison, `SerrePositivity.CLMST.Prop247TensorUnit, `SerrePositivity.CLMST.Prop247Uniform, `SerrePositivity.CLMST.Prop247UniformStandard, `SerrePositivity.CLMST.RPerfdCohomologyInputs, `SerrePositivity.CLMST.RPerfdTorBaseChange, `SerrePositivity.CLMST.RootFiltrationBound, `SerrePositivity.CLMST.SelectedParameterEuler, `SerrePositivity.CLMST.SourceEulerEvaluation, `SerrePositivity.Section2.StageAlgebra, `SerrePositivity.CLMST.StageBaseChange, `SerrePositivity.CLMST.StageDimension, `SerrePositivity.CLMST.StageFiniteness, `SerrePositivity.CLMST.StageLocality, `SerrePositivity.CLMST.StageModPImageLength, `SerrePositivity.CLMST.StageModPLengthBound, `SerrePositivity.CLMST.StageParameterChange, `SerrePositivity.CLMST.StagePowerMembership, `SerrePositivity.CLMST.StageResidueLength, `SerrePositivity.CLMST.StageTensor, `SerrePositivity.CLMST.TensorIsogeny, `SerrePositivity.CLMST.TensorOrder]
+  let mods : Std.HashSet Name := Std.HashSet.ofList [`SerrePositivity.CLMST.Algebra, `SerrePositivity.CLMST.AllModuleTorVanishing, `SerrePositivity.CLMST.CyclicLengthBound, `SerrePositivity.CLMST.KoszulAnnihilation, `SerrePositivity.CLMST.ParameterPowerLength, `SerrePositivity.CLMST.ParameterQuotientLength, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Consequences, `SerrePositivity.CLMST.PerfectoidizationIsogeny.ConstantRank, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.StandardSquare, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Descent.Uniform, `SerrePositivity.CLMST.PerfectoidizationIsogeny.GeneralRank, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Proof, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.AIC, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ClosedSides, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.ComponentExcision, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Diagram, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.TargetComparison, `SerrePositivity.CLMST.PerfectoidizationIsogeny.Rank.Targets]
   let allowedFiles : List String := []
   let std : List Name := [`propext, `Classical.choice, `Quot.sound, `sorryAx]
   let mut count : Nat := 0
