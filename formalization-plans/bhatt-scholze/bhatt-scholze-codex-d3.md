@@ -63,3 +63,6 @@ T/IT は completionRing 経由（W9-II-15）、積の取り替えは (B×C)×_{D
   **D3-04**（Lemma 8.6 の底 Δ_T は離散でない）→ `IsDescendableOver A R B (f : SSet.Edge R B)` を基盤側に確定（df86ebb71）。**D3-05**（CAlg の係数拡大）→ `cAlgBaseChange` を
   ScalarRestriction.lean に（本コミット）。要確認 9 のうち残りは M15 の Mod_D（1）、A1-5（3）、S3 の大きい版（1）、G12（1）、BS-D4（2）。
 - 次：停止点 3（A6 の excision：SheafOfSetsExcision 13、Excision 5、PerfectoidFiniteProduct 1）。
+- 第 3 部（3b026a1af、**停止点 3 完了・BS-D3 終了・検収済み**）：SheafOfSetsExcision 13、Excision 6、PerfectoidFiniteProduct 1。**D3-06**（延長は比較同値の `.functor`）、
+  **D3-07**（S8 の離散入口 `IsLocalEquivSet`・`sectionsOf`・`sectionsOf_eq_limit_elements`・`sections_localEquiv_iso` を基盤側に型つきで）。Cor 8.12 の証明は `sectionsOf_pushout`
+  （引き戻しの述語）待ち。**BS-D3 全体 88 件（`True` 81、環の型 7）。** 残りは A1〜A3（BS-D4）と基盤（W2b 後）。

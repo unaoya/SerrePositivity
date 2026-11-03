@@ -56,7 +56,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite（BS-D1 停止点 1 済、11-03：`True` 0 件。D1-01 sieve の圏、D1-02 K₁ ⊔ K_ext、S1-E は基盤待ち） | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
 | A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 済、11-03：`True` 0 件。三引用、G-A6-1、tilt（D1-03 の `tiltRing`）、G-A6-4〜7、Prop 8.10 は増大交代和複体の完全性、O は `CAlg_R (ULift ℤ)` 値、O と Hom の有限積保存、Cor 8.11 は affPerfd_κ/S 上の可逆な辺） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
-| A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
+| A6-4 Cor 8.12・E3 の excision（BS-D3 停止点 3 済：Excision の `True` 0 件。Cor 8.12 は界面の IsPullbackSquare、証明は S8 `sectionsOf_pushout` の引き戻し述語待ち） | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization（BS-D2 停止点 2 済、11-03：`True` 0 件。Prop 8.13 は完備 CAlg の押し出しからの指定比較射の可逆性。A2 待ちの仮置き 5） | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |
 | A7-2 Cor 8.14・E3 の universal | a7-design §2.3 | A7/DiscreteCore（G-A7-5、A5 より先）、A7/UniversalProperty（BS-D2 停止点 2 済：F(η_S) = η_P を先に置き、自己テンソルの同値と単位の合成＝乗法） | 済（W9 続き 6。単位の整合性は G-A7-8） | A（`IsPerfectoidization`、`completionRing` の普遍性）、A5-2 の芯の共有 |
@@ -67,7 +67,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A9-1 界面の組み立て・E3 の消去 | a9-design | A9/Assembly | 八欄の対応は W9 第 3 部続き 2 で ○ | A4〜A8 の全欄。Inputs の書き換えは中身の段階。**前提：E3 非依存の import 順（W9-III-08、CompletedTensor の分割は 2a 後に調整役）** |
 | A1-5 Thm 6.4 の多項式・mod p | a1-design §9 | A1/DeRhamComparisonPoly | 未（a1 §9.5） | E（黒箱を de Rham 形に、D68）、D（Lemma 4.20、A0-4）、A1-4 |
 
-骨組みの規模（11-03、BS-D2 後）：51 本、約 8,500 行（結論が `True` の名前つき宣言 187）。BS-D1（49 件）・BS-D2（83 件：A0 残り・A4・A7・A8）で A0・A4・A6/ArcSite・ArcSheafProperty・A7・A8 の仮置きを具体的な型にした（報告 `report-codex-d1.md`・`report-codex-d2.md`、D1-01〜03・D2-01〜02 は設計側で解決）。残りは A5（60）・A6 の excision（19）→ BS-D3、A1〜A3（62）→ BS-D4、基盤（Sheaves・DerivedGeneral・Shared、42）→ W2b 後。
+骨組みの規模（11-03、BS-D3 後）：51 本、約 10,200 行（結論が `True` の名前つき宣言 114）。BS-D1（49）・BS-D2（83）・BS-D3（88）で A0・A4〜A8 の仮置みを具体的な型にした（報告 `report-codex-d1/2/3.md`、D1-01〜03・D2-01〜02・D3-01〜07 は設計側で解決）。残りは A1〜A3（62）→ BS-D4、基盤（Shared 30・Sheaves 9・DerivedGeneral 13）→ W2b 後。
 
 ## 2. 要確認の分類
 
