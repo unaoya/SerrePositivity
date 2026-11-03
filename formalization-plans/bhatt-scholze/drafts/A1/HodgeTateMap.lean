@@ -26,8 +26,12 @@ Thm 6.3・Cor 4.12（A1-4）、Cor 5.5（A1-3）、A2 の HT filtration、A5 の
 @[expose] public section
 noncomputable section
 universe u
+open CategoryTheory SSet
+open scoped Simplicial
 
 namespace SerrePositivity.BhattScholze.Prismatic
+
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity SerrePositivity.Cosimplicial
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (r : ℕ)
@@ -38,31 +42,68 @@ variable (r : ℕ)
 使われ方：以下の全て。
 決定（design-status.md (B)）：R := `MvPolynomial (Fin r) (A ⧸ P.ideal)` の一変数 p 進完備化の H⁰（E3 の `completionRing` と同じ道具）。
 A0 の `cechAlexanderAffine` と同じ定義にする。 -/
-def affineAlgebra : Type u := sorry
+abbrev affineAlgebra := prismPolynomialCompletion P (Fin r)
 
 /-- 概要：Ō_{R/A} の模型：余単体的環 C^•/dC^•（Rem 4.19 の小さい模型）。
 方針：A0 の `cechAlexanderAffine` に `reducedStructurePresheaf` を当てる。
 規約：各項は R 代数で、構造射は R 代数の射。
 使われ方：H^*、cup 積、Bockstein。 -/
-def reducedModel : True := trivial -- 要確認：CosimplicialObject CommRingCat の形に
+abbrev htCech := cechAlexanderAffine P hP r (cutoff A (affineAlgebra P r)) le_rfl
+abbrev htRings : CosimplicialObject CommRingCat.{u} :=
+  polyCosimplicialAlgebra P hP r ⋙ Under.forget (CommRingCat.of A)
 
-/-- 概要：H^i(Ō_{R/A}) の模型 := H^i(Tot(C^•/d))（非正規化、cup 積つき）。
-方針：`Cosimplicial.cohomology` と `cohomologyCup`。
-規約：次数付き可換（`cohomologyCup_comm`）、R 代数。
-使われ方：η^* の標的。 -/
-def hodgeTateCohomology' (i : ℕ) : Type u := sorry
+def htBase : (Functor.const SimplexCategory).obj (CommRingCat.of A) ⟶ htRings P hP r where
+  app n := CommRingCat.ofHom ((htCech P hP r).obj n).toHom.toRingHom
+  naturality := by sorry -- 各面・退化射は A 上の prism 射
 
-/-- 概要：Bockstein β : H^i(Tot(C^•/d)) → H^{i+1}(Tot(C^•/d))（0 → C/d →d→ C/d² → C/d → 0 から）。
-方針：`Cosimplicial.CosimplicialShortExact.bockstein`。d は各 C^n で正則（envelope は prism）。
-規約：向き付きなので捻りなし。
-使われ方：η^1、dg 環の微分。 -/
-def bockstein (i : ℕ) : hodgeTateCohomology' P r i → hodgeTateCohomology' P r (i + 1) := sorry
+abbrev htGenerator (n : SimplexCategory) : (htRings P hP r).obj n := (htBase P hP r).app n P.generator
+theorem htGenerator_nat {m n : SimplexCategory} (θ : m ⟶ n) :
+    (htRings P hP r).map θ (htGenerator P hP r m) = htGenerator P hP r n := by
+  sorry -- htBase の自然性
+theorem htGenerator_regular (n : SimplexCategory) :
+    Function.Injective (fun x => htGenerator P hP r n * x) := by
+  sorry -- 基底の d は対象 prism の生成元の単元倍
+abbrev reducedModel := quotPow (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r) 1
+
+abbrev hodgeTateCohomology' (i : ℕ) := cohomology (reducedModel P hP r) i
+abbrev htSequence := regularShortExact (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r)
+  (htGenerator_regular P hP r) A (htBase P hP r)
+
+def htModuleCohomologyIso (i : ℕ) :
+    let C := htRings P hP r
+    let d := htGenerator P hP r
+    let M := toModules A (reducedModel P hP r) (by sorry) -- htBase の mod d
+    hodgeTateCohomology' P hP r i ≃+ (CosimplicialObject.alternatingCofaceMapComplex.obj M).homology i := by
+  sorry -- cohomologyEquivHomology と ModuleCat→AddCommGrpCat が homology を保つ同型
+
+def bockstein (i : ℕ) : hodgeTateCohomology' P hP r i →+ hodgeTateCohomology' P hP r (i+1) := by
+  let β := regularBockstein (htRings P hP r) (htGenerator P hP r) (htGenerator_nat P hP r)
+    (htGenerator_regular P hP r) A (htBase P hP r) i
+  exact (htModuleCohomologyIso P hP r (i+1)).symm.toAddMonoidHom.comp
+    (β.hom.toAddMonoidHom.comp (htModuleCohomologyIso P hP r i).toAddMonoidHom)
 
 /-- 概要：η^0 : R → H^0（R → C^0/dC^0 の合成）。
 方針：R → C^0/dC^0 は A0 の `sec`。余輪体。
 規約：環の射。
 使われ方：H^* の R 代数構造、η^1。 -/
-def hodgeTateMapZero : True := trivial -- 要確認：affineAlgebra →+* hodgeTateCohomology' P r 0
+instance : CommRing (hodgeTateCohomology' P hP r 0) := by
+  sorry -- 次数零の cohomology を二つの余面の等化部分環に移送。積は cohomologyCup
+def htZeroCycles := ((reducedModel P hP r).map (SimplexCategory.δ (0 : Fin 2))).hom.eqLocus
+  (((reducedModel P hP r).map (SimplexCategory.δ (1 : Fin 2))).hom)
+def htZeroIso : hodgeTateCohomology' P hP r 0 ≃+* htZeroCycles P hP r := by
+  sorry -- cohomologyEquivHomology の次数 0 では境界は零、cup は同じ項での積
+def htSec (n : SimplexCategory) : affineAlgebra P r →+* (reducedModel P hP r).obj n := by
+  sorry -- ((htCech P hP r).obj n).sec を Q.ideal=(d) で quotPow の商に移す
+
+def hodgeTateMapZero : affineAlgebra P r →+* hodgeTateCohomology' P hP r 0 :=
+  (htZeroIso P hP r).symm.toRingHom.comp
+    ((htSec P hP r ⦋0⦌).codRestrict _ (by sorry)) -- sec は余面に自然
+
+/-- R 作用は η⁰ の像との左 cup 積。 -/
+def htModule (i : ℕ) : Module (affineAlgebra P r) (hodgeTateCohomology' P hP r i) := by
+  sorry -- η⁰(a)∪z。cup の単位・結合・加法性と次数 0 の左単位律
+
+local instance (i : ℕ) : Module (affineAlgebra P r) (hodgeTateCohomology' P hP r i) := htModule P hP r i
 
 /-- 概要：η^1 : Ω^1_{R/(A/d)} → H^1、dX_j ↦ β(η^0 X_j)、R 線形に延ばす（Ω^1 は dX_j 上自由）。
 方針：`DeRham.dX` の像を指定して線形に延ばす。
