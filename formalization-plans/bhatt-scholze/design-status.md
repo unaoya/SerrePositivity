@@ -55,7 +55,7 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 | A5-3 descendability・Lemma 8.6 | a5-design §2.4・§3.5 | Shared/Descendable、A5/StrongDescent | 済（a5 §8 の 6 は W9 続き 6 の G-A5-6′ の計算、7 は W9 ○） | G-A5-1（置き場所 `EInfinity/Descendable/`、M15）・6・12・13・15（A1-5） |
 | A6-1 arc site・cover-dense | a6-design §2.1 | A6/ArcSite（BS-D1 停止点 1 済、11-03：`True` 0 件。D1-01 sieve の圏、D1-02 K₁ ⊔ K_ext、S1-E は基盤待ち） | 済（a6 §9。cover-dense は前段 G-A6-11 つき、W9-II-16） | A（Mathlib `IsCoverDense`・`SmallModel`）、G-A6-3、G-A6-11（R₀ の perfectoid 性） |
 | A6-3 集合の層の等式・perfd の有限積 | a6-design §3.2 の 1〜4 | A6/SheafOfSetsExcision | 未（a6 §8 の 5・6） | A（Mathlib `Sheaf`・`sheafEquiv`）、G-A6-2・9 |
-| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 途中：三引用と G-A6-1 は具体化済み、D1-03 の tilt は解決済み、G-A6-5〜7・Prop 8.10・有限積保存は未） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
+| A6-2 Prop 8.10・三つの引用 | a6-design §2.2・§3.1 | A6/ArcSheafProperty（BS-D1 停止点 2 済、11-03：`True` 0 件。三引用、G-A6-1、tilt（D1-03 の `tiltRing`）、G-A6-4〜7、Prop 8.10 は増大交代和複体の完全性、O は `CAlg_R (ULift ℤ)` 値、O と Hom の有限積保存、Cor 8.11 は affPerfd_κ/S 上の可逆な辺） | 済（W9 続き 5・6。O は CAlg_ℤ 値、W9-II-22） | E′（G-A6-1a・1b `sorry`、1c は証明）、G-A6-4〜7 |
 | A6-4 Cor 8.12・E3 の excision | a6-design §2.3・§3.2 の 5・6 | A6/Excision | 未（a6 §8 の 4） | C（S8）、G-A6-10 |
 | S8 空間値の層・局所性 | a6-design §2.4 | Sheaves/SpaceValued | — | C（置き場所は M12e：Sheaves/SpaceValued/・Sheaves/Discrete/・F2/。前提 G13 と S4 非安定版） |
 | A7-1 Def 8.2 の animated 版・(5) 相対版・Prop 8.13 | a7-design §2.1・§2.2 | A7/AnimatedDomain（G-A7-1、A5 より先）、A7/AnimatedPerfectoidization | 済（W9 続き 6） | C（G-A7-1・2：P_Σ の押し出し・完備化）、G-A7-4 |

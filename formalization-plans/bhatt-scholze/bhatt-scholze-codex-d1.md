@@ -101,3 +101,9 @@
 - **次（停止点 2 の残り）**：G-A6-5〜7（`witt_exact_of_perfect`・`modD_exact_of_regular`・`untilt_rankOneValuationRing`・`tilt_rankOneValuationRing`・
   `tilt_arcCoverFamily`・`cech_completion_kills_inverted`）、Prop 8.10（`cech_exact_of_arcCover_perfectoid`・`structurePresheaf_isArcSheaf`・`homPresheaf_isArcSheaf`・
   `perfectoidization_eq_arcCohomology`）、O と Hom(T, −) の `PreservesFiniteRingProducts`。tilt は `tiltRing`・`tiltMap` で述べる。
+- **第 5 部（停止点 2 完了、57141fc91、検収済み）**：ArcSheafProperty の残り 10 件を具体化。G-A6-5 は増大余単体的な完全環の図式に levelwise の W_n・W と d の商、
+  G-A6-6 は a = d mod p の分岐込み（完備化と体の拡大は別補題 `arcValuation_completeAt`・`arcValuation_extendField`）、G-A6-7 は相対余脈体の次数ごとの a 進完備化、
+  Prop 8.10 は一点被覆の相対 Čech 余脈体を次数ごとに完備化した増大交代和複体の完全性、O は `CAlg_R (ULift ℤ)` 値で `structurePresheaf_isArcSheaf : Sheaves.IsSheaf (arcTopologyPerfd …)`、
+  Hom(T, −) は `Presieve.IsSheaf`、有限積保存は `PreservesFiniteRingProductsOnPerfd` で O・Hom の二件、Cor 8.11 は StructuredArrow の slice 位相上の RΓ への可逆な辺。
+  零環を含む箇所では `CharP` の代わりに `(p : B) = 0 ∧ PerfectRing B p`。要確認 0 件、新しい設計差なし。
+- **次**：停止点 3（`drafts/A8/Stratification.lean`、Lemma 10.12）、停止点 4（A0 の三本）。
