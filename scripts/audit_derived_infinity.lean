@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory
 import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion
@@ -8089,3 +8090,5 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.tensorWith
 #print axioms SerrePositivity.InfinityCategories.tensorWith_vertex
 #print axioms SerrePositivity.InfinityCategories.tensorWithSymmetry
+
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategory_isPresentable

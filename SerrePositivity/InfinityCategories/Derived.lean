@@ -2073,6 +2073,7 @@ public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeSimplexL
 public import SerrePositivity.InfinityCategories.Derived.PinchedRelativeTopLifting
 public import SerrePositivity.InfinityCategories.Derived.PinchedTopComparison
 public import SerrePositivity.InfinityCategories.Derived.PinchedTopRhsFaces
+public import SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory
 public import SerrePositivity.InfinityCategories.Derived.PullbackComparison
 public import SerrePositivity.InfinityCategories.Derived.PullbackCriterion
 public import SerrePositivity.InfinityCategories.Derived.PullbackDiagramHomotopy
