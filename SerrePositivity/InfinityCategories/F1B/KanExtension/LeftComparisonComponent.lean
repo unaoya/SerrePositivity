@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.ColimitRelativeBoundary
 
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.CoconeFamily

@@ -1,4 +1,7 @@
 module
+public import Mathlib.CategoryTheory.Monoidal.Closed.Basic
+public import Mathlib.CategoryTheory.Monoidal.Cartesian.Basic
+public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 public import Mathlib.Combinatorics.Quiver.ReflQuiver
 public import Mathlib.CategoryTheory.Limits.Types.Pushouts
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits

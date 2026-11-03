@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredRetracts
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotal
 public import SerrePositivity.InfinityCategories.F2.Ind.CofinalUniverseLift

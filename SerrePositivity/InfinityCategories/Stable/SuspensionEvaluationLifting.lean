@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams
+public import SerrePositivity.InfinityCategories.Stable.SpanFamilies
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 
 /-! # Suspension 図式の始点評価の境界充填

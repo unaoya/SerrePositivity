@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.LimitMappingComparison
 public import SerrePositivity.InfinityCategories.F2.Presentable.MappingOpposite

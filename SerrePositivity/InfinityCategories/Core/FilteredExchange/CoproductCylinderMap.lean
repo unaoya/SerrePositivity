@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductInternalHom
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTotalDetection
 
 public import SerrePositivity.InfinityCategories.F2.Compact.CoconeLegValueComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LargeTotalCoconeUnit

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
 
 public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
 

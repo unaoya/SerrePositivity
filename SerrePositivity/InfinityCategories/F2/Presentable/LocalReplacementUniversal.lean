@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.EdgeTargetCocone
 public import SerrePositivity.InfinityCategories.Core.ColimitCoconeFamily

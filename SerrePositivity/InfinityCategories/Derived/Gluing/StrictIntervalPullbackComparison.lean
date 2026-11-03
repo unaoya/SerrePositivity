@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKan
 public import SerrePositivity.InfinityCategories.Derived.Gluing.IntervalPathPullbackCoordinates
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence

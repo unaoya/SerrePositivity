@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.CoconeFamily
 public import SerrePositivity.InfinityCategories.Core.CoconeTransportPrism
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 

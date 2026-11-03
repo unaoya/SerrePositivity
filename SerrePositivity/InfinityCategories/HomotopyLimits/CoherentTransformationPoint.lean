@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
 
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence

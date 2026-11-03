@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
+public import SerrePositivity.InfinityCategories.Core.InitialEquivalence
 
 public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Kan.InnerAnodyneReplacement

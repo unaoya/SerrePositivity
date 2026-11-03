@@ -1,4 +1,5 @@
 module
+public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismTetrahedra
 public import SerrePositivity.InfinityCategories.PinchedHom.Basic

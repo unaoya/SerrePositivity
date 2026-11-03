@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteShapes
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.LiftedDiscreteVertexMap
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg

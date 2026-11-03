@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitCoconeRestriction
 
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinFiberCocone
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeJoinLocalCone

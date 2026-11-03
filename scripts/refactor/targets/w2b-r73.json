@@ -17,6 +17,31 @@
     "downstream_imports": {
       "SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackReplacementCone": [
         "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentVertices"
+      ],
+      "SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackLimit": [
+        "SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentVertices"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Compact.LimitComparisonApex": [
+        "SerrePositivity.InfinityCategories.Core.EquivalenceLimits"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Ind.ArrowInterpolationExtension": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Ind.ConeTensorExtension": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanBaseCoordinates": [
+        "SerrePositivity.InfinityCategories.Stable.FiniteShapes"
+      ],
+      "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteCoherentProductSmallFiber": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteKanProductComparison"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.SuspensionSquare": [
+        "SerrePositivity.InfinityCategories.Stable.Definition"
+      ],
+      "SerrePositivity.KST.SConstruction.CofiberCompletionLifting": [
+        "SerrePositivity.InfinityCategories.Stable.SpanFamilies",
+        "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams"
       ]
     }
   },
@@ -473,6 +498,11 @@
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.JoinTensor",
         "SerrePositivity.InfinityCategories.Core.PrecompositionLifting"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Ind.RelativeCommaCoconeComparison": [
+        "SerrePositivity.InfinityCategories.Core.InnerPullback"
       ]
     }
   },
@@ -2072,6 +2102,7 @@
     "note": "§3.0 静的草案。imports は宣言依存からの縮小候補で、内部ビルド・保存検査は未実施。宣言本文と名前空間は変更しない。",
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.CoproductCylinderMap": [
+        "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoproductInternalHom"
       ]
     }
@@ -3406,6 +3437,11 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredHomotopyRetracts",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredInfinity"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.SmallFilteredTotalCofinal": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.FilteredRetracts"
+      ]
     }
   },
   {
@@ -3461,6 +3497,11 @@
         "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.SmallSimplicialShapes"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Compact.Definition": [
+        "SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone"
       ]
     }
   },
@@ -4476,7 +4517,10 @@
       ],
       "SerrePositivity.InfinityCategories.Core.FilteredExchange.GluedFiberDetection": [
         "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
+        "Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback",
         "Mathlib.CategoryTheory.Limits.Types.Pushouts",
+        "Mathlib.CategoryTheory.Monoidal.Cartesian.Basic",
+        "Mathlib.CategoryTheory.Monoidal.Closed.Basic",
         "Mathlib.Combinatorics.Quiver.ReflQuiver"
       ]
     }
@@ -4997,6 +5041,11 @@
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementKanComparison",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementPathIso",
         "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementSection"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Derived.Gluing.StrictIntervalPullbackComparison": [
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.IntervalReplacementKan"
       ]
     }
   },
@@ -8454,7 +8503,15 @@
     "keep": [],
     "attributes": {},
     "candidate": "R73",
-    "note": "PiCriterion を中核外の Derived へ"
+    "note": "PiCriterion を中核外の Derived へ",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison": [
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningOverMap",
+        "SerrePositivity.InfinityCategories.F2.Compact.CoconeLegValueComparison",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.CoherentFilteredTotalDetection",
+        "SerrePositivity.InfinityCategories.F2.FilteredExchange.LargeTotalCoconeUnit"
+      ]
+    }
   },
   {
     "module": "SerrePositivity.InfinityCategories.F2.FilteredExchange.PiCriterion.TotalPiCriterion",

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.CatInfinity.CatPullbackFunctorIso
 
 public import SerrePositivity.InfinityCategories.F1.CatInfinity.CorePullbackIso
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1B.CatInfinity.SquareConePostcomp
 public import SerrePositivity.InfinityCategories.Stable.FunctorFiniteLimits
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorInitial
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal

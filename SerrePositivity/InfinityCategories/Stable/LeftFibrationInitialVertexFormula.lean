@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.LeftFibrationInitialPiZero
 public import SerrePositivity.InfinityCategories.F1.PinchedLeftPiZeroVertex
 public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 public import SerrePositivity.InfinityCategories.Core.CoconeFactorization

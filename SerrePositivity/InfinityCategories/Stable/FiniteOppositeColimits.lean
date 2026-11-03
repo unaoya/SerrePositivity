@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits
 public import SerrePositivity.InfinityCategories.Stable.OppositeDiagramReturn
 public import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
 

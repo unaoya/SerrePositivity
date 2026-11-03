@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
 public import SerrePositivity.InfinityCategories.Core.CoconeFactorization
 

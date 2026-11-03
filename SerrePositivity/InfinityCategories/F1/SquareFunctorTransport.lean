@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
+public import SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion
 public import SerrePositivity.InfinityCategories.Core.Cocone
 public import SerrePositivity.InfinityCategories.Core.ConeFamily
 public import SerrePositivity.InfinityCategories.Core.Equivalence

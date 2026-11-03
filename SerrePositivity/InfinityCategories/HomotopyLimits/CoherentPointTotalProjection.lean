@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
 
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallLeftUnstraighteningFiber

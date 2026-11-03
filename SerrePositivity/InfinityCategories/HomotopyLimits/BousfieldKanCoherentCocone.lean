@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.ColimitExistenceTransfer
 
 public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentCoconeTransport

@@ -123,6 +123,14 @@
         "SerrePositivity.InfinityCategories.Core.Slice",
         "SerrePositivity.InfinityCategories.Stable.CoconeLeg"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.BinaryColimitDesc": [
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialVertexFormula": [
+        "SerrePositivity.InfinityCategories.Stable.LeftFibrationInitialPiZero"
+      ]
     }
   },
   {
@@ -431,6 +439,12 @@
     "downstream_imports": {
       "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.CoconeOfHomotopyConstant": [
         "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Ind.CoconeOfPrism": [
+        "SerrePositivity.InfinityCategories.Core.Cocone"
+      ],
+      "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionEdges": [
+        "SerrePositivity.InfinityCategories.Stable.CoconeFamily"
       ]
     }
   },
@@ -559,6 +573,14 @@
         "SerrePositivity.InfinityCategories.Core.Terminal",
         "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
         "SerrePositivity.InfinityCategories.Stable.CosliceCoconeFamilyEquivalence"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Ind.PrecompositionCoconeRestriction": [
+        "SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.CoconeTransformationEquivalence"
+      ],
+      "SerrePositivity.InfinityCategories.F2.Presentable.LocalReplacementUniversal": [
+        "SerrePositivity.InfinityCategories.F2.Presentable.LocalCoconeInitial"
       ]
     }
   },
@@ -699,6 +721,11 @@
         "SerrePositivity.InfinityCategories.Stable.CoconeFamily",
         "SerrePositivity.InfinityCategories.Stable.CoconeRestrictionOppositeFibration",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.KST.SConstruction.ColimitDiagramTransport": [
+        "SerrePositivity.InfinityCategories.Stable.PushoutShape"
       ]
     }
   },
@@ -1092,6 +1119,11 @@
     "imports": {
       "SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet": [
         "Mathlib.AlgebraicTopology.SimplicialSet.Finite"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.FiniteOppositeColimits": [
+        "SerrePositivity.InfinityCategories.Core.FiniteLimitsColimits"
       ]
     }
   },
@@ -2105,12 +2137,14 @@
         "SerrePositivity.InfinityCategories.Core.Cocone",
         "SerrePositivity.InfinityCategories.Core.ConeFamily",
         "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.Core.FunctorPointwiseLimitCriterion",
         "SerrePositivity.InfinityCategories.Core.Join",
         "SerrePositivity.InfinityCategories.Core.Limit",
         "SerrePositivity.InfinityCategories.Core.Slice",
         "SerrePositivity.InfinityCategories.Core.VertexFiber",
         "SerrePositivity.InfinityCategories.PinchedHom.Basic",
-        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation"
+        "SerrePositivity.InfinityCategories.Stable.CosliceCoconeDiagramEvaluation",
+        "SerrePositivity.InfinityCategories.Stable.TerminalBoundaryTransport"
       ]
     }
   },
@@ -2250,6 +2284,12 @@
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialBoundary",
         "SerrePositivity.InfinityCategories.Stable.RelativeInitialVertices",
         "SerrePositivity.InfinityCategories.Stable.ZeroTargetArrows"
+      ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.Stable.SuspensionEvaluationLifting": [
+        "SerrePositivity.InfinityCategories.Stable.SpanFamilies",
+        "SerrePositivity.InfinityCategories.Stable.SuspensionDiagrams"
       ]
     }
   },

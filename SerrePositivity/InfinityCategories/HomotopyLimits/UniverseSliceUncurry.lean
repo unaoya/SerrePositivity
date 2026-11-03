@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.UniverseSlices
 
 public import SerrePositivity.InfinityCategories.Core.JoinCurryHomExt
 public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness

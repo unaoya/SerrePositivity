@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.InnerPullback
 
 public import SerrePositivity.InfinityCategories.F2.Ind.FunctorIsoInverseHEq
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CoconeExistenceTransport
