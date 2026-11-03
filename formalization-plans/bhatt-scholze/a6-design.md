@@ -76,7 +76,10 @@ Lean の名前は仮。ビルドしない。
   CAlg_R 値とは書けない。F_U の元の圏 Perfd_{U/}（R → U）の上では R → U → T で CAlg_R 値に持ち上がり、極限・引き戻しは忘却 CAlg_R → CAlg_ℤ が作る（保ち反映する）ので
   E3 の型（CAlg_R の四角形）に戻せる。global な site は変えない）は arc 位相の Čech 層。S1 の生成系の補題で、
   有限 arc 被覆族 {R → R_i} について O(R) ≃ Tot(O(Čech 余脈体)) を示せばよく、Čech 余脈体は完備テンソル冪（S3 の `CechNerveData`、
-  Perfd の余積 = 完備テンソル、既存）。R → ∏ R_i =: S に置き換え（∏ R_i は perfectoid：G-A6-12 の直接証明。E3 を使う既存の `isIntegralPerfectoid_finPi` は不可、W9-III-08）、単射 arc 被覆 R → S に帰着。
+  Perfd の余積 = 完備テンソル、既存）。R → ∏ R_i =: S に置き換え（∏ R_i は perfectoid：G-A6-12 の直接証明。E3 を使う既存の `isIntegralPerfectoid_finPi` は不可、W9-III-08）、単射 arc 被覆 R → S に帰着。**D1-02（BS-D1、11-03）**：この置き換えで位相は変わる（k × k → k の二つの射影の族は有限 arc 被覆だが、その生成 sieve は一点 arc 被覆を含まない）ので、
+  「単射の生成 sieve と同じ位相」は誤り。正しくは arcTopology = K₁（一点被覆）⊔ K_ext（有限積の射影）で、任意の前層の層条件は「有限積を保つ ∧ 一点被覆の Čech 条件」
+  （`isSheaf_arc_iff_cech`、extensive 側は S1 の一般補題 S1-E）。O（CAlg_ℤ 値、環の積は CAlg の積）と Hom(T, −) は有限積を保つので、Prop 8.10 と F_T の層性は一点被覆の Čech 条件だけでよい。
+  反例（任意の前層では一点被覆だけで足りない）：二点集合に値を取る定数前層は全ての一点 Čech 条件を満たすが、零環の空族の条件 F(0) ≃ * を満たさない。
 - 離散な余単体的環の Tot は Čech 複体 0 → R → S → S ⊗̂_R S → ⋯（非正規化 Tot、A0 の決定）なので、主張は「arc 被覆 R → S の完備 Čech 複体の完全性」。
 - `homPresheaf_isArcSheaf (T)`：R ↦ Hom(T, R) は集合の arc 層：H⁰ の等化子 R = eq(S ⇉ S ⊗̂_R S) に Hom(T, −) を当てる。原典 "immediate"。
 

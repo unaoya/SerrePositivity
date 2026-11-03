@@ -231,11 +231,11 @@ theorem isSheaf_generateSieve_iff_cech {R S : AffCompl p κ} (f : R ⟶ S)
         (cechShape (arcSieveCechData p κ f))) := by
   sorry -- restriction F Q とその錐に、U の弱終性と相対 Čech データで S3 の isLimitCone_iff_restrict_cech を適用
 
-/-- 概要：(2) F が arc 層（S1 `IsSheaf (arcTopology p κ) F`）⇔ 任意の単射 arc 被覆 R → S について (1) の Čech 条件。
-方針：単射 arc 被覆（一点族）からなる coverage K を定義し `arcTopology = K.toGrothendieck` を示す（有限族 {R → R_i} は `isArcCoverFamily_prod_iff` で R → ∏R_i に
-置き換える：族の各射は ∏ を経由するので族の生成 sieve ⊆ ∏ の生成 sieve、∏ への射は族が被覆なら被覆）。S1 の `isSheaf_toGrothendieck_iff` を K に当て、(1) で Čech に移す。
-規約：任意の E 値前層について述べる（O だけではない）。(1) と (2) は別の主張（BS-D1 の報告の区別）。
-使われ方：Prop 8.10（O、CAlg_ℤ 値）、Hom(T, −) の層性（集合値）。 -/
+/-- 概要：一点 arc 被覆の coverage K₁（D1-01 の (2) の入力。**D1-02：K₁ が生成する位相は `arcTopology` より粗い**——k × k → k の二つの射影の族は有限 arc 被覆だが、
+その生成 sieve は一点 arc 被覆を一つも含まない。よって `arcTopology = K₁.toGrothendieck` は偽で、(2) は下の形に直す）。
+方針：被覆 presieve は一点 arc 被覆 f の `arcSinglePresieve`。pullback は `isArcCoverFamily_baseChange` の一点族。
+規約：—
+使われ方：`arcTopology_eq_sup`、`isSheaf_arc_iff_cech`。 -/
 def arcCoverage : Coverage (AffCompl p κ)ᵒᵖ where
   coverings X := { T | ∃ (S : AffCompl p κ) (f : X.unop ⟶ S),
     IsSingletonArcCover p κ f ∧ T = arcSinglePresieve p κ f }
@@ -243,10 +243,65 @@ def arcCoverage : Coverage (AffCompl p κ)ᵒᵖ where
     have hbound := hκ.out
     sorry -- isArcCoverFamily_baseChange の一点族を模型へ移し、相対完備テンソルの二つの脚で FactorsThruAlong を与える
 
--- 要確認：D1-02。二つの射影 k × k → k の有限被覆 sieve は一点族の位相では被覆にならない。
--- 下の等式と任意の F に対する (2) は基準の骨組みのまま。report-codex-d1.md 第2部参照。
-theorem arcTopology_eq_toGrothendieck : arcTopology p κ = (arcCoverage p κ).toGrothendieck := by sorry
-theorem isSheaf_arc_iff_cech : True := by trivial
+/-- 概要：有限族の coverage K_fam（`arcTopology` の定義そのもの）。
+方針：被覆 presieve は有限 arc 被覆族 {R → B_i} の `Presieve.ofArrows`。pullback は `isArcCoverFamily_baseChange`。
+規約：空族を含む（零環の上の空族は arc 被覆：零環から非零の付値環への環準同型はない）。
+使われ方：`arcTopology_eq_toGrothendieck_family`。 -/
+def arcFamilyCoverage : Coverage (AffCompl p κ)ᵒᵖ := sorry
+
+/-- 概要：`arcTopology = K_fam.toGrothendieck`（sInf の定義と `Coverage.toGrothendieck` の定義から。D1-02 の訂正：一点族 K₁ ではなく有限族 K_fam）。 -/
+theorem arcTopology_eq_toGrothendieck_family : arcTopology p κ = (arcFamilyCoverage p κ).toGrothendieck := by
+  sorry -- 両辺とも「全ての有限 arc 被覆族の生成 sieve を含む最小の位相」
+
+/-- 概要：extensive coverage K_ext：有限積 ∏_j R_j の射影の族 {∏_j R_j → R_i}_i（空積＝零環の空族を含む）。
+方針：`Presieve.ofArrows` の射影。pullback は底変換で有限積が有限積に写ること（完備テンソルは有限積と可換）。
+規約：Mathlib の `FinitaryPreExtensive`・`Presieve.Extensive`（Sites/Coherent/ExtensiveSheaves）の形に合わせる。
+使われ方：`arcTopology_eq_sup`。 -/
+def extensiveCoverage : Coverage (AffCompl p κ)ᵒᵖ := sorry
+
+/-- 概要：有限積の射影の族は arc 被覆族（付値環は非零整域なので ∏R_j → V は一つの射影を通る。空積：零環から V への射はない）。
+方針：冪等元の像は 0 か 1。
+規約：—
+使われ方：K_ext ≤ arcTopology。 -/
+theorem isArcCoverFamily_projections : True := by trivial -- 型は `IsArcCoverFamily p (fun i => R i) (fun i => Pi.evalRingHom R i)` の形
+
+/-- 概要：`arcTopology = K₁.toGrothendieck ⊔ K_ext.toGrothendieck`（D1-02 の修復）。
+方針：≤：有限族 {R → R_i} は一点被覆 R → ∏R_i（`isArcCoverFamily_prod_iff`）と射影の族 {∏R_i → R_j}（K_ext）の合成なので、右辺で被覆。
+≥：一点 arc 被覆は一点族として arc 被覆、射影の族は `isArcCoverFamily_projections` で arc 被覆。
+規約：Mathlib の `GrothendieckTopology` の完備束の ⊔。
+使われ方：`isSheaf_arc_iff_cech`。 -/
+theorem arcTopology_eq_sup :
+    arcTopology p κ = (arcCoverage p κ).toGrothendieck ⊔ (extensiveCoverage p κ).toGrothendieck := by
+  sorry
+
+/-- 概要：F が有限積を保つ：AffCompl の有限積 ∏_i R_i（環の有限積、空積は零環）について F(∏ R_i) → ∏ F(R_i) が同値（空積なら F(0) が終対象）。
+方針：E の積の錐が極限錐であること（`IsLimitCone`）で述べる。
+規約：O（CAlg_ℤ 値：環の積は CAlg の積）と Hom(T, −)（集合値）はこれを満たす（ArcSheafProperty で主張）。
+使われ方：`isSheaf_arc_iff_cech`。 -/
+def PreservesFiniteRingProducts {E : SSet.{u + 1}} [Quasicategory E] (F : Presheaf (AffCompl p κ)ᵒᵖ E) : Prop := sorry
+
+/-- 概要：S1 の一般補題（**基盤待ち**、S1-E）：extensive coverage の層 ⇔ 有限積を保つ（Mathlib `isSheaf_iff_preservesFiniteProducts` の ∞ 版、
+`FinitaryPreExtensive` な site で）。
+方針：HTT 6.2.2 の系（有限余積の Čech 脈体は定数、交叉は始対象）。置き場所は drafts/Sheaves/SheafCondition（S1）。
+規約：—
+使われ方：`isSheaf_arc_iff_cech`。 -/
+theorem isSheaf_extensive_iff_preservesFiniteProducts {E : SSet.{u + 1}} [Quasicategory E] (F : Presheaf (AffCompl p κ)ᵒᵖ E) :
+    IsSheaf (extensiveCoverage p κ).toGrothendieck F ↔ PreservesFiniteRingProducts p κ F := by
+  sorry -- S1 の補題（基盤待ち）
+
+/-- 概要：(2)（D1-02 で訂正）：F が arc 層 ⇔ F は有限積を保ち、かつ任意の一点 arc 被覆 f について (1) の相対 Čech 条件。
+方針：`arcTopology_eq_sup` で位相を分け、⊔ の層 ⇔ 両方の層（被覆篩の和集合が生成）；K_ext 側は `isSheaf_extensive_iff_preservesFiniteProducts`、
+K₁ 側は S1 の `isSheaf_toGrothendieck_iff` と (1)。**一点被覆だけでは足りない**（二点集合に値を取る定数前層が反例：全ての一点 Čech 条件を満たすが
+零環の空族の条件 F(0) ≃ * を満たさない）。
+規約：任意の E 値前層について述べる。O と Hom(T, −) は有限積を保つので、それらについては一点被覆の Čech 条件だけでよい（Prop 8.10 の帰着はこの形）。
+使われ方：Prop 8.10（O、CAlg_ℤ 値）、Hom(T, −) の層性（集合値）。 -/
+theorem isSheaf_arc_iff_cech {E : SSet.{u + 1}} [Quasicategory E] (F : Presheaf (AffCompl p κ)ᵒᵖ E) :
+    IsSheaf (arcTopology p κ) F ↔
+      PreservesFiniteRingProducts p κ F ∧
+        ∀ {R S : AffCompl p κ} (f : R ⟶ S), IsSingletonArcCover p κ f →
+          IsLimitCone (restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
+            (cechShape (arcSieveCechData p κ f))) := by
+  sorry -- arcTopology_eq_sup、⊔ の層条件、isSheaf_extensive_iff_preservesFiniteProducts、isSheaf_toGrothendieck_iff、isSheaf_generateSieve_iff_cech
 
 end ArcCech
 
