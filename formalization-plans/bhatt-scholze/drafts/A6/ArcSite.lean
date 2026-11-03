@@ -13,6 +13,7 @@ public import Mathlib.CategoryTheory.EssentiallySmall
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
 public import Mathlib.RingTheory.TensorProduct.Basic
 public import Mathlib.Algebra.Ring.Pi
+-- 相対 Čech の部分は drafts/Sheaves/{SheafCondition,CechConerveLimit}.lean の S1・S3 を import する。
 -- 本ファイルは drafts/A5/RootAdjunction.lean（`rootClosure`・`rootClosure_extends`）、drafts/A5/WeaklyInitialAndDescent.lean（`rootClosure_isSemiperfectoid`）、drafts/A5/SemiperfectoidCase.lean（`universalPerfectoidRing`）、
 -- drafts/A0/PrismaticSite.lean（`cutoff`）を import する（W9-III-14 で所在を RootAdjunction に揃えた）。
 
@@ -178,6 +179,42 @@ theorem isArcCoverFamily_prod_iff
         (fun _ => RingHom.pi f) := by
   sorry -- 付値環は非零整域なので有限積からの射は一因子を通る（空積の場合も含む）
 
+section ArcCech
+
+open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves
+open SSet
+
+/-- 小さい模型の射 f が一点族として arc 被覆である条件。 -/
+def IsSingletonArcCover {R S : AffCompl p κ} (f : R ⟶ S) : Prop :=
+  IsArcCoverFamily p (fun _ : PUnit.{u + 1} => (affComplForget p κ).obj S)
+    (fun _ => ((affComplForget p κ).map f).hom)
+
+/-- op R における f.op 一射の presieve。 -/
+def arcSinglePresieve {R S : AffCompl p κ} (f : R ⟶ S) : Presieve (Opposite.op R) :=
+  Presieve.ofArrows (fun _ : Unit => Opposite.op S) (fun _ => f.op)
+
+/-- 一射が生成する sieve Q。 -/
+abbrev arcSingleSieve {R S : AffCompl p κ} (f : R ⟶ S) : Sieve (Opposite.op R) :=
+  Sieve.generate (arcSinglePresieve p κ f)
+
+/-- 𝒟 = sieveCategory Q の対象 U は生成射 f.op 自身。 -/
+def arcSieveGenerator {R S : AffCompl p κ} (f : R ⟶ S) : sieveCategory (arcSingleSieve p κ f) :=
+  ⟨Over.mk f.op, Sieve.le_generate (arcSinglePresieve p κ f) _ _ (Presieve.ofArrows.mk ())⟩
+
+theorem arcSieveGenerator_weaklyTerminal {R S : AffCompl p κ} (f : R ⟶ S) :
+    IsWeaklyTerminal (arcSieveGenerator p κ f) := by
+  sorry -- Q の各射の f.op による因子分解が、𝒟 の U への射を与える
+
+-- §2.1 の cutoff。有限の相対テンソルと可算完備化の台を模型内に収める。
+variable [hκ : Fact ((κ + Cardinal.aleph0) ^ Cardinal.aleph0 ≤ κ)]
+
+/-- 𝒟 での U の有限冪を相対完備テンソル冪で実現する Čech データ。
+各次数の射影、Fan の IsLimit、射影と単体的構造射の整合を含む。 -/
+def arcSieveCechData {R S : AffCompl p κ} (f : R ⟶ S) :
+    CechNerveData (arcSieveGenerator p κ f) := by
+  have hbound := hκ.out
+  sorry -- R 上の (n+1) 重テンソルの completionRing とその射影は Q の対象で、完備化の普遍性から積を与える
+
 /-- 概要：(1) 個々の単射 arc 被覆 f : R → S について、その生成 sieve Q := `Sieve.generate (Presieve.ofArrows (fun _ : Unit => op S) (fun _ => f.op))` の層条件
 （S1 の `restrictionCone F Q` が極限錐）は、**相対** Čech 余脈体 S^{⊗̂_R (•+1)} の Tot の条件と同値。
 方針（BS-D1 の D1-01 で確定、11-03）：S3 の `CechNerveData` は全 site ではなく **sieve の圏 𝒟 := sieveCategory Q** の中で取る。U := f.op は 𝒟 で弱終
@@ -186,16 +223,32 @@ theorem isArcCoverFamily_prod_iff
 `isLimitCone_iff_restrict_cech` をそのまま当てる。A5 の完全 site（Perfd_{S/}、最初から相対）とはここが違う。
 規約：F は (AffCompl p κ)ᵒᵖ 上の任意の E 値前層。
 使われ方：(2)、Prop 8.10 の帰着。 -/
-theorem isSheaf_generateSieve_iff_cech : True := by trivial
+theorem isSheaf_generateSieve_iff_cech {R S : AffCompl p κ} (f : R ⟶ S)
+    (hf : IsSingletonArcCover p κ f) {E : SSet.{u + 1}} [Quasicategory E]
+    (F : Presheaf (AffCompl p κ)ᵒᵖ E) :
+    IsLimitCone (restrictionCone F (arcSingleSieve p κ f)) ↔
+      IsLimitCone (restrictJoinCone (restrictionCone F (arcSingleSieve p κ f))
+        (cechShape (arcSieveCechData p κ f))) := by
+  sorry -- restriction F Q とその錐に、U の弱終性と相対 Čech データで S3 の isLimitCone_iff_restrict_cech を適用
 
 /-- 概要：(2) F が arc 層（S1 `IsSheaf (arcTopology p κ) F`）⇔ 任意の単射 arc 被覆 R → S について (1) の Čech 条件。
 方針：単射 arc 被覆（一点族）からなる coverage K を定義し `arcTopology = K.toGrothendieck` を示す（有限族 {R → R_i} は `isArcCoverFamily_prod_iff` で R → ∏R_i に
 置き換える：族の各射は ∏ を経由するので族の生成 sieve ⊆ ∏ の生成 sieve、∏ への射は族が被覆なら被覆）。S1 の `isSheaf_toGrothendieck_iff` を K に当て、(1) で Čech に移す。
 規約：任意の E 値前層について述べる（O だけではない）。(1) と (2) は別の主張（BS-D1 の報告の区別）。
 使われ方：Prop 8.10（O、CAlg_ℤ 値）、Hom(T, −) の層性（集合値）。 -/
-def arcCoverage : Coverage (AffCompl p κ)ᵒᵖ := sorry
+def arcCoverage : Coverage (AffCompl p κ)ᵒᵖ where
+  coverings X := { T | ∃ (S : AffCompl p κ) (f : X.unop ⟶ S),
+    IsSingletonArcCover p κ f ∧ T = arcSinglePresieve p κ f }
+  pullback := by
+    have hbound := hκ.out
+    sorry -- isArcCoverFamily_baseChange の一点族を模型へ移し、相対完備テンソルの二つの脚で FactorsThruAlong を与える
+
+-- 要確認：D1-02。二つの射影 k × k → k の有限被覆 sieve は一点族の位相では被覆にならない。
+-- 下の等式と任意の F に対する (2) は基準の骨組みのまま。report-codex-d1.md 第2部参照。
 theorem arcTopology_eq_toGrothendieck : arcTopology p κ = (arcCoverage p κ).toGrothendieck := by sorry
 theorem isSheaf_arc_iff_cech : True := by trivial
+
+end ArcCech
 
 /-! ## Lemma 8.8 の affine 版：affPerfd_κ は cover-dense
 

@@ -85,3 +85,39 @@ Q の射は f を経由するので U は 𝒟 で弱終となり、𝒟 内の 
 - ArcSheafProperty、Stratification、A0 の作業には進んでいない。停止点1完了とは報告しない。
 - ビルド・lake env lean・Lean の型検査は未実施。具体化した型のコンパイル成功は主張しない。
 - ソース上の向き・引数・宇宙を照合し、`git diff --check`、変更ファイルの限定、停止箇所以降が未変更であることを確認する。コミットは ArcSite と本報告だけに限定する。
+
+## 第2部（停止点1の続き、D1-02 で途中停止）
+
+基準・開始時 HEAD は main `3628dc9ca`。開始時の作業ツリーと index は空だった。
+D1-01 の決定に従い、`drafts/A6/ArcSite.lean` に (1) と一点被覆の `arcCoverage` を具体化した。
+**(2) の `arcTopology_eq_toGrothendieck` には反例がある。** 指示書 §3 の停止規則を適用し、基準にあった等式の `by sorry` と `isSheaf_arc_iff_cech` の `True` を残した。G-A6-11・G-A6-3 以降は未着手で、停止点1には未到達である。
+
+### D1-01 の具体化
+
+| 宣言 | 結果 |
+| --- | --- |
+| `IsSingletonArcCover`・`arcSinglePresieve`・`arcSingleSieve` | 環側の f を一点族の `IsArcCoverFamily` に渡し、site 側で `f.op` の Unit 添字の presieve と生成 sieve Q を作る。「単射被覆」は指示にある一点族の意味で用いた。 |
+| `arcSieveGenerator`・`arcSieveGenerator_weaklyTerminal` | U の対象を `Over.mk f.op` と `Sieve.le_generate` による所属証拠で指定した。Q の任意の射は f.op を経由するので U は `sieveCategory Q` で弱終である。 |
+| `arcSieveCechData` | `CechNerveData U` の周囲の圏は `sieveCategory Q`。含まれる各 Fan の極限性は op R 上の相対積の普遍性を表す。第 n 項は S の R 上の (n+1) 重テンソルの `completionRing` で実現でき、n+1≥1 なので射影を通じて Q の対象になる。 |
+| `isSheaf_generateSieve_iff_cech` | 任意の E 値前層 F と一点 arc 被覆 f に対し、`IsLimitCone (restrictionCone F Q)` と、その同じ錐を `cechShape (arcSieveCechData … f)` に制限した錐の極限性を同値とした。S3 に渡す前層は `restriction F Q`。 |
+| `arcCoverage` | 被覆 presieve を一点 arc 被覆 f の `arcSinglePresieve` と等しいものとした。`Coverage.pullback` の証明穴には、相対完備テンソルへの二脚と既存の底変換補題から `FactorsThruAlong` を供給する理由を付した。 |
+
+相対完備テンソル冪と底変換を小さい模型に置く箇所で、設計 §2.1 の濃度条件を `Fact ((κ + ℵ₀)^ℵ₀ ≤ κ)` と明示した。許容される無限の κ で κ^{ℵ₀}=κ なら満たす。S1 の `sieveCategory`・`restrictionCone`、S3 の `IsWeaklyTerminal`・`CechNerveData`・`cechShape`・`isLimitCone_iff_restrict_cech`、本体 `Core/LimitConeExtension` の `restrictJoinCone`、Mathlib の `Presieve.ofArrows.mk`・`Sieve.le_generate`・`Coverage.coverings`・`Coverage.pullback` をソースで照合した。仮の未発見名は追加していない。
+
+### D1-02　有限族の位相と一点族の位相が異なる
+
+`isArcCoverFamily_prod_iff` が比較するのは付値環への射の持ち上げ条件である。R→B_i は R→∏B_i を経由するので、有限族の生成 sieve は積への一射の生成 sieve に含まれる。この包含から、**大きい sieve の被覆性を小さい sieve へ移すことはできない**。
+
+具体的に k=𝔽_p、R=k×k とし、二つの射影 R→k を取る。有限環なので許容する κ の範囲に入り、p=0 なので導来 p 完備である。
+
+1. 二射の族は arc 被覆である。整域である試験付値環では (1,0) の像が 0 か 1 になり、R からの射はどちらかの射影を通る。拡大は恒等射でよい。積への射 R→k×k も恒等射なので一点被覆である。
+2. 二射が生成する sieve の射 R→T は、必ず片方の射影を経由する。その射は単独では arc 被覆になれない。反対側の射影で試験環 V=k[[t]] へ写すと、ある冪等元の像が T では 0、V では 1 になる。V は p 進完備な階数1の付値環で、忠実平坦な拡大 W に移しても 0 と 1 は一致しない。
+3. 一点 arc 被覆は恒等射を含み、合成と底変換で閉じる。この場合「一点 arc 被覆の射を含む sieve」は Grothendieck 位相をなす。引き戻しは底変換、局所性は二段の一点被覆の合成から従う。この位相は一点 coverage の生成位相と等しい。従って二射の sieve は `arcTopology` では被覆、`arcCoverage.toGrothendieck` では非被覆である。差は空族を除いても生じる。
+
+任意の E 値前層に対する (2) 自体にも簡単な反例がある。E を集合の圏の nerve とし、二点集合 K に値を取る定数前層 F を考える。どの一点 Čech 図式も K の定数図式となり、Δ は可縮なので Tot は K。従って F はすべての一点 Čech 条件を満たす。他方、零環から非零の試験付値環への単位的環準同型は存在しない。このため零環上の**空の有限族**は `IsArcCoverFamily` を満たす。`arcTopology` の層にはその空図式の極限 F(0)≃* が必要であり、F(0)=K はこの条件を満たさない。
+
+**再開に必要な設計判断**は、全ての前層を対象とする層判定に有限族の降下をどう残すかである。現在の `arcTopology` と任意の F を保つなら、finite-family coverage を S1 に渡し、各有限族の Čech 図式（各次数で交叉項ごとの F の値の積）で判定する形が取れる。積への一射を使うなら、F が有限積環を値の圏の積に送る条件（空積を含む）と、その比較を明示する必要がある。D1-01 の (1) はどちらでも使える。この判断は記録のみとし、設計書・(2) の主張には適用していない。
+
+### 確認範囲
+
+今回の編集は `drafts/A6/ArcSite.lean` と本報告への追記のみ。G-A6-11 の節以降は基準と同じで、ArcSheafProperty・Stratification・A0 には進んでいない。ArcSite の `要確認` は3箇所（D1-02 と、従前の R₀ の例・付値延長）。文字列上の比較と `git diff --check` で確認し、Lean 実行・ビルド・型検査は行っていない。
