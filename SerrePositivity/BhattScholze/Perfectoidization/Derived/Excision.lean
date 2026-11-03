@@ -3,8 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Derived.FiberLongExactSequence
 public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module

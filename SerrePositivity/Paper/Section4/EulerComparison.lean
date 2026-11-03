@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Asymptotic.UniformLift
 public import SerrePositivity.LengthAlgebra.Koszul
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.Paper.Section4.RankQuotient
 public import SerrePositivity.LengthAlgebra.KoszulFormula
 

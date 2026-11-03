@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.LengthAlgebra.Flat
 public import SerrePositivity.CommutativeAlgebra.RegularLocalRing.Basic
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 public import SerrePositivity.LengthAlgebra.Core
 public import Mathlib.Algebra.CharP.Defs

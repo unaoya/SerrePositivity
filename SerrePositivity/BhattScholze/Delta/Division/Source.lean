@@ -3,7 +3,7 @@ module
 public import SerrePositivity.BhattScholze.Delta.Division.Relations
 public import Mathlib.RingTheory.TensorProduct.Maps
 public import SerrePositivity.BhattScholze.Delta.Division.Family
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Logic.Equiv.Set

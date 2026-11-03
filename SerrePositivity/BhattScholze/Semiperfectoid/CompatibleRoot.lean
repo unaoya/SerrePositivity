@@ -3,8 +3,8 @@ module
 public import SerrePositivity.CommutativeAlgebra.CompatibleRoot
 public import SerrePositivity.HomologicalAlgebra.CompatibleRootQuotientTor
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.Adic.Reduction
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import Mathlib.RingTheory.TensorProduct.Quotient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
@@ -14,9 +14,8 @@ public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidiza
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Basic
 public import SerrePositivity.BhattScholze.Andre.AndreFlatness
 public import SerrePositivity.BhattScholze.Semiperfectoid.Perfectoidization
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
 
 /-!
 # semiperfectoid 環の perfectoid 化は全射（BS 著者版 Thm 7.4）

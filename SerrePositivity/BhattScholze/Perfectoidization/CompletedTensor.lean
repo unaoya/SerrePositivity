@@ -5,12 +5,12 @@ public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.CommutativeAlgebra.MappedPrincipalQuotient
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorZero
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedSurjectiveAlgebraMul
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedQuotientTensorExtension
 public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationIdentity
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-!

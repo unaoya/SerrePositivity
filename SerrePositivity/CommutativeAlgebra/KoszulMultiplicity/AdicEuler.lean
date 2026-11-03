@@ -3,7 +3,7 @@ module
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.Basic
 public import Mathlib.LinearAlgebra.Prod
 public import Mathlib.LinearAlgebra.Isomorphisms
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.CommutativeAlgebra.HilbertSamuel.PolynomialGrowth
 public import SerrePositivity.CategoryTheory.AlternatingSum
 public import Mathlib.Algebra.FiniteSupport.Basic

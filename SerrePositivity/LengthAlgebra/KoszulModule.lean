@@ -9,7 +9,7 @@ public import SerrePositivity.HomologicalAlgebra.KoszulModuleBounds
 public import SerrePositivity.HomologicalAlgebra.KoszulIdealAction
 public import SerrePositivity.HomologicalAlgebra.KoszulRestriction
 public import SerrePositivity.LengthAlgebra.Normalized
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 
 /-! # 代数を係数とする Koszul ホモロジーの長さ
 

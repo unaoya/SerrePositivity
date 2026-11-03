@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.Length.Euler
 public import SerrePositivity.PerfectComplex.Truncate
 public import SerrePositivity.PerfectComplex.Free.K0
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.PerfectComplex.Free.Euler
 
 /-!
@@ -20,7 +20,7 @@ public import SerrePositivity.PerfectComplex.Free.Euler
 これは論文 Lemma 3.5b の証明の核心「`K_0^{m}(A)` は `[K(z)]` で生成される」で、通常の長さ版と
 正規化長さ版（どちらも `Paper/Section3/NormComparison.lean`）の共通の入力に
 なる。正則局所環の正則パラメータ系なら `IsKoszulResolution z` は `CommutativeAlgebra/RegularLocalRing.lean` の
-A1（正則列）から出る（`CommutativeAlgebra/KoszulResolution.lean`）。正則性はこの仮定を通してだけ使う。
+A1（正則列）から出る（`CommutativeAlgebra/Koszul/Resolution.lean`）。正則性はこの仮定を通してだけ使う。
 
 ## 証明（デヴィサージュ）
 

@@ -6,7 +6,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationModels
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdeal
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 
 /-!

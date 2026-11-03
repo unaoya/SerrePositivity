@@ -6,7 +6,7 @@ public import SerrePositivity.Asymptotic.RankQuotient
 public import SerrePositivity.CategoryTheory.BoundedHomotopy
 public import SerrePositivity.CategoryTheory.IteratedCone
 public import SerrePositivity.Asymptotic.Euler
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import Mathlib.Algebra.Algebra.Hom
 public import SerrePositivity.HomologicalAlgebra.KoszulOrdinaryLength
 

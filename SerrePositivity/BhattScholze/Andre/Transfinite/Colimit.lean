@@ -26,7 +26,7 @@ public import SerrePositivity.CommutativeAlgebra.Adic.ReductionScalarExtension
 public import Mathlib.Algebra.Colimit.Ring
 public import Mathlib.Data.Set.Countable
 public import Mathlib.RingTheory.AdicCompletion.Basic
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra

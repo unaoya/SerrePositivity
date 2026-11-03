@@ -7,8 +7,8 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Derived.DiscreteCharacterization
 public import Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import Mathlib.RingTheory.Finiteness.Basic
 
 /-!

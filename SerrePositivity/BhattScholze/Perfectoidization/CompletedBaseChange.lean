@@ -8,7 +8,7 @@ public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionCompletedBaseChange
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeH0Coefficient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-!
 # perfectoid 化の完備底変換
