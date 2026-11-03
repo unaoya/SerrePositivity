@@ -157,3 +157,33 @@ D1-01 の決定に従い、`drafts/A6/ArcSite.lean` に (1) と一点被覆の `
 - 本体の `F1B.nerveCone`、`JoinCone.ulift`、`completionRing`・`completionUnit`・`completion_existsUnique`、`IsModuleComplete`、`IsCompletelyFaithfullyFlat` と既存 Cor 7.3 の入口を照合した。名前の新規仮置きは0件。ArcSite の `要確認` は付値の整拡大への延長の実装名についての既存1件である。
 - 今回指定の ArcSite に `True` または `Type u := sorry` のままの宣言は残っていない。S1-E・G-A6-3・G-A6-11 等の証明は予定の `sorry` として残る。`git diff --check` と変更パスを確認し、報告は既存本文に追記した。
 - 次の停止点2では `ArcSheafProperty.lean` の対象宣言に加え、O（CAlg_ℤ 値）と Hom(T, −)（集合値）の有限積保存を一件ずつ明示する。Prop 8.10 の構造前層が affPerfd_κ 上にあることに合わせ、積錐の判定の定義域を揃えて使う。
+
+## 第4部（停止点2の途中、G-A6-4 の零環）
+
+基準・開始時 HEAD は main `734b702ba`。開始時の作業ツリー・index は空。**停止点2には未到達。** 三引用と G-A6-1 の結論を具体化した後、`completedTensor_tilt` に必要な `PreTilt` の環構造の仮定が設計の入力を覆わないことを確認した。指示書 §3 に従い、同宣言は `True` のまま停止した。
+
+### 今回具体化した主張
+
+| 宣言 | 入力・結論 |
+| --- | --- |
+| `IsVCoverFamily`・`IsArcCoverFamilyCharP` | 通常の付値環の試験射を、同じ W 上の忠実平坦な e と持ち上げ l の等式で述べた。v は全階数、標数 p の arc は V・W とも Krull 次元 ≤1（体を含む）。基底・係数の標数は適用側の F_p 代数で与える。 |
+| `cech_exact_of_vCover_perfect`（1a） | 基準の宣言は入力が既に具体的で、**結論だけが `True`** だった。同じ引用・同じ仮定の下で `AugmentedRingCechExact (affineFamilyCech B f)` に直した。有限族の積への射の相対 Čech 余脈体を作り、加法群への忘却、交代余面写像の微分を使う。増大射の単射性、第0項の核・像の一致、全正次数の完全性を含む。 |
+| `arcSheaf_of_vSheaf_of_valuationSquares`（1b） | `A_R (ULift (ZMod p))` の nerve から `derivedInfinityCategory (ULift ℤ)` への共変 F、ℵ₀-filtered 余極限の保存、全 A における `IsCoconnectiveAt … 0` を入力にした。結論は arc 層 ⇔（v 層かつ全試験四角形が cartesian）。V は F_p 代数・付値整域で `IsAlgClosed (FractionRing V)`、P は素イデアル。`ordinarySquare` で標準の局所化・商・剰余体への二射を指定し、F で送った四角形に `IsPullbackSquare` を課した。 |
+| `valuationRing_milnorSquare`・`valuationRing_milnorSquare_perfect`（1c） | `MilnorShortExact P` は V→V_P×V/P の対角射の単射性、中央の `Function.Exact`、κ(P) への差写像の全射性。左の写像は局所化と商、右は V_P の剰余から V/P の剰余を引く。一般版は証明予定、標数 p の完全付値環版は暫定引用。docstring の核の説明も、V_P→κ(P) の核が V の P の像であるという計算に揃えた。 |
+| `cech_exact_of_arcCover_perfect` | 上と同じ有限族・増大 Čech 複体について、完全環上の arc 被覆性を入力とする完全性。1a・1b・1c から導く証明の穴に理由を付した。 |
+
+1b では、任意の F の有限族降下を、その族が生成する sieve の指定錐で表した。添字は、A→D がいずれかの A→B_i を経由するような `Under A` の充満部分圏である。空族なら空図式になる。`AsSmall.{u+1}` を使って通常の錐を `F1B.nerveCone` の宇宙に揃え、元の関手 F へ後合成した。試験環 V・W に κ の上限を課していない。整数係数の宇宙には `ULift.{u} ℤ` を選んだ。Prop 8.10 の構造前層 O の宣言にはまだ達していない。
+
+### D1-03　完備テンソルの零環の分岐
+
+`IsIntegralPerfectoid O p` は零環を `Subsingleton O` として含む。本体 `Perfectoidization/CompletedTensor.lean:187` の `integralPerfectoid_completedTensor_pure_and_h0` はこの一般性を保つ。一方、Mathlib `RingTheory/Perfection.lean:634` の `PreTilt O p` は型として定義されるが、同ファイル `:639`〜`:650` の `CommRing`・`CharP`・`PerfectRing` instance が使うのは `[Fact (¬ IsUnit (p : O))]` である。基準の本体・Mathlib を検索した範囲で、零環を含む tilt の環構造と射を一括して与える既存の入口は見つからなかった。
+
+この仮定は S・S′ がともに非零でも問題になる。k=𝔽_p、R=k×k、S と S′ をそれぞれ異なる射影による k とする。この三環は非零の perfectoid 環である。冪等元 (1,0) の作用は S で 1、S′ で 0 なので S⊗_R S′=0。両因子は R の直和因子で射影的であり、高次 Tor も零。したがって導来完備テンソルの H⁰ は零環となる。この環では p=0=1 が単元なので、既存 instance に渡す `¬ IsUnit p` は偽である。原典の比較同型への反例ではなく、現在の Lean の型の前提への反例である。
+
+**再開案**：零環を含む perfectoid 環の全域で環値の tilt とその射を指定する。非零の場合は既存 `PreTilt` の環構造を使い、零環の場合は一元環とし、その場合を跨ぐ射も指定する。その上で G-A6-4 は一般の底変換に対する環同型として述べられる。別案は零環の分岐と非零の場合の比較を別補題にし、両者から一般版を組み立てること。S・S′・完備テンソルすべてを非零と仮定するだけでは上の例が抜ける。どちらの案も今回のコードには適用していない。
+
+### 確認と残件
+
+- Mathlib の `Arrow.augmentedCechConerve`、`alternatingCofaceMapComplex`、`Function.Exact`、`AsSmall.up/down`、`Localization.AtPrime`・`Ideal.ResidueField`・`IsLocalRing.residue` をソースで確認した。本体では `ordinarySquare`・`IsPullbackSquare`・`PreservesSmallKappaFilteredColimits` と完備テンソルの入口を、drafts では `IsCoconnectiveAt` と `ringPresheafToCAlg` の型を読んだ。1b の二つの剰余の合成と sieve の錐の自然性には理由つきの証明穴を置いた。
+- `completedTensor_tilt` 以降の主張は基準のまま。G-A6-5〜7、Prop 8.10、O と Hom(T, −) の有限積保存、Cor 8.11 の記録は再開後の対象である。ArcSheafProperty 内の `要確認` は D1-03 の1件。
+- 今回の編集は ArcSheafProperty と本報告への追記だけ。ビルド・Lean 実行・型検査は行っていない。
