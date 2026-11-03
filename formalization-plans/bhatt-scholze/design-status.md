@@ -71,22 +71,22 @@ E3 非依存化、2a 後）と実ファイルでの到達性検査。致命は W
 
 ## 2. 要確認の分類
 
-### (A) 基盤の名前を探すだけ（中身を書く段階の最初に。ビルドなしで grep で済む）
+### (A) 基盤の名前を探すだけ（11-03 に grep で確認。ビルドなし）
 
-| 箇所 | 探すもの |
-| --- | --- |
-| Shared/CosimplicialCupProduct:80 | CommRingCat の余単体的対象 → ModuleCat の忘却（`forget₂`） |
-| Sheaves/GlobalSections:84 | 関手 ∞ 圏 `(ihom K).obj E` の頂点 ↔ 射 `K ⟶ E`（Core の `functorVertex` の逆） |
-| Sheaves/GlobalSections:115 | `IsReflectiveSubcategory` の中身から反射関手を取り出す形 |
-| Sheaves/GlobalSections:138 | E の辺の可逆性の述語（`FunctorIso` か同値辺） |
-| Sheaves/SheafCondition:98 | `uliftFunctor` と join の可換性（`JoinCone.ulift`。F2/Presentable の宇宙比較） |
-| A0/PrismaticSite:230 | `uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C`（ULift の圏の nerve との比較） |
-| A0/PrismaticSite:249 | D(A) の `⊗^L A/d` |
-| A0/PrismaticSite:260 | φ_A に沿うスカラー制限 D(A) → D(A) |
-| A0/PrismaticEnvelope:52 | Koszul 複体のホモロジー（HA/Koszul*） |
-| A0/PrismaticEnvelope:156 | 完備テンソル（BS/Perfectoidization/CompletedTensor、HA/DerivedCompletion/CompletedBaseChange*） |
-| A0/CechAlexander:88、Shared/DeRhamPolynomial:125 | 一変数の導来 p 完備化 H⁰（E3 の `completionRing`） |
-| A1/HodgeTateComparison:106 | Frobenius に沿う `Module.Flat` の述べ方 |
+| 箇所 | 探すもの | 結果（11-03） |
+| --- | --- | --- |
+| Shared/CosimplicialCupProduct:80 | CommRingCat の余単体的対象 → ModuleCat の忘却（`forget₂`） | Mathlib `forget₂ CommRingCat RingCat`・`forget₂ CommRingCat AddCommGrpCat`（Algebra/Category/{Ring,Grp}/Basic）。余単体的対象は `Functor.comp`（whiskering）。A 加群構造は (B) の決定どおり基底 A の作用を別に付ける |
+| Sheaves/GlobalSections:84 | 関手 ∞ 圏 `(ihom K).obj E` の頂点 ↔ 射 `K ⟶ E` | `Core/Equivalence.lean` `functorVertex`、逆向きを含む同値は `Core/EquivalencePath.lean` `functorVertexEquiv : (X ⟶ Y) ≃ ((ihom X).obj Y) _⦋0⦌` |
+| Sheaves/GlobalSections:115 | `IsReflectiveSubcategory` から反射関手を取り出す形 | `F1B/Localization/Reflective.lean`：`IsReflectiveSubcategory X P := Nonempty (ReflectiveSubcategory X P)`。構造 `ReflectiveSubcategory` を `Classical.choice` で取り出して関手を使う |
+| Sheaves/GlobalSections:138 | E の辺の可逆性の述語 | `FunctorIso`（Core.lean で export。F1・HomotopyLimits・Derived・Stable で使用） |
+| Sheaves/SheafCondition:98 | `uliftFunctor` と join の可換性（`JoinCone.ulift`） | `JoinCone` は F1・F1B・Derived・Stable；`uliftFunctor` の比較は `Stable/UniverseVertexIso.lean`・`Stable/UniverseHorns.lean`・`ModelBridge/HA/UniverseLiftAnodyne.lean`。join との可換性そのものは未発見（なければ新規、S1 の中身で） |
+| A0/PrismaticSite:237 | `uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` | `SmallModel`・`equivSmallModel` は Mathlib（EssentiallySmall）。比較射は未発見：新規（nerve の関手性と `uliftFunctor` の単位） |
+| A0/PrismaticSite:256 | D(A) の `⊗^L A/d` | `HA/DerivedQuotientBaseChange.lean` `derivedTensorQuotientModuleIso`・`derivedTensorQuotientAlgebraIso`、`HA/DerivedQuotientTensorAugmentation.lean`。D(A) の ∞ 版は Derived/ のテンソル（2b 後の名前） |
+| A0/PrismaticSite:267 | φ_A に沿うスカラー制限 D(A) → D(A) | `InfinityCategories/Derived/ScalarRestrictionNerve.lean` |
+| A0/PrismaticEnvelope:52 | Koszul 複体のホモロジー | HA の Koszul 群：`KoszulLinearDuality.lean`（`koszulLinearDualHomologyIso`）、`DerivedQuotientKoszul.lean`、`AlgebraKoszul*.lean`、`BoundedTermKoszulAcyclic.lean`。名前は 2b の改名表の後に確定 |
+| A0/PrismaticEnvelope:156 | 完備テンソル | `BhattScholze/Perfectoidization/CompletedTensor.lean`（分割後は芯、`completed-tensor-split.md`）、`HA/DerivedCompletion/{CompletedBaseChangeH0Coefficient,AlgebraBaseChangeTensorUnit}.lean` |
+| A0/CechAlexander:88、Shared/DeRhamPolynomial:125 | 一変数の導来 p 完備化 H⁰ | `completionRing`（`BhattScholze/Perfectoidization/Derived/Interface.lean`）、`PDCompletionH0 p d := PairCompletionH0 R (p) d`（`HA/DerivedCompletion/PDCompletion.lean:29`） |
+| A1/HodgeTateComparison:106 | Frobenius に沿う `Module.Flat` の述べ方 | 用例：`HA/Tor.lean`、`HA/PerfectResidueTensorRegular.lean`、`BhattScholze/Delta/DividedPower/PrincipalDP.lean`。Frobenius に沿う形は `RestrictScalars` か `Algebra` インスタンスで（既存の Frobenius 平坦性の宣言は未発見、A1 の中身で） |
 
 ### (B) BS 側で決める設計の細部（決定：2026-11-02）
 
@@ -166,7 +166,9 @@ A1-2（D^•、η、Lemma 2.36 の変数の場合）、A1-3（Lemma 5.4、pd 包
 import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う。E3 を消す組み立て（Inputs の証明を Assembly に置換）で循環するので、Fontaine による完備テンソルの芯
 （`integralPerfectoid_completedTensor_pure_and_h0` まで）を E3 非依存のモジュール（仮称 `CompletedTensorCore`）へ切り出し、`Almost/Lemma103` の依存をそこへ向け、有限直積は
 直接証明に替えたい。2a が Perfectoidization* を Perfectoid/ へ統合するので、**2a に含めるか 2a 直後の最初の作業**にしてほしい（BS は 2a まで BS の Lean を触らない）。
-詳細は a9-design §7。
+詳細は a9-design §7。**仕様書 `completed-tensor-split.md`（11-03）**：移す節・差し替える定理・利用側 9 本・直接証明の筋・到達性の確認片を記した。2a に含めるのが最も安い。
+- **調整役へ提案（11-03、基盤 66 宣言の分担、未返答）**：Sheaves の S1〜S3・S8 と DerivedGeneral 2 本は利用者も設計者も BS なので BS（Codex、BS-Wn）が drafts の中身を書き、
+  置き場所（`InfinityCategories/Sheaves/`・`Derived/`、M12・M13）へ入れる；G3・G4・G6（presentable の一般論、F2/）は ∞ レーンに依頼。時期はどちらも W2b 後の段 G。
 - （11-03、調整役）**DG-W3 の取り込み**で DG のモジュールを import していた BhattScholze/ などの import 行が機械的に書き換わった（宣言は不変。対応表は
   `scripts/refactor/targets/dg-w3-merge-plan.json`）。2a まで BhattScholze/・CLMST/ の Lean に手を入れない方針はそのまま。BS 側の確認：drafts の `public import`
   67 本のうち本体に存在しないものは `F2.Presentable.Basic` 一本だけで、これは DG-W3 の影響ではなく当初の推測名（git 履歴に存在しない）。`F2.Presentable` に直した
@@ -179,7 +181,14 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
 3. (E) の骨組み（A1-2・A1-3）。
 4. (A) は中身を書く段階の最初に、(C)・(D) は時期を待つ。G-A4-1（P⁰）は `EInfinity/PowerOperation/`（M14）、担当は A4 の中身の段階で。
 5. （11-03、W9-III-08）2a 後：CompletedTensor の E3 非依存の芯への分割と有限直積の直接証明（調整役と時期を合わせる）。中身の段階の `lake build` の前に import の到達性で E3 非依存と drafts/README の DAG を確認する。
-6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。実装の Codex 指示書（BS-W10 以降）はそのとき。
+6. （11-03）W9 完了。中身の段階の順序：2a の取り込み → 5 → 2a・2b の改名表の反映（drafts の import 行） → (A) の名前探し（済、§2 (A)） → 骨組みを `SerrePositivity/` へ（drafts/README の DAG の順、単体 `lake build`）。
+7. **（11-03 決定、ユーザー「全て ok」）段取り**：
+   - 段 0（今〜2a、ビルドなし）：`completed-tensor-split.md`（済）、(A) の名前探し（済）、BS-W10 の指示書（`bhatt-scholze-codex-w10.md`、済。基準コミットは 2a 後に記入）。
+   - 段 1（2a 後、基盤を待たない古典的単位。担当は Codex、こちらは検収）：① CompletedTensor 分割＋G-A6-12（2a に含められればそこで）→ ② Lemma 10.12（A8-3）→
+     ③ A5/RootAdjunction・G-A6-11（R₀）・G-A6-3/6（付値環）・G-A8-6・1c の初等補題 → ④ A6/ArcSite の 1 圏部分 → ⑤ A0 の site の定義と A0-3c。BS-W10 は ①②、W11 以降に ③〜⑤。
+   - 段 2（W2b・段 G 後）：∞ 基盤 S1〜S8・DerivedGeneral・Shared → A2 → A4〜A7 の中身 → A5 の Prop 8.5。
+   - 段 3：A8-4、A9 の組み立て、Inputs の証明の置換、監査の許可一覧（恒久 3＋暫定 2）。
+   - 基盤 66 の分担案（調整役へ、§3.1）：S1〜S3・S8 と DerivedGeneral は BS が drafts の中身を書く（利用者も設計者も BS）、G3・G4・G6（presentable の一般論）は ∞ レーン。
 
 ## 5. Codex レビュー W9 の指摘と扱い（2026-11-02）
 

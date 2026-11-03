@@ -81,8 +81,8 @@ Fontaine 表示による完備テンソルの前半（`integralPerfectoid_comple
 2. 有限直積の perfectoid 性は直接証明（G-A6-12：有限積と tilt・Witt の可換性、各核生成元の組、空積は零環）に替え、E3 を使う版は削除（または E3 後に隔離）。
 3. **時期**：BhattScholze/ の Lean は 2a の取り込みまで触らない（調整役の指示、11-02）。2a は Perfectoidization* 12 本を Perfectoid/ へ統合するので、この分割は 2a に
    含めてもらうか、2a 直後の最初の作業にする（design-status §3.1 の依頼）。drafts 側は import 行のコメントで分割後の名前を指す。
-4. **受入条件**：A0〜A9 の drafts と、それらが import する本体のモジュールから `Inputs/PerfectoidizationInterface` へ到達する経路がないこと（`scripts/` の import 到達性で確認、
-   中身の段階で `lake build` の前に）。
+4. **受入条件**：A0〜A9 の drafts と、それらが import する本体のモジュールから `Inputs/PerfectoidizationInterface` へ到達する経路がないこと（`completed-tensor-split.md` §2 の
+   到達性の python 片で確認、中身の段階で `lake build` の前に）。分割の仕様は `completed-tensor-split.md`（11-03）、実施の指示は `bhatt-scholze-codex-w10.md` 作業 A。
 
 **配置（W9-III-09）**：数学的循環ではなくファイル単位の順序。定義を先行ファイルへ、後段の定理を後に：
 - `A1/CrystallineInput`（黒箱と Cartier）→ `A1/HodgeTateComparison` → `A1/DeRhamComparisonPoly`
