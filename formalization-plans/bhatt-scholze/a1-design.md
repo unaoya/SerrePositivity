@@ -100,10 +100,12 @@ A = Z_p、I = (p)、R = F_p[X_1,…,X_r]、B_0 = Z_p⟨X⟩ = Z_p[X]^∧_p、B =
 ### 2.5 Tor 振幅の実例（A0 §2.9 の定義で）
 
 - 平坦な射（Z_p → 結晶 prism A、A は p ねじれなし）：c = 0。
-- Constr 6.1 の α：**c = 2**（A0 §2.9 の Koszul 版の述語で。D4-04、11-03）。標的 (D₀,(p)) では α(d) = p·u なので Kos(D₀; p, α(d)) ≃ Kos(D₀; p) ⊗ Kos(D₀; 0) で一段上がる：
-  K = A₀/p（p 正則な非零の普遍例）で (K ⊗^L D₀) ⊗ Kos(D₀; p, α(d)) = D₀/p ⊗ Kos(D₀; p, pu) は H^{−2} = D₀/p ≠ 0。以前の「c = 1」は α mod p（A₀/p → D₀/p、(6) の最初の射）の
-  **通常の Tor 振幅 ≤ 1** の値で、Koszul 版の (p,d) 完全 Tor 振幅とは別の量。**Lemma 4.22 に要るのは有限性だけ**なので二つを分けて記録する：
-  (i) `torAmplitude_modP_le_one`（α mod p の通常の Tor 振幅 ≤ 1、保存性と (6) の分解に使う）、(ii) `HasFiniteCompleteTorAmplitude α (p,d) 2`（Lemma 4.20・4.22 用）。
+- Constr 6.1 の α：**c = 3**（A0 §2.9 の Koszul 版の述語——任意の K ∈ D^{≥n}(A₀) について (K ⊗^L B) ⊗ Kos(B; p, α(d)) ∈ D^{≥ n−c}——で。D4-04、11-03、二度目の訂正）。
+  評価：B/p の A₀ 上の Tor 次元 ≤ 2（A₀ → A₀/p で 1 段、α mod p で 1 段）に、標的の Kos(B; p, α(d)) = Kos(B; p, pu) ≃ Kos(B; p) ⊗ Kos(B; 0) の余分な 1 段を加えて 3。
+  下界：A₀ で (p,d) は正則列なので K = A₀/(p,d) = Kos(A₀; p, d) を取ると K ⊗^L B = Kos(B; p, pu) ≃ Kos(B; p, 0)、さらに Kos(B; p, pu) を掛けて Kos(B; p, 0, 0, 0) 型となり
+  H^{−3} = B/p ≠ 0。以前の「c = 1」は α mod p（A₀/p → B/p、(6) の最初の射）の**通常の Tor 振幅 ≤ 1** の値で、Koszul 版の (p,d) 完全 Tor 振幅とは別の量。
+  **Lemma 4.22 に要るのは有限性だけ**なので二つを分けて記録する：(i) `torAmplitude_modP_le_one`（α mod p の通常の Tor 振幅 ≤ 1、保存性と (6) の分解に使う）、
+  (ii) `HasFiniteCompleteTorAmplitude α (p,d) 3`（Lemma 4.20・4.22 用。数値は公開しない方針でもよい）。
 - Prop 6.2 の b（D-A1-2 で (i) を採る場合のみ）。
 
 ## 3. 証明の筋（原典の帰着の順）
