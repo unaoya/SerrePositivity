@@ -22,15 +22,15 @@ public import Mathlib.CategoryTheory.ConcreteCategory.EpiMono
 
 ## 概要
 
-離散な代数の基底の上と自身の上の完備化を比べ（`completedAlgebraRestrictionIso`）、係数代数の作用と標準の係数類の保存を示し、任意の基底代数の完備化の H⁰ がその一つの座標の完備化の代数であること（`completedAlgebraPrincipalH0AlgEquiv`）と PD の完備化との比較を与える。すでに完備な座標を二つの座標の H⁰ から外せること、完備化した導来代数の H⁰ が元の H⁰ の一つの座標の完備化であること、完備な標準のテンソルの添加の Koszul 判定、完備テンソルの H⁰ と PD・古典的な完備化・通常のテンソル経由の環としての比較（`completedTensorH0AdicRingEquiv` ほか）、全射な代数の完備化した乗法を与える。
+離散な代数の基底の上と自身の上の完備化を比べ（`completedAlgebraRestrictionIso`）、係数代数の作用と標準の係数類の保存を示し、任意の基底代数の完備化の H⁰ がその一つの座標の完備化の代数であること（`completedAlgebraPrincipalH0AlgEquiv`、座標が自然数の像のときは `completedAlgebraH0NatPrincipalAlgEquiv`）を与える。すでに完備な座標を二つの座標の H⁰ から外せること、完備化した導来代数の H⁰ が元の H⁰ の一つの座標の完備化であること、完備な標準のテンソルの添加の Koszul 判定、完備テンソルの H⁰ と主イデアルの完備化・古典的な完備化・通常のテンソル経由の環としての比較（`completedTensorH0PrincipalRingEquiv`・`completedTensorH0AdicRingEquiv` ほか）、全射な代数の完備化した乗法を与える。
 
 ## 方針
 
-比較は一意存在と環の普遍性から作る。
+比較は一意存在と環の普遍性から作る。完備テンソルの H⁰ の比較は、H⁰ で可逆な完備化した添加と係数の比較 `completedAlgebraH0NatPrincipalAlgEquiv` の合成で、古典的な完備化との比較はその後に `principalCompletionAdicAlgEquiv` を続ける。
 
 ## 規約
 
-`completedTensorH0AdicRingEquiv(_left/_right/_algebraMap)` は BhattScholze が使うので名前を変えない。PD の d = 0 を経由する同型の重複（refactor-plan §3.6.3）は 2b の B で一本化する候補。旧 `CompletedAlgebra{Restriction, ScalarAction, UnitNormalization, PrincipalComparison, PDComparison}`・`CompleteFirstPairComparison`・`CompletionH0PrincipalComparison`・`CompletedTensor{AugmentationCriterion, PDComparison, H0Comparison, ClassicalComparison, H0RingTransport}`・`CompletedSurjectiveAlgebraMul`。
+`completedTensorH0AdicRingEquiv(_left/_right/_algebraMap)`・`completedTensorH0PrincipalRingEquiv` は BhattScholze が使うので名前と型を変えない。PD の d = 0 を経由していた同型（旧 `completedAlgebraH0PD(B)AlgEquiv`・`completedTensorH0PDAlgEquiv(OfIso/OfTor/OfKoszul)`・`pdCompletionBaseAlgebra`）は 2b の B3 で主イデアル経由に一本化して削除した（refactor-plan §3.6.3）。旧 `CompletedAlgebra{Restriction, ScalarAction, UnitNormalization, PrincipalComparison, PDComparison}`・`CompleteFirstPairComparison`・`CompletionH0PrincipalComparison`・`CompletedTensor{AugmentationCriterion, PDComparison, H0Comparison, ClassicalComparison, H0RingTransport}`・`CompletedSurjectiveAlgebraMul`。
 
 ## 使われ方
 
@@ -433,7 +433,7 @@ end SerrePositivity.DerivedCompletion
 
 end CompletedAlgebraPrincipalComparisonPart
 
-section CompletedAlgebraPDComparisonPart
+section CompletedAlgebraNatPrincipalComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
@@ -442,38 +442,17 @@ open CategoryTheory
 attribute [local instance] HasDerivedCategory.standard
 variable (R B : Type u) [CommRing R] [CommRing B] [Algebra R B]
 
-/-- The original F3 algebra of B, regarded over its original base R. -/
-@[instance_reducible] def pdCompletionBaseAlgebra (p : ℕ) (d : B) :
-    letI := pdCompletionCommRing B p d
-    Algebra R (PDCompletionH0 B p d) := by
-  letI := pdCompletionCommRing B p d
-  exact ((pdCompletionUnit B p d).comp (algebraMap R B)).toAlgebra
-
-/-- This coefficient restriction has the original R to B to F3 scalar tower. -/
-lemma pdCompletionBaseScalarTower (p : ℕ) (d : B) :
-    letI := pdCompletionCommRing B p d
-    letI := pdCompletionAlgebra B p d
-    letI := pdCompletionBaseAlgebra R B p d
-    IsScalarTower R B (PDCompletionH0 B p d) := by
-  let := pdCompletionCommRing B p d
-  let := pdCompletionAlgebra B p d
-  let := pdCompletionBaseAlgebra R B p d
-  exact IsScalarTower.of_algebraMap_eq' rfl
-
-/-- Completing B over R gives the original F3 (p,0) algebra, with its B-algebra structure. -/
-def completedAlgebraH0PDBAlgEquiv (p : ℕ) :
+/-- For a natural number coordinate, the completed algebra of B is the principal completion
+of B at the same natural number, with its B-algebra structure. -/
+def completedAlgebraH0NatPrincipalAlgEquiv (p : ℕ) :
     letI := derivedH0CommRing (completedAlgebra R (p : R) B)
     letI := completedAlgebraScalarAlgebra R (p : R) B
-    letI := pdCompletionCommRing B p 0
-    letI := pdCompletionAlgebra B p 0
+    letI := principalCompletionCommRing B (p : B)
+    letI := principalCompletionAlgebra B (p : B)
     (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (completedAlgebra R (p : R) B).X.obj ≃ₐ[B] PDCompletionH0 B p 0 := by
+      (completedAlgebra R (p : R) B).X.obj ≃ₐ[B] PrincipalCompletionH0 B (p : B) := by
   letI := derivedH0CommRing (completedAlgebra R (p : R) B)
   letI := completedAlgebraScalarAlgebra R (p : R) B
-  letI := pdCompletionCommRing B p 0
-  letI := pdCompletionAlgebra B p 0
-  letI := principalCompletionCommRing B (p : B)
-  letI := principalCompletionAlgebra B (p : B)
   have aux (c : B) (hc : algebraMap R B (p : R) = c) :
       letI := principalCompletionCommRing B c
       letI := principalCompletionAlgebra B c
@@ -481,46 +460,27 @@ def completedAlgebraH0PDBAlgEquiv (p : ℕ) :
         (completedAlgebra R (p : R) B).X.obj ≃ₐ[B] PrincipalCompletionH0 B c := by
     subst c
     exact completedAlgebraPrincipalH0AlgEquiv R (p : R) B
-  let e := aux (p : B) (map_natCast (algebraMap R B) p)
-  exact e.trans (pairCompletionZeroPrincipalAlgEquiv B (p : B)).symm
+  exact aux (p : B) (map_natCast (algebraMap R B) p)
 
-/-- The comparison is an R-algebra equivalence for the original actual H⁰ algebra structure. -/
-def completedAlgebraH0PDAlgEquiv (p : ℕ) :
+/-- Every coefficient keeps its original image in this comparison. -/
+lemma completedAlgebraH0NatPrincipalAlgEquiv_unit (p : ℕ) (b : B) :
     letI := derivedH0CommRing (completedAlgebra R (p : R) B)
     letI := derivedH0Algebra (completedAlgebra R (p : R) B)
-    letI := pdCompletionCommRing B p 0
-    letI := pdCompletionBaseAlgebra R B p 0
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (completedAlgebra R (p : R) B).X.obj ≃ₐ[R] PDCompletionH0 B p 0 := by
-  letI := derivedH0CommRing (completedAlgebra R (p : R) B)
-  letI := derivedH0Algebra (completedAlgebra R (p : R) B)
-  letI := completedAlgebraScalarAlgebra R (p : R) B
-  letI := completedAlgebraScalarTower R (p : R) B
-  letI := pdCompletionCommRing B p 0
-  letI := pdCompletionAlgebra B p 0
-  letI := pdCompletionBaseAlgebra R B p 0
-  letI := pdCompletionBaseScalarTower R B p 0
-  exact (completedAlgebraH0PDBAlgEquiv R B p).restrictScalars R
-
-/-- Every coefficient keeps its original image in the F3 comparison. -/
-lemma completedAlgebraH0PDAlgEquiv_unit (p : ℕ) (b : B) :
-    letI := derivedH0CommRing (completedAlgebra R (p : R) B)
-    letI := derivedH0Algebra (completedAlgebra R (p : R) B)
-    letI := pdCompletionCommRing B p 0
-    letI := pdCompletionBaseAlgebra R B p 0
-    completedAlgebraH0PDAlgEquiv R B p (completedAlgebraUnitAlgHom R (p : R) B b) =
-      pdCompletionUnit B p 0 b := by
+    letI := completedAlgebraScalarAlgebra R (p : R) B
+    letI := principalCompletionCommRing B (p : B)
+    letI := principalCompletionAlgebra B (p : B)
+    completedAlgebraH0NatPrincipalAlgEquiv R B p (completedAlgebraUnitAlgHom R (p : R) B b) =
+      principalCompletionUnitRingHom B (p : B) b := by
   let := derivedH0CommRing (completedAlgebra R (p : R) B)
   let := derivedH0Algebra (completedAlgebra R (p : R) B)
   let := completedAlgebraScalarAlgebra R (p : R) B
-  let := pdCompletionCommRing B p 0
-  let := pdCompletionAlgebra B p 0
-  let := pdCompletionBaseAlgebra R B p 0
-  exact (completedAlgebraH0PDBAlgEquiv R B p).commutes b
+  let := principalCompletionCommRing B (p : B)
+  let := principalCompletionAlgebra B (p : B)
+  exact (completedAlgebraH0NatPrincipalAlgEquiv R B p).commutes b
 
 end SerrePositivity.DerivedCompletion
 
-end CompletedAlgebraPDComparisonPart
+end CompletedAlgebraNatPrincipalComparisonPart
 
 section CompleteFirstPairComparisonPart
 
@@ -792,69 +752,6 @@ end SerrePositivity.DerivedCompletion
 
 end CompletedTensorAugmentationCriterionPart
 
-section CompletedTensorPDComparisonPart
-
-set_option backward.isDefEq.respectTransparency false
-set_option backward.defeqAttrib.useBackward true
-namespace SerrePositivity.DerivedCompletion
-open CategoryTheory CategoryTheory.Limits
-open scoped TensorProduct
-attribute [local instance] HasDerivedCategory.standard
-variable (R : Type u) [CommRing R] (p : ℕ)
-  (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-
-/-- The original completed augmentation supplies an F3 algebra comparison whenever invertible. -/
-def completedTensorH0PDAlgEquivOfIso
-    (h : IsIso (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T).hom.hom) :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
-        PDCompletionH0 (S ⊗[R] T) p 0 := by
-  letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := pdCompletionCommRing (S ⊗[R] T) p 0
-  letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-  letI := derivedH0CommRing (completedAlgebra R (p : R) (S ⊗[R] T))
-  letI := derivedH0Algebra (completedAlgebra R (p : R) (S ⊗[R] T))
-  exact (derivedH0AlgEquivOfIsoUnderlying
-    (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T) h).trans
-      (completedAlgebraH0PDAlgEquiv R (S ⊗[R] T) p)
-
-/-- All higher Tor vanishing supplies the original F3 comparison before completion. -/
-def completedTensorH0PDAlgEquivOfTor
-    (hTor : ∀ n : ℕ, 0 < n →
-      IsZero (((Tor (ModuleCat R) n).obj (ModuleCat.of R S)).obj (ModuleCat.of R T))) :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
-        PDCompletionH0 (S ⊗[R] T) p 0 :=
-  completedTensorH0PDAlgEquivOfIso R p S T
-    (completedTensorAlgebraAugmentation_isIso_of_tor R (p : R) S T hTor)
-
-/-- Alternatively use the exact all-power Koszul criterion after completion. -/
-def completedTensorH0PDAlgEquivOfKoszul
-    (hKos : ∀ n : ℕ, IsIso ((derivedScalarConeFunctor R ((p : R) ^ n)).map
-      (boundedAboveDerivedTensorAlgebraAugmentation (R := R) S T).hom.hom.hom)) :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
-        PDCompletionH0 (S ⊗[R] T) p 0 :=
-  completedTensorH0PDAlgEquivOfIso R p S T
-    ((completedTensorAlgebraAugmentation_isIso_iff_koszul R (p : R) S T).mpr hKos)
-
-end SerrePositivity.DerivedCompletion
-
-end CompletedTensorPDComparisonPart
-
 section CompletedTensorH0ComparisonPart
 
 set_option backward.isDefEq.respectTransparency false
@@ -910,55 +807,58 @@ lemma completedTensorAlgebraAugmentation_h0_isIso
 
 variable (p : ℕ) (S T : Type u) [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
 
-/-- The original completed augmentation gives the F3 comparison without Tor or Koszul hypotheses. -/
-def completedTensorH0PDAlgEquiv :
+/-- The actual completed tensor H⁰ is the principal completion of the ordinary tensor,
+including when the ordinary tensor has unbounded p-power torsion. -/
+def completedTensorH0PrincipalRingEquiv :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
     (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃ₐ[R]
-        PDCompletionH0 (S ⊗[R] T) p 0 := by
+      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃+*
+        PrincipalCompletionH0 (S ⊗[R] T) (p : S ⊗[R] T) := by
   letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
   letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := pdCompletionCommRing (S ⊗[R] T) p 0
-  letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
   letI := derivedH0CommRing (completedAlgebra R (p : R) (S ⊗[R] T))
   letI := derivedH0Algebra (completedAlgebra R (p : R) (S ⊗[R] T))
+  letI := completedAlgebraScalarAlgebra R (p : R) (S ⊗[R] T)
+  letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+  letI := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
   exact (derivedH0AlgEquivOfIsoHomology
     (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T)
-    (completedTensorAlgebraAugmentation_h0_isIso R (p : R) S T)).trans
-      (completedAlgebraH0PDAlgEquiv R (S ⊗[R] T) p)
+    (completedTensorAlgebraAugmentation_h0_isIso R (p : R) S T)).toRingEquiv.trans
+      (completedAlgebraH0NatPrincipalAlgEquiv R (S ⊗[R] T) p).toRingEquiv
 
-/-- Its function is the actual completed augmentation followed by the standard F3 comparison. -/
-lemma completedTensorH0PDAlgEquiv_apply
+/-- Its function is the actual completed augmentation followed by the coefficient comparison. -/
+lemma completedTensorH0PrincipalRingEquiv_apply
     (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
       (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    completedTensorH0PDAlgEquiv R p S T x =
-      completedAlgebraH0PDAlgEquiv R (S ⊗[R] T) p
+    letI := derivedH0CommRing (completedAlgebra R (p : R) (S ⊗[R] T))
+    letI := completedAlgebraScalarAlgebra R (p : R) (S ⊗[R] T)
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+    letI := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
+    completedTensorH0PrincipalRingEquiv R p S T x =
+      completedAlgebraH0NatPrincipalAlgEquiv R (S ⊗[R] T) p
         (derivedH0AlgMap (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T) x) := rfl
 
-/-- The comparison preserves the completion unit and the original ordinary tensor H⁰ class. -/
-lemma completedTensorH0PDAlgEquiv_unit
+/-- The comparison preserves the original algebra completion unit on every H⁰ class. -/
+lemma completedTensorH0PrincipalRingEquiv_unit
     (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
       (boundedAboveDerivedTensorAlgebra (R := R) S T).X.obj) :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    completedTensorH0PDAlgEquiv R p S T
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+    completedTensorH0PrincipalRingEquiv R p S T
       (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit R (p : R)
         (boundedAboveDerivedTensorAlgebra (R := R) S T)) x) =
-      pdCompletionUnit (S ⊗[R] T) p 0 (derivedTensorH0AlgEquiv S T x) := by
+      principalCompletionUnitRingHom (S ⊗[R] T) (p : S ⊗[R] T)
+        (derivedTensorH0AlgEquiv S T x) := by
   let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
   let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing (S ⊗[R] T) p 0
-  let := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-  rw [completedTensorH0PDAlgEquiv_apply, completedTensorH0AlgebraAugmentation_unit]
+  let := derivedH0CommRing (completedAlgebra R (p : R) (S ⊗[R] T))
+  let := derivedH0Algebra (completedAlgebra R (p : R) (S ⊗[R] T))
+  let := completedAlgebraScalarAlgebra R (p : R) (S ⊗[R] T)
+  let := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+  let := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
+  rw [completedTensorH0PrincipalRingEquiv_apply, completedTensorH0AlgebraAugmentation_unit]
   have hb : completedAlgebraUnitAlgHom R (p : R) (S ⊗[R] T)
       (derivedTensorH0AlgEquiv S T x) =
       derivedH0AlgMap (boundedAboveCompletionAlgebraUnit R (p : R)
@@ -976,51 +876,66 @@ lemma completedTensorH0PDAlgEquiv_unit
       exact ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).app
         (ModuleCat.of R (S ⊗[R] T))).toLinearEquiv.symm_apply_apply _
     rw [hz]
-  rw [← hb, completedAlgebraH0PDAlgEquiv_unit]
+  rw [← hb, completedAlgebraH0NatPrincipalAlgEquiv_unit]
 
-/-- The left factor keeps its original ordinary tensor inclusion in F3. -/
-lemma completedTensorH0PDAlgEquiv_left
+/-- The left factor keeps its original ordinary tensor inclusion. -/
+lemma completedTensorH0PrincipalRingEquiv_left
     (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
       (boundedAboveDerivedAlgebra (R := R) S).X.obj) :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    completedTensorH0PDAlgEquiv R p S T
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+    completedTensorH0PrincipalRingEquiv R p S T
       (derivedH0AlgMap (boundedAboveCompletedTensorAlgebraLeft R (p : R) S T) x) =
-      pdCompletionUnit (S ⊗[R] T) p 0
+      principalCompletionUnitRingHom (S ⊗[R] T) (p : S ⊗[R] T)
         ((Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] T)
           ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).hom.app
             (ModuleCat.of R S) x)) := by
   let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing (S ⊗[R] T) p 0
-  let := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
+  let := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
   rw [boundedAboveCompletedTensorAlgebraLeft, ← derivedH0AlgMap_comp_apply]
-  erw [completedTensorH0PDAlgEquiv_unit R p S T]
+  erw [completedTensorH0PrincipalRingEquiv_unit R p S T]
   rw [derivedTensorH0AlgEquiv_apply, derivedTensorH0AlgHom_left]
 
-/-- The right factor keeps its original ordinary tensor inclusion in F3. -/
-lemma completedTensorH0PDAlgEquiv_right
+/-- The right factor keeps its original ordinary tensor inclusion. -/
+lemma completedTensorH0PrincipalRingEquiv_right
     (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
       (boundedAboveDerivedAlgebra (R := R) T).X.obj) :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := pdCompletionCommRing (S ⊗[R] T) p 0
-    letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-    completedTensorH0PDAlgEquiv R p S T
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+    completedTensorH0PrincipalRingEquiv R p S T
       (derivedH0AlgMap (boundedAboveCompletedTensorAlgebraRight R (p : R) S T) x) =
-      pdCompletionUnit (S ⊗[R] T) p 0
+      principalCompletionUnitRingHom (S ⊗[R] T) (p : S ⊗[R] T)
         ((Algebra.TensorProduct.includeRight : T →ₐ[R] S ⊗[R] T)
           ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).hom.app
             (ModuleCat.of R T) x)) := by
   let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing (S ⊗[R] T) p 0
-  let := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
+  let := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
   rw [boundedAboveCompletedTensorAlgebraRight, ← derivedH0AlgMap_comp_apply]
-  erw [completedTensorH0PDAlgEquiv_unit R p S T]
+  erw [completedTensorH0PrincipalRingEquiv_unit R p S T]
   rw [derivedTensorH0AlgEquiv_apply, derivedTensorH0AlgHom_right]
+
+/-- The comparison preserves the original coefficient algebra map. -/
+lemma completedTensorH0PrincipalRingEquiv_algebraMap (r : R) :
+    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+    completedTensorH0PrincipalRingEquiv R p S T (algebraMap R _ r) =
+      principalCompletionUnitRingHom (S ⊗[R] T) (p : S ⊗[R] T)
+        (algebraMap R (S ⊗[R] T) r) := by
+  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+  let := derivedH0CommRing (completedAlgebra R (p : R) (S ⊗[R] T))
+  let := derivedH0Algebra (completedAlgebra R (p : R) (S ⊗[R] T))
+  let := completedAlgebraScalarAlgebra R (p : R) (S ⊗[R] T)
+  let := completedAlgebraScalarTower R (p : R) (S ⊗[R] T)
+  let := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
+  let := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
+  change completedAlgebraH0NatPrincipalAlgEquiv R (S ⊗[R] T) p
+    ((derivedH0AlgEquivOfIsoHomology
+      (boundedAboveCompletedTensorAlgebraAugmentation R (p : R) S T)
+      (completedTensorAlgebraAugmentation_h0_isIso R (p : R) S T)) (algebraMap R _ r)) = _
+  rw [AlgEquiv.commutes, IsScalarTower.algebraMap_apply R (S ⊗[R] T), AlgEquiv.commutes]
+  rfl
 
 end DerivedCompletion
 end SerrePositivity
@@ -1047,15 +962,29 @@ def completedTensorH0AdicRingEquiv :
       (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃+*
         AdicCompletion (Ideal.span {(p : B)}) B := by
   letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := pdCompletionCommRing B p 0
-  letI := pdCompletionBaseAlgebra R B p 0
-  letI := pairCompletionAlgebra B (p : B) 0
   letI := principalCompletionCommRing B (p : B)
   letI := principalCompletionAlgebra B (p : B)
-  exact (completedTensorH0PDAlgEquiv R p S T).toRingEquiv.trans
-    ((pairCompletionZeroPrincipalAlgEquiv B (p : B)).toRingEquiv.trans
-      (principalCompletionAdicAlgEquiv B (p : B) hB).toRingEquiv)
+  exact (completedTensorH0PrincipalRingEquiv R p S T).trans
+    (principalCompletionAdicAlgEquiv B (p : B) hB).toRingEquiv
+
+/-- After the principal comparison, the classical comparison sends the principal unit to the
+adic unit. -/
+private lemma completedTensorH0AdicRingEquiv_of_principal
+    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
+      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj) (b : B)
+    (hx : letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+      letI := principalCompletionCommRing B (p : B)
+      completedTensorH0PrincipalRingEquiv R p S T x = principalCompletionUnitRingHom B (p : B) b) :
+    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+    completedTensorH0AdicRingEquiv R p S T hB x =
+      algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B) b := by
+  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
+  let := principalCompletionCommRing B (p : B)
+  let := principalCompletionAlgebra B (p : B)
+  change principalCompletionAdicAlgEquiv B (p : B) hB
+    (completedTensorH0PrincipalRingEquiv R p S T x) = _
+  rw [hx]
+  exact principalCompletionAdicAlgEquiv_unit B (p : B) hB b
 
 /-- The ring comparison preserves the original completion unit. -/
 lemma completedTensorH0AdicRingEquiv_unit
@@ -1065,22 +994,9 @@ lemma completedTensorH0AdicRingEquiv_unit
     completedTensorH0AdicRingEquiv R p S T hB
       (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit R (p : R)
         (boundedAboveDerivedTensorAlgebra (R := R) S T)) x) =
-      algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B) (derivedTensorH0AlgEquiv S T x) := by
-  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing B p 0
-  let := pdCompletionBaseAlgebra R B p 0
-  let := pairCompletionAlgebra B (p : B) 0
-  let := principalCompletionCommRing B (p : B)
-  let := principalCompletionAlgebra B (p : B)
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (completedTensorH0PDAlgEquiv R p S T _)) = _
-  rw [completedTensorH0PDAlgEquiv_unit]
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (pairCompletionUnitRingHom B (p : B) 0 _)) = _
-  rw [pairCompletionZeroPrincipalAlgEquiv_unit, principalCompletionAdicAlgEquiv_unit]
+      algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B) (derivedTensorH0AlgEquiv S T x) :=
+  completedTensorH0AdicRingEquiv_of_principal R p S T hB _ _
+    (completedTensorH0PrincipalRingEquiv_unit R p S T x)
 
 /-- The original left factor map becomes the standard completed tensor inclusion. -/
 lemma completedTensorH0AdicRingEquiv_left
@@ -1092,22 +1008,9 @@ lemma completedTensorH0AdicRingEquiv_left
       algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B)
         ((Algebra.TensorProduct.includeLeft : S →ₐ[R] B)
           ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).hom.app
-            (ModuleCat.of R S) x)) := by
-  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing B p 0
-  let := pdCompletionBaseAlgebra R B p 0
-  let := pairCompletionAlgebra B (p : B) 0
-  let := principalCompletionCommRing B (p : B)
-  let := principalCompletionAlgebra B (p : B)
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (completedTensorH0PDAlgEquiv R p S T _)) = _
-  rw [completedTensorH0PDAlgEquiv_left]
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (pairCompletionUnitRingHom B (p : B) 0 _)) = _
-  rw [pairCompletionZeroPrincipalAlgEquiv_unit, principalCompletionAdicAlgEquiv_unit]
+            (ModuleCat.of R S) x)) :=
+  completedTensorH0AdicRingEquiv_of_principal R p S T hB _ _
+    (completedTensorH0PrincipalRingEquiv_left R p S T x)
 
 /-- The original right factor map becomes the standard completed tensor inclusion. -/
 lemma completedTensorH0AdicRingEquiv_right
@@ -1119,44 +1022,18 @@ lemma completedTensorH0AdicRingEquiv_right
       algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B)
         ((Algebra.TensorProduct.includeRight : T →ₐ[R] B)
           ((DerivedCategory.singleFunctorCompHomologyFunctorIso (ModuleCat R) 0).hom.app
-            (ModuleCat.of R T) x)) := by
-  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing B p 0
-  let := pdCompletionBaseAlgebra R B p 0
-  let := pairCompletionAlgebra B (p : B) 0
-  let := principalCompletionCommRing B (p : B)
-  let := principalCompletionAlgebra B (p : B)
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (completedTensorH0PDAlgEquiv R p S T _)) = _
-  rw [completedTensorH0PDAlgEquiv_right]
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (pairCompletionUnitRingHom B (p : B) 0 _)) = _
-  rw [pairCompletionZeroPrincipalAlgEquiv_unit, principalCompletionAdicAlgEquiv_unit]
+            (ModuleCat.of R T) x)) :=
+  completedTensorH0AdicRingEquiv_of_principal R p S T hB _ _
+    (completedTensorH0PrincipalRingEquiv_right R p S T x)
 
 /-- The comparison preserves the original coefficient algebra map. -/
 lemma completedTensorH0AdicRingEquiv_algebraMap (r : R) :
     letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
     letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
     completedTensorH0AdicRingEquiv R p S T hB (algebraMap R _ r) =
-      algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B) (algebraMap R B r) := by
-  let := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  let := pdCompletionCommRing B p 0
-  let := pdCompletionBaseAlgebra R B p 0
-  let := pairCompletionAlgebra B (p : B) 0
-  let := principalCompletionCommRing B (p : B)
-  let := principalCompletionAlgebra B (p : B)
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (completedTensorH0PDAlgEquiv R p S T (algebraMap R _ r))) = _
-  rw [(completedTensorH0PDAlgEquiv R p S T).commutes]
-  change principalCompletionAdicAlgEquiv B (p : B) hB
-    (pairCompletionZeroPrincipalAlgEquiv B (p : B)
-      (pairCompletionUnitRingHom B (p : B) 0 (algebraMap R B r))) = _
-  rw [pairCompletionZeroPrincipalAlgEquiv_unit, principalCompletionAdicAlgEquiv_unit]
+      algebraMap B (AdicCompletion (Ideal.span {(p : B)}) B) (algebraMap R B r) :=
+  completedTensorH0AdicRingEquiv_of_principal R p S T hB _ _
+    (completedTensorH0PrincipalRingEquiv_algebraMap R p S T r)
 end SerrePositivity.DerivedCompletion
 
 end CompletedTensorClassicalComparisonPart
@@ -1171,47 +1048,6 @@ open scoped TensorProduct
 attribute [local instance] HasDerivedCategory.standard
 variable (R : Type u) [CommRing R] (p : ℕ) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-
-/-- The actual completed tensor H⁰ is the principal completion of the ordinary tensor,
-including when the ordinary tensor has unbounded p-power torsion. -/
-def completedTensorH0PrincipalRingEquiv :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
-    (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≃+*
-        PrincipalCompletionH0 (S ⊗[R] T) (p : S ⊗[R] T) := by
-  letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := pdCompletionCommRing (S ⊗[R] T) p 0
-  letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-  letI := pairCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T) 0
-  letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
-  letI := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
-  exact (completedTensorH0PDAlgEquiv R p S T).toRingEquiv.trans
-    (pairCompletionZeroPrincipalAlgEquiv (S ⊗[R] T) (p : S ⊗[R] T)).toRingEquiv
-
-/-- The comparison preserves the original algebra completion unit on every H⁰ class. -/
-lemma completedTensorH0PrincipalRingEquiv_unit
-    (x : (DerivedCategory.homologyFunctor (ModuleCat R) 0).obj
-      (boundedAboveDerivedTensorAlgebra (R := R) S T).X.obj) :
-    letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-    letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
-    completedTensorH0PrincipalRingEquiv R p S T
-      (derivedH0AlgMap (boundedAboveCompletionAlgebraUnit R (p : R)
-        (boundedAboveDerivedTensorAlgebra (R := R) S T)) x) =
-      principalCompletionUnitRingHom (S ⊗[R] T) (p : S ⊗[R] T)
-        (derivedTensorH0AlgEquiv S T x) := by
-  letI := derivedH0CommRing (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := derivedH0Algebra (boundedAboveCompletedTensorAlgebra R (p : R) S T)
-  letI := pdCompletionCommRing (S ⊗[R] T) p 0
-  letI := pdCompletionBaseAlgebra R (S ⊗[R] T) p 0
-  letI := pairCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T) 0
-  letI := principalCompletionCommRing (S ⊗[R] T) (p : S ⊗[R] T)
-  letI := principalCompletionAlgebra (S ⊗[R] T) (p : S ⊗[R] T)
-  change pairCompletionZeroPrincipalAlgEquiv (S ⊗[R] T) (p : S ⊗[R] T)
-    (completedTensorH0PDAlgEquiv R p S T _) = _
-  rw [completedTensorH0PDAlgEquiv_unit]
-  exact pairCompletionZeroPrincipalAlgEquiv_unit _ _ _
 
 variable (R' : Type u) [CommRing R'] (S' T' : Type u)
     [CommRing S'] [CommRing T'] [Algebra R' S'] [Algebra R' T']
