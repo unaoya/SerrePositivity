@@ -5,6 +5,9 @@
 -- D(T) → D(S) の関手ではない。必要なのは係数制限の ∞ 関手そのものなので、ここに基盤待ちの宣言として置く。
 module
 
+-- 取り込み時の依存先：drafts/DerivedGeneral/CompletionFunctor.lean（係数制限を用いない）。
+public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
+public import SerrePositivity.EInfinity.BarrattEccles.HomologyAlgebra
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.ScalarRestrictionNerve
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
@@ -34,10 +37,12 @@ A0 `prismaticCohomologyFrobenius`（Δ → φ_{A*}Δ、D 版）、A4 `frobeniusT
 noncomputable section
 universe u
 open CategoryTheory
+open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories
 
-open SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles SerrePositivity.EInfinity.Perfectoidization
+open SerrePositivity.BhattScholze.PerfectoidizationInterface (A_R)
 
 variable {S T : Type u} [CommRing S] [CommRing T]
 -- 11-03（BS-D2 の指摘）：f は型に現れないので section 変数にせず、各宣言の明示引数にする。
@@ -49,10 +54,12 @@ variable {S T : Type u} [CommRing S] [CommRing T]
 def derivedInfinityRestrictScalars (f : S →+* T) : derivedInfinityCategory T ⟶ derivedInfinityCategory S := sorry -- 基盤待ち（M13）
 
 /-- 概要：底変換と係数制限の随伴 f^* ⊣ f_*（Map(f^* X, Y) ≃ Map(X, f_* Y)）。
-方針：dg 模型の tensor-hom 随伴を nerve に移す。主張の形（∞ 随伴の述語）は基盤の名前が決まってから。
+方針：dg 模型の tensor-hom 随伴を nerve に移す。単位と余単位を QCatAdjunction にまとめる。
 規約：基盤待ち。
 使われ方：φ_A 半線形な射 Δ → φ_{A*}Δ を f^*Δ → Δ と読み替える所（A4 の塔の余極限）。 -/
-theorem derivedInfinityBaseChange_restrictScalars_adjunction (f : S →+* T) : True := by trivial -- 基盤待ち（M13）
+def derivedInfinityBaseChange_restrictScalars_adjunction (f : S →+* T) :
+    QCatAdjunction (derivedInfinityBaseChange f) (derivedInfinityRestrictScalars f) := by
+  sorry -- M13：複体の係数拡大・制限の随伴を dg nerve に移す
 
 /-- 概要：合成との両立：(g ∘ f)_* ≃ f_* ∘ g_*、id_* ≃ id（反復 φ_{A*}^n に使う）。
 方針：忘却関手の合成。
@@ -92,8 +99,10 @@ def cAlgRestrictScalars_id : FunctorIso (cAlgRestrictScalars (RingHom.id S)) (�
 使われ方：A5 StrongDescent（A → C = A/(p, φ^{-1}(d)) に沿う Δ_T ⊗^L_A C）、A2 の底変換 (4)。 -/
 def cAlgBaseChange (f : S →+* T) : CAlg_R S ⟶ CAlg_R T := sorry -- 基盤待ち
 
-/-- 概要：随伴 f^! ⊣ f_*（Map_{CAlg(T)}(X ⊗^L_S T, Y) ≃ Map_{CAlg(S)}(X, f_* Y)）。主張の形は ∞ 随伴の述語が決まってから。 -/
-theorem cAlgBaseChange_restrictScalars_adjunction (f : S →+* T) : True := by trivial -- 基盤待ち
+/-- 概要：随伴 f^! ⊣ f_*（Map_{CAlg(T)}(X ⊗^L_S T, Y) ≃ Map_{CAlg(S)}(X, f_* Y)）。単位・余単位と三角恒等式をもつ。 -/
+def cAlgBaseChange_restrictScalars_adjunction (f : S →+* T) :
+    QCatAdjunction (cAlgBaseChange f) (cAlgRestrictScalars f) := by
+  sorry -- M13-CAlg：代数の導来係数拡大の普遍性。A2 は .unitHom を使う
 
 /-- 概要：忘却との両立：U_T ∘ f^! ≃ f^{*,D} ∘ U_S（`derivedInfinityBaseChange f`）。 -/
 def cAlgBaseChange_forget (f : S →+* T) :
@@ -130,15 +139,39 @@ theorem derivedInfinityRestrictScalars_isColimitCone (f : S →+* T) {K : SSet.{
 /-- 概要：係数制限と導来完備化の両立：I ⊂ S、J ⊂ T で √(f(I)T) = √J なら、J 完備化の後に制限したものと、制限の後に I 完備化したものは `FunctorIso`
 （導来完備性は根基だけによる。Koszul 完備化の塔は f で対応する）。
 方針：D 版は DerivedGeneral/CompletionFunctor の `completion`（M13）で、CAlg 版は忘却との比較 `cAlgRestrictScalars_forget` を経由。
-規約：基盤待ち。主張の形は `completion` の引数（イデアル）が確定してから。A4 の `restrictFrobeniusCompletion`（f = φ_A、(p,d) と (p,φ(d)) は同じ根基）はこの特別な場合。
+規約：基盤待ち。完備化の引数は有限な生成元の集合。A4 の `restrictFrobeniusCompletion`（f = φ_A、(p,d) と (p,φ(d)) は同じ根基）はこの特別な場合。
 使われ方：A4 の Δ_perf の完備化と shift。 -/
-theorem derivedInfinityRestrictScalars_completion (f : S →+* T) : True := by trivial -- 基盤待ち（M13、`completion` の引数が決まってから型にする）
+def derivedInfinityRestrictScalars_completion (f : S →+* T) (I : Finset S) (J : Finset T)
+    (h : (Ideal.span (f '' (I : Set S))).radical = (Ideal.span (J : Set T)).radical) :
+    FunctorIso (Derived.completion T J ≫ derivedInfinityRestrictScalars f)
+      (derivedInfinityRestrictScalars f ≫ Derived.completion S I) := by
+  sorry -- M13：Koszul 塔の係数制限と根基による完備化の不変性
+
+/-- A4 の cAlgH0Algebra と同じ cofibrant 代表の H⁰。基底環は頂点から推論する。 -/
+def cAlgH0Ring (x : (CAlg_R S) _⦋0⦌) : Type u :=
+  ((cofibrantAlgebraDKInclusion S).obj ((cAlgVertexEquiv S).symm x)).carrier.homology 0
+
+instance (x : (CAlg_R S) _⦋0⦌) : CommRing (cAlgH0Ring x) :=
+  homologyCommRing ((cofibrantAlgebraDKInclusion S).obj ((cAlgVertexEquiv S).symm x))
+
+instance (x : (CAlg_R S) _⦋0⦌) : Algebra S (cAlgH0Ring x) :=
+  homologyAlgebra ((cofibrantAlgebraDKInclusion S).obj ((cAlgVertexEquiv S).symm x))
+
 
 /-- 概要：係数制限と H⁰：f_*(x) の H⁰ の台の環は x の H⁰ の台の環と同じで、S 作用は f に沿って読む。
 方針：忘却は台の複体を変えない。
 規約：基盤待ち。A4 の `restrictH0Equiv`・`restrictH0Equiv_base` はこれ（A4 の `cAlgH0Algebra` と同じ H⁰ の取り方）。
 使われ方：Lemma 8.4 (b)、E3 の `h0`。 -/
-theorem cAlgRestrictScalars_h0 (f : S →+* T) : True := by trivial -- 基盤待ち（H⁰ の取り方 `cAlgH0Algebra`（A4）を基盤側に移してから型にする）
+def cAlgRestrictScalars_h0 (f : S →+* T) (x : (CAlg_R T) _⦋0⦌) :
+    cAlgH0Ring ((cAlgRestrictScalars f).app _ x) ≃+* cAlgH0Ring x := by
+  sorry -- 忘却した複体の H⁰ の同定は E∞ 積と単位を保つ
+
+theorem cAlgRestrictScalars_h0_base (f : S →+* T) (x : (CAlg_R T) _⦋0⦌) :
+    (cAlgRestrictScalars_h0 f x).toRingHom.comp
+        (algebraMap S (cAlgH0Ring ((cAlgRestrictScalars f).app _ x))) =
+      (algebraMap T (cAlgH0Ring x)).comp f := by
+  sorry -- 制限された構造射は S → T と T → H⁰(x) の合成
+
 
 /-- 概要：離散代数の埋め込みと係数制限の両立（BS-D3 の D3-03、11-03）：離散 T 代数 U（`A_R T = Under (CommRingCat.of T)`）について、
 U を f で S 代数として読んだものの埋め込み `algebraEmbedding S` の像と、U の埋め込み `algebraEmbedding T` の像を `cAlgRestrictScalars f` で制限したものは

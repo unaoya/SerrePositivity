@@ -2,7 +2,14 @@
 -- 設計書：formalization-plans/bhatt-scholze/a2-design.md G-A2-3。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
+public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.InfinityCategories.Derived.BaseChange
+public import SerrePositivity.InfinityCategories.Derived.Homology
+public import SerrePositivity.InfinityCategories.Derived.StableLimits
+public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationCocone
+public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-!
@@ -11,14 +18,14 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 ## 概要
 D(A) の導来 (p,d) 完備な対象のなす充満部分 ∞ 圏 D(A)_comp と、包含の左随伴（反射）としての完備化 X ↦ X^∧。
 完備な対象の特徴づけ（Koszul 塔の極限、`IsModuleComplete` の D(A) 版）、完備化が完全であること、余極限の完備化、
-完備化が ⊗^L A/(p^n,d^n) を変えないこと。
+完備化単位が有限の冪 Koszul 複体とのテンソルを変えないこと。
 
 ## 方針
 複体の側の既存の導来完備化（HA/DerivedCompletion の `koszulCompletionObject`、`PDCompletionH0` など）を dg nerve で ∞ 関手にし、
-反射であることを `IsReflectiveSubcategory`（F2/Presentable）の形で述べる。
+反射であることを `IsReflectiveSubcategory`（F1B/Localization/Reflective）の形で述べる。
 
 ## 規約
-完備性は元 p, d（基底 prism の生成元）について。一般の有限生成イデアルは A0〜A2 では不要。
+有限集合 s の元ごとの導来完備性を使う。prism の (p,d) は適用側の特殊化。
 
 ## 使われ方
 A2-2（Kan 延長の値を (p,d) 完備化する）、A2-4（底変換・テンソルの完備化）、A4（Def 8.2 の Frobenius 余極限の完備化）、
@@ -33,50 +40,81 @@ open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories.Derived
 
-variable (A : Type u) [CommRing A] (p : ℕ) (d : A)
+open MonoidalCategory SerrePositivity.DerivedCompletion SerrePositivity.EInfinity.BarrattEccles
+attribute [local instance] HasDerivedCategory.standard
 
-/-- 概要：D(A) の頂点が導来 (p,d) 完備であること。
-方針：複体の表現について `IsModuleComplete`（p と d）。表現によらないことは別の補題。
-規約：—
-使われ方：完備な対象の部分圏。 -/
-def IsDerivedComplete (x : (derivedInfinityCategory A) _⦋0⦌) : Prop := sorry
+/-- 一元 a での導来完備性を D(A) の頂点に引き戻す。 -/
+def completeAt {A : Type u} [CommRing A] (a : A) (x : (derivedInfinityCategory A) _⦋0⦌) : Prop :=
+  IsComplete A a ((derivedInfinityHomotopyEquivalence A).functor.obj ⟨x⟩)
 
-/-- 概要：完備な対象の充満部分 ∞ 圏 D(A)_comp。
-方針：`fullSubcomplex`。
-規約：安定（fiber・cofiber・shift で閉じる）、極限で閉じる。
-使われ方：Δ の値の圏。 -/
-def completeSubcomplex : (derivedInfinityCategory A).Subcomplex := sorry
+variable (A : Type u) [CommRing A]
 
-/-- 概要：完備化 X ↦ X^∧ は包含の左随伴（反射）。
-方針：複体の導来完備化（Koszul 塔の極限）を dg nerve で関手にし、単位 X → X^∧ と普遍性。
-規約：`IsReflectiveSubcategory` の形。
-使われ方：Kan 延長の値の完備化、A4 の余極限の完備化。 -/
-theorem completion_isReflective : True := by trivial
+/-- s の各元について完備。空集合では全ての頂点を含む。 -/
+def IsDerivedComplete (s : Finset A) (x : (derivedInfinityCategory A) _⦋0⦌) : Prop :=
+  ∀ a ∈ s, completeAt a x
 
-def completion : derivedInfinityCategory A ⟶ derivedInfinityCategory A := sorry
+abbrev completeSubcomplex (s : Finset A) : (derivedInfinityCategory A).Subcomplex :=
+  fullSubcomplexOnVertices _ (IsDerivedComplete A s)
 
-/-- 概要：完備化は ⊗^L A/(p^n, d^n)（Koszul）を変えない：X^∧ ⊗^L Kos(p^n,d^n) ≃ X ⊗^L Kos(p^n,d^n)。
-方針：複体の計算（HA/DerivedCompletion の CompletionQuotientBaseChange など）。
-規約：—
-使われ方：完全平坦性の移送（A0-3c）、導来 Nakayama。 -/
-theorem completion_tensor_koszul : True := by trivial
+/-- Koszul 塔の極限から作る反射。随伴の単位が X → X^∧ を指定する。 -/
+def completionReflection (s : Finset A) :
+    Σ L : derivedInfinityCategory A ⟶ (completeSubcomplex A s : SSet),
+      QCatAdjunction L (completeSubcomplex A s).ι := by
+  sorry -- M13：Koszul 塔による導来完備化の普遍性を dg nerve に移す
 
-/-- 概要：完備化は完全（fiber 列を保つ）。
-方針：極限の交換。
-規約：—
-使われ方：HT filtration の完備化、Lemma 4.22。 -/
-theorem completion_exact : True := by trivial
+theorem completion_isReflective (s : Finset A) :
+    IsReflectiveSubcategory (derivedInfinityCategory A) (IsDerivedComplete A s) :=
+  ⟨⟨(completionReflection A s).1, (completionReflection A s).2⟩⟩
 
-/-- 概要：D(A)_comp の余極限 ＝ D(A) の余極限の完備化（反射的部分圏の余極限）。
-方針：左随伴は余極限を保つ。
-規約：—
-使われ方：A2-2 の sifted 余極限、A4 の Frobenius 余極限。 -/
-theorem complete_colimit : True := by trivial
+def completion (s : Finset A) : derivedInfinityCategory A ⟶ derivedInfinityCategory A :=
+  (completionReflection A s).1 ≫ (completeSubcomplex A s).ι
 
-/-- 概要：完備底変換 (− ⊗^L_A B)^∧ : D(A)_comp → D(B)_comp と、prism の射に沿う関手性。
-方針：テンソルの ∞ 関手（基盤）と完備化の合成。
-規約：—
-使われ方：Lemma 4.20・4.22、Construction 6.1、A2-4 (4)。 -/
-def completedBaseChange : True := trivial
+def completionUnit (s : Finset A) : FunctorHom (𝟙 _) (completion A s) :=
+  (completionReflection A s).2.unitHom
+
+/-- 台の D(A) の頂点が完備な E∞ 代数。 -/
+abbrev cAlgCompleteSubcomplex (s : Finset A) : (CAlg_R A).Subcomplex :=
+  fullSubcomplexOnVertices _ (fun x => IsDerivedComplete A s ((cAlgForgetDerived A).app _ x))
+
+def cAlgCompletionReflection (s : Finset A) :
+    Σ L : CAlg_R A ⟶ (cAlgCompleteSubcomplex A s : SSet),
+      QCatAdjunction L (cAlgCompleteSubcomplex A s).ι := by
+  sorry -- M13-CAlg：加群の完備反射を対称モノイダル局所化として代数へ移す
+
+def cAlgCompletion (s : Finset A) : CAlg_R A ⟶ CAlg_R A :=
+  (cAlgCompletionReflection A s).1 ≫ (cAlgCompleteSubcomplex A s).ι
+
+def cAlgCompletionUnit (s : Finset A) : FunctorHom (𝟙 _) (cAlgCompletion A s) :=
+  (cAlgCompletionReflection A s).2.unitHom
+
+/-- s を列 a として並べる。完備化単位を表す任意の辺に Kos(a₁^n,…,aᵣ^n;−) を
+適用した鎖写像は各次数のホモロジーに同型を誘導する。 -/
+theorem completion_tensor_koszul (s : Finset A) {r : ℕ} (a : Fin r → A)
+    (ha : Set.range a = (s : Set A)) (n : ℕ) (x : (derivedInfinityCategory A) _⦋0⦌)
+    (e : SSet.Truncated.Edge (X := (SSet.truncation 2).obj (derivedInfinityCategory A))
+      x ((completion A s).app _ x))
+    (he : SSet.Truncated.HomotopyCategory.homMk e = functorHomEvaluate (completionUnit A s) x)
+    (i : ℤ) :
+    IsIso (HomologicalComplex.homologyMap ((koszulFunctor (fun j => a j ^ n)).map
+      (DGNerve.edgeChainMap (e.map ((SSet.truncation 2).map derivedInfinityInclusion)))) i) := by
+  sorry -- Koszul 完備化単位は各有限 Koszul 商を変えない。koszulFunctor の対象部分は koszulComplexOn
+
+/-- 完備化は pullback 四角形を保つので fiber 列を保つ。 -/
+theorem completion_exact (s : Finset A)
+    (Q : (Δ[1] ⊗ Δ[1] : SSet.{u+1}) ⟶ derivedInfinityCategory A) (hQ : IsPullbackSquare Q) :
+    IsPullbackSquare (Q ≫ completion A s) := by
+  sorry -- Koszul 塔での有限極限と塔の極限の交換
+
+/-- 完備部分圏への反射で余極限錐を写す。 -/
+theorem complete_colimit (s : Finset A) {K : SSet.{u+1}} {F : K ⟶ derivedInfinityCategory A}
+    (c : JoinCocone F) (hc : IsColimitCone c) :
+    IsColimitCone (mapJoinCocone (completionReflection A s).1 c) := by
+  sorry -- completionReflection の左随伴は余極限を保つ
+
+/-- D 加群の完備底変換。環準同型と有限集合を入力し、標的では元の像に沿って完備化する。 -/
+def completedBaseChange {A : Type u} [CommRing A] {B : Type u} [CommRing B] (f : A →+* B) (s : Finset A) :
+    derivedInfinityCategory A ⟶ derivedInfinityCategory B := by
+  classical
+  exact derivedInfinityBaseChange f ≫ completion B (s.image f)
 
 end SerrePositivity.InfinityCategories.Derived
