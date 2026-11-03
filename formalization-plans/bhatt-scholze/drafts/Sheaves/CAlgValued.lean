@@ -4,7 +4,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
-public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedLimits
+public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
 -- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,CechConerveLimit}.lean を E := CAlg_R A で使う。
 
 /-!
@@ -22,7 +22,7 @@ U は極限錐を保つ（`cAlgForgetDerived_mapJoinCone_isLimit_of_transport`�
 層化と RΓ は CAlg_A が presentable（G12）なら Sheaves 層の S2・S4 から。
 
 ## 規約
-CAlg_A の presentable 性（G12）と小極限の存在は入力（EInfinity の到達点に依存）。U の保存性は要確認。
+CAlg_A の presentable 性（G12）と小極限の存在は入力（EInfinity の到達点に依存）。U の同値反映は forget_conservative に分ける。
 
 ## 使われ方
 A2-2（Δ の値の圏 𝒱 = (p,d) 完備な CAlg_A）、A4（Def 8.2 の E∞ 代数としての S_perfd）、E3 の CAlg 版（`PerfectoidizationInterfaceCAlg`）。
@@ -37,7 +37,8 @@ open scoped Simplicial
 
 namespace SerrePositivity.InfinityCategories.Sheaves
 
-open SerrePositivity.EInfinity
+open SerrePositivity.EInfinity.BarrattEccles
+open F2.Presentable (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] (J : GrothendieckTopology 𝒞) (A : Type u) [CommRing A]
 
@@ -50,18 +51,20 @@ def forgetPresheaf (F : Presheaf 𝒞 (CAlg_R A)) : Presheaf 𝒞 (derivedInfini
 
 /-- 概要：U は極限錐を保つ（HA 3.2.2.5。EInfinity の既存定理）。
 方針：`cAlgForgetDerived_mapJoinCone_isLimit_of_transport`。
-規約：「transport」の仮定の中身は要確認（既存の形に合わせる）。
+規約：FreeProbeDerivedFreeForget の系が transport の証人を供給する。
 使われ方：層 ⇒ 忘却像が層。 -/
 theorem forget_isLimitCone {K : SSet.{u + 1}} {D : K ⟶ CAlg_R A} (c : JoinCone D) (hc : IsLimitCone c) :
     IsLimitCone (c.postcomp (cAlgForgetDerived A)) := by
-  sorry -- 既存の `cAlgForgetDerived_mapJoinCone_isLimit_of_transport`
+  exact cAlgForgetDerived_mapJoinCone_isLimit A c hc
 
 /-- 概要：U は保存的：E∞ 代数の射で下の D(A) の射が可逆なら可逆。
 方針：Barratt–Eccles 代数の弱同値は下の複体の擬同型（モデル圏の定義）。
 規約：—
 使われ方：極限錐の反映。
 要確認：EInfinity に同じ主張があるか（`AlgebraRelativeComparisons` 付近）。 -/
-theorem forget_conservative : True := by trivial
+theorem forget_conservative {x y : (CAlg_R A) _⦋0⦌} (e : SSet.Edge x y)
+    (he : IsInvertibleEdge (e.map (cAlgForgetDerived A)).toTruncated) : IsInvertibleEdge e.toTruncated := by
+  sorry -- 台の複体の擬同型が E∞ 代数の局所化の同値を検出する
 
 /-- 概要：CAlg_A に極限が存在すれば、U は極限錐を反映する（保存的 ＋ 保存）。
 方針：標準：極限錐との比較射が U で同値になり、保存性で同値。
@@ -101,13 +104,17 @@ def derivedGlobalSectionsCAlg (hJ : Sheafification J (CAlg_R A)) (hA : IsPresent
 方針：U は極限錐を保ち、層化と両立（層の忘却像は層、単位の忘却像は D(A) 値の層化の単位に同値）。
 規約：同値は D(A) の可逆な辺。
 使われ方：A0 の D(A) 値の Δ と A2 の CAlg 値の Δ の一致。 -/
-theorem forget_sheafify (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A)) : True := by
-  trivial -- 主張：U(F^♯_CAlg) ≃ (U F)^♯_{D(A)}（単位の U 像が局所同値）。S4 の非安定版の一部（W9-I-05）
+def forget_sheafify (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A))
+    (F : Presheaf 𝒞 (CAlg_R A)) :
+    FunctorIso (sheafify J hJ' (forgetPresheaf A (sheafify J hJ F)))
+      (sheafify J hJ' (forgetPresheaf A F)) := by
+  sorry -- S4：CAlg 値の単位の忘却は D(A) 値の局所同値。忘却した層は既に層
 
-theorem forget_derivedGlobalSections (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A))
+def forget_derivedGlobalSections (hJ : Sheafification J (CAlg_R A)) (hJ' : Sheafification J (derivedInfinityCategory A))
     (hA : IsPresentable (CAlg_R A)) (hD : IsPresentable (derivedInfinityCategory A)) (F : Presheaf 𝒞 (CAlg_R A)) :
-    True := by -- 主張：D(A) の可逆な辺 U(RΓ_CAlg F) ≃ RΓ_{D(A)}(U ∘ F)。`forget_sheafify` と U の極限保存から。要確認：辺の可逆性の述語
-  trivial
+    VertexIso ((cAlgForgetDerived A).app _ (derivedGlobalSectionsCAlg J A hJ hA F))
+      (derivedGlobalSections J hJ' hD (forgetPresheaf A F)) := by
+  sorry -- 忘却は極限を保つ。forget_sheafify と層の単位で二つの極限錐を比較
 
 /-- 概要：環の前層（O_Δ のような離散な環の前層）を CAlg_A 値前層として読む（離散埋め込み CommRing_A → CAlg_A）。
 方針：EInfinity の離散代数の埋め込み（`algebraEmbeddingForgetIso` の始域）。

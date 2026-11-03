@@ -85,3 +85,64 @@
 * **結論 True の五宣言**　`totEInfinity_cohomologyRing` は E∞ 代数の全次数の π_* の積の入口待ち。`hasDescentIndexLEOver_two_of_rhom` と `hasDescentIndexLE_two_of_rhom` はそれぞれ Mod_R と D(A) の内部 Hom 待ち。`isDescendableOver_complete` と `isDescendable_complete` は完備反射に先立つ導来テンソルの ∞ 関手（β5）待ち。`IsThickTensorIdeal.tensor` の一欄も同じ理由で残した。
 * **要確認**　新たな仮名はない。正規化余鎖の Barratt–Eccles 作用（CosimplicialEInfinity）と、P⁰ を定める E(p) の作用（EInfinityPowerOperation）は本体実装時に照合する。既存の `exists_unique_dgHom.hlin` は DeRhamPolynomial の仮定の仮置きで、入口表 §1.6 に従い中身の段階に残した。
 * **検査**　コメントを除いた宣言の結論を数え、Shared は 5 件、Sheaves は 11 件、drafts 全体は **16 件**。五宣言・構造体一欄の docstring に理由があること、追加した import のパス、括弧、A 側からの参照、`git diff --check` を点検した。ビルド・Lean の型検査は行っていない。
+
+## 第 3 部　停止点 3・Sheaves
+
+開始基準は停止点 2 の検収 `ee7fa9fad`。Sheaves の名前つき宣言で結論が `True` だった **11 件すべて**を具体化した。加えて `derivedGlobalSections_of_le` の存在文の中の `True` を可逆性に替え、S1 の二つの層判定を新設した。
+
+| ファイル | 開始時の 11 件の内訳 | 主張・指定した射 |
+| --- | ---: | --- |
+| SheafCondition | 0 | S1-E は `FinitaryExtensive` の下で、空族を含む有限積の指定錐を送ったものが極限錐になることと同値。`isSheaf_sup_iff` は二位相それぞれの層条件との同値。 |
+| GlobalSections | 1 | `sheafifyUnit_isEquivalence_of_isSheaf` は実際の単位ホモトピーを ihom の辺にして `IsInvertibleEdge` を課す。`derivedGlobalSections_of_le` は二つの Γ の頂点を結ぶ **E の辺**に同じ述語を課す。 |
+| CechConerveLimit | 1 | `isLimitCone_iff_restrict_cech_large` は同じ錐とその Čech 制限を比較する。A5 のように制限先の錐だけが与えられる場合は、その頂点を保つ延長の存在も別に述べた。 |
+| CAlgValued | 3 | `forget_conservative` は忘却した辺の可逆性を反映する。`forget_sheafify` は各 F での `FunctorIso`、`forget_derivedGlobalSections` は `VertexIso`。忘却による極限保存には実体の `cAlgForgetDerived_mapJoinCone_isLimit` を使える。 |
+| SpaceValued | 6 | `sheafification_exists_spaces`、`sheafify_discrete_eq`、`localEquiv_of_sheafifyIso`、`discretePushout_isDiscrete`、`sectionsOf_pushout`、`sectionsOf_colimit`。集合値の射を層化した辺、また押し出しの二つの合成二単体まで指定した。 |
+
+**新設宣言（ファイル別）**
+
+* SheafCondition — `PreservesFiniteProductsOnSite`、`isSheaf_extensive_iff_preservesFiniteProducts`、`isSheaf_sup_iff`。既存の `JoinCone.ulift` は Core/UniverseLimits の宣言につないだ。`Coverage` の既存の射影名を Mathlib の `coverings` に合わせた。
+* GlobalSections — `sheafificationFunctor`。`Sheafification J E` は反射データの存在を表す Prop。証人を一つ選び、同じ反射を `sheafify` の値・単位・射に使う。
+* CechConerveLimit — `PresheafLarge`、`cechShapeLarge`、`exists_limitCone_of_cech_large`。対象が Type (u+1)、射が Type u の圏の nerve はそのまま。Δ の nerve だけを持ち上げる。
+* CAlgValued — 既存名を保ち、三宣言の結果を具体化した。
+* SpaceValued — `setsToKan`、`discretePresheaf`、`discretePresheafInclusion`、`Is0Truncated`、`discretePushoutSquare`、`liftedSetYoneda`、`oppositeSpaceYoneda`、`weightedSectionsData`、`weightedSections`、`weightedSections_discrete`、`weightedSections_discrete_map`。重み付き切断は O の反対 Yoneda に沿う右 Kan 拡張。集合値の重みについて、従来の `sectionsOf` の選んだ極限との同型と、射 `sectionsOf_map` に関する可換式を置いた。
+
+**A 側の呼び出しと引数**（行番号は `ee7fa9fad`）
+
+| A 側 | 使う入口 |
+| --- | --- |
+| A6/ArcSite:272–288,303–332、A6/ArcSheafProperty:508–514 | `isSheaf_extensive_iff_preservesFiniteProducts F` は site に `FinitaryExtensive` を要求する。`isSheaf_sup_iff J J' F` は `arcTopology_eq_sup` の後に適用する。A6 の `PreservesFiniteRingProducts` は反対圏の有限余積を環の有限積に戻した特殊化。適用時には、異なる二射影の affine 側の引き戻しが零環であることを示す。零環は site の対象であり、空被覆の条件も含む。A6 の古い docstring の修正は中身の段階。 |
+| A5/WeaklyInitialAndDescent:120–141,177–180 | `isLimitCone_iff_restrict_cech_large hU d F c`。A5 の `limit_perfUnder_eq_tot` の入力は小さい Δ 側の錐 t と極限性 ht なので、ここでは `exists_limitCone_of_cech_large hU d F t ht` を使う。A5 の `unopUnop` による添字の読み替えと合わせる。 |
+| A0/CechAlexander:227–240、A2/DerivedPrismaticCohomology:125–140,288–292、A5/PerfectSiteComparison:65–78、A6/ArcSheafProperty:564 | `sheafifyUnit_isEquivalence_of_isSheaf J hJ hF` は S2 が Γ の錐を前層へ移す入口。粗い位相との比較は `derivedGlobalSections_of_le J J' h hJ hJ' hE hF`。`derivedGlobalSectionsCAlg J A hJ hA F` の引数は同じ。A2 の `forget_derivedGlobalSections J A hJ hJ' hA hD F` は `forget_sheafify J A hJ hJ' F` と極限保存から。 |
+| A5/InterfaceLimitCone:62 | `forget_isLimitCone A c hc` の極限保存。`forget_conservative A e he` は対象を推論し、忘却後の辺の可逆性を受け取る。 |
+| A6/Excision:144,186–199,208–209,261–286 | 既存の `sectionsOf_eq_limit_elements`・`sections_localEquiv_iso` の直接呼び出しは同じ引数順。`localEquiv_of_sheafifyIso J hJ φ hφ` は離散な φ を同じ層化関手で送った ihom の辺の可逆性。`discretePushout_isDiscrete f g` と `sectionsOf_pushout f g O hE` では商から来る脚に `Mono f` を供給し、標準余錐の全体を反転して切断を取る。`sectionsOf_colimit O hE c hc` は空間値前層圏での小さい ∞ 余極限錐を受け取る。 |
+
+**入口表との差**　D5-06（`4254d57c8`）で S1-E の非交叉性を明示した。D5-07（`109a2cde4`）について、`SpaceInfinity` とその `Quasicategory` インスタンスは F1/Categories/CatInfinity に既存。さらに現行の F2/Presentable/SpacePresentable には `space_isPresentable : IsPresentable SpaceInfinity`（`751f1bfba`）もある。S8-1 の引数をこの定理で満たせる。集合値の押し出しに絞った S8-4 には A6 が持つ単射の仮定を明記した。一般の集合の余等化子には適用しない。例えば二本の恒等写像を点から点へ送る図式のホモトピー余等化子は円になる。
+
+## BS-D5 総括
+
+| 区分 | 開始時の結論 `True` | 具体化 | 残り |
+| --- | ---: | ---: | ---: |
+| DerivedGeneral | 14 | 14 | 0 |
+| Shared | 28 | 23 | 5 |
+| Sheaves | 11 | 11 | 0 |
+| **合計** | **53** | **48** | **5** |
+
+宣言を分割しても開始時の一件として数えた。この表とは別に、Shared/Descendable の `finiteColimits`・`retracts`・`shifts` の三欄と、Sheaves/GlobalSections の `derivedGlobalSections_of_le` の結論中の存在条件を具体化した。全新設名は第 1 部「定義と新設した入口」、第 2 部「型を付けた宣言・新設した入口」、本部「新設宣言」にファイル別で列挙した。A 側の来歴・引数・実コードの参照箇所は各部の対応表にあり、A0〜A9 の編集はない。
+
+**× のまま残した五宣言と一欄**
+
+| ファイル | 宣言・欄 | 待っているもの |
+| --- | --- | --- |
+| Shared/CosimplicialEInfinity | `totEInfinity_cohomologyRing` | 全次数の E∞ ホモトピー環の積と cup 積の比較。π₀ の環だけでは型が決まらない。 |
+| Shared/Descendable | `hasDescentIndexLEOver_two_of_rhom`、`hasDescentIndexLE_two_of_rhom` | 一般の底の Mod_R、離散底の D(A) の内部 Hom の ∞ 関手。 |
+| Shared/Descendable | `isDescendableOver_complete`、`isDescendable_complete` | 導来テンソルの ∞ 関手（β5）と反射を合成した完備テンソル。 |
+| Shared/Descendable | `IsThickTensorIdeal.tensor`（欄） | 任意の頂点との導来テンソルの ∞ 関手。 |
+
+**要確認の一覧**
+
+* **DerivedGeneral**　新規の未確定名はない。M13・M13-CAlg に証明と実装が残る。
+* **Shared**　CosimplicialCupProduct の加法群への忘却は D5-05 の RingCat 経由で接続。CosimplicialEInfinity の正規化余鎖に対する Barratt–Eccles 作用、EInfinityPowerOperation の E(p) による P⁰ は実装時の要確認。DeRhamPolynomial の `exists_unique_dgHom.hlin` は η¹ の線形性を表す未具体化の **仮定**。上表の残り五宣言には数えていない。
+* **Sheaves**　SpaceValued の `discretePresheaf`・`Is0Truncated` の公開名と離散埋め込みの接続を ∞ レーンで照合する。presentable 性の現行名は上記の `F2.Presentable.space_isPresentable`。S1 の生成系からの降下、CAlgValued の忘却の同値反映と非安定な S4、S8 の右 Kan 拡張・層化の比較は証明段階の入口。CAlg の忘却の極限保存は `FreeProbeDerivedFreeForget` に無条件版があった。
+* **設計訂正**　完備化・切り捨てでは D5-01・02、Shared では D5-03〜05、Sheaves では D5-06・07 を反映した。設計書・入口表の他セッションのコミットには変更を加えていない。
+
+**確認の範囲**　開始基準 `dc77a84dd` と現状をコメントを除いて照合した。Sheaves の `True` 結論と `∃ e, True` は解消し、drafts 全体に残る `True` 結論は上表の Shared 五宣言だけである。実 import 先、新設・変更した宣言名、括弧、変更先と `git diff --check` を静的に確認した。ビルド・Lean の型検査は実行していない。

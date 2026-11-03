@@ -103,7 +103,7 @@ theorem exists_limitCone_of_cech {U : 𝒟} (hU : IsWeaklyTerminal U) (d : CechN
 /-! ## 大きい添字圏の版（W9-I-04、BS-D3 の D3-02。2026-11-03）
 
 E3 の添字圏 `PerfUnder_u p S`（対象 Type (u+1)、射 Type u）は `SmallCategory` ではない。上の `CechNerveData` と同じ四欄を `[Category.{u} 𝒟]`・`𝒟 : Type (u+1)` で述べ、
-Čech 側（U_• と Tot）は小さいままにする。補題の主張の形は S1 の前層の形状（`presheafShape` は小さい圏用）を大きい圏に広げる基盤の名前が決まってから。 -/
+Čech 側（U_• と Tot）は小さいままにする。大きい nerve は最初から E と同じ宇宙にある。 -/
 
 section Large
 variable {𝒟 : Type (u + 1)} [Category.{u} 𝒟]
@@ -122,11 +122,26 @@ structure CechNerveDataLarge (U : 𝒟) where
   proj_map : ∀ {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 1)),
     obj.map θ.op ≫ proj m i = proj n (θ.toOrderHom i)
 
-/-- 概要：S3 の大きい版：U が弱終で d がその Čech 脈体なら、E 値前層 F（大きい 𝒟 上）の錐が極限錐 ⇔ Čech 脈体への制限が極限錐。
-方針：小さい版の証明（効果的エピ／Bousfield–Kan）は添字の大きさによらない。主張の形は大きい圏の前層の形状の名前が決まってから型にする。
-規約：基盤待ち（W9-I-04）。
-使われ方：A5-4。 -/
-theorem isLimitCone_iff_restrict_cech_large {U : 𝒟} (hU : IsWeaklyTerminalLarge U) (d : CechNerveDataLarge U) : True := by trivial
+abbrev PresheafLarge (𝒟 : Type (u+1)) [Category.{u} 𝒟] (E : SSet.{u+1}) :=
+  nerve 𝒟ᵒᵖ ⟶ E
+
+/-- Δ 側だけを持ち上げる。A5 の largeCechShape と同じく射列に rightOp を適用する。 -/
+def cechShapeLarge {U : 𝒟} (d : CechNerveDataLarge U) :
+    (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory) ⟶ nerve 𝒟ᵒᵖ where
+  app _ := ↾fun x => (d.obj.rightOp.mapComposableArrows _).obj x.down
+  naturality := by sorry -- 射列の制限と関手による像は可換
+
+/-- 大きい添字圏の前層に対する S3。制限の前後で錐の頂点は同じ。 -/
+theorem isLimitCone_iff_restrict_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (c : JoinCone F) :
+    IsLimitCone c ↔ IsLimitCone (restrictJoinCone c (cechShapeLarge d)) := by
+  sorry -- 各試験対象から U への写像の集合は非空。その Čech 脈体で S3 と同じ極限判定
+
+/-- A5 が受け取るのは Čech 側の錐だけなので、その延長も頂点つきで述べる。 -/
+theorem exists_limitCone_of_cech_large {E : SSet.{u+1}} [Quasicategory E] {U : 𝒟} (hU : IsWeaklyTerminalLarge U)
+    (d : CechNerveDataLarge U) (F : PresheafLarge 𝒟 E) (t : JoinCone (cechShapeLarge d ≫ F))
+    (ht : IsLimitCone t) : ∃ c : JoinCone F, IsLimitCone c ∧ c.vertex = t.vertex := by
+  sorry -- Čech の添字関手の始性による錐の延長（G8・G9）
 
 end Large
 
