@@ -266,6 +266,7 @@ public import SerrePositivity.InfinityCategories.Core.SliceOpposite
 public import SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalence
 public import SerrePositivity.InfinityCategories.Core.SliceRestrictionEquivalenceLifting
 public import SerrePositivity.InfinityCategories.Core.SliceUnderRestriction
+public import SerrePositivity.InfinityCategories.Core.SmallModelNerve
 public import SerrePositivity.InfinityCategories.Core.StdSimplexProductMap
 public import SerrePositivity.InfinityCategories.Core.StdSimplexTerminal
 public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison

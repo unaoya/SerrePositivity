@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Core.SmallModelNerve
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredHomotopyRetracts
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
@@ -4798,3 +4799,5 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_id
 #check @SerrePositivity.InfinityCategories.F2.functorIso_unit_self_whisker
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_app_heq
+
+#print axioms SerrePositivity.InfinityCategories.smallModelNerveComparison
