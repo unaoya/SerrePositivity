@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
 
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyColimitNativeCone
 public import SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafFamilyComparison

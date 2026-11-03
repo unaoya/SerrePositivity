@@ -5455,6 +5455,11 @@
         "SerrePositivity.InfinityCategories.HomotopyLimits.KanDiscreteNativeConeOfLegs",
         "SerrePositivity.InfinityCategories.HomotopyLimits.NativeDiscreteLegHomotopy"
       ]
+    },
+    "downstream_imports": {
+      "SerrePositivity.InfinityCategories.F2.Presentable.SigmaPresheafColimitFiniteCone": [
+        "SerrePositivity.InfinityCategories.HomotopyLimits.FiniteProductIndexTransport"
+      ]
     }
   },
   {
