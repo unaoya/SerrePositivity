@@ -6,6 +6,8 @@ public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
 public import SerrePositivity.HomologicalAlgebra.Koszul.ParameterAnnihilators
+public import SerrePositivity.BhattScholze.Almost.Lemma103
+public import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 
 /-! # perfectoid イデアルによる商の完備な積と Tor の入力の移送
 
