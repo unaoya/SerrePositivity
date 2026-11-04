@@ -282,7 +282,7 @@ theorem deltaRootRawInternalH0_isCompleteModuleReflection :
 theorem exists_deltaRootRawInternalPDLinearEquiv :
     ∃ e : H Z ≃ₗ[Raw] PDCompletionH0 Raw p z,
       ∀ x : Raw, e (deltaRootRawInternalH0Unit D d b x) =
-        koszulCompletionH0Unit Raw (pairKoszulCoordinates Raw (p : Raw) z) x := by
+        pairCompletionH0Unit Raw (p : Raw) z x := by
   simpa only [deltaRootRawInternalH0Unit, DeltaRootRawInternalIteratedCompletion,
     iteratedPDH0Unit] using
       exists_iteratedPDH0LinearEquiv Raw a z p (map_natCast c p)
@@ -294,7 +294,7 @@ def deltaRootRawInternalPDLinearEquiv : H Z ≃ₗ[Raw] PDCompletionH0 Raw p z :
 /-- 比較は全raw係数の元の完備化像を保つ。 -/
 theorem deltaRootRawInternalPDLinearEquiv_unit (x : Raw) :
     deltaRootRawInternalPDLinearEquiv D d b (deltaRootRawInternalH0Unit D d b x) =
-      koszulCompletionH0Unit Raw (pairKoszulCoordinates Raw (p : Raw) z) x :=
+      pairCompletionH0Unit Raw (p : Raw) z x :=
   (exists_deltaRootRawInternalPDLinearEquiv D d b).choose_spec x
 
 /-- 元の実根添加源の実H0とrawのPD完備化H0の具体的A線形同型。 -/
@@ -362,8 +362,7 @@ def deltaRootRawInternalPDAlgEquiv :
   have hT : ∀ j : Fin 2, IsModuleComplete Raw
       (pairKoszulCoordinates Raw (p : Raw) z j) (H Z) := by
     simpa only [map_natCast] using deltaRootRawInternalH0_isComplete D d b
-  have h1 : e.symm (koszulCompletionH0Unit Raw
-      (pairKoszulCoordinates Raw (p : Raw) z) 1) = (1 : H Z) := by
+  have h1 : e.symm (pairCompletionH0Unit Raw (p : Raw) z 1) = (1 : H Z) := by
     apply e.injective
     rw [LinearEquiv.apply_symm_apply]
     exact (deltaRootRawInternalPDLinearEquiv_unit D d b 1).symm

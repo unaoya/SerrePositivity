@@ -1542,9 +1542,9 @@ include hp
 theorem exists_iteratedPDH0LinearEquiv :
     ∃ e : H Z ≃ₗ[R] PDCompletionH0 R p d,
       ∀ x : R, e (iteratedPDH0Unit R f d x) =
-        koszulCompletionH0Unit R (pairKoszulCoordinates R (p : R) d) x := by
+        pairCompletionH0Unit R (p : R) d x := by
   let B := ModuleCat.of R (PDCompletionH0 R p d)
-  let u := koszulCompletionH0Unit R (pairKoszulCoordinates R (p : R) d)
+  let u := pairCompletionH0Unit R (p : R) d
   let v := iteratedPDH0Unit R f d
   let h := iteratedPDH0_isCompleteModuleReflection R f d
   have hB : IsCompleteModuleReflection R (pairKoszulCoordinates R f d) B (u 1) := by
@@ -1582,7 +1582,7 @@ def iteratedPDH0LinearEquiv : H Z ≃ₗ[R] PDCompletionH0 R p d :=
 /-- 比較は全raw係数の元の完備化像を保つ。 -/
 theorem iteratedPDH0LinearEquiv_unit (x : R) :
     iteratedPDH0LinearEquiv R f d p hp (iteratedPDH0Unit R f d x) =
-      koszulCompletionH0Unit R (pairKoszulCoordinates R (p : R) d) x :=
+      pairCompletionH0Unit R (p : R) d x :=
   (exists_iteratedPDH0LinearEquiv R f d p hp).choose_spec x
 
 end SerrePositivity.BhattScholze

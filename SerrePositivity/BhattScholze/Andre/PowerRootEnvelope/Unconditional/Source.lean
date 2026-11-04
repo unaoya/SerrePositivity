@@ -1184,7 +1184,7 @@ def powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional : H Z ≃ₗ[Ra
 使われ方：BS Rem 7.15（著者版 p.62）の候補係数射との後続比較。 -/
 theorem powerRootPrismMonicRawInternalPDLinearEquiv_unit_of_unconditional (x : Raw) :
     powerRootPrismMonicRawInternalPDLinearEquiv_of_unconditional W hW f (iteratedPDH0Unit Raw a z x) =
-      koszulCompletionH0Unit Raw (pairKoszulCoordinates Raw (p : Raw) z) x :=
+      pairCompletionH0Unit Raw (p : Raw) z x :=
   iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
 
 /-- 概要：元の実モニック源の逐次完備化 H⁰ は、raw PD 環の同じ A 係数制限と同型。
