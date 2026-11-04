@@ -222,6 +222,7 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 
 - 2026-11-03：作成（BS-D4 完了後。A0〜A9 に `True` なし、基盤側 53 件）。
 - 2026-11-03（調整役回答、coordination.md 8ef332d45）：§4 の三つの穴に回答。𝒮・G13 は ∞（`SpaceInfinity`）、⊗^L は ∞（β5、M13 に含めない）、S4・S5 は BS。G12・Core の小補題も ∞ の依頼へ。依頼書は W2b 後に調整役が起こす。
+- 2026-11-04（IF-G1 第一区切り、main 7bda72c3c）：drafts の仮名を本名に。`setsToKan`（drafts 版を削除）・`discreteSpaceInclusion`・`Is0TruncatedSpace` は F1/Categories/DiscreteSpace、`discretePresheaf_vertex` は `discreteSpaceInclusion_diagramVertex`、`discretePresheafInclusion` の辺は `discreteSpaceInclusion_presheafInclusion_edge` で閉じた。`tensorWith` は Derived/Tensor/Fixed、G8 は F2/Tensor/SetSections の `tensorSpaceFunctor_setWeightHom`（S4 の生成辺は IF-G2 の自然性待ち）、G3 は `derivedInfinityCategory_isPresentable`、Core は `smallModelNerveComparison`（A0 `structurePresheafDerived` の入口）。
 - 2026-11-04（調整役了解）：G13・⊗^L の要望は IF-G1 §5 へ（計算式は `rfl`、本質像の定義、合成可能な自己関手）。
 - 2026-11-04（BS-D6 完了、2074a8d9e）：Descendable の `tensor` 欄と `IsDescendable` の本体、離散底の完備版、S4 の二段化（G4・G6 の既存名で反射まで証明の形）、S8 の点ごとの接続。残る `True` は 4（§1.5 の 1、§1.7 の 3）。∞ への要望：`discreteSpaceInclusion` の頂点・辺の計算式（厳密な等号）、`Is0TruncatedSpace` ＝ 離散埋め込みの本質像。
 - 2026-11-04（IF-G1 停止点 1、main 7401c3588）：G4・G6 は既存の F2 名で済む。⊗^L（`tensorWith`）と G13（`discreteSpaceInclusion`・`Is0TruncatedSpace`）は供給予定。BS 側の追従は BS-D6（`bhatt-scholze-codex-d6.md`）：Descendable の `tensor` 欄・`IsDescendable` の本体・完備版、S4 の二段化、S8 の点ごとの接続。

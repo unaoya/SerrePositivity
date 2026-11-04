@@ -235,7 +235,7 @@ def PerfectPrismaticSite : Type u :=
 （`presheafShape (PrismaticSite)`、すなわち `uliftFunctor.obj (nerve (PrismOverSmall))`）から大きい nerve への射で引き戻す。
 規約：E3 の `J R = discreteEmbedding R` と同じ埋め込み。
 使われ方：Δ_{R/A} の RΓ の入力。
-要確認：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の形の射（ULift の圏の nerve と uliftFunctor の比較）を基盤から探す。 -/
+小さい模型の比較は Core/SmallModelNerve の `smallModelNerveComparison`（IF-G1 Core、main 7bda72c3c）。 -/
 def structurePresheafDerived :
     InfinityCategories.Sheaves.Presheaf (PrismaticSite P R κ) (InfinityCategories.derivedInfinityCategory A) :=
   sorry -- 小さい模型の持ち上げた nerve → nerve (PrismOver) → nerve (Under A) → D(A)
