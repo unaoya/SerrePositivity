@@ -1,0 +1,71 @@
+{
+  "status": "CANDIDATE_PASS",
+  "module": "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+  "import": "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness",
+  "head_before": "eb16fee32e8aa971b98ce0649b75d513130ceb39",
+  "baseline": "45e12b933a324a746faa59fde3956fae23639c1e",
+  "before_modules": [
+    "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+    "SerrePositivity.Spectra.ModelCategory.PointedPresentability",
+    "SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal"
+  ],
+  "scratch": "/private/tmp/ifw2c-downstream-before-45e12b933",
+  "judgment": "IF-W2c §7 / IF-W2b §17-3 / DG-W3 §11: one supplemental import; no body change.",
+  "before_build": {
+    "command": [
+      "lake",
+      "build",
+      "SerrePositivity.Spectra.ModelCategory.PointedGenerators",
+      "SerrePositivity.Spectra.ModelCategory.PointedPresentability",
+      "SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 4.598,
+    "log": "before-build.log"
+  },
+  "before_snapshot": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-M",
+      "40000",
+      "--run",
+      "scripts/refactor/decl_snapshot.lean",
+      "--proof-irrelevant",
+      "--modules",
+      "SerrePositivity.Spectra.ModelCategory.PointedGenerators,SerrePositivity.Spectra.ModelCategory.PointedPresentability,SerrePositivity.Spectra.ModelCategory.SimplicialMonoidal",
+      "--output",
+      "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-downstream/repair1/before.json"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 15.909,
+    "log": "before-snapshot.log"
+  },
+  "candidate": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-downstream/repair1/PointedGenerators.lean"
+    ],
+    "exit_code": 0,
+    "errors": [],
+    "seconds": 5.294,
+    "log": "candidate.log"
+  },
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "direct_forbidden_edges": 0,
+  "residual_forbidden": 74,
+  "cycles": 0,
+  "before_evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-downstream/repair1/before.json"
+}

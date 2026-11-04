@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 
 public import SerrePositivity.Spectra.ModelCategory.SimplicialCofibrancy
 public import SerrePositivity.Spectra.Pointed.AdjoinBasepoint
