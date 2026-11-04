@@ -18,6 +18,7 @@ public import Mathlib.RingTheory.Polynomial.Tower
 public import Mathlib.RingTheory.Extension.Presentation.Core
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FiniteFieldProduct
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
@@ -281,8 +282,9 @@ theorem generic_structure (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
           Nonempty (((GenericProduct R ⊗[R] S) ⧸ nilradical (GenericProduct R ⊗[R] S))
             ≃ₐ[GenericProduct R] (∀ j, L j)) ∧
             ∀ j, FiniteDimensional (GenericField (v j)) (L j) := by
-    sorry -- 残りは全商環と極小点の剰余体積の同定、および有限被約代数の体積分解。
-          -- 各体因子がどの基底の極小点に属するかと、その有限次元性を同時に構成する。
+    let : Finite (GenericPoint R) := finite_genericPoint R
+    exact ⟨isLocalization_genericProduct R,
+      finite_algebra_over_field_product GenericField (GenericProduct R ⊗[R] S)⟩
   obtain ⟨hloc, m, v, L, hL, a, he, hfinite⟩ := hdecomp
   let : ∀ j, Field (L j) := hL
   let : ∀ j, Algebra (GenericField (v j)) (L j) := a
