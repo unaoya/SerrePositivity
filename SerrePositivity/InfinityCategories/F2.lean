@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
 public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs

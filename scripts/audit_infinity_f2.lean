@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs
@@ -1994,3 +1995,47 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.SetWeight.spaceValueEquivalence
 #print axioms SerrePositivity.InfinityCategories.SetWeight.spaceUniverseValueEquivalence
 #print axioms SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHom
+
+-- IF-G2: specified cones and normalized G8 comparison.
+#check @SerrePositivity.InfinityCategories.SetWeight.coefficientsOppositeIso
+#check @SerrePositivity.InfinityCategories.SetWeight.coefficientsOppositeWeightedIso
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural
+#check @SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural
+#check @SerrePositivity.InfinityCategories.SetWeight.coefficientsMap
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsToReplacement_naturality
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsWeighted_naturality
+#check @SerrePositivity.InfinityCategories.SetWeight.spaceDiagramEdge
+#check @SerrePositivity.InfinityCategories.SetWeight.tensorWeightEdge
+#check @SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_diagramHom_weight_naturality
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsMap
+#check @SerrePositivity.InfinityCategories.SetWeight.elementsMap_diagram
+#check @SerrePositivity.InfinityCategories.SetWeight.restrictSectionsCone
+#check @SerrePositivity.InfinityCategories.SetWeight.restrictSectionsCone_vertex
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsConeMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsConeMap_homMk_unique
+#check @SerrePositivity.InfinityCategories.SetWeight.sectionsMapOfHasLimit
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveSectionsMap
+#check @SerrePositivity.InfinityCategories.SetWeight.sieveTensorEdge
+
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let target := `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
+  unless env.header.modules.any (fun entry => entry.module == target) do
+    throwError "IF-G2: new module not imported"
+  let mut count : Nat := 0
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    unless env.header.modules[idx.toNat]!.module == target do continue
+    if let .axiomInfo _ := info then
+      throwError "IF-G2: axiom declaration: {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "IF-G2: unexpected axioms in {name}: {axioms}"
+    count := count + 1
+  unless count > 0 do throwError "IF-G2: no declarations audited"
+  logInfo m!"IF-G2: {count} declarations audited; only standard axioms."
