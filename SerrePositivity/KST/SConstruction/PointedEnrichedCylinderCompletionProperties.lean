@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.FreeInterval
 public import SerrePositivity.KST.SConstruction.PointedEnrichedCylinderCompletion
 public import SerrePositivity.KST.SConstruction.PointedEnrichedCylinderPushoutProperties
 
