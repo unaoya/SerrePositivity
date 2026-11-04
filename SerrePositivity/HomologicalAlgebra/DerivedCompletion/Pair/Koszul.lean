@@ -882,6 +882,11 @@ variable (R : Type u) [CommRing R]
 abbrev PairCompletionH0 (f d : R) :=
   (koszulCompletionComplex R (pairKoszulCoordinates R f d)).homology 0
 
+/-- 二座標H⁰への線形な標準写像。いまは Koszul 完備化の標準写像そのもの。
+利用側はこの名前を通して使い、`PairCompletionH0` の定義を替えても（refactor-plan §3.5.3）影響を受けないようにする。 -/
+abbrev pairCompletionH0Unit (f d : R) : R →ₗ[R] PairCompletionH0 R f d :=
+  koszulCompletionH0Unit R (pairKoszulCoordinates R f d)
+
 /-- 行列モデルのH⁰も、標準元について完備加群への反射となる。 -/
 theorem pairTowerHomology_isCompleteModuleReflection (f d : R) :
     IsCompleteModuleReflection R (pairKoszulCoordinates R f d)
@@ -897,7 +902,7 @@ theorem pairTowerHomology_isCompleteModuleReflection (f d : R) :
 /-- 元の実際のH⁰は、既存の標準元について完備加群への反射となる。 -/
 theorem pairCompletionH0_isCompleteModuleReflection (f d : R) :
     IsCompleteModuleReflection R (pairKoszulCoordinates R f d) (PairCompletionH0 R f d)
-      (koszulCompletionH0Unit R (pairKoszulCoordinates R f d) 1) :=
+      (pairCompletionH0Unit R f d 1) :=
   (pairTowerHomology_isCompleteModuleReflection R f d).of_linearEquiv R
     (pairKoszulCompletionH0Equiv R f d).symm (by
       apply (pairKoszulCompletionH0Equiv R f d).injective
