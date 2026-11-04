@@ -6,6 +6,9 @@ module
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
 public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
+public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
+public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction
 -- 要確認（IF-G2：先行分は math/g2 に実在、main 取り込み待ち）：
 -- public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
@@ -115,8 +118,9 @@ lemma sieveCategoryToElements_inclusion_comp_π {U : 𝒞} (S : Sieve U) :
 lemma sieveSectionsDiagram_reindex {U : 𝒞} (S : Sieve U) (F : Presheaf 𝒞 E) :
     (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (sieveCategoryToElements S)) ≫
       sectionsOfDiagram S.functor F = restriction F S := by
-  simp only [sectionsOfDiagram, restriction, ← Category.assoc, ← Functor.map_comp,
-    ← nerveMap_comp, sieveCategoryToElements_comp_π]
+  dsimp only [sectionsOfDiagram, restriction]
+  rw [← Category.assoc, ← Functor.map_comp]
+  rfl
 
 /-! ## 表現可能前層の標準錐 -/
 
@@ -195,19 +199,65 @@ lemma sectionsMap_isInvertible_iff {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q)
     coneComparison_isInvertible_iff (SetWeight.restrictSectionsCone φ F cQ) cP hcP
       (SetWeight.sectionsConeMap φ F cP hcP cQ)
 
+/-- 通常の全錐の添字変更は、nerve・宇宙持ち上げ・F による像と可換。 -/
+lemma uliftNerveCone_whisker_val {I D : Type u} [SmallCategory I] [SmallCategory D]
+    {G : I ⥤ 𝒞ᵒᵖ} (c : Cone G) (H : D ⥤ I) (F : Presheaf 𝒞 E) :
+    (restrictJoinCone (((F1B.nerveCone c).ulift).postcomp F)
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap H))).val =
+      (((F1B.nerveCone (c.whisker H)).ulift).postcomp F).val := by
+  change joinMap (𝟙 _) ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap H)) ≫
+    ((F1B.nerveCone c).ulift.val ≫ F) = _
+  rw [← Category.assoc]
+  change (restrictJoinCone ((F1B.nerveCone c).ulift)
+    ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap H))).val ≫ F = _
+  rw [← HomotopyLimits.ulift_restrictJoinCone_val]
+  change ((uliftConeShapeIso _ 0).inv ≫ (SSet.uliftFunctor.{u + 1, u}).map
+    (joinMap (𝟙 _) (nerveMap H) ≫ (F1B.nerveCone c).val)) ≫ F = _
+  rw [F1B.nerveCone_whisker]
+  rfl
+
+/-- 表現可能標準錐の篩への制限を元の圏の逆同値で引くと S1 の全錐になる。 -/
+lemma sieveRestrictCanonicalCone_reindex_val {U : 𝒞} (S : Sieve U) (F : Presheaf 𝒞 E) :
+    (restrictJoinCone
+      (SetWeight.restrictSectionsCone S.functorInclusion F (representableSectionsCone U F))
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (sieveCategoryToElements S)))).val =
+      (restrictionCone F S).val := by
+  change joinMap (𝟙 _) ((SSet.uliftFunctor.{u + 1, u}).map
+    (nerveMap (sieveCategoryToElements S))) ≫
+      (joinMap (𝟙 _) (SetWeight.elementsMap S.functorInclusion) ≫
+        (representableSectionsCone U F).val) = _
+  rw [← Category.assoc, ← joinMap_comp, Category.id_comp]
+  dsimp only [SetWeight.elementsMap]
+  rw [← Functor.map_comp]
+  change (restrictJoinCone (representableSectionsCone U F)
+    ((SSet.uliftFunctor.{u + 1, u}).map
+      (nerveMap (sieveCategoryToElements S ⋙ S.functorInclusion.mapElements)))).val = _
+  rw [representableSectionsCone, uliftNerveCone_whisker_val,
+    representableElementsCone_sieve]
+  rfl
+
 /-- 表現可能側の任意の指定極限錐を制限しても、S1 の指定制限錐と同じ極限性を持つ。 -/
 lemma sieveRestrictCone_isLimit_iff {U : 𝒞} (S : Sieve U) (F : Presheaf 𝒞 E)
     (cU : JoinCone (sectionsOfDiagram (yoneda.obj U) F)) (hcU : IsLimitCone cU) :
     IsLimitCone (SetWeight.restrictSectionsCone S.functorInclusion F cU) ↔
       IsLimitCone (restrictionCone F S) := by
-  -- 1. limitConeIso cU (representableSectionsCone U F) hcU
-  --      (representableSectionsCone_isLimit U F) を sliceOverRestrict で送る。
-  --    必要なのは錐の圏での同型であり、sectionsOf_representable の頂点同型だけでは足りない。
-  -- 2. sieveElementsEquivalence S の inverse の nerve（ulift）で制限する。
-  --    F2.Presentable.isLimitCone_iff_restrict_equivalentShape で極限性を移す。
-  -- 3. F1B.nerveCone_whisker、representableElementsCone_sieve と ulift の自然性で
-  --    制限された全錐を restrictionCone F S と同定する。
-  sorry
+  let c₀ := representableSectionsCone U F
+  let i := SetWeight.elementsMap S.functorInclusion
+  let e := (hoFunctor.map (sliceOverRestrict (sectionsOfDiagram (yoneda.obj U) F) i)).toFunctor.mapIso
+    (limitConeIso cU c₀ hcU (representableSectionsCone_isLimit U F))
+  have hchange : IsLimitCone (SetWeight.restrictSectionsCone S.functorInclusion F cU) ↔
+      IsLimitCone (SetWeight.restrictSectionsCone S.functorInclusion F c₀) :=
+    (F2.isLimitCone_iff_of_cone_val_eq _ (restrictJoinCone cU i) rfl).trans
+      ((isLimitCone_iff_of_vertexIso e).trans
+        (F2.isLimitCone_iff_of_cone_val_eq (restrictJoinCone c₀ i) _ rfl))
+  let j := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (sieveCategoryToElements S))
+  have hj : IsQCatEquivalence j :=
+    (F1B.nerveQCatEquivalence (sieveElementsEquivalence S).symm).isQCatEquivalence.ulift
+  exact hchange.trans
+    ((F2.Presentable.isLimitCone_iff_restrict_equivalentShape j hj
+      (SetWeight.restrictSectionsCone S.functorInclusion F c₀)).trans
+        (F2.isLimitCone_iff_of_cone_val_eq _ (restrictionCone F S)
+          (sieveRestrictCanonicalCone_reindex_val S F)))
 
 /-- S4 で使う篩包含の判定。任意の篩・任意の前層・指定された二つの極限錐。 -/
 lemma sieveSectionsMap_isInvertible_iff {U : 𝒞} (S : Sieve U) (F : Presheaf 𝒞 E)

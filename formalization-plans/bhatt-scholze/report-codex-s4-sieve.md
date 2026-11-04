@@ -25,3 +25,11 @@ S4 の生成辺は `S.functorInclusion` に係数圏の生成系の対象 M を�
 2. `sieveRestrictCone_isLimit_iff`：指定された cU と標準錐の錐同型を制限し、篩の元の圏の同値で添字変更し、全錐を S1 の `restrictionCone` に同定する。
 
 これは完成報告ではない。本文を記述したほかの箇所も型検査前。G2 の篩包含版自然性と、生成系による同値検出を使う `exists_sheafGeneratingEdges` 本体は引き続き未完了。新しい axiom は追加していない。
+
+## 継続：全錐の比較の本文
+
+`uliftNerveCone_whisker_val` と `sieveRestrictCanonicalCone_reindex_val` を記述した。`nerveCone_whisker` と `ulift_restrictJoinCone_val` で、篩へ制限した表現可能標準錐の全射を `restrictionCone` の全射へ結び付ける。
+
+これを用いて `sieveRestrictCone_isLimit_iff` の本文も記述した。まず `limitConeIso` を錐の制限関手で送り、次に元の圏の同値の nerve とその ulift による制限で極限性を移し、最後に全錐の射の等式で S1 の指定錐へ戻す。`nerveMap_comp` という存在しない補題名も除去し、合成の定義と `Functor.map_comp` による図式比較へ直した。
+
+新しい草稿に残る明示的な `sorry` は `representableSectionsCone_isLimit` の **1 件**。前節の「2 件」はこの追加前の状態。今回の本文も未ビルドであり、型検査の成功・S4 の完成は主張しない。
