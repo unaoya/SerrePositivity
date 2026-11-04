@@ -62,7 +62,7 @@ private lemma normalizeTriangle {C : Type v} [Category.{w} C]
   simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
     Iso.trans_refl]
 
-private lemma mapNormalizeTriangle {C : Type v} [Category.{w} C]
+lemma mapNormalizeTriangle {C : Type v} [Category.{w} C]
     {Z : Type v'} [Category.{w'} Z] (F : C ⥤ Z) {a b s t : C} {s' t' : Z}
     (l : a ≅ t) (e : s ≅ t) (r : b ≅ s) (d : a ≅ b)
     (hd : d = l ≪≫ e.symm ≪≫ r.symm) (hs : F.obj s = s') (ht : F.obj t = t') :

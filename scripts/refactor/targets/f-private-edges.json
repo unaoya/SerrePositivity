@@ -1,5 +1,5 @@
 {
-  "status": "DRAFT_NOT_APPLIED",
+  "status": "APPLIED_INTERNAL_STOP_PRIVATE_NAME_COLLISION",
   "base": "29d9ad0e72b5f83b58860faac70e095a8d20c908",
   "edges": [
     {
@@ -612,5 +612,12 @@
     "SerrePositivity.KST.LocalizingInvariants"
   ],
   "collision_scope": "Source explicit declaration names checked repository-wide; generated/elaborated-name collision checks belong to the approved before snapshot and small build. Private homonyms have distinct internal names and are recorded.",
-  "preservation": "Publish mapping for 19 private names; same statement/body checked individually with v3b. Do not weaken comparator."
+  "preservation": "Publish mapping for 19 private names; same statement/body checked individually with v3b. Do not weaken comparator.",
+  "approval": "IF-F §6 main 9f59541d3",
+  "runtime_collision": {
+    "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+    "name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+    "stop": "f-section6-stop.json",
+    "proposal_applied": false
+  }
 }

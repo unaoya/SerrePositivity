@@ -66,7 +66,7 @@ private lemma normalizeComposition {C : Type v} [Category.{w} C]
   simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
     Iso.trans_refl]
 
-private lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
+lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
     (e : FunctorIso F G) (f : FunctorIso G H) (x : K _⦋0⦌) {a b c : hoFunctor.obj Y}
     (ha : HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) = a)
     (hb : HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) x) = b)

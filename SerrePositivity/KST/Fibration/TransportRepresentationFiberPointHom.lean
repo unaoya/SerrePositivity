@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
-import all SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
+import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
 public import SerrePositivity.KST.Fibration.ChosenRepresentationPointHom
 public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
 

@@ -1,0 +1,8 @@
+--- a/SerrePositivity/KST/Fibration/FirstVertexOppositeChart.lean
++++ b/SerrePositivity/KST/Fibration/FirstVertexOppositeChart.lean
+@@ -24 +24 @@
+-private lemma mapNormalizeCompositionWithEq {C : Type v} [Category.{w} C]
++private lemma firstVertexOppositeChart_mapNormalizeCompositionWithEq {C : Type v} [Category.{w} C]
+@@ -72 +72 @@
+-  have hf := mapNormalizeCompositionWithEq (hoFunctor.map T).toFunctor
++  have hf := firstVertexOppositeChart_mapNormalizeCompositionWithEq (hoFunctor.map T).toFunctor

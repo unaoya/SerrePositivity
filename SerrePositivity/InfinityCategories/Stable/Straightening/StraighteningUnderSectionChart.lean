@@ -28,7 +28,7 @@ private lemma normalizeComposition {C : Type v} [Category.{w} C]
   simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
     Iso.trans_refl]
 
-private lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
+lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
     {Z : Type v'} [Category.{w'} Z] (F : C ⥤ Z) {a b c : C} {b' c' : Z}
     (l : a ≅ b) (e : b ≅ c) (d : a ≅ c) (hd : d = l ≪≫ e)
     (hb : F.obj b = b') (hc : F.obj c = c') :

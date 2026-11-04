@@ -36,7 +36,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma pointNormalize {C : Type*} [Category C] {a b a' b' z : C}
+lemma pointNormalize {C : Type*} [Category C] {a b a' b' z : C}
     (e : a ≅ b) (hs : a = a') (ht : b = b')
     (x : z ⟶ a) (x' : z ⟶ a') (y : z ⟶ b) (y' : z ⟶ b')
     (hx : x ≫ (eqToIso hs).hom = x') (hy : y ≫ (eqToIso ht).hom = y')

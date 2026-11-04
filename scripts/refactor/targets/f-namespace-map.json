@@ -156195,8 +156195,20 @@
           "new": "SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext"
         }
       ],
-      "decision_required": "旧名の deprecated alias を二重定義しない。共通互換入口へ旧名を1本だけ置く案。現在は別モジュールの同名宣言なので、適用前 snapshot で両方の型と利用閉包を照合し、正本を決める。草案では自動適用しない。"
+      "decision": "IF-F §6 main 9f59541d3: 旧名の deprecated alias は宣言の利用者が多い方にだけ付ける。他方は alias なしで、その利用者を新名へ書き換える。共通互換入口案は採用しない。",
+      "application": "G2・BS の区切り後の別の合図まで未適用。適用前の所有宣言・参照照合で多い方を確定し、モジュールの推移閉包数だけで選ばない。",
+      "module_users_draft_only": {
+        "Desc": {
+          "direct": 3,
+          "reverse": 1449
+        },
+        "Map": {
+          "direct": 3,
+          "reverse": 1473
+        }
+      }
     }
   ],
-  "generated_name_review": "生成補題・constructor・projection・recursor は source-parent mapping の補助一覧に収録。source-parent を持たない自動名も含む全環境の照合は適用前 snapshot で行い、alias の属性を一括コピーしない。private 内部名を public alias にしない。"
+  "generated_name_review": "生成補題・constructor・projection・recursor は source-parent mapping の補助一覧に収録。source-parent を持たない自動名も含む全環境の照合は適用前 snapshot で行い、alias の属性を一括コピーしない。private 内部名を public alias にしない。",
+  "section6_response": "F-1 のみ適用承認。F-2 の名前空間・alias・利用者の書換えは未適用。"
 }

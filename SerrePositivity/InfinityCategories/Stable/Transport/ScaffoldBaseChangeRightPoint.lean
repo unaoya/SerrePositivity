@@ -35,14 +35,14 @@ open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-private lemma point_normalize_inv {C : Type*} [Category C] {a b a' z t : C}
+lemma point_normalize_inv {C : Type*} [Category C] {a b a' z t : C}
     (e : a ≅ b) (h : a = a') (v : z ⟶ b) (f : a' ⟶ t) :
     v ≫ e.inv ≫ (eqToIso h).hom ≫ f =
       v ≫ (F2.isoNormalizeEndpoints e h rfl).inv ≫ f := by
   simp only [F2.isoNormalizeEndpoints, Iso.trans_inv, Iso.symm_inv, eqToIso_refl,
     Iso.refl_inv, Category.id_comp, Category.assoc]
 
-private lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
+lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
     (v : a ⟶ b) (l : b ⟶ c) (g : c ⟶ d) (w : a ⟶ e) (r : e ⟶ d)
     (s : d ⟶ f) {t : C} (z : f ⟶ t) (h : v ≫ l ≫ g = w ≫ r) :
     v ≫ l ≫ g ≫ s ≫ z = w ≫ r ≫ s ≫ z := by

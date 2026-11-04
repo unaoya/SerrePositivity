@@ -43,11 +43,11 @@ theorem pointedSpaceLeftCoefficientIso_vertex (K : KanObject.{u}) (v : K.obj _�
       SSet.opObjEquiv.symm ((pointKanObjectHomIso (kanObjectOpFunctor.obj K)).inv.app
         (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm v)) := rfl
 
-private theorem uliftMapVertex {A B : SSet.{u}} (f : A ⟶ B) (v : A _⦋0⦌) :
+theorem uliftMapVertex {A B : SSet.{u}} (f : A ⟶ B) (v : A _⦋0⦌) :
     ((SSet.uliftFunctor.{u + 1, u}).map f).app (Opposite.op ⦋0⦌) (ULift.up v) =
       ULift.up (f.app (Opposite.op ⦋0⦌) v) := rfl
 
-private theorem uliftOppositeVertex (A : SSet.{u}) (v : A.op _⦋0⦌) :
+theorem uliftOppositeVertex (A : SSet.{u}) (v : A.op _⦋0⦌) :
     (HomotopyLimits.uliftOppositeIso.{u, u + 1} A).hom.app (Opposite.op ⦋0⦌) (ULift.up v) =
       SSet.opObjEquiv.symm (ULift.up (SSet.opObjEquiv v)) := rfl
 

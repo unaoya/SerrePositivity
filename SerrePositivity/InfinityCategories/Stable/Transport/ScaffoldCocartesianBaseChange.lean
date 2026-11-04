@@ -35,13 +35,13 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma recoverPoint {C : Type*} [Category C] {a b z : C}
+lemma recoverPoint {C : Type*} [Category C] {a b z : C}
     (e : a ≅ b) (x : z ⟶ a) (y : z ⟶ b) (h : x ≫ e.hom = y) :
     y ≫ e.inv = x := by
   rw [← h]
   simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
-private lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
+lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
     (x : a ⟶ b) (y : b ⟶ c) (f : c ⟶ d) (z : a ⟶ d) (g : d ⟶ e)
     (h : x ≫ y ≫ f = z) : x ≫ y ≫ f ≫ g = z ≫ g := by
   simpa only [Category.assoc] using congrArg (fun m => m ≫ g) h

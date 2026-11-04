@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
-import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
+import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
 public import SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent
 public import SerrePositivity.KST.Fibration.RelativeSectionJointVertices
 

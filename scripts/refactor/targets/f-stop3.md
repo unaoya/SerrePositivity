@@ -20,7 +20,7 @@
 ## alias の判断点
 
 定理は deprecated alias、定義は宇宙・暗黙引数を保った abbreviation。instance は旧名側へ二重の instance 属性を付けない。構造体・inductive の型だけでなく生成名も互換対象として照合する。private を一括公開せず、公開化は F-1 の19補助定理だけ。
-**旧 public 名の重複が1組**：`SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext`（Kan.DoubleMappingCylinderDesc / Map）。新名を分けるだけでは旧 alias が二重定義になる。旧名を共通互換入口へ1本だけ置く案とし、適用前に両方の型・利用閉包を照合して正本を決める。Map側の同名はソース一致キャッシュに所有宣言として現れない点も記録した。草案で自動解消・適用はしない。
+**旧 public 名の重複が1組**：`SerrePositivity.KST.Comparison.doubleMappingCylinder_hom_ext`（Kan.DoubleMappingCylinderDesc / Map）。新名を分けるだけでは旧 alias が二重定義になる。IF-F §6（main 9f59541d3）の回答に従い、旧名の deprecated alias は宣言の利用者が多い方にだけ付け、他方は alias なしで利用者を新名へ書き換える。共通互換入口案は採用しない。適用前に所有宣言と実参照を照合して多い方を確定する（モジュール直接利用者は両方3、逆閉包は Desc 1,449 / Map 1,473 だが、これは宣言の利用者数ではない）。Map側の同名はソース一致キャッシュに所有宣言として現れない点も記録した。草案で自動解消・適用はしない。
 
 ## 利用者と下流
 

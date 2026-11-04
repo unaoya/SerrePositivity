@@ -66,7 +66,7 @@ theorem coefficientResolutionVertexEq (c : I) :
   simpa only [leftCoherentTransport, Functor.comp_obj] using
     kanDiagramCoherentNerve_vertex (leftStrictTransportFunctor p ⋙ kanObjectOpFunctor) c
 
-private theorem fiberPoint_ext {E B : SSet.{u}} (q : E ⟶ B) (b : B _⦋0⦌)
+theorem fiberPoint_ext {E B : SSet.{u}} (q : E ⟶ B) (b : B _⦋0⦌)
     (v w : (vertexFiber q b) _⦋0⦌)
     (h : (vertexFiberι q b).app (Opposite.op ⦋0⦌) v =
       (vertexFiberι q b).app (Opposite.op ⦋0⦌) w) : v = w :=
