@@ -76,7 +76,7 @@ theorem finite_algebra_over_field_product {ι : Type u} [Finite ι]
   let L (j : Fin (Fintype.card J)) := F (e.symm j)
   let a (j : Fin (Fintype.card J)) : Algebra (K (v (e.symm j))) (L j) :=
     (g (e.symm j)).toAlgebra
-  refine ⟨Fintype.card J, fun j ↦ v (e.symm j), L, inferInstance, a, ?_, ?_⟩
+  refine ⟨Fintype.card J, fun j ↦ v (e.symm j), L, (fun j ↦ inferInstance), a, ?_, ?_⟩
   · let E := (IsArtinianRing.quotNilradicalEquivPi A).toRingEquiv.trans
       (RingEquiv.piCongrLeft' F e)
     refine ⟨{ __ := E, commutes' := ?_ }⟩

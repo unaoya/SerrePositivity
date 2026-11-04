@@ -6,6 +6,7 @@ public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 public import Mathlib.RingTheory.Localization.FractionRing
 public import Mathlib.Algebra.Group.Pi.Units
 public import Mathlib.Tactic.Ring
+public import Mathlib.RingTheory.Spectrum.Prime.Topology
 
 /-!
 # 一般点の剰余体積と全商環
@@ -59,7 +60,7 @@ private theorem eq_zero_of_genericField_eq_zero {R : Type u} [CommRing R] [IsRed
     change x ∈ (⊥ : Ideal R).radical
     rw [← Ideal.sInf_minimalPrimes, Submodule.mem_sInf]
     intro I hI
-    exact (Ideal.algebraMap_residueField_eq_zero I).mp (hx ⟨⟨I, hI.isPrime⟩, hI⟩)
+    exact (Ideal.algebraMap_residueField_eq_zero (I := I)).mp (hx ⟨⟨I, hI.isPrime⟩, hI⟩)
   exact (mem_nilradical.mp hnil).eq_zero
 
 /-- 各極小点を他の極小点から分離する元。 -/
@@ -79,6 +80,46 @@ private theorem exists_genericPoint_separator {R : Type u} [CommRing R]
   obtain ⟨s, hs, hsp⟩ := IsConcreteLE.not_le_iff_exists.mp hn
   refine ⟨s, hsp, fun Q hQ ↦ ?_⟩
   exact (Finset.inf_le (Finset.mem_erase.mpr ⟨hQ, Finset.mem_univ Q⟩)) hs
+
+/-- どの極小点にも含まれないイデアルには、全極小点を避ける元がある。 -/
+theorem exists_mem_ideal_avoiding_genericPoints {R : Type u} [CommRing R]
+    [IsNoetherianRing R] (I : Ideal R) (hI : ∀ P : GenericPoint R, ¬ I ≤ P.val.asIdeal) :
+    ∃ g ∈ I, ∀ P : GenericPoint R, g ∉ P.val.asIdeal := by
+  classical
+  let : Finite (GenericPoint R) := finite_genericPoint R
+  by_cases h : Nonempty (GenericPoint R)
+  · obtain ⟨P⟩ := h
+    have hn : ¬ (I : Set R) ⊆ ⋃ Q : GenericPoint R, ⋃ _ : Q ∈ (Set.univ : Set (GenericPoint R)),
+        (Q.val.asIdeal : Set R) := by
+      intro h
+      obtain ⟨Q, _, hQ⟩ := (Ideal.subset_union_prime_finite Set.finite_univ P P
+        (fun Q _ _ _ ↦ Q.val.isPrime)).mp h
+      exact hI Q hQ
+    obtain ⟨g, hg, hn⟩ := Set.not_subset.mp hn
+    exact ⟨g, hg, fun Q hQ ↦ hn (Set.mem_iUnion.mpr
+      ⟨Q, Set.mem_iUnion.mpr ⟨Set.mem_univ Q, hQ⟩⟩)⟩
+  · exact ⟨0, I.zero_mem, fun P ↦ False.elim (h ⟨P⟩)⟩
+
+/-- 全極小点を含む開集合の中に、全極小点を含む主開集合を選べる。 -/
+theorem exists_basicOpen_around_genericPoints {R : Type u} [CommRing R]
+    [IsNoetherianRing R] (U : Set (PrimeSpectrum R)) (hU : IsOpen U)
+    (hgeneric : ∀ P : GenericPoint R, P.val ∈ U) :
+    ∃ g : R, (∀ P : GenericPoint R, g ∉ P.val.asIdeal) ∧
+      (PrimeSpectrum.basicOpen g : Set (PrimeSpectrum R)) ⊆ U := by
+  let I := PrimeSpectrum.vanishingIdeal Uᶜ
+  have hclosed : PrimeSpectrum.zeroLocus (I : Set R) = Uᶜ := by
+    rw [PrimeSpectrum.zeroLocus_vanishingIdeal_eq_closure, hU.isClosed_compl.closure_eq]
+  have hI (P : GenericPoint R) : ¬ I ≤ P.val.asIdeal := by
+    intro h
+    have hm : P.val ∈ PrimeSpectrum.zeroLocus (I : Set R) := h
+    rw [hclosed] at hm
+    exact hm (hgeneric P)
+  obtain ⟨g, hg, havoid⟩ := exists_mem_ideal_avoiding_genericPoints I hI
+  refine ⟨g, havoid, ?_⟩
+  intro P hP
+  by_contra hn
+  have hm : P ∈ PrimeSpectrum.zeroLocus (I : Set R) := hclosed.symm ▸ hn
+  exact hP (hm hg)
 
 /-- 剰余体の元を元の環の元の比で表す。 -/
 private theorem exists_genericField_fraction {R : Type u} [CommRing R]
@@ -106,7 +147,7 @@ theorem isLocalization_genericProduct (R : Type u) [CommRing R]
   let : Fintype (GenericPoint R) := Fintype.ofFinite _
   have hregular (r : R) (hr : ∀ P : GenericPoint R, algebraMap R (GenericField P) r ≠ 0) :
       r ∈ nonZeroDivisors R := by
-    rw [mem_nonZeroDivisors_iff_right]
+    rw [mem_nonZeroDivisors_iff_left]
     intro x hx
     apply eq_zero_of_genericField_eq_zero x
     intro P
@@ -120,7 +161,7 @@ theorem isLocalization_genericProduct (R : Type u) [CommRing R]
     change algebraMap R (GenericField P) r ≠ 0
     intro he
     exact notMem_nonZeroDivisors_of_mem_mem_minimalPrimes
-      ((Ideal.algebraMap_residueField_eq_zero P.val.asIdeal).mp he) P.property r.property
+      ((Ideal.algebraMap_residueField_eq_zero (I := P.val.asIdeal)).mp he) P.property r.property
   · intro x
     choose a b hb hx using fun P : GenericPoint R ↦ exists_genericField_fraction P (x P)
     choose s hs hsep using fun P : GenericPoint R ↦ exists_genericPoint_separator P
@@ -130,14 +171,14 @@ theorem isLocalization_genericProduct (R : Type u) [CommRing R]
       rw [map_sum]
       apply Finset.sum_eq_single P
       · intro Q _ hQP
-        rw [map_mul, (Ideal.algebraMap_residueField_eq_zero P.val.asIdeal).mpr
+        rw [map_mul, (Ideal.algebraMap_residueField_eq_zero (I := P.val.asIdeal)).mpr
           (hsep Q P hQP.symm), zero_mul]
       · simp
     let d := ∑ P, s P * b P
     have hd : d ∈ nonZeroDivisors R := hregular d fun P ↦ by
       rw [hsum, map_mul]
       exact mul_ne_zero (fun h ↦ hs P
-        ((Ideal.algebraMap_residueField_eq_zero P.val.asIdeal).mp h)) (hb P)
+        ((Ideal.algebraMap_residueField_eq_zero (I := P.val.asIdeal)).mp h)) (hb P)
     refine ⟨⟨∑ P, s P * a P, ⟨d, hd⟩⟩, ?_⟩
     ext P
     change x P * algebraMap R (GenericField P) d =
