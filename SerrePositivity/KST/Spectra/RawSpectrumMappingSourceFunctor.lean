@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPreNaturality
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 
 /-!
 概要：一般の Kan 列への元の点つき Hom を、BF 源についての厳密な前層へまとめる。

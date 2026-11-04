@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponentValues
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueEdges
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap
-public import SerrePositivity.KST.LocalizingInvariants.ArrowCompositionCancellation
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
 
 /-!
 概要：実積への移送後の四辺を、元の BF 値・実積射・対角に端点も含めて照合する。

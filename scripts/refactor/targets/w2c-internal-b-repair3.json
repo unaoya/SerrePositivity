@@ -1,0 +1,56 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 3,
+  "phase": "B",
+  "head_before": "e1e8ddf7ceb4120eabd05ae04b13dd8781bde3b9",
+  "reason": "初めて到達した失敗。補充候補を個別コンパイルし、分割した両側のスコープと instance を照合した。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.Fibration.WeakSpanBaseChangeLift",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtension"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.FixedSpanApexComparison",
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanBoundary",
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanDiagrams"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts\nimport all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.CofiberAdjunctionCounit",
+      "annotations": [
+        {
+          "before": "namespace SerrePositivity.KST.LocalizingInvariants\n",
+          "after": "namespace SerrePositivity.KST.LocalizingInvariants\nattribute [local instance] cofiberCounitZeroSourceQuasicategory\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}

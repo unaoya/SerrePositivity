@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.TammeSplitting
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting
 public import SerrePositivity.KST.LocalizingInvariants.InvariantZeroMap
 
 /-!

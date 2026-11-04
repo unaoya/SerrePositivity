@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorTriangleSquare
@@ -21,8 +22,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 variable {X : SSet.{u}} {F G : (Δ[1] : SSet.{u}) ⟶ X} (H : SSet.Homotopy F G)
-
-def diagonal : (Δ[1] : SSet.{u}) ⟶ X := squareDiagonal ≫ H.h
 
 def afterBottom : SSet.Homotopy F (diagonal H) where
   h := postShape ≫ squareTriangle 1 ≫ H.h

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison
 public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence
 
 public import SerrePositivity.KST.Spectra.KanSequence
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Pullbacks
@@ -26,48 +27,6 @@ set_option backward.isDefEq.respectTransparency.types false
 
 local instance : PointedSimplicialSet.forget.{u}.IsRightAdjoint :=
   PointedObject.adjoinForgetAdjunction.isRightAdjoint
-
-/-- 概要：点つきの引き戻しの基礎正方形は単体集合でも引き戻し。
-方針：基点忘却の右随伴性から引き戻しの保存を使う。
-規約：選んだ点つき極限の射の基礎射について述べる。
-使われ方：HTT A.3.3、Goerss–Jardine I §7。右持ち上げ性の引き戻し。 -/
-theorem pointedPullback_isPullback {E X B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) (g : X ⟶ B) :
-    IsPullback (pullback.fst f g).right (pullback.snd f g).right f.right g.right :=
-  (IsPullback.of_hasPullback f g).map PointedSimplicialSet.forget
-
-/-- 概要：点つき引き戻しの第二射影は全単射への RLP を保存する。
-方針：基礎引き戻しと右持ち上げクラスの基底変換閉性を使う。
-規約：元の第一の射について RLP を要求する。
-使われ方：HTT A.3.3、Goerss–Jardine I §7。mapping path の比較射。 -/
-theorem pointedPullback_snd_rlp {E X B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) (g : X ⟶ B)
-    (hf : (MorphismProperty.monomorphisms SSet.{u}).rlp f.right) :
-    (MorphismProperty.monomorphisms SSet.{u}).rlp (pullback.snd f g).right :=
-  (MorphismProperty.monomorphisms SSet.{u}).rlp.of_isPullback
-    (pointedPullback_isPullback f g) hf
-
-/-- 概要：Kan fibration の点つき引き戻しの第二射影も Kan fibration。
-方針：ホーン RLP の基底変換閉性を使う。
-規約：標的 X に Kan 性は不要。
-使われ方：Goerss–Jardine I §7、HTT A.3.3。引き戻しの段の Kan 性。 -/
-instance pointedPullback_snd_fibration {E X B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) (g : X ⟶ B) [Fibration f.right] :
-    Fibration (pullback.snd f g).right := by
-  apply (fibration_iff _).2
-  exact J.rlp.of_isPullback (pointedPullback_isPullback f g) ((fibration_iff _).1 inferInstance)
-
-/-- 概要：Kan な底への Kan fibration の引き戻しの全空間は Kan。
-方針：第二射影と底の終対象射の fibration を合成する。
-規約：X の Kan 性だけを追加する。
-使われ方：Goerss–Jardine I §7、HTT A.3.3。Kan 列の引き戻しの各段。 -/
-instance pointedPullback_kanComplex {E X B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) (g : X ⟶ B) [Fibration f.right] [KanComplex X.right] :
-    KanComplex (pullback f g).right := by
-  change Fibration (terminal.from (pullback f g).right)
-  rw [show terminal.from (pullback f g).right =
-    (pullback.snd f g).right ≫ terminal.from X.right from terminal.hom_ext _ _]
-  infer_instance
 
 namespace KanSequence
 

@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTransportNaturality
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!
@@ -30,13 +31,5 @@ lemma arrow_eqToHom_map_naturality {C : Type u} [Category.{v} C]
   simp only [eqToHom_refl]
   rw [F.map_id, F.map_id, Category.comp_id, Category.id_comp]
   exact hom_eq_of_arrow_mk_eq h
-
-lemma hom_eq_eqToHom_of_arrow_identity {C : Type u} [Category.{v} C] {a b c : C}
-    (f : a ⟶ b) (hab : a = b) (h : Arrow.mk f = Arrow.mk (𝟙 c)) :
-    f = eqToHom hab := by
-  subst b
-  obtain ⟨ha, _, he⟩ := (Arrow.mk_eq_mk_iff _ _).mp h
-  subst c
-  simpa only [eqToHom_refl, Category.id_comp, Category.comp_id] using he
 
 end SerrePositivity.KST.LocalizingInvariants

@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRightEndpoints
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
 public import SerrePositivity.KST.Fibration.StraighteningGlobalBaseChangeValue
@@ -13,24 +15,8 @@ open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-private lemma point_normalize_inv {C : Type*} [Category C] {a b a' z t : C}
-    (e : a ≅ b) (h : a = a') (v : z ⟶ b) (f : a' ⟶ t) :
-    v ≫ e.inv ≫ (eqToIso h).hom ≫ f =
-      v ≫ (F2.isoNormalizeEndpoints e h rfl).inv ≫ f := by
-  simp only [F2.isoNormalizeEndpoints, Iso.trans_inv, Iso.symm_inv, eqToIso_refl,
-    Iso.refl_inv, Category.id_comp, Category.assoc]
-
-private lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
-    (v : a ⟶ b) (l : b ⟶ c) (g : c ⟶ d) (w : a ⟶ e) (r : e ⟶ d)
-    (s : d ⟶ f) {t : C} (z : f ⟶ t) (h : v ≫ l ≫ g = w ≫ r) :
-    v ≫ l ≫ g ≫ s ≫ z = w ≫ r ≫ s ≫ z := by
-  simpa only [Category.assoc] using congrArg (fun m => m ≫ s ≫ z) h
-
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (k : D ⟶ B) [Quasicategory D]
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 /-- 右側の元の切断比較は、端点輸送後に同じ fiber 点の復元像を回収する。 -/
 theorem scaffoldBaseChangeRightChart_pointHom (c : TransportSimplexCategory D)

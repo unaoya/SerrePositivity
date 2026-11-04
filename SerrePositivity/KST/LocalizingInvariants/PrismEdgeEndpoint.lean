@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
 
 /-!
 概要：辺でパラメーター付けた prism の二端は、元の端点の定値族に制限される。

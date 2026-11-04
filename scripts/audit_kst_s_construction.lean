@@ -281,28 +281,6 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_isCofiber
 #check @SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_apex
 #print axioms SerrePositivity.KST.SConstruction.cofiberFamilyTriangle_apex
-#check @SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
-#print axioms SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
-#check @SerrePositivity.KST.SConstruction.pushoutDiagrams
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagrams
-#check @SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
-#print axioms SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
-#check @SerrePositivity.KST.SConstruction.pushoutProjection
-#print axioms SerrePositivity.KST.SConstruction.pushoutProjection
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
-#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
-#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
-#check @SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
-#print axioms SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
-#check @SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
-#print axioms SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
-#check @SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
-#print axioms SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
-#check @SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
-#print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
 #check @SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
 #print axioms SerrePositivity.KST.SConstruction.exists_lift_of_initial_first_vertices
 #check @SerrePositivity.InfinityCategories.exists_extension_with_vertices
@@ -3519,12 +3497,6 @@ import SerrePositivity.KST.SConstruction.PresentedPerfectDGNativeLabel
 #check @SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
 #print axioms SerrePositivity.KST.SConstruction.coreSAdditivityComparisonNat
 
-#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
-#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
-#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
-#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
-#check @SerrePositivity.KST.SConstruction.stable_hasColimit_span
-#print axioms SerrePositivity.KST.SConstruction.stable_hasColimit_span
 #check @SerrePositivity.KST.SConstruction.stable_pushoutProjection_trivialKanFibration
 #print axioms SerrePositivity.KST.SConstruction.stable_pushoutProjection_trivialKanFibration
 #check @SerrePositivity.KST.SConstruction.exists_relative_stable_pushoutFamily

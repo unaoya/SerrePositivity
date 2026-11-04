@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientUniversalEdges
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientProductMap
 public import SerrePositivity.KST.SConstruction.PerfectIdentityLaxValueDiagonal
-public import SerrePositivity.KST.LocalizingInvariants.ArrowCompositionCancellation
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
 
 /-! # 元の実積比較正方形の四辺の射の類
 概要：全図式の自然性と同じ四成分から、四辺を元の包含・対角・二脚の積射へ同定する。

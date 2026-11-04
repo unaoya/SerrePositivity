@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.StrictTransportPostEvaluation
 public import SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint
@@ -16,9 +17,6 @@ namespace SerrePositivity.KST.Fibration
 variable {I : Type u} [Category.{u} I] {E T B : SSet.{u}} [Quasicategory B]
   (s : T ⟶ nerve I) (p : E ⟶ B) [LeftFibration p] (k : nerve I ⟶ B)
   (f : T ⟶ pullback p k) (hf : f ≫ pullback.snd p k = s)
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 omit [Quasicategory B] in
 /-- 同じ Kan 自然変換の単位上の実点は、元の strict section の後合成の単位像。 -/

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSimplex
 public import SerrePositivity.KST.LocalizingInvariants.RelativeConeFunctorComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiniteQuotientConeRecoveryCofinality
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison
 
 /-!
 概要：元の第一行単体商射は、零次を含む全次数で anodyne 局所化により可逆になる。

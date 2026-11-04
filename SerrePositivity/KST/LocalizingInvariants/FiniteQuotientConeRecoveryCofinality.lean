@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreSliceCones
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones
 public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreQuotientCofinality
 
 /-!

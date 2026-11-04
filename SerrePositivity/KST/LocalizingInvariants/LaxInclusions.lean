@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
 public import SerrePositivity.KST.LocalizingInvariants.ZeroArrowFamily
@@ -21,23 +22,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxInclusion
 
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-
-def zeroC : D.obj ⟶ C.obj := SSet.const (chosenZeroVertex C.obj).vertex
-def zeroD : C.obj ⟶ D.obj := SSet.const (chosenZeroVertex D.obj).vertex
-
-lemma zeroC_post (x : D.obj _⦋0⦌) :
-    IsZeroVertex ((zeroC (D := D) ≫ p.hom).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (p.hom.app _ ((zeroC (D := D)).app _ x))
-  apply IsExactFunctor.preservesZero
-  rw [zeroC, zeroDiagram_const_vertex]
-  exact (chosenZeroVertex C.obj).isZero
-
-lemma zeroD_post (x : C.obj _⦋0⦌) :
-    IsZeroVertex ((zeroD (C := C) ≫ q.hom).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (q.hom.app _ ((zeroD (C := C)).app _ x))
-  apply IsExactFunctor.preservesZero
-  rw [zeroD, zeroDiagram_const_vertex]
-  exact (chosenZeroVertex D.obj).isZero
 
 /-- d ↦ (0,d,0→q d) は全単体上で定義された実 ∞ 関手。 -/
 def fromD : D.obj ⟶ (laxCategory p q).obj :=

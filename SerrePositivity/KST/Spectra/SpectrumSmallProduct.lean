@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SmallProductSequenceStructure
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomLimitFamilies
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
 
 /-!
 概要：任意の小さい BF Ω スペクトルの族の具体的な積と厳密な射影・普遍射。

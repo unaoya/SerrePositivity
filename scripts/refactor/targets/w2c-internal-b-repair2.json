@@ -1,0 +1,184 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 2,
+  "phase": "B",
+  "head_before": "9f0949ef9838010c970d26b2b96c55fb01ff0870",
+  "reason": "初回補充35本の再発0。13失敗の個別補充に加え、Stable入口のimport衝突を生んだ匿名instance8本を承認済みsplitとbefore v3bの既存の宣言名に明示して復元する。名前・型・本体の基準は anonymous-instance-names.json。",
+  "changes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment",
+        "SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization",
+        "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed",
+        "SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.StrictTransportOppositePointHom",
+      "imports": [
+        "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightDecomposition",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.ReplacedFiberCubeHom",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.SpanBaseChangeFamily",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality",
+        "SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.SquareZeroUnitLaws",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.TensorBiproductExt"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSetTransportSimplexFirstVertexMap_4 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSet_2 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSet_1 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSet_4 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSet_5 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSetTransportSimplexFirstVertexMap_6 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+      "annotations": [
+        {
+          "before": "local instance :",
+          "after": "local instance instLeftFibrationSndSSet_3 :"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex\nimport all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointFaithful",
+      "annotations": [
+        {
+          "before": "namespace SerrePositivity.KST.LocalizingInvariants\n",
+          "after": "namespace SerrePositivity.KST.LocalizingInvariants\nattribute [local instance] cofiberZeroSourceQuasicategory\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction\nimport all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}

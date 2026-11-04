@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointCounitCoordinates
 public import SerrePositivity.KST.Spectra.SpectrumKanAdjointStructureIntervals
 public import SerrePositivity.KST.Spectra.PointedTransposeIntervalRestriction
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 
 /-!
 概要：元の構造比較区間の counit 像を実際の区間として計算し、始点を元の二段構造へ同定する。

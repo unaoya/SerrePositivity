@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 
 /-! # 元の亜群化後の実写像と厳密 Kan 置換後の実写像の可逆性の比較 -/
 

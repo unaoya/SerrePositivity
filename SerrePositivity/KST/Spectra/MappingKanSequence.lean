@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequence
-public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
 public import SerrePositivity.InfinityCategories.Kan.HomTensorStrength
 
 /-!

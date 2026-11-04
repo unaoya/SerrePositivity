@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 
 /-!

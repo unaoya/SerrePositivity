@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.KanSequence
 
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 public import SerrePositivity.KST.Spectra.PointedHomotopyExtension

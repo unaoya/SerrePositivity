@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtension
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalArrowCospanFamily
 public import SerrePositivity.KST.LocalizingInvariants.IdentityArrowPullback

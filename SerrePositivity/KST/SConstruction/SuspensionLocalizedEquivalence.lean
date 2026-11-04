@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedMappingLocalizedImage
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-! # 点つき実ホモトピー逆からの suspension の局所化可逆性
 概要：元の点つき射の実ホモトピー逆を suspension の写像空間へ移し、局所化像を可逆にする。

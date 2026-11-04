@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequenceMappingFunctor
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.PointedWeightedEnd
 
 /-!

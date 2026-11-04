@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCone
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone
 public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientValueSquare
 public import SerrePositivity.KST.LocalizingInvariants.BinaryProductCospanNormalized
 

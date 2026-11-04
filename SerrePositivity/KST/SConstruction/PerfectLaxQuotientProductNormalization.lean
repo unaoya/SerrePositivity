@@ -1,6 +1,8 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientValueCospan
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy
 
 /-! # 元の四つの実 BF 射を固定する正方形の境界変形
 概要：元の実積正方形を、元の射対・対角・核の射・二脚の実積射の四辺へ移す。

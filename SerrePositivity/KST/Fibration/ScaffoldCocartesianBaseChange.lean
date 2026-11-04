@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification
 public import SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange
 
@@ -13,22 +15,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma recoverPoint {C : Type*} [Category C] {a b z : C}
-    (e : a ≅ b) (x : z ⟶ a) (y : z ⟶ b) (h : x ≫ e.hom = y) :
-    y ≫ e.inv = x := by
-  rw [← h]
-  simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
-
-private lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
-    (x : a ⟶ b) (y : b ⟶ c) (f : c ⟶ d) (z : a ⟶ d) (g : d ⟶ e)
-    (h : x ≫ y ≫ f = z) : x ≫ y ≫ f ≫ g = z ≫ g := by
-  simpa only [Category.assoc] using congrArg (fun m => m ≫ g) h
-
 variable {I : Type u} [Category.{u} I] {E B : SSet.{u}} [Quasicategory B]
   (p : E ⟶ B) [LeftFibration p] (k : nerve I ⟶ B)
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 /-- 同じ cocartesian 切断の Kan 分類を、元の底の実図式へ同じ底変換成分で送る。 -/
 def scaffoldCocartesianBaseChangeClassificationIso :

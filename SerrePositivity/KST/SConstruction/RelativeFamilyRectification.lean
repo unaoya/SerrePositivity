@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.PointedMapping
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationEndpointExtension
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 

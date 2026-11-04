@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KST.Spectra.FreePathSpace
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：基点を固定しない指数 path 対象と二つの端点の全基点 π_* 同型性。

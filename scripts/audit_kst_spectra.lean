@@ -1,3 +1,20 @@
+import SerrePositivity.KST.Spectra.SimplexLastContraction
+import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
+import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
+import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
+import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
+import SerrePositivity.KST.Spectra.Limits.SpectrumPoint
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackCones
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackMonomorphisms
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackOmega
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerMonomorphisms
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowers
 import SerrePositivity.KST.Spectra
 import Lean.Util.CollectAxioms
 
@@ -1100,15 +1117,9 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumTail,
     `SerrePositivity.KST.Spectra.UnpointedPathEvaluation,
     `SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism,
-    `SerrePositivity.KST.Spectra.PointedKanWhitehead,
     `SerrePositivity.KST.Spectra.PostMappingIsomorphism,
-    `SerrePositivity.KST.Spectra.FibrationIntervalLifting,
     `SerrePositivity.KST.Spectra.AcyclicFibrationLifting,
     `SerrePositivity.KST.Spectra.SimplexLastContraction,
-    `SerrePositivity.KST.Spectra.LastHornContraction,
-    `SerrePositivity.KST.Spectra.BoundaryNormalization,
-    `SerrePositivity.KST.Spectra.NormalizedBoundaryFilling,
-    `SerrePositivity.KST.Spectra.AcyclicKanLifting,
     `SerrePositivity.KST.Spectra.FilteredSpectrumInjection,
     `SerrePositivity.KST.Spectra.FilteredSpectrumMap,
     `SerrePositivity.InfinityCategories.Kan.AcyclicFiber,
@@ -1128,7 +1139,6 @@ run_cmd do
     `SerrePositivity.InfinityCategories.Kan.FibrationExactness,
     `SerrePositivity.InfinityCategories.Kan.FibrationNaturality,
     `SerrePositivity.InfinityCategories.Kan.FibrationMultiplication,
-    `SerrePositivity.KST.Spectra.PointedMapping,
     `SerrePositivity.InfinityCategories.Kan.FibrationTower,
     `SerrePositivity.KST.Spectra.TruncatedMapping,
     `SerrePositivity.KST.Spectra.SuspensionLoop,
@@ -1146,7 +1156,6 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumMappingLaws,
     `SerrePositivity.KST.Spectra.SpectrumSimplicialCategory,
     `SerrePositivity.KST.Spectra.CoherentNerve,
-    `SerrePositivity.KST.Spectra.PointedInterval,
     `SerrePositivity.KST.Spectra.PathSpace,
     `SerrePositivity.KST.Spectra.PointedMappingParameters,
     `SerrePositivity.KST.Spectra.IntervalContraction,
@@ -1175,7 +1184,6 @@ run_cmd do
     `SerrePositivity.KST.Spectra.SpectrumHomotopyFunctor,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences,
     `SerrePositivity.KST.Spectra.PointedHomotopy,
-    `SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence,
     `SerrePositivity.KST.Spectra.AnodyneHomotopyEquivalence,
     `SerrePositivity.KST.Spectra.PointedKanReplacement,
     `SerrePositivity.KST.Spectra.PointedFactorization,
@@ -1223,15 +1231,12 @@ run_cmd do
     `SerrePositivity.KST.Spectra.FilteredPointedHomotopy,
     `SerrePositivity.KST.Spectra.FilteredHomotopyGroups,
     `SerrePositivity.KST.Spectra.PullbackKanSequence,
-    `SerrePositivity.KST.Spectra.MappingPathSpace,
     `SerrePositivity.KST.Spectra.MappingPathSequence,
     `SerrePositivity.KST.Spectra.SpectrumFibrationReplacement,
     `SerrePositivity.KST.Spectra.SpectrumHomotopyFiber,
     `SerrePositivity.InfinityCategories.Kan.HomTensorStrength,
     `SerrePositivity.KST.Spectra.MappingKanSequence,
-    `SerrePositivity.KST.Spectra.FreeIntervalBoundary,
     `SerrePositivity.KST.Spectra.FreeInterval,
-    `SerrePositivity.KST.Spectra.FreePathSpace,
     `SerrePositivity.KST.Spectra.CofibrantSequenceLifting,
     `SerrePositivity.KST.Spectra.StageTransitionCoherence,
     `SerrePositivity.KST.Spectra.LoopMappingClasses,
@@ -1526,3 +1531,268 @@ run_cmd do
   for mod in expected do
     unless modules.contains mod do throwError "K-L9: required module missing: {mod}"
   logInfo m!"K-L9: {count} declarations in {modules.size} modules audited; standard three axioms only."
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumPoint,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumPullbackCones,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumPullbackMonomorphisms,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumPullbackOmega,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumTowerMonomorphisms,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence,
+    `SerrePositivity.KST.Spectra.Limits.SpectrumTowers
+  ]
+  let forbidModel : Array Name := #[]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
+
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor_preservesLimits
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor_preservesLimits
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_evaluation
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_evaluation
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomFunctor
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomFunctor
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumMappingEvaluation
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumMappingEvaluation
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pointedMapping_pre_post
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pointedMapping_pre_post
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumMappingStep_post
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumMappingStep_post
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumStageHomCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomParameterCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomParameterCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily_fac
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily_fac
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily_condition
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomLimitFamily_condition
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_evaluation
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_evaluation
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_fac
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_fac
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_uniq
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomConeLift_uniq
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopProductCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopProductCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso_hom_fst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso_hom_fst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso_hom_snd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopProductIso_hom_snd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_adjoint
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_adjoint
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequence
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequence
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceFst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceFst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceSnd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceSnd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.kanSequenceHom_ext
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.kanSequenceHom_ext
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_fst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_fst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_snd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_snd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_uniq
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequenceLift_uniq
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequence_omega
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductKanSequence_omega
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_factor
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_factor
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_mono
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.binaryProductSigma_mono
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProduct
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProduct
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductFst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductFst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductSnd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductSnd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductDiagram
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductDiagram
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductInfinityCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductInfinityCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductInfinityCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductInfinityCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductLift
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductLift
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryFan_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryFan_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasTerminal
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasTerminal
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasBinaryProducts
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasBinaryProducts
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasFiniteProducts
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHasFiniteProducts
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesTerminal
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesTerminal
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesBinaryProducts
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesBinaryProducts
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesFiniteProducts
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevel_preservesFiniteProducts
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_hom_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductCone_hom_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductInfinityCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductInfinityCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductInfinityCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumFiniteProductInfinityCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pointedPullbackToProduct
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pointedPullbackToProduct
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pointedPullbackToProduct_mono
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pointedPullbackToProduct_mono
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_product_factor
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_product_factor
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_mono
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_mono
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso_hom_fst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso_hom_fst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso_hom_snd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopPullbackIso_hom_snd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackAdjointMap
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackAdjointMap
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_adjoint
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSigma_adjoint
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSequence_omega_iff
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSequence_omega_iff
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackAdjointMap_piIsomorphism
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackAdjointMap_piIsomorphism
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSequence_omega
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.pullbackSequence_omega
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullback
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullback
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackFst
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackFst
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackSnd
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackSnd
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullback_condition
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullback_condition
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackOrdinaryCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackOrdinaryCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackOrdinaryCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackOrdinaryCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone_hom_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackCone_hom_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHom_hornFamily
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHom_hornFamily
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHom_hornLift
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHom_hornLift
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_fibration
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_fibration
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackInfinityCone_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequenceProjection
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequenceProjection
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_adjoint
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_adjoint
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap_piIsomorphism
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap_piIsomorphism
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence_omega
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence_omega
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_app_injective
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_app_injective
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_mono
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_mono
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTower
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTower
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection_comp
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection_comp
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerDiagram
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerDiagram
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_level_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_level_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_hom_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_hom_isLimit
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone
+#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone_isLimit
+#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone_isLimit

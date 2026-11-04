@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientZeroRecovery
-public import SerrePositivity.KST.Fibration.WeakIdentityQuotientValueCoordinates
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates
 
 /-!
 概要：元の恒等点を保つ値同値と、実全族の零単体値比較を元の座標で結ぶ。

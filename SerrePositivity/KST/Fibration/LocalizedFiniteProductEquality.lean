@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.LocalizedPairBothEquality
+public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality
 public import SerrePositivity.KST.Fibration.FinSnocProductIso
 
 /-! # 元の有限積への実際の射の全成分の局所化等号 -/

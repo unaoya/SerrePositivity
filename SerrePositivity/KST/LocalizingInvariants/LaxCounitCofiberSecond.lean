@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiber
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage
 public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization
 

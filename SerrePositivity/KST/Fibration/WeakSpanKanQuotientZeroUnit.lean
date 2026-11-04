@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.Fibration.WeakSpanZeroSimplexFiber
-public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientUnitRecovery
-public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientFixedFiber
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber
 
 /-!
 概要：同じ商上の実単位の零単体制限を、文字通り元の終点の fiber へ戻す。

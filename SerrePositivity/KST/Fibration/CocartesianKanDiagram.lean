@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.StrictKanCompletion
+public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
+public import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramCoherentNerve
 public import SerrePositivity.InfinityCategories.F1B.Fibrations.CocartesianStrictTransportEquivalence
 

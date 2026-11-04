@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomExchange
@@ -18,11 +19,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-def arrowFamilyHom {A X : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    FunctorHom (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-      (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (arrowFamilyHomotopy a))
 
 lemma arrowFamilyHom_precomp {A B X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (i : B ⟶ A) :

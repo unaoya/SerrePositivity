@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
-public import SerrePositivity.KST.LocalizingInvariants.RelativeTammeRectangle
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle
 
 /-! # 固定 dg 始域上の相対局所化不変量と K-10 の接続
 概要：K-10 の不変量を、固定 ν でパラメータ化した同じ S 上の関手として量化する。

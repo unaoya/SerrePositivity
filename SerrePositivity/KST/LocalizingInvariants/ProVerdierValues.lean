@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierDiagramCategory
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory
 public import SerrePositivity.KST.LocalizingInvariants.ProFiberSequence
 
 /-!

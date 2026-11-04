@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FractionClassificationRestriction
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction
 
 /-! # 指定した分類同型を初頂点へ制限し、同じ実 section 比較を回収する -/
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointTarget
-public import SerrePositivity.KST.LocalizingInvariants.CofiberDiagramFibers
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers
 
 /-!
 概要：cofiber の実右随伴の矢印は始点が零で、終点は元の入力である。

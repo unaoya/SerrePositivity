@@ -4,6 +4,7 @@ public import Mathlib.AlgebraicTopology.ModelCategory.IsCofibrant
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexModelCategory
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
 
 /-!
 分割で生成：docstring を書き直すこと

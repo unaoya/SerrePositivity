@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies
 
 /-!
 概要：第一終点固定の span 族の第二終点 fiber は、元の両端固定 span と実同型。

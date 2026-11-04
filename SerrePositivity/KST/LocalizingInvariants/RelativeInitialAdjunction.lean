@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInitialAdjunction
 
 public import SerrePositivity.KST.LocalizingInvariants.PinchedPrecomposeEquivalence
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.InitialBoundaryMappingSpace
@@ -35,13 +36,6 @@ lemma unitCondition_of_relativeInitial (η : FunctorHom (𝟙 X) (F ≫ G)) [IsI
   exact ((SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary G _ y (hF x)).isQCatEquivalence.comp
     (PinchedPrecompose.isQCatEquivalence (qcatUnitComponent η x) _)).isSimplicialHomotopyEquivalence
 
-/-- 切断の厳密な恒等から得る可逆な単位候補。 -/
-def sectionUnit (h : F ≫ G = 𝟙 X) : FunctorHom (𝟙 X) (F ≫ G) :=
-  eqToHom (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f)) h.symm)
-
-instance sectionUnit_isIso (h : F ≫ G = 𝟙 X) : IsIso (sectionUnit h) :=
-  inferInstanceAs (IsIso (eqToHom _))
-
 def adjunctionOfRelativeInitialSection (h : F ≫ G = 𝟙 X)
     (hF : ∀ x, InitialBoundaryLifting G (F.app (Opposite.op ⦋0⦌) x)) : QCatAdjunction F G :=
   qcatAdjunctionOfUnitMappingSpaceCondition (sectionUnit h)
@@ -51,17 +45,5 @@ lemma adjunctionOfRelativeInitialSection_unit (h : F ≫ G = 𝟙 X)
     (hF : ∀ x, InitialBoundaryLifting G (F.app (Opposite.op ⦋0⦌) x)) :
     (adjunctionOfRelativeInitialSection h hF).unitHom = sectionUnit h :=
   qcatAdjunctionOfUnitMappingSpaceCondition_unitHom _ _
-
-/-- 相対始点境界を充填する厳密切断は、全写像空間の意味で充満忠実。 -/
-lemma fullyFaithful_of_relativeInitialSection (h : F ≫ G = 𝟙 X)
-    (hF : ∀ x, InitialBoundaryLifting G (F.app (Opposite.op ⦋0⦌) x)) :
-    IsFullyFaithful F := by
-  have hfg : IsFullyFaithful (F ≫ G) := h.symm ▸ isFullyFaithful_id X
-  intro x y
-  have hg := SerrePositivity.InfinityCategories.F1B.pinchedHomMap_equivalence_of_initialBoundary G _
-    (F.app (Opposite.op ⦋0⦌) y) (hF x)
-  have hc := (hfg x y).isQCatEquivalence
-  rw [pinchedHomMap_comp] at hc
-  exact (hg.isQCatEquivalence.cancel_right hc).isSimplicialHomotopyEquivalence
 
 end SerrePositivity.KST.LocalizingInvariants

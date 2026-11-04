@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuSquareBoundary
 public import SerrePositivity.InfinityCategories.Core.FullyFaithfulIso
 public import SerrePositivity.KST.SConstruction.CoherentHomIntervalEdgeParameter
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 
 /-!
 概要：同じ実商辺の指定関手同型を、StableInfinity の辺全体の比較へ移す。

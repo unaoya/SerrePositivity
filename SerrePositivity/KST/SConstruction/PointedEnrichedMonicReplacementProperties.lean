@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.FreeInterval
 public import SerrePositivity.KST.SConstruction.PointedEnrichedMonicReplacement
 public import SerrePositivity.KST.SConstruction.PointedTensorMappingCylinderMono
 public import SerrePositivity.KST.SConstruction.PointedDoubleMappingCylinderWeakEquivalence

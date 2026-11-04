@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorCylinder
 public import SerrePositivity.KST.SConstruction.BinaryCofanSourceIsos
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashMonomorphisms
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
 

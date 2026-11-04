@@ -1,0 +1,2273 @@
+{
+  "status": "STOP1_PRIME_REVIEW",
+  "base": "1c05a5a16d5cf4df36e61aeb43ca0a865a54837f",
+  "instruction_commit": "8e95eff8829c33c87a6d0fbd45fb0e94c07f70b9",
+  "branch": "infra/if-w2c",
+  "builds": 0,
+  "applied": false,
+  "A_Aprime": {
+    "scope": "A5",
+    "targets": 88,
+    "validator_status": "PASS",
+    "enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "cycles": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1723
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1723
+      }
+    },
+    "direct": [],
+    "ratchet_increases": [],
+    "downstream_count": 10255,
+    "roots": [
+      "SerrePositivity",
+      "SerrePositivity.KST.LocalizingInvariants",
+      "SerrePositivity.KST.NonConnective",
+      "SerrePositivity.KST.SConstruction.OdotTailAll",
+      "SerrePositivity.KST.Fibration",
+      "SerrePositivity.KST.Spectra.S3All",
+      "SerrePositivity.KST.Fibration.Relative.All",
+      "SerrePositivity.InfinityCategories.Derived.Gluing",
+      "SerrePositivity.InfinityCategories.Derived.SuspensionAction.All",
+      "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.All",
+      "SerrePositivity.KST.SConstruction.Cofinality",
+      "SerrePositivity.InfinityCategories.Derived.KappaCovers.All",
+      "SerrePositivity.InfinityCategories.F2",
+      "SerrePositivity.KST.Spectra.D3TailAll",
+      "SerrePositivity.InfinityCategories.F1.Cocartesian",
+      "SerrePositivity.KST.Spectra.D3All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.All",
+      "SerrePositivity.HomotopicalAlgebra.Rectification.Foundations",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumTowers",
+      "SerrePositivity.KST.Descent.Auxiliary",
+      "SerrePositivity.Spectra.Stable.SimplicialStability",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters",
+      "SerrePositivity.Spectra.Stable.Replacement",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveEvaluationLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeSampling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSmallFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingFamilyFit",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMapLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFirstChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameterRelative",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBoundaryExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension",
+      "SerrePositivity.KST.Spectra.SimplexLastContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetAssociativity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetFaces",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetIdentity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePrescribedCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeValueExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLowerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornInputMap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallKanHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFixedHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceMaps",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample",
+      "SerrePositivity.InfinityCategories.Kan",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize",
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame"
+    ]
+  },
+  "HA_origin": {
+    "before_HA": 90,
+    "after_HA": 66,
+    "after_ModelBridge": 8,
+    "actual_core_consumers": {
+      "SerrePositivity.InfinityCategories.F1.TwistedArrow.SourceInitial": [
+        {
+          "user_declaration": "SerrePositivity.InfinityCategories.cosliceToTwistedArrowSource_isPrecompositionEquivalence",
+          "required": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence"
+        }
+      ],
+      "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence": [
+        {
+          "user_declaration": "SerrePositivity.InfinityCategories.rightRepresentableTwistedArrowFiberMap_isQCatEquivalence",
+          "required": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence"
+        }
+      ],
+      "SerrePositivity.InfinityCategories.HomotopyLimits.TwistedHomFunctorMap": [
+        {
+          "user_declaration": "SerrePositivity.InfinityCategories.HomotopyLimits.twistedHomFunctorMap_isQCatEquivalence",
+          "required": "SerrePositivity.InfinityCategories.cosliceTwistedHomMap_isQCatEquivalence"
+        }
+      ]
+    }
+  },
+  "full_whole_move_simulation": {
+    "scope": "full5",
+    "targets": 581,
+    "validator_status": "FAIL",
+    "enforcement": {
+      "status": "FAIL",
+      "core_order_violations": 0,
+      "new_direct_edges": 415,
+      "aggregate_increases": 3,
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "cycles": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 689,
+        "affected_core_module_count": 13
+      },
+      "W2a": {
+        "forbidden_module_count": 2290,
+        "affected_core_module_count": 1926
+      },
+      "W2b": {
+        "forbidden_module_count": 2290,
+        "affected_core_module_count": 1926
+      }
+    },
+    "downstream_count": 11071,
+    "roots": [
+      "SerrePositivity",
+      "SerrePositivity.KST.LocalizingInvariants",
+      "SerrePositivity.KST.NonConnective",
+      "SerrePositivity.KST.SConstruction.OdotTailAll",
+      "SerrePositivity.KST.Fibration",
+      "SerrePositivity.KST.Spectra.S3All",
+      "SerrePositivity.InfinityCategories.Derived.Gluing",
+      "SerrePositivity.KST.Fibration.Relative.All",
+      "SerrePositivity.InfinityCategories.Derived.SuspensionAction.All",
+      "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.All",
+      "SerrePositivity.KST.SConstruction.Cofinality",
+      "SerrePositivity.InfinityCategories.Derived.KappaCovers.All",
+      "SerrePositivity.InfinityCategories.F2",
+      "SerrePositivity.InfinityCategories.StablePresentable",
+      "SerrePositivity.KST.Spectra.D3TailAll",
+      "SerrePositivity.InfinityCategories.F1.Cocartesian",
+      "SerrePositivity.KST.Spectra.D3All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.All",
+      "SerrePositivity.HomotopicalAlgebra.Rectification.Foundations",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumTowers",
+      "SerrePositivity.KST.Descent.Auxiliary",
+      "SerrePositivity.Spectra.Stable.SimplicialStability",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters",
+      "SerrePositivity.Spectra.Stable.Replacement",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveEvaluationLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeSampling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSmallFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingFamilyFit",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMapLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFirstChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameterRelative",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBoundaryExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension",
+      "SerrePositivity.KST.Spectra.SimplexLastContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetAssociativity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetFaces",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetIdentity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePrescribedCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeValueExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLowerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornInputMap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallKanHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFixedHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceMaps",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample",
+      "SerrePositivity.InfinityCategories.Kan",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize",
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame"
+    ],
+    "direct_count": 415,
+    "ratchet_increase_count": 437
+  },
+  "whole_move_dry_run": {
+    "exit_code": 0,
+    "applied": false,
+    "moves": 515,
+    "files": 868
+  },
+  "preferred_plan_simulation": {
+    "scope": "preferredValid",
+    "targets": 483,
+    "validator_status": "FAIL",
+    "enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "cycles": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      }
+    },
+    "direct": [],
+    "ratchet_increases": [
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+          "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74,
+        "example_path": [
+          "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+          "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+          "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+          "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+          "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+          "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+        ]
+      }
+    ],
+    "downstream_count": 11152,
+    "roots": [
+      "SerrePositivity",
+      "SerrePositivity.KST.LocalizingInvariants",
+      "SerrePositivity.KST.NonConnective",
+      "SerrePositivity.KST.SConstruction.OdotTailAll",
+      "SerrePositivity.KST.Fibration",
+      "SerrePositivity.KST.Spectra.S3All",
+      "SerrePositivity.InfinityCategories.Derived.Gluing",
+      "SerrePositivity.KST.Fibration.Relative.All",
+      "SerrePositivity.InfinityCategories.Derived.SuspensionAction.All",
+      "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.StrictComparison.All",
+      "SerrePositivity.KST.SConstruction.Cofinality",
+      "SerrePositivity.InfinityCategories.Derived.KappaCovers.All",
+      "SerrePositivity.InfinityCategories.F2",
+      "SerrePositivity.KST.Spectra.D3TailAll",
+      "SerrePositivity.InfinityCategories.F1.Cocartesian",
+      "SerrePositivity.KST.Spectra.D3All",
+      "SerrePositivity.InfinityCategories.Derived.CoherentBar.All",
+      "SerrePositivity.InfinityCategories.StablePresentable",
+      "SerrePositivity.HomotopicalAlgebra.Rectification.Foundations",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumTowers",
+      "SerrePositivity.KST.Descent.Auxiliary",
+      "SerrePositivity.Spectra.Stable.SimplicialStability",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters",
+      "SerrePositivity.Spectra.Stable.Replacement",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+      "SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveEvaluationLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeSampling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSmallFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingFamilyFit",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMapLaws",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFirstChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameterRelative",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBoundaryExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveIntervalBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension",
+      "SerrePositivity.KST.Spectra.SimplexLastContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetAssociativity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetFaces",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetIdentity",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePrescribedCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeValueExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComposition",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLowerExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornInputMap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornOverlap",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallKanHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFamilies",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFixedHomotopy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceMaps",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample",
+      "SerrePositivity.InfinityCategories.Kan",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleHorn",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize",
+      "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame"
+    ]
+  },
+  "preferred_move_dry_run": {
+    "exit_code": 0,
+    "applied": false,
+    "moves": 325,
+    "files": 594
+  },
+  "names_and_counts": {
+    "R70": {
+      "move": 58,
+      "retain_KST_211": 21,
+      "hold_unresolved": 15,
+      "split": 43
+    },
+    "R52": {
+      "move": 137,
+      "retain_KST_211": 134,
+      "hold_unresolved": 53
+    },
+    "R69": {
+      "move": 58,
+      "split": 44,
+      "retain_KST_211": 17,
+      "hold_unresolved": 12
+    },
+    "R56b": {
+      "move": 13
+    },
+    "R68": {
+      "split": 5,
+      "retain_KST_211": 39,
+      "hold_unresolved": 18,
+      "move": 29
+    },
+    "R51": {
+      "move": 3
+    }
+  },
+  "nominal_367": {
+    "Stable": 144,
+    "Derived": 167,
+    "StablePresentable": 56
+  },
+  "effective_367_counts": {
+    "R52": {
+      "move": 131,
+      "hold_unresolved": 53
+    },
+    "R70": {
+      "move": 4,
+      "hold_unresolved": 15,
+      "split": 43
+    },
+    "R69": {
+      "split": 44,
+      "move": 14,
+      "hold_unresolved": 12
+    },
+    "R68": {
+      "split": 5,
+      "hold_unresolved": 18,
+      "move": 28
+    }
+  },
+  "formal_cli": {
+    "exit_code": 1,
+    "split_directions": 116,
+    "status": "FAIL"
+  },
+  "unsupported_splits": {},
+  "unresolved_ownership": {},
+  "private_supplement": {
+    "extra_modules": [
+      "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+      "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+      "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+      "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+      "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+      "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+      "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+      "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+      "SerrePositivity.KST.Fibration.WeakStringSimplicialIndices",
+      "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyLastArrow",
+      "SerrePositivity.KST.LocalizingInvariants.CofiberBottomLifting",
+      "SerrePositivity.KST.LocalizingInvariants.CofiberRightLifting",
+      "SerrePositivity.KST.LocalizingInvariants.FixedSpanConeFamily",
+      "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction",
+      "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison",
+      "SerrePositivity.KST.LocalizingInvariants.MarkedSpanBoundary",
+      "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+      "SerrePositivity.KST.LocalizingInvariants.RoofPastingConeFaces",
+      "SerrePositivity.KST.LocalizingInvariants.SimplexCoconeSquareComparison",
+      "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+      "SerrePositivity.KST.LocalizingInvariants.SquareZeroUnitLaws",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierArrowLifting",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCoconeLift",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone",
+      "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement"
+    ],
+    "check": "Every previous public v3b row exactly equal; the temporary probe only includes private source constants for splitter ownership."
+  },
+  "all_final_residual_paths": {
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor"
+    ],
+    "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingMonomorphisms",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies"
+    ],
+    "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy": [
+      "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy"
+    ]
+  },
+  "stage_dependencies": {
+    "rule": "For strict group-by-group enforcement, introduce these general prerequisites no later than their earliest consuming group. Entry registrations should similarly include only modules already placed. No change of declarations or additional candidate modules.",
+    "prerequisites": {
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows"
+      },
+      "SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison"
+      },
+      "SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition"
+      },
+      "SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily": {
+        "original": "R69",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap"
+      },
+      "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy"
+      },
+      "SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor": {
+        "original": "R69",
+        "first_consuming_group": "R68",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison"
+      },
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange": {
+        "original": "R70",
+        "first_consuming_group": "R52",
+        "witness_consumer": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage"
+      }
+    },
+    "counts": {
+      "R69 → R68": 17,
+      "R69 → R52": 8,
+      "R70 → R52": 1
+    }
+  },
+  "invariants": {
+    "restricted_closure_failures": {},
+    "F1B_entry_straightening": [],
+    "previous_R48_verified": [
+      [
+        "SerrePositivity.KST.LocalizingInvariants.AdjointLocalization",
+        "SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.AdjointVerdier",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.ExactEnrichment",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.ExactEnrichment"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.StableCategories",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.StableInfinity",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.VerdierDiagrams",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams"
+      ],
+      [
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSequence",
+        "SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence"
+      ]
+    ]
+  },
+  "previous_ratchet_26": [
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+        "SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+        "SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    }
+  ],
+  "cost": {
+    "downstream_roots": 129,
+    "modules": 11152,
+    "seconds_at_W2a2_rate": 6663.0,
+    "seconds_at_warm_W2b_rate": 1459.7
+  },
+  "evidence": ".lake/verify/ifw2c-section5/"
+}

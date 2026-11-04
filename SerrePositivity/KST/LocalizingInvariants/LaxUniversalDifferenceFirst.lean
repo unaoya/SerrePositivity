@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
 public import SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationZero
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRoundTrip
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveLocalization

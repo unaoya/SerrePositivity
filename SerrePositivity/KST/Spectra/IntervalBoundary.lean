@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Spectra.PointedInterval
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval
 public import Mathlib.AlgebraicTopology.SimplicialSet.Boundary
 
 /-!

@@ -1,10 +1,11 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy
-
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ComponentClasses
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Brown
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
+
 
 /-!
 # 二重単体的集合のReedy cofibrationの対角は単射となる

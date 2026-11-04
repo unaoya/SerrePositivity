@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.OppositeKanPointedEvaluation
-public import SerrePositivity.KST.Fibration.PointedResolutionProjection
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedResolutionProjection
 
 /-! # 元の反転 Kan 比較の pointed 係数作用は既存の左解像比較そのもの -/
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberConeComparison
-public import SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 
 /-!
 概要：任意射の homotopy fiber 錐から fibration 置換の錐への指定比較を、全図式同型にする。

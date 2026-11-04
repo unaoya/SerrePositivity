@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.StraighteningSectionChart
 
 /-! # 元の左右の底変換比較は、それぞれ同じ初頂点切断比較の指定成分 -/
@@ -12,12 +14,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-private lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
-    (h : a = a') (e : a' ≅ b) : HEq (eqToIso h ≪≫ e) e := by
-  subst a'
-  simp only [eqToIso_refl, Iso.refl_trans]
-  rfl
 
 /-- 元の右側の指定比較は、同じ pullback 対象での初頂点切断比較。 -/
 theorem straighteningBaseChangeRightChart_heq_firstVertex

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequence
-public import SerrePositivity.KST.Spectra.PointedMapping
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
 
 /-!
 概要：単射な構造射を持つ Kan 列からの厳密な持ち上げ。

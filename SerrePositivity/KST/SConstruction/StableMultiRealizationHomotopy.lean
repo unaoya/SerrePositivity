@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.StableMultiRealizationEnrichedFunctor
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 
 /-! # 全反復実現における関手同型の実ホモトピー
 概要：完全関手の関手同型は、元の全有限反復 core S• 実現射の実ホモトピーになる。

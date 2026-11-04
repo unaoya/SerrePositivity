@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit
 public import SerrePositivity.KST.Fibration.KanCommSqCone
 
 /-! # 元の Kan homotopy pullback 四角形を、同じ全 coherent 極限錐へ移す -/
@@ -15,18 +16,6 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-
-/-- 元の通常射の anodyne–fibration 分解の中間値は、同じ実 Kan 対象である。 -/
-def kanCommSqReplacementTarget {Y Z : SSet.{u}} [KanComplex Z] (g : Y ⟶ Z) :
-    KanObject.{u} := by
-  let W := AnodyneKanReplacement.factorization.Z.obj (Arrow.mk g)
-  let p : W ⟶ Z := AnodyneKanReplacement.factorization.p.app (Arrow.mk g)
-  have : Fibration p := (SSet.modelCategoryQuillen.fibration_iff _).mpr
-    (AnodyneKanReplacement.factorization.hp _)
-  refine ⟨W, ?_⟩
-  change Fibration (terminal.from W)
-  rw [show terminal.from W = p ≫ terminal.from Z from terminal.hom_ext _ _]
-  infer_instance
 
 /-- 任意の元の Kan homotopy pullback 四角形は、そのまま coherent な実極限錐を与える。 -/
 theorem kanCommSqCone_isLimit {P X Y Z : KanObject.{u}}

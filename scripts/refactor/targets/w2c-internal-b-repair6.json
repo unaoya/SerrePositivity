@@ -1,0 +1,458 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 6,
+  "phase": "B",
+  "head_before": "69a2c0fadd021a1aaba5b26735ff2e6d5aa6300a",
+  "reason": "before v3b と承認済み split の kept→moved private 宣言依存を全件照合。未復旧7ファイルへ同じ既存依存先の import all を補充する。既存の公開 import も維持。個別 probe の依存失敗を解消するため、同じ補充束内で適用し内部 round 7 で検証する。局所instanceの照合は停止報告で訂正した診断9件を参照。未補充の公開定理と新規利用者1本の定義元も補充する。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "imports": [
+        "SerrePositivity.KST.Fibration.FirstVertexDiagramVertices"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderCompletionProperties",
+      "imports": [
+        "SerrePositivity.KST.Spectra.FreeInterval"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart\nimport all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": [],
+  "evidence": {
+    "private_reference_restoration": [
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.pointTriangle"
+            ]
+          },
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_heq_diagramValue",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.endpointSpan_heq"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeLeftChart_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.point_normalize_both_inv"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeRightChart_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.point_normalize_inv"
+            ]
+          },
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldGlobalBaseChange_pullback_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.appendPointTriangle"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.appendPoint",
+              "SerrePositivity.KST.Fibration.recoverPoint"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_factor",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.normalizeValueComposition"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.pointNormalize"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.straighteningUnderRealizationChart_factor",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq"
+            ]
+          }
+        ]
+      }
+    ],
+    "snapshot_base": "11eacaa39b5fc79af6185987d1596849122496fb",
+    "local_instance_audit_correction": {
+      "status": "PENDING_FINAL_BUILD_AND_PRESERVATION",
+      "count": 9,
+      "verified": 5,
+      "modules": [
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_heq_diagramValue",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso._proof_5",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeRightChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldGlobalBaseChange_pullback_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianPostBaseChangeClassification_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.strictTransportPost_inclusion_evaluate",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.strictKanTransportPost_unit_point",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_2",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_factor",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart.eq_1",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_4",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_4"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_eq_diagramValue",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldPointedReconstruction_baseChange_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningInfinityDiagram_baseChangeIso_heq_jointMap",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_inv_value",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_value",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_pre",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.straighteningRepresentationRestrictionIso._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.straighteningRepresentationRestrictionIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_valueIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        }
+      ],
+      "correction": "The parser classifies instance declarations as kind decl. The initial filter kind==instance selected none. These references diagnose unregistered former local instances; they do not by themselves prove a build or v3b failure."
+    }
+  }
+}

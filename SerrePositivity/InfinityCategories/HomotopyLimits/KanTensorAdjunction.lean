@@ -1,10 +1,15 @@
 module
 
+public import Mathlib.CategoryTheory.Monoidal.Closed.InternalCurrying
+public import SerrePositivity.InfinityCategories.Core.Limit
+public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointHomNaturality
 public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionHomLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanConeLimits
 public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
-public import Mathlib.CategoryTheory.Monoidal.Closed.InternalCurrying
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCones
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
 
 /-!
 概要：Kan 複体の積と内部 Hom の随伴に、極限保存用の単体的 Hom 同型を与える。

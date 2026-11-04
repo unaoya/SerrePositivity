@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCoconeLift
-public import SerrePositivity.KST.LocalizingInvariants.CoconeApexIsoNormalization
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismEdgeLifting
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation

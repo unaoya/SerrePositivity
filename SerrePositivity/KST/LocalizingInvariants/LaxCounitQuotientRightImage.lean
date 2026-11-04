@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientUnitComparison
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison
 
 /-!
 概要：商での全図式比較に現れる右辺は、元の指定右辺の前後合成そのもの。

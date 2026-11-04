@@ -5,7 +5,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：重み付き end の制限の充填を相対 tensor の Reedy 持ち上げに帰着する。

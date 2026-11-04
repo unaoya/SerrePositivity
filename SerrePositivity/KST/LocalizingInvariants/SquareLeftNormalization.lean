@@ -1,7 +1,9 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality
 
 public import SerrePositivity.KST.LocalizingInvariants.NativeSquareRows
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy
 
 /-!
 概要：三辺が元の BF 射である正方形の左辺を、同じ射の類を持つ元の BF 射へ戻す。

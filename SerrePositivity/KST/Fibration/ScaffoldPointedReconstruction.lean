@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison
-public import SerrePositivity.KST.Fibration.PointedClassificationReconstruction
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction
 
 /-! # 指定 scaffold 制限比較を用いる小さい left fibration の復元
 

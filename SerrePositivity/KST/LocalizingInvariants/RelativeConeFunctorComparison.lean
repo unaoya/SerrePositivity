@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeRecovery
-public import SerrePositivity.KST.LocalizingInvariants.RelativeComparisonInverse
-public import SerrePositivity.KST.LocalizingInvariants.RelativeConeProductCurry
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry
 public import SerrePositivity.InfinityCategories.Core.SliceConeFamilyEquivalence
 
 /-!

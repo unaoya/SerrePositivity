@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts
+public import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
 public import SerrePositivity.KST.Spectra.SpectrumZeroMaps
 
 /-!

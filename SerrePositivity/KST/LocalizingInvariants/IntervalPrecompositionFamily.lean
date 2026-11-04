@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowPrecompositionSquare
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily
 
 /-!

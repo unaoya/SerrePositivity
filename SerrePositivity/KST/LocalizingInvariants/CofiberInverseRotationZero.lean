@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointTarget
-public import SerrePositivity.KST.LocalizingInvariants.CofiberDiagramFibers
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
 
 /-!

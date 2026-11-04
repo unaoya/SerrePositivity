@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 
 /-!
 概要：終端分母による全図式の精密化に、次の指定辺を厳密に貼る。

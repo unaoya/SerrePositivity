@@ -1,11 +1,12 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
-
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FramePreservation
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexWeakEquivalence
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+
 
 /-!
 分割で生成：docstring を書き直すこと

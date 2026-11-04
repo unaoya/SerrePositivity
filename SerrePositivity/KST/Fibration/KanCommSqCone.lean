@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone
 public import SerrePositivity.KST.Fibration.StrictConeTransformation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
@@ -21,23 +22,8 @@ open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
-/-- 元の Kan 対象の恒等射は、同じ coherent nerve 内で可逆である。 -/
-theorem kanIdentityEdge_isInvertible (T : KanObject.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (𝟙 T)) :=
-  coherentKanEdge_isInvertible_of_isQCatEquivalence (K := T) (L := T)
-    (qCatEquivalenceOfIso (Iso.refl T.obj)).isQCatEquivalence
-
 variable {P X Y Z : KanObject.{u}}
   {a : P.obj ⟶ X.obj} {b : P.obj ⟶ Y.obj} {f : X.obj ⟶ Z.obj} {g : Y.obj ⟶ Z.obj}
-
-/-- 元の通常の四角形を、同じ元の二脚を持つ Kan 値の通常の錐として保持する。 -/
-def kanCommSqCone (sq : CommSq a b f g) :
-    Cone (kanPullbackDiagram (show Y ⟶ Z from g) (show X ⟶ Z from f)) :=
-  (PullbackCone.mk (show P ⟶ Y from b) (show P ⟶ X from a) sq.w.symm).whisker AsSmall.down
-
-/-- 同じ元の厳密な引き戻しへの比較射。 -/
-def kanCommSqComparison (sq : CommSq a b f g) : P.obj ⟶ pullback g f :=
-  pullback.lift b a sq.w.symm
 
 /-- 一脚 fibration の元の四角形の homotopy pullback 比較は同じ厳密比較射で判定できる。 -/
 theorem kanCommSqComparison_localized_isIso [Fibration g]

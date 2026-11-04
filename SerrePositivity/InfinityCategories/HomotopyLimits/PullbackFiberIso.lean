@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.FibrationAllFibers
-public import SerrePositivity.KST.Spectra.PullbackKanSequence
+public import SerrePositivity.InfinityCategories.Kan.FibrationBoundary
 
 /-!
 概要：引き戻し射影の fiber と元の射の fiber の標準同型。

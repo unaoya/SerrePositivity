@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.Fibration.CoslicePointFamilyAt
+public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt
 public import SerrePositivity.KST.Fibration.ScaffoldPointedReconstruction
-public import SerrePositivity.KST.Fibration.PointedCosliceReconstruction
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 
 /-! # 同じ scaffold 復元の恒等点からの coslice 延長は、元の全復元射と同型 -/

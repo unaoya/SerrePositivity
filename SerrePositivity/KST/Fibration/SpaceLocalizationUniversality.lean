@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality
 public import SerrePositivity.KST.Fibration.SpaceLocalizationPreFaithful
 public import SerrePositivity.KST.Fibration.SpaceDiagramLocalizationDescent
 public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
@@ -15,26 +16,8 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
-/-- 同じ指定辺の反転は、実際の可逆辺とその逆データの宇宙持ち上げで保たれる。 -/
-theorem invertsEdges_ulift {X Q : SSet.{u}} [Quasicategory Q] (q : X ⟶ Q)
-    (W : Set (X _⦋1⦌)) (hq : InvertsEdges q W) :
-    InvertsEdges ((SSet.uliftFunctor.{u + 1, u}).map q) (ULift.up '' W) := by
-  rintro s ⟨t, ht, rfl⟩
-  have hi := IsInvertibleEdge.ulift.{u, u + 1} (hq ht)
-  exact (isInvertibleEdge_congr (show
-    (uliftTruncatedEdge ((edgeOfSimplex t).map ((truncation 2).map q))).edge =
-      ((edgeOfSimplex (ULift.up t)).map
-        ((truncation 2).map ((SSet.uliftFunctor.{u + 1, u}).map q))).edge from rfl)).mp hi
-
 variable {X Q : SSet.{u}} [Quasicategory Q] (q : X ⟶ Q)
   (W : Set (X _⦋1⦌)) (hq : IsLocalization q W)
-
-/-- 元の商への前合成を、空間値の全反転関手の実際の全部分複体に値を取る射として保持する。 -/
-def spaceLocalizationPrecomposition :
-    (ihom ((SSet.uliftFunctor.{u + 1, u}).obj Q)).obj SpaceInfinity.{u} ⟶
-      invertingFunctors ((SSet.uliftFunctor.{u + 1, u}).obj X) SpaceInfinity.{u} (ULift.up '' W) :=
-  localizationPrecomposition ((SSet.uliftFunctor.{u + 1, u}).map q) (ULift.up '' W)
-    (invertsEdges_ulift q W hq.choose) SpaceInfinity
 
 /-- 空間値関手 ∞ 圏での元の局所化普遍性。全写像空間の充満忠実性と実因子化から証明する。 -/
 theorem spaceLocalizationPrecomposition_isQCatEquivalence :

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetConstants
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetHom
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
@@ -19,13 +20,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-/-- 関手による後合成を、元の像の頂点での定値関手へ正規化する。 -/
-def constantFunctorPostMap {X Y : SSet.{u}} (F : X ⟶ Y) (A : SSet.{u})
-    (x y : X _⦋0⦌) (α : ConstantFunctorHom A X x y) :
-    ConstantFunctorHom A Y (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) :=
-  (constantFunctorCompIso A x F).inv ≫
-    (hoFunctor.map ((ihom A).map F)).toFunctor.map α ≫ (constantFunctorCompIso A y F).hom
-
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (hG : IsFullyFaithful G)
 
@@ -42,11 +36,5 @@ lemma reflectiveConstantPostMap_bijective (A : SSet.{u}) [Quasicategory A]
     exact h
   exact ((constantFunctorCompIso A x F).homCongr
     (constantFunctorCompIso A (G.app (Opposite.op ⦋0⦌) y) F)).bijective.comp h'
-
-lemma intervalFunctorMap_familyHom_post {A X Y : SSet.{u}} {x y : X _⦋0⦌}
-    (f : A ⟶ intervalMappingSpace x y) (F : X ⟶ Y) :
-    intervalFamilyHom (f ≫ intervalFunctorMap F x y) =
-      constantFunctorPostMap F A x y (intervalFamilyHom f) :=
-  intervalFunctorMap_familyHom f F
 
 end SerrePositivity.KST.LocalizingInvariants

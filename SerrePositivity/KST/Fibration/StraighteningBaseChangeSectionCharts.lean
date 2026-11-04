@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
 public import SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent
 public import SerrePositivity.KST.Fibration.RelativeSectionJointVertices
 
@@ -13,59 +15,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-private lemma normalizeTriangle {C : Type v} [Category.{w} C]
-    {a b s t s' t' : C} (l : a ≅ t) (e : s ≅ t) (r : b ≅ s)
-    (hs : s = s') (ht : t = t') :
-    l ≪≫ e.symm ≪≫ r.symm =
-      F2.isoNormalizeEndpoints l rfl ht ≪≫
-        (F2.isoNormalizeEndpoints e hs ht).symm ≪≫
-          (F2.isoNormalizeEndpoints r rfl hs).symm := by
-  subst s' t'
-  simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
-    Iso.trans_refl]
-
-private lemma mapNormalizeTriangle {C : Type v} [Category.{w} C]
-    {Z : Type v'} [Category.{w'} Z] (F : C ⥤ Z) {a b s t : C} {s' t' : Z}
-    (l : a ≅ t) (e : s ≅ t) (r : b ≅ s) (d : a ≅ b)
-    (hd : d = l ≪≫ e.symm ≪≫ r.symm) (hs : F.obj s = s') (ht : F.obj t = t') :
-    F.mapIso d = F2.isoNormalizeEndpoints (F.mapIso l) rfl ht ≪≫
-      (F2.isoNormalizeEndpoints (F.mapIso e) hs ht).symm ≪≫
-        (F2.isoNormalizeEndpoints (F.mapIso r) rfl hs).symm := by
-  subst d
-  rw [Functor.mapIso_trans, Functor.mapIso_trans, Functor.mapIso_symm, Functor.mapIso_symm]
-  exact normalizeTriangle _ _ _ hs ht
-
-/-- 元の大域底変換の定義で使った、左側の切断図式への同じ比較。 -/
-def straighteningJointBaseChangeLeftIso :
-    FunctorIso
-      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D) ≫
-        ((SSet.uliftFunctor.{u + 1, u}).map k ≫ leftStraighteningSectionJointDiagram B))
-      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)) ≫
-        transportSimplexSectionInfinity B) := by
-  let U := SSet.uliftFunctor.{u + 1, u}
-  let t := U.map (nerveMap (transportSimplexFunctor k))
-  let l := U.map (transportSimplexFirstVertexMap D)
-  have hleft : l ≫ (U.map k ≫ leftStraighteningSectionJointDiagram B) =
-      t ≫ (U.map (transportSimplexFirstVertexMap B) ≫
-        leftStraighteningSectionJointDiagram B) := by
-    rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hleft) ≪≫
-    (leftStraighteningSectionJointDiagram_restrictIso B).precomp t
-
-/-- 右側も元の制限同型そのものを使う。 -/
-def straighteningJointBaseChangeRightIso :=
-  (leftStraighteningSectionJointDiagram_restrictIso D).postcomp
-    ((pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})
-
-/-- 同じ指定制限同型を、元の左右の比較と元の逆切断比較へ厳密に分解する。 -/
-theorem straighteningJointBaseChangeRestrictionIso_factor :
-    straighteningJointBaseChangeRestrictionIso k =
-      straighteningJointBaseChangeLeftIso k ≪≫
-        (transportSimplexSectionInfinity_baseChangeIso k).symm ≪≫
-          (straighteningJointBaseChangeRightIso k).symm := by
-  simp only [straighteningJointBaseChangeRestrictionIso, straighteningJointBaseChangeLeftIso,
-    straighteningJointBaseChangeRightIso, Iso.trans_assoc]
 
 /-- 全単体の元の逆切断比較の標的は、元の底への相対切断空間。 -/
 theorem transportSectionBaseChange_target_vertex

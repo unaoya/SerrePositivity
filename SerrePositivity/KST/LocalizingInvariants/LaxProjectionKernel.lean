@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDAdjunction
-public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialVertexIso
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso
 public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
 
 /-!

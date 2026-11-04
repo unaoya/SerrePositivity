@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
 
@@ -13,25 +15,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B : SSet.{u}}
-
-private lemma normalizeComposition {C : Type v} [Category.{w} C]
-    {a b c b' c' : C} (l : a ≅ b) (e : b ≅ c) (hb : b = b') (hc : c = c') :
-    F2.isoNormalizeEndpoints (l ≪≫ e) rfl hc =
-      F2.isoNormalizeEndpoints l rfl hb ≪≫ F2.isoNormalizeEndpoints e hb hc := by
-  subst b' c'
-  simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
-    Iso.trans_refl]
-
-private lemma mapNormalizeComposition {C : Type v} [Category.{w} C]
-    {Z : Type v'} [Category.{w'} Z] (F : C ⥤ Z) {a b c : C} {b' c' : Z}
-    (l : a ≅ b) (e : b ≅ c) (d : a ≅ c) (hd : d = l ≪≫ e)
-    (hb : F.obj b = b') (hc : F.obj c = c') :
-    F2.isoNormalizeEndpoints (F.mapIso d) rfl hc =
-      F2.isoNormalizeEndpoints (F.mapIso l) rfl hb ≪≫
-        F2.isoNormalizeEndpoints (F.mapIso e) hb hc := by
-  subst d
-  rw [Functor.mapIso_trans]
-  exact normalizeComposition _ _ hb hc
 
 /-- 元の初頂点 under 共同同型の二重成分を、同じ under 切断空間へ表示する。 -/
 def straighteningFirstVertexUnderChart (X : LeftFibrationObject B)

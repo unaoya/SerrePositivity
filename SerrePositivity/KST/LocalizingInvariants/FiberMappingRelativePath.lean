@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
-public import SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge
 
 /-!
 概要：同じ列の射影を持つ二つの BF 射を、全写像空間で射影に垂直な実区間で結ぶ。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiberSecond
 public import SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction
-public import SerrePositivity.KST.LocalizingInvariants.RelativeBoundaryInvertibility
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 
 /-!

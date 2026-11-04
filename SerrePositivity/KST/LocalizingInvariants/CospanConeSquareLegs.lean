@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement
 public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!

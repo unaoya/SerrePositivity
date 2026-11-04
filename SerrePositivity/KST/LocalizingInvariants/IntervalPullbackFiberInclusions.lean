@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso
 public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
 
 /-!

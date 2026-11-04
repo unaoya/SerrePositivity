@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison
 public import SerrePositivity.KST.LocalizingInvariants.CofiberExactNaturality
@@ -20,20 +21,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
   [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
-
-omit [Quasicategory Y] [IsStable Y] in
-lemma post_arrow_zero_target (x : X _⦋0⦌) : IsZeroTargetArrow
-    ((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F).app (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex (((arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc]
-  exact IsExactFunctor.preservesZero (F := F) _ (arrow_zero_target X x)
-
-omit [Quasicategory Y] [IsStable Y] [IsExactFunctor F] in
-lemma post_arrow_source :
-    (arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = F := by
-  rw [Category.assoc, arrowMap_evaluation, ← Category.assoc, arrow_source, Category.id_comp]
 
 def exactNaturality : FunctorIso (map X ≫ F) (F ≫ map Y) := by
   let b := arrow X ≫ (ihom (Δ[1] : SSet.{u})).map F

@@ -1,0 +1,317 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 1,
+  "phase": "B",
+  "head_before": "ed53aeacb641e87ea4a352ce609113f3c0b3b46f",
+  "reason": "初めて到達した失敗。補充候補を個別コンパイルし、分割した両側のスコープと instance を照合した。 検証済みの補充だけをこの回で適用する。未補充の失敗は次の内部 round で依存先の復旧後に再検査する。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.Fibration.KanEnrichedOppositePointHom",
+      "imports": [
+        "SerrePositivity.KST.Fibration.KanEnrichedEdgewisePointHom"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation",
+      "imports": [
+        "Mathlib.CategoryTheory.Comma.Arrow"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication",
+      "imports": [
+        "Mathlib.CategoryTheory.Monoidal.Mon",
+        "Mathlib.CategoryTheory.Monoidal.Preadditive",
+        "Mathlib.CategoryTheory.Preadditive.Biproducts"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Stable.Definition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison",
+      "imports": [
+        "SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.CocartesianKanDiagram",
+      "imports": [
+        "SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Stable.Definition"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.FinalHornContraction"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.RoofPastingConeFaces",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.CospanConeSquareLegs"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Core.EquivalencePath"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConePoint",
+      "imports": [
+        "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction",
+      "imports": [
+        "SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.CofiberFamilyZeroTriangle",
+      "annotations": [
+        {
+          "before": "namespace CofiberFamily\n",
+          "after": "namespace CofiberFamily\nattribute [local instance] SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberFamilyFunctorZero\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy",
+      "annotations": [
+        {
+          "before": "namespace SquareFrameHomotopy\n",
+          "after": "namespace SquareFrameHomotopy\nattribute [local instance] SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.instMonoSSetEquivalencePathι\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy",
+      "annotations": [
+        {
+          "before": "open InfinityCategories Spectra\n",
+          "after": "open InfinityCategories\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalShape",
+      "annotations": [
+        {
+          "before": "open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet\n",
+          "after": ""
+        },
+        {
+          "before": "open scoped Simplicial\n",
+          "after": ""
+        },
+        {
+          "before": "open SerrePositivity.InfinityCategories\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+      "annotations": [
+        {
+          "before": "open CategoryTheory MonoidalClosed SSet\nopen scoped Simplicial\nopen SerrePositivity.InfinityCategories\n",
+          "after": "open CategoryTheory\n"
+        },
+        {
+          "before": "variable {B D : SSet.{u}} (k : D ⟶ B)\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices\nimport all SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.InfinityCategories.HomotopyLimits\nopen SerrePositivity.KST.Comparison\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration\n",
+          "after": "open SerrePositivity.InfinityCategories\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.Comparison\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.SConstruction\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.KanModels.KanTerminalComparison",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.SConstruction\n",
+          "after": ""
+        },
+        {
+          "before": "open SerrePositivity.KST.Comparison\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportUnderEdge",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom\nimport all SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction",
+      "annotations": [
+        {
+          "before": "open SerrePositivity.KST.LocalizingInvariants\n",
+          "after": ""
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": [],
+  "pending_unmodified": [
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting",
+    "SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightDecomposition",
+    "SerrePositivity.KST.LocalizingInvariants.SquareLeftNormalization"
+  ]
+}

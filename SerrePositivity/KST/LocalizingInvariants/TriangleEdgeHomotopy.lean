@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
 public import SerrePositivity.KST.LocalizingInvariants.CurryIntervalNaturality
-public import SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 
 /-!
 概要：三角形の前半・後半を辺の比較とし、全ホモトピーの等式を Arrow の等式へ移す。

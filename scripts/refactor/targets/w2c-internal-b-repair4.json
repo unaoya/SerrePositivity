@@ -1,0 +1,51 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 4,
+  "phase": "B",
+  "head_before": "ca091dbdcf71f7ecf4622d9c5a01bdd92be28a97",
+  "reason": "初めて到達した失敗。補充候補を個別コンパイルし、分割した両側のスコープと instance を照合した。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration",
+      "imports": [
+        "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+      "annotations": [
+        {
+          "before": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents\n",
+          "after": "public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents\nimport all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.CofiberZeroSourceComparison",
+      "annotations": [
+        {
+          "before": "namespace SerrePositivity.KST.LocalizingInvariants\n",
+          "after": "namespace SerrePositivity.KST.LocalizingInvariants\nattribute [local instance] cofiberZeroComparisonQuasicategory\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison",
+      "annotations": [
+        {
+          "before": "namespace SerrePositivity.KST.LocalizingInvariants\n",
+          "after": "namespace SerrePositivity.KST.LocalizingInvariants\nattribute [local instance] zeroTargetComparisonQuasicategory\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}
