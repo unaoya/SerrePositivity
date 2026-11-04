@@ -370,6 +370,15 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   - **B4 の本体（Pair* の定義を Principal の反復へ移す、§3.5.3）は段階 3 へ回す**。BS は `PairCompletionH0` を Koszul の H⁰ として定義どおりに使っている
     （RootEnvelope/RawCompletion などで `koszulCompletionH0Unit Raw (pairKoszulCoordinates …)`、`pairKoszulCoordinates` は 16 回）。定義を反復の側へ移すと
     これらの証明が壊れ、条件 (ii) に触れる。段階 3 で BS と相談して、BS 側を `pairCompletionUnitRingHom` などの API 経由に書き換えてから行う。
+  - **B4（段階 3、11-04、refactor/b4 278ad8b01）**：前提として 5ea6b3485 で `pairCompletionH0Unit` を置き、BS が 8 か所を置き換えた（f654244bb）。
+    `PairCompletionH0` を一つの座標の完備化の反復 `IteratedCompletionH0` を `R` 加群として見たものに定義し直し、反映は Pair/Iteration で直接示した
+    （一つ目の座標で完備な加群に一つ目の H⁰ の作用が入り、`R` 線形写像がそれを保つことから二度目の反映に帰着）。Pair/Tower と Pair/Koszul の行列模型
+    （106 宣言、計 1,519 行の削除）を消した。API を述べた後で `PairCompletionH0`・`pairCompletionH0Unit` を irreducible にした（`irreducible_def` は強すぎる）。
+    型が変わったのは `pdCompletionUnit_apply`（BS が使う、右辺を `pairCompletionH0Unit` に）と DerivedCompletion 内の `pairCompletionUnitRingHom_apply` だけ。
+    新しい定義では一つ目の H⁰ の積が反映から選択で定まるため BS の単一化が重くなり、BS が maxHeartbeats を 3 か所で上げた（7c4e56d1b・23152a62c）。
+    全ビルドと verify（1e15322b6、VERIFY_JOBS=6 VERIFY_MEMORY_GB=40、63 分）：ビルド 2/2・sorry 閉包 PASS、監査 101/102。失敗の 1 本 `audit_infinity_f1` は
+    B4 と無関係で、`run_cmd` の `importModules` で読む F1/Diagrams の 15 本が監査対象の抽出（import 行のみ）から漏れて olean がなかったため。15 本を
+    ビルドして単独で流し直すと PASS。
 - 全ビルドと verify（11-04 08:37〜09:58、main cc67ea88e（BS-W10 作業 A を含む）を取り込んだ 48ec4a1b7 の上、VERIFY_JOBS=6 VERIFY_MEMORY_GB=40）：
   **PASS gate:true、監査 99/99、sorry 閉包 PASS**（ルート 447 秒、監査対象 759 秒、全体 79 分）。∞ の IF-W2c の内部ビルドが鍵を持っていたので 08:37 まで待った。
   改名表は 2b の分だけで宣言 23 件（2a から回した CLMST の一般部分 10 件と B3 の削除 13 件）、モジュール 116 件（DerivedCompletion 135 本のうち、残り 19 本は名前のまま）。
