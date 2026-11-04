@@ -319,3 +319,11 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - `ReducedModel`・`ReducedSpread` で、一般点の部分代数の逆像に有限モデルを取り、三つの分母の積を選ぶ証明を記述した。これを両環の被約化に適用する `spread_out_generic` の本文も記述。
 - 明示的な `sorry` は `exists_finiteEtaleStratification` の 1 件になったが、上記の接続は未検証。ビルド成功を意味しない。商環上の帰納、p の二場合への細分、noetherian 近似からの底変換が引き続き必要。
 - main への取り込み・全ビルド・verify・監査は行っていない。
+
+### B-3 継続：最終定理の証明草稿まで接続（11-04、未検証）
+
+- `PrincipalOpen`・`FactorizationLocalization`・`StratumLocalization` を追加し、主開集合への制限を接続。Noetherian 帰納では各段で p 可逆な部分を先に選び、そこが空なら p = 0 の部分を選ぶことで二場合への細分を記述した。
+- `FactorizationBaseChange` で、有限エタール分解を底変換後の被約化へ移す証明を記述。p 反転後の全射性は p 冪倍の像への所属をテンソル積と商に移し、単射性は被約な有限エタール中間代数と普遍同相の nil な核から導く。
+- `StratumLift`・`ReducedTensorProduct`・`StratumBaseChange`・`StratumEquiv` で、層の普遍性、被約テンソル積との同型、代数同型による移送を記述。これらを用いて `exists_finiteEtaleStratification` の本文まで接続した。
+- **ソース上の `sorry` と新規 `axiom` は 0 件。ただし B-3 完了ではない。** 単体ビルド 07 は他作業の verify・ビルドが続いているため未開始であり、上記の後半は未検証。今後、型検査のエラーを解消し、指定された単体ビルドの成功を確認する必要がある。
+- 現在の保存先は引き続き `codex/bs-w10-b` のみ。main への取り込みは行わない。
