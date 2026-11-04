@@ -33,3 +33,9 @@ S4 の生成辺は `S.functorInclusion` に係数圏の生成系の対象 M を�
 これを用いて `sieveRestrictCone_isLimit_iff` の本文も記述した。まず `limitConeIso` を錐の制限関手で送り、次に元の圏の同値の nerve とその ulift による制限で極限性を移し、最後に全錐の射の等式で S1 の指定錐へ戻す。`nerveMap_comp` という存在しない補題名も除去し、合成の定義と `Functor.map_comp` による図式比較へ直した。
 
 新しい草稿に残る明示的な `sorry` は `representableSectionsCone_isLimit` の **1 件**。前節の「2 件」はこの追加前の状態。今回の本文も未ビルドであり、型検査の成功・S4 の完成は主張しない。
+
+## 継続：表現可能標準錐の本文
+
+`representableSectionsInitialPoint` を `nerve (AsSmall Elements)` の始対象の点から定義し、`nerveAsSmallIso` で元の持ち上げ図式に戻す形にした。`IsInitial.isInitialObj` と `nervePoint_leftAnodyne` を使って点包含の left anodyne 性を記述し、両境界と恒等脚で全錐が定値になることを比較する本文を追加した。最後は `isLimitCone_restrict_iff_of_leftAnodyne` と `pointCone_isLimit_of_constant` に接続した。
+
+これで `SetSections.lean` 内の明示的な `sorry` は 0 件になった。ただし **未ビルドの証明草稿**であり、型検査の成功ではない。特に宇宙・錐の cast・零／一次単体の `change` は実検証が必要。G2 の main 取り込みと草稿検証の段階まで、証明完了や S4 完成とは報告しない。`exists_sheafGeneratingEdges` の本体は依然として G2 の篩包含版自然性と生成系による同値検出の接続を待つ。

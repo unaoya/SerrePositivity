@@ -9,6 +9,11 @@ public import SerrePositivity.InfinityCategories.Core.TerminalTransport
 public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
 public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction
+public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.F2.Idempotent.PointConeLimit
+public import SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt
+public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
+public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
 -- 要確認（IF-G2：先行分は math/g2 に実在、main 取り込み待ち）：
 -- public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
@@ -153,13 +158,66 @@ lemma representableSectionsCone_vertex (U : 𝒞) (F : Presheaf 𝒞 E) :
     SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
   rfl
 
+/-- 元の圏の始対象 (U,id) を、大きい宇宙の点として指定する。 -/
+def representableSectionsInitialPoint (U : 𝒞) :
+    (Δ[0] : SSet.{u + 1}) ⟶
+      (SSet.uliftFunctor.{u + 1, u}).obj (nerve (yoneda.obj U).Elements) :=
+  nervePoint (AsSmall.up.obj (Functor.Elements.initialYonedaObj U)) ≫
+    (HomotopyLimits.nerveAsSmallIso (yoneda.obj U).Elements).inv
+
+lemma representableSectionsInitialPoint_eq (U : 𝒞) :
+    representableSectionsInitialPoint U = SSet.yonedaEquiv.symm
+      (ULift.up (nerveVertex (Functor.Elements.initialYonedaObj U))) := by
+  apply (cancel_mono (HomotopyLimits.nerveAsSmallIso (yoneda.obj U).Elements).hom).mp
+  rw [representableSectionsInitialPoint, Category.assoc, Iso.inv_hom_id,
+    Category.comp_id, HomotopyLimits.nerveAsSmallIso_vertex]
+
+/-- 始対象の点への制限は、サイズを上げても left anodyne。
+AsSmall の通常圏に移してから既存の始対象定理を使う。 -/
+lemma representableSectionsInitialPoint_leftAnodyne (U : 𝒞) :
+    leftAnodyneExtensions (representableSectionsInitialPoint U) := by
+  have hi : IsInitial (AsSmall.up.obj (Functor.Elements.initialYonedaObj U) :
+      AsSmall.{u + 1} (yoneda.obj U).Elements) :=
+    (Functor.Elements.isInitialYonedaObj U).isInitialObj AsSmall.up
+  exact leftAnodyneExtensions.comp_mem _ _ (nervePoint_leftAnodyne hi)
+    (MorphismProperty.of_isIso _ _)
+
+/-- 恒等射の点への制限は、表現可能標準錐の全射として定値。
+F を適用する前の nerve で両端と唯一の混合辺を照合する。 -/
+lemma representableSectionsCone_point_val (U : 𝒞) (F : Presheaf 𝒞 E) :
+    (restrictJoinCone (representableSectionsCone U F)
+      (representableSectionsInitialPoint U)).val =
+      SSet.const (F.app _ (ULift.up (nerveVertex (Opposite.op U)))) := by
+  let c := (F1B.nerveCone (representableElementsCone U)).ulift
+  have hc : joinMap (𝟙 _) (representableSectionsInitialPoint U) ≫ c.val =
+      SSet.const (ULift.up (nerveVertex (Opposite.op U))) := by
+    apply (cancel_mono (HomotopyLimits.nerveAsSmallIso 𝒞ᵒᵖ).hom).mp
+    rw [SSet.const_comp]
+    apply F2.Idempotent.pointJoinNerve_hom_ext
+    · apply SSet.yonedaEquiv.injective
+      change (HomotopyLimits.nerveAsSmallIso 𝒞ᵒᵖ).hom.app _ c.vertex = _
+      rw [SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
+      rfl
+    · apply SSet.yonedaEquiv.injective
+      rw [representableSectionsInitialPoint_eq]
+      rfl
+    · rw [representableSectionsInitialPoint_eq]
+      change (F1B.nerveCone (representableElementsCone U)).val.app (Opposite.op ⦋1⦌)
+        (F1B.coneLegSimplex (Functor.Elements.initialYonedaObj U)) ⋙ AsSmall.up = _
+      rw [F1B.nerveCone_leg]
+      exact ComposableArrows.ext₁ rfl rfl rfl
+  change joinMap (𝟙 _) (representableSectionsInitialPoint U) ≫ (c.val ≫ F) = _
+  rw [← Category.assoc, hc, SSet.const_comp]
+
 /-- 始対象 (U,id) の脚は恒等射なので、この指定錐が極限錐になる。 -/
 lemma representableSectionsCone_isLimit (U : 𝒞) (F : Presheaf 𝒞 E) :
     IsLimitCone (representableSectionsCone U F) := by
-  -- Functor.Elements.isInitialYonedaObj U と nervePoint_leftAnodyne を使う。
-  -- ulift 後も始対象の点への制限が left anodyne。錐のその脚は F(id)=id。
-  -- IsLimitCone の制限判定で sliceIdentityCone の終対象性へ帰着する。
-  sorry
+  letI : Mono (representableSectionsInitialPoint U) := by
+    unfold representableSectionsInitialPoint
+    infer_instance
+  apply (F2.isLimitCone_restrict_iff_of_leftAnodyne (representableSectionsCone U F)
+    (representableSectionsInitialPoint U) (representableSectionsInitialPoint_leftAnodyne U)).mp
+  exact F2.Idempotent.pointCone_isLimit_of_constant _ _ (representableSectionsCone_point_val U F)
 
 /-- S8 の公開名を保持。選んだ極限錐と上の標準錐を、錐全体で比較する。 -/
 def sectionsOf_representable (U : 𝒞) (F : Presheaf 𝒞 E)
