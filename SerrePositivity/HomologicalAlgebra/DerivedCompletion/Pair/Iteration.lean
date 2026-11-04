@@ -1,25 +1,24 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
 
-/-! # 二つの座標の完備化と一つの座標の完備化の反復
+/-! # 一つの座標の完備化の反復
 
 ## 概要
 
-一つの座標の H⁰ を二度当てた環 `IteratedCompletionH0` とその標準写像を作り、元の二つの座標の H⁰ と、標準写像を保つ環同型で一致することを示す（`pairCompletionToIterated`・`iteratedCompletionToPair`）。
+一つの座標の H⁰ を二度当てた環 `IteratedCompletionH0` とその標準写像を作り、両方の座標について完備な加群への反映であること（`iteratedCompletion_isCompleteModuleReflection`）を示す。二つの座標の完備化 `PairCompletionH0` はこの反映として定義する（`Pair/Koszul`）。
 
 ## 方針
 
-両方向の写像を持ち上げの def（`pairCompletionLift`・`iteratedCompletionLift`、反復の側は一座標の `principalCompletionLift` を二度当てる）で作り、合成が恒等であることを普遍性の一意性と単位で確かめる。
+一つ目の座標の反映 `S` について、その座標で完備な加群には単位候補の延長から `S` の作用が入る（`IsCompleteModuleReflection.actionEquiv`）。完備な加群の間の線形写像はこの作用を保つので、反復した H⁰ からの `R` 線形写像は `S` 線形になり、二度目の反映の普遍性に帰着する。
 
 ## 規約
 
-旧 `IteratedKoszulRing`・`PairIterationComparison`（2b の B の Pair の置き換えの土台）。
+`pairKoszulCoordinates` は BhattScholze が使うので名前と定義を変えない。旧 `IteratedKoszulRing`。2b の B4 の後は二つの座標の Koszul 塔の行列模型（旧 `Pair/Tower`・`PairKoszul{Stage, Transition, Comparison, Product, Cone, Unit}`）を使わない（refactor-plan §3.5.3）。
 
 ## 使われ方
 
-`PDCompletion`。
+`Pair/Koszul`（`PairCompletionH0` の定義と比較）。
 -/
 
 @[expose] public noncomputable section
@@ -209,103 +208,178 @@ end SerrePositivity.DerivedCompletion
 
 end IteratedKoszulRingPart
 
-section PairIterationComparisonPart
+section PairCoordinatesPart
 
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.DerivedCompletion
+variable (R : Type u) [CommRing R]
+
+/-- 二つの座標を `Fin 2` に並べた列。末尾が二つ目の座標。 -/
+def pairKoszulCoordinates (f d : R) : Fin 2 → R := Fin.snoc (fun _ : Fin 1 ↦ f) d
+
+/-- 両座標の完備性を、列の各座標についての条件へ戻す。 -/
+theorem pairKoszulCoordinates_isModuleComplete (f d : R) (N : ModuleCat.{u} R)
+    (hf : IsModuleComplete R f N) (hd : IsModuleComplete R d N) :
+    ∀ j, IsModuleComplete R (pairKoszulCoordinates R f d j) N := by
+  intro j
+  refine Fin.lastCases ?_ (fun i ↦ ?_) j
+  · simpa only [pairKoszulCoordinates, Fin.snoc_last] using hd
+  · simpa only [pairKoszulCoordinates, Fin.snoc_castSucc] using hf
+
+end SerrePositivity.DerivedCompletion
+
+end PairCoordinatesPart
+
+section ReflectionActionPart
+
+set_option backward.isDefEq.respectTransparency false
+namespace SerrePositivity.DerivedCompletion.IsCompleteModuleReflection
+variable {R : Type u} [CommRing R] {k : ℕ} {a : Fin k → R} {B : ModuleCat.{u} R} {e : B}
+    (h : IsCompleteModuleReflection R a B e)
+include h
+
+/-- 各座標で完備な加群の元 `n` に、単位候補を `n` へ送る唯一の線形写像を対応させる。 -/
+def actionEquiv (N : ModuleCat.{u} R) (hN : ∀ j, IsModuleComplete R (a j) N) :
+    N ≃ₗ[R] (B →ₗ[R] N) :=
+  (LinearEquiv.ofBijective (LinearMap.applyₗ e) (h.universal N hN)).symm
+
+/-- 対応する線形写像は単位候補を元の元へ送る。 -/
+theorem actionEquiv_unit (N : ModuleCat.{u} R) (hN : ∀ j, IsModuleComplete R (a j) N) (n : N) :
+    h.actionEquiv N hN n e = n :=
+  (LinearEquiv.ofBijective (LinearMap.applyₗ e) (h.universal N hN)).apply_symm_apply n
+
+/-- 線形写像は、単位候補での値に対応する写像そのもの。 -/
+theorem actionEquiv_eq (N : ModuleCat.{u} R) (hN : ∀ j, IsModuleComplete R (a j) N)
+    (g : B →ₗ[R] N) : h.actionEquiv N hN (g e) = g :=
+  (LinearEquiv.ofBijective (LinearMap.applyₗ e) (h.universal N hN)).symm_apply_apply g
+
+/-- 作用は反映の積と両立する。`x` の関数として両辺を単位候補で比べる。 -/
+theorem actionEquiv_mul (N : ModuleCat.{u} R) (hN : ∀ j, IsModuleComplete R (a j) N)
+    (x y : B) (n : N) :
+    h.actionEquiv N hN n (h.mul x y) = h.actionEquiv N hN (h.actionEquiv N hN n y) x := by
+  have hg := h.actionEquiv_eq N hN
+    ((h.actionEquiv N hN n).comp ((LinearMap.applyₗ y).comp h.leftMultiplication))
+  have h1 : ((h.actionEquiv N hN n).comp ((LinearMap.applyₗ y).comp h.leftMultiplication)) e =
+      h.actionEquiv N hN n y := by
+    change h.actionEquiv N hN n (h.mul e y) = _
+    rw [h.unit_mul]
+  rw [h1] at hg
+  exact (LinearMap.congr_fun hg x).symm
+
+/-- 完備な加群の間の線形写像は作用を保つ。 -/
+theorem map_actionEquiv (N₁ : ModuleCat.{u} R) (hN₁ : ∀ j, IsModuleComplete R (a j) N₁)
+    (N₂ : ModuleCat.{u} R) (hN₂ : ∀ j, IsModuleComplete R (a j) N₂)
+    (g : N₁ →ₗ[R] N₂) (n : N₁) (x : B) :
+    g (h.actionEquiv N₁ hN₁ n x) = h.actionEquiv N₂ hN₂ (g n) x := by
+  have hg := h.actionEquiv_eq N₂ hN₂ (g.comp (h.actionEquiv N₁ hN₁ n))
+  have h1 : (g.comp (h.actionEquiv N₁ hN₁ n)) e = g n := by
+    change g (h.actionEquiv N₁ hN₁ n e) = g n
+    rw [h.actionEquiv_unit]
+  rw [h1] at hg
+  exact (LinearMap.congr_fun hg x).symm
+
+/-- 各座標で完備な加群は、反映の環の加群になる。 -/
+@[instance_reducible] def completeModule (N : ModuleCat.{u} R)
+    (hN : ∀ j, IsModuleComplete R (a j) N) : letI := h.commRing; Module B N := by
+  letI := h.commRing
+  exact
+    { smul := fun x n ↦ h.actionEquiv N hN n x
+      one_smul := fun n ↦ h.actionEquiv_unit N hN n
+      mul_smul := fun x y n ↦ h.actionEquiv_mul N hN x y n
+      smul_zero := fun x ↦ by
+        change h.actionEquiv N hN 0 x = 0
+        rw [map_zero, LinearMap.zero_apply]
+      smul_add := fun x n m ↦ by
+        change h.actionEquiv N hN (n + m) x = h.actionEquiv N hN n x + h.actionEquiv N hN m x
+        rw [map_add, LinearMap.add_apply]
+      add_smul := fun x y n ↦ (h.actionEquiv N hN n).map_add x y
+      zero_smul := fun n ↦ (h.actionEquiv N hN n).map_zero }
+
+/-- この作用は元の `R` 作用を延長する。 -/
+theorem completeModule_isScalarTower (N : ModuleCat.{u} R)
+    (hN : ∀ j, IsModuleComplete R (a j) N) :
+    letI := h.commRing; letI := h.algebra; letI := h.completeModule N hN
+    IsScalarTower R B N := by
+  letI := h.commRing
+  letI := h.algebra
+  letI := h.completeModule N hN
+  exact ⟨fun r x n ↦ by
+    change h.actionEquiv N hN n (r • x) = r • h.actionEquiv N hN n x
+    rw [map_smul]⟩
+
+end SerrePositivity.DerivedCompletion.IsCompleteModuleReflection
+
+end ReflectionActionPart
+
+section IteratedReflectionPart
+
+set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.DerivedCompletion
 open CategoryTheory
 variable (R : Type u) [CommRing R]
 
-/-- 元の二座標H⁰から反復したH⁰への標準比較射。 -/
-def pairCompletionToIterated (f d : R) :
-    letI := pairCompletionCommRing R f d
+/-- 反復したH⁰は、両方の座標について完備な加群への反映で、単位候補は1。
+一つ目の座標で完備な加群の一つ目の H⁰ の作用（`IsCompleteModuleReflection.completeModule`）を通して、
+`R` 線形写像が `S` 線形になることから、二度目の反映の普遍性に帰着する。 -/
+theorem iteratedCompletion_isCompleteModuleReflection (f d : R) :
     letI := iteratedCompletionCommRing R f d
-    PairCompletionH0 R f d →+* IteratedCompletionH0 R f d :=
-  letI := iteratedCompletionCommRing R f d
-  pairCompletionLift R f d (IteratedCompletionH0 R f d)
-    (iteratedCompletionUnitRingHom R f d) (iteratedCompletion_isModuleComplete_unit_first R f d)
-      (iteratedCompletion_isModuleComplete_unit_second R f d)
-
-/-- 比較射は元の環からの標準写像を保つ。 -/
-theorem pairCompletionToIterated_comp_unit (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    (pairCompletionToIterated R f d).comp (pairCompletionUnitRingHom R f d) =
-      iteratedCompletionUnitRingHom R f d :=
-  letI := iteratedCompletionCommRing R f d
-  pairCompletionLift_comp R f d (IteratedCompletionH0 R f d)
-    (iteratedCompletionUnitRingHom R f d) (iteratedCompletion_isModuleComplete_unit_first R f d)
-      (iteratedCompletion_isModuleComplete_unit_second R f d)
-
-/-- 反復したH⁰から元の二座標H⁰への標準比較射。 -/
-def iteratedCompletionToPair (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    IteratedCompletionH0 R f d →+* PairCompletionH0 R f d :=
-  letI := pairCompletionCommRing R f d
-  iteratedCompletionLift R f d (PairCompletionH0 R f d)
-    (pairCompletionUnitRingHom R f d) (pairCompletion_isModuleComplete_unit_first R f d)
-      (pairCompletion_isModuleComplete_unit_second R f d)
-
-/-- 逆向きの比較射も標準写像を保つ。 -/
-theorem iteratedCompletionToPair_comp_unit (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    (iteratedCompletionToPair R f d).comp (iteratedCompletionUnitRingHom R f d) =
-      pairCompletionUnitRingHom R f d :=
-  letI := pairCompletionCommRing R f d
-  iteratedCompletionLift_comp R f d (PairCompletionH0 R f d)
-    (pairCompletionUnitRingHom R f d) (pairCompletion_isModuleComplete_unit_first R f d)
-      (pairCompletion_isModuleComplete_unit_second R f d)
-
-/-- 普遍性により、二座標H⁰上の比較の合成は恒等写像。 -/
-theorem iteratedCompletionToPair_comp_toIterated (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    (iteratedCompletionToPair R f d).comp (pairCompletionToIterated R f d) =
-      RingHom.id (PairCompletionH0 R f d) := by
-  let := pairCompletionCommRing R f d
+    letI := iteratedCompletionAlgebra R f d
+    IsCompleteModuleReflection R (pairKoszulCoordinates R f d)
+      (ModuleCat.of R (IteratedCompletionH0 R f d)) (1 : IteratedCompletionH0 R f d) := by
+  let := principalCompletionCommRing R f
+  let := principalCompletionAlgebra R f
   let := iteratedCompletionCommRing R f d
-  apply (pairCompletion_existsUnique_ringHom R f d (PairCompletionH0 R f d)
-    (pairCompletionUnitRingHom R f d) (pairCompletion_isModuleComplete_unit_first R f d)
-      (pairCompletion_isModuleComplete_unit_second R f d)).unique
-  · rw [RingHom.comp_assoc, pairCompletionToIterated_comp_unit,
-      iteratedCompletionToPair_comp_unit]
-  · rfl
-
-/-- 普遍性により、反復H⁰上の比較の合成も恒等写像。 -/
-theorem pairCompletionToIterated_comp_toPair (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    (pairCompletionToIterated R f d).comp (iteratedCompletionToPair R f d) =
-      RingHom.id (IteratedCompletionH0 R f d) := by
-  let := pairCompletionCommRing R f d
-  let := iteratedCompletionCommRing R f d
-  apply (iteratedCompletion_existsUnique_ringHom R f d (IteratedCompletionH0 R f d)
-    (iteratedCompletionUnitRingHom R f d) (iteratedCompletion_isModuleComplete_unit_first R f d)
-      (iteratedCompletion_isModuleComplete_unit_second R f d)).unique
-  · rw [RingHom.comp_assoc, iteratedCompletionToPair_comp_unit,
-      pairCompletionToIterated_comp_unit]
-  · rfl
-
-/-- 元の二座標Koszul完備化のH⁰と一座標完備化の反復の環同型。 -/
-def pairCompletionIteratedEquiv (f d : R) :
-    letI := pairCompletionCommRing R f d
-    letI := iteratedCompletionCommRing R f d
-    PairCompletionH0 R f d ≃+* IteratedCompletionH0 R f d :=
-  letI := pairCompletionCommRing R f d
-  letI := iteratedCompletionCommRing R f d
-  { pairCompletionToIterated R f d with
-    invFun := iteratedCompletionToPair R f d
-    left_inv := fun x ↦ congrArg (fun g ↦ g x) (iteratedCompletionToPair_comp_toIterated R f d)
-    right_inv := fun x ↦ congrArg (fun g ↦ g x) (pairCompletionToIterated_comp_toPair R f d) }
-
-/-- 環同型も、元の環からの標準写像を保つ。 -/
-theorem pairCompletionIteratedEquiv_unit (f d r : R) :
-    pairCompletionIteratedEquiv R f d (pairCompletionUnitRingHom R f d r) =
-      iteratedCompletionUnitRingHom R f d r :=
-  congrArg (fun g ↦ g r) (pairCompletionToIterated_comp_unit R f d)
+  let := principalCompletionAlgebra (PrincipalCompletionH0 R f)
+    (principalCompletionUnitRingHom R f d)
+  let := iteratedCompletionAlgebra R f d
+  have hS := principalCompletionH0_isCompleteModuleReflection R f
+  have hI := principalCompletionH0_isCompleteModuleReflection (PrincipalCompletionH0 R f)
+    (principalCompletionUnitRingHom R f d)
+  have tI : IsScalarTower R (PrincipalCompletionH0 R f) (IteratedCompletionH0 R f d) :=
+    ⟨fun r s x ↦ by
+      change (r • s) • x = (principalCompletionUnitRingHom R f r) • (s • x)
+      rw [Algebra.smul_def (R := R) (A := PrincipalCompletionH0 R f)]
+      exact mul_smul (principalCompletionUnitRingHom R f r) s x⟩
+  refine ⟨pairKoszulCoordinates_isModuleComplete R f d _
+    (iteratedCompletion_isModuleComplete_first R f d)
+    (iteratedCompletion_isModuleComplete_second R f d), ?_⟩
+  intro N hN
+  have hNf : ∀ _ : Fin 1, IsModuleComplete R f N := fun _ ↦ by
+    simpa only [pairKoszulCoordinates, Fin.snoc_apply_zero] using hN 0
+  have hNd : IsModuleComplete R d N := by
+    simpa only [pairKoszulCoordinates, Fin.snoc_last] using hN (Fin.last 1)
+  letI := hS.completeModule N hNf
+  have tN : IsScalarTower R (PrincipalCompletionH0 R f) N := hS.completeModule_isScalarTower N hNf
+  have hNS : IsModuleComplete (PrincipalCompletionH0 R f) (principalCompletionUnitRingHom R f d)
+      (ModuleCat.of (PrincipalCompletionH0 R f) N) :=
+    (isModuleComplete_algebraMap_iff R (PrincipalCompletionH0 R f) d N).mpr hNd
+  have hb := hI.universal (ModuleCat.of (PrincipalCompletionH0 R f) N) (fun _ ↦ hNS)
+  -- `R` 線形写像は `S` 作用を保つ：`s ↦ g (s • x)` を単位候補で比べる。
+  have hlin : ∀ (g : ModuleCat.of R (IteratedCompletionH0 R f d) →ₗ[R] N)
+      (s : PrincipalCompletionH0 R f) (x : IteratedCompletionH0 R f d), g (s • x) = s • g x := by
+    intro g s x
+    let ψ : PrincipalCompletionH0 R f →ₗ[R] N :=
+      g.comp ((LinearMap.toSpanSingleton (PrincipalCompletionH0 R f)
+        (IteratedCompletionH0 R f d) x).restrictScalars R)
+    have hψ := hS.actionEquiv_eq N hNf ψ
+    have h1 : ψ (koszulCompletionH0Unit R (fun _ : Fin 1 ↦ f) 1) = g x := by
+      change g ((1 : PrincipalCompletionH0 R f) • x) = g x
+      rw [one_smul]
+    rw [h1] at hψ
+    exact (LinearMap.congr_fun hψ s).symm
+  let toS : (ModuleCat.of R (IteratedCompletionH0 R f d) →ₗ[R] N) →
+      (IteratedCompletionH0 R f d →ₗ[PrincipalCompletionH0 R f] N) := fun g ↦
+    { toFun := g
+      map_add' := g.map_add
+      map_smul' := hlin g }
+  refine ⟨fun g₁ g₂ hg ↦ ?_, fun n ↦ ?_⟩
+  · have h12 : toS g₁ = toS g₂ := hb.injective hg
+    ext x
+    exact LinearMap.congr_fun h12 x
+  · obtain ⟨G, hG⟩ := hb.surjective n
+    exact ⟨G.restrictScalars R, hG⟩
 
 end SerrePositivity.DerivedCompletion
 
-end PairIterationComparisonPart
+end IteratedReflectionPart
