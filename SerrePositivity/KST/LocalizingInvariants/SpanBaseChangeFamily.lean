@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily
 
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily
 public import SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily

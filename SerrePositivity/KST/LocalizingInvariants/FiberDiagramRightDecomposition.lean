@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy
 
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightRestriction

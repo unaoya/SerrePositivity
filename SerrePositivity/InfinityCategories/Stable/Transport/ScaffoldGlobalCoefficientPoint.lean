@@ -40,7 +40,7 @@ namespace SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
 
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
+local instance instLeftFibrationSndSSetTransportSimplexFirstVertexMap_6 : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
   ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

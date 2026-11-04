@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison
 
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose

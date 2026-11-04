@@ -37,7 +37,7 @@ variable {I : Type u} [Category.{u} I] {E T B : SSet.{u}} [Quasicategory B]
   (s : T ⟶ nerve I) (p : E ⟶ B) [LeftFibration p] (k : nerve I ⟶ B)
   (f : T ⟶ pullback p k) (hf : f ≫ pullback.snd p k = s)
 
-local instance : LeftFibration (pullback.snd p k) :=
+local instance instLeftFibrationSndSSet_5 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

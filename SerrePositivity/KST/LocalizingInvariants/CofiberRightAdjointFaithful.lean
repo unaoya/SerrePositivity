@@ -18,6 +18,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+attribute [local instance] cofiberZeroSourceQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
 /-- 元の右随伴を同じ矢印を保って零始点矢印の全部分圏に入れる。 -/

@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
 
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting
 

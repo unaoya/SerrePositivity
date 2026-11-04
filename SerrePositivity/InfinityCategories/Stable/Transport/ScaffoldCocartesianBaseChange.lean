@@ -49,7 +49,7 @@ private lemma appendPoint {C : Type*} [Category C] {a b c d e : C}
 variable {I : Type u} [Category.{u} I] {E B : SSet.{u}} [Quasicategory B]
   (p : E ⟶ B) [LeftFibration p] (k : nerve I ⟶ B)
 
-local instance : LeftFibration (pullback.snd p k) :=
+local instance instLeftFibrationSndSSet_4 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

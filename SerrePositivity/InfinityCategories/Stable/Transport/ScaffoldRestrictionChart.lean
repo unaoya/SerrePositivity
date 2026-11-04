@@ -80,7 +80,7 @@ private lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
 
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
+local instance instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5 : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
   ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

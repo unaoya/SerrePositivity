@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberCubeHom
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberConeComparison

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.TensorBiproductExt
 
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
 

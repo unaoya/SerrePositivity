@@ -50,7 +50,7 @@ private lemma pointNormalize {C : Type*} [Category C] {a b a' b' z : C}
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   [Quasicategory B] (k : D ⟶ B) [Quasicategory D]
 
-local instance : LeftFibration (pullback.snd p k) :=
+local instance instLeftFibrationSndSSet_3 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

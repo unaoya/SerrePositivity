@@ -51,7 +51,7 @@ private lemma appendPointTriangle {C : Type*} [Category C] {a b c d e f : C}
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (k : D ⟶ B) [Quasicategory D]
 
-local instance : LeftFibration (pullback.snd p k) :=
+local instance instLeftFibrationSndSSet_1 : LeftFibration (pullback.snd p k) :=
   ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 end SerrePositivity.KST.Fibration

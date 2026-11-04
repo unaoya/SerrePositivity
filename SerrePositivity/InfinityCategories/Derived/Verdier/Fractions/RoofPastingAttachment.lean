@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
 
 public import SerrePositivity.KST.LocalizingInvariants.RoofPastingConeFaces
 
