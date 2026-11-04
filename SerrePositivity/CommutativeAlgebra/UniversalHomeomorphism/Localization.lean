@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.PowerClosure
 public import Mathlib.RingTheory.Localization.Basic
+public import Mathlib.RingTheory.Ideal.Maps
 public import Mathlib.RingTheory.Finiteness.Defs
 public import Mathlib.Tactic.Ring
 
@@ -31,11 +32,11 @@ variable {A B : Type*} [CommRing A] [CommRing B]
 /-- 同じ分母系に沿って局所化した環準同型。 -/
 def localizationMap (f : A →+* B) (S : Submonoid A) :
     Localization S →+* Localization (S.map f) :=
-  IsLocalization.map _ f Submonoid.le_comap_map
+  IsLocalization.map _ f (Submonoid.le_comap_map S)
 
 @[simp] theorem localizationMap_mk' (f : A →+* B) (S : Submonoid A) (a : A) (s : S) :
     localizationMap f S (IsLocalization.mk' (Localization S) a s) =
-      IsLocalization.mk' (Localization (S.map f)) (f a) ⟨f s, ⟨s, s.property, rfl⟩⟩ :=
+      IsLocalization.mk' (Localization (S.map f)) (f a) (⟨f s, ⟨s, s.property, rfl⟩⟩ : S.map f) :=
   IsLocalization.map_mk' ..
 
 @[simp] theorem localizationMap_algebraMap (f : A →+* B) (S : Submonoid A) (a : A) :
@@ -46,7 +47,8 @@ def localizationMap (f : A →+* B) (S : Submonoid A) :
 private theorem exists_mk'_map_eq (f : A →+* B) (S : Submonoid A)
     (x : Localization (S.map f)) :
     ∃ (b : B) (s : S),
-      IsLocalization.mk' (Localization (S.map f)) b ⟨f s, ⟨s, s.property, rfl⟩⟩ = x := by
+      IsLocalization.mk' (Localization (S.map f)) b
+        (⟨f s, ⟨s, s.property, rfl⟩⟩ : S.map f) = x := by
   obtain ⟨b, ⟨s, hs⟩, hx⟩ := IsLocalization.exists_mk'_eq (S.map f) x
   obtain ⟨s, hs, rfl⟩ := hs
   exact ⟨b, ⟨s, hs⟩, hx⟩
@@ -134,7 +136,8 @@ theorem exists_denominator_mem_conductor [Algebra A B] [Module.Finite A B]
     obtain ⟨t, ht⟩ := Finset.dvd_prod_of_mem s (Finset.mem_univ i)
     rw [ht, Submonoid.coe_mul, map_mul]
     have h := (algebraMap A B).range.mul_mem ((algebraMap A B).mem_range_self t) (hs i)
-    convert h using 1 <;> ring
+    convert h using 1
+    ring
   | zero => simp
   | add x y hx hy ihx ihy =>
     simpa only [mul_add] using (algebraMap A B).range.add_mem ihx ihy

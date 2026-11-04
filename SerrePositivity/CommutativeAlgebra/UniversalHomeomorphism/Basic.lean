@@ -111,12 +111,12 @@ private theorem spec_residueFieldMap_compat {A B : Type u} [CommRing A] [CommRin
       CommRingCat.ofHom f ≫ CommRingCat.ofHom (algebraMap B Q.asIdeal.ResidueField) := by
     ext a
     exact Ideal.ResidueField.map_algebraMap _ _ _ _ a
-  rw [hn, Scheme.Spec.algebraMap_residueFieldIso_inv_assoc]
-  change (Scheme.ΓSpecIso (.of A)).inv ≫
-      (Spec (.of A)).Γevaluation _ ≫
-      (Spec.map (CommRingCat.ofHom f)).residueFieldMap Q ≫ _ = _
-  rw [Scheme.Γevaluation_naturality_assoc, ← Scheme.ΓSpecIso_inv_naturality_assoc]
-  rw [← Scheme.Spec.algebraMap_residueFieldIso_inv]
+  rw [hn]
+  erw [Scheme.Spec.algebraMap_residueFieldIso_inv_assoc]
+  erw [Scheme.germ_residue_assoc, Scheme.Γevaluation_naturality_assoc,
+    ← Scheme.ΓSpecIso_inv_naturality_assoc]
+  simp only [Scheme.Γevaluation, Scheme.evaluation, Category.assoc]
+  erw [← Scheme.Spec.algebraMap_residueFieldIso_inv_assoc]
   simp
 
 set_option backward.isDefEq.respectTransparency false in
@@ -124,7 +124,8 @@ set_option backward.isDefEq.respectTransparency false in
 private theorem spec_residueFieldMap_isPurelyInseparable_iff
     {A B : Type u} [CommRing A] [CommRing B] (f : A →+* B) (Q : PrimeSpectrum B) :
     ((Spec.map (CommRingCat.ofHom f)).residueFieldMap Q).hom.IsPurelyInseparable ↔
-      (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal Q.asIdeal f rfl).IsPurelyInseparable := by
+      (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal
+      Q.asIdeal f rfl).IsPurelyInseparable := by
   let eA := Scheme.Spec.residueFieldIso (.of A) (PrimeSpectrum.comap f Q)
   let eB := Scheme.Spec.residueFieldIso (.of B) Q
   let r := (Spec.map (CommRingCat.ofHom f)).residueFieldMap Q
@@ -144,8 +145,8 @@ private theorem spec_residueFieldMap_isPurelyInseparable_iff
     exact ht
   · intro h
     have he := congrArg CommRingCat.Hom.hom (spec_residueFieldMap_compat f Q)
-    rw [← he] at h
-    have ht := (hAi.comp h).comp hBi
+    have h' := (congrArg RingHom.IsPurelyInseparable he).mpr h
+    have ht := (hAi.comp h').comp hBi
     change (eA.hom ≫ (eA.inv ≫ r ≫ eB.hom) ≫ eB.inv).hom.IsPurelyInseparable at ht
     simpa using ht
 
@@ -153,11 +154,12 @@ private theorem spec_residueFieldMap_isPurelyInseparable_iff
 private theorem radicial_iff_universallyInjective {A B : Type u} [CommRing A] [CommRing B]
     (f : A →+* B) :
     (Function.Injective (PrimeSpectrum.comap f) ∧ ∀ Q : PrimeSpectrum B,
-      (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal Q.asIdeal f rfl).IsPurelyInseparable) ↔
+      (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal
+        Q.asIdeal f rfl).IsPurelyInseparable) ↔
       UniversallyInjective (Spec.map (CommRingCat.ofHom f)) := by
   exact (and_congr Iff.rfl (forall_congr' fun Q ↦
     (spec_residueFieldMap_isPurelyInseparable_iff f Q).symm)).trans
-      ((tfae_universallyInjective (Spec.map (CommRingCat.ofHom f))).out 2 0)
+      ((tfae_universallyInjective (Spec.map (CommRingCat.ofHom f))).out 3 1)
 
 end SpecComparison
 
@@ -196,19 +198,12 @@ theorem isUniversalHomeomorphism_baseChange {A B C : Type u} [CommRing A] [CommR
   exact isUniversalHomeomorphism_of_isPushout f g _ _
     (CommRingCat.isPushout_tensorProduct A B C) hf
 
+set_option backward.isDefEq.respectTransparency false in
 /-- 始域の分母系で局所化すると普遍同相が保たれる。 -/
 theorem isUniversalHomeomorphism_localizationMap {A B : Type u} [CommRing A] [CommRing B]
     (f : A →+* B) (S : Submonoid A) (hf : IsUniversalHomeomorphism f) :
     IsUniversalHomeomorphism (localizationMap f S) := by
   let : Algebra A B := f.toAlgebra
-  let : Algebra A (Localization (S.map f)) :=
-    ((algebraMap B (Localization (S.map f))).comp f).toAlgebra
-  let : Algebra (Localization S) (Localization (S.map f)) :=
-    (localizationMap f S).toAlgebra
-  let : IsScalarTower A B (Localization (S.map f)) :=
-    IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
-  let : IsScalarTower A (Localization S) (Localization (S.map f)) :=
-    IsScalarTower.of_algebraMap_eq fun a ↦ (localizationMap_algebraMap f S a).symm
   let : Algebra.IsPushout A B (Localization S) (Localization (S.map f)) :=
     Algebra.isPushout_of_isLocalization S (Localization S) B (Localization (S.map f))
   exact isUniversalHomeomorphism_of_isPushout f _ _ _
@@ -283,7 +278,8 @@ private theorem residueFieldMap_isPurelyInseparable_of_pow_mem
     {A B : Type*} [CommRing A] [CommRing B] (p : ℕ) [Fact p.Prime]
     (hpA : (p : A) = 0) (f : A →+* B)
     (H : ∀ b : B, ∃ n : ℕ, b ^ (p ^ n) ∈ f.range) (Q : PrimeSpectrum B) :
-    (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal Q.asIdeal f rfl).IsPurelyInseparable := by
+    (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal
+      Q.asIdeal f rfl).IsPurelyInseparable := by
   let P := PrimeSpectrum.comap f Q
   let k := Ideal.ResidueField.map P.asIdeal Q.asIdeal f rfl
   let : CharP P.asIdeal.ResidueField p :=
@@ -324,16 +320,22 @@ private theorem surjective_of_rootClosed_of_maximal_le_conductor
   have he : I = Q := by
     apply le_antisymm hIQ
     have hr := subringConductor_isRadical p f.range (Fact.out : p.Prime).one_lt hroot
+    change Q ≤ subringConductor f.range
     rw [← hr.radical, Ideal.radical_eq_sInf]
     apply le_sInf
     rintro J ⟨hIJ, hJ⟩
     let := hJ
     have hjq : J = Q := congrArg PrimeSpectrum.asIdeal
-      (hf.radicial.1 (PrimeSpectrum.ext ((hc J hIJ).trans (hc Q hIQ).symm)))
+      (hf.radicial.1 (show PrimeSpectrum.comap f ⟨J, inferInstance⟩ =
+          PrimeSpectrum.comap f ⟨Q, inferInstance⟩ from
+        PrimeSpectrum.ext ((hc J hIJ).trans (hc Q hIQ).symm)))
     exact hjq.ge
   let q : PrimeSpectrum B := ⟨Q, inferInstance⟩
   let P' := PrimeSpectrum.comap f q
-  have : P'.asIdeal.IsMaximal := (hc Q hIQ).symm ▸ inferInstance
+  have : P'.asIdeal.IsMaximal := by
+    change (Q.comap f).IsMaximal
+    rw [hc Q hIQ]
+    infer_instance
   let k := Ideal.ResidueField.map P'.asIdeal Q f rfl
   let := k.toAlgebra
   let : CharP P'.asIdeal.ResidueField p :=
@@ -354,7 +356,7 @@ private theorem surjective_of_rootClosed_of_maximal_le_conductor
   suffices ∀ (n : ℕ) (x : B), x ^ (p ^ n) ∈ f.range → x ∈ f.range from this n b hn
   intro n
   induction n with
-  | zero => simpa
+  | zero => simp
   | succ n ih =>
     intro x hx
     apply hroot
@@ -375,8 +377,9 @@ private theorem surjective_of_finite_of_rootClosed {A B : Type u}
     intro he
     apply hn
     intro b
-    have h : (1 : A) ∈ I := he ▸ Ideal.mem_top
+    have h : (1 : A) ∈ I := by rw [he]; trivial
     have hb := h b
+    apply RingHom.mem_range.mp
     simpa only [map_one, one_mul] using hb
   obtain ⟨⟨P, hP⟩⟩ := Ideal.nonempty_minimalPrimes hI
   let := hP.isPrime
@@ -494,6 +497,7 @@ theorem isUniversalHomeomorphism_bijective_of_perfect_reduced
       obtain ⟨n, hn⟩ := hk ha
       apply Ideal.mem_bot.mpr
       apply (PerfectRing.bijective_frobenius (R := A) (p := p ^ n)).injective
+      change a ^ (p ^ n) = 0 ^ (p ^ n)
       rw [zero_pow (pow_ne_zero _ (Fact.out : p.Prime).ne_zero)]
       exact pow_eq_zero_of_le (Nat.le_of_lt (Nat.lt_pow_self (Fact.out : p.Prime).one_lt)) hn
     have : Nontrivial B := hi.nontrivial
