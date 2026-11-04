@@ -5,7 +5,7 @@ module
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import SerrePositivity.EInfinity.Perfectoidization.Comparison
 public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
 

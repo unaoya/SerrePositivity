@@ -8,7 +8,7 @@ public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
 public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairKoszulStage
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
 -- 本ファイルは drafts/Shared/Descendable.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A5/{PerfectSite,RootAdjunction}.lean（W9-III-09：PerfectSiteComparison・WeaklyInitialAndDescent は本ファイルより後）、
 -- drafts/A2/BaseChangeAndTensor.lean、drafts/DerivedGeneral/Truncation.lean、drafts/A1/（A1-5：Thm 6.4 の多項式・mod p）を import する。
 
