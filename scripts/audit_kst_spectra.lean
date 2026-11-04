@@ -1,3 +1,4 @@
+import SerrePositivity.KST.Spectra.SimplexLastContraction
 import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts

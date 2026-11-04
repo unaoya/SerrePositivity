@@ -6602,5 +6602,47 @@
       "log": "audit-private-import-probe.log"
     },
     "implementation_reference": "Lean/Environment.lean importModulesCore (globalLevel == .private), Lean/Parser/Module.lean rejects all without module"
+  },
+  "coverage_correction": {
+    "verify_attempt2": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-downstream/verify-attempt2",
+    "residual_split_import": "SerrePositivity.KST.Spectra.SimplexLastContraction",
+    "required_owner_renames": [
+      {
+        "old": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom",
+        "new": "SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.AdjunctionHom"
+      },
+      {
+        "old": "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom",
+        "new": "SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom"
+      }
+    ],
+    "predicates_changed": false,
+    "explicit_command_count_changes": 0,
+    "probes": [
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/scripts/audit_kst_spectra.lean"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 23.017,
+        "log": "audit_kst_spectra-coverage-probe.log"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/scripts/audit_homotopical_rectification.lean"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 13.811,
+        "log": "audit_homotopical_rectification-coverage-probe.log"
+      }
+    ]
   }
 }
