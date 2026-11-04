@@ -1,0 +1,16 @@
+{
+  "status": "APPLIED_PENDING_VERIFICATION",
+  "authorization": "User: FirstVertexOppositeChart private 名の衝突回避として IF-W2b §5-4 の例外を承認。公開 API・型・本文は不変。",
+  "scope": "module-scoped private declaration identity; same public name in the provider module is not renamed",
+  "rows": [
+    {
+      "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+      "old": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+      "new": "SerrePositivity.KST.Fibration.firstVertexOppositeChart_mapNormalizeCompositionWithEq",
+      "private_before": true,
+      "private_after": true,
+      "source_edits": 2
+    }
+  ],
+  "comparison": "Keep raw v3b comparison. Match the renamed private declaration through this table and compare every semantic field without rewriting hashes; prove theorem proof-source unchanged after the two approved name substitutions."
+}
