@@ -101,14 +101,21 @@ theorem isSheaf_iff_sectionsMap (J : GrothendieckTopology 𝒞) (hE : IsPresenta
 
 /-- 概要：E の頂点の小さい族 M が辺の可逆性を検出する：e が可逆 ⇔ すべての i で Map(M_i, −) が e を同値に送る。
 方針：presentable な E は κ-compact な対象の小さい集合で生成され、写像空間で同値を検出する（HTT 5.5.1.1・5.4.2）。
-規約：写像空間は pinched Hom。後合成の写像の名前は要確認。
-使われ方：`isLocalObject_sheafGeneratingEdges_iff`。
-要確認：F2/Presentable の生成系の公開名（`IsPresentable` から小さい検出族を取り出す補題）と、pinched Hom への後合成の写像の名前。 -/
-def IsDetectingFamily {ι : Type u} (M : ι → E _⦋0⦌) : Prop := sorry
+規約：射はホモトピー圏の射、写像空間は pinched Hom、後合成は `PinchedInterval.postcompose`（`IsLocalForHom` の
+`PinchedInterval.precompose` の双対。HomotopyLimits/Presentable/LocalObjects と同じ書き方）。族の添字は `Type u`（E は `SSet.{u+1}`）。
+使われ方：`isLocalObject_sheafGeneratingEdges_iff`。 -/
+def IsDetectingFamily {ι : Type u} (M : ι → E _⦋0⦌) : Prop :=
+  ∀ {x y : E _⦋0⦌} (f : (HomotopyCategory.mk x : hoFunctor.obj E) ⟶ HomotopyCategory.mk y),
+    IsIso f ↔ ∀ i, IsQCatEquivalence (PinchedInterval.postcompose (M i) f)
 
+/-- 概要：presentable な E は小さい検出族をもつ。
+方針：`IsPresentable.exists_limitDetectingPresheafModel`（F2/Presentable/ReflectiveModelLimitDetection：小さい A と
+R : C ⟶ PresheafInfinity A があり、錐が極限 ⇔ 各 a での評価で極限）を一点の図式に当てて「辺が同値 ⇔ 各評価で同値」、
+評価を Map(g_a, −) と同一視する（IF-G2 の G14）。
+要確認（IF-G2 G14：供給予定）。 -/
 theorem exists_detectingFamily (hE : IsPresentable E) :
     ∃ (ι : Type u) (M : ι → E _⦋0⦌), IsDetectingFamily M := by
-  sorry -- 要確認：F2 の presentable 性の定義から κ-compact な生成系
+  sorry -- IF-G2 G14
 
 /-- 概要：被覆篩の包含 S ↪ h_U を離散な空間値前層の辺とみなし、G8 の空間とのテンソル ⊗M_i で E 値前層の辺 S ⊗ M_i → h_U ⊗ M_i に送る。
 方針：`discretePresheafInclusion 𝒞` で辺 S.functor ⟶ yoneda.obj U を空間値前層の辺にし、各点で `tensorSpaceFunctor hE (M i)` を後合成する。
