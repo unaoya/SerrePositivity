@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.BhattScholze.Perfectoid.FiniteProduct
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDeltaTensor
 public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismTensor
 public import SerrePositivity.BhattScholze.Prism.Tensor.PerfectPrismResidueTensor

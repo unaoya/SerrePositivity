@@ -5,7 +5,7 @@ public import Mathlib.Algebra.Group.Idempotent
 public import Mathlib.Algebra.Group.Commute.Units
 public import Mathlib.Algebra.GroupWithZero.Commute
 public import Mathlib.Tactic.Ring
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import Mathlib.RingTheory.WittVector.Complete
 public import Mathlib.RingTheory.Henselian

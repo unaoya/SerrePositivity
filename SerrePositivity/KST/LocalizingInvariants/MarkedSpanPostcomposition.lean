@@ -1,4 +1,7 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanDiagrams
+public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanBoundary
+public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.SpanPostcompositionFamily
 

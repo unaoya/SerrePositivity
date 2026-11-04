@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.HomologicalAlgebra.KoszulScalarControl
 
 /-! # Koszul 複体の座標そのものによる零ホモトピー

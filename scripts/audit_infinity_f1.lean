@@ -1,4 +1,79 @@
 import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
+import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
+import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
+import SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing
+import SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers
+import SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison
+import SerrePositivity.InfinityCategories.F1.CoreFlag.Rows
+import SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction
+import SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy
+import SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex
+import SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom
+import SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramValueIso
+import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDoubleEvaluation
+import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom
+import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom
+import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue
+import SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition
+import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCoefficientPointedEvaluation
+import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion
+import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanPointedComparison
+import SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting
+import SerrePositivity.InfinityCategories.F1.Pointed.AcyclicKanLifting
+import SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization
+import SerrePositivity.InfinityCategories.F1.Pointed.CofiberMappingPullback
+import SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting
+import SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval
+import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
+import SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace
+import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+import SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling
+import SerrePositivity.InfinityCategories.F1.Pointed.PathContractibility
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality
+import SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingParameters
+import SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence
+import SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor
+import SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop
+import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom
+import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom
+import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction
+import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.CosliceEdgeComposition
+import SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass
+import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison
+import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt
+import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointHomNaturality
+import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueComposition
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueCurry
+import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueInverse
+import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality
+import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality
+import SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction
+import SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction
+import SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.PointedResolutionProjection
+import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport
+import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceHomPoint
+import SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.PointedVertexPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan
+import SerrePositivity.InfinityCategories.F1.Transport.SmallEnrichedNerve
+import SerrePositivity.InfinityCategories.F1.Transport.SpaceDiagramImage
+import SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan
+import SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom
+import SerrePositivity.InfinityCategories.F1.Transport.TransportSimplexEdgeCover
+import SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent
+import SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation
 import SerrePositivity.InfinityCategories.F1.Ind.TwistedElementsReconstructionPointed
 import SerrePositivity.InfinityCategories.F1.Ind.InitialBoundaryCoconeRestriction
 import SerrePositivity.InfinityCategories.F1.Ind.DensityFiberTransformationRestriction
@@ -11258,6 +11333,170 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.coconeFiberMap_eq_unit_projection
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_eq_unit_tensor
 #check @SerrePositivity.InfinityCategories.F2.coconeIntervalTransportSource_point
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.Basic,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.Rows,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy,
+    `SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramValueIso,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDoubleEvaluation,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue,
+    `SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition,
+    `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCoefficientPointedEvaluation,
+    `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion,
+    `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanPointedComparison,
+    `SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting,
+    `SerrePositivity.InfinityCategories.F1.Pointed.AcyclicKanLifting,
+    `SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization,
+    `SerrePositivity.InfinityCategories.F1.Pointed.CofiberMappingPullback,
+    `SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting,
+    `SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval,
+    `SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary,
+    `SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace,
+    `SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace,
+    `SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence,
+    `SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PathContractibility,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingParameters,
+    `SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence,
+    `SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor,
+    `SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop,
+    `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom,
+    `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom,
+    `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction,
+    `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.CosliceEdgeComposition,
+    `SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass,
+    `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison,
+    `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt,
+    `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointHomNaturality,
+    `SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueComposition,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueCurry,
+    `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueInverse,
+    `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality,
+    `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedResolutionProjection,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceHomPoint,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.PointedVertexPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan,
+    `SerrePositivity.InfinityCategories.F1.Transport.SmallEnrichedNerve,
+    `SerrePositivity.InfinityCategories.F1.Transport.SpaceDiagramImage,
+    `SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan,
+    `SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom,
+    `SerrePositivity.InfinityCategories.F1.Transport.TransportSimplexEdgeCover,
+    `SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent,
+    `SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation
+  ]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.F1.CoreFlag.Basic, `SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams, `SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing, `SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers, `SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison, `SerrePositivity.InfinityCategories.F1.CoreFlag.Rows, `SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction, `SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy, `SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex, `SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramComponentPointHom, `SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramValueIso, `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedDoubleEvaluation, `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom, `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationPointHom, `SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue, `SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition, `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCoefficientPointedEvaluation, `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion, `SerrePositivity.InfinityCategories.F1.KanModels.StrictKanPointedComparison, `SerrePositivity.InfinityCategories.F1.Pointed.AcyclicFibrationLifting, `SerrePositivity.InfinityCategories.F1.Pointed.AcyclicKanLifting, `SerrePositivity.InfinityCategories.F1.Pointed.BoundaryNormalization, `SerrePositivity.InfinityCategories.F1.Pointed.CofiberMappingPullback, `SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting, `SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval, `SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary, `SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace, `SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace, `SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence, `SerrePositivity.InfinityCategories.F1.Pointed.NormalizedBoundaryFilling, `SerrePositivity.InfinityCategories.F1.Pointed.PathContractibility, `SerrePositivity.InfinityCategories.F1.Pointed.PointedHomotopy, `SerrePositivity.InfinityCategories.F1.Pointed.PointedInterval, `SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead, `SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping, `SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingNaturality, `SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingParameters, `SerrePositivity.InfinityCategories.F1.Pointed.PullbackKanSequence, `SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor, `SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop, `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom, `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom, `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction, `SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom, `SerrePositivity.InfinityCategories.F1.Transport.CosliceEdgeComposition, `SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass, `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison, `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt, `SerrePositivity.InfinityCategories.F1.Transport.CoslicePointHomNaturality, `SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueComposition, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueCurry, `SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueInverse, `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality, `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality, `SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction, `SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction, `SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom, `SerrePositivity.InfinityCategories.F1.Transport.PointedResolutionProjection, `SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport, `SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceHomPoint, `SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom, `SerrePositivity.InfinityCategories.F1.Transport.PointedVertexPointHom, `SerrePositivity.InfinityCategories.F1.Transport.ScaffoldTransportComparisonSpan, `SerrePositivity.InfinityCategories.F1.Transport.SmallEnrichedNerve, `SerrePositivity.InfinityCategories.F1.Transport.SpaceDiagramImage, `SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan, `SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom, `SerrePositivity.InfinityCategories.F1.Transport.TransportSimplexEdgeCover, `SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent, `SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
 
 #print axioms SerrePositivity.InfinityCategories.discreteKanFunctor
 #print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion

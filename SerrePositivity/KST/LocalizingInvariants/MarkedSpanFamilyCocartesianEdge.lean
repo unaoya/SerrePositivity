@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration
 public import SerrePositivity.InfinityCategories.F1.Fibrations.CartesianEdge
 
 /-!

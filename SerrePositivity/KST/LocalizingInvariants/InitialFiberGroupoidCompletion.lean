@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionPrism
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism
 public import SerrePositivity.KST.LocalizingInvariants.InitialFiberRetraction
 
 /-!

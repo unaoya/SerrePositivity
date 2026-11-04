@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningSectionChart
 public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecomposition
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts
 
@@ -33,17 +34,6 @@ theorem straighteningFirstVertexSectionChart_heq_doubleMap
           (ULift.up (nerveVertex c)) (coherentNerveVertex X))) := by
   unfold straighteningFirstVertexSectionChart F2.isoNormalizeEndpoints
   exact F2.iso_endpoints_heq _ _ _
-
-/-- 分類写像側の元の制限同型は、同じ共同制限同型の転置の端点だけを変更する。 -/
-theorem leftStraighteningInfinityMap_restrictIso_heq_transpose :
-    HEq (leftStraighteningInfinityMap_restrictIso B)
-      (leftStraighteningSectionJointDiagram_restrictIso B).transpose := by
-  unfold leftStraighteningInfinityMap_restrictIso
-  dsimp only [_root_.id]
-  have hcast {α β : Sort (u + 2)} (h : α = β) (x : α) : HEq (Eq.mp h x) x := by
-    cases h
-    rfl
-  exact hcast _ _
 
 /-- 元の分類写像の制限成分は、同じ初頂点の切断比較の指定成分。 -/
 theorem leftStraighteningInfinityMap_restrictIso_heq_sectionChart

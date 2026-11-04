@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FunctorIsoDoubleEvaluation
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
 

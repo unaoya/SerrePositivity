@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Kan.FibrationPointwiseComparison
 public import SerrePositivity.KST.Spectra.LoopHomotopyNaturality
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.InfinityCategories.Kan.HomotopyComponents
 public import SerrePositivity.InfinityCategories.Kan.HomotopyIsoSquareDetection
 

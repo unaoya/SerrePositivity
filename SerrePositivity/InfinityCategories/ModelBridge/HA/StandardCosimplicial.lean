@@ -2,8 +2,9 @@ module
 
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensorBoundary
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Adjunction
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
 
 /-!
 分割で生成：docstring を書き直すこと

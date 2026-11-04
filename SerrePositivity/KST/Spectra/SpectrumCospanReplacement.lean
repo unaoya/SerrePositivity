@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumReplacementEquivalences
 public import SerrePositivity.KST.Spectra.StrictDiagramTransformation
 public import SerrePositivity.KST.Spectra.DiagramLimitExistenceTransport
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 
 /-!
 概要：任意のスペクトル cospan と、一脚 fibration に置換した cospan の実際の比較。

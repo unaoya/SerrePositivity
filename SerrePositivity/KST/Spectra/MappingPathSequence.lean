@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.KST.Spectra.PullbackKanSequence
 
-public import SerrePositivity.KST.Spectra.MappingPathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace
 public import SerrePositivity.KST.Spectra.MappingKanSequence
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
 

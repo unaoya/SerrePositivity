@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomotopy
-public import SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
 public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
 public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
@@ -24,39 +25,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
-
-def rightArrow : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  squares X a ≫ (pre squareRightEdge).app X
-
-lemma rightArrow_source : rightArrow X a ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-      a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  conv_rhs => rw [← squares_bottom X a]
-  rw [rightArrow]
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
-  rfl
-
-lemma rightArrow_target : rightArrow X a ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = cofiber X a := by
-  rw [rightArrow, Category.assoc, stable_pre_evaluateFunctorAt]
-  rfl
-
-def rightHomotopy : SSet.Homotopy
-    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) where
-  h := (arrowFamilyHomotopy (rightArrow X a)).h
-  h₀ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₀]
-    exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
-      (rightArrow_source X a)
-  h₁ := by
-    rw [(arrowFamilyHomotopy (rightArrow X a)).h₁]
-    exact congrArg (fun f => (SSet.RelativeMorphism.botEquiv.symm f).map)
-      (rightArrow_target X a)
-  rel := (arrowFamilyHomotopy (rightArrow X a)).rel
-
-def rightHom : FunctorHom
-    (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) (cofiber X a) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (rightHomotopy X a))
 
 lemma rightHomotopy_vertex_edge (x : A _⦋0⦌) :
     (simplicialHomotopyVertexEdge (rightHomotopy X a) x).edge =

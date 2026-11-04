@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveMappingAdjunction
 
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionOfOpposite
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction
 public import SerrePositivity.InfinityCategories.HomotopyLimits.IntervalFunctorOpposite
 
@@ -20,22 +21,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
 namespace SerrePositivity.KST.LocalizingInvariants
 
-def oppositeFunctorIso {A D : SSet.{u}} [Quasicategory D] {F G : A ⟶ D}
-    (e : FunctorIso F G) : FunctorIso (SSet.opFunctor.map G) (SSet.opFunctor.map F) where
-  hom := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv F G e.hom
-  inv := SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv G F e.inv
-  hom_inv_id := by
-    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.inv_hom_id, oppositeFunctorHom_id]
-  inv_hom_id := by
-    rw [← SerrePositivity.InfinityCategories.F1B.functorOppositeHomEquiv_comp, e.hom_inv_id, oppositeFunctorHom_id]
-
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
-
-def reflectiveOppositeUnit (e : FunctorIso (G ≫ F) (𝟙 Y)) :
-    FunctorIso (𝟙 Y.op) (SSet.opFunctor.map G ≫ SSet.opFunctor.map F) := by
-  simpa only [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] using
-    oppositeFunctorIso e
 
 lemma unitCondition_of_iso_localMapping (η : FunctorHom (𝟙 X) (F ≫ G)) [IsIso η]
     (h : ∀ (x : X _⦋0⦌) (y : Y _⦋0⦌), IsSimplicialHomotopyEquivalence

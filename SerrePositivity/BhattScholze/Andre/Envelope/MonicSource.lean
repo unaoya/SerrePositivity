@@ -6,14 +6,14 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
 public import SerrePositivity.BhattScholze.Andre.Envelope.MonicCandidate
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.DerivedRestrictionConservative
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.NilpotentDerivedReduction
 
@@ -1682,7 +1682,7 @@ def monicPrismaticRawInternalPDLinearEquiv : H Z ≃ₗ[Raw] PDCompletionH0 Raw 
 使われ方：BS Rem 7.15（著者版 p.62）の候補係数射との後続比較。 -/
 theorem monicPrismaticRawInternalPDLinearEquiv_unit (x : Raw) :
     monicPrismaticRawInternalPDLinearEquiv D d f (iteratedPDH0Unit Raw a z x) =
-      koszulCompletionH0Unit Raw (pairKoszulCoordinates Raw (p : Raw) z) x :=
+      pairCompletionH0Unit Raw (p : Raw) z x :=
   iteratedPDH0LinearEquiv_unit Raw a z p (map_natCast c p) x
 
 /-- 概要：元の実モニック源の逐次完備化 H⁰ は、raw PD 環の同じ A 係数制限と同型。

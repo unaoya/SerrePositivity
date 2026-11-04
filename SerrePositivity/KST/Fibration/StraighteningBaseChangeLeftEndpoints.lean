@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeLeftEndpoints
 public import SerrePositivity.KST.Fibration.DoubleEvaluationPrecompositionVertices
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
 
@@ -13,16 +14,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-/-- 全単体の底変換は、同じ像の単体における切断 Kan 対象を回収する。 -/
-theorem straighteningBaseChangeLeft_section_eq
-    (X : LeftFibrationObject B) (c : TransportSimplexCategory D) :
-    (((relativeSectionEnrichedDiagram
-      (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj X) =
-      (((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).obj
-        ((transportSimplexFunctor k).obj c)).obj X) :=
-  (congrArg (fun A => ((relativeSectionEnrichedDiagram A).obj c).obj X)
-    (transportSimplexDomainFunctor_baseChange k)).symm
 
 /-- 左側の元の分類値は、同じ像の単体での初頂点分類値。 -/
 theorem straighteningBaseChangeLeft_source_vertex

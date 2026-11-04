@@ -1,0 +1,34 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 5,
+  "phase": "A",
+  "head_before": "051fdc38c9ca6ae04a8cc7cc027746a5267d532f",
+  "reason": "初めて到達した失敗。補充候補を個別コンパイルし、分割した両側のスコープと instance を照合した。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.FiberMappingAnodyneFamily",
+      "imports": [
+        "SerrePositivity.KST.Spectra.PostMappingFibration"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.LocalizingInvariants.FiberMappingAnodyneFamily",
+      "annotations": [
+        {
+          "before": "(fibration_iff _)",
+          "after": "(SSet.modelCategoryQuillen.fibration_iff _)",
+          "occurrences": 2
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}

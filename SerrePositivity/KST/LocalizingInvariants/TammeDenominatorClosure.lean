@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientCandidate
-public import SerrePositivity.KST.LocalizingInvariants.ExactKernelStableClosure
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingBaseChange
 public import SerrePositivity.InfinityCategories.Stable.CofiberLocalizingComposition
 

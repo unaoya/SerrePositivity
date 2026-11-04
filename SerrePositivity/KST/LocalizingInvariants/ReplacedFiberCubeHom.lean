@@ -1,8 +1,9 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberCubeHom
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberConeComparison
-public import SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 
 /-!
 概要：長完全列で使う置換済み fiber 射を、元の cospan の全比較を保つ実錐比較へ移す。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramComponent
-public import SerrePositivity.KST.Fibration.FunctorIsoValueComposition
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueComposition
 
 /-! # 実対象図式の同じ初頂点値を、元の共同分類値で表示する -/
 

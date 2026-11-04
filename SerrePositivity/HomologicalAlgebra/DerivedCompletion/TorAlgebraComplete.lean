@@ -2,14 +2,14 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraNaturality
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTowerEquiv
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarRestriction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTower
 public import SerrePositivity.HomologicalAlgebra.AlgebraEquivariantShortComplex
 public import SerrePositivity.HomologicalAlgebra.TorAlgebraScalarComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionHomologyComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Reconstruction
 
 /-! # 有限な試験加群の Tor の導来完備性
 

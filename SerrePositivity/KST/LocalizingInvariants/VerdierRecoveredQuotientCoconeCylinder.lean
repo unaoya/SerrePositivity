@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingCoconeExtension
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion
 public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism

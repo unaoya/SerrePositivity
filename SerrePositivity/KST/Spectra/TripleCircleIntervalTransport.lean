@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.TripleCircleUniversalExchange
 public import SerrePositivity.KST.Spectra.PointedRlpSection
-public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
 
 /-!
 概要：一つの普遍的な交換区間を、全標的の全写像族へ同じ anodyne 制限から移す。

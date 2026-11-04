@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTerminalPullbackFamilies
 public import SerrePositivity.KST.LocalizingInvariants.SpanFamilyTransposeNaturality
-public import SerrePositivity.KST.LocalizingInvariants.VerdierParametricTerminalRefinement
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement
 
 /-!
 概要：パラメータ付き前段 pullback 正方形を、元の実 pullback 四角形の族へ厳密に戻す。

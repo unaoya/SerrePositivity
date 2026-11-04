@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeRecovery
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeGluing
 public import SerrePositivity.KST.LocalizingInvariants.InitialConeTensorBoundaryViews
 

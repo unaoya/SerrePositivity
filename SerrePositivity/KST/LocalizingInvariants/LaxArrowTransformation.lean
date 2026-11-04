@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
-public import SerrePositivity.KST.LocalizingInvariants.ExactTransformationStableLocus
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexData
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceSubcomplex
 

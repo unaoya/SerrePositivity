@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition
+public import SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
 public import SerrePositivity.KST.LocalizingInvariants.StableValueFunctor
 public import SerrePositivity.KST.LocalizingInvariants.InvariantProductDecomposition
 

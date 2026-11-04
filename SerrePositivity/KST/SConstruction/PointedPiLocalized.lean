@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.LocalizedPiComparison
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-! # 点つき Kan 射の π 同型から局所化同型への回収
 概要：全基点 π 同型の点つき Kan 射は anodyne 局所化で可逆になる。

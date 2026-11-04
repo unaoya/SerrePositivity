@@ -27,7 +27,7 @@ public import Mathlib.LinearAlgebra.TensorProduct.Tower
 - 係数拡大はスカラー倍を `φ` 倍に送る：加群の射について `F(a • f) = φ(a) • F(f)`
   （`extendScalars_map_smul`）、複体の射についても同様（`extendScalars_mapHomologicalComplex_smul`）、
   特に `a • 𝟙 K` は `φ(a) • 𝟙 (K ⊗ C)` に移る（`baseChange_smulId`）。Koszul 複体の基底変更
-  `K(z) ⊗_A C ≅ K(φ z)`（`CommutativeAlgebra/KoszulResolution.lean`）、台の条件が基底変更で
+  `K(z) ⊗_A C ≅ K(φ z)`（`CommutativeAlgebra/Koszul/Resolution.lean`）、台の条件が基底変更で
   保たれること（`PerfectComplex/Support.lean`）、Tor の消去イデアル（`Tor.lean`）に使う。
 -/
 
@@ -101,7 +101,7 @@ lemma extendScalars_mapHomologicalComplex_smul {ι : Type*} {c : ComplexShape ι
 
 /-- 複体の `a` 倍写像 `smulId a K = a • 𝟙 K` は、係数拡大で `baseChange φ K` の `φ(a)` 倍写像に移る。
 Koszul 複体 `Cone(x_n • 𝟙 K')` の基底変更が `Cone(φ(x_n) • 𝟙 (K' ⊗ C))` になること
-（`CommutativeAlgebra/KoszulResolution.lean` の `baseChangeKoszulIso`）の帰納段で使う。 -/
+（`CommutativeAlgebra/Koszul/Resolution.lean` の `baseChangeKoszulIso`）の帰納段で使う。 -/
 lemma baseChange_smulId (K : CochainComplex (ModuleCat.{u} A) ℤ) (a : A) :
     ((ModuleCat.extendScalars.{u, u, u} φ).mapHomologicalComplex _).map (smulId a K) =
       smulId (φ a) (baseChange φ K) := by

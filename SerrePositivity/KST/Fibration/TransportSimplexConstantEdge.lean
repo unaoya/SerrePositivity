@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge
 public import SerrePositivity.KST.Fibration.StrictTransportUnderEdge
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexLocalizationData
 
@@ -12,17 +13,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-
-/-- 初頂点を保つ射の区間は、元の底の同じ初頂点に厳密に定値。 -/
-theorem transportSimplexFirstVertexMap_interval_constant {B : SSet.{u}}
-    {c d : TransportSimplexCategory B} (f : c ⟶ d) (hf : TransportSimplexPreservesFirst f) :
-    yonedaEquiv.symm (nerve.edgeMk f).edge ≫ transportSimplexFirstVertexMap B =
-      SSet.const ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c)) := by
-  apply yonedaEquiv.injective
-  rw [yonedaEquiv_comp, Equiv.apply_symm_apply]
-  refine (transportSimplexFirstVertexMap_edge_of_preservesFirst f hf).trans ?_
-  change B.σ 0 _ = PinchedHom.constant _ 1
-  exact (pinchedConstant_one _).symm
 
 /-- 同じ元の射の終点の初頂点も、始点の初頂点そのもの。 -/
 theorem transportSimplexFirstVertexMap_target_of_preservesFirst {B : SSet.{u}}

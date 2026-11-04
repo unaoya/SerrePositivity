@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumSmallProduct
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumFiniteProducts
+public import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
 
 /-!
 概要：任意の小さいスペクトルの族の具体的な積を Sp の実際の ∞ 極限錐として公開する。

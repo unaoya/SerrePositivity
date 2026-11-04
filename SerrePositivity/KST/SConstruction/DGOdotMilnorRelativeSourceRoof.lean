@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceSquare
 public import SerrePositivity.KST.SConstruction.DGKPerfectNuEquivalence
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
 
 /-!
 概要：元対角始域への実増大屋根を Sp の完備化付き始域回収へ接続する。

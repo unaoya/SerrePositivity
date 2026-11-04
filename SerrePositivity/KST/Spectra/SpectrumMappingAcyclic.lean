@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingAcyclicFamily
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：段ごとの全単射 RLP は、実際のスペクトル写像空間への後合成でも保存される。

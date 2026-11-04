@@ -150,3 +150,22 @@ theorem ker_algebraMap_sections_eq_vanishingIdeal
 end SerrePositivity
 
 end ReducedSectionImagePart
+
+section KernelOfReducedPart
+
+namespace SerrePositivity
+
+/-- 被約環への写像の核は、生成イデアルに冪が属するすべての元を含む。 -/
+theorem mem_kernel_comp_quotient_of_pow_mem_span
+    {R C : Type u} [CommRing R] [CommRing C] [IsReduced C]
+    (g : R) (f : R ⧸ Ideal.span {g} →+* C) (x : R) (k : ℕ)
+    (hx : x ^ k ∈ Ideal.span {g}) :
+    x ∈ RingHom.ker (f.comp (Ideal.Quotient.mk (Ideal.span {g}))) := by
+  change f (Ideal.Quotient.mk (Ideal.span {g}) x) = 0
+  apply IsReduced.eq_zero
+  refine ⟨k, ?_⟩
+  rw [← map_pow, ← map_pow, Ideal.Quotient.eq_zero_iff_mem.mpr hx, map_zero]
+
+end SerrePositivity
+
+end KernelOfReducedPart

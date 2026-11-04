@@ -8,7 +8,7 @@ public import Mathlib.Algebra.Polynomial.Monic
 public import Mathlib.Algebra.MvPolynomial.Variables
 public import SerrePositivity.BhattScholze.Delta.Division.Residue
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeFiniteDelta
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
 
 /-!

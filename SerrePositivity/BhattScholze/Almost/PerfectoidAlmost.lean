@@ -1,11 +1,11 @@
 module
 
 public import SerrePositivity.BhattScholze.Almost.Lemma103
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeScalar
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChange
 public import SerrePositivity.CategoryTheory.ExactDerivedTStructure
-public import SerrePositivity.CLMST.Almost
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorModuleAction
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.CommutativeAlgebra.Almost.Quotient
 
 /-!
@@ -25,6 +25,87 @@ CLMST の almost Tor。
 -/
 
 universe u
+
+/-! ## perfectoid イデアルの mod pᴺ の像（旧 CLMST/Almost.lean）
+
+perfectoid イデアルを核の定義のまま `p^N` を法とした環へ写し（`perfectoidIdealMod`）、その零化条件と元の環の条件を商環の作用で比べる。局所化での零・同型の判定と、共通の p 冪の零化も与える。像イデアルの冪等性は下の Remark 10.7 の節で示す。
+-/
+
+@[expose] public noncomputable section PerfectoidIdealModPart
+
+namespace SerrePositivity.BhattScholze
+open CategoryTheory CategoryTheory.Limits
+
+variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+
+/-- p^N を法とした環での perfectoid ideal の像。
+元のイデアルは普遍 perfectoid 化への写像の核であり、根生成イデアルに置き換えない。 -/
+abbrev perfectoidIdealMod (N : ℕ) : Ideal (R ⧸ Ideal.span {(p : R) ^ N}) :=
+  (perfectoidIdeal R p hR g).map (Ideal.Quotient.mk (Ideal.span {(p : R) ^ N}))
+
+/-- p^N により零化される加群の商環作用で、perfectoid ideal の零化条件は変わらない。 -/
+theorem perfectoidIdealMod_annihilates_iff (N : ℕ) (M : ModuleCat.{u} R)
+    (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
+    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    Almost.IsAlmostZero (perfectoidIdealMod R p hR g N) M ↔
+      Almost.IsAlmostZero (perfectoidIdeal R p hR g) M :=
+  Almost.isAlmostZero_quotient_iff (Ideal.span {(p : R) ^ N}) M
+    (perfectoidIdeal R p hR g) hM
+
+/-- mod p^N の像イデアルの冪等性が供給されれば、almost 圏の零性と元の kernel による零化が一致。
+冪等性をこの接続の結論に隠さない。 -/
+theorem isZero_perfectoidIdealMod_localization_iff (N : ℕ)
+    [Fact (perfectoidIdealMod R p hR g N * perfectoidIdealMod R p hR g N =
+      perfectoidIdealMod R p hR g N)]
+    (M : ModuleCat.{u} R) (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M) :
+    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    IsZero ((Almost.localization (perfectoidIdealMod R p hR g N)).obj
+      (ModuleCat.of (R ⧸ Ideal.span {(p : R) ^ N}) M)) ↔
+      Almost.IsAlmostZero (perfectoidIdeal R p hR g) M :=
+  Almost.isZero_quotient_localization_obj_iff (Ideal.span {(p : R) ^ N})
+    (perfectoidIdeal R p hR g) M hM
+
+/-- mod p^N の almost 圏で線形写像が同型となる条件を、元の環の核・余核の零化条件へ移す。 -/
+theorem isIso_perfectoidIdealMod_localization_iff (N : ℕ)
+    [Fact (perfectoidIdealMod R p hR g N * perfectoidIdealMod R p hR g N =
+      perfectoidIdealMod R p hR g N)]
+    {M M' : ModuleCat.{u} R}
+    (hM : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M)
+    (hM' : Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M') (f : M ⟶ M') :
+    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M hM
+    let _ := Almost.quotientModule (Ideal.span {(p : R) ^ N}) M' hM'
+    IsIso ((Almost.localization (perfectoidIdealMod R p hR g N)).map
+      (ModuleCat.ofHom (Almost.quotientLinearMap (Ideal.span {(p : R) ^ N}) hM hM' f.hom))) ↔
+      Almost.IsAlmostIso (perfectoidIdeal R p hR g) f.hom :=
+  Almost.isIso_quotient_localization_map_iff (Ideal.span {(p : R) ^ N})
+    (perfectoidIdeal R p hR g) hM hM' f
+
+omit [Fact p.Prime] in
+/-- p が J に属すれば、一様な J 冪ねじれの二つの加群を同じ p の冪で零化できる。
+mod p^N の almost 圏へ移す指数は仮定ではなく、各加群の冪ねじれから供給する。 -/
+theorem exists_common_p_pow_annihilates (J : Ideal R) (hp : (p : R) ∈ J)
+    (M M' : ModuleCat.{u} R) (hM : IsPowTorsion J M) (hM' : IsPowTorsion J M') :
+    ∃ N : ℕ, Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M ∧
+      Almost.IsAlmostZero (Ideal.span {(p : R) ^ N}) M' := by
+  obtain ⟨n, hn⟩ := hM
+  obtain ⟨n', hn'⟩ := hM'
+  refine ⟨n + n', ?_, ?_⟩
+  · change Ideal.span {(p : R) ^ (n + n')} ≤ Module.annihilator R M
+    rw [Ideal.span_singleton_le_iff_mem, Module.mem_annihilator]
+    intro m
+    rw [pow_add, mul_smul]
+    exact hn (a := ⟨(p : R) ^ n, Ideal.pow_mem_pow hp n⟩)
+  · change Ideal.span {(p : R) ^ (n + n')} ≤ Module.annihilator R M'
+    rw [Ideal.span_singleton_le_iff_mem, Module.mem_annihilator]
+    intro m
+    rw [Nat.add_comm n n', pow_add, mul_smul]
+    exact hn' (a := ⟨(p : R) ^ n', Ideal.pow_mem_pow hp n'⟩)
+
+end SerrePositivity.BhattScholze
+
+end PerfectoidIdealModPart
+
 
 /-! ## perfectoid 化の核の conormal の導来完備化（旧 Almost/PerfectoidIdealConormalCompletion.lean）
 
@@ -255,13 +336,13 @@ theorem perfectoidIdeal_eq_square_sup_pow_mul (n : ℕ) :
 ## 方針
 実商自己積の同型性から、既存の Tor₁・conormal・像イデアルの冪等性判定を適用する。
 ## 規約
-CLMST.Inputs.perfectoidIdealMod_idempotent と同じ署名を保持し、N=0 も含む。
+BhattScholze.perfectoidIdealMod_idempotent と同じ署名を保持し、N=0 も含む。
 ## 使われ方
 既存の入力引用を使わずに CLMST へ渡す証明済み入口である。
 -/
 theorem perfectoidIdealMod_idempotent (N : ℕ) :
-    CLMST.perfectoidIdealMod R p hR g N * CLMST.perfectoidIdealMod R p hR g N =
-      CLMST.perfectoidIdealMod R p hR g N :=
+    BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
+      BhattScholze.perfectoidIdealMod R p hR g N :=
   ideal_mod_power_idempotent_of_conormal_surjective (p : R) (perfectoidIdeal R p hR g)
     (perfectoidIdeal_conormal_smul_bijective R p hR g).surjective N
 
@@ -419,3 +500,37 @@ Prop 10.2（印刷 p.78）の導来完備 almost 零加群の拡大閉性をま�
 ## 使われ方
 ルートの一つの import と、KL-T・CLMST への証明済み公開定理の受渡しに使う。
 -/
+
+@[expose] public noncomputable section PerfectoidAlmostModCategoryPart
+
+namespace SerrePositivity.BhattScholze
+open CategoryTheory
+
+variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
+    (hR : IsIntegralPerfectoid R p) (g : R)
+
+/-- mod p^N の全加群の perfectoid almost 圏。
+文献入力の冪等性を定義の局所的な instance として供給する。 -/
+abbrev perfectoidAlmostModCategory (N : ℕ) :=
+  letI : Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
+      BhattScholze.perfectoidIdealMod R p hR g N) := ⟨perfectoidIdealMod_idempotent R p hR g N⟩
+  Almost.ModuleCategory (BhattScholze.perfectoidIdealMod R p hR g N)
+
+/-- mod p^N の加群から、その perfectoid almost 圏への局所化関手。
+呼び出し側で冪等性の `Fact` を仮定する必要はない。 -/
+abbrev perfectoidAlmostModLocalization (N : ℕ) :
+    ModuleCat.{u} (R ⧸ Ideal.span {(p : R) ^ N}) ⥤ perfectoidAlmostModCategory R p hR g N :=
+  letI : Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
+      BhattScholze.perfectoidIdealMod R p hR g N) := ⟨perfectoidIdealMod_idempotent R p hR g N⟩
+  Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N)
+
+/-- 明示的な冪等性の証拠を置いた場合、名前付き局所化は既存の局所化と定義上同じ。 -/
+theorem perfectoidAlmostModLocalization_eq (N : ℕ)
+    [Fact (BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
+      BhattScholze.perfectoidIdealMod R p hR g N)] :
+    perfectoidAlmostModLocalization R p hR g N =
+      Almost.localization (BhattScholze.perfectoidIdealMod R p hR g N) := rfl
+
+end SerrePositivity.BhattScholze
+
+end PerfectoidAlmostModCategoryPart

@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction
 public import SerrePositivity.KST.Fibration.StraighteningGlobalBaseChangeValue
-public import SerrePositivity.KST.Fibration.PointedClassificationReconstruction
-public import SerrePositivity.KST.Fibration.FunctorIsoValueInverse
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValueInverse
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 
 /-! # 元の分類・表現比較を初頂点へ戻し、同じ指定比較を回収する -/
@@ -17,9 +18,6 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
-
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
-  ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 /-- 元の表現比較の定義が指定した、同じ初頂点上の比較。 -/
 def straighteningRepresentationRestrictionIso :=

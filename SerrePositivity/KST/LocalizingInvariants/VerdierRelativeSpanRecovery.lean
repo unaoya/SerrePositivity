@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSpanRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnodyneHomotopyExtension
 

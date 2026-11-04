@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectStableArrow
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.ZeroMaps
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 

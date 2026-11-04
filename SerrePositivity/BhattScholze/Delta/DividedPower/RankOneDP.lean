@@ -24,7 +24,7 @@ public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.HomologicalAlgebra.FaithfullyFlatDerivedHomology
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeDiscrete
 public import Mathlib.LinearAlgebra.DirectSum.Finsupp
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReconstruction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Reconstruction
 
 /-!
 # 一変数の分冪多項式代数 Γ_A⟨x⟩

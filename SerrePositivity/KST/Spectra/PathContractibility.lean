@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Pointed.PathContractibility
 
 public import SerrePositivity.KST.Spectra.PathContraction
 public import SerrePositivity.InfinityCategories.Kan.HomotopyConstant
@@ -23,16 +24,6 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-
-/-- 概要：基点を経由する定数射は選んだ基点への SSet.const と一致する。
-方針：終対象からの射と頂点の同値を使う。
-規約：始域 A は任意。
-使われ方：Goerss–Jardine I §7。収縮の相対ホモトピー表示。 -/
-theorem pointedConstant_eq_const (X : PointedSimplicialSet.{u}) (A : SSet.{u}) :
-    toUnit A ≫ X.hom = SSet.const X.basepoint := by
-  have h : SSet.const (X := 𝟙_ SSet.{u}) X.basepoint = X.hom :=
-    (SSet.unitHomEquiv X.right).symm_apply_apply X.hom
-  rw [← h, SSet.comp_const]
 
 /-- 概要：path space の収縮は定数 path の基点を固定する相対ホモトピー。
 方針：基点生成部分複体の包含を定数射と同定し、収縮の基点固定式を使う。

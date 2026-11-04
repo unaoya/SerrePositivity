@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationQuotient
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealFunctor
-public import SerrePositivity.CommutativeAlgebra.PerfectoidIdealCover
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
+public import SerrePositivity.BhattScholze.PerfectoidIdeal.Cover
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision
 public import SerrePositivity.CommutativeAlgebra.Localization.Away
 

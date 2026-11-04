@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberLegs
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs
 
 /-!
 概要：元の包含・二射影の組を実 BF 射に束ね、product fiber の下辺と同定する。

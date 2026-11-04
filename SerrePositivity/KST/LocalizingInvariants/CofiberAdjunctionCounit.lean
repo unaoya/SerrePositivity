@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberAdjunctionCounit
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointFaithful
 public import SerrePositivity.InfinityCategories.F1B.Localization.ReflectiveIdempotence
@@ -18,10 +19,8 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+attribute [local instance] cofiberCounitZeroSourceQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
-
-local instance cofiberCounitZeroSourceQuasicategory : Quasicategory (zeroSourceArrows X) :=
-  fullSubcomplexOnVertices_quasicategory _ _
 
 lemma cofiberRightAdjointZeroSource_isQCatEquivalence :
     IsQCatEquivalence (cofiberRightAdjointZeroSource X) := by

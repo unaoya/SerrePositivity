@@ -1,7 +1,9 @@
 module
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.TowerMaps
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kan.FibrationTower
+public import SerrePositivity.InfinityCategories.Kan.HomotopyIsomorphism
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：塔の射の初段と相対比較の持ち上げ性を実際の極限の射へ移す。

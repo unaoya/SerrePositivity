@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Basic
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import Mathlib.Algebra.Homology.HomologicalComplexLimits
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower

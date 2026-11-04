@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingRelativeHomotopy
 
 /-!

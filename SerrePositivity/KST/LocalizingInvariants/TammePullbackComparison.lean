@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullbackComparison
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierReflectiveCompatibility
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftReflective
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective
 
 /-!
 概要：充満忠実右随伴の場合の一般商の実 pullback を、元の p・q の実 pullback へ比較する。

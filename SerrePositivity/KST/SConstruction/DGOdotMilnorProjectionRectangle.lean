@@ -4,7 +4,7 @@ public import SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity
 public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 public import Mathlib.CategoryTheory.Enriched.Basic
 public import SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare
-public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
 
 /-!
 概要：元の resolved 射影と実 lax 射影を指定二胞体で比較し、完備化まで貼る。

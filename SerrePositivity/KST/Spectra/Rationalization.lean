@@ -23,7 +23,7 @@ public import SerrePositivity.KST.Spectra.FilteredSpectrumHomotopy
 public import SerrePositivity.KST.Spectra.RationalTelescopeNaturality
 public import SerrePositivity.KST.Spectra.FilteredSpectrumMap
 public import SerrePositivity.InfinityCategories.Kan.AcyclicFiber
-public import SerrePositivity.KST.Spectra.AcyclicKanLifting
+public import SerrePositivity.InfinityCategories.F1.Pointed.AcyclicKanLifting
 public import SerrePositivity.KST.Spectra.AcyclicFibrationLifting
 public import SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism

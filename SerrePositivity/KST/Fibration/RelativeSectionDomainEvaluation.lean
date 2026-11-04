@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSectionDomainPoint
 public import SerrePositivity.KST.Fibration.RelativeSectionJointVertices
-public import SerrePositivity.KST.Fibration.KanEnrichedRealizationValue
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedRealizationValue
 
 /-! # 元の定義域比較の実現・共同図式を、同じ制限成分へ戻す -/
 

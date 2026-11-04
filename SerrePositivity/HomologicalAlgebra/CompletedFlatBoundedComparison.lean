@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.CompletedFlatBoundedTorsion
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 
 /-! # 有界 torsion と通常 tensor への標準比較
 

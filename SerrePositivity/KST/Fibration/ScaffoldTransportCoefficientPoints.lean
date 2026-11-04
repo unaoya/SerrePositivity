@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientPoints
 public import SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientFiber
 public import SerrePositivity.KST.Fibration.RelativeFunctorEvaluationVertex
 
@@ -15,25 +16,6 @@ namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
-
-/-- 元の係数値上の source 脚は、元の恒等射評価そのもの。 -/
-theorem coefficientEmbedding_source (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentSource =
-      (SSet.uliftFunctor.{u + 1, u}).map
-        (leftStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c)) := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentSource,
-    ← Functor.map_comp, Category.assoc, s.source_restriction,
-    simplicialReplacementConstantLift_universalScaffold]
-
-/-- 元の係数値上の weighted 脚は、同じ定値包含と同じ coherent 比較を通る。 -/
-theorem coefficientEmbedding_target (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentTarget =
-      (SSet.uliftFunctor.{u + 1, u}).map
-        (weightedNerveConstantLift (leftStrictTransportDiagram p) c) ≫
-          leftCoherentTransportComparison p := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentTarget,
-    ← Category.assoc, ← Functor.map_comp, Category.assoc, s.weighted_restriction,
-    simplicialReplacementConstantLift_tautScaffold]
 
 /-- 同じ相対三角の source fiber 点の全空間の値を回収する。 -/
 theorem coefficientSourceFiberPoint_val (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :

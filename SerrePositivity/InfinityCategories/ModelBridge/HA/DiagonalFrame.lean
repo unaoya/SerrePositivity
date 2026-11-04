@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalDiagram
 

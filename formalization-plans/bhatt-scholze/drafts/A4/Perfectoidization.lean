@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTria
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
 public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
 public import Mathlib.Algebra.Category.Ring.Basic
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 -- 本ファイルは drafts/DerivedGeneral/ScalarRestriction.lean の cAlgRestrictScalars と忘却比較（M13）も使う。

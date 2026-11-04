@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationEssentialSurjectivity
 

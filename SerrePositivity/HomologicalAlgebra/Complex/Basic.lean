@@ -79,7 +79,7 @@ lemma projective_of_free {M : ModuleCat.{u} R} (h : Module.Free R M) : Projectiv
   exact M.projective_of_categoryTheory_projective
 
 /-- 複体 `K` の自己射 `a • 𝟙 K`、すなわち各次数で `a` 倍する鎖写像。Koszul 複体は
-`Cone(x_n • 𝟙 K(x_1, …, x_{n-1}))` の反復として定義する（`CommutativeAlgebra/Koszul.lean`）ので、
+`Cone(x_n • 𝟙 K(x_1, …, x_{n-1}))` の反復として定義する（`CommutativeAlgebra/Koszul/Basic.lean`）ので、
 その構成要素になる。`a • 𝟙 K` と書く代わりに名前を付けるのは、写像錐の引数として現れたときに
 式を読みやすくするためで、中身は定義どおり `a • 𝟙 K` である。 -/
 noncomputable def smulId (a : R) (K : CochainComplex (ModuleCat.{u} R) ℤ) : K ⟶ K :=
@@ -104,7 +104,7 @@ theorem annihilator_le_homology {ι : Type*} {c : ComplexShape ι}
 ホモロジー射がスカラー倍と両立すること（Mathlib の `ShortComplex.homologyMap_smul`）に帰着する。
 
 特に `smulId a K = a • 𝟙 K` はホモロジー上で `a` 倍として働く。これが Koszul 複体の完全性
-（`CommutativeAlgebra/KoszulResolution.lean`）、Tor の消去イデアル（`Tor.lean`）、台をもつ複体の
+（`CommutativeAlgebra/Koszul/Resolution.lean`）、Tor の消去イデアル（`Tor.lean`）、台をもつ複体の
 ホモロジーの零化（`PerfectComplex/Support.lean`）の計算の出発点になる。 -/
 lemma homologyMap_smul {K L : HomologicalComplex (ModuleCat.{u} R) c} (f : K ⟶ L) (a : R)
     (i : ι) :

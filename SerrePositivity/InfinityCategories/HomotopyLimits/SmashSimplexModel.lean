@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 
 public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplex
 

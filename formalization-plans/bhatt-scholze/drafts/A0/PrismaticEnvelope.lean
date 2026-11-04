@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalKoszulRing
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.RingTheory.TensorProduct.Basic
 -- 本ファイルは drafts/A0/PrismaticSite.lean の `IsBoundedPrism` を使う。

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.PrincipalQuotientResolution
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
 
 /-! # A regular principal derived quotient is the two-term Koszul reduction -/

@@ -1,8 +1,9 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingFamilyTranspose
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
+public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingFamilyTranspose
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 
 /-!
 概要：同じ前段上の全余錐族を、パラメータ関手圏の元の全余錐へ移す。
@@ -20,16 +21,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SS
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-/-- 二変数の同じ内部 Hom の交換による全関手同型の転置。 -/
-def spanFunctorIsoFlip {K L X : SSet.{u}} [Quasicategory X]
-    {F G : K ⟶ (ihom L).obj X} (e : FunctorIso F G) :
-    FunctorIso (internalHomFlipHomEquiv K L X F) (internalHomFlipHomEquiv K L X G) := by
-  have h := VertexIso.map e (internalHomSwapIso K L X).hom
-  simp only [internalHomSwapIso_functorVertex] at h
-  change FunctorIso (curry ((β_ K L).hom ≫ uncurry F))
-    (curry ((β_ K L).hom ≫ uncurry G))
-  exact h
 
 /-- 前段が同じ図式に厳密に定値な余錐族を、関手圏の元の余錐へ移す。 -/
 def spanCoconeFamilyTranspose {K L X : SSet.{u}} (D : L ⟶ X)
@@ -59,17 +50,6 @@ lemma spanCoconeFamilyTranspose_last_edge {K X : SSet.{u}} {n : ℕ}
   rw [Equiv.symm_apply_apply, he,
     ← Category.assoc, Iso.inv_hom_id, Category.id_comp]
 
-/-- 転置した同じ二つの全族の比較を、元の族の全関手同型へ戻す。 -/
-def spanFunctorIsoUnflip {K L X : SSet.{u}} [Quasicategory X]
-    {F G : K ⟶ (ihom L).obj X}
-    (e : FunctorIso (internalHomFlipHomEquiv K L X F) (internalHomFlipHomEquiv K L X G)) :
-    FunctorIso F G := by
-  have h := spanFunctorIsoFlip e
-  change FunctorIso
-    ((internalHomFlipHomEquiv K L X).symm ((internalHomFlipHomEquiv K L X) F))
-    ((internalHomFlipHomEquiv K L X).symm ((internalHomFlipHomEquiv K L X) G)) at h
-  simpa only [Equiv.symm_apply_apply] using h
-
 /-- 元の固定端点 Hom の族で指定した終端脚を、同じ実関手辺として回収する。 -/
 lemma spanCoconeFamilyTranspose_last_interval_edge {K X : SSet.{u}} {n : ℕ}
     (D : (Δ[n] : SSet.{u}) ⟶ X)
@@ -87,43 +67,5 @@ lemma spanCoconeFamilyTranspose_last_interval_edge {K X : SSet.{u}} {n : ℕ}
     (f ≫ vertexFiberι ((pre (boundary 1).ι).app X)
       (functorVertex (intervalMappingBoundary x y))) hf
   exact he.trans (intervalMappingFamilyEdge_edge f).symm
-
-/-- 元の前段比較を商後合成し、同じパラメータの定値図式間の実比較辺にする。 -/
-def spanConstantPrefixEdge {L X Y : SSet.{u}} (K : SSet.{u}) (q : X ⟶ Y)
-    {D E : L ⟶ X}
-    (t : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj X))
-      (functorVertex D) (functorVertex E)) :
-    SSet.Edge (functorVertex (D ≫ q ≫ curry (snd K Y)))
-      (functorVertex (E ≫ q ≫ curry (snd K Y))) :=
-  (SSet.Edge.ofTruncated (X := (ihom L).obj X) t).map
-    ((ihom L).map (q ≫ curry (snd K Y)))
-
-lemma spanConstantPrefixEdge_component {L X Y : SSet.{u}} (K : SSet.{u}) (q : X ⟶ Y)
-    {D E : L ⟶ X}
-    (t : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj X))
-      (functorVertex D) (functorVertex E)) (k : L _⦋0⦌) :
-    (functorEdgeAt (spanConstantPrefixEdge K q t) k).edge =
-      (curry (snd K Y)).app (Opposite.op ⦋1⦌)
-        (q.app (Opposite.op ⦋1⦌)
-          ((evaluateFunctorAt (Y := X) k).app (Opposite.op ⦋1⦌) t.edge)) := by
-  have hn : (ihom L).map (q ≫ curry (snd K Y)) ≫
-      evaluateFunctorAt (Y := (ihom K).obj Y) k =
-      evaluateFunctorAt (Y := X) k ≫ q ≫ curry (snd K Y) := rfl
-  exact ConcreteCategory.congr_hom (C := Type u)
-    (NatTrans.congr_app hn (Opposite.op ⦋1⦌)) t.edge
-
-lemma spanConstantPrefixEdge_isInvertible {L X Y : SSet.{u}} [Quasicategory Y]
-    (K : SSet.{u}) (q : X ⟶ Y) {D E : L ⟶ X}
-    (t : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj X))
-      (functorVertex D) (functorVertex E))
-    (ht : IsInvertibleEdge (X := (ihom L).obj Y)
-      (t.map ((truncation 2).map ((ihom L).map q)))) :
-    IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj Y))
-      (spanConstantPrefixEdge K q t).toTruncated := by
-  have hi := ht.map ((ihom L).map (curry (snd K Y)))
-  exact (isInvertibleEdge_congr
-    (e := (t.map ((truncation 2).map ((ihom L).map q))).map
-      ((truncation 2).map ((ihom L).map (curry (snd K Y)))))
-    (f := (spanConstantPrefixEdge K q t).toTruncated) rfl).mp hi
 
 end SerrePositivity.KST.LocalizingInvariants

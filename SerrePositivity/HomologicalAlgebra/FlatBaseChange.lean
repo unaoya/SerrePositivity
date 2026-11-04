@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorBaseChange
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import Mathlib.RingTheory.Flat.Stability
 
 /-! # 平坦な基底変更と Koszul ホモロジー

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyZeroTriangle
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceUnitD
@@ -18,28 +19,9 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-/-- 端点も含む二辺の表示変更は、合成の零性を保つ。 -/
-lemma comp_zero_of_arrowMk_eq {T : Type*} [Category T] [HasZeroMorphisms T]
-    {x y z x' y' z' : T} (f : x ⟶ y) (g : y ⟶ z) (f' : x' ⟶ y') (g' : y' ⟶ z')
-    (hf : Arrow.mk f = Arrow.mk f') (hg : Arrow.mk g = Arrow.mk g')
-    (h : f ≫ g = 0) : f' ≫ g' = 0 := by
-  obtain ⟨hx, hy, hf⟩ := (Arrow.mk_eq_mk_iff _ _).mp hf
-  obtain ⟨_, hz, hg⟩ := (Arrow.mk_eq_mk_iff _ _).mp hg
-  subst x' y' z'
-  simp only [eqToHom_refl, Category.id_comp, Category.comp_id] at hf hg
-  rw [← hf, ← hg]
-  exact h
+attribute [local instance] laxDifferenceFunctorZero laxDifferenceFunctorZeroMorphisms
 
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
-local instance laxDifferenceFunctorZero (A X : SSet.{u}) [Quasicategory X] [HasZeroVertex X] :
-    HasZeroVertex ((ihom A).obj X) := functorHasZeroVertex A X
-
-local instance laxDifferenceFunctorZeroMorphisms (A X : SSet.{u})
-    [Quasicategory X] [HasZeroVertex X] :
-    HasZeroMorphisms ((ihom A).obj X).HomotopyCategory :=
-  hasZeroMorphisms_ho
-
 /-- 元の指定矢印族の h Fun の類。 -/
 def laxArrowHom : FunctorHom ((laxFst p q).hom ≫ p.hom) ((laxSnd p q).hom ≫ q.hom) :=
   Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (laxArrowHomotopy p q))

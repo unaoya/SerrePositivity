@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.InitialConeTensorShape
-public import SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
 
 /-!
 概要：有限図式と尾部を貼った全境界を固定して、二つの左錐の積上へ実図式を回収する。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.PostMappingLifts
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMapping
 public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting

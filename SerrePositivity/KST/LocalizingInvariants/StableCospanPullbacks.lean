@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.SConstruction.StableSpanPushout
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 public import SerrePositivity.InfinityCategories.Stable.StableOpposite
 
 /-!

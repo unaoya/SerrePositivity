@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativeHomotopyRlpLift
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-!
 概要：点つき Kan 射の π 同型に沿い、指定部分の全区間を保つホモトピーを反映する。

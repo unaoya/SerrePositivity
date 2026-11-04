@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportEvaluationPrism
 public import SerrePositivity.KST.Fibration.StrictTransportUnderEdge
 
 /-! # 元の strict transport と両端 fiber 評価を結ぶ全 section 上の実 prism -/
@@ -11,22 +12,6 @@ open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-
-/-- 元の恒等射評価を全空間へ含めると、同じ全 section の恒等射頂点での評価になる。 -/
-theorem strictTransportEvaluate_ambient {I : Type u} [Category.{u} I] {E : SSet.{u}}
-    (p : E ⟶ nerve I) (c : I) :
-    SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
-      cocartesianSectionEvaluate p (nerveMap (Under.forget c)) (nerveVertex (Under.mk (𝟙 c))) := by
-  let a := nerveMap (Under.forget c)
-  let v := (nerveEquiv (C := Under c)).symm (Under.mk (𝟙 c))
-  have hv : v = nerveVertex (Under.mk (𝟙 c)) := ComposableArrows.ext₀ rfl
-  have he : SerrePositivity.InfinityCategories.cocartesianStrictTransportEvaluate p c ≫ vertexFiberι p (nerveVertex c) =
-      cocartesianSectionEvaluate p a v :=
-    (Category.assoc _ _ _).trans
-      (congrArg (fun m => SerrePositivity.InfinityCategories.cocartesianSectionsι p a ≫ m)
-        (SerrePositivity.InfinityCategories.relativeFunctorEvaluate_ι p a v))
-  exact he.trans (congrArg (cocartesianSectionEvaluate p a) hv)
-
 
 /-- 同じ入力射に沿い、元の全 strict section を同時に評価する prism。 -/
 def strictTransportEvaluationPrism {I : Type u} [Category.{u} I] {E : SSet.{u}}

@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationEssentialSurjectivity
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory
-public import SerrePositivity.KST.Fibration.WeakEquivalences
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences
 public import SerrePositivity.InfinityCategories.Stable.CofiberHoDenominators
 
 /-!

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 
 /-! # 有界ねじれを持つ主イデアル商の完備性
 

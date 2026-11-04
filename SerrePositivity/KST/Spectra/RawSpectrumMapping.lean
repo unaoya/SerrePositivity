@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.TruncatedMappingUniversal
 public import SerrePositivity.KST.Spectra.KanSequence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumMappingDiagram
+public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 public import SerrePositivity.KST.Spectra.TriangleMappingPost
 
 /-!

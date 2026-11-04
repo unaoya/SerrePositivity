@@ -1,7 +1,39 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingDegeneracies
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.Opposite
+public import Mathlib.Basic.UnivLE
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.Comma.Over.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Functor.Const
+public import Mathlib.CategoryTheory.InducedCategory
+public import Mathlib.CategoryTheory.Limits.Cones
+public import Mathlib.CategoryTheory.Limits.HasLimits
+public import Mathlib.CategoryTheory.Limits.Types.Colimits
+public import Mathlib.CategoryTheory.MorphismProperty.Basic
+public import Mathlib.CategoryTheory.MorphismProperty.Composition
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
+public import Mathlib.CategoryTheory.ObjectProperty.Small
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Products.Basic
+public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.CategoryTheory.Types.Monomorphisms
+public import Mathlib.CategoryTheory.Whiskering
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Data.Nat.Basic
+public import Mathlib.Logic.Small.Basic
+public import Mathlib.Order.Nat
+public import Mathlib.Order.RelClasses
+public import Mathlib.Order.SuccPred.Nat
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.LatchingDegeneracies
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies
 
 /-!
 # 単体的集合のlatching比較射は単射となる

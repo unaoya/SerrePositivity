@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CompositionTriangleVertex
-public import SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge
 
 /-!
 概要：同じ二辺を持つ元の二つの三角形を、両辺を固定した全 prism で比較する。

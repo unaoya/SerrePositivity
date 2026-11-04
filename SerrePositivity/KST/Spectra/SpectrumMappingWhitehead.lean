@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
 public import SerrePositivity.KST.Spectra.SpectrumFibrationReplacement
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-!
 概要：BF 射の段ごとの全基点 π 同型は、全ての実際の豊穣 Hom への後合成でも π 同型。

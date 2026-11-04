@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 
 /-! # Koszul 構成と切り詰めの局所的な比較
 

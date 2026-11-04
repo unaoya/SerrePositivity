@@ -1,0 +1,979 @@
+{
+  "status": "STOP_IF_W2B_SECTION16",
+  "requested_stop2": "NOT_REACHED",
+  "instruction": "IF-W2c §6 (main 97b196bbe)",
+  "branch": "infra/if-w2c",
+  "source_head": "377713b67ad27053f90fa5308f25cd40fe9eca53",
+  "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3",
+  "main_update": "08a2997fd — merge before downstream after stop2 as user instructed; not yet merged in this lane",
+  "stop_reason": {
+    "rule": "補充したモジュールが次の round でも同じ型で落ちる",
+    "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "diagnostics": [
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:36:26: Unknown identifier `smallUnstraighteningPointedImage`",
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:57:18: Unknown identifier `scaffoldPointedReconstruction_coefficient_pointHom`"
+    ],
+    "previous_diagnostics": [
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:33:11: Unknown identifier `firstVertexDiagram_source_vertex`",
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:34:26: Unknown identifier `smallUnstraighteningPointedImage`",
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:46:13: Unknown identifier `point_normalize_both_inv`",
+      "error: SerrePositivity/KST/Fibration/ScaffoldBaseChangeLeftPoint.lean:43:71: unsolved goals"
+    ],
+    "supplement_record": "scripts/refactor/targets/w2c-internal-b-repair6.json",
+    "missed_import": "smallUnstraighteningPointedImage was already present in round 5/6 diagnostics. The round-7 supplement omitted its provider."
+  },
+  "stages": [
+    {
+      "stage": "A",
+      "commit": "d9941f412e26b62e8a0336f1c97e75b757f66019",
+      "moves": 27,
+      "splits": 16,
+      "paths": 162
+    },
+    {
+      "stage": "Aprime",
+      "commit": "cd4b4aa538ae9c3e81b4eee5cc8bec32d8f73e0d",
+      "moves": 0,
+      "splits": 8,
+      "paths": 38
+    },
+    {
+      "stage": "R51",
+      "commit": "eb9e22101ae245c92d29da7265fae9db7564021f",
+      "moves": 3,
+      "splits": 0,
+      "paths": 15
+    },
+    {
+      "stage": "R68",
+      "commit": "a7604cfdd14e4e8fcfb030202f1ff11d3a6efe65",
+      "moves": 34,
+      "splits": 17,
+      "paths": 133
+    },
+    {
+      "stage": "R52",
+      "commit": "e805ace8513eb10215c9a7c16dd852ff29eb086a",
+      "moves": 138,
+      "splits": 8,
+      "paths": 350
+    },
+    {
+      "stage": "R69",
+      "commit": "866218b0e0be8fc6f11fa353d58ee0ddac3ac542",
+      "moves": 52,
+      "splits": 25,
+      "paths": 230
+    },
+    {
+      "stage": "R70",
+      "commit": "55a630c818370d22b05e1ef838e9dc3245798a6b",
+      "moves": 58,
+      "splits": 42,
+      "paths": 251
+    },
+    {
+      "stage": "R56b",
+      "commit": "ed53aeacb641e87ea4a352ce609113f3c0b3b46f",
+      "moves": 13,
+      "splits": 0,
+      "paths": 50
+    }
+  ],
+  "rounds": [
+    {
+      "phase": "A",
+      "round": 1,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 155,
+      "unverified": 187,
+      "failed_modules": 15,
+      "seconds": 328.7,
+      "head": "cd4b4aa538ae9c3e81b4eee5cc8bec32d8f73e0d",
+      "evidence": ".lake/verify/ifw2c-internal/A-round1/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 2,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 228,
+      "unverified": 114,
+      "failed_modules": 8,
+      "seconds": 261.68,
+      "head": "c68fdf421462b311783fe9fb4abb502f86b48487",
+      "evidence": ".lake/verify/ifw2c-internal/A-round2/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 3,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 297,
+      "unverified": 45,
+      "failed_modules": 4,
+      "seconds": 1576.78,
+      "head": "92401dd29e9961332610e951bc2d25d013f297fd",
+      "evidence": ".lake/verify/ifw2c-internal/A-round3/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 4,
+      "status": "FAIL",
+      "targets": 343,
+      "verified": 322,
+      "unverified": 21,
+      "failed_modules": 3,
+      "seconds": 6021.0,
+      "head": "2297136d8531ddfbb0a2974ef97462b85d57fb67",
+      "evidence": ".lake/verify/ifw2c-internal/A-round4/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 5,
+      "status": "FAIL",
+      "targets": 345,
+      "verified": 343,
+      "unverified": 2,
+      "failed_modules": 1,
+      "seconds": 1336.35,
+      "head": "051fdc38c9ca6ae04a8cc7cc027746a5267d532f",
+      "evidence": ".lake/verify/ifw2c-internal/A-round5/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 6,
+      "status": "PASS",
+      "targets": 345,
+      "verified": 345,
+      "unverified": 0,
+      "failed_modules": 0,
+      "seconds": 753.34,
+      "head": "c2eda133367313239dab5225f0e28b8254c0e944",
+      "evidence": ".lake/verify/ifw2c-internal/A-round6/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 1,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 600,
+      "unverified": 483,
+      "failed_modules": 38,
+      "seconds": 5099.66,
+      "head": "ed53aeacb641e87ea4a352ce609113f3c0b3b46f",
+      "evidence": ".lake/verify/ifw2c-internal/B-round1/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 2,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 812,
+      "unverified": 271,
+      "failed_modules": 14,
+      "seconds": 860.24,
+      "head": "9f0949ef9838010c970d26b2b96c55fb01ff0870",
+      "evidence": ".lake/verify/ifw2c-internal/B-round2/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 3,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 859,
+      "unverified": 224,
+      "failed_modules": 5,
+      "seconds": 424.2,
+      "head": "e1e8ddf7ceb4120eabd05ae04b13dd8781bde3b9",
+      "evidence": ".lake/verify/ifw2c-internal/B-round3/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 4,
+      "status": "FAIL",
+      "targets": 1084,
+      "verified": 869,
+      "unverified": 215,
+      "failed_modules": 4,
+      "seconds": 39.71,
+      "head": "ca091dbdcf71f7ecf4622d9c5a01bdd92be28a97",
+      "evidence": ".lake/verify/ifw2c-internal/B-round4/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 5,
+      "status": "FAIL",
+      "targets": 1084,
+      "verified": 989,
+      "unverified": 95,
+      "failed_modules": 6,
+      "seconds": 736.46,
+      "head": "0a130c3c03b8d413fcab6028b2cb397af8cd1058",
+      "evidence": ".lake/verify/ifw2c-internal/B-round5/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 6,
+      "status": "FAIL",
+      "targets": 1085,
+      "verified": 1001,
+      "unverified": 84,
+      "failed_modules": 3,
+      "seconds": 1132.76,
+      "head": "69a2c0fadd021a1aaba5b26735ff2e6d5aa6300a",
+      "evidence": ".lake/verify/ifw2c-internal/B-round6/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 7,
+      "status": "FAIL",
+      "targets": 1086,
+      "verified": 1014,
+      "unverified": 72,
+      "failed_modules": 1,
+      "seconds": 112.56,
+      "head": "377713b67ad27053f90fa5308f25cd40fe9eca53",
+      "evidence": ".lake/verify/ifw2c-internal/B-round7/state.json"
+    }
+  ],
+  "repairs": [
+    {
+      "phase": "A",
+      "after_round": 1,
+      "modules": 15,
+      "import_edges": 10,
+      "annotation_edits": 10,
+      "record": "scripts/refactor/targets/w2c-internal-a-repair1.json"
+    },
+    {
+      "phase": "A",
+      "after_round": 2,
+      "modules": 8,
+      "import_edges": 6,
+      "annotation_edits": 2,
+      "record": "scripts/refactor/targets/w2c-internal-a-repair2.json"
+    },
+    {
+      "phase": "A",
+      "after_round": 3,
+      "modules": 4,
+      "import_edges": 4,
+      "annotation_edits": 0,
+      "record": "scripts/refactor/targets/w2c-internal-a-repair3.json"
+    },
+    {
+      "phase": "A",
+      "after_round": 4,
+      "modules": 3,
+      "import_edges": 3,
+      "annotation_edits": 0,
+      "record": "scripts/refactor/targets/w2c-internal-a-repair4.json"
+    },
+    {
+      "phase": "A",
+      "after_round": 5,
+      "modules": 1,
+      "import_edges": 1,
+      "annotation_edits": 1,
+      "record": "scripts/refactor/targets/w2c-internal-a-repair5.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 1,
+      "modules": 35,
+      "import_edges": 21,
+      "annotation_edits": 22,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair1.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 2,
+      "modules": 21,
+      "import_edges": 13,
+      "annotation_edits": 12,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair2.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 3,
+      "modules": 5,
+      "import_edges": 5,
+      "annotation_edits": 2,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair3.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 4,
+      "modules": 4,
+      "import_edges": 1,
+      "annotation_edits": 3,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair4.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 5,
+      "modules": 5,
+      "import_edges": 5,
+      "annotation_edits": 2,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair5.json"
+    },
+    {
+      "phase": "B",
+      "after_round": 6,
+      "modules": 8,
+      "import_edges": 2,
+      "annotation_edits": 7,
+      "record": "scripts/refactor/targets/w2c-internal-b-repair6.json"
+    }
+  ],
+  "static": {
+    "enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "direct_violations": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      }
+    },
+    "HA": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion"
+    ],
+    "ModelBridge": [
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy"
+    ],
+    "ratchet_increases": [
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74
+      }
+    ],
+    "baseline_and_exceptions": "unchanged",
+    "evidence": ".lake/verify/ifw2c-internal/section6-stop/layers.json"
+  },
+  "preservation": {
+    "base": "11eacaa39b5fc79af6185987d1596849122496fb",
+    "before_status": "PASS",
+    "before_main_modules": 964,
+    "before_extra_modules": [
+      "SerrePositivity.KST.Spectra.SequenceHomotopyRectification",
+      "SerrePositivity.KST.SConstruction.TerminalPathContractibility",
+      "SerrePositivity.KST.SConstruction.PointedEnrichedCylinderCompletionProperties",
+      "SerrePositivity.KST.SConstruction.PointedEnrichedMonicReplacementProperties",
+      "SerrePositivity.KST.LocalizingInvariants.FiberMappingAnodyneFamily",
+      "SerrePositivity.KST.Fibration.WeakSpanBaseChangeLift",
+      "SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge",
+      "SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition",
+      "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration",
+      "SerrePositivity.KST.LocalizingInvariants.TammeSpanBaseChangeLift",
+      "SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderCompletionProperties"
+    ],
+    "before_private_modules": 28,
+    "after": "NOT_CAPTURED",
+    "comparison": "PENDING_INTERNAL_PASS",
+    "anonymous_names_restored": [
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0017.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "1709239076688425503",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldGlobalCoefficientPoint",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_6",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "1709239076688425503",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+        "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_4",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0019.json"
+      }
+    ],
+    "remaining_private_split_dependencies": [],
+    "local_instance_reference_diagnostics": {
+      "status": "PENDING_FINAL_BUILD_AND_PRESERVATION",
+      "count": 9,
+      "verified": 5,
+      "modules": [
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_heq_diagramValue",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso._proof_5",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeRightChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldGlobalBaseChange_pullback_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianPostBaseChangeClassification_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.strictTransportPost_inclusion_evaluate",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.strictKanTransportPost_unit_point",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_2",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_factor",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart.eq_1",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldRestrictionNerveChart._proof_4",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_4"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_eq_diagramValue",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.scaffoldPointedReconstruction_baseChange_pointHom",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3"
+              ]
+            }
+          ],
+          "verified_in_round7": false
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningInfinityDiagram_baseChangeIso_heq_jointMap",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction",
+          "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction",
+          "edges": [
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_inv_value",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_value",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_pre",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.straighteningRepresentationRestrictionIso._proof_3",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.straighteningRepresentationRestrictionIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            },
+            {
+              "kept": "SerrePositivity.KST.Fibration.leftStraighteningRepresentationIso_valueIso",
+              "private_dependencies": [
+                "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap"
+              ]
+            }
+          ],
+          "verified_in_round7": true
+        }
+      ],
+      "correction": "The parser classifies instance declarations as kind decl. The initial filter kind==instance selected none. These references diagnose unregistered former local instances; they do not by themselves prove a build or v3b failure."
+    }
+  },
+  "unverified_roots": [
+    "SerrePositivity.InfinityCategories.Derived",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence",
+    "SerrePositivity.KST.Fibration",
+    "SerrePositivity.KST.Fibration.BaseChangeImageSectionValue",
+    "SerrePositivity.KST.Fibration.FractionClassificationSimplexRestriction",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport",
+    "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+    "SerrePositivity.KST.Fibration.WeakComparisonComponentSurjectivity",
+    "SerrePositivity.KST.LocalizingInvariants",
+    "SerrePositivity.KST.LocalizingInvariants.ParametricPullbackFamilyTranspose",
+    "SerrePositivity.KST.LocalizingInvariants.TwoEndpointVerdierCoconeFamily",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSimplexCoconeFamilyLift",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCoreCylinder",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredWholeComparison",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeSpanRecovery"
+  ],
+  "proposed_resume": {
+    "status": "UNAPPLIED_UNBUILT",
+    "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "owners": {
+      "smallUnstraighteningPointedImage": "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "scaffoldPointedReconstruction_coefficient_pointHom": "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint"
+    },
+    "imports": [
+      "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint"
+    ],
+    "coverage": {
+      "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint"
+      ]
+    },
+    "cycles": [],
+    "simulated_direct_violations": [],
+    "simulated_enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "simulated_forbidden": 74,
+    "simulated_affected": 1730
+  },
+  "downstream_11152": "WAITING_USER_SIGNAL_AFTER_STOP2",
+  "verify": "WAITING_USER_SIGNAL_AFTER_STOP2",
+  "unrelated_untracked_files_preserved": [
+    "scripts/refactor/targets/w2b-post-dgw3-static-stop.json",
+    "scripts/refactor/targets/w2b-section12-restore-stop.json",
+    "scripts/refactor/targets/w2b-section13-stop.json",
+    "scripts/refactor/targets/w2b-section13-stop.md",
+    "scripts/refactor/targets/w2b-section15-internal-stop.json"
+  ]
+}

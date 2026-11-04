@@ -131,7 +131,7 @@ end
 左導来関手は任意の射影分解で計算できる（Mathlib の `ProjectiveResolution.isoLeftDerivedObj`）ので、
 `toChain K` を射影分解として使い、係数拡大が制限と可換であること（`mapRestrictionIso`）と、制限の
 ホモロジーがもとの複体のホモロジーであること（`toChainHomologyIso`）をつなぐ。Koszul 複体で `Tor` を
-計算すること（`CommutativeAlgebra/KoszulResolution.lean` の `torAlgKoszulEquiv`）と、Tor の長完全列
+計算すること（`CommutativeAlgebra/Koszul/Resolution.lean` の `torAlgKoszulEquiv`）と、Tor の長完全列
 （`TorLES.lean`）に使う。
 -/
 

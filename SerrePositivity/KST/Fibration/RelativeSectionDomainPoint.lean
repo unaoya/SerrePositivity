@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.KanEnrichedJointPointHom
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanEnrichedJointPointHom
 public import SerrePositivity.KST.Fibration.DoubleEvaluationCurry
 
 /-! # 定義域制限の元の共同同型は、同じ切断の制限像の点を保持する -/

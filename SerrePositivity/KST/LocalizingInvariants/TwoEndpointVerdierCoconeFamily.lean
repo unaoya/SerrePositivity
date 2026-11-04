@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.TwoEndpointPullbackFamily
-public import SerrePositivity.KST.LocalizingInvariants.VerdierNormalizedBoundaryCocone
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone
 
 /-!
 概要：元の実分数円柱の両端余錐を、一つの全余錐円柱へ厳密に貼る。

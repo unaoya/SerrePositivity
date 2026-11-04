@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceNuRoof
 public import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftFunctor
-public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
 
 /-!
 概要：元対角・核比較・二つの増大を同じ固定 S の全四角形に保持する。

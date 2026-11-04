@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FractionSimplexKanComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison
 public import SerrePositivity.KST.Fibration.PullbackStrictConstantEdge
 public import SerrePositivity.KST.Fibration.TransportSimplexConstantEdge
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramEdges

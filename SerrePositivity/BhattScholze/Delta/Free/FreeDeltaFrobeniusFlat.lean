@@ -9,7 +9,7 @@ public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import Mathlib.RingTheory.TensorProduct.Quotient
 public import Mathlib.RingTheory.RingHom.FaithfullyFlat
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 
 /-!
 # 自由 δ 環の Frobenius の平坦性（BS 著者版 Lemma 2.11 の後半の p 完全版）

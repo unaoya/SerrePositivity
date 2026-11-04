@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.Complex.Cone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 
 /-! # Base change respects the actual multiplicative Koszul maps -/
 @[expose] public noncomputable section

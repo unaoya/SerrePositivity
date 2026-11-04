@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.PullbackStableCategory
 public import SerrePositivity.InfinityCategories.Stable.Verdier.VerdierSequence
-public import SerrePositivity.KST.LocalizingInvariants.CofiberSquareFamily
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily
 
 /-!
 概要：元の lax pullback の指定矢印の cofiber を全単体上の実 ∞ 関手にする。

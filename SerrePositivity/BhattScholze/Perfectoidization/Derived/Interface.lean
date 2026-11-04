@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.CategoryTheory.Comma.Over.Basic
 public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
@@ -11,10 +11,9 @@ public import SerrePositivity.InfinityCategories.Derived.HomotopyCategoryCompari
 public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
 public import Mathlib.AlgebraicTopology.SimplicialSet.Homotopy
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
-public import SerrePositivity.CommutativeAlgebra.PerfectoidDerivedComplete
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionFunctor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0AlgebraUniversal
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionMonoidal
 public import SerrePositivity.InfinityCategories.Core.TerminalMap
 public import SerrePositivity.InfinityCategories.Core.Pullback
 public import Mathlib.RingTheory.Ideal.Quotient.Operations

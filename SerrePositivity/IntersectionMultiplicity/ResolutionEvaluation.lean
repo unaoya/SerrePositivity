@@ -4,7 +4,7 @@ public import SerrePositivity.CategoryTheory.AlternatingSum
 public import SerrePositivity.HomologicalAlgebra.BaseChangeEquivalence
 public import SerrePositivity.HomologicalAlgebra.TorLES
 public import SerrePositivity.CommutativeAlgebra.Length.Euler
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.PerfectComplex.Free.Euler
 public import Mathlib.Algebra.Ring.Action.Group
 public import Mathlib.CategoryTheory.Adjunction.Unique

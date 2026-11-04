@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.DGKPositiveEvaluation
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumMappingDiagram
+public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 
 /-! # 元の BF 段評価の、同じ通常射と点つき値の回収 -/
 

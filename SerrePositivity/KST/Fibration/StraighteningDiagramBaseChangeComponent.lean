@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeTranspose
 
 /-! # 同じ実分類図式の底変換成分と共同底変換の成分の照合 -/
@@ -12,23 +13,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B)
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
-
-/-- 実対象図式の元の同型は、同じ分類写像の同型の指定対象成分。 -/
-theorem leftStraighteningInfinityDiagram_baseChangeIso_heq_app :
-    HEq (leftStraighteningInfinityDiagram_baseChangeIso p k)
-      ((leftStraighteningInfinityMap_baseChangeIso k).app (leftFibrationInfinityVertex p)) := by
-  let P := (pre ((SSet.uliftFunctor.{u + 1, u}).map k)).app SpaceInfinity.{u}
-  have hs := congrArg (P.app (Opposite.op ⦋0⦌))
-    (leftStraighteningInfinityDiagram_vertex p)
-  have ht := (congrArg ((leftStraighteningInfinityMap D).app (Opposite.op ⦋0⦌))
-    (leftFibrationInfinityBaseChange_vertex k (leftFibrationObjectOf p))).trans
-      (leftStraighteningInfinityDiagram_vertex (pullback.snd p k)).symm
-  unfold leftStraighteningInfinityDiagram_baseChangeIso
-  exact F2.iso_endpoints_heq _ (congrArg HomotopyCategory.mk hs).symm
-    (congrArg HomotopyCategory.mk ht)
 
 /-- 実図式の指定底頂点成分は、元の共同底変換の同じ対象・底頂点での二重評価。 -/
 theorem leftStraighteningInfinityDiagram_baseChangeIso_heq_jointMap (d : D _⦋0⦌) :

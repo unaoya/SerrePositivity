@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence
 
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.RowComparison
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
 
 /-!
@@ -20,25 +21,6 @@ open scoped Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories
 open EInfinity.Hammock.DoubleSimplicial
-
-/-- 転置の前後の対角は、恒等な次数成分で自然に同型。 -/
-def diagonalTransposeIso (C : SSet.{u}) :
-    diagonalFunctor.obj (transposeResolution C) ≅ diagonal C :=
-  NatIso.ofComponents (fun n ↦ Iso.refl _) (by
-    intro n m f
-    change (((resolution C).obj n).map f ≫ ((resolution C).map f).app m) ≫ 𝟙 _ =
-      𝟙 _ ≫ (((resolution C).map f).app n ≫ ((resolution C).obj m).map f)
-    simpa only [Category.comp_id, Category.id_comp] using ((resolution C).map f).naturality f)
-
-/-- 対角上の行定数包含は、元の同じ定数包含。 -/
-lemma diagonal_bisimplicialInclusion (C : SSet.{u}) :
-    (diagonalConstantIso C).inv ≫ diagonalFunctor.map (bisimplicialInclusion C) ≫
-      (diagonalTransposeIso C).hom = inclusion C := by
-  apply SSet.hom_ext
-  intro n
-  apply ConcreteCategory.hom_ext
-  intro s
-  rfl
 
 /-- 一般の quasicategory の定数 core 旗包含は弱ホモトピー同値。 -/
 lemma inclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :

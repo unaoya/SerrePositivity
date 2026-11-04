@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraRestriction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraH0
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 /-! # Principal completion of pure derived algebras with regular H⁰ scalar -/
 @[expose] public noncomputable section

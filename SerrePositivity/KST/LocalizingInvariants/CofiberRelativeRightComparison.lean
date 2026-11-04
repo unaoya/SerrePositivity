@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRelativeRightComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyHomNaturality
@@ -22,14 +23,6 @@ namespace SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} [Quasicategory A] (f g : A ⟶ space X)
   (h : f ≫ bottom X = g ≫ bottom X)
-
-omit [Quasicategory X] [IsStable X] [Quasicategory A] in
-lemma bottomTarget_eq_rightSource :
-    bottom X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-      right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  rw [bottom, right]
-  simp only [Category.assoc, stable_pre_evaluateFunctorAt]
-  rfl
 
 lemma relativeComparison_right_naturality :
     homPost (right X ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))

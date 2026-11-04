@@ -1,0 +1,1573 @@
+[
+  {
+    "module": "SerrePositivity.KST.Fibration.FixedFractionCosliceComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FixedFractionCosliceGroupoid",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionClassificationRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionKanCosliceClassification. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionCosliceBaseChange",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionCosliceFiberComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceFiberComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionFamilyArrow",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionFamilyCoslice",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionIdentityClassificationComponent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionKanCosliceClassification",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionSimplexKanComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionKanDescent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionSimplexKanComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionNativeClassificationComponent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionKanCosliceClassification. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.FractionSimplexKanComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.IdentityMarkedSpan",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakComparisonComponentRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakCosliceComparisonSection",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakCosliceScaffoldTriangle",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionIdentityClassificationComponent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakEquivalences",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityKanValue",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityNativeComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityNativeImage",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityQuotientPoint",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityQuotientTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientTransport",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityQuotientValueCoordinates",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityScaffoldClassification",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionIdentityClassificationComponent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityScaffoldFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentityScaffoldImage",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage": [
+        "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+        "SerrePositivity.KST.Fibration.FractionIdentityClassificationComponent",
+        "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakIdentitySpanPoint",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakDenominatorSpanTransport. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakNativeClassificationPoint",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentityNativeComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakNativeComponentRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.FractionSimplexKanComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientCosliceHomTriangle",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientCosliceIdentityHom",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientCoslicePointAction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakQuotientCosliceComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientMappingComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakQuotientMappingEquivalence",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanChosenKanTransport",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanFixedSimplexCollapse",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanDescent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanDiagram",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanFiberComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanFiberUnit",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientFamilyIdentity",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientFiberUnit",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberUnit",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientFiberValueRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberValueRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientFixedFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientPointedComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientPointedComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientRelativeDescent",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientTotalOverMap",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientTotalResolution",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalResolution",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientUnitRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanQuotientPointedComparison. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientUnstraighteningMap",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientValueCancellation",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueCancellation",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientValueEdge",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueEdge",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanQuotientZeroRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakIdentitySpanPoint. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanUnstraighteningUnit",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanKanWeakInversion",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanSpaceMappingComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.Fibration.WeakSpanZeroSimplexFiber",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.Fibration.WeakSpanKanDiagram. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.CosliceFractionTriangleNormalization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.CosliceRoofPasting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting": [
+        "SerrePositivity.InfinityCategories.Core.Coslice",
+        "SerrePositivity.InfinityCategories.Core.GridOpposite",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.JoinReverse",
+        "SerrePositivity.InfinityCategories.Core.JoinReverseBoundary",
+        "SerrePositivity.InfinityCategories.Core.JoinReverseFactors",
+        "SerrePositivity.InfinityCategories.Core.JoinTensorPoint",
+        "SerrePositivity.InfinityCategories.Core.PastingCorner",
+        "SerrePositivity.InfinityCategories.Core.PastingCornerCocone",
+        "SerrePositivity.InfinityCategories.Core.PastingShapes",
+        "SerrePositivity.InfinityCategories.Core.PrismOpposite",
+        "SerrePositivity.InfinityCategories.Core.Pullback",
+        "SerrePositivity.InfinityCategories.Core.PushoutShape",
+        "SerrePositivity.InfinityCategories.Core.RightFibration",
+        "SerrePositivity.InfinityCategories.Core.Slice",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerGluing",
+        "SerrePositivity.InfinityCategories.Stable.PastingCornerJoinIso",
+        "SerrePositivity.InfinityCategories.Stable.PastingLeftSquareIso"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangles. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.FractionFamilyComparisonIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyHomotopy. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.FractionMappingComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.RoofPastingAttachment",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachment. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.TammeDenominatorGroupoidComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.TammeFiberSequence",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.TammeSplitting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierChosenTerminalRefinementMap",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCoconeCylinder",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCoconeEndpoint",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedCylinderImage",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanBoundaryRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeRecovery",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierUniformCoconeComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanCoconeRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion",
+        "SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierChosenTerminalRefinementMap",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanBoundaryRecovery"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanRelativeRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCoreSliceCones",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachment",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorSpanComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorSpanFamily",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierDenominatorSpanSlice",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierDiagramCategory",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory": [
+        "SerrePositivity.InfinityCategories.Core.Equivalence",
+        "SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity",
+        "SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteCoreCoconeFamily",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSimplexCoconeFamilyLift",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteDenominatorRefinement",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteQuotientConeSpans",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSpanRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFirstRowSimplexZero",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparisonResolution",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierInitialComparisonRestriction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryComparison",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierNormalizedBoundaryCocone",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierParametricSourceIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierRelativeCoconeAttachment. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeCoconeAttachment"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierParametricTerminalRefinement",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.StableFunctorMaps",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierCompletedSpanRelativeRecovery",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalEdges"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRelativeComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRefinement. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRawFractionComparisonResolution",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryPrefixPath",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCoreCylinder",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryPrefixPath",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCoconeCylinder",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.TwoEndpointVerdierCoconeFamily"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCompletedCylinder",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCylinderSquare",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialPrefixPath"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialPrefixPath",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierChosenTerminalRefinementMap",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredBoundaryPrefixPath",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSpanRecoveredArrows"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredPullbackComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRefinementBoundaryProjection",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeCoconeAttachment",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeRecovery",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery": [
+        "SerrePositivity.InfinityCategories.Core.HomotopyNatTrans",
+        "SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting",
+        "SerrePositivity.InfinityCategories.Core.Join",
+        "SerrePositivity.InfinityCategories.Core.SimplicialHomotopyEquivalence",
+        "SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeShapeIso",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Prior confirmed W2c cohort. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeInitialComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison": [
+        "SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism",
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeComparisonPrism",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison",
+        "SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachmentHomotopy",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierInitialComparisonRestriction"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierRoofPastingAttachment",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRoofPastingAttachment",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCommonDenominatorFamily",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCommonDenominatorFamily",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCompletionComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexParametricComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCommonDenominatorFamily",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyComposition"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanBoundarySlice",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanBoundarySlice",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalDiagram",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalEdges",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanCanonicalResolution",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanCoherentContraction",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilies. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanEvaluationSquare",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyComposition",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison",
+        "SerrePositivity.KST.LocalizingInvariants.FractionFamilyComparisonIso",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSpanRecoveredArrows"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyHomotopy",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanKanComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSpanRecoveredArrows",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge",
+        "SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRecoveredEdge",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierSpanFamilyHomotopy"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierSquareRefinement",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowQuotientPasting",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceFractionNormalization. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierTwoArrowRoofComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Whole-module import of newly placed SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachment. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierUniformCoconeComparison",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialComparison",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierUniformCoconeImage"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierUniformCoconeImage",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json."
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierUniformSpanPrefixPath",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredInitialPrefixPath"
+      ]
+    }
+  },
+  {
+    "module": "SerrePositivity.KST.LocalizingInvariants.VerdierUniformTerminalRefinement",
+    "action": "move",
+    "dest": "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement",
+    "keep": [],
+    "moved": [],
+    "attributes": {},
+    "candidate": "R52",
+    "note": "§5-3: Actual named-constant dependency closure through KST, with pre-move imports excluded. State and unresolved providers in w2c-b-inventory.json.",
+    "imports": {
+      "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement": [
+        "SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily",
+        "SerrePositivity.KST.LocalizingInvariants.VerdierRefinementBoundaryProjection"
+      ]
+    }
+  }
+]

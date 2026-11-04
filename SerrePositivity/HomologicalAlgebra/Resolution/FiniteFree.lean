@@ -18,7 +18,7 @@ public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
 public import Mathlib.Algebra.Homology.DerivedCategory.SingleTriangle
 public import Mathlib.Algebra.Homology.DerivedCategory.HomologySequence
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 
 /-! # 有界有限自由分解
 

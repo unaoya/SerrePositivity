@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.PointedClassificationReconstruction
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction
 
 /-! # native 表現の小さい実比較が送る点を、元の同じ pointedMap で回収する -/
 

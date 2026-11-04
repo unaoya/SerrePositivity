@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.AlgebraKoszulBounds
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerUnit
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 
 /-! # Canonical augmentation of coefficient-algebra dual Koszul colimits -/
 @[expose] public section

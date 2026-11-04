@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.PointwiseLocalizingEdges
 public import SerrePositivity.KST.LocalizingInvariants.ExactArrowMap
-public import SerrePositivity.KST.LocalizingInvariants.ExactKernelDenominators
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientDetection
 
 /-!

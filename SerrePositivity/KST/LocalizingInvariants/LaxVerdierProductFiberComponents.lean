@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberVertices
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices
 public import SerrePositivity.KST.LocalizingInvariants.RestrictedFunctorEdgeEvaluation
 
 /-!

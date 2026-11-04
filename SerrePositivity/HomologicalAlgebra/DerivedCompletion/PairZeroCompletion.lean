@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-! # A zero second coordinate preserves the original principal completion H⁰ algebra -/
@@ -25,8 +25,8 @@ def pairCompletionZeroToPrincipal (a : R) :
     PairCompletionH0 R a 0 →ₐ[R] PrincipalCompletionH0 R a :=
   letI := principalCompletionCommRing R a
   letI := principalCompletionAlgebra R a
-  (pairCompletion_existsUnique_algHom R a 0 (PrincipalCompletionH0 R a)
-    (principalCompletionH0_isModuleComplete R a) (isModuleComplete_zero R _)).choose
+  pairCompletionLiftAlgHom R a 0 (PrincipalCompletionH0 R a)
+    (principalCompletionH0_isModuleComplete R a) (isModuleComplete_zero R _)
 
 /-- The inverse comparison is the original principal algebra universal extension. -/
 def principalCompletionToPairZero (a : R) :
@@ -37,8 +37,8 @@ def principalCompletionToPairZero (a : R) :
     PrincipalCompletionH0 R a →ₐ[R] PairCompletionH0 R a 0 :=
   letI := pairCompletionCommRing R a 0
   letI := pairCompletionAlgebra R a 0
-  (principalCompletion_existsUnique_algHom R a (PairCompletionH0 R a 0)
-    (pairCompletionH0_isModuleComplete_first R a 0)).choose
+  principalCompletionLiftAlgHom R a (PairCompletionH0 R a 0)
+    (pairCompletionH0_isModuleComplete_first R a 0)
 
 /-- The two universal maps compose to the identity on the principal completion. -/
 lemma pairCompletionZeroToPrincipal_comp (a : R) :

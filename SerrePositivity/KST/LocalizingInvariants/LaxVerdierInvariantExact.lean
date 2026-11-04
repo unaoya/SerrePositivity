@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierInvariantFiber
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber
 
 /-!
 概要：仮定付き lax Verdier 列の元の包含・商に対する全整数長完全列。

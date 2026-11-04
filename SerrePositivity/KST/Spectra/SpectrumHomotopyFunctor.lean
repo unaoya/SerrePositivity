@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Pointed.SpectrumHomotopyFunctor
 
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyGroups
 public import SerrePositivity.KST.Spectra.SpectrumMorphisms
@@ -24,14 +25,6 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-
-/-- 概要：点つき射は基点の頂点表示を保つ。
-方針：Under の可換条件を零次単体で評価する。
-規約：任意の点つき単体集合の射。
-使われ方：BF 1978 §2。整数次数の誘導準同型の基点条件。 -/
-theorem pointedMap_basepoint {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) :
-    f.right.app _ A.basepoint = B.basepoint :=
-  congrArg (fun k : 𝟙_ SSet.{u} ⟶ B.right ↦ k.app _ PUnit.unit) (Under.w f)
 
 /-- 概要：正次数の段の点つき射が誘導する群準同型。
 方針：自然数次数を後者で場合分けし、KanHomotopyGroup.map を用いる。
