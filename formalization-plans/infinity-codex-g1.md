@@ -61,3 +61,13 @@ BS-D6（main 2074a8d9e、検収 ed3184e56）で BS は G4・G6 の既存名を�
 1. **`discreteSpaceInclusion : nerve (Type u) ⟶ SpaceInfinity.{u}`**：完全忠実性に加えて、**計算式が厳密に（rfl で）成り立つ**こと。頂点は `setsToKan`（集合を定値単体的集合にした離散 Kan 複体）の coherent nerve の頂点に、辺は Kan 値図式の辺の評価に等しい。drafts の `discretePresheaf_vertex`・`discretePresheafInclusion_edge` がこの等号を仮定している。定義はこの計算が定義的に出る形で与える（抽象的な存在だけにしない）。
 2. **`Is0TruncatedSpace`** は**離散埋め込みの本質像**として定義する（`is0Truncated_iff_pointwise` の証明に要る）。停止点 1 の案（`∃ T, Nonempty (VertexIso x (discreteSpaceInclusion.app _ (nerveVertex T)))`）はこの形なのでそのままでよい。
 3. **`tensorWith M`** は D(A) の自己関手 `D A ⟶ D A`（単体的集合の射）として、drafts では `Derived.completion A s` と合成して使う。合成できる形（同じ `derivedInfinityCategory A` を域と余域にする）で供給する。
+
+## 6. 追記（2026-11-04 昼、第一区切りの受領：6 項目完了、G12 は IF-G2 へ）
+
+**受領**：G7（fee86f659）・Core（a36f9341e）・G13（e7fb03f90、`setsToKan` は草稿と rfl で一致、頂点・辺の式も rfl、前層の比較定理は `kanDiagramCoherentNerve (P ⋙ setsToKan)` について）・⊗ᴸ（f54e9f5e2）・G3（7f6e138ad）・G8（3e7942aac、草稿と同じ `sectionsOfDiagram` の指定極限錐に対する同値まで）。新規 9 モジュール・886 行、入口・監査に登録、小さなビルド・BS の型照合・全宣言監査 PASS、公理は三つだけ。
+
+**判断**：
+1. **IF-G1 はこの 6 項目で第一区切り**。main への取り込みは ∞ W2c の取り込みの後（Claude が `math/g1` を merge、監査の再生成、閉包の小さなビルド）。BS はその後に仮名を本名に替える。
+2. **G12 は停止のまま IF-G2 へ**。不足している一般論（報告どおり）：(a) 具体的な `CAlg_R A` について、モデル側のホモトピー余極限を coherent nerve の余極限へ移す比較、(b) セル表示を κ-compact 生成の表示へ移す一般論。(a) は計画の γ3（holim ＝ ∞ 極限）の余極限版で ModelBridge の範囲、(b) は F2/Presentable の一般論。どちらも IF-G2 で項目にする。
+3. **IF-G2 の候補**（BS の進み具合に合わせて出す）：G12 と前提 (a)(b)、G8 の重みの射に関する自然性（BS の S4・S8 で要るかを BS に確かめる）、G8 の一般の空間値 X（S8-4）、G9・G10（S3 の経路次第）。
+4. それまで G1 のチャットは待機。
