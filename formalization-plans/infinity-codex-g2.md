@@ -37,3 +37,13 @@ theorem exists_detectingFamily (hE : IsPresentable E) :
 ```
 
   E は `SSet.{u+1}`、添字は `Type u`、写像空間は pinched Hom。既存の `IsPresentable.exists_limitDetectingPresheafModel` を一点の図式に当て、評価 `R ≫ presheafInfinityEvaluation a` を `pinchedHom (g_a) −` と同一視する一歩を足す。置き場所は `F2/Presentable/`（`ReflectiveModelLimitDetection` の隣）。別の書き方が自然なら型を報告（BS が合わせる）。
+
+## 4. 追記（2026-11-05、S3 の経路の決定と G9・G10 の差し替え：BS 11-04 夜、`bhatt-scholze/foundation-entry-points.md` §4.1）
+
+- **S3 の経路は (c) Quillen A による余終性**（効果的エピの実現・Bousfield–Kan は採らない）。BS が comma の同一視と縮約（1 圏）を書き、∞ に頼むのは次の三つの小補題（**G9 の差し替え**。型は §4.1）：
+  - G9-1：left 側の nerve の Quillen A（既存の right 版 `F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma` の双対）。
+  - G9-2：宇宙の持ち上げで left cofinal は保たれる（`cechShape` は `uliftFunctor.map`）。
+  - G9-3：縮約の向きを逆にした版（既存 `nerve_isWeaklyContractible_of_contractionSpan` は T ⟶ 𝟭・T ⟶ const）。
+  Δ が `Type` なので、G9-1 に `SimplexCategory` を入れるときの宇宙の扱い（`ULiftHom`／`AsSmall` など）は ∞ 側で決めてよい。drafts の `cechShape` の形に合えばよい。
+- **G10 は S3 には不要**、応用（A0 の Čech–Alexander の Tot、Shared/CosimplicialEInfinity）で要る：余単体的 A 加群の D(A) での Δ 上の極限は交代余面複体で計算される（型は §4.1）。G12 より前、G9 の後。
+- 順序（改訂）：G8n（篩包含の四角形）と G14 → G9-1〜3 → G8 の一般の φ → G10 → G8 の一般形 → G12。
