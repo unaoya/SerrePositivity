@@ -310,3 +310,12 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - 待機中に `GenericLocalization`（被約一般ファイバーの局所化）、`GenericSpread`（逆像モデルのエタール性の延長）、`GenericKernel`（nil な核の延長）を記述。これら 3 本はまだビルドしていない。
 - 元の主張に残る `sorry` は `spread_out_generic` と `exists_finiteEtaleStratification` の 2 件。一般点からの延長と、商環・底変換を通した有限層別の組み立てが未完了。B-3 の完了報告ではない。
 - 作業範囲の変更のみを `codex/bs-w10-b` に保存。main への取り込み、全ビルド、verify、監査は実施していない。
+
+### B-3 継続：verify 待機中の延長証明の接続（11-04）
+
+- 07 の単体ビルドはまだ開始していない。`ps` で B4 の `verify.sh` と別プロジェクトのビルドを確認し、共有鍵の取得前で待機を継続。
+- `GenericRadicial` で、局所化後の体値点の一意性 → 対角核の nil 性 → 主開集合上の普遍同相、という接続を記述した。部分代数への制限が radicial 性を保つとは仮定していない。
+- `GenericPrimeVanishing`・`GenericPrimeSpreading` で、有限余核の p 冪 torsion の分母払いを p 反転後の同型に接続した。
+- `ReducedModel`・`ReducedSpread` で、一般点の部分代数の逆像に有限モデルを取り、三つの分母の積を選ぶ証明を記述した。これを両環の被約化に適用する `spread_out_generic` の本文も記述。
+- 明示的な `sorry` は `exists_finiteEtaleStratification` の 1 件になったが、上記の接続は未検証。ビルド成功を意味しない。商環上の帰納、p の二場合への細分、noetherian 近似からの底変換が引き続き必要。
+- main への取り込み・全ビルド・verify・監査は行っていない。
