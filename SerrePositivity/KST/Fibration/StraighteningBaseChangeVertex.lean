@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
-import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
+import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRestriction
 
 /-! # 大域底変換の任意の実頂点で、同じ零単体上の指定比較を回収する -/

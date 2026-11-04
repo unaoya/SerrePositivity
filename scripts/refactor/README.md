@@ -274,3 +274,24 @@ IF-W0-2 の受入試験は `test_verify.py preflight`、`full`、`cache` の順�
 `--w2b-baseline PATH` で明示した検査用基準も使える。
 個別 root の継承された閉包は診断に残す。`--ratchet` の判定、既存の ratchet 基準、
 `layers.json` の例外は変えない。ratchet 基準の取り直しは W2b の verify PASS 後。
+
+### IF-F: runtime audit imports
+
+`audit_imports.py` collects ordinary import lines and literal `importModules` calls
+whose array entries specify a quoted module name. Nested comments and strings
+are masked first. Preparation builds their SerrePositivity targets;
+`verify_runner.py` hashes the same dependency closures. Computed runtime arrays
+or names in an audit fail preparation rather than silently omitting build targets.
+Computed imports in the special sorry probe make its cache key unavailable (the
+probe still runs); they are not production audit build targets. No audit environment
+or predicate is changed.
+
+No-build regression command:
+
+```sh
+python3 -B -m unittest discover -s scripts/refactor -p 'test_audit_imports.py'
+```
+
+This includes preparation in an empty temporary tree and cache invalidation after
+changing a runtime dependency. Existing scheduler and retry tests also use Python
+fixtures; they do not run Lean builds.

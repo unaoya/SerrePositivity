@@ -146,7 +146,7 @@ class SummaryIntegration(unittest.TestCase):
     def fixture(self, spec, selected=False):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);scripts=root/'scripts/refactor';scripts.mkdir(parents=True)
-            for name in ['verify.sh','verify_runner.py','layer_check.py','layers.json']:
+            for name in ['verify.sh','verify_runner.py','audit_imports.py','layer_check.py','layers.json']:
                 shutil.copyfile(ROOT/'scripts/refactor'/name,scripts/name)
             audits=sorted(p for p in spec if p!=vr.SORRY)
             for name in [*audits,vr.SORRY]:

@@ -1,0 +1,626 @@
+{
+  "status": "VERIFIED_STOP2",
+  "base": "29d9ad0e72b5f83b58860faac70e095a8d20c908",
+  "edges": [
+    {
+      "consumer": "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.LocalizingInvariants.comp_app_congr",
+          "line": 42,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.LocalizingInvariants.functorCore_eq_preimage_of_vertexSurjective",
+          "private_declarations": [
+            "SerrePositivity.KST.LocalizingInvariants.comp_app_congr"
+          ]
+        }
+      ],
+      "reverse_closure_count": 17
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.fiberPoint_ext",
+          "line": 69,
+          "kind": "theorem",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.coefficientWeightedResolutionPoint_eq",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.ScaffoldTransportComparisonSpan.fiberPoint_ext"
+          ]
+        }
+      ],
+      "reverse_closure_count": 100
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.prependEq_heq",
+          "line": 18,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.straighteningBaseChangeLeftChart_heq_firstVertex",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.prependEq_heq"
+          ]
+        }
+      ],
+      "reverse_closure_count": 104
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.pointNormalize",
+          "line": 39,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.pointNormalize"
+          ]
+        }
+      ],
+      "reverse_closure_count": 72
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.component_reindex",
+          "line": 36,
+          "kind": "theorem",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.transportRepresentationFiberPointHom_diagramIso",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.component_reindex"
+          ]
+        }
+      ],
+      "reverse_closure_count": 99
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.mapNormalizeComposition",
+          "line": 31,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.straighteningFirstVertexUnderChart_factor",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.mapNormalizeComposition"
+          ]
+        }
+      ],
+      "reverse_closure_count": 101
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.normalizeValueComposition",
+          "line": 69,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_factor",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.normalizeValueComposition"
+          ]
+        }
+      ],
+      "reverse_closure_count": 86
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.point_normalize_both_inv",
+          "line": 47,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldBaseChangeLeftChart_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.point_normalize_both_inv"
+          ]
+        }
+      ],
+      "reverse_closure_count": 81
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.mapNormalizeTriangle",
+          "line": 65,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.straighteningBaseChangeSectionCharts_factor",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.mapNormalizeTriangle"
+          ]
+        }
+      ],
+      "reverse_closure_count": 109
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.endpointSpan_heq",
+          "line": 50,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        },
+        {
+          "name": "SerrePositivity.KST.Fibration.pointTriangle",
+          "line": 38,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.pointTriangle"
+          ]
+        },
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_heq_diagramValue",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.endpointSpan_heq"
+          ]
+        }
+      ],
+      "reverse_closure_count": 77
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.appendPointTriangle",
+          "line": 45,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        },
+        {
+          "name": "SerrePositivity.KST.Fibration.point_normalize_inv",
+          "line": 38,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldBaseChangeRightChart_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.point_normalize_inv"
+          ]
+        },
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldGlobalBaseChange_pullback_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.appendPointTriangle"
+          ]
+        }
+      ],
+      "reverse_closure_count": 78
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.firstVertex_zeroSimplex",
+          "line": 40,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.leftStraighteningSectionJointDiagram_baseChangeIso_vertex",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.firstVertex_zeroSimplex"
+          ]
+        }
+      ],
+      "reverse_closure_count": 113
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.uliftMapVertex",
+          "line": 46,
+          "kind": "theorem",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        },
+        {
+          "name": "SerrePositivity.KST.Fibration.uliftOppositeVertex",
+          "line": 50,
+          "kind": "theorem",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.pointedSpaceLeftResolutionComparison_vertex",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.uliftMapVertex",
+            "SerrePositivity.KST.Fibration.uliftOppositeVertex"
+          ]
+        }
+      ],
+      "reverse_closure_count": 95
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+          "line": 32,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": [
+            {
+              "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+              "line": 24
+            }
+          ]
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.straighteningUnderRealizationChart_factor",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq"
+          ]
+        }
+      ],
+      "reverse_closure_count": 100
+    },
+    {
+      "consumer": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+      "provider": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "proposal": "private を外して公開にする",
+      "helpers": [
+        {
+          "name": "SerrePositivity.KST.Fibration.appendPoint",
+          "line": 44,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        },
+        {
+          "name": "SerrePositivity.KST.Fibration.recoverPoint",
+          "line": 38,
+          "kind": "lemma",
+          "public_source_collisions": [],
+          "private_homonyms": []
+        }
+      ],
+      "reason": "一般の圏・単体的集合の等式補助は現行の下層の定義元に保持し、K 固有の利用者を下層へ戻さない。本文・型を保持してこの import all だけを通常の import にする。",
+      "alternative_rejected": "利用側を下層の定義元へ移すと K 固有の宣言・依存も戻す必要があり、W2c の分離を崩す。上層の元ファイルに補助定理を戻す案も下層の利用から逆辺を作りうる。",
+      "source_references": [
+        {
+          "consumer": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso_pointHom",
+          "private_declarations": [
+            "SerrePositivity.KST.Fibration.appendPoint",
+            "SerrePositivity.KST.Fibration.recoverPoint"
+          ]
+        }
+      ],
+      "reverse_closure_count": 71
+    }
+  ],
+  "edge_count": 15,
+  "helper_count": 19,
+  "production_seeds": [
+    "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+    "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+    "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+    "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+    "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+    "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+    "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+    "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction"
+  ],
+  "downstream": [
+    "SerrePositivity",
+    "SerrePositivity.InfinityCategories.Derived",
+    "SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction",
+    "SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence",
+    "SerrePositivity.InfinityCategories.Stable",
+    "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+    "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+    "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+    "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+    "SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation",
+    "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+    "SerrePositivity.KST.Fibration",
+    "SerrePositivity.KST.Fibration.BaseChangeImageSectionValue",
+    "SerrePositivity.KST.Fibration.BaseChangeSectionFiberPoint",
+    "SerrePositivity.KST.Fibration.DoubleEvaluationPrecompositionVertices",
+    "SerrePositivity.KST.Fibration.FirstVertexDiagramComponent",
+    "SerrePositivity.KST.Fibration.FirstVertexDiagramVertices",
+    "SerrePositivity.KST.Fibration.FirstVertexEdgewiseRestriction",
+    "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+    "SerrePositivity.KST.Fibration.FirstVertexOppositeVertices",
+    "SerrePositivity.KST.Fibration.FirstVertexRestrictionChart",
+    "SerrePositivity.KST.Fibration.FirstVertexSectionFiber",
+    "SerrePositivity.KST.Fibration.FirstVertexStrictSection",
+    "SerrePositivity.KST.Fibration.FirstVertexTransportDiagramComponent",
+    "SerrePositivity.KST.Fibration.FirstVertexUnderBaseChange",
+    "SerrePositivity.KST.Fibration.FractionClassificationSimplexRestriction",
+    "SerrePositivity.KST.Fibration.KanPointSurjectivity",
+    "SerrePositivity.KST.Fibration.LeftCocartesianClassificationPoint",
+    "SerrePositivity.KST.Fibration.NativeCoefficientResolutionPointHom",
+    "SerrePositivity.KST.Fibration.NativeRepresentationComparisonPoint",
+    "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+    "SerrePositivity.KST.Fibration.PointedReconstructionRestriction",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldCandidateClassification",
+    "SerrePositivity.KST.Fibration.ScaffoldCandidateNativeComparison",
+    "SerrePositivity.KST.Fibration.ScaffoldCandidateReconstruction",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification",
+    "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldCosliceExtension",
+    "SerrePositivity.KST.Fibration.ScaffoldGlobalCoefficientPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldNerveRepresentationPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldPointedReconstruction",
+    "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberTransport",
+    "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+    "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+    "SerrePositivity.KST.Fibration.ScaffoldStraighteningValue",
+    "SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient",
+    "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+    "SerrePositivity.KST.Fibration.ScaffoldWeightedCoherentPoint",
+    "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeRightEndpoints",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeTranspose",
+    "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+    "SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent",
+    "SerrePositivity.KST.Fibration.StraighteningGlobalBaseChangeValue",
+    "SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction",
+    "SerrePositivity.KST.Fibration.StraighteningSectionChart",
+    "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+    "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+    "SerrePositivity.KST.Fibration.StrictTransportOppositePointHom",
+    "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+    "SerrePositivity.KST.Fibration.VertexFiberZeroSection",
+    "SerrePositivity.KST.Fibration.WeakComparisonComponentSurjectivity",
+    "SerrePositivity.KST.Fibration.WeakComparisonFullyFaithfulInput",
+    "SerrePositivity.KST.LocalizingInvariants",
+    "SerrePositivity.KST.LocalizingInvariants.ParametricPullbackFamilyTranspose",
+    "SerrePositivity.KST.LocalizingInvariants.PullbackFamilySquareRecovery",
+    "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+    "SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment",
+    "SerrePositivity.KST.LocalizingInvariants.TwoEndpointVerdierCoconeFamily",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSimplexCoconeFamilyLift",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredCoreCylinder",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredQuotientCoconeCylinder",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredWholeComparison",
+    "SerrePositivity.KST.LocalizingInvariants.VerdierRelativeSpanRecovery"
+  ],
+  "downstream_count": 144,
+  "roots": [
+    "SerrePositivity",
+    "SerrePositivity.KST.Fibration",
+    "SerrePositivity.KST.LocalizingInvariants"
+  ],
+  "collision_scope": "Source explicit declaration names checked repository-wide; generated/elaborated-name collision checks belong to the approved before snapshot and small build. Private homonyms have distinct internal names and are recorded.",
+  "preservation": "Publish mapping for 19 private names; same statement/body checked individually with v3b. Do not weaken comparator.",
+  "approval": "IF-F §6 main 9f59541d3",
+  "runtime_collision": {
+    "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+    "name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+    "stop": "f-section6-stop.json",
+    "proposal_applied": true,
+    "resolved_by": "392ddcc88"
+  },
+  "verified_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+  "stop2": "f-stop2.json"
+}

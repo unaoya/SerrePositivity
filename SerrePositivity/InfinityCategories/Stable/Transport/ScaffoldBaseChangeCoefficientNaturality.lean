@@ -35,7 +35,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma pointTriangle {C : Type*} [Category C] {a b c d e f g : C}
+lemma pointTriangle {C : Type*} [Category C] {a b c d e f g : C}
     (v : a ⟶ b) (l : c ≅ b) (s : c ≅ d) (i : e ≅ d)
     (q : c ≅ f) {j : C} (r : f ≅ j) (z : g ≅ j)
     (x : a ⟶ e) (y : a ⟶ g)
@@ -47,7 +47,7 @@ private lemma pointTriangle {C : Type*} [Category C] {a b c d e f g : C}
     Iso.inv_hom_id_assoc, Iso.hom_inv_id_assoc]
   exact hy
 
-private lemma endpointSpan_heq {C : Type*} [Category C] {a b c d e f : C}
+lemma endpointSpan_heq {C : Type*} [Category C] {a b c d e f : C}
     (h : a = b) (s : c = b) (q : c ≅ d) (r : d = e) (z : f = e) :
     HEq (eqToIso h ≪≫ (eqToIso s).symm ≪≫ q ≪≫ eqToIso r ≪≫ (eqToIso z).symm) q := by
   subst b

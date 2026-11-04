@@ -39,7 +39,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-private lemma comp_app_congr {T U V : SSet.{u}} {f : T ⟶ U} {g : U ⟶ V} {h : T ⟶ V}
+lemma comp_app_congr {T U V : SSet.{u}} {f : T ⟶ U} {g : U ⟶ V} {h : T ⟶ V}
     (e : f ≫ g = h) (n : SimplexCategoryᵒᵖ) (s : T.obj n) :
     g.app n (f.app n s) = h.app n s := congrArg (fun k : T ⟶ V => k.app n s) e
 

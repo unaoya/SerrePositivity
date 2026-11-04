@@ -44,7 +44,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma point_normalize_both_inv {C : Type*} [Category C] {a b a' b' z t : C}
+lemma point_normalize_both_inv {C : Type*} [Category C] {a b a' b' z t : C}
     (e : a ≅ b) (hs : a = a') (ht : b = b') (v : z ⟶ b) (w : z ⟶ b')
     (f : a' ⟶ t) (hp : v ≫ (eqToIso ht).hom = w) :
     v ≫ e.inv ≫ (eqToIso hs).hom ≫ f =

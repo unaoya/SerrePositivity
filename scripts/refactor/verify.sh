@@ -42,8 +42,10 @@ printf '%s\n' "$layer_rc" > "$OUT/layers-exit-code.txt"
 cat "$OUT/layers.log" >> "$LOG"
 print -r -- "layer report rc=$layer_rc (informational; $OUT/layers.json)" | tee -a "$LOG"
 run_stage preparation manifest-and-targets python3 - <<'PY'
-import json, os, re, time
+import json, os, re, sys, time
 from pathlib import Path
+sys.path.insert(0, "scripts/refactor")
+from audit_imports import audit_build_targets
 out = Path('.lake/verify')
 prep = {'errors': [], 'new_audits': [], 'missing_audits': [], 'audit_count': 0}
 try:
@@ -98,17 +100,8 @@ try:
         prep['errors'].append('VERIFY_CACHE must be 0 or 1')
     prep['executed_audit_count'] = len(audits)
     (out / 'audits.txt').write_text(''.join(p + '\n' for p in audits))
-    targets = set()
-    for path in audits:
-        source = Path(path).read_text()
-        # Remove nested Lean comments while retaining line boundaries.
-        source = re.sub(r'/\-.*?\-/', lambda m: '\n' * m[0].count('\n'), source, flags=re.S)
-        for line in source.splitlines():
-            line = line.split('--', 1)[0]
-            match = re.match(r'^\s*(?:public\s+)?import\s+(?:all\s+)?(.*)$', line)
-            if match:
-                targets.update(t for t in match[1].split()
-                               if re.fullmatch(r'SerrePositivity(?:\.[\w\u0080-\uffff]+)*', t))
+    # Runtime importModules literals must be built even on a clean checkout.
+    targets = audit_build_targets(Path(path).read_text() for path in audits)
     prep['target_count'] = len(targets)
     (out / 'audit_targets.txt').write_text(''.join(t + '\n' for t in sorted(targets)))
     print(f'audits: {prep["audit_count"]}; with extras: {len(audits)}; build targets: {len(targets)}')

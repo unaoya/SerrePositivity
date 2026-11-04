@@ -33,7 +33,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
+theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
     (α : FunctorHom F G) {a b : D _⦋0⦌} (hab : a = b) :
     functorHomEvaluate α a ≫
       (eqToIso (congrArg HomotopyCategory.mk

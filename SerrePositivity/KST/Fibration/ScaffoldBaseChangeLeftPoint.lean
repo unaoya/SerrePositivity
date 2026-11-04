@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints
 public import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport
 

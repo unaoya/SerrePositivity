@@ -1,0 +1,147 @@
+{
+  "status": "STOP_NAME_CHANGE_REQUIRED",
+  "instruction": "IF-F §6 main 9f59541d3",
+  "base": "29d9ad0e7",
+  "draft": "20b781f39",
+  "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3",
+  "branch": "infra/if-f",
+  "stop_rule": "IF-W2c §4 -> IF-W2b §5-4: 宣言の本文・型・名前を変えないと直らない。",
+  "applied": {
+    "publications": 19,
+    "ordinary_import_edges": 15,
+    "R67_checks": 2,
+    "Foundation_classifications": 3
+  },
+  "before": {
+    "status": "PASS",
+    "modules": 144,
+    "seconds": 482.684,
+    "private_inclusive": true,
+    "hash_algorithm": "v3b term-level proof marker"
+  },
+  "internal": {
+    "command": [
+      "lake",
+      "build",
+      "SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction",
+      "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents",
+      "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts",
+      "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex",
+      "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+      "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart",
+      "SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+      "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint",
+      "SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom",
+      "SerrePositivity.KST.Fibration.PointedLeftResolutionVertices",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+      "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+      "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+      "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+      "SerrePositivity.KST.Fibration.ScaffoldWeightedResolutionPoint",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeSectionCharts",
+      "SerrePositivity.KST.Fibration.StraighteningBaseChangeVertex",
+      "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+      "SerrePositivity.KST.Fibration.StraighteningUnderSectionChart",
+      "SerrePositivity.KST.Fibration.TransportRepresentationFiberPointHom",
+      "SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+      "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+      "SerrePositivity.Spectra.StageTwo"
+    ],
+    "exit_code": 1,
+    "errors": [
+      "error: SerrePositivity/KST/Fibration/FirstVertexOppositeChart.lean:24:14: a non-private declaration `SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq` has already been declared",
+      "error: build failed"
+    ],
+    "seconds": 75.001,
+    "log": "internal-build.log"
+  },
+  "failed_modules": [
+    "SerrePositivity.KST.Fibration.FirstVertexOppositeChart"
+  ],
+  "diagnosis": "公開名の導入後は、別モジュールの同じユーザー名で private 定理を宣言できない。草案は内部 private 名の相違だけで衝突しないと推定したが、Lean の宣言時検査で失敗した。",
+  "proposal": {
+    "status": "NOT_APPLIED",
+    "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+    "old_private_name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+    "new_private_name": "SerrePositivity.KST.Fibration.firstVertexOppositeChart_mapNormalizeCompositionWithEq",
+    "edits": "private lemma の名前1か所と、このファイル内の参照1か所のみ。型・証明本文・公開API・配置は保持。",
+    "patch": "scripts/refactor/targets/f-section6-private-collision-proposal.patch",
+    "preservation": "before 144本を保持。改名後のprivate宣言と元宣言を定義元・型・公理・属性で個別照合し、公開定理のv3b差分とソースの名前以外の一致も確認。比較器は変更しない。"
+  },
+  "static": {
+    "status": "PASS",
+    "enforcement": {
+      "status": "PASS",
+      "core_order_violations": [],
+      "new_direct_edges": [],
+      "aggregate_increases": [],
+      "accepted_direct_edge_limit": 21,
+      "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+    },
+    "direct_forbidden_edges": 0,
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1732
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1732
+      }
+    },
+    "F1B_straightening": [],
+    "ratchet_increases": [],
+    "ratchet_metrics_unchanged": true,
+    "config_before": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
+    "config_after": "a8eddf9505b8b7bab7547c3eb081ec84cfeb83f96988d835f2e5591452a1f5f6",
+    "configuration_change": [
+      "SerrePositivity.CategoryTheory.ArrowFactorization",
+      "SerrePositivity.CategoryTheory.ArrowFactorizationCategory",
+      "SerrePositivity.CategoryTheory.ArrowFactorizationTransport"
+    ],
+    "downstream_count": 144,
+    "exceptions_changed": false
+  },
+  "inherited_since_W2c": [
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F2.Tensor.Space",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.SetSections",
+      "before": 0,
+      "after": 74
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F2.Tensor.Space",
+      "before": 0,
+      "after": 74
+    }
+  ],
+  "R67_checks_executed": false,
+  "downstream_executed": false,
+  "after_snapshot_executed": false,
+  "verify_executed": false,
+  "F2_applied": false,
+  "other_ledger_actions_applied": false
+}
