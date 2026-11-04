@@ -216,6 +216,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
    - **段 G 第一区切り完了（11-04、math/g1、sorry・公理なし）**：G7・Core・G13・⊗ᴸ・G3・G8。`setsToKan`・`discreteSpaceInclusion` の頂点・辺は rfl、前層の比較定理は `kanDiagramCoherentNerve (P ⋙ setsToKan)` について、G8 は `sectionsOfDiagram` の指定極限錐に対する同値まで。**W2c の取り込みの後に main へ入る → そのとき drafts の仮名を本名に**（`setsToKan` の drafts 版を削除、`discreteSpaceInclusion`・`Is0TruncatedSpace`・`tensorWith` の要確認を外す、`discretePresheaf_vertex`・`discretePresheafInclusion_edge` の sorry を供給定理に、`exists_sheafGeneratingEdges` を G8 で）。
      質問への回答（11-04）：G8 の X についての自然性は**要る**（IF-G2 へ）。形：集合値前層の任意の射 φ : X ⟶ Y について、Map(Y ⋙ ⊗M, F) → Map(X ⋙ ⊗M, F) と Map(M, Γ(Y, F)) → Map(M, Γ(X, F))（`sectionsOf_map φ`）が G8 の同値を通して**空間のホモトピー圏で可換**。S4（篩の包含 S ↪ h_U で「W 局所 ⇔ 層」）と S8-5（任意の局所同値）で使う。合成に関する高次の整合性は不要。
    - **BS-W10 作業 B 停止点 B-2 検収（11-04、実装 b1bc9d7cb、報告 8220cbc47・0552427a2）**：`UniversalHomeomorphism/{Basic, PowerClosure}` の sorry 0・公理なし、B-1 で承認した主張は文字列で不変（底変換・合成・nil 核の全射・標数 p の判定の両方向・完全→被約の全単射・純非分離体拡大）。単体ビルド Basic 8.3 秒・PowerClosure 3.9 秒・Stratification 12.4 秒（B-3 の sorry 4 は残る）。次は B-3。
+   - **11-04 16:00〜（19:30〜20:30 終了見込み）**：∞ W2c の下流ビルドと verify。この間は BS の小さなビルドも停止（編集は可）。終了後の順序：G1 の取り込み → B4 の全ビルド → BS-W10 作業 B の取り込み。
    - 調整役（11-04 午後）：BS-W10 作業 B の小さなビルド（CA の新規ファイルだけ）を再開してよい。鍵は W2c の round の合間に空く。**W2c の下流と verify（夕方〜夜）の間は止める**（調整役が知らせる）。
      調整役（11-04、IF-G1 §6、main 4dceee881）：IF-G2 の最初の項目（G12 より前）に。G1 第一区切りが main に入った後に出す。
      調整役（11-04）：論文の層に依頼済み（abbrev で置き、反射の補題をその名前で述べ直す）。main に入った連絡が来たら、8 箇所を置き換えて 4 ファイルと importer を単体ビルド（作業 B の合間）。
