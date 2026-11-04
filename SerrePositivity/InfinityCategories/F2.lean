@@ -59,6 +59,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyTran
 public import SerrePositivity.InfinityCategories.F2.Presentable.FullHomColimitDetection
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafColimitEmptyProducts
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresheafHomWeightTransport
+public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 
 /-!
 概要：F2-lite の Cat_∞ と引き戻しの構成の公開集約。
