@@ -308,6 +308,32 @@ abbrev StratumRing {R : Type u} [CommRing R] (I : Ideal R) (g : R) :=
 def stratumUnit {R : Type u} [CommRing R] (I : Ideal R) (g : R) : R →+* StratumRing I g :=
   (algebraMap (R ⧸ I.radical) (StratumRing I g)).comp (Ideal.Quotient.mk I.radical)
 
+/-- 層の局所化では、選んだ元は可逆。 -/
+theorem stratumUnit_isUnit {R : Type u} [CommRing R] (I : Ideal R) (g : R) :
+    IsUnit (stratumUnit I g g) :=
+  IsLocalization.Away.algebraMap_isUnit (Ideal.Quotient.mk I.radical g)
+
+/-- 被約化で消したイデアルの元は層でも零になる。 -/
+theorem stratumUnit_eq_zero {R : Type u} [CommRing R] (I : Ideal R) (g x : R)
+    (hx : x ∈ I.radical) : stratumUnit I g x = 0 := by
+  change algebraMap (R ⧸ I.radical) (StratumRing I g) (Ideal.Quotient.mk I.radical x) = 0
+  rw [Ideal.Quotient.eq_zero_iff_mem.mpr hx, map_zero]
+
+/-- (p g, g) による細分の後半では、g が可逆なので p g = 0 から p = 0。 -/
+theorem natCast_eq_zero_stratum_of_mul_mem {R : Type u} [CommRing R]
+    (I : Ideal R) (g : R) (p : ℕ) (hpg : (p : R) * g ∈ I.radical) :
+    (p : StratumRing I g) = 0 := by
+  have he := stratumUnit_eq_zero I g ((p : R) * g) hpg
+  rw [map_mul, map_natCast] at he
+  exact (stratumUnit_isUnit I g).mul_left_eq_zero.mp he
+
+/-- (p g, g) による細分の前半では p が可逆。 -/
+theorem isUnit_natCast_stratum_mul {R : Type u} [CommRing R]
+    (I : Ideal R) (g : R) (p : ℕ) : IsUnit (p : StratumRing I ((p : R) * g)) := by
+  have hu := stratumUnit_isUnit I ((p : R) * g)
+  rw [map_mul, map_natCast] at hu
+  exact isUnit_of_mul_isUnit_left hu
+
 /-- S では先に I を延長し、その後に根基を取って局所化する。 -/
 def stratumMap {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (I : Ideal R) (g : R) :
     StratumRing I g →+* StratumRing (I.map f) (f g) := by
