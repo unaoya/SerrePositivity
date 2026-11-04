@@ -218,6 +218,7 @@ import し、有限直積 `isIntegralPerfectoid_finPi` が E3 を実際に使う
    - **BS-W10 作業 B 停止点 B-2 検収（11-04、実装 b1bc9d7cb、報告 8220cbc47・0552427a2）**：`UniversalHomeomorphism/{Basic, PowerClosure}` の sorry 0・公理なし、B-1 で承認した主張は文字列で不変（底変換・合成・nil 核の全射・標数 p の判定の両方向・完全→被約の全単射・純非分離体拡大）。単体ビルド Basic 8.3 秒・PowerClosure 3.9 秒・Stratification 12.4 秒（B-3 の sorry 4 は残る）。次は B-3。
    - **11-04 16:00〜（19:30〜20:30 終了見込み）**：∞ W2c の下流ビルドと verify。この間は BS の小さなビルドも停止（編集は可）。終了後の順序：G1 の取り込み → B4 の全ビルド → BS-W10 作業 B の取り込み。
    - **IF-G1 第一区切り取り込み（7bda72c3c、11-04 夜）**：drafts の仮名を本名に替えた（入口表 §6）。drafts の全 import は解決。残る sorry の理由を更新：`is0Truncated_iff_pointwise`（BS 側の証明）、`exists_sheafGeneratingEdges`（G8 の X についての自然性、IF-G2）、`kanDiscretePresheafInclusion`（BS 側の構成）。
+     調整役（11-04 夜）：IF-G2 は 11-05 に、G8 の X についての自然性を最初の項目にして出す。入ったら S4 の `exists_sheafGeneratingEdges` を閉じる。
    - **∞ W2c 取り込み（c2979a262、11-04 夜）**：drafts の全 import は解決したまま（W2c は drafts に触れていない）。BS-W10 作業 B のビルド再開。G1 第一区切りは G1 レーンが main を取り込んで衝突を解いた後に main へ → そのとき仮名を本名に。
    - 調整役（11-04 午後）：BS-W10 作業 B の小さなビルド（CA の新規ファイルだけ）を再開してよい。鍵は W2c の round の合間に空く。**W2c の下流と verify（夕方〜夜）の間は止める**（調整役が知らせる）。
      調整役（11-04、IF-G1 §6、main 4dceee881）：IF-G2 の最初の項目（G12 より前）に。G1 第一区切りが main に入った後に出す。
