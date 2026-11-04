@@ -211,7 +211,7 @@ InfinityCategories/
 | R60 | 孤立したモジュールと休止領域の台帳を作り、各行で「主経路／診断／archive／一般論を抽出」を決める。対象は FilteredExchange、F1/Cocartesian、HA/Rectification、ClosureFunctoriality、KST/Comparison・ProExcision、Spectra など。古くなった記述も直す | 8〜16h |
 | R32・R33・R36・R42・R43 | 反例と凍結候補、未登録・監査で被覆されない・転送入口のモジュールの処置 | 16〜32h |
 | R67 | 基盤の層だけが使っているものの分類し直し（伝達文 §6）。<br>・GroupTheory/Coxeter（TypeA・FirstToLast・PermutationInduction・InvolutionRelations。利用者は CategoryTheory/Monoidal・EInfinity/Operad・IntervalCuts・Spectra/SymmetricSequence）：**動かさず**、CategoryTheory と同じく中核より下の基盤として `layers.json` に登録する。Mathlib の `Equiv.Perm.mclosure_swap_castSucc_succ` などへの置き換え（TypeA 955 行が不要になりうる）は R78 へ。<br>・Inputs/Homotopy（KanQuillen＝引用の sorry、ResolutionHom・SimplicialLevel）：主定理の閉包の外で、scripts の check 3 本しか import していない。`InfinityCategories/ModelBridge/Inputs/` へ移し（モデル圏の存在の引用なので ModelBridge が置き場）、`make_area_audits.py` の sorry の許可リストと check のパスを直す。削除するかどうかは R60 の台帳で決める。W2a（R72 と同じ窓） | 4〜8h |
-| R54 | 名前空間の付け替え（旧名は deprecated alias で残し、名前対応表を作る）。F1・F1B・F2 の改名もここで判断する。<br>移した宣言には KST の名前空間が残る（Fibration 747 ブロック、LocalizingInvariants 519、Spectra 333 以上）。§9-3 で、段ごとに行うか最後にまとめるかを決める | 16〜40h（再見積り） |
+| R54 | **決定（11-04、ユーザー）：範囲は KST から移した宣言だけ、F1・F1B・F2 は改名しない、deprecated alias は段 G の最初の区切りまで残す**（[IF-F §5](infinity-codex-f.md)）。名前空間の付け替え（旧名は deprecated alias で残し、名前対応表を作る）。F1・F1B・F2 の改名もここで判断する。<br>移した宣言には KST の名前空間が残る（Fibration 747 ブロック、LocalizingInvariants 519、Spectra 333 以上）。§9-3 で、段ごとに行うか最後にまとめるかを決める | 16〜40h（再見積り） |
 
 ### 段 G 型が変わる作業・比較の証明・新しい数学（窓の外）
 

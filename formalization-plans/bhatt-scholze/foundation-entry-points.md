@@ -209,6 +209,51 @@ A0〜A9 の drafts（51 本）には、結論が `True` の仮置きが残って
 | 9 | **S4・S5 の担当**（層化の存在と完全性。G4・G6・G8 の後） | `Sheafification J E` を仮定している全部（A0・A2・A5・A6） | 回答：**BS 側**が書く（G4・G6・G8・G7 を ∞ が供給）。BS の M12a に S4・S5 を加える |
 | 10 | Core の小補題：`uliftFunctor.obj (nerve (SmallModel C)) ⟶ nerve C` の比較 | A0 `structurePresheafDerived` | 回答：∞ の依頼に入れる（存在確認のうえ、なければ Core に一つ） |
 
+## 4.1 S3 の経路と IF-G2 の G9・G10（2026-11-04 決定、BS）
+
+**経路 (c)：Quillen A による余終性**（候補 (a) 効果的エピの実現・(b) Bousfield–Kan は採らない）。
+`cechShape d = uliftFunctor.map (nerveMap d.obj.rightOp)` が left cofinal なら、S3 の二つの同値は既存の
+`isLimitCone_iff_restrict_of_leftCofinal`・`hasLimit_iff_restrict_of_leftCofinal`（Derived/CofinalLimitTransfer）から出る。
+left cofinal は Quillen A で「各 V ∈ 𝒟 について nerve (CostructuredArrow d.obj.rightOp (op V)) が弱可縮」に帰着する。
+この comma は ([n], s ∈ Hom(V, U)^{n+1}) の圏（積の錐で Hom(V, U_n) ≅ Hom(V, U)^{n+1}）で、弱終性から s₀ ∈ Hom(V, U) を取り、
+T([n], s) := ([n+1], (s, s₀)) と自然変換 id → T・const([0], s₀) → T で縮約できる。**BS が書く**：comma の同一視と縮約（1 圏）。
+
+**∞ に依頼する型（IF-G2 の G9 の差し替え）**：
+
+```lean
+-- (G9-1) left 側の nerve の Quillen A（既存の right 版 `F2.Presentable.nerveMap_isRightCofinal_of_weaklyContractible_comma` の双対）
+lemma nerveMap_isLeftCofinal_of_weaklyContractible_comma
+    {P Q : Type u} [Category.{u} P] [Category.{u} Q] (F : P ⥤ Q)
+    (h : ∀ q : Q, IsWeaklyContractible (nerve (CostructuredArrow F q))) :
+    IsLeftCofinal (nerveMap F)
+-- (G9-2) 宇宙の持ち上げで left cofinal は保たれる（cechShape は uliftFunctor.map）
+lemma IsLeftCofinal.uliftFunctor_map {A B : SSet.{u}} {f : A ⟶ B} (hf : IsLeftCofinal f) :
+    IsLeftCofinal ((SSet.uliftFunctor.{u + 1, u}).map f)
+-- (G9-3) 縮約の向きを逆にした版（既存 `nerve_isWeaklyContractible_of_contractionSpan` は T ⟶ 𝟭・T ⟶ const）
+lemma nerve_isWeaklyContractible_of_contractionCospan
+    {C : Type u} [Category.{u} C] (v : C) (T : C ⥤ C)
+    (h0 : 𝟭 C ⟶ T) (h1 : (Functor.const C).obj v ⟶ T) :
+    IsWeaklyContractible (nerve C)
+```
+
+Δ は `Type` なので、(G9-1) に `SimplexCategory` を直接入れるときの宇宙（`ULiftHom`/`AsSmall` など）の扱いは ∞ 側の判断でよい。drafts の `cechShape` の形に合えばよい。
+
+**G10 は S3 には不要、応用で要る**：A0 CechAlexander（Čech–Alexander の Tot ＝ D(A) の Δ 上の極限、Rem 4.19）、Shared/CosimplicialEInfinity
+`totEInfinity_isLimitCone`（忘却後の Δ 極限錐）、それを使う A1 の HT 比較の模型、A6 Prop 8.10（Čech 複体の完全性 ⇒ D(A) 値の層条件）。依頼する型：
+
+```lean
+-- (G10) 余単体的 A 加群の D(A) での Δ 上の極限は交代余面複体で計算される
+theorem cosimplicialModule_limitCone (X : CosimplicialObject (ModuleCat.{u} A)) :
+    ∃ c : JoinCone ((SSet.uliftFunctor.{u + 1, 0}).map (nerveMap X) ≫ discreteModuleEmbedding A),
+      IsLimitCone c ∧
+      ∀ i : ℤ, Nonempty (derivedInfinityHomology A i c.vertex ≃ₗ[A]
+        ((AlgebraicTopology.alternatingCofaceMapComplex (ModuleCat A)).obj X).homology' i)
+```
+
+（`discreteModuleEmbedding` は drafts/DerivedGeneral/Truncation の BS 版。∞ 側に複体を D(A) に入れる関手があれば、頂点をその像で述べ、
+ホモロジーの同型は系にしてよい。添字の `homology'` は非負次数の複体を ℤ 添字で読む仮の書き方。各次数の同型は、錐の脚と標準射が
+両立する形にしてほしい。A6 で各次数の消滅、A0 で比較射を使う。）
+
 ## 5. 段 2 の点検表（中身を書く順）
 
 1. ∞：G3・G4・G6・G7・G8・G12・G13（`IsPresentable SpaceInfinity` と離散埋め込み。𝒮 自体は既存）・⊗^L（β5）・Core の小補題 → BS：S4・S5。

@@ -168,14 +168,14 @@ O の極限保存延長 O^ : PSh(𝒞)^op → E（HTT 5.1.5.6）と Γ(F, O) = O
 方針：元の圏 el(F)（F の Grothendieck 構成）上の極限。
 規約：E 表示可能。
 使われ方：Cor 8.12 の引き戻し。 -/
-/-- 概要：Γ(F, O) の図式：F の元の圏 `F.Elements`（Mathlib `CategoryTheory.Functor.Elements`、射影 `CategoryOfElements.π F : F.Elements ⥤ 𝒞ᵒᵖ`）の nerve を
+/-- 概要：Γ(F, O) の図式：F の元の圏 `F.Elements`（Mathlib `CategoryTheory.Functor.Elements`、射影 `Functor.Elements.π F : F.Elements ⥤ 𝒞ᵒᵖ`）の nerve を
 持ち上げて O と合成したもの。
 方針：S3 の `cechShape` と同じ持ち上げ。
 規約：F は集合値（`𝒞ᵒᵖ ⥤ Type u`）、O は S1 の `Presheaf 𝒞 E`（= `presheafShape 𝒞 ⟶ E`、`presheafShape 𝒞` は nerve 𝒞ᵒᵖ の持ち上げ）。
 使われ方：`sectionsOf`。 -/
 def sectionsOfDiagram (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
     (SSet.uliftFunctor.{u + 1, u}).obj (nerve F.Elements) ⟶ E :=
-  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (CategoryTheory.CategoryOfElements.π F)) ≫ O
+  (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (Functor.Elements.π F)) ≫ O
 
 /-- 概要：E が表示可能なら上の図式は極限をもつ（添字は小さい）。 -/
 theorem sectionsOfDiagram_hasLimit (hE : F2.Presentable.IsPresentable E) (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
@@ -194,7 +194,9 @@ theorem sectionsOfCone_isLimit (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E)
 
 /-- 概要：Γ(−, O) の関手性：φ : P ⟶ Q に対し Γ(Q, O) → Γ(P, O)（元の圏の関手 P.Elements ⥤ Q.Elements に沿う制限と極限の普遍性）。
 方針：錐の制限。
-規約：E の辺。
+規約：E の辺。本体は IF-G2 の `SetWeight.sectionsMap φ O (sectionsOfCone Q O hQ) (sectionsOfCone_isLimit …) …`（Γ(Q) → Γ(P)、G2 停止点 1 で承認）
+をそのまま使う。図式 `sectionsOfDiagram` は ∞ 側の `SetWeight.diagram` と同じ式（`Functor.Elements.π` の nerve を前合成）。
+X についての自然性は `SetWeight.tensorSpaceFunctor_setWeightHom_naturality`（S4・S8-5 で使う）。
 使われ方：`sections_localEquiv_iso`、押し出しの比較。 -/
 def sectionsOf_map {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (O : Presheaf 𝒞 E)
     (hP : HasLimit (sectionsOfDiagram P O)) (hQ : HasLimit (sectionsOfDiagram Q O)) :
@@ -273,7 +275,7 @@ theorem sections_localEquiv_iso (J : GrothendieckTopology 𝒞) {P Q : 𝒞ᵒ�
 使われ方：A6 `sectionsOf_homSheaf_eq_perfectoidization`（A5 の `perfectoidization_isLimit` の錐と結ぶ）。 -/
 def sectionsOf_eq_limit_elements (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) (h : HasLimit (sectionsOfDiagram F O))
     {D : Type u} [SmallCategory D] (e : D ≌ F.Elements)
-    (c : JoinCone ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (e.functor ⋙ CategoryTheory.CategoryOfElements.π F)) ≫ O))
+    (c : JoinCone ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (e.functor ⋙ Functor.Elements.π F)) ≫ O))
     (hc : IsLimitCone c) : VertexIso (sectionsOf F O h) c.vertex := sorry
 
 end SerrePositivity.InfinityCategories.Sheaves
