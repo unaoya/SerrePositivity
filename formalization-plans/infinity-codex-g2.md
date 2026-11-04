@@ -1,0 +1,23 @@
+# Codex 依頼書 IF-G2：段 G の第二の束 ― G8 の自然性、G8 の一般形、G9・G10、G12
+
+作成：2026-11-04 夜（管理は Claude）。宛先：**∞ の数学レーンの Codex（G1 と同じチャット・worktree `../SerrePositivity-ig1`）**。
+前提：[IF-G1](infinity-codex-g1.md)（§2 の進め方・§3 の禁止事項をそのまま使う：新規ファイルだけ、sorry・公理・引用を残さない、全ビルドなし、小さなビルドは coordination.md §2-4a）。G1 の第一区切りは main に入った（7bda72c3c）。
+**最初に**：`math/g1` に main（8878743e3 以降。W2c・B4 を含む）を取り込み、衝突は main 側を正として解く（G1 の新規ファイルは変えない）。以後、整理の束が main に入るたびに取り込む。新しい枝 `math/g2` を切ってもよい。
+
+## 1. 項目（この順）
+
+| # | 項目 | 主張（言葉で） | 置き場所 | 使う側 |
+| --- | --- | --- | --- | --- |
+| G8n | **G8 の X についての自然性**（最優先） | 集合値前層の射 φ : X ⟶ Y について、四角形 Map(Y ⋙ ⊗M, F) → Map(X ⋙ ⊗M, F)（φ の前合成）と Map(M, Γ(Y, F)) → Map(M, Γ(X, F))（drafts の `sectionsOf_map φ` の後合成）、縦は G8 の同値（`sectionsEquivalence` など）、が**空間のホモトピー圏で可換**。高次の整合性は要らない | `F2/Tensor/`（`SetSections` の隣） | BS の S4 の生成辺（篩の包含 S ↪ h_U、「W 局所 ⇔ 層」）と S8-5（任意の局所同値） |
+| G8g | G8 の一般の空間値の形 | 空間値前層 X について Map(X ⋙ ⊗M, F) ≃ Map(M, Γ(X, F))、Γ は `weightedSectionsData` の右 Kan 拡張との比較で | `F2/Tensor/` | BS の S8-4 |
+| G9・G10 | 効果的エピの Čech 脈体の実現（または Bousfield–Kan との比較）、Δ 上の極限 ＝ 全複体 | IF-G1 の表のとおり | `HomotopyLimits/`・`DoldKanComparison/`・`Derived/` | BS の S3。**BS が S3 の経路を決めてから**（BS に確認。決まっていなければ飛ばす） |
+| G12a | 前提 (a)：具体的な `CAlg_R A` のモデル側のホモトピー余極限を coherent nerve の余極限へ移す比較 | 計画 γ3（holim ＝ ∞ 極限）の余極限版 | `ModelBridge/`（中核の外） | G12 |
+| G12b | 前提 (b)：セル表示から κ-compact 生成の表示へ移す一般論 | presentable 性の判定に使う | `F2/Presentable/` | G12 |
+| G12 | `IsPresentable (CAlg_R A)`（HA 3.2.3.5） | G12a・G12b を使う | `EInfinity/BarrattEccles/` の隣 | BS の A2 以降（CAlg 値の層化） |
+
+## 2. 進め方
+
+1. **G8n を先に**：型を BS の drafts（`formalization-plans/bhatt-scholze/drafts/Sheaves/SpaceValued.lean` の `sectionsOf_map`、S4 の生成辺の sorry）に合わせて短く報告（停止点 1、G8n だけでよい）→ 承認後に証明 → 取り込みは単独でも可（Claude が merge し、BS が sorry を閉じる）。
+2. G8g → G9・G10（BS の確認後）→ G12a → G12b → G12。G12a・G12b・G12 は重いので、紙の筋（既存と新規の切り分け、規模の見込み）を先に報告。
+3. 項目ごとに別コミット、入口・監査への登録（**監査で `importModules` を使うなら、同じモジュールを `import` 行にも書く**：verify がビルド対象を `import` 行からしか拾わないため。W2c §8）。
+4. 終えられない項目は止めて報告。段 F（名前空間の付け替え）が始まる前に、それまでの成果を main に入れる（Claude が日程を伝える）。
