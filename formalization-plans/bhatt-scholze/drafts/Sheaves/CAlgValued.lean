@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CAlg
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgForgetDerived
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedFreeForget
--- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,CechConerveLimit}.lean を E := CAlg_R A で使う。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,SheafGenerators,CechConerveLimit}.lean を E := CAlg_R A で使う。
 
 /-!
 # E∞-A 代数に値をとる層と RΓ（Sheaves 層の E = CAlg_A の実例）
