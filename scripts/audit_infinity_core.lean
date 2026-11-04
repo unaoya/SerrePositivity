@@ -1,3 +1,17 @@
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges
+import all SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredEquivalence
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredHomotopyRetracts
 import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
@@ -4798,3 +4812,45 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorIso_precomp_id
 #check @SerrePositivity.InfinityCategories.F2.functorIso_unit_self_whisker
 #check @SerrePositivity.InfinityCategories.F2.functorIsoOfEq_app_heq
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges,
+    `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
+  ]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation, `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl, `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization, `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare, `SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare, `SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry, `SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge, `SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges, `SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."

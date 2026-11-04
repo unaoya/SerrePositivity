@@ -1,3 +1,24 @@
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitIso
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTargetContraction
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorIso
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality
+import all SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
 import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
 import SerrePositivity.InfinityCategories.F1B.Ind.NerveBoundCocone
 import SerrePositivity.InfinityCategories.F1B.Idempotent.WalkingLeftCommaContractibility
@@ -3396,3 +3417,52 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.functorIso_app_heq_of_vertex_eq
 #check @SerrePositivity.InfinityCategories.F2.functorSpaceCurryMap_evaluate
 #check @SerrePositivity.InfinityCategories.F2.functorIso_curry_app_heq_precomp
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitIso,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTargetContraction,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorIso,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality,
+    `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
+  ]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage, `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitIso, `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles, `SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite, `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath, `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares, `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity, `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl, `SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTargetContraction, `SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization, `SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy, `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeAdjunction, `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorHom, `SerrePositivity.InfinityCategories.F1B.Quasicategory.OppositeFunctorIso, `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility, `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse, `SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeInitialVertexIso, `SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension, `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges, `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality, `SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."

@@ -1,3 +1,183 @@
+import all SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
+import all SerrePositivity.InfinityCategories.Derived.KanModels.StrictKanEvaluationComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber
+import all SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
+import all SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism
+import all SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary
+import all SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons
+import all SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
+import all SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
+import all SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierPresentation
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting
+import all SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceFiberComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRoofPastingAttachment
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCommonDenominatorFamily
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanBoundarySlice
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientTransport
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberUnit
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberValueRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientPointedComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalResolution
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueCancellation
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueEdge
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison
+import all SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.UniverseShape
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalPiCriterion
 import SerrePositivity.InfinityCategories.Derived.PiCriterion.TotalLegFiberComparison
@@ -8078,3 +8258,211 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_homotopy
 #check @SerrePositivity.InfinityCategories.F2.continuousKanReplacementUnit_reflects_boundaryFilling
 #check @SerrePositivity.InfinityCategories.F2.continuousKanLeftFibration_finite_homotopy_detection
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison,
+    `SerrePositivity.InfinityCategories.Derived.KanModels.StrictKanEvaluationComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber,
+    `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps,
+    `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism,
+    `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary,
+    `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons,
+    `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences,
+    `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierPresentation,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting,
+    `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRoofPastingAttachment,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCommonDenominatorFamily,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanBoundarySlice,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientTransport,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberUnit,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberValueRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientPointedComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalResolution,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueCancellation,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueEdge,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison,
+    `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber
+  ]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison, `SerrePositivity.InfinityCategories.Derived.KanModels.StrictKanEvaluationComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientDiagram, `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientRightComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientUnitComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitSelectedRightCompatibility, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientNormalizedCone, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullbackComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftReflective, `SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientValueCone, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductCone, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductNormalization, `SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierHomotopyFiberValue, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberLegs, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductFiberVertices, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber, `SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps, `SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism, `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary, `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons, `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences, `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies, `SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierPresentation, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting, `SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionClassificationRestriction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceBaseChange, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionCosliceFiberComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyArrow, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyComparisonIso, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionIdentityClassificationComponent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionNativeClassificationComponent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.RoofPastingAttachment, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeSplitting, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanSlice, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteCoreCoconeFamily, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteQuotientConeSpans, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFirstRowSimplexZero, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierInitialComparisonRestriction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierNormalizedBoundaryCocone, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricSourceIso, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierParametricTerminalRefinement, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRefinement, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRawFractionComparisonResolution, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredBoundaryPrefixPath, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCoconeCylinder, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCompletedCylinder, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredCylinderSquare, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRefinementBoundaryProjection, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeCoconeAttachment, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRelativeInitialComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRoofPastingAttachment, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCommonDenominatorFamily, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanBoundarySlice, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalDiagram, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanEvaluationSquare, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyHomotopy, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanKanComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSquareRefinement, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowQuotientPasting, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierTwoArrowRoofComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformCoconeImage, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformTerminalRefinement, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakDenominatorSpanTransport, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeImage, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientPoint, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientTransport, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityQuotientValueCoordinates, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldClassification, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldFiber, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityScaffoldImage, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentitySpanPoint, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeClassificationPoint, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceHomTriangle, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingEquivalence, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanChosenKanTransport, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanFixedSimplexCollapse, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberUnit, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFamilyIdentity, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberUnit, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFiberValueRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientFixedFiber, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientPointedComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalOverMap, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientTotalResolution, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnitRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueCancellation, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientValueEdge, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientZeroRecovery, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanSpaceMappingComparison, `SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanZeroSimplexFiber]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."

@@ -1,3 +1,119 @@
+import all SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy
+import all SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality
+import all SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberAdjunctionCounit
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberRelativeRightComparison
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointFaithful
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointTarget
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationExact
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroSourceComparison
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison
+import all SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams
+import all SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators
+import all SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure
+import all SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
+import all SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
+import all SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus
+import all SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison
+import all SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness
+import all SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRelativeComparison
+import all SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport
+import all SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure
+import all SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams
+import all SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
+import all SerrePositivity.InfinityCategories.Stable.Exact.ZeroCategory
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewisePointHom
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanPointSurjectivity
+import all SerrePositivity.InfinityCategories.Stable.KanModels.KanTerminalComparison
+import all SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal
+import all SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier
+import all SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite
+import all SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho
+import all SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions
+import all SerrePositivity.InfinityCategories.Stable.PushoutCompletion
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTargetAdjunction
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTransportNaturality
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveMappingAdjunction
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetConstants
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetHom
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInitialAdjunction
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeTerminalAdjunction
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalShape
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
+import all SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension
+import all SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion
+import all SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
+import all SerrePositivity.InfinityCategories.Stable.StableSpanPushout
+import all SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeLeftEndpoints
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeTranspose
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningSectionChart
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
+import all SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientPoints
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.SmallSpaceDiagram
+import all SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality
+import all SerrePositivity.InfinityCategories.Stable.Transport.StrictConeTransformation
+import all SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportEvaluationPrism
+import all SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation
+import all SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportUnderEdge
+import all SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
+import all SerrePositivity.InfinityCategories.Stable.Transport.TransportSectionBaseChangePoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso
+import all SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences
 import SerrePositivity.InfinityCategories.Stable.ColimitFamilyExtension
 import SerrePositivity.InfinityCategories.Stable.Filtered.FiberProductCofinality
 import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredBinaryDiagonal
@@ -8298,3 +8414,182 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_unit_product
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_isWeakHomotopyEquivalence
 #check @SerrePositivity.InfinityCategories.F2.totalKanProductComparison_homotopyEquivalence
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality,
+    `SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberAdjunctionCounit,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRelativeRightComparison,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointFaithful,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointTarget,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationExact,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroSourceComparison,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison,
+    `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus,
+    `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison,
+    `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness,
+    `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRelativeComparison,
+    `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport,
+    `SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure,
+    `SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams,
+    `SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor,
+    `SerrePositivity.InfinityCategories.Stable.Exact.ZeroCategory,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewisePointHom,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanPointSurjectivity,
+    `SerrePositivity.InfinityCategories.Stable.KanModels.KanTerminalComparison,
+    `SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal,
+    `SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier,
+    `SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite,
+    `SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho,
+    `SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions,
+    `SerrePositivity.InfinityCategories.Stable.PushoutCompletion,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTargetAdjunction,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTransportNaturality,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveMappingAdjunction,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetConstants,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetHom,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInitialAdjunction,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeTerminalAdjunction,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalShape,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy,
+    `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension,
+    `SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion,
+    `SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition,
+    `SerrePositivity.InfinityCategories.Stable.StableSpanPushout,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeLeftEndpoints,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeTranspose,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningSectionChart,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart,
+    `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart,
+    `SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientPoints,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange,
+    `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint,
+    `SerrePositivity.InfinityCategories.Stable.Transport.SmallSpaceDiagram,
+    `SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality,
+    `SerrePositivity.InfinityCategories.Stable.Transport.StrictConeTransformation,
+    `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportEvaluationPrism,
+    `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation,
+    `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportUnderEdge,
+    `SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom,
+    `SerrePositivity.InfinityCategories.Stable.Transport.TransportSectionBaseChangePoint,
+    `SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso,
+    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences
+  ]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy, `SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality, `SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberAdjunctionCounit, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagramFibers, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyRightHom, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamilyZeroTriangle, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberInputFamily, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRelativeRightComparison, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointFaithful, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointTarget, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationExact, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberSquareFamily, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroSourceComparison, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison, `SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams, `SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators, `SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure, `SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy, `SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath, `SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus, `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison, `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness, `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRelativeComparison, `SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport, `SerrePositivity.InfinityCategories.Stable.Exact.FullStableClosure, `SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams, `SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor, `SerrePositivity.InfinityCategories.Stable.Exact.ZeroCategory, `SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqCone, `SerrePositivity.InfinityCategories.Stable.KanModels.KanCommSqLimit, `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation, `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewisePointHom, `SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom, `SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection, `SerrePositivity.InfinityCategories.Stable.KanModels.KanPointSurjectivity, `SerrePositivity.InfinityCategories.Stable.KanModels.KanTerminalComparison, `SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal, `SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier, `SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceNullComposite, `SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho, `SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusions, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomNaturality, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyRecoveredEdge, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTargetAdjunction, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowTransportNaturality, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose, `SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveMappingAdjunction, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetConstants, `SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetHom, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInitialAdjunction, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeTerminalAdjunction, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation, `SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalHomotopy, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalShape, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy, `SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension, `SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition, `SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeLeftEndpoints, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeSectionCharts, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeTranspose, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningDiagramBaseChangeComponent, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningRepresentationRestriction, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningSectionChart, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart, `SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart, `SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientPoints, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportRestriction, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange, `SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint, `SerrePositivity.InfinityCategories.Stable.Transport.SmallSpaceDiagram, `SerrePositivity.InfinityCategories.Stable.Transport.SpaceLocalizationUniversality, `SerrePositivity.InfinityCategories.Stable.Transport.StrictConeTransformation, `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportEvaluationPrism, `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation, `SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportUnderEdge, `SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom, `SerrePositivity.InfinityCategories.Stable.Transport.TransportSectionBaseChangePoint, `SerrePositivity.InfinityCategories.Stable.Transport.TransportSimplexConstantEdge, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeRecovery, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso, `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
+
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
+#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
+#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
+#check @SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
+#print axioms SerrePositivity.KST.SConstruction.IsPushoutDiagramVertex
+#check @SerrePositivity.KST.SConstruction.pushoutDiagrams
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagrams
+#check @SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
+#print axioms SerrePositivity.KST.SConstruction.squareCoconeDiagramIso
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso
+#check @SerrePositivity.KST.SConstruction.pushoutProjection
+#print axioms SerrePositivity.KST.SConstruction.pushoutProjection
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_projection
+#check @SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
+#print axioms SerrePositivity.KST.SConstruction.pushoutDiagramsCoconesIso_inv_projection
+#check @SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_pushoutFamily
+#check @SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
+#print axioms SerrePositivity.KST.SConstruction.pushoutProjection_hasLiftingProperty_boundary
+#check @SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
+#print axioms SerrePositivity.KST.SConstruction.exists_relative_colimitCoconeFamily
+#check @SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
+#print axioms SerrePositivity.KST.SConstruction.colimitCoconeFamily_relative_lifting
+#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
+#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutPresentation_of_span
+#check @SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
+#print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
+#check @SerrePositivity.KST.SConstruction.stable_hasColimit_span
+#print axioms SerrePositivity.KST.SConstruction.stable_hasColimit_span

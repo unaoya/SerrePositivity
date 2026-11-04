@@ -1,3 +1,5 @@
+import all SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.AdjunctionHom
+import all SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
 import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.WithInitialKanCone
 import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.ThinConeIndexComparison
 import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.SpaceDiagramStrictification
@@ -2504,68 +2506,26 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @spaceTowerCone_isLimitCone
 #print axioms spaceTowerCone_isLimitCone
 
-#check @spectrumLevelFunctor
-#print axioms spectrumLevelFunctor
 
-#check @pointedMappingFunctor
-#print axioms pointedMappingFunctor
 
-#check @pointedMappingFunctor_preservesLimits
-#print axioms pointedMappingFunctor_preservesLimits
 
-#check @spectrumHomMap_evaluation
-#print axioms spectrumHomMap_evaluation
 
-#check @spectrumStageHomFunctor
-#print axioms spectrumStageHomFunctor
 
-#check @spectrumMappingEvaluation
-#print axioms spectrumMappingEvaluation
 
-#check @pointedMapping_pre_post
-#print axioms pointedMapping_pre_post
 
-#check @suspensionHom_post
-#print axioms suspensionHom_post
 
-#check @spectrumMappingStep_post
-#print axioms spectrumMappingStep_post
 
-#check @spectrumLevelCone
-#print axioms spectrumLevelCone
 
-#check @spectrumStageHomCone
-#print axioms spectrumStageHomCone
 
-#check @spectrumStageHomCone_isLimit
-#print axioms spectrumStageHomCone_isLimit
 
-#check @spectrumHomParameterCone
-#print axioms spectrumHomParameterCone
 
-#check @spectrumHomLimitFamily
-#print axioms spectrumHomLimitFamily
 
-#check @spectrumHomLimitFamily_fac
-#print axioms spectrumHomLimitFamily_fac
 
-#check @spectrumHomLimitFamily_condition
-#print axioms spectrumHomLimitFamily_condition
 
-#check @spectrumHomConeLift
-#print axioms spectrumHomConeLift
 
-#check @spectrumHomConeLift_evaluation
-#print axioms spectrumHomConeLift_evaluation
 
-#check @spectrumHomConeLift_fac
-#print axioms spectrumHomConeLift_fac
 
-#check @spectrumHomConeLift_uniq
-#print axioms spectrumHomConeLift_uniq
 
-#check @spectrumHomCone_isLimit_of_levelwise
-#print axioms spectrumHomCone_isLimit_of_levelwise
 
 #check @prodPointedSimplex
 #print axioms prodPointedSimplex
@@ -2591,50 +2551,20 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @kanPiIsomorphism_tensor
 #print axioms kanPiIsomorphism_tensor
 
-#check @loopProductCone_isLimit
-#print axioms loopProductCone_isLimit
 
-#check @loopProductIso
-#print axioms loopProductIso
 
-#check @loopProductIso_hom_fst
-#print axioms loopProductIso_hom_fst
 
-#check @loopProductIso_hom_snd
-#print axioms loopProductIso_hom_snd
 
-#check @binaryProductSigma
-#print axioms binaryProductSigma
 
-#check @binaryProductSigma_adjoint
-#print axioms binaryProductSigma_adjoint
 
-#check @binaryProductKanSequence
-#print axioms binaryProductKanSequence
 
-#check @binaryProductKanSequenceFst
-#print axioms binaryProductKanSequenceFst
 
-#check @binaryProductKanSequenceSnd
-#print axioms binaryProductKanSequenceSnd
 
-#check @kanSequenceHom_ext
-#print axioms kanSequenceHom_ext
 
-#check @binaryProductKanSequenceLift
-#print axioms binaryProductKanSequenceLift
 
-#check @binaryProductKanSequenceLift_fst
-#print axioms binaryProductKanSequenceLift_fst
 
-#check @binaryProductKanSequenceLift_snd
-#print axioms binaryProductKanSequenceLift_snd
 
-#check @binaryProductKanSequenceLift_uniq
-#print axioms binaryProductKanSequenceLift_uniq
 
-#check @binaryProductKanSequence_omega
-#print axioms binaryProductKanSequence_omega
 
 #check @SmashSimplex
 #print axioms SmashSimplex
@@ -2735,38 +2665,16 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @smashProductComparison_mono
 #print axioms smashProductComparison_mono
 
-#check @binaryProductSigma_factor
-#print axioms binaryProductSigma_factor
 
-#check @binaryProductSigma_mono
-#print axioms binaryProductSigma_mono
 
-#check @spectrumBinaryProduct
-#print axioms spectrumBinaryProduct
 
-#check @spectrumBinaryProductFst
-#print axioms spectrumBinaryProductFst
 
-#check @spectrumBinaryProductSnd
-#print axioms spectrumBinaryProductSnd
 
-#check @spectrumBinaryProductDiagram
-#print axioms spectrumBinaryProductDiagram
 
-#check @spectrumBinaryProductCone
-#print axioms spectrumBinaryProductCone
 
-#check @spectrumBinaryProductCone_level_isLimit
-#print axioms spectrumBinaryProductCone_level_isLimit
 
-#check @spectrumBinaryProductCone_hom_isLimit
-#print axioms spectrumBinaryProductCone_hom_isLimit
 
-#check @spectrumBinaryProductInfinityCone
-#print axioms spectrumBinaryProductInfinityCone
 
-#check @spectrumBinaryProductInfinityCone_isLimit
-#print axioms spectrumBinaryProductInfinityCone_isLimit
 
 #check @pointedPoint_kanComplex
 #print axioms pointedPoint_kanComplex
@@ -2777,53 +2685,21 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @loopPoint_isZero
 #print axioms loopPoint_isZero
 
-#check @spectrumPoint
-#print axioms spectrumPoint
 
-#check @spectrumPoint_isTerminal
-#print axioms spectrumPoint_isTerminal
 
-#check @spectrumBinaryProductLift
-#print axioms spectrumBinaryProductLift
 
-#check @spectrumBinaryFan_isLimit
-#print axioms spectrumBinaryFan_isLimit
 
-#check @spectrumHasTerminal
-#print axioms spectrumHasTerminal
 
-#check @spectrumHasBinaryProducts
-#print axioms spectrumHasBinaryProducts
 
-#check @spectrumHasFiniteProducts
-#print axioms spectrumHasFiniteProducts
 
-#check @spectrumLevel_preservesTerminal
-#print axioms spectrumLevel_preservesTerminal
 
-#check @spectrumLevel_preservesBinaryProducts
-#print axioms spectrumLevel_preservesBinaryProducts
 
-#check @spectrumLevel_preservesFiniteProducts
-#print axioms spectrumLevel_preservesFiniteProducts
 
-#check @spectrumFiniteProductCone
-#print axioms spectrumFiniteProductCone
 
-#check @spectrumFiniteProductCone_isLimit
-#print axioms spectrumFiniteProductCone_isLimit
 
-#check @spectrumFiniteProductCone_level_isLimit
-#print axioms spectrumFiniteProductCone_level_isLimit
 
-#check @spectrumFiniteProductCone_hom_isLimit
-#print axioms spectrumFiniteProductCone_hom_isLimit
 
-#check @spectrumFiniteProductInfinityCone
-#print axioms spectrumFiniteProductInfinityCone
 
-#check @spectrumFiniteProductInfinityCone_isLimit
-#print axioms spectrumFiniteProductInfinityCone_isLimit
 
 #check @smashSimplexMap_injective
 #print axioms smashSimplexMap_injective
@@ -2837,35 +2713,15 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @pointedWhiskerLeft_mono
 #print axioms pointedWhiskerLeft_mono
 
-#check @pointedPullbackToProduct
-#print axioms pointedPullbackToProduct
 
-#check @pointedPullbackToProduct_mono
-#print axioms pointedPullbackToProduct_mono
 
-#check @pullbackSigma_product_factor
-#print axioms pullbackSigma_product_factor
 
-#check @pullbackSigma_mono
-#print axioms pullbackSigma_mono
 
-#check @loopPullbackIso
-#print axioms loopPullbackIso
 
-#check @loopPullbackIso_hom_fst
-#print axioms loopPullbackIso_hom_fst
 
-#check @loopPullbackIso_hom_snd
-#print axioms loopPullbackIso_hom_snd
 
-#check @pullbackAdjointMap
-#print axioms pullbackAdjointMap
 
-#check @pullbackSigma_adjoint
-#print axioms pullbackSigma_adjoint
 
-#check @pullbackSequence_omega_iff
-#print axioms pullbackSequence_omega_iff
 
 #check @group_pointed_five_lemma
 #print axioms group_pointed_five_lemma
@@ -2915,8 +2771,6 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @originalFiberToPullback_ι
 #print axioms originalFiberToPullback_ι
 
-#check @pullbackFiberIso
-#print axioms pullbackFiberIso
 
 #check @pullbackFiberIso_naturality
 #print axioms pullbackFiberIso_naturality
@@ -2945,44 +2799,18 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @pullbackComparison_piIsomorphism
 #print axioms pullbackComparison_piIsomorphism
 
-#check @pullbackAdjointMap_piIsomorphism
-#print axioms pullbackAdjointMap_piIsomorphism
 
-#check @pullbackSequence_omega
-#print axioms pullbackSequence_omega
 
-#check @spectrumPullback
-#print axioms spectrumPullback
 
-#check @spectrumPullbackFst
-#print axioms spectrumPullbackFst
 
-#check @spectrumPullbackSnd
-#print axioms spectrumPullbackSnd
 
-#check @spectrumPullback_condition
-#print axioms spectrumPullback_condition
 
-#check @spectrumPullbackDiagram
-#print axioms spectrumPullbackDiagram
 
-#check @spectrumPullbackOrdinaryCone
-#print axioms spectrumPullbackOrdinaryCone
 
-#check @spectrumPullbackCone
-#print axioms spectrumPullbackCone
 
-#check @spectrumPullbackOrdinaryCone_level_isLimit
-#print axioms spectrumPullbackOrdinaryCone_level_isLimit
 
-#check @spectrumPullbackCone_level_isLimit
-#print axioms spectrumPullbackCone_level_isLimit
 
-#check @spectrumPullbackCone_hom_isLimit
-#print axioms spectrumPullbackCone_hom_isLimit
 
-#check @spectrumPullbackInfinityCone
-#print axioms spectrumPullbackInfinityCone
 
 #check @relativeTensorLift
 #print axioms relativeTensorLift
@@ -2990,17 +2818,9 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #check @relativePointedHom_hornLift
 #print axioms relativePointedHom_hornLift
 
-#check @spectrumHom_hornFamily
-#print axioms spectrumHom_hornFamily
 
-#check @spectrumHom_hornLift
-#print axioms spectrumHom_hornLift
 
-#check @spectrumHomMap_fibration
-#print axioms spectrumHomMap_fibration
 
-#check @spectrumPullbackInfinityCone_isLimit
-#print axioms spectrumPullbackInfinityCone_isLimit
 
 #check @towerMap
 #print axioms towerMap
@@ -3153,50 +2973,10 @@ open SerrePositivity.InfinityCategories.HomotopyLimits
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopTowerIso
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.loopTowerIso_hom_projection
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.loopTowerIso_hom_projection
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequenceProjection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequenceProjection
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_adjoint
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_adjoint
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap_piIsomorphism
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceAdjointMap_piIsomorphism
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence_omega
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerKanSequence_omega
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexPack_eq_of_family
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexPack_eq_of_family
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.smashMap_jointlyInjective
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.smashMap_jointlyInjective
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_app_injective
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_app_injective
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_mono
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.towerSequenceSigma_mono
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTower
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTower
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection_comp
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerProjection_comp
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone_level_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerOrdinaryCone_level_isLimit
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerDiagram
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerDiagram
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_level_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_level_isLimit
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_hom_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerCone_hom_isLimit
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone_isLimit
-#print axioms SerrePositivity.InfinityCategories.HomotopyLimits.spectrumTowerInfinityCone_isLimit
 
 -- γ3b：元の q_x と反転比較の照合、および元の比較からの極限判定。
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.oppositeKanHomotopyEquivalence_iff
@@ -15228,3 +15008,33 @@ run_cmd do
 #check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape_simplex
 #check @SerrePositivity.InfinityCategories.F2.spaceInfinityEdgeTransportValueIso
 #check @SerrePositivity.InfinityCategories.F2.hasSpaceLimitsOfShape
+
+-- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
+open Lean in
+set_option maxHeartbeats 0 in
+run_cmd do
+  let env ← getEnv
+  let expected : Array Name := #[
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.AdjunctionHom,
+    `SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
+  ]
+  let forbidModel : Array Name := #[]
+  for mod in expected do
+    unless env.header.modules.any (fun entry => entry.module == mod) do
+      throwError "W2c: audit module not imported: {mod}"
+  let mut count : Nat := 0
+  let mut seen : Array Name := #[]
+  for (name, info) in env.constants.toList do
+    let some idx := env.getModuleIdxFor? name | continue
+    let mod := env.header.modules[idx.toNat]!.module
+    unless expected.contains mod do continue
+    if forbidModel.contains mod && info.type.getUsedConstants.contains `HomotopicalAlgebra.ModelCategory then
+      throwError "W2c: ModelCategory assumption in type of {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
+      throwError "W2c: unexpected axioms in {name}: {axioms}"
+    unless seen.contains mod do seen := seen.push mod
+    count := count + 1
+  for mod in expected do
+    unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
+  logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
