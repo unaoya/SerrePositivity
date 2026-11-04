@@ -15,6 +15,9 @@ public import Mathlib.RingTheory.Localization.Submodule
 public import Mathlib.Algebra.CharP.IntermediateField
 public import Mathlib.Algebra.Polynomial.Lifts
 public import Mathlib.RingTheory.Polynomial.Tower
+public import Mathlib.RingTheory.Extension.Presentation.Core
+public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
@@ -114,16 +117,54 @@ theorem isIntegral_of_monic_coeffs_mem {C R S : Type*}
 /-- 有限個の整な生成元のモニック関係に必要な係数を、一つの有限集合にまとめる。 -/
 theorem exists_integrality_coefficients {C R S : Type*}
     [CommRing C] [CommRing R] [CommRing S] [Algebra C R] [Algebra R S]
-    {ι : Type*} [Fintype ι] (v : ι → S) (hv : ∀ i, IsIntegral R (v i)) :
+    {ι : Type*} [Finite ι] (v : ι → S) (hv : ∀ i, IsIntegral R (v i)) :
     ∃ coeffs : Finset R, ∀ R₀ : Subalgebra C R,
       (∀ c ∈ coeffs, c ∈ R₀) → ∀ i, IsIntegral R₀ (v i) := by
   classical
+  let : Fintype ι := Fintype.ofFinite ι
   choose f hf hx using hv
   refine ⟨Finset.univ.biUnion fun i ↦ (f i).coeffs, ?_⟩
   intro R₀ hc i
   apply isIntegral_of_monic_coeffs_mem R₀ (v i) (f i) (hf i) (hx i)
   intro c h
   exact hc c (Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, h⟩)
+
+/-- 表示の係数を含む部分環上で、生成元の像の部分代数を底変換すると元の代数に戻る。 -/
+private theorem presentation_range_baseChange_equiv {C R S : Type*}
+    [CommRing C] [CommRing R] [CommRing S] [Algebra C R] [Algebra R S]
+    {ι σ : Type*} (P : Algebra.Presentation R S ι σ) (R₀ : Subalgebra C R)
+    [P.HasCoeffs R₀] :
+    Nonempty ((R ⊗[R₀] (MvPolynomial.aeval (R := R₀) P.val).range) ≃ₐ[R] S) := by
+  let e := MvPolynomial.aeval (R := R₀) P.val
+  let S₀ := e.range
+  let q : P.ModelOfHasCoeffs R₀ →ₐ[R₀] S₀ :=
+    Ideal.Quotient.liftₐ _ e.rangeRestrict (by
+      change Ideal.span (Set.range (P.relationOfHasCoeffs R₀)) ≤
+        RingHom.ker e.rangeRestrict
+      rw [Ideal.span_le]
+      rintro _ ⟨i, rfl⟩
+      apply Subtype.ext
+      exact P.aeval_val_relationOfHasCoeffs R₀ i)
+  have hq : Function.Surjective q := by
+    intro x
+    obtain ⟨t, ht⟩ := e.rangeRestrict_surjective x
+    exact ⟨Ideal.Quotient.mk _ t, ht⟩
+  let u : R ⊗[R₀] P.ModelOfHasCoeffs R₀ →ₐ[R] R ⊗[R₀] S₀ :=
+    Algebra.TensorProduct.map (AlgHom.id R R) q
+  let v : R ⊗[R₀] S₀ →ₐ[R] S :=
+    Algebra.TensorProduct.lift (Algebra.ofId R S) S₀.val fun _ _ ↦ Commute.all _ _
+  have hu : Function.Surjective u :=
+    Algebra.TensorProduct.map_surjective Function.surjective_id hq
+  have he : v.comp u = (P.tensorModelOfHasCoeffsEquiv R₀).toAlgHom := by
+    ext r x
+    induction x using Quotient.inductionOn' with
+    | h t => rfl
+  have hbij : Function.Bijective (v.comp u) := he ▸ (P.tensorModelOfHasCoeffsEquiv R₀).bijective
+  refine ⟨AlgEquiv.ofBijective v ⟨?_, hbij.surjective.of_comp⟩⟩
+  intro x y hxy
+  obtain ⟨x, rfl⟩ := hu x
+  obtain ⟨y, rfl⟩ := hu y
+  exact congrArg u (hbij.injective hxy)
 
 /-- 概要：noetherian 近似：有限表示有限 R → S は、有限生成 Z_(p) 部分代数 R_0 ⊂ R と有限表示有限 R_0 → S_0 の底変換。
 方針：表示 S = R[x]/(h_1..h_m)（モニック関係を含む）の係数で R_0 を生成。
@@ -139,30 +180,34 @@ theorem exists_noetherianApproximation {R S : Type u} [CommRing R] [CommRing S] 
         (Algebra.TensorProduct.includeRight : R →ₐ[R₀] S₀ ⊗[R₀] R).toRingHom.toAlgebra
       (∀ c ∈ coeffs, c ∈ R₀) ∧ R₀.FG ∧ IsNoetherianRing R₀ ∧ Module.Finite R₀ S₀ ∧
         Algebra.FinitePresentation R₀ S₀ ∧ Nonempty ((S₀ ⊗[R₀] R) ≃ₐ[R] S) := by
-  sorry -- 指定した係数と有限表示の関係式・各生成元のモニック関係の係数で R₀ を生成し、同じ表示で S₀ を作る
-
-/-- 全商環の因子は基底の極小点で添字づける。 -/
-abbrev GenericPoint (R : Type u) [CommRing R] :=
-  {P : PrimeSpectrum R // P.asIdeal ∈ minimalPrimes R}
-
-abbrev GenericField {R : Type u} [CommRing R] (P : GenericPoint R) := P.val.asIdeal.ResidueField
-abbrev GenericProduct (R : Type u) [CommRing R] := ∀ P : GenericPoint R, GenericField P
-
-def genericProductMap (R : Type u) [CommRing R] : R →+* GenericProduct R :=
-  RingHom.pi (fun P => algebraMap R (GenericField P))
-
-/-- Noetherian 環の極小点は有限。剰余体の積を有限積として扱うための補題。 -/
-theorem finite_genericPoint (R : Type u) [CommRing R] [IsNoetherianRing R] :
-    Finite (GenericPoint R) := by
-  let : Finite {I : Ideal R // I ∈ minimalPrimes R} :=
-    (minimalPrimes.finite_of_isNoetherianRing R).to_subtype
-  apply Finite.of_injective
-    (fun P : GenericPoint R ↦ (⟨P.val.asIdeal, P.property⟩ :
-      {I : Ideal R // I ∈ minimalPrimes R}))
-  intro P Q h
-  apply Subtype.ext
-  apply PrimeSpectrum.ext
-  exact congrArg Subtype.val h
+  classical
+  let : Algebra (StrataBase p) R := (strataBaseMap p R hZp).toAlgebra
+  let P := Algebra.Presentation.ofFinitePresentation R S
+  obtain ⟨ci, hi⟩ := exists_integrality_coefficients (C := StrataBase p) P.val
+    (fun i ↦ Algebra.IsIntegral.isIntegral (P.val i))
+  let cr := P.finite_coeffs.toFinset
+  obtain ⟨R₀, hc, hfg, hn⟩ := exists_fg_noetherian_subalgebra_containing p R hZp
+    (coeffs ∪ ci ∪ cr)
+  let : IsNoetherianRing R₀ := hn
+  have hci (c : R) (h : c ∈ ci) : c ∈ R₀ := hc c (by simp [h])
+  let : P.HasCoeffs R₀ := ⟨fun c h ↦ ⟨⟨c, hc c (by simp [cr, h])⟩, rfl⟩⟩
+  let e := MvPolynomial.aeval (R := R₀) P.val
+  let S₀ := e.range
+  have hint : ∀ x ∈ Set.range P.val, IsIntegral R₀ x := by
+    rintro _ ⟨i, rfl⟩
+    exact hi R₀ hci i
+  have hfinite : Module.Finite R₀ S₀ := by
+    dsimp [S₀, e]
+    rw [MvPolynomial.aeval_range]
+    exact Algebra.finite_adjoin_of_finite_of_isIntegral (Set.finite_range P.val) hint
+  let : Module.Finite R₀ S₀ := hfinite
+  have hfp : Algebra.FinitePresentation R₀ S₀ :=
+    Algebra.FinitePresentation.of_finiteType.mp inferInstance
+  obtain ⟨hiso⟩ := presentation_range_baseChange_equiv P R₀
+  refine ⟨R₀, CommRingCat.of S₀, inferInstance, ?_, hfg, hn, hfinite, hfp, ?_⟩
+  · intro c h
+    exact hc c (by simp [h])
+  · exact ⟨(Algebra.TensorProduct.commRight R₀ R S₀).symm.trans hiso⟩
 
 /-- Z_(p) 環から射を持つ体で p が可逆なら、全素数が非零なので標数 0。 -/
 theorem strataField_charZero_of_isUnit {R K : Type u} [CommRing R] [Field K]
