@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.StraighteningSectionChart
 
 /-! # 元の左右の底変換比較は、それぞれ同じ初頂点切断比較の指定成分 -/

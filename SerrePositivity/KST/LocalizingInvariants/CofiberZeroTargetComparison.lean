@@ -19,6 +19,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+attribute [local instance] zeroTargetComparisonQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
