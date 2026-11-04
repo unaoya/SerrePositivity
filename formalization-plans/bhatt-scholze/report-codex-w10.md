@@ -301,3 +301,12 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - 共有鍵が空いていた時点にも `ps` で main の監査を確認したため、ビルドは開始していない。
   B4 の単体ビルドが動いている間も待機を継続。全ビルド・verify・監査の実行はしていない。
 - `spread_out_generic` と `exists_finiteEtaleStratification` の接続は未完了。main への取り込みはなし。
+
+### B-3 継続：単体ビルド 05・06 と一般点の有限モデル（11-04）
+
+- 共有鍵の待機後、`EtaleStratification.Stratification` の単体ビルド 05（18.0 秒）と 06（10.8 秒）を実行。各回とも実行直前の `ps -axo command=` 確認と `with_build_lock --wait 0` を使用。
+- 06 で `GenericPoints`、`GenericVanishing` に続き、`FiniteFieldProduct`、`NoetherianInduction`、`GenericNil`、`GenericEtale`、`ReducedEtale`、`GenericBijective` と追加後の `UniversalHomeomorphism.Basic` が通った。`NilDiagonal` と `Reduction` に残った型の不一致は修正し、07 を待機中。
+- `generic_structure` と体ごとの分離部分の補題を `GenericStructure` に整理し、`GenericFactorization` に有限エタール部分代数の構成を記述した。これらの検証は依存先の修正後に進める。
+- 待機中に `GenericLocalization`（被約一般ファイバーの局所化）、`GenericSpread`（逆像モデルのエタール性の延長）、`GenericKernel`（nil な核の延長）を記述。これら 3 本はまだビルドしていない。
+- 元の主張に残る `sorry` は `spread_out_generic` と `exists_finiteEtaleStratification` の 2 件。一般点からの延長と、商環・底変換を通した有限層別の組み立てが未完了。B-3 の完了報告ではない。
+- 作業範囲の変更のみを `codex/bs-w10-b` に保存。main への取り込み、全ビルド、verify、監査は実施していない。
