@@ -13,6 +13,8 @@ public import Mathlib.RingTheory.Adjoin.FG
 public import Mathlib.RingTheory.Noetherian.Basic
 public import Mathlib.RingTheory.Localization.Submodule
 public import Mathlib.Algebra.CharP.IntermediateField
+public import Mathlib.Algebra.Polynomial.Lifts
+public import Mathlib.RingTheory.Polynomial.Tower
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
@@ -47,7 +49,7 @@ open scoped TensorProduct
 theorem etale_of_finite_separable (K L : Type u) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [Algebra.IsSeparable K L] : Algebra.Etale K L := by
   exact ⟨Algebra.FormallyEtale.of_isSeparable K L,
-    Algebra.FinitePresentation.of_finiteType.mpr inferInstance⟩
+    Algebra.FinitePresentation.of_finiteType.mp inferInstance⟩
 
 /-- ℤ_(p) の表示と、p 以外の素数が可逆な環への構造射。 -/
 abbrev strataPrimeIdeal (p : ℕ) := Ideal.span {(p : ℤ)}
@@ -95,6 +97,34 @@ theorem exists_fg_noetherian_subalgebra_containing (p : ℕ) [Fact p.Prime]
   refine ⟨R₀, fun c hc ↦ Algebra.subset_adjoin hc, hfg, ?_⟩
   exact isNoetherianRing_of_fg hfg
 
+/-- モニック関係の係数が小さい部分代数に属すれば、その部分代数上でも整。 -/
+theorem isIntegral_of_monic_coeffs_mem {C R S : Type*}
+    [CommRing C] [CommRing R] [CommRing S] [Algebra C R] [Algebra R S]
+    (R₀ : Subalgebra C R) (x : S) (f : Polynomial R) (hf : f.Monic)
+    (hx : Polynomial.aeval x f = 0) (hc : (f.coeffs : Set R) ⊆ R₀) : IsIntegral R₀ x := by
+  have hlift : f ∈ Polynomial.lifts (algebraMap R₀ R) :=
+    (Polynomial.lifts_iff_coeffs_subset_range f).mpr fun c h ↦ ⟨⟨c, hc h⟩, rfl⟩
+  obtain ⟨g, hg⟩ := (Polynomial.mem_lifts f).mp hlift
+  refine ⟨g, Polynomial.monic_of_injective (FaithfulSMul.algebraMap_injective R₀ R)
+    (by rw [hg]; exact hf), ?_⟩
+  change Polynomial.aeval x g = 0
+  rw [← Polynomial.aeval_map_algebraMap R x g, hg]
+  exact hx
+
+/-- 有限個の整な生成元のモニック関係に必要な係数を、一つの有限集合にまとめる。 -/
+theorem exists_integrality_coefficients {C R S : Type*}
+    [CommRing C] [CommRing R] [CommRing S] [Algebra C R] [Algebra R S]
+    {ι : Type*} [Fintype ι] (v : ι → S) (hv : ∀ i, IsIntegral R (v i)) :
+    ∃ coeffs : Finset R, ∀ R₀ : Subalgebra C R,
+      (∀ c ∈ coeffs, c ∈ R₀) → ∀ i, IsIntegral R₀ (v i) := by
+  classical
+  choose f hf hx using hv
+  refine ⟨Finset.univ.biUnion fun i ↦ (f i).coeffs, ?_⟩
+  intro R₀ hc i
+  apply isIntegral_of_monic_coeffs_mem R₀ (v i) (f i) (hf i) (hx i)
+  intro c h
+  exact hc c (Finset.mem_biUnion.mpr ⟨i, Finset.mem_univ i, h⟩)
+
 /-- 概要：noetherian 近似：有限表示有限 R → S は、有限生成 Z_(p) 部分代数 R_0 ⊂ R と有限表示有限 R_0 → S_0 の底変換。
 方針：表示 S = R[x]/(h_1..h_m)（モニック関係を含む）の係数で R_0 を生成。
 規約：—
@@ -138,7 +168,7 @@ theorem finite_genericPoint (R : Type u) [CommRing R] [IsNoetherianRing R] :
 theorem strataField_charZero_of_isUnit {R K : Type u} [CommRing R] [Field K]
     (p : ℕ) (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R))
     (f : R →+* K) (hp : IsUnit (p : K)) : CharZero K := by
-  apply CharZero.charZero_iff_forall_prime_ne_zero.mpr
+  apply (CharZero.charZero_iff_forall_prime_ne_zero K).mpr
   intro q hq
   by_cases he : q = p
   · subst q
@@ -183,7 +213,8 @@ theorem generic_structure (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
         ∃ a : ∀ j, Algebra (GenericField (v j)) (L j),
           letI : ∀ j, Algebra (GenericField (v j)) (L j) := a
           letI : Algebra (GenericProduct R) (∀ j, L j) := (RingHom.pi (fun j =>
-            (algebraMap (GenericField (v j)) (L j)).comp (Pi.evalRingHom GenericField (v j)))).toAlgebra
+            (algebraMap (GenericField (v j)) (L j)).comp
+              (Pi.evalRingHom GenericField (v j)))).toAlgebra
           Nonempty (((GenericProduct R ⊗[R] S) ⧸ nilradical (GenericProduct R ⊗[R] S))
             ≃ₐ[GenericProduct R] (∀ j, L j)) ∧
             ∀ j,
