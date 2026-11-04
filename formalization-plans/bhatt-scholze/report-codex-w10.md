@@ -389,3 +389,9 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - 新規モジュールは `UniversalHomeomorphism/` 6 本と `EtaleStratification/` 30 本。両ディレクトリ外のソースに直接 importer はなく、内部の直接 importer はこの 36 本に含まれる。
 - `drafts/A8/Stratification.lean` の削除は既に本ブランチの履歴に含まれる。
 - 検証対象を上記 36 本の単体ビルドと shared 監査の単独実行に限定した。各実行直前に `ps -axo command=` を確認し、`with_build_lock --wait 0` を使い、各単体ビルド後に鍵を解放する。main のビルド成果物の同期は完了したが、この記録時点では F-1 等との競合により、マージ後の単体ビルドと監査実行は未開始。成功報告ではない。
+
+### 検証の途中経過と競合判定の確認
+
+新規 CA 36 本のうち、辞書順の `Factorization` から `GenericPoints` まで 12 本の単体ビルドに成功した。F-1 の verify と競合し、続きは共有鍵の解放待ち。
+
+これまでは別プロジェクトのビルドも待っていたが、2026-11-05 のユーザー確認で、`ps` の競合判定を **SerrePositivity の worktree 間に限定**することが承認された。以後は `ps -axo command=` と PID ごとの作業ディレクトリを確認し、別プロジェクトを除外する。SerrePositivity のビルド・監査・verify と共有鍵の使用中は従来どおり待機する。成功済み 12 本と成果物同期を再実行せず、残り 24 本と shared 監査から再開する待機処理へ切り替えた。
