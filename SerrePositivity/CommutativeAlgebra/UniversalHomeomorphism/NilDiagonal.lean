@@ -48,4 +48,24 @@ theorem isUniversalHomeomorphism_of_nil_diagonal {A B : Type u}
   apply sub_eq_zero.mp
   simpa [t, φ, ψ] using hz
 
+/-- 普遍同相の対角射の核は nil。底変換後の Spec 単射性と乗法射の切断を使う。 -/
+theorem nil_diagonal_of_isUniversalHomeomorphism {A B : Type u}
+    [CommRing A] [CommRing B] [Algebra A B]
+    (hf : IsUniversalHomeomorphism (algebraMap A B)) :
+    RingHom.ker (Algebra.TensorProduct.lmul' A (S := B)).toRingHom ≤
+      nilradical (B ⊗[A] B) := by
+  let i : B →+* B ⊗[A] B := Algebra.TensorProduct.includeRight.toRingHom
+  let m : B ⊗[A] B →+* B := (Algebra.TensorProduct.lmul' A).toRingHom
+  have hi : IsUniversalHomeomorphism i :=
+    isUniversalHomeomorphism_baseChange (algebraMap A B) (algebraMap A B) hf
+  have hmi : m.comp i = RingHom.id B := by
+    ext b
+    simp [m, i]
+  have hs : Function.Surjective (PrimeSpectrum.comap m) := by
+    intro P
+    refine ⟨PrimeSpectrum.comap i P, hi.radicial.1 ?_⟩
+    rw [← PrimeSpectrum.comap_comp_apply, hmi]
+    rfl
+  exact (PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical m).mp hs.denseRange
+
 end SerrePositivity.CommutativeAlgebra

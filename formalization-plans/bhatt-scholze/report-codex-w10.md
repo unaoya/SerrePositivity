@@ -261,3 +261,26 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 **この中間保存の追加証明は未検証**。再開後の単体ビルドは `ps` の確認と共通鍵の空きを待っており、確認時には G1 worktree の `warm_build_dir.sh` が鍵を保持していた。鍵を迂回した実行はしていない。
 
 ソース上の明示的な `sorry` は層別側 2 件（`spread_out_generic` と `exists_finiteEtaleStratification`）になったが、これは B-3 の検証済み進捗件数ではない。残りの数学的な実装は、一般点の分離部分の逆像として有限部分代数を取り、エタール locus・導手や有限生成関係の分母払いにより主開集合へ広げる部分と、noetherian 帰納・底変換・被約化・p による細分で有限層別を作る部分である。B-3 は未完了であり、main への取り込みは行っていない。
+
+### B-3 再開後の補助証明と共有鍵待ち（継続中）
+
+- 単体ビルド `bsw10-b3-03` は 8.3 秒で失敗。`GenericPoints` の素イデアル instance と
+  有限 inf の型指定、`FiniteFieldProduct` の積の Algebra instance を修正した。
+- `bsw10-b3-04` は 8.0 秒で失敗。体積の分解部分は通った。`GenericPoints` の
+  `I` が `Submodule` として推論された箇所は `Ideal.IsPrime I` と明記して修正した。
+  その後の拡張を含む現行版はまだ未検証。
+- 次の `Stratification` 単体ビルドは、`ps -axo command=` と共有鍵の空きを確認する
+  待機処理に置いている。G1 の検証および B4 の待機と競合しており、現時点では未起動。
+  起動時には `with_build_lock --wait 0` を使う。
+- 待機中に、残る二つの主証明で使う以下の補題を書いた（すべて現行版はビルド未確認）。
+  - `NoetherianInduction`：真のイデアルの外に元を選ぶ操作から有限列を構成。
+  - `GenericVanishing`：有限加群の消滅、全射性、エタール locus を全極小点を残す主開集合へ延長。
+  - `GenericModel`：局所化後の部分代数の逆像が有限モデルになり、再局所化で元へ戻る。
+  - `GenericNil`：有限生成イデアルの生成元の冪零関係について共通分母を選ぶ。
+  - `UniversalHomeomorphism.NilDiagonal`：乗法射の nil な核による普遍同相の判定とその逆。
+    `Basic` に体値点の一意性からの判定を追加。B-2 の既存証明・主張は変更していない。
+  - `ReducedEtale`：任意の被約基底上の有限エタール代数が被約であること。
+  - `FiniteFieldProduct` に積の成分への有限エタール射と、成分ごとの有限エタール性の積を追加。
+- 中間保存 `7dae5c5ff`、`146012af2`。明示的 `sorry` は `spread_out_generic` と
+  `exists_finiteEtaleStratification` の二つが残っており、B-3 完了とは報告していない。
+  main には一切取り込んでいない。

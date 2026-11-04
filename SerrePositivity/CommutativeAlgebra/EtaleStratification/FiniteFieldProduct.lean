@@ -3,6 +3,7 @@ module
 public import Mathlib.RingTheory.Artinian.Module
 public import Mathlib.RingTheory.Spectrum.Prime.RingHom
 public import Mathlib.RingTheory.Finiteness.Basic
+public import Mathlib.RingTheory.Etale.Pi
 
 /-!
 # 体の有限積上の有限代数
@@ -89,5 +90,42 @@ theorem finite_algebra_over_field_product {ι : Type u} [Finite ι]
     exact (congrArg (fun h : (∀ i, K i) →+* F (e.symm j) ↦ h r) (hg (e.symm j))).symm
   · intro j
     exact finite_field_factor K (F (e.symm j)) (v (e.symm j)) (g (e.symm j)) (hg (e.symm j))
+
+/-- 有限積から一成分への射は有限エタール。冪等元の反転として記述する。 -/
+theorem finite_etale_pi_component {ι : Type u} [Finite ι]
+    (K : ι → Type u) [∀ i, CommRing (K i)] (i : ι) :
+    letI : Algebra (∀ i, K i) (K i) := (Pi.evalRingHom K i).toAlgebra
+    Module.Finite (∀ i, K i) (K i) ∧ Algebra.Etale (∀ i, K i) (K i) := by
+  classical
+  let : Algebra (∀ i, K i) (K i) := (Pi.evalRingHom K i).toAlgebra
+  let : IsLocalization.Away (Pi.single i 1 : ∀ i, K i) (K i) := by
+    refine IsLocalization.away_of_isIdempotentElem ?_ (RingHom.ker_evalRingHom K i)
+      (Pi.evalRingHom K i).surjective
+    simp [IsIdempotentElem, ← Pi.single_mul_left]
+  exact ⟨Module.Finite.of_surjective (Algebra.linearMap (∀ i, K i) (K i))
+    (Pi.evalRingHom K i).surjective, Algebra.Etale.of_isLocalizationAway (Pi.single i 1)⟩
+
+/-- 各基底成分上の有限エタール代数の積は、基底の積上でも有限エタール。 -/
+theorem finite_etale_pi_of_componentwise {ι κ : Type u} [Finite ι] [Finite κ]
+    (K : ι → Type u) [∀ i, CommRing (K i)] (v : κ → ι)
+    (L : κ → Type u) [∀ j, CommRing (L j)] [∀ j, Algebra (K (v j)) (L j)]
+    [∀ j, Module.Finite (K (v j)) (L j)] [∀ j, Algebra.Etale (K (v j)) (L j)] :
+    letI : Algebra (∀ i, K i) (∀ j, L j) := (RingHom.pi (fun j ↦
+      (algebraMap (K (v j)) (L j)).comp (Pi.evalRingHom K (v j)))).toAlgebra
+    Module.Finite (∀ i, K i) (∀ j, L j) ∧ Algebra.Etale (∀ i, K i) (∀ j, L j) := by
+  let : ∀ j, Algebra (∀ i, K i) (K (v j)) := fun j ↦ (Pi.evalRingHom K (v j)).toAlgebra
+  let : ∀ j, Algebra (∀ i, K i) (L j) := fun j ↦
+    ((algebraMap (K (v j)) (L j)).comp (Pi.evalRingHom K (v j))).toAlgebra
+  let : ∀ j, IsScalarTower (∀ i, K i) (K (v j)) (L j) := fun _ ↦
+    IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
+  let : ∀ j, Module.Finite (∀ i, K i) (K (v j)) := fun j ↦
+    (finite_etale_pi_component K (v j)).1
+  let : ∀ j, Algebra.Etale (∀ i, K i) (K (v j)) := fun j ↦
+    (finite_etale_pi_component K (v j)).2
+  let : ∀ j, Module.Finite (∀ i, K i) (L j) := fun j ↦
+    Module.Finite.trans (K (v j)) (L j)
+  let : ∀ j, Algebra.Etale (∀ i, K i) (L j) := fun j ↦
+    Algebra.Etale.comp (∀ i, K i) (K (v j)) (L j)
+  exact ⟨inferInstance, inferInstance⟩
 
 end SerrePositivity.CommutativeAlgebra

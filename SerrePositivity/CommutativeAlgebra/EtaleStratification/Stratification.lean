@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Basic
+public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.NilDiagonal
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.Data.Nat.Factorization.Induction
 public import Mathlib.Data.Int.NatPrime
@@ -18,6 +18,10 @@ public import Mathlib.RingTheory.Polynomial.Tower
 public import Mathlib.RingTheory.Extension.Presentation.Core
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericVanishing
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericModel
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.ReducedEtale
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericNil
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.NoetherianInduction
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FiniteFieldProduct
 
