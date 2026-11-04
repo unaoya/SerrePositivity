@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber
-public import SerrePositivity.KST.LocalizingInvariants.ArrowIsoEndpointControl
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl
 
 /-!
 概要：d8 の積から商の値への実 BF 射と、元の右辺との coherent な比較。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareZeroMultiplication
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
 
 /-!
 概要：分裂平方零拡大の積に対して、左右の単位則を証明する。

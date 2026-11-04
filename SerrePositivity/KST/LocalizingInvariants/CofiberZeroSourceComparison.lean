@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroSourceComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison
 
@@ -20,9 +21,6 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (ha : ∀ x, IsZeroSourceArrow (a.app (Opposite.op ⦋0⦌) x))
-
-local instance cofiberZeroComparisonQuasicategory : Quasicategory (zeroSourceArrows X) :=
-  fullSubcomplexOnVertices_quasicategory _ _
 
 /-- 元の零始点矢印族と、同じ終点を右随伴に入れた族の実関手同型。 -/
 def zeroSourceArrowComparison :

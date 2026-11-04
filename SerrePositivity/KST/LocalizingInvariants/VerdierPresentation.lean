@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroMaps
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 public import SerrePositivity.InfinityCategories.Core.CommutativeSquareRealization
 
 /-!

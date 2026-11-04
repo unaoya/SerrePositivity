@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorKernelActualComparisonSquare
-public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
-public import SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierDiagramComparison
 
 /-!

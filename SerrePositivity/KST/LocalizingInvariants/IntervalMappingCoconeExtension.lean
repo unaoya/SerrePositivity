@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
-public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyLastArrow
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalFatDiagram
 
 /-!

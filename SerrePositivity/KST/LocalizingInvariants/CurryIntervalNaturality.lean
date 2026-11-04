@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CurryIntervalNaturality
 
-public import SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!
@@ -20,32 +21,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CurryInterval
 
 variable {A X : SSet.{u}}
-
-def horizontal (F : A ⊗ Δ[1] ⟶ X) : SSet.Homotopy
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) ≫ F)
-    (CurryHomotopy.sliceMap (A := A) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) ≫ F) where
-  h := F
-  h₀ := rfl
-  h₁ := rfl
-  rel := by
-    apply SSet.hom_ext
-    intro n
-    apply ConcreteCategory.hom_ext
-    intro s
-    exact False.elim s.1.property
-
-lemma horizontal_arrow (F : A ⊗ Δ[1] ⟶ X) :
-    Arrow.mk ((hoFunctor.map (curry F)).toFunctor.map
-      (Truncated.HomotopyCategory.homMk homotopyIntervalEdge)) =
-    Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (horizontal F))) := by
-  apply Truncated.HomotopyCategory.congr_arrowMk_homMk
-  change (curry F).app (Opposite.op ⦋1⦌) homotopyIntervalEdge.edge = SSet.yonedaEquiv (curry F)
-  have hi : homotopyIntervalEdge.edge = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) := by
-    apply SSet.stdSimplex.ext
-    intro i
-    fin_cases i <;> rfl
-  exact congrArg (fun v ↦ (curry F).app (Opposite.op ⦋1⦌) v) hi
 
 lemma commutation [Quasicategory X] {F G : A ⊗ Δ[1] ⟶ X} (H : SSet.Homotopy F G) :
     Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (horizontal F)) ≫

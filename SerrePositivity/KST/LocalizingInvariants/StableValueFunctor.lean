@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumEdgePi
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 

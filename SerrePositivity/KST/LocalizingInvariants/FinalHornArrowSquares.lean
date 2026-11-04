@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowContractionSquares
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares
 
 /-!
 概要：最終外ホーンの矢印族を正方形族へ移し、末尾二点を元の最後の辺と恒等辺へ同定する。

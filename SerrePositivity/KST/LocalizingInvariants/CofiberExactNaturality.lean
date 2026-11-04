@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.CofiberExactPostcomposition
+public import SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
 public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison
 
 /-!

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramNormalization
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramNativeRightPresentation
-public import SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 
 /-!
 概要：接続射と共有する相対正規化は、元の右辺の全 h Fun 比較を変えない。

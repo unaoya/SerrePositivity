@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery
-public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyLastArrow
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
 
 /-!
 概要：元の固定前段・固定終点を持つ商の有限余錐族を、指定前段分母経路付きで持ち上げる。

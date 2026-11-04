@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonalShape
 
 public import SerrePositivity.KST.LocalizingInvariants.GridSimplexMap
 
@@ -15,18 +16,6 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
-
-def postIndex : Fin 2 × Fin 2 →o Fin 3 where
-  toFun p := if p.1 = 0 then 0 else if p.2 = 0 then 1 else 2
-  monotone' := by decide
-
-def preIndex : Fin 2 × Fin 2 →o Fin 3 where
-  toFun p := if p.1 = 1 then 2 else p.2.castSucc
-  monotone' := by decide
-
-def factorIndex : Fin 2 × Fin 3 →o Fin 2 where
-  toFun p := if p.2 = 0 then 0 else if p.2 = 1 then p.1 else 1
-  monotone' := by decide
 
 def postShape : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Δ[2] := gridMap postIndex
 

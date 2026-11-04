@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.SuspensionExactFunctor
 public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison
@@ -21,9 +22,6 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
-
-local instance zeroTargetComparisonQuasicategory : Quasicategory (zeroTargetArrows X) :=
-  fullSubcomplexOnVertices_quasicategory _ _
 
 def zeroTargetArrowComparison : FunctorIso a
     ((a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫

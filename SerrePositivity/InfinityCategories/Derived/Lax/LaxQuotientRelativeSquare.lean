@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 public import SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 

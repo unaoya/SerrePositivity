@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMappingFamilyTranspose
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 
 /-!
 概要：同じ前段上の全余錐族を、パラメータ関手圏の元の全余錐へ移す。

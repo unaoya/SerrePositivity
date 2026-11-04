@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGQuotientNullCorner
-public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 
 /-!

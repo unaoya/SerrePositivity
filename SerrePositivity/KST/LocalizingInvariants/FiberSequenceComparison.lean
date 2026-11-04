@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.FiberSquareComparison
+public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRelativeComparison
 public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleHoMap
 

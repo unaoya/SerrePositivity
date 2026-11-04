@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Derived.NativeArrowRelativeComparison
 public import SerrePositivity.InfinityCategories.Derived.NativeDiagramFamilyReplacement
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedYonedaEvaluation
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceKernel

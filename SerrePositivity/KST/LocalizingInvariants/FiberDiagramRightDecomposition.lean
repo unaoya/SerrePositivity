@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalEdgeRestriction
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightPrism
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension
 

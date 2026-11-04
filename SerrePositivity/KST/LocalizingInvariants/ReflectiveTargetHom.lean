@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ReflectiveTargetHom
 
 public import SerrePositivity.KST.LocalizingInvariants.AdjunctInverseFormula
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
@@ -21,19 +22,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) (hG : IsFullyFaithful G)
-
-include hG in
-lemma reflectiveCounitHom_isIso : IsIso a.counitHom :=
-  a.counitHom_isIso_of_postcompFullyFaithful (hG.postcompose Y).toHoFullyFaithful
-
-/-- 右随伴の像への Hom の、元の左関手による後合成を表す全単射。 -/
-def reflectiveTargetHomEquiv {A : SSet.{u}} [Quasicategory A]
-    (U : A ⟶ X) (V : A ⟶ Y) :
-    FunctorHom U (V ≫ G) ≃ FunctorHom (U ≫ F) ((V ≫ G) ≫ F) := by
-  have := reflectiveCounitHom_isIso a hG
-  let ε := (hoFunctor.map ((pre V).app Y)).toFunctor.map a.counitHom
-  have : IsIso ε := inferInstance
-  exact (a.homEquiv U V).symm.trans ((Iso.refl _).homCongr (asIso ε).symm)
 
 lemma reflectiveTargetHomEquiv_apply {A : SSet.{u}} [Quasicategory A]
     (U : A ⟶ X) (V : A ⟶ Y) (α : FunctorHom U (V ≫ G)) :

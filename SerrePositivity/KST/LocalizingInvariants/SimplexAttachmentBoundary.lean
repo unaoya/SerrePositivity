@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
 public import SerrePositivity.InfinityCategories.Core.InnerAnodyneEquivalence
 public import SerrePositivity.InfinityCategories.Core.PrecompositionLifting

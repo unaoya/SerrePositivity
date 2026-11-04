@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationExact
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowStableExact
 public import SerrePositivity.KST.LocalizingInvariants.CofiberBottomLifting
@@ -19,16 +20,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-/-- 自明 Kan fibration との合成の完全性から元の関手の完全性を戻す。 -/
-lemma exact_of_postcomp_trivialKanFibration {A B C : SSet.{u}}
-    [Quasicategory B] [Quasicategory C] (q : B ⟶ C) [TrivialKanFibration q]
-    (F : A ⟶ B) [IsExactFunctor (F ≫ q)] : IsExactFunctor F where
-  preservesZero x hx := (isZeroVertex_iff_map_of_trivialKanFibration q _).2
-    (IsExactFunctor.preservesZero (F := F ≫ q) x hx)
-  preservesCofiber t ht :=
-    (isPushoutSquare_iff_postcomp_trivialKanFibration q (t.square ≫ F)).2
-      (IsExactFunctor.preservesCofiber (F := F ≫ q) t ht)
 
 namespace CofiberDiagrams
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]

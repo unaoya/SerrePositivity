@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
 public import SerrePositivity.KST.LocalizingInvariants.CospanConeSquareLegs
 
 /-!

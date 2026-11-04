@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap
-public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRightTransport
+public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport
 
 /-!
 概要：中項を元の実積、右辺を元の BF 商射とする d8 の実 fiber 四角形。

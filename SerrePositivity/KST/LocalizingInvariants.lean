@@ -6,17 +6,17 @@ public import SerrePositivity.KST.LocalizingInvariants.VerdierArrowLifting
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily
 public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFamily
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalCoconeExtension
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentBoundary
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentComparisons
 public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
-public import SerrePositivity.KST.LocalizingInvariants.ArrowComparisonPrefixPath
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath
 public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexSuccessorRoof
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexCoconeLift
-public import SerrePositivity.KST.LocalizingInvariants.CoconeApexIsoNormalization
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CoconeApexIsoNormalization
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexCompletionComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution
@@ -52,7 +52,7 @@ public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeSquareCompar
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanRecoveredArrows
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanFamilyComposition
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose
-public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyLastArrow
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSimplexCoconeFamilyLift
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison
@@ -104,7 +104,7 @@ public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.Verdi
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceFractionTriangleNormalization
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceFractionNormalization
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
-public import SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowCosliceNormalization
 public import SerrePositivity.KST.LocalizingInvariants.TwoArrowConeSquares
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting
@@ -124,7 +124,7 @@ public import SerrePositivity.KST.LocalizingInvariants.InitialConeTensorCornerGl
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorGluedBoundary
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeComparison
-public import SerrePositivity.KST.LocalizingInvariants.RelativeComparisonInverse
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse
 public import SerrePositivity.KST.LocalizingInvariants.SpecifiedBoundaryEdgeNormalization
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeBoundary
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeGluing
@@ -134,7 +134,7 @@ public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConePoint
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSuccessor
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSimplex
-public import SerrePositivity.KST.LocalizingInvariants.RelativeConeProductCurry
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeConeProductCurry
 public import SerrePositivity.KST.LocalizingInvariants.RelativeConeFunctorComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiniteQuotientConeRecoveryCofinality
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFirstRowSimplexLocalization
@@ -251,7 +251,7 @@ public import SerrePositivity.KST.LocalizingInvariants.LocalizationZeroPreservat
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientPointed
 
-public import SerrePositivity.KST.LocalizingInvariants.ExactKernelStableClosure
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelStableClosure
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeDenominatorClosure
 
@@ -273,9 +273,9 @@ public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCateg
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowIsoRealization
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientArrow
 
@@ -283,13 +283,13 @@ public import SerrePositivity.KST.LocalizingInvariants.PointwiseLocalizingEdges
 
 public import SerrePositivity.KST.LocalizingInvariants.ExactArrowMap
 
-public import SerrePositivity.KST.LocalizingInvariants.ExactKernelDenominators
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactKernelDenominators
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeArrowDenominators
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeArrowRefinement
 
-public import SerrePositivity.KST.LocalizingInvariants.CofiberExactPostcomposition
+public import SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberExactNaturality
 
@@ -357,7 +357,7 @@ public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanCocartesianEdge
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianEdge
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowPostcompositionSquare
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPostcompositionFamily
 
@@ -367,11 +367,11 @@ public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition
 
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowPrecompositionSquare
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPrecompositionSquare
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareArrowFamily
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareArrowFamily
 
 public import SerrePositivity.KST.LocalizingInvariants.SpanBaseChangeFamily
 
@@ -389,7 +389,7 @@ public import SerrePositivity.KST.LocalizingInvariants.FinalHornContraction
 
 public import SerrePositivity.KST.LocalizingInvariants.PullbackFinalHornExtension
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowContractionSquares
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalHornArrowSquares
 
@@ -455,9 +455,9 @@ public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectio
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionCompatibility
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowIsoEndpointControl
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowIsoEndpointControl
 
-public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRightTransport
+public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRightTransport
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap
 
@@ -505,11 +505,11 @@ public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyExactCompari
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiber
 
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitImage
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitImage
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiberSecond
 
-public import SerrePositivity.KST.LocalizingInvariants.RelativeBoundaryInvertibility
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeBoundaryInvertibility
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCounitCComparison
 
@@ -555,7 +555,7 @@ public import SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeLegComparison
 
-public import SerrePositivity.KST.LocalizingInvariants.ExactMapPinchedPath
+public import SerrePositivity.InfinityCategories.Stable.Exact.ExactMapPinchedPath
 
 public import SerrePositivity.KST.LocalizingInvariants.CompositionDiagonalTransport
 
@@ -575,9 +575,9 @@ public import SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily
 
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdges
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization
 
@@ -605,11 +605,11 @@ public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxKernel
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxVerdier
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges
 
-public import SerrePositivity.KST.LocalizingInvariants.SquarePastingHorn
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquarePastingHorn
 
-public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare
 
@@ -637,7 +637,7 @@ public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductCompon
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueEdges
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowCompositionCancellation
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses
 
@@ -730,7 +730,7 @@ public import SerrePositivity.KST.LocalizingInvariants.StrictConeHomotopyRestric
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberCoherentCube
 public import SerrePositivity.KST.LocalizingInvariants.SliceConeComparison
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberConeComparison
-public import SerrePositivity.KST.LocalizingInvariants.ArrowInverseControl
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 public import SerrePositivity.KST.LocalizingInvariants.RawFiberCubeHom
 public import SerrePositivity.KST.LocalizingInvariants.ReplacedFiberCubeHom
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeTransportIso
@@ -738,7 +738,7 @@ public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparis
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyFiberSquareComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.MappingPathUnitNaturality
-public import SerrePositivity.KST.LocalizingInvariants.RelativeMappingEdge
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.RelativeMappingEdge
 public import SerrePositivity.KST.LocalizingInvariants.FiberMappingRelativePath
 public import SerrePositivity.KST.LocalizingInvariants.FibrationReplacementUnitPath
 
@@ -769,10 +769,10 @@ public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramNativeRightPa
 public import SerrePositivity.KST.LocalizingInvariants.GridSimplexMap
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalShape
 public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalHomotopy
-public import SerrePositivity.KST.LocalizingInvariants.SquareDiagonalEdgeRestriction
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareDiagonalEdgeRestriction
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramRightDecomposition
 
-public import SerrePositivity.KST.LocalizingInvariants.CurryHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.CurryHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.CompositionTriangleHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.CurryIntervalNaturality
 public import SerrePositivity.KST.LocalizingInvariants.TriangleEdgeHomotopy
@@ -886,7 +886,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovLayerMa
 public import SerrePositivity.KST.LocalizingInvariants.TensorBiproductExt
 public import SerrePositivity.KST.LocalizingInvariants.CochainTensorBiproductTripleExt
 public import SerrePositivity.KST.LocalizingInvariants.TensorTripleComposition
-public import SerrePositivity.KST.LocalizingInvariants.SquareZeroMultiplication
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZeroMultiplication
 public import SerrePositivity.KST.LocalizingInvariants.SquareZeroUnitLaws
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroAlgebra
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroProjection
@@ -1489,7 +1489,7 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCommonR
 public import SerrePositivity.KST.LocalizingInvariants.DGSquareZeroUnderlyingMaps
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
-public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPresentation
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
 public import SerrePositivity.KST.LocalizingInvariants.DGQuotientNullCorner
 public import SerrePositivity.KST.LocalizingInvariants.DGFixedNullSquare
 public import SerrePositivity.KST.LocalizingInvariants.DGOdotFixedNullSquare
@@ -1498,10 +1498,10 @@ public import SerrePositivity.KST.LocalizingInvariants.DGOdotVerdierRectangleTra
 public import SerrePositivity.KST.LocalizingInvariants.DGKappaRelativeRoofTransport
 public import SerrePositivity.KST.LocalizingInvariants.VerdierFractionComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCoherentContraction
-public import SerrePositivity.KST.LocalizingInvariants.RelativeSplitting
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeSplitting
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFiberSequence
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
-public import SerrePositivity.KST.LocalizingInvariants.RelativeTammeRectangle
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativeTammeRectangle
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTammePullback
 
@@ -2452,17 +2452,17 @@ public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMappingDescent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovMappingDescentLimit
 
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierPresentation
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierPresentation
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierImageTransport
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierStrict
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierStrict
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeOrdinaryHomKan
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeCoherentUnits
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovRepresentableAssembly
 
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameComparison
 
