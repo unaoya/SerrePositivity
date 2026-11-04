@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuotient
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumLocalization
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FactorizationBaseChange
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericLocalization
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericSpread
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericRadicial

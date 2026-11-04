@@ -41,7 +41,7 @@ theorem hasEtaleFactorization_awayMap {A B : Type u} [CommRing A] [CommRing B]
     rw [RingHom.injective_iff_ker_eq_bot]
     apply bot_unique
     have hnil := (PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical b).mp hu.surjective_spec.denseRange
-    simpa only [nilradical_eq_zero] using hnil
+    simpa only [nilradical_eq_zero, Ideal.zero_eq_bot] using hnil
   let A' := Localization.Away g
   let T' := Localization.Away (a g)
   let B' := Localization.Away (f g)
