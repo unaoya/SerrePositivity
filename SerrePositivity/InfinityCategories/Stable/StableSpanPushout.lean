@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.PushoutCompletion
+public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
 public import SerrePositivity.InfinityCategories.Stable.ZeroCornerPasting
 
 /-! # 安定性からの任意 span の押し出し

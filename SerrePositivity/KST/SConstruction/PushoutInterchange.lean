@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ColimitInterchange
-public import SerrePositivity.KST.SConstruction.PushoutCompletion
+public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
 
 /-! # 点ごとの余極限と押し出しの交換
 概要：押し出し四角形の族の点ごとの余極限は、必要な span の余極限が存在すれば押し出し。

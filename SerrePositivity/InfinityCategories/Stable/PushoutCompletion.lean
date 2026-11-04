@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.RelativeColimitCompletion
+public import SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
 

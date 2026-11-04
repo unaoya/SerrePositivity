@@ -17,7 +17,6 @@ public import SerrePositivity.InfinityCategories.Core.UniverseLimits
 public import SerrePositivity.InfinityCategories.Core.UniverseSlices
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.HomotopyCategory
 public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PointConstantHomEquivalence
-public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 public import SerrePositivity.InfinityCategories.Stable.AdjointifyCounitCoherence
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionCompositeCounit
 public import SerrePositivity.InfinityCategories.Stable.AdjunctionOpposite
@@ -285,6 +284,7 @@ public import SerrePositivity.InfinityCategories.Stable.HomotopyOpposite
 public import SerrePositivity.InfinityCategories.Stable.HomotopyOppositeEdges
 public import SerrePositivity.InfinityCategories.Stable.HomotopyPreadditive
 public import SerrePositivity.InfinityCategories.Stable.HomotopyVertexArrow
+public import SerrePositivity.InfinityCategories.Stable.Idempotent.StabilityUniverse
 public import SerrePositivity.InfinityCategories.Stable.IdempotentCompletionDensity
 public import SerrePositivity.InfinityCategories.Stable.IdentityCofiber
 public import SerrePositivity.InfinityCategories.Stable.InitialDiagramRestriction
@@ -552,6 +552,9 @@ public import SerrePositivity.InfinityCategories.Stable.ZeroSourceCoproductCompa
 public import SerrePositivity.InfinityCategories.Stable.ZeroSourceProjection
 public import SerrePositivity.InfinityCategories.Stable.ZeroTargetProduct
 public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleVanishing
+public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
+public import SerrePositivity.InfinityCategories.Stable.RelativeColimitCompletion
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 
 
 

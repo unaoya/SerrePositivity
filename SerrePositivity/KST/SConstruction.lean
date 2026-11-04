@@ -136,7 +136,7 @@ public import SerrePositivity.KST.SConstruction.DiagonalObjects
 public import SerrePositivity.KST.SConstruction.ObjectSConstruction
 public import SerrePositivity.KST.SConstruction.STwoAdditivityComparison
 
-public import SerrePositivity.KST.SConstruction.StableSpanPushout
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 public import SerrePositivity.KST.SConstruction.StablePushoutFamilies
 public import SerrePositivity.KST.SConstruction.CofiberPreservesPushout
 public import SerrePositivity.KST.SConstruction.GappedPushoutPreservation
