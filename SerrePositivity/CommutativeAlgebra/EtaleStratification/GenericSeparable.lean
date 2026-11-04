@@ -29,7 +29,7 @@ namespace SerrePositivity.CommutativeAlgebra
 
 /-- 有限純非分離体拡大の有限積は普遍同相。 -/
 theorem isUniversalHomeomorphism_pi_of_isPurelyInseparable
-    {ι : Type u} [Finite ι] (M L : ι → Type u)
+    {ι : Type*} [Finite ι] (M L : ι → Type u)
     [∀ i, Field (M i)] [∀ i, Field (L i)] [∀ i, Algebra (M i) (L i)]
     [∀ i, Module.Finite (M i) (L i)] [∀ i, IsPurelyInseparable (M i) (L i)] :
     IsUniversalHomeomorphism (RingHom.pi (fun i ↦
@@ -83,7 +83,7 @@ theorem invertPrimeMap_bijective_of_field {M L : Type u} [Field M] [Field L]
   · exact invertPrimeMap_bijective p f (hf (isUnit_iff_ne_zero.mpr hp))
 
 /-- 成分ごとの p 反転後の同型は、有限積の p 反転後の同型を与える。 -/
-theorem invertPrimeMap_pi_bijective {ι : Type u} [Finite ι]
+theorem invertPrimeMap_pi_bijective {ι : Type*} [Finite ι]
     (M L : ι → Type u) [∀ i, CommRing (M i)] [∀ i, CommRing (L i)]
     (p : ℕ) (f : ∀ i, M i →+* L i) (hf : ∀ i, Function.Bijective (invertPrimeMap p (f i))) :
     Function.Bijective (invertPrimeMap p (RingHom.pi (fun i ↦ (f i).comp (Pi.evalRingHom M i)))) := by

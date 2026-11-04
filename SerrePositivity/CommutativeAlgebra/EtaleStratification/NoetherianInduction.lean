@@ -47,7 +47,7 @@ theorem earlierIdeal_cons_succ {R : Type u} [CommRing R] {n : ℕ}
         exact Set.mem_insert x _
       · exact Set.mem_insert_of_mem _ ⟨j, Fin.succ_lt_succ_iff.mp hj, rfl⟩
     · rintro (rfl | ⟨j, hj, rfl⟩)
-      · exact ⟨0, Fin.zero_lt_succ i, rfl⟩
+      · exact ⟨0, (show (0 : Fin (n + 1)) < i.succ from Nat.succ_pos _), rfl⟩
       · exact ⟨j.succ, Fin.succ_lt_succ_iff.mpr hj, rfl⟩
   rw [earlierIdeal, he, Ideal.span_insert]
   rfl
@@ -69,7 +69,7 @@ theorem exists_finite_ideal_filtration {R : Type u} [CommRing R] [IsNoetherianRi
       have hIJ : I < J := lt_of_le_of_ne le_sup_left (by
         intro he
         exact hx (he.symm ▸ (show x ∈ J from
-          le_sup_right (Ideal.subset_span (Set.mem_singleton x)))))
+          (show Ideal.span {x} ≤ J from le_sup_right) (Ideal.subset_span (Set.mem_singleton x)))))
       obtain ⟨n, g, hg, hPg⟩ := ih J hIJ
       refine ⟨n + 1, Fin.cons x g, ?_, ?_⟩
       · simpa [Fin.range_cons, Ideal.span_insert, sup_assoc, J] using hg

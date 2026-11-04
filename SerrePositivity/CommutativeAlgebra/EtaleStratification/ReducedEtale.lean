@@ -50,6 +50,7 @@ theorem isReduced_of_projective_of_reduced_fibers
       (hx.map (Algebra.TensorProduct.includeRight : A →ₐ[R] K ⊗[R] A)).eq_zero
     have he := congrArg (fun t ↦ TensorProduct.rid R K (φ.lTensor K t)) hzero
     apply (Ideal.algebraMap_residueField_eq_zero (I := P)).mp
+    change algebraMap R K (φ x) = 0
     simpa [Algebra.smul_def] using he
   obtain ⟨s, hs⟩ := (Module.projective_def (R := R) (P := A)).mp inferInstance
   apply hs.injective
@@ -61,7 +62,7 @@ theorem isReduced_of_finite_etale (R A : Type u)
     [CommRing R] [CommRing A] [Algebra R A] [IsReduced R]
     [Module.Finite R A] [Algebra.Etale R A] : IsReduced A := by
   let : Module.FinitePresentation R A :=
-    Module.FinitePresentation.of_finite_of_finitePresentation
+    Module.FinitePresentation.of_finite_of_finitePresentation R A
   let : Module.Projective R A := Module.Flat.projective_of_finitePresentation
   apply isReduced_of_projective_of_reduced_fibers R A
   intro P _

@@ -78,7 +78,7 @@ theorem exists_away_etale_of_localized_formallyEtale
   let : IsLocalizedModule (Submonoid.powers (g : R)) h' :=
     IsLocalizedModule.restrictScalars _ _
   have hfzero : Subsingleton (LocalizedModule.Away (g : R) Ω[A⁄R]) :=
-    subsingleton_localizedModuleAway_mul g₁ g₂ hg₁
+    subsingleton_localizedModuleAway_mul (g₁ : R) (g₂ : R) hg₁
   have hhzero : Subsingleton (LocalizedModule.Away (g : R) (Algebra.H1Cotangent R A)) := by
     simpa [g, mul_comm] using subsingleton_localizedModuleAway_mul (g₂ : R) (g₁ : R) hg₂
   let : Subsingleton Ω[A'⁄R] :=

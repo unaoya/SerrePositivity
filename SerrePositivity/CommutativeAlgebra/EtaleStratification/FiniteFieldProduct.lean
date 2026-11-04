@@ -92,7 +92,7 @@ theorem finite_algebra_over_field_product {ι : Type u} [Finite ι]
     exact finite_field_factor K (F (e.symm j)) (v (e.symm j)) (g (e.symm j)) (hg (e.symm j))
 
 /-- 有限積から一成分への射は有限エタール。冪等元の反転として記述する。 -/
-theorem finite_etale_pi_component {ι : Type u} [Finite ι]
+theorem finite_etale_pi_component {ι : Type*} [Finite ι]
     (K : ι → Type u) [∀ i, CommRing (K i)] (i : ι) :
     letI : Algebra (∀ i, K i) (K i) := (Pi.evalRingHom K i).toAlgebra
     Module.Finite (∀ i, K i) (K i) ∧ Algebra.Etale (∀ i, K i) (K i) := by
@@ -106,7 +106,7 @@ theorem finite_etale_pi_component {ι : Type u} [Finite ι]
     (Pi.evalRingHom K i).surjective, Algebra.Etale.of_isLocalizationAway (Pi.single i 1)⟩
 
 /-- 各基底成分上の有限エタール代数の積は、基底の積上でも有限エタール。 -/
-theorem finite_etale_pi_of_componentwise {ι κ : Type u} [Finite ι] [Finite κ]
+theorem finite_etale_pi_of_componentwise {ι κ : Type*} [Finite ι] [Finite κ]
     (K : ι → Type u) [∀ i, CommRing (K i)] (v : κ → ι)
     (L : κ → Type u) [∀ j, CommRing (L j)] [∀ j, Algebra (K (v j)) (L j)]
     [∀ j, Module.Finite (K (v j)) (L j)] [∀ j, Algebra.Etale (K (v j)) (L j)] :
@@ -126,6 +126,7 @@ theorem finite_etale_pi_of_componentwise {ι κ : Type u} [Finite ι] [Finite κ
     Module.Finite.trans (K (v j)) (L j)
   let : ∀ j, Algebra.Etale (∀ i, K i) (L j) := fun j ↦
     Algebra.Etale.comp (∀ i, K i) (K (v j)) (L j)
+  change Module.Finite (∀ i, K i) (∀ j, L j) ∧ Algebra.Etale (∀ i, K i) (∀ j, L j)
   exact ⟨inferInstance, inferInstance⟩
 
 end SerrePositivity.CommutativeAlgebra

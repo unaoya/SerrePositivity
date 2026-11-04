@@ -3,6 +3,7 @@ module
 public import Mathlib.Algebra.Module.LocalizedModule.IsLocalization
 public import Mathlib.RingTheory.Localization.Away.Basic
 public import Mathlib.RingTheory.Noetherian.Basic
+public import Mathlib.RingTheory.Nilpotent.Lemmas
 public import Mathlib.RingTheory.Ideal.MinimalPrime.Basic
 public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
 
@@ -42,7 +43,7 @@ theorem exists_away_nil_of_localized_nil
   have hex (x : s) : ∃ r : M, algebraMap R A r * (x : A) ^ n x = 0 := by
     obtain ⟨r, hr⟩ := IsLocalizedModule.exists_of_eq (S := M) (f := f.toLinearMap)
       (show f ((x : A) ^ n x) = f 0 by simpa only [map_pow, map_zero] using hn x)
-    exact ⟨r, by simpa [Algebra.smul_def] using hr⟩
+    exact ⟨r, by simpa only [Submonoid.smul_def, Algebra.smul_def, smul_zero] using hr⟩
   choose r hr using hex
   let g : M := ∏ x : s, r x
   refine ⟨g, ?_⟩
