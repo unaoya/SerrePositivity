@@ -28,7 +28,7 @@ universe u
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- 体の有限積から体への射は、ただ一つの成分への評価を経由する。 -/
-private theorem exists_field_factor {ι : Type*} [Finite ι]
+theorem exists_field_factor {ι : Type*} [Finite ι]
     (K : ι → Type*) [∀ i, Field (K i)] (L : Type*) [Field L]
     (f : (∀ i, K i) →+* L) :
     ∃ (i : ι) (g : K i →+* L), g.comp (Pi.evalRingHom K i) = f := by

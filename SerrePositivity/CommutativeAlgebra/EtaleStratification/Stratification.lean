@@ -23,7 +23,7 @@ public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericMode
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.ReducedEtale
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericNil
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.NoetherianInduction
-public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FiniteFieldProduct
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericSeparable
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
