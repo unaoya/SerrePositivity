@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart
 public import SerrePositivity.KST.Fibration.StraighteningUnderSectionChart
 
 /-! # 元の under 実現比較全体を、元の共同比較の同じ指定成分として回収する -/

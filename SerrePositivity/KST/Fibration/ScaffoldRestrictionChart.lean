@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
 public import SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison
 

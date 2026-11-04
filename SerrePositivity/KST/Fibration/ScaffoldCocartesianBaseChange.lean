@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldCocartesianClassification
 public import SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange
 

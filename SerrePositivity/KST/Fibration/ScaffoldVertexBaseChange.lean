@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint
 
 /-! # 任意の元の fiber 点に対する、元の底変換成分と scaffold 復元の自然性 -/
