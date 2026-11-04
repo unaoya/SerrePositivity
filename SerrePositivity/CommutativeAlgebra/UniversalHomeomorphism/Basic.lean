@@ -9,7 +9,9 @@ public import Mathlib.FieldTheory.PurelyInseparable.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 public import Mathlib.RingTheory.Spectrum.Prime.Homeomorph
 public import Mathlib.RingTheory.TensorProduct.Basic
-public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.PowerClosure
+public import Mathlib.RingTheory.Localization.BaseChange
+public import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
+public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Localization
 
 /-!
 # 可換環の射の普遍同相
@@ -61,6 +63,13 @@ private theorem purelyInseparable_tower_top {K L M : Type*} [Field K] [Field L] 
     g.IsPurelyInseparable := by
   algebraize [f, g, g.comp f]
   exact IsPurelyInseparable.tower_top K L M
+
+/-- 合成が純非分離なら、体の塔の下段も純非分離。 -/
+private theorem purelyInseparable_tower_bot {K L M : Type*} [Field K] [Field L] [Field M]
+    (f : K →+* L) (g : L →+* M) (h : (g.comp f).IsPurelyInseparable) :
+    f.IsPurelyInseparable := by
+  algebraize [f, g, g.comp f]
+  exact IsPurelyInseparable.tower_bot K L M
 
 set_option backward.isDefEq.respectTransparency false in
 /-- 標準の剰余体の射は環準同型の合成と両立する。 -/
@@ -152,17 +161,14 @@ private theorem radicial_iff_universallyInjective {A B : Type u} [CommRing A] [C
 
 end SpecComparison
 
-/-- 概要：普遍同相は底変換・合成で安定、nil イデアルによる商は普遍同相。 -/
-theorem isUniversalHomeomorphism_baseChange {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
-    (f : A →+* B) (g : A →+* C) (hf : IsUniversalHomeomorphism f) :
-    letI : Algebra A B := f.toAlgebra
-    letI : Algebra A C := g.toAlgebra
-    IsUniversalHomeomorphism (Algebra.TensorProduct.includeRight : C →ₐ[A] B ⊗[A] C).toRingHom := by
-  let : Algebra A B := f.toAlgebra
-  let : Algebra A C := g.toAlgebra
-  let i := (Algebra.TensorProduct.includeRight : C →ₐ[A] B ⊗[A] C).toRingHom
-  have hpb := AlgebraicGeometry.isPullback_SpecMap_of_isPushout _ _ _ _
-    (CommRingCat.isPushout_tensorProduct A B C)
+/-- 環の押し出しに沿った普遍同相の移送。 -/
+theorem isUniversalHomeomorphism_of_isPushout {A B C D : Type u}
+    [CommRing A] [CommRing B] [CommRing C] [CommRing D]
+    (f : A →+* B) (g : A →+* C) (i : B →+* D) (j : C →+* D)
+    (h : CategoryTheory.IsPushout (CommRingCat.ofHom f) (CommRingCat.ofHom g)
+      (CommRingCat.ofHom i) (CommRingCat.ofHom j))
+    (hf : IsUniversalHomeomorphism f) : IsUniversalHomeomorphism j := by
+  have hpb := AlgebraicGeometry.isPullback_SpecMap_of_isPushout _ _ _ _ h
   have hi : AlgebraicGeometry.IsIntegralHom
       (AlgebraicGeometry.Spec.map (CommRingCat.ofHom f)) :=
     AlgebraicGeometry.IsIntegralHom.SpecMap_iff.mpr hf.isIntegral
@@ -176,7 +182,37 @@ theorem isUniversalHomeomorphism_baseChange {A B C : Type u} [CommRing A] [CommR
   have hr' := CategoryTheory.MorphismProperty.of_isPullback
     (P := @AlgebraicGeometry.UniversallyInjective) hpb hr
   exact ⟨AlgebraicGeometry.IsIntegralHom.SpecMap_iff.mp hi', hs'.1,
-    (radicial_iff_universallyInjective i).mpr hr'⟩
+    (radicial_iff_universallyInjective j).mpr hr'⟩
+
+
+/-- 概要：普遍同相は底変換・合成で安定、nil イデアルによる商は普遍同相。 -/
+theorem isUniversalHomeomorphism_baseChange {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
+    (f : A →+* B) (g : A →+* C) (hf : IsUniversalHomeomorphism f) :
+    letI : Algebra A B := f.toAlgebra
+    letI : Algebra A C := g.toAlgebra
+    IsUniversalHomeomorphism (Algebra.TensorProduct.includeRight : C →ₐ[A] B ⊗[A] C).toRingHom := by
+  let : Algebra A B := f.toAlgebra
+  let : Algebra A C := g.toAlgebra
+  exact isUniversalHomeomorphism_of_isPushout f g _ _
+    (CommRingCat.isPushout_tensorProduct A B C) hf
+
+/-- 始域の分母系で局所化すると普遍同相が保たれる。 -/
+theorem isUniversalHomeomorphism_localizationMap {A B : Type u} [CommRing A] [CommRing B]
+    (f : A →+* B) (S : Submonoid A) (hf : IsUniversalHomeomorphism f) :
+    IsUniversalHomeomorphism (localizationMap f S) := by
+  let : Algebra A B := f.toAlgebra
+  let : Algebra A (Localization (S.map f)) :=
+    ((algebraMap B (Localization (S.map f))).comp f).toAlgebra
+  let : Algebra (Localization S) (Localization (S.map f)) :=
+    (localizationMap f S).toAlgebra
+  let : IsScalarTower A B (Localization (S.map f)) :=
+    IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
+  let : IsScalarTower A (Localization S) (Localization (S.map f)) :=
+    IsScalarTower.of_algebraMap_eq fun a ↦ (localizationMap_algebraMap f S a).symm
+  let : Algebra.IsPushout A B (Localization S) (Localization (S.map f)) :=
+    Algebra.isPushout_of_isLocalization S (Localization S) B (Localization (S.map f))
+  exact isUniversalHomeomorphism_of_isPushout f _ _ _
+    (CommRingCat.isPushout_of_isPushout A B (Localization S) (Localization (S.map f))) hf
 
 theorem isUniversalHomeomorphism_comp {A B C : Type u} [CommRing A] [CommRing B] [CommRing C]
     (f : A →+* B) (g : B →+* C) (hf : IsUniversalHomeomorphism f)
@@ -205,6 +241,29 @@ theorem isUniversalHomeomorphism_tower_top {A B C : Type u}
       Q.asIdeal (g.comp f) rfl).IsPurelyInseparable := hf.radicial.2 Q
   rw [← residueFieldMap_comp f g Q] at h
   exact purelyInseparable_tower_top _ _ h
+
+/-- 整な普遍同相の中間部分環も、始域上の普遍同相になる。
+整性により後半の Spec が全射となることを明示して radicial 性を降ろす。 -/
+theorem isUniversalHomeomorphism_tower_bot {A B C : Type u}
+    [CommRing A] [CommRing B] [CommRing C] (f : A →+* B) (g : B →+* C)
+    (hf : IsUniversalHomeomorphism (g.comp f)) (hg : Function.Injective g) :
+    IsUniversalHomeomorphism f := by
+  have hi := RingHom.IsIntegral.tower_bot f g hg hf.isIntegral
+  have hgs := (RingHom.IsIntegral.tower_top f g hf.isIntegral).comap_surjective hg
+  refine ⟨hi, ?_, ?_, ?_⟩
+  · intro P
+    obtain ⟨Q, hQ⟩ := hf.surjective_spec P
+    exact ⟨PrimeSpectrum.comap g Q, hQ⟩
+  · intro P Q h
+    obtain ⟨P', rfl⟩ := hgs P
+    obtain ⟨Q', rfl⟩ := hgs Q
+    exact congrArg (PrimeSpectrum.comap g) (hf.radicial.1 h)
+  · intro Q
+    obtain ⟨Q', rfl⟩ := hgs Q
+    have h : (Ideal.ResidueField.map (PrimeSpectrum.comap (g.comp f) Q').asIdeal
+        Q'.asIdeal (g.comp f) rfl).IsPurelyInseparable := hf.radicial.2 Q'
+    rw [← residueFieldMap_comp f g Q'] at h
+    exact purelyInseparable_tower_bot _ _ h
 
 theorem isUniversalHomeomorphism_of_nil_kernel {A B : Type u} [CommRing A] [CommRing B]
     (f : A →+* B) (hf : Function.Surjective f) (hker : RingHom.ker f ≤ nilradical A) :
@@ -302,6 +361,92 @@ private theorem surjective_of_rootClosed_of_maximal_le_conductor
     apply ih
     simpa only [pow_succ', pow_mul] using hx
 
+/-- 有限な普遍同相の像が p 乗根で閉じていれば、その射は全射。 -/
+private theorem surjective_of_finite_of_rootClosed {A B : Type u}
+    [CommRing A] [CommRing B] [Algebra A B] [Module.Finite A B]
+    (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0)
+    (hf : IsUniversalHomeomorphism (algebraMap A B))
+    (hroot : ∀ b : B, b ^ p ∈ (algebraMap A B).range → b ∈ (algebraMap A B).range) :
+    Function.Surjective (algebraMap A B) := by
+  let f := algebraMap A B
+  let I := (subringConductor f.range).comap f
+  by_contra hn
+  have hI : I ≠ ⊤ := by
+    intro he
+    apply hn
+    intro b
+    have h : (1 : A) ∈ I := he ▸ Ideal.mem_top
+    have hb := h b
+    simpa only [map_one, one_mul] using hb
+  obtain ⟨⟨P, hP⟩⟩ := Ideal.nonempty_minimalPrimes hI
+  let := hP.isPrime
+  let S := P.primeCompl
+  let g := localizationMap f S
+  have hg := isUniversalHomeomorphism_localizationMap f S hf
+  have hrg : ∀ x, x ^ p ∈ g.range → x ∈ g.range :=
+    rootClosed_localizationMap p (Fact.out : p.Prime).pos f S hroot
+  have hcg := (subringConductor_isRadical p g.range (Fact.out : p.Prime).one_lt hrg).comap g
+  have hm : IsLocalRing.maximalIdeal (Localization S) ≤ (subringConductor g.range).comap g := by
+    rw [← IsLocalization.AtPrime.map_eq_maximalIdeal P (Localization S),
+      ← IsLocalization.AtPrime.radical_map_of_mem_minimalPrimes (Localization S) P I hP]
+    exact hcg.radical_le_iff.mpr (map_comap_conductor_le f S)
+  have hsurj := surjective_of_rootClosed_of_maximal_le_conductor p
+    (show (p : Localization S) = 0 by
+      rw [← map_natCast (algebraMap A (Localization S)), hpA, map_zero])
+    g hg hrg (IsLocalRing.maximalIdeal (Localization S)) hm
+  obtain ⟨t, ht⟩ := exists_denominator_mem_conductor S hsurj
+  exact t.property (hP.1.2 ht)
+
+/-- 整な普遍同相の像が p 乗根で閉じていれば全射。
+一元生成部分代数へ制限し、整性による中間環の radicial 性の継承を使う。 -/
+private theorem surjective_of_rootClosed {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0) (f : A →+* B)
+    (hf : IsUniversalHomeomorphism f)
+    (hroot : ∀ b : B, b ^ p ∈ f.range → b ∈ f.range) : Function.Surjective f := by
+  let : Algebra A B := f.toAlgebra
+  intro b
+  let C := Algebra.adjoin A ({b} : Set B)
+  let : Module.Finite A C := Algebra.finite_adjoin_simple_of_isIntegral (hf.isIntegral b)
+  have hc : IsUniversalHomeomorphism (algebraMap A C) :=
+    isUniversalHomeomorphism_tower_bot (algebraMap A C) C.val.toRingHom hf Subtype.val_injective
+  have hr : ∀ x : C, x ^ p ∈ (algebraMap A C).range → x ∈ (algebraMap A C).range := by
+    rintro x ⟨a, ha⟩
+    have hx : (x : B) ^ p ∈ f.range := ⟨a, congrArg Subtype.val ha⟩
+    obtain ⟨a, ha⟩ := hroot _ hx
+    exact ⟨a, Subtype.ext ha⟩
+  obtain ⟨a, ha⟩ := surjective_of_finite_of_rootClosed p hpA hc hr
+    ⟨b, Algebra.subset_adjoin (Set.mem_singleton b)⟩
+  exact ⟨a, congrArg Subtype.val ha⟩
+
+/-- p 冪閉包を中間環とすることで、整な普遍同相の元ごとの p 冪条件を得る。 -/
+private theorem pow_mem_of_isUniversalHomeomorphism {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0) (f : A →+* B)
+    (hf : IsUniversalHomeomorphism f) : ∀ b : B, ∃ n : ℕ, b ^ (p ^ n) ∈ f.range := by
+  cases subsingleton_or_nontrivial B with
+  | inl h =>
+    let := h
+    intro b
+    exact ⟨0, 0, Subsingleton.elim _ _⟩
+  | inr h =>
+    let := h
+    let : CharP B p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
+      rw [← map_natCast f, hpA, map_zero])
+    let T := pPowerClosure p f.range
+    let f' : A →+* T := f.codRestrict T fun a ↦ le_pPowerClosure p f.range (f.mem_range_self a)
+    have ht : IsUniversalHomeomorphism T.subtype :=
+      isUniversalHomeomorphism_tower_top f' T.subtype hf Subtype.val_injective
+    have hpt : (p : T) = 0 := Subtype.ext (by simp)
+    have hr : ∀ b : B, b ^ p ∈ T.subtype.range → b ∈ T.subtype.range := by
+      intro b hb
+      have hb' : b ^ p ∈ T := by
+        obtain ⟨x, hx⟩ := hb
+        exact hx ▸ x.property
+      have h : b ∈ T := (pow_mem_pPowerClosure_iff p f.range b).mp hb'
+      exact ⟨⟨b, h⟩, rfl⟩
+    intro b
+    obtain ⟨x, rfl⟩ := surjective_of_rootClosed p hpt T.subtype ht hr b
+    exact x.property
+
 /-- 概要：標数 p の判定：F_p 代数の射が普遍同相 ⇔ 核の各元が冪零で、各 b の或る p^n 乗が像にある。 -/
 theorem isUniversalHomeomorphism_iff_charP {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0) (f : A →+* B) :
@@ -311,7 +456,7 @@ theorem isUniversalHomeomorphism_iff_charP {A B : Type u} [CommRing A] [CommRing
   · intro hf
     refine ⟨(PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical f).mp
       hf.surjective_spec.denseRange, ?_⟩
-    sorry -- 整かつ radicial な射から元ごとの p 冪条件を導く方向は有限部分代数に帰着して証明する
+    exact pow_mem_of_isUniversalHomeomorphism p hpA f hf
   · rintro ⟨hk, H⟩
     have hs := PrimeSpectrum.isHomeomorph_comap f
       (fun b ↦ by
