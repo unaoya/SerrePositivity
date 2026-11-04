@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction
 public import SerrePositivity.InfinityCategories.Core.HomotopyBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
 

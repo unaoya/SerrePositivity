@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanRelativeRecovery
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary
 
 /-!
 概要：完成分数の全族・完成境界・指定境界円柱を、一つの実分母の次辺族へ戻す。

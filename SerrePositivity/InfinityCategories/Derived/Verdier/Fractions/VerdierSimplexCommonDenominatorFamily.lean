@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalEdges
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
 public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
 
 /-!

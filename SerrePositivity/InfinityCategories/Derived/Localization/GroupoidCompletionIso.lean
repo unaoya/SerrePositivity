@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 
 /-!
 概要：単体集合の元の同型を、両方の実関手を持つ亜群化の同値へ移す。

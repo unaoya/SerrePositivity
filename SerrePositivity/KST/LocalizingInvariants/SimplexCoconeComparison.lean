@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
 public import SerrePositivity.InfinityCategories.HomotopyLimits.CoconeVertexTriangles
 
 /-!

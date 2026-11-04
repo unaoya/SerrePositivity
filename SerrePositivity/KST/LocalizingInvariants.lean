@@ -8,10 +8,10 @@ public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalPullbackFa
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexTerminalRefinement
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SimplexTerminalCoconeExtension
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexRefinementCocone
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentBoundary
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentComparisons
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowComparisonPrefixPath
 public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexSuccessorRoof
@@ -93,8 +93,8 @@ public import SerrePositivity.KST.LocalizingInvariants.KanCylinderComparisonExte
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderImage
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCylinderComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedCoconeEndpoint
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteFactorization
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteBoundary
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteBoundary
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanBoundaryRecovery
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCompletedSpanCoconeRecovery
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierUniformSpanPrefixPath
@@ -150,7 +150,7 @@ public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPri
 public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreCoconeRefinement
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
 public import SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentQuotientComparison
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentQuotientComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.SplitFiberGroups
@@ -321,13 +321,13 @@ public import SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionPinchedEvaluation
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletion
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletion
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangles
 
@@ -411,9 +411,9 @@ public import SerrePositivity.KST.LocalizingInvariants.TammeMarkedSpanCartesianL
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDenominatorBaseChange
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionAdjunction
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionAdjunction
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionPrism
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionPrism
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalFiberGroupoidCompletion
 
@@ -425,7 +425,7 @@ public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidComp
 
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso
 
 public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDiagramFibers
 

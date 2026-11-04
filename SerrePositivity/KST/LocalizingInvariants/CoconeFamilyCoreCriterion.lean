@@ -2,7 +2,7 @@ module
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
 
 /-!

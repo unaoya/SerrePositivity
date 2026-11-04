@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceComparison
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation
 
 /-! # 同じ全 coslice 評価の亜群化と、既存の商写像空間比較との一致 -/
 

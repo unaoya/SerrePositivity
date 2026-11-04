@@ -1,7 +1,9 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment
 public import SerrePositivity.InfinityCategories.Core.EquivalenceFullyFaithful
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
+public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
+public import SerrePositivity.KST.LocalizingInvariants.RelativeSimplexAttachment
 
 /-!
 概要：実貼合せ境界の相対図式と、元の全商図式を同時に保持する比較。

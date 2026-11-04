@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.ParametricPullbackFamilyTranspose
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyLastArrow
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentFamilies
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentFamilies
 
 /-!
 概要：相対 pullback 族の前段と元の実次辺の円柱を、指定部分族を保って貼る。

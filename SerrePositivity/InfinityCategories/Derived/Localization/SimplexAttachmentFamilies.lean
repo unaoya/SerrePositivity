@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentBoundary
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentBoundary
 
 /-!
 概要：前段の全比較と次辺の全比較を、共有点を厳密に保って同時に貼る。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionFiniteFactorization
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionFiniteFactorization
 public import SerrePositivity.InfinityCategories.Derived.FiniteMappingCylinder
 public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 

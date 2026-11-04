@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionMappingComparison
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation
 
 /-!
 概要：両端固定の分数に実三角補完を記憶させても、その亜群化は変わらない。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentComparisons
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentComparisons
 public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
 

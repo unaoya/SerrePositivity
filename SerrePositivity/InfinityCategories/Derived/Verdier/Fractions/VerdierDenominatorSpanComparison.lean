@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierDenominatorSpanFamily
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
 
 /-!

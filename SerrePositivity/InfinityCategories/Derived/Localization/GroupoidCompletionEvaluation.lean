@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 
 /-!
 概要：Kan 値評価は亜群化に降下し、trivial Kan fibration による模型変更と整合する。

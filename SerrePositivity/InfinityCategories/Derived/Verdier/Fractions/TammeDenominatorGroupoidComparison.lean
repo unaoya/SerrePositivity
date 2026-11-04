@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.TammeSpanDiagramFibers
 public import SerrePositivity.KST.LocalizingInvariants.IntervalMarkedEdges
 public import SerrePositivity.KST.LocalizingInvariants.IntervalFiberGroupoidCompletion
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionIso
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionIso
 
 /-!
 概要：元の Tamme 分母の両端で、固定端点分数 span の亜群化を実同値で比較する。

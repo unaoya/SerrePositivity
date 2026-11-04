@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredInitialPrefixPath
 
 /-!

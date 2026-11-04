@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionMaps
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionMaps
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
 

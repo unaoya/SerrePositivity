@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.GroupoidCompletionWeakUnit
 public import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion
-public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation
 public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
 
 /-! # 元の全辺局所化と厳密な Kan 亜群化模型との実比較 -/
