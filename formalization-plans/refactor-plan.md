@@ -174,7 +174,7 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
 | 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で完了。全ビルドと verify は 11-04 未明に PASS（gate:true、監査 99/99、f3daa70ad。記録は下の「区切り 2a の記録」）。取り込み待ち |
-| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドは 11-06（その前に main を取り込む） |
+| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドと verify は 11-04 に PASS（gate:true、監査 99/99、48ec4a1b7）。取り込み待ち |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -370,6 +370,9 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
   - **B4 の本体（Pair* の定義を Principal の反復へ移す、§3.5.3）は段階 3 へ回す**。BS は `PairCompletionH0` を Koszul の H⁰ として定義どおりに使っている
     （RootEnvelope/RawCompletion などで `koszulCompletionH0Unit Raw (pairKoszulCoordinates …)`、`pairKoszulCoordinates` は 16 回）。定義を反復の側へ移すと
     これらの証明が壊れ、条件 (ii) に触れる。段階 3 で BS と相談して、BS 側を `pairCompletionUnitRingHom` などの API 経由に書き換えてから行う。
+- 全ビルドと verify（11-04 08:37〜09:58、main cc67ea88e（BS-W10 作業 A を含む）を取り込んだ 48ec4a1b7 の上、VERIFY_JOBS=6 VERIFY_MEMORY_GB=40）：
+  **PASS gate:true、監査 99/99、sorry 閉包 PASS**（ルート 447 秒、監査対象 759 秒、全体 79 分）。∞ の IF-W2c の内部ビルドが鍵を持っていたので 08:37 まで待った。
+  改名表は 2b の分だけで宣言 23 件（2a から回した CLMST の一般部分 10 件と B3 の削除 13 件）、モジュール 116 件（DerivedCompletion 135 本のうち、残り 19 本は名前のまま）。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。
