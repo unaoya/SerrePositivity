@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameEdgesHomotopy

@@ -19,6 +19,7 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+attribute [local instance] laxDifferenceFunctorZero laxDifferenceFunctorZeroMorphisms
 
 variable {C D E : StableCategory.{u}} (p : ExactMap C E) (q : ExactMap D E)
 /-- 元の指定矢印族の h Fun の類。 -/

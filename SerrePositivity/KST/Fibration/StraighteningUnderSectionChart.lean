@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
+import all SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderSectionChart
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeChartComponents
 public import SerrePositivity.KST.Fibration.TransportUnderSectionPoint
 
