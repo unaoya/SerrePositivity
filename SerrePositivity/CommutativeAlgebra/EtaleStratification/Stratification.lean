@@ -2,7 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuotient
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumLocalization
-public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FactorizationBaseChange
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumBaseChange
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumEquiv
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericLocalization
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericSpread
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericRadicial
@@ -322,6 +323,19 @@ theorem exists_noetherian_finiteEtaleStratification
   obtain ⟨n, g, hg, hPg⟩ := exists_finite_ideal_filtration P hstep ⊥
   exact ⟨n, g, by simpa using hg, fun i ↦ by simpa [P] using hPg i⟩
 
+/-- ℤ_(p) 上の代数では、p 以外の素数は可逆。 -/
+theorem isUnit_prime_of_strataBaseAlgebra (p : ℕ) [Fact p.Prime]
+    (A : Type u) [CommRing A] [Algebra (StrataBase p) A]
+    (q : ℕ) (hq : q.Prime) (hqp : q ≠ p) : IsUnit (q : A) := by
+  have hmem : (q : ℤ) ∈ (strataPrimeIdeal p).primeCompl := by
+    intro h
+    have hd : p ∣ q := Int.natCast_dvd_natCast.mp (Ideal.mem_span_singleton.mp h)
+    exact hqp ((Nat.prime_dvd_prime_iff_eq (Fact.out : p.Prime) hq).mp hd).symm
+  have hu : IsUnit (q : StrataBase p) := by
+    simpa only [map_natCast] using
+      (IsLocalization.map_units (StrataBase p) (⟨(q : ℤ), hmem⟩ : (strataPrimeIdeal p).primeCompl))
+  simpa only [map_natCast] using hu.map (algebraMap (StrataBase p) A)
+
 /-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
 方針：noetherian 近似、一般点での分解、その広げ、R_0/(g_1) への noetherian 帰納、
 (pg_i, g_i) での細分（紙 5）。
@@ -338,7 +352,38 @@ theorem exists_finiteEtaleStratification {R S : Type u} [CommRing R] [CommRing S
         let Rᵢ := StratumRing I (g i)
         HasEtaleFactorization p (stratumMap (algebraMap R S) I (g i)) ∧
           ((p : Rᵢ) = 0 ∨ IsUnit (p : Rᵢ)) := by
-  sorry -- noetherian 近似環で spread_out_generic を用い、真に小さい V(g₁) 上の R₀/(g₁) に帰納。
-        -- R への底変換の後に両環を被約化し、(pgᵢ,gᵢ) に細分して p 可逆の層と p = 0 の層を得る
+  classical
+  let : Algebra (StrataBase p) R := (strataBaseMap p R hZp).toAlgebra
+  obtain ⟨R₀, S₀, a₀, _, _, hn, hfin, hfp, ⟨e⟩⟩ :=
+    exists_noetherianApproximation (R := R) (S := S) p hZp ∅
+  let : Algebra R₀ S₀ := a₀
+  let : IsNoetherianRing R₀ := hn
+  let : Module.Finite R₀ S₀ := hfin
+  let : Algebra.FinitePresentation R₀ S₀ := hfp
+  let : Algebra R (S₀ ⊗[R₀] R) := Algebra.TensorProduct.rightAlgebra
+  obtain ⟨n, g₀, hg₀, hstrata⟩ := exists_noetherian_finiteEtaleStratification R₀ S₀ p
+    (isUnit_prime_of_strataBaseAlgebra p R₀)
+  let g : Fin n → R := fun i ↦ algebraMap R₀ R (g₀ i)
+  have hgen : Ideal.span (Set.range g) = ⊤ := by
+    have h := congrArg (Ideal.map (algebraMap R₀ R)) hg₀
+    simpa only [Ideal.map_span, Ideal.map_top, ← Set.range_comp] using h
+  refine ⟨n, g, hgen, ?_⟩
+  intro i
+  have hI : earlierIdeal g i = (earlierIdeal g₀ i).map (algebraMap R₀ R) := by
+    simp only [earlierIdeal, Ideal.map_span, Set.image_image]
+    rfl
+  constructor
+  · have hbase := hasEtaleFactorization_stratum_baseChange R₀ S₀ R p
+      (earlierIdeal g₀ i) (g₀ i) (hstrata i).1
+    apply hasEtaleFactorization_stratum_of_algEquiv p e
+    rw [hI]
+    exact hbase
+  · let f := stratumMap (algebraMap R₀ R) (earlierIdeal g₀ i) (g₀ i)
+    rw [hI]
+    rcases (hstrata i).2 with hz | hu
+    · left
+      simpa only [map_natCast, map_zero] using congrArg f hz
+    · right
+      simpa only [map_natCast] using hu.map f
 
 end SerrePositivity.CommutativeAlgebra
