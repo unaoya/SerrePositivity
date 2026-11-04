@@ -1,5 +1,5 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.SetSections。
--- S4・S8 共通の BS 側接続。基準 main 9f59541d3。ビルドしない。
+-- S4・S8 共通の BS 側接続。基準 main 55b419a24（G2 先行分取り込み後）。ビルドしない。
 -- F2 の重み付き切断 API を包むだけで、S8 の層化・局所同値には依存しない。
 module
 
@@ -14,8 +14,7 @@ public import SerrePositivity.InfinityCategories.F2.Idempotent.PointConeLimit
 public import SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt
 public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
--- 要確認（IF-G2：先行分は math/g2 に実在、main 取り込み待ち）：
--- public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
+public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
 public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
 public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalentConeRestriction
 public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeNaturality
@@ -26,7 +25,7 @@ public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
 /-!
 集合値重みの切断と、被覆篩による層条件との比較。
 指定した極限錐を保持し、一般の重み射に関する G8 の自然性には依存しない。
-証明本文を記述した箇所も型検査前。残る幾何的比較は個別の sorry に分離する。
+証明本文は型検査前。SheafGenerators の承認済みの型へ、このファイルの比較を接続する。
 -/
 
 @[expose] public section
