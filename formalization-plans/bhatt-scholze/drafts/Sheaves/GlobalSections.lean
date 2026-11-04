@@ -11,7 +11,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.Presentable.Loca
 public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorPresentable
 public import SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection
 public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
--- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,SetSections}.lean を import する。
 
 /-!
 # 大域切断と RΓ（∞ topos の Γ(F) = Map(1, F) = lim F）
@@ -124,9 +124,12 @@ theorem sheafification_of_generatingEdges (J : GrothendieckTopology 𝒞) (hE : 
 theorem exists_sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) :
     ∃ (I : Type u) (edges : I → (PresheafCat 𝒞 E) _⦋1⦌),
       ∀ F, HomotopyLimits.IsLocalObject (X := PresheafCat 𝒞 E) (Set.range edges) F ↔ sheafProperty J F := by
-  -- G8（IF-G1、F2/Tensor/SetSections の `tensorSpaceFunctor_setWeightHom`）で各重み X について
+  -- G8 の自然性を持つ別版（IF-G2 の `tensorSpaceFunctor_setWeightHomNatural`）で各重み X について
   -- Map_PSh(X ⋙ tensorSpaceFunctor hE M, F) ≃ Map_E(M, Γ(X, F))。辺は被覆篩 S ↪ h_U に M をテンソルしたもの（M は E の小さい生成系）。
-  -- 残り：S ↪ h_U についての G8 の自然性（IF-G2 の最初の項目）で「W 局所 ⇔ 層」を移す。
+  -- G2 への要求は S.functorInclusion の場合だけ。任意の前層 F、指定された極限錐 cS・cU を使う。
+  -- 篩包含版の四角形と生成系による同値の検出で「W 局所 ⇔ sectionsOf_map が可逆」を得て、
+  -- SetSections.lean の isSheaf_iff_sieveSectionsMap_isInvertible に接続する。
+  -- 一般の φ の自然性は S8-5 用であり、この補題の前提ではない。
   sorry
 
 /-- S4（HTT 5.5.4.15）。安定・presentable な係数について、被覆篩の生成辺から層化を得る。 -/

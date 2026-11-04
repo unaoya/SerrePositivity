@@ -83,7 +83,10 @@ def sieveCone {U : 𝒞} (S : Sieve U) : Cone (sieveDiagram S) where
     { app := fun f => (f.unop.obj.hom).op
       naturality := by
         -- Over U の射 g : f → f' は g.left ≫ f'.hom = f.hom を満たす。
-        sorry }
+        intro x y f
+        change 𝟙 (Opposite.op U) ≫ y.unop.obj.hom.op =
+          x.unop.obj.hom.op ≫ f.unop.hom.left.op
+        rw [Category.id_comp, ← Quiver.Hom.op_comp, Over.w f.unop.hom] }
 
 /-- 概要：前層 F の篩 S 上への制限図式。
 方針：篩の圏の nerve を持ち上げ、`nerveMap (sieveDiagram S)` を F に前合成する。
