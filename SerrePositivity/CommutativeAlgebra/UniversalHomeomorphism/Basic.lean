@@ -164,6 +164,25 @@ private theorem radicial_iff_universallyInjective {A B : Type u} [CommRing A] [C
 
 end SpecComparison
 
+/-- 整・Spec 全射な射は、体値点の延長が一意なら普遍同相。
+対角射の核が nil であることを使う判定の入口。 -/
+theorem isUniversalHomeomorphism_of_injective_fieldMaps {A B : Type u}
+    [CommRing A] [CommRing B] (f : A →+* B) (hi : f.IsIntegral)
+    (hs : Function.Surjective (PrimeSpectrum.comap f))
+    (hf : ∀ (K : Type u) [Field K],
+      Function.Injective (fun g : B →+* K ↦ g.comp f)) :
+    IsUniversalHomeomorphism f := by
+  refine ⟨hi, hs, (radicial_iff_universallyInjective f).mpr ?_⟩
+  apply ((AlgebraicGeometry.tfae_universallyInjective
+    (AlgebraicGeometry.Spec.map (CommRingCat.ofHom f))).out 2 1).mp
+  intro K _ g₁ g₂ h
+  apply AlgebraicGeometry.Spec.preimage_injective
+  apply CommRingCat.hom_ext
+  apply hf K
+  have he := congrArg (fun h ↦ (AlgebraicGeometry.Spec.preimage h).hom) h
+  simpa only [AlgebraicGeometry.Spec.preimage_comp, CommRingCat.hom_comp,
+    AlgebraicGeometry.Spec.preimage_map] using he
+
 /-- 環の押し出しに沿った普遍同相の移送。 -/
 theorem isUniversalHomeomorphism_of_isPushout {A B C D : Type u}
     [CommRing A] [CommRing B] [CommRing C] [CommRing D]

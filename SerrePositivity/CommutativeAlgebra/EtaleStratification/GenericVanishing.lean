@@ -2,6 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
 public import Mathlib.RingTheory.Support
+public import Mathlib.RingTheory.Etale.Locus
 
 /-!
 # 有限加群の一般点での消滅を主開集合に延ばす
@@ -49,5 +50,28 @@ theorem exists_away_surjective_of_generic_surjective
       Function.Surjective (LocalizedModule.map (Submonoid.powers g) f) := by
   simp_rw [f.localizedMap_surjective_iff_subsingleton_localized_coker] at hf ⊢
   exact exists_away_subsingleton_of_generic_vanishing (N ⧸ LinearMap.range f) hf
+
+/-- 有限表示有限代数のエタール locus が全極小点の上を含めば、
+基底の全極小点を残す主開集合上でエタールになる。 -/
+theorem exists_away_etale_of_generic_etale
+    {R A : Type u} [CommRing R] [CommRing A] [Algebra R A]
+    [IsNoetherianRing R] [Module.Finite R A] [Algebra.FinitePresentation R A]
+    (hgeneric : ∀ P : GenericPoint R, ∀ Q : PrimeSpectrum A,
+      PrimeSpectrum.comap (algebraMap R A) Q = P.val → Q ∈ Algebra.etaleLocus R A) :
+    ∃ g : R, (∀ P : GenericPoint R, g ∉ P.val.asIdeal) ∧
+      Algebra.Etale R (Localization.Away (algebraMap R A g)) := by
+  let bad := (PrimeSpectrum.comap (algebraMap R A)) '' (Algebra.etaleLocus R A)ᶜ
+  have hclosed : IsClosed bad :=
+    PrimeSpectrum.isClosedMap_comap_of_isIntegral (algebraMap R A)
+      (Algebra.IsIntegral.isIntegral (R := R)) _ Algebra.isOpen_etaleLocus.isClosed_compl
+  have hgood (P : GenericPoint R) : P.val ∈ badᶜ := by
+    rintro ⟨Q, hQ, he⟩
+    exact hQ (hgeneric P Q he)
+  obtain ⟨g, hg, hD⟩ := exists_basicOpen_around_genericPoints badᶜ hclosed.isOpen_compl hgood
+  refine ⟨g, hg, Algebra.basicOpen_subset_etaleLocus_iff_etale.mp ?_⟩
+  intro Q hQ
+  by_contra hn
+  have hbase : PrimeSpectrum.comap (algebraMap R A) Q ∈ PrimeSpectrum.basicOpen g := hQ
+  exact hD hbase ⟨Q, hn, rfl⟩
 
 end SerrePositivity.CommutativeAlgebra
