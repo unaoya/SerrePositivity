@@ -2818,7 +2818,6 @@
     }
   },
   "preserved_original_run_cmd_predicates": true,
-  "destination_audit_import_all": "Load private declarations for all 441 destination modules, including 3 private-only split outputs; these audit imports are separate from the 15 production repair edges.",
   "module_list_transfers": [
     {
       "from": "scripts/audit_kst_fibration.lean",
@@ -6584,5 +6583,24 @@
       "distinct_declarations_before": 14,
       "distinct_declarations_after": 14
     }
+  },
+  "destination_audit_imports": "Legacy non-module auditors use plain import. Lean importModulesCore globally loads private data in this mode. All 441 owners retain explicit checks; three private-only modules validated by the probe.",
+  "format_correction": {
+    "first_attempt": "INTERRUPTED_FOR_OWN_AUDIT_SYNTAX",
+    "production_changes": 0,
+    "predicates_changed": false,
+    "probe": {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-downstream/audit-private-import-probe.lean"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 8.392,
+      "log": "audit-private-import-probe.log"
+    },
+    "implementation_reference": "Lean/Environment.lean importModulesCore (globalLevel == .private), Lean/Parser/Module.lean rejects all without module"
   }
 }

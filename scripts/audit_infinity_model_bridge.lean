@@ -1,11 +1,11 @@
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies
-import all SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
+import SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
+import SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization
+import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests
+import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
+import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
+import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+import SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies
+import SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。

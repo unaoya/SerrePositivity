@@ -1,8 +1,8 @@
-import all SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
-import all SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap
-import all SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality
-import all SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact
-import all SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
+import SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
+import SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap
+import SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality
+import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact
+import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。

@@ -1,19 +1,19 @@
-import all SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
-import all SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
-import all SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
-import all SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
-import all SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies
-import all SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
-import all SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
-import all SerrePositivity.KST.Spectra.Limits.SpectrumPoint
-import all SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
-import all SerrePositivity.KST.Spectra.Limits.SpectrumPullbackCones
-import all SerrePositivity.KST.Spectra.Limits.SpectrumPullbackMonomorphisms
-import all SerrePositivity.KST.Spectra.Limits.SpectrumPullbackOmega
-import all SerrePositivity.KST.Spectra.Limits.SpectrumTowerMonomorphisms
-import all SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega
-import all SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
-import all SerrePositivity.KST.Spectra.Limits.SpectrumTowers
+import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
+import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
+import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomHornFamilies
+import SerrePositivity.KST.Spectra.Limits.SpectrumHomLimitFamilies
+import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
+import SerrePositivity.KST.Spectra.Limits.SpectrumPoint
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackCones
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackMonomorphisms
+import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackOmega
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerMonomorphisms
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
+import SerrePositivity.KST.Spectra.Limits.SpectrumTowers
 import SerrePositivity.KST.Spectra
 import Lean.Util.CollectAxioms
 

@@ -1,7 +1,7 @@
-import all SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
-import all SerrePositivity.InfinityCategories.Kan.LastHornContraction
-import all SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne
-import all SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
+import SerrePositivity.InfinityCategories.Kan.AnodyneMappingLifts
+import SerrePositivity.InfinityCategories.Kan.LastHornContraction
+import SerrePositivity.InfinityCategories.Kan.Pointed.PointedIntervalAnodyne
+import SerrePositivity.InfinityCategories.Kan.SimplexLastContraction
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
