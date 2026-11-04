@@ -57,7 +57,7 @@ theorem natCast_eq_zero_stratum_of_mul_mem {R : Type u} [CommRing R]
 theorem isUnit_natCast_stratum_mul {R : Type u} [CommRing R]
     (I : Ideal R) (g : R) (p : ℕ) : IsUnit (p : StratumRing I ((p : R) * g)) := by
   have hu := stratumUnit_isUnit I ((p : R) * g)
-  rw [map_mul, map_natCast] at hu
+  simp only [map_mul, map_natCast] at hu
   exact isUnit_of_mul_isUnit_left hu
 
 /-- S では先に I を延長し、その後に根基を取って局所化する。 -/
@@ -75,8 +75,7 @@ def stratumMap {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (I : Ide
 theorem stratumMap_unit {R S : Type u} [CommRing R] [CommRing S]
     (f : R →+* S) (I : Ideal R) (g x : R) :
     stratumMap f I g (stratumUnit I g x) = stratumUnit (I.map f) (f g) (f x) := by
-  simp only [stratumMap, stratumUnit, RingHom.comp_apply, IsLocalization.Away.lift_eq]
-  rfl
+  exact IsLocalization.Away.lift_eq _ _ _
 
 /-- 層を始域とする環準同型は、元の環の標準像上で一致すれば等しい。 -/
 theorem stratumRing_hom_ext {R A : Type u} [CommRing R] [CommRing A]
@@ -84,7 +83,6 @@ theorem stratumRing_hom_ext {R A : Type u} [CommRing R] [CommRing A]
     (he : ∀ x : R, f (stratumUnit I g x) = h (stratumUnit I g x)) : f = h := by
   apply IsLocalization.ringHom_ext (Submonoid.powers (Ideal.Quotient.mk I.radical g))
   ext x
-  obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
   exact he x
 
 /-- 同じイデアルの異なる表示から得た層の標準同型。 -/
@@ -119,7 +117,7 @@ theorem invertPrimeMap_algebraMap {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) (f : A →+* B) (x : A) :
     invertPrimeMap p f (algebraMap A (Localization.Away (p : A)) x) =
       algebraMap B (Localization.Away (p : B)) (f x) := by
-  exact IsLocalization.map_eq _ _ _ x
+  exact IsLocalization.map_eq _ x
 
 @[simp]
 theorem invertPrimeMap_id {A : Type u} [CommRing A] (p : ℕ) :
@@ -165,6 +163,8 @@ theorem invertPrimeMap_surjective_iff {A B : Type u} [CommRing A] [CommRing B]
   let : IsLocalization.Away (f (p : A)) (Localization.Away (p : B)) := by
     rw [map_natCast]
     infer_instance
+  change Function.Surjective (IsLocalization.Away.map
+    (Localization.Away (p : A)) (Localization.Away (p : B)) f (p : A)) ↔ _
   simpa only [map_natCast] using
     (IsLocalization.Away.map_surjective_iff
       (Localization.Away (p : A)) (Localization.Away (p : B)) f (p : A))

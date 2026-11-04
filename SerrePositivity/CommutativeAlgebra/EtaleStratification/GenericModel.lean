@@ -60,6 +60,8 @@ theorem genericSubalgebraModel_isLocalizedModule (M : Submonoid R) [IsLocalizati
     ext x
     rfl
   rw [← hmap]
+  let : IsLocalizedModule M (T.toSubmodule.toLocalized' K M f.toLinearMap) :=
+    Submodule.isLocalizedModule K M f.toLinearMap T.toSubmodule
   exact IsLocalizedModule.of_linearEquiv M _ e
 
 end SerrePositivity.CommutativeAlgebra
