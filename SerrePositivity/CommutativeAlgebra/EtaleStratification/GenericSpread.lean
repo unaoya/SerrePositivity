@@ -43,7 +43,8 @@ theorem exists_away_etale_genericSubalgebraModel
   let : IsLocalizedModule M t.toLinearMap := genericSubalgebraModel_isLocalizedModule M f C
   let : IsLocalization (Algebra.algebraMapSubmonoid T M) C :=
     isLocalizedModule_iff_isLocalization.mp (show IsLocalizedModule M
-      (IsScalarTower.toAlgHom R T C).toLinearMap from inferInstanceAs (IsLocalizedModule M t.toLinearMap))
+      (IsScalarTower.toAlgHom R T C).toLinearMap from
+        inferInstanceAs (IsLocalizedModule M t.toLinearMap))
   let : Algebra.FormallyEtale R K := Algebra.FormallyEtale.of_isLocalization M
   let : Algebra.FormallyEtale R C := Algebra.FormallyEtale.comp R K C
   let : Algebra.FinitePresentation R T := Algebra.FinitePresentation.of_finiteType.mp inferInstance

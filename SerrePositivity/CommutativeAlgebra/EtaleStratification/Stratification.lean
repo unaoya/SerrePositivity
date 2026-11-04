@@ -1,6 +1,10 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuotient
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericLocalization
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericSpread
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericRadicial
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPrimeVanishing
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.Data.Nat.Factorization.Induction
 public import Mathlib.Data.Int.NatPrime

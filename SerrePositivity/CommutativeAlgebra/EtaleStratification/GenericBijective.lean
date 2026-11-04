@@ -49,7 +49,8 @@ theorem exists_away_bijective_of_localized_bijective
   have hk := (localizedMap_injective_iff_subsingleton_localized_ker S f).mp hf.injective
   have hc := (f.localizedMap_surjective_iff_subsingleton_localized_coker S).mp hf.surjective
   obtain ⟨g₁, hg₁⟩ := exists_away_subsingleton_of_localized_subsingleton S (LinearMap.ker f) hk
-  obtain ⟨g₂, hg₂⟩ := exists_away_subsingleton_of_localized_subsingleton S (N ⧸ LinearMap.range f) hc
+  obtain ⟨g₂, hg₂⟩ :=
+    exists_away_subsingleton_of_localized_subsingleton S (N ⧸ LinearMap.range f) hc
   refine ⟨g₁ * g₂, ?_, ?_⟩
   · apply (localizedMap_injective_iff_subsingleton_localized_ker _ f).mpr
     exact subsingleton_localizedModuleAway_mul (g₁ : R) (g₂ : R) hg₁
