@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.SmallUnstraighteningFunctorHom
+public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningFunctorHom
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification
 public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison

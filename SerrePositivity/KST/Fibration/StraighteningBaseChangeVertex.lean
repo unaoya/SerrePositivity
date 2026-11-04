@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeVertex
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRestriction
 
 /-! # 大域底変換の任意の実頂点で、同じ零単体上の指定比較を回収する -/
@@ -12,18 +13,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-private lemma firstVertex_zeroSimplex (d : D _⦋0⦌) :
-    (transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
-      (nerveVertex (transportSimplexIndex d)) = d := by
-  rw [transportSimplexFirstVertexMap_vertex]
-  have h : stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
-      SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by
-    apply stdSimplex.ext
-    intro i
-    apply Fin.ext
-    omega
-  rw [h, SSet.yonedaEquiv_symm_app_id]
 
 /-- 実底頂点 d での大域成分は、その同じ d の零単体上の元の制限比較。 -/
 theorem leftStraighteningSectionJointDiagram_baseChangeIso_vertex [Quasicategory D]

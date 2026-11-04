@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSpanCanonicalResolution
-public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.InfinityCategories.Core.CoconeTransport
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightKanShapeCommaComparison
 public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanFiniteFactorization

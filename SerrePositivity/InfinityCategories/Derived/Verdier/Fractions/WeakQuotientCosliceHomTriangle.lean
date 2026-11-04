@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceIdentityHom
-public import SerrePositivity.KST.Fibration.CosliceFiberHomClass
+public import SerrePositivity.InfinityCategories.F1.Transport.CosliceFiberHomClass
 public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
 
 /-! # 指定恒等点の元の射の類の比較から、同じ小さい底上の実三角比較を回収する -/

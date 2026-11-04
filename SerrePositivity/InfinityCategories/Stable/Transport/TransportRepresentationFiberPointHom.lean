@@ -1,0 +1,46 @@
+module
+public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
+public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
+public import Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat
+public import Mathlib.Basic.FunLike.Basic
+public import Mathlib.Basic.Opposite
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.ConcreteCategory.Basic
+public import Mathlib.CategoryTheory.EqToHom
+public import Mathlib.CategoryTheory.Functor.Basic
+public import Mathlib.CategoryTheory.Functor.Category
+public import Mathlib.CategoryTheory.Iso
+public import Mathlib.CategoryTheory.NatTrans
+public import Mathlib.CategoryTheory.ObjectProperty.FullSubcategory
+public import Mathlib.CategoryTheory.Opposites
+public import Mathlib.CategoryTheory.Types.Basic
+public import Mathlib.Combinatorics.Quiver.Basic
+public import Mathlib.Combinatorics.Quiver.ReflQuiver
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
+
+/-!
+分割で生成：docstring を書き直すこと
+ # 同じ指定 fiber の実点において、表現比較の diagramIso 成分との自然性を保つ
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.Fibration
+
+private theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
+    (α : FunctorHom F G) {a b : D _⦋0⦌} (hab : a = b) :
+    functorHomEvaluate α a ≫
+      (eqToIso (congrArg HomotopyCategory.mk
+        (congrArg (G.app (Opposite.op ⦋0⦌)) hab))).hom =
+      (eqToIso (congrArg HomotopyCategory.mk
+        (congrArg (F.app (Opposite.op ⦋0⦌)) hab))).hom ≫ functorHomEvaluate α b := by
+  cases hab
+  simp only [eqToIso_refl, Iso.refl_hom, Category.id_comp, Category.comp_id]
+
+end SerrePositivity.KST.Fibration

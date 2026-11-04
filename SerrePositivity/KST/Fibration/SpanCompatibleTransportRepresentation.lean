@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.StrictTransportComparisonSpan
+public import SerrePositivity.InfinityCategories.F1.Transport.StrictTransportComparisonSpan
 public import SerrePositivity.KST.Fibration.SpanCompatibleComparison
 public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection

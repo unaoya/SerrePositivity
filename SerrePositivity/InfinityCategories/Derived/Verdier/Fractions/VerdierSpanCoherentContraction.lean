@@ -21,7 +21,7 @@ public import SerrePositivity.InfinityCategories.F1.Joins.CoslicePostCoordinates
 public import SerrePositivity.KST.LocalizingInvariants.GroupoidCompletionEvaluation
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationCoslicePointUniqueness
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
-public import SerrePositivity.KST.Fibration.CoslicePointFamilyAt
+public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointFamilyAt
 public import SerrePositivity.KST.Fibration.WeakQuotientCosliceUnit
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceScaffoldTriangle
 public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberReflection

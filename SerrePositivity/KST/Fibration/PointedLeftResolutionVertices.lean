@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices
 public import SerrePositivity.KST.Fibration.PointKanHomVertices
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberVertices
 
@@ -12,12 +13,6 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-
-/-- 同じ左解像係数の零単体は、反転した同じ点への標準 Hom 同型の逆で計算する。 -/
-theorem pointedSpaceLeftCoefficientIso_vertex (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
-    (pointedSpaceLeftCoefficientIso K).hom.app (Opposite.op ⦋0⦌) v =
-      SSet.opObjEquiv.symm ((pointKanObjectHomIso (kanObjectOpFunctor.obj K)).inv.app
-        (Opposite.op ⦋0⦌) (SSet.opObjEquiv.symm v)) := rfl
 
 /-- 元の標準 Hom 係数で reverse 比較を評価すると、その同じ元の点を回収する。 -/
 theorem pointedReverseKanFiberComparison_point (K : KanObject.{u}) (v : K.obj _⦋0⦌) :
@@ -35,14 +30,6 @@ theorem pointedReverseKanFiberComparison_point (K : KanObject.{u}) (v : K.obj _�
   dsimp only [SimplicialCategory.sHom, EnrichedCategory.Hom, EnrichedCategory.opposite,
     kanObject_enrichedCategory] at h ⊢
   simpa only [Equiv.apply_symm_apply] using h
-
-private theorem uliftMapVertex {A B : SSet.{u}} (f : A ⟶ B) (v : A _⦋0⦌) :
-    ((SSet.uliftFunctor.{u + 1, u}).map f).app (Opposite.op ⦋0⦌) (ULift.up v) =
-      ULift.up (f.app (Opposite.op ⦋0⦌) v) := rfl
-
-private theorem uliftOppositeVertex (A : SSet.{u}) (v : A.op _⦋0⦌) :
-    (HomotopyLimits.uliftOppositeIso.{u, u + 1} A).hom.app (Opposite.op ⦋0⦌) (ULift.up v) =
-      SSet.opObjEquiv.symm (ULift.up (SSet.opObjEquiv v)) := rfl
 
 /-- 左解像比較の元の係数点の像は、標準 pointed 頂点として反転した同じ点を回収する。 -/
 theorem pointedSpaceLeftResolutionComparison_vertex (K : KanObject.{u})

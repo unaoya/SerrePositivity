@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.KanPointComponentComposition
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanPointComponentComposition
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityNativeComparison
 
 /-! # 商上の恒等点の比較像を、元の strict Kan 比較による同じ恒等点の実像で表す -/

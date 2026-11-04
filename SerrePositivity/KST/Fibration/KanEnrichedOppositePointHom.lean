@@ -1,5 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.KanEnrichedEdgewiseDoubleEvaluation
+public import SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom
+public import SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation
 
 /-! # 元の大域的な係数反転同型の同じ指定成分と、元の係数点の作用 -/
 
@@ -13,16 +14,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {C : Type (u + 1)} [Category.{u} C] [SimplicialCategory C]
   {J : Type u} [Category.{u} J] (D : KanEnrichedDiagram C J)
-
-/-- 元の大域的反転同型を同じ二重評価で写し、元の二つの Kan 値へ端点だけを揃える。 -/
-def kanEnrichedOppositeComponentIso (X : EdgewiseEnrichedObject C) (j : J) :
-    VertexIso (spaceInfinityVertex ((D.obj j).obj X.val))
-      (spaceInfinityVertex (kanObjectOpFunctor.obj ((D.obj j).obj X.val))) :=
-  F2.isoNormalizeEndpoints
-    (VertexIso.map D.oppositeRealizationIso (kanEnrichedDoubleEvaluation X j))
-    (congrArg HomotopyCategory.mk
-      (kanEnrichedDoubleEvaluation_precomp_vertex D (edgewiseEnrichedRight C) X j))
-    (congrArg HomotopyCategory.mk (kanEnrichedDoubleEvaluation_vertex D.opposite X j))
 
 /-- 元の大域的反転同型の同じ成分は、元の左右指定成分の合成に厳密に一致する。 -/
 theorem kanEnrichedOppositeComponentIso_eq_edgewise (X : EdgewiseEnrichedObject C) (j : J) :

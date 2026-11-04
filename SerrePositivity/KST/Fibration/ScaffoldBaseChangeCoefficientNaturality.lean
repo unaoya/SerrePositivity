@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint
 
@@ -12,29 +13,6 @@ open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-
-private lemma pointTriangle {C : Type*} [Category C] {a b c d e f g : C}
-    (v : a ⟶ b) (l : c ≅ b) (s : c ≅ d) (i : e ≅ d)
-    (q : c ≅ f) {j : C} (r : f ≅ j) (z : g ≅ j)
-    (x : a ⟶ e) (y : a ⟶ g)
-    (hx : v ≫ l.inv ≫ s.hom ≫ i.inv = x)
-    (hy : v ≫ l.inv ≫ q.hom ≫ r.hom ≫ z.inv = y) :
-    x ≫ (i ≪≫ s.symm ≪≫ q ≪≫ r ≪≫ z.symm).hom = y := by
-  rw [← hx]
-  simp only [Iso.trans_hom, Iso.symm_hom, Category.assoc,
-    Iso.inv_hom_id_assoc, Iso.hom_inv_id_assoc]
-  exact hy
-
-private lemma endpointSpan_heq {C : Type*} [Category C] {a b c d e f : C}
-    (h : a = b) (s : c = b) (q : c ≅ d) (r : d = e) (z : f = e) :
-    HEq (eqToIso h ≪≫ (eqToIso s).symm ≪≫ q ≪≫ eqToIso r ≪≫ (eqToIso z).symm) q := by
-  subst b
-  subst c
-  subst e
-  subst f
-  have hs (x : C) : (Iso.refl x).symm = Iso.refl x := rfl
-  simp only [eqToIso_refl, hs, Iso.refl_trans, Iso.trans_refl]
-  rfl
 
 /-- 同じ単体切断の初頂点 fiber 点の、実 scaffold 復元射による像。 -/
 def scaffoldReconstructionSectionPoint {E B : SSet.{u}} [Quasicategory B]
@@ -50,9 +28,6 @@ def scaffoldReconstructionSectionPoint {E B : SSet.{u}} [Quasicategory B]
 
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   [Quasicategory B] (k : D ⟶ B) [Quasicategory D]
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 /-- 元の大域底変換の指定成分を、両側の同じ実図式値で表示する。 -/
 def scaffoldBaseChangeCoefficientIso (c : TransportSimplexCategory D) :=

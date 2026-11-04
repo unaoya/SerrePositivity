@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Fibration.UnstraighteningComponentSurjectivity
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction
-public import SerrePositivity.KST.Fibration.FunctorIsoComponentLaws
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponentLaws
 public import SerrePositivity.KST.Fibration.KanPointSurjectivity
 
 /-! # 元の K-6 比較二胞体と strict Kan 成分の、全ての点の射に対する全射性

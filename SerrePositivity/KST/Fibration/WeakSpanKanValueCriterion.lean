@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanFiberComparison
-public import SerrePositivity.KST.Fibration.StrictKanEvaluationComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.StrictKanEvaluationComparison
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionCosliceGroupoid
 
 /-! # 同じ strict Kan 比較の値での同値性を、元の分数比較そのもので判定する -/

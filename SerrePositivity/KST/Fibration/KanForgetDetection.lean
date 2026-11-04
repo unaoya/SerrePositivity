@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.KanModels.KanForgetDetection
 public import SerrePositivity.KST.Fibration.KanClosedEvaluation
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
 public import SerrePositivity.InfinityCategories.F1.Transport.InvertibleLeftTransport
@@ -17,14 +18,6 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
-
-/-- 元の Kan 射の coherent な可逆性は、同じ射の全基点 π 同値性を与える。 -/
-theorem kanMap_piIsomorphism_of_invertible {X Y : KanObject.{u}} (f : X ⟶ Y)
-    (hf : IsInvertibleEdge (coherentNerveEdge f)) : Spectra.KanPiIsomorphism f := by
-  have ht := edgeTransport_isQCatEquivalence_of_isInvertibleEdge
-    pointedSpaceProjection (coherentNerveEdge f) hf
-  have he := (pointedSpaceTransport_coherentEdge_isQCatEquivalence_iff f).mp ht
-  exact kanPiIsomorphism_of_homotopyEquivalence f he.isSimplicialHomotopyEquivalence
 
 /-- 基点忘却の全 Hom 作用は、同じ元の基礎射の coherent な辺を回収する。 -/
 theorem pointedKanForget_edge {X Y : PointedKanObject.{u}} (f : X ⟶ Y) :

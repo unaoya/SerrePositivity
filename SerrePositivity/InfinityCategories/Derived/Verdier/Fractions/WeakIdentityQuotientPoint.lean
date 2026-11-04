@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakIdentityKanValue
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent
-public import SerrePositivity.KST.Fibration.PointedSpaceHomPoint
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceHomPoint
 
 /-! # 元の恒等 span から、同じ商上の分数図式の実 unstraightening 点を構成する -/
 

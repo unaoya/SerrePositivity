@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonSection
-public import SerrePositivity.KST.Fibration.FunctorIsoValue
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoValue
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
 
 /-! # 同じ商上の実右逆と余単位を、全ての元の fiber に制限する -/

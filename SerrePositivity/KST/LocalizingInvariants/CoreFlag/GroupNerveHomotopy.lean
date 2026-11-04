@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy
 
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.StrictSegalHomotopy
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy
 public import SerrePositivity.KST.Spectra.GroupNerveCoordinates
 public import SerrePositivity.KST.Spectra.KanEquivalenceBridge
 public import SerrePositivity.InfinityCategories.Core.KanCharacterization
@@ -24,13 +25,6 @@ open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open InfinityCategories Spectra
-
-/-- 小さな亜群の nerve はホモトピー圏の亜群性から Kan となる。 -/
-lemma groupoidNerve_kanComplex (D : Type u) [SmallCategory D] [IsGroupoid D] : KanComplex (nerve D) := by
-  let e : hoFunctor.obj (nerve D) ≌ D :=
-    Cat.equivOfIso (nerveFunctorCompHoFunctorIso.app (Cat.of D))
-  have : IsGroupoid (hoFunctor.obj (nerve D)) := isGroupoid_of_reflects_iso e.functor
-  exact kanComplex_of_isGroupoid _
 
 /-- 元の Kan 複体で全基点に成り立つ消滅は、連続 Kan 置換の任意の基点にも成り立つ。 -/
 lemma continuousKanReplacement_kanHomotopy_subsingleton (X : SSet.{u}) [KanComplex X]

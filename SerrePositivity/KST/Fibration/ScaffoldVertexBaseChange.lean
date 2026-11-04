@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionFiberPoint
 
 /-! # 任意の元の fiber 点に対する、元の底変換成分と scaffold 復元の自然性 -/
@@ -12,22 +13,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma pointNormalize {C : Type*} [Category C] {a b a' b' z : C}
-    (e : a ≅ b) (hs : a = a') (ht : b = b')
-    (x : z ⟶ a) (x' : z ⟶ a') (y : z ⟶ b) (y' : z ⟶ b')
-    (hx : x ≫ (eqToIso hs).hom = x') (hy : y ≫ (eqToIso ht).hom = y')
-    (he : x ≫ e.hom = y) :
-    x' ≫ (F2.isoNormalizeEndpoints e hs ht).hom = y' := by
-  rw [← hx, ← hy]
-  simp only [F2.isoNormalizeEndpoints, Iso.trans_hom, Iso.symm_hom,
-    Category.assoc, Iso.hom_inv_id_assoc]
-  exact (Category.assoc _ _ _).symm.trans (congrArg (fun m => m ≫ (eqToIso ht).hom) he)
-
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   [Quasicategory B] (k : D ⟶ B) [Quasicategory D]
-
-local instance : LeftFibration (pullback.snd p k) :=
-  ⟨leftFibrations.pullback_snd p k (LeftFibration.mem (p := p))⟩
 
 omit [Quasicategory B] [Quasicategory D] in
 /-- 零単体の第一射影切断の初頂点は、元の指定点の実 fiber 底変換像。 -/

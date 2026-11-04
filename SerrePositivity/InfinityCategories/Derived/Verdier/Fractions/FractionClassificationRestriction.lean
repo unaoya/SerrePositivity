@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanCosliceClassification
-public import SerrePositivity.KST.Fibration.FunctorIsoComponent
+public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoComponent
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-! # 指定した商上の分類同型を元の底へ制限すると、同じ元の分類同型を回収する -/

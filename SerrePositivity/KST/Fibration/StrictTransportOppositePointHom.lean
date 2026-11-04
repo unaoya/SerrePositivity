@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.StrictTransportOppositeEvaluation
+public import SerrePositivity.InfinityCategories.Stable.Transport.StrictTransportOppositeEvaluation
 
 /-! # 元の strict transport の反転比較の指定成分が、元の係数点の射を保つ -/
 

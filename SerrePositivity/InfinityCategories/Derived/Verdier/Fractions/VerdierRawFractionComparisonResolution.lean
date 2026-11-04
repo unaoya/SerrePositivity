@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFractionComparisonResolution
-public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 
 /-!
 概要：完成分数の比較経路を保持したまま、元の実分数の全族へ戻す。

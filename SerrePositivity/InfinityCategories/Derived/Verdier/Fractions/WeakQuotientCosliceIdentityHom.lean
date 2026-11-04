@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCoslicePointAction
-public import SerrePositivity.KST.Fibration.PointedTransformationPointHom
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom
 
 /-! # 同じ商上の coslice 合成の恒等点を、元の二胞体の成分との合成で厳密に表示する -/
 

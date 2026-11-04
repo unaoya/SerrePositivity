@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CocartesianKanDiagram
-public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 public import SerrePositivity.KST.Fibration.WeakSpanDenominatorBaseChange
 public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyFiber
 public import SerrePositivity.InfinityCategories.F1.Transport.SimplexFirstVertex

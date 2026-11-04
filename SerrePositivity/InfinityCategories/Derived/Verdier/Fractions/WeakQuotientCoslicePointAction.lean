@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientCosliceComparison
-public import SerrePositivity.KST.Fibration.SmallUnstraighteningPointAction
-public import SerrePositivity.KST.Fibration.CoslicePointComparison
+public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction
+public import SerrePositivity.InfinityCategories.F1.Transport.CoslicePointComparison
 
 /-! # 元の商上の比較と coslice 単位の合成を、同じ実恒等点での作用へ還元する -/
 

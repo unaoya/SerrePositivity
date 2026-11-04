@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.TransportRepresentationFiberPointHom
 public import SerrePositivity.KST.Fibration.ChosenRepresentationPointHom
 public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
 
@@ -12,16 +13,6 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
-
-private theorem component_reindex {D X : SSet.{u}} {F G : D ⟶ X}
-    (α : FunctorHom F G) {a b : D _⦋0⦌} (hab : a = b) :
-    functorHomEvaluate α a ≫
-      (eqToIso (congrArg HomotopyCategory.mk
-        (congrArg (G.app (Opposite.op ⦋0⦌)) hab))).hom =
-      (eqToIso (congrArg HomotopyCategory.mk
-        (congrArg (F.app (Opposite.op ⦋0⦌)) hab))).hom ≫ functorHomEvaluate α b := by
-  cases hab
-  simp only [eqToIso_refl, Iso.refl_hom, Category.id_comp, Category.comp_id]
 
 variable {E B : SSet.{u + 1}} (p : E ⟶ B) [LeftFibration p] (b : B _⦋0⦌)
   (v : (vertexFiber p b) _⦋0⦌)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexEssentialSurjectivity
-public import SerrePositivity.KST.Fibration.GroupoidCompletionKanComparison
+public import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 
 /-!
 概要：元の標準単体商比較を、その同じ射の亜群化評価の全写像空間で検査する。

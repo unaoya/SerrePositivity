@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientUnstraighteningMap
-public import SerrePositivity.KST.Fibration.SmallUnstraighteningIsoHom
+public import SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningIsoHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftUnstraighteningMappingFiberTransport
 
 /-!

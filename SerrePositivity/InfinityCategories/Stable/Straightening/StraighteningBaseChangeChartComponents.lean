@@ -1,0 +1,27 @@
+module
+public import Mathlib.CategoryTheory.Category.Basic
+public import Mathlib.CategoryTheory.EqToHom
+public import Mathlib.CategoryTheory.Iso
+
+/-!
+分割で生成：docstring を書き直すこと
+ # 元の左右の底変換比較は、それぞれ同じ初頂点切断比較の指定成分
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u v w
+open CategoryTheory MonoidalClosed SSet
+open scoped Simplicial
+open SerrePositivity.InfinityCategories
+namespace SerrePositivity.KST.Fibration
+variable {B D : SSet.{u}} (k : D ⟶ B)
+
+private lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
+    (h : a = a') (e : a' ≅ b) : HEq (eqToIso h ≪≫ e) e := by
+  subst a'
+  simp only [eqToIso_refl, Iso.refl_trans]
+  rfl
+
+end SerrePositivity.KST.Fibration

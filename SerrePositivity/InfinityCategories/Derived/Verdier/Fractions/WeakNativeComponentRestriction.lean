@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakComparisonComponentRestriction
-public import SerrePositivity.KST.Fibration.PointedTransformationPointHom
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedTransformationPointHom
 
 /-! # 同じ商上の成分を、元の全 strict Kan 図式の同じ成分辺へ厳密に戻す -/
 
