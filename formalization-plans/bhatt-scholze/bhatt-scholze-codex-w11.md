@@ -39,3 +39,9 @@ Mathlib の `Algebra.Etale`・`Module.Finite`・有限射影加群・エター�
 ## 5. 報告
 
 BS-W10 §4 と同じ形で `report-codex-w11.md` に追記。各停止点で `git status --short` が作業範囲だけであること、ビルドの実測、残る sorry と理由。
+
+## worktree の規則（11-05、調整役の提案）
+
+- worktree は一度に一つ。作業 B が main に入ったら `bs-w10` の worktree は `git worktree remove` で消す（ブランチは残す）。
+- 新しい worktree は `/private/tmp/` ではなく `/Users/sugakubunka/Documents/LEAN_Projects.nosync/` の下に作る（例：`../SerrePositivity-bs-w11`）。/tmp は再起動で消える。
+- 停止点の間もこまめにブランチへコミットする。
