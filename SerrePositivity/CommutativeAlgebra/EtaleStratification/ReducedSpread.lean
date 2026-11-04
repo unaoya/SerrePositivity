@@ -75,6 +75,8 @@ theorem exists_reduced_spread_out
   let R' := Localization.Away (g : R)
   let T' := Localization.Away (algebraMap R T g)
   let S' := Localization.Away (algebraMap R S g)
+  let : IsLocalization.Away (T.val.toRingHom (algebraMap R T g)) S' :=
+    inferInstanceAs (IsLocalization.Away (algebraMap R S g) S')
   let a : R' →+* T' := Localization.awayMap (algebraMap R T) g
   let b : T' →+* S' := Localization.awayMap T.val.toRingHom (algebraMap R T g)
   let : Algebra R' T' := a.toAlgebra
@@ -98,7 +100,10 @@ theorem exists_reduced_spread_out
       Localization.awayMap (algebraMap R S) g (algebraMap R R' x)
     dsimp only [R', T', S']
     simp only [a, b, Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
-    rfl
+    exact IsLocalization.map_eq
+      (M := Submonoid.powers (algebraMap R T g))
+      (T := Submonoid.powers (T.val.toRingHom (algebraMap R T g)))
+      _ (algebraMap R T x)
   · apply isUniversalHomeomorphism_away_of_nil_diagonal Subtype.val_injective
       (algebraMap R T g)
     have hn := ideal_map_away_le_nilradical_of_dvd _

@@ -23,6 +23,8 @@ Noetherian 近似上で構成した有限エタール層別の底変換。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -60,7 +62,7 @@ theorem exists_stratum_reduced_baseChange_equiv
   let E := StratumRing J h
   let : IsReduced E := isReduced_stratumRing J h
   let γ : D₀ →+* E := stratumMap (algebraMap D C) Iₙ (algebraMap R D g)
-  let j : S →+* C := Algebra.TensorProduct.includeLeft.toRingHom
+  let j : S →+* C := (Algebra.TensorProduct.includeLeft : S →ₐ[R] S ⊗[R] D).toRingHom
   have hj (x : R) : j (algebraMap R S x) = algebraMap D C (algebraMap R D x) := by
     exact Algebra.TensorProduct.tmul_one_eq_one_tmul x
   let s : S →+* E := (stratumUnit J h).comp j
@@ -75,21 +77,31 @@ theorem exists_stratum_reduced_baseChange_equiv
     rw [hj]
     exact stratumUnit_isUnit J h
   let u : B →+* E := stratumLift Iₛ (algebraMap R S g) s hsI hsg
+  have hu (x : S) : u (stratumUnit Iₛ (algebraMap R S g) x) =
+      stratumUnit J h (j x) := stratumLift_unit _ _ _ _ _ x
+  have hγ (x : D) : γ (stratumUnit Iₙ (algebraMap R D g) x) =
+      stratumUnit J h (algebraMap D C x) := stratumMap_unit _ _ _ x
   have huγ : u.comp α = γ.comp β := by
     apply stratumRing_hom_ext I g
     intro x
-    simp only [RingHom.comp_apply, u, α, β, γ, stratumMap_unit, stratumLift_unit]
-    change stratumUnit J h (j (algebraMap R S x)) =
-      stratumUnit J h (algebraMap D C (algebraMap R D x))
-    rw [hj]
+    change u (stratumMap (algebraMap R S) I g (stratumUnit I g x)) =
+      γ (stratumMap (algebraMap R D) I g (stratumUnit I g x))
+    rw [stratumMap_unit, stratumMap_unit, hu, hγ, hj]
   let P := B ⊗[A] D₀
   let P₀ := P ⧸ nilradical P
   let : IsReduced P₀ := isReduced_reduction P
   let q₀ : P →+* P₀ := Ideal.Quotient.mk (nilradical P)
   let qraw : P →+* E := tensorRingLift u γ huγ
   let q : P₀ →+* E := reductionLift qraw
-  let l : B →+* P := Algebra.TensorProduct.includeLeft.toRingHom
-  let r : D₀ →+* P := Algebra.TensorProduct.includeRight.toRingHom
+  let l : B →+* P := (Algebra.TensorProduct.includeLeft : B →ₐ[A] B ⊗[A] D₀).toRingHom
+  let r : D₀ →+* P := (Algebra.TensorProduct.includeRight : D₀ →ₐ[A] B ⊗[A] D₀).toRingHom
+  have hql (x : B) : qraw (l x) = u x := by
+    change tensorRingLift u γ huγ (x ⊗ₜ[A] (1 : D₀)) = _
+    rw [tensorRingLift_tmul, map_one, mul_one]
+  have hqr (x : D₀) : qraw (r x) = γ x := by
+    change tensorRingLift u γ huγ ((1 : B) ⊗ₜ[A] x) = _
+    rw [tensorRingLift_tmul, map_one, one_mul]
+  have hq (x : P) : q (q₀ x) = qraw x := reductionLift_mk qraw x
   let kₛ : S →+* P₀ := (q₀.comp l).comp (stratumUnit Iₛ (algebraMap R S g))
   let kₙ : D →+* P₀ := (q₀.comp r).comp (stratumUnit Iₙ (algebraMap R D g))
   have hk : kₛ.comp (algebraMap R S) = kₙ.comp (algebraMap R D) := by
@@ -116,22 +128,20 @@ theorem exists_stratum_reduced_baseChange_equiv
     rw [hkD]
     exact ((stratumUnit_isUnit Iₙ (algebraMap R D g)).map r).map q₀
   let v : E →+* P₀ := stratumLift J h k hkI hkg
+  have hv (x : C) : v (stratumUnit J h x) = k x := stratumLift_unit _ _ _ _ _ x
   have hvqraw : v.comp qraw = q₀ := by
     apply Algebra.TensorProduct.ringHom_ext
     · apply stratumRing_hom_ext Iₛ (algebraMap R S g)
       intro x
-      simp only [RingHom.comp_apply, qraw, tensorRingLift_tmul, map_one, mul_one,
-        u, stratumLift_unit, s]
-      change v (stratumUnit J h (j x)) = q₀ (l (stratumUnit Iₛ (algebraMap R S g) x))
-      rw [v, stratumLift_unit, hkS]
+      change v (qraw (l (stratumUnit Iₛ (algebraMap R S g) x))) =
+        q₀ (l (stratumUnit Iₛ (algebraMap R S g) x))
+      rw [hql, hu, hv, hkS]
       rfl
     · apply stratumRing_hom_ext Iₙ (algebraMap R D g)
       intro x
-      simp only [RingHom.comp_apply, qraw, tensorRingLift_tmul, map_one, one_mul,
-        γ, stratumMap_unit]
-      change v (stratumUnit J h (algebraMap D C x)) =
+      change v (qraw (r (stratumUnit Iₙ (algebraMap R D g) x))) =
         q₀ (r (stratumUnit Iₙ (algebraMap R D g) x))
-      rw [v, stratumLift_unit, hkD]
+      rw [hqr, hγ, hv, hkD]
       rfl
   have hvq : Function.LeftInverse v q := by
     intro z
@@ -144,28 +154,25 @@ theorem exists_stratum_reduced_baseChange_equiv
     · ext x
       change q (k (j x)) = stratumUnit J h (j x)
       rw [hkS]
-      change reductionLift qraw (q₀ (l (stratumUnit Iₛ (algebraMap R S g) x))) = _
-      simp only [q₀, reductionLift_mk, qraw, l, tensorRingLift_tmul, map_one, mul_one,
-        u, stratumLift_unit]
-      rfl
+      change q (q₀ (l (stratumUnit Iₛ (algebraMap R S g) x))) = _
+      rw [hq, hql, hu]
     · ext x
       change q (k (algebraMap D C x)) = stratumUnit J h (algebraMap D C x)
       rw [hkD]
-      change reductionLift qraw (q₀ (r (stratumUnit Iₙ (algebraMap R D g) x))) = _
-      simp only [q₀, reductionLift_mk, qraw, r, tensorRingLift_tmul, map_one, one_mul,
-        γ, stratumMap_unit]
+      change q (q₀ (r (stratumUnit Iₙ (algebraMap R D g) x))) = _
+      rw [hq, hqr, hγ]
   have hqv : Function.RightInverse v q := by
     have he : q.comp v = RingHom.id E := by
       apply stratumRing_hom_ext J h
       intro x
       change q (v (stratumUnit J h x)) = stratumUnit J h x
-      rw [v, stratumLift_unit]
+      rw [hv]
       exact RingHom.congr_fun hqk x
     exact fun x ↦ RingHom.congr_fun he x
   refine ⟨RingEquiv.ofBijective q ⟨hvq.injective, hqv.surjective⟩, ?_⟩
   ext x
-  change reductionLift qraw (q₀ ((1 : B) ⊗ₜ[A] x)) = γ x
-  simp only [q₀, reductionLift_mk, qraw, tensorRingLift_tmul, map_one, one_mul]
+  change q (q₀ (r x)) = γ x
+  rw [hq, hqr]
 
 /-- 有限エタール分解を持つ層は、基底の底変換後も同じ分解を持つ。 -/
 theorem hasEtaleFactorization_stratum_baseChange
@@ -185,6 +192,8 @@ theorem hasEtaleFactorization_stratum_baseChange
   have h := hasEtaleFactorization_reduced_baseChange (A := A) (B := B) (D := D₀) p hf
   obtain ⟨e, he⟩ := exists_stratum_reduced_baseChange_equiv R S D I g
   have ht := hasEtaleFactorization_transport p (RingEquiv.refl D₀) e _ h
-  simpa only [RingEquiv.symm_refl, RingEquiv.toRingHom_refl', RingHom.comp_id, he] using ht
+  simp only [RingEquiv.symm_refl, RingEquiv.toRingHom_refl', RingHom.comp_id] at ht
+  rw [he] at ht
+  exact ht
 
 end SerrePositivity.CommutativeAlgebra

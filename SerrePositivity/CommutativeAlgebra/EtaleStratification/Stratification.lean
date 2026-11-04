@@ -58,6 +58,8 @@ Thm 10.11（A8-4）。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -162,15 +164,24 @@ private theorem presentation_range_baseChange_equiv {C R S : Type*}
   let v : R ⊗[R₀] S₀ →ₐ[R] S :=
     Algebra.TensorProduct.lift (Algebra.ofId R S) S₀.val fun _ _ ↦ Commute.all _ _
   have hu : Function.Surjective u :=
-    Algebra.TensorProduct.map_surjective Function.surjective_id hq
+    Algebra.TensorProduct.map_surjective _ _ Function.surjective_id hq
   have he : v.comp u = (P.tensorModelOfHasCoeffsEquiv R₀).toAlgHom := by
-    ext r x
+    ext x
     induction x using Quotient.inductionOn' with
-    | h t => rfl
+    | h t =>
+      change v (u ((1 : R) ⊗ₜ[R₀] (Ideal.Quotient.mk _ t))) =
+        P.tensorModelOfHasCoeffsEquiv R₀ ((1 : R) ⊗ₜ[R₀] (Ideal.Quotient.mk _ t))
+      rw [Algebra.Presentation.tensorModelOfHasCoeffsEquiv_tmul]
+      simp [u, v, q, e, Algebra.TensorProduct.map_tmul, Algebra.TensorProduct.lift_tmul]
+      rfl
   have hbij : Function.Bijective (v.comp u) := by
     rw [he]
     exact (P.tensorModelOfHasCoeffsEquiv R₀).bijective
-  refine ⟨AlgEquiv.ofBijective v ⟨?_, hbij.surjective.of_comp⟩⟩
+  have hv : Function.Surjective v := by
+    intro y
+    obtain ⟨x, hx⟩ := hbij.surjective y
+    exact ⟨u x, hx⟩
+  refine ⟨AlgEquiv.ofBijective v ⟨?_, hv⟩⟩
   intro x y hxy
   obtain ⟨x, rfl⟩ := hu x
   obtain ⟨y, rfl⟩ := hu y
@@ -194,7 +205,7 @@ theorem exists_noetherianApproximation {R S : Type u} [CommRing R] [CommRing S] 
   let : Algebra (StrataBase p) R := (strataBaseMap p R hZp).toAlgebra
   let P := Algebra.Presentation.ofFinitePresentation R S
   obtain ⟨ci, hi⟩ := exists_integrality_coefficients (C := StrataBase p) P.val
-    (fun i ↦ Algebra.IsIntegral.isIntegral (P.val i))
+    (fun i ↦ Algebra.IsIntegral.isIntegral (R := R) (P.val i))
   let cr := P.finite_coeffs.toFinset
   obtain ⟨R₀, hc, hfg, hn⟩ := exists_fg_noetherian_subalgebra_containing p R hZp
     (coeffs ∪ ci ∪ cr)
@@ -207,9 +218,11 @@ theorem exists_noetherianApproximation {R S : Type u} [CommRing R] [CommRing S] 
     rintro _ ⟨i, rfl⟩
     exact hi R₀ hci i
   have hfinite : Module.Finite R₀ S₀ := by
-    dsimp [S₀, e]
-    rw [MvPolynomial.aeval_range]
-    exact Algebra.finite_adjoin_of_finite_of_isIntegral (Set.finite_range P.val) hint
+    let : Module.Finite R₀ (Algebra.adjoin R₀ (Set.range P.val)) :=
+      Algebra.finite_adjoin_of_finite_of_isIntegral (Set.finite_range P.val) hint
+    have he : Algebra.adjoin R₀ (Set.range P.val) = S₀ :=
+      (MvPolynomial.aeval_range (R := R₀) P.val).symm
+    exact Module.Finite.equiv (Subalgebra.equivOfEq _ _ he).toLinearEquiv
   let : Module.Finite R₀ S₀ := hfinite
   have hfp : Algebra.FinitePresentation R₀ S₀ :=
     Algebra.FinitePresentation.of_finiteType.mp inferInstance
@@ -217,7 +230,8 @@ theorem exists_noetherianApproximation {R S : Type u} [CommRing R] [CommRing S] 
   refine ⟨R₀, CommRingCat.of S₀, inferInstance, ?_, hfg, hn, hfinite, hfp, ?_⟩
   · intro c h
     exact hc c (by simp [h])
-  · exact ⟨(Algebra.TensorProduct.commRight R₀ R S₀).symm.trans hiso⟩
+  · let : Algebra R (S₀ ⊗[R₀] R) := Algebra.TensorProduct.rightAlgebra
+    exact ⟨(Algebra.TensorProduct.commRight R₀ R S₀).symm.trans hiso⟩
 
 /-- 概要：全商環での分解を或る D(g_1) に広げる：
 R_0,red[1/g_1] → T_1 有限エタール、T_1 → S_0,red[1/g_1] 普遍同相。
@@ -247,7 +261,8 @@ theorem spread_out_generic (R S : Type u) [CommRing R] [CommRing S] [Algebra R S
   refine ⟨g, ?_, ?_⟩
   · intro P hP
     have hmin : P.val.asIdeal ∈ I.minimalPrimes := by
-      rw [I, Ideal.radical_minimalPrimes]
+      dsimp only [I]
+      rw [Ideal.radical_minimalPrimes]
       exact P.property
     rw [Ideal.minimalPrimes_eq_comap] at hmin
     obtain ⟨Q, hQ, hQP⟩ := hmin
@@ -255,15 +270,23 @@ theorem spread_out_generic (R S : Type u) [CommRing R] [CommRing S] [Algebra R S
       rw [← hg]
       change g ∈ Ideal.comap (Ideal.Quotient.mk I) Q
       rwa [hQP]
-    exact notMem_nonZeroDivisors_of_mem_mem_minimalPrimes hQ hmem g₀.property
+    exact notMem_nonZeroDivisors_of_mem_mem_minimalPrimes hmem hQ g₀.property
   · have hf : HasEtaleFactorization p (Localization.awayMap q (Ideal.Quotient.mk I g)) := by
-      simpa only [hg] using hfac
+      change HasEtaleFactorization p (Localization.awayMap q (g₀ : R₀)) at hfac
+      rw [hg]
+      exact hfac
     have he : stratumMap (algebraMap R S) ⊥ g =
         Localization.awayMap q (Ideal.Quotient.mk I g) := by
-      apply IsLocalization.ringHom_ext (Submonoid.powers (Ideal.Quotient.mk I g))
-      ext x
-      simp only [stratumMap, Localization.awayMap, IsLocalization.Away.map,
-        IsLocalization.Away.lift_eq, IsLocalization.map_eq]
+      apply stratumRing_hom_ext ⊥ g
+      intro x
+      rw [stratumMap_unit]
+      change algebraMap S₀ (Localization.Away (q (Ideal.Quotient.mk I g)))
+          (q (Ideal.Quotient.mk I x)) =
+        Localization.awayMap q (Ideal.Quotient.mk I g)
+          (algebraMap R₀ (Localization.Away (Ideal.Quotient.mk I g)) (Ideal.Quotient.mk I x))
+      symm
+      unfold Localization.awayMap IsLocalization.Away.map
+      exact IsLocalization.map_eq _ _
     rw [he]
     exact hf
 
@@ -297,7 +320,10 @@ theorem exists_factorization_stratum_not_mem
     apply havoid Q'
     rw [← hg, Ideal.Quotient.eq_zero_iff_mem.mpr hmem]
     exact Q.zero_mem
-  · simpa only [hg] using hfac
+  · change HasEtaleFactorization p (stratumMap q ⊥ g₀) at hfac
+    change HasEtaleFactorization p (stratumMap q ⊥ (Ideal.Quotient.mk I g))
+    rw [hg]
+    exact hfac
 
 /-- Noetherian 基底上の有限エタール層別。各段で p 可逆な部分を先に選び、
 それが空なら p = 0 の部分を選ぶ。 -/
@@ -318,8 +344,9 @@ theorem exists_noetherian_finiteEtaleStratification
     · exact ⟨g, hg, hfac, Or.inl (natCast_eq_zero_stratum_of_mul_mem I g p hpg)⟩
     · refine ⟨(p : R) * g, fun h ↦ hpg (Ideal.le_radical h), ?_,
         Or.inr (isUnit_natCast_stratum_mul I g p)⟩
-      simpa only [mul_comm g (p : R)] using
-        hasEtaleFactorization_stratum_mul p (algebraMap R S) I g (p : R) hfac
+      have h := hasEtaleFactorization_stratum_mul p (algebraMap R S) I g (p : R) hfac
+      rw [mul_comm g (p : R)] at h
+      exact h
   obtain ⟨n, g, hg, hPg⟩ := exists_finite_ideal_filtration P hstep ⊥
   exact ⟨n, g, by simpa using hg, fun i ↦ by simpa [P] using hPg i⟩
 
@@ -366,6 +393,7 @@ theorem exists_finiteEtaleStratification {R S : Type u} [CommRing R] [CommRing S
   let g : Fin n → R := fun i ↦ algebraMap R₀ R (g₀ i)
   have hgen : Ideal.span (Set.range g) = ⊤ := by
     have h := congrArg (Ideal.map (algebraMap R₀ R)) hg₀
+    change Ideal.span (Set.range ((algebraMap R₀ R) ∘ g₀)) = ⊤
     simpa only [Ideal.map_span, Ideal.map_top, ← Set.range_comp] using h
   refine ⟨n, g, hgen, ?_⟩
   intro i
