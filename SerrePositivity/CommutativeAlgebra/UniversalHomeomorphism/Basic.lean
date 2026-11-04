@@ -9,6 +9,7 @@ public import Mathlib.FieldTheory.PurelyInseparable.Basic
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 public import Mathlib.RingTheory.Spectrum.Prime.Homeomorph
 public import Mathlib.RingTheory.TensorProduct.Basic
+public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.PowerClosure
 
 /-!
 # 可換環の射の普遍同相
@@ -54,6 +55,13 @@ private theorem purelyInseparable_of_surjective {K L : Type*} [Field K] [Field L
   let := f.toAlgebra
   exact ⟨⟨f.isIntegral_of_surjective hf⟩, fun x _ ↦ hf x⟩
 
+/-- 合成が純非分離なら、体の塔の上段も純非分離。 -/
+private theorem purelyInseparable_tower_top {K L M : Type*} [Field K] [Field L] [Field M]
+    (f : K →+* L) (g : L →+* M) (h : (g.comp f).IsPurelyInseparable) :
+    g.IsPurelyInseparable := by
+  algebraize [f, g, g.comp f]
+  exact IsPurelyInseparable.tower_top K L M
+
 set_option backward.isDefEq.respectTransparency false in
 /-- 標準の剰余体の射は環準同型の合成と両立する。 -/
 private theorem residueFieldMap_comp {A B C : Type*} [CommRing A] [CommRing B] [CommRing C]
@@ -70,6 +78,9 @@ private theorem residueFieldMap_comp {A B C : Type*} [CommRing A] [CommRing B] [
 section SpecComparison
 
 open AlgebraicGeometry CategoryTheory
+
+set_option backward.isDefEq.respectTransparency.types false
+set_option backward.defeqAttrib.useBackward true
 
 set_option backward.isDefEq.respectTransparency false in
 /-- Spec の剰余体同型は環から定義した剰余体写像と両立する。 -/
@@ -123,7 +134,8 @@ private theorem spec_residueFieldMap_isPurelyInseparable_iff
     rw [spec_residueFieldMap_compat] at ht
     exact ht
   · intro h
-    rw [← spec_residueFieldMap_compat f Q] at h
+    have he := congrArg CommRingCat.Hom.hom (spec_residueFieldMap_compat f Q)
+    rw [← he] at h
     have ht := (hAi.comp h).comp hBi
     change (eA.hom ≫ (eA.inv ≫ r ≫ eB.hom) ≫ eB.inv).hom.IsPurelyInseparable at ht
     simpa using ht
@@ -134,9 +146,9 @@ private theorem radicial_iff_universallyInjective {A B : Type u} [CommRing A] [C
     (Function.Injective (PrimeSpectrum.comap f) ∧ ∀ Q : PrimeSpectrum B,
       (Ideal.ResidueField.map (PrimeSpectrum.comap f Q).asIdeal Q.asIdeal f rfl).IsPurelyInseparable) ↔
       UniversallyInjective (Spec.map (CommRingCat.ofHom f)) := by
-  rw [(tfae_universallyInjective (Spec.map (CommRingCat.ofHom f))).out 0 2]
-  exact and_congr Iff.rfl (forall_congr' fun Q ↦
-    (spec_residueFieldMap_isPurelyInseparable_iff f Q).symm)
+  exact (and_congr Iff.rfl (forall_congr' fun Q ↦
+    (spec_residueFieldMap_isPurelyInseparable_iff f Q).symm)).trans
+      ((tfae_universallyInjective (Spec.map (CommRingCat.ofHom f))).out 2 0)
 
 end SpecComparison
 
@@ -174,8 +186,25 @@ theorem isUniversalHomeomorphism_comp {A B C : Type u} [CommRing A] [CommRing B]
   intro Q
   have h := RingHom.IsPurelyInseparable.comp
     (hf.radicial.2 (PrimeSpectrum.comap g Q)) (hg.radicial.2 Q)
+  change ((Ideal.ResidueField.map (PrimeSpectrum.comap g Q).asIdeal Q.asIdeal g rfl).comp
+    (Ideal.ResidueField.map (PrimeSpectrum.comap (g.comp f) Q).asIdeal
+      (PrimeSpectrum.comap g Q).asIdeal f rfl)).IsPurelyInseparable at h
   rw [residueFieldMap_comp f g Q] at h
   exact h
+
+/-- 単射な中間環の包含で因子化すると、後半の射も普遍同相になる。 -/
+theorem isUniversalHomeomorphism_tower_top {A B C : Type u}
+    [CommRing A] [CommRing B] [CommRing C] (f : A →+* B) (g : B →+* C)
+    (hf : IsUniversalHomeomorphism (g.comp f)) (hg : Function.Injective g) :
+    IsUniversalHomeomorphism g := by
+  have hi := RingHom.IsIntegral.tower_top f g hf.isIntegral
+  refine ⟨hi, hi.comap_surjective hg,
+    fun P Q h ↦ hf.radicial.1 (congrArg (PrimeSpectrum.comap f) h), ?_⟩
+  intro Q
+  have h : (Ideal.ResidueField.map (PrimeSpectrum.comap (g.comp f) Q).asIdeal
+      Q.asIdeal (g.comp f) rfl).IsPurelyInseparable := hf.radicial.2 Q
+  rw [← residueFieldMap_comp f g Q] at h
+  exact purelyInseparable_tower_top _ _ h
 
 theorem isUniversalHomeomorphism_of_nil_kernel {A B : Type u} [CommRing A] [CommRing B]
     (f : A →+* B) (hf : Function.Surjective f) (hker : RingHom.ker f ≤ nilradical A) :
@@ -199,7 +228,7 @@ private theorem residueFieldMap_isPurelyInseparable_of_pow_mem
   let P := PrimeSpectrum.comap f Q
   let k := Ideal.ResidueField.map P.asIdeal Q.asIdeal f rfl
   let : CharP P.asIdeal.ResidueField p :=
-    (charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
+    (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
       rw [← map_natCast (algebraMap A P.asIdeal.ResidueField), hpA, map_zero])
   let := k.toAlgebra
   apply (isPurelyInseparable_iff_pow_mem P.asIdeal.ResidueField p).mpr
@@ -215,6 +244,63 @@ private theorem residueFieldMap_isPurelyInseparable_of_pow_mem
     algebraMap A P.asIdeal.ResidueField (d ^ (p ^ n)), ?_⟩
   simp only [map_div₀, k, Ideal.ResidueField.map_algebraMap, map_pow, hc, hd, div_pow]
   rw [← pow_mul, ← pow_mul, ← pow_add, ← pow_add, Nat.add_comm m n]
+
+set_option backward.isDefEq.respectTransparency false in
+/-- p 乗根で閉じた像の導手が極大イデアルを含む場合、普遍同相は全射。 -/
+private theorem surjective_of_rootClosed_of_maximal_le_conductor
+    {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) [Fact p.Prime] (hpA : (p : A) = 0) (f : A →+* B)
+    (hf : IsUniversalHomeomorphism f) (hroot : ∀ b : B, b ^ p ∈ f.range → b ∈ f.range)
+    (P : Ideal A) [P.IsMaximal]
+    (hP : P ≤ (subringConductor f.range).comap f) : Function.Surjective f := by
+  let I := subringConductor f.range
+  by_cases hI : I = ⊤
+  · intro b
+    exact subringConductor_le f.range (show b ∈ I by rw [hI]; trivial)
+  obtain ⟨Q, hQ, hIQ⟩ := Ideal.exists_le_maximal I hI
+  let := hQ
+  have hc (J : Ideal B) [J.IsPrime] (hIJ : I ≤ J) : J.comap f = P :=
+    (Ideal.IsMaximal.eq_of_le inferInstance (Ideal.IsPrime.ne_top (inferInstance : (J.comap f).IsPrime))
+      (hP.trans (Ideal.comap_mono hIJ))).symm
+  have he : I = Q := by
+    apply le_antisymm hIQ
+    have hr := subringConductor_isRadical p f.range (Fact.out : p.Prime).one_lt hroot
+    rw [← hr.radical, Ideal.radical_eq_sInf]
+    apply le_sInf
+    rintro J ⟨hIJ, hJ⟩
+    let := hJ
+    have hjq : J = Q := congrArg PrimeSpectrum.asIdeal
+      (hf.radicial.1 (PrimeSpectrum.ext ((hc J hIJ).trans (hc Q hIQ).symm)))
+    exact hjq.ge
+  let q : PrimeSpectrum B := ⟨Q, inferInstance⟩
+  let P' := PrimeSpectrum.comap f q
+  have : P'.asIdeal.IsMaximal := (hc Q hIQ).symm ▸ inferInstance
+  let k := Ideal.ResidueField.map P'.asIdeal Q f rfl
+  let := k.toAlgebra
+  let : CharP P'.asIdeal.ResidueField p :=
+    (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
+      rw [← map_natCast (algebraMap A P'.asIdeal.ResidueField), hpA, map_zero])
+  have : IsPurelyInseparable P'.asIdeal.ResidueField Q.ResidueField := hf.radicial.2 q
+  intro b
+  obtain ⟨n, z, hz⟩ := IsPurelyInseparable.pow_mem P'.asIdeal.ResidueField p
+    (algebraMap B Q.ResidueField b)
+  obtain ⟨a, rfl⟩ := P'.asIdeal.algebraMap_residueField_surjective z
+  change k (algebraMap A P'.asIdeal.ResidueField a) = _ at hz
+  rw [Ideal.ResidueField.map_algebraMap] at hz
+  have hd : b ^ (p ^ n) - f a ∈ Q := by
+    rw [← Ideal.algebraMap_residueField_eq_zero, map_sub, map_pow, hz, sub_self]
+  have hn : b ^ (p ^ n) ∈ f.range := by
+    have hd' := subringConductor_le f.range (show b ^ (p ^ n) - f a ∈ I from he.symm ▸ hd)
+    simpa only [sub_add_cancel] using f.range.add_mem hd' (f.mem_range_self a)
+  suffices ∀ (n : ℕ) (x : B), x ^ (p ^ n) ∈ f.range → x ∈ f.range from this n b hn
+  intro n
+  induction n with
+  | zero => simpa
+  | succ n ih =>
+    intro x hx
+    apply hroot
+    apply ih
+    simpa only [pow_succ', pow_mul] using hx
 
 /-- 概要：標数 p の判定：F_p 代数の射が普遍同相 ⇔ 核の各元が冪零で、各 b の或る p^n 乗が像にある。 -/
 theorem isUniversalHomeomorphism_iff_charP {A B : Type u} [CommRing A] [CommRing B]
@@ -250,23 +336,23 @@ theorem isUniversalHomeomorphism_bijective_of_perfect_reduced
   obtain ⟨hk, hp⟩ := (isUniversalHomeomorphism_iff_charP p hpA f).mp hf
   cases subsingleton_or_nontrivial A with
   | inl h =>
-    letI := h
-    letI : Subsingleton B := f.codomain_trivial
+    let := h
+    let : Subsingleton B := f.codomain_trivial
     exact ⟨fun _ _ _ ↦ Subsingleton.elim _ _, fun b ↦ ⟨0, Subsingleton.elim _ _⟩⟩
   | inr h =>
-    letI := h
-    letI : CharP A p := (charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hpA
+    let := h
+    let : CharP A p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr hpA
     have hi : Function.Injective f := by
       apply (RingHom.injective_iff_ker_eq_bot f).mpr
       apply le_antisymm ?_ bot_le
       intro a ha
       obtain ⟨n, hn⟩ := hk ha
       apply Ideal.mem_bot.mpr
-      apply (PerfectRing.bijective_frobenius (M := A) (p := p ^ n)).injective
+      apply (PerfectRing.bijective_frobenius (R := A) (p := p ^ n)).injective
       rw [zero_pow (pow_ne_zero _ (Fact.out : p.Prime).ne_zero)]
       exact pow_eq_zero_of_le (Nat.le_of_lt (Nat.lt_pow_self (Fact.out : p.Prime).one_lt)) hn
-    haveI : Nontrivial B := hi.nontrivial
-    letI : CharP B p := (charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
+    have : Nontrivial B := hi.nontrivial
+    let : CharP B p := (CharP.charP_iff_prime_eq_zero (Fact.out : p.Prime)).mpr (by
       rw [← map_natCast f, hpA, map_zero])
     refine ⟨hi, fun b ↦ ?_⟩
     obtain ⟨n, a, ha⟩ := hp b
@@ -300,8 +386,9 @@ theorem isUniversalHomeomorphism_of_isPurelyInseparable (K L : Type u) [Field K]
         Ideal.ResidueField.map P.asIdeal Q.asIdeal (algebraMap K L) rfl := by
       apply Ideal.ResidueField.ringHom_ext
       ext a
-      simpa only [RingHom.comp_apply, Ideal.ResidueField.map_algebraMap] using
-        congrArg (fun x ↦ eL (algebraMap K L x)) (eK.symm_apply_apply a)
+      simp only [RingHom.comp_apply, Ideal.ResidueField.map_algebraMap]
+      change eL (algebraMap K L (eK.symm (eK a))) = eL (algebraMap K L a)
+      rw [eK.symm_apply_apply]
     rw [he] at h
     exact h
 
