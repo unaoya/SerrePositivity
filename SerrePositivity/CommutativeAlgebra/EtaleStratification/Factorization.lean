@@ -70,6 +70,36 @@ def stratumMap {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (I : Ide
     (g := (algebraMap (S ⧸ J.radical) (StratumRing J (f g))).comp q)
     (IsLocalization.Away.algebraMap_isUnit (Ideal.Quotient.mk J.radical (f g)))
 
+/-- 層の射は元の環の標準像と可換。 -/
+@[simp]
+theorem stratumMap_unit {R S : Type u} [CommRing R] [CommRing S]
+    (f : R →+* S) (I : Ideal R) (g x : R) :
+    stratumMap f I g (stratumUnit I g x) = stratumUnit (I.map f) (f g) (f x) := by
+  simp only [stratumMap, stratumUnit, RingHom.comp_apply, IsLocalization.Away.lift_eq]
+  rfl
+
+/-- 層を始域とする環準同型は、元の環の標準像上で一致すれば等しい。 -/
+theorem stratumRing_hom_ext {R A : Type u} [CommRing R] [CommRing A]
+    (I : Ideal R) (g : R) {f h : StratumRing I g →+* A}
+    (he : ∀ x : R, f (stratumUnit I g x) = h (stratumUnit I g x)) : f = h := by
+  apply IsLocalization.ringHom_ext (Submonoid.powers (Ideal.Quotient.mk I.radical g))
+  ext x
+  obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
+  exact he x
+
+/-- 同じイデアルの異なる表示から得た層の標準同型。 -/
+def stratumRingEquivOfIdealEq {R : Type u} [CommRing R]
+    {I J : Ideal R} (h : I = J) (g : R) : StratumRing I g ≃+* StratumRing J g := by
+  subst J
+  exact RingEquiv.refl _
+
+@[simp]
+theorem stratumRingEquivOfIdealEq_unit {R : Type u} [CommRing R]
+    {I J : Ideal R} (h : I = J) (g x : R) :
+    stratumRingEquivOfIdealEq h g (stratumUnit I g x) = stratumUnit J g x := by
+  subst J
+  rfl
+
 /-- f の p 反転で誘導される射。 -/
 def invertPrimeMap {A B : Type u} [CommRing A] [CommRing B] (p : ℕ) (f : A →+* B) :
     Localization.Away (p : A) →+* Localization.Away (p : B) := by

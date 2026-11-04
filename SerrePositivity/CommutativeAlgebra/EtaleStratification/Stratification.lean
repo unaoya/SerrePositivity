@@ -264,6 +264,44 @@ theorem spread_out_generic (R S : Type u) [CommRing R] [CommRing S] [Algebra R S
     rw [he]
     exact hf
 
+/-- Noetherian 基底では、真の閉集合上の帰納で有限個の分解層を選べる。
+p の二場合への細分は、この段階の後で行う。 -/
+theorem exists_noetherian_factorization_filtration
+    (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
+    [IsNoetherianRing R] [Module.Finite R S]
+    (p : ℕ) [Fact p.Prime] (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) :
+    ∃ (n : ℕ) (g : Fin n → R), Ideal.span (Set.range g) = ⊤ ∧
+      ∀ i, HasEtaleFactorization p (stratumMap (algebraMap R S) (earlierIdeal g i) (g i)) := by
+  let P : Ideal R → R → Prop := fun I g ↦
+    HasEtaleFactorization p (stratumMap (algebraMap R S) I g)
+  have hstep (I : Ideal R) (hI : I ≠ ⊤) : ∃ g : R, g ∉ I ∧ P I g := by
+    let R₀ := R ⧸ I
+    let J := I.map (algebraMap R S)
+    let S₀ := S ⧸ J
+    let q := quotientStratumBaseMap (algebraMap R S) I
+    let : Algebra R₀ S₀ := q.toAlgebra
+    let : IsScalarTower R R₀ S₀ := IsScalarTower.of_algebraMap_eq fun r ↦ rfl
+    let : Nontrivial R₀ := Ideal.Quotient.nontrivial_iff.mpr hI
+    let : Module.Finite R S₀ := Module.Finite.trans S S₀
+    let : Module.Finite R₀ S₀ := Module.Finite.of_restrictScalars_finite R R₀ S₀
+    let : Algebra.FinitePresentation R₀ S₀ :=
+      Algebra.FinitePresentation.of_finiteType.mp inferInstance
+    have hZp₀ : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R₀) := by
+      intro q hq hqp
+      simpa only [map_natCast] using (hZp q hq hqp).map (Ideal.Quotient.mk I)
+    obtain ⟨g₀, havoid, hfac⟩ := spread_out_generic R₀ S₀ p hZp₀
+    obtain ⟨g, hg⟩ := Ideal.Quotient.mk_surjective g₀
+    refine ⟨g, ?_, hasEtaleFactorization_of_quotient_stratum p (algebraMap R S) I g ?_⟩
+    · intro hmem
+      obtain ⟨Q, hQ⟩ := Ideal.nonempty_minimalPrimes (show (⊥ : Ideal R₀) ≠ ⊤ from bot_ne_top)
+      let Q' : GenericPoint R₀ := ⟨⟨Q, hQ.isPrime⟩, hQ⟩
+      apply havoid Q'
+      rw [← hg, Ideal.Quotient.eq_zero_iff_mem.mpr hmem]
+      exact Q.zero_mem
+    · simpa only [hg] using hfac
+  obtain ⟨n, g, hg, hPg⟩ := exists_finite_ideal_filtration P hstep ⊥
+  exact ⟨n, g, by simpa using hg, fun i ↦ by simpa [P] using hPg i⟩
+
 /-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
 方針：noetherian 近似、一般点での分解、その広げ、R_0/(g_1) への noetherian 帰納、
 (pg_i, g_i) での細分（紙 5）。
