@@ -29313,5 +29313,7 @@
     "entry_edges/W2a": 0,
     "entry_edges/W2b": 0
   },
-  "description": "IF-F §6: current baseline; all numeric ratchet metrics equal before F-1; M16 74 retained."
+  "description": "IF-F §6: current baseline; all numeric ratchet metrics equal before F-1; M16 74 retained.",
+  "source_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+  "verification": "f-stop2.json"
 }

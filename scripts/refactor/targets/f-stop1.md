@@ -73,3 +73,7 @@ R42 の旧156本を照合。今回の対象収集修正で16本の被覆漏れ�
 19補助定理の公開化／15 import all の解除、R67 check 2本の追従、ArrowFactorization 3本の分類案。台帳の広い隔離・削除・登録はこの小さな適用範囲に含めない。
 
 検査記録：[f-draft-validation.json](/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/scripts/refactor/targets/f-draft-validation.json)。F-2 の適用は G2・BS の区切りの合図を待つ。
+
+## 適用後の追記
+
+草案の private 同名に関する見込みは実ビルドで訂正した。公開名の導入後、FirstVertexOppositeChart の同じユーザー名の private 宣言が拒否された（178e70671）。ユーザーの §5-4 例外承認を受け、private 定理と参照1か所だけを改名（392ddcc88）。保存比較・内部検証・下流・正式verifyの最終結果は [停止点2](f-stop2.md) に記録した。

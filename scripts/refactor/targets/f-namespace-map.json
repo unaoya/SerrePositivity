@@ -156210,5 +156210,11 @@
     }
   ],
   "generated_name_review": "生成補題・constructor・projection・recursor は source-parent mapping の補助一覧に収録。source-parent を持たない自動名も含む全環境の照合は適用前 snapshot で行い、alias の属性を一括コピーしない。private 内部名を public alias にしない。",
-  "section6_response": "F-1 のみ適用承認。F-2 の名前空間・alias・利用者の書換えは未適用。"
+  "section6_response": "F-1 のみ適用承認。F-2 の名前空間・alias・利用者の書換えは未適用。",
+  "F1_publication_followup": {
+    "verified_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+    "publications": 19,
+    "source": "f-private-edges.json",
+    "note": "This F-2 source census remains the draft at base 29d9ad0e7. Before F-2 application, refresh the private/public flags for these 19 newly public helpers and the affected exact-source cache entries. No F-2 namespace, alias, or consumer rewrite applied."
+  }
 }

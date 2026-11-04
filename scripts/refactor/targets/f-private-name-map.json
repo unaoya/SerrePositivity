@@ -1,5 +1,5 @@
 {
-  "status": "APPLIED_PENDING_VERIFICATION",
+  "status": "VERIFIED",
   "authorization": "User: FirstVertexOppositeChart private 名の衝突回避として IF-W2b §5-4 の例外を承認。公開 API・型・本文は不変。",
   "scope": "module-scoped private declaration identity; same public name in the provider module is not renamed",
   "rows": [
@@ -12,5 +12,26 @@
       "source_edits": 2
     }
   ],
-  "comparison": "Keep raw v3b comparison. Match the renamed private declaration through this table and compare every semantic field without rewriting hashes; prove theorem proof-source unchanged after the two approved name substitutions."
+  "comparison": "Keep raw v3b comparison. Match the renamed private declaration through this table and compare every semantic field without rewriting hashes; prove theorem proof-source unchanged after the two approved name substitutions.",
+  "verified_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+  "verification": [
+    {
+      "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
+      "old": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
+      "new": "SerrePositivity.KST.Fibration.firstVertexOppositeChart_mapNormalizeCompositionWithEq",
+      "private_before": true,
+      "private_after": true,
+      "source_edits": 2,
+      "status": "PASS",
+      "equal_fields": [
+        "kind",
+        "type_hash",
+        "body_hash",
+        "axioms",
+        "attributes"
+      ],
+      "theorem_body": "v3b theorem body is null; exact proof-source equality additionally checked",
+      "proof_source_sha256": "7f610b9e5926918ac74bd55447896c647071b0df316f2b919bc6f6adfdcc6b77"
+    }
+  ]
 }

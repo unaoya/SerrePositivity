@@ -1,5 +1,5 @@
 {
-  "status": "APPLIED_INTERNAL_STOP_PRIVATE_NAME_COLLISION",
+  "status": "VERIFIED_STOP2",
   "base": "29d9ad0e72b5f83b58860faac70e095a8d20c908",
   "edges": [
     {
@@ -618,6 +618,9 @@
     "module": "SerrePositivity.KST.Fibration.FirstVertexOppositeChart",
     "name": "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq",
     "stop": "f-section6-stop.json",
-    "proposal_applied": false
-  }
+    "proposal_applied": true,
+    "resolved_by": "392ddcc88"
+  },
+  "verified_commit": "392ddcc88a9b5d74970dcfdcc6ee63a7608f963d",
+  "stop2": "f-stop2.json"
 }
