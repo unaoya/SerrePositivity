@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.AdjunctionExact
 public import SerrePositivity.InfinityCategories.Core.ColimitDiagramIso
 public import SerrePositivity.InfinityCategories.Core.ConeOpposite
 public import SerrePositivity.InfinityCategories.Core.CosliceRestrictionEquivalence

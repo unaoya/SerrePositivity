@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.InfinityCategories.Core.SmallModelNerve
 public import SerrePositivity.InfinityCategories.Core.ArrowSquareHomotopy
 public import SerrePositivity.InfinityCategories.Core.BoundaryEdgeLifting
 public import SerrePositivity.InfinityCategories.Core.BoundaryOpposite

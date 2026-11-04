@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Core.SmallModelNerve
 import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation
 import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl
 import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowIsoRealization
@@ -4854,3 +4855,5 @@ run_cmd do
   for mod in expected do
     unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
   logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
+
+#print axioms SerrePositivity.InfinityCategories.smallModelNerveComparison

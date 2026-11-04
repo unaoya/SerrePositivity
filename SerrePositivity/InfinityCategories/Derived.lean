@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory
+public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import SerrePositivity.DifferentialGraded.Category.ObjectImage
 public import SerrePositivity.DifferentialGraded.Category.Tensor

@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.Stable.AdjunctionExact
 import SerrePositivity.InfinityCategories.Stable.CoreFlag.GroupNerveHomotopy
 import SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality
 import SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence
@@ -8593,3 +8594,5 @@ run_cmd do
 #print axioms SerrePositivity.KST.SConstruction.exists_stable_pushoutSquare_of_span
 #check @SerrePositivity.KST.SConstruction.stable_hasColimit_span
 #print axioms SerrePositivity.KST.SConstruction.stable_hasColimit_span
+
+#print axioms SerrePositivity.InfinityCategories.isExactFunctor_of_adjunction

@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
 import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
 import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
 import SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing
@@ -11496,3 +11497,16 @@ run_cmd do
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
+
+#print axioms SerrePositivity.InfinityCategories.discreteKanFunctor
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_vertex
+#print axioms SerrePositivity.InfinityCategories.Is0TruncatedSpace
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_isFullyFaithful
+#print axioms SerrePositivity.InfinityCategories.DiscreteSpaceModel.simplex
+#print axioms SerrePositivity.InfinityCategories.DiscreteSpaceModel.simplex_eq
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_edge
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_diagramVertex
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_diagramEdge
+#print axioms SerrePositivity.InfinityCategories.setsToKan
+#print axioms SerrePositivity.InfinityCategories.discreteSpaceInclusion_presheafInclusion_edge

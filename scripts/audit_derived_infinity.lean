@@ -1,3 +1,5 @@
+import SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory
+import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 import SerrePositivity.InfinityCategories.Derived.KanModels.GroupoidCompletionKanComparison
 import SerrePositivity.InfinityCategories.Derived.KanModels.StrictKanEvaluationComparison
 import SerrePositivity.InfinityCategories.Derived.Lax.LaxCounitQuotientComparison
@@ -8466,3 +8468,14 @@ run_cmd do
   for mod in expected do
     unless seen.contains mod do throwError "W2c: module has no audited declarations: {mod}"
   logInfo m!"W2c: {count} declarations in {expected.size} modules audited."
+
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.leftDG
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.rightObj
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.swapIso
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.rightDG
+#print axioms SerrePositivity.InfinityCategories.FixedTensor.swapStrict
+#print axioms SerrePositivity.InfinityCategories.tensorLeft
+#print axioms SerrePositivity.InfinityCategories.tensorWith
+#print axioms SerrePositivity.InfinityCategories.tensorWith_vertex
+#print axioms SerrePositivity.InfinityCategories.tensorWithSymmetry
+#print axioms SerrePositivity.InfinityCategories.derivedInfinityCategory_isPresentable

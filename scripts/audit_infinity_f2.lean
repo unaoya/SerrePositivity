@@ -1,3 +1,4 @@
+import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexTransport
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteProductIndexLegs
 import SerrePositivity.InfinityCategories.F2.Presentable.FiniteFamilyProductCone
@@ -1980,3 +1981,16 @@ run_cmd do
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.presheafHomWeightDiagram_iso
 #check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaLeftKanHomWeightRestrictionIso
 #print axioms SerrePositivity.InfinityCategories.HomotopyLimits.sigmaLeftKanHomWeightRestrictionIso
+
+#print axioms SerrePositivity.InfinityCategories.SpaceTensorData
+#print axioms SerrePositivity.InfinityCategories.spaceTensorData
+#print axioms SerrePositivity.InfinityCategories.tensorSpaceFunctor
+#print axioms SerrePositivity.InfinityCategories.tensorSpaceFunctor_diagramHom
+#print axioms SerrePositivity.InfinityCategories.SetWeight.elementsToReplacement
+#print axioms SerrePositivity.InfinityCategories.SetWeight.elementsComparison
+#print axioms SerrePositivity.InfinityCategories.SetWeight.elementsComparison_projection
+#print axioms SerrePositivity.InfinityCategories.SetWeight.elementsComparison_isPrecompositionEquivalence
+#print axioms SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalence
+#print axioms SerrePositivity.InfinityCategories.SetWeight.spaceValueEquivalence
+#print axioms SerrePositivity.InfinityCategories.SetWeight.spaceUniverseValueEquivalence
+#print axioms SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHom
