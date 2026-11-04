@@ -55,7 +55,7 @@
 
 layer_check --enforce W2b は PASS。禁止 74 本は HA 66・ModelBridge 8 で、承認済み M16 の残余と集合まで一致。個別 ratchet 増加 14 指標は §12 の承認済み診断内。基準と例外の変更は 0。
 
-fresh before v3b は主対象 964 本、追加利用者 11 本、private 補足 28 本を取得済み。匿名 instance 8 件は、分割後に変わった自動生成名を before v3b と承認済み split の元名へ明示的に復元した。最後に全 split の kept→moved private 宣言依存と局所 instance 依存を照合し、参照復旧の残りはいずれも 0 件。after v3b の一致判定は保留。
+fresh before v3b は主対象 964 本、追加利用者 11 本、private 補足 28 本を取得済み。匿名 instance 8 件は、分割後に変わった自動生成名を before v3b と承認済み split の元名へ明示的に復元した。全 split の kept→moved private 宣言依存は、参照復旧の残り 0 件。局所 instance の監査は抽出条件の誤りを訂正し、before の参照に対して明示再登録のない 9 ファイルを診断として記録した。うち 5 本は内部ビルド済みで、4 本は残る失敗の解消後に検証する。追加登録の必要性と同一性は内部ビルド・保存比較で判定する。after v3b の一致判定は保留。
 
 ## 再開候補
 
