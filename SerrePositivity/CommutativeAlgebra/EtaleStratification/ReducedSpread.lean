@@ -80,7 +80,7 @@ theorem exists_reduced_spread_out
   let : Module.Finite R' T' := Module.Finite.of_isLocalizedModule
     (Submonoid.powers (g : R)) (IsScalarTower.toAlgHom R T T').toLinearMap
   let : Algebra.Etale R T' := etale_away_of_dvd (map_dvd (algebraMap R T) hg₁) h₁
-  let : IsNoetherianRing R' := IsLocalization.isNoetherianRing (Submonoid.powers (g : R)) R'
+  let : IsNoetherianRing R' := IsLocalization.isNoetherianRing (Submonoid.powers (g : R)) R' inferInstance
   let : Algebra.FinitePresentation R' T' :=
     Algebra.FinitePresentation.of_finiteType.mp inferInstance
   let : Algebra.FormallyEtale R' T' :=

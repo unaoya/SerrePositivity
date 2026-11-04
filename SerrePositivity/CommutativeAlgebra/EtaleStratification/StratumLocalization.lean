@@ -41,7 +41,6 @@ theorem isReduced_stratumRing {R : Type u} [CommRing R] (I : Ideal R) (g : R) :
 /-- g h の層と、g の層でさらに h を反転した環の標準同型。 -/
 def stratumLocalizationEquiv {R : Type u} [CommRing R] (I : Ideal R) (g h : R) :
     StratumRing I (g * h) ≃+* Localization.Away (stratumUnit I g h) := by
-  let Q := R ⧸ I.radical
   let T := Localization.Away (stratumUnit I g h)
   let : IsLocalization.Away (Ideal.Quotient.mk I.radical (g * h)) T := by
     rw [map_mul]
