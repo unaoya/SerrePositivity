@@ -334,3 +334,18 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - `UniversalHomeomorphism.Basic`、`NilDiagonal`、`Reduction` と、`GenericBijective`、`GenericPrimeVanishing` の成功を確認。対角核の nil 性、被約化の射、p 冪 torsion の分母払いが型検査を通った。
 - 残ったエラーは `PrincipalOpen`、`GenericKernel`、`GenericModel`、`Factorization`。主に局所化射の展開、部分加群の局所化 instance、依存型を含む書換え、補題の明示引数の指定であり、修正を `6c38326fe` に保存した。先行する API 引数修正は `d20d0f848`。
 - 次の単体ビルド 08 は B4 の監査と別プロジェクトのビルドを検出して開始待ち。全体の `sorry` はソース上 0 件だが、後半の型検査は未完了であり、B-3 完了ではない。main への取り込みは行っていない。
+
+### B-3 継続：単体ビルド 08〜17
+
+いずれも `EtaleStratification.Stratification` の単体ビルドで、実行前の `ps -axo command=` 確認と `with_build_lock --wait 0` を使用。競合時は待機した。所要時間は順に 13.5、9.3、14.3、12.1、8.9、24.8、10.2、20.1、26.8、13.2 秒。最終定理までの成功にはまだ至っていない。
+
+この区間で以下の現行証明が通過した。
+
+- 有限モデルの局所化、一般点のエタール性・nil な対角核・p 反転後の全射性の延長。
+- 一般点の構造定理、分離部分の有限エタール部分代数の構成、三つの分母を持つ有限モデル。
+- 有限エタール分解の主局所化と被約底変換。
+- 商環の初層と元の層の同型、二段階の主局所化、被約層からの射の延長。
+
+08〜13 の修正は `f80d744e0`・`4c1d880ee` などに保存した。12 では、同型の定義中に未確定引数が残ったエラーに続いて Lean の内部エラーが出たが、引数を明示した 13 では再発していない。
+
+17 時点の検査停止箇所は `ReducedSpread`、`ReducedTensorProduct`、`StratumEquiv`。修正を保存し、18 を待機中。底変換した層の比較と最終定理も引き続き検証が必要であり、ソース上の `sorry` 0 をもって B-3 完了とはしない。main・全ビルド・verify・監査には触れていない。
