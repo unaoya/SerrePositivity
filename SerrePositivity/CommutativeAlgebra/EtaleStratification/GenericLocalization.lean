@@ -24,6 +24,8 @@ public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoin
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -36,11 +38,12 @@ theorem isLocalization_reduced_localization
   have hn : nilradical B = ⊥ := by
     have h := IsLocalization.map_radical M B (⊥ : Ideal A)
     have hA : (⊥ : Ideal A).radical = ⊥ := nilradical_eq_zero A
+    change (⊥ : Ideal B).radical = ⊥
     simpa only [hA, Ideal.map_bot] using h.symm
   have h := IsLocalization.of_surjective M B (RingHom.id A) Function.surjective_id
     (Ideal.Quotient.mk (nilradical B)) Ideal.Quotient.mk_surjective
     (by ext; rfl) (by rw [Ideal.mk_ker, hn]; exact bot_le)
-  simpa only [Submonoid.map_id] using h
+  simpa only [RingHom.toMonoidHom_id, Submonoid.map_id] using h
 
 /-- 被約な有限代数の一般ファイバーへの射は、基底の非零因子による加群の局所化。 -/
 theorem isLocalizedModule_genericReducedFiber

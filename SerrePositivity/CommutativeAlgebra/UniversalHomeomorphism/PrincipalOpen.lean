@@ -50,7 +50,8 @@ theorem isUniversalHomeomorphism_awayMap {A B : Type u} [CommRing A] [CommRing B
     ext x
     change e (localizationMap f M (algebraMap A (Localization M) x)) = _
     rw [localizationMap_algebraMap]
-    simpa only [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
+    simpa only [RingHom.comp_apply, Localization.awayMap, IsLocalization.Away.map,
+      IsLocalization.map_eq]
       using e.commutes (f x)
   rwa [hmap] at h
 

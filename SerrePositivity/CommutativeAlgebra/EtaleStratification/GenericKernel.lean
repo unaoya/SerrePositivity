@@ -23,6 +23,8 @@ public import Mathlib.RingTheory.Localization.Algebra
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- 局所化後に nil な有限生成核は、一つの分母を反転すれば nil。 -/

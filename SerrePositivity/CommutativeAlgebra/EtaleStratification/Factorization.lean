@@ -25,6 +25,8 @@ p 反転後の同型は、誘導される環準同型の全単射性で表す。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- V(I) の被約構造上で g を反転する。R/√I は (R/I)_red の標準表示。 -/
@@ -75,7 +77,8 @@ def stratumMap {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (I : Ide
 theorem stratumMap_unit {R S : Type u} [CommRing R] [CommRing S]
     (f : R →+* S) (I : Ideal R) (g x : R) :
     stratumMap f I g (stratumUnit I g x) = stratumUnit (I.map f) (f g) (f x) := by
-  exact IsLocalization.Away.lift_eq _ _ _
+  exact IsLocalization.Away.lift_eq (Ideal.Quotient.mk I.radical g)
+    (stratumUnit_isUnit (I.map f) (f g)) (Ideal.Quotient.mk I.radical x)
 
 /-- 層を始域とする環準同型は、元の環の標準像上で一致すれば等しい。 -/
 theorem stratumRing_hom_ext {R A : Type u} [CommRing R] [CommRing A]
@@ -117,6 +120,7 @@ theorem invertPrimeMap_algebraMap {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) (f : A →+* B) (x : A) :
     invertPrimeMap p f (algebraMap A (Localization.Away (p : A)) x) =
       algebraMap B (Localization.Away (p : B)) (f x) := by
+  unfold invertPrimeMap IsLocalization.Away.map
   exact IsLocalization.map_eq _ x
 
 @[simp]
