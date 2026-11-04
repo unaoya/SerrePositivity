@@ -349,3 +349,35 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 08〜13 の修正は `f80d744e0`・`4c1d880ee` などに保存した。12 では、同型の定義中に未確定引数が残ったエラーに続いて Lean の内部エラーが出たが、引数を明示した 13 では再発していない。
 
 17 時点の検査停止箇所は `ReducedSpread`、`ReducedTensorProduct`、`StratumEquiv`。修正を保存し、18 を待機中。底変換した層の比較と最終定理も引き続き検証が必要であり、ソース上の `sorry` 0 をもって B-3 完了とはしない。main・全ビルド・verify・監査には触れていない。
+
+## 停止点 B-3：Lemma 10.12 の証明完了（2026-11-05）
+
+### 結果
+
+`exists_finiteEtaleStratification` まで単体ビルドに成功した。B-3 の残り 4 件（`exists_noetherianApproximation`、`generic_structure`、`spread_out_generic`、`exists_finiteEtaleStratification`）をすべて証明した。B-2 を含む新規 36 ファイル（`UniversalHomeomorphism/` 6 本、`EtaleStratification/` 30 本）に `sorry`・`axiom`・`admit` は 0 件。最終ビルドに `sorry` の警告はない。
+
+承認された主張を保ち、表示の係数による Noetherian 近似、一般点での分離部分、主開集合への延長、イデアルの Noetherian 帰納、p 可逆／p = 0 の細分、元の基底への被約底変換を接続した。「核が nil」は各元が冪零という意味のままで、イデアルの冪零性に置き換えていない。有限生成部分代数への制限が radicial 性を保つという仮定も使っていない。原典から主張を変更した点はない。
+
+### 最終の検証
+
+対象はいずれも `SerrePositivity.CommutativeAlgebra.EtaleStratification.Stratification`。各回とも実行直前の `ps -axo command=` と共有鍵の空きを確認し、`scripts/refactor/with_build_lock.sh --wait 0 -- lake build <module>` を使用した。
+
+| 回 | 実測 | 結果 |
+|---|---:|---|
+| 18 | 16.1 秒 | 被約テンソル積・代数同型による層の移送が成功。後続 2 本で失敗。 |
+| 19 | 20.4 秒 | 底変換の射と局所化の型指定を修正。 |
+| 20 | 20.1 秒 | 全補助モジュールが成功し、Stratification 本体の接続で失敗。 |
+| 21 | 13.5 秒 | Noetherian 近似の内部証明に残るエラーを確認。 |
+| 22 | 9.5 秒 | 像への制限写像の値を展開する等式 1 箇所が残った。 |
+| 23 | **14.5 秒** | **成功。最終定理まで型検査を通過。** |
+
+23 のログは `/private/tmp/bsw10-b3-23.log`。末尾は `Build completed successfully (2955 jobs).`。これは指定した 1 モジュールの依存関係を含む Lake の表示で、全ビルドではない。`Basic`・`PowerClosure` を含め、新規両ディレクトリのモジュールはこの依存関係内にある。B-2 の個別ビルド成功は前節に記録済み。
+
+残る警告は長い行、未使用の simp 引数・tactic、`letI` を `let` にできる箇所などの linter 警告のみ。`git diff --check` も通過した。全ビルド・verify・監査・監査ファイル再生成は行っていない。
+
+### 保存と引き渡し
+
+- 証明の最終コミット：**`57556801e`**（`codex/bs-w10-b`）。途中保存もすべて同ブランチ。
+- この報告は別の報告コミットに保存する。ステージ対象は作業ファイルを個別指定し、`git add -A` は使っていない。
+- **main には取り込んでいない。** CA の監査再生成、論文の層の B4 との衝突確認、main への取り込みは調整役に委ねる。
+- B-3 の残作業はなく、この報告・保存で停止する。ビルドも待機処理も終了しており、共有鍵を保持していない。
