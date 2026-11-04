@@ -183,6 +183,20 @@ theorem isUniversalHomeomorphism_of_injective_fieldMaps {A B : Type u}
   simpa only [AlgebraicGeometry.Spec.preimage_comp, CommRingCat.hom_comp,
     AlgebraicGeometry.Spec.preimage_map] using he
 
+/-- 普遍同相に沿う体値点の延長は一意。 -/
+theorem IsUniversalHomeomorphism.injective_fieldMaps {A B : Type u}
+    [CommRing A] [CommRing B] {f : A →+* B} (hf : IsUniversalHomeomorphism f)
+    (K : Type u) [Field K] : Function.Injective (fun g : B →+* K ↦ g.comp f) := by
+  have hu := (radicial_iff_universallyInjective f).mp hf.radicial
+  have hfields := ((AlgebraicGeometry.tfae_universallyInjective
+    (AlgebraicGeometry.Spec.map (CommRingCat.ofHom f))).out 1 2).mp hu K
+  intro g₁ g₂ he
+  have h := congrArg (fun k : A →+* K ↦ AlgebraicGeometry.Spec.map (CommRingCat.ofHom k)) he
+  change AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp (CommRingCat.ofHom f) (CommRingCat.ofHom g₁)) =
+    AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp (CommRingCat.ofHom f) (CommRingCat.ofHom g₂)) at h
+  simp only [AlgebraicGeometry.Spec.map_comp] at h
+  exact congrArg CommRingCat.Hom.hom (AlgebraicGeometry.Spec.map_injective (hfields h))
+
 /-- 環の押し出しに沿った普遍同相の移送。 -/
 theorem isUniversalHomeomorphism_of_isPushout {A B C D : Type u}
     [CommRing A] [CommRing B] [CommRing C] [CommRing D]

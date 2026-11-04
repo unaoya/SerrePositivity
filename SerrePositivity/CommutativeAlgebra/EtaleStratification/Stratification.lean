@@ -18,7 +18,7 @@ public import Mathlib.RingTheory.Polynomial.Tower
 public import Mathlib.RingTheory.Extension.Presentation.Core
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
-public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericEtale
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericBijective
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericModel
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.ReducedEtale
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericNil
@@ -165,7 +165,9 @@ private theorem presentation_range_baseChange_equiv {C R S : Type*}
     ext r x
     induction x using Quotient.inductionOn' with
     | h t => rfl
-  have hbij : Function.Bijective (v.comp u) := he ▸ (P.tensorModelOfHasCoeffsEquiv R₀).bijective
+  have hbij : Function.Bijective (v.comp u) := by
+    rw [he]
+    exact (P.tensorModelOfHasCoeffsEquiv R₀).bijective
   refine ⟨AlgEquiv.ofBijective v ⟨?_, hbij.surjective.of_comp⟩⟩
   intro x y hxy
   obtain ⟨x, rfl⟩ := hu x

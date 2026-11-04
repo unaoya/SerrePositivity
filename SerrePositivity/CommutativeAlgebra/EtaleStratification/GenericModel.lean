@@ -1,5 +1,6 @@
 module
 
+public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.Reduction
 public import Mathlib.Algebra.Module.LocalizedModule.Submodule
 public import Mathlib.Algebra.Module.LocalizedModule.IsLocalization
 public import Mathlib.RingTheory.Noetherian.Basic

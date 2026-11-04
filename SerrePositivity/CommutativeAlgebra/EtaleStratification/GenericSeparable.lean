@@ -1,7 +1,8 @@
 module
 
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FiniteFieldProduct
-public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.NilDiagonal
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.Factorization
+public import Mathlib.RingTheory.Localization.Pi
 
 /-!
 # 一般点での純非分離部分の積
@@ -65,6 +66,65 @@ theorem isUniversalHomeomorphism_pi_of_isPurelyInseparable
     rw [← ha, ← hb] at he
     simpa [F] using he
   have he : a = b := IsPurelyInseparable.injective_comp_algebraMap (M i) (L i) K hab
-  exact ha.symm.trans (he ▸ hb)
+  rw [he] at ha
+  exact ha.symm.trans hb
+
+/-- 体の射は、p 可逆な場合に同型なら、p 反転後は常に同型。 -/
+theorem invertPrimeMap_bijective_of_field {M L : Type u} [Field M] [Field L]
+    (p : ℕ) (f : M →+* L) (hf : IsUnit (p : M) → Function.Bijective f) :
+    Function.Bijective (invertPrimeMap p f) := by
+  by_cases hp : (p : M) = 0
+  · have hpL : (p : L) = 0 := by simpa only [map_natCast, map_zero] using congrArg f hp
+    let : Subsingleton (Localization.Away (p : M)) := IsLocalization.subsingleton
+      (M := Submonoid.powers (p : M)) (by rw [hp]; exact Submonoid.mem_powers 0)
+    let : Subsingleton (Localization.Away (p : L)) := IsLocalization.subsingleton
+      (M := Submonoid.powers (p : L)) (by rw [hpL]; exact Submonoid.mem_powers 0)
+    exact ⟨fun _ _ _ ↦ Subsingleton.elim _ _, fun y ↦ ⟨0, Subsingleton.elim _ _⟩⟩
+  · exact invertPrimeMap_bijective p f (hf (isUnit_iff_ne_zero.mpr hp))
+
+/-- 成分ごとの p 反転後の同型は、有限積の p 反転後の同型を与える。 -/
+theorem invertPrimeMap_pi_bijective {ι : Type u} [Finite ι]
+    (M L : ι → Type u) [∀ i, CommRing (M i)] [∀ i, CommRing (L i)]
+    (p : ℕ) (f : ∀ i, M i →+* L i) (hf : ∀ i, Function.Bijective (invertPrimeMap p (f i))) :
+    Function.Bijective (invertPrimeMap p (RingHom.pi (fun i ↦ (f i).comp (Pi.evalRingHom M i)))) := by
+  let M' (i : ι) := Localization.Away (p : M i)
+  let L' (i : ι) := Localization.Away (p : L i)
+  let : ∀ i, IsLocalization ((Submonoid.powers (p : ∀ i, M i)).map (Pi.evalRingHom M i))
+      (M' i) := fun i ↦ by
+    simp only [Submonoid.map_powers, map_natCast]
+    infer_instance
+  let : ∀ i, IsLocalization ((Submonoid.powers (p : ∀ i, L i)).map (Pi.evalRingHom L i))
+      (L' i) := fun i ↦ by
+    simp only [Submonoid.map_powers, map_natCast]
+    infer_instance
+  let : IsLocalization (Submonoid.powers (p : ∀ i, M i)) (∀ i, M' i) :=
+    (IsLocalization.iff_map_piEvalRingHom M (∀ i, M' i) _).mpr inferInstance
+  let : IsLocalization (Submonoid.powers (p : ∀ i, L i)) (∀ i, L' i) :=
+    (IsLocalization.iff_map_piEvalRingHom L (∀ i, L' i) _).mpr inferInstance
+  let eM := IsLocalization.algEquiv (Submonoid.powers (p : ∀ i, M i))
+    (Localization.Away (p : ∀ i, M i)) (∀ i, M' i)
+  let eL := IsLocalization.algEquiv (Submonoid.powers (p : ∀ i, L i))
+    (Localization.Away (p : ∀ i, L i)) (∀ i, L' i)
+  let F := RingHom.pi (fun i ↦ (f i).comp (Pi.evalRingHom M i))
+  let F' := RingHom.pi (fun i ↦ (invertPrimeMap p (f i)).comp (Pi.evalRingHom M' i))
+  have hF' : Function.Bijective F' := by
+    constructor
+    · intro x y he
+      funext i
+      exact (hf i).injective (congrFun he i)
+    · intro y
+      choose x hx using fun i ↦ (hf i).surjective (y i)
+      exact ⟨x, funext hx⟩
+  have he : eL.toRingHom.comp (invertPrimeMap p F) = F'.comp eM.toRingHom := by
+    apply IsLocalization.ringHom_ext (Submonoid.powers (p : ∀ i, M i))
+    ext x i
+    simp [F, F', AlgEquiv.commutes]
+  have hbij : Function.Bijective (eL.toRingHom.comp (invertPrimeMap p F)) := by
+    rw [he]
+    exact hF'.comp eM.bijective
+  refine ⟨hbij.injective.of_comp, ?_⟩
+  intro y
+  obtain ⟨x, hx⟩ := hbij.surjective (eL y)
+  exact ⟨x, eL.injective hx⟩
 
 end SerrePositivity.CommutativeAlgebra

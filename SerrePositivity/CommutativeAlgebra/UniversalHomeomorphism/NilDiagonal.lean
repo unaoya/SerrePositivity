@@ -68,4 +68,33 @@ theorem nil_diagonal_of_isUniversalHomeomorphism {A B : Type u}
     rfl
   exact (PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical m).mp hs.denseRange
 
+/-- 体値点の延長が一意なら、対角射の核は nil。
+Spec 全射性は不要なので、局所化を合成した射にも適用できる。 -/
+theorem nil_diagonal_of_injective_fieldMaps {A B : Type u}
+    [CommRing A] [CommRing B] [Algebra A B]
+    (hf : ∀ (K : Type u) [Field K],
+      Function.Injective (fun g : B →+* K ↦ g.comp (algebraMap A B))) :
+    RingHom.ker (Algebra.TensorProduct.lmul' A (S := B)).toRingHom ≤
+      nilradical (B ⊗[A] B) := by
+  intro z hz
+  apply mem_nilradical.mpr
+  apply nilpotent_iff_mem_prime.mpr
+  intro P hP
+  let : P.IsPrime := hP
+  let K := P.ResidueField
+  let q := algebraMap (B ⊗[A] B) K
+  let a := q.comp (Algebra.TensorProduct.includeLeft : B →ₐ[A] B ⊗[A] B).toRingHom
+  let b := q.comp (Algebra.TensorProduct.includeRight : B →ₐ[A] B ⊗[A] B).toRingHom
+  let m := (Algebra.TensorProduct.lmul' A (S := B)).toRingHom
+  have hab : a = b := hf K (by simp [a, b, RingHom.comp_assoc])
+  have hq : q = a.comp m := by
+    apply Algebra.TensorProduct.ringHom_ext
+    · ext x
+      simp [a, m]
+    · ext x
+      simpa [a, b, m] using (RingHom.congr_fun hab x).symm
+  apply (Ideal.algebraMap_residueField_eq_zero (I := P)).mp
+  change q z = 0
+  rw [hq, RingHom.comp_apply, show m z = 0 from hz, map_zero]
+
 end SerrePositivity.CommutativeAlgebra

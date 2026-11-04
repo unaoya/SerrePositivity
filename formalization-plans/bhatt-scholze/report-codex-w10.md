@@ -284,3 +284,20 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - 中間保存 `7dae5c5ff`、`146012af2`。明示的 `sorry` は `spread_out_generic` と
   `exists_finiteEtaleStratification` の二つが残っており、B-3 完了とは報告していない。
   main には一切取り込んでいない。
+
+### B-3 補助証明の追加保存（単体ビルド 05 の開始待ち）
+
+- `Factorization` に被約主開層・分解の定義を移し、p 反転の関手性、同型に沿う分解の移送、
+  `(p g, g)` による標数の細分を追加。承認済みの定義・主張の型は変更していない。
+- `StratumQuotient`：R/I の被約初層と R の I 上の層の標準同型。
+- `GenericEtale`：微分加群と第一余接ホモロジーの有限性・消滅からエタール性を延長。
+- `GenericBijective`：局所化後の核・余核の消滅から、有限加群の同型を一つの分母へ延長。
+- `GenericSeparable`：有限純非分離体拡大の積の普遍同相性と、有限積での p 反転後の全単射性。
+- `UniversalHomeomorphism.Reduction`：被約化の自然な射、その普遍同相性、局所化との両立。
+- `NilDiagonal` の判定には Spec 全射性を使わない方向も追加した。一般点への局所化を合成した
+  射を扱うため、体値点の一意性から対角イデアルが nil であることを導く。
+- 途中保存：`ceed5ea8a`、`09de10bfa`、`0cc048d38`、`f257f9c48`。
+  この節の追加分も未検証であり、完成・ビルド成功とは報告しない。
+- 共有鍵が空いていた時点にも `ps` で main の監査を確認したため、ビルドは開始していない。
+  B4 の単体ビルドが動いている間も待機を継続。全ビルド・verify・監査の実行はしていない。
+- `spread_out_generic` と `exists_finiteEtaleStratification` の接続は未完了。main への取り込みはなし。
