@@ -18,6 +18,7 @@ public import Mathlib.RingTheory.Polynomial.Tower
 public import Mathlib.RingTheory.Extension.Presentation.Core
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.NoetherianInduction
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.FiniteFieldProduct
 
 /-!
@@ -337,10 +338,6 @@ theorem spread_out_generic (R S : Type u) [CommRing R] [CommRing S] [Algebra R S
       HasEtaleFactorization p (stratumMap (algebraMap R S) ⊥ g) := by
   sorry -- 被約基底の generic_structure の冪等元・生成元・関係の分母を同時に払い、全極小点を残す。
         -- エタール locus の開性、標数 p の判定、標数 0 の逆射も広げて p 反転後の同型を得る
-
-/-- 第 i 層より前に現れる元だけが生成するイデアル。初層では零イデアル。 -/
-def earlierIdeal {R : Type u} [CommRing R] {n : ℕ} (g : Fin n → R) (i : Fin n) : Ideal R :=
-  Ideal.span (g '' {j | j < i})
 
 /-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
 方針：noetherian 近似、一般点での分解、その広げ、R_0/(g_1) への noetherian 帰納、

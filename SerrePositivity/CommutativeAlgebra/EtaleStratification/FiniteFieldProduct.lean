@@ -45,7 +45,7 @@ private theorem exists_field_factor {ι : Type*} [Finite ι]
 private theorem finite_field_factor {ι : Type*} (K : ι → Type*) [∀ i, Field (K i)]
     (L : Type*) [Field L] [Algebra (∀ i, K i) L] [Module.Finite (∀ i, K i) L]
     (i : ι) (g : K i →+* L) (hg : g.comp (Pi.evalRingHom K i) = algebraMap (∀ i, K i) L) :
-    letI : Algebra (K i) L := g.toAlgebra
+    let : Algebra (K i) L := g.toAlgebra
     Module.Finite (K i) L := by
   let : Algebra (K i) L := g.toAlgebra
   let : Algebra (∀ i, K i) (K i) := (Pi.evalRingHom K i).toAlgebra
@@ -58,10 +58,10 @@ theorem finite_algebra_over_field_product {ι : Type u} [Finite ι]
     (K : ι → Type u) [∀ i, Field (K i)] (A : Type u) [CommRing A]
     [Algebra (∀ i, K i) A] [Module.Finite (∀ i, K i) A] :
     ∃ (m : ℕ) (v : Fin m → ι) (L : Fin m → Type u) (hL : ∀ j, Field (L j)),
-      letI : ∀ j, Field (L j) := hL
+      let : ∀ j, Field (L j) := hL
       ∃ a : ∀ j, Algebra (K (v j)) (L j),
-        letI : ∀ j, Algebra (K (v j)) (L j) := a
-        letI : Algebra (∀ i, K i) (∀ j, L j) := (RingHom.pi (fun j ↦
+        let : ∀ j, Algebra (K (v j)) (L j) := a
+        let : Algebra (∀ i, K i) (∀ j, L j) := (RingHom.pi (fun j ↦
           (algebraMap (K (v j)) (L j)).comp (Pi.evalRingHom K (v j)))).toAlgebra
         Nonempty ((A ⧸ nilradical A) ≃ₐ[∀ i, K i] (∀ j, L j)) ∧
           ∀ j, Module.Finite (K (v j)) (L j) := by
@@ -76,6 +76,9 @@ theorem finite_algebra_over_field_product {ι : Type u} [Finite ι]
   let L (j : Fin (Fintype.card J)) := F (e.symm j)
   let a (j : Fin (Fintype.card J)) : Algebra (K (v (e.symm j))) (L j) :=
     (g (e.symm j)).toAlgebra
+  let : ∀ j, Algebra (K (v (e.symm j))) (L j) := a
+  let : Algebra (∀ i, K i) (∀ j, L j) := (RingHom.pi (fun j ↦
+    (g (e.symm j)).comp (Pi.evalRingHom K (v (e.symm j))))).toAlgebra
   refine ⟨Fintype.card J, fun j ↦ v (e.symm j), L, (fun j ↦ inferInstance), a, ?_, ?_⟩
   · let E := (IsArtinianRing.quotNilradicalEquivPi A).toRingEquiv.trans
       (RingEquiv.piCongrLeft' F e)

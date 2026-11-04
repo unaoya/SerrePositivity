@@ -60,6 +60,7 @@ private theorem eq_zero_of_genericField_eq_zero {R : Type u} [CommRing R] [IsRed
     change x ∈ (⊥ : Ideal R).radical
     rw [← Ideal.sInf_minimalPrimes, Submodule.mem_sInf]
     intro I hI
+    let : Ideal.IsPrime I := hI.isPrime
     exact (Ideal.algebraMap_residueField_eq_zero (I := I)).mp (hx ⟨⟨I, hI.isPrime⟩, hI⟩)
   exact (mem_nilradical.mp hnil).eq_zero
 
@@ -79,7 +80,8 @@ private theorem exists_genericPoint_separator {R : Type u} [CommRing R]
     exact (Finset.mem_erase.mp hQ).1 he
   obtain ⟨s, hs, hsp⟩ := IsConcreteLE.not_le_iff_exists.mp hn
   refine ⟨s, hsp, fun Q hQ ↦ ?_⟩
-  exact (Finset.inf_le (Finset.mem_erase.mpr ⟨hQ, Finset.mem_univ Q⟩)) hs
+  exact (show J ≤ Q.val.asIdeal from
+    Finset.inf_le (Finset.mem_erase.mpr ⟨hQ, Finset.mem_univ Q⟩)) hs
 
 /-- どの極小点にも含まれないイデアルには、全極小点を避ける元がある。 -/
 theorem exists_mem_ideal_avoiding_genericPoints {R : Type u} [CommRing R]
