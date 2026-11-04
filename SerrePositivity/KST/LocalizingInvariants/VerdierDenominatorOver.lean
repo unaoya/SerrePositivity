@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteDenominatorRefinement
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteDenominatorRefinement
 public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism
 public import SerrePositivity.InfinityCategories.Derived.DGRoofSliceVertices
 public import SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite

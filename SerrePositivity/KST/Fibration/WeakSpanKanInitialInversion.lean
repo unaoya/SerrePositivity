@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.WeakSpanKanDiagram
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDiagram
 public import SerrePositivity.KST.Fibration.PullbackStrictConstantEdge
 public import SerrePositivity.KST.Fibration.TransportSimplexConstantEdge
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramEdges

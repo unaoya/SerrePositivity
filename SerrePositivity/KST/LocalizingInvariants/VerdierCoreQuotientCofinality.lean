@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierCoreSliceCones
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCoreSliceCones
 public import SerrePositivity.InfinityCategories.Derived.FiniteConeOpposite
 public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredWeakContractibility
 public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft

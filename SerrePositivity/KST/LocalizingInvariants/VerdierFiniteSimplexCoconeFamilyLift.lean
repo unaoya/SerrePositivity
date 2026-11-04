@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexParametricComparison
-public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteSpanRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyLastArrow
 
 /-!

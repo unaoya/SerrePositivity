@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConePoint
 public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeSuccessor
-public import SerrePositivity.KST.LocalizingInvariants.VerdierRelativeConeShapeIso
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierRelativeConeShapeIso
 
 /-!
 概要：全次数の標準単体パラメータについて、元の有限境界付き商錐を回収する。

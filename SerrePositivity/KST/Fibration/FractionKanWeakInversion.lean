@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.LeftFibrationInvertedBaseChange
 public import SerrePositivity.KST.Fibration.PullbackStrictBilateralEdge
-public import SerrePositivity.KST.Fibration.WeakSpanKanWeakInversion
-public import SerrePositivity.KST.Fibration.FractionKanDescent
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionKanDescent
 public import SerrePositivity.KST.Fibration.TransportSimplexEdgeCover
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
 public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso

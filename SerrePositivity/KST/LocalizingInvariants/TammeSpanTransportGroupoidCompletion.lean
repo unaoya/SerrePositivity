@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.TammeDenominatorGroupoidComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeDenominatorGroupoidComparison
 public import SerrePositivity.KST.LocalizingInvariants.FiberTransportGroupoidCompletion
 
 /-!

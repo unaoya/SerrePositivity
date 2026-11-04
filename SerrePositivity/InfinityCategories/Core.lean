@@ -445,6 +445,7 @@ public import SerrePositivity.InfinityCategories.Core.PushoutFunctorColimits
 public import SerrePositivity.InfinityCategories.Core.PushoutHomotopy
 public import SerrePositivity.InfinityCategories.Core.PushoutMonoCube
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary
 public import SerrePositivity.InfinityCategories.Core.ReindexSliceOver
 public import SerrePositivity.InfinityCategories.Core.ReindexSliceUnder
 public import SerrePositivity.InfinityCategories.Core.RelativeCoslice
@@ -531,4 +532,4 @@ public import SerrePositivity.InfinityCategories.Core.WideRelativeLifting
 public import SerrePositivity.InfinityCategories.Core.ZeroBoundaryExtension
 public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
 public import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrameBoundary
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily

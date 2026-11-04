@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierInvariantFiber
-public import SerrePositivity.KST.LocalizingInvariants.TammeFiberSequence
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.TammeFiberSequence
 
 /-!
 概要：仮定付き lax Verdier 列の値の構成は、充満忠実右随伴の場合の既存結果と一致する。

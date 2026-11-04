@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeComparisonPrism
 
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreComparison
 public import SerrePositivity.KST.LocalizingInvariants.SpanFamilyTransposeNaturality
@@ -20,10 +21,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-def spanComparisonPrism {K L X : SSet.{u}}
-    (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) : K ⊗ (Δ[1] : SSet.{u}) ⟶ (ihom L).obj X :=
-  uncurry (SSet.yonedaEquiv.symm s ≫ (internalHomSwapIso L K X).hom)
-
 lemma spanComparisonPrism_pre_diagram {K L L' X : SSet.{u}} (j : L' ⟶ L)
     (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
     spanComparisonPrism s ≫ (pre j).app X =
@@ -31,32 +28,6 @@ lemma spanComparisonPrism_pre_diagram {K L L' X : SSet.{u}} (j : L' ⟶ L)
   simp only [spanComparisonPrism]
   rw [← uncurry_natural_right, Category.assoc,
     ← spanInternalHomSwap_pre_first, ← SSet.yonedaEquiv_symm_comp]
-  rfl
-
-lemma spanComparisonPrism_pre_parameter {K K' L X : SSet.{u}} (j : K' ⟶ K)
-    (s : ((ihom L).obj ((ihom K).obj X)) _⦋1⦌) :
-    (j ▷ (Δ[1] : SSet.{u})) ≫ spanComparisonPrism s =
-      spanComparisonPrism (((ihom L).map ((pre j).app X)).app (Opposite.op ⦋1⦌) s) := by
-  simp only [spanComparisonPrism]
-  rw [← uncurry_pre_app, Category.assoc,
-    ← internalHomSwapIso_pre, ← SSet.yonedaEquiv_symm_comp]
-  rfl
-
-/-- 元の全比較辺そのものを戻して得る、元の全パラメータ族間の実 Homotopy。 -/
-def spanFunctorEdgeUnflipHomotopy {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
-    (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
-      (functorVertex (internalHomFlipHomEquiv K L X F))
-      (functorVertex (internalHomFlipHomEquiv K L X G))) : SSet.Homotopy F G :=
-  simplicialHomotopyOfFunctorEdge (spanFunctorEdgeUnflip l).toTruncated
-
-lemma spanFunctorEdgeUnflipHomotopy_h {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
-    (l : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
-      (functorVertex (internalHomFlipHomEquiv K L X F))
-      (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflipHomotopy l).h = spanComparisonPrism l.edge := by
-  change uncurry (SSet.yonedaEquiv.symm (spanFunctorEdgeUnflip l).edge) =
-    uncurry (SSet.yonedaEquiv.symm l.edge ≫ (internalHomSwapIso L K X).hom)
-  rw [spanFunctorEdgeUnflip_edge, ← SSet.yonedaEquiv_symm_comp]
   rfl
 
 end SerrePositivity.KST.LocalizingInvariants

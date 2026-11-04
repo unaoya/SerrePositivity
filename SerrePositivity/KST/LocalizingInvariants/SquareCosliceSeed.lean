@@ -3,7 +3,7 @@ module
 public import SerrePositivity.InfinityCategories.F2.CatInfinity.TensorInitialVertices
 public import SerrePositivity.InfinityCategories.Core.LeftFibrationTerminalFiber
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalCosliceSource
-public import SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachment
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
 
 /-!
 概要：元の商四角形全体を、同じ左下頂点の coslice 内の全図式へ戻す。

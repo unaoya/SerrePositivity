@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
 
 public import SerrePositivity.KST.Fibration.FunctorCoreCriterion
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
@@ -20,10 +21,6 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
-
-private lemma comp_app_congr {T U V : SSet.{u}} {f : T ⟶ U} {g : U ⟶ V} {h : T ⟶ V}
-    (e : f ≫ g = h) (n : SimplexCategoryᵒᵖ) (s : T.obj n) :
-    g.app n (f.app n s) = h.app n s := congrArg (fun k : T ⟶ V => k.app n s) e
 
 /-- 全頂点を覆う実制限は、関手圏の core を全単体で反映する。 -/
 lemma functorCore_eq_preimage_of_vertexSurjective {K L C : SSet.{u}} [Quasicategory C]
@@ -51,11 +48,6 @@ lemma functorCore_eq_preimage_of_vertexSurjective {K L C : SSet.{u}} [Quasicateg
     have hv := (congrArg (fun v : C.obj n => v ∈ (quasicategoryCore C).obj n) (he l)).mp hh
     exact hl ▸ hv
 
-/-- 同じ商の後合成による、全図式の元の厳密 core 逆像。 -/
-def relativeFunctorCore {B C : SSet.{u}} (q : B ⟶ C) (K : SSet.{u}) :
-    ((ihom K).obj B).Subcomplex :=
-  (quasicategoryCore ((ihom K).obj C)).preimage ((ihom K).map q)
-
 instance relativeFunctorCore_quasicategory {B C : SSet.{u}} [Quasicategory B]
     [Quasicategory C] (q : B ⟶ C) (K : SSet.{u}) :
     Quasicategory (relativeFunctorCore q K : SSet.{u}) := by
@@ -64,12 +56,6 @@ instance relativeFunctorCore_quasicategory {B C : SSet.{u}} [Quasicategory B]
   change Quasicategory ((quasicategoryCore ((ihom K).obj C)).preimage ((ihom K).map q) : SSet.{u})
   rw [← he]
   infer_instance
-
-/-- 同じ core 逆像から商図式の core への元の射影。 -/
-def relativeFunctorCoreQuotient {B C : SSet.{u}} (q : B ⟶ C) (K : SSet.{u}) :
-    (relativeFunctorCore q K : SSet.{u}) ⟶
-      (quasicategoryCore ((ihom K).obj C) : SSet.{u}) :=
-  (quasicategoryCore ((ihom K).obj C)).fromPreimage ((ihom K).map q)
 
 /-- 全頂点を覆う制限の下で、元の相対図式は同じ部分複体の厳密な逆像。 -/
 lemma relativeFunctorCore_eq_preimage_of_vertexSurjective

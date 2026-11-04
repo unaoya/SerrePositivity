@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierRecoveredPullbackComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierRecoveredPullbackComparison
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyCoreCriterion
 public import SerrePositivity.KST.LocalizingInvariants.RelativeFunctorCoreRestriction
 public import SerrePositivity.KST.Fibration.RelativeFirstRowSimplexQuotient

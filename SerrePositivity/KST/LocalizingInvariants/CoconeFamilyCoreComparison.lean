@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose
 public import SerrePositivity.KST.LocalizingInvariants.CorePreimageComparisonPrism
@@ -20,45 +21,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SS
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-/-- 転置した全族の指定比較辺を、一次単体を選び直さず元の全族へ戻す。 -/
-def spanFunctorEdgeUnflip {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
-    (l : Truncated.Edge
-      (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
-      (functorVertex (internalHomFlipHomEquiv K L X F))
-      (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    SSet.Edge (functorVertex F) (functorVertex G) := by
-  let t := (SSet.Edge.ofTruncated l).map (internalHomSwapIso L K X).hom
-  have hs (f : K ⟶ (ihom L).obj X) :
-      (internalHomSwapIso L K X).hom.app (Opposite.op ⦋0⦌)
-        (functorVertex (internalHomFlipHomEquiv K L X f)) = functorVertex f := by
-    rw [internalHomSwapIso_functorVertex]
-    change functorVertex ((internalHomFlipHomEquiv K L X).symm
-      ((internalHomFlipHomEquiv K L X) f)) = _
-    rw [Equiv.symm_apply_apply]
-  exact t.ofEq (hs F) (hs G)
-
-lemma spanFunctorEdgeUnflip_edge {K L X : SSet.{u}} {F G : K ⟶ (ihom L).obj X}
-    (l : Truncated.Edge
-      (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
-      (functorVertex (internalHomFlipHomEquiv K L X F))
-      (functorVertex (internalHomFlipHomEquiv K L X G))) :
-    (spanFunctorEdgeUnflip l).edge =
-      (internalHomSwapIso L K X).hom.app (Opposite.op ⦋1⦌) l.edge := rfl
-
-lemma spanFunctorEdgeUnflip_isInvertible {K L X : SSet.{u}} [Quasicategory X]
-    {F G : K ⟶ (ihom L).obj X}
-    (l : Truncated.Edge
-      (X := (truncation 2).obj ((ihom L).obj ((ihom K).obj X)))
-      (functorVertex (internalHomFlipHomEquiv K L X F))
-      (functorVertex (internalHomFlipHomEquiv K L X G)))
-    (hl : IsInvertibleEdge (X := (ihom L).obj ((ihom K).obj X)) l) :
-    IsInvertibleEdge (X := (ihom K).obj ((ihom L).obj X))
-      (spanFunctorEdgeUnflip l).toTruncated := by
-  exact (isInvertibleEdge_congr
-    (e := l.map ((truncation 2).map (internalHomSwapIso L K X).hom))
-    (f := (spanFunctorEdgeUnflip l).toTruncated) rfl).mp
-      (hl.map (internalHomSwapIso L K X).hom)
 
 /-- 同じ比較辺の可逆性から、元の全族の全パラメータ辺の反転を反映する。 -/
 lemma spanFunctorEdgeUnflip_invertsAllEdges {K L X : SSet.{u}} [Quasicategory X]

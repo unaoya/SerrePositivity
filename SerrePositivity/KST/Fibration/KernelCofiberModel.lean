@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.WeakEquivalences
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences
 public import SerrePositivity.KST.SConstruction.RelativeAdditivity
 public import SerrePositivity.InfinityCategories.Stable.ZeroTriangleVanishing
 

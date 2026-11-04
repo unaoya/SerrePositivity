@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpanConeShape
 public import SerrePositivity.KST.LocalizingInvariants.FullSubcomplexFiber
-public import SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory
 public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeIteratedSliceIso
 public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
 

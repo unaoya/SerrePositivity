@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierFiniteMappingCoconeRecovery
-public import SerrePositivity.KST.LocalizingInvariants.VerdierChosenTerminalRefinementMap
-public import SerrePositivity.KST.LocalizingInvariants.VerdierSimplexParametricComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteMappingCoconeRecovery
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierChosenTerminalRefinementMap
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierSimplexParametricComparison
 
 /-!
 概要：両端円柱で選んだ同じ一様前段・同じ実全族を、元の商余錐の全比較へ接続する。

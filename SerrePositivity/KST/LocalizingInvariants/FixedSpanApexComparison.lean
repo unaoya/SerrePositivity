@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.FixedMarkedSpanQuasicategory
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory
 public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
 
 /-!

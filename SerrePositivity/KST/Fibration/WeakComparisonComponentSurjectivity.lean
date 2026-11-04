@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.UnstraighteningComponentSurjectivity
-public import SerrePositivity.KST.Fibration.WeakCosliceComparisonFiberSection
-public import SerrePositivity.KST.Fibration.WeakNativeComponentRestriction
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakCosliceComparisonFiberSection
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakNativeComponentRestriction
 public import SerrePositivity.KST.Fibration.FunctorIsoComponentLaws
 public import SerrePositivity.KST.Fibration.KanPointSurjectivity
 

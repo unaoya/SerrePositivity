@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.CosliceRoofPasting
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting
 public import SerrePositivity.InfinityCategories.Core.SimplexVertexDetection
 
 /-!
