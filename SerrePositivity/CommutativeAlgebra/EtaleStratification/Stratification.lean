@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.UniversalHomeomorphism.NilDiagonal
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuotient
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.Data.Nat.Factorization.Induction
 public import Mathlib.Data.Int.NatPrime
@@ -18,7 +18,7 @@ public import Mathlib.RingTheory.Polynomial.Tower
 public import Mathlib.RingTheory.Extension.Presentation.Core
 public import Mathlib.LinearAlgebra.TensorProduct.RightExactness
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPoints
-public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericVanishing
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericEtale
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericModel
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.ReducedEtale
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericNil
@@ -300,63 +300,6 @@ theorem generic_structure (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
   let : FiniteDimensional (GenericField (v j)) (L j) := hfinite j
   exact ⟨hfinite j, separableClosure_strata_factorization
     (GenericField (v j)) (L j) p (genericField_charZero_of_isUnit R p hZp (v j))⟩
-
-/-- V(I) の被約構造上で g を反転する。R/√I は (R/I)_red の標準表示。 -/
-abbrev StratumRing {R : Type u} [CommRing R] (I : Ideal R) (g : R) :=
-  Localization.Away (Ideal.Quotient.mk I.radical g)
-
-def stratumUnit {R : Type u} [CommRing R] (I : Ideal R) (g : R) : R →+* StratumRing I g :=
-  (algebraMap (R ⧸ I.radical) (StratumRing I g)).comp (Ideal.Quotient.mk I.radical)
-
-/-- 層の局所化では、選んだ元は可逆。 -/
-theorem stratumUnit_isUnit {R : Type u} [CommRing R] (I : Ideal R) (g : R) :
-    IsUnit (stratumUnit I g g) :=
-  IsLocalization.Away.algebraMap_isUnit (Ideal.Quotient.mk I.radical g)
-
-/-- 被約化で消したイデアルの元は層でも零になる。 -/
-theorem stratumUnit_eq_zero {R : Type u} [CommRing R] (I : Ideal R) (g x : R)
-    (hx : x ∈ I.radical) : stratumUnit I g x = 0 := by
-  change algebraMap (R ⧸ I.radical) (StratumRing I g) (Ideal.Quotient.mk I.radical x) = 0
-  rw [Ideal.Quotient.eq_zero_iff_mem.mpr hx, map_zero]
-
-/-- (p g, g) による細分の後半では、g が可逆なので p g = 0 から p = 0。 -/
-theorem natCast_eq_zero_stratum_of_mul_mem {R : Type u} [CommRing R]
-    (I : Ideal R) (g : R) (p : ℕ) (hpg : (p : R) * g ∈ I.radical) :
-    (p : StratumRing I g) = 0 := by
-  have he := stratumUnit_eq_zero I g ((p : R) * g) hpg
-  rw [map_mul, map_natCast] at he
-  exact (stratumUnit_isUnit I g).mul_left_eq_zero.mp he
-
-/-- (p g, g) による細分の前半では p が可逆。 -/
-theorem isUnit_natCast_stratum_mul {R : Type u} [CommRing R]
-    (I : Ideal R) (g : R) (p : ℕ) : IsUnit (p : StratumRing I ((p : R) * g)) := by
-  have hu := stratumUnit_isUnit I ((p : R) * g)
-  rw [map_mul, map_natCast] at hu
-  exact isUnit_of_mul_isUnit_left hu
-
-/-- S では先に I を延長し、その後に根基を取って局所化する。 -/
-def stratumMap {R S : Type u} [CommRing R] [CommRing S] (f : R →+* S) (I : Ideal R) (g : R) :
-    StratumRing I g →+* StratumRing (I.map f) (f g) := by
-  let J := I.map f
-  let q : R ⧸ I.radical →+* S ⧸ J.radical := Ideal.quotientMap J.radical f
-    (Ideal.map_le_iff_le_comap.mp (Ideal.map_radical_le f))
-  exact IsLocalization.Away.lift (Ideal.Quotient.mk I.radical g)
-    (g := (algebraMap (S ⧸ J.radical) (StratumRing J (f g))).comp q)
-    (IsLocalization.Away.algebraMap_isUnit (Ideal.Quotient.mk J.radical (f g)))
-
-/-- f の p 反転で誘導される射。 -/
-def invertPrimeMap {A B : Type u} [CommRing A] [CommRing B] (p : ℕ) (f : A →+* B) :
-    Localization.Away (p : A) →+* Localization.Away (p : B) := by
-  letI : IsLocalization.Away (f (p : A)) (Localization.Away (p : B)) := by
-    rw [map_natCast]; infer_instance
-  exact IsLocalization.Away.map _ _ f (p : A)
-
-/-- 指定した射 f 自身を有限エタール射と普遍同相に分解する。 -/
-def HasEtaleFactorization {A B : Type u} [CommRing A] [CommRing B] (p : ℕ) (f : A →+* B) : Prop :=
-  ∃ (T : CommRingCat.{u}) (a : A →+* T) (b : T →+* B),
-    letI : Algebra A T := a.toAlgebra
-    b.comp a = f ∧ Module.Finite A T ∧ Algebra.Etale A T ∧ IsUniversalHomeomorphism b ∧
-      Function.Bijective (invertPrimeMap p b)
 
 /-- 概要：全商環での分解を或る D(g_1) に広げる：
 R_0,red[1/g_1] → T_1 有限エタール、T_1 → S_0,red[1/g_1] 普遍同相。

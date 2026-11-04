@@ -74,4 +74,27 @@ theorem exists_away_etale_of_generic_etale
   have hbase : PrimeSpectrum.comap (algebraMap R A) Q ∈ PrimeSpectrum.basicOpen g := hQ
   exact hD hbase ⟨Q, hn, rfl⟩
 
+/-- 有限加群が分母系での局所化で消えるなら、一つの分母を反転すれば消える。 -/
+theorem exists_away_subsingleton_of_localized_subsingleton
+    {R : Type u} [CommRing R] (S : Submonoid R)
+    (M : Type v) [AddCommGroup M] [Module R M] [Module.Finite R M]
+    (hM : Subsingleton (LocalizedModule S M)) :
+    ∃ g : S, Subsingleton (LocalizedModule.Away (g : R) M) := by
+  classical
+  obtain ⟨n, v, hv⟩ := Module.Finite.exists_fin (R := R) (M := M)
+  choose r hrS hr using fun i ↦ (LocalizedModule.subsingleton_iff.mp hM) (v i)
+  let g : S := ⟨∏ i, r i, S.prod_mem fun i _ ↦ hrS i⟩
+  have hkill (x : M) : (g : R) • x = 0 := by
+    have hx : x ∈ Submodule.span R (Set.range v) := hv.symm ▸ Submodule.mem_top
+    induction hx using Submodule.span_induction with
+    | mem y hy =>
+      obtain ⟨i, rfl⟩ := hy
+      obtain ⟨t, ht⟩ : r i ∣ (g : R) := Finset.dvd_prod_of_mem r (Finset.mem_univ i)
+      rw [ht, mul_smul, smul_comm, hr i, smul_zero]
+    | zero => exact smul_zero _
+    | add x y _ _ hx hy => rw [smul_add, hx, hy, add_zero]
+    | smul a x _ hx => rw [smul_comm, hx, smul_zero]
+  exact ⟨g, LocalizedModule.subsingleton_iff.mpr fun x ↦
+    ⟨g, Submonoid.mem_powers (g : R), hkill x⟩⟩
+
 end SerrePositivity.CommutativeAlgebra
