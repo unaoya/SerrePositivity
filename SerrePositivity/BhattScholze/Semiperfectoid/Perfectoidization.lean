@@ -226,8 +226,9 @@ def perfectPrismQuotientPerfectoidizationMap
     exact perfectDeltaDivisionPrismMap_ideal_le P.deltaStructure P.generator
       (P.isDistinguished_generator) (RingHom.ker r) hx⟩
 
-set_option maxHeartbeats 800000 in
--- 具体的な実完備化の環構造を展開するため、この証明に限って探索上限を増やす。
+set_option maxHeartbeats 2000000 in
+-- 除算 prism の担体（PD 完備化の H⁰）上の単一化は、反復した完備化の環構造（反映から
+-- 選択で定まる積）に何度も当たって探索をやり直すので、この証明に限って上限を増やす（B4、11-04）。
 /-- 非零完全prismの商から来る全射について、具体的な標準射はperfectoid化を与える。 -/
 theorem perfectPrismQuotientPerfectoidizationMap_isPerfectoidization
     (P : OrientedPrism p A) (hP : P.deltaStructure.IsPerfect)
