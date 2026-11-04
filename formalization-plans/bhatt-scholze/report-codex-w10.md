@@ -327,3 +327,10 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 - `StratumLift`・`ReducedTensorProduct`・`StratumBaseChange`・`StratumEquiv` で、層の普遍性、被約テンソル積との同型、代数同型による移送を記述。これらを用いて `exists_finiteEtaleStratification` の本文まで接続した。
 - **ソース上の `sorry` と新規 `axiom` は 0 件。ただし B-3 完了ではない。** 単体ビルド 07 は他作業の verify・ビルドが続いているため未開始であり、上記の後半は未検証。今後、型検査のエラーを解消し、指定された単体ビルドの成功を確認する必要がある。
 - 現在の保存先は引き続き `codex/bs-w10-b` のみ。main への取り込みは行わない。
+
+### B-3 継続：単体ビルド 07（19.7 秒）
+
+- B4 の verify 終了後の空き時間に、実行直前の `ps -axo command=` 確認と `with_build_lock --wait 0` を経て `EtaleStratification.Stratification` を実行した。19.7 秒で失敗。
+- `UniversalHomeomorphism.Basic`、`NilDiagonal`、`Reduction` と、`GenericBijective`、`GenericPrimeVanishing` の成功を確認。対角核の nil 性、被約化の射、p 冪 torsion の分母払いが型検査を通った。
+- 残ったエラーは `PrincipalOpen`、`GenericKernel`、`GenericModel`、`Factorization`。主に局所化射の展開、部分加群の局所化 instance、依存型を含む書換え、補題の明示引数の指定であり、修正を `6c38326fe` に保存した。先行する API 引数修正は `d20d0f848`。
+- 次の単体ビルド 08 は B4 の監査と別プロジェクトのビルドを検出して開始待ち。全体の `sorry` はソース上 0 件だが、後半の型検査は未完了であり、B-3 完了ではない。main への取り込みは行っていない。
