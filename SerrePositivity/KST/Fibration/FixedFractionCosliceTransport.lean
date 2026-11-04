@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.FractionFamilyCoslice
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionFamilyCoslice
 
 /-! # 固定分数の終点表示の輸送は、元の同じ coslice fiber 評価と可換 -/
 

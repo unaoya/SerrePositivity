@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.StableSpanPushout
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 
 /-! # 安定な quasicategory の関手的な押し出しの族

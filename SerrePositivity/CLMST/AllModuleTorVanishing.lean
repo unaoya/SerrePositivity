@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTorExtension
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTor
 public import SerrePositivity.CommutativeAlgebra.Almost.Basic
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid

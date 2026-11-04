@@ -1,6 +1,10 @@
 module
+public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
+public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints
-public import SerrePositivity.KST.Fibration.PointedSpaceEqualityTransport
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport
 
 /-! # 像の単体へ輸送した同じ切断点を、元の底側の scaffold 復元像へ接続する -/
 
@@ -13,25 +17,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma point_normalize_both_inv {C : Type*} [Category C] {a b a' b' z t : C}
-    (e : a ≅ b) (hs : a = a') (ht : b = b') (v : z ⟶ b) (w : z ⟶ b')
-    (f : a' ⟶ t) (hp : v ≫ (eqToIso ht).hom = w) :
-    v ≫ e.inv ≫ (eqToIso hs).hom ≫ f =
-      w ≫ (F2.isoNormalizeEndpoints e hs ht).inv ≫ f := by
-  rw [← hp]
-  simp only [F2.isoNormalizeEndpoints, Iso.trans_inv, Iso.symm_inv,
-    Category.assoc, Iso.hom_inv_id_assoc]
-
 variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] [Quasicategory B]
   (k : D ⟶ B)
-
-/-- 同じ相対切断の点を、像の単体での切断 Kan 対象へ等式で輸送する。 -/
-def straighteningBaseChangeImageSectionPoint (c : TransportSimplexCategory D)
-    (v : (((relativeSectionEnrichedDiagram
-      (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj
-        (leftFibrationObjectOf p)).obj _⦋0⦌) :=
-  Eq.mp (congrArg (fun T : KanObject.{u} => T.obj _⦋0⦌)
-    (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)) v
 
 /-- 左の元の切断比較は、輸送した同じ切断点の初頂点 fiber の復元像を回収する。 -/
 theorem scaffoldBaseChangeLeftChart_pointHom (c : TransportSimplexCategory D)

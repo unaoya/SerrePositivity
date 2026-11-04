@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.FractionSimplexKanComparison
-public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientDescent
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FractionSimplexKanComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientDescent
 
 /-! # 同じ Verdier 分数図式と商の coslice 写像空間図式の coherent な比較 -/
 

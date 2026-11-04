@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.MappingPathSequence
 public import SerrePositivity.KST.Spectra.FiberOmegaSpectrum
 public import SerrePositivity.KST.Spectra.CofibrantSequenceLifting
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 public import SerrePositivity.KST.Spectra.PointedComponentCancellation
 public import SerrePositivity.KST.Spectra.SpectrumHomotopyEquivalences

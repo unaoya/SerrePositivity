@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedCotensorFamilyDescription
 public import SerrePositivity.KST.Spectra.PointedCotensorFamilyNaturality
-public import SerrePositivity.KST.Spectra.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.RawSpectrumParameterRestriction
 public import SerrePositivity.KST.Spectra.PointedRelativeTransposePaths
 

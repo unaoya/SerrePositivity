@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.TransportRepresentationPointHom
+public import SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallFiberStraighteningCounit
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.NerveStraighteningRepresentation
 

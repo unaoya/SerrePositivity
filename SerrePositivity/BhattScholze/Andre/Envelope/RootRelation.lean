@@ -17,7 +17,7 @@ public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import SerrePositivity.HomologicalAlgebra.KoszulModuleBounds
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionQuasiIso
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
 public import Mathlib.Algebra.CharP.Lemmas
 
 /-!

@@ -1,14 +1,14 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.Basic
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.EquivalenceDiagrams
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.SimplexContraction
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.Rows
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.TransposeSimplex
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.RowComparison
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.Rows
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison
 public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.WeakEquivalence
 
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.StrictSegalHomotopy
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.GroupNerveHomotopy
 
 /-!

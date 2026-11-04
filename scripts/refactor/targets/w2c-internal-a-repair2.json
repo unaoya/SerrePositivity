@@ -1,0 +1,72 @@
+{
+  "instruction": "IF-W2c §6 / IF-W2b §14, §16",
+  "after_round": 2,
+  "phase": "A",
+  "head_before": "c68fdf421462b311783fe9fb4abb502f86b48487",
+  "reason": "初めて到達した失敗。補充候補を個別コンパイルし、分割した両側のスコープと instance を照合した。",
+  "changes": [
+    {
+      "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+      "imports": [
+        "SerrePositivity.Spectra.PointedSimplicialSet.Monoidal"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.HA.DiagonalFrame",
+      "imports": [
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.CosimplicialRelativeWhitehead",
+      "imports": [
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.MappingPathSequence",
+      "imports": [
+        "SerrePositivity.KST.Spectra.PullbackKanSequence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.Limits.SpectrumTowerOmega",
+      "imports": [
+        "SerrePositivity.KST.Spectra.PostMappingFibration"
+      ]
+    },
+    {
+      "module": "SerrePositivity.KST.Spectra.SequenceHomotopyRectification",
+      "imports": [
+        "SerrePositivity.KST.Spectra.KanSequence"
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction",
+      "annotations": [
+        {
+          "before": "open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra\nopen SerrePositivity.Reedy SerrePositivity.Quillen\n",
+          "after": "open CategoryTheory CategoryTheory.Limits\n"
+        }
+      ]
+    },
+    {
+      "module": "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy",
+      "annotations": [
+        {
+          "before": "open KanTestLiftingClass\n",
+          "after": "open KanTestLiftingClass\nattribute [local instance] instIsLocallyPresentableSSet_serrePositivity\n"
+        }
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "new_forbidden_modules": []
+}

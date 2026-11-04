@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Fibration.ClosedKernelFiniteCoordinates
 public import SerrePositivity.KST.Fibration.ClosedFlagCofiberPostcomparison
 public import SerrePositivity.KST.Fibration.ClosedFlagFiniteAllLengths
 public import SerrePositivity.KST.Fibration.ProductCoordinatePullbackTransfer
-public import SerrePositivity.KST.Fibration.LocalizedPairBothEquality
+public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality
 public import SerrePositivity.KST.Fibration.LocalizedFiniteProductEquality
 
 /-!

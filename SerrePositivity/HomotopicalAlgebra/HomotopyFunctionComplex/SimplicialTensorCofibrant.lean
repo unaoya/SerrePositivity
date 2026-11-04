@@ -1,9 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
-
+public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
-public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
+public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+
 
 /-! # Reedy cofibrancy of the actual simplicial tensor family
 

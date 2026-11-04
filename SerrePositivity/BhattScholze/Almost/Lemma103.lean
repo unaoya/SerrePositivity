@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorAugmentationModels
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.PerfectoidIdeal.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 
 /-!
 # perfectoid 化の核の Lemma 10.3（BS 著者版 Lemma 10.3）

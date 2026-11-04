@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 
 /-! # Derived completeness of a principal ideal
 

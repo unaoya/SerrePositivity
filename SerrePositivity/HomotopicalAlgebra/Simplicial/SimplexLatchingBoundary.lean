@@ -1,10 +1,11 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ElementsMatchingEquivalence
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexIndexFinite
-public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
 public import Mathlib.CategoryTheory.Limits.Final
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary
+public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ElementsMatchingEquivalence
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexIndexFinite
+public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
 
 /-!
 # 単体圏上のパラメータ図式のlatching射を実際の単体境界射と同型で結ぶ

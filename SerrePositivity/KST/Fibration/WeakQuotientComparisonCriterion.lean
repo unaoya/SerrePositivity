@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakSpanKanValueCriterion
-public import SerrePositivity.KST.Fibration.WeakQuotientMappingComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakQuotientMappingComparison
 
 /-! # 元の分数比較の同値性を、同じ商上の coherent な比較へ伝える -/
 

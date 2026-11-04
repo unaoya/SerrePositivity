@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceSquare
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorPerfectNullSquare
-public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquarePastingRectangle
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedObjects
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.PointedMappingComponents
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
 public import SerrePositivity.InfinityCategories.F1.Coherent.EnrichedHomotopy

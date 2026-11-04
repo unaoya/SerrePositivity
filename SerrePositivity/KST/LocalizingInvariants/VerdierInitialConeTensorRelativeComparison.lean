@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRefinement
-public import SerrePositivity.KST.LocalizingInvariants.VerdierQuotientConeRelativeComparison
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierQuotientConeRelativeComparison
 public import SerrePositivity.InfinityCategories.F1B.HomotopyPrecompVertex
 
 /-!

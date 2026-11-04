@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.BinaryProjectionCone
 public import SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs
-public import SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SquareTransposeEdges
 public import SerrePositivity.InfinityCategories.F1.SquareDuality
 
 /-!

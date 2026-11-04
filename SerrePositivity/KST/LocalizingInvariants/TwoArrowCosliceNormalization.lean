@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareCosliceSeed
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
 public import SerrePositivity.KST.LocalizingInvariants.CospanConeSquareLegs
 
 /-!

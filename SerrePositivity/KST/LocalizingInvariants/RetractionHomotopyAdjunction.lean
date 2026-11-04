@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles
 public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
 
 /-!

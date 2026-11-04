@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
 public import SerrePositivity.KST.Spectra.AcyclicFibrationLifting

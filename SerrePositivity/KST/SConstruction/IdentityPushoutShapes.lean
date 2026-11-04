@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.PushoutCompletion
+public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
 public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
 public import SerrePositivity.InfinityCategories.F1.SquareTranspose
 

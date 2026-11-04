@@ -3,10 +3,9 @@ module
 public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Jacobson
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import Mathlib.RingTheory.AdicCompletion.LocalRing
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
 
 /-!
 # 生の A{a/p} とその完備化（Cor 2.39 の導来側・Prop 3.13 の部品）

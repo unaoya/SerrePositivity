@@ -96,3 +96,18 @@ W2b §4〜§6 と §12・§14・§16・§18 の最終形をそのまま適用す
 2. **残る HA 66・ModelBridge 8**：`CosliceTwistedHomEquivalence` → Reedy の依存は数学的な依存（twisted arrow の coslice の Hom の同値を Reedy の定理で示している）で、移動では切れない。**W2c の完了条件はこの残りを除いて判定する**（直接禁止辺 0、禁止モジュール 150 → 74、残りの入口と理由を一覧に）。残りは段 G の項目 **M16**：「`CosliceTwistedHomEquivalence` の Reedy 非依存の証明（Kerodon の twisted arrow の議論で書き直す）か、F1 の twisted arrow の該当部分の再編」。計画の段 G に追加（Claude）。`layers.json` の例外は足さない（ratchet の基準で保つ）。
 3. 群 B の保留 98 本と、Stable に置けなかった分数（StablePresentable・Derived に置いた分）の一覧は、段 G の M 項目（一般の Verdier 分数の正本）の入力として `w2c-stage-g-input.json` のまま残す。
 4. ratchet の 14 件は W2b §12 の扱い。
+
+## 7. 追記（2026-11-04 16:00、停止点 2 の承認と下流の合図）
+
+**受領**（555ed8bdc）：内部ビルド 1,086/1,086 PASS（群 A 6 round、群 B 8 round。round 7 の再発 1 件は補充の宛先の誤りで解除）。保存比較の生差 58 件を個別照合し未説明 0。直接禁止辺 0、残余 74（HA 66・ModelBridge 8、M16）。匿名 instance 8 件の元名を明示（before と同じ名前に固定）、private 参照は `import all` で復旧。
+
+**判断**：
+1. 承認。`import all` による private 参照の復旧は、宣言の意味を変えない処置として受け入れる（v3b で一致済み）。ただし private の境界を越える参照なので、件数とモジュールを停止点 3 の報告に一覧で書き、段 F（R60 の台帳）で「private を公開にするか、参照側を元のファイルへ戻すか」を判断する項目にする。
+2. **下流を合図する**：main（2a・2b・BS-W10 作業 A・`pairCompletionH0Unit` を含む）を merge（HA/DerivedCompletion と BS の import 行の衝突は両方を残す）→ 静的検査の再実行 → 下流（見込み 11,000 本前後、約 2 時間、鍵）→ 保存比較 v3b → 層検査（3 条件、ratchet の取り直し、直接禁止辺 0）→ 監査の追従 → verify（`VERIFY_JOBS=6 VERIFY_MEMORY_GB=40`）。**条件付き事前承認**（§3.2-2）：下流が通り、保存比較で未説明 0、処置が判断表の範囲なら、承認を待たずに verify まで進んで停止点 3 を報告。
+3. 停止点 3 の報告：verify の summary、指標の前後（直接禁止辺 0、禁止 150 → 74、affected core）、R45 の再計測と処置案、`import all` の一覧、段 G への入力（`w2c-stage-g-input.json` と M16）、コミット一覧。取り込みは Claude。
+
+## 8. 追記（2026-11-04 22:05、verify の対象収集の穴：∞ の道具の修正依頼）
+
+論文の層の B4 の verify（1e15322b6）で `audit_infinity_f1` が失敗した。原因は、この監査が `run_cmd` の中の `importModules` で F1/Diagrams のモジュールを読み込むが、verify はビルド対象を監査ファイルの `import` 行からしか拾わないため、それらの olean がない環境で落ちること（G1 の取り込みで入った経路。G1・W2c の worktree では olean が残っていて表に出なかった）。main では PASS。
+
+**依頼**（∞ の道具、ビルドなし、別コミット、試験つき）：`verify_runner.py`（または監査の準備段）が、監査ファイル中の `importModules` の引数（モジュール名の配列リテラル）も監査対象のビルドに加えるようにする。それが難しければ、監査ファイル側に同じモジュールを通常の `import` 行で足す（監査の生成規則に「`importModules` で読むモジュールは `import` 行にも書く」を加える）。どちらにするかは草案で報告。段 F の指示書と一緒に出すので、それまでは草案だけでよい。

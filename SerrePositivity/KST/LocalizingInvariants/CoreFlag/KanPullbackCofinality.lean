@@ -1,6 +1,7 @@
 module
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanPullbackFibers
-public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanFibrationVanishing
+public import SerrePositivity.InfinityCategories.Stable.CoreFlag.KanPullbackCofinality
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.KanPullbackFibers
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.KanFibrationVanishing
 public import SerrePositivity.KST.SConstruction.Cofinality.KanPullbackCofinalityInput
 
 /-!
@@ -19,19 +20,6 @@ open SSet.modelCategoryQuillen
 open scoped Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
 open Spectra
-
-/-- 厳密引き戻しの fiber の正次数は、右列の消滅から一意となる。 -/
-lemma pullback_positive_fiber_subsingleton
-    {P X E B : SSet.{u}} [KanComplex P] [KanComplex X] [KanComplex E] [KanComplex B]
-    (q : P ⟶ X) (s : P ⟶ E) (g : X ⟶ B) (p : E ⟶ B)
-    (h : IsPullback q s g p) [Fibration q] [Fibration p]
-    (hE : ∀ n (e : E _⦋0⦌), Subsingleton (KanHomotopy E n e))
-    (hB : ∀ n, 1 < n → ∀ b : B _⦋0⦌, Subsingleton (KanHomotopy B n b))
-    (a : P _⦋0⦌) (n : ℕ) (hn : 0 < n) :
-    Subsingleton (KanHomotopy (KanFiber q (q.app _ a)) n (fiberPoint q a)) := by
-  have := fibration_positive_fiber_subsingleton p hE hB (s.app _ a) n hn
-  exact Function.Injective.subsingleton
-    (KanHomotopy.equivOfIso n (pullbackFiberIso h a) (pullbackFiberIso_point h a)).injective
 
 /-- K-cof の一般 Kan 引き戻し共終性入力の実証明。 -/
 theorem kanPullbackCofinalityInput : SConstruction.Cofinality.KanPullbackCofinalityInput.{u} := by

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 public import SerrePositivity.KST.Spectra.MappingOmegaSequence
 public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 /-! # Regularity of p on the ordinary tensor with perfect residues
 
 The negative first homology of its original Koszul reduction vanishes by C1.

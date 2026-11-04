@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.SpanCompatibleTransportRepresentation
-public import SerrePositivity.KST.Fibration.PointedFamilyPointHom
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedFamilyPointHom
 
 /-! # 指定復元 span の同じ三角を元の全空間の点と pointed space で評価する -/
 

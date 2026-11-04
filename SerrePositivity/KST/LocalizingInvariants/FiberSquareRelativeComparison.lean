@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareRelativeComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberSquareRightUniqueness
 public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanRelativeIso
@@ -20,16 +21,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FiberComparison
-
-lemma cospan_right_map {X : SSet.{u}} (F : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) :
-    horn₂₂.ι₀₂ ≫ pullbackCospan F = squareRightEdge ≫ F := by
-  rw [pullbackCospan, ← Category.assoc, cospanSquareBoundary_rightEdge]
-
-lemma cospanConeSquareIso_inv_rightEdge :
-    squareRightEdge ≫ cospanConeSquareIso.{u}.inv =
-      horn₂₂.ι₀₂ ≫ joinInr Δ[0] (horn 2 2 : SSet.{u}) := by
-  rw [← cospanSquareBoundary_rightEdge, cospanSquareBoundary]
-  simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
 variable {X : SSet.{u}} [Quasicategory X] [HasZeroVertex X] {x y : X _⦋0⦌}
   {f : Truncated.Edge (X := (truncation 2).obj X) x y} (s t : FiberSquare f)

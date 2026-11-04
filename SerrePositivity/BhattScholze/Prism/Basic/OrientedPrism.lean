@@ -1,8 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Distinguished.Distinguished
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Jacobson
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-!

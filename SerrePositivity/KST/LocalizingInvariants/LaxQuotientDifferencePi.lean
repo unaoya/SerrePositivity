@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.InvariantSuspensionSign
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientShiftLegs
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientShiftLegs
 
 /-!
 概要：一般商の実 BF 差は、全整数 π で C 脚の逆元と D 脚の積を与える。

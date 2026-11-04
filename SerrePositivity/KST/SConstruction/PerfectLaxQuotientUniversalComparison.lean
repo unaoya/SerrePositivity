@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientComparison
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare
 
 /-! # 完備化後の商と恒等 lax 差を結ぶ全関手同型
 概要：完備化後の射を厳密商と仮定せず、包含上の普遍差を恒等対角へ比較する。

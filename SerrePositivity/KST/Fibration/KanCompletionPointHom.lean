@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Fibration.KanDiagramValueIso
+public import SerrePositivity.InfinityCategories.F1.KanModels.KanDiagramValueIso
 public import SerrePositivity.KST.Fibration.LeftCocartesianKanComparison
 
 /-! # 元の Kan 図式の置換同型と逆成分は、同じ置換単位の点を保つ -/

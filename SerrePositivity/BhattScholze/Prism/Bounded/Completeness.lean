@@ -4,8 +4,8 @@ public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import Mathlib.Tactic.Ring
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
 
 /-!

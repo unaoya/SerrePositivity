@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 public import Mathlib.CategoryTheory.Adjunction.Evaluation

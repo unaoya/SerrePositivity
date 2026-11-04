@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.VerdierCosliceSpanAttachment
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierCosliceSpanAttachment
 
 /-!
 概要：有限個の指定商 coslice 辺の実右分数 span を、元の同じ有限図式へ同時に貼る。

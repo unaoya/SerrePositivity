@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeInvariant
 
 public import SerrePositivity.KST.LocalizingInvariants.Invariant
 
@@ -15,12 +16,6 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-/-- 元の S 内の四角形と、その ν 像の Verdier 提示。 -/
-structure RelativeVerdierDiagram {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u}) where
-  square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
-  image : VerdierDiagram.{u}
-  image_eq : square ≫ ν = image.square
 
 /-- ν で零となる提示頂点を同じ E の零頂点へ送る。 -/
 def PreservesRelativeZeroCategories {S : SSet.{u + 1}}
@@ -39,21 +34,6 @@ structure RelativeLocalizingInvariant {S : SSet.{u + 1}}
     (ν : S ⟶ StableInfinity.{u}) where
   hom : S ⟶ Spectra.Sp.{u}
   isLocalizing : IsRelativeLocalizingInvariant ν hom
-
-namespace RelativeVerdierDiagram
-variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}} (d : RelativeVerdierDiagram ν)
-
-lemma zero_corner :
-    IsZeroCategory (stableObject (ν.app (Opposite.op ⦋0⦌) (squareVertex d.square 0 1))) := by
-  have h := d.image.zero_corner
-  rw [← d.image_eq] at h
-  exact h
-
-/-- 絶対 Verdier 図式を恒等提示源の相対図式と見る。 -/
-def ofAbsolute (d : VerdierDiagram.{u}) : RelativeVerdierDiagram (𝟙 StableInfinity.{u}) :=
-  ⟨d.square, d, Category.comp_id _⟩
-
-end RelativeVerdierDiagram
 
 namespace IsRelativeLocalizingInvariant
 variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}} {E : S ⟶ Spectra.Sp.{u}}

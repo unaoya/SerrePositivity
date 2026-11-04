@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
 public import SerrePositivity.KST.SConstruction.TerminalPathEvaluation
 public import SerrePositivity.KST.Spectra.UnpointedPathEvaluation
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan

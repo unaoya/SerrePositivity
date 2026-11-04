@@ -6,57 +6,13 @@ import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanPullbackAll
 規約：propext・Classical.choice・Quot.sound のみ許可。
 -/
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.resolution_obj_kanComplex
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonal
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.map
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalMap
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_naturality
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_counit
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_naturality
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.equivalenceDiagrams
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.constant_isQCatEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.simplexConstant_isWeakHomotopyEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.transpose_mem_iff
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowIso
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.bisimplicialInclusion
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.rowInclusion_isWeakHomotopyEquivalence
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.diagonalTransposeIso
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_isWeakHomotopyEquivalence
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.inclusion_isWeakHomotopyEquivalence
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_isWeakHomotopyEquivalence
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.counit_isWeakHomotopyEquivalence
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_ptSimplex_eq_const
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.strictSegal_kanHomotopy_subsingleton
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupoidNerve_kanComplex
 
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.continuousKanReplacement_kanHomotopy_subsingleton
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.continuousKanReplacement_kanHomotopy_subsingleton
@@ -64,35 +20,15 @@ import SerrePositivity.KST.LocalizingInvariants.CoreFlag.KanPullbackAll
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupNerve_continuousKanReplacement_kanHomotopy_subsingleton
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.groupNerve_continuousKanReplacement_kanHomotopy_subsingleton
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_fibration
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_basepoint
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_hom_ι
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fiber_vertex_ext
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullbackFiberIso_point
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_positive_fiber_subsingleton
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_injective_of_fiber_subsingleton
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.fibration_map_surjective_of_fiber_subsingleton
 
-#check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
-#print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.pullback_positive_fiber_subsingleton
 
 #check @SerrePositivity.KST.LocalizingInvariants.CoreFlag.kanPullbackCofinalityInput
 #print axioms SerrePositivity.KST.LocalizingInvariants.CoreFlag.kanPullbackCofinalityInput

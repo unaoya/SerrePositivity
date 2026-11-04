@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRightAdjointFaithful
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRightAdjointZero
 
@@ -17,10 +18,8 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
+attribute [local instance] cofiberZeroSourceQuasicategory
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
-
-local instance cofiberZeroSourceQuasicategory : Quasicategory (zeroSourceArrows X) :=
-  fullSubcomplexOnVertices_quasicategory _ _
 
 /-- 元の右随伴を同じ矢印を保って零始点矢印の全部分圏に入れる。 -/
 def cofiberRightAdjointZeroSource : X ⟶ zeroSourceArrows X :=

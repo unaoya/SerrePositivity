@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PerfectResidueCompletedTensor
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.HomologicalAlgebra.PerfectResidueTensorRegular
 public import SerrePositivity.CommutativeAlgebra.CoefficientTensorAutomorphism
@@ -8,7 +8,7 @@ public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
 public import Mathlib.Algebra.CharP.Lemmas
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorClassicalComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraH0
 
 /-!
 # 完全 δ 環のテンソル積（BS 著者版 Rem 2.7 と §2.4）

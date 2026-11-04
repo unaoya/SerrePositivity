@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.KST.Fibration.WeakSpanKanDescent
-public import SerrePositivity.KST.Fibration.WeakSpanKanWeakInversion
-public import SerrePositivity.KST.Fibration.TransportSimplexEdgeCover
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanDescent
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanWeakInversion
+public import SerrePositivity.InfinityCategories.F1.Transport.TransportSimplexEdgeCover
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.InvertingFunctorIsoInvariance
 public import SerrePositivity.InfinityCategories.F1.Diagrams.LocalizationSourceIso
 

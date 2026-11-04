@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
 
-public import SerrePositivity.KST.LocalizingInvariants.SimplexTerminalArrowFamily
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily
 public import SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies
 public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
 public import SerrePositivity.InfinityCategories.Stable.Bicartesian
@@ -27,64 +28,6 @@ variable {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
   (s : (Δ[1] : SSet.{u}) ⟶ X)
   (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
     D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
-
-include hs in
-/-- 同じ指定辺の定値族と、元の図式の終端辺族は厳密な終点を共有する。 -/
-lemma simplexTerminalCospan_comm :
-    (SSet.const (functorVertex s) : (Δ[n] : SSet.{u}) ⟶ _) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-    simplexTerminalArrowFamily D ≫ evaluateFunctorAt
-      (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
-  rw [SSet.const_comp, evaluateFunctorAt_functorVertex, simplexTerminalArrowFamily_target, hs]
-
-/-- 元の全図式と指定終端辺からなる、全単体上の同じ cospan 族。 -/
-def simplexTerminalCospanFamily :
-    (Δ[n] : SSet.{u}) ⟶ (ihom (horn 2 2 : SSet.{u})).obj X :=
-  stable_cospanFamilyOfArrows (SSet.const (functorVertex s))
-    (simplexTerminalArrowFamily D) (simplexTerminalCospan_comm D s hs)
-
-/-- cospan の右辺は指定した同じ終端辺で一定。 -/
-@[reassoc]
-lemma simplexTerminalCospanFamily_right :
-    simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₀₂).app X =
-      SSet.const (functorVertex s) :=
-  stable_cospanFamilyOfArrows_left _ _ _
-
-/-- cospan の上辺は元の全図式の同じ終端辺族。 -/
-@[reassoc]
-lemma simplexTerminalCospanFamily_top :
-    simplexTerminalCospanFamily D s hs ≫ (pre horn₂₂.ι₁₂).app X =
-      simplexTerminalArrowFamily D :=
-  stable_cospanFamilyOfArrows_right _ _ _
-
-private lemma columnCospan_right :
-    horn₂₂.ι₀₂ ≫ pullbackCospan (squareColumnDiagram s) = s := by
-  rw [pullbackCospan, ← Category.assoc, cospanSquareBoundary_rightEdge]
-  simp only [squareColumnDiagram, ← Category.assoc, squareRightEdge, lift_snd,
-    Category.id_comp]
-
-private lemma columnCospan_top :
-    horn₂₂.ι₁₂ ≫ pullbackCospan (squareColumnDiagram s) =
-      SSet.const (s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
-  rw [pullbackCospan, ← Category.assoc, cospanSquareBoundary_topEdge]
-  simp only [squareColumnDiagram, ← Category.assoc, squareTopEdge, lift_snd,
-    SSet.const_comp]
-
-/-- 最後の頂点では、元の同じ列四角形の cospan を厳密に回収する。 -/
-lemma simplexTerminalCospanFamily_last :
-    (SSet.const (stdSimplex.obj₀Equiv.symm (Fin.last n)) :
-      (Δ[0] : SSet.{u}) ⟶ Δ[n]) ≫ simplexTerminalCospanFamily D s hs =
-      SSet.const (functorVertex (pullbackCospan (squareColumnDiagram s))) := by
-  apply stable_cospanFamily_hom_ext
-  · rw [Category.assoc, simplexTerminalCospanFamily_right, SSet.comp_const, SSet.const_comp]
-    change SSet.const (functorVertex s) =
-      SSet.const (functorVertex (horn₂₂.ι₀₂ ≫ pullbackCospan (squareColumnDiagram s)))
-    rw [columnCospan_right]
-  · rw [Category.assoc, simplexTerminalCospanFamily_top, SSet.const_comp, SSet.const_comp]
-    change SSet.const ((simplexTerminalArrowFamily D).app (Opposite.op ⦋0⦌)
-      (stdSimplex.obj₀Equiv.symm (Fin.last n))) =
-      SSet.const (functorVertex (horn₂₂.ι₁₂ ≫ pullbackCospan (squareColumnDiagram s)))
-    rw [simplexTerminalArrowFamily_last, columnCospan_top, hs]
 
 /-- 同じ指定辺を横に並べた列四角形の実 pullback 頂点。 -/
 def terminalPullbackColumnVertex [Quasicategory X] [IsStable X] :

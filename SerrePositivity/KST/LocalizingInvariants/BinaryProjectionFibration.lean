@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryFunctor
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 
 /-!
 概要：Kan な第二因子を持つ単体的積の第一射影と、元の BF 積の段ごとの第一射影の fibration 性。

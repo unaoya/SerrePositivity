@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpecifiedBoundaryEdgeNormalization
-public import SerrePositivity.KST.LocalizingInvariants.RelativeComparisonInverse
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.RelativeComparisonInverse
 public import SerrePositivity.KST.LocalizingInvariants.VerdierInitialConeTensorRelativeComparison
 
 /-!

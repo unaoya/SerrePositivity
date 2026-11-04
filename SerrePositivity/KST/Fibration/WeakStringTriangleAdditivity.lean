@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle
 public import SerrePositivity.KST.Fibration.WeakStringCofiberRealization
-public import SerrePositivity.KST.Fibration.LocalizedPairEquality
+public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality
 public import SerrePositivity.KST.SConstruction.MultiRealizationFunctorIso
 
 /-! # 元の三辺の共通 cofiber 関手の全正有限反復加法性

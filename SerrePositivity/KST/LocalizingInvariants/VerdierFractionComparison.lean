@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory
-public import SerrePositivity.KST.Fibration.WeakEquivalences
+public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences
 public import SerrePositivity.InfinityCategories.Stable.CofiberHoDenominators
 public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
 public import SerrePositivity.KST.LocalizingInvariants.IntervalPrecompositionFamily

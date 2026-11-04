@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles
 
 /-!
 概要：右関手が局所化を経由する実随伴を、同じ右関手を持つ商上の実随伴へ下ろす。

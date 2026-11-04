@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModulePower
 public import Mathlib.Algebra.Homology.HomotopyCategory.ShortExact
 public import Mathlib.Algebra.Homology.SingleHomology

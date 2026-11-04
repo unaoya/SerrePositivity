@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceValuePullback
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceValuePullback
 public import SerrePositivity.KST.LocalizingInvariants.TammeProjectionEquivalence
 
 /-!

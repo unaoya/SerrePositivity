@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberConeHomotopyUniqueness
 public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
@@ -18,19 +19,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.FiberSquareHomotopy
-
-lemma restriction {X : SSet.{u}}
-    {F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X} (H : SSet.Homotopy F G) :
-    (hoFunctor.map (coneRestriction (horn 2 2 : SSet.{u}) X)).toFunctor.map
-      (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (stableHomotopyPrecomp cospanConeSquareIso.hom H))) =
-    SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (stableHomotopyPrecomp cospanSquareBoundary H)) := by
-  change (hoFunctor.map ((pre (joinInr Δ[0] (horn 2 2 : SSet.{u}))).app X)).toFunctor.map
-    (SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (stableHomotopyPrecomp cospanConeSquareIso.hom H))) = _
-  rw [homMk_functorEdge_precomp]
-  congr 1
 
 lemma homMk_eq_of_cospan {X : SSet.{u}} [Quasicategory X]
     (F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)

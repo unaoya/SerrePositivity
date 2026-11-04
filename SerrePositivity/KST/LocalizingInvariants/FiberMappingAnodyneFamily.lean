@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Spectra.PostMappingFibration
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
 
@@ -39,7 +40,7 @@ lemma anodyneFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
       (X.level 0).space.hom j
     let : Mono (X.level 0).space.hom := PointedMapping.basepoint_mono _
     have hpp : HasLiftingProperty pp.ι (p.app 0).right :=
-      (anodyneExtensions_pushoutObjObjι pp hj) _ ((fibration_iff _).1 (hp 0))
+      (anodyneExtensions_pushoutObjObjι pp hj) _ ((SSet.modelCategoryQuillen.fibration_iff _).1 (hp 0))
     have : HasLiftingProperty j
         (PointedObject.basedHomMap (X.level 0).space (p.app 0)).right :=
       PointedMapping.post_hasLiftingProperty _ _ j hpp
@@ -76,7 +77,7 @@ lemma anodyneFamily (X : OmegaSpectrum.{u}) {Y Z : KanSequence.{u}}
         ← Category.assoc]
     let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{u}) (X.sigma n).right j
     have hpp : HasLiftingProperty pp.ι (p.app (n + 1)).right :=
-      (anodyneExtensions_pushoutObjObjι pp hj) _ ((fibration_iff _).1 (hp (n + 1)))
+      (anodyneExtensions_pushoutObjObjι pp hj) _ ((SSet.modelCategoryQuillen.fibration_iff _).1 (hp (n + 1)))
     obtain ⟨l, hl, hp, hb⟩ := relativePointedHom_lift (X.sigma n) (p.app (n + 1)) j hpp
       (a ≫ evaluation X Y (n + 1)) (prev.val ≫ step X Y n)
       (b ≫ evaluation X Z (n + 1)) hc he ha

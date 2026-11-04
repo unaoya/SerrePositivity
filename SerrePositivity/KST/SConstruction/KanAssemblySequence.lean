@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KanAssemblyHomotopyMaps
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 public import SerrePositivity.KST.Spectra.UnbasedHomotopyIsomorphism
 public import SerrePositivity.KST.Spectra.CofibrantKanSequence
 

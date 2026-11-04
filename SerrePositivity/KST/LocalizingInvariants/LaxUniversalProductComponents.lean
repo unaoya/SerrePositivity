@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductSquare
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalProductSquare
 public import SerrePositivity.InfinityCategories.Core.SquareHomotopyCategory
 
 /-!

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.MonicKSequenceMaps
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-! # K の候補列の射のホモトピー関手法則
 概要：構成した列の射は各段の点つきホモトピー成分で恒等・合成を保つ。

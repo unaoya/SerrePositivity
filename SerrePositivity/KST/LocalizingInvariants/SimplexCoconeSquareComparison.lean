@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexCoconeSquareComparison
 
 public import SerrePositivity.KST.LocalizingInvariants.SimplexCoconeComparison
 public import SerrePositivity.InfinityCategories.Stable.SuspensionSpanComparison
@@ -19,39 +20,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-private lemma spanCompArrowCongr {T : Type*} [Category* T] {a b c a' b' c' : T}
-    {f : a ⟶ b} {g : b ⟶ c} {f' : a' ⟶ b'} {g' : b' ⟶ c'}
-    (hf : Arrow.mk f = Arrow.mk f') (hg : Arrow.mk g = Arrow.mk g') :
-    Arrow.mk (f ≫ g) = Arrow.mk (f' ≫ g') := by
-  obtain ⟨rfl, rfl, hf⟩ := (Arrow.mk_eq_mk_iff _ _).mp hf
-  simp only [eqToHom_refl, Category.id_comp, Category.comp_id] at hf
-  subst f'
-  obtain ⟨_, rfl, hg⟩ := (Arrow.mk_eq_mk_iff _ _).mp hg
-  simp only [eqToHom_refl, Category.id_comp, Category.comp_id] at hg
-  subst g'
-  rfl
-
-/-- 四つの元の実辺の Hom 類は、照合済みの同じ実四角形により可換となる。 -/
-lemma spanSquare_homMk_comm_of_arrowMks {X : SSet.{u}}
-    (S : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) {x y x' y' : X _⦋0⦌}
-    (f : Truncated.Edge (X := (truncation 2).obj X) x y)
-    (g : Truncated.Edge (X := (truncation 2).obj X) x' y')
-    (a : Truncated.Edge (X := (truncation 2).obj X) x x')
-    (b : Truncated.Edge (X := (truncation 2).obj X) y y')
-    (hf : Arrow.mk (Truncated.HomotopyCategory.homMk (squareBottomArrow S)) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk f))
-    (hg : Arrow.mk (Truncated.HomotopyCategory.homMk (squareTopArrow S)) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk g))
-    (ha : Arrow.mk (Truncated.HomotopyCategory.homMk (squareLeftArrow S)) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk a))
-    (hb : Arrow.mk (Truncated.HomotopyCategory.homMk (squareRightArrow S)) =
-      Arrow.mk (Truncated.HomotopyCategory.homMk b)) :
-    Truncated.HomotopyCategory.homMk f ≫ Truncated.HomotopyCategory.homMk b =
-      Truncated.HomotopyCategory.homMk a ≫ Truncated.HomotopyCategory.homMk g := by
-  apply (Arrow.mk_inj _ _).mp
-  exact (spanCompArrowCongr hf hb).symm.trans
-    ((congrArg Arrow.mk (square_homMk_comm S)).trans (spanCompArrowCongr ha hg))
 
 /-- 元の四角形から合成整合を放電し、指定前段経路を保つ全単体比較を貼る。 -/
 lemma exists_simplexCoconeComparison_of_square {X : SSet.{u}} [Quasicategory X] {n : ℕ}

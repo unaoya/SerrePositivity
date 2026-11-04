@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.IdentityMarkedSpan
-public import SerrePositivity.KST.LocalizingInvariants.FixedFractionTriangleEvaluation
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.IdentityMarkedSpan
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedFractionTriangleEvaluation
 public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
 public import SerrePositivity.InfinityCategories.F1.Transport.LiftEndpoint
 

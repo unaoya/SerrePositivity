@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3StageEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumHomFibrations
+public import SerrePositivity.KST.Spectra.Limits.SpectrumHomFibrations
 public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
 
 /-!

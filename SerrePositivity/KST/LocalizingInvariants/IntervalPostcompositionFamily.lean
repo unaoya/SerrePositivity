@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
-public import SerrePositivity.KST.LocalizingInvariants.ArrowPostcompositionSquare
+public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
 
 /-!
 概要：区間図式を指定した終点の辺に沿って、始点を固定した区間図式の辺へ拡張する。

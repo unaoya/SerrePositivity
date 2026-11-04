@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
-public import SerrePositivity.KST.Spectra.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
 
 /-!
 概要：共通の anodyne な頂点包含を保つ射は Kan 標的への前合成で全基点 π 同型。

@@ -1,0 +1,812 @@
+{
+  "baseline": "unmodified",
+  "raw_validator_exit": 1,
+  "accepted_diagnostics": [
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+        "SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion",
+        "SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.MappingPathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+      "before": 0,
+      "stop1": 2,
+      "current": 0,
+      "path": [],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace",
+        "SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.Generators",
+        "SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "stop1": 90,
+      "current": 74,
+      "path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ],
+      "stop1_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses"
+      ]
+    }
+  ],
+  "current_increases": [
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    },
+    {
+      "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+      "before": 0,
+      "after": 74,
+      "example_path": [
+        "SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPointFiberEvaluation",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.CanonicalYonedaUnstraighteningIdentity",
+        "SerrePositivity.InfinityCategories.F1.Yoneda.RightRepresentableTwistedArrowEquivalence",
+        "SerrePositivity.InfinityCategories.F1.Joins.CosliceTwistedHomEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization"
+      ]
+    }
+  ]
+}

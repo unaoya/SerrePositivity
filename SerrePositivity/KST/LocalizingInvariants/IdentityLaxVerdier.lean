@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxVerdier
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxKernel
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceAdjunction
@@ -18,9 +19,6 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
 variable (Q : StableCategory.{u})
-
-def identityAdjunction : QCatAdjunction (𝟙 Q.obj) (𝟙 Q.obj) :=
-  Bicategory.Adjunction.id (qcatOf Q.obj)
 
 lemma difference_isVerdier :
     IsVerdierSequence (exactDiagonal Q) (exactLaxDifference (𝟙 Q) (𝟙 Q)) where

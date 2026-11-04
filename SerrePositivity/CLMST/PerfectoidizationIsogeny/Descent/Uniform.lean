@@ -220,7 +220,7 @@ theorem isogeny_of_standard_comparison
       (∀ x : f.toLinearMap.ker, g ^ q • x = 0) ∧
       (∀ x : C ⧸ f.toLinearMap.range, g ^ q • x = 0) := by
   exact moduleMapConeIsogeny_descent (algebraMap R B) (p : R) hflat f.toLinearMap
-    (cone_isComplete_of_perfectoid_target R S p hR C hf.1 f.toLinearMap) g
+    (cone_isComplete_of_integralPerfectoid_target R S p hR C hf.1 f.toLinearMap) g
     (uniform_of_standard_comparison R S B C P E p hR hB f hf hbounded g r β hβ
       u v w hsq hu hv hw hcw hflat.1)
 
@@ -292,7 +292,7 @@ theorem isogeny_of_standard_finite_cover
   have hfixed := moduleMapConeScalar_of_finite_cover β.toLinearMap
     (algebraMap R B g) t hcover hlocal
   exact moduleMapConeIsogeny_descent (algebraMap R B) (p : R) hflat f.toLinearMap
-    (cone_isComplete_of_perfectoid_target R S p hR C hf.1 f.toLinearMap) g
+    (cone_isComplete_of_integralPerfectoid_target R S p hR C hf.1 f.toLinearMap) g
     (uniform_of_standard_fixed_cone R S B C P p hR hB f hf hbounded g β hβ hflat.1 hfixed)
 
 end SerrePositivity.CLMST

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.NativeRepresentationPoint
-public import SerrePositivity.KST.Fibration.PointedCosliceReconstruction
+public import SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction
 
 /-! # 同じ coslice 恒等点の native 表現と、指定復元点の射との比較 -/
 

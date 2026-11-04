@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
 public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
@@ -18,43 +19,9 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-/-- D2・β3 の S 内の持ち上げが供給する、右面と外周の Verdier 比較。 -/
-structure RelativeVerdierRectangle {S : SSet.{u + 1}} (ν : S ⟶ StableInfinity.{u}) where
-  diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S
-  right : RelativeVerdierDiagram ν
-  outer : RelativeVerdierDiagram ν
-  right_eq : pastingSquare diagram 0 = (β_ _ _).hom ≫ right.square
-  outer_eq : pastingSquare diagram 1 = (β_ _ _).hom ≫ outer.square
-
 namespace RelativeVerdierRectangle
 variable {S : SSet.{u + 1}} {ν : S ⟶ StableInfinity.{u}}
   (d : RelativeVerdierRectangle ν)
-
-/-- ν 像の二つの Verdier 提示から、S 内の実長方形の相対証明書を作る。 -/
-def ofImage (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
-    (r o : VerdierDiagram.{u})
-    (hR : pastingSquare (F ≫ ν) 0 = (β_ _ _).hom ≫ r.square)
-    (hO : pastingSquare (F ≫ ν) 1 = (β_ _ _).hom ≫ o.square) :
-    RelativeVerdierRectangle ν where
-  diagram := F
-  right := ⟨(β_ _ _).hom ≫ pastingSquare F 0, r, by
-    rw [Category.assoc]
-    change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 0 = r.square
-    rw [hR, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  outer := ⟨(β_ _ _).hom ≫ pastingSquare F 1, o, by
-    rw [Category.assoc]
-    change (β_ _ _).hom ≫ pastingSquare (F ≫ ν) 1 = o.square
-    rw [hO, ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]⟩
-  right_eq := by
-    change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
-    rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  outer_eq := by
-    change _ = (β_ _ _).hom ≫ (β_ _ _).hom ≫ _
-    rw [← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-
-/-- 元の二脚と比較三角形を含む S 内の比較正方形。 -/
-def comparisonSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S :=
-  (β_ _ _).hom ≫ pastingSquare d.diagram 2
 
 /-- fiber 列二つから得る d8 の比較 pullback。E の絶対版への延長は不要。 -/
 lemma comparisonSquare_isPullback {E : S ⟶ Spectra.Sp.{u}}

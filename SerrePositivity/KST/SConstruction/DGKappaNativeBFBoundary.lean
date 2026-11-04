@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFStages
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdges
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges
 
 /-!
 概要：同じ未完備 D-9 実列に対する、元 BF 四辺の指定境界。

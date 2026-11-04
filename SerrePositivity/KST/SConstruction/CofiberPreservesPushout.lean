@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.StableSpanPushout
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 public import SerrePositivity.KST.SConstruction.ColimitComparison
 public import SerrePositivity.KST.SConstruction.ColimitDiagramTransport
 public import SerrePositivity.KST.SConstruction.StableModels

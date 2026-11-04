@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Cone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.IntegralPerfectoid
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.HomologicalAlgebra.ScalarConeAnnihilators
@@ -11,16 +11,16 @@ public import SerrePositivity.HomologicalAlgebra.AlgebraScalarExtensionModule
 public import SerrePositivity.CommutativeAlgebra.Adic.Complete
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensorComparison
 public import SerrePositivity.HomologicalAlgebra.CompleteFaithfullyFlatDescent
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeTriangle
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 public import SerrePositivity.HomologicalAlgebra.DerivedScalarConeBaseChange
 public import SerrePositivity.CommutativeAlgebra.TensorProduct.BaseChange
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 
 /-! # 標準射の完備な基底変更の四角と錐の比較
 
 ## 概要
 
-有限・有限表示な `S` の通常のテンソル積の導来完備性と、始域の完備な導来基底変更との同型（`sourceCompletedBaseChangeIso`）、通常のテンソル積の完備化と標準 perfectoid 化の四角（`completion_square`）、元の標準射の完備な基底変更の四角（`completedBaseChange_standard_square`）を与える。標準射の四角から錐全体の比較（`completedModuleConeIso`）と全剰余段への比較（`standardReductionConeIso`）を作り、錐と階数の図式の環の導来 p 完備性を示す。
+有限・有限表示な `S` の通常のテンソル積の導来完備性と、始域の完備な導来基底変更との同型（`sourceCompletedBaseChangeIso`）、通常のテンソル積の完備化と標準 perfectoid 化の四角（`completion_square`）、元の標準射の完備な基底変更の四角（`completedBaseChange_standard_square`）を与える。標準射の四角から錐全体の比較（`DerivedCompletion.completedModuleConeIso`）と全剰余段への比較（`standardReductionConeIso`）を作り、選んだ perfectoid 化とその錐の導来 p 完備性を示す。
 
 ## 方針
 
@@ -28,7 +28,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
 
 ## 規約
 
-CLMST Prop 2.4.7 の証明の標準の四角（原典の BS 8.13 による終域の比較を含む）。有界 p 冪ねじれは完備な基底変更の古典的な比較だけに使う。旧 `CLMST/Prop247StandardSquare`・`Prop247StandardCone`・`Prop247SourceComparison`・`Prop247ConeComparison`・`Prop247Cone`・`Prop247RankCompleteness`・`Prop247BaseChange`。`ConeComparison`・`Cone`・`RankCompleteness` の一般部分は 2b で HomologicalAlgebra/DerivedCompletion へ下ろす候補。
+CLMST Prop 2.4.7 の証明の標準の四角（原典の BS 8.13 による終域の比較を含む）。有界 p 冪ねじれは完備な基底変更の古典的な比較だけに使う。旧 `CLMST/Prop247StandardSquare`・`Prop247StandardCone`・`Prop247SourceComparison`・`Prop247ConeComparison`・`Prop247Cone`・`Prop247RankCompleteness`・`Prop247BaseChange`。`ConeComparison`・`Cone`・`RankCompleteness` の一般部分は 2b で HomologicalAlgebra/DerivedCompletion（`IntegralPerfectoid`・`CompletedTensorVanishing`）へ下ろした。
 
 ## 使われ方
 
@@ -39,7 +39,8 @@ CLMST Prop 2.4.7 の証明の標準の四角（原典の BS 8.13 による終域
 
 universe u
 
-section Prop247ConePart
+
+section ConePart
 
 namespace SerrePositivity.CLMST
 open CategoryTheory DerivedCompletion
@@ -49,44 +50,25 @@ variable (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] [Algebra.FinitePresentation R S]
     (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p)
 
-include hR in
-/-- 原典の有限かつ有限表示な S は、元の R 作用について導来 p 完備。 -/
-theorem source_isModuleComplete :
-    IsModuleComplete R (p : R) (ModuleCat.of R S) := by
-  let := Module.FinitePresentation.of_finite_of_finitePresentation R S
-  exact isModuleComplete_of_finitePresentation R (p : R)
-    (hR.isModuleComplete R p) (ModuleCat.of R S)
-
 /-- 選択済み perfectoid 化は、元の R 作用について導来 p 完備。 -/
 theorem target_isModuleComplete :
     IsModuleComplete R (p : R) (ModuleCat.of R (Perfectoidization R S p hR)) :=
   (isPerfectoidization_toPerfectoidization R S p hR).1.isModuleComplete_algebra
     R (Perfectoidization R S p hR) p
 
-include hR in
-/-- 任意に指定した perfectoid な終域への実射の錐は導来 p 完備。
-普遍対象の存在引用を用いない入口。 -/
-theorem cone_isComplete_of_perfectoid_target
-    (P : Type u) [CommRing P] [Algebra R P]
-    (hP : IsIntegralPerfectoid P p) (f : S →ₗ[R] P) :
-    IsComplete R (p : R) (moduleMapCone R f) := by
-  apply isComplete_Q_mappingCone R (p : R) (moduleMapSingle R f)
-  · exact source_isModuleComplete R S p hR
-  · exact hP.isModuleComplete_algebra R P p
-
 /-- Prop 2.4.7 の実際の標準写像の実導来錐は p 完備。
 エタール性、J、g、André 拡大、almost 比較を使わない。 -/
 theorem cone_isComplete :
     IsComplete R (p : R) (BhattScholze.perfectoidizationCone R S p hR) := by
-  exact cone_isComplete_of_perfectoid_target R S p hR
+  exact cone_isComplete_of_integralPerfectoid_target R S p hR
     (Perfectoidization R S p hR) (isPerfectoidization_toPerfectoidization R S p hR).1
     (BhattScholze.perfectoidizationModuleMap R S p hR)
 
 end SerrePositivity.CLMST
 
-end Prop247ConePart
+end ConePart
 
-section Prop247BaseChangePart
+section BaseChangePart
 
 namespace SerrePositivity.CLMST
 open DerivedCompletion
@@ -168,9 +150,9 @@ theorem completion_cone_bound
 
 end SerrePositivity.CLMST
 
-end Prop247BaseChangePart
+end BaseChangePart
 
-section Prop247SourceComparisonPart
+section SourceComparisonPart
 
 namespace SerrePositivity.CLMST
 open CategoryTheory DerivedCompletion
@@ -289,9 +271,9 @@ theorem sourceCompletedAdicIso_unit :
 
 end SerrePositivity.CLMST
 
-end Prop247SourceComparisonPart
+end SourceComparisonPart
 
-section Prop247StandardSquarePart
+section StandardSquarePart
 
 namespace SerrePositivity.CLMST
 open CategoryTheory DerivedCompletion
@@ -428,90 +410,10 @@ theorem completedBaseChange_adic_standard_square :
 
 end SerrePositivity.CLMST
 
-end Prop247StandardSquarePart
+end StandardSquarePart
 
-section Prop247ConeComparisonPart
 
-set_option backward.isDefEq.respectTransparency false
-set_option backward.defeqAttrib.useBackward true
-namespace SerrePositivity.CLMST
-open CategoryTheory CategoryTheory.Pretriangulated DerivedCompletion
-attribute [local instance] HasDerivedCategory.standard
-variable {R B : Type u} [CommRing R] [CommRing B] (φ : R →+* B) (a : R)
-variable {M N : Type u} [AddCommGroup M] [Module R M] [AddCommGroup N] [Module R N]
-
-/-- 元の加群写像の標準三角形に対する実完備導来底変換。 -/
-def completedModuleTriangle (f : M →ₗ[R] N) : Triangle (ConcreteDerivedCategory B) :=
-  let X := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R M)
-  let Y := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R N)
-  let C := moduleMapConeBoundedAbove f
-  let u : X ⟶ Y := boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f)
-  let v : Y ⟶ C := ObjectProperty.homMk (moduleMapConeTriangle R f).mor₂
-  let δ : C ⟶ X⟦(1 : ℤ)⟧ := ObjectProperty.homMk
-    ((moduleMapConeTriangle R f).mor₃ ≫
-      (DerivedCategory.Minus.ι.commShiftIso (1 : ℤ)).inv.app X)
-  completedBaseChangeTriangle φ a u v δ
-
-/-- 元の実加群写像の錐は、完備導来底変換後も実完全三角形の第三対象となる。 -/
-theorem completedModuleTriangle_distinguished (f : M →ₗ[R] N) :
-    completedModuleTriangle φ a f ∈ distTriang (ConcreteDerivedCategory B) := by
-  apply completedBaseChangeTriangle_distinguished
-  simp only [ObjectProperty.homMk_hom, Category.assoc, Iso.inv_hom_id_app]
-  erw [Category.comp_id]
-  change moduleMapConeTriangle R f ∈ distTriang _
-  exact moduleMapConeTriangle_distinguished R f
-
-/-- 標準射の始域・終域の比較を、実完備底変換錐と実加群写像錐の比較へ延長する。 -/
-def completedModuleConeIso
-    {L P : Type u} [AddCommGroup L] [Module B L] [AddCommGroup P] [Module B P]
-    (f : M →ₗ[R] N) (α : L →ₗ[B] P)
-    (eM : (derivedComplexCompletionFunctor B (φ a)).obj
-      ((boundedAboveDerivedBaseChange φ).obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R M))).obj ≅
-      (moduleObjectFunctor B).obj (ModuleCat.of B L))
-    (eN : (derivedComplexCompletionFunctor B (φ a)).obj
-      ((boundedAboveDerivedBaseChange φ).obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R N))).obj ≅
-      (moduleObjectFunctor B).obj (ModuleCat.of B P))
-    (hsq : (derivedComplexCompletionFunctor B (φ a)).map
-        ((boundedAboveDerivedBaseChange φ).map
-          (boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f))).hom ≫ eN.hom =
-      eM.hom ≫ (moduleObjectFunctor B).map (ModuleCat.ofHom α)) :
-    (derivedComplexCompletionFunctor B (φ a)).obj
-      ((boundedAboveDerivedBaseChange φ).obj (moduleMapConeBoundedAbove f)).obj ≅
-        moduleMapCone B α :=
-  Triangle.π₃.mapIso (isoTriangleOfIso₁₂ _ _
-    (completedModuleTriangle_distinguished φ a f)
-    (moduleMapConeTriangle_distinguished B α) eM eN hsq)
-
-/-- 第三対象の比較は、元の実三角形の標準の右包含を保つ。 -/
-theorem completedModuleConeIso_inclusion
-    {L P : Type u} [AddCommGroup L] [Module B L] [AddCommGroup P] [Module B P]
-    (f : M →ₗ[R] N) (α : L →ₗ[B] P)
-    (eM : (derivedComplexCompletionFunctor B (φ a)).obj
-      ((boundedAboveDerivedBaseChange φ).obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R M))).obj ≅
-      (moduleObjectFunctor B).obj (ModuleCat.of B L))
-    (eN : (derivedComplexCompletionFunctor B (φ a)).obj
-      ((boundedAboveDerivedBaseChange φ).obj
-        (boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R N))).obj ≅
-      (moduleObjectFunctor B).obj (ModuleCat.of B P))
-    (hsq : (derivedComplexCompletionFunctor B (φ a)).map
-        ((boundedAboveDerivedBaseChange φ).map
-          (boundedAboveDerivedSingleFunctor.map (ModuleCat.ofHom f))).hom ≫ eN.hom =
-      eM.hom ≫ (moduleObjectFunctor B).map (ModuleCat.ofHom α)) :
-    (completedModuleTriangle φ a f).mor₂ ≫
-        (completedModuleConeIso φ a f α eM eN hsq).hom =
-      eN.hom ≫ (moduleMapConeTriangle B α).mor₂ := by
-  exact (isoTriangleOfIso₁₂ _ _
-    (completedModuleTriangle_distinguished φ a f)
-    (moduleMapConeTriangle_distinguished B α) eM eN hsq).hom.comm₂
-
-end SerrePositivity.CLMST
-
-end Prop247ConeComparisonPart
-
-section Prop247StandardConePart
+section StandardConePart
 
 namespace SerrePositivity.CLMST
 open CategoryTheory DerivedCompletion
@@ -536,7 +438,7 @@ def standardCompletedConeIso :
       ((boundedAboveDerivedBaseChange (algebraMap R B)).obj
         (moduleMapConeBoundedAbove f.toLinearMap)).obj ≅
       moduleMapCone B (completionMap p β hβ).toLinearMap :=
-  completedModuleConeIso (algebraMap R B) (p : R) f.toLinearMap
+  DerivedCompletion.completedModuleConeIso (algebraMap R B) (p : R) f.toLinearMap
     (completionMap p β hβ).toLinearMap
     (sourceCompletedAdicIso R S B p hB hflat N hbounded)
     (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
@@ -545,11 +447,11 @@ def standardCompletedConeIso :
 
 /-- 実錐の比較は元の三角形の標準の右包含を保つ。 -/
 theorem standardCompletedConeIso_inclusion :
-    (completedModuleTriangle (algebraMap R B) (p : R) f.toLinearMap).mor₂ ≫
+    (DerivedCompletion.completedModuleTriangle (algebraMap R B) (p : R) f.toLinearMap).mor₂ ≫
       (standardCompletedConeIso R S B C P p hR hB f hf β hβ hflat N hbounded).hom =
     (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ).hom ≫
       (moduleMapConeTriangle B (completionMap p β hβ).toLinearMap).mor₂ :=
-  completedModuleConeIso_inclusion (algebraMap R B) (p : R) f.toLinearMap
+  DerivedCompletion.completedModuleConeIso_inclusion (algebraMap R B) (p : R) f.toLinearMap
     (completionMap p β hβ).toLinearMap
     (sourceCompletedAdicIso R S B p hB hflat N hbounded)
     (BhattScholze.targetCompletedBaseChangeIso R S B C P p hR hB f hf β hβ)
@@ -572,55 +474,5 @@ def standardReductionConeIso (n : ℕ) :
 
 end SerrePositivity.CLMST
 
-end Prop247StandardConePart
+end StandardConePart
 
-section Prop247RankCompletenessPart
-
-namespace SerrePositivity.CLMST
-open DerivedCompletion
-open scoped TensorProduct
-set_option backward.isDefEq.respectTransparency false
-
-variable (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
-    {ι : Type} (T : ι → Type u) [∀ i, CommRing (T i)] [∀ i, Algebra R (T i)]
-    (hT : ∀ i, IsIntegralPerfectoid (T i) p)
-
-include R hT
-
-/-- 各実 perfectoid 係数の直積は元の R の作用について導来 p 完備。 -/
-theorem rankCoefficientProduct_isModuleComplete :
-    IsModuleComplete R (p : R) (ModuleCat.of R ((i : ι) → T i)) :=
-  isModuleComplete_pi R (p : R) (fun i => ModuleCat.of R (T i))
-    (fun i => (hT i).isModuleComplete_algebra R (T i) p)
-
-/-- 同じ実係数直積は、その環自身の p に関して導来完備。 -/
-theorem rankCoefficientProduct_self_isModuleComplete :
-    IsModuleComplete ((i : ι) → T i) (p : (i : ι) → T i)
-      (ModuleCat.of ((i : ι) → T i) ((i : ι) → T i)) := by
-  have h := (isModuleComplete_algebraMap_iff R ((i : ι) → T i) (p : R)
-    ((i : ι) → T i)).mpr (rankCoefficientProduct_isModuleComplete R p T hT)
-  simpa only [map_natCast] using h
-
-variable (S : Type u) [CommRing S] [Algebra R S]
-    [Module.Finite R S] [Algebra.FinitePresentation R S]
-
-/-- 元の各 Si=Ti⊗R S の実直積は、S の bounded torsion を要求せず導来 p 完備。 -/
-theorem rankBaseChangeProduct_isModuleComplete :
-    IsModuleComplete R (p : R) (ModuleCat.of R ((i : ι) → T i ⊗[R] S)) := by
-  apply isModuleComplete_pi R (p : R) (fun i => ModuleCat.of R (T i ⊗[R] S))
-  intro i
-  apply (isModuleComplete_algebraMap_iff R (T i) (p : R) (T i ⊗[R] S)).mp
-  simpa only [map_natCast] using source_isModuleComplete (T i) (T i ⊗[R] S) p (hT i)
-
-/-- 通常 tensor の元の係数直積による底変換も、実直積比較で導来 p 完備。 -/
-theorem rankCoefficientTensor_isModuleComplete [Finite ι] :
-    IsModuleComplete R (p : R) (ModuleCat.of R (((i : ι) → T i) ⊗[R] S)) := by
-  let e := (finiteProductBaseChangeEquiv R S T).toLinearEquiv.restrictScalars R
-  exact isModuleComplete_of_linearEquiv R (p : R)
-    (ModuleCat.of R ((i : ι) → T i ⊗[R] S))
-    (ModuleCat.of R (((i : ι) → T i) ⊗[R] S)) e.symm
-    (rankBaseChangeProduct_isModuleComplete R p T hT S)
-
-end SerrePositivity.CLMST
-
-end Prop247RankCompletenessPart

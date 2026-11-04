@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart
+import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart
 public import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices
 public import SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison
 
@@ -13,31 +15,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 
-private lemma normalizeComposition {C : Type v} [Category.{w} C]
-    {a b c a' b' c' : C} (l : a ≅ b) (e : b ≅ c)
-    (ha : a = a') (hb : b = b') (hc : c = c') :
-    F2.isoNormalizeEndpoints (l ≪≫ e) ha hc =
-      F2.isoNormalizeEndpoints l ha hb ≪≫ F2.isoNormalizeEndpoints e hb hc := by
-  subst a' b' c'
-  simp only [F2.isoNormalizeEndpoints, eqToIso_refl, Iso.refl_symm, Iso.refl_trans,
-    Iso.trans_refl]
-
-private lemma normalizeValueComposition {K Y : SSet.{u}} {F G H : K ⟶ Y}
-    (e : FunctorIso F G) (f : FunctorIso G H) (x : K _⦋0⦌) {a b c : hoFunctor.obj Y}
-    (ha : HomotopyCategory.mk (F.app (Opposite.op ⦋0⦌) x) = a)
-    (hb : HomotopyCategory.mk (G.app (Opposite.op ⦋0⦌) x) = b)
-    (hc : HomotopyCategory.mk (H.app (Opposite.op ⦋0⦌) x) = c) :
-    F2.isoNormalizeEndpoints (functorIsoValue (e ≪≫ f) x) ha hc =
-      F2.isoNormalizeEndpoints (functorIsoValue e x) ha hb ≪≫
-        F2.isoNormalizeEndpoints (functorIsoValue f x) hb hc := by
-  rw [functorIsoValue_trans]
-  exact normalizeComposition _ _ ha hb hc
-
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
-
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
-  ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 /-- 指定 scaffold の nerve 比較の同じ成分を、元の strict Kan 値で表示する。 -/
 def scaffoldRestrictionNerveChart (c : TransportSimplexCategory B) :=

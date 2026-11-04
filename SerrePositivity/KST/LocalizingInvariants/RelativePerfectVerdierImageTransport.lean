@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle
+public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
 
 /-!
 概要：完備化付き固定 ν 像の全図式比較から、不変量値の pullback を輸送する。

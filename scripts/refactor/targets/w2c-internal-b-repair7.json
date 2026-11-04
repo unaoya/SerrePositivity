@@ -1,0 +1,25 @@
+{
+  "instruction": "User approved exception to IF-W2b §16 for ScaffoldBaseChangeLeftPoint, after stop df60b4d55",
+  "phase": "B",
+  "after_round": 7,
+  "head_before": "0a340e47fb5cf3dcbaabc63a6b8dd69ea49b9e68",
+  "reason": "指定の ScaffoldReconstructionCoefficientPoint 1 import を補充し、候補の小さなビルドを通してからコミット。",
+  "changes": [
+    {
+      "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+      "imports": [
+        "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint"
+      ]
+    }
+  ],
+  "simulated_enforcement": {
+    "status": "PASS",
+    "core_order_violations": [],
+    "new_direct_edges": [],
+    "aggregate_increases": [],
+    "accepted_direct_edge_limit": 21,
+    "per_root_metrics": "diagnostic (IF-W2b §12; ratchet is unchanged)"
+  },
+  "small_build_evidence": ".lake/verify/ifw2c-internal/resume-section16/approval.json",
+  "same_module_next_failure": "STOP_REGARDLESS_OF_DIAGNOSTIC_TYPE"
+}

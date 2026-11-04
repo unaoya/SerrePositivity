@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldTransportCoefficientFiber
 public import SerrePositivity.KST.Fibration.ScaffoldTransportCoefficientTriangle
-public import SerrePositivity.KST.Fibration.CosliceTransportPointHom
+public import SerrePositivity.InfinityCategories.F1.Transport.CosliceTransportPointHom
 
 /-! # 元の係数点の三角を、底を固定した同じ unstraightening fiber 内で比較する -/
 
@@ -15,41 +16,6 @@ namespace SerrePositivity.KST.Fibration
 namespace ScaffoldTransportComparisonSpan
 variable {I : Type u} [Category.{u} I] {E : SSet.{u}}
   {p : E ⟶ nerve I} [LeftFibration p] (s : ScaffoldTransportComparisonSpan p)
-
-/-- 元の係数値から、同じ scaffold の埋め込みを通って共通全空間に入る。 -/
-def coefficientEmbedding (c : I) :
-    (SSet.uliftFunctor.{u + 1, u}).obj (leftStrictTransport p c) ⟶
-      (SSet.uliftFunctor.{u + 1, u}).obj s.total :=
-  (SSet.uliftFunctor.{u + 1, u}).map
-    (simplicialReplacementConstantLift (leftStrictTransportDiagram p) c ≫ s.embedding)
-
-/-- 元の係数値の底を、宇宙と始域を固定して表示する。 -/
-def coefficientBase (c : I) :
-    (SSet.uliftFunctor.{u + 1, u}).obj (leftStrictTransport p c) ⟶
-      (SSet.uliftFunctor.{u + 1, u}).obj (nerve I) :=
-  SSet.const (ULift.up (nerveVertex c))
-
-/-- 同じ係数値上では共通底は元の指定頂点に厳密に定値。 -/
-theorem coefficientEmbedding_over (c : I) :
-    s.coefficientEmbedding c ≫ s.toStrictTransportComparisonSpan.coherentBase =
-      coefficientBase (p := p) c := by
-  rw [coefficientEmbedding, StrictTransportComparisonSpan.coherentBase,
-    ← Functor.map_comp, Category.assoc, s.embedding_over,
-    simplicialReplacementConstantLift_projection]
-  rfl
-
-/-- 相対三角を係数値に制限し、その指定点で評価する同じ fiber への写像。 -/
-def coefficientRelativeEvaluation (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :
-    relativeFunctorSpace (leftUnstraighteningProjection (leftCoherentTransport p))
-      s.toStrictTransportComparisonSpan.coherentBase ⟶
-        vertexFiber (leftUnstraighteningProjection (leftCoherentTransport p))
-          (ULift.up (nerveVertex c)) :=
-  relativeFunctorOverPre (leftUnstraighteningProjection (leftCoherentTransport p))
-    (Over.homMk (U := Over.mk (coefficientBase (p := p) c))
-      (V := Over.mk s.toStrictTransportComparisonSpan.coherentBase)
-      (s.coefficientEmbedding c) (s.coefficientEmbedding_over c)) ≫
-    relativeFunctorEvaluate (leftUnstraighteningProjection (leftCoherentTransport p))
-      (coefficientBase (p := p) c) (ULift.up v)
 
 /-- 元の係数点から得る、同じ表現の実 fiber 点。 -/
 def coefficientSourceFiberPoint (c : I) (v : (leftStrictTransport p c) _⦋0⦌) :

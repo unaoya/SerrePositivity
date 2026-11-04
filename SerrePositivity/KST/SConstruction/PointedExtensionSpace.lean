@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.Spectra.FreePathSpace
+public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
 public import SerrePositivity.KST.Spectra.PointedMappingFamilyVertices
 public import SerrePositivity.InfinityCategories.Core.ContractibleKan
 

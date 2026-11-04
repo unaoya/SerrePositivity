@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyInnerFibration
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilyInnerFibration
 public import SerrePositivity.InfinityCategories.Core.FinalHornRestrictionLifting
 public import SerrePositivity.InfinityCategories.Core.FunctorTerminal
 

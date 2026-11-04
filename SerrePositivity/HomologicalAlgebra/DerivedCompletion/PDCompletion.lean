@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairIterationComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 
 /-! # 導来(p,d)完備化の実際のH⁰と環としての普遍性
 
@@ -42,9 +42,9 @@ def pdCompletionUnit (p : ℕ) (d : R) :
     letI := pdCompletionCommRing R p d; R →+* PDCompletionH0 R p d :=
   pairCompletionUnitRingHom R (p : R) d
 
-/-- 公開した標準環準同型は、元のKoszul複体の標準写像に誘導されたH⁰写像そのもの。 -/
+/-- 公開した標準環準同型は、二座標H⁰への線形な標準写像そのもの。 -/
 theorem pdCompletionUnit_apply (p : ℕ) (d r : R) :
-    pdCompletionUnit R p d r = koszulCompletionH0Unit R (pairKoszulCoordinates R (p : R) d) r :=
+    pdCompletionUnit R p d r = pairCompletionH0Unit R (p : R) d r :=
   pairCompletionUnitRingHom_apply R (p : R) d r
 
 /-- 完備化の実導来対象はp導来完備。 -/

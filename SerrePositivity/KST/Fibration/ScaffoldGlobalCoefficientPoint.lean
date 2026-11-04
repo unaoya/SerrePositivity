@@ -1,6 +1,7 @@
 module
-public import SerrePositivity.KST.Fibration.ScaffoldStraighteningValue
+public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint
 public import SerrePositivity.KST.Fibration.FirstVertexSectionFiber
+public import SerrePositivity.KST.Fibration.ScaffoldStraighteningValue
 
 /-! # 降下後の同じ scaffold 比較は、元の初頂点 fiber の同じ実点を回収する -/
 
@@ -14,9 +15,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} [Quasicategory B] (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
-
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
-  ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 /-- 降下後の元の指定成分は、元の初頂点 fiber の同じ点の pointedMap 像を回収する。 -/
 theorem scaffoldStraighteningGlobalChart_original_pointHom (c : TransportSimplexCategory B)

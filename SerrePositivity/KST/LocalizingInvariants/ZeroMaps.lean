@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.ZeroCategory
+public import SerrePositivity.InfinityCategories.Stable.Exact.ZeroCategory
 public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
 public import SerrePositivity.InfinityCategories.Stable.ZeroDiagramComparison
 

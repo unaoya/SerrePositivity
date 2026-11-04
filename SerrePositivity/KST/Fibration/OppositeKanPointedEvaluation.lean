@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.OppositeKanCoefficientComparison
-public import SerrePositivity.KST.Fibration.StrictKanCoefficientPointedEvaluation
+public import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCoefficientPointedEvaluation
 
 /-! # 反転 Kan 比較の元の係数作用を、同じ逆成分と標準 coherent Hom 比較で計算する -/
 

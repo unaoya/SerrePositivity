@@ -1,0 +1,117 @@
+module
+
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
+public import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
+
+/-!
+概要：二つの標準単体を引数とする関手族の交換。
+方針：内部 Hom の単体を二変数の作用として読み、二つの変数を交換する。
+規約：core の条件を移す前の全関手単体集合で構成する。
+使われ方：Sp-8 の転置した行を全辺可逆な図式の部分圏と同定する。
+-/
+
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+open CategoryTheory MonoidalCategory MonoidalClosed SSet
+open scoped Simplicial
+namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
+open InfinityCategories
+
+/-- 二つの標準単体の変数を交換した内部 Hom の単体。 -/
+def transposeSimplex {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
+    (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m) :
+    ((ihom (stdSimplex.obj m.unop)).obj C).obj n where
+  app d g := ↾fun x ↦ s.app d (stdSimplex.objEquiv x).op (stdSimplex.objEquiv.symm g.unop)
+  naturality {d e} f g := by
+    apply ConcreteCategory.hom_ext
+    intro x
+    have h := ConcreteCategory.congr_hom
+      (s.naturality f (stdSimplex.objEquiv x).op) (stdSimplex.objEquiv.symm g.unop)
+    dsimp at h ⊢
+    convert h using 1
+    congr 2
+
+/-- 変数交換を二度行うと元の単体に戻る。 -/
+@[simp]
+lemma transposeSimplex_transposeSimplex {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
+    (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m) :
+    transposeSimplex (transposeSimplex s) = s := by
+  apply Functor.functorHom_ext
+  intro d g
+  apply ConcreteCategory.hom_ext
+  intro x
+  dsimp [transposeSimplex]
+  simp only [Equiv.symm_apply_apply, Equiv.apply_symm_apply, Quiver.Hom.op_unop]
+
+/-- 任意の内部 Hom の辺の可逆性を全頂点評価で判定する。 -/
+lemma functorSimplex_isInvertible_iff {A C : SSet.{u}} [Quasicategory C]
+    (e : ((ihom A).obj C) _⦋1⦌) :
+    IsInvertibleEdge (edgeOfSimplex e) ↔ ∀ a : A _⦋0⦌,
+      IsInvertibleEdge (edgeOfSimplex ((evaluateFunctorAt (Y := C) a).app _ e)) := by
+  let f := (functorVertexEquiv A C).symm (((ihom A).obj C).δ 1 e)
+  let g := (functorVertexEquiv A C).symm (((ihom A).obj C).δ 0 e)
+  let e' : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom A).obj C))
+      (functorVertex f) (functorVertex g) :=
+    { edge := e
+      src_eq := (Equiv.apply_symm_apply (functorVertexEquiv A C) _).symm
+      tgt_eq := (Equiv.apply_symm_apply (functorVertexEquiv A C) _).symm }
+  have h := isInvertibleEdge_iff_evaluateFunctorAt e'
+  exact (isInvertibleEdge_congr (e := edgeOfSimplex e) (f := e') rfl).trans
+    (h.trans (forall_congr' (fun a ↦ isInvertibleEdge_congr
+      (e := e'.map ((truncation 2).map (evaluateFunctorAt (Y := C) a)))
+      (f := edgeOfSimplex ((evaluateFunctorAt (Y := C) a).app _ e)) rfl)))
+
+/-- 関手頂点の逆表示の各次数での評価。 -/
+lemma functorVertexEquiv_symm_app {A C : SSet.{u}}
+    (v : ((ihom A).obj C) _⦋0⦌) (d : SimplexCategoryᵒᵖ) (x : A.obj d) :
+    ((functorVertexEquiv A C).symm v).app d x =
+      v.app d (SimplexCategory.const d.unop ⦋0⦌ 0).op x := by
+  obtain ⟨f, rfl⟩ := (functorVertexEquiv A C).surjective v
+  rw [Equiv.symm_apply_apply]
+  rfl
+
+/-- 転置した図式の頂点での辺は、元の関手辺の点ごとの評価。 -/
+lemma transpose_vertex_edge {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ}
+    (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m)
+    (v : ⦋0⦌ ⟶ n.unop) (e : (stdSimplex.obj m.unop) _⦋1⦌) :
+    ((functorVertexEquiv (stdSimplex.obj m.unop) C).symm
+      (((ihom (stdSimplex.obj m.unop)).obj C).map v.op (transposeSimplex s))).app _ e =
+    (evaluateFunctorAt (Y := C) (stdSimplex.objEquiv.symm v)).app _
+      (((ihom (stdSimplex.obj n.unop)).obj C).map (stdSimplex.objEquiv e).op s) := by
+  rw [functorVertexEquiv_symm_app]
+  change s.app (Opposite.op ⦋1⦌) (stdSimplex.objEquiv e).op
+      (stdSimplex.objEquiv.symm ((SimplexCategory.const ⦋1⦌ ⦋0⦌ 0) ≫ v)) =
+    s.app (Opposite.op ⦋1⦌) ((stdSimplex.objEquiv e).op ≫ 𝟙 _)
+      (PinchedHom.constant (stdSimplex.objEquiv.symm v) 1)
+  dsimp [PinchedHom.constant]
+  simp only [Category.comp_id]
+  congr 1
+
+/-- core の条件は転置後には全辺可逆な図式という頂点条件になる。 -/
+lemma transpose_mem_iff {C : SSet.{u}} [Quasicategory C] {n m : SimplexCategoryᵒᵖ}
+    (s : ((ihom (stdSimplex.obj n.unop)).obj C).obj m) :
+    s ∈ (quasicategoryCore ((ihom (stdSimplex.obj n.unop)).obj C)).obj m ↔
+    transposeSimplex s ∈ (fullSubcomplexOnVertices
+      ((ihom (stdSimplex.obj m.unop)).obj C)
+      (IsEquivalenceDiagramVertex (stdSimplex.obj m.unop) C)).obj n := by
+  constructor
+  · intro hs v e
+    rw [transpose_vertex_edge]
+    have h := hs (stdSimplex.objEquiv e)
+    exact (functorSimplex_isInvertible_iff _).mp h (stdSimplex.objEquiv.symm v)
+  · intro hs f
+    apply (functorSimplex_isInvertible_iff _).mpr
+    intro a
+    have h := hs (stdSimplex.objEquiv a) (stdSimplex.objEquiv.symm f)
+    rw [transpose_vertex_edge] at h
+    have ha : stdSimplex.objEquiv.symm (stdSimplex.objEquiv a) = a :=
+      stdSimplex.objEquiv.symm_apply_apply a
+    have hf : stdSimplex.objEquiv.{u} (stdSimplex.objEquiv.{u}.symm f) = f :=
+      stdSimplex.objEquiv.{u}.apply_symm_apply f
+    rw [ha, hf] at h
+    exact h
+
+end SerrePositivity.KST.LocalizingInvariants.CoreFlag

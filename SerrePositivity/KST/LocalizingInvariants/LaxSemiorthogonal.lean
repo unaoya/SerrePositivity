@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction
 public import SerrePositivity.KST.LocalizingInvariants.LaxProjectionKernel
-public import SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition
+public import SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
 
 /-!
 概要：元の lax pullback の、D と C による二項半直交分解。

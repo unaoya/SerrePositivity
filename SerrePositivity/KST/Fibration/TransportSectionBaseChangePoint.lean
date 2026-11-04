@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Transport.TransportSectionBaseChangePoint
 public import SerrePositivity.KST.Fibration.RelativeSectionBaseChangeJointPoint
 
 /-! # 全単体の切断の指定底変換同型は、元の pullback 係数成分を保つ -/
@@ -12,23 +13,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-/-- 全単体上の底変換同型は、元の相対切断の共同同型の端点だけを表示変更する。 -/
-theorem transportSimplexSectionInfinity_baseChangeIso_heq :
-    HEq (transportSimplexSectionInfinity_baseChangeIso k)
-      (relativeSectionDiagramInfinityBaseChangeIso k (transportSimplexDomainFunctor D)) := by
-  unfold transportSimplexSectionInfinity_baseChangeIso
-  dsimp only [transportSimplexSectionInfinity]
-  have hcast {α β : Sort (u + 2)} (h : β = α) (x : α) : HEq (Eq.mpr h x) x := by
-    cases h
-    rfl
-  let A := transportSimplexDomainFunctor D
-  let P := (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}
-  have hm := hcast (congrArg
-    (fun M => FunctorIso (relativeSectionDiagramInfinity A ≫ P)
-      (relativeSectionDiagramInfinity M)) (transportSimplexDomainFunctor_baseChange k))
-    (relativeSectionDiagramInfinityBaseChangeIso k A)
-  exact (hcast _ _).trans hm
 
 /-- 全単体上の元の指定同型の二重評価は、元の pullback 切断の同じ係数成分。 -/
 theorem relativeSectionBaseChangeComponentIso_heq_transportMap

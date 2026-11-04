@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedLiftSpace
-public import SerrePositivity.KST.Spectra.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
 
 /-! # mapping path 切断による逆射の選択空間
 概要：点つき Kan 同値の逆射を可縮な切断空間の頂点から構成する。

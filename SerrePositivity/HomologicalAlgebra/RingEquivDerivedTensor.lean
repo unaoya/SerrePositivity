@@ -5,7 +5,7 @@ public import SerrePositivity.HomologicalAlgebra.CochainTensor.Shuffle
 public import SerrePositivity.HomologicalAlgebra.DerivedRestriction
 public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Tensor
 public import SerrePositivity.HomologicalAlgebra.BoundedAboveDerivedModule
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import Mathlib.CategoryTheory.Preadditive.Projective.Preserves
 
 /-! # The actual derived tensor and completion under a ring equivalence -/

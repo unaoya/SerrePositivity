@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.SConstruction.StableSpanPushout
+public import SerrePositivity.InfinityCategories.Stable.StableSpanPushout
 public import SerrePositivity.KST.SConstruction.GappedCofibers
 
 /-! # 安定な標的の関手圏と gapped 図式の全押し出し

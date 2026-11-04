@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionFiber
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierReflectiveCompatibility
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierReflectiveCompatibility
 
 /-!
 概要：両射影を持つ d8 の積比較と、既存の Tamme 分裂による比較との整合。

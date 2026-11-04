@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFramePathExtension
 
-public import SerrePositivity.KST.LocalizingInvariants.SquareFrameFunctoriality
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameFunctoriality
 public import SerrePositivity.KST.LocalizingInvariants.EquivalencePathFamily
 public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
 
@@ -23,31 +24,8 @@ variable {X : SSet.{u}} [Quasicategory X] (f : SquareFrame (equivalencePath X))
   (Q : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X)
   (hf : f.postcomp (equivalencePathEndpoint X 0) = ofSquare Q)
 
-structure PathExtension where
-  family : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ equivalencePath X
-  source : family ≫ equivalencePathEndpoint X 0 = Q
-  boundary : boundaryι ≫ family = f.diagram
-
-include hf in
-lemma pathExtension_nonempty : Nonempty (PathExtension f Q) := by
-  have he : f.diagram ≫ equivalencePathEndpoint X 0 = boundaryι ≫ Q := by
-    rw [diagram_postcomp, hf, diagram_ofSquare]
-  let sq : CommSq f.diagram boundaryι (equivalencePathEndpoint X 0) Q := ⟨he⟩
-  have : HasLiftingProperty boundaryι (equivalencePathEndpoint X 0) :=
-    TrivialKanFibration.mem (p := equivalencePathEndpoint X 0) boundaryι inferInstance
-  exact ⟨⟨sq.lift, sq.fac_right, sq.fac_left⟩⟩
-
-def pathExtension : PathExtension f Q := (pathExtension_nonempty f Q hf).some
-
 namespace PathExtension
 variable {f Q} (w : PathExtension f Q)
-
-def target : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X := w.family ≫ equivalencePathEndpoint X 1
-
-omit [Quasicategory X] in
-lemma target_boundary : boundaryι ≫ w.target =
-    (f.postcomp (equivalencePathEndpoint X 1)).diagram := by
-  rw [target, ← Category.assoc, w.boundary, diagram_postcomp]
 
 def comparison : FunctorIso Q w.target :=
   (eqToIso (congrArg (fun g => HomotopyCategory.mk (functorVertex g)) w.source)).symm ≪≫

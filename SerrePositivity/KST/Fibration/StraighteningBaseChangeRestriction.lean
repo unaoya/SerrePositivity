@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningBaseChangeRestriction
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
 public import SerrePositivity.KST.Fibration.TransportSectionBaseChangePoint
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningBaseChange
@@ -16,27 +17,6 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
-
-/-- 元の大域底変換の定義で選んだ、同じ全単体上の制限比較を明示する。 -/
-def straighteningJointBaseChangeRestrictionIso :
-    FunctorIso
-      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D) ≫
-        ((SSet.uliftFunctor.{u + 1, u}).map k ≫ leftStraighteningSectionJointDiagram B))
-      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap D) ≫
-        (leftStraighteningSectionJointDiagram D ≫
-          (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})) := by
-  let U := SSet.uliftFunctor.{u + 1, u}
-  let t := U.map (nerveMap (transportSimplexFunctor k))
-  let l := U.map (transportSimplexFirstVertexMap D)
-  let P := (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}
-  have hleft : l ≫ (U.map k ≫ leftStraighteningSectionJointDiagram B) =
-      t ≫ (U.map (transportSimplexFirstVertexMap B) ≫
-        leftStraighteningSectionJointDiagram B) := by
-    rw [← Category.assoc, ← transportSimplexFirstVertexMap_ulift_naturality k, Category.assoc]
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) hleft) ≪≫
-    (leftStraighteningSectionJointDiagram_restrictIso B).precomp t ≪≫
-    (transportSimplexSectionInfinity_baseChangeIso k).symm ≪≫
-    ((leftStraighteningSectionJointDiagram_restrictIso D).postcomp P).symm
 
 /-- Sp の前合成充満忠実性を使い、元の大域同型の制限が同じ指定比較であると回収する。 -/
 theorem leftStraighteningSectionJointDiagram_baseChangeIso_pre [Quasicategory D] :

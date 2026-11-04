@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSequence
-public import SerrePositivity.KST.LocalizingInvariants.SemiorthogonalDecomposition
+public import SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
 
 /-! # Cat^perf の半直交分解と元の Verdier 列
 概要：同じ冪等完備安定対象間の実随伴を持つ半直交分解を、Cat^perf の列へ送る。

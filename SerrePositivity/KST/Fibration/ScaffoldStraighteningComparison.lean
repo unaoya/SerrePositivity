@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison
 public import SerrePositivity.KST.Fibration.FirstVertexTransportDiagramComponent
 public import SerrePositivity.KST.Fibration.ScaffoldNerveRepresentationPoint
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationUniqueness
@@ -20,9 +21,6 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))
-
-local instance : LeftFibration (pullback.snd p (transportSimplexFirstVertexMap B)) :=
-  ⟨leftFibrations.pullback_snd p _ (LeftFibration.mem (p := p))⟩
 
 /-- 元の初頂点制限と、指定 scaffold 三角形を保持する同じ係数比較を合成する。 -/
 def scaffoldStraighteningRestrictionIso :

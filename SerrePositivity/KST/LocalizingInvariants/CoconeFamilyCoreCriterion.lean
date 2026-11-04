@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
-public import SerrePositivity.KST.LocalizingInvariants.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
 public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
 
 /-!
@@ -20,27 +21,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-lemma functorFamily_invertsEdges_of_evaluations {P L X : SSet.{u}} [Quasicategory X]
-    (F : P ⟶ (ihom L).obj X) (W : Set (P _⦋1⦌))
-    (hF : ∀ l : L _⦋0⦌, InvertsEdges (F ≫ evaluateFunctorAt l) W) :
-    InvertsEdges F W := by
-  intro s hs
-  let a := edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s)
-  let f := (functorVertexEquiv L X).symm ((ihom L).obj X |>.δ 1 (F.app (Opposite.op ⦋1⦌) s))
-  let g := (functorVertexEquiv L X).symm ((ihom L).obj X |>.δ 0 (F.app (Opposite.op ⦋1⦌) s))
-  let e : Truncated.Edge (X := (truncation 2).obj ((ihom L).obj X))
-      (functorVertex f) (functorVertex g) :=
-    ((SSet.Edge.ofTruncated a).ofEq
-      ((functorVertexEquiv L X).apply_symm_apply _).symm
-      ((functorVertexEquiv L X).apply_symm_apply _).symm).toTruncated
-  apply (isInvertibleEdge_congr (e := e)
-    (f := (edgeOfSimplex s).map ((truncation 2).map F)) rfl).mp
-  apply (isInvertibleEdge_iff_evaluateFunctorAt e).mpr
-  intro l
-  exact (isInvertibleEdge_congr (e := e.map ((truncation 2).map (evaluateFunctorAt l)))
-    (f := (edgeOfSimplex s).map ((truncation 2).map (F ≫ evaluateFunctorAt l))) rfl).mpr
-      (hF l hs)
 
 /-- 前段の全辺と固定頂点が与える、同じ全余錐族の全パラメータ辺の反転。 -/
 lemma coconeFamily_invertsAllEdges_of_prefix_apex {P L X : SSet.{u}} [Quasicategory X]

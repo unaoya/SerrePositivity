@@ -115,7 +115,7 @@ Z_(p) 代数の条件 (3) は (1)(2) の層別を (pg_1, g_1, pg_2, g_2, …) �
    S[1/g] ≅ R[1/g]^r の標準冪等元 e_j と S の有限個の R 加群生成元 s_a について、S′ は R 加群として有限個の e_j s_a で生成される（Σ_j e_j·image(S) は乗法で閉じ、
    両方の像を含む）。よって S′ は有限 R 加群で S → S′、R^r → S′ は整。完備性：R は被約（perfectoid）なので ann(g^N) = ann(g)、R の R[1/g] での像 R̄ = R/ann(g) は
    導来 p 完備（核・余核の閉性）；生成元の分母を払う N で g^N S′ ⊂ R̄^r、g は R[1/g]^r で単元なので S′ ≅ g^N S′（R 加群）、g^N S′ は有限自由加群から R̄^r への
-   写像の像で導来 p 完備。既存の `isModuleComplete_pi`・`_ker`・`_coker`（HomologicalAlgebra/DerivedCompletion/ModuleClosure.lean）で供給できる。
+   写像の像で導来 p 完備。既存の `isModuleComplete_pi`・`_ker`・`_coker`（HomologicalAlgebra/DerivedCompletion/ModuleComplete/Closure.lean、2b で改名）で供給できる。
    S′ の有限表示性は要らない。
 
 ### 3.3 Thm 10.11

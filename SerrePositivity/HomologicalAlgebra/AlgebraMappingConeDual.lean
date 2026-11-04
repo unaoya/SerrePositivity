@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomologicalAlgebra.AlgebraLinearYoneda
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.Complex.Cone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulTower
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 
 /-! # Actual coefficient-algebra linear coordinates on dual mapping cones -/
 @[expose] public section

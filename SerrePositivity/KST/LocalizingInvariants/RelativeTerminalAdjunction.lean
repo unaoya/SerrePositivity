@@ -1,7 +1,8 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeTerminalAdjunction
 
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionOfOpposite
-public import SerrePositivity.KST.LocalizingInvariants.AdjunctionCounitIso
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionOfOpposite
+public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionCounitIso
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInitialAdjunction
 public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryTransport
 public import SerrePositivity.InfinityCategories.Stable.TerminalMappingSpace
@@ -25,34 +26,10 @@ namespace SerrePositivity.KST.LocalizingInvariants
 variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   {F : X ⟶ Y} {G : Y ⟶ X}
 
-omit [Quasicategory X] [Quasicategory Y] in
-lemma oppositeSectionEquality (h : G ≫ F = 𝟙 Y) :
-    SSet.opFunctor.map G ≫ SSet.opFunctor.map F = 𝟙 Y.op :=
-  congrArg SSet.opFunctor.map h
-
-omit [Quasicategory X] [Quasicategory Y] in
-lemma oppositeSection_initialBoundary
-    (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y))
-    (y : Y.op _⦋0⦌) : InitialBoundaryLifting (SSet.opFunctor.map F)
-      ((SSet.opFunctor.map G).app (Opposite.op ⦋0⦌) y) :=
-  (hG (SSet.opObjEquiv y)).op_initial
-
 def adjunctionOfRelativeTerminalSection (h : G ≫ F = 𝟙 Y)
     (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : QCatAdjunction F G :=
   adjunctionOfOpposite (adjunctionOfRelativeInitialSection (oppositeSectionEquality h)
     (oppositeSection_initialBoundary hG))
-
-lemma fullyFaithful_of_relativeTerminalSection (h : G ≫ F = 𝟙 Y)
-    (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) : IsFullyFaithful G := by
-  have hgf : IsFullyFaithful (G ≫ F) := h.symm ▸ isFullyFaithful_id Y
-  intro x y
-  have ht := pinchedHomMap_trivialKanFibration_of_terminalBoundaryLifting F (hG y)
-    (G.app (Opposite.op ⦋0⦌) x)
-  have hg := isQCatEquivalence_of_trivialKanFibration
-    (pinchedHomMap F (G.app (Opposite.op ⦋0⦌) x) (G.app (Opposite.op ⦋0⦌) y))
-  have hc := (hgf x y).isQCatEquivalence
-  rw [pinchedHomMap_comp] at hc
-  exact (hg.cancel_right hc).isSimplicialHomotopyEquivalence
 
 lemma relativeTerminalSection_counitHom_isIso (h : G ≫ F = 𝟙 Y)
     (hG : ∀ y, TerminalBoundaryLifting F (G.app (Opposite.op ⦋0⦌) y)) :

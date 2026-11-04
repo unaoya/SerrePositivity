@@ -1,6 +1,7 @@
 module
 
-public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.AdjunctionHom
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.AdjunctionHom
+public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
 
 /-!
 概要：随伴の frame Hom 同型を、独立した元の始域・終域パラメータに自然な二変数同型へ束ねる。

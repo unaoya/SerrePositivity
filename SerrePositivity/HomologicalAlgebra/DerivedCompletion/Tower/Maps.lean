@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionQuasiIso
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.Complex.Cone
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerProjection
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 
 /-! # 複体の塔の射とホモトピー逆極限の関手性

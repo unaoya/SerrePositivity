@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.KST.Fibration.WeakSpanKanUnstraighteningUnit
-public import SerrePositivity.KST.Fibration.WeakSpanKanQuotientRelativeDescent
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanUnstraighteningUnit
+public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.WeakSpanKanQuotientRelativeDescent
 
 /-!
 概要：元の marked span 全族から、同じ商図式の小さい unstraightening への実写像。

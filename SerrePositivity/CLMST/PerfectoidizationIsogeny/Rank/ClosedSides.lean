@@ -60,11 +60,11 @@ theorem rankSource_closedSide_completeness
   let J := I.map (rankTensorUnit R S T).toRingHom
   have hS : IsModuleComplete S (p : S) (ModuleCat.of S S) := by
     have h := (isModuleComplete_algebraMap_iff R S (p : R) S).mpr
-      (source_isModuleComplete R S p hR)
+      (isModuleComplete_finitePresentation_of_integralPerfectoid R S p hR)
     simpa only [map_natCast] using h
   have hX : IsModuleComplete X (p : X) (ModuleCat.of X X) := by
     have h := (isModuleComplete_algebraMap_iff R X (p : R) X).mpr
-      (rankBaseChangeProduct_isModuleComplete R p T hT S)
+      (pi_baseChange_isModuleComplete_of_integralPerfectoid R p T hT S)
     simpa only [map_natCast] using h
   have hJ : J = Ideal.span {algebraMap R X g} := by
     change (Ideal.span {algebraMap R S g}).map (rankTensorUnit R S T).toRingHom = _
