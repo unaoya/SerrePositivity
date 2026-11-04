@@ -1,0 +1,1703 @@
+{
+  "status": "PASS_STOP2",
+  "instruction": "IF-W2c §6 (main 97b196bbe), resumption approved by user after df60b4d55",
+  "branch": "infra/if-w2c",
+  "source_head": "af0b57c8af290aaccc914ef8a451e745cf4565e5",
+  "worktree": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3",
+  "before_base": "11eacaa39b5fc79af6185987d1596849122496fb",
+  "stages": [
+    {
+      "stage": "A",
+      "commit": "d9941f412e26b62e8a0336f1c97e75b757f66019",
+      "moves": 27,
+      "splits": 16,
+      "paths": 162
+    },
+    {
+      "stage": "Aprime",
+      "commit": "cd4b4aa538ae9c3e81b4eee5cc8bec32d8f73e0d",
+      "moves": 0,
+      "splits": 8,
+      "paths": 38
+    },
+    {
+      "stage": "R51",
+      "commit": "eb9e22101ae245c92d29da7265fae9db7564021f",
+      "moves": 3,
+      "splits": 0,
+      "paths": 15
+    },
+    {
+      "stage": "R68",
+      "commit": "a7604cfdd14e4e8fcfb030202f1ff11d3a6efe65",
+      "moves": 34,
+      "splits": 17,
+      "paths": 133
+    },
+    {
+      "stage": "R52",
+      "commit": "e805ace8513eb10215c9a7c16dd852ff29eb086a",
+      "moves": 138,
+      "splits": 8,
+      "paths": 350
+    },
+    {
+      "stage": "R69",
+      "commit": "866218b0e0be8fc6f11fa353d58ee0ddac3ac542",
+      "moves": 52,
+      "splits": 25,
+      "paths": 230
+    },
+    {
+      "stage": "R70",
+      "commit": "55a630c818370d22b05e1ef838e9dc3245798a6b",
+      "moves": 58,
+      "splits": 42,
+      "paths": 251
+    },
+    {
+      "stage": "R56b",
+      "commit": "ed53aeacb641e87ea4a352ce609113f3c0b3b46f",
+      "moves": 13,
+      "splits": 0,
+      "paths": 50
+    }
+  ],
+  "planned_operations": {
+    "move": 325,
+    "split": 116,
+    "reimport": 42
+  },
+  "repair_statistics": {
+    "ordinary_import_edges": 72,
+    "import_all_insertions": 15,
+    "local_instance_registrations": 9,
+    "original_anonymous_names_explicit": 8,
+    "fully_qualified_occurrences": 2,
+    "split_scope_annotation_edits": 29,
+    "repair_commits": 12,
+    "distinct_repaired_modules": 106
+  },
+  "repair_records": [
+    "scripts/refactor/targets/w2c-internal-a-repair1.json",
+    "scripts/refactor/targets/w2c-internal-a-repair2.json",
+    "scripts/refactor/targets/w2c-internal-a-repair3.json",
+    "scripts/refactor/targets/w2c-internal-a-repair4.json",
+    "scripts/refactor/targets/w2c-internal-a-repair5.json",
+    "scripts/refactor/targets/w2c-internal-b-repair1.json",
+    "scripts/refactor/targets/w2c-internal-b-repair2.json",
+    "scripts/refactor/targets/w2c-internal-b-repair3.json",
+    "scripts/refactor/targets/w2c-internal-b-repair4.json",
+    "scripts/refactor/targets/w2c-internal-b-repair5.json",
+    "scripts/refactor/targets/w2c-internal-b-repair6.json",
+    "scripts/refactor/targets/w2c-internal-b-repair7.json"
+  ],
+  "rounds": [
+    {
+      "phase": "A",
+      "round": 1,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 155,
+      "unverified": 187,
+      "failed_modules": 15,
+      "seconds": 328.7,
+      "head": "cd4b4aa538ae9c3e81b4eee5cc8bec32d8f73e0d",
+      "evidence": ".lake/verify/ifw2c-internal/A-round1/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 2,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 228,
+      "unverified": 114,
+      "failed_modules": 8,
+      "seconds": 261.68,
+      "head": "c68fdf421462b311783fe9fb4abb502f86b48487",
+      "evidence": ".lake/verify/ifw2c-internal/A-round2/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 3,
+      "status": "FAIL",
+      "targets": 342,
+      "verified": 297,
+      "unverified": 45,
+      "failed_modules": 4,
+      "seconds": 1576.78,
+      "head": "92401dd29e9961332610e951bc2d25d013f297fd",
+      "evidence": ".lake/verify/ifw2c-internal/A-round3/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 4,
+      "status": "FAIL",
+      "targets": 343,
+      "verified": 322,
+      "unverified": 21,
+      "failed_modules": 3,
+      "seconds": 6021.0,
+      "head": "2297136d8531ddfbb0a2974ef97462b85d57fb67",
+      "evidence": ".lake/verify/ifw2c-internal/A-round4/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 5,
+      "status": "FAIL",
+      "targets": 345,
+      "verified": 343,
+      "unverified": 2,
+      "failed_modules": 1,
+      "seconds": 1336.35,
+      "head": "051fdc38c9ca6ae04a8cc7cc027746a5267d532f",
+      "evidence": ".lake/verify/ifw2c-internal/A-round5/state.json"
+    },
+    {
+      "phase": "A",
+      "round": 6,
+      "status": "PASS",
+      "targets": 345,
+      "verified": 345,
+      "unverified": 0,
+      "failed_modules": 0,
+      "seconds": 753.34,
+      "head": "c2eda133367313239dab5225f0e28b8254c0e944",
+      "evidence": ".lake/verify/ifw2c-internal/A-round6/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 1,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 600,
+      "unverified": 483,
+      "failed_modules": 38,
+      "seconds": 5099.66,
+      "head": "ed53aeacb641e87ea4a352ce609113f3c0b3b46f",
+      "evidence": ".lake/verify/ifw2c-internal/B-round1/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 2,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 812,
+      "unverified": 271,
+      "failed_modules": 14,
+      "seconds": 860.24,
+      "head": "9f0949ef9838010c970d26b2b96c55fb01ff0870",
+      "evidence": ".lake/verify/ifw2c-internal/B-round2/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 3,
+      "status": "FAIL",
+      "targets": 1083,
+      "verified": 859,
+      "unverified": 224,
+      "failed_modules": 5,
+      "seconds": 424.2,
+      "head": "e1e8ddf7ceb4120eabd05ae04b13dd8781bde3b9",
+      "evidence": ".lake/verify/ifw2c-internal/B-round3/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 4,
+      "status": "FAIL",
+      "targets": 1084,
+      "verified": 869,
+      "unverified": 215,
+      "failed_modules": 4,
+      "seconds": 39.71,
+      "head": "ca091dbdcf71f7ecf4622d9c5a01bdd92be28a97",
+      "evidence": ".lake/verify/ifw2c-internal/B-round4/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 5,
+      "status": "FAIL",
+      "targets": 1084,
+      "verified": 989,
+      "unverified": 95,
+      "failed_modules": 6,
+      "seconds": 736.46,
+      "head": "0a130c3c03b8d413fcab6028b2cb397af8cd1058",
+      "evidence": ".lake/verify/ifw2c-internal/B-round5/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 6,
+      "status": "FAIL",
+      "targets": 1085,
+      "verified": 1001,
+      "unverified": 84,
+      "failed_modules": 3,
+      "seconds": 1132.76,
+      "head": "69a2c0fadd021a1aaba5b26735ff2e6d5aa6300a",
+      "evidence": ".lake/verify/ifw2c-internal/B-round6/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 7,
+      "status": "FAIL",
+      "targets": 1086,
+      "verified": 1014,
+      "unverified": 72,
+      "failed_modules": 1,
+      "seconds": 112.56,
+      "head": "377713b67ad27053f90fa5308f25cd40fe9eca53",
+      "evidence": ".lake/verify/ifw2c-internal/B-round7/state.json"
+    },
+    {
+      "phase": "B",
+      "round": 8,
+      "status": "PASS",
+      "targets": 1086,
+      "verified": 1086,
+      "unverified": 0,
+      "failed_modules": 0,
+      "seconds": 2066.06,
+      "head": "af0b57c8af290aaccc914ef8a451e745cf4565e5",
+      "evidence": ".lake/verify/ifw2c-internal/B-round8/state.json"
+    }
+  ],
+  "resume": {
+    "status": "SMALL_BUILD_PASS",
+    "authorization": "User approved resumption from df60b4d55 and one import. Stop if the same module fails again. Small build before supplement commit, then internal round 8, v3b and stop 2.",
+    "head_before": "0a340e47fb5cf3dcbaabc63a6b8dd69ea49b9e68",
+    "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+    "import": "SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint",
+    "before_source": "module\npublic import SerrePositivity.KST.Fibration.FirstVertexDiagramVertices\npublic import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint\nimport all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint\npublic import SerrePositivity.KST.Fibration.StraighteningBaseChangeLeftEndpoints\npublic import SerrePositivity.InfinityCategories.F1.Transport.PointedSpaceEqualityTransport\n\n/-! # 像の単体へ輸送した同じ切断点を、元の底側の scaffold 復元像へ接続する -/\n\n@[expose] public section\nnoncomputable section\nset_option backward.isDefEq.respectTransparency false\nuniverse u\nopen CategoryTheory SSet\nopen scoped Simplicial\nopen SerrePositivity.InfinityCategories\nnamespace SerrePositivity.KST.Fibration\n\nvariable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p] [Quasicategory B]\n  (k : D ⟶ B)\n\n/-- 左の元の切断比較は、輸送した同じ切断点の初頂点 fiber の復元像を回収する。 -/\ntheorem scaffoldBaseChangeLeftChart_pointHom (c : TransportSimplexCategory D)\n    (v : (((relativeSectionEnrichedDiagram\n      (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj\n        (leftFibrationObjectOf p)).obj _⦋0⦌) :\n    cosliceFiberPointHom ((pointedSpaceFiberVertexEquiv\n      (((relativeSectionEnrichedDiagram\n        (transportSimplexDomainFunctor D ⋙ Over.map k)).obj c).obj\n          (leftFibrationObjectOf p))).symm v) ≫\n      (straighteningBaseChangeLeftChart k (leftFibrationObjectOf p) c).inv ≫\n        (eqToIso (congrArg HomotopyCategory.mk\n          (straighteningBaseChangeLeft_source_vertex k (leftFibrationObjectOf p) c))).hom ≫\n        (eqToIso (congrArg HomotopyCategory.mk\n          (firstVertexDiagram_source_vertex p ((transportSimplexFunctor k).obj c)))).inv =\n    cosliceFiberPointHom (smallUnstraighteningPointedImage\n      (leftStraighteningInfinityDiagram p)\n      ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)\n        (nerveVertex ((transportSimplexFunctor k).obj c)))\n      ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))\n        (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p)\n        ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌)\n          (nerveVertex ((transportSimplexFunctor k).obj c)))).app (Opposite.op ⦋0⦌)\n            (firstVertexSectionFiberPoint p ((transportSimplexFunctor k).obj c)\n              (straighteningBaseChangeImageSectionPoint p k c v)))) := by\n  have hp := pointedSpaceFiberPointHom_eq_transport\n    (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c) v\n  have hn := point_normalize_both_inv\n    (straighteningBaseChangeLeftChart k (leftFibrationObjectOf p) c)\n    (congrArg HomotopyCategory.mk\n      (straighteningBaseChangeLeft_source_vertex k (leftFibrationObjectOf p) c))\n    (congrArg HomotopyCategory.mk (congrArg spaceInfinityVertex\n      (straighteningBaseChangeLeft_section_eq k (leftFibrationObjectOf p) c)))\n    _ _ (eqToIso (congrArg HomotopyCategory.mk\n      (firstVertexDiagram_source_vertex p ((transportSimplexFunctor k).obj c)))).inv hp\n  rw [straighteningBaseChangeLeftChart_eq_firstVertex] at hn\n  exact hn.trans (scaffoldPointedReconstruction_coefficient_pointHom p\n    ((transportSimplexFunctor k).obj c) (straighteningBaseChangeImageSectionPoint p k c v))\n\nend SerrePositivity.KST.Fibration\n",
+    "small_build": {
+      "command": [
+        "python3",
+        "-Bu",
+        "/private/tmp/ifw2c-s31/lockrun.py",
+        "lake",
+        "build",
+        "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "seconds": 7.709,
+      "log": "small-build.log"
+    },
+    "commit": "af0b57c8af290aaccc914ef8a451e745cf4565e5"
+  },
+  "internal_result": {
+    "A": {
+      "status": "PASS",
+      "round": 6,
+      "head": "c2eda133367313239dab5225f0e28b8254c0e944",
+      "build": {
+        "status": "PASS",
+        "seconds": 753.34
+      },
+      "verified": 345,
+      "unverified": 0,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 0,
+          "affected_core_module_count": 0
+        },
+        "W2a": {
+          "forbidden_module_count": 74,
+          "affected_core_module_count": 1723
+        },
+        "W2b": {
+          "forbidden_module_count": 74,
+          "affected_core_module_count": 1723
+        }
+      },
+      "direct": [],
+      "HA": [
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion"
+      ],
+      "ModelBridge": [
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy"
+      ],
+      "unexpected_forbidden": [],
+      "removed": []
+    },
+    "B": {
+      "status": "PASS",
+      "round": 8,
+      "head": "af0b57c8af290aaccc914ef8a451e745cf4565e5",
+      "build": {
+        "status": "PASS",
+        "seconds": 2066.06
+      },
+      "verified": 1086,
+      "unverified": 0,
+      "tiers": {
+        "W1": {
+          "forbidden_module_count": 0,
+          "affected_core_module_count": 0
+        },
+        "W2a": {
+          "forbidden_module_count": 74,
+          "affected_core_module_count": 1730
+        },
+        "W2b": {
+          "forbidden_module_count": 74,
+          "affected_core_module_count": 1730
+        }
+      },
+      "direct": [],
+      "HA": [
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor",
+        "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion"
+      ],
+      "ModelBridge": [
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies",
+        "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy"
+      ],
+      "unexpected_forbidden": [],
+      "removed": []
+    }
+  },
+  "preservation": {
+    "status": "PASS_BY_APPROVED_INDIVIDUAL_REVIEW",
+    "raw_status": "FAIL",
+    "raw_counts": {
+      "public": {
+        "before_count": 5456,
+        "after_count": 5454
+      },
+      "with-private": {
+        "before_count": 5506,
+        "after_count": 5504
+      }
+    },
+    "raw_changes": 58,
+    "explained": 58,
+    "unexplained": 0,
+    "before_modules": 975,
+    "after_modules": 1091,
+    "before_private_modules": 28,
+    "after_private_modules": 45,
+    "after_snapshot_status": "PASS",
+    "after_private_snapshot_status": "PASS",
+    "before_extra_modules": [
+      "SerrePositivity.KST.Spectra.SequenceHomotopyRectification",
+      "SerrePositivity.KST.SConstruction.TerminalPathContractibility",
+      "SerrePositivity.KST.SConstruction.PointedEnrichedCylinderCompletionProperties",
+      "SerrePositivity.KST.SConstruction.PointedEnrichedMonicReplacementProperties",
+      "SerrePositivity.KST.LocalizingInvariants.FiberMappingAnodyneFamily",
+      "SerrePositivity.KST.Fibration.WeakSpanBaseChangeLift",
+      "SerrePositivity.KST.LocalizingInvariants.ArrowPullbackCartesianEdge",
+      "SerrePositivity.KST.LocalizingInvariants.MarkedSpanPostcomposition",
+      "SerrePositivity.KST.LocalizingInvariants.MarkedSpanFamilyCocartesianFibration",
+      "SerrePositivity.KST.LocalizingInvariants.TammeSpanBaseChangeLift",
+      "SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderCompletionProperties"
+    ],
+    "snapshot_seconds": {
+      "after": 1135.026,
+      "after_private": 58.863
+    },
+    "individual_decision": ".lake/verify/ifw2c-internal/preservation-decision.json",
+    "judgments": [
+      {
+        "name": "SerrePositivity.KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_5",
+        "module": "SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle",
+        "change": "removed",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 C (anonymous-instance type hash and source position), D",
+        "reason": "Anonymous-instance enumeration/ownership depends on the import environment. A fixed common environment contains the declaration on both sides with identical v3b fields, owner and printed type/axioms.",
+        "counterpart": "SerrePositivity.KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_5",
+        "type_hash": "10673822241201834585",
+        "before_shard_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorProjectionRectangle",
+        "before_common_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorCellNuComparison",
+        "after_common_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorCellNuComparison",
+        "source_declaration_sha256": "3ec8566e1bed0b48d09e2b8ed0f607f539c360b75d622b6e31a9340894af39b4",
+        "family_evidence": "dg"
+      },
+      {
+        "name": "SerrePositivity.KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_8",
+        "module": "SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow",
+        "change": "removed",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 C (anonymous-instance type hash and source position), D",
+        "reason": "Anonymous-instance enumeration/ownership depends on the import environment. A fixed common environment contains the declaration on both sides with identical v3b fields, owner and printed type/axioms.",
+        "counterpart": "SerrePositivity.KST.SConstruction.instIsDGPretriangulatedDGOdotGluing_8",
+        "type_hash": "10673822241201834585",
+        "before_shard_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow",
+        "before_common_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow",
+        "after_common_owner": "SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionArrow",
+        "source_declaration_sha256": "3ec8566e1bed0b48d09e2b8ed0f607f539c360b75d622b6e31a9340894af39b4",
+        "family_evidence": "dg"
+      },
+      {
+        "name": "SerrePositivity.KST.Spectra.instIsRightAdjointSSetPointedSimplicialSetForget_1",
+        "module": "SerrePositivity.KST.Spectra.PullbackKanSequence",
+        "change": "removed",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 C (anonymous-instance type hash and source position), D",
+        "reason": "Anonymous local instance numbered _1 before is numbered without the suffix after. Type v3b, theorem kind, axioms and attributes agree exactly with the corresponding instance.",
+        "counterpart": "SerrePositivity.KST.Spectra.instIsRightAdjointSSetPointedSimplicialSetForget",
+        "type_hash": "16639513910628211270",
+        "before_shard_owner": "SerrePositivity.KST.Spectra.PullbackKanSequence",
+        "before_common_owner": "SerrePositivity.KST.Spectra.PullbackKanSequence",
+        "after_common_owner": "SerrePositivity.InfinityCategories.F1.Pointed.CofiberMappingPullback",
+        "source_declaration_sha256": "88bff2c375b32aebf6fde2698480a277f052bf1a7d1c4241c911a4af04907135",
+        "family_evidence": "adjoint"
+      },
+      {
+        "name": "SerrePositivity.KST.Spectra.KanSequence.pullbackSigma.eq_1",
+        "module": "SerrePositivity.KST.Spectra.PullbackKanSequence",
+        "change": "added",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D (generated proof auxiliary under preserved parent)",
+        "reason": "Generated equation theorem. Parent v3b is unchanged. Both environments expose the same equation theorem after the parent is printed, with identical #check/#print/axioms including explicit arguments.",
+        "parent": "SerrePositivity.KST.Spectra.KanSequence.pullbackSigma"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.freeConstantPath_naturality",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.freeConstantPath_naturality",
+        "change": "type",
+        "before_sha256": "1ef0ed1a6554b82b4c799fad481be0bd853a125b246abf068453b0c966878f96",
+        "after_sha256": "f8aacbe19a61fa2595b613a3c76996da7340ddf6e3abb36434e07e43e3f88c14",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.freeConstantPath_naturality"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.freePathEndpoint_naturality",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.freePathEndpoint_naturality",
+        "change": "type",
+        "before_sha256": "f9325cfd72ad56158ddc294ea273fe8ec532627d3d6a57d33bab7214b752472f",
+        "after_sha256": "d12591f362c17d94710119d099920d8cde041ec329da5807a5e2d8c5bb851dc3",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.freePathEndpoint_naturality"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "change": "body",
+        "before_sha256": "927d5cee6fffc5c25d4ee4f63d82d1cf26a79e2d88ed2e7bf61a4bd76ffd643b",
+        "after_sha256": "4d4fda58d2cbd9e8babe26e60affe89f8da067272e3be89ff9c232fed840978d",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "change": "type",
+        "before_sha256": "9a234238a0c6dfb084941b81f030f6a6b995eebf9ba223cd53184778f0687612",
+        "after_sha256": "42acdd4c203199e3e7f1aea7a9e07a62b44cb0796d72ae24f1616896b13a9ff4",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap._proof_1",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "change": "type",
+        "before_sha256": "5b79ca6fecd7bf73a935218ccea9d6326dace46056c4fab4ffd9a0abcdca0100",
+        "after_sha256": "0c2749d2a43d13122fa9c4f35914814834e5380533048cdfa9974fd2244961a5",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap._proof_1"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap._proof_3",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap",
+        "change": "type",
+        "before_sha256": "b5c898129346efba3b91ca2ef7ea61f5f0a463c17431dc94ff5d99347e2df6e8",
+        "after_sha256": "1a9cf4a1ab2fdea7edd08aaff0af4e3d5458ffe0d567f43c85b46d61d62d8d7d",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap._proof_3"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_path",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_path",
+        "change": "type",
+        "before_sha256": "cf5f24b888b2ac863a9cb39dd225edd7e922a7c2245c607f567971f0982ff56d",
+        "after_sha256": "c40a775ad455c7e17406a9ad2f3ace35f44584887090f3a4ea0e3902b1878e0c",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_path"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_source",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_source",
+        "change": "type",
+        "before_sha256": "a56d4c3d840328a661a21d967c7c207707b173de0bbad6809bd9de6abb5c652a",
+        "after_sha256": "00157cafe79a1b0e5b8fe741701d21443a87bd8a945c2fe372d9066c87f6bdcb",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_source"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_target",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_target",
+        "change": "type",
+        "before_sha256": "c84692f8c7d478333110f6983f8223ab85b20c11f6296c390ef8c5243118b698",
+        "after_sha256": "34f4f7d066938c7db87066fd57e55a78eb2c39744d550a5b0e3ad9a2f3f3c32a",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_target"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_unit",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathNaturality",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_unit",
+        "change": "type",
+        "before_sha256": "9d13cae9cd29a7bf22a862adfda0009e1512a49fd3078676424d5fbdfa4e3762",
+        "after_sha256": "55bebeb8d96cc3dcef7f22e9398943426a75cde74c9c14231b6681782579f3cd",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathMap_unit"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource",
+        "change": "body",
+        "before_sha256": "37cd0ceadd9cc837aa9b2a281a5f2c7ab8ccbb2206d07ae5dadbb3507319ff3a",
+        "after_sha256": "bfc17bafea8c81b9fa9c2aeca62d9234767c6f1f1e54b81196aec075595fff53",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource",
+        "change": "type",
+        "before_sha256": "976fcb0c8ac34d025fc5d1f01039d44c6796668fd422f73d836ba9d3ec5ddc70",
+        "after_sha256": "19f1827f469c9872840a441365e60d450e3feceff95c9203480584c40f8f9c2c",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource._proof_2",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource",
+        "change": "type",
+        "before_sha256": "8a90c7ea0a4f48dfb4dd1a0fba5bc494181c71f346818bfab1378d1096a664cb",
+        "after_sha256": "3ffa65e8456ba64dc94a03168a18794da16f4cd1cd5f54b39640c69afea6ae04",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitSource._proof_2"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget",
+        "change": "body",
+        "before_sha256": "66e3c4b0e8be93499c33032a703930288b96617e0cdd7c0dbb710682a12a08f3",
+        "after_sha256": "d8cee46453901ff73ba2546240f1f8db68eac9f32b7247a906c3fda9a9a1ec01",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget",
+        "change": "type",
+        "before_sha256": "7fe74b8f49b80d04a7681b1b5c24046c31d2f3e7b5a0d092ad639e8f59e6c02e",
+        "after_sha256": "ea4d265ca52c7e886218f7a6315af81cabafa26ed36dde72a61101bde12f723d",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget._proof_1",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget",
+        "change": "type",
+        "before_sha256": "745fbf5a2caa9859a09a1e1845a163c3da5a657326a94f504b6521808f69d903",
+        "after_sha256": "a8f18d38291c6761f4e43b61b57fb3026a071e941cbab35278f8caf22e341d0e",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitTarget._proof_1"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit",
+        "change": "body",
+        "before_sha256": "5cbb89403e3508e36ac51ba3a2d926f6561ec8e2080212b51575fc435b942316",
+        "after_sha256": "b94386c9f4618ce2704c11c1b1ebfdbfebf87d037c0586ae1ad4350e19c54f04",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit",
+        "change": "type",
+        "before_sha256": "d38210ee5432f48c87644558098f78145d15cab2d16dc51b46e957733e456354",
+        "after_sha256": "ae002a7539d4f856b35a38458a1e76652a68898b0a49e2614b5544a691fa3d17",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit._proof_1",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit",
+        "change": "type",
+        "before_sha256": "6502c69dddedcf82408685955330901dd40195fa55e74caa491ea7fbfdc98511",
+        "after_sha256": "57cb5a79b3d7646e341ed8acc54c043cdac0ebf6f054840b5ae72cbedcf0020a",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit._proof_1"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_source",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_source",
+        "change": "type",
+        "before_sha256": "1cfe7d2579bd583c149c9e222526001abda86250830e9b638fe69919bcf7c698",
+        "after_sha256": "1a5a7b405184c02ed91bdc0c6c4ab3795639589b983c40935d727d651852aa76",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_source"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target",
+        "change": "type",
+        "before_sha256": "40e2551dfa743381b26507cba0c902220c8639a0b732d7a15517c85a108ff984",
+        "after_sha256": "2d1c7a4c868da0e8ea3d92e1f9b92d61b740eb3444472768e717dccf13d83d84",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target._proof_1",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target",
+        "change": "type",
+        "before_sha256": "50f58141f2b348fa7bffd3bb89f6bd5eb7542f646e5537aee13b900280ddb2f8",
+        "after_sha256": "a67a842431df4bc7995f8df4d1e54caa33a949cbc407d67ee3a3045d60c212c7",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerLimitUnit_target._proof_1"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep",
+        "change": "body",
+        "before_sha256": "32062f5e42592abeb9cb6169a4828c4c4e32081238956da8265ded5b04098c3c",
+        "after_sha256": "7c280f2103417b3e06cb7c2f33cbab05e0082b174a7edd407299b48591bfaea4",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep",
+        "change": "type",
+        "before_sha256": "3859eed0b875ddb162b82360ffe6c99c7b0d8cec68423298f249f2a0f77eb98d",
+        "after_sha256": "336206d61cbfcd69cc15c1021236f9a55c2523b552ff52cbc3a6145880e8687b",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep._proof_1",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep",
+        "change": "type",
+        "before_sha256": "cb2285c42b4952210a03e67a65c53f107b90fbaa36107ac90d993a8b6e8c8e0a",
+        "after_sha256": "69ee70232a67fdce17b543bc57ad31c2fffc5c100d2ea4ae8bf9317599d59b22",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTowerStep._proof_1"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_source_comm",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_source_comm",
+        "change": "type",
+        "before_sha256": "080a3952e567e60e4a8336c5a05cf49c2cce77ce670ad231fb05d31914952589",
+        "after_sha256": "133f40eaf81a3991007ef3dcbcf72aa88d33693548dc39cbc8328f0ead3c1aad",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_source_comm"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_target_comm",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_target_comm",
+        "change": "type",
+        "before_sha256": "6016a597713d77e455f9d281e473844e23e96602fa2e828e291d11e190c21add",
+        "after_sha256": "cc29c11b499baf1376248dc973756131d430973a2e8ae35476469116f2e2b7fc",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_target_comm"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_unit_comm",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.MappingPathTowers",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_unit_comm",
+        "change": "type",
+        "before_sha256": "1d8ad5665ce902c0bac14364a07cea08d4367c454a43b78526bd06359954eb2e",
+        "after_sha256": "9a6313bb967adbb1848e8720f15ba785f3bab1dd6a6af07427b9f33816e289ef",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.mappingPathTower_unit_comm"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.pointedZero_app",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.pointedZero_app",
+        "change": "type",
+        "before_sha256": "ac5c68c424a413cce5c057704aede16524bfca983e11165a11228323186c0e9d",
+        "after_sha256": "d76dc17e9789f8589ad15ffef6fed25ca550a3e1daa15c45f77d22d5b2be9626",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.pointedZero_app"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_boundaryHornLift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFreePathBoundary",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_boundaryHornLift",
+        "change": "type",
+        "before_sha256": "78c0b8d930edfd30517108c41b744d672409e62def10e1d046a34d16b9c8749a",
+        "after_sha256": "aa868cf9b3443ea6be2a78543692f7975a048af3573d8cf7733b0cf1ae8a31f4",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_boundaryHornLift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_lift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativeFreePathLifting",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_lift",
+        "change": "type",
+        "before_sha256": "a5170ceac6847b9f6ab2887a3ea3a2b2a3ae16cfc1f3f6291caaefeebf33f919",
+        "after_sha256": "c0d2490ef229b58ff122ef66bc6f31125c18d1f45b0951163ca9c5acfec5be95",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeFreePath_lift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_anodyneLift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_anodyneLift",
+        "change": "type",
+        "before_sha256": "18145fc449f6f288643e1d7a96820b3a4d26cddfe5052f1087b5e4a1604e23e2",
+        "after_sha256": "372b0bdf02238ac92de71d3bb791fefdb31415c58ce7c021bed38a2f444763b5",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_anodyneLift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_hornLift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_hornLift",
+        "change": "type",
+        "before_sha256": "5705521e8c5bde76f2078270233ba29a2760d1916884d200df5ee324d4937f55",
+        "after_sha256": "b8072c057c54353815b81d377ff1830a51d8ba3c90dd671c63e42842d30e4690",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_hornLift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_lift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_lift",
+        "change": "type",
+        "before_sha256": "8f64dff095a0776b01eec2966d3c3a4eba0eee23881637f38cd69fe410012de4",
+        "after_sha256": "6e27e21639c066b04afebc235b4481f7fbb8a607affaf4ab606a4b83d6840387",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativePointedHom_lift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeTensorLift",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeTensorLift",
+        "change": "type",
+        "before_sha256": "2b038e6a74dbfc1f0d670ba04130b4e05c06bac78dddbfab9b1618220974db26",
+        "after_sha256": "c53ab99d3928ad4f865b1a8a334894cd373ca13d5cb8dc5ffeab6a00d1cd43d6",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.relativeTensorLift"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.simplexModelToSmash",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.simplexModelToSmash",
+        "change": "type",
+        "before_sha256": "4fe596b6ab1891dbed80fc33349ff0b5aa756d196fa04d027d174ede396b65da",
+        "after_sha256": "66698ce5f69159504904f889e037bdccd711d796d584e767d4175ec901f318bc",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.simplexModelToSmash"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModel",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModel",
+        "change": "body",
+        "before_sha256": "a2969b24647011a007ce9aa255a036a797df3e092653f8c5fedb024f6bd4b5c8",
+        "after_sha256": "7dbb4f9c29e05ecc91b7329a2747967ebbdbc8472b435d9cdb9b2a97e2981e85",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModel"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModelQuotient",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModelQuotient",
+        "change": "type",
+        "before_sha256": "cd6595aaab7fd8b5e31fbe9153fc65db03aaf637e1f49d7727e4fc388d0f0746",
+        "after_sha256": "82ab905c794aefa1dc6c0a5fd10bdd09eced328db43261bcf362c6cad3b4c567",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.smashSimplexModelQuotient"
+      },
+      {
+        "name": "SerrePositivity.InfinityCategories.HomotopyLimits.smashToSimplexModel",
+        "module": "SerrePositivity.InfinityCategories.HomotopyLimits.SmashSimplexModel",
+        "parent": "SerrePositivity.InfinityCategories.HomotopyLimits.smashToSimplexModel",
+        "change": "type",
+        "before_sha256": "07739eb2fec224ee78997faaf4e9283df0a1439fe8732057a5b86c8677e43dc4",
+        "after_sha256": "b31b0872bc7698014f9c39e4de729076f62d72e0da9ed9806ef8fd436bc7cbf1",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.InfinityCategories.HomotopyLimits.smashToSimplexModel"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.condition",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.condition",
+        "change": "type",
+        "before_sha256": "301a5d944eef6316323fc6cdbbd4b311679f6586b4fe5f02811c33b7f77cff90",
+        "after_sha256": "30be7cdec1cf49f6ea261e11fff188bdb98e7d9e51b58373456bb201838a8fd8",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.condition"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map",
+        "change": "body",
+        "before_sha256": "7c66135674c0557b83c04f014597a38d9dc628f7789e3c73b3e356a04c6a511c",
+        "after_sha256": "a794605d2be823bbb925e1df666fc8a9568b7b8e7c1609a242a178151b190c7f",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map",
+        "change": "type",
+        "before_sha256": "2ea69e01982275a49f1250775d15e55c21cddad65e3249ae90c09d018d2f11b3",
+        "after_sha256": "68c9dec15e247d46aaddcf379e2c343c41501a7b5db9b54d5972ade90b8142a6",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_path",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_path",
+        "change": "type",
+        "before_sha256": "38bdd43bd83c84df5012e9e5d5325e9a00b66cd86a90ab3fb46308153d977c3f",
+        "after_sha256": "8ac74bfa69f7a1c12da1f95792f24943a100ef3d397dbbe86975ef269821dac9",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_path"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_source",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_source",
+        "change": "type",
+        "before_sha256": "8fc531da398f56bdee04b9175bbf52d77c32165baa7bd298f069723a7a25aaac",
+        "after_sha256": "b9c52c4283f1a2d0767673ca6953800deecdbf47d9a76a542ebb14c823426ee0",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_source"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_target",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_target",
+        "change": "type",
+        "before_sha256": "fe9d2510d973f2cead0927c1b07ca89c7217129a72ec83c58c79ed6d50a1f365",
+        "after_sha256": "00c15e971f7098f8549c9e857e491911cb088bd6f8c2bb28591612e2c286f3cd",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.map_target"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart",
+        "change": "body",
+        "before_sha256": "32c0a4b3d51698bea820d103e1623d568deb1fdad5a2d4321e3fcdc36f357b5a",
+        "after_sha256": "2f7fdec35c65b1215776815fc0609e552b54e6c2b2b6ddac1a02b8ba8da2ccc0",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart",
+        "change": "type",
+        "before_sha256": "5ec525e0771488b1f66d562b7609267898e65f4c8fb576d84311b4f14f1480a3",
+        "after_sha256": "6ceb4bfeed91d8f10cc147cd90ae1d5574184bc9336958993cce1d8a43d42a47",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.pathPart"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart",
+        "change": "body",
+        "before_sha256": "9750428b5722503e671af71f6a6986f09a617ef1a843691f8aa6320a66de678f",
+        "after_sha256": "6beb05988d65cc746cd17bf22ae3b99faee6be9cd05e6f07fd4017c2c8dcd064",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart",
+        "module": "SerrePositivity.KST.LocalizingInvariants.MappingPathSequenceComparison",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart",
+        "change": "type",
+        "before_sha256": "94b21f55caa6417669486d8c8fc6109dabaf6996a26a0515eef96f372237d9f3",
+        "after_sha256": "11e056f33f2abcedb75bc79d62bab7ef3b4c6abf899695fe0e3e87c3ece9a21b",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.MappingPathComparison.sourcePart"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_left",
+        "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_left",
+        "change": "type",
+        "before_sha256": "dfe000d7923a1f1af43823024552ccd2c6e29eee41c310ea23cbb8a4c4cb7252",
+        "after_sha256": "0c94a49f96d42aeffdacde9debd03a328a1d445b174bc5d74243333e62e8fb5d",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_left"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_right",
+        "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_right",
+        "change": "type",
+        "before_sha256": "3469b7fc4996e948cd9408b8fc34347528dbaca6380e51eee3ee7f5da218d32c",
+        "after_sha256": "44bf201c858458b3a51f4dbb403a03134cef9179a6fe145eddd305f84fe1019f",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_cancel_comp_right"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_of_any_identity",
+        "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowCompositionCancellation",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_of_any_identity",
+        "change": "type",
+        "before_sha256": "a98f1f6615271b5bde867f4baddfec0c9940a7096dca7be14f2bfffa2177285c",
+        "after_sha256": "8b3a878b12aa4323376659de5040ac076684b0daf8c65544322fff263c6ace5d",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_of_any_identity"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_right_of_any_identity",
+        "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_right_of_any_identity",
+        "change": "type",
+        "before_sha256": "daa49d95182628d0cfef062a378008a465b2ad954f9bd6915058efdd2ec8c704",
+        "after_sha256": "b3d96e55ae8b53776e9ea64dbb11fa304c183f09c3e73dbdaff9d69d08fe2f9f",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_right_of_any_identity"
+      },
+      {
+        "name": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_inv_congr",
+        "module": "SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowInverseControl",
+        "parent": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_inv_congr",
+        "change": "type",
+        "before_sha256": "d1150db8a2eb056f256a9d0f92e6e050427ec50f37c243cc13779490eb35c679",
+        "after_sha256": "7a0ac3dbd175e01702566d0663a06a2324db01ea6619df7a13ddc00deddd90b0",
+        "status": "EXPLAINED",
+        "rule": "IF-W0-3 §10.34 D / §10.35",
+        "reason": "Ordinary #check, #print and axioms exactly agree after whitespace collapse. Every explicit-print difference is precisely the paired reducible quiver path substitution proved by rfl.",
+        "print_evidence": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_inv_congr"
+      }
+    ],
+    "quiver_reduction": {
+      "lemma_file": ".lake/verify/ifw2c-internal/individual/quiver-path.lean",
+      "result": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-internal/individual/quiver-path.lean"
+        ],
+        "exit_code": 0,
+        "errors": [],
+        "seconds": 7.926,
+        "log": "quiver-path.log"
+      },
+      "explicit_substitution": "Only paired ReflQuiver.toQuiver(catToReflQuiver inst) to CategoryStruct.toQuiver(Category.toCategoryStruct inst); each occurrence checked for nesting, and whole explicit text must then match."
+    },
+    "local_instance_diagnostics": {
+      "status": "PASS",
+      "expected": 9,
+      "completed": 9,
+      "results": [
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+          "status": "PASS",
+          "before": 5,
+          "after": 5,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+          "status": "PASS",
+          "before": 3,
+          "after": 3,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+          "status": "PASS",
+          "before": 3,
+          "after": 3,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+          "status": "PASS",
+          "before": 4,
+          "after": 4,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+          "status": "PASS",
+          "before": 6,
+          "after": 6,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+          "status": "PASS",
+          "before": 4,
+          "after": 4,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+          "status": "PASS",
+          "before": 6,
+          "after": 6,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningDiagramBaseChangeComponent",
+          "status": "PASS",
+          "before": 3,
+          "after": 3,
+          "changes": []
+        },
+        {
+          "module": "SerrePositivity.KST.Fibration.StraighteningRepresentationRestriction",
+          "status": "PASS",
+          "before": 6,
+          "after": 6,
+          "changes": []
+        }
+      ]
+    },
+    "raw_comparisons": [
+      ".lake/verify/ifw2c-internal/public-comparison.json",
+      ".lake/verify/ifw2c-internal/with-private-comparison.json"
+    ]
+  },
+  "static": {
+    "status": "PASS",
+    "direct_violations": [],
+    "tiers": {
+      "W1": {
+        "forbidden_module_count": 0,
+        "affected_core_module_count": 0
+      },
+      "W2a": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      },
+      "W2b": {
+        "forbidden_module_count": 74,
+        "affected_core_module_count": 1730
+      }
+    },
+    "HA": [
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryIndex",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.FiniteTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.NonsingularPresentation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.PresentationLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Adjoin",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Boundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagram",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryDiagramIso",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryLifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.BoundaryReconstruction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedBoundaryClass",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ClosedObjectwise",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.CofibrantBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Degree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DegreeFactorizationStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramGluing",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.DiagramTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.EmptyBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionBoundary",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionData",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionDegree",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ExtensionTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationArrowComparison",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationClasses",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationRestrictionArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationSequence",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FactorizationTower",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.FunctorData",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Index",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOpposite",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexOppositeEquivalence",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.IndexReedy",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Induced",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftBelow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftSuccessor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Lifting",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LiftingStep",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.LowerTransformationNaturality",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.MatchingRestriction",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedLatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.NestedMatching",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Objects",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.OneSided",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeArrow",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.RelativeExtension",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Simplex",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexFinite",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.Subcategory",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerOfFunctor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.TowerTransformation",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.WeakFactorizationSystem",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SubcomplexTensor",
+      "SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.TensorKanCriterion"
+    ],
+    "ModelBridge": [
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies",
+      "SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy"
+    ],
+    "ratchet_increases": [
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2a/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointAction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Straightening.SmallUnstraighteningPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedClassificationReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.PointedCosliceReconstruction",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportRepresentationPointHom",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessDiagramComponent",
+        "before": 0,
+        "after": 74
+      },
+      {
+        "metric": "closure/W2b/SerrePositivity.InfinityCategories.F1.Transport.TransportWitnessPointEvaluation",
+        "before": 0,
+        "after": 74
+      }
+    ],
+    "accepted_ratchet_metric_count": 14,
+    "layer_config_snapshot_comparator_baselines_changed": false
+  },
+  "decisions_and_corrections": {
+    "anonymous_instance_names_restored": [
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_2",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0017.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldCocartesianPostBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianPostBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_5",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "1709239076688425503",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_5",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldGlobalCoefficientPoint",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldGlobalCoefficientPoint",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_6",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_4",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "1709239076688425503",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldStraighteningComparison",
+        "module": "SerrePositivity.InfinityCategories.Stable.Straightening.ScaffoldStraighteningComparison",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap_4",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSetTransportSimplexFirstVertexMap",
+        "before_type_hash": "4525452380999533207",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_1",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0018.json"
+      },
+      {
+        "source": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+        "module": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+        "before_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet_3",
+        "observed_after_name": "SerrePositivity.KST.Fibration.instLeftFibrationSndSSet",
+        "before_type_hash": "5463880817232710886",
+        "before_body_hash": null,
+        "before_snapshot": ".lake/verify/ifw2c-internal/before/shard-0019.json"
+      }
+    ],
+    "private_reference_restoration": [
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeCoefficientNaturality",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.pointTriangle"
+            ]
+          },
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeCoefficientIso_heq_diagramValue",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.endpointSpan_heq"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeLeftPoint",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeLeftChart_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.point_normalize_both_inv"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldBaseChangeRightChart_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.point_normalize_inv"
+            ]
+          },
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldGlobalBaseChange_pullback_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.appendPointTriangle"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldCocartesianBaseChange",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldCocartesianBaseChange",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldCocartesianBaseChangeClassificationIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.appendPoint",
+              "SerrePositivity.KST.Fibration.recoverPoint"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldRestrictionChart",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldRestrictionChart",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldStraighteningRestrictionChart_factor",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.normalizeValueComposition"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.ScaffoldVertexBaseChange",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldVertexBaseChange",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.scaffoldVertexBaseChangeIso_pointHom",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.pointNormalize"
+            ]
+          }
+        ]
+      },
+      {
+        "module": "SerrePositivity.KST.Fibration.StraighteningUnderRealizationChart",
+        "destination": "SerrePositivity.InfinityCategories.Stable.Straightening.StraighteningUnderRealizationChart",
+        "edges": [
+          {
+            "kept": "SerrePositivity.KST.Fibration.straighteningUnderRealizationChart_factor",
+            "private_dependencies": [
+              "SerrePositivity.KST.Fibration.mapNormalizeCompositionWithEq"
+            ]
+          }
+        ]
+      }
+    ],
+    "local_instance_audit_correction": "Parser instance declarations have kind decl. Earlier zero count was corrected to 9 diagnostic files; all 9 now build and compare exactly by v3b.",
+    "supplement_recurrence": "Provider missed in round 7; §16 stop df60b4d55, report correction 0a340e47f, explicit user resumption, approved one import tested before commit af0b57c8a. Same module passed in round 8.",
+    "comparison_runner_correction": "Avoided variable shadowing of additional before shards by boolean private flag. Snapshots were reused; fingerprint algorithm unchanged.",
+    "scratch_cleanup": {
+      "status": "PASS",
+      "instruction": "IF-W0-3 §10.34 — remove completed scratch restoration copy",
+      "removed": "/private/tmp/ifw2c-before-11eacaa39",
+      "base": "11eacaa39b5fc79af6185987d1596849122496fb",
+      "shared_packages_preserved": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/packages",
+      "utc": "2026-11-04T07:01:50.411104+00:00",
+      "evidence_preserved_in": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-internal"
+    }
+  },
+  "next": {
+    "main_merge": "before downstream; user milestone 08a2997fd including HA/DerivedCompletion 135→44",
+    "HA_import_conflicts": "preserve both imports as instructed",
+    "downstream": "11152 estimate; wait for user signal after stop2",
+    "verify": "wait for user signal; VERIFY_JOBS=6 VERIFY_MEMORY_GB=40",
+    "stage_G_input": "scripts/refactor/targets/w2c-stage-g-input.json",
+    "M16": "HA 66 + ModelBridge 8 approved residual, excluded from W2c completion"
+  },
+  "evidence_root": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-ifw0-3/.lake/verify/ifw2c-internal"
+}
