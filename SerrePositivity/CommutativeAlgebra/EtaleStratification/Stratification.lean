@@ -11,6 +11,8 @@ public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
 public import Mathlib.RingTheory.Localization.Away.Basic
 public import Mathlib.RingTheory.Adjoin.FG
 public import Mathlib.RingTheory.Noetherian.Basic
+public import Mathlib.RingTheory.Localization.Submodule
+public import Mathlib.Algebra.CharP.IntermediateField
 
 /-!
 # 有限表示有限射の有限エタール層別（BS 著者版 Lemma 10.12）
@@ -44,7 +46,8 @@ open scoped TensorProduct
 /-- 有限分離体拡大はエタール。一般点での分離部分に用いる。 -/
 theorem etale_of_finite_separable (K L : Type u) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [Algebra.IsSeparable K L] : Algebra.Etale K L := by
-  sorry -- Algebra.FormallyEtale.of_isSeparable と有限体拡大の有限表示性
+  exact ⟨Algebra.FormallyEtale.of_isSeparable K L,
+    Algebra.FinitePresentation.of_finiteType.mpr inferInstance⟩
 
 /-- ℤ_(p) の表示と、p 以外の素数が可逆な環への構造射。 -/
 abbrev strataPrimeIdeal (p : ℕ) := Ideal.span {(p : ℤ)}
@@ -78,6 +81,20 @@ def strataBaseMap (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
         rw [he, Int.cast_neg, Int.cast_natCast]
         exact hu.neg)
 
+/-- 指定した有限個の係数を含む有限生成 noetherian 部分代数。
+近似に必要な関係式・モニック関係の係数を加えた有限集合にも適用する。 -/
+theorem exists_fg_noetherian_subalgebra_containing (p : ℕ) [Fact p.Prime]
+    (R : Type u) [CommRing R]
+    (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) (coeffs : Finset R) :
+    letI := (strataBaseMap p R hZp).toAlgebra
+    ∃ R₀ : Subalgebra (StrataBase p) R,
+      (∀ c ∈ coeffs, c ∈ R₀) ∧ R₀.FG ∧ IsNoetherianRing R₀ := by
+  let := (strataBaseMap p R hZp).toAlgebra
+  let R₀ := Algebra.adjoin (StrataBase p) (coeffs : Set R)
+  have hfg : R₀.FG := Subalgebra.fg_adjoin_finset coeffs
+  refine ⟨R₀, fun c hc ↦ Algebra.subset_adjoin hc, hfg, ?_⟩
+  exact isNoetherianRing_of_fg hfg
+
 /-- 概要：noetherian 近似：有限表示有限 R → S は、有限生成 Z_(p) 部分代数 R_0 ⊂ R と有限表示有限 R_0 → S_0 の底変換。
 方針：表示 S = R[x]/(h_1..h_m)（モニック関係を含む）の係数で R_0 を生成。
 規約：—
@@ -104,6 +121,53 @@ abbrev GenericProduct (R : Type u) [CommRing R] := ∀ P : GenericPoint R, Gener
 def genericProductMap (R : Type u) [CommRing R] : R →+* GenericProduct R :=
   RingHom.pi (fun P => algebraMap R (GenericField P))
 
+/-- Noetherian 環の極小点は有限。剰余体の積を有限積として扱うための補題。 -/
+theorem finite_genericPoint (R : Type u) [CommRing R] [IsNoetherianRing R] :
+    Finite (GenericPoint R) := by
+  let : Finite {I : Ideal R // I ∈ minimalPrimes R} :=
+    (minimalPrimes.finite_of_isNoetherianRing R).to_subtype
+  apply Finite.of_injective
+    (fun P : GenericPoint R ↦ (⟨P.val.asIdeal, P.property⟩ :
+      {I : Ideal R // I ∈ minimalPrimes R}))
+  intro P Q h
+  apply Subtype.ext
+  apply PrimeSpectrum.ext
+  exact congrArg Subtype.val h
+
+/-- Z_(p) 環から射を持つ体で p が可逆なら、全素数が非零なので標数 0。 -/
+theorem strataField_charZero_of_isUnit {R K : Type u} [CommRing R] [Field K]
+    (p : ℕ) (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R))
+    (f : R →+* K) (hp : IsUnit (p : K)) : CharZero K := by
+  apply CharZero.charZero_iff_forall_prime_ne_zero.mpr
+  intro q hq
+  by_cases he : q = p
+  · subst q
+    exact hp.ne_zero
+  · have hu := (hZp q hq he).map f
+    rw [map_natCast] at hu
+    exact hu.ne_zero
+
+/-- 一般点の剰余体について、p 可逆な因子は標数 0。 -/
+theorem genericField_charZero_of_isUnit (R : Type u) [CommRing R]
+    (p : ℕ) (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R))
+    (P : GenericPoint R) (hp : IsUnit (p : GenericField P)) : CharZero (GenericField P) :=
+  strataField_charZero_of_isUnit p hZp (algebraMap R (GenericField P)) hp
+
+/-- 有限体拡大の分離部分は有限エタール、残りは純非分離。
+p 可逆から標数 0 が従う場合には、後半の射は全単射になる。 -/
+theorem separableClosure_strata_factorization (K L : Type u) [Field K] [Field L]
+    [Algebra K L] [FiniteDimensional K L] (p : ℕ)
+    (hchar : IsUnit (p : K) → CharZero K) :
+    let M := separableClosure K L
+    Module.Finite K M ∧ Algebra.Etale K M ∧ IsPurelyInseparable M L ∧
+      (IsUnit (p : K) → Function.Bijective (algebraMap M L)) := by
+  let M := separableClosure K L
+  refine ⟨inferInstance, etale_of_finite_separable K M, inferInstance, ?_⟩
+  intro hp
+  let : CharZero K := hchar hp
+  let : CharZero M := inferInstance
+  exact IsPurelyInseparable.bijective_algebraMap_of_isSeparable M L
+
 /-- 概要：noetherian 被約 R_0 の全商環 K = ∏ κ(𝔭_i)（極小素イデアル）上で、S_0 ⊗ K の被約化は有限体拡大の有限積 ∏ L_i、各 κ(𝔭_i) → L_i は
 分離閉包 M_i を経て κ → M_i 有限エタール、M_i → L_i 純非分離。
 方針：Mathlib `minimalPrimes`（有限）、有限被約 K 代数＝体の積、`separableClosure`。 -/
@@ -128,8 +192,31 @@ theorem generic_structure (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
               FiniteDimensional k (L j) ∧ Module.Finite k M ∧ Algebra.Etale k M ∧
                 IsPurelyInseparable M (L j) ∧
                 (IsUnit (p : k) → Function.Bijective (algebraMap M (L j))) := by
-  sorry -- 極小点は有限。K 上の有限被約代数を体の積に分け、各有限拡大で相対分離閉包を取る。
-        -- p 可逆の剰余体は hZp で全素数が単元なので標数 0
+  let : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+  let : Module R (GenericProduct R) := Algebra.toModule
+  have hdecomp : IsLocalization (nonZeroDivisors R) (GenericProduct R) ∧
+      ∃ (m : ℕ) (v : Fin m → GenericPoint R) (L : Fin m → Type u) (hL : ∀ j, Field (L j)),
+        letI : ∀ j, Field (L j) := hL
+        ∃ a : ∀ j, Algebra (GenericField (v j)) (L j),
+          letI : ∀ j, Algebra (GenericField (v j)) (L j) := a
+          letI : Algebra (GenericProduct R) (∀ j, L j) := (RingHom.pi (fun j =>
+            (algebraMap (GenericField (v j)) (L j)).comp
+              (Pi.evalRingHom GenericField (v j)))).toAlgebra
+          Nonempty (((GenericProduct R ⊗[R] S) ⧸ nilradical (GenericProduct R ⊗[R] S))
+            ≃ₐ[GenericProduct R] (∀ j, L j)) ∧
+            ∀ j, FiniteDimensional (GenericField (v j)) (L j) := by
+    sorry -- 残りは全商環と極小点の剰余体積の同定、および有限被約代数の体積分解。
+          -- 各体因子がどの基底の極小点に属するかと、その有限次元性を同時に構成する。
+  obtain ⟨hloc, m, v, L, hL, a, he, hfinite⟩ := hdecomp
+  let : ∀ j, Field (L j) := hL
+  let : ∀ j, Algebra (GenericField (v j)) (L j) := a
+  refine ⟨finite_genericPoint R, hloc,
+    fun P hp ↦ genericField_charZero_of_isUnit R p hZp P hp,
+    m, v, L, hL, a, he, ?_⟩
+  intro j
+  let : FiniteDimensional (GenericField (v j)) (L j) := hfinite j
+  exact ⟨hfinite j, separableClosure_strata_factorization
+    (GenericField (v j)) (L j) p (genericField_charZero_of_isUnit R p hZp (v j))⟩
 
 /-- V(I) の被約構造上で g を反転する。R/√I は (R/I)_red の標準表示。 -/
 abbrev StratumRing {R : Type u} [CommRing R] (I : Ideal R) (g : R) :=
