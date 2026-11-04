@@ -24,6 +24,8 @@ public import Mathlib.RingTheory.Localization.Integral
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -69,8 +71,10 @@ theorem exists_away_nil_diagonal_of_localized_fieldMaps
   apply exists_away_nil_kernel_of_localized_nil_kernel M (F.restrictScalars R)
     (f.restrictScalars R) ((Algebra.TensorProduct.lmul' A (S := B)).restrictScalars R)
     ((Algebra.TensorProduct.lmul' A (S := C)).restrictScalars R)
-  · ext x y
-    simp [F, f]
+  · ext z
+    induction z using TensorProduct.inductionOn with
+    | tmul x y => simp [F, f]
+    | add x y hx hy => simpa only [map_add, hx, hy]
   · exact IsNoetherian.noetherian _
   · exact nil_diagonal_of_injective_fieldMaps hf
 
@@ -92,6 +96,8 @@ theorem injective_fieldMaps_away_of_nil_diagonal
   have he₀ : u₀.comp (algebraMap A B) = v₀.comp (algebraMap A B) := by
     ext x
     have h := RingHom.congr_fun he (algebraMap A (Localization.Away g) x)
+    change u (algebraMap B B' (algebraMap A B x)) =
+      v (algebraMap B B' (algebraMap A B x))
     simpa only [RingHom.comp_apply, Localization.awayMap, IsLocalization.Away.map,
       IsLocalization.map_eq] using h
   let : Algebra A K := (u₀.comp (algebraMap A B)).toAlgebra
@@ -110,8 +116,13 @@ theorem injective_fieldMaps_away_of_nil_diagonal
     simp [RingHom.mem_ker]
   have hnil := mem_nilradical.mp (hn (Ideal.mem_map_of_mem (algebraMap D D') hk))
   have hz := (hnil.map t').eq_zero
+  change t' (algebraMap D D' (x ⊗ₜ[A] (1 : B) - (1 : B) ⊗ₜ[A] x)) = 0 at hz
+  dsimp only [t'] at hz
+  rw [IsLocalization.Away.lift_eq] at hz
   apply sub_eq_zero.mp
-  simpa [t', t, φ, ψ, u₀, v₀, IsLocalization.Away.lift_eq] using hz
+  dsimp only [t, D] at hz
+  rw [map_sub, Algebra.TensorProduct.lift_tmul, Algebra.TensorProduct.lift_tmul] at hz
+  simpa [φ, ψ, u₀, v₀] using hz
 
 /-- 整な単射の主局所化は、対角核が nil なら普遍同相。 -/
 theorem isUniversalHomeomorphism_away_of_nil_diagonal
@@ -121,8 +132,21 @@ theorem isUniversalHomeomorphism_away_of_nil_diagonal
       (algebraMap (B ⊗[A] B) (Localization.Away (algebraMap A (B ⊗[A] B) g))) ≤
         nilradical (Localization.Away (algebraMap A (B ⊗[A] B) g))) :
     IsUniversalHomeomorphism (Localization.awayMap (algebraMap A B) g) := by
-  have hint : (Localization.awayMap (algebraMap A B) g).IsIntegral :=
-    IsLocalization.isIntegral_localization
+  have hint : (Localization.awayMap (algebraMap A B) g).IsIntegral := by
+    let B' := Localization.Away (algebraMap A B g)
+    let : IsLocalization (Algebra.algebraMapSubmonoid B (Submonoid.powers g)) B' :=
+      inferInstance
+    have h := isIntegral_localization (R := A) (S := B) (M := Submonoid.powers g)
+      (Rₘ := Localization.Away g) (Sₘ := B')
+    have he : IsLocalization.map B' (algebraMap A B)
+        (show Submonoid.powers g ≤
+          (Algebra.algebraMapSubmonoid B (Submonoid.powers g)).comap (algebraMap A B)
+          from (Submonoid.powers g).le_comap_map) =
+        Localization.awayMap (algebraMap A B) g := by
+      apply IsLocalization.ringHom_ext (Submonoid.powers g)
+      ext x
+      simp [B', Localization.awayMap, IsLocalization.Away.map]
+    rwa [he] at h
   have hinj : Function.Injective (Localization.awayMap (algebraMap A B) g) :=
     IsLocalization.map_injective_of_injective _ _ _ hi
   exact isUniversalHomeomorphism_of_injective_fieldMaps _ hint (hint.comap_surjective hinj)
@@ -141,11 +165,22 @@ theorem exists_away_isUniversalHomeomorphism_of_localized_fieldMaps
     ∃ g : M, IsUniversalHomeomorphism
       (Localization.awayMap (algebraMap A B) (algebraMap R A g)) := by
   obtain ⟨g, hg⟩ := exists_away_nil_diagonal_of_localized_fieldMaps R A B C M hf
-  rw [IsLocalization.ker_map _ _ (Submonoid.map_powers _ _)] at hg
+  have hk := IsLocalization.ker_map
+    (S := Localization.Away (algebraMap R (B ⊗[A] B) g))
+    (M := Submonoid.powers (algebraMap R (B ⊗[A] B) g))
+    (T := Submonoid.powers ((Algebra.TensorProduct.lmul' A (S := B))
+      (algebraMap R (B ⊗[A] B) g)))
+    (Localization.Away ((Algebra.TensorProduct.lmul' A (S := B))
+      (algebraMap R (B ⊗[A] B) g)))
+    (Algebra.TensorProduct.lmul' A (S := B)).toRingHom
+    (Submonoid.map_powers _ _)
+  change RingHom.ker (Localization.awayMap _ _) = _ at hk
+  rw [hk] at hg
   refine ⟨g, isUniversalHomeomorphism_away_of_nil_diagonal hi (algebraMap R A g) ?_⟩
   have he : algebraMap A (B ⊗[A] B) (algebraMap R A g) =
       algebraMap R (B ⊗[A] B) g :=
     (IsScalarTower.algebraMap_apply R A (B ⊗[A] B) g).symm
-  simpa only [he] using hg
+  rw [he]
+  exact hg
 
 end SerrePositivity.CommutativeAlgebra

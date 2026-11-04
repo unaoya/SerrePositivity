@@ -26,6 +26,8 @@ p 可逆な開集合への細分と、選んだ主開集合をさらに小さく
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- 被約基底上の分解は、主開集合への制限で保たれる。 -/
@@ -47,8 +49,10 @@ theorem hasEtaleFactorization_awayMap {A B : Type u} [CommRing A] [CommRing B]
   let B' := Localization.Away (f g)
   let a' : A' →+* T' := Localization.awayMap a g
   let : Algebra A' T' := a'.toAlgebra
-  let : IsScalarTower A A' T' := IsScalarTower.of_algebraMap_eq fun x ↦
-    (IsLocalization.map_eq _ _ _ x).symm
+  let : IsScalarTower A A' T' := IsScalarTower.of_algebraMap_eq fun x ↦ by
+    change algebraMap T T' (a x) = a' (algebraMap A A' x)
+    dsimp only [A', T']
+    simp only [a', Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
   let : Module.Finite A' T' := Module.Finite.of_isLocalizedModule
     (Submonoid.powers g) (IsScalarTower.toAlgHom A T T').toLinearMap
   let : Algebra.IsPushout A T A' T' :=
@@ -63,9 +67,13 @@ theorem hasEtaleFactorization_awayMap {A B : Type u} [CommRing A] [CommRing B]
   refine ⟨CommRingCat.of T', a', b', ?_, inferInstance, het', ?_, ?_⟩
   · apply IsLocalization.ringHom_ext (Submonoid.powers g)
     ext x
-    simp only [RingHom.comp_apply, a', b', Localization.awayMap, IsLocalization.Away.map,
-      IsLocalization.map_eq, AlgEquiv.commutes]
-    rw [RingHom.congr_fun hab x]
+    change e (Localization.awayMap b (a g)
+      (Localization.awayMap a g (algebraMap A A' x))) =
+        Localization.awayMap f g (algebraMap A A' x)
+    dsimp only [A', T', B']
+    simp only [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
+    rw [e.commutes]
+    exact congrArg (algebraMap B B') (RingHom.congr_fun hab x)
   · exact isUniversalHomeomorphism_comp _ _ (isUniversalHomeomorphism_awayMap b (a g) hu)
       (isUniversalHomeomorphism_of_bijective e.toRingHom e.bijective)
   · change Function.Bijective (invertPrimeMap p

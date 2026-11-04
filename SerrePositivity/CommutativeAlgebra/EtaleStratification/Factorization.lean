@@ -120,6 +120,9 @@ theorem invertPrimeMap_algebraMap {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) (f : A →+* B) (x : A) :
     invertPrimeMap p f (algebraMap A (Localization.Away (p : A)) x) =
       algebraMap B (Localization.Away (p : B)) (f x) := by
+  let : IsLocalization.Away (f (p : A)) (Localization.Away (p : B)) := by
+    rw [map_natCast]
+    infer_instance
   unfold invertPrimeMap IsLocalization.Away.map
   exact IsLocalization.map_eq _ x
 

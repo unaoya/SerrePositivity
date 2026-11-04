@@ -25,6 +25,8 @@ public import Mathlib.RingTheory.Localization.Pi
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- 有限純非分離体拡大の有限積は普遍同相。 -/
@@ -44,8 +46,11 @@ theorem isUniversalHomeomorphism_pi_of_isPurelyInseparable
   let : ∀ i, Module.Finite (∀ j, M j) (L i) := fun i ↦ Module.Finite.trans (M i) (L i)
   let F := RingHom.pi (fun i ↦ (algebraMap (M i) (L i)).comp (Pi.evalRingHom M i))
   let : Algebra (∀ i, M i) (∀ i, L i) := F.toAlgebra
-  let : Module.Finite (∀ i, M i) (∀ i, L i) := inferInstance
-  have hFint : F.IsIntegral := Algebra.IsIntegral.isIntegral
+  let : Module (∀ i, M i) (∀ i, L i) := Pi.module ι L (∀ i, M i)
+  let : Module.Finite (∀ i, M i) (∀ i, L i) := Module.Finite.pi
+  have hFint : F.IsIntegral := by
+    change (algebraMap (∀ i, M i) (∀ i, L i)).IsIntegral
+    exact Algebra.IsIntegral.isIntegral
   have hFinj : Function.Injective F := by
     intro x y h
     funext i
@@ -58,7 +63,7 @@ theorem isUniversalHomeomorphism_pi_of_isPurelyInseparable
     by_contra hij
     have he := RingHom.congr_fun huv (Pi.single i (1 : M i))
     rw [← ha, ← hb] at he
-    simpa [F, hij, hij.symm] using he
+    simpa [F, hij, Ne.symm hij] using he
   subst j
   have hab : a.comp (algebraMap (M i) (L i)) = b.comp (algebraMap (M i) (L i)) := by
     ext x
@@ -118,11 +123,16 @@ theorem invertPrimeMap_pi_bijective {ι : Type*} [Finite ι]
   have he : eL.toRingHom.comp (invertPrimeMap p F) = F'.comp eM.toRingHom := by
     apply IsLocalization.ringHom_ext (Submonoid.powers (p : ∀ i, M i))
     ext x i
-    simp [F, F', AlgEquiv.commutes]
+    change eL (invertPrimeMap p F (algebraMap (∀ i, M i) _ x)) i =
+      invertPrimeMap p (f i) (eM (algebraMap (∀ i, M i) _ x) i)
+    rw [invertPrimeMap_algebraMap, eL.commutes, eM.commutes]
+    change algebraMap (L i) (L' i) (f i (x i)) =
+      invertPrimeMap p (f i) (algebraMap (M i) (M' i) (x i))
+    exact (invertPrimeMap_algebraMap p (f i) (x i)).symm
   have hbij : Function.Bijective (eL.toRingHom.comp (invertPrimeMap p F)) := by
     rw [he]
     exact hF'.comp eM.bijective
-  refine ⟨hbij.injective.of_comp, ?_⟩
+  refine ⟨fun x y h ↦ hbij.injective (congrArg eL h), ?_⟩
   intro y
   obtain ⟨x, hx⟩ := hbij.surjective (eL y)
   exact ⟨x, eL.injective hx⟩

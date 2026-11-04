@@ -46,9 +46,15 @@ theorem exists_away_nil_kernel_of_localized_nil_kernel
       change b (f x) = 0
       rw [show f x = 0 from hx, map_zero])))
   refine ⟨g, ?_⟩
-  simp only [Localization.awayMap, IsLocalization.Away.map]
-  rw [IsLocalization.ker_map (Localization.Away (f (algebraMap R A g)))
-    f.toRingHom (Submonoid.map_powers f.toRingHom (algebraMap R A g))]
+  have he : RingHom.ker (Localization.awayMap f.toRingHom (algebraMap R A g)) =
+      (RingHom.ker f.toRingHom).map
+        (algebraMap A (Localization.Away (algebraMap R A g))) :=
+    IsLocalization.ker_map (S := Localization.Away (algebraMap R A g))
+      (M := Submonoid.powers (algebraMap R A g))
+      (T := Submonoid.powers (f (algebraMap R A g)))
+      (Localization.Away (f (algebraMap R A g))) f.toRingHom
+      (Submonoid.map_powers f.toRingHom (algebraMap R A g))
+  rw [he]
   exact hg
 
 end SerrePositivity.CommutativeAlgebra

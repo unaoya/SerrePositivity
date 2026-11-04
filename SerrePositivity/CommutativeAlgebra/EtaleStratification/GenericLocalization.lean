@@ -43,18 +43,24 @@ theorem isLocalization_reduced_localization
   have h := IsLocalization.of_surjective M B (RingHom.id A) Function.surjective_id
     (Ideal.Quotient.mk (nilradical B)) Ideal.Quotient.mk_surjective
     (by ext; rfl) (by rw [Ideal.mk_ker, hn]; exact bot_le)
-  simpa only [RingHom.toMonoidHom_id, Submonoid.map_id] using h
+  have hm : M.map (RingHom.id A) = M := by
+    ext x
+    simp
+  rw [hm] at h
+  exact h
 
 /-- 被約な有限代数の一般ファイバーへの射は、基底の非零因子による加群の局所化。 -/
 theorem isLocalizedModule_genericReducedFiber
     (R S : Type u) [CommRing R] [CommRing S] [Algebra R S]
     [IsNoetherianRing R] [IsReduced R] [IsReduced S] :
     letI : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+    letI : Module R (GenericProduct R) := Algebra.toModule
     let A := GenericProduct R ⊗[R] S
     letI : Algebra S A := Algebra.TensorProduct.rightAlgebra
     let B := A ⧸ nilradical A
     IsLocalizedModule (nonZeroDivisors R) (IsScalarTower.toAlgHom R S B).toLinearMap := by
   let : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+  let : Module R (GenericProduct R) := Algebra.toModule
   let : IsLocalization (nonZeroDivisors R) (GenericProduct R) :=
     isLocalization_genericProduct R
   let A := GenericProduct R ⊗[R] S

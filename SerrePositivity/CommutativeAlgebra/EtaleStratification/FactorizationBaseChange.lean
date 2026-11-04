@@ -25,6 +25,8 @@ Noetherian 近似上で選んだ層別を、元の基底へ移す。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -40,13 +42,13 @@ theorem power_surjective_tensorMap
   suffices ∃ x : A ⊗[R] D, ∃ n : ℕ,
       Algebra.TensorProduct.map f (AlgHom.id R D) x = (p : R) ^ n • y by
     simpa only [Algebra.smul_def, map_pow, map_natCast] using this
-  induction y using TensorProduct.induction_on with
-  | zero => exact ⟨0, 0, by simp⟩
+  induction y using TensorProduct.inductionOn with
   | tmul b d =>
     obtain ⟨a, n, ha⟩ := hf b
     refine ⟨a ⊗ₜ[R] d, n, ?_⟩
-    simp only [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, ha,
-      TensorProduct.smul_tmul', Algebra.smul_def, map_pow, map_natCast]
+    rw [Algebra.TensorProduct.map_tmul, AlgHom.id_apply, ha]
+    simpa only [Algebra.smul_def, map_pow, map_natCast] using
+      (TensorProduct.smul_tmul' (R := R) ((p : R) ^ n) b d).symm
   | add x y hx hy =>
     obtain ⟨a, n, ha⟩ := hx
     obtain ⟨b, m, hb⟩ := hy
@@ -82,7 +84,12 @@ theorem hasEtaleFactorization_reduced_baseChange
       Algebra.TensorProduct.map_tmul, AlgHom.id_apply, map_one]
     rfl
   let : Algebra.IsPushout T B T' C :=
-    Algebra.IsPushout.tensorProduct_tensorProduct A D T B (by ext; simp [F])
+    Algebra.IsPushout.tensorProduct_tensorProduct A D T B (by
+      ext d
+      change F (1 ⊗ₜ[A] d) = 1 ⊗ₜ[A] d
+      dsimp only [F, T', C]
+      rw [Algebra.TensorProduct.map_tmul]
+      simp)
   have hFU : IsUniversalHomeomorphism F.toRingHom :=
     isUniversalHomeomorphism_of_isPushout b (algebraMap T T') (algebraMap B C) F.toRingHom
       (CommRingCat.isPushout_of_isPushout T B T' C) hu
@@ -96,7 +103,7 @@ theorem hasEtaleFactorization_reduced_baseChange
   let q : C →+* C' := Ideal.Quotient.mk (nilradical C)
   let b' : T' →+* C' := q.comp F.toRingHom
   have hqU : IsUniversalHomeomorphism q :=
-    isUniversalHomeomorphism_of_nil_kernel q Ideal.Quotient.mk_surjective (by simp [q])
+    isUniversalHomeomorphism_of_nil_kernel q Ideal.Quotient.mk_surjective (by rw [show q = Ideal.Quotient.mk (nilradical C) from rfl, Ideal.mk_ker])
   have hbU : IsUniversalHomeomorphism b' := isUniversalHomeomorphism_comp _ _ hFU hqU
   have hbI : Function.Injective b' := by
     rw [RingHom.injective_iff_ker_eq_bot]
@@ -106,7 +113,10 @@ theorem hasEtaleFactorization_reduced_baseChange
   refine ⟨CommRingCat.of T', algebraMap D T', b', ?_, inferInstance, inferInstance, hbU,
     invertPrimeMap_injective p b' hbI, ?_⟩
   · ext d
-    simp [b', F, T', C, q]
+    change q (F (1 ⊗ₜ[A] d)) = q (1 ⊗ₜ[A] d)
+    dsimp only [F, T', C]
+    rw [Algebra.TensorProduct.map_tmul]
+    simp
   · apply (invertPrimeMap_surjective_iff p b').mpr
     intro z
     obtain ⟨y, rfl⟩ := Ideal.Quotient.mk_surjective z

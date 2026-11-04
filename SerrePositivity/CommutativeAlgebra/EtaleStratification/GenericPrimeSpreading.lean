@@ -24,6 +24,8 @@ Lemma 10.12 の p 反転後の同型という結論を延長する。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 /-- 加群として局所化した代数射が全射なら、対応する環の主局所化の射も全射。 -/
@@ -46,7 +48,10 @@ theorem awayMap_surjective_of_localizedModuleMap_surjective
     apply IsLocalizedModule.linearMap_ext S a b
     rw [IsLocalizedModule.map_comp]
     ext x
-    exact IsLocalization.map_eq _ _ _ x
+    change Localization.awayMap f.toRingHom (algebraMap R A g)
+      (algebraMap A A' x) = algebraMap B B' (f x)
+    dsimp only [A', B']
+    simp only [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
   change Function.Surjective F
   intro y
   obtain ⟨x, hx⟩ := hf ((IsLocalizedModule.iso S b).symm y)
@@ -70,13 +75,16 @@ theorem exists_away_mul_surjective
     ∃ g : S, Function.Surjective
       (Localization.awayMap f.toRingHom (algebraMap R A g * p)) := by
   have hpower : ∀ y : B', ∃ x : A', ∃ n : ℕ, f'.toLinearMap x = (p : R) ^ n • y := by
+    change ∀ y : B', ∃ x : A', ∃ n : ℕ, f' x = (p : R) ^ n • y
     simpa only [Algebra.smul_def, map_pow, map_natCast] using hp
   obtain ⟨g, hg⟩ := exists_away_mul_surjective_of_localized_power_surjective S (p : R)
     a.toLinearMap b.toLinearMap f.toLinearMap f'.toLinearMap
     (congrArg AlgHom.toLinearMap hcomm) hpower
   refine ⟨g, ?_⟩
   have h := awayMap_surjective_of_localizedModuleMap_surjective f ((g : R) * p) hg
-  simpa only [map_mul, map_natCast] using h
+  have he : algebraMap R A ((g : R) * p) = algebraMap R A g * p := by simp
+  rw [he] at h
+  exact h
 
 /-- 一般点で p 冪倍が像に入る有限代数の単射は、一つの主開集合で p 反転後に同型。 -/
 theorem exists_away_invertPrimeMap_bijective

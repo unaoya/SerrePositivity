@@ -22,9 +22,11 @@ Noetherian 帰納の商環上の分解を、元の環の層へ戻す。
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
-private theorem ker_reducedQuotientMap {R : Type u} [CommRing R] (I : Ideal R) :
+theorem ker_reducedQuotientMap {R : Type u} [CommRing R] (I : Ideal R) :
     RingHom.ker ((Ideal.Quotient.mk (nilradical (R ⧸ I))).comp (Ideal.Quotient.mk I)) =
       I.radical := by
   ext x
@@ -34,7 +36,7 @@ private theorem ker_reducedQuotientMap {R : Type u} [CommRing R] (I : Ideal R) :
 
 /-- 商環の被約化と根基による商の標準同型。 -/
 def reducedQuotientEquiv {R : Type u} [CommRing R] (I : Ideal R) :
-    R ⧸ I.radical ≃+* (R ⧸ I) ⧸ nilradical (R ⧸ I) :=
+    R ⧸ I.radical ≃+* (R ⧸ I) ⧸ (⊥ : Ideal (R ⧸ I)).radical :=
   (Ideal.quotEquivOfEq (ker_reducedQuotientMap I).symm).trans
     (((Ideal.Quotient.mk (nilradical (R ⧸ I))).comp (Ideal.Quotient.mk I)).quotientKerEquivOfSurjective
       ((Ideal.Quotient.mk_surjective).comp Ideal.Quotient.mk_surjective))
@@ -44,14 +46,18 @@ theorem reducedQuotientEquiv_mk {R : Type u} [CommRing R] (I : Ideal R) (x : R) 
     reducedQuotientEquiv I (Ideal.Quotient.mk I.radical x) =
       Ideal.Quotient.mk (nilradical (R ⧸ I)) (Ideal.Quotient.mk I x) := by
   simp [reducedQuotientEquiv]
+  rfl
 
 /-- 商環の初層は、元の環で I の上に取った層と標準的に同型。 -/
 def stratumQuotientEquiv {R : Type u} [CommRing R] (I : Ideal R) (g : R) :
     StratumRing I g ≃+* StratumRing (⊥ : Ideal (R ⧸ I)) (Ideal.Quotient.mk I g) :=
-  IsLocalization.ringEquivOfRingEquiv _ _ (reducedQuotientEquiv I) (by
+  IsLocalization.ringEquivOfRingEquiv
+    (M := Submonoid.powers (Ideal.Quotient.mk I.radical g))
+    (T := Submonoid.powers (Ideal.Quotient.mk (⊥ : Ideal (R ⧸ I)).radical
+      (Ideal.Quotient.mk I g)))
+    (StratumRing I g) (StratumRing ⊥ (Ideal.Quotient.mk I g)) (reducedQuotientEquiv I) (by
     rw [Submonoid.map_powers]
-    congr 1
-    exact reducedQuotientEquiv_mk I g)
+    exact congrArg Submonoid.powers (reducedQuotientEquiv_mk I g))
 
 @[simp]
 theorem stratumQuotientEquiv_unit {R : Type u} [CommRing R] (I : Ideal R) (g x : R) :
@@ -79,7 +85,7 @@ def stratumQuotientTargetEquiv {R S : Type u} [CommRing R] [CommRing S]
       StratumRing ((⊥ : Ideal (R ⧸ I)).map (quotientStratumBaseMap f I))
         (quotientStratumBaseMap f I (Ideal.Quotient.mk I g)) :=
   (stratumQuotientEquiv (I.map f) (f g)).trans
-    (stratumRingEquivOfIdealEq (Ideal.map_bot (quotientStratumBaseMap f I)).symm
+    (stratumRingEquivOfIdealEq (Ideal.map_bot (f := quotientStratumBaseMap f I)).symm
       (Ideal.Quotient.mk (I.map f) (f g)))
 
 @[simp]
@@ -117,7 +123,8 @@ theorem hasEtaleFactorization_of_quotient_stratum
         (stratumQuotientEquiv I g).toRingHom = stratumMap f I g := by
     ext x
     apply (stratumQuotientTargetEquiv f I g).injective
-    simpa only [RingHom.comp_apply, RingEquiv.apply_symm_apply] using
+    simpa only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingHom.coe_coe,
+      RingEquiv.apply_symm_apply] using
       (RingHom.congr_fun (stratumQuotientEquiv_naturality f I g) x).symm
   simpa only [RingEquiv.symm_symm, he] using ht
 
