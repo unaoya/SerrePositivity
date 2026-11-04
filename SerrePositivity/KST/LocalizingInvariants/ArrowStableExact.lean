@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxInclusionExact
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationStability
@@ -21,51 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 variable (X : SSet.{u})
 
-def arrowLaxInverse : (ihom (Δ[1] : SSet.{u})).obj X ⟶ F2.laxPullback (𝟙 X) (𝟙 X) :=
-  F2.laxPullbackLift (𝟙 X) (𝟙 X)
-    (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 0))
-    (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm 1)) (𝟙 _)
-    (by simp) (by simp)
-
-lemma arrowLaxInverse_fst : arrowLaxInverse X ≫ F2.laxPullbackFst (𝟙 X) (𝟙 X) =
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := F2.laxPullbackLift_fst ..
-
-lemma arrowLaxInverse_snd : arrowLaxInverse X ≫ F2.laxPullbackSnd (𝟙 X) (𝟙 X) =
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := F2.laxPullbackLift_snd ..
-
-lemma arrowLaxInverse_arrow : arrowLaxInverse X ≫ F2.laxPullbackArrow (𝟙 X) (𝟙 X) =
-    𝟙 ((ihom (Δ[1] : SSet.{u})).obj X) := F2.laxPullbackLift_arrow ..
-
-def arrowLaxIso : F2.laxPullback (𝟙 X) (𝟙 X) ≅ (ihom (Δ[1] : SSet.{u})).obj X where
-  hom := F2.laxPullbackArrow (𝟙 X) (𝟙 X)
-  inv := arrowLaxInverse X
-  hom_inv_id := by
-    apply F2.laxPullback_hom_ext
-    · rw [Category.assoc, arrowLaxInverse_arrow, Category.comp_id, Category.id_comp]
-    · rw [Category.assoc, arrowLaxInverse_fst, F2.laxPullbackArrow_source,
-        Category.comp_id, Category.id_comp]
-    · rw [Category.assoc, arrowLaxInverse_snd, F2.laxPullbackArrow_target,
-        Category.comp_id, Category.id_comp]
-  inv_hom_id := F2.laxPullbackLift_arrow ..
-
 variable [Quasicategory X] [IsStable X]
-
-instance arrow_isStable : IsStable ((ihom (Δ[1] : SSet.{u})).obj X) :=
-  isStable_of_trivialKanFibration (arrowLaxIso X).inv
-
-instance arrow_source_isExact : IsExactFunctor
-    (evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-  rw [← arrowLaxInverse_fst]
-  have : IsExactFunctor (arrowLaxInverse X) :=
-    inferInstanceAs (IsExactFunctor (arrowLaxIso X).inv)
-  infer_instance
-
-instance arrow_target_isExact : IsExactFunctor
-    (evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
-  rw [← arrowLaxInverse_snd]
-  have : IsExactFunctor (arrowLaxInverse X) :=
-    inferInstanceAs (IsExactFunctor (arrowLaxIso X).inv)
-  infer_instance
 
 lemma arrow_exact_of_endpoints {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
     [IsExactFunctor (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))]

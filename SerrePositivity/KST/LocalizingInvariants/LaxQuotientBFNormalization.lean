@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientRelativeSquare
 public import SerrePositivity.KST.LocalizingInvariants.SquareFrameEdgesHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.StableValueFunctor
 

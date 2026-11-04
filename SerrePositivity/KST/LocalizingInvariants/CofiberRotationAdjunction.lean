@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberRotationAdjunction
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
 public import SerrePositivity.KST.LocalizingInvariants.TrivialFibrationSectionAdjunction
@@ -19,8 +20,6 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberRotation
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
-
-abbrev arrows := (ihom (Δ[1] : SSet.{u})).obj X
 
 /-- 元の cofiber 選択による底辺評価の厳密切断。 -/
 def bottomSection : arrows X ⟶ CofiberDiagrams.space X := CofiberDiagrams.lift X (𝟙 _)

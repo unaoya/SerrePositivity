@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientCompletionLegs
 public import SerrePositivity.KST.SConstruction.TammePerfectProjectionEquivalence
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceCLeg
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg
 
 /-! # 元の完備化後の二脚の実積射と普遍差の両射影
 概要：普遍差の比較関手の値は、元の二脚の実積射と元の両射影の下で可換する。

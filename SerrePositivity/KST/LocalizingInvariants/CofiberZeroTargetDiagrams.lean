@@ -1,6 +1,7 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.CofiberZeroTargetDiagrams
 
-public import SerrePositivity.KST.LocalizingInvariants.SuspensionExactDiagrams
+public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactDiagrams
 public import SerrePositivity.InfinityCategories.Core.CocartesianPathSpace
 public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationComparisonProjection
 public import SerrePositivity.InfinityCategories.Stable.CofiberZeroSource
@@ -24,22 +25,6 @@ variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
   (ha : ∀ x, IsZeroTargetArrow (a.app (Opposite.op ⦋0⦌) x))
 
-include ha in
-lemma squareAt_isSuspension (x : A _⦋0⦌) :
-    IsSuspensionDiagramVertex ((squares X a).app (Opposite.op ⦋0⦌) x) := by
-  refine ⟨squareAt_zero X a x, ?_, squareAt_isPushout X a x⟩
-  let s := cofiberSquareAt X a x
-  change IsZeroVertex (squareVertex s.square 1 0)
-  rw [s.target_vertex]
-  have ht := (intervalFunctorVertexTypedEdge (a.app (Opposite.op ⦋0⦌) x)).tgt_eq
-  change X.δ 0 (intervalFunctorVertexEdge (a.app (Opposite.op ⦋0⦌) x)) = _ at ht
-  change IsZeroVertex (X.δ 0 (intervalFunctorVertexEdge (a.app (Opposite.op ⦋0⦌) x)))
-  rw [ht]
-  exact ha x
-
-def zeroTargetDiagrams : A ⟶ suspensionDiagrams X :=
-  fullSubcomplexLift IsSuspensionDiagramVertex (squares X a) (squareAt_isSuspension X a ha)
-
 lemma zeroTargetDiagrams_source :
     zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =
       a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
@@ -55,16 +40,6 @@ lemma zeroTargetDiagrams_target :
   rw [suspensionDiagramEvaluation, ← Category.assoc,
     zeroTargetDiagrams, fullSubcomplexLift_ι]
   rfl
-
-def suspensionDiagramsAtSource : A ⟶ suspensionDiagrams X :=
-  (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ≫
-    SuspensionExact.diagrams X
-
-lemma suspensionDiagramsAtSource_source :
-    suspensionDiagramsAtSource X a ≫ suspensionDiagramEvaluation X 0 0 =
-      a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-  rw [suspensionDiagramsAtSource, Category.assoc, SuspensionExact.diagrams_source,
-    Category.comp_id]
 
 lemma zeroTargetDiagrams_sameSource :
     zeroTargetDiagrams X a ha ≫ suspensionDiagramEvaluation X 0 0 =

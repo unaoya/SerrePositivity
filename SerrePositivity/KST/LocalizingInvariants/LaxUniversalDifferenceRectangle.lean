@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceSquare
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceSquare
 public import SerrePositivity.KST.LocalizingInvariants.SquarePastingRectangle
 public import SerrePositivity.KST.LocalizingInvariants.SquareTransposeEdges
 public import SerrePositivity.KST.LocalizingInvariants.VerdierPresentation

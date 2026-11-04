@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyPathFamily
 public import SerrePositivity.KST.LocalizingInvariants.SquareFramePathExtension
@@ -19,30 +20,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-structure SquareFrameHomotopy {X : SSet.{u}} (f g : SquareFrame X) where
-  bottom : SSet.Homotopy f.bottom g.bottom
-  top : SSet.Homotopy f.top g.top
-  left : SSet.Homotopy f.left g.left
-  right : SSet.Homotopy f.right g.right
-  lower_left : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ bottom.h =
-    (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ left.h
-  lower_right : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ bottom.h =
-    (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ right.h
-  upper_left : (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ top.h =
-    (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ left.h
-  upper_right : (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ top.h =
-    (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u})) ≫ right.h
-  bottom_invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge bottom x).toTruncated
-  top_invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge top x).toTruncated
-  left_invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge left x).toTruncated
-  right_invertible : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge right x).toTruncated
-
 namespace SquareFrameHomotopy
 variable {X : SSet.{u}} {f g : SquareFrame X} (H : SquareFrameHomotopy f g)
-
-local instance : Mono (equivalencePathι X) := by
-  unfold equivalencePathι
-  infer_instance
 
 def pathFrame : SquareFrame (equivalencePath X) where
   bottom := homotopyPathFamily H.bottom H.bottom_invertible

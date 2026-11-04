@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductMap
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProductMap
 public import SerrePositivity.KST.LocalizingInvariants.InvariantZeroMap
 
 /-!

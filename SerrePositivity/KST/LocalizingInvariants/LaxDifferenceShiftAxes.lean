@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceCComparison
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison
-public import SerrePositivity.KST.LocalizingInvariants.LaxVerdierProjectionFiber
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxVerdierProjectionFiber
 
 /-!
 概要：実差関手の値の C 軸は E(p) の後の E(Σ)、D 軸は元の E(q) となる。

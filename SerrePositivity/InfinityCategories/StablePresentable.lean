@@ -1,4 +1,6 @@
 module
+public import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact
+public import SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap
 
 /-!
 # 安定かつ presentable な圏の構造

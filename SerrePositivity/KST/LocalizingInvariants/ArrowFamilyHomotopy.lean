@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Quasicategory.ArrowFamilyHomotopy
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowFamilyRoundTrip
 
@@ -17,26 +18,6 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-
-def arrowFamilyHomotopy {A X : SSet.{u}}
-    (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :
-    SSet.Homotopy (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-      (a ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) where
-  h := (β_ A (Δ[1] : SSet.{u})).hom ≫ uncurry a
-  h₀ := by
-    change SSet.ι₀ ≫ _ = a ≫ _
-    rw [← curry_uncurry a, curry_evaluateFunctorAt_interval, uncurry_curry]
-    rfl
-  h₁ := by
-    change SSet.ι₁ ≫ _ = a ≫ _
-    rw [← curry_uncurry a, curry_evaluateFunctorAt_interval, uncurry_curry]
-    rfl
-  rel := by
-    apply SSet.hom_ext
-    intro d
-    apply ConcreteCategory.hom_ext
-    intro x
-    exact False.elim x.1.property
 
 lemma arrowFamilyHomotopy_roundTrip {A X : SSet.{u}}
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) :

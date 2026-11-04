@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
-public import SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifferenceOuter
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceOuter
 
 /-!
 概要：元の Tamme 比較長方形の S 内の持ち上げから、相対 d8 の実 pullback を得る。

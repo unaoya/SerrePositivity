@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor
 
 public import SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact
 public import SerrePositivity.InfinityCategories.Core.ZeroTargetArrows
@@ -21,23 +22,6 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SuspensionExact
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
 
-def arrowSection : X ⟶ zeroTargetArrows X :=
-  Classical.choose (trivialKanFibration_exists_section (zeroTargetArrowSource X))
-
-lemma arrowSection_source : arrowSection X ≫ zeroTargetArrowSource X = 𝟙 X :=
-  Classical.choose_spec (trivialKanFibration_exists_section (zeroTargetArrowSource X))
-
-def arrow : X ⟶ (ihom (Δ[1] : SSet.{u})).obj X :=
-  arrowSection X ≫ (fullSubcomplexOnVertices _ IsZeroTargetArrow).ι
-
-lemma arrow_source : arrow X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = 𝟙 X :=
-  arrowSection_source X
-
-lemma arrow_zero_target (x : X _⦋0⦌) :
-    IsZeroTargetArrow ((arrow X).app (Opposite.op ⦋0⦌) x) :=
-  fullSubcomplexOnVertices_vertex ((arrowSection X).app (Opposite.op ⦋0⦌) x)
-
 instance arrow_isExact : IsExactFunctor (arrow X) := by
   have : IsExactFunctor (arrow X ≫
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
@@ -47,8 +31,6 @@ instance arrow_isExact : IsExactFunctor (arrow X) := by
       evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
     isExact_of_zero_values _ (arrow_zero_target X)
   exact arrow_exact_of_endpoints X _
-
-def map : X ⟶ X := arrow X ≫ CofiberFamily.cofiber X (𝟙 _)
 
 instance map_isExact : IsExactFunctor (map X) := by
   have : IsExactFunctor (CofiberFamily.cofiber X (𝟙 _)) :=

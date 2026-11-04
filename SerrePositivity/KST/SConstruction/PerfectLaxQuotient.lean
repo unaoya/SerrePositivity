@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxCategory
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSequence
-public import SerrePositivity.KST.LocalizingInvariants.LaxQuotientLegComparison
+public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison
 
 /-! # 元の lax pullback の商と冪等完備化の入力
 概要：実 Verdier 商とその完備化を保持し、Cat^perf の列と LT の二脚を定義する。

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Lax.IdentityLaxDiagonal
 
 public import SerrePositivity.KST.LocalizingInvariants.ArrowStableExact
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact
@@ -19,15 +20,6 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-
-lemma constant_evaluation {K X : SSet.{u}} (k : K _⦋0⦌) :
-    constantFunctorMap K X ≫ evaluateFunctorAt (Y := X) k = 𝟙 X := by
-  apply SSet.hom_ext
-  intro n
-  apply ConcreteCategory.hom_ext
-  intro x
-  change X.map (𝟙 n) x = x
-  exact CategoryTheory.Functor.map_id_apply X n x
 
 variable (A : StableCategory.{u})
 

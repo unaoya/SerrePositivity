@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison
 public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
@@ -34,11 +35,6 @@ lemma laxDifferenceRho_fullyFaithful (hv : IsFullyFaithful v) :
 lemma laxDifferenceRho_postcomp_fullyFaithful (hv : IsFullyFaithful v) (A : SSet.{u}) :
     IsFullyFaithful ((ihom A).map (laxDifferenceRho p q v)) :=
   (laxDifferenceRho_fullyFaithful p q v hv).postcompose A
-
-/-- q の可逆余単位を、頂点ごとの可逆性を仮定せず実関手圏で得る。 -/
-lemma fullyFaithfulRightAdjunction_counitHom_isIso (a : QCatAdjunction q.hom v)
-    (hv : IsFullyFaithful v) : IsIso a.counitHom :=
-  a.counitHom_isIso_of_postcompFullyFaithful (hv.postcompose E.obj).toHoFullyFaithful
 
 /-- ρ に差の関手を続けた合成は恒等関手と実関手同型になる。 -/
 def laxDifferenceRho_sectionIso (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v) :
