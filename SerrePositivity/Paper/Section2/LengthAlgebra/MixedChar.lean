@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.Paper.Section2.MixedPerfectoid
+public import SerrePositivity.BhattScholze.Perfectoidization.RootTower
 public import SerrePositivity.LengthAlgebra.RootTowerLength.Tower
-public import SerrePositivity.CLMST.NormalizedAlmostLength
-public import SerrePositivity.CLMST.CohomologyVanishing
-public import SerrePositivity.CLMST.ParameterLength
+public import SerrePositivity.CLMST.CyclicLengthBound
+public import SerrePositivity.CLMST.KoszulAnnihilation
+public import SerrePositivity.CLMST.ParameterPowerLength
 
 /-! # 混標数の長さ代数（CLMST の引用）
 
@@ -18,7 +18,7 @@ Corollary 4.0.4 の almost 消滅（`CLMST.exists_perfectoidIdeal_annihilates_ko
 
 ## 規約
 
-直接の `sorry` はない。文献の未証明入力は `CLMST/Inputs/` に明示する。出典：Cai–Lee–Ma–Schwede–Tucker, arXiv:2209.04046v4。
+直接の `sorry` はない。三つの結果は CLMST/KoszulAnnihilation・CyclicLengthBound・ParameterPowerLength にあり、文献の未証明入力（BS Thm 1.17(1)・Cor 8.12 など）は BhattScholze の Inputs に明示されている。出典：Cai–Lee–Ma–Schwede–Tucker, arXiv:2209.04046v4。
 
 ## 使われ方
 

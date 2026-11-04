@@ -3,7 +3,7 @@
 module
 
 public import SerrePositivity.EInfinity.Perfectoidization.Interface
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CurryFirstPrecomposition
 public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationBaseChangeHom
 -- 本ファイルは drafts/A7/{AnimatedDomain,DiscreteCore,AnimatedPerfectoidization}.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean を import する。

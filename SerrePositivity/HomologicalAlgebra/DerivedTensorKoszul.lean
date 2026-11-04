@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.BoundedAbove.Derived
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorCoherenceModels
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 public import SerrePositivity.HomologicalAlgebra.CochainTensorScalarCone
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorMonoidal
 

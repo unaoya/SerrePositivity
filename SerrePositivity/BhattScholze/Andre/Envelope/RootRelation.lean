@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Andre.Envelope.DivisionResidue
 public import SerrePositivity.BhattScholze.Delta.Free.RelativeFreeDelta
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.Algebra.Polynomial.Monic
@@ -17,7 +17,7 @@ public import SerrePositivity.HomologicalAlgebra.TorSymmetry
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 public import SerrePositivity.HomologicalAlgebra.KoszulModuleBounds
 public import SerrePositivity.HomologicalAlgebra.KProjectiveLift
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionQuasiIso
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
 public import Mathlib.Algebra.CharP.Lemmas
 
 /-!

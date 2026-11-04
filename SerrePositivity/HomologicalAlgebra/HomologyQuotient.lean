@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 
 /-! # 第零ホモロジーからの具体的な全射
 

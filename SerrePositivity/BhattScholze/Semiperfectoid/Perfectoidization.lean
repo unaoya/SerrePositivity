@@ -4,7 +4,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.BhattScholze.Semiperfectoid.PerfectPrismDivision
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-!
 # semiperfectoid 環の perfectoid 化（BS 著者版 Cor 7.3）

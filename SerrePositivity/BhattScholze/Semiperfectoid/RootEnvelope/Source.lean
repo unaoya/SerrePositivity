@@ -9,7 +9,7 @@ public import SerrePositivity.CommutativeAlgebra.Witt.Coefficients
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.BhattScholze.Prism.Residue.PrismaticResidue
 public import SerrePositivity.HomologicalAlgebra.DerivedQuotientKoszul
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.DerivedRestrictionConservative
 public import SerrePositivity.BhattScholze.Delta.Perfect.PerfectDelta
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootRelation
@@ -20,7 +20,7 @@ public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Delta.Division.Source
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorH0Algebra
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorNonpositive
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionH0Comparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedAboveCompletion
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 public import SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization

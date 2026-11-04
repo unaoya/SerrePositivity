@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import Mathlib.Algebra.Homology.Linear
 
 /-! # 線形加法関手とスカラー作用の錐

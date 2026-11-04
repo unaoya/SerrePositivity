@@ -4,7 +4,7 @@ public import SerrePositivity.Asymptotic.RankQuotient
 public import SerrePositivity.Asymptotic.NormalizedLimit
 public import SerrePositivity.PerfectComplex.AsymptoticLengthBounds
 public import SerrePositivity.CategoryTheory.HomotopyProperty
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.CategoryTheory.IteratedCone
 public import SerrePositivity.CategoryTheory.ScalarSupport
 

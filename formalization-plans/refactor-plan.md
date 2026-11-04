@@ -93,9 +93,9 @@ Mathlib
   外せなければ `section` の範囲に限る。`maxHeartbeats` の引き上げも同様。
 - docstring は日本語の 概要／方針／規約／使われ方 にそろえる（英語のもの、定型文の繰り返し、古い状況の記述を直す）。
 
-予約したディレクトリ名（2026-11-02 ユーザー）：区切り 2b の後に BS の共有一般論 3 本を受け入れる `HomologicalAlgebra/Cosimplicial/`（余単体加群・
-余単体可換環の全複体の積など）と `CommutativeAlgebra/DeRham/`（多項式環の de Rham 複体と p 進完備化）。HA の側は層の規則の第一層（一般論）として扱う。
-論文の層の作業ではこの 2 つの名前を別の用途に使わない（中身はまだ置かない）。
+予約したディレクトリ名（2026-11-02 ユーザー、同日に 2 つ追加）：区切り 2b の後に BS の一般論を受け入れる下位ディレクトリ。いずれも第一層（一般論）として扱う。
+`HomologicalAlgebra/Cosimplicial/`（余単体加群・余単体可換環の全複体の積など）、`CommutativeAlgebra/DeRham/`（多項式環の de Rham 複体と p 進完備化）、
+`CommutativeAlgebra/UniversalHomeomorphism/`、`CommutativeAlgebra/EtaleStratification/`。論文の層の作業ではこの 4 つの名前を別の用途に使わない（中身はまだ置かない）。
 
 ## D. 章をまたぐ共通の仕組み
 
@@ -173,6 +173,8 @@ BS の作業の区切りに時間を決め、BS 側の編集を止めて行う�
 | 区切り 1-2（HomologicalAlgebra の第一層、§3.7） | 完了（2026-10-31、記録は下の表と「区切り 1-2 で見送った項目」） |
 | 区切り 1-3（LA・IM・PC・HA/CochainTensor の統合、D の 1） | 完了（2026-10-31、記録は下の表と「区切り 1-3 で見送った項目」） |
 | 区切り 1-4（KTheory・Asymptotic・Paper の統合、DG の依頼の Perfect、§10.4 の重複） | 完了（2026-11-02、refactor/1-4 で verify PASS。記録は下の表と「区切り 1-4 の記録」） |
+| 区切り 2a（BS の層の境界：CA の BS 依存・CLMST の基礎と論文の分離・Koszul・IteratedTensor） | worktree（refactor/2a）で完了。全ビルドと verify は 11-04 未明に PASS（gate:true、監査 99/99、f3daa70ad。記録は下の「区切り 2a の記録」）。取り込み待ち |
+| 区切り 2b（HA の DerivedCompletion の第二層） | worktree（refactor/2b、refactor/2a の先端から）で A（統合）と B1〜B3・B4a を完了（2026-11-03、小さなビルドは通過、型の変化 0）。B4 の本体（Pair の定義の置き換え）は段階 3 へ。全ビルドと verify は 11-04 に PASS（gate:true、監査 99/99、48ec4a1b7）。取り込み待ち |
 | HomologicalAlgebra・PerfectComplex・KTheory・CategoryTheory（トップ階層）・LengthAlgebra・IntersectionMultiplicity・Asymptotic・CLMST・Paper | 計画のみ |
 | CategoryTheory の下位ディレクトリ・Nerve・HA/ComplexLimits | ∞ 基盤の側へ移管（R75〜R78、伝達文） |
 
@@ -299,6 +301,78 @@ DG レーンからの依頼（2026-10-31）：DifferentialGraded/Perfect/ が Pe
     （IsSerreClass）、Paper → LA の一般の補題（§10.6）の残り、§5.2 の 2〜4、StageDecay、Lemma3_5・GaloisNormalization の補助。
   - maxHeartbeats：統合で各パートを `section … end` で包んだので、ファイル全体の `set_option` はパートの範囲に限られた。個々の引き上げの値は変えていない。
   - scripts/check_adams_import_boundaries.py は 1-3 の HA の統合の時点で古い名前を参照している（verify からは呼ばれない）。直すか削除するかは後で。
+
+区切り 2a の記録（2026-11-02、worktree refactor/2a、main d27c4798d から。全ビルドの前）：
+
+- 層の境界：CA・HA・LA から BS・CLMST への import は 0 件になった。BS → CLMST（BS/Almost/PerfectoidAlmost → CLMST.Almost）と
+  Paper → CLMST の再エクスポート（Paper/Section2/MixedPerfectoid、削除）の逆転（§8.5）も解消した。KST → BS は MonicRelation の 1 件が残る（下）。
+- CA の BS 依存の 12 本 → BhattScholze の下の 6 本：`PerfectoidIdeal/{Basic, Powers, Cover}`・`Perfectoidization/Finite`・
+  `Semiperfectoid/AbsolutelyIntegrallyClosedQuotient`・`Andre/OrdinaryRoots/MonicRelation`（宣言名は変えない）。
+- CLMST の基礎（A）：
+  - BS に依存しないもの 20 本 → `CommutativeAlgebra/RankLocus`・`HomologicalAlgebra/FiniteFreeComparison`・`CommutativeAlgebra/ModPHypersurfaceGrowth`・
+    `CommutativeAlgebra/RootTower/StageModPLength`・`HomologicalAlgebra/DerivedCompleteCommonModel` と既存 3 本への追記。Stage* の 10 本 →
+    `CommutativeAlgebra/RootTower/BaseChange`（名前空間 `Section2`。`RPerfd` への写像は CLMST に残す）。
+  - BS に依存するもの → BhattScholze の下の 12 本（`Andre/TorDescent`・`PerfectoidIdeal/{Roots, Tor, CompletedQuotient, TorCriteria}`・
+    `Perfectoidization/{Cone, ExcisionComparison, ExcisionTor, CompletedTensorComparison, FiniteComparisonExcision, RootTower}`・
+    `Semiperfectoid/{Product, QuotientPerfectoidization}`）と BS/Almost/PerfectoidAlmost への追記。
+- CLMST の論文側（B）：77 → 18 本（承認済みの名前：`PerfectoidizationIsogeny/`（12 本）・`AllModuleTorVanishing`・`KoszulAnnihilation`・
+  `CyclicLengthBound`・`ParameterQuotientLength`・`ParameterPowerLength`・`Algebra`）。CLMST/Inputs/ は吸収した。CLMST は 146 → 18 本。
+- 削除：§8.4 の死んだ 11 本、主経路外のうち 3 本（TensorOrder の残り・CompletedCokernelKoszul・Inputs/AlmostLength、11-02 決定。残りの 5 本は
+  BS・CA へ移して残した）、`finiteAlgebraConeIsogeny`。
+- 重複の一本化：mod pᴺ の冪等性（3 → BS の 1）、`perfectoidIdeal_quotient_isIntegralPerfectoid`（2 → BS の 1）、`corollary_4_0_4`（2 → 1）、
+  有限比較 excision の証明（Prop247Proof の別証明 → `BhattScholze.klFiniteComparisonExcision_of_perfectoid`）、`Inputs.proposition_2_4_7` の入口。
+  CLMST の `completedTowerRoot*` の別名 5 つを削除（`Section2` の本体を使う）。
+- 改名：`prop247_` を 74 個の論文側と、基礎の 40 個余りから外した。宣言の改名表は計 296 件（scratch の rename_all.json、2a の取り込み時に BS へ回す）。
+- その他：Koszul・KoszulResolution → `CommutativeAlgebra/Koszul/{Basic, Resolution}`。IteratedTensor の 6 本 → `BhattScholze/Prism/Tensor/IteratedTensor`。
+  P1：Perfectoidization* → `CommutativeAlgebra/Perfectoid/{Defs, Completion}`（Nilpotent は Torsion へ、未使用だが一般論なので残す）。
+  PerfectoidDerivedComplete → `HomologicalAlgebra/DerivedCompletion/IntegralPerfectoid`。`IsPerfectoidization.comp_ringEquiv` → CA の Perfectoid/Defs。
+- ファイル：main d27c4798d との差で 160 本を削除・33 本を新設（改名 15）、−13933・＋12862 行（SerrePositivity のみ）。
+- 見送り・未決：
+  - MonicRelationRegularSequence は BS のまま（KST → BS が残る）。BS の Andre/OrdinaryRoots の多項式の補題を CA へ下ろす件は未決（11-02）。
+  - Inputs/Perfectoidization は BS の管轄のまま（BS セッションと調整）。
+  - 2b へ：Prop247ConeComparison・Prop247Cone・Prop247RankCompleteness の一般部分（HA/DerivedCompletion へ）。
+  - `hetale` の長い仮定を名前つきの述語にする件、Corollary404 などの不要な import（§8.4）は未着手。
+  - CA → HA の import は 2a の前から 40 か所以上ある（層の規則の対象外）。
+- 全ビルドと verify（11-03 夜〜11-04、main 3e27dda00 を取り込んだ f4e4c1724 の上）：監査を make_area_audits で再生成（a85cfff19。
+  bhatt_scholze は 2a で BS の下へ移したファイルを含めるため再生成版を残した）。1 回目（VERIFY_JOBS=3、65 分）は audit_clmst の 1 件で FAIL：
+  RootTower/BaseChange へ移した `stageAlgebraIsNoetherianOfBase` の名前空間が `Section2` に変わっていた。f3daa70ad で直し、2 回目
+  （VERIFY_JOBS=6 VERIFY_MEMORY_GB=40、24 分）は **PASS gate:true、監査 99/99、sorry 閉包 PASS**。改名表は名前空間の突き合わせで 16 件
+  （上の 1 件と、29b688d02 でファイルごと消した Prop247 の宣言 15 件の「削除」）を足して 312 件。
+
+区切り 2b の記録（2026-11-02 夜、worktree refactor/2b。A のみ、未ビルド）：
+
+- 条件（ユーザー、coordination.md 207343063）：B は (i) DerivedCompletion の外から使われる宣言の型を変えない（snapshot の型ハッシュで確認、def の
+  本体は可）、(ii) BS・CLMST の証明は編集しない、(iii) 11-05 までに終わらない項目は段階 3 へ、(iv) 小さなビルドは coordination.md §2-4a。
+- A：HomologicalAlgebra/DerivedCompletion を 135 → 44 本（§3.5・§3.6 の表の 28 群）。表どおりに組むと import が循環する箇所は群を分けた
+  （Koszul/{Tower, Complete, Milnor}、ModuleComplete/{Basic, Closure, Presentation}、ComplexCompletion/{Basic, Reconstruction}、Principal の Classical、
+  CompletionReflection から KProjectiveProduct）。ModuleResolution・PairZeroCompletion・RegularCompletionPure・KProjectiveProduct・PrincipalClassicalComparison は
+  単独のまま（循環を避けるため）。宣言名は変えない。BS・CLMST は import 行だけ。
+- 2a から回した CLMST の一般部分：Prop247Cone・Prop247RankCompleteness の一般の 6 定理 → DerivedCompletion/IntegralPerfectoid（内容の名前に改名）、
+  Prop247ConeComparison の 4 宣言 → DerivedCompletion/CompletedTensorVanishing（名前空間 `DerivedCompletion`）。
+- 計画で削除とされていた ModuleConeCoordinates・ModuleConeNaturality・AdicTower・CompletedTensorModuleReduction・FlatResidueLimitTorsion・
+  PowerTorsionTorProduct は既にない。
+- BS の依頼（CompletedTensor の分割、仕様書 completed-tensor-split.md）は 2a に入れない。2a の取り込みの後に BS が BS-W10 の作業 A として行い、
+  2b の全ビルドに相乗りする（11-03 ユーザー決定）。**2b の全ビルドの前に main を取り込み、BS の変更を含める**。CLMST の 5 本の import 行は BS が直す。
+- 2a の小さなビルド（98484d01e、274 本）の失敗 3 件を修正（aae233fb5 ほか）：新しく書いたファイルの `noncomputable` の抜け 2 件と、BS の名前空間へ
+  移したファイルで BS の別名（`alias compatibleRootFamilyIdeal := …`）に修飾なしの名前が当たった 1 件。失敗した 3 本の下流は未検証。
+- A の小さなビルド（183 本）は通過（11-03）。
+- B（11-03、項目ごとに別コミット。どれも 107 本の小さなビルドが通り、snapshot（.lake/verify/2b-before.json との比較）で外から使われうる宣言
+  715 本の型の変化 0・消えた宣言 0）：
+  - B1（ebe3bec91）：`.choose` の def 化。`principalCompletionLift(AlgHom)`・`pairCompletionLiftAlgHom` を加え、Principal/Comparisons・
+    PairZeroCompletion・PrincipalClassicalComparison・CompletedAlgebraH0 の `.choose` を置き換えた。Reflection は `Function.surjInv`。
+  - B2（663126e92）：「完備化は、完備性を保つ関手と可換」を `completionCommComparison`（`_unit`・`_naturality`）1 本にし、ScalarCone と
+    QuotientBaseChange の比較はその例にした。
+  - B3（c85ae14cf）：PD の d = 0 の層をなくした。`completedTensorH0PrincipalRingEquiv` は H⁰ で可逆な完備化した添加と
+    `completedAlgebraH0NatPrincipalAlgEquiv` の合成、`completedTensorH0AdicRingEquiv` はその後に `principalCompletionAdicAlgEquiv`。
+    DerivedCompletion の中だけで使われていた PD 経由の 13 宣言（`completedAlgebraH0PD(B)AlgEquiv`・`completedTensorH0PDAlgEquiv(OfIso/OfTor/OfKoszul)`・
+    `pdCompletionBaseAlgebra` ほか）を削除し、改名表（rename_2b.json）に「削除」として載せた。
+  - B4a（f2339b603）：Pair/Iteration の `.choose` 4 か所を `pairCompletionLift`・`iteratedCompletionLift` に置き換えた。
+  - **B4 の本体（Pair* の定義を Principal の反復へ移す、§3.5.3）は段階 3 へ回す**。BS は `PairCompletionH0` を Koszul の H⁰ として定義どおりに使っている
+    （RootEnvelope/RawCompletion などで `koszulCompletionH0Unit Raw (pairKoszulCoordinates …)`、`pairKoszulCoordinates` は 16 回）。定義を反復の側へ移すと
+    これらの証明が壊れ、条件 (ii) に触れる。段階 3 で BS と相談して、BS 側を `pairCompletionUnitRingHom` などの API 経由に書き換えてから行う。
+- 全ビルドと verify（11-04 08:37〜09:58、main cc67ea88e（BS-W10 作業 A を含む）を取り込んだ 48ec4a1b7 の上、VERIFY_JOBS=6 VERIFY_MEMORY_GB=40）：
+  **PASS gate:true、監査 99/99、sorry 閉包 PASS**（ルート 447 秒、監査対象 759 秒、全体 79 分）。∞ の IF-W2c の内部ビルドが鍵を持っていたので 08:37 まで待った。
+  改名表は 2b の分だけで宣言 23 件（2a から回した CLMST の一般部分 10 件と B3 の削除 13 件）、モジュール 116 件（DerivedCompletion 135 本のうち、残り 19 本は名前のまま）。
 ## G. 決定待ち
 
 1. ~~段階 0 を CA の残りより先に行うか~~ → 先に行う（2026-10-30）。

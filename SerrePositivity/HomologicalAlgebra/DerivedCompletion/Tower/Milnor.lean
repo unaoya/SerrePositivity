@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Maps
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerProjection
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower
 public import Mathlib.RingTheory.Nilpotent.Basic
 

@@ -83,7 +83,7 @@ d を保つ分類射 (A₀,(d₀)) → (A,(d))（および f の像）を明示�
   (ii) **B := E ⊗̂^L_U A（CAlg の完備導来テンソル。離散性は仮定しない）**。普遍の場合の比較 E ≃ Δ_{R_univ/U}（下）を底変換して B ≃ Δ_{R/A}。
   (iii) Δ_{R/A} は離散で d 正則（HT filtration と R の有界 p 冪ねじれ、下の「離散性」）。よって B = LΛ_I(E ⊗^L_U A) も離散。
   **B の台環の同定（W9-I-41 で訂正：「Tor 独立」は主張しない）**：K := E ⊗^L_U A → N := E ⊗_U A（通常のテンソル）は非正次数の対象の H⁰ 同型。
-  主イデアルの導来完備化は非正次数の H⁰ 同型を保つ（既存 `HomologicalAlgebra/DerivedCompletion/CompletionH0Comparison` の
+  主イデアルの導来完備化は非正次数の H⁰ 同型を保つ（既存 `HomologicalAlgebra/DerivedCompletion/BoundedAboveCompletion（2b で改名、旧 CompletionH0Comparison）` の
   `derivedComplexCompletion_h0_map_isIso`、p・d の順に二回）ので H⁰ LΛ_I K ≃ H⁰ LΛ_I N、B は離散なので **B ≃ H⁰ LΛ_I N**（環として：K → N は CAlg の標準射）。
   通常の高次 Tor の消滅は要らず、主張もしない。
   (iv) N の通常の δ 構造（**W9-I-42**：`PerfectDeltaTensor` は完全 δ 環用で使えない）：E → W₂(E) → W₂(N) と A → W₂(A) → W₂(N) は U 上一致するので、

@@ -231,6 +231,7 @@ InfinityCategories/
 | M13 | **新設（11-02 夕、BS 発、`bhatt-scholze/drafts/DerivedGeneral/`）**：(a) D(A) の標準 t 構造と Postnikov 切り捨て（`Truncation.lean`）。(b) 導来 (p, d) 完備化の ∞ 関手（`CompletionFunctor.lean`、HA/DerivedCompletion の dg nerve 版）。A2（Construction 7.6 の HT filtration、Kan 延長の値の完備化）で要る。**置き場所（11-02 決定）**：どちらも `InfinityCategories/Derived/`（D(A) 固有。Derived は既に HA を import しているので (b) の `HomologicalAlgebra.DerivedCompletion` への依存は層の規則に反しない）。一般の安定 ∞ 圏の t 構造の定義を切り出す場合だけ `Stable/`（新設）。dg 側に既存の t 構造・Postnikov 切り捨てはない（11-02 確認）。**時期**：M12 と同じ段 G、開始は W2b の後。(b) は 2b（HA の DerivedCompletion の整理）の後に、改名表を受けてから |
 | M14 | **新設（11-02 夕、BS 発 G-A4-1、`bhatt-scholze/drafts/Shared/EInfinityPowerOperation.lean`）**：E∞-F_p 代数の冪作用 P⁰（[Lur11, §2.2]、Berger–Fresse／May）。(i) π₀ で Frobenius、(ii) 正次数のホモトピーで零（Rem 2.2.7）、(iii) 余単体的可換 F_p 代数の levelwise Frobenius が Tot_{E∞} の P⁰ を誘導する。現行の EInfinity に冪作用はない（11-02 確認）。Lemma 8.4（Δ_perf の coconnectivity）の唯一の経路で、A4 の一般項目で最も重い。**置き場所（11-02 決定）**：`EInfinity/PowerOperation/`（新設、`BarrattEccles/`・`Operad/` の隣。Barratt–Eccles の作用の型はそこで確認）。**時期・担当**：段 G。A4 の中身を書く段階まで不要。担当は E2 レーン（EInfinity）か BS かをそのときに決める |
 | M15 | **新設（11-02 夜、BS 発 G-A5-1、`bhatt-scholze/drafts/Shared/Descendable.lean`）**：Mathew の descendability（[Mat16, Def 3.18]、[BS17, §11.2]）。E∞-A 代数 B の生成する thick ⊗-ideal が単位を含むことを定義とし、index による判定、底変換・合成・テンソルでの安定性、降下 M ≃ Tot(M ⊗ B^{⊗•+1})、RHom(F^{⊗2}, A) ∈ D^{<0} ⇒ index ≤ 2、[BS17, Lemma 11.22]、完備版。Lemma 8.6・Prop 8.5 の降下の唯一の経路で、BS 固有ではない。**置き場所（11-02 決定）**：`EInfinity/Descendable/`（新設。`BarrattEccles/CAlg` と Derived の D(A) の両方を使うため。EInfinity は既に Derived を 44 本で import している）。E∞ 構造を使わない部分（D(A) の対象の生成する thick ⊗-ideal、index、安定性）は `Derived/`（`Derived/Gluing/*ThickClosure*` の隣）へ下ろしてよい。**時期・担当**：段 G、M14 と同じ（A5 の中身を書く段階まで不要。担当は E2 レーンか BS かをそのときに決める） |
+| M16 | **新設（11-04、W2c 停止点 1′）**：中核の閉包に残るモデル圏の HA（66 本）と ModelBridge（8 本）の最後の入口。`F1` の `CosliceTwistedHomEquivalence` が Reedy の定理を実際に使い、その利用者（`SourceInitial`・`RightRepresentableTwistedArrowEquivalence`・`TwistedHomFunctorMap`）が中核にある。処置：Reedy 非依存の証明（Kerodon の twisted arrow の議論）に書き直すか、F1 の twisted arrow の該当部分を再編する。終われば完了条件 1（中核の閉包にモデル圏のコードが入らない）が完全に成る。入力：`targets/w2c-section5-ha.md` |
 
 置き場所は Stable/Verdier と StablePresentable（R55）。M1〜M7 の詳細は [refactoring-verdier.md](refactoring-verdier.md) §5。
 2 件目の外部レビューが M2 の参照として挙げた「Drew, 定理 1.3」は、まだ確かめていない。
@@ -263,6 +264,7 @@ InfinityCategories/
 | IF-W2b | R73 → R37 → R38 | W2b | **完了（11-03、3e27dda00）**。指示書 [infinity-codex-w2b.md](infinity-codex-w2b.md) §1〜§18。中核層間の順序違反 0、F1B の straightening 非依存を保持。W2c への入力：180 本と 6 根の経路（`targets/w2b-section18-stop3.json`） |
 | IF-W2c | 群 A（R27・R64・R72 の残り：直接の禁止辺 18 を切り、中核の閉包から KST・モデル圏の HA を消す）→ 群 B（段 E：R51 → R68 → R52 → R69 → R70 → R56b）→ R45 | W2c | 指示書 [infinity-codex-w2c.md](infinity-codex-w2c.md)（11-03 深夜）。草案は今すぐ、下流は 2a・2b の後 |
 | IF-F | 段 F（台帳と整理、最後に R54 の名前空間の付け替え） | W2c の後 |
+| IF-G1 | 段 G の最初の束：BS 発の一般論の ∞ 側（M12b・M12c・M12d・β5 の一部） | 窓の外（新規ファイルのみ、別チャット） | 依頼書 [infinity-codex-g1.md](infinity-codex-g1.md)（11-03 深夜） |
 
 **各回の検証**（すべて通るまで次へ進まない）：
 - `scripts/refactor/verify.sh`（R41 の強化版）：全体ビルド、自動で列挙した全監査、`main_statement` の sorry 閉包。失敗が一つでもあれば非零で終了する。

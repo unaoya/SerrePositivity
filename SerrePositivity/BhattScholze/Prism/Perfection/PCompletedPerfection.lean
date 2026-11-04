@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Perfect.DeltaPerfection
 public import SerrePositivity.BhattScholze.Delta.Perfect.DistinguishedRegular
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AdicComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import Mathlib.RingTheory.AdicCompletion.Topology

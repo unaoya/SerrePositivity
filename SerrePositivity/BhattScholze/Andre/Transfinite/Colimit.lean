@@ -7,11 +7,11 @@ public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Criterion
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeScalar
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTensor
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTor
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalClassicalComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteFlatReductionBounded
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.BoundedTorsionComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
 public import SerrePositivity.HomologicalAlgebra.TorAcyclicBaseChangeComparison
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.PowerTorsion
 public import SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator
@@ -26,7 +26,7 @@ public import SerrePositivity.CommutativeAlgebra.Adic.ReductionScalarExtension
 public import Mathlib.Algebra.Colimit.Ring
 public import Mathlib.Data.Set.Countable
 public import Mathlib.RingTheory.AdicCompletion.Basic
-public import SerrePositivity.CommutativeAlgebra.IntegralPerfectoid
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 public import SerrePositivity.BhattScholze.Prism.Perfection.PrismPerfection
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra

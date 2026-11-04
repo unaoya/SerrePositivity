@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import Mathlib.RingTheory.Regular.RegularSequence
 
 /-! # 正則列の正の冪
@@ -18,7 +18,7 @@ Noether 加群上の極大イデアル内の弱正則列は、各元を正の冪
 
 ## 規約
 
-`KoszulResolution.lean` は BhattScholze が使うので中身を変えず、冪の補題はこのファイルに置く。
+`Koszul/Resolution.lean` は BhattScholze が使うので中身を変えず、冪の補題はこのファイルに置く。
 
 ## 使われ方
 

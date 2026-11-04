@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.WittPushout
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationUniqueness
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationCompletion
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Completion
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Torsion
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfectoid
 

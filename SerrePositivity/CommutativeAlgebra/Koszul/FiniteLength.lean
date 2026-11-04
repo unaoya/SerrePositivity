@@ -19,7 +19,7 @@ Koszul ホモロジーは `(z)` で消え、`(z)` は `m` 準素なので有限�
 
 ## 規約
 
-Koszul 複体は `Koszul.lean`（BhattScholze も使うので位置は動かさない）。
+Koszul 複体は `Koszul/Basic.lean`。
 
 ## 使われ方
 

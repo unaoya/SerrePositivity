@@ -8,7 +8,7 @@ public import Mathlib.Algebra.Homology.Homotopy
 public import Mathlib.Algebra.Homology.Linear
 public import Mathlib.Algebra.Ring.Action.Basic
 public import Mathlib.Algebra.Ring.NegOnePow
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import SerrePositivity.HomologicalAlgebra.Complex.Truncation
 public import SerrePositivity.HomologicalAlgebra.SupportNullHomotopy
 public import Mathlib.RingTheory.Ideal.Maps

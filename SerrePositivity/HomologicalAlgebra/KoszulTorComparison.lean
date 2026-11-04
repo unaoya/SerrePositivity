@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.Tor
 public import SerrePositivity.HomologicalAlgebra.Resolution
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.CommutativeAlgebra.Koszul.Powers
 
 /-! # 任意の係数加群に自然なKoszul–Tor比較

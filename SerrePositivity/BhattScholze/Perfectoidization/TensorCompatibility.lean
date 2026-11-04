@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
-public import SerrePositivity.CommutativeAlgebra.PerfectoidizationFunctor
+public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 public import SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity
 

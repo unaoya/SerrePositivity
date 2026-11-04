@@ -1,6 +1,6 @@
 import SerrePositivity.BhattScholze.Almost.PerfectoidAlmost
 import SerrePositivity.BhattScholze.Almost.Lemma103
-import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorShortExact
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 import SerrePositivity.CommutativeAlgebra.PerfectTorIndependence.Basic
 import Mathlib.Util.AssertNoSorry
 
@@ -116,8 +116,8 @@ example
 -- BasicSetup へ渡す mod p^N 冪等性も、同じ略記・等式の型で検査する。
 example (R : Type u) [CommRing R] (p : ℕ) [Fact p.Prime]
     (hR : IsIntegralPerfectoid R p) (g : R) (N : ℕ) :
-    CLMST.perfectoidIdealMod R p hR g N * CLMST.perfectoidIdealMod R p hR g N =
-      CLMST.perfectoidIdealMod R p hR g N :=
+    BhattScholze.perfectoidIdealMod R p hR g N * BhattScholze.perfectoidIdealMod R p hR g N =
+      BhattScholze.perfectoidIdealMod R p hR g N :=
   BhattScholze.perfectoidIdealMod_idempotent R p hR g N
 
 assert_no_sorry SerrePositivity.BhattScholze.perfectoidIdeal_quotient_isIntegralPerfectoid

@@ -9,9 +9,9 @@ public import SerrePositivity.HomologicalAlgebra.DerivedTensorFixedModuleModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Maps
 public import Mathlib.RingTheory.Noetherian.Basic
 public import Mathlib.RingTheory.Flat.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TermwiseComplete
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ReflectionTransport
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Reconstruction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Reflection
 public import SerrePositivity.HomologicalAlgebra.DerivedTensorModuleComparison
 public import SerrePositivity.HomologicalAlgebra.Resolution.FiniteFree
 public import Mathlib.LinearAlgebra.TensorProduct.Pi

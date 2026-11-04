@@ -1,97 +1,34 @@
 module
 
-public import SerrePositivity.CommutativeAlgebra.RootTower.Completion
-public import SerrePositivity.CommutativeAlgebra.Perfectoidization
-public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
-public import Mathlib.RingTheory.FiniteStability
-public import Mathlib.RingTheory.TensorProduct.Finite
+public import SerrePositivity.BhattScholze.Perfectoidization.RootTower
+public import SerrePositivity.CommutativeAlgebra.RootTower.BaseChange
 
-/-! # CLMST で用いる根の塔上の perfectoid 化
+/-! # CLMST の `RPerfd` と有限段からの写像
 
-完備化した根の塔 `A∞` と有限代数 `D` から `(A∞ ⊗[A] D)_perfd` を選び、
-`A`・`D`・根の塔・完備化した塔の作用と、その両立を構成する。
-このモジュールは `Paper/`、正規化長さ、CLMST の長さやホモロジーの引用を import しない。
+## 概要
 
-対象の存在は `Inputs.exists_perfectoidization_of_finite`（現行引用在庫の Input 8）に依存する。
-この有限代数版は、Bhatt–Scholze Theorem 1.17(1) の整代数の存在引用から証明して導く。
-存在引用そのものを証明済みとは扱わない。
-普遍性で選んだ環への作用の整合性は、その存在引用に相対的に証明済みである。
+`RPerfd A D t p hperf` は、根の塔の完備化の上の perfectoid 化 `(A∞ ⊗[A] D)_perfd`（`Section2.MixedPerfectoid`、BhattScholze/Perfectoidization/RootTower）の透明な別名。有限段の基底変更 `Section2.StageAlgebra`（CommutativeAlgebra/RootTower/BaseChange）から `RPerfd` への標準の `D` 代数写像 `toRPerfd` を作り、`D` の作用との両立と、完備テンソル積を経由する `toMixedPerfectoid` との一致を示す。
 
-既存の `SerrePositivity.Section2` の宣言名・定義・証明を保持する。
-`CLMST.RPerfd` は同じ選択を再利用する透明な別名で、テンソル積の順序も
-既存の `A∞ ⊗[A] D` と一致させる。原典の `D ⊗[A] A∞` との交換同型と
-同じ perfectoid 化への普遍写像・D の作用の比較は `CLMST/TensorOrder.lean` で証明する。
+## 方針
+
+別の存在の選択は行わず、代数の作用と定義上の等式をそのまま使う。
+
+## 規約
+
+CLMST の記号 `R_perfd`（Notation 4.0.1）。テンソル積の順序は `A∞ ⊗[A] D`（原典は `D ⊗[A] A∞`）。旧 `CLMST/Algebra`・`StageRPerfd`。
+
+## 使われ方
+
+CLMST の全体。
 -/
 
-@[expose] public section
+@[expose] public noncomputable section
+
 universe u
+
+section AlgebraPart
+
 open scoped TensorProduct
-namespace SerrePositivity.Section2
-
-variable (A D : Type u) [CommRing A] [IsNoetherianRing A]
-    [CommRing D] [Algebra A D] [Module.Finite A D]
-    {h : ℕ} (t : Fin h → A) (p : ℕ) [Fact p.Prime]
-    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
-
-/-- Noether 環上の有限加群は有限表示であり、perfectoid 化の存在定理を適用できる。 -/
-local instance : Module.FinitePresentation A D := Module.finitePresentation_of_finite A D
-
-/-- `C_D = (R∞ ⊗[A] D)_perfd`。 -/
-abbrev MixedPerfectoid :=
-  Perfectoidization (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D) p hperf
-
-/-- 基底変更した有限代数から `C_D` への標準写像。 -/
-noncomputable abbrev toMixedPerfectoid :
-    (CompletedTower A t p) ⊗[A] D →+* MixedPerfectoid A D t p hperf :=
-  toPerfectoidization (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D) p hperf
-
-/-- `C_D` は perfectoid 化の普遍性を満たす。 -/
-theorem isPerfectoidization_toMixedPerfectoid :
-    IsPerfectoidization p (toMixedPerfectoid A D t p hperf) :=
-  isPerfectoidization_toPerfectoidization _ _ _ _
-
-/-- 完備化した塔を経由する基底環の作用。 -/
-noncomputable instance mixedPerfectoidAlgebraA : Algebra A (MixedPerfectoid A D t p hperf) :=
-  ((algebraMap (CompletedTower A t p) (MixedPerfectoid A D t p hperf)).comp
-    (algebraMap A (CompletedTower A t p))).toAlgebra
-
-/-- テンソル積の右側への包含と普遍写像による `D` の作用。 -/
-noncomputable instance mixedPerfectoidAlgebraD : Algebra D (MixedPerfectoid A D t p hperf) :=
-  ((toMixedPerfectoid A D t p hperf).comp Algebra.TensorProduct.includeRight.toRingHom).toAlgebra
-
-/-- 完備化した塔を経由する、完備化前の塔の作用。 -/
-noncomputable instance mixedPerfectoidAlgebraTower :
-    Algebra (Tower A t p) (MixedPerfectoid A D t p hperf) :=
-  ((algebraMap (CompletedTower A t p) (MixedPerfectoid A D t p hperf)).comp
-    (algebraMap (Tower A t p) (CompletedTower A t p))).toAlgebra
-
-/-- 基底環から完備化した塔を経由する作用の両立。 -/
-instance mixedPerfectoidScalarTowerCompleted :
-    IsScalarTower A (CompletedTower A t p) (MixedPerfectoid A D t p hperf) :=
-  IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
-
-/-- 完備化前後の塔の作用は両立する。長さの係数制限に使う。 -/
-instance mixedPerfectoidScalarTowerTowerCompleted :
-    IsScalarTower (Tower A t p) (CompletedTower A t p) (MixedPerfectoid A D t p hperf) :=
-  IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
-
-/-- 基底環と完備化前の塔の作用は両立する。 -/
-instance mixedPerfectoidScalarTowerTower :
-    IsScalarTower A (Tower A t p) (MixedPerfectoid A D t p hperf) :=
-  IsScalarTower.of_algebraMap_eq fun _ ↦ rfl
-
-/-- テンソル積の両側で基底環の像は一致するので、`A` と `D` の作用は両立する。 -/
-instance mixedPerfectoidScalarTowerD :
-    IsScalarTower A D (MixedPerfectoid A D t p hperf) := by
-  apply IsScalarTower.of_algebraMap_eq
-  intro a
-  change toMixedPerfectoid A D t p hperf
-    (algebraMap (CompletedTower A t p) ((CompletedTower A t p) ⊗[A] D)
-      (algebraMap A (CompletedTower A t p) a)) =
-    toMixedPerfectoid A D t p hperf (Algebra.TensorProduct.includeRight (algebraMap A D a))
-  rw [AlgHom.commutes, ← IsScalarTower.algebraMap_apply]
-
-end SerrePositivity.Section2
 
 namespace SerrePositivity.CLMST
 
@@ -105,3 +42,84 @@ variable (A D : Type u) [CommRing A] [IsNoetherianRing A]
 abbrev RPerfd := Section2.MixedPerfectoid A D t p hperf
 
 end SerrePositivity.CLMST
+
+end AlgebraPart
+
+section StageRPerfdPart
+
+open scoped TensorProduct
+open IsLocalRing
+
+namespace SerrePositivity.CLMST
+open Section2
+
+variable (A D : Type u) [CommRing A] [CommRing D] [Algebra A D]
+    {h : ℕ} (t : Fin h → A) (p : ℕ)
+
+variable [IsNoetherianRing A] [Module.Finite A D] [Fact p.Prime]
+    (hperf : IsIntegralPerfectoid (CompletedTower A t p) p)
+
+/-- 有限段から塔・完備化を経由して `RPerfd` へ送る A 代数写像。 -/
+def stageToRPerfd (n : ℕ) : TowerStage A t p n →ₐ[A] RPerfd A D t p hperf :=
+  (IsScalarTower.toAlgHom A (CompletedTower A t p) (RPerfd A D t p hperf)).comp
+    ((IsScalarTower.toAlgHom A (Tower A t p) (CompletedTower A t p)).comp
+      (IsScalarTower.toAlgHom A (TowerStage A t p n) (Tower A t p)))
+
+/-- 有限段の基底変更から `RPerfd` への標準 D 代数写像。 -/
+def toRPerfd (n : ℕ) : Section2.StageAlgebra A D t p n →ₐ[D] RPerfd A D t p hperf := by
+  letI : Algebra D (TowerStage A t p n ⊗[A] D) := Algebra.TensorProduct.rightAlgebra
+  exact (Algebra.TensorProduct.lift (Algebra.ofId D (RPerfd A D t p hperf))
+    (stageToRPerfd A D t p hperf n) (fun _ _ ↦ Commute.all _ _)).comp
+      (Algebra.TensorProduct.commRight A D (TowerStage A t p n)).symm.toAlgHom
+
+/-- 有限段を経由する D の作用は、既存の `RPerfd` 上の D の作用と一致する。 -/
+@[simp] theorem toRPerfd_algebraMap_D (n : ℕ) (d : D) :
+    toRPerfd A D t p hperf n (algebraMap D (Section2.StageAlgebra A D t p n) d) =
+      algebraMap D (RPerfd A D t p hperf) d :=
+  (toRPerfd A D t p hperf n).commutes d
+
+/-- 完備テンソル代数を経由する標準写像は、既存の有限段からの普遍写像と一致する。 -/
+theorem stageToCompletedTensor_toMixedPerfectoid (n : ℕ) (x : Section2.StageAlgebra A D t p n) :
+    toMixedPerfectoid A D t p hperf (Section2.stageToCompletedTensor A D t p n x) =
+      toRPerfd A D t p hperf n x := by
+  induction x using TensorProduct.inductionOn with
+  | add x y hx hy =>
+    calc
+      _ = toMixedPerfectoid A D t p hperf (Section2.stageToCompletedTensor A D t p n x) +
+          toMixedPerfectoid A D t p hperf (Section2.stageToCompletedTensor A D t p n y) :=
+        (congrArg (toMixedPerfectoid A D t p hperf)
+          ((Section2.stageToCompletedTensor A D t p n).map_add x y)).trans
+            ((toMixedPerfectoid A D t p hperf).map_add _ _)
+      _ = toRPerfd A D t p hperf n x + toRPerfd A D t p hperf n y :=
+        congrArg₂ (· + ·) hx hy
+      _ = _ := ((toRPerfd A D t p hperf n).map_add x y).symm
+  | tmul a d =>
+    let : Algebra D (TowerStage A t p n ⊗[A] D) := Algebra.TensorProduct.rightAlgebra
+    have hrhs : toRPerfd A D t p hperf n (a ⊗ₜ[A] d) =
+        algebraMap D (RPerfd A D t p hperf) d * stageToRPerfd A D t p hperf n a := by
+      change (Algebra.TensorProduct.lift (Algebra.ofId D (RPerfd A D t p hperf))
+        (stageToRPerfd A D t p hperf n) (fun _ _ ↦ Commute.all _ _))
+        ((Algebra.TensorProduct.commRight A D (TowerStage A t p n)).symm (a ⊗ₜ[A] d)) = _
+      rw [Algebra.TensorProduct.commRight_symm_tmul, Algebra.TensorProduct.lift_tmul]
+      rfl
+    rw [hrhs, Section2.stageToCompletedTensor_tmul]
+    calc
+      _ = toMixedPerfectoid A D t p hperf (Section2.stageToCompletedTower A t p n a ⊗ₜ[A] (1 : D)) *
+          toMixedPerfectoid A D t p hperf ((1 : CompletedTower A t p) ⊗ₜ[A] d) := by
+        rw [← map_mul]
+        congr 1
+        simp
+      _ = stageToRPerfd A D t p hperf n a * algebraMap D (RPerfd A D t p hperf) d := rfl
+      _ = _ := mul_comm _ _
+
+/-- 段写像の合成の一致を環準同型の等式として公開する。 -/
+theorem toRPerfd_eq_toMixedPerfectoid_comp_stage (n : ℕ) :
+    (toRPerfd A D t p hperf n).toRingHom =
+      (toMixedPerfectoid A D t p hperf).comp (Section2.stageToCompletedTensor A D t p n).toRingHom := by
+  apply RingHom.ext
+  intro x
+  exact (stageToCompletedTensor_toMixedPerfectoid A D t p hperf n x).symm
+
+end SerrePositivity.CLMST
+
+end StageRPerfdPart

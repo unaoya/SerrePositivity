@@ -7,12 +7,13 @@ public import Mathlib.Algebra.Homology.DerivedCategory.FullyFaithful
 public import Mathlib.CategoryTheory.Triangulated.TStructure.TruncLEGT
 public import SerrePositivity.CommutativeAlgebra.Localization.PowerTorsion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihilator
+public import SerrePositivity.CommutativeAlgebra.ScalarIsogeny
 
 /-! # 導来対象と写像錐のスカラーによる零化
 
 ## 概要
 
-二段の導来対象（二つの次数にだけコホモロジーを持つ対象）では、各コホモロジーを零化するスカラーの積が対象全体を零化する。加群の写像の錐について、可換図式・始域の全射・有限主開被覆を通じて零化を移し、holim との比較と Milnor 列の一様な零化から冪の零化を得る。
+二段の導来対象（二つの次数にだけコホモロジーを持つ対象）では、各コホモロジーを零化するスカラーの積が対象全体を零化する。加群の写像の錐について、可換図式・始域の全射・有限主開被覆を通じて零化を移し、holim との比較と Milnor 列の一様な零化から冪の零化を得る。被約環上の有限加群から有限自由加群への写像が `g` を反転して全単射なら、その錐は `g` の冪で零になる（`finiteFreeConeIsogeny`、CLMST Claim 2.4.8 の一般形）。
 
 ## 方針
 
@@ -24,7 +25,7 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.MilnorAnnihil
 
 ## 使われ方
 
-CLMST の almost 零化と完備テンソルの同種写像。
+CLMST の almost 零化と完備テンソルの同種写像、Prop 2.4.7 の証明（`finiteFreeConeIsogeny`）。
 -/
 
 @[expose] public noncomputable section
@@ -450,3 +451,35 @@ theorem moduleMapConeScalar_pow_eq_zero_of_iso_homotopyLimit
 end SerrePositivity
 
 end TwoCohomologyAnnihilatorPart
+
+section FiniteFreeConeIsogenyPart
+
+namespace SerrePositivity
+open CategoryTheory
+attribute [local instance] HasDerivedCategory.standard
+
+variable (R : Type u) [CommRing R] [IsReduced R]
+variable {M : Type u} [AddCommGroup M] [Module R M] [Module.Finite R M]
+
+/-- 核をg^a、余核をg^bが消すとき、錐はg^(a+b)で零化される。 -/
+theorem finiteFreeConeIsogeny (g : R) (r : ℕ) (f : M →ₗ[R] (Fin r → R))
+    (hf : Function.Bijective (awayModuleMap g f)) :
+    ∃ n : ℕ, moduleMapConeScalar R f (g ^ n) = 0 := by
+  obtain ⟨a, b, ha, hb⟩ := exists_pow_ker_coker_annihilator g r f hf
+  refine ⟨a + b, ?_⟩
+  rw [pow_add]
+  exact moduleMapConeScalar_eq_zero_of_ker_coker_annihilated R f (g ^ a) (g ^ b) ha hb
+
+/-- 同じg冪による核・余核の零化と、実導来錐の零射を同時に公開する。 -/
+theorem finiteFreeConeIsogeny_with_annihilators
+    (g : R) (r : ℕ) (f : M →ₗ[R] (Fin r → R))
+    (hf : Function.Bijective (awayModuleMap g f)) :
+    ∃ n : ℕ, moduleMapConeScalar R f (g ^ n) = 0 ∧
+      (∀ x : f.ker, g ^ n • x = 0) ∧
+      (∀ y : (Fin r → R) ⧸ f.range, g ^ n • y = 0) := by
+  obtain ⟨n, hn⟩ := finiteFreeConeIsogeny R g r f hf
+  exact ⟨n, hn, moduleMapCone_pow_scalar_eq_zero_annihilates R f g n hn⟩
+
+end SerrePositivity
+
+end FiniteFreeConeIsogenyPart

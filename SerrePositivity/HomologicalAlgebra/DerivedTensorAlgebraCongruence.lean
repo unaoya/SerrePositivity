@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionAlgebraObjects
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionMonoidal
 
 /-! # Algebra equivalences on the actual derived tensor factors -/
 @[expose] public noncomputable section

@@ -6,7 +6,7 @@ public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
 public import SerrePositivity.InfinityCategories.Derived.FiberTriangle
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.FinitePresentationComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid
 -- 本ファイルは drafts/A8/AlmostConnectivity.lean、drafts/A6/{Excision,SheafOfSetsExcision}.lean、drafts/A7/{AnimatedPerfectoidization,UniversalProperty}.lean を import する。
 

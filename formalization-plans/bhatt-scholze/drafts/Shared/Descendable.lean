@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
 public import SerrePositivity.InfinityCategories.Derived.Stability
 public import SerrePositivity.InfinityCategories.Stable.Suspension
 public import SerrePositivity.InfinityCategories.Stable.Loop
--- 取り込み時の依存先：drafts/DerivedGeneral/ScalarRestriction.lean。
+-- 取り込み時の依存先：drafts/DerivedGeneral/{ScalarRestriction,CompletionFunctor}.lean。
 
 /-!
 # descendability（[Mat16, Def 3.18]、[BS17, §11.2]）
@@ -62,8 +62,8 @@ structure IsThickTensorIdeal (P : (derivedInfinityCategory A) _⦋0⦌ → Prop)
   shifts : ∀ x, P x →
     P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
     P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
-  /-- ×：任意の頂点との導来テンソルの ∞ 関手は β5 待ち。有限 Koszul テンソルでは代用できない。 -/
-  tensor : True
+  -- 要確認（IF-G1 ⊗^L：Derived/Tensor/ に供給予定）
+  tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x → P ((tensorWith M).app _ x)
 
 /-- 概要：対象 M の生成する thick ⊗-ideal（M を含む thick ⊗-ideal の sInf）。
 方針：述語の ∀ による交わり。
@@ -72,12 +72,17 @@ structure IsThickTensorIdeal (P : (derivedInfinityCategory A) _⦋0⦌ → Prop)
 def thickTensorIdealGenerated (M : (derivedInfinityCategory A) _⦋0⦌) : (derivedInfinityCategory A) _⦋0⦌ → Prop :=
   fun N => ∀ P, IsThickTensorIdeal A P → P M → P N
 
+/-- CAlg_A の始対象 A。ここからの辺は各代数の構造射を表す。 -/
+abbrev unitAlgebra := (algebraEmbedding A).app _ (nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))
+
 /-- 概要：[Mat16, Def 3.18]：A → B（CAlg_A の対象 B）が descendable ⇔ B の生成する thick ⊗-ideal が単位 A を含む。
 方針：定義どおり。
 規約：B は `(CAlg_R A) _⦋0⦌`、底の D(A) 対象は忘却。**W9-II-13**：これは離散環 A を底とする特殊化。Lemma 8.6 の Δ_T → Δ_{T_∞} は E∞ 代数 Δ_T を底とする
 射なので、一般形は「対称モノイダルな安定 ∞ 圏 𝒞 の可換代数対象 B と Mod_B(𝒞) の thick ⊗-ideal」で定義する（`IsDescendableOver`、下）。
 使われ方：以下すべて。 -/
-def IsDescendable (B : (CAlg_R A) _⦋0⦌) : Prop := sorry -- thickTensorIdealGenerated A (U B) (unit)
+def IsDescendable (B : (CAlg_R A) _⦋0⦌) : Prop :=
+  thickTensorIdealGenerated A ((cAlgForgetDerived A).app _ B)
+    ((cAlgForgetDerived A).app _ (unitAlgebra A))
 
 /-- 概要：一般形（W9-II-13、**入口を確定：11-03、BS-D3 の D3-04**）：CAlg_A の射 f : R → B（R は一般に離散でない E∞-A 代数、例 Δ_T）が descendable ⇔
 Mod_R(D(A)) の中で B の生成する thick ⊗-ideal が R を含む（[Mat16, Def 3.18] を 𝒞 = Mod_R に適用）。離散環版 `IsDescendable` は R = 単位対象の特殊化。
@@ -96,9 +101,6 @@ def HasDescentIndexLEOver (R B : (CAlg_R A) _⦋0⦌) (f : SSet.Edge R B) (n : �
 /-- 概要：(d) の一般形：descendable ⇔ ∃ n, index ≤ n。 -/
 theorem isDescendableOver_iff_exists_index (R B : (CAlg_R A) _⦋0⦌) (f : SSet.Edge R B) :
     IsDescendableOver A R B f ↔ ∃ n, HasDescentIndexLEOver A R B f n := by sorry -- 基盤待ち
-
-/-- CAlg_A の始対象 A。ここからの辺は各代数の構造射を表す。 -/
-abbrev unitAlgebra := (algebraEmbedding A).app _ (nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))
 
 /-- 概要：離散環版との一致：R が CAlg_A の単位対象（A の埋め込み）で f が B の構造射なら `IsDescendableOver A R B f ↔ IsDescendable A B`。
 方針：Mod_{1} = D(A)。単位は離散 A の像で、そこから B への辺は構造射。
@@ -204,7 +206,7 @@ theorem hasDescentIndexLEOver_frobeniusColimit
     HasDescentIndexLEOver A _ _ (algebraArrowEdge A c.vertex) (2*n) := by
   sorry -- BS17 Lemma 11.22。射の圏の余極限は両端の余極限と誘導射を同時に指定する
 
-/-- ×：Mod_R の完備テンソルは導来テンソルの ∞ 関手（β5）と M13 の反射の合成を待つ。 -/
+/-- ×：D(A) の導来テンソルは IF-G1 の供給予定。一般底 Mod_R の相対完備テンソルは M15 待ち。 -/
 theorem isDescendableOver_complete : True := by trivial -- 基盤待ち
 
 /-- 概要：index ≤ n：fib(A → B)^{⊗n} → A が零（[BS17, §11.2]）。
@@ -273,11 +275,31 @@ theorem hasDescentIndexLE_frobeniusColimit (D : (SSet.uliftFunctor.{u+1,0}).obj 
     @HasDescentIndexLE t.base t.ring t.target (2*n) := by
   sorry -- 各離散底の Mod_base での index を一般形に移し、余極限の離散底で読み戻す
 
-/-- 概要：(h) 完備版：D_comp(A) で完備テンソルについて同じ定義と (a)〜(g)。原典 Lemma 8.6 の形。
-方針：完備化は対称モノイダルな局所化。
-規約：×。D(A) の導来テンソルの ∞ 関手がないのでその完備反射との合成をまだ作れない。
-使われ方：Lemma 8.6。 -/
-theorem isDescendable_complete : True := by trivial
+/-- 離散底の完備 thick ⊗-ideal。テンソル積を s で導来完備化する。 -/
+structure IsThickCompleteTensorIdeal (s : Finset A)
+    (P : (derivedInfinityCategory A) _⦋0⦌ → Prop) : Prop where
+  finiteColimits : ∀ {K : SSet.{u+1}} [K.Finite] (F : K ⟶ derivedInfinityCategory A)
+    (c : JoinCocone F), (∀ i, P (F.app _ i)) → IsColimitCone c → P c.vertex
+  retracts : ∀ {x y} (i : SSet.Edge x y) (r : SSet.Edge y x),
+    Truncated.HomotopyCategory.homMk i.toTruncated ≫ Truncated.HomotopyCategory.homMk r.toTruncated =
+      𝟙 (HomotopyCategory.mk x) → P y → P x
+  shifts : ∀ x, P x →
+    P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
+    P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
+  -- 要確認（IF-G1 ⊗^L：Derived/Tensor/ に供給予定）
+  tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x →
+    P ((tensorWith M ≫ Derived.completion A s).app _ x)
+
+/-- B の生成する完備 thick ⊗-ideal が完備化した単位を含む。 -/
+def IsDescendableComplete (s : Finset A) (B : (CAlg_R A) _⦋0⦌) : Prop :=
+  ∀ P, IsThickCompleteTensorIdeal A s P → P ((cAlgForgetDerived A).app _ B) →
+    P ((cAlgForgetDerived A ≫ Derived.completion A s).app _ (unitAlgebra A))
+
+/-- (h) 台が s 完備な B の descendability は、対称モノイダルな局所化である完備化に沿って移る。 -/
+theorem isDescendable_complete (s : Finset A) (B : (CAlg_R A) _⦋0⦌)
+    (hB : Derived.IsDerivedComplete A s ((cAlgForgetDerived A).app _ B)) :
+    IsDescendable A B → IsDescendableComplete A s B := by
+  sorry -- 完備化は有限余極限・retract・shift を保ち、B の完備化は hB により B と同値
 
 /-- 概要：[Mat16, Prop 3.31]、有限表示かつ忠実平坦な離散 A 代数は descendable。忠実平坦だけでは偽（Aoki, arXiv:2411.05995）。A5 では直接使わない記録（D5-04）。 -/
 theorem isDescendable_of_faithfullyFlat (B : Type u) [CommRing B] [Algebra A B]

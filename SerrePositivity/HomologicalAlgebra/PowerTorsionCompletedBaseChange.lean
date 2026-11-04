@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.TorCoefficientPowerTorsionDescent
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTensor
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTor
 public import SerrePositivity.HomologicalAlgebra.ModuleScalarExtensionAnnihilator
 
 /-! # Completed coefficient base change for original power-torsion Tor tests

@@ -3,8 +3,8 @@ module
 public import SerrePositivity.PerfectComplex.Free.Support
 public import SerrePositivity.HomologicalAlgebra.Complex.Basic
 public import SerrePositivity.HomologicalAlgebra.FiniteFreeBaseChange
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
-public import SerrePositivity.CommutativeAlgebra.Koszul
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
 public import Mathlib.RingTheory.TensorProduct.Finite
 public import Mathlib.Algebra.Homology.HomotopyCategory.MappingCone
 public import Mathlib.GroupTheory.FreeAbelianGroup
@@ -214,7 +214,7 @@ end twist
 /-! ## Koszul 複体は台つき完全複体 -/
 
 /-- Koszul 複体 `K(x)` は `x` に台をもつ完全複体：`[-n, 0]` に乗り、各項は有限自由
-（`CommutativeAlgebra/Koszul.lean`）、`x` に台をもつ（`isSupported_koszulComplex`）。 -/
+（`CommutativeAlgebra/Koszul/Basic.lean`）、`x` に台をもつ（`isSupported_koszulComplex`）。 -/
 theorem isPerfectSupported_koszulComplex {n : ℕ} (x : Fin n → R) :
     IsPerfectSupported x (koszulComplex x) where
   bounded := ⟨-(n : ℤ), 0, fun i hi ↦ by

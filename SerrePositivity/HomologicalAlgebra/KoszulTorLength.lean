@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.TorSymmetry
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.CommutativeAlgebra.Length.Basic
 public import SerrePositivity.CommutativeAlgebra.Length.CommonResidueField
 

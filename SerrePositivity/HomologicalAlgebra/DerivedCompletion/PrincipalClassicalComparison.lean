@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Adic.Completion.Algebra
 public import SerrePositivity.HomologicalAlgebra.RegularPrincipalTor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteScalarConePurity
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionDerivedComparison
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedPurity
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.Comparisons
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionQuotient
 /-! # Regular principal completion H0 is the classical adic completion
 
@@ -67,8 +67,8 @@ def principalCompletionToAdic :
   letI := principalCompletionAlgebra R a
   let : IsAdicComplete (Ideal.span {a}) (AdicCompletion (Ideal.span {a}) R) :=
     AdicCompletion.isAdicComplete (Submodule.fg_span (Set.toFinite _))
-  exact (principalCompletion_existsUnique_algHom R a (AdicCompletion (Ideal.span {a}) R)
-    (isModuleComplete_of_isAdicComplete R a _)).choose
+  exact principalCompletionLiftAlgHom R a (AdicCompletion (Ideal.span {a}) R)
+    (isModuleComplete_of_isAdicComplete R a _)
 
 /-- The classical completion extends the original map into principal H0. -/
 def adicCompletionToPrincipal :

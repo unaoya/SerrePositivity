@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Delta.Division.Relations
 public import SerrePositivity.CommutativeAlgebra.FlatRegularQuotient
-public import SerrePositivity.CommutativeAlgebra.KoszulResolution
+public import SerrePositivity.CommutativeAlgebra.Koszul.Resolution
 public import SerrePositivity.BhattScholze.Delta.Division.Basic
 public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing

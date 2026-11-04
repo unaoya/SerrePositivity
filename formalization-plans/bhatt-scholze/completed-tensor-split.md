@@ -5,7 +5,19 @@
 `SerrePositivity/BhattScholze/Perfectoidization/CompletedTensor.lean` から E3 への依存を外す。**数学的な変更はなく、モジュールの分割と一つの定理の証明の差し替え**。
 基準：main `1ed122760` の本体（DG-W3 後も同ファイルは不変）。
 
-## 1. 現状（確認済み）
+## 0. 2a 後の現状（2026-11-04、main 590c4eff7 の取り込み後に再確認。§1 は 2a 前の記録）
+
+- `CompletedTensor.lean` は同じ場所（`BhattScholze/Perfectoidization/`）・同じ 610 行・同じ 6 節。E3 依存は最後の節だけで、`Derived.IntegralExistence` の import（12 行）も残る。
+  `IsIntegralPerfectoid`・`IsPerfectoidization` は 2a で `CommutativeAlgebra/Perfectoid/Defs.lean` に移った（旧 `CommutativeAlgebra/IntegralPerfectoid` は削除）。
+- **CompletedTensor を直接 import するもの**（7 本）：ルート `BhattScholze.lean`、`Almost/Lemma103`、`PerfectoidIdeal/CompletedQuotient`、
+  `Perfectoidization/{CompletedBaseChange, CompletedTensorComparison, ExcisionTor, TensorCompatibility}`。
+- **有限直積の節を使うもの**（3 本）：`isIntegralPerfectoid_finPi` は `Perfectoidization/ExcisionTor`・`Perfectoidization/FiniteComparisonExcision`・
+  `CLMST/PerfectoidizationIsogeny/ConstantRank`、`finiteProduct_perfectoidization_exists_algEquiv` は `ExcisionTor` だけ。§1 の CLMST 5 本は 2a の統合で消え、CLMST は 1 本になった。
+- 置き場所の推奨：芯は `BhattScholze/Perfectoidization/CompletedTensor.lean` に残し（名前を変えない。importer の付け替えが不要になる）、
+  有限直積の節を新モジュール `BhattScholze/Perfectoid/FiniteProduct.lean` に切り出して直接証明に差し替える（drafts/A6/PerfectoidFiniteProduct の置き場所の予定どおり）。
+  これで付け替えが要るのは有限直積を使う 3 本だけ（CLMST は import 行 1 行）。
+
+## 1. 現状（確認済み、2a 前）
 
 - `CompletedTensor.lean`（610 行、6 節）。E3 に依存するのは最後の節 `PerfectoidFiniteProduct`（554〜610 行）だけ：
   - `isIntegralPerfectoid_finPi`（567 行）：`Inputs.exists_perfectoidization_of_integral R (Fin r → R) p hR` を使う。

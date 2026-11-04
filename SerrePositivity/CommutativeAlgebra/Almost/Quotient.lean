@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.Almost.Category
 public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import Mathlib.Algebra.Module.Torsion.Basic
 
 /-!
