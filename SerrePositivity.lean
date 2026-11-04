@@ -268,7 +268,6 @@ public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleResolut
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Tower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairZeroCompletion
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTorsionTor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PowerTower
