@@ -120,8 +120,10 @@ theorem injective_fieldMaps_away_of_nil_diagonal
   dsimp only [t'] at hz
   rw [IsLocalization.Away.lift_eq] at hz
   apply sub_eq_zero.mp
+  change t (x ⊗ₜ[A] (1 : B) - (1 : B) ⊗ₜ[A] x) = 0 at hz
+  rw [map_sub] at hz
   dsimp only [t, D] at hz
-  rw [map_sub, Algebra.TensorProduct.lift_tmul, Algebra.TensorProduct.lift_tmul] at hz
+  rw [Algebra.TensorProduct.lift_tmul, Algebra.TensorProduct.lift_tmul] at hz
   simpa [φ, ψ, u₀, v₀] using hz
 
 /-- 整な単射の主局所化は、対角核が nil なら普遍同相。 -/

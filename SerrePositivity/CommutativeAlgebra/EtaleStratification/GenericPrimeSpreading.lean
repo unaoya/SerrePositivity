@@ -52,6 +52,7 @@ theorem awayMap_surjective_of_localizedModuleMap_surjective
       (algebraMap A A' x) = algebraMap B B' (f x)
     dsimp only [A', B']
     simp only [Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
+    rfl
   change Function.Surjective F
   intro y
   obtain ⟨x, hx⟩ := hf ((IsLocalizedModule.iso S b).symm y)

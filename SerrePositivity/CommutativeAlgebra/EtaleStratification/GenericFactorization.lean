@@ -33,12 +33,14 @@ theorem exists_generic_etale_subalgebra
     [IsNoetherianRing R] [IsReduced R] [Module.Finite R S]
     (p : ℕ) [Fact p.Prime] (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) :
     letI : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+    letI : Module R (GenericProduct R) := Algebra.toModule
     let B := (GenericProduct R ⊗[R] S) ⧸ nilradical (GenericProduct R ⊗[R] S)
     ∃ C : Subalgebra (GenericProduct R) B,
       Module.Finite (GenericProduct R) C ∧ Algebra.Etale (GenericProduct R) C ∧
         IsUniversalHomeomorphism C.val.toRingHom ∧
         Function.Bijective (invertPrimeMap p C.val.toRingHom) := by
   let : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+  let : Module R (GenericProduct R) := Algebra.toModule
   let K := GenericProduct R
   let B := (K ⊗[R] S) ⧸ nilradical (K ⊗[R] S)
   obtain ⟨hfinite, _, _, m, v, L, hL, a, ⟨e⟩, hfields⟩ := generic_structure R S p hZp
@@ -47,7 +49,7 @@ theorem exists_generic_etale_subalgebra
   let : ∀ j, Algebra (GenericField (v j)) (L j) := a
   let : Algebra K (∀ j, L j) := (RingHom.pi (fun j ↦
     (algebraMap (GenericField (v j)) (L j)).comp (Pi.evalRingHom GenericField (v j)))).toAlgebra
-  let M (j : Fin m) := separableClosure (GenericField (v j)) (L j)
+  let M (j : Fin m) : Type u := separableClosure (GenericField (v j)) (L j)
   let : ∀ j, Module.Finite (GenericField (v j)) (L j) := fun j ↦ (hfields j).1
   let : ∀ j, Module.Finite (GenericField (v j)) (M j) := fun j ↦ (hfields j).2.1
   let : ∀ j, Algebra.Etale (GenericField (v j)) (M j) := fun j ↦ (hfields j).2.2.1

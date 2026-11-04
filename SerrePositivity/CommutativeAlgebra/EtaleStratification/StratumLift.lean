@@ -38,8 +38,8 @@ def stratumLift {R A : Type u} [CommRing R] [CommRing A] [IsReduced A]
 theorem stratumLift_unit {R A : Type u} [CommRing R] [CommRing A] [IsReduced A]
     (I : Ideal R) (g : R) (f : R →+* A) (hI : I ≤ RingHom.ker f) (hg : IsUnit (f g)) (x : R) :
     stratumLift I g f hI hg (stratumUnit I g x) = f x := by
-  simp only [stratumLift, stratumUnit, RingHom.comp_apply, IsLocalization.Away.lift_eq,
-    Ideal.Quotient.lift_mk]
+  exact IsLocalization.Away.lift_eq (Ideal.Quotient.mk I.radical g) hg
+    (Ideal.Quotient.mk I.radical x)
 
 /-- 層の標準射は I 自体を消す。 -/
 theorem stratumUnit_ker {R : Type u} [CommRing R] (I : Ideal R) (g : R) :

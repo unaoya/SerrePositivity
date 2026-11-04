@@ -24,6 +24,8 @@ public import Mathlib.RingTheory.Localization.Finiteness
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -48,9 +50,10 @@ theorem etale_away_of_dvd {R A : Type u} [CommRing R] [CommRing A] [Algebra R A]
     (h : Algebra.Etale R (Localization.Away a)) :
     Algebra.Etale R (Localization.Away b) := by
   obtain ⟨c, rfl⟩ := hab
-  exact Algebra.basicOpen_subset_etaleLocus_iff_etale.mp
-    ((PrimeSpectrum.basicOpen_mul_le_left a c).trans
-      (Algebra.basicOpen_subset_etaleLocus_iff_etale.mpr h))
+  apply Algebra.basicOpen_subset_etaleLocus_iff_etale.mp
+  intro P hP
+  apply (Algebra.basicOpen_subset_etaleLocus_iff_etale.mpr h)
+  exact (PrimeSpectrum.basicOpen_mul_le_left a c) hP
 
 /-- 被約な有限代数の一般点での分解は、一つの主開集合へ延びる。 -/
 theorem exists_reduced_spread_out
@@ -75,8 +78,10 @@ theorem exists_reduced_spread_out
   let a : R' →+* T' := Localization.awayMap (algebraMap R T) g
   let b : T' →+* S' := Localization.awayMap T.val.toRingHom (algebraMap R T g)
   let : Algebra R' T' := a.toAlgebra
-  let : IsScalarTower R R' T' := IsScalarTower.of_algebraMap_eq fun x ↦
-    (IsLocalization.map_eq _ _ _ x).symm
+  let : IsScalarTower R R' T' := IsScalarTower.of_algebraMap_eq fun x ↦ by
+    change algebraMap T T' (algebraMap R T x) = a (algebraMap R R' x)
+    dsimp only [R', T']
+    simp only [a, Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
   let : Module.Finite R' T' := Module.Finite.of_isLocalizedModule
     (Submonoid.powers (g : R)) (IsScalarTower.toAlgHom R T T').toLinearMap
   let : Algebra.Etale R T' := etale_away_of_dvd (map_dvd (algebraMap R T) hg₁) h₁
@@ -89,8 +94,10 @@ theorem exists_reduced_spread_out
   refine ⟨g, CommRingCat.of T', a, b, ?_, inferInstance, inferInstance, ?_, ?_⟩
   · apply IsLocalization.ringHom_ext (Submonoid.powers (g : R))
     ext x
-    simp only [RingHom.comp_apply, a, b, Localization.awayMap, IsLocalization.Away.map,
-      IsLocalization.map_eq]
+    change b (a (algebraMap R R' x)) =
+      Localization.awayMap (algebraMap R S) g (algebraMap R R' x)
+    dsimp only [R', T', S']
+    simp only [a, b, Localization.awayMap, IsLocalization.Away.map, IsLocalization.map_eq]
     rfl
   · apply isUniversalHomeomorphism_away_of_nil_diagonal Subtype.val_injective
       (algebraMap R T g)
@@ -99,7 +106,8 @@ theorem exists_reduced_spread_out
     have he : algebraMap T (S ⊗[T] S) (algebraMap R T g) =
         algebraMap R (S ⊗[T] S) g :=
       (IsScalarTower.algebraMap_apply R T (S ⊗[T] S) g).symm
-    simpa only [he] using hn
+    rw [he]
+    exact hn
   · apply invertPrimeMap_awayMap_bijective p T.val.toRingHom (algebraMap R T g)
       Subtype.val_injective
     exact Localization.awayMap_surjective_of_dvd T.val.toRingHom

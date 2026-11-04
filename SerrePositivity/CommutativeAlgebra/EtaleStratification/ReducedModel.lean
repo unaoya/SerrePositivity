@@ -26,6 +26,8 @@ public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPrim
 noncomputable section
 universe u
 
+set_option backward.isDefEq.respectTransparency false
+
 namespace SerrePositivity.CommutativeAlgebra
 
 open scoped TensorProduct
@@ -44,6 +46,7 @@ theorem exists_reduced_generic_model
       (∃ g : nonZeroDivisors R, Function.Surjective
         (Localization.awayMap T.val.toRingHom (algebraMap R T g * p))) := by
   let : Algebra R (GenericProduct R) := (genericProductMap R).toAlgebra
+  let : Module R (GenericProduct R) := Algebra.toModule
   let K := GenericProduct R
   let M := nonZeroDivisors R
   let : IsLocalization M K := isLocalization_genericProduct R
@@ -55,6 +58,7 @@ theorem exists_reduced_generic_model
   let : IsLocalization (Algebra.algebraMapSubmonoid S M) B :=
     isLocalizedModule_iff_isLocalization.mp inferInstance
   obtain ⟨C, hCfinite, hCetale, hCU, hCp⟩ := exists_generic_etale_subalgebra R S p hZp
+  let : Algebra R C := inferInstanceAs (Algebra R (C.restrictScalars R))
   let : Module.Finite K C := hCfinite
   let : Algebra.Etale K C := hCetale
   let T := genericSubalgebraModel f C
@@ -74,7 +78,16 @@ theorem exists_reduced_generic_model
   refine ⟨T, inferInstance, exists_away_etale_genericSubalgebraModel M f C, ?_, ?_⟩
   · obtain ⟨g, hg⟩ := exists_away_nil_diagonal_of_localized_fieldMaps R T S B M
       (injective_fieldMaps_of_localization_base (Algebra.algebraMapSubmonoid T M) hCU)
-    rw [IsLocalization.ker_map _ _ (Submonoid.map_powers _ _)] at hg
+    have hk := IsLocalization.ker_map
+      (S := Localization.Away (algebraMap R (S ⊗[T] S) g))
+      (M := Submonoid.powers (algebraMap R (S ⊗[T] S) g))
+      (T := Submonoid.powers ((Algebra.TensorProduct.lmul' T (S := S))
+        (algebraMap R (S ⊗[T] S) g)))
+      (Localization.Away ((Algebra.TensorProduct.lmul' T (S := S))
+        (algebraMap R (S ⊗[T] S) g)))
+      (Algebra.TensorProduct.lmul' T (S := S)).toRingHom (Submonoid.map_powers _ _)
+    change RingHom.ker (Localization.awayMap _ _) = _ at hk
+    rw [hk] at hg
     exact ⟨g, hg⟩
   · apply exists_away_mul_surjective M p t f T.val (C.val.restrictScalars R)
       (by ext; rfl)

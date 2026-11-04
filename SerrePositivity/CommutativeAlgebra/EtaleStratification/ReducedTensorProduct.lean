@@ -43,6 +43,7 @@ theorem tensorRingLift_tmul {R A B C : Type u}
     tensorRingLift f g h (a ⊗ₜ[R] b) = f a * g b := by
   simp only [tensorRingLift, AlgHom.toRingHom_eq_coe, RingHom.coe_coe,
     Algebra.TensorProduct.lift_tmul]
+  rfl
 
 /-- 被約環への射を始域の被約化に降ろす。 -/
 def reductionLift {A B : Type u} [CommRing A] [CommRing B] [IsReduced B]

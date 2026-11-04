@@ -96,6 +96,7 @@ theorem stratumQuotientTargetEquiv_unit {R S : Type u} [CommRing R] [CommRing S]
         (quotientStratumBaseMap f I (Ideal.Quotient.mk I g)) (Ideal.Quotient.mk (I.map f) y) := by
   simp only [stratumQuotientTargetEquiv, RingEquiv.trans_apply, stratumQuotientEquiv_unit,
     stratumRingEquivOfIdealEq_unit]
+  exact stratumRingEquivOfIdealEq_unit _ _ _
 
 /-- 商環の初層と元の環の層の比較は、誘導される射と可換。 -/
 theorem stratumQuotientEquiv_naturality {R S : Type u} [CommRing R] [CommRing S]
@@ -105,9 +106,12 @@ theorem stratumQuotientEquiv_naturality {R S : Type u} [CommRing R] [CommRing S]
         (stratumQuotientEquiv I g).toRingHom := by
   apply stratumRing_hom_ext I g
   intro x
-  simp only [RingHom.comp_apply, RingEquiv.toRingHom_eq_coe, RingHom.coe_coe,
-    stratumMap_unit, stratumQuotientTargetEquiv_unit, stratumQuotientEquiv_unit,
-    quotientStratumBaseMap_mk]
+  change stratumQuotientTargetEquiv f I g (stratumMap f I g (stratumUnit I g x)) =
+    stratumMap (quotientStratumBaseMap f I) ⊥ (Ideal.Quotient.mk I g)
+      (stratumQuotientEquiv I g (stratumUnit I g x))
+  rw [stratumMap_unit, stratumQuotientTargetEquiv_unit, stratumQuotientEquiv_unit,
+    stratumMap_unit]
+  rfl
 
 /-- 商環の初層の有限エタール分解を、元の環の対応する層に戻す。 -/
 theorem hasEtaleFactorization_of_quotient_stratum

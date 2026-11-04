@@ -52,33 +52,41 @@ theorem exists_stratum_target_equiv
     rw [e.symm.commutes]
     exact stratumUnit_ker Iₐ _ (Ideal.mem_map_of_mem _ hx)
   have hfg : IsUnit (f (algebraMap R A g)) := by
-    simpa only [f, RingHom.comp_apply, AlgEquiv.commutes] using stratumUnit_isUnit Iᵦ (algebraMap R B g)
+    change IsUnit (stratumUnit Iᵦ (algebraMap R B g) (e (algebraMap R A g)))
+    rw [e.commutes]
+    exact stratumUnit_isUnit Iᵦ (algebraMap R B g)
   have hhg : IsUnit (h (algebraMap R B g)) := by
-    simpa only [h, RingHom.comp_apply, AlgEquiv.commutes] using stratumUnit_isUnit Iₐ (algebraMap R A g)
+    change IsUnit (stratumUnit Iₐ (algebraMap R A g) (e.symm (algebraMap R B g)))
+    rw [e.symm.commutes]
+    exact stratumUnit_isUnit Iₐ (algebraMap R A g)
   let F : A' →+* B' := stratumLift Iₐ (algebraMap R A g) f hfI hfg
   let H : B' →+* A' := stratumLift Iᵦ (algebraMap R B g) h hhI hhg
+  have hF (x : A) : F (stratumUnit Iₐ (algebraMap R A g) x) =
+      stratumUnit Iᵦ (algebraMap R B g) (e x) := stratumLift_unit _ _ _ _ _ x
+  have hH (x : B) : H (stratumUnit Iᵦ (algebraMap R B g) x) =
+      stratumUnit Iₐ (algebraMap R A g) (e.symm x) := stratumLift_unit _ _ _ _ _ x
   have hl : Function.LeftInverse H F := by
     have he : H.comp F = RingHom.id A' := by
       apply stratumRing_hom_ext Iₐ (algebraMap R A g)
       intro x
-      simp only [RingHom.comp_apply, F, H, stratumLift_unit, f, h,
-        RingEquiv.toRingHom_eq_coe, RingHom.coe_coe,
-        AlgEquiv.symm_apply_apply, RingHom.id_apply]
+      change H (F (stratumUnit Iₐ (algebraMap R A g) x)) =
+        stratumUnit Iₐ (algebraMap R A g) x
+      rw [hF, hH, e.symm_apply_apply]
     exact fun x ↦ RingHom.congr_fun he x
   have hr : Function.RightInverse H F := by
     have he : F.comp H = RingHom.id B' := by
       apply stratumRing_hom_ext Iᵦ (algebraMap R B g)
       intro x
-      simp only [RingHom.comp_apply, F, H, stratumLift_unit, f, h,
-        RingEquiv.toRingHom_eq_coe, RingHom.coe_coe,
-        AlgEquiv.apply_symm_apply, RingHom.id_apply]
+      change F (H (stratumUnit Iᵦ (algebraMap R B g) x)) =
+        stratumUnit Iᵦ (algebraMap R B g) x
+      rw [hH, hF, e.apply_symm_apply]
     exact fun x ↦ RingHom.congr_fun he x
   refine ⟨RingEquiv.ofBijective F ⟨hl.injective, hr.surjective⟩, ?_⟩
   apply stratumRing_hom_ext I g
   intro x
   simp only [RingHom.comp_apply, stratumMap_unit]
   change F (stratumUnit Iₐ (algebraMap R A g) (algebraMap R A x)) = _
-  rw [F, stratumLift_unit]
+  rw [hF]
   exact congrArg (stratumUnit Iᵦ (algebraMap R B g)) (e.commutes x)
 
 /-- 代数同型で有限エタール分解を持つ層を移す。 -/
