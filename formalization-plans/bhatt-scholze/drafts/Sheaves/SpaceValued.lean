@@ -7,7 +7,7 @@ public import SerrePositivity.InfinityCategories.F2.Presentable
 public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
 public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
 public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
-public import SerrePositivity.InfinityCategories.Kan.PiZeroConstant
+public import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
 public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
 public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
 public import SerrePositivity.InfinityCategories.Core.PushoutShape
@@ -47,18 +47,9 @@ open CategoryTheory Limits SSet MonoidalCategory MonoidalClosed
 open scoped Simplicial
 open F2.Presentable (IsPresentable)
 
--- SpaceInfinity と spaceInfinity_quasicategory は F1 の実体（D5-07）。
--- 要確認（IF-G1 G13：F1 に供給予定）
--- discreteSpaceInclusion : nerve (Type u) ⟶ SpaceInfinity.{u}（完全忠実）
--- Is0TruncatedSpace : SpaceInfinity.{u} _⦋0⦌ → Prop
+-- SpaceInfinity・spaceInfinity_quasicategory は F1/Categories/CatInfinity、setsToKan・discreteSpaceInclusion・
+-- Is0TruncatedSpace と前層の比較定理は F1/Categories/DiscreteSpace（IF-G1 G13、main 7bda72c3c）の実体。
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u+1}} [Quasicategory E]
-
-/-- 集合を定値単体的集合（離散 Kan 複体）へ送る。 -/
-def setsToKan : Type u ⥤ KanObject.{u} where
-  obj T := ⟨_, SerrePositivity.SimplicialModel.PiZeroConstant.discrete_kan T⟩
-  map f := (Functor.const SimplexCategoryᵒᵖ).map f
-  map_id := by intro; rfl
-  map_comp := by intros; rfl
 
 /-- 集合値前層を点ごとに離散 Kan 複体へ送り、その図式の coherent nerve を取る。 -/
 def discretePresheaf (P : 𝒞ᵒᵖ ⥤ Type u) : Presheaf 𝒞 SpaceInfinity.{u} :=
@@ -67,8 +58,8 @@ def discretePresheaf (P : 𝒞ᵒᵖ ⥤ Type u) : Presheaf 𝒞 SpaceInfinity.{
 /-- 離散前層の U での値は P(U) の離散空間。 -/
 theorem discretePresheaf_vertex (P : 𝒞ᵒᵖ ⥤ Type u) (U : 𝒞) :
     (discretePresheaf P).app _ (ULift.up (nerveVertex (Opposite.op U))) =
-      discreteSpaceInclusion.app _ (nerveVertex (P.obj (Opposite.op U))) := by
-  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+      discreteSpaceInclusion.app _ (nerveVertex (P.obj (Opposite.op U))) :=
+  discreteSpaceInclusion_diagramVertex P (Opposite.op U)
 
 /-- 集合値前層の自然変換を Kan 値図式の辺として実現する離散埋め込み。 -/
 private def kanDiscretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
@@ -89,8 +80,7 @@ def discretePresheafInclusion (𝒞 : Type u) [SmallCategory 𝒞] :
   let K := kanDiscretePresheafInclusion 𝒞
   refine ⟨K.val, K.property.1, ?_⟩
   intro P Q φ U
-  -- K.property.2 φ の辺を U で評価し、kanDiagramNaturalTransformationEdge_at を使う。
-  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+  exact discreteSpaceInclusion_presheafInclusion_edge K.val φ (K.property.2 φ) (Opposite.op U)
 
 /-- φ の像の U 成分は、集合の写像 φ(U) を離散埋め込みで送った一単体。 -/
 theorem discretePresheafInclusion_edge {P Q : 𝒞ᵒᵖ ⥤ Type u} (φ : P ⟶ Q) (U : 𝒞) :
@@ -107,7 +97,8 @@ def Is0Truncated (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _⦋0⦌) : Prop :=
 theorem is0Truncated_iff_pointwise (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _⦋0⦌) :
     Is0Truncated x ↔ ∀ U : 𝒞,
       Is0TruncatedSpace ((vertexToPresheaf x).app _ (ULift.up (nerveVertex (Opposite.op U)))) := by
-  sorry -- 要確認（IF-G1 G13：F1 に供給予定）
+  sorry -- ⇒ は `discretePresheaf_vertex` と点ごとの評価、⇐ は各点の離散空間 `Is0TruncatedSpace` の証人から P を組み、
+        -- 点ごとの頂点同型を関手 ∞ 圏の頂点同型へ（各点で可逆な辺は可逆、Core）
 
 /-- 概要：S8-1：空間値前層の J 層化 L（HTT 6.2.2.7）。
 方針：`exists_sheafGeneratingEdges` ＋ `sheafification_of_generatingEdges`。h𝒮 は `F2.Presentable.space_isPresentable` で与えられる。

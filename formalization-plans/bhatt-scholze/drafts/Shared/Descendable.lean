@@ -14,6 +14,7 @@ public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
 public import SerrePositivity.InfinityCategories.Derived.Stability
 public import SerrePositivity.InfinityCategories.Stable.Suspension
 public import SerrePositivity.InfinityCategories.Stable.Loop
+public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 -- 取り込み時の依存先：drafts/DerivedGeneral/{ScalarRestriction,CompletionFunctor}.lean。
 
 /-!
@@ -62,7 +63,7 @@ structure IsThickTensorIdeal (P : (derivedInfinityCategory A) _⦋0⦌ → Prop)
   shifts : ∀ x, P x →
     P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
     P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
-  -- 要確認（IF-G1 ⊗^L：Derived/Tensor/ に供給予定）
+  -- tensorWith は Derived/Tensor/Fixed（IF-G1 ⊗ᴸ、main 7bda72c3c）。N ↦ N ⊗ᴸ M
   tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x → P ((tensorWith M).app _ x)
 
 /-- 概要：対象 M の生成する thick ⊗-ideal（M を含む thick ⊗-ideal の sInf）。
@@ -206,7 +207,7 @@ theorem hasDescentIndexLEOver_frobeniusColimit
     HasDescentIndexLEOver A _ _ (algebraArrowEdge A c.vertex) (2*n) := by
   sorry -- BS17 Lemma 11.22。射の圏の余極限は両端の余極限と誘導射を同時に指定する
 
-/-- ×：D(A) の導来テンソルは IF-G1 の供給予定。一般底 Mod_R の相対完備テンソルは M15 待ち。 -/
+/-- ×：D(A) の導来テンソルは `tensorWith`（IF-G1）で入ったが、一般底 Mod_R の相対完備テンソルは M15 待ち。 -/
 theorem isDescendableOver_complete : True := by trivial -- 基盤待ち
 
 /-- 概要：index ≤ n：fib(A → B)^{⊗n} → A が零（[BS17, §11.2]）。
@@ -286,7 +287,7 @@ structure IsThickCompleteTensorIdeal (s : Finset A)
   shifts : ∀ x, P x →
     P (((suspensionFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt) ∧
     P (((loopFunctor (derivedInfinityCategory A)).obj (HomotopyCategory.mk x)).pt)
-  -- 要確認（IF-G1 ⊗^L：Derived/Tensor/ に供給予定）
+  -- tensorWith は Derived/Tensor/Fixed（IF-G1 ⊗ᴸ、main 7bda72c3c）。N ↦ N ⊗ᴸ M
   tensor : ∀ (x M : (derivedInfinityCategory A) _⦋0⦌), P x →
     P ((tensorWith M ≫ Derived.completion A s).app _ x)
 
