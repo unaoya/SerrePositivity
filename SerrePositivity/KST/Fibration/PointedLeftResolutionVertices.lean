@@ -1,5 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices
+import all SerrePositivity.InfinityCategories.Stable.Transport.PointedLeftResolutionVertices
 public import SerrePositivity.KST.Fibration.PointKanHomVertices
 public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.PointedReverseFiberVertices
 

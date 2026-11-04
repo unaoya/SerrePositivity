@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.CospanConeSquareLegs
 
 public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.CosliceRoofPasting
 public import SerrePositivity.InfinityCategories.Core.SimplexVertexDetection

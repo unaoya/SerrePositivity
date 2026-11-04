@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.WeakHomotopyAnodyneComparison
 public import SerrePositivity.KST.Fibration.GroupoidCompletionWeakUnit
 public import SerrePositivity.InfinityCategories.F1.KanModels.StrictKanCompletion
 public import SerrePositivity.InfinityCategories.Derived.Localization.GroupoidCompletionEvaluation

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Definition
 
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic

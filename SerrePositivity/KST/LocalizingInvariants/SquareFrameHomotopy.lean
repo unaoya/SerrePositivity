@@ -21,6 +21,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace SquareFrameHomotopy
+attribute [local instance] SerrePositivity.KST.LocalizingInvariants.SquareFrameHomotopy.instMonoSSetEquivalencePathι
 variable {X : SSet.{u}} {f g : SquareFrame X} (H : SquareFrameHomotopy f g)
 
 def pathFrame : SquareFrame (equivalencePath X) where

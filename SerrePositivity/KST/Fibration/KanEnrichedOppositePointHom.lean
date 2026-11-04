@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.Fibration.KanEnrichedEdgewisePointHom
 public import SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedOppositePointHom
 public import SerrePositivity.InfinityCategories.Stable.KanModels.KanEnrichedEdgewiseDoubleEvaluation
 

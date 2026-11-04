@@ -1,4 +1,7 @@
 module
+public import Mathlib.CategoryTheory.Preadditive.Biproducts
+public import Mathlib.CategoryTheory.Monoidal.Preadditive
+public import Mathlib.CategoryTheory.Monoidal.Mon
 
 public import Mathlib.CategoryTheory.Monoidal.Bimod
 

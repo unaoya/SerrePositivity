@@ -19,9 +19,6 @@ public import Mathlib.Order.Monotone.Defs
 @[expose] public section
 set_option backward.isDefEq.respectTransparency false
 universe u
-open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
-open scoped Simplicial
-open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.SquareDiagonal
 
 def postIndex : Fin 2 × Fin 2 →o Fin 3 where

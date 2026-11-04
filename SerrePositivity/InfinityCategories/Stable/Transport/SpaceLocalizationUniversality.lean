@@ -41,7 +41,6 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ指定辺の反転は、実際の可逆辺とその逆データの宇宙持ち上げで保たれる。 -/

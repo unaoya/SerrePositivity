@@ -52,8 +52,6 @@ open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
-open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 

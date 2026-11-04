@@ -33,7 +33,6 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.InfinityCategories.HomotopyLimits
-open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の Kan 射の coherent な可逆性は、同じ射の全基点 π 同値性を与える。 -/

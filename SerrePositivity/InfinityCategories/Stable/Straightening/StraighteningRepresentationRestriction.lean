@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.F1.Transport.LeftTransportRepresentation
 public import Mathlib.AlgebraicTopology.SimplexCategory.Defs
 public import Mathlib.AlgebraicTopology.SimplicialSet.Basic
 public import Mathlib.AlgebraicTopology.SimplicialSet.Nerve
@@ -35,7 +36,6 @@ universe u
 open CategoryTheory Limits MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
   (R : LeftTransportRepresentation ((SSet.uliftFunctor.{u + 1, u}).map p))

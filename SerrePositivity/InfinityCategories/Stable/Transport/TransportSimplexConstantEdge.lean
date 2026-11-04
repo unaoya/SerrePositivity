@@ -41,7 +41,6 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 初頂点を保つ射の区間は、元の底の同じ初頂点に厳密に定値。 -/

@@ -35,7 +35,6 @@ universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の undercategory で、恒等射から入力された射へ向かう実辺。 -/

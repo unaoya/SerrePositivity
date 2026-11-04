@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.KST.LocalizingInvariants.FinalHornContraction
 
 public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowContractionSquares
 

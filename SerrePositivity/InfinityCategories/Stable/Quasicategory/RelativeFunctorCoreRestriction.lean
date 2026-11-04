@@ -36,7 +36,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 private lemma comp_app_congr {T U V : SSet.{u}} {f : T ⟶ U} {g : U ⟶ V} {h : T ⟶ V}

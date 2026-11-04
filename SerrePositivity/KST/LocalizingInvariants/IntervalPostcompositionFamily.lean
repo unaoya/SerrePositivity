@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Core.EquivalencePath
 
 public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
 

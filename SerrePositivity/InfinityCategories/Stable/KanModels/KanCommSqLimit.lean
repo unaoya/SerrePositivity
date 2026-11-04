@@ -42,8 +42,6 @@ open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
-open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 

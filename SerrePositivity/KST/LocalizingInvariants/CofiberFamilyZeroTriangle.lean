@@ -22,6 +22,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace CofiberFamily
+attribute [local instance] SerrePositivity.KST.LocalizingInvariants.CofiberFamily.cofiberFamilyFunctorZero
 variable (X : SSet.{u}) [Quasicategory X] [IsStable X]
   {A : SSet.{u}} (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X)
 

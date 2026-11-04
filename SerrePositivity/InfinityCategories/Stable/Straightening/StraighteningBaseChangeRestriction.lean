@@ -46,7 +46,6 @@ universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 

@@ -1,4 +1,5 @@
 module
+public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
 
 public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
 public import SerrePositivity.InfinityCategories.Stable.Exact.SuspensionExactFunctor

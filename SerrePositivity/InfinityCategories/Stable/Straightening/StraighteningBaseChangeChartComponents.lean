@@ -12,11 +12,8 @@ public import Mathlib.CategoryTheory.Iso
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v w
-open CategoryTheory MonoidalClosed SSet
-open scoped Simplicial
-open SerrePositivity.InfinityCategories
+open CategoryTheory
 namespace SerrePositivity.KST.Fibration
-variable {B D : SSet.{u}} (k : D ⟶ B)
 
 private lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
     (h : a = a') (e : a' ≅ b) : HEq (eqToIso h ≪≫ e) e := by

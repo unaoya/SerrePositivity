@@ -37,7 +37,7 @@ universe u
 open CategoryTheory SSet
 open scoped Simplicial
 namespace SerrePositivity.KST.LocalizingInvariants.CoreFlag
-open InfinityCategories Spectra
+open InfinityCategories
 
 /-- 小さな亜群の nerve はホモトピー圏の亜群性から Kan となる。 -/
 lemma groupoidNerve_kanComplex (D : Type u) [SmallCategory D] [IsGroupoid D] : KanComplex (nerve D) := by
