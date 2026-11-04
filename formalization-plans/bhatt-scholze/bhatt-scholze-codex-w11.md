@@ -40,6 +40,11 @@ Mathlib の `Algebra.Etale`・`Module.Finite`・有限射影加群・エター�
 
 BS-W10 §4 と同じ形で `report-codex-w11.md` に追記。各停止点で `git status --short` が作業範囲だけであること、ビルドの実測、残る sorry と理由。
 
+## 開始の条件（11-05、調整役）
+
+- F-2（名前空間の付け替え）の取り込みと改名表の配布の後、11-06 朝に main から worktree を切って始める。開始時に F-2 の改名表で本指示書と drafts の名前を確かめる。
+- 当面全ビルドはないので、単体ビルドは coordination.md §2-4a（`ps` の確認と `with_build_lock --wait 0`）だけでよい。
+
 ## worktree の規則（11-05、調整役の提案）
 
 - worktree は一度に一つ。作業 B が main に入ったら `bs-w10` の worktree は `git worktree remove` で消す（ブランチは残す）。
