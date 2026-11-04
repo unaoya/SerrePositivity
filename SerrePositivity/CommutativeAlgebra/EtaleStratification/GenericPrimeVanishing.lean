@@ -55,4 +55,40 @@ theorem exists_away_mul_subsingleton_of_localized_power_torsion
   obtain ⟨a, ha⟩ := hd
   rw [ha, mul_smul, smul_comm, mul_smul, hr i, smul_zero]
 
+/-- 局所化後に p 冪倍がすべて像に入るなら、一つの分母と p の反転後に全射。 -/
+theorem exists_away_mul_surjective_of_localized_power_surjective
+    {R M N M' N' : Type u} [CommRing R]
+    [AddCommGroup M] [AddCommGroup N] [AddCommGroup M'] [AddCommGroup N']
+    [Module R M] [Module R N] [Module R M'] [Module R N'] [Module.Finite R N]
+    (S : Submonoid R) (p : R) (a : M →ₗ[R] M') (b : N →ₗ[R] N')
+    [IsLocalizedModule S a] [IsLocalizedModule S b]
+    (f : M →ₗ[R] N) (f' : M' →ₗ[R] N') (hcomm : f'.comp a = b.comp f)
+    (hp : ∀ y : N', ∃ x : M', ∃ n : ℕ, f' x = p ^ n • y) :
+    ∃ g : S, Function.Surjective (LocalizedModule.map (Submonoid.powers ((g : R) * p)) f) := by
+  have htor (z : N ⧸ f.range) : ∃ n : ℕ,
+      p ^ n • LocalizedModule.mkLinearMap S (N ⧸ f.range) z = 0 := by
+    refine Submodule.Quotient.induction_on _ z ?_
+    intro y
+    obtain ⟨x, n, hx⟩ := hp (b y)
+    obtain ⟨⟨m, s⟩, hs⟩ := IsLocalizedModule.surj S a x
+    have he : b (f m) = b ((s : R) • (p ^ n • y)) := by
+      calc
+        b (f m) = f' (a m) := (LinearMap.congr_fun hcomm m).symm
+        _ = f' ((s : R) • x) := by rw [← hs]; rfl
+        _ = b ((s : R) • (p ^ n • y)) := by rw [map_smul, hx, map_smul, map_smul]
+    obtain ⟨r, hr⟩ := IsLocalizedModule.exists_of_eq (S := S) (f := b) he
+    refine ⟨n, ?_⟩
+    rw [← map_smul]
+    apply (show p ^ n • (Submodule.Quotient.mk y : N ⧸ f.range) ∈
+        LinearMap.ker (LocalizedModule.mkLinearMap S (N ⧸ f.range)) from ?_)
+    apply LocalizedModule.mem_ker_mkLinearMap_iff.mpr
+    refine ⟨(r : R) * s, S.mul_mem r.property s.property, ?_⟩
+    change (Submodule.Quotient.mk (((r : R) * s) • (p ^ n • y)) : N ⧸ f.range) = 0
+    apply (Submodule.Quotient.mk_eq_zero f.range).mpr
+    refine ⟨(r : R) • m, ?_⟩
+    simpa only [map_smul, Submonoid.smul_def, mul_smul] using hr
+  obtain ⟨g, hg⟩ := exists_away_mul_subsingleton_of_localized_power_torsion
+    S p (N ⧸ f.range) htor
+  exact ⟨g, (f.localizedMap_surjective_iff_subsingleton_localized_coker _).mpr hg⟩
+
 end SerrePositivity.CommutativeAlgebra

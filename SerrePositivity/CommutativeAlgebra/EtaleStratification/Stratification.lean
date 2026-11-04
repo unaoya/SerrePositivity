@@ -4,7 +4,7 @@ public import SerrePositivity.CommutativeAlgebra.EtaleStratification.StratumQuot
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericLocalization
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericSpread
 public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericRadicial
-public import SerrePositivity.CommutativeAlgebra.EtaleStratification.GenericPrimeVanishing
+public import SerrePositivity.CommutativeAlgebra.EtaleStratification.ReducedSpread
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.Data.Nat.Factorization.Induction
 public import Mathlib.Data.Int.NatPrime
@@ -12,6 +12,7 @@ public import Mathlib.Data.Nat.Prime.Int
 public import Mathlib.RingTheory.Etale.Field
 public import Mathlib.RingTheory.Etale.Locus
 public import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
+public import Mathlib.RingTheory.Ideal.Quotient.Nilpotent
 public import Mathlib.RingTheory.Localization.Away.Basic
 public import Mathlib.RingTheory.Adjoin.FG
 public import Mathlib.RingTheory.Noetherian.Basic
@@ -223,8 +224,45 @@ theorem spread_out_generic (R S : Type u) [CommRing R] [CommRing S] [Algebra R S
     (p : ℕ) [Fact p.Prime] (hZp : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R)) :
     ∃ g : R, (∀ P : GenericPoint R, g ∉ P.val.asIdeal) ∧
       HasEtaleFactorization p (stratumMap (algebraMap R S) ⊥ g) := by
-  sorry -- 被約基底の generic_structure の冪等元・生成元・関係の分母を同時に払い、全極小点を残す。
-        -- エタール locus の開性、標数 p の判定、標数 0 の逆射も広げて p 反転後の同型を得る
+  let I : Ideal R := (⊥ : Ideal R).radical
+  let J : Ideal S := ((⊥ : Ideal R).map (algebraMap R S)).radical
+  let R₀ := R ⧸ I
+  let S₀ := S ⧸ J
+  let q : R₀ →+* S₀ := Ideal.quotientMap J (algebraMap R S)
+    (Ideal.map_le_iff_le_comap.mp (Ideal.map_radical_le (algebraMap R S)))
+  let : Algebra R₀ S₀ := q.toAlgebra
+  let : IsScalarTower R R₀ S₀ := IsScalarTower.of_algebraMap_eq fun r ↦ rfl
+  let : IsReduced R₀ := (Ideal.isRadical_iff_quotient_reduced I).mp (Ideal.radical_isRadical _)
+  let : IsReduced S₀ := (Ideal.isRadical_iff_quotient_reduced J).mp (Ideal.radical_isRadical _)
+  let : Module.Finite R S₀ := Module.Finite.trans S S₀
+  let : Module.Finite R₀ S₀ := Module.Finite.of_restrictScalars_finite R R₀ S₀
+  have hZp₀ : ∀ q : ℕ, q.Prime → q ≠ p → IsUnit (q : R₀) := by
+    intro q hq hqp
+    simpa only [map_natCast] using (hZp q hq hqp).map (Ideal.Quotient.mk I)
+  obtain ⟨g₀, hfac⟩ := exists_reduced_spread_out R₀ S₀ p hZp₀
+  obtain ⟨g, hg⟩ := Ideal.Quotient.mk_surjective (g₀ : R₀)
+  refine ⟨g, ?_, ?_⟩
+  · intro P hP
+    have hmin : P.val.asIdeal ∈ I.minimalPrimes := by
+      rw [I, Ideal.radical_minimalPrimes]
+      exact P.property
+    rw [Ideal.minimalPrimes_eq_comap] at hmin
+    obtain ⟨Q, hQ, hQP⟩ := hmin
+    have hmem : (g₀ : R₀) ∈ Q := by
+      rw [← hg]
+      change g ∈ Ideal.comap (Ideal.Quotient.mk I) Q
+      rwa [hQP]
+    exact notMem_nonZeroDivisors_of_mem_mem_minimalPrimes hQ hmem g₀.property
+  · have hf : HasEtaleFactorization p (Localization.awayMap q (Ideal.Quotient.mk I g)) := by
+      simpa only [hg] using hfac
+    have he : stratumMap (algebraMap R S) ⊥ g =
+        Localization.awayMap q (Ideal.Quotient.mk I g) := by
+      apply IsLocalization.ringHom_ext (Submonoid.powers (Ideal.Quotient.mk I g))
+      ext x
+      simp only [stratumMap, Localization.awayMap, IsLocalization.Away.map,
+        IsLocalization.Away.lift_eq, IsLocalization.map_eq]
+    rw [he]
+    exact hf
 
 /-- 概要：Lemma 10.12（原典の形）：有限表示有限 R → S（R は **Z_(p) 代数**：p 以外の素数は R で可逆）に層別 g_1,…,g_n：(1)(2)(3)。
 方針：noetherian 近似、一般点での分解、その広げ、R_0/(g_1) への noetherian 帰納、

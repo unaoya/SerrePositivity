@@ -127,6 +127,39 @@ theorem invertPrimeMap_bijective {A B : Type u} [CommRing A] [CommRing B]
     rfl
   exact ⟨hl.injective, hr.surjective⟩
 
+/-- p 反転後の全射性は、各元の p 冪倍が像に入ることと同値。 -/
+theorem invertPrimeMap_surjective_iff {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) (f : A →+* B) :
+    Function.Surjective (invertPrimeMap p f) ↔
+      ∀ y : B, ∃ x : A, ∃ n : ℕ, f x = (p : B) ^ n * y := by
+  let : IsLocalization.Away (f (p : A)) (Localization.Away (p : B)) := by
+    rw [map_natCast]
+    infer_instance
+  simpa only [map_natCast] using
+    (IsLocalization.Away.map_surjective_iff
+      (Localization.Away (p : A)) (Localization.Away (p : B)) f (p : A))
+
+/-- 単射は p 反転後も単射。 -/
+theorem invertPrimeMap_injective {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) (f : A →+* B) (hf : Function.Injective f) :
+    Function.Injective (invertPrimeMap p f) := by
+  let : IsLocalization ((Submonoid.powers (p : A)).map f) (Localization.Away (p : B)) := by
+    rw [Submonoid.map_powers, map_natCast]
+    infer_instance
+  exact IsLocalization.map_injective_of_injective _ _ _ hf
+
+/-- g p の反転後に全射な単射は、g の反転後に p を反転して同型。 -/
+theorem invertPrimeMap_awayMap_bijective {A B : Type u} [CommRing A] [CommRing B]
+    (p : ℕ) (f : A →+* B) (g : A) (hf : Function.Injective f)
+    (hs : Function.Surjective (Localization.awayMap f (g * p))) :
+    Function.Bijective (invertPrimeMap p (Localization.awayMap f g)) := by
+  refine ⟨invertPrimeMap_injective p _ ?_, ?_⟩
+  · exact IsLocalization.map_injective_of_injective _ _ _ hf
+  · apply (invertPrimeMap_surjective_iff p _).mpr
+    have h := Localization.awayMap_awayMap_surjective f g (p : A) hs
+    rw [Localization.awayMap_surjective_iff] at h
+    simpa only [map_natCast] using h
+
 /-- 同型は、恒等な有限エタール射とその同型に分解できる。 -/
 theorem hasEtaleFactorization_of_bijective {A B : Type u} [CommRing A] [CommRing B]
     (p : ℕ) (f : A →+* B) (hf : Function.Bijective f) : HasEtaleFactorization p f := by

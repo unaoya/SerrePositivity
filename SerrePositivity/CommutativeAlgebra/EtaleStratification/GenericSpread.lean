@@ -38,6 +38,7 @@ theorem exists_away_etale_genericSubalgebraModel
   let T := genericSubalgebraModel f C
   let t := genericSubalgebraModelMap f C
   let : Module.Finite R T := genericSubalgebraModel_finite f C
+  let : IsNoetherianRing T := IsNoetherianRing.of_finite R T
   let : Algebra T C := t.toRingHom.toAlgebra
   let : IsScalarTower R T C := IsScalarTower.of_algebraMap_eq fun r ↦ (t.commutes r).symm
   let : IsLocalizedModule M t.toLinearMap := genericSubalgebraModel_isLocalizedModule M f C
