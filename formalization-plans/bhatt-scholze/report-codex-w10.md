@@ -395,3 +395,29 @@ B-2 本体と指定された `PowerClosure` に加え、直接 importer の `Str
 新規 CA 36 本のうち、辞書順の `Factorization` から `GenericPoints` まで 12 本の単体ビルドに成功した。F-1 の verify と競合し、続きは共有鍵の解放待ち。
 
 これまでは別プロジェクトのビルドも待っていたが、2026-11-05 のユーザー確認で、`ps` の競合判定を **SerrePositivity の worktree 間に限定**することが承認された。以後は `ps -axo command=` と PID ごとの作業ディレクトリを確認し、別プロジェクトを除外する。SerrePositivity のビルド・監査・verify と共有鍵の使用中は従来どおり待機する。成功済み 12 本と成果物同期を再実行せず、残り 24 本と shared 監査から再開する待機処理へ切り替えた。
+
+## 取り込み準備完了（2026-11-05）
+
+F-1 の verify が終了して共有鍵が解放された後、残りの単体ビルドと shared 監査を完了した。
+
+- main `9f59541d3` の取り込み：`37da02200`。main 側優先でマージし、未解決・手動解決の衝突なし。
+- shared 監査の再生成・登録：`ba8e73804`。641 → 677 モジュール、新規 CA 36 本の import と登録だけを追加。監査ロジック・許可ファイル・許可公理は変更なし。
+- **新規 36 モジュールすべての単体 `lake build` が成功**。内訳は `UniversalHomeomorphism/` 6 本、`EtaleStratification/` 30 本。直接 importer は両ディレクトリ内に収まり、これら 36 本の検査に含まれる。外部の直接 importer は 0 本。
+- ビルドの実行時間の合計は **159.8 秒**（各 3.9〜5.4 秒、鍵の待機時間を除く）。`Basic`・`PowerClosure`・`Stratification` も個別に成功。
+- **shared 監査の単独実行が成功**（112.4 秒、終了コード 0）。実行コマンドは `scripts/refactor/with_build_lock.sh --wait 0 -- lake env lean scripts/audit/shared.lean`。
+
+監査出力：
+
+```text
+17600 declarations in 677 modules checked; 27 depend on sorryAx through the allowed quotations
+```
+
+許可済み引用経由の依存は上記のとおりで、監査にエラーはない。新規 CA ディレクトリの `sorry` 0 を維持し、検収済みの証明ソースには今回の取り込み準備による変更を加えていない。
+
+各実行直前に `ps -axo command=` を確認し、`with_build_lock --wait 0` を使用した。途中からはユーザー確認に従い、PID の作業ディレクトリも調べて SerrePositivity の worktree 内に競合判定を限定した。各単体ビルド後に鍵を解放し、他作業のビルド・監査・verify 中は待機した。全ビルド・verify は実行していない。
+
+ログは `/private/tmp/bsw10-main-integration.log`、個別結果・所要時間は `/private/tmp/bsw10-main-integration-results.json`。検証キューは終了済み。`git diff --check` も通過した。`drafts/A8/Stratification.lean` の削除はブランチ差分に含まれる。
+
+**main には取り込んでいない。** 調整役が `codex/bs-w10-b` を取り込める状態で停止する。最終のこの報告だけをパス指定でステージしてコミットする。S4 の追加依頼で書いた篩・切断比較の草稿は別ブランチ `codex/bs-s4-sieve-comparison`（`51c1162c3`、未ビルド）に分離し、この取り込みには含めていない。
+
+検証中に main は `55b419a24` まで進んだ（F-1 と G2 の先行分、S4 草稿の追加）。今回の検証基準は取り込んだ `9f59541d3`。その後の main 更新には、新規 CA 両ディレクトリ、`scripts/audit/shared.lean`、`scripts/make_area_audits.py`、本報告の変更がないことを確認した。S4 草稿の更新は別ブランチで追従する。
