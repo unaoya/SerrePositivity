@@ -1,13 +1,14 @@
 -- 将来の置き場所：SerrePositivity.InfinityCategories.Sheaves.Sheafification（S4、M12a、BS）。
 -- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §8 の S4、foundation-entry-points.md §1.9・§4。ビルドしない。
--- 11-05 新設：S4 の生成辺は切断 Γ(X, F)（Sheaves/SpaceValued の `sectionsOf`）を使うので、GlobalSections から
+-- 11-05 新設：S4 の生成辺は切断 Γ(X, F)（Sheaves/SetSections の `sectionsOf`）を使うので、GlobalSections から
 -- `exists_sheafGeneratingEdges`・`sheafification_exists` を、SpaceValued から `sheafification_exists_spaces` をここへ移した。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
+public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
+public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
 public import SerrePositivity.InfinityCategories.F2.Tensor.Space
 public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
--- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,SpaceValued}.lean を import する。
+-- 本ファイルは drafts/Sheaves/{SheafCondition,SetSections,GlobalSections}.lean を import する。
 
 /-!
 # 層化の存在（S4、HTT 5.5.4.15・6.2.2.7）：被覆篩の生成辺
@@ -19,10 +20,10 @@ W は、被覆篩 S ∈ J U の包含 S ↪ h_U を離散な空間値前層の�
 
 ## 方針
 1. 篩の元の圏 `(sieveCategory S)ᵒᵖ` は篩の前層 `S.functor` の元の圏と同値で、射影は `sieveDiagram S` に一致する（1 圏）。
-   よって Γ(S.functor, F) は F の S 上の制限図式の極限（`sectionsOf_eq_limit_elements`）。
+   よって Γ(S.functor, F) は F の S 上の制限図式の極限（指定錐を逆同値の nerve で制限する）。
 2. Γ(h_U, F) ≃ F(U)（`sectionsOf_representable`）。包含 S ↪ h_U が誘導する Γ(h_U, F) → Γ(S, F) は、この二つの同一視の下で
    `restrictionCone F S` の比較射。よって「S で降下する ⇔ `sectionsOf_map S.functorInclusion` が可逆」。
-3. G8 の自然な別版（IF-G2）：Map(X ⋙ ⊗M, F) ≃ Map(M, Γ(X, F)) は X について自然。S ↪ h_U に当てると、
+3. G8 の自然な別版（IF-G2）：Map(X ⋙ ⊗M, F) ≃ Map(M, Γ(X, F)) の篩包含 S ↪ h_U に関する自然性だけを使うと、
    「辺 S ⊗ M → h_U ⊗ M について局所 ⇔ Map(M, −) が Γ(h_U, F) → Γ(S, F) を同値に送る」。
 4. M が検出族なら、すべての i で同値 ⇔ Γ(h_U, F) → Γ(S, F) が可逆。1〜3 と合わせて「W 局所 ⇔ 層」。
 
@@ -30,7 +31,7 @@ W は、被覆篩 S ∈ J U の包含 S ↪ h_U を離散な空間値前層の�
 E は presentable（`hE`）。安定性は使わない（空間値・CAlg 値にも同じ補題を当てる）。検出族の存在は presentable 性から（要確認：F2 の名前）。
 
 ## 使われ方
-GlobalSections の `sheafification_exists`（D(A) 値）、本ファイルの `sheafification_exists_spaces`（S8-1）、
+本ファイルの `sheafification_exists`（D(A) 値）と `sheafification_exists_spaces`（S8-1）、
 CAlgValued の `sheafification_exists_cAlg`（G12 の後）。
 -/
 
@@ -52,28 +53,40 @@ variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u+1}} [Quasicategory E]
 方針：(f : V → U, f ∈ S) ↦ ⟨op V, f⟩。元の圏の射 ⟨op V, f⟩ → ⟨op V', f'⟩ は h : V' → V で h ≫ f = f'、すなわち篩の圏の f' → f。
 規約：`sectionsOf_eq_limit_elements` の `e : D ≌ F.Elements` の形（D = (sieveCategory S)ᵒᵖ）。
 使われ方：Γ(S.functor, F) を制限図式の極限に。 -/
-def sieveElementsEquiv {U : 𝒞} (S : Sieve U) : (sieveCategory S)ᵒᵖ ≌ S.functor.Elements := by
-  sorry -- 対象・射の対応は上のとおり。逆も同じ式で、単位・余単位は恒等
+def sieveElementsEquiv {U : 𝒞} (S : Sieve U) : (sieveCategory S)ᵒᵖ ≌ S.functor.Elements :=
+  (sieveElementsEquivalence S).symm
 
 /-- 概要：同値の後に元の圏の射影を取ると、篩の制限図式の形状 `sieveDiagram S` に一致する。
 方針：対象 (f : V → U) ↦ op V、射 g ↦ g.op の両辺を比べる。
 規約：関手の等号（`sectionsOf_eq_limit_elements` の図式をそのまま `restriction F S` に書き換えるため）。
 使われ方：`sectionsOf_sieve`。 -/
 theorem sieveElementsEquiv_functor_π {U : 𝒞} (S : Sieve U) :
-    (sieveElementsEquiv S).functor ⋙ Functor.Elements.π S.functor = sieveDiagram S := by
-  sorry -- 定義の展開（Functor.ext）
+    (sieveElementsEquiv S).functor ⋙ Functor.Elements.π S.functor = sieveDiagram S :=
+  sieveCategoryToElements_comp_π S
 
 /-! ## 2. 篩の切断と restrictionCone -/
 
 /-- 概要：Γ(S.functor, F) は F の S 上の制限図式の極限：任意の極限錐の頂点と頂点同型。
-方針：`sectionsOf_eq_limit_elements` を `sieveElementsEquiv S` に当て、`sieveElementsEquiv_functor_π` で図式を `restriction F S` に書き換える。
+方針：選んだ極限錐を `sieveElementsEquiv S` で制限し、図式を `restriction F S` に書き換え、指定錐 c と比較する。
 規約：錐は呼び出し側が指定する。
 使われ方：`isLimit_restrictionCone_iff_sectionsMap`。 -/
 def sectionsOf_sieve (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U)
     (h : HasLimit (sectionsOfDiagram S.functor F))
     (c : JoinCone (restriction F S)) (hc : IsLimitCone c) :
     VertexIso (sectionsOf S.functor F h) c.vertex := by
-  sorry -- sectionsOf_eq_limit_elements S.functor F h (sieveElementsEquiv S) c' hc'（c' は c を図式の等号で移したもの）
+  let j := (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (sieveCategoryToElements S))
+  have hj : IsQCatEquivalence j :=
+    (F1B.nerveQCatEquivalence (sieveElementsEquiv S)).isQCatEquivalence.ulift
+  let d := restrictJoinCone (sectionsOfCone S.functor F h) j
+  have hd : IsLimitCone d :=
+    (F2.Presentable.isLimitCone_iff_restrict_equivalentShape j hj _).mp
+      (sectionsOfCone_isLimit S.functor F h)
+  let d' : JoinCone (restriction F S) :=
+    ⟨d.val, d.property.trans (sieveSectionsDiagram_reindex S F)⟩
+  have hd' : IsLimitCone d' := (F2.isLimitCone_iff_of_cone_val_eq d d' rfl).mp hd
+  have e := limitVertexIso d' c hd' hc
+  change VertexIso d.vertex c.vertex at e
+  simpa only [d, restrictJoinCone_vertex, sectionsOf] using e
 
 /-- 概要：包含 S ↪ h_U が誘導する Γ(h_U, F) → Γ(S, F) が可逆 ⇔ `restrictionCone F S` が極限錐（S で降下する）。
 方針：Γ(h_U, F) ≃ F(U)（`sectionsOf_representable`）、Γ(S, F) ≃ lim（`sectionsOf_sieve`）。この二つの下で `sectionsOf_map` は
@@ -85,7 +98,9 @@ theorem isLimit_restrictionCone_iff_sectionsMap (F : Presheaf 𝒞 E) {U : 𝒞}
     (hU : HasLimit (sectionsOfDiagram (yoneda.obj U) F)) :
     IsLimitCone (restrictionCone F S) ↔
       IsInvertibleEdge (sectionsOf_map S.functorInclusion F hS hU) := by
-  sorry -- 上の方針。sectionsOf_map の本体は IF-G2 の `SetWeight.sectionsMap`（指定錐版）
+  exact (sieveSectionsMap_isInvertible_iff S F
+    (sectionsOfCone S.functor F hS) (sectionsOfCone_isLimit _ _ _)
+    (sectionsOfCone (yoneda.obj U) F hU) (sectionsOfCone_isLimit _ _ _)).symm
 
 /-- 概要：層 ⇔ すべての被覆篩の包含で切断の写像が可逆。
 方針：`IsSheaf` の定義と `isLimit_restrictionCone_iff_sectionsMap`。
@@ -95,7 +110,7 @@ theorem isSheaf_iff_sectionsMap (J : GrothendieckTopology 𝒞) (hE : IsPresenta
     IsSheaf J F ↔ ∀ (U : 𝒞) (S : Sieve U), S ∈ J U →
       IsInvertibleEdge (sectionsOf_map S.functorInclusion F
         (sectionsOfDiagram_hasLimit hE S.functor F) (sectionsOfDiagram_hasLimit hE (yoneda.obj U) F)) := by
-  sorry -- forall_congr と isLimit_restrictionCone_iff_sectionsMap
+  exact isSheaf_iff_sieveSectionsMap_isInvertible J hE F
 
 /-! ## 3. 検出族と生成辺 -/
 
@@ -118,14 +133,12 @@ theorem exists_detectingFamily (hE : IsPresentable E) :
   sorry -- IF-G2 G14
 
 /-- 概要：被覆篩の包含 S ↪ h_U を離散な空間値前層の辺とみなし、G8 の空間とのテンソル ⊗M_i で E 値前層の辺 S ⊗ M_i → h_U ⊗ M_i に送る。
-方針：`discretePresheafInclusion 𝒞` で辺 S.functor ⟶ yoneda.obj U を空間値前層の辺にし、各点で `tensorSpaceFunctor hE (M i)` を後合成する。
+方針：G2 の `SetWeight.sieveTensorEdge` をそのまま使い、自然性の四角形と同じ指定辺を選ぶ。
 規約：添字は (U, 被覆篩 S, i)。全体で Type u（𝒞 が小さいので）。
 使われ方：S4 の辺族 W。 -/
 def sheafGeneratingEdges (J : GrothendieckTopology 𝒞) (hE : IsPresentable E) {ι : Type u} (M : ι → E _⦋0⦌) :
     (Σ U : 𝒞, {S : Sieve U // S ∈ J U} × ι) → (PresheafCat 𝒞 E) _⦋1⦌ :=
-  fun ⟨U, S, i⟩ =>
-    ((nerve.edgeMk S.val.functorInclusion).map
-      ((discretePresheafInclusion 𝒞).val ≫ (ihom _).map (tensorSpaceFunctor hE (M i)))).edge
+  fun ⟨U, S, i⟩ => (SetWeight.sieveTensorEdge S.val hE (M i)).edge
 
 /-- 概要：W 局所 ⇔ 層。
 方針：辺 S ⊗ M_i → h_U ⊗ M_i についての局所性は、G8 の自然な別版（IF-G2）を包含 S ↪ h_U に当てて、

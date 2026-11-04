@@ -119,7 +119,7 @@ theorem sheafification_of_generatingEdges (J : GrothendieckTopology 𝒞) (hE : 
   rw [← h]
   exact F2.Presentable.Localization.bousfield_isReflectiveSubcategory hP edges
 
--- `exists_sheafGeneratingEdges`・`sheafification_exists`（S4）は drafts/Sheaves/SheafGenerators.lean へ移した（11-05。切断 Γ を使うため SpaceValued の後）。
+-- `exists_sheafGeneratingEdges`・`sheafification_exists`（S4）は drafts/Sheaves/SheafGenerators.lean へ移した（11-05。切断 Γ の比較は SetSections に分離）。
 
 /-- 同じ反射の選択を層化の頂点、射、単位に使う。 -/
 def sheafificationFunctor (J : GrothendieckTopology 𝒞) (hJ : Sheafification J E) :
