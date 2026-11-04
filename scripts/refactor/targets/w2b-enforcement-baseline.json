@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "config_sha256": "6a16ac0870c002f4c644dacd48f51cfe31274b6982988f89de3fe1b97a2bbb3b",
+  "config_sha256": "a8eddf9505b8b7bab7547c3eb081ec84cfeb83f96988d835f2e5591452a1f5f6",
   "approval": "IF-W2b §12 main df0d45e69",
   "description": "Approved existing 21 direct edges plus the unchanged pre-W2b W2a-2 aggregate bounds. This is not a ratchet baseline reset.",
   "direct_edges": [
@@ -98,5 +98,6 @@
       "forbidden_module_count": 166,
       "affected_core_module_count": 3379
     }
-  }
+  },
+  "configuration_followup": "IF-F §6 main 9f59541d3: only three ArrowFactorization modules added to Foundation; direct-edge allowances and aggregate limits unchanged."
 }

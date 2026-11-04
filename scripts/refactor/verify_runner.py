@@ -8,7 +8,8 @@ from pathlib import Path
 import subprocess
 import time
 
-from layer_check import imports, read_graph
+from layer_check import read_graph
+from audit_imports import audit_imports
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -16,7 +17,7 @@ ROOT=Path(__file__).resolve().parents[2]
 def cache_key(root, path, graph, memo=None):
     memo={} if memo is None else memo
     source=(root/path).read_bytes()
-    pending=list(imports(source.decode()));seen=set()
+    pending=list(audit_imports(source.decode()));seen=set()
     while pending:
         mod=pending.pop()
         if mod in seen or mod not in graph:continue
@@ -24,7 +25,7 @@ def cache_key(root, path, graph, memo=None):
     h=hashlib.sha256()
     def add(name,data):
         h.update(name.encode()+b'\0'+str(len(data)).encode()+b'\0'+data)
-    add('schema',b'IF-W0-2-cache-v1')
+    add('schema',b'IF-F-cache-v2')
     add('path',path.encode());add('source',source)
     for name in ['lean-toolchain','lake-manifest.json']:
         add(name,(root/name).read_bytes())

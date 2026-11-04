@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeRightPoint
 public import SerrePositivity.KST.Fibration.StraighteningBaseChangeRightEndpoints
 public import SerrePositivity.KST.Fibration.ScaffoldReconstructionCoefficientPoint
 public import SerrePositivity.KST.Fibration.StraighteningGlobalBaseChangeValue

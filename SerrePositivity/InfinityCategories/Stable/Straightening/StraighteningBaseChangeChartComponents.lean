@@ -15,7 +15,7 @@ universe u v w
 open CategoryTheory
 namespace SerrePositivity.KST.Fibration
 
-private lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
+lemma prependEq_heq {C : Type v} [Category.{w} C] {a a' b : C}
     (h : a = a') (e : a' ≅ b) : HEq (eqToIso h ≪≫ e) e := by
   subst a'
   simp only [eqToIso_refl, Iso.refl_trans]

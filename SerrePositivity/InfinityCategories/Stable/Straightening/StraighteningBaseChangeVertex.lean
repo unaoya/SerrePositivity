@@ -37,7 +37,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Fibration
 variable {B D : SSet.{u}} (k : D ⟶ B)
 
-private lemma firstVertex_zeroSimplex (d : D _⦋0⦌) :
+lemma firstVertex_zeroSimplex (d : D _⦋0⦌) :
     (transportSimplexFirstVertexMap D).app (Opposite.op ⦋0⦌)
       (nerveVertex (transportSimplexIndex d)) = d := by
   rw [transportSimplexFirstVertexMap_vertex]

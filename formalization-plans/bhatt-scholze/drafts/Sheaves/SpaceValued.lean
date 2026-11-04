@@ -100,14 +100,7 @@ theorem is0Truncated_iff_pointwise (x : (PresheafCat 𝒞 SpaceInfinity.{u}) _�
   sorry -- ⇒ は `discretePresheaf_vertex` と点ごとの評価、⇐ は各点の離散空間 `Is0TruncatedSpace` の証人から P を組み、
         -- 点ごとの頂点同型を関手 ∞ 圏の頂点同型へ（各点で可逆な辺は可逆、Core）
 
-/-- 概要：S8-1：空間値前層の J 層化 L（HTT 6.2.2.7）。
-方針：`exists_sheafGeneratingEdges` ＋ `sheafification_of_generatingEdges`。h𝒮 は `F2.Presentable.space_isPresentable` で与えられる。
-規約：S4 と同じ `IsReflectiveSubcategory` の形で、E = 𝒮。
-使われ方：以下。 -/
-theorem sheafification_exists_spaces (J : GrothendieckTopology 𝒞) (h𝒮 : IsPresentable SpaceInfinity.{u}) :
-    Sheafification J SpaceInfinity.{u} := by
-  obtain ⟨I, edges, hW⟩ := exists_sheafGeneratingEdges J h𝒮
-  exact sheafification_of_generatingEdges J h𝒮 edges hW
+-- S8-1 `sheafification_exists_spaces` は drafts/Sheaves/SheafGenerators.lean へ移した（11-05）。
 
 /-- 概要：S8-2：離散（0 切り捨て）な前層の L は離散で、1 圏の層化（Mathlib `presheafToSheaf`）に一致。
 方針：HTT 5.5.6.28、τ_{≤0} Sh(𝒞) ≃ Sh_{Set}(𝒞)。

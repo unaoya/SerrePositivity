@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint
-import all SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint
+import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldWeightedResolutionPoint
 public import SerrePositivity.KST.Fibration.ScaffoldTransportPointedCoefficient
 public import SerrePositivity.KST.Fibration.OppositeKanResolutionEvaluation
 

@@ -65,13 +65,15 @@ run_cmd do
   for (name, info) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless #[`SerrePositivity.Inputs.Homotopy.KanQuillen,
-        `SerrePositivity.Inputs.Homotopy.SimplicialLevel,
+    unless #[`SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen,
+        `SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel,
         `SerrePositivity.Spectra.ModelCategory.SimplicialWeakEquivalences,
         `SerrePositivity.HomotopicalAlgebra.Topological.WeakEquivalence].contains mod do continue
     if (info.value? true).any (·.hasSorry) then directInputs := directInputs.push name
     let axioms ← collectAxioms name
-    let allowed := if (`SerrePositivity.Inputs.Homotopy).isPrefixOf mod then
+    let allowed := if #[`SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen,
+        `SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom,
+        `SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel].contains mod then
         #[``propext, ``Classical.choice, ``Quot.sound, ``sorryAx]
       else #[``propext, ``Classical.choice, ``Quot.sound]
     unless axioms.all (allowed.contains ·) do

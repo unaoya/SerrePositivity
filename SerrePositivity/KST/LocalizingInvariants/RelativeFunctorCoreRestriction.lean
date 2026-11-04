@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
-import all SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
+import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeFunctorCoreRestriction
 
 public import SerrePositivity.KST.Fibration.FunctorCoreCriterion
 public import SerrePositivity.InfinityCategories.F1.SuspensionDiagramArrows
