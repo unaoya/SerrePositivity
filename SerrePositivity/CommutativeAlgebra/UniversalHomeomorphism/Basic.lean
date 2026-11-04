@@ -113,8 +113,9 @@ private theorem spec_residueFieldMap_compat {A B : Type u} [CommRing A] [CommRin
     exact Ideal.ResidueField.map_algebraMap _ _ _ _ a
   rw [hn]
   erw [Scheme.Spec.algebraMap_residueFieldIso_inv_assoc]
-  erw [Scheme.germ_residue_assoc, Scheme.Γevaluation_naturality_assoc,
-    ← Scheme.ΓSpecIso_inv_naturality_assoc]
+  erw [Scheme.germ_residue_assoc]
+  erw [Scheme.Γevaluation_naturality_assoc (Spec.map (CommRingCat.ofHom f)) Q]
+  erw [← Scheme.ΓSpecIso_inv_naturality_assoc (CommRingCat.ofHom f)]
   simp only [Scheme.Γevaluation, Scheme.evaluation, Category.assoc]
   erw [← Scheme.Spec.algebraMap_residueFieldIso_inv_assoc]
   simp
@@ -204,6 +205,12 @@ theorem isUniversalHomeomorphism_localizationMap {A B : Type u} [CommRing A] [Co
     (f : A →+* B) (S : Submonoid A) (hf : IsUniversalHomeomorphism f) :
     IsUniversalHomeomorphism (localizationMap f S) := by
   let : Algebra A B := f.toAlgebra
+  let : IsLocalization (Algebra.algebraMapSubmonoid B S) (Localization (S.map f)) :=
+    inferInstanceAs (IsLocalization (S.map f) (Localization (S.map f)))
+  let : Algebra (Localization S) (Localization (S.map f)) :=
+    localizationAlgebra S B
+  let : IsScalarTower A (Localization S) (Localization (S.map f)) :=
+    isScalarTower_localizationAlgebra S B
   let : Algebra.IsPushout A B (Localization S) (Localization (S.map f)) :=
     Algebra.isPushout_of_isLocalization S (Localization S) B (Localization (S.map f))
   exact isUniversalHomeomorphism_of_isPushout f _ _ _
@@ -315,7 +322,8 @@ private theorem surjective_of_rootClosed_of_maximal_le_conductor
   obtain ⟨Q, hQ, hIQ⟩ := Ideal.exists_le_maximal I hI
   let := hQ
   have hc (J : Ideal B) [J.IsPrime] (hIJ : I ≤ J) : J.comap f = P :=
-    (Ideal.IsMaximal.eq_of_le inferInstance (Ideal.IsPrime.ne_top (inferInstance : (J.comap f).IsPrime))
+    (Ideal.IsMaximal.eq_of_le inferInstance
+      (Ideal.IsPrime.ne_top (inferInstance : (J.comap f).IsPrime))
       (hP.trans (Ideal.comap_mono hIJ))).symm
   have he : I = Q := by
     apply le_antisymm hIQ
