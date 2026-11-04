@@ -76,7 +76,8 @@ theorem isLocalization_reduction (A B : Type u) [CommRing A] [CommRing B] [Algeb
   let : Algebra (A ⧸ nilradical A) (B ⧸ nilradical B) :=
     (reductionMap (algebraMap A B)).toAlgebra
   have hn : (nilradical A).map (algebraMap A B) = nilradical B := by
-    simpa only [nilradical, Ideal.map_bot] using IsLocalization.map_radical M B (⊥ : Ideal A)
+    change (⊥ : Ideal A).radical.map (algebraMap A B) = (⊥ : Ideal B).radical
+    simpa only [Ideal.map_bot] using IsLocalization.map_radical M B (⊥ : Ideal A)
   apply IsLocalization.of_surjective M B
     (Ideal.Quotient.mk (nilradical A)) Ideal.Quotient.mk_surjective
     (Ideal.Quotient.mk (nilradical B)) Ideal.Quotient.mk_surjective

@@ -196,8 +196,10 @@ theorem IsUniversalHomeomorphism.injective_fieldMaps {A B : Type u}
       (AlgebraicGeometry.Spec.map (CommRingCat.ofHom f))).out 1 2).mp hu
   intro g₁ g₂ he
   have h := congrArg (fun k : A →+* K ↦ AlgebraicGeometry.Spec.map (CommRingCat.ofHom k)) he
-  change AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp (CommRingCat.ofHom f) (CommRingCat.ofHom g₁)) =
-    AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp (CommRingCat.ofHom f) (CommRingCat.ofHom g₂)) at h
+  change AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp
+      (CommRingCat.ofHom f) (CommRingCat.ofHom g₁)) =
+    AlgebraicGeometry.Spec.map (CategoryTheory.CategoryStruct.comp
+      (CommRingCat.ofHom f) (CommRingCat.ofHom g₂)) at h
   simp only [AlgebraicGeometry.Spec.map_comp] at h
   exact congrArg CommRingCat.Hom.hom (AlgebraicGeometry.Spec.map_injective (hfields K h))
 

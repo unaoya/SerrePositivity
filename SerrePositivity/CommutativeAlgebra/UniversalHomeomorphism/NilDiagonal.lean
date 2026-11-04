@@ -48,26 +48,6 @@ theorem isUniversalHomeomorphism_of_nil_diagonal {A B : Type u}
   apply sub_eq_zero.mp
   simpa [t, φ, ψ] using hz
 
-/-- 普遍同相の対角射の核は nil。底変換後の Spec 単射性と乗法射の切断を使う。 -/
-theorem nil_diagonal_of_isUniversalHomeomorphism {A B : Type u}
-    [CommRing A] [CommRing B] [Algebra A B]
-    (hf : IsUniversalHomeomorphism (algebraMap A B)) :
-    RingHom.ker (Algebra.TensorProduct.lmul' A (S := B)).toRingHom ≤
-      nilradical (B ⊗[A] B) := by
-  let i : B →+* B ⊗[A] B := Algebra.TensorProduct.includeRight.toRingHom
-  let m : B ⊗[A] B →+* B := (Algebra.TensorProduct.lmul' A).toRingHom
-  have hi : IsUniversalHomeomorphism i :=
-    isUniversalHomeomorphism_baseChange (algebraMap A B) (algebraMap A B) hf
-  have hmi : m.comp i = RingHom.id B := by
-    ext b
-    simp [m, i]
-  have hs : Function.Surjective (PrimeSpectrum.comap m) := by
-    intro P
-    refine ⟨PrimeSpectrum.comap i P, hi.radicial.1 ?_⟩
-    rw [← PrimeSpectrum.comap_comp_apply, hmi]
-    rfl
-  exact (PrimeSpectrum.denseRange_comap_iff_ker_le_nilRadical m).mp hs.denseRange
-
 /-- 体値点の延長が一意なら、対角射の核は nil。
 Spec 全射性は不要なので、局所化を合成した射にも適用できる。 -/
 theorem nil_diagonal_of_injective_fieldMaps {A B : Type u}
@@ -96,5 +76,13 @@ theorem nil_diagonal_of_injective_fieldMaps {A B : Type u}
   apply (Ideal.algebraMap_residueField_eq_zero (I := P)).mp
   change q z = 0
   rw [hq, RingHom.comp_apply, show m z = 0 from hz, map_zero]
+
+/-- 普遍同相の対角射の核は nil。底変換後の Spec 単射性と乗法射の切断を使う。 -/
+theorem nil_diagonal_of_isUniversalHomeomorphism {A B : Type u}
+    [CommRing A] [CommRing B] [Algebra A B]
+    (hf : IsUniversalHomeomorphism (algebraMap A B)) :
+    RingHom.ker (Algebra.TensorProduct.lmul' A (S := B)).toRingHom ≤
+      nilradical (B ⊗[A] B) := by
+  exact nil_diagonal_of_injective_fieldMaps fun K _ ↦ hf.injective_fieldMaps K
 
 end SerrePositivity.CommutativeAlgebra
