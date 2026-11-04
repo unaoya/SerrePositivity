@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.DerivedBaseChangeTensor
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedPureHomology
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionCompletedBaseChange
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChangeH0Coefficient
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChange
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 
 /-!

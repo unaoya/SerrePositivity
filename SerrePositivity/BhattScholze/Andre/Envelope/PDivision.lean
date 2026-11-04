@@ -14,7 +14,7 @@ public import SerrePositivity.BhattScholze.Andre.Envelope.JetRegularity
 public import SerrePositivity.BhattScholze.Delta.Division.Family
 public import SerrePositivity.BhattScholze.Andre.Envelope.SourceEvaluation
 public import SerrePositivity.BhattScholze.Delta.DividedPower.Factorial
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulCanonicalZero
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 public import Mathlib.CategoryTheory.Functor.OfSequence
 public import SerrePositivity.HomologicalAlgebra.SequentialComplexColimits
 public import Mathlib.Algebra.Category.ModuleCat.AB

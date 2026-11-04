@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.BhattScholze.Delta.Basic.DeltaRing
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleClosure
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ScalarRestriction
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompleteSequenceSum
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Closure
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-!

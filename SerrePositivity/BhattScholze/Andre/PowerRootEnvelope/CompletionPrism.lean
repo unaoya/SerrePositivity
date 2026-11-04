@@ -5,7 +5,7 @@ public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.CompletionPD
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.PrincipalPair
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.Source
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Unconditional.RawRegular
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalQuotientComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Principal.KoszulModel
 public import SerrePositivity.BhattScholze.Delta.Extension.DeltaPDCompletion
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.DeltaDivisionWitt

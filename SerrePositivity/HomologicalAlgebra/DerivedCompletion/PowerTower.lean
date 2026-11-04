@@ -9,7 +9,7 @@ public import Mathlib.Algebra.Homology.DerivedCategory.ShortExact
 public import SerrePositivity.HomologicalAlgebra.ModuleTensorCochainExact
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 public import SerrePositivity.HomologicalAlgebra.ModelTensorHomologySurjective
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletionReconstruction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Reconstruction
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleTower
 
 /-! # 冪ねじれの塔と冪の余核による再構成

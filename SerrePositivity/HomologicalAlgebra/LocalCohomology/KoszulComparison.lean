@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.LinearYoneda
 public import Mathlib.Algebra.Homology.SingleHomology
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.KoszulStageZero
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Tower
 public import Mathlib.Algebra.Homology.LocalCohomology
 public import SerrePositivity.HomologicalAlgebra.Resolution
 public import SerrePositivity.CommutativeAlgebra.Koszul.Powers

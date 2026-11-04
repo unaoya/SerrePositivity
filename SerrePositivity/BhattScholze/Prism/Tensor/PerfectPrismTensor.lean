@@ -7,7 +7,7 @@ public import SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectPrismPerfecto
 public import SerrePositivity.BhattScholze.Prism.Tensor.IteratedTensor
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RegularCompletionPure
 public import SerrePositivity.HomologicalAlgebra.PureDerivedCartierQuotient
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorH0RingTransport
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedAlgebraH0
 public import SerrePositivity.HomologicalAlgebra.RingEquivDerivedTensor
 
 /-!

@@ -6,7 +6,7 @@ public import SerrePositivity.CommutativeAlgebra.DerivedSingleTrianglePullback
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence
 public import SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Module
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
 public import Mathlib.Algebra.Category.Ring.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
 public import Mathlib.RingTheory.KrullDimension.Basic

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.CommutativeAlgebra.PowerTorsion.Basic
 public import SerrePositivity.HomologicalAlgebra.CompletedFlatRegularModule
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedModuleShortExact
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedTensorVanishing
 
 /-! # 有界 torsion 加群の完全平坦な完備導来底変換
 

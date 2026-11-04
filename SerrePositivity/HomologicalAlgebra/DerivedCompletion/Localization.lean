@@ -11,7 +11,7 @@ public import SerrePositivity.HomologicalAlgebra.HomComplexCone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.HolimModel
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Tower.Milnor
 public import SerrePositivity.CommutativeAlgebra.Adic.Principal
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ComplexCompletion.Basic
 
 /-! # 主元の局所化の自由分解と a 倍の塔
 

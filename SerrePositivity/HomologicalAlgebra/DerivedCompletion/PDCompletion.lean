@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PairIterationComparison
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Iteration
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 
 /-! # 導来(p,d)完備化の実際のH⁰と環としての普遍性
 

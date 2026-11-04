@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.AlgebraBaseChangeTensorUnit
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletedBaseChange
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange
 

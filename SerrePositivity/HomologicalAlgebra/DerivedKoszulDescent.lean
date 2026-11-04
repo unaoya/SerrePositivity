@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.HomologicalAlgebra.PowerTorsionDerivedDescent
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.DerivedKoszulReduction
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionReflection
 public import SerrePositivity.HomologicalAlgebra.KoszulCoordinateControl
 
 /-! # Completely faithfully flat descent on actual power-Koszul reductions -/

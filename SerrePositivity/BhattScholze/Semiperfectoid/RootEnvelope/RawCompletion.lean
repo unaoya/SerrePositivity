@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.RestrictionCompletion
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 public import SerrePositivity.HomologicalAlgebra.AlgebraRestrictionSingle
 public import SerrePositivity.BhattScholze.Andre.Envelope.RootSource
-public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.TowerComplete
+public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Koszul.Complete
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-!
