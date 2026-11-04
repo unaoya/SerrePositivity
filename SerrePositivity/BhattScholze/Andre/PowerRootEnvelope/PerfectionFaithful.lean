@@ -436,6 +436,8 @@ def powerRootPrismMonicHodgeTateToCompletedPerfection :
   rcases Set.mem_singleton_iff.mp hz with rfl
   exact Ideal.Quotient.eq_zero_iff_mem.mpr (Ideal.mem_span_singleton_self (unitC xp))
 
+set_option maxHeartbeats 800000 in
+-- B4（Pair を Principal の反復に、11-04）：反復した PD 完備化の環構造の比較が深くなるので、この定義に限って上限を増やす。
 /-- 概要：完全 δ 化後の商への基底射は元の自然基底射の合成。
 方針：二つの標準射を合成する。
 規約：基底は元の prism 商 R。
@@ -449,6 +451,8 @@ def powerRootPrismMonicCompletedPerfectionBaseMap :
   exact (powerRootPrismMonicHodgeTateToCompletedPerfection W hW f).comp
     (powerRootPrismMonicHodgeTateBaseMap W hW f)
 
+set_option maxHeartbeats 800000 in
+-- B4（Pair を Principal の反復に、11-04）：反復した PD 完備化の環構造の比較が深くなるので、この定義に限って上限を増やす。
 /-- 概要：完全 δ 化後の根は元の実候補の指定根の標準像。
 方針：検証済みの根を自然比較射で送る。
 規約：別の根を選択し直さない。
