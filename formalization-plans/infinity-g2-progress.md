@@ -1,6 +1,6 @@
 # IF-G2 G8n：証明済みの部分と未解決の自然性
 
-作業枝：`math/g2`。基点：`74b8bdd0b`（W2c・B4・G1 を含む main）。
+作業枝：`math/g2`。先行分：`f2b665682`。main `9f59541d3` を `ef6e30e20` で取り込み済み（衝突なし）。
 状態：**G8n の四角形は未完。指定錐版の制限射・篩包含の二辺・別版の同値を先行取り込み用として切り出す。**
 S4 の自然性による証明は、この区切りだけでは閉じない。
 
@@ -96,6 +96,50 @@ BS は別版に差し替える方針。既存版の deprecated 化は後の区�
   6,665 ジョブ、全ビルドは実施していない）。
 - F2 入口と監査に通常の import を追加。23 宣言を #check に登録し、新規モジュールの
   全宣言について標準公理以外への依存と新規公理宣言を検出する監査を追加。
-- 監査：初回実行で追加監査のカウンタの型推論エラーを検出し、`count : Nat` に修正。
-  修正後の再実行は他の `lake build` が動いているため待機中。**監査 PASS は未確認。**
+- 監査：**2026-11-05、main 取り込み後に F2 監査を単独実行して PASS**。
+  新規モジュール由来の生成宣言を含む63宣言を検査し、依存は標準公理のみ。
+  初回の追加監査カウンタの型推論エラーは `count : Nat` に修正済み。
 - G1 の既存宣言は変更なし。新規ソースに `sorry`・新規公理なし。
+
+## BS の回答による優先順位の変更（2026-11-05）
+
+先に篩包含 `S.functorInclusion` の場合の四角形を証明する。
+任意の篩 S、任意の前層 F、指定された極限錐 cS・cU を使い、
+位相・被覆条件・層条件は加えない。縦の二辺はともに
+`tensorSpaceFunctor_setWeightHomNatural`。
+一般の φ は S8-5 用に後回しとする。
+表現可能前層の要素の圏の始対象 `(U, 𝟙)` から評価錐を明示し、
+篩の要素への制限と指定極限錐への普遍射を比較する。
+四角形完成後に先行分と一緒に main へ入れる方針。
+
+## 篩包含版の作業中の補助（未検証、取り込み対象外）
+
+次の新規3ファイルに証明のテキストを保存した。入口・監査にはまだ登録していない。
+**先行分の監査 PASS は、この3ファイルの検証を意味しない。**
+
+- `SetSectionsSieveNaturality.lean`：`(U, 𝟙)` からの評価錐とその篩への制限。
+  `sieveEvaluationTriangle` は評価から指定極限への二経路を錐の圏の終対象性で比較し、
+  元の `sieveSectionsMap` を三角形の辺として使う。
+  `sieveEvaluation_postcomposeIso` はその三角形を任意の M からの全写像空間へ移す。
+  これは G8 の縦の同値との照合前の補助であり、要求された四角形ではない。
+- `SetSectionsLimitNaturality.lean`：`limitVertexIso_hom_eq_coneEdge` は標準の極限頂点同型を
+  錐の普遍辺へ戻す。`limitConeMapIsoOfConeFamilyIso` は錐の族の同型を極限への射の族へ
+  反映する。後者には明示的な錐の族の同型の入力があり、自然性の証明済み部分には数えない。
+- `SetSectionsUnstraightening.lean`：指定辺の前合成の三角形の族を使い、
+  `unstraighteningPrecompositionIso` と `unstraighteningPinchedPrecompositionIso` で
+  unstraightening の実際の相対合成と比較する。
+  `relativePreIso` は底上の射の相対写像空間内の同型を全写像空間の前合成へ移す補助。
+
+残る接続を具体的に書くと、`φ := S.functorInclusion` に対し、
+大きい宇宙へ移した `elementsComparisonNatural S.functor` の後に
+`spaceDiagramEdge φ` の unstraightening 像を続けた射と、
+`elementsMap φ` の後に `elementsComparisonNatural (yoneda.obj U)` を続けた射を、
+**底を固定した相対写像空間の中で**同型にする必要がある。
+その同型は `relativePreIso` により全パラメータの比較へ移せる。
+さらに、得た切断制限と G8 別版の後段（指定極限・宇宙変更・表現可能値の比較）との
+照合が残る。頂点ごとの一致だけで四角形を閉じたとは扱わない。
+
+検証状況：最初の結合プローブで極限比較の表示に関する型エラー2件と
+プローブ内の universe 重複が出たためテキストを修正した。その後の追加を含む再検証は
+他レーンのビルドと verify のため未実行。`sorry`・`admit`・新規公理は置いていない。
+F-2 前の作業保存用に先行分と分けて WIP コミットとする。
