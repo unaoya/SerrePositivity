@@ -1,0 +1,1571 @@
+{
+  "status": "APPLIED_VALIDATION_PENDING",
+  "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+  "branch": "codex/if-cleanup-c1-c3",
+  "C1": {
+    "directory_renames": 0,
+    "final_name_map_unchanged": true
+  },
+  "C2": {
+    "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+    "branch": "codex/if-cleanup-c1-c3",
+    "selected": [
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+        "new": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+        "old_path": "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedFreeNativeFunctor.lean",
+        "new_path": "SerrePositivity/InfinityCategories/Derived/Diagnostics/DGKappaPresentedFreeNativeFunctor.lean",
+        "production_users": [],
+        "script_users": [],
+        "runtime_audit_users": [],
+        "literal_module_mentions": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "sha256": "0b727a9fc377f8e5d066994edae6e299f8722004d380037221917d5dfa190f5a",
+        "declarations": [
+          "dgKappaPresentedFreeNativeFunctor",
+          "dgKappaPresentedFreeNativeFunctor_vertex",
+          "dgKappaPresentedFreeNativeCoreFunctor"
+        ],
+        "old_olean_exists": true
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
+        "new": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+        "old_path": "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceNativeAction.lean",
+        "new_path": "SerrePositivity/InfinityCategories/Derived/Diagnostics/DGKappaPresentedSourceNativeAction.lean",
+        "production_users": [],
+        "script_users": [],
+        "runtime_audit_users": [],
+        "literal_module_mentions": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "sha256": "8bff6cb12143ba4104db2b28737fa43f40bfc4515792fc0633354d2bbfd3bb38",
+        "declarations": [
+          "dgKappaPresentedSourceNativeAction",
+          "dgKappaPresentedSourceNativeAction_id",
+          "dgKappaPresentedSourceNativeAction_comp"
+        ],
+        "old_olean_exists": true
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+        "new": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+        "old_path": "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceNativeFunctor.lean",
+        "new_path": "SerrePositivity/InfinityCategories/Derived/Diagnostics/DGKappaPresentedSourceNativeFunctor.lean",
+        "production_users": [],
+        "script_users": [],
+        "runtime_audit_users": [],
+        "literal_module_mentions": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "sha256": "6ea6794956f08db7a356e8077d01b8f708c0b08d6649eece48a054b4975fea3b",
+        "declarations": [
+          "dgKappaPresentedSourceNativeFunctor",
+          "dgKappaPresentedSourceNativeFunctor_vertex",
+          "dgKappaPresentedSourceNativeCoreFunctor"
+        ],
+        "old_olean_exists": true
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+        "new": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+        "old_path": "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceShiftAction.lean",
+        "new_path": "SerrePositivity/InfinityCategories/Derived/Diagnostics/DGKappaPresentedSourceShiftAction.lean",
+        "production_users": [],
+        "script_users": [],
+        "runtime_audit_users": [],
+        "literal_module_mentions": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "sha256": "3305d80c1388630c38eb3fe909cba011dfe613b22ad59c429dfa918e96f8c6b9",
+        "declarations": [
+          "dgKappaPresentedSourceShiftFunctor",
+          "dgKappaPresentedSourceShiftFunctor_obj",
+          "dgKappaPresentedSourceNativeShift"
+        ],
+        "old_olean_exists": true
+      }
+    ],
+    "review": [
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.AnchoredChainFiniteTest",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BarSize",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.BinaryIntervalTriangles",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceRestriction",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_comparison_coherence_restriction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonCoherenceTransport",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleBinary",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_comparison_tetrahedra.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleChoices",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleDegeneracy",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_relative_horn_operation.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleHorn",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleParameterDiagram",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ComparisonTriangleTransport",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.CompatibleHornFillingOperation",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_compatible_horn_operation.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornInput",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_compatible_horn_operation.lean",
+          "scripts/check_relative_horn_operation.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateHornOverlap",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.DegenerateTriangleOverlap",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.FreeWordHom",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyEndpointComparison",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonSquare",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_comparison_tetrahedra.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTetrahedron",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanComparisonTriangle",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanHornFamilyLifting",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_horn_family_lifting.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedComparisonResolution",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.KanTriangleFamily",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterRelativeChoice",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterSquare",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedRelativeChoice",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NaturalHornFilling",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparison",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveArrowComparisonComposition",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBinaryBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameter",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterComposition",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterEvaluation",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMapLaws",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBiparameterMaps",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveBoundaryExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentFamily",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCoherentReindex",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveCylinderExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveDiagramExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveEvaluationLaws",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFillerExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveFirstChoice",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveInitialImage",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveIntervalBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeParameter",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLargeSampling",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveLowerExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMonomorphismLifting",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingFamilyFit",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingIntervalBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameter",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveMovingParameterRelative",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveNaturalBoundaryTransport",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveParameterExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePrescribedCells",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductEndpointTransport",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveProductParameter",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NervePushoutBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeNaturalBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveRelativeValueExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NerveSmallFamilies",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonSquare",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_normalized_comparison_coherence.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTetrahedron",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedComparisonTriangle",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornFilling",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_normalized_horn_filling.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornInputMap",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetAssociativity",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComparison",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_normalized_horn_target_comparison.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetComposition",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetFaces",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedHornTargetIdentity",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_normalized_horn_target_coherence.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.NormalizedTriangleHorn",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterChoiceDiagram",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.ParameterizedHornChoices",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_parameterized_horn_choices.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RecursiveChoiceExtension",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBoundaryFilling",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceBoundary",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceCells",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFamilies",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceFunctor",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceIso",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceMaps",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeChoiceSpace",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeComparisonTriangle",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_relative_boundary_filling.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeHornFillingOperation",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentChoices",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RestrictionDescentEvaluation",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainFamily",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.RetractChainUnits",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SegmentWords",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedLoopContraction",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SelectedTriangle",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallDiagramQuotient",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallKanHomotopy",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallParameterClosure",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallSubdiagramObstruction",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.SmallTargetKernelQuotient",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StarDiagramSmallQuotient",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueDescentCounterexample",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValueObstruction",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.StrictValuePresentationCounterexample",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.TriangleDegeneracyParameters",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftFixedHomotopy",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WeightedWordHom",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAction",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationAugmentation",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationCat",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationDiagram",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_retract_word_presentation.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationNaturality",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationRealization",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSection",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordPresentationSourceMap",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractChainFamily",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractionAction",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegment",
+        "action": "draft_retire_wrapper",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_word_segment.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred HA/Simplicial cohort (C2 explicit exclusion)"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.CellZeroObstruction",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/CellZeroNativeSeparation.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/ResolvedZeroObstruction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonPathPrefix",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/All.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorRetraction",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/EpsilonPathPrefix.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonTensorSeparation",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/EpsilonTensorRetraction.lean",
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/EpsilonWordRigidity.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.EpsilonWordRigidity",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/EpsilonCellRigidity.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.ClosureFunctoriality.NativeDiskPair",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/ClosureFunctoriality/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonDiskObstruction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "selected zero-user prototype leaf; move only"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceCompositionIso.lean",
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceParameter.lean",
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceUnit.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceComposition",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceNativeAction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCompositionIso",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceComposition.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceFunctor",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceNativeFunctor.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceInputHomLaws",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceFunctor.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "selected zero-user prototype leaf; move only"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "selected zero-user prototype leaf; move only"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceParameter",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceInputHomLaws.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "selected zero-user prototype leaf; move only"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceUnit",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/DGKappaPresentedSourceNativeAction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellHomotopy",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonRequirement.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonCellRigidity",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/EpsilonCellHomotopy.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.EpsilonSimplexLift",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeAll.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeActionRequirement",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeActionNonemptinessBoundary.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonDiskObstruction",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeActionRequirement.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeEpsilonRequirement",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeRepresentableRequirement.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeRepresentableRequirement",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean",
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/NativeEpsilonDiskObstruction.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.NativeUnitRequirement",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Derived.SuspensionAction.ResolvedZeroObstruction",
+        "action": "retain_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/Derived/SuspensionAction/All.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Kan.Pointed",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.KanQuillen",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "SerrePositivity/InfinityCategories/ModelBridge/Inputs/ResolutionHom.lean",
+          "SerrePositivity/InfinityCategories/ModelBridge/Inputs/SimplicialLevel.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.ResolutionHom",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_kan_quillen_resolution_hom.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel",
+        "action": "draft_register_diagnostic",
+        "direct_users": [
+          "scripts/check_kan_quillen_level.lean",
+          "scripts/check_model_replacement.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Simplicial",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Stable.Exact",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Stable.Infinity",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Stable.Lax",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Stable.Semiorthogonal",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.Stable.Verdier",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.InfinityCategories.StablePresentable",
+        "action": "draft_register_diagnostic",
+        "direct_users": [],
+        "root_reachable": false,
+        "audit_reachable": false,
+        "decision": "deferred formal audit registration / retained layer entry"
+      },
+      {
+        "module": "SerrePositivity.KST.NonConnective.DGSuspensionCoherentActionInput",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/KST/NonConnective.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionCoherentStageFamily.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionUnconditionalMapData.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.KST.NonConnective.DGSuspensionCoherentSquareFamily",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/KST/NonConnective.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionSuppliedNativeComparisons.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageBFMorita",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/KST/NonConnective.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageFamily",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/KST/NonConnective.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionCoherentSquareFamily.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionCoherentStageMorita.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      },
+      {
+        "module": "SerrePositivity.KST.NonConnective.DGSuspensionCoherentStageMorita",
+        "action": "draft_archive_preserve_consumers",
+        "direct_users": [
+          "SerrePositivity/KST/NonConnective.lean",
+          "SerrePositivity/KST/NonConnective/DGSuspensionCoherentStageBFMorita.lean"
+        ],
+        "root_reachable": false,
+        "audit_reachable": true,
+        "decision": "retained with current consumers"
+      }
+    ],
+    "review_counts": {
+      "deferred HA/Simplicial cohort (C2 explicit exclusion)": 121,
+      "retained with current consumers": 20,
+      "selected zero-user prototype leaf; move only": 4,
+      "deferred formal audit registration / retained layer entry": 20
+    },
+    "all_lean_files": 31447,
+    "formal_audits": 102,
+    "map_sha256": "0dace9141adf5f24ee010042271f159dd37b335a45f05e25348b26efcc41571a",
+    "audit_manifest_sha256": "2302e34cdf8f57cdca7ed3b765ead9f77842cfd82c03009b43eebed58ef4f022"
+  },
+  "C3": {
+    "replacements": [
+      {
+        "old": "SerrePositivity.InfinityCategories.SetWeight.elementsComparison",
+        "new": "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.SetWeight.elementsComparison_projection",
+        "new": "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.SetWeight.elementsComparison_isPrecompositionEquivalence",
+        "new": "SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalence",
+        "new": "SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural"
+      },
+      {
+        "old": "SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHom",
+        "new": "SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural"
+      }
+    ],
+    "attribute_blocks": {
+      "SerrePositivity/InfinityCategories/F2/Tensor/SetElements.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison_projection\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  elementsComparison_isPrecompositionEquivalence\n\n",
+      "SerrePositivity/InfinityCategories/F2/Tensor/SetSections.lean": "/- C3: compatibility declarations; use the specified Natural comparison. -/\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  sectionsEquivalence\nattribute [deprecated \"Use `SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`.\" (since := \"2026-11-05\")]\n  tensorSpaceFunctor_setWeightHom\n\n"
+    },
+    "bs_evidence": [
+      "formalization-plans/bhatt-scholze/report-codex-s4-sieve.md",
+      "formalization-plans/bhatt-scholze/drafts/Sheaves/SetSections.lean",
+      "formalization-plans/bhatt-scholze/drafts/Sheaves/SheafGenerators.lean"
+    ],
+    "note": "Message-style deprecated attributes avoid a cyclic import from the old provider to its Natural consumer. Existing declaration types and bodies are unchanged."
+  },
+  "validation": {}
+}

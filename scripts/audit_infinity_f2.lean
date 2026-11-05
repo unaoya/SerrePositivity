@@ -617,6 +617,7 @@ import SerrePositivity.InfinityCategories.F2.Ind.StableSourceCompactGeneration
 import SerrePositivity.InfinityCategories.F2.Ind.UnconditionalStableCompactGeneration
 import SerrePositivity.InfinityCategories.F2.Compact.FiniteColimitClosureUnconditional
 import Lean.Util.CollectAxioms
+import Lean.Linter.Deprecated
 
 #check @SerrePositivity.InfinityCategories.F2.Ind.bousfieldKanHolimFunctor_finite_poset_preservesFilteredColimits
 #check @SerrePositivity.InfinityCategories.F2.Ind.coherentFilteredLimitExchangeShape_finite_poset
@@ -2039,3 +2040,26 @@ run_cmd do
     count := count + 1
   unless count > 0 do throwError "IF-G2: no declarations audited"
   logInfo m!"IF-G2: {count} declarations audited; only standard axioms."
+
+-- C3: keep compatibility declarations deprecated and the Natural versions canonical.
+open Lean in
+run_cmd do
+  let env ← getEnv
+  let replacements : Array (Name × Name) := #[
+    (`SerrePositivity.InfinityCategories.SetWeight.elementsComparison, `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural),
+    (`SerrePositivity.InfinityCategories.SetWeight.elementsComparison_projection, `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_projection),
+    (`SerrePositivity.InfinityCategories.SetWeight.elementsComparison_isPrecompositionEquivalence, `SerrePositivity.InfinityCategories.SetWeight.elementsComparisonNatural_isPrecompositionEquivalence),
+    (`SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalence, `SerrePositivity.InfinityCategories.SetWeight.sectionsEquivalenceNatural),
+    (`SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHom, `SerrePositivity.InfinityCategories.SetWeight.tensorSpaceFunctor_setWeightHomNatural)
+  ]
+  for (oldName, newName) in replacements do
+    unless (env.find? oldName).isSome && (env.find? newName).isSome do
+      throwError "C3: missing compatibility or canonical declaration: {oldName}, {newName}"
+    let some entry := Linter.deprecatedAttr.getParam? env oldName
+      | throwError "C3: compatibility declaration is not deprecated: {oldName}"
+    let expected := s!"Use `{newName}` from `SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality`."
+    unless entry.since? == some "2026-11-05" && entry.text? == some expected do
+      throwError "C3: missing migration guidance: {oldName}"
+    if (Linter.deprecatedAttr.getParam? env newName).isSome then
+      throwError "C3: canonical declaration is deprecated: {newName}"
+  logInfo "C3: 5 compatibility declarations deprecated; Natural versions canonical."
