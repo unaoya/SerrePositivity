@@ -73409,10 +73409,10 @@
       "stage_G": []
     },
     {
-      "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+      "module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
       "category": "診断",
-      "reason": "本番・正式監査の閉包外。内容を削除せず診断として保持し、所有レーンへ監査登録／引用許可の扱いを引き渡す。",
-      "action": "draft_register_diagnostic",
+      "reason": "C2：本番・正式監査・スクリプトの利用者 0 を現行木で確認した試作の末端。ファイルを Diagnostics へ移動し、宣言名・内容を保存。",
+      "action": "moved_diagnostic",
       "cohorts": [
         "R42"
       ],
@@ -73422,9 +73422,24 @@
       "root_witness": null,
       "audit_witness": null,
       "direct_production_users": [],
-      "script_users": [],
+      "script_users": [
+        "scripts.refactor.check_cleanup_c2"
+      ],
       "historical_freeze": null,
-      "stage_G": []
+      "stage_G": [],
+      "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+      "cleanup_c2": {
+        "status": "PASS",
+        "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+        "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+        "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
+        "before_action": "draft_register_diagnostic",
+        "source_sha256": "0b727a9fc377f8e5d066994edae6e299f8722004d380037221917d5dfa190f5a",
+        "content_unchanged": true,
+        "users_before": 0,
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
+      }
     },
     {
       "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction",
@@ -73529,10 +73544,10 @@
       "stage_G": []
     },
     {
-      "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
+      "module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
       "category": "診断",
-      "reason": "本番・正式監査の閉包外。内容を削除せず診断として保持し、所有レーンへ監査登録／引用許可の扱いを引き渡す。",
-      "action": "draft_register_diagnostic",
+      "reason": "C2：本番・正式監査・スクリプトの利用者 0 を現行木で確認した試作の末端。ファイルを Diagnostics へ移動し、宣言名・内容を保存。",
+      "action": "moved_diagnostic",
       "cohorts": [
         "R42"
       ],
@@ -73542,15 +73557,30 @@
       "root_witness": null,
       "audit_witness": null,
       "direct_production_users": [],
-      "script_users": [],
+      "script_users": [
+        "scripts.refactor.check_cleanup_c2"
+      ],
       "historical_freeze": null,
-      "stage_G": []
+      "stage_G": [],
+      "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
+      "cleanup_c2": {
+        "status": "PASS",
+        "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+        "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
+        "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+        "before_action": "draft_register_diagnostic",
+        "source_sha256": "8bff6cb12143ba4104db2b28737fa43f40bfc4515792fc0633354d2bbfd3bb38",
+        "content_unchanged": true,
+        "users_before": 0,
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
+      }
     },
     {
-      "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+      "module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
       "category": "診断",
-      "reason": "本番・正式監査の閉包外。内容を削除せず診断として保持し、所有レーンへ監査登録／引用許可の扱いを引き渡す。",
-      "action": "draft_register_diagnostic",
+      "reason": "C2：本番・正式監査・スクリプトの利用者 0 を現行木で確認した試作の末端。ファイルを Diagnostics へ移動し、宣言名・内容を保存。",
+      "action": "moved_diagnostic",
       "cohorts": [
         "R42"
       ],
@@ -73560,9 +73590,24 @@
       "root_witness": null,
       "audit_witness": null,
       "direct_production_users": [],
-      "script_users": [],
+      "script_users": [
+        "scripts.refactor.check_cleanup_c2"
+      ],
       "historical_freeze": null,
-      "stage_G": []
+      "stage_G": [],
+      "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+      "cleanup_c2": {
+        "status": "PASS",
+        "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+        "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+        "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
+        "before_action": "draft_register_diagnostic",
+        "source_sha256": "6ea6794956f08db7a356e8077d01b8f708c0b08d6649eece48a054b4975fea3b",
+        "content_unchanged": true,
+        "users_before": 0,
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
+      }
     },
     {
       "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceParameter",
@@ -73585,10 +73630,10 @@
       "stage_G": []
     },
     {
-      "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+      "module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
       "category": "診断",
-      "reason": "本番・正式監査の閉包外。内容を削除せず診断として保持し、所有レーンへ監査登録／引用許可の扱いを引き渡す。",
-      "action": "draft_register_diagnostic",
+      "reason": "C2：本番・正式監査・スクリプトの利用者 0 を現行木で確認した試作の末端。ファイルを Diagnostics へ移動し、宣言名・内容を保存。",
+      "action": "moved_diagnostic",
       "cohorts": [
         "R42"
       ],
@@ -73598,9 +73643,24 @@
       "root_witness": null,
       "audit_witness": null,
       "direct_production_users": [],
-      "script_users": [],
+      "script_users": [
+        "scripts.refactor.check_cleanup_c2"
+      ],
       "historical_freeze": null,
-      "stage_G": []
+      "stage_G": [],
+      "historical_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+      "cleanup_c2": {
+        "status": "PASS",
+        "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+        "old_module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+        "new_module": "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
+        "before_action": "draft_register_diagnostic",
+        "source_sha256": "3305d80c1388630c38eb3fe909cba011dfe613b22ad59c429dfa918e96f8c6b9",
+        "content_unchanged": true,
+        "users_before": 0,
+        "formal_audit_registration": false,
+        "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579"
+      }
     },
     {
       "module": "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceUnit",
@@ -203636,16 +203696,16 @@
       "SerrePositivity.HomotopicalAlgebra.Simplicial.WordRetractionAction",
       "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegment",
       "SerrePositivity.HomotopicalAlgebra.Simplicial.WordSegmentComparison",
-      "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedFreeNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceAction",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceComposition",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceCompositionIso",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceFunctor",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceInputHomLaws",
-      "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeAction",
-      "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceNativeFunctor",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceParameter",
-      "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceShiftAction",
+      "SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction",
       "SerrePositivity.InfinityCategories.Derived.DGKappaPresentedSourceUnit",
       "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan",
       "SerrePositivity.InfinityCategories.Kan",
@@ -203876,5 +203936,19 @@
     "warm_estimate_minutes": "5–15 (not measured; 144 modules vs W2c 11152, allowance for large imported closures)",
     "verify_reference_minutes": 44.3,
     "builds_executed": 0
+  },
+  "cleanup_c2": {
+    "status": "PASS",
+    "base": "2a9a24cbff281c5308bc297aabb08344c36673d0",
+    "authorization": "cleanup-list-2026-11.md §1 C2; user authorized small zero-user moves",
+    "moved": 4,
+    "source_declarations": 12,
+    "formal_audit_registrations": 0,
+    "formal_uncovered_count_retained": 145,
+    "deferred_HA_Simplicial": 121,
+    "record": "cleanup-c1-c3.json",
+    "historical_note": "The original draft metadata and the remaining action proposals are retained; this section and marked rows describe the C2 application.",
+    "verified_commit": "1bf7cd46c958bd97489b1fe28ec81d35f7488579",
+    "validation": "cleanup-c1-c3.json"
   }
 }
