@@ -1,0 +1,983 @@
+{
+  "status": "PASS",
+  "gate": true,
+  "summary": "PASS build(success=2,failure=0,known=0) audit(success=102,failure=0,known=0) sorry(success=1,failure=0,known=0) preparation(success=1,failure=0,known=0) retried=0",
+  "retried": 0,
+  "commit": "10437c5de556d5cbfc4408a5ac52c7ba798a8fdc",
+  "seconds": 2233.16,
+  "audit_count": 102,
+  "target_count": 5155,
+  "counts": {
+    "build": {
+      "success": 2,
+      "failure": 0,
+      "known": 0
+    },
+    "audit": {
+      "success": 102,
+      "failure": 0,
+      "known": 0
+    },
+    "sorry": {
+      "success": 1,
+      "failure": 0,
+      "known": 0
+    },
+    "preparation": {
+      "success": 1,
+      "failure": 0,
+      "known": 0
+    }
+  },
+  "failures": [],
+  "new_audits": [],
+  "executed_audit_count": 102,
+  "stages": [
+    {
+      "kind": "preparation",
+      "name": "manifest-and-targets",
+      "exit_code": 0,
+      "seconds": 4.677,
+      "log": ".lake/verify/preparation-0.log"
+    },
+    {
+      "kind": "build",
+      "name": "root",
+      "exit_code": 0,
+      "seconds": 19.36,
+      "log": ".lake/verify/build-1.log"
+    },
+    {
+      "kind": "build",
+      "name": "audit-targets",
+      "exit_code": 0,
+      "seconds": 21.143,
+      "log": ".lake/verify/build-2.log"
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit/adams.lean",
+      "exit_code": 0,
+      "seconds": 69.087,
+      "log": ".lake/verify/audit-4e7833a4ac5316e49e61.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit/bhatt_scholze.lean",
+      "exit_code": 0,
+      "seconds": 119.135,
+      "log": ".lake/verify/audit-a10a26db8e411b35d275.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit/clmst.lean",
+      "exit_code": 0,
+      "seconds": 92.202,
+      "log": ".lake/verify/audit-238460fc68bb6704370e.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit/dg.lean",
+      "exit_code": 0,
+      "seconds": 67.021,
+      "log": ".lake/verify/audit-1d9583a302bad9b7ac3f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit/shared.lean",
+      "exit_code": 0,
+      "seconds": 112.924,
+      "log": ".lake/verify/audit-e084208ba91321f27961.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_adams_action_transport.lean",
+      "exit_code": 0,
+      "seconds": 11.394,
+      "log": ".lake/verify/audit-5fa053ba7ac380b60c62.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_andre_initial_coefficient.lean",
+      "exit_code": 0,
+      "seconds": 15.97,
+      "log": ".lake/verify/audit-38745dc81471010f364c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_andre_unoriented.lean",
+      "exit_code": 0,
+      "seconds": 14.739,
+      "log": ".lake/verify/audit-5389d0f0426b4c638faf.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_axioms.lean",
+      "exit_code": 0,
+      "seconds": 530.228,
+      "log": ".lake/verify/audit-1b56d83cd10bef3b396a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze.lean",
+      "exit_code": 0,
+      "seconds": 118.683,
+      "log": ".lake/verify/audit-35325abce130b8b5796e.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_andre_conditional.lean",
+      "exit_code": 0,
+      "seconds": 25.999,
+      "log": ".lake/verify/audit-2e293faef89dedc61ca7.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_arc_excision.lean",
+      "exit_code": 0,
+      "seconds": 29.945,
+      "log": ".lake/verify/audit-5612aefa7f58d9015f4d.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_b4.lean",
+      "exit_code": 0,
+      "seconds": 17.096,
+      "log": ".lake/verify/audit-5e4248023931f9caf65c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_b5.lean",
+      "exit_code": 0,
+      "seconds": 13.976,
+      "log": ".lake/verify/audit-ad91c854bb9528a48ccf.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_prop813.lean",
+      "exit_code": 0,
+      "seconds": 15.408,
+      "log": ".lake/verify/audit-e2baea78b2ec66321b23.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_bhatt_scholze_refactoring.lean",
+      "exit_code": 0,
+      "seconds": 20.52,
+      "log": ".lake/verify/audit-3e3d64b896f48ee489a5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_clmst.lean",
+      "exit_code": 0,
+      "seconds": 269.756,
+      "log": ".lake/verify/audit-195774f195bdd5fa4f08.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_clmst_b3.lean",
+      "exit_code": 0,
+      "seconds": 23.702,
+      "log": ".lake/verify/audit-e7b442d1fcd41404b0c3.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_coherent_nerve.lean",
+      "exit_code": 0,
+      "seconds": 24.967,
+      "log": ".lake/verify/audit-6ecb57c5375b97649f43.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_cell_projective.lean",
+      "exit_code": 0,
+      "seconds": 18.655,
+      "log": ".lake/verify/audit-1dc49f7159416f000ac0.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_closure_functoriality.lean",
+      "exit_code": 0,
+      "seconds": 104.205,
+      "log": ".lake/verify/audit-42e7a1edf429f8f9b9c5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_coherent_bar.lean",
+      "exit_code": 0,
+      "seconds": 23.639,
+      "log": ".lake/verify/audit-1f88a724d8d20448ec17.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_coherent_bar_compact.lean",
+      "exit_code": 0,
+      "seconds": 71.353,
+      "log": ".lake/verify/audit-d938ecebc2bec823ac7a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_coherent_bar_retract.lean",
+      "exit_code": 0,
+      "seconds": 21.165,
+      "log": ".lake/verify/audit-2d339ff19610b356b4ca.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_coherent_bar_strict.lean",
+      "exit_code": 0,
+      "seconds": 60.781,
+      "log": ".lake/verify/audit-7d4b389fba9e73d15cd3.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_dg_nerve_reflection.lean",
+      "exit_code": 0,
+      "seconds": 18.075,
+      "log": ".lake/verify/audit-7f5de06a6f263a24cee2.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_gluing.lean",
+      "exit_code": 0,
+      "seconds": 107.025,
+      "log": ".lake/verify/audit-7488ac3e6d793e81b342.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_infinity.lean",
+      "exit_code": 0,
+      "seconds": 552.457,
+      "log": ".lake/verify/audit-4a53322d248972c5c45a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_kappa_perfect.lean",
+      "exit_code": 0,
+      "seconds": 51.588,
+      "log": ".lake/verify/audit-402174ed1b2246e48a21.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_native_family.lean",
+      "exit_code": 0,
+      "seconds": 117.099,
+      "log": ".lake/verify/audit-b160216b984750a2d220.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_native_p.lean",
+      "exit_code": 0,
+      "seconds": 79.438,
+      "log": ".lake/verify/audit-346855165d9b322a89a6.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_sphere_closure.lean",
+      "exit_code": 0,
+      "seconds": 77.598,
+      "log": ".lake/verify/audit-e8b5fdbba65a9253c49c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_suspension_coherent.lean",
+      "exit_code": 0,
+      "seconds": 76.11,
+      "log": ".lake/verify/audit-c21f129b79b725b494f5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_suspension_native.lean",
+      "exit_code": 0,
+      "seconds": 81.595,
+      "log": ".lake/verify/audit-789775609daa82571e39.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_derived_suspension_replacement.lean",
+      "exit_code": 0,
+      "seconds": 70.454,
+      "log": ".lake/verify/audit-4a8d96198f15dbe1c045.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dg_cell_comparison.lean",
+      "exit_code": 0,
+      "seconds": 66.404,
+      "log": ".lake/verify/audit-90004a16ff356e42169a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dg_nerve.lean",
+      "exit_code": 0,
+      "seconds": 21.006,
+      "log": ".lake/verify/audit-7838de08c37890208749.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dg_perfect_projective_image.lean",
+      "exit_code": 0,
+      "seconds": 11.971,
+      "log": ".lake/verify/audit-81d0911ecb4e31e602e5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dg_projective_contraction.lean",
+      "exit_code": 0,
+      "seconds": 10.846,
+      "log": ".lake/verify/audit-d5f1ab061489e36c4474.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dg_quotient_parameter.lean",
+      "exit_code": 0,
+      "seconds": 19.507,
+      "log": ".lake/verify/audit-4784dff8e27bbe11d37c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_dold_kan_comparison.lean",
+      "exit_code": 0,
+      "seconds": 48.415,
+      "log": ".lake/verify/audit-43cec18c31e9fb53b766.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_einfinity.lean",
+      "exit_code": 0,
+      "seconds": 249.299,
+      "log": ".lake/verify/audit-a44560a139228819bdcf.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_euler_betti_finite_support.lean",
+      "exit_code": 0,
+      "seconds": 11.12,
+      "log": ".lake/verify/audit-6c05b15c380caccf2138.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_euler_group_shared.lean",
+      "exit_code": 0,
+      "seconds": 11.301,
+      "log": ".lake/verify/audit-89bc17fa2716fb3fc151.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_exact_euler_finite_support.lean",
+      "exit_code": 0,
+      "seconds": 9.841,
+      "log": ".lake/verify/audit-369445457b0aa6e94d58.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f2_compact.lean",
+      "exit_code": 0,
+      "seconds": 18.519,
+      "log": ".lake/verify/audit-21372214f47db9858f80.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f2_idempotent.lean",
+      "exit_code": 0,
+      "seconds": 17.046,
+      "log": ".lake/verify/audit-56aa96a9c1a29a892e89.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f2_ind.lean",
+      "exit_code": 0,
+      "seconds": 30.209,
+      "log": ".lake/verify/audit-384ae47d2081c83da3a5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f2_pi_criterion.lean",
+      "exit_code": 0,
+      "seconds": 22.126,
+      "log": ".lake/verify/audit-baed6476b79cc15c8528.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f4.lean",
+      "exit_code": 0,
+      "seconds": 9.927,
+      "log": ".lake/verify/audit-96cf692f3b165ace2c10.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f5.lean",
+      "exit_code": 0,
+      "seconds": 21.292,
+      "log": ".lake/verify/audit-f2f7d730459e700c37c1.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f6.lean",
+      "exit_code": 0,
+      "seconds": 9.744,
+      "log": ".lake/verify/audit-f78582ae6898fd1022ad.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_f7.lean",
+      "exit_code": 0,
+      "seconds": 19.764,
+      "log": ".lake/verify/audit-8734d47dc432e3c94961.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_general_spectra.lean",
+      "exit_code": 0,
+      "seconds": 9.16,
+      "log": ".lake/verify/audit-50ac206247f0b5ecee88.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopical_foundations.lean",
+      "exit_code": 0,
+      "seconds": 11.149,
+      "log": ".lake/verify/audit-c64dc3b7f8d8a850726b.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopical_general_tools.lean",
+      "exit_code": 0,
+      "seconds": 9.923,
+      "log": ".lake/verify/audit-9c393d2935cc43e41d33.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopical_rectification.lean",
+      "exit_code": 0,
+      "seconds": 18.977,
+      "log": ".lake/verify/audit-495fb185b7933c4e8381.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopy_cone_representative_shared.lean",
+      "exit_code": 0,
+      "seconds": 11.158,
+      "log": ".lake/verify/audit-6e7379ce10bb6b11088a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopy_limits.lean",
+      "exit_code": 0,
+      "seconds": 72.716,
+      "log": ".lake/verify/audit-407d6bcbb3b2bd5f54d1.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_homotopy_property_shared.lean",
+      "exit_code": 0,
+      "seconds": 7.658,
+      "log": ".lake/verify/audit-4fe2a0f17f8214a836a8.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_accessible_pullback.lean",
+      "exit_code": 0,
+      "seconds": 29.684,
+      "log": ".lake/verify/audit-ae6f9d21b353fc910ecf.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_core.lean",
+      "exit_code": 0,
+      "seconds": 58.24,
+      "log": ".lake/verify/audit-1477b1a25a6603a94bc7.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_core_supply_s1_closed_stable.lean",
+      "exit_code": 0,
+      "seconds": 30.771,
+      "log": ".lake/verify/audit-6ec6376991576a318fd5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_core_supply_s1_triangle.lean",
+      "exit_code": 0,
+      "seconds": 7.839,
+      "log": ".lake/verify/audit-334c1906f225f2b731c9.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_f1.lean",
+      "exit_code": 0,
+      "seconds": 552.151,
+      "log": ".lake/verify/audit-21698742614d1211e9b8.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_f1_f1b.lean",
+      "exit_code": 0,
+      "seconds": 30.552,
+      "log": ".lake/verify/audit-721bccd9701355bdb4e3.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_f1b.lean",
+      "exit_code": 0,
+      "seconds": 84.411,
+      "log": ".lake/verify/audit-e67d0549960e04f0450a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_f2.lean",
+      "exit_code": 0,
+      "seconds": 38.46,
+      "log": ".lake/verify/audit-64daea4486cbbfb468e3.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_f2_checks.lean",
+      "exit_code": 0,
+      "seconds": 11.094,
+      "log": ".lake/verify/audit-2b272c5e9f0f5d670c3c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_kan.lean",
+      "exit_code": 0,
+      "seconds": 7.778,
+      "log": ".lake/verify/audit-512a640060fba7d68dec.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_model_bridge.lean",
+      "exit_code": 0,
+      "seconds": 8.325,
+      "log": ".lake/verify/audit-82c0ac94c199ee022dcd.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_presentable.lean",
+      "exit_code": 0,
+      "seconds": 39.292,
+      "log": ".lake/verify/audit-795c1fb1de4ff35c1f0f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_presentable_duality.lean",
+      "exit_code": 0,
+      "seconds": 21.957,
+      "log": ".lake/verify/audit-b865f400a9aa6d43fa38.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_presentable_local_objects.lean",
+      "exit_code": 0,
+      "seconds": 28.66,
+      "log": ".lake/verify/audit-1377c41444966f8855fc.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_presentable_localization.lean",
+      "exit_code": 0,
+      "seconds": 33.583,
+      "log": ".lake/verify/audit-b6a9fd90d2d09bf81641.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_presentable_supply.lean",
+      "exit_code": 0,
+      "seconds": 22.247,
+      "log": ".lake/verify/audit-07ba22e80652c664b57d.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_stable.lean",
+      "exit_code": 0,
+      "seconds": 464.513,
+      "log": ".lake/verify/audit-2bb6aaedb178e97d20a2.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_infinity_stable_presentable.lean",
+      "exit_code": 0,
+      "seconds": 11.951,
+      "log": ".lake/verify/audit-e4c4e7ced3bc0b83083d.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_cofinality.lean",
+      "exit_code": 0,
+      "seconds": 52.499,
+      "log": ".lake/verify/audit-d957c1f894a59e47fb0f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_comparison.lean",
+      "exit_code": 0,
+      "seconds": 59.536,
+      "log": ".lake/verify/audit-ea4147e7643a55972407.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_core_flag.lean",
+      "exit_code": 0,
+      "seconds": 42.274,
+      "log": ".lake/verify/audit-da90918f4fd5beed1678.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_derived_blowup.lean",
+      "exit_code": 0,
+      "seconds": 26.979,
+      "log": ".lake/verify/audit-44abbd27de68343232d5.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_derived_geometry.lean",
+      "exit_code": 0,
+      "seconds": 14.853,
+      "log": ".lake/verify/audit-da7c2b23cabed5e7950f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_descent.lean",
+      "exit_code": 0,
+      "seconds": 20.931,
+      "log": ".lake/verify/audit-1dd8f817007a650c626c.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_descent_main.lean",
+      "exit_code": 0,
+      "seconds": 20.624,
+      "log": ".lake/verify/audit-5ecbb77e07d2b4d85e6a.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_fibration.lean",
+      "exit_code": 0,
+      "seconds": 141.341,
+      "log": ".lake/verify/audit-84595f741bdbf2d2506b.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_fibration_relative.lean",
+      "exit_code": 0,
+      "seconds": 33.112,
+      "log": ".lake/verify/audit-97f6396e15fd414affde.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_nonconnective.lean",
+      "exit_code": 0,
+      "seconds": 100.645,
+      "log": ".lake/verify/audit-303d0ea3536a3dbf73be.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_pro_excision.lean",
+      "exit_code": 0,
+      "seconds": 72.99,
+      "log": ".lake/verify/audit-206dfedcf4faf1655367.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_s_construction.lean",
+      "exit_code": 0,
+      "seconds": 203.407,
+      "log": ".lake/verify/audit-444c6e28d4b6c4555aaa.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_s_construction_tail.lean",
+      "exit_code": 0,
+      "seconds": 104.387,
+      "log": ".lake/verify/audit-ade45043c08556f37fa4.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_scheme_lemmas.lean",
+      "exit_code": 0,
+      "seconds": 14.147,
+      "log": ".lake/verify/audit-28bc118e9d1c643ed155.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_spectra.lean",
+      "exit_code": 0,
+      "seconds": 29.266,
+      "log": ".lake/verify/audit-305ea08a146acf6cd92b.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_spectra_d3.lean",
+      "exit_code": 0,
+      "seconds": 23.805,
+      "log": ".lake/verify/audit-90f3dbac96c32b2896ec.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_spectra_d3tail.lean",
+      "exit_code": 0,
+      "seconds": 19.733,
+      "log": ".lake/verify/audit-c52d601f70f1b1fe4035.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_kst_spectra_s3.lean",
+      "exit_code": 0,
+      "seconds": 108.254,
+      "log": ".lake/verify/audit-b7050ffaf733b4d870e2.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_local_algebra.lean",
+      "exit_code": 0,
+      "seconds": 12.49,
+      "log": ".lake/verify/audit-d0bd9fa809275e776a1f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_localizing_invariants.lean",
+      "exit_code": 0,
+      "seconds": 397.396,
+      "log": ".lake/verify/audit-504eb0abdca42595993d.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_refactor_infinity.lean",
+      "exit_code": 0,
+      "seconds": 10.519,
+      "log": ".lake/verify/audit-67364eb48f4176fddaf1.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_spectra.lean",
+      "exit_code": 0,
+      "seconds": 11.976,
+      "log": ".lake/verify/audit-05c725a6df37e471ee84.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_stage4_contract.lean",
+      "exit_code": 0,
+      "seconds": 11.577,
+      "log": ".lake/verify/audit-6473582663091db0959f.log",
+      "cached": false
+    },
+    {
+      "kind": "audit",
+      "name": "scripts/audit_triangulated_k0_shift_shared.lean",
+      "exit_code": 0,
+      "seconds": 11.303,
+      "log": ".lake/verify/audit-5dc8b3b0ad2ae6aa89db.log",
+      "cached": false
+    },
+    {
+      "kind": "sorry",
+      "name": "scripts/refactor/audit_sorries.lean",
+      "exit_code": 0,
+      "seconds": 424.754,
+      "log": ".lake/verify/sorry-2dcaaedabb04f90f7b6d.log",
+      "cached": false
+    }
+  ],
+  "full_summary": ".lake/verify/if-f2/verify/summary.json",
+  "full_summary_sha256": "946bc3ee540d1029226ec2c08196d146eb14ce1e8f280611ce659a8271f3fcdd",
+  "runner": {
+    "jobs": 6,
+    "cache_enabled": false,
+    "memory_budget_bytes": 40000000000,
+    "max_concurrent": 6,
+    "rss_sampling": {
+      "interval_seconds": 0.5,
+      "max_simultaneous_rss_bytes": 48927834112,
+      "samples": 3618,
+      "errors": []
+    }
+  },
+  "projection": "Exact top-level result and stage results from native verify summary; full graph and scheduling events remain in the SHA256-pinned local evidence.",
+  "layer_confirmation": {
+    "direct_violations": 0,
+    "ratchet_metrics_equal_to_post_preservation": true,
+    "config_sha256": "a8eddf9505b8b7bab7547c3eb081ec84cfeb83f96988d835f2e5591452a1f5f6"
+  },
+  "first_full_run": {
+    "status": "PASS",
+    "gate": true,
+    "summary": "PASS build(success=2,failure=0,known=0) audit(success=102,failure=0,known=0) sorry(success=1,failure=0,known=0) preparation(success=1,failure=0,known=0) retried=0",
+    "retried": 0,
+    "commit": "5c72d9a56cac36857647a8495d2dbb8182428350",
+    "seconds": 2402.869,
+    "audit_count": 102,
+    "target_count": 5155,
+    "counts": {
+      "build": {
+        "success": 2,
+        "failure": 0,
+        "known": 0
+      },
+      "audit": {
+        "success": 102,
+        "failure": 0,
+        "known": 0
+      },
+      "sorry": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      },
+      "preparation": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      }
+    },
+    "failures": [],
+    "new_audits": [],
+    "executed_audit_count": 102,
+    "full_summary": ".lake/verify/if-f2/verify-first/summary.json",
+    "full_summary_sha256": "31d877095820452cd359d0ce8d6dc4f0360c5ec267720fb6618aaf09f46afde5"
+  },
+  "cached_followup": {
+    "status": "PASS",
+    "gate": false,
+    "summary": "PASS (non-gate) build(success=2,failure=0,known=0) audit(success=102,failure=0,known=0) sorry(success=1,failure=0,known=0) preparation(success=1,failure=0,known=0) retried=0",
+    "retried": 0,
+    "commit": "10437c5de556d5cbfc4408a5ac52c7ba798a8fdc",
+    "seconds": 469.488,
+    "audit_count": 102,
+    "target_count": 5155,
+    "counts": {
+      "build": {
+        "success": 2,
+        "failure": 0,
+        "known": 0
+      },
+      "audit": {
+        "success": 102,
+        "failure": 0,
+        "known": 0
+      },
+      "sorry": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      },
+      "preparation": {
+        "success": 1,
+        "failure": 0,
+        "known": 0
+      }
+    },
+    "failures": [],
+    "new_audits": [],
+    "executed_audit_count": 102,
+    "evidence": ".lake/verify/if-f2/verify-cached-followup/",
+    "purpose": "Intermediate warning cleanup check. Passed with 101 cached audits and one fresh audit; non-gate by existing runner policy. Superseded by final full uncached gate=true run."
+  },
+  "rerun": {
+    "reason": "Two deprecated alias warnings in an audit; four name references followed without removing checks. Final full uncached rerun to retain gate=true.",
+    "fresh_audit_count": 102,
+    "cached_successful_audits": 0,
+    "fresh_sorry_closure": true,
+    "record": "f-section9-audit-warning-followup.json"
+  }
+}

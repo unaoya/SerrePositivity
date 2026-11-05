@@ -1,5 +1,5 @@
 {
-  "status": "APPLIED_PRESERVATION_PASS_VERIFY_PENDING",
+  "status": "FINAL_APPLIED_PASS",
   "base": "640288f33e3d428c41d9cc0e5a35b85f1a63ea5c",
   "instruction": "IF-F §5–§9; latest authorization main ab6b296b4",
   "scope": "InfinityCategories 配下にある KST 名前空間の明示ソース宣言。∞ 全体の名前空間は変更しない。由来が W2c と先行の W1/W2a のものを区別して列挙。",
@@ -105936,7 +105936,7 @@
       }
     }
   },
-  "users_method": "Final consumer file/line counts against merged baseline 640288f33; baseline/current Lean ilean reference evidence for active modules, static evidence for frozen Archive.",
+  "users_method": "Initial draft users inventory is retained separately from the final applied inventory. Final applied consumer counts use net changed files and lines against merged base 640288f33, supported by active Lean ilean references and static-only Archive review.",
   "downstream": {
     "seeds": [
       "SerrePositivity.InfinityCategories.Core.ContractibleKanProducts",
@@ -118023,7 +118023,7 @@
   "directory_renames": [],
   "alias_retention": "段 G の最初の区切りまで（目安1か月）。BS・G2・KST の移行確認後、別束で一括削除。",
   "README_plan": "Updated with F1/F1B/F2 contents and compatibility lifetime",
-  "lean_builds": "Small 21-module build PASS; internal round9 PASS; downstream round1 PASS; preservation PASS; verify pending",
+  "lean_builds": "Small 21-module build PASS; internal round9 PASS; downstream 10519 plus helper PASS; preservation PASS (unexplained 0); formal verify PASS",
   "provenance_counts": {
     "w1.json": 54,
     "w2c-combined-plan.json": 2187,
@@ -337440,9 +337440,9 @@
   "preservation_inverse_map": "f-namespace-inverse-map.json",
   "alias_lifecycle": "Keep until the first stage-G checkpoint; removal is a separate task after BS/G2/KST migration.",
   "implementation_tool": "SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias",
-  "verification_status": "PRESERVATION_PASS_VERIFY_PENDING",
-  "verification_record": "f-section9-preverify.json",
-  "finalized": false,
+  "verification_status": "PASS",
+  "verification_record": "f-stop4.json",
+  "finalized": true,
   "archive_build_policy": "IF-W2b §1: 追跡するがビルドしない; Archive/InfinityCategories/FilteredExchange/README.md",
   "supplement_record": "f-section9-parent-context.json",
   "source_implementation_commits": [
@@ -337464,7 +337464,8 @@
     "4f2e8e0bb",
     "1ab3eb707",
     "500ed9938",
-    "eadc9f5c5"
+    "eadc9f5c5",
+    "10437c5de"
   ],
   "initial_consumer_rewrites": [
     {
@@ -337582,5 +337583,8 @@
       "replacements": 1
     }
   ],
-  "consumer_counting_contract": "Net changed Lean files and git added/removed lines against the merged immutable F-2 baseline. Lines count source edits, not mathematical changes or unique references. Provider aliases included; Archive static only."
+  "consumer_counting_contract": "Net changed Lean files and git added/removed lines against the merged immutable F-2 baseline. Lines count source edits, not mathematical changes or unique references. Provider aliases included; Archive static only.",
+  "verify_commit": "10437c5de556d5cbfc4408a5ac52c7ba798a8fdc",
+  "verify_summary": "f-stop4-verify-summary.json",
+  "users_inventory_phase": "The users field retains the initial draft import/reference inventory for provenance. Final applied consumer counts and file/line rewrites are in counts_current and current_consumer_rewrites."
 }

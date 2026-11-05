@@ -29319,7 +29319,7 @@
     "entry_edges/W2a": 0,
     "entry_edges/W2b": 0
   },
-  "description": "IF-F F-2 final layer remeasurement after downstream and preservation PASS. No exceptions added.",
-  "source_commit": "eadc9f5c532b01a305e0c58c708eee5e9c11383f",
-  "verification": "section9-final-enforcement.json and section9-final-ratchet.json PASS"
+  "description": "IF-F F-2 final layer baseline confirmed by the final full verify. No exceptions added.",
+  "source_commit": "10437c5de556d5cbfc4408a5ac52c7ba798a8fdc",
+  "verification": "Final full verify gate=true PASS; ratchet metrics exactly match the post-preservation measurement. See f-stop4.json."
 }
