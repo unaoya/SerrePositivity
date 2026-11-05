@@ -23,7 +23,8 @@
 | ∞ 数学 G2（Codex） | `SerrePositivity-ig1`・`math/g2` | F-2 待ち。G8 の四角形（篩包含）と G14 を仕上げて（C4）、IF-G2 の残りを引き継ぎ（C5）→ 閉じる。先行分 f2b665682 は main に入っている |
 | BS 設計（Claude Code） | なし（main に記録を直接） | 新しいチャットに移る（ユーザー決定）。**引き継ぎの入口は `bhatt-scholze/design-status.md` §0（29ab2ba87）**。BS-W11 は新しいチャットで、F-2 の取り込みと改名表の後に開始 |
 | BS 実装（Codex） | なし（worktree 0 本） | 新しいチャットに移る。BS-W10 は終了（Lemma 10.12 は main） |
-| DG（Codex）・論文の層（Claude Code） | `dgw1`・`refactor-2b` | 待機。worktree の削除（C6・C7）で閉じる |
+| DG（Codex） | `dgw1` | 待機。worktree の削除（C6）で閉じる |
+| 論文の層（Claude Code） | なし | **閉じた（11-05）**。refactor-plan.md の状態の節を最終に（8310a7fa7） |
 
 - **main**：作業木はクリーン。直近の取り込みは F-1（9ebbe8e8a）、G2 先行分（55b419a24）、Lemma 10.12（4019014a1）。
 
