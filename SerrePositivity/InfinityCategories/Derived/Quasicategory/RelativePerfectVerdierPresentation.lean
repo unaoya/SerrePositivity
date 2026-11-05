@@ -107,25 +107,25 @@ lemma zero_corner (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasica
   exact d.image.zero_corner
 
 /-- Cat^perf 不変量の元の制限値と同じ零角を持つ相対三角形。 -/
-def fiberTriangle {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+def fiberTriangle {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
-    ZeroTriangle Spectra.Sp.{u} where
+    ZeroTriangle _root_.SerrePositivity.KST.Spectra.Sp.{u} where
   square := d.square ≫ ν ≫ E
   zero_corner := hE.preservesZero _ (d.zero_corner ν)
 
 /-- 相対値は同じ Cat^perf 不変量の制限であり、新たな局所化条件は入力しない。 -/
-lemma isPullback {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+lemma isPullback {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
     IsPullbackSquare (d.square ≫ ν ≫ E) := by
   rw [← Category.assoc, d.image_eq]
   exact hE.preservesVerdier d.image
 
-lemma fiberTriangle_isFiber {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+lemma fiberTriangle_isFiber {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) :
     IsFiberSequence (d.fiberTriangle ν hE) := d.isPullback ν hE
 
 /-- 元の三指定境界を保つ全源四角形同型で、同じ不変量値の pullback を運ぶ。 -/
-lemma isPullback_of_sourceIso {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+lemma isPullback_of_sourceIso {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso d.square F) (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso d.square F b) :

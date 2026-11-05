@@ -22,6 +22,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 end SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 namespace SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientPullback
+open SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback
 local instance pullbackComparisonSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory

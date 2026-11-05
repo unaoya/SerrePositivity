@@ -47,7 +47,7 @@ def ofActualFaces (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
 
 /-- Cat^perf 不変量の同じ制限で、元の第三面が pullback になる。 -/
 lemma comparisonSquare_isPullback (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν)
-    {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+    {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare d.diagram 2) ≫ ν ≫ E) := by
   have hR : IsPullbackSquare (pastingSquare (d.diagram ≫ ν ≫ E) 0) := by
@@ -66,7 +66,7 @@ lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCat
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso d.diagram F)
     (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso d.diagram F b)
-    {E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}}
+    {E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}}
     (hE : IsPerfectLocalizingInvariant E) :
     IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫

@@ -64,12 +64,12 @@ def ofEq (h : original = actual) : _root_.SerrePositivity.InfinityCategories.Der
 
 /-- 指定した ν 同値を、同じ Cat^perf 不変量で写した始域同値。 -/
 def valueIso (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original actual)
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original) ((ν ≫ E).app _ actual) := r.image.map E
 
 /-- 元の増大・核比較との可換式は値へ写しても同じもの。 -/
 lemma valueIso_triangle (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original actual)
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫ (r.valueIso E).hom =
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
@@ -79,7 +79,7 @@ lemma valueIso_triangle (r : _root_.SerrePositivity.InfinityCategories.Derived.Q
 
 /-- 旧頂点等号を入れた値の比較は、元の等号輸送そのもの。 -/
 @[simp] lemma valueIso_ofEq (h : original = actual)
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.ofEq (ν := ν) h).valueIso E =
       eqToIso (congrArg (fun x => HomotopyCategory.mk ((ν ≫ E).app _ x)) h) := by
   subst actual
@@ -94,7 +94,7 @@ def rectangleValueIso_of_imageIso
     (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
       (squareVertex (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) 0 0) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
@@ -111,7 +111,7 @@ lemma rectangleValueIso_of_imageIso_triangle
     (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b)
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare G 2) 0 0))
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
         (_root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso b e r E).hom =
@@ -143,7 +143,7 @@ def sourceRoofOfEq {original : S _⦋0⦌}
 def sourceValueIso {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
       (squareVertex (((β_ _ _).hom ≫ pastingSquare d.diagram 2) ≫ ν ≫ E) 0 0) :=
   r.valueIso E
@@ -156,7 +156,7 @@ def sourceValueIso_of_imageIso {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
     {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     VertexIso ((ν ≫ E).app _ original)
       (squareVertex (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) 0 0) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
@@ -174,7 +174,7 @@ lemma sourceValueIso_of_imageIso_triangle
     {original : S _⦋0⦌}
     (r : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof ν original
       (squareVertex ((β_ _ _).hom ≫ pastingSquare d.diagram 2) 0 0))
-    (E : perfectStableInfinity.{u} ⟶ Spectra.Sp.{u}) :
+    (E : perfectStableInfinity.{u} ⟶ _root_.SerrePositivity.KST.Spectra.Sp.{u}) :
     (hoFunctor.map E).toFunctor.map ((hoFunctor.map ν).toFunctor.map
       (Truncated.HomotopyCategory.homMk r.augmentation)) ≫
         (d.sourceValueIso_of_imageIso b e r E).hom =

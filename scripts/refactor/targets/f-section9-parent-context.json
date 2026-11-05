@@ -1,0 +1,2967 @@
+{
+  "status": "APPLIED_PENDING_SMALL_BUILD",
+  "head": "4f2e8e0bb1edeeec25ff235184863d0ccb744f63",
+  "files": [
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientDiagram.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientRightComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientUnitComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitSelectedRightCompatibility.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientNormalizedCone.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientPullbackComparison.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientRelativeSquare.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientValueCone.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceCLeg.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceKernel.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceOuter.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceSquare.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceValuePullback.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductCone.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductNormalization.lean",
+    "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductSquare.lean",
+    "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+    "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierRectangle.lean",
+    "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+    "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativeTammeRectangle.lean"
+  ],
+  "changes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientComparison.lean",
+      "start": 1273,
+      "end": 1273,
+      "line": 30,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxCounit",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 58,
+          "spelling": "CofiberFamily.familyExactComparison",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberFamily.familyExactComparison",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberFamilyExactComparison"
+        },
+        {
+          "line": 57,
+          "spelling": "CofiberFamily.precompositionIso",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberFamily.precompositionIso",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberFamilyPrecomposition"
+        },
+        {
+          "line": 69,
+          "spelling": "cofiberZeroTargetIso",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.cofiberZeroTargetIso",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetComparison"
+        },
+        {
+          "line": 61,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 38,
+          "spelling": "LaxInclusion.fromD",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 27,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 27,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 61,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 35,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 38,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 67,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientDiagram.lean",
+      "start": 1034,
+      "end": 1034,
+      "line": 27,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxCounit",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 27,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 46,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 50,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 57,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 34,
+          "spelling": "CofiberDiagrams.lift_bottom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_bottom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 47,
+          "spelling": "CofiberDiagrams.lift_bottom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_bottom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 42,
+          "spelling": "CofiberDiagrams.lift_inclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_inclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 67,
+          "spelling": "CofiberDiagrams.lift_inclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_inclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 51,
+          "spelling": "CofiberDiagrams.relativeComparison",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.relativeComparison",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison"
+        },
+        {
+          "line": 59,
+          "spelling": "CofiberDiagrams.relativeComparison_bottom_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.relativeComparison_bottom_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeDiagramComparison"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 27,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 39,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientRightComparison.lean",
+      "start": 1282,
+      "end": 1282,
+      "line": 30,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxCounit",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 41,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 50,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 61,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 75,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 82,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 64,
+          "spelling": "CofiberDiagrams.lift_inclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_inclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 53,
+          "spelling": "CofiberDiagrams.relativeComparison_rightSource_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.relativeComparison_rightSource_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeRightComparison"
+        },
+        {
+          "line": 44,
+          "spelling": "CofiberDiagrams.relativeComparison_right_naturality",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.relativeComparison_right_naturality",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRelativeRightComparison"
+        },
+        {
+          "line": 73,
+          "spelling": "CofiberDiagrams.lift_right_target",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_right_target",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact"
+        },
+        {
+          "line": 85,
+          "spelling": "CofiberDiagrams.lift_right_target",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_right_target",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberRotationExact"
+        },
+        {
+          "line": 102,
+          "spelling": "arrow_mk_comp_eqToHom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_eqToHom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 102,
+          "spelling": "arrow_mk_eqToHom_comp",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_eqToHom_comp",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 30,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 35,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 27,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 27,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 58,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 61,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 62,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 73,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 75,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 76,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientUnitComparison.lean",
+      "start": 827,
+      "end": 827,
+      "line": 24,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxCounit",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 23,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 26,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 29,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 40,
+          "spelling": "homPost",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 35,
+          "spelling": "homPost_homComp",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPost_homComp",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 23,
+          "spelling": "homPre",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPre",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 26,
+          "spelling": "homPre",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPre",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 29,
+          "spelling": "homPre",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPre",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 40,
+          "spelling": "homPre",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPre",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 35,
+          "spelling": "homPre_homComp",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.homPre_homComp",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomWhiskering"
+        },
+        {
+          "line": 29,
+          "spelling": "LaxInclusion.fromCAdjunction",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromCAdjunction",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction"
+        },
+        {
+          "line": 38,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 46,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 21,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 21,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 38,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 46,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitSelectedRightCompatibility.lean",
+      "start": 1102,
+      "end": 1102,
+      "line": 28,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxCounit",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 34,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 40,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 52,
+          "spelling": "CofiberDiagrams.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 36,
+          "spelling": "CofiberDiagrams.lift_inclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagrams.lift_inclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberDiagramChoices"
+        },
+        {
+          "line": 54,
+          "spelling": "arrow_mk_comp_congr",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_congr",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 61,
+          "spelling": "arrow_mk_comp_congr",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_congr",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 51,
+          "spelling": "arrow_mk_comp_of_identity",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_comp_of_identity",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 44,
+          "spelling": "arrow_mk_eqToHom_comp",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.arrow_mk_eqToHom_comp",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 77,
+          "spelling": "hom_eq_of_arrow_mk_eq",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.hom_eq_of_arrow_mk_eq",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 45,
+          "spelling": "CofiberFamily.rightHom_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberFamily.rightHom_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxCounitQuotientRightImage"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientNormalizedCone.lean",
+      "start": 936,
+      "end": 936,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientBFNormalization",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 52,
+          "spelling": "FiberModel.coneSquare_apex",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.FiberModel.coneSquare_apex",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.BFFiberSquare"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 48,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 49,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 43,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 51,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 32,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 36,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 48,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 48,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 49,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 49,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientPullbackComparison.lean",
+      "start": 893,
+      "end": 893,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientPullback",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 23,
+          "spelling": "IsLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.Invariant"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 43,
+          "spelling": "SpectrumHo.obj",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.obj",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass"
+        },
+        {
+          "line": 38,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 43,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientRelativeSquare.lean",
+      "start": 1110,
+      "end": 1110,
+      "line": 27,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientRelativeSquare",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 75,
+          "spelling": "compositionDiagonalTransport",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.compositionDiagonalTransport",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CompositionDiagonalTransport"
+        },
+        {
+          "line": 117,
+          "spelling": "compositionDiagonalTransport",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.compositionDiagonalTransport",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CompositionDiagonalTransport"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 28,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 35,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 29,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 36,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 52,
+          "spelling": "PathComparisonSquare.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 56,
+          "spelling": "PathComparisonSquare.square_bottom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_bottom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 64,
+          "spelling": "PathComparisonSquare.square_left",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_left",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 77,
+          "spelling": "PathComparisonSquare.square_lower",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_lower",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 60,
+          "spelling": "PathComparisonSquare.square_right",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_right",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 68,
+          "spelling": "PathComparisonSquare.square_top",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_top",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 72,
+          "spelling": "PathComparisonSquare.square_upper",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_upper",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 84,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 91,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 98,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 105,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 86,
+          "spelling": "valueMap_edge",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap_edge",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 93,
+          "spelling": "valueMap_edge",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap_edge",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 100,
+          "spelling": "valueMap_edge",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap_edge",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 107,
+          "spelling": "valueMap_edge",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap_edge",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientValueCone.lean",
+      "start": 896,
+      "end": 896,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxQuotientSquare",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 53,
+          "spelling": "FiberModel.coneSquare_apex",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.FiberModel.coneSquare_apex",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.BFFiberSquare"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 29,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 52,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 42,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 46,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceCLeg.lean",
+      "start": 1481,
+      "end": 1481,
+      "line": 32,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 62,
+          "spelling": "CofiberRotation.inverseRotationFamilyCofiberIso",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberRotation.inverseRotationFamilyCofiberIso",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationExact"
+        },
+        {
+          "line": 39,
+          "spelling": "CofiberRotation.inverseRotation_target",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberRotation.inverseRotation_target",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberInverseRotationExact"
+        },
+        {
+          "line": 59,
+          "spelling": "CofiberFamily.zeroTargetRelativeIso",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.CofiberFamily.zeroTargetRelativeIso",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CofiberZeroTargetDiagrams"
+        },
+        {
+          "line": 50,
+          "spelling": "LaxInclusion.fromC_snd_vertex",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC_snd_vertex",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxCAdjunction"
+        },
+        {
+          "line": 34,
+          "spelling": "LaxCounit.arrow_source",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxCounit.arrow_source",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxCounitCofiber"
+        },
+        {
+          "line": 42,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 43,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 47,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 49,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 57,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 58,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 60,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 63,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 66,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 67,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 70,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 71,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 75,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 85,
+          "spelling": "LaxInclusion.fromC",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromC",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 33,
+          "spelling": "LaxInclusion.fromD",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 38,
+          "spelling": "LaxInclusion.fromD",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 46,
+          "spelling": "LaxInclusion.fromD",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 53,
+          "spelling": "LaxInclusion.fromD",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxInclusion.fromD",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxInclusions"
+        },
+        {
+          "line": 29,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 82,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 83,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 85,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 33,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 38,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 47,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 48,
+          "spelling": "laxSnd",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxSnd",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceKernel.lean",
+      "start": 1071,
+      "end": 1071,
+      "line": 27,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 47,
+          "spelling": "EquivalenceArrowFamily.comparison",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily.comparison",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.EquivalenceArrowFamily"
+        },
+        {
+          "line": 52,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 54,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 58,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 60,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 61,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 63,
+          "spelling": "IdentityLax.diagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.diagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 29,
+          "spelling": "laxDifference",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifference",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceFunctor"
+        },
+        {
+          "line": 39,
+          "spelling": "laxDifference_zero_iff",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxDifference_zero_iff",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceFunctor"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 57,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 62,
+          "spelling": "laxFst",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxFst",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceOuter.lean",
+      "start": 897,
+      "end": 897,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 22,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 22,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 51,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceSquare.lean",
+      "start": 1120,
+      "end": 1120,
+      "line": 28,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 79,
+          "spelling": "compositionDiagonalTransport",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.compositionDiagonalTransport",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.CompositionDiagonalTransport"
+        },
+        {
+          "line": 33,
+          "spelling": "IdentityLax.exactDiagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.exactDiagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 43,
+          "spelling": "IdentityLax.exactDiagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.exactDiagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 45,
+          "spelling": "IdentityLax.exactDiagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.exactDiagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 70,
+          "spelling": "IdentityLax.exactDiagonal",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IdentityLax.exactDiagonal",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.IdentityLaxDiagonal"
+        },
+        {
+          "line": 36,
+          "spelling": "exactLaxDifference",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.exactLaxDifference",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact"
+        },
+        {
+          "line": 74,
+          "spelling": "exactLaxDifference",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.exactLaxDifference",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact"
+        },
+        {
+          "line": 76,
+          "spelling": "exactLaxDifference",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.exactLaxDifference",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 25,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 30,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 32,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 35,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 54,
+          "spelling": "PathComparisonSquare.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 59,
+          "spelling": "PathComparisonSquare.square_bottom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_bottom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 67,
+          "spelling": "PathComparisonSquare.square_left",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_left",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 63,
+          "spelling": "PathComparisonSquare.square_right",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_right",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        },
+        {
+          "line": 71,
+          "spelling": "PathComparisonSquare.square_top",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare.square_top",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.PathComparisonSquare"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceValuePullback.lean",
+      "start": 1004,
+      "end": 1004,
+      "line": 26,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 25,
+          "spelling": "IsLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.Invariant"
+        },
+        {
+          "line": 23,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 23,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductCone.lean",
+      "start": 964,
+      "end": 964,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 69,
+          "spelling": "FiberModel.coneSquare_apex",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.FiberModel.coneSquare_apex",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.BFFiberSquare"
+        },
+        {
+          "line": 22,
+          "spelling": "IsLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.Invariant"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 41,
+          "spelling": "LaxUniversalProduct.legMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.legMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap"
+        },
+        {
+          "line": 51,
+          "spelling": "LaxUniversalProduct.legMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.legMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap"
+        },
+        {
+          "line": 29,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 64,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 66,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 33,
+          "spelling": "Binary.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 55,
+          "spelling": "Binary.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 33,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 33,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 55,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 55,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 59,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 68,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 37,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductNormalization.lean",
+      "start": 1331,
+      "end": 1331,
+      "line": 29,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductNormalization",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 71,
+          "spelling": "hom_eq_of_arrow_mk_eq",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.hom_eq_of_arrow_mk_eq",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 79,
+          "spelling": "hom_eq_of_arrow_mk_eq",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.hom_eq_of_arrow_mk_eq",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 87,
+          "spelling": "hom_eq_of_arrow_mk_eq",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.hom_eq_of_arrow_mk_eq",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 95,
+          "spelling": "hom_eq_of_arrow_mk_eq",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.hom_eq_of_arrow_mk_eq",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport"
+        },
+        {
+          "line": 26,
+          "spelling": "IsLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.Invariant"
+        },
+        {
+          "line": 28,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 28,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 34,
+          "spelling": "LaxUniversalProduct.vertex00",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex00",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 43,
+          "spelling": "LaxUniversalProduct.vertex00",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex00",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 39,
+          "spelling": "LaxUniversalProduct.vertex01",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex01",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 43,
+          "spelling": "LaxUniversalProduct.vertex01",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex01",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 34,
+          "spelling": "LaxUniversalProduct.vertex10",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex10",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 48,
+          "spelling": "LaxUniversalProduct.vertex10",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex10",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 39,
+          "spelling": "LaxUniversalProduct.vertex11",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex11",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 48,
+          "spelling": "LaxUniversalProduct.vertex11",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.vertex11",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductComponents"
+        },
+        {
+          "line": 91,
+          "spelling": "LaxUniversalProduct.left_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.left_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses"
+        },
+        {
+          "line": 99,
+          "spelling": "LaxUniversalProduct.right_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.right_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses"
+        },
+        {
+          "line": 83,
+          "spelling": "LaxUniversalProduct.top_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.top_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductEdgeClasses"
+        },
+        {
+          "line": 75,
+          "spelling": "LaxUniversalProduct.bottom_native_arrow",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.bottom_native_arrow",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductInclusion"
+        },
+        {
+          "line": 94,
+          "spelling": "LaxUniversalProduct.legMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.legMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap"
+        },
+        {
+          "line": 105,
+          "spelling": "LaxUniversalProduct.legMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.legMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap"
+        },
+        {
+          "line": 114,
+          "spelling": "LaxUniversalProduct.legMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct.legMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProductMap"
+        },
+        {
+          "line": 70,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 102,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 110,
+          "spelling": "IsLocalizingInvariant.laxQuotientProductInclusion",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant.laxQuotientProductInclusion",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxVerdierProductFiberMap"
+        },
+        {
+          "line": 78,
+          "spelling": "Binary.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 103,
+          "spelling": "Binary.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 111,
+          "spelling": "Binary.lift",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.lift",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 32,
+          "spelling": "Binary.obj",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.obj",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 37,
+          "spelling": "Binary.obj",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.obj",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 45,
+          "spelling": "Binary.obj",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.obj",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 46,
+          "spelling": "Binary.obj",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.Binary.obj",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumBinaryMaps"
+        },
+        {
+          "line": 70,
+          "spelling": "SpectrumHo.hom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass"
+        },
+        {
+          "line": 78,
+          "spelling": "SpectrumHo.hom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass"
+        },
+        {
+          "line": 86,
+          "spelling": "SpectrumHo.hom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass"
+        },
+        {
+          "line": 94,
+          "spelling": "SpectrumHo.hom",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.SpectrumHo.hom",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.SpectrumHomClass"
+        },
+        {
+          "line": 31,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 32,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 32,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 36,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 37,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 37,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 41,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 41,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 45,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 45,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 46,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 46,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 78,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 78,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 103,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 103,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 111,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 111,
+          "spelling": "value",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.value",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 86,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 104,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        },
+        {
+          "line": 113,
+          "spelling": "valueMap",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.valueMap",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.ValueHomotopy"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductSquare.lean",
+      "start": 921,
+      "end": 921,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalProduct",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 62,
+          "spelling": "DiagramVertexPaths",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.DiagramVertexPaths",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.DiagramVertexPaths"
+        },
+        {
+          "line": 63,
+          "spelling": "DiagramVertexPaths.ofIso",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.DiagramVertexPaths.ofIso",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.DiagramVertexTransport"
+        },
+        {
+          "line": 22,
+          "spelling": "IsLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.Invariant"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 24,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 28,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 49,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 52,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 53,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 54,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 62,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 69,
+          "spelling": "LaxUniversalValue.square",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.square",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 32,
+          "spelling": "LaxUniversalValue.vertex00",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.vertex00",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 36,
+          "spelling": "LaxUniversalValue.vertex01",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.vertex01",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 41,
+          "spelling": "LaxUniversalValue.vertex10",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.vertex10",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        },
+        {
+          "line": 45,
+          "spelling": "LaxUniversalValue.vertex11",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValue.vertex11",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalValueVertices"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativeTammeRectangle.lean",
+      "start": 993,
+      "end": 993,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST.LocalizingInvariants\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST.LocalizingInvariants",
+      "references": [
+        {
+          "line": 23,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 23,
+          "spelling": "laxCategory",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.laxCategory",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.LaxStableCategory"
+        },
+        {
+          "line": 39,
+          "spelling": "IsRelativeLocalizingInvariant",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.RelativeInvariant"
+        },
+        {
+          "line": 41,
+          "spelling": "RelativeVerdierRectangle.comparisonSquare_isPullback",
+          "declaration": "SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback",
+          "provider": "SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativeTammeRectangle.lean",
+      "start": 993,
+      "end": 993,
+      "line": 25,
+      "old": "",
+      "new": "open SerrePositivity.KST\n",
+      "reason": "restore_original_ancestor_namespace_lookup",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference",
+      "parent": "SerrePositivity.KST",
+      "references": [
+        {
+          "line": 38,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "start": 5410,
+      "end": 5420,
+      "line": 110,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "start": 5589,
+      "end": 5599,
+      "line": 112,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "start": 5793,
+      "end": 5803,
+      "line": 117,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "start": 6135,
+      "end": 6145,
+      "line": 123,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "start": 6473,
+      "end": 6483,
+      "line": 128,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierRectangle.lean",
+      "start": 2687,
+      "end": 2697,
+      "line": 50,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 42,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 61,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierRectangle.lean",
+      "start": 3819,
+      "end": 3829,
+      "line": 69,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 42,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 61,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 3220,
+      "end": 3230,
+      "line": 67,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 3533,
+      "end": 3543,
+      "line": 72,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 4085,
+      "end": 4095,
+      "line": 82,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 5212,
+      "end": 5222,
+      "line": 97,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 6242,
+      "end": 6252,
+      "line": 114,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 8183,
+      "end": 8193,
+      "line": 146,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 8987,
+      "end": 8997,
+      "line": 159,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "start": 10050,
+      "end": 10060,
+      "line": 177,
+      "old": "Spectra.Sp",
+      "new": "_root_.SerrePositivity.KST.Spectra.Sp",
+      "reason": "qualify_original_sibling_namespace_reference",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    }
+  ],
+  "contract": "Restore original ancestor lookup for unmoved declarations witnessed by baseline ilean; qualify 15 sibling Spectra.Sp references to the same unmoved declaration. No imports, declaration names, or mathematical expressions change.",
+  "resolved_skips": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierDiagram",
+      "parent": "SerrePositivity.KST",
+      "reason": "no_matching_migration_open",
+      "references": [
+        {
+          "line": 102,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 109,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 115,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 120,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierRectangle.lean",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle",
+      "parent": "SerrePositivity.KST",
+      "reason": "no_matching_migration_open",
+      "references": [
+        {
+          "line": 42,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 61,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierSourceRoof",
+      "parent": "SerrePositivity.KST",
+      "reason": "no_matching_migration_open",
+      "references": [
+        {
+          "line": 57,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 62,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 72,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 87,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 104,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "original_namespace": "SerrePositivity.KST.LocalizingInvariants.RelativePerfectVerdierRectangle",
+      "parent": "SerrePositivity.KST",
+      "reason": "no_matching_migration_open",
+      "references": [
+        {
+          "line": 135,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 148,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        },
+        {
+          "line": 166,
+          "spelling": "Spectra.Sp",
+          "declaration": "SerrePositivity.KST.Spectra.Sp",
+          "provider": "SerrePositivity.KST.Spectra.CoherentNerve"
+        }
+      ]
+    }
+  ],
+  "skips": [],
+  "authorization": "IF-F §9 main ab6b296b4",
+  "hashes": [
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientComparison.lean",
+      "before_sha256": "5ed7d536a24186d0e9e359d386a64ed92fbb634d1c7eb5c30ad4997e91986d99",
+      "after_sha256": "a1e254aaa8b68e27002a435cc27185e38575308b67d2945602cce7b94f0fc5a0"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientDiagram.lean",
+      "before_sha256": "38481fcfa1a4a4d35bc0c4b2c007bb475e0ef20966971888a2466c9f194620c5",
+      "after_sha256": "5dc8b59befae4e0221ed0ea1d7fbff2494f10717dfca2c9a07c27d9b0fa19674"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientRightComparison.lean",
+      "before_sha256": "fdab1a9f8d339c27e3d81d378b1c7be3f6d251116dfbbf226265e2fde6c18e63",
+      "after_sha256": "6e1c1ff8cfd206e8255d0354345adc9c9ae93cb56331c064cfed99bead96ce03"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitQuotientUnitComparison.lean",
+      "before_sha256": "183192ba2df9412451aa00e9fa697cf3b92c83e3563ecc0ae4cd13702189d4af",
+      "after_sha256": "f2b5dd5974380a50a91974c3c788ad812fa10f49405098879a21a7da016beded"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxCounitSelectedRightCompatibility.lean",
+      "before_sha256": "641367d37d5aec670762673c59f1bcddee62d208ec200d1a93bb879a3da5e967",
+      "after_sha256": "01c5c451af3fcf2d2529204f01dfdef9d97e151061e939df97a8af93166d672b"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientNormalizedCone.lean",
+      "before_sha256": "9b0a4f5fd9bd3989a0e9ed352bbea44ab921daea865e1e904995922bea47e7ed",
+      "after_sha256": "8498402458015460513464f42ba6faa44d208e8fb5c9b90638e9ade2190ac3f3"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientPullbackComparison.lean",
+      "before_sha256": "9a7346f1aa92314e394371cefef3bc2190d9eca44f54757243f222d3836cbe29",
+      "after_sha256": "6d7527229888980de935e64e1b3bb7b240bfe0319d13c461059abf9e698c0b41"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientRelativeSquare.lean",
+      "before_sha256": "8cabaa41ef4653ab3f842498c6f430f7564e8520a4466c7cb8a2f42da558976c",
+      "after_sha256": "68c8cce8cea0c4f06ce4e787b3127775e6439eb5f1aa31f18493ad43320ba086"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxQuotientValueCone.lean",
+      "before_sha256": "c028db794552421cc06e46f27ba0e8b4055d053dcb37342ca4f7b31a905cfd42",
+      "after_sha256": "54e6f748b22fad82822d2cf7888c2db4fef85bdb31d4c3a01c49b5557c03c5e0"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceCLeg.lean",
+      "before_sha256": "76043daa04fb5712ea94020a659018cac1013b72e7ce9ee678b39f615cfb0b71",
+      "after_sha256": "7b2f21c4c6b6b241a4988830670dca93cf0d15357dd1aafba265171f77d96a1e"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceKernel.lean",
+      "before_sha256": "3896a2bde51cd97e646510ca690f82d55e0261c3af0723e966156d1846ba0f4f",
+      "after_sha256": "3097368d2ad6cdc102c698cfde2a3757aca8264ae1a4a58d59d464cdee6719e3"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceOuter.lean",
+      "before_sha256": "dbcc895eae5aec3f403d5d2afd5cbbc0a50e9ae9813f6bc0ffb19e19bcdae465",
+      "after_sha256": "2f6c1918560b43c36099524f6f9bfe982064c29602a0fbf60d33560ba8ddae8c"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceSquare.lean",
+      "before_sha256": "67f997e57769109bda81fec31fdd13ff8cf2f6d608215b5342dd0ada816baf22",
+      "after_sha256": "0cf843bc1bd3f0ee41bfad51bf619445641fa2d1dc31c976319727a92100f8d1"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalDifferenceValuePullback.lean",
+      "before_sha256": "b385e0da947afd87066a7984727b9ee42d83b1365d449d714ab0e2b2e7f682fc",
+      "after_sha256": "c4efd28ad5c4b355d77cc381401f2f55874a7e3059202c427a077656c896c118"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductCone.lean",
+      "before_sha256": "8a804b71773b8114fea5366932a6c51acea11c21f075d5bcb7a3a0af8d9c82d6",
+      "after_sha256": "4c1e70b6109b7a72a65adcfe12534deaf9b7833865d6c280f4f2c6b6f972449e"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductNormalization.lean",
+      "before_sha256": "049ac3b937f1955d24b81e9efe3ab6fa7efa7eb1a2ab66f08631263bb8239684",
+      "after_sha256": "5e11c4a975ad1ec1baaa8e0a8b16aec0cd0b2b9d81d804718b686c930d033be7"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Lax/LaxUniversalProductSquare.lean",
+      "before_sha256": "63ca061ff2b2101c76a4a19b71f4778406195bc9edc0977a78dc57cc0e4ee57a",
+      "after_sha256": "25d83eeab2376792e0eee61012c39120e4d92f427e04780cbe84e0f83925e37c"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierPresentation.lean",
+      "before_sha256": "1290ef044a4e781e460ebc5f32ce01422bc5853db10c687591d9c377c7ae9fa6",
+      "after_sha256": "4393e327e74bd8bf64702e17c1fe933b1ff4b260bc4f4d2b211178a87e76220d"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierRectangle.lean",
+      "before_sha256": "3e6b510096fbb0682109bc01a3257cbf35a173d7861d273cc79322271d870f57",
+      "after_sha256": "ad0a9c720649977ed955574c68b85b14b1db72217b7cb28089cc5e1cb5574b95"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativePerfectVerdierSourceRoof.lean",
+      "before_sha256": "1537b72978e6213fa31766d3f14ce98c66a0f3dabeca0c32dcc17ede258c3bab",
+      "after_sha256": "90fb09f5413ab4c3a48eb074ace999d25a54b4d127319534805e6a77f04e1dff"
+    },
+    {
+      "file": "SerrePositivity/InfinityCategories/Derived/Quasicategory/RelativeTammeRectangle.lean",
+      "before_sha256": "9c82fbabdc03b0797fbcb5588ded1e5a3649d92de4c50cfda5061a3bc7dec936",
+      "after_sha256": "e035d2464c10ff4dde37f62ebf35398b170d316e12b92226950497b933ecbae5"
+    }
+  ]
+}
