@@ -75,6 +75,25 @@
 3. BS の二つ（設計の Claude Code、実装の Codex）は、いまのチャットを続けるか新しくするか。
 4. K 理論レーンの開始の時期（推奨：M1・M2・M7 の後）。
 
+
+### 5.1 並列の上限の検討（11-05）と決定
+
+**決定（11-05、ユーザー）**：調整役は新しいチャットにする。BS（設計の Claude Code、実装の Codex）も新しいチャットにする。レーンの数は「どこまで並列にできるか」で決める。
+
+同時に始められる流れ（依存・触る場所・検収の手で判断）：
+
+| 流れ | 中身 | 触る場所 |
+| --- | --- | --- |
+| ① ∞ 中核：Verdier | M1・M2・M7・M8、分数の一般版（L4） | `Stable/Verdier`・`StablePresentable` |
+| ② ∞ 中核：その他 | M3〜M6、M11、M16（L3） | `F2/`・`F1/`・`HomotopyLimits` |
+| ③ ∞ 供給：層の一般論 | G9 の小補題 3 つ、G8 の一般形、G10 | `F2/`・`HomotopyLimits`・`Derived` |
+| ④ ∞ 供給：E∞ | M14、M15、G12 | `EInfinity/`・`ModelBridge` |
+| ⑤ BS 実装 | BS-W11、A-2、A-1 の S1・S2・S6 | `BhattScholze/`・`CA/`・`Sheaves/`・`Derived/` |
+| ⑥ K の古典的な準備 | KST §5 のスキーム補題、可換環論、公理 (3) の再確認 | `CommutativeAlgebra/`・`KST/` |
+| ⑦ K の dg 側 | β4（dg の gluing）、β5 の残り | `DifferentialGraded/`・`Derived/` |
+
+上限は 7 本。律速は検収（BS 設計一本、調整役一本）。**推奨は 5 本から（①③④⑤⑥）**、②⑦は①⑤が軌道に乗ってから足す。ユーザーが本数を決める。
+
 ## 6. 暦の目安
 
 | 時期 | 内容 |
